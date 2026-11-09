@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP222",
+  "as_of": "CP223",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -425,7 +425,8 @@
           "docs/evidence/login-runtime/README.md#cp219",
           "docs/evidence/login-runtime/README.md#cp220",
           "docs/evidence/login-runtime/README.md#cp221",
-          "docs/evidence/login-runtime/README.md#cp222"
+          "docs/evidence/login-runtime/README.md#cp222",
+          "docs/evidence/login-runtime/README.md#cp223"
         ]
       },
       "coverage": {
@@ -493,7 +494,8 @@
               "docs/PROTOCOL.md#auth-eof-dispatch",
               "docs/evidence/login-runtime/README.md#cp220",
               "docs/PROTOCOL.md#auth-two-account",
-              "docs/PROTOCOL.md#auth-two-actual"
+              "docs/PROTOCOL.md#auth-two-actual",
+              "docs/PROTOCOL.md#auth-session-lifecycle"
             ]
           },
           "windows_original": {

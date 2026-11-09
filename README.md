@@ -28,6 +28,14 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP223: identity theo account khi đảo endpoint; retry sau mất kênh chưa đạt.**
+[Contract/giới hạn](docs/PROTOCOL.md#auth-session-lifecycle), [bảy run/hash](docs/evidence/login-runtime/README.md#cp223):
+control token đảo source vẫn đúng native ID/name/echo/67 và session; đóng B sau17 có native error10/newconnect,
+Aowner giữ. Prototype guards và consumer sau hello còn chặn retry: native recv15/framerret0 không là login lại.
+1108raw đã seal/hash/cleanup, corrections ảnh/probe giữ nguồn cũ; không fullauth/sessionexpiry/Rust/gate mới.
+CP222 đã merge [PR293](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/293)/`4bcabd8`; audit kếCP224.
+[Bước tiếp](docs/PLAN.md#current-order): consumer/validation sau hello, không lặp control đã đo.
+
 **CP222: hai KR cùng service đã bind hai identity/session riêng; duplicate account bị native từ chối.**
 [Contract/giới hạn](docs/PROTOCOL.md#auth-two-actual), [bốn run/hash](docs/evidence/login-runtime/README.md#cp222):
 R3 native0/C2S6 đúng1/2/echo/actual67 cảhai,2CA/2wineserver/2netns/PCAP/8s+hold; R4 tokenB=A cho native1/nochannel,

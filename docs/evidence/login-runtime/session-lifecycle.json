@@ -1,0 +1,885 @@
+{
+  "schema": "kre-auth-session-lifecycle-v1",
+  "baseline": "4bcabd8350d70aaf6020e388a03a96eb445b1717",
+  "build": "KR00967",
+  "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "batch": [
+    {
+      "case": "swapped-positive",
+      "root": "local/research/codex/auth-endpoint-account-r1/swapped-positive",
+      "run_sha256": "7a3a2956323670b63c369cf6ccf70159fb7096167f4ac2c29196b83110205b6a",
+      "duration_s": 41.043315091,
+      "raw_count": 100,
+      "returncode": 0,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "error": null
+    },
+    {
+      "case": "B-channel-eof",
+      "root": "local/research/codex/auth-admitted-lifecycle-r1/B-channel-eof",
+      "run_sha256": "e7e1aade669498e900e208896f134d0e5823e8b61b9b6fa2b28ff7ca740c7f53",
+      "duration_s": 55.946399947,
+      "raw_count": 135,
+      "returncode": 0,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "error": null
+    },
+    {
+      "case": "B-channel-eof-r2",
+      "root": "local/research/codex/auth-admitted-lifecycle-r1/B-channel-eof-r2",
+      "run_sha256": "3146ab48b749c525e666b445c3694b5db9907eaa0e2a1e20ce04bc264d4f8c8b",
+      "duration_s": 66.000024111,
+      "raw_count": 152,
+      "returncode": 0,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "error": null
+    },
+    {
+      "case": "B-retry",
+      "root": "local/research/codex/auth-admitted-retry-r1/B-retry",
+      "run_sha256": "7aa319dd26c1d64a871426a99ed86bbe3967adbc63c91f330bf66d1ffff79604",
+      "duration_s": 96.527916168,
+      "raw_count": 224,
+      "returncode": 1,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "error": "RuntimeError('Bnewtransportcycle retry bound without native67/newsession')"
+    },
+    {
+      "case": "B-retry-ack",
+      "root": "local/research/codex/auth-admitted-retry-r1/B-retry-ack",
+      "run_sha256": "defc6356e8c5775807610eae1c73605c5ae5645aff10709b38208c3e3d44f321",
+      "duration_s": 80.958389884,
+      "raw_count": 189,
+      "returncode": 1,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "error": "RuntimeError('Bnewtransportcycle retry bound without native67/newsession')"
+    },
+    {
+      "case": "connect-path",
+      "root": "local/research/codex/auth-retry-connect-r1/connect-path",
+      "run_sha256": "c26566f7e2e8996ed90fa6375f16d20d26592545cc1857b089e6bc3c8310a578",
+      "duration_s": 65.751350452,
+      "raw_count": 154,
+      "returncode": 1,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "error": "RuntimeError('Bnewtransportcycle retry bound without native67/newsession')"
+    },
+    {
+      "case": "connect-path-r2",
+      "root": "local/research/codex/auth-retry-connect-r1/connect-path-r2",
+      "run_sha256": "b5f38bb8d2ebba748bd9b0a4d9ee4522defee6765cba8a2f1fda755167d24cfb",
+      "duration_s": 65.610310215,
+      "raw_count": 154,
+      "returncode": 1,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "error": "RuntimeError('Bnewtransportcycle retry bound without native67/newsession')"
+    }
+  ],
+  "total_raw": 1108,
+  "endpoint_account": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "run_sha256": "7a3a2956323670b63c369cf6ccf70159fb7096167f4ac2c29196b83110205b6a",
+    "duration_s": 41.043315091,
+    "raw_count": 100,
+    "cleanup": {
+      "net_namespace": "net:[4026533497]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+    },
+    "roles": [
+      {
+        "physical_endpoint": "A",
+        "account_role": "B",
+        "identity": 2,
+        "name": "KRGuest",
+        "source_ip": "10.77.0.2",
+        "token_input_sha256": "4ba68aa8767bde72e8c798ee82d1275291cea73e72ad74d35ecf48e41386eb82",
+        "native_auth_result": 0,
+        "native6_echo": 1867434832,
+        "actual67": true,
+        "source_transport_count": 4,
+        "session_id": "2055f13bba684bb55e22430d3caf8bf4",
+        "channel_connection": 6,
+        "native_fields_and_capture_joined": true,
+        "frames": [
+          {
+            "opcode": 1,
+            "sequence": 40,
+            "frame_sha256": "12d51e1888c71ad07f1fd77655238e53526a8f05882f4921fa9b0ce6648b6d00",
+            "body_bytes": 61,
+            "connection": 5
+          },
+          {
+            "opcode": 60,
+            "sequence": 43,
+            "frame_sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6",
+            "body_bytes": 20,
+            "connection": 5
+          },
+          {
+            "opcode": 9,
+            "sequence": 46,
+            "frame_sha256": "4158ea45ff94894e0ae219729bef6c62a5e8f908700f2c04c4d8ed5d8224aa43",
+            "body_bytes": 8,
+            "connection": 5
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "frame_sha256": "d286c398d39600598303aba3fe8f2dd4449e50f25722201e341760457907f170",
+            "body_bytes": 4,
+            "connection": 5
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "frame_sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5",
+            "body_bytes": 0,
+            "connection": 5
+          },
+          {
+            "opcode": 40,
+            "sequence": 55,
+            "frame_sha256": "2d9bd1845ba82aea8d94e132778798f9bed95b2bbdce7436ac25f2a6bd0b86e7",
+            "body_bytes": 1,
+            "connection": 5
+          },
+          {
+            "opcode": 5,
+            "sequence": 58,
+            "frame_sha256": "24f8a51e4439d6a19c8af224b8ccc938139dc74c8ab6a38c2ea5542e1e4b871f",
+            "body_bytes": 9,
+            "connection": 5
+          },
+          {
+            "opcode": 6,
+            "sequence": 40,
+            "frame_sha256": "db4dd4f3dac5fa3646f9e22aef734b7ee4411bf85ec9f1b7cabb46d7601ee82b",
+            "body_bytes": 43,
+            "connection": 6
+          },
+          {
+            "opcode": 544,
+            "sequence": 43,
+            "frame_sha256": "9e8de83d04eeab32fbc33b6f4ee99fadc038249929c6bfbfc76e59af999866ad",
+            "body_bytes": 10,
+            "connection": 6
+          },
+          {
+            "opcode": 549,
+            "sequence": 46,
+            "frame_sha256": "683c014bbc8fbf2dcc1325c3788bfd26adb70ed576b02ef2b22903c4d00d65ee",
+            "body_bytes": 3,
+            "connection": 6
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "frame_sha256": "7704fb1aa46a1a17c430094ff6033bdd25cfffc9f43664b86c605e2cd4d8f5c6",
+            "body_bytes": 4,
+            "connection": 6
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "frame_sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 567,
+            "sequence": 55,
+            "frame_sha256": "63b34eaa82ebde5a2c2225d69d05afa03434b1023f40242e8ecfecab8f726132",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 67,
+            "sequence": 58,
+            "frame_sha256": "40e9433aba62af57815aa75adb3b377070436ce1808f30ba92f2743b0cc13bf9",
+            "body_bytes": 2,
+            "connection": 6
+          },
+          {
+            "opcode": 87,
+            "sequence": 61,
+            "frame_sha256": "e0ea50ce187e01bde4ab3b1fdc64419df741c1a40d92e67f13c79c617dfc4a29",
+            "body_bytes": 2,
+            "connection": 6
+          },
+          {
+            "opcode": 742,
+            "sequence": 64,
+            "frame_sha256": "a3e0de0e248cea05e63fafc1deb64e76cbdad6c9d0e54fac1804cee2d89aa638",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 741,
+            "sequence": 67,
+            "frame_sha256": "ceca4260ec672878bdfb674cf9c56d922e7ef931506c013dae5809f083c22761",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 715,
+            "sequence": 70,
+            "frame_sha256": "e28443e89692e21f334f5aa5c8e92b60d62d26bdb830d2818bf27263995ec2f0",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 715,
+            "sequence": 73,
+            "frame_sha256": "454082c17ddf7efbd9d10181cf10a8e91958e454c3afb272d9f03db8a6b66756",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 15,
+            "sequence": 76,
+            "frame_sha256": "a9255739b1b765b0d124f64fef4fda7f74f6df6f114bcc8fe0093befc11e606a",
+            "body_bytes": 31,
+            "connection": 6
+          },
+          {
+            "opcode": 715,
+            "sequence": 79,
+            "frame_sha256": "3f2ee188ed75a78de687d3d43b9ca8a09a20c38eb081ceac73d8954929c54126",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 15,
+            "sequence": 82,
+            "frame_sha256": "8491b3242f20d57a06df6ea415e88197feede1585a28727812debf5034a041dc",
+            "body_bytes": 31,
+            "connection": 6
+          },
+          {
+            "opcode": 715,
+            "sequence": 85,
+            "frame_sha256": "bc5247901942c7f6496b3ec04de938e779ee7679f65df59905a12d614ffae2f0",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 15,
+            "sequence": 88,
+            "frame_sha256": "04e7a1606d2db72b0bacd9aa33ef07bb26b1bd3fd23a5b79fb4b073fbdbf87cb",
+            "body_bytes": 31,
+            "connection": 6
+          }
+        ],
+        "owners": {
+          "wineserver": {
+            "pid": 51,
+            "comm": "wineserver",
+            "namespace": "net:[4026533551]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-A",
+            "command": "/usr/lib/wine/../../bin/wineserver ",
+            "monotonic_ns": 164074540353307,
+            "start_ticks": "16406539",
+            "host_exe": "/usr/bin/wineserver"
+          },
+          "client": {
+            "pid": 160,
+            "comm": "CA-r2-stage-soc",
+            "namespace": "net:[4026533551]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-A",
+            "command": "/home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-A/CA-r2-stage-social-cmp.exe multiserveridx:0 token_1:fedcba9876543210fedcba9876543210                                                                         ",
+            "monotonic_ns": 164074541085957,
+            "start_ticks": "16407015",
+            "host_exe": "/usr/lib/wine/x86_64-unix/wine-preloader"
+          }
+        }
+      },
+      {
+        "physical_endpoint": "B",
+        "account_role": "A",
+        "identity": 1,
+        "name": "KRLocal",
+        "source_ip": "10.77.0.3",
+        "token_input_sha256": "3eb1bd439947eb762998e566ccc2e099c791118b2f40579cc4f7da2b5061b7f9",
+        "native_auth_result": 0,
+        "native6_echo": 3884662553,
+        "actual67": true,
+        "source_transport_count": 4,
+        "session_id": "296888666882da97d8d2a0bb922a6060",
+        "channel_connection": 8,
+        "native_fields_and_capture_joined": true,
+        "frames": [
+          {
+            "opcode": 1,
+            "sequence": 40,
+            "frame_sha256": "0da1f27ea28ed8db87ccbfd1299b49b8f7ede90ba6b3da79c09c6d031000ba4c",
+            "body_bytes": 61,
+            "connection": 7
+          },
+          {
+            "opcode": 60,
+            "sequence": 43,
+            "frame_sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6",
+            "body_bytes": 20,
+            "connection": 7
+          },
+          {
+            "opcode": 9,
+            "sequence": 46,
+            "frame_sha256": "4158ea45ff94894e0ae219729bef6c62a5e8f908700f2c04c4d8ed5d8224aa43",
+            "body_bytes": 8,
+            "connection": 7
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "frame_sha256": "d286c398d39600598303aba3fe8f2dd4449e50f25722201e341760457907f170",
+            "body_bytes": 4,
+            "connection": 7
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "frame_sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5",
+            "body_bytes": 0,
+            "connection": 7
+          },
+          {
+            "opcode": 40,
+            "sequence": 55,
+            "frame_sha256": "2d9bd1845ba82aea8d94e132778798f9bed95b2bbdce7436ac25f2a6bd0b86e7",
+            "body_bytes": 1,
+            "connection": 7
+          },
+          {
+            "opcode": 5,
+            "sequence": 58,
+            "frame_sha256": "24f8a51e4439d6a19c8af224b8ccc938139dc74c8ab6a38c2ea5542e1e4b871f",
+            "body_bytes": 9,
+            "connection": 7
+          },
+          {
+            "opcode": 6,
+            "sequence": 40,
+            "frame_sha256": "9adf1db36f5ec1ec7677ef4a2adc1c714951998ededd6d91a6451280e7c97ee4",
+            "body_bytes": 43,
+            "connection": 8
+          },
+          {
+            "opcode": 544,
+            "sequence": 43,
+            "frame_sha256": "e8ff3d74c4a26ecb82c2c295b8eb385f68e655bb6581dec8977eb062bb672f18",
+            "body_bytes": 10,
+            "connection": 8
+          },
+          {
+            "opcode": 549,
+            "sequence": 46,
+            "frame_sha256": "683c014bbc8fbf2dcc1325c3788bfd26adb70ed576b02ef2b22903c4d00d65ee",
+            "body_bytes": 3,
+            "connection": 8
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "frame_sha256": "7704fb1aa46a1a17c430094ff6033bdd25cfffc9f43664b86c605e2cd4d8f5c6",
+            "body_bytes": 4,
+            "connection": 8
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "frame_sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 567,
+            "sequence": 55,
+            "frame_sha256": "63b34eaa82ebde5a2c2225d69d05afa03434b1023f40242e8ecfecab8f726132",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 67,
+            "sequence": 58,
+            "frame_sha256": "40e9433aba62af57815aa75adb3b377070436ce1808f30ba92f2743b0cc13bf9",
+            "body_bytes": 2,
+            "connection": 8
+          },
+          {
+            "opcode": 87,
+            "sequence": 61,
+            "frame_sha256": "e0ea50ce187e01bde4ab3b1fdc64419df741c1a40d92e67f13c79c617dfc4a29",
+            "body_bytes": 2,
+            "connection": 8
+          },
+          {
+            "opcode": 742,
+            "sequence": 64,
+            "frame_sha256": "a3e0de0e248cea05e63fafc1deb64e76cbdad6c9d0e54fac1804cee2d89aa638",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 741,
+            "sequence": 67,
+            "frame_sha256": "ceca4260ec672878bdfb674cf9c56d922e7ef931506c013dae5809f083c22761",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 715,
+            "sequence": 70,
+            "frame_sha256": "e28443e89692e21f334f5aa5c8e92b60d62d26bdb830d2818bf27263995ec2f0",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 715,
+            "sequence": 73,
+            "frame_sha256": "454082c17ddf7efbd9d10181cf10a8e91958e454c3afb272d9f03db8a6b66756",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 15,
+            "sequence": 76,
+            "frame_sha256": "237f290bb9d8cada231088dd410181fd91ab11a571026aa3d156bb1a10de819f",
+            "body_bytes": 31,
+            "connection": 8
+          },
+          {
+            "opcode": 715,
+            "sequence": 79,
+            "frame_sha256": "3f2ee188ed75a78de687d3d43b9ca8a09a20c38eb081ceac73d8954929c54126",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 15,
+            "sequence": 82,
+            "frame_sha256": "39ba79b9c59bc972034af3a591f2b7c5c1e6cef09feb29cbaab57c8b4038ebdc",
+            "body_bytes": 31,
+            "connection": 8
+          }
+        ],
+        "owners": {
+          "wineserver": {
+            "pid": 163,
+            "comm": "wineserver",
+            "namespace": "net:[4026533611]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-B",
+            "command": "/usr/lib/wine/../../bin/wineserver ",
+            "monotonic_ns": 164074541263917,
+            "start_ticks": "16407016",
+            "host_exe": "/usr/bin/wineserver"
+          },
+          "client": {
+            "pid": 310,
+            "comm": "CA-r2-stage-soc",
+            "namespace": "net:[4026533611]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-B",
+            "command": "/home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe multiserveridx:0 token_1:0123456789abcdef0123456789abcdef                                                                         ",
+            "monotonic_ns": 164076705305079,
+            "start_ticks": "16407460",
+            "host_exe": "/usr/lib/wine/x86_64-unix/wine-preloader"
+          }
+        }
+      }
+    ],
+    "concurrent_two_sessions_proof": true,
+    "hold_after_both_native_s": 8.820598126,
+    "tcp_capture_records": 160,
+    "result": "twoactualKR_crossedlegitimateaccounttokens_identityfollowstoken_notendpointlabel_confirmed",
+    "limits": "Nativepositiveonly/samephysicalkernel/Winecopy4b/directvirtualLAN/privateREinmemorypolicy. Opaque16ignoredbyexplicitdesign;0/sourceIP/0tailbranchonly. Validtokenendpointpermutationisnotdeniedwrongchannelswap. No room/Battle/healthyEOFnegative/accountresume/fullauth/security/Rustintegration;Internet thật chưa kiểm."
+  },
+  "post_admitted_eof": {
+    "initial": {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "e7e1aade669498e900e208896f134d0e5823e8b61b9b6fa2b28ff7ca740c7f53",
+      "duration_s": 55.946399947,
+      "raw_count": 135,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "control": {
+        "source": "emu_choice",
+        "status": "design",
+        "limits": "TestsessionBtransportterminationafter17/67,notoriginalTTL/revokelaw.",
+        "armed_ns": 164897626399855,
+        "closed_ns": 164902632332412,
+        "connection": 8,
+        "identity": 2,
+        "pre_close_active": {
+          "1": "8739a2856caf1c637f148aa99087140b",
+          "2": "d100ee9ea05ec971bf7d225e09013658"
+        },
+        "ready_times": {
+          "A": 164893076181665,
+          "B": 164897626244175
+        },
+        "post_close_active": {
+          "1": "8739a2856caf1c637f148aa99087140b"
+        }
+      },
+      "after_close_observation_s": 20.395996475,
+      "server_FIN_capture": [
+        {
+          "monotonic_ns": 164902632517862,
+          "epoch_ns": 1794190280613344321,
+          "source": "10.77.0.1",
+          "destination": "10.77.0.3",
+          "source_port": 3858,
+          "destination_port": 32974,
+          "tcp_seq": 1427007893,
+          "flags": 17,
+          "bytes": 66,
+          "packet_type": 4
+        }
+      ],
+      "A_owner_open_and_identity1_retained": true,
+      "B_no_SIGSEGV_in_observed_window": true,
+      "client_health_or_recovery": "unverified",
+      "UI_observation": {
+        "file": "local/research/codex/auth-admitted-lifecycle-r1/B-channel-eof/cycles/B/screen-10.png",
+        "sha256": "26abb523f7e462d989c6f185463b8b3759d904b70d8730ee6cbff147dd2fce40",
+        "finding": "RetainedlobbyUI/staleroomlisting, no newrecovery/errorobservableatinspectedimage; notnativehealthyprooffrompixels."
+      },
+      "limits": "Serviceclose/FIN/ACKandprocesssurvivalnotproofclientprocessedEOF/recovered. No nativeEOFhandler/read-returninthisprobe.No newBinputafterclose.20sboundedobservationcannotcertifyalllatertimeouts;notoriginalTTL/fullauth/sessionexpiry/accountresume.",
+      "next": "Cachefirstexactrecv/asynccloseobservable;freshsamepost17closecontroladdWinewinsocktraceandknownBcreateUI/send81attempttodistinguishstaleUI/networkrecovery. No repeatedalive-onlyrun/VMgraph."
+    },
+    "correction": {
+      "recorded_utc": "2026-11-09T02:18:56.175599+00:00",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "correction_to": {
+        "path": "local/research/codex/auth-admitted-lifecycle-r1/eof-r1-verification.json",
+        "sha256": "c7ea685dc2b81c6c2b7bb579c5a46dd697b2789233abb3bba51a36c43098713c",
+        "retained_unchanged": true
+      },
+      "incorrect": "InitialmanualUIinterpretationtreatedscreen-10aslobbyretainedafterEOF;observationindex10timestampis3.735sbeforeclose.",
+      "correct": "Lastscreen-21isafterEOFandshowsmodalerroroverlay. ActualnewBbootstrapconnectionrejectedbyfixed4transportbudget10safterclose; notstaleUI/no-processingproof. Mainnohealth/recoveryclaimremainsunverifiedbutreasoncorrected.",
+      "before_image": {
+        "path": "local/research/codex/auth-admitted-lifecycle-r1/B-channel-eof/cycles/B/screen-10.png",
+        "ns": 164898896969761,
+        "sha256": "26abb523f7e462d989c6f185463b8b3759d904b70d8730ee6cbff147dd2fce40"
+      },
+      "after_image": {
+        "path": "local/research/codex/auth-admitted-lifecycle-r1/B-channel-eof/cycles/B/screen-21.png",
+        "ns": 164923024109125,
+        "sha256": "e55bb6cbf30c042ecfcc90bf03fe7ca4f8d876b4473f21be650a0995485e174f"
+      },
+      "close_ns": 164902632332412,
+      "new_B_bootstrap_rejection": {
+        "ordinal": 9,
+        "peer": [
+          "10.77.0.3",
+          47466
+        ],
+        "role": "B",
+        "monotonic_ns": 164912623893586,
+        "source": "design",
+        "reason": "role_transports_exhausted"
+      },
+      "limits": "R1oldanalysisisinputpinnedbyR2preflight,sokeepoldbytesandappendcorrection. Raw/run/sealsneveredited. Erroroverlaynotproofsuccessfulretry/sessionresume. No protectedfunction/RTTIcauseclaim."
+    },
+    "trace": {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "3146ab48b749c525e666b445c3694b5db9907eaa0e2a1e20ce04bc264d4f8c8b",
+      "duration_s": 66.000024111,
+      "raw_count": 152,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "observed_after_close_s": 30.573831069,
+      "CA_trace_process_locator": {
+        "line": 5,
+        "pid_hex": "01c4"
+      },
+      "native_new_bootstrap_connect": [
+        {
+          "line": 31695,
+          "api_monotonic_s": 165174.211,
+          "process_hex": "01c4",
+          "text": "165174.211:01c4:01c8:trace:winsock:connect socket 0x258, addr { family AF_INET, address 10.77.0.1, port 3848 }, len 16"
+        }
+      ],
+      "B_UI_error": {
+        "path": "local/research/codex/auth-admitted-lifecycle-r1/B-channel-eof-r2/cycles/B/after-eof-create-dialog.png",
+        "sha256": "e857ac63b5013986846d354d81ef5283225a73386cc7a3e170d4e49260f29481",
+        "finding": "Koreanconnectionlostnotice/errorcode10; no native send81. InputattemptwasblockedbyerrorUI, notsuccessfulcreate-room."
+      },
+      "rejections": [
+        {
+          "ordinal": 9,
+          "peer": [
+            "10.77.0.3",
+            54084
+          ],
+          "role": "B",
+          "monotonic_ns": 165174340536302,
+          "source": "design",
+          "reason": "role_transports_exhausted"
+        }
+      ],
+      "A_owner_identity1_retained": true,
+      "result": "Nativepost17connectionerror_and_reconnect_bootstrap_observed_retryblocked_by_fixedtransportbudget",
+      "limits": "NotnativeEOFreCVreturn0trace/completecallbacksemantics orfullretry/sessionrestore. WinewinsocktracefilteredtoCAprocessratherthandebuggerselecttraffic. UIclicks/traceobserversnew,notproofnewconnectwascausedbyclick;R1alreadyautoconnectedwithoutnewinput. Bothnofaultbounded,notgeneralhealth/sessionexpiryproof.",
+      "next": "Freshprivateadapterone-timeBsourcecounterresetonlyaftercontrolledclosedoldchannel/releasedsession,keepAowner/ticketseen; observeactualnativebootstrap→login→channelfreshleasebeforeclaimingretry. No room81orrawpointerpatch."
+    }
+  },
+  "retry": {
+    "counter_only": {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "7aa319dd26c1d64a871426a99ed86bbe3967adbc63c91f330bf66d1ffff79604",
+      "duration_s": 96.527916168,
+      "raw_count": 224,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "result": "fail_nativefreshlogin_retry_not_reached_after_counter_policy_change",
+      "control": {
+        "source": "emu_choice",
+        "status": "design",
+        "limits": "TestsessionBtransportterminationafter17/67,notoriginalTTL/revokelaw.",
+        "armed_ns": 165387254232707,
+        "closed_ns": 165392269771739,
+        "connection": 8,
+        "identity": 2,
+        "pre_close_active": {
+          "1": "e6f7268f8d30d77f68dfda6e6aca3f4a",
+          "2": "41bc9214e821a8d555bcf47b34028279"
+        },
+        "ready_times": {
+          "A": 165382916170309,
+          "B": 165387254128717
+        },
+        "post_close_active": {
+          "1": "e6f7268f8d30d77f68dfda6e6aca3f4a"
+        },
+        "counter_reset": {
+          "source": "emu_choice",
+          "status": "design",
+          "old_B": 4,
+          "A_unchanged": 4,
+          "old_channel": 8,
+          "ns": 165392269918169,
+          "limits": "One-timefreshB4transportcycleafterdeclaredterminatedsession,notgenericretryoroldsocketreuse."
+        }
+      },
+      "run_error": "RuntimeError('Bnewtransportcycle retry bound without native67/newsession')",
+      "new_B_transports_after_close": 0,
+      "rejected_bootstrap": [
+        {
+          "ordinal": 9,
+          "peer": [
+            "10.77.0.3",
+            50850
+          ],
+          "monotonic_ns": 165402257302941,
+          "reason": "replacement_not_ready"
+        }
+      ],
+      "UI": {
+        "window": "local/research/codex/auth-admitted-retry-r1/B-retry/cycles/B/windows-39.txt",
+        "screenshot": "local/research/codex/auth-admitted-retry-r1/B-retry/cycles/B/screen-39.png",
+        "window_title": "login fail",
+        "limits": "Observedmodal, underlyingcauseunknown; notattributeNexonSDK/Wine/leasefromtitle."
+      },
+      "limits": "No native2ndauth/6/67/newsession;one-timeBcounterresetaloneinsufficient:existingglobalordinal>8replacement_not_readyguardrejectsnewbootstrap. OldR1/R2newbootstrapobservationsretainedbutnotall-runcausedbycounter/input. Harnessexit1andfullrawfailurepreserved. No nativefaultdoesnotcertifyrecovery.",
+      "next_test": "SingleordinaryReturnackofobservedloginfaildialogusingownedBwindow,aftercontrolledclose;samepolicy/profile,recordbefore/after andnativeconnectionsequence. No forcedfunctioncall/globalpatch/SDKgraph; ifdoesnotadvance,checkpointblocker."
+    },
+    "second_guard": {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "defc6356e8c5775807610eae1c73605c5ae5645aff10709b38208c3e3d44f321",
+      "duration_s": 80.958389884,
+      "raw_count": 189,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "result": "fail_freshlogin_no_second_auth_channel",
+      "new_transport": {
+        "global_ordinal": 9,
+        "role": "B",
+        "reply_ordinal": 1,
+        "peer": [
+          "10.77.0.3",
+          38324
+        ],
+        "port": 3848,
+        "accept_monotonic_ns": 165738952686360,
+        "chunks": [],
+        "reply_sent": {
+          "monotonic_ns": 165738952736700
+        },
+        "peer_eof": true,
+        "closed": {
+          "reason": "eof",
+          "monotonic_ns": 165739052532808
+        }
+      },
+      "admission_rejections": [],
+      "UI_ack": null,
+      "limits": "Counter+globalguardprototypepermitnewconnection9butnoC2Sbytes/newauth/6/67observed. Do notguessstage2orbootstrapmeaningfromport. OptionalsingleUIackonlyifactualrecordpresent;no generalretry/healthacceptance.",
+      "next": "FocusednativeconnectIATcaller/stackandnewhandle recv/AsyncSelectobserver;knowncopiedIATconnect16EA778/recv16EA744/AsyncSelect16EA740. Do notretagprotocolwithoutactualnativepath/bytes."
+    },
+    "connect_probe": {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "c26566f7e2e8996ed90fa6375f16d20d26592545cc1857b089e6bc3c8310a578",
+      "duration_s": 65.751350452,
+      "raw_count": 154,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "result": "fail_freshlogin_connect_caller_bound_recv_observer_incomplete",
+      "new_connect": {
+        "kind": "connect",
+        "ns": 166006842658160,
+        "socket": 696,
+        "caller": "0x14f489a",
+        "n": 3,
+        "sockaddr_hex": "02000f080a4d00010000000000000000",
+        "stack": "#0  0x7aa8b640 in ?? () from /usr/lib/wine/i386-windows/ws2_32.dll\n#1  0x014f489a in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#2  0x013aeee5 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#3  0x013ad6c5 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#4  0x01255c0b in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#5  0x01255a69 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#6  0x0125be47 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n"
+      },
+      "api_returns": [
+        {
+          "kind": "connect_return",
+          "ns": 165991091567729,
+          "socket": 676,
+          "result": 0
+        },
+        {
+          "kind": "connect_return",
+          "ns": 165991436165464,
+          "socket": 684,
+          "result": 0
+        },
+        {
+          "kind": "connect_return",
+          "ns": 166006849040203,
+          "socket": 696,
+          "result": 0
+        }
+      ],
+      "known_caller_chain": [
+        "14F489A",
+        "13AEEE5",
+        "13AD6C5",
+        "1255C0B",
+        "1255A69",
+        "125BE47"
+      ],
+      "limits": "Probeinstalledat123246Dafter2bootstraptransports;only3APIconnectsobserved(login/channel/new3848). Numeric>=5watchpredicatewrongfornewrecv,no recvmarker≠no recv. Nativeconnectcallerpathconfirmedbutportpurpose/protocolstage/EOFreadsemanticsunknown. No newauth0/6/67/retryacceptance;rawfailurekept.",
+      "next": "Freshsamepolicyprobechoosewatchedsocketbyactualsockaddr10.77.0.1:3848(insteadofcount), plusboundedknownframerafternewconnect. No retagguess/SDKgraph/protectedpatch."
+    },
+    "corrected_probe": {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "b5f38bb8d2ebba748bd9b0a4d9ee4522defee6765cba8a2f1fda755167d24cfb",
+      "duration_s": 65.610310215,
+      "raw_count": 154,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "result": "fail_freshlogin_after_native_newconnect_recv15_framer_success_bound",
+      "new_connect": {
+        "kind": "connect",
+        "ns": 166224320982982,
+        "socket": 696,
+        "caller": "0x14f489a",
+        "n": 3,
+        "sockaddr_hex": "02000f080a4d00010000000000000000",
+        "stack": "#0  0x7aa8b640 in ?? () from /usr/lib/wine/i386-windows/ws2_32.dll\n#1  0x014f489a in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#2  0x013aeee5 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#3  0x013ad6c5 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#4  0x01255c0b in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#5  0x01255a69 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#6  0x0125be47 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n"
+      },
+      "recv_return": {
+        "kind": "recv_return",
+        "ns": 166224334811678,
+        "socket": 696,
+        "result": 15,
+        "bytes_hex": "69000c00000003c700000000000000",
+        "limits": "First64returnedbytesonly, fullwiremustusecapture."
+      },
+      "framer_entry": {
+        "kind": "entry",
+        "ns": 166224336789329,
+        "this": "0x63bd0150",
+        "mode": 0,
+        "selector": 0,
+        "sequence": 40,
+        "available": 15,
+        "prefix": "69000c00000003c700000000000000"
+      },
+      "framer_return": {
+        "kind": "returned",
+        "ns": 166224341992062,
+        "this": "0x63bd0150",
+        "result": 0,
+        "mode": 0,
+        "selector": 0,
+        "sequence": 43,
+        "available": 0
+      },
+      "async_select": {
+        "kind": "async_select",
+        "ns": 166224344569723,
+        "socket": 696,
+        "caller": "0x14f4505",
+        "hwnd": 262196,
+        "message": 1024,
+        "mask": 33
+      },
+      "native_new_second_auth6_67": false,
+      "old_healthyEOFbefore17_blocker_unchanged": true,
+      "limits": "NativeWinsockconnect/recv/framerproofnotconsumeracceptance/fullretry.15byteexactexistingbootstrap/ret0/sequence40→43doesnotproveversion/profilevalidation/success. No clientsecondauth/newsession/6-67,notaccountresume/sessionexpiry/fullauth. Oldwrongordinalwatchanalysiskeptwithcorrection. NativeUIackoptionalpresencefromrunonly.",
+      "next": "PerPLANcachefirstactual13AEEE5→13AD6C5→1255C0B→1255A69callerandknownhello13AEFE0consumer/validationresult. Readentry/return/currentphaseonlyifnewquestion;no protocolretag/VM/SDKgraphoroldbefore17probe."
+    }
+  },
+  "limits": "Nativelegitimateendpoint-accountpermutationpositive andboundedpost17error/connectobservations,notfullretry/accountresume/nativewrongchannelswap/EOFbefore17health/sessionexpiry/restartfence/DB/Rust/gateclaim. All7runs1108rawhashes/sourcefreeze/cleanupverified,failuresandpinnedanalysiscorrectionsretained. AUD064through220/nextCP224. Internet thật chưa kiểm."
+}
