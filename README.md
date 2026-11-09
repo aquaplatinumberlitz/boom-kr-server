@@ -28,6 +28,16 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP229: prototype registry đã qua Back/rejoin và chuyển B sang phòng A bằng client thật.**
+[Contract/limits](docs/PROTOCOL.md#room-membership-registry), [run/hash](docs/evidence/room-list/README.md#cp229):
+B Beta→Back→sảnh→Beta lại đúng ownID/slot0/chief; ca riêng Beta→Alpha đưa B vào slot1/khách,
+A giữ slot0/chủ và cả hai nhận đúng peer106. Cùng auth/channel, native87/106/110/291 đọc đủ, PCAP và UI khớp.
+Hai run336raw cùng7raw startup-failure đã seal/cleanup; 19 policy scenarios và7 move scenarios tách khỏi native proof.
+Registry private có owner/room/visit fences; chưa ghép production, shared-leave/EOF fanout và occupancy card còn thiếu.
+CP228/AUD066 đã merge [PR299](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/299); audit kếCP232.
+[PLAN](docs/PLAN.md#current-order) giữ bước tiếp; chưa Rust/gate mới. Internet thật chưa kiểm.
+
+
 **CP228: hai phòng riêng đã hiện đúng một player tại slot0/chief trên mỗi client.**
 [Contract/limits](docs/PROTOCOL.md#room-local-roster), [run/hash](docs/evidence/room-list/README.md#cp228):
 sau actual585, private adapter trả riêng106/110/291 cho account đã bind; native đọc204/6/128 byte không lỗi,

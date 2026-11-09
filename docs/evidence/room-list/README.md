@@ -87,3 +87,35 @@ Giữ raw marker `own_slot=1` tạiDC5925 nhưng ghi đúng là predicate1241090
 mapcaption từ cache không map mới. Không có member frame phòng kia trong ca, không generalregistry/
 membership lifecycle/allpacket isolation/Ready/start/UDP/production/Rust/gate. AUD066 qua228/kế232;
 tiếp registry có generation/account owner ở PLAN, không rerun fixedprojection. Internet thật chưa kiểm.
+
+<a id="cp229"></a>
+## CP229 — registry private, same-room rejoin và room move
+
+[Contract/policy/limits](../../PROTOCOL.md#room-membership-registry), [metadata](membership-registry.json),
+[unknown](../../RESEARCH.md#gap-room-membership), [thứ tự duy nhất](../../PLAN.md#current-order).
+CP228/AUD066 merge [PR299](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/299)/`77ea70d`.
+
+| Root local/research/codex/ | Wall/raw/exit | run.json SHA256 |
+|---|---|---|
+| `room-registry-r1/leave-rejoin` | 0.20888104s/7/1 | `c8bd062f2d2b8017a7a59a860bf020761ded2c141f4ebf3823bde24cbc927af1` |
+| `room-registry-r2/leave-rejoin` | 65.30471364s/167/0 | `5346a940c337b82a8b6559a75b9acfbbd6e7360da93baf39a5175df2e32b26fb` |
+| `room-registry-r3/leave-rejoin` | 63.812634458s/169/0 | `09d9c9421137baef2dae6b53a181ef124d1e43984123011acac602f5748d851e` |
+
+R1 import path error trước service-ready, không client; raw/source giữ nguyên, R2 thêm repository sys.path trên copy.
+Mỗi root có source-first/model/service/profile/config/preflight/recipe/seal. Native R2/R3 dùng hai actual Wine10.0/
+copy4b/privateauth/twoendpoint netns/IP/prefix/display/wineserver/directbridge/noexternalroute, sources frozen tới seal;
+343raw/ownedcleanup0, không WIP source mutation hoặc Rust tree. `model-verification.json` R1/R2 giữ19policycases;
+R3 `move-model-verification.json` giữ7move cases, không native oracle.
+
+R2 `verification.json`: B86→normal24191→82Beta/87slot0/585/ownroster, AAlpha giữ; visit cũ không current.
+R3 `verification.json`: B86→normalLobby→82Alpha/87slot1/585/ownID2guest+peerA1chief; Apeer106B2slot1.
+Native full87/106/110/291 đọc7/204/6/128/errors0; same2authowners/8TCP, 8s+hold; oldqueuedhandle không wire send.
+`capture-ui-verification.json` mỗi root:271/262PCAPrecord,14/16dynamicframes exact/order trong streams;
+native87reader và ảnhBbefore-rejoin/A-Bscreen24 đã xem. RegistryAlpha2/Beta0 củaR3 không biến card1/4 thành dynamicoccupancy.
+REA TShark request ởR2 `rea-pcap-evidence.json` là capability_unavailable, không successfulanalysis; boundedstdlib
+parser fallback được ghi riêng, không toolconfigchange hoặc install.
+
+R3 controller text Aunchanged chỉ context/account/channel, roster cóB; raw585u32zero không wireepoch. Internalhandle
+fence không rawstaledetection. DC5925predicate1 khôngslotindex; 291producer khôngpersonalrender. Privateprototype
+chưa production/sharedleave-EOF107fanout/promotion/Ready/start/UDP/generalroomsecurity/Rust/gate. AUD066qua228/kế232.
+Tiếp đúng sharedmembership cleanup ở PLAN; Internet thật chưa kiểm.
