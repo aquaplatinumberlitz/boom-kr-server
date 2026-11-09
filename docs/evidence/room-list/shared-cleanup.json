@@ -1,0 +1,1398 @@
+{
+  "schema": "kre-room-shared-cleanup-v1",
+  "recorded_utc": "2026-11-09T05:33:08.012683+00:00",
+  "baseline": "784a0d892ef45cfb09e10735a44c8a6522c16f29",
+  "contract": "docs/PROTOCOL.md#room-shared-cleanup",
+  "research": "docs/RESEARCH.md#gap-room-membership",
+  "plan": "docs/PLAN.md#current-order",
+  "cases": [
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "recorded_utc": "2026-11-09T05:22:28.678914+00:00",
+      "case": "guest-back",
+      "result": "pass_native107_clear_and_currentroom_recipient_guest-back",
+      "run_sha256": "3ebc374df698c557c0cda174774c9b53f96e31af8a1090a3a261888b8d171308",
+      "duration_s": 71.382292868,
+      "raw_count": 189,
+      "frozen_count": 407,
+      "cleanup": {
+        "net_namespace": "net:[4026533182]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "survivor": "A",
+      "departed": "B",
+      "native107": {
+        "fields": {
+          "kind": "remove_fields",
+          "ns": 176255128282571,
+          "pc": "0xd603f5",
+          "slot": 1,
+          "identity": 2,
+          "flag": 0
+        },
+        "id_before": [
+          {
+            "kind": "id_clear_before",
+            "ns": 176255132176103,
+            "pc": "0x12400d0",
+            "slot": 1,
+            "expected": 2,
+            "actual": 2
+          }
+        ],
+        "id_after": [
+          {
+            "kind": "id_clear_after",
+            "ns": 176255135861535,
+            "pc": "0x12401a9",
+            "slot": 1,
+            "expected": 2,
+            "actual": 0
+          }
+        ],
+        "base": [
+          {
+            "kind": "remove_base_end",
+            "ns": 176255141212757,
+            "pc": "0xd6062c",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "rewind": [
+          {
+            "kind": "remove_rewind",
+            "ns": 176255144139609,
+            "pc": "0xdc6329",
+            "cursor": 0,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "ui_end": [
+          {
+            "kind": "remove_ui_end",
+            "ns": 176255148321811,
+            "pc": "0xdc6637",
+            "cursor": 1,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ]
+      },
+      "native_chief_after": [
+        {
+          "kind": "local_chief",
+          "ns": 176255157922315,
+          "pc": "0x1240d5e",
+          "value": 1
+        },
+        {
+          "kind": "local_chief",
+          "ns": 176255159770346,
+          "pc": "0x1240d5e",
+          "value": 1
+        },
+        {
+          "kind": "local_chief",
+          "ns": 176255163148188,
+          "pc": "0x1240d5e",
+          "value": 1
+        },
+        {
+          "kind": "local_chief",
+          "ns": 176255166645549,
+          "pc": "0x1240d5e",
+          "value": 1
+        },
+        {
+          "kind": "local_chief",
+          "ns": 176255168619790,
+          "pc": "0x1240d5e",
+          "value": 1
+        },
+        {
+          "kind": "local_chief",
+          "ns": 176255170372201,
+          "pc": "0x1240d5e",
+          "value": 1
+        }
+      ],
+      "departure_routing": {
+        "kind": "departure_received",
+        "monotonic_ns": 176255107120081,
+        "departed": {
+          "room": {
+            "session": 1,
+            "room_id": 101,
+            "generation": 1
+          },
+          "identity": 2,
+          "account_session": "095d98b68c0883dd7c28989ac5463da2",
+          "connection": "8",
+          "slot": 1,
+          "visit": 3
+        },
+        "recipient": {
+          "room": {
+            "session": 1,
+            "room_id": 101,
+            "generation": 1
+          },
+          "identity": 1,
+          "account_session": "802483736d6eca60787f49431850dcbe",
+          "connection": "6",
+          "slot": 0,
+          "visit": 1
+        },
+        "cause": "ordinary86",
+        "chief": true,
+        "sent": [
+          {
+            "seq": 70,
+            "opcode": 107,
+            "fixture": "A-registry-remove-3-70.bin",
+            "sha256": "c4170c520af14a6faf497db05a52eff269fc7c077df4b360dd21be23ea34232f",
+            "size": 44,
+            "monotonic_ns": 176255106749471
+          },
+          {
+            "seq": 73,
+            "opcode": 110,
+            "fixture": "A-registry-survivor-3-73.bin",
+            "sha256": "a2c994749a9d17aed1d2bea33b0d61f7ab05ff32e09eeac1f328acc1c5857c09",
+            "size": 44,
+            "monotonic_ns": 176255107105921
+          }
+        ]
+      },
+      "requests": {
+        "A": {
+          "opcodes": [
+            6,
+            544,
+            549,
+            744,
+            745,
+            567,
+            67,
+            87,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            96,
+            266,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "leave86_count": 0
+        },
+        "B": {
+          "opcodes": [
+            6,
+            544,
+            549,
+            744,
+            745,
+            567,
+            67,
+            87,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            96,
+            266,
+            15,
+            15,
+            86,
+            544,
+            549,
+            744,
+            745,
+            567,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            15,
+            86,
+            544,
+            549,
+            744,
+            745,
+            567,
+            742,
+            741,
+            715,
+            15,
+            715,
+            715,
+            15,
+            15,
+            715
+          ],
+          "leave86_count": 2
+        }
+      },
+      "final_registry": {
+        "rooms": [
+          {
+            "key": {
+              "session": 1,
+              "room_id": 101,
+              "generation": 1
+            },
+            "title": "RoomAlpha",
+            "capacity": 8,
+            "members": [
+              {
+                "room": {
+                  "session": 1,
+                  "room_id": 101,
+                  "generation": 1
+                },
+                "identity": 1,
+                "account_session": "802483736d6eca60787f49431850dcbe",
+                "connection": "6",
+                "slot": 0,
+                "visit": 1
+              }
+            ]
+          },
+          {
+            "key": {
+              "session": 2,
+              "room_id": 202,
+              "generation": 2
+            },
+            "title": "RoomBeta",
+            "capacity": 8,
+            "members": []
+          }
+        ],
+        "visits": 3,
+        "room_generation": 2,
+        "tombstones": [],
+        "roster_sent": [
+          1
+        ]
+      },
+      "capture": {
+        "sha256": "8718f5f9f2dca23427d06c834f27d3d427400a550fa2ab6481aedda892cd5c9c",
+        "packet_count": 302,
+        "dynamic_count": 20,
+        "joins": [
+          {
+            "role": "A",
+            "dynamic_frames": [
+              {
+                "opcode": 87,
+                "seq": 55,
+                "stream_offset": 372,
+                "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586"
+              },
+              {
+                "opcode": 106,
+                "seq": 58,
+                "stream_offset": 417,
+                "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+              },
+              {
+                "opcode": 110,
+                "seq": 61,
+                "stream_offset": 659,
+                "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+              },
+              {
+                "opcode": 291,
+                "seq": 64,
+                "stream_offset": 703,
+                "sha256": "0395bab66d0fd718776596dfeed31e756dccf6a4041113c0f66c23d43cdeb5d2"
+              },
+              {
+                "opcode": 106,
+                "seq": 67,
+                "stream_offset": 869,
+                "sha256": "c0ea008c2760f0167dd73c2be8fbd8b21f7a694d7935865e4c70efdbffbc06cc"
+              },
+              {
+                "opcode": 107,
+                "seq": 70,
+                "stream_offset": 1111,
+                "sha256": "c4170c520af14a6faf497db05a52eff269fc7c077df4b360dd21be23ea34232f"
+              },
+              {
+                "opcode": 110,
+                "seq": 73,
+                "stream_offset": 1155,
+                "sha256": "a2c994749a9d17aed1d2bea33b0d61f7ab05ff32e09eeac1f328acc1c5857c09"
+              }
+            ]
+          },
+          {
+            "role": "B",
+            "dynamic_frames": [
+              {
+                "opcode": 87,
+                "seq": 55,
+                "stream_offset": 372,
+                "sha256": "f0c2ccb51cfc4a9ce4e139b57c701728028437f5ef34b2d6829f684bbe8f1efb"
+              },
+              {
+                "opcode": 106,
+                "seq": 58,
+                "stream_offset": 417,
+                "sha256": "b533937f467cd11084fc7a212e13bd892d2189ccf2438524f2730e06f9e5ab50"
+              },
+              {
+                "opcode": 110,
+                "seq": 61,
+                "stream_offset": 659,
+                "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+              },
+              {
+                "opcode": 291,
+                "seq": 64,
+                "stream_offset": 703,
+                "sha256": "f541678500b576eb1e3da84bb770d501e1f67b7d11df349f51b6eaf0dfe76525"
+              },
+              {
+                "opcode": 241,
+                "seq": 67,
+                "stream_offset": 869,
+                "sha256": "82d1071e77e18b28812e71fce54be3291db3a2aef214b248adbb15ecedaf9f88"
+              },
+              {
+                "opcode": 91,
+                "seq": 70,
+                "stream_offset": 938,
+                "sha256": "bf7f8a3d26d60305a40ea14d416652ec2943fd378be6dae18c5a1a8ebbb3c99e"
+              },
+              {
+                "opcode": 87,
+                "seq": 73,
+                "stream_offset": 1069,
+                "sha256": "6523ddc7e0db1b15821abd244a8d99d2c9961e43c1f681a54257222145399e42"
+              },
+              {
+                "opcode": 106,
+                "seq": 76,
+                "stream_offset": 1114,
+                "sha256": "89c59e8c0182399898ba2c60cb0606b29e4f686ec95182caab86eba02392fbdb"
+              },
+              {
+                "opcode": 110,
+                "seq": 79,
+                "stream_offset": 1356,
+                "sha256": "1db0b03bde3ed9e45d246af2cffebea55aebea10424fd331264fa648f0a107a5"
+              },
+              {
+                "opcode": 291,
+                "seq": 82,
+                "stream_offset": 1400,
+                "sha256": "7aceae17148c50729b637f12826d44b629455f70a6b9d756873eb4eb76ba061e"
+              },
+              {
+                "opcode": 106,
+                "seq": 85,
+                "stream_offset": 1566,
+                "sha256": "c3a075e040c83d59756636e7dd4f71f5f421e474ddeeba523fc4a1497e6ffee3"
+              },
+              {
+                "opcode": 241,
+                "seq": 88,
+                "stream_offset": 1808,
+                "sha256": "b050be88fbf7214ba4d0cb14a408f3f77d8ef556a4806e61efde1437e86965d0"
+              },
+              {
+                "opcode": 91,
+                "seq": 91,
+                "stream_offset": 1877,
+                "sha256": "82989c3fc60ed35a8d44aa37643f1a5a62eb44a9e5b0fdb606ecf60b94cfbc41"
+              }
+            ]
+          }
+        ],
+        "method": "Reused bounded stdlib fallback, not successfulREA/TSharkanalysis"
+      },
+      "hold_after_native_cleanup_s": 8.819828206,
+      "limits": "Private Python registry/twoactual/Wine10/copy4b/directvirtualLAN, not production/Rust/Ready/start/UDP/fullroom/general security/gate. OtherroomC exclusion only9policy cases, not thirdnative. 107base6→rewind0→UI1 intentional, zero ID is nativeproof; chiefpolicy minslot emulator, not originalelectionlaw. EOF kills ownedBprefix, no healthyBclient claim; UIBack distinct. Internalqueuedhandles not raw585wireepoch; dynamiccardoccupancy stillfixture. UI manualreview separate. Internet thật chưa kiểm."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "recorded_utc": "2026-11-09T05:26:51.145500+00:00",
+      "case": "guest-eof",
+      "result": "pass_native107_clear_and_currentroom_recipient_guest-eof",
+      "run_sha256": "623bb5185d3c10e5043d52fd6c34939157eecb0584c6d96eaaa385493f3f5706",
+      "duration_s": 71.384444769,
+      "raw_count": 187,
+      "frozen_count": 421,
+      "cleanup": {
+        "net_namespace": "net:[4026533552]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "survivor": "A",
+      "departed": "B",
+      "native107": {
+        "fields": {
+          "kind": "remove_fields",
+          "ns": 176565657673033,
+          "pc": "0xd603f5",
+          "slot": 1,
+          "identity": 2,
+          "flag": 0
+        },
+        "id_before": [
+          {
+            "kind": "id_clear_before",
+            "ns": 176565659919774,
+            "pc": "0x12400d0",
+            "slot": 1,
+            "expected": 2,
+            "actual": 2
+          }
+        ],
+        "id_after": [
+          {
+            "kind": "id_clear_after",
+            "ns": 176565662607985,
+            "pc": "0x12401a9",
+            "slot": 1,
+            "expected": 2,
+            "actual": 0
+          }
+        ],
+        "base": [
+          {
+            "kind": "remove_base_end",
+            "ns": 176565666830267,
+            "pc": "0xd6062c",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "rewind": [
+          {
+            "kind": "remove_rewind",
+            "ns": 176565670227189,
+            "pc": "0xdc6329",
+            "cursor": 0,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "ui_end": [
+          {
+            "kind": "remove_ui_end",
+            "ns": 176565673507101,
+            "pc": "0xdc6637",
+            "cursor": 1,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ]
+      },
+      "native_chief_after": [
+        {
+          "kind": "local_chief",
+          "ns": 176565680640104,
+          "pc": "0x1240d5e",
+          "value": 1
+        },
+        {
+          "kind": "local_chief",
+          "ns": 176565683096495,
+          "pc": "0x1240d5e",
+          "value": 1
+        },
+        {
+          "kind": "local_chief",
+          "ns": 176565684877616,
+          "pc": "0x1240d5e",
+          "value": 1
+        },
+        {
+          "kind": "local_chief",
+          "ns": 176565686649447,
+          "pc": "0x1240d5e",
+          "value": 1
+        },
+        {
+          "kind": "local_chief",
+          "ns": 176565688758598,
+          "pc": "0x1240d5e",
+          "value": 1
+        },
+        {
+          "kind": "local_chief",
+          "ns": 176565691895009,
+          "pc": "0x1240d5e",
+          "value": 1
+        }
+      ],
+      "departure_routing": {
+        "kind": "departure_received",
+        "monotonic_ns": 176565640123685,
+        "departed": {
+          "room": {
+            "session": 1,
+            "room_id": 101,
+            "generation": 1
+          },
+          "identity": 2,
+          "account_session": "c652bc087e96f12f2d81d7a47aa576a0",
+          "connection": "8",
+          "slot": 1,
+          "visit": 3
+        },
+        "recipient": {
+          "room": {
+            "session": 1,
+            "room_id": 101,
+            "generation": 1
+          },
+          "identity": 1,
+          "account_session": "a5720f291ffcc0aac1f31feae705a8e6",
+          "connection": "6",
+          "slot": 0,
+          "visit": 1
+        },
+        "cause": "connection_eof",
+        "chief": true,
+        "sent": [
+          {
+            "seq": 70,
+            "opcode": 107,
+            "fixture": "A-registry-remove-3-70.bin",
+            "sha256": "c4170c520af14a6faf497db05a52eff269fc7c077df4b360dd21be23ea34232f",
+            "size": 44,
+            "monotonic_ns": 176565639701764
+          },
+          {
+            "seq": 73,
+            "opcode": 110,
+            "fixture": "A-registry-survivor-3-73.bin",
+            "sha256": "a2c994749a9d17aed1d2bea33b0d61f7ab05ff32e09eeac1f328acc1c5857c09",
+            "size": 44,
+            "monotonic_ns": 176565640099315
+          }
+        ]
+      },
+      "requests": {
+        "A": {
+          "opcodes": [
+            6,
+            544,
+            549,
+            744,
+            745,
+            567,
+            67,
+            87,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            96,
+            266,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "leave86_count": 0
+        },
+        "B": {
+          "opcodes": [
+            6,
+            544,
+            549,
+            744,
+            745,
+            567,
+            67,
+            87,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            96,
+            266,
+            15,
+            15,
+            86,
+            544,
+            549,
+            744,
+            745,
+            567,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            15
+          ],
+          "leave86_count": 1
+        }
+      },
+      "final_registry": {
+        "rooms": [
+          {
+            "key": {
+              "session": 1,
+              "room_id": 101,
+              "generation": 1
+            },
+            "title": "RoomAlpha",
+            "capacity": 8,
+            "members": [
+              {
+                "room": {
+                  "session": 1,
+                  "room_id": 101,
+                  "generation": 1
+                },
+                "identity": 1,
+                "account_session": "a5720f291ffcc0aac1f31feae705a8e6",
+                "connection": "6",
+                "slot": 0,
+                "visit": 1
+              }
+            ]
+          },
+          {
+            "key": {
+              "session": 2,
+              "room_id": 202,
+              "generation": 2
+            },
+            "title": "RoomBeta",
+            "capacity": 8,
+            "members": []
+          }
+        ],
+        "visits": 3,
+        "room_generation": 2,
+        "tombstones": [],
+        "roster_sent": [
+          1
+        ]
+      },
+      "capture": {
+        "sha256": "b55817f1eb5b4e164ca40d76d00998febce016f73ad1d001b751013b589c6582",
+        "packet_count": 274,
+        "dynamic_count": 18,
+        "joins": [
+          {
+            "role": "A",
+            "dynamic_frames": [
+              {
+                "opcode": 87,
+                "seq": 55,
+                "stream_offset": 372,
+                "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586"
+              },
+              {
+                "opcode": 106,
+                "seq": 58,
+                "stream_offset": 417,
+                "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+              },
+              {
+                "opcode": 110,
+                "seq": 61,
+                "stream_offset": 659,
+                "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+              },
+              {
+                "opcode": 291,
+                "seq": 64,
+                "stream_offset": 703,
+                "sha256": "0395bab66d0fd718776596dfeed31e756dccf6a4041113c0f66c23d43cdeb5d2"
+              },
+              {
+                "opcode": 106,
+                "seq": 67,
+                "stream_offset": 869,
+                "sha256": "c0ea008c2760f0167dd73c2be8fbd8b21f7a694d7935865e4c70efdbffbc06cc"
+              },
+              {
+                "opcode": 107,
+                "seq": 70,
+                "stream_offset": 1111,
+                "sha256": "c4170c520af14a6faf497db05a52eff269fc7c077df4b360dd21be23ea34232f"
+              },
+              {
+                "opcode": 110,
+                "seq": 73,
+                "stream_offset": 1155,
+                "sha256": "a2c994749a9d17aed1d2bea33b0d61f7ab05ff32e09eeac1f328acc1c5857c09"
+              }
+            ]
+          },
+          {
+            "role": "B",
+            "dynamic_frames": [
+              {
+                "opcode": 87,
+                "seq": 55,
+                "stream_offset": 372,
+                "sha256": "f0c2ccb51cfc4a9ce4e139b57c701728028437f5ef34b2d6829f684bbe8f1efb"
+              },
+              {
+                "opcode": 106,
+                "seq": 58,
+                "stream_offset": 417,
+                "sha256": "b533937f467cd11084fc7a212e13bd892d2189ccf2438524f2730e06f9e5ab50"
+              },
+              {
+                "opcode": 110,
+                "seq": 61,
+                "stream_offset": 659,
+                "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+              },
+              {
+                "opcode": 291,
+                "seq": 64,
+                "stream_offset": 703,
+                "sha256": "f541678500b576eb1e3da84bb770d501e1f67b7d11df349f51b6eaf0dfe76525"
+              },
+              {
+                "opcode": 241,
+                "seq": 67,
+                "stream_offset": 869,
+                "sha256": "82d1071e77e18b28812e71fce54be3291db3a2aef214b248adbb15ecedaf9f88"
+              },
+              {
+                "opcode": 91,
+                "seq": 70,
+                "stream_offset": 938,
+                "sha256": "bf7f8a3d26d60305a40ea14d416652ec2943fd378be6dae18c5a1a8ebbb3c99e"
+              },
+              {
+                "opcode": 87,
+                "seq": 73,
+                "stream_offset": 1069,
+                "sha256": "6523ddc7e0db1b15821abd244a8d99d2c9961e43c1f681a54257222145399e42"
+              },
+              {
+                "opcode": 106,
+                "seq": 76,
+                "stream_offset": 1114,
+                "sha256": "89c59e8c0182399898ba2c60cb0606b29e4f686ec95182caab86eba02392fbdb"
+              },
+              {
+                "opcode": 110,
+                "seq": 79,
+                "stream_offset": 1356,
+                "sha256": "1db0b03bde3ed9e45d246af2cffebea55aebea10424fd331264fa648f0a107a5"
+              },
+              {
+                "opcode": 291,
+                "seq": 82,
+                "stream_offset": 1400,
+                "sha256": "7aceae17148c50729b637f12826d44b629455f70a6b9d756873eb4eb76ba061e"
+              },
+              {
+                "opcode": 106,
+                "seq": 85,
+                "stream_offset": 1566,
+                "sha256": "c3a075e040c83d59756636e7dd4f71f5f421e474ddeeba523fc4a1497e6ffee3"
+              }
+            ]
+          }
+        ],
+        "method": "Reused bounded stdlib fallback, not successfulREA/TSharkanalysis"
+      },
+      "hold_after_native_cleanup_s": 8.860186425,
+      "limits": "Private Python registry/twoactual/Wine10/copy4b/directvirtualLAN, not production/Rust/Ready/start/UDP/fullroom/general security/gate. OtherroomC exclusion only9policy cases, not thirdnative. 107base6→rewind0→UI1 intentional, zero ID is nativeproof; chiefpolicy minslot emulator, not originalelectionlaw. EOF kills ownedBprefix, no healthyBclient claim; UIBack distinct. Internalqueuedhandles not raw585wireepoch; dynamiccardoccupancy stillfixture. UI manualreview separate. Internet thật chưa kiểm."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "recorded_utc": "2026-11-09T05:30:21.413091+00:00",
+      "case": "host-back",
+      "result": "pass_native107_clear_and_currentroom_recipient_host-back",
+      "run_sha256": "9822ed9ec45adb14804290595f26dc2c94d7478fa7673cdfdb20e1a1351d83f3",
+      "duration_s": 70.487170951,
+      "raw_count": 189,
+      "frozen_count": 407,
+      "cleanup": {
+        "net_namespace": "net:[4026533552]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "survivor": "B",
+      "departed": "A",
+      "native107": {
+        "fields": {
+          "kind": "remove_fields",
+          "ns": 176691650915361,
+          "pc": "0xd603f5",
+          "slot": 0,
+          "identity": 1,
+          "flag": 0
+        },
+        "id_before": [
+          {
+            "kind": "id_clear_before",
+            "ns": 176691653914393,
+            "pc": "0x12400d0",
+            "slot": 0,
+            "expected": 1,
+            "actual": 1
+          }
+        ],
+        "id_after": [
+          {
+            "kind": "id_clear_after",
+            "ns": 176691657331034,
+            "pc": "0x12401a9",
+            "slot": 0,
+            "expected": 1,
+            "actual": 0
+          }
+        ],
+        "base": [
+          {
+            "kind": "remove_base_end",
+            "ns": 176691662344137,
+            "pc": "0xd6062c",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "rewind": [
+          {
+            "kind": "remove_rewind",
+            "ns": 176691665316728,
+            "pc": "0xdc6329",
+            "cursor": 0,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "ui_end": [
+          {
+            "kind": "remove_ui_end",
+            "ns": 176691668738760,
+            "pc": "0xdc6637",
+            "cursor": 1,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ]
+      },
+      "native_chief_after": [],
+      "postpromotion_getter_limit": "Unobserved: per-site20sample budget exhausted before promotion;110nativefull6/state2/UIchief-Start are separate evidence; no getter1 claim.",
+      "departure_routing": {
+        "kind": "departure_received",
+        "monotonic_ns": 176691621689137,
+        "departed": {
+          "room": {
+            "session": 1,
+            "room_id": 101,
+            "generation": 1
+          },
+          "identity": 1,
+          "account_session": "9c3a1764eb9dab99f42e0f2b523cb430",
+          "connection": "6",
+          "slot": 0,
+          "visit": 1
+        },
+        "recipient": {
+          "room": {
+            "session": 1,
+            "room_id": 101,
+            "generation": 1
+          },
+          "identity": 2,
+          "account_session": "5c665c9c0c0c15903831e4722f8f2d37",
+          "connection": "8",
+          "slot": 1,
+          "visit": 3
+        },
+        "cause": "ordinary86",
+        "chief": true,
+        "sent": [
+          {
+            "seq": 88,
+            "opcode": 107,
+            "fixture": "B-registry-remove-1-88.bin",
+            "sha256": "ecdbc0a515fa552c109eb6cf139d520dc9061f0953df0eb2ba8fd18a1d1d5ff8",
+            "size": 44,
+            "monotonic_ns": 176691621311317
+          },
+          {
+            "seq": 91,
+            "opcode": 110,
+            "fixture": "B-registry-survivor-1-91.bin",
+            "sha256": "59c829867aea0a003c60400af1349288412cc391dd4ae179d39fb5a316ca74ea",
+            "size": 44,
+            "monotonic_ns": 176691621673637
+          }
+        ]
+      },
+      "requests": {
+        "A": {
+          "opcodes": [
+            6,
+            544,
+            549,
+            744,
+            745,
+            567,
+            67,
+            87,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            96,
+            266,
+            15,
+            15,
+            15,
+            15,
+            86,
+            544,
+            549,
+            744,
+            745,
+            567,
+            742,
+            741,
+            715,
+            15,
+            715,
+            715,
+            15,
+            715,
+            15
+          ],
+          "leave86_count": 1
+        },
+        "B": {
+          "opcodes": [
+            6,
+            544,
+            549,
+            744,
+            745,
+            567,
+            67,
+            87,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            96,
+            266,
+            15,
+            15,
+            86,
+            544,
+            549,
+            744,
+            745,
+            567,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            15,
+            15,
+            90,
+            15,
+            15
+          ],
+          "leave86_count": 1
+        }
+      },
+      "final_registry": {
+        "rooms": [
+          {
+            "key": {
+              "session": 1,
+              "room_id": 101,
+              "generation": 1
+            },
+            "title": "RoomAlpha",
+            "capacity": 8,
+            "members": [
+              {
+                "room": {
+                  "session": 1,
+                  "room_id": 101,
+                  "generation": 1
+                },
+                "identity": 2,
+                "account_session": "5c665c9c0c0c15903831e4722f8f2d37",
+                "connection": "8",
+                "slot": 1,
+                "visit": 3
+              }
+            ]
+          },
+          {
+            "key": {
+              "session": 2,
+              "room_id": 202,
+              "generation": 2
+            },
+            "title": "RoomBeta",
+            "capacity": 8,
+            "members": []
+          }
+        ],
+        "visits": 3,
+        "room_generation": 2,
+        "tombstones": [],
+        "roster_sent": [
+          3
+        ]
+      },
+      "capture": {
+        "sha256": "37a09d0805384c4893d4be156fe957e95b497548984bede39ec0bc91e1215f07",
+        "packet_count": 304,
+        "dynamic_count": 20,
+        "joins": [
+          {
+            "role": "A",
+            "dynamic_frames": [
+              {
+                "opcode": 87,
+                "seq": 55,
+                "stream_offset": 372,
+                "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586"
+              },
+              {
+                "opcode": 106,
+                "seq": 58,
+                "stream_offset": 417,
+                "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+              },
+              {
+                "opcode": 110,
+                "seq": 61,
+                "stream_offset": 659,
+                "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+              },
+              {
+                "opcode": 291,
+                "seq": 64,
+                "stream_offset": 703,
+                "sha256": "0395bab66d0fd718776596dfeed31e756dccf6a4041113c0f66c23d43cdeb5d2"
+              },
+              {
+                "opcode": 106,
+                "seq": 67,
+                "stream_offset": 869,
+                "sha256": "c0ea008c2760f0167dd73c2be8fbd8b21f7a694d7935865e4c70efdbffbc06cc"
+              },
+              {
+                "opcode": 241,
+                "seq": 70,
+                "stream_offset": 1111,
+                "sha256": "29c62bab724085a8bb91ffa78875243ff60240a27ba8e1a8a8e1b798d5878779"
+              },
+              {
+                "opcode": 91,
+                "seq": 73,
+                "stream_offset": 1180,
+                "sha256": "81d1ab13cd194663536f3bc7f014ecff18e6928b3080b5c6352c15c9e9d2081b"
+              }
+            ]
+          },
+          {
+            "role": "B",
+            "dynamic_frames": [
+              {
+                "opcode": 87,
+                "seq": 55,
+                "stream_offset": 372,
+                "sha256": "f0c2ccb51cfc4a9ce4e139b57c701728028437f5ef34b2d6829f684bbe8f1efb"
+              },
+              {
+                "opcode": 106,
+                "seq": 58,
+                "stream_offset": 417,
+                "sha256": "b533937f467cd11084fc7a212e13bd892d2189ccf2438524f2730e06f9e5ab50"
+              },
+              {
+                "opcode": 110,
+                "seq": 61,
+                "stream_offset": 659,
+                "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+              },
+              {
+                "opcode": 291,
+                "seq": 64,
+                "stream_offset": 703,
+                "sha256": "f541678500b576eb1e3da84bb770d501e1f67b7d11df349f51b6eaf0dfe76525"
+              },
+              {
+                "opcode": 241,
+                "seq": 67,
+                "stream_offset": 869,
+                "sha256": "82d1071e77e18b28812e71fce54be3291db3a2aef214b248adbb15ecedaf9f88"
+              },
+              {
+                "opcode": 91,
+                "seq": 70,
+                "stream_offset": 938,
+                "sha256": "bf7f8a3d26d60305a40ea14d416652ec2943fd378be6dae18c5a1a8ebbb3c99e"
+              },
+              {
+                "opcode": 87,
+                "seq": 73,
+                "stream_offset": 1069,
+                "sha256": "6523ddc7e0db1b15821abd244a8d99d2c9961e43c1f681a54257222145399e42"
+              },
+              {
+                "opcode": 106,
+                "seq": 76,
+                "stream_offset": 1114,
+                "sha256": "89c59e8c0182399898ba2c60cb0606b29e4f686ec95182caab86eba02392fbdb"
+              },
+              {
+                "opcode": 110,
+                "seq": 79,
+                "stream_offset": 1356,
+                "sha256": "1db0b03bde3ed9e45d246af2cffebea55aebea10424fd331264fa648f0a107a5"
+              },
+              {
+                "opcode": 291,
+                "seq": 82,
+                "stream_offset": 1400,
+                "sha256": "7aceae17148c50729b637f12826d44b629455f70a6b9d756873eb4eb76ba061e"
+              },
+              {
+                "opcode": 106,
+                "seq": 85,
+                "stream_offset": 1566,
+                "sha256": "c3a075e040c83d59756636e7dd4f71f5f421e474ddeeba523fc4a1497e6ffee3"
+              },
+              {
+                "opcode": 107,
+                "seq": 88,
+                "stream_offset": 1808,
+                "sha256": "ecdbc0a515fa552c109eb6cf139d520dc9061f0953df0eb2ba8fd18a1d1d5ff8"
+              },
+              {
+                "opcode": 110,
+                "seq": 91,
+                "stream_offset": 1852,
+                "sha256": "59c829867aea0a003c60400af1349288412cc391dd4ae179d39fb5a316ca74ea"
+              }
+            ]
+          }
+        ],
+        "method": "Reused bounded stdlib fallback, not successfulREA/TSharkanalysis"
+      },
+      "hold_after_native_cleanup_s": 8.813370953,
+      "limits": "Private Python registry/twoactual/Wine10/copy4b/directvirtualLAN, not production/Rust/Ready/start/UDP/fullroom/general security/gate. OtherroomC exclusion only9policy cases, not thirdnative. 107base6→rewind0→UI1 intentional, zero ID is nativeproof; chiefpolicy minslot emulator, not originalelectionlaw. EOF kills ownedBprefix, no healthyBclient claim; UIBack distinct. Internalqueuedhandles not raw585wireepoch; dynamiccardoccupancy stillfixture. UI manualreview separate. Internet thật chưa kiểm."
+    }
+  ],
+  "manual_UI": [
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "images": [
+        {
+          "path": "local/research/codex/room-shared-cleanup-r1/guest-back/cycles/A/screen-27.png",
+          "sha256": "5ef6f5be772cf300935777364b665c37709fdec2ba0c0c328f6ba256b3626ed0",
+          "manual_observation": "Alpha/KRLocal firstslot chief, Bslot1 blank; room chat departure notice KRGuest; screenshot complements nativeID2→0."
+        },
+        {
+          "path": "local/research/codex/room-shared-cleanup-r1/guest-back/cycles/B/screen-27.png",
+          "sha256": "ee56a108b2bef69087f822ac6a302500641f52374d104b3054771a1e64462a21",
+          "manual_observation": "NormalLobby KRGuest with Alpha/Beta cards, not loading; cardoccupancy still fixture1/4."
+        }
+      ],
+      "limits": "Manual screenshots complement native readers/IDclear/wire; no production/generalroom/Ready/start claim."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "images": [
+        {
+          "path": "local/research/codex/room-shared-cleanup-r2/guest-eof/cycles/A/screen-27.png",
+          "sha256": "51dae8691bec86d383057ea5e52a6f1a63827a72a7a215b31ad239d25e25b34e",
+          "manual_observation": "Alpha A/KRLocal slot0chief, slot1 blank with KRGuestdeparture notice afterEOF; no healthyBclaim"
+        }
+      ],
+      "limits": "UI complements typednative readers/IDclear/PCAP. Hostpostgetter unobserved; no Ready/start/UDP/gameplay/generalroom claim."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "images": [
+        {
+          "path": "local/research/codex/room-shared-cleanup-r1/host-back/cycles/A/screen-27.png",
+          "sha256": "e1eb538ae2ba08347d8c9107d50c13f05a1586bc4ff5f45c76c6b2aaa34092a2",
+          "manual_observation": "NormalLobby KRLocal/twofixturecards afterordinaryBack"
+        },
+        {
+          "path": "local/research/codex/room-shared-cleanup-r1/host-back/cycles/B/screen-27.png",
+          "sha256": "7b3b25d0025142b2c6f6d75491cc534c203c0aa4cfb2e155b10bb8ab737d173c",
+          "manual_observation": "Alpha B/KRGuest remains slot1 with chiefbadge/Start, slot0 blank; button/role UI only, Start notclicked"
+        }
+      ],
+      "limits": "UI complements typednative readers/IDclear/PCAP. Hostpostgetter unobserved; no Ready/start/UDP/gameplay/generalroom claim."
+    }
+  ],
+  "preserved_controller_failure": {
+    "source": "design",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T05:24:44.104058+00:00",
+    "run_sha256": "08f9d6d19e97e3a7f195ee818b8b9e88009340cc9c65eeada8bd9b91378835e4",
+    "raw_count": 166,
+    "duration_s": 62.689970933,
+    "result": "FAIL_controller_after_expected_owned_B_EOF",
+    "error": "CalledProcessError(1, ['xdotool', 'search', '--onlyvisible', '--name', '^Crazy Arcade$'])",
+    "reason": "Controller still searched for the B CrazyArcade window after intentionally killing the ownedBprefix. This is a harness error, not a nativeclient fault; no8shold acceptance. Raw shows native107 partial; preserve entire run/source/seal. New copy will skip only that windowlookup after expectedEOF, keep survivor health checks.",
+    "limits": "Do not count partial run as passed cleanup acceptance; no source/config/input edits occurred during run."
+  },
+  "measurement_correction": {
+    "source": "design",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T05:30:21.300676+00:00",
+    "correction": "NativehostBack run itself completed/sealed/cleanup0, but first verifier demanded a post-promotion local_chief getter sample. Observer per-site budget20 was exhausted by14 initial1+6guest0 samples before promotion. No post-promotion getter was recorded; do not claim it. Native107ID1→0/full6-rewind0-UI1, subsequent110full6/errors0 and wirestate2 plus manuallyviewed Bslot1/chiefbadge/Start are positive scoped evidence. Preserve oldverifier/source/raw; host-specific verifier records getter unobserved and verifies the other observables. No rerun needed for a button/field claim already observed; no Start/gameplay acceptance.",
+    "limits": "Missinggetter sample is a measurement limit, not nativefailure or postpromotiongetter1proof."
+  },
+  "model": {
+    "source": "emu_choice",
+    "status": "design",
+    "recorded_utc": "2026-11-09T05:19:33.742906+00:00",
+    "result": "pass",
+    "case_count": 9,
+    "cases": [
+      "same-room-only recipient/exclude-current-otherroomC",
+      "guest107slot1-ID2-flag0",
+      "survivorA110chief",
+      "routing_no_membership_mutation",
+      "captured_old_peer_after_roommove_no_delivery",
+      "owner_replaced_no_delivery",
+      "host107slot0-ID1-flag0",
+      "survivorBslot1_promoted110chief",
+      "otherroomC_no107or110"
+    ],
+    "adapter_sha256": "dce1ae0232ba866fd90d95f6d87155d9e1955fd5a15cc50b04cc27f99970832b",
+    "limits": "Real adapter routing with fake send callbacks; thirdaccountC is model only, not thirdnative. Tests design recipient/state invariant and knownbodybuilders, not nativeKR/security/failure-send/general lifecycle/gate."
+  },
+  "limits": "Private Python registry, not production/Rust/general roomsecurity/Ready/start/UDP/gate.107/nativeIDclear proven; hostpostgetter unobserved duebudget20, native110full6/state2/UIchief-Start separateproof. OtherroomC exclusion modelonly, no thirdnative. Internet thật chưa kiểm."
+}

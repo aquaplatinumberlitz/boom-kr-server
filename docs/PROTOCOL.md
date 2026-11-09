@@ -954,6 +954,45 @@ không có successful REA capture Evidence/không sửa toolconfig. Chưa produc
 EOF fanout/promotion/occupancy/roomquota/Ready/start/UDP/DB/fullauth/Rust/gate. [PLAN](PLAN.md#current-order)
 tiếp shared-membership cleanup bằng107/110 đã biết, không lặp join/projection. AUD066qua228/kế232. Internet thật chưa kiểm.
 
+<a id="room-shared-cleanup"></a>
+### Cleanup membership trong registry private — CP230
+
+[Recipe/raw/hash](evidence/room-list/README.md#cp230), [metadata](evidence/room-list/shared-cleanup.json).
+Reuse [107/110/normalLobby CP034](#room-leave), [rejoin/promotion CP035](#room-rejoin) và
+[CP229 private registry](#room-membership-registry); không thân hàm native mới hoặc protocol redesign.
+
+**`emu_choice/design` routing:** chụp current member handles trước leave/connection cleanup, detach exact handle
+rồi chỉ gửi107/110 tới peer cùng room key/generation còn current/activeowner/đã roster. Body107 giữ slot/identity
+người rời;110 dùng slot người sống và chief theo minslot còn lại. Notify không mutate membership, old captured
+peer đã move/owner replacement không nhận;9policy scenarios kiểm adapter thật với fake send và accountC ở room khác.
+AccountC chỉ model, không thirdnative/no-allpacket-isolation claim. Đây là policy bầu chủ, không luật server gốc.
+
+**`kr_runtime/confirmed` ba ca riêng**, hai KR/Wine/copy4b/direct virtual LAN, cùng source/profile/probe đã frozen:
+initial AAlpha/Bbeta rồi B chuyển Alpha theo CP229; sau đó chọn một trigger bằng config trước run.
+
+| Trigger | Bằng chứng native và lifecycle |
+|---|---|
+| Guest B ordinaryBack | Actual86 lần2/bodyempty→107 tớiA(slot1,ID2,0), native ID2→0/UI ô B trống; A chiefgetter1 saucleanup, B241/91 về normalLobby, hai authowners/channels giữ |
+| Guest B ownedprefix EOF | Bkill riêng/wire không thêm86 sau initialroommove, channelEOF/releaseBsession;107 tớiA/ID2→0/UIclear, Aowner giữ và khỏe8s+. Không claim Bhealthy hoặc UIBack |
+| Host A ordinaryBack | ActualA86/bodyempty→107 tớiB(slot0,ID1,0), native ID1→0;110 cho Bslot1/state2/nativefull6/errors0, UI chiefbadge/Start và slotA trống; A241/91 về normalLobby, haiowners/channels giữ |
+
+107 ở mỗi ca có **base6/6/errors0 → rewind0 → UI reread1/6**, intentional hai pass; so slot ID trước/sau đúng
+người rời trong cùng remove-handler interval. Một107 cho survivor, không107 cho leaver. PCAP exact dynamicframe/
+sequence/order và native/UI đối chiếu;20/18/20frame,302/274/304capture records;8s+hold sau nativecleanup.
+Không bấm Ready/Start hoặc suy Startbutton thành Battle acceptance; dynamiccardoccupancy vẫn fixture1/4.
+
+**Giới hạn observer:** host run getter1240D5E có14initial1+6guest0, hết budget20 trước promotion. **Không có
+postpromotion getter sample**;110full6/state2 và UIchief/Start là evidence riêng. First verifier đòi sample đó
+đã fail, giữ source và measurement-correction; host-specific verifier ghi unobserved và kiểm evidence khác,
+không rewrite raw hoặc claim getter1. Guest cleanup hai ca có actual survivor getter1 sau107 riêng.
+
+**Correction controller:** EOF R1 dừng khi tìm cửa sổ B đã chủ động kill;166raw/exit1/partial, không đạt8s hold.
+Seal/cleanup trước khi tạo R2 chỉ bỏ windowlookup sau expectedEOF, giữ survivor health checks/adapter/profile/probe.
+R2EOF187raw đạt. GuestBack189 + HostBack189 + EOF187 =565positive raw; cùng failure166 =731raw frozen/sealed/
+ownedcleanup0. Chưa productionintegration/send-failure/backpressure/thirdnativeotherroom/generalroomquota/
+restartfence/Ready/start/UDP/DB/fullauth/Rust/gate. [PLAN](PLAN.md#current-order) tiếp module policy/reference và
+seam theo session→membership→recipient, không thêm broad RE/phép lặp đã giải. AUD066qua228/kế232. Internet thật chưa kiểm.
+
 <a id="room-player"></a>
 ### Player, own-slot và controls phòng (CP018)
 

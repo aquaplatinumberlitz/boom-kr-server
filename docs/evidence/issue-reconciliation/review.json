@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-09",
-  "baseline": "77ea70d5294f431b08a8345da9224963582474d7",
+  "baseline": "784a0d892ef45cfb09e10735a44c8a6522c16f29",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP229 private registry nativeBBack→Betarejoin and Beta→Alpha slot1guest/Achief/peer106haiview; sameauth/channels/nativefullcursors/UI/PCAP14+16frames. 2runs336raw+7startupfailure/cleanup; policy19+7 not nativeoracle.",
-      "remaining": "No productionintegration/sharedleave-EOF107fanout/promotion110/dynamicoccupancy/quota/durablefence/Ready/start/UDP/fullauth/DB/Rust. Internalqueuedhandle fence is not raw585zero wire-stale classification; cardoccupancy fixture1/4.",
-      "next_test": "PLAN shared-membership modelnegative then nativeguest86/EOF→A107base6-rewind/UIclear/ID2→0 and leaver normalLobby; room/owner/visit recipients, hostpromotion110 control by gap. No repeatedjoin/projection/list/87/error2/authfailedretry.",
+      "known": "CP230 private native guestBack/EOF→107ID2→0 and hostBack→107ID1→0/110full6/UIchief;3positive565raw/166controllerfailure kept/batch731sealed-cleanup. Native107base6-rewind0-UI1/PCAP20-18-20frames/8s+hold;9routingpolicycases.",
+      "remaining": "No productionintegration/partialsend-failure/backpressure/dynamicoccupancy/quota/durablefence/fullauth/DB/Rust. Hostpostgetter unobserved budget20, otherroomC modelonly not thirdnative; no Ready/start/UDP/newgate.",
+      "next_test": "Owner09/11 opened Rust implementation: prioritize M0 pinnedPythonbaseline→M1 purewire/connection/bounds/CRC/seq then nativehello-error-sameprocessretry. RE only implementation/nativeacceptance blocker; no dependency on fullauth/generalroom/Pythonmodule extraction. Room integration remainsM2backlog.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Private native2member roommove does not complete general registry/service epic; both OPEN.8WIPunchanged/noRust/AUD066next232/Internet thật chưa kiểm separate.",
+      "reason": "Owner scope changed explicitly to Rust implementation+RE as needed; planning-only no longer blocks newbatch. Both issues OPEN, no Rust acceptance yet;8WIPunchanged/AUD066next232/Internet thật chưa kiểm separate.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -266,7 +266,9 @@
         "docs/PROTOCOL.md#room-list-lifecycle",
         "docs/PROTOCOL.md#room-join-projection",
         "docs/PROTOCOL.md#room-local-roster",
-        "docs/PROTOCOL.md#room-membership-registry"
+        "docs/PROTOCOL.md#room-membership-registry",
+        "docs/PROTOCOL.md#room-shared-cleanup",
+        "docs/evidence/owner-directives/rust-implementation.json"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -367,7 +369,8 @@
         "docs/evidence/room-list/README.md",
         "docs/evidence/room-list/README.md#cp227",
         "docs/evidence/room-list/README.md#cp228",
-        "docs/evidence/room-list/README.md#cp229"
+        "docs/evidence/room-list/README.md#cp229",
+        "docs/evidence/room-list/README.md#cp230"
       ],
       "prs": [
         173,
@@ -469,7 +472,8 @@
         296,
         297,
         298,
-        299
+        299,
+        300
       ],
       "successors": []
     },
@@ -808,11 +812,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP229 private registry nativeBBack→Betarejoin and Beta→Alpha slot1guest/Achief/peer106haiview; sameauth/channels/nativefullcursors/UI/PCAP14+16frames. 2runs336raw+7startupfailure/cleanup; policy19+7 not nativeoracle.",
-      "remaining": "No productionintegration/sharedleave-EOF107fanout/promotion110/dynamicoccupancy/quota/durablefence/Ready/start/UDP/fullauth/DB/Rust. Internalqueuedhandle fence is not raw585zero wire-stale classification; cardoccupancy fixture1/4.",
-      "next_test": "PLAN shared-membership modelnegative then nativeguest86/EOF→A107base6-rewind/UIclear/ID2→0 and leaver normalLobby; room/owner/visit recipients, hostpromotion110 control by gap. No repeatedjoin/projection/list/87/error2/authfailedretry.",
+      "known": "CP230 private native guestBack/EOF→107ID2→0 and hostBack→107ID1→0/110full6/UIchief;3positive565raw/166controllerfailure kept/batch731sealed-cleanup. Native107base6-rewind0-UI1/PCAP20-18-20frames/8s+hold;9routingpolicycases.",
+      "remaining": "No productionintegration/partialsend-failure/backpressure/dynamicoccupancy/quota/durablefence/fullauth/DB/Rust. Hostpostgetter unobserved budget20, otherroomC modelonly not thirdnative; no Ready/start/UDP/newgate.",
+      "next_test": "Owner09/11 opened Rust implementation: prioritize M0 pinnedPythonbaseline→M1 purewire/connection/bounds/CRC/seq then nativehello-error-sameprocessretry. RE only implementation/nativeacceptance blocker; no dependency on fullauth/generalroom/Pythonmodule extraction. Room integration remainsM2backlog.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "Private native2member roommove does not complete general registry/service epic; both OPEN.8WIPunchanged/noRust/AUD066next232/Internet thật chưa kiểm separate.",
+      "reason": "Owner scope changed explicitly to Rust implementation+RE as needed; planning-only no longer blocks newbatch. Both issues OPEN, no Rust acceptance yet;8WIPunchanged/AUD066next232/Internet thật chưa kiểm separate.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -832,7 +836,9 @@
         "docs/PROTOCOL.md#room-list-lifecycle",
         "docs/PROTOCOL.md#room-join-projection",
         "docs/PROTOCOL.md#room-local-roster",
-        "docs/PROTOCOL.md#room-membership-registry"
+        "docs/PROTOCOL.md#room-membership-registry",
+        "docs/PROTOCOL.md#room-shared-cleanup",
+        "docs/evidence/owner-directives/rust-implementation.json"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -853,7 +859,8 @@
         "docs/evidence/room-list/README.md",
         "docs/evidence/room-list/README.md#cp227",
         "docs/evidence/room-list/README.md#cp228",
-        "docs/evidence/room-list/README.md#cp229"
+        "docs/evidence/room-list/README.md#cp229",
+        "docs/evidence/room-list/README.md#cp230"
       ],
       "prs": [
         286,
@@ -869,11 +876,12 @@
         296,
         297,
         298,
-        299
+        299,
+        300
       ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-09T05:11:18.022956+00:00",
+  "as_of_utc": "2026-11-09T05:42:14.189142+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

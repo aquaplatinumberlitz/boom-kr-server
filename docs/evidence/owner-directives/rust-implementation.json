@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-09T05:41:02.419262+00:00",
+  "source": "owner_explicit_user_message",
+  "status": "design",
+  "quote": "chỉ đạo mới từ chủ dự án: cho phép triển khai server Rust, khi cần thiết thì RE song song",
+  "decision": "Mở đợt implementation server Rust theo PLAN M0→M1 trước, vừa xây Rust vừa RE khoảng trống thật sự chặn implementation/nghiệm thu. Hạn planning-only của đợt CP213 đã hoàn tất không còn chặn đợt mới; giữ Python RE/reference/differential, không chờ fullRE.",
+  "applies_to": "KRE-074/#285; rust/ cùng repo, hai crate kr-wire/kr-service theo kiến trúc; Codex solo/no worker",
+  "limits": "Không tự nâng scope codec/diagnosticidentity thành fullauth/fullgame/production. Giữ eightWIP/raw/hash/completehistory/audit/PR/exacthead. Wine/LANgiảlập/K6cWANgiảlập accepted; Internet thật chưa kiểm separatebacklog. Không đổi source/config/input trong active runtime.",
+  "canonical": "docs/PLAN.md#current-order"
+}

@@ -2,7 +2,8 @@
 
 Revision **kr-service-design-1**, 08/11/2026, design cho triển khai tiếp;
 [KRE-074/#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285).
-Đợt này chỉ khảo sát/lập kế hoạch; không có Rust code, repo/worktree Rust hoặc runtime mới.
+Đợt khảo sát CP213 đã hoàn tất; [owner09/11](evidence/owner-directives/rust-implementation.json) đã mở implementation.
+Trạng thái/thứ tự hiện hành chỉ ở PLAN; readiness bên dưới giữ nguồn của survey và bổ sung qua contract/evidence mới.
 [PLAN](PLAN.md#rust-service-milestones) giữ **duy nhất thứ tự milestone/acceptance/rollback**.
 [PROTOCOL](PROTOCOL.md#authority) giữ contract/authority; [RESEARCH](RESEARCH.md#rust-service-gaps) giữ unknown/phép RE.
 Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, không là current-status hoặc plan thứ hai.
@@ -25,7 +26,7 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 | Quyết định design | Lý do / điều kiện xem lại |
 |---|---|
 | Viết Rust từng lát cắt; Python giữ RE/đối chứng | Đã có native contracts/policy hẹp; không chờ full RE. Lần chuyển đầu giữ semantics, thay authority/policy thành task riêng |
-| Cùng repo boom-kr-server, dự kiến rust/Cargo.toml, rust/crates/kr-wire và kr-service | Contract/evidence/tool/issue cùng lịch sử; giữ server/ Python. Chỉ hai crate: wire thuần và service lib+binary. **Không tạo thư mục/workspace/crate trong đợt này** |
+| Cùng repo boom-kr-server, dự kiến rust/Cargo.toml, rust/crates/kr-wire và kr-service | Contract/evidence/tool/issue cùng lịch sử; giữ server/ Python. Chỉ hai crate: wire thuần và service lib+binary. **Implementation đã mở theo owner09/11; dùng rust/ cùng repo** |
 | Một process Linux, nhiều listener/stage, mỗi room một owner serialize | Hiện một phòng/2–8 người; không cần microservices/IPC. Chỉ tách process khi có đo tải, ownership hoặc failure isolation cụ thể |
 | Tokio I/O, bounded queues theo byte và message, writer riêng mỗi socket | Nonreader không chặn phòng, stage/seq/order theo connection. Không spawn unsupervised task cho từng timer |
 | Giữ direct UDP peer và endpoint exchange đã chứng minh | Native tự tính movement/geometry một phần. Không thay bằng TCP-only hoặc authoritative snapshots của boom-rs. Mapping NAT tĩnh là một profile, không discovery/relay đã phục hồi |
