@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP225: freshBprocesssameaccountnative0/6echo/67/newlease-session+Aowner8s; badfresh32token native1/nochannel/Aowner45s. Getterprior11sourcebound; sameprocessfatalCP224blocked.3runs595rawsealed/CP224PR295merged928f2fb/AUD065through224/next228. K6cWANgiảlập/K7scoped đạt;Internet thật chưa kiểm;chưa Rust/fullauth.
+CP226: native2rows/select82/update91/count0-retention/delete90wrong-vs-matchingID đã đo;4runs545rawsealed/seq73failurekept/correct55-58. Chưajoin87/membership/registry/Rust/gate. CP225PR296merged3bd1cdd/AUD065through224/next228;K6cWANgiảlập/K7scoped đạt;Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -58,20 +58,22 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
 
-**Kế hoạch Rust đã giao CP213/PR286 `4f9a963`; hiện tiếp RE đúng khoảng trống authbridge, chưa triển khai Rust.**
-[KRE-005b/#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) / KR-L001 là nhánh đang đo;
+**Kế hoạch Rust đã giao CP213/PR286 `4f9a963`; hiện tiếp RE khoảng trống phòng tổng quát cho M2, chưa triển khai Rust.**
+[KRE-005b/#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) / KR-R001 là nhánh đang đo; KR-L001 giữ blocker có nguồn;
 <!-- active-issue: 14 --> [KRE-074/#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285) giữ epic chuyển Rust. <!-- active-issue: 285 -->
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-ROOM-REGISTRY / KR-R001, RUST-Q2**: authbridge đã có [freshprocesspositive/negativeCP225](PROTOCOL.md#auth-fresh-process),
-   chưa production/fullauth; chuyển RE phục vụ khoảng trống tiếp cho M2: phòng tổng quát/danh sách nhiều dòng.
-   Source-first canonical/cache → boomkr-re → boom-re, reuse known81/86/91/87/title/slot contracts và nativefixture;
-   chỉ tìm count/row discriminator và consumer đang chặn danh sách2phòng, không quét toàn room/mode.
-   Phép tối thiểu: một native client với danh sách2row đã xác nhận layout/ID/count, chọn từng row có request
-   và UI/handler đúng trước khi ghép dynamicregistry; không lấy syntheticlist/policy log làm nativeproof.
-   Password/full/join-denial/characterselection mở theo trigger riêng, không tự thêm đầy đủ vào phép đầu.
-   [Unknown](RESEARCH.md#rust-service-gaps), [phạm vi hiện biết](PROTOCOL.md#room-create).
+1. **NEXT-ROOM-REGISTRY / KR-R001, RUST-Q2**: [CP226](PROTOCOL.md#room-list-lifecycle)/[raw](evidence/room-list/README.md)
+   đã có nativecount2/tworowselection82,91one-rowupdate/empty0khôngclear,90secondstreamtag0
+   wrongroomIDignore/matchingIDcardclear. Không lặp listcount/91update/90control/codec.
+   Tiếp source-first selected82(session,roomID)→known87(session)→lookup/context/title cho hai session riêng;
+   native projection đúng phòng trước khi ghép registry/membership. Reuse CP02887/roomlookup8117E0/setters,
+   fixture/context/slot; không giả một globalroom đang có là isolation cho2rooms.
+   Phép tối thiểu: native chọn từng row nhận87session khớp và vào đúng context/title, fullcursor/error/known
+   membershipsetup được ghi riêng; noforcedlookup/retag. StaleID/join-denial chỉ mở với nativeerrorroute có nguồn,
+   không đoán opcode/error. Firststream90/tag1/count bounds/password/full-room/mode khác để theo trigger.
+   [Unknown](RESEARCH.md#rust-service-gaps); không coi card UI hoặc service log là membership acceptance.
 2. **NEXT-AUTH-SESSION-BINDING — blocked sameprocessrecovery**: [CP224](PROTOCOL.md#auth-retry-validation)
    fullretryfatal sauhello/validation1; [CP225](PROTOCOL.md#auth-fresh-process) getter12562C0 trả11→storeEBP-28
    trước setter12562F0(request1), errorlocal10. FreshprocessBnewlease/sessionpositive/invalidtokennegative đã đo;
@@ -90,7 +92,7 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    không chờ Battle/mọiitem và không chờ fullauthRE để thiết kế DB. Không tạo Rust tree trong đợt RE này.
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP225 không nâng gate; AUD065 qua224/audit kếCP228.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP226 không nâng gate; AUD065 qua224/audit kếCP228.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu

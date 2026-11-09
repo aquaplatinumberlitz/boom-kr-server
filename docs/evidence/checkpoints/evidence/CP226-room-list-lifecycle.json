@@ -1,0 +1,4667 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "ROOM226-00001",
+      "kind": "local",
+      "path": "local/research/codex/append_cp226.py",
+      "bytes": 14002,
+      "sha256": "2d2a446e0b351c177af46b917832768b3829582393928b458bb5c60246f45cfb"
+    },
+    {
+      "id": "ROOM226-00002",
+      "kind": "local",
+      "path": "local/research/codex/capture_github_cp226.py",
+      "bytes": 1940,
+      "sha256": "e18d65dac900319637c2de8161f847d01626eb1c8be2be57ec3c9c8b6752b594"
+    },
+    {
+      "id": "ROOM226-00003",
+      "kind": "local",
+      "path": "local/research/codex/cp226-GitHub-issues-1.json",
+      "bytes": 617167,
+      "sha256": "8547d82f493f67acd00ac0a6ed894043ac4f423bb151a627fc10b35118779a14"
+    },
+    {
+      "id": "ROOM226-00004",
+      "kind": "local",
+      "path": "local/research/codex/cp226-GitHub-issues-2.json",
+      "bytes": 587410,
+      "sha256": "546def26864e4419efe115e2fe12de992d81bd6bfbb7fe6e1be783f919980e8a"
+    },
+    {
+      "id": "ROOM226-00005",
+      "kind": "local",
+      "path": "local/research/codex/cp226-GitHub-issues-3.json",
+      "bytes": 598329,
+      "sha256": "3d9da99b3b21a29c9b30aa6496135fe9231dc0a18b684bf175cddc1f121defe5"
+    },
+    {
+      "id": "ROOM226-00006",
+      "kind": "local",
+      "path": "local/research/codex/cp226-GitHub-pulls-1.json",
+      "bytes": 2245196,
+      "sha256": "470fd54902849dbcb67be6b5cf7f6f37d9449098172ad7947ea5454b8145bd77"
+    },
+    {
+      "id": "ROOM226-00007",
+      "kind": "local",
+      "path": "local/research/codex/cp226-GitHub-pulls-2.json",
+      "bytes": 2224848,
+      "sha256": "cc15d081097fd0309bbc5d4497c31b315621d60db7272946c1ad086be505c9a1"
+    },
+    {
+      "id": "ROOM226-00008",
+      "kind": "local",
+      "path": "local/research/codex/cp226-GitHub-pulls-3.json",
+      "bytes": 552836,
+      "sha256": "48bd17361526408726ad92c6dcb9cc392fd7d8ef09fc4c45fe487dc5994ed558"
+    },
+    {
+      "id": "ROOM226-00009",
+      "kind": "local",
+      "path": "local/research/codex/cp226-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "ROOM226-00010",
+      "kind": "local",
+      "path": "local/research/codex/cp226-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "4309ed6e11f91639215d2f420f91645c848fc5b994340ecdfbef0ff2fb2536e4"
+    },
+    {
+      "id": "ROOM226-00011",
+      "kind": "local",
+      "path": "local/research/codex/cp226-github-capture.txt",
+      "bytes": 70,
+      "sha256": "f64e922d098e87a92f5e9424ec8b8bd63d10dafc438b423ca77712c5b436bbd7"
+    },
+    {
+      "id": "ROOM226-00012",
+      "kind": "local",
+      "path": "local/research/codex/cp226-issue-updates.txt",
+      "bytes": 448,
+      "sha256": "5afabd1cee62bbe9a54b5c63a06e5864ae145cd318064bc7a12b28c569d4f3cc"
+    },
+    {
+      "id": "ROOM226-00013",
+      "kind": "local",
+      "path": "local/research/codex/cp226-issue14-before.json",
+      "bytes": 37220,
+      "sha256": "8a9c905065b778d112a2c39384d86ca12b56e1bf1bff299c75aecf93664a4e66"
+    },
+    {
+      "id": "ROOM226-00014",
+      "kind": "local",
+      "path": "local/research/codex/cp226-issue14-request.json",
+      "bytes": 34486,
+      "sha256": "aa3417b6f77a8ace398e8d18608935387ec292e193029813800570957723d3f3"
+    },
+    {
+      "id": "ROOM226-00015",
+      "kind": "local",
+      "path": "local/research/codex/cp226-issue14-updated.json",
+      "bytes": 37400,
+      "sha256": "d38db5229de67387bbda7c869e4782e962ba25efd63df2749ab45404f464d659"
+    },
+    {
+      "id": "ROOM226-00016",
+      "kind": "local",
+      "path": "local/research/codex/cp226-issue285-before.json",
+      "bytes": 10546,
+      "sha256": "50ff7481d67727be3436b6cb42e1255ba484e185466f7bbee994385b0dad1bf3"
+    },
+    {
+      "id": "ROOM226-00017",
+      "kind": "local",
+      "path": "local/research/codex/cp226-issue285-request.json",
+      "bytes": 7784,
+      "sha256": "85675e5d5f111f04d1d90c4806ce2cc9c9b55a2ee3ff6f4b16eb6645b79f4754"
+    },
+    {
+      "id": "ROOM226-00018",
+      "kind": "local",
+      "path": "local/research/codex/cp226-issue285-updated.json",
+      "bytes": 10726,
+      "sha256": "1cee9c53087dede702e5b227db08ec7aa5e846d5ac957ba4d792c7d2c034a0fb"
+    },
+    {
+      "id": "ROOM226-00019",
+      "kind": "local",
+      "path": "local/research/codex/fix_room_incremental_sequence.py",
+      "bytes": 4503,
+      "sha256": "bfa95e9efc5551f62fbfdfce5b5c43faddf956e4e15128fa0c178be49732b7bd"
+    },
+    {
+      "id": "ROOM226-00020",
+      "kind": "local",
+      "path": "local/research/codex/inspect_room_list_dispatch.py",
+      "bytes": 3352,
+      "sha256": "0bd041ee26638400153b412defa75b8f6cfb94b5181dcb5b40c6ccc69121c220"
+    },
+    {
+      "id": "ROOM226-00021",
+      "kind": "local",
+      "path": "local/research/codex/prepare_room_delete.py",
+      "bytes": 7158,
+      "sha256": "17553518ba92d5b664c36e845e8f99f245d85de0a134552e10c6dcb1b33393a4"
+    },
+    {
+      "id": "ROOM226-00022",
+      "kind": "local",
+      "path": "local/research/codex/prepare_room_incremental.py",
+      "bytes": 5639,
+      "sha256": "f0f37436d6cc6ae997941fc8c820a90164b4e7f83338db252460d83d9fdb8482"
+    },
+    {
+      "id": "ROOM226-00023",
+      "kind": "local",
+      "path": "local/research/codex/prepare_room_two_rows.py",
+      "bytes": 10376,
+      "sha256": "c694aff6bdc38bbd8fe28afeba1f34b836e1afe633b44b0af7233356a3ce356c"
+    },
+    {
+      "id": "ROOM226-00024",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "ROOM226-00025",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/config.json",
+      "bytes": 1185,
+      "sha256": "a01b362fbb00299cfaf47a46d2aa88a2c1def4a2adc964fa424560c1904cec07"
+    },
+    {
+      "id": "ROOM226-00026",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/delete-probe.py",
+      "bytes": 1236,
+      "sha256": "f211b50ef813c7590ec0a54aa9073d12fb8fbdb87a65197798293585181dfa9d"
+    },
+    {
+      "id": "ROOM226-00027",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/delete.gdb",
+      "bytes": 1398,
+      "sha256": "0fd632668f829790f9a9fb8f589252cbcbecc2fbf196b255a0960ffaa820026f"
+    },
+    {
+      "id": "ROOM226-00028",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/match90-body.bin",
+      "bytes": 21,
+      "sha256": "59a9ac54e5dad6445ca7b712580b181f07a2734a62dd51f660baa67d0f093259"
+    },
+    {
+      "id": "ROOM226-00029",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/network_policy.py",
+      "bytes": 1071,
+      "sha256": "843a8317629dc7f50afbae8bfeddea8b7a7a606b8e5c8437ac6e6d7d79e85820"
+    },
+    {
+      "id": "ROOM226-00030",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/pair_service_r3.py",
+      "bytes": 3099,
+      "sha256": "11b6f9aaf9c668795ef6dc168bb3bacb0930ec5df9dca45267e45135beabd150"
+    },
+    {
+      "id": "ROOM226-00031",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/profile.json",
+      "bytes": 15366,
+      "sha256": "3321c1cce9a9945c45d63205b48edf9623853805337ba2664c5796417ba510ce"
+    },
+    {
+      "id": "ROOM226-00032",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/source-first.json",
+      "bytes": 2230,
+      "sha256": "3171c5b3a5f69c039d1cdf5d348f4acbe5d17205c095ca89292c294035ae12eb"
+    },
+    {
+      "id": "ROOM226-00033",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "ROOM226-00034",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/verification.json",
+      "bytes": 3823,
+      "sha256": "b32c65f9d039cbffa43e78ea063e62bb03e1b199a2221d5c96dc859dafc17569"
+    },
+    {
+      "id": "ROOM226-00035",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A-room-delete-wrong-ID-55.bin",
+      "bytes": 59,
+      "sha256": "da51e629deb5f3af79592e627fdbb4ccc0ea1f425c1b9962ca73334b68d6a1bd"
+    },
+    {
+      "id": "ROOM226-00036",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/CALog-before.txt",
+      "bytes": 1409,
+      "sha256": "3a5aff85768626f46b98f8b2757307d479280559085844935de28d4947fe1f05"
+    },
+    {
+      "id": "ROOM226-00037",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/CALog-run.txt",
+      "bytes": 1368,
+      "sha256": "408c948b77a60ddc4e0ed988df383e2811293f38b382b946cf1815e54f031d5e"
+    },
+    {
+      "id": "ROOM226-00038",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "2111eb1eac6f13a5eb4f57958c2216c18efc151e6ac4047fc6f9af2410ec4433"
+    },
+    {
+      "id": "ROOM226-00039",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/before-select.png",
+      "bytes": 150356,
+      "sha256": "975a862ba01c7c1f2bd5acf1692497de795c2e45d4445191f1ae724dbcb29bbe"
+    },
+    {
+      "id": "ROOM226-00040",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/client.log",
+      "bytes": 129981,
+      "sha256": "4388826bae49e065a865d091899967654cc56f219384314bb69ae883b8bb58b8"
+    },
+    {
+      "id": "ROOM226-00041",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/debug-commands.txt",
+      "bytes": 1398,
+      "sha256": "0fd632668f829790f9a9fb8f589252cbcbecc2fbf196b255a0960ffaa820026f"
+    },
+    {
+      "id": "ROOM226-00042",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00043",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00044",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-10.png",
+      "bytes": 152467,
+      "sha256": "dc0bcbdcb3235ddf655d2e84aec254c4d916e61958bd46636e2f22b87dadcd5d"
+    },
+    {
+      "id": "ROOM226-00045",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-11.png",
+      "bytes": 153499,
+      "sha256": "c00646652de4c6302f08001469d955d30ba380216be781382b4756adb0e7c635"
+    },
+    {
+      "id": "ROOM226-00046",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-12.png",
+      "bytes": 153150,
+      "sha256": "19a80770f9cad885f8678853eaa36161f9e20d74ce8a37d7ff1e3648d2799263"
+    },
+    {
+      "id": "ROOM226-00047",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-13.png",
+      "bytes": 152209,
+      "sha256": "7549bb97ebf5dcb6a0be6495d0963f0c7c68a2b4bada7ea50fab5a6e05909bf5"
+    },
+    {
+      "id": "ROOM226-00048",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-14.png",
+      "bytes": 151402,
+      "sha256": "1830e2765b869e49683c061b59ae65160ad71bc22be1f3bf3d15fb36de506494"
+    },
+    {
+      "id": "ROOM226-00049",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-15.png",
+      "bytes": 150333,
+      "sha256": "197e80ce73060aa668da0428f6d9ce1213e82eeae19b00d66fa9902c0592efd0"
+    },
+    {
+      "id": "ROOM226-00050",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-16.png",
+      "bytes": 150392,
+      "sha256": "ecb16a8c285f4ca448dc853ea5a25adf5f630443ebc86174ed5c13034bf559d9"
+    },
+    {
+      "id": "ROOM226-00051",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-17.png",
+      "bytes": 150382,
+      "sha256": "f30b5ca9df3b26f0d73f482ec1db1dc2db51aa8b0201a3d12a06c78c6efbe634"
+    },
+    {
+      "id": "ROOM226-00052",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-18.png",
+      "bytes": 150410,
+      "sha256": "b5b390579ab7bc54752a97f7ce0c065235568a97f9944966a645db63ae5b520f"
+    },
+    {
+      "id": "ROOM226-00053",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00054",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-3.png",
+      "bytes": 12324,
+      "sha256": "7e9af06b060699975d6ea1c28063d857b5573a363b8a4b2fd236ac47c31c3d9f"
+    },
+    {
+      "id": "ROOM226-00055",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-4.png",
+      "bytes": 117797,
+      "sha256": "ee557e5a2dafa61315e788ae714f699f79c4898e7bc6521cd4b1b2bea0e72ba3"
+    },
+    {
+      "id": "ROOM226-00056",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-5.png",
+      "bytes": 188305,
+      "sha256": "a99acec64b33b5e9867be8584c06ccc1de2b213098e083e2347ee246730b709c"
+    },
+    {
+      "id": "ROOM226-00057",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-6.png",
+      "bytes": 193523,
+      "sha256": "4994c6ecc02b4fc22a65013c16c0653c228219fc5b45ffb533712d8b07acfb32"
+    },
+    {
+      "id": "ROOM226-00058",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-7.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00059",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-8.png",
+      "bytes": 157370,
+      "sha256": "f0d0624641107ee045dccf397faf5d5173c1e4779eb23a6e464b514af03bd2f5"
+    },
+    {
+      "id": "ROOM226-00060",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/screen-9.png",
+      "bytes": 158200,
+      "sha256": "f6622b9113ffa649e1a5b26822df86fb9d5a3ba96b3d3f1aa903ddc43c6dd24b"
+    },
+    {
+      "id": "ROOM226-00061",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "ROOM226-00062",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-1.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "ROOM226-00063",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00064",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00065",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00066",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00067",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00068",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00069",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00070",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00071",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00072",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-2.txt",
+      "bytes": 1305,
+      "sha256": "3a9abbddf140befc14f7fbfb5a6c5151e9983094e5c5b128ba90a5acd7adc7b7"
+    },
+    {
+      "id": "ROOM226-00073",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00074",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00075",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00076",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00077",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00078",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00079",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00080",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B-room-delete-matching-ID-58.bin",
+      "bytes": 59,
+      "sha256": "496c0a6b60c7cf826f3059709287848f4ae97edc2a06f7185aadc60531f62319"
+    },
+    {
+      "id": "ROOM226-00081",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B-room-delete-wrong-ID-55.bin",
+      "bytes": 59,
+      "sha256": "da51e629deb5f3af79592e627fdbb4ccc0ea1f425c1b9962ca73334b68d6a1bd"
+    },
+    {
+      "id": "ROOM226-00082",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/CALog-before.txt",
+      "bytes": 1329,
+      "sha256": "9ae2a94aa54bcc4366a3b9f35d72232f23bb11a4bf0a4285fffb73971b4318b6"
+    },
+    {
+      "id": "ROOM226-00083",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/CALog-run.txt",
+      "bytes": 1329,
+      "sha256": "9ae2a94aa54bcc4366a3b9f35d72232f23bb11a4bf0a4285fffb73971b4318b6"
+    },
+    {
+      "id": "ROOM226-00084",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "68e32cb21fd20085b14dfdf1d7c30f5521509d08d9905eadd5b07a60c396287b"
+    },
+    {
+      "id": "ROOM226-00085",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/before-select.png",
+      "bytes": 152043,
+      "sha256": "9ce1d22e04b0ae40ad5fb51fb9af62a90844ca53a904533fd9e39cec232b8006"
+    },
+    {
+      "id": "ROOM226-00086",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/client.log",
+      "bytes": 130373,
+      "sha256": "6f7ea1faf8d002d3ff0811b0520fb6f706b83a897cde617bd5c1280fc5fd9291"
+    },
+    {
+      "id": "ROOM226-00087",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/debug-commands.txt",
+      "bytes": 1398,
+      "sha256": "0fd632668f829790f9a9fb8f589252cbcbecc2fbf196b255a0960ffaa820026f"
+    },
+    {
+      "id": "ROOM226-00088",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00089",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00090",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-10.png",
+      "bytes": 157463,
+      "sha256": "1d551fe08616d73cb01a602d34204def2bbe48e4c99dba52aee922532659e177"
+    },
+    {
+      "id": "ROOM226-00091",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-11.png",
+      "bytes": 158245,
+      "sha256": "6d0b3b0024ca47b4b95906d65538d633bc53aa5a9a8da708b4ded14882bdc613"
+    },
+    {
+      "id": "ROOM226-00092",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-12.png",
+      "bytes": 152709,
+      "sha256": "9d3632fccf48f205d0363a3b176e4486c5463bf3b17b60110e1c565ce9fd64e2"
+    },
+    {
+      "id": "ROOM226-00093",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-13.png",
+      "bytes": 153465,
+      "sha256": "43b705853e0a62a1c21da1f3579b2ff8648943d63f627e07203a7ed76d7ff8b2"
+    },
+    {
+      "id": "ROOM226-00094",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-14.png",
+      "bytes": 152891,
+      "sha256": "a50a40a1224b9f125b18e0fc67c8e9fec9fc7e4f6f10d665720aacfb5a47582f"
+    },
+    {
+      "id": "ROOM226-00095",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-15.png",
+      "bytes": 152189,
+      "sha256": "72e45433d7933f5392ad57683de088f8dc477cfbfe56c9fb9ddcfdf39c2c0bb0"
+    },
+    {
+      "id": "ROOM226-00096",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-16.png",
+      "bytes": 150299,
+      "sha256": "8d4eb2484ad1fd803b644b19eb291fcfa78031f9a5509e3cae3ba02d5e6237f9"
+    },
+    {
+      "id": "ROOM226-00097",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-17.png",
+      "bytes": 150313,
+      "sha256": "bd57fc0b2b45646330d46f14ec01284f6f33e588281c812c2bef943106c23669"
+    },
+    {
+      "id": "ROOM226-00098",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-18.png",
+      "bytes": 150290,
+      "sha256": "bde0e303a9461929999eed33d2b8c419358dd9b366305a0f885091f5e7cac6b6"
+    },
+    {
+      "id": "ROOM226-00099",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00100",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00101",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-4.png",
+      "bytes": 18137,
+      "sha256": "ae8484d912394a78f913fef34607994aa663edd6df29383cb05deed3184c8ce1"
+    },
+    {
+      "id": "ROOM226-00102",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-5.png",
+      "bytes": 13299,
+      "sha256": "49f8ab22c67fea287d52dbf7ece5479bb380d1202b116a10a975de95eb67b352"
+    },
+    {
+      "id": "ROOM226-00103",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-6.png",
+      "bytes": 148305,
+      "sha256": "806e5ac56a941e61bcf99f761fc9d29b573d48a9ec21d9ede3366e121e7f32d0"
+    },
+    {
+      "id": "ROOM226-00104",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-7.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "ROOM226-00105",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-8.png",
+      "bytes": 192334,
+      "sha256": "ec31bb063e906cfb205398b48b449335514c6273f9d7ee87ccf9c9ed3f4e3d5b"
+    },
+    {
+      "id": "ROOM226-00106",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00107",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "ROOM226-00108",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "ROOM226-00109",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00110",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00111",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00112",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00113",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00114",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00115",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00116",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00117",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00118",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "ROOM226-00119",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "ROOM226-00120",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00121",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00122",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00123",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00124",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00125",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00126",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "ROOM226-00127",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "ROOM226-00128",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-0.txt",
+      "bytes": 6942,
+      "sha256": "5db47155264733be76d7d0918bc94f7c07efb8c2c84722bcd62fa67da879ac79"
+    },
+    {
+      "id": "ROOM226-00129",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-1.txt",
+      "bytes": 7095,
+      "sha256": "f713d4c2aa96ea82deb2645991b449758e1733b0776d6e5f4902e9ca61b239db"
+    },
+    {
+      "id": "ROOM226-00130",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-10.txt",
+      "bytes": 7095,
+      "sha256": "e897250dbad6e30aa5e1b5ab4ee929d450c930a3d30a9fae8c474e296632e166"
+    },
+    {
+      "id": "ROOM226-00131",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-11.txt",
+      "bytes": 7095,
+      "sha256": "452d2ec76843c7d76eb8a0f82cfd6fbe1d6e66f5218c9efaf9ef23323b201986"
+    },
+    {
+      "id": "ROOM226-00132",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-12.txt",
+      "bytes": 7095,
+      "sha256": "8384f6be2215f8f6e29700e8b3169e623c9266fe4f9d1d6dff5d4d0141e99a9c"
+    },
+    {
+      "id": "ROOM226-00133",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-13.txt",
+      "bytes": 7095,
+      "sha256": "05f350cfa58ca2571005834d3957d815b8396c0b1ed903a5bd3b1a784c2a3e47"
+    },
+    {
+      "id": "ROOM226-00134",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-14.txt",
+      "bytes": 7095,
+      "sha256": "b4cd64c9725146721e7566e97a3dfdc175ad69ddc5196138999232b0f02e189b"
+    },
+    {
+      "id": "ROOM226-00135",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-15.txt",
+      "bytes": 7095,
+      "sha256": "95e53707b4dc54d4dd06ea5a3f52b49b9007cb35fbcc2ce585e86c97e5dd6432"
+    },
+    {
+      "id": "ROOM226-00136",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-16.txt",
+      "bytes": 7095,
+      "sha256": "af319f49dd4520f3514ec92d1262365f9f24ac61dcf47a551bcf36b6494a393d"
+    },
+    {
+      "id": "ROOM226-00137",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-17.txt",
+      "bytes": 7095,
+      "sha256": "f854f6af260d762aaa48d79978d93588e162452bbd184f0f405f949676e2cd64"
+    },
+    {
+      "id": "ROOM226-00138",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-18.txt",
+      "bytes": 7095,
+      "sha256": "9ebab75c46c96e47ca16738a0ac6666e8a3dc58d2d667886853b3e0f4827a61e"
+    },
+    {
+      "id": "ROOM226-00139",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-2.txt",
+      "bytes": 7095,
+      "sha256": "87d5d63e813bb37ee261ccd8aeb6c72d19dbbddbb8e13b243d4a6faab3fd4586"
+    },
+    {
+      "id": "ROOM226-00140",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-3.txt",
+      "bytes": 7095,
+      "sha256": "f267fbb5af03d625b0daf97c711ca7262fc643a42c5db93a6652484db57e2a15"
+    },
+    {
+      "id": "ROOM226-00141",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-4.txt",
+      "bytes": 7095,
+      "sha256": "2dfecd42b073336d344f7de3e4eb2f98da76422d370b0a851430311c8baf45a6"
+    },
+    {
+      "id": "ROOM226-00142",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-5.txt",
+      "bytes": 7095,
+      "sha256": "6486d414fb36bdc5c4d6c5f5c009d4d61556192386d8e14a30c80f2c032e3900"
+    },
+    {
+      "id": "ROOM226-00143",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-6.txt",
+      "bytes": 7095,
+      "sha256": "a5df71d4cccde4dbb19fe0b94ec5145a5c65365a10d71a3bf52ce53078c541d0"
+    },
+    {
+      "id": "ROOM226-00144",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-7.txt",
+      "bytes": 7095,
+      "sha256": "8adb8de554ee81d2cf9d1bc3e2453621a8d590ec9054490cd5df3580df06e706"
+    },
+    {
+      "id": "ROOM226-00145",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-8.txt",
+      "bytes": 7095,
+      "sha256": "a9212a44783031cd8479a412930fae5ab29d9e100d9faf81ad03cab097972653"
+    },
+    {
+      "id": "ROOM226-00146",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/processes-9.txt",
+      "bytes": 7095,
+      "sha256": "82ad6917677492ae29b4cc1ad00c8cc30ed6377678026c8ba440622258d3d6fe"
+    },
+    {
+      "id": "ROOM226-00147",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/proof-service-state-final.json",
+      "bytes": 40311,
+      "sha256": "b5df4b2d8e6ee054312de5d2db6f5e530d4fdd2f12e281cc88ca7e123f29daf7"
+    },
+    {
+      "id": "ROOM226-00148",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/proof-service-state.json",
+      "bytes": 34346,
+      "sha256": "fb47b473703ecf1ecec9c7b7efddca84c664a28c1285de1ceeef391319895668"
+    },
+    {
+      "id": "ROOM226-00149",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/run.json",
+      "bytes": 33796,
+      "sha256": "eba7b7e9f78529531dc00ce5b6dd9de51ec0c9f054a7c8ad31a4d3a92a6a2544"
+    },
+    {
+      "id": "ROOM226-00150",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/service-state.json",
+      "bytes": 39898,
+      "sha256": "b87a8b5d45369d3f2b952cd921e4a839210713ab3e7388cd9ae7752345867435"
+    },
+    {
+      "id": "ROOM226-00151",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00152",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/tcp-auth-pair.pcap",
+      "bytes": 19893,
+      "sha256": "1e97548256366bf39b1a11392ce818e670970601be15bb04dd376ae59c0050e7"
+    },
+    {
+      "id": "ROOM226-00153",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/tcp-capture-index.json",
+      "bytes": 54232,
+      "sha256": "d4ac855f34983057f56b1328924793bbcf5072d889bc4fc94767f34a3561ca9f"
+    },
+    {
+      "id": "ROOM226-00154",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/virtual-network.json",
+      "bytes": 24928,
+      "sha256": "31dab3668999c3305209a38a7d75e1e33c3e520e0dd22142f169e070347c295d"
+    },
+    {
+      "id": "ROOM226-00155",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "90c48be15b9ea3a452160cef67466fb39971cbbd40e60e5ebc760dd08856461f"
+    },
+    {
+      "id": "ROOM226-00156",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "5d20feb7b24b443e68c8dc323edf635c8f01f64de194fdfaa8abab07405a6f17"
+    },
+    {
+      "id": "ROOM226-00157",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00158",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "ROOM226-00159",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/launch-exit.json",
+      "bytes": 73,
+      "sha256": "729d923a44a8f0595b481949bbc4b18ae471aebc941f250be9be220c7e877069"
+    },
+    {
+      "id": "ROOM226-00160",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00161",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/raw-seal.json",
+      "bytes": 26941,
+      "sha256": "cfb7355844f33b50cf18e6c2c93aa19498c3c36bf96e1e2d6e8f02947a5d20a7"
+    },
+    {
+      "id": "ROOM226-00162",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/recipe.json",
+      "bytes": 1145,
+      "sha256": "9643cbc3377e171509e27ce3ff2c44a35a863ec252f0c2f808b9b0b695bfbc99"
+    },
+    {
+      "id": "ROOM226-00163",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/runtime-preflight.json",
+      "bytes": 70010,
+      "sha256": "3e31a0b3805cefab551a2302d4ea5d93c5c75ef0c181951f2f50e79e281b64ba"
+    },
+    {
+      "id": "ROOM226-00164",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/wrong90-body.bin",
+      "bytes": 21,
+      "sha256": "16552983fbb24353a48960b6cfec038894788b159be3b5fcaadbbe5d189c051d"
+    },
+    {
+      "id": "ROOM226-00165",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "ROOM226-00166",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/config.json",
+      "bytes": 1206,
+      "sha256": "c074cb7a92a9321025b9ac9694ea006a96f64ca681e512ef2fc058a2434b4427"
+    },
+    {
+      "id": "ROOM226-00167",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/empty91-body.bin",
+      "bytes": 2,
+      "sha256": "21ddbbba363acfe03110da351d629af1da29b305497274f9d9e7a49e38f18c3a"
+    },
+    {
+      "id": "ROOM226-00168",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/failure-verification.json",
+      "bytes": 1209,
+      "sha256": "5cd3dd0a5fdf0c920e029a4caaf020675fb045eea031b97aa0a9c630c533cc52"
+    },
+    {
+      "id": "ROOM226-00169",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/list-probe.py",
+      "bytes": 1252,
+      "sha256": "8297f9cb0de08b6a990c5c9aa8ec308dce14f96f7240c47ed79ea97def7fa17d"
+    },
+    {
+      "id": "ROOM226-00170",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/list.gdb",
+      "bytes": 1248,
+      "sha256": "40c74223091c7bb94bf0a05a299c6bb0bec8e49cbfd7120d374d049e8199b7c4"
+    },
+    {
+      "id": "ROOM226-00171",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/network_policy.py",
+      "bytes": 1071,
+      "sha256": "843a8317629dc7f50afbae8bfeddea8b7a7a606b8e5c8437ac6e6d7d79e85820"
+    },
+    {
+      "id": "ROOM226-00172",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/pair_service_r3.py",
+      "bytes": 2994,
+      "sha256": "ad9296fe6ec032d5b9ab01c357f0bf58089dfe2e4c6ac812038e3955fd9a33a2"
+    },
+    {
+      "id": "ROOM226-00173",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/profile.json",
+      "bytes": 15366,
+      "sha256": "3321c1cce9a9945c45d63205b48edf9623853805337ba2664c5796417ba510ce"
+    },
+    {
+      "id": "ROOM226-00174",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/source-first.json",
+      "bytes": 1825,
+      "sha256": "1d506b90ebc69e03fe6a5ed5db72e1466b264bfce53450db9109666508202ba8"
+    },
+    {
+      "id": "ROOM226-00175",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "ROOM226-00176",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A-roomlist-update1-73.bin",
+      "bytes": 91,
+      "sha256": "d7597ac01f774b5c286b629b100123dbf57471f30edd3a621f793b77f6e018e3"
+    },
+    {
+      "id": "ROOM226-00177",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/CALog-before.txt",
+      "bytes": 1329,
+      "sha256": "9ae2a94aa54bcc4366a3b9f35d72232f23bb11a4bf0a4285fffb73971b4318b6"
+    },
+    {
+      "id": "ROOM226-00178",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/CALog-run.txt",
+      "bytes": 2098,
+      "sha256": "fdf60e988baeebd992b866a3dd46f2e8acf9024a9491be7824e9b5a5a5397638"
+    },
+    {
+      "id": "ROOM226-00179",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "cb6e83c161eaa3ecafcb95f817746feaf658bdc2922fadae7c26470af9d859f5"
+    },
+    {
+      "id": "ROOM226-00180",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/client.log",
+      "bytes": 118980,
+      "sha256": "0a2349dc47b014a5507d7162d4e523109e5691b482267667b1a04e9e3ba2197c"
+    },
+    {
+      "id": "ROOM226-00181",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/debug-commands.txt",
+      "bytes": 1248,
+      "sha256": "40c74223091c7bb94bf0a05a299c6bb0bec8e49cbfd7120d374d049e8199b7c4"
+    },
+    {
+      "id": "ROOM226-00182",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00183",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00184",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-10.png",
+      "bytes": 152577,
+      "sha256": "3706159bd41a548b728af6542ef0598f076b71efcf0df85312629c0bb678f579"
+    },
+    {
+      "id": "ROOM226-00185",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-11.png",
+      "bytes": 153442,
+      "sha256": "38413c23d19f3aa7a90e04906ad088839a825aa620223955b6b378f97cc33121"
+    },
+    {
+      "id": "ROOM226-00186",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-12.png",
+      "bytes": 149855,
+      "sha256": "f769465ff195bd0b9340ec59e4000cd3a87f85df9d6a4230c5e4e9c0d5356757"
+    },
+    {
+      "id": "ROOM226-00187",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-13.png",
+      "bytes": 149182,
+      "sha256": "a4c889ecd00808744b6701c049df5880c3ddef9ff8b7ac448b701a8ad24df013"
+    },
+    {
+      "id": "ROOM226-00188",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-14.png",
+      "bytes": 148464,
+      "sha256": "74c151d5e530cd293d78efa5eead507ce4ecb674ca6f5aca5af2303f89937aab"
+    },
+    {
+      "id": "ROOM226-00189",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-15.png",
+      "bytes": 147401,
+      "sha256": "c5e8c4d4df8372381f73b3d554d20fbd9f7f1a54c03d01d1496a70a1fb578a4a"
+    },
+    {
+      "id": "ROOM226-00190",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-16.png",
+      "bytes": 146995,
+      "sha256": "706db255027197d38303b34df34fa439acde5c1be006cedb427d3c4fc64fad03"
+    },
+    {
+      "id": "ROOM226-00191",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-17.png",
+      "bytes": 147019,
+      "sha256": "c1da9fef14ce381f70d76a878d39ed68f196869e336830e7c4e7299ed2ab0b93"
+    },
+    {
+      "id": "ROOM226-00192",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-18.png",
+      "bytes": 146998,
+      "sha256": "f7fe4a39e9e5c1c1f44d88092cd4cdd627f9f06aa4a248044dcd86bd252f33ab"
+    },
+    {
+      "id": "ROOM226-00193",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-19.png",
+      "bytes": 147287,
+      "sha256": "c17635bcaadecd3651d22cbf7abbf963380a55f482e1ce59e278cf1a2442dc18"
+    },
+    {
+      "id": "ROOM226-00194",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-2.png",
+      "bytes": 16134,
+      "sha256": "19817a610068b6aad75a10bf5b05b6a962bde3cbb153b0dfcd5723f5c393c380"
+    },
+    {
+      "id": "ROOM226-00195",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-20.png",
+      "bytes": 148177,
+      "sha256": "2f788fb839248bf40913f16848d4e2e435c9dff84f52f300efae4b1bc630a527"
+    },
+    {
+      "id": "ROOM226-00196",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-21.png",
+      "bytes": 148850,
+      "sha256": "da5e94136f5f142ad3f2570f9f3afc01681cdd015cf63a40a545aa0b42d3a5de"
+    },
+    {
+      "id": "ROOM226-00197",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-22.png",
+      "bytes": 149392,
+      "sha256": "a3e7ed3c1ab5a0912b63ce5a13f9fe5ffefc745846d407ca93235a9d78077807"
+    },
+    {
+      "id": "ROOM226-00198",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-23.png",
+      "bytes": 150066,
+      "sha256": "cc50b9980e09fb704c88a4baac6c40f9fb59671b3f6938d1160cef5c8cfdc817"
+    },
+    {
+      "id": "ROOM226-00199",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-24.png",
+      "bytes": 149560,
+      "sha256": "909e80bc8f08ed3e28e56f4b13d5e7d4f6e7431523ff153db1de9b5022e856af"
+    },
+    {
+      "id": "ROOM226-00200",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-25.png",
+      "bytes": 149184,
+      "sha256": "226f2d77174a0151bce2a3011876f8dadaab9ca518a851703ac332f7a735cb4c"
+    },
+    {
+      "id": "ROOM226-00201",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-26.png",
+      "bytes": 148578,
+      "sha256": "cf977ce79b5a61505792b6aaecb733541f7d429e165bddb9f4ff505378a14d6f"
+    },
+    {
+      "id": "ROOM226-00202",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-27.png",
+      "bytes": 147625,
+      "sha256": "77a929fe3565a1eed7aa2d5254bfedcb6a810f71e62780fb3c157518cc5f3fb2"
+    },
+    {
+      "id": "ROOM226-00203",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-28.png",
+      "bytes": 147019,
+      "sha256": "c1da9fef14ce381f70d76a878d39ed68f196869e336830e7c4e7299ed2ab0b93"
+    },
+    {
+      "id": "ROOM226-00204",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-29.png",
+      "bytes": 146995,
+      "sha256": "706db255027197d38303b34df34fa439acde5c1be006cedb427d3c4fc64fad03"
+    },
+    {
+      "id": "ROOM226-00205",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-3.png",
+      "bytes": 12661,
+      "sha256": "675bc926ab19fc23815062b6da9117481e25ad5a3d13fc15b6788839b2301794"
+    },
+    {
+      "id": "ROOM226-00206",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-30.png",
+      "bytes": 147017,
+      "sha256": "d565ebc8de1a7d07f22130ab117d8e78cf4fab5cb73660b34803157f7ad6fee3"
+    },
+    {
+      "id": "ROOM226-00207",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-31.png",
+      "bytes": 147818,
+      "sha256": "f289e7c559d712f49ca60c0b29305e0739efc0594d4da715af554132ee132fc9"
+    },
+    {
+      "id": "ROOM226-00208",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-4.png",
+      "bytes": 150750,
+      "sha256": "67e731803b84de460b8263cf5cb36d98953cb7d2c555bd079b00862af6084c11"
+    },
+    {
+      "id": "ROOM226-00209",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-5.png",
+      "bytes": 188486,
+      "sha256": "b7dc0455f9bd68913e45baa128fcc003f95b88d153d5e8e8c966bedcd9ce1216"
+    },
+    {
+      "id": "ROOM226-00210",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-6.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "ROOM226-00211",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-7.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00212",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-8.png",
+      "bytes": 157428,
+      "sha256": "1d9712fc6fd56c3bcb26a722455284bd46b14599ee37e997921b1da819004cdd"
+    },
+    {
+      "id": "ROOM226-00213",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/screen-9.png",
+      "bytes": 158280,
+      "sha256": "208759b0e1595c0e8115b3e2f9e76b55b2fc0409f357b92be1192714bce1175c"
+    },
+    {
+      "id": "ROOM226-00214",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "ROOM226-00215",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "ROOM226-00216",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00217",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00218",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00219",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00220",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00221",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00222",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00223",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00224",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00225",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00226",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-2.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00227",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00228",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00229",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00230",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00231",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00232",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00233",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-26.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00234",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-27.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00235",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-28.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00236",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-29.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00237",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00238",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-30.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00239",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-31.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00240",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00241",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00242",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00243",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00244",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00245",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00246",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B-roomlist-update1-73.bin",
+      "bytes": 91,
+      "sha256": "d7597ac01f774b5c286b629b100123dbf57471f30edd3a621f793b77f6e018e3"
+    },
+    {
+      "id": "ROOM226-00247",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/CALog-before.txt",
+      "bytes": 1288,
+      "sha256": "5417baabfcc5347d5b191252c48f388de68d21b5c5e6ccbd524754e1d8b98174"
+    },
+    {
+      "id": "ROOM226-00248",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/CALog-run.txt",
+      "bytes": 2098,
+      "sha256": "d35993c3b0b16ca763ce0321832b35f6ed0f57ed4935b430aeb45b1156d6a0ed"
+    },
+    {
+      "id": "ROOM226-00249",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "603aef53df71bc710281c15e444550357d4325d20af45545ec5c9121651b7ad3"
+    },
+    {
+      "id": "ROOM226-00250",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/client.log",
+      "bytes": 118980,
+      "sha256": "a190090e9d54f8b98979adc3c7d1769713865c4a93d284358c8c0889d471a73a"
+    },
+    {
+      "id": "ROOM226-00251",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/debug-commands.txt",
+      "bytes": 1248,
+      "sha256": "40c74223091c7bb94bf0a05a299c6bb0bec8e49cbfd7120d374d049e8199b7c4"
+    },
+    {
+      "id": "ROOM226-00252",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00253",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00254",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-10.png",
+      "bytes": 157403,
+      "sha256": "ece5d5aa876145582184abdb294de3cacdb7d630386c2bb4e8b3005fa11d8020"
+    },
+    {
+      "id": "ROOM226-00255",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-11.png",
+      "bytes": 158164,
+      "sha256": "c790eb440a9407e7856878ed15033c49ee6036e034ab62babb7a1c32bc05ed7d"
+    },
+    {
+      "id": "ROOM226-00256",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-12.png",
+      "bytes": 149227,
+      "sha256": "9b12f20de706f3af002e42741e636c2621b3d14715c7b01bac87c72d86adbd28"
+    },
+    {
+      "id": "ROOM226-00257",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-13.png",
+      "bytes": 150004,
+      "sha256": "f45e5589d73385eb55154e18f47d35b8a48bf1f12f114f2f248298f685ff5c83"
+    },
+    {
+      "id": "ROOM226-00258",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-14.png",
+      "bytes": 150377,
+      "sha256": "e4166f783f756138156fe5e4042261923824a578dc714544d2f49051963b6897"
+    },
+    {
+      "id": "ROOM226-00259",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-15.png",
+      "bytes": 150020,
+      "sha256": "2c959e9f939778f8afef1c6ea592c270294f29e2ce3f5523d4ed9c6ddba181b9"
+    },
+    {
+      "id": "ROOM226-00260",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-16.png",
+      "bytes": 149477,
+      "sha256": "46068866e1cb699cfba42b9aec3cac9a4f2c9b23014b3a642743773adf06284d"
+    },
+    {
+      "id": "ROOM226-00261",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-17.png",
+      "bytes": 148833,
+      "sha256": "1bbf1237644e34973f40c3ba7ef2972b55685effb224ac15aa8ec4356f235c4e"
+    },
+    {
+      "id": "ROOM226-00262",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-18.png",
+      "bytes": 147931,
+      "sha256": "054716594e52292e08beb3635cbf0998d95d3e967696fdf2ade0b69d377a89d3"
+    },
+    {
+      "id": "ROOM226-00263",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-19.png",
+      "bytes": 147019,
+      "sha256": "c1da9fef14ce381f70d76a878d39ed68f196869e336830e7c4e7299ed2ab0b93"
+    },
+    {
+      "id": "ROOM226-00264",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00265",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-20.png",
+      "bytes": 146995,
+      "sha256": "706db255027197d38303b34df34fa439acde5c1be006cedb427d3c4fc64fad03"
+    },
+    {
+      "id": "ROOM226-00266",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-21.png",
+      "bytes": 147288,
+      "sha256": "4d0733863bcfc7141b21ac6cf4cf926114d02e60c55ab5f0b5e96302ce15f971"
+    },
+    {
+      "id": "ROOM226-00267",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-22.png",
+      "bytes": 148240,
+      "sha256": "a27b51fa0fb50af59b9eee93dac80d319551ac2ce3aee43aa2fd1718e70654a5"
+    },
+    {
+      "id": "ROOM226-00268",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-23.png",
+      "bytes": 149205,
+      "sha256": "de7c43c268c2627d917514f54924171816edced8c06d1c7667389a2dfcea0333"
+    },
+    {
+      "id": "ROOM226-00269",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-24.png",
+      "bytes": 149708,
+      "sha256": "e31ec6cac7fff97f3c94d476a6b968c6abf2c45feaf2220523c420b1404c3a4d"
+    },
+    {
+      "id": "ROOM226-00270",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-25.png",
+      "bytes": 149702,
+      "sha256": "e742d2a40db7f7ec2e245318cff3d476b7eebefbe49d15fd9073a9361ad01e8f"
+    },
+    {
+      "id": "ROOM226-00271",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-26.png",
+      "bytes": 149265,
+      "sha256": "6c80098a449e6a835530f285daf71b3ccf6eb7bf4499f48b9fafde7bf639ec19"
+    },
+    {
+      "id": "ROOM226-00272",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-27.png",
+      "bytes": 148568,
+      "sha256": "c168ecd08581ba96505bf7cadc5c97beccedcfbbb1fe32a85c33d6145ae439c4"
+    },
+    {
+      "id": "ROOM226-00273",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-28.png",
+      "bytes": 147427,
+      "sha256": "ccd6a6c25614aca17b9bbbc9000f47bb8bff5f176fc37853b640eeac727b5119"
+    },
+    {
+      "id": "ROOM226-00274",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-29.png",
+      "bytes": 147017,
+      "sha256": "d565ebc8de1a7d07f22130ab117d8e78cf4fab5cb73660b34803157f7ad6fee3"
+    },
+    {
+      "id": "ROOM226-00275",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00276",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-30.png",
+      "bytes": 146998,
+      "sha256": "f7fe4a39e9e5c1c1f44d88092cd4cdd627f9f06aa4a248044dcd86bd252f33ab"
+    },
+    {
+      "id": "ROOM226-00277",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-31.png",
+      "bytes": 146995,
+      "sha256": "706db255027197d38303b34df34fa439acde5c1be006cedb427d3c4fc64fad03"
+    },
+    {
+      "id": "ROOM226-00278",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-4.png",
+      "bytes": 19483,
+      "sha256": "773b7021f0e834f417428d0b3a13c023033c7cb301ba7394a570a2e125619157"
+    },
+    {
+      "id": "ROOM226-00279",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-5.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "ROOM226-00280",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-6.png",
+      "bytes": 146955,
+      "sha256": "8a24098a2297495b12bf7e0fbd5fc8339a907f804cfbec0ba095d89187774585"
+    },
+    {
+      "id": "ROOM226-00281",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-7.png",
+      "bytes": 191427,
+      "sha256": "637aedb21cd25df5263d99401e7a838add696298b7e5033e1e973fae6c801e8b"
+    },
+    {
+      "id": "ROOM226-00282",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-8.png",
+      "bytes": 192334,
+      "sha256": "ec31bb063e906cfb205398b48b449335514c6273f9d7ee87ccf9c9ed3f4e3d5b"
+    },
+    {
+      "id": "ROOM226-00283",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00284",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "ROOM226-00285",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "ROOM226-00286",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00287",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00288",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00289",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00290",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00291",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00292",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00293",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00294",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00295",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00296",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "ROOM226-00297",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00298",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00299",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00300",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00301",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00302",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00303",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-26.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00304",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-27.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00305",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-28.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00306",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-29.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00307",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "ROOM226-00308",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-30.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00309",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-31.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00310",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "ROOM226-00311",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "ROOM226-00312",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "ROOM226-00313",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "ROOM226-00314",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "ROOM226-00315",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00316",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "ROOM226-00317",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "ROOM226-00318",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-0.txt",
+      "bytes": 6775,
+      "sha256": "e5eddef54e409f1668b0c9936bed1811172a3ff052927780bf9eaa1fd49e20f1"
+    },
+    {
+      "id": "ROOM226-00319",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-1.txt",
+      "bytes": 6928,
+      "sha256": "4fb3161fa9ea66c107b8201472f2bf2789d7fd0822dd732b155ab85fd2f02dda"
+    },
+    {
+      "id": "ROOM226-00320",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-10.txt",
+      "bytes": 6928,
+      "sha256": "d71592399d44acf4d04ddf719d07437cf890ced7fa13bad3470743c219e9f111"
+    },
+    {
+      "id": "ROOM226-00321",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-11.txt",
+      "bytes": 6928,
+      "sha256": "79716d3dba6872d0260c5961646457e192dfc8fa0aa4d88d53fb7580b38b5610"
+    },
+    {
+      "id": "ROOM226-00322",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-12.txt",
+      "bytes": 6928,
+      "sha256": "d17c567face89f2caff95d658855b00f8d5a1aaa53815fd961278c016527c96a"
+    },
+    {
+      "id": "ROOM226-00323",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-13.txt",
+      "bytes": 6928,
+      "sha256": "f514eb5da3438e3fcc73fb850301bd7ecc0cf901e32ed3e2012fe9fed31597e2"
+    },
+    {
+      "id": "ROOM226-00324",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-14.txt",
+      "bytes": 6928,
+      "sha256": "f5326d0480a475ac8346970b3ff09926e92f7396e75d3577ff667bea1c3bdea7"
+    },
+    {
+      "id": "ROOM226-00325",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-15.txt",
+      "bytes": 6928,
+      "sha256": "98e066e0d09d5627995cc0b65d159561f0d16392c6edbd37c02f08fed059472e"
+    },
+    {
+      "id": "ROOM226-00326",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-16.txt",
+      "bytes": 6928,
+      "sha256": "e06eff49de232efdce227a90af8942f8cf7902a5e20748c3151873d8af732739"
+    },
+    {
+      "id": "ROOM226-00327",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-17.txt",
+      "bytes": 6928,
+      "sha256": "eede238f3b094017e5ba516d4a3c0643ef2a8f940608dbac62a3583dbd81d0d0"
+    },
+    {
+      "id": "ROOM226-00328",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-18.txt",
+      "bytes": 6928,
+      "sha256": "aa8a615fbbdde62f211e1134f7fb7ee413aca818cb33eaa7748f7673e6bc817f"
+    },
+    {
+      "id": "ROOM226-00329",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-19.txt",
+      "bytes": 6928,
+      "sha256": "fc9c81a924a08894a27f4672b13529e8316878680b0de1bac3a50404a011b892"
+    },
+    {
+      "id": "ROOM226-00330",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-2.txt",
+      "bytes": 6928,
+      "sha256": "d5d39139eb28dc8d8ca4e2f45e4fed463959db40f4d1aa2169ee40f77829c7b7"
+    },
+    {
+      "id": "ROOM226-00331",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-20.txt",
+      "bytes": 6928,
+      "sha256": "f0da0e29091c4352fa30f599f1854efd262af492b047e9a6cc5917900f003d90"
+    },
+    {
+      "id": "ROOM226-00332",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-21.txt",
+      "bytes": 6928,
+      "sha256": "bdadafc173d61c5485a13ddc6617542e1263f9cac82f052d2385396849760bd7"
+    },
+    {
+      "id": "ROOM226-00333",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-22.txt",
+      "bytes": 6928,
+      "sha256": "f104c452313b6f7b35ff71f7604a42c2756e2efed184dc617d7e2facea0dfabf"
+    },
+    {
+      "id": "ROOM226-00334",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-23.txt",
+      "bytes": 6928,
+      "sha256": "251668dda626e3e613411cac2a21c988e3b659115db8e1327ff439c615bf453b"
+    },
+    {
+      "id": "ROOM226-00335",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-24.txt",
+      "bytes": 6928,
+      "sha256": "776b498b30435df3eb84a6ece8be347c299302187c8868415a02b2d78d5068c0"
+    },
+    {
+      "id": "ROOM226-00336",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-25.txt",
+      "bytes": 6928,
+      "sha256": "e22fa6eda199152932960b9fc6219ab8f138b18c67a1a62628e246739b7c9fa2"
+    },
+    {
+      "id": "ROOM226-00337",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-26.txt",
+      "bytes": 6928,
+      "sha256": "6126fc9f25524931f330f1a3d0d12ed740e5c849b21fded844b1a31dbe8742ba"
+    },
+    {
+      "id": "ROOM226-00338",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-27.txt",
+      "bytes": 6928,
+      "sha256": "5b1a196f8983662ad0365200d9aa50b4415ffb628ea3b0c164e4628f8c664830"
+    },
+    {
+      "id": "ROOM226-00339",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-28.txt",
+      "bytes": 6928,
+      "sha256": "6b0c4de3e8d50aabc86997bc26ff97577795b7d28e8b11710b6717f94859c9dd"
+    },
+    {
+      "id": "ROOM226-00340",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-29.txt",
+      "bytes": 6928,
+      "sha256": "d4db1bb4e82bcba1bbb979c05ea4864b0e1fa10f3e7ef1b6f3df3237b8175d05"
+    },
+    {
+      "id": "ROOM226-00341",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-3.txt",
+      "bytes": 6928,
+      "sha256": "6701186deff9470b66770005b1fea266b3e4dfb7ea540bc92c09241efc725fa8"
+    },
+    {
+      "id": "ROOM226-00342",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-30.txt",
+      "bytes": 6928,
+      "sha256": "1a0bca89e9a74cc3694920b4b113fc30f8321b77758aeb0a2c7ebb66c34ec53b"
+    },
+    {
+      "id": "ROOM226-00343",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-31.txt",
+      "bytes": 6928,
+      "sha256": "a8302a3d951e49c5d8b201d939fd8b649190c242ab393a95589075228d9a059f"
+    },
+    {
+      "id": "ROOM226-00344",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-4.txt",
+      "bytes": 6928,
+      "sha256": "49e07402d61d11c4b44c5a8c8293afc5ef5d06d637b1fc743ee1919556f9f00d"
+    },
+    {
+      "id": "ROOM226-00345",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-5.txt",
+      "bytes": 6928,
+      "sha256": "daa88f22f99419d687a9a18526ce07c87f946d0a19a2eba74a0dc91df240a3c9"
+    },
+    {
+      "id": "ROOM226-00346",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-6.txt",
+      "bytes": 6928,
+      "sha256": "37fc2ae3184d23cd6bb90e4fc280da82f2520b285d4d531bd1d8f4c8de908823"
+    },
+    {
+      "id": "ROOM226-00347",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-7.txt",
+      "bytes": 6928,
+      "sha256": "f91fe0081c2998bc2911aa3e3680f9237344cf6bf3a5a57f468a13ddd1c54e61"
+    },
+    {
+      "id": "ROOM226-00348",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-8.txt",
+      "bytes": 6928,
+      "sha256": "05152935a0e6f0b29af2e8a1340a7b8d5d3acc98632c17bedbdbe25f1fadf93e"
+    },
+    {
+      "id": "ROOM226-00349",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/processes-9.txt",
+      "bytes": 6928,
+      "sha256": "4443b117ad7a353a1706921e558763108701c6038b141bb478bba6be8d3702fd"
+    },
+    {
+      "id": "ROOM226-00350",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/proof-service-state.json",
+      "bytes": 34603,
+      "sha256": "a8e27ebfaea6929e18e606e45fe5fb3a38109bd6bff095e05bb2f98ca740555f"
+    },
+    {
+      "id": "ROOM226-00351",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/run.json",
+      "bytes": 30599,
+      "sha256": "93e03bbb03f34be974a0c32307cbca6822f66870a3588e81ab2e7fd6c6ac4cc1"
+    },
+    {
+      "id": "ROOM226-00352",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/service-state.json",
+      "bytes": 35945,
+      "sha256": "e437015d33d21b511f5f091557ff9cb6be9b3b4236d54eedac9149f54e441268"
+    },
+    {
+      "id": "ROOM226-00353",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00354",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/tcp-auth-pair.pcap",
+      "bytes": 17631,
+      "sha256": "b37d4e5da3ce3a1f88bd5836813e0fa569288f78a852cd122b3973fb93009210"
+    },
+    {
+      "id": "ROOM226-00355",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/tcp-capture-index.json",
+      "bytes": 48126,
+      "sha256": "92c71530b08712ace5f8ed94cbe3fb0e0d0b209b958e09180b0827967b41797b"
+    },
+    {
+      "id": "ROOM226-00356",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/virtual-network.json",
+      "bytes": 24920,
+      "sha256": "004ded4c1f3b8049ff91c09f35f48fca8d28e97e699eb41e56323504e570bccd"
+    },
+    {
+      "id": "ROOM226-00357",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "f7f1ccfaa44063911141014eddef8f0ac64980e1088eb5d037808a1e411f944e"
+    },
+    {
+      "id": "ROOM226-00358",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/wineboot-B.log",
+      "bytes": 63854,
+      "sha256": "4f5f4092e4f7eb85dedd9be2486411061d236cdbbef1899d0fe94e1a9cf3e7e4"
+    },
+    {
+      "id": "ROOM226-00359",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00360",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "ROOM226-00361",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/launch-exit.json",
+      "bytes": 73,
+      "sha256": "3366e793e20b9e59178055ee2f8343c0fdd8c184871823de01871dbfa1389bd0"
+    },
+    {
+      "id": "ROOM226-00362",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00363",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/raw-seal.json",
+      "bytes": 40470,
+      "sha256": "88d56e32e0c32c9ceb46c6d1e1d7abb57d58c078d56111b39e35768cb703e680"
+    },
+    {
+      "id": "ROOM226-00364",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/recipe.json",
+      "bytes": 1158,
+      "sha256": "ddabbd01e943fd2ad92d69d25915cd2843076b7859407f795bb9f019280494bf"
+    },
+    {
+      "id": "ROOM226-00365",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update-and-empty/runtime-preflight.json",
+      "bytes": 69311,
+      "sha256": "ec09d172e237f465023f5b1aa6fad2f8786c93438ab0344e6979505c5bd8861e"
+    },
+    {
+      "id": "ROOM226-00366",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r1/update91-body.bin",
+      "bytes": 53,
+      "sha256": "16a9fdd2785db467b1c57b89e1bab4e31b4cd5d2f7b043fcb4dc9f01bec991d1"
+    },
+    {
+      "id": "ROOM226-00367",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "ROOM226-00368",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/config.json",
+      "bytes": 1206,
+      "sha256": "c7973715c7557d36be8dcfaa8fb129b5b375361803b87ec713be3814b56d3165"
+    },
+    {
+      "id": "ROOM226-00369",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/empty91-body.bin",
+      "bytes": 2,
+      "sha256": "21ddbbba363acfe03110da351d629af1da29b305497274f9d9e7a49e38f18c3a"
+    },
+    {
+      "id": "ROOM226-00370",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/list-probe.py",
+      "bytes": 1252,
+      "sha256": "8297f9cb0de08b6a990c5c9aa8ec308dce14f96f7240c47ed79ea97def7fa17d"
+    },
+    {
+      "id": "ROOM226-00371",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/list.gdb",
+      "bytes": 1248,
+      "sha256": "40c74223091c7bb94bf0a05a299c6bb0bec8e49cbfd7120d374d049e8199b7c4"
+    },
+    {
+      "id": "ROOM226-00372",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/network_policy.py",
+      "bytes": 1071,
+      "sha256": "843a8317629dc7f50afbae8bfeddea8b7a7a606b8e5c8437ac6e6d7d79e85820"
+    },
+    {
+      "id": "ROOM226-00373",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/pair_service_r3.py",
+      "bytes": 3087,
+      "sha256": "bf7edb02100e16b0967049e9cbd97e4340556920de6ffa7a769b084ec9300204"
+    },
+    {
+      "id": "ROOM226-00374",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/profile.json",
+      "bytes": 15366,
+      "sha256": "3321c1cce9a9945c45d63205b48edf9623853805337ba2664c5796417ba510ce"
+    },
+    {
+      "id": "ROOM226-00375",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/source-first.json",
+      "bytes": 1054,
+      "sha256": "d6df19899966ca9957cd992a9e3465d33fb3a1c03128d1d439fe02a8e38ce936"
+    },
+    {
+      "id": "ROOM226-00376",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "ROOM226-00377",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A-roomlist-empty0-58.bin",
+      "bytes": 40,
+      "sha256": "79dbb515eeec4d2dfaa4977c4141b80cf367157e8238c86965100bb3caac80c8"
+    },
+    {
+      "id": "ROOM226-00378",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A-roomlist-update1-55.bin",
+      "bytes": 91,
+      "sha256": "2284b805d43e187d35f9494fd0d55ac889479a064091c60d72b712077b7735e2"
+    },
+    {
+      "id": "ROOM226-00379",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/CALog-before.txt",
+      "bytes": 2098,
+      "sha256": "fdf60e988baeebd992b866a3dd46f2e8acf9024a9491be7824e9b5a5a5397638"
+    },
+    {
+      "id": "ROOM226-00380",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/CALog-run.txt",
+      "bytes": 1409,
+      "sha256": "3a5aff85768626f46b98f8b2757307d479280559085844935de28d4947fe1f05"
+    },
+    {
+      "id": "ROOM226-00381",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "757dcac18f3f9401137e3730583fda70ca87da723a2e410a1e9db48925a26a8d"
+    },
+    {
+      "id": "ROOM226-00382",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/before-select.png",
+      "bytes": 150594,
+      "sha256": "15adbc4bd7bfce91ba83cd6bab95e1c6135e2cb76d0ba9e962bd2e094d268a13"
+    },
+    {
+      "id": "ROOM226-00383",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/client.log",
+      "bytes": 130367,
+      "sha256": "ba8e44c66d1857d9f5b39c05d902a256003403d7fe9a20398004d00bdd31d7f8"
+    },
+    {
+      "id": "ROOM226-00384",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/debug-commands.txt",
+      "bytes": 1248,
+      "sha256": "40c74223091c7bb94bf0a05a299c6bb0bec8e49cbfd7120d374d049e8199b7c4"
+    },
+    {
+      "id": "ROOM226-00385",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00386",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00387",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-10.png",
+      "bytes": 152777,
+      "sha256": "50389bb6662622e19dfffee10b2b6d7d6a49a2bb8820c6896cd97c9e442e6a7c"
+    },
+    {
+      "id": "ROOM226-00388",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-11.png",
+      "bytes": 153548,
+      "sha256": "f292f8f840691236ebf7e40ff7fcf68dfb0b69db0aab2c7ad514f4d8f5b71420"
+    },
+    {
+      "id": "ROOM226-00389",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-12.png",
+      "bytes": 153084,
+      "sha256": "4b14320aec2afdfd4934bfc6b148a66619b5e8220ddbec595b17c63ea43ddb43"
+    },
+    {
+      "id": "ROOM226-00390",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-13.png",
+      "bytes": 152460,
+      "sha256": "7674701a15d55029673cf2b779391cc50b54d35366a7aab0d02c26af69903386"
+    },
+    {
+      "id": "ROOM226-00391",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-14.png",
+      "bytes": 151712,
+      "sha256": "16749b4c580dc3e423c0cc70ecb64e76d1ff3a78972ea4e4207c0d01eee523ad"
+    },
+    {
+      "id": "ROOM226-00392",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-15.png",
+      "bytes": 150781,
+      "sha256": "a6d8ec1d48b4eb33620c09fe23b09b5212787bf0fb07923fc5d69852fb171b14"
+    },
+    {
+      "id": "ROOM226-00393",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-16.png",
+      "bytes": 150484,
+      "sha256": "6b8b071a4982429a77e22a89fccefd44a0a97d7f2f7c030da5dc0c7f3ee6e6fd"
+    },
+    {
+      "id": "ROOM226-00394",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-17.png",
+      "bytes": 150494,
+      "sha256": "e28c82ebcb82ede39bf4d11f8c54ce54f292b3b2f249c60747a00c74b7b8c487"
+    },
+    {
+      "id": "ROOM226-00395",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-18.png",
+      "bytes": 150502,
+      "sha256": "9135e74efb3931dfc3bf5a81618fd56c20ffe7d9d8228dc7696fc96639ed4e34"
+    },
+    {
+      "id": "ROOM226-00396",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-2.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "ROOM226-00397",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-3.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "ROOM226-00398",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-4.png",
+      "bytes": 146086,
+      "sha256": "b13a82f4b9e8467c828d126f97aeaac1092116600d149b70fea4f3aeafb72450"
+    },
+    {
+      "id": "ROOM226-00399",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-5.png",
+      "bytes": 193673,
+      "sha256": "4fea3eb2a924615ccbc9f8809c1407fcaaabc7db1b62ccd0ad111f4d91f5d802"
+    },
+    {
+      "id": "ROOM226-00400",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-6.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "ROOM226-00401",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-7.png",
+      "bytes": 394437,
+      "sha256": "eb56ea426ed117835b423519822401b909b6fbae01dd58496facd82ee6015812"
+    },
+    {
+      "id": "ROOM226-00402",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-8.png",
+      "bytes": 157716,
+      "sha256": "f3ea1e66063a33da436fe47b20906c35b21c99a297fe4e698150d523a6243d53"
+    },
+    {
+      "id": "ROOM226-00403",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/screen-9.png",
+      "bytes": 158521,
+      "sha256": "e345d1fc318e2da91115a7fabc668515584f355ff3561237edeb37d3be670a07"
+    },
+    {
+      "id": "ROOM226-00404",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "ROOM226-00405",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-1.txt",
+      "bytes": 1186,
+      "sha256": "fb2b2cac9fb1ae1dd833eac0f524fca9c82eba3baa7be46679aa42fb8d82267c"
+    },
+    {
+      "id": "ROOM226-00406",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00407",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00408",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00409",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00410",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00411",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00412",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00413",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00414",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00415",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-2.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00416",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00417",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00418",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00419",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00420",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00421",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00422",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00423",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B-roomlist-empty0-58.bin",
+      "bytes": 40,
+      "sha256": "79dbb515eeec4d2dfaa4977c4141b80cf367157e8238c86965100bb3caac80c8"
+    },
+    {
+      "id": "ROOM226-00424",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B-roomlist-update1-55.bin",
+      "bytes": 91,
+      "sha256": "2284b805d43e187d35f9494fd0d55ac889479a064091c60d72b712077b7735e2"
+    },
+    {
+      "id": "ROOM226-00425",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/CALog-before.txt",
+      "bytes": 2098,
+      "sha256": "d35993c3b0b16ca763ce0321832b35f6ed0f57ed4935b430aeb45b1156d6a0ed"
+    },
+    {
+      "id": "ROOM226-00426",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/CALog-run.txt",
+      "bytes": 1329,
+      "sha256": "9ae2a94aa54bcc4366a3b9f35d72232f23bb11a4bf0a4285fffb73971b4318b6"
+    },
+    {
+      "id": "ROOM226-00427",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "658eb49a2f9c10fa5948cf57c2f47bc55b6f6aef727d6fb5b259a4f01809b0f0"
+    },
+    {
+      "id": "ROOM226-00428",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/before-select.png",
+      "bytes": 151602,
+      "sha256": "861cb100af837b004f4859e1aa13dafe9a50729944cc164ecd868ccab21a6bf4"
+    },
+    {
+      "id": "ROOM226-00429",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/client.log",
+      "bytes": 130372,
+      "sha256": "d89fb073e2e38395e7e71ed4fb527929164a693568f3399467804ae5798d53da"
+    },
+    {
+      "id": "ROOM226-00430",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/debug-commands.txt",
+      "bytes": 1248,
+      "sha256": "40c74223091c7bb94bf0a05a299c6bb0bec8e49cbfd7120d374d049e8199b7c4"
+    },
+    {
+      "id": "ROOM226-00431",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00432",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00433",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-10.png",
+      "bytes": 157423,
+      "sha256": "34d7a49e4162518ede69428eef4545fd98a6567b74f76af9f020f2c38e1fd54c"
+    },
+    {
+      "id": "ROOM226-00434",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-11.png",
+      "bytes": 158309,
+      "sha256": "5ad696a027a990d7be631ca1856219cb1ded767fa8ae6ca3bdd70e20eaaad8b6"
+    },
+    {
+      "id": "ROOM226-00435",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-12.png",
+      "bytes": 152834,
+      "sha256": "57383cf10e0804440365c1dd99b26ada2a4f6e44cb83b49414923c60abc650f0"
+    },
+    {
+      "id": "ROOM226-00436",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-13.png",
+      "bytes": 153034,
+      "sha256": "5c7d0e23c28e0c947977fe4a088e129ccab84d751744fd9168994cd24e51a15e"
+    },
+    {
+      "id": "ROOM226-00437",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-14.png",
+      "bytes": 152595,
+      "sha256": "75c97ce63dfeee4a2b68bb8ff82e26da2a60d67058d2b83ed23585dd016d1779"
+    },
+    {
+      "id": "ROOM226-00438",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-15.png",
+      "bytes": 151764,
+      "sha256": "0705c2f4394f16aefda81e883a682c725e37be03be08d3b69e822bf23cfd5d43"
+    },
+    {
+      "id": "ROOM226-00439",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-16.png",
+      "bytes": 150438,
+      "sha256": "05e68b55f224c2e39b96784cd0d18e3690179532b8bd955ff15c269c1a2cea17"
+    },
+    {
+      "id": "ROOM226-00440",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-17.png",
+      "bytes": 150416,
+      "sha256": "ea00a42c0d0d6d11e79bf5ab0eb3e7c1b4273a75653ac9546b25e9aeac11efe6"
+    },
+    {
+      "id": "ROOM226-00441",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-18.png",
+      "bytes": 150392,
+      "sha256": "70084e32321907a654a3cfa8d1bd9078d47acb2519183341f9644e4898cfa82c"
+    },
+    {
+      "id": "ROOM226-00442",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00443",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00444",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-4.png",
+      "bytes": 1670,
+      "sha256": "2938793d36112554332f0c109ace2f58404e02633a2b304393ee766c0772d871"
+    },
+    {
+      "id": "ROOM226-00445",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-5.png",
+      "bytes": 12634,
+      "sha256": "2473137a1944290442f82e638d0a8a122e7081648e570e1f3bfffa81f20dff89"
+    },
+    {
+      "id": "ROOM226-00446",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-6.png",
+      "bytes": 144302,
+      "sha256": "2f048abe0f39d7ceeb71d1014ead336909c84cbeed5810cb06ad0d0169d2e9cb"
+    },
+    {
+      "id": "ROOM226-00447",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-7.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "ROOM226-00448",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-8.png",
+      "bytes": 192334,
+      "sha256": "ec31bb063e906cfb205398b48b449335514c6273f9d7ee87ccf9c9ed3f4e3d5b"
+    },
+    {
+      "id": "ROOM226-00449",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00450",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "ROOM226-00451",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "ROOM226-00452",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00453",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00454",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00455",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00456",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00457",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00458",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00459",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00460",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00461",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "ROOM226-00462",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "ROOM226-00463",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00464",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00465",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00466",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00467",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM226-00468",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM226-00469",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "ROOM226-00470",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "ROOM226-00471",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-0.txt",
+      "bytes": 6971,
+      "sha256": "6925442d688642ebcfd0c539929e330e230f010fb5f050d449c347583bb97f1f"
+    },
+    {
+      "id": "ROOM226-00472",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-1.txt",
+      "bytes": 7124,
+      "sha256": "b4c7f2078b713da293b6c83700e467430bc418d69fcbacf5f32ee2f616743740"
+    },
+    {
+      "id": "ROOM226-00473",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-10.txt",
+      "bytes": 7124,
+      "sha256": "aefee629b76c1bf509fe254b4b3efafdebe769fde1f06dcffe3408e3be262f4d"
+    },
+    {
+      "id": "ROOM226-00474",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-11.txt",
+      "bytes": 7124,
+      "sha256": "87a0176b87f46b61317eddb0c5af169afeee46dfbec5843f42dffbba428d42ad"
+    },
+    {
+      "id": "ROOM226-00475",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-12.txt",
+      "bytes": 7124,
+      "sha256": "f1d5b8a146293f172b24cc018970f81f56eda4bd3c9540f31cf984108f43a806"
+    },
+    {
+      "id": "ROOM226-00476",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-13.txt",
+      "bytes": 7124,
+      "sha256": "109f93aa387ac672499ecf710ad0c90e84586bbe731825864062c148aa9bcaf2"
+    },
+    {
+      "id": "ROOM226-00477",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-14.txt",
+      "bytes": 7124,
+      "sha256": "412f4ffe3961b8412dd48d6e38613557bfa72962807ac4ecfe297bd61104c4c1"
+    },
+    {
+      "id": "ROOM226-00478",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-15.txt",
+      "bytes": 7124,
+      "sha256": "e00574b1b4a32780e7b8bc6cc0b7561fd95925beb6777b5648fccc04315f6667"
+    },
+    {
+      "id": "ROOM226-00479",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-16.txt",
+      "bytes": 7124,
+      "sha256": "eb4d0968cb85173514a7e9561e60f2488d01ad90648268a0f7c86ffd3ea9f318"
+    },
+    {
+      "id": "ROOM226-00480",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-17.txt",
+      "bytes": 7124,
+      "sha256": "c7c338f4d1ea81b0d11cf7c415a82b3d7d8a050acb477bbde8767455e525ce61"
+    },
+    {
+      "id": "ROOM226-00481",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-18.txt",
+      "bytes": 7124,
+      "sha256": "594b9522b9d657d5108c59cdb35c93bd8dce1d22fb2bdc2b548240240277c4e0"
+    },
+    {
+      "id": "ROOM226-00482",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-2.txt",
+      "bytes": 7124,
+      "sha256": "7dfd31fe3d5e2403484ad0900661fed75baad21d29f616bc9705c79727e0717e"
+    },
+    {
+      "id": "ROOM226-00483",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-3.txt",
+      "bytes": 7124,
+      "sha256": "1d92a958467b9fe077eda4267661b5fd4b05d7ffb6c2de55e8b894549ed56a57"
+    },
+    {
+      "id": "ROOM226-00484",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-4.txt",
+      "bytes": 7124,
+      "sha256": "dbdac3f6f4942a5984382f420c0f099b5c8be435af23f9cac56d898ffe64ec8a"
+    },
+    {
+      "id": "ROOM226-00485",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-5.txt",
+      "bytes": 7124,
+      "sha256": "f6be276e0d70668938a47a313cda4dbb06b55e30358b75bbab75b265df4c74f3"
+    },
+    {
+      "id": "ROOM226-00486",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-6.txt",
+      "bytes": 7124,
+      "sha256": "a13e1e0d19e630d3fc89381d936b174e66ed00639936330335fffd5fde608a6d"
+    },
+    {
+      "id": "ROOM226-00487",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-7.txt",
+      "bytes": 7124,
+      "sha256": "139298fd33da99e503ce93cff519db7772a654027fafc4712998bf006430b06b"
+    },
+    {
+      "id": "ROOM226-00488",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-8.txt",
+      "bytes": 7124,
+      "sha256": "7d1627e0a597a7f0b236c75e3413285814e436dcd44bf64e5aada3c3acca38b0"
+    },
+    {
+      "id": "ROOM226-00489",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/processes-9.txt",
+      "bytes": 7124,
+      "sha256": "00ebf852be064569bc3a996bdf1157e0dd3a32391ecbfadfbb05a69d1b382aa4"
+    },
+    {
+      "id": "ROOM226-00490",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/proof-service-state-final.json",
+      "bytes": 41264,
+      "sha256": "257227f130ab04864e9c4b85e141d21c02dae13e687beeeef3d8d02a9f02616e"
+    },
+    {
+      "id": "ROOM226-00491",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/proof-service-state.json",
+      "bytes": 34569,
+      "sha256": "4e1df83517cd1f8508b9de788671173836bd100ec7fdb0bb3f47a10526c17607"
+    },
+    {
+      "id": "ROOM226-00492",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/run.json",
+      "bytes": 34614,
+      "sha256": "d4e78800e93fc6372cc76a13e8642084c65100ac64f861cf170b9a4c7ec44765"
+    },
+    {
+      "id": "ROOM226-00493",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/service-state.json",
+      "bytes": 40851,
+      "sha256": "8fac92358f7f8ad1cae64b05fc47af389eb439649b0abed54fe227df0715b6b2"
+    },
+    {
+      "id": "ROOM226-00494",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00495",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/tcp-auth-pair.pcap",
+      "bytes": 20867,
+      "sha256": "a9f895a2f978934477ed7f7c5afe40d8cc3e310aef390e29de3a943ad7108c7e"
+    },
+    {
+      "id": "ROOM226-00496",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/tcp-capture-index.json",
+      "bytes": 57244,
+      "sha256": "e70d725f3d19a03d896afffadec3c5d907489c8c75d15f8da81ac90c4b4a1652"
+    },
+    {
+      "id": "ROOM226-00497",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/virtual-network.json",
+      "bytes": 24928,
+      "sha256": "727ae037bee58d07d27e928dc693499cccf4d98e6e55d36dbc53dc8a9d5df0e7"
+    },
+    {
+      "id": "ROOM226-00498",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "2c458bd77260fe10bfe55d0e483b64a3e740d38a097134cb92b3c17795a3d2c4"
+    },
+    {
+      "id": "ROOM226-00499",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "51ab3675d029374e0e39696c8c8fe5a9c2c4c0b6044a3925fdb45180499e17fa"
+    },
+    {
+      "id": "ROOM226-00500",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00501",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "ROOM226-00502",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/launch-exit.json",
+      "bytes": 73,
+      "sha256": "1e15359fa0761b5027748759915eaf0007ff716cd213705cb9db3beb03be3dac"
+    },
+    {
+      "id": "ROOM226-00503",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00504",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/raw-seal.json",
+      "bytes": 27524,
+      "sha256": "be80890c919318ffbb3a0127e937a1653965b33e1d61b9e413eed1e0d6e1622c"
+    },
+    {
+      "id": "ROOM226-00505",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/recipe.json",
+      "bytes": 1161,
+      "sha256": "fbc1c0ef280f9780bc6f4767d01b5f2152e5089246ad8c75903abd39e8b839fa"
+    },
+    {
+      "id": "ROOM226-00506",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update-and-empty/runtime-preflight.json",
+      "bytes": 72198,
+      "sha256": "4cfc98de87a5fafb9a1a22888497fea3a83ed2381521b12248daa49eadffe645"
+    },
+    {
+      "id": "ROOM226-00507",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/update91-body.bin",
+      "bytes": 53,
+      "sha256": "16a9fdd2785db467b1c57b89e1bab4e31b4cd5d2f7b043fcb4dc9f01bec991d1"
+    },
+    {
+      "id": "ROOM226-00508",
+      "kind": "local",
+      "path": "local/research/codex/room-incremental-r2/verification.json",
+      "bytes": 4563,
+      "sha256": "1a928fc6be3604e22b1f7c752812d70fec50262b360fdd8b583fe5c7e54bfca7"
+    },
+    {
+      "id": "ROOM226-00509",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/batch-verification.json",
+      "bytes": 18531,
+      "sha256": "b39d6189d54989ba3e75a1628c5efd9147686177f566ad70a545d81b73ed6aaf"
+    },
+    {
+      "id": "ROOM226-00510",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/cp226-snapshot/README.md",
+      "bytes": 34119,
+      "sha256": "508e5775ee75291e9e1e8777b9c82244d83bcdfbd3556758341e76f3a1e14161"
+    },
+    {
+      "id": "ROOM226-00511",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/cp226-snapshot/docs/COVERAGE.md",
+      "bytes": 186219,
+      "sha256": "c3f3d216966cb995b14532e674d357bdb5cf1b54d136b6e38699a865396b710b"
+    },
+    {
+      "id": "ROOM226-00512",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/cp226-snapshot/docs/PLAN.md",
+      "bytes": 87184,
+      "sha256": "015664a7d548e41a9665fa8731cb7efabc3ae21a594c8ad1c2f4343a4293970f"
+    },
+    {
+      "id": "ROOM226-00513",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/cp226-snapshot/docs/PROTOCOL.md",
+      "bytes": 700246,
+      "sha256": "c7375e3b4f8117b661956cfc2331d60defd2535ee0c4f253c5d52202f9f9d4b6"
+    },
+    {
+      "id": "ROOM226-00514",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/cp226-snapshot/docs/RESEARCH.md",
+      "bytes": 44196,
+      "sha256": "ef8d6a1ac79e1547a326688b5d858043d3ab6d7faa02f835d2376a379392952a"
+    },
+    {
+      "id": "ROOM226-00515",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/cp226-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 265029,
+      "sha256": "528fd5363b8ccc3924595b400696cb26559533552cf9bce0eb50687dc7477864"
+    },
+    {
+      "id": "ROOM226-00516",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/cp226-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 35783,
+      "sha256": "59297433220b9dc3c7544ce64fa126f81b2121413cb0788753e0d436054f8481"
+    },
+    {
+      "id": "ROOM226-00517",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/cp226-snapshot/docs/evidence/room-list/README.md",
+      "bytes": 2672,
+      "sha256": "679e0ec4bb6985e0b455102462aa5fee6405a2623a48ce840ea88f1abb83ba22"
+    },
+    {
+      "id": "ROOM226-00518",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/cp226-snapshot/docs/evidence/room-list/lifecycle.json",
+      "bytes": 31317,
+      "sha256": "a2920210ac1b105ff47d48ff846a76392724465d0daa30b2a5d391f516d91c4b"
+    },
+    {
+      "id": "ROOM226-00519",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/cp226-snapshot/docs/features.json",
+      "bytes": 195614,
+      "sha256": "5b3be3c85055592da222142df4c4f77eab75b336b3a07765390c1d564ba8269b"
+    },
+    {
+      "id": "ROOM226-00520",
+      "kind": "local",
+      "path": "local/research/codex/room-list-delivery-r1/manual-review.json",
+      "bytes": 3045,
+      "sha256": "22383f83ef0bba3b1bfd427c1be5229d029d8bbd7d51ce1173a99a937074286e"
+    },
+    {
+      "id": "ROOM226-00521",
+      "kind": "local",
+      "path": "local/research/codex/room-list-dispatch-r1/8152C0.asm",
+      "bytes": 7363,
+      "sha256": "9aa69747872ba965a19ff3522d947a8b1a31ee48c8e0d034f33158eac6bae772"
+    },
+    {
+      "id": "ROOM226-00522",
+      "kind": "local",
+      "path": "local/research/codex/room-list-dispatch-r1/8152C0.json",
+      "bytes": 24173,
+      "sha256": "305a6ba14bd93d508b799b74af8180f0ba761522e45c92bfcd8ea6d7bacea655"
+    },
+    {
+      "id": "ROOM226-00523",
+      "kind": "local",
+      "path": "local/research/codex/room-list-dispatch-r1/delete-prefix.json",
+      "bytes": 3730,
+      "sha256": "dcbcb092fcaf365249c65e41b86b09dc619179036ed740eccd6873309be792f5"
+    },
+    {
+      "id": "ROOM226-00524",
+      "kind": "local",
+      "path": "local/research/codex/room-list-dispatch-r1/dispatch.json",
+      "bytes": 7455,
+      "sha256": "fef852245ab9dd6e79195fe1164541a1820b971b13404af40753023102547504"
+    },
+    {
+      "id": "ROOM226-00525",
+      "kind": "local",
+      "path": "local/research/codex/room-list-dispatch-r1/source-first.json",
+      "bytes": 1366,
+      "sha256": "5018c40f702485df6e2702578fb4ef39ad970ebcea6ac4d52c5d4fdbe71f84aa"
+    },
+    {
+      "id": "ROOM226-00526",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "ROOM226-00527",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/config.json",
+      "bytes": 1209,
+      "sha256": "a7db362611a775212c4a14d56df9abbde09001818ff7a2fd0e350d54a764addd"
+    },
+    {
+      "id": "ROOM226-00528",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/fixture-review.json",
+      "bytes": 753,
+      "sha256": "74fa120a706998a64f672276bc87cf93514a420305b06c614fea29d52b782781"
+    },
+    {
+      "id": "ROOM226-00529",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/list-probe.py",
+      "bytes": 1252,
+      "sha256": "8297f9cb0de08b6a990c5c9aa8ec308dce14f96f7240c47ed79ea97def7fa17d"
+    },
+    {
+      "id": "ROOM226-00530",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/list.gdb",
+      "bytes": 1248,
+      "sha256": "40c74223091c7bb94bf0a05a299c6bb0bec8e49cbfd7120d374d049e8199b7c4"
+    },
+    {
+      "id": "ROOM226-00531",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/network_policy.py",
+      "bytes": 1071,
+      "sha256": "843a8317629dc7f50afbae8bfeddea8b7a7a606b8e5c8437ac6e6d7d79e85820"
+    },
+    {
+      "id": "ROOM226-00532",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/pair_service_r3.py",
+      "bytes": 2046,
+      "sha256": "2b21b906a8c19b9251aeef10412ebf6e8299be64c8a99c6d4e2816dbdddbd02a"
+    },
+    {
+      "id": "ROOM226-00533",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/profile.json",
+      "bytes": 15366,
+      "sha256": "3321c1cce9a9945c45d63205b48edf9623853805337ba2664c5796417ba510ce"
+    },
+    {
+      "id": "ROOM226-00534",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/room91-two.bin",
+      "bytes": 131,
+      "sha256": "1604eaf0a982e683603ef26c3a56f4589aafa883782b6ddf0a712c1af125387e"
+    },
+    {
+      "id": "ROOM226-00535",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/CALog-before.txt",
+      "bytes": 2290,
+      "sha256": "4b2460897c0d4345356b85b1bd49be269d666d95626c7ff14684cf0158efd94e"
+    },
+    {
+      "id": "ROOM226-00536",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/CALog-run.txt",
+      "bytes": 1329,
+      "sha256": "9ae2a94aa54bcc4366a3b9f35d72232f23bb11a4bf0a4285fffb73971b4318b6"
+    },
+    {
+      "id": "ROOM226-00537",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "5aa1ef8531e72f465097f91fee9f99c9919a8395ba6f1ee4bf745229f9a48142"
+    },
+    {
+      "id": "ROOM226-00538",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/before-select.png",
+      "bytes": 152133,
+      "sha256": "0889990731b259bec4ea8e2e4a8ff17a6b9df4bc70f56826ed351c446c484a48"
+    },
+    {
+      "id": "ROOM226-00539",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/client.log",
+      "bytes": 129724,
+      "sha256": "e0a46dd265af8dfaa3f5f97400c29164d5feee4c6e6858db6ca7b913b53be9e6"
+    },
+    {
+      "id": "ROOM226-00540",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/debug-commands.txt",
+      "bytes": 1248,
+      "sha256": "40c74223091c7bb94bf0a05a299c6bb0bec8e49cbfd7120d374d049e8199b7c4"
+    },
+    {
+      "id": "ROOM226-00541",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00542",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00543",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-10.png",
+      "bytes": 152701,
+      "sha256": "f1177029936f18b9ca4d3319d66b09f087e03350054c87a56f3ed0601ce21cf1"
+    },
+    {
+      "id": "ROOM226-00544",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-11.png",
+      "bytes": 153405,
+      "sha256": "ea09e7ca87ed37a3edd62b0595f890f352e1bf6139b921d5924b2e87041d15e2"
+    },
+    {
+      "id": "ROOM226-00545",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-12.png",
+      "bytes": 152978,
+      "sha256": "a362827d65ed739b842b7152392c05ffaaa715b1fbf7cfa6db5069ff67907cf3"
+    },
+    {
+      "id": "ROOM226-00546",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-13.png",
+      "bytes": 152124,
+      "sha256": "5996811d610c5e2a74b771e9f46924c7a797d6110011fda00bed5e39252e73e0"
+    },
+    {
+      "id": "ROOM226-00547",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-14.png",
+      "bytes": 151168,
+      "sha256": "6ad2974cacb96cde17b913dc41841cbd30f43ee0acec76251d5e8bf2e7cfc86c"
+    },
+    {
+      "id": "ROOM226-00548",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-15.png",
+      "bytes": 150486,
+      "sha256": "2480c0d6c02aa668222fb9983a3a2fff782346a0980b3191a659bb154466b18b"
+    },
+    {
+      "id": "ROOM226-00549",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-16.png",
+      "bytes": 150505,
+      "sha256": "8e38423869f643cd821dd8a6a49c4327f21e4b09bfcd699d1343b64175011a9b"
+    },
+    {
+      "id": "ROOM226-00550",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-2.png",
+      "bytes": 16134,
+      "sha256": "19817a610068b6aad75a10bf5b05b6a962bde3cbb153b0dfcd5723f5c393c380"
+    },
+    {
+      "id": "ROOM226-00551",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-3.png",
+      "bytes": 12661,
+      "sha256": "675bc926ab19fc23815062b6da9117481e25ad5a3d13fc15b6788839b2301794"
+    },
+    {
+      "id": "ROOM226-00552",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-4.png",
+      "bytes": 150750,
+      "sha256": "67e731803b84de460b8263cf5cb36d98953cb7d2c555bd079b00862af6084c11"
+    },
+    {
+      "id": "ROOM226-00553",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-5.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "ROOM226-00554",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-6.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "ROOM226-00555",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-7.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00556",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-8.png",
+      "bytes": 157509,
+      "sha256": "4862c9f1f6b5da449989207bf8d435299d6dd7c8803b2bff1c1b8eeae7ba4b95"
+    },
+    {
+      "id": "ROOM226-00557",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/screen-9.png",
+      "bytes": 158306,
+      "sha256": "50507a620bac924cab5f36bb11680c3f31dfd2026763b24ad7bb928538d82f95"
+    },
+    {
+      "id": "ROOM226-00558",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "ROOM226-00559",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-1.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "ROOM226-00560",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00561",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00562",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00563",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00564",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00565",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00566",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00567",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-2.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "ROOM226-00568",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "ROOM226-00569",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "ROOM226-00570",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "ROOM226-00571",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "ROOM226-00572",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00573",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00574",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "ROOM226-00575",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/CALog-before.txt",
+      "bytes": 671,
+      "sha256": "339e629a7ad3872be14b39d0dfeaa70d5a385e4504b79b6fe8f175888af40e25"
+    },
+    {
+      "id": "ROOM226-00576",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/CALog-run.txt",
+      "bytes": 1288,
+      "sha256": "5417baabfcc5347d5b191252c48f388de68d21b5c5e6ccbd524754e1d8b98174"
+    },
+    {
+      "id": "ROOM226-00577",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "6ea0fea632b7149fb820dd61b4b3a58ed95963f605bdda150f511aa21b71bad0"
+    },
+    {
+      "id": "ROOM226-00578",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/before-select.png",
+      "bytes": 153248,
+      "sha256": "85ea39620c719c406cbf3189b9bfc258eb1be4f3582417a5c000503977dac277"
+    },
+    {
+      "id": "ROOM226-00579",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/client.log",
+      "bytes": 129719,
+      "sha256": "01bad8b2fd44f7fe076eb59c1823df9ce03e5033d3f47e6373e0c4e17e79f089"
+    },
+    {
+      "id": "ROOM226-00580",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/debug-commands.txt",
+      "bytes": 1248,
+      "sha256": "40c74223091c7bb94bf0a05a299c6bb0bec8e49cbfd7120d374d049e8199b7c4"
+    },
+    {
+      "id": "ROOM226-00581",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00582",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00583",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-10.png",
+      "bytes": 157383,
+      "sha256": "56a5b834fd456e37c167cd7b1b00ba069544b80fd36ed7f9761257aa7d63c711"
+    },
+    {
+      "id": "ROOM226-00584",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-11.png",
+      "bytes": 158174,
+      "sha256": "8093d402c52f85c36247dbf4a2dfc92715959ec2cb8a908ef4cfaf30c4f78098"
+    },
+    {
+      "id": "ROOM226-00585",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-12.png",
+      "bytes": 152709,
+      "sha256": "1e3cb18b88da5f235e630695da8e05a2552c0c40477d305ff3d03bb8b4e9c6ae"
+    },
+    {
+      "id": "ROOM226-00586",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-13.png",
+      "bytes": 153120,
+      "sha256": "2554fdc6e21e56360406808961ee8efc266a446d69699ad1852b85132998fac0"
+    },
+    {
+      "id": "ROOM226-00587",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-14.png",
+      "bytes": 153211,
+      "sha256": "e13170753045512f04c20cfbcb4a7b925de7ac500c07cb96511f56b905ef153d"
+    },
+    {
+      "id": "ROOM226-00588",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-15.png",
+      "bytes": 152687,
+      "sha256": "b7d942a162d412070de4cbd158862688dd0e2d87464914b849d97a2eb2f9a53b"
+    },
+    {
+      "id": "ROOM226-00589",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-16.png",
+      "bytes": 151842,
+      "sha256": "ddae5cf7315c28c774d1aa668731ebc06318ea695614ce8928fb24308ea02a25"
+    },
+    {
+      "id": "ROOM226-00590",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00591",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00592",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-4.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00593",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-5.png",
+      "bytes": 12634,
+      "sha256": "2473137a1944290442f82e638d0a8a122e7081648e570e1f3bfffa81f20dff89"
+    },
+    {
+      "id": "ROOM226-00594",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-6.png",
+      "bytes": 144302,
+      "sha256": "2f048abe0f39d7ceeb71d1014ead336909c84cbeed5810cb06ad0d0169d2e9cb"
+    },
+    {
+      "id": "ROOM226-00595",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-7.png",
+      "bytes": 188486,
+      "sha256": "b7dc0455f9bd68913e45baa128fcc003f95b88d153d5e8e8c966bedcd9ce1216"
+    },
+    {
+      "id": "ROOM226-00596",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-8.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "ROOM226-00597",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM226-00598",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "ROOM226-00599",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "ROOM226-00600",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00601",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00602",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00603",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00604",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00605",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00606",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00607",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "ROOM226-00608",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "ROOM226-00609",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-4.txt",
+      "bytes": 1305,
+      "sha256": "2ea219015d24e371bd5be2632e2b1432dbb3ec211585b3163a982a765dd40e1e"
+    },
+    {
+      "id": "ROOM226-00610",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00611",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00612",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00613",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM226-00614",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM226-00615",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "ROOM226-00616",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "ROOM226-00617",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-0.txt",
+      "bytes": 6939,
+      "sha256": "0553cba99d41062fd0dbf058b3c18d6972812e9ebbeed823237734702d8cda05"
+    },
+    {
+      "id": "ROOM226-00618",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-1.txt",
+      "bytes": 7092,
+      "sha256": "928d2be0c9484e5010a191f4b71a0d216db163004d2c72e3a48b54077324b969"
+    },
+    {
+      "id": "ROOM226-00619",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-10.txt",
+      "bytes": 7092,
+      "sha256": "4c66ba900014127a2c1551dbc453187f478c8d9f65064b62e3cff76231ce2c7c"
+    },
+    {
+      "id": "ROOM226-00620",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-11.txt",
+      "bytes": 7092,
+      "sha256": "353cad8c1df1ff9ced9cf4578389d3f86c04a2c9d9def5ec130a1885d1b135e0"
+    },
+    {
+      "id": "ROOM226-00621",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-12.txt",
+      "bytes": 7092,
+      "sha256": "af025927a32e8e36ff1d51937feffe3e88d5a14a7e05d29c8225b01040272d23"
+    },
+    {
+      "id": "ROOM226-00622",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-13.txt",
+      "bytes": 7092,
+      "sha256": "0df026c283fb0d65d5d6301cb682d2e0fd4c1bf111b3119271d16c771b89d391"
+    },
+    {
+      "id": "ROOM226-00623",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-14.txt",
+      "bytes": 7092,
+      "sha256": "f276097e20953bcfe6533a6fb6fcc92d5df62b00cc6244a0ac3cbf3bf61c9d63"
+    },
+    {
+      "id": "ROOM226-00624",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-15.txt",
+      "bytes": 7092,
+      "sha256": "a6cea4e5be52e91be7b4ba7e56360e9a1cf6a8a4ad54a99b3e3b2a767e074347"
+    },
+    {
+      "id": "ROOM226-00625",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-16.txt",
+      "bytes": 7092,
+      "sha256": "b1394f29932405d181f991c2dc627688bacef5f85b739a0375da3e132c7c5040"
+    },
+    {
+      "id": "ROOM226-00626",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-2.txt",
+      "bytes": 7092,
+      "sha256": "7b54424bac332985c246f99724bb02b173f3ade6e22fe18506330e6203c4b199"
+    },
+    {
+      "id": "ROOM226-00627",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-3.txt",
+      "bytes": 7092,
+      "sha256": "5401c9272779ef7c02c747ac5fbd9d3d19b94ac7fb8943b361f7257dd59c0576"
+    },
+    {
+      "id": "ROOM226-00628",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-4.txt",
+      "bytes": 7092,
+      "sha256": "96cfa1cd98942a47945cd74eba81b6b9dec217a4e8193710881d8e03f6e12a6c"
+    },
+    {
+      "id": "ROOM226-00629",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-5.txt",
+      "bytes": 7092,
+      "sha256": "e21dd2d97af904d94d41f9aa08c753ac4d276bc3cdda7e4625734d7f84ea789a"
+    },
+    {
+      "id": "ROOM226-00630",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-6.txt",
+      "bytes": 7092,
+      "sha256": "b41c341c3ffb537b752804cb2c85c3618ac7f1ec6536a95f9a0361ac78a39d70"
+    },
+    {
+      "id": "ROOM226-00631",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-7.txt",
+      "bytes": 7092,
+      "sha256": "fd6b38946ec5c843e4764922bca6c9ca8e9ba3faec321e1f225a8a810b7067d2"
+    },
+    {
+      "id": "ROOM226-00632",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-8.txt",
+      "bytes": 7092,
+      "sha256": "b6b3bf26173c41e86f6f896df3fde6b4332781717314fab5a2dc4eaf664a3284"
+    },
+    {
+      "id": "ROOM226-00633",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/processes-9.txt",
+      "bytes": 7092,
+      "sha256": "5cbd137e76808f12918b7af13709ec1d30ac39c5d972632a68981756fec0c60c"
+    },
+    {
+      "id": "ROOM226-00634",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/proof-service-state-final.json",
+      "bytes": 37982,
+      "sha256": "6ac16650b7c4f5e5785024e188dbf9f43bbd7b86634aebbb323ae99df2b2ad23"
+    },
+    {
+      "id": "ROOM226-00635",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/proof-service-state.json",
+      "bytes": 34326,
+      "sha256": "f8ba2e10aa156ad134e2f1f9b58d55f1263dc28338f0d9b02a1621d71ed0e744"
+    },
+    {
+      "id": "ROOM226-00636",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/run.json",
+      "bytes": 30716,
+      "sha256": "9a27b180cf94023a585d874cbcbd558603959ea476e2e7a1446923077de64b5c"
+    },
+    {
+      "id": "ROOM226-00637",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/service-state.json",
+      "bytes": 37729,
+      "sha256": "3375508aaafff911b8ada49ba9a75155a90f1ab6a91a3da6491e1cbf9b73897f"
+    },
+    {
+      "id": "ROOM226-00638",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00639",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/tcp-auth-pair.pcap",
+      "bytes": 19281,
+      "sha256": "c04ce0c9428b3d2bbce6ad026465a67e59fc2d40a39e313412957db2569a0405"
+    },
+    {
+      "id": "ROOM226-00640",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/tcp-capture-index.json",
+      "bytes": 53025,
+      "sha256": "d5dec9ee98617d48b42e94f316e4ff44b978cbfb0d66bae1bd5745e0e4854344"
+    },
+    {
+      "id": "ROOM226-00641",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/virtual-network.json",
+      "bytes": 24922,
+      "sha256": "0cd6f2b46aa7bdece42fb48b60c227cbe97d294099902fb239847e7d8497fb07"
+    },
+    {
+      "id": "ROOM226-00642",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "dd1b47b89ea796c79624ad7245a51291c96e80ebd0ec06e4fe493e90533e54fc"
+    },
+    {
+      "id": "ROOM226-00643",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "989639ff7a15c08fa8b07450d7fd35d15e67c82c6b5e1685bf9996f4d331d3f4"
+    },
+    {
+      "id": "ROOM226-00644",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00645",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "ROOM226-00646",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/launch-exit.json",
+      "bytes": 73,
+      "sha256": "7dd926a845761b2d2bdee1b78a112248b0e787ba016cfdc33f3eb2663a00c79a"
+    },
+    {
+      "id": "ROOM226-00647",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM226-00648",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/raw-seal.json",
+      "bytes": 23576,
+      "sha256": "bde1f6e8c3336f7f9120279420b7b8cd04c6e5d0e21b957b670112ebf0684e05"
+    },
+    {
+      "id": "ROOM226-00649",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/recipe.json",
+      "bytes": 1144,
+      "sha256": "4523037c6221ef724cf154d4c40285ff9c35c029f8ef86942a03310a5e6888e3"
+    },
+    {
+      "id": "ROOM226-00650",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/select-rows/runtime-preflight.json",
+      "bytes": 66470,
+      "sha256": "f9ce6559b6feff52997dc68f2d9c0de9705305dc490b0339c1fdf9665c980d5f"
+    },
+    {
+      "id": "ROOM226-00651",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/source-first.json",
+      "bytes": 2955,
+      "sha256": "29089af8f332300268ab5ffaac4444cbf9fbcc11b30ac40154f1b9ae45d3f852"
+    },
+    {
+      "id": "ROOM226-00652",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "ROOM226-00653",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/verification.json",
+      "bytes": 6932,
+      "sha256": "f3ea7f0fec453568537934f2e5843170a224e19a705c67e810b00efffb9eb0c6"
+    },
+    {
+      "id": "ROOM226-00654",
+      "kind": "local",
+      "path": "local/research/codex/run_room_delete.py",
+      "bytes": 843,
+      "sha256": "713a0ac8e237be306d012aaacd00dc02941acf11776fd497fdf8d30b1890b611"
+    },
+    {
+      "id": "ROOM226-00655",
+      "kind": "local",
+      "path": "local/research/codex/run_room_incremental.py",
+      "bytes": 846,
+      "sha256": "e9e7de03a8840c84f4da9c4d161631a081acfbe074c9ca0544ca2ced5db13f3f"
+    },
+    {
+      "id": "ROOM226-00656",
+      "kind": "local",
+      "path": "local/research/codex/run_room_incremental_r2.py",
+      "bytes": 846,
+      "sha256": "5accc480803a7784721c47c97beb4e49c120499e2f68e3c5ddd46abf784caeec"
+    },
+    {
+      "id": "ROOM226-00657",
+      "kind": "local",
+      "path": "local/research/codex/run_room_two_rows.py",
+      "bytes": 838,
+      "sha256": "b6c6ee57f29d048f09f128039222e531f33fa063e5121c0b9ea26bcea3d8ede3"
+    },
+    {
+      "id": "ROOM226-00658",
+      "kind": "local",
+      "path": "local/research/codex/sync_cp226.py",
+      "bytes": 11636,
+      "sha256": "e49e3b384bbc65383611a653971af1134242bc98c8daa20f38562b020196edf4"
+    },
+    {
+      "id": "ROOM226-00659",
+      "kind": "local",
+      "path": "local/research/codex/update_cp226_issues.py",
+      "bytes": 5011,
+      "sha256": "fd6f6b3e967d452820dcca95b065f9412fddbe6257859e4e5e2215013f6d6207"
+    },
+    {
+      "id": "ROOM226-00660",
+      "kind": "local",
+      "path": "local/research/codex/verify_room_delete.py",
+      "bytes": 4442,
+      "sha256": "4efe472ae506330da7729bad838281e25a549c229ca997abf808c1d4e1957b3b"
+    },
+    {
+      "id": "ROOM226-00661",
+      "kind": "local",
+      "path": "local/research/codex/verify_room_incremental.py",
+      "bytes": 4758,
+      "sha256": "47cf7d8fc3bf5a07063496e28a0b897209f78c2b65bec15b3780c8b666168d53"
+    },
+    {
+      "id": "ROOM226-00662",
+      "kind": "local",
+      "path": "local/research/codex/verify_room_two_rows.py",
+      "bytes": 4437,
+      "sha256": "2161291e9b73f447d75ae2647536f40e9b8ef5608a932e0f62b2aecbc2a59c62"
+    },
+    {
+      "id": "ROOM226-00663",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_room_delete.py",
+      "bytes": 20742,
+      "sha256": "926d8555d5e0f42d703ad9ff2499f0e7b5f8925e4638a142cdee29c494b6dd99"
+    },
+    {
+      "id": "ROOM226-00664",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_room_incremental.py",
+      "bytes": 20742,
+      "sha256": "33634648e1dfec97934147857405aaf62958e1ec0902ac3aa68dfbe3b8ff4121"
+    },
+    {
+      "id": "ROOM226-00665",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_room_incremental_r2.py",
+      "bytes": 20742,
+      "sha256": "33634648e1dfec97934147857405aaf62958e1ec0902ac3aa68dfbe3b8ff4121"
+    },
+    {
+      "id": "ROOM226-00666",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_room_two_rows.py",
+      "bytes": 20741,
+      "sha256": "ecc7b9048c5f0d4416ac4511339fcd1b5c5acfe40bd3299ec24baa090c93af43"
+    }
+  ]
+}

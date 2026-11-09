@@ -28,6 +28,15 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP226: danh sách hai phòng, cập nhật và xóa card đã có native evidence.**
+[Contract/limits](docs/PROTOCOL.md#room-list-lifecycle), [bốn run/hash](docs/evidence/room-list/README.md):
+hai KR đọc count2 và chọn đúng session/roomID; S→C91 update1/empty0 giữ row khác, không xóa toàn danh sách.
+S→C90 tag0 chỉ xóa khi session/roomID khớp; wrongID giữ card. Nativecursor/UI/typed82/PCAP đối chiếu,
+545raw seal/hash/cleanup; run đầu gửi counter73 sai giữ nguyên, bản sửa55/58 đã đo. Chưa join87/membership/
+registry/Rust/gate mới. CP225 merge [PR296](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/296)/`3bd1cdd`;
+AUD065 qua224/kế228. [PLAN](docs/PLAN.md#current-order) tiếp row selection→session lookup/join projection.
+
+
 **CP225: process B mới đăng nhập lại được; cùng process sau mất kênh vẫn lỗi.**
 [Contract/limits](docs/PROTOCOL.md#auth-fresh-process), [ba run/hash](docs/evidence/login-runtime/README.md#cp225):
 cleanup B cũ rồi mở KR mới → native0/ID2-name-echo6/67/newlease-session, A cùngPID/owner giữ8s+;

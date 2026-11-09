@@ -1,0 +1,999 @@
+{
+  "schema": "kre-room-list-lifecycle-v1",
+  "recorded_utc": "2026-11-09T03:49:36.885239+00:00",
+  "baseline": "3bd1cdd6031281ae346c58ae2ac2754ce3e0e121",
+  "contract": "docs/PROTOCOL.md#room-list-lifecycle",
+  "research": "docs/RESEARCH.md#rust-service-gaps",
+  "plan": "docs/PLAN.md#current-order",
+  "runs": [
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "result": "twoactual_KR_2room91rows_fullcursor_error0_distinct_native82_selection",
+      "run_sha256": "9a27b180cf94023a585d874cbcbd558603959ea476e2e7a1446923077de64b5c",
+      "duration_s": 46.057687242,
+      "raw_count": 111,
+      "frozen_count": 339,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "roles": [
+        {
+          "role": "A",
+          "native_rows": [
+            {
+              "kind": "begin",
+              "n": 1,
+              "ns": 170016964199754,
+              "pc": "0x8150f0"
+            },
+            {
+              "kind": "row_begin",
+              "n": 1,
+              "ns": 170016966308625,
+              "pc": "0xd9d720",
+              "roomid": 101,
+              "used": 6,
+              "size": 81,
+              "error": 0
+            },
+            {
+              "kind": "row_end",
+              "n": 1,
+              "ns": 170016968585646,
+              "pc": "0xd9d98b",
+              "used": 41,
+              "size": 81,
+              "error": 0
+            },
+            {
+              "kind": "row_begin",
+              "n": 2,
+              "ns": 170016970739267,
+              "pc": "0xd9d720",
+              "roomid": 202,
+              "used": 47,
+              "size": 81,
+              "error": 0
+            },
+            {
+              "kind": "row_end",
+              "n": 2,
+              "ns": 170016973014038,
+              "pc": "0xd9d98b",
+              "used": 81,
+              "size": 81,
+              "error": 0
+            },
+            {
+              "kind": "end",
+              "n": 1,
+              "ns": 170016975681730,
+              "pc": "0x8152ac",
+              "count": 2,
+              "outer_used": 93,
+              "outer_size": 93,
+              "error54": 0,
+              "error58": 0
+            }
+          ],
+          "selected82": {
+            "sequence": 88,
+            "body_bytes": 11,
+            "frame_sha256": "5b5e909ae4e9b34ae1d4ff7747a24bf7c259c7ce708ac42f63985a74782da2db",
+            "fields": [
+              1,
+              101,
+              0,
+              1,
+              5
+            ]
+          },
+          "ownedclient": {
+            "pid": 159,
+            "comm": "CA-r2-stage-soc",
+            "namespace": "net:[4026533551]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-A",
+            "command": "/home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-A/CA-r2-stage-social-cmp.exe multiserveridx:0 token_1:0123456789abcdef0123456789abcdef                                                                         ",
+            "monotonic_ns": 170001089977455,
+            "start_ticks": "16999675",
+            "host_exe": "/usr/lib/wine/x86_64-unix/wine-preloader"
+          },
+          "image": {
+            "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/A/before-select.png",
+            "sha256": "0889990731b259bec4ea8e2e4a8ff17a6b9df4bc70f56826ed351c446c484a48"
+          },
+          "manual_UI": "RoomAlpha/S02andRoomBeta/S03bothWAITING1/4cardsvisible; Afirstcard/Bsecondcardordinarydoubleclickjoinscorrect82wire. Nojoinreply/roommembershipclaim."
+        },
+        {
+          "role": "B",
+          "native_rows": [
+            {
+              "kind": "begin",
+              "n": 1,
+              "ns": 170021697640901,
+              "pc": "0x8150f0"
+            },
+            {
+              "kind": "row_begin",
+              "n": 1,
+              "ns": 170021702065183,
+              "pc": "0xd9d720",
+              "roomid": 101,
+              "used": 6,
+              "size": 81,
+              "error": 0
+            },
+            {
+              "kind": "row_end",
+              "n": 1,
+              "ns": 170021707476206,
+              "pc": "0xd9d98b",
+              "used": 41,
+              "size": 81,
+              "error": 0
+            },
+            {
+              "kind": "row_begin",
+              "n": 2,
+              "ns": 170021712711638,
+              "pc": "0xd9d720",
+              "roomid": 202,
+              "used": 47,
+              "size": 81,
+              "error": 0
+            },
+            {
+              "kind": "row_end",
+              "n": 2,
+              "ns": 170021716464410,
+              "pc": "0xd9d98b",
+              "used": 81,
+              "size": 81,
+              "error": 0
+            },
+            {
+              "kind": "end",
+              "n": 1,
+              "ns": 170021721435463,
+              "pc": "0x8152ac",
+              "count": 2,
+              "outer_used": 93,
+              "outer_size": 93,
+              "error54": 0,
+              "error58": 0
+            }
+          ],
+          "selected82": {
+            "sequence": 82,
+            "body_bytes": 11,
+            "frame_sha256": "3beaf996aa20871198b74773b3af906ae9328c62059900cfd6b79fec534bd2d1",
+            "fields": [
+              2,
+              202,
+              0,
+              1,
+              5
+            ]
+          },
+          "ownedclient": {
+            "pid": 308,
+            "comm": "CA-r2-stage-soc",
+            "namespace": "net:[4026533611]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-B",
+            "command": "/home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe multiserveridx:0 token_1:fedcba9876543210fedcba9876543210                                                                         ",
+            "monotonic_ns": 170003268150633,
+            "start_ticks": "17000116",
+            "host_exe": "/usr/lib/wine/x86_64-unix/wine-preloader"
+          },
+          "image": {
+            "path": "local/research/codex/room-two-rows-r1/select-rows/cycles/B/before-select.png",
+            "sha256": "85ea39620c719c406cbf3189b9bfc258eb1be4f3582417a5c000503977dac277"
+          },
+          "manual_UI": "RoomAlpha/S02andRoomBeta/S03bothWAITING1/4cardsvisible; Afirstcard/Bsecondcardordinarydoubleclickjoinscorrect82wire. Nojoinreply/roommembershipclaim."
+        }
+      ],
+      "tcp_capture_records": 174,
+      "list_fixture": {
+        "source": "emu_choice",
+        "status": "design",
+        "count": 2,
+        "rows": [
+          {
+            "session": 1,
+            "roomid": 101,
+            "title": "RoomAlpha",
+            "row_bytes": 41
+          },
+          {
+            "session": 2,
+            "roomid": 202,
+            "title": "RoomBeta",
+            "row_bytes": 40
+          }
+        ],
+        "raw_rows_bytes": 81,
+        "body_bytes": 93,
+        "frame_sha256": "1604eaf0a982e683603ef26c3a56f4589aafa883782b6ddf0a712c1af125387e",
+        "tail22_unchanged": true,
+        "changed_profile": "Onlyroomlist_A/Bfixturepinsandremoveexplicitroom_titlemode(single-rowrewriter). Other45fixturepinsidentical. Fixturecount2notnativeproofuntilrun/cursors/UI.",
+        "limits": "Fixed2rowreadonlylisting/selectonly;no dynamicregistry/full/password/errors/membership/roomcapacity semantics."
+      },
+      "limits": "Twofixeduncompressedrows/tail22/2session-roomIDs/sameknownfeatureguards/Winecopy4b/privatebridge/2accountservice. Actualnativecount2/inner81outer93/errors0/UI/cards/differenttyped82confirmed. Adapterrecords82andintentionallysendsnojoinreply; notmembership/roomregistry/update/remove/full/password/generalcapacity/mode/authority/Rust/gateclaim. Other45fixturepinsunchanged;single-rowtitlemodeoffexplicit. Internet thật chưa kiểm."
+    },
+    {
+      "source": "design",
+      "status": "confirmed",
+      "run_sha256": "93e03bbb03f34be974a0c32307cbca6822f66870a3588e81ab2e7fd6c6ac4cc1",
+      "duration_s": 80.645000355,
+      "raw_count": 185,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "result": "FAIL_dynamic91_adapter_sequence73_after_fixed_setup_last52",
+      "fact": "Initialcount2nativeinner81outer93/errors0both. Adaptergenericsenddefault73whileprivateauthpairsetupusedfixed46/49/52withoutinitializingevent.s2c_next_seq; dynamic91frame73sentandbothnativeRemotegdbconnectionclosed/TCPEOF,no updateconsumer/empty/controlselection. No serviceerror; do notinfer91updateunsupported frombadcounter.",
+      "correction": "Freshderivedadaptermustinitializeonlymissingper-channelnextseq55afteractualknownfixedsetup. Retainoldsource/run/failure; no clientpatch/bodychange. Strictfutureharnessalso recognizesRemoteconnectionclosed,beyondSIGSEGV/ABRT.",
+      "limits": "Encodersequenceexplanationfromcode/fixedtemplates+frozenframe; no claimnativeCRCfaultreturn/terminationcauseobserved. R2neededtomeasurecorrectcounterpath."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "result": "91_count1_updates_session2_and_count0_retains_bothcards_native82old_and_updatedID",
+      "run_sha256": "d4e78800e93fc6372cc76a13e8642084c65100ac64f861cf170b9a4c7ec44765",
+      "duration_s": 51.010466324,
+      "raw_count": 125,
+      "frozen_count": 369,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "roles": [
+        {
+          "role": "A",
+          "native_list_ends": [
+            {
+              "kind": "end",
+              "n": 1,
+              "ns": 170372496422885,
+              "pc": "0x8152ac",
+              "count": 2,
+              "outer_used": 93,
+              "outer_size": 93,
+              "error54": 0,
+              "error58": 0
+            },
+            {
+              "kind": "end",
+              "n": 2,
+              "ns": 170381599357936,
+              "pc": "0x8152ac",
+              "count": 1,
+              "outer_used": 53,
+              "outer_size": 53,
+              "error54": 0,
+              "error58": 0
+            },
+            {
+              "kind": "end",
+              "n": 3,
+              "ns": 170384610947392,
+              "pc": "0x8152ac",
+              "count": 0,
+              "outer_used": 2,
+              "outer_size": 2,
+              "error54": 0,
+              "error58": 0
+            }
+          ],
+          "native_row_ids": [
+            101,
+            202,
+            303
+          ],
+          "selected82": {
+            "sequence": 94,
+            "fields": [
+              1,
+              101,
+              0,
+              1,
+              5
+            ],
+            "sha256": "d6ab81902942c61ea93a8923b376ffccc5bd221e7608c9080ba19ce2375ccf20"
+          },
+          "manual_UI": {
+            "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/A/before-select.png",
+            "sha256": "15adbc4bd7bfce91ba83cd6bab95e1c6135e2cb76d0ba9e962bd2e094d268a13",
+            "observation": "Aftercount1updateandcount0bothcardsremain:RoomAlpha/S02andRoomGamma/S03,WAITING1/4. B82usesupdatedID303; A82stillID101. Countsdo notreplacelist/clearinthismeasuredprofile."
+          }
+        },
+        {
+          "role": "B",
+          "native_list_ends": [
+            {
+              "kind": "end",
+              "n": 1,
+              "ns": 170377628651822,
+              "pc": "0x8152ac",
+              "count": 2,
+              "outer_used": 93,
+              "outer_size": 93,
+              "error54": 0,
+              "error58": 0
+            },
+            {
+              "kind": "end",
+              "n": 2,
+              "ns": 170381595222514,
+              "pc": "0x8152ac",
+              "count": 1,
+              "outer_used": 53,
+              "outer_size": 53,
+              "error54": 0,
+              "error58": 0
+            },
+            {
+              "kind": "end",
+              "n": 3,
+              "ns": 170384612614012,
+              "pc": "0x8152ac",
+              "count": 0,
+              "outer_used": 2,
+              "outer_size": 2,
+              "error54": 0,
+              "error58": 0
+            }
+          ],
+          "native_row_ids": [
+            101,
+            202,
+            303
+          ],
+          "selected82": {
+            "sequence": 88,
+            "fields": [
+              2,
+              303,
+              0,
+              1,
+              5
+            ],
+            "sha256": "0ffda59fbebbdec91d00e75f1b95b6e7f02b6c8ce9de18f6641221bac9a8a2e2"
+          },
+          "manual_UI": {
+            "path": "local/research/codex/room-incremental-r2/update-and-empty/cycles/B/before-select.png",
+            "sha256": "861cb100af837b004f4859e1aa13dafe9a50729944cc164ecd868ccab21a6bf4",
+            "observation": "Aftercount1updateandcount0bothcardsremain:RoomAlpha/S02andRoomGamma/S03,WAITING1/4. B82usesupdatedID303; A82stillID101. Countsdo notreplacelist/clearinthismeasuredprofile."
+          }
+        }
+      ],
+      "tcp_capture_records": 188,
+      "observer_limit": "Remoteconnectionclosedmayoccurduringnormalownedcleanupafterearlycompletion; do notrejectwholelogfromthatmarker. Runtimechecksstrictbeforecompletion, fatalSIGABRT/SIGSEGV/illegalinstructionstillwholelogchecked.",
+      "result_scope": "Sameknownfeatureguards/uncompressedtail22/initial2→update1→empty0. 91isnotfullreplacement/clearoncount0inthesemeasuredstates. No deletioncodec/nativejoin/membership/registryacceptance.",
+      "correction": "R1adapterwrongcounter73retainedsealed185raw/failure;R2initializesmissingnext55afterknownfixed46/49/52,then58. Source/profile/body/inputunchanged; nativefullcursor/UI/wirepathnowobserved,notclaimR1nativeCRCcause.",
+      "limits": "No originalserverregistrylaw/allsnapshots/featurevariants/password/full/error/capacity/membership/authority/Rust/gate. Newdynamic91seqmustcontinueperconnection; default73onlybelongsdifferentpostsetupcontext. Internet thật chưa kiểm."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "result": "90_tag0_session2_wrongIDignored_matching202_clears_only_Bcard_native7_21_errors0",
+      "run_sha256": "eba7b7e9f78529531dc00ce5b6dd9de51ec0c9f054a7c8ad31a4d3a92a6a2544",
+      "duration_s": 49.103631385,
+      "raw_count": 124,
+      "frozen_count": 358,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "roles": [
+        {
+          "role": "A",
+          "native90_ends": [
+            {
+              "kind": "end90",
+              "n": 1,
+              "ns": 170624752788730,
+              "pc": "0x815628",
+              "count1": 0,
+              "count2": 1,
+              "used": 7,
+              "size": 7,
+              "error": 0,
+              "outer_used": 21,
+              "outer_size": 21,
+              "error54": 0,
+              "error58": 0
+            }
+          ],
+          "native_matching_clear": [],
+          "selected82": {
+            "sequence": 94,
+            "fields": [
+              2,
+              202,
+              0,
+              1,
+              5
+            ],
+            "sha256": "b4a56a44b526ca5ca770dfb3188833c3dd321311495d3413dbdd60355bb18eef"
+          },
+          "manual_UI": {
+            "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/A/before-select.png",
+            "sha256": "975a862ba01c7c1f2bd5acf1692497de795c2e45d4445191f1ae724dbcb29bbe",
+            "observation": "AwrongIDonlyretainsbothAlpha/S02Beta/S03;BwrongthenmatchremovesBetacardretainingAlpha. AfterimagesordinaryclicksArow2/Brow1yieldexpected82."
+          }
+        },
+        {
+          "role": "B",
+          "native90_ends": [
+            {
+              "kind": "end90",
+              "n": 1,
+              "ns": 170624749250689,
+              "pc": "0x815628",
+              "count1": 0,
+              "count2": 1,
+              "used": 7,
+              "size": 7,
+              "error": 0,
+              "outer_used": 21,
+              "outer_size": 21,
+              "error54": 0,
+              "error58": 0
+            },
+            {
+              "kind": "end90",
+              "n": 2,
+              "ns": 170628747368925,
+              "pc": "0x815628",
+              "count1": 0,
+              "count2": 1,
+              "used": 7,
+              "size": 7,
+              "error": 0,
+              "outer_used": 21,
+              "outer_size": 21,
+              "error54": 0,
+              "error58": 0
+            }
+          ],
+          "native_matching_clear": [
+            {
+              "kind": "matching_clear_branch",
+              "n": 1,
+              "ns": 170628742021482,
+              "pc": "0x815570",
+              "session": 2,
+              "roomid": 202,
+              "row_object": "0x61723a4c"
+            }
+          ],
+          "selected82": {
+            "sequence": 88,
+            "fields": [
+              1,
+              101,
+              0,
+              1,
+              5
+            ],
+            "sha256": "5b5e909ae4e9b34ae1d4ff7747a24bf7c259c7ce708ac42f63985a74782da2db"
+          },
+          "manual_UI": {
+            "path": "local/research/codex/room-delete-r1/wrong-ID-and-match/cycles/B/before-select.png",
+            "sha256": "9ce1d22e04b0ae40ad5fb51fb9af62a90844ca53a904533fd9e39cec232b8006",
+            "observation": "AwrongIDonlyretainsbothAlpha/S02Beta/S03;BwrongthenmatchremovesBetacardretainingAlpha. AfterimagesordinaryclicksArow2/Brow1yieldexpected82."
+          }
+        }
+      ],
+      "tcp_capture_records": 178,
+      "contract_scope": "Static810C80opcode90→8152C0; outeru16counts[0,1],seconduncompressedblobtag0/u16session2/u32roomID. Wrong999bothno matchingclearpath/Acardstillselectable;correct202Bmatchingpathandcardremoved. SelectedsurvivingcardID101. Nativeouter21/inner7/errors0.",
+      "limits": "Onlysecondstreamtag0/count1=0/count2=1/knownfeatures/twofixedroomlist. Firststreamandtag1/otherrows/unknownsession/staleepochs/error/password/registryjoinauthoritynotmeasured. No reply87/membership orRust/gateclaim. Role-specificUI/capture/nativechecksseparate;Internet thật chưa kiểm."
+    }
+  ],
+  "static_dispatch": {
+    "source": "kr_static",
+    "status": "confirmed",
+    "method": "8-entryactualjumptable+boundedbranchprefix/copiedPEpinnedmodelmatch",
+    "mapping": [
+      {
+        "opcode": 86,
+        "branch": "0x810b9c",
+        "instructions": [
+          {
+            "va": "0x810b9c",
+            "mnemonic": "mov",
+            "operand": "edx, dword ptr [ebp + 8]"
+          },
+          {
+            "va": "0x810b9f",
+            "mnemonic": "push",
+            "operand": "edx"
+          },
+          {
+            "va": "0x810ba0",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 8]"
+          },
+          {
+            "va": "0x810ba3",
+            "mnemonic": "call",
+            "operand": "0x815740"
+          },
+          {
+            "va": "0x810ba8",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x810ba9",
+            "mnemonic": "jmp",
+            "operand": "0x810c78"
+          }
+        ]
+      },
+      {
+        "opcode": 87,
+        "branch": "0x810bae",
+        "instructions": [
+          {
+            "va": "0x810bae",
+            "mnemonic": "mov",
+            "operand": "eax, dword ptr [ebp + 8]"
+          },
+          {
+            "va": "0x810bb1",
+            "mnemonic": "push",
+            "operand": "eax"
+          },
+          {
+            "va": "0x810bb2",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 8]"
+          },
+          {
+            "va": "0x810bb5",
+            "mnemonic": "call",
+            "operand": "0x8169c0"
+          },
+          {
+            "va": "0x810bba",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x810bbb",
+            "mnemonic": "jmp",
+            "operand": "0x810c78"
+          }
+        ]
+      },
+      {
+        "opcode": 88,
+        "branch": "0x810bc0",
+        "instructions": [
+          {
+            "va": "0x810bc0",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp + 8]"
+          },
+          {
+            "va": "0x810bc3",
+            "mnemonic": "push",
+            "operand": "ecx"
+          },
+          {
+            "va": "0x810bc4",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 8]"
+          },
+          {
+            "va": "0x810bc7",
+            "mnemonic": "call",
+            "operand": "0x817a10"
+          },
+          {
+            "va": "0x810bcc",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x810bcd",
+            "mnemonic": "jmp",
+            "operand": "0x810c78"
+          }
+        ]
+      },
+      {
+        "opcode": 89,
+        "branch": "0x810b8a",
+        "instructions": [
+          {
+            "va": "0x810b8a",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp + 8]"
+          },
+          {
+            "va": "0x810b8d",
+            "mnemonic": "push",
+            "operand": "ecx"
+          },
+          {
+            "va": "0x810b8e",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 8]"
+          },
+          {
+            "va": "0x810b91",
+            "mnemonic": "call",
+            "operand": "0x815640"
+          },
+          {
+            "va": "0x810b96",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x810b97",
+            "mnemonic": "jmp",
+            "operand": "0x810c78"
+          }
+        ]
+      },
+      {
+        "opcode": 90,
+        "branch": "0x810b78",
+        "instructions": [
+          {
+            "va": "0x810b78",
+            "mnemonic": "mov",
+            "operand": "eax, dword ptr [ebp + 8]"
+          },
+          {
+            "va": "0x810b7b",
+            "mnemonic": "push",
+            "operand": "eax"
+          },
+          {
+            "va": "0x810b7c",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 8]"
+          },
+          {
+            "va": "0x810b7f",
+            "mnemonic": "call",
+            "operand": "0x8152c0"
+          },
+          {
+            "va": "0x810b84",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x810b85",
+            "mnemonic": "jmp",
+            "operand": "0x810c78"
+          }
+        ]
+      },
+      {
+        "opcode": 91,
+        "branch": "0x810b66",
+        "instructions": [
+          {
+            "va": "0x810b66",
+            "mnemonic": "mov",
+            "operand": "edx, dword ptr [ebp + 8]"
+          },
+          {
+            "va": "0x810b69",
+            "mnemonic": "push",
+            "operand": "edx"
+          },
+          {
+            "va": "0x810b6a",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 8]"
+          },
+          {
+            "va": "0x810b6d",
+            "mnemonic": "call",
+            "operand": "0x8150f0"
+          },
+          {
+            "va": "0x810b72",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x810b73",
+            "mnemonic": "jmp",
+            "operand": "0x810c78"
+          }
+        ]
+      },
+      {
+        "opcode": 92,
+        "branch": "0x810c78",
+        "instructions": [
+          {
+            "va": "0x810c78",
+            "mnemonic": "mov",
+            "operand": "esp, ebp"
+          },
+          {
+            "va": "0x810c7a",
+            "mnemonic": "pop",
+            "operand": "ebp"
+          },
+          {
+            "va": "0x810c7b",
+            "mnemonic": "ret",
+            "operand": "4"
+          },
+          {
+            "va": "0x810c7e",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x810c80",
+            "mnemonic": "pushfd",
+            "operand": ""
+          },
+          {
+            "va": "0x810c81",
+            "mnemonic": "or",
+            "operand": "eax, dword ptr [ecx - 0x7ef45200]"
+          },
+          {
+            "va": "0x810c87",
+            "mnemonic": "add",
+            "operand": "al, al"
+          },
+          {
+            "va": "0x810c89",
+            "mnemonic": "or",
+            "operand": "eax, dword ptr [ecx - 0x7ef47600]"
+          },
+          {
+            "va": "0x810c8f",
+            "mnemonic": "add",
+            "operand": "byte ptr [eax + 0xb], bh"
+          },
+          {
+            "va": "0x810c92",
+            "mnemonic": "add",
+            "operand": "dword ptr [eax], 0x810b66"
+          }
+        ]
+      },
+      {
+        "opcode": 93,
+        "branch": "0x810bd2",
+        "instructions": [
+          {
+            "va": "0x810bd2",
+            "mnemonic": "lea",
+            "operand": "ecx, [ebp - 1]"
+          },
+          {
+            "va": "0x810bd5",
+            "mnemonic": "call",
+            "operand": "0x7a0180"
+          },
+          {
+            "va": "0x810bda",
+            "mnemonic": "movzx",
+            "operand": "edx, al"
+          },
+          {
+            "va": "0x810bdd",
+            "mnemonic": "test",
+            "operand": "edx, edx"
+          },
+          {
+            "va": "0x810bdf",
+            "mnemonic": "je",
+            "operand": "0x810bf7"
+          },
+          {
+            "va": "0x810be1",
+            "mnemonic": "call",
+            "operand": "0x1220480"
+          },
+          {
+            "va": "0x810be6",
+            "mnemonic": "test",
+            "operand": "eax, eax"
+          },
+          {
+            "va": "0x810be8",
+            "mnemonic": "je",
+            "operand": "0x810bf7"
+          },
+          {
+            "va": "0x810bea",
+            "mnemonic": "mov",
+            "operand": "eax, dword ptr [ebp + 8]"
+          },
+          {
+            "va": "0x810bed",
+            "mnemonic": "push",
+            "operand": "eax"
+          },
+          {
+            "va": "0x810bee",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 8]"
+          }
+        ]
+      }
+    ],
+    "limits": "Dispatchmappingstaticnotruntimeacceptance/deletionsemantics."
+  },
+  "static_delete_prefix": {
+    "source": "kr_static",
+    "status": "candidate",
+    "method": "Two64byteprefixes: directcalleeD9DE80of90tag0/session-roomIDmatch and8155FCepilogue;copy-modelmatch/no calleechase.",
+    "ranges": [
+      {
+        "va": "0xd9de80",
+        "max_bytes": 64,
+        "sha256": "387df04ae260144c21979767aed9d345a531fadb61b7233a87875c98f103947b",
+        "instructions": [
+          {
+            "va": "0xd9de80",
+            "mnemonic": "push",
+            "operand": "ebp"
+          },
+          {
+            "va": "0xd9de81",
+            "mnemonic": "mov",
+            "operand": "ebp, esp"
+          },
+          {
+            "va": "0xd9de83",
+            "mnemonic": "push",
+            "operand": "ecx"
+          },
+          {
+            "va": "0xd9de84",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], ecx"
+          },
+          {
+            "va": "0xd9de87",
+            "mnemonic": "push",
+            "operand": "0"
+          },
+          {
+            "va": "0xd9de89",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 4]"
+          },
+          {
+            "va": "0xd9de8c",
+            "mnemonic": "add",
+            "operand": "ecx, 0x38"
+          },
+          {
+            "va": "0xd9de8f",
+            "mnemonic": "call",
+            "operand": "0x55fd30"
+          },
+          {
+            "va": "0xd9de94",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0xd9de95",
+            "mnemonic": "mov",
+            "operand": "esp, ebp"
+          },
+          {
+            "va": "0xd9de97",
+            "mnemonic": "pop",
+            "operand": "ebp"
+          },
+          {
+            "va": "0xd9de98",
+            "mnemonic": "ret",
+            "operand": "8"
+          }
+        ]
+      },
+      {
+        "va": "0x8155fc",
+        "max_bytes": 64,
+        "sha256": "aea2c3071e962a9ba0a07ef011ea2fbeafb2ccc7e580532cdb09ad514a2db45c",
+        "instructions": [
+          {
+            "va": "0x8155fc",
+            "mnemonic": "push",
+            "operand": "0"
+          },
+          {
+            "va": "0x8155fe",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 0x3c]"
+          },
+          {
+            "va": "0x815601",
+            "mnemonic": "call",
+            "operand": "0x813b60"
+          },
+          {
+            "va": "0x815606",
+            "mnemonic": "mov",
+            "operand": "byte ptr [ebp - 4], 0"
+          },
+          {
+            "va": "0x81560a",
+            "mnemonic": "lea",
+            "operand": "ecx, [ebp - 0x90]"
+          },
+          {
+            "va": "0x815610",
+            "mnemonic": "call",
+            "operand": "0x14e9290"
+          },
+          {
+            "va": "0x815615",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], 0xffffffff"
+          },
+          {
+            "va": "0x81561c",
+            "mnemonic": "lea",
+            "operand": "ecx, [ebp - 0xac]"
+          },
+          {
+            "va": "0x815622",
+            "mnemonic": "call",
+            "operand": "0x14e9290"
+          },
+          {
+            "va": "0x815627",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x815628",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 0xc]"
+          },
+          {
+            "va": "0x81562b",
+            "mnemonic": "mov",
+            "operand": "dword ptr fs:[0], ecx"
+          },
+          {
+            "va": "0x815632",
+            "mnemonic": "mov",
+            "operand": "esp, ebp"
+          },
+          {
+            "va": "0x815634",
+            "mnemonic": "pop",
+            "operand": "ebp"
+          },
+          {
+            "va": "0x815635",
+            "mnemonic": "ret",
+            "operand": "4"
+          }
+        ]
+      }
+    ],
+    "limits": "Staticfieldclear/vfuncnotnativecardeffect. Needpositive+wrong-IDnegative/noassumptionuniversaldeletecontract."
+  },
+  "limits": "KR00967/Winecopy4b/twoactual/private2netns/uncompressedknownrowtail22. Listcount/update/empty/removal/typed82selectiononly; no87reply/membership/dynamicregistry/production/Rust/gate. Failurewrongseq73kept;correctnext55/58perconnection. Internet thật chưa kiểm."
+}
