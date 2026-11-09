@@ -1,0 +1,106 @@
+{
+  "id": "AUD066",
+  "trigger": "periodic",
+  "completed_through": "CP228",
+  "recorded_utc": "2026-11-09T04:50:22.560678+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/login-runtime/README.md",
+    "docs/evidence/login-runtime/fresh-process.json",
+    "docs/evidence/room-list/README.md",
+    "docs/evidence/room-list/lifecycle.json",
+    "docs/evidence/room-list/join-projection.json",
+    "docs/evidence/room-list/local-roster.json",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/checkpoints/audits/AUD065.json",
+    "local/research/codex/room-local-roster-r1/source-first.json",
+    "local/research/codex/room-local-roster-r1/verification.json",
+    "local/research/codex/room-local-roster-r1/two-single-rosters/raw-seal.json",
+    "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/proof-service-state-final.json",
+    "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/client.log",
+    "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/client.log",
+    "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-17.png",
+    "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-17.png",
+    "local/research/codex/room-player-r1/DC5890.asm"
+  ],
+  "method": "Manual selective README→PLAN→PROTOCOL→RESEARCH→evidence review CP225–228; compared saved native cursor/setter/name markers, PCAP/owner and input freeze/cleanup reports, viewed both CP228 screen17 images. Read cached DC5890.asm call→predicate at DC5925. Does not claim rereading all historical raw or semantic approval by checker. Prior records/AUD065/seals unchanged; periodic interval remains4.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Fresh process login after controlled close could be mistaken for same-process recovery or account resume.",
+      "correction": "CP225 new PID/native0/new lease-session/67 positive and wrong-fresh-token native1 negative stay scoped. CP224 sameprocess fatal and CP220 before17 receiver remain explicit blockers, no repeated SDK/VM/getter/hello tests.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Count0 room list could be treated as clear-all and list cards as room membership.",
+      "correction": "CP226 91count0 retains card; tag0/90 needs matching session+roomID to remove. CP227 context projection had585 unanswered; CP228 own roster only. Historical evidence not rewritten.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/room-list/README.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "CP227 first stale-ID policy used error1 and retry edge clicks; that could be presented as the correct stale-ID reason or a pending-guard fault.",
+      "correction": "Code1 is native WrongPassword; corrected generic2 CantJoinRoom has actual notice/ack/refresh/new82/87. First edge failures lack secondcallback and do not prove guard rejection. Ordinary center recipe positive; original reason/security semantics unknown. Preserve both failures/correction.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/room-list/join-projection.json",
+        "docs/evidence/room-list/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "CP228 raw marker own_slot atDC5925 has EAX1; name could falsely imply slot1. 291store could be overstated as personal UI render.",
+      "correction": "DC5920 call1241090→DC5925 testEAX: predicate1, not slot. Actual slot0 from123FF10arg0,106slot0,first UI card; localidentityindex0 separately. 291producer128/name confirmed, personal-render after291 not measured. Cache mapcaption not new map acceptance.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/room-list/local-roster.json",
+        "docs/evidence/room-list/README.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Private fixed per-recipient roster could be conflated with registry or all-packet two-room isolation.",
+      "correction": "CP228 private two contexts each one own106/110/291; production ProbeService still globalroom. No atomic membership lifecycle/general isolation/Ready/start/UDP/Rust/gate. PLAN moves to room tuple/generation/account-owner prototype/model negatives then native leave/rejoin, avoiding more fixedprojection-only RE.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Checkpoint cadence or integration state could drift across delivery.",
+      "correction": "CP227 PR298 merged; CP228 periodic AUD066 advances next toCP232 without reset. Eight sourceWIP hashes unchanged/excluded/noRusttree, #14/#285 OPEN. K6c WAN giả lập/K7 remain scoped; Internet thật chưa kiểm separate backlog.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/checkpoints/audits/AUD066.json",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "General registry/membership lifecycle/generation/queued-recipient fences not implemented or accepted; measured fixed projection only.",
+    "Auth sameprocess fatal and before17 receiver selection remain separate blockers; fullauth/DB/API/sessionexpiry/revoke/restart unknown.",
+    "Rust design delivered CP213/PR286; no Rust implementation in this batch. Native291 personal-render and non-triggered room/password/full/mode variants remain unmeasured.",
+    "Internet thật chưa kiểm/real ISP/CGNAT is separate backlog, not implicit K6c/K7 dependency."
+  ]
+}

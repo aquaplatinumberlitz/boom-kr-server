@@ -62,3 +62,28 @@ prefixes96byte; read-onlyCapstone/copiedPE-modelmatch, khôngREA/fullfunction/SD
 rosterempty. `room-join-delivery-r1/message-input-corrections.json` pin cả wrongpassword/correctgeneric/lastUI,
 khôngrewriteoldreports/raw. All802raw/hash/preflight/cleanup; nogeneralregistry/membership/Rust/gateclaim.
 AUD065through224/kế228; milestone roster tiếp ở PLAN, khônglặpđườngđãđo. Internet thật chưa kiểm.
+
+<a id="cp228"></a>
+## CP228 — own roster theo hai room context
+
+[Contract/limits](../../PROTOCOL.md#room-local-roster), [metadata](local-roster.json),
+[unknown](../../RESEARCH.md#gap-create-join), [thứ tự duy nhất](../../PLAN.md#current-order).
+CP227 đã merge [PR298](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/298).
+
+| Root local/research/codex/ | Wall/raw/exit | run.json SHA256 |
+|---|---|---|
+| `room-local-roster-r1/two-single-rosters` | 50.735937193s/129/0 | `eaf0509540382e45b05b0a49780b3faa41de7d7f104caabc27d07e0cd6e5e62d` |
+
+`source-first.json` trỏ CP020/026/199/200/227 và merged four profile builders; `members.json` ghi room tuple/
+ownidentity/slot0/chief design. `two-single-rosters/recipe.json`, config/profile/probe/service/body files giữ
+source đã frozen377pins tới seal; không source/config/input đổi trong run. Hai KR/Wine10.0/copy4b/authpair/
+hai prefix-display-netns/IP/directbridge/no external route; runtime seal/raw129/hash/ownedcleanup0.
+`verification.json` đối chiếu actual585, chỉ own106/110/291 seq58/61/64 và native204/6/128/errors0,
+13B1577/124001C/123FF10, screenshots `cycles/A/screen-17.png` và `cycles/B/screen-17.png`, hold8.864759497s.
+Ảnh A Alpha/KRLocal và B Beta/KRGuest đều ô đầu/chief, bảy ô còn trống.
+
+Giữ raw marker `own_slot=1` tạiDC5925 nhưng ghi đúng là predicate1241090, không slotindex; cache
+`room-player-r1/DC5890.asm:41` là đối chiếu. 291producer/name không chứng minh personal panel render sau291;
+mapcaption từ cache không map mới. Không có member frame phòng kia trong ca, không generalregistry/
+membership lifecycle/allpacket isolation/Ready/start/UDP/production/Rust/gate. AUD066 qua228/kế232;
+tiếp registry có generation/account owner ở PLAN, không rerun fixedprojection. Internet thật chưa kiểm.

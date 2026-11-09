@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-09",
-  "baseline": "ccab4cc88d5042b0f2384a3f39a2f8593e3f1914",
+  "baseline": "c7ce7cd7350c991e69c92dcc67d2b55540d1859b",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP227selected82→87native8117E0lookup/session-ID-title/full7errors0/Prepareheaders. Generic2/1byte/ack/91refresh/new82ID303→87Gamma/nativecallbacks/PCAP/sameauthowners.5sealedruns802raw, code1WrongPassword/inputedgefailures kept/correctcenterrecipe.",
-      "remaining": "No585reply/roster/membership/registry/tworoomstateisolation/Ready/start/UDP; whyedgeinputmissedunknown/notguardfault. Fullerrorenum/password/productauthority/fullauth/DB/API/Rustmissing; authsameprocessfatal/before17receiverblockersdistinct.",
-      "next_test": "PerPLAN585→known106/110/291room-localownID/slot0/chief/tworoomsessions/nativefullcursor/ownlookup/UI; buildersinputsnotoracle, nootherroompeer, registrybindingsbeforemutation. No repeatedlist/context/error2/inputcontrols.",
+      "known": "CP228 actual585→own106/110/291 two fixed room contexts; native204/6/128/errors0/ownID1-2/slot0/chief/UI;129raw frozen/sealed/cleanup0. CP227 context/error2/refresh/retry delivered PR298.",
+      "remaining": "No general registry/atomic membership lifecycle/all-packet isolation/Ready/start/UDP/fullauth/DB/API/Rust. Raw own_slot predicate1 is not slot1; 291producer is not personal-render. Sameprocessfatal/before17EOF blockers distinct.",
+      "next_test": "PLAN private registry keyed room-session-ID-generation/account-owner; stale/duplicate/wrongowner/no mutation/slot reuse/queued recipient fences; model negatives then native ordinaryleave-refresh-reselect-585-roster and other room unchanged. No repeat fixedprojection/list/87/error2.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Nativecontext/error-retrypositive≠membership/registry/gate. Code1WrongPasswordnotstaleIDreason; generic2nativeUIproven/productstaleIDpolicyexplicitdesign. Bothopen/8WIPunchanged/AUD065next228/Internet thật chưa kiểm independent.",
+      "reason": "Measured own roster in two fixed contexts does not close general registry/service scope. Both issues OPEN; 8WIP unchanged/noRust/AUD066next232/Internet thật chưa kiểm separate.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -264,7 +264,8 @@
         "docs/PROTOCOL.md#auth-retry-validation",
         "docs/PROTOCOL.md#auth-fresh-process",
         "docs/PROTOCOL.md#room-list-lifecycle",
-        "docs/PROTOCOL.md#room-join-projection"
+        "docs/PROTOCOL.md#room-join-projection",
+        "docs/PROTOCOL.md#room-local-roster"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -363,7 +364,8 @@
         "docs/evidence/login-runtime/README.md#cp224",
         "docs/evidence/login-runtime/README.md#cp225",
         "docs/evidence/room-list/README.md",
-        "docs/evidence/room-list/README.md#cp227"
+        "docs/evidence/room-list/README.md#cp227",
+        "docs/evidence/room-list/README.md#cp228"
       ],
       "prs": [
         173,
@@ -463,7 +465,8 @@
         294,
         295,
         296,
-        297
+        297,
+        298
       ],
       "successors": []
     },
@@ -802,11 +805,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP227selected82→87native8117E0lookup/session-ID-title/full7errors0/Prepareheaders. Generic2/1byte/ack/91refresh/new82ID303→87Gamma/nativecallbacks/PCAP/sameauthowners.5sealedruns802raw, code1WrongPassword/inputedgefailures kept/correctcenterrecipe.",
-      "remaining": "No585reply/roster/membership/registry/tworoomstateisolation/Ready/start/UDP; whyedgeinputmissedunknown/notguardfault. Fullerrorenum/password/productauthority/fullauth/DB/API/Rustmissing; authsameprocessfatal/before17receiverblockersdistinct.",
-      "next_test": "PerPLAN585→known106/110/291room-localownID/slot0/chief/tworoomsessions/nativefullcursor/ownlookup/UI; buildersinputsnotoracle, nootherroompeer, registrybindingsbeforemutation. No repeatedlist/context/error2/inputcontrols.",
+      "known": "CP228 actual585→own106/110/291 two fixed room contexts; native204/6/128/errors0/ownID1-2/slot0/chief/UI;129raw frozen/sealed/cleanup0. CP227 context/error2/refresh/retry delivered PR298.",
+      "remaining": "No general registry/atomic membership lifecycle/all-packet isolation/Ready/start/UDP/fullauth/DB/API/Rust. Raw own_slot predicate1 is not slot1; 291producer is not personal-render. Sameprocessfatal/before17EOF blockers distinct.",
+      "next_test": "PLAN private registry keyed room-session-ID-generation/account-owner; stale/duplicate/wrongowner/no mutation/slot reuse/queued recipient fences; model negatives then native ordinaryleave-refresh-reselect-585-roster and other room unchanged. No repeat fixedprojection/list/87/error2.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "Nativecontext/error-retrypositive≠membership/registry/gate. Code1WrongPasswordnotstaleIDreason; generic2nativeUIproven/productstaleIDpolicyexplicitdesign. Bothopen/8WIPunchanged/AUD065next228/Internet thật chưa kiểm independent.",
+      "reason": "Measured own roster in two fixed contexts does not close general registry/service scope. Both issues OPEN; 8WIP unchanged/noRust/AUD066next232/Internet thật chưa kiểm separate.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -824,7 +827,8 @@
         "docs/PROTOCOL.md#auth-retry-validation",
         "docs/PROTOCOL.md#auth-fresh-process",
         "docs/PROTOCOL.md#room-list-lifecycle",
-        "docs/PROTOCOL.md#room-join-projection"
+        "docs/PROTOCOL.md#room-join-projection",
+        "docs/PROTOCOL.md#room-local-roster"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -843,7 +847,8 @@
         "docs/evidence/login-runtime/README.md#cp224",
         "docs/evidence/login-runtime/README.md#cp225",
         "docs/evidence/room-list/README.md",
-        "docs/evidence/room-list/README.md#cp227"
+        "docs/evidence/room-list/README.md#cp227",
+        "docs/evidence/room-list/README.md#cp228"
       ],
       "prs": [
         286,
@@ -857,11 +862,12 @@
         294,
         295,
         296,
-        297
+        297,
+        298
       ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-09T04:33:14.269977+00:00",
+  "as_of_utc": "2026-11-09T04:50:08.267483+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

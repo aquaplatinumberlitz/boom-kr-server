@@ -1,0 +1,285 @@
+{
+  "schema": "kre-room-local-roster-v1",
+  "recorded_utc": "2026-11-09T04:49:45.924911+00:00",
+  "baseline": "c7ce7cd7350c991e69c92dcc67d2b55540d1859b",
+  "contract": "docs/PROTOCOL.md#room-local-roster",
+  "research": "docs/RESEARCH.md#gap-create-join",
+  "plan": "docs/PLAN.md#current-order",
+  "run": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T04:40:21.945968+00:00",
+    "result": "twoactual_twofixedroomcontexts_each_single_ownID_slot0_chief_native106_110_291",
+    "run_sha256": "eaf0509540382e45b05b0a49780b3faa41de7d7f104caabc27d07e0cd6e5e62d",
+    "duration_s": 50.735937193,
+    "raw_count": 129,
+    "frozen_count": 377,
+    "cleanup": {
+      "net_namespace": "net:[4026533182]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+    },
+    "roles": [
+      {
+        "role": "A",
+        "identity": 1,
+        "room_session": 1,
+        "roomid": 101,
+        "title": "RoomAlpha",
+        "own_slot_set": 0,
+        "local_identity_match_index": 0,
+        "own_predicate_return": 1,
+        "native106": {
+          "kind": "player_end",
+          "ns": 173732569389392,
+          "pc": "0xae3f1f",
+          "cursor": 204,
+          "payload": 204,
+          "err54": 0,
+          "err58": 0
+        },
+        "native_parsed": {
+          "kind": "player_parsed",
+          "ns": 173732571934343,
+          "pc": "0xd62780",
+          "slot": 0,
+          "identity": 1,
+          "cursor": 204
+        },
+        "native110": {
+          "kind": "slot_end",
+          "ns": 173732633997883,
+          "pc": "0xdc6762",
+          "cursor": 6,
+          "payload": 6,
+          "err54": 0,
+          "err58": 0
+        },
+        "native291": {
+          "cursor": 128,
+          "err54": 0,
+          "err58": 0,
+          "kind": "producer_end",
+          "name": {
+            "ascii": "KRLocal",
+            "capacity": 15,
+            "hex": "4b524c6f63616c",
+            "size": 7
+          },
+          "ordinal": 1,
+          "packet": "0x12d1e0",
+          "payload": 128,
+          "record": "0x2ea32cec",
+          "store": "0x2ea2c8e8"
+        },
+        "sent_frames": [
+          {
+            "opcode": 106,
+            "seq": 58,
+            "body_bytes": 204,
+            "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+          },
+          {
+            "opcode": 110,
+            "seq": 61,
+            "body_bytes": 6,
+            "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+          },
+          {
+            "opcode": 291,
+            "seq": 64,
+            "body_bytes": 128,
+            "sha256": "0395bab66d0fd718776596dfeed31e756dccf6a4041113c0f66c23d43cdeb5d2"
+          }
+        ],
+        "c2s_ops": [
+          6,
+          544,
+          549,
+          744,
+          745,
+          567,
+          67,
+          87,
+          742,
+          741,
+          715,
+          715,
+          15,
+          715,
+          15,
+          715,
+          82,
+          544,
+          549,
+          744,
+          745,
+          585,
+          741,
+          96,
+          266,
+          15,
+          15
+        ],
+        "manual_UI": {
+          "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-17.png",
+          "sha256": "d8b938a09b20021dedb442c07f292fbc0ae86e567f729d7f004d693d13b61317",
+          "observation": "Exactlyonefirstslotcharacter/nameKRLocal/chiefbadge; other7slotsblank;headerRoomAlpha; nootherroomname/character. UIStartenablednotstartacceptance."
+        }
+      },
+      {
+        "role": "B",
+        "identity": 2,
+        "room_session": 2,
+        "roomid": 202,
+        "title": "RoomBeta",
+        "own_slot_set": 0,
+        "local_identity_match_index": 0,
+        "own_predicate_return": 1,
+        "native106": {
+          "kind": "player_end",
+          "ns": 173732882668511,
+          "pc": "0xae3f1f",
+          "cursor": 204,
+          "payload": 204,
+          "err54": 0,
+          "err58": 0
+        },
+        "native_parsed": {
+          "kind": "player_parsed",
+          "ns": 173732884871682,
+          "pc": "0xd62780",
+          "slot": 0,
+          "identity": 2,
+          "cursor": 204
+        },
+        "native110": {
+          "kind": "slot_end",
+          "ns": 173732949091493,
+          "pc": "0xdc6762",
+          "cursor": 6,
+          "payload": 6,
+          "err54": 0,
+          "err58": 0
+        },
+        "native291": {
+          "cursor": 128,
+          "err54": 0,
+          "err58": 0,
+          "kind": "producer_end",
+          "name": {
+            "ascii": "KRGuest",
+            "capacity": 15,
+            "hex": "4b524775657374",
+            "size": 7
+          },
+          "ordinal": 1,
+          "packet": "0x12d1e0",
+          "payload": 128,
+          "record": "0x2ea32cec",
+          "store": "0x2ea2c8e8"
+        },
+        "sent_frames": [
+          {
+            "opcode": 106,
+            "seq": 58,
+            "body_bytes": 204,
+            "sha256": "b533937f467cd11084fc7a212e13bd892d2189ccf2438524f2730e06f9e5ab50"
+          },
+          {
+            "opcode": 110,
+            "seq": 61,
+            "body_bytes": 6,
+            "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+          },
+          {
+            "opcode": 291,
+            "seq": 64,
+            "body_bytes": 128,
+            "sha256": "f541678500b576eb1e3da84bb770d501e1f67b7d11df349f51b6eaf0dfe76525"
+          }
+        ],
+        "c2s_ops": [
+          6,
+          544,
+          549,
+          744,
+          745,
+          567,
+          67,
+          87,
+          742,
+          741,
+          715,
+          715,
+          15,
+          715,
+          82,
+          544,
+          549,
+          744,
+          745,
+          585,
+          741,
+          96,
+          266,
+          15,
+          15,
+          15
+        ],
+        "manual_UI": {
+          "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-17.png",
+          "sha256": "07fc45c7c7323b9e439f2ceec81db77fcbe5e3fe099d697b07a6f96dfe9002b9",
+          "observation": "Exactlyonefirstslotcharacter/nameKRGuest/chiefbadge; other7slotsblank;headerRoomBeta; nootherroomname/character. UIStartenablednotstartacceptance."
+        }
+      }
+    ],
+    "hold_after_roster_native_s": 8.864759497,
+    "tcp_capture_records": 206,
+    "correction": "Probe kindown_slotatDC5925legacylabelis1241090predicate-return1(truthy),notroomslotindex1. Actualslotindex0from123FF10arg0/106slot0/firstcard; own_match_index0islocalidentityindexnotroomslot. Keepoldmarker/source; do notclaimslot1fromboolean.",
+    "limits": "FixedprivateREadapter/verifiedaccountrecipientguard/room1ID101Aonly-room2ID202Bonly; no generalroomregistry/membershiplifecycle/allpacketisolation/Ready/start/UDP/gameplay/sessionmove/fullauth/DB/API/Rust/gate. 291storageproducer/name128confirmed; personalrenderafter291notmeasured(stagealreadyPrepare),donotclaimprofilepanelrenderfromstore. No otherroommemberframegenerated/routed; productionglobalProbeServiceunchanged. ExVillage01mapcaptionfromcache/notnewmapacceptance. Internet thật chưa kiểm.",
+    "next": "Registry/membershiplayergap: atomicjoin/leave keyedroom-session/ID/generation/account-owner,privateprototypebeforeproduction; nativecancel/leave/refreshroutecontrolsuseexistingcontracts. Avoidmorefixedprojection-onlyruns; perPLAN/AUDperiodicCP228beforecomplete."
+  },
+  "source_first": {
+    "recorded_utc": "2026-11-09T04:37:51.809955+00:00",
+    "question": "NEXTROOMREGISTRY: afterknown82/87two-sessionprojection,do585room-local106/110/291singleverifiedidentity/ownslot0/chiefproducecorrectnativeownlookup/roster/UIwithoutotherroompeer?",
+    "sources": [
+      {
+        "path": "docs/PLAN.md",
+        "sha256": "f9bd91dede9102352a501ed158efd46d634717e1857d517fdb5cb5bd514562fc"
+      },
+      {
+        "path": "docs/PROTOCOL.md",
+        "sha256": "05ae1d4bb42a0ec51eac685135c822183c02edcb1437476b06b5ca5ec4c71fba"
+      },
+      {
+        "path": "docs/RESEARCH.md",
+        "sha256": "25314f99802fbc8f006202e94f800f461745e37980cb0ef2e568a133c2cf26e2"
+      },
+      {
+        "path": "local/research/codex/room-join-projection-r1/verification.json",
+        "sha256": "78ca864acc8c74e197f51621e920c7e0eca54dce3119c3743bac776462b968da"
+      },
+      {
+        "path": "server/four_player_profile.py",
+        "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+      },
+      {
+        "path": "local/research/codex/room-player-r1/keystate.gdb",
+        "sha256": "ff72398e0a36694f5f22ff6a67ef1c25d3ff9f4ec9eeb5deba31c9102fa52098"
+      },
+      {
+        "path": "local/research/codex/four-native-r6/gdb_own291.py",
+        "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+      },
+      {
+        "path": "local/research/codex/four-native-r6/verification.json",
+        "sha256": "2edca1bb0cb824a9e75195a026648e91008f6447ebac1472f7f54d79fb4c2e3b"
+      }
+    ],
+    "reuse": "CP020/026/199/200zero106profile/110ownstate/291/nativeownIDmatch; static/VNroomreferencealreadycomparedinCP226/227sourcefirst, exactKRbuilders/consumersused. No newnativefunctionbody/SDK/VManalysis. Twofixedrooms/notfullregistry; fourprofilemoduleismergedsource,noteightWIP.",
+    "minimum": "One70srun2actual/auth0/82differentroom/87slot0both→actual585→private106own1A/own2B+110chief2+291onlytosameconnection. Native204/6/128fullcursors/ownIDmatchindex0/ownslot0/titleroomUIeachonecharacter+chief/noothername,PCAP/hold8s/freeze/cleanup. No map/peer/Start/Battle.",
+    "limits": "Fixedrecipientguardagainstauthpolicyactive/session;notgeneral2roomregistry/allpacketisolation/security orfullmembershiplifecycle. Generatedfieldsarepolicyinputs/notoracle; own291nativehandlerseparate. OldWIPpreserved;CP228periodicauditduebeforecomplete."
+  },
+  "limits": "Fixed private recipient projection only; no general registry, membership lifecycle, all-packet isolation, Ready/start/UDP, Rust or new gate. Internet thật chưa kiểm."
+}
