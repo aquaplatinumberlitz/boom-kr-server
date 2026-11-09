@@ -335,3 +335,36 @@ không nâng bytesparse thành consumer/accountresume success.
 khẳng định error10/khôngsend81, không coi input create thành room. `auth-retry-connect-r1/verification.json`
 giữ probe ordinal sai; `verification-r2.json` ghi actualendpointpredicate/read/framer. Không sửa raw/cũ.
 8WIP byte-exact; noRust/productionauth/gateclosure; #14/#285open. Internet thật chưa kiểm.
+
+<a id="cp224"></a>
+## CP224 — exact hello/validation returns và fatal retry correction
+
+[Contract/limits](../../PROTOCOL.md#auth-retry-validation), [metadata](retry-validation.json),
+[unknown](../../RESEARCH.md#rust-service-gaps), [thứ tự duy nhất](../../PLAN.md#current-order).
+CP223 merge [PR294](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/294)/`51bbf41`.
+
+Root `local/research/codex/auth-retry-consumer-r1/`; tái dùng frozenpair/harness/profile/input/serviceCP223,
+chỉ thêm observer. Không đổi source/config giữa run; cả ba run có preflight/recipe/raw-seal/cycles.
+
+| Run | Wall/raw/exit | run.json SHA256 |
+|---|---|---|
+| `consumer-path` | 66.69060825s/154/1 | `4c8a447e73c8df361bbebb52fc8bc9240a01bfae7c250d08af3c2d5bad5b3508` |
+| `fixed-returns` | 68.004627887s/154/1 | `fc2b8c9e1280e217c94ec68112a4ef0a8bdc4e15eb3041756372080447f0882d` |
+| `continuation-path` | 66.83623407s/154/1 | `0f2de01f0bfd4bac1167043138850c20d014e19eac6345f0fa7227cac2f6a8e3` |
+
+`r1-observer-review.json` giữ giới hạn FinishBreakpointatentry/prologue: returnmarker nhảy sangcaller,
+không dùng result đó xác nhận callee. `fixed-returns-verification.json` join Bclose→13AD79C/1255C73/
+1255A69/125BE47đềuEAX1/phase2→SIGABRT→Wineillegalinstruction. R2actualnewendpoint3838 khác R1/CP2233848;
+không retag stage hoặc lấy boolean watch3848 làm oracle. Không postclose builder/countset/newauth6-67/session.
+ẢnhR2Bscreen25 có WineProgramError/blackbackground/LoginError2000:0behind; không gán popup thành cause.
+
+`cp223-fatal-correction.json` pin đúng logCP223 đã cóSIGABRT/illegalinstruction, không sửa report/raw/complete.
+Harness cũ chỉ nhậnSIGSEGV và bỏ qua Bfailurepostclose; fullretryFAIL vẫn đúng, failurecausebịbỏsót được ghi
+ở mốc mới. 462raw/sourcefreeze/cleanup verified; không production/Rust/fullauth/healthyretry/gateclaim.
+Không lặp codec/hello/permutation/failedretry; next nguồndiscriminator11 theoPLAN; AUD065qua224/kế228.
+
+`continuation-verification.json` join fixedEAX1→success125BEBD→handoff1255F80→125BEC9
+localEBP-28=11→125BF8Cepilogue/ret; không first/secondguard/local==1path. Source/meaning11unknown;
+không token-count/stage/rootcauseclaim. `continuation*.json/asm` là boundedread-onlyCapstone/copy-modelmatch,
+không REA/fullfunction. REAIDA timeout450s/export0records, close+ownedheadlessprocesscleanup có receipt,
+copyhash giữ nguyên; không cấu hình/install mới hoặc tác động runtimeWine. Run3 cũng154raw/fatal/cleanup.

@@ -619,6 +619,44 @@ Chưa genericfreshlogin/accountresume/sessionexpiry/revocation/restartfence/DB/A
 [Unknown](RESEARCH.md#rust-service-gaps), [thứ tự](PLAN.md#current-order); CP222 mergePR293/4bcabd8,
 AUD064qua220/audit kếCP224. Internet thật chưa kiểm.
 
+<a id="auth-retry-validation"></a>
+### Retry qua hello/validation nhưng fatal trước token builder — CP224
+
+[Ba run/raw/hash](evidence/login-runtime/README.md#cp224), [metadata](evidence/login-runtime/retry-validation.json).
+Tái dùng privatepair/profile/policy/inputCP223, chỉ thêm observer thụ động; không đổi source giữa run.
+
+**`kr_runtime/confirmed`:** sau controlledBclose, run exactsite ghi13AD79C (return13AEFE0),
+1255C73 (return13AD6F0),1255A69 (return1255AC0),125BE47 (return1255A30) đềuEAX1,
+managerphase2/socket mới. Vì thế điểm chặn nằm **sau** hello/validation đã đo, không phải framer hay
+consumer hello chưa thành công. CP223 chỉ biết bytes/framer; đây là refinement mới, không sửa record cũ.
+R1 quan sát new3848, R2 new3838 theo actualevent/endpoint; không ép stage theo port hoặc coi boolean
+`post_reconnect` là bằng chứng: Ainitial cũng dùng3848. Join theo B/closed_ns và nativecallsite.
+
+Cảba chưa có token count setter/builder sau close trong giới hạn probe, không C2S chunk ở newconnection9,
+không secondauth/6/67/newsession; sau validation khoảng6s, nativeGDB dừngSIGABRT rồi sau detach Wine báo
+unhandledillegalinstruction02260DF8/ProgramError. Không suy rootcause từ popupLoginError2000:0,
+threadstack hoặc địa chỉ protectedcode. A giữ owner/openTCP, không đo gameplayprogress.
+
+**Correction `design/confirmed` chất lượng quan sát:** log `connect-path-r2` đã pinCP223 cũng có
+SIGABRT/illegalinstruction; report cũ bỏ sót vì harness chỉ nhận SIGSEGV và bỏ qua Bfailure sauclose.
+CP223 vẫn ghi retryFAIL/chưahealthy, nhưng failure phải ghi rõ fatal; raw/seal/record không sửa.
+Observer R1 dùng FinishBreakpoint ngayentry trướcprologue, returnlabel bị lệch một caller;
+không lấy các label/result đó làm oracle. RunR2 đặt breakpoint đúng bốn returnsite ở trên, không ép return
+hoặc gọi hàm native. Giữ cả hai report và correction. Harness tương lai phải nhận mọi fatalstop,
+không dùng processalive/khôngSIGSEGV làm healthpass; không cần chạy lại để chứng minh fatal đã có.
+
+462raw/ba run đã hash/sourcefreeze/ownedcleanup; fullretry **FAIL**. Chưa genericfreshlogin/accountresume,
+sessionexpiry/revoke/restartfence/DB/API/fullauth/Rust hoặc gate mới. Tiếp [câu hỏi](RESEARCH.md#rust-service-gaps)
+theo [PLAN](PLAN.md#current-order); không lặp hello/codec/EOF/permutation hoặc mở graphSDK/VM.
+
+**Continuation đo riêng:** fallback Capstone read-only ba range ngắn125BE47/125BEBD/125BF8C, cùng bytes
+copiedPE/modelmodO đã pin; không fullfunction/decompile. REA/IDA request timeout450s, export0record,
+tiến trình phân tích do run tạo đã cleanup, targethash không đổi; không trình fallback như REAevidence.
+Run3 nativeEAX1→125BEBD→1255F80→return125BEC9; localEBP-28=11 nên đi125BF8C là epilogue/ret,
+không đi nhánh local==1, không kẹt trong handoff. Ý nghĩa/nguồn discriminator11 **unknown**; không gọi
+nó là token count/stage/error cause. Chỉ nguồn biến/caller là câu hỏi tiếp, không quét calleesSDK/VM.
+Cảba run vẫn fatal/không auth6-67 mới. CP223 mergePR294/51bbf41; AUD065qua224/kế228. Internet thật chưa kiểm.
+
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015
 

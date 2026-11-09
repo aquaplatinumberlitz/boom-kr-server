@@ -1,0 +1,278 @@
+{
+  "id": "CP224",
+  "previous": "CP223",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T03:05:59.284479+00:00",
+  "context_commit": "51bbf415fa02a4655246218dff7df284cd401c58",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Doespost17nativefreshretryactuallypassthehello/validationconsumer,andwhichdirectsuccessbranchfollows? Boundknownreturn/callerobservables,preservefailure/corrections,periodicauditwithoutSDK-VMgraph.",
+  "scope": "Sourcefirstcachedhello/poll/profilecallerandprivateCP223pairunchanged.3relatedpassiveobserverruns462raw:entry-returnunwindlimitation,fixedreturns,directsuccess/branchlocal11. Read-onlyshortstaticfallbackafterREAIDA450stimeout; no source/configmutationmidrun/forcedstate/policychange/clientpatch/Rust. ManualAUD065periodicthrough224.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "consumer-path:run4c8a447e73c8df361bbebb52fc8bc9240a01bfae7c250d08af3c2d5bad5b3508/66.690608250s/154raw/return1/cleanup0",
+    "fixed-returns:runfc2b8c9e1280e217c94ec68112a4ef0a8bdc4e15eb3041756372080447f0882d/68.004627887s/154raw/return1/cleanup0",
+    "continuation-path:run0f2de01f0bfd4bac1167043138850c20d014e19eac6345f0fa7227cac2f6a8e3/66.836234070s/154raw/return1/cleanup0",
+    "Exactreturn13AD79C/1255C73/1255A69/125BE47allEAX1/managerphase2afterBclose. Run3success125BEBD→handoff1255F80→return125BEC9/localEBP-28=11→125BF8C/ret.",
+    "FatalGDBSIGABRTkernelbase7BC0A4A8;afterdetachWineunhandledillegalinstruction02260DF8/ProgramError. SamefatalinCP223connect-path-r2oldpinnedlog,notnewfaultcausalityclaim.",
+    "Fallbackboundedstaticranges125BE47(128)/125BEBD(160)/125BF8C(96),samecopiedPE4b781fb/modelmodOa08950c;notfullfunction orREAanalysis."
+  ],
+  "findings": [
+    {
+      "summary": "ExactnativeknownreturnPCsbindhello13AEFE0/poll13AD6F0/connect1255AC0/profile1255A30allresult1/phase2. CP223framer-onlyconsumerboundarynarroweddownstream; no fullretryinference.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-retry-validation",
+      "evidence": [
+        "AUTH224-00350",
+        "AUTH224-00508"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/2prefix-display-netns/directvirtualLAN/noexternalroute;3runs462raw/sourcefrozen/cleanup. PrivateBtermination/cyclepolicyunchanged/designnotoriginalTTL/fullresume. Exacthello/poll/validation/outerall1phase2;actualhandoffreturn/local11→epilogue,meaningunknown. No postclose tokenbuilder/newauth6-67/session; nativeSIGABRTthenWineillegalinstruction/fullretryFAIL. CP223fatalomission/newobserverunwindcorrectionsappended,oldraw/historyimmutable. Aownerretentionnotgameplay. No before17receiverfix/DB/API/fullauth/Rust/gateclaim;8WIPunchanged/noRust;AUD065through224/next228/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Actualsuccessbranch125BEBD/handoff1255F80returns125BEC9;localEBP-28=11skipslocal==1guardpathandgoes125BF8Cepilogue/ret. Notstuckinhandoff. Discriminator11origin/meaningunknown,nottoken-count/stage/rootcauseclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-retry-validation",
+      "evidence": [
+        "AUTH224-00334",
+        "AUTH224-00333",
+        "AUTH224-00171"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/2prefix-display-netns/directvirtualLAN/noexternalroute;3runs462raw/sourcefrozen/cleanup. PrivateBtermination/cyclepolicyunchanged/designnotoriginalTTL/fullresume. Exacthello/poll/validation/outerall1phase2;actualhandoffreturn/local11→epilogue,meaningunknown. No postclose tokenbuilder/newauth6-67/session; nativeSIGABRTthenWineillegalinstruction/fullretryFAIL. CP223fatalomission/newobserverunwindcorrectionsappended,oldraw/historyimmutable. Aownerretentionnotgameplay. No before17receiverfix/DB/API/fullauth/Rust/gateclaim;8WIPunchanged/noRust;AUD065through224/next228/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "All3freshretryrunsFAIL:no postclosecountset/builder/newauth6-67/session, newconnection9noC2Schunks. NativeSIGABRTthenWineillegalinstruction/ProgramError,nothealthyrecovery. Aowner/openTCPretentionnotgameplayprogress.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-retry-validation",
+      "evidence": [
+        "AUTH224-00003",
+        "AUTH224-00334"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/2prefix-display-netns/directvirtualLAN/noexternalroute;3runs462raw/sourcefrozen/cleanup. PrivateBtermination/cyclepolicyunchanged/designnotoriginalTTL/fullresume. Exacthello/poll/validation/outerall1phase2;actualhandoffreturn/local11→epilogue,meaningunknown. No postclose tokenbuilder/newauth6-67/session; nativeSIGABRTthenWineillegalinstruction/fullretryFAIL. CP223fatalomission/newobserverunwindcorrectionsappended,oldraw/historyimmutable. Aownerretentionnotgameplay. No before17receiverfix/DB/API/fullauth/Rust/gateclaim;8WIPunchanged/noRust;AUD065through224/next228/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "CorrectCP223omittedfatalalreadyinoldpinnedlog;SIGSEGV-onlyharness/postcloseBignoreinsufficient. NewentryFinishBreakpointreturnlabelswrongcallee; fixedreturnPCrunreplacesobserver. PortbooleantriggersAinitial3848/R2actualB3838;joinactualBclosed_nsnotportstage.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-retry-validation",
+      "evidence": [
+        "AUTH224-00338",
+        "AUTH224-00514",
+        "AUTH224-00350"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/2prefix-display-netns/directvirtualLAN/noexternalroute;3runs462raw/sourcefrozen/cleanup. PrivateBtermination/cyclepolicyunchanged/designnotoriginalTTL/fullresume. Exacthello/poll/validation/outerall1phase2;actualhandoffreturn/local11→epilogue,meaningunknown. No postclose tokenbuilder/newauth6-67/session; nativeSIGABRTthenWineillegalinstruction/fullretryFAIL. CP223fatalomission/newobserverunwindcorrectionsappended,oldraw/historyimmutable. Aownerretentionnotgameplay. No before17receiverfix/DB/API/fullauth/Rust/gateclaim;8WIPunchanged/noRust;AUD065through224/next228/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "REAIDAanalysis450stimeout/export0records;shortread-onlyCapstoneprefixesmatchcopiedPE/modelandnotREA/fullfunction. OwnheadlessproviderSIGTERMthenSIGKILL/close/copyhashunchanged,nooriginalDB/config/installs. AUD065manual/oldrecordsimmutable/8WIPbyteexact/noRust,CP223PR294merged51bbf41/bothissuesopen.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-retry-validation",
+      "evidence": [
+        "AUTH224-00337",
+        "AUTH224-00517",
+        "AUTH224-00511",
+        "AUTH224-00534",
+        "AUTH224-00537"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/2prefix-display-netns/directvirtualLAN/noexternalroute;3runs462raw/sourcefrozen/cleanup. PrivateBtermination/cyclepolicyunchanged/designnotoriginalTTL/fullresume. Exacthello/poll/validation/outerall1phase2;actualhandoffreturn/local11→epilogue,meaningunknown. No postclose tokenbuilder/newauth6-67/session; nativeSIGABRTthenWineillegalinstruction/fullretryFAIL. CP223fatalomission/newobserverunwindcorrectionsappended,oldraw/historyimmutable. Aownerretentionnotgameplay. No before17receiverfix/DB/API/fullauth/Rust/gateclaim;8WIPunchanged/noRust;AUD065through224/next228/reviewwaivednotapproved. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "3runs462raw/frozenpreflight/ownedWine-networkcleanup",
+      "result": "pass",
+      "evidence": [
+        "AUTH224-00003",
+        "AUTH224-00165",
+        "AUTH224-00508",
+        "AUTH224-00328"
+      ],
+      "limits": "Hash/cleanupnotnativeacceptance."
+    },
+    {
+      "check": "Exacthello/poll/validation/outerresult1phase2anddirectsuccesshandoffreturn/local11→epilogue",
+      "result": "pass",
+      "evidence": [
+        "AUTH224-00350",
+        "AUTH224-00334"
+      ],
+      "limits": "Onlymeasuredreturn/branch;unknown11meaning/origin."
+    },
+    {
+      "check": "Nativefreshretry/newauth6-67/sessionafterpost17termination",
+      "result": "fail",
+      "evidence": [
+        "AUTH224-00003"
+      ],
+      "limits": "NativefatalSIGABRT/illegalinstruction,no secondauth/session; notaccountresume/healthyrecovery."
+    },
+    {
+      "check": "CP223fatalomission/R1entryunwindcorrections/preservedoldraw",
+      "result": "pass",
+      "evidence": [
+        "AUTH224-00338",
+        "AUTH224-00514"
+      ],
+      "limits": "Explicitnewcorrection,notoldrecordrewrite/rootcauseclaim."
+    },
+    {
+      "check": "REAIDAanalyze_function125BE47",
+      "result": "fail",
+      "evidence": [
+        "AUTH224-00337",
+        "AUTH224-00515",
+        "AUTH224-00517"
+      ],
+      "limits": "Timeout450s/export0;fallbacklabeledseparate/ownedproviderclosed."
+    },
+    {
+      "check": "ManualperiodicAUD065/docs/catalog/links/WIPpreservation",
+      "result": "pass",
+      "evidence": [
+        "AUTH224-00511",
+        "AUTH224-00529",
+        "AUTH224-00528"
+      ],
+      "limits": "Notindependentapproval;fullrequire-local/historyandexactPRheadchecksrequired."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP224-auth-retry-validation.json",
+      "bytes": 146063,
+      "sha256": "e516e83e71fa7da3444e7bc8f311b8c0e8238865213013045ec8558d937a5a26",
+      "count": 549
+    }
+  ],
+  "delta": {
+    "added": [
+      "Exactnativehello/poll/connect/profilevalidationall1phase2;3sealedobserverruns462raw.",
+      "Directsuccesshandoffreturns/localdiscriminator11→epilogue;scopeblocksdownstreamretry,nothello.",
+      "AUD065periodicthrough224/next228withoutcounterreset."
+    ],
+    "corrected": [
+      "CP223pinnedlogfatalSIGABRT/illegalinstructionwasomittedbyderivedreport/harness;oldretryFAILstillFAIL,raw/recordskept.",
+      "R1FinishBreakpointentryunwinddoesnotproveintendedcalleereturn;R2fixedexactPCsdecisive.",
+      "Port3848watchnotuniversallypostclose;Ainitial/R2new3838joinedactualrole/time."
+    ],
+    "superseded": [
+      "CP223nexthello/validationquestionnowmeasured;do notrepeathello/codec/failedretry.",
+      "Actualhandoffreturn/local11→epiloguemeasured;nextsourcefirstdiscriminatorprovenanceonly,no calleeSDK-VMgraph."
+    ]
+  },
+  "blockers": [
+    "Fullnativefreshretryafterpost17terminationstillfatal/no newauth6-67/session;discriminator11origin/meaningunknown.",
+    "Before17EOFreceiverselectionCP220distinct/unresolved,no newobservableforbroadwatch/VMrepeat.",
+    "Genericaccountresume/sessionexpiry/revocation/restartfence/DB/API/fullauth/Rustimplementationnotaccepted;8WIPunmerged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PerPLANcachefirstactualcaller/discriminator11origin;newruntimeonlywithsource-supportednewobservable/input. No repeatedfailedretry/hello/codec/EOF/permutation orSDK-VMgraph. Fullretryblockednativefatal.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Openworkblockedbefore17receiverselectionCP220;phase-specificpost17fatalnotfix. Onlynewnativeedge/gracefulrecipe,notbroadgetter/watch/RTTIpatch.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PlanningCP213/PR286delivered;M0→M1futureimplementationindependentfullauthRE,noRusttreeinthisREbatch.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T03:05:59.284479+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/sourcefirst/nativeexactreturns/continuation/fatalcorrections/manualperiodicAUD065; independentreviewwaivednotapproved. ExactPRheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    },
+    {
+      "path": "docs/evidence/login-runtime/README.md",
+      "state": "updated",
+      "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    },
+    {
+      "path": "docs/evidence/login-runtime/retry-validation.json",
+      "state": "updated",
+      "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    }
+  ]
+}
