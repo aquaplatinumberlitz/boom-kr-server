@@ -217,3 +217,31 @@ Raw stack/source/three post6 snapshots nối vtable+50 → target17C7F40 → loc
 return12578AF → fault17C7F4C; actualthis RTTICObject. Callback snapshots cũ preauth không là prefault,
 protected entry1257360 không hit sau6. Receiver selection/rootcause chưa giải, nativelease-negative
 lifecycle FAIL; không patch/binary/source production hoặc Rust. Không đóng #14/#285/gate.
+
+<a id="cp220"></a>
+## CP220 — receiver trace dừng có blocker; kernelTCP ownership riêng
+
+[Contract/giới hạn](../../PROTOCOL.md#auth-tcp-ownership), [metadata](transport-controls.json),
+[câu hỏi](../../RESEARCH.md#rust-service-gaps), [thứ tự](../../PLAN.md#current-order).
+CP219 đã merge [PR291](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/291)/`09435d9`.
+Bốn run liên quan, không checkpoint từng thao tác; AUD064 periodic qua220, audit kế224.
+
+| Run/root dưới local/research/codex/ | Quan sát/giới hạn | Wall/raw | run.json SHA256 |
+|---|---|---|---|
+| `auth-channel-receiver-r1/zero-receiver` | Getter4null ở caller khác, store125783B không hit; cùng native fault, không receiver proof | 39.887805350s/47 | `ba4f33ec03124cfac9ed69d850bdda7356f32031920b9f880dd5b19c66111f3f` |
+| `auth-channel-receiver-watch-r1/zero-watch` | Watch armed/no snapshot; Wine unhandled17C7F4C, GDB no registers; diagnostic inconclusive | 39.937802774s/47 | `cd90bf9840b19c171ba322666f3682dd28b2d0944b047fc1c03ebb7712a770e4` |
+| `auth-tcp-replay-r1/kernel-replay` | TCP driver typed-field error giữ nguyên | 0.112849524s/4 | `d4f3bb1367ae10b917ea72e309eafd3155a138d199dc1af8b874d25bd1e74ce6` |
+| `auth-tcp-replay-r1/kernel-replay-r2` | 22 scoped kernelTCP checks qua; duplicate/replay giữ owner, ownerEOF release; không nativeKR | 0.232905161s/4 | `b20612d401981ec41cb2b0ab30deb0a21efb66490e21704e33379daed4a9e730` |
+
+Mỗi root có recipe/preflight/raw-seal/cycles; native có Wine/client/SEH/GDB/rawscreens, kernelTCP có
+`wire.json`, `adapter.log`, `service/service-state.json`, `run.json`. Toàn102 raw/sourcefreeze/cleanup
+được kiểm; failures giữ nguyên. Reports/verifiers trong local auth-channel-receiver-r1,
+auth-channel-receiver-watch-r1, auth-tcp-replay-r1 và verify_auth_receiver*.py/verify_auth_tcp_replay.py.
+Không đổi source/config/input giữa run. Bản adapter/policy CP217 và mọi record/audit complete cũ giữ nguyên.
+
+TCP driver dùng captured native login6/67 và fixed public ticket, duplicate6/request67 sequence sửa rõ;
+byte-exact captured6 replay trên socket mới bị EOF trong khi owner cũ vẫn nhận reply67.
+Không chạy client KR ở ca TCP; không nativehealthydenial/twoactualswap/restartfence/entropy/fullauth proof.
+R1 fixedticket decode sai như little-endian; R2 dùng `codec.read_fields` đã có, không đổi wire contract.
+No-watch-snapshot không là no-write hoặc supportedwatch proof. Không lặp getter/watch không có observable.
+#14/#285 còn mở; không gate/Rust/production behavior change;8WIP byte-exact. Internet thật chưa kiểm.

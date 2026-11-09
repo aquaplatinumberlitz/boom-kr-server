@@ -1,0 +1,86 @@
+{
+  "id": "AUD064",
+  "trigger": "periodic",
+  "completed_through": "CP220",
+  "recorded_utc": "2026-11-09T01:03:52.592655+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "AGENTS.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/evidence/login-runtime/README.md",
+    "docs/evidence/login-runtime/admission-prototype.json",
+    "docs/evidence/login-runtime/lease-controls.json",
+    "docs/evidence/login-runtime/eof-controls.json",
+    "docs/evidence/login-runtime/transport-controls.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "docs/evidence/checkpoints/audits/AUD063.json",
+    "local/research/codex/auth-channel-eof-analysis-r1/verification.json",
+    "local/research/codex/auth-channel-eof-analysis-r1/dispatch-verification.json",
+    "local/research/codex/auth-channel-receiver-r1/verification.json",
+    "local/research/codex/auth-channel-receiver-watch-r1/verification.json",
+    "local/research/codex/auth-tcp-replay-r1/verification.json"
+  ],
+  "method": "Manual selectiveREADME→PLAN→PROTOCOL→RESEARCH→evidence review through217–220. Comparednativepositive/negativefailure/source/stackprovenance andnewreceiverfollowuprawlimits, thenkernelTCPwire/serviceownership/checks. ExplicitR1driverdecodingmistake/R2existingcodec correction and8WIPpreservation. Readcurrentcontract/designboundaryandRustplanninglimits; no rereadclaimforallhistoricalraw. Fullchecker separatelyverifiesallpins/Githistory; notsemantic/gateapproval.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "NativeEOFdenialcouldbeconfusedwithacceptedlease-negativehealthbecauseharnessexit0/cleanup0,orpolicyTCPpasswithactualclientproof.",
+      "correction": "PreserveCP218–220clientFAIL/earlyends;CP219actualthis/vtable/operand/rawreturnproofdoesnotexplainreceiverselection. CP220kernelTCPsyntheticdriverpassdistinctfromWine/nativehealth. Nogate/fullauthclosure.",
+      "fixed_in": [
+        "README.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/login-runtime/transport-controls.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP219nextgetter13AEBE0/store125783Bcandidateandhardwarewatchhadnotbeenmeasured; repeatedbroadprobescouldbecomeunboundedVMresearch.",
+      "correction": "Getterreturnsnullatothercallers/storebeforefaultnothit;hardwarewatcharmedwithoutwritesnapshot/faultregisters. Bothsealedfailure/inconclusive,nofalseno-write/rootcauseclaim. Markreceiverselectionblocked/no-repeat;moveindependentkernelTCPgap.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/login-runtime/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "PLAN/RESEARCHstilldeclaredkernelTCPreplaymissing;R1derivedtestfixedticketparsedtypedfieldasrawlittleendian.",
+      "correction": "R1failedrun/sourcekept;R2reusesknowncodec.read_fields. Byteexactcaptured6overnewTCPdeniedEOFwhileownerstillreceives67;ownerEOFclearsmaps. Scopeoneaccount/fourinitialtransports,notgeneralrelogin/staleadmittedEOF/newsession/native2accountswap/securityproof.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/login-runtime/transport-controls.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Periodiccounterdue220andPR291integrationwasnew;Rustplanningvsimplementationandscopeddemovsfullservicecoulddrift.",
+      "correction": "AUD064through220/next224withoutreset;PR291merged09435d9. RustM0→M1independentauthREbutimplementationnotopened;noRusttree/productionchange. 8WIPbyte-exact,CP217–219/auditsimmutable. K6cWAN/K7passedscoped,Internet thật chưa kiểm backlogindependent.",
+      "fixed_in": [
+        "docs/evidence/checkpoints/audits/AUD064.json",
+        "docs/evidence/checkpoints/manifest.json",
+        "README.md",
+        "docs/PLAN.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "NativeEOFreceiverselection/gracefulerror/healthylease-negativeacceptanceblocked;noVM/SDKgraphorRTTI-vtablepatchwithoutnewobservable.",
+    "Twoactualaccountidentity/swap/sourcebinding/sessionexpiry/restartfence/DB/API/fullauthnotaccepted; nextsourcefirsttokenA/B/Profile47auth_A/Bonly.",
+    "RustM0–M8notimplemented;planningCP213/PR286delivered,PythonremainsRE/reference. Existing8teamWIPpreserved/unmerged;serviceinventory/rewards/generalrooms/opsoutsideexistingdemo.",
+    "Internet thật chưa kiểm/ISP/CGNAT backlogseparate;noimplicitK6cWAN/K7dependency."
+  ]
+}

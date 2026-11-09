@@ -1,0 +1,1405 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "AUTH220-00001",
+      "kind": "local",
+      "path": "local/research/codex/append_cp220.py",
+      "bytes": 17742,
+      "sha256": "6c220847b9e3633abb6660fba8174e806d27703142dc76a1c16c7bc1ba860bf2"
+    },
+    {
+      "id": "AUTH220-00002",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/getter-prefix.json",
+      "bytes": 1294,
+      "sha256": "2e958597bd21203df43d4ee68a25237390dda92a05730f3a4581ef71b4cde45a"
+    },
+    {
+      "id": "AUTH220-00003",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/receiver-assignment-candidates.json",
+      "bytes": 1519,
+      "sha256": "8676a703ee8d709769c839d2198e7a0f48f965284a20c2faefcf624fd153fa36"
+    },
+    {
+      "id": "AUTH220-00004",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/receiver-probe.py",
+      "bytes": 1176,
+      "sha256": "32116fc4e03b5c9a263073f4cdc82b731043f2c0c153b9a33c36e9e308ec0b05"
+    },
+    {
+      "id": "AUTH220-00005",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/receiver.gdb",
+      "bytes": 1652,
+      "sha256": "00ac64a939f904406410da632e76d584ca18d6145286c73ebbce4604e82f90d6"
+    },
+    {
+      "id": "AUTH220-00006",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/source-first.json",
+      "bytes": 3203,
+      "sha256": "39bd7379df5966b5f7ffa8674b7442e1f2543e6555828665e9fc68c90d9cee25"
+    },
+    {
+      "id": "AUTH220-00007",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/source-first/00-PLAN.md",
+      "bytes": 85971,
+      "sha256": "86da3d363180b6661443381fbb25b6c6c1edc85bca67a4d6525cbde75551f7d4"
+    },
+    {
+      "id": "AUTH220-00008",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/source-first/01-PROTOCOL.md",
+      "bytes": 678121,
+      "sha256": "26b4a320a29290af3cdeb91620ae971f1e2f3448fca6889cbc421273b12f0028"
+    },
+    {
+      "id": "AUTH220-00009",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/source-first/02-RESEARCH.md",
+      "bytes": 43928,
+      "sha256": "74dfe089dc55ea1f738c7b02b83da3f0623cd5f0e27cf2efdd8780cdf6869fba"
+    },
+    {
+      "id": "AUTH220-00010",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/source-first/03-dispatch-verification.json",
+      "bytes": 2098,
+      "sha256": "f7335c544f559f9276ddf386b5a05666a319c711983ccd9866546fb86df4df53"
+    },
+    {
+      "id": "AUTH220-00011",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/source-first/04-callsite-context-candidate.asm",
+      "bytes": 1441,
+      "sha256": "a15281d7ab127a272f939e54b34f9104462fbbb2c1695b8e112bda7852acc3d3"
+    },
+    {
+      "id": "AUTH220-00012",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/source-first/05-source-first.json",
+      "bytes": 4298,
+      "sha256": "20ab2eb9a3eee1260de03e5be6295331ae8065951608de8da222ce36d95c7fc3"
+    },
+    {
+      "id": "AUTH220-00013",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/source-first/06-source-first.json",
+      "bytes": 6038,
+      "sha256": "d2064fa6c1ffb651ac39ecb0ce31b235944d3b51f134b1bfd1759e8969202bca"
+    },
+    {
+      "id": "AUTH220-00014",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/verification.json",
+      "bytes": 2700,
+      "sha256": "eadc4b755ab7383bfdf2322e3531a0319c53ff50574486514ddecf40e27f50e6"
+    },
+    {
+      "id": "AUTH220-00015",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/CALog-before.txt",
+      "bytes": 718,
+      "sha256": "95b3478242be99883962a66e87dcde0ae2d0152a2f283a697a3adef684bb7bb4"
+    },
+    {
+      "id": "AUTH220-00016",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/CALog-run.txt",
+      "bytes": 718,
+      "sha256": "95b3478242be99883962a66e87dcde0ae2d0152a2f283a697a3adef684bb7bb4"
+    },
+    {
+      "id": "AUTH220-00017",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/client.log",
+      "bytes": 325143,
+      "sha256": "5629960a49a4160c61954c13f7c9ddcdc93d5e0e84f1563a3e88b65a1ed16f59"
+    },
+    {
+      "id": "AUTH220-00018",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/debug-commands.txt",
+      "bytes": 1652,
+      "sha256": "00ac64a939f904406410da632e76d584ca18d6145286c73ebbce4604e82f90d6"
+    },
+    {
+      "id": "AUTH220-00019",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "AUTH220-00020",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH220-00021",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-00.txt",
+      "bytes": 3719,
+      "sha256": "3e404b7b12a418769b413290d0ef7db16d0c900ac8109d347f8f4c157b01fb12"
+    },
+    {
+      "id": "AUTH220-00022",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-01.txt",
+      "bytes": 4467,
+      "sha256": "deed4a7414387351dc127a8be475c6880ec134e2264406d8ddc79378f64fa25d"
+    },
+    {
+      "id": "AUTH220-00023",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-02.txt",
+      "bytes": 4467,
+      "sha256": "c2ae6e29a1fcfe92a3d6e5d1f71a5ce7d3be08432b95a97cf9cb6f41efb40fcb"
+    },
+    {
+      "id": "AUTH220-00024",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-03.txt",
+      "bytes": 4467,
+      "sha256": "60327795c6d96b927b0da578eef77a836dc59a984fb9b2f91e43303e5447495e"
+    },
+    {
+      "id": "AUTH220-00025",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-04.txt",
+      "bytes": 4467,
+      "sha256": "8babd054fb5e480a94cf5fedace69b1ecfac3ba905f341c92bcf5cc74a8f0079"
+    },
+    {
+      "id": "AUTH220-00026",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-05.txt",
+      "bytes": 4467,
+      "sha256": "2ab0e2e3d1c67746d5c5beb7c2f29bc1d58329ee21d7f95ffc72e7eada184869"
+    },
+    {
+      "id": "AUTH220-00027",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-06.txt",
+      "bytes": 4467,
+      "sha256": "55e9ce77809e25ef91b3e41736eade5292a91ab2713f5e5847dbf5baed5f1ef3"
+    },
+    {
+      "id": "AUTH220-00028",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-07.txt",
+      "bytes": 4467,
+      "sha256": "3447d9385daea20833b0506cac8ae3aa47776a44cd923efad242729768f44fdd"
+    },
+    {
+      "id": "AUTH220-00029",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-08.txt",
+      "bytes": 4467,
+      "sha256": "ee9a50ce85db71e8a1b7cb19ab68846d5741cdcb85364b3f0768b2a7f5185171"
+    },
+    {
+      "id": "AUTH220-00030",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-09.txt",
+      "bytes": 4467,
+      "sha256": "d3be08382eb8f5e66df360fec3c467ec88509123d69333385c6a30bf63a9c3d0"
+    },
+    {
+      "id": "AUTH220-00031",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-10.txt",
+      "bytes": 4522,
+      "sha256": "64b609ec4c523639fae689a01b4be7fdc5dcfe949496df07ba4d80d99af30a51"
+    },
+    {
+      "id": "AUTH220-00032",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/processes-11.txt",
+      "bytes": 4259,
+      "sha256": "b6a1d57ef57b6b329b39c7854be065bab28f460a4aa0b7cf08a13117fdf16cfc"
+    },
+    {
+      "id": "AUTH220-00033",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/run.json",
+      "bytes": 8911,
+      "sha256": "ba4f33ec03124cfac9ed69d850bdda7356f32031920b9f880dd5b19c66111f3f"
+    },
+    {
+      "id": "AUTH220-00034",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH220-00035",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH220-00036",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH220-00037",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "AUTH220-00038",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "AUTH220-00039",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-05.png",
+      "bytes": 191427,
+      "sha256": "637aedb21cd25df5263d99401e7a838add696298b7e5033e1e973fae6c801e8b"
+    },
+    {
+      "id": "AUTH220-00040",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-06.png",
+      "bytes": 197155,
+      "sha256": "95ee6fb63898e745d1f1e14f512e5c84106bf5a34b14581dc3d96d2029be88db"
+    },
+    {
+      "id": "AUTH220-00041",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-07.png",
+      "bytes": 404349,
+      "sha256": "a257f6c2b3168c818d75204837f79fa6b45e297fbf82841dd1f315123b81d615"
+    },
+    {
+      "id": "AUTH220-00042",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-08.png",
+      "bytes": 404322,
+      "sha256": "c89d95860a7b68feae9bde2961bb9b8608b9fdf1d8a445549f64ef29eceda272"
+    },
+    {
+      "id": "AUTH220-00043",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-09.png",
+      "bytes": 404321,
+      "sha256": "63eaad48d7138d68308e9a7163d2e59cf2662fa37dea7d5d7bed00397707327a"
+    },
+    {
+      "id": "AUTH220-00044",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-10.png",
+      "bytes": 476577,
+      "sha256": "595f6ccc62a31e14f1787912834c529bb299c12eba27299a30a574e4bff10c63"
+    },
+    {
+      "id": "AUTH220-00045",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/screen-11.png",
+      "bytes": 355153,
+      "sha256": "169a1ca88ab7c2e8d631e5824b950b28bbe1c38992798aea4d8ed3512797a70f"
+    },
+    {
+      "id": "AUTH220-00046",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/service-state.json",
+      "bytes": 25131,
+      "sha256": "914213b1aa4b03ca93c5283a3f020b63f5d1ca93305bd1b72de3c004eb5d7cb0"
+    },
+    {
+      "id": "AUTH220-00047",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH220-00048",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH220-00049",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH220-00050",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH220-00051",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH220-00052",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH220-00053",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH220-00054",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH220-00055",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH220-00056",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH220-00057",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH220-00058",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-10.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "AUTH220-00059",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/windows-11.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH220-00060",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/wineboot.log",
+      "bytes": 64262,
+      "sha256": "609800725bc7a9beaf58604d3801958dd8ee10a459fc072179f6bcd748cff0a7"
+    },
+    {
+      "id": "AUTH220-00061",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/cycles/xvfb.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH220-00062",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/launch-exit.json",
+      "bytes": 73,
+      "sha256": "a271e9641caba72d3ada56814e1817fffab281dba7a94ade998a905d1bc223d5"
+    },
+    {
+      "id": "AUTH220-00063",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/launch.txt",
+      "bytes": 7151,
+      "sha256": "6f4b3b6b62d1eea8c993f495b395a85ce090435cdd1663c0930e3e9231b36fd4"
+    },
+    {
+      "id": "AUTH220-00064",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/raw-seal.json",
+      "bytes": 10673,
+      "sha256": "3bd1a4e4213ce0e61d5fdaff54acb013675e89b020a9a2b8649f54563ed36027"
+    },
+    {
+      "id": "AUTH220-00065",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/recipe.json",
+      "bytes": 1045,
+      "sha256": "5c7e7ad33b0c32d15f21f57af4439e0d102c33acc8478ddcf80fa845e248dd0c"
+    },
+    {
+      "id": "AUTH220-00066",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/zero-receiver/runtime-preflight.json",
+      "bytes": 61511,
+      "sha256": "bdb6dc79bdec8bb797cce80bd7d2e17461b965fbb531aed3e2a7273be6ce2b54"
+    },
+    {
+      "id": "AUTH220-00067",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/source-first.json",
+      "bytes": 1770,
+      "sha256": "76510f140df347d83102ee6d4df9b950d06143896d3f50a70b95124110b4f509"
+    },
+    {
+      "id": "AUTH220-00068",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/source-first/00-verification.json",
+      "bytes": 2700,
+      "sha256": "eadc4b755ab7383bfdf2322e3531a0319c53ff50574486514ddecf40e27f50e6"
+    },
+    {
+      "id": "AUTH220-00069",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/source-first/01-actual-callsite.json",
+      "bytes": 1452,
+      "sha256": "c89a6a9fdcd48428c8cc026f0d69fdb2e06e61c75cd8811e8095844fceda84a9"
+    },
+    {
+      "id": "AUTH220-00070",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/source-first/02-raw-seal.json",
+      "bytes": 10577,
+      "sha256": "0456db88d05290536ffaed5116c03f9067b8a9fa1535f952572d4aef3a256e85"
+    },
+    {
+      "id": "AUTH220-00071",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/verification.json",
+      "bytes": 1289,
+      "sha256": "143b11ea30046fd1a070edc3652cf39a3379f4d4a73f2c5b178048ab6a2078f8"
+    },
+    {
+      "id": "AUTH220-00072",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/watch-probe.py",
+      "bytes": 1548,
+      "sha256": "3703dde81b73d9cec8912d828b96c02a222fe9099d919d7da6815b64f72c971c"
+    },
+    {
+      "id": "AUTH220-00073",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/watch.gdb",
+      "bytes": 1683,
+      "sha256": "3b66e9d47780710c7c2b982a3bd077229c2c9a0c0c50c1f1ee44fd45555c061f"
+    },
+    {
+      "id": "AUTH220-00074",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/CALog-before.txt",
+      "bytes": 718,
+      "sha256": "95b3478242be99883962a66e87dcde0ae2d0152a2f283a697a3adef684bb7bb4"
+    },
+    {
+      "id": "AUTH220-00075",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/CALog-run.txt",
+      "bytes": 718,
+      "sha256": "95b3478242be99883962a66e87dcde0ae2d0152a2f283a697a3adef684bb7bb4"
+    },
+    {
+      "id": "AUTH220-00076",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/client.log",
+      "bytes": 315089,
+      "sha256": "a559939a1685b4c9810dc5c43d464a101c49b79ac65c6d4e4ae7ec0ce200309c"
+    },
+    {
+      "id": "AUTH220-00077",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/debug-commands.txt",
+      "bytes": 1683,
+      "sha256": "3b66e9d47780710c7c2b982a3bd077229c2c9a0c0c50c1f1ee44fd45555c061f"
+    },
+    {
+      "id": "AUTH220-00078",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "AUTH220-00079",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH220-00080",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-00.txt",
+      "bytes": 3728,
+      "sha256": "56a4f14a8bb02562a84c23d5316815508306d8aa9a21535ede3bfc61890b59f3"
+    },
+    {
+      "id": "AUTH220-00081",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-01.txt",
+      "bytes": 4476,
+      "sha256": "12bffee6b064e8b8cc792da3fa63ead26952e1e9f828336d6475d9b93e1edf7d"
+    },
+    {
+      "id": "AUTH220-00082",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-02.txt",
+      "bytes": 4476,
+      "sha256": "2b5568ce82e77e7fbd2d26b329bab783026148afabecb117e76d7631662b8189"
+    },
+    {
+      "id": "AUTH220-00083",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-03.txt",
+      "bytes": 4476,
+      "sha256": "3ccc2c8a617a8fa82ad613ab81a76e32b45e08355d96906f38fdae3802be8223"
+    },
+    {
+      "id": "AUTH220-00084",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-04.txt",
+      "bytes": 4476,
+      "sha256": "f1cb9f7a04819aac0a7398d66715ee164767f4f87afc73c4c2ef385e2df20230"
+    },
+    {
+      "id": "AUTH220-00085",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-05.txt",
+      "bytes": 4476,
+      "sha256": "3c22a16c46c84bb19ab921801a3d88dec010d96c4a0f950d322685accf5645d4"
+    },
+    {
+      "id": "AUTH220-00086",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-06.txt",
+      "bytes": 4476,
+      "sha256": "e31333abf61b9b47c1a7d109986137ced79481cd12b8134d2f9fdd646661ffae"
+    },
+    {
+      "id": "AUTH220-00087",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-07.txt",
+      "bytes": 4476,
+      "sha256": "8424df46e6aa34326036eaf7578b32043f9015a64285be06fbdae75333ce090a"
+    },
+    {
+      "id": "AUTH220-00088",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-08.txt",
+      "bytes": 4476,
+      "sha256": "c1f80cf014b1dd3ed2ee29328f19dccd294bc364691730d7f9ee8ae4d8eb8a82"
+    },
+    {
+      "id": "AUTH220-00089",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-09.txt",
+      "bytes": 4476,
+      "sha256": "5e6009fee5a44d687f6ddb763905a92c3d573c8dc566b12cc09d48c2d2987cb9"
+    },
+    {
+      "id": "AUTH220-00090",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-10.txt",
+      "bytes": 4531,
+      "sha256": "a39a6ad675c61e77d05400099d648e81ac983514682b42ad7d609b9f2b98804d"
+    },
+    {
+      "id": "AUTH220-00091",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/processes-11.txt",
+      "bytes": 3814,
+      "sha256": "785df8f526cfaf27fc7c46bae2858861ebba9fdc2d6b41406a01429aed8de756"
+    },
+    {
+      "id": "AUTH220-00092",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/run.json",
+      "bytes": 8913,
+      "sha256": "cd90bf9840b19c171ba322666f3682dd28b2d0944b047fc1c03ebb7712a770e4"
+    },
+    {
+      "id": "AUTH220-00093",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH220-00094",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH220-00095",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH220-00096",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "AUTH220-00097",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "AUTH220-00098",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "AUTH220-00099",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-06.png",
+      "bytes": 194277,
+      "sha256": "eb04d50aa432204c8df8bb45346024b10fc0a1172c0ea711ff569b6e45a4dd7b"
+    },
+    {
+      "id": "AUTH220-00100",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-07.png",
+      "bytes": 404349,
+      "sha256": "a257f6c2b3168c818d75204837f79fa6b45e297fbf82841dd1f315123b81d615"
+    },
+    {
+      "id": "AUTH220-00101",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-08.png",
+      "bytes": 404322,
+      "sha256": "c89d95860a7b68feae9bde2961bb9b8608b9fdf1d8a445549f64ef29eceda272"
+    },
+    {
+      "id": "AUTH220-00102",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-09.png",
+      "bytes": 404321,
+      "sha256": "63eaad48d7138d68308e9a7163d2e59cf2662fa37dea7d5d7bed00397707327a"
+    },
+    {
+      "id": "AUTH220-00103",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-10.png",
+      "bytes": 476571,
+      "sha256": "bc9d87200b4ed32b8feb52415381bb6d32ff0dc890f034599863f212a4e0972e"
+    },
+    {
+      "id": "AUTH220-00104",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/screen-11.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "AUTH220-00105",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/service-state.json",
+      "bytes": 25131,
+      "sha256": "c4aa9f8e9787cbbe9d1eb947187af42fb693589e63c83965b7df89acba1ef1e3"
+    },
+    {
+      "id": "AUTH220-00106",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH220-00107",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH220-00108",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH220-00109",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH220-00110",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH220-00111",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH220-00112",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH220-00113",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH220-00114",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH220-00115",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH220-00116",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH220-00117",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-10.txt",
+      "bytes": 1600,
+      "sha256": "ea21c2dc361d62acdf1dd7ea286ef159f9961dc0e96d1e9a49a23673ccca94c0"
+    },
+    {
+      "id": "AUTH220-00118",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/windows-11.txt",
+      "bytes": 1237,
+      "sha256": "09479493f5d4ecf82b5477a143bcf450cf93275b77f35dba8f7da8ab3f43afa2"
+    },
+    {
+      "id": "AUTH220-00119",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/wineboot.log",
+      "bytes": 64262,
+      "sha256": "83fa48013aa274ae3717afa6a5087bf6be0695856501533200e0b4a11d25e6c3"
+    },
+    {
+      "id": "AUTH220-00120",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/cycles/xvfb.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH220-00121",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/launch-exit.json",
+      "bytes": 73,
+      "sha256": "0157073889ce50d22565b817aaee5586162555181f760662de22f28a8dcaa852"
+    },
+    {
+      "id": "AUTH220-00122",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/launch.txt",
+      "bytes": 7153,
+      "sha256": "4580e00829226234df5051fcf7159a1fa606137d6d088923dcb139efefa8a948"
+    },
+    {
+      "id": "AUTH220-00123",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/raw-seal.json",
+      "bytes": 10813,
+      "sha256": "527dfa0a8e8a2c47f5241a2db32cc746e1bf3bc9c3d128bb22ea300ce31e2c2e"
+    },
+    {
+      "id": "AUTH220-00124",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/recipe.json",
+      "bytes": 1051,
+      "sha256": "3bac041892c4a79b40778f72b7c90cdc58b4f285a4bdc3a6a1cbfeae3f0bebb8"
+    },
+    {
+      "id": "AUTH220-00125",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/zero-watch/runtime-preflight.json",
+      "bytes": 61327,
+      "sha256": "a0142b2f2fb24e233563ea5d62a17609a82cfade7711ee373ae7026bb4e5ef15"
+    },
+    {
+      "id": "AUTH220-00126",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/adapter-r2.py",
+      "bytes": 1005,
+      "sha256": "9853961a70f5e22e54379b2d9e4265be40272b4ace775b47b2a06f83267451ad"
+    },
+    {
+      "id": "AUTH220-00127",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/adapter.py",
+      "bytes": 998,
+      "sha256": "6e0c28985e5fa056d624942371b4d7d609fffd38eb3cefe385a2143407345842"
+    },
+    {
+      "id": "AUTH220-00128",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/driver-correction.json",
+      "bytes": 601,
+      "sha256": "e1fd0c86a8589cb1690694b1e6621e9c40f0e8f85fbfa1e3212da553b749c224"
+    },
+    {
+      "id": "AUTH220-00129",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/driver-r2.py",
+      "bytes": 5688,
+      "sha256": "84fcda9c11cb7316c5479876feee238f3209765c314855d93279dce634383f70"
+    },
+    {
+      "id": "AUTH220-00130",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/driver.py",
+      "bytes": 5682,
+      "sha256": "8296592362202c8eecf89540b23400e9ae1312c5d3deb5e6318b30218da67de7"
+    },
+    {
+      "id": "AUTH220-00131",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2/cycles/adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH220-00132",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2/cycles/run.json",
+      "bytes": 4605,
+      "sha256": "b20612d401981ec41cb2b0ab30deb0a21efb66490e21704e33379daed4a9e730"
+    },
+    {
+      "id": "AUTH220-00133",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2/cycles/service/service-state.json",
+      "bytes": 24737,
+      "sha256": "b0f653c17a99c7decbde93097e270c08b12dd9c0778c7f6aa69e29f0b5f1e304"
+    },
+    {
+      "id": "AUTH220-00134",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2/cycles/wire.json",
+      "bytes": 3187,
+      "sha256": "2ed8378ec45d18c2987523bc4a9b8f19e265db529911db120a5971ae405a3a32"
+    },
+    {
+      "id": "AUTH220-00135",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2/launch-exit.json",
+      "bytes": 73,
+      "sha256": "97e66c1ffe2a03055fe5ccf01dd4c82178a431163c8fe0d76995bb6567ac515f"
+    },
+    {
+      "id": "AUTH220-00136",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2/launch.txt",
+      "bytes": 81,
+      "sha256": "7d5d00491cab838ae631107eac2f4ff3fcf7faf35bafdfc6f33684b82a0b2bc5"
+    },
+    {
+      "id": "AUTH220-00137",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2/raw-seal.json",
+      "bytes": 1375,
+      "sha256": "12a8ce002b5543cc676da764f0b976977c5c379cafbafdcfc2305aa15af3f315"
+    },
+    {
+      "id": "AUTH220-00138",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2/recipe.json",
+      "bytes": 208,
+      "sha256": "78f4965580504772f1b5ad05bdd28a18005cdd9e7798bdf10558571a9c2afcbf"
+    },
+    {
+      "id": "AUTH220-00139",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2/runtime-preflight.json",
+      "bytes": 62262,
+      "sha256": "4cc008a415e9bf049773568abfbdba369bc9b84e56a88b3921d18fc7608745e8"
+    },
+    {
+      "id": "AUTH220-00140",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay/cycles/adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH220-00141",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay/cycles/run.json",
+      "bytes": 2544,
+      "sha256": "d4f3bb1367ae10b917ea72e309eafd3155a138d199dc1af8b874d25bd1e74ce6"
+    },
+    {
+      "id": "AUTH220-00142",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay/cycles/service/service-state.json",
+      "bytes": 21981,
+      "sha256": "b14f04ec7fea2c34a4fc7b80a66860604a0e92d7f882b887220498549be5b538"
+    },
+    {
+      "id": "AUTH220-00143",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay/cycles/wire.json",
+      "bytes": 1140,
+      "sha256": "67dab0c27e9f06f1831c755270223e21d5b4ae872217c014f8accbbf0c8f4a30"
+    },
+    {
+      "id": "AUTH220-00144",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay/launch-exit.json",
+      "bytes": 73,
+      "sha256": "97aedcbc18d03ec88a70aa2927357d77c7f4cc71de40302b7bbec065610c7192"
+    },
+    {
+      "id": "AUTH220-00145",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay/launch.txt",
+      "bytes": 54,
+      "sha256": "fb18137d80268e14a214040e5ce0a47bc3738d6184db5a1082624fc71ee3945d"
+    },
+    {
+      "id": "AUTH220-00146",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay/raw-seal.json",
+      "bytes": 1363,
+      "sha256": "fb2fa0626d7ebe791636afd788f0efc014524b55a173d0d68fe4d017e90fde7a"
+    },
+    {
+      "id": "AUTH220-00147",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay/recipe.json",
+      "bytes": 205,
+      "sha256": "270fa22ac3a4984dac2997566b123338e4ff6f224c2ae471945d6c6f005d4dd4"
+    },
+    {
+      "id": "AUTH220-00148",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay/runtime-preflight.json",
+      "bytes": 62252,
+      "sha256": "4a66d28fb841a6fdd3e9b56ed62924bd642c9f8fe4c35a296404c6a01636ea1b"
+    },
+    {
+      "id": "AUTH220-00149",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/source-first.json",
+      "bytes": 2584,
+      "sha256": "f5f8155a59c30d9a9c59caa174a751f4a5100b9e9cd5bc082c0ed4853c87893e"
+    },
+    {
+      "id": "AUTH220-00150",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/source-first/00-PLAN.md",
+      "bytes": 85971,
+      "sha256": "86da3d363180b6661443381fbb25b6c6c1edc85bca67a4d6525cbde75551f7d4"
+    },
+    {
+      "id": "AUTH220-00151",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/source-first/01-RESEARCH.md",
+      "bytes": 43928,
+      "sha256": "74dfe089dc55ea1f738c7b02b83da3f0623cd5f0e27cf2efdd8780cdf6869fba"
+    },
+    {
+      "id": "AUTH220-00152",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/source-first/02-policy-verification.json",
+      "bytes": 4183,
+      "sha256": "973353faf08d9c12b9d70d169060c145ca726fc4f80d99ad711f9acf4655d8cc"
+    },
+    {
+      "id": "AUTH220-00153",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/source-first/03-verification.json",
+      "bytes": 2700,
+      "sha256": "eadc4b755ab7383bfdf2322e3531a0319c53ff50574486514ddecf40e27f50e6"
+    },
+    {
+      "id": "AUTH220-00154",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/source-first/04-verification.json",
+      "bytes": 1289,
+      "sha256": "143b11ea30046fd1a070edc3652cf39a3379f4d4a73f2c5b178048ab6a2078f8"
+    },
+    {
+      "id": "AUTH220-00155",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/verification.json",
+      "bytes": 7743,
+      "sha256": "00d462209b7708600a878cf1d349ece0509f0ee57e34d8eae0900498a7234dc0"
+    },
+    {
+      "id": "AUTH220-00156",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/README.md",
+      "bytes": 29316,
+      "sha256": "a2a4ad96c740678d421cbc22f22b93ecd8e5e411371aed57193c59d4893f32eb"
+    },
+    {
+      "id": "AUTH220-00157",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/COVERAGE.md",
+      "bytes": 185176,
+      "sha256": "ffccdeaaa00c1738d9247387baeac5bfc36a60b79e115b616f088ffef0bdb4f1"
+    },
+    {
+      "id": "AUTH220-00158",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/PLAN.md",
+      "bytes": 86208,
+      "sha256": "2bfe9a2df4e7b9cff339c158d6989ca5c7f9e21576d19fa43c611309037ada25"
+    },
+    {
+      "id": "AUTH220-00159",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/PROTOCOL.md",
+      "bytes": 680972,
+      "sha256": "7905d430519c63a63b49184ee8fc51ef99f978caedf241965132a0a3f187f949"
+    },
+    {
+      "id": "AUTH220-00160",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/RESEARCH.md",
+      "bytes": 43818,
+      "sha256": "bef0ce0425ee61be12fc107feac368e4f591fb7f8331d10894090490d276f414"
+    },
+    {
+      "id": "AUTH220-00161",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/evidence/checkpoints/audits/AUD064.json",
+      "bytes": 4845,
+      "sha256": "4733646d136ccbc262a999aa89ac06abf95d31cec686c1f3fd16eae5245bf0c2"
+    },
+    {
+      "id": "AUTH220-00162",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 262184,
+      "sha256": "5effe31d47dc1de4ca2a6cf95cf2253ca142716d99d67de083aa58c6c8a3477c"
+    },
+    {
+      "id": "AUTH220-00163",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 34413,
+      "sha256": "5f76debe2dfeadb1bc75aa7c8d804760ad032b446d45b9e42fbe97491fb6f5a6"
+    },
+    {
+      "id": "AUTH220-00164",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/evidence/login-runtime/README.md",
+      "bytes": 21356,
+      "sha256": "4bf5cbe2139318f0c7251f0f48ffa8e81566b3c0139fb4bf2245d95f7c2a06e0"
+    },
+    {
+      "id": "AUTH220-00165",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/evidence/login-runtime/transport-controls.json",
+      "bytes": 13973,
+      "sha256": "3e01476e4aa86f0d34f04c837ba720c8e7c3f2d5e48a35b21f154c0e48ff0981"
+    },
+    {
+      "id": "AUTH220-00166",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/features.json",
+      "bytes": 194687,
+      "sha256": "45429f1012b2dec98cbc7b6855c560f31430d4f4ea8463a47032fafb00683cec"
+    },
+    {
+      "id": "AUTH220-00167",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/manual-review.json",
+      "bytes": 2310,
+      "sha256": "eda4c0ac0101fd839cfb36643cec7ea14f5d0abaab8d4b33dd886fed1f1c9366"
+    },
+    {
+      "id": "AUTH220-00168",
+      "kind": "local",
+      "path": "local/research/codex/capture_github_cp220.py",
+      "bytes": 1940,
+      "sha256": "f651efb933c615a767274a77b7f24b8077e7ae1245a861e8ca46aa163af71d43"
+    },
+    {
+      "id": "AUTH220-00169",
+      "kind": "local",
+      "path": "local/research/codex/cp220-GitHub-issues-1.json",
+      "bytes": 610333,
+      "sha256": "0f97065beb2b3648fd3a694a0004540927614da93101f3cfa4f6b1f8a0205274"
+    },
+    {
+      "id": "AUTH220-00170",
+      "kind": "local",
+      "path": "local/research/codex/cp220-GitHub-issues-2.json",
+      "bytes": 585540,
+      "sha256": "94e6592034cd8acc19608c7e5604b01ef8b29cc1d8a681385428d8382da9a428"
+    },
+    {
+      "id": "AUTH220-00171",
+      "kind": "local",
+      "path": "local/research/codex/cp220-GitHub-issues-3.json",
+      "bytes": 569838,
+      "sha256": "b2ee4404a3bf7fb4384254c3f1c6094fd0eda0ab2915155971c5b8c8b5d3328a"
+    },
+    {
+      "id": "AUTH220-00172",
+      "kind": "local",
+      "path": "local/research/codex/cp220-GitHub-pulls-1.json",
+      "bytes": 2238570,
+      "sha256": "c81b8f0faba2abda8d804cf159afb4d6495e2e393d5921174ca5be93ac4bf8e3"
+    },
+    {
+      "id": "AUTH220-00173",
+      "kind": "local",
+      "path": "local/research/codex/cp220-GitHub-pulls-2.json",
+      "bytes": 2224155,
+      "sha256": "607cdfabbe5f52a0353c3be38cd8016e606186bd848fa08ba6dda57cb52d037a"
+    },
+    {
+      "id": "AUTH220-00174",
+      "kind": "local",
+      "path": "local/research/codex/cp220-GitHub-pulls-3.json",
+      "bytes": 442088,
+      "sha256": "c91062f07421938775c29454eb3087d1be04d7dbfa877f8bb55ff2195446bd21"
+    },
+    {
+      "id": "AUTH220-00175",
+      "kind": "local",
+      "path": "local/research/codex/cp220-catalog-final.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH220-00176",
+      "kind": "local",
+      "path": "local/research/codex/cp220-docs-pre-audit.txt",
+      "bytes": 175,
+      "sha256": "0a23daeb52f1525231b86f1e4d61bb7cde4407afac5af906f11ca0f993563254"
+    },
+    {
+      "id": "AUTH220-00177",
+      "kind": "local",
+      "path": "local/research/codex/cp220-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "0a23daeb52f1525231b86f1e4d61bb7cde4407afac5af906f11ca0f993563254"
+    },
+    {
+      "id": "AUTH220-00178",
+      "kind": "local",
+      "path": "local/research/codex/cp220-docs-pre-record.txt",
+      "bytes": 175,
+      "sha256": "3d4ca75df052ae6977ed806f6cd32ab9b2d7625beea3d8b08924f31aa67985f5"
+    },
+    {
+      "id": "AUTH220-00179",
+      "kind": "local",
+      "path": "local/research/codex/cp220-github-capture.txt",
+      "bytes": 70,
+      "sha256": "747fc97ad0e0c9d3dda3442e6e269ac38b1940e15f9376807a57479f1c8d8660"
+    },
+    {
+      "id": "AUTH220-00180",
+      "kind": "local",
+      "path": "local/research/codex/cp220-issue-updates.txt",
+      "bytes": 448,
+      "sha256": "5afabd1cee62bbe9a54b5c63a06e5864ae145cd318064bc7a12b28c569d4f3cc"
+    },
+    {
+      "id": "AUTH220-00181",
+      "kind": "local",
+      "path": "local/research/codex/cp220-issue14-before.json",
+      "bytes": 36714,
+      "sha256": "ae62279c8b3cc5976154ff135b4768626eec8a9776a1ac7f52ae3c9ea5ae7f2c"
+    },
+    {
+      "id": "AUTH220-00182",
+      "kind": "local",
+      "path": "local/research/codex/cp220-issue14-request.json",
+      "bytes": 34103,
+      "sha256": "509a80ffc3986a260bc24019c8bd45da2e800b8e7a5947fd4a356945d5f99a05"
+    },
+    {
+      "id": "AUTH220-00183",
+      "kind": "local",
+      "path": "local/research/codex/cp220-issue14-updated.json",
+      "bytes": 37017,
+      "sha256": "09ace2ed6c9f80aa391880ac3f66f3780146b59f862bcfaee432a156a3705d2d"
+    },
+    {
+      "id": "AUTH220-00184",
+      "kind": "local",
+      "path": "local/research/codex/cp220-issue285-before.json",
+      "bytes": 10040,
+      "sha256": "e725b9ae801e41a5e1482eaad7ab882542b8c99e3e41ecc99dc9c8dd355a9d43"
+    },
+    {
+      "id": "AUTH220-00185",
+      "kind": "local",
+      "path": "local/research/codex/cp220-issue285-request.json",
+      "bytes": 7401,
+      "sha256": "7b17e43ed4884071ff6ee7c045bea2a51bd261f28ddd3e3535f503484f12c680"
+    },
+    {
+      "id": "AUTH220-00186",
+      "kind": "local",
+      "path": "local/research/codex/cp220-issue285-updated.json",
+      "bytes": 10343,
+      "sha256": "bf0eb61e187c0a51c1cdaae0cbc0d3b0ddd78adae6c70ff42c5df03331f75bc4"
+    },
+    {
+      "id": "AUTH220-00187",
+      "kind": "local",
+      "path": "local/research/codex/inspect_auth_receiver.py",
+      "bytes": 1149,
+      "sha256": "c162c1031b37755b0e1c7990f8938d79014c7a1dab1516b2d9807fe781ee4cad"
+    },
+    {
+      "id": "AUTH220-00188",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_receiver_run.py",
+      "bytes": 2610,
+      "sha256": "8a923ef1cadb16490f8353af63abbdab23f86c8173202d1c898adc95a8ee52e0"
+    },
+    {
+      "id": "AUTH220-00189",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_receiver_source.py",
+      "bytes": 2244,
+      "sha256": "4ef38ef52e01c5ab89603a54035cc74b55075325761f2bb791c02966e1d4494d"
+    },
+    {
+      "id": "AUTH220-00190",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_receiver_watch.py",
+      "bytes": 4319,
+      "sha256": "0bd00a500136d8cc512179e034643acc7823211d0f826b206b52ff2ff5356982"
+    },
+    {
+      "id": "AUTH220-00191",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_tcp_replay.py",
+      "bytes": 3261,
+      "sha256": "4aead1b14853263e17ebdf49b94271cf2907f658503fc72e8aa5b8531ace48bc"
+    },
+    {
+      "id": "AUTH220-00192",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_receiver.py",
+      "bytes": 751,
+      "sha256": "da4f93f7704ae6fc3c3e91484afc41f0f6094b10f94fe95cd2bf986504585ba6"
+    },
+    {
+      "id": "AUTH220-00193",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_receiver_watch.py",
+      "bytes": 754,
+      "sha256": "ec9bbeafb1f13d302ceb6eafe683dd3e98c90d3abbeeb57d1dfdb79d2a63bd3c"
+    },
+    {
+      "id": "AUTH220-00194",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_tcp_replay.py",
+      "bytes": 1523,
+      "sha256": "216717cd70fc4681a502e2abbe047211eab927dfa96dec95eccb649ac5444b7d"
+    },
+    {
+      "id": "AUTH220-00195",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_tcp_replay_r2.py",
+      "bytes": 1535,
+      "sha256": "a9b415b508624e41d2a986243e3fcd6e37acb43a99a4a1e194a2b355233c20dd"
+    },
+    {
+      "id": "AUTH220-00196",
+      "kind": "local",
+      "path": "local/research/codex/sync_cp220.py",
+      "bytes": 12254,
+      "sha256": "fcbe1013f736449c2b164c53b6c39188e9639e4bcb96f46dc0e0f8ce64fcc55e"
+    },
+    {
+      "id": "AUTH220-00197",
+      "kind": "local",
+      "path": "local/research/codex/update_cp220_issues.py",
+      "bytes": 4626,
+      "sha256": "ba8b5be1ad57d7c60d81c4b81269f2b8cf35c9d6a440af85601aef57e0e51907"
+    },
+    {
+      "id": "AUTH220-00198",
+      "kind": "local",
+      "path": "local/research/codex/verify_auth_receiver.py",
+      "bytes": 2264,
+      "sha256": "ac79204dd0584da399df168dfcabfe4f1d117390c995a305df46d56897124295"
+    },
+    {
+      "id": "AUTH220-00199",
+      "kind": "local",
+      "path": "local/research/codex/verify_auth_receiver_watch.py",
+      "bytes": 1920,
+      "sha256": "0cd6976f60f58dbf9310cd418a8b71061e134de44efd18a4c820a3f294c2526e"
+    },
+    {
+      "id": "AUTH220-00200",
+      "kind": "local",
+      "path": "local/research/codex/verify_auth_tcp_replay.py",
+      "bytes": 3722,
+      "sha256": "98419969e1f21f159c2116f9b6ed8fdfd92ca47f8acae8b798c3c1894c0ff507"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-09",
-  "baseline": "f9f48d275625cdb92df06349f5a72194b8cd5c20",
+  "baseline": "09435d9386ffc6facddc3d80f1f34fdf95fbcfd3",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP219 valid-claim/zero-field EOF controls reproduce fault; native vtable+50→17C7F40→local→call12578AC/rawreturn12578AF confirmed. 4 sealed runs/188raw, lifecycle FAIL; PR290 merged CP217–218.",
-      "remaining": "Why CObject receiver selected/lifetime/callback rootcause unknown. Healthy lease-negative/kernelTCP replay/twoidentity/sessionexpiry/restartfence/DB/accountAPI/Rust implementation missing.",
-      "next_test": "NEXT-AUTH-CHANNEL-EOF cache-first receiver selection/getter13AEBE0/candidate1257836→3B then passive native return/currentthis. No repeated matched/zero controls, RTTI/vtable patch or SDK graph.",
+      "known": "CP220 kernelTCP duplicate/replay/deniedEOF preservesowner; owner67reply/ownerEOFrelease verified by syntheticdriver, notnativeacceptance. CP219 dispatch proven/PR291merged;2receiverfollowupsno selectionobservable/nativehealthFAIL.",
+      "remaining": "Receiverselectionblocked/getter-other-nullcallers/watchinconclusive. Nativehealthydenial/twoidentityswap/sessionexpiry/restartfence/DB/API/Rust integration missing.",
+      "next_test": "NEXT-AUTH-SESSION-BINDING independent sourcefirst tokenA/B/Profile47auth_A/B/layout6→twoaccount/role/nativepositive, wrongbindingkernelTCP. Do not repeat kernelreplay/broadgetter/watch/protectedVM/SDK graph.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "New native dispatch provenance bounds faulty operand; does not fix lifecycle/close acceptance or gate. Both epics remain open;8WIP unchanged/noRust. AUD063through216/next220.",
+      "reason": "4relatedruns/102raw sealed, R1drivererrorretained/R2existingcodec correction. NativehealthFAIL vs designTCPpass distinct; epics/scopedgatesunchanged/WIPpreserved. AUD064through220/next224.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -256,7 +256,8 @@
         "docs/PROTOCOL.md#auth-channel-echo",
         "docs/PROTOCOL.md#auth-admission-prototype",
         "docs/PROTOCOL.md#auth-lease-eof-blocker",
-        "docs/PROTOCOL.md#auth-eof-dispatch"
+        "docs/PROTOCOL.md#auth-eof-dispatch",
+        "docs/PROTOCOL.md#auth-tcp-ownership"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -347,7 +348,8 @@
         "docs/evidence/login-runtime/README.md#cp216",
         "docs/evidence/login-runtime/README.md#cp217",
         "docs/evidence/login-runtime/README.md#cp218",
-        "docs/evidence/login-runtime/README.md#cp219"
+        "docs/evidence/login-runtime/README.md#cp219",
+        "docs/evidence/login-runtime/README.md#cp220"
       ],
       "prs": [
         173,
@@ -440,7 +442,8 @@
         287,
         288,
         289,
-        290
+        290,
+        291
       ],
       "successors": []
     },
@@ -779,11 +782,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP219 valid-claim/zero-field EOF controls reproduce fault; native vtable+50→17C7F40→local→call12578AC/rawreturn12578AF confirmed. 4 sealed runs/188raw, lifecycle FAIL; PR290 merged CP217–218.",
-      "remaining": "Why CObject receiver selected/lifetime/callback rootcause unknown. Healthy lease-negative/kernelTCP replay/twoidentity/sessionexpiry/restartfence/DB/accountAPI/Rust implementation missing.",
-      "next_test": "NEXT-AUTH-CHANNEL-EOF cache-first receiver selection/getter13AEBE0/candidate1257836→3B then passive native return/currentthis. No repeated matched/zero controls, RTTI/vtable patch or SDK graph.",
+      "known": "CP220 kernelTCP duplicate/replay/deniedEOF preservesowner; owner67reply/ownerEOFrelease verified by syntheticdriver, notnativeacceptance. CP219 dispatch proven/PR291merged;2receiverfollowupsno selectionobservable/nativehealthFAIL.",
+      "remaining": "Receiverselectionblocked/getter-other-nullcallers/watchinconclusive. Nativehealthydenial/twoidentityswap/sessionexpiry/restartfence/DB/API/Rust integration missing.",
+      "next_test": "NEXT-AUTH-SESSION-BINDING independent sourcefirst tokenA/B/Profile47auth_A/B/layout6→twoaccount/role/nativepositive, wrongbindingkernelTCP. Do not repeat kernelreplay/broadgetter/watch/protectedVM/SDK graph.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "New native dispatch provenance bounds faulty operand; does not fix lifecycle/close acceptance or gate. Both epics remain open;8WIP unchanged/noRust. AUD063through216/next220.",
+      "reason": "4relatedruns/102raw sealed, R1drivererrorretained/R2existingcodec correction. NativehealthFAIL vs designTCPpass distinct; epics/scopedgatesunchanged/WIPpreserved. AUD064through220/next224.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -793,7 +796,8 @@
         "docs/PROTOCOL.md#auth-channel-echo",
         "docs/PROTOCOL.md#auth-admission-prototype",
         "docs/PROTOCOL.md#auth-lease-eof-blocker",
-        "docs/PROTOCOL.md#auth-eof-dispatch"
+        "docs/PROTOCOL.md#auth-eof-dispatch",
+        "docs/PROTOCOL.md#auth-tcp-ownership"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -804,18 +808,20 @@
         "docs/evidence/login-runtime/README.md#cp216",
         "docs/evidence/login-runtime/README.md#cp217",
         "docs/evidence/login-runtime/README.md#cp218",
-        "docs/evidence/login-runtime/README.md#cp219"
+        "docs/evidence/login-runtime/README.md#cp219",
+        "docs/evidence/login-runtime/README.md#cp220"
       ],
       "prs": [
         286,
         287,
         288,
         289,
-        290
+        290,
+        291
       ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-09T00:43:18.939893+00:00",
+  "as_of_utc": "2026-11-09T01:01:29.840628+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

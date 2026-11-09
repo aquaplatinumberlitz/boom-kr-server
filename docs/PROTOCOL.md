@@ -420,7 +420,8 @@ actualframes/result và bước tiếp của client được đối chiếu riê
 
 **Policy emulator, không nativeacceptance:**24 kiểm với actualretainedframes và negativefieldmutations
 cho expiry/revoke/replay/identity-name/source/oneowner/rate/collision/staleEOF. TạiCP217 chưa nativeexpired/revokedlease; [CP218](#auth-lease-eof-blocker) đã thử nhưng clientEOFfault,
-chưa negativeacceptance; replay trên kernelTCP, haiaccountKR thật/swappedchannel chưa đo. Pendinglease expiry khác sessionexpiry.
+chưa negativeacceptance; tạiCP217 chưa replay kernelTCP. [CP220](#auth-tcp-ownership) bổ sung adapterTCPdesign,
+haiaccountKR thật/swappedchannel vẫn thiếu. Pendinglease expiry khác sessionexpiry.
 **Giới hạn:** frontend32chars không entropy/securityproof; chưa fullauth/DB/accountresume/matchrestore hoặc gate mới.
 Phép thử kế ở [RUST-Q1](RESEARCH.md#rust-service-gaps); M0–M1 không phụ thuộc fullauthRE.
 
@@ -475,6 +476,38 @@ suy đường nội bộ từ linear protected bytes. Context tĩnh trước1257
 cần xác nhận native receiver selection trước khi giải nghĩa. [Câu hỏi/phép thử](RESEARCH.md#rust-service-gaps),
 [thứ tự duy nhất](PLAN.md#current-order). CP217–218 complete giữ nguyên; PR290 đã mergef9f48d2.
 Không nâng gate, fullauth hoặc production/Rust; Internet thật chưa kiểm giữ backlog riêng.
+
+<a id="auth-tcp-ownership"></a>
+### Ownership qua kernel TCP; receiver EOF còn blocked — CP220
+
+[Recipe/run/hash](evidence/login-runtime/README.md#cp220), [metadata](evidence/login-runtime/transport-controls.json).
+
+**`emu_choice/design`, integration bằng socket Linux thật:** giữ nguyên private adapter/policy CP217,
+Profile47 và frame native đã lưu. Driver tổng hợp chạy trong user/net namespace chỉ có loopback,
+không chạy client KR. Cấp fixed public ticket đúng echo trong captured6 để replay nguyên frame qua TCP;
+duplicate6 và request67 sau duplicate chỉ sửa sequence bằng encoder đã có, không coi encoder là oracle.
+R2 đo được: duplicate6 trên kênh đã nhận không thu hồi owner; replay nguyên captured6 qua kết nối mới
+bị EOF, không thay/xóa owner; owner gốc vẫn nhận reply67 thực qua TCP; owner EOF xóa active/session/
+connection maps. Đây là kiểm transport adapter, **không native client khỏe mạnh sau từ chối**.
+Stale EOF của một phiên từng được nhận sau freshlogin mới chưa được đo; không ghép với policy24 cũ.
+
+R1 dừng tại assertion do **driver** đọc typed u32 như raw little-endian; R2 dùng `codec.read_fields`
+hiện có. Giữ nguyên run/source R1, không đổi contract hoặc gọi đây là lỗi KR. Hai run kernel TCP/
+8 raw đã seal; R2 có22 scoped checks, không fullauth/security/entropy/restartfence proof.
+
+**`kr_static/confirmed` prefix getter và `kr_runtime/confirmed` phần đã quan sát:** getter13AEBE0
+đọc `context+0x48`, nhưng bốn return đã bắt là null ở caller khác; nhánh store125783B không hit trước
+fault trong run. Không gán null getter là crash receiver. Watch local12D434 chỉ có armed marker,
+không write snapshot/stat; Wine kết thúc với privileged instruction17C7F4C, GDB sau đó không còn
+register. Phép watch **inconclusive**, không chứng minh không ghi hoặc remote watch được hỗ trợ.
+Hai run native/94 raw seal/cleanup0, lifecycle vẫn FAIL. Tìm bounded write-encoding trong vùng cache
+chỉ thấy candidate125783B đã biết; không phải proof thiếu write hoặc semantics protected VM.
+
+**Điểm dừng nhánh receiver:** chưa có observable chọn receiver đủ để sửa, không lặp broad getter/
+hardwarewatch hoặc mở protected VM/SDK graph. Giữ [chuỗi dispatch CP219](#auth-eof-dispatch) và blocker;
+chỉ mở lại khi có cạnh/recipe lỗi native đã đo mới. [Phép RE độc lập](RESEARCH.md#rust-service-gaps),
+[thứ tự](PLAN.md#current-order). CP219 đã merge PR291/09435d9. Không production/Rust integration,
+không đóng #14/#285/gate; audit AUD064 qua220, kếCP224. Internet thật chưa kiểm.
 
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015

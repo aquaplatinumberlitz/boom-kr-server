@@ -1,0 +1,273 @@
+{
+  "id": "CP220",
+  "previous": "CP219",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T01:03:52.592655+00:00",
+  "context_commit": "09435d9386ffc6facddc3d80f1f34fdf95fbcfd3",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "BoundreceiverselectionafterCP219withoutunboundedVMresearch,thenindependentkernelTCPduplicate/replay/ownerEOFadmissionintegration;preservefailednativeanddrivercontrolsandperformperiodicAUD064.",
+  "scope": "2boundednativegetter/watchfollowupssealedwithoutselectionobservable;blockedreceiverpath,independentCP217adapter/kernelTCPbyteexactcaptured6replay/ownerproof in2drivercases.4relatedruns102raw,manualperiodicaudit,no nativehealthyacceptanceorproduction/Rustchange.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "Getterba4f33ec03124cfac9ed69d850bdda7356f32031920b9f880dd5b19c66111f3f/39.887805350s/47raw;watchcd90bf9840b19c171ba322666f3682dd28b2d0944b047fc1c03ebb7712a770e4/39.937802774s/47raw;bothclientfailure/ownedcleanup0.",
+    "KernelTCPR1d4f3bb1367ae10b917ea72e309eafd3155a138d199dc1af8b874d25bd1e74ce6/0.112849524s/4raw(driverassertion);R2b20612d401981ec41cb2b0ab30deb0a21efb66490e21704e33379daed4a9e730/0.232905161s/4raw/22scopedchecks;realTCPreplaygetsEOF/owner67replyandownerEOFrelease.",
+    "Getter13AEBE0prefixcontext+48/ret13AEBF0;4capturednullreturnsothercallers/notfaultreceiver,selectedstore125783Bnothit. Hardwarewatch12D434armed/no snapshot/GDBnoregisters/Wine17C7F4C. CP219vtable+50/12578AC/raw12578AFproofunchanged."
+  ],
+  "findings": [
+    {
+      "summary": "Cacheexact13AEBE0prefixreadscontext+48butnative4earlyreturnnullcallersdifferent;predicted125783Bstorenothitbeforefault. DoesnotselectprovenCP219CObjectreceiver; no nullgetterrootcauseclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-tcp-ownership",
+      "evidence": [
+        "AUTH220-00014",
+        "AUTH220-00002"
+      ],
+      "limits": "NativeWinecopy4b/Profile47/loopback/inheritedofflineglobalreset;2receiverfollowupsfail/inconclusive. Separate2LinuxkernelTCPsyntheticdrivercases: R1testdecodingerrorretained,R2existingcodecfix/22scopedchecks/designnotKRnativeacceptance.102newraw/sourcefrozen/cleanupverified. Fixedpublicticket/captured6notentropy/security/restartfenceproof. No healthydenial/twoactualswap/generalrelogin/oldadmittedEOFafternewsession/sessionexpiry/DB/API/Rust/productionintegration/gateclosure. CP217–219complete/auditsimmutable;8WIPpreserved/noRust. AUD064through220/next224;reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Readonlylocalstackwritewatcharmedbutnowrite/faultsnapshot/stats;Wineunhandledprivilegedinstruction17C7F4CandGDBnoregisters. Diagnosticinconclusive/clienthealthfail,notno-writeorsupportedwatchproof. Boundedassignmentencodingsearchonlyknowncandidate,notprotectedbodysemantics.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-tcp-ownership",
+      "evidence": [
+        "AUTH220-00071",
+        "AUTH220-00003"
+      ],
+      "limits": "NativeWinecopy4b/Profile47/loopback/inheritedofflineglobalreset;2receiverfollowupsfail/inconclusive. Separate2LinuxkernelTCPsyntheticdrivercases: R1testdecodingerrorretained,R2existingcodecfix/22scopedchecks/designnotKRnativeacceptance.102newraw/sourcefrozen/cleanupverified. Fixedpublicticket/captured6notentropy/security/restartfenceproof. No healthydenial/twoactualswap/generalrelogin/oldadmittedEOFafternewsession/sessionexpiry/DB/API/Rust/productionintegration/gateclosure. CP217–219complete/auditsimmutable;8WIPpreserved/noRust. AUD064through220/next224;reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "IndependentkernelTCPprivateadaptertest: duplicate6onownerandbyteexactcaptured6replaynewconnectiondonotreplace/releaseowner;replaygetsEOF,ownerstillreceives67replythenownerEOFclearsactive/session/connectionmaps. Syntheticdriver/designintegration,notKRnativehealthydenial/fullauth.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#auth-tcp-ownership",
+      "evidence": [
+        "AUTH220-00155",
+        "AUTH220-00137"
+      ],
+      "limits": "NativeWinecopy4b/Profile47/loopback/inheritedofflineglobalreset;2receiverfollowupsfail/inconclusive. Separate2LinuxkernelTCPsyntheticdrivercases: R1testdecodingerrorretained,R2existingcodecfix/22scopedchecks/designnotKRnativeacceptance.102newraw/sourcefrozen/cleanupverified. Fixedpublicticket/captured6notentropy/security/restartfenceproof. No healthydenial/twoactualswap/generalrelogin/oldadmittedEOFafternewsession/sessionexpiry/DB/API/Rust/productionintegration/gateclosure. CP217–219complete/auditsimmutable;8WIPpreserved/noRust. AUD064through220/next224;reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R1kernelTCPdriverfixedticketdecodedtypedfieldaslittleendianandfailedassertion. FreshR2usesexistingcodec.read_fields;oldsource/runsealedunchanged.102rawhash/sourcefreeze/cleanupverifiedacross2native2TCPcases; nativefailureandR1testbugdistinctfromR2transportpass.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-tcp-ownership",
+      "evidence": [
+        "AUTH220-00128",
+        "AUTH220-00155",
+        "AUTH220-00167"
+      ],
+      "limits": "NativeWinecopy4b/Profile47/loopback/inheritedofflineglobalreset;2receiverfollowupsfail/inconclusive. Separate2LinuxkernelTCPsyntheticdrivercases: R1testdecodingerrorretained,R2existingcodecfix/22scopedchecks/designnotKRnativeacceptance.102newraw/sourcefrozen/cleanupverified. Fixedpublicticket/captured6notentropy/security/restartfenceproof. No healthydenial/twoactualswap/generalrelogin/oldadmittedEOFafternewsession/sessionexpiry/DB/API/Rust/productionintegration/gateclosure. CP217–219complete/auditsimmutable;8WIPpreserved/noRust. AUD064through220/next224;reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "PeriodicAUD064manualselectivecore/evidenceauditthrough220advancesnext224withoutreset. CP219mergedPR291/09435d9;CP217–219/auditsunchanged,8WIPbyte-exact/noRust. #14/#285open;receiverblocked/no-repeat,independenttwoaccountsource-firstnextperPLAN.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-tcp-ownership",
+      "evidence": [
+        "AUTH220-00167",
+        "AUTH220-00161",
+        "AUTH220-00183",
+        "AUTH220-00186"
+      ],
+      "limits": "NativeWinecopy4b/Profile47/loopback/inheritedofflineglobalreset;2receiverfollowupsfail/inconclusive. Separate2LinuxkernelTCPsyntheticdrivercases: R1testdecodingerrorretained,R2existingcodecfix/22scopedchecks/designnotKRnativeacceptance.102newraw/sourcefrozen/cleanupverified. Fixedpublicticket/captured6notentropy/security/restartfenceproof. No healthydenial/twoactualswap/generalrelogin/oldadmittedEOFafternewsession/sessionexpiry/DB/API/Rust/productionintegration/gateclosure. CP217–219complete/auditsimmutable;8WIPpreserved/noRust. AUD064through220/next224;reviewwaivednotapproved. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "2nativefollowupsrawhash/sourcefreeze/cleanup and explicitlimited/inconclusiveobservations",
+      "result": "pass",
+      "evidence": [
+        "AUTH220-00014",
+        "AUTH220-00071"
+      ],
+      "limits": "Healthnotpass/getterselectionnotconfirmed/watchnoobservable."
+    },
+    {
+      "check": "HealthyclientpostEOF/nativelease-negative lifecycle",
+      "result": "fail",
+      "evidence": [
+        "AUTH220-00014",
+        "AUTH220-00071"
+      ],
+      "limits": "Nativeclientfailspersist;allcleanup/harnessreturn0notacceptance."
+    },
+    {
+      "check": "R1kernelTCPdriverfixedticketcontrol",
+      "result": "fail",
+      "evidence": [
+        "AUTH220-00128",
+        "AUTH220-00155"
+      ],
+      "limits": "Driverwrongtypedfielddecode,notKRcontractfailure;immutableR1preserved/freshR2."
+    },
+    {
+      "check": "R2kernelTCPduplicate/replay/ownerstillserves/ownerEOFrelease",
+      "result": "pass",
+      "evidence": [
+        "AUTH220-00155"
+      ],
+      "limits": "22scopedchecks/syntheticdriver/design,notnativehealth/securityproof."
+    },
+    {
+      "check": "ManualAUD064/docs/catalog/links/WIP/priorrecords",
+      "result": "pass",
+      "evidence": [
+        "AUTH220-00167",
+        "AUTH220-00176",
+        "AUTH220-00175"
+      ],
+      "limits": "Fullhistory/localprecommitandexactheadchecksrequiredafterappend;waivednotapproved."
+    },
+    {
+      "check": "Twoactualidentityswap/sessionexpiry/restartfence/DB/Rust/receiverselectionfix",
+      "result": "not_run",
+      "evidence": [
+        "AUTH220-00160"
+      ],
+      "limits": "Receiverbranchblocked/newobservableonly;independentsourcefirsttwoaccountpositive/wrongbindingnext."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP220-auth-transport-controls.json",
+      "bytes": 52124,
+      "sha256": "05c2691c1fb7db7b3e35e4285ca45bbc7d2f48eae5acfeedc973b61368a35626",
+      "count": 200
+    }
+  ],
+  "delta": {
+    "added": [
+      "2boundednativefollowups/no selectionobservable andindependentkernelTCPownershiptransportexperimentin2cases,102newrawpins.",
+      "PeriodicAUD064through220/next224andupdatedsourceorder/issuecanonicalnavigation."
+    ],
+    "corrected": [
+      "Candidategetter13AEBE0nullcallersnotproofcrashreceiverselection;store125783Bnothit/watcharmednoobservable≠nowrite.",
+      "R1driverraw-littleendianticketreadwrong;R2usesexistingtypedcodecwithoutcontractchange.R1failure/sourcekept.",
+      "KernelTCPreplaygapnowmeasurednarrowadapter/designscope;nativehealthydenial/twoactualswap/fullauthstillunmet."
+    ],
+    "superseded": [
+      "Broadgetter/hardwarewatchrouteblockedpendingnewnativeobservable;donotloopormoveintoprotectedVM/SDKgraph.",
+      "CP219deliverynowmergedPR291;counterperiodic220duesatisfiedbyAUD064withoutrewritinghistoricalrecords."
+    ]
+  },
+  "blockers": [
+    "NativeEOFreceiverselection/gracefulerror/healthblocked;2focusedfollowupsnoactualselectionwriteobservable. Neednewedgebeforemoreprobing,notVMgraphorRTTIpatch.",
+    "Twoactualaccount/role/bindingpositive-swap/sessionexpiry/restartfence/DB/API/fullauthunaccepted;kernelTCPfixedticket/oneaccount/fourinitialtransportsnotgeneralservice.",
+    "Rustnotimplemented/planningonly;8WIPunmerged,Internet thật chưa kiểm separatebacklog."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "IndependentperPLANsourcefirstCP214tokenA/B,CP216layout6,Profile47auth_A/B→twoaccount/role/nativepositivecontrols thenwrongbindingkernelTCP. Do notrepeatmeasuredkernelreplay;healthydenial/twoactualswap/sessionexpiry/restartfenceremainopen.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Open work, blocked on receiver observable: No selectionobservablefromgetter/watch;retainCP219dispatchproof/nativehealthFAIL. Reopenonlynewnativeedgeormeasuredgracefulerrorrecipe;no broadgetter/watch/VM/SDKrepeat orRTTI-vtablepatch.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "M0→M1futureimplementationindependentfullauthRE;planningCP213/PR286delivered,noRusttree/productionchangeinCP220.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T01:03:52.592655+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/scopedreceiverblocker/kernelTCPdesigncontrols/manualperiodicAUD064;nativehealthFAIL/R1drivererrorretained. Independentreviewwaivednotapproved;exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    },
+    {
+      "path": "docs/evidence/login-runtime/README.md",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    },
+    {
+      "path": "docs/evidence/login-runtime/transport-controls.json",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD064.json",
+      "state": "updated",
+      "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    }
+  ]
+}
