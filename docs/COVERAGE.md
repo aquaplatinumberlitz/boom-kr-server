@@ -396,21 +396,21 @@ Dependency: [KR-L002](#kr-l002).
 
 [Contract và giới hạn](PROTOCOL.md#duo-room-round) · [Câu hỏi gốc](RESEARCH.md#gap-create-join) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP161](PROTOCOL.md#current-room-title) currenttitle81→91/Back/rejoin; [CP226](PROTOCOL.md#room-list-lifecycle) native2row/correct82/91update-count0retention/90tag0wrongIDignore-matchingcardclear. Fixedlisting/selectonly, khôngjoin/membership/registry.
+Khoảng trống (trích bảng RESEARCH): [CP226](PROTOCOL.md#room-list-lifecycle) 2row/update/cardclear; [CP227](PROTOCOL.md#room-join-projection) native87lookup/session-ID-title và genericerror2/refresh/retry đã đo. Client585 có, chưa reply/roster/membership/registry.
 
-Phép kiểm tối thiểu (trích cùng nguồn): [PLAN](PLAN.md#current-order): selected82→known87session→lookup8117E0/context/title hai session riêng; chưaphòngcôlập/full/error/password/character. Không lặpknownlistcount/update/delete/codec hoặc giảglobalroom thànhregistry. 90firststream/tag1 mở khi thực sựchặn
+Phép kiểm tối thiểu (trích cùng nguồn): [PLAN](PLAN.md#current-order): 585→106/110/291 room-localownID/slot0/chief/fullcursor/ownlookup/UI trướcregistry; no sharedglobalroom-isolationassumption/không lặp solvedlist/context/error2. Password/full/90firststream/tag1/mode theo trigger
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14).
 
-Bằng chứng/build/hash/recipe: [duo-room-round](evidence/duo-room-round/README.md), [probe-service](evidence/probe-service/README.md), [host-normal-back](evidence/host-normal-back/README.md), [eight-player](evidence/eight-player/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp160), [peer-endpoints](evidence/peer-endpoints/README.md#cp161), [peer-endpoints](evidence/peer-endpoints/README.md#cp162), [peer-endpoints](evidence/peer-endpoints/README.md#cp166), [peer-endpoints](evidence/peer-endpoints/README.md#cp167), [peer-endpoints](evidence/peer-endpoints/README.md#cp168), [docs](PROTOCOL.md#four-session-native), [room-list](evidence/room-list/README.md).
+Bằng chứng/build/hash/recipe: [duo-room-round](evidence/duo-room-round/README.md), [probe-service](evidence/probe-service/README.md), [host-normal-back](evidence/host-normal-back/README.md), [eight-player](evidence/eight-player/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp160), [peer-endpoints](evidence/peer-endpoints/README.md#cp161), [peer-endpoints](evidence/peer-endpoints/README.md#cp162), [peer-endpoints](evidence/peer-endpoints/README.md#cp166), [peer-endpoints](evidence/peer-endpoints/README.md#cp167), [peer-endpoints](evidence/peer-endpoints/README.md#cp168), [docs](PROTOCOL.md#four-session-native), [room-list](evidence/room-list/README.md), [room-list](evidence/room-list/README.md#cp227).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
-| presence | present | [nguồn1](PROTOCOL.md#duo-room-round), [nguồn2](PROTOCOL.md#room-list-lifecycle) |
+| presence | present | [nguồn1](PROTOCOL.md#duo-room-round), [nguồn2](PROTOCOL.md#room-list-lifecycle), [nguồn3](PROTOCOL.md#room-join-projection) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](PROTOCOL.md#duo-room-round), [nguồn2](PROTOCOL.md#battle-eight-roster), [nguồn3](PROTOCOL.md#room-list-lifecycle) |
+| kr_static | partial | [nguồn1](PROTOCOL.md#duo-room-round), [nguồn2](PROTOCOL.md#battle-eight-roster), [nguồn3](PROTOCOL.md#room-list-lifecycle), [nguồn4](PROTOCOL.md#room-join-projection) |
 | emulation | checked | [nguồn1](evidence/duo-room-round/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/duo-room-round/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](evidence/eight-player/README.md), [nguồn4](evidence/peer-endpoints/README.md#cp160), [nguồn5](evidence/peer-endpoints/README.md#cp161), [nguồn6](evidence/peer-endpoints/README.md#cp162), [nguồn7](evidence/peer-endpoints/README.md#cp166), [nguồn8](evidence/peer-endpoints/README.md#cp167), [nguồn9](evidence/peer-endpoints/README.md#cp168), [nguồn10](PROTOCOL.md#current-291-room-integration), [nguồn11](PROTOCOL.md#four-session-native), [nguồn12](PROTOCOL.md#room-list-lifecycle), [nguồn13](evidence/room-list/README.md) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/duo-room-round/README.md), [nguồn2](evidence/host-normal-back/README.md), [nguồn3](evidence/eight-player/README.md), [nguồn4](evidence/peer-endpoints/README.md#cp160), [nguồn5](evidence/peer-endpoints/README.md#cp161), [nguồn6](evidence/peer-endpoints/README.md#cp162), [nguồn7](evidence/peer-endpoints/README.md#cp166), [nguồn8](evidence/peer-endpoints/README.md#cp167), [nguồn9](evidence/peer-endpoints/README.md#cp168), [nguồn10](PROTOCOL.md#current-291-room-integration), [nguồn11](PROTOCOL.md#four-session-native), [nguồn12](PROTOCOL.md#room-list-lifecycle), [nguồn13](evidence/room-list/README.md), [nguồn14](PROTOCOL.md#room-join-projection) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |

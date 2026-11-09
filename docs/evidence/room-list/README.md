@@ -30,3 +30,35 @@ cònchọnđược, BmatchingBeta biếnmất/Alpha cònchọnđược; nativebr
 545raw đã hash/sourcefreeze/cleanup; firstfailedcountercasegiữnguyên. Không reply87/membership/dynamicregistry/
 serverjoin-IDauth/fullerror/password/otherfeaturevariants/Rust/gateclaim. Nativeinput/reader/UI khác fixturedesign;
 checker không xác nhận semantics/acceptance. Internet thật chưa kiểm. Bước tiếp ở PLAN, không lặp controls đã đo.
+
+<a id="cp227"></a>
+## CP227 — lookup/context theo selected session và generic error/retry
+
+[Contract/limits](../../PROTOCOL.md#room-join-projection), [metadata](join-projection.json),
+[unknown](../../RESEARCH.md#rust-service-gaps), [thứ tự](../../PLAN.md#current-order).
+CP226merge [PR297](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/297)/`ccab4cc`.
+
+| Root local/research/codex/ | Wall/raw/exit | run.json SHA256 |
+|---|---|---|
+| `room-join-projection-r1/two-sessions` | 48.952188952s/118/0 | `b91413cffeabf0050cd97e71946ff6b287be0cb215983bb55f176356e6a9b65e` |
+| `room-stale-join-r1/deny-refresh-retry` | 96.987665627s/225/1 | `2aeb9629057ffd5a882bc035729b1f77d3c5ea885dd2ff49c8c14c695b09633b` |
+| `room-stale-input-r1/input-guards` | 65.017167802s/155/1 | `b046122fed5b673d33d6571e2cef4276f01ab74484ff84a056089f1dcfc30569` |
+| `room-stale-center-r1/center-retry` | 60.840527471s/152/0 | `29fd57ae9abf76ba64bc953eb8ba8c54bd9f4e703aa06ad65795172007a8d5ea` |
+| `room-join-generic-error-r1/deny-refresh-retry` | 61.000117248s/152/0 | `7e0a02d2b63480c9981f4bccce37bf44c8ebccaa6c65ad3fe4ad5efa2f7ae8d1` |
+
+Cả5run source/input/profilefrozenuntilseal/ownedcleanup0; native2KR/Winecopy4b/privatepair/2netns/IP/prefix/
+display/wineserver/PCAP; privateauth/profile giữ. Adapter fixedselection→known87, không585reply/roster.
+`room-join-projection-r1/verification.json`: A1/101/Alpha B2/202/Beta/lookup/contextsetters/7/7errors0/UI2header.
+`room-stale-join-r1/verification.json`: error1/1byte/ack/refresh53byte nhưng edgeclickretrykhông82/FAIL225raw.
+`room-stale-input-r1/verification.json`: passivecommand/guard xác nhận initialroutepositive/87pending0,
+no secondcallback;155raw/FAIL khônggánpendingguardfault. `room-stale-center-r1/verification.json`: ordinary
+moveout/center mới có callback2501/row303/new82/87Gamma;152raw, khônggánnguồnlỗiedgeinput.
+
+**Correction message:** ảnh error1 nói sai mật khẩu, directresourceWrongPassword17158DC; khôngdùngcode1
+làmstaleIDmessage. `room-join-error-r1` giữ15-entrytable/known1branchprefix và samefunction1..3directresource
+prefixes96byte; read-onlyCapstone/copiedPE-modelmatch, khôngREA/fullfunction/SDKgraph. Chọn generic2/CantJoinRoom
+17158EC rồi `room-join-generic-error-r1/verification.json` nativeerror2branch/1/1errors0/UIcannotjoin→Return→
+91refresh58/ID303→centerpointer82→87success61/lookup/context/7/7errors0/585request. FinalBscreen23GammaS03,
+rosterempty. `room-join-delivery-r1/message-input-corrections.json` pin cả wrongpassword/correctgeneric/lastUI,
+khôngrewriteoldreports/raw. All802raw/hash/preflight/cleanup; nogeneralregistry/membership/Rust/gateclaim.
+AUD065through224/kế228; milestone roster tiếp ở PLAN, khônglặpđườngđãđo. Internet thật chưa kiểm.

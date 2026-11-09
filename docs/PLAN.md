@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP226: native2rows/select82/update91/count0-retention/delete90wrong-vs-matchingID đã đo;4runs545rawsealed/seq73failurekept/correct55-58. Chưajoin87/membership/registry/Rust/gate. CP225PR296merged3bd1cdd/AUD065through224/next228;K6cWANgiảlập/K7scoped đạt;Internet thật chưa kiểm.
+CP227: selected82→87 lookup/session-ID-title native7/7; genericerror2→ack/refresh/new82ID303→87RoomGamma. 5runs802raw sealed/correctionsinput+WrongPasswordkept. Chưa585roster/membership/registry/Rust/gate. CP226PR297mergedccab4cc/AUD065through224/next228;Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,16 +64,18 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-ROOM-REGISTRY / KR-R001, RUST-Q2**: [CP226](PROTOCOL.md#room-list-lifecycle)/[raw](evidence/room-list/README.md)
-   đã có nativecount2/tworowselection82,91one-rowupdate/empty0khôngclear,90secondstreamtag0
-   wrongroomIDignore/matchingIDcardclear. Không lặp listcount/91update/90control/codec.
-   Tiếp source-first selected82(session,roomID)→known87(session)→lookup/context/title cho hai session riêng;
-   native projection đúng phòng trước khi ghép registry/membership. Reuse CP02887/roomlookup8117E0/setters,
-   fixture/context/slot; không giả một globalroom đang có là isolation cho2rooms.
-   Phép tối thiểu: native chọn từng row nhận87session khớp và vào đúng context/title, fullcursor/error/known
-   membershipsetup được ghi riêng; noforcedlookup/retag. StaleID/join-denial chỉ mở với nativeerrorroute có nguồn,
-   không đoán opcode/error. Firststream90/tag1/count bounds/password/full-room/mode khác để theo trigger.
-   [Unknown](RESEARCH.md#rust-service-gaps); không coi card UI hoặc service log là membership acceptance.
+1. **NEXT-ROOM-REGISTRY / KR-R001, RUST-Q2**: [CP227](PROTOCOL.md#room-join-projection)/[raw](evidence/room-list/README.md#cp227)
+   đã nối selected82→known87/session lookup→ID/title của hai session khác nhau; genericerror2/ack/refresh/
+   newselection87 cũng có native evidence. Không lặp list/update/delete/87context/error2/input controls.
+   Tiếp **585 → roster riêng theo phòng/ownslot/ID** trước khi ghép registry: reuse CP020/026/199/200
+   106/110/291 và `four_player_profile.player_body/slot_body/own_body`; generatedframe là input, native
+   setter/fullcursor/ownlookup/UI mới là bằng chứng. Không dùng WIP8 làm baseline hoặc sửa WIP.
+   Phép tối thiểu: hai actual ở hai room session, mỗi room chỉ có identity đã auth của nó/slot0/chief;
+   nativeown-slot/ID/title/roster của từng room, không gửi peer của room khác. Chỉ nêu roster/projection,
+   chưa nhận isolation của mọi packet/Ready/start/UDP; sharedglobalroom hiện tại không là registry.
+   Registry/membership design phải bind `(room session,roomID,generation,account session)` và kiểm82
+   trước mutation; nativeerror2 generic đã có, không áp error1WrongPassword cho staleID. Periodic audit kếCP228.
+   Firststream90/tag1/password/full/mode khác theo trigger; không mở toàn room trước lát cắt này.
 2. **NEXT-AUTH-SESSION-BINDING — blocked sameprocessrecovery**: [CP224](PROTOCOL.md#auth-retry-validation)
    fullretryfatal sauhello/validation1; [CP225](PROTOCOL.md#auth-fresh-process) getter12562C0 trả11→storeEBP-28
    trước setter12562F0(request1), errorlocal10. FreshprocessBnewlease/sessionpositive/invalidtokennegative đã đo;
@@ -92,7 +94,7 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    không chờ Battle/mọiitem và không chờ fullauthRE để thiết kế DB. Không tạo Rust tree trong đợt RE này.
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP226 không nâng gate; AUD065 qua224/audit kếCP228.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP227 không nâng gate; AUD065 qua224/audit kếCP228.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu

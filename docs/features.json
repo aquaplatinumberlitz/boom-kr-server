@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP226",
+  "as_of": "CP227",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -803,7 +803,8 @@
           "docs/evidence/peer-endpoints/README.md#cp167",
           "docs/evidence/peer-endpoints/README.md#cp168",
           "docs/PROTOCOL.md#four-session-native",
-          "docs/evidence/room-list/README.md"
+          "docs/evidence/room-list/README.md",
+          "docs/evidence/room-list/README.md#cp227"
         ]
       },
       "coverage": {
@@ -811,7 +812,8 @@
           "state": "present",
           "refs": [
             "docs/PROTOCOL.md#duo-room-round",
-            "docs/PROTOCOL.md#room-list-lifecycle"
+            "docs/PROTOCOL.md#room-list-lifecycle",
+            "docs/PROTOCOL.md#room-join-projection"
           ]
         },
         "vn_reference": {
@@ -825,7 +827,8 @@
           "refs": [
             "docs/PROTOCOL.md#duo-room-round",
             "docs/PROTOCOL.md#battle-eight-roster",
-            "docs/PROTOCOL.md#room-list-lifecycle"
+            "docs/PROTOCOL.md#room-list-lifecycle",
+            "docs/PROTOCOL.md#room-join-projection"
           ]
         },
         "emulation": {
@@ -850,7 +853,8 @@
               "docs/PROTOCOL.md#current-291-room-integration",
               "docs/PROTOCOL.md#four-session-native",
               "docs/PROTOCOL.md#room-list-lifecycle",
-              "docs/evidence/room-list/README.md"
+              "docs/evidence/room-list/README.md",
+              "docs/PROTOCOL.md#room-join-projection"
             ]
           },
           "windows_original": {
