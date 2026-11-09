@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP221",
+  "as_of": "CP222",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -424,7 +424,8 @@
           "docs/evidence/login-runtime/README.md#cp218",
           "docs/evidence/login-runtime/README.md#cp219",
           "docs/evidence/login-runtime/README.md#cp220",
-          "docs/evidence/login-runtime/README.md#cp221"
+          "docs/evidence/login-runtime/README.md#cp221",
+          "docs/evidence/login-runtime/README.md#cp222"
         ]
       },
       "coverage": {
@@ -462,7 +463,8 @@
             "docs/evidence/login-runtime/channel-echo.json",
             "docs/evidence/login-runtime/admission-prototype.json",
             "docs/PROTOCOL.md#auth-tcp-ownership",
-            "docs/evidence/login-runtime/two-account.json"
+            "docs/evidence/login-runtime/two-account.json",
+            "docs/evidence/login-runtime/two-actual.json"
           ]
         },
         "runtime": {
@@ -490,7 +492,8 @@
               "docs/evidence/login-runtime/README.md#cp218",
               "docs/PROTOCOL.md#auth-eof-dispatch",
               "docs/evidence/login-runtime/README.md#cp220",
-              "docs/PROTOCOL.md#auth-two-account"
+              "docs/PROTOCOL.md#auth-two-account",
+              "docs/PROTOCOL.md#auth-two-actual"
             ]
           },
           "windows_original": {

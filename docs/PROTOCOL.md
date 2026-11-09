@@ -537,6 +537,46 @@ healthydenial/twoactualconcurrent/swap/sessionexpiry/restartfence/DB/fullauth ch
 [Unknown/phép thử](RESEARCH.md#rust-service-gaps), [thứ tự](PLAN.md#current-order). CP220 complete/AUD064
 không sửa; giao CP220–221 cùng PR292, kiểm lại exacthead mới; audit kếCP224. Internet thật chưa kiểm.
 
+<a id="auth-two-actual"></a>
+### Hai KR cùng service: identity/session riêng và duplicate account — CP222
+
+[Recipe/run/hash](evidence/login-runtime/README.md#cp222), [metadata](evidence/login-runtime/two-actual.json).
+Reuse CP197/200 direct virtualTCP/ownedstartup, CP221 account/token/layout6/nativeprobes; không mở SDK/VM.
+Controller mới chỉ hai client, token argv riêng, không chờ tạo phòng/mở4guest. A/B prefix/display/netns và
+CA/wineserver riêng; bridge root10.77.0.1, A.2/B.3, không route ra ngoài/TCP proxy/NAT/UDPimpairment.
+Profile copy bỏ đúng `replacement_slot` do API admission_ips không hỗ trợ kết hợp này;47fixture wire/pin
+không đổi, profile nguồn giữ nguyên. Không gameplay/room/replacement acceptance.
+
+**Correction phạm vi suffix:** R1 hai token đúng nhưng CP217 policy hash nguyên suffix25 nên từ chối
+`unsupported_login_suffix`; R2 diagnostic giữ denial và đo native writer/cursor. Cached builder13AE3BD
+và native args/cursor xác nhận25byte = block16 + u32 + u32 + u8; cursor36→52→56→60 ở token32.
+Cả A/B block16 khác nhau/biến đổi giữa run, semantics còn unknown; u32 đầu0, u32 kế có bytes IPv4 nguồn
+đã quan sát, u8 cuối0. Full capture khớp `_encode_bytes(block16)+pack_fields([u32,u32,u8])` có sẵn.
+Đây là layout/quan sát, không credential/deviceidentity/ý nghĩa server gốc. Suffix trùng ở CP214–221
+chỉ trong các run đó; record cũ bất biến. R1/R2 failed admission giữ raw/limits, không gọi chúng success.
+
+**`emu_choice/design` parser profile mới:** chỉ count1/token32/body61; opaque16 giữ metadata/hash,
+không dùng authenticate; nhánh0/sourceIPv4/0 được kiểm bounds rồi normalize cho private policy cũ.
+Token verify/account/oneuselease/owner vẫn riêng; IP client chỉ consistency với peer server quan sát,
+không trở thành bằng chứng chủ account.10 policychecks gồm malformed/count/flags/IP/tokenfail tách nativeproof.
+Không sửa CP217/221 code cũ; source/config/input frozen từng run.
+
+**`kr_runtime/confirmed` R3:** hai actualKR Wine cùng service, tám TCP từ hai IP/stage1..4; native writer32/
+auth0/field36chain/C2S6 đúng ID1-KRLocal và ID2-KRGuest/echo rồi actual67 mỗi bên. Hai CA/hai wineserver/
+hai netns, PCAP TCP/directendpoint/sequence và hai sessionowner ở snapshot **trước cleanup** nối được;
+cảhai giữ qua8s+ sau khi đủ nativeproof. Cleanup mới xóa sessions; không đọc snapshot cuối thành noowner.
+R3=40.781146896s/100raw. Không suy TCPaccept/alive/serverlog thành nativeprogress.
+
+**R4 duplicate-account control:** giữ service/policy/topology, chỉ tokenB đổi sang publictokenA.
+A native0/6/67 vẫn là owner; B native1 từ reply lỗi1 đã đo CP014/217, không channel6/67 trong cửa sổ đo;
+không session thứ hai, hai client không fault trong hold8s+. R4=40.251220213s/99raw/cleanup0.
+Đây là loginnegative hẹp, **không** channelEOF healthydenial/45snegative/generalretry/expiry/revoke.
+
+Tổng498raw bốn run đã hash/seal/cleanup; không fullauth/sessionexpiry/restartfence/DB/API/Rust/gate mới.
+Hai account positive chưa đảo account giữa endpoint, chưa native wrong-channel swap. [Unknown](RESEARCH.md#rust-service-gaps),
+[thứ tự](PLAN.md#current-order). CP220–221 đã merge PR292/f5caefb; AUD064qua220/kế224.
+EOF receiver blocker giữ nguyên; Internet thật chưa kiểm.
+
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015
 

@@ -1,0 +1,283 @@
+{
+  "id": "CP222",
+  "previous": "CP221",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T01:56:42.594713+00:00",
+  "context_commit": "f5caefb30b5af86eb9094ad396471c59a0fc6fff",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "NEXT-AUTH-SESSION-BINDING:2actualKRsimultaneousdistinctaccountidentity/session/6echo/67andduplicate-accountnegativewithoutrepeatEOFfailure;resolveactualnetwork-suffixdeltafromnativewritersbeforepolicyprofile.",
+  "scope": "Source-firstCP197/200pair/directTCPandCP221accountwire;freshbounded2clientharness/per-roletoken.4relatedruns:initialsuffixpolicydenial+writerdiagnosticretained,explicitmeasuredsuffixprofile2actualpositiveandknownresult1duplicate-accountcontrol.498raw/10designpolicychecks,onecheckpoint;no source/configmutationduringruns/production/Rustbehaviorchange.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "pair-r1:run8af2a15b9e7a2a40b268ace15ceec66eae2d7d3218801c0aa1a7910db0ec9e2c/81.636530747s/177raw/return1/ownedcleanup0",
+    "pair-suffix-r2:run7323c2dca3be914bb897d77bb50bdbe737d551341648d2fcb28ab171318bd29d/58.052439451s/122raw/return1/ownedcleanup0",
+    "pair-r3:run2fa9d958e2330d9b690bbe8b97be9861d4549ea708b8efd720b878846795bd20/40.781146896s/100raw/return0/ownedcleanup0",
+    "pair-duplicate-r4:runc6f5cef1bd5d5ccd4386d2942fa536222b5f530d75f5a10f5d4c755f92c40388/40.251220213s/99raw/return0/ownedcleanup0",
+    "Knownaftercredentials13AE3BD→block16writer14EBF10return13AE3CE,u32returns13AE3DD/13AE430,u8return13AE48E;nativecursors36/52/56/60actual25suffixjoin. SourceIPv4valueobserved,opaque16unknown.",
+    "R3precleanup2sessions/source4transportseach/nativeactual6ID1-KRLocal/ID2-KRGuest/field36echo/actual67,2CA/2wineservers/2netns/directbridgePCAP/8shold. R4BtokenA→native1/no6-67/Aownerholds8s+."
+  ],
+  "findings": [
+    {
+      "summary": "ReuseCP197/200directvirtualTCP/ownedstartupandCP221nativeaccountwire;fresh2clientcontrollerseparateargv/prefix/display/netnsno4guest/roomtrigger. Profilecopyremovesreplacement_slotforexistingadmission_ipscompatibility,47wirepinsunchanged;constructorpreflightbeforefrozenrun.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-two-actual",
+      "evidence": [
+        "AUTH222-00666",
+        "AUTH222-00554",
+        "AUTH222-00007"
+      ],
+      "limits": "Wine10.0/copy4b/inheritedofflinereset/2ownedprefix-display-netns/isolateddirectvirtualLAN10.77.0.1/.2/.3/noTCPproxy/noexternalroute. Profilecopyremovesreplacement_slotonly/47wirepinsunchanged.498raw4runs/sourcefrozen/cleanup0;R1/R2admissionfailedkept,R3positive2sessions/R4duplicate-loginbounded8s+negative. Opaque16semanticsunknown,0/sourceIPv4/0normalizationisprivateREdesignnotcredential/originalserverlaw;10policychecksnotnativeoracle. NotEOFhealthydenial/45snegative/crossidentitywrongchannelswap/retry/accountresume/sessionexpiry/restartfence/DB/Rust/fullauth/security/gateclosure. Existing8WIPunchanged/oldcompletehistoryimmutable. AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R1validA/Btokensrejectedbyoldconstantsuffixguard;R2diagnosticretainsdenialwhilepassivewriterargs/cursorsprove25suffix=block16+u32+u32+u8. Opaque16varies/unknownsemantics;typedtailobserved0/sourceIPv4/0. Existingblock/typedcodecjoinsfullcapture,no newcryptor/providergraph. Oldloopbacksuffixidentitynotuniversal.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-two-actual",
+      "evidence": [
+        "AUTH222-00129",
+        "AUTH222-00680",
+        "AUTH222-00679"
+      ],
+      "limits": "Wine10.0/copy4b/inheritedofflinereset/2ownedprefix-display-netns/isolateddirectvirtualLAN10.77.0.1/.2/.3/noTCPproxy/noexternalroute. Profilecopyremovesreplacement_slotonly/47wirepinsunchanged.498raw4runs/sourcefrozen/cleanup0;R1/R2admissionfailedkept,R3positive2sessions/R4duplicate-loginbounded8s+negative. Opaque16semanticsunknown,0/sourceIPv4/0normalizationisprivateREdesignnotcredential/originalserverlaw;10policychecksnotnativeoracle. NotEOFhealthydenial/45snegative/crossidentitywrongchannelswap/retry/accountresume/sessionexpiry/restartfence/DB/Rust/fullauth/security/gateclosure. Existing8WIPunchanged/oldcompletehistoryimmutable. AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Freshprivatecount1/token32/body61networkprofilechecks0/sourceIP/0andignoresopaque16asmetadata,normalizestobasepolicyinputforcredentialverificationreuse. BaseCP217/221unchanged;10policychecks malformed/count/tail/IP/tokenrejectionandopaqueignoreexplicitdesign,notfullauth/wiresemanticproof.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#auth-two-actual",
+      "evidence": [
+        "AUTH222-00020",
+        "AUTH222-00019"
+      ],
+      "limits": "Wine10.0/copy4b/inheritedofflinereset/2ownedprefix-display-netns/isolateddirectvirtualLAN10.77.0.1/.2/.3/noTCPproxy/noexternalroute. Profilecopyremovesreplacement_slotonly/47wirepinsunchanged.498raw4runs/sourcefrozen/cleanup0;R1/R2admissionfailedkept,R3positive2sessions/R4duplicate-loginbounded8s+negative. Opaque16semanticsunknown,0/sourceIPv4/0normalizationisprivateREdesignnotcredential/originalserverlaw;10policychecksnotnativeoracle. NotEOFhealthydenial/45snegative/crossidentitywrongchannelswap/retry/accountresume/sessionexpiry/restartfence/DB/Rust/fullauth/security/gateclosure. Existing8WIPunchanged/oldcompletehistoryimmutable. AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R3twoactualWineKRshareoneprivateREservice:8TCP/sourceA.2/B.3/stages1..4;nativewriter32/auth0/field36chain→6correctID-name-echo→actual67both.2distinctprecleanupaccountsessionowners/2CA/2wineservers/2netns/TCPPCAP and8s+holdjoined. Notalive/serverlogonly.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-two-actual",
+      "evidence": [
+        "AUTH222-00128",
+        "AUTH222-00415"
+      ],
+      "limits": "Wine10.0/copy4b/inheritedofflinereset/2ownedprefix-display-netns/isolateddirectvirtualLAN10.77.0.1/.2/.3/noTCPproxy/noexternalroute. Profilecopyremovesreplacement_slotonly/47wirepinsunchanged.498raw4runs/sourcefrozen/cleanup0;R1/R2admissionfailedkept,R3positive2sessions/R4duplicate-loginbounded8s+negative. Opaque16semanticsunknown,0/sourceIPv4/0normalizationisprivateREdesignnotcredential/originalserverlaw;10policychecksnotnativeoracle. NotEOFhealthydenial/45snegative/crossidentitywrongchannelswap/retry/accountresume/sessionexpiry/restartfence/DB/Rust/fullauth/security/gateclosure. Existing8WIPunchanged/oldcompletehistoryimmutable. AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R4samepolicy/topologyonlyBtoken=A:ownerAauth0/6/67continues,Bnativeknownresult1/no6or67/no2ndsessioninobservedwindow,8s+hold/noobservedfault/cleanup0. Boundedduplicate-loginnegative,notchannelEOFhealth/45snegative/generalretries.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-two-actual",
+      "evidence": [
+        "AUTH222-00127",
+        "AUTH222-00124"
+      ],
+      "limits": "Wine10.0/copy4b/inheritedofflinereset/2ownedprefix-display-netns/isolateddirectvirtualLAN10.77.0.1/.2/.3/noTCPproxy/noexternalroute. Profilecopyremovesreplacement_slotonly/47wirepinsunchanged.498raw4runs/sourcefrozen/cleanup0;R1/R2admissionfailedkept,R3positive2sessions/R4duplicate-loginbounded8s+negative. Opaque16semanticsunknown,0/sourceIPv4/0normalizationisprivateREdesignnotcredential/originalserverlaw;10policychecksnotnativeoracle. NotEOFhealthydenial/45snegative/crossidentitywrongchannelswap/retry/accountresume/sessionexpiry/restartfence/DB/Rust/fullauth/security/gateclosure. Existing8WIPunchanged/oldcompletehistoryimmutable. AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "4run498raw/sourcefreeze/cleanupverified;failuresR1/R2retained. CP220–221mergedPR292/f5caefb,completehistory/AUD064unchanged/8WIPbyteexact/noRust. #14/#285open/nativeEOFblockerretained;nextendpointtokenswap legitimateaccountmappingtest,notwrongchanneldenialproof.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-two-actual",
+      "evidence": [
+        "AUTH222-00005",
+        "AUTH222-00007",
+        "AUTH222-00699",
+        "AUTH222-00702"
+      ],
+      "limits": "Wine10.0/copy4b/inheritedofflinereset/2ownedprefix-display-netns/isolateddirectvirtualLAN10.77.0.1/.2/.3/noTCPproxy/noexternalroute. Profilecopyremovesreplacement_slotonly/47wirepinsunchanged.498raw4runs/sourcefrozen/cleanup0;R1/R2admissionfailedkept,R3positive2sessions/R4duplicate-loginbounded8s+negative. Opaque16semanticsunknown,0/sourceIPv4/0normalizationisprivateREdesignnotcredential/originalserverlaw;10policychecksnotnativeoracle. NotEOFhealthydenial/45snegative/crossidentitywrongchannelswap/retry/accountresume/sessionexpiry/restartfence/DB/Rust/fullauth/security/gateclosure. Existing8WIPunchanged/oldcompletehistoryimmutable. AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "R1/R2twoactualadmissionunderoldconstantsuffixguard",
+      "result": "fail",
+      "evidence": [
+        "AUTH222-00129",
+        "AUTH222-00680"
+      ],
+      "limits": "Validtokensbutmeasuredsuffixchangesoutsideoldpolicyprofile;diagnosticnativewriterlayoutpassseparatefromadmissionfailure."
+    },
+    {
+      "check": "Native25suffixwriter/cursor/capturejoinand10boundednetworkpolicychecks",
+      "result": "pass",
+      "evidence": [
+        "AUTH222-00680",
+        "AUTH222-00019"
+      ],
+      "limits": "Layoutnativeproof vs privateparserdesign distinct;opaque16semanticsunknown/notcredential."
+    },
+    {
+      "check": "R3twoactualKRdistinctaccountidentity/session/native6-67/PCAP/hold/rawhash/cleanup",
+      "result": "pass",
+      "evidence": [
+        "AUTH222-00128"
+      ],
+      "limits": "Positive2accounts/currentcopyprofileonly,nofullauth/gateclosure."
+    },
+    {
+      "check": "R4nativeBduplicateaccountresult1/nochannel/Aownerpreserved/hold/rawhash/cleanup",
+      "result": "pass",
+      "evidence": [
+        "AUTH222-00127"
+      ],
+      "limits": "8s+boundedloginnegative,not45s/channelEOFhealthydenial/generalretry."
+    },
+    {
+      "check": "Manualdocs/catalog/links/oldrecords/WIPpreservation",
+      "result": "pass",
+      "evidence": [
+        "AUTH222-00007",
+        "AUTH222-00693",
+        "AUTH222-00692"
+      ],
+      "limits": "Fullhistory/localprecommitandexactPRheadrequired;reviewwaivednotapproved."
+    },
+    {
+      "check": "Endpointaccounttokenswap/nativewrongchannelswap/healthyEOFdenial/sessionexpiry/restartfence/DB/Rust",
+      "result": "not_run",
+      "evidence": [
+        "AUTH222-00012"
+      ],
+      "limits": "Nextvalidaccountendpointremapnotdeniedswap;EOFreceiverblockerunchanged/noVMgraph."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP222-auth-two-actual.json",
+      "bytes": 187795,
+      "sha256": "b9f3a67a3e0fe514ea9b6403f04d06166dddefacc9c0d1d6ba206c1e761958b7",
+      "count": 721
+    }
+  ],
+  "delta": {
+    "added": [
+      "TwoactualconcurrentKRaccountidentity/session/native6-67/directTCP/OSownership proofandnativeboundedduplicate-loginnegative.",
+      "Native25suffixblock16/u32/u32/u8writerjoin/explicitboundednetworkprofileand10designchecks;498raw4relatedrunssealed."
+    ],
+    "corrected": [
+      "CP214–221unchangedsuffix25onlyinretainedloopbackruns;virtualnetworkintroducesopaque16/IPvariability.R1/R2guardfailurekept,notnativeclientcontractfailure.",
+      "admission_ips+replacement_slotunsupportedcombinationhandledbyfreshprofilecopyremovingreplacementonly;47wirefixturesunchanged.",
+      "Twoaccountproofmustuseprecleanupsession/owner+native/PCAP;finalcleanupemptysnapshotnotno-ownerfailure.",
+      "Nativeknownresult1duplicate-loginnegative≠unresolvedpostchannelEOFlifecycleor45snegative."
+    ],
+    "superseded": [
+      "CP221twoactualconcurrentgapnowmeasurednarrowpositive,plusduplicateaccountcontrol;nextlegitimateaccountendpointremapping,no repeatedpairpositive."
+    ]
+  },
+  "blockers": [
+    "NativepostchannelEOFhealth/receiverselectionblockerCP220persists;onlynewobservable/gracefulrecipe,notgetter-watch/VM/SDKrepeat.",
+    "Endpointaccountremapping/nativewrongchannelswap/sessionexpiry/restartfence/DB/API/fullauthunaccepted;opaque16semanticsunknown/publictoken/echo32/sourceIP/inmemorynotsecurityproof.",
+    "Rustimplementationnotopened/planningCP213/PR286delivered;8WIPunmerged,Internet thật chưa kiểm backlogindependent."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PerPLANswaplegitimatepublictokensbetweenendpointA/B,sourceAaccountB/sourceBaccountA;nativeidentity/sessionmustfollowverifiedaccountnotIP-label/acceptorder. Reusepair/probes/readbypeerIP. Notwrongchanneldenialproof;donotrepeatpositive/duplicate/TCPsolvedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "OpenworkblockedonreceiverselectionobservableCP220;CP219dispatchproof/nativehealthFAILretained. Onlynewnativeedge/measuredgracefulerrorreopens;no broadgetter/watch/VM/SDK/RTTIpatch.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "M0→M1futureimplementationindependentfullauthRE;planningCP213/PR286delivered,noRusttree/productionchangeinCP222.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T01:56:42.594713+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/sourcefirst/4relatednativepairruns/layoutjoin/designpolicychecks/manualselfcheck/failurepreservation. Independentreviewwaivednotapproved;exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP222facts/limits/suffixscope-correction/nativepositive-vs-design/nextendpointremap/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP222facts/limits/suffixscope-correction/nativepositive-vs-design/nextendpointremap/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP222facts/limits/suffixscope-correction/nativepositive-vs-design/nextendpointremap/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP222facts/limits/suffixscope-correction/nativepositive-vs-design/nextendpointremap/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP222facts/limits/suffixscope-correction/nativepositive-vs-design/nextendpointremap/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP222facts/limits/suffixscope-correction/nativepositive-vs-design/nextendpointremap/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/evidence/login-runtime/README.md",
+      "state": "updated",
+      "reason": "CP222facts/limits/suffixscope-correction/nativepositive-vs-design/nextendpointremap/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/evidence/login-runtime/two-actual.json",
+      "state": "updated",
+      "reason": "CP222facts/limits/suffixscope-correction/nativepositive-vs-design/nextendpointremap/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP222facts/limits/suffixscope-correction/nativepositive-vs-design/nextendpointremap/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP222facts/limits/suffixscope-correction/nativepositive-vs-design/nextendpointremap/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,next224."
+    }
+  ]
+}

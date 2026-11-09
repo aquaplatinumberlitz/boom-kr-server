@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP221: native A/B positive riêng ID/name/echo/67 đã đo; wrongID/name/source TCP giữ leaseB/ownerA, không nativehealthydenial/twoactualsimultaneous proof. CP220–221 giao chungPR292; CP219 đã mergePR291. Rust planning đã giao, chưa implementation; K6c WAN giả lập/K7 scoped đạt, Internet thật chưa kiểm. AUD064qua220/kế224.
+CP222: haiactualKR cùngservice có distinctidentity/session/6echo/67 và duplicateaccount native1/nochannel/ownerpreserved; suffixprofile biến môi trường được đo,designparser rõ. CP220–221 đã mergePR292/f5caefb. Chưa fullauth/Rust; K6c WAN giả lập/K7 scoped đạt, Internet thật chưa kiểm. AUD064qua220/kế224.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,13 +64,13 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-AUTH-SESSION-BINDING**: [CP221](PROTOCOL.md#auth-two-account)/[raw](evidence/login-runtime/README.md#cp221)
-   đã có native positive từng identity và kernelTCP wrongID/name/foreignsource giữ lease/owner; không đo lại.
-   Tiếp source-first harness hai client/virtualendpoint từ CP189/200, admission_ips/fourtransports và per-role
-   public token input: đo cùng process hai actualKR bind ID/name/echo/session riêng rồi actual67 cảhai.
-   Không thêm8client hoặc dựng flow reconnect mới. Two-actual swap/healthydenial còn thiếu; nativeEOF lỗi
-   ở mục2 không được che bằng TCP driverpass. Sessionexpiry/restartfence/DB/API chưa triển khai; echo32bit/
-   sourceIP/inmemory không fullauth. Nếu harness thiếu observable/ổn định, ghi đúng blocker, không mở VM/SDK.
+1. **NEXT-AUTH-SESSION-BINDING**: [CP222](PROTOCOL.md#auth-two-actual)/[raw](evidence/login-runtime/README.md#cp222)
+   đã có haiactualKR cùngservice/session/6ID-name-echo/67 và duplicate-account native1/nochannel giữ ownerA.
+   Không lặp positive/duplicate hoặc kernelTCP controls. Tiếp control đảo publictoken giữa hai endpoint:
+   sourceA xin accountB, sourceB xin accountA; phải native nhận identity/role theo verifiedaccount, không
+   acceptorder/IP-label. Reuse pair directTCP/cursor/probes đã freeze; chỉ đổi input và reader mapping theo IP.
+   Native wrong-channel swap/healthyEOFdenial vẫn thiếu, không gán control hợp lệ này thành deniedswapproof.
+   Sessionexpiry/restartfence/DB/API chưa triển khai; echo32bit/sourceIP/inmemory không fullauth.
 2. **NEXT-AUTH-CHANNEL-EOF — blocked về observable receiver selection**:
    [CP219](PROTOCOL.md#auth-eof-dispatch) đã đo native bad-dispatch; [CP220](PROTOCOL.md#auth-tcp-ownership)
    getter13AEBE0 trả null ở caller khác, selected-store125783B không hit; hardwarewatch không snapshot,
@@ -83,7 +83,7 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    không chờ Battle/mọiitem và không chờ fullauthRE để thiết kế DB. Không tạo Rust tree trong đợt RE này.
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP221 không nâng gate; AUD064 qua220/audit kếCP224.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP222 không nâng gate; AUD064 qua220/audit kếCP224.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu
