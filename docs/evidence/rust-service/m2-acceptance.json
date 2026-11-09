@@ -1,0 +1,127 @@
+{
+  "schema": "kre-rust-m2-acceptance-v1",
+  "checkpoint": "CP235",
+  "baseline": "f15a2ba9fa2cad5e2464e5a7919183adfdae3298",
+  "canonical": "docs/PROTOCOL.md#rust-m2-acceptance",
+  "plan": "docs/PLAN.md#current-order",
+  "decision": {
+    "recorded_utc": "2026-11-09T09:32:59.659867+00:00",
+    "milestone": "RUST-M2",
+    "decision": "accepted_scoped_diagnostic_KR00967_Wine_fixed_two_actor_path",
+    "owner": "Codex",
+    "review": "selfcheck/independentreviewwaivednotapproved",
+    "canonical": "docs/PLAN.md#rust-service-milestones",
+    "contract": "docs/PROTOCOL.md#rust-m2-acceptance",
+    "native_binary": "ab06ae3f8d00e7baa3146ff503f3d11086df5e31819208025dcf53ca1c18992e",
+    "criteria": [
+      {
+        "id": "M2-01",
+        "criterion": "Bootstrap→localidentity→channel→lobby/profiles",
+        "result": "pass_with_stated_scope",
+        "method": "nativepositive",
+        "evidence": "verification.json/native.auth, wire_join/actualC2S6; CP233/234positive-regression",
+        "limits": "DiagnosticIP/ID/name projection is notcredentialauthentication/DB."
+      },
+      {
+        "id": "M2-02",
+        "criterion": "Two actual KR ownIDs/names/slots and same fixedroom/map/spawn",
+        "result": "pass_with_stated_scope",
+        "method": "nativepositive",
+        "evidence": "verification.json/native.roster/room.start_end/spawn andPCAPtuples; UIreview",
+        "limits": "Onlyonefixedsession1/room1/twoIDs/currentzero-profile/ExVillage01;no generalroom/capacity8."
+      },
+      {
+        "id": "M2-03",
+        "criterion": "HostBack→survivorIDclear/chief→samechannelrejoin/Ready",
+        "result": "pass_with_stated_scope",
+        "method": "nativepositive",
+        "evidence": "verification.json/native.B.cleanup/native.A.roster/actual95/104; CP234 UI",
+        "limits": "Freshlogin/accountresume/matchrestore notthissamechannelroomvisit."
+      },
+      {
+        "id": "M2-04",
+        "criterion": "Loading barrier: noGO untilbothnative99",
+        "result": "pass_with_stated_scope",
+        "method": "nativepositive-control",
+        "evidence": "verification.json/barrier/nativeheld-release/clock/PCAP",
+        "limits": "DeclaredGDBpausechangesloadingtiming;notoriginalserverdeadline or rawoldACKprotection."
+      },
+      {
+        "id": "M2-05",
+        "criterion": "Selected malformed/CRC/duplicate/wrongstage/endpoint/identity",
+        "result": "pass_with_stated_scope",
+        "method": "kernelTCP-policy",
+        "evidence": "binding/verification.json16cases andm1/verification.json14cases",
+        "limits": "Syntheticnegativepacketsnotindependentnativewireoracle; nativepositiveusesrealKR."
+      },
+      {
+        "id": "M2-06",
+        "criterion": "Supported build/profile/version guard",
+        "result": "pass_with_stated_scope",
+        "method": "prelisten-design",
+        "evidence": "profiles/verification.json6cases;load_configexactKR00967bootstrap+WCPnativeprofileSHA",
+        "limits": "Rejectunsupportedoperatorprofilebeforelisten;clientwrong-versionerrorUI unknown/no fabricatederrorwire."
+      },
+      {
+        "id": "M2-07",
+        "criterion": "Bounded queued sends and stale internalvisit/round/subject fences",
+        "result": "pass_with_stated_scope",
+        "method": "Rustmodel+TCP",
+        "evidence": "15Rusttests/roomQueue+abort+roomvisit/loadingcases;room/verification.json8cases",
+        "limits": "QueueentryreservationnotatomicTCP;generationnotraw585/99replayproof; no productionload/SLO."
+      },
+      {
+        "id": "M2-08",
+        "criterion": "Current survivor healthy afteroneownedpeerEOF/late-report",
+        "result": "pass_with_stated_scope",
+        "method": "nativepositive",
+        "evidence": "verification.json/native_B_post_EOF_reports9/late_drops9/IDclear/FINboundary/survivor_hold_s8.231;UIclock1:56→1:48",
+        "limits": "Aexplicitlykilled/neverhealthyAclaim. Amap-sprite remains;nofullsceneactordelete/forfeit/result/return/gameplaydisconnectacceptance."
+      },
+      {
+        "id": "M2-09",
+        "criterion": "Rollback/Python/WIP/inputfreeze/raw/history",
+        "result": "pass_with_stated_scope",
+        "method": "provenance+checks",
+        "evidence": "CP231Pythonbaseline47pins/CP234PR305baselinef15a2ba;runtime-preflight/raw-seal/input-retention;preserved-wip",
+        "limits": "KeepPythonserving/RE/reference; switchbackendonlybeforefreshsealedrun. Existing8WIPexcluded."
+      },
+      {
+        "id": "M2-10",
+        "criterion": "Startup/shutdown/rebind and operational bounds",
+        "result": "pass_with_stated_scope",
+        "method": "tests+nativecleanup",
+        "evidence": "m1/verification.json/SIGTERM+rebind andshutdown/verification.json12races;nativeownedcleanup0",
+        "limits": "CP234oneSIGTERM5s/killwait2stimeoutunexplained/noPIDstate;three repeats+12old+12newracespass,notrootcausefixed. RemainsM7diagnosticfollowup,notoperationSLO/productionacceptance."
+      }
+    ],
+    "scope": "Knownfixedtwoactorbootstrap→localidentity→lobby→room→BackrejoinReady→loadingbarrier/clockspawn;realKR00967Wine/emulatedLAN acceptedbyowner. No accountauthentication/generalroom/fullgame/fullservice/production.",
+    "remaining": [
+      "M3directUDPmovement/bomb/terrain-life-result-reset/2rounds notyetRustaccepted.",
+      "Amap-sprite remains afterEOF;fullscene cleanup/outcome/return handledandverified withM3disconnectpolicy.",
+      "Oneoldshutdownhost-timeout unknown/reproducewithPID-thread-wchaninstrumentation inM7;no fixclaim.",
+      "Nativeclientwrong-versionerrorUI notmeasured;unsupportedoperatorprofile rejectedbeforebind, notinventedwire."
+    ],
+    "next": "PLANM3knowncontractportonly;no broadRE or repeatM2positiveexceptregressioncausedbycodechanges.",
+    "gate_scope": "K0–K7oldscopeunchanged/K6cWANgiảlập/Internet thật chưa kiểm;thismilestoneacceptanceisnotfullserviceepicclosure."
+  },
+  "run": {
+    "path": "local/research/codex/rust-room-eof-r1/verification.json",
+    "run_sha256": "e93d0e3b2606da253840bac91917264915976a6289b46ca158fba472efa86d57",
+    "binary_sha256": "ab06ae3f8d00e7baa3146ff503f3d11086df5e31819208025dcf53ca1c18992e",
+    "raw_count": 44,
+    "capture": {
+      "path": "local/research/codex/rust-room-eof-r1/native-lifecycle/cycles/tcp-auth-pair.pcap",
+      "records": 345,
+      "sha256": "2e3d6c2f8cd2ca2b1bb881ef238a9f8f98fcb8f5e465dae49e6031412bbbdae2",
+      "reply_count": 56
+    },
+    "survivor_hold_s": 8.230957675
+  },
+  "limits": [
+    "M3directUDPmovement/bomb/terrain-life-result-reset/2rounds notyetRustaccepted.",
+    "Amap-sprite remains afterEOF;fullscene cleanup/outcome/return handledandverified withM3disconnectpolicy.",
+    "Oneoldshutdownhost-timeout unknown/reproducewithPID-thread-wchaninstrumentation inM7;no fixclaim.",
+    "Nativeclientwrong-versionerrorUI notmeasured;unsupportedoperatorprofile rejectedbeforebind, notinventedwire."
+  ]
+}

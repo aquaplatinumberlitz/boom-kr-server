@@ -3304,6 +3304,51 @@ Một lầnroomTCPcleanup timeout (SIGTERM5s/killwait2s) giữraw/log, chưa rõ
 [PLAN](PLAN.md#current-order) cònchốtversion/negative+activepeerEOF/late-reportcleanup trướcfullM2, audit kếCP236.
 Pythonserving/RE/reference/8WIP byteexact, CP233PR304mergeb10952f; K0–K7 cũkhôngđổi. **Internet thật chưa kiểm**.
 
+<a id="rust-m2-acceptance"></a>
+### Rust M2: nghiệm thu đường hai identity/phòng/loading và survivor sau EOF — CP235
+
+[Checklist](evidence/rust-service/m2-acceptance.json), [raw/hash](evidence/rust-service/README.md#cp235),
+[code](../rust/README.md). M2 được nghiệm thu phạm vi diagnostic KR00967/Wine/một phòng/hai actor;
+KRE-074/#285 vẫn mở cho dịch vụ Rust, K0–K7 cũ giữ nguyên phạm vi. [CP234](#rust-fixed-room) giữ các failure
+và kết luận lịch sử; thay đổi mới giải khoảng trống late-report survivor, không sửa record/run cũ.
+
+**`design`:** khi member rời ở Loading/Armed, model lưu roster chính xác `(identity,connection,visit)` của vòng
+vừa hủy, chuyển Idle và clear Ready. Chỉ survivor còn current và thuộc roster đó được observe/drop thêm tối đa64
+request99/127/190 có shape đã khai. Không gửi ACK/effect/forward/GO/result; member mới không kế thừa allowance,
+Start mới xóa record aborted. Log ghi `dropped_after_abort`; quá budget hoặc sai membership vẫn bị từ chối.
+Đây là policy chống đóng nhầm survivor do report đang tới, không là original authority hoặc replay protection
+cho raw99/585 không có measured round/visit token. [CP234 queue/subject fences](#rust-fixed-room) giữ nguyên.
+
+Trước bind, `load_config` chỉ nhận bootstrap15/WCP317 có SHA của profile KR00967 đã chạy native và kiểm toàn bộ
+fixture pin/schema/opcode/identity. Sáu ca config sai, kể cả profile khác tự cập nhật hash, phải fail trước listen.
+**Guard này là design/operator config**, không khẳng định đã gửi native wrong-version error hoặc đo UI của client
+build khác. Các negative CRC/shape/duplicate/socket/stage/identity dùng kernelTCP/model; positive compatibility
+vẫn dựa trên KR thật, không lấy encoder hoặc Python↔Rust agreement làm oracle.
+
+**`kr_runtime/confirmed` run EOF:** cùng e9copy/Wine10/virtualLAN/2CA/2wineserver/3netns/no default route;
+đường CP234 phòng/Back/rejoin/Ready/121129/barrier giữ đúng. B99 hold3.360600112s, chỉ đủ hai actual99 mới có
+197/196/153 và clock/spawn. Recipe dừng riêng Wine prefix A sau clock; B giữ cùng PID/startticks/channel,
+107 đọc đủ/native ID1→0; chín native127 sau EOF khớp chín actual report được drop, không phát GO hay gameplay
+reply mới. B UI vẫn KRGuest, không error modal, timer1:56→1:48 và giữ8.230957675s sau hành động EOF.
+PCAP345record/56exactS2Creplies/alltuplestreams/C2Sseq-op-len khớp; B FIN sau completion, A FIN sau declaredkill.
+44raw frozen/seal/cleanup0/exactinputretention. Binary đã chạy/finalbuild cùng SHA
+`ab06ae3f8d00e7baa3146ff503f3d11086df5e31819208025dcf53ca1c18992e`.
+
+**Giới hạn quan trọng:** roster/sidebar xóa A nhưng sprite đỏ của A còn trên map. Chỉ nghiệm thu healthy B
+session/roster/clock/report cleanup, chưa fullscene actor deletion/forfeit/result/return hoặc game disconnect.
+A bị dừng chủ động nên không claim A healthy. IP/name/ID vẫn diagnostic, chưa accountauth/DB/generalroom/capacity8.
+Một TCPshutdown timeout ở CP234 không có đủ PID evidence để xác định rootcause; ba repeat cùng binary cũ,
+12race trên baseline CP234 và12race trên bản mới đạt. Giữ anomaly và instrumentation PID/thread/wchan ở M7;
+không coi không tái hiện là đã sửa hoặc đạt productionSLO.
+
+**Đối chiếu M2 thủ công:** checklist10criteria dẫn từng bằng chứng và loại kiểm: nativebootstrap/name/slots/
+room/Back/chief/rejoin/Ready/loading/spawn; kernelTCP negatives; prelisten profileguard; queue/modelfences;
+nativeBsurvivor; rollback/Python/WIP/freeze và operationalbounds trong scope. 15Rusttests,6profileguards,
+12shutdownraces,8roomTCP,16binding,14M1regression đạt. Các phần chưa đo ở trên được nêu trong acceptance,
+không đổi tiêu chí thành fullgame/fullservice hoặc đóng epic. [PLAN](PLAN.md#current-order) chuyển M3 theo
+contract đã có, bước đầu native UDP/movement hai chiều; RE chỉ discrepancy chặn port. Audit kếCP236.
+**Internet thật chưa kiểm**; K6c WAN giả lập giữ đúng quyết định chủ dự án.
+
 <a id="auth-profile"></a>
 ### Success/profile count1 đã đọc sạch trên copy — CP058
 

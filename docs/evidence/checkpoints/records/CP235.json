@@ -1,0 +1,259 @@
+{
+  "id": "CP235",
+  "previous": "CP234",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T23:48:07.309851+00:00",
+  "context_commit": "f15a2ba9fa2cad5e2464e5a7919183adfdae3298",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M2/KRE-074: close scoped M2 acceptance by capturing current survivor late-report cleanup after ownedpeerEOF and supportedprofile negativeguards; retain distinct fullgame/auth/versionUI/scene/operationlimits.",
+  "scope": "Rustabortedroster-dropbudget/profileguard+nativeBsessionEOFdelta;10criteria manualM2scope acceptance;44raw/15Rusttests/6profileguards/12shutdown/8room/16binding/14M1;no newbinaryfunction/SDK/clientpatch orBattle.",
+  "artifacts": [
+    {
+      "name": "NativeKR00967originalunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "e9WinecopyM2",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "RustrootnativeM2survivor-testedbinary",
+      "sha256": "ab06ae3f8d00e7baa3146ff503f3d11086df5e31819208025dcf53ca1c18992e"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/room.rs/abortedroster+observe_after_abort;room_io.rs/99-127-190dropwhileIdle/lib.rs/knownbootstrap-WCPprofileguards+dropmetadata;tools/test_rust_profiles.py/6configguards;tools/test_rust_shutdown.py/12races-PIDdiagnostics.",
+    "EOF rune93d0e3b2606da253840bac91917264915976a6289b46ca158fba472efa86d57/44raw/70.535651754s/nativeBpostEOF9/late_drops9/8.230957675s/PCAP345/56replies/cleanup0/binaryab06ae3f8d00e7baa3146ff503f3d11086df5e31819208025dcf53ca1c18992e",
+    "ManualM2checklist10criteria/nativepositivevsmodel-kernel-prelistenproof/limitsAspriteremains/nativeversionUIunknown/shutdowntimeoutrootcauseunknown; CP234PR305f15a2bamerged/AUD067next236."
+  ],
+  "findings": [
+    {
+      "summary": "Rustexactabortedroster(identity,connection,visit) admitsonlycurrentcapturedsurvivor to drop64 knownlate99/127/190whileIdle;newmember/newStartnotinherit/noGO-ACK-effect-forward-result. PrelistenonlyknownKR00967bootstrap/WCPprofilepins, unsupportedoperatorprofilefailbeforebind;notnativeversionerrorUI.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-m2-acceptance",
+      "evidence": [
+        "RUST235-00092",
+        "RUST235-00093",
+        "RUST235-00091",
+        "RUST235-00265"
+      ],
+      "limits": "M2scoped diagnostictwoidentity/fixedroom/loadingaccepted. Amap-sprite remainsafterEOF, nofullsceneactordelete/forfeit/result/return/gameplaydisconnect; nativewrongversionerrorUIunknown/prelistenguarddesign; IPnotaccountauth/DB/generalroom/fullgame/fullservice/production. Raw58599notwiregenerationfenced. Internet thật chưa kiểm. Native44raw/frozen/seal/cleanup0; oldCP234failures/timeoutimmutable;waivednotapproved/8WIPpreserved/nextaudit236."
+    },
+    {
+      "summary": "TwoactualRustKRfixedroom/lifecycle/withheldACKpositive regression thenownedAEOF: BsamePID/channel/nativeID1clear,9native127postEOF→9actualreportdrops,clock/UI8.231s/noerrormodal;PCAP345/alltuples/56exactreplies/C2Sjoins/BFINaftercompletion.44rawfrozen/seal/cleanup0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-m2-acceptance",
+      "evidence": [
+        "RUST235-00341",
+        "RUST235-00339"
+      ],
+      "limits": "M2scoped diagnostictwoidentity/fixedroom/loadingaccepted. Amap-sprite remainsafterEOF, nofullsceneactordelete/forfeit/result/return/gameplaydisconnect; nativewrongversionerrorUIunknown/prelistenguarddesign; IPnotaccountauth/DB/generalroom/fullgame/fullservice/production. Raw58599notwiregenerationfenced. Internet thật chưa kiểm. Native44raw/frozen/seal/cleanup0; oldCP234failures/timeoutimmutable;waivednotapproved/8WIPpreserved/nextaudit236."
+    },
+    {
+      "summary": "Manual10criterionM2scopedacceptance: diagnosticbootstrap-localidentity-lobby-fixedroom-hostBack-chief-rejoinReady-loadingbarrier/spawn andhealthyBsessionEOF, methods/limits explicit. Noaccountauth/generalroom/fullBattle/fullserviceclaim;AspriteremainsafterEOF/fullscene-outcome-returnM3/nativeversionUIunknown/oldshutdownanomalyM7. PLANM3firstUDPmovement;epicsopen.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-m2-acceptance",
+      "evidence": [
+        "RUST235-00199",
+        "RUST235-00078",
+        "RUST235-00081"
+      ],
+      "limits": "M2scoped diagnostictwoidentity/fixedroom/loadingaccepted. Amap-sprite remainsafterEOF, nofullsceneactordelete/forfeit/result/return/gameplaydisconnect; nativewrongversionerrorUIunknown/prelistenguarddesign; IPnotaccountauth/DB/generalroom/fullgame/fullservice/production. Raw58599notwiregenerationfenced. Internet thật chưa kiểm. Native44raw/frozen/seal/cleanup0; oldCP234failures/timeoutimmutable;waivednotapproved/8WIPpreserved/nextaudit236."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt-clippy/15tests/lockedbuild/nativebinaryexact",
+      "result": "pass",
+      "evidence": [
+        "RUST235-00114",
+        "RUST235-00113",
+        "RUST235-00115",
+        "RUST235-00112"
+      ],
+      "limits": "5wire+10service;modeltestsnotnativeoracle."
+    },
+    {
+      "check": "6supportedprofile-configguards/12shutdownraces/8roomTCP/16binding/14M1",
+      "result": "pass",
+      "evidence": [
+        "RUST235-00265",
+        "RUST235-00336",
+        "RUST235-00274",
+        "RUST235-00106",
+        "RUST235-00198"
+      ],
+      "limits": "Prelisten/kernelpolicyproof notnativewrongversionUI. Oldshutdownhostanomalyunknown/notfixedbyrepeats."
+    },
+    {
+      "check": "NativeBsamePID-channel-IDclear-9lateReports/UIclock8.231s/PCAP345/44rawcleanup0",
+      "result": "pass",
+      "evidence": [
+        "RUST235-00341",
+        "RUST235-00339"
+      ],
+      "limits": "Aownedprefixexplicitlykilled, noAhealthyclaim;Amap-sprite/fullscene-outcome-return notaccepted."
+    },
+    {
+      "check": "M2manual10criteriaacceptance/knownlimits/Pythonrollback-WIP",
+      "result": "pass",
+      "evidence": [
+        "RUST235-00199",
+        "RUST235-00078",
+        "RUST235-00003"
+      ],
+      "limits": "M2scopedonly;fullhistory/exactheadrequired;AUDnext236."
+    },
+    {
+      "check": "Fullsceneabort/Battle-result-reset/accountauth/nativewrongversionUI/productionoperationSLO",
+      "result": "not_run",
+      "evidence": [
+        "RUST235-00081",
+        "RUST235-00083"
+      ],
+      "limits": "No claim or implicit dependencyblockingnextM3; eachscopekeptdistinct."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP235-rust-m2-acceptance.json",
+      "bytes": 88345,
+      "sha256": "b2a21378c6365f3a75b8f9f17a570575f4394ae79aaed0c95eebe3cd2fdcf188",
+      "count": 347
+    }
+  ],
+  "delta": {
+    "added": [
+      "Capturedabortedroster/budget64drops+exactknownprofileprelistenguards;6configchecks/12shutdownraces/15Rusttests.",
+      "NativehealthyBsession8.231safterownedAEOF/native1279→wire9drops/PCAP345-56replies/44rawsealed.",
+      "Manual10criterionM2scopedacceptance;PLANM3next/auditCP236."
+    ],
+    "corrected": [
+      "CP234postholdBreportdenial nowhandledforcapturedsurvivor;noimplicitfullscene/forfeit/resultfixclaim.",
+      "Guardversionmethodisprelisten-design,nativewrongversionUIunknown;oldshutdowntimeoutstillunknown,notfixedbyrepeats."
+    ],
+    "superseded": [
+      "CP234remainingM2manualacceptance/late-reportcleanup nowclosedwithinexplicitM2scope;M3Battle/UDPmovementnext."
+    ]
+  },
+  "blockers": [
+    "M3RustUDP/movement/bomb/terrain-life/result-reset/twooutcomes notyetaccepted.",
+    "Amap-spriteafterEOF/fullscene/outcome/returnremainsM3;oldshutdowntimeoutrootcauseunknown/M7;nativewrongversionerrorUIunknown.",
+    "Fullaccountauth/DB/generalroom/productionnotM2scope;CP224/220REblockedseparate;8WIPunmerged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANM3firstnativeUDP/movementbothdirectionsusingknown153/currentkey,PCAP→nativeAPI/key/apply→peerprogress;thenallocator-bombs/claims-terrain/life-result-reset/twooutcomes. No repeatedM2positive/broadauthSDKRE;CP236periodicauditrequired.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T23:48:07.309851+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/RustM2survivor-profileguards/nativeproof+manual10criteria/selfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/rust-service/m2-acceptance.json",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP235M2scopedacceptance/evidence-method-limits/healthyBEOF44raw/profileguards/M3next/nextaudit236syncedbeforecomplete."
+    }
+  ]
+}

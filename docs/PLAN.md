@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP234: Rust2actualfixedroom/ownslots/hostBackclear-chief/rejoinReady/121129/missingB99hold3.364snoGO→bothACK→clock-spawn/8.279hold/PCAP334-56reply.5runs152rawsealed/failurekept;14Rusttests/8roomTCP/16binding/14M1. M2cònnegative/version+activepeerEOFteardownreview;khôngBattle/fullM2/fullserviceclaim. CP233PR304/b10952fmerged;AUD067qua232/kế236. Internet thật chưa kiểm.
+CP235: M2 scoped đạt qua đối chiếu10criteria; RustnativeBsamePID/channel/IDclear+9late-reportdrops/UIclock8.231s sauownedAEOF, PCAP345/56reply/44rawsealed.15Rusttests/6profileguards/12shutdownraces/8roomTCP/16binding/14M1. Guardversionprelisten≠nativewrongversionUI;Aspritecòn/M3,oldshutdowntimeoutunknown/M7. CP234PR305/f15a2bamerged;AUD067qua232/kế236. Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -58,23 +58,26 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
 
-**Kế hoạch Rust đã giao CP213/PR286 `4f9a963`; owner đã mở implementation theo [chỉ đạo mới09/11](evidence/owner-directives/rust-implementation.json). M0/M1 đã giao, M2 phòng/lifecycle/barrier dương tính đã có nativeproof hẹp; RE chỉ theo blocker của lát cắt.**
+**Kế hoạch Rust đã giao CP213/PR286 `4f9a963`; owner đã mở implementation theo [chỉ đạo mới09/11](evidence/owner-directives/rust-implementation.json). M0/M1 đã giao, M2 đã nghiệm thu phạm vi hai identity/một phòng/loading; RE chỉ theo blocker của lát cắt.**
 [KRE-005b/#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ RE/reference backlog theo trigger; KR-L001 giữ blocker có nguồn;
 <!-- active-issue: 14 --> [KRE-074/#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285) giữ epic chuyển Rust. <!-- active-issue: 285 -->
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-RUST-FIRST-SLICE / RUST-M2 nghiệm thu còn thiếu / KRE-074/#285**:
-   [CP234](PROTOCOL.md#rust-fixed-room)/[raw](evidence/rust-service/README.md#cp234) đã có hai actualRust
-   fixedroom/ownslots→hostBack/nativeIDclear/chief→rejoin/Ready→Start121→missingB99noGO3.364s→both99→clock/spawn,
-   PCAP334/56reply/8.279hold. Không chạy lại đường dương tính hoặc RE roster/clock đã biết để tăng checkpoint.
-   Tiếp **negative/version và cleanup/EOF hẹp để chốt M2** theo [acceptance](#rust-service-milestones):
-   đối chiếu profile/build/version guards, wrongstage/identity và partialrecipient/backpressure đã test với contract;
-   kiểm cleanup sau một peer rời ởloading/Armed, late127 không đóng survivor chỉ vì model đãIdle; không fakeACK,
-   kết quả hoặc packetcancel. R5Bfinal127 sauownedteardownA bịdeny là giới hạn riêng, không healthyabortproof.
-   Một TCPtestshutdown timeout chưa rõ nguyên nhân, ba lần cùngbinary đạt; giữfailure và phép đo nếu tái hiện,
-   không tự tăngdeadline hoặc gọi đã giải. M2manualacceptance chỉ sau đối chiếu toàn checklist; rồi mới M3Battle.
-   Không ghép DB/fullauth/generalroom/đổi authority. Pythonrollback/8WIP giữ; audit kếCP236; mỗi run frozen/seal/cleanup.
+1. **NEXT-RUST-FIRST-SLICE / RUST-M3 Battle hai client / KRE-074/#285**:
+   [CP235](PROTOCOL.md#rust-m2-acceptance)/[checklist](evidence/rust-service/m2-acceptance.json) chốt M2:
+   bootstrap→identity/sảnh→fixedroom/ownslots→hostBack/chief→rejoin/Ready→native2actualloadingbarrier/spawn;
+   survivor sau ownedpeerEOF giữ process/channel/clock và late report drop có giới hạn. Không làm lại M2 positive.
+   Tiếp **lát cắt M3 đầu: endpoint/UDP trực tiếp và movement hai chiều** từ current153/roundkey/profile đã đo,
+   Python vẫn là reference/serving. Giữ baseline M2, chỉ chọn backend/config trước run; thêm kiểm nativeAPI/key/apply
+   và PCAP để thấy peer tiến thật. Không suy movement từ processalive hoặc hai implementation đồng ý.
+   Sau đó port allocator/serial/currentowner118→159→158, terrain/item124→165/142, life/result175/return180/reset;
+   hai outcome/Ready2/Start3 và negative theo [M3 acceptance](#rust-service-milestones), không ghép mọi cơ chế trong run đầu.
+   Sprite A còn sau EOF thuộc fullscene/outcome/return ở M3, không gọi roster107 đã giải gameplaydisconnect.
+   Native wrong-version error UI chưa kiểm; guard unsupportedoperatorprofile trước bind đã đủ scope M2 được nêu rõ.
+   Một shutdown timeout CP234 chưa rõ rootcause, không tái hiện ở ba repeat+12race cũ+12race mới; giữ phép đo PID/thread
+   khi tái hiện ở M7, không tăng deadline hoặc gọi đã fix. Không mở fullauth/SDK/generalroom/broadRE làm dependency.
+   Pythonrollback/8WIP giữ; checkpoint kếCP236 phải audit README→PLAN→PROTOCOL→RESEARCH→evidence/code/raw.
 2. **NEXT-AUTH-SESSION-BINDING — blocked sameprocessrecovery**: [CP224](PROTOCOL.md#auth-retry-validation)
    fullretryfatal sauhello/validation1; [CP225](PROTOCOL.md#auth-fresh-process) getter12562C0 trả11→storeEBP-28
    trước setter12562F0(request1), errorlocal10. FreshprocessBnewlease/sessionpositive/invalidtokennegative đã đo;
@@ -97,7 +100,7 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP234 M2positiveRoomLifecycleBarrier/remainingnegatives, M0/M1 giữ scope, không nâng K0–K7/fullservice; AUD067 qua232/audit kếCP236.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP235 M2scopedaccepted/M3next, M0/M1 giữ scope, không nâng K0–K7/fullservice; AUD067 qua232/audit kếCP236.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu
@@ -111,7 +114,7 @@ Owner/selfcheck Codex, independentreviewwaived; PR/exacthead vẫn bắt buộc.
 |---|---|
 | RUST-M0 Baseline/reproducibility | Đạt scopeCP231: exactPython784a0d8/archive/server-tools/47fixturepins/CP181recipe/rollback; támWIP loại khỏi baseline. Không standaloneclientbundle |
 | RUST-M1 Foundation + wire/connection chạy native | Đạt scopeCP231: Rustmode2/selector3/pinnedhello-WCP/nativeerror1→ordinaryretry→error1/seqreset;5wire+14TCPcases. Chưa login thành công/sảnh/fullcodec; M2 tiếp, M5backend độc lập |
-| RUST-M2 Bootstrap→local login/identity→sảnh→fixedroom | CP234partial:2actualfixedroom/ownslots/hostBack-rejoin/Ready/missingACKbarrier/clock-spawn đã đo;negative-version/activepeerEOFteardown cần chốt. ChưaBattle/fullM2. Diagnosticidentity không fullauth, tiếp contract đã biết |
+| RUST-M2 Bootstrap→local login/identity→sảnh→fixedroom | CP235đạt scoped:2actualfixedroom/ownslots/hostBack-rejoin/Ready/barrier/clock-spawn+healthyBsessionEOF;negative/profileguard có phương pháp và giới hạn. Khôngaccountauth/generalroom/Battle. Diagnosticidentity không fullauth, tiếp contract đã biết |
 | RUST-M3 Hai client native→Battlebasic→result/reset/trận2 | M2; account/DB backend không cần đợi M3. GiữUDP trực tiếp, không authoritativeengine rewrite |
 | RUST-M4 Bốn rồi tám/đội hình cố định theo contract | M3; baselinefourmain trước eight; dùng CP213teamdelta sau deliveryriêng, không chờ mọi item/mission |
 | RUST-M5 Account/profile/DB và sessionownership | Backend phụ thuộc M1/M0design, có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |

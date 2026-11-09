@@ -18,6 +18,7 @@ pub struct Member {
     pub slot: u8,
     pub ready: bool,
     pub setup: bool,
+    late_after_abort: u16,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Phase {
@@ -38,6 +39,7 @@ pub struct Room {
     pub phase: Phase,
     visit: u64,
     round: u64,
+    aborted: Option<(u64, Vec<Membership>)>,
 }
 impl Default for Room {
     fn default() -> Self {
@@ -47,6 +49,7 @@ impl Default for Room {
             phase: Phase::Idle,
             visit: 0,
             round: 0,
+            aborted: None,
         }
     }
 }
@@ -98,6 +101,7 @@ impl Room {
                 slot: (identity - 1) as u8,
                 ready: false,
                 setup: false,
+                late_after_abort: 0,
             },
         );
         if create {
@@ -140,6 +144,16 @@ impl Room {
         if !self.current(key) {
             return Err(io::Error::other("stale membership cleanup"));
         }
+        let round = match self.phase {
+            Phase::Loading { round, .. } | Phase::Armed { round } => Some(round),
+            Phase::Idle => None,
+        };
+        if let Some(round) = round {
+            self.aborted = Some((round, self.members.values().map(|m| m.key).collect()));
+            for m in self.members.values_mut() {
+                m.late_after_abort = 0;
+            }
+        }
         self.members.remove(&key.identity);
         if self.host == Some(key.identity) {
             self.host = self
@@ -173,6 +187,7 @@ impl Room {
             .checked_add(1)
             .ok_or_else(|| io::Error::other("round counter exhausted"))?;
         let roster = self.members.values().map(|m| m.key).collect();
+        self.aborted = None;
         self.round = round;
         self.phase = Phase::Loading {
             round,
@@ -180,6 +195,26 @@ impl Room {
             loaded: BTreeSet::new(),
         };
         Ok(round)
+    }
+    pub fn observe_after_abort(&mut self, key: Membership) -> io::Result<()> {
+        if !self.current(key)
+            || self.phase != Phase::Idle
+            || !self
+                .aborted
+                .as_ref()
+                .is_some_and(|(_, roster)| roster.contains(&key))
+        {
+            return Err(io::Error::other("no captured aborted-round membership"));
+        }
+        let member = self
+            .members
+            .get_mut(&key.identity)
+            .expect("current membership");
+        if member.late_after_abort >= 64 {
+            return Err(io::Error::other("late report after abort budget"));
+        }
+        member.late_after_abort += 1;
+        Ok(())
     }
     pub fn ack(&mut self, key: Membership, round: u64) -> io::Result<bool> {
         if !self.current(key) {
@@ -268,5 +303,37 @@ mod tests {
         assert_eq!(r.round, 0);
         r.ready(b).unwrap();
         assert!(r.begin(a).is_ok());
+    }
+}
+
+#[cfg(test)]
+mod abort_tests {
+    use super::*;
+    #[test]
+    fn late_abort_observation_is_bounded_to_captured_survivor_and_never_opens_round() {
+        let mut r = Room::default();
+        let a = r.enter(1, 11, true).unwrap();
+        let b = r.enter(2, 22, false).unwrap();
+        r.setup(a).unwrap();
+        r.setup(b).unwrap();
+        r.ready(b).unwrap();
+        let round = r.begin(a).unwrap();
+        r.ack(a, round).unwrap();
+        r.ack(b, round).unwrap();
+        r.leave(a).unwrap();
+        assert_eq!(r.phase, Phase::Idle);
+        assert!(r.observe_after_abort(a).is_err());
+        for _ in 0..64 {
+            r.observe_after_abort(b).unwrap();
+        }
+        assert!(r.observe_after_abort(b).is_err());
+        assert_eq!(r.phase, Phase::Idle);
+        let a2 = r.enter(1, 12, false).unwrap();
+        assert!(r.observe_after_abort(a2).is_err());
+        r.setup(a2).unwrap();
+        r.ready(a2).unwrap();
+        let next = r.begin(b).unwrap();
+        assert!(next > round);
+        assert!(r.observe_after_abort(b).is_err());
     }
 }

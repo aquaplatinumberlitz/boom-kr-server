@@ -5,7 +5,7 @@ KRE-074/[#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285)
 [kiến trúc/ma trận hiện có→Rust→thiếu](../../RUST_SERVICE_ARCHITECTURE.md),
 [unknown/phép thử](../../RESEARCH.md#rust-service-gaps).
 
-Hiện hành: [contract/limits](../../PROTOCOL.md#rust-fixed-room), [thứ tự](../../PLAN.md#current-order);
+Hiện hành: [contract/limits](../../PROTOCOL.md#rust-m2-acceptance), [thứ tự](../../PLAN.md#current-order);
 [owner đã mở implementation](../owner-directives/rust-implementation.json). Phần dưới giữ lịch sử khảo sát CP213.
 
 ## CP213 — khảo sát/lập kế hoạch đã giao
@@ -165,3 +165,26 @@ Postholdownedcleanup: AFIN+0.215898273s/BFIN+0.27270637s sauearlycompletion; rou
 Khônggracefulactivepeerabortclaim. R5kernel-tcp timeoutlầnđầu giữlog+raw, chưa rõrootcause; r2/repeat1/repeat2 cùngbinaryđạt.
 `final-*.txt`14Rusttests/fmt/clippy/build;8roomTCPcase/16binding/14M1regression táchsynthetic/nativeproof.
 M2cònnegative-version/cleanup đối chiếu, khôngBattle/fullservice; audit kếCP236. Internet thật chưa kiểm.
+
+<a id="cp235"></a>
+## CP235 — survivor EOF và nghiệm thu M2 scoped
+
+[Contract/limits](../../PROTOCOL.md#rust-m2-acceptance), [checklist](m2-acceptance.json),
+[PLAN](../../PLAN.md#current-order). CP234 merge [PR305](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/305)/`f15a2ba`.
+Run `local/research/codex/rust-room-eof-r1/native-lifecycle`:70.535651754s/44raw/exit0,
+run.json SHA`e93d0e3b2606da253840bac91917264915976a6289b46ca158fba472efa86d57`.
+Recipe/preflight/run/PCAP/raw-seal và `input-retention.json`→`frozen-inputs/` giữ source/config/binary/observer
+đúng version; cleanup0. Không chạy lại native chỉ vì phiên tiếp bị gián đoạn.
+
+`verification.json`: native137/291/room/slots/Back/chief/rejoin/Ready/121129 và99hold3.360600112s giữ; dừng riêngA,
+BsamePID/channel/nativeIDclear/chínnative127→chínwire127drop/noeffect, clock/UI8.230957675s. PCAP345/56exactreplies/
+alltuples/allC2Sjoins, BFIN saucompletion. `ui-review.json`:sidebarAclear/timer1:56→1:48/noerrormodal nhưng spriteA
+còn trênmap, chưasceneactordeletion/result/forfeit/return. Binary/finalbuild
+`ab06ae3f8d00e7baa3146ff503f3d11086df5e31819208025dcf53ca1c18992e`.
+
+`m2-acceptance.json` local giữ manual10criteria có method/limits; bản navigation được commit tại checklist trên.
+`profiles/verification.json`6prelistenconfigcases, `shutdown/verification.json`12kernelraces,
+`room/verification.json`8TCP, `binding/verification.json`16TCP, `m1/verification.json`14regression;15Rusttests/fmt/clippy/build
+ở `final-*.txt`. CP234timeout chưarootcausefix, thêm12racebaseline ở `m2-shutdown-races-r1/` và12race mới đềuđạt;
+không sửa oldfailure. M2scopedaccepted khôngfullgame/accountauth/generalroom/fullservice; PLANM3next/auditCP236.
+Internet thật chưa kiểm.

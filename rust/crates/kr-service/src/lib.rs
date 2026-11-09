@@ -173,6 +173,17 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
     let bootstrap = config.bootstrap.load()?;
     let error = config.login_error.load()?;
     let wcp_second = config.wcp_second.load()?;
+    // The service implements one native-tested KR00967 bootstrap/WCP profile.
+    // SHA pin acceptance is a prelisten design guard, not native error behavior.
+    if config.bootstrap.sha256 != "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+        || config.wcp_second.sha256
+            != "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    {
+        return Err(io::Error::other(
+            "unsupported KR00967 bootstrap/WCP profile",
+        ));
+    }
+
     if wcp_second.is_empty() {
         return Err(io::Error::other("empty WCP fixture"));
     }
@@ -505,8 +516,8 @@ async fn local_lobby_connection(
             if let Some(session) = &room_session
                 && room_io::Session::handles(packet.opcode)
             {
-                session.packet(packet.opcode, &packet.payload)?;
-                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len()}))).await?;
+                let dropped_after_abort = session.packet(packet.opcode, &packet.payload)?;
+                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":dropped_after_abort}))).await?;
                 continue;
             }
             let aliases = flow.packet(packet.opcode, &packet.payload)?;
