@@ -509,6 +509,34 @@ chỉ mở lại khi có cạnh/recipe lỗi native đã đo mới. [Phép RE đ
 [thứ tự](PLAN.md#current-order). CP219 đã merge PR291/09435d9. Không production/Rust integration,
 không đóng #14/#285/gate; audit AUD064 qua220, kếCP224. Internet thật chưa kiểm.
 
+<a id="auth-two-account"></a>
+### Hai identity qua native riêng; wrong-binding TCP riêng — CP221
+
+[Run/recipe/hash](evidence/login-runtime/README.md#cp221), [metadata](evidence/login-runtime/two-account.json).
+Tái dùng CP214 tokenA/B, CP216 layout6, Profile47 auth_A/B và own_profile typedID/name. Adapter RE mới
+trong local chọn account bằng token rồi dùng đúng auth_role/claim_role; bản CP217 giữ nguyên.
+Không thêm packet grammar, cryptor hoặc sửa client/production/Rust. Echo/TTL/rate vẫn policy design.
+
+**`kr_runtime/confirmed`:** hai run Wine riêng trên cùng copy4b; mỗi run có service mới chứa hai dummyaccount.
+A: ID1/KRLocal; B: ID2/KRGuest. Cảhai token32 qua writer native, authresult0 → typedID/name/C2S6 echo
+khớp field36 reader/setter/getter/serializer → actual67 sau admission. Native17 entry marker có nguồn,
+không coi số entry là số packet. Hai run/119raw/sourcefrozen/cleanup0; không fault17C7F4C trong cửa sổ đo.
+Đây là **hai positive riêng**, chưa hai client KR đồng thời hoặc swap/healthydenial/accountresume.
+
+**`emu_choice/design`, socket Linux thật/driver tổng hợp:** hai source loopback riêng, A đang có owner4,
+B có pendinglease; wrongID/name với ticketB hoặc correctBfields từ sourceA bị policy từ chối/EOF nhưng
+không tiêu leaseB/xóa ownerA. B sau đó vẫn được nhận bằng captured6 đúng; cảhai owner nhận reply67.
+Aidentity6 trên kênh B đã bind không remap owner; B EOF giữ A mở, A EOF cuối xóa session maps.
+Fixed public ticket/re-encoded negative/sequence là test controls; không native wrongclaim-health/securityproof.
+R1 hai ca dừng tại assertion driver coi map channel lịch sử là map active; service giữ closed events.
+R2 kiểm active/session và actualopenA/closedB, không đổi behavior server. R1 source/raw giữ nguyên;
+hai R2 mỗi34 scoped checks qua. Bốn TCP run/20raw/sourcefrozen/cleanup0.
+
+Tổng139raw mới; không nâng gate/đóng epic. [EOF receiver blocker](#auth-tcp-ownership) vẫn mở,
+healthydenial/twoactualconcurrent/swap/sessionexpiry/restartfence/DB/fullauth chưa đủ bằng chứng.
+[Unknown/phép thử](RESEARCH.md#rust-service-gaps), [thứ tự](PLAN.md#current-order). CP220 complete/AUD064
+không sửa; giao CP220–221 cùng PR292, kiểm lại exacthead mới; audit kếCP224. Internet thật chưa kiểm.
+
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015
 

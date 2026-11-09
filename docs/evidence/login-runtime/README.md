@@ -245,3 +245,30 @@ Không chạy client KR ở ca TCP; không nativehealthydenial/twoactualswap/res
 R1 fixedticket decode sai như little-endian; R2 dùng `codec.read_fields` đã có, không đổi wire contract.
 No-watch-snapshot không là no-write hoặc supportedwatch proof. Không lặp getter/watch không có observable.
 #14/#285 còn mở; không gate/Rust/production behavior change;8WIP byte-exact. Internet thật chưa kiểm.
+
+<a id="cp221"></a>
+## CP221 — hai native positive identity riêng và wrong-binding TCP
+
+[Contract/giới hạn](../../PROTOCOL.md#auth-two-account), [metadata](two-account.json),
+[câu hỏi](../../RESEARCH.md#rust-service-gaps), [thứ tự](../../PLAN.md#current-order).
+CP220 complete/AUD064 giữ nguyên; CP220–221 cùngPR292 cần kiểm exacthead mới. Audit kếCP224.
+Raw native ở `local/research/codex/auth-two-account-r1/`, TCP ở `auth-two-account-controls-r1/`.
+Mỗi root có recipe/preflight/raw-seal/cycles; native có writer/aux/serializer/auth17markers/actualC2S,
+TCP có wire.json/service-state/adapter log. Code/probe/capturedframe/verification local; metadata được commit.
+
+| Run | Wall/raw | run.json SHA256 |
+|---|---|---|
+| native-A | 50.964269862s/59 | `f43cb2eefc95dfe5adb98e825cf748765aee24def23336cf499565cc50ffeb41` |
+| native-B | 49.842327846s/60 | `9cb395e68c353ff8519076782c313fb499be83de463a8663ca55c698a3c844e2` |
+| wrong-identity | 0.214679842s/5 | `bd559076f7f0db2052dda5562214fa99ce9de7a3e0084308b30177be151230fd` |
+| wrong-source | 0.214523143s/5 | `ef835f1d0f9062e58ee278fa9e16e6db434d693ed35f6e501791c4798f16643a` |
+| wrong-identity-r2 | 0.281753195s/5 | `ceb89eda0924a0a9b64a9e1597d64251c60faeb18ae53368711c41a51342c021` |
+| wrong-source-r2 | 0.282928595s/5 | `e4a77be1a67528906c811717439b47c78860b1c763c1adc99b71969d1f4d78ea` |
+
+Hai native run119raw: A1/KRLocal, B2/KRGuest,32token/auth0/echo đúng/actual67, sourcefreeze/cleanup0;
+chạy riêng trên cùng copy/Wine, không2actual đồng thời. Bốn TCP run20raw: hai R1 failure do assertion
+channel lịch sử/active sai giữ nguyên; hai R2 mỗi34scopedchecks dùng active/session/openA/closedB.
+WrongID/name hoặc sai source giữ pendingB và ownerA; actualTCP B sau đó vẫn bind, cảhai nhận67,
+BEOF không xóa ownerA. Driver synthetic/fixedpublictickets, không nativehealthydenial/swap/securityproof.
+Bản CP217 giữ nguyên; derived2accountadapter chỉ chọn known auth_A/B và role từ verifiedaccount.
+Không production/Rust integration hoặc gate mới;8WIP giữ nguyên. Internet thật chưa kiểm.

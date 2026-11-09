@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP220 kernelTCP duplicate/replay/deniedEOF preservesowner; owner67reply/ownerEOFrelease verified by syntheticdriver, notnativeacceptance. CP219 dispatch proven/PR291merged;2receiverfollowupsno selectionobservable/nativehealthFAIL.",
-      "remaining": "Receiverselectionblocked/getter-other-nullcallers/watchinconclusive. Nativehealthydenial/twoidentityswap/sessionexpiry/restartfence/DB/API/Rust integration missing.",
-      "next_test": "NEXT-AUTH-SESSION-BINDING independent sourcefirst tokenA/B/Profile47auth_A/B/layout6→twoaccount/role/nativepositive, wrongbindingkernelTCP. Do not repeat kernelreplay/broadgetter/watch/protectedVM/SDK graph.",
+      "known": "CP221 nativeA/Bseparate positives id-name-echo/auth0/actual67,119raw; wrongID-name/sourcekernelTCP preservesBlease/Aowner,legitBthenbinds/both67,20raw. NativeEOFhealthblockerunchanged.",
+      "remaining": "TwoactualKRsameprocess/swap/healthydenial/sessionexpiry/restartfence/DB/API/fullauth/Rustnotaccepted. PrivateREadapteronly; publicfixedtickets/nativeseparetarunsnotstrongauth.",
+      "next_test": "Source-firstCP189/200harness/admission_ips/fourtransports/per-roletoken→twoactualKRdistinctidentity/session/67sameprocess. No repeatedpositive-separate/TCPwrongbinding/getter-watch/VMgraph.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "4relatedruns/102raw sealed, R1drivererrorretained/R2existingcodec correction. NativehealthFAIL vs designTCPpass distinct; epics/scopedgatesunchanged/WIPpreserved. AUD064through220/next224.",
+      "reason": "CP220–221batchedPR292;CP220complete/AUD064unchanged.6relatedruns139rawsealed;R1driverassertionsretained/R2activeownershipchecks. Both epics/scopedgatesunchanged/WIPbyte-exact/nextaudit224.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -257,7 +257,8 @@
         "docs/PROTOCOL.md#auth-admission-prototype",
         "docs/PROTOCOL.md#auth-lease-eof-blocker",
         "docs/PROTOCOL.md#auth-eof-dispatch",
-        "docs/PROTOCOL.md#auth-tcp-ownership"
+        "docs/PROTOCOL.md#auth-tcp-ownership",
+        "docs/PROTOCOL.md#auth-two-account"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -349,7 +350,8 @@
         "docs/evidence/login-runtime/README.md#cp217",
         "docs/evidence/login-runtime/README.md#cp218",
         "docs/evidence/login-runtime/README.md#cp219",
-        "docs/evidence/login-runtime/README.md#cp220"
+        "docs/evidence/login-runtime/README.md#cp220",
+        "docs/evidence/login-runtime/README.md#cp221"
       ],
       "prs": [
         173,
@@ -443,7 +445,8 @@
         288,
         289,
         290,
-        291
+        291,
+        292
       ],
       "successors": []
     },
@@ -782,11 +785,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP220 kernelTCP duplicate/replay/deniedEOF preservesowner; owner67reply/ownerEOFrelease verified by syntheticdriver, notnativeacceptance. CP219 dispatch proven/PR291merged;2receiverfollowupsno selectionobservable/nativehealthFAIL.",
-      "remaining": "Receiverselectionblocked/getter-other-nullcallers/watchinconclusive. Nativehealthydenial/twoidentityswap/sessionexpiry/restartfence/DB/API/Rust integration missing.",
-      "next_test": "NEXT-AUTH-SESSION-BINDING independent sourcefirst tokenA/B/Profile47auth_A/B/layout6→twoaccount/role/nativepositive, wrongbindingkernelTCP. Do not repeat kernelreplay/broadgetter/watch/protectedVM/SDK graph.",
+      "known": "CP221 nativeA/Bseparate positives id-name-echo/auth0/actual67,119raw; wrongID-name/sourcekernelTCP preservesBlease/Aowner,legitBthenbinds/both67,20raw. NativeEOFhealthblockerunchanged.",
+      "remaining": "TwoactualKRsameprocess/swap/healthydenial/sessionexpiry/restartfence/DB/API/fullauth/Rustnotaccepted. PrivateREadapteronly; publicfixedtickets/nativeseparetarunsnotstrongauth.",
+      "next_test": "Source-firstCP189/200harness/admission_ips/fourtransports/per-roletoken→twoactualKRdistinctidentity/session/67sameprocess. No repeatedpositive-separate/TCPwrongbinding/getter-watch/VMgraph.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "4relatedruns/102raw sealed, R1drivererrorretained/R2existingcodec correction. NativehealthFAIL vs designTCPpass distinct; epics/scopedgatesunchanged/WIPpreserved. AUD064through220/next224.",
+      "reason": "CP220–221batchedPR292;CP220complete/AUD064unchanged.6relatedruns139rawsealed;R1driverassertionsretained/R2activeownershipchecks. Both epics/scopedgatesunchanged/WIPbyte-exact/nextaudit224.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -797,7 +800,8 @@
         "docs/PROTOCOL.md#auth-admission-prototype",
         "docs/PROTOCOL.md#auth-lease-eof-blocker",
         "docs/PROTOCOL.md#auth-eof-dispatch",
-        "docs/PROTOCOL.md#auth-tcp-ownership"
+        "docs/PROTOCOL.md#auth-tcp-ownership",
+        "docs/PROTOCOL.md#auth-two-account"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -809,7 +813,8 @@
         "docs/evidence/login-runtime/README.md#cp217",
         "docs/evidence/login-runtime/README.md#cp218",
         "docs/evidence/login-runtime/README.md#cp219",
-        "docs/evidence/login-runtime/README.md#cp220"
+        "docs/evidence/login-runtime/README.md#cp220",
+        "docs/evidence/login-runtime/README.md#cp221"
       ],
       "prs": [
         286,
@@ -817,11 +822,12 @@
         288,
         289,
         290,
-        291
+        291,
+        292
       ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-09T01:01:29.840628+00:00",
+  "as_of_utc": "2026-11-09T01:19:40.394966+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
