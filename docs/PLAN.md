@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP218: expired/revokedlease bị từchối sauactual6echo, nhưngclientEOFfault17C7F4C; negative-lifecycle chưađạt. CP217valid/badtoken cóproof riêng; chưafullauth/Rust. CP213 thiết kế/lộ trình Rust KRE-074/#285 đã mergePR286. Native8teamresults đã seal là input chưa giao code; K6c WAN giả lập/K7 scoped đạt CP212, Internet thật chưa kiểm. AUD062qua212/kếCP216.
+CP219: matched valid-claim và baseline field36=0 đều tái hiện EOF fault; native vtable+50→target17C7F40→call12578AC đã đo. Receiver selection còn unknown; lifecycle âm tính FAIL. CP217–218 đã mergePR290/f9f48d2. Kế hoạch Rust đã giao CP213/PR286, chưa implementation; K6c WAN giả lập/K7 scoped đạt, Internet thật chưa kiểm. AUD063qua216/kếCP220.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,11 +64,14 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-AUTH-CHANNEL-EOF**: [CP218](PROTOCOL.md#auth-lease-eof-blocker)/[raw](evidence/login-runtime/README.md#cp218)
-   đã thấy validtoken/actual6echo→localdeny→EOF→clientSIGSEGV17C7F4C qua122EA12/12541E0 ở cảexpired/revoked.
-   Reuse CP015timeout/CP180fatalEOF/currentcopyEOF trước. Trace thụ động đúng1257360/callback/args/target
-   (entry protectedjump2052077; faulttrỏRTTI), rồi matchedclosecontrol hoặc gracefulerror đã đo.
-   Không đọc linearprotectedbytes thành code, không patchtheoRTTIname/đoánopcodeVN hoặc mởSDKgraph.
+1. **NEXT-AUTH-CHANNEL-EOF**: [CP219](PROTOCOL.md#auth-eof-dispatch)/[raw](evidence/login-runtime/README.md#cp219)
+   đã đo matched valid-claim/zero-field control và native vtable16ECAA8+50→17C7F40→call12578AC;
+   lỗi không cần expired/revoked hoặc nonzeroecho. Không chạy lại các control đó.
+   Tiếp source-first đúng receiver selection: cache getter13AEBE0/call1257836→localthis125783B
+   trong context candidate, rồi native return/this selection trước dispatch nếu cần. Không quy rootcause
+   theo RTTI; không patchvtable hoặc linear protected decode. Probe1257360 sau6 không hit;
+   snapshot callback cũ preauth không thay proof prefault. Nếu hết hai lượt không có cạnh mới, ghi blocker
+   và chuyển việc độc lập phù hợp scope; không mở SDKgraph hoặc nâng Rust implementation khi chưa mở đợt.
 2. **NEXT-AUTH-SESSION-BINDING** còn mở: CP217valid/badtoken vàCP218policydeny cóscope riêng,
    nativelease-negative lifecycle chưađạt. KernelTCPreplay/twoactualidentityswap/sessionexpiry/restartfence/DB
    chưađo/triểnkhai;32bit/sourceIP/inmemory không fullauth. Không lặp tokencrypto/producer6/Profile137.
@@ -78,7 +81,7 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    không chờ Battle/mọiitem và không chờ fullauthRE để thiết kế DB. Không tạo Rust tree trong đợt RE này.
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP218 không nâng gate; AUD063 qua216/audit kếCP220.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP219 không nâng gate; AUD063 qua216/audit kếCP220.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu

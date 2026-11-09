@@ -1,0 +1,188 @@
+{
+  "schema": "kre-auth-eof-controls-v1",
+  "baseline": "f9f48d275625cdb92df06349f5a72194b8cd5c20",
+  "build": "KR00967",
+  "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "environment": "Wine10.0-20260425; isolatedloopback/privateREadapter/Profile47/publicdummy32token; readonlyGDBprobesand inheritedofflinereset",
+  "cases": [
+    {
+      "case": "matched-close",
+      "raw_root": "local/research/codex/auth-channel-eof-control-r1/matched-close",
+      "run_sha256": "b78fd4a8d948b951b6c41104ccf59be0c56a29bcdb258ae178a1d40270e22744",
+      "duration_s": 40.019680433,
+      "raw_count": 47,
+      "cleanup": {
+        "net_namespace": "net:[4026533274]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "raw_hashes_verified": true,
+      "preflight_current_changes": [],
+      "native_auth_result": 0,
+      "native_c2s6_echo": 191720555,
+      "transport_close_ns": 157848644264490,
+      "callback_snapshots_pre_auth_reply": true,
+      "fault_after_close_s": null,
+      "native_client_lifecycle": "fail",
+      "limits": "Early40srunend/harnessexit0/cleanup0donotimplyhealthy45snegative. Callbackargumentscapturedpreauth,notprefaulttargetproof. Zero baseline also changes adapter/authport; controlsare boundedreproduction,notall-wire-identical orrootcauseproof."
+    },
+    {
+      "case": "zero-close",
+      "raw_root": "local/research/codex/auth-channel-eof-zero-r1/zero-close",
+      "run_sha256": "84ec751a9f8b2145b176879f70b4088cabc40f43db763a6f98efd9d0964f9b32",
+      "duration_s": 39.941851375,
+      "raw_count": 47,
+      "cleanup": {
+        "net_namespace": "net:[4026533274]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "raw_hashes_verified": true,
+      "preflight_current_changes": [],
+      "native_auth_result": 0,
+      "native_c2s6_echo": 0,
+      "transport_close_ns": 158318030867651,
+      "callback_snapshots_pre_auth_reply": true,
+      "fault_after_close_s": 12.137062917,
+      "native_client_lifecycle": "fail",
+      "limits": "Early40srunend/harnessexit0/cleanup0donotimplyhealthy45snegative. Callbackargumentscapturedpreauth,notprefaulttargetproof. Zero baseline also changes adapter/authport; controlsare boundedreproduction,notall-wire-identical orrootcauseproof."
+    },
+    {
+      "case": "zero-stack",
+      "raw_root": "local/research/codex/auth-channel-eof-stack-r1/zero-stack",
+      "run_sha256": "336aea061f56510ed59955a54f74677e1662003f3cdcfa75355730ed006cefa6",
+      "duration_s": 39.374265785,
+      "raw_count": 47,
+      "cleanup": {
+        "net_namespace": "net:[4026533274]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "raw_hashes_verified": true,
+      "preflight_current_changes": [],
+      "native_auth_result": 0,
+      "native_c2s6_echo": 0,
+      "transport_close_ns": 159305844311297,
+      "callback_snapshots_pre_auth_reply": true,
+      "fault_after_close_s": 12.151125834,
+      "native_client_lifecycle": "fail",
+      "limits": "Early40srunend/harnessexit0/cleanup0donotimplyhealthy45snegative. Callbackargumentscapturedpreauth,notprefaulttargetproof. Zero baseline also changes adapter/authport; controlsare boundedreproduction,notall-wire-identical orrootcauseproof."
+    },
+    {
+      "case": "zero-dispatch",
+      "raw_root": "local/research/codex/auth-channel-eof-dispatch-r1/zero-dispatch",
+      "run_sha256": "8bcb0a39d35da4c8a8e8b7d8ff5aca36c8b3213fa5580b9d830abf92ff83e4a0",
+      "duration_s": 39.127362807,
+      "raw_count": 47,
+      "cleanup": {
+        "net_namespace": "net:[4026533274]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "raw_hashes_verified": true,
+      "preflight_current_changes": [],
+      "native_auth_result": 0,
+      "native_c2s6_echo": 0,
+      "transport_close_ns": 159449393349576,
+      "callback_snapshots_pre_auth_reply": true,
+      "fault_after_close_s": 12.169718153,
+      "native_client_lifecycle": "fail",
+      "limits": "Early40srunend/harnessexit0/cleanup0donotimplyhealthy45snegative. Callbackargumentscapturedpreauth,notprefaulttargetproof. Zero baseline also changes adapter/authport; controlsare boundedreproduction,notall-wire-identical orrootcauseproof."
+    }
+  ],
+  "matched_vs_expired": {
+    "frame_equal": true,
+    "frame_changed_offsets": [],
+    "body_equal": true,
+    "body_changed_offsets": [],
+    "limits": "Sameecho/controlclaimvalidity; reportactualcomparison, do notassumeallwire/headeridentical."
+  },
+  "dispatch": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "run_sha256": "8bcb0a39d35da4c8a8e8b7d8ff5aca36c8b3213fa5580b9d830abf92ff83e4a0",
+    "sequence": [
+      {
+        "kind": "dispatch",
+        "site": "0x1257893",
+        "ns": 159461549330983,
+        "regs": {
+          "eax": "0x1",
+          "ecx": "0x37",
+          "edx": "0x1",
+          "esp": "0x12d1d4",
+          "ebp": "0x12d450"
+        },
+        "this": "0x62f42b18",
+        "vtable": "0x16ecaa8",
+        "slot50": "0x17c7f40",
+        "operand": "0x115b960"
+      },
+      {
+        "kind": "dispatch",
+        "site": "0x125789b",
+        "ns": 159461551970824,
+        "regs": {
+          "eax": "0x62f42b18",
+          "ecx": "0x16ecaa8",
+          "edx": "0x17c7f40",
+          "esp": "0x12d1d4",
+          "ebp": "0x12d450"
+        },
+        "this": "0x62f42b18",
+        "vtable": "0x16ecaa8",
+        "slot50": "0x17c7f40",
+        "operand": "0x115b960"
+      },
+      {
+        "kind": "dispatch",
+        "site": "0x12578ac",
+        "ns": 159461554538235,
+        "regs": {
+          "eax": "0x12d1e0",
+          "ecx": "0x62f42b18",
+          "edx": "0x17c7f40",
+          "esp": "0x12d1cc",
+          "ebp": "0x12d450"
+        },
+        "this": "0x62f42b18",
+        "vtable": "0x16ecaa8",
+        "slot50": "0x17c7f40",
+        "operand": "0x17c7f40"
+      }
+    ],
+    "native_vtable96_copy_equal": true,
+    "known_send6_marker_before_all_sites": true,
+    "fault_after_dispatch_s": 0.009072864,
+    "raw_stack_return": "0x12578af",
+    "confirmed": "Nativeobjectvtable16ECAA8+50→17C7F40, localEBP-60 updated→indirectcall12578AC→rawreturn12578AF→fault17C7F4C. ActualthishasCObjectRTTI; targetliesindataneighboringvtable,notprovenheapobject.",
+    "limits": "Provenancedispatchchainonly; whyCObjectselected/lifetime/expectedreceiverunknown. No vtable/clientpatch/gracefulerrorreply/fullnegativeacceptance. Entry1257360tracepostsend6notobserved; callbackfirst2oldsnapsarepreauth.",
+    "next_test": "Cachefirstreceiver-selection/getter13AEBE0locator fromboundedcandidatecontext1257836/3B. Neednativeactualreturn/currentthisselectionduringpostEOFpath beforeinterpretinggetterbody; noSDKgraph orRTTI-basedpatch."
+  },
+  "source_first": [
+    {
+      "path": "local/research/codex/auth-channel-eof-control-r1/source-first.json",
+      "sha256": "52548e306b7e923d68a2b96b83e4e80cbfd3273a5f0ef31f793e4bcfecbb42e9"
+    },
+    {
+      "path": "local/research/codex/auth-channel-eof-zero-r1/source-first.json",
+      "sha256": "abcf4b1de868106de5d2e5e61ca734edad88eecb5482200361bd88ea6e660d87"
+    },
+    {
+      "path": "local/research/codex/auth-channel-eof-stack-r1/source-first.json",
+      "sha256": "a13efbf3a611968bca4d8199197bcab5eda616543f2b3243c268b23d0b289d11"
+    },
+    {
+      "path": "local/research/codex/auth-channel-eof-dispatch-r1/source-first.json",
+      "sha256": "b6068c86ac215f1c2e32c34754bcf73ffa43c11a5614bdb4116fb142da59b64b"
+    }
+  ],
+  "conclusion": "EOFbefore17 faultreproduceswithvalidclaimandzero-fieldbaseline; expired/revokedpolicy andnonzeroecho arenotrequiredinobservedrecipes. Rootcauseunknown; nativelease-negative lifecycleacceptanceremainsFAIL.",
+  "limits": [
+    "Fourrunssealedbeforechanges,188rawhashesverified; nativeauth0/C2S6echo/no17-67andfaultnotinferredfromserverlog. Harnessreturn0/cleanup0nothealthacceptance.",
+    "MatchedC2S6equalsCP218expiredframebyteexact; zero fixturechangesadapter/authport asdeclared, notallwire-equality orsinglevariablecauseproof.",
+    "Oldcallbacksnapshotsarepreauth; postC2S6entry1257360notobserved. Rawstackreturn12578AFcorrectsomissioninbacktrace; narrowunprotectedcallsitebytescomparednative/modO/copy.",
+    "Actualthisvtable/RTTICObjectdistinctfromtargetRTTICWin32Heap. Vtableslot50landsinstaticdata; whyreceiverselectedunknown, noheap/ABI/SDK/Wineattribution.",
+    "Nohealthynegative/fullauth/sessionexpiry/restartfence/DB/Rust/productionintegration/gateclosure; 8WIPsourcesunchanged. AUD063through216/nextCP220. Internet thật chưa kiểm."
+  ]
+}

@@ -28,6 +28,13 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP219: đã khoanh nguồn dispatch lỗi sau EOF, chưa giải lifecycle âm tính.**
+[Contract/giới hạn](docs/PROTOCOL.md#auth-eof-dispatch), [bốn run/hash](docs/evidence/login-runtime/README.md#cp219):
+lease hợp lệ hoặc baseline field36=0 vẫn cùng fault; native vtable+50 → target17C7F40 → call12578AC có proof.
+188 raw kiểm đủ, cleanup0; native lifecycle vẫn FAIL, receiver selection/rootcause chưa biết.
+CP217–218 đã merge [PR290](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/290)/`f9f48d2`;
+không đổi gate/Rust/source production, audit kếCP220. [Bước tiếp](docs/PLAN.md#current-order).
+
 **CP218: policy chặn lease expired/revoked, nhưng lifecycle client sau EOF chưa đạt.**
 [Blocker/giới hạn](docs/PROTOCOL.md#auth-lease-eof-blocker), [hai run/hash](docs/evidence/login-runtime/README.md#cp218):
 validtoken/native0/actual6echo rồi localdeny; cảhai SIGSEGV17C7F4C qua122EA12/12541E0.

@@ -443,10 +443,38 @@ vào vùng protected, không đọc linearbytes saujump thành semantics. Fault1
 của RTTIrecord17C7F40, typenameATL CWin32Heap. Shape/name không chứng minh heap/ABI/SDK/Wine
 là rootcause; chưa biết nguồn callback/target lỗi. Copy vàmodO khớp vùng đọc.
 
-**Blocker/phép thử nhỏ:** đối chiếu cache CP015channel17-timeout/CP180fatalCRC-EOF/currentcopyEOF,
+**Bước tiếp tại CP218 (đã có control/dispatch bổ sung ở [CP219](#auth-eof-dispatch)):** đối chiếu cache CP015channel17-timeout/CP180fatalCRC-EOF/currentcopyEOF,
 rồi passive trace đúng callback/args tại1257360 và targetdata trước lỗi, hoặc matchedEOF control.
 Chỉ thử gracefulerrorreply/binding/patchcopy khi có locator vàcontrol, không đoán opcode VN hoặc vá theo tên RTTI.
 CP217valid/badtoken proof giữ scope riêng; không fullauth/sessionexpiry/restartfence/DB/Rust/gate mới.
+
+<a id="auth-eof-dispatch"></a>
+### EOF trước channel17: control và nguồn target gọi lỗi — CP219
+
+[Bốn run/recipe/hash](evidence/login-runtime/README.md#cp219), [metadata](evidence/login-runtime/eof-controls.json).
+Tái dùng CP218 adapter/Profile47/copy/token và cache CP015 timeout/CP180 EOF; không viết cryptor,
+đổi source trong run hoặc mở đồ thị SDK. Chỉ local control và probe thụ động trên bản copy offline.
+
+**`kr_runtime/confirmed`:** lease 10s được claim hợp lệ rồi intentional close trước17 vẫn fault;
+C2S6 của control này trùng byte với ca expired CP218. Baseline auth field36=0, không admission policy,
+cũng actualauth0/actual6echo0 rồi intentional close và cùng fault17C7F4C. Vì vậy expiry/revoke và
+nonzero field36 **không cần thiết để tái hiện** trong các recipe đã đo. Zero control đổi adapter/authport;
+không coi mọi wire/input trùng hoặc kết luận nguyên nhân duy nhất là EOF. Bốn run/188raw đều seal,
+source frozen/cleanup0; khoảng39–40s kết thúc sớm, **native lifecycle vẫn FAIL**.
+
+**Nguồn dispatch đã đo:** stack thô tại fault có top return12578AF, trong khi backtrace bỏ qua frame này.
+Ba snapshot sau native send6 xác nhận `this` → vtable16ECAA8 → slot+50=17C7F40 → local `[ebp-60]`
+→ `call [ebp-60]` tại12578AC. FaultEIP17C7F4C nằm12byte trong vùng target; không gọi EIP là target đầu.
+Native bytes tại callsite khớp modO và copy. Runtime vtable96byte khớp copy; RTTI của actual`this` là
+`CObject`, khác tên `CWin32Heap` ở RTTI target. Đây là chuỗi lấy operand/gọi lỗi, **chưa biết vì sao
+receiver này được chọn**, lifetime sai hay callback nào đáng ra phải nhận. Không vá vtable/RTTI theo tên.
+
+Các callback snapshot cũ ở122E9FA/FF/122EA0D đều **trước auth reply**, không chứng minh target trước lỗi.
+Probe1257360 không hit sau send6 trong hai run mới dù marker send6 có; entry có protectedjump, không
+suy đường nội bộ từ linear protected bytes. Context tĩnh trước12578AC chỉ candidate cho getter13AEBE0;
+cần xác nhận native receiver selection trước khi giải nghĩa. [Câu hỏi/phép thử](RESEARCH.md#rust-service-gaps),
+[thứ tự duy nhất](PLAN.md#current-order). CP217–218 complete giữ nguyên; PR290 đã mergef9f48d2.
+Không nâng gate, fullauth hoặc production/Rust; Internet thật chưa kiểm giữ backlog riêng.
 
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015
