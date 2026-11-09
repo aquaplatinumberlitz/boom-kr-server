@@ -151,3 +151,41 @@ chỉ ghi verifiedcallsite11018DB, không bịa functionstart. Wrappernewread tr
 
 Chưa credentialverify/expiry/replay/revoke/swap/sessionownership. Field36echo không nguyênsemantics auth hoặc
 credential đủmạnh; backendpolicy sẽ làdesign riêng. AUD063 periodicquaCP216/audit kếCP220; reviewwaived/selfcheck.
+
+<a id="cp217"></a>
+## CP217 — native đúng/sai token trên adapter RE
+
+Baseline CP216/PR289 `af16278`; [contract/limits](../../PROTOCOL.md#auth-admission-prototype),
+[metadata/policy](admission-prototype.json), [phép thử kế](../../RESEARCH.md#rust-service-gaps).
+Raw/source/recipe/preflight/snapshot/privateadapter ở `local/research/codex/auth-admission-r1/`.
+Reusecrypt19nativecomparisons thay viết cryptor; purepolicy24checks ghi rõ emu_choice/design.
+Policy prototype không thuộc productionserver hoặc Rust; tám sourceWIP hiện có không đổi.
+
+Nativepositive:51.321367412s/59raw/SHA258c5bb3ede0ca55a81b827c65cb7a0e88b53303aab453222693d83fe6d6979a.
+Nativebadtoken:50.727851899s/59raw/SHA3e23b793084bc33698a5b84125717e6ba24718a150d27761e280ccfd0702236f.
+Cùng Wine10.0/copy4b/loopbackisolated/Profile47/prototypepolicy, chỉ đổi dummy32chartoken đúng→sai.
+Cảhai sourcefrozen/ownedcleanup0, seal trước đổi input hoặc chuyển việc.
+Input đúng native0/C2S6echo/840470marker+actual67; sai native1/không6-67 trong45s. Không gộp hai run thành
+accountresume hoặc lấy server log chứng minh client. Prototype10s chỉ pendinglease, khôngsessionexpiry;
+32bitcorrelator/sourceIP/inmemory chưa productionauth. Nativeexpiry/revoke/replay/twoaccountswap chưa chạy.
+CP216 đã mergePR289/af16278; AUD063through216/audit kếCP220, không audit lại hoặc nâng gate ởCP217.
+
+<a id="cp218"></a>
+## CP218 — nativelease negative và lỗi EOF sau từ chối
+
+Cùng batch giao CP217–218; [contract/limits/blocker](../../PROTOCOL.md#auth-lease-eof-blocker),
+[metadata](lease-controls.json). Raw/source/recipe/preflight/declaredscenario/verification:
+`local/research/codex/auth-lease-controls-r1/`; source-firstEOF/cache/caller/RTTI ở `auth-channel-eof-r1/`.
+Expired:40.758334335s/47raw/SHA28f035ddd8d7b0ae78d55d4f749842579057a5c690acd68f77d2f9a2c336a663;
+revoked:40.552730587s/47raw/SHA29d86a85ea6a3629235ba8d49000a60d27d96a523dcf415c6ff0a4137f2a3b89.
+Cảhai nguồn/configfrozen, seal/ownedcleanup0 trước chuyển việc; không đổi sourceprototypeCP217.
+
+Policy từ chối đúng pha sau validtoken/native0/actual6echo; client sauEOF lỗiSIGSEGV17C7F4C qua122EA12/12541E0.
+Harnessreturn0 vàcleanup0 không che lỗiclient; fullnegative/lifecycle test ghi fail. Không gán lỗi cho leasevalue,
+heap/SDK/Wine từ typenameATL CWin32Heap. Staticchỉ exactcall1257360/protectedjump2052077 vàRTTIrecord.
+Initiallineardecode122E9C0 rỗng do boundary; exactE8at122EA0D→1257360 mới dùng. Bytes sauprotectedjump
+được giữ nhưng không diễn giải; nguyênbinary/DB/config khôngđổi, không thử patch.
+
+CP216 đã mergePR289/af16278/AUD063; recordCP217complete không sửa, CP218 ghi giới hạn/lỗi mới.
+Gộp giao haiCP trong mộtPR; next ởPLAN là focusedEOF/callback trace. Không nânggate/fullauth/Rustclaim.
+Audit kếCP220 giữ nguyên.

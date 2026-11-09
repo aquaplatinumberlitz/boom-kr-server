@@ -1,0 +1,273 @@
+{
+  "schema": "kre-auth-lease-controls-v1",
+  "baseline": "af16278a1b4d70dec056273cb417d61acb812f3d",
+  "build": "KR00967",
+  "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "environment": "Wine10.0-20260425/isolatedloopback/localderivedREpolicy/sameCP217publicdummy32token/Profile47",
+  "source_first": {
+    "path": "local/research/codex/auth-lease-controls-r1/source-first.json",
+    "sha256": "0fe5f4d8cd94aa802d56470daf925f50d15e7a184f464579a7b6ac8ea97e60a5",
+    "eof_followup": "local/research/codex/auth-channel-eof-r1/source-first.json",
+    "reuse": "CP217positive/privateadapter/24policychecks/CP216field36/layout, no newtokencryptor/providerRE."
+  },
+  "result": "policy_rejection_observed_but_native_EOF_lifecycle_failed",
+  "cases": [
+    {
+      "case": "native-expired",
+      "run_sha256": "28f035ddd8d7b0ae78d55d4f749842579057a5c690acd68f77d2f9a2c336a663",
+      "duration_s": 40.758334335,
+      "raw_count": 47,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "declared_scenario": {
+        "mode": "expire_pending",
+        "source": "emu_choice",
+        "status": "design",
+        "only_local_test_trigger": true
+      },
+      "policy_events": [
+        {
+          "op": "lease_issued",
+          "connection": 3,
+          "monotonic_ns": 156864831579082,
+          "identity": 1,
+          "wire_echo": 191720555,
+          "expires_ns": 156864831319402
+        },
+        {
+          "op": "pending_expiry_armed",
+          "connection": 3,
+          "monotonic_ns": 156864831584822,
+          "ttl_ns": 1
+        },
+        {
+          "op": "channel_reject",
+          "connection": 4,
+          "monotonic_ns": 156865080052040,
+          "reason": "missing_or_used_lease"
+        }
+      ],
+      "native_auth_result": 0,
+      "native_c2s6_echo": 191720555,
+      "frames": [
+        {
+          "connection": 3,
+          "opcode": 1,
+          "sequence": 40,
+          "frame_bytes": 99,
+          "body_bytes": 61,
+          "sha256": "3fa7dcfecbcafb27991edebccec35296d409e4e3acb57fe5394d4234afc2584f"
+        },
+        {
+          "connection": 3,
+          "opcode": 60,
+          "sequence": 43,
+          "frame_bytes": 58,
+          "body_bytes": 20,
+          "sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+        },
+        {
+          "connection": 3,
+          "opcode": 9,
+          "sequence": 46,
+          "frame_bytes": 46,
+          "body_bytes": 8,
+          "sha256": "4158ea45ff94894e0ae219729bef6c62a5e8f908700f2c04c4d8ed5d8224aa43"
+        },
+        {
+          "connection": 3,
+          "opcode": 744,
+          "sequence": 49,
+          "frame_bytes": 42,
+          "body_bytes": 4,
+          "sha256": "d286c398d39600598303aba3fe8f2dd4449e50f25722201e341760457907f170"
+        },
+        {
+          "connection": 3,
+          "opcode": 745,
+          "sequence": 52,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+        },
+        {
+          "connection": 3,
+          "opcode": 40,
+          "sequence": 55,
+          "frame_bytes": 39,
+          "body_bytes": 1,
+          "sha256": "2d9bd1845ba82aea8d94e132778798f9bed95b2bbdce7436ac25f2a6bd0b86e7"
+        },
+        {
+          "connection": 3,
+          "opcode": 5,
+          "sequence": 58,
+          "frame_bytes": 47,
+          "body_bytes": 9,
+          "sha256": "24f8a51e4439d6a19c8af224b8ccc938139dc74c8ab6a38c2ea5542e1e4b871f"
+        },
+        {
+          "connection": 4,
+          "opcode": 6,
+          "sequence": 40,
+          "frame_bytes": 81,
+          "body_bytes": 43,
+          "sha256": "56e456293e871e54912878d57b9975f3b7303d68550fd185a1f75bc0cb232622"
+        }
+      ],
+      "no_channel17_or67_within_observed_run": true,
+      "server_admission_rejection": "confirmed_design_policy",
+      "native_client_lifecycle": "fail",
+      "fault": {
+        "signal": "SIGSEGV",
+        "eip": "017C7F4C",
+        "caller": "0122EA12",
+        "parent": "012541E0",
+        "later": "Unhandledprivilegedinstruction afterGDBstop/detach"
+      },
+      "limits": "Bounded40s~ observationendedearlyafterclientfault despiteharnessexit0; not45shealthynegative. Cleanup0doesnotmeanclientstayedhealthy."
+    },
+    {
+      "case": "native-revoked",
+      "run_sha256": "29d86a85ea6a3629235ba8d49000a60d27d96a523dcf415c6ff0a4137f2a3b89",
+      "duration_s": 40.552730587,
+      "raw_count": 47,
+      "cleanup": {
+        "net_namespace": "net:[4026533182]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "declared_scenario": {
+        "mode": "revoke_after_issue",
+        "source": "emu_choice",
+        "status": "design",
+        "only_local_test_trigger": true
+      },
+      "policy_events": [
+        {
+          "op": "lease_issued",
+          "connection": 3,
+          "monotonic_ns": 156950119915020,
+          "identity": 1,
+          "wire_echo": 2624052986,
+          "expires_ns": 156960119652080
+        },
+        {
+          "op": "pending_lease_revoked",
+          "connection": 3,
+          "monotonic_ns": 156950119925420,
+          "identity": 1,
+          "version": 2
+        },
+        {
+          "op": "channel_reject",
+          "connection": 4,
+          "monotonic_ns": 156950368201249,
+          "reason": "missing_or_used_lease"
+        }
+      ],
+      "native_auth_result": 0,
+      "native_c2s6_echo": 2624052986,
+      "frames": [
+        {
+          "connection": 3,
+          "opcode": 1,
+          "sequence": 40,
+          "frame_bytes": 99,
+          "body_bytes": 61,
+          "sha256": "3fa7dcfecbcafb27991edebccec35296d409e4e3acb57fe5394d4234afc2584f"
+        },
+        {
+          "connection": 3,
+          "opcode": 60,
+          "sequence": 43,
+          "frame_bytes": 58,
+          "body_bytes": 20,
+          "sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+        },
+        {
+          "connection": 3,
+          "opcode": 9,
+          "sequence": 46,
+          "frame_bytes": 46,
+          "body_bytes": 8,
+          "sha256": "4158ea45ff94894e0ae219729bef6c62a5e8f908700f2c04c4d8ed5d8224aa43"
+        },
+        {
+          "connection": 3,
+          "opcode": 744,
+          "sequence": 49,
+          "frame_bytes": 42,
+          "body_bytes": 4,
+          "sha256": "d286c398d39600598303aba3fe8f2dd4449e50f25722201e341760457907f170"
+        },
+        {
+          "connection": 3,
+          "opcode": 745,
+          "sequence": 52,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+        },
+        {
+          "connection": 3,
+          "opcode": 40,
+          "sequence": 55,
+          "frame_bytes": 39,
+          "body_bytes": 1,
+          "sha256": "2d9bd1845ba82aea8d94e132778798f9bed95b2bbdce7436ac25f2a6bd0b86e7"
+        },
+        {
+          "connection": 3,
+          "opcode": 5,
+          "sequence": 58,
+          "frame_bytes": 47,
+          "body_bytes": 9,
+          "sha256": "24f8a51e4439d6a19c8af224b8ccc938139dc74c8ab6a38c2ea5542e1e4b871f"
+        },
+        {
+          "connection": 4,
+          "opcode": 6,
+          "sequence": 40,
+          "frame_bytes": 81,
+          "body_bytes": 43,
+          "sha256": "254b6418d661c563363049f16f0d7409261b81216489e9f506ac57aa5f8592f8"
+        }
+      ],
+      "no_channel17_or67_within_observed_run": true,
+      "server_admission_rejection": "confirmed_design_policy",
+      "native_client_lifecycle": "fail",
+      "fault": {
+        "signal": "SIGSEGV",
+        "eip": "017C7F4C",
+        "caller": "0122EA12",
+        "parent": "012541E0",
+        "later": "Unhandledprivilegedinstruction afterGDBstop/detach"
+      },
+      "limits": "Bounded40s~ observationendedearlyafterclientfault despiteharnessexit0; not45shealthynegative. Cleanup0doesnotmeanclientstayedhealthy."
+    }
+  ],
+  "positive_control": {
+    "path": "local/research/codex/auth-admission-r1/native-positive/raw-seal.json",
+    "run_sha256": "258c5bb3ede0ca55a81b827c65cb7a0e88b53303aab453222693d83fe6d6979a"
+  },
+  "fault_static": {
+    "caller": "122EA12",
+    "direct_callee": "1257360",
+    "protected_entry_jump": "2052077",
+    "fault": "17C7F4C",
+    "rtti_record": "17C7F40",
+    "type_name": ".?AVCWin32Heap@ATL@@",
+    "limits": "Onlyboundedcallsite/entryprefix/RTTIrecord; no rootcause/ABI/SDK/Wine attribution orlinearprotectedbodysemantics."
+  },
+  "blocker": "Bothvalidtoken/echo casesgetlocalchannelEOFthenclientSIGSEGV017C7F4C←0122EA12←012541E0; rootcauseunknown. Do notclosefulladmissionnegative/gate acceptance.",
+  "next_test": "Source-firstcompareCP015channel17timeout/CP180fatalCRC-EOF/currentcopyEOFrecipes andcached122EA12caller ifany. Boundedtracecaller/currentcallbackthis/vtable/12stimeoutafter6; matchedtransport-closecontrol ormeasuredgracefulerrorpathonlyafterexactlocator. No newprovidergraph/patchguess.",
+  "limits": [
+    "Expired1ns/revokeafterissuearedeclaredlocaltestpolicytriggers,notoriginalKRlease law.",
+    "ActualvalidC2S1/nativeauth0/field36echo/6 andno17-67 plusserverdeny separatefromclienthealthfailure.",
+    "NoNativefullauthacceptance/DB/sessionexpiry/restartfence/kernelTCPreplay/twoaccountswap/Rust/productionintegration; existingWIPpreserved."
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "id": "CP218",
+  "previous": "CP217",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T00:10:19.572575+00:00",
+  "context_commit": "af16278a1b4d70dec056273cb417d61acb812f3d",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "NEXT-AUTH-SESSION-BINDING: nativevalidtoken butlocalpendingleaseexpired/revoked beforeC2S6;doesdenialpreserveclientlifecycle? Ifnot, whatminimalfaultlocatorblocksacceptance?",
+  "scope": "ReuseCP217privateadapter/token32/Profile47/probes/copy,2fixedderivedlocalpolicytriggers(expire1ns/revokeafterissue) withrawhash/cleanup. Nativeauth0/field36echo/actual6/serverdeny/no17-67 observed,thenbothclientSIGSEGV. Cache-firstEOFfollowup andboundedactualcallsite/entry/RTTI data only; no patch/SDKgraph/fullauth/Rust/productionchange. CP217–218batchedPR,completeCP217unchanged.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "Expiredrun28f035ddd8d7b0ae78d55d4f749842579057a5c690acd68f77d2f9a2c336a663/40.758334335s/47raw;revokedrun29d86a85ea6a3629235ba8d49000a60d27d96a523dcf415c6ff0a4137f2a3b89/40.552730587s/47raw. Allsourcefrozen/sealed/ownedcleanup0,harnessreturn0,butbothnativeSIGSEGV17C7F4C.",
+    "Actualnativeauthresult0/field36read-set-get/C2S6frame81body43echo andlocalclaimdeny. No17helper/actual67beforerunendedearly;callbackfault~12safterEOF, stack17C7F4C←122EA12←12541E0←1470F42.",
+    "ExactstaticE8at122EA0D→1257360return122EA12; validcalleeentryprefixonly→jmp2052077protectedbranch. Faultaddress17C7F4C=RTTIrecord17C7F40+0C/typeDescriptor19B51EC,ATL CWin32Heap. Nativecurrentcallbackthis/targetprovenanceunknown; do notdecodeopaqueprotectedbytesorattributecausebyname."
+  ],
+  "findings": [
+    {
+      "summary": "SourcefirstreuseCP217nativepositive/24policyguards/baseadapter/token/probes/Profile47 andCP216field36/layout. DerivedtestpolicyonlyTTL1nsorrevokeafterissuebeforeauthreply; basefrozencodeunchanged. LaterfaultsourcefirstcheckedCP015timeout/CP180fatalEOF/cachebeforeboundedcaller/entryread. No newtokencryptor/fullprovider/SDKgraph.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-lease-eof-blocker",
+      "evidence": [
+        "AUTH218-00360",
+        "AUTH218-00008",
+        "AUTH218-00030"
+      ],
+      "limits": "Two declaredlocaltestpolicies(expire1ns/revokeafterissue),notoriginalTTL/authlaw. Currentcopy4b/Wine10.0/isolatedloopback/sameCP217publicdummy32token/Profile47/inmemoryadapter. Validtoken/auth0/actual6echo/policydeny observed, butbothclientSIGSEGVafterEOF; no healthynegative/lifecycle/fullauthacceptance. Harnessexit0/cleanup0notclienthealth. Native17/67absenceboundedactualearlyrun. RTTI/protectedentrynotrootcause; no sourcebinarypatch/DBconfigmutation/Rust/productionintegration. CP217recordunchanged;8WIPsourcespreserved;K6cWAN/K7scopeunchanged,Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    },
+    {
+      "summary": "TwoactualWinecopy4brunsvalidtoken→nativeauth0/field36cachechain→actualC2S6echo,localexpiry/revokepolicyrejectsclaim/nochanneladmitted/native17or67inobservedwindow. Expirecasepastdeadline;revokecaseversion2pendingremovedbeforeclaim. Thisprovesdeclaredpolicydenialpath,notoriginalleaseTTL/authsemantics.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-lease-eof-blocker",
+      "evidence": [
+        "AUTH218-00371",
+        "AUTH218-00081",
+        "AUTH218-00245"
+      ],
+      "limits": "Two declaredlocaltestpolicies(expire1ns/revokeafterissue),notoriginalTTL/authlaw. Currentcopy4b/Wine10.0/isolatedloopback/sameCP217publicdummy32token/Profile47/inmemoryadapter. Validtoken/auth0/actual6echo/policydeny observed, butbothclientSIGSEGVafterEOF; no healthynegative/lifecycle/fullauthacceptance. Harnessexit0/cleanup0notclienthealth. Native17/67absenceboundedactualearlyrun. RTTI/protectedentrynotrootcause; no sourcebinarypatch/DBconfigmutation/Rust/productionintegration. CP217recordunchanged;8WIPsourcespreserved;K6cWAN/K7scopeunchanged,Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    },
+    {
+      "summary": "Bothnativeclients thenSIGSEGV17C7F4C via122EA12/12541E0 about12safterchannelEOF; laterprivilegedinstructionafterdebuggerstop. Observedrun40.758/40.553secondsendedearly, launcherreturn0andownedcleanup0donotimplyclienthealth. Fullnegative-lifecycleacceptanceFAIL, notgateclosed. CP217valid/badtoken scopesunchanged.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-lease-eof-blocker",
+      "evidence": [
+        "AUTH218-00371",
+        "AUTH218-00030",
+        "AUTH218-00013",
+        "AUTH218-00014"
+      ],
+      "limits": "Two declaredlocaltestpolicies(expire1ns/revokeafterissue),notoriginalTTL/authlaw. Currentcopy4b/Wine10.0/isolatedloopback/sameCP217publicdummy32token/Profile47/inmemoryadapter. Validtoken/auth0/actual6echo/policydeny observed, butbothclientSIGSEGVafterEOF; no healthynegative/lifecycle/fullauthacceptance. Harnessexit0/cleanup0notclienthealth. Native17/67absenceboundedactualearlyrun. RTTI/protectedentrynotrootcause; no sourcebinarypatch/DBconfigmutation/Rust/productionintegration. CP217recordunchanged;8WIPsourcespreserved;K6cWAN/K7scopeunchanged,Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    },
+    {
+      "summary": "Boundedstaticlocator:actualreturn122EA12matchesE8call1257360;calleevalidprefixjumps2052077into protectedbranch. Faultbase17C7F40matchesRTTIshape/ATL CWin32Heap/typeDescriptorfield+0C,currentcopybytesagree. Linearafterjumplooksopaque,notfunctionsemantics; initial122E9C0decodeemptyandcandidateboundarynotesretained. Callbacktargetorigin/SDK-ABI-Wine/leasevaluecauseunknown.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#auth-lease-eof-blocker",
+      "evidence": [
+        "AUTH218-00003",
+        "AUTH218-00002",
+        "AUTH218-00007",
+        "AUTH218-00005"
+      ],
+      "limits": "Two declaredlocaltestpolicies(expire1ns/revokeafterissue),notoriginalTTL/authlaw. Currentcopy4b/Wine10.0/isolatedloopback/sameCP217publicdummy32token/Profile47/inmemoryadapter. Validtoken/auth0/actual6echo/policydeny observed, butbothclientSIGSEGVafterEOF; no healthynegative/lifecycle/fullauthacceptance. Harnessexit0/cleanup0notclienthealth. Native17/67absenceboundedactualearlyrun. RTTI/protectedentrynotrootcause; no sourcebinarypatch/DBconfigmutation/Rust/productionintegration. CP217recordunchanged;8WIPsourcespreserved;K6cWAN/K7scopeunchanged,Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    },
+    {
+      "summary": "CP218documentsnewfailure/blocker afterCP217completewithoutrewritingrecord. PLANnextfocusedEOF/callbacktrace/matchedcontrol,notrepeatcrypto/producer/profile137orpatchbyRTTI. #14/#285openupdated;8sourceWIPunchanged/noRusttree,scopedgatesunchanged. BatchCP217–218onePRmeaningfuldelivery; AUD063through216/next220 retained.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-lease-eof-blocker",
+      "evidence": [
+        "AUTH218-00030",
+        "AUTH218-00022",
+        "AUTH218-00024",
+        "AUTH218-00389",
+        "AUTH218-00392"
+      ],
+      "limits": "Two declaredlocaltestpolicies(expire1ns/revokeafterissue),notoriginalTTL/authlaw. Currentcopy4b/Wine10.0/isolatedloopback/sameCP217publicdummy32token/Profile47/inmemoryadapter. Validtoken/auth0/actual6echo/policydeny observed, butbothclientSIGSEGVafterEOF; no healthynegative/lifecycle/fullauthacceptance. Harnessexit0/cleanup0notclienthealth. Native17/67absenceboundedactualearlyrun. RTTI/protectedentrynotrootcause; no sourcebinarypatch/DBconfigmutation/Rust/productionintegration. CP217recordunchanged;8WIPsourcespreserved;K6cWAN/K7scopeunchanged,Internet thật chưa kiểm. AUD063through216/next220/reviewwaived."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rawhash/preflightfrozen/ownedcleanup0 andvalidnativeauth0/C2S6echo→declaredlease-policydeny",
+      "result": "pass",
+      "evidence": [
+        "AUTH218-00371",
+        "AUTH218-00081",
+        "AUTH218-00245"
+      ],
+      "limits": "Policybehaviorobservednotclienthealth;harnessreturn0isnotacceptance."
+    },
+    {
+      "check": "Healthyclientlifecycleafterexpired/revokedchanneldenial",
+      "result": "fail",
+      "evidence": [
+        "AUTH218-00371",
+        "AUTH218-00030"
+      ],
+      "limits": "BothSIGSEGV17C7F4C←122EA12/12541E0~12safterEOF,earlyrunend40.6s; mustresolveorbounderrorroutebeforeacceptingnativelease-negative lifecycle."
+    },
+    {
+      "check": "Boundedcallback-staticlocator/copyparity/RTTIshapeonly",
+      "result": "pass",
+      "evidence": [
+        "AUTH218-00003",
+        "AUTH218-00007",
+        "AUTH218-00005"
+      ],
+      "limits": "No fullprotectedfunction/rootcause/heapSDKABIinference; nativecallbackprecalltrace notyetdone."
+    },
+    {
+      "check": "Manualdocs/catalog/links/CP217recordhash/WIP/noRust preservation",
+      "result": "pass",
+      "evidence": [
+        "AUTH218-00030",
+        "AUTH218-00383",
+        "AUTH218-00382"
+      ],
+      "limits": "Fullhistory/localandexactheadcheckrequired afterappendbeforemerge. Reviewwaivednotapproved."
+    },
+    {
+      "check": "MatchedEOFcontrol/gracefulerrorfix/nativekernelTCPreplay/twoaccountswap/fullauth/Rust",
+      "result": "not_run",
+      "evidence": [
+        "AUTH218-00024"
+      ],
+      "limits": "Blocker/nexttestexplicit; no additionalnativefunctiongraph/patchguess."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP218-auth-lease-eof-blocker.json",
+      "bytes": 109765,
+      "sha256": "3d9a4b17d46d56f339a42f00e812bbe2430e39bc4fcf7cce7d2888410e9919af",
+      "count": 397
+    }
+  ],
+  "delta": {
+    "added": [
+      "Nativeexpired/revokedpendingleasecontrols withvalidtoken/echo/policydeny, plusrepeatednativepostEOFfault/earlyends savedasfailure.",
+      "Source-firstEOFcache/boundedcall1257360/protectedjump2052077/RTTIlocator; focusednexttrace andno-rootcause-inference limits."
+    ],
+    "corrected": [
+      "CP217nativelease-negativesnotrun atthatcheckpoint; CP218nowattemptedbuthealthfailure,notfullacceptance. CP217complete/evidenceimmutable.",
+      "Harnessexit0/ownedcleanup0/alive/denylogdonotcertifyclienthealth; recordexplicitfail.",
+      "Initialempty/misalignedcallerslice andlinearprotectedbytesnotvalidsemantics; exactE8boundaryonlyused."
+    ],
+    "superseded": [
+      "NEXT-AUTH-SESSION-BINDING nativelease-negatives nowblockedonpost-denialEOF/callbacklifecycle;policydenyaloneinsufficient."
+    ]
+  },
+  "blockers": [
+    "NativepostchannelEOF SIGSEGV17C7F4C through122EA12/12541E0 inbothexpired/revokedcases; callbacktargetprovenance/rootcauseunknown.",
+    "Protectedentry1257360→2052077precludeslinearstaticbodyinterpretation; needfocusedpassivenativeargs/targettrace/matchedcontrol, no patchguess.",
+    "NativekernelTCPreplay/twoidentityswap/sessionexpiry/restartfence/accountDB/fullauth/Rust/productionintegrationunimplemented;32bit/sourceIP/inmemorynotstrongauth. Internet thật chưa kiểm separatebacklog."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "NEXTperPLAN:reuseoldtimeout/EOFcache thenpassiveexact1257360callback/args/targettrace andmatchedclosecontrolormeasuredgracefulerrorpath. FaultatRTTIdata,rootcauseunknown; no linearprotecteddecode/SDKgraph/opcodeguess/patchbyname.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Policyexpired/revokeddenyobservedbutnativeEOFhealthfails; keepadmissionnegativeacceptanceopen. AfterfocusedEOFresolve, kernelTCPreplay/twoactualidentityswap/sessionexpiry-restartfence stillneeded asproductscope.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "FutureM0→M1firstRustslice independentoffullauthRE,planningdeliveredCP213/PR286. NoRusttree/implementationorproductionpolicyintegrationinCP217–218.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T00:10:19.572575+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/source-first/native2lease-controls/explicitfailurepreservation/scopedstaticlocator/manualselfcheck. Independentreviewwaivednotapproved;exactheadPRchecksrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    },
+    {
+      "path": "docs/evidence/login-runtime/README.md",
+      "state": "updated",
+      "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    },
+    {
+      "path": "docs/evidence/login-runtime/lease-controls.json",
+      "state": "updated",
+      "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    }
+  ]
+}

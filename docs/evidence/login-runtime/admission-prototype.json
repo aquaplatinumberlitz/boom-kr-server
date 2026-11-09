@@ -1,0 +1,388 @@
+{
+  "schema": "kre-auth-admission-prototype-v1",
+  "baseline": "af16278a1b4d70dec056273cb417d61acb812f3d",
+  "build": "KR00967",
+  "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "environment": "Wine10.0-20260425/currentcopy4b/isolatedloopback/localdummyaccountadapter, notoriginalauthserver",
+  "source_first": {
+    "path": "local/research/codex/auth-admission-r1/source-first.json",
+    "sha256": "4bb00a0950652e324152bbcfee33fea07039cfbfde0ae31c2481ea2fea32380d",
+    "reuse": "CP214–216tokens/field36/layout6 +existingcrypt/native19vectors; CP014result1/CP18147fixture-profile. No newfunctionscan/cryptor/providerRE."
+  },
+  "cases": [
+    {
+      "case": "native-positive",
+      "run_sha256": "258c5bb3ede0ca55a81b827c65cb7a0e88b53303aab453222693d83fe6d6979a",
+      "duration_s": 51.321367412,
+      "raw_count": 59,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "frames": [
+        {
+          "connection": 3,
+          "opcode": 1,
+          "sequence": 40,
+          "frame_bytes": 99,
+          "body_bytes": 61,
+          "sha256": "3fa7dcfecbcafb27991edebccec35296d409e4e3acb57fe5394d4234afc2584f"
+        },
+        {
+          "connection": 3,
+          "opcode": 60,
+          "sequence": 43,
+          "frame_bytes": 58,
+          "body_bytes": 20,
+          "sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+        },
+        {
+          "connection": 3,
+          "opcode": 9,
+          "sequence": 46,
+          "frame_bytes": 46,
+          "body_bytes": 8,
+          "sha256": "4158ea45ff94894e0ae219729bef6c62a5e8f908700f2c04c4d8ed5d8224aa43"
+        },
+        {
+          "connection": 3,
+          "opcode": 744,
+          "sequence": 49,
+          "frame_bytes": 42,
+          "body_bytes": 4,
+          "sha256": "d286c398d39600598303aba3fe8f2dd4449e50f25722201e341760457907f170"
+        },
+        {
+          "connection": 3,
+          "opcode": 745,
+          "sequence": 52,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+        },
+        {
+          "connection": 3,
+          "opcode": 40,
+          "sequence": 55,
+          "frame_bytes": 39,
+          "body_bytes": 1,
+          "sha256": "2d9bd1845ba82aea8d94e132778798f9bed95b2bbdce7436ac25f2a6bd0b86e7"
+        },
+        {
+          "connection": 3,
+          "opcode": 5,
+          "sequence": 58,
+          "frame_bytes": 47,
+          "body_bytes": 9,
+          "sha256": "24f8a51e4439d6a19c8af224b8ccc938139dc74c8ab6a38c2ea5542e1e4b871f"
+        },
+        {
+          "connection": 4,
+          "opcode": 6,
+          "sequence": 40,
+          "frame_bytes": 81,
+          "body_bytes": 43,
+          "sha256": "62fd2a8e45f447c1754a48f69b86b935d9f448ded2dbc198e75f0bb587f8e9f2"
+        },
+        {
+          "connection": 4,
+          "opcode": 544,
+          "sequence": 43,
+          "frame_bytes": 48,
+          "body_bytes": 10,
+          "sha256": "e8ff3d74c4a26ecb82c2c295b8eb385f68e655bb6581dec8977eb062bb672f18"
+        },
+        {
+          "connection": 4,
+          "opcode": 549,
+          "sequence": 46,
+          "frame_bytes": 41,
+          "body_bytes": 3,
+          "sha256": "683c014bbc8fbf2dcc1325c3788bfd26adb70ed576b02ef2b22903c4d00d65ee"
+        },
+        {
+          "connection": 4,
+          "opcode": 744,
+          "sequence": 49,
+          "frame_bytes": 42,
+          "body_bytes": 4,
+          "sha256": "7704fb1aa46a1a17c430094ff6033bdd25cfffc9f43664b86c605e2cd4d8f5c6"
+        },
+        {
+          "connection": 4,
+          "opcode": 745,
+          "sequence": 52,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+        },
+        {
+          "connection": 4,
+          "opcode": 567,
+          "sequence": 55,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "63b34eaa82ebde5a2c2225d69d05afa03434b1023f40242e8ecfecab8f726132"
+        },
+        {
+          "connection": 4,
+          "opcode": 67,
+          "sequence": 58,
+          "frame_bytes": 40,
+          "body_bytes": 2,
+          "sha256": "40e9433aba62af57815aa75adb3b377070436ce1808f30ba92f2743b0cc13bf9"
+        },
+        {
+          "connection": 4,
+          "opcode": 87,
+          "sequence": 61,
+          "frame_bytes": 40,
+          "body_bytes": 2,
+          "sha256": "e0ea50ce187e01bde4ab3b1fdc64419df741c1a40d92e67f13c79c617dfc4a29"
+        },
+        {
+          "connection": 4,
+          "opcode": 742,
+          "sequence": 64,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "a3e0de0e248cea05e63fafc1deb64e76cbdad6c9d0e54fac1804cee2d89aa638"
+        },
+        {
+          "connection": 4,
+          "opcode": 741,
+          "sequence": 67,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "ceca4260ec672878bdfb674cf9c56d922e7ef931506c013dae5809f083c22761"
+        },
+        {
+          "connection": 4,
+          "opcode": 715,
+          "sequence": 70,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "e28443e89692e21f334f5aa5c8e92b60d62d26bdb830d2818bf27263995ec2f0"
+        },
+        {
+          "connection": 4,
+          "opcode": 715,
+          "sequence": 73,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "454082c17ddf7efbd9d10181cf10a8e91958e454c3afb272d9f03db8a6b66756"
+        },
+        {
+          "connection": 4,
+          "opcode": 15,
+          "sequence": 76,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "sha256": "9120a2cca7cb9f11720329085c06c738775ce9eaabb60cb8a5ddb210ea4b7e6c"
+        },
+        {
+          "connection": 4,
+          "opcode": 715,
+          "sequence": 79,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "3f2ee188ed75a78de687d3d43b9ca8a09a20c38eb081ceac73d8954929c54126"
+        },
+        {
+          "connection": 4,
+          "opcode": 15,
+          "sequence": 82,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "sha256": "9be7fdffde5b5688a261dfa482368954b52da2ce4588732e51bd80f077bc6a67"
+        },
+        {
+          "connection": 4,
+          "opcode": 715,
+          "sequence": 85,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "bc5247901942c7f6496b3ec04de938e779ee7679f65df59905a12d614ffae2f0"
+        },
+        {
+          "connection": 4,
+          "opcode": 15,
+          "sequence": 88,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "sha256": "81352c5297b92d0a87b7e6dd1f5be3c0ee4e3248e0e0c0ac646a03cff1e34678"
+        },
+        {
+          "connection": 4,
+          "opcode": 715,
+          "sequence": 91,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "dbace38fbca7f5408295f6dbfbb5a619006ef6e34350c52fab5bfc1d59e47b51"
+        },
+        {
+          "connection": 4,
+          "opcode": 15,
+          "sequence": 94,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "sha256": "930e5d7b1d3afccd663b812e1cacf4491a0338df9192f81ebc7655a74c37c885"
+        },
+        {
+          "connection": 4,
+          "opcode": 715,
+          "sequence": 97,
+          "frame_bytes": 38,
+          "body_bytes": 0,
+          "sha256": "407a60f3c30b55d922d8ab8a6f3cb6b9d77c3c4cbf6271d888e59da7ffe02acb"
+        },
+        {
+          "connection": 4,
+          "opcode": 15,
+          "sequence": 100,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "sha256": "49bf62f95afae5ec80f5ac3c3f2ee61d7e136809b0b7a31177f3209bc8d83a84"
+        }
+      ],
+      "token_size": 32,
+      "token_capacity": 47,
+      "token_input_sha256": "3eb1bd439947eb762998e566ccc2e099c791118b2f40579cc4f7da2b5061b7f9",
+      "policy_events": [
+        {
+          "op": "lease_issued",
+          "connection": 3,
+          "monotonic_ns": 156092297971279,
+          "identity": 1,
+          "wire_echo": 1041540126,
+          "expires_ns": 156102297672419
+        },
+        {
+          "op": "channel_admitted",
+          "connection": 4,
+          "monotonic_ns": 156092653315048,
+          "identity": 1,
+          "session_id": "768764e2de604195497676585c3da044"
+        }
+      ],
+      "native_channel17_entry_markers": 2,
+      "limits": "Policyserverevents areemu_choice; nativeC2S/writer/loginresult/parser markers arekr_runtime. One dummyaccount/loopback/knowncount1branch, notfullauth/security/DB/Rustproof.",
+      "native_login_result": 0,
+      "native_channel_echo": 1041540126,
+      "native_67_after_admission": true,
+      "ordered_native_echo": true
+    },
+    {
+      "case": "native-bad-token",
+      "run_sha256": "3e23b793084bc33698a5b84125717e6ba24718a150d27761e280ccfd0702236f",
+      "duration_s": 50.727851899,
+      "raw_count": 59,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "frames": [
+        {
+          "connection": 3,
+          "opcode": 1,
+          "sequence": 40,
+          "frame_bytes": 99,
+          "body_bytes": 61,
+          "sha256": "9ee4dd30e9abd8a00852b14c2f8039ff2702348434ad72e25184dfffe9966705"
+        },
+        {
+          "connection": 3,
+          "opcode": 60,
+          "sequence": 43,
+          "frame_bytes": 58,
+          "body_bytes": 20,
+          "sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+        },
+        {
+          "connection": 3,
+          "opcode": 15,
+          "sequence": 46,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "sha256": "ef7f2b18829395030f404c2831976a6806e61abd04813403b65d099f55f82e62"
+        },
+        {
+          "connection": 3,
+          "opcode": 15,
+          "sequence": 49,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "sha256": "d0a661c018e3aa8ce8625fe0ab4d4c721a18f01d790e4b2a53423ba05f60de84"
+        },
+        {
+          "connection": 3,
+          "opcode": 15,
+          "sequence": 52,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "sha256": "b7d0d98ad6fd6ef84290fe89dcd32f3758fb27e5eb7256c944bc5ff1cbf6c1db"
+        },
+        {
+          "connection": 3,
+          "opcode": 15,
+          "sequence": 55,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "sha256": "8a5e8accc387b37e600bb25d04420233233a72f3cab0e9f6ffa713f0c06efd51"
+        },
+        {
+          "connection": 3,
+          "opcode": 15,
+          "sequence": 58,
+          "frame_bytes": 69,
+          "body_bytes": 31,
+          "sha256": "21474c4e0758a62f56977b90b328cc394586e88382998ca0ba61438d95570bfc"
+        }
+      ],
+      "token_size": 32,
+      "token_capacity": 47,
+      "token_input_sha256": "352302489bc2fcf025cf00cda8308033f97ac87712ce90b4d7cd72c58e4c3af9",
+      "policy_events": [
+        {
+          "op": "login_reject",
+          "connection": 3,
+          "monotonic_ns": 156227832422907,
+          "reason": "credentials"
+        }
+      ],
+      "native_channel17_entry_markers": 0,
+      "limits": "Policyserverevents areemu_choice; nativeC2S/writer/loginresult/parser markers arekr_runtime. One dummyaccount/loopback/knowncount1branch, notfullauth/security/DB/Rustproof.",
+      "native_login_result": 1,
+      "no_channel_within_45seconds": true
+    }
+  ],
+  "policy": {
+    "source": "emu_choice",
+    "status": "design",
+    "implementation": "private local RE adapter only, notserverproduction or Rust",
+    "account": "onepublicdummyaccount/inmemory/ASCIIknownprofile",
+    "pending_lease_seconds": 10,
+    "wire_echo_bits": 32,
+    "one_use": true,
+    "within_process_ticket_budget": 1024,
+    "attempts_per_peer_per_30seconds": 4,
+    "max_peers": 32,
+    "persistence": false,
+    "session_expiry": "notimplemented; pendingleaseexpiryonly",
+    "model_checks": 24,
+    "model_report": "local/research/codex/auth-admission-r1/policy-verification.json",
+    "model_sha256": "973353faf08d9c12b9d70d169060c145ca726fc4f80d99ad711f9acf4655d8cc",
+    "crypt_native_comparisons": 19
+  },
+  "limits": [
+    "Publicdummy32chartokenactualconfig→nativewriter/frame99/body61 nowmeasured, notentropy/securityproof.",
+    "Localpolicy validatesconfiguredtoken/oneuse10second32bitecho/name-ID/peer; thisis emu_choice/design notoriginalauthsemantics.",
+    "PositiveactualnativeC2S6echo/knownloginresult0/840470entries+subsequentactual67 vsbadtokenactualresult1/no6or67bounded45seconds.840470entrycount notone-to-onepacketcount.",
+    "24policy-emulatortests coverexpiry/revoke/replay/swap/source/rate/collision/staleEOF, notnativeexpiry-revoke/swappedtwoaccounts orkernelTCPsecurityacceptance.",
+    "No persistence/passwordsignup/Argon2id/backendaccountAPI/resume/DB/fullauth/Rust/productionintegration.32bitcorrelatoralone notstrongauth;restartreplayfenceunproven.",
+    "Bothfrozenrunssealed/ownedcleanup0;existing8sourceWIPpreserved, experimentprivateonly."
+  ],
+  "next_test": "Nativependingleaseexpiry/revocation aftervalidtoken thenC2S6echo; nativecrossidentity/swappedclaims usingproperprivatecopies ifscopeopens. Keep32bitlimits/accountbackend/sessionexpiry/restartfence separate. No replay/expiry/revoke/native2account acceptance yet."
+}
