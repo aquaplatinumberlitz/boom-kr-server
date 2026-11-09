@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP219",
+  "as_of": "CP221",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -422,7 +422,9 @@
           "docs/evidence/login-runtime/README.md#cp216",
           "docs/evidence/login-runtime/README.md#cp217",
           "docs/evidence/login-runtime/README.md#cp218",
-          "docs/evidence/login-runtime/README.md#cp219"
+          "docs/evidence/login-runtime/README.md#cp219",
+          "docs/evidence/login-runtime/README.md#cp220",
+          "docs/evidence/login-runtime/README.md#cp221"
         ]
       },
       "coverage": {
@@ -458,7 +460,9 @@
             "docs/evidence/auth-profile/README.md",
             "docs/evidence/lobby-identity/k3-acceptance.json",
             "docs/evidence/login-runtime/channel-echo.json",
-            "docs/evidence/login-runtime/admission-prototype.json"
+            "docs/evidence/login-runtime/admission-prototype.json",
+            "docs/PROTOCOL.md#auth-tcp-ownership",
+            "docs/evidence/login-runtime/two-account.json"
           ]
         },
         "runtime": {
@@ -484,7 +488,9 @@
               "docs/evidence/login-runtime/README.md#cp216",
               "docs/evidence/login-runtime/README.md#cp217",
               "docs/evidence/login-runtime/README.md#cp218",
-              "docs/PROTOCOL.md#auth-eof-dispatch"
+              "docs/PROTOCOL.md#auth-eof-dispatch",
+              "docs/evidence/login-runtime/README.md#cp220",
+              "docs/PROTOCOL.md#auth-two-account"
             ]
           },
           "windows_original": {

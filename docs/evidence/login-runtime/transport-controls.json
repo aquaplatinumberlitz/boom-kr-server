@@ -1,0 +1,372 @@
+{
+  "schema": "kre-auth-transport-controls-v1",
+  "baseline": "09435d9386ffc6facddc3d80f1f34fdf95fbcfd3",
+  "build": "KR00967",
+  "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "native_receiver_followups": [
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "ba4f33ec03124cfac9ed69d850bdda7356f32031920b9f880dd5b19c66111f3f",
+      "duration_s": 39.88780535,
+      "raw_count": 47,
+      "source_frozen": true,
+      "cleanup": {
+        "net_namespace": "net:[4026533274]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "native_client_lifecycle": "fail",
+      "observed_getter_returns": [
+        {
+          "site": "0x13aebf0",
+          "ns": 159852323963458,
+          "regs": {
+            "eax": "0x0",
+            "ecx": "0x2acc040",
+            "edx": "0xc",
+            "esp": "0x12b428",
+            "ebp": "0x12b538"
+          }
+        },
+        {
+          "site": "0x13aebf0",
+          "ns": 159852335691874,
+          "regs": {
+            "eax": "0x0",
+            "ecx": "0x2acc040",
+            "edx": "0x34",
+            "esp": "0x12b428",
+            "ebp": "0x12b538"
+          }
+        },
+        {
+          "site": "0x13aebf0",
+          "ns": 159852346164299,
+          "regs": {
+            "eax": "0x0",
+            "ecx": "0x2acc040",
+            "edx": "0x26",
+            "esp": "0x12b428",
+            "ebp": "0x12b538"
+          }
+        },
+        {
+          "site": "0x13aebf0",
+          "ns": 159852357212144,
+          "regs": {
+            "eax": "0x0",
+            "ecx": "0x2acc040",
+            "edx": "0x7",
+            "esp": "0x12b428",
+            "ebp": "0x12b538"
+          }
+        }
+      ],
+      "selected_store125783b_hits": 0,
+      "before_vtable": {
+        "kind": "before_vtable",
+        "site": "0x1257893",
+        "ns": 159864472055821,
+        "regs": {
+          "eax": "0x1",
+          "ecx": "0x37",
+          "edx": "0x1",
+          "esp": "0x12d1d4",
+          "ebp": "0x12d450"
+        },
+        "stack": {
+          "address": "0x12d1d4",
+          "raw_hex": "0100000000103f0001000000f40b7b010000000007000000",
+          "sha256": "115ddf8414fe960ca5b77c90d0cf6ff08517eebb63938b0b2041c31bec1c6d2b"
+        },
+        "local_this": {
+          "address": "0x62f42b18",
+          "raw_hex": "a8ca6e0100000000ffffffff02000f087f00000100000000",
+          "sha256": "65f6a6b0c87a4bc27826e19cee269c50f3fdc561195a2c907861c6baf8a88514"
+        }
+      },
+      "conclusion": "Candidate13AEBE0→125783Bbranchnotobservedinfaultpath; 4getterreturnsareearlier/nullfromunrelatedcallersandbudgetconsumed. ActualfaultstilllocalCObject. Donotclaimnullgetteristhecrashreceiveror13AEBE0selectedit.",
+      "limits": "Getterprobeearly4budget/pre-faultpathnegativeonly,notcompletegettercoverage. 47rawhashesverified/cleanup0/early39.9sendnothealthyacceptance. No production/Rustchange.",
+      "next_test": "DirectreadonlywatchofknownfaultstacklocalEBP-1C(address12D434inretainedruns),armedafternative6andboundedobjectvalueselection snapshots; identifyactualwritePC insteadofrepeatingbroadgetterprobe. Declarefreshrecipe/controlandseal."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "cd90bf9840b19c171ba322666f3682dd28b2d0944b047fc1c03ebb7712a770e4",
+      "duration_s": 39.937802774,
+      "raw_count": 47,
+      "cleanup": {
+        "net_namespace": "net:[4026533274]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "source_frozen": true,
+      "watch_armed_marker": true,
+      "write_snapshot_count": 0,
+      "fault_snapshot_available": false,
+      "observed": "WineSEH unhandledprivilegedinstructionc0000096at17C7F4C/process exits; GDBfaultcommandsseeNo registers. 47rawhashesverified/cleanup0.",
+      "result": "receiver-writewatchdiagnostic_inconclusive_client_lifecycle_fail",
+      "limits": "No writesnapshot/statmeansnoobservablefromthishardwarewatchrecipe,notprooflocalslotunwritten. Do notclaimremotehardwarewatchsupportorunderlyingcause; signal/stopbehaviorchangedunderaprobe,nothealthyacceptance. No repetitionwithoutnewobservable. SamezeroEOFservice/input,sourcefrozen.",
+      "next_test": "Stopbroadgetter/hardwarewatchroute. Existingnativebad-dispatch12578ACconfirmedCP219; chooseexactpredecessor/localthisassignmentcandidate fromboundedcachedbytesandthenpassivecodebreakifnewedge. No protectedlinearbody/SDKgraph/RTTIpatch."
+    }
+  ],
+  "kernel_tcp": {
+    "source": "emu_choice",
+    "status": "design",
+    "method": "realLinuxkernelTCP/privateusernetnamespace/syntheticdriver",
+    "cases": [
+      {
+        "case": "kernel-replay",
+        "run_sha256": "d4f3bb1367ae10b917ea72e309eafd3155a138d199dc1af8b874d25bd1e74ce6",
+        "duration_s": 0.112849524,
+        "raw_count": 4,
+        "raw_hashes_verified": true,
+        "source_frozen": true,
+        "cleanup": {
+          "net_namespace": "net:[4026533274]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "result": "fail",
+        "error": "AssertionError('fixedpublicticketmatchesnative-retained6')",
+        "checks": [
+          {
+            "check": "isolatedloopbackonly/nooutboundroute",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160347779547760
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160347845825981
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160347845828801
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160347846428772
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160347846430662
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160347846909372
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160347846910822
+          },
+          {
+            "check": "auth43 length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160347847951072
+          }
+        ]
+      },
+      {
+        "case": "kernel-replay-r2",
+        "run_sha256": "b20612d401981ec41cb2b0ab30deb0a21efb66490e21704e33379daed4a9e730",
+        "duration_s": 0.232905161,
+        "raw_count": 4,
+        "raw_hashes_verified": true,
+        "source_frozen": true,
+        "cleanup": {
+          "net_namespace": "net:[4026533274]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "result": "pass_scoped_transport_controls",
+        "error": null,
+        "checks": [
+          {
+            "check": "isolatedloopbackonly/nooutboundroute",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423640905123
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423703204013
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423703205803
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423703749773
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423703750853
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423704156793
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423704157763
+          },
+          {
+            "check": "auth43 length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423704959534
+          },
+          {
+            "check": "fixedpublicticketmatchesnative-retained6",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423705113924
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423705351704
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423705352474
+          },
+          {
+            "check": "channel17 length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423705791894
+          },
+          {
+            "check": "channelreplyprofile",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423705792844
+          },
+          {
+            "check": "owner4bound",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423726208464
+          },
+          {
+            "check": "duplicate6preservesowner",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423746885604
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423746993254
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423746994124
+          },
+          {
+            "check": "kernelEOFonreplayedclaim",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423747614144
+          },
+          {
+            "check": "replaydeniedEOFpreservesowner4",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423768098854
+          },
+          {
+            "check": "owner67-replies-after-replay length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423768335694
+          },
+          {
+            "check": "actualTCPownerstillservesafterduplicateanddeniedEOF",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423768336554
+          },
+          {
+            "check": "ownerEOFclearsactualsessionownership",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 160423788858974
+          }
+        ]
+      }
+    ],
+    "retained_native6_replay_byte_exact": true,
+    "native6_sha256": "62fd2a8e45f447c1754a48f69b86b935d9f448ded2dbc198e75f0bb587f8e9f2",
+    "native6_decoded_echo": 1041540126,
+    "result": "R2scopedTCPtransportcontrols_pass_R1drivererror_retained",
+    "confirmed_design_behaviors": [
+      "Duplicate6onadmittedconnectiondoesnotrevokecurrentowner.",
+      "Byte-exactretainednative6replayedovernewkernelTCPconnectionreceivesEOF; deniedconnectiondoesnotreplace/releasecurrentowner.",
+      "Originalownerafterduplicateandreplaystillreceivesactualprofile67replybytesoverTCP.",
+      "OwnerkernelEOFclearsactive/session/connectionmaps."
+    ],
+    "limits": [
+      "NoKRnativeclientinthisrun; nothealthynegativeacceptance/fullauth/securitygate. Encoderusedonlysyntheticseq43duplicate/46afterdup67,notindependentoracle.",
+      "Fixedpublicticketloadedwithknowncodec.read_fieldsenablescapturedframereplay;noentropy/restartfenceproof. R1incorrecttypedfielddecodewasdriverbug,notKRcontractfinding.",
+      "Adapteroneaccount/fourinitialtransportassumptions/Profile47inmemory;notgeneralrelogin/reconnect/accountresume. Noexpiry/revoke/sessionexpiry/restartfence/DB/Argon2id/Rust/fullservice.",
+      "DeniedreplayEOFnotstaleformerlyadmittedsessionafternewlogin;staleEOF24policytestremainsseparate. ReceiverlifecycleblockerfromCP219/unconclusivegetter-watchfollowupsstillopen."
+    ]
+  },
+  "roots": [
+    "local/research/codex/auth-channel-receiver-r1/zero-receiver",
+    "local/research/codex/auth-channel-receiver-watch-r1/zero-watch",
+    "local/research/codex/auth-tcp-replay-r1/kernel-replay",
+    "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2"
+  ],
+  "source_first": [
+    {
+      "path": "local/research/codex/auth-channel-receiver-r1/source-first.json",
+      "sha256": "39bd7379df5966b5f7ffa8674b7442e1f2543e6555828665e9fc68c90d9cee25"
+    },
+    {
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/source-first.json",
+      "sha256": "76510f140df347d83102ee6d4df9b950d06143896d3f50a70b95124110b4f509"
+    },
+    {
+      "path": "local/research/codex/auth-tcp-replay-r1/source-first.json",
+      "sha256": "f5f8155a59c30d9a9c59caa174a751f4a5100b9e9cd5bc082c0ed4853c87893e"
+    }
+  ],
+  "limits": "102newrawhashes/sourcefrozen/ownedcleanupverified; nativehealthFAIL/receiverselectionblocked, kernelTCPisdesignintegrationonly. No originalclient/productionserver/Rustbehaviorchange;8WIPpreserved,Internet thật chưa kiểm."
+}

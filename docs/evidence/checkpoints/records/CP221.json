@@ -1,0 +1,258 @@
+{
+  "id": "CP221",
+  "previous": "CP220",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T01:21:22.695230+00:00",
+  "context_commit": "4f373630c1b9f641a9166d07f58103686265544f",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "NEXT-AUTH-SESSION-BINDING: canfreshprivate2accountadapterselectknownauth_A/B/claimrolewithnativeidentitypositiveproof,thenrejectwrongID-name/sourcewithoutconsumingvalidleaseorcurrentowneronrealTCP?",
+  "scope": "Source-firstknown137/body6/token/profileidentityreuse;freshprivate2accountREadapter,2nativeWinepositiveidentitiesseparate and4kernelTCPdrivernegative-controls including2retainedR1driverfailures.6relatedruns139raw;CP220–221batchedPR292/noCPperrun,CP220record/AUD064immutable.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "NativeA f43cb2eefc95dfe5adb98e825cf748765aee24def23336cf499565cc50ffeb41/50.964269862s/59raw;nativeB9cb395e68c353ff8519076782c313fb499be83de463a8663ca55c698a3c844e2/49.842327846s/60raw;actualauth0/6identity-name-echo/67andcleanup0.",
+    "TCPR1wrongidentitybd559076f7f0db2052dda5562214fa99ce9de7a3e0084308b30177be151230fd;wrongsourceef835f1d0f9062e58ee278fa9e16e6db434d693ed35f6e501791c4798f16643a;bothdriverclosedchannelsassertionfailure,raw/sourcekept.",
+    "TCPR2wrongidentityceb89eda0924a0a9b64a9e1597d64251c60faeb18ae53368711c41a51342c021/.281753195s;wrongsourcee4a77be1a67528906c811717439b47c78860b1c763c1adc99b71969d1f4d78ea/.282928595s;5raw/34scopedchecks each;newconnection5deniedwithouttakingBlease,correctBconnection8stilljoinsbesideA4."
+  ],
+  "findings": [
+    {
+      "summary": "SourcefirstCP214tokenA/B/CP216typed6/Profile47auth_A/B/own_profileID-name reused. Existingpolicyalready1..2accounts;freshprivateadapterselectsauth_roleandchannelrolebyverifiedAccount,originalCP217unchanged. No newgrammar/cryptor/clientpatch/Rust.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-two-account",
+      "evidence": [
+        "AUTH221-00421",
+        "AUTH221-00432"
+      ],
+      "limits": "Wine10.0/copy4b/Profile47/inheritedofflineglobalreset/isolatedloopback;2nativepositivesseparate119raw,not2actualconcurrent/swap/nativehealthydenial.4syntheticLinuxkernelTCPcases20raw/fixedpublictickets/derivednegativefields-seq-source:2R1driverexpectationfailuresretained,2R2x34scopedchecks/designnotnativeKR/securityproof.139newraw/sourcefrozen/cleanupverified. No production/Rust/DB/accountresume/sessionexpiry/restartfence/fullauth/gateclosure. CP217–220/AUD064unchanged;8WIPbyte-exact/noRust. CP220–221batchedPR292/newexactheadrequired;AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "TwoactualWineKRrunsseparate:token32nativewriter/nativeauth0→field36read-set-get-serializer→actual6 ID1/KRLocal(A) orID2/KRGuest(B) withcorrectecho→actual67afteradmission.119raw/sourcefrozen/cleanup0/noobserved17C7F4Cfault;separatepositivesnottwoactualsimultaneous/swap/healthydenial.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-two-account",
+      "evidence": [
+        "AUTH221-00433",
+        "AUTH221-00129",
+        "AUTH221-00308"
+      ],
+      "limits": "Wine10.0/copy4b/Profile47/inheritedofflineglobalreset/isolatedloopback;2nativepositivesseparate119raw,not2actualconcurrent/swap/nativehealthydenial.4syntheticLinuxkernelTCPcases20raw/fixedpublictickets/derivednegativefields-seq-source:2R1driverexpectationfailuresretained,2R2x34scopedchecks/designnotnativeKR/securityproof.139newraw/sourcefrozen/cleanupverified. No production/Rust/DB/accountresume/sessionexpiry/restartfence/fullauth/gateclosure. CP217–220/AUD064unchanged;8WIPbyte-exact/noRust. CP220–221batchedPR292/newexactheadrequired;AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "RealTCPsyntheticdriver2sources:wrongID/namewithBticketorcorrectBfieldsfromforeignAsourcegetpolicydenial/EOFwhileBleaseandAownerretained;legitBthenbinds,ownersA/Bstillreceive67. BoundBduplicateAidentitycannotremap;BEOFpreservesopenA,finalAEOFclearsmaps.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#auth-two-account",
+      "evidence": [
+        "AUTH221-00012",
+        "AUTH221-00020",
+        "AUTH221-00040"
+      ],
+      "limits": "Wine10.0/copy4b/Profile47/inheritedofflineglobalreset/isolatedloopback;2nativepositivesseparate119raw,not2actualconcurrent/swap/nativehealthydenial.4syntheticLinuxkernelTCPcases20raw/fixedpublictickets/derivednegativefields-seq-source:2R1driverexpectationfailuresretained,2R2x34scopedchecks/designnotnativeKR/securityproof.139newraw/sourcefrozen/cleanupverified. No production/Rust/DB/accountresume/sessionexpiry/restartfence/fullauth/gateclosure. CP217–220/AUD064unchanged;8WIPbyte-exact/noRust. CP220–221batchedPR292/newexactheadrequired;AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R1twoTCPcasesfailondriverexpectationthatretainedclosedchannelmapmustloseB;activeAalreadycorrect. R2assertsactive/session+openA/closedBusingexistingserversemantics,notbehaviorchange;2R2×34scopedchecks pass. R1sources/raw/sealsretained.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-two-account",
+      "evidence": [
+        "AUTH221-00003",
+        "AUTH221-00012"
+      ],
+      "limits": "Wine10.0/copy4b/Profile47/inheritedofflineglobalreset/isolatedloopback;2nativepositivesseparate119raw,not2actualconcurrent/swap/nativehealthydenial.4syntheticLinuxkernelTCPcases20raw/fixedpublictickets/derivednegativefields-seq-source:2R1driverexpectationfailuresretained,2R2x34scopedchecks/designnotnativeKR/securityproof.139newraw/sourcefrozen/cleanupverified. No production/Rust/DB/accountresume/sessionexpiry/restartfence/fullauth/gateclosure. CP217–220/AUD064unchanged;8WIPbyte-exact/noRust. CP220–221batchedPR292/newexactheadrequired;AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Docs/catalog/#14/#285syncnative-vs-driverlimits/currenttwoactualgap. CP220record/AUD064unchanged;onebatchedPR292newheadrequired,8WIPbyte-exact/noRust/scopedgatesunchanged,Internetbacklogindependent.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-two-account",
+      "evidence": [
+        "AUTH221-00063",
+        "AUTH221-00448",
+        "AUTH221-00451"
+      ],
+      "limits": "Wine10.0/copy4b/Profile47/inheritedofflineglobalreset/isolatedloopback;2nativepositivesseparate119raw,not2actualconcurrent/swap/nativehealthydenial.4syntheticLinuxkernelTCPcases20raw/fixedpublictickets/derivednegativefields-seq-source:2R1driverexpectationfailuresretained,2R2x34scopedchecks/designnotnativeKR/securityproof.139newraw/sourcefrozen/cleanupverified. No production/Rust/DB/accountresume/sessionexpiry/restartfence/fullauth/gateclosure. CP217–220/AUD064unchanged;8WIPbyte-exact/noRust. CP220–221batchedPR292/newexactheadrequired;AUD064through220/next224/reviewwaivednotapproved. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "2nativeidentitypositivewriter/auth0/6ID-name-echo/67/rawhash/freeze/cleanup",
+      "result": "pass",
+      "evidence": [
+        "AUTH221-00433"
+      ],
+      "limits": "Separatepositives/nohealthynegative or2actualconcurrentclaim."
+    },
+    {
+      "check": "R1two-accountTCPdriverhistoricalchannelmapassertion",
+      "result": "fail",
+      "evidence": [
+        "AUTH221-00003",
+        "AUTH221-00012"
+      ],
+      "limits": "Driverexpectationfailurekept;notKRcontract/adapterfailure."
+    },
+    {
+      "check": "R2two-accountTCPwrongidentity/sourcepreservelease-owner/legitBstillbinds/both67/EOFrelease",
+      "result": "pass",
+      "evidence": [
+        "AUTH221-00012"
+      ],
+      "limits": "2×34scopedchecks/syntheticdriver/design;notnativehealthydenial/securityproof."
+    },
+    {
+      "check": "Manualdocs/catalog/links/CP220-AUD064-WIPpreservation",
+      "result": "pass",
+      "evidence": [
+        "AUTH221-00063",
+        "AUTH221-00442",
+        "AUTH221-00441"
+      ],
+      "limits": "Fullhistory/localprecommitandexactfinalPRheadchecksrequiredafterappend;waivednotapproved."
+    },
+    {
+      "check": "2actualsimultaneous/nativeidentityswap/healthydenial/sessionexpiry/restartfence/DB/Rust",
+      "result": "not_run",
+      "evidence": [
+        "AUTH221-00057"
+      ],
+      "limits": "CP220EOFreceiverselectionblocked;nextsourcefirstpairharness/per-roletokenwithoutrepeats/VMgraph."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP221-auth-two-account.json",
+      "bytes": 124156,
+      "sha256": "622c7388af3c85d733e16cad101cacac84a4de878ce8c66630bb1f9c29f14503",
+      "count": 462
+    }
+  ],
+  "delta": {
+    "added": [
+      "NativeA/Bseparatecorrectidentitybindingsandindependenttwo-accountwrongID-name/sourcekernelTCPpreservationcontrols;139rawsealed.",
+      "Freshprivate2accountselectorbyverifiedAccount/knownauth_A-BwithoutchangingoriginalCP217/privatebaseorproductioncode."
+    ],
+    "corrected": [
+      "Oneaccount/Ahardcodewasprivateadapterlimit,notmissingwiregrammar. Existingknown137/typed6supportsmeasuredBidentitypositive.",
+      "R1TCPdriverhistoricalchannelmap≠activeownership;R2usesopen-event/sessionmaps/actual67replies,R1failurespreserved.",
+      "Twoidentitynativepositivesseparate+kernelTCPnegativesdonotprove2actualsimultaneous/swap/nativehealthydenial/fullauth."
+    ],
+    "superseded": [
+      "CP220nexttwoidentityseparatepositive/wrongbindingTCPscopedmeasurementsnowdone;nextissameprocess2actualidentity-sessionbinding.",
+      "CP220–221batchedPR292requiresnewexactheadchecks;oldhead220checksnotfinalnewheadcertification."
+    ]
+  },
+  "blockers": [
+    "NativeEOFreceiverselection/healthydenialblockerCP220persists;no broadgetter/watch/VM/SDKrepeatwithoutnewobservable.",
+    "Twoactualconcurrent/nativecrossidentityswap/sessionexpiry/restartfence/DB/API/fullauthnotaccepted;publicdummy32/echo32/sourceIP/inmemorynotstrongauth.",
+    "Rustimplementationnotopened/planningCP213/PR286delivered;8WIPunmerged,Internet thật chưa kiểm separatebacklog."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PerPLANsourcefirstCP189/200pairharness/admission_ips/fourtransports/per-roletoken→twoactualKRsameprocessdistinctID-name-echo/session/67. Do notrepeatseparatepositives/wrongbindingTCP. Nativehealthydenial/swapstillopen.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "OpenworkblockedonreceiverselectionobservableCP220;retainCP219bad-dispatchproof. Onlynewnativeedge/measuredgracefulerrorroutecanreopenprobe;no broadgetter-watch/VM/SDKrepeat/RTTIpatch.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "M0→M1futureimplementationindependentfullauthRE;planningCP213/PR286delivered,noRusttree/productionchangeinCP221.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T01:21:22.695230+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/source-first/nativeA-Bseparatepositive/explicitdesignTCPnegativeandR1driverfailurepreservation/manualselfcheck. Independentreviewwaivednotapproved;batchedPR292exactfinalheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/evidence/login-runtime/README.md",
+      "state": "updated",
+      "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/evidence/login-runtime/two-account.json",
+      "state": "updated",
+      "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    }
+  ]
+}

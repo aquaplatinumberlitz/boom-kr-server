@@ -1,0 +1,3239 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "AUTH221-00001",
+      "kind": "local",
+      "path": "local/research/codex/append_cp221.py",
+      "bytes": 13257,
+      "sha256": "a216263a66f8abe2fa93314fd8b0f7be8c523dc277e5d1ece4565896c7df4faf"
+    },
+    {
+      "id": "AUTH221-00002",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/adapter.py",
+      "bytes": 1174,
+      "sha256": "a98e54fa50b2c93692ff621302d9efe43bca69f0941b63a764f7bc1e569c9390"
+    },
+    {
+      "id": "AUTH221-00003",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/driver-correction.json",
+      "bytes": 688,
+      "sha256": "f9a7422659622e1a5c768c7b373c0b9dc6dad34d374e107561cf417587737a95"
+    },
+    {
+      "id": "AUTH221-00004",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/driver-r2.py",
+      "bytes": 7262,
+      "sha256": "b5949416ce6862d126b706eb08a85deb3b61a1351cd941cb488d7f185aedf2a1"
+    },
+    {
+      "id": "AUTH221-00005",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/driver.py",
+      "bytes": 7061,
+      "sha256": "a62e3935f95be72272e9a3a1f9ec236da6898ac0edb005df470845c4d898f721"
+    },
+    {
+      "id": "AUTH221-00006",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/source-first.json",
+      "bytes": 2584,
+      "sha256": "cbeabb9efedb67dcb78abd11ccca73f19072f35c4e6031ad3e8f0d36c25707b0"
+    },
+    {
+      "id": "AUTH221-00007",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/source-first/00-source-first.json",
+      "bytes": 5902,
+      "sha256": "1a34ac111f5ea71e4ff7d4391d88ccd18537f4e29b6c930391aec9a9090c0909"
+    },
+    {
+      "id": "AUTH221-00008",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/source-first/01-verification.json",
+      "bytes": 17567,
+      "sha256": "77c06f0cb11baaf06c82be2fb888102a4ec9425bb61ff0684ab7c08cb18107c4"
+    },
+    {
+      "id": "AUTH221-00009",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/source-first/02-two_account_service.py",
+      "bytes": 3363,
+      "sha256": "e4649d04cafefd92a81165538af4a9b61bb3215f16046e046cdd5c5846c780de"
+    },
+    {
+      "id": "AUTH221-00010",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/source-first/03-verification.json",
+      "bytes": 7743,
+      "sha256": "00d462209b7708600a878cf1d349ece0509f0ee57e34d8eae0900498a7234dc0"
+    },
+    {
+      "id": "AUTH221-00011",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/source-first/04-PLAN.md",
+      "bytes": 86208,
+      "sha256": "2bfe9a2df4e7b9cff339c158d6989ca5c7f9e21576d19fa43c611309037ada25"
+    },
+    {
+      "id": "AUTH221-00012",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/verification.json",
+      "bytes": 26503,
+      "sha256": "ca2cb2fde9344499dbd3928d2b1de3a09a2e2dad9b9a53e816cecfea6ad52376"
+    },
+    {
+      "id": "AUTH221-00013",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/cycles/adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH221-00014",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/cycles/run.json",
+      "bytes": 6352,
+      "sha256": "ceb89eda0924a0a9b64a9e1597d64251c60faeb18ae53368711c41a51342c021"
+    },
+    {
+      "id": "AUTH221-00015",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/cycles/service/B-title-initial91-8.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH221-00016",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/cycles/service/service-state.json",
+      "bytes": 27987,
+      "sha256": "f390e944770d95e9fb5a78cffac94e5a39b09c6c2b6eee836e8b16959de9bbaf"
+    },
+    {
+      "id": "AUTH221-00017",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/cycles/wire.json",
+      "bytes": 5570,
+      "sha256": "39cdca238e2d23015411af96e4e0a0d0a7ca6cc6b8952043475281b867a3d68d"
+    },
+    {
+      "id": "AUTH221-00018",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/launch-exit.json",
+      "bytes": 73,
+      "sha256": "1b466d02e71da466f3f13516ebd28c62bcbfb2442357496a797c73859cff99ad"
+    },
+    {
+      "id": "AUTH221-00019",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/launch.txt",
+      "bytes": 76,
+      "sha256": "fb52d6d9a46f5764eacac4e6d98537b93c25f64ebbf84d3b54f054d112b1e300"
+    },
+    {
+      "id": "AUTH221-00020",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/raw-seal.json",
+      "bytes": 1658,
+      "sha256": "446321f46f0125410ac5ec8925ea00e97501d2f54bc2772e7ad3e4b4f4c484de"
+    },
+    {
+      "id": "AUTH221-00021",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/recipe.json",
+      "bytes": 238,
+      "sha256": "ecddb6732368c7500f4a0c67ee431d3efa662c9dabe0de7b14f12227ab049c0c"
+    },
+    {
+      "id": "AUTH221-00022",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/runtime-preflight.json",
+      "bytes": 60362,
+      "sha256": "81f292a556d8ec715eff6ca16b3ce3cfb722e6ec0c1f68840e0c9d0b91f35e6b"
+    },
+    {
+      "id": "AUTH221-00023",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity/cycles/adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH221-00024",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity/cycles/run.json",
+      "bytes": 6061,
+      "sha256": "bd559076f7f0db2052dda5562214fa99ce9de7a3e0084308b30177be151230fd"
+    },
+    {
+      "id": "AUTH221-00025",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity/cycles/service/B-title-initial91-8.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH221-00026",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity/cycles/service/service-state.json",
+      "bytes": 27987,
+      "sha256": "19ed887c708a8a1b65877dea15166551ec29dcc23dc9ccc5b9aa7b9f58762a48"
+    },
+    {
+      "id": "AUTH221-00027",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity/cycles/wire.json",
+      "bytes": 5570,
+      "sha256": "c4d8b1ff07d56834643066644730e99eb66eb949db449c70de61863fc1996e43"
+    },
+    {
+      "id": "AUTH221-00028",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity/launch-exit.json",
+      "bytes": 73,
+      "sha256": "184c1ebd41007981153282aaf6a03022e497484f4633be75537033a7f0980669"
+    },
+    {
+      "id": "AUTH221-00029",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity/launch.txt",
+      "bytes": 54,
+      "sha256": "17628c4378870cada932fa339f93ce3d8d8893ce31a22375a1ff8da36790b11f"
+    },
+    {
+      "id": "AUTH221-00030",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity/raw-seal.json",
+      "bytes": 1643,
+      "sha256": "23e6eaaf42ec8e0fe122a1caf7bed13dd399e477b9ac5716817069c67963c4c4"
+    },
+    {
+      "id": "AUTH221-00031",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity/recipe.json",
+      "bytes": 235,
+      "sha256": "b72d1a1edab4f7a283539afb3c94cb79012d0c45e652f0c212990108ada63eee"
+    },
+    {
+      "id": "AUTH221-00032",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity/runtime-preflight.json",
+      "bytes": 60356,
+      "sha256": "5ae78225348f7909041c8929510e26d7974a85b6446b7add89de4e6b4a58f17a"
+    },
+    {
+      "id": "AUTH221-00033",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/cycles/adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH221-00034",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/cycles/run.json",
+      "bytes": 6350,
+      "sha256": "e4a77be1a67528906c811717439b47c78860b1c763c1adc99b71969d1f4d78ea"
+    },
+    {
+      "id": "AUTH221-00035",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/cycles/service/B-title-initial91-8.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH221-00036",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/cycles/service/service-state.json",
+      "bytes": 27979,
+      "sha256": "b4a395f0ddb75c81fb9ebcb3d38dfdd68b6953540f51eef52585859fe50643cf"
+    },
+    {
+      "id": "AUTH221-00037",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/cycles/wire.json",
+      "bytes": 5574,
+      "sha256": "42c72998ffe5ef9be4ae80b19d1db86955134ec1584acef69694377992b8b259"
+    },
+    {
+      "id": "AUTH221-00038",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/launch-exit.json",
+      "bytes": 73,
+      "sha256": "4f6f0f86d320c76c2e84b117f9c5ff08f337e3b40a5e7ed6378e7b6334be2049"
+    },
+    {
+      "id": "AUTH221-00039",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/launch.txt",
+      "bytes": 76,
+      "sha256": "fb52d6d9a46f5764eacac4e6d98537b93c25f64ebbf84d3b54f054d112b1e300"
+    },
+    {
+      "id": "AUTH221-00040",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/raw-seal.json",
+      "bytes": 1648,
+      "sha256": "fe0cecc17f991c12a225760e5ccf8db895a240c7a8d34dd236dfca5fde702855"
+    },
+    {
+      "id": "AUTH221-00041",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/recipe.json",
+      "bytes": 236,
+      "sha256": "83333548893a64dec71fd18d2d836d193c8e18d0f1022cc2d2f3a40f9811410e"
+    },
+    {
+      "id": "AUTH221-00042",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/runtime-preflight.json",
+      "bytes": 60360,
+      "sha256": "bf50c8b2058cd056672bcdab544535794dae5b3f84f240fc88ec17677421a9e6"
+    },
+    {
+      "id": "AUTH221-00043",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source/cycles/adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH221-00044",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source/cycles/run.json",
+      "bytes": 6059,
+      "sha256": "ef835f1d0f9062e58ee278fa9e16e6db434d693ed35f6e501791c4798f16643a"
+    },
+    {
+      "id": "AUTH221-00045",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source/cycles/service/B-title-initial91-8.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH221-00046",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source/cycles/service/service-state.json",
+      "bytes": 27979,
+      "sha256": "24cd8e4527be25fb5fc97c650da7643b34388e2a973eeece28a77522d8a33fbb"
+    },
+    {
+      "id": "AUTH221-00047",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source/cycles/wire.json",
+      "bytes": 5574,
+      "sha256": "6cb70136a4dc5e4837e4b3b22210a9ca10b5e54bff840f498d8d58b871c21a8a"
+    },
+    {
+      "id": "AUTH221-00048",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source/launch-exit.json",
+      "bytes": 73,
+      "sha256": "ab6d3a7d814a4b27ada60094ac363a16ac494e08489df8987eaced265141a23b"
+    },
+    {
+      "id": "AUTH221-00049",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source/launch.txt",
+      "bytes": 54,
+      "sha256": "17628c4378870cada932fa339f93ce3d8d8893ce31a22375a1ff8da36790b11f"
+    },
+    {
+      "id": "AUTH221-00050",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source/raw-seal.json",
+      "bytes": 1633,
+      "sha256": "e26945f895c43c8adf472f9a4f9d9179169ffa482fd5f1d96d92104255e80a3e"
+    },
+    {
+      "id": "AUTH221-00051",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source/recipe.json",
+      "bytes": 233,
+      "sha256": "5e18466e6bada37f7467dd42148dee6a79942b57bbe2a522ab4b99be1af735fb"
+    },
+    {
+      "id": "AUTH221-00052",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source/runtime-preflight.json",
+      "bytes": 60354,
+      "sha256": "8b7a5d9b0d383007946e7ac2f9698399461befdc19e4414f6ce5d5a543e86038"
+    },
+    {
+      "id": "AUTH221-00053",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/README.md",
+      "bytes": 30046,
+      "sha256": "85a28f1b602cff8e69277707d8821fae103a0526bd45a27cd44fdfb25b01f17b"
+    },
+    {
+      "id": "AUTH221-00054",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/docs/COVERAGE.md",
+      "bytes": 185354,
+      "sha256": "a19738987b46a427c383e1852b132598f36f6b7309838973a30f2312f2d34000"
+    },
+    {
+      "id": "AUTH221-00055",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/docs/PLAN.md",
+      "bytes": 86218,
+      "sha256": "951d5688a423d0a3236eddf14e9984ced64b908147c62d36b5b793fd5ac6878b"
+    },
+    {
+      "id": "AUTH221-00056",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/docs/PROTOCOL.md",
+      "bytes": 683403,
+      "sha256": "fdcb1844b537efd95713be40bc45dea7c2d8986a8e4ca01a2de2fe31389347fb"
+    },
+    {
+      "id": "AUTH221-00057",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/docs/RESEARCH.md",
+      "bytes": 43756,
+      "sha256": "d1a4df36a95868e70ed3433ac6b6f66a76ff0cf3091865ee59c106f6c817fab3"
+    },
+    {
+      "id": "AUTH221-00058",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 262606,
+      "sha256": "9e9a0a1e5cce154a30bea4b3f20280682fb1bfe1f652d63dbe95558fcb70188b"
+    },
+    {
+      "id": "AUTH221-00059",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 34537,
+      "sha256": "2bde6f9a41bb7a1e1583d845ce9d478e0bdebf46f70f471b9b2f5a757d51946d"
+    },
+    {
+      "id": "AUTH221-00060",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/docs/evidence/login-runtime/README.md",
+      "bytes": 23499,
+      "sha256": "6a539eae5f585b44fa55fce812f4bd297725ff489ffe134de2304fd6cbe65e9b"
+    },
+    {
+      "id": "AUTH221-00061",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/docs/evidence/login-runtime/two-account.json",
+      "bytes": 47833,
+      "sha256": "4f99c97e1930a89f5611f3aaecc78bee8994781b872cc2866fee05e416198ee0"
+    },
+    {
+      "id": "AUTH221-00062",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/docs/features.json",
+      "bytes": 194855,
+      "sha256": "2185c247dd44ec607cf5971368ead0022f554554113cabe719435cd27558c5f7"
+    },
+    {
+      "id": "AUTH221-00063",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/manual-review.json",
+      "bytes": 2646,
+      "sha256": "66f57f17830d0751d652e0cae2b200f3068973dea60db392d28f20661af03731"
+    },
+    {
+      "id": "AUTH221-00064",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/captured-channel-body.bin",
+      "bytes": 43,
+      "sha256": "c1c0804c2a1e5ab7f74eef1894f06993ccb0f0988ad7695de8e866681bb3c8de"
+    },
+    {
+      "id": "AUTH221-00065",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/captured-channel.bin",
+      "bytes": 81,
+      "sha256": "a626c23455e547c2813f0dda837546cd146ec7331539b64b6ac31fb600bf7fb0"
+    },
+    {
+      "id": "AUTH221-00066",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/captured-login-body.bin",
+      "bytes": 61,
+      "sha256": "b42f59a4d6608d0811d24bbeadc6fce4ebb6e0f207a5d840e861c29d0288f6e1"
+    },
+    {
+      "id": "AUTH221-00067",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/captured-login.bin",
+      "bytes": 99,
+      "sha256": "3fa7dcfecbcafb27991edebccec35296d409e4e3acb57fe5394d4234afc2584f"
+    },
+    {
+      "id": "AUTH221-00068",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/CALog-before.txt",
+      "bytes": 718,
+      "sha256": "95b3478242be99883962a66e87dcde0ae2d0152a2f283a697a3adef684bb7bb4"
+    },
+    {
+      "id": "AUTH221-00069",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/CALog-run.txt",
+      "bytes": 1371,
+      "sha256": "16cfb879da3d8fca934bac64531f0271534491eeb87d8882362fff4ca0c2d52f"
+    },
+    {
+      "id": "AUTH221-00070",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/client.log",
+      "bytes": 117703,
+      "sha256": "c0f66d72a66f88189a98e32b5d10775da66b8a12ebce78182275ff00256eafa8"
+    },
+    {
+      "id": "AUTH221-00071",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/debug-commands.txt",
+      "bytes": 946,
+      "sha256": "54764812ee89d9c51106065d6f53f6a21405748c37a473dc3efc390bf27a57e7"
+    },
+    {
+      "id": "AUTH221-00072",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "AUTH221-00073",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH221-00074",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-00.txt",
+      "bytes": 3698,
+      "sha256": "d67b21ea5606694fe52319ececdfdde42ea0d2a6d002f0f21679595063532664"
+    },
+    {
+      "id": "AUTH221-00075",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-01.txt",
+      "bytes": 4446,
+      "sha256": "52dfe9559d962ef51721c3e105a84ae8e533bfcc113bf15407a4d834dfa240eb"
+    },
+    {
+      "id": "AUTH221-00076",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-02.txt",
+      "bytes": 4446,
+      "sha256": "3d4dd1c66c21ed5183a84c2f2897c0c1a8e15e706cd532cfb8b0b25b17de6cb5"
+    },
+    {
+      "id": "AUTH221-00077",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-03.txt",
+      "bytes": 4446,
+      "sha256": "a79059a49e58772d0a019dfcf2855024c138a8ed6a8cdaffec699f792b217ca9"
+    },
+    {
+      "id": "AUTH221-00078",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-04.txt",
+      "bytes": 4446,
+      "sha256": "34d7318ddb3a8b586f3f151b2509bbc7f12f980989a7a389466e2dea7b996ced"
+    },
+    {
+      "id": "AUTH221-00079",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-05.txt",
+      "bytes": 4446,
+      "sha256": "24751ad23fa96fa3e540fd0e5642c76855f8484962a6529d1d0655b893d85a6f"
+    },
+    {
+      "id": "AUTH221-00080",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-06.txt",
+      "bytes": 4446,
+      "sha256": "9d6342a66a5ab6ecf2a1a6bf56fb3c0c7576d4d0b39dcc6de078500bf35047ed"
+    },
+    {
+      "id": "AUTH221-00081",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-07.txt",
+      "bytes": 4446,
+      "sha256": "e223996944c80b84fba1385ce2923ef71ddf3832a603cac17e673803e03cbe5a"
+    },
+    {
+      "id": "AUTH221-00082",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-08.txt",
+      "bytes": 4446,
+      "sha256": "4f1cad4fc1969a8cd5bed499d9d6374cac29ac5686d90a19e7ce2b80543d2806"
+    },
+    {
+      "id": "AUTH221-00083",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-09.txt",
+      "bytes": 4446,
+      "sha256": "50cb686892d1b00ab03429f3fa1d85e47a4f0986bc63ba662d3d2978d4eeeb8b"
+    },
+    {
+      "id": "AUTH221-00084",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-10.txt",
+      "bytes": 4446,
+      "sha256": "29b0ab2824d547524b354e6ca8e6ac32949cd568ed2bcf36a20c023380a5ad6c"
+    },
+    {
+      "id": "AUTH221-00085",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-11.txt",
+      "bytes": 4446,
+      "sha256": "266130fb9a39eda42d2e19128f5b59263c5022caea1ee1cb6874ab3508c42b7d"
+    },
+    {
+      "id": "AUTH221-00086",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-12.txt",
+      "bytes": 4446,
+      "sha256": "733b643bddc3eea3b0f9c084d7488015bd983e449cb4c2ea1da5cbe5fd6eebe6"
+    },
+    {
+      "id": "AUTH221-00087",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-13.txt",
+      "bytes": 4446,
+      "sha256": "7d0e64483d6f079b2cbb62185fe2076b0b54fe5d32a7dace26071d1c18b78660"
+    },
+    {
+      "id": "AUTH221-00088",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-14.txt",
+      "bytes": 4446,
+      "sha256": "a72def58a01b101a9397f36bcc9186c55d38671e00fa503975c6f6e7b22755bd"
+    },
+    {
+      "id": "AUTH221-00089",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/processes-15.txt",
+      "bytes": 4446,
+      "sha256": "b3f4a22d056be5dee958a8db4c23b197b1b6682cf82d2eb208deb99345fb3411"
+    },
+    {
+      "id": "AUTH221-00090",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/run.json",
+      "bytes": 12388,
+      "sha256": "f43cb2eefc95dfe5adb98e825cf748765aee24def23336cf499565cc50ffeb41"
+    },
+    {
+      "id": "AUTH221-00091",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH221-00092",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH221-00093",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH221-00094",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "AUTH221-00095",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "AUTH221-00096",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-05.png",
+      "bytes": 191427,
+      "sha256": "637aedb21cd25df5263d99401e7a838add696298b7e5033e1e973fae6c801e8b"
+    },
+    {
+      "id": "AUTH221-00097",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-06.png",
+      "bytes": 197155,
+      "sha256": "95ee6fb63898e745d1f1e14f512e5c84106bf5a34b14581dc3d96d2029be88db"
+    },
+    {
+      "id": "AUTH221-00098",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-07.png",
+      "bytes": 148367,
+      "sha256": "a90cfda3d6787e15d566be0c467cbbb32b0f1b6ad47217c822a61b407c7ac873"
+    },
+    {
+      "id": "AUTH221-00099",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-08.png",
+      "bytes": 149372,
+      "sha256": "a6f871128eee7243ffc73082b1c557df6957a09d7bfa0c80eeec1279b3194136"
+    },
+    {
+      "id": "AUTH221-00100",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-09.png",
+      "bytes": 144642,
+      "sha256": "f8cc09ad3ee8a911a67f2cac0c8efe5df607b3042be88b3fe901f3b066401b04"
+    },
+    {
+      "id": "AUTH221-00101",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-10.png",
+      "bytes": 144594,
+      "sha256": "1f9504b5693c7213b62c40595bc74e363fd7556cfc25263134b5ce7222d079dd"
+    },
+    {
+      "id": "AUTH221-00102",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-11.png",
+      "bytes": 143625,
+      "sha256": "87773769f68ab59fa2275cc2bc6544c067763505ab39f8f1f0f876b7c4b49053"
+    },
+    {
+      "id": "AUTH221-00103",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-12.png",
+      "bytes": 142524,
+      "sha256": "3198fd4109adf9747612439682bdd7adb161ba4f6bc9a95887649f27568c2296"
+    },
+    {
+      "id": "AUTH221-00104",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-13.png",
+      "bytes": 141857,
+      "sha256": "53e5adacf176dde3d41117b9ca59182144f4096578c096d46a9682dc4951c918"
+    },
+    {
+      "id": "AUTH221-00105",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-14.png",
+      "bytes": 141861,
+      "sha256": "a5ae57f817fa5626266da94a19d172a5e4f72a7f2c1c1219d6389823d93ae7f9"
+    },
+    {
+      "id": "AUTH221-00106",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/screen-15.png",
+      "bytes": 141894,
+      "sha256": "1b7e22065774370ee96664b717ffa4f53eb1d22b281dc5bdf8b69b8d8b8fd22a"
+    },
+    {
+      "id": "AUTH221-00107",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/service-state.json",
+      "bytes": 28883,
+      "sha256": "a63c77526b3b88d3183bef3e13f5ad2d3b5a2a3715a88b46d2169a7144790ea8"
+    },
+    {
+      "id": "AUTH221-00108",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH221-00109",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH221-00110",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH221-00111",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH221-00112",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH221-00113",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH221-00114",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH221-00115",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH221-00116",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH221-00117",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH221-00118",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH221-00119",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH221-00120",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH221-00121",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH221-00122",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH221-00123",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH221-00124",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH221-00125",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/wineboot.log",
+      "bytes": 64262,
+      "sha256": "a2510acc519ae8a0291fbd1711ddb9d5b7f1720384eefa5139c0647ffbf3b715"
+    },
+    {
+      "id": "AUTH221-00126",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/cycles/xvfb.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH221-00127",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/launch-exit.json",
+      "bytes": 73,
+      "sha256": "0dbb4842cdd5f9e504598fb99db40d7e138cda484b627671c51d2a415bdf323e"
+    },
+    {
+      "id": "AUTH221-00128",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/launch.txt",
+      "bytes": 9960,
+      "sha256": "1e89a4e5e0e4fba85dd815e363b20ce10aee8bea68bc6779e6972cc2c0119c55"
+    },
+    {
+      "id": "AUTH221-00129",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/raw-seal.json",
+      "bytes": 12689,
+      "sha256": "7902245e09c268cfbcf20151bee093eb408fae80fcf196c7797fe510ef3952bc"
+    },
+    {
+      "id": "AUTH221-00130",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/recipe.json",
+      "bytes": 1032,
+      "sha256": "27f0d3391ec6272532a834778b955ee69e543c3a818db84d219b11fab3ed5725"
+    },
+    {
+      "id": "AUTH221-00131",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-preflight.json",
+      "bytes": 58010,
+      "sha256": "4662dfd3fb38ef7967136ef1a343e7a2f2143029bcb192436a2b1fdcee78bd22"
+    },
+    {
+      "id": "AUTH221-00132",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "AUTH221-00133",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/eight_battle_policy.py",
+      "bytes": 1408,
+      "sha256": "a1f40cb0243f4368aff157723e4e39dee9417e03b046421e2a35ef22204b75fc"
+    },
+    {
+      "id": "AUTH221-00134",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/eight_bomb_policy.py",
+      "bytes": 557,
+      "sha256": "10bb1656892b7057b2907733f554e5c14c7634cab8040117712756a1d4f6f529"
+    },
+    {
+      "id": "AUTH221-00135",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/eight_player_profile.py",
+      "bytes": 3259,
+      "sha256": "46a4ab61538eb97e30919eb9dec8fae53764411dd8c2c6d6848775c74ea5994b"
+    },
+    {
+      "id": "AUTH221-00136",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/eight_player_service.py",
+      "bytes": 6939,
+      "sha256": "6bb708674ad1aaac97df5315d9aeefa02d76b50d11bac1acb37ffca13e5dc4c5"
+    },
+    {
+      "id": "AUTH221-00137",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/four_battle_policy.py",
+      "bytes": 6031,
+      "sha256": "31ce7d3d843e1fe21c80e4583b85bc2d974ca495de5bc9ddf95b06d1717cfd81"
+    },
+    {
+      "id": "AUTH221-00138",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/four_bomb_policy.py",
+      "bytes": 3753,
+      "sha256": "9a011fe86d522a1c543230b3480fe571c0663722a79c2fad47fe6c4340442369"
+    },
+    {
+      "id": "AUTH221-00139",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/four_identity_store.py",
+      "bytes": 2023,
+      "sha256": "8dea38a194ceb396f8a8944df78ac72adcb44652da26819b41a318ffc2ab6292"
+    },
+    {
+      "id": "AUTH221-00140",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/four_input_limits.py",
+      "bytes": 2900,
+      "sha256": "c1e90e924680d0106665d765c9d382124731929e7a4c084f691b96e40baa71e4"
+    },
+    {
+      "id": "AUTH221-00141",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/four_observability.py",
+      "bytes": 6080,
+      "sha256": "b42c44b01d22eddfa6e93a32efbf618c681823717972c8e56df4ccb26623f18c"
+    },
+    {
+      "id": "AUTH221-00142",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "AUTH221-00143",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/four_player_service.py",
+      "bytes": 40323,
+      "sha256": "33679549b0e19902632abb94a4569921dcd2e749e08bce36fd002b12630795bc"
+    },
+    {
+      "id": "AUTH221-00144",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "AUTH221-00145",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "AUTH221-00146",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "AUTH221-00147",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "AUTH221-00148",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/probe_service.py",
+      "bytes": 112770,
+      "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c"
+    },
+    {
+      "id": "AUTH221-00149",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "AUTH221-00150",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "AUTH221-00151",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "AUTH221-00152",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "AUTH221-00153",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "AUTH221-00154",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "AUTH221-00155",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_admission_ip.py",
+      "bytes": 7753,
+      "sha256": "15c72110195d48bd4165684a098232f56be8e78f261f454911e796b90a192a76"
+    },
+    {
+      "id": "AUTH221-00156",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "AUTH221-00157",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "AUTH221-00158",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "AUTH221-00159",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "AUTH221-00160",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "AUTH221-00161",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "AUTH221-00162",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "AUTH221-00163",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "AUTH221-00164",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "AUTH221-00165",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "AUTH221-00166",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_eight_battle_policy.py",
+      "bytes": 3954,
+      "sha256": "cbd07174ba9cfff118a7b3cde70c270c5dd3388af8b4bdff08760d22caf9aeee"
+    },
+    {
+      "id": "AUTH221-00167",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_eight_bomb_policy.py",
+      "bytes": 2904,
+      "sha256": "9460855d9c745dd915c68dab57d5641696ac94711f98b9dd2ff28efabb31ccda"
+    },
+    {
+      "id": "AUTH221-00168",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_eight_player_profile.py",
+      "bytes": 1770,
+      "sha256": "f1902b382be26f713f488fe97110f12637365358c913bc139f783adcde0ee929"
+    },
+    {
+      "id": "AUTH221-00169",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_eight_player_service.py",
+      "bytes": 2667,
+      "sha256": "d0990b4bee221879d07bee82d21a8a190bddd5d0df290b02dd3e0835282df723"
+    },
+    {
+      "id": "AUTH221-00170",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_eight_team_variants.py",
+      "bytes": 4963,
+      "sha256": "4e7d7c0f3ea8b4624eb3014cd3d21ecfc78f6b4c88d40bdf09525e5829ee31b1"
+    },
+    {
+      "id": "AUTH221-00171",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_four_abort_room.py",
+      "bytes": 4308,
+      "sha256": "adc3b9740cc9754f54d1bc518a99e293e4a28d79155b8c26ac00b329eceeb004"
+    },
+    {
+      "id": "AUTH221-00172",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_four_battle_policy.py",
+      "bytes": 4627,
+      "sha256": "ffc60236e8c9cdbb14f3bdf173af7ce1b5b2a469c52befb9250d72e061552ff6"
+    },
+    {
+      "id": "AUTH221-00173",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_four_bomb_policy.py",
+      "bytes": 6771,
+      "sha256": "88a7a17b394980589d9c8de2c16e3ab465878204a91ec919158d4c7dca951534"
+    },
+    {
+      "id": "AUTH221-00174",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_four_delivery.py",
+      "bytes": 3050,
+      "sha256": "41020e3376ca6c4f170e010f5d9ee3ea280f490dde39bae7342fc63259d5dbd4"
+    },
+    {
+      "id": "AUTH221-00175",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_four_identity_store.py",
+      "bytes": 1935,
+      "sha256": "701aca2790d1d578c2469de1d070e0f9bb49b5a6f042e96981274996a0edee31"
+    },
+    {
+      "id": "AUTH221-00176",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_four_input_guards.py",
+      "bytes": 2610,
+      "sha256": "8d669e8a08ec99faee7d02fa43afbf4e9a9585db374c8e54addc9380af7fce81"
+    },
+    {
+      "id": "AUTH221-00177",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_four_input_limits.py",
+      "bytes": 4946,
+      "sha256": "b7a6600f6721b26aa758e3a2ac345fba04f3385940c8cc9d5793e734f037aa03"
+    },
+    {
+      "id": "AUTH221-00178",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_four_observability.py",
+      "bytes": 4065,
+      "sha256": "54fb10d538190913db7a3603a4954420a34e7bbe5b3b92466f373726470e662a"
+    },
+    {
+      "id": "AUTH221-00179",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_four_player_service.py",
+      "bytes": 10154,
+      "sha256": "50faf857e110ad0a5b5b5f45d9d41429b8ccb73c6d880cfd766e7d8847126a6d"
+    },
+    {
+      "id": "AUTH221-00180",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "AUTH221-00181",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "AUTH221-00182",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "AUTH221-00183",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "AUTH221-00184",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "AUTH221-00185",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "AUTH221-00186",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "AUTH221-00187",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "AUTH221-00188",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "AUTH221-00189",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "AUTH221-00190",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "AUTH221-00191",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "AUTH221-00192",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "AUTH221-00193",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "AUTH221-00194",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "AUTH221-00195",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "AUTH221-00196",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "AUTH221-00197",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "AUTH221-00198",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "AUTH221-00199",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "AUTH221-00200",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "AUTH221-00201",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "AUTH221-00202",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "AUTH221-00203",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "AUTH221-00204",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "AUTH221-00205",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "AUTH221-00206",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "AUTH221-00207",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "AUTH221-00208",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "AUTH221-00209",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/artifacts.py",
+      "bytes": 1089,
+      "sha256": "3806dc33d23db39ce591eb6fc3d2d9638c177a1a08862c474b4bb1d6614188d3"
+    },
+    {
+      "id": "AUTH221-00210",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "AUTH221-00211",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/check_checkpoints.py",
+      "bytes": 30165,
+      "sha256": "a91a1868b8da8870818fa11e6c38f81fb5c36a284610a60fb47f041b7891bd94"
+    },
+    {
+      "id": "AUTH221-00212",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "AUTH221-00213",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "AUTH221-00214",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "AUTH221-00215",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "AUTH221-00216",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/export_probe_profile.py",
+      "bytes": 10595,
+      "sha256": "64f6815f7e1b80ab86bd1b6ffb92ad6d33f45fa758534c1930db5d0ed28248ef"
+    },
+    {
+      "id": "AUTH221-00217",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/feature_catalog.py",
+      "bytes": 15672,
+      "sha256": "765658526f6efccf218e7387d309cc263846ef72c0a1090b87f3d2cc5d3181c0"
+    },
+    {
+      "id": "AUTH221-00218",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "AUTH221-00219",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "AUTH221-00220",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/probe_bundle.py",
+      "bytes": 9232,
+      "sha256": "74fbd44de0f20f611a11c4b57345f1b065cb6c96f94b4ac9e64bdee2bff91315"
+    },
+    {
+      "id": "AUTH221-00221",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/probe_channel_identity.py",
+      "bytes": 981,
+      "sha256": "b4dbf4c9b827007fa9bcb441db26e0230fb4654e5480f5b242157d2d32c3f68b"
+    },
+    {
+      "id": "AUTH221-00222",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/terrain_shadow.py",
+      "bytes": 334,
+      "sha256": "71856e537954ab963ce27a6d057913974b7bb8b1dea863764961ed9846d2addc"
+    },
+    {
+      "id": "AUTH221-00223",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_checkpoint_absolute_local.py",
+      "bytes": 3145,
+      "sha256": "b6c2b85fb4b315101435dfbc95ea41ffe4a5a8fa3c2eec2c7d4f3c769b86c737"
+    },
+    {
+      "id": "AUTH221-00224",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_checkpoint_audit_order.py",
+      "bytes": 1350,
+      "sha256": "157b9b99bf25383da498239b5627739962251b25f2c67925730663775e76f9e9"
+    },
+    {
+      "id": "AUTH221-00225",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    },
+    {
+      "id": "AUTH221-00226",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_checkpoint_store.py",
+      "bytes": 12900,
+      "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b"
+    },
+    {
+      "id": "AUTH221-00227",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_checkpoints.py",
+      "bytes": 14329,
+      "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6"
+    },
+    {
+      "id": "AUTH221-00228",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_export_all_dead.py",
+      "bytes": 2472,
+      "sha256": "9181544944d5e72d3d7137b763fbb42fcb554b6efd687e17b241c88cc0116c19"
+    },
+    {
+      "id": "AUTH221-00229",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "AUTH221-00230",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "AUTH221-00231",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    },
+    {
+      "id": "AUTH221-00232",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_feature_catalog.py",
+      "bytes": 3154,
+      "sha256": "124f62bc87c67e669751600dc2be4d2cd5e7f9e28ef16c7906fbc37ec6f63883"
+    },
+    {
+      "id": "AUTH221-00233",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_four_bundle.py",
+      "bytes": 7544,
+      "sha256": "0299169300e9f64e46071339dc3eb3267085acf1beb834683c10a2b80ec93eec"
+    },
+    {
+      "id": "AUTH221-00234",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_issue_links.py",
+      "bytes": 4175,
+      "sha256": "b6025c8c6e11b2b179a4b58e20e73f48edf989a0749ef968c5409c1d3fd5d764"
+    },
+    {
+      "id": "AUTH221-00235",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    },
+    {
+      "id": "AUTH221-00236",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_probe_channel_identity.py",
+      "bytes": 1989,
+      "sha256": "a7c8c05a66c959ec521aa391f6bc5ea0b4d8444ced130e260281b48d40737cf5"
+    },
+    {
+      "id": "AUTH221-00237",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/test_terrain_shadow.py",
+      "bytes": 2384,
+      "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+    },
+    {
+      "id": "AUTH221-00238",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "id": "AUTH221-00239",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/verify_primitives.py",
+      "bytes": 5272,
+      "sha256": "5cef1ce63e7895e89e3899252a78e958f59218247ac81a1b86f517ed5ddcf6dd"
+    },
+    {
+      "id": "AUTH221-00240",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/windows_console.py",
+      "bytes": 1820,
+      "sha256": "3cc762507cceb37acee58d138e574834b5969630bf9c58430df9de738d328283"
+    },
+    {
+      "id": "AUTH221-00241",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/runtime-source/tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    },
+    {
+      "id": "AUTH221-00242",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/captured-channel-body.bin",
+      "bytes": 43,
+      "sha256": "fb60f25e20c664bef5707fe67d9c0a9b9d8c371d3e201eb17d247bd7b3d0df2d"
+    },
+    {
+      "id": "AUTH221-00243",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/captured-channel.bin",
+      "bytes": 81,
+      "sha256": "e409c302997949bddd57690657c568588a6f1957206b284d9f41b393e6f6c3c7"
+    },
+    {
+      "id": "AUTH221-00244",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/captured-login-body.bin",
+      "bytes": 61,
+      "sha256": "6717c2f7277c72a0642a08e1b9f4af4907ce464ddb82cad3113477f40e3a8519"
+    },
+    {
+      "id": "AUTH221-00245",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/captured-login.bin",
+      "bytes": 99,
+      "sha256": "7419452c479786a732fe9c13a64639cde5036d683f241ef4baa9674b853c0342"
+    },
+    {
+      "id": "AUTH221-00246",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/B-title-initial91-4.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH221-00247",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/CALog-before.txt",
+      "bytes": 1371,
+      "sha256": "16cfb879da3d8fca934bac64531f0271534491eeb87d8882362fff4ca0c2d52f"
+    },
+    {
+      "id": "AUTH221-00248",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/CALog-run.txt",
+      "bytes": 1371,
+      "sha256": "16cfb879da3d8fca934bac64531f0271534491eeb87d8882362fff4ca0c2d52f"
+    },
+    {
+      "id": "AUTH221-00249",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/client.log",
+      "bytes": 117698,
+      "sha256": "73c60b70d2c4b7e55a557ad45277535781c145948076cca0d333efc810df16c1"
+    },
+    {
+      "id": "AUTH221-00250",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/debug-commands.txt",
+      "bytes": 946,
+      "sha256": "54764812ee89d9c51106065d6f53f6a21405748c37a473dc3efc390bf27a57e7"
+    },
+    {
+      "id": "AUTH221-00251",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "AUTH221-00252",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH221-00253",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-00.txt",
+      "bytes": 3698,
+      "sha256": "2747cc21dd5011a0b1f33702f5a26c07e558ac1079556e0fb5f2ab47ebccba6a"
+    },
+    {
+      "id": "AUTH221-00254",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-01.txt",
+      "bytes": 4446,
+      "sha256": "86b644c96efd32c67d7b5768f097f9d4aa2a8cfb4b9eab03344e90f6f944d256"
+    },
+    {
+      "id": "AUTH221-00255",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-02.txt",
+      "bytes": 4446,
+      "sha256": "256779cf7a048080900a8b1b43ed390f684de76046da6e59c73bfbb6863e8ea1"
+    },
+    {
+      "id": "AUTH221-00256",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-03.txt",
+      "bytes": 4446,
+      "sha256": "b625b1514f4b8b5d22bc83b498dcbf50bb5999aaf0835056a7e90086cc2bf5e2"
+    },
+    {
+      "id": "AUTH221-00257",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-04.txt",
+      "bytes": 4446,
+      "sha256": "12e97ab12e482399ac16fe63f2da19190a18629739d0b4dd978233f7f12167bb"
+    },
+    {
+      "id": "AUTH221-00258",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-05.txt",
+      "bytes": 4446,
+      "sha256": "70f66d3330f40a2d7bf8660082b7150580212a9182a860516093727908e6517f"
+    },
+    {
+      "id": "AUTH221-00259",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-06.txt",
+      "bytes": 4446,
+      "sha256": "1bb886a4aaf1e4286bb27b336eb1767e1cfec44f36ed610c557304a74be36136"
+    },
+    {
+      "id": "AUTH221-00260",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-07.txt",
+      "bytes": 4446,
+      "sha256": "9b60a7a9135c9d585e8ff7265f92092d28ff02191c96f6ed1e08ba738c22cedc"
+    },
+    {
+      "id": "AUTH221-00261",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-08.txt",
+      "bytes": 4446,
+      "sha256": "7f1f9d3959e5051da6108727d3e6ea8d45bba34dcea6098a73fbf9cab2b4cd83"
+    },
+    {
+      "id": "AUTH221-00262",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-09.txt",
+      "bytes": 4446,
+      "sha256": "7e75452f77ed317c2f6d26b3ad4d90c823dd5c0e3f486b74596abaa2cdda8bc7"
+    },
+    {
+      "id": "AUTH221-00263",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-10.txt",
+      "bytes": 4446,
+      "sha256": "f71d61ef0500641c91943d0b7fadcf689f2c32fb9583c38078639356eda1e230"
+    },
+    {
+      "id": "AUTH221-00264",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-11.txt",
+      "bytes": 4446,
+      "sha256": "56ff4a9feb2e10dc7f9d1ec17b8b521bcaa5c76d233ba442d9bf9bce4d20fbb3"
+    },
+    {
+      "id": "AUTH221-00265",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-12.txt",
+      "bytes": 4446,
+      "sha256": "c8162cbbd645c35ae21ff210625f31fdb7eae5ac02ca9911e51d13509bd75a74"
+    },
+    {
+      "id": "AUTH221-00266",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-13.txt",
+      "bytes": 4446,
+      "sha256": "cec7c8d308204b578062f3d7492f04e2495f66db711df266ad48266c1ddf7904"
+    },
+    {
+      "id": "AUTH221-00267",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-14.txt",
+      "bytes": 4446,
+      "sha256": "800be84992dd1df3a591bb5d2e390c83fb9f88c0ac43cc27b85e66e6caa55baa"
+    },
+    {
+      "id": "AUTH221-00268",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/processes-15.txt",
+      "bytes": 4446,
+      "sha256": "84baa77c2aaa7ab5b1e724c23ed332c9a486a114a901769a6e903b5b7e80a5c4"
+    },
+    {
+      "id": "AUTH221-00269",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/run.json",
+      "bytes": 12379,
+      "sha256": "9cb395e68c353ff8519076782c313fb499be83de463a8663ca55c698a3c844e2"
+    },
+    {
+      "id": "AUTH221-00270",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH221-00271",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH221-00272",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH221-00273",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "AUTH221-00274",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-04.png",
+      "bytes": 13299,
+      "sha256": "49f8ab22c67fea287d52dbf7ece5479bb380d1202b116a10a975de95eb67b352"
+    },
+    {
+      "id": "AUTH221-00275",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-05.png",
+      "bytes": 193700,
+      "sha256": "cd0294a374a38dece2ac45c18d6b40744f7f18e92689339bd97427e8c254eb41"
+    },
+    {
+      "id": "AUTH221-00276",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-06.png",
+      "bytes": 172993,
+      "sha256": "a16161792acf2d5464e14c01c4e122ad03dbb280780e566971217af4e45acdbd"
+    },
+    {
+      "id": "AUTH221-00277",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-07.png",
+      "bytes": 157626,
+      "sha256": "3faf448ae4396067c149d7abd70277cd9fd4b39f7856f97e9b73ece320b87750"
+    },
+    {
+      "id": "AUTH221-00278",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-08.png",
+      "bytes": 158599,
+      "sha256": "2c551149d883b377a263b434c1738aff7abb8dfc5937e4e1fb4d012ee7379f21"
+    },
+    {
+      "id": "AUTH221-00279",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-09.png",
+      "bytes": 153233,
+      "sha256": "5616e50680bae3e4a6b7154f5ff7676e346a5a88fcfd6ffca120914b4ab8df57"
+    },
+    {
+      "id": "AUTH221-00280",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-10.png",
+      "bytes": 153977,
+      "sha256": "95aa9338a740135c94305884e4c4935ddcf019146c39e437d86d81aa50d7b7ab"
+    },
+    {
+      "id": "AUTH221-00281",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-11.png",
+      "bytes": 153296,
+      "sha256": "32046e6a8b7b43c7e2824b7023b6f777a82bf4d92bafc6eaadf0807773f1d43b"
+    },
+    {
+      "id": "AUTH221-00282",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-12.png",
+      "bytes": 152114,
+      "sha256": "2e8490a6a6deae2e57e2c404cdc2c4a45216f30d1c2f89337e5c9558ddab3fa0"
+    },
+    {
+      "id": "AUTH221-00283",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-13.png",
+      "bytes": 150889,
+      "sha256": "1fc9c8751b1e11186d530d0755e4a060366afc9d6e1de528f98404edab1258dd"
+    },
+    {
+      "id": "AUTH221-00284",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-14.png",
+      "bytes": 150706,
+      "sha256": "c852cf0d0e5513fc5aa9d4278d296d9b09b3d1d2136707d9865ad41c33d8bf43"
+    },
+    {
+      "id": "AUTH221-00285",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/screen-15.png",
+      "bytes": 150716,
+      "sha256": "60ae8cffbc3de49d1acb8b7a18a3f74e1183228377ef3678162fd1639a4d37e8"
+    },
+    {
+      "id": "AUTH221-00286",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/service-state.json",
+      "bytes": 28874,
+      "sha256": "25256277b0b3cb76981c6bf0f5fc0f22ba6b222c02df4b6db8ddb70a90901540"
+    },
+    {
+      "id": "AUTH221-00287",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH221-00288",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH221-00289",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH221-00290",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH221-00291",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH221-00292",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH221-00293",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH221-00294",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH221-00295",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH221-00296",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH221-00297",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH221-00298",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH221-00299",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH221-00300",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH221-00301",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH221-00302",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH221-00303",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH221-00304",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/wineboot.log",
+      "bytes": 64262,
+      "sha256": "e64cc5cb29f3fdba0dbdd4dbd435c3392d6971a27eec5c1c5b950fc54fa2e878"
+    },
+    {
+      "id": "AUTH221-00305",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/cycles/xvfb.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH221-00306",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/launch-exit.json",
+      "bytes": 73,
+      "sha256": "c24d95d5d40cc0fa8b050cab6f21966e538a2b216a8c70063bb51d9f8cac318c"
+    },
+    {
+      "id": "AUTH221-00307",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/launch.txt",
+      "bytes": 10019,
+      "sha256": "efd7a29ebc75bf0bd9b34cdd619ed6b06e8ba1c4e0ba40621c4df5e4929b75b6"
+    },
+    {
+      "id": "AUTH221-00308",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/raw-seal.json",
+      "bytes": 12903,
+      "sha256": "2f203a2ec9c814c8e250a1713d5318026c84d1fa1cd41cf300d0664758107992"
+    },
+    {
+      "id": "AUTH221-00309",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/recipe.json",
+      "bytes": 1032,
+      "sha256": "27a1d70d14f09bcca89bc96a0bf9e52494efb23f21703adc13a7e36222ef4da9"
+    },
+    {
+      "id": "AUTH221-00310",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-preflight.json",
+      "bytes": 58010,
+      "sha256": "17e795925c1c9fe4549998e9ceef34940acbbdd0e8e29c0adb8f9ba248ae45aa"
+    },
+    {
+      "id": "AUTH221-00311",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "AUTH221-00312",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/eight_battle_policy.py",
+      "bytes": 1408,
+      "sha256": "a1f40cb0243f4368aff157723e4e39dee9417e03b046421e2a35ef22204b75fc"
+    },
+    {
+      "id": "AUTH221-00313",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/eight_bomb_policy.py",
+      "bytes": 557,
+      "sha256": "10bb1656892b7057b2907733f554e5c14c7634cab8040117712756a1d4f6f529"
+    },
+    {
+      "id": "AUTH221-00314",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/eight_player_profile.py",
+      "bytes": 3259,
+      "sha256": "46a4ab61538eb97e30919eb9dec8fae53764411dd8c2c6d6848775c74ea5994b"
+    },
+    {
+      "id": "AUTH221-00315",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/eight_player_service.py",
+      "bytes": 6939,
+      "sha256": "6bb708674ad1aaac97df5315d9aeefa02d76b50d11bac1acb37ffca13e5dc4c5"
+    },
+    {
+      "id": "AUTH221-00316",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/four_battle_policy.py",
+      "bytes": 6031,
+      "sha256": "31ce7d3d843e1fe21c80e4583b85bc2d974ca495de5bc9ddf95b06d1717cfd81"
+    },
+    {
+      "id": "AUTH221-00317",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/four_bomb_policy.py",
+      "bytes": 3753,
+      "sha256": "9a011fe86d522a1c543230b3480fe571c0663722a79c2fad47fe6c4340442369"
+    },
+    {
+      "id": "AUTH221-00318",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/four_identity_store.py",
+      "bytes": 2023,
+      "sha256": "8dea38a194ceb396f8a8944df78ac72adcb44652da26819b41a318ffc2ab6292"
+    },
+    {
+      "id": "AUTH221-00319",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/four_input_limits.py",
+      "bytes": 2900,
+      "sha256": "c1e90e924680d0106665d765c9d382124731929e7a4c084f691b96e40baa71e4"
+    },
+    {
+      "id": "AUTH221-00320",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/four_observability.py",
+      "bytes": 6080,
+      "sha256": "b42c44b01d22eddfa6e93a32efbf618c681823717972c8e56df4ccb26623f18c"
+    },
+    {
+      "id": "AUTH221-00321",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "AUTH221-00322",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/four_player_service.py",
+      "bytes": 40323,
+      "sha256": "33679549b0e19902632abb94a4569921dcd2e749e08bce36fd002b12630795bc"
+    },
+    {
+      "id": "AUTH221-00323",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "AUTH221-00324",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "AUTH221-00325",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "AUTH221-00326",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "AUTH221-00327",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/probe_service.py",
+      "bytes": 112770,
+      "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c"
+    },
+    {
+      "id": "AUTH221-00328",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "AUTH221-00329",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "AUTH221-00330",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "AUTH221-00331",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "AUTH221-00332",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "AUTH221-00333",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "AUTH221-00334",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_admission_ip.py",
+      "bytes": 7753,
+      "sha256": "15c72110195d48bd4165684a098232f56be8e78f261f454911e796b90a192a76"
+    },
+    {
+      "id": "AUTH221-00335",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "AUTH221-00336",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "AUTH221-00337",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "AUTH221-00338",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "AUTH221-00339",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "AUTH221-00340",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "AUTH221-00341",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "AUTH221-00342",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "AUTH221-00343",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "AUTH221-00344",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "AUTH221-00345",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_eight_battle_policy.py",
+      "bytes": 3954,
+      "sha256": "cbd07174ba9cfff118a7b3cde70c270c5dd3388af8b4bdff08760d22caf9aeee"
+    },
+    {
+      "id": "AUTH221-00346",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_eight_bomb_policy.py",
+      "bytes": 2904,
+      "sha256": "9460855d9c745dd915c68dab57d5641696ac94711f98b9dd2ff28efabb31ccda"
+    },
+    {
+      "id": "AUTH221-00347",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_eight_player_profile.py",
+      "bytes": 1770,
+      "sha256": "f1902b382be26f713f488fe97110f12637365358c913bc139f783adcde0ee929"
+    },
+    {
+      "id": "AUTH221-00348",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_eight_player_service.py",
+      "bytes": 2667,
+      "sha256": "d0990b4bee221879d07bee82d21a8a190bddd5d0df290b02dd3e0835282df723"
+    },
+    {
+      "id": "AUTH221-00349",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_eight_team_variants.py",
+      "bytes": 4963,
+      "sha256": "4e7d7c0f3ea8b4624eb3014cd3d21ecfc78f6b4c88d40bdf09525e5829ee31b1"
+    },
+    {
+      "id": "AUTH221-00350",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_four_abort_room.py",
+      "bytes": 4308,
+      "sha256": "adc3b9740cc9754f54d1bc518a99e293e4a28d79155b8c26ac00b329eceeb004"
+    },
+    {
+      "id": "AUTH221-00351",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_four_battle_policy.py",
+      "bytes": 4627,
+      "sha256": "ffc60236e8c9cdbb14f3bdf173af7ce1b5b2a469c52befb9250d72e061552ff6"
+    },
+    {
+      "id": "AUTH221-00352",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_four_bomb_policy.py",
+      "bytes": 6771,
+      "sha256": "88a7a17b394980589d9c8de2c16e3ab465878204a91ec919158d4c7dca951534"
+    },
+    {
+      "id": "AUTH221-00353",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_four_delivery.py",
+      "bytes": 3050,
+      "sha256": "41020e3376ca6c4f170e010f5d9ee3ea280f490dde39bae7342fc63259d5dbd4"
+    },
+    {
+      "id": "AUTH221-00354",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_four_identity_store.py",
+      "bytes": 1935,
+      "sha256": "701aca2790d1d578c2469de1d070e0f9bb49b5a6f042e96981274996a0edee31"
+    },
+    {
+      "id": "AUTH221-00355",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_four_input_guards.py",
+      "bytes": 2610,
+      "sha256": "8d669e8a08ec99faee7d02fa43afbf4e9a9585db374c8e54addc9380af7fce81"
+    },
+    {
+      "id": "AUTH221-00356",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_four_input_limits.py",
+      "bytes": 4946,
+      "sha256": "b7a6600f6721b26aa758e3a2ac345fba04f3385940c8cc9d5793e734f037aa03"
+    },
+    {
+      "id": "AUTH221-00357",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_four_observability.py",
+      "bytes": 4065,
+      "sha256": "54fb10d538190913db7a3603a4954420a34e7bbe5b3b92466f373726470e662a"
+    },
+    {
+      "id": "AUTH221-00358",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_four_player_service.py",
+      "bytes": 10154,
+      "sha256": "50faf857e110ad0a5b5b5f45d9d41429b8ccb73c6d880cfd766e7d8847126a6d"
+    },
+    {
+      "id": "AUTH221-00359",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "AUTH221-00360",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "AUTH221-00361",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "AUTH221-00362",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "AUTH221-00363",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "AUTH221-00364",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "AUTH221-00365",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "AUTH221-00366",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "AUTH221-00367",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "AUTH221-00368",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "AUTH221-00369",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "AUTH221-00370",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "AUTH221-00371",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "AUTH221-00372",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "AUTH221-00373",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "AUTH221-00374",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "AUTH221-00375",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "AUTH221-00376",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "AUTH221-00377",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "AUTH221-00378",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "AUTH221-00379",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "AUTH221-00380",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "AUTH221-00381",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "AUTH221-00382",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "AUTH221-00383",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "AUTH221-00384",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "AUTH221-00385",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "AUTH221-00386",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "AUTH221-00387",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "AUTH221-00388",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/artifacts.py",
+      "bytes": 1089,
+      "sha256": "3806dc33d23db39ce591eb6fc3d2d9638c177a1a08862c474b4bb1d6614188d3"
+    },
+    {
+      "id": "AUTH221-00389",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "AUTH221-00390",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/check_checkpoints.py",
+      "bytes": 30165,
+      "sha256": "a91a1868b8da8870818fa11e6c38f81fb5c36a284610a60fb47f041b7891bd94"
+    },
+    {
+      "id": "AUTH221-00391",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "AUTH221-00392",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "AUTH221-00393",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "AUTH221-00394",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "AUTH221-00395",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/export_probe_profile.py",
+      "bytes": 10595,
+      "sha256": "64f6815f7e1b80ab86bd1b6ffb92ad6d33f45fa758534c1930db5d0ed28248ef"
+    },
+    {
+      "id": "AUTH221-00396",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/feature_catalog.py",
+      "bytes": 15672,
+      "sha256": "765658526f6efccf218e7387d309cc263846ef72c0a1090b87f3d2cc5d3181c0"
+    },
+    {
+      "id": "AUTH221-00397",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "AUTH221-00398",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "AUTH221-00399",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/probe_bundle.py",
+      "bytes": 9232,
+      "sha256": "74fbd44de0f20f611a11c4b57345f1b065cb6c96f94b4ac9e64bdee2bff91315"
+    },
+    {
+      "id": "AUTH221-00400",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/probe_channel_identity.py",
+      "bytes": 981,
+      "sha256": "b4dbf4c9b827007fa9bcb441db26e0230fb4654e5480f5b242157d2d32c3f68b"
+    },
+    {
+      "id": "AUTH221-00401",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/terrain_shadow.py",
+      "bytes": 334,
+      "sha256": "71856e537954ab963ce27a6d057913974b7bb8b1dea863764961ed9846d2addc"
+    },
+    {
+      "id": "AUTH221-00402",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_checkpoint_absolute_local.py",
+      "bytes": 3145,
+      "sha256": "b6c2b85fb4b315101435dfbc95ea41ffe4a5a8fa3c2eec2c7d4f3c769b86c737"
+    },
+    {
+      "id": "AUTH221-00403",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_checkpoint_audit_order.py",
+      "bytes": 1350,
+      "sha256": "157b9b99bf25383da498239b5627739962251b25f2c67925730663775e76f9e9"
+    },
+    {
+      "id": "AUTH221-00404",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    },
+    {
+      "id": "AUTH221-00405",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_checkpoint_store.py",
+      "bytes": 12900,
+      "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b"
+    },
+    {
+      "id": "AUTH221-00406",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_checkpoints.py",
+      "bytes": 14329,
+      "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6"
+    },
+    {
+      "id": "AUTH221-00407",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_export_all_dead.py",
+      "bytes": 2472,
+      "sha256": "9181544944d5e72d3d7137b763fbb42fcb554b6efd687e17b241c88cc0116c19"
+    },
+    {
+      "id": "AUTH221-00408",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "AUTH221-00409",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "AUTH221-00410",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    },
+    {
+      "id": "AUTH221-00411",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_feature_catalog.py",
+      "bytes": 3154,
+      "sha256": "124f62bc87c67e669751600dc2be4d2cd5e7f9e28ef16c7906fbc37ec6f63883"
+    },
+    {
+      "id": "AUTH221-00412",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_four_bundle.py",
+      "bytes": 7544,
+      "sha256": "0299169300e9f64e46071339dc3eb3267085acf1beb834683c10a2b80ec93eec"
+    },
+    {
+      "id": "AUTH221-00413",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_issue_links.py",
+      "bytes": 4175,
+      "sha256": "b6025c8c6e11b2b179a4b58e20e73f48edf989a0749ef968c5409c1d3fd5d764"
+    },
+    {
+      "id": "AUTH221-00414",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    },
+    {
+      "id": "AUTH221-00415",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_probe_channel_identity.py",
+      "bytes": 1989,
+      "sha256": "a7c8c05a66c959ec521aa391f6bc5ea0b4d8444ced130e260281b48d40737cf5"
+    },
+    {
+      "id": "AUTH221-00416",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/test_terrain_shadow.py",
+      "bytes": 2384,
+      "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+    },
+    {
+      "id": "AUTH221-00417",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "id": "AUTH221-00418",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/verify_primitives.py",
+      "bytes": 5272,
+      "sha256": "5cef1ce63e7895e89e3899252a78e958f59218247ac81a1b86f517ed5ddcf6dd"
+    },
+    {
+      "id": "AUTH221-00419",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/windows_console.py",
+      "bytes": 1820,
+      "sha256": "3cc762507cceb37acee58d138e574834b5969630bf9c58430df9de738d328283"
+    },
+    {
+      "id": "AUTH221-00420",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/runtime-source/tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    },
+    {
+      "id": "AUTH221-00421",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first.json",
+      "bytes": 5902,
+      "sha256": "1a34ac111f5ea71e4ff7d4391d88ccd18537f4e29b6c930391aec9a9090c0909"
+    },
+    {
+      "id": "AUTH221-00422",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first/00-PLAN.md",
+      "bytes": 86208,
+      "sha256": "2bfe9a2df4e7b9cff339c158d6989ca5c7f9e21576d19fa43c611309037ada25"
+    },
+    {
+      "id": "AUTH221-00423",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first/01-PROTOCOL.md",
+      "bytes": 680972,
+      "sha256": "7905d430519c63a63b49184ee8fc51ef99f978caedf241965132a0a3f187f949"
+    },
+    {
+      "id": "AUTH221-00424",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first/02-RESEARCH.md",
+      "bytes": 43818,
+      "sha256": "bef0ce0425ee61be12fc107feac368e4f591fb7f8331d10894090490d276f414"
+    },
+    {
+      "id": "AUTH221-00425",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first/03-own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "AUTH221-00426",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first/04-token-request.json",
+      "bytes": 12117,
+      "sha256": "355e7b7877ed682a289e95ebaeecf82abb84b2fbfe2f2017f815c5395e7bc1fa"
+    },
+    {
+      "id": "AUTH221-00427",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first/05-channel-echo.json",
+      "bytes": 13537,
+      "sha256": "fd88409ee301903ddc5c366fcc7e1200adaab6b604b356dc1eb623cdbfca6c7f"
+    },
+    {
+      "id": "AUTH221-00428",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first/06-admission_service.py",
+      "bytes": 4686,
+      "sha256": "151cb801c0bcff51e89b3e11cdc0ca42999b87e5a962733a752e51f937e32ad6"
+    },
+    {
+      "id": "AUTH221-00429",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first/07-admission_policy.py",
+      "bytes": 6218,
+      "sha256": "b63664745f7b12a8bfe95400eacb86b97b90bc962a325f1afe793a72f9ad2625"
+    },
+    {
+      "id": "AUTH221-00430",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first/08-verification.json",
+      "bytes": 7743,
+      "sha256": "00d462209b7708600a878cf1d349ece0509f0ee57e34d8eae0900498a7234dc0"
+    },
+    {
+      "id": "AUTH221-00431",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first/09-source-first.json",
+      "bytes": 6038,
+      "sha256": "d2064fa6c1ffb651ac39ecb0ce31b235944d3b51f134b1bfd1759e8969202bca"
+    },
+    {
+      "id": "AUTH221-00432",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/two_account_service.py",
+      "bytes": 3363,
+      "sha256": "e4649d04cafefd92a81165538af4a9b61bb3215f16046e046cdd5c5846c780de"
+    },
+    {
+      "id": "AUTH221-00433",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/verification.json",
+      "bytes": 17567,
+      "sha256": "77c06f0cb11baaf06c82be2fb888102a4ec9425bb61ff0684ab7c08cb18107c4"
+    },
+    {
+      "id": "AUTH221-00434",
+      "kind": "local",
+      "path": "local/research/codex/capture_github_cp221.py",
+      "bytes": 1940,
+      "sha256": "d92a1f60dd8b6694bba028c72a4c01a28d9130124eacb8481900cd49c8a940b8"
+    },
+    {
+      "id": "AUTH221-00435",
+      "kind": "local",
+      "path": "local/research/codex/cp221-GitHub-issues-1.json",
+      "bytes": 610434,
+      "sha256": "2b14729c97f3410a4c0a1033809d919fda9199ec9968b4c50f508dbde2071c01"
+    },
+    {
+      "id": "AUTH221-00436",
+      "kind": "local",
+      "path": "local/research/codex/cp221-GitHub-issues-2.json",
+      "bytes": 585702,
+      "sha256": "a4965fdfde5e32cfe641ab67c421bc9a99e372e658ba6ebdc06b789e52f66c96"
+    },
+    {
+      "id": "AUTH221-00437",
+      "kind": "local",
+      "path": "local/research/codex/cp221-GitHub-issues-3.json",
+      "bytes": 575281,
+      "sha256": "8da0a1354469a596cf171270b44d020d25e25e9a8314744bca22832e73625d84"
+    },
+    {
+      "id": "AUTH221-00438",
+      "kind": "local",
+      "path": "local/research/codex/cp221-GitHub-pulls-1.json",
+      "bytes": 2239397,
+      "sha256": "9dbb89f50fbc1f37c4bb92d07f14c05aaa03e7ffbde1fca887af17300df7f4ef"
+    },
+    {
+      "id": "AUTH221-00439",
+      "kind": "local",
+      "path": "local/research/codex/cp221-GitHub-pulls-2.json",
+      "bytes": 2224610,
+      "sha256": "9813e10e3f73f8bb63c6f8e3f685c951852f081ea5644471d1bf8ba73a522a1d"
+    },
+    {
+      "id": "AUTH221-00440",
+      "kind": "local",
+      "path": "local/research/codex/cp221-GitHub-pulls-3.json",
+      "bytes": 464040,
+      "sha256": "b822b309116ff67c6a9cada72a6db4cdcae252ce21ad800801e21834fcb6279a"
+    },
+    {
+      "id": "AUTH221-00441",
+      "kind": "local",
+      "path": "local/research/codex/cp221-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH221-00442",
+      "kind": "local",
+      "path": "local/research/codex/cp221-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "36485f300334590b3731bca134740e210fcdceb984a140d08b1c41c565e51bd6"
+    },
+    {
+      "id": "AUTH221-00443",
+      "kind": "local",
+      "path": "local/research/codex/cp221-docs-pre-record.txt",
+      "bytes": 175,
+      "sha256": "36485f300334590b3731bca134740e210fcdceb984a140d08b1c41c565e51bd6"
+    },
+    {
+      "id": "AUTH221-00444",
+      "kind": "local",
+      "path": "local/research/codex/cp221-github-capture.txt",
+      "bytes": 70,
+      "sha256": "e4f0f47454bf5419aa32ce66b2caae1bf3b08df470de34b5a5cc77ffbe6d1ac5"
+    },
+    {
+      "id": "AUTH221-00445",
+      "kind": "local",
+      "path": "local/research/codex/cp221-issue-updates.txt",
+      "bytes": 448,
+      "sha256": "5afabd1cee62bbe9a54b5c63a06e5864ae145cd318064bc7a12b28c569d4f3cc"
+    },
+    {
+      "id": "AUTH221-00446",
+      "kind": "local",
+      "path": "local/research/codex/cp221-issue14-before.json",
+      "bytes": 37017,
+      "sha256": "09ace2ed6c9f80aa391880ac3f66f3780146b59f862bcfaee432a156a3705d2d"
+    },
+    {
+      "id": "AUTH221-00447",
+      "kind": "local",
+      "path": "local/research/codex/cp221-issue14-request.json",
+      "bytes": 34112,
+      "sha256": "0e48be03b6b4cdb58d9142e1cb083fb473862ee301b57ce0ab7a843f76b07455"
+    },
+    {
+      "id": "AUTH221-00448",
+      "kind": "local",
+      "path": "local/research/codex/cp221-issue14-updated.json",
+      "bytes": 37026,
+      "sha256": "fd68d53179708a3d9f5df2af3b31db7b9bd0175a68e060759a7068894214381f"
+    },
+    {
+      "id": "AUTH221-00449",
+      "kind": "local",
+      "path": "local/research/codex/cp221-issue285-before.json",
+      "bytes": 10343,
+      "sha256": "bf0eb61e187c0a51c1cdaae0cbc0d3b0ddd78adae6c70ff42c5df03331f75bc4"
+    },
+    {
+      "id": "AUTH221-00450",
+      "kind": "local",
+      "path": "local/research/codex/cp221-issue285-request.json",
+      "bytes": 7410,
+      "sha256": "7b3b1772684c5646f4deb5f99e6e9938608fe04b9b3250c1779440b677ec7e07"
+    },
+    {
+      "id": "AUTH221-00451",
+      "kind": "local",
+      "path": "local/research/codex/cp221-issue285-updated.json",
+      "bytes": 10352,
+      "sha256": "c0c3e7e2a9fb3e0e794a26c32fb109cbec322fd2bf471a46ffcab8589edbebf8"
+    },
+    {
+      "id": "AUTH221-00452",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_two_account_controls.py",
+      "bytes": 3289,
+      "sha256": "7f43a9e3fe54d46113a47eec93c34219dd7403ba38262c1f40e5000541f5cc76"
+    },
+    {
+      "id": "AUTH221-00453",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_two_account_runs.py",
+      "bytes": 5378,
+      "sha256": "11178a45e81551199b7d285d517df3f786f4262d394904b94f625de5311b2ace"
+    },
+    {
+      "id": "AUTH221-00454",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_two_account_source.py",
+      "bytes": 3958,
+      "sha256": "9943b2c185752a44dd67829c6b41688ce108f468bbbf7162a7e22dcc5ea0ef86"
+    },
+    {
+      "id": "AUTH221-00455",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_two_account.py",
+      "bytes": 792,
+      "sha256": "1c6c1498ba23ac1f4d6995ccf911176376eb2f10fad43c3369d954ce1b604e70"
+    },
+    {
+      "id": "AUTH221-00456",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_two_account_controls.py",
+      "bytes": 1557,
+      "sha256": "172f53c08dd311a4b731ee3aacddc26f1bf40c335b359da5c40d01f33c6ee539"
+    },
+    {
+      "id": "AUTH221-00457",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_two_account_controls_r2.py",
+      "bytes": 1571,
+      "sha256": "7bfc866ae5c48694e052fec808d100d92748a008379b049c8f723335649e7be6"
+    },
+    {
+      "id": "AUTH221-00458",
+      "kind": "local",
+      "path": "local/research/codex/sync_cp221.py",
+      "bytes": 9673,
+      "sha256": "2509e8f0c7ad10a3b72350017533bab4d88cd516f8fdf3060039c5df8379cb64"
+    },
+    {
+      "id": "AUTH221-00459",
+      "kind": "local",
+      "path": "local/research/codex/update_cp221_issues.py",
+      "bytes": 4629,
+      "sha256": "d29ba3e19c232bb1c9add172a6a7d9e25223c2d5c99c1dc68fee750f452ddfe0"
+    },
+    {
+      "id": "AUTH221-00460",
+      "kind": "local",
+      "path": "local/research/codex/verify_auth_two_account.py",
+      "bytes": 5024,
+      "sha256": "1a130fc4756d43c420f4e88352eb23db0aaf06157aaa0f9f4035869f943f4470"
+    },
+    {
+      "id": "AUTH221-00461",
+      "kind": "local",
+      "path": "local/research/codex/verify_auth_two_account_controls.py",
+      "bytes": 3181,
+      "sha256": "ad8702a9bcab37cda5cbb19d06b8a37c109ecca51b7e9adc952ca9fe21eef511"
+    },
+    {
+      "id": "AUTH221-00462",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_two_account.py",
+      "bytes": 20362,
+      "sha256": "b393f2911f6845da735632c8e761ad9b4aa09008a4a7fea4e7080f82c1bb1cea"
+    }
+  ]
+}

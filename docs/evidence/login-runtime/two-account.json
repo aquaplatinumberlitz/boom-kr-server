@@ -1,0 +1,1449 @@
+{
+  "schema": "kre-auth-two-account-v1",
+  "baseline": "4f373630c1b9f641a9166d07f58103686265544f",
+  "build": "KR00967",
+  "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "native": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "cases": [
+      {
+        "role": "A",
+        "identity": 1,
+        "name": "KRLocal",
+        "run_sha256": "f43cb2eefc95dfe5adb98e825cf748765aee24def23336cf499565cc50ffeb41",
+        "duration_s": 50.964269862,
+        "raw_count": 59,
+        "cleanup": {
+          "net_namespace": "net:[4026532806]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "native_auth_result": 0,
+        "native_token_input_size": 32,
+        "native_token_input_sha256": "3eb1bd439947eb762998e566ccc2e099c791118b2f40579cc4f7da2b5061b7f9",
+        "native_c2s6_identity": 1,
+        "native_c2s6_name": "KRLocal",
+        "native_c2s6_echo": 2434217695,
+        "native_auth_to_c2s6_echo_probes_match": true,
+        "actual67_after_admission": true,
+        "native17_entry_markers": 2,
+        "policy_events": [
+          {
+            "op": "lease_issued",
+            "connection": 3,
+            "monotonic_ns": 161194309250076,
+            "identity": 1,
+            "role": "A",
+            "wire_echo": 2434217695,
+            "expires_ns": 161204308945186
+          },
+          {
+            "op": "channel_admitted",
+            "connection": 4,
+            "monotonic_ns": 161194647937988,
+            "identity": 1,
+            "role": "A",
+            "session_id": "873fdde11294a13f9be7743f9fec1c28"
+          }
+        ],
+        "frames": [
+          {
+            "connection": 3,
+            "opcode": 1,
+            "sequence": 40,
+            "frame_bytes": 99,
+            "body_bytes": 61,
+            "sha256": "3fa7dcfecbcafb27991edebccec35296d409e4e3acb57fe5394d4234afc2584f"
+          },
+          {
+            "connection": 3,
+            "opcode": 60,
+            "sequence": 43,
+            "frame_bytes": 58,
+            "body_bytes": 20,
+            "sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+          },
+          {
+            "connection": 3,
+            "opcode": 9,
+            "sequence": 46,
+            "frame_bytes": 46,
+            "body_bytes": 8,
+            "sha256": "4158ea45ff94894e0ae219729bef6c62a5e8f908700f2c04c4d8ed5d8224aa43"
+          },
+          {
+            "connection": 3,
+            "opcode": 744,
+            "sequence": 49,
+            "frame_bytes": 42,
+            "body_bytes": 4,
+            "sha256": "d286c398d39600598303aba3fe8f2dd4449e50f25722201e341760457907f170"
+          },
+          {
+            "connection": 3,
+            "opcode": 745,
+            "sequence": 52,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+          },
+          {
+            "connection": 3,
+            "opcode": 40,
+            "sequence": 55,
+            "frame_bytes": 39,
+            "body_bytes": 1,
+            "sha256": "2d9bd1845ba82aea8d94e132778798f9bed95b2bbdce7436ac25f2a6bd0b86e7"
+          },
+          {
+            "connection": 3,
+            "opcode": 5,
+            "sequence": 58,
+            "frame_bytes": 47,
+            "body_bytes": 9,
+            "sha256": "24f8a51e4439d6a19c8af224b8ccc938139dc74c8ab6a38c2ea5542e1e4b871f"
+          },
+          {
+            "connection": 4,
+            "opcode": 6,
+            "sequence": 40,
+            "frame_bytes": 81,
+            "body_bytes": 43,
+            "sha256": "a626c23455e547c2813f0dda837546cd146ec7331539b64b6ac31fb600bf7fb0"
+          },
+          {
+            "connection": 4,
+            "opcode": 544,
+            "sequence": 43,
+            "frame_bytes": 48,
+            "body_bytes": 10,
+            "sha256": "e8ff3d74c4a26ecb82c2c295b8eb385f68e655bb6581dec8977eb062bb672f18"
+          },
+          {
+            "connection": 4,
+            "opcode": 549,
+            "sequence": 46,
+            "frame_bytes": 41,
+            "body_bytes": 3,
+            "sha256": "683c014bbc8fbf2dcc1325c3788bfd26adb70ed576b02ef2b22903c4d00d65ee"
+          },
+          {
+            "connection": 4,
+            "opcode": 744,
+            "sequence": 49,
+            "frame_bytes": 42,
+            "body_bytes": 4,
+            "sha256": "7704fb1aa46a1a17c430094ff6033bdd25cfffc9f43664b86c605e2cd4d8f5c6"
+          },
+          {
+            "connection": 4,
+            "opcode": 745,
+            "sequence": 52,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+          },
+          {
+            "connection": 4,
+            "opcode": 567,
+            "sequence": 55,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "63b34eaa82ebde5a2c2225d69d05afa03434b1023f40242e8ecfecab8f726132"
+          },
+          {
+            "connection": 4,
+            "opcode": 67,
+            "sequence": 58,
+            "frame_bytes": 40,
+            "body_bytes": 2,
+            "sha256": "40e9433aba62af57815aa75adb3b377070436ce1808f30ba92f2743b0cc13bf9"
+          },
+          {
+            "connection": 4,
+            "opcode": 87,
+            "sequence": 61,
+            "frame_bytes": 40,
+            "body_bytes": 2,
+            "sha256": "e0ea50ce187e01bde4ab3b1fdc64419df741c1a40d92e67f13c79c617dfc4a29"
+          },
+          {
+            "connection": 4,
+            "opcode": 742,
+            "sequence": 64,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "a3e0de0e248cea05e63fafc1deb64e76cbdad6c9d0e54fac1804cee2d89aa638"
+          },
+          {
+            "connection": 4,
+            "opcode": 741,
+            "sequence": 67,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "ceca4260ec672878bdfb674cf9c56d922e7ef931506c013dae5809f083c22761"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 70,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "e28443e89692e21f334f5aa5c8e92b60d62d26bdb830d2818bf27263995ec2f0"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 73,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "454082c17ddf7efbd9d10181cf10a8e91958e454c3afb272d9f03db8a6b66756"
+          },
+          {
+            "connection": 4,
+            "opcode": 15,
+            "sequence": 76,
+            "frame_bytes": 69,
+            "body_bytes": 31,
+            "sha256": "034303cd31d255bc030e805faa790c0e464274f47a9728a920075b1f329bf3e6"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 79,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "3f2ee188ed75a78de687d3d43b9ca8a09a20c38eb081ceac73d8954929c54126"
+          },
+          {
+            "connection": 4,
+            "opcode": 15,
+            "sequence": 82,
+            "frame_bytes": 69,
+            "body_bytes": 31,
+            "sha256": "bfcc4c5c78114ab07ab7ec69d5771bc0d63300eab5aa1a1cdeeaa9cd67deb251"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 85,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "bc5247901942c7f6496b3ec04de938e779ee7679f65df59905a12d614ffae2f0"
+          },
+          {
+            "connection": 4,
+            "opcode": 15,
+            "sequence": 88,
+            "frame_bytes": 69,
+            "body_bytes": 31,
+            "sha256": "8e63c73c7fcdb0c99994b71d67465117e6f49c5081dc1616b9b4caf76a3aa00f"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 91,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "dbace38fbca7f5408295f6dbfbb5a619006ef6e34350c52fab5bfc1d59e47b51"
+          },
+          {
+            "connection": 4,
+            "opcode": 15,
+            "sequence": 94,
+            "frame_bytes": 69,
+            "body_bytes": 31,
+            "sha256": "3c6e7e7d300703d3fd14b27e6d9761f672e19e5e67080b448121486fcf785ef8"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 97,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "407a60f3c30b55d922d8ab8a6f3cb6b9d77c3c4cbf6271d888e59da7ffe02acb"
+          },
+          {
+            "connection": 4,
+            "opcode": 15,
+            "sequence": 100,
+            "frame_bytes": 69,
+            "body_bytes": 31,
+            "sha256": "0a6232a88ccfca95afec9ba9187fd41ae94ecfd13cf594d1311624bd43d21f75"
+          }
+        ],
+        "limits": "Separatepositiveperidentity/samesinglecopy/separateserviceprocess,not2concurrentKR/identityswap/healthydenial/accountresume/fullauthproof."
+      },
+      {
+        "role": "B",
+        "identity": 2,
+        "name": "KRGuest",
+        "run_sha256": "9cb395e68c353ff8519076782c313fb499be83de463a8663ca55c698a3c844e2",
+        "duration_s": 49.842327846,
+        "raw_count": 60,
+        "cleanup": {
+          "net_namespace": "net:[4026533552]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "native_auth_result": 0,
+        "native_token_input_size": 32,
+        "native_token_input_sha256": "4ba68aa8767bde72e8c798ee82d1275291cea73e72ad74d35ecf48e41386eb82",
+        "native_c2s6_identity": 2,
+        "native_c2s6_name": "KRGuest",
+        "native_c2s6_echo": 809845094,
+        "native_auth_to_c2s6_echo_probes_match": true,
+        "actual67_after_admission": true,
+        "native17_entry_markers": 2,
+        "policy_events": [
+          {
+            "op": "lease_issued",
+            "connection": 3,
+            "monotonic_ns": 161272005223495,
+            "identity": 2,
+            "role": "B",
+            "wire_echo": 809845094,
+            "expires_ns": 161282004943235
+          },
+          {
+            "op": "channel_admitted",
+            "connection": 4,
+            "monotonic_ns": 161272260449936,
+            "identity": 2,
+            "role": "B",
+            "session_id": "1c42729d5417dac28bd5aa0069821093"
+          }
+        ],
+        "frames": [
+          {
+            "connection": 3,
+            "opcode": 1,
+            "sequence": 40,
+            "frame_bytes": 99,
+            "body_bytes": 61,
+            "sha256": "7419452c479786a732fe9c13a64639cde5036d683f241ef4baa9674b853c0342"
+          },
+          {
+            "connection": 3,
+            "opcode": 60,
+            "sequence": 43,
+            "frame_bytes": 58,
+            "body_bytes": 20,
+            "sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+          },
+          {
+            "connection": 3,
+            "opcode": 9,
+            "sequence": 46,
+            "frame_bytes": 46,
+            "body_bytes": 8,
+            "sha256": "4158ea45ff94894e0ae219729bef6c62a5e8f908700f2c04c4d8ed5d8224aa43"
+          },
+          {
+            "connection": 3,
+            "opcode": 744,
+            "sequence": 49,
+            "frame_bytes": 42,
+            "body_bytes": 4,
+            "sha256": "d286c398d39600598303aba3fe8f2dd4449e50f25722201e341760457907f170"
+          },
+          {
+            "connection": 3,
+            "opcode": 745,
+            "sequence": 52,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+          },
+          {
+            "connection": 3,
+            "opcode": 40,
+            "sequence": 55,
+            "frame_bytes": 39,
+            "body_bytes": 1,
+            "sha256": "2d9bd1845ba82aea8d94e132778798f9bed95b2bbdce7436ac25f2a6bd0b86e7"
+          },
+          {
+            "connection": 3,
+            "opcode": 5,
+            "sequence": 58,
+            "frame_bytes": 47,
+            "body_bytes": 9,
+            "sha256": "24f8a51e4439d6a19c8af224b8ccc938139dc74c8ab6a38c2ea5542e1e4b871f"
+          },
+          {
+            "connection": 4,
+            "opcode": 6,
+            "sequence": 40,
+            "frame_bytes": 81,
+            "body_bytes": 43,
+            "sha256": "e409c302997949bddd57690657c568588a6f1957206b284d9f41b393e6f6c3c7"
+          },
+          {
+            "connection": 4,
+            "opcode": 544,
+            "sequence": 43,
+            "frame_bytes": 48,
+            "body_bytes": 10,
+            "sha256": "9e8de83d04eeab32fbc33b6f4ee99fadc038249929c6bfbfc76e59af999866ad"
+          },
+          {
+            "connection": 4,
+            "opcode": 549,
+            "sequence": 46,
+            "frame_bytes": 41,
+            "body_bytes": 3,
+            "sha256": "683c014bbc8fbf2dcc1325c3788bfd26adb70ed576b02ef2b22903c4d00d65ee"
+          },
+          {
+            "connection": 4,
+            "opcode": 744,
+            "sequence": 49,
+            "frame_bytes": 42,
+            "body_bytes": 4,
+            "sha256": "7704fb1aa46a1a17c430094ff6033bdd25cfffc9f43664b86c605e2cd4d8f5c6"
+          },
+          {
+            "connection": 4,
+            "opcode": 745,
+            "sequence": 52,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+          },
+          {
+            "connection": 4,
+            "opcode": 567,
+            "sequence": 55,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "63b34eaa82ebde5a2c2225d69d05afa03434b1023f40242e8ecfecab8f726132"
+          },
+          {
+            "connection": 4,
+            "opcode": 67,
+            "sequence": 58,
+            "frame_bytes": 40,
+            "body_bytes": 2,
+            "sha256": "40e9433aba62af57815aa75adb3b377070436ce1808f30ba92f2743b0cc13bf9"
+          },
+          {
+            "connection": 4,
+            "opcode": 87,
+            "sequence": 61,
+            "frame_bytes": 40,
+            "body_bytes": 2,
+            "sha256": "e0ea50ce187e01bde4ab3b1fdc64419df741c1a40d92e67f13c79c617dfc4a29"
+          },
+          {
+            "connection": 4,
+            "opcode": 742,
+            "sequence": 64,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "a3e0de0e248cea05e63fafc1deb64e76cbdad6c9d0e54fac1804cee2d89aa638"
+          },
+          {
+            "connection": 4,
+            "opcode": 741,
+            "sequence": 67,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "ceca4260ec672878bdfb674cf9c56d922e7ef931506c013dae5809f083c22761"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 70,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "e28443e89692e21f334f5aa5c8e92b60d62d26bdb830d2818bf27263995ec2f0"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 73,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "454082c17ddf7efbd9d10181cf10a8e91958e454c3afb272d9f03db8a6b66756"
+          },
+          {
+            "connection": 4,
+            "opcode": 15,
+            "sequence": 76,
+            "frame_bytes": 69,
+            "body_bytes": 31,
+            "sha256": "ea6408a16ded41f7c34ad2478545ea76c821c1d584694268f988e2dc64766064"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 79,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "3f2ee188ed75a78de687d3d43b9ca8a09a20c38eb081ceac73d8954929c54126"
+          },
+          {
+            "connection": 4,
+            "opcode": 15,
+            "sequence": 82,
+            "frame_bytes": 69,
+            "body_bytes": 31,
+            "sha256": "ec2e5f3e1623ca4f24627d6f5f958562f7bc69cef306cbe7febb8eb634b1bb86"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 85,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "bc5247901942c7f6496b3ec04de938e779ee7679f65df59905a12d614ffae2f0"
+          },
+          {
+            "connection": 4,
+            "opcode": 15,
+            "sequence": 88,
+            "frame_bytes": 69,
+            "body_bytes": 31,
+            "sha256": "c7c97f99362b78f4b98a49515dcbad198c79e50b021c8a4148a6777d846997f5"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 91,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "dbace38fbca7f5408295f6dbfbb5a619006ef6e34350c52fab5bfc1d59e47b51"
+          },
+          {
+            "connection": 4,
+            "opcode": 15,
+            "sequence": 94,
+            "frame_bytes": 69,
+            "body_bytes": 31,
+            "sha256": "7f1c8ddca96e3616689f1ef7f8d5e4df2fe8a7073059ffb36666ba6836145c06"
+          },
+          {
+            "connection": 4,
+            "opcode": 715,
+            "sequence": 97,
+            "frame_bytes": 38,
+            "body_bytes": 0,
+            "sha256": "407a60f3c30b55d922d8ab8a6f3cb6b9d77c3c4cbf6271d888e59da7ffe02acb"
+          },
+          {
+            "connection": 4,
+            "opcode": 15,
+            "sequence": 100,
+            "frame_bytes": 69,
+            "body_bytes": 31,
+            "sha256": "73966973cea055a5d7dc7be801a75f94a9ee9d5001e136d6a34c58cfc6aa5601"
+          }
+        ],
+        "limits": "Separatepositiveperidentity/samesinglecopy/separateserviceprocess,not2concurrentKR/identityswap/healthydenial/accountresume/fullauthproof."
+      }
+    ],
+    "raw_count": 119,
+    "derived_adapter": "Private2accountrole/auth_A-Bselectionfromexisting137contract, baseCP217unchanged; no production/Rustintegration.",
+    "result": "NativeAandBseparatepositiveidentitypaths_confirmed",
+    "limits": [
+      "TwoactualnativeWine00967runsseparate, nottwoactualsimultaneousorcrossaccountswap. Nativeauth0/typedC2S6id-name-echo/actual67joinedwithserverpolicy, notserverlogalone.",
+      "Samepublicdummy32input/nativewriterexistingcrypt/profile47,field36patchedonlyinserverfixture; no newcrypto/clientpatch/protectedVMdecode.",
+      "No healthydenial/fullauth/sessionexpiry/restartfence/DB/API/securitygate; CP218–220EOFfailureblockerunchanged. No admissiongateclosedfromthisreport.",
+      "Both sourcefrozen/sealed/ownedcleanup;8sourceWIPpreserved. FutureCP221batchnotyetcompleted; do notrewriteCP220history. Internet thật chưa kiểm."
+    ]
+  },
+  "kernel_tcp": {
+    "source": "emu_choice",
+    "status": "design",
+    "method": "RealLinuxkernelTCP/privateusernetnamespace/2syntheticloopbacksources/retainednativeA-Bframes",
+    "cases": [
+      {
+        "case": "wrong-identity",
+        "run_sha256": "bd559076f7f0db2052dda5562214fa99ce9de7a3e0084308b30177be151230fd",
+        "duration_s": 0.214679842,
+        "raw_count": 5,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "result": "fail",
+        "error": "AssertionError('BownerEOFpreservesA')",
+        "rejected_reason": "identity_mismatch",
+        "checks": [
+          {
+            "check": "loopbackonly/nooutboundroute",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530570186398
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530631340667
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530631343047
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530632072178
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530632074608
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530632535038
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530632536658
+          },
+          {
+            "check": "authA length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530633379558
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530633776968
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530633778158
+          },
+          {
+            "check": "17A length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530634262609
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530655048039
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530655049249
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530655857649
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530655859199
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530656342559
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530656343919
+          },
+          {
+            "check": "authB length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530657235220
+          },
+          {
+            "check": "tokenaccountsmaptopinnedwireIDs",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530657483940
+          },
+          {
+            "check": "Bticketmatchescapturednative6",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530657486150
+          },
+          {
+            "check": "kernelEOFwrongclaim",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530657763880
+          },
+          {
+            "check": "exactdeclaredpolicyreason",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530678469200
+          },
+          {
+            "check": "wrongclaimkeepsAownerandBpendinglease",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530678475640
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530678628740
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530678629620
+          },
+          {
+            "check": "17B length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530679321070
+          },
+          {
+            "check": "legitimateBstilladmittedbesideA",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530699930470
+          },
+          {
+            "check": "boundBduplicatecannotremaptoA",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530721061710
+          },
+          {
+            "check": "67reply-A length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530721495380
+          },
+          {
+            "check": "actualTCPAstillservesafterbadbinding",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530721496790
+          },
+          {
+            "check": "67reply-B length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530741158840
+          },
+          {
+            "check": "actualTCPBstillservesafterbadbinding",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161530741163130
+          }
+        ],
+        "limits": "SyntheticTCPdriver/fixedpublictickets,notKRnativehealthydenial/simultaneous/swap/securityproof. R1driverhistoricalchannelsassertionwrong;R2active/session/openA/closedBchecks."
+      },
+      {
+        "case": "wrong-source",
+        "run_sha256": "ef835f1d0f9062e58ee278fa9e16e6db434d693ed35f6e501791c4798f16643a",
+        "duration_s": 0.214523143,
+        "raw_count": 5,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "result": "fail",
+        "error": "AssertionError('BownerEOFpreservesA')",
+        "rejected_reason": "lease_binding",
+        "checks": [
+          {
+            "check": "loopbackonly/nooutboundroute",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531012290519
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531073351068
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531073353418
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531073932618
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531073934138
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531074352178
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531074353198
+          },
+          {
+            "check": "authA length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531075338119
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531076116049
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531076118719
+          },
+          {
+            "check": "17A length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531076682370
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531097508360
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531097509360
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531098078680
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531098079670
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531098536430
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531098537740
+          },
+          {
+            "check": "authB length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531099428880
+          },
+          {
+            "check": "tokenaccountsmaptopinnedwireIDs",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531099614391
+          },
+          {
+            "check": "Bticketmatchescapturednative6",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531099616181
+          },
+          {
+            "check": "kernelEOFwrongclaim",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531099944821
+          },
+          {
+            "check": "exactdeclaredpolicyreason",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531120502720
+          },
+          {
+            "check": "wrongclaimkeepsAownerandBpendinglease",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531120508650
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531120655501
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531120656231
+          },
+          {
+            "check": "17B length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531121322011
+          },
+          {
+            "check": "legitimateBstilladmittedbesideA",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531141897411
+          },
+          {
+            "check": "boundBduplicatecannotremaptoA",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531162796861
+          },
+          {
+            "check": "67reply-A length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531163159261
+          },
+          {
+            "check": "actualTCPAstillservesafterbadbinding",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531163160921
+          },
+          {
+            "check": "67reply-B length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531183202410
+          },
+          {
+            "check": "actualTCPBstillservesafterbadbinding",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161531183206490
+          }
+        ],
+        "limits": "SyntheticTCPdriver/fixedpublictickets,notKRnativehealthydenial/simultaneous/swap/securityproof. R1driverhistoricalchannelsassertionwrong;R2active/session/openA/closedBchecks."
+      },
+      {
+        "case": "wrong-identity-r2",
+        "run_sha256": "ceb89eda0924a0a9b64a9e1597d64251c60faeb18ae53368711c41a51342c021",
+        "duration_s": 0.281753195,
+        "raw_count": 5,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "result": "pass_scoped_twoaccount_TCP",
+        "error": null,
+        "rejected_reason": "identity_mismatch",
+        "checks": [
+          {
+            "check": "loopbackonly/nooutboundroute",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595088650173
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595149683492
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595149685362
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595150259522
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595150261362
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595150723172
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595150724762
+          },
+          {
+            "check": "authA length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595151602213
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595152127203
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595152128853
+          },
+          {
+            "check": "17A length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595152627723
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595173373023
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595173374263
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595173945804
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595173947114
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595174366044
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595174366914
+          },
+          {
+            "check": "authB length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595175250654
+          },
+          {
+            "check": "tokenaccountsmaptopinnedwireIDs",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595175432614
+          },
+          {
+            "check": "Bticketmatchescapturednative6",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595175434244
+          },
+          {
+            "check": "kernelEOFwrongclaim",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595175792534
+          },
+          {
+            "check": "exactdeclaredpolicyreason",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595196285864
+          },
+          {
+            "check": "wrongclaimkeepsAownerandBpendinglease",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595196291304
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595196427084
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595196428014
+          },
+          {
+            "check": "17B length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595197131975
+          },
+          {
+            "check": "legitimateBstilladmittedbesideA",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595217703984
+          },
+          {
+            "check": "boundBduplicatecannotremaptoA",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595238478984
+          },
+          {
+            "check": "67reply-A length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595238806074
+          },
+          {
+            "check": "actualTCPAstillservesafterbadbinding",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595238806974
+          },
+          {
+            "check": "67reply-B length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595258156434
+          },
+          {
+            "check": "actualTCPBstillservesafterbadbinding",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595258159824
+          },
+          {
+            "check": "BownerEOFpreservesopenAandclosesB",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595279284044
+          },
+          {
+            "check": "finalownerEOFclearsbothsessionmaps",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595299886654
+          }
+        ],
+        "limits": "SyntheticTCPdriver/fixedpublictickets,notKRnativehealthydenial/simultaneous/swap/securityproof. R1driverhistoricalchannelsassertionwrong;R2active/session/openA/closedBchecks."
+      },
+      {
+        "case": "wrong-source-r2",
+        "run_sha256": "e4a77be1a67528906c811717439b47c78860b1c763c1adc99b71969d1f4d78ea",
+        "duration_s": 0.282928595,
+        "raw_count": 5,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "result": "pass_scoped_twoaccount_TCP",
+        "error": null,
+        "rejected_reason": "lease_binding",
+        "checks": [
+          {
+            "check": "loopbackonly/nooutboundroute",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595582077808
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595643138597
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595643141387
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595643679868
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595643681468
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595644129728
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595644130778
+          },
+          {
+            "check": "authA length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595645039478
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595645496308
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595645497628
+          },
+          {
+            "check": "17A length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595645999829
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595666902349
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595666903559
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595667677829
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595667679279
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595668117559
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595668118869
+          },
+          {
+            "check": "authB length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595668998940
+          },
+          {
+            "check": "tokenaccountsmaptopinnedwireIDs",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595669274210
+          },
+          {
+            "check": "Bticketmatchescapturednative6",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595669276850
+          },
+          {
+            "check": "kernelEOFwrongclaim",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595669555960
+          },
+          {
+            "check": "exactdeclaredpolicyreason",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595690212130
+          },
+          {
+            "check": "wrongclaimkeepsAownerandBpendinglease",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595690218980
+          },
+          {
+            "check": "hello length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595690368380
+          },
+          {
+            "check": "knownhello",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595690369180
+          },
+          {
+            "check": "17B length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595691113580
+          },
+          {
+            "check": "legitimateBstilladmittedbesideA",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595711849750
+          },
+          {
+            "check": "boundBduplicatecannotremaptoA",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595732754800
+          },
+          {
+            "check": "67reply-A length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595733113710
+          },
+          {
+            "check": "actualTCPAstillservesafterbadbinding",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595733114760
+          },
+          {
+            "check": "67reply-B length",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595752149589
+          },
+          {
+            "check": "actualTCPBstillservesafterbadbinding",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595752153549
+          },
+          {
+            "check": "BownerEOFpreservesopenAandclosesB",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595773316169
+          },
+          {
+            "check": "finalownerEOFclearsbothsessionmaps",
+            "result": "pass",
+            "method": "kernelTCP_driver/design",
+            "ns": 161595793884649
+          }
+        ],
+        "limits": "SyntheticTCPdriver/fixedpublictickets,notKRnativehealthydenial/simultaneous/swap/securityproof. R1driverhistoricalchannelsassertionwrong;R2active/session/openA/closedBchecks."
+      }
+    ],
+    "raw_count": 20,
+    "result": "R2wrongidentity_and_foreignsource_preservelease_owner_pass_R1driverfailures_retained",
+    "behaviors": [
+      "PendingBticket+wrongID/name rejected, Blease retained and activeA preserved.",
+      "CorrectBidentity/ticket from foreignAsource rejected, samepreservation.",
+      "LegitimateBcanstillclaimaftereitherdenial;A/Bownersbothreceive67replyoverrealTCP.",
+      "Aidentity6onboundBduplicatecannotremapowner;BEOFpreservesopenAandownsession,finalAEOFclearsmaps."
+    ],
+    "limits": [
+      "NoKRclientinthesekernelTCPcases;actual2nativepositiveidentitiesfromseparaterunsholdseparateproof.",
+      "Notnativewrongclaimhealth/accountswap/accountresume/sessionexpiry/restartfence/DB/fullauth/security. Fixedpublicticketsand2sourcesaretestcontrols.",
+      "R1expectationincorrectlytreatedretainedclosedchannelhistoryasactiveownership;R2usesexistingsemantics,notserverbehaviorchange. R1sources/raw immutable.",
+      "8transportlegacyprototype/2accounts; nogeneralrelogin/newadmissionflow/native2concurrentclaim. Source/configfrozenperrun;ownedcleanupverified."
+    ]
+  },
+  "source_first": [
+    {
+      "path": "local/research/codex/auth-two-account-r1/source-first.json",
+      "sha256": "1a34ac111f5ea71e4ff7d4391d88ccd18537f4e29b6c930391aec9a9090c0909"
+    },
+    {
+      "path": "local/research/codex/auth-two-account-controls-r1/source-first.json",
+      "sha256": "cbeabb9efedb67dcb78abd11ccca73f19072f35c4e6031ad3e8f0d36c25707b0"
+    }
+  ],
+  "limits": "PrivateREprototype/metadataonlydelivery;2nativeWinepositivesseparate119raw+4syntheticTCPcases20raw, not2actualconcurrent/healthydenial/fullauth/Rustintegration. CP220completeunchanged,batchedPR292newexactheadrequired. AUD064through220/next224. Internet thật chưa kiểm."
+}

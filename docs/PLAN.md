@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP219: matched valid-claim và baseline field36=0 đều tái hiện EOF fault; native vtable+50→target17C7F40→call12578AC đã đo. Receiver selection còn unknown; lifecycle âm tính FAIL. CP217–218 đã mergePR290/f9f48d2. Kế hoạch Rust đã giao CP213/PR286, chưa implementation; K6c WAN giả lập/K7 scoped đạt, Internet thật chưa kiểm. AUD063qua216/kếCP220.
+CP221: native A/B positive riêng ID/name/echo/67 đã đo; wrongID/name/source TCP giữ leaseB/ownerA, không nativehealthydenial/twoactualsimultaneous proof. CP220–221 giao chungPR292; CP219 đã mergePR291. Rust planning đã giao, chưa implementation; K6c WAN giả lập/K7 scoped đạt, Internet thật chưa kiểm. AUD064qua220/kế224.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,24 +64,26 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-AUTH-CHANNEL-EOF**: [CP219](PROTOCOL.md#auth-eof-dispatch)/[raw](evidence/login-runtime/README.md#cp219)
-   đã đo matched valid-claim/zero-field control và native vtable16ECAA8+50→17C7F40→call12578AC;
-   lỗi không cần expired/revoked hoặc nonzeroecho. Không chạy lại các control đó.
-   Tiếp source-first đúng receiver selection: cache getter13AEBE0/call1257836→localthis125783B
-   trong context candidate, rồi native return/this selection trước dispatch nếu cần. Không quy rootcause
-   theo RTTI; không patchvtable hoặc linear protected decode. Probe1257360 sau6 không hit;
-   snapshot callback cũ preauth không thay proof prefault. Nếu hết hai lượt không có cạnh mới, ghi blocker
-   và chuyển việc độc lập phù hợp scope; không mở SDKgraph hoặc nâng Rust implementation khi chưa mở đợt.
-2. **NEXT-AUTH-SESSION-BINDING** còn mở: CP217valid/badtoken vàCP218policydeny cóscope riêng,
-   nativelease-negative lifecycle chưađạt. KernelTCPreplay/twoactualidentityswap/sessionexpiry/restartfence/DB
-   chưađo/triểnkhai;32bit/sourceIP/inmemory không fullauth. Không lặp tokencrypto/producer6/Profile137.
+1. **NEXT-AUTH-SESSION-BINDING**: [CP221](PROTOCOL.md#auth-two-account)/[raw](evidence/login-runtime/README.md#cp221)
+   đã có native positive từng identity và kernelTCP wrongID/name/foreignsource giữ lease/owner; không đo lại.
+   Tiếp source-first harness hai client/virtualendpoint từ CP189/200, admission_ips/fourtransports và per-role
+   public token input: đo cùng process hai actualKR bind ID/name/echo/session riêng rồi actual67 cảhai.
+   Không thêm8client hoặc dựng flow reconnect mới. Two-actual swap/healthydenial còn thiếu; nativeEOF lỗi
+   ở mục2 không được che bằng TCP driverpass. Sessionexpiry/restartfence/DB/API chưa triển khai; echo32bit/
+   sourceIP/inmemory không fullauth. Nếu harness thiếu observable/ổn định, ghi đúng blocker, không mở VM/SDK.
+2. **NEXT-AUTH-CHANNEL-EOF — blocked về observable receiver selection**:
+   [CP219](PROTOCOL.md#auth-eof-dispatch) đã đo native bad-dispatch; [CP220](PROTOCOL.md#auth-tcp-ownership)
+   getter13AEBE0 trả null ở caller khác, selected-store125783B không hit; hardwarewatch không snapshot,
+   không có proof nguồn chọn receiver. Hai followup đã seal; không lặp broad getter/watch/EOF controls.
+   Chỉ mở lại khi có cạnh native mới hoặc graceful error recipe có nguồn; không patch vtable/RTTI,
+   linear protected decode hoặc mở SDK/VM graph. Chuyển việc độc lập ở mục1 trong lúc blocker này còn mở.
 3. Lát cắt Rust đầu tiên vẫn **RUST-M0→M1**, không phụ thuộc authbridge/fullauthRE. Chỉ triển khai khi mở đợt implementation đúng phạm vi:
    pinned Python baseline rồi pure codec/per-connection/nativehello-error-retry;
    [M0–M8](#rust-service-milestones) là thứ tự implementation duy nhất. M5backend có thể làm độc lập sớm,
    không chờ Battle/mọiitem và không chờ fullauthRE để thiết kế DB. Không tạo Rust tree trong đợt RE này.
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP219 không nâng gate; AUD063 qua216/audit kếCP220.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP221 không nâng gate; AUD064 qua220/audit kếCP224.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu

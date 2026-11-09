@@ -217,3 +217,58 @@ Raw stack/source/three post6 snapshots nối vtable+50 → target17C7F40 → loc
 return12578AF → fault17C7F4C; actualthis RTTICObject. Callback snapshots cũ preauth không là prefault,
 protected entry1257360 không hit sau6. Receiver selection/rootcause chưa giải, nativelease-negative
 lifecycle FAIL; không patch/binary/source production hoặc Rust. Không đóng #14/#285/gate.
+
+<a id="cp220"></a>
+## CP220 — receiver trace dừng có blocker; kernelTCP ownership riêng
+
+[Contract/giới hạn](../../PROTOCOL.md#auth-tcp-ownership), [metadata](transport-controls.json),
+[câu hỏi](../../RESEARCH.md#rust-service-gaps), [thứ tự](../../PLAN.md#current-order).
+CP219 đã merge [PR291](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/291)/`09435d9`.
+Bốn run liên quan, không checkpoint từng thao tác; AUD064 periodic qua220, audit kế224.
+
+| Run/root dưới local/research/codex/ | Quan sát/giới hạn | Wall/raw | run.json SHA256 |
+|---|---|---|---|
+| `auth-channel-receiver-r1/zero-receiver` | Getter4null ở caller khác, store125783B không hit; cùng native fault, không receiver proof | 39.887805350s/47 | `ba4f33ec03124cfac9ed69d850bdda7356f32031920b9f880dd5b19c66111f3f` |
+| `auth-channel-receiver-watch-r1/zero-watch` | Watch armed/no snapshot; Wine unhandled17C7F4C, GDB no registers; diagnostic inconclusive | 39.937802774s/47 | `cd90bf9840b19c171ba322666f3682dd28b2d0944b047fc1c03ebb7712a770e4` |
+| `auth-tcp-replay-r1/kernel-replay` | TCP driver typed-field error giữ nguyên | 0.112849524s/4 | `d4f3bb1367ae10b917ea72e309eafd3155a138d199dc1af8b874d25bd1e74ce6` |
+| `auth-tcp-replay-r1/kernel-replay-r2` | 22 scoped kernelTCP checks qua; duplicate/replay giữ owner, ownerEOF release; không nativeKR | 0.232905161s/4 | `b20612d401981ec41cb2b0ab30deb0a21efb66490e21704e33379daed4a9e730` |
+
+Mỗi root có recipe/preflight/raw-seal/cycles; native có Wine/client/SEH/GDB/rawscreens, kernelTCP có
+`wire.json`, `adapter.log`, `service/service-state.json`, `run.json`. Toàn102 raw/sourcefreeze/cleanup
+được kiểm; failures giữ nguyên. Reports/verifiers trong local auth-channel-receiver-r1,
+auth-channel-receiver-watch-r1, auth-tcp-replay-r1 và verify_auth_receiver*.py/verify_auth_tcp_replay.py.
+Không đổi source/config/input giữa run. Bản adapter/policy CP217 và mọi record/audit complete cũ giữ nguyên.
+
+TCP driver dùng captured native login6/67 và fixed public ticket, duplicate6/request67 sequence sửa rõ;
+byte-exact captured6 replay trên socket mới bị EOF trong khi owner cũ vẫn nhận reply67.
+Không chạy client KR ở ca TCP; không nativehealthydenial/twoactualswap/restartfence/entropy/fullauth proof.
+R1 fixedticket decode sai như little-endian; R2 dùng `codec.read_fields` đã có, không đổi wire contract.
+No-watch-snapshot không là no-write hoặc supportedwatch proof. Không lặp getter/watch không có observable.
+#14/#285 còn mở; không gate/Rust/production behavior change;8WIP byte-exact. Internet thật chưa kiểm.
+
+<a id="cp221"></a>
+## CP221 — hai native positive identity riêng và wrong-binding TCP
+
+[Contract/giới hạn](../../PROTOCOL.md#auth-two-account), [metadata](two-account.json),
+[câu hỏi](../../RESEARCH.md#rust-service-gaps), [thứ tự](../../PLAN.md#current-order).
+CP220 complete/AUD064 giữ nguyên; CP220–221 cùngPR292 cần kiểm exacthead mới. Audit kếCP224.
+Raw native ở `local/research/codex/auth-two-account-r1/`, TCP ở `auth-two-account-controls-r1/`.
+Mỗi root có recipe/preflight/raw-seal/cycles; native có writer/aux/serializer/auth17markers/actualC2S,
+TCP có wire.json/service-state/adapter log. Code/probe/capturedframe/verification local; metadata được commit.
+
+| Run | Wall/raw | run.json SHA256 |
+|---|---|---|
+| native-A | 50.964269862s/59 | `f43cb2eefc95dfe5adb98e825cf748765aee24def23336cf499565cc50ffeb41` |
+| native-B | 49.842327846s/60 | `9cb395e68c353ff8519076782c313fb499be83de463a8663ca55c698a3c844e2` |
+| wrong-identity | 0.214679842s/5 | `bd559076f7f0db2052dda5562214fa99ce9de7a3e0084308b30177be151230fd` |
+| wrong-source | 0.214523143s/5 | `ef835f1d0f9062e58ee278fa9e16e6db434d693ed35f6e501791c4798f16643a` |
+| wrong-identity-r2 | 0.281753195s/5 | `ceb89eda0924a0a9b64a9e1597d64251c60faeb18ae53368711c41a51342c021` |
+| wrong-source-r2 | 0.282928595s/5 | `e4a77be1a67528906c811717439b47c78860b1c763c1adc99b71969d1f4d78ea` |
+
+Hai native run119raw: A1/KRLocal, B2/KRGuest,32token/auth0/echo đúng/actual67, sourcefreeze/cleanup0;
+chạy riêng trên cùng copy/Wine, không2actual đồng thời. Bốn TCP run20raw: hai R1 failure do assertion
+channel lịch sử/active sai giữ nguyên; hai R2 mỗi34scopedchecks dùng active/session/openA/closedB.
+WrongID/name hoặc sai source giữ pendingB và ownerA; actualTCP B sau đó vẫn bind, cảhai nhận67,
+BEOF không xóa ownerA. Driver synthetic/fixedpublictickets, không nativehealthydenial/swap/securityproof.
+Bản CP217 giữ nguyên; derived2accountadapter chỉ chọn known auth_A/B và role từ verifiedaccount.
+Không production/Rust integration hoặc gate mới;8WIP giữ nguyên. Internet thật chưa kiểm.

@@ -28,6 +28,22 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP221: A/B đã đi qua native đúng identity; wrong-binding TCP giữ lease/owner.**
+[Contract/giới hạn](docs/PROTOCOL.md#auth-two-account), [run/hash](docs/evidence/login-runtime/README.md#cp221):
+hai positive Wine riêng ID1/KRLocal và ID2/KRGuest có auth0/C2S6 echo/actual67;119raw đã kiểm.
+Bốn TCP driver run/20raw kiểm wrongID/name/sai source không tiêu lease hoặc xóa owner; R1 driver failures giữ nguyên.
+Chưa hai KR đồng thời/swap/healthydenial/fullauth/Rust; EOF blocker giữ rõ. CP220–221 giao chung
+[PR292](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/292), trạng thái tích hợp theo PR;
+AUD064 qua220/audit kế224. [Bước tiếp](docs/PLAN.md#current-order).
+
+**CP220: adapter giữ owner qua TCP duplicate/replay; native EOF lifecycle vẫn chưa đạt.**
+[Contract/giới hạn](docs/PROTOCOL.md#auth-tcp-ownership), [run/hash](docs/evidence/login-runtime/README.md#cp220):
+TCP driver tổng hợp kiểm owner tiếp tục nhận reply sau duplicate/replay và owner EOF giải phóng session;
+không dùng kết quả này thay client KR. Getter/watch receiver chưa có observable đủ để sửa; hai native run vẫn lỗi.
+Bốn run/102 raw mới đã seal/hash/cleanup; R1 driver error giữ nguyên, R2 dùng codec sẵn có.
+CP219 đã merge [PR291](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/291)/`09435d9`;
+AUD064 qua220, audit kếCP224; #14/#285 vẫn mở, chưa Rust/fullauth. [Bước tiếp](docs/PLAN.md#current-order).
+
 **CP219: đã khoanh nguồn dispatch lỗi sau EOF, chưa giải lifecycle âm tính.**
 [Contract/giới hạn](docs/PROTOCOL.md#auth-eof-dispatch), [bốn run/hash](docs/evidence/login-runtime/README.md#cp219):
 lease hợp lệ hoặc baseline field36=0 vẫn cùng fault; native vtable+50 → target17C7F40 → call12578AC có proof.
