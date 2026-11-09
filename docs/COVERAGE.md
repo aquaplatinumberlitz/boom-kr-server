@@ -257,15 +257,15 @@ Phép kiểm tối thiểu (trích cùng nguồn): Chỉ mở consumer/config đ
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#2](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2).
 
-Bằng chứng/build/hash/recipe: [wcp-sequence](evidence/wcp-sequence/README.md), [probe-service](evidence/probe-service/README.md), [live-codec-stream](evidence/live-codec-stream/README.md), [live-codec-stream](evidence/live-codec-stream/README.md#cp181).
+Bằng chứng/build/hash/recipe: [wcp-sequence](evidence/wcp-sequence/README.md), [probe-service](evidence/probe-service/README.md), [live-codec-stream](evidence/live-codec-stream/README.md), [live-codec-stream](evidence/live-codec-stream/README.md#cp181), [rust-service](evidence/rust-service/README.md#cp231).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
-| presence | present | [nguồn1](PROTOCOL.md#wcp) |
+| presence | present | [nguồn1](PROTOCOL.md#wcp), [nguồn2](PROTOCOL.md#rust-foundation) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#wcp) |
 | emulation | checked | [nguồn1](evidence/wcp-sequence/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/wcp-sequence/README.md), [nguồn2](evidence/live-codec-stream/README.md), [nguồn3](evidence/live-codec-stream/README.md#cp181) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/wcp-sequence/README.md), [nguồn2](evidence/live-codec-stream/README.md), [nguồn3](evidence/live-codec-stream/README.md#cp181), [nguồn4](PROTOCOL.md#rust-foundation) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
@@ -286,15 +286,15 @@ Phép kiểm tối thiểu (trích cùng nguồn): Codec backlog theo trigger K3
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#3](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/3), [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285).
 
-Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [probe-service](evidence/probe-service/README.md), [codec-boundaries](evidence/codec-boundaries/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [docs](PLAN.md#k0-k2a-acceptance), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PROTOCOL.md#bootstrap-recipe-scope), [live-codec-stream](evidence/live-codec-stream/README.md), [live-codec-stream](evidence/live-codec-stream/README.md#cp181).
+Bằng chứng/build/hash/recipe: [primitives](evidence/primitives/README.md), [probe-service](evidence/probe-service/README.md), [codec-boundaries](evidence/codec-boundaries/README.md), [current-tcp-replay](evidence/current-tcp-replay/README.md), [docs](PLAN.md#k0-k2a-acceptance), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PROTOCOL.md#bootstrap-recipe-scope), [live-codec-stream](evidence/live-codec-stream/README.md), [live-codec-stream](evidence/live-codec-stream/README.md#cp181), [rust-service](evidence/rust-service/README.md#cp231).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
-| presence | present | [nguồn1](PROTOCOL.md#wcp) |
+| presence | present | [nguồn1](PROTOCOL.md#wcp), [nguồn2](PROTOCOL.md#rust-foundation) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
 | kr_static | partial | [nguồn1](PROTOCOL.md#wcp), [nguồn2](PROTOCOL.md#codec-stream-boundaries) |
 | emulation | checked | [nguồn1](evidence/primitives/README.md), [nguồn2](evidence/codec-boundaries/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/live-codec-stream/README.md), [nguồn3](evidence/live-codec-stream/README.md#cp181) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/probe-service/README.md), [nguồn2](evidence/live-codec-stream/README.md), [nguồn3](evidence/live-codec-stream/README.md#cp181), [nguồn4](PROTOCOL.md#rust-foundation) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |

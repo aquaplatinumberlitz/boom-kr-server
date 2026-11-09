@@ -26,7 +26,7 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 | Quyết định design | Lý do / điều kiện xem lại |
 |---|---|
 | Viết Rust từng lát cắt; Python giữ RE/đối chứng | Đã có native contracts/policy hẹp; không chờ full RE. Lần chuyển đầu giữ semantics, thay authority/policy thành task riêng |
-| Cùng repo boom-kr-server, dự kiến rust/Cargo.toml, rust/crates/kr-wire và kr-service | Contract/evidence/tool/issue cùng lịch sử; giữ server/ Python. Chỉ hai crate: wire thuần và service lib+binary. **Implementation đã mở theo owner09/11; dùng rust/ cùng repo** |
+| Cùng repo boom-kr-server, rust/Cargo.toml, rust/crates/kr-wire và kr-service | Contract/evidence/tool/issue cùng lịch sử; giữ server/ Python. Chỉ hai crate: wire thuần và service lib+binary. **Implementation đã mở theo owner09/11; dùng rust/ cùng repo** |
 | Một process Linux, nhiều listener/stage, mỗi room một owner serialize | Hiện một phòng/2–8 người; không cần microservices/IPC. Chỉ tách process khi có đo tải, ownership hoặc failure isolation cụ thể |
 | Tokio I/O, bounded queues theo byte và message, writer riêng mỗi socket | Nonreader không chặn phòng, stage/seq/order theo connection. Không spawn unsupervised task cho từng timer |
 | Giữ direct UDP peer và endpoint exchange đã chứng minh | Native tự tính movement/geometry một phần. Không thay bằng TCP-only hoặc authoritative snapshots của boom-rs. Mapping NAT tĩnh là một profile, không discovery/relay đã phục hồi |
@@ -36,11 +36,12 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 | KR crypt/CRC không là TLS hoặc credential protection | Credential mới qua CLI được bảo vệ hoặc web HTTPS design. Không nhét password/token vào unknown header/field |
 | Không import nguyên crate/server VN hoặc boom-rs | Khác build/wire/authority. Dùng pattern/test lessons, reimplement từ KR contract có provenance |
 
-Dependency dự kiến, chưa thêm Cargo hoặc chốt phiên bản: Tokio; bytes nếu buffering cần; serde/JSON,
-SHA-256 cho provenance; tracing; rusqlite bundled cho DB worker; argon2/Argon2id-PHC, getrandom và
+M1 đã pin trong Cargo.lock/toolchain: Tokio1.53.3 cho boundedI/O/timeout/signal, serde1.0.229/serde_json1.0.154 cho config/log,
+sha2 0.11.1 cho fixtureprovenance. kr-wire không dependency. bytes là transitiveTokio; chưa cần trực tiếp.
+Các đợt sau dự kiến tracing; rusqlite bundled cho DB worker; argon2/Argon2id-PHC, getrandom và
 zeroize nếu giữ secret trong memory. encoding_rs cho KR cp949 chỉ khi consumer đối chiếu, không mặc định
-UTF-8 trên wire. Foundation sẽ pin toolchain/lockfile/version/license. HTTP framework chỉ thêm khi cần
-web thật; CLI/Unixsocket đủ cho bản đầu. Đây chưa là dependency đã build/test ở repo này.
+UTF-8 trên wire. Foundation đã pin toolchain/lockfile/version; crates publish=false, chưa đóng gói release/SBOM/licenseaudit. HTTP framework chỉ thêm khi cần
+web thật; CLI/Unixsocket đủ cho bản đầu. Nhóm account/DB/web này chưa được thêm/build/test trong repo; trạng thái milestone ở PLAN.
 
 ## Nguồn đã khảo sát và quyết định tái sử dụng
 

@@ -3122,6 +3122,56 @@ fatalsequence giữ riêng. Unknownfullgrammar/modes/prefix/headerauthority/FFFF
 cache/accountresume không tự thànhconfirmed; [nghiệm thu K2profile](PLAN.md#k2-acceptance) là quyếtđịnh
 thủ công riêng. Tại CP181 K3 còn ở RESEARCH; CP186 đã nghiệm thu localprofile, thứ tự hiện hành ở PLAN.
 
+<a id="rust-foundation"></a>
+### Rust foundation và native login-error/retry — CP231
+
+[Code/cách chạy](../rust/README.md), [recipe/raw/hash](evidence/rust-service/README.md#cp231),
+[metadata](evidence/rust-service/foundation.json). Owner09/11 đã mở implementation; CP213planning-only là lịch sử.
+Rust reimplement measured [codec/retry CP181](#login-retry-codec), không import server VN hoặc boom-rs.
+
+**Implementation/policy `design`:** cùng repo hai crate `kr-wire`/`kr-service`, Rust1.99.0/lockfile/Linux.
+Wire mode2/selector3/header37 opaque, unsignedtypedfields/crypt/CRC8, seq40+3n riêng mỗi receive connection;
+decode lỗi không advance. Buffer/frame tối đa64KiB là diagnosticbound, không maximumKR. Hello15/WCPsecond317/
+error1frame39 pin size/SHA trước bind; error opcode4/payload1/seq43 được Rust encode exact với native-testedfixture.
+Diagnostic mapping hai transport đầu là WCP, các login sau trả result1; **không authentication/accountownership**.
+Ancillary60/body20 và15/body31 sau rejection có trong CP181; Rust ignore không reply/budget64, không gán nghĩa.
+Unknownstage/duplicate1/CRC/length lỗi failclosed. Chưa mode/header/prefix grammar tổng quát.
+
+Tokio owned listener tasks/connection receiver, semaphore≤64, acceptqueue32/logqueue256/buffer64KiB,
+readidle/write/log/shutdown deadlines; không spawn per-packet timer tasks hoặc unbounded sendqueue.
+M1 chỉ ghi response nhỏ trực tiếp có writetimeout, chưa đo generalbackpressure/SLO; chưa cần actor-room/writerqueue
+cho gameplay. Structuredlog có build/version/boot/connection/stageevent/seq/size/hashpinnedreply, không rawtoken/
+credential/authbodydigest. Hashwrong/invalidconfig/bindconflict fail before readiness; SIGTERM/SIGINT drain/close.
+
+**Kiểm khác loại, không thay nhau:**5wiretests dùng2capturedC2S6/544 và plaintext nativeemulation CP057 cố định,
+every split/coalesce/CRC/incompleteEOF/bounds/unsigned examples; maxframe/wrap là designregression tự tạo,
+không nativeKR oracle mới.14kernelTCP/process cases dùng capturedC2S1 làm input: split/exactreply, ancillary
+keepopen, badCRC/no reply, oversize/headerbound, partialEOF/idledeadline, duplicate/coalescedstageclose,
+quota/freshconnectionreset/SIGTERM/rebind/hashfail/bindconflict. Python codec chỉ đối chứng; đồng ý không proofcontract.
+
+**`kr_runtime/confirmed` finalR3:** copye9/Wine10.0/inheritedglobalreset/privateuser-net-mount-PID/lo-only/nooutbound.
+Cùng CA LinuxPID144 qua firstlogin→ordinary close-notice+confirm(command1002)→newlogin. Hai nativehello
+mode0/selector0 seq40→43/15consumed; hai frame4/result1 mode2/selector3 seq43→46/payload1/ret0,
+handler10FEDF1 ghi result1/global0 hai lần. PCAP108record/toànselectedstreams: exacthello/WCPsecond/error1,
+typed actualC2S và Rustseq/op/len khớp, login connections3/4 đều resetC2Sseq40; giữ9.517034768s sau result2,
+ảnh cuối normal credential-error notice. Mode0packetobject offsets trong retainedprobe sai layout, chỉ dùngsocketstate.
+Hai lần đều từ chối login; **chưa authsuccess/channel/lobby/room/Battle/accountresume** trên Rust.
+
+**Failure/correction bảo toàn:** R1 senterror nhưng đóngsocket ngayactual60/body20→native không có result1,
+NoticeDisconnected10/global1/cleanup/SIGILL;53raw/FAIL, không gọi đã đọc lỗi. R2 giữ ancillary theoCP181,
+native2result1/UIretry có nhưngcapturelo thu unrelatedlocaltraffic chạm12000record,63raw/partialcapture, không đủtracejoin.
+R3 chỉ lọc capture theo portKR, cùng Rustbinary/inputprofile,54raw/complete. Tổng3run170raw/frozen/seal/ownedcleanup0.
+R3 cuối raw có Targetdisconnected/framerentry và GDBinternal-error khi teardown; finalcontrollerobservations launcher
+alive/CA-PID/UI giữ trước ownedWinecleanup; không healthydebugger-aftercleanup claim. Retainfirststrictverifierfailure/
+scopedverifier/observerreview; không sửa raw. Servicebinary finalbuild SHA giữ đúng native-testedbinary.
+
+**M0/M1 acceptance thủ công đạt scope trên**, không đổi K0–K7/fullgame/fullservice. M0archive exactPython784a0d8/
+server-tools/privateCP181adapter/47fixturepins giữ rollback, támsourceWIP byte-exact/excluded; không clientbundle phát hành.
+Tokio/serdeJSON/SHA-256 dependencies có lý do tương ứng I/O-config/log-inputpins, lockfile/toolchain đã kiểm.
+[PLAN](PLAN.md#current-order) tiếp M2localidentity→sảnh→fixedroom bằng contract đã có; Python serving/RE/reference giữ,
+chỉ RE discrepancy chặn port. Quota/rate/fairness/DB/UDP/load/SLO/internet/production chưa nghiệm thu. Audit kếCP232.
+**Internet thật chưa kiểm**.
+
 <a id="auth-profile"></a>
 ### Success/profile count1 đã đọc sạch trên copy — CP058
 
