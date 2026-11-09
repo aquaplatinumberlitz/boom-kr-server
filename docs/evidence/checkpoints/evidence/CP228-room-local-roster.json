@@ -1,0 +1,1328 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "ROOM228-00001",
+      "kind": "local",
+      "path": "local/research/codex/append_cp228.py",
+      "bytes": 11058,
+      "sha256": "3299cb182bd392fe29f18ce1170d2245388e68df344054e178e3102ed4e091f5"
+    },
+    {
+      "id": "ROOM228-00002",
+      "kind": "local",
+      "path": "local/research/codex/audit_cp228.py",
+      "bytes": 6066,
+      "sha256": "5f4adba6efa9063d0a75d644269f65cf909c89535fcde6516ea65a9fab8f42ff"
+    },
+    {
+      "id": "ROOM228-00003",
+      "kind": "local",
+      "path": "local/research/codex/capture_github_cp228.py",
+      "bytes": 1940,
+      "sha256": "ebdbf418b6847dd1ea98ad0350dae0a541faa95487f84cd6b58622def23b1700"
+    },
+    {
+      "id": "ROOM228-00004",
+      "kind": "local",
+      "path": "local/research/codex/cp228-GitHub-issues-1.json",
+      "bytes": 619816,
+      "sha256": "540d0fbaf8c6f707664e60b7990f60654462307d297e2749993da3fbf2c6ca88"
+    },
+    {
+      "id": "ROOM228-00005",
+      "kind": "local",
+      "path": "local/research/codex/cp228-GitHub-issues-2.json",
+      "bytes": 587849,
+      "sha256": "117ee44dd2d95534bc009a283f8e4c8a14b964124e3b1cbfdad6886ce8df4772"
+    },
+    {
+      "id": "ROOM228-00006",
+      "kind": "local",
+      "path": "local/research/codex/cp228-GitHub-issues-3.json",
+      "bytes": 609727,
+      "sha256": "649fc546065c0a58dcc0844805a4130f62a599dce121a4d6f7b98c178609b303"
+    },
+    {
+      "id": "ROOM228-00007",
+      "kind": "local",
+      "path": "local/research/codex/cp228-GitHub-pulls-1.json",
+      "bytes": 2247761,
+      "sha256": "69cb8655e47aa819489330e5425a92da1618e7064f762f79ffcbf948958b3eec"
+    },
+    {
+      "id": "ROOM228-00008",
+      "kind": "local",
+      "path": "local/research/codex/cp228-GitHub-pulls-2.json",
+      "bytes": 2225737,
+      "sha256": "6a27031e7774375933752d52dfaa9890f9b45ee65ef83d23dd7917f704996435"
+    },
+    {
+      "id": "ROOM228-00009",
+      "kind": "local",
+      "path": "local/research/codex/cp228-GitHub-pulls-3.json",
+      "bytes": 596580,
+      "sha256": "e7523d5b8d9a8d9dab00419fd764a2c9820874326ee003aa35d5427f828efbaf"
+    },
+    {
+      "id": "ROOM228-00010",
+      "kind": "local",
+      "path": "local/research/codex/cp228-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "ROOM228-00011",
+      "kind": "local",
+      "path": "local/research/codex/cp228-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "ec89e2b71e66a31f396d6572a5d89ecc9d537d1ccdb800771c711afbe0b91987"
+    },
+    {
+      "id": "ROOM228-00012",
+      "kind": "local",
+      "path": "local/research/codex/cp228-github-capture.txt",
+      "bytes": 70,
+      "sha256": "ac5a74433e3390abadacdd7008211a0ab3a069aea46f94f964e1b0100e52974a"
+    },
+    {
+      "id": "ROOM228-00013",
+      "kind": "local",
+      "path": "local/research/codex/cp228-issue-updates.txt",
+      "bytes": 448,
+      "sha256": "5afabd1cee62bbe9a54b5c63a06e5864ae145cd318064bc7a12b28c569d4f3cc"
+    },
+    {
+      "id": "ROOM228-00014",
+      "kind": "local",
+      "path": "local/research/codex/cp228-issue14-before.json",
+      "bytes": 37806,
+      "sha256": "3c15e126bffdfb6d0f6d4aab25e946fb17475f530834efa0cb598b573aebb0a1"
+    },
+    {
+      "id": "ROOM228-00015",
+      "kind": "local",
+      "path": "local/research/codex/cp228-issue14-request.json",
+      "bytes": 34457,
+      "sha256": "1fcb12926c4ec4c6f3af8a1c6461b14d4efa602d5c3c6db1cc6ec8ae0ce82139"
+    },
+    {
+      "id": "ROOM228-00016",
+      "kind": "local",
+      "path": "local/research/codex/cp228-issue14-updated.json",
+      "bytes": 37371,
+      "sha256": "d951acff9b24dcfcb1078eed1cebf458c0a26867a1070f348ab56006c701c966"
+    },
+    {
+      "id": "ROOM228-00017",
+      "kind": "local",
+      "path": "local/research/codex/cp228-issue285-before.json",
+      "bytes": 11132,
+      "sha256": "efd67bb6a9ef285fae03ee019909820d096101bf2ffc11e7a1179446bf1f773f"
+    },
+    {
+      "id": "ROOM228-00018",
+      "kind": "local",
+      "path": "local/research/codex/cp228-issue285-request.json",
+      "bytes": 7755,
+      "sha256": "121608a0582ad63367c1171c8eec3a09f286827462f2697975bee3ef7c8958eb"
+    },
+    {
+      "id": "ROOM228-00019",
+      "kind": "local",
+      "path": "local/research/codex/cp228-issue285-updated.json",
+      "bytes": 10697,
+      "sha256": "8ab4e802ed79acd2cc476f83300b0c3f3df90d709463773521b8d7c0ed67c905"
+    },
+    {
+      "id": "ROOM228-00020",
+      "kind": "local",
+      "path": "local/research/codex/prepare_room_local_roster.py",
+      "bytes": 9171,
+      "sha256": "02fafd21d64e17e5ecaa81f60810a3e1c73e08c8e0703e1f9c7fd94b1e0eafb7"
+    },
+    {
+      "id": "ROOM228-00021",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/A-106-body.bin",
+      "bytes": 204,
+      "sha256": "e16fdf54a17382e7b34c42e1aa7271b65b6e99b0fdf6f8a0558dc185f0ee85c0"
+    },
+    {
+      "id": "ROOM228-00022",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/A-110-body.bin",
+      "bytes": 6,
+      "sha256": "52c0f171a37479b5d7f4f8f0e08a0dd47d7fefc5614a5c1b78237f15ac2a5648"
+    },
+    {
+      "id": "ROOM228-00023",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/A-291-body.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "ROOM228-00024",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/B-106-body.bin",
+      "bytes": 204,
+      "sha256": "fa23371427e5c1c232cfd298b41a03c342972cc32c7e3aa1bcc5c82e386b286c"
+    },
+    {
+      "id": "ROOM228-00025",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/B-110-body.bin",
+      "bytes": 6,
+      "sha256": "52c0f171a37479b5d7f4f8f0e08a0dd47d7fefc5614a5c1b78237f15ac2a5648"
+    },
+    {
+      "id": "ROOM228-00026",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/B-291-body.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "ROOM228-00027",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "ROOM228-00028",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/config.json",
+      "bytes": 1208,
+      "sha256": "fbccf4ba02235d89c965c48eebc8981b961d88dbfa4f2127b9f3e18c3c9338b9"
+    },
+    {
+      "id": "ROOM228-00029",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/README.md",
+      "bytes": 35899,
+      "sha256": "70e70d2711d9b5db0ccd4ca22475ad4b8aceb87744767897d619c4bece59c0bf"
+    },
+    {
+      "id": "ROOM228-00030",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/COVERAGE.md",
+      "bytes": 186684,
+      "sha256": "b4e87d820494ada75debe604e541df27829965210487a39dc3eff27edbef502c"
+    },
+    {
+      "id": "ROOM228-00031",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/PLAN.md",
+      "bytes": 87465,
+      "sha256": "707c4ab9b5a75b9a4ee814168ad2af6105027c27e7f4e3f397cb08206261644d"
+    },
+    {
+      "id": "ROOM228-00032",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/PROTOCOL.md",
+      "bytes": 706357,
+      "sha256": "df88eca7514de688653225f1ac0a91aa7434ad929fea9b1e01b7c36e1c4188f1"
+    },
+    {
+      "id": "ROOM228-00033",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/RESEARCH.md",
+      "bytes": 44428,
+      "sha256": "f4aea3d5c00f99035871e44ebea050fe7abdbd634bb71b75d86ae4b02142be0d"
+    },
+    {
+      "id": "ROOM228-00034",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/evidence/checkpoints/audits/AUD066.json",
+      "bytes": 6030,
+      "sha256": "01a4007fcaa6037eed03de458876ce89ea7f1b26b08c422e508d3055aee4c177"
+    },
+    {
+      "id": "ROOM228-00035",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 265796,
+      "sha256": "79a53de6968cf043a7d0fc2f22d08a68702109cd2a7566d2245dc019c57269bb"
+    },
+    {
+      "id": "ROOM228-00036",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 36375,
+      "sha256": "afdee5e4b3da024ae87f72ca239eac378e6424093a01cda77c93c0574d0c92ae"
+    },
+    {
+      "id": "ROOM228-00037",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/evidence/room-list/README.md",
+      "bytes": 7337,
+      "sha256": "09b77b457ddae81be0d357cc308f73617f13b3e789c83c898fd6a340e380e0e3"
+    },
+    {
+      "id": "ROOM228-00038",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/evidence/room-list/local-roster.json",
+      "bytes": 10171,
+      "sha256": "f76a308c600adb73e8f96780382be5058e6de8c3e2aaa024e4bd4c1f92a61609"
+    },
+    {
+      "id": "ROOM228-00039",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/features.json",
+      "bytes": 195983,
+      "sha256": "09d41c62e7daac93f97b8456241dcedeee66154d5d6367898317fb6963de6664"
+    },
+    {
+      "id": "ROOM228-00040",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/manual-review.json",
+      "bytes": 2875,
+      "sha256": "e6d073f55fcaee3fbbf2364476331ae396cefcab6002b10f1845f7c45cbd885f"
+    },
+    {
+      "id": "ROOM228-00041",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/members.json",
+      "bytes": 676,
+      "sha256": "59fbbf346f1e62e0ce18ece3042145f49180105592ac5dac121f8a4530ce84c6"
+    },
+    {
+      "id": "ROOM228-00042",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/network_policy.py",
+      "bytes": 1071,
+      "sha256": "843a8317629dc7f50afbae8bfeddea8b7a7a606b8e5c8437ac6e6d7d79e85820"
+    },
+    {
+      "id": "ROOM228-00043",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/pair_service_r3.py",
+      "bytes": 3839,
+      "sha256": "b3057394243436da87a6ae3150b38826820edf21c79e3389d492e76edd7349aa"
+    },
+    {
+      "id": "ROOM228-00044",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/profile.json",
+      "bytes": 15366,
+      "sha256": "3321c1cce9a9945c45d63205b48edf9623853805337ba2664c5796417ba510ce"
+    },
+    {
+      "id": "ROOM228-00045",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/roster-probe.py",
+      "bytes": 1959,
+      "sha256": "deb0bba757d575159a0359d6e4adbc198356deeb37d88d7e841063f25828c4ff"
+    },
+    {
+      "id": "ROOM228-00046",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/roster.gdb",
+      "bytes": 1736,
+      "sha256": "1042bdc72ebe106484d428a446012a082934e95ba38c257c2e996e2e323023cd"
+    },
+    {
+      "id": "ROOM228-00047",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/source-first.json",
+      "bytes": 2318,
+      "sha256": "1c1f631ebffc2eb159bb227339f1313db66065938ec2a6e28ecfaf2d408de0ef"
+    },
+    {
+      "id": "ROOM228-00048",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "ROOM228-00049",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A-known87-projection-55.bin",
+      "bytes": 45,
+      "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586"
+    },
+    {
+      "id": "ROOM228-00050",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A-local-room-106-58.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "ROOM228-00051",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A-local-room-110-61.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "ROOM228-00052",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A-local-room-291-64.bin",
+      "bytes": 166,
+      "sha256": "0395bab66d0fd718776596dfeed31e756dccf6a4041113c0f66c23d43cdeb5d2"
+    },
+    {
+      "id": "ROOM228-00053",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/CALog-before.txt",
+      "bytes": 1675,
+      "sha256": "c320e6f7be8195a0250c6d6f652a580105b7dbb9f928a2c0baf764d7dc41f745"
+    },
+    {
+      "id": "ROOM228-00054",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/CALog-run.txt",
+      "bytes": 1670,
+      "sha256": "88573f0aa66588b7ef5083646004f5e8602dbfd8047c05b8c4606520d1906ee0"
+    },
+    {
+      "id": "ROOM228-00055",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "6e1e067ef46fa0df882ec284336b1a24b47a2a6be66395f8feacbf45ba35cba2"
+    },
+    {
+      "id": "ROOM228-00056",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/before-select.png",
+      "bytes": 152577,
+      "sha256": "6e7a498372cd95ff42faa4bf5755b23858f11c94da7a2747a97a182b5da4aea2"
+    },
+    {
+      "id": "ROOM228-00057",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/client.log",
+      "bytes": 132521,
+      "sha256": "9b87d7ce8869ba4a1798d59475ca61d0f5a5ce4271db5b376f0b091f86a9e396"
+    },
+    {
+      "id": "ROOM228-00058",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/debug-commands.txt",
+      "bytes": 1736,
+      "sha256": "1042bdc72ebe106484d428a446012a082934e95ba38c257c2e996e2e323023cd"
+    },
+    {
+      "id": "ROOM228-00059",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM228-00060",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM228-00061",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-10.png",
+      "bytes": 152065,
+      "sha256": "7a1689e2fc3cac990c49853fb91945bd5c04e8a257de99c5544ed96d5fcbe701"
+    },
+    {
+      "id": "ROOM228-00062",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-11.png",
+      "bytes": 152496,
+      "sha256": "47245c0b4a07bf31a3cb694137cee9af494bebc54a7c513caa33d0d30fb23aa1"
+    },
+    {
+      "id": "ROOM228-00063",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-12.png",
+      "bytes": 152568,
+      "sha256": "2d9244873500ad7faa66a0e722634d40c246d4feecd94f2d5c8652117895fd69"
+    },
+    {
+      "id": "ROOM228-00064",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-13.png",
+      "bytes": 152598,
+      "sha256": "b9999e1846fd657136c96250f64df3ea18fa6c593157036f6ebb6a282566d6b0"
+    },
+    {
+      "id": "ROOM228-00065",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-14.png",
+      "bytes": 177120,
+      "sha256": "6d3bd5c44e4880e8643a25b2f582578c5db4c85a7fbee79bd4d2ff4cca39326d"
+    },
+    {
+      "id": "ROOM228-00066",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-15.png",
+      "bytes": 177985,
+      "sha256": "488c75317e42b09e1210b7d45b7ff954b8f6a2fd36510696e404c96162ee08e3"
+    },
+    {
+      "id": "ROOM228-00067",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-16.png",
+      "bytes": 178541,
+      "sha256": "aed90fed04a01cb50c7f216fd0ed30186d0b9118e6eb3ec0dd3eacc264c45548"
+    },
+    {
+      "id": "ROOM228-00068",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-17.png",
+      "bytes": 178565,
+      "sha256": "d8b938a09b20021dedb442c07f292fbc0ae86e567f729d7f004d693d13b61317"
+    },
+    {
+      "id": "ROOM228-00069",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-18.png",
+      "bytes": 177968,
+      "sha256": "1c477bf418543cf5e60e0a5adfcfc6b9ce6bc1dd0cb134fda9ee5b5144ba3c63"
+    },
+    {
+      "id": "ROOM228-00070",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-2.png",
+      "bytes": 19483,
+      "sha256": "773b7021f0e834f417428d0b3a13c023033c7cb301ba7394a570a2e125619157"
+    },
+    {
+      "id": "ROOM228-00071",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-3.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "ROOM228-00072",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-4.png",
+      "bytes": 148305,
+      "sha256": "806e5ac56a941e61bcf99f761fc9d29b573d48a9ec21d9ede3366e121e7f32d0"
+    },
+    {
+      "id": "ROOM228-00073",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-5.png",
+      "bytes": 191427,
+      "sha256": "637aedb21cd25df5263d99401e7a838add696298b7e5033e1e973fae6c801e8b"
+    },
+    {
+      "id": "ROOM228-00074",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-6.png",
+      "bytes": 192334,
+      "sha256": "ec31bb063e906cfb205398b48b449335514c6273f9d7ee87ccf9c9ed3f4e3d5b"
+    },
+    {
+      "id": "ROOM228-00075",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-7.png",
+      "bytes": 25954,
+      "sha256": "495a70df1b0757f4ba929847ecfe42f5126bcdba585a306cdc64c1d9a7dcb5b8"
+    },
+    {
+      "id": "ROOM228-00076",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-8.png",
+      "bytes": 157426,
+      "sha256": "1f99f828e4361179acb9cb474dbfa1b77713f907089494cf5a3d02ae3c40cf15"
+    },
+    {
+      "id": "ROOM228-00077",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/screen-9.png",
+      "bytes": 158094,
+      "sha256": "fcfabe1a409b3234166e263d72949c63894fcedf827b72e42be707ac97c58eae"
+    },
+    {
+      "id": "ROOM228-00078",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "ROOM228-00079",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-1.txt",
+      "bytes": 1033,
+      "sha256": "94ffb2ed7c651004498bd22fa78ae020a34c860803075d9d72548b138021e9b8"
+    },
+    {
+      "id": "ROOM228-00080",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00081",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00082",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00083",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00084",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00085",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00086",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00087",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00088",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00089",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-2.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM228-00090",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM228-00091",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM228-00092",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM228-00093",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "ROOM228-00094",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00095",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00096",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "ROOM228-00097",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B-known87-projection-55.bin",
+      "bytes": 45,
+      "sha256": "f0c2ccb51cfc4a9ce4e139b57c701728028437f5ef34b2d6829f684bbe8f1efb"
+    },
+    {
+      "id": "ROOM228-00098",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B-local-room-106-58.bin",
+      "bytes": 242,
+      "sha256": "b533937f467cd11084fc7a212e13bd892d2189ccf2438524f2730e06f9e5ab50"
+    },
+    {
+      "id": "ROOM228-00099",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B-local-room-110-61.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "ROOM228-00100",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B-local-room-291-64.bin",
+      "bytes": 166,
+      "sha256": "f541678500b576eb1e3da84bb770d501e1f67b7d11df349f51b6eaf0dfe76525"
+    },
+    {
+      "id": "ROOM228-00101",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/CALog-before.txt",
+      "bytes": 1750,
+      "sha256": "22b3e0c9e66fe973b670c889ada8d30686b99b23d1b7dd72a8452c4a826cd4c6"
+    },
+    {
+      "id": "ROOM228-00102",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/CALog-run.txt",
+      "bytes": 1590,
+      "sha256": "dd57800d87a2532deaa917c9f919176d2dcfb59d561d6e71fbc947989e2f3fdc"
+    },
+    {
+      "id": "ROOM228-00103",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "5928fa108862af1afa8cf0d45e56a4906cda950b9f7cd41222b90e6260cc64db"
+    },
+    {
+      "id": "ROOM228-00104",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/before-select.png",
+      "bytes": 152491,
+      "sha256": "837ddcf2fb3f84acd48ebbf4e5dc7b58ff6b62e6416b4a5509f82bd9e028558f"
+    },
+    {
+      "id": "ROOM228-00105",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/client.log",
+      "bytes": 132518,
+      "sha256": "f82961f4566726f062093d24fe9170ee83a71ff72e1c16e0e677ac80f4c55430"
+    },
+    {
+      "id": "ROOM228-00106",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/debug-commands.txt",
+      "bytes": 1736,
+      "sha256": "1042bdc72ebe106484d428a446012a082934e95ba38c257c2e996e2e323023cd"
+    },
+    {
+      "id": "ROOM228-00107",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM228-00108",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM228-00109",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-10.png",
+      "bytes": 157108,
+      "sha256": "021525e87a236721909adf8ff23e0ca342e1ea5898de3ce8b3ff0d30cb5f4de6"
+    },
+    {
+      "id": "ROOM228-00110",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-11.png",
+      "bytes": 157730,
+      "sha256": "a0b820982b0226152be150e898564e1e2bad3f3030f9d9e618685df5a6658703"
+    },
+    {
+      "id": "ROOM228-00111",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-12.png",
+      "bytes": 154108,
+      "sha256": "6f0732185402592486cc03aef74b534487f6e2ef40bfe19d55aed1722239b108"
+    },
+    {
+      "id": "ROOM228-00112",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-13.png",
+      "bytes": 152386,
+      "sha256": "e885be63aac0f65f69e588e1f80c75bc9173626f2493be523052ecd821daf957"
+    },
+    {
+      "id": "ROOM228-00113",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-14.png",
+      "bytes": 174487,
+      "sha256": "a5476a73899e87f2e14f957bff39d600ccbd431c5c1e0ceb77a26cf537b42be8"
+    },
+    {
+      "id": "ROOM228-00114",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-15.png",
+      "bytes": 175536,
+      "sha256": "f10fa994f45770e902b8b4b1aa79fde0e412bb8edf3ca42ce61d0db145c31308"
+    },
+    {
+      "id": "ROOM228-00115",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-16.png",
+      "bytes": 176236,
+      "sha256": "4fb3f81489793bdfebade03a7d858bb186f8ced52127db823ed68f594fcf0676"
+    },
+    {
+      "id": "ROOM228-00116",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-17.png",
+      "bytes": 175898,
+      "sha256": "07fc45c7c7323b9e439f2ceec81db77fcbe5e3fe099d697b07a6f96dfe9002b9"
+    },
+    {
+      "id": "ROOM228-00117",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-18.png",
+      "bytes": 174944,
+      "sha256": "8bc495cc78d4b8248f56410d05c28e130766757e9c0896cd607b8ea8ec1bc617"
+    },
+    {
+      "id": "ROOM228-00118",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM228-00119",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM228-00120",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-4.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM228-00121",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-5.png",
+      "bytes": 1670,
+      "sha256": "2938793d36112554332f0c109ace2f58404e02633a2b304393ee766c0772d871"
+    },
+    {
+      "id": "ROOM228-00122",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-6.png",
+      "bytes": 130950,
+      "sha256": "97f2f74b39a22212547661caf4d1f02bebf0848be3a572041fbf9c10f1c6828f"
+    },
+    {
+      "id": "ROOM228-00123",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-7.png",
+      "bytes": 188305,
+      "sha256": "a99acec64b33b5e9867be8584c06ccc1de2b213098e083e2347ee246730b709c"
+    },
+    {
+      "id": "ROOM228-00124",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-8.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "ROOM228-00125",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "ROOM228-00126",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "ROOM228-00127",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "ROOM228-00128",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM228-00129",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM228-00130",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM228-00131",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM228-00132",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM228-00133",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM228-00134",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM228-00135",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM228-00136",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM228-00137",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "ROOM228-00138",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "ROOM228-00139",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-4.txt",
+      "bytes": 1305,
+      "sha256": "3a9abbddf140befc14f7fbfb5a6c5151e9983094e5c5b128ba90a5acd7adc7b7"
+    },
+    {
+      "id": "ROOM228-00140",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM228-00141",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM228-00142",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM228-00143",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "ROOM228-00144",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "ROOM228-00145",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "ROOM228-00146",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "ROOM228-00147",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-0.txt",
+      "bytes": 6978,
+      "sha256": "8b64ac27639b4b878db1f1aab466b809bef6a3a6cb4da5e4abf026b0f08d9623"
+    },
+    {
+      "id": "ROOM228-00148",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-1.txt",
+      "bytes": 7131,
+      "sha256": "b58fc83e3bb79cff78a6676134910bd765181e1aaabbe19a4f2370abfb066976"
+    },
+    {
+      "id": "ROOM228-00149",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-10.txt",
+      "bytes": 7131,
+      "sha256": "44ca81d9530f6df22a4c4fd1ce92ab36d62abc82a4b8bfcc50b011a2dd7671b5"
+    },
+    {
+      "id": "ROOM228-00150",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-11.txt",
+      "bytes": 7131,
+      "sha256": "c1fbe78cba2eaeb5d291af0223ad45a4eb5379ad1bb9900901caa43feac5aa3e"
+    },
+    {
+      "id": "ROOM228-00151",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-12.txt",
+      "bytes": 7131,
+      "sha256": "6d75933aaf7d92c328de9459b23dccca6425426a448ec85b9d3964ff63aff3db"
+    },
+    {
+      "id": "ROOM228-00152",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-13.txt",
+      "bytes": 7131,
+      "sha256": "8530c2540673519e0f65794df8a623bc781b3d8f7007ed4a7d0100f23538b04a"
+    },
+    {
+      "id": "ROOM228-00153",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-14.txt",
+      "bytes": 7131,
+      "sha256": "70197b10a71b4288c105b278d383e44d80b89c3dd971bf2fbb41ab4a0782048b"
+    },
+    {
+      "id": "ROOM228-00154",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-15.txt",
+      "bytes": 7131,
+      "sha256": "b58edb5fffad32c753648c5fd241c7b9ddbf8b7aef3f0387b9680e986a4b6e8e"
+    },
+    {
+      "id": "ROOM228-00155",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-16.txt",
+      "bytes": 7131,
+      "sha256": "15b21edb18f75ec60c6aae75550921bc13a6ff394c53fb53c475f2dc57aab67b"
+    },
+    {
+      "id": "ROOM228-00156",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-17.txt",
+      "bytes": 7131,
+      "sha256": "27f67c6d25332694816052d598157ce1cca90cd37aa7ba96a77d0c848ff7bf71"
+    },
+    {
+      "id": "ROOM228-00157",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-18.txt",
+      "bytes": 7131,
+      "sha256": "4724a41df7adc349205430763ef375d652b5440765cb13d293a6fea9d568546d"
+    },
+    {
+      "id": "ROOM228-00158",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-2.txt",
+      "bytes": 7131,
+      "sha256": "f68c332084413e7abd48550ac7f8f40a20016e038cd9ffaaf1c435b5f4a3e149"
+    },
+    {
+      "id": "ROOM228-00159",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-3.txt",
+      "bytes": 7131,
+      "sha256": "d9dc84739b140fa76ae2a1e00374c906b7760695ea672db3f59ad179fd3ae690"
+    },
+    {
+      "id": "ROOM228-00160",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-4.txt",
+      "bytes": 7131,
+      "sha256": "35e5d7cd5ae4b6d50e9260ffb340af67b0bf0f8b5c8fe125f2ad0ae9cac68f74"
+    },
+    {
+      "id": "ROOM228-00161",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-5.txt",
+      "bytes": 7131,
+      "sha256": "9c703e8f7a3b4c584dd6719cedbcb884f7e3408357bd55fd39cf13800b38669c"
+    },
+    {
+      "id": "ROOM228-00162",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-6.txt",
+      "bytes": 7131,
+      "sha256": "12b52851aa9c502e2e77543b89d7ac4c3068543f6b2a69e27897c091761f0fb2"
+    },
+    {
+      "id": "ROOM228-00163",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-7.txt",
+      "bytes": 7131,
+      "sha256": "0a473b60f57cca53ece0e4e63fb02a213e31d3096890378311bed585b92a21e6"
+    },
+    {
+      "id": "ROOM228-00164",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-8.txt",
+      "bytes": 7131,
+      "sha256": "d85ac4986c514d979bfb3b88542d99f52e26a0ff586dd414ba3bfe5b20808579"
+    },
+    {
+      "id": "ROOM228-00165",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/processes-9.txt",
+      "bytes": 7131,
+      "sha256": "d07e3f66e200009e98bcb3b1b627a86a964f443b65f06ddd4936ae913471d476"
+    },
+    {
+      "id": "ROOM228-00166",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/proof-service-state-final.json",
+      "bytes": 49155,
+      "sha256": "c0e82e500e382a8f5c826a85045b5ac3d1ca7502fba43c87b6285b06cd1eee73"
+    },
+    {
+      "id": "ROOM228-00167",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/proof-service-state.json",
+      "bytes": 34160,
+      "sha256": "cde0167da3989417287a0e203156b1486032af007bdb3afd263186b94587acdd"
+    },
+    {
+      "id": "ROOM228-00168",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/run.json",
+      "bytes": 45860,
+      "sha256": "eaf0509540382e45b05b0a49780b3faa41de7d7f104caabc27d07e0cd6e5e62d"
+    },
+    {
+      "id": "ROOM228-00169",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/service-state.json",
+      "bytes": 48742,
+      "sha256": "e7702301c48cd8a68288739ed8498e34e51bb4214d1940bdc47b47e7cfc9d5da"
+    },
+    {
+      "id": "ROOM228-00170",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM228-00171",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/tcp-auth-pair.pcap",
+      "bytes": 23540,
+      "sha256": "209fb3b9b193eeb3dffaeaddd80e4325347a0a3d0576a30f44d19f5ddabbfa6b"
+    },
+    {
+      "id": "ROOM228-00172",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/tcp-capture-index.json",
+      "bytes": 62705,
+      "sha256": "286e157c2e08a73b2106ff377a866f1b6a6bbf8becadfcc7d4e95ec204918975"
+    },
+    {
+      "id": "ROOM228-00173",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/virtual-network.json",
+      "bytes": 24928,
+      "sha256": "fba91d37e55cf6f929217f50129c2f374a96056c524d901f3d94fc4fb4e674ff"
+    },
+    {
+      "id": "ROOM228-00174",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "fe998bfbf813e1abd6488170df8806e53358c366ca715ef8556ef816e1303a82"
+    },
+    {
+      "id": "ROOM228-00175",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "2e82cd971295930b6a72f3cf2a41d75fd6c9e4b4f0046a98622fd0e70be747fc"
+    },
+    {
+      "id": "ROOM228-00176",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM228-00177",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "ROOM228-00178",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/launch-exit.json",
+      "bytes": 73,
+      "sha256": "0c56c004fc03b71195461673194846956f5f9a630244f25448789e5281faf771"
+    },
+    {
+      "id": "ROOM228-00179",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ROOM228-00180",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/raw-seal.json",
+      "bytes": 28798,
+      "sha256": "bf8edaa785861fe9091e7f0149b4ed0add1d3b16669edda862b7bf77e2ca84f6"
+    },
+    {
+      "id": "ROOM228-00181",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/recipe.json",
+      "bytes": 1163,
+      "sha256": "8f3f1e96fc536488b385c48737c72a78af209b257adde2262bdab77d0548b37b"
+    },
+    {
+      "id": "ROOM228-00182",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/runtime-preflight.json",
+      "bytes": 73772,
+      "sha256": "17dead621ed5734c1e3067ad8d78b2824fda62f7cf58e73d4269e08c6784409b"
+    },
+    {
+      "id": "ROOM228-00183",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/verification.json",
+      "bytes": 6793,
+      "sha256": "48a4dd17218fd920336dcd978cf06038db7d54bf364d8f3990b5f145dfbd6196"
+    },
+    {
+      "id": "ROOM228-00184",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/DC5890.asm",
+      "bytes": 8075,
+      "sha256": "2245c7435c61412df5088eb8ea99d33a1624e9ebb968024aaad6fc050fbc1922"
+    },
+    {
+      "id": "ROOM228-00185",
+      "kind": "local",
+      "path": "local/research/codex/run_room_local_roster.py",
+      "bytes": 849,
+      "sha256": "72483479624aeb8ce53d5d88807d9e83d483da9e04b5826c11a0811fc9b0a7fa"
+    },
+    {
+      "id": "ROOM228-00186",
+      "kind": "local",
+      "path": "local/research/codex/sync_cp228.py",
+      "bytes": 11455,
+      "sha256": "f76ac33fef838dc1dd613119d4639b5098c498cd06fd3a9e060b4449689775ac"
+    },
+    {
+      "id": "ROOM228-00187",
+      "kind": "local",
+      "path": "local/research/codex/update_cp228_issues.py",
+      "bytes": 5307,
+      "sha256": "eb70214a086aef1948fabefee0410df4b6e36f1a327f1fff374c1941c1e472f1"
+    },
+    {
+      "id": "ROOM228-00188",
+      "kind": "local",
+      "path": "local/research/codex/verify_room_local_roster.py",
+      "bytes": 6654,
+      "sha256": "0ec974126db6ea661b1c79a34a889828b9045e0a4fe94de9ca85f128d6de2988"
+    },
+    {
+      "id": "ROOM228-00189",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_room_local_roster.py",
+      "bytes": 20944,
+      "sha256": "c32f22fff2e0446d85d9e3ba11725a0ecb19b5f987ef64d4387ac44943f42f32"
+    }
+  ]
+}

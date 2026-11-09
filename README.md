@@ -28,6 +28,16 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP228: hai phòng riêng đã hiện đúng một player tại slot0/chief trên mỗi client.**
+[Contract/limits](docs/PROTOCOL.md#room-local-roster), [run/hash](docs/evidence/room-list/README.md#cp228):
+sau actual585, private adapter trả riêng106/110/291 cho account đã bind; native đọc204/6/128 byte không lỗi,
+own-ID khớp1/2, setter slot0 và UI Alpha/KRLocal, Beta/KRGuest. 129raw đã seal/hash/cleanup, giữ8.86s.
+Marker cũ `own_slot=1` là predicate, không phải chỉ số slot1; personal-render sau291 chưa đo.
+CP227 đã merge [PR298](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/298).
+AUD066 qua228/kế232. [PLAN](docs/PLAN.md#current-order) tiếp registry/membership có generation và owner;
+chưa coi fixed projection là registry hoặc isolation tổng quát, chưa Rust/gate mới. Internet thật chưa kiểm.
+
+
 **CP227: chọn phòng đã nối đúng session, ID và tên; lỗi join có đường quay lại chọn tiếp.**
 [Contract/limits](docs/PROTOCOL.md#room-join-projection), [năm run/hash](docs/evidence/room-list/README.md#cp227):
 hai KR chọn row khác nhau → reply87 → native lookup/context đúng RoomAlpha/RoomBeta, reader7/7 không lỗi.

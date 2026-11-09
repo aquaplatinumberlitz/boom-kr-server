@@ -881,6 +881,37 @@ roomstateisolation/Ready/start/UDP/registry/DB/fullauth/Rust/gate. [PLAN](PLAN.m
 riêng từng room bằng consumer đã biết; không lặp list/context/error2/input controls. CP226mergePR297/ccab4cc,
 AUD065qua224/kếCP228. Internet thật chưa kiểm.
 
+<a id="room-local-roster"></a>
+### Roster riêng của hai room context — CP228
+
+[Recipe/raw/hash](evidence/room-list/README.md#cp228), [metadata](evidence/room-list/local-roster.json).
+Source-first dùng CP020/026/199/200 và CP227; reuse merged `four_player_profile.player_body/slot_body/own_body`,
+không dùng tám source WIP. Không có thân hàm native mới hoặc runtime mới ngoài run đã seal dưới đây.
+
+**`emu_choice/design` input:** private adapter để cả hai reply87 slot0, A session1/ID101/RoomAlpha và
+B session2/ID202/RoomBeta. Sau actual585 mới kiểm admission session và active owner tương ứng identity1/2,
+rồi trả **chỉ own106/110/291 tới cùng connection** (seq58/61/64; body204/6/128). Mỗi phòng một member/chief,
+team0. Các opcode sau projection khác chỉ record/ignore; không trả global map/peer/Ready/start/Battle.
+Generated body là input thử; không là oracle độc lập hoặc luật server gốc.
+
+**`kr_runtime/confirmed`:** cả hai client parse106 slot0/identity riêng; full204/204,110 full6/6,
+291 producer128/128, errors0. Native13B1577 self-ID candidate khớp incoming1/2;124001C tìm local identity
+index0;123FF10 setter nhận slot0. UI A RoomAlpha chỉ KRLocal ở ô đầu/chief; B RoomBeta chỉ KRGuest ở ô đầu/chief,
+bảy ô khác trống. Giữ8.864759497s sau native roster; PCAP/two actual/two endpoints/authowners đã đối chiếu.
+Không generated/routed member frame của phòng kia trong ca này; đây chưa là chứng minh mọi packet isolation.
+
+**Correction marker:** probe raw kind `own_slot` tạiDC5925 ghi EAX1. Cache DC5890.asm:41 xác định
+DC5920 gọi1241090 rồi DC5925 testEAX; đây là predicate return1, **không phải slotindex1**. Giữ label/raw/source;
+slot0 được chứng minh bằng setter123FF10/106slot0/UI, còn own-match-index0 là index localidentity.
+291 producer/name KRLocal/KRGuest đã đo; personal-render sau291 chưa đo vì client đã ở Prepare.
+Map caption ExVillage01 từ cache, không là nghiệm thu map mới.
+
+Một run50.735937193s/129raw/exit0,377 frozen pins, ownedcleanup0. Private fixed recipient guard chưa là
+registry/membership lifecycle/sessionmove/general room security; production ProbeService vẫn globalroom.
+Chưa Ready/start/UDP/gameplay/DB/fullauth/Rust/gate. [PLAN](PLAN.md#current-order) chuyển atomic membership
+theo room tuple/generation/account owner và native leave/rejoin controls, không thêm fixedprojection-only runs.
+AUD066 quaCP228/kếCP232; record/audit cũ giữ nguyên. Internet thật chưa kiểm.
+
 <a id="room-player"></a>
 ### Player, own-slot và controls phòng (CP018)
 
