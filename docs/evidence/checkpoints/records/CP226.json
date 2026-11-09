@@ -1,0 +1,286 @@
+{
+  "id": "CP226",
+  "previous": "CP225",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T03:53:22.921340+00:00",
+  "context_commit": "3bd1cdd6031281ae346c58ae2ac2754ce3e0e121",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KR-R001/RUST-Q2: actual2row91list/different82selections, incrementalupdate-vs-emptyretention, andstatic-supported90ID-guardedcardclear; boundnativeUI/cursors/wirebeforegeneralregistry.",
+  "scope": "SourcefirstCP016/028/161knownKRrow/blob/title/consumer/cache→legacyKR/VNreference.4related2actualfrozenruns545raw includingwrongseqfailure. Static8-entrydispatch/one832byteconsumerprefix+2smallcallee-epilogueprefixesread-onlyfallback/no fullfunction/providerSDK-VMgraph. Privatefixedlistingcontrols/passiveprobes/ordinaryclicks,no source/configmutationmidrun/clientpatch/87reply/production/Rust.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "room-two-rows-r1:run9a27b180cf94023a585d874cbcbd558603959ea476e2e7a1446923077de64b5c/46.057687242s/111raw/cleanup0",
+    "room-incremental-r1:run93e03bbb03f34be974a0c32307cbca6822f66870a3588e81ab2e7fd6c6ac4cc1/80.645000355s/185raw/cleanup0",
+    "room-incremental-r2:rund4e78800e93fc6372cc76a13e8642084c65100ac64f861cf170b9a4c7ec44765/51.010466324s/125raw/cleanup0",
+    "room-delete-r1:runeba7b7e9f78529531dc00ce5b6dd9de51ec0c9f054a7c8ad31a4d3a92a6a2544/49.103631385s/124raw/cleanup0",
+    "91native8150F0→D9D720count2/inner81outer93/errors0;actual82fields[1,101,0,1,5]vs[2,202,0,1,5]. Dynamic91seq55count1session2ID303Gamma/seq58count0,inner41outer53then2/errors0/bothcardsretained/82B2-303.",
+    "810C80tableopcode90→810B78→8152C0;counts0,1/secondblobtag0-session2-roomID,inner7outer21errors0. Wrong999no815570clearpath; matching202B815570/D9DE80/cardclear. A82retained202/B82survivor101.",
+    "Initialdynamicdefault73afterfixedsetup46/49/52→nativeGDBremoteclosed/TCPEOF/noacceptedupdate. Derivedmissingnext55/58only/source-body-profile-inputretained;old185rawfailureunchanged."
+  ],
+  "findings": [
+    {
+      "summary": "TwoactualKRread2fixed91rows/session1ID101Alpha-session2ID202Beta/nativecount2/inner81outer93errors0/UI2cards andordinaryAfirst/Bsecondtyped82correct. Adaptercaptures82without87reply;notjoin/membershipproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#room-list-lifecycle",
+      "evidence": [
+        "ROOM226-00653",
+        "ROOM226-00528"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/private2accountservice/2prefix-display-netns/directbridge/noexternalroute.4runs545raw/frozeninputs/ownedcleanup. Onlyfixed2rows/uncompressedknownfeaturetail22; listA/Bfixturepinschanged/45otherpinsunchanged/titlemodeoffexplicit. Nativecount2/select82/update91/count0retention/90tag0wrongIDignore-matchingcardclear scoped. No87reply/join/membership/generalregistry/2roomisolation/serverstalejoin-epochguard/firststream90/tag1/full/password/modebounds/Rust/production/gateclaim. Initialbadseq73run185rawkept; corrected55/58perconnection/nativeevidence, no inferredCRCcause. 8WIPbyteexact/noRust/completehistoryAUD065immutable/next228;authsameprocessfatal/before17blockersdistinct. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Dynamic91count1updatesonlysession2ID303/Gamma;count0doesnotclearother/existingcardsinthemeasuredprofile. Native2→1→0/inner81,41/outer93,53,2/errors0/UIAlphaGamma/actual82A101-B303. Perconnectionfirstdynamic55afterfixedlast52.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#room-list-lifecycle",
+      "evidence": [
+        "ROOM226-00508"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/private2accountservice/2prefix-display-netns/directbridge/noexternalroute.4runs545raw/frozeninputs/ownedcleanup. Onlyfixed2rows/uncompressedknownfeaturetail22; listA/Bfixturepinschanged/45otherpinsunchanged/titlemodeoffexplicit. Nativecount2/select82/update91/count0retention/90tag0wrongIDignore-matchingcardclear scoped. No87reply/join/membership/generalregistry/2roomisolation/serverstalejoin-epochguard/firststream90/tag1/full/password/modebounds/Rust/production/gateclaim. Initialbadseq73run185rawkept; corrected55/58perconnection/nativeevidence, no inferredCRCcause. 8WIPbyteexact/noRust/completehistoryAUD065immutable/next228;authsameprocessfatal/before17blockersdistinct. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Actual90secondstreamtag0/counts0,1/session2wrongID999bothignored/noclearpath/A202retained;matchingID202onlyBclearpath815570/cardBetaremoved/Bselectsurvivor101. Nativeinner7outer21errors0/UIA2-B1/capture. ListcardIDguardnotserverstalejoin-epochauthority.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#room-list-lifecycle",
+      "evidence": [
+        "ROOM226-00034",
+        "ROOM226-00524",
+        "ROOM226-00523"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/private2accountservice/2prefix-display-netns/directbridge/noexternalroute.4runs545raw/frozeninputs/ownedcleanup. Onlyfixed2rows/uncompressedknownfeaturetail22; listA/Bfixturepinschanged/45otherpinsunchanged/titlemodeoffexplicit. Nativecount2/select82/update91/count0retention/90tag0wrongIDignore-matchingcardclear scoped. No87reply/join/membership/generalregistry/2roomisolation/serverstalejoin-epochguard/firststream90/tag1/full/password/modebounds/Rust/production/gateclaim. Initialbadseq73run185rawkept; corrected55/58perconnection/nativeevidence, no inferredCRCcause. 8WIPbyteexact/noRust/completehistoryAUD065immutable/next228;authsameprocessfatal/before17blockersdistinct. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Initialprivateadaptergenericdynamiccounter73wrongafterfixedsetup52;run185rawclosedTCP/GDBbeforeupdateproof andnoempty/selection. Freshadapteronlyinitializemissing55→58, no body/input/policychange. Oldfailure/source/rawkept; no nativeCRCterminationcauseclaim. Remoteclosednormalcleanupaftercompletionseparate.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#room-list-lifecycle",
+      "evidence": [
+        "ROOM226-00168",
+        "ROOM226-00375",
+        "ROOM226-00508"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/private2accountservice/2prefix-display-netns/directbridge/noexternalroute.4runs545raw/frozeninputs/ownedcleanup. Onlyfixed2rows/uncompressedknownfeaturetail22; listA/Bfixturepinschanged/45otherpinsunchanged/titlemodeoffexplicit. Nativecount2/select82/update91/count0retention/90tag0wrongIDignore-matchingcardclear scoped. No87reply/join/membership/generalregistry/2roomisolation/serverstalejoin-epochguard/firststream90/tag1/full/password/modebounds/Rust/production/gateclaim. Initialbadseq73run185rawkept; corrected55/58perconnection/nativeevidence, no inferredCRCcause. 8WIPbyteexact/noRust/completehistoryAUD065immutable/next228;authsameprocessfatal/before17blockersdistinct. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "4runs545raw/frozenpreflight/ownedcleanup/manualnativeUI/wire/PCAPjoins. Nativecount/update/cardclearonly; bothissuesopen/8WIPbyteexact/noRust/gatesunchanged. CP225PR296merged3bd1cdd/AUD065through224/next228; PLANnextselected82→87session/lookup/contexttitle,notrepeatcontrols/fullregistryclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#room-list-lifecycle",
+      "evidence": [
+        "ROOM226-00520",
+        "ROOM226-00509",
+        "ROOM226-00015",
+        "ROOM226-00018"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/private2accountservice/2prefix-display-netns/directbridge/noexternalroute.4runs545raw/frozeninputs/ownedcleanup. Onlyfixed2rows/uncompressedknownfeaturetail22; listA/Bfixturepinschanged/45otherpinsunchanged/titlemodeoffexplicit. Nativecount2/select82/update91/count0retention/90tag0wrongIDignore-matchingcardclear scoped. No87reply/join/membership/generalregistry/2roomisolation/serverstalejoin-epochguard/firststream90/tag1/full/password/modebounds/Rust/production/gateclaim. Initialbadseq73run185rawkept; corrected55/58perconnection/nativeevidence, no inferredCRCcause. 8WIPbyteexact/noRust/completehistoryAUD065immutable/next228;authsameprocessfatal/before17blockersdistinct. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "4runs545raw/frozenpreflight/ownedcleanup",
+      "result": "pass",
+      "evidence": [
+        "ROOM226-00509"
+      ],
+      "limits": "Hash/cleanupnotsemantic/gateapproval."
+    },
+    {
+      "check": "Native2row91/count2/fullcursors/2cardUI/typed82differentrowIDs",
+      "result": "pass",
+      "evidence": [
+        "ROOM226-00653"
+      ],
+      "limits": "No87reply/nativejoin."
+    },
+    {
+      "check": "Initialdynamic91update1/empty0withdefault73counter",
+      "result": "fail",
+      "evidence": [
+        "ROOM226-00168"
+      ],
+      "limits": "Privateadaptercountergap;not91semanticsproof/nativeCRCcause."
+    },
+    {
+      "check": "Correctedcounter55-58/native91update1/empty0cardretention/typed82",
+      "result": "pass",
+      "evidence": [
+        "ROOM226-00508"
+      ],
+      "limits": "Measuredprofile2rows/knownfeaturesonly."
+    },
+    {
+      "check": "Native90tag0wrong-IDnegative/matchingcardclear/fullcursors/UI82",
+      "result": "pass",
+      "evidence": [
+        "ROOM226-00034"
+      ],
+      "limits": "Listcardguardnotservermembership/stalejoinsecurity."
+    },
+    {
+      "check": "Manualdocs/catalog/links/WIPpreservation",
+      "result": "pass",
+      "evidence": [
+        "ROOM226-00520",
+        "ROOM226-00010",
+        "ROOM226-00009"
+      ],
+      "limits": "Fullrequire-local/historyandexactPRheadrequired/reviewwaivednotapproved."
+    },
+    {
+      "check": "Native87join/membership/2roomregistryisolation/password/full/errorvariants",
+      "result": "not_run",
+      "evidence": [
+        "ROOM226-00514"
+      ],
+      "limits": "Nextsource-guidedjoinprojectionperPLAN/noacceptanceclaim."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP226-room-list-lifecycle.json",
+      "bytes": 174287,
+      "sha256": "2ee0fd09afdd5323b20fedbf1e25000524a26f744cbf19567b7d42ed465bdc44",
+      "count": 666
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native2row91/different82selectiontwoactualKR;45fixturepinsunchanged.",
+      "Native91incrementalone-rowupdate/count0retainscards;notfullreplacementinthemeasuredprofile.",
+      "Static90dispatch/nativecounts0,1/tag0session-IDguard/wrongIDignore/matchingcardclearand82survivors.",
+      "4relatedsealedruns545raw/failedcounterpreserved;PLANnextjoin87session/contexttitle."
+    ],
+    "corrected": [
+      "Privateadapterdefault73notvalidafterfixedlast52setup;correctmissingnext55/58andpreserveoldfailure.",
+      "Remoteclosedmaybenormalcleanupaftercompletion; observermustdistinguishruntimevsfinalcleanup."
+    ],
+    "superseded": [
+      "CP225NEXTtwo-rowcount/selectionnowmeasured; no repeats.",
+      "91count0notlistclear/fullsnapshotinthisprofile; measured90tag0ID-guardedcardclearinstead."
+    ]
+  },
+  "blockers": [
+    "Native87sessionlookup/context/titleandmembership/2roomisolation/generalregistrymissing; fixedlistcontrolsnotfullsubsystem.",
+    "90firststream/tag1/unknownsession/countbounds/password/full/error/modevariantsunmeasured;openonlywhenmilestoneblocked.",
+    "Authsameprocessfatal/before17receiverblockersstilldistinct;fullauth/DB/API/Rustnotimplemented/accepted."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PerPLANselected82→known87session→lookup8117E0/context/titletwodistinctsessions/nativefullcursor/UIbeforegeneralregistry/membership. No repeatlist/update/delete/codec;no globalroom-isolationassumption.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "CP213planningPR286delivered;M0→M1futureimplementationindependentfullRE,noRusttreeinthisbatch.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T03:53:22.921340+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/sourcefirst/native2row/update/removecontrols/failedcounterpreservation/manualselfcheck;independentreviewwaivednotapproved. ExactPRheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP226native2row/update/delete/cardguard/limits/failedseqcorrection/nextjoinprojection/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP226native2row/update/delete/cardguard/limits/failedseqcorrection/nextjoinprojection/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP226native2row/update/delete/cardguard/limits/failedseqcorrection/nextjoinprojection/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP226native2row/update/delete/cardguard/limits/failedseqcorrection/nextjoinprojection/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP226native2row/update/delete/cardguard/limits/failedseqcorrection/nextjoinprojection/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP226native2row/update/delete/cardguard/limits/failedseqcorrection/nextjoinprojection/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/room-list/README.md",
+      "state": "updated",
+      "reason": "CP226native2row/update/delete/cardguard/limits/failedseqcorrection/nextjoinprojection/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/room-list/lifecycle.json",
+      "state": "updated",
+      "reason": "CP226native2row/update/delete/cardguard/limits/failedseqcorrection/nextjoinprojection/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP226native2row/update/delete/cardguard/limits/failedseqcorrection/nextjoinprojection/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP226native2row/update/delete/cardguard/limits/failedseqcorrection/nextjoinprojection/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    }
+  ]
+}

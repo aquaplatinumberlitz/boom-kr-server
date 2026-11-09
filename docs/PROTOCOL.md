@@ -802,6 +802,46 @@ Tại **CP017**, đây là locator **kr_static/confirmed**, player schema/hiệu
 CP018 dưới đây thử106 sau585; không xác nhận585 chỉ dùng để xin roster hoặc là pairing server gốc. Không gán map/user layout từ VN hay đoán opcode theo độ lệch.
 Profile/auth-prefix và các giới hạn CP015/016 tiếp tục giữ mở.
 
+<a id="room-list-lifecycle"></a>
+### Nhiều row, cập nhật91 và xóa90 — CP226
+
+[Recipe/raw/hash](evidence/room-list/README.md), [metadata](evidence/room-list/lifecycle.json).
+Reuse CP016/028/161 row/header/blob/title/featureguards; VNlobby88/78 chỉ phương pháp, không portopcode/layout.
+Private2accountservice/profile chỉ đổi roomlistA/B và bỏ single-rowtitlemode;45fixturepins khác giữ nguyên.
+Rows/timing/listing là `emu_choice/design`; dưới đây là `kr_runtime/confirmed` consumer/input của client KR.
+
+**Hai row:** session1/roomID101/RoomAlpha và session2/roomID202/RoomBeta, giữ22bytestail đã đo;
+outer91u16count2+serializeduncompressedblob. Cảhai native8150F0/D9D720 inner81/81,
+outer93/93/errors0, UI2cardsS02/S03 WAITING1/4. Doubleclick thường Arow1/Brow2 tự phát C2S82 typed
+`[session,roomID,0,1,5]`=`[1,101,0,1,5]`/`[2,202,0,1,5]`. Adapter chỉ ghi82, **không gửi87**;
+chưa nativejoin/membership/registry hoặc semantics mọi field/tail.
+
+**91 cập nhật, không full replacement trong profile đã đo:** gửi count1/session2/ID303/RoomGamma ở
+seq55 rồi count0/seq58. Native count2→1→0, inner81/41, outer93/53/2/errors0. Cảhai UI vẫn giữ Alpha,
+đổi Beta→Gamma và count0 vẫn giữ hai card; actual82 A1/101, B2/303. Count0 không phải clear-all ở trạng thái
+này; không tổng quát mọi feature/mode. Mỗi connection phải tiếp đúng sequence sau fixedsetup46/49/52.
+
+**Correction giữ failure:** ca update đầu dùng `send()` default73 trong adapter vốn gửi fixedsetup nhưng
+chưa set nextseq. Hai client đóng TCP/GDBremote sau frame, không consumerupdate/empty/click; run185raw
+được giữ. Bản mới chỉ initialize missingnext55, giữbody/profile/input, đo được55/58 và native/UI/wire trên.
+Không khẳng định nativeCRCreturn hoặc rootcause chỉ từ code/EOF. Remoteconnectionclosed trong cleanup bình
+thường không là lỗi runtime; observer strict phải phân biệt mốc completion/cleanup, fatalmarker vẫn kiểm.
+
+**90 đường xóa có ID guard:** jumptable810C80 map opcode90→810B78→8152C0, không phải92.
+Outer `u16 count1,u16 count2`; blob1 nếucount1>0, blob2 nếucount2>0. Nhánh đo **count1=0,count2=1**,
+blob2uncompressed có `u8tag0,u16LEsession,u32LEroomID` (7byte); outer21byte. Native lookup8117E0,
+validobject D9D5D0 và object+5C==roomID mới vào815570→D9DE80(clearwrapper+38); cuối813B60refresh.
+WrongID999/session2 gửi cảhai: nativeinner7/7/outer21/21/errors0, không matchingclearbranch, A vẫn chọn
+row2/ID202. MatchingID202/session2 chỉ gửiB: branch hit vớirowobject thật, cardBeta mất/Alpha còn;
+Bclickrow1→82/ID101. UIA2cards/B1card và nativeframes/PCAP đối chứng. Đây là guard của listcard,
+**không** xác nhận server chống stalejoin/epoch/reuse hoặc membership authority.
+
+Firststream90 (calleeD9DC10), secondstreamtag1 (D9D9A0), count>1/bounds/unknownsession/full/password/
+mode/region khác chưa đo. Không coi clearedwrapper là xóa object/row khỏi mọi store; chỉ cardeffect đã kiểm.
+4relatedruns545raw/sourcefreeze/ownedcleanup, gồm seq73failure; không clientpatch/nativefunctioncall/
+SDK-VMgraph/Rust/production/gate. [Câu hỏi](RESEARCH.md#rust-service-gaps), [thứ tự](PLAN.md#current-order)
+tiếp selected82→87session/context/title; CP225mergePR296/3bd1cdd, AUD065qua224/kế228. Internet thật chưa kiểm.
+
 <a id="room-player"></a>
 ### Player, own-slot và controls phòng (CP018)
 
