@@ -1,0 +1,838 @@
+{
+  "schema": "kre-auth-retry-validation-v1",
+  "recorded_utc": "2026-11-09T02:55:52.263330+00:00",
+  "baseline": "51bbf415fa02a4655246218dff7df284cd401c58",
+  "contract": "docs/PROTOCOL.md#auth-retry-validation",
+  "research": "docs/RESEARCH.md#rust-service-gaps",
+  "plan": "docs/PLAN.md#current-order",
+  "recipe": "docs/evidence/login-runtime/README.md#cp224",
+  "verification": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T02:54:14.342923+00:00",
+    "result": "hello_and_validation_success_fullretry_FAIL_native_fatal",
+    "runs": [
+      {
+        "case": "consumer-path",
+        "run_sha256": "4c8a447e73c8df361bbebb52fc8bc9240a01bfae7c250d08af3c2d5bad5b3508",
+        "duration_s": 66.69060825,
+        "raw_count": 154,
+        "frozen_count": 376,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "returncode": 1,
+        "controlled_close_ns": 167005029160742,
+        "result": "FAIL_fullretry_native_SIGABRT_then_unhandled_illegal_instruction",
+        "native_initial_AB_auth0_and_17": true,
+        "new_B_connection": {
+          "ordinal": 9,
+          "port": 3848,
+          "chunks": 0
+        },
+        "no_postclose_token_count_set_or_builder_observed": true,
+        "limits": "Boundedknownobserver/wirecapture/servicejoin. Initialauth0/17 nothealthyretry. AowneropenTCPretentionnotgameplayprogress; no fullresume/TTL. SIGABRT GDBstop thenWineillegalinstruction different events, no assertion on their cause. No originalserverauth/DB/Rust/gate.",
+        "observer_limits": "EntryFinishBreakpointunwindsonecallerup; do notattributeitsreturnlabels/resultstointendedcallee. Direct125BE47EAX1validexplicitmarker; fixedreturnsrunisdecisive.",
+        "correction_report": "local/research/codex/auth-retry-consumer-r1/r1-observer-review.json"
+      },
+      {
+        "case": "fixed-returns",
+        "run_sha256": "fc2b8c9e1280e217c94ec68112a4ef0a8bdc4e15eb3041756372080447f0882d",
+        "duration_s": 68.004627887,
+        "raw_count": 154,
+        "frozen_count": 382,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "returncode": 1,
+        "controlled_close_ns": 167223465225781,
+        "result": "FAIL_fullretry_native_SIGABRT_then_unhandled_illegal_instruction",
+        "native_initial_AB_auth0_and_17": true,
+        "new_B_connection": {
+          "ordinal": 9,
+          "port": 3838,
+          "chunks": 0
+        },
+        "no_postclose_token_count_set_or_builder_observed": true,
+        "limits": "Boundedknownobserver/wirecapture/servicejoin. Initialauth0/17 nothealthyretry. AowneropenTCPretentionnotgameplayprogress; no fullresume/TTL. SIGABRT GDBstop thenWineillegalinstruction different events, no assertion on their cause. No originalserverauth/DB/Rust/gate.",
+        "exact_native_returns": [
+          {
+            "kind": "hello_return_exact",
+            "n": 3,
+            "ns": 167233458796006,
+            "pc": "0x13ad79c",
+            "result": 1,
+            "ecx": "0x12c3f4",
+            "bp": "0x12c400",
+            "manager": "0x2acc018",
+            "phase": 2,
+            "socket_object": "0x6284d4d0"
+          },
+          {
+            "kind": "poll_return_exact",
+            "n": 2,
+            "ns": 167233466484380,
+            "pc": "0x1255c73",
+            "result": 1,
+            "ecx": "0x12c474",
+            "bp": "0x12c480"
+          },
+          {
+            "kind": "connect_validate_return_exact",
+            "n": 2,
+            "ns": 167233471708072,
+            "pc": "0x1255a69",
+            "result": 1,
+            "ecx": "0x12c538",
+            "bp": "0x12c4a0"
+          },
+          {
+            "kind": "outer_return_exact",
+            "n": 1,
+            "ns": 167233474410433,
+            "pc": "0x125be47",
+            "result": 1,
+            "ecx": "0x0",
+            "bp": "0x12c544",
+            "stack": "#0  0x0125be47 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#1  0x0125aad2 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#2  0x01259c65 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#3  0x7b488828 in ?? () from /usr/lib/wine/i386-windows/user32.dll\n#4  0x7b4e0497 in ?? () from /usr/lib/wine/i386-windows/user32.dll\n#5  0x7b4e5dff in ?? () from /usr/lib/wine/i386-windows/user32.dll\n#6  0x7b4e5bf3 in ?? () from /usr/lib/wine/i386-windows/user32.dll\n"
+          }
+        ],
+        "fault_after_outer_return_s": 6.163233739,
+        "manager_phase": 2,
+        "fault_stop": {
+          "ns": 167239637644172,
+          "pc": "0x7bc0a4a8"
+        },
+        "manual_UI": {
+          "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-25.png",
+          "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e",
+          "observation": "WineProgramError overlay/blackbackground/LoginError2000:0behind; notrecoveredlogin."
+        },
+        "correction": "DirectknownreturnPCsreplaceR1entryFinishBreakpointunwind. Successfulhello/poll/validationandouterEAX1proven; CP223consumerboundaryunknownnarroweddownstream. Tokenbuildernotobservedafterclose."
+      },
+      {
+        "source": "kr_runtime",
+        "status": "confirmed",
+        "recorded_utc": "2026-11-09T03:01:11.552342+00:00",
+        "case": "continuation-path",
+        "result": "validation_success_then_branch_local11_skips_guard_path_returns_fullretry_FATAL",
+        "run_sha256": "0f2de01f0bfd4bac1167043138850c20d014e19eac6345f0fa7227cac2f6a8e3",
+        "duration_s": 66.83623407,
+        "raw_count": 154,
+        "frozen_count": 390,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "native_returns": [
+          {
+            "kind": "hello_return_exact",
+            "n": 3,
+            "ns": 167802625320216,
+            "pc": "0x13ad79c",
+            "result": 1,
+            "ecx": "0x12c3f4",
+            "bp": "0x12c400",
+            "manager": "0x2acbf68",
+            "phase": 2,
+            "socket_object": "0x60be58b8"
+          },
+          {
+            "kind": "poll_return_exact",
+            "n": 2,
+            "ns": 167802631109438,
+            "pc": "0x1255c73",
+            "result": 1,
+            "ecx": "0x12c474",
+            "bp": "0x12c480"
+          },
+          {
+            "kind": "connect_validate_return_exact",
+            "n": 2,
+            "ns": 167802633834190,
+            "pc": "0x1255a69",
+            "result": 1,
+            "ecx": "0x12c538",
+            "bp": "0x12c4a0"
+          },
+          {
+            "kind": "outer_return_exact",
+            "n": 1,
+            "ns": 167802636354261,
+            "pc": "0x125be47",
+            "result": 1,
+            "ecx": "0x0",
+            "bp": "0x12c544",
+            "stack": "#0  0x0125be47 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#1  0x0125aad2 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#2  0x01259c65 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#3  0x7b488828 in ?? () from /usr/lib/wine/i386-windows/user32.dll\n#4  0x7b4e0497 in ?? () from /usr/lib/wine/i386-windows/user32.dll\n#5  0x7b4e5dff in ?? () from /usr/lib/wine/i386-windows/user32.dll\n#6  0x7b4e5bf3 in ?? () from /usr/lib/wine/i386-windows/user32.dll\n"
+          }
+        ],
+        "postclose_branches": [
+          {
+            "kind": "success_branch",
+            "n": 1,
+            "ns": 167802640342093,
+            "pc": "0x125bebd",
+            "eax": 1,
+            "ecx": 0,
+            "ebp": "0x12c544"
+          },
+          {
+            "kind": "handoff_entry",
+            "n": 3,
+            "ns": 167802642274474,
+            "pc": "0x1255f80",
+            "eax": 782695904,
+            "ecx": 782695904,
+            "ebp": "0x12c544"
+          },
+          {
+            "kind": "after_handoff",
+            "n": 1,
+            "ns": 167802646552896,
+            "pc": "0x125bec9",
+            "eax": 1229904,
+            "ecx": 1230136,
+            "ebp": "0x12c544",
+            "branch_local_minus28": 11
+          },
+          {
+            "kind": "alternate_branch",
+            "n": 7,
+            "ns": 167802649057117,
+            "pc": "0x125bf8c",
+            "eax": 1229904,
+            "ecx": 1230136,
+            "ebp": "0x12c544"
+          },
+          {
+            "kind": "handoff_entry",
+            "n": 4,
+            "ns": 167802651010348,
+            "pc": "0x1255f80",
+            "eax": 1233344,
+            "ecx": 782695904,
+            "ebp": "0x12d184"
+          }
+        ],
+        "new_B_connection": {
+          "ordinal": 9,
+          "port": 3838,
+          "chunks": 0
+        },
+        "facts": "125BE47EAX1→125BEBDsuccess→1255F80handoffreturns125BEC9,localEBP-28=11→125BF8Cepilogue/ret. Notstuckinsidehandoff. Remaininglocal==1guardpathnotenteredinthesameframe. No postclose tokenbuilder/countset/auth6-67/newsession; SIGABRTandWineillegalinstructionstillpresent.",
+        "limits": "Meaningandoriginofdiscriminator11unknown; nottoken-count/channelstagewithoutsource. No SDK/VM/antitampercauseclaimedfromfatalstack/popup. Samepolicy/frozeninput; explicitreturn-pathobservernothealthyretry. Stopruntimebranchuntilnewobservable/sourceinput. CP223oldrecord/rawimmutable; originalDBnotchanged."
+      }
+    ],
+    "total_raw": 462,
+    "corrects_cp223": {
+      "recorded_utc": "2026-11-09T02:54:14.334058+00:00",
+      "corrects": "CP223 bounded retry description omitted fatalSIGABRT/illegalinstruction already in pinnedconnect-path-r2log; retrywasFAIL/nothealthaccepted and remainsFAIL.",
+      "old_run_sha256": "b5f38bb8d2ebba748bd9b0a4d9ee4522defee6765cba8a2f1fda755167d24cfb",
+      "old_log": {
+        "path": "local/research/codex/auth-retry-connect-r1/connect-path-r2/cycles/B/client.log",
+        "bytes": 314093,
+        "sha256": "74370430c9d8e0f0f12ff13cf19ee06c206e390f06e603c83a0fc55fd4d642b4"
+      },
+      "finding": "NativeGDBreceivedSIGABRTatkernelbase; afterdetachWine reportsunhandledillegalinstruction02260DF8. ExistingharnesspostcloseignoresBprocessfailureandonlyrecognizesSIGSEGV, so didnotnamefatalcause. No consumerfailure/security/VMrootcauseinference.",
+      "new_direct_evidence": "Fixedreturnsconfirms13AD79C/1255C73/1255A69/125BE47allEAX1/managerphase2beforefatal. ExistingABentrypositiveisnotpostdisconnectacceptance.",
+      "history": "NoCP223complete/raw/seal/reportsedited. NewcorrectionCP224/AUD065. No forcedstate/reply/policychange orbroadVMgraph.",
+      "next": "Readactualouter125BE47continuationonly; ifprotectedhandoffwithoutnewinputobservable,declareblocker and chooseindependentPLANgap. Do notrepeathello/validation/EOF/TCPcontrols; futureharnessmustrecognizeallfatalstops/ownedProgramError,notaliveorSIGSEGVonly."
+    },
+    "limits": "Twofrozencontrolledobserverruns; nativeknownreturnsnotoriginalserverlaw/fullfreshlogin/accountresume. FinishBreakpointfirstobserverlimited, directreturnseconddecisive. No sourceWIP/production/Rust/gatechanges.",
+    "continuation": {
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-verification.json",
+      "sha256": "892770d9a95eccd09bc41376af84ee2959e66fdc5776500b9c47be7de519db2c"
+    }
+  },
+  "observer_correction": {
+    "recorded_utc": "2026-11-09T02:49:25.149107+00:00",
+    "run_sha256": "4c8a447e73c8df361bbebb52fc8bc9240a01bfae7c250d08af3c2d5bad5b3508",
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "facts": "ActualB125BE47eax1afterpost17new3848hello. Existingconsumer/pollentrymarkershit; no secondauth6/67 ornewsession,fullretryFAIL.",
+    "correction": "gdb.FinishBreakpoint(gdb.newest_frame())atentrybeforeprologue can unwind caller frame: hello_return PC1255C73 not13AD79C, poll_returnPC1255A69, profile_returnPC125AAD2/result1229904. Do not attribute these named return markers to intendedcallee. Native outer125BE47 explicitpoint hasEAX1; cached branch supports continuation. Ainitial3848 also sets booleanpost_reconnect, so join Bclosed_ns/timestamps,notthatbooleanalone.",
+    "minimum": "Onefixedknownreturnsiteobserver, noFinishBreakpointforconsumer. Sameprivatepairpolicy/input/profile, no sourcemutationmidrun. Keep allR1raw/report immutable."
+  },
+  "limits": "Nativeknownreturnssuccess/fatalretryfailure; notfullauth/production/Rust/gate. OldrecordCP223/rawimmutable; Internet thật chưa kiểm.",
+  "continuation": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T03:01:11.552342+00:00",
+    "case": "continuation-path",
+    "result": "validation_success_then_branch_local11_skips_guard_path_returns_fullretry_FATAL",
+    "run_sha256": "0f2de01f0bfd4bac1167043138850c20d014e19eac6345f0fa7227cac2f6a8e3",
+    "duration_s": 66.83623407,
+    "raw_count": 154,
+    "frozen_count": 390,
+    "cleanup": {
+      "net_namespace": "net:[4026533497]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+    },
+    "native_returns": [
+      {
+        "kind": "hello_return_exact",
+        "n": 3,
+        "ns": 167802625320216,
+        "pc": "0x13ad79c",
+        "result": 1,
+        "ecx": "0x12c3f4",
+        "bp": "0x12c400",
+        "manager": "0x2acbf68",
+        "phase": 2,
+        "socket_object": "0x60be58b8"
+      },
+      {
+        "kind": "poll_return_exact",
+        "n": 2,
+        "ns": 167802631109438,
+        "pc": "0x1255c73",
+        "result": 1,
+        "ecx": "0x12c474",
+        "bp": "0x12c480"
+      },
+      {
+        "kind": "connect_validate_return_exact",
+        "n": 2,
+        "ns": 167802633834190,
+        "pc": "0x1255a69",
+        "result": 1,
+        "ecx": "0x12c538",
+        "bp": "0x12c4a0"
+      },
+      {
+        "kind": "outer_return_exact",
+        "n": 1,
+        "ns": 167802636354261,
+        "pc": "0x125be47",
+        "result": 1,
+        "ecx": "0x0",
+        "bp": "0x12c544",
+        "stack": "#0  0x0125be47 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#1  0x0125aad2 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#2  0x01259c65 in ?? () from /home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe\n#3  0x7b488828 in ?? () from /usr/lib/wine/i386-windows/user32.dll\n#4  0x7b4e0497 in ?? () from /usr/lib/wine/i386-windows/user32.dll\n#5  0x7b4e5dff in ?? () from /usr/lib/wine/i386-windows/user32.dll\n#6  0x7b4e5bf3 in ?? () from /usr/lib/wine/i386-windows/user32.dll\n"
+      }
+    ],
+    "postclose_branches": [
+      {
+        "kind": "success_branch",
+        "n": 1,
+        "ns": 167802640342093,
+        "pc": "0x125bebd",
+        "eax": 1,
+        "ecx": 0,
+        "ebp": "0x12c544"
+      },
+      {
+        "kind": "handoff_entry",
+        "n": 3,
+        "ns": 167802642274474,
+        "pc": "0x1255f80",
+        "eax": 782695904,
+        "ecx": 782695904,
+        "ebp": "0x12c544"
+      },
+      {
+        "kind": "after_handoff",
+        "n": 1,
+        "ns": 167802646552896,
+        "pc": "0x125bec9",
+        "eax": 1229904,
+        "ecx": 1230136,
+        "ebp": "0x12c544",
+        "branch_local_minus28": 11
+      },
+      {
+        "kind": "alternate_branch",
+        "n": 7,
+        "ns": 167802649057117,
+        "pc": "0x125bf8c",
+        "eax": 1229904,
+        "ecx": 1230136,
+        "ebp": "0x12c544"
+      },
+      {
+        "kind": "handoff_entry",
+        "n": 4,
+        "ns": 167802651010348,
+        "pc": "0x1255f80",
+        "eax": 1233344,
+        "ecx": 782695904,
+        "ebp": "0x12d184"
+      }
+    ],
+    "new_B_connection": {
+      "ordinal": 9,
+      "port": 3838,
+      "chunks": 0
+    },
+    "facts": "125BE47EAX1→125BEBDsuccess→1255F80handoffreturns125BEC9,localEBP-28=11→125BF8Cepilogue/ret. Notstuckinsidehandoff. Remaininglocal==1guardpathnotenteredinthesameframe. No postclose tokenbuilder/countset/auth6-67/newsession; SIGABRTandWineillegalinstructionstillpresent.",
+    "limits": "Meaningandoriginofdiscriminator11unknown; nottoken-count/channelstagewithoutsource. No SDK/VM/antitampercauseclaimedfromfatalstack/popup. Samepolicy/frozeninput; explicitreturn-pathobservernothealthyretry. Stopruntimebranchuntilnewobservable/sourceinput. CP223oldrecord/rawimmutable; originalDBnotchanged."
+  },
+  "static_fallback": [
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "recorded_utc": "2026-11-09T02:57:16.964463+00:00",
+      "method": "Fallbackread-onlyCapstone128bytesfromexactobserved125BE47return; stopatfirstret/unconditionaljmp. NotREAanalysis/fullfunction orprotecteddecode.",
+      "provider_failure": "REA/IDAanalyze_function125BE47timedout450s; export0records; noREAbodyobtained. Close requested; no installs/configchange.",
+      "target": {
+        "path": "local/research/codex/k4-current-291-r1/game-A/CA-r2-stage-social-cmp.exe",
+        "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+      },
+      "model": {
+        "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+        "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+      },
+      "range": {
+        "start": "0x125be47",
+        "max_bytes": 128,
+        "bytes_sha256": "04945ceaa6e3a81a2c1a7d85f8dfd2099aadecd74981633bdb5d94c6e015d584"
+      },
+      "same_bytes_in_copy_and_pinned_model": true,
+      "instructions": [
+        {
+          "va": "0x125be47",
+          "mnemonic": "test",
+          "operand": "eax, eax"
+        },
+        {
+          "va": "0x125be49",
+          "mnemonic": "jne",
+          "operand": "0x125bebd"
+        },
+        {
+          "va": "0x125be4b",
+          "mnemonic": "sub",
+          "operand": "esp, 0x18"
+        },
+        {
+          "va": "0x125be4e",
+          "mnemonic": "mov",
+          "operand": "ecx, esp"
+        },
+        {
+          "va": "0x125be50",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 0x34], esp"
+        },
+        {
+          "va": "0x125be53",
+          "mnemonic": "push",
+          "operand": "0x1792734"
+        },
+        {
+          "va": "0x125be58",
+          "mnemonic": "call",
+          "operand": "0x447420"
+        },
+        {
+          "va": "0x125be5d",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 0x38], eax"
+        },
+        {
+          "va": "0x125be60",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 4], 1"
+        },
+        {
+          "va": "0x125be67",
+          "mnemonic": "push",
+          "operand": "0x354"
+        },
+        {
+          "va": "0x125be6c",
+          "mnemonic": "push",
+          "operand": "1"
+        },
+        {
+          "va": "0x125be6e",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 4], 0xffffffff"
+        },
+        {
+          "va": "0x125be75",
+          "mnemonic": "call",
+          "operand": "0x1254cc0"
+        },
+        {
+          "va": "0x125be7a",
+          "mnemonic": "add",
+          "operand": "esp, 0x20"
+        },
+        {
+          "va": "0x125be7d",
+          "mnemonic": "push",
+          "operand": "0x175b298"
+        },
+        {
+          "va": "0x125be82",
+          "mnemonic": "lea",
+          "operand": "ecx, [ebp - 0x64]"
+        },
+        {
+          "va": "0x125be85",
+          "mnemonic": "call",
+          "operand": "0x447420"
+        },
+        {
+          "va": "0x125be8a",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 4], 2"
+        },
+        {
+          "va": "0x125be91",
+          "mnemonic": "push",
+          "operand": "0"
+        },
+        {
+          "va": "0x125be93",
+          "mnemonic": "push",
+          "operand": "0x1792754"
+        },
+        {
+          "va": "0x125be98",
+          "mnemonic": "lea",
+          "operand": "eax, [ebp - 0x64]"
+        },
+        {
+          "va": "0x125be9b",
+          "mnemonic": "push",
+          "operand": "eax"
+        },
+        {
+          "va": "0x125be9c",
+          "mnemonic": "call",
+          "operand": "0x52a500"
+        },
+        {
+          "va": "0x125bea1",
+          "mnemonic": "add",
+          "operand": "esp, 4"
+        },
+        {
+          "va": "0x125bea4",
+          "mnemonic": "push",
+          "operand": "eax"
+        },
+        {
+          "va": "0x125bea5",
+          "mnemonic": "push",
+          "operand": "0"
+        },
+        {
+          "va": "0x125bea7",
+          "mnemonic": "call",
+          "operand": "dword ptr [0x16ea64c]"
+        },
+        {
+          "va": "0x125bead",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 4], 0xffffffff"
+        },
+        {
+          "va": "0x125beb4",
+          "mnemonic": "lea",
+          "operand": "ecx, [ebp - 0x64]"
+        },
+        {
+          "va": "0x125beb7",
+          "mnemonic": "call",
+          "operand": "0x449540"
+        },
+        {
+          "va": "0x125bebc",
+          "mnemonic": "nop",
+          "operand": ""
+        },
+        {
+          "va": "0x125bebd",
+          "mnemonic": "call",
+          "operand": "0x60fde0"
+        },
+        {
+          "va": "0x125bec2",
+          "mnemonic": "mov",
+          "operand": "ecx, eax"
+        }
+      ],
+      "limits": "Staticbranchonly; instructionbytesunchangednotproofofnativebranchtaken. No provider/SDK/VMgraphornewcalleeanalysis; need actualbranchobservableifnewquestion."
+    },
+    {
+      "source": "kr_static",
+      "status": "candidate",
+      "method": "Read-onlybounded160bytesfromdirectJNEsuccessdestination125BEBD; samecopiedPE/pinnedmodel. Notfullfunction, no calleesdecoded.",
+      "range": {
+        "start": "0x125bebd",
+        "max_bytes": 160,
+        "sha256": "4a79dc41603902cdfc5bccbef9e8572cac58731a2f646cd9cdfb20f79fef1dbd"
+      },
+      "instructions": [
+        {
+          "va": "0x125bebd",
+          "mnemonic": "call",
+          "operand": "0x60fde0"
+        },
+        {
+          "va": "0x125bec2",
+          "mnemonic": "mov",
+          "operand": "ecx, eax"
+        },
+        {
+          "va": "0x125bec4",
+          "mnemonic": "call",
+          "operand": "0x1255f80"
+        },
+        {
+          "va": "0x125bec9",
+          "mnemonic": "nop",
+          "operand": ""
+        },
+        {
+          "va": "0x125beca",
+          "mnemonic": "cmp",
+          "operand": "dword ptr [ebp - 0x28], 1"
+        },
+        {
+          "va": "0x125bece",
+          "mnemonic": "jne",
+          "operand": "0x125bf8c"
+        },
+        {
+          "va": "0x125bed4",
+          "mnemonic": "lea",
+          "operand": "ecx, [ebp - 0x11]"
+        },
+        {
+          "va": "0x125bed7",
+          "mnemonic": "call",
+          "operand": "0xd95cb0"
+        },
+        {
+          "va": "0x125bedc",
+          "mnemonic": "movzx",
+          "operand": "ecx, al"
+        },
+        {
+          "va": "0x125bedf",
+          "mnemonic": "test",
+          "operand": "ecx, ecx"
+        },
+        {
+          "va": "0x125bee1",
+          "mnemonic": "je",
+          "operand": "0x125bf51"
+        },
+        {
+          "va": "0x125bee3",
+          "mnemonic": "call",
+          "operand": "0x8489a0"
+        },
+        {
+          "va": "0x125bee8",
+          "mnemonic": "test",
+          "operand": "eax, eax"
+        },
+        {
+          "va": "0x125beea",
+          "mnemonic": "je",
+          "operand": "0x125bf51"
+        },
+        {
+          "va": "0x125beec",
+          "mnemonic": "call",
+          "operand": "0x848970"
+        },
+        {
+          "va": "0x125bef1",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 0x2c], eax"
+        },
+        {
+          "va": "0x125bef4",
+          "mnemonic": "sub",
+          "operand": "esp, 0x18"
+        },
+        {
+          "va": "0x125bef7",
+          "mnemonic": "mov",
+          "operand": "ecx, esp"
+        },
+        {
+          "va": "0x125bef9",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 0x3c], esp"
+        },
+        {
+          "va": "0x125befc",
+          "mnemonic": "push",
+          "operand": "0x178935c"
+        },
+        {
+          "va": "0x125bf01",
+          "mnemonic": "call",
+          "operand": "0x447420"
+        },
+        {
+          "va": "0x125bf06",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 0x40], eax"
+        },
+        {
+          "va": "0x125bf09",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 4], 3"
+        },
+        {
+          "va": "0x125bf10",
+          "mnemonic": "lea",
+          "operand": "edx, [ebp - 0x7c]"
+        },
+        {
+          "va": "0x125bf13",
+          "mnemonic": "push",
+          "operand": "edx"
+        },
+        {
+          "va": "0x125bf14",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 4], 0xffffffff"
+        },
+        {
+          "va": "0x125bf1b",
+          "mnemonic": "mov",
+          "operand": "ecx, dword ptr [ebp - 0x2c]"
+        },
+        {
+          "va": "0x125bf1e",
+          "mnemonic": "call",
+          "operand": "0x138d010"
+        },
+        {
+          "va": "0x125bf23",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 0x44], eax"
+        },
+        {
+          "va": "0x125bf26",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 4], 4"
+        },
+        {
+          "va": "0x125bf2d",
+          "mnemonic": "call",
+          "operand": "0x60fde0"
+        },
+        {
+          "va": "0x125bf32",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 0x30], eax"
+        },
+        {
+          "va": "0x125bf35",
+          "mnemonic": "lea",
+          "operand": "eax, [ebp - 0x7c]"
+        },
+        {
+          "va": "0x125bf38",
+          "mnemonic": "push",
+          "operand": "eax"
+        },
+        {
+          "va": "0x125bf39",
+          "mnemonic": "mov",
+          "operand": "ecx, dword ptr [ebp - 0x30]"
+        },
+        {
+          "va": "0x125bf3c",
+          "mnemonic": "call",
+          "operand": "0x1258150"
+        },
+        {
+          "va": "0x125bf41",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 4], 0xffffffff"
+        },
+        {
+          "va": "0x125bf48",
+          "mnemonic": "lea",
+          "operand": "ecx, [ebp - 0x7c]"
+        },
+        {
+          "va": "0x125bf4b",
+          "mnemonic": "call",
+          "operand": "0x449540"
+        },
+        {
+          "va": "0x125bf50",
+          "mnemonic": "nop",
+          "operand": ""
+        },
+        {
+          "va": "0x125bf51",
+          "mnemonic": "sub",
+          "operand": "esp, 0x18"
+        },
+        {
+          "va": "0x125bf54",
+          "mnemonic": "mov",
+          "operand": "ecx, esp"
+        },
+        {
+          "va": "0x125bf56",
+          "mnemonic": "mov",
+          "operand": "dword ptr [ebp - 0x48], esp"
+        }
+      ],
+      "limits": "Native125BE47EAX1supportsbranchbutnotdownstreamoutcome/SDKcause; no calleebodyorVMgraph."
+    },
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "Read-only96byteprefixofactualbranch125BF8C; stopret/jmp; no calleesdecoded.",
+      "sha256": "a18b70d6fc1fe1bba0719fad8e283c834b1ceccc372fa34dff5935662254f0a1",
+      "instructions": [
+        {
+          "va": "0x125bf8c",
+          "mnemonic": "mov",
+          "operand": "ecx, dword ptr [ebp - 0xc]"
+        },
+        {
+          "va": "0x125bf8f",
+          "mnemonic": "mov",
+          "operand": "dword ptr fs:[0], ecx"
+        },
+        {
+          "va": "0x125bf96",
+          "mnemonic": "mov",
+          "operand": "esp, ebp"
+        },
+        {
+          "va": "0x125bf98",
+          "mnemonic": "pop",
+          "operand": "ebp"
+        },
+        {
+          "va": "0x125bf99",
+          "mnemonic": "ret",
+          "operand": ""
+        }
+      ],
+      "limits": "Shortnativebranchprefixnotfullfunction/rootcause. Doesnotexplainwherebranchlocal11camefrom."
+    }
+  ],
+  "provider_cleanup": {
+    "recorded_utc": "2026-11-09T02:59:30.193091+00:00",
+    "pid": 2610987,
+    "prior_request": "local/research/codex/auth-retry-consumer-r1/rea-provider-cleanup-request.json",
+    "reason": "SIGTERM didnotcompleteownheadlessIDAanalysis; SIGKILLonlyexactownedPID/port, nootherprocesses orsourceDBfiles touched.",
+    "signal": "SIGKILL",
+    "process_exists_after": false,
+    "target_sha256_after": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+  },
+  "next": "CachefirstprovenanceofEBP-28discriminator11andactual125BE47calleronly;do not repeatfailedretry/knownvalidationoropenSDK-VMgraph. Unknownclassificationnotcausalroot."
+}

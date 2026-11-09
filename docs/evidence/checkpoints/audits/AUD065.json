@@ -1,0 +1,100 @@
+{
+  "id": "AUD065",
+  "trigger": "periodic",
+  "completed_through": "CP224",
+  "recorded_utc": "2026-11-09T03:04:06.819275+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/login-runtime/README.md",
+    "docs/evidence/login-runtime/session-lifecycle.json",
+    "docs/evidence/login-runtime/retry-validation.json",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "AGENTS.md",
+    "docs/evidence/checkpoints/audits/AUD064.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "local/research/codex/auth-retry-consumer-r1/source-first.json",
+    "local/research/codex/auth-retry-consumer-r1/r1-observer-review.json",
+    "local/research/codex/auth-retry-consumer-r1/cp223-fatal-correction.json",
+    "local/research/codex/auth-retry-consumer-r1/consumer-path-verification.json",
+    "local/research/codex/auth-retry-consumer-r1/fixed-returns-verification.json",
+    "local/research/codex/auth-retry-consumer-r1/continuation-verification.json",
+    "local/research/codex/auth-retry-consumer-r1/continuation.json",
+    "local/research/codex/auth-retry-consumer-r1/continuation-success.json",
+    "local/research/codex/auth-retry-consumer-r1/continuation-alternate.json",
+    "local/research/codex/auth-retry-consumer-r1/batch-verification.json",
+    "local/research/codex/auth-retry-consumer-r1/rea-provider-cleanup-result.json"
+  ],
+  "method": "ManualselectiveREADME→PLAN→PROTOCOL→RESEARCH→evidence review throughCP221–224. Comparednative2accountscope/endpointpositiveandfailedretry, currentrawexactreturn/branch/fatal markers, preservedoldCP223fatal log andobservercorrections. ManuallyviewedR2Bscreen25ProgramError; raw/preflight/fullhistorychecksseparate, notsemantic/gateapproval. No claimtoreadeveryhistoricalraw. PriorAUD064immutable/cadenceunchanged.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP223nativeframer/AsyncSelectwaslastknownboundary; consumer/validation remainedunknown.",
+      "correction": "CP224exactreturnPC13AD79C/1255C73/1255A69/125BE47allEAX1/phase2. Nativehandoffreturns/localEBP-28=11→125BF8Cepilogue,notstuckhello/handoff. Meaning/origin11unknown;no SDK/VMcausalityclaim. Nextonlycachefirstdiscriminator/caller.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/login-runtime/retry-validation.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "PinnedCP223connect-path-r2loghadSIGABRT/illegalinstructionbutderivedreportdidnotnamefatal; harnesscheckedSIGSEGVandignoredBfailurepostclose.",
+      "correction": "Appendcp223-fatal-correctionatCP224;retrywasFAILandremainsFAIL/nativefatal,nohealthyacceptance. Preserveoldcomplete/analysis/raw/seals; futurehealthobservationmustrecognizeallfatalstops/ProgramError. Norepeatneededtoestablisholdfault.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/login-runtime/README.md",
+        "docs/evidence/login-runtime/retry-validation.json",
+        "README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "FirstnewobserverFinishBreakpointatentrybeforeprologueunwoundcaller; returnlabels/resultsnotintendedcallee. PortwatchalsotriggersAinitial3848andR2actualBuses3838.",
+      "correction": "KeepR1/source/raw; r1-observer-reviewexplicit. R2fixedknownreturnaddressesdecisive, joinBclosed_nsandactualcaller,notportboolean. Endpointvariationnotretagguess;3runfailedretryboundsscoped.",
+      "fixed_in": [
+        "docs/evidence/login-runtime/retry-validation.json",
+        "docs/PROTOCOL.md",
+        "docs/evidence/login-runtime/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "REA/IDAanalysiscouldbeconfusedwithavailabledecompilation; onlytimeoutandemptyexportobtained.",
+      "correction": "Name450stimeout/export0; boundedCapstonecopy/modelmatchedprefixeslabeledfallback,notREAEvidence/fullfunction. OwnheadlessPID/portSIGTERMthenSIGKILL/closecompleted;targethashunchanged/allWinealreadysealed, nooriginalDBsaved.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/login-runtime/retry-validation.json",
+        "docs/evidence/login-runtime/README.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "READMEhistoricalCP222/223nextinstructionsandperiodiccountercouldlookcurrent; demo/fullservice/Rustreadinesscoulddrift.",
+      "correction": "HistoricalsectionslinkonlycurrentPLAN;CP224current462raw3runs/failurecorrections. AUD065through224/next228/noreset. CP223mergePR294/51bbf41;8WIPbyteexact/noRust;#14/#285open/K6cWAN/K7scopedunchanged/Internet thật chưa kiểm backlogseparate.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/checkpoints/audits/AUD065.json",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Discriminator11origin/meaningandcallercontinuationrecoveryinputunknown; no morefailedretry/hello/codecwithoutnewsource-supportedobservable.",
+    "Before17EOFreceiverselection/gracefuldenialhealthblockerCP220stilldistinct;no broadgetter/watch/VM/SDK/RTTIpatchrepeat.",
+    "Genericaccountresume/sessionexpiry/revocation/restartfence/DB/API/fullauth/Rustimplementationnotaccepted;CP213planningdelivered/PythonRE-referencekept/eightWIPunmerged.",
+    "Internet thật chưa kiểm/ISP/CGNATisbacklog,notimplicitK6cWAN/K7dependency; no fullgame/productionclaim."
+  ]
+}

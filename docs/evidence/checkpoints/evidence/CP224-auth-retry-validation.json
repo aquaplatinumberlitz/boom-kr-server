@@ -1,0 +1,3848 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "AUTH224-00001",
+      "kind": "local",
+      "path": "local/research/codex/append_cp224.py",
+      "bytes": 13481,
+      "sha256": "b2f3b8ccef6126fd967ba2aa02e59a215a82599dc5569b57e9ea8c18bcf5b813"
+    },
+    {
+      "id": "AUTH224-00002",
+      "kind": "local",
+      "path": "local/research/codex/audit_cp224.py",
+      "bytes": 5323,
+      "sha256": "1a63cece647b9fcd805245e42cb1299d836db1f7830ffe35bc86039c3a224c97"
+    },
+    {
+      "id": "AUTH224-00003",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/batch-verification.json",
+      "bytes": 11205,
+      "sha256": "1755903834e3b6a804d04f1c4b98cceeb80c2a4ed4b8cc5a058b9c86b7072d3a"
+    },
+    {
+      "id": "AUTH224-00004",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "AUTH224-00005",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/config-continuation.json",
+      "bytes": 1285,
+      "sha256": "4aaeb369be6f25e3e0abb1a8f9dc856d0c7362e91ff05fa494d8ec884d889adb"
+    },
+    {
+      "id": "AUTH224-00006",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/config-fixed.json",
+      "bytes": 1286,
+      "sha256": "e70fa0cc13cb711c5c6b6777916cac980540b37b1d63f94d220ebcadac168bc3"
+    },
+    {
+      "id": "AUTH224-00007",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/config.json",
+      "bytes": 1281,
+      "sha256": "87dc9a1474ae5c2a1301a5dead26e0ae192b90fb37faf50a6309cffef1f9435e"
+    },
+    {
+      "id": "AUTH224-00008",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path-verification.json",
+      "bytes": 1269,
+      "sha256": "127a6704c10189b3c68cae71d98aba700dbfe08affdfdbbf9b411843e40f1ffe"
+    },
+    {
+      "id": "AUTH224-00009",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/CALog-before.txt",
+      "bytes": 1650,
+      "sha256": "7336d05dc59a49f4c3cb328dbf2a8fe522402f3e1f5c173e74ad390051f16141"
+    },
+    {
+      "id": "AUTH224-00010",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/CALog-run.txt",
+      "bytes": 1650,
+      "sha256": "7336d05dc59a49f4c3cb328dbf2a8fe522402f3e1f5c173e74ad390051f16141"
+    },
+    {
+      "id": "AUTH224-00011",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "4bc481638b5ad35406f622be4e88536bfa5b1ae0904337601011c774fbb40382"
+    },
+    {
+      "id": "AUTH224-00012",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/client.log",
+      "bytes": 135728,
+      "sha256": "0ecd8d2487d6513b940e9706365a14bc536dbc5e331ef24a9a26beb4c7c30093"
+    },
+    {
+      "id": "AUTH224-00013",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/debug-commands.txt",
+      "bytes": 1439,
+      "sha256": "405d812c599ad30f8321d8076346d8fac41d64b51079fcbe3a7109c40ea6bc72"
+    },
+    {
+      "id": "AUTH224-00014",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00015",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00016",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-10.png",
+      "bytes": 143740,
+      "sha256": "4af70509164bb4183fc6eb6e58a319d9f8e0f14a27529f4e9cbaf31594027765"
+    },
+    {
+      "id": "AUTH224-00017",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-11.png",
+      "bytes": 144724,
+      "sha256": "b3159a15ea334ae313058383a947b719b47fb70ff1605cffe6b9a971720921f6"
+    },
+    {
+      "id": "AUTH224-00018",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-12.png",
+      "bytes": 145114,
+      "sha256": "d5492b7a35e1f2fea6f84cec62de1d8b385a974abb039e3b052b26bd0b6ef5bb"
+    },
+    {
+      "id": "AUTH224-00019",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-13.png",
+      "bytes": 144284,
+      "sha256": "9fb6bdfbe01c48ffe4dffa8d2959fc58c2bbe264fd76ce0b7c3333667a363648"
+    },
+    {
+      "id": "AUTH224-00020",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-14.png",
+      "bytes": 143480,
+      "sha256": "438db259185dd2d7b2f03fc901f523b9bd1d218c10c22a8f53a67086a56650a5"
+    },
+    {
+      "id": "AUTH224-00021",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-15.png",
+      "bytes": 142569,
+      "sha256": "872a5d1b4e243409e9c9d33ef8ab9135f796c02593cf213361610a3024823f95"
+    },
+    {
+      "id": "AUTH224-00022",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-16.png",
+      "bytes": 141872,
+      "sha256": "dbe41c45557a64766e794875ba871481cc1f172db66e831129234a05ef62cf79"
+    },
+    {
+      "id": "AUTH224-00023",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-17.png",
+      "bytes": 141891,
+      "sha256": "fbe69d375a7ca57daf68968987d539bbd013e232c94b231ea6f46a235f7858dc"
+    },
+    {
+      "id": "AUTH224-00024",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-18.png",
+      "bytes": 141872,
+      "sha256": "dbe41c45557a64766e794875ba871481cc1f172db66e831129234a05ef62cf79"
+    },
+    {
+      "id": "AUTH224-00025",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-19.png",
+      "bytes": 142096,
+      "sha256": "ee7bcf693d345bcefbdc373a3bc47eed198a75d545860739c3c4e15235d4f334"
+    },
+    {
+      "id": "AUTH224-00026",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-2.png",
+      "bytes": 16134,
+      "sha256": "19817a610068b6aad75a10bf5b05b6a962bde3cbb153b0dfcd5723f5c393c380"
+    },
+    {
+      "id": "AUTH224-00027",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-20.png",
+      "bytes": 142873,
+      "sha256": "b0d51b6f5d4d7fa9873e42ff9023635b3f035b9d1b2dfe63762eeace31cc3711"
+    },
+    {
+      "id": "AUTH224-00028",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-21.png",
+      "bytes": 143269,
+      "sha256": "fa5bb01c89577bc8eeeffddbf623e0ed37e20919aeb9cbfbe9e38e8237f18f6b"
+    },
+    {
+      "id": "AUTH224-00029",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-22.png",
+      "bytes": 144191,
+      "sha256": "7253ff3e3e8f16593f4378ed60def918a5a75418e2a68f610a8527e84c56bdf2"
+    },
+    {
+      "id": "AUTH224-00030",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-23.png",
+      "bytes": 144683,
+      "sha256": "eb2b7bf7e796431cc5e199e363b98f27e07cc90dbe2092b1a8d87c58d7f8a189"
+    },
+    {
+      "id": "AUTH224-00031",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-24.png",
+      "bytes": 144928,
+      "sha256": "f4f22cad2cb6cad92ef29fbbd4d886260ba720f291ff92ed1dfe29b6ded81dc4"
+    },
+    {
+      "id": "AUTH224-00032",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-25.png",
+      "bytes": 144486,
+      "sha256": "2b9be4416bc537df8f0a0a7e01054ce6cc4f7cc5177c5dae412f6e0397ec2a8b"
+    },
+    {
+      "id": "AUTH224-00033",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-3.png",
+      "bytes": 12661,
+      "sha256": "675bc926ab19fc23815062b6da9117481e25ad5a3d13fc15b6788839b2301794"
+    },
+    {
+      "id": "AUTH224-00034",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-4.png",
+      "bytes": 150750,
+      "sha256": "67e731803b84de460b8263cf5cb36d98953cb7d2c555bd079b00862af6084c11"
+    },
+    {
+      "id": "AUTH224-00035",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-5.png",
+      "bytes": 188486,
+      "sha256": "b7dc0455f9bd68913e45baa128fcc003f95b88d153d5e8e8c966bedcd9ce1216"
+    },
+    {
+      "id": "AUTH224-00036",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-6.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "AUTH224-00037",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-7.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00038",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-8.png",
+      "bytes": 148320,
+      "sha256": "b8a614376396870c6e00ffcb7cef7555c48b320c7d099b4ebaa9125be4335517"
+    },
+    {
+      "id": "AUTH224-00039",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/screen-9.png",
+      "bytes": 149111,
+      "sha256": "f70297a1a863c23ca299fca57835ead3c01d47ba8766acd12f3bd9a8cc51dbdf"
+    },
+    {
+      "id": "AUTH224-00040",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH224-00041",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH224-00042",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00043",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00044",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00045",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00046",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00047",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00048",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00049",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00050",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00051",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00052",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-2.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00053",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00054",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00055",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00056",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00057",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00058",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00059",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00060",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00061",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00062",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00063",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00064",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00065",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00066",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B-title-initial91-8.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH224-00067",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/CALog-before.txt",
+      "bytes": 1397,
+      "sha256": "1c4d9aa2403add5529ea6417fd5b4a994e77da4772002f6a0abf3411f389edb5"
+    },
+    {
+      "id": "AUTH224-00068",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/CALog-run.txt",
+      "bytes": 1397,
+      "sha256": "1c4d9aa2403add5529ea6417fd5b4a994e77da4772002f6a0abf3411f389edb5"
+    },
+    {
+      "id": "AUTH224-00069",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "e91698128c54bbedc413b0b76b85c5dbfe52842127ee24d62386c72b657760fc"
+    },
+    {
+      "id": "AUTH224-00070",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/client.log",
+      "bytes": 326444,
+      "sha256": "f916ae14264afb3cb02a977893a6c64ccdbe88afeaf7fbc176d2e556916502dd"
+    },
+    {
+      "id": "AUTH224-00071",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/debug-commands.txt",
+      "bytes": 1439,
+      "sha256": "405d812c599ad30f8321d8076346d8fac41d64b51079fcbe3a7109c40ea6bc72"
+    },
+    {
+      "id": "AUTH224-00072",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00073",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00074",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-10.png",
+      "bytes": 157636,
+      "sha256": "7ca91400f2c571cdf569600dd7f3bec8b1c40e86706fd1320874ee068f86b256"
+    },
+    {
+      "id": "AUTH224-00075",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-11.png",
+      "bytes": 158307,
+      "sha256": "17260389f9a0816a1c300e48f815519a794c72561492363974dbc26f12c0b56f"
+    },
+    {
+      "id": "AUTH224-00076",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-12.png",
+      "bytes": 145442,
+      "sha256": "e98481dc6ba9a09aa2fa0b77eb14bb99340a5a8244fc446dc768ae0e86e30f94"
+    },
+    {
+      "id": "AUTH224-00077",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-13.png",
+      "bytes": 145958,
+      "sha256": "81ef3493043f4c83f1675448182b95e8d1c283069968e9fb4db01d6c7edb0055"
+    },
+    {
+      "id": "AUTH224-00078",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-14.png",
+      "bytes": 145960,
+      "sha256": "865ee9a972a6fbcbcc21997a0d518168ae4a58be1fb6b9a63b299038e04b72f4"
+    },
+    {
+      "id": "AUTH224-00079",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-15.png",
+      "bytes": 145468,
+      "sha256": "c1e513d65bff530cbde3e6dff987daec5afea23e2b851007eb10f43782d5d85e"
+    },
+    {
+      "id": "AUTH224-00080",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-16.png",
+      "bytes": 145035,
+      "sha256": "6db5b579601dcd550759ca0c308f986e90655d96bc21575b0c79ce6d997d205c"
+    },
+    {
+      "id": "AUTH224-00081",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-17.png",
+      "bytes": 154461,
+      "sha256": "43ee8786f5ef9c88fcd0047c7b4f22fd5c8d2f094fcb5296a2009c9b0f9ffb91"
+    },
+    {
+      "id": "AUTH224-00082",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-18.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "AUTH224-00083",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-19.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "AUTH224-00084",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00085",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-20.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00086",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-21.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00087",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-22.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00088",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-23.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00089",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-24.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00090",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-25.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00091",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00092",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-4.png",
+      "bytes": 1670,
+      "sha256": "2938793d36112554332f0c109ace2f58404e02633a2b304393ee766c0772d871"
+    },
+    {
+      "id": "AUTH224-00093",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-5.png",
+      "bytes": 12634,
+      "sha256": "2473137a1944290442f82e638d0a8a122e7081648e570e1f3bfffa81f20dff89"
+    },
+    {
+      "id": "AUTH224-00094",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-6.png",
+      "bytes": 144302,
+      "sha256": "2f048abe0f39d7ceeb71d1014ead336909c84cbeed5810cb06ad0d0169d2e9cb"
+    },
+    {
+      "id": "AUTH224-00095",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-7.png",
+      "bytes": 188486,
+      "sha256": "b7dc0455f9bd68913e45baa128fcc003f95b88d153d5e8e8c966bedcd9ce1216"
+    },
+    {
+      "id": "AUTH224-00096",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-8.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "AUTH224-00097",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00098",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH224-00099",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH224-00100",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00101",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00102",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00103",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00104",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00105",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00106",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00107",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-17.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "AUTH224-00108",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-18.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "AUTH224-00109",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-19.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "AUTH224-00110",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH224-00111",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-20.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH224-00112",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-21.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH224-00113",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-22.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH224-00114",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-23.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH224-00115",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-24.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH224-00116",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-25.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH224-00117",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH224-00118",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00119",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00120",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00121",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00122",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00123",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00124",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "AUTH224-00125",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH224-00126",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/post-close-service-state.json",
+      "bytes": 36187,
+      "sha256": "a9db3e9dbd7ee481c026ec9be0b4151cc75668347bcb0b3f4a9f74373d1a7170"
+    },
+    {
+      "id": "AUTH224-00127",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-0.txt",
+      "bytes": 6981,
+      "sha256": "1ea95595633bcf40df32a5da8eb74587e85292a4ccb5b334c0b900c9f3e1d0bf"
+    },
+    {
+      "id": "AUTH224-00128",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-1.txt",
+      "bytes": 7134,
+      "sha256": "5f56c83644962a947d77d89ee9eda83fe0fc587f03c1b961fdc0afcfce4ef946"
+    },
+    {
+      "id": "AUTH224-00129",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-10.txt",
+      "bytes": 7134,
+      "sha256": "94110a2470bb25c9e1eb2610955e5627db734fac2c202efbc3d554aa2474589d"
+    },
+    {
+      "id": "AUTH224-00130",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-11.txt",
+      "bytes": 7134,
+      "sha256": "fe23476cc10fd051c52349aab175ed9a65e28e982fbb8500fb66595327a614df"
+    },
+    {
+      "id": "AUTH224-00131",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-12.txt",
+      "bytes": 7134,
+      "sha256": "778c117ae839cda34df0097bfd031d3cf6a2384405b11e0d7dac8d9f14583850"
+    },
+    {
+      "id": "AUTH224-00132",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-13.txt",
+      "bytes": 7134,
+      "sha256": "e275940fce9e27bea405520ca75ba278590f41a38163248cd69536e979f648b3"
+    },
+    {
+      "id": "AUTH224-00133",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-14.txt",
+      "bytes": 7134,
+      "sha256": "11081c361751bd17bee2f6e17f3cea91c32f5b7ad3613967cbce09fb001d2139"
+    },
+    {
+      "id": "AUTH224-00134",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-15.txt",
+      "bytes": 7134,
+      "sha256": "0d2e19308e06ebbc71e9fb7d044dfa62cc2dab358d7ad60af32878e6c843adc2"
+    },
+    {
+      "id": "AUTH224-00135",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-16.txt",
+      "bytes": 7134,
+      "sha256": "6beb14d3ce6be92733387547ac69bf47f22a4c289a9b23c1085214927ac27683"
+    },
+    {
+      "id": "AUTH224-00136",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-17.txt",
+      "bytes": 7189,
+      "sha256": "ebf165fb66916cdc6e4703196ce006c305d8d3885e3dc834659610c40df64c75"
+    },
+    {
+      "id": "AUTH224-00137",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-18.txt",
+      "bytes": 7189,
+      "sha256": "a76f33561ec6e71b3401abb44352202c523593281353b4b23e635bce295877ce"
+    },
+    {
+      "id": "AUTH224-00138",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-19.txt",
+      "bytes": 7189,
+      "sha256": "c3ce3f08daa719b29fe3fb202a7d9652e060744da76b3ec44460429af671bb1d"
+    },
+    {
+      "id": "AUTH224-00139",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-2.txt",
+      "bytes": 7134,
+      "sha256": "6dbce590f333bc028742113827a536bfb444ef265eaddfdb5ad7cdea11f15655"
+    },
+    {
+      "id": "AUTH224-00140",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-20.txt",
+      "bytes": 6923,
+      "sha256": "9547e23a14a4217192f3915cede20c18831c7b7d1dee72e30f8811566aadc040"
+    },
+    {
+      "id": "AUTH224-00141",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-21.txt",
+      "bytes": 6923,
+      "sha256": "81d09b40e96cf06dca0c58d800297092de6e02eba70183b454ad1ddf475389e9"
+    },
+    {
+      "id": "AUTH224-00142",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-22.txt",
+      "bytes": 6923,
+      "sha256": "855222977abe407cdad9bc70325a2f13a895bb0cd3dd2b01457becd1b276e978"
+    },
+    {
+      "id": "AUTH224-00143",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-23.txt",
+      "bytes": 6923,
+      "sha256": "5ffe989bc0a46aed3eabd1939cd6f0928e9bb13a01db087998cc6e5c4ebf2785"
+    },
+    {
+      "id": "AUTH224-00144",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-24.txt",
+      "bytes": 6923,
+      "sha256": "53ad8a055298eb877fb4ef64f837f606e3c924dad130f825a9eb52642fc1b9d8"
+    },
+    {
+      "id": "AUTH224-00145",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-25.txt",
+      "bytes": 6923,
+      "sha256": "c544f226733519c3a98d0694003bcfccfe5958de19efb652273bfda4a2e82cbb"
+    },
+    {
+      "id": "AUTH224-00146",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-3.txt",
+      "bytes": 7134,
+      "sha256": "b84ebdbf542ecfd0ab2cc59f346f507c7b77381b884113b5bb5777d7007c90c1"
+    },
+    {
+      "id": "AUTH224-00147",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-4.txt",
+      "bytes": 7134,
+      "sha256": "234621a639be4c019d17ad2339b65cbdb83e53db75f84f47a3cefceb4b995e41"
+    },
+    {
+      "id": "AUTH224-00148",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-5.txt",
+      "bytes": 7134,
+      "sha256": "77cd21fd55e86619fadbafb0d1ce4df380d3a1967d7c0d47d2b529b0ab199b91"
+    },
+    {
+      "id": "AUTH224-00149",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-6.txt",
+      "bytes": 7134,
+      "sha256": "fe0d78c0b4d17d3ff30bd235e80bd9e37b0926769c2944a1ff8d922397b15fb5"
+    },
+    {
+      "id": "AUTH224-00150",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-7.txt",
+      "bytes": 7134,
+      "sha256": "d8aac80cf2554477bf6132d9427cf766b4332999e6e17b29a4deff54de692ffc"
+    },
+    {
+      "id": "AUTH224-00151",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-8.txt",
+      "bytes": 7134,
+      "sha256": "032bf9c57d80e9442cace71520471da077258c0d2b8ef94e421da27045d22e72"
+    },
+    {
+      "id": "AUTH224-00152",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/processes-9.txt",
+      "bytes": 7134,
+      "sha256": "06d2ae78c5a2c8283359dde018f9090c2e7cc6a12d1493f382218daf4add575f"
+    },
+    {
+      "id": "AUTH224-00153",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/run.json",
+      "bytes": 39914,
+      "sha256": "4c8a447e73c8df361bbebb52fc8bc9240a01bfae7c250d08af3c2d5bad5b3508"
+    },
+    {
+      "id": "AUTH224-00154",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/service-state.json",
+      "bytes": 38690,
+      "sha256": "791423d7ad575e8c5c62294d080036f01b24422e31a87fa663637f45e672f2ee"
+    },
+    {
+      "id": "AUTH224-00155",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH224-00156",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/tcp-auth-pair.pcap",
+      "bytes": 20442,
+      "sha256": "98a3b90b79fcfcd82e3fc2e7d4fb64dfbd728d879004e335fec4603fecd537f1"
+    },
+    {
+      "id": "AUTH224-00157",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/tcp-capture-index.json",
+      "bytes": 57248,
+      "sha256": "e8b1f76b7bc136588e3824afe617c15d7a2bdd0506fa0c776af76bd3550b1a6f"
+    },
+    {
+      "id": "AUTH224-00158",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/virtual-network.json",
+      "bytes": 24924,
+      "sha256": "e56fad3e39d90c6bdffd5f62f6f32376864d538643fb34b3665b3cd90d2ad68e"
+    },
+    {
+      "id": "AUTH224-00159",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "ba713e0bf7037eaa7602ef534638e4622f9f18dfc031ba3b03f25e07b496f012"
+    },
+    {
+      "id": "AUTH224-00160",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "1d70d5f40192472332dff8190e669308db8f13f7aa9c845c0667c0b63de72faf"
+    },
+    {
+      "id": "AUTH224-00161",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH224-00162",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "AUTH224-00163",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/launch-exit.json",
+      "bytes": 73,
+      "sha256": "2d7ae96e21e11c8613b415553a2489878b3d3dd2ee0942a883135714ac95d95f"
+    },
+    {
+      "id": "AUTH224-00164",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH224-00165",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/raw-seal.json",
+      "bytes": 33740,
+      "sha256": "9b26370747f54646116b3b2f6c1b708f5665531ec82e24c52c89b5a0a92ca814"
+    },
+    {
+      "id": "AUTH224-00166",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/recipe.json",
+      "bytes": 1163,
+      "sha256": "59f1203340a849320e8f0306fc46045e12ef2a180e41d80056b7a83c3d34a5e3"
+    },
+    {
+      "id": "AUTH224-00167",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/runtime-preflight.json",
+      "bytes": 74093,
+      "sha256": "42b7710b780445b2656cec11c9afd6726aa4dcad0b09599190ded4d16b3fadb4"
+    },
+    {
+      "id": "AUTH224-00168",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-probe.py",
+      "bytes": 1791,
+      "sha256": "bdba20d7c2ddfcb695623a213eaabb5e1ef4d46343e27d9d9c5dc774717d3b87"
+    },
+    {
+      "id": "AUTH224-00169",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer.gdb",
+      "bytes": 1439,
+      "sha256": "405d812c599ad30f8321d8076346d8fac41d64b51079fcbe3a7109c40ea6bc72"
+    },
+    {
+      "id": "AUTH224-00170",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-alternate.asm",
+      "bytes": 133,
+      "sha256": "ddb7b5deb31c87cceaf50628ea42a98037a99022a42f11e400dcac5aa0f9f867"
+    },
+    {
+      "id": "AUTH224-00171",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-alternate.json",
+      "bytes": 828,
+      "sha256": "7abb340a4064d67ea7e1be27a58ee445920cbc6317f4f98cfe6f9e45a9fca8e0"
+    },
+    {
+      "id": "AUTH224-00172",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/CALog-before.txt",
+      "bytes": 1650,
+      "sha256": "7336d05dc59a49f4c3cb328dbf2a8fe522402f3e1f5c173e74ad390051f16141"
+    },
+    {
+      "id": "AUTH224-00173",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/CALog-run.txt",
+      "bytes": 1650,
+      "sha256": "7336d05dc59a49f4c3cb328dbf2a8fe522402f3e1f5c173e74ad390051f16141"
+    },
+    {
+      "id": "AUTH224-00174",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "3e0603e6affdea518f012657a8547c757285cbab205bf3651226e1e8fbf16223"
+    },
+    {
+      "id": "AUTH224-00175",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/client.log",
+      "bytes": 121806,
+      "sha256": "d9013c0e1ea9cabb0ccd6511176d023a85eec124f1bbf5bc096400db1fe7c689"
+    },
+    {
+      "id": "AUTH224-00176",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/debug-commands.txt",
+      "bytes": 1613,
+      "sha256": "99e3621a22a41b2bc42a3fe93aaa729ffe9e48dad18524ef153f8c362e41931e"
+    },
+    {
+      "id": "AUTH224-00177",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00178",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00179",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-10.png",
+      "bytes": 143700,
+      "sha256": "b93f27db4e86e53a6f23763773a4b012c2533e9bb5e2025b5c040c9dc9d635d4"
+    },
+    {
+      "id": "AUTH224-00180",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-11.png",
+      "bytes": 143940,
+      "sha256": "f6f69f272e40a4f1454047f1e4b60e55b497c9293ff1ac2182a62c0babd47bdf"
+    },
+    {
+      "id": "AUTH224-00181",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-12.png",
+      "bytes": 143970,
+      "sha256": "1137f9018809d65609e6c4359784a416261e4a21d00db3b79aae761d98521654"
+    },
+    {
+      "id": "AUTH224-00182",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-13.png",
+      "bytes": 143710,
+      "sha256": "bdaf561fbb53aa6b3b2cc17b9878bcaee84ff390dac2ef404c144608458bb15a"
+    },
+    {
+      "id": "AUTH224-00183",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-14.png",
+      "bytes": 143254,
+      "sha256": "7375d57edd2cae7f541b749492d41cac9c6a43b278f1a25fa08c9ee6a9442dc9"
+    },
+    {
+      "id": "AUTH224-00184",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-15.png",
+      "bytes": 142679,
+      "sha256": "6719dbfc588763748ed646d2724c4144ec67f85f6f067ae8ec5203a7cbf3b0a2"
+    },
+    {
+      "id": "AUTH224-00185",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-16.png",
+      "bytes": 141894,
+      "sha256": "1b7e22065774370ee96664b717ffa4f53eb1d22b281dc5bdf8b69b8d8b8fd22a"
+    },
+    {
+      "id": "AUTH224-00186",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-17.png",
+      "bytes": 141880,
+      "sha256": "46f6ea41b74e562ce796ac988e67434cbf946e287845f65d27568440d31aa41d"
+    },
+    {
+      "id": "AUTH224-00187",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-18.png",
+      "bytes": 141861,
+      "sha256": "a5ae57f817fa5626266da94a19d172a5e4f72a7f2c1c1219d6389823d93ae7f9"
+    },
+    {
+      "id": "AUTH224-00188",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-19.png",
+      "bytes": 141963,
+      "sha256": "de4a7755b3827f538b8fe5a90765a7d03165f99107238cfb6f4481869128bb7b"
+    },
+    {
+      "id": "AUTH224-00189",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00190",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-20.png",
+      "bytes": 142774,
+      "sha256": "5c38d63ba06ff19dba26ef2aa57d80eb2679c6d8adff445bcd4d43bc13a36084"
+    },
+    {
+      "id": "AUTH224-00191",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-21.png",
+      "bytes": 143529,
+      "sha256": "cb2a13837c4b0faf70254be4814df3134ab29a8a55c83aefbe683c1df36b5878"
+    },
+    {
+      "id": "AUTH224-00192",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-22.png",
+      "bytes": 144439,
+      "sha256": "770beb746ff77901c32f51b39e8b9fb9367b41eedde68823c6dbde2dfc63519b"
+    },
+    {
+      "id": "AUTH224-00193",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-23.png",
+      "bytes": 145147,
+      "sha256": "29abe676f08e4f7fd71a82d1b27095a4a5346b393d7bc9fa1bbfd9ea34c2e0ce"
+    },
+    {
+      "id": "AUTH224-00194",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-24.png",
+      "bytes": 145318,
+      "sha256": "dcbe49a0935a776dfc5d3e3a2066c915aef0deb1d2bf6f554b14e621b6ec00b2"
+    },
+    {
+      "id": "AUTH224-00195",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-25.png",
+      "bytes": 144716,
+      "sha256": "022cb7fb6aef7b7eca264af84d9fc34016fcb6a7ebf891ad2755973ffb28e130"
+    },
+    {
+      "id": "AUTH224-00196",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-3.png",
+      "bytes": 1670,
+      "sha256": "2938793d36112554332f0c109ace2f58404e02633a2b304393ee766c0772d871"
+    },
+    {
+      "id": "AUTH224-00197",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-4.png",
+      "bytes": 117797,
+      "sha256": "ee557e5a2dafa61315e788ae714f699f79c4898e7bc6521cd4b1b2bea0e72ba3"
+    },
+    {
+      "id": "AUTH224-00198",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-5.png",
+      "bytes": 188305,
+      "sha256": "a99acec64b33b5e9867be8584c06ccc1de2b213098e083e2347ee246730b709c"
+    },
+    {
+      "id": "AUTH224-00199",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-6.png",
+      "bytes": 193523,
+      "sha256": "4994c6ecc02b4fc22a65013c16c0653c228219fc5b45ffb533712d8b07acfb32"
+    },
+    {
+      "id": "AUTH224-00200",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-7.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00201",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-8.png",
+      "bytes": 148282,
+      "sha256": "d2a59b1959ded2ef4c1b8b4a591ad1e5fc06596a3e9a9289f74e2b92fea35cf0"
+    },
+    {
+      "id": "AUTH224-00202",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/screen-9.png",
+      "bytes": 149049,
+      "sha256": "340d1c334b7816c5b682204a85cf0bc707b3f3debc4ff15674e31b83b5beda8c"
+    },
+    {
+      "id": "AUTH224-00203",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH224-00204",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH224-00205",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00206",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00207",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00208",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00209",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00210",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00211",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00212",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00213",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00214",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00215",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-2.txt",
+      "bytes": 1305,
+      "sha256": "2ea219015d24e371bd5be2632e2b1432dbb3ec211585b3163a982a765dd40e1e"
+    },
+    {
+      "id": "AUTH224-00216",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00217",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00218",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00219",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00220",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00221",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00222",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00223",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00224",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00225",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00226",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00227",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00228",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00229",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B-title-initial91-8.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH224-00230",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/CALog-before.txt",
+      "bytes": 1397,
+      "sha256": "1c4d9aa2403add5529ea6417fd5b4a994e77da4772002f6a0abf3411f389edb5"
+    },
+    {
+      "id": "AUTH224-00231",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/CALog-run.txt",
+      "bytes": 1397,
+      "sha256": "1c4d9aa2403add5529ea6417fd5b4a994e77da4772002f6a0abf3411f389edb5"
+    },
+    {
+      "id": "AUTH224-00232",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "ba32753287a9535cbd0e7561632569aa2fd066eadd18a9398655d32e7fbfffd6"
+    },
+    {
+      "id": "AUTH224-00233",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/client.log",
+      "bytes": 324430,
+      "sha256": "24ea6b17f9a6d4b964e1fc26d499b5292371da53bdb59d537a50ff79ce640e5b"
+    },
+    {
+      "id": "AUTH224-00234",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/debug-commands.txt",
+      "bytes": 1613,
+      "sha256": "99e3621a22a41b2bc42a3fe93aaa729ffe9e48dad18524ef153f8c362e41931e"
+    },
+    {
+      "id": "AUTH224-00235",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00236",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00237",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-10.png",
+      "bytes": 157647,
+      "sha256": "1fd4d75a01533a064f59123aa2ee40fa6c0492df8beacea549c778f8157e3213"
+    },
+    {
+      "id": "AUTH224-00238",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-11.png",
+      "bytes": 158484,
+      "sha256": "d50b16dc6ac850ef67bababcf9d39fb8d931551bec0db64dd24db38dfeed1bb1"
+    },
+    {
+      "id": "AUTH224-00239",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-12.png",
+      "bytes": 145875,
+      "sha256": "c8faa7f0ab5ac9ed25efc2fdfbaf7fb89a5238f5aa2e4ed9d61af88842d24f97"
+    },
+    {
+      "id": "AUTH224-00240",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-13.png",
+      "bytes": 146563,
+      "sha256": "3f958a246beb99455046e6d63b4d50166a4c937088544f2b6c14935ea7920a00"
+    },
+    {
+      "id": "AUTH224-00241",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-14.png",
+      "bytes": 146522,
+      "sha256": "6a3ddee257acf4b7e674709742c872e0d1a9841c4369884b72e223437599345b"
+    },
+    {
+      "id": "AUTH224-00242",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-15.png",
+      "bytes": 146024,
+      "sha256": "94c3bbf1c7f96179f422ab4420a9d472ac4e565b340fd37e5fec977663206bd7"
+    },
+    {
+      "id": "AUTH224-00243",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-16.png",
+      "bytes": 145497,
+      "sha256": "6a2a05c08f2fef35a46e0e48b6718cd2bc449079d540885148a62ea12b145c6d"
+    },
+    {
+      "id": "AUTH224-00244",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-17.png",
+      "bytes": 154669,
+      "sha256": "9abdb9030efa326ee431c8cb25ca4937477479a78ef72a703b57ac45b8b02c66"
+    },
+    {
+      "id": "AUTH224-00245",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-18.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "AUTH224-00246",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-19.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "AUTH224-00247",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00248",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-20.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00249",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-21.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00250",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-22.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00251",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-23.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00252",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-24.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00253",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-25.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00254",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00255",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-4.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00256",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-5.png",
+      "bytes": 16134,
+      "sha256": "19817a610068b6aad75a10bf5b05b6a962bde3cbb153b0dfcd5723f5c393c380"
+    },
+    {
+      "id": "AUTH224-00257",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-6.png",
+      "bytes": 94138,
+      "sha256": "917093c7386574a1134e3230260b002cd571bd04206fb59cdae0106f9d18f20b"
+    },
+    {
+      "id": "AUTH224-00258",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-7.png",
+      "bytes": 189532,
+      "sha256": "65fadaf8a24f9d9b070468e5dcd944fdf7817da412de419e912314a2f0103be7"
+    },
+    {
+      "id": "AUTH224-00259",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-8.png",
+      "bytes": 193523,
+      "sha256": "4994c6ecc02b4fc22a65013c16c0653c228219fc5b45ffb533712d8b07acfb32"
+    },
+    {
+      "id": "AUTH224-00260",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00261",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH224-00262",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH224-00263",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00264",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00265",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00266",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00267",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00268",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00269",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00270",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-17.txt",
+      "bytes": 1600,
+      "sha256": "ea21c2dc361d62acdf1dd7ea286ef159f9961dc0e96d1e9a49a23673ccca94c0"
+    },
+    {
+      "id": "AUTH224-00271",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-18.txt",
+      "bytes": 1600,
+      "sha256": "ea21c2dc361d62acdf1dd7ea286ef159f9961dc0e96d1e9a49a23673ccca94c0"
+    },
+    {
+      "id": "AUTH224-00272",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-19.txt",
+      "bytes": 1600,
+      "sha256": "ea21c2dc361d62acdf1dd7ea286ef159f9961dc0e96d1e9a49a23673ccca94c0"
+    },
+    {
+      "id": "AUTH224-00273",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH224-00274",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-20.txt",
+      "bytes": 2589,
+      "sha256": "bb638b74afaa4657cf9b3edeb3e81e4393b0f2fc24989039e37a4406798f75b6"
+    },
+    {
+      "id": "AUTH224-00275",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-21.txt",
+      "bytes": 2589,
+      "sha256": "bb638b74afaa4657cf9b3edeb3e81e4393b0f2fc24989039e37a4406798f75b6"
+    },
+    {
+      "id": "AUTH224-00276",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-22.txt",
+      "bytes": 2589,
+      "sha256": "bb638b74afaa4657cf9b3edeb3e81e4393b0f2fc24989039e37a4406798f75b6"
+    },
+    {
+      "id": "AUTH224-00277",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-23.txt",
+      "bytes": 2589,
+      "sha256": "bb638b74afaa4657cf9b3edeb3e81e4393b0f2fc24989039e37a4406798f75b6"
+    },
+    {
+      "id": "AUTH224-00278",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-24.txt",
+      "bytes": 2589,
+      "sha256": "bb638b74afaa4657cf9b3edeb3e81e4393b0f2fc24989039e37a4406798f75b6"
+    },
+    {
+      "id": "AUTH224-00279",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-25.txt",
+      "bytes": 2589,
+      "sha256": "bb638b74afaa4657cf9b3edeb3e81e4393b0f2fc24989039e37a4406798f75b6"
+    },
+    {
+      "id": "AUTH224-00280",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH224-00281",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-4.txt",
+      "bytes": 1305,
+      "sha256": "3a9abbddf140befc14f7fbfb5a6c5151e9983094e5c5b128ba90a5acd7adc7b7"
+    },
+    {
+      "id": "AUTH224-00282",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH224-00283",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH224-00284",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH224-00285",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH224-00286",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00287",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "AUTH224-00288",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH224-00289",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/post-close-service-state.json",
+      "bytes": 35943,
+      "sha256": "efbc64be3ba655fe867873814d24e56b0623fdb1f837fdc6f361cbd2c60feba8"
+    },
+    {
+      "id": "AUTH224-00290",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-0.txt",
+      "bytes": 7002,
+      "sha256": "ec5672f3fd22337ae2705719baf522b046ab95775a14ce88b3e656a737e8ac06"
+    },
+    {
+      "id": "AUTH224-00291",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-1.txt",
+      "bytes": 7155,
+      "sha256": "de051dce4fbfcb1fe73747c0c69ff34ef228e24551b082bcfebb8a48ea46b06b"
+    },
+    {
+      "id": "AUTH224-00292",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-10.txt",
+      "bytes": 7155,
+      "sha256": "ca3f3d6bc7f47ea751c7b457925edb58b758d268acf5337457990d11ce92c59d"
+    },
+    {
+      "id": "AUTH224-00293",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-11.txt",
+      "bytes": 7155,
+      "sha256": "0e18c6fb09c3f427cddd95a16d708162219598c86614e4b8b42c9806af59a1a9"
+    },
+    {
+      "id": "AUTH224-00294",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-12.txt",
+      "bytes": 7155,
+      "sha256": "11012b3ff90835f70bf41577167d6a24e57ebb453142b0710710041f8b1adfd8"
+    },
+    {
+      "id": "AUTH224-00295",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-13.txt",
+      "bytes": 7155,
+      "sha256": "d82f35bcb684056f176a8aa9f875186b1f77cf3a4d3dd94bc171a45e10a57718"
+    },
+    {
+      "id": "AUTH224-00296",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-14.txt",
+      "bytes": 7155,
+      "sha256": "eea387ce6a0600512468c07173f905637392ef3ed14f0fb6ea8ab1c994236f45"
+    },
+    {
+      "id": "AUTH224-00297",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-15.txt",
+      "bytes": 7155,
+      "sha256": "42afc1afde70de6d1158bb3bfc579d82717b500ada8b769ef7569f45c3c9af74"
+    },
+    {
+      "id": "AUTH224-00298",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-16.txt",
+      "bytes": 7155,
+      "sha256": "78f5f95d5fe07a4204c8c7214ba3bda0efce4b7156eceb420c7ea65789b30958"
+    },
+    {
+      "id": "AUTH224-00299",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-17.txt",
+      "bytes": 7210,
+      "sha256": "34e8431ed29cb787ff0d75edf648df4c1cb32933dc93f8a66e6b66de9cf2a737"
+    },
+    {
+      "id": "AUTH224-00300",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-18.txt",
+      "bytes": 7210,
+      "sha256": "9b4ff360f4181f6106afdbb2198deff653644c799a9987b2902f56091ee5dd5f"
+    },
+    {
+      "id": "AUTH224-00301",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-19.txt",
+      "bytes": 7210,
+      "sha256": "b104da4462c6cc8a1f1dfca05ddeb6c8249a72adab58095650b6e3a4e4ee102a"
+    },
+    {
+      "id": "AUTH224-00302",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-2.txt",
+      "bytes": 7155,
+      "sha256": "78736bd0b45c0d42e183a07a0b9a0fc7c1583a2ad60cbc93b4c466acf3cb8da1"
+    },
+    {
+      "id": "AUTH224-00303",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-20.txt",
+      "bytes": 6944,
+      "sha256": "570a366ac023175bc7c19754ed31745a087a872cad36bc7acd8f46f9a367b61a"
+    },
+    {
+      "id": "AUTH224-00304",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-21.txt",
+      "bytes": 6944,
+      "sha256": "ad4a374bbf835b78666c89bc2449ea2622d977ec754d8e05874433df7cb4df26"
+    },
+    {
+      "id": "AUTH224-00305",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-22.txt",
+      "bytes": 6944,
+      "sha256": "5a0fd610c774ea57f15eb6d7afc0d9b28a702a5a94eb88b2be10232ecf4b193d"
+    },
+    {
+      "id": "AUTH224-00306",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-23.txt",
+      "bytes": 6944,
+      "sha256": "2385fbbcbbbea2a4e7bf14bdd0c0a6e919cb570c177a7d27c1dc127753b0ae28"
+    },
+    {
+      "id": "AUTH224-00307",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-24.txt",
+      "bytes": 6944,
+      "sha256": "55202de825f7020e3f3cd47ffbefd89df6c11a073baf941823dc3475081bb7c2"
+    },
+    {
+      "id": "AUTH224-00308",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-25.txt",
+      "bytes": 6944,
+      "sha256": "f1d0ffde856b3124b7a9baa1d317403e26101fec850d120b554c8d9283cf049d"
+    },
+    {
+      "id": "AUTH224-00309",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-3.txt",
+      "bytes": 7155,
+      "sha256": "e50d04a654001faea48d0a778dda6daf3be3248bcc019f123e886cc2abb35327"
+    },
+    {
+      "id": "AUTH224-00310",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-4.txt",
+      "bytes": 7155,
+      "sha256": "2b40b2195e376391d925925e798568d56e6ecf5bc3dcbe5cbc91f9a752da41f0"
+    },
+    {
+      "id": "AUTH224-00311",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-5.txt",
+      "bytes": 7155,
+      "sha256": "f747fc5c118d7648cd147b186dbefaf8cfdbaf9f39ca1d5f4669e4aca51f8df6"
+    },
+    {
+      "id": "AUTH224-00312",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-6.txt",
+      "bytes": 7155,
+      "sha256": "de9d11654c5956cb47828bd5f861c5654fc53012bb68f748b2c58cf50f24aba5"
+    },
+    {
+      "id": "AUTH224-00313",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-7.txt",
+      "bytes": 7155,
+      "sha256": "a1ebd36a04085e79229bc71725926f344c74c0a6ea9b3fcab8cbf86057483634"
+    },
+    {
+      "id": "AUTH224-00314",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-8.txt",
+      "bytes": 7155,
+      "sha256": "ac8a136293bf9aea98cb1e4e116a7d3c8b73754458674cbf7c89254c8cda3bab"
+    },
+    {
+      "id": "AUTH224-00315",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/processes-9.txt",
+      "bytes": 7155,
+      "sha256": "4d2bedf80f35a5626de0110c87dcf9eb689b7a553dec8e5c0a728c6235f85695"
+    },
+    {
+      "id": "AUTH224-00316",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/run.json",
+      "bytes": 39818,
+      "sha256": "0f2de01f0bfd4bac1167043138850c20d014e19eac6345f0fa7227cac2f6a8e3"
+    },
+    {
+      "id": "AUTH224-00317",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/service-state.json",
+      "bytes": 38606,
+      "sha256": "881173f1ed736f3d3ceb04ed7b64a4440bc5396e8e284644780782ec3bb609ba"
+    },
+    {
+      "id": "AUTH224-00318",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH224-00319",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/tcp-auth-pair.pcap",
+      "bytes": 20278,
+      "sha256": "9ac3412a716453c2059609445993a314210d80de742dd81bf32012ebec3f2033"
+    },
+    {
+      "id": "AUTH224-00320",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/tcp-capture-index.json",
+      "bytes": 56663,
+      "sha256": "6fac18a7850efaca4ed3249cbdb302f6a815b9371737a8355fb5ee76121770d3"
+    },
+    {
+      "id": "AUTH224-00321",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/virtual-network.json",
+      "bytes": 24928,
+      "sha256": "411003c9dce86bb473fb3c746d46cd7394f2fc12ab43e876003582472904a5cd"
+    },
+    {
+      "id": "AUTH224-00322",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "fc2ac98a94304d9b625e149212fbc8d02b01ba8418c0aa38ee97e2d2f5f3fed6"
+    },
+    {
+      "id": "AUTH224-00323",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "79c7e3517f0dd333699266a68fb063562d7e9bbc3aba930d3308bf7bd7036fb3"
+    },
+    {
+      "id": "AUTH224-00324",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH224-00325",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "AUTH224-00326",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/launch-exit.json",
+      "bytes": 73,
+      "sha256": "f1eaa1eafbe41148bdcefe0c7ca400d942b112505198346f865703647f2dfafa"
+    },
+    {
+      "id": "AUTH224-00327",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH224-00328",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/raw-seal.json",
+      "bytes": 34351,
+      "sha256": "5ca6ef75260997185b2502660ee63e814fac5f5ad212fff27b8ff57850f0430d"
+    },
+    {
+      "id": "AUTH224-00329",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/recipe.json",
+      "bytes": 1180,
+      "sha256": "867afe08371eeefea0e260b1623a3b9b78326619817bfec39de94807f09cfc4c"
+    },
+    {
+      "id": "AUTH224-00330",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/runtime-preflight.json",
+      "bytes": 77033,
+      "sha256": "eb1cb8e7ee1480a08f1bad9749fcc7bec7d44a776aca9ecfaed693ebfb24c799"
+    },
+    {
+      "id": "AUTH224-00331",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-probe.py",
+      "bytes": 944,
+      "sha256": "73e0403441cb37d651d18b8109b37c2042cd6b5ba26ff821227ca43f29b56cbf"
+    },
+    {
+      "id": "AUTH224-00332",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-success.asm",
+      "bytes": 1265,
+      "sha256": "8244d8784ece25e3dc2ee3fb6ace7df4c62f9fd89b1889d95d6d13f3fb22765f"
+    },
+    {
+      "id": "AUTH224-00333",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-success.json",
+      "bytes": 4658,
+      "sha256": "dabdf783c9b82fffb584b3b3bf50b89c01e490098dc55d504bd2b3fdc861a21a"
+    },
+    {
+      "id": "AUTH224-00334",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-verification.json",
+      "bytes": 3806,
+      "sha256": "892770d9a95eccd09bc41376af84ee2959e66fdc5776500b9c47be7de519db2c"
+    },
+    {
+      "id": "AUTH224-00335",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation.asm",
+      "bytes": 891,
+      "sha256": "c4766913571c4e90171fa5cdebe34dd574025996b31297dcdab5ebcb0b8d6f90"
+    },
+    {
+      "id": "AUTH224-00336",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation.gdb",
+      "bytes": 1613,
+      "sha256": "99e3621a22a41b2bc42a3fe93aaa729ffe9e48dad18524ef153f8c362e41931e"
+    },
+    {
+      "id": "AUTH224-00337",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation.json",
+      "bytes": 4294,
+      "sha256": "da8759cbc8dfa865746ddf0b2af7ab8c1ec0ac1d759f03dec8cfd0499f34eddb"
+    },
+    {
+      "id": "AUTH224-00338",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp223-fatal-correction.json",
+      "bytes": 1365,
+      "sha256": "6a679d2c6e77f84c84e548eff3237de2a88c8a5532af64f0c621096f13c254b6"
+    },
+    {
+      "id": "AUTH224-00339",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp224-snapshot/README.md",
+      "bytes": 32488,
+      "sha256": "1381d9c835dac0215d16dd4983de34123ea8d09e8abd81037489a41a81fe0397"
+    },
+    {
+      "id": "AUTH224-00340",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp224-snapshot/docs/COVERAGE.md",
+      "bytes": 185754,
+      "sha256": "ca342429f43a29af0c149f4469613c18161228d565c244de9564b4844ed5564a"
+    },
+    {
+      "id": "AUTH224-00341",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp224-snapshot/docs/PLAN.md",
+      "bytes": 86482,
+      "sha256": "751006c6fcf0bbbcb68da0b66e8669bb61ea0f39522a820fceb56f1f3005cebc"
+    },
+    {
+      "id": "AUTH224-00342",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp224-snapshot/docs/PROTOCOL.md",
+      "bytes": 693849,
+      "sha256": "d6e0a01ae5937052bbfccca2ec5188245107b2e6cab60a03ea503af41662d825"
+    },
+    {
+      "id": "AUTH224-00343",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp224-snapshot/docs/RESEARCH.md",
+      "bytes": 43925,
+      "sha256": "969a93ff3af1c6547a9ffb8c8596f37c2bb022fffe5b98bbcc1d2ccad096cb70"
+    },
+    {
+      "id": "AUTH224-00344",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp224-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 263536,
+      "sha256": "c6bb09ac8b37aca5d1064964118fbcb6be71231ec944cb9e78518f5554de99cf"
+    },
+    {
+      "id": "AUTH224-00345",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp224-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 35371,
+      "sha256": "90f54c2450b8fa9e285f2bee9f4b0b3350af1228ad7c66d36a7bf7fb1d614819"
+    },
+    {
+      "id": "AUTH224-00346",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp224-snapshot/docs/evidence/login-runtime/README.md",
+      "bytes": 31503,
+      "sha256": "f501ae11810df6e398864fabf4305c3211136e5dde42d40a6ff7a7f0f91f6e87"
+    },
+    {
+      "id": "AUTH224-00347",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp224-snapshot/docs/evidence/login-runtime/retry-validation.json",
+      "bytes": 29556,
+      "sha256": "d49d8dd50fa0ba1082c8b03e2569b340c81eee3dbfa2d2bfba2d882122046780"
+    },
+    {
+      "id": "AUTH224-00348",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp224-snapshot/docs/features.json",
+      "bytes": 195248,
+      "sha256": "5cf3ec12b9ff20b69077c939e3fb6ea70bae4982c7a673e8585c45e6bda3facd"
+    },
+    {
+      "id": "AUTH224-00349",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-return-probe.py",
+      "bytes": 1036,
+      "sha256": "74b48514c335a6ffea304a4d13a9a995619a58b2fc77e5f7974e8a6e2290865d"
+    },
+    {
+      "id": "AUTH224-00350",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns-verification.json",
+      "bytes": 3218,
+      "sha256": "093b6ab872ed272575713b3845c64a55eb84295e1c8e4210e5e978abcdd380db"
+    },
+    {
+      "id": "AUTH224-00351",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns.gdb",
+      "bytes": 1443,
+      "sha256": "b78d4f229daa14430330521fffcc3eafbe8d1a6297dd948cb49175224466a7c2"
+    },
+    {
+      "id": "AUTH224-00352",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/CALog-before.txt",
+      "bytes": 1650,
+      "sha256": "7336d05dc59a49f4c3cb328dbf2a8fe522402f3e1f5c173e74ad390051f16141"
+    },
+    {
+      "id": "AUTH224-00353",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/CALog-run.txt",
+      "bytes": 1650,
+      "sha256": "7336d05dc59a49f4c3cb328dbf2a8fe522402f3e1f5c173e74ad390051f16141"
+    },
+    {
+      "id": "AUTH224-00354",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "fc02d7761c56334428a104e2886e407bcf5c3bf9fba464dc260b62239760450d"
+    },
+    {
+      "id": "AUTH224-00355",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/client.log",
+      "bytes": 120793,
+      "sha256": "b38aad76eb68034b3d8ea86d704c130aeb9317ce40f4bde25b3cf3e59b8347d7"
+    },
+    {
+      "id": "AUTH224-00356",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/debug-commands.txt",
+      "bytes": 1443,
+      "sha256": "b78d4f229daa14430330521fffcc3eafbe8d1a6297dd948cb49175224466a7c2"
+    },
+    {
+      "id": "AUTH224-00357",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00358",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00359",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-10.png",
+      "bytes": 143929,
+      "sha256": "cf37a94bfd78aafdeff59e56c9eb8b851602ea8c45219765083b5ef34ce77be9"
+    },
+    {
+      "id": "AUTH224-00360",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-11.png",
+      "bytes": 143988,
+      "sha256": "b8315128625a106403a81bd5b6dfb70371e94de16886b0ccac86258dcefce15a"
+    },
+    {
+      "id": "AUTH224-00361",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-12.png",
+      "bytes": 143942,
+      "sha256": "c20c18e4909b619bd9bc97ba09f6265cebc7876b4250b104d9e32b848e21012b"
+    },
+    {
+      "id": "AUTH224-00362",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-13.png",
+      "bytes": 143592,
+      "sha256": "268c8bc667ebb83bbeca7b69a092d7b7998696021f3371352ed4a7632a601c42"
+    },
+    {
+      "id": "AUTH224-00363",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-14.png",
+      "bytes": 143097,
+      "sha256": "b0f5b7509e515fc5b510c222a8f4ac32a8763f7fe62b963cc9ee0ab3cc30452e"
+    },
+    {
+      "id": "AUTH224-00364",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-15.png",
+      "bytes": 142433,
+      "sha256": "a0210fb5493f67871f05704324be52c7f16d1c74c5d851a11919f5164d4f1971"
+    },
+    {
+      "id": "AUTH224-00365",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-16.png",
+      "bytes": 141894,
+      "sha256": "1b7e22065774370ee96664b717ffa4f53eb1d22b281dc5bdf8b69b8d8b8fd22a"
+    },
+    {
+      "id": "AUTH224-00366",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-17.png",
+      "bytes": 141880,
+      "sha256": "46f6ea41b74e562ce796ac988e67434cbf946e287845f65d27568440d31aa41d"
+    },
+    {
+      "id": "AUTH224-00367",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-18.png",
+      "bytes": 141861,
+      "sha256": "a5ae57f817fa5626266da94a19d172a5e4f72a7f2c1c1219d6389823d93ae7f9"
+    },
+    {
+      "id": "AUTH224-00368",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-19.png",
+      "bytes": 142329,
+      "sha256": "444ed92805830879b63d51fe1f5987ff3f478970b9909b1f8c348441cd547ac4"
+    },
+    {
+      "id": "AUTH224-00369",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-2.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "AUTH224-00370",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-20.png",
+      "bytes": 143019,
+      "sha256": "4f7258692fd0e6bffd654f37c856cc2f8a5885bc09d44cbb6c7d551321cdcce4"
+    },
+    {
+      "id": "AUTH224-00371",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-21.png",
+      "bytes": 143605,
+      "sha256": "f0cfa06f8e21f41d00c9d87f1aa0c94f7ee700084e52bf72c0bbb07c3cb4f0b1"
+    },
+    {
+      "id": "AUTH224-00372",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-22.png",
+      "bytes": 144550,
+      "sha256": "6e7d581f8669d54ac6512d2447e52b8de283f2280b679ae5fe57c3a34c9aef1b"
+    },
+    {
+      "id": "AUTH224-00373",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-23.png",
+      "bytes": 145208,
+      "sha256": "40392b32ed9ade3c4b997f2969ca4dc9f1a39ced509bce417e6502bc7e5b8c49"
+    },
+    {
+      "id": "AUTH224-00374",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-24.png",
+      "bytes": 145458,
+      "sha256": "fbe243a547f200b7e1a3aa98c91489a4d2cc581122970be639c3f979cd3ee445"
+    },
+    {
+      "id": "AUTH224-00375",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-25.png",
+      "bytes": 144689,
+      "sha256": "0be0a126fe77f44c0043b118b4e735da9c1118053b73367c1f25f0f1defb978c"
+    },
+    {
+      "id": "AUTH224-00376",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-3.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "AUTH224-00377",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-4.png",
+      "bytes": 146605,
+      "sha256": "d94c4000378f2bb28f83b1e6e3a07b0d2d6d7de2fd5e736be2c6155bbcfe3957"
+    },
+    {
+      "id": "AUTH224-00378",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-5.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "AUTH224-00379",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-6.png",
+      "bytes": 193523,
+      "sha256": "4994c6ecc02b4fc22a65013c16c0653c228219fc5b45ffb533712d8b07acfb32"
+    },
+    {
+      "id": "AUTH224-00380",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-7.png",
+      "bytes": 492014,
+      "sha256": "432a51837d78044af9919fe8d374b97147984fee6567b484b6c8a96fcb2ceaec"
+    },
+    {
+      "id": "AUTH224-00381",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-8.png",
+      "bytes": 148572,
+      "sha256": "ec6edc152c2ede75f297b050fe0d47e36994278bfc348aa772d23ca6095f0fab"
+    },
+    {
+      "id": "AUTH224-00382",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/screen-9.png",
+      "bytes": 149260,
+      "sha256": "281cd0e8bd025f9ee921043f1c096a054d3b1eccb22a11791c2d4b784b5f9812"
+    },
+    {
+      "id": "AUTH224-00383",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH224-00384",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-1.txt",
+      "bytes": 1305,
+      "sha256": "2ea219015d24e371bd5be2632e2b1432dbb3ec211585b3163a982a765dd40e1e"
+    },
+    {
+      "id": "AUTH224-00385",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00386",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00387",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00388",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00389",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00390",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00391",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00392",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00393",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00394",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00395",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-2.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00396",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00397",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00398",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00399",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00400",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00401",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00402",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00403",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00404",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00405",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH224-00406",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00407",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00408",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH224-00409",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B-title-initial91-8.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH224-00410",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/CALog-before.txt",
+      "bytes": 1397,
+      "sha256": "1c4d9aa2403add5529ea6417fd5b4a994e77da4772002f6a0abf3411f389edb5"
+    },
+    {
+      "id": "AUTH224-00411",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/CALog-run.txt",
+      "bytes": 1397,
+      "sha256": "1c4d9aa2403add5529ea6417fd5b4a994e77da4772002f6a0abf3411f389edb5"
+    },
+    {
+      "id": "AUTH224-00412",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "97f92c7147b208454c9dd11882132e7b1efc8ec6f679bc2213d3537827d740de"
+    },
+    {
+      "id": "AUTH224-00413",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/client.log",
+      "bytes": 314363,
+      "sha256": "41fd83a629d0b13c7601244aa28c1993085d59c29da2bad0f5b5f0d941913136"
+    },
+    {
+      "id": "AUTH224-00414",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/debug-commands.txt",
+      "bytes": 1443,
+      "sha256": "b78d4f229daa14430330521fffcc3eafbe8d1a6297dd948cb49175224466a7c2"
+    },
+    {
+      "id": "AUTH224-00415",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00416",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00417",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-10.png",
+      "bytes": 157650,
+      "sha256": "adb61108fbf0fa78a502008e8f344bd96487d37654d323e585b03e9c0089465d"
+    },
+    {
+      "id": "AUTH224-00418",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-11.png",
+      "bytes": 158291,
+      "sha256": "228fd51ee92d4d883349ca7dab8a3f715c97519f871440b028c576fb3e383156"
+    },
+    {
+      "id": "AUTH224-00419",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-12.png",
+      "bytes": 145440,
+      "sha256": "fbbe6333fb8f0cadfe16535f722aaa00dc4601b210ba3068ee45f840db550c54"
+    },
+    {
+      "id": "AUTH224-00420",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-13.png",
+      "bytes": 145842,
+      "sha256": "c87c1d0c6fed6038e2d8cc7464c589409def35cae5c07aab3f4938c099ecf749"
+    },
+    {
+      "id": "AUTH224-00421",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-14.png",
+      "bytes": 145950,
+      "sha256": "b1cce6647830965bdd8a2005afb527ca8b44468fabc13b8157def2b19d9f560a"
+    },
+    {
+      "id": "AUTH224-00422",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-15.png",
+      "bytes": 145501,
+      "sha256": "3339e77884c1548d654d612c9df914172ed55729fdd0d8a474d9cb27df7187a2"
+    },
+    {
+      "id": "AUTH224-00423",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-16.png",
+      "bytes": 145087,
+      "sha256": "3a1be50a73c2fb968816d0a5e993874f8fbd304de4a085b3dcd921e3718a3209"
+    },
+    {
+      "id": "AUTH224-00424",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-17.png",
+      "bytes": 154437,
+      "sha256": "460b5bb00cca2d652c79007c7f3afbae36afe66e190a0013f38d4d07b5c1722f"
+    },
+    {
+      "id": "AUTH224-00425",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-18.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "AUTH224-00426",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-19.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "AUTH224-00427",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00428",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-20.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00429",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-21.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00430",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-22.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00431",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-23.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00432",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-24.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00433",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-25.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH224-00434",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00435",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-4.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00436",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-5.png",
+      "bytes": 12324,
+      "sha256": "7e9af06b060699975d6ea1c28063d857b5573a363b8a4b2fd236ac47c31c3d9f"
+    },
+    {
+      "id": "AUTH224-00437",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-6.png",
+      "bytes": 144302,
+      "sha256": "2f048abe0f39d7ceeb71d1014ead336909c84cbeed5810cb06ad0d0169d2e9cb"
+    },
+    {
+      "id": "AUTH224-00438",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-7.png",
+      "bytes": 188486,
+      "sha256": "b7dc0455f9bd68913e45baa128fcc003f95b88d153d5e8e8c966bedcd9ce1216"
+    },
+    {
+      "id": "AUTH224-00439",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-8.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "AUTH224-00440",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH224-00441",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH224-00442",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH224-00443",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00444",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00445",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00446",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00447",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00448",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00449",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00450",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-17.txt",
+      "bytes": 1600,
+      "sha256": "7883302b828fcbd16ca11772d01a76451e0c60d1e87d70410bab22103af3b063"
+    },
+    {
+      "id": "AUTH224-00451",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-18.txt",
+      "bytes": 1600,
+      "sha256": "7883302b828fcbd16ca11772d01a76451e0c60d1e87d70410bab22103af3b063"
+    },
+    {
+      "id": "AUTH224-00452",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-19.txt",
+      "bytes": 1600,
+      "sha256": "7883302b828fcbd16ca11772d01a76451e0c60d1e87d70410bab22103af3b063"
+    },
+    {
+      "id": "AUTH224-00453",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH224-00454",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-20.txt",
+      "bytes": 2589,
+      "sha256": "436c5470734276344eadfc7c049dbac0e7ed62a7ddc43cd815ddec208c17683a"
+    },
+    {
+      "id": "AUTH224-00455",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-21.txt",
+      "bytes": 2589,
+      "sha256": "436c5470734276344eadfc7c049dbac0e7ed62a7ddc43cd815ddec208c17683a"
+    },
+    {
+      "id": "AUTH224-00456",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-22.txt",
+      "bytes": 2589,
+      "sha256": "436c5470734276344eadfc7c049dbac0e7ed62a7ddc43cd815ddec208c17683a"
+    },
+    {
+      "id": "AUTH224-00457",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-23.txt",
+      "bytes": 2589,
+      "sha256": "436c5470734276344eadfc7c049dbac0e7ed62a7ddc43cd815ddec208c17683a"
+    },
+    {
+      "id": "AUTH224-00458",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-24.txt",
+      "bytes": 2589,
+      "sha256": "436c5470734276344eadfc7c049dbac0e7ed62a7ddc43cd815ddec208c17683a"
+    },
+    {
+      "id": "AUTH224-00459",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-25.txt",
+      "bytes": 2589,
+      "sha256": "436c5470734276344eadfc7c049dbac0e7ed62a7ddc43cd815ddec208c17683a"
+    },
+    {
+      "id": "AUTH224-00460",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH224-00461",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-4.txt",
+      "bytes": 1305,
+      "sha256": "3a9abbddf140befc14f7fbfb5a6c5151e9983094e5c5b128ba90a5acd7adc7b7"
+    },
+    {
+      "id": "AUTH224-00462",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH224-00463",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH224-00464",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH224-00465",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH224-00466",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH224-00467",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "AUTH224-00468",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH224-00469",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/post-close-service-state.json",
+      "bytes": 36521,
+      "sha256": "2337f5cf68546610f953e46c8ebb7fae96c96e362b608a91eb85a9c73c52bee3"
+    },
+    {
+      "id": "AUTH224-00470",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-0.txt",
+      "bytes": 6987,
+      "sha256": "bcc3fd125ca34952b64c6802116b0c69d200c48721320e061f8bc4394f620ece"
+    },
+    {
+      "id": "AUTH224-00471",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-1.txt",
+      "bytes": 7140,
+      "sha256": "5489f3a90a30c058a81559e8bcf999a59d8304e7d9b45524b2eabe2d30f63856"
+    },
+    {
+      "id": "AUTH224-00472",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-10.txt",
+      "bytes": 7140,
+      "sha256": "737a248624a52ebac1e918767f0dc42f6dac8d9de942f6a5138773f4e84bad4b"
+    },
+    {
+      "id": "AUTH224-00473",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-11.txt",
+      "bytes": 7140,
+      "sha256": "fa21f09f9901abd58fcbec0ab6e6a853e4671bba30c4bb4c6ea06e8d79a0d558"
+    },
+    {
+      "id": "AUTH224-00474",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-12.txt",
+      "bytes": 7140,
+      "sha256": "ac75aacb70328ce6bd7a777d22859d793083cc5e76f9683786770c696758ad9a"
+    },
+    {
+      "id": "AUTH224-00475",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-13.txt",
+      "bytes": 7140,
+      "sha256": "47d16185f45872f205dd3e110d3fad0bee1b7f57b6473ad47621274e7fbc8328"
+    },
+    {
+      "id": "AUTH224-00476",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-14.txt",
+      "bytes": 7140,
+      "sha256": "a11e183be19ec5f099ba620db7b5462dca69f040dea2029000ab36713c6f2ab2"
+    },
+    {
+      "id": "AUTH224-00477",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-15.txt",
+      "bytes": 7140,
+      "sha256": "6b42f381ec9081f65b4d9c78105e5733eea38c31a934568ad6a7e704a38ec16d"
+    },
+    {
+      "id": "AUTH224-00478",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-16.txt",
+      "bytes": 7140,
+      "sha256": "0fb1397958b61dab93aed2223f61b523693e28b7a344f1a67bcf28c3d9b2d76a"
+    },
+    {
+      "id": "AUTH224-00479",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-17.txt",
+      "bytes": 7195,
+      "sha256": "935998271e1b0d6da51b7c7ec706996d5302b082a4d0e2ae6092decdaa5739d3"
+    },
+    {
+      "id": "AUTH224-00480",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-18.txt",
+      "bytes": 7195,
+      "sha256": "4cb07799fb0b084ee6d7b2e69b260f15d1b8e5946636ad64fe1b726464f5ccad"
+    },
+    {
+      "id": "AUTH224-00481",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-19.txt",
+      "bytes": 7195,
+      "sha256": "1aea53a6c60e8d4e6b21595b73aeeb13597e513d97731210c12f2080e8c66241"
+    },
+    {
+      "id": "AUTH224-00482",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-2.txt",
+      "bytes": 7140,
+      "sha256": "0fe578ed62554943fb8734ad8a1fff9f0cb1bdcf1ad2798ba778044b58d60eb3"
+    },
+    {
+      "id": "AUTH224-00483",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-20.txt",
+      "bytes": 6929,
+      "sha256": "cd97a1d512b37f86adeddd0e54fe686c7d3a1a621401062c01a8ebe6b3d8c33c"
+    },
+    {
+      "id": "AUTH224-00484",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-21.txt",
+      "bytes": 6929,
+      "sha256": "321a6dd42d39aa5657e0d531308bc490e87301194ba32db26d7c4fcdee410fb3"
+    },
+    {
+      "id": "AUTH224-00485",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-22.txt",
+      "bytes": 6929,
+      "sha256": "0575127add45dc328a56c21d642b7db7882c6b1fdf7919233e651810a4ba6150"
+    },
+    {
+      "id": "AUTH224-00486",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-23.txt",
+      "bytes": 6929,
+      "sha256": "2a478b50d61e56ad69dbdbb53b25c58d77b683e86032e814c9a84e19706527bb"
+    },
+    {
+      "id": "AUTH224-00487",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-24.txt",
+      "bytes": 6929,
+      "sha256": "41b9d889cb205674c916c35b7f17e241ad5a1ca9b9b2679404b0a7a659ed982a"
+    },
+    {
+      "id": "AUTH224-00488",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-25.txt",
+      "bytes": 6929,
+      "sha256": "051589d07a019bfda867118910b62c6191c5a45ddc805ad3a5cf42126ffffec1"
+    },
+    {
+      "id": "AUTH224-00489",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-3.txt",
+      "bytes": 7140,
+      "sha256": "7dca1994fc6b727f47ad0d5260baf917ae24e7da5f8ec9f627fbe6883045b861"
+    },
+    {
+      "id": "AUTH224-00490",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-4.txt",
+      "bytes": 7140,
+      "sha256": "cd416da466cecfe5256346508793a7e160b86be0878ac3b27c2027232d83ec19"
+    },
+    {
+      "id": "AUTH224-00491",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-5.txt",
+      "bytes": 7140,
+      "sha256": "5903451a892541f790477bb05dfa67496f0a8e7b971a11b2c0cebd18a2ad0a18"
+    },
+    {
+      "id": "AUTH224-00492",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-6.txt",
+      "bytes": 7140,
+      "sha256": "ab99efa773a280413abbb240df9e338e986ad9f948ab3abc439d886e386604fd"
+    },
+    {
+      "id": "AUTH224-00493",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-7.txt",
+      "bytes": 7140,
+      "sha256": "647c4d916fe36d77032f00f77d18a3b21e8ce1468dd4312a80499dee2f4b7027"
+    },
+    {
+      "id": "AUTH224-00494",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-8.txt",
+      "bytes": 7140,
+      "sha256": "63319cde7e7983dd366f6ea7b554ebb1e36024fc346ca465743f353df51fb674"
+    },
+    {
+      "id": "AUTH224-00495",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/processes-9.txt",
+      "bytes": 7140,
+      "sha256": "3a2fb7aaba5cf70af65c34b0e67c9baf8104f757ec305d0c59a226779a389fe0"
+    },
+    {
+      "id": "AUTH224-00496",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/run.json",
+      "bytes": 40314,
+      "sha256": "fc2b8c9e1280e217c94ec68112a4ef0a8bdc4e15eb3041756372080447f0882d"
+    },
+    {
+      "id": "AUTH224-00497",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/service-state.json",
+      "bytes": 39024,
+      "sha256": "516e352edffe00f31e2e5655a6b1c30ef237f4a6d6607fcdcee9a35a55bcbddd"
+    },
+    {
+      "id": "AUTH224-00498",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH224-00499",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/tcp-auth-pair.pcap",
+      "bytes": 21098,
+      "sha256": "fff99362837c6d3275563eb780c4882f2c86fc308cac762ba8bfa81c38102986"
+    },
+    {
+      "id": "AUTH224-00500",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/tcp-capture-index.json",
+      "bytes": 59647,
+      "sha256": "33603f2956126562249aeed971423ee0ccb319ee35ded346014e76d0f08bfcd0"
+    },
+    {
+      "id": "AUTH224-00501",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/virtual-network.json",
+      "bytes": 24928,
+      "sha256": "44f59d354982edda3a9f3eed88afb2a578b99eb7a2a98934b96e448f9500bf83"
+    },
+    {
+      "id": "AUTH224-00502",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "1fc327729eadd6c3100deab65ab6cb0ad2aa367ca6aca210a5a480ea9d38f498"
+    },
+    {
+      "id": "AUTH224-00503",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "d1ce0c4fef8367bcf7cc0bb2309335b52276d8ae17e92c418bb20cfc20ac50ba"
+    },
+    {
+      "id": "AUTH224-00504",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH224-00505",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "AUTH224-00506",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/launch-exit.json",
+      "bytes": 73,
+      "sha256": "324138d34e38ce254c874f38f02402bf19dc73987be192a9d88fb2d4073d3ac5"
+    },
+    {
+      "id": "AUTH224-00507",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH224-00508",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/raw-seal.json",
+      "bytes": 33744,
+      "sha256": "9197c73912493edb07c5427f9f4b21b54ae71971a23330c97d2fbb967cc98deb"
+    },
+    {
+      "id": "AUTH224-00509",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/recipe.json",
+      "bytes": 1169,
+      "sha256": "c6de2ce561eebc987630c4fba00789b976e4b9f6fe12c67341c32e5b8b9b2c1b"
+    },
+    {
+      "id": "AUTH224-00510",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/runtime-preflight.json",
+      "bytes": 75274,
+      "sha256": "63ff6524fdc176341f23ae71582c9fd44d3ef02169c5370ff63c79f2d636f49b"
+    },
+    {
+      "id": "AUTH224-00511",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/manual-review.json",
+      "bytes": 3001,
+      "sha256": "c69d1eccfd163ac95b94839edfb584338d0869746896ca03c26a63e86966ea63"
+    },
+    {
+      "id": "AUTH224-00512",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/network_policy.py",
+      "bytes": 1071,
+      "sha256": "843a8317629dc7f50afbae8bfeddea8b7a7a606b8e5c8437ac6e6d7d79e85820"
+    },
+    {
+      "id": "AUTH224-00513",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/pair_service_retry_r2.py",
+      "bytes": 3170,
+      "sha256": "6373918b3776c0ed69e811fb8cf13b587b49aa9947d3488101dcf76c2029bfcf"
+    },
+    {
+      "id": "AUTH224-00514",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/r1-observer-review.json",
+      "bytes": 949,
+      "sha256": "63158873b6526fc291ef0f4d889b87ae7bb695da69c3d75d41b197734c297d65"
+    },
+    {
+      "id": "AUTH224-00515",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/rea-evidence.json",
+      "bytes": 105,
+      "sha256": "000bef2a45fbd4b17adc4e2ab0acd65b076ef5c25f0d8479244c8088730de9cd"
+    },
+    {
+      "id": "AUTH224-00516",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/rea-provider-cleanup-request.json",
+      "bytes": 742,
+      "sha256": "d8bd9d70eb808e939ed1c1e2f6cdc3715fc16c6ad5b44628d713214690795a9f"
+    },
+    {
+      "id": "AUTH224-00517",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/rea-provider-cleanup-result.json",
+      "bytes": 458,
+      "sha256": "28b23aadd3a52fc31a3bcbbf8456e4e6d7ff1c92f1e60151d389c99ffc5c5cc4"
+    },
+    {
+      "id": "AUTH224-00518",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/source-first.json",
+      "bytes": 2589,
+      "sha256": "6a031f6cfe81b1e9e0ac627b7e2b1b87f69328bf254542623500be0208d1607c"
+    },
+    {
+      "id": "AUTH224-00519",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "AUTH224-00520",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/verification.json",
+      "bytes": 6750,
+      "sha256": "9037f3379428e5e7c33b5ba2b0fa066912f97b94700528b1c37645242c5cca35"
+    },
+    {
+      "id": "AUTH224-00521",
+      "kind": "local",
+      "path": "local/research/codex/capture_github_cp224.py",
+      "bytes": 1940,
+      "sha256": "6c5b979dae79a7cb7a5f83e3a2a1cba3a93d6667d21ab56b30fe24d153f1bef4"
+    },
+    {
+      "id": "AUTH224-00522",
+      "kind": "local",
+      "path": "local/research/codex/cp224-GitHub-issues-1.json",
+      "bytes": 615050,
+      "sha256": "6b1e2041e67d0ea18784602a3b532cc7aa79dc2b6d3ddf549f6b1dd646a88f04"
+    },
+    {
+      "id": "AUTH224-00523",
+      "kind": "local",
+      "path": "local/research/codex/cp224-GitHub-issues-2.json",
+      "bytes": 586273,
+      "sha256": "6f61e513e4173ba9f503f57a7b47d0d039c76ef739d63cbd1bd8b8a9c8d619d4"
+    },
+    {
+      "id": "AUTH224-00524",
+      "kind": "local",
+      "path": "local/research/codex/cp224-GitHub-issues-3.json",
+      "bytes": 586567,
+      "sha256": "e4aaf3f5e39d0f2784f8ca92c17481976cdeca0f85127ae13e2b3ef005c35b2f"
+    },
+    {
+      "id": "AUTH224-00525",
+      "kind": "local",
+      "path": "local/research/codex/cp224-GitHub-pulls-1.json",
+      "bytes": 2243348,
+      "sha256": "738f7799cbeba4c4da7db7002d7bf268120495042992d8e770b052580e49b1ed"
+    },
+    {
+      "id": "AUTH224-00526",
+      "kind": "local",
+      "path": "local/research/codex/cp224-GitHub-pulls-2.json",
+      "bytes": 2224095,
+      "sha256": "141ffc298b226320055d5647a75aa0e9448ce8016ef931b83524828ec5678bb2"
+    },
+    {
+      "id": "AUTH224-00527",
+      "kind": "local",
+      "path": "local/research/codex/cp224-GitHub-pulls-3.json",
+      "bytes": 508437,
+      "sha256": "c771373737c65a1af52da2de6f3fd43ee5a81285fac2551067670f830b662eb2"
+    },
+    {
+      "id": "AUTH224-00528",
+      "kind": "local",
+      "path": "local/research/codex/cp224-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH224-00529",
+      "kind": "local",
+      "path": "local/research/codex/cp224-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "2db4631f854e16adc6e98c8716293fe6301825c02b751c769e0b363759e96ee0"
+    },
+    {
+      "id": "AUTH224-00530",
+      "kind": "local",
+      "path": "local/research/codex/cp224-github-capture.txt",
+      "bytes": 70,
+      "sha256": "6d3ecf24004af1ddb39a576e6d73ee13004ee2027aacb33c7f1e67aa39e33995"
+    },
+    {
+      "id": "AUTH224-00531",
+      "kind": "local",
+      "path": "local/research/codex/cp224-issue-updates.txt",
+      "bytes": 448,
+      "sha256": "5afabd1cee62bbe9a54b5c63a06e5864ae145cd318064bc7a12b28c569d4f3cc"
+    },
+    {
+      "id": "AUTH224-00532",
+      "kind": "local",
+      "path": "local/research/codex/cp224-issue14-before.json",
+      "bytes": 37362,
+      "sha256": "c2b69be686dae77daa6526221d90eeb132a07d03b653e70701efb5b89eb5891f"
+    },
+    {
+      "id": "AUTH224-00533",
+      "kind": "local",
+      "path": "local/research/codex/cp224-issue14-request.json",
+      "bytes": 34151,
+      "sha256": "7754869380c8317160d9d31d8b615d9a6311ba0bbb55c3e585ed55b57faa6fa3"
+    },
+    {
+      "id": "AUTH224-00534",
+      "kind": "local",
+      "path": "local/research/codex/cp224-issue14-updated.json",
+      "bytes": 37065,
+      "sha256": "0106cbe56307c00d96e0169ecf82e57e66f5ae634a04243fcc0154d0d63ac87c"
+    },
+    {
+      "id": "AUTH224-00535",
+      "kind": "local",
+      "path": "local/research/codex/cp224-issue285-before.json",
+      "bytes": 10688,
+      "sha256": "d98913851064211e64312084222399056790f22594bda5a8771a739a5cf8677e"
+    },
+    {
+      "id": "AUTH224-00536",
+      "kind": "local",
+      "path": "local/research/codex/cp224-issue285-request.json",
+      "bytes": 7449,
+      "sha256": "2419b621ea674c1a2289a9e65c398a6d70a02f01a521c31131f74cda5034154d"
+    },
+    {
+      "id": "AUTH224-00537",
+      "kind": "local",
+      "path": "local/research/codex/cp224-issue285-updated.json",
+      "bytes": 10391,
+      "sha256": "570c8393000eb6cf3e00571e200c5e2d2e558c7342576bc2ba38bc9a23b2b34b"
+    },
+    {
+      "id": "AUTH224-00538",
+      "kind": "local",
+      "path": "local/research/codex/finalize_cp224_docs.py",
+      "bytes": 5206,
+      "sha256": "a71109c9cc2705f83ecbfe16f83bfd9e447cbd7b183fdc26bef63641a2739c99"
+    },
+    {
+      "id": "AUTH224-00539",
+      "kind": "local",
+      "path": "local/research/codex/inspect_auth_retry_continuation.py",
+      "bytes": 1916,
+      "sha256": "0a8164b69af4fbaf4915c29913df79fc0063bc9239d7aa02a0d351fd5572c057"
+    },
+    {
+      "id": "AUTH224-00540",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_retry_consumer.py",
+      "bytes": 5695,
+      "sha256": "6fae9cec3068f5b70950f50c8b0d02e26ec1f36bcc4dea6dea76393c33aaa1ea"
+    },
+    {
+      "id": "AUTH224-00541",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_retry_continuation_run.py",
+      "bytes": 2885,
+      "sha256": "168cdd0ae30bcd5162c9d066eab4b57655bd49ea69feaf072e0a601032edb911"
+    },
+    {
+      "id": "AUTH224-00542",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_retry_fixed_returns.py",
+      "bytes": 3693,
+      "sha256": "cf4423f841be369b67b076aff3c9b4eee692972e8145a6da07859a445d331636"
+    },
+    {
+      "id": "AUTH224-00543",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_retry_consumer.py",
+      "bytes": 846,
+      "sha256": "62b2716ab03cdbb8b9ca59e8fa1bf261faed7d5f89c0576034ffde32af0b3e5d"
+    },
+    {
+      "id": "AUTH224-00544",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_retry_continuation.py",
+      "bytes": 850,
+      "sha256": "498bcf2d165ac3656f38d0b498889bfea4a5d5af8cf7e5975b6308e2b9b2afcd"
+    },
+    {
+      "id": "AUTH224-00545",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_retry_fixed_returns.py",
+      "bytes": 846,
+      "sha256": "afe356bcf9ededa4c31e2e4311b041344e4cc4316eabd172029296bc7ad5be2c"
+    },
+    {
+      "id": "AUTH224-00546",
+      "kind": "local",
+      "path": "local/research/codex/sync_cp224.py",
+      "bytes": 10551,
+      "sha256": "0ddc622cf743849686b9d3068bf505fa93dc3954bc4bb5491928d1b44af246e1"
+    },
+    {
+      "id": "AUTH224-00547",
+      "kind": "local",
+      "path": "local/research/codex/update_cp224_issues.py",
+      "bytes": 4699,
+      "sha256": "d762a0db15427c5e44feb882a2db3db4511ca121d6bff45588ca603382a3a73f"
+    },
+    {
+      "id": "AUTH224-00548",
+      "kind": "local",
+      "path": "local/research/codex/verify_auth_retry_continuation.py",
+      "bytes": 3513,
+      "sha256": "90088096860cb790d3c47cde8d5191d06ee75756eb02ae0accd316016b012c49"
+    },
+    {
+      "id": "AUTH224-00549",
+      "kind": "local",
+      "path": "local/research/codex/verify_auth_retry_validation.py",
+      "bytes": 6265,
+      "sha256": "06c74cc6c5b0579cdaba9358e2dccaa65f6c400e3ae017498182952117c5dbdc"
+    }
+  ]
+}

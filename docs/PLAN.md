@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP223: endpoint-accounttokenpermutationnativepositive;post17terminationerror/newconnectđãđo,fullretryFAIL.Nativerecv15/framerret0seq40→43chưa consumer/validation success.CP222mergePR293/4bcabd8;chưa fullauth/Rust.K6cWANgiảlập/K7scoped đạt,Internet thật chưa kiểm.AUD064qua220/kế224.
+CP224: nativehello/poll/validation/outerreturnđều1,fullretryFAIL/SIGABRT+illegalinstruction; correctionCP223fatalomission/unwindobserver,462rawsealed. CP223mergePR294/51bbf41; K6cWANgiảlập/K7scoped đạt,Internet thật chưa kiểm;chưa fullauth/Rust. AUD065 qua224/kếCP228.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,14 +64,16 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-AUTH-SESSION-BINDING / retry consumer**: [CP223](PROTOCOL.md#auth-session-lifecycle)/[raw](evidence/login-runtime/README.md#cp223)
-   đã đo validaccounttoken đảoendpoint, post17Btermination→nativeerror10/newconnect trong khi Aowner giữ;
-   không lặp permutation/duplicate/EOF-before17/socketaccept/recv. Retry vẫn FAIL: privatecounterB reset
-   và boundedcycle2guard cho connection9 nhưng native chỉ recv15/framerret0/40→43, chưa secondauth/6/67.
-   Tiếp source-first cache hello13AEFE0/validation route theo actualcaller1255C0B/1255A69, rồi passive
-   entry/return/currentphase nếu cần; không đoán stage theo port, không retag/frame/forceconsumer/VMgraph.
-   Mốc kếCP224 phải audit periodic; nếu không có cạnh mới sau hai lượt thì ghi blocker và chuyển phần độc lập.
-   Genericrelogin/accountresume/sessionexpiry/restartfence/DB/API chưa đạt; echo32/sourceIP/inmemory không fullauth.
+1. **NEXT-AUTH-SESSION-BINDING / sau validation**: [CP224](PROTOCOL.md#auth-retry-validation)/[raw](evidence/login-runtime/README.md#cp224)
+   đã có exactnativehello/poll/validation/outerreturn đều1/managerphase2; không lặp hello/codec/endpoint-permutation.
+   Fullretry vẫn FAIL, không postclose tokenbuilder/countset/auth6-67/session mới; SIGABRT rồi Wineillegalinstruction.
+   Fatal này cũng có trong logCP223 nhưng report chưa nêu; giữ record/raw và thêm correction ởCP224.
+   Continuation đã có native125BEBD→handoff1255F80→125BEC9, localEBP-28=11→125BF8Cepilogue/ret;
+   không bị kẹt trong handoff, nhánh local==1 không đi. Ý nghĩa/nguồn discriminator11 còn unknown.
+   Tiếp cache-first đúng caller/nguồn discriminator này; chỉ đo khi có input/observable mới từ nguồn,
+   không lặp failedretry/hello/validation hoặc quét protectedSDK/VMgraph/gán popup thành rootcause.
+   Nếu không có cạnh mới thì ghi blocker/chọn khoảng trống độc lập, không kéo dài graph.
+   Sessionexpiry/revocation/restartfence/DB/API/fullauth còn thiếu. AUD065 quaCP224/kếCP228.
 2. **NEXT-AUTH-CHANNEL-EOF — blocked về observable receiver selection**:
    [CP219](PROTOCOL.md#auth-eof-dispatch) đã đo native bad-dispatch; [CP220](PROTOCOL.md#auth-tcp-ownership)
    getter13AEBE0 trả null ở caller khác, selected-store125783B không hit; hardwarewatch không snapshot,
@@ -84,7 +86,7 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    không chờ Battle/mọiitem và không chờ fullauthRE để thiết kế DB. Không tạo Rust tree trong đợt RE này.
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP223 không nâng gate; AUD064 qua220/audit kếCP224.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP224 không nâng gate; AUD065 qua224/audit kếCP228.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu

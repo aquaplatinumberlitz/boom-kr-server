@@ -28,13 +28,22 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP224: hello và validation thành công; retry sau mất kênh bị fatal error.**
+[Contract/correction](docs/PROTOCOL.md#auth-retry-validation), [ba run/hash](docs/evidence/login-runtime/README.md#cp224):
+breakpoint đúng return13AD79C/1255C73/1255A69/125BE47 đều trả1, manager phase2;
+chưa tokenbuilder/auth6-67/session mới, sau đó SIGABRT/Wine illegalinstruction. CP223 đã ghi retryFAIL
+nhưng bỏ sót fatal trong log; record/raw cũ giữ nguyên. Observer unwind đầu được thay bằng exactsite,
+462raw seal/hash/cleanup; continuation cho local11→epilogue, không dừng trong handoff. CP223 merge [PR294](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/294)/`51bbf41`.
+[Thứ tự hiện hành](docs/PLAN.md#current-order); không fullauth/Rust/gate mới. AUD065 quaCP224/audit kếCP228.
+
+
 **CP223: identity theo account khi đảo endpoint; retry sau mất kênh chưa đạt.**
 [Contract/giới hạn](docs/PROTOCOL.md#auth-session-lifecycle), [bảy run/hash](docs/evidence/login-runtime/README.md#cp223):
 control token đảo source vẫn đúng native ID/name/echo/67 và session; đóng B sau17 có native error10/newconnect,
-Aowner giữ. Prototype guards và consumer sau hello còn chặn retry: native recv15/framerret0 không là login lại.
+Aowner giữ. CP223 mới khoanh bytes/framer; [CP224](docs/PROTOCOL.md#auth-retry-validation) bổ sung validation thành công và fatal error.
 1108raw đã seal/hash/cleanup, corrections ảnh/probe giữ nguồn cũ; không fullauth/sessionexpiry/Rust/gate mới.
 CP222 đã merge [PR293](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/293)/`4bcabd8`; audit kếCP224.
-[Bước tiếp](docs/PLAN.md#current-order): consumer/validation sau hello, không lặp control đã đo.
+[Thứ tự hiện hành](docs/PLAN.md#current-order); không lặp control đã đo.
 
 **CP222: hai KR cùng service đã bind hai identity/session riêng; duplicate account bị native từ chối.**
 [Contract/giới hạn](docs/PROTOCOL.md#auth-two-actual), [bốn run/hash](docs/evidence/login-runtime/README.md#cp222):
@@ -42,7 +51,7 @@ R3 native0/C2S6 đúng1/2/echo/actual67 cảhai,2CA/2wineserver/2netns/PCAP/8s+h
 ownerA giữ nguyên. Hai run denial ban đầu giữ raw; suffix25 có biến môi trường, parser profile mới ghi design rõ.
 498raw đã kiểm/seal/cleanup; chưa fullauth/healthyEOFdenial/Rust/gate mới. CP220–221 đã merge
 [PR292](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/292)/`f5caefb`; audit kếCP224.
-[Bước tiếp](docs/PLAN.md#current-order): đảo token giữa endpoint, không lặp positive hoặc duplicate đã đo.
+[Thứ tự hiện hành](docs/PLAN.md#current-order); control đảo endpoint đã có ở CP223.
 
 **CP221: A/B đã đi qua native đúng identity; wrong-binding TCP giữ lease/owner.**
 [Contract/giới hạn](docs/PROTOCOL.md#auth-two-account), [run/hash](docs/evidence/login-runtime/README.md#cp221):
