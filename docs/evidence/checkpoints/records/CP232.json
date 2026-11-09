@@ -1,0 +1,285 @@
+{
+  "id": "CP232",
+  "previous": "CP231",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T07:31:48.604332+00:00",
+  "context_commit": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M2partial/KRE-074: port known diagnosticlocalID1/KRLocal→auth0/channel/sảnh/own291 onRust withstagechecks and independentnativeproducer/render/wireevidence; keep2actualroom/barrier/lifecycle missing; periodicAUD067.",
+  "scope": "Rustprofile/stage implementation only/knownKRcontractsCP058183186 andM1;no newnativebody/SDKgraph/clientpatch/fullauth/DB/roomimplementation.3runs91raw/R1prelistenfailure/R2localbuildpositive/R3rootbuildpositive,7Rusttests/14M1TCPregression/manualAUD067through232.",
+  "artifacts": [
+    {
+      "name": "NativeKR00967originalunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "e9WinecopyM2",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "RustM2rootnative-testedbinary",
+      "sha256": "6d758286c51025a05acf25b4b4d3ff2ebc4ca119dc8471e74c8af58f03f7dde6"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/lobby.rs/typedstage;lib.rs/validatedpinnedprofile+local_lobby_connection;tools/export_rust_profile.py/opt-inexistingownbody128/configpinonly.",
+    "R3native:63f932b11040d5d584b7c95dfee0232079d0e0992bb848cc381fc461cbaa0990/56.41411837s/47raw/rootbinary6d758286.../auth137full/291128/nameKRLocal/personalrenderguard1/PCAP160/hold9.362070214s/cleanup0",
+    "R1startup633a845c1d53a9c096059412134e0f8c8526753176bfc100a6e10829d8030992/6raw/no client;R2stagingd62bc2d832a29fba7f1aca07e81d25d8216c5485de7b803725a5aa0f68210254/38raw/positive/separatebuildhash.",
+    "AUD067periodicthrough232/manualREADME→PLAN→PROTOCOL→RESEARCH→evidence/code/raw;nextCP236/oldAUD066unchanged."
+  ],
+  "findings": [
+    {
+      "summary": "Rustopt-inlocal-lobby profile keepsmeasuredraw/header/body/seqopaque and verifiesallpins/opcodes/sizes beforebind. Flowchecks shape/order/diagnosticID-namebeforeadvance, two newstageidentitynegative tests and14M1kernelTCPregressionpassed. No credentialverification/accountownership/fullM2claim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-local-lobby",
+      "evidence": [
+        "RUST232-00041",
+        "RUST232-00042",
+        "RUST232-00207",
+        "RUST232-00221"
+      ],
+      "limits": "M2partialoneactualdiagnosticID1/namefixed, notcredentialverification/accountownership/twoactual/fixedroom/ownslot/host/Ready/loadingbarrier/Backrejoin/Battle/UDP/DB/fullservice/production. First2WCP/3login/4channel globalarrivalmapping lab-only, mustexplicitbindbefore2actual. No newbinaryRE/assumedfieldsemantics. 3runs91raw/freeze/ownedcleanup0;AUD067next236/8WIPbyteexact/reviewwaivednotapproved/Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ActualKR00967/e9/WineonRust reachesauth0/global0/137fullerrors0→netinfo15/flags62/redirect7→newchannel17/67/24191/14/291full128/nameKRLocal/personalrenderguard1/UI normalLobby. R3rootbinary/PCAP160/9exactreplyframes/allactualC2Slogjoins/9.362shold, notprocessalive/logonly.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-local-lobby",
+      "evidence": [
+        "RUST232-00345",
+        "RUST232-00344"
+      ],
+      "limits": "M2partialoneactualdiagnosticID1/namefixed, notcredentialverification/accountownership/twoactual/fixedroom/ownslot/host/Ready/loadingbarrier/Backrejoin/Battle/UDP/DB/fullservice/production. First2WCP/3login/4channel globalarrivalmapping lab-only, mustexplicitbindbefore2actual. No newbinaryRE/assumedfieldsemantics. 3runs91raw/freeze/ownedcleanup0;AUD067next236/8WIPbyteexact/reviewwaivednotapproved/Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R1profilevalidatornetinfo18 was wrongdeclaration againstexistingKRfixture15;prelistenfail6raw/no clientkept. R2declarationonlyfix38rawpositive/localbuild; R3rootbuilddifferentSHApositive47raw, hashesnotconflated. All91rawfrozen/seal/cleanup, exactinputversionretention/exporterconfigparitykept.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-local-lobby",
+      "evidence": [
+        "RUST232-00179",
+        "RUST232-00270",
+        "RUST232-00345",
+        "RUST232-00287",
+        "RUST232-00044"
+      ],
+      "limits": "M2partialoneactualdiagnosticID1/namefixed, notcredentialverification/accountownership/twoactual/fixedroom/ownslot/host/Ready/loadingbarrier/Backrejoin/Battle/UDP/DB/fullservice/production. First2WCP/3login/4channel globalarrivalmapping lab-only, mustexplicitbindbefore2actual. No newbinaryRE/assumedfieldsemantics. 3runs91raw/freeze/ownedcleanup0;AUD067next236/8WIPbyteexact/reviewwaivednotapproved/Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ManualAUD067periodicthrough232 reconcilesCP229232/privatevsproduction/ownerimplementation/capture-vs-native/diagnosticidentity-vs-auth/staging-vs-rootbinary. Historicalplanning-onlyphraseslabeledCP213;M0/M1narrowpassed andM2partial distinct. CP231PR302mergebc55356/8WIPbyteexact/#14/#285OPEN/next236.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-local-lobby",
+      "evidence": [
+        "RUST232-00045",
+        "RUST232-00034"
+      ],
+      "limits": "M2partialoneactualdiagnosticID1/namefixed, notcredentialverification/accountownership/twoactual/fixedroom/ownslot/host/Ready/loadingbarrier/Backrejoin/Battle/UDP/DB/fullservice/production. First2WCP/3login/4channel globalarrivalmapping lab-only, mustexplicitbindbefore2actual. No newbinaryRE/assumedfieldsemantics. 3runs91raw/freeze/ownedcleanup0;AUD067next236/8WIPbyteexact/reviewwaivednotapproved/Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt-clippy/7tests/lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST232-00207",
+        "RUST232-00206",
+        "RUST232-00205"
+      ],
+      "limits": "5wire(retainednativevsdesignvectors)+2policystage/identitycases; notnativeproof."
+    },
+    {
+      "check": "M1defaultprofile14kernelTCPregression/newconfigexporterparity",
+      "result": "pass",
+      "evidence": [
+        "RUST232-00221",
+        "RUST232-00287"
+      ],
+      "limits": "Kernelpolicy/configparity notnativeKRauthority."
+    },
+    {
+      "check": "M2R1fixtureprofilevalidation",
+      "result": "fail",
+      "evidence": [
+        "RUST232-00179"
+      ],
+      "limits": "Wrongopcode18vs15/prelisten/no client/6raw;knownbytesfixnotREblocker."
+    },
+    {
+      "check": "M2singleactualdiagnosticidentity/channel/sảnh/291native-read-render/PCAP/UI",
+      "result": "pass",
+      "evidence": [
+        "RUST232-00270",
+        "RUST232-00345",
+        "RUST232-00344"
+      ],
+      "limits": "PartialM2singleKRLocal/nofullauthentication/twoactualroom/barrier/lifecycle."
+    },
+    {
+      "check": "ManualAUD067/91raw/freeze/cleanup/inputretention/WIP/docs-catalog-anchors",
+      "result": "pass",
+      "evidence": [
+        "RUST232-00045",
+        "RUST232-00034",
+        "RUST232-00013",
+        "RUST232-00012"
+      ],
+      "limits": "Fullrequirelocal/history/exactPRheadrequired;waivednotapproved."
+    },
+    {
+      "check": "FullM2twoactualroom/barrier/Back-rejoin/fullauthDB/production",
+      "result": "not_run",
+      "evidence": [
+        "RUST232-00032"
+      ],
+      "limits": "Nextknowncontractport, no broadRE/fullM2claim."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP232-rust-local-lobby.json",
+      "bytes": 90732,
+      "sha256": "c9b147dd572ef585f97775685c948f4ae52b83accb7250d5a91ce660a0e3701d",
+      "count": 351
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rustopt-infixedlocalidentity/channel/sảnh/291 withtypedstage/profilepins.",
+      "Native auth137/291128/personalrender/UIKRLocal/PCAP160/9.362hold onfinalrootbinary;3runs91rawincludingstartupfailure.",
+      "7Rusttests/14M1TCPregression/configexporterparity/manualAUD067through232next236."
+    ],
+    "corrected": [
+      "R1netinfo18declarationwrongagainstknown15;prelistenfailkept/newR2correctswithoutRE.",
+      "Stagingbinaryhash differsrootbuild;nativeR3pinsactualrootartifact.",
+      "Historicalplanning-onlyphrasesnowexplicitCP213history;M0M1accepted≠fullservice/M2complete."
+    ],
+    "superseded": [
+      "CP231nextlocalidentity/channel/sảnh nowmeasuredsingleactual; nexttwoactualbindings/fixedroom/barrier/lifecycle, no repeatedsingleidentityRE."
+    ]
+  },
+  "blockers": [
+    "M2twoactualexplicitbindings/fixedroom/ownslot-host/Ready/loadingbarrier/Back-rejoin/lifecycle notportedyet.",
+    "Fixedsingleidentity/wcp-arrivalmapping notaccountauth/production/generalroom;fullauthDB/BattleUDP notaccepted.",
+    "Authsameprocesspostchannel fatalCP224/before17receiverCP220 separate/noSDKrepeatwithoutimplementationblocker;8WIPunmerged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PerPLANcontinueM2twoidentity/explicitendpoint-session-stagebindings/fixedroom fromknowncurrentAB291/818687106110/barrier/lifecycle. Native2actualownIDs-names-slots/stage-version-identitynegative/hostBack/rejoin/Ready/missingACK;do notrepeatknownsinglelocalidentity/broadRE. NextauditCP236.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T07:31:48.604332+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/Rustprofile-stageport/native137-291read-render-PCAP-UI/manualperiodicAUD067/selfcheck;waivednotapproved;exactPRheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "docs/evidence/rust-service/local-lobby.json",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP232Rustsingleidentity-sảnh/nativeproof/corrections/M2partial/next2actual/AUD067next236/catalog/issues andhistoricalplanninglabels syncedbeforecomplete;oldcompleteimmutable."
+    }
+  ]
+}

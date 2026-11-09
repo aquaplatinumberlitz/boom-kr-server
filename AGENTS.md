@@ -21,7 +21,7 @@ Bắt đầu M0→M1 ở `rust/` cùng repo, hai crate kr-wire/kr-service theo [
 Không chờ fullauth/generalroom hoặc mở thêm broadRE trước codec/connection đã đủ contract; chỉ RE discrepancy/gap
 chặn implementation/nghiệm thu. Không nhập scope/wire/authority của boom-rs hoặc triển khai giả thuyết như confirmed.
 
-Mọi code/docs/tool mới thuộc repo này: `server/`, `tools/`, `docs/`. Không tiếp tục ghi bản tương ứng
+Mọi code/docs/tool mới thuộc repo này: `rust/`, `server/`, `tools/`, `docs/`. Không tiếp tục ghi bản tương ứng
 vào boom-rs, boom-re hoặc boomkr-re. Không nhập nguyên code legacy; dùng làm reference có provenance.
 
 ## Quyền và phạm vi
@@ -98,6 +98,9 @@ Docs/checkpoint: chạy python3 tools/check_docs.py,python3 tools/check_checkpoi
 --require-history và git diff --check. Thiếu raw/pending/unsynced phải báo rõ;checker không tự xác nhận
 ngữ nghĩa hoặc đóng gate.
 Tool/codec/server: chạy kiểm phù hợp hành vi thay đổi; không mặc định phải build client Rust cũ.
+Rust server: `cargo fmt --manifest-path rust/Cargo.toml --all --check`, `cargo clippy --manifest-path rust/Cargo.toml
+--workspace --all-targets --locked -- -D warnings`, `cargo test --manifest-path rust/Cargo.toml --workspace --locked`;
+locked build/binary hash và native acceptance đúng lát cắt trước tuyên bố tương thích. Toolchain/lockfile giữ pin.
 CI/build server hiện chỉ Linux. Theo yêu cầu26/10, ưu tiên Wine cho bản copy unpack/patch đã đo;
 Theo [chỉ đạo chủ dự án](docs/evidence/owner-directives/wine-accepted.json), Wine được chấp nhận làm môi trường
 nghiệm thu thay Windows thật cho project; không yêu cầu WindowsVM/máyWindows hoặc chạy lại các gate

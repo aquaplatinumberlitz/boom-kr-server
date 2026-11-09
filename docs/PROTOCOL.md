@@ -3172,6 +3172,46 @@ Tokio/serdeJSON/SHA-256 dependencies có lý do tương ứng I/O-config/log-inp
 chỉ RE discrepancy chặn port. Quota/rate/fairness/DB/UDP/load/SLO/internet/production chưa nghiệm thu. Audit kếCP232.
 **Internet thật chưa kiểm**.
 
+<a id="rust-local-lobby"></a>
+### Rust diagnostic identity → channel → sảnh → profile291 — CP232
+
+[Code/cách chạy](../rust/README.md), [raw/hash](evidence/rust-service/README.md#cp232),
+[metadata](evidence/rust-service/local-lobby.json). Đây là **M2partial**, không fullM2 hoặc fullauthentication.
+Reuse CP058 auth137, CP183/184291 producer/render, CP185/186 channel/sảnh và CP231 foundation;
+Python `own_profile`/`probe_service`/47fixturepins giữ reference, không RE nativefunction mới/portserverVN.
+
+**`design` implementation:** opt-in `diagnostic_local_lobby`, mutually exclusive với error-only M1profile.
+Typed Flow stage Login→Info→Redirect→LoginDone và Channel→Ready→Lobby; kiểm shape trước advance,
+wrongstage/duplicate không advance. Fixed identity1/KRLocal/name/ID trong C2S6 là diagnostic binding,
+login input chỉ shape/tokenlength branch known, **không xác thực credential/provider/account**.
+Hai WCPtransports đầu/transport3login/4channel là lab recipe single-client, chưa dùng cho2actual hoặc production.
+
+Pin raw/header/body/seq của auth4/43, netinfo15/46, flags62/49, redirect7/52, channel17/43,
+ready241/46, list91/49, channel14/52;291body128 từ measuredzero-profile builder, opaqueheader từplayer106.
+Rust load/check every size/SHA/CRC/opcode/bodylength trước bind, mỗi connection S2Cseq43+3n riêng;
+không replay nguyên frame khi seq đổi hoặc diễn giải field unknown. Ancillary knownshapes ignore có budget256,
+không silentlygrant unknown request. Runtime chỉ response nhỏ/bounded foundation M1 giữ; chưa genericwriterqueue/load.
+
+**`kr_runtime/confirmed` hai build location:** stagingR2 và rootbinaryR3 đều actualKR/e9copy/Wine10.0,
+privateuser-net-mount-PID/lo-only/noIPv4route/files-onlyNSS/inheritedglobalreset, không patch mới/callfunction.
+Native auth result0/global0, reader137/137/errors0; actual9→netinfo/flags,5→redirect, newchannel6→17,
+actual67→241/91/14/291. Own291 producer128/128/errors0, storednameKRLocal, personalrenderguard1/matchingwidget
+và UI normalLobby KRLocal/level0/EXP0/sixemptycards. FinalR3 PCAP160record/9exactS2Creplies và mọiactualC2S
+seq/op/len khớp Rustlog, hold9.362070214s sau nativeprofile/render. Không suy socketalive hoặc login-result thànhfullauth.
+Rootbinary SHA`6d758286c51025a05acf25b4b4d3ff2ebc4ca119dc8471e74c8af58f03f7dde6` là bản final đã chạy;
+staging buildpath khác cho hash khác, giữ pin riêng, không gán stagingbinarySHA cho rootbuild.
+
+**Control/correction:** R1hardcoded netinfoopcode18 trong validator nhưng fixtureKRpin là15 (đã có trongsourcefirst).
+Fail beforelisten/service-ready/chưa launchclient;0.22990233s/6raw, không clientfailure/REblocker. NewR2 sửa đúng
+declaration theo knownbytes, không fixture/opcodeguess;38raw positive. R3rootbinary47raw positive; tổng3run91raw/
+frozen/seal/ownedcleanup0.7Rusttests (5wireoracle/designregression +2state/identitynegatives) và14kernelTCP M1
+regression pass; nativeproof riêng. Inputversioncopies/raw/control preserved, no source/config change trongrun.
+
+M2 còn hai actual identities/fixedroom/ownslot/host/Ready/loadingbarrier/Back-rejoin và negative lifecycle trênRust;
+chưa Battle/UDP/DB/accountownership/fullauth/roomregistry/fullservice/production. [PLAN](PLAN.md#current-order)
+tiếp explicitdiagnostic bindings trước2actual, không mở authSDK/generalroom/broadRE. Pythonserving/RE/reference
+và8WIP giữ; CP231PR302mergedbc55356, AUD067periodicqua232/kế236. Internet thật chưa kiểm.
+
 <a id="auth-profile"></a>
 ### Success/profile count1 đã đọc sạch trên copy — CP058
 

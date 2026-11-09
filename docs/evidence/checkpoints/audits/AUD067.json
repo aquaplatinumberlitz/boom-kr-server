@@ -1,0 +1,132 @@
+{
+  "id": "AUD067",
+  "trigger": "periodic",
+  "completed_through": "CP232",
+  "recorded_utc": "2026-11-09T07:27:40.060739+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/README.md",
+    "docs/evidence/rust-service/foundation.json",
+    "docs/evidence/rust-service/local-lobby.json",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "AGENTS.md",
+    "rust/README.md",
+    "rust/crates/kr-wire/src/lib.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/lobby.rs",
+    "rust/crates/kr-wire/tests/native_vectors.rs",
+    "tools/export_rust_profile.py",
+    "tools/test_rust_foundation.py",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/checkpoints/audits/AUD066.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "local/research/codex/rust-m1-delivery-r1/manual-acceptance.json",
+    "local/research/codex/rust-m1-r1/native-error-retry/failure-review.json",
+    "local/research/codex/rust-m1-r2/native-error-retry/capture-limitation.json",
+    "local/research/codex/rust-m1-r3/verification.json",
+    "local/research/codex/rust-m1-r3/ui-observer-review.json",
+    "local/research/codex/rust-m2-r1/native-local-lobby/failure-review.json",
+    "local/research/codex/rust-m2-r2/verification.json",
+    "local/research/codex/rust-m2-r3/verification.json",
+    "local/research/codex/rust-m2-r3/ui-review.json",
+    "local/research/codex/rust-m2-r3/exporter-reproduction.json",
+    "local/research/codex/rust-m2-r3/native-local-lobby/cycles/client.log",
+    "local/research/codex/rust-m2-r3/native-local-lobby/cycles/rust-events.jsonl",
+    "local/research/codex/rust-m2-r3/native-local-lobby/cycles/screen-10.png"
+  ],
+  "method": "Manual selective README→PLAN→PROTOCOL→RESEARCH→evidence/code/raw review CP229–232. Relevantprotocolsections roommembership/cleanup and Rustfoundation/local-lobby only; no claim rereading allhistoricalraw. Compared observed nativecursor/handler/result/name/render markers, PCAPstreamjoins, source/binaryconfigpins, failurecorrections and manuallyviewed nativeUI. State/identity tests are policyregression, fixedcapturednativevectors independentoracle, nativeRust path independent proof. Checker never semanticapproval. Periodiccadence unchanged/oldAUD066 immutable.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Historical CP213 planning-only statements in evidence/RESEARCH could still read as current prohibitions; PLAN generic noRustgate wording conflicted with acceptedM0/M1.",
+      "correction": "Label CP213survey ashistory, link ownerimplementation09/11/currentPLAN; M0/M1narrowaccepted/CP232M2partial/fullserviceopen. AGENTS explicitly allowsrust/ andrequiredcargo checks. Ownerdirectiveoldrecord unchanged.",
+      "fixed_in": [
+        "AGENTS.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "docs/evidence/rust-service/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "CP229/230 private registry/runtimecleanup could be mistaken for production roomintegration or dependency blocking Rust.",
+      "correction": "Keep source/policy/native2actor projection vs productionglobalroom limits. Sharedcleanup107base6→rewind0→UI1/IDclear proven; hostpostgetter unobservedbudget20/110UIproof separate. Roommodule/broadRE notM1dependency; owneropenedRust andM1nowdelivered.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "FirstRustM1 run emittederror1 but closed60 immediately; commentary initially overclaimed clientread.",
+      "correction": "R1 no nativeK2result1 before EOFfatal53raw, preserveFAIL. PortCP181known60/15unansweredpolicy. R2native2errorspositivebutcapturepartial63raw; R3samebinary/KRportfilter108recordcomplete54raw/native2results/PID144/seqreset/9.517hold/UI. Mode0packetfields excluded, GDBteardownerror limited, no healthydebuggerclaim.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/foundation.json",
+        "docs/evidence/rust-service/README.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Loginresult0/name291 could imply authentication/accountownership/fullM2completion; fixedarrivalmapping could be reused for2actual without binding.",
+      "correction": "CP232 fixedID1/KRLocal/projectedauth0/channel/sảnh/291producer128/personalrender/UI only. Login checks knownshape notcredential; first2WCP/3login/4channel labmapping only. M2stillmissing2actual/fixedroom/barrier/Back-rejoin; nextexplicitendpoint-session-stage bindings, sourceIPnotauth. DB/fullauth/generalroomnotdependencies.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "rust/README.md",
+        "docs/evidence/rust-service/local-lobby.json"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "M2firstprofilevalidator guessednetinfo18 and stagingbuildhash could be assigned to finalrootbinary.",
+      "correction": "KnownpinnedKRopcode15 correctsdeclaration onnewR2;R1prelistenfailure6raw/no clientkept. R2staging38raw positive vs R3finalroot47raw positive, eachSHA/inputpins separate; rootSHA6d758286... is actualnative-testedartifact. Exporter reproducesnativeconfigexactly; unknownheaders/body remainopaque/pinned.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/local-lobby.json",
+        "docs/evidence/rust-service/README.md",
+        "tools/export_rust_profile.py"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "Testquantity/rawhash/checkpointcould replace independentnative proof or hide scope/acceptance differences.",
+      "correction": "5wiretests retained2nativecapture+plaintextvectors separate generatedwrap/maxframepolicyregressions;2Flowstage/identitytests and14kernelTCPregression separate. Nativeauth137/291128/render/PCAP160/9.362hold/UI are scopedcompatibilityproof.7testsnotfullcodec/auth/DB/gameplaygate. Inputretention keeps versionbytes; no midrunmutation.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/PLAN.md",
+        "docs/evidence/rust-service/README.md",
+        "docs/evidence/rust-service/local-lobby.json"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "Auditcounter/PRstate/WIPprovenance could drift at transition to Rust.",
+      "correction": "CP231PR302mergebc55356 verifiedexactmain-tree/WIPhashes;8WIPbyteexact/excluded. AUD067periodicthrough232/next236/noreset; #14/#285OPEN, completehistory/AUD066/rawimmutable. K6cWAN/K7scopedunchanged/Internet thật chưa kiểm separatebacklog.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/checkpoints/audits/AUD067.json",
+        "docs/evidence/checkpoints/manifest.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "M2explicit2identity/connection-stagebindings/fixedroom/ownslot/host/Ready/loadingbarrier/Back-rejoin/negative lifecycle onRust missing; continueknowncontracts,REonlyportblocker.",
+    "Fullauthentication/DB/sessionexpiry-revoke/accountresume/matchrestore/generalroom/inventory/rewards/gameplay/UDP/production/load-SLO notaccepted; M0/M1 narrowcomplete notfullservice.",
+    "M1ancillary semantics/header/modegrammar remainunknown; diagnosticarrivalmapping notproductionauth; oldauthnativefatal/before17receiverblockers separate/no repeatedSDKgraph.",
+    "Internet thật chưa kiểm/ISP/CGNAT remainsseparatebacklog, notimplicitK6c/K7dependency; Pythonserving/RE/reference andeightWIP retained."
+  ]
+}
