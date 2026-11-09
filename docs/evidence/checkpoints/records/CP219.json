@@ -1,0 +1,260 @@
+{
+  "id": "CP219",
+  "previous": "CP218",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T00:45:01.123309+00:00",
+  "context_commit": "f9f48d275625cdb92df06349f5a72194b8cd5c20",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "NEXT-AUTH-CHANNEL-EOF: doesfaultrequireexpiry/revoke/nonzeroecho,andwhatnativeoperand/receivervtableleadsintoRTTIdataafterEOFbefore17?",
+  "scope": "4relatedsealedWinecontrols/readonlyfaultstack+3dispatchsites,source/cachefirstandboundedhashlockedvtable/callsitecomparison. MatchedvalidclaimandbaselinezeroEOFcontrolsplusrawreturn/operandprovenance; lifecycleFAILpreserved. No sourceproduction/Rustbehaviorchange orRTTIpatch.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "Matchedvalidclaim b78fd4a8d948b951b6c41104ccf59be0c56a29bcdb258ae178a1d40270e22744/40.019680433s; baselinezero84ec751a9f8b2145b176879f70b4088cabc40f43db763a6f98efd9d0964f9b32/39.941851375s;47raweach/sealedcleanup0.",
+    "Stack336aea061f56510ed59955a54f74677e1662003f3cdcfa75355730ed006cefa6/39.374265785s;dispatch8bcb0a39d35da4c8a8e8b7d8ff5aca36c8b3213fa5580b9d830abf92ff83e4a0/39.127362807s;47raweach;allnativeSIGSEGV17C7F4C.",
+    "Nativepost6sites1257893/125789B/12578AC:actualthisvtable16ECAA8+50→17C7F40→localEBP-60→call;rawstackreturn12578AF/backtraceEBPreturn122EA12. ActualthisCOL17C7F2C/typenameCObject;targetRTTICWin32Heaponlydataidentity."
+  ],
+  "findings": [
+    {
+      "summary": "Matched10svalidleaseclaimthenintentionalclosebefore17reproducesfault;C2S6framebyteidenticaltoexpiredCP218. Baselinefield36zero/noadmissionpolicyalsonativeauth0/6echo0→intentionalclose→samefault. Expiry/revoke/nonzeroecho notneededforreproductioninobservedrecipes; zeroadapter/authportdeltaexplicit.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-eof-dispatch",
+      "evidence": [
+        "AUTH219-00020",
+        "AUTH219-00080",
+        "AUTH219-00377"
+      ],
+      "limits": "Wine10.0/copy4b/Profile47/isolatedloopback/privateadapter/publicdummy32token/inheritedofflineglobalreset. Fourruns/188raw/sourcefrozen/ownedcleanup0;early39–40s,nativehealthFAIL. Callbackoldsnaps preauth;entry1257360nohitafter6. ActualthisCObject/vtable+50targetRTTI17C7F40notheap/SDK/ABI/Winerootcauseproof; receiverselection/lifetimeunknown. No clientpatch/gracefulerror/fullauth/sessionexpiry/restartfence/DB/Rust/productionintegration/gateclosure. Existing8WIPunchanged/CP217–218recordsimmutable. Reviewwaived;AUD063through216/next220. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Rawfaultstacktop12578AFsupplementsomissioninbacktrace. Native3postsend6snapshotsreadthisvtable16ECAA8+50=17C7F40,storeEBP-60andcall12578AC. Returnsitebytesmatchnative/modO/copy; EIP17C7F4Cis12bytesintotarget,notnecessarilyinitialbranchtarget.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-eof-dispatch",
+      "evidence": [
+        "AUTH219-00015",
+        "AUTH219-00002",
+        "AUTH219-00317",
+        "AUTH219-00258"
+      ],
+      "limits": "Wine10.0/copy4b/Profile47/isolatedloopback/privateadapter/publicdummy32token/inheritedofflineglobalreset. Fourruns/188raw/sourcefrozen/ownedcleanup0;early39–40s,nativehealthFAIL. Callbackoldsnaps preauth;entry1257360nohitafter6. ActualthisCObject/vtable+50targetRTTI17C7F40notheap/SDK/ABI/Winerootcauseproof; receiverselection/lifetimeunknown. No clientpatch/gracefulerror/fullauth/sessionexpiry/restartfence/DB/Rust/productionintegration/gateclosure. Existing8WIPunchanged/CP217–218recordsimmutable. Reviewwaived;AUD063through216/next220. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Actualfaultthisvtable16ECAA8/COL17C7F2C/RTTICObjectisdistinctfromCWin32HeapnameattargetRTTI. Runtimevtable96matchescopy; whyreceiverselected/lifetime/expectedcallbackunknown. No vtablepatch/heapSDKABIWinecause inference.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/PROTOCOL.md#auth-eof-dispatch",
+      "evidence": [
+        "AUTH219-00016",
+        "AUTH219-00015"
+      ],
+      "limits": "Wine10.0/copy4b/Profile47/isolatedloopback/privateadapter/publicdummy32token/inheritedofflineglobalreset. Fourruns/188raw/sourcefrozen/ownedcleanup0;early39–40s,nativehealthFAIL. Callbackoldsnaps preauth;entry1257360nohitafter6. ActualthisCObject/vtable+50targetRTTI17C7F40notheap/SDK/ABI/Winerootcauseproof; receiverselection/lifetimeunknown. No clientpatch/gracefulerror/fullauth/sessionexpiry/restartfence/DB/Rust/productionintegration/gateclosure. Existing8WIPunchanged/CP217–218recordsimmutable. Reviewwaived;AUD063through216/next220. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Oldcallbackfirstsnapshotsallpreauthreply;notprefaultproof. Knownsend6returnmarkerobservedbut1257360entrynotobservedafter6. Staticcontextbeforeactualcallsiteonlycandidateforgetter13AEBE0→receiverselection,notprotectedbodysemantics.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-eof-dispatch",
+      "evidence": [
+        "AUTH219-00020",
+        "AUTH219-00015",
+        "AUTH219-00003"
+      ],
+      "limits": "Wine10.0/copy4b/Profile47/isolatedloopback/privateadapter/publicdummy32token/inheritedofflineglobalreset. Fourruns/188raw/sourcefrozen/ownedcleanup0;early39–40s,nativehealthFAIL. Callbackoldsnaps preauth;entry1257360nohitafter6. ActualthisCObject/vtable+50targetRTTI17C7F40notheap/SDK/ABI/Winerootcauseproof; receiverselection/lifetimeunknown. No clientpatch/gracefulerror/fullauth/sessionexpiry/restartfence/DB/Rust/productionintegration/gateclosure. Existing8WIPunchanged/CP217–218recordsimmutable. Reviewwaived;AUD063through216/next220. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "4runrawhashes188/sourcefrozen/cleanup0verified,buteveryclientfaults/earlyend39–40s. Harnessexit0andpolicydenialnotnativehealthacceptance. CP217–218mergedPR290,recordshashesunchanged;scopedgatesunchanged,issues14/285open,8WIPpreserved/noRust.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-eof-dispatch",
+      "evidence": [
+        "AUTH219-00017",
+        "AUTH219-00506",
+        "AUTH219-00509"
+      ],
+      "limits": "Wine10.0/copy4b/Profile47/isolatedloopback/privateadapter/publicdummy32token/inheritedofflineglobalreset. Fourruns/188raw/sourcefrozen/ownedcleanup0;early39–40s,nativehealthFAIL. Callbackoldsnaps preauth;entry1257360nohitafter6. ActualthisCObject/vtable+50targetRTTI17C7F40notheap/SDK/ABI/Winerootcauseproof; receiverselection/lifetimeunknown. No clientpatch/gracefulerror/fullauth/sessionexpiry/restartfence/DB/Rust/productionintegration/gateclosure. Existing8WIPunchanged/CP217–218recordsimmutable. Reviewwaived;AUD063through216/next220. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "188rawhashes/frozeninputs/cleanup andnativeauth0/actual6/matchedvalidclaim/zeroecho controls",
+      "result": "pass",
+      "evidence": [
+        "AUTH219-00020"
+      ],
+      "limits": "Reproductioncontrolsnothealthynegativeacceptance."
+    },
+    {
+      "check": "Nativepost6dispatchdataflow/nativecopyparity/rawstackreturn",
+      "result": "pass",
+      "evidence": [
+        "AUTH219-00015",
+        "AUTH219-00002",
+        "AUTH219-00016"
+      ],
+      "limits": "Receiverselection/rootcauseunknown;contextbeforeknowncall remainscandidate."
+    },
+    {
+      "check": "HealthyclientpostEOF/expired-revokednegative lifecycle",
+      "result": "fail",
+      "evidence": [
+        "AUTH219-00020"
+      ],
+      "limits": "All4SIGSEGV17C7F4C/earlyends;no gateorfullauthclaim."
+    },
+    {
+      "check": "Docs/catalog/changedlinks/priorrecords/WIP preservation",
+      "result": "pass",
+      "evidence": [
+        "AUTH219-00017",
+        "AUTH219-00500",
+        "AUTH219-00499"
+      ],
+      "limits": "Fullrequire-local/historyprecommitandexactPRheadchecksrequired;waivednotapproved."
+    },
+    {
+      "check": "Receiverselectionfix/gracefulerror/healthynegative/kernelTCPreplay/twoaccountswap/fullauth/Rust",
+      "result": "not_run",
+      "evidence": [
+        "AUTH219-00009"
+      ],
+      "limits": "Nextboundedtestfromactualreceiverdata,notrepeatcontrolsorSDKgraph."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP219-auth-eof-dispatch.json",
+      "bytes": 143456,
+      "sha256": "1159324b3ddb60af0633515485f72eee847617ecfbc932ca24dd639499fdbf93",
+      "count": 522
+    }
+  ],
+  "delta": {
+    "added": [
+      "4relatednativecontrol/stack/dispatchrunswith188rawhashes;validclaimandzeroechoEOFfaultreproduction.",
+      "Nativeactualreceiver/vtable+50/localoperand/12578AC/raw12578AFdispatchprovenance."
+    ],
+    "corrected": [
+      "Backtrace122EA12aloneomitsactualrawtopreturn12578AF; newnativefactsretainedwithoutrewritingCP218.",
+      "Oldcallbackargumentsnapshotsarepreauth,notprefaulttargetproof. Entry1257360notobservedafter6despitesendmarker; no linearprotecteddecode.",
+      "FaultEIP17C7F4Cnotnecessarilyinitialtarget; slot/localtarget17C7F40actualthisRTTICObject,notheaptypenameattarget."
+    ],
+    "superseded": [
+      "Matchedclose/zerofieldcontrolsarenowmeasured; nexttestisreceiverselection,notrepeatreproduction."
+    ]
+  },
+  "blockers": [
+    "NativeEOFnegative-lifecycleFAIL; provenbad-dispatchdataflowbutwhyCObjectreceiverselected/expectedcallback/lifetimeunknown.",
+    "Candidategetter13AEBE0/call1257836→3Bneedsnativeconfirmationbeforeinterpretationorfix; no providergraph/RTTI-vtablepatch.",
+    "Fullaccount/sessionexpiry/restartfence/DB/nativekernelTCPreplay/twoaccountswap/Rustimplementationoutsideevidence;Internet thật chưa kiểm separatebacklog."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PerPLANcachefirstreceiverselection/getter13AEBE0/candidate1257836→3B thenpassivenativereturn/currentthis. No repeatedmatchedzeroEOFcontrols,RTTI-vtablepatch/protectedlinear/SDKgraph.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Keepnativelease-negativelifecycleopenuntilhealthymeasuredroute. KernelTCPreplay/twoidentity/sessionexpiry/restartfence/DBfullauthremainseparateunknown/tasks.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "M0→M1futureimplementationindependentauthRE;planningCP213/PR286alreadydelivered,noRusttreeorbehaviorchangeinCP219.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T00:45:01.123309+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/sourcefirst/4relatedcontrolsandnativeoperandprovenance/manualselfcheck;nativehealthFAILretained. Independentreviewwaivednotapproved;exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP219control/dispatchfactsandlimits/unknownnexttest/canonicalbacklinks synced;priorcompleteCP217–218unchanged/AUD063through216,next220 retained."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP219control/dispatchfactsandlimits/unknownnexttest/canonicalbacklinks synced;priorcompleteCP217–218unchanged/AUD063through216,next220 retained."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP219control/dispatchfactsandlimits/unknownnexttest/canonicalbacklinks synced;priorcompleteCP217–218unchanged/AUD063through216,next220 retained."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP219control/dispatchfactsandlimits/unknownnexttest/canonicalbacklinks synced;priorcompleteCP217–218unchanged/AUD063through216,next220 retained."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP219control/dispatchfactsandlimits/unknownnexttest/canonicalbacklinks synced;priorcompleteCP217–218unchanged/AUD063through216,next220 retained."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP219control/dispatchfactsandlimits/unknownnexttest/canonicalbacklinks synced;priorcompleteCP217–218unchanged/AUD063through216,next220 retained."
+    },
+    {
+      "path": "docs/evidence/login-runtime/README.md",
+      "state": "updated",
+      "reason": "CP219control/dispatchfactsandlimits/unknownnexttest/canonicalbacklinks synced;priorcompleteCP217–218unchanged/AUD063through216,next220 retained."
+    },
+    {
+      "path": "docs/evidence/login-runtime/eof-controls.json",
+      "state": "updated",
+      "reason": "CP219control/dispatchfactsandlimits/unknownnexttest/canonicalbacklinks synced;priorcompleteCP217–218unchanged/AUD063through216,next220 retained."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP219control/dispatchfactsandlimits/unknownnexttest/canonicalbacklinks synced;priorcompleteCP217–218unchanged/AUD063through216,next220 retained."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP219control/dispatchfactsandlimits/unknownnexttest/canonicalbacklinks synced;priorcompleteCP217–218unchanged/AUD063through216,next220 retained."
+    }
+  ]
+}

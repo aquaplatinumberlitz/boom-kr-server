@@ -189,3 +189,31 @@ Initiallineardecode122E9C0 rỗng do boundary; exactE8at122EA0D→1257360 mới 
 CP216 đã mergePR289/af16278/AUD063; recordCP217complete không sửa, CP218 ghi giới hạn/lỗi mới.
 Gộp giao haiCP trong mộtPR; next ởPLAN là focusedEOF/callback trace. Không nânggate/fullauth/Rustclaim.
 Audit kếCP220 giữ nguyên.
+
+<a id="cp219"></a>
+## CP219 — matched/zero EOF control và native dispatch provenance
+
+[Contract/giới hạn](../../PROTOCOL.md#auth-eof-dispatch), [metadata](eof-controls.json),
+[phép thử tiếp](../../RESEARCH.md#rust-service-gaps), [thứ tự](../../PLAN.md#current-order).
+CP217–218 đã merge [PR290](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/290)/`f9f48d2`;
+record complete/raw/audit cũ giữ nguyên. Codex solo/tự kiểm, review waived; audit kế CP220.
+
+| Run | Thay đổi và quan sát | Wall/raw | run.json SHA256 |
+|---|---|---|---|
+| matched-close | Lease hợp lệ10s, cùng echo191720555 như expired; claim/release rồi close trước17; nativeauth0/actual6 rồi cùng SIGSEGV17C7F4C | 40.019680433s/47 | `b78fd4a8d948b951b6c41104ccf59be0c56a29bcdb258ae178a1d40270e22744` |
+| zero-close | Baseline field36=0, không admission policy; intentional close sau6; nativeauth0/actual6 rồi cùng SIGSEGV17C7F4C | 39.941851375s/47 | `84ec751a9f8b2145b176879f70b4088cabc40f43db763a6f98efd9d0964f9b32` |
+| zero-stack | Giữ zero service/input; thêm post-send6 entry probe và fault stack0x300; nativeauth0/actual6 rồi cùng SIGSEGV17C7F4C | 39.374265785s/47 | `336aea061f56510ed59955a54f74677e1662003f3cdcfa75355730ed006cefa6` |
+| zero-dispatch | Giữ zero service/input; thêm3site dispatch/operand/vtable probe; nativeauth0/actual6 rồi cùng SIGSEGV17C7F4C | 39.127362807s/47 | `8bcb0a39d35da4c8a8e8b7d8ff5aca36c8b3213fa5580b9d830abf92ff83e4a0` |
+
+Raw root theo `cases[].raw_root` trong metadata; mỗi root có `recipe.json`, `runtime-preflight.json`,
+`raw-seal.json`, `cycles/client.log`, `service-state.json`, `run.json`, screenshots và ownedcleanup.
+Derived verification/script ở `local/research/codex/auth-channel-eof-analysis-r1/` và
+`local/research/codex/verify_auth_eof_controls.py`, `verify_auth_eof_dispatch.py`.
+Bốn run/188 raw hash kiểm đủ, mọi frozen input vẫn khớp; harnessreturn0/cleanup0 không là health pass.
+Matched frame6 trùng expired byte-exact; no17/native67 chỉ trong cửa sổ run kết thúc sớm.
+Zero baseline đổi adapter/authport nên không gọi toàn wire/input trùng nhau.
+
+Raw stack/source/three post6 snapshots nối vtable+50 → target17C7F40 → local → call12578AC →
+return12578AF → fault17C7F4C; actualthis RTTICObject. Callback snapshots cũ preauth không là prefault,
+protected entry1257360 không hit sau6. Receiver selection/rootcause chưa giải, nativelease-negative
+lifecycle FAIL; không patch/binary/source production hoặc Rust. Không đóng #14/#285/gate.

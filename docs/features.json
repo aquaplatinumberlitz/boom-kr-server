@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP218",
+  "as_of": "CP219",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -421,7 +421,8 @@
           "docs/evidence/login-runtime/README.md#cp215",
           "docs/evidence/login-runtime/README.md#cp216",
           "docs/evidence/login-runtime/README.md#cp217",
-          "docs/evidence/login-runtime/README.md#cp218"
+          "docs/evidence/login-runtime/README.md#cp218",
+          "docs/evidence/login-runtime/README.md#cp219"
         ]
       },
       "coverage": {
@@ -482,7 +483,8 @@
               "docs/evidence/login-runtime/README.md#cp215",
               "docs/evidence/login-runtime/README.md#cp216",
               "docs/evidence/login-runtime/README.md#cp217",
-              "docs/evidence/login-runtime/README.md#cp218"
+              "docs/evidence/login-runtime/README.md#cp218",
+              "docs/PROTOCOL.md#auth-eof-dispatch"
             ]
           },
           "windows_original": {
