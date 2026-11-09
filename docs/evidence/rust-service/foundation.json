@@ -1,0 +1,708 @@
+{
+  "schema": "kre-rust-foundation-v1",
+  "recorded_utc": "2026-11-09T06:56:57.036038+00:00",
+  "baseline": "115c6b885812ff9add0e09bf8c9e8efe2bf5401d",
+  "contract": "docs/PROTOCOL.md#rust-foundation",
+  "research": "docs/RESEARCH.md#rust-service-gaps",
+  "plan": "docs/PLAN.md#current-order",
+  "baseline_inputs": {
+    "baseline_commit": "784a0d892ef45cfb09e10735a44c8a6522c16f29",
+    "archive": {
+      "path": "local/research/codex/rust-m1-r1/python-baseline.tar",
+      "sha256": "a8be64455098fd01c8234c5eca6ccfb28f4f3f4745cdcd6776efc873475301da",
+      "bytes": 1013760
+    },
+    "extracted_source_root": "local/research/codex/rust-m1-r1/rollback",
+    "profile": "local/research/codex/k2-live-stream-r1/profile.json",
+    "fixture_count": 47,
+    "fixtures": [
+      {
+        "name": "bootstrap",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bootstrap-reply-r1.bin",
+        "bytes": 15,
+        "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1",
+        "sequence": null
+      },
+      {
+        "name": "second",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+        "bytes": 317,
+        "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38",
+        "sequence": null
+      },
+      {
+        "name": "auth_A",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-profile-r1/auth-A-final.bin",
+        "bytes": 175,
+        "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7",
+        "sequence": 43
+      },
+      {
+        "name": "auth_B",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-profile-r1/auth-B-final.bin",
+        "bytes": 175,
+        "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774",
+        "sequence": 43
+      },
+      {
+        "name": "auth_C",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-profile-r1/auth-C-final.bin",
+        "bytes": 173,
+        "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a",
+        "sequence": 43
+      },
+      {
+        "name": "roomlist_C",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/room91-session1.bin",
+        "bytes": 88,
+        "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed",
+        "sequence": null
+      },
+      {
+        "name": "join_C",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/reply87-A-session1.bin",
+        "bytes": 45,
+        "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586",
+        "sequence": 55
+      },
+      {
+        "name": "player_C",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/abort-rejoin-r1/C106-slot0-id3.bin",
+        "bytes": 242,
+        "sha256": "5232f9b513e18fa78c6bd15a1c093f2997382e695d8f98398f33f95bede3470f",
+        "sequence": 58
+      },
+      {
+        "name": "slot_C",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/A110-unready.bin",
+        "bytes": 44,
+        "sha256": "979cfad03305717aaaa203643e875d48aa1430a7d8b34ba534c7fb26668c55db",
+        "sequence": 61
+      },
+      {
+        "name": "guest_C",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/abort-rejoin-r1/C-guestB106-chief64.bin",
+        "bytes": 242,
+        "sha256": "baba396be0cc267d0bc54828a1ecc4fff464c51035722ba92650a071bcfb99a4",
+        "sequence": 64
+      },
+      {
+        "name": "ready_C",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/A110-ready.bin",
+        "bytes": 44,
+        "sha256": "2b8c7ae9412c1bee0340587269b1e32af2e3c2117081bc28a331202f8f82d422",
+        "sequence": 100
+      },
+      {
+        "name": "netinfo",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+        "bytes": 69,
+        "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6",
+        "sequence": null
+      },
+      {
+        "name": "flags",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/postwait-r1/flags62-status2.bin",
+        "bytes": 41,
+        "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9",
+        "sequence": null
+      },
+      {
+        "name": "redirect",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/postwait-r1/redirect7-loopback.bin",
+        "bytes": 52,
+        "sha256": "b514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15",
+        "sequence": null
+      },
+      {
+        "name": "channel",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/postwait-r1/channel17-zero-arrays.bin",
+        "bytes": 75,
+        "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37",
+        "sequence": null
+      },
+      {
+        "name": "ready",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/cache-boundary-r1/compressed241.bin",
+        "bytes": 69,
+        "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28",
+        "sequence": 46
+      },
+      {
+        "name": "roomlist_A",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/room-input-r1/room-list91-empty.bin",
+        "bytes": 40,
+        "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e",
+        "sequence": 49
+      },
+      {
+        "name": "roomlist_B",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/room91-session1.bin",
+        "bytes": 88,
+        "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed",
+        "sequence": 49
+      },
+      {
+        "name": "channel_list",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/leave-r1/channel14-kind1.bin",
+        "bytes": 82,
+        "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b",
+        "sequence": null
+      },
+      {
+        "name": "create",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/room-reply-r1/reply86.bin",
+        "bytes": 49,
+        "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2",
+        "sequence": 55
+      },
+      {
+        "name": "join",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/reply87-slot1-session1.bin",
+        "bytes": 45,
+        "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f",
+        "sequence": 55
+      },
+      {
+        "name": "player_A",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/start-reply-r1/player106-id1-team0.bin",
+        "bytes": 242,
+        "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934",
+        "sequence": 58
+      },
+      {
+        "name": "player_B",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/B106-unready.bin",
+        "bytes": 242,
+        "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08",
+        "sequence": 58
+      },
+      {
+        "name": "slot_A",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/room-player-r1/slot110-team0.bin",
+        "bytes": 44,
+        "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9",
+        "sequence": 61
+      },
+      {
+        "name": "slot_B",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/B110-unready.bin",
+        "bytes": 44,
+        "sha256": "eed1d08df651766528969f1c20f0ddfdd944a47368ce9ca66635852e96d5bb27",
+        "sequence": 61
+      },
+      {
+        "name": "guest_A",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/A-guest106-unready.bin",
+        "bytes": 242,
+        "sha256": "16408678ed4d2ddd219483f9bb6fae35795c8c5ee1a43f4d1b0d5873b3c0a290",
+        "sequence": 64
+      },
+      {
+        "name": "guest_B",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/peer-duo-r1/B-guest106.bin",
+        "bytes": 242,
+        "sha256": "0bee9221a7efc770b9f5b57bbc504e023163e6f78552ca460edc9636dd76a252",
+        "sequence": 64
+      },
+      {
+        "name": "table",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/cache-boundary-r1/compressed238.bin",
+        "bytes": 110,
+        "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727",
+        "sequence": 67
+      },
+      {
+        "name": "map",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bomb-position-r1/exvillage117.bin",
+        "bytes": 46,
+        "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc",
+        "sequence": 70
+      },
+      {
+        "name": "floor",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/basic-battle-r1/basic582.bin",
+        "bytes": 84,
+        "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63",
+        "sequence": 73
+      },
+      {
+        "name": "start",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bomb-position-r1/exvillage121.bin",
+        "bytes": 167,
+        "sha256": "2e6319e9e5eb55a9ad6594710ec4aeaa749b6f8eee72a1e0016beb44885a90c0",
+        "sequence": 73
+      },
+      {
+        "name": "go",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/round-go-r1/go197-time30.bin",
+        "bytes": 52,
+        "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881",
+        "sequence": 76
+      },
+      {
+        "name": "play",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bomb-position-r1/exvillage196.bin",
+        "bytes": 45,
+        "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde",
+        "sequence": 79
+      },
+      {
+        "name": "peer",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/peer-duo-r1/peer153-replace.bin",
+        "bytes": 135,
+        "sha256": "e6eb2fe741c021ab2c1ac82c84a42a5e4d936e0a2e8a80cb0c4cfaac326589fa",
+        "sequence": 82
+      },
+      {
+        "name": "ready_slot",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/round-repeat-r1/ready110-guest.bin",
+        "bytes": 44,
+        "sha256": "ad74bf8e95420203ee6b8f397b43df72fee8a977c9921ccebfa50d794b22861b",
+        "sequence": 100
+      },
+      {
+        "name": "bomb",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/round-go-r1/reply159.bin",
+        "bytes": 77,
+        "sha256": "aafc349b2b6f518fffbac1a02df7e7c7c94a2c328fdb35d68c8fd67bb1ebef01",
+        "sequence": 85
+      },
+      {
+        "name": "blast",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bomb-calc-r1/kind0.bin",
+        "bytes": 51,
+        "sha256": "5095a65ab689b03ac91e11a9d306341cf9995b5bf8dc8ac146706908c60496b7",
+        "sequence": null
+      },
+      {
+        "name": "rank",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/round-repeat-r1/rank175-v2.bin",
+        "bytes": 340,
+        "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd",
+        "sequence": 91
+      },
+      {
+        "name": "rank_Awin",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+        "bytes": 340,
+        "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce",
+        "sequence": 91
+      },
+      {
+        "name": "promote_B",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/leave-r1/promote110-B.bin",
+        "bytes": 44,
+        "sha256": "858c5eb8c855a0ccf978574cd9c67eca7dede7e72d2d33c012b5ecb8928ca796",
+        "sequence": 73
+      },
+      {
+        "name": "return",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bomb-calc-r1/result180-full.bin",
+        "bytes": 41,
+        "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0",
+        "sequence": 91
+      },
+      {
+        "name": "rank_all_dead",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+        "bytes": 340,
+        "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510",
+        "sequence": 91
+      },
+      {
+        "name": "join_A",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/reply87-A-session1.bin",
+        "bytes": 45,
+        "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586",
+        "sequence": 55
+      },
+      {
+        "name": "player_A_guest",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/A106-unready.bin",
+        "bytes": 242,
+        "sha256": "2dbc2c247eb94c40af6338e733c98eb18dfa833a2d48662209ce952ca9d9fec7",
+        "sequence": 58
+      },
+      {
+        "name": "slot_A_guest",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/A110-unready.bin",
+        "bytes": 44,
+        "sha256": "979cfad03305717aaaa203643e875d48aa1430a7d8b34ba534c7fb26668c55db",
+        "sequence": 61
+      },
+      {
+        "name": "guest_B_chief",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/B106-chief.bin",
+        "bytes": 242,
+        "sha256": "8dee2a2f58af50ebcf7487d66040c97c374683ed8726ccfe9dd13e064ebf9d86",
+        "sequence": 58
+      },
+      {
+        "name": "ready_A",
+        "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/A110-ready.bin",
+        "bytes": 44,
+        "sha256": "2b8c7ae9412c1bee0340587269b1e32af2e3c2117081bc28a331202f8f82d422",
+        "sequence": 100
+      }
+    ],
+    "rollback_adapter": "local/research/codex/rust-m1-r1/rollback/local/research/codex/k2-auth-retry-r1/retry_adapter_service.py",
+    "native_recipe": "local/research/codex/k2-auth-retry-r1/auth-retry-r2-recipe.json",
+    "limits": "Exact committed Python server/tools materialized without8WIP. PrivateCP181adapter/result1 copied unchanged; fixtures/nativegame/prefix still retained external local paths, not standalone redistribution/clientbundle. RustM1onlydiagnosticerror/retry, notfullaccount/gameplay parity. Choosebackendbeforerun,cleanupfirst/nohotswap."
+  },
+  "native_vector_provenance": {
+    "native_emulation_path": "local/research/codex/codec-boundaries-r1/native-stream.json",
+    "native_emulation_sha256": "c3198f45e3242c50ecd7834a2227cb13ef2db28c6630e118cf4c6c5693f20e4c",
+    "capture": {
+      "path": "local/research/codex/pickup-state-r1/state-guard/run.json",
+      "sha256": "3e4313e8481ab80a8cdacdd8e7bad67be8880d97d6f4df3f694c0c5f0be384a7",
+      "role": "A",
+      "connection": 4,
+      "frame_ordinals": [
+        0,
+        1
+      ],
+      "sequences": [
+        40,
+        43
+      ]
+    },
+    "native_target_sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5",
+    "scope": "2fixednativeC2Sframes6/544/expectednativeplaintext; noauthcredentials; testsplits are mechanical permutations, not independent runtime cases"
+  },
+  "kernel_tcp": {
+    "result": "pass",
+    "error": null,
+    "cases": [
+      {
+        "case": "fresh_connection_hello_pins",
+        "result": "pass"
+      },
+      {
+        "case": "captured_native_login_split_exact_result1",
+        "result": "pass"
+      },
+      {
+        "case": "observed_ancillary_shapes_keep_socket_open_without_reply",
+        "result": "pass"
+      },
+      {
+        "case": "invalid_crc_no_reply_or_dispatch",
+        "result": "pass"
+      },
+      {
+        "case": "oversized_header_rejected_without_body_allocation",
+        "result": "pass"
+      },
+      {
+        "case": "partial_eof_no_reply",
+        "result": "pass"
+      },
+      {
+        "case": "coalesced_duplicate_valid_frame_single_action_wrong_stage_closed",
+        "result": "pass"
+      },
+      {
+        "case": "partial_idle_timeout_releases_connection",
+        "result": "pass"
+      },
+      {
+        "case": "bounded_admission_without_extra_hello",
+        "result": "pass"
+      },
+      {
+        "case": "fresh_connection_after_negatives_resets_sequence",
+        "result": "pass"
+      },
+      {
+        "case": "graceful_sigterm_drains_and_closes_active_socket",
+        "result": "pass"
+      },
+      {
+        "case": "fresh_server_rebinds_with_fresh_codec",
+        "result": "pass"
+      },
+      {
+        "case": "fixture_hash_failure_before_bind",
+        "result": "pass"
+      },
+      {
+        "case": "multi_listener_startup_failure_releases_previously_bound_port",
+        "result": "pass"
+      }
+    ],
+    "binary_sha256": "520d7e37ad4c41cc8de47cb3da62841ba35bc849469eac9d06c65fcbf577588f",
+    "captured_input_sha256": "05b358f4b0f4abcc727048773a69ecb994aacb2abc92a9113cd12fbf6ea69a1d",
+    "limits": "KernelTCP/process policy negatives, not native KR acceptance. Diagnostic first2WCP transports/loopback/result1 only; no accountauthentication/channel/gameplay/UDP/DB/security/SLO claim. Python-generated duplicate is a policy input, not protocol oracle."
+  },
+  "native": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T06:52:16.035305+00:00",
+    "result": "native_KR_Wine_Rust_two_result1_sameprocess_UIretry_perconnection_sequence_reset",
+    "run_sha256": "cbddcf23fd6d9d79f98dec6d7d76ad76dd2c34d1f6e3ab47f861372bb64c9d46",
+    "duration_s": 60.091387984,
+    "raw_count": 54,
+    "frozen_count": 27,
+    "cleanup": {
+      "net_namespace": "net:[4026533552]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "binary_sha256": "520d7e37ad4c41cc8de47cb3da62841ba35bc849469eac9d06c65fcbf577588f",
+    "client_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "single_ca_linux_pid": 144,
+    "process_snapshots": [
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-01.txt",
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-02.txt",
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-03.txt",
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-04.txt",
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-05.txt",
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-06.txt",
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-07.txt",
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-08.txt",
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-09.txt",
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-10.txt",
+      "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-11.txt"
+    ],
+    "native_hello_socket_states": [
+      {
+        "before": {
+          "available": 15,
+          "maxsize": 1048576,
+          "mode": 0,
+          "prefix_guard": 0,
+          "selector": 0,
+          "sequence": 40
+        },
+        "after": {
+          "available": 0,
+          "maxsize": 1048576,
+          "mode": 0,
+          "prefix_guard": 0,
+          "selector": 0,
+          "sequence": 43
+        },
+        "result": 0
+      },
+      {
+        "before": {
+          "available": 15,
+          "maxsize": 1048576,
+          "mode": 0,
+          "prefix_guard": 0,
+          "selector": 0,
+          "sequence": 40
+        },
+        "after": {
+          "available": 0,
+          "maxsize": 1048576,
+          "mode": 0,
+          "prefix_guard": 0,
+          "selector": 0,
+          "sequence": 43
+        },
+        "result": 0
+      }
+    ],
+    "native_result_frames": [
+      {
+        "after": {
+          "available": 0,
+          "maxsize": 1048576,
+          "mode": 2,
+          "prefix_guard": 0,
+          "selector": 3,
+          "sequence": 46
+        },
+        "before": {
+          "available": 39,
+          "maxsize": 1048576,
+          "mode": 2,
+          "prefix_guard": 0,
+          "selector": 3,
+          "sequence": 43
+        },
+        "cursor": 0,
+        "err54": 0,
+        "err58": 0,
+        "kind": "framer_return",
+        "opcode": 4,
+        "packet": 1231964,
+        "payload": 1,
+        "result": 0,
+        "socket": 1682801928
+      },
+      {
+        "after": {
+          "available": 0,
+          "maxsize": 1048576,
+          "mode": 2,
+          "prefix_guard": 0,
+          "selector": 3,
+          "sequence": 46
+        },
+        "before": {
+          "available": 39,
+          "maxsize": 1048576,
+          "mode": 2,
+          "prefix_guard": 0,
+          "selector": 3,
+          "sequence": 43
+        },
+        "cursor": 0,
+        "err54": 0,
+        "err58": 0,
+        "kind": "framer_return",
+        "opcode": 4,
+        "packet": 1227308,
+        "payload": 1,
+        "result": 0,
+        "socket": 1682801928
+      }
+    ],
+    "native_result1_count": 2,
+    "teardown_probe_errors": [
+      {
+        "error": "Remote communication error.  Target disconnected: error while reading: Connection reset by peer.",
+        "kind": "probe_error",
+        "site": "framer_entry"
+      }
+    ],
+    "ordinary_UI_actions": [
+      {
+        "label": "close-error-modal",
+        "coordinates": [
+          400,
+          397
+        ],
+        "returncode": 0,
+        "monotonic_ns": 181679573997187
+      },
+      {
+        "label": "confirm-login",
+        "coordinates": [
+          403,
+          574
+        ],
+        "returncode": 0,
+        "monotonic_ns": 181681134830991
+      }
+    ],
+    "hold_after_second_result_s": 9.517034768,
+    "capture": {
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/tcp-rust.pcap",
+      "sha256": "a17ac7ffbdac6dfcdda8752c905cc1d1e20c7d30dc4b68513a3fa54f49d4f7cc",
+      "records": 108,
+      "joins": [
+        {
+          "connection": 1,
+          "peer": "127.0.0.1:46986",
+          "local": "127.0.0.1:3848",
+          "captured_s2c_bytes": 15,
+          "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1",
+          "captured_c2s": []
+        },
+        {
+          "connection": 2,
+          "peer": "127.0.0.1:46992",
+          "local": "127.0.0.1:3848",
+          "captured_s2c_bytes": 332,
+          "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d",
+          "captured_c2s": []
+        },
+        {
+          "connection": 3,
+          "peer": "127.0.0.1:48592",
+          "local": "127.0.0.1:3848",
+          "captured_s2c_bytes": 54,
+          "s2c_sha256": "200669a789f7582ddf83c84dd4767c021fd412defd90d88dc9b7abc29090a99f",
+          "captured_c2s": [
+            {
+              "opcode": 1,
+              "sequence": 40,
+              "body_bytes": 42
+            },
+            {
+              "opcode": 60,
+              "sequence": 43,
+              "body_bytes": 20
+            }
+          ]
+        },
+        {
+          "connection": 4,
+          "peer": "127.0.0.1:48596",
+          "local": "127.0.0.1:3848",
+          "captured_s2c_bytes": 54,
+          "s2c_sha256": "200669a789f7582ddf83c84dd4767c021fd412defd90d88dc9b7abc29090a99f",
+          "captured_c2s": [
+            {
+              "opcode": 1,
+              "sequence": 40,
+              "body_bytes": 42
+            },
+            {
+              "opcode": 60,
+              "sequence": 43,
+              "body_bytes": 20
+            },
+            {
+              "opcode": 15,
+              "sequence": 46,
+              "body_bytes": 31
+            },
+            {
+              "opcode": 15,
+              "sequence": 49,
+              "body_bytes": 31
+            },
+            {
+              "opcode": 15,
+              "sequence": 52,
+              "body_bytes": 31
+            }
+          ]
+        }
+      ],
+      "method": "Bounded stdlib PCAP/IPv4/TCP complete selected streams, reject gaps/conflicts; REA TShark capability unavailable previously, no newprovider/config change"
+    },
+    "final_screenshot": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-11.png",
+    "limits": "KR00967 e9copy/inheriteddiagnosticglobalreset/Wine/private loopback only. RustM1 error/retry rejects bothloginattempts, not authsuccess/channel/lobby/accountresume/gameplay/fullcodec/production. First2WCP arrivalmapping is declareddiagnosticpolicy; opaquehello/WCPfixture hashes pinned. Ancillary60body20/15body31 unansweredpolicy, meanings unknown. Existingmode0packetobject fields invalid/useonlysocketstate. Nativeproof distinct from unittests/kernelTCP/Pythondifferential. UIreview required separately. Internet thật chưa kiểm."
+  },
+  "ui_observer": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T06:53:48.332765+00:00",
+    "image": {
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-11.png",
+      "sha256": "ce92a0135ada8d1427876ba4b3f63d98b9e9041f645874689576a4b3baa0bf3a",
+      "observation": "Normal KRlogin error notice for unregisteredID/wrongpassword aftersecondresult1, no WineProgramError; UI complements native result1/global0/CRC/seq/PID/PCAP."
+    },
+    "observer_limits": "One framer_entry Targetdisconnected and GDBinternal-error are present at endofrawlog. Nativeerrorframes/result1/ordinaryretry and 9.517s hold/PIDs/screens precede ownedWinecleanup; finalcontrollerobservations show GDBlauncher alive. No claim debugger healthy afterteardown. Mode0packetobject fields invalid; socketstateonly. Preserve raw/firstverifierfailure/adjustedscopedverifier, no rerun solely for teardown.",
+    "runtime_binary_matches_final_build": true,
+    "no_new_gate": true
+  },
+  "preserved_failure": {
+    "source": "design",
+    "status": "confirmed",
+    "result": "FAIL_native_no_result1_before_EOF_fatal",
+    "run_sha256": "cdea2ae112b263fa80620fc64c3e80bdbe8cccdc97a7e268f0ba7a3527b49d85",
+    "raw_count": 53,
+    "reason": "Rust sent exact result1 but immediately closed after actual60/body20/seq43. No native K2_AUTH_RESULT inrun; no native result1/read/retry acceptance. CALogNoticeDisconnected10/global1/cleanup thenSIGILL; sourceorderingnotindependentcausalityproof. CP181 actuallogin channels already send60/body20 then15/body31 with Python intentionallyignoring; portmissedignored ancillarypackets. R2 will retainthose boundedshapes post-rejectionwithoutsemanticclaim/newreply; duplicate1 stillclose. Firstcommentary saying clientreceivederror was too strong: only Rustsendproved.",
+    "limits": "No nativeacceptance fromprocessalive/serverlog; runsealed/frozen/cleanup0,53raw preserved; no SDK/VM needed."
+  },
+  "partial_capture": {
+    "source": "design",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T06:49:53.991942+00:00",
+    "result": "NATIVE_RESULT1_RETRY_POSITIVE_BUT_CAPTURE_PARTIAL",
+    "run_sha256": "816d50a2e99bee8c0acea790bdaeeec474da987716244ceb0c07c2fcffe07424",
+    "raw_count": 63,
+    "duration_s": 52.348077562,
+    "facts": "Native tworesult1/global0/ordinaryUI1002/newconnectionreset/no fatal/8s+hold, Rustevents positive. Loopback capture included unrelated localservice traffic and reached12000record budget before end; cannot join all C2S trace to Rustevents. Preserve all raw and diagnosticverifier failure. Next run sameRustbinary/config/nativeinputs, newcapture only allow configuredKRports to avoid unrelatedloopback traffic; no behavior/sourcechangeinRust.",
+    "limits": "Do not report complete capture or finalM1acceptance from partialPCAP. Extra traffic belongs isolatednamespace only, not externalnetwork. Newrecording justified by measurementgap, not newprotocolRE."
+  },
+  "limits": "M0/M1 narrow foundation: pinnedbaseline/puremode2-selector3/boundedTCP + nativeerror1→ordinarysameprocessretry→error1. No authsuccess/channel/lobby/room/Battle/UDP/accountDB/production/fullcodec claim. First2WCParrivalmapping diagnostic only. Nativeoriginalcopye9/Wine/loopback/isolation/globalreset explicit; Internet thật chưa kiểm."
+}

@@ -1,0 +1,309 @@
+{
+  "id": "CP231",
+  "previous": "CP230",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T07:00:13.377170+00:00",
+  "context_commit": "115c6b885812ff9add0e09bf8c9e8efe2bf5401d",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M0/M1/KRE-074: implement measuredKR codec+boundedconnection inRust, nativehello/error1/ordinarysameprocessretry/newconnectionseqreset usingretainedoracle withoutfullauth/generalroomREdependency.",
+  "scope": "Rustimplementationauthorized09/11;2crates/pinnedtoolchain-deps/Pythonrollback47fixtures;5wiretests/14kernelTCP;3nativeattempts170raw includingfatalfailureandpartialcapturecontrols, finalnative2error1/PID144/seqreset/PCAP/UI9.517s. Noauthsuccess/room/Battle/UDP/accountDB/production.",
+  "artifacts": [
+    {
+      "name": "NativeKR00967originalunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "CP181e9Winecopy",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "RustM1native-testedbinary",
+      "sha256": "520d7e37ad4c41cc8de47cb3da62841ba35bc849469eac9d06c65fcbf577588f"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-wire/src/lib.rs;rust/crates/kr-service/src/lib.rs;Rust1.99.0/lockedTokio1.53.3/serde1.0.229/serde_json1.0.154/sha20.11.1/noVNserverport.",
+    "CP057capturepickup-state-r1/state-guard/run.json:Aconnection4frames0-1/seq40-43;native-stream.jsoncoalescedexpectedplaintext6/544; sourcehash/nativebuildpinned in native-vector-provenance.",
+    "RustR3:cbddcf23fd6d9d79f98dec6d7d76ad76dd2c34d1f6e3ab47f861372bb64c9d46/60.091387984s/54raw/cleanup0/sameCAPID144/2nativeerror1-global0/UI1002/seqreset/PCAP108/hold9.517034768s",
+    "R1cdea2ae112b263fa80620fc64c3e80bdbe8cccdc97a7e268f0ba7a3527b49d85/53rawFAIL;R2816d50a2e99bee8c0acea790bdaeeec474da987716244ceb0c07c2fcffe07424/63rawpartialcapture;inputretention/rawseals preserved."
+  ],
+  "findings": [
+    {
+      "summary": "RustM0 exactPythonarchive/committedsource/47fixturepins/privateCP181adapter/native recipe retained for rollback;8WIPexcluded, nohotswap/clientbundle. New Rustcrate source independentlyimplemented fromKRcontract, notlegacywholeport.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-foundation",
+      "evidence": [
+        "RUST231-00108",
+        "RUST231-00052"
+      ],
+      "limits": "ManualM0/M1 satisfied only diagnostichello/error/retry; noauthsuccess/channel/lobby/room/Battle/accountresume/fullauth/DB/UDP/production/fullcodec/gate.14kerneltestsnotnativeproof, Pythonparitynotoracle. First2WCPtransportrouting declaredlabpolicy notaccountauth. Ancillary60body20/15body31no-replypolicy/shapesonly/no meaningclaim. Nativecopye9/Wine10/diagnosticglobalreset/lo-only,notvanilla. Oldcomplete/AUD066immutable/8WIPunchanged/auditnextCP232; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "kr-wire measuredmode2selector3 cryptCRC/framing/typedfields/seq40+3n, failbeforeadvance/bounded64KiB.5wiretests retain2independentnativecaptureplaintextvectors and exercise split/coalesce/CRC/EOF/bounds; wrap/maxframetest isdesignregression notnewnativeoracle.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-foundation",
+      "evidence": [
+        "RUST231-00045",
+        "RUST231-00047",
+        "RUST231-00236",
+        "RUST231-00120"
+      ],
+      "limits": "ManualM0/M1 satisfied only diagnostichello/error/retry; noauthsuccess/channel/lobby/room/Battle/accountresume/fullauth/DB/UDP/production/fullcodec/gate.14kerneltestsnotnativeproof, Pythonparitynotoracle. First2WCPtransportrouting declaredlabpolicy notaccountauth. Ancillary60body20/15body31no-replypolicy/shapesonly/no meaningclaim. Nativecopye9/Wine10/diagnosticglobalreset/lo-only,notvanilla. Oldcomplete/AUD066immutable/8WIPunchanged/auditnextCP232; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "kr-service Tokio boundedconnection/logqueues/semaphore/timeouts/hashvalidatedconfig/SIGTERMdrain/norawcredentiallogs;14realTCPprocess negatives passed includingnativecapturedlogininput/splits/rejection/ancillary/noCRCdispatch/partialEOF/idle/quota/reset/rebind/bindconflict/hashfail. Syntheticpolicyproof not nativecompatibility.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-foundation",
+      "evidence": [
+        "RUST231-00042",
+        "RUST231-00146",
+        "RUST231-00118"
+      ],
+      "limits": "ManualM0/M1 satisfied only diagnostichello/error/retry; noauthsuccess/channel/lobby/room/Battle/accountresume/fullauth/DB/UDP/production/fullcodec/gate.14kerneltestsnotnativeproof, Pythonparitynotoracle. First2WCPtransportrouting declaredlabpolicy notaccountauth. Ancillary60body20/15body31no-replypolicy/shapesonly/no meaningclaim. Nativecopye9/Wine10/diagnosticglobalreset/lo-only,notvanilla. Oldcomplete/AUD066immutable/8WIPunchanged/auditnextCP232; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "FinalactualKR/WineonRust: sameCAPID144/2nativehello40→43/mode0 anderroropcode4/mode2selector3/seq43→46/payload1/ret0/result1global0; ordinaryUI1002/retryconnectionresetC2S40/8s+hold/PCAP108exactallselectedstreams/UIcredentialerror. Noauthsuccess/lobby/gameplay/accountresume.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-foundation",
+      "evidence": [
+        "RUST231-00385",
+        "RUST231-00384"
+      ],
+      "limits": "ManualM0/M1 satisfied only diagnostichello/error/retry; noauthsuccess/channel/lobby/room/Battle/accountresume/fullauth/DB/UDP/production/fullcodec/gate.14kerneltestsnotnativeproof, Pythonparitynotoracle. First2WCPtransportrouting declaredlabpolicy notaccountauth. Ancillary60body20/15body31no-replypolicy/shapesonly/no meaningclaim. Nativecopye9/Wine10/diagnosticglobalreset/lo-only,notvanilla. Oldcomplete/AUD066immutable/8WIPunchanged/auditnextCP232; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R1sentresultbeforeclosingactual60 doesnotprovenativeread;noK2result1/nativeEOFfatal53rawkept. R2ancillaryshapeignore matchesCP181, nativepositivebutPCAPcap12000partial63rawkept. R3samebinary/nativeinputonlycapturefilterKRports/54rawcomplete. Retainedexactfrozeninputs/source/binaryversions;R3GDBteardownerror/mode0fieldlimits explicit.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-foundation",
+      "evidence": [
+        "RUST231-00201",
+        "RUST231-00253",
+        "RUST231-00384",
+        "RUST231-00051"
+      ],
+      "limits": "ManualM0/M1 satisfied only diagnostichello/error/retry; noauthsuccess/channel/lobby/room/Battle/accountresume/fullauth/DB/UDP/production/fullcodec/gate.14kerneltestsnotnativeproof, Pythonparitynotoracle. First2WCPtransportrouting declaredlabpolicy notaccountauth. Ancillary60body20/15body31no-replypolicy/shapesonly/no meaningclaim. Nativecopye9/Wine10/diagnosticglobalreset/lo-only,notvanilla. Oldcomplete/AUD066immutable/8WIPunchanged/auditnextCP232; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ManualM0/M1acceptednarrowdiagnosticfoundation; #285/#14OPEN/Pythonservingkept/8WIPbyteexact/CP230PR301merged115c6b8/AUD066next232. PLANnextM2localidentity-channel-sảnh-fixedroom, REonlyportdiscrepancy/notbroadroomSDKresearch.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-foundation",
+      "evidence": [
+        "RUST231-00052"
+      ],
+      "limits": "ManualM0/M1 satisfied only diagnostichello/error/retry; noauthsuccess/channel/lobby/room/Battle/accountresume/fullauth/DB/UDP/production/fullcodec/gate.14kerneltestsnotnativeproof, Pythonparitynotoracle. First2WCPtransportrouting declaredlabpolicy notaccountauth. Ancillary60body20/15body31no-replypolicy/shapesonly/no meaningclaim. Nativecopye9/Wine10/diagnosticglobalreset/lo-only,notvanilla. Oldcomplete/AUD066immutable/8WIPunchanged/auditnextCP232; Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt/clippy/workspace5tests/lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST231-00120",
+        "RUST231-00118",
+        "RUST231-00117"
+      ],
+      "limits": "Nativecapturevectors vsdesignwrapregressions distinct."
+    },
+    {
+      "check": "14realTCPprocessnegatives/config/provenance/shutdown",
+      "result": "pass",
+      "evidence": [
+        "RUST231-00146"
+      ],
+      "limits": "NotnativeKR/scopeauthproof."
+    },
+    {
+      "check": "R1nativeRustlogin/retry",
+      "result": "fail",
+      "evidence": [
+        "RUST231-00201"
+      ],
+      "limits": "No nativereaderror1,EOFfatalafterunsupported60/53rawkept."
+    },
+    {
+      "check": "R2completePCAPjoin",
+      "result": "fail",
+      "evidence": [
+        "RUST231-00253"
+      ],
+      "limits": "Native2errorspositivebutcap12000truncatedcapture/63raw;notfinalacceptance."
+    },
+    {
+      "check": "R3actualKR/Rusterror1→ordinarysameprocessretry→error1/nativeframer/seqreset/PCAP/UI/hold",
+      "result": "pass",
+      "evidence": [
+        "RUST231-00385",
+        "RUST231-00384"
+      ],
+      "limits": "Diagnosticcopye9/Wine/lo-only/noauthsuccess;GDBteardownerrornothealthydebuggerclaim."
+    },
+    {
+      "check": "ManualM0/M1scope/170raw/freeze/cleanup/inputretention/WIP/docs/catalog/anchors",
+      "result": "pass",
+      "evidence": [
+        "RUST231-00052",
+        "RUST231-00051",
+        "RUST231-00012",
+        "RUST231-00011"
+      ],
+      "limits": "Fullhistory/requirelocalandexactPRheadrequired;waivednotapproved."
+    },
+    {
+      "check": "RustM2authsuccess/identity/channel/room/gameplay/accountDB",
+      "result": "not_run",
+      "evidence": [
+        "RUST231-00030"
+      ],
+      "limits": "M2next; M1notfullservice/no Kgatechange."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP231-rust-foundation.json",
+      "bytes": 102096,
+      "sha256": "6b923a438bf41fcd1a2d95cf5f06ccd985e4e8410abb2077b7e8ea72aa296141",
+      "count": 397
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rusttwo-cratefoundation/lockedtoolchain-deps/Pythonbaseline47pins.",
+      "5wiretests/14kernelTCPnegatives/nativeRust2errors-sameprocessretry/PID144/seqreset/PCAP108/UI9.517s.",
+      "3frozennativeattempts170raw, immutablefailure/partialcapture/retention corrections."
+    ],
+    "corrected": [
+      "R1senterror≠nativeparsed;noresult1beforeEOFFATAL,ancillarypolicyportedfromCP181.",
+      "R2nativepositive≠completecapture;R3KRportfilterresolvesmeasurementgap/samebinary.",
+      "R3GDBteardownerrorandmode0packetlayoutlimit explicit;source/testversionsretained,finalbinaryunchanged."
+    ],
+    "superseded": [
+      "CP230nextRustM0→M1nowimplementedandnativeacceptedwithinerror-retryscope;nextM2notmorebroadRE."
+    ]
+  },
+  "blockers": [
+    "Rustauthsuccess/localidentity/channel/sảnh/fixedroom/gameplay/accountDB notimplementedyet;M2existingcontractnext.",
+    "Broadercodec/modes/headerauthority/productionrate-backpressure-load-SLO/authsecurity notaccepted.",
+    "Authsameprocesspostchannel fatalCP224/before17receiverCP220 separatebacklog;no newgraphRE withoutM2blocker;8WIPunmerged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PerPLAN M2existingcontract diagnosticlocalidentity/channel/sảnh/fixedroom onRust;ownID/name/slot/stagechecks/native2actual/barrier/Backrejoin, keepPythonrollback. REonlynewportdiscrepancy/acceptanceblocker, nofullauth/generalroomdependency. AUD067dueCP232.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T07:00:13.377170+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/Rustimplementation/native-wire-TCP-oracle/measurementlimits/manualM0-M1acceptance/selfcheck;waivednotapproved;exactPRheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/evidence/rust-service/foundation.json",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP231RustM0/M1code/nativeerror-retry/corrections/limits/170raw/PLANM2/catalog/issues/readiness syncedbeforecomplete;oldcomplete/AUD066immutable."
+    }
+  ]
+}

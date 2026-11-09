@@ -86,11 +86,12 @@ Không gọi run cô lập cũ là Internet thật và không thêm phần này 
 Owner/tự kiểm Codex; chỉ mở theo thứ tự PLAN, không dựng plan riêng.
 
 <a id="rust-service-gaps"></a>
-## Unknown chặn dịch vụ Rust — KRE-074, implementation đã mở
+## Unknown chặn dịch vụ Rust — KRE-074, đang triển khai
 
 [PLAN](PLAN.md#rust-service-milestones) giữ thứ tự/acceptance, [kiến trúc/ma trận](RUST_SERVICE_ARCHITECTURE.md)
 giữ design/readiness; không mở toàn client trước port. Chủ nhiệm/tự kiểm Codex, review độc lập waived.
 Nguồn khảo sát/pins ở [survey](evidence/rust-service/survey.json); CP212 gate demo không xác nhận fullauth/DB/economy.
+[CP231](PROTOCOL.md#rust-foundation) đã có RustM0/M1nativeerror/retry; [PLAN](PLAN.md#current-order) chuyển M2localidentity/sảnh/fixedroom, không broadRE. Diagnostic first2WCP/ancillary shape policy chưa accountauthentication; unknownmode/header giữ giới hạn.
 
 | Câu hỏi | Có thể chọn backend policy design ngay | Bắt buộc đo KR / phép thử nhỏ nhất |
 |---|---|---|
@@ -99,7 +100,7 @@ Nguồn khảo sát/pins ở [survey](evidence/rust-service/survey.json); CP212 
 | RUST-Q3 inventory/consumables | Definitions/revision/ownership/quantity/expiry/reservation/transaction; worlddrop khác persistentstack; disabled unknownkr_id | Native query/equip/use/request/confirm/count/effect/reset/freshlogin cùng1knownitem. Kim145fixturecredit không inventoryauth; 4/8integration đo khi mở |
 | RUST-Q4 progression/rewards | Explicit nonredeemableformula/version, result/grantunique/ledger/outbox/backendtransactions. WikiEXP chỉ tham chiếu product | Actual175profile/resultfield→XP/currency/count/UI/relogin consumption; đo 0 và1delta/control/bounds, không portVN173/layout hoặc coi bảngwiki làfieldmapping |
 | RUST-Q5 authority/freshness | Giữ fuse/drop/reportguard/fence policy đã đo; backendreward pending khi outcome chưa đủ tin cậy | Native actualoldUDP/oldTCP trước và sau epoch/membership/IDreuse + currentpositive; full142distance/auth/low8wrap nếu validator/deployment cần. Không hứa server lọc mọiP2Ptraffic/fullworldauthority |
-| RUST-Q6 operation/capacity | SQLiteWAL/backup-restoredrill/adminaudit/config/metrics/queuelimits/shutdown design, không cần RE mọi gameplay | Native Rustfreshserver vs freshlogin vs reconnect distinct; restore/newmatch/inputfence, boundedslowpeer+DBfault. Targetload/SLO/RPO/RTO chốt workload rồi đo, không suy từ8Wine/GDB |
+| RUST-Q6 operation/capacity | SQLiteWAL/backup-restore/adminaudit/config/metrics/queue limits design không cần mọi gameplayRE | [CP231](PROTOCOL.md#rust-foundation) Rustfoundation/boundedTCP/14kernelcases/SIGTERM/rebind và nativeerror-retry đã đo; chưa targetload/SLO/generalbackpressure/DBfault/gameplayRestart. M2 dùng stage/profileprojection existingcontract, nativeRustfreshlogin/currentidentity; chỉRE field thật sự lệch. Accountresume/matchrestore khác freshconnection; workload/RPO/RTO phải đo riêng |
 | RUST-Q7 productpolicy còn mở | Chọn baseline mộtchannel/map/basic, diagnosticreward0 rồi internalnonredeemable, onegamesession/refusesecond, ephemeralrounds; khôngpayment/HA banđầu | Công thức XP/reward thật, starterinventory/currency/spend/expiry/refund/trust/abuse thresholds phải được product chốt trong issue trước M6expose; backend có thể dùng versioneddisabled/default0, không làm stall codec. Client có thể biểu đạt phần nào vẫn cần consumerproof |
 
 Design nội bộ (hashing/store/transaction/scheduler/limits/adminAPI) không là khẳng định KR gốc. Wire/IDs/offsets,

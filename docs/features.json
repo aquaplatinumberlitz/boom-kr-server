@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP230",
+  "as_of": "CP231",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -200,14 +200,16 @@
           "docs/evidence/wcp-sequence/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/live-codec-stream/README.md",
-          "docs/evidence/live-codec-stream/README.md#cp181"
+          "docs/evidence/live-codec-stream/README.md#cp181",
+          "docs/evidence/rust-service/README.md#cp231"
         ]
       },
       "coverage": {
         "presence": {
           "state": "present",
           "refs": [
-            "docs/PROTOCOL.md#wcp"
+            "docs/PROTOCOL.md#wcp",
+            "docs/PROTOCOL.md#rust-foundation"
           ]
         },
         "vn_reference": {
@@ -234,7 +236,8 @@
             "refs": [
               "docs/evidence/wcp-sequence/README.md",
               "docs/evidence/live-codec-stream/README.md",
-              "docs/evidence/live-codec-stream/README.md#cp181"
+              "docs/evidence/live-codec-stream/README.md#cp181",
+              "docs/PROTOCOL.md#rust-foundation"
             ]
           },
           "windows_original": {
@@ -302,14 +305,16 @@
           "docs/evidence/peer-endpoints/README.md#cp178",
           "docs/PROTOCOL.md#bootstrap-recipe-scope",
           "docs/evidence/live-codec-stream/README.md",
-          "docs/evidence/live-codec-stream/README.md#cp181"
+          "docs/evidence/live-codec-stream/README.md#cp181",
+          "docs/evidence/rust-service/README.md#cp231"
         ]
       },
       "coverage": {
         "presence": {
           "state": "present",
           "refs": [
-            "docs/PROTOCOL.md#wcp"
+            "docs/PROTOCOL.md#wcp",
+            "docs/PROTOCOL.md#rust-foundation"
           ]
         },
         "vn_reference": {
@@ -338,7 +343,8 @@
             "refs": [
               "docs/evidence/probe-service/README.md",
               "docs/evidence/live-codec-stream/README.md",
-              "docs/evidence/live-codec-stream/README.md#cp181"
+              "docs/evidence/live-codec-stream/README.md#cp181",
+              "docs/PROTOCOL.md#rust-foundation"
             ]
           },
           "windows_original": {

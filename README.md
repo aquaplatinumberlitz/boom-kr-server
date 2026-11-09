@@ -22,11 +22,23 @@ boom-kr-server/
     REFERENCES.md           nguồn RE cũ, provenance và bản đồ migration
     evidence/               metadata/hash; không chứa binary hoặc decompile
   tools/                    harness, probe và kiểm tra artifact/docs
-  server/                   code server tương thích KR
+  rust/                     kr-wire + kr-service; lát cắt Rust từng bước
+  server/                   Python serving/RE/reference vẫn giữ
   local/                    raw/copy client/DB/capture; git-ignored
 ```
 
 ## Tra nhanh và trạng thái hiện tại
+
+**CP231: đã viết và chạy lát cắt Rust đầu tiên trên client KR thật.**
+[Rust/build/run](rust/README.md), [contract/limits](docs/PROTOCOL.md#rust-foundation),
+[evidence](docs/evidence/rust-service/README.md#cp231): cùng CA PID144 trên Wine nhận result1 hai lần,
+ordinary UI retry mở connection mới/resetseq40; native mode2/selector3/43→46, PCAP108record khớp byte,
+giữ9.517s sau result lần2. M0 baseline Python/47pins,5wire tests (vector native giữ sẵn) và14kernelTCP cases đạt;
+fmt/clippy/locked build pass. Hai run trước giữ failure53raw/capturepartial63raw; final54raw, tổng170raw seal/cleanup.
+Đây là **hello/error/retry**, chưa login thành công/sảnh/phòng/fullauth hoặc game trên Rust. Python giữ serving/RE/reference.
+CP230 merge [PR301](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/301)/`115c6b8`; audit kếCP232.
+[PLAN](docs/PLAN.md#current-order) chuyển M2 local identity→sảnh→fixedroom, RE chỉ khi port bị chặn. Internet thật chưa kiểm.
+
 
 **CP230: cleanup phòng chung đã có native Back, EOF và chuyển chủ trong prototype.**
 [Contract/limits](docs/PROTOCOL.md#room-shared-cleanup), [run/hash](docs/evidence/room-list/README.md#cp230):

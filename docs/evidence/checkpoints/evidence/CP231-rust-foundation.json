@@ -1,0 +1,2784 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "RUST231-00001",
+      "kind": "local",
+      "path": "local/research/codex/append_cp231.py",
+      "bytes": 14566,
+      "sha256": "9730551784e659b819403d7728cbaa5e958a7b175d698d5fc892dc9d7ce2b6e7"
+    },
+    {
+      "id": "RUST231-00002",
+      "kind": "local",
+      "path": "local/research/codex/capture_github_cp231.py",
+      "bytes": 1944,
+      "sha256": "d6d8e2513857f8bbb4150ee26f9702c133b4947160197b3e3fceb313a890ebbb"
+    },
+    {
+      "id": "RUST231-00003",
+      "kind": "local",
+      "path": "local/research/codex/cp231-GitHubfull-issues-1.json",
+      "bytes": 621713,
+      "sha256": "5b880c0d7e99b0be9a5df963c6aff4467a5acb906fed95f275e84e21b0efa498"
+    },
+    {
+      "id": "RUST231-00004",
+      "kind": "local",
+      "path": "local/research/codex/cp231-GitHubfull-issues-2.json",
+      "bytes": 589197,
+      "sha256": "99afe23d407f4940f0f0dc4f7024a70e716fe85e8a98bc26b462ac2309a81213"
+    },
+    {
+      "id": "RUST231-00005",
+      "kind": "local",
+      "path": "local/research/codex/cp231-GitHubfull-issues-3.json",
+      "bytes": 619233,
+      "sha256": "3b94bce1968930bc25bdccf841a382f378d3a276a3012f416189f377ac9753f7"
+    },
+    {
+      "id": "RUST231-00006",
+      "kind": "local",
+      "path": "local/research/codex/cp231-GitHubfull-issues-4.json",
+      "bytes": 7238,
+      "sha256": "15b723da4df0f6d1cc5fa7290295b75fb4b7d2da71cc05a9263fa4040ee96e68"
+    },
+    {
+      "id": "RUST231-00007",
+      "kind": "local",
+      "path": "local/research/codex/cp231-GitHubfull-pulls-1.json",
+      "bytes": 2249553,
+      "sha256": "d80d40ce8f75f04e7e30e3874bb39728604b3f3d0b972e5650a6b30506ad20e2"
+    },
+    {
+      "id": "RUST231-00008",
+      "kind": "local",
+      "path": "local/research/codex/cp231-GitHubfull-pulls-2.json",
+      "bytes": 2225579,
+      "sha256": "773db85ce3da4370ff44617cf340be9e44ad1174b126c744dce3831a58cd688b"
+    },
+    {
+      "id": "RUST231-00009",
+      "kind": "local",
+      "path": "local/research/codex/cp231-GitHubfull-pulls-3.json",
+      "bytes": 663720,
+      "sha256": "558aa09857d3a4206c00ab729aee90717bb39a3d19bb2d7b056079a0e40c1566"
+    },
+    {
+      "id": "RUST231-00010",
+      "kind": "local",
+      "path": "local/research/codex/cp231-GitHubfull-pulls-4.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "id": "RUST231-00011",
+      "kind": "local",
+      "path": "local/research/codex/cp231-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "RUST231-00012",
+      "kind": "local",
+      "path": "local/research/codex/cp231-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "3649cd3407913df1e7a678a1a792edd12fe2cfe57636567b2854ab7111cbf2bb"
+    },
+    {
+      "id": "RUST231-00013",
+      "kind": "local",
+      "path": "local/research/codex/cp231-github-capture.txt",
+      "bytes": 70,
+      "sha256": "2afa287e943968a0a00c6af27b5a25ab8bf565991d56e362bd96915d5c0e4e76"
+    },
+    {
+      "id": "RUST231-00014",
+      "kind": "local",
+      "path": "local/research/codex/cp231-issue14-before.json",
+      "bytes": 36885,
+      "sha256": "03745af4cd0b387ff8b803f544663e9f04dc8afa449d08d221810f23e39fe6d6"
+    },
+    {
+      "id": "RUST231-00015",
+      "kind": "local",
+      "path": "local/research/codex/cp231-issue14-request.json",
+      "bytes": 34555,
+      "sha256": "a1a3708a64801202125faea7e250e99094a264eb7295b287c6a3a3ef3816ae2f"
+    },
+    {
+      "id": "RUST231-00016",
+      "kind": "local",
+      "path": "local/research/codex/cp231-issue14-updated.json",
+      "bytes": 37469,
+      "sha256": "bdaca2e63cdfc6422ce399ff1efef1ef06acd7b18e538645d534d5789cbb8a48"
+    },
+    {
+      "id": "RUST231-00017",
+      "kind": "local",
+      "path": "local/research/codex/cp231-issue285-before.json",
+      "bytes": 10211,
+      "sha256": "20a139e44fa9625e1ef0f7a904ffe531d162275657e6a204bbd02e80cdaa7110"
+    },
+    {
+      "id": "RUST231-00018",
+      "kind": "local",
+      "path": "local/research/codex/cp231-issue285-request.json",
+      "bytes": 7853,
+      "sha256": "22786dd331d3ec4ea1836fa312f90ca50e0caf4fd0215f27b255e9d33fb2952f"
+    },
+    {
+      "id": "RUST231-00019",
+      "kind": "local",
+      "path": "local/research/codex/cp231-issue285-updated.json",
+      "bytes": 10795,
+      "sha256": "8f6b8094a05ea60d0fafcb9eef900b05f986c9d23353fc122e3861f291d31628"
+    },
+    {
+      "id": "RUST231-00020",
+      "kind": "local",
+      "path": "local/research/codex/prepare_rust_native.py",
+      "bytes": 5048,
+      "sha256": "3d5f3f22f4e50d055236f8753bf48ec336ae9ab497d4fbb30355957c12ef7b9b"
+    },
+    {
+      "id": "RUST231-00021",
+      "kind": "local",
+      "path": "local/research/codex/prepare_rust_native_r2.py",
+      "bytes": 5092,
+      "sha256": "be4fd22b6d4dfb2872663a9e33ffbb93c9590aae8e64b8dc31142383f888825d"
+    },
+    {
+      "id": "RUST231-00022",
+      "kind": "local",
+      "path": "local/research/codex/prepare_rust_native_r3.py",
+      "bytes": 5267,
+      "sha256": "e0c28ec4be0fa786d0343896a1e3bd923a98dc54c8d104ee90af85ee88fcaa99"
+    },
+    {
+      "id": "RUST231-00023",
+      "kind": "local",
+      "path": "local/research/codex/run_rust_m1.py",
+      "bytes": 831,
+      "sha256": "0d3228c017b2d2bdd42b1cb40009651919ad0fbe188ec96691b4fbaf15b5c448"
+    },
+    {
+      "id": "RUST231-00024",
+      "kind": "local",
+      "path": "local/research/codex/run_rust_m1_r2.py",
+      "bytes": 834,
+      "sha256": "07884fb6a5721f41589c27802755b4daa1562aaac1aada2d70363b6c5e72cce6"
+    },
+    {
+      "id": "RUST231-00025",
+      "kind": "local",
+      "path": "local/research/codex/run_rust_m1_r3.py",
+      "bytes": 834,
+      "sha256": "92e1820e6bdfec6a057e563b26baa87a2a13887731732058ab6998dbfa70b88b"
+    },
+    {
+      "id": "RUST231-00026",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/README.md",
+      "bytes": 38886,
+      "sha256": "a0a5e5b9d96153a1d17aa8f72a69c8137f4b8f781488e47569d0dfa9cf314895"
+    },
+    {
+      "id": "RUST231-00027",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/docs/COVERAGE.md",
+      "bytes": 187382,
+      "sha256": "c268f31b3ac881aac0b7b2ef2b287cc7b57030b07b21d58ae7de80498e612905"
+    },
+    {
+      "id": "RUST231-00028",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/docs/PLAN.md",
+      "bytes": 88070,
+      "sha256": "8dc0abc3ae6d4ee40c518b56afd5cae77a419233603843a63afdb0499a7748f2"
+    },
+    {
+      "id": "RUST231-00029",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/docs/PROTOCOL.md",
+      "bytes": 718780,
+      "sha256": "eae7807f93eb81ec9cee0a8d9e389fbf4c253d8b92a1a9d10b7351431023e218"
+    },
+    {
+      "id": "RUST231-00030",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/docs/RESEARCH.md",
+      "bytes": 44930,
+      "sha256": "1ac6ddbef65d4a6fc4dd616ce90f186aea76cf734594027b1e07d24ad97cd7e7"
+    },
+    {
+      "id": "RUST231-00031",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 31152,
+      "sha256": "05b84b0b898da572f4af84b87dd79272b59e0a8f19485ac8174bced3d18ea7f0"
+    },
+    {
+      "id": "RUST231-00032",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 267223,
+      "sha256": "b5c6c3b6e0d438cba6685189bc36cf597743d636dba60b2f74d8377e7243227a"
+    },
+    {
+      "id": "RUST231-00033",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 37181,
+      "sha256": "62cda15d5bfc20627d0ef0df96b73863f79ddfa60e7fa2680e0e631fbce62837"
+    },
+    {
+      "id": "RUST231-00034",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/docs/evidence/rust-service/README.md",
+      "bytes": 6831,
+      "sha256": "8f37409327c63ca63d6280fc6d7ed10c321c2819d07fac573e44c22c1c8ed54a"
+    },
+    {
+      "id": "RUST231-00035",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/docs/evidence/rust-service/foundation.json",
+      "bytes": 28566,
+      "sha256": "76b9c428b953879faee5dec2584a10e6bb41b0b775321bcda924d7dda94cd7de"
+    },
+    {
+      "id": "RUST231-00036",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/docs/features.json",
+      "bytes": 196843,
+      "sha256": "d2533865ba397439e27b7dc9e4cb8d8ba5cdc772598165f59ba83e0f92e30383"
+    },
+    {
+      "id": "RUST231-00037",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST231-00038",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/Cargo.lock",
+      "bytes": 7492,
+      "sha256": "e6179670ad3f0739baa1260e2f059218da5e0254c4697c26df8ac4362294e927"
+    },
+    {
+      "id": "RUST231-00039",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/Cargo.toml",
+      "bytes": 418,
+      "sha256": "9dfd7a1b7cbc63e23ad3f20d494216c379232733ef2971152e69720cb5e7a329"
+    },
+    {
+      "id": "RUST231-00040",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/README.md",
+      "bytes": 2800,
+      "sha256": "a623001989d186a5a5f8a92f9d7cd13424306f0b4f55f3ad0eeba02e36ff15cb"
+    },
+    {
+      "id": "RUST231-00041",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/crates/kr-service/Cargo.toml",
+      "bytes": 281,
+      "sha256": "67927aa024cfc537e96ef3afc83aa12e9c89f68aeb704bc5c45bf0ffdc02cbba"
+    },
+    {
+      "id": "RUST231-00042",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/crates/kr-service/src/lib.rs",
+      "bytes": 15161,
+      "sha256": "0428ceed0baddc0e77a9fae50454864f9da5aa47da426b1225f439177a4d3f08"
+    },
+    {
+      "id": "RUST231-00043",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/crates/kr-service/src/main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST231-00044",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/crates/kr-wire/Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST231-00045",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/crates/kr-wire/src/lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST231-00046",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/crates/kr-wire/tests/README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST231-00047",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/crates/kr-wire/tests/native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "RUST231-00048",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/rust/rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST231-00049",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/tools/export_rust_profile.py",
+      "bytes": 2133,
+      "sha256": "476c7926239549381c1c5963bdcebed8fa688937fab4f3d77e07433ac5df9b8f"
+    },
+    {
+      "id": "RUST231-00050",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/cp231-snapshot/tools/test_rust_foundation.py",
+      "bytes": 9019,
+      "sha256": "c18a83590988ee659da0fea0f3e13f8a8808f2b93a373cd7936b814d8082d673"
+    },
+    {
+      "id": "RUST231-00051",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/input-retention.json",
+      "bytes": 18007,
+      "sha256": "378dce96ce3ccf090809035626b3b2825d445f1545b8928fc8abc5acd77041cb"
+    },
+    {
+      "id": "RUST231-00052",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/manual-acceptance.json",
+      "bytes": 3421,
+      "sha256": "208871d85b76624207eb50bef1872c8e9b219418e0658c3af662124d13245f6c"
+    },
+    {
+      "id": "RUST231-00053",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/000-prepare_rust_native_r2.py",
+      "bytes": 5092,
+      "sha256": "be4fd22b6d4dfb2872663a9e33ffbb93c9590aae8e64b8dc31142383f888825d"
+    },
+    {
+      "id": "RUST231-00054",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/001-wine_probe_rust_m1_r2.py",
+      "bytes": 21412,
+      "sha256": "2d7debfc344a19158fe7478e56825a8da81375a981e8d53403b216016e359179"
+    },
+    {
+      "id": "RUST231-00055",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/002-auth-retry.gdb",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RUST231-00056",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/003-run_rust_m1_r2.py",
+      "bytes": 834,
+      "sha256": "07884fb6a5721f41589c27802755b4daa1562aaac1aada2d70363b6c5e72cce6"
+    },
+    {
+      "id": "RUST231-00057",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/004-seal_rust_m1_r2.py",
+      "bytes": 1410,
+      "sha256": "4135f7b0f8eeabdeeaf9c8f830c21a25e41028ccc7209b2f598d1de134561beb"
+    },
+    {
+      "id": "RUST231-00058",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/005-kr-service",
+      "bytes": 26742248,
+      "sha256": "520d7e37ad4c41cc8de47cb3da62841ba35bc849469eac9d06c65fcbf577588f"
+    },
+    {
+      "id": "RUST231-00059",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/006-native-config.json",
+      "bytes": 1131,
+      "sha256": "d46c4e4894cd92161cdbd91933bef7751eee7ebd3a7aaa928877c71cf85e4229"
+    },
+    {
+      "id": "RUST231-00060",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/007-capture_tcp_rust.py",
+      "bytes": 1541,
+      "sha256": "39aec75eb9a7292db2def44773b7f8a6aeae9d99243d45180ab56e641b40d528"
+    },
+    {
+      "id": "RUST231-00061",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/008-recipe.json",
+      "bytes": 984,
+      "sha256": "ff0eeff745146cb28a0e893d91163b117bedb815c97339c6bfd34a67bc8ca9ba"
+    },
+    {
+      "id": "RUST231-00062",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/009-native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "RUST231-00063",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/010-CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "RUST231-00064",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/011-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST231-00065",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/012-export_rust_profile.py",
+      "bytes": 2133,
+      "sha256": "476c7926239549381c1c5963bdcebed8fa688937fab4f3d77e07433ac5df9b8f"
+    },
+    {
+      "id": "RUST231-00066",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/013-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "RUST231-00067",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/014-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "RUST231-00068",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/015-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RUST231-00069",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/016-Cargo.toml",
+      "bytes": 418,
+      "sha256": "9dfd7a1b7cbc63e23ad3f20d494216c379232733ef2971152e69720cb5e7a329"
+    },
+    {
+      "id": "RUST231-00070",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/017-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST231-00071",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/018-.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST231-00072",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/019-Cargo.lock",
+      "bytes": 7492,
+      "sha256": "e6179670ad3f0739baa1260e2f059218da5e0254c4697c26df8ac4362294e927"
+    },
+    {
+      "id": "RUST231-00073",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/020-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST231-00074",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/021-Cargo.toml",
+      "bytes": 281,
+      "sha256": "67927aa024cfc537e96ef3afc83aa12e9c89f68aeb704bc5c45bf0ffdc02cbba"
+    },
+    {
+      "id": "RUST231-00075",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/022-lib.rs",
+      "bytes": 15161,
+      "sha256": "0428ceed0baddc0e77a9fae50454864f9da5aa47da426b1225f439177a4d3f08"
+    },
+    {
+      "id": "RUST231-00076",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/023-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST231-00077",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/024-lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST231-00078",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/025-native_vectors.rs",
+      "bytes": 3921,
+      "sha256": "75e3516e4ffcb55ef4db24cbfa4a7314d7c73b2ee7b907ce71e230ff6196cf99"
+    },
+    {
+      "id": "RUST231-00079",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r2/frozen-inputs/026-README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST231-00080",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/000-prepare_rust_native_r3.py",
+      "bytes": 5267,
+      "sha256": "e0c28ec4be0fa786d0343896a1e3bd923a98dc54c8d104ee90af85ee88fcaa99"
+    },
+    {
+      "id": "RUST231-00081",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/001-wine_probe_rust_m1_r3.py",
+      "bytes": 21412,
+      "sha256": "f59050120e9e1d35e7898f585c4ded4ffa83f3349828154dcb1342a72aab4dd7"
+    },
+    {
+      "id": "RUST231-00082",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/002-auth-retry.gdb",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RUST231-00083",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/003-run_rust_m1_r3.py",
+      "bytes": 834,
+      "sha256": "92e1820e6bdfec6a057e563b26baa87a2a13887731732058ab6998dbfa70b88b"
+    },
+    {
+      "id": "RUST231-00084",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/004-seal_rust_m1_r3.py",
+      "bytes": 1410,
+      "sha256": "4135f7b0f8eeabdeeaf9c8f830c21a25e41028ccc7209b2f598d1de134561beb"
+    },
+    {
+      "id": "RUST231-00085",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/005-kr-service",
+      "bytes": 26742248,
+      "sha256": "520d7e37ad4c41cc8de47cb3da62841ba35bc849469eac9d06c65fcbf577588f"
+    },
+    {
+      "id": "RUST231-00086",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/006-native-config.json",
+      "bytes": 1131,
+      "sha256": "d46c4e4894cd92161cdbd91933bef7751eee7ebd3a7aaa928877c71cf85e4229"
+    },
+    {
+      "id": "RUST231-00087",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/007-capture_tcp_rust.py",
+      "bytes": 1642,
+      "sha256": "464f9ca88992d118b45a6efceb5d50e5dda931e3abb709e778a73149f38b84cc"
+    },
+    {
+      "id": "RUST231-00088",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/008-recipe.json",
+      "bytes": 984,
+      "sha256": "8d59b30d82fa769885959b95dfee6dec16761a2e1b9235a01a1c80c006034e6a"
+    },
+    {
+      "id": "RUST231-00089",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/009-native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "RUST231-00090",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/010-CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "RUST231-00091",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/011-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST231-00092",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/012-export_rust_profile.py",
+      "bytes": 2133,
+      "sha256": "476c7926239549381c1c5963bdcebed8fa688937fab4f3d77e07433ac5df9b8f"
+    },
+    {
+      "id": "RUST231-00093",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/013-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "RUST231-00094",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/014-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "RUST231-00095",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/015-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RUST231-00096",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/016-Cargo.toml",
+      "bytes": 418,
+      "sha256": "9dfd7a1b7cbc63e23ad3f20d494216c379232733ef2971152e69720cb5e7a329"
+    },
+    {
+      "id": "RUST231-00097",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/017-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST231-00098",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/018-.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST231-00099",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/019-Cargo.lock",
+      "bytes": 7492,
+      "sha256": "e6179670ad3f0739baa1260e2f059218da5e0254c4697c26df8ac4362294e927"
+    },
+    {
+      "id": "RUST231-00100",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/020-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST231-00101",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/021-Cargo.toml",
+      "bytes": 281,
+      "sha256": "67927aa024cfc537e96ef3afc83aa12e9c89f68aeb704bc5c45bf0ffdc02cbba"
+    },
+    {
+      "id": "RUST231-00102",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/022-lib.rs",
+      "bytes": 15161,
+      "sha256": "0428ceed0baddc0e77a9fae50454864f9da5aa47da426b1225f439177a4d3f08"
+    },
+    {
+      "id": "RUST231-00103",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/023-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST231-00104",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/024-lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST231-00105",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/025-native_vectors.rs",
+      "bytes": 3921,
+      "sha256": "75e3516e4ffcb55ef4db24cbfa4a7314d7c73b2ee7b907ce71e230ff6196cf99"
+    },
+    {
+      "id": "RUST231-00106",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-delivery-r1/rust-m1-r3/frozen-inputs/026-README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST231-00107",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/auth-retry.gdb",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RUST231-00108",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/baseline.json",
+      "bytes": 13739,
+      "sha256": "3e1da8facae3e6b67ecb61b16280e9da98839a99f7991534628d111dd3228ead"
+    },
+    {
+      "id": "RUST231-00109",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/capture_tcp_rust.py",
+      "bytes": 1541,
+      "sha256": "39aec75eb9a7292db2def44773b7f8a6aeae9d99243d45180ab56e641b40d528"
+    },
+    {
+      "id": "RUST231-00110",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/captured-login-frame.bin",
+      "bytes": 80,
+      "sha256": "05b358f4b0f4abcc727048773a69ecb994aacb2abc92a9113cd12fbf6ea69a1d"
+    },
+    {
+      "id": "RUST231-00111",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/cargo-build-r2.txt",
+      "bytes": 166,
+      "sha256": "576c400d2701876ccd83a08dfe7c79e56dcdd512a539efc1ecab85067cb7c4ae"
+    },
+    {
+      "id": "RUST231-00112",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/cargo-build.txt",
+      "bytes": 203,
+      "sha256": "c21a186b4c2150952ea0cf74b64b105d8496bd4ee0dd06577ec224d670373e8b"
+    },
+    {
+      "id": "RUST231-00113",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/cargo-clippy-r2.txt",
+      "bytes": 941,
+      "sha256": "442dccf8be526b2119e82b9d06eb9e94ecab1d462a68147908b09ecee33eb3eb"
+    },
+    {
+      "id": "RUST231-00114",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/cargo-clippy.txt",
+      "bytes": 203,
+      "sha256": "6dfed21d126a70762b8c5dd1437cfd6116fc3f2bfddf637f90c95cc5667bc89a"
+    },
+    {
+      "id": "RUST231-00115",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/cargo-test-r2.txt",
+      "bytes": 1584,
+      "sha256": "26b1ac470638234434481b4bf6017cf8bd2c029ec9dcdaaad1577cf72b7ec8b8"
+    },
+    {
+      "id": "RUST231-00116",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/cargo-test.txt",
+      "bytes": 1513,
+      "sha256": "99c602c3848a5e1c3d667e186722879401c9fe4642462af3cc099a1183f4061c"
+    },
+    {
+      "id": "RUST231-00117",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/final-build.txt",
+      "bytes": 72,
+      "sha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126"
+    },
+    {
+      "id": "RUST231-00118",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/final-clippy.txt",
+      "bytes": 160,
+      "sha256": "6ee6563a3592104f55e2e3da2b65aeddaa5820e8cf8eafcb7a2f0442dbd9a94a"
+    },
+    {
+      "id": "RUST231-00119",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/final-path-build.txt",
+      "bytes": 1129,
+      "sha256": "bbd4d7eff6871fa059d9e7d905a15f41be9a0b9d9bf658d918d99ae02f5445e8"
+    },
+    {
+      "id": "RUST231-00120",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/final-test.txt",
+      "bytes": 1563,
+      "sha256": "ff91f08f224b05263d628ad034e3195ceda693aa46726a3e64f7eaf2b356cc8e"
+    },
+    {
+      "id": "RUST231-00121",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/bad-pin-config.json",
+      "bytes": 938,
+      "sha256": "2673d457eec94c9ab2556ae118302bdfdacdf1f57dbb6db446e9f3710f2108a3"
+    },
+    {
+      "id": "RUST231-00122",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/bad-pin-process.log",
+      "bytes": 64,
+      "sha256": "50d3b7195294675d7337d66f74a6715c7f54939919be01eee0e496490f6dfae2"
+    },
+    {
+      "id": "RUST231-00123",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/bind-conflict-config.json",
+      "bytes": 949,
+      "sha256": "81ffeeebab3cfb372a66322409dcec40a1c374b6291cbe6e9bc38d4c4957c69a"
+    },
+    {
+      "id": "RUST231-00124",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/bind-conflict-process.log",
+      "bytes": 75,
+      "sha256": "5de354bf7d8a9dbd103a4ff968436a76fc2a6ca3c11357f1feeef237aa29486d"
+    },
+    {
+      "id": "RUST231-00125",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/restart-config.json",
+      "bytes": 938,
+      "sha256": "ca842a1ee6120f13b3a8fdfb07ec7fa41a12e54dd0a3a2a4d3b73f468d02e446"
+    },
+    {
+      "id": "RUST231-00126",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/restart-process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST231-00127",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/restart/rust-events.jsonl",
+      "bytes": 795,
+      "sha256": "a2aa4141c5786b36416ed156955de964218c2ac61da5439e8c717d9b0e862c7c"
+    },
+    {
+      "id": "RUST231-00128",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/restart/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST231-00129",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/transport-config.json",
+      "bytes": 938,
+      "sha256": "ca842a1ee6120f13b3a8fdfb07ec7fa41a12e54dd0a3a2a4d3b73f468d02e446"
+    },
+    {
+      "id": "RUST231-00130",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/transport-process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST231-00131",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/transport/rust-events.jsonl",
+      "bytes": 5658,
+      "sha256": "71aa062d679040f4d1c3d5fa1a6455bee22613dc1d7aca0ef15b5b0deec857d6"
+    },
+    {
+      "id": "RUST231-00132",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/transport/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST231-00133",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r1/verification.json",
+      "bytes": 1744,
+      "sha256": "ec220748db230c77f79b6e466315d9c4984936cd3450afb8e0a2621c7ed9898b"
+    },
+    {
+      "id": "RUST231-00134",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/bad-pin-config.json",
+      "bytes": 938,
+      "sha256": "8e07ffc0d46c9d89f4d2417841f37434591f779e501f5c01857c977583963ffd"
+    },
+    {
+      "id": "RUST231-00135",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/bad-pin-process.log",
+      "bytes": 64,
+      "sha256": "50d3b7195294675d7337d66f74a6715c7f54939919be01eee0e496490f6dfae2"
+    },
+    {
+      "id": "RUST231-00136",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/bind-conflict-config.json",
+      "bytes": 949,
+      "sha256": "8cc6cf95d55cf7b7d1d8fb318bfa1ce6a9682ab34336dc2da64cafa8adf83573"
+    },
+    {
+      "id": "RUST231-00137",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/bind-conflict-process.log",
+      "bytes": 75,
+      "sha256": "5de354bf7d8a9dbd103a4ff968436a76fc2a6ca3c11357f1feeef237aa29486d"
+    },
+    {
+      "id": "RUST231-00138",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/restart-config.json",
+      "bytes": 938,
+      "sha256": "236a199882aedf190320f6788b7e9a5bcc432eb89469457ecc3c60c53080aade"
+    },
+    {
+      "id": "RUST231-00139",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/restart-process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST231-00140",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/restart/rust-events.jsonl",
+      "bytes": 795,
+      "sha256": "454392cf7347728bd22ae72da1661b534965d2830f4a278a18acaf69eef7b38f"
+    },
+    {
+      "id": "RUST231-00141",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/restart/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST231-00142",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/transport-config.json",
+      "bytes": 938,
+      "sha256": "236a199882aedf190320f6788b7e9a5bcc432eb89469457ecc3c60c53080aade"
+    },
+    {
+      "id": "RUST231-00143",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/transport-process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST231-00144",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/transport/rust-events.jsonl",
+      "bytes": 6162,
+      "sha256": "54886660cdd7d5b3e666a3128c1b2745df3a902d908df663ac2b5d4766ad99c8"
+    },
+    {
+      "id": "RUST231-00145",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/transport/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST231-00146",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/kernel-tcp-r2/verification.json",
+      "bytes": 1854,
+      "sha256": "b424d3867daee127bb1871b6fef70408a3c194263e57fcdfc958a571fd6bdbff"
+    },
+    {
+      "id": "RUST231-00147",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-config.json",
+      "bytes": 1131,
+      "sha256": "d46c4e4894cd92161cdbd91933bef7751eee7ebd3a7aaa928877c71cf85e4229"
+    },
+    {
+      "id": "RUST231-00148",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/CALog-before.txt",
+      "bytes": 1696,
+      "sha256": "becadd21eb4f072bed2155970a450292946a713674682b3f2ed0a9bdcaab28e6"
+    },
+    {
+      "id": "RUST231-00149",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/CALog-run.txt",
+      "bytes": 465,
+      "sha256": "ab721e64304d959ce0aaa7c4c553f3a2817be66fd0af2f0511ba27cf5f27f93c"
+    },
+    {
+      "id": "RUST231-00150",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/client.log",
+      "bytes": 316223,
+      "sha256": "557b2122d2d86ecb385e6e80b3a4e51fca972223d122da9557ef4345ad4e2b5d"
+    },
+    {
+      "id": "RUST231-00151",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/debug-commands.txt",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RUST231-00152",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RUST231-00153",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RUST231-00154",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-00.txt",
+      "bytes": 3480,
+      "sha256": "d63784e6d25e751ba7cb7eacffbd84fa746ecf6677c049ad27f95278b7fff57c"
+    },
+    {
+      "id": "RUST231-00155",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-01.txt",
+      "bytes": 4180,
+      "sha256": "47a1a25de9122c7f8945b299f96004d2c7849772718a2f0e512594c6c124c475"
+    },
+    {
+      "id": "RUST231-00156",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-02.txt",
+      "bytes": 4180,
+      "sha256": "6e711420b21b4fdb5c0a617098a097f1970d5e1673b70bd3db16859494bbb7e7"
+    },
+    {
+      "id": "RUST231-00157",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-03.txt",
+      "bytes": 4180,
+      "sha256": "f574d3fd822195684a0404c09f03fc7dd9b34389290c2b88777fba76f7248479"
+    },
+    {
+      "id": "RUST231-00158",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-04.txt",
+      "bytes": 4180,
+      "sha256": "39b0df5878e6ebbd2e17a0e3842b56bcc7a338f33be6519f96cf845627a43a2b"
+    },
+    {
+      "id": "RUST231-00159",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-05.txt",
+      "bytes": 4180,
+      "sha256": "0ad53584d16b0cdf008269d0af40f8dcaea84dede1eed77f1dafdc5b3f45ac39"
+    },
+    {
+      "id": "RUST231-00160",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-06.txt",
+      "bytes": 4180,
+      "sha256": "a56410a9dcc1641996c6592b4ed2ae6196af1ed5cec9b4f94fcb5b30cf8feb42"
+    },
+    {
+      "id": "RUST231-00161",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-07.txt",
+      "bytes": 4180,
+      "sha256": "afa409e16efca1ca945198f24c17e8179eb17b01251026f03437027ef27bd8f8"
+    },
+    {
+      "id": "RUST231-00162",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-08.txt",
+      "bytes": 4180,
+      "sha256": "665ab7fa18f2839d803ac66e24a4320b175a8416ab8ca75835b4076effa2efe1"
+    },
+    {
+      "id": "RUST231-00163",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-09.txt",
+      "bytes": 4180,
+      "sha256": "1820b077894ac97c46a7fd5a02dc5c503f10e3150f2a4c9c2d71c4284fa623dc"
+    },
+    {
+      "id": "RUST231-00164",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-10.txt",
+      "bytes": 4235,
+      "sha256": "a218d426438aaedb8ba9904597b65381d185d5be648faf93afaa2bb90a1c8a87"
+    },
+    {
+      "id": "RUST231-00165",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-11.txt",
+      "bytes": 4235,
+      "sha256": "0f39ff8635353d2fd463147d43861685edd7fdd862a18b3c47ee924598e0e55a"
+    },
+    {
+      "id": "RUST231-00166",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/processes-12.txt",
+      "bytes": 4020,
+      "sha256": "5bc2d9935accc3c5c877446608159dadfc4b7674448564a87e2481608ae72231"
+    },
+    {
+      "id": "RUST231-00167",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/run.json",
+      "bytes": 4622,
+      "sha256": "cdea2ae112b263fa80620fc64c3e80bdbe8cccdc97a7e268f0ba7a3527b49d85"
+    },
+    {
+      "id": "RUST231-00168",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/rust-events.jsonl",
+      "bytes": 2669,
+      "sha256": "a79824df0bebc148a07d4a5fac81636bade0c5e6c9f4e391c58616cc5902b623"
+    },
+    {
+      "id": "RUST231-00169",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST231-00170",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST231-00171",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST231-00172",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RUST231-00173",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RUST231-00174",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "RUST231-00175",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-06.png",
+      "bytes": 198305,
+      "sha256": "9b10549412e06848d54d6cf6d91ca666ab12e4158385b5e17a2c8b10d6314b83"
+    },
+    {
+      "id": "RUST231-00176",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-07.png",
+      "bytes": 404349,
+      "sha256": "a257f6c2b3168c818d75204837f79fa6b45e297fbf82841dd1f315123b81d615"
+    },
+    {
+      "id": "RUST231-00177",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-08.png",
+      "bytes": 404322,
+      "sha256": "c89d95860a7b68feae9bde2961bb9b8608b9fdf1d8a445549f64ef29eceda272"
+    },
+    {
+      "id": "RUST231-00178",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-09.png",
+      "bytes": 404321,
+      "sha256": "63eaad48d7138d68308e9a7163d2e59cf2662fa37dea7d5d7bed00397707327a"
+    },
+    {
+      "id": "RUST231-00179",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-10.png",
+      "bytes": 476553,
+      "sha256": "712f5a172c02c5a8d7937e3aa949a060f174b148654eb8b586df9b4fc34dd8af"
+    },
+    {
+      "id": "RUST231-00180",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-11.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "RUST231-00181",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/screen-12.png",
+      "bytes": 3968,
+      "sha256": "9650c1578e95beb082e494b362462fa110a9865d14a58c2f961579486c665760"
+    },
+    {
+      "id": "RUST231-00182",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST231-00183",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST231-00184",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/tcp-capture-index.json",
+      "bytes": 2025227,
+      "sha256": "21b4f5cba436ec9b3320294142ad648e6aaa101a82a8203ffee74570de290829"
+    },
+    {
+      "id": "RUST231-00185",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/tcp-rust.pcap",
+      "bytes": 1551164,
+      "sha256": "6b25eed880ca21c0335b6524daa5b9dc4c91c512c5f73572cc4f44741fbf91b0"
+    },
+    {
+      "id": "RUST231-00186",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RUST231-00187",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST231-00188",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST231-00189",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00190",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00191",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00192",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00193",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00194",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00195",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00196",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-10.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "RUST231-00197",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-11.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "RUST231-00198",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/windows-12.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "RUST231-00199",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/wineboot.log",
+      "bytes": 64262,
+      "sha256": "84ad64d6ab7e5ebf410d456863352626a5a5e827b9f548b73bb7a0ef3f710a7b"
+    },
+    {
+      "id": "RUST231-00200",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/cycles/xvfb.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST231-00201",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/failure-review.json",
+      "bytes": 910,
+      "sha256": "f089e39402bdee83d7d470570b7bb4c8981f80ca9957b57b975e20d4765f3a4b"
+    },
+    {
+      "id": "RUST231-00202",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/launch-exit.json",
+      "bytes": 73,
+      "sha256": "20e76d8a9429441b469291425f45b766f48ff78722a91427a2a5355bfc8a1c2a"
+    },
+    {
+      "id": "RUST231-00203",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/launch.txt",
+      "bytes": 4012,
+      "sha256": "8017c728977f789ded3cf97a461223b040efd141d7224e9fdee0a36303120184"
+    },
+    {
+      "id": "RUST231-00204",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/raw-seal.json",
+      "bytes": 11511,
+      "sha256": "2ef37071b15fa9c9d0cf1faf7347bc4dfce5fd821d80fe2684a7dba13cbf8268"
+    },
+    {
+      "id": "RUST231-00205",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/recipe.json",
+      "bytes": 981,
+      "sha256": "7402b1149e50c3f96010420ee8a7b21a322be028b2b9ad4224592cc0ba7c6178"
+    },
+    {
+      "id": "RUST231-00206",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-error-retry/runtime-preflight.json",
+      "bytes": 5255,
+      "sha256": "f87b280b673e0e0e19f43d178e1283bf5df8befd2130e4a827501d47e72f9c02"
+    },
+    {
+      "id": "RUST231-00207",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-launch.txt",
+      "bytes": 226,
+      "sha256": "5e6acf643151403341281d46950b04b3cda164bb1a139aead652605eb7679f85"
+    },
+    {
+      "id": "RUST231-00208",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/000-prepare_rust_native.py",
+      "bytes": 5048,
+      "sha256": "3d5f3f22f4e50d055236f8753bf48ec336ae9ab497d4fbb30355957c12ef7b9b"
+    },
+    {
+      "id": "RUST231-00209",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/001-wine_probe_rust_m1.py",
+      "bytes": 21412,
+      "sha256": "cba9c9b5d3fed703eafe3722ef3bd00a9a162745cc74917ee52e8a5279d31355"
+    },
+    {
+      "id": "RUST231-00210",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/002-auth-retry.gdb",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RUST231-00211",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/003-run_rust_m1.py",
+      "bytes": 831,
+      "sha256": "0d3228c017b2d2bdd42b1cb40009651919ad0fbe188ec96691b4fbaf15b5c448"
+    },
+    {
+      "id": "RUST231-00212",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/004-seal_rust_m1.py",
+      "bytes": 1410,
+      "sha256": "4135f7b0f8eeabdeeaf9c8f830c21a25e41028ccc7209b2f598d1de134561beb"
+    },
+    {
+      "id": "RUST231-00213",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/005-kr-service",
+      "bytes": 26728432,
+      "sha256": "a744372b8850feb4fc95563d1d5c747ba27497ec2c71ffea349551e680d7d0b1"
+    },
+    {
+      "id": "RUST231-00214",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/006-native-config.json",
+      "bytes": 1131,
+      "sha256": "d46c4e4894cd92161cdbd91933bef7751eee7ebd3a7aaa928877c71cf85e4229"
+    },
+    {
+      "id": "RUST231-00215",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/007-capture_tcp_rust.py",
+      "bytes": 1541,
+      "sha256": "39aec75eb9a7292db2def44773b7f8a6aeae9d99243d45180ab56e641b40d528"
+    },
+    {
+      "id": "RUST231-00216",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/008-recipe.json",
+      "bytes": 981,
+      "sha256": "7402b1149e50c3f96010420ee8a7b21a322be028b2b9ad4224592cc0ba7c6178"
+    },
+    {
+      "id": "RUST231-00217",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/009-native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "RUST231-00218",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/010-CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "RUST231-00219",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/011-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST231-00220",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/012-export_rust_profile.py",
+      "bytes": 2133,
+      "sha256": "476c7926239549381c1c5963bdcebed8fa688937fab4f3d77e07433ac5df9b8f"
+    },
+    {
+      "id": "RUST231-00221",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/013-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "RUST231-00222",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/014-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "RUST231-00223",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/015-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RUST231-00224",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/016-Cargo.toml",
+      "bytes": 418,
+      "sha256": "9dfd7a1b7cbc63e23ad3f20d494216c379232733ef2971152e69720cb5e7a329"
+    },
+    {
+      "id": "RUST231-00225",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/017-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST231-00226",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/018-.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST231-00227",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/019-Cargo.lock",
+      "bytes": 7492,
+      "sha256": "e6179670ad3f0739baa1260e2f059218da5e0254c4697c26df8ac4362294e927"
+    },
+    {
+      "id": "RUST231-00228",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/020-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST231-00229",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/021-Cargo.toml",
+      "bytes": 281,
+      "sha256": "67927aa024cfc537e96ef3afc83aa12e9c89f68aeb704bc5c45bf0ffdc02cbba"
+    },
+    {
+      "id": "RUST231-00230",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/022-lib.rs",
+      "bytes": 14376,
+      "sha256": "1c187fac887d6dc196c14371a610e259a42d0b6b863f7a477f09eae6c6f40c32"
+    },
+    {
+      "id": "RUST231-00231",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/023-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST231-00232",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/024-lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST231-00233",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/025-native_vectors.rs",
+      "bytes": 3921,
+      "sha256": "75e3516e4ffcb55ef4db24cbfa4a7314d7c73b2ee7b907ce71e230ff6196cf99"
+    },
+    {
+      "id": "RUST231-00234",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-frozen-inputs/026-README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST231-00235",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-r1-input-retention.json",
+      "bytes": 8142,
+      "sha256": "4ca8e8b4152a01cccec66f184011f13dfd6a2920d1d421c070a99504eff2627e"
+    },
+    {
+      "id": "RUST231-00236",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/native-vector-provenance.json",
+      "bytes": 744,
+      "sha256": "0f94d8c7d563e6f0fc8bb605f6b8146e791c0ecd2113203350428aee2c4286a8"
+    },
+    {
+      "id": "RUST231-00237",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/python-baseline.tar",
+      "bytes": 1013760,
+      "sha256": "a8be64455098fd01c8234c5eca6ccfb28f4f3f4745cdcd6776efc873475301da"
+    },
+    {
+      "id": "RUST231-00238",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/source-first.json",
+      "bytes": 3114,
+      "sha256": "3e40c2441e8865167caede729046e84b61eb5e7fe9166686fc1164521edcd1c2"
+    },
+    {
+      "id": "RUST231-00239",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST231-00240",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/Cargo.lock",
+      "bytes": 7492,
+      "sha256": "e6179670ad3f0739baa1260e2f059218da5e0254c4697c26df8ac4362294e927"
+    },
+    {
+      "id": "RUST231-00241",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/Cargo.toml",
+      "bytes": 418,
+      "sha256": "9dfd7a1b7cbc63e23ad3f20d494216c379232733ef2971152e69720cb5e7a329"
+    },
+    {
+      "id": "RUST231-00242",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/crates/kr-service/Cargo.toml",
+      "bytes": 281,
+      "sha256": "67927aa024cfc537e96ef3afc83aa12e9c89f68aeb704bc5c45bf0ffdc02cbba"
+    },
+    {
+      "id": "RUST231-00243",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/crates/kr-service/src/lib.rs",
+      "bytes": 14376,
+      "sha256": "1c187fac887d6dc196c14371a610e259a42d0b6b863f7a477f09eae6c6f40c32"
+    },
+    {
+      "id": "RUST231-00244",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/crates/kr-service/src/main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST231-00245",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/crates/kr-wire/Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST231-00246",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/crates/kr-wire/src/lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST231-00247",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/crates/kr-wire/tests/README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST231-00248",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/crates/kr-wire/tests/native_vectors.rs",
+      "bytes": 3921,
+      "sha256": "75e3516e4ffcb55ef4db24cbfa4a7314d7c73b2ee7b907ce71e230ff6196cf99"
+    },
+    {
+      "id": "RUST231-00249",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r1/workspace/rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST231-00250",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/auth-retry.gdb",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RUST231-00251",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/capture_tcp_rust.py",
+      "bytes": 1541,
+      "sha256": "39aec75eb9a7292db2def44773b7f8a6aeae9d99243d45180ab56e641b40d528"
+    },
+    {
+      "id": "RUST231-00252",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-config.json",
+      "bytes": 1131,
+      "sha256": "d46c4e4894cd92161cdbd91933bef7751eee7ebd3a7aaa928877c71cf85e4229"
+    },
+    {
+      "id": "RUST231-00253",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/capture-limitation.json",
+      "bytes": 970,
+      "sha256": "2e46ef969fde3a8d671c90d36807b5e70b9d6c770b76129251ab0a6432c885a4"
+    },
+    {
+      "id": "RUST231-00254",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/CALog-before.txt",
+      "bytes": 1696,
+      "sha256": "becadd21eb4f072bed2155970a450292946a713674682b3f2ed0a9bdcaab28e6"
+    },
+    {
+      "id": "RUST231-00255",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/CALog-run.txt",
+      "bytes": 548,
+      "sha256": "004f68e2bdd7961cb39c73633a28a704e79eee21c02d57936274cc38aed8dc14"
+    },
+    {
+      "id": "RUST231-00256",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/client.log",
+      "bytes": 129698,
+      "sha256": "7da6af4ebcfd6a2c986e5050b9ab24dc0fa4e6ce6559053e8d2565e1971fef61"
+    },
+    {
+      "id": "RUST231-00257",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/close-error-modal-after.png",
+      "bytes": 504942,
+      "sha256": "18d45f32468a5d7be3f54c08863ba8f5b20de589ad731b3c3cf39ea91d2049ae"
+    },
+    {
+      "id": "RUST231-00258",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/close-error-modal-before.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "RUST231-00259",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/confirm-login-after.png",
+      "bytes": 404017,
+      "sha256": "de8bce0dca19cafc69f707c2d52e6a2699ec3492695a4366207ed7498406efa7"
+    },
+    {
+      "id": "RUST231-00260",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/confirm-login-before.png",
+      "bytes": 504942,
+      "sha256": "18d45f32468a5d7be3f54c08863ba8f5b20de589ad731b3c3cf39ea91d2049ae"
+    },
+    {
+      "id": "RUST231-00261",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/debug-commands.txt",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RUST231-00262",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RUST231-00263",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RUST231-00264",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-00.txt",
+      "bytes": 3483,
+      "sha256": "52bfa05e156cda033c16611ff83d29096246b1abeeb9c2ce40c2d82644516f5e"
+    },
+    {
+      "id": "RUST231-00265",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-01.txt",
+      "bytes": 4183,
+      "sha256": "39b254dbe713283694fecd61c899628dda2aa6bb3f1d595a1b7300dd165e306f"
+    },
+    {
+      "id": "RUST231-00266",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-02.txt",
+      "bytes": 4183,
+      "sha256": "b87aa4f8560072b5987d4cee56db1eaca4614fae8aa52cff15636477b2242161"
+    },
+    {
+      "id": "RUST231-00267",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-03.txt",
+      "bytes": 4183,
+      "sha256": "f66254a198a2ad910d34874b4eca82cd0cc264f372559fcb29cb094b907da7ed"
+    },
+    {
+      "id": "RUST231-00268",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-04.txt",
+      "bytes": 4183,
+      "sha256": "d9de26394a5f5a7492ecb7af0a65f4d3a1a5f9a00e9619af55197f25be0cef85"
+    },
+    {
+      "id": "RUST231-00269",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-05.txt",
+      "bytes": 4183,
+      "sha256": "608398f95086b0636d842a143cd7010318f60a21010e5b468080f88f46ab0bbc"
+    },
+    {
+      "id": "RUST231-00270",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-06.txt",
+      "bytes": 4183,
+      "sha256": "e7bb0555d743ef9633518cb78965b300b9b6ffc47423604762b4aea22fcbac4c"
+    },
+    {
+      "id": "RUST231-00271",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-07.txt",
+      "bytes": 4183,
+      "sha256": "71f24791507aef7b6afe96be1d23b53d76b5294beb465fb5c75a8822f19b2c5a"
+    },
+    {
+      "id": "RUST231-00272",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-08.txt",
+      "bytes": 4183,
+      "sha256": "6081100efc36a549dfbcf89b8c1c78e01c73c9409cb5ffb4411ad865fa8192df"
+    },
+    {
+      "id": "RUST231-00273",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-09.txt",
+      "bytes": 4183,
+      "sha256": "cab6b6b27327736431947af5b40ae79b7258efb4f85764d8d55fa0bc6e866a59"
+    },
+    {
+      "id": "RUST231-00274",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-10.txt",
+      "bytes": 4183,
+      "sha256": "a54d84dbd1197f7d7ac8a246a34ea35cb6cf9b476bf137c736b609693fd3d7fc"
+    },
+    {
+      "id": "RUST231-00275",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-11.txt",
+      "bytes": 4183,
+      "sha256": "0ccbc9a628ca84416fb239d793e6fad85632a4ced60c201fc2c4aa9a0cab3cb1"
+    },
+    {
+      "id": "RUST231-00276",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-12.txt",
+      "bytes": 4183,
+      "sha256": "e828b2bc8c4ba67b92c16a819820648b1cc7139849271ebfb0cac863f4e11f62"
+    },
+    {
+      "id": "RUST231-00277",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-13.txt",
+      "bytes": 4183,
+      "sha256": "a27ba9ee225638174b1f75d7359a82d2da91e54894047e0c27e8108d63bbba92"
+    },
+    {
+      "id": "RUST231-00278",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/processes-14.txt",
+      "bytes": 4183,
+      "sha256": "a9024e663ca8fe7ef1964d1b238349ae81f8cab7a438149194b8f8e9b403f2d6"
+    },
+    {
+      "id": "RUST231-00279",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/run.json",
+      "bytes": 5487,
+      "sha256": "816d50a2e99bee8c0acea790bdaeeec474da987716244ceb0c07c2fcffe07424"
+    },
+    {
+      "id": "RUST231-00280",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/rust-events.jsonl",
+      "bytes": 4680,
+      "sha256": "e222e55658b8b01fd777bb76304a59cedcff6e69dc531cc9a209dc78e63272df"
+    },
+    {
+      "id": "RUST231-00281",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST231-00282",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST231-00283",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST231-00284",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RUST231-00285",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "RUST231-00286",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-05.png",
+      "bytes": 191427,
+      "sha256": "637aedb21cd25df5263d99401e7a838add696298b7e5033e1e973fae6c801e8b"
+    },
+    {
+      "id": "RUST231-00287",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-06.png",
+      "bytes": 197155,
+      "sha256": "95ee6fb63898e745d1f1e14f512e5c84106bf5a34b14581dc3d96d2029be88db"
+    },
+    {
+      "id": "RUST231-00288",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-07.png",
+      "bytes": 404719,
+      "sha256": "9761bca4741bb4338a2b1fe3062f436b20f4f1deb77d1dbdc74642a99c3ed659"
+    },
+    {
+      "id": "RUST231-00289",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-08.png",
+      "bytes": 404689,
+      "sha256": "c7e1feea793f508bd33e9d4b1dde5c4dc29a9d1b14af723217f7ac9b450e9888"
+    },
+    {
+      "id": "RUST231-00290",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-09.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "RUST231-00291",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-10.png",
+      "bytes": 404711,
+      "sha256": "3544f0e2616a4c3d7d7964c8f43b6615581cf230d081b147522b85b632233e7f"
+    },
+    {
+      "id": "RUST231-00292",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-11.png",
+      "bytes": 404017,
+      "sha256": "de8bce0dca19cafc69f707c2d52e6a2699ec3492695a4366207ed7498406efa7"
+    },
+    {
+      "id": "RUST231-00293",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-12.png",
+      "bytes": 404025,
+      "sha256": "a101286d9fbfbcb864454eb85374ee873721a607807b56eca7e6e13cda04f10d"
+    },
+    {
+      "id": "RUST231-00294",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-13.png",
+      "bytes": 404034,
+      "sha256": "b2ae46459b3d9e23148ddc8521916ce98301e8628ec50eda4fca141bd5e80176"
+    },
+    {
+      "id": "RUST231-00295",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/screen-14.png",
+      "bytes": 404041,
+      "sha256": "ce92a0135ada8d1427876ba4b3f63d98b9e9041f645874689576a4b3baa0bf3a"
+    },
+    {
+      "id": "RUST231-00296",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST231-00297",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST231-00298",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/tcp-capture-index.json",
+      "bytes": 3650847,
+      "sha256": "1cfca8a5fcc88e57849bc27ba8e8057c4a3fbb0010d87aad1782ba44c8f59d47"
+    },
+    {
+      "id": "RUST231-00299",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/tcp-rust.pcap",
+      "bytes": 2303722,
+      "sha256": "3c4931235baac1eca7fa36fc2190340c2c6d9a91fc07e7c0e30e66283b642512"
+    },
+    {
+      "id": "RUST231-00300",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RUST231-00301",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST231-00302",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST231-00303",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00304",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00305",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00306",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00307",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00308",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00309",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00310",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00311",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00312",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00313",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00314",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00315",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/wineboot.log",
+      "bytes": 64262,
+      "sha256": "8c9258f2909e973833f417a4eeebc274f78f2b56a05ccf7679c3dfdc9b839e34"
+    },
+    {
+      "id": "RUST231-00316",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/cycles/xvfb.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST231-00317",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/launch-exit.json",
+      "bytes": 73,
+      "sha256": "7079ae2855126107bf664d5701d5fa1e0b2ac8190f20c1a47e3f292942bb310b"
+    },
+    {
+      "id": "RUST231-00318",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/launch.txt",
+      "bytes": 4679,
+      "sha256": "09429afaa46ba638d66e059d7c0a4d128a94054a5b70977a79321a9d3a2fe0e0"
+    },
+    {
+      "id": "RUST231-00319",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/raw-seal.json",
+      "bytes": 13645,
+      "sha256": "38f6a4853ee7bddf5334505a23732fabc6b9cbdd38dca2905a6abeb02ddfd882"
+    },
+    {
+      "id": "RUST231-00320",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/recipe.json",
+      "bytes": 984,
+      "sha256": "ff0eeff745146cb28a0e893d91163b117bedb815c97339c6bfd34a67bc8ca9ba"
+    },
+    {
+      "id": "RUST231-00321",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r2/native-error-retry/runtime-preflight.json",
+      "bytes": 5267,
+      "sha256": "b4653f954e5dfdf406a4c58b65cc3fce77c582e5115b45109f46b9d8720ca6f8"
+    },
+    {
+      "id": "RUST231-00322",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/auth-retry.gdb",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RUST231-00323",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/capture_tcp_rust.py",
+      "bytes": 1642,
+      "sha256": "464f9ca88992d118b45a6efceb5d50e5dda931e3abb709e778a73149f38b84cc"
+    },
+    {
+      "id": "RUST231-00324",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-config.json",
+      "bytes": 1131,
+      "sha256": "d46c4e4894cd92161cdbd91933bef7751eee7ebd3a7aaa928877c71cf85e4229"
+    },
+    {
+      "id": "RUST231-00325",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/CALog-before.txt",
+      "bytes": 1696,
+      "sha256": "becadd21eb4f072bed2155970a450292946a713674682b3f2ed0a9bdcaab28e6"
+    },
+    {
+      "id": "RUST231-00326",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/CALog-run.txt",
+      "bytes": 466,
+      "sha256": "650ceee47fb2599706bd05102489468c28b4275b15e3ddfd65c97d2bfcb1172f"
+    },
+    {
+      "id": "RUST231-00327",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/client.log",
+      "bytes": 130403,
+      "sha256": "677d41d07cd78a8d090f2d51b7737b4d1b2ffee9dec6a63dad8da1faa3c8b041"
+    },
+    {
+      "id": "RUST231-00328",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/close-error-modal-after.png",
+      "bytes": 504936,
+      "sha256": "30e06ec6a3f75c97edeb33714fcd14cbf9fbd5d4e0177a9d58ff8376b320d61c"
+    },
+    {
+      "id": "RUST231-00329",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/close-error-modal-before.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "RUST231-00330",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/confirm-login-after.png",
+      "bytes": 404041,
+      "sha256": "ce92a0135ada8d1427876ba4b3f63d98b9e9041f645874689576a4b3baa0bf3a"
+    },
+    {
+      "id": "RUST231-00331",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/confirm-login-before.png",
+      "bytes": 504942,
+      "sha256": "18d45f32468a5d7be3f54c08863ba8f5b20de589ad731b3c3cf39ea91d2049ae"
+    },
+    {
+      "id": "RUST231-00332",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/debug-commands.txt",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "RUST231-00333",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "RUST231-00334",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RUST231-00335",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-00.txt",
+      "bytes": 3483,
+      "sha256": "ab671ae5e3e3380aeb21ff952aeed8f586396b86a3c17dc4bd35c50bd9c53ff2"
+    },
+    {
+      "id": "RUST231-00336",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-01.txt",
+      "bytes": 4183,
+      "sha256": "31f026b6bd963e042799f3d097d27b458f240f959ffed50806413956765e94f1"
+    },
+    {
+      "id": "RUST231-00337",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-02.txt",
+      "bytes": 4183,
+      "sha256": "3648f74d31d92651135af245657f1177cdab0af5adf09def34abe7ef4c318b8f"
+    },
+    {
+      "id": "RUST231-00338",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-03.txt",
+      "bytes": 4183,
+      "sha256": "24a48130c9df245bcd3c49effb19dfac038c863d383da2f77f2e7201fb3ac81c"
+    },
+    {
+      "id": "RUST231-00339",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-04.txt",
+      "bytes": 4183,
+      "sha256": "154fe4bf7f6c28a0f69c9b0a9380d630cc6bab8fb761bde89027593e8e97208d"
+    },
+    {
+      "id": "RUST231-00340",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-05.txt",
+      "bytes": 4183,
+      "sha256": "b2a9b256a6c26086a79f43fdb21827255113c2a6906a3b0da9ebd56d5317080c"
+    },
+    {
+      "id": "RUST231-00341",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-06.txt",
+      "bytes": 4183,
+      "sha256": "6b602abf0f4df3a593457cd5f453540d9708f6d53ad71fc3eb1a44b0853bc1ed"
+    },
+    {
+      "id": "RUST231-00342",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-07.txt",
+      "bytes": 4183,
+      "sha256": "a38b319573bc828b1630cfd60e18ee6be14a3b55393acc24f68f64aa20841290"
+    },
+    {
+      "id": "RUST231-00343",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-08.txt",
+      "bytes": 4183,
+      "sha256": "27f691f30924cad58496f8e5ca4af615d3e077ef824d57b27aa3aad1cfb50aa1"
+    },
+    {
+      "id": "RUST231-00344",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-09.txt",
+      "bytes": 4183,
+      "sha256": "e472e32365c72916d5cc1d040060c58187092d173f51f945236a56c74e8ef6fb"
+    },
+    {
+      "id": "RUST231-00345",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-10.txt",
+      "bytes": 4183,
+      "sha256": "9b48d142183f019b5528db68894b9cc5d88fcc56d4f0c69b546876439a74a58f"
+    },
+    {
+      "id": "RUST231-00346",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/processes-11.txt",
+      "bytes": 4183,
+      "sha256": "555851a7085353faa78e09eb645003ba7f65f81c496215a05d7ad6458f2f4f40"
+    },
+    {
+      "id": "RUST231-00347",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/run.json",
+      "bytes": 5266,
+      "sha256": "cbddcf23fd6d9d79f98dec6d7d76ad76dd2c34d1f6e3ab47f861372bb64c9d46"
+    },
+    {
+      "id": "RUST231-00348",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/rust-events.jsonl",
+      "bytes": 4168,
+      "sha256": "483f08be8d2440f0fa952f301a4d08eb1ef4505aeb594b1d98f3b130ce3298df"
+    },
+    {
+      "id": "RUST231-00349",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST231-00350",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST231-00351",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST231-00352",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "RUST231-00353",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-04.png",
+      "bytes": 13299,
+      "sha256": "49f8ab22c67fea287d52dbf7ece5479bb380d1202b116a10a975de95eb67b352"
+    },
+    {
+      "id": "RUST231-00354",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-05.png",
+      "bytes": 193700,
+      "sha256": "cd0294a374a38dece2ac45c18d6b40744f7f18e92689339bd97427e8c254eb41"
+    },
+    {
+      "id": "RUST231-00355",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-06.png",
+      "bytes": 172993,
+      "sha256": "a16161792acf2d5464e14c01c4e122ad03dbb280780e566971217af4e45acdbd"
+    },
+    {
+      "id": "RUST231-00356",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-07.png",
+      "bytes": 404711,
+      "sha256": "3544f0e2616a4c3d7d7964c8f43b6615581cf230d081b147522b85b632233e7f"
+    },
+    {
+      "id": "RUST231-00357",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-08.png",
+      "bytes": 404017,
+      "sha256": "de8bce0dca19cafc69f707c2d52e6a2699ec3492695a4366207ed7498406efa7"
+    },
+    {
+      "id": "RUST231-00358",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-09.png",
+      "bytes": 404025,
+      "sha256": "a101286d9fbfbcb864454eb85374ee873721a607807b56eca7e6e13cda04f10d"
+    },
+    {
+      "id": "RUST231-00359",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-10.png",
+      "bytes": 404034,
+      "sha256": "b2ae46459b3d9e23148ddc8521916ce98301e8628ec50eda4fca141bd5e80176"
+    },
+    {
+      "id": "RUST231-00360",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/screen-11.png",
+      "bytes": 404041,
+      "sha256": "ce92a0135ada8d1427876ba4b3f63d98b9e9041f645874689576a4b3baa0bf3a"
+    },
+    {
+      "id": "RUST231-00361",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST231-00362",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST231-00363",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/tcp-capture-index.json",
+      "bytes": 32905,
+      "sha256": "a3aada405e7dcb91935a274bc909ea573ff9706d397a648ff3903a825a09119f"
+    },
+    {
+      "id": "RUST231-00364",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/tcp-rust.pcap",
+      "bytes": 11016,
+      "sha256": "a17ac7ffbdac6dfcdda8752c905cc1d1e20c7d30dc4b68513a3fa54f49d4f7cc"
+    },
+    {
+      "id": "RUST231-00365",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RUST231-00366",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST231-00367",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST231-00368",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00369",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00370",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00371",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST231-00372",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00373",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00374",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00375",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00376",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST231-00377",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/wineboot.log",
+      "bytes": 64262,
+      "sha256": "be1f2a4f46c25160712d91e806d0e9febed45810a011b01adcc6b5cbc8ef13ab"
+    },
+    {
+      "id": "RUST231-00378",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/cycles/xvfb.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST231-00379",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/launch-exit.json",
+      "bytes": 73,
+      "sha256": "b23d7362778aa19b51ce9e82ce45300664f0f1549d3c85b2f6adb9bdf52d4d89"
+    },
+    {
+      "id": "RUST231-00380",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/launch.txt",
+      "bytes": 4524,
+      "sha256": "5319ab01560b2a605a470866208195063292c38fc70807def662c47649d915ef"
+    },
+    {
+      "id": "RUST231-00381",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/raw-seal.json",
+      "bytes": 11769,
+      "sha256": "883f9403a66211da9f179b0b7c7f21d380c92bf02c4edb56c363b9af0c8cb724"
+    },
+    {
+      "id": "RUST231-00382",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/recipe.json",
+      "bytes": 984,
+      "sha256": "8d59b30d82fa769885959b95dfee6dec16761a2e1b9235a01a1c80c006034e6a"
+    },
+    {
+      "id": "RUST231-00383",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/native-error-retry/runtime-preflight.json",
+      "bytes": 5267,
+      "sha256": "d1892d69090b5c6f37f44d5e4cd37e24da0b92f722752649a1bc4f6073c6020b"
+    },
+    {
+      "id": "RUST231-00384",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/ui-observer-review.json",
+      "bytes": 980,
+      "sha256": "7aeff70a8cfc07afb947a797fb26b8530fc5757293dcc2a95ea48cee55271595"
+    },
+    {
+      "id": "RUST231-00385",
+      "kind": "local",
+      "path": "local/research/codex/rust-m1-r3/verification.json",
+      "bytes": 7183,
+      "sha256": "834332df2e14807c7928414af6ffdf5aa903b0b2a1491c2c8f1073a7820e5041"
+    },
+    {
+      "id": "RUST231-00386",
+      "kind": "local",
+      "path": "local/research/codex/rust-native-r2-launch.txt",
+      "bytes": 226,
+      "sha256": "e33303611491d5e4969986dc2e1e734fabaf3ce7104651599c620baf2cbd5651"
+    },
+    {
+      "id": "RUST231-00387",
+      "kind": "local",
+      "path": "local/research/codex/rust-native-r3-launch.txt",
+      "bytes": 226,
+      "sha256": "d014195d97fb9344517345b80485dcef95135d0d756f262a42bd458ef8008bbd"
+    },
+    {
+      "id": "RUST231-00388",
+      "kind": "local",
+      "path": "local/research/codex/seal_rust_m1.py",
+      "bytes": 1410,
+      "sha256": "4135f7b0f8eeabdeeaf9c8f830c21a25e41028ccc7209b2f598d1de134561beb"
+    },
+    {
+      "id": "RUST231-00389",
+      "kind": "local",
+      "path": "local/research/codex/seal_rust_m1_r2.py",
+      "bytes": 1410,
+      "sha256": "4135f7b0f8eeabdeeaf9c8f830c21a25e41028ccc7209b2f598d1de134561beb"
+    },
+    {
+      "id": "RUST231-00390",
+      "kind": "local",
+      "path": "local/research/codex/seal_rust_m1_r3.py",
+      "bytes": 1410,
+      "sha256": "4135f7b0f8eeabdeeaf9c8f830c21a25e41028ccc7209b2f598d1de134561beb"
+    },
+    {
+      "id": "RUST231-00391",
+      "kind": "local",
+      "path": "local/research/codex/sync_cp231.py",
+      "bytes": 17686,
+      "sha256": "2099c35e9a50252cad7f78f07b7d7f08440855300cb4d2d4d2b8831002d9af4a"
+    },
+    {
+      "id": "RUST231-00392",
+      "kind": "local",
+      "path": "local/research/codex/verify_rust_native.py",
+      "bytes": 8047,
+      "sha256": "4ad8d5ed43dd33f8e5b523f4fff595dbe88fa58c3f31991c4d473a1c239d2ab0"
+    },
+    {
+      "id": "RUST231-00393",
+      "kind": "local",
+      "path": "local/research/codex/verify_rust_native_r3.py",
+      "bytes": 8047,
+      "sha256": "5ee0a87b9abe2a9929c92225b15edbe2dbbb5ac34632b5a6dd73c5d3cd2cf271"
+    },
+    {
+      "id": "RUST231-00394",
+      "kind": "local",
+      "path": "local/research/codex/verify_rust_native_r3_final.py",
+      "bytes": 8322,
+      "sha256": "2ee6918400cf8c22e96aae8f802114e1c487eb7a375e7b7b5a94660c25a6cc58"
+    },
+    {
+      "id": "RUST231-00395",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_rust_m1.py",
+      "bytes": 21412,
+      "sha256": "cba9c9b5d3fed703eafe3722ef3bd00a9a162745cc74917ee52e8a5279d31355"
+    },
+    {
+      "id": "RUST231-00396",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_rust_m1_r2.py",
+      "bytes": 21412,
+      "sha256": "2d7debfc344a19158fe7478e56825a8da81375a981e8d53403b216016e359179"
+    },
+    {
+      "id": "RUST231-00397",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_rust_m1_r3.py",
+      "bytes": 21412,
+      "sha256": "f59050120e9e1d35e7898f585c4ded4ffa83f3349828154dcb1342a72aab4dd7"
+    }
+  ]
+}
