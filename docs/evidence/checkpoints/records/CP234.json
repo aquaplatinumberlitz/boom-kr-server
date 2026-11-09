@@ -1,0 +1,292 @@
+{
+  "id": "CP234",
+  "previous": "CP233",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T09:11:36.898024+00:00",
+  "context_commit": "b10952fb75e62781fdc1817ad79acb39a11ec937",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M2/KRE-074: portknownfixed2room/membership-host-Ready-loadingbarrier andnativehostBack/rejoin/withheldACK/clock-spawn;retainnegative-version/activeEOFcleanupgap, do notoverclaimM2.",
+  "scope": "Rustfixed2roompositivepath+boundedqueue/model/wireadapters;noBattle/accountauth/DB. Five152rawinclfailedport/title/ancillary/controllerruns;nativeR5scopebeforeownedcleanup;14Rusttests/8roomTCP/16binding/14M1;no newfunction/SDK/clientpatch.",
+  "artifacts": [
+    {
+      "name": "NativeKR00967originalunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "e9WinecopyM2",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "Rustrootfixedroomnative-testedbinary",
+      "sha256": "554fa5b318ab58bfa93bd27933674d8ab73cd739fe586cb89d6515105766a04b"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/room.rs/typedmembershiphostReadybarriermodel;room_io.rs/queuefences+knownwireadapters;room_wire.rs/IDslotstate-title-selector-peer;lib.rs/inbox-timerdelivery;tools/test_rust_room.py/8kernelcases.",
+    "R5run861db8a041f009d6ee9071a0e80494192a900970fdbf1d1afb014b23cb38e55e/40raw/67.229003817s/PCAP334/56reply/alltuples/hold8.278646918/native121129/spawn-clock/B99held3.363547654s/no197beforebothactualACK.",
+    "R1–4failures23+27+25+37rawpreserved;R4harness0nothealthyhold;R5strictallclosuresEOFfail→postholdscopedverification/FINaftercompletion.",
+    "AUD067through232/nextCP236;CP233PR304mergeb10952f;8WIPbyteexact."
+  ],
+  "findings": [
+    {
+      "summary": "Rustfixed2roomowner/slot/host/Ready/setup/visitroundmodel;reserveallboundedrecipientqueueentriesbeforestatecommit,queuedmembership-subject-roundfences/current106110projection. ASCIIinitiallisting→actualboundedopaqueCP949titleecho/selector0-1;IPoperator/requeststagebindingnotauth. NoatomicTCP/rawoldACKproof.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-fixed-room",
+      "evidence": [
+        "RUST234-00036",
+        "RUST234-00037",
+        "RUST234-00038",
+        "RUST234-00670"
+      ],
+      "limits": "M2positivefixedroom/lifecycle/barrier/clockspawn only, negative-version/activepeerEOFcleanup/manualacceptance remain. NoBattle/accountauth/DB/generalroom/dynamicoccupancy/fullcapacity/originalauthority/fullM2/fullservice/production. Titlecarrieropaque/controlfree notfullCP949validation. IPoperatornotaccountauth. Internet thật chưa kiểm. Five152rawfrozen/sealed/cleanup0;R5postholdreportdenial/shutdowntimeoutkept;8WIPpreserved/waivednotapproved/nextaudit236."
+    },
+    {
+      "summary": "TwoactualRustKR/e9/Wine auth137/291→createjoin/native106204/1106/ownIDslots0-1→hostA86/B107clearID1/chiefgetter1→A82rejoin95Ready/B104→native121129errors0. B99held3.364s/A99/noGOclock→both99→197196153/clockspawn/UI8.279hold;PCAP334/56exactreplies/alltuples/C2Sjoins.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-fixed-room",
+      "evidence": [
+        "RUST234-00760",
+        "RUST234-00758"
+      ],
+      "limits": "M2positivefixedroom/lifecycle/barrier/clockspawn only, negative-version/activepeerEOFcleanup/manualacceptance remain. NoBattle/accountauth/DB/generalroom/dynamicoccupancy/fullcapacity/originalauthority/fullM2/fullservice/production. Titlecarrieropaque/controlfree notfullCP949validation. IPoperatornotaccountauth. Internet thật chưa kiểm. Five152rawfrozen/sealed/cleanup0;R5postholdreportdenial/shutdowntimeoutkept;8WIPpreserved/waivednotapproved/nextaudit236."
+    },
+    {
+      "summary": "Five152rawfreeze/seal/cleanup0/inputversions:portstrict3838vsactual3848/titleASCIIvsdefaultCP949/96-266missing/190missing+JSONmarker20stimeout failureskept;R5positivebeforeownedcleanup. R5strictallclosureEOFfailkept;FIN+0.216/0.273aftercompletion, BfinalreportdenyafterAownedEOF nothealthyabortproof.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-fixed-room",
+      "evidence": [
+        "RUST234-00061",
+        "RUST234-00213",
+        "RUST234-00332",
+        "RUST234-00449",
+        "RUST234-00760",
+        "RUST234-00759"
+      ],
+      "limits": "M2positivefixedroom/lifecycle/barrier/clockspawn only, negative-version/activepeerEOFcleanup/manualacceptance remain. NoBattle/accountauth/DB/generalroom/dynamicoccupancy/fullcapacity/originalauthority/fullM2/fullservice/production. Titlecarrieropaque/controlfree notfullCP949validation. IPoperatornotaccountauth. Internet thật chưa kiểm. Five152rawfrozen/sealed/cleanup0;R5postholdreportdenial/shutdowntimeoutkept;8WIPpreserved/waivednotapproved/nextaudit236."
+    },
+    {
+      "summary": "OneTCPshutdowntimeoutrootcauseunknown/noPIDstate;three samebinary8caserepeats pass, notfixclaim. M2negative-version/activepeerEOFcleanup/manualacceptancepending;noM3Battle/newgate.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-fixed-room",
+      "evidence": [
+        "RUST234-00754",
+        "RUST234-00024"
+      ],
+      "limits": "M2positivefixedroom/lifecycle/barrier/clockspawn only, negative-version/activepeerEOFcleanup/manualacceptance remain. NoBattle/accountauth/DB/generalroom/dynamicoccupancy/fullcapacity/originalauthority/fullM2/fullservice/production. Titlecarrieropaque/controlfree notfullCP949validation. IPoperatornotaccountauth. Internet thật chưa kiểm. Five152rawfrozen/sealed/cleanup0;R5postholdreportdenial/shutdowntimeoutkept;8WIPpreserved/waivednotapproved/nextaudit236."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt-clippy/14tests/lockedbuild/nativebinaryexact",
+      "result": "pass",
+      "evidence": [
+        "RUST234-00594",
+        "RUST234-00593",
+        "RUST234-00595",
+        "RUST234-00592"
+      ],
+      "limits": "5wire+3Flow+2binding+3Room+1queue, notnativeoracle."
+    },
+    {
+      "check": "8roomkernelTCP/16binding/14M1",
+      "result": "pass",
+      "evidence": [
+        "RUST234-00670",
+        "RUST234-00676",
+        "RUST234-00682",
+        "RUST234-00586",
+        "RUST234-00702"
+      ],
+      "limits": "Syntheticpolicy/lifecycle/barrierchecks. InitialR5shutdowntimeoutkept/unknown, notresolvedbyrepeats."
+    },
+    {
+      "check": "R1R2R3R4nativefullscope",
+      "result": "fail",
+      "evidence": [
+        "RUST234-00061",
+        "RUST234-00213",
+        "RUST234-00332",
+        "RUST234-00449"
+      ],
+      "limits": "R4harness0nothealthyhold;allfailedrawkept."
+    },
+    {
+      "check": "R5nativefixedroomhostBack-rejoinReady/withheldACKbarrier/121129clock-spawn/PCAP/UI8.279hold",
+      "result": "pass",
+      "evidence": [
+        "RUST234-00760",
+        "RUST234-00758"
+      ],
+      "limits": "Scopedbeforeownedcleanup;Bfinal127denyafterAEOFnothealthyabort;noBattle/fullM2."
+    },
+    {
+      "check": "R5strictallclosureEOF/initialTCPshutdown",
+      "result": "fail",
+      "evidence": [
+        "RUST234-00759",
+        "RUST234-00754"
+      ],
+      "limits": "PostholdBreportdenial/unknownshutdownanomalyremain;scopedpositiveproofseparate."
+    },
+    {
+      "check": "152raw/freeze/inputretention/cleanup/WIP/docs",
+      "result": "pass",
+      "evidence": [
+        "RUST234-00021",
+        "RUST234-00003"
+      ],
+      "limits": "Fullrequirelocal/history/exactPRheadrequired/auditnext236."
+    },
+    {
+      "check": "M2negative-version/activepeerEOFcleanup/fullmanualacceptance",
+      "result": "not_run",
+      "evidence": [
+        "RUST234-00024"
+      ],
+      "limits": "NexttighttaskbeforeM3;noM2completionclaim."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP234-rust-fixed-room.json",
+      "bytes": 194711,
+      "sha256": "cb0ce3c535f0911b6a453d86feb40da81dd34bfdb1fa17a9cf89e9ca4a463a48",
+      "count": 770
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rustfixedroommodel/wire/queuefences and8TCProomcases/14Rusttests.",
+      "NativehostBackclear-chief/rejoinReady/loadingbarrier3.364s/clockspawn8.279hold/PCAP334-56reply."
+    ],
+    "corrected": [
+      "Preservedport/title/knownancillary/controllerfailures152rawtotal;R4harness0notacceptance.",
+      "R5postholdownedEOFreportrejection scopedseparate;shutdowntimeoutunknown/threepassrepeatsnotfix."
+    ],
+    "superseded": [
+      "CP233nextnativefixedroompositive nowmeasured;PLANM2negative-version-activeEOFcleanupbeforefullmanualacceptance/M3."
+    ]
+  },
+  "blockers": [
+    "M2negative-version/profileguards/activepeerEOF-late127cleanup/manualacceptancepending.",
+    "OneTCPshutdownanomalyrootcauseunknown;R5postholdBreportdenialnothealthyabort.",
+    "NoRustBattle/accountauth/DB/generalroom/fullservice/production;CP224/220REblockedseparate;8WIPunmerged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PerPLANfocusM2negative-version/profileguard/currentmembershipEOF-late127cleanup/partialrecipient+shutdownanomalyreview;manualM2onlyafterfullchecklistthenM3. Donotrepeatknownnativepositive/lobby/room/clockorbroadauthSDKRE. NextauditCP236.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T09:11:36.898024+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/Rustfixedroompositive-nativeproof/failurecorrections/selfcheck;independentreviewwaivednotapproved/exactPRheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/rust-service/fixed-room.json",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP234Rustfixedroompositive/nativeproof/failures152raw/postholdlimits/shutdowntimeoutunknown/M2remainingnegativeversion-activeEOF/next236syncedbeforecomplete."
+    }
+  ]
+}

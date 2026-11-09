@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP233",
+  "as_of": "CP234",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP233Rust2actualKRLocal/ID1-KRGuest/ID2/nativeauth137/channel/sảnh/291128/personalrender/UI/PCAP162/18reply/8.710shold;10Rusttests/16bindingTCP/14M1regression. R1portonlyfailure193raw/R2positive98rawsealed/cleanup0;CP232PR303merged5b3ef81.",
-      "remaining": "M2OPEN:fixedroom/ownslot/host/Ready/loadingbarrier/Back-rejoin/lifecyclephòng chưaRustnative. IPoperator/request/endpoints/lease khôngaccountauth/DB/Battle/UDP/production.",
-      "next_test": "PLAN portknownfixedroom818687106110/map/cache/Ready/loading withowner/slot/host/generation;nativeABsame-room/hostBack-survivorclear-chief/rejoin/Ready/missingACKbarrier/negatives. No repeatedlobby/broadRE/fullauthdependency.",
+      "known": "CP234Rust2actualfixedroom/ownslot0-1/hostBacknativeIDclear-chief/A rejoinReady/BStart121129/missingB99hold3.364snoGO→bothACK→clock-spawn/UI8.279hold;PCAP334/56reply/5runs152rawsealed/failurekept.14Rusttests/8roomTCP/16binding/14M1.",
+      "remaining": "M2OPEN:chốtnegative-version+activepeerEOF/late-reportcleanup. PostholdownedcleanupA làmBfinal127deny;khônghealthyabortacceptance. MộtTCPshutdowntimeoutchưarõrootcause/ba repeatđạt. KhôngBattle/DB/accountauth/fullservice.",
+      "next_test": "PLANnegative-version/profileguards/currentmembershipEOF/late127/partialrecipientcases trướcmanualM2review;khônglặpnativepositivephòng/clock hoặcfullauth/broadRE.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "2actualLobbybindingproof là partialM2,khôngfullservice;#14/#285OPEN/8WIPbyteexact/AUD067through232next236/Internet thật chưa kiểm.",
+      "reason": "NativepositiveM2pathkhôngfullchecklist;#14/#285OPEN/Pythonserving8WIPbyteexact/AUD067next236/Internet thật chưa kiểm.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -271,7 +271,8 @@
         "docs/evidence/owner-directives/rust-implementation.json",
         "docs/PROTOCOL.md#rust-foundation",
         "docs/PROTOCOL.md#rust-local-lobby",
-        "docs/PROTOCOL.md#rust-two-lobby"
+        "docs/PROTOCOL.md#rust-two-lobby",
+        "docs/PROTOCOL.md#rust-fixed-room"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -376,7 +377,8 @@
         "docs/evidence/room-list/README.md#cp230",
         "docs/evidence/rust-service/README.md#cp231",
         "docs/evidence/rust-service/README.md#cp232",
-        "docs/evidence/rust-service/README.md#cp233"
+        "docs/evidence/rust-service/README.md#cp233",
+        "docs/evidence/rust-service/README.md#cp234"
       ],
       "prs": [
         173,
@@ -482,7 +484,8 @@
         300,
         301,
         302,
-        303
+        303,
+        304
       ],
       "successors": []
     },
@@ -821,11 +824,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP233Rust2actualKRLocal/ID1-KRGuest/ID2/nativeauth137/channel/sảnh/291128/personalrender/UI/PCAP162/18reply/8.710shold;10Rusttests/16bindingTCP/14M1regression. R1portonlyfailure193raw/R2positive98rawsealed/cleanup0;CP232PR303merged5b3ef81.",
-      "remaining": "M2OPEN:fixedroom/ownslot/host/Ready/loadingbarrier/Back-rejoin/lifecyclephòng chưaRustnative. IPoperator/request/endpoints/lease khôngaccountauth/DB/Battle/UDP/production.",
-      "next_test": "PLAN portknownfixedroom818687106110/map/cache/Ready/loading withowner/slot/host/generation;nativeABsame-room/hostBack-survivorclear-chief/rejoin/Ready/missingACKbarrier/negatives. No repeatedlobby/broadRE/fullauthdependency.",
+      "known": "CP234Rust2actualfixedroom/ownslot0-1/hostBacknativeIDclear-chief/A rejoinReady/BStart121129/missingB99hold3.364snoGO→bothACK→clock-spawn/UI8.279hold;PCAP334/56reply/5runs152rawsealed/failurekept.14Rusttests/8roomTCP/16binding/14M1.",
+      "remaining": "M2OPEN:chốtnegative-version+activepeerEOF/late-reportcleanup. PostholdownedcleanupA làmBfinal127deny;khônghealthyabortacceptance. MộtTCPshutdowntimeoutchưarõrootcause/ba repeatđạt. KhôngBattle/DB/accountauth/fullservice.",
+      "next_test": "PLANnegative-version/profileguards/currentmembershipEOF/late127/partialrecipientcases trướcmanualM2review;khônglặpnativepositivephòng/clock hoặcfullauth/broadRE.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "2actualLobbybindingproof là partialM2,khôngfullservice;#14/#285OPEN/8WIPbyteexact/AUD067through232next236/Internet thật chưa kiểm.",
+      "reason": "NativepositiveM2pathkhôngfullchecklist;#14/#285OPEN/Pythonserving8WIPbyteexact/AUD067next236/Internet thật chưa kiểm.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -850,7 +853,8 @@
         "docs/evidence/owner-directives/rust-implementation.json",
         "docs/PROTOCOL.md#rust-foundation",
         "docs/PROTOCOL.md#rust-local-lobby",
-        "docs/PROTOCOL.md#rust-two-lobby"
+        "docs/PROTOCOL.md#rust-two-lobby",
+        "docs/PROTOCOL.md#rust-fixed-room"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -875,7 +879,8 @@
         "docs/evidence/room-list/README.md#cp230",
         "docs/evidence/rust-service/README.md#cp231",
         "docs/evidence/rust-service/README.md#cp232",
-        "docs/evidence/rust-service/README.md#cp233"
+        "docs/evidence/rust-service/README.md#cp233",
+        "docs/evidence/rust-service/README.md#cp234"
       ],
       "prs": [
         286,
@@ -895,11 +900,12 @@
         300,
         301,
         302,
-        303
+        303,
+        304
       ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-09T08:05:02.915577+00:00",
+  "as_of_utc": "2026-11-09T09:08:29.112454+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

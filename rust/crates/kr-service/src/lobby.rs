@@ -40,6 +40,9 @@ impl Flow {
         }
     }
 
+    pub fn identity(&self) -> u32 {
+        self.identity
+    }
     pub fn packet(&mut self, opcode: u32, body: &[u8]) -> io::Result<Vec<&'static str>> {
         let (next, responses) = match (self.stage, opcode) {
             (Stage::Login, 1) => {
