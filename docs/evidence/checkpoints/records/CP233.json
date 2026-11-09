@@ -1,0 +1,259 @@
+{
+  "id": "CP233",
+  "previous": "CP232",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T08:09:41.738943+00:00",
+  "context_commit": "5b3ef81c23987279c504954ac1f97faeb6177395",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M2/KRE-074: replaceglobalacceptmapping with explicitoperatoridentity/request/endpoint/stagelease and verifytwoactualKRidentities/channel/sảnh/291 onRust; retainfixedroom/barrier/lifecyclegap.",
+  "scope": "Rustboundeddiagnostictwoactorlobbyport/nativeidentity-render-wireproof;knownCP058183186006103/no newbinaryRE/clientpatch/fullauth.2runs291raw includingportonlyroutingfailure/10Rusttests/16bindingTCP/14M1regression;M2partial.",
+  "artifacts": [
+    {
+      "name": "NativeKR00967originalunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "e9WinecopyM2",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "Rustroot2actualnative-testedbinary",
+      "sha256": "bdf0c70d5a5366fd40d6e071e2f87f7660ab05881799880a6343b28148362d8e"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/binding.rs/RegistryLeaseDrop;lib.rs/bound_connection/load_lobby; lobby.rs/Flowidentity;tools/export_rust_profile.py/export_two_lobby;tools/test_rust_lobby.py/16kernelnegatives.",
+    "R2runb7433b807fbca992bebb660a72b99d843e6a12d869d8ffee240747e85422a70b/98raw/40.740784007s/PCAP162/18replies/8tuplestreamjoins/hold8.710398283;native137/291/render/C2S6echoID1-2/UI14;3netns2CA2wineserver.",
+    "R1run9fa8c61581086ef4728472af9284d6ed9228de870bdef3c39ac46e7c9a4f3ec9/193raw/portonlyWCPmisroutingFAILkept;CP006/103reusefix/no newRE.",
+    "AUD067through232/nextCP236unchanged;CP232PR303merge5b3ef81;8WIPbyteexact."
+  ],
+  "findings": [
+    {
+      "summary": "RusttwoactorprofileusesIPoperator+CRCcheckedfirst0/28WCPor1login/6channel+endpoint/stage/redirectgrant;emptyhelloallocatesnoidentity. TypedFlowIDname/Registryowner-generationDropfences;noacceptordinalinnewprofile. Notaccountauth.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-two-lobby",
+      "evidence": [
+        "RUST233-00031",
+        "RUST233-00030",
+        "RUST233-00361"
+      ],
+      "limits": "PartialM2twoidentity/sảnh, notroom/ownslot/host/Ready/loadingbarrier/Backrejoin/BattleUDP/accountauth/DB/production/fullM2. IPoperatornotauthentication;opaqueWCPshape/pinnedresponse notgeneralbootstrap. Internet thật chưa kiểm. Raw291frozen/sealed/cleanup0;source/inputretention/8WIPpreserved/waivednotapproved/auditnext236."
+    },
+    {
+      "summary": "TwoactualKR00967/e9/WineononeRustservice auth0/global0/full137→newchannel17/actual67→241empty91/14/291128nativeproducerandpersonalrender/UIKRLocalKRGuest. ActualC2S6echoID1/2;PCAP162/8streams/18exactreplies/allC2Sseq-op-len/8.710shold/3netns2CA2wineserver.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-two-lobby",
+      "evidence": [
+        "RUST233-00491",
+        "RUST233-00490"
+      ],
+      "limits": "PartialM2twoidentity/sảnh, notroom/ownslot/host/Ready/loadingbarrier/Backrejoin/BattleUDP/accountauth/DB/production/fullM2. IPoperatornotauthentication;opaqueWCPshape/pinnedresponse notgeneralbootstrap. Internet thật chưa kiểm. Raw291frozen/sealed/cleanup0;source/inputretention/8WIPpreserved/waivednotapproved/auditnext236."
+    },
+    {
+      "summary": "R1portonlyWCP3848false:actualWCP0/body28on3838misclassifiedlogin,193rawFAILkept/sealedbeforeedit. R2reuseknownCP006/103firstrequestclassifier98rawpositive;total291raw/cleanup0/inputretention. UI9lexicographicnotlatest corrected14; no rawedit. REAproviderunavailable/stdlibparsernotREAEvidence.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-two-lobby",
+      "evidence": [
+        "RUST233-00040",
+        "RUST233-00088",
+        "RUST233-00491",
+        "RUST233-00490",
+        "RUST233-00485"
+      ],
+      "limits": "PartialM2twoidentity/sảnh, notroom/ownslot/host/Ready/loadingbarrier/Backrejoin/BattleUDP/accountauth/DB/production/fullM2. IPoperatornotauthentication;opaqueWCPshape/pinnedresponse notgeneralbootstrap. Internet thật chưa kiểm. Raw291frozen/sealed/cleanup0;source/inputretention/8WIPpreserved/waivednotapproved/auditnext236."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt-clippy/10tests/lockedbuild/nativebinaryexact",
+      "result": "pass",
+      "evidence": [
+        "RUST233-00303",
+        "RUST233-00302",
+        "RUST233-00304",
+        "RUST233-00301",
+        "RUST233-00018"
+      ],
+      "limits": "5wire+3Flow+2binding;policytestsnotnativeoracle."
+    },
+    {
+      "check": "16bindingkernelTCP/14M1regression",
+      "result": "pass",
+      "evidence": [
+        "RUST233-00361",
+        "RUST233-00378"
+      ],
+      "limits": "Syntheticpolicystage/CRC/duplicate/endpoint/identity/EOF/prelistenchecksnotnativecontractproof."
+    },
+    {
+      "check": "R1portonlyclassificationnative",
+      "result": "fail",
+      "evidence": [
+        "RUST233-00040"
+      ],
+      "limits": "193rawWCPonloginport;failurekept/correctionfromknownsource."
+    },
+    {
+      "check": "R2twoactualauth137-channel-291producer/render/C2S6IDs/UI/PCAP162",
+      "result": "pass",
+      "evidence": [
+        "RUST233-00491",
+        "RUST233-00490"
+      ],
+      "limits": "M2partial2diagnosticidentities/lobby,noroom/accountauth/fullM2."
+    },
+    {
+      "check": "291raw/sourcefreeze/inputretention/cleanup0/WIP/docs",
+      "result": "pass",
+      "evidence": [
+        "RUST233-00018",
+        "RUST233-00003"
+      ],
+      "limits": "Fullrequirelocal/history/exactPRheadrequired;nextauditCP236."
+    },
+    {
+      "check": "M2room/ownslot/host/Ready/barrier/Back-rejoin",
+      "result": "not_run",
+      "evidence": [
+        "RUST233-00021"
+      ],
+      "limits": "Nextknowncontractport; nofullM2acceptance."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP233-rust-two-lobby.json",
+      "bytes": 127649,
+      "sha256": "0de99271dc49a2d9ff2fc73366a0486d4d37c882c6cd66aa25259a7872b0e776",
+      "count": 496
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rust2diagnosticidentityprofiles andexplicitrequest/endpoint/stagelease binding;10Rusttests/16TCPbindingcases.",
+      "Twoactualnative137/291read-render/UI/C2S6IDs andPCAP162/18replies/8.710hold;14M1regression."
+    ],
+    "corrected": [
+      "PortonlyWCP3848false:actual0/body28on3838;R1FAIL193rawkept,R2knownfirstrequestfix98rawpositive.",
+      "UIselectionnumeric14vslexicographic9; REAproviderunavailable/ordinaryparsercoverageexplicit."
+    ],
+    "superseded": [
+      "CP232nexttwoidentity/sảnh nowmeasured;PLANnextfixedroom/lifecycle/barrier, no repeatedlobbyRE."
+    ]
+  },
+  "blockers": [
+    "M2fixedroom/ownslot/host/Ready/loadingbarrier/Back-rejoin/nativephònglifecycle notportedyet.",
+    "OperatorIP/request-stageleasesnotaccountauth/DB/BattleUDP/fullservice/production.",
+    "CP224sameprocessrecovery/CP220before17receiverblockedseparate;8WIPunmerged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANM2portknownfixedroom818687106110/map/cache/Ready/loading/owner-slot-host-generation;nativeABsame-room/ownslots/fullcursors/hostBacksurvivorclear-chief/rejoin/Ready/missingACKnegative. Twoidentitysảnhdone, no repeats/broadRE/fullauthdependency;nextauditCP236.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T08:09:41.738943+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/Rusttwoidentitybindings/nativeproof/selfcheck;independentreviewwaivednotapproved/exactPRheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/rust-service/two-lobby.json",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    }
+  ]
+}

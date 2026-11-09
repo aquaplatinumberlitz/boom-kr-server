@@ -1,0 +1,3477 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "RUST233-00001",
+      "kind": "local",
+      "path": "local/research/codex/append_cp233.py",
+      "bytes": 12352,
+      "sha256": "7dff8c1614742eac8aa97e4e0b11f5a74da6447a9fd5e5696bdabfeae5b6c54a"
+    },
+    {
+      "id": "RUST233-00002",
+      "kind": "local",
+      "path": "local/research/codex/cp233-catalog-final.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "RUST233-00003",
+      "kind": "local",
+      "path": "local/research/codex/cp233-docs-final.txt",
+      "bytes": 175,
+      "sha256": "6fdb261b4a5a81b7756254d781402c3fee8ae5c93a23ba7ed84eb01c4e8f019b"
+    },
+    {
+      "id": "RUST233-00004",
+      "kind": "local",
+      "path": "local/research/codex/cp233-issue-idfix.txt",
+      "bytes": 226,
+      "sha256": "04486c54b0710cd53fc060df89b362603b624a6dd9f72abdf51b93cd035ed712"
+    },
+    {
+      "id": "RUST233-00005",
+      "kind": "local",
+      "path": "local/research/codex/cp233-issue-update.txt",
+      "bytes": 638,
+      "sha256": "1400fae4c579197b938b41b7277898f49120d28459168022ada085b997fe1c83"
+    },
+    {
+      "id": "RUST233-00006",
+      "kind": "local",
+      "path": "local/research/codex/cp233-issue14-before.json",
+      "bytes": 37322,
+      "sha256": "7dcc1ab2accf65e8ee5dd34fd147a58e16151b1ec906979d49fd3f3b48719ac5"
+    },
+    {
+      "id": "RUST233-00007",
+      "kind": "local",
+      "path": "local/research/codex/cp233-issue14-updated.json",
+      "bytes": 37036,
+      "sha256": "0c6c47328cf77a0f382fbba786240577ba429fa93347f055fca7979d2412be36"
+    },
+    {
+      "id": "RUST233-00008",
+      "kind": "local",
+      "path": "local/research/codex/cp233-issue285-before-idfix.json",
+      "bytes": 9722,
+      "sha256": "0fc078f8f0b79fd20934c2a344e75a827c9d9ae5860e6248a94c478af76259c5"
+    },
+    {
+      "id": "RUST233-00009",
+      "kind": "local",
+      "path": "local/research/codex/cp233-issue285-before.json",
+      "bytes": 10648,
+      "sha256": "5755cf9072103f6fd75b119a21eb89ec2c30a0faf337e95ba360679207273966"
+    },
+    {
+      "id": "RUST233-00010",
+      "kind": "local",
+      "path": "local/research/codex/cp233-issue285-idfixed.json",
+      "bytes": 9785,
+      "sha256": "00eae37f9de0dddb75e6515d7fc58e97968abf84de1eb1a4e50b02020f3dbcb4"
+    },
+    {
+      "id": "RUST233-00011",
+      "kind": "local",
+      "path": "local/research/codex/cp233-issue285-updated.json",
+      "bytes": 9722,
+      "sha256": "0fc078f8f0b79fd20934c2a344e75a827c9d9ae5860e6248a94c478af76259c5"
+    },
+    {
+      "id": "RUST233-00012",
+      "kind": "local",
+      "path": "local/research/codex/cp233-pr303-merged.json",
+      "bytes": 24114,
+      "sha256": "ba7b43fee6f5b487ee27c3b72b84cc41fd86e371bddfbb3a85d52118695457ba"
+    },
+    {
+      "id": "RUST233-00013",
+      "kind": "local",
+      "path": "local/research/codex/fix_cp233_issue_ids.py",
+      "bytes": 1100,
+      "sha256": "d969255cc3e3a2f3c184422a7c40b3b8bb21dcf67a32e077fe7a0c0e904c2cd0"
+    },
+    {
+      "id": "RUST233-00014",
+      "kind": "local",
+      "path": "local/research/codex/prepare_rust_two_lobby.py",
+      "bytes": 7536,
+      "sha256": "7a041b5920acc2a559cc80513fccf93d5bcc628f84a1371721c95a88b689e3e4"
+    },
+    {
+      "id": "RUST233-00015",
+      "kind": "local",
+      "path": "local/research/codex/prepare_rust_two_lobby_r2.py",
+      "bytes": 7643,
+      "sha256": "e7f080589a964d3b7196eb307f4aa41a7e792af6ac0b68af02f23da3c238880e"
+    },
+    {
+      "id": "RUST233-00016",
+      "kind": "local",
+      "path": "local/research/codex/run_rust_two_lobby.py",
+      "bytes": 835,
+      "sha256": "32ad27f899f0712684552cc5515c73209e3cd43a498764c3219ff3c846262731"
+    },
+    {
+      "id": "RUST233-00017",
+      "kind": "local",
+      "path": "local/research/codex/run_rust_two_lobby_r2.py",
+      "bytes": 835,
+      "sha256": "dde413b242623d65b71cbd458cf3aa83f4330011eb91306613d865c94cd43b80"
+    },
+    {
+      "id": "RUST233-00018",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/manual-acceptance.json",
+      "bytes": 2116,
+      "sha256": "280dce0d33ed45a433be7e0287b609f4870b30bef4a30ed748c2b27c6119f424"
+    },
+    {
+      "id": "RUST233-00019",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/README.md",
+      "bytes": 41013,
+      "sha256": "301ceb690c8af86d19c8d2cd7132735188467d4c7e188e38404134851933182e"
+    },
+    {
+      "id": "RUST233-00020",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/docs/COVERAGE.md",
+      "bytes": 187786,
+      "sha256": "aae4e2bd120ee07fb54989a157ab2dc2e4f25a7cfafe855abb444020410fd5a0"
+    },
+    {
+      "id": "RUST233-00021",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 88236,
+      "sha256": "58a1f1f87c8504d4e70078121ae51c98493dbc71a9ddfbeebfa1acacb704dff7"
+    },
+    {
+      "id": "RUST233-00022",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/docs/PROTOCOL.md",
+      "bytes": 726114,
+      "sha256": "690d049b4f5207f850e5d8732527d29c36ebed7e06f16c8dc666c2c7b4ed23e3"
+    },
+    {
+      "id": "RUST233-00023",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 45303,
+      "sha256": "1dce8eb3ef794e4992a97b0d7832880956994d6e45165a9c06e113c41789b94d"
+    },
+    {
+      "id": "RUST233-00024",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 266793,
+      "sha256": "4783549d3a93048584a6155a866c2a2d8de2b296cbcc93bdadced72c85578786"
+    },
+    {
+      "id": "RUST233-00025",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 37478,
+      "sha256": "f98eeb60bbeda7d2cf8af5346059e80de3b67aaf16c8e0b7a2a9237e4e6cc4fb"
+    },
+    {
+      "id": "RUST233-00026",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/docs/evidence/rust-service/README.md",
+      "bytes": 11486,
+      "sha256": "ac85acb5d49cb6eae20f56b989467e6fbc60203fbf913546c85db7c8e97d5035"
+    },
+    {
+      "id": "RUST233-00027",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/docs/evidence/rust-service/two-lobby.json",
+      "bytes": 13495,
+      "sha256": "63c832ad81c47046def6f4c353726b68afd7ac6d443a2aa1e9dc9f4241a87500"
+    },
+    {
+      "id": "RUST233-00028",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/docs/features.json",
+      "bytes": 197267,
+      "sha256": "b0d40724b2ee4ab0904acaf8240bd9575bb54c0afa7d938b94e6208c487ee69f"
+    },
+    {
+      "id": "RUST233-00029",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/rust/README.md",
+      "bytes": 5426,
+      "sha256": "2313e54c595b4e4bfc6632057a8390a586bceb2eaa828d06aa5945351640e582"
+    },
+    {
+      "id": "RUST233-00030",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/rust/crates/kr-service/src/binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "RUST233-00031",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/rust/crates/kr-service/src/lib.rs",
+      "bytes": 29553,
+      "sha256": "73c004f0956c26b0b0995c421c09a15b7ff5500adcfc5796fa2c01ffc7ba7890"
+    },
+    {
+      "id": "RUST233-00032",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/rust/crates/kr-service/src/lobby.rs",
+      "bytes": 7179,
+      "sha256": "0665bfae89562883fa62f7f5538a959a0d63c362b0f3897b645481b1193a7e0f"
+    },
+    {
+      "id": "RUST233-00033",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/tools/export_rust_profile.py",
+      "bytes": 7740,
+      "sha256": "3116abcbb4cb51416b023cd325bf231f8fd3d3c615ce45b0b39f8753491d7417"
+    },
+    {
+      "id": "RUST233-00034",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/tools/test_rust_lobby.py",
+      "bytes": 8843,
+      "sha256": "ef2b98f24fe9f20bc61c3d28ad0eaef2f8e3a69fd22e03d747c3b79179dfbab3"
+    },
+    {
+      "id": "RUST233-00035",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1-launch.txt",
+      "bytes": 228,
+      "sha256": "32c00dd83a0374aa2479079440015fa28e93240d3273e6792396815f97aca333"
+    },
+    {
+      "id": "RUST233-00036",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/build.txt",
+      "bytes": 166,
+      "sha256": "10c632b3714c87ed65d549a9589bd327160a2e1c44de3509e6b03fa2c42d96ba"
+    },
+    {
+      "id": "RUST233-00037",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "RUST233-00038",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/clippy.txt",
+      "bytes": 166,
+      "sha256": "7b36fbb04d665cb5d94265ef9646b4ce1297160ba22779169a6c34dc9b8c6952"
+    },
+    {
+      "id": "RUST233-00039",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/config.json",
+      "bytes": 1186,
+      "sha256": "a0066ab7cd982e1dd0d4e7830afb0e06a6f19e2c056e1d703dbc7f15771933d8"
+    },
+    {
+      "id": "RUST233-00040",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/failure-review.json",
+      "bytes": 551,
+      "sha256": "68e807825105051f320167fda639d182af5cbeecb896414cd258536efd0f04f2"
+    },
+    {
+      "id": "RUST233-00041",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/000-auth-A-final.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "RUST233-00042",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/001-auth-B-final.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "RUST233-00043",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/002-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "RUST233-00044",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/003-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "RUST233-00045",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/004-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RUST233-00046",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/005-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "RUST233-00047",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/006-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "RUST233-00048",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/007-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "RUST233-00049",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/008-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "RUST233-00050",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/009-prepare_rust_two_lobby.py",
+      "bytes": 7536,
+      "sha256": "7a041b5920acc2a559cc80513fccf93d5bcc628f84a1371721c95a88b689e3e4"
+    },
+    {
+      "id": "RUST233-00051",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/010-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "RUST233-00052",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/011-own-A.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "RUST233-00053",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/012-own-B.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "RUST233-00054",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/013-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "RUST233-00055",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/014-player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "RUST233-00056",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/015-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "RUST233-00057",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/016-gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "RUST233-00058",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/017-native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "RUST233-00059",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/018-capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "RUST233-00060",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/019-config.json",
+      "bytes": 1186,
+      "sha256": "a0066ab7cd982e1dd0d4e7830afb0e06a6f19e2c056e1d703dbc7f15771933d8"
+    },
+    {
+      "id": "RUST233-00061",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/020-CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "RUST233-00062",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/021-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST233-00063",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/022-CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "RUST233-00064",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/023-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST233-00065",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/024-lobby.gdb",
+      "bytes": 1717,
+      "sha256": "55db3684a8b46be66a6931ee31b6a6fda2b4375507158a6b3f031b559a38891b"
+    },
+    {
+      "id": "RUST233-00066",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/025-native-config.json",
+      "bytes": 9077,
+      "sha256": "af865d54e2affd9c8d285a7c4197d4608dce45541ac0b8af6e6eb4c45b2ac5c2"
+    },
+    {
+      "id": "RUST233-00067",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/026-recipe.json",
+      "bytes": 1131,
+      "sha256": "4526f629672d9d0804e66504ce77525ea2a59aed6a97e1a1fc97d8fd314db661"
+    },
+    {
+      "id": "RUST233-00068",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/027-source-reuse.json",
+      "bytes": 684,
+      "sha256": "7dc1d9aff24966734c502824304b22e8debb83823893cefb555e09cc37603ad0"
+    },
+    {
+      "id": "RUST233-00069",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/028-topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "RUST233-00070",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/029-wine_probe_rust_two_lobby.py",
+      "bytes": 18984,
+      "sha256": "f2673a5a391fc696ab10ab7370f991e6a4caa2ca8b8fa178f67d508623a13279"
+    },
+    {
+      "id": "RUST233-00071",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/030-.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST233-00072",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/031-Cargo.lock",
+      "bytes": 7492,
+      "sha256": "e6179670ad3f0739baa1260e2f059218da5e0254c4697c26df8ac4362294e927"
+    },
+    {
+      "id": "RUST233-00073",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/032-Cargo.toml",
+      "bytes": 418,
+      "sha256": "9dfd7a1b7cbc63e23ad3f20d494216c379232733ef2971152e69720cb5e7a329"
+    },
+    {
+      "id": "RUST233-00074",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/033-README.md",
+      "bytes": 3944,
+      "sha256": "a6b8eb95d1890ff50bf0d46c44d68eed79ed08effd1bb6bc27979eb982c69a13"
+    },
+    {
+      "id": "RUST233-00075",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/034-Cargo.toml",
+      "bytes": 281,
+      "sha256": "67927aa024cfc537e96ef3afc83aa12e9c89f68aeb704bc5c45bf0ffdc02cbba"
+    },
+    {
+      "id": "RUST233-00076",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/035-binding.rs",
+      "bytes": 7014,
+      "sha256": "99834b0b7a330dec39777f1892a2cf9efb61b02f459369646527549dada95f62"
+    },
+    {
+      "id": "RUST233-00077",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/036-lib.rs",
+      "bytes": 27728,
+      "sha256": "016fb8bcf942ee26daa4e1eaf35808f6a22129594d60ec1c408634b2d406b121"
+    },
+    {
+      "id": "RUST233-00078",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/037-lobby.rs",
+      "bytes": 7177,
+      "sha256": "5efc14b837f7a937a70919645f3843779d458044eaf51f6a1ae7eab90274b271"
+    },
+    {
+      "id": "RUST233-00079",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/038-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST233-00080",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/039-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST233-00081",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/040-lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST233-00082",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/041-README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST233-00083",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/042-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "RUST233-00084",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/043-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST233-00085",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/044-kr-service",
+      "bytes": 27997296,
+      "sha256": "c131f3456ef24ac6582e7b035618266e4f9493cd126f5394e9e95c69f69757e7"
+    },
+    {
+      "id": "RUST233-00086",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/045-export_rust_profile.py",
+      "bytes": 7732,
+      "sha256": "79a958554fa0ddb26a178d0898ec3c1a995634171d08f69cbd734c47f1f897d3"
+    },
+    {
+      "id": "RUST233-00087",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/frozen-inputs/046-run_rust_two_lobby.py",
+      "bytes": 835,
+      "sha256": "32ad27f899f0712684552cc5515c73209e3cd43a498764c3219ff3c846262731"
+    },
+    {
+      "id": "RUST233-00088",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/input-retention.json",
+      "bytes": 15456,
+      "sha256": "56b10cd5405d89bc2405b8a9f7579f0b642caf07fa50acb3465d19fe7c0f188f"
+    },
+    {
+      "id": "RUST233-00089",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/lobby.gdb",
+      "bytes": 1717,
+      "sha256": "55db3684a8b46be66a6931ee31b6a6fda2b4375507158a6b3f031b559a38891b"
+    },
+    {
+      "id": "RUST233-00090",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-config.json",
+      "bytes": 9077,
+      "sha256": "af865d54e2affd9c8d285a7c4197d4608dce45541ac0b8af6e6eb4c45b2ac5c2"
+    },
+    {
+      "id": "RUST233-00091",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/CALog-before.txt",
+      "bytes": 1132,
+      "sha256": "59a06ecc7ccd7a66e75e0be066bc139948ab865dca0f1539e0eff7f94ebc95a1"
+    },
+    {
+      "id": "RUST233-00092",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/CALog-run.txt",
+      "bytes": 105,
+      "sha256": "ee3b51cbe338e8b77935ba9e6ea90d1eaea24ee504e39c6aa9eeb10d84b5ebe6"
+    },
+    {
+      "id": "RUST233-00093",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "a96b4dd903377cf64d41ad907e477aa5e679659a0d18ad2b91166f9e71c93862"
+    },
+    {
+      "id": "RUST233-00094",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/client.log",
+      "bytes": 343048,
+      "sha256": "2af4baf0522e19646ef8b5536ac72436b791d4489d80f8ee23f65cea6f180339"
+    },
+    {
+      "id": "RUST233-00095",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/debug-commands.txt",
+      "bytes": 1717,
+      "sha256": "55db3684a8b46be66a6931ee31b6a6fda2b4375507158a6b3f031b559a38891b"
+    },
+    {
+      "id": "RUST233-00096",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00097",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00098",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-10.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00099",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-11.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00100",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-12.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00101",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-13.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00102",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-14.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00103",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-15.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00104",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-16.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00105",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-17.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00106",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-18.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00107",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-19.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00108",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-2.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00109",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-20.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00110",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-21.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00111",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-22.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00112",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-23.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00113",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-24.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00114",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-25.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00115",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-26.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00116",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-27.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00117",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-28.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00118",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-29.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00119",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-3.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00120",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-30.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00121",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-31.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00122",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-32.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00123",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-33.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00124",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-4.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00125",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-5.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00126",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-6.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00127",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-7.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00128",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-8.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00129",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/screen-9.png",
+      "bytes": 1551,
+      "sha256": "aa90c09a55c0aaf2c317204abcec96cebf26ca47424911be248bb96cb6797f38"
+    },
+    {
+      "id": "RUST233-00130",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST233-00131",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST233-00132",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-10.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00133",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-11.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00134",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-12.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00135",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-13.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00136",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-14.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00137",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-15.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00138",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-16.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00139",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-17.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00140",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-18.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00141",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-19.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00142",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-2.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00143",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-20.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00144",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-21.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00145",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-22.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00146",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-23.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00147",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-24.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00148",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-25.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00149",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-26.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00150",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-27.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00151",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-28.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00152",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-29.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00153",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-3.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00154",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-30.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00155",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-31.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00156",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-32.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00157",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-33.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00158",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-4.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00159",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-5.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00160",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-6.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00161",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-7.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00162",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-8.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00163",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/A/windows-9.txt",
+      "bytes": 1350,
+      "sha256": "b61d25e6669390fbfd87a3800532e3b24d8facaf678871d198c6880636709bd4"
+    },
+    {
+      "id": "RUST233-00164",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/CALog-before.txt",
+      "bytes": 1132,
+      "sha256": "59a06ecc7ccd7a66e75e0be066bc139948ab865dca0f1539e0eff7f94ebc95a1"
+    },
+    {
+      "id": "RUST233-00165",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/CALog-run.txt",
+      "bytes": 86,
+      "sha256": "ec0c9d15b149458d37c2eeba0e03b9e4cd95ce9dc4340d063716882ff1848cb4"
+    },
+    {
+      "id": "RUST233-00166",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "9b180a206c7b082fe4d4e4ff7b233b4ba64962cfc5c5caa7a70d8ebec7d60cf0"
+    },
+    {
+      "id": "RUST233-00167",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/client.log",
+      "bytes": 197321,
+      "sha256": "fc526833639b308e4dcc03fd459768dd213f0a418a35e4244939ed9de4b6ee82"
+    },
+    {
+      "id": "RUST233-00168",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/debug-commands.txt",
+      "bytes": 1717,
+      "sha256": "55db3684a8b46be66a6931ee31b6a6fda2b4375507158a6b3f031b559a38891b"
+    },
+    {
+      "id": "RUST233-00169",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00170",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00171",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-10.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00172",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-11.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00173",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-12.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00174",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-13.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00175",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-14.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00176",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-15.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00177",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-16.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00178",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-17.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00179",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-18.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00180",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-19.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00181",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00182",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-20.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00183",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-21.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00184",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-22.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00185",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-23.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00186",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-24.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00187",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-25.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00188",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-26.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00189",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-27.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00190",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-28.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00191",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-29.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00192",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00193",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-30.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00194",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-31.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00195",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-32.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00196",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-33.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00197",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-4.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00198",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-5.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00199",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-6.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00200",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-7.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00201",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-8.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00202",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/screen-9.png",
+      "bytes": 1488,
+      "sha256": "f7115e8607460d3f2110e4d8bb8523b01148547fd9b3d086ef65022154ea93cd"
+    },
+    {
+      "id": "RUST233-00203",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RUST233-00204",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST233-00205",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-10.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00206",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-11.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00207",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-12.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00208",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-13.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00209",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-14.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00210",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-15.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00211",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-16.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00212",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-17.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00213",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-18.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00214",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-19.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00215",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST233-00216",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-20.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00217",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-21.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00218",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-22.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00219",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-23.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00220",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-24.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00221",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-25.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00222",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-26.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00223",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-27.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00224",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-28.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00225",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-29.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00226",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST233-00227",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-30.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00228",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-31.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00229",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-32.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00230",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-33.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00231",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-4.txt",
+      "bytes": 1033,
+      "sha256": "94ffb2ed7c651004498bd22fa78ae020a34c860803075d9d72548b138021e9b8"
+    },
+    {
+      "id": "RUST233-00232",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-5.txt",
+      "bytes": 1033,
+      "sha256": "94ffb2ed7c651004498bd22fa78ae020a34c860803075d9d72548b138021e9b8"
+    },
+    {
+      "id": "RUST233-00233",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-6.txt",
+      "bytes": 1033,
+      "sha256": "94ffb2ed7c651004498bd22fa78ae020a34c860803075d9d72548b138021e9b8"
+    },
+    {
+      "id": "RUST233-00234",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-7.txt",
+      "bytes": 1033,
+      "sha256": "94ffb2ed7c651004498bd22fa78ae020a34c860803075d9d72548b138021e9b8"
+    },
+    {
+      "id": "RUST233-00235",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-8.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00236",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/B/windows-9.txt",
+      "bytes": 1268,
+      "sha256": "76bbd623741f83cee3133dde3187d1a8ee7571a18f772cec56a53d8658067624"
+    },
+    {
+      "id": "RUST233-00237",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "RUST233-00238",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RUST233-00239",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-0.txt",
+      "bytes": 6689,
+      "sha256": "80e4d793b926ce1a39d6e5a84f1e33e24896dd36d84dd4b9bc634adc2ca4a190"
+    },
+    {
+      "id": "RUST233-00240",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-1.txt",
+      "bytes": 6842,
+      "sha256": "1a869c20ffbe546dc8a0fb84466d274076b744b37125b3cb86b891ffa7c618fa"
+    },
+    {
+      "id": "RUST233-00241",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-10.txt",
+      "bytes": 6842,
+      "sha256": "f23c07e42c1ecfbd7d34dccc033d7733b85d95db58cae625d170de2b867347f9"
+    },
+    {
+      "id": "RUST233-00242",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-11.txt",
+      "bytes": 6842,
+      "sha256": "620fd0f5ff7d5ca103d84048bfafa52b258f866a8005a74fdeac36850e23df8e"
+    },
+    {
+      "id": "RUST233-00243",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-12.txt",
+      "bytes": 6842,
+      "sha256": "a1e0a889ceb367a3aba1a5bc9f61c6463b46039a6a00ba06765ac7d4e28e0861"
+    },
+    {
+      "id": "RUST233-00244",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-13.txt",
+      "bytes": 6842,
+      "sha256": "0a5fa99afdb4cc0d3488f363b4a711c420b0fc3232894da7b6176c05c6b3f884"
+    },
+    {
+      "id": "RUST233-00245",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-14.txt",
+      "bytes": 6842,
+      "sha256": "4ff2a6dfd7f94cfde81c49013f2b21c84f3591c99ad809d37fa711be8ba6980f"
+    },
+    {
+      "id": "RUST233-00246",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-15.txt",
+      "bytes": 6842,
+      "sha256": "6daddad2867cb84be040159bbc26c7608d7ef9c6d5871ff094b8a3089b86a14c"
+    },
+    {
+      "id": "RUST233-00247",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-16.txt",
+      "bytes": 6842,
+      "sha256": "0ed0d2a69c9dccf8246b265e80c242dc5667c0cea14efc788de5b39b8248dae2"
+    },
+    {
+      "id": "RUST233-00248",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-17.txt",
+      "bytes": 6842,
+      "sha256": "6d0ca2a86366f95969efc4a574fe3fbbcf1e547e91e19a0083a4c1aaa5e50bcc"
+    },
+    {
+      "id": "RUST233-00249",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-18.txt",
+      "bytes": 6842,
+      "sha256": "086af4db1ee4b2c57b4cfe9f2aa7dd289ba94978ca28362ae723503d2c8f92aa"
+    },
+    {
+      "id": "RUST233-00250",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-19.txt",
+      "bytes": 6842,
+      "sha256": "62d71e3c40e5af27019aa499a850291c98a53532dcbef37fa1404633971b6059"
+    },
+    {
+      "id": "RUST233-00251",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-2.txt",
+      "bytes": 6842,
+      "sha256": "6284196bf1dbd9110e45ed0a8051d1acc299aaebe7dae6c5ef23393113f82bdc"
+    },
+    {
+      "id": "RUST233-00252",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-20.txt",
+      "bytes": 6842,
+      "sha256": "e1550d56d909e859888c32a6345a3391f106866a046c42312110e7fa637be784"
+    },
+    {
+      "id": "RUST233-00253",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-21.txt",
+      "bytes": 6842,
+      "sha256": "79f405fa96dd7d8f723d9f79f2373d45a286885236a1465a0bac38d5def65771"
+    },
+    {
+      "id": "RUST233-00254",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-22.txt",
+      "bytes": 6842,
+      "sha256": "d4446c218a54572bca0180ec03e26c55598142170ada0d1b1ea1c64720bb0045"
+    },
+    {
+      "id": "RUST233-00255",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-23.txt",
+      "bytes": 6842,
+      "sha256": "bec71e007296347cb8dc5dd54bc788dfda0153912507acdec70fce1664418f01"
+    },
+    {
+      "id": "RUST233-00256",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-24.txt",
+      "bytes": 6842,
+      "sha256": "8673c9cd5b6f31b1f2cd83764e26df4f3d9bedbcae06f04c4e8ffe5b4a79e7d6"
+    },
+    {
+      "id": "RUST233-00257",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-25.txt",
+      "bytes": 6842,
+      "sha256": "e87f81d925556c104e3a2305db022861bb4f9e24ea4c43dd2672d2b9b93b3c1e"
+    },
+    {
+      "id": "RUST233-00258",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-26.txt",
+      "bytes": 6842,
+      "sha256": "0bda3a2beb1fed702d4ff3137246412a962973d6b8c3e9ec23d0faf6d70e2d91"
+    },
+    {
+      "id": "RUST233-00259",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-27.txt",
+      "bytes": 6842,
+      "sha256": "ceaad7f205934f545478655eb10a51cd0803153c16adf1efe961f7ce9afd349b"
+    },
+    {
+      "id": "RUST233-00260",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-28.txt",
+      "bytes": 6842,
+      "sha256": "83557767f1126cb05003e48c0103a9ba16d4749c3a6f61f09800cb5328e5a630"
+    },
+    {
+      "id": "RUST233-00261",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-29.txt",
+      "bytes": 6842,
+      "sha256": "d070edfb2e31add99b0520afe56550e72d9e36aa9f6ef422f2fc3c3287c7b1e8"
+    },
+    {
+      "id": "RUST233-00262",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-3.txt",
+      "bytes": 6842,
+      "sha256": "fff3f7d150b118caa1ad728bfbb5b019fec15c5e2a4f3c06e6db813bf62790df"
+    },
+    {
+      "id": "RUST233-00263",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-30.txt",
+      "bytes": 6842,
+      "sha256": "65ddb3fa81958b870912184ad37e8c242ae81f9732e3fd1dfb41bf4fe6c2edec"
+    },
+    {
+      "id": "RUST233-00264",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-31.txt",
+      "bytes": 6842,
+      "sha256": "56f80153788a1a441dc3e4778236357d2e90603b1da8959d459cc19174425501"
+    },
+    {
+      "id": "RUST233-00265",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-32.txt",
+      "bytes": 6842,
+      "sha256": "1aa27d8c2ee513ac55b211230d7e71c6b554396be3740027be4f8e3dcf622ed6"
+    },
+    {
+      "id": "RUST233-00266",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-33.txt",
+      "bytes": 6842,
+      "sha256": "df00b48efc78895f72f05622fb9ee83b0363b3de3114dbde5115ab1097a53dc4"
+    },
+    {
+      "id": "RUST233-00267",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-4.txt",
+      "bytes": 6842,
+      "sha256": "edf6491f298001f8b1f1e690c5a24c56e0d594b604ad88f0ebf697213d67bf30"
+    },
+    {
+      "id": "RUST233-00268",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-5.txt",
+      "bytes": 6842,
+      "sha256": "b268df3db76582947507108c0b1be93460cc35b75328293df71f170e2215973d"
+    },
+    {
+      "id": "RUST233-00269",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-6.txt",
+      "bytes": 6842,
+      "sha256": "7e3bbb2e75e9adcbc9ec4716d506427e96853f6ebe418d120bc2fda84b82250a"
+    },
+    {
+      "id": "RUST233-00270",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-7.txt",
+      "bytes": 6842,
+      "sha256": "3be6e2007645b863d37af675f721e4101ed96bac09bb615f8580aeba9e03ac85"
+    },
+    {
+      "id": "RUST233-00271",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-8.txt",
+      "bytes": 6842,
+      "sha256": "b789ad143f55dc0dde02ca17f948156e73208f7f94b6aff0b481d35fe8d26333"
+    },
+    {
+      "id": "RUST233-00272",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/processes-9.txt",
+      "bytes": 6842,
+      "sha256": "f8481943efd8f3b4d109ab2f7169aed432ea37140217b65efd18290b8ed55c03"
+    },
+    {
+      "id": "RUST233-00273",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/run.json",
+      "bytes": 18072,
+      "sha256": "9fa8c61581086ef4728472af9284d6ed9228de870bdef3c39ac46e7c9a4f3ec9"
+    },
+    {
+      "id": "RUST233-00274",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/rust-events.jsonl",
+      "bytes": 2035,
+      "sha256": "276a91d8ede21aecaee9542cda8f3e217ccdf9c6e4d0398712892fad82f8dc6e"
+    },
+    {
+      "id": "RUST233-00275",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST233-00276",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00277",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/tcp-auth-pair.pcap",
+      "bytes": 3396,
+      "sha256": "8e5b69ded3adb87932048fe103bcd5f64ac5986427a79165e9353fa4504e83b2"
+    },
+    {
+      "id": "RUST233-00278",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/tcp-capture-index.json",
+      "bytes": 11645,
+      "sha256": "66cc9e37e1c9044da4feaccb3a446149829da81d21f6abc1a3ea8343c5565afe"
+    },
+    {
+      "id": "RUST233-00279",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/virtual-network.json",
+      "bytes": 24848,
+      "sha256": "b410dbb7027c58f63fe272f527d2130fcb31d67b9110be959c586cdb309fde13"
+    },
+    {
+      "id": "RUST233-00280",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/wineboot-A.log",
+      "bytes": 64346,
+      "sha256": "dd0c9416ff6628fba46f51004cd2f0a5fa6084af501275c663852ab80bd39a9f"
+    },
+    {
+      "id": "RUST233-00281",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "8dc135bd19738a075a7fa04747ce9b475c6721c5897a23433ab6dc1ac3b7a0cb"
+    },
+    {
+      "id": "RUST233-00282",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00283",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "RUST233-00284",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/launch-exit.json",
+      "bytes": 73,
+      "sha256": "e1383f7bf2a1e23b119164bbb49753a3292b914e6bc85b0e98dc28a7a510c729"
+    },
+    {
+      "id": "RUST233-00285",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00286",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/raw-seal.json",
+      "bytes": 40709,
+      "sha256": "a326831e68f4504a92213c71df92ff5cdd800ccdb7613dd3346cdf96efffec9e"
+    },
+    {
+      "id": "RUST233-00287",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/recipe.json",
+      "bytes": 1131,
+      "sha256": "4526f629672d9d0804e66504ce77525ea2a59aed6a97e1a1fc97d8fd314db661"
+    },
+    {
+      "id": "RUST233-00288",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/native-pair/runtime-preflight.json",
+      "bytes": 10435,
+      "sha256": "57f78c7981a99a20be42938f5834289b1f4e8516581480a4309abeebf50e12fb"
+    },
+    {
+      "id": "RUST233-00289",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/own-A.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "RUST233-00290",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/own-B.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "RUST233-00291",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "RUST233-00292",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/source-reuse.json",
+      "bytes": 684,
+      "sha256": "7dc1d9aff24966734c502824304b22e8debb83823893cefb555e09cc37603ad0"
+    },
+    {
+      "id": "RUST233-00293",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/tests.txt",
+      "bytes": 2001,
+      "sha256": "ef10a4622166e94df7ca7ab3a8acb48cc35b18fbd5f6d4a3dca8fd3e6143c63f"
+    },
+    {
+      "id": "RUST233-00294",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "RUST233-00295",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2-launch.txt",
+      "bytes": 227,
+      "sha256": "4cc59e9dbf7fb1d8807c0102d9119a6a4040ffed75b0159edcdbe5cc92f891ba"
+    },
+    {
+      "id": "RUST233-00296",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/B-contact.png",
+      "bytes": 112163,
+      "sha256": "3a22f91984df58759b22fc8d7c1bbe553715feeac49f1e0923b9b2bff0f92c0d"
+    },
+    {
+      "id": "RUST233-00297",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/build.txt",
+      "bytes": 166,
+      "sha256": "10c632b3714c87ed65d549a9589bd327160a2e1c44de3509e6b03fa2c42d96ba"
+    },
+    {
+      "id": "RUST233-00298",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "RUST233-00299",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/clippy.txt",
+      "bytes": 166,
+      "sha256": "a2158c512b59d76d89f4d8a99b3efd56fc75cb777cc39963037c58635e5fcb1e"
+    },
+    {
+      "id": "RUST233-00300",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/config.json",
+      "bytes": 1186,
+      "sha256": "ce2d9d69ebfc3674a9c29f4f4b1b73be4ec235446472dddee35a2b8bf5dac8a5"
+    },
+    {
+      "id": "RUST233-00301",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/final-build.txt",
+      "bytes": 166,
+      "sha256": "85b38942dac3f9974e4b2391abd27a2d2f4a82162a4bd14c60feda4e4ad1c2a6"
+    },
+    {
+      "id": "RUST233-00302",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/final-clippy.txt",
+      "bytes": 166,
+      "sha256": "470056971ec21d7c84fc30f9e38b80d88963fd854c48724a90c3d24b93847bc7"
+    },
+    {
+      "id": "RUST233-00303",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/final-fmt.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00304",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/final-tests.txt",
+      "bytes": 2001,
+      "sha256": "9467174e6ddf3eefd5a4e5d9fa4c6592edcfb27201cea350fc564389ae6aa139"
+    },
+    {
+      "id": "RUST233-00305",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/000-auth-A-final.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "RUST233-00306",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/001-auth-B-final.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "RUST233-00307",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/002-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "RUST233-00308",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/003-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "RUST233-00309",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/004-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RUST233-00310",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/005-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "RUST233-00311",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/006-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "RUST233-00312",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/007-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "RUST233-00313",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/008-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "RUST233-00314",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/009-prepare_rust_two_lobby_r2.py",
+      "bytes": 7643,
+      "sha256": "e7f080589a964d3b7196eb307f4aa41a7e792af6ac0b68af02f23da3c238880e"
+    },
+    {
+      "id": "RUST233-00315",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/010-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "RUST233-00316",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/011-own-A.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "RUST233-00317",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/012-own-B.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "RUST233-00318",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/013-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "RUST233-00319",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/014-player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "RUST233-00320",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/015-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "RUST233-00321",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/016-gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "RUST233-00322",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/017-native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "RUST233-00323",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/018-capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "RUST233-00324",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/019-config.json",
+      "bytes": 1186,
+      "sha256": "ce2d9d69ebfc3674a9c29f4f4b1b73be4ec235446472dddee35a2b8bf5dac8a5"
+    },
+    {
+      "id": "RUST233-00325",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/020-CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "RUST233-00326",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/021-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST233-00327",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/022-CA-r2-stage-social.exe",
+      "bytes": 31874560,
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "id": "RUST233-00328",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/023-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST233-00329",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/024-lobby.gdb",
+      "bytes": 1717,
+      "sha256": "55db3684a8b46be66a6931ee31b6a6fda2b4375507158a6b3f031b559a38891b"
+    },
+    {
+      "id": "RUST233-00330",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/025-native-config.json",
+      "bytes": 9320,
+      "sha256": "fd8703604f83b4b1aefd314c94f3681ae4f2d961575ba34fd2c571f3ea8f8810"
+    },
+    {
+      "id": "RUST233-00331",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/026-recipe.json",
+      "bytes": 1134,
+      "sha256": "c5aaefc8ba559a9d90a7597520b3f63a3a3757776632c54950dba9ce009611ef"
+    },
+    {
+      "id": "RUST233-00332",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/027-source-reuse.json",
+      "bytes": 788,
+      "sha256": "8289e7fd11e31ecd91ad963036be4eca12c5d9de6d6c44430f5b99659b966bdc"
+    },
+    {
+      "id": "RUST233-00333",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/028-topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "RUST233-00334",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/029-wine_probe_rust_two_lobby_r2.py",
+      "bytes": 18984,
+      "sha256": "f2673a5a391fc696ab10ab7370f991e6a4caa2ca8b8fa178f67d508623a13279"
+    },
+    {
+      "id": "RUST233-00335",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/030-.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST233-00336",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/031-Cargo.lock",
+      "bytes": 7492,
+      "sha256": "e6179670ad3f0739baa1260e2f059218da5e0254c4697c26df8ac4362294e927"
+    },
+    {
+      "id": "RUST233-00337",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/032-Cargo.toml",
+      "bytes": 418,
+      "sha256": "9dfd7a1b7cbc63e23ad3f20d494216c379232733ef2971152e69720cb5e7a329"
+    },
+    {
+      "id": "RUST233-00338",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/033-README.md",
+      "bytes": 3944,
+      "sha256": "a6b8eb95d1890ff50bf0d46c44d68eed79ed08effd1bb6bc27979eb982c69a13"
+    },
+    {
+      "id": "RUST233-00339",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/034-Cargo.toml",
+      "bytes": 281,
+      "sha256": "67927aa024cfc537e96ef3afc83aa12e9c89f68aeb704bc5c45bf0ffdc02cbba"
+    },
+    {
+      "id": "RUST233-00340",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/035-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "RUST233-00341",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/036-lib.rs",
+      "bytes": 29553,
+      "sha256": "73c004f0956c26b0b0995c421c09a15b7ff5500adcfc5796fa2c01ffc7ba7890"
+    },
+    {
+      "id": "RUST233-00342",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/037-lobby.rs",
+      "bytes": 7177,
+      "sha256": "5efc14b837f7a937a70919645f3843779d458044eaf51f6a1ae7eab90274b271"
+    },
+    {
+      "id": "RUST233-00343",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/038-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST233-00344",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/039-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST233-00345",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/040-lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST233-00346",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/041-README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST233-00347",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/042-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "RUST233-00348",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/043-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST233-00349",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/044-kr-service",
+      "bytes": 28074920,
+      "sha256": "bdf0c70d5a5366fd40d6e071e2f87f7660ab05881799880a6343b28148362d8e"
+    },
+    {
+      "id": "RUST233-00350",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/045-export_rust_profile.py",
+      "bytes": 7740,
+      "sha256": "3116abcbb4cb51416b023cd325bf231f8fd3d3c615ce45b0b39f8753491d7417"
+    },
+    {
+      "id": "RUST233-00351",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/frozen-inputs/046-run_rust_two_lobby_r2.py",
+      "bytes": 835,
+      "sha256": "dde413b242623d65b71cbd458cf3aa83f4330011eb91306613d865c94cd43b80"
+    },
+    {
+      "id": "RUST233-00352",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/input-retention.json",
+      "bytes": 15463,
+      "sha256": "6bac31996206bb21e70fe21ffe0f69ba9460202612c087d7b8499ed88a024361"
+    },
+    {
+      "id": "RUST233-00353",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/bindings-config.json",
+      "bytes": 8954,
+      "sha256": "3a6a46a4315e5404120a73e4112bd47d39235f673877e8b7a3c2a7b1d0528b34"
+    },
+    {
+      "id": "RUST233-00354",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/bindings.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00355",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/bindings/rust-events.jsonl",
+      "bytes": 11663,
+      "sha256": "1699772ea465d66881c221be840dc7fafd5be737c6146d2862ebc7c3d04fc2f8"
+    },
+    {
+      "id": "RUST233-00356",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/bindings/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST233-00357",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/duplicate-peer-config.json",
+      "bytes": 8954,
+      "sha256": "930c6907e5049ef743ae2f8e0406ec8bf51f9c45ba3ca163631274e474994610"
+    },
+    {
+      "id": "RUST233-00358",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/duplicate-peer.log",
+      "bytes": 70,
+      "sha256": "a46564bde02536ad507786cd468904e63ed29df0b67479c00193c4b01d100ca9"
+    },
+    {
+      "id": "RUST233-00359",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/mixed-mode-config.json",
+      "bytes": 8953,
+      "sha256": "e7186a197b274f6fb3cd7cb6517306c7d936ec7b6d710516f8761eb345b67e4f"
+    },
+    {
+      "id": "RUST233-00360",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/mixed-mode.log",
+      "bytes": 77,
+      "sha256": "4b79e9fdea44847d04c4b280f55b683cb6f59b205294d8b04ece54f7ee3dc20f"
+    },
+    {
+      "id": "RUST233-00361",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/verification.json",
+      "bytes": 3852,
+      "sha256": "175abf339d0e558851b2dc39612585a61973f96adf55c02d0ff09ae8a0eeea3e"
+    },
+    {
+      "id": "RUST233-00362",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/wrong-profile-ID-config.json",
+      "bytes": 8954,
+      "sha256": "1752d22d81688e6b883cbafaad59ae2187fdd2a12a831ce87be85c0fd62ae31a"
+    },
+    {
+      "id": "RUST233-00363",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/wrong-profile-ID.log",
+      "bytes": 73,
+      "sha256": "3a0501f0b8ae3a72bd364d786d8a5ce3abbff99ecf18a00c14aff29a57c34f83"
+    },
+    {
+      "id": "RUST233-00364",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/lobby.gdb",
+      "bytes": 1717,
+      "sha256": "55db3684a8b46be66a6931ee31b6a6fda2b4375507158a6b3f031b559a38891b"
+    },
+    {
+      "id": "RUST233-00365",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression.txt",
+      "bytes": 47,
+      "sha256": "b63b22bc973847ccb88ef228649615dc6271a6d24c183ffb993c2081aa0c8327"
+    },
+    {
+      "id": "RUST233-00366",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/bad-pin-config.json",
+      "bytes": 938,
+      "sha256": "5e841845abd315e443597be6bf52a0d6a98f05bb57c7c98079fcdeecc844a899"
+    },
+    {
+      "id": "RUST233-00367",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/bad-pin-process.log",
+      "bytes": 64,
+      "sha256": "50d3b7195294675d7337d66f74a6715c7f54939919be01eee0e496490f6dfae2"
+    },
+    {
+      "id": "RUST233-00368",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/bind-conflict-config.json",
+      "bytes": 949,
+      "sha256": "8debfb0a2520716e241ab0664fb8ef385c01b8c79869d97b9ead954c076a5d9b"
+    },
+    {
+      "id": "RUST233-00369",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/bind-conflict-process.log",
+      "bytes": 75,
+      "sha256": "5de354bf7d8a9dbd103a4ff968436a76fc2a6ca3c11357f1feeef237aa29486d"
+    },
+    {
+      "id": "RUST233-00370",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/restart-config.json",
+      "bytes": 938,
+      "sha256": "0f7dd468ed7777f59be8caac9f92ce81d68ab6ed553cc5a7861d60a7e6a7e030"
+    },
+    {
+      "id": "RUST233-00371",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/restart-process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00372",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/restart/rust-events.jsonl",
+      "bytes": 795,
+      "sha256": "9b927f5c72d3625d0716ddcc4c8dc8a6e77583be4e5530797259417df27d8fe6"
+    },
+    {
+      "id": "RUST233-00373",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/restart/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST233-00374",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/transport-config.json",
+      "bytes": 938,
+      "sha256": "0f7dd468ed7777f59be8caac9f92ce81d68ab6ed553cc5a7861d60a7e6a7e030"
+    },
+    {
+      "id": "RUST233-00375",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/transport-process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00376",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/transport/rust-events.jsonl",
+      "bytes": 6162,
+      "sha256": "5bbbdb4e4d24ac5b0e5e0ed77d8346010b38418ff47949553121798e179a3ed8"
+    },
+    {
+      "id": "RUST233-00377",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/transport/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST233-00378",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/verification.json",
+      "bytes": 1854,
+      "sha256": "bdd56f3a285343d394be923b7198292814dd2fb2058afb2ff2a47f698d7f8ec3"
+    },
+    {
+      "id": "RUST233-00379",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-config.json",
+      "bytes": 9320,
+      "sha256": "fd8703604f83b4b1aefd314c94f3681ae4f2d961575ba34fd2c571f3ea8f8810"
+    },
+    {
+      "id": "RUST233-00380",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/CALog-before.txt",
+      "bytes": 1132,
+      "sha256": "59a06ecc7ccd7a66e75e0be066bc139948ab865dca0f1539e0eff7f94ebc95a1"
+    },
+    {
+      "id": "RUST233-00381",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/CALog-run.txt",
+      "bytes": 1132,
+      "sha256": "59a06ecc7ccd7a66e75e0be066bc139948ab865dca0f1539e0eff7f94ebc95a1"
+    },
+    {
+      "id": "RUST233-00382",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "9abcaf4527c261b9d279b0805309576155c97068f3a7f8c68e91ab9fd01341a8"
+    },
+    {
+      "id": "RUST233-00383",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/client.log",
+      "bytes": 122102,
+      "sha256": "d0080dc5e41c01e49675e7df6fb99c25a916451073781064817fb7d4d8dc4bb8"
+    },
+    {
+      "id": "RUST233-00384",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/debug-commands.txt",
+      "bytes": 1717,
+      "sha256": "55db3684a8b46be66a6931ee31b6a6fda2b4375507158a6b3f031b559a38891b"
+    },
+    {
+      "id": "RUST233-00385",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00386",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00387",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-10.png",
+      "bytes": 144561,
+      "sha256": "069e22fc36eba3beb77065e359b2ddea98f390adb9c7c92234cd8c4c668f8499"
+    },
+    {
+      "id": "RUST233-00388",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-11.png",
+      "bytes": 145105,
+      "sha256": "34b3688b52645f5b3bff63e711540a9a7a77cb0a3483fca3bc92e03790e027b5"
+    },
+    {
+      "id": "RUST233-00389",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-12.png",
+      "bytes": 145098,
+      "sha256": "dee0f58dbf0b05bf06f45b3a8473e368cd38260cf204f198e652dca221fb2077"
+    },
+    {
+      "id": "RUST233-00390",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-13.png",
+      "bytes": 145114,
+      "sha256": "b67e11218014750659e579bd2619819e23df7d9c2e96584fc7ee8120427eff01"
+    },
+    {
+      "id": "RUST233-00391",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-14.png",
+      "bytes": 144812,
+      "sha256": "4dac4dccd5d759aaf7245f0c320ab9a4686eae4516b14bcd171cece7ff8acda4"
+    },
+    {
+      "id": "RUST233-00392",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00393",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-3.png",
+      "bytes": 12324,
+      "sha256": "7e9af06b060699975d6ea1c28063d857b5573a363b8a4b2fd236ac47c31c3d9f"
+    },
+    {
+      "id": "RUST233-00394",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-4.png",
+      "bytes": 130950,
+      "sha256": "97f2f74b39a22212547661caf4d1f02bebf0848be3a572041fbf9c10f1c6828f"
+    },
+    {
+      "id": "RUST233-00395",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-5.png",
+      "bytes": 189532,
+      "sha256": "65fadaf8a24f9d9b070468e5dcd944fdf7817da412de419e912314a2f0103be7"
+    },
+    {
+      "id": "RUST233-00396",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-6.png",
+      "bytes": 193523,
+      "sha256": "4994c6ecc02b4fc22a65013c16c0653c228219fc5b45ffb533712d8b07acfb32"
+    },
+    {
+      "id": "RUST233-00397",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-7.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00398",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-8.png",
+      "bytes": 149348,
+      "sha256": "fd1230a33a007dc37010ddfecf3f0ac2f3d948f0caed96f7db08944cad730c2a"
+    },
+    {
+      "id": "RUST233-00399",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/screen-9.png",
+      "bytes": 149932,
+      "sha256": "5681bd57c8ad7a83a04eeb46aca534713a43f36d3fc8d0b8151206f8aa74cf91"
+    },
+    {
+      "id": "RUST233-00400",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST233-00401",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "RUST233-00402",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST233-00403",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST233-00404",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST233-00405",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST233-00406",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST233-00407",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-2.txt",
+      "bytes": 1305,
+      "sha256": "2ea219015d24e371bd5be2632e2b1432dbb3ec211585b3163a982a765dd40e1e"
+    },
+    {
+      "id": "RUST233-00408",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST233-00409",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST233-00410",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST233-00411",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "RUST233-00412",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST233-00413",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST233-00414",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "RUST233-00415",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/CALog-before.txt",
+      "bytes": 1132,
+      "sha256": "59a06ecc7ccd7a66e75e0be066bc139948ab865dca0f1539e0eff7f94ebc95a1"
+    },
+    {
+      "id": "RUST233-00416",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/CALog-run.txt",
+      "bytes": 1132,
+      "sha256": "59a06ecc7ccd7a66e75e0be066bc139948ab865dca0f1539e0eff7f94ebc95a1"
+    },
+    {
+      "id": "RUST233-00417",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "d6f80040b5756f07e93dd8ca76760bec92d414e3c28d2eb8d9acfd03bcc7b126"
+    },
+    {
+      "id": "RUST233-00418",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/client.log",
+      "bytes": 122102,
+      "sha256": "9592880bd0c7e9a992cb7b3fa46c8fb71c2ff4b648efad4de2673b8d4cb6910c"
+    },
+    {
+      "id": "RUST233-00419",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/debug-commands.txt",
+      "bytes": 1717,
+      "sha256": "55db3684a8b46be66a6931ee31b6a6fda2b4375507158a6b3f031b559a38891b"
+    },
+    {
+      "id": "RUST233-00420",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00421",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00422",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-10.png",
+      "bytes": 149348,
+      "sha256": "418661ecf1372203662ffc8e01285e7fd5f96a2ab5a32418fef6091d91f94cb1"
+    },
+    {
+      "id": "RUST233-00423",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-11.png",
+      "bytes": 150003,
+      "sha256": "b09e58fc9a5ab5b0b444b493898d4aeb3f3d3d29ade5a5ddbcd97196ad482de7"
+    },
+    {
+      "id": "RUST233-00424",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-12.png",
+      "bytes": 147992,
+      "sha256": "71664b94905c3c29a8cf42d6692a5648fc85fc0c9ad62917dc01fd2e1af9c7dd"
+    },
+    {
+      "id": "RUST233-00425",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-13.png",
+      "bytes": 145413,
+      "sha256": "c5182f41d88acd44a1e03d7cc149fa5aad3bee75e538f3ce5b25ac657ff2151b"
+    },
+    {
+      "id": "RUST233-00426",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-14.png",
+      "bytes": 145664,
+      "sha256": "79aed6f409695bf33d5a730b573866121621b7204e2126aafa6292f40a17d745"
+    },
+    {
+      "id": "RUST233-00427",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00428",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00429",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-4.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00430",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-5.png",
+      "bytes": 1670,
+      "sha256": "2938793d36112554332f0c109ace2f58404e02633a2b304393ee766c0772d871"
+    },
+    {
+      "id": "RUST233-00431",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-6.png",
+      "bytes": 117797,
+      "sha256": "ee557e5a2dafa61315e788ae714f699f79c4898e7bc6521cd4b1b2bea0e72ba3"
+    },
+    {
+      "id": "RUST233-00432",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-7.png",
+      "bytes": 189532,
+      "sha256": "65fadaf8a24f9d9b070468e5dcd944fdf7817da412de419e912314a2f0103be7"
+    },
+    {
+      "id": "RUST233-00433",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-8.png",
+      "bytes": 193523,
+      "sha256": "4994c6ecc02b4fc22a65013c16c0653c228219fc5b45ffb533712d8b07acfb32"
+    },
+    {
+      "id": "RUST233-00434",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST233-00435",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "RUST233-00436",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "RUST233-00437",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RUST233-00438",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RUST233-00439",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RUST233-00440",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RUST233-00441",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RUST233-00442",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "RUST233-00443",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "RUST233-00444",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-4.txt",
+      "bytes": 1305,
+      "sha256": "3a9abbddf140befc14f7fbfb5a6c5151e9983094e5c5b128ba90a5acd7adc7b7"
+    },
+    {
+      "id": "RUST233-00445",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "RUST233-00446",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "RUST233-00447",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "RUST233-00448",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "RUST233-00449",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "RUST233-00450",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "RUST233-00451",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RUST233-00452",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-0.txt",
+      "bytes": 6692,
+      "sha256": "36aa05b0997ba0aa295d2efd580dbe15b233bb054f2773f05a02a06730ec8126"
+    },
+    {
+      "id": "RUST233-00453",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-1.txt",
+      "bytes": 6845,
+      "sha256": "e4b3a0ff2be7797e1d4fb19482725cfd5c0f5d2db8be7595ea15bf74c5f78045"
+    },
+    {
+      "id": "RUST233-00454",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-10.txt",
+      "bytes": 6845,
+      "sha256": "a9baeb6c2b8d42a1be0c5cdf8b7f5e4f9e97300309a97209ee4c124578cdb812"
+    },
+    {
+      "id": "RUST233-00455",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-11.txt",
+      "bytes": 6845,
+      "sha256": "c130c966ac91c0bf7068ace277e16669fda5e0a19f5f06a3ffceb0f962a6e836"
+    },
+    {
+      "id": "RUST233-00456",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-12.txt",
+      "bytes": 6845,
+      "sha256": "f7d2e9ebb9b5b58798c1843da08e6a9fd06ea03b1cf2d4796520a65eddf02691"
+    },
+    {
+      "id": "RUST233-00457",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-13.txt",
+      "bytes": 6845,
+      "sha256": "26a40fe24166a2257a9a333f9b1fbd48214cba1a28515717f4018bb7b89ea4be"
+    },
+    {
+      "id": "RUST233-00458",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-14.txt",
+      "bytes": 6845,
+      "sha256": "c17511e35606d2ecfadda81f8608bf832c79ed2d56d19cc4496ec2fe2006b1e2"
+    },
+    {
+      "id": "RUST233-00459",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-2.txt",
+      "bytes": 6845,
+      "sha256": "e780faedf80453e3fe19762fc6565d778704c2f4324f2eb2438895fd05a9e4cf"
+    },
+    {
+      "id": "RUST233-00460",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-3.txt",
+      "bytes": 6845,
+      "sha256": "8fe4df2de3bcbdf61ce5ed4725f4366cca05ce259ec18da0febc264590092106"
+    },
+    {
+      "id": "RUST233-00461",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-4.txt",
+      "bytes": 6845,
+      "sha256": "729ee61d2eb52f3ae3e11e86381e9bec7ea2f41b98431d777a42612e8115bb35"
+    },
+    {
+      "id": "RUST233-00462",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-5.txt",
+      "bytes": 6845,
+      "sha256": "a00607a349777323874ee413b01a9fe99015584030ae1623e6bfbcf172478774"
+    },
+    {
+      "id": "RUST233-00463",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-6.txt",
+      "bytes": 6845,
+      "sha256": "9a40cfc89acf825508e9d495210692a43e16deb9019a0750a4e2e7e76f83cfa6"
+    },
+    {
+      "id": "RUST233-00464",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-7.txt",
+      "bytes": 6845,
+      "sha256": "f415e9e7f07a6527ee2bef6c238cb7acbd6dfc97f71af4cf42c7863a42bdb77c"
+    },
+    {
+      "id": "RUST233-00465",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-8.txt",
+      "bytes": 6845,
+      "sha256": "b27a499499f50200616e2f87c3197886a76c8c436a0bf7070413e047a5b5bc35"
+    },
+    {
+      "id": "RUST233-00466",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/processes-9.txt",
+      "bytes": 6845,
+      "sha256": "d89dd7fa19d0f753b5b40e9433e212eb09bbe5951c5e480dd005ed22c0f04d6b"
+    },
+    {
+      "id": "RUST233-00467",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/run.json",
+      "bytes": 10790,
+      "sha256": "b7433b807fbca992bebb660a72b99d843e6a12d869d8ffee240747e85422a70b"
+    },
+    {
+      "id": "RUST233-00468",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/rust-events.jsonl",
+      "bytes": 14305,
+      "sha256": "80e7a275501981d0707ba5beba64bea9b6cf9d5042252e43a7370746243e4981"
+    },
+    {
+      "id": "RUST233-00469",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST233-00470",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00471",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/tcp-auth-pair.pcap",
+      "bytes": 18054,
+      "sha256": "4670a7249b346161dc0a18a07570ed63a189628ee10d7eadc7bbb295c0817aef"
+    },
+    {
+      "id": "RUST233-00472",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/tcp-capture-index.json",
+      "bytes": 49338,
+      "sha256": "f90ec79ba6ba8d1ef228c4e3c2788ea9c3fadee182b714efff9f396e3c50b151"
+    },
+    {
+      "id": "RUST233-00473",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/virtual-network.json",
+      "bytes": 24844,
+      "sha256": "e798ccc6e9cbe0bfbe97aa63ffc132eb9fed44450312a66b15dd9f02ac6f0200"
+    },
+    {
+      "id": "RUST233-00474",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "2271a5b9168beefbf7dd454cb8f464d462ff554cd1af6f034b7e5fee562af3d7"
+    },
+    {
+      "id": "RUST233-00475",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "ea453fa6f6686faa8ecfae8e7be979265bbac869338f504b45ce4a6f9330f276"
+    },
+    {
+      "id": "RUST233-00476",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00477",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "RUST233-00478",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/launch-exit.json",
+      "bytes": 73,
+      "sha256": "84f234915f6cf80563ee0fec4dfc8efaf8cc76fcc3af783610c2f1bdb253f70a"
+    },
+    {
+      "id": "RUST233-00479",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00480",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/raw-seal.json",
+      "bytes": 20934,
+      "sha256": "a965de66c05e2276bd85317325dea514dfb03a2399f1ce68449748add414fb65"
+    },
+    {
+      "id": "RUST233-00481",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/recipe.json",
+      "bytes": 1134,
+      "sha256": "c5aaefc8ba559a9d90a7597520b3f63a3a3757776632c54950dba9ce009611ef"
+    },
+    {
+      "id": "RUST233-00482",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/runtime-preflight.json",
+      "bytes": 10444,
+      "sha256": "d83275a2269cea26186ae4121f07241e8dc6a7f9c7a5bd0ef6f7483094bbe3b9"
+    },
+    {
+      "id": "RUST233-00483",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/own-A.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "RUST233-00484",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/own-B.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "RUST233-00485",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/rea-provider-limits.json",
+      "bytes": 418,
+      "sha256": "3236a5531ec032f0eb7465217dc359e029fbc5d5c27e0d2dbdf286b3dcf6ff9a"
+    },
+    {
+      "id": "RUST233-00486",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "RUST233-00487",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/source-reuse.json",
+      "bytes": 788,
+      "sha256": "8289e7fd11e31ecd91ad963036be4eca12c5d9de6d6c44430f5b99659b966bdc"
+    },
+    {
+      "id": "RUST233-00488",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/tests.txt",
+      "bytes": 2001,
+      "sha256": "7b4cb1088fcf43e976fb8fab07cdbdcf868175b3e0e709f49b1b0a68b4008ec3"
+    },
+    {
+      "id": "RUST233-00489",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "RUST233-00490",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/ui-review.json",
+      "bytes": 557,
+      "sha256": "f0fd473438277df13b11adfc57d72323e26f14df671f30fe6b8489b082301a16"
+    },
+    {
+      "id": "RUST233-00491",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/verification.json",
+      "bytes": 11611,
+      "sha256": "2996374e9de567ab34acbd693c8bb8390a64e91648b4820a36eb1fdb2a1dbc8e"
+    },
+    {
+      "id": "RUST233-00492",
+      "kind": "local",
+      "path": "local/research/codex/sync_cp233.py",
+      "bytes": 14988,
+      "sha256": "ef0e60b401cafcb8cb1df1bff657d0e761e9900c1b65a39a00674da07455be29"
+    },
+    {
+      "id": "RUST233-00493",
+      "kind": "local",
+      "path": "local/research/codex/update_issues_cp233.py",
+      "bytes": 4828,
+      "sha256": "f37e15d6b79b10d9ef08739c34718e1c2d31c60e04f3f52fab05b06225f64db0"
+    },
+    {
+      "id": "RUST233-00494",
+      "kind": "local",
+      "path": "local/research/codex/verify_rust_two_lobby.py",
+      "bytes": 7658,
+      "sha256": "e57bbb4806a42407388e6259670523d4c3a8a6e32c4502ff9d8257ffb11dba27"
+    },
+    {
+      "id": "RUST233-00495",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_rust_two_lobby.py",
+      "bytes": 18984,
+      "sha256": "f2673a5a391fc696ab10ab7370f991e6a4caa2ca8b8fa178f67d508623a13279"
+    },
+    {
+      "id": "RUST233-00496",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_rust_two_lobby_r2.py",
+      "bytes": 18984,
+      "sha256": "f2673a5a391fc696ab10ab7370f991e6a4caa2ca8b8fa178f67d508623a13279"
+    }
+  ]
+}

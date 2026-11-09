@@ -1,0 +1,506 @@
+{
+  "schema": "kre-rust-two-lobby-v1",
+  "checkpoint": "CP233",
+  "baseline": "5b3ef81c23987279c504954ac1f97faeb6177395",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/PROTOCOL.md#rust-two-lobby",
+  "plan": "docs/PLAN.md#current-order",
+  "native": {
+    "result": "pass",
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T07:56:23.180416+00:00",
+    "scope": "partialM2twoexplicitdiagnosticidentities/nativeauth0/channel/lobby/291personalrender;notrooms/fullM2/accounts",
+    "run_sha256": "b7433b807fbca992bebb660a72b99d843e6a12d869d8ffee240747e85422a70b",
+    "raw_count": 98,
+    "frozen_count": 47,
+    "cleanup": {
+      "net_namespace": "net:[4026533552]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "duration_s": 40.740784007,
+    "hold_s": 8.710398283,
+    "binary_sha256": "bdf0c70d5a5366fd40d6e071e2f87f7660ab05881799880a6343b28148362d8e",
+    "native": {
+      "A": {
+        "auth": [
+          {
+            "cursor": 137,
+            "err54": 0,
+            "err58": 0,
+            "kind": "auth_end",
+            "packet": 1231964,
+            "payload": 137
+          }
+        ],
+        "own": [
+          {
+            "cursor": 128,
+            "err54": 0,
+            "err58": 0,
+            "kind": "producer_end",
+            "name": {
+              "ascii": "KRLocal",
+              "capacity": 15,
+              "hex": "4b524c6f63616c",
+              "size": 7
+            },
+            "ordinal": 1,
+            "packet": "0x12cf00",
+            "payload": 128,
+            "record": "0x2ea32f2c",
+            "store": "0x2ea2cb28"
+          }
+        ],
+        "render": [
+          {
+            "caller": "0x9013be",
+            "kind": "render_guard",
+            "matches": true,
+            "name": {
+              "ascii": "KRLocal",
+              "capacity": 15,
+              "hex": "4b524c6f63616c",
+              "size": 7
+            },
+            "ordinal": 1,
+            "record": "0x2ea32f2c",
+            "value": 1,
+            "widget": "0x6047b670"
+          },
+          {
+            "caller": "0x9013be",
+            "kind": "render_guard",
+            "matches": true,
+            "name": {
+              "ascii": "KRLocal",
+              "capacity": 15,
+              "hex": "4b524c6f63616c",
+              "size": 7
+            },
+            "ordinal": 1,
+            "record": "0x2ea32f2c",
+            "value": 1,
+            "widget": "0x6047b670"
+          }
+        ]
+      },
+      "B": {
+        "auth": [
+          {
+            "cursor": 137,
+            "err54": 0,
+            "err58": 0,
+            "kind": "auth_end",
+            "packet": 1231964,
+            "payload": 137
+          }
+        ],
+        "own": [
+          {
+            "cursor": 128,
+            "err54": 0,
+            "err58": 0,
+            "kind": "producer_end",
+            "name": {
+              "ascii": "KRGuest",
+              "capacity": 15,
+              "hex": "4b524775657374",
+              "size": 7
+            },
+            "ordinal": 1,
+            "packet": "0x12cf00",
+            "payload": 128,
+            "record": "0x2ea32f2c",
+            "store": "0x2ea2cb28"
+          }
+        ],
+        "render": [
+          {
+            "caller": "0x9013be",
+            "kind": "render_guard",
+            "matches": true,
+            "name": {
+              "ascii": "KRGuest",
+              "capacity": 15,
+              "hex": "4b524775657374",
+              "size": 7
+            },
+            "ordinal": 1,
+            "record": "0x2ea32f2c",
+            "value": 1,
+            "widget": "0x5f70ac58"
+          },
+          {
+            "caller": "0x9013be",
+            "kind": "render_guard",
+            "matches": true,
+            "name": {
+              "ascii": "KRGuest",
+              "capacity": 15,
+              "hex": "4b524775657374",
+              "size": 7
+            },
+            "ordinal": 1,
+            "record": "0x2ea32f2c",
+            "value": 1,
+            "widget": "0x5f70ac58"
+          }
+        ]
+      }
+    },
+    "joins": [
+      {
+        "connection": 1,
+        "identity": 1,
+        "transport": "HelloOnly",
+        "peer": "10.77.0.2:58544",
+        "local": "10.77.0.1:3848",
+        "actual_channel_identity": null,
+        "c2s": [],
+        "s2c_bytes": 15,
+        "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+      },
+      {
+        "connection": 2,
+        "identity": 1,
+        "transport": "Wcp",
+        "peer": "10.77.0.2:56150",
+        "local": "10.77.0.1:3838",
+        "actual_channel_identity": null,
+        "c2s": [
+          {
+            "opcode": 0,
+            "sequence": 40,
+            "body_bytes": 28
+          }
+        ],
+        "s2c_bytes": 332,
+        "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d"
+      },
+      {
+        "connection": 3,
+        "identity": 2,
+        "transport": "HelloOnly",
+        "peer": "10.77.0.3:45400",
+        "local": "10.77.0.1:3838",
+        "actual_channel_identity": null,
+        "c2s": [],
+        "s2c_bytes": 15,
+        "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+      },
+      {
+        "connection": 4,
+        "identity": 2,
+        "transport": "Wcp",
+        "peer": "10.77.0.3:45410",
+        "local": "10.77.0.1:3838",
+        "actual_channel_identity": null,
+        "c2s": [
+          {
+            "opcode": 0,
+            "sequence": 40,
+            "body_bytes": 28
+          }
+        ],
+        "s2c_bytes": 332,
+        "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d"
+      },
+      {
+        "connection": 5,
+        "identity": 1,
+        "transport": "Login",
+        "peer": "10.77.0.2:49418",
+        "local": "10.77.0.1:3838",
+        "actual_channel_identity": null,
+        "c2s": [
+          {
+            "opcode": 1,
+            "sequence": 40,
+            "body_bytes": 42
+          },
+          {
+            "opcode": 60,
+            "sequence": 43,
+            "body_bytes": 20
+          },
+          {
+            "opcode": 9,
+            "sequence": 46,
+            "body_bytes": 8
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "body_bytes": 4
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 40,
+            "sequence": 55,
+            "body_bytes": 1
+          },
+          {
+            "opcode": 5,
+            "sequence": 58,
+            "body_bytes": 9
+          }
+        ],
+        "s2c_bytes": 352,
+        "s2c_sha256": "d95810f0129e0829d3a2436c18dd8c7a772597c7e1056f8d681a5b2181ae0b70"
+      },
+      {
+        "connection": 6,
+        "identity": 1,
+        "transport": "Channel",
+        "peer": "10.77.0.2:42240",
+        "local": "10.77.0.1:3858",
+        "actual_channel_identity": {
+          "identity": 1,
+          "name": "KRLocal"
+        },
+        "c2s": [
+          {
+            "opcode": 6,
+            "sequence": 40,
+            "body_bytes": 43
+          },
+          {
+            "opcode": 544,
+            "sequence": 43,
+            "body_bytes": 10
+          },
+          {
+            "opcode": 549,
+            "sequence": 46,
+            "body_bytes": 3
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "body_bytes": 4
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 567,
+            "sequence": 55,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 67,
+            "sequence": 58,
+            "body_bytes": 2
+          },
+          {
+            "opcode": 742,
+            "sequence": 61,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 741,
+            "sequence": 64,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 715,
+            "sequence": 67,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 715,
+            "sequence": 70,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 15,
+            "sequence": 73,
+            "body_bytes": 31
+          },
+          {
+            "opcode": 715,
+            "sequence": 76,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 15,
+            "sequence": 79,
+            "body_bytes": 31
+          },
+          {
+            "opcode": 715,
+            "sequence": 82,
+            "body_bytes": 0
+          }
+        ],
+        "s2c_bytes": 447,
+        "s2c_sha256": "e5c6e28757847854d60c8b894eeee62197cf6682a5e133db6a7a62327086ecff"
+      },
+      {
+        "connection": 7,
+        "identity": 2,
+        "transport": "Login",
+        "peer": "10.77.0.3:40848",
+        "local": "10.77.0.1:3838",
+        "actual_channel_identity": null,
+        "c2s": [
+          {
+            "opcode": 1,
+            "sequence": 40,
+            "body_bytes": 42
+          },
+          {
+            "opcode": 60,
+            "sequence": 43,
+            "body_bytes": 20
+          },
+          {
+            "opcode": 9,
+            "sequence": 46,
+            "body_bytes": 8
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "body_bytes": 4
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 40,
+            "sequence": 55,
+            "body_bytes": 1
+          },
+          {
+            "opcode": 5,
+            "sequence": 58,
+            "body_bytes": 9
+          }
+        ],
+        "s2c_bytes": 352,
+        "s2c_sha256": "686643cce38d529bffdbfcd2ccd902675f1908c7b96b7b77664e1830a0180d9b"
+      },
+      {
+        "connection": 8,
+        "identity": 2,
+        "transport": "Channel",
+        "peer": "10.77.0.3:40906",
+        "local": "10.77.0.1:3858",
+        "actual_channel_identity": {
+          "identity": 2,
+          "name": "KRGuest"
+        },
+        "c2s": [
+          {
+            "opcode": 6,
+            "sequence": 40,
+            "body_bytes": 43
+          },
+          {
+            "opcode": 544,
+            "sequence": 43,
+            "body_bytes": 10
+          },
+          {
+            "opcode": 549,
+            "sequence": 46,
+            "body_bytes": 3
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "body_bytes": 4
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 567,
+            "sequence": 55,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 67,
+            "sequence": 58,
+            "body_bytes": 2
+          },
+          {
+            "opcode": 742,
+            "sequence": 61,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 741,
+            "sequence": 64,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 715,
+            "sequence": 67,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 715,
+            "sequence": 70,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 15,
+            "sequence": 73,
+            "body_bytes": 31
+          },
+          {
+            "opcode": 715,
+            "sequence": 76,
+            "body_bytes": 0
+          },
+          {
+            "opcode": 15,
+            "sequence": 79,
+            "body_bytes": 31
+          },
+          {
+            "opcode": 715,
+            "sequence": 82,
+            "body_bytes": 0
+          }
+        ],
+        "s2c_bytes": 447,
+        "s2c_sha256": "e12e3e3cde8c38739d37d49a0082f3ff244f41e52cad213eadcc813934c07cc7"
+      }
+    ],
+    "capture": {
+      "path": "local/research/codex/rust-two-lobby-r2/native-pair/cycles/tcp-auth-pair.pcap",
+      "sha256": "4670a7249b346161dc0a18a07570ed63a189628ee10d7eadc7bbb295c0817aef",
+      "records": 162,
+      "exact_reply_frames": 18
+    },
+    "topology": "two private virtual hosts on isolated bridge",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "client_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+    "limits": "IPidentitybindinglocalpolicy, notaccountauthentication. WCPtype0shapeobserved/opaque,pinned317notgeneralbootstrap. Login/channelport+stage+IDnamechecked, noacceptcounter. SharedhostWine/virtualLAN accepted;notphysicalWindows/Internet. Rooms/Ready/host/Back/barrier/Battle/DB/fullM2 notyet ported. Internet thật chưa kiểm."
+  },
+  "failed_run": "local/research/codex/rust-two-lobby-r1/failure-review.json",
+  "code": [
+    "rust/crates/kr-service/src/binding.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/lobby.rs",
+    "tools/export_rust_profile.py",
+    "tools/test_rust_lobby.py"
+  ],
+  "limits": "IPidentitybindinglocalpolicy, notaccountauthentication. WCPtype0shapeobserved/opaque,pinned317notgeneralbootstrap. Login/channelport+stage+IDnamechecked, noacceptcounter. SharedhostWine/virtualLAN accepted;notphysicalWindows/Internet. Rooms/Ready/host/Back/barrier/Battle/DB/fullM2 notyet ported. Internet thật chưa kiểm."
+}

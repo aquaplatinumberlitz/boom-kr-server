@@ -1,4 +1,4 @@
-//! Diagnostic single KRLocal projection, not accounts or general lobby/rooms.
+//! Pinned diagnostic identity projections, not accounts or general lobby/rooms.
 //! CP058/183/186; immutable templates keep unmeasured fields opaque.
 use kr_wire::{Width, read_uint};
 use std::io;
@@ -17,18 +17,26 @@ pub enum Stage {
 pub struct Flow {
     pub stage: Stage,
     ignored: usize,
+    identity: u32,
+    name: Vec<u8>,
 }
 impl Flow {
     pub fn login() -> Self {
-        Self {
-            stage: Stage::Login,
-            ignored: 0,
-        }
+        Self::for_identity(false, 1, b"KRLocal")
     }
     pub fn channel() -> Self {
+        Self::for_identity(true, 1, b"KRLocal")
+    }
+    pub fn for_identity(channel: bool, identity: u32, name: &[u8]) -> Self {
         Self {
-            stage: Stage::Channel,
+            stage: if channel {
+                Stage::Channel
+            } else {
+                Stage::Login
+            },
             ignored: 0,
+            identity,
+            name: name.to_vec(),
         }
     }
 
@@ -47,10 +55,13 @@ impl Flow {
             (Stage::Info, 9) if body.len() == 8 => (Stage::Redirect, vec!["netinfo", "flags"]),
             (Stage::Redirect, 5) if body.len() == 9 => (Stage::LoginDone, vec!["redirect"]),
             (Stage::Channel, 6) => {
-                if body.len() != 43
-                    || read_uint(&body[2..4], Width::U16).map_err(io::Error::other)? != 7
-                    || decode_bytes(&body[4..11])? != b"KRLocal"
-                    || read_uint(&body[11..15], Width::U32).map_err(io::Error::other)? != 1
+                if body.len() != 36 + self.name.len()
+                    || read_uint(&body[2..4], Width::U16).map_err(io::Error::other)?
+                        != self.name.len() as u64
+                    || decode_bytes(&body[4..4 + self.name.len()])? != self.name
+                    || read_uint(&body[4 + self.name.len()..8 + self.name.len()], Width::U32)
+                        .map_err(io::Error::other)?
+                        != u64::from(self.identity)
                 {
                     return Err(io::Error::other("diagnostic channel identity mismatch"));
                 }
@@ -92,7 +103,7 @@ impl Flow {
     }
 }
 
-fn decode_bytes(mut encoded: &[u8]) -> io::Result<Vec<u8>> {
+pub(crate) fn decode_bytes(mut encoded: &[u8]) -> io::Result<Vec<u8>> {
     let mut out = Vec::with_capacity(encoded.len());
     while !encoded.is_empty() {
         let (n, w) = if encoded.len() >= 4 {
@@ -154,5 +165,23 @@ mod tests {
         );
         assert!(flow.packet(67, &[0; 2]).is_err());
         assert_eq!(flow.stage, Stage::Lobby);
+    }
+
+    #[test]
+    fn guest_identity_is_distinct_and_cannot_claim_host_channel() {
+        let mut body = vec![0; 43];
+        body[2..4].copy_from_slice(&write_uint(7, Width::U16).unwrap());
+        body[4..8]
+            .copy_from_slice(&write_uint(u32::from_le_bytes(*b"KRGu").into(), Width::U32).unwrap());
+        body[8..10]
+            .copy_from_slice(&write_uint(u16::from_le_bytes(*b"es").into(), Width::U16).unwrap());
+        body[10] = write_uint(b't'.into(), Width::U8).unwrap()[0];
+        body[11..15].copy_from_slice(&write_uint(2, Width::U32).unwrap());
+        let mut host = Flow::channel();
+        assert!(host.packet(6, &body).is_err());
+        assert_eq!(host.stage, Stage::Channel);
+        let mut guest = Flow::for_identity(true, 2, b"KRGuest");
+        assert_eq!(guest.packet(6, &body).unwrap(), vec!["channel"]);
+        assert_eq!(guest.stage, Stage::Ready);
     }
 }
