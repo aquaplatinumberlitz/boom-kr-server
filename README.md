@@ -29,6 +29,18 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP232: Rust đã đưa một KR thật tới sảnh với identity cục bộ và profile đúng tên.**
+[Code/run](rust/README.md), [contract/limits](docs/PROTOCOL.md#rust-local-lobby),
+[evidence](docs/evidence/rust-service/README.md#cp232): auth0/native137/137, channel17/241/91/14 rồi291
+native128/128/errors0/nameKRLocal, personal renderguard1 và UI sảnhKRLocal; PCAP160record/9exactreplies,
+giữ9.362s. Root binary đúng hash đã chạy;7Rusttests/fmt/clippy/build và14TCP M1regression đạt.
+M2 **chưa hoàn tất**: còn hai-client/phòng/barrier/Back-rejoin; diagnosticidentity chưa accountauthentication.
+Ba run startupfailure6raw + staging38 + final47 =91raw frozen/seal/cleanup, giữ correctionopcode15.
+CP231 merge [PR302](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/302)/`bc55356`;
+AUD067 qua232/kế236. [PLAN](docs/PLAN.md#current-order) tiếp phần còn thiếu M2, RE chỉ khi port bị chặn.
+Python serving/RE/reference và támWIP giữ nguyên. Internet thật chưa kiểm.
+
+
 **CP231: đã viết và chạy lát cắt Rust đầu tiên trên client KR thật.**
 [Rust/build/run](rust/README.md), [contract/limits](docs/PROTOCOL.md#rust-foundation),
 [evidence](docs/evidence/rust-service/README.md#cp231): cùng CA PID144 trên Wine nhận result1 hai lần,

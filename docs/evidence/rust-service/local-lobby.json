@@ -1,0 +1,746 @@
+{
+  "schema": "kre-rust-local-lobby-v1",
+  "recorded_utc": "2026-11-09T07:22:54.616411+00:00",
+  "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
+  "contract": "docs/PROTOCOL.md#rust-local-lobby",
+  "research": "docs/RESEARCH.md#rust-service-gaps",
+  "plan": "docs/PLAN.md#current-order",
+  "native_final": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T07:18:56.954373+00:00",
+    "result": "Rust_single_diagnostic_identity1_KRLocal_nativeauth137_channel_local_lobby_own291producer_and_personalrender",
+    "run_sha256": "63f932b11040d5d584b7c95dfee0232079d0e0992bb848cc381fc461cbaa0990",
+    "duration_s": 56.41411837,
+    "raw_count": 47,
+    "frozen_count": 40,
+    "cleanup": {
+      "net_namespace": "net:[4026533552]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "binary_sha256": "6d758286c51025a05acf25b4b4d3ff2ebc4ca119dc8471e74c8af58f03f7dde6",
+    "client_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "native_auth": [
+      {
+        "cursor": 137,
+        "err54": 0,
+        "err58": 0,
+        "kind": "auth_end",
+        "packet": 1231964,
+        "payload": 137
+      }
+    ],
+    "native_own291": [
+      {
+        "cursor": 128,
+        "err54": 0,
+        "err58": 0,
+        "kind": "producer_end",
+        "name": {
+          "ascii": "KRLocal",
+          "capacity": 15,
+          "hex": "4b524c6f63616c",
+          "size": 7
+        },
+        "ordinal": 1,
+        "packet": "0x12cf00",
+        "payload": 128,
+        "record": "0x2e802654",
+        "store": "0x2e7fc250"
+      }
+    ],
+    "native_personal_render": [
+      {
+        "caller": "0x9013be",
+        "kind": "render_guard",
+        "matches": true,
+        "name": {
+          "ascii": "KRLocal",
+          "capacity": 15,
+          "hex": "4b524c6f63616c",
+          "size": 7
+        },
+        "ordinal": 1,
+        "record": "0x2e802654",
+        "value": 1,
+        "widget": "0x6076dc68"
+      },
+      {
+        "caller": "0x9013be",
+        "kind": "render_guard",
+        "matches": true,
+        "name": {
+          "ascii": "KRLocal",
+          "capacity": 15,
+          "hex": "4b524c6f63616c",
+          "size": 7
+        },
+        "ordinal": 1,
+        "record": "0x2e802654",
+        "value": 1,
+        "widget": "0x6076dc68"
+      }
+    ],
+    "reply_metadata": [
+      {
+        "alias": "auth_A",
+        "bytes": 175,
+        "connection": 3,
+        "elapsed_ns": 44299676264,
+        "event": "local_lobby_reply",
+        "opcode": 4,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 43,
+        "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+      },
+      {
+        "alias": "netinfo",
+        "bytes": 69,
+        "connection": 3,
+        "elapsed_ns": 44340802384,
+        "event": "local_lobby_reply",
+        "opcode": 15,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 46,
+        "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+      },
+      {
+        "alias": "flags",
+        "bytes": 41,
+        "connection": 3,
+        "elapsed_ns": 44340823414,
+        "event": "local_lobby_reply",
+        "opcode": 62,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 49,
+        "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+      },
+      {
+        "alias": "redirect",
+        "bytes": 52,
+        "connection": 3,
+        "elapsed_ns": 44533508655,
+        "event": "local_lobby_reply",
+        "opcode": 7,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 52,
+        "sha256": "b514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15"
+      },
+      {
+        "alias": "channel",
+        "bytes": 75,
+        "connection": 4,
+        "elapsed_ns": 44671927211,
+        "event": "local_lobby_reply",
+        "opcode": 17,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 43,
+        "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+      },
+      {
+        "alias": "ready",
+        "bytes": 69,
+        "connection": 4,
+        "elapsed_ns": 44994888465,
+        "event": "local_lobby_reply",
+        "opcode": 241,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 46,
+        "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+      },
+      {
+        "alias": "roomlist_A",
+        "bytes": 40,
+        "connection": 4,
+        "elapsed_ns": 44994926966,
+        "event": "local_lobby_reply",
+        "opcode": 91,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 49,
+        "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+      },
+      {
+        "alias": "channel_list",
+        "bytes": 82,
+        "connection": 4,
+        "elapsed_ns": 44994967496,
+        "event": "local_lobby_reply",
+        "opcode": 14,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 52,
+        "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+      },
+      {
+        "alias": "own291",
+        "bytes": 166,
+        "connection": 4,
+        "elapsed_ns": 44995022186,
+        "event": "local_lobby_reply",
+        "opcode": 291,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 55,
+        "sha256": "7933d764cd0ba771c86c9f8c3b760f1a4d5cabd0765133d6b8078a52d97167f5"
+      }
+    ],
+    "capture": {
+      "path": "local/research/codex/rust-m2-r3/native-local-lobby/cycles/tcp-rust.pcap",
+      "sha256": "bba2f359a2d1b0ccfd87f7f4b3400c1990f7fe97c1c5bfae32cb8346d77260ee",
+      "records": 160,
+      "joins": [
+        {
+          "connection": 1,
+          "captured_c2s": [],
+          "captured_s2c_bytes": 15,
+          "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+        },
+        {
+          "connection": 2,
+          "captured_c2s": [],
+          "captured_s2c_bytes": 332,
+          "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d"
+        },
+        {
+          "connection": 3,
+          "captured_c2s": [
+            {
+              "opcode": 1,
+              "sequence": 40,
+              "body_bytes": 42
+            },
+            {
+              "opcode": 60,
+              "sequence": 43,
+              "body_bytes": 20
+            },
+            {
+              "opcode": 9,
+              "sequence": 46,
+              "body_bytes": 8
+            },
+            {
+              "opcode": 744,
+              "sequence": 49,
+              "body_bytes": 4
+            },
+            {
+              "opcode": 745,
+              "sequence": 52,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 40,
+              "sequence": 55,
+              "body_bytes": 1
+            },
+            {
+              "opcode": 5,
+              "sequence": 58,
+              "body_bytes": 9
+            }
+          ],
+          "captured_s2c_bytes": 352,
+          "s2c_sha256": "8d13f34abcf6c4f8c1e718f7cfcb72c7de4409f2d29856195a9d67aa395d22f7"
+        },
+        {
+          "connection": 4,
+          "captured_c2s": [
+            {
+              "opcode": 6,
+              "sequence": 40,
+              "body_bytes": 43
+            },
+            {
+              "opcode": 544,
+              "sequence": 43,
+              "body_bytes": 10
+            },
+            {
+              "opcode": 549,
+              "sequence": 46,
+              "body_bytes": 3
+            },
+            {
+              "opcode": 744,
+              "sequence": 49,
+              "body_bytes": 4
+            },
+            {
+              "opcode": 745,
+              "sequence": 52,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 567,
+              "sequence": 55,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 67,
+              "sequence": 58,
+              "body_bytes": 2
+            },
+            {
+              "opcode": 742,
+              "sequence": 61,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 741,
+              "sequence": 64,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 715,
+              "sequence": 67,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 715,
+              "sequence": 70,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 15,
+              "sequence": 73,
+              "body_bytes": 31
+            },
+            {
+              "opcode": 715,
+              "sequence": 76,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 15,
+              "sequence": 79,
+              "body_bytes": 31
+            },
+            {
+              "opcode": 715,
+              "sequence": 82,
+              "body_bytes": 0
+            }
+          ],
+          "captured_s2c_bytes": 447,
+          "s2c_sha256": "e5c6e28757847854d60c8b894eeee62197cf6682a5e133db6a7a62327086ecff"
+        }
+      ]
+    },
+    "hold_after_native_profile_s": 9.362070214,
+    "final_screenshot": "local/research/codex/rust-m2-r3/native-local-lobby/cycles/screen-10.png",
+    "limits": "PartialM2singleactual/diagnosticKRLocal, nofullauth/accounts/sessionsecurity/twoactualroom/barrier/Ready/start/Back-rejoin/Battle/UDP/DB/generalroom/production/fullM2acceptance. M1diagnosticfirst2WCPtransportmap retained, exactfixedprofile projector notdynamicaccountauthority. Rawfixtures/own291generatedinput are not oracle, native137/291/read-render/PCAP are proof. UI manualreview separate. Internet thật chưa kiểm."
+  },
+  "native_staging": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T07:14:08.737492+00:00",
+    "result": "Rust_single_diagnostic_identity1_KRLocal_nativeauth137_channel_local_lobby_own291producer_and_personalrender",
+    "run_sha256": "d62bc2d832a29fba7f1aca07e81d25d8216c5485de7b803725a5aa0f68210254",
+    "duration_s": 39.999612273,
+    "raw_count": 38,
+    "frozen_count": 40,
+    "cleanup": {
+      "net_namespace": "net:[4026533552]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "binary_sha256": "5ee579b607f3a1025619860e5afd403434666493becdb508f9e473857d2e4fde",
+    "client_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "native_auth": [
+      {
+        "cursor": 137,
+        "err54": 0,
+        "err58": 0,
+        "kind": "auth_end",
+        "packet": 1231964,
+        "payload": 137
+      }
+    ],
+    "native_own291": [
+      {
+        "cursor": 128,
+        "err54": 0,
+        "err58": 0,
+        "kind": "producer_end",
+        "name": {
+          "ascii": "KRLocal",
+          "capacity": 15,
+          "hex": "4b524c6f63616c",
+          "size": 7
+        },
+        "ordinal": 1,
+        "packet": "0x12cf00",
+        "payload": 128,
+        "record": "0x2e802654",
+        "store": "0x2e7fc250"
+      }
+    ],
+    "native_personal_render": [
+      {
+        "caller": "0x9013be",
+        "kind": "render_guard",
+        "matches": true,
+        "name": {
+          "ascii": "KRLocal",
+          "capacity": 15,
+          "hex": "4b524c6f63616c",
+          "size": 7
+        },
+        "ordinal": 1,
+        "record": "0x2e802654",
+        "value": 1,
+        "widget": "0x60e4d808"
+      },
+      {
+        "caller": "0x9013be",
+        "kind": "render_guard",
+        "matches": true,
+        "name": {
+          "ascii": "KRLocal",
+          "capacity": 15,
+          "hex": "4b524c6f63616c",
+          "size": 7
+        },
+        "ordinal": 1,
+        "record": "0x2e802654",
+        "value": 1,
+        "widget": "0x60e4d808"
+      }
+    ],
+    "reply_metadata": [
+      {
+        "alias": "auth_A",
+        "bytes": 175,
+        "connection": 3,
+        "elapsed_ns": 25574981965,
+        "event": "local_lobby_reply",
+        "opcode": 4,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 43,
+        "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+      },
+      {
+        "alias": "netinfo",
+        "bytes": 69,
+        "connection": 3,
+        "elapsed_ns": 25616402255,
+        "event": "local_lobby_reply",
+        "opcode": 15,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 46,
+        "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+      },
+      {
+        "alias": "flags",
+        "bytes": 41,
+        "connection": 3,
+        "elapsed_ns": 25616432055,
+        "event": "local_lobby_reply",
+        "opcode": 62,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 49,
+        "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+      },
+      {
+        "alias": "redirect",
+        "bytes": 52,
+        "connection": 3,
+        "elapsed_ns": 25803058274,
+        "event": "local_lobby_reply",
+        "opcode": 7,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 52,
+        "sha256": "b514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15"
+      },
+      {
+        "alias": "channel",
+        "bytes": 75,
+        "connection": 4,
+        "elapsed_ns": 25945902572,
+        "event": "local_lobby_reply",
+        "opcode": 17,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 43,
+        "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+      },
+      {
+        "alias": "ready",
+        "bytes": 69,
+        "connection": 4,
+        "elapsed_ns": 26273090338,
+        "event": "local_lobby_reply",
+        "opcode": 241,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 46,
+        "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+      },
+      {
+        "alias": "roomlist_A",
+        "bytes": 40,
+        "connection": 4,
+        "elapsed_ns": 26273128578,
+        "event": "local_lobby_reply",
+        "opcode": 91,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 49,
+        "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+      },
+      {
+        "alias": "channel_list",
+        "bytes": 82,
+        "connection": 4,
+        "elapsed_ns": 26273175458,
+        "event": "local_lobby_reply",
+        "opcode": 14,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 52,
+        "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+      },
+      {
+        "alias": "own291",
+        "bytes": 166,
+        "connection": 4,
+        "elapsed_ns": 26273236628,
+        "event": "local_lobby_reply",
+        "opcode": 291,
+        "policy": "diagnostic_KRLocal_not_authentication",
+        "sequence": 55,
+        "sha256": "7933d764cd0ba771c86c9f8c3b760f1a4d5cabd0765133d6b8078a52d97167f5"
+      }
+    ],
+    "capture": {
+      "path": "local/research/codex/rust-m2-r2/native-local-lobby/cycles/tcp-rust.pcap",
+      "sha256": "99a465d0d75be106cfdcc5633904c030d2eb09148e99ba5fa8313ecba8d7804c",
+      "records": 160,
+      "joins": [
+        {
+          "connection": 1,
+          "captured_c2s": [],
+          "captured_s2c_bytes": 15,
+          "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+        },
+        {
+          "connection": 2,
+          "captured_c2s": [],
+          "captured_s2c_bytes": 332,
+          "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d"
+        },
+        {
+          "connection": 3,
+          "captured_c2s": [
+            {
+              "opcode": 1,
+              "sequence": 40,
+              "body_bytes": 42
+            },
+            {
+              "opcode": 60,
+              "sequence": 43,
+              "body_bytes": 20
+            },
+            {
+              "opcode": 9,
+              "sequence": 46,
+              "body_bytes": 8
+            },
+            {
+              "opcode": 744,
+              "sequence": 49,
+              "body_bytes": 4
+            },
+            {
+              "opcode": 745,
+              "sequence": 52,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 40,
+              "sequence": 55,
+              "body_bytes": 1
+            },
+            {
+              "opcode": 5,
+              "sequence": 58,
+              "body_bytes": 9
+            }
+          ],
+          "captured_s2c_bytes": 352,
+          "s2c_sha256": "8d13f34abcf6c4f8c1e718f7cfcb72c7de4409f2d29856195a9d67aa395d22f7"
+        },
+        {
+          "connection": 4,
+          "captured_c2s": [
+            {
+              "opcode": 6,
+              "sequence": 40,
+              "body_bytes": 43
+            },
+            {
+              "opcode": 544,
+              "sequence": 43,
+              "body_bytes": 10
+            },
+            {
+              "opcode": 549,
+              "sequence": 46,
+              "body_bytes": 3
+            },
+            {
+              "opcode": 744,
+              "sequence": 49,
+              "body_bytes": 4
+            },
+            {
+              "opcode": 745,
+              "sequence": 52,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 567,
+              "sequence": 55,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 67,
+              "sequence": 58,
+              "body_bytes": 2
+            },
+            {
+              "opcode": 742,
+              "sequence": 61,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 741,
+              "sequence": 64,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 715,
+              "sequence": 67,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 715,
+              "sequence": 70,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 15,
+              "sequence": 73,
+              "body_bytes": 31
+            },
+            {
+              "opcode": 715,
+              "sequence": 76,
+              "body_bytes": 0
+            },
+            {
+              "opcode": 15,
+              "sequence": 79,
+              "body_bytes": 31
+            },
+            {
+              "opcode": 715,
+              "sequence": 82,
+              "body_bytes": 0
+            }
+          ],
+          "captured_s2c_bytes": 447,
+          "s2c_sha256": "e5c6e28757847854d60c8b894eeee62197cf6682a5e133db6a7a62327086ecff"
+        }
+      ]
+    },
+    "hold_after_native_profile_s": 9.360782543,
+    "final_screenshot": "local/research/codex/rust-m2-r2/native-local-lobby/cycles/screen-07.png",
+    "limits": "PartialM2singleactual/diagnosticKRLocal, nofullauth/accounts/sessionsecurity/twoactualroom/barrier/Ready/start/Back-rejoin/Battle/UDP/DB/generalroom/production/fullM2acceptance. M1diagnosticfirst2WCPtransportmap retained, exactfixedprofile projector notdynamicaccountauthority. Rawfixtures/own291generatedinput are not oracle, native137/291/read-render/PCAP are proof. UI manualreview separate. Internet thật chưa kiểm."
+  },
+  "manual_UI": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T07:19:38.706143+00:00",
+    "image": {
+      "path": "local/research/codex/rust-m2-r3/native-local-lobby/cycles/screen-10.png",
+      "sha256": "0f1ba96a6ef74aab3defe922feb8ff84a01891d470fbc573d271b42f7ef5cad6",
+      "manual_observation": "NormalLobby KRLocal personalpanel/level0/EXP0; six roomcards empty, no loading/error overlay. Complements auth137/291128/native renderguard1/name."
+    },
+    "limits": "Final rootbinaryhashnativepin; singleactualdiagnosticidentity/localonly, no fullM2accountauth/room/twoactor/barrier/Ready/start/DB/productionclaim."
+  },
+  "preserved_failure": {
+    "source": "design",
+    "status": "confirmed",
+    "result": "FAIL_profile_validation_before_listen_no_client",
+    "run_sha256": "633a845c1d53a9c096059412134e0f8c8526753176bfc100a6e10829d8030992",
+    "raw_count": 6,
+    "duration_s": 0.22990233,
+    "reason": "Wrong hardcoded S2Cnetinfo opcode18 in firstRustvalidator; existingpinnedKRframe is15. R2 onlycorrectsdeclaration usingknownbytes, no newRE/fixture/runtimechanges. R1source/raw/seal kept."
+  },
+  "m1_regression": {
+    "result": "pass",
+    "error": null,
+    "cases": [
+      {
+        "case": "fresh_connection_hello_pins",
+        "result": "pass"
+      },
+      {
+        "case": "captured_native_login_split_exact_result1",
+        "result": "pass"
+      },
+      {
+        "case": "observed_ancillary_shapes_keep_socket_open_without_reply",
+        "result": "pass"
+      },
+      {
+        "case": "invalid_crc_no_reply_or_dispatch",
+        "result": "pass"
+      },
+      {
+        "case": "oversized_header_rejected_without_body_allocation",
+        "result": "pass"
+      },
+      {
+        "case": "partial_eof_no_reply",
+        "result": "pass"
+      },
+      {
+        "case": "coalesced_duplicate_valid_frame_single_action_wrong_stage_closed",
+        "result": "pass"
+      },
+      {
+        "case": "partial_idle_timeout_releases_connection",
+        "result": "pass"
+      },
+      {
+        "case": "bounded_admission_without_extra_hello",
+        "result": "pass"
+      },
+      {
+        "case": "fresh_connection_after_negatives_resets_sequence",
+        "result": "pass"
+      },
+      {
+        "case": "graceful_sigterm_drains_and_closes_active_socket",
+        "result": "pass"
+      },
+      {
+        "case": "fresh_server_rebinds_with_fresh_codec",
+        "result": "pass"
+      },
+      {
+        "case": "fixture_hash_failure_before_bind",
+        "result": "pass"
+      },
+      {
+        "case": "multi_listener_startup_failure_releases_previously_bound_port",
+        "result": "pass"
+      }
+    ],
+    "binary_sha256": "6d758286c51025a05acf25b4b4d3ff2ebc4ca119dc8471e74c8af58f03f7dde6",
+    "captured_input_sha256": "05b358f4b0f4abcc727048773a69ecb994aacb2abc92a9113cd12fbf6ea69a1d",
+    "limits": "KernelTCP/process policy negatives, not native KR acceptance. Diagnostic first2WCP transports/loopback/result1 only; no accountauthentication/channel/gameplay/UDP/DB/security/SLO claim. Python-generated duplicate is a policy input, not protocol oracle."
+  },
+  "limits": "M2 partial singleactual diagnosticID1/KRLocal/login0/channel/lobby/291, not fullauthentication/accountownership/twoactualroom/barrier/Ready/start/Back-rejoin/gameplay/UDP/DB/production or fullM2acceptance. Opaquefixture data pinned, not recoveredmeaning; sameknowncontract port/no newbinaryRE. Internet thật chưa kiểm."
+}

@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-09",
-  "baseline": "115c6b885812ff9add0e09bf8c9e8efe2bf5401d",
+  "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP231RustM0/M1code: nativehello/error1→ordinarysameprocessretry→error1/PID144/seqreset/PCAP108/9.517shold;5wiretestsretainednativevectors+14kernelTCP/fmt-clippy-build.3runs170rawsealed/corrections;Python47fixturebaseline/8WIPexcluded.",
-      "remaining": "No Rustauthsuccess/channel/lobby/room/Battle/fullauth/DB/UDP/production/fullcodec; diagnostic2WCPtransportrouting notaccountauth. R1failure/R2partialcapture/R3teardownGDBlimit explicit. Roomintegration/globalroom/occupancy/quotas remainM2+.",
-      "next_test": "PLAN M2existingcontract localidentity/channel/sảnh/fixedroom; native2actual ownID/name/slot/stage-negative/room-barrier/Back-rejoin. REonlyportdiscrepancy/blocker; nofullauth/generalroomdependency orbroaderRE.",
+      "known": "CP232RustM2partial:1actualdiagnosticKRLocal/auth0/137/channel/sảnh/291128/personalrender/UI/PCAP160/9.362shold;7Rusttests+14M1TCPregression/exporterconfigparity.3runs91rawsealed/correctionnetinfo15, rootnativebinarypin distinctstaging.",
+      "remaining": "M2stillOPEN:twoactualexplicitbindings/fixedroom/ownslot/host/Ready/loadingbarrier/Back-rejoin/lifecycle missing. Diagnosticarrivalmapping/nameIDprojection notaccountauth/DB/fullservice/Battle/UDP/production.",
+      "next_test": "PLAN portknowncurrentAB291/room81-86-87-106-110; replacegloballabarrivalmapping with explicitendpoint/session/stage bindings before2actual, nativeownID/name/slot/room/barrier/Back-rejoin+negatives. REonlynewportdiscrepancy/no broadresearch/fullauthdependency.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "M0/M1acceptedonlydiagnosticnativeerror-retryscope;fullserviceepic#285 andREumbrella#14 remainOPEN.8WIPbyteexact/oldrecordsAUD066immutable/nextCP232/Internet thật chưa kiểm separate.",
+      "reason": "Nativesingleidentity/sảnhproof is partialM2, fullservice#285/#14 remainOPEN.8WIPbyteexact/oldcompleteAUD066immutable/AUD067next236/Internet thật chưa kiểm separate.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -269,7 +269,8 @@
         "docs/PROTOCOL.md#room-membership-registry",
         "docs/PROTOCOL.md#room-shared-cleanup",
         "docs/evidence/owner-directives/rust-implementation.json",
-        "docs/PROTOCOL.md#rust-foundation"
+        "docs/PROTOCOL.md#rust-foundation",
+        "docs/PROTOCOL.md#rust-local-lobby"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -372,7 +373,8 @@
         "docs/evidence/room-list/README.md#cp228",
         "docs/evidence/room-list/README.md#cp229",
         "docs/evidence/room-list/README.md#cp230",
-        "docs/evidence/rust-service/README.md#cp231"
+        "docs/evidence/rust-service/README.md#cp231",
+        "docs/evidence/rust-service/README.md#cp232"
       ],
       "prs": [
         173,
@@ -476,7 +478,8 @@
         298,
         299,
         300,
-        301
+        301,
+        302
       ],
       "successors": []
     },
@@ -815,11 +818,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP231RustM0/M1code: nativehello/error1→ordinarysameprocessretry→error1/PID144/seqreset/PCAP108/9.517shold;5wiretestsretainednativevectors+14kernelTCP/fmt-clippy-build.3runs170rawsealed/corrections;Python47fixturebaseline/8WIPexcluded.",
-      "remaining": "No Rustauthsuccess/channel/lobby/room/Battle/fullauth/DB/UDP/production/fullcodec; diagnostic2WCPtransportrouting notaccountauth. R1failure/R2partialcapture/R3teardownGDBlimit explicit. Roomintegration/globalroom/occupancy/quotas remainM2+.",
-      "next_test": "PLAN M2existingcontract localidentity/channel/sảnh/fixedroom; native2actual ownID/name/slot/stage-negative/room-barrier/Back-rejoin. REonlyportdiscrepancy/blocker; nofullauth/generalroomdependency orbroaderRE.",
+      "known": "CP232RustM2partial:1actualdiagnosticKRLocal/auth0/137/channel/sảnh/291128/personalrender/UI/PCAP160/9.362shold;7Rusttests+14M1TCPregression/exporterconfigparity.3runs91rawsealed/correctionnetinfo15, rootnativebinarypin distinctstaging.",
+      "remaining": "M2stillOPEN:twoactualexplicitbindings/fixedroom/ownslot/host/Ready/loadingbarrier/Back-rejoin/lifecycle missing. Diagnosticarrivalmapping/nameIDprojection notaccountauth/DB/fullservice/Battle/UDP/production.",
+      "next_test": "PLAN portknowncurrentAB291/room81-86-87-106-110; replacegloballabarrivalmapping with explicitendpoint/session/stage bindings before2actual, nativeownID/name/slot/room/barrier/Back-rejoin+negatives. REonlynewportdiscrepancy/no broadresearch/fullauthdependency.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "M0/M1acceptedonlydiagnosticnativeerror-retryscope;fullserviceepic#285 andREumbrella#14 remainOPEN.8WIPbyteexact/oldrecordsAUD066immutable/nextCP232/Internet thật chưa kiểm separate.",
+      "reason": "Nativesingleidentity/sảnhproof is partialM2, fullservice#285/#14 remainOPEN.8WIPbyteexact/oldcompleteAUD066immutable/AUD067next236/Internet thật chưa kiểm separate.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -842,7 +845,8 @@
         "docs/PROTOCOL.md#room-membership-registry",
         "docs/PROTOCOL.md#room-shared-cleanup",
         "docs/evidence/owner-directives/rust-implementation.json",
-        "docs/PROTOCOL.md#rust-foundation"
+        "docs/PROTOCOL.md#rust-foundation",
+        "docs/PROTOCOL.md#rust-local-lobby"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -865,7 +869,8 @@
         "docs/evidence/room-list/README.md#cp228",
         "docs/evidence/room-list/README.md#cp229",
         "docs/evidence/room-list/README.md#cp230",
-        "docs/evidence/rust-service/README.md#cp231"
+        "docs/evidence/rust-service/README.md#cp231",
+        "docs/evidence/rust-service/README.md#cp232"
       ],
       "prs": [
         286,
@@ -883,11 +888,12 @@
         298,
         299,
         300,
-        301
+        301,
+        302
       ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-09T06:58:09.726396+00:00",
+  "as_of_utc": "2026-11-09T07:26:08.690394+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

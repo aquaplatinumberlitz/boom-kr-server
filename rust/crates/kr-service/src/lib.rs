@@ -1,13 +1,15 @@
 //! Bounded diagnostic KR00967 transport; no account authentication or gameplay.
 #![forbid(unsafe_code)]
 
+pub mod lobby;
+
 use kr_wire::{HEADER_LEN, Receiver, decode, encode};
 use serde::Deserialize;
 use serde_json::{Value, json};
 use sha2::{Digest, Sha256};
 use std::fmt::Write as _;
 use std::{
-    collections::HashSet,
+    collections::{HashMap, HashSet},
     io,
     net::{IpAddr, Ipv4Addr, SocketAddr},
     path::{Path, PathBuf},
@@ -61,6 +63,26 @@ impl FixturePin {
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
+pub struct LobbyPacketPin {
+    pub fixture: FixturePin,
+    pub sequence: Option<u32>,
+    pub opcode: u32,
+}
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct LocalLobbyConfig {
+    pub packets: HashMap<String, LobbyPacketPin>,
+    pub own_header: FixturePin,
+}
+#[derive(Clone)]
+struct Reply {
+    header: [u8; HEADER_LEN],
+    opcode: u32,
+    payload: Vec<u8>,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Config {
     pub schema: String,
     pub diagnostic_login_error_only: bool,
@@ -73,6 +95,8 @@ pub struct Config {
     pub bootstrap: FixturePin,
     pub login_error: FixturePin,
     pub wcp_second: FixturePin,
+    #[serde(default)]
+    pub diagnostic_local_lobby: Option<LocalLobbyConfig>,
 }
 
 pub struct Validated {
@@ -80,6 +104,7 @@ pub struct Validated {
     bootstrap: Vec<u8>,
     error_header: [u8; HEADER_LEN],
     wcp_second: Vec<u8>,
+    lobby: Option<HashMap<String, Reply>>,
 }
 pub fn load_config(path: &Path) -> io::Result<Validated> {
     if std::fs::metadata(path)?.len() > 65_536 {
@@ -87,7 +112,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
     }
     let config: Config = serde_json::from_slice(&std::fs::read(path)?).map_err(io::Error::other)?;
     if config.schema != "kr-rust-diagnostic-v1"
-        || !config.diagnostic_login_error_only
+        || (config.diagnostic_login_error_only == config.diagnostic_local_lobby.is_some())
         || !config.bind.is_loopback()
         || config.allowed_peers.is_empty()
         || config.allowed_peers.iter().any(|p| !p.is_loopback())
@@ -122,11 +147,84 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             "result1 encoding disagrees with native-tested fixture",
         ));
     }
+    let lobby = if let Some(local) = &config.diagnostic_local_lobby {
+        let mut packets = HashMap::new();
+        let own_header_raw = local.own_header.load()?;
+        let own_template = decode(&own_header_raw, 58).map_err(io::Error::other)?;
+        if own_template.opcode != 106 || own_template.payload.len() != 204 {
+            return Err(io::Error::other("unsupported own291 header template"));
+        }
+        let own_header: [u8; HEADER_LEN] =
+            own_header_raw[..HEADER_LEN].try_into().expect("decoded106");
+        let expected = [
+            ("auth_A", 4, 137),
+            ("netinfo", 15, 31),
+            ("flags", 62, 3),
+            ("redirect", 7, 14),
+            ("channel", 17, 37),
+            ("ready", 241, 31),
+            ("roomlist_A", 91, 2),
+            ("channel_list", 14, 44),
+            ("own291", 291, 128),
+        ];
+        if local.packets.len() != expected.len() {
+            return Err(io::Error::other("unsupported local lobby packet set"));
+        }
+        for (alias, opcode, size) in expected {
+            let pin = local
+                .packets
+                .get(alias)
+                .ok_or_else(|| io::Error::other("missing lobby packet"))?;
+            if pin.opcode != opcode {
+                return Err(io::Error::other("lobby opcode mismatch"));
+            }
+            let raw = pin.fixture.load()?;
+            let (header, payload) = if let Some(sequence) = pin.sequence {
+                let packet = decode(&raw, sequence).map_err(io::Error::other)?;
+                if packet.opcode != opcode {
+                    return Err(io::Error::other("lobby fixture opcode mismatch"));
+                }
+                (
+                    raw[..HEADER_LEN].try_into().expect("decodedframe"),
+                    packet.payload,
+                )
+            } else {
+                // own291 is an explicit body-only pin derived from the measured
+                // zero-profile builder. Reuse only opaque auth template header.
+                if alias != "own291" {
+                    return Err(io::Error::other("unexpected body-only pin"));
+                }
+                (own_header, raw)
+            };
+            if payload.len() != size {
+                return Err(io::Error::other("lobby body size mismatch"));
+            }
+            packets.insert(
+                alias.to_owned(),
+                Reply {
+                    header,
+                    opcode,
+                    payload,
+                },
+            );
+        }
+        let auth = &packets["auth_A"].payload;
+        if auth[0] != 0x5a
+            || kr_wire::read_uint(&auth[25..29], kr_wire::Width::U32).map_err(io::Error::other)?
+                != 1
+        {
+            return Err(io::Error::other("expected diagnostic identity1"));
+        }
+        Some(packets)
+    } else {
+        None
+    };
     Ok(Validated {
         config,
         bootstrap,
         error_header,
         wcp_second,
+        lobby,
     })
 }
 
@@ -197,6 +295,14 @@ async fn connection(
             }
         }
     }
+    if let Some(packets) = &profile.lobby {
+        let flow = match id {
+            3 => lobby::Flow::login(),
+            4 => lobby::Flow::channel(),
+            _ => return Err(io::Error::other("diagnostic local lobby transport limit")),
+        };
+        return local_lobby_connection(socket, id, &profile, packets, flow, log, stop, start).await;
+    }
     let mut receive = Receiver::new(40);
     let mut rejected = false;
     let mut ancillary_count = 0usize;
@@ -241,6 +347,50 @@ async fn connection(
     }
 }
 
+#[allow(clippy::too_many_arguments)]
+async fn local_lobby_connection(
+    mut socket: TcpStream,
+    id: u64,
+    profile: &Validated,
+    packets: &HashMap<String, Reply>,
+    mut flow: lobby::Flow,
+    log: Log,
+    mut stop: watch::Receiver<bool>,
+    start: Instant,
+) -> io::Result<()> {
+    let mut rx = Receiver::new(40);
+    let mut send_sequence = 43u32;
+    let mut buf = [0; 4096];
+    loop {
+        while let Some(packet) = rx.next_packet().map_err(io::Error::other)? {
+            let aliases = flow.packet(packet.opcode, &packet.payload)?;
+            emit(&log,stamp(start,json!({"event":"local_lobby_request","connection":id,"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"stage":format!("{:?}",flow.stage)}))).await?;
+            for alias in aliases {
+                let reply = &packets[alias];
+                let frame = encode(&reply.header, reply.opcode, &reply.payload, send_sequence)
+                    .map_err(io::Error::other)?;
+                timeout(
+                    Duration::from_millis(profile.config.write_timeout_ms),
+                    socket.write_all(&frame),
+                )
+                .await
+                .map_err(|_| io::Error::other("lobby reply timeout"))??;
+                emit(&log,stamp(start,json!({"event":"local_lobby_reply","connection":id,"alias":alias,"opcode":reply.opcode,"sequence":send_sequence,"bytes":frame.len(),"sha256":sha256_hex(&frame),"policy":"diagnostic_KRLocal_not_authentication"}))).await?;
+                send_sequence = send_sequence.wrapping_add(3);
+            }
+        }
+        let cap = buf.len().min(rx.remaining_capacity());
+        if cap == 0 {
+            return Err(io::Error::other("lobby receive bound"));
+        }
+        let n = tokio::select! {_=stop.changed()=>return Ok(()),v=timeout(Duration::from_secs(profile.config.idle_timeout_seconds),socket.read(&mut buf[..cap]))=>v.map_err(|_|io::Error::other("lobby read idle timeout"))??};
+        if n == 0 {
+            return rx.finish().map_err(io::Error::other);
+        }
+        rx.push(&buf[..n]).map_err(io::Error::other)?;
+    }
+}
+
 pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
     tokio::fs::create_dir_all(out).await?;
     // Bind the whole configured set before readiness; startup failure drops all.
@@ -273,7 +423,7 @@ pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
         .duration_since(UNIX_EPOCH)
         .map_err(io::Error::other)?
         .as_nanos();
-    emit(&log,json!({"event":"boot","pid":std::process::id(),"boot":boot.to_string(),"package":env!("CARGO_PKG_VERSION"),"source":option_env!("KR_SOURCE_REV").unwrap_or("unpublished"),"profile":"diagnostic_login_error_only","bootstrap_sha256":profile.config.bootstrap.sha256,"error_sha256":profile.config.login_error.sha256})).await?;
+    emit(&log,json!({"event":"boot","pid":std::process::id(),"boot":boot.to_string(),"package":env!("CARGO_PKG_VERSION"),"source":option_env!("KR_SOURCE_REV").unwrap_or("unpublished"),"profile":if profile.lobby.is_some(){"diagnostic_local_lobby"}else{"diagnostic_login_error_only"},"bootstrap_sha256":profile.config.bootstrap.sha256,"error_sha256":profile.config.login_error.sha256})).await?;
     let profile = Arc::new(profile);
     let (shutdown, stop) = watch::channel(false);
     let (accept_tx, mut accepted) = mpsc::channel::<(TcpStream, SocketAddr)>(32);

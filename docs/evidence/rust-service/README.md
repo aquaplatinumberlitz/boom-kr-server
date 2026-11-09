@@ -1,12 +1,17 @@
-# Khảo sát để lập kế hoạch dịch vụ Rust KR00967
+# Evidence khảo sát và triển khai dịch vụ Rust KR00967
 
 KRE-074/[#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285), Codex solo, independent review waived.
 [Chỉ đạo](../owner-directives/rust-service.json), [PLAN milestone/acceptance](../../PLAN.md#rust-service-milestones),
 [kiến trúc/ma trận hiện có→Rust→thiếu](../../RUST_SERVICE_ARCHITECTURE.md),
 [unknown/phép thử](../../RESEARCH.md#rust-service-gaps).
 
-Baseline main c0c7b9478dcf5b639a76f67ee51a5f6b927cb0f9/CP212/PR284. CLIlatest xác nhận trước chuyển việc;
-K0–K7 scoped đạt, K6c WAN giả lập, **Internet thật chưa kiểm**. Mọi Rust milestone chưa triển khai/nativeRustchưađo.
+Hiện hành: [contract/limits](../../PROTOCOL.md#rust-local-lobby), [thứ tự](../../PLAN.md#current-order);
+[owner đã mở implementation](../owner-directives/rust-implementation.json). Phần dưới giữ lịch sử khảo sát CP213.
+
+## CP213 — khảo sát/lập kế hoạch đã giao
+
+Tại CP213, baseline main c0c7b9478dcf5b639a76f67ee51a5f6b927cb0f9/CP212/PR284. CLIlatest xác nhận trước chuyển việc;
+K0–K7 scoped đạt, K6c WAN giả lập, **Internet thật chưa kiểm**. Ở mốc CP213 mọi Rust milestone chưa triển khai/nativeRustchưađo.
 Code team variants còn WIP, không commit trong planning PR; kết quả sealed trước request giữ ở CP213/eight-player.
 Không source/config/input run nào bị sửa; sáu run có rawseal/sourcefreeze/ownedcleanup0 trước khảo sát.
 
@@ -76,3 +81,33 @@ mode0packetfields ignore, dùngsocketstate. Firststrictverifier error/correction
 M0/M1 được đối chiếu thủ công theo PLANscope, không fullcodec/authsuccess/accountresume/sảnh/phòng/game/UDP/DB/
 production. Python vẫn serving/RE/reference; rollback choosebefore-run exactPythonpin/cleanupfirst. NextM2,
 REonlyimplementationblocker. AUD066qua228/audit kếCP232. Internet thật chưa kiểm.
+
+<a id="cp232"></a>
+## CP232 — M2partial local identity/channel/sảnh/291
+
+[Code/run](../../../rust/README.md), [contract/limits](../../PROTOCOL.md#rust-local-lobby),
+[metadata](local-lobby.json), [next](../../PLAN.md#current-order). CP231 merge
+[PR302](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/302)/`bc55356`.
+
+| Run local/research/codex/ | Wall/raw/exit | run.json SHA256 |
+|---|---|---|
+| `rust-m2-r1/native-local-lobby` | 0.22990233s/6/1 | `633a845c1d53a9c096059412134e0f8c8526753176bfc100a6e10829d8030992` |
+| `rust-m2-r2/native-local-lobby` | 39.999612273s/38/0 | `d62bc2d832a29fba7f1aca07e81d25d8216c5485de7b803725a5aa0f68210254` |
+| `rust-m2-r3/native-local-lobby` | 56.41411837s/47/0 | `63f932b11040d5d584b7c95dfee0232079d0e0992bb848cc381fc461cbaa0990` |
+
+91raw/frozen/seal/ownedcleanup0; eachroot source-first/own291input/config/profilepins/GDB/harness/recipe/preflight/
+cycles/seal. R1 `failure-review.json`: validator netinfo18 khác knownfixture15, prelisten/no client;
+R2 correctiondeclaration/nativepositive trênlocalbuild, R3 finalrootbuild/nativepositive để pin đúng finalartifact.
+`verification.json`R2/R3: nativeauth137/137/result0/global0/newchannel17→actual67→24191/14/own291128/errors0/
+nameKRLocal/personalrenderguard1; PCAP160records/9replies/alltypedC2S joins,8s+hold; `ui-review.json` xem normalLobby.
+FinalR3screen10/KRLocal/level0/EXP0/sixemptycards/9.362070214s hold. RootRustbinary SHA
+`6d758286c51025a05acf25b4b4d3ff2ebc4ca119dc8471e74c8af58f03f7dde6`; stagingbinary khácbuildpath/hash giữ riêng.
+
+`rust-m2-delivery-r1/input-retention.json` giữ exactfrozeninputs từngversion trướcdocs/testschange, rawpreflight/seal
+không sửa. `rust-m2-r2/final-*.txt`fmt/clippy/test7/build và `m1-regression-tcp/verification.json`14kernelcases;
+2newstatetests chỉpolicystage/identity, không nativeoracle. Exporter tạo configpin từexistingmeasuredprofile/ownbody,
+không regeneratewireoracle. Wine10/e9copy/globalreset/privatenet-mount-PID/lo-only/noIPv4route/files-onlyNSS.
+
+M2 còn haiactual/explicitbindings/fixedroom/ownslot/Ready/loadingbarrier/Back-rejoin/lifecycle; projector1KRLocal
+không authentication/accountownership/DB/fullservice/Battle/UDP/production. Pythonserving/RE/reference/WIP giữ.
+AUD067qua232/kế236, nextM2knowncontract/REonlyportblocker. Internet thật chưa kiểm.
