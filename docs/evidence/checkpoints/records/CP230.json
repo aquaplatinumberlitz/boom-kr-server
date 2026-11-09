@@ -1,0 +1,294 @@
+{
+  "id": "CP230",
+  "previous": "CP229",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T05:43:44.890433+00:00",
+  "context_commit": "784a0d892ef45cfb09e10735a44c8a6522c16f29",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KR-R004/RUST-Q2: current-room/account/visit cleanup routes107/110 under guestBack/EOF/hostBack; nativeIDclear/UI; record measurement/controllerlimits and owner opening RustM0→M1 without furtherbroadRE.",
+  "scope": "KnownCP034035107/CP229consumers/mergedfourprofile/private2actualregistry;3positive565raw+166controllerfailure/9routingmodelcases/PCAP/native/UI. No newnativebody/clientpatch/productionchange/Rustcode inrecord. Ownernewscope opensnextRustimplementation.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "local/research/codex/room-shared-cleanup-r1/guest-back:3ebc374df698c557c0cda174774c9b53f96e31af8a1090a3a261888b8d171308/71.382292868s/189raw/cleanup0",
+    "local/research/codex/room-shared-cleanup-r2/guest-eof:623bb5185d3c10e5043d52fd6c34939157eecb0584c6d96eaaa385493f3f5706/71.384444769s/187raw/cleanup0",
+    "local/research/codex/room-shared-cleanup-r1/host-back:9822ed9ec45adb14804290595f26dc2c94d7478fa7673cdfdb20e1a1351d83f3/70.487170951s/189raw/cleanup0",
+    "R1EOF08f9d6d19e97e3a7f195ee818b8b9e88009340cc9c65eeada8bd9b91378835e4/166raw/exit1/controllerwindowlookupafterkill;keptnotpositive.",
+    "Native107DC62D0/D603F5/12400D0→12401A9IDclear/D6062Cbase6/DC6329rewind0/DC6637UI1;110DC6762full6. Hostgetter1240D5Ecap20-beforepromotion/unobservedafter,110state2/UIchief/Startseparateproof.",
+    "OwnerexplicitRustimplementation09/11→owner-directives/rust-implementation.json; M0→M1 nowfirst, no fullauth/generalroomdependency."
+  ],
+  "findings": [
+    {
+      "summary": "Private adapter routes107/110 only to captured current same-room/generation/activeowner/visit/rosteredrecipient;9policycases realrouting/fakesend include otherroomC exclusion/stalepeer/ownerreplace/hostchief. C is model, not thirdnative; atomic/fanout design not originalelectionlaw.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/PROTOCOL.md#room-shared-cleanup",
+      "evidence": [
+        "ROOM230-00622"
+      ],
+      "limits": "Private prototype, no production/generalroom/security/sendfailure/backpressure/dynamicoccupancy/quota/durablerestart/Ready/start/UDP/fullauth/Rust/gate. Raw585zero ambiguity remains. Oldcomplete/AUD066/pinnedroots immutable;731raw frozen/seal/cleanup,8WIPunchanged/next232. Hostpostgetter unobserved,110native/UIproof separate;otherroomC modelonly. OwneropenedRust/noRusttreeyetatrecord. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Native guestBack and guestEOF separately clearID2→0 onA via107/base6-rewind0-UI1/errors0; Aowner/chief retained8s+. BackBnormalLobby/twoowners; EOFownedBkill/no extra86/channelEOF/Bsessionreleased/nohealthyBclaim. Native/PCAP/UI565positivebatchscoped.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#room-shared-cleanup",
+      "evidence": [
+        "ROOM230-00246",
+        "ROOM230-00245",
+        "ROOM230-00822",
+        "ROOM230-00821"
+      ],
+      "limits": "Private prototype, no production/generalroom/security/sendfailure/backpressure/dynamicoccupancy/quota/durablerestart/Ready/start/UDP/fullauth/Rust/gate. Raw585zero ambiguity remains. Oldcomplete/AUD066/pinnedroots immutable;731raw frozen/seal/cleanup,8WIPunchanged/next232. Hostpostgetter unobserved,110native/UIproof separate;otherroomC modelonly. OwneropenedRust/noRusttreeyetatrecord. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Native hostAordinary86→B107slot0-ID1/ID1→0/base6-rewind0-UI1,110slot1-state2/full6errors0/UIBchiefbadge-Start/A normalLobby;8s+hold/same2owners. No postpromotiongetter sample duebudget20, no Startclick/gameplayproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#room-shared-cleanup",
+      "evidence": [
+        "ROOM230-00617",
+        "ROOM230-00616"
+      ],
+      "limits": "Private prototype, no production/generalroom/security/sendfailure/backpressure/dynamicoccupancy/quota/durablerestart/Ready/start/UDP/fullauth/Rust/gate. Raw585zero ambiguity remains. Oldcomplete/AUD066/pinnedroots immutable;731raw frozen/seal/cleanup,8WIPunchanged/next232. Hostpostgetter unobserved,110native/UIproof separate;otherroomC modelonly. OwneropenedRust/noRusttreeyetatrecord. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "PreserveR1EOFcontrollerwindowlookupfailure166raw/partial/no8shold; R2 onlyskiplookupafterexpectedEOF/healthAkept. Hostfirstverifierdemandedmissinggetter, source/rawkept; host-specificverifiernamesunobserved andseparate110native/UIevidence.731raw/frozen/cleanup0;nooriginalclientfailureattribution.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#room-shared-cleanup",
+      "evidence": [
+        "ROOM230-00248",
+        "ROOM230-00612",
+        "ROOM230-00847"
+      ],
+      "limits": "Private prototype, no production/generalroom/security/sendfailure/backpressure/dynamicoccupancy/quota/durablerestart/Ready/start/UDP/fullauth/Rust/gate. Raw585zero ambiguity remains. Oldcomplete/AUD066/pinnedroots immutable;731raw frozen/seal/cleanup,8WIPunchanged/next232. Hostpostgetter unobserved,110native/UIproof separate;otherroomC modelonly. OwneropenedRust/noRusttreeyetatrecord. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Ownerexplicitly opens Rust implementation/REwhenneeded; oldplanningdirective unchanged. AGENTS/PLAN/issues prioritizeM0→M1 andnativecodec/connection, no furtherroomRE/Pythonmoduledependency. CP229PR300merged784a0d8/8WIPunchanged/noRustyet/AUD066next232.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#room-shared-cleanup",
+      "evidence": [
+        "ROOM230-00847",
+        "ROOM230-00843"
+      ],
+      "limits": "Private prototype, no production/generalroom/security/sendfailure/backpressure/dynamicoccupancy/quota/durablerestart/Ready/start/UDP/fullauth/Rust/gate. Raw585zero ambiguity remains. Oldcomplete/AUD066/pinnedroots immutable;731raw frozen/seal/cleanup,8WIPunchanged/next232. Hostpostgetter unobserved,110native/UIproof separate;otherroomC modelonly. OwneropenedRust/noRusttreeyetatrecord. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "9adapter departure-routing policy cases",
+      "result": "pass",
+      "evidence": [
+        "ROOM230-00622"
+      ],
+      "limits": "Fakesends/otherroomCmodelonly, not nativeoracle."
+    },
+    {
+      "check": "NativeguestBack/guestEOF/hostBack/IDclear/110UI/PCAP565raw",
+      "result": "pass",
+      "evidence": [
+        "ROOM230-00246",
+        "ROOM230-00822",
+        "ROOM230-00617",
+        "ROOM230-00245",
+        "ROOM230-00821",
+        "ROOM230-00616"
+      ],
+      "limits": "Private2actual; hostpostgetterunobservedbudget20/noStart/UDP/generalroomclaim."
+    },
+    {
+      "check": "R1EOFcontroller after ownedkill",
+      "result": "fail",
+      "evidence": [
+        "ROOM230-00248"
+      ],
+      "limits": "166raw/partial;windowsearchharnesserror notnativeclientfault;R2separatecorrection."
+    },
+    {
+      "check": "Hostpostpromotion getter1240D5E",
+      "result": "not_run",
+      "evidence": [
+        "ROOM230-00612"
+      ],
+      "limits": "Observerbudget20exhausted, not recorded;110nativefull6/state2/UIchiefseparatepositive."
+    },
+    {
+      "check": "731raw/freeze/cleanup/docs/catalog/anchors/WIP/owner-scope sync",
+      "result": "pass",
+      "evidence": [
+        "ROOM230-00847",
+        "ROOM230-00028",
+        "ROOM230-00027"
+      ],
+      "limits": "Fullrequire-local/history/exactPRheadrequired;reviewwaivednotapproved."
+    },
+    {
+      "check": "RustM0/M1implementation/nativeacceptance",
+      "result": "not_run",
+      "evidence": [
+        "ROOM230-00843"
+      ],
+      "limits": "Ownerauthorizednextbatch, noRustcode/acceptanceyetatrecord; proceedimmediately."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP230-shared-room-cleanup.json",
+      "bytes": 225354,
+      "sha256": "47cf5d48ed580d08cf46e7bbd232dc9d726042b9a73ec404673c8bfce3565284",
+      "count": 858
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native currentrecipient107/IDclear/110UI underguestBack/EOF/hostBack;3positive565raw/9routingpolicycases.",
+      "OwnerpermitsRustimplementation; PLANM0→M1first/REonlyblocker, oldplanningdirectivepreserved."
+    ],
+    "corrected": [
+      "R1EOFcontrollerlookedforkilledwindow/166rawFAIL;R2boundedcopyfix/187rawPASS.",
+      "Hostpostgetterbudget20missing; do notclaimgetter1;native110/UIchiefpositiveindependent."
+    ],
+    "superseded": [
+      "CP229nextsharedcleanup nowmeasuredinprivate2actualprofile.",
+      "FurtherbroadroomRE/Pythonmoduleextraction notdependencybeforeRustM0→M1."
+    ]
+  },
+  "blockers": [
+    "Productionglobalroom/round/jobs/host, sendfailure/backpressure/dynamicoccupancy/quota/durablerestart remainM2+backlog; notM1dependency.",
+    "Otherroomcleanup exclusionmodelonly/no3rdnative; raw585zero ambiguity; no generalroomsecurityproof.",
+    "AuthsameprocessfatalCP224/before17receiverCP220 separate; fullauthDB/Rustimplementationnotacceptedyet,8WIPunmerged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Owner09/11opensimplementation: immediatelyM0pinnedPythonbaseline→M1kr-wirecodec/framing/CRC/typedfields/perconnectionseq pluskr-serviceboundedI/O/timeouts/log/nativehello-error-sameprocessretry. REonlyimplementation/nativeacceptance blocker, nofullauth/generalroom/Pythonextractiondependency.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T05:43:44.890433+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/knownconsumer/privatecleanup/nativeID-PCAP-UI/measurementlimits/ownernewimplementationdirective/selfcheck;waivednotapproved;exactPRheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/evidence/room-list/README.md",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/evidence/room-list/shared-cleanup.json",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/evidence/owner-directives/rust-implementation.json",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    }
+  ]
+}

@@ -28,6 +28,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP230: cleanup phòng chung đã có native Back, EOF và chuyển chủ trong prototype.**
+[Contract/limits](docs/PROTOCOL.md#room-shared-cleanup), [run/hash](docs/evidence/room-list/README.md#cp230):
+guest Back hoặc EOF → A nhận107, native ID2→0/ô B biến mất; host Back → B nhận107/ID1→0,
+110 đọc đủ và UI B thành chủ. Ba ca565raw đạt scope hẹp;166raw lỗi controller EOF giữ riêng/correction,
+batch731raw frozen/seal/cleanup. Getter sau hostpromotion chưa quan sát vì budget20; không suy đã đo getter1.
+CP229 đã merge [PR300](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/300); audit kếCP232.
+[Owner đã mở implementation Rust](docs/evidence/owner-directives/rust-implementation.json);
+[PLAN](docs/PLAN.md#current-order) ưu tiên M0→M1 ngay, RE chỉ khi chặn lát cắt. CP230 chưa có Rust/gate mới.
+Internet thật chưa kiểm.
+
+
 **CP229: prototype registry đã qua Back/rejoin và chuyển B sang phòng A bằng client thật.**
 [Contract/limits](docs/PROTOCOL.md#room-membership-registry), [run/hash](docs/evidence/room-list/README.md#cp229):
 B Beta→Back→sảnh→Beta lại đúng ownID/slot0/chief; ca riêng Beta→Alpha đưa B vào slot1/khách,

@@ -119,3 +119,31 @@ R3 controller text Aunchanged chỉ context/account/channel, roster cóB; raw585
 fence không rawstaledetection. DC5925predicate1 khôngslotindex; 291producer khôngpersonalrender. Privateprototype
 chưa production/sharedleave-EOF107fanout/promotion/Ready/start/UDP/generalroomsecurity/Rust/gate. AUD066qua228/kế232.
 Tiếp đúng sharedmembership cleanup ở PLAN; Internet thật chưa kiểm.
+
+<a id="cp230"></a>
+## CP230 — shared-room guest Back/EOF và host Back
+
+[Contract/limits](../../PROTOCOL.md#room-shared-cleanup), [metadata](shared-cleanup.json),
+[unknown](../../RESEARCH.md#gap-room-membership), [thứ tự duy nhất](../../PLAN.md#current-order).
+CP229 merge [PR300](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/300)/`784a0d8`.
+
+| Root local/research/codex/ | Wall/raw/exit | run.json SHA256 |
+|---|---|---|
+| `room-shared-cleanup-r1/guest-back` | 71.382292868s/189/0 | `3ebc374df698c557c0cda174774c9b53f96e31af8a1090a3a261888b8d171308` |
+| `room-shared-cleanup-r1/guest-eof` | 62.689970933s/166/1 | `08f9d6d19e97e3a7f195ee818b8b9e88009340cc9c65eeada8bd9b91378835e4` |
+| `room-shared-cleanup-r2/guest-eof` | 71.384444769s/187/0 | `623bb5185d3c10e5043d52fd6c34939157eecb0584c6d96eaaa385493f3f5706` |
+| `room-shared-cleanup-r1/host-back` | 70.487170951s/189/0 | `9822ed9ec45adb14804290595f26dc2c94d7478fa7673cdfdb20e1a1351d83f3` |
+
+731raw/seals/frozen inputs/ownedcleanup0. `source-first.json` trỏ knownCP034035107/CP229 và cacheleave-kind.gdb;
+`routing-model-verification.json`9cases kiểm realadapter/fakesends/otherroomCmodel, không thirdnative.
+Mỗi case có config/recipe/preflight/proof-state/log/PCAP/seal; `verification.json` nối actualtrigger/native107/
+slotIDbefore-after/110/fullcursor/sequence/PCAP; `ui-review.json` ảnhfinalscreen27 đã xem. GuestBack AAlpha
+chỉKRLocal/BnormalLobby; EOF AAlpha chỉKRLocal, Bkillkhônghealthyclaim; hostBack AnormalLobby/BAlpha ởslot1chief/Start.
+
+R1EOF166raw `controller-failure.json`: sau expectedkillB vẫnlookupwindow, dừngtrước8shold/FAIL; R2newharness
+chỉ skiplookup sauexpectedEOF/healthAgiữ,187raw đạt. Không sửa source/config/input trong run hoặc rewriteoldfailure.
+Host `measurement-correction.json`: getterbudget20 hết ở14initial1+6guest0, không postpromotion sample.
+Oldverifier fail giữnguyên; host-specific verifier ghiunobserved, kiểm107ID1→0/110nativefull6-state2/UIchief,
+không claimgetter1. Guest2cases có getter1 riêng. No Ready/start/UDP/production/Rust/newgate; dynamicoccupancyfixture,
+otherroomexclusionmodelonly/failure-send/backpressure/restartfence chưa đạt. AUD066qua228/kế232; tiếp module/reference
+trongPLAN, không broadRE/đo lại knownconsumer. Internet thật chưa kiểm.

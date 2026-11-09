@@ -13,11 +13,13 @@ Khi đổi cơ chế/trạng thái/câu hỏi, đồng bộ catalog rồi sinh l
 Nguồn cũ/migration ở REFERENCES, metadata bằng chứng ở `docs/evidence/`.
 Docs viết tiếng Việt; ID/API/type kỹ thuật giữ nguyên.
 
-Theo [chỉ đạo công ty08/11](docs/evidence/owner-directives/rust-service.json), chuyển từng contract ổn định
-sang Rust, giữ Python RE/reference; [PLAN](docs/PLAN.md#rust-service-milestones) giữ thứ tự. Đợt KRE-074
-chỉ khảo sát/thiết kế, không tạo Rust source/repo/worktree hoặc đổi runtime. Khi mở implementation sau này,
-vị trí thiết kế là rust/ trong repo này theo [kiến trúc](docs/RUST_SERVICE_ARCHITECTURE.md); không nhập
-scope/wire/authority của boom-rs. Quyền triển khai của đợt khác không bỏ giới hạn planning-only lần này.
+Theo [chiến lược công ty08/11](docs/evidence/owner-directives/rust-service.json), chuyển từng contract ổn định
+sang Rust, giữ Python RE/reference; [PLAN](docs/PLAN.md#rust-service-milestones) giữ thứ tự. Đợt khảo sát CP213
+đã giao. [Chỉ đạo implementation mới09/11](docs/evidence/owner-directives/rust-implementation.json) **cho phép
+triển khai server Rust và RE song song khi cần**; giới hạn planning-only của đợt cũ không chặn đợt mới.
+Bắt đầu M0→M1 ở `rust/` cùng repo, hai crate kr-wire/kr-service theo [kiến trúc](docs/RUST_SERVICE_ARCHITECTURE.md).
+Không chờ fullauth/generalroom hoặc mở thêm broadRE trước codec/connection đã đủ contract; chỉ RE discrepancy/gap
+chặn implementation/nghiệm thu. Không nhập scope/wire/authority của boom-rs hoặc triển khai giả thuyết như confirmed.
 
 Mọi code/docs/tool mới thuộc repo này: `server/`, `tools/`, `docs/`. Không tiếp tục ghi bản tương ứng
 vào boom-rs, boom-re hoặc boomkr-re. Không nhập nguyên code legacy; dùng làm reference có provenance.
