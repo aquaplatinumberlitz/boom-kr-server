@@ -1,0 +1,2784 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "AUTH218-00001",
+      "kind": "local",
+      "path": "local/research/codex/append_cp218.py",
+      "bytes": 13576,
+      "sha256": "7b77b44fd393d1461e3a956eeddfdc3dc3d56950d8990f961d254e9a8525da87"
+    },
+    {
+      "id": "AUTH218-00002",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/boundary-check.json",
+      "bytes": 2994,
+      "sha256": "0f57e39b6d3273829c42533294b3294dc5164d8622005b923a62925f6cf8db1a"
+    },
+    {
+      "id": "AUTH218-00003",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/caller-locator.json",
+      "bytes": 313,
+      "sha256": "f90297b2d5a721c13e4e090054471763286e0d39a4e65e69be8fff58a39d771e"
+    },
+    {
+      "id": "AUTH218-00004",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/fault-caller.asm",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "id": "AUTH218-00005",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/fault-rtti-locator.json",
+      "bytes": 669,
+      "sha256": "907eba781fbb7dd374cc1633e16fef001be5afb49ddd94ecd38f11bc54ad9f4c"
+    },
+    {
+      "id": "AUTH218-00006",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/pending-callback-callee.asm",
+      "bytes": 1851,
+      "sha256": "54d6023fd754b440f6a41df3177805336f8fc06ba33e9ff4683f984e2b778d57"
+    },
+    {
+      "id": "AUTH218-00007",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/pending-callback-locator.json",
+      "bytes": 1021,
+      "sha256": "ab868a658330dd26f6682427ad7b775784dc856d452896bfa00dc755908b51f4"
+    },
+    {
+      "id": "AUTH218-00008",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first.json",
+      "bytes": 4298,
+      "sha256": "20ab2eb9a3eee1260de03e5be6295331ae8065951608de8da222ce36d95c7fc3"
+    },
+    {
+      "id": "AUTH218-00009",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/00-PLAN.md",
+      "bytes": 85639,
+      "sha256": "7638917cdf0af3a5bd6b669bcc910ad2a8d4720f8b5c22defbc6bfc5b51e7e23"
+    },
+    {
+      "id": "AUTH218-00010",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/01-PROTOCOL.md",
+      "bytes": 673445,
+      "sha256": "5e76b60b61e7f63f5a261ee92ac3e9cf97351283bbf73810e561ea2e5eec3590"
+    },
+    {
+      "id": "AUTH218-00011",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/02-RESEARCH.md",
+      "bytes": 43681,
+      "sha256": "2559b8e446ba9c64ed0eb8c5d2e61810499f52b40fa35ca8b2af1cfdb5749390"
+    },
+    {
+      "id": "AUTH218-00012",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/03-verification.json",
+      "bytes": 8587,
+      "sha256": "8a72ba9a65bf7b1f1ce8f97264ebb6a5c60db49e396d4b0295b6f9b15b09a8f5"
+    },
+    {
+      "id": "AUTH218-00013",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/04-client.log",
+      "bytes": 315833,
+      "sha256": "74c6cbd43041fd7610a756b3be3ec2446fb0ccc7f8940606c1554e0d859e5de4"
+    },
+    {
+      "id": "AUTH218-00014",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/05-client.log",
+      "bytes": 315838,
+      "sha256": "799d1ca1482b49bd53e3fd4650df12f164314d1a059d233f778de9147276df03"
+    },
+    {
+      "id": "AUTH218-00015",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/06-channel17-timeout.gdb",
+      "bytes": 5674,
+      "sha256": "5d2a9c56d2cb198727c4672d9aaba82590d3a7f059838708be8387923b82ebe8"
+    },
+    {
+      "id": "AUTH218-00016",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/07-timer-notice-origin.asm",
+      "bytes": 1161,
+      "sha256": "0d571d05e7501bc415c8c3822cb5bd648c91d523b39f82442fdc6215e29aee05"
+    },
+    {
+      "id": "AUTH218-00017",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/08-timer-notice-branch.asm",
+      "bytes": 1223,
+      "sha256": "ec677acd32a1da56e8f702bfdc0a7a3e367e233b263a622fa1b09ac325a539d2"
+    },
+    {
+      "id": "AUTH218-00018",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/09-source-first-reuse.json",
+      "bytes": 3455,
+      "sha256": "038fb2ee766c48eaf6e95f7ec09ffb488f8ad99c07fa7ca10e154d98a210e23a"
+    },
+    {
+      "id": "AUTH218-00019",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/10-verification.json",
+      "bytes": 92133,
+      "sha256": "1d6e1ccaa4aa5f019186a750b1822c60e19bc744888d11a688111094db515f71"
+    },
+    {
+      "id": "AUTH218-00020",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/README.md",
+      "bytes": 27862,
+      "sha256": "f3adcc9c98c9c07070d24529c21761040176eef769eac6eda096437e28b9971b"
+    },
+    {
+      "id": "AUTH218-00021",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/COVERAGE.md",
+      "bytes": 184881,
+      "sha256": "81d1e15e74238245fa8ddb367636b23c58a9416bd8e16083867d9cd243417684"
+    },
+    {
+      "id": "AUTH218-00022",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/PLAN.md",
+      "bytes": 85678,
+      "sha256": "68ffc7bc64e3761b1a0bd02fac8c015ccbc0c7ef12d04b44170f3e00a63b31dd"
+    },
+    {
+      "id": "AUTH218-00023",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/PROTOCOL.md",
+      "bytes": 675535,
+      "sha256": "c8848079d1cb5563dc9fdf4dcf2e668e1baebc6354b86bcc3d8e75d75955abcb"
+    },
+    {
+      "id": "AUTH218-00024",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/RESEARCH.md",
+      "bytes": 43760,
+      "sha256": "1e154dd496ac4872d9e63a79bc4df4aae18f0f45f48b453b8a2947277edbf12b"
+    },
+    {
+      "id": "AUTH218-00025",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 260658,
+      "sha256": "ee6f0798e74a2de3dfd6c8361cfb3c65a226e9ac66d9006136a26128db615a5b"
+    },
+    {
+      "id": "AUTH218-00026",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 33939,
+      "sha256": "ebc18bf8681f4b412c71ef36fe902db0e4b3e550f67cc1a3f3422afe70602cbc"
+    },
+    {
+      "id": "AUTH218-00027",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/evidence/login-runtime/README.md",
+      "bytes": 16099,
+      "sha256": "4724f67de935e803e4b48592b2083b093fb7c9dccc08b8b7a7336aeffea8daf1"
+    },
+    {
+      "id": "AUTH218-00028",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/evidence/login-runtime/lease-controls.json",
+      "bytes": 9613,
+      "sha256": "0e4ff0a6978850f3252049783e28219d9e286ecad1db817c55a0badc7a6c8755"
+    },
+    {
+      "id": "AUTH218-00029",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/features.json",
+      "bytes": 194409,
+      "sha256": "31ee8893c41baaeca84d8438d11563ecc5e5b83868959af48bf331bd0eb00b61"
+    },
+    {
+      "id": "AUTH218-00030",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/manual-review.json",
+      "bytes": 2241,
+      "sha256": "67f6f088e6c738f7e7cd1201deef52997368e08560d3e0f5b90c9929d25989e1"
+    },
+    {
+      "id": "AUTH218-00031",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/captured-channel.bin",
+      "bytes": 81,
+      "sha256": "56e456293e871e54912878d57b9975f3b7303d68550fd185a1f75bc0cb232622"
+    },
+    {
+      "id": "AUTH218-00032",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/CALog-before.txt",
+      "bytes": 507,
+      "sha256": "43c88903159a5a59319154bc8f4169e356dfa4cdec5024ae0550097162a1737e"
+    },
+    {
+      "id": "AUTH218-00033",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/CALog-run.txt",
+      "bytes": 718,
+      "sha256": "95b3478242be99883962a66e87dcde0ae2d0152a2f283a697a3adef684bb7bb4"
+    },
+    {
+      "id": "AUTH218-00034",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/client.log",
+      "bytes": 315833,
+      "sha256": "74c6cbd43041fd7610a756b3be3ec2446fb0ccc7f8940606c1554e0d859e5de4"
+    },
+    {
+      "id": "AUTH218-00035",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/debug-commands.txt",
+      "bytes": 946,
+      "sha256": "54764812ee89d9c51106065d6f53f6a21405748c37a473dc3efc390bf27a57e7"
+    },
+    {
+      "id": "AUTH218-00036",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "AUTH218-00037",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH218-00038",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-00.txt",
+      "bytes": 3719,
+      "sha256": "8c6ac2fc7db5efed3343bcc695afc2ed4963ee4d562fe1307075cf2d558a02be"
+    },
+    {
+      "id": "AUTH218-00039",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-01.txt",
+      "bytes": 4467,
+      "sha256": "fd47d3855afa00b94c16844e3d8b2fbd9cf0de8b6a608f742d7d4dce92cd1a96"
+    },
+    {
+      "id": "AUTH218-00040",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-02.txt",
+      "bytes": 4467,
+      "sha256": "3ad48b6127ff8b5c2dec1ddd2f36b91a38cf352b424403eb457351da88a5442b"
+    },
+    {
+      "id": "AUTH218-00041",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-03.txt",
+      "bytes": 4467,
+      "sha256": "7c4187855f4113acaafeb2d5fb76f7cb5fb34133b3a4bb3279eef19994131f1c"
+    },
+    {
+      "id": "AUTH218-00042",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-04.txt",
+      "bytes": 4467,
+      "sha256": "2542f8a9c8ee866c05fd28c91b01dfa778d0d8a741fde1e865109debd4e4d7a8"
+    },
+    {
+      "id": "AUTH218-00043",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-05.txt",
+      "bytes": 4467,
+      "sha256": "a92aee392724594c2339723fdd54853e17b979452950b9195ee4789ec67d173c"
+    },
+    {
+      "id": "AUTH218-00044",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-06.txt",
+      "bytes": 4467,
+      "sha256": "1edcfef0acd21d14a879adc0e4cd51334e3b7223e7f39d4a0e65c2511d391688"
+    },
+    {
+      "id": "AUTH218-00045",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-07.txt",
+      "bytes": 4467,
+      "sha256": "e17458b05233db325ceee7c37e23d25bf3661c915d927f21d8f1d8c8dc3af936"
+    },
+    {
+      "id": "AUTH218-00046",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-08.txt",
+      "bytes": 4467,
+      "sha256": "cfe7d8e57f49885f83ab788813e715df586dd9a89253026d6c8b962287d0f126"
+    },
+    {
+      "id": "AUTH218-00047",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-09.txt",
+      "bytes": 4467,
+      "sha256": "77e4877c17f932c3d59305da7e412afed3090acff973e650bc095fddffd0d0cb"
+    },
+    {
+      "id": "AUTH218-00048",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-10.txt",
+      "bytes": 4522,
+      "sha256": "5b9157c0ecbb792d5242d6f0a48da120d4dfc8241c938e919c498c906d31d9ed"
+    },
+    {
+      "id": "AUTH218-00049",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/processes-11.txt",
+      "bytes": 4259,
+      "sha256": "1824176255021a2a49345ec614943fe4d976350601b6b77f4a35b06e7785f7c2"
+    },
+    {
+      "id": "AUTH218-00050",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/run.json",
+      "bytes": 8994,
+      "sha256": "28f035ddd8d7b0ae78d55d4f749842579057a5c690acd68f77d2f9a2c336a663"
+    },
+    {
+      "id": "AUTH218-00051",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH218-00052",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH218-00053",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH218-00054",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "AUTH218-00055",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-04.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "AUTH218-00056",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-05.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "AUTH218-00057",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-06.png",
+      "bytes": 194277,
+      "sha256": "eb04d50aa432204c8df8bb45346024b10fc0a1172c0ea711ff569b6e45a4dd7b"
+    },
+    {
+      "id": "AUTH218-00058",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-07.png",
+      "bytes": 404349,
+      "sha256": "a257f6c2b3168c818d75204837f79fa6b45e297fbf82841dd1f315123b81d615"
+    },
+    {
+      "id": "AUTH218-00059",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-08.png",
+      "bytes": 404322,
+      "sha256": "c89d95860a7b68feae9bde2961bb9b8608b9fdf1d8a445549f64ef29eceda272"
+    },
+    {
+      "id": "AUTH218-00060",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-09.png",
+      "bytes": 404321,
+      "sha256": "63eaad48d7138d68308e9a7163d2e59cf2662fa37dea7d5d7bed00397707327a"
+    },
+    {
+      "id": "AUTH218-00061",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-10.png",
+      "bytes": 476571,
+      "sha256": "bc9d87200b4ed32b8feb52415381bb6d32ff0dc890f034599863f212a4e0972e"
+    },
+    {
+      "id": "AUTH218-00062",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/screen-11.png",
+      "bytes": 355153,
+      "sha256": "169a1ca88ab7c2e8d631e5824b950b28bbe1c38992798aea4d8ed3512797a70f"
+    },
+    {
+      "id": "AUTH218-00063",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/service-state.json",
+      "bytes": 25885,
+      "sha256": "adfc63abdbb06e592f68fd739efc27f22e97d4ac01724c6b7921e95d30fc44f3"
+    },
+    {
+      "id": "AUTH218-00064",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH218-00065",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH218-00066",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH218-00067",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH218-00068",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH218-00069",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH218-00070",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH218-00071",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH218-00072",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH218-00073",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH218-00074",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH218-00075",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-10.txt",
+      "bytes": 1600,
+      "sha256": "ea21c2dc361d62acdf1dd7ea286ef159f9961dc0e96d1e9a49a23673ccca94c0"
+    },
+    {
+      "id": "AUTH218-00076",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/windows-11.txt",
+      "bytes": 2589,
+      "sha256": "bb638b74afaa4657cf9b3edeb3e81e4393b0f2fc24989039e37a4406798f75b6"
+    },
+    {
+      "id": "AUTH218-00077",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/wineboot.log",
+      "bytes": 64262,
+      "sha256": "5b2c0387ad75e61e0239dbe6060fb81cb1ecad357415b7e540c479c4d27bc9d8"
+    },
+    {
+      "id": "AUTH218-00078",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/cycles/xvfb.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH218-00079",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/launch-exit.json",
+      "bytes": 73,
+      "sha256": "3cd16759ad586a94e48d6923b07418e42ddd279036a400d747ea8b9f3f866bc9"
+    },
+    {
+      "id": "AUTH218-00080",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/launch.txt",
+      "bytes": 7222,
+      "sha256": "681d9b4d537ff82a795c2714832b813e285be6101aebc1cc85ad981a3da4e092"
+    },
+    {
+      "id": "AUTH218-00081",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/raw-seal.json",
+      "bytes": 10626,
+      "sha256": "6d625c4c64dfbceb1937c52ca8b5f4e21a1ed2214668203cd364aeb259155585"
+    },
+    {
+      "id": "AUTH218-00082",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/recipe.json",
+      "bytes": 1044,
+      "sha256": "7ef22f54ae333d8ffdc9bb5242b839e4b536f8ee892c85c148f3f4539ce6a0cf"
+    },
+    {
+      "id": "AUTH218-00083",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-preflight.json",
+      "bytes": 59239,
+      "sha256": "6a855c20148c6dd88129e36d6cadc673560f49cce18e2c76afb3c17bd4cd6f7b"
+    },
+    {
+      "id": "AUTH218-00084",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "AUTH218-00085",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/eight_battle_policy.py",
+      "bytes": 1408,
+      "sha256": "a1f40cb0243f4368aff157723e4e39dee9417e03b046421e2a35ef22204b75fc"
+    },
+    {
+      "id": "AUTH218-00086",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/eight_bomb_policy.py",
+      "bytes": 557,
+      "sha256": "10bb1656892b7057b2907733f554e5c14c7634cab8040117712756a1d4f6f529"
+    },
+    {
+      "id": "AUTH218-00087",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/eight_player_profile.py",
+      "bytes": 3259,
+      "sha256": "46a4ab61538eb97e30919eb9dec8fae53764411dd8c2c6d6848775c74ea5994b"
+    },
+    {
+      "id": "AUTH218-00088",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/eight_player_service.py",
+      "bytes": 6939,
+      "sha256": "6bb708674ad1aaac97df5315d9aeefa02d76b50d11bac1acb37ffca13e5dc4c5"
+    },
+    {
+      "id": "AUTH218-00089",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/four_battle_policy.py",
+      "bytes": 6031,
+      "sha256": "31ce7d3d843e1fe21c80e4583b85bc2d974ca495de5bc9ddf95b06d1717cfd81"
+    },
+    {
+      "id": "AUTH218-00090",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/four_bomb_policy.py",
+      "bytes": 3753,
+      "sha256": "9a011fe86d522a1c543230b3480fe571c0663722a79c2fad47fe6c4340442369"
+    },
+    {
+      "id": "AUTH218-00091",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/four_identity_store.py",
+      "bytes": 2023,
+      "sha256": "8dea38a194ceb396f8a8944df78ac72adcb44652da26819b41a318ffc2ab6292"
+    },
+    {
+      "id": "AUTH218-00092",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/four_input_limits.py",
+      "bytes": 2900,
+      "sha256": "c1e90e924680d0106665d765c9d382124731929e7a4c084f691b96e40baa71e4"
+    },
+    {
+      "id": "AUTH218-00093",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/four_observability.py",
+      "bytes": 6080,
+      "sha256": "b42c44b01d22eddfa6e93a32efbf618c681823717972c8e56df4ccb26623f18c"
+    },
+    {
+      "id": "AUTH218-00094",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "AUTH218-00095",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/four_player_service.py",
+      "bytes": 40323,
+      "sha256": "33679549b0e19902632abb94a4569921dcd2e749e08bce36fd002b12630795bc"
+    },
+    {
+      "id": "AUTH218-00096",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "AUTH218-00097",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "AUTH218-00098",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "AUTH218-00099",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "AUTH218-00100",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/probe_service.py",
+      "bytes": 112770,
+      "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c"
+    },
+    {
+      "id": "AUTH218-00101",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "AUTH218-00102",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "AUTH218-00103",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "AUTH218-00104",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "AUTH218-00105",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "AUTH218-00106",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "AUTH218-00107",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_admission_ip.py",
+      "bytes": 7753,
+      "sha256": "15c72110195d48bd4165684a098232f56be8e78f261f454911e796b90a192a76"
+    },
+    {
+      "id": "AUTH218-00108",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "AUTH218-00109",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "AUTH218-00110",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "AUTH218-00111",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "AUTH218-00112",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "AUTH218-00113",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "AUTH218-00114",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "AUTH218-00115",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "AUTH218-00116",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "AUTH218-00117",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "AUTH218-00118",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_eight_battle_policy.py",
+      "bytes": 3954,
+      "sha256": "cbd07174ba9cfff118a7b3cde70c270c5dd3388af8b4bdff08760d22caf9aeee"
+    },
+    {
+      "id": "AUTH218-00119",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_eight_bomb_policy.py",
+      "bytes": 2904,
+      "sha256": "9460855d9c745dd915c68dab57d5641696ac94711f98b9dd2ff28efabb31ccda"
+    },
+    {
+      "id": "AUTH218-00120",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_eight_player_profile.py",
+      "bytes": 1770,
+      "sha256": "f1902b382be26f713f488fe97110f12637365358c913bc139f783adcde0ee929"
+    },
+    {
+      "id": "AUTH218-00121",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_eight_player_service.py",
+      "bytes": 2667,
+      "sha256": "d0990b4bee221879d07bee82d21a8a190bddd5d0df290b02dd3e0835282df723"
+    },
+    {
+      "id": "AUTH218-00122",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_eight_team_variants.py",
+      "bytes": 4963,
+      "sha256": "4e7d7c0f3ea8b4624eb3014cd3d21ecfc78f6b4c88d40bdf09525e5829ee31b1"
+    },
+    {
+      "id": "AUTH218-00123",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_four_abort_room.py",
+      "bytes": 4308,
+      "sha256": "adc3b9740cc9754f54d1bc518a99e293e4a28d79155b8c26ac00b329eceeb004"
+    },
+    {
+      "id": "AUTH218-00124",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_four_battle_policy.py",
+      "bytes": 4627,
+      "sha256": "ffc60236e8c9cdbb14f3bdf173af7ce1b5b2a469c52befb9250d72e061552ff6"
+    },
+    {
+      "id": "AUTH218-00125",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_four_bomb_policy.py",
+      "bytes": 6771,
+      "sha256": "88a7a17b394980589d9c8de2c16e3ab465878204a91ec919158d4c7dca951534"
+    },
+    {
+      "id": "AUTH218-00126",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_four_delivery.py",
+      "bytes": 3050,
+      "sha256": "41020e3376ca6c4f170e010f5d9ee3ea280f490dde39bae7342fc63259d5dbd4"
+    },
+    {
+      "id": "AUTH218-00127",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_four_identity_store.py",
+      "bytes": 1935,
+      "sha256": "701aca2790d1d578c2469de1d070e0f9bb49b5a6f042e96981274996a0edee31"
+    },
+    {
+      "id": "AUTH218-00128",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_four_input_guards.py",
+      "bytes": 2610,
+      "sha256": "8d669e8a08ec99faee7d02fa43afbf4e9a9585db374c8e54addc9380af7fce81"
+    },
+    {
+      "id": "AUTH218-00129",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_four_input_limits.py",
+      "bytes": 4946,
+      "sha256": "b7a6600f6721b26aa758e3a2ac345fba04f3385940c8cc9d5793e734f037aa03"
+    },
+    {
+      "id": "AUTH218-00130",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_four_observability.py",
+      "bytes": 4065,
+      "sha256": "54fb10d538190913db7a3603a4954420a34e7bbe5b3b92466f373726470e662a"
+    },
+    {
+      "id": "AUTH218-00131",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_four_player_service.py",
+      "bytes": 10154,
+      "sha256": "50faf857e110ad0a5b5b5f45d9d41429b8ccb73c6d880cfd766e7d8847126a6d"
+    },
+    {
+      "id": "AUTH218-00132",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "AUTH218-00133",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "AUTH218-00134",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "AUTH218-00135",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "AUTH218-00136",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "AUTH218-00137",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "AUTH218-00138",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "AUTH218-00139",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "AUTH218-00140",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "AUTH218-00141",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "AUTH218-00142",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "AUTH218-00143",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "AUTH218-00144",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "AUTH218-00145",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "AUTH218-00146",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "AUTH218-00147",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "AUTH218-00148",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "AUTH218-00149",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "AUTH218-00150",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "AUTH218-00151",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "AUTH218-00152",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "AUTH218-00153",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "AUTH218-00154",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "AUTH218-00155",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "AUTH218-00156",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "AUTH218-00157",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "AUTH218-00158",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "AUTH218-00159",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "AUTH218-00160",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "AUTH218-00161",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/artifacts.py",
+      "bytes": 1089,
+      "sha256": "3806dc33d23db39ce591eb6fc3d2d9638c177a1a08862c474b4bb1d6614188d3"
+    },
+    {
+      "id": "AUTH218-00162",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "AUTH218-00163",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/check_checkpoints.py",
+      "bytes": 30165,
+      "sha256": "a91a1868b8da8870818fa11e6c38f81fb5c36a284610a60fb47f041b7891bd94"
+    },
+    {
+      "id": "AUTH218-00164",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "AUTH218-00165",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "AUTH218-00166",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "AUTH218-00167",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "AUTH218-00168",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/export_probe_profile.py",
+      "bytes": 10595,
+      "sha256": "64f6815f7e1b80ab86bd1b6ffb92ad6d33f45fa758534c1930db5d0ed28248ef"
+    },
+    {
+      "id": "AUTH218-00169",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/feature_catalog.py",
+      "bytes": 15672,
+      "sha256": "765658526f6efccf218e7387d309cc263846ef72c0a1090b87f3d2cc5d3181c0"
+    },
+    {
+      "id": "AUTH218-00170",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "AUTH218-00171",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "AUTH218-00172",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/probe_bundle.py",
+      "bytes": 9232,
+      "sha256": "74fbd44de0f20f611a11c4b57345f1b065cb6c96f94b4ac9e64bdee2bff91315"
+    },
+    {
+      "id": "AUTH218-00173",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/probe_channel_identity.py",
+      "bytes": 981,
+      "sha256": "b4dbf4c9b827007fa9bcb441db26e0230fb4654e5480f5b242157d2d32c3f68b"
+    },
+    {
+      "id": "AUTH218-00174",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/terrain_shadow.py",
+      "bytes": 334,
+      "sha256": "71856e537954ab963ce27a6d057913974b7bb8b1dea863764961ed9846d2addc"
+    },
+    {
+      "id": "AUTH218-00175",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_checkpoint_absolute_local.py",
+      "bytes": 3145,
+      "sha256": "b6c2b85fb4b315101435dfbc95ea41ffe4a5a8fa3c2eec2c7d4f3c769b86c737"
+    },
+    {
+      "id": "AUTH218-00176",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_checkpoint_audit_order.py",
+      "bytes": 1350,
+      "sha256": "157b9b99bf25383da498239b5627739962251b25f2c67925730663775e76f9e9"
+    },
+    {
+      "id": "AUTH218-00177",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    },
+    {
+      "id": "AUTH218-00178",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_checkpoint_store.py",
+      "bytes": 12900,
+      "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b"
+    },
+    {
+      "id": "AUTH218-00179",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_checkpoints.py",
+      "bytes": 14329,
+      "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6"
+    },
+    {
+      "id": "AUTH218-00180",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_export_all_dead.py",
+      "bytes": 2472,
+      "sha256": "9181544944d5e72d3d7137b763fbb42fcb554b6efd687e17b241c88cc0116c19"
+    },
+    {
+      "id": "AUTH218-00181",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "AUTH218-00182",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "AUTH218-00183",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    },
+    {
+      "id": "AUTH218-00184",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_feature_catalog.py",
+      "bytes": 3154,
+      "sha256": "124f62bc87c67e669751600dc2be4d2cd5e7f9e28ef16c7906fbc37ec6f63883"
+    },
+    {
+      "id": "AUTH218-00185",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_four_bundle.py",
+      "bytes": 7544,
+      "sha256": "0299169300e9f64e46071339dc3eb3267085acf1beb834683c10a2b80ec93eec"
+    },
+    {
+      "id": "AUTH218-00186",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_issue_links.py",
+      "bytes": 4175,
+      "sha256": "b6025c8c6e11b2b179a4b58e20e73f48edf989a0749ef968c5409c1d3fd5d764"
+    },
+    {
+      "id": "AUTH218-00187",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    },
+    {
+      "id": "AUTH218-00188",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_probe_channel_identity.py",
+      "bytes": 1989,
+      "sha256": "a7c8c05a66c959ec521aa391f6bc5ea0b4d8444ced130e260281b48d40737cf5"
+    },
+    {
+      "id": "AUTH218-00189",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/test_terrain_shadow.py",
+      "bytes": 2384,
+      "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+    },
+    {
+      "id": "AUTH218-00190",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "id": "AUTH218-00191",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/verify_primitives.py",
+      "bytes": 5272,
+      "sha256": "5cef1ce63e7895e89e3899252a78e958f59218247ac81a1b86f517ed5ddcf6dd"
+    },
+    {
+      "id": "AUTH218-00192",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/windows_console.py",
+      "bytes": 1820,
+      "sha256": "3cc762507cceb37acee58d138e574834b5969630bf9c58430df9de738d328283"
+    },
+    {
+      "id": "AUTH218-00193",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/runtime-source/tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    },
+    {
+      "id": "AUTH218-00194",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/scenario.json",
+      "bytes": 114,
+      "sha256": "b13a7dc705df3f71eb3915e84871e6665a29daba46a7cf2f0b69d91a7f9a57f6"
+    },
+    {
+      "id": "AUTH218-00195",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/captured-channel.bin",
+      "bytes": 81,
+      "sha256": "254b6418d661c563363049f16f0d7409261b81216489e9f506ac57aa5f8592f8"
+    },
+    {
+      "id": "AUTH218-00196",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/CALog-before.txt",
+      "bytes": 718,
+      "sha256": "95b3478242be99883962a66e87dcde0ae2d0152a2f283a697a3adef684bb7bb4"
+    },
+    {
+      "id": "AUTH218-00197",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/CALog-run.txt",
+      "bytes": 718,
+      "sha256": "95b3478242be99883962a66e87dcde0ae2d0152a2f283a697a3adef684bb7bb4"
+    },
+    {
+      "id": "AUTH218-00198",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/client.log",
+      "bytes": 315838,
+      "sha256": "799d1ca1482b49bd53e3fd4650df12f164314d1a059d233f778de9147276df03"
+    },
+    {
+      "id": "AUTH218-00199",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/debug-commands.txt",
+      "bytes": 946,
+      "sha256": "54764812ee89d9c51106065d6f53f6a21405748c37a473dc3efc390bf27a57e7"
+    },
+    {
+      "id": "AUTH218-00200",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/hosts",
+      "bytes": 121,
+      "sha256": "32a007c62d2887ae9f8d3c30d1ff7cb3902e6e1e0c75c5a978ee556cc8ea71f8"
+    },
+    {
+      "id": "AUTH218-00201",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH218-00202",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-00.txt",
+      "bytes": 3719,
+      "sha256": "5fbff93dfa5ec73129180b88b2c58d79034aee1ff941e4b721d795b6ed82855b"
+    },
+    {
+      "id": "AUTH218-00203",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-01.txt",
+      "bytes": 4467,
+      "sha256": "52ed90d0953e945bbb26eb3903981c7a8c290fb2fbec6d1eb1572381517018ab"
+    },
+    {
+      "id": "AUTH218-00204",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-02.txt",
+      "bytes": 4467,
+      "sha256": "99e96006da038566d1e3698d3941d5eda6b84d5ddb6a2afa76e89c5ab32070f7"
+    },
+    {
+      "id": "AUTH218-00205",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-03.txt",
+      "bytes": 4467,
+      "sha256": "56b4cdad228fe0b483482eef678bf8d41ad69dabe808b00937136869cb5f3a3d"
+    },
+    {
+      "id": "AUTH218-00206",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-04.txt",
+      "bytes": 4467,
+      "sha256": "73fb27883748b0988590671911682528fd6f805ca1e18b1234b7bee0ec2263bf"
+    },
+    {
+      "id": "AUTH218-00207",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-05.txt",
+      "bytes": 4467,
+      "sha256": "f6263f01ac904fa3a3eefee6d5672a9f7693840bd176b68674054de76f78f64b"
+    },
+    {
+      "id": "AUTH218-00208",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-06.txt",
+      "bytes": 4467,
+      "sha256": "bbc9fb379601bd967c23eb00e5bacb271da928458425df43f34306ef4df04a73"
+    },
+    {
+      "id": "AUTH218-00209",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-07.txt",
+      "bytes": 4467,
+      "sha256": "1f5131119c020418bcbcc1c6d305ced10d8b07aa3b03a130fe915aec8b53e78a"
+    },
+    {
+      "id": "AUTH218-00210",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-08.txt",
+      "bytes": 4467,
+      "sha256": "d88d703513fa7c3930f3bcd788e970ebf829a1afdf88dda8a76482f5276db4e5"
+    },
+    {
+      "id": "AUTH218-00211",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-09.txt",
+      "bytes": 4467,
+      "sha256": "a97759118176631a75aa733eb999541d559359698b187b572955bd559aaa6667"
+    },
+    {
+      "id": "AUTH218-00212",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-10.txt",
+      "bytes": 4522,
+      "sha256": "fc65901ebd30e86b41ef07122525d50af90b5733a6d132e1524a164fd5848790"
+    },
+    {
+      "id": "AUTH218-00213",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/processes-11.txt",
+      "bytes": 4259,
+      "sha256": "841d63dc6a99b001ecb64c713752837978ec6ff78929165a3ab19f436a7aa44a"
+    },
+    {
+      "id": "AUTH218-00214",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/run.json",
+      "bytes": 8993,
+      "sha256": "29d86a85ea6a3629235ba8d49000a60d27d96a523dcf415c6ff0a4137f2a3b89"
+    },
+    {
+      "id": "AUTH218-00215",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-00.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH218-00216",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-01.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH218-00217",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-02.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH218-00218",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-03.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "AUTH218-00219",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-04.png",
+      "bytes": 32650,
+      "sha256": "e92ac0665d2386619fa715334285854104b0edcb15fe5589b10f6828d735164a"
+    },
+    {
+      "id": "AUTH218-00220",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-05.png",
+      "bytes": 193673,
+      "sha256": "4fea3eb2a924615ccbc9f8809c1407fcaaabc7db1b62ccd0ad111f4d91f5d802"
+    },
+    {
+      "id": "AUTH218-00221",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-06.png",
+      "bytes": 172993,
+      "sha256": "a16161792acf2d5464e14c01c4e122ad03dbb280780e566971217af4e45acdbd"
+    },
+    {
+      "id": "AUTH218-00222",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-07.png",
+      "bytes": 404344,
+      "sha256": "add34db8ada2d84b6f3fa2f5415bee0dd0cc63345e43ac0d57fdbfe18bf81c16"
+    },
+    {
+      "id": "AUTH218-00223",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-08.png",
+      "bytes": 404349,
+      "sha256": "a257f6c2b3168c818d75204837f79fa6b45e297fbf82841dd1f315123b81d615"
+    },
+    {
+      "id": "AUTH218-00224",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-09.png",
+      "bytes": 404322,
+      "sha256": "c89d95860a7b68feae9bde2961bb9b8608b9fdf1d8a445549f64ef29eceda272"
+    },
+    {
+      "id": "AUTH218-00225",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-10.png",
+      "bytes": 476571,
+      "sha256": "bc9d87200b4ed32b8feb52415381bb6d32ff0dc890f034599863f212a4e0972e"
+    },
+    {
+      "id": "AUTH218-00226",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/screen-11.png",
+      "bytes": 355153,
+      "sha256": "169a1ca88ab7c2e8d631e5824b950b28bbe1c38992798aea4d8ed3512797a70f"
+    },
+    {
+      "id": "AUTH218-00227",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/service-state.json",
+      "bytes": 25916,
+      "sha256": "7fb84a59abb3b3fb775a2fea39a20984d320b10af1296dd94609b2bd1b7bae4f"
+    },
+    {
+      "id": "AUTH218-00228",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH218-00229",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-00.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH218-00230",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-01.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "AUTH218-00231",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-02.txt",
+      "bytes": 872,
+      "sha256": "89b108c8ab5e0cd64339cc2b6fe0f0dffcc9e02084d7dc3435adcc9dc270c8ae"
+    },
+    {
+      "id": "AUTH218-00232",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-03.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "AUTH218-00233",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-04.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "AUTH218-00234",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-05.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "AUTH218-00235",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-06.txt",
+      "bytes": 1311,
+      "sha256": "272470e4eb4025dd22b8188441f5b2debfdfd7457dd2a31e5f55d6f0b7a4c05d"
+    },
+    {
+      "id": "AUTH218-00236",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-07.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "AUTH218-00237",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-08.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "AUTH218-00238",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-09.txt",
+      "bytes": 1358,
+      "sha256": "248bddfaaab7ad0fd77b1f6a71f7f0d2554027c90c1db6f99935a4c23fe7f794"
+    },
+    {
+      "id": "AUTH218-00239",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-10.txt",
+      "bytes": 1600,
+      "sha256": "82b83b0b4b59ce7e93d9aae38589638be96092ab34b6586e11db5cbe0f075950"
+    },
+    {
+      "id": "AUTH218-00240",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/windows-11.txt",
+      "bytes": 2589,
+      "sha256": "5e5425c6f5eac589794d83938cdc146ca31f1cc13b803695ea30bed8b2291593"
+    },
+    {
+      "id": "AUTH218-00241",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/wineboot.log",
+      "bytes": 64262,
+      "sha256": "69c82d7f5736627d70fcc3ddde9d06dcf7d472e0a0bcd4ee76679304ca155380"
+    },
+    {
+      "id": "AUTH218-00242",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/cycles/xvfb.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH218-00243",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/launch-exit.json",
+      "bytes": 73,
+      "sha256": "faae45d094bde33be971df7041e550dd63da46b95228f3224143380952d85eb1"
+    },
+    {
+      "id": "AUTH218-00244",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/launch.txt",
+      "bytes": 7221,
+      "sha256": "1d5894badffca2d5a9b7d9d09053747b9c42c3d34b0f2d05e6255daaabb7baa0"
+    },
+    {
+      "id": "AUTH218-00245",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/raw-seal.json",
+      "bytes": 10626,
+      "sha256": "34a03aa310fdbb57f704ac60977e249ee3933b42eab9e81346514df4764ad6e0"
+    },
+    {
+      "id": "AUTH218-00246",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/recipe.json",
+      "bytes": 1044,
+      "sha256": "a08888977bbfe10b0bbf01b20d9375565f8cb9df1d6c583b446d8e8101235a14"
+    },
+    {
+      "id": "AUTH218-00247",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-preflight.json",
+      "bytes": 59239,
+      "sha256": "a87f38bdd6fe08edf84cfb45ed66c618cacb1ebe17a2c34affd10107f01db67c"
+    },
+    {
+      "id": "AUTH218-00248",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "AUTH218-00249",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/eight_battle_policy.py",
+      "bytes": 1408,
+      "sha256": "a1f40cb0243f4368aff157723e4e39dee9417e03b046421e2a35ef22204b75fc"
+    },
+    {
+      "id": "AUTH218-00250",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/eight_bomb_policy.py",
+      "bytes": 557,
+      "sha256": "10bb1656892b7057b2907733f554e5c14c7634cab8040117712756a1d4f6f529"
+    },
+    {
+      "id": "AUTH218-00251",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/eight_player_profile.py",
+      "bytes": 3259,
+      "sha256": "46a4ab61538eb97e30919eb9dec8fae53764411dd8c2c6d6848775c74ea5994b"
+    },
+    {
+      "id": "AUTH218-00252",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/eight_player_service.py",
+      "bytes": 6939,
+      "sha256": "6bb708674ad1aaac97df5315d9aeefa02d76b50d11bac1acb37ffca13e5dc4c5"
+    },
+    {
+      "id": "AUTH218-00253",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/four_battle_policy.py",
+      "bytes": 6031,
+      "sha256": "31ce7d3d843e1fe21c80e4583b85bc2d974ca495de5bc9ddf95b06d1717cfd81"
+    },
+    {
+      "id": "AUTH218-00254",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/four_bomb_policy.py",
+      "bytes": 3753,
+      "sha256": "9a011fe86d522a1c543230b3480fe571c0663722a79c2fad47fe6c4340442369"
+    },
+    {
+      "id": "AUTH218-00255",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/four_identity_store.py",
+      "bytes": 2023,
+      "sha256": "8dea38a194ceb396f8a8944df78ac72adcb44652da26819b41a318ffc2ab6292"
+    },
+    {
+      "id": "AUTH218-00256",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/four_input_limits.py",
+      "bytes": 2900,
+      "sha256": "c1e90e924680d0106665d765c9d382124731929e7a4c084f691b96e40baa71e4"
+    },
+    {
+      "id": "AUTH218-00257",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/four_observability.py",
+      "bytes": 6080,
+      "sha256": "b42c44b01d22eddfa6e93a32efbf618c681823717972c8e56df4ccb26623f18c"
+    },
+    {
+      "id": "AUTH218-00258",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "AUTH218-00259",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/four_player_service.py",
+      "bytes": 40323,
+      "sha256": "33679549b0e19902632abb94a4569921dcd2e749e08bce36fd002b12630795bc"
+    },
+    {
+      "id": "AUTH218-00260",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "AUTH218-00261",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "AUTH218-00262",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "AUTH218-00263",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "AUTH218-00264",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/probe_service.py",
+      "bytes": 112770,
+      "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c"
+    },
+    {
+      "id": "AUTH218-00265",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "AUTH218-00266",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "AUTH218-00267",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "AUTH218-00268",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "AUTH218-00269",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "AUTH218-00270",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "AUTH218-00271",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_admission_ip.py",
+      "bytes": 7753,
+      "sha256": "15c72110195d48bd4165684a098232f56be8e78f261f454911e796b90a192a76"
+    },
+    {
+      "id": "AUTH218-00272",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "AUTH218-00273",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "AUTH218-00274",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "AUTH218-00275",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "AUTH218-00276",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "AUTH218-00277",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "AUTH218-00278",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "AUTH218-00279",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "AUTH218-00280",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "AUTH218-00281",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "AUTH218-00282",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_eight_battle_policy.py",
+      "bytes": 3954,
+      "sha256": "cbd07174ba9cfff118a7b3cde70c270c5dd3388af8b4bdff08760d22caf9aeee"
+    },
+    {
+      "id": "AUTH218-00283",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_eight_bomb_policy.py",
+      "bytes": 2904,
+      "sha256": "9460855d9c745dd915c68dab57d5641696ac94711f98b9dd2ff28efabb31ccda"
+    },
+    {
+      "id": "AUTH218-00284",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_eight_player_profile.py",
+      "bytes": 1770,
+      "sha256": "f1902b382be26f713f488fe97110f12637365358c913bc139f783adcde0ee929"
+    },
+    {
+      "id": "AUTH218-00285",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_eight_player_service.py",
+      "bytes": 2667,
+      "sha256": "d0990b4bee221879d07bee82d21a8a190bddd5d0df290b02dd3e0835282df723"
+    },
+    {
+      "id": "AUTH218-00286",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_eight_team_variants.py",
+      "bytes": 4963,
+      "sha256": "4e7d7c0f3ea8b4624eb3014cd3d21ecfc78f6b4c88d40bdf09525e5829ee31b1"
+    },
+    {
+      "id": "AUTH218-00287",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_four_abort_room.py",
+      "bytes": 4308,
+      "sha256": "adc3b9740cc9754f54d1bc518a99e293e4a28d79155b8c26ac00b329eceeb004"
+    },
+    {
+      "id": "AUTH218-00288",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_four_battle_policy.py",
+      "bytes": 4627,
+      "sha256": "ffc60236e8c9cdbb14f3bdf173af7ce1b5b2a469c52befb9250d72e061552ff6"
+    },
+    {
+      "id": "AUTH218-00289",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_four_bomb_policy.py",
+      "bytes": 6771,
+      "sha256": "88a7a17b394980589d9c8de2c16e3ab465878204a91ec919158d4c7dca951534"
+    },
+    {
+      "id": "AUTH218-00290",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_four_delivery.py",
+      "bytes": 3050,
+      "sha256": "41020e3376ca6c4f170e010f5d9ee3ea280f490dde39bae7342fc63259d5dbd4"
+    },
+    {
+      "id": "AUTH218-00291",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_four_identity_store.py",
+      "bytes": 1935,
+      "sha256": "701aca2790d1d578c2469de1d070e0f9bb49b5a6f042e96981274996a0edee31"
+    },
+    {
+      "id": "AUTH218-00292",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_four_input_guards.py",
+      "bytes": 2610,
+      "sha256": "8d669e8a08ec99faee7d02fa43afbf4e9a9585db374c8e54addc9380af7fce81"
+    },
+    {
+      "id": "AUTH218-00293",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_four_input_limits.py",
+      "bytes": 4946,
+      "sha256": "b7a6600f6721b26aa758e3a2ac345fba04f3385940c8cc9d5793e734f037aa03"
+    },
+    {
+      "id": "AUTH218-00294",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_four_observability.py",
+      "bytes": 4065,
+      "sha256": "54fb10d538190913db7a3603a4954420a34e7bbe5b3b92466f373726470e662a"
+    },
+    {
+      "id": "AUTH218-00295",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_four_player_service.py",
+      "bytes": 10154,
+      "sha256": "50faf857e110ad0a5b5b5f45d9d41429b8ccb73c6d880cfd766e7d8847126a6d"
+    },
+    {
+      "id": "AUTH218-00296",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "AUTH218-00297",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "AUTH218-00298",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "AUTH218-00299",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "AUTH218-00300",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "AUTH218-00301",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "AUTH218-00302",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "AUTH218-00303",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "AUTH218-00304",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "AUTH218-00305",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "AUTH218-00306",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "AUTH218-00307",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "AUTH218-00308",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "AUTH218-00309",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "AUTH218-00310",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "AUTH218-00311",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "AUTH218-00312",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "AUTH218-00313",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "AUTH218-00314",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "AUTH218-00315",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "AUTH218-00316",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "AUTH218-00317",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "AUTH218-00318",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "AUTH218-00319",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "AUTH218-00320",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "AUTH218-00321",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "AUTH218-00322",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "AUTH218-00323",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "AUTH218-00324",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "AUTH218-00325",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/artifacts.py",
+      "bytes": 1089,
+      "sha256": "3806dc33d23db39ce591eb6fc3d2d9638c177a1a08862c474b4bb1d6614188d3"
+    },
+    {
+      "id": "AUTH218-00326",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "AUTH218-00327",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/check_checkpoints.py",
+      "bytes": 30165,
+      "sha256": "a91a1868b8da8870818fa11e6c38f81fb5c36a284610a60fb47f041b7891bd94"
+    },
+    {
+      "id": "AUTH218-00328",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "AUTH218-00329",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "AUTH218-00330",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "AUTH218-00331",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "AUTH218-00332",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/export_probe_profile.py",
+      "bytes": 10595,
+      "sha256": "64f6815f7e1b80ab86bd1b6ffb92ad6d33f45fa758534c1930db5d0ed28248ef"
+    },
+    {
+      "id": "AUTH218-00333",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/feature_catalog.py",
+      "bytes": 15672,
+      "sha256": "765658526f6efccf218e7387d309cc263846ef72c0a1090b87f3d2cc5d3181c0"
+    },
+    {
+      "id": "AUTH218-00334",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "AUTH218-00335",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "AUTH218-00336",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/probe_bundle.py",
+      "bytes": 9232,
+      "sha256": "74fbd44de0f20f611a11c4b57345f1b065cb6c96f94b4ac9e64bdee2bff91315"
+    },
+    {
+      "id": "AUTH218-00337",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/probe_channel_identity.py",
+      "bytes": 981,
+      "sha256": "b4dbf4c9b827007fa9bcb441db26e0230fb4654e5480f5b242157d2d32c3f68b"
+    },
+    {
+      "id": "AUTH218-00338",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/terrain_shadow.py",
+      "bytes": 334,
+      "sha256": "71856e537954ab963ce27a6d057913974b7bb8b1dea863764961ed9846d2addc"
+    },
+    {
+      "id": "AUTH218-00339",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_checkpoint_absolute_local.py",
+      "bytes": 3145,
+      "sha256": "b6c2b85fb4b315101435dfbc95ea41ffe4a5a8fa3c2eec2c7d4f3c769b86c737"
+    },
+    {
+      "id": "AUTH218-00340",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_checkpoint_audit_order.py",
+      "bytes": 1350,
+      "sha256": "157b9b99bf25383da498239b5627739962251b25f2c67925730663775e76f9e9"
+    },
+    {
+      "id": "AUTH218-00341",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    },
+    {
+      "id": "AUTH218-00342",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_checkpoint_store.py",
+      "bytes": 12900,
+      "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b"
+    },
+    {
+      "id": "AUTH218-00343",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_checkpoints.py",
+      "bytes": 14329,
+      "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6"
+    },
+    {
+      "id": "AUTH218-00344",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_export_all_dead.py",
+      "bytes": 2472,
+      "sha256": "9181544944d5e72d3d7137b763fbb42fcb554b6efd687e17b241c88cc0116c19"
+    },
+    {
+      "id": "AUTH218-00345",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "AUTH218-00346",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "AUTH218-00347",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    },
+    {
+      "id": "AUTH218-00348",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_feature_catalog.py",
+      "bytes": 3154,
+      "sha256": "124f62bc87c67e669751600dc2be4d2cd5e7f9e28ef16c7906fbc37ec6f63883"
+    },
+    {
+      "id": "AUTH218-00349",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_four_bundle.py",
+      "bytes": 7544,
+      "sha256": "0299169300e9f64e46071339dc3eb3267085acf1beb834683c10a2b80ec93eec"
+    },
+    {
+      "id": "AUTH218-00350",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_issue_links.py",
+      "bytes": 4175,
+      "sha256": "b6025c8c6e11b2b179a4b58e20e73f48edf989a0749ef968c5409c1d3fd5d764"
+    },
+    {
+      "id": "AUTH218-00351",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    },
+    {
+      "id": "AUTH218-00352",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_probe_channel_identity.py",
+      "bytes": 1989,
+      "sha256": "a7c8c05a66c959ec521aa391f6bc5ea0b4d8444ced130e260281b48d40737cf5"
+    },
+    {
+      "id": "AUTH218-00353",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/test_terrain_shadow.py",
+      "bytes": 2384,
+      "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+    },
+    {
+      "id": "AUTH218-00354",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "id": "AUTH218-00355",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/verify_primitives.py",
+      "bytes": 5272,
+      "sha256": "5cef1ce63e7895e89e3899252a78e958f59218247ac81a1b86f517ed5ddcf6dd"
+    },
+    {
+      "id": "AUTH218-00356",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/windows_console.py",
+      "bytes": 1820,
+      "sha256": "3cc762507cceb37acee58d138e574834b5969630bf9c58430df9de738d328283"
+    },
+    {
+      "id": "AUTH218-00357",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/runtime-source/tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    },
+    {
+      "id": "AUTH218-00358",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/scenario.json",
+      "bytes": 118,
+      "sha256": "4044a4979837e2d2cb95be252d555d844e79e98ed3ab79ca98e1e662c0500fa6"
+    },
+    {
+      "id": "AUTH218-00359",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/scenario_service.py",
+      "bytes": 1354,
+      "sha256": "60f85e52257001dadd141496fcf7f4f92477dc4a5584d4ce5b61fd79f6fcc054"
+    },
+    {
+      "id": "AUTH218-00360",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first.json",
+      "bytes": 4216,
+      "sha256": "0fe5f4d8cd94aa802d56470daf925f50d15e7a184f464579a7b6ac8ea97e60a5"
+    },
+    {
+      "id": "AUTH218-00361",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first/00-PLAN.md",
+      "bytes": 85639,
+      "sha256": "7638917cdf0af3a5bd6b669bcc910ad2a8d4720f8b5c22defbc6bfc5b51e7e23"
+    },
+    {
+      "id": "AUTH218-00362",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first/01-PROTOCOL.md",
+      "bytes": 673445,
+      "sha256": "5e76b60b61e7f63f5a261ee92ac3e9cf97351283bbf73810e561ea2e5eec3590"
+    },
+    {
+      "id": "AUTH218-00363",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first/02-RESEARCH.md",
+      "bytes": 43681,
+      "sha256": "2559b8e446ba9c64ed0eb8c5d2e61810499f52b40fa35ca8b2af1cfdb5749390"
+    },
+    {
+      "id": "AUTH218-00364",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first/03-source-first.json",
+      "bytes": 4990,
+      "sha256": "4bb00a0950652e324152bbcfee33fea07039cfbfde0ae31c2481ea2fea32380d"
+    },
+    {
+      "id": "AUTH218-00365",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first/04-native-verification.json",
+      "bytes": 12135,
+      "sha256": "3a493e6a3ce9aece46be58a812de33c1586e6b97148a3ac250af59b0928a4f3c"
+    },
+    {
+      "id": "AUTH218-00366",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first/05-policy-verification.json",
+      "bytes": 4183,
+      "sha256": "973353faf08d9c12b9d70d169060c145ca726fc4f80d99ad711f9acf4655d8cc"
+    },
+    {
+      "id": "AUTH218-00367",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first/06-admission_policy.py",
+      "bytes": 6218,
+      "sha256": "b63664745f7b12a8bfe95400eacb86b97b90bc962a325f1afe793a72f9ad2625"
+    },
+    {
+      "id": "AUTH218-00368",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first/07-admission_service.py",
+      "bytes": 4686,
+      "sha256": "151cb801c0bcff51e89b3e11cdc0ca42999b87e5a962733a752e51f937e32ad6"
+    },
+    {
+      "id": "AUTH218-00369",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first/08-raw-seal.json",
+      "bytes": 12985,
+      "sha256": "5b473ff264427e96bcf0bc7af202bff09d2f8705e4ffb134bec43778cfc7f101"
+    },
+    {
+      "id": "AUTH218-00370",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first/09-echo-verification.json",
+      "bytes": 13075,
+      "sha256": "7ffef66ba94aa055f45dc73afb7d69333d88c0af83dcfa845145bd243ae8c80d"
+    },
+    {
+      "id": "AUTH218-00371",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/verification.json",
+      "bytes": 8626,
+      "sha256": "870ea7556356cda7378fb81eb9c1c707dada7f14257919470766469cbd145d99"
+    },
+    {
+      "id": "AUTH218-00372",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/verify-lease-controls.py",
+      "bytes": 4927,
+      "sha256": "14b3797ef4c59c44e70d2f58bce84e9b06edbf7c1954254fc2c2301603203190"
+    },
+    {
+      "id": "AUTH218-00373",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-expired-launch.log",
+      "bytes": 209,
+      "sha256": "3971b2574afe64b34d79aa0a6f7e2cac49e11f4da67f4c61cdd36e5d7bedfba5"
+    },
+    {
+      "id": "AUTH218-00374",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-revoked-launch.log",
+      "bytes": 209,
+      "sha256": "10e0512acd52b0c491c8e8bfd24b1e6c972aa5335ab63b1df2d9982b86363839"
+    },
+    {
+      "id": "AUTH218-00375",
+      "kind": "local",
+      "path": "local/research/codex/capture_github_cp218.py",
+      "bytes": 1940,
+      "sha256": "bb75aebc527b08089b24ab1189cb82ca0aa399abc1a5704a282f82c59a10f4b9"
+    },
+    {
+      "id": "AUTH218-00376",
+      "kind": "local",
+      "path": "local/research/codex/cp218-GitHub-issues-1.json",
+      "bytes": 608189,
+      "sha256": "c932770f07e075fdecd7e04c938cc65a71b22f74e34aa9fd6730f045c0e4d67d"
+    },
+    {
+      "id": "AUTH218-00377",
+      "kind": "local",
+      "path": "local/research/codex/cp218-GitHub-issues-2.json",
+      "bytes": 584934,
+      "sha256": "a170fa1a1b0212dd6b4163f8a28112595f2cd0e1fee41e3917a93f5aa02a5e1d"
+    },
+    {
+      "id": "AUTH218-00378",
+      "kind": "local",
+      "path": "local/research/codex/cp218-GitHub-issues-3.json",
+      "bytes": 558149,
+      "sha256": "e6e8d7c654caab37b60fa139ef370334767a84ccec1f1201de88265897c542b2"
+    },
+    {
+      "id": "AUTH218-00379",
+      "kind": "local",
+      "path": "local/research/codex/cp218-GitHub-pulls-1.json",
+      "bytes": 2237523,
+      "sha256": "d0ca2c32f1c447284dd6267cac2ab93322b6e226397962d65f5dd8c5427d401a"
+    },
+    {
+      "id": "AUTH218-00380",
+      "kind": "local",
+      "path": "local/research/codex/cp218-GitHub-pulls-2.json",
+      "bytes": 2222959,
+      "sha256": "d100782c5f225bdb22841d4d0020b3d02fb2b7cb3027da0d6a796a4a42d940a2"
+    },
+    {
+      "id": "AUTH218-00381",
+      "kind": "local",
+      "path": "local/research/codex/cp218-GitHub-pulls-3.json",
+      "bytes": 397922,
+      "sha256": "76af16c4cfc3be7af18e1b97c2e389639a35001ad50119813639e33241ed2321"
+    },
+    {
+      "id": "AUTH218-00382",
+      "kind": "local",
+      "path": "local/research/codex/cp218-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH218-00383",
+      "kind": "local",
+      "path": "local/research/codex/cp218-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "971419227a3a7fd333391e08c3ad9e62bebc2d13780364442cf39208cf90502b"
+    },
+    {
+      "id": "AUTH218-00384",
+      "kind": "local",
+      "path": "local/research/codex/cp218-docs-pre-record.txt",
+      "bytes": 175,
+      "sha256": "971419227a3a7fd333391e08c3ad9e62bebc2d13780364442cf39208cf90502b"
+    },
+    {
+      "id": "AUTH218-00385",
+      "kind": "local",
+      "path": "local/research/codex/cp218-github-capture.txt",
+      "bytes": 70,
+      "sha256": "30c2cf61cad045dc6883f7073e6ddb68b68aabb08c9f9d554d6915b4b36e41aa"
+    },
+    {
+      "id": "AUTH218-00386",
+      "kind": "local",
+      "path": "local/research/codex/cp218-issue-updates.txt",
+      "bytes": 448,
+      "sha256": "5afabd1cee62bbe9a54b5c63a06e5864ae145cd318064bc7a12b28c569d4f3cc"
+    },
+    {
+      "id": "AUTH218-00387",
+      "kind": "local",
+      "path": "local/research/codex/cp218-issue14-before.json",
+      "bytes": 36582,
+      "sha256": "c2952ec1a060343bef5bef16af3ef4a24d51f9810c1cb00916f9648f82199617"
+    },
+    {
+      "id": "AUTH218-00388",
+      "kind": "local",
+      "path": "local/research/codex/cp218-issue14-request.json",
+      "bytes": 33761,
+      "sha256": "848ca90f343a66075c3d544756c221876e5658b8e806f30a02e606bd4bd803c2"
+    },
+    {
+      "id": "AUTH218-00389",
+      "kind": "local",
+      "path": "local/research/codex/cp218-issue14-updated.json",
+      "bytes": 36675,
+      "sha256": "911c821fccefeeae81761c0e28c2d07544591d266eaba79737bfdbc9f564757e"
+    },
+    {
+      "id": "AUTH218-00390",
+      "kind": "local",
+      "path": "local/research/codex/cp218-issue285-before.json",
+      "bytes": 9908,
+      "sha256": "0e8405064160b4c732e0620638b7b18d5651ce5e2cfa8f1bd69052248f400b67"
+    },
+    {
+      "id": "AUTH218-00391",
+      "kind": "local",
+      "path": "local/research/codex/cp218-issue285-request.json",
+      "bytes": 7059,
+      "sha256": "4d7b34b161c23c47dfb3c2c1fc86d0521d6f32c9710a4360c4943e6be782226f"
+    },
+    {
+      "id": "AUTH218-00392",
+      "kind": "local",
+      "path": "local/research/codex/cp218-issue285-updated.json",
+      "bytes": 10001,
+      "sha256": "016515edbf5bdee28a4331b24b8f294036ce37b6ba6c719b1eb12664b667d7fe"
+    },
+    {
+      "id": "AUTH218-00393",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_lease_controls.py",
+      "bytes": 5640,
+      "sha256": "6aee5084f68615360079f7781480747324f58f04f3730210fb967e5f0aeb6e42"
+    },
+    {
+      "id": "AUTH218-00394",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_lease_controls.py",
+      "bytes": 903,
+      "sha256": "504a548baea3b4ffda0a87a18dd86aa161b99fe4149a80d6859ea1757d7d47e4"
+    },
+    {
+      "id": "AUTH218-00395",
+      "kind": "local",
+      "path": "local/research/codex/sync_cp218.py",
+      "bytes": 9536,
+      "sha256": "3036a2032ab036b7ce4cab1678ccd916ea02db80920d1ad5e3a9777251b4e425"
+    },
+    {
+      "id": "AUTH218-00396",
+      "kind": "local",
+      "path": "local/research/codex/update_cp218_issues.py",
+      "bytes": 4509,
+      "sha256": "b58da70d71ad45ee6a6c044c365cbd788ea86d6716ca31aaf7177364626c0347"
+    },
+    {
+      "id": "AUTH218-00397",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_lease_controls.py",
+      "bytes": 20362,
+      "sha256": "249fe1e8f8e983f057c56ae5780d7b9d8f4c44884291485c18582d1217331eae"
+    }
+  ]
+}

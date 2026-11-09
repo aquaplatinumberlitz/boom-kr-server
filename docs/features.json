@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP216",
+  "as_of": "CP218",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -419,7 +419,9 @@
           "docs/PROTOCOL.md#eight-session-preview",
           "docs/evidence/login-runtime/README.md#cp214",
           "docs/evidence/login-runtime/README.md#cp215",
-          "docs/evidence/login-runtime/README.md#cp216"
+          "docs/evidence/login-runtime/README.md#cp216",
+          "docs/evidence/login-runtime/README.md#cp217",
+          "docs/evidence/login-runtime/README.md#cp218"
         ]
       },
       "coverage": {
@@ -454,7 +456,8 @@
             "docs/evidence/login-runtime/README.md",
             "docs/evidence/auth-profile/README.md",
             "docs/evidence/lobby-identity/k3-acceptance.json",
-            "docs/evidence/login-runtime/channel-echo.json"
+            "docs/evidence/login-runtime/channel-echo.json",
+            "docs/evidence/login-runtime/admission-prototype.json"
           ]
         },
         "runtime": {
@@ -477,7 +480,9 @@
               "docs/PROTOCOL.md#four-session-native",
               "docs/evidence/login-runtime/README.md#cp214",
               "docs/evidence/login-runtime/README.md#cp215",
-              "docs/evidence/login-runtime/README.md#cp216"
+              "docs/evidence/login-runtime/README.md#cp216",
+              "docs/evidence/login-runtime/README.md#cp217",
+              "docs/evidence/login-runtime/README.md#cp218"
             ]
           },
           "windows_original": {

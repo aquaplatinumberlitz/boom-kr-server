@@ -28,6 +28,19 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP218: policy chặn lease expired/revoked, nhưng lifecycle client sau EOF chưa đạt.**
+[Blocker/giới hạn](docs/PROTOCOL.md#auth-lease-eof-blocker), [hai run/hash](docs/evidence/login-runtime/README.md#cp218):
+validtoken/native0/actual6echo rồi localdeny; cảhai SIGSEGV17C7F4C qua122EA12/12541E0.
+Raw/stack seal/cleanup0; harnessreturn0 không làclienthealthy. Rootcause chưa biết, chưa negativeacceptance/fullauth.
+CP217valid/badtoken giữ scope riêng; giaoCP217–218 cùngPR, audit kếCP220. Bước tiếp ở [PLAN](docs/PLAN.md#current-order).
+
+**CP217: adapter RE riêng đã phân biệt token đúng/sai bằng client KR thật.**
+[Contract/giới hạn](docs/PROTOCOL.md#auth-admission-prototype), [hai run/hash](docs/evidence/login-runtime/README.md#cp217):
+input32chars đúng → native0/C2S6echo/actual67; sai → native1/khôngkênh trong45s, cảhai seal/cleanup0.
+24expiry/replay/revoke/swap checks mới policyemulator; chưa fullauth/DB/sessionexpiry hoặc production/Rustintegration.
+CP216 đã merge [PR289](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/289)/`af16278`;
+trạng thái tích hợp CP217 theo PR, AUD063through216/audit kếCP220. Bước tiếp duy nhất ở [PLAN](docs/PLAN.md#current-order).
+
 **CP216: đã xác nhận authfield36 đi qua cache tới C2S6; chưa xác thực tài khoản.**
 [Contract/layout/giới hạn](docs/PROTOCOL.md#auth-channel-echo), [hai run/hash](docs/evidence/login-runtime/README.md#cp216):
 control một u32+CRC, native reader→setter→getter→serializer→wire khớp; C2S6 chỉ đổi4bodybytes.

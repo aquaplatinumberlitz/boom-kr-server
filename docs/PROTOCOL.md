@@ -396,6 +396,58 @@ Client count1/ASCII7name/currentcopy; count2/optionalstring/provider/encoding r�
 Một field32bit echo không tự chứng minh quyền sở hữu session hoặc an toàn xác thực. Admission/lease/expiry/revoke/
 rate limits là `design`, cần nativepositive/negative riêng trước tích hợp; chưa có Rust implementation.
 
+<a id="auth-admission-prototype"></a>
+### Adapter admission cục bộ — CP217
+
+[Hai run/raw/hash](evidence/login-runtime/README.md#cp217), [metadata](evidence/login-runtime/admission-prototype.json).
+Dùng lại CP214–216token/field36/layout6, result1 CP014 và Profile47 CP181; sourcehash/raw giữ riêng.
+Native14ED340/token-key11223344 khớp **hàmcrypt hiện có** trên13copied-nativevectors+6capturedrecords,
+không viết cryptor hoặc dựng golden mới làm oracle.
+
+**`emu_choice/design` — prototype riêng trong local, chưa tích hợp server/Rust:** một account giả,
+đối chiếu tokenC2S1 → cấp pendinglease10s mộtlần qua field36 → check C2S6ID/name/echo/sourceIP.
+Token công khai cố định chỉ là input RE. Echo32bit là correlator của nhánh legacy, không credential đủmạnh.
+Rate4 lần/peer/30s, max32peer,1024ticket budget không reuse trong process rồi failclosed là lựa chọn thử nghiệm.
+Không DB/password/registration/Argon2id/accountAPI/sessionexpiry/persistentrestartfence hoặc productionauth.
+
+**`kr_runtime/confirmed` trong Winecopy4b/namespace loopback:** inputtoken32byte đi qua writer native
+(heapcapacity≥32), C2S1seq40/frame99/body61; suffix25byte giống CP214.
+Input đúng: nativeauthresult0 → field36reader/setter/getter/serializer vàactualC2S6echo khớp lease cục bộ;
+adapter nhận kênh, native840470entrymarkers vàactualC2S67 tiếp theo có nguồn. Entrycount không là số packet.
+Input sai cùng32byte/cùngsource/profile: nativeauthresult1 từ reply lỗi CP014, không C2S6/67 và khônglease
+trong45s. Run không force nativeauthstate hoặc functioncall. Serverevents là policy evidence; nativewriter/
+actualframes/result và bước tiếp của client được đối chiếu riêng, không dùng logserver đơn lẻ.
+
+**Policy emulator, không nativeacceptance:**24 kiểm với actualretainedframes và negativefieldmutations
+cho expiry/revoke/replay/identity-name/source/oneowner/rate/collision/staleEOF. TạiCP217 chưa nativeexpired/revokedlease; [CP218](#auth-lease-eof-blocker) đã thử nhưng clientEOFfault,
+chưa negativeacceptance; replay trên kernelTCP, haiaccountKR thật/swappedchannel chưa đo. Pendinglease expiry khác sessionexpiry.
+**Giới hạn:** frontend32chars không entropy/securityproof; chưa fullauth/DB/accountresume/matchrestore hoặc gate mới.
+Phép thử kế ở [RUST-Q1](RESEARCH.md#rust-service-gaps); M0–M1 không phụ thuộc fullauthRE.
+
+<a id="auth-lease-eof-blocker"></a>
+### Lease expired/revoked: từ chối được, lifecycle client lỗi — CP218
+
+[Hai run/raw/hash](evidence/login-runtime/README.md#cp218), [metadata](evidence/login-runtime/lease-controls.json).
+Reuse nguyên adapter/profile/copy/token32/GDB của CP217, chỉ derivedpolicy trigger: pendingTTL1ns hoặc
+revoke ngay sau issue/trước gửi authreply. Đây là **`emu_choice/design` test**, không luật TTL/revoke servergốc.
+
+**`kr_runtime/confirmed` phần quan sát:** cảhai nativeauthresult0, actualC2S6/field36echo đúng ticket đã cấp;
+adapter từ chối ở pha claim, không tạo session, không gửi channel17 và không cóactual67 trong run.
+Nativecontext/capture và policyevents táchnguồn; không suy từ serverlog/alive hoặc harnessexit0.
+**Cảhai client SIGSEGV tại17C7F4C, stack122EA12←12541E0 sau EOF khoảng12s.**
+Run kết thúc sớm khoảng40.6–40.8s wall, sau đó ownedcleanup0; không phải45s khỏe mạnh.
+Vì vậy negative/lifecycle acceptance của admission **chưa đạt**, dù policydeny đã quan sát.
+
+**`kr_static/confirmed` chỉ locator:** return122EA12 có directcall1257360; entry hàm đó nhảy2052077
+vào vùng protected, không đọc linearbytes saujump thành semantics. Fault17C7F4C nằm tại field+0C
+của RTTIrecord17C7F40, typenameATL CWin32Heap. Shape/name không chứng minh heap/ABI/SDK/Wine
+là rootcause; chưa biết nguồn callback/target lỗi. Copy vàmodO khớp vùng đọc.
+
+**Blocker/phép thử nhỏ:** đối chiếu cache CP015channel17-timeout/CP180fatalCRC-EOF/currentcopyEOF,
+rồi passive trace đúng callback/args tại1257360 và targetdata trước lỗi, hoặc matchedEOF control.
+Chỉ thử gracefulerrorreply/binding/patchcopy khi có locator vàcontrol, không đoán opcode VN hoặc vá theo tên RTTI.
+CP217valid/badtoken proof giữ scope riêng; không fullauth/sessionexpiry/restartfence/DB/Rust/gate mới.
+
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015
 

@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "2026-11-08",
-  "baseline": "d3b85dff6d1d6f64495ccca06705059ae2a0cb91",
+  "as_of": "2026-11-09",
+  "baseline": "af16278a1b4d70dec056273cb417d61acb812f3d",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP216nativeC2S6count1layout/producer/authfield36→securecache→C2S6u32echo viaone-fieldcontrol,2sealedWinecopy4bruns/26nativefields+CRCpartialcontrols. CP215mergedPR288; noRustimplementation/fullauth.",
-      "remaining": "Field36originalsemantics/security/TTL unknown; 32bit echo notaloneauthentication; tokenverify/expiry-revoke/replay/swap/accountownershipneeddesign+nativecontrols. Count2/provider/optionaltail notruntime; u64localwrapperunknown.",
-      "next_test": "NEXT-AUTH-SESSION-BINDING perPLAN: explicitlocaladmissionadapterpolicy/token→ID-name-echo lease withbounds/rate/expiry/revoke/oneuse andnativepositive-negative. No repeattokenbounds/producer/fullcodec/providergraph.",
+      "known": "CP217nativevalid/invalid32tokenbranch;CP218validtoken+expired/revokedlease→actual6echo/policydeny,butbothnativeEOF-SIGSEGV17C7F4C/122EA12/12541E0. Allsealedcleanup0. Nohealthynegative/fullauthacceptance.",
+      "remaining": "Post-denialnativeEOFcallback/targetrootcauseunknown; entry1257360protected2052077,RTTIshapeonly. Negative-lifecycle/nativekernelTCPreplay/twoidentity/sessionexpiry/restartfence/DB/accountAPI/Ruststillmissing.",
+      "next_test": "NEXT-AUTH-CHANNEL-EOF sourcefirstoldtimeout/fatalEOF/currentcopy thenpassiveexact1257360callback/args/target/matchedclosecontrol ormeasuredgracefulreply. Do notguesspatch/opcode orfullproviderRE.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Nativeassignment+one-fieldcontrolproven, notoriginalserverlaw orsemanticgateclosure. Both epicsremainopen; AUD063through216/next220.",
+      "reason": "NewCP218retainsfailure/earlyendafterdeny;harnessexit0/notfullnativehealth. CP217recordunchanged/batcheddelivery, both epicsopen/scopedgatesunchanged. AUD063through216/next220.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -253,7 +253,9 @@
         "docs/RESEARCH.md#rust-service-gaps",
         "docs/PROTOCOL.md#auth-token-request",
         "docs/PROTOCOL.md#auth-token-bounds",
-        "docs/PROTOCOL.md#auth-channel-echo"
+        "docs/PROTOCOL.md#auth-channel-echo",
+        "docs/PROTOCOL.md#auth-admission-prototype",
+        "docs/PROTOCOL.md#auth-lease-eof-blocker"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -341,7 +343,9 @@
         "docs/evidence/eight-player/README.md#cp213",
         "docs/evidence/login-runtime/README.md#cp214",
         "docs/evidence/login-runtime/README.md#cp215",
-        "docs/evidence/login-runtime/README.md#cp216"
+        "docs/evidence/login-runtime/README.md#cp216",
+        "docs/evidence/login-runtime/README.md#cp217",
+        "docs/evidence/login-runtime/README.md#cp218"
       ],
       "prs": [
         173,
@@ -432,7 +436,8 @@
         284,
         286,
         287,
-        288
+        288,
+        289
       ],
       "successors": []
     },
@@ -771,18 +776,20 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP216nativeC2S6count1layout/producer/authfield36→securecache→C2S6u32echo viaone-fieldcontrol,2sealedWinecopy4bruns/26nativefields+CRCpartialcontrols. CP215mergedPR288; noRustimplementation/fullauth.",
-      "remaining": "Field36originalsemantics/security/TTL unknown; 32bit echo notaloneauthentication; tokenverify/expiry-revoke/replay/swap/accountownershipneeddesign+nativecontrols. Count2/provider/optionaltail notruntime; u64localwrapperunknown.",
-      "next_test": "NEXT-AUTH-SESSION-BINDING perPLAN: explicitlocaladmissionadapterpolicy/token→ID-name-echo lease withbounds/rate/expiry/revoke/oneuse andnativepositive-negative. No repeattokenbounds/producer/fullcodec/providergraph.",
+      "known": "CP217nativevalid/invalid32tokenbranch;CP218validtoken+expired/revokedlease→actual6echo/policydeny,butbothnativeEOF-SIGSEGV17C7F4C/122EA12/12541E0. Allsealedcleanup0. Nohealthynegative/fullauthacceptance.",
+      "remaining": "Post-denialnativeEOFcallback/targetrootcauseunknown; entry1257360protected2052077,RTTIshapeonly. Negative-lifecycle/nativekernelTCPreplay/twoidentity/sessionexpiry/restartfence/DB/accountAPI/Ruststillmissing.",
+      "next_test": "NEXT-AUTH-CHANNEL-EOF sourcefirstoldtimeout/fatalEOF/currentcopy thenpassiveexact1257360callback/args/target/matchedclosecontrol ormeasuredgracefulreply. Do notguesspatch/opcode orfullproviderRE.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "Nativeassignment+one-fieldcontrolproven, notoriginalserverlaw orsemanticgateclosure. Both epicsremainopen; AUD063through216/next220.",
+      "reason": "NewCP218retainsfailure/earlyendafterdeny;harnessexit0/notfullnativehealth. CP217recordunchanged/batcheddelivery, both epicsopen/scopedgatesunchanged. AUD063through216/next220.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
         "docs/RESEARCH.md#rust-service-gaps",
         "docs/PROTOCOL.md#auth-token-request",
         "docs/PROTOCOL.md#auth-token-bounds",
-        "docs/PROTOCOL.md#auth-channel-echo"
+        "docs/PROTOCOL.md#auth-channel-echo",
+        "docs/PROTOCOL.md#auth-admission-prototype",
+        "docs/PROTOCOL.md#auth-lease-eof-blocker"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -790,16 +797,19 @@
         "docs/evidence/owner-directives/rust-service.json",
         "docs/evidence/login-runtime/README.md#cp214",
         "docs/evidence/login-runtime/README.md#cp215",
-        "docs/evidence/login-runtime/README.md#cp216"
+        "docs/evidence/login-runtime/README.md#cp216",
+        "docs/evidence/login-runtime/README.md#cp217",
+        "docs/evidence/login-runtime/README.md#cp218"
       ],
       "prs": [
         286,
         287,
-        288
+        288,
+        289
       ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-08T23:29:38.428192+00:00",
+  "as_of_utc": "2026-11-09T00:08:11.753902+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
