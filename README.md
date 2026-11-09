@@ -29,6 +29,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP234: Rust đã đưa hai KR thật từ phòng qua Back/rejoin/Ready tới loading và spawn.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-fixed-room), [evidence](docs/evidence/rust-service/README.md#cp234),
+[code/run](rust/README.md): ownID1/slot0 và ID2/slot1, hostA Back→B nativeclearID1/chief→A rejoin/Ready→B Start;
+121129/129/errors0, giữ nativeB99 hơn3s khôngGO, rồi haiACK→197/196/153→clock/spawn/UI cảhai, giữ8.279s.
+PCAP334record/56reply khớp; finalbinary554fa5b3… đã chạy. Nămrun152raw frozen/seal/cleanup0 giữ failures/corrections;
+14Rusttests/8TCPphòng/16binding/14M1regression. Có một shutdown test timeout chưa tái hiện ởba lần lặp, giữ rõ.
+**M2 chưa đóng:** còn chốt negative/version và cleanup sau active-peer EOF; Bfinalreport bị từ chối sau ownedteardownA,
+không healthyabortclaim. CP233 merge [PR304](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/304)/`b10952f`;
+[PLAN](docs/PLAN.md#current-order) tập trung phần còn thiếu M2 trước BattleM3. Audit kếCP236; Python/WIP giữ. Internet thật chưa kiểm.
+
+
 **CP233: hai client KR thật đã vào sảnh trên cùng service Rust với ID/tên riêng.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-two-lobby), [code/run](rust/README.md),
 [evidence](docs/evidence/rust-service/README.md#cp233): KRLocal/ID1 và KRGuest/ID2 đều auth137/137,

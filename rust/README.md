@@ -8,7 +8,7 @@ và [evidence](../docs/evidence/rust-service/README.md#cp231) giữ kết luận
 framing tối đa64KiB và seq theo connection. Giới hạn64KiB là design; không phải maximum của client gốc.
 `kr-service` là binary Tokio/Linux có profile **hello → login error → retry** (M1) và opt-in
 **fixed local identity1/KRLocal → channel → sảnh → profile291** (M2partial). Chưa accountauthentication,
-phòng hoặc gameplay. Opt-in `diagnostic_two_lobby` đã đo hai client KR thật tới sảnh với ID/tên riêng. Hai transport đầu dùng mapping WCP của recipe CP181;
+gameplay. [Phòng/lifecycle/barrier CP234](../docs/PROTOCOL.md#rust-fixed-room) đã có nativepositive; M2 cònnegative-version/activepeerEOFteardown. Opt-in `diagnostic_two_lobby` đã đo hai client KR thật tới sảnh với ID/tên riêng. Hai transport đầu dùng mapping WCP của recipe CP181;
 mọi login ở error-only profile nhận lỗi1. Local-lobby profile chỉ projector đã khai, không kiểm credential. Không dùng arrival order làm thiết kế identity production.
 
 Build/kiểm từ root repo:
@@ -72,3 +72,20 @@ chọnWCP; type1/type6 cộng endpoint+IPoperator+redirectlease chọnlogin/chan
 [Contract/limits](../docs/PROTOCOL.md#rust-two-lobby), [raw/nativeproof](../docs/evidence/rust-service/README.md#cp233).
 Hai source IP chỉ diagnosticbinding, chưa accountauthentication. 10Rusttests/16bindingTCP/14M1regression táchnativeproof;
 phòng/Ready/barrier/Back-rejoin giữ thiếu ở PLAN; chưa fullM2. Python serving/RE/reference còn giữ.
+
+Phòng cố định opt-in (CP234): thêm `--fixed-room-python-profile local/profile.json`,
+`--fixed-room-listing local/room91-one.bin`, `--fixed-room-title RustRoom` vào exporter two-lobby.
+Đây là titleinitial/fixturepin; actualcreate81 echo titlebytes bounded vào listing91 vàselector0/1 vào86/87.
+`login_candidate_ports` liệt kê cổnglogin đã chấpnhận (native có3838/3848); `channel_port` vẫn exactredirect3858.
+Không source/config/input change giữa run. [Proof/limits](../docs/PROTOCOL.md#rust-fixed-room),
+[raw](../docs/evidence/rust-service/README.md#cp234); recordM2 chưa complete.
+
+```bash
+python3 tools/test_rust_room.py --binary rust/target/debug/kr-service \
+  --config local/fixed-room-config.json --out local/new-room-tcp-check
+```
+
+Roommodel/queue/wire adapters ở `kr-service/src/room.rs`, `room_io.rs`, `room_wire.rs`;14Rusttests và8kernelTCPcases.
+SyntheticTCPinputs khácnativeevidence. Queue8/pending16/visit-roundsubjectfences khôngraw-oldACKproof.
+127/190sauArmed chỉobserve/noeffect; khôngBattle. SauownedcleanupA, Bfinalreport có thể bịdeny; activepeerabort chưađạt.
+Python vẫnserving/RE/reference; audit kếCP236.

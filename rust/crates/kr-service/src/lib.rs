@@ -3,6 +3,9 @@
 
 pub mod binding;
 pub mod lobby;
+pub mod room;
+mod room_io;
+mod room_wire;
 
 use kr_wire::{HEADER_LEN, Receiver, decode, encode};
 use serde::Deserialize;
@@ -115,8 +118,12 @@ pub struct DiagnosticActorConfig {
 pub struct TwoLobbyConfig {
     pub wcp_ports: Vec<u16>,
     pub login_port: u16,
+    #[serde(default)]
+    pub login_candidate_ports: Vec<u16>,
     pub channel_port: u16,
     pub actors: Vec<DiagnosticActorConfig>,
+    #[serde(default)]
+    pub fixed_room: Option<room_io::Config>,
 }
 struct ActorProfile {
     identity: u32,
@@ -126,6 +133,7 @@ struct ActorProfile {
 struct BoundProfiles {
     actors: HashMap<Ipv4Addr, ActorProfile>,
     registry: binding::Shared,
+    room: Option<room_io::Shared>,
 }
 pub struct Validated {
     config: Config,
@@ -191,6 +199,17 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
     let bound = if let Some(two) = &config.diagnostic_two_lobby {
         let ports = [two.login_port, two.channel_port];
         if ports.into_iter().collect::<HashSet<_>>().len() != 2
+            || two
+                .login_candidate_ports
+                .iter()
+                .any(|p| !config.ports.contains(p))
+            || two
+                .login_candidate_ports
+                .iter()
+                .copied()
+                .collect::<HashSet<_>>()
+                .len()
+                != two.login_candidate_ports.len()
             || two.wcp_ports.is_empty()
             || two.wcp_ports.iter().copied().collect::<HashSet<_>>().len() != two.wcp_ports.len()
             || two.wcp_ports.iter().any(|p| !config.ports.contains(p))
@@ -229,9 +248,15 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
                 return Err(io::Error::other("duplicate diagnostic endpoint"));
             }
         }
+        let room = two
+            .fixed_room
+            .as_ref()
+            .map(|cfg| room_io::load(cfg, &actors))
+            .transpose()?;
         Some(BoundProfiles {
             actors,
             registry: binding::Shared::default(),
+            room,
         })
     } else {
         None
@@ -467,6 +492,8 @@ async fn local_lobby_connection(
         Some((rx, packet)) => (rx, Some(packet)),
         None => (Receiver::new(40), None),
     };
+    let mut room_session: Option<room_io::Session> = None;
+    let mut pending: Vec<room_io::Batch> = Vec::new();
     let mut send_sequence = 43u32;
     let mut buf = [0; 4096];
     loop {
@@ -475,6 +502,13 @@ async fn local_lobby_connection(
         } else {
             rx.next_packet().map_err(io::Error::other)?
         } {
+            if let Some(session) = &room_session
+                && room_io::Session::handles(packet.opcode)
+            {
+                session.packet(packet.opcode, &packet.payload)?;
+                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len()}))).await?;
+                continue;
+            }
             let aliases = flow.packet(packet.opcode, &packet.payload)?;
             if packet.opcode == 6
                 && let Some(lease) = &lease
@@ -500,12 +534,67 @@ async fn local_lobby_connection(
                 }
                 send_sequence = send_sequence.wrapping_add(3);
             }
+            if packet.opcode == 67
+                && flow.stage == lobby::Stage::Lobby
+                && let Some(shared) = profile.bound.as_ref().and_then(|b| b.room.as_ref())
+            {
+                room_session = Some(room_io::Session::open(shared, flow.identity(), id)?);
+            }
+        }
+        pending.sort_by_key(|batch| batch.due);
+        while pending
+            .first()
+            .is_some_and(|batch| batch.due <= Instant::now())
+        {
+            let batch = pending.remove(0);
+            let Some(session) = &room_session else {
+                return Err(io::Error::other("missing room session"));
+            };
+            if !session.valid(&batch) {
+                emit(&log,stamp(start,json!({"event":"room_queued_dropped","connection":id,"reason":"membership_phase_generation"}))).await?;
+                continue;
+            }
+            for (alias, reply) in &batch.packets {
+                if !session.valid(&batch) {
+                    return Err(io::Error::other("room membership changed during batch"));
+                }
+                let Some(reply) = session.project(reply)? else {
+                    continue;
+                };
+                let frame = encode(&reply.header, reply.opcode, &reply.payload, send_sequence)
+                    .map_err(io::Error::other)?;
+                timeout(
+                    Duration::from_millis(profile.config.write_timeout_ms),
+                    socket.write_all(&frame),
+                )
+                .await
+                .map_err(|_| io::Error::other("room reply timeout"))??;
+                emit(&log,stamp(start,json!({"event":"room_reply","connection":id,"identity":flow.identity(),"alias":alias,"opcode":reply.opcode,"sequence":send_sequence,"bytes":frame.len(),"sha256":sha256_hex(&frame)}))).await?;
+                send_sequence = send_sequence.wrapping_add(3);
+            }
+            session.finish(&batch)?;
+            if batch.setup.is_some() {
+                emit(&log,stamp(start,json!({"event":"room_setup_complete","connection":id,"identity":flow.identity()}))).await?;
+            }
         }
         let cap = buf.len().min(rx.remaining_capacity());
         if cap == 0 {
             return Err(io::Error::other("lobby receive bound"));
         }
-        let n = tokio::select! {_=stop.changed()=>return Ok(()),v=timeout(Duration::from_secs(profile.config.idle_timeout_seconds),socket.read(&mut buf[..cap]))=>v.map_err(|_|io::Error::other("lobby read idle timeout"))??};
+        let deadline = pending
+            .first()
+            .map(|b| b.due)
+            .unwrap_or_else(|| Instant::now() + Duration::from_secs(3600));
+        let n = tokio::select! {
+            _=stop.changed()=>return Ok(()),
+            _=tokio::time::sleep_until(deadline.into()),if !pending.is_empty()=>continue,
+            batch=async {match &mut room_session {Some(session)=>session.inbox.recv().await,None=>std::future::pending().await}}=>{
+                let batch=batch.ok_or_else(||io::Error::other("room inbox closed"))?;
+                if pending.len()>=16 {return Err(io::Error::other("room timer queue bound"));}
+                pending.push(batch);continue;
+            },
+            v=timeout(Duration::from_secs(profile.config.idle_timeout_seconds),socket.read(&mut buf[..cap]))=>v.map_err(|_|io::Error::other("lobby read idle timeout"))??
+        };
         if n == 0 {
             return rx.finish().map_err(io::Error::other);
         }
@@ -546,9 +635,15 @@ async fn bound_connection(
     let mut buf = [0; 4096];
     loop {
         if let Some(packet) = rx.next_packet().map_err(io::Error::other)? {
+            emit(&log,stamp(start,json!({"event":"diagnostic_first_request","connection":id,"opcode":packet.opcode,"payload_bytes":packet.payload.len(),"local_port":port}))).await?;
             let kind = match (packet.opcode, packet.payload.len()) {
                 (0, 28) if endpoints.wcp_ports.contains(&port) => binding::Kind::Wcp,
-                (1, _) if port == endpoints.login_port => binding::Kind::Login,
+                (1, _)
+                    if port == endpoints.login_port
+                        || endpoints.login_candidate_ports.contains(&port) =>
+                {
+                    binding::Kind::Login
+                }
                 (6, _) if port == endpoints.channel_port => binding::Kind::Channel,
                 _ => {
                     return Err(io::Error::other(

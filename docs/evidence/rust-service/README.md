@@ -5,7 +5,7 @@ KRE-074/[#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285)
 [kiến trúc/ma trận hiện có→Rust→thiếu](../../RUST_SERVICE_ARCHITECTURE.md),
 [unknown/phép thử](../../RESEARCH.md#rust-service-gaps).
 
-Hiện hành: [contract/limits](../../PROTOCOL.md#rust-two-lobby), [thứ tự](../../PLAN.md#current-order);
+Hiện hành: [contract/limits](../../PROTOCOL.md#rust-fixed-room), [thứ tự](../../PLAN.md#current-order);
 [owner đã mở implementation](../owner-directives/rust-implementation.json). Phần dưới giữ lịch sử khảo sát CP213.
 
 ## CP213 — khảo sát/lập kế hoạch đã giao
@@ -136,3 +136,32 @@ R2rootbinary SHA`bdf0c70d5a5366fd40d6e071e2f87f7660ab05881799880a6343b28148362d8
 
 M2 vẫn thiếu fixedroom/ownslot/host/Ready/loadingbarrier/Back-rejoin. Diagnostic IP/name/ID/lease không là accountauth;
 Pythonserving/reference/WIP giữ, K0–K7scope cũ khôngđổi, audit kếCP236. Internet thật chưa kiểm.
+
+<a id="cp234"></a>
+## CP234 — Rust fixedroom/lifecycle/withheldACK barrier/native spawn
+
+[Contract/limits](../../PROTOCOL.md#rust-fixed-room), [metadata](fixed-room.json), [PLAN](../../PLAN.md#current-order).
+CP233 merge [PR304](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/304)/`b10952f`.
+
+| local/research/codex/ | Wall/raw/exit | run.json SHA256 |
+|---|---|---|
+|`rust-room-r1/native-lifecycle`|42.337080398s/23/1|`dc49eba51708444d173cf286ec72cdc774890e4f15a6121394d3e145ac97461f`|
+|`rust-room-r2/native-lifecycle`|51.708281336s/27/1|`cced3cd13d8f4b8a72ba692a0956099145ac077a1255db719c0ce8c8e26e7d03`|
+|`rust-room-r3/native-lifecycle`|51.071492933s/25/1|`6331b885d17652deee9f0fbc7078b32e2cb56f75abe375bb29db94de7bbc2861`|
+|`rust-room-r4/native-lifecycle`|83.766200353s/37/0|`a24289047e5dd9ac1d8ea9457ded683b9a16a4403f31567e4942d1a915fcb51c`|
+|`rust-room-r5/native-lifecycle`|67.229003817s/40/0|`861db8a041f009d6ee9071a0e80494192a900970fdbf1d1afb014b23cb38e55e`|
+
+152raw/frozen/seal/ownedcleanup0; từngroot giữ source-reuse/recipe/preflight/cycles/raw-seal/input-retention/frozen-inputs.
+R1loginport mismatch, R2titleinputASCII, R3known96/266missing, R4unported190/JSONmarker20stimeout+unhealthyhold;
+`failure-review.json` giữ rõ, khôngsuccess từharness0. R5`verification.json`/UIreview pinpositivepath vàpostholdlimits;
+`strict-verification.txt` allclosuresEOFfail giữ, `scoped-verification-output-r2.txt` có đầyđủnative/Wire/FINboundaryproof.
+
+R5nativeauth137/291→create/join/own106204/1106/slots0-1→A86/B107ID1clear/chief→A82rejoin/95Ready/B104→121129,
+B99held3.363547654s/A99/no197/noclock→releaseB99→197196153/clock/spawn/UI8.278646918s. PCAP334/56replyframes/
+alltuplestreams/C2Sjoins. `ui-review.json`: afterhostBackAatLobby/Bchief vàfinalbothactorownarrow; fixtureoccupancy/capacity
+UI khôngacceptancequota. FinalbinarySHA`554fa5b318ab58bfa93bd27933674d8ab73cd739fe586cb89d6515105766a04b` khớpnative.
+
+Postholdownedcleanup: AFIN+0.215898273s/BFIN+0.27270637s sauearlycompletion; roundIdle nênBfinal12714 bịdeny.
+Khônggracefulactivepeerabortclaim. R5kernel-tcp timeoutlầnđầu giữlog+raw, chưa rõrootcause; r2/repeat1/repeat2 cùngbinaryđạt.
+`final-*.txt`14Rusttests/fmt/clippy/build;8roomTCPcase/16binding/14M1regression táchsynthetic/nativeproof.
+M2cònnegative-version/cleanup đối chiếu, khôngBattle/fullservice; audit kếCP236. Internet thật chưa kiểm.

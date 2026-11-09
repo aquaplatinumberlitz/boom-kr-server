@@ -35,7 +35,7 @@ def main():
     wcp, login, channel = sorted(ports)
     cfg.update(bind='127.0.0.1', allowed_peers=['127.0.0.2', '127.0.0.3'], ports=sorted(ports))
     endpoints = cfg['diagnostic_two_lobby']
-    endpoints.update(wcp_ports=sorted(ports), login_port=login, channel_port=channel)
+    endpoints.update(wcp_ports=sorted(ports), login_port=login, login_candidate_ports=[], channel_port=channel)
     for i, actor in enumerate(endpoints['actors']):
         actor['peer'] = cfg['allowed_peers'][i]
     hello = Path(cfg['bootstrap']['path']).read_bytes()

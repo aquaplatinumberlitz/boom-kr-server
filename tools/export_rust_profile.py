@@ -95,9 +95,30 @@ def export_two_lobby(profile_path, error_path, own_body_a, own_body_b, *, ports,
             sequence=52, opcode=7)
         actors.append(dict(peer=peer, identity=identity, name=name, profile=cfg))
     result.update(diagnostic_login_error_only=False, bind=bind, allowed_peers=list(peers),
-                  diagnostic_two_lobby=dict(wcp_ports=list(ports), login_port=3838,
+                  diagnostic_two_lobby=dict(wcp_ports=list(ports), login_port=3838, login_candidate_ports=list(ports),
                       channel_port=3858, actors=actors))
     return result
+
+
+def add_fixed_room(config, profile_path, listing_path, title):
+    """Pin measured two-player room templates; builders remain in Rust, not a wire oracle."""
+    if 'diagnostic_two_lobby' not in config or not 1 <= len(title) <= 32 or not title.isascii() or not all(32 <= ord(c) <= 126 for c in title):
+        raise ValueError('fixed room requires two-actor mode and bounded ASCII title')
+    profile = json.loads(Path(profile_path).read_text())
+    packets = {}
+    for alias in ['create', 'join', 'player_A', 'player_B', 'table', 'map', 'floor', 'start', 'go', 'play', 'peer']:
+        row = profile['fixtures'][alias]
+        p = Path(row['path']).resolve(strict=True)
+        raw = p.read_bytes()
+        if len(raw) != row['bytes'] or hashlib.sha256(raw).hexdigest() != row['sha256']:
+            raise ValueError('fixed room fixture mismatch: '+alias)
+        packets[alias] = dict(fixture=dict(path=str(p), bytes=len(raw), sha256=row['sha256']),
+                              sequence=row['sequence'], opcode=int.from_bytes(raw[5:9], 'little'))
+    p = Path(listing_path).resolve(strict=True)
+    raw = p.read_bytes()
+    packets['listing'] = dict(fixture=dict(path=str(p), bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest()), sequence=49, opcode=91)
+    config['diagnostic_two_lobby']['fixed_room'] = dict(title=title, packets=packets)
+    return config
 
 
 def main():
@@ -114,6 +135,9 @@ def main():
     p.add_argument('--diagnostic-bind', default='127.0.0.1')
     p.add_argument('--diagnostic-peer-a', default='127.0.0.2')
     p.add_argument('--diagnostic-peer-b', default='127.0.0.3')
+    p.add_argument('--fixed-room-python-profile', type=Path)
+    p.add_argument('--fixed-room-listing', type=Path)
+    p.add_argument('--fixed-room-title')
     a = p.parse_args()
     if not 1 <= len(a.port) <= 32 or len(set(a.port)) != len(a.port) or any(not 1 <= n <= 65535 for n in a.port):
         p.error('one to32 distinct nonzero ports required')
@@ -128,6 +152,11 @@ def main():
     else:
         config = (export_local_lobby(a.python_profile, a.login_error, a.local_lobby_own_profile, ports=a.port)
                   if a.local_lobby_own_profile else export(a.python_profile, a.login_error, ports=a.port))
+    room = [a.fixed_room_python_profile, a.fixed_room_listing, a.fixed_room_title]
+    if any(room):
+        if not all(room) or not all(two):
+            p.error('fixed room requires two-lobby and room profile/listing/title')
+        config = add_fixed_room(config, *room)
     with a.out.open('x') as f:
         f.write(json.dumps(config, indent=2) + '\n')
 

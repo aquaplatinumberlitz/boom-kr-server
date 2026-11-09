@@ -1,0 +1,1074 @@
+{
+  "schema": "kre-rust-fixed-room-v1",
+  "checkpoint": "CP234",
+  "baseline": "b10952fb75e62781fdc1817ad79acb39a11ec937",
+  "canonical": "docs/PROTOCOL.md#rust-fixed-room",
+  "plan": "docs/PLAN.md#current-order",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "native": {
+    "result": "pass",
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "scope": "M2fixed2room/lifecycle/Ready/withheldACKbarrier/clock-spawn",
+    "recorded_utc": "2026-11-09T09:04:05.796292+00:00",
+    "run_sha256": "861db8a041f009d6ee9071a0e80494192a900970fdbf1d1afb014b23cb38e55e",
+    "raw_count": 40,
+    "post_hold_teardown_rejections": [
+      {
+        "connection": 8,
+        "elapsed_ns": 66117450257,
+        "event": "closed",
+        "reason": "M2 report observation phase/size"
+      }
+    ],
+    "client_FIN_after_completion_s": [
+      0.215898273,
+      0.27270637
+    ],
+    "duration_s": 67.229003817,
+    "binary_sha256": "554fa5b318ab58bfa93bd27933674d8ab73cd739fe586cb89d6515105766a04b",
+    "cleanup": {
+      "net_namespace": "net:[4026533552]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "native": {
+      "A": {
+        "auth": [
+          {
+            "cursor": 137,
+            "err54": 0,
+            "err58": 0,
+            "kind": "auth_end",
+            "packet": 1231964,
+            "payload": 137
+          }
+        ],
+        "roster": [
+          {
+            "kind": "own_slot_set",
+            "ns": 189508017439298,
+            "pc": "0x123ff10",
+            "value": 0,
+            "caller": "0xdb2b10"
+          },
+          {
+            "kind": "player_begin",
+            "ns": 189508403771522,
+            "pc": "0xae4000"
+          },
+          {
+            "kind": "player_end",
+            "ns": 189508406220324,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_parsed",
+            "ns": 189508408876335,
+            "pc": "0xd62780",
+            "slot": 0,
+            "identity": 1,
+            "cursor": 204
+          },
+          {
+            "kind": "self_id_candidate",
+            "ns": 189508414661238,
+            "pc": "0x13b1577",
+            "candidate": 1,
+            "incoming": 1
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 189508416603498,
+            "pc": "0x124001c",
+            "index": 0,
+            "incoming": 1
+          },
+          {
+            "kind": "own_slot",
+            "ns": 189508418931440,
+            "pc": "0xdc5925",
+            "value": 1
+          },
+          {
+            "kind": "callbacks_end",
+            "ns": 189508529513122,
+            "pc": "0xd627cc"
+          },
+          {
+            "kind": "slot_begin",
+            "ns": 189510396785723,
+            "pc": "0xdc6700"
+          },
+          {
+            "kind": "slot_end",
+            "ns": 189510399363304,
+            "pc": "0xdc6762",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_begin",
+            "ns": 189516055474491,
+            "pc": "0xae4000"
+          },
+          {
+            "kind": "player_end",
+            "ns": 189516057967622,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_parsed",
+            "ns": 189516060267063,
+            "pc": "0xd62780",
+            "slot": 1,
+            "identity": 2,
+            "cursor": 204
+          },
+          {
+            "kind": "self_id_candidate",
+            "ns": 189516065107426,
+            "pc": "0x13b1577",
+            "candidate": 1,
+            "incoming": 2
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 189516068838867,
+            "pc": "0x124001c",
+            "index": 4294967295,
+            "incoming": 2
+          },
+          {
+            "kind": "own_slot",
+            "ns": 189516071585419,
+            "pc": "0xdc5925",
+            "value": 0
+          },
+          {
+            "kind": "callbacks_end",
+            "ns": 189516089732837,
+            "pc": "0xd627cc"
+          },
+          {
+            "kind": "own_slot_set",
+            "ns": 189520894762879,
+            "pc": "0x123ff10",
+            "value": 0,
+            "caller": "0xdb2ba0"
+          },
+          {
+            "kind": "player_begin",
+            "ns": 189521270060897,
+            "pc": "0xae4000"
+          },
+          {
+            "kind": "player_end",
+            "ns": 189521272020948,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_parsed",
+            "ns": 189521276111990,
+            "pc": "0xd62780",
+            "slot": 0,
+            "identity": 1,
+            "cursor": 204
+          },
+          {
+            "kind": "self_id_candidate",
+            "ns": 189521280011802,
+            "pc": "0x13b1577",
+            "candidate": 1,
+            "incoming": 1
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 189521283112764,
+            "pc": "0x124001c",
+            "index": 0,
+            "incoming": 1
+          },
+          {
+            "kind": "own_slot",
+            "ns": 189521285510845,
+            "pc": "0xdc5925",
+            "value": 1
+          },
+          {
+            "kind": "callbacks_end",
+            "ns": 189521341938582,
+            "pc": "0xd627cc"
+          },
+          {
+            "kind": "slot_begin",
+            "ns": 189523261162537,
+            "pc": "0xdc6700"
+          },
+          {
+            "kind": "slot_end",
+            "ns": 189523265678139,
+            "pc": "0xdc6762",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_begin",
+            "ns": 189524262751065,
+            "pc": "0xae4000"
+          },
+          {
+            "kind": "player_end",
+            "ns": 189524265541986,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_parsed",
+            "ns": 189524268202687,
+            "pc": "0xd62780",
+            "slot": 1,
+            "identity": 2,
+            "cursor": 204
+          },
+          {
+            "kind": "self_id_candidate",
+            "ns": 189524270818838,
+            "pc": "0x13b1577",
+            "candidate": 1,
+            "incoming": 2
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 189524273113619,
+            "pc": "0x124001c",
+            "index": 4294967295,
+            "incoming": 2
+          },
+          {
+            "kind": "own_slot",
+            "ns": 189524275739831,
+            "pc": "0xdc5925",
+            "value": 0
+          },
+          {
+            "kind": "callbacks_end",
+            "ns": 189524292248429,
+            "pc": "0xd627cc"
+          },
+          {
+            "kind": "slot_begin",
+            "ns": 189525828888671,
+            "pc": "0xdc6700"
+          },
+          {
+            "kind": "slot_end",
+            "ns": 189525831145752,
+            "pc": "0xdc6762",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "room": [
+          {
+            "kind": "start_begin",
+            "role": "A",
+            "ns": 189526638530357
+          },
+          {
+            "kind": "start_end",
+            "role": "A",
+            "ns": 189526640851688,
+            "cursor": 129,
+            "payload": 129,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "spawn",
+            "role": "A",
+            "ns": 189526976657749,
+            "slot": 0,
+            "actor": "0x61607e90",
+            "pointA": 3,
+            "pointB": 3
+          },
+          {
+            "kind": "spawn",
+            "role": "A",
+            "ns": 189526995940248,
+            "slot": 1,
+            "actor": "0x5fb555b8",
+            "pointA": 3,
+            "pointB": 9
+          },
+          {
+            "kind": "loading99_before_send",
+            "role": "A",
+            "ns": 189527030260074,
+            "packet": 1232556
+          },
+          {
+            "kind": "clock",
+            "role": "A",
+            "ns": 189532411692200
+          }
+        ],
+        "cleanup": [
+          {
+            "kind": "local_chief",
+            "ns": 189510401912265,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510406709877,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510409124939,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510411184730,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510413142821,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510415182171,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510418399253,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510420509784,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510422533605,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510424486426,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510426327977,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510428325998,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510431649209,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189510434958191,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189523268203350,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189523270157611,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189523271962602,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189523275603964,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189523277491925,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189523279421886,
+            "pc": "0x1240d5e",
+            "value": 0
+          }
+        ]
+      },
+      "B": {
+        "auth": [
+          {
+            "cursor": 137,
+            "err54": 0,
+            "err58": 0,
+            "kind": "auth_end",
+            "packet": 1231964,
+            "payload": 137
+          }
+        ],
+        "roster": [
+          {
+            "kind": "own_slot_set",
+            "ns": 189512646570975,
+            "pc": "0x123ff10",
+            "value": 1,
+            "caller": "0xdb2ba0"
+          },
+          {
+            "kind": "player_begin",
+            "ns": 189513057392671,
+            "pc": "0xae4000"
+          },
+          {
+            "kind": "player_end",
+            "ns": 189513060810923,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_parsed",
+            "ns": 189513063578454,
+            "pc": "0xd62780",
+            "slot": 1,
+            "identity": 2,
+            "cursor": 204
+          },
+          {
+            "kind": "self_id_candidate",
+            "ns": 189513068333517,
+            "pc": "0x13b1577",
+            "candidate": 2,
+            "incoming": 2
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 189513070113507,
+            "pc": "0x124001c",
+            "index": 0,
+            "incoming": 2
+          },
+          {
+            "kind": "own_slot",
+            "ns": 189513072362559,
+            "pc": "0xdc5925",
+            "value": 1
+          },
+          {
+            "kind": "callbacks_end",
+            "ns": 189513149699565,
+            "pc": "0xd627cc"
+          },
+          {
+            "kind": "slot_begin",
+            "ns": 189515057450495,
+            "pc": "0xdc6700"
+          },
+          {
+            "kind": "slot_end",
+            "ns": 189515059572816,
+            "pc": "0xdc6762",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_begin",
+            "ns": 189516044317216,
+            "pc": "0xae4000"
+          },
+          {
+            "kind": "player_end",
+            "ns": 189516046747297,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_parsed",
+            "ns": 189516049026088,
+            "pc": "0xd62780",
+            "slot": 0,
+            "identity": 1,
+            "cursor": 204
+          },
+          {
+            "kind": "self_id_candidate",
+            "ns": 189516053470660,
+            "pc": "0x13b1577",
+            "candidate": 2,
+            "incoming": 1
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 189516055680961,
+            "pc": "0x124001c",
+            "index": 4294967295,
+            "incoming": 1
+          },
+          {
+            "kind": "own_slot",
+            "ns": 189516057856882,
+            "pc": "0xdc5925",
+            "value": 0
+          },
+          {
+            "kind": "callbacks_end",
+            "ns": 189516076913131,
+            "pc": "0xd627cc"
+          },
+          {
+            "kind": "slot_begin",
+            "ns": 189519620605081,
+            "pc": "0xdc6700"
+          },
+          {
+            "kind": "slot_end",
+            "ns": 189519622466232,
+            "pc": "0xdc6762",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_begin",
+            "ns": 189524267580757,
+            "pc": "0xae4000"
+          },
+          {
+            "kind": "player_end",
+            "ns": 189524269987458,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_parsed",
+            "ns": 189524272804939,
+            "pc": "0xd62780",
+            "slot": 0,
+            "identity": 1,
+            "cursor": 204
+          },
+          {
+            "kind": "self_id_candidate",
+            "ns": 189524275375211,
+            "pc": "0x13b1577",
+            "candidate": 2,
+            "incoming": 1
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 189524277811192,
+            "pc": "0x124001c",
+            "index": 4294967295,
+            "incoming": 1
+          },
+          {
+            "kind": "own_slot",
+            "ns": 189524280862853,
+            "pc": "0xdc5925",
+            "value": 0
+          },
+          {
+            "kind": "callbacks_end",
+            "ns": 189524282679504,
+            "pc": "0xd627cc"
+          },
+          {
+            "kind": "slot_begin",
+            "ns": 189525826386820,
+            "pc": "0xdc6700"
+          },
+          {
+            "kind": "slot_end",
+            "ns": 189525828518941,
+            "pc": "0xdc6762",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "room": [
+          {
+            "kind": "start_begin",
+            "role": "B",
+            "ns": 189526643781090
+          },
+          {
+            "kind": "start_end",
+            "role": "B",
+            "ns": 189526646730611,
+            "cursor": 129,
+            "payload": 129,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "spawn",
+            "role": "B",
+            "ns": 189526975813408,
+            "slot": 0,
+            "actor": "0x634fed00",
+            "pointA": 3,
+            "pointB": 3
+          },
+          {
+            "kind": "spawn",
+            "role": "B",
+            "ns": 189526996051668,
+            "slot": 1,
+            "actor": "0x6139bed0",
+            "pointA": 3,
+            "pointB": 9
+          },
+          {
+            "kind": "loading99_before_send",
+            "role": "B",
+            "ns": 189527029814174,
+            "packet": 1232556
+          },
+          {
+            "kind": "loading99_held",
+            "role": "B",
+            "ns": 189527030225944
+          },
+          {
+            "kind": "loading99_released",
+            "role": "B",
+            "ns": 189530393773598
+          },
+          {
+            "kind": "clock",
+            "role": "B",
+            "ns": 189532411794230
+          }
+        ],
+        "cleanup": [
+          {
+            "kind": "local_chief",
+            "ns": 189515062537178,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515064548598,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515068029240,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515069982731,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515071985322,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515074118023,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515076356644,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515078339145,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515080296816,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515082247517,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515085907949,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515088403690,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515090643391,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515092630462,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189515096248184,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "remove_begin",
+            "ns": 189519588967756,
+            "pc": "0xdc62d0"
+          },
+          {
+            "kind": "remove_fields",
+            "ns": 189519594534159,
+            "pc": "0xd603f5",
+            "slot": 0,
+            "identity": 1,
+            "flag": 0
+          },
+          {
+            "kind": "id_clear_before",
+            "ns": 189519596667660,
+            "pc": "0x12400d0",
+            "slot": 0,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "kind": "id_clear_after",
+            "ns": 189519600035521,
+            "pc": "0x12401a9",
+            "slot": 0,
+            "expected": 1,
+            "actual": 0
+          },
+          {
+            "kind": "remove_base_end",
+            "ns": 189519604354293,
+            "pc": "0xd6062c",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "remove_rewind",
+            "ns": 189519606387754,
+            "pc": "0xdc6329",
+            "cursor": 0,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "remove_ui_end",
+            "ns": 189519609598306,
+            "pc": "0xdc6637",
+            "cursor": 1,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189519625518133,
+            "pc": "0x1240d5e",
+            "value": 0
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189519627246074,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189519630604306,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189519632152006,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "local_chief",
+            "ns": 189519634662178,
+            "pc": "0x1240d5e",
+            "value": 1
+          },
+          {
+            "kind": "remove_fields",
+            "ns": 189541428039600,
+            "pc": "0xd603f5",
+            "slot": 0,
+            "identity": 1,
+            "flag": 0
+          },
+          {
+            "kind": "id_clear_before",
+            "ns": 189541430294901,
+            "pc": "0x12400d0",
+            "slot": 0,
+            "expected": 1,
+            "actual": 1
+          },
+          {
+            "kind": "id_clear_after",
+            "ns": 189541432479662,
+            "pc": "0x12401a9",
+            "slot": 0,
+            "expected": 1,
+            "actual": 0
+          },
+          {
+            "kind": "remove_base_end",
+            "ns": 189541436029143,
+            "pc": "0xd6062c",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ]
+      }
+    },
+    "wire_join": [
+      {
+        "connection": 1,
+        "kind": "HelloOnly",
+        "peer": "10.77.0.2:50512",
+        "local": "10.77.0.1:3848",
+        "s2c_bytes": 15,
+        "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1",
+        "reply_frames": 0
+      },
+      {
+        "connection": 2,
+        "kind": "Wcp",
+        "peer": "10.77.0.2:50518",
+        "local": "10.77.0.1:3848",
+        "s2c_bytes": 332,
+        "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d",
+        "reply_frames": 0
+      },
+      {
+        "connection": 3,
+        "kind": "HelloOnly",
+        "peer": "10.77.0.3:49064",
+        "local": "10.77.0.1:3848",
+        "s2c_bytes": 15,
+        "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1",
+        "reply_frames": 0
+      },
+      {
+        "connection": 4,
+        "kind": "Wcp",
+        "peer": "10.77.0.3:49074",
+        "local": "10.77.0.1:3848",
+        "s2c_bytes": 332,
+        "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d",
+        "reply_frames": 0
+      },
+      {
+        "connection": 5,
+        "kind": "Login",
+        "peer": "10.77.0.2:44082",
+        "local": "10.77.0.1:3848",
+        "s2c_bytes": 352,
+        "s2c_sha256": "d95810f0129e0829d3a2436c18dd8c7a772597c7e1056f8d681a5b2181ae0b70",
+        "reply_frames": 4
+      },
+      {
+        "connection": 6,
+        "kind": "Channel",
+        "peer": "10.77.0.2:37464",
+        "local": "10.77.0.1:3858",
+        "s2c_bytes": 2599,
+        "s2c_sha256": "3f0c613df0c0bca963b25bf458b7c4c37f95839811f35ec53c75e4dd421bfcd4",
+        "reply_frames": 25
+      },
+      {
+        "connection": 7,
+        "kind": "Login",
+        "peer": "10.77.0.3:33350",
+        "local": "10.77.0.1:3838",
+        "s2c_bytes": 352,
+        "s2c_sha256": "686643cce38d529bffdbfcd2ccd902675f1908c7b96b7b77664e1830a0180d9b",
+        "reply_frames": 4
+      },
+      {
+        "connection": 8,
+        "kind": "Channel",
+        "peer": "10.77.0.3:49304",
+        "local": "10.77.0.1:3858",
+        "s2c_bytes": 2215,
+        "s2c_sha256": "44f490e7abf02a8ac04c2ac595f37e6df0f507a19367153d1cfe1cbe14538b37",
+        "reply_frames": 23
+      }
+    ],
+    "actual_create": {
+      "sequence": 79,
+      "title_cp949": "초보자 환영!",
+      "title_sha256": "eb5e65d19282c5cd075e673ce5b83e391a3a30ae2e9b7c0dded327464bd4f6f6",
+      "selector": 1,
+      "frame_sha256": "736f7639241da3ffeec4d67c21cee925730bbb3f9959def368f113c69202789a"
+    },
+    "capture": {
+      "path": "local/research/codex/rust-room-r5/native-lifecycle/cycles/tcp-auth-pair.pcap",
+      "records": 334,
+      "sha256": "22b5d4f8b4aaeb1b55054d5317885962cf4c53515b138c154617bbcc8dc4686c",
+      "reply_count": 56
+    },
+    "barrier": {
+      "held_native_ns": 189527030225944,
+      "released_native_ns": 189530393773598,
+      "held_s": 3.363547654,
+      "actual_ACKs": [
+        {
+          "connection": 6,
+          "elapsed_ns": 51699222602,
+          "event": "room_request",
+          "identity": 1,
+          "opcode": 99,
+          "payload_bytes": 23,
+          "sequence": 181
+        },
+        {
+          "connection": 8,
+          "elapsed_ns": 55063799906,
+          "event": "room_request",
+          "identity": 2,
+          "opcode": 99,
+          "payload_bytes": 23,
+          "sequence": 121
+        }
+      ],
+      "GO": [
+        {
+          "alias": "go197",
+          "bytes": 52,
+          "connection": 6,
+          "elapsed_ns": 55063935556,
+          "event": "room_reply",
+          "identity": 1,
+          "opcode": 197,
+          "sequence": 109,
+          "sha256": "bfd25a6e115230c1a4ffa7d15822f9f78a47d5d8a5be6989a489d96b473b4b84"
+        },
+        {
+          "alias": "go197",
+          "bytes": 52,
+          "connection": 8,
+          "elapsed_ns": 55064323467,
+          "event": "room_reply",
+          "identity": 2,
+          "opcode": 197,
+          "sequence": 97,
+          "sha256": "480a186031bbd36754089cbba74e28861ec1536312efc0b74a9e6c0a23f90147"
+        }
+      ]
+    },
+    "hold_s": 8.278646918,
+    "limits": "e9diagnosticcopy/Wine/GDBdeclaredB99pause/virtualLAN;notoriginaltiming/generalroom/accountauth/DB/Battle. No input127ack/forward/effect. Post-holdownedcleanupAEOF revokesround, Bfinal12714denied;notgracefulactivepeerabortacceptance. Strictallclosure-eofverifierfailurekept;scopedholdverifiedbyFINafterearly.  Internalgeneration/visitnotraw585/99replayprotection. Internet thật chưa kiểm."
+  },
+  "limits": "e9diagnosticcopy/Wine/GDBdeclaredB99pause/virtualLAN;notoriginaltiming/generalroom/accountauth/DB/Battle. No input127ack/forward/effect. Post-holdownedcleanupAEOF revokesround, Bfinal12714denied;notgracefulactivepeerabortacceptance. Strictallclosure-eofverifierfailurekept;scopedholdverifiedbyFINafterearly.  Internalgeneration/visitnotraw585/99replayprotection. Internet thật chưa kiểm.",
+  "next": "PLANM2negative-version-activepeerEOFcleanupbeforemanualacceptance/noM3yet"
+}

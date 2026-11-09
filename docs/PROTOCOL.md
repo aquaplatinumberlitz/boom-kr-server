@@ -3252,6 +3252,58 @@ chưa Battle/UDP/DB/accountauthentication/generalroom/fullM2/fullservice/product
 [PLAN](PLAN.md#current-order) tiếp portfixedroom, không thêm broadRE; Pythonserving/reference và8WIP byteexact.
 CP232PR303merge5b3ef81, AUD067qua232/audit kếCP236. **Internet thật chưa kiểm**.
 
+<a id="rust-fixed-room"></a>
+### Rust fixedroom → host Back/rejoin/Ready → loading barrier/spawn — CP234
+
+[Code/recipe](../rust/README.md), [raw/hash](evidence/rust-service/README.md#cp234),
+[metadata](evidence/rust-service/fixed-room.json). KRE-074/#285, tiếp [CP233](#rust-two-lobby); **M2 chưa đóng**.
+Reuse CP016–020/028/034/035/161 room/cache/map/start/Ready, CP229/230visit/cleanup và currentPython
+`room_title`/`room_team_mode`/`four_player_profile`/`probe_service`. Không hàm native/SDK/clientpatch mới.
+
+**`design` implementation:** opt-in `fixed_room` trong twoactorprofile; `room::Room` serializes owner/slot/host/
+Ready/setup/visit/round, `room_io` adapter pin fixtures, `room_wire` sửa đúng measuredID/slot/state/selector/title/
+endpointfields. ID1slot0/ID2slot1, một phòng/session1/room1; title echo bounded1..32/control-free opaqueCP949carrier,
+không Unicode normalization hoặc fullCP949validation; selector0/1 theoactual81/86/87. Listcardoccupancy/capacityfield
+vẫnfixture, không chứng minhquota8/dynamiccount/generalroom/password. Các header/bodyunknown giữopaque.
+
+`Room` clone/validate trước commit. Reserve queueentry cho mọi recipient trước publishstate/batches; queue8/recipient,
+pendingtimer16/socket, replyseq riêng43+3n. Timer/batch chứa exactmembership(connection,visit), optionalround vàpeer
+subject; kiểm lại trước gửi, project106/110 theo host/Ready hiện hành để scheduledstatecũ không hồi sinh peer/host.
+KhôngatomicTCPbroadcast: partialwrite/sendfailure vẫn phải cleanup recipient; queuereservationtest khôngthaynative.
+Own585→106,110 sau2s, peer106 sau3s (rosterpairde-dup), table238/map117 sau4s. Reuse fixture timing, không originaltiming.
+Native96/body6,266/body12 và Armed190/empty chỉ observed/no reply;127/body1..4096 sauArmed chỉ observe, khôngack/
+forward/grant/gameplayeffect. Không imlặngcoiBattle đãport. SourceIPoperator còn là diagnosticbinding, khôngaccountauth.
+
+HostBack86empty→remove107(slot,ID,0)/survivor110 giữteam/chief và1s241/91 refresh; samechannelrejoin82 choA slot0guest
+khiBslot1host. Start104 chỉ currenthost/two members/setup/guestReady, rosterroundsnapshot;99/body23/currentmembership/
+UDPport!=0 đủcảhai mới197,1s196,2s153 có IPoperator và actual99ports/currentroundkey. **Visit/round chỉ fence internalwork**:
+raw585zero và99 chưa có measuredvisit/roundtoken, khôngclaim nhậnra mọi ACK cũ trênwire. Roundabort/timeout/recovery
+chưa đầyđủ; không phát cancel/result giả. Channel/logincandidateports khai rõ: R1actualCRCvalidlogin1/body42 dùng3848,
+profile `login_candidate_ports` bổ sung theo measuredcandidate endpoints; no acceptorder/authenticationassumption.
+
+**`kr_runtime/confirmed` R5:** hai actuale9copy/Wine10/2CA/2wineserver/3netns/vethbridge/noexternalroute/files-onlyNSS.
+Auth137/291 đúng tên; ordinarycreate81(titleCP949“초보자 환영!”,selector1)→86, B91/82→87, native106204/204/errors0
+trêncảhai với ID1slot0/ID2slot1, ownslotsetter0/1;1106/6/errors0. HostAordinaryBack→Bnative107ID1→0/chiefgetter1,
+UIA vềsảnh/BStartbadge; A82rejoin→ownslot0guest/peerroster, A95Ready110, B104Start→121129/129/errors0.
+NativeB99producer được observer giữ **3.363547654s**, A99 đã tới; controller/PCAP không197 hoặcclock khi thiếuB.
+Releasefiletheodeclaredrecipe→actualB99 rồi197cảhai/196/153, nativeclock/spawnslot0/1, UIhaiActor/đúngownarrow/ExVillage01,
+giữ8.278646918s. PCAP334record/allacceptedtuples/56exactS2Creplies/allacceptedC2Sseq-op-len, capturepartial/overlap
+checks không báo thiếu. RootbinarySHA`554fa5b318ab58bfa93bd27933674d8ab73cd739fe586cb89d6515105766a04b` đúngfinalbuild.
+Chưa đo movement/bom/terrain/life/result/reset trênRust; thấyspawn không là BattleM3.
+
+**Failures/corrections giữ nguyên:** R1strictlogin3838 bỏ sótactualA3848→23rawFAIL; R2ASCIIonlytitle + OSinputkhôngđổi
+customdialog→27rawFAIL; R3create/106đãđọc nhưng chưa port96/266→25rawFAIL; R4positivephòng/clock nhưng190empty làm
+channelđóng, controllerthiếucheckchannelvàBheldmarkerJSONspaces→fallback20s release→37rawFAILhealthyhold. R5fixknown
+ancillary/parserhealthcheck→40rawpositive scope trên. Tổng5run152raw frozen/seal/cleanup0/exactinputversionsretained.
+StrictallclosureEOF verifier củaR5 fail giữ: sauearlycompletion8.279hold, ownedWinecleanupAEOF→roundIdle→Bfinal12714
+bịreject; clientFIN tới sauearly0.216/0.273s, khôngđóng trướchold. Scopedverifier chứngminh đườngtrướcownedcleanup;
+**không healthyactive-peerabort hoặc gracefulpostholdteardownclaim**. Không sửa raw/controllerreturn0 thànhsemanticproof.
+
+14Rusttests(5wire+3Flow+2binding+3room+1queue),8syntheticroomTCPcase và16binding/14M1regression riêngnativeproof.
+Một lầnroomTCPcleanup timeout (SIGTERM5s/killwait2s) giữraw/log, chưa rõrootcause; ba repeat cùngbinaryđạt, khônggọiđãfix.
+[PLAN](PLAN.md#current-order) cònchốtversion/negative+activepeerEOF/late-reportcleanup trướcfullM2, audit kếCP236.
+Pythonserving/RE/reference/8WIP byteexact, CP233PR304mergeb10952f; K0–K7 cũkhôngđổi. **Internet thật chưa kiểm**.
+
 <a id="auth-profile"></a>
 ### Success/profile count1 đã đọc sạch trên copy — CP058
 
