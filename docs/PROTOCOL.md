@@ -657,6 +657,40 @@ không đi nhánh local==1, không kẹt trong handoff. Ý nghĩa/nguồn discri
 nó là token count/stage/error cause. Chỉ nguồn biến/caller là câu hỏi tiếp, không quét calleesSDK/VM.
 Cảba run vẫn fatal/không auth6-67 mới. CP223 mergePR294/51bbf41; AUD065qua224/kế228. Internet thật chưa kiểm.
 
+<a id="auth-fresh-process"></a>
+### Fresh login bằng process mới sau session cũ — CP225
+
+[Recipe/raw/hash](evidence/login-runtime/README.md#cp225), [metadata](evidence/login-runtime/fresh-process.json).
+Không sửa sameprocessfatalCP224; tách rõ freshserver/freshlogin/sameprocessreconnect/accountresume/matchrestore.
+
+**`kr_runtime/confirmed` nguồn discriminator:** native125BD10 errorlocal10→getter12562C0 trên cùngobject
+trả11 tại125BDE0→storeEBP-28=11 tại125BDE3→setter12562F0(request1)→return125BDF5.
+Đây là prior-value snapshot trước connect/validation, không token count/framer state. Setterrequest không
+là readback1. Staticgetter đọc wrapperobject+14, chưa giải wrapperencoding; họ selector đã nối stage11/
+CLobbyStage ở nguồn cũ nhưng không gán nó làm nguyên nhân fatal hoặc chứng minh fix bằng forcedstate.
+Các logCP223 retry-ack/connect/connect-r2 đều có fatal; ba EOF/budget đầu không có literalmarker trong
+boundedscan, không suy khỏe từ không tìm thấy. Giữ mọi record/raw cũ.
+
+**Freshprocess test `emu_choice/design`:** sau initialABnative0/67 và controlledBclose, controller chờ3s,
+kiểm oldB chưa tiêu transportcycle2, cleanup đúng Bprefix/oldPID rồi mở winedbg/CA mới cùngcopy/prefix/token.
+Aprocess/netns/owner giữ nguyên; không nativefunctioncall/resetstate. Service/privatepolicy/profile47pins/
+credential/lease/ticketseen giữ nguyên, Bcycle2/12transportcap đã khai designCP223. Không luật logout/TTL gốc.
+
+**Dương tính:** newB PID650 khácold309, A159 giữ; nativeauth0, ID2/KRGuest/field36chain→typedC2S6echo
+đúng lease mới→actual67, channel12/session mới khácold8, oldsession đã bỏ, Achannel6/session không đổi.
+Hai client/two wineserver/twoendpointnetns/directbridge/noexternalroute/PCAP joins/8s+hold đã kiểm.
+ẢnhBfresh cuối là sảnh KR. Không suy nativegameplayprogress của A từ owner/openTCP/PID.
+
+**Âm tính riêng:** initialB vẫn token đúng, **chỉ** tokenBfresh đổi thành32 ký tự sai. Nativewriter/frame
+khớp input32; service credentialsdeny→native result1, không channel17/C2S6/67 hoặc Blease/session trong45s+;
+A giữ owner/PID/openTCP. Ảnh KRlogin có credential-errornotice, không WineProgramError; fatalmarkerA/Bfresh
+không có trong boundedhold. Đây là knownresult1negative của freshlogin, không healthyEOFdenial/swap/securityproof.
+
+3relatedruns595raw/frozenpreflight/ownedcleanup: getterorigin154, freshpositive181, negative260.
+Chưa fullauth/securefrontend/accountDB/sessionexpiry/revoke/restartfence/automaticresume/matchrestore/Rust/gate.
+[PLAN](PLAN.md#current-order) chuyển khoảng trống phòng tổng quát cho M2; không tiếp quét SDK/VM hoặc
+lặp failedretry khi thiếu input/observable mới. CP224mergePR295/928f2fb; AUD065qua224/kế228. Internet thật chưa kiểm.
+
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015
 

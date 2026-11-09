@@ -28,6 +28,16 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP225: process B mới đăng nhập lại được; cùng process sau mất kênh vẫn lỗi.**
+[Contract/limits](docs/PROTOCOL.md#auth-fresh-process), [ba run/hash](docs/evidence/login-runtime/README.md#cp225):
+cleanup B cũ rồi mở KR mới → native0/ID2-name-echo6/67/newlease-session, A cùngPID/owner giữ8s+;
+chỉ đổi tokenB mới sang sai → native1/nochannel/noBlease-session/Aowner45s+. Getter trả11 được lưu trước
+setter(request1), chưa đồng nghĩa sửa sameprocessresume. 595raw seal/hash/cleanup; không fullauth/Rust/gate mới.
+CP224 merge [PR295](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/295)/`928f2fb`;
+AUD065 qua224/audit kế228. [PLAN](docs/PLAN.md#current-order) chuyển khoảng trống phòng tổng quát,
+không tiếp quét SDK/VM hoặc lặp failedretry.
+
+
 **CP224: hello và validation thành công; retry sau mất kênh bị fatal error.**
 [Contract/correction](docs/PROTOCOL.md#auth-retry-validation), [ba run/hash](docs/evidence/login-runtime/README.md#cp224):
 breakpoint đúng return13AD79C/1255C73/1255A69/125BE47 đều trả1, manager phase2;

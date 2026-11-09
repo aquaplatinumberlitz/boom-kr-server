@@ -368,3 +368,28 @@ localEBP-28=11→125BF8Cepilogue/ret; không first/secondguard/local==1path. Sou
 không token-count/stage/rootcauseclaim. `continuation*.json/asm` là boundedread-onlyCapstone/copy-modelmatch,
 không REA/fullfunction. REAIDA timeout450s/export0records, close+ownedheadlessprocesscleanup có receipt,
 copyhash giữ nguyên; không cấu hình/install mới hoặc tác động runtimeWine. Run3 cũng154raw/fatal/cleanup.
+
+<a id="cp225"></a>
+## CP225 — fresh process positive/negative và prior selector
+
+[Contract/limits](../../PROTOCOL.md#auth-fresh-process), [metadata](fresh-process.json),
+[unknown](../../RESEARCH.md#rust-service-gaps), [thứ tự](../../PLAN.md#current-order).
+CP224merge [PR295](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/295)/`928f2fb`.
+
+| Root dưới local/research/codex/ | Wall/raw/exit | run.json SHA256 |
+|---|---|---|
+| `auth-retry-discriminator-r1/getter-path` | 67.75752156s/154/1 | `1b985c8e0526a64201f3a7e5ef8b66d51acf93e287ada9c8fdd282766e1763a7` |
+| `auth-fresh-process-r1/fresh-B` | 71.399918226s/181/0 | `fcaec9abd9ae7d23d496419c04423d69667b72f6a28c9070e46fe38b0b98c727` |
+| `auth-fresh-process-negative-r1/bad-fresh-B` | 107.895601349s/260/0 | `b2244afe0cf2f11c18a94235094b778ceb0524470f3ce893dd8e31ee281ff782` |
+
+Ba root giữ source-first/preflight/recipe/seal/cycles, source/configfrozenuntilcleanup. Getter-run vẫnfatal,
+đo prior11→store trướcsetterrequest1, khôngpretendfix. `historical-fatal-scan.json` chỉliteralmarkers/sáu
+CP223post17logs, khôngevidenceabsence-health. Existinggetterbody2×48bytes/knowncallerprefix256+192read-only
+samecopy/model, không fullfunction/SDK/VMgraph; source/provenance riêng trongauth-retry-discriminator-r1.
+
+Freshpositive controllercleanupoldB+3s/chưaautoattempt, launchesBfresh/newPID/sameargs; servicepolicy/profile
+không đổi. 12TCP/oldlease-sessionreleased/newlease-session/ID2-name-echo6/67/AownerPIDretained/8s+nativehold,
+PCAP/2wineserver/2netns/noexternalroute. `verification.json` và `visual-review.json` tách native/wire/UI.
+Freshnegative chỉ đổi tokenfresh32wrong, initialABvalid; native1/nochannel/noBlease-session/Aowner45s+,
+11TCP. 595raw/hash/sourcefreeze/cleanup verified; harnessreturn không là oracle độc lập.
+Không sameprocessresume/accountDB/expiry/revoke/restartfence/production/Rust/gateclaim. AUD065through224/kế228.

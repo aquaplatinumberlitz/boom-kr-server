@@ -1,0 +1,4835 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "AUTH225-00001",
+      "kind": "local",
+      "path": "local/research/codex/append_cp225.py",
+      "bytes": 12923,
+      "sha256": "346302122d39cf56306f895c0e2458c0e86e2be5fb112cbd0020b31ffcac4113"
+    },
+    {
+      "id": "AUTH225-00002",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/batch-verification.json",
+      "bytes": 31092,
+      "sha256": "704858323e43ade7661a28dd530883c875bdf1cdf668d02a75d0384a4399ec1d"
+    },
+    {
+      "id": "AUTH225-00003",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/cp225-snapshot/README.md",
+      "bytes": 33321,
+      "sha256": "9af1a8070b7ec6891035395994bf427b3bfd5392e118793443c3755c0eb80120"
+    },
+    {
+      "id": "AUTH225-00004",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/cp225-snapshot/docs/COVERAGE.md",
+      "bytes": 185858,
+      "sha256": "47c4455d6b940cc95422f29ce0eb49b0b42d1edc6796f955563ebfdaa9525eeb"
+    },
+    {
+      "id": "AUTH225-00005",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/cp225-snapshot/docs/PLAN.md",
+      "bytes": 87032,
+      "sha256": "3048e8df6977111d716dd887e365a45ca78db6fd931bc443c024f141070f2d2c"
+    },
+    {
+      "id": "AUTH225-00006",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/cp225-snapshot/docs/PROTOCOL.md",
+      "bytes": 696770,
+      "sha256": "ebf638f3eaf45326a86d4932334fd8ef2bea82a28542f1d2585b593211fa8a55"
+    },
+    {
+      "id": "AUTH225-00007",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/cp225-snapshot/docs/RESEARCH.md",
+      "bytes": 43785,
+      "sha256": "de8260b93e45bc3a90f56789576ee573bd4e88f93323908dd608b6de9eda7791"
+    },
+    {
+      "id": "AUTH225-00008",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/cp225-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 264256,
+      "sha256": "a4b128819a45af38b7b0df1a7f7ad973555c98bb21e57a93c46966c1ab9106cd"
+    },
+    {
+      "id": "AUTH225-00009",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/cp225-snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 35551,
+      "sha256": "dfd39b7e985c98f376513003ec2bc048c3cb4323a6e70f4a0e48575d5d8b068b"
+    },
+    {
+      "id": "AUTH225-00010",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/cp225-snapshot/docs/evidence/login-runtime/README.md",
+      "bytes": 33456,
+      "sha256": "6083a2af99a66af6f2eedab090ead371797edfb2743ad7e6dd2b98d8b87e4232"
+    },
+    {
+      "id": "AUTH225-00011",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/cp225-snapshot/docs/evidence/login-runtime/fresh-process.json",
+      "bytes": 35459,
+      "sha256": "dd0376eca8d6e91658e78384239a856f55ca5215b39263e901cd202acc3cf5e2"
+    },
+    {
+      "id": "AUTH225-00012",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/cp225-snapshot/docs/features.json",
+      "bytes": 195358,
+      "sha256": "5c4266fdfcd063919067bca86f2c495a40e8efc6e1f54ca6ad81846c86846f23"
+    },
+    {
+      "id": "AUTH225-00013",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/manual-review.json",
+      "bytes": 2727,
+      "sha256": "e7a8f71a6e22f160dde72115bc8b492c4d98125f91279246a9494d8369fe0f56"
+    },
+    {
+      "id": "AUTH225-00014",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/CALog-before.txt",
+      "bytes": 1730,
+      "sha256": "b38fcc9afd97845dd764ac10028f7dd9dcaf6e299b2b9b4b6147e54e1a5b2cf8"
+    },
+    {
+      "id": "AUTH225-00015",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/CALog-run.txt",
+      "bytes": 2290,
+      "sha256": "4b2460897c0d4345356b85b1bd49be269d666d95626c7ff14684cf0158efd94e"
+    },
+    {
+      "id": "AUTH225-00016",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "a9ab349baaa95934ffe2727727cf2144e2bf444b6ee6fdaddf6eb2952b133b85"
+    },
+    {
+      "id": "AUTH225-00017",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/client.log",
+      "bytes": 120120,
+      "sha256": "316138288a7c3d3e9ef7f4591c98fa2f634ed70596465fc0f008181a0ab8d25c"
+    },
+    {
+      "id": "AUTH225-00018",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/debug-commands.txt",
+      "bytes": 1277,
+      "sha256": "9e7cd01ae2b9e1b8fd4000492d272fb528057eaa8a13116fb73d0f80c2c69bb6"
+    },
+    {
+      "id": "AUTH225-00019",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00020",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00021",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-10.png",
+      "bytes": 144000,
+      "sha256": "bf310f8e386209d1a6267abdd69eb2fc8e52ef6e2fb37081973d4e992b2b79c2"
+    },
+    {
+      "id": "AUTH225-00022",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-11.png",
+      "bytes": 144522,
+      "sha256": "4d4fe5e206bc9a883553616d2a75603e62b95946804538ff4a832b2499a553f2"
+    },
+    {
+      "id": "AUTH225-00023",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-12.png",
+      "bytes": 145111,
+      "sha256": "edae5178724a8c2f2ff2a30df3f332d6dfedbd3a61b8b0494c6652554ab093b3"
+    },
+    {
+      "id": "AUTH225-00024",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-13.png",
+      "bytes": 144901,
+      "sha256": "00fbe5051747fb4f5942e768b385b053da22ee140db0341802af0fa6f85c0bab"
+    },
+    {
+      "id": "AUTH225-00025",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-14.png",
+      "bytes": 144438,
+      "sha256": "3ec312fc8c2f0da4f5ea0e4d5a4acbdf406dc50da7ab1b64d557440491a1b80b"
+    },
+    {
+      "id": "AUTH225-00026",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-15.png",
+      "bytes": 144347,
+      "sha256": "092f4ac74a0cefb8dc4976d179f5fcd6dc6949a7cbe236e834f1cffa4a599ec8"
+    },
+    {
+      "id": "AUTH225-00027",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-16.png",
+      "bytes": 143444,
+      "sha256": "d7585eaa3a38890c87ebde6483098dffbd3d5d572e1e4cedd0c7f591022d93f9"
+    },
+    {
+      "id": "AUTH225-00028",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-17.png",
+      "bytes": 142780,
+      "sha256": "ecd93196f9f0bda6d30824576aa0060510c55eb5d15f1e713bf151f566ce162b"
+    },
+    {
+      "id": "AUTH225-00029",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-18.png",
+      "bytes": 141880,
+      "sha256": "46f6ea41b74e562ce796ac988e67434cbf946e287845f65d27568440d31aa41d"
+    },
+    {
+      "id": "AUTH225-00030",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-19.png",
+      "bytes": 141872,
+      "sha256": "dbe41c45557a64766e794875ba871481cc1f172db66e831129234a05ef62cf79"
+    },
+    {
+      "id": "AUTH225-00031",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-2.png",
+      "bytes": 16134,
+      "sha256": "19817a610068b6aad75a10bf5b05b6a962bde3cbb153b0dfcd5723f5c393c380"
+    },
+    {
+      "id": "AUTH225-00032",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-20.png",
+      "bytes": 142348,
+      "sha256": "79b88ff415ad790530a3c98249b739ca2e7b88ef0d2686da2ab1005aa1843d90"
+    },
+    {
+      "id": "AUTH225-00033",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-21.png",
+      "bytes": 143127,
+      "sha256": "3f08b323f145392f50060f7bbafb1ae203738e1b01fcbf1bdb434fa610071c01"
+    },
+    {
+      "id": "AUTH225-00034",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-22.png",
+      "bytes": 143786,
+      "sha256": "a8defeaa01003c712d71fea08166205d6422a4111c099f50663f3904ef9785db"
+    },
+    {
+      "id": "AUTH225-00035",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-23.png",
+      "bytes": 144647,
+      "sha256": "ed54012dece7960fccd92ffbb766ccda9a60b46ab1c0800b189e43922e904c59"
+    },
+    {
+      "id": "AUTH225-00036",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-24.png",
+      "bytes": 145085,
+      "sha256": "c1b554aa364fdd9cd1d721c8ae3e5c0ae2bfabf1afd180b67a93e031159b6f17"
+    },
+    {
+      "id": "AUTH225-00037",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-25.png",
+      "bytes": 144552,
+      "sha256": "c786e695e825e22f1238066fb7083698236378ed7aa1be0ae830b6ad2a610bb6"
+    },
+    {
+      "id": "AUTH225-00038",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-26.png",
+      "bytes": 143727,
+      "sha256": "8f5b499ac832603aa85151721a99b005d8b9c78e013d38c138afa2783d91f1f9"
+    },
+    {
+      "id": "AUTH225-00039",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-27.png",
+      "bytes": 143138,
+      "sha256": "3ee98f5ccaafd48628b39fce0054806ba282a39c66be73880d6026dbbfb43b2f"
+    },
+    {
+      "id": "AUTH225-00040",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-28.png",
+      "bytes": 142365,
+      "sha256": "85de25dd294b93ea7d5276cb5fbcf3b80f5f5ce4c14fcffa60337a9a54b546f4"
+    },
+    {
+      "id": "AUTH225-00041",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-29.png",
+      "bytes": 141868,
+      "sha256": "3cba03166a6b9f04a74a30be0ef846bf4006b5a184f52307aef44206e758431e"
+    },
+    {
+      "id": "AUTH225-00042",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-3.png",
+      "bytes": 12661,
+      "sha256": "675bc926ab19fc23815062b6da9117481e25ad5a3d13fc15b6788839b2301794"
+    },
+    {
+      "id": "AUTH225-00043",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-30.png",
+      "bytes": 141872,
+      "sha256": "dbe41c45557a64766e794875ba871481cc1f172db66e831129234a05ef62cf79"
+    },
+    {
+      "id": "AUTH225-00044",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-31.png",
+      "bytes": 142009,
+      "sha256": "36bf02d7a114616477ad0bf37d56782afc6d24f0e81c905e4e91ba192734b263"
+    },
+    {
+      "id": "AUTH225-00045",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-32.png",
+      "bytes": 142808,
+      "sha256": "b90feab166e83d22c537e729f61e22e37d262431d44f2605c01d1d4e2a418080"
+    },
+    {
+      "id": "AUTH225-00046",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-33.png",
+      "bytes": 143249,
+      "sha256": "2ae47aafa90a0149d6be893a863494f7a9748acdb90da40a985defbc6adb0abc"
+    },
+    {
+      "id": "AUTH225-00047",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-34.png",
+      "bytes": 144039,
+      "sha256": "49a44645e9f9883c003ba3f9003b0de37b0a0de4ed6e16f442b10f06d8e2fcff"
+    },
+    {
+      "id": "AUTH225-00048",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-35.png",
+      "bytes": 144600,
+      "sha256": "989f9ad627ba0e4d17c05436fd3ef7b457331a8b9b73d957829ea7237514a4ed"
+    },
+    {
+      "id": "AUTH225-00049",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-36.png",
+      "bytes": 145047,
+      "sha256": "4616513029fab963453dc8cbee1159f149763e0a12aa13d0f4e476ac3e9a5cf6"
+    },
+    {
+      "id": "AUTH225-00050",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-37.png",
+      "bytes": 144551,
+      "sha256": "ba1787201df93c8fb4b7f8a6a4d13809c8c889058192a556de936841f34190e3"
+    },
+    {
+      "id": "AUTH225-00051",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-38.png",
+      "bytes": 144141,
+      "sha256": "779ec6e55da3c2a17047126db3522b07c124f43ece48a1e309580a0586d886f8"
+    },
+    {
+      "id": "AUTH225-00052",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-39.png",
+      "bytes": 143408,
+      "sha256": "a38fdb3fd0cb638aa4cf00aa9b0ff1bda5d9cec7950ab62bf52586eebe7a0739"
+    },
+    {
+      "id": "AUTH225-00053",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-4.png",
+      "bytes": 144302,
+      "sha256": "2f048abe0f39d7ceeb71d1014ead336909c84cbeed5810cb06ad0d0169d2e9cb"
+    },
+    {
+      "id": "AUTH225-00054",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-40.png",
+      "bytes": 142677,
+      "sha256": "9a55ac5586e2166d6b9a3bd46bc07a68fd8affdca2af770e7257601cdc09ebf3"
+    },
+    {
+      "id": "AUTH225-00055",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-41.png",
+      "bytes": 141891,
+      "sha256": "fbe69d375a7ca57daf68968987d539bbd013e232c94b231ea6f46a235f7858dc"
+    },
+    {
+      "id": "AUTH225-00056",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-42.png",
+      "bytes": 141934,
+      "sha256": "8033d887f59999c7fb1dcfbb08114dde39c8c4d959494f9bced6eb0ed0a343dd"
+    },
+    {
+      "id": "AUTH225-00057",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-43.png",
+      "bytes": 142767,
+      "sha256": "1a84926e4394f07ff47c29296a202d8e32defb71bbce189c0d811137a7711660"
+    },
+    {
+      "id": "AUTH225-00058",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-44.png",
+      "bytes": 143264,
+      "sha256": "7828e5d60cd9b5c60442e0dc8d63261aa63c4487db7313b2d93d3cfe56c7e4d1"
+    },
+    {
+      "id": "AUTH225-00059",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-45.png",
+      "bytes": 143996,
+      "sha256": "cba59ca7db58f50f8f80294abaec5b4eddae11f8fff963f4dee464cf5ddebdef"
+    },
+    {
+      "id": "AUTH225-00060",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-5.png",
+      "bytes": 188486,
+      "sha256": "b7dc0455f9bd68913e45baa128fcc003f95b88d153d5e8e8c966bedcd9ce1216"
+    },
+    {
+      "id": "AUTH225-00061",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-6.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "AUTH225-00062",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-7.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00063",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-8.png",
+      "bytes": 148459,
+      "sha256": "85b0d4b39f9e139333b724d3604b3d2db8e43955ee9ba995242f3d6d2845d1c2"
+    },
+    {
+      "id": "AUTH225-00064",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/screen-9.png",
+      "bytes": 149200,
+      "sha256": "77bbc5d6c50f3cca6f467694c6ba6775e4d59dfd08a4977c613c08b212ab59eb"
+    },
+    {
+      "id": "AUTH225-00065",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH225-00066",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-1.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH225-00067",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00068",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00069",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00070",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00071",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00072",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00073",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00074",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00075",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00076",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00077",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-2.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00078",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00079",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00080",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00081",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00082",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00083",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00084",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-26.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00085",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-27.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00086",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-28.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00087",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-29.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00088",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00089",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-30.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00090",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-31.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00091",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-32.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00092",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-33.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00093",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-34.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00094",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-35.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00095",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-36.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00096",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-37.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00097",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-38.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00098",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-39.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00099",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00100",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-40.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00101",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-41.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00102",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-42.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00103",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-43.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00104",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-44.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00105",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-45.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00106",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00107",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00108",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00109",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00110",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00111",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B-title-initial91-8.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH225-00112",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/CALog-before.txt",
+      "bytes": 1131,
+      "sha256": "68a3b61a1a47946ef8a5f6e398dc788d8ecb05b48c677c48f46919d9e84fa801"
+    },
+    {
+      "id": "AUTH225-00113",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/CALog-run.txt",
+      "bytes": 1184,
+      "sha256": "b4ecf7b27da380c659c98f8d3e03648e2bbb4af00802a3855e54c37b43164055"
+    },
+    {
+      "id": "AUTH225-00114",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "caf9c683a6ab86a0d5c84d2f91f524aaa1e3c8b762e71e47402cb6ffe32c3c57"
+    },
+    {
+      "id": "AUTH225-00115",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/client.log",
+      "bytes": 128490,
+      "sha256": "dbb332b835e3f470c6510e3a79d0dd067de3cc437aba868fd01f4bb75db11679"
+    },
+    {
+      "id": "AUTH225-00116",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/debug-commands.txt",
+      "bytes": 1277,
+      "sha256": "9e7cd01ae2b9e1b8fd4000492d272fb528057eaa8a13116fb73d0f80c2c69bb6"
+    },
+    {
+      "id": "AUTH225-00117",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00118",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00119",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-10.png",
+      "bytes": 157797,
+      "sha256": "7497e28134d24895d982fb5c9e5c9273ce0634d81013c1fc0235e80b873a294a"
+    },
+    {
+      "id": "AUTH225-00120",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-11.png",
+      "bytes": 158537,
+      "sha256": "9e13d2a0d435cbd669517cbfca75ac8ca78e9461db4e63b4108b5981d0573d19"
+    },
+    {
+      "id": "AUTH225-00121",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-12.png",
+      "bytes": 145707,
+      "sha256": "93890c242d8e9ab8dc693c33257ab54ff2686e196f5072052477e6a88ebf6ac2"
+    },
+    {
+      "id": "AUTH225-00122",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-13.png",
+      "bytes": 145952,
+      "sha256": "22da8b5f0862d83fd410f1a6ee0456a10a16aea47d1d9932cd0aaeed4cf4bbcc"
+    },
+    {
+      "id": "AUTH225-00123",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-14.png",
+      "bytes": 145810,
+      "sha256": "e04baea523339804a84cf18649cefb9ad3d9876067208e9d9df6cb9d410d27bd"
+    },
+    {
+      "id": "AUTH225-00124",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00125",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00126",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-4.png",
+      "bytes": 1670,
+      "sha256": "2938793d36112554332f0c109ace2f58404e02633a2b304393ee766c0772d871"
+    },
+    {
+      "id": "AUTH225-00127",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-5.png",
+      "bytes": 12634,
+      "sha256": "2473137a1944290442f82e638d0a8a122e7081648e570e1f3bfffa81f20dff89"
+    },
+    {
+      "id": "AUTH225-00128",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-6.png",
+      "bytes": 150750,
+      "sha256": "67e731803b84de460b8263cf5cb36d98953cb7d2c555bd079b00862af6084c11"
+    },
+    {
+      "id": "AUTH225-00129",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-7.png",
+      "bytes": 188486,
+      "sha256": "b7dc0455f9bd68913e45baa128fcc003f95b88d153d5e8e8c966bedcd9ce1216"
+    },
+    {
+      "id": "AUTH225-00130",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-8.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "AUTH225-00131",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00132",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH225-00133",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH225-00134",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00135",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00136",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00137",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00138",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00139",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH225-00140",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH225-00141",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00142",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00143",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00144",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00145",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00146",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00147",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/CALog-before.txt",
+      "bytes": 1184,
+      "sha256": "b4ecf7b27da380c659c98f8d3e03648e2bbb4af00802a3855e54c37b43164055"
+    },
+    {
+      "id": "AUTH225-00148",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/CALog-run.txt",
+      "bytes": 671,
+      "sha256": "339e629a7ad3872be14b39d0dfeaa70d5a385e4504b79b6fe8f175888af40e25"
+    },
+    {
+      "id": "AUTH225-00149",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/client.log",
+      "bytes": 121679,
+      "sha256": "c2d38c42b2145f6655d445f801e2331be9b8bba2b7eed580f5ef3b02cc27409d"
+    },
+    {
+      "id": "AUTH225-00150",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/debug-commands.txt",
+      "bytes": 1277,
+      "sha256": "9e7cd01ae2b9e1b8fd4000492d272fb528057eaa8a13116fb73d0f80c2c69bb6"
+    },
+    {
+      "id": "AUTH225-00151",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00152",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00153",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-10.png",
+      "bytes": 404719,
+      "sha256": "9761bca4741bb4338a2b1fe3062f436b20f4f1deb77d1dbdc74642a99c3ed659"
+    },
+    {
+      "id": "AUTH225-00154",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-11.png",
+      "bytes": 404689,
+      "sha256": "c7e1feea793f508bd33e9d4b1dde5c4dc29a9d1b14af723217f7ac9b450e9888"
+    },
+    {
+      "id": "AUTH225-00155",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-12.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "AUTH225-00156",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-13.png",
+      "bytes": 404719,
+      "sha256": "9761bca4741bb4338a2b1fe3062f436b20f4f1deb77d1dbdc74642a99c3ed659"
+    },
+    {
+      "id": "AUTH225-00157",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-14.png",
+      "bytes": 404689,
+      "sha256": "c7e1feea793f508bd33e9d4b1dde5c4dc29a9d1b14af723217f7ac9b450e9888"
+    },
+    {
+      "id": "AUTH225-00158",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-15.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "AUTH225-00159",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-16.png",
+      "bytes": 404711,
+      "sha256": "3544f0e2616a4c3d7d7964c8f43b6615581cf230d081b147522b85b632233e7f"
+    },
+    {
+      "id": "AUTH225-00160",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-17.png",
+      "bytes": 404719,
+      "sha256": "9761bca4741bb4338a2b1fe3062f436b20f4f1deb77d1dbdc74642a99c3ed659"
+    },
+    {
+      "id": "AUTH225-00161",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-18.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "AUTH225-00162",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-19.png",
+      "bytes": 404711,
+      "sha256": "3544f0e2616a4c3d7d7964c8f43b6615581cf230d081b147522b85b632233e7f"
+    },
+    {
+      "id": "AUTH225-00163",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00164",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-20.png",
+      "bytes": 404719,
+      "sha256": "9761bca4741bb4338a2b1fe3062f436b20f4f1deb77d1dbdc74642a99c3ed659"
+    },
+    {
+      "id": "AUTH225-00165",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-21.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "AUTH225-00166",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-22.png",
+      "bytes": 404711,
+      "sha256": "3544f0e2616a4c3d7d7964c8f43b6615581cf230d081b147522b85b632233e7f"
+    },
+    {
+      "id": "AUTH225-00167",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-23.png",
+      "bytes": 404719,
+      "sha256": "9761bca4741bb4338a2b1fe3062f436b20f4f1deb77d1dbdc74642a99c3ed659"
+    },
+    {
+      "id": "AUTH225-00168",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-24.png",
+      "bytes": 404689,
+      "sha256": "c7e1feea793f508bd33e9d4b1dde5c4dc29a9d1b14af723217f7ac9b450e9888"
+    },
+    {
+      "id": "AUTH225-00169",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-25.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "AUTH225-00170",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-26.png",
+      "bytes": 404719,
+      "sha256": "9761bca4741bb4338a2b1fe3062f436b20f4f1deb77d1dbdc74642a99c3ed659"
+    },
+    {
+      "id": "AUTH225-00171",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-27.png",
+      "bytes": 404689,
+      "sha256": "c7e1feea793f508bd33e9d4b1dde5c4dc29a9d1b14af723217f7ac9b450e9888"
+    },
+    {
+      "id": "AUTH225-00172",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-28.png",
+      "bytes": 404693,
+      "sha256": "fafcc7527924e7db84d28b018f6cd764815d703b2705cb2495716cc5db0b95c0"
+    },
+    {
+      "id": "AUTH225-00173",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-29.png",
+      "bytes": 404711,
+      "sha256": "3544f0e2616a4c3d7d7964c8f43b6615581cf230d081b147522b85b632233e7f"
+    },
+    {
+      "id": "AUTH225-00174",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00175",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-30.png",
+      "bytes": 404719,
+      "sha256": "9761bca4741bb4338a2b1fe3062f436b20f4f1deb77d1dbdc74642a99c3ed659"
+    },
+    {
+      "id": "AUTH225-00176",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-4.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00177",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-5.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "AUTH225-00178",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-6.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "AUTH225-00179",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-7.png",
+      "bytes": 176090,
+      "sha256": "8858df96c8cc06c59be449ec4fd8f565f807e465cc46a39ecbaab3f30c118378"
+    },
+    {
+      "id": "AUTH225-00180",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-8.png",
+      "bytes": 183279,
+      "sha256": "84cbc0d4cdc0ffbfc3ebfcd5adbb86da599bead152edd6a618e29285146b2fdf"
+    },
+    {
+      "id": "AUTH225-00181",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/screen-9.png",
+      "bytes": 172993,
+      "sha256": "a16161792acf2d5464e14c01c4e122ad03dbb280780e566971217af4e45acdbd"
+    },
+    {
+      "id": "AUTH225-00182",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH225-00183",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-1.txt",
+      "bytes": 874,
+      "sha256": "73c01f7476cf06d4d37928190dc483a000361569ade3179736e23c45622eee58"
+    },
+    {
+      "id": "AUTH225-00184",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-10.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00185",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-11.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00186",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-12.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00187",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-13.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00188",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-14.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00189",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-15.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00190",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-16.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00191",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-17.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00192",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-18.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00193",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-19.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00194",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-2.txt",
+      "bytes": 874,
+      "sha256": "73c01f7476cf06d4d37928190dc483a000361569ade3179736e23c45622eee58"
+    },
+    {
+      "id": "AUTH225-00195",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-20.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00196",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-21.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00197",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-22.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00198",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-23.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00199",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-24.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00200",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-25.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00201",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-26.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00202",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-27.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00203",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-28.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00204",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-29.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00205",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-3.txt",
+      "bytes": 874,
+      "sha256": "73c01f7476cf06d4d37928190dc483a000361569ade3179736e23c45622eee58"
+    },
+    {
+      "id": "AUTH225-00206",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-30.txt",
+      "bytes": 1360,
+      "sha256": "b707b43560d16e1f0494f2d34f6931a930eec5e9d7cffde408d57a4762773b61"
+    },
+    {
+      "id": "AUTH225-00207",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-4.txt",
+      "bytes": 1307,
+      "sha256": "e4189145ef3f76874cef447ff01c1a5d7015dc414a8335a254d5ec6d0aef0b6b"
+    },
+    {
+      "id": "AUTH225-00208",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-5.txt",
+      "bytes": 1313,
+      "sha256": "5c139c7b61c096cdb40ff9e56051f13b8d24dab95db2298a729c9f22a5a42310"
+    },
+    {
+      "id": "AUTH225-00209",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-6.txt",
+      "bytes": 1313,
+      "sha256": "5c139c7b61c096cdb40ff9e56051f13b8d24dab95db2298a729c9f22a5a42310"
+    },
+    {
+      "id": "AUTH225-00210",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-7.txt",
+      "bytes": 1313,
+      "sha256": "5c139c7b61c096cdb40ff9e56051f13b8d24dab95db2298a729c9f22a5a42310"
+    },
+    {
+      "id": "AUTH225-00211",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-8.txt",
+      "bytes": 1313,
+      "sha256": "5c139c7b61c096cdb40ff9e56051f13b8d24dab95db2298a729c9f22a5a42310"
+    },
+    {
+      "id": "AUTH225-00212",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/Bfresh/windows-9.txt",
+      "bytes": 1313,
+      "sha256": "5c139c7b61c096cdb40ff9e56051f13b8d24dab95db2298a729c9f22a5a42310"
+    },
+    {
+      "id": "AUTH225-00213",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/fresh-B-denied-service-state.json",
+      "bytes": 45405,
+      "sha256": "1636115c46bd7373bbf90a58a01d55998db833c91451c0bd05134c43bf01d5a1"
+    },
+    {
+      "id": "AUTH225-00214",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/fresh-B-start-service-state.json",
+      "bytes": 36231,
+      "sha256": "b4f59bc4ab8e8a5138a9add254f6538c1133cdae80374461280e15f0f2cb63cf"
+    },
+    {
+      "id": "AUTH225-00215",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "AUTH225-00216",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH225-00217",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/post-close-service-state.json",
+      "bytes": 35849,
+      "sha256": "5317b98ceec98c754d0532039e6a96cd9d20ac290fa01edca80ac321db4af5ce"
+    },
+    {
+      "id": "AUTH225-00218",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-0.txt",
+      "bytes": 7011,
+      "sha256": "daaaf57d48445c8d1ee6e637492ecd37e2fcf693679ad25b263377c6b820b2d6"
+    },
+    {
+      "id": "AUTH225-00219",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-1.txt",
+      "bytes": 7164,
+      "sha256": "336853d5676e407739b77063d0f2c294598fcde3e71bdcb3a31906e51c5b4ba7"
+    },
+    {
+      "id": "AUTH225-00220",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-10.txt",
+      "bytes": 7164,
+      "sha256": "3b7e6ae88a8d6ab9bdbf15faf3c69b13762b8410d0eb2bcd52218d58cbcd3359"
+    },
+    {
+      "id": "AUTH225-00221",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-11.txt",
+      "bytes": 7164,
+      "sha256": "d076bf4a1a4618f6b7188a5cc252b106a533e9249e513b5ca96226f90f55bdfd"
+    },
+    {
+      "id": "AUTH225-00222",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-12.txt",
+      "bytes": 7164,
+      "sha256": "f6eeeb811a6b3f138ca6bb4eae34d4cb856fcb383ecdcbf4204d7df646368ce1"
+    },
+    {
+      "id": "AUTH225-00223",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-13.txt",
+      "bytes": 7164,
+      "sha256": "7c55cb55c0e8b52785a05c8570313f751aff9ff846dd693b0287c03d9fe2a479"
+    },
+    {
+      "id": "AUTH225-00224",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-14.txt",
+      "bytes": 7164,
+      "sha256": "110eb5fcaccb45bd682d35b6cecd03fa91ef354496c449b8757a2da32141148f"
+    },
+    {
+      "id": "AUTH225-00225",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-15.txt",
+      "bytes": 7285,
+      "sha256": "cc6fdac6adf1ed690019d84287b24030762b4ff8ab3eb31422a54bfb6678a2fc"
+    },
+    {
+      "id": "AUTH225-00226",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-16.txt",
+      "bytes": 8066,
+      "sha256": "bb56eab05f8989272ede0edd6ced4d0728ffafcd95bb667d8397b792233aeb1c"
+    },
+    {
+      "id": "AUTH225-00227",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-17.txt",
+      "bytes": 8066,
+      "sha256": "beb9df8d5a17fdf3c0a5e74f01f6e34b84c78dc8f87c7447a642d770e3ae5f16"
+    },
+    {
+      "id": "AUTH225-00228",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-18.txt",
+      "bytes": 8066,
+      "sha256": "398948d665a97cfb16e6aae46a305133e37c36098ed034e5bcc12c95fdbba14f"
+    },
+    {
+      "id": "AUTH225-00229",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-19.txt",
+      "bytes": 8066,
+      "sha256": "98f811f0b37f2f497967693520f4a2620aa513392d3a44b5e0ffe37f86f50ad6"
+    },
+    {
+      "id": "AUTH225-00230",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-2.txt",
+      "bytes": 7164,
+      "sha256": "ddf15f54f8dea61a341c18d9e5e1eca8f7beee31b147839422a3b8c4d3e36637"
+    },
+    {
+      "id": "AUTH225-00231",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-20.txt",
+      "bytes": 8066,
+      "sha256": "5949457763990390a24616f0fad709fc77c42b9a9f93f2082254fb044be170c9"
+    },
+    {
+      "id": "AUTH225-00232",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-21.txt",
+      "bytes": 8066,
+      "sha256": "829677b0d51f4ed6883d35efbfc5c318e87f4ce43e8e046cedfb30aabf289739"
+    },
+    {
+      "id": "AUTH225-00233",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-22.txt",
+      "bytes": 8066,
+      "sha256": "4f5bf5ff95a264ec796236d7086afa364ad9f84c700aca2d47d7027276138965"
+    },
+    {
+      "id": "AUTH225-00234",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-23.txt",
+      "bytes": 8066,
+      "sha256": "61d75bd3b888e0cc92d617ea7fb0dfa2912f9da35141045d1c4e4b765feb90b8"
+    },
+    {
+      "id": "AUTH225-00235",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-24.txt",
+      "bytes": 8066,
+      "sha256": "55c34f03b167dce0750717dd7e1d958d89108894c2cae3587a1b27862ce16923"
+    },
+    {
+      "id": "AUTH225-00236",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-25.txt",
+      "bytes": 8066,
+      "sha256": "3069e6816392d346fc07ccd603537b0c1fca8e8b0f2dde727b8121319ea6676c"
+    },
+    {
+      "id": "AUTH225-00237",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-26.txt",
+      "bytes": 8066,
+      "sha256": "2ae251b948d5b05db80204eb0b970aa803cd9c6df97b0b5b24865cf9e69c6ecd"
+    },
+    {
+      "id": "AUTH225-00238",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-27.txt",
+      "bytes": 8066,
+      "sha256": "a931b45d119fe05121c7a4e7d2917accde1fd85ad0604d989ee4a4b15106f59b"
+    },
+    {
+      "id": "AUTH225-00239",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-28.txt",
+      "bytes": 8066,
+      "sha256": "0d2d8a868a392bfcb783a49e82deafc7c33dfbedeb3136dc8e017f2559a43488"
+    },
+    {
+      "id": "AUTH225-00240",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-29.txt",
+      "bytes": 8066,
+      "sha256": "dbf2e7e6af51fcd064d94b93bb196865162181c125bc5b83624ae0c18dee6cee"
+    },
+    {
+      "id": "AUTH225-00241",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-3.txt",
+      "bytes": 7164,
+      "sha256": "0ddc13e89f0f3d883e495fa1781ca4a5060632ae5d962c25ab1b94f3d408510b"
+    },
+    {
+      "id": "AUTH225-00242",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-30.txt",
+      "bytes": 8066,
+      "sha256": "22c506372c4b0f6e30dccb0b9d6534294a4eed8312a784372c442685322640ef"
+    },
+    {
+      "id": "AUTH225-00243",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-31.txt",
+      "bytes": 8066,
+      "sha256": "87e24feea4070a925325fc6d9e184f756d994c32fd6b13499f02c47ee98e7506"
+    },
+    {
+      "id": "AUTH225-00244",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-32.txt",
+      "bytes": 8066,
+      "sha256": "d326ff9db66a86ea6491b3e31258880738ed5d1f0522ec9bc790067dbabb9d12"
+    },
+    {
+      "id": "AUTH225-00245",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-33.txt",
+      "bytes": 8066,
+      "sha256": "ba0d9c66c021899f84c2b2bc2672c3861ff03838f08fc69810cf744194bbf993"
+    },
+    {
+      "id": "AUTH225-00246",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-34.txt",
+      "bytes": 8066,
+      "sha256": "521dee380ca36e306af20c8dc093620daade84ae3d1ed7d546ec3ef7d35033b4"
+    },
+    {
+      "id": "AUTH225-00247",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-35.txt",
+      "bytes": 8066,
+      "sha256": "9cd85f8a58bffb4bf4f69b269d6cde47f518c1dff6c3cbceecaa868451e11b11"
+    },
+    {
+      "id": "AUTH225-00248",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-36.txt",
+      "bytes": 8066,
+      "sha256": "59bae038804257ef2545d180e404e97c123fdc07653988aa78d13158380b6439"
+    },
+    {
+      "id": "AUTH225-00249",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-37.txt",
+      "bytes": 8066,
+      "sha256": "07506a6fe9999729fddeec798c962dc0e8c7d236ef572a5ca018a943938883bb"
+    },
+    {
+      "id": "AUTH225-00250",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-38.txt",
+      "bytes": 8066,
+      "sha256": "b9b4875f4f6e2645a6be3310a61bb92adf30c0cef1b52bbd4f39453c3d63790b"
+    },
+    {
+      "id": "AUTH225-00251",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-39.txt",
+      "bytes": 8066,
+      "sha256": "ec990ca7d2ceb76b1326537b0278095bba076879bd3810102dcc3b624bf2fef1"
+    },
+    {
+      "id": "AUTH225-00252",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-4.txt",
+      "bytes": 7164,
+      "sha256": "2a202fc1f8bab28f46e8d83f89ede082ff73bec36f6ad5d2885641166165a85c"
+    },
+    {
+      "id": "AUTH225-00253",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-40.txt",
+      "bytes": 8066,
+      "sha256": "c52e411a44631205b419107649de81ba78f07acd01246bed6db90b4bf232beba"
+    },
+    {
+      "id": "AUTH225-00254",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-41.txt",
+      "bytes": 8066,
+      "sha256": "91bb6cefe6ae1ec535a0d478e666f1c334e318273d2b2d144327a148da4a708d"
+    },
+    {
+      "id": "AUTH225-00255",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-42.txt",
+      "bytes": 8066,
+      "sha256": "667925ccecc3e7625eb58e649078f6ea030af3e04fcc8017f9153fa1dbaf0fdd"
+    },
+    {
+      "id": "AUTH225-00256",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-43.txt",
+      "bytes": 8066,
+      "sha256": "7dab72fbeff080d9f67be5ab0640aacf03b257acc2f48aca4385553555e746c8"
+    },
+    {
+      "id": "AUTH225-00257",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-44.txt",
+      "bytes": 8066,
+      "sha256": "dd6d8ae8d198805ec5b28beebcd85601512e7fd04ed48eeede6f8013484e6066"
+    },
+    {
+      "id": "AUTH225-00258",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-45.txt",
+      "bytes": 8066,
+      "sha256": "6eaec2fdfdc97bc2eeb86b77f1b1d23dd4a36c6ab48f8cbcd69fdc98bf248022"
+    },
+    {
+      "id": "AUTH225-00259",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-5.txt",
+      "bytes": 7164,
+      "sha256": "8519b5142a75b269b4a8b02e57b674e30bb7c29c958e9f3f2a1ff643cf3612c1"
+    },
+    {
+      "id": "AUTH225-00260",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-6.txt",
+      "bytes": 7164,
+      "sha256": "d8061a5944bb55bead7c5ad4c5afa8104548bec20f3b39b491496fc5de28d7e8"
+    },
+    {
+      "id": "AUTH225-00261",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-7.txt",
+      "bytes": 7164,
+      "sha256": "9125f1292e5f0425848c17571cc6a6859e9a3ba0fc49e393f043098f83cbd9f5"
+    },
+    {
+      "id": "AUTH225-00262",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-8.txt",
+      "bytes": 7164,
+      "sha256": "7a2577a5c57206be831d548dc36f8cd675f9d95a64ebd62aa5002f984d23eb47"
+    },
+    {
+      "id": "AUTH225-00263",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/processes-9.txt",
+      "bytes": 7164,
+      "sha256": "bf0ea007a36f9c748ce59453e2f56e5b1d3e3b741607f97cfd867692f8dbb1b1"
+    },
+    {
+      "id": "AUTH225-00264",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/run.json",
+      "bytes": 70435,
+      "sha256": "b2244afe0cf2f11c18a94235094b778ceb0524470f3ce893dd8e31ee281ff782"
+    },
+    {
+      "id": "AUTH225-00265",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/service-state.json",
+      "bytes": 45315,
+      "sha256": "d68295ac9d55d4441b741a24d7cf3db6e0ae3c2b669046996477d79b9c235ee8"
+    },
+    {
+      "id": "AUTH225-00266",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH225-00267",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/tcp-auth-pair.pcap",
+      "bytes": 28136,
+      "sha256": "10f8fda69b8663fe444c7c04d097482720a081cf254ab873842e4afef712623d"
+    },
+    {
+      "id": "AUTH225-00268",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/tcp-capture-index.json",
+      "bytes": 77955,
+      "sha256": "486bd34316ff622405daf97534d05e048c64b7907eee9ff232e667fa726bb702"
+    },
+    {
+      "id": "AUTH225-00269",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/virtual-network.json",
+      "bytes": 24920,
+      "sha256": "b65179a7f2a64ebff7a624176bc75024b5884c3c2c7b5fe8b00067bf53926541"
+    },
+    {
+      "id": "AUTH225-00270",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "b1cf1cfbc63b95fa8ab7d6c1ed972b201010423f46cf35df9402ad2525596eb1"
+    },
+    {
+      "id": "AUTH225-00271",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "649053842e19e4ecb4b71cf2b041fbfd0c889344cbec75d7ed35aea7bbaf88f6"
+    },
+    {
+      "id": "AUTH225-00272",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH225-00273",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "AUTH225-00274",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/launch-exit.json",
+      "bytes": 73,
+      "sha256": "cfae01237a11346c209b728a20d56340077ff276846b8b4276f3f74d198b629c"
+    },
+    {
+      "id": "AUTH225-00275",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH225-00276",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/raw-seal.json",
+      "bytes": 58580,
+      "sha256": "a883239e3286ebd73ca1d6cee87c2337f7ad7a214d5d855ddfded2e2b523ed09"
+    },
+    {
+      "id": "AUTH225-00277",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/recipe.json",
+      "bytes": 1179,
+      "sha256": "7a595d107a1f9690b9b25b9f75fa3b1a070b88be683df7889d45a2af6d6e2905"
+    },
+    {
+      "id": "AUTH225-00278",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/runtime-preflight.json",
+      "bytes": 80035,
+      "sha256": "34f6da84d51aee0a2d451a9e497e8532a39f33b4a04ce157b20344bd4b097cda"
+    },
+    {
+      "id": "AUTH225-00279",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "AUTH225-00280",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/config.json",
+      "bytes": 1339,
+      "sha256": "73625fed518191b34553cbc8c9279a3a122f0c8036b3877b0d2bfd99d2f03d2b"
+    },
+    {
+      "id": "AUTH225-00281",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/fresh.gdb",
+      "bytes": 1277,
+      "sha256": "9e7cd01ae2b9e1b8fd4000492d272fb528057eaa8a13116fb73d0f80c2c69bb6"
+    },
+    {
+      "id": "AUTH225-00282",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/network_policy.py",
+      "bytes": 1071,
+      "sha256": "843a8317629dc7f50afbae8bfeddea8b7a7a606b8e5c8437ac6e6d7d79e85820"
+    },
+    {
+      "id": "AUTH225-00283",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/pair_service_retry_r2.py",
+      "bytes": 3170,
+      "sha256": "6373918b3776c0ed69e811fb8cf13b587b49aa9947d3488101dcf76c2029bfcf"
+    },
+    {
+      "id": "AUTH225-00284",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/source-first.json",
+      "bytes": 1362,
+      "sha256": "af2724789a7529923fb69b566d8f588b146c432f67561d9367fba8fa5956f9ee"
+    },
+    {
+      "id": "AUTH225-00285",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "AUTH225-00286",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/verification.json",
+      "bytes": 2327,
+      "sha256": "ca2dc6336b9f926ab58afb93674f8e00a59e31674eaade5e47f1d9c100374214"
+    },
+    {
+      "id": "AUTH225-00287",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/visual-review.json",
+      "bytes": 592,
+      "sha256": "2d7b088e96e78a2069d47488bec0a340091bf13cf4b4ff77c8ea543b4da1d25c"
+    },
+    {
+      "id": "AUTH225-00288",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "AUTH225-00289",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/config.json",
+      "bytes": 1232,
+      "sha256": "9a5c818a6e3d387fc6e4f893f61631df256b858867bf92f4810d3721d3ad815f"
+    },
+    {
+      "id": "AUTH225-00290",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/CALog-before.txt",
+      "bytes": 1650,
+      "sha256": "7336d05dc59a49f4c3cb328dbf2a8fe522402f3e1f5c173e74ad390051f16141"
+    },
+    {
+      "id": "AUTH225-00291",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/CALog-run.txt",
+      "bytes": 1730,
+      "sha256": "b38fcc9afd97845dd764ac10028f7dd9dcaf6e299b2b9b4b6147e54e1a5b2cf8"
+    },
+    {
+      "id": "AUTH225-00292",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "b06c1e827781699338c82aa91e06cc95828b24912a51a4f7913eb102af4cbff2"
+    },
+    {
+      "id": "AUTH225-00293",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/client.log",
+      "bytes": 128495,
+      "sha256": "dc0bd2561b81bd78a0005c541210a69b4d517c991600b87ecbfe7580f547def0"
+    },
+    {
+      "id": "AUTH225-00294",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/debug-commands.txt",
+      "bytes": 1277,
+      "sha256": "9e7cd01ae2b9e1b8fd4000492d272fb528057eaa8a13116fb73d0f80c2c69bb6"
+    },
+    {
+      "id": "AUTH225-00295",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00296",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00297",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-10.png",
+      "bytes": 143689,
+      "sha256": "88364f44dad30cd6c5f7d3ea70c1346b765dce86e6ecee419246f63bdb89d24e"
+    },
+    {
+      "id": "AUTH225-00298",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-11.png",
+      "bytes": 144166,
+      "sha256": "f998cc8b2f76c39f7e646dbfa275eee29addc8ed327892991e1e180df46fa472"
+    },
+    {
+      "id": "AUTH225-00299",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-12.png",
+      "bytes": 144187,
+      "sha256": "e918e8a03227ef49c259a862bd34da27f83929a049387f28cf731405fcaa7a56"
+    },
+    {
+      "id": "AUTH225-00300",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-13.png",
+      "bytes": 143812,
+      "sha256": "8eefe28052590b5437b974eda4bc4c050293156f5ed2adee42d42c3b886f7ece"
+    },
+    {
+      "id": "AUTH225-00301",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-14.png",
+      "bytes": 143274,
+      "sha256": "02d500e5824f5fa988c8c4024eb656dcdb244fb58a5c9b4b88b6fd31282ca18e"
+    },
+    {
+      "id": "AUTH225-00302",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-15.png",
+      "bytes": 143007,
+      "sha256": "a845b5f524048253a59a33bb7ccb8eb619eb13a5474afc6a601fdfb6907e7a63"
+    },
+    {
+      "id": "AUTH225-00303",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-16.png",
+      "bytes": 142210,
+      "sha256": "e0bc1032734c2e741a3ad42a1613d84bf042ec18bb8b13fb416580583f507ec3"
+    },
+    {
+      "id": "AUTH225-00304",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-17.png",
+      "bytes": 141882,
+      "sha256": "46d42d517e44540e07b307aba0c9e70ebdcffe7b65703b4ba886bb44396cf532"
+    },
+    {
+      "id": "AUTH225-00305",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-18.png",
+      "bytes": 141857,
+      "sha256": "53e5adacf176dde3d41117b9ca59182144f4096578c096d46a9682dc4951c918"
+    },
+    {
+      "id": "AUTH225-00306",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-19.png",
+      "bytes": 141882,
+      "sha256": "46d42d517e44540e07b307aba0c9e70ebdcffe7b65703b4ba886bb44396cf532"
+    },
+    {
+      "id": "AUTH225-00307",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00308",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-20.png",
+      "bytes": 142250,
+      "sha256": "3a0e083743df7cabaaee13812f738af2c2cd1cbd31eb96e6fb9578fa962dd344"
+    },
+    {
+      "id": "AUTH225-00309",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-21.png",
+      "bytes": 142964,
+      "sha256": "347e7ffb2f35b08ea457076fc3cce80c73c0e4582930988d87e9678055af7448"
+    },
+    {
+      "id": "AUTH225-00310",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-22.png",
+      "bytes": 143606,
+      "sha256": "99a536401dedd7324aa730a47e3ab9b12844b082e626d5286d4c2405989fafa6"
+    },
+    {
+      "id": "AUTH225-00311",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-23.png",
+      "bytes": 144387,
+      "sha256": "654e10c48a2233369aa6467899dfda14c875412b47438a4618f129c1ae24a99e"
+    },
+    {
+      "id": "AUTH225-00312",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-24.png",
+      "bytes": 144735,
+      "sha256": "ab23c079b646212ea2244f3a18c9153c1fe363cbe964fb93552bff0607b8bd98"
+    },
+    {
+      "id": "AUTH225-00313",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-25.png",
+      "bytes": 145063,
+      "sha256": "8a344b61816e4aa36762608cf83544223f292ef4e27427f9baabc31b7ca73a0f"
+    },
+    {
+      "id": "AUTH225-00314",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-26.png",
+      "bytes": 144426,
+      "sha256": "f1bbc12124439a811b5f51870da73956bf406528d6adceee71c86c86df4d3dad"
+    },
+    {
+      "id": "AUTH225-00315",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-27.png",
+      "bytes": 143589,
+      "sha256": "4ae78817fdf4d6163a5b9176c47ada753b57a13983829cecd7d8e806c625582c"
+    },
+    {
+      "id": "AUTH225-00316",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-28.png",
+      "bytes": 142966,
+      "sha256": "83dd3f5814e3e050f282f2963a200d14767a8c68e1b8a3468833fb5def08c8dd"
+    },
+    {
+      "id": "AUTH225-00317",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-29.png",
+      "bytes": 141942,
+      "sha256": "56382d23f4b050d7de3e91353f8b28595361af251ee937f0fab183328011ee7d"
+    },
+    {
+      "id": "AUTH225-00318",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-3.png",
+      "bytes": 1670,
+      "sha256": "2938793d36112554332f0c109ace2f58404e02633a2b304393ee766c0772d871"
+    },
+    {
+      "id": "AUTH225-00319",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-4.png",
+      "bytes": 117797,
+      "sha256": "ee557e5a2dafa61315e788ae714f699f79c4898e7bc6521cd4b1b2bea0e72ba3"
+    },
+    {
+      "id": "AUTH225-00320",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-5.png",
+      "bytes": 189532,
+      "sha256": "65fadaf8a24f9d9b070468e5dcd944fdf7817da412de419e912314a2f0103be7"
+    },
+    {
+      "id": "AUTH225-00321",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-6.png",
+      "bytes": 193523,
+      "sha256": "4994c6ecc02b4fc22a65013c16c0653c228219fc5b45ffb533712d8b07acfb32"
+    },
+    {
+      "id": "AUTH225-00322",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-7.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00323",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-8.png",
+      "bytes": 148312,
+      "sha256": "3fac0903c62160fec886444b1c322abb8619e17e2cae7dd4dc96cae148768f80"
+    },
+    {
+      "id": "AUTH225-00324",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/screen-9.png",
+      "bytes": 149054,
+      "sha256": "f39ad159bd0f6a06177c4d1b89e7de8a047a32d2f1272a137df884ea9ab38e63"
+    },
+    {
+      "id": "AUTH225-00325",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH225-00326",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH225-00327",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00328",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00329",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00330",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00331",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00332",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00333",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00334",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00335",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00336",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00337",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-2.txt",
+      "bytes": 1305,
+      "sha256": "2ea219015d24e371bd5be2632e2b1432dbb3ec211585b3163a982a765dd40e1e"
+    },
+    {
+      "id": "AUTH225-00338",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00339",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00340",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00341",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00342",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00343",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00344",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-26.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00345",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-27.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00346",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-28.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00347",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-29.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00348",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00349",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00350",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00351",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00352",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00353",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00354",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00355",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B-title-initial91-12.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH225-00356",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B-title-initial91-8.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH225-00357",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/CALog-before.txt",
+      "bytes": 1436,
+      "sha256": "cd01890820f2c7540d2c518d32a1d44efeb3f2e726bdfaa07a9f9934a3a3c1ad"
+    },
+    {
+      "id": "AUTH225-00358",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/CALog-run.txt",
+      "bytes": 1184,
+      "sha256": "b4ecf7b27da380c659c98f8d3e03648e2bbb4af00802a3855e54c37b43164055"
+    },
+    {
+      "id": "AUTH225-00359",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "071b9657411ce16f02603644a08ff35c0f2e4806f3fd8dabf50634c08f9f3543"
+    },
+    {
+      "id": "AUTH225-00360",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/client.log",
+      "bytes": 120120,
+      "sha256": "4f629c1ae5d414b4f4fd1c470aa6e55011f2daa40bfed2c86c3133b18d7a5967"
+    },
+    {
+      "id": "AUTH225-00361",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/debug-commands.txt",
+      "bytes": 1277,
+      "sha256": "9e7cd01ae2b9e1b8fd4000492d272fb528057eaa8a13116fb73d0f80c2c69bb6"
+    },
+    {
+      "id": "AUTH225-00362",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00363",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00364",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-10.png",
+      "bytes": 157584,
+      "sha256": "6a84b9ea5ccbc8185318e0644ce76273b949220978bf6ab9d76948d377728ad5"
+    },
+    {
+      "id": "AUTH225-00365",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-11.png",
+      "bytes": 158198,
+      "sha256": "030c34521e7e220cd2f8dfd2c32e5336c3b7f764b2e5be3113a50cf2615b1e48"
+    },
+    {
+      "id": "AUTH225-00366",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-12.png",
+      "bytes": 145428,
+      "sha256": "57bfaccf08689380604bf575e914deef20c09965812416be122e3aef9a6b62af"
+    },
+    {
+      "id": "AUTH225-00367",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-13.png",
+      "bytes": 146270,
+      "sha256": "4994570427199ce2d8877f1008d172ab6730d0887a45830ea8df99b6990b73e7"
+    },
+    {
+      "id": "AUTH225-00368",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-14.png",
+      "bytes": 146922,
+      "sha256": "9b9427709deb18606974b87d209a47dc0ff9f5455e0e131998574e82441f2179"
+    },
+    {
+      "id": "AUTH225-00369",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00370",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00371",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-4.png",
+      "bytes": 16134,
+      "sha256": "19817a610068b6aad75a10bf5b05b6a962bde3cbb153b0dfcd5723f5c393c380"
+    },
+    {
+      "id": "AUTH225-00372",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-5.png",
+      "bytes": 12661,
+      "sha256": "675bc926ab19fc23815062b6da9117481e25ad5a3d13fc15b6788839b2301794"
+    },
+    {
+      "id": "AUTH225-00373",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-6.png",
+      "bytes": 149593,
+      "sha256": "2b930f0f719e7a986becdb5522396c7d1d73790392973e033e617acd15966609"
+    },
+    {
+      "id": "AUTH225-00374",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-7.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "AUTH225-00375",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-8.png",
+      "bytes": 192711,
+      "sha256": "5c5c23014d57460a377147ce38096ac0eef7eede14b53232dd7f9195e2bfbcb7"
+    },
+    {
+      "id": "AUTH225-00376",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00377",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH225-00378",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH225-00379",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00380",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00381",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00382",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00383",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00384",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH225-00385",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH225-00386",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00387",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00388",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00389",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00390",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00391",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00392",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/CALog-before.txt",
+      "bytes": 1184,
+      "sha256": "b4ecf7b27da380c659c98f8d3e03648e2bbb4af00802a3855e54c37b43164055"
+    },
+    {
+      "id": "AUTH225-00393",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/CALog-run.txt",
+      "bytes": 1131,
+      "sha256": "68a3b61a1a47946ef8a5f6e398dc788d8ecb05b48c677c48f46919d9e84fa801"
+    },
+    {
+      "id": "AUTH225-00394",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/client.log",
+      "bytes": 132734,
+      "sha256": "518e585f7752fab83256b3d2c0a4cb77dd7803e58388f11c306a10ffdd8d07e7"
+    },
+    {
+      "id": "AUTH225-00395",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/debug-commands.txt",
+      "bytes": 1277,
+      "sha256": "9e7cd01ae2b9e1b8fd4000492d272fb528057eaa8a13116fb73d0f80c2c69bb6"
+    },
+    {
+      "id": "AUTH225-00396",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00397",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00398",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-10.png",
+      "bytes": 88688,
+      "sha256": "3ea99f854e72a5565f2640032d06b5759d98fd6e238dccf5d274b34f88807d1f"
+    },
+    {
+      "id": "AUTH225-00399",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-11.png",
+      "bytes": 158220,
+      "sha256": "c94b32066469420c1b002e10e9a23d2e88aaf8ee371c61f09a9d140889714290"
+    },
+    {
+      "id": "AUTH225-00400",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-12.png",
+      "bytes": 158895,
+      "sha256": "7a0a8975761f8e69dc4cfcbcf1b242158cf3427e333f05f19364bb45bb740c5b"
+    },
+    {
+      "id": "AUTH225-00401",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-13.png",
+      "bytes": 152972,
+      "sha256": "b4232788a63550a5393114a44adb494935ab618b5c25f34be2f326a906b11789"
+    },
+    {
+      "id": "AUTH225-00402",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-14.png",
+      "bytes": 152956,
+      "sha256": "802f89399d91970d0c605e1144db33ae22bd0cebc4387f6ef2c87205926e12e1"
+    },
+    {
+      "id": "AUTH225-00403",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00404",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00405",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-4.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00406",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-5.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "AUTH225-00407",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-6.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "AUTH225-00408",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-7.png",
+      "bytes": 165751,
+      "sha256": "25a3250bee632787642924548c9e52950b0c59b534e7f2a5e16499fcebd39c90"
+    },
+    {
+      "id": "AUTH225-00409",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-8.png",
+      "bytes": 193523,
+      "sha256": "4994c6ecc02b4fc22a65013c16c0653c228219fc5b45ffb533712d8b07acfb32"
+    },
+    {
+      "id": "AUTH225-00410",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/screen-9.png",
+      "bytes": 197155,
+      "sha256": "95ee6fb63898e745d1f1e14f512e5c84106bf5a34b14581dc3d96d2029be88db"
+    },
+    {
+      "id": "AUTH225-00411",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH225-00412",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-1.txt",
+      "bytes": 874,
+      "sha256": "0f88fe6ae75aeef6ad7e88f9eb17ca8b7eaafda34208753ecef953002cf3f027"
+    },
+    {
+      "id": "AUTH225-00413",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-10.txt",
+      "bytes": 1362,
+      "sha256": "bac57f75ba96037f921b456b289bf72cb2d5b223dff3ed53255178b921afcc0a"
+    },
+    {
+      "id": "AUTH225-00414",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-11.txt",
+      "bytes": 1362,
+      "sha256": "bac57f75ba96037f921b456b289bf72cb2d5b223dff3ed53255178b921afcc0a"
+    },
+    {
+      "id": "AUTH225-00415",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-12.txt",
+      "bytes": 1362,
+      "sha256": "bac57f75ba96037f921b456b289bf72cb2d5b223dff3ed53255178b921afcc0a"
+    },
+    {
+      "id": "AUTH225-00416",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-13.txt",
+      "bytes": 1362,
+      "sha256": "bac57f75ba96037f921b456b289bf72cb2d5b223dff3ed53255178b921afcc0a"
+    },
+    {
+      "id": "AUTH225-00417",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-14.txt",
+      "bytes": 1362,
+      "sha256": "bac57f75ba96037f921b456b289bf72cb2d5b223dff3ed53255178b921afcc0a"
+    },
+    {
+      "id": "AUTH225-00418",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-2.txt",
+      "bytes": 874,
+      "sha256": "0f88fe6ae75aeef6ad7e88f9eb17ca8b7eaafda34208753ecef953002cf3f027"
+    },
+    {
+      "id": "AUTH225-00419",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-3.txt",
+      "bytes": 874,
+      "sha256": "0f88fe6ae75aeef6ad7e88f9eb17ca8b7eaafda34208753ecef953002cf3f027"
+    },
+    {
+      "id": "AUTH225-00420",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-4.txt",
+      "bytes": 1309,
+      "sha256": "0fc3003b48d543db25298ed248536d900228f421bf3f6491bee8abefdb2d5466"
+    },
+    {
+      "id": "AUTH225-00421",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-5.txt",
+      "bytes": 1315,
+      "sha256": "ab3e335a679d24c8303f20b7dcb577da5df3fdca4329bd3b65fff899b50989bb"
+    },
+    {
+      "id": "AUTH225-00422",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-6.txt",
+      "bytes": 1315,
+      "sha256": "ab3e335a679d24c8303f20b7dcb577da5df3fdca4329bd3b65fff899b50989bb"
+    },
+    {
+      "id": "AUTH225-00423",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-7.txt",
+      "bytes": 1315,
+      "sha256": "ab3e335a679d24c8303f20b7dcb577da5df3fdca4329bd3b65fff899b50989bb"
+    },
+    {
+      "id": "AUTH225-00424",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-8.txt",
+      "bytes": 1315,
+      "sha256": "ab3e335a679d24c8303f20b7dcb577da5df3fdca4329bd3b65fff899b50989bb"
+    },
+    {
+      "id": "AUTH225-00425",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/Bfresh/windows-9.txt",
+      "bytes": 1315,
+      "sha256": "ab3e335a679d24c8303f20b7dcb577da5df3fdca4329bd3b65fff899b50989bb"
+    },
+    {
+      "id": "AUTH225-00426",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/fresh-B-start-service-state.json",
+      "bytes": 36073,
+      "sha256": "27b04735928d66c1a119c05aea5e0d87e8fafc9df84a05ad0e481cde552cef02"
+    },
+    {
+      "id": "AUTH225-00427",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "AUTH225-00428",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH225-00429",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/post-close-service-state.json",
+      "bytes": 35691,
+      "sha256": "2e3c344159d3c9083efac4c945c6e48b2f1ab83fd09315c4b78a0fe07c43aec2"
+    },
+    {
+      "id": "AUTH225-00430",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-0.txt",
+      "bytes": 6966,
+      "sha256": "7f10f3ab0487f4dd623f18bcefa808bbc9d4cbf36defa1ba9d4615f3b0a0c4f6"
+    },
+    {
+      "id": "AUTH225-00431",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-1.txt",
+      "bytes": 7119,
+      "sha256": "da4316d8edde5dbccac833ac3829171fb145992a64ca758190731d60279c51b2"
+    },
+    {
+      "id": "AUTH225-00432",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-10.txt",
+      "bytes": 7119,
+      "sha256": "d2a72f2d40520a96f22bba0a898d2e961b1f521d9b3b860f4baf392cc584f240"
+    },
+    {
+      "id": "AUTH225-00433",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-11.txt",
+      "bytes": 7119,
+      "sha256": "907cd2fdd3fbb551f4f429d0dc148ad900f66e40c082d9fcbb2ad4f28c7ed4e3"
+    },
+    {
+      "id": "AUTH225-00434",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-12.txt",
+      "bytes": 7119,
+      "sha256": "bce8646cb7367e88d958f74bec6264785ee5c1de68f62f41ffa10a413a2dd388"
+    },
+    {
+      "id": "AUTH225-00435",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-13.txt",
+      "bytes": 7119,
+      "sha256": "f5e2c8cc542b2fe094c3492af6b64f01add1f74fd09e37d1b58b5dab0850c464"
+    },
+    {
+      "id": "AUTH225-00436",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-14.txt",
+      "bytes": 7119,
+      "sha256": "3842251c15c3aae548bccf1d511f541a5e3027ac2f314c73a8de7d55cbc447f7"
+    },
+    {
+      "id": "AUTH225-00437",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-15.txt",
+      "bytes": 7240,
+      "sha256": "57d86c9013e3b0c8717bc653e6f0e43353c5287d3ee47b713089127b9330e95b"
+    },
+    {
+      "id": "AUTH225-00438",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-16.txt",
+      "bytes": 8020,
+      "sha256": "885b15c52d772519f0de0fae2abccaa23fd2c9916a6dd94d516f9e2137b5122c"
+    },
+    {
+      "id": "AUTH225-00439",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-17.txt",
+      "bytes": 8020,
+      "sha256": "47547dbfe13e32af5be536d27aff298a0af24c7990c2edfd1a0a553ce932ffc4"
+    },
+    {
+      "id": "AUTH225-00440",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-18.txt",
+      "bytes": 8020,
+      "sha256": "c9910b4dd337d06d3f82482b80d76cef06b64c77565b0fafdbec1aebe30b88a0"
+    },
+    {
+      "id": "AUTH225-00441",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-19.txt",
+      "bytes": 8020,
+      "sha256": "f7882bbd95f9fba824641ed8198ac37388854a9ebc5b470dfeed3281375a2420"
+    },
+    {
+      "id": "AUTH225-00442",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-2.txt",
+      "bytes": 7119,
+      "sha256": "e7ab0ef6d7e023b12145f2fad4bab982852f9df016a7b8139db4981678fa8791"
+    },
+    {
+      "id": "AUTH225-00443",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-20.txt",
+      "bytes": 8020,
+      "sha256": "8e42c38bd80691e7b65fc0b943ad58abb8cf7abedb1f062bf2e7143806da4039"
+    },
+    {
+      "id": "AUTH225-00444",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-21.txt",
+      "bytes": 8020,
+      "sha256": "194f6565695ba809376f964770ee06a5e04b1b364d82f0e292256afd0308cb9e"
+    },
+    {
+      "id": "AUTH225-00445",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-22.txt",
+      "bytes": 8020,
+      "sha256": "8852d198046295a890a8482adb61ddb4e4fe8c5618bf4987e8adb42f60124d93"
+    },
+    {
+      "id": "AUTH225-00446",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-23.txt",
+      "bytes": 8020,
+      "sha256": "121cb6f71f4e89fbe14c18a77d8c4b31acc59c05481229a22249fc8e5476ff0d"
+    },
+    {
+      "id": "AUTH225-00447",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-24.txt",
+      "bytes": 8020,
+      "sha256": "7122577034bf214094072271164c9fbf322688a0fa892a3d19e6f231162732d0"
+    },
+    {
+      "id": "AUTH225-00448",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-25.txt",
+      "bytes": 8020,
+      "sha256": "b0926cbae1fc93af7e75260cd0c5ff6d9de2041e81ab9a3b007f5b70bfb58db8"
+    },
+    {
+      "id": "AUTH225-00449",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-26.txt",
+      "bytes": 8020,
+      "sha256": "8e5d9590b1198bf2f6f725aff0aac19b596d3377ca8c4e57684360054d5192bc"
+    },
+    {
+      "id": "AUTH225-00450",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-27.txt",
+      "bytes": 8020,
+      "sha256": "ed3efe6e12dfa9fa4bcc350a6a6f2cb8bac54ee569a322d0baccbf20644a39a3"
+    },
+    {
+      "id": "AUTH225-00451",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-28.txt",
+      "bytes": 8020,
+      "sha256": "b9bafb845c67f228841f0fd75ee5f7b8e06b7ad71c820fa6e797f23be0c3281e"
+    },
+    {
+      "id": "AUTH225-00452",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-29.txt",
+      "bytes": 8020,
+      "sha256": "5d3497860dbf1830349f72db17df5dd31299dd5aa2afc111949c82c2ebb7bb4e"
+    },
+    {
+      "id": "AUTH225-00453",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-3.txt",
+      "bytes": 7119,
+      "sha256": "607991a33a71ad68a48a629e278b7d48141f43a95e911be3c4882ecf1c74cf02"
+    },
+    {
+      "id": "AUTH225-00454",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-4.txt",
+      "bytes": 7119,
+      "sha256": "811d27d03c5ef6bc83220c610275554984ac103319c4844fb0c20ddf1c30be16"
+    },
+    {
+      "id": "AUTH225-00455",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-5.txt",
+      "bytes": 7119,
+      "sha256": "d55bc3e5e2f38a41c70355a591f823edd364d07911e7773c1ddc4e2e6247a8e2"
+    },
+    {
+      "id": "AUTH225-00456",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-6.txt",
+      "bytes": 7119,
+      "sha256": "f243476da7336b1f3c2805606712e554e338951340d2bc4639c3fb708059979b"
+    },
+    {
+      "id": "AUTH225-00457",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-7.txt",
+      "bytes": 7119,
+      "sha256": "42b98d5996c46677e3005a25500fcd24535a13c72d6b1b004f63970e0584f690"
+    },
+    {
+      "id": "AUTH225-00458",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-8.txt",
+      "bytes": 7119,
+      "sha256": "13fef6d700c774bc24b7a22eff543329e35c1eb477419ed4e8d63aa010ea7980"
+    },
+    {
+      "id": "AUTH225-00459",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/processes-9.txt",
+      "bytes": 7119,
+      "sha256": "9476db171580151c9c191d59e0b577c0d759e8bf0c672c4b2a05b90d000b033c"
+    },
+    {
+      "id": "AUTH225-00460",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/retry-proof-service-state.json",
+      "bytes": 45348,
+      "sha256": "3b661256567f1c6977b13ab25f10f91c03abde708e7786fd72fd427c17bbeff8"
+    },
+    {
+      "id": "AUTH225-00461",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/run.json",
+      "bytes": 52315,
+      "sha256": "fcaec9abd9ae7d23d496419c04423d69667b72f6a28c9070e46fe38b0b98c727"
+    },
+    {
+      "id": "AUTH225-00462",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/service-state.json",
+      "bytes": 45155,
+      "sha256": "c8e13f8e6fad8f9611d6884418c2c3a9e8fa57306a231a6b2ed8c5f62bb0fe56"
+    },
+    {
+      "id": "AUTH225-00463",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH225-00464",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/tcp-auth-pair.pcap",
+      "bytes": 28317,
+      "sha256": "190e9b68f3649a7cb78328697f883fa989596f2d3d600bff998788cb87bb4ff8"
+    },
+    {
+      "id": "AUTH225-00465",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/tcp-capture-index.json",
+      "bytes": 77907,
+      "sha256": "3b9d818f17c48d8fe37fe6a9debde350125b15cef8f1452cc76810143766242c"
+    },
+    {
+      "id": "AUTH225-00466",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/virtual-network.json",
+      "bytes": 24926,
+      "sha256": "a90ea72554477aa955284d49d20c3018b5c8b38c7a60e4a0a4ca4b4b063ae85e"
+    },
+    {
+      "id": "AUTH225-00467",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "c0101b517010fe9d08c4dbee1de96c4e3466ce5f79ad5b6bf1bf12e8ad666de1"
+    },
+    {
+      "id": "AUTH225-00468",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "ecf3a94f56534ab1d34e3288b1cdf1a58ce0e2bcb856dfe0e9c8ca161098fee5"
+    },
+    {
+      "id": "AUTH225-00469",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH225-00470",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "AUTH225-00471",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/launch-exit.json",
+      "bytes": 73,
+      "sha256": "f94f01466a288794fabd10add5851e34a822d064584078fe7a9d58cb156345c1"
+    },
+    {
+      "id": "AUTH225-00472",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH225-00473",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/raw-seal.json",
+      "bytes": 38497,
+      "sha256": "5500e947c88aacb2d133c2738197dc806d10215ade45ca9178eeca317ba7f8cc"
+    },
+    {
+      "id": "AUTH225-00474",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/recipe.json",
+      "bytes": 1156,
+      "sha256": "31bfb80dbb0d464305aa517053d2ec8bd75c039845fa15cac21f5eb478926910"
+    },
+    {
+      "id": "AUTH225-00475",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/runtime-preflight.json",
+      "bytes": 77468,
+      "sha256": "ed510e6872fb2a6abbee6921e4c9ef9c6ed902f8cff6c45c613f08d219d204a2"
+    },
+    {
+      "id": "AUTH225-00476",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh.gdb",
+      "bytes": 1277,
+      "sha256": "9e7cd01ae2b9e1b8fd4000492d272fb528057eaa8a13116fb73d0f80c2c69bb6"
+    },
+    {
+      "id": "AUTH225-00477",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/network_policy.py",
+      "bytes": 1071,
+      "sha256": "843a8317629dc7f50afbae8bfeddea8b7a7a606b8e5c8437ac6e6d7d79e85820"
+    },
+    {
+      "id": "AUTH225-00478",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/pair_service_retry_r2.py",
+      "bytes": 3170,
+      "sha256": "6373918b3776c0ed69e811fb8cf13b587b49aa9947d3488101dcf76c2029bfcf"
+    },
+    {
+      "id": "AUTH225-00479",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/source-first.json",
+      "bytes": 1616,
+      "sha256": "28637891865f4b0107961d7dc6d97e95b188d9d6924b2a7d69865eec9e103085"
+    },
+    {
+      "id": "AUTH225-00480",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "AUTH225-00481",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/verification.json",
+      "bytes": 22563,
+      "sha256": "f9b9fb7cf2f203ba1e2006057283789c69eb71e69dac221ee5307d428016af8c"
+    },
+    {
+      "id": "AUTH225-00482",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/visual-review.json",
+      "bytes": 683,
+      "sha256": "d899abc7628ecb311517cd4f2466b55c80957af9c499a1f4fb3f3bdfd4254b73"
+    },
+    {
+      "id": "AUTH225-00483",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/capture_tcp.py",
+      "bytes": 1598,
+      "sha256": "1d8d19ce7d254f2c4e7b76fa056ac123eeb7a3d7ee454ad2b54494a936e30682"
+    },
+    {
+      "id": "AUTH225-00484",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/conditional-prefix.asm",
+      "bytes": 1622,
+      "sha256": "dbe7b19a10d2bfa8169b000717c7967a20e23f818748ccc42cd93c2128d01072"
+    },
+    {
+      "id": "AUTH225-00485",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/conditional-prefix.json",
+      "bytes": 5906,
+      "sha256": "3ab98b407d845ae786e5cc1eb7835cd44a667a38a7677d80be4d89c54113f232"
+    },
+    {
+      "id": "AUTH225-00486",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/config.json",
+      "bytes": 1284,
+      "sha256": "e454c1d899a93edc3d1cbdf6dac657d359b83c31e2dd39d2b48d82a8bb34c408"
+    },
+    {
+      "id": "AUTH225-00487",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/entry-prefix.asm",
+      "bytes": 815,
+      "sha256": "93ee3e717c43c88fd8bfce245303778a6007dab708cd048c9c8028ca603293be"
+    },
+    {
+      "id": "AUTH225-00488",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/entry-prefix.json",
+      "bytes": 3372,
+      "sha256": "e6dd0321bfd517dfe1da937c0e8f1a06a1f1bf06259316ab4747e96193c366f9"
+    },
+    {
+      "id": "AUTH225-00489",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/CALog-before.txt",
+      "bytes": 1650,
+      "sha256": "7336d05dc59a49f4c3cb328dbf2a8fe522402f3e1f5c173e74ad390051f16141"
+    },
+    {
+      "id": "AUTH225-00490",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/CALog-run.txt",
+      "bytes": 1650,
+      "sha256": "7336d05dc59a49f4c3cb328dbf2a8fe522402f3e1f5c173e74ad390051f16141"
+    },
+    {
+      "id": "AUTH225-00491",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "53d2e059e3f33675c5c77d913ee3a6f2fb75c434abcbb32f291d15676441fc6a"
+    },
+    {
+      "id": "AUTH225-00492",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/client.log",
+      "bytes": 120794,
+      "sha256": "bc481745802b35c300f61e2248c8087e405fb92e215fdbaaef2ee7febe645e07"
+    },
+    {
+      "id": "AUTH225-00493",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/debug-commands.txt",
+      "bytes": 1606,
+      "sha256": "f2f32f6bb9204bce6dea98bbf7258ffa4a8895216835ddebe50eede1b4123e96"
+    },
+    {
+      "id": "AUTH225-00494",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00495",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00496",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-10.png",
+      "bytes": 148868,
+      "sha256": "74feab03f7fcc7af0ef70ade70454ed63a25e52a0c70821e0085141e6727c7a8"
+    },
+    {
+      "id": "AUTH225-00497",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-11.png",
+      "bytes": 143445,
+      "sha256": "a9872ee4ae13dbb661aebb7c99ca9ff95a4b63b610b05aeee65cc7c1f915b9b6"
+    },
+    {
+      "id": "AUTH225-00498",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-12.png",
+      "bytes": 143667,
+      "sha256": "8117d10c4cf025b217fb39339774ed832e070580746bae4fde2c69d7202fa2a9"
+    },
+    {
+      "id": "AUTH225-00499",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-13.png",
+      "bytes": 143973,
+      "sha256": "92255c99986fae8590f736c5e7b7d5b07996ca6fafb32cd82164f3cac057a7c8"
+    },
+    {
+      "id": "AUTH225-00500",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-14.png",
+      "bytes": 144174,
+      "sha256": "56168fa228e189d0d479225ea546316bf334c2ea6eebefdd9e91426c231beee4"
+    },
+    {
+      "id": "AUTH225-00501",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-15.png",
+      "bytes": 144203,
+      "sha256": "a2e76aed68b077aea9bd4ef7f868a312318a0cb30c83b2a68984b5e6339c7222"
+    },
+    {
+      "id": "AUTH225-00502",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-16.png",
+      "bytes": 144213,
+      "sha256": "ae5231166e05df0738a24236f8394eda77b94884e34c302d72137b176d43b178"
+    },
+    {
+      "id": "AUTH225-00503",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-17.png",
+      "bytes": 144256,
+      "sha256": "441d91a0ef26ebb3a715858973c79f650377da2b31941715f489e239ca7e500c"
+    },
+    {
+      "id": "AUTH225-00504",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-18.png",
+      "bytes": 143849,
+      "sha256": "3b8e2625d8638921a0c219e6a944169d358ba0e7a0570452391bea21219481f1"
+    },
+    {
+      "id": "AUTH225-00505",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-19.png",
+      "bytes": 142040,
+      "sha256": "76eb2aa21f1250efe5e6cfce5f58e21c3f43714491805d2de94852665ad8d7d6"
+    },
+    {
+      "id": "AUTH225-00506",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-2.png",
+      "bytes": 19847,
+      "sha256": "2178ceb11e92e5f95694ca8a855de0750fb1a93dfe6e02a13c1856b080d16654"
+    },
+    {
+      "id": "AUTH225-00507",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-20.png",
+      "bytes": 142430,
+      "sha256": "18a641a1df5f810bf1b992bb553fd2a255dfaf99b373183d9608dd98ef0f4d29"
+    },
+    {
+      "id": "AUTH225-00508",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-21.png",
+      "bytes": 142843,
+      "sha256": "7f542bc4ec15550223a7cf9cc43f7dd186ae1035706b70f87d963e749ac9dd2e"
+    },
+    {
+      "id": "AUTH225-00509",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-22.png",
+      "bytes": 143234,
+      "sha256": "0471662e29288b70c31131708c8524f5b4d5fee8b80a36bda166d1433e69af13"
+    },
+    {
+      "id": "AUTH225-00510",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-23.png",
+      "bytes": 143563,
+      "sha256": "b2691b7cb57cdb138e91ad2452a24345d7439de2e9c2bf1b648005d355f1f6b7"
+    },
+    {
+      "id": "AUTH225-00511",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-24.png",
+      "bytes": 144136,
+      "sha256": "6c8661212490f73bf6aa15437623a2ac457c77b8d4af9bd3eb0934613736c823"
+    },
+    {
+      "id": "AUTH225-00512",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-25.png",
+      "bytes": 144408,
+      "sha256": "0c032a12066b2aa4d6f8e63393098fe3561236346b8f4654acfe093d1d1372bc"
+    },
+    {
+      "id": "AUTH225-00513",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-3.png",
+      "bytes": 13437,
+      "sha256": "e47c2919c72588bea5f3e5b8ebda4d9823a66e8864f6b86ed6f85d9e19598218"
+    },
+    {
+      "id": "AUTH225-00514",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-4.png",
+      "bytes": 146086,
+      "sha256": "b13a82f4b9e8467c828d126f97aeaac1092116600d149b70fea4f3aeafb72450"
+    },
+    {
+      "id": "AUTH225-00515",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-5.png",
+      "bytes": 192977,
+      "sha256": "c5fe2134a6b0998704cd1a82ba0acaefd2e4ee5a53e570ea101ae379ca4ec110"
+    },
+    {
+      "id": "AUTH225-00516",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-6.png",
+      "bytes": 193523,
+      "sha256": "4994c6ecc02b4fc22a65013c16c0653c228219fc5b45ffb533712d8b07acfb32"
+    },
+    {
+      "id": "AUTH225-00517",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-7.png",
+      "bytes": 383438,
+      "sha256": "00352042381d1966762f35f7e62b789fce7eb0f87bbcddec4b0d4f61a68ca2dd"
+    },
+    {
+      "id": "AUTH225-00518",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-8.png",
+      "bytes": 148248,
+      "sha256": "050197f0e76af4c2e9bc68bd515ef9f58d8f5aafd2e8fb2d2eb775083f043419"
+    },
+    {
+      "id": "AUTH225-00519",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/screen-9.png",
+      "bytes": 148703,
+      "sha256": "4a85a530ba158c1ce54ee62d3ed0960c7e06cc88bbeebff4b43328f4bf665c27"
+    },
+    {
+      "id": "AUTH225-00520",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-0.txt",
+      "bytes": 872,
+      "sha256": "1096593c4e9a63ac4da8fff1a6642209e33de4dc70f021885f4baea5cce0dbc4"
+    },
+    {
+      "id": "AUTH225-00521",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-1.txt",
+      "bytes": 1395,
+      "sha256": "233fa28ab97f901a0662362d330012d440edb03382ff0f0d506a3e084331022a"
+    },
+    {
+      "id": "AUTH225-00522",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00523",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00524",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00525",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00526",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00527",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00528",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00529",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00530",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-18.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00531",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-19.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00532",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-2.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00533",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-20.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00534",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-21.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00535",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-22.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00536",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-23.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00537",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-24.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00538",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-25.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00539",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-3.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00540",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00541",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00542",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "ae1e42672317584498a7acb9315285f1ade61278c558f6e2b77371ef61cea181"
+    },
+    {
+      "id": "AUTH225-00543",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-7.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00544",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-8.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00545",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/A/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "acf5bc1ea00ff7b21c240a110b7c365d82d68b774e22ec80e1d3a39dc4e2d495"
+    },
+    {
+      "id": "AUTH225-00546",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B-title-initial91-8.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "AUTH225-00547",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/CALog-before.txt",
+      "bytes": 1397,
+      "sha256": "1c4d9aa2403add5529ea6417fd5b4a994e77da4772002f6a0abf3411f389edb5"
+    },
+    {
+      "id": "AUTH225-00548",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/CALog-run.txt",
+      "bytes": 1436,
+      "sha256": "cd01890820f2c7540d2c518d32a1d44efeb3f2e726bdfaa07a9f9934a3a3c1ad"
+    },
+    {
+      "id": "AUTH225-00549",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "769e860a8591e07c690db7e731ad88a938a3e0471ceee32ef18e16eebfcff44b"
+    },
+    {
+      "id": "AUTH225-00550",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/client.log",
+      "bytes": 323802,
+      "sha256": "03015f1807e3c5b01077d07c36e0373fceeab3a5c36eeb674c056611c1f48454"
+    },
+    {
+      "id": "AUTH225-00551",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/debug-commands.txt",
+      "bytes": 1606,
+      "sha256": "f2f32f6bb9204bce6dea98bbf7258ffa4a8895216835ddebe50eede1b4123e96"
+    },
+    {
+      "id": "AUTH225-00552",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-0.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00553",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-1.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00554",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-10.png",
+      "bytes": 157450,
+      "sha256": "70a0dd0f107b139ba14111562cf2e88600cd6f33fea02931342c1b85ac912949"
+    },
+    {
+      "id": "AUTH225-00555",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-11.png",
+      "bytes": 157806,
+      "sha256": "e9839e806e3ba66b7578c69c9d093133a2b3b73d65dca18dac23cb58a1134375"
+    },
+    {
+      "id": "AUTH225-00556",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-12.png",
+      "bytes": 150881,
+      "sha256": "7d3812390c7004993dd6ad01568d982df5dbfbeb60418cedfc4d1ac9b91f9b9b"
+    },
+    {
+      "id": "AUTH225-00557",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-13.png",
+      "bytes": 145103,
+      "sha256": "62b458fb347fa16a35a9bc66c6d233b1516ee5b5509708c57ace68dfd39cb379"
+    },
+    {
+      "id": "AUTH225-00558",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-14.png",
+      "bytes": 145494,
+      "sha256": "a23bfbf60dbd4ba01990853df38aeceab97da8a047d9facef864e0796733f1ba"
+    },
+    {
+      "id": "AUTH225-00559",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-15.png",
+      "bytes": 145653,
+      "sha256": "25b3c08838ed149132d1d2dd5dbb8482936f3e7cca69b552e12785dc9ceef449"
+    },
+    {
+      "id": "AUTH225-00560",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-16.png",
+      "bytes": 146019,
+      "sha256": "a229c8758c84c4bbe763b5d65e482724d14779621e9f24707c1e273787bb8c3c"
+    },
+    {
+      "id": "AUTH225-00561",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-17.png",
+      "bytes": 146397,
+      "sha256": "8fb781cf3e29d66ec251d23a9ced19d459177e72ab5a8e203f42ef0cb239b5e8"
+    },
+    {
+      "id": "AUTH225-00562",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-18.png",
+      "bytes": 156307,
+      "sha256": "197d7975c34de9a6abec4e38b74da5f508613af09f6d36f1dd0acb16377a49c1"
+    },
+    {
+      "id": "AUTH225-00563",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-19.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "AUTH225-00564",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00565",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-20.png",
+      "bytes": 5671,
+      "sha256": "a02bb97a945223b187ce3c992a4f2634dbcc02783afd22726bfc9fcfc43ae835"
+    },
+    {
+      "id": "AUTH225-00566",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-21.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH225-00567",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-22.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH225-00568",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-23.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH225-00569",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-24.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH225-00570",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-25.png",
+      "bytes": 3986,
+      "sha256": "9c971da6dea55df72589e741704fd4461e68a2c5d4a97dad0cb666b19922176e"
+    },
+    {
+      "id": "AUTH225-00571",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-3.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00572",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-4.png",
+      "bytes": 1670,
+      "sha256": "2938793d36112554332f0c109ace2f58404e02633a2b304393ee766c0772d871"
+    },
+    {
+      "id": "AUTH225-00573",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-5.png",
+      "bytes": 12634,
+      "sha256": "2473137a1944290442f82e638d0a8a122e7081648e570e1f3bfffa81f20dff89"
+    },
+    {
+      "id": "AUTH225-00574",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-6.png",
+      "bytes": 150750,
+      "sha256": "67e731803b84de460b8263cf5cb36d98953cb7d2c555bd079b00862af6084c11"
+    },
+    {
+      "id": "AUTH225-00575",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-7.png",
+      "bytes": 191431,
+      "sha256": "35903a0d052b21d3a24bf93dc8a8f6b306cabbb746f12f3287dd1e5c2419a39a"
+    },
+    {
+      "id": "AUTH225-00576",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-8.png",
+      "bytes": 192334,
+      "sha256": "ec31bb063e906cfb205398b48b449335514c6273f9d7ee87ccf9c9ed3f4e3d5b"
+    },
+    {
+      "id": "AUTH225-00577",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/screen-9.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "AUTH225-00578",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-0.txt",
+      "bytes": 166,
+      "sha256": "28ae29836d791dcd3302b447a52a8f0fa3f9a192abbc33a27751e23d7ebe0d43"
+    },
+    {
+      "id": "AUTH225-00579",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-1.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH225-00580",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-10.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00581",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-11.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00582",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-12.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00583",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-13.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00584",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-14.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00585",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-15.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00586",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-16.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00587",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-17.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00588",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-18.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "AUTH225-00589",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-19.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "AUTH225-00590",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-2.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH225-00591",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-20.txt",
+      "bytes": 1600,
+      "sha256": "84ddc05bf9e1beddac6fe64dfcd9c8279fffe3ba18a1d1ecacc1990ed8e65358"
+    },
+    {
+      "id": "AUTH225-00592",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-21.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH225-00593",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-22.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH225-00594",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-23.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH225-00595",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-24.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH225-00596",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-25.txt",
+      "bytes": 2589,
+      "sha256": "77c28f62085ceed2c68bc08bd33cc8e1f2a308a7fd20290b171cef3e3f743610"
+    },
+    {
+      "id": "AUTH225-00597",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-3.txt",
+      "bytes": 872,
+      "sha256": "c8c8cfe9c5b9bb2ccde16b4b959b165ed33d50824f3fbd29834c16b6f0e63586"
+    },
+    {
+      "id": "AUTH225-00598",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-4.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00599",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-5.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00600",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-6.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00601",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-7.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00602",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-8.txt",
+      "bytes": 1311,
+      "sha256": "79f14ed4dc9ec340cb32d82ec0c77a2262196d736b814194ac0ee379704f762b"
+    },
+    {
+      "id": "AUTH225-00603",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/B/windows-9.txt",
+      "bytes": 1358,
+      "sha256": "7ec8eb011f71796a5f2cc2801a244d53bf8153e1ec9e43378eafb3d79bfc01a6"
+    },
+    {
+      "id": "AUTH225-00604",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "AUTH225-00605",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "AUTH225-00606",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/post-close-service-state.json",
+      "bytes": 36523,
+      "sha256": "5c479a8571f5201a77b582003b9b958e5cc9c060652f2360d1e574448b306a49"
+    },
+    {
+      "id": "AUTH225-00607",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-0.txt",
+      "bytes": 6997,
+      "sha256": "fcb3ef09122a5aca4cdee6d97d8800cd1261e05c62e6f28c4e4adf91a19b3bec"
+    },
+    {
+      "id": "AUTH225-00608",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-1.txt",
+      "bytes": 7150,
+      "sha256": "ec231c4e062728f04f9d1d5cfdf1d7a100f836bb588c6d2d2d4cdcad090ec76f"
+    },
+    {
+      "id": "AUTH225-00609",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-10.txt",
+      "bytes": 7150,
+      "sha256": "98f2cc9b83b33383f775f436cec832414c337eea6ce7d04339eb83c37143b47f"
+    },
+    {
+      "id": "AUTH225-00610",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-11.txt",
+      "bytes": 7150,
+      "sha256": "363862d65d5bc3dc17a3e33aa18abb5c48940ca5f88b8ef47c6e897d733b9017"
+    },
+    {
+      "id": "AUTH225-00611",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-12.txt",
+      "bytes": 7150,
+      "sha256": "7fa0c8527a1e9dff1846f2a59086a092d7be1817ef0cb4a3816e0f99c40cd6b8"
+    },
+    {
+      "id": "AUTH225-00612",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-13.txt",
+      "bytes": 7150,
+      "sha256": "7291dcd254297b8d69c7132da5e79e22f63938c467c887afefc4646b0f004b49"
+    },
+    {
+      "id": "AUTH225-00613",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-14.txt",
+      "bytes": 7150,
+      "sha256": "6c6ed7f234d6e7cae8c8e9bcd5ab9537ab968aea606a7753234f5a8c55b3419f"
+    },
+    {
+      "id": "AUTH225-00614",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-15.txt",
+      "bytes": 7150,
+      "sha256": "2c9427990858e8d44423d852a3dc56b2a47c1d029d1a4ec5ee9c3e1ca871a11d"
+    },
+    {
+      "id": "AUTH225-00615",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-16.txt",
+      "bytes": 7150,
+      "sha256": "d140aeb6dc7b4bf0d435a0f0332c6690ed4a314a08df203c4f6e93945b248ba0"
+    },
+    {
+      "id": "AUTH225-00616",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-17.txt",
+      "bytes": 7150,
+      "sha256": "90b4e736a3655357e23c52c5e744e11139e6bc01e9fb22446972287dda7676bc"
+    },
+    {
+      "id": "AUTH225-00617",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-18.txt",
+      "bytes": 7205,
+      "sha256": "d2b68a9a2cdb9773f7fc4683ee0368851ddb2190033736f1680bcbd61d3792a8"
+    },
+    {
+      "id": "AUTH225-00618",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-19.txt",
+      "bytes": 7205,
+      "sha256": "61f7755bc35e2899168e7282c6f50bc76c7e179b9dfdd3d7732bdc759fc2187e"
+    },
+    {
+      "id": "AUTH225-00619",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-2.txt",
+      "bytes": 7150,
+      "sha256": "8896e42d47059709e24a07c218a7ca25532e324ea9661cfe87a0e840f28869ca"
+    },
+    {
+      "id": "AUTH225-00620",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-20.txt",
+      "bytes": 7205,
+      "sha256": "fd1d62330c6b4350faf770455eed2428be95d398071fee31ef357ec99e518e16"
+    },
+    {
+      "id": "AUTH225-00621",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-21.txt",
+      "bytes": 6939,
+      "sha256": "ab2eba2cbd11a9a5e44b18bed0591d4b0ed0b60450c3ac2e2284a0ad8b006b55"
+    },
+    {
+      "id": "AUTH225-00622",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-22.txt",
+      "bytes": 6939,
+      "sha256": "f7a060f90b506801823481714aedfd442198a5f95c9fecba81dfa810f13cbd1a"
+    },
+    {
+      "id": "AUTH225-00623",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-23.txt",
+      "bytes": 6939,
+      "sha256": "bec087710d915c815d0f3963e85745eedfc76c903dd9bb784faf804ab8becc08"
+    },
+    {
+      "id": "AUTH225-00624",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-24.txt",
+      "bytes": 6939,
+      "sha256": "ac2423d85d0c68630ef8b1bea53973d0422a9b8838c658452fa4f073f2c290f9"
+    },
+    {
+      "id": "AUTH225-00625",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-25.txt",
+      "bytes": 6939,
+      "sha256": "616b11e49eb5b0d973b095cc1e0fde9c6113c868f97fe89d76c5a303fd9fa861"
+    },
+    {
+      "id": "AUTH225-00626",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-3.txt",
+      "bytes": 7150,
+      "sha256": "1f1d4ca204b480eedaf2002197ae148a5b7e57785854fe902929e9a91442ddb0"
+    },
+    {
+      "id": "AUTH225-00627",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-4.txt",
+      "bytes": 7150,
+      "sha256": "e49cc319973133471d788901a0bb1f665e1f81920aa6b9087c040dfc6b6c063b"
+    },
+    {
+      "id": "AUTH225-00628",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-5.txt",
+      "bytes": 7150,
+      "sha256": "433c208a7345b1c250a4258866409618200c7e89c1a6640cd7cb6cb0e812240f"
+    },
+    {
+      "id": "AUTH225-00629",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-6.txt",
+      "bytes": 7150,
+      "sha256": "645c1409c9d3ff337393d5032e3b8ae64ffaa8308a4ddfe65937d917cb1d45dd"
+    },
+    {
+      "id": "AUTH225-00630",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-7.txt",
+      "bytes": 7150,
+      "sha256": "a6184f95caaa0f4a88a57feb2957aabf3779dbdcaf7526432b2ed7da444ae011"
+    },
+    {
+      "id": "AUTH225-00631",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-8.txt",
+      "bytes": 7150,
+      "sha256": "1254fd399beda494190829a0989b79258a8bc4b0ea0fc02d695e4b6ebf2b9739"
+    },
+    {
+      "id": "AUTH225-00632",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/processes-9.txt",
+      "bytes": 7150,
+      "sha256": "250f2c2e52b9ab1d036d9d3f232751d5c20e660b32de6d29b5260ba1c4f129cd"
+    },
+    {
+      "id": "AUTH225-00633",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/run.json",
+      "bytes": 40293,
+      "sha256": "1b985c8e0526a64201f3a7e5ef8b66d51acf93e287ada9c8fdd282766e1763a7"
+    },
+    {
+      "id": "AUTH225-00634",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/service-state.json",
+      "bytes": 39026,
+      "sha256": "77f4a73d2aac95fa5f5d58843aff07bdd8935d728fa55a3f250c23a6a524e694"
+    },
+    {
+      "id": "AUTH225-00635",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH225-00636",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/tcp-auth-pair.pcap",
+      "bytes": 21098,
+      "sha256": "956784e7d8ce43d1c7aead7a13acfcb5694be64455a5be476dd7bd580e265568"
+    },
+    {
+      "id": "AUTH225-00637",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/tcp-capture-index.json",
+      "bytes": 59710,
+      "sha256": "e677a6bf9ec5d6ea2fe338751086c832637306a546a53df9b94a6112bdbc37ae"
+    },
+    {
+      "id": "AUTH225-00638",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/virtual-network.json",
+      "bytes": 24926,
+      "sha256": "df47d70c21751c41540445946af465fc67eeec34824e0cfde3ce05d80ecb845e"
+    },
+    {
+      "id": "AUTH225-00639",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "a26613450bb4daebb5b8271d9dd91e555c9bf0ae99a97f6da2f947f03bb495d6"
+    },
+    {
+      "id": "AUTH225-00640",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "502df3fc396992caea87b4d3d04744525031886be96fee8caeb868850be60c31"
+    },
+    {
+      "id": "AUTH225-00641",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH225-00642",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "AUTH225-00643",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/launch-exit.json",
+      "bytes": 73,
+      "sha256": "a8ad388dfc0620a94e5b12fd8eb541e15106c5e67330a0d5b1d9966623567bef"
+    },
+    {
+      "id": "AUTH225-00644",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "AUTH225-00645",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/raw-seal.json",
+      "bytes": 34208,
+      "sha256": "33d27c7fb1d9ed8c1b298ae9c900a02ca7e9807f34a4a18b4ad42526fde68c51"
+    },
+    {
+      "id": "AUTH225-00646",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/recipe.json",
+      "bytes": 1171,
+      "sha256": "22849b7bb4e9034352f4b077d1f93a12fb15068f965e2f2d8913f96a79ce2817"
+    },
+    {
+      "id": "AUTH225-00647",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-path/runtime-preflight.json",
+      "bytes": 78021,
+      "sha256": "fa904172cd950755a095187194ed7fbe8097af1f833e7180053de2f29b782ca8"
+    },
+    {
+      "id": "AUTH225-00648",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter-probe.py",
+      "bytes": 1263,
+      "sha256": "a6d71f3288f3c1f26eafbbf9c7d2e52df1072934d8543b025138c74b7a20f96d"
+    },
+    {
+      "id": "AUTH225-00649",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/getter.gdb",
+      "bytes": 1606,
+      "sha256": "f2f32f6bb9204bce6dea98bbf7258ffa4a8895216835ddebe50eede1b4123e96"
+    },
+    {
+      "id": "AUTH225-00650",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/historical-fatal-scan.json",
+      "bytes": 3799,
+      "sha256": "2f05e8a6cd206524813b44dfc8447131fb20d0dd1c522c1e924de0affb71e58b"
+    },
+    {
+      "id": "AUTH225-00651",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/input-00-continuation-verification.json",
+      "bytes": 3806,
+      "sha256": "892770d9a95eccd09bc41376af84ee2959e66fdc5776500b9c47be7de519db2c"
+    },
+    {
+      "id": "AUTH225-00652",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/input-01-continuation-alternate.json",
+      "bytes": 828,
+      "sha256": "7abb340a4064d67ea7e1be27a58ee445920cbc6317f4f98cfe6f9e45a9fca8e0"
+    },
+    {
+      "id": "AUTH225-00653",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/input-02-ui-dispatch.asm",
+      "bytes": 25791,
+      "sha256": "5d33aff55380f03a4c7341f127d2048d59707b0f6ddb90e998168ceb5d203009"
+    },
+    {
+      "id": "AUTH225-00654",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/input-03-source-first.json",
+      "bytes": 2589,
+      "sha256": "6a031f6cfe81b1e9e0ac627b7e2b1b87f69328bf254542623500be0208d1607c"
+    },
+    {
+      "id": "AUTH225-00655",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/network_policy.py",
+      "bytes": 1071,
+      "sha256": "843a8317629dc7f50afbae8bfeddea8b7a7a606b8e5c8437ac6e6d7d79e85820"
+    },
+    {
+      "id": "AUTH225-00656",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/pair_service_retry_r2.py",
+      "bytes": 3170,
+      "sha256": "6373918b3776c0ed69e811fb8cf13b587b49aa9947d3488101dcf76c2029bfcf"
+    },
+    {
+      "id": "AUTH225-00657",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/selector-accessors.json",
+      "bytes": 4313,
+      "sha256": "848bac61f8688361f7b90ee364e8831820bba04e2f62b0d1df004164644fc48d"
+    },
+    {
+      "id": "AUTH225-00658",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/source-first.json",
+      "bytes": 1819,
+      "sha256": "b2844d6d7534aebd59019fcc05271c1ba0c357146ea35ec159f0eccee2806b77"
+    },
+    {
+      "id": "AUTH225-00659",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/topology.py",
+      "bytes": 4064,
+      "sha256": "36236500034c015191db19686ffb125906ab0039b887ae07f462c8344e5e056c"
+    },
+    {
+      "id": "AUTH225-00660",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/verification.json",
+      "bytes": 2867,
+      "sha256": "dd3bd8ef74bca0e9c079e42b70973e318ffaf98ab765aad90d0cb45aacda6787"
+    },
+    {
+      "id": "AUTH225-00661",
+      "kind": "local",
+      "path": "local/research/codex/capture_github_cp225.py",
+      "bytes": 1940,
+      "sha256": "a80c3e42c16da9fd21fe8a828e3b32d36b99cdb45e5ccdb97795b8fee2c55250"
+    },
+    {
+      "id": "AUTH225-00662",
+      "kind": "local",
+      "path": "local/research/codex/cp225-GitHub-issues-1.json",
+      "bytes": 616057,
+      "sha256": "2938e083d897a877a7121b6f5e2cb967c2d4bbf827e612c666bb462e173ccb82"
+    },
+    {
+      "id": "AUTH225-00663",
+      "kind": "local",
+      "path": "local/research/codex/cp225-GitHub-issues-2.json",
+      "bytes": 586678,
+      "sha256": "5f119b53af5660af2b0c18e2d7e6b4a0138b0a2ad6e7d3c61c134a28efc45908"
+    },
+    {
+      "id": "AUTH225-00664",
+      "kind": "local",
+      "path": "local/research/codex/cp225-GitHub-issues-3.json",
+      "bytes": 592629,
+      "sha256": "f35b97ef37ba6d2fb123ab30c8a62832ee20e38a6b79499b64107accb4fb0555"
+    },
+    {
+      "id": "AUTH225-00665",
+      "kind": "local",
+      "path": "local/research/codex/cp225-GitHub-pulls-1.json",
+      "bytes": 2244332,
+      "sha256": "4628eb989a9de67e5b68d9eb23e8e2e410ec685d8c1b60ba09f1dd11615991d8"
+    },
+    {
+      "id": "AUTH225-00666",
+      "kind": "local",
+      "path": "local/research/codex/cp225-GitHub-pulls-2.json",
+      "bytes": 2224507,
+      "sha256": "ab40544ee2fa0159187b83df03cbfce97dab30908e8793b8eddd78eb09ccc3c1"
+    },
+    {
+      "id": "AUTH225-00667",
+      "kind": "local",
+      "path": "local/research/codex/cp225-GitHub-pulls-3.json",
+      "bytes": 530535,
+      "sha256": "61552aed77be05782d004bb71844f6d3d0a44f20dd8e5e3cb763e03dba3bb4b0"
+    },
+    {
+      "id": "AUTH225-00668",
+      "kind": "local",
+      "path": "local/research/codex/cp225-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH225-00669",
+      "kind": "local",
+      "path": "local/research/codex/cp225-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "3299bea9ac5a59f73b5e53bd4f1f7394d885920037ec8ceb7c14b58b27b228ec"
+    },
+    {
+      "id": "AUTH225-00670",
+      "kind": "local",
+      "path": "local/research/codex/cp225-github-capture.txt",
+      "bytes": 70,
+      "sha256": "60582cc70a2903fcc14ed6f90d35a6d283c87870a1775fa38ce8bdee1d98039f"
+    },
+    {
+      "id": "AUTH225-00671",
+      "kind": "local",
+      "path": "local/research/codex/cp225-issue-updates.txt",
+      "bytes": 448,
+      "sha256": "5afabd1cee62bbe9a54b5c63a06e5864ae145cd318064bc7a12b28c569d4f3cc"
+    },
+    {
+      "id": "AUTH225-00672",
+      "kind": "local",
+      "path": "local/research/codex/cp225-issue14-before.json",
+      "bytes": 37065,
+      "sha256": "0106cbe56307c00d96e0169ecf82e57e66f5ae634a04243fcc0154d0d63ac87c"
+    },
+    {
+      "id": "AUTH225-00673",
+      "kind": "local",
+      "path": "local/research/codex/cp225-issue14-request.json",
+      "bytes": 34306,
+      "sha256": "f85cff2d846c6749e49985ca2087871629acb317bf39624daf278259aaf30c9e"
+    },
+    {
+      "id": "AUTH225-00674",
+      "kind": "local",
+      "path": "local/research/codex/cp225-issue14-updated.json",
+      "bytes": 37220,
+      "sha256": "8a9c905065b778d112a2c39384d86ca12b56e1bf1bff299c75aecf93664a4e66"
+    },
+    {
+      "id": "AUTH225-00675",
+      "kind": "local",
+      "path": "local/research/codex/cp225-issue285-before.json",
+      "bytes": 10391,
+      "sha256": "570c8393000eb6cf3e00571e200c5e2d2e558c7342576bc2ba38bc9a23b2b34b"
+    },
+    {
+      "id": "AUTH225-00676",
+      "kind": "local",
+      "path": "local/research/codex/cp225-issue285-request.json",
+      "bytes": 7604,
+      "sha256": "101326eaca40d49e207141cb63d95474e671fcbaf2371fb871fcd008c683f42c"
+    },
+    {
+      "id": "AUTH225-00677",
+      "kind": "local",
+      "path": "local/research/codex/cp225-issue285-updated.json",
+      "bytes": 10546,
+      "sha256": "50ff7481d67727be3436b6cb42e1255ba484e185466f7bbee994385b0dad1bf3"
+    },
+    {
+      "id": "AUTH225-00678",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_fresh_negative.py",
+      "bytes": 5192,
+      "sha256": "1f5b6c34badb70dfde3ac393d5afa94439a2cbe5aedaa00df10f1b372dcc3180"
+    },
+    {
+      "id": "AUTH225-00679",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_fresh_process.py",
+      "bytes": 8507,
+      "sha256": "463fae56b57434f3dfac22fce8f4077fe3c0f93847535ae768fbb67b292ff5a2"
+    },
+    {
+      "id": "AUTH225-00680",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_retry_discriminator.py",
+      "bytes": 2970,
+      "sha256": "a8ca2c2bbe9f3ca2279c4bb139203e578cd9d37408d62d97ad47e24bcba617c8"
+    },
+    {
+      "id": "AUTH225-00681",
+      "kind": "local",
+      "path": "local/research/codex/prepare_auth_retry_discriminator_run.py",
+      "bytes": 3409,
+      "sha256": "a14522a173f21fbc1d92ea43df9fe11000e3e9686df777980f4dd2fa4c1cf7bf"
+    },
+    {
+      "id": "AUTH225-00682",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_fresh_negative.py",
+      "bytes": 852,
+      "sha256": "e3e85e56b7e780a647515cbdb61ffa02fffa905912707dfcc0b6c10686370f81"
+    },
+    {
+      "id": "AUTH225-00683",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_fresh_process.py",
+      "bytes": 839,
+      "sha256": "4167107119a4416d271804b218fd87619cfe21d6ea85aee25de38581f59f1db7"
+    },
+    {
+      "id": "AUTH225-00684",
+      "kind": "local",
+      "path": "local/research/codex/run_auth_retry_discriminator.py",
+      "bytes": 849,
+      "sha256": "61ab073a208e28de028f854e0697e0372ff94b1169daaa63e9bba4029a09b47e"
+    },
+    {
+      "id": "AUTH225-00685",
+      "kind": "local",
+      "path": "local/research/codex/sync_cp225.py",
+      "bytes": 12014,
+      "sha256": "950ec1bfe8f68de1c4d35e0c4fd05c24726771e3e66d050cadc5f1f461bfecd6"
+    },
+    {
+      "id": "AUTH225-00686",
+      "kind": "local",
+      "path": "local/research/codex/update_cp225_issues.py",
+      "bytes": 4833,
+      "sha256": "03101e2697234f5d05a8ecd662557bb54ff9fbcdf8d9bff7a487da9de555a1b1"
+    },
+    {
+      "id": "AUTH225-00687",
+      "kind": "local",
+      "path": "local/research/codex/verify_auth_fresh_negative.py",
+      "bytes": 4914,
+      "sha256": "193e3c580080c13766d65db05d0267186e2232c13dc8bada62b743d8567d6c59"
+    },
+    {
+      "id": "AUTH225-00688",
+      "kind": "local",
+      "path": "local/research/codex/verify_auth_fresh_process.py",
+      "bytes": 6180,
+      "sha256": "03c346bfa8e1e71dd82f3f1b12f6cd7c1679871eb1bb9ac869c30858a0f1a48c"
+    },
+    {
+      "id": "AUTH225-00689",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_fresh_negative.py",
+      "bytes": 24878,
+      "sha256": "69bbd54e24294201a11fca1bef87be4a60cffa7219463da4cb1765762602d2ca"
+    },
+    {
+      "id": "AUTH225-00690",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_auth_fresh_process.py",
+      "bytes": 23605,
+      "sha256": "72909569e17832a426fb82e8cc304d5a6b56e5587917d2d6d414e19990e6da48"
+    }
+  ]
+}

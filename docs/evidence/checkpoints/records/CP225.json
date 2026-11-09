@@ -1,0 +1,268 @@
+{
+  "id": "CP225",
+  "previous": "CP224",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-09T03:31:43.941209+00:00",
+  "context_commit": "928f2fbfa1bfadc867a64477d647022e4ffa52e6",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Bindprior11discriminatorandtestboundedfreshnativeprocessloginafteroldsessiontermination, withonlyfreshtokennegative andAownerretention;distinguishfromsameprocessfatal/reconnect/accountresume.",
+  "scope": "Sourcefirstactual125BD10caller/getterassignmentboundedprefixesandpassivegetterrun; independentfreshprocessBpositive/invalid32tokennegative withsameprivatepolicy/service/profile/ABsetup.3relatedfrozenruns595raw/no source-configmutationmidrun. Nativewire/ID-name-echo/PCAP/OSowner/finalUI/fatalchecks; noRust/production/fullauth/gate.",
+  "artifacts": [
+    {
+      "name": "OriginalKR00967unchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "OfflineWinecopy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Existingcopied-nativeimage",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "auth-retry-discriminator-r1:run1b985c8e0526a64201f3a7e5ef8b66d51acf93e287ada9c8fdd282766e1763a7/67.757521560s/154raw/cleanup0",
+    "auth-fresh-process-r1:runfcaec9abd9ae7d23d496419c04423d69667b72f6a28c9070e46fe38b0b98c727/71.399918226s/181raw/cleanup0",
+    "auth-fresh-process-negative-r1:runb2244afe0cf2f11c18a94235094b778ceb0524470f3ce893dd8e31ee281ff782/107.895601349s/260raw/cleanup0",
+    "125BD10caller/errorlocal10/12562C0return11at125BDE0→storeEBP-28at125BDE3→12562F0requested1→125BDF5. Priorvaluebeforevalidation,notreadback.",
+    "FreshBsameinputnewPID650old309/A159same, oldchannel8sessionreleased/new12/newlease/typed6ID2-KRGuest-echo/actual67/8shold. Negativefresh32tokenonly→native1/nochannel/Aowner45shold."
+  ],
+  "findings": [
+    {
+      "summary": "Prior11comesfromactual12562C0getterreturnstoredEBP-28before12562F0(request1);errorlocal10/caller125BD10. Getterwrapperobject+14static; requested1notreadback orforcedfix. Samprocessfatalunchanged;historicalscanfindsadditionaloldfatalinretry-ack/connect logswitholdbyteskept.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-fresh-process",
+      "evidence": [
+        "AUTH225-00660",
+        "AUTH225-00485",
+        "AUTH225-00657",
+        "AUTH225-00650"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/2prefix-display-netns/directvirtualLAN/noexternalroute.3runs595raw/frozeninputs/cleanup. OriginalprivateBtermination/cycle2policy/profile47pinsunchanged/designnotoriginalTTL/law. FreshnewBprocessafterownedoldBcleanup+3s/preautoattempt,sameaccount/newlease-session/native0/6-67/Aowner8s;wrongfresh32token/native1/nochannel/noBsession/Aowner45s. Notautomaticreconnect/accountresume/matchrestore/expiry/restart/fullauth/DB/API/security/Rust/gate. Priorselector11fromgetter/store,requested1notreadback;samprocessfatalCP224/before17CP220unresolved. Aowner/PIDretentionnotgameplayprogress. 8WIPbyteexact/noRust/oldrecordsAUD065immutable/next228. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Controller-ownedoldBcleanup+3s/preautoattemptthenfreshCAprocesssameaccount/copy/prefix/token. NewPID650old309/A159retained; nativeauth0/field36chain/ID2-KRGuesttyped6echo/67/newlease-sessionchannel12,old8sessionreleased/A6ownerunchanged/PCAP/2wineserver/2netns/8s+hold. FinalfreshnativeUIlobby.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-fresh-process",
+      "evidence": [
+        "AUTH225-00481",
+        "AUTH225-00482",
+        "AUTH225-00473"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/2prefix-display-netns/directvirtualLAN/noexternalroute.3runs595raw/frozeninputs/cleanup. OriginalprivateBtermination/cycle2policy/profile47pinsunchanged/designnotoriginalTTL/law. FreshnewBprocessafterownedoldBcleanup+3s/preautoattempt,sameaccount/newlease-session/native0/6-67/Aowner8s;wrongfresh32token/native1/nochannel/noBsession/Aowner45s. Notautomaticreconnect/accountresume/matchrestore/expiry/restart/fullauth/DB/API/security/Rust/gate. Priorselector11fromgetter/store,requested1notreadback;samprocessfatalCP224/before17CP220unresolved. Aowner/PIDretentionnotgameplayprogress. 8WIPbyteexact/noRust/oldrecordsAUD065immutable/next228. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "OnlyfreshBtoken32invalid(initialBvalid)→nativewriter/framejoin/credentialsdeny/native1/nochannel17/C2S6/67/Blease-sessionfor45s+;AownerPID/openTCPretained. FinalKRcredentialerrorUI/noWineProgramError; no fatalmarkersA/Bfreshboundedhold.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#auth-fresh-process",
+      "evidence": [
+        "AUTH225-00286",
+        "AUTH225-00287",
+        "AUTH225-00276"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/2prefix-display-netns/directvirtualLAN/noexternalroute.3runs595raw/frozeninputs/cleanup. OriginalprivateBtermination/cycle2policy/profile47pinsunchanged/designnotoriginalTTL/law. FreshnewBprocessafterownedoldBcleanup+3s/preautoattempt,sameaccount/newlease-session/native0/6-67/Aowner8s;wrongfresh32token/native1/nochannel/noBsession/Aowner45s. Notautomaticreconnect/accountresume/matchrestore/expiry/restart/fullauth/DB/API/security/Rust/gate. Priorselector11fromgetter/store,requested1notreadback;samprocessfatalCP224/before17CP220unresolved. Aowner/PIDretentionnotgameplayprogress. 8WIPbyteexact/noRust/oldrecordsAUD065immutable/next228. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "3runs595raw/frozenpreflight/ownedcleanup; freshprocessloginpositive≠automaticresume/accountDB/fullauth. Bothissuesopen/K6cWAN/K7unchanged/8WIPbyteexact/noRust. CP224PR295merged928f2fb/AUD065through224/next228. PLANswitchKR-R001/RUST-Q2dynamicroomonlysource-guidedgap,notbroadRE.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#auth-fresh-process",
+      "evidence": [
+        "AUTH225-00013",
+        "AUTH225-00002",
+        "AUTH225-00674",
+        "AUTH225-00677"
+      ],
+      "limits": "KR00967/Wine10.0/copy4b/inheritedofflineglobalreset/2prefix-display-netns/directvirtualLAN/noexternalroute.3runs595raw/frozeninputs/cleanup. OriginalprivateBtermination/cycle2policy/profile47pinsunchanged/designnotoriginalTTL/law. FreshnewBprocessafterownedoldBcleanup+3s/preautoattempt,sameaccount/newlease-session/native0/6-67/Aowner8s;wrongfresh32token/native1/nochannel/noBsession/Aowner45s. Notautomaticreconnect/accountresume/matchrestore/expiry/restart/fullauth/DB/API/security/Rust/gate. Priorselector11fromgetter/store,requested1notreadback;samprocessfatalCP224/before17CP220unresolved. Aowner/PIDretentionnotgameplayprogress. 8WIPbyteexact/noRust/oldrecordsAUD065immutable/next228. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "3runs595raw/frozenpreflight/ownedcleanup",
+      "result": "pass",
+      "evidence": [
+        "AUTH225-00002"
+      ],
+      "limits": "Hash/cleanupnotacceptance."
+    },
+    {
+      "check": "Nativegetterreturn11→savedpriorselectorbefore1request",
+      "result": "pass",
+      "evidence": [
+        "AUTH225-00660"
+      ],
+      "limits": "Notreadback1/causalroot orsameprocessfix."
+    },
+    {
+      "check": "FreshBnewprocess/accountnewlease-session/native0/6echo/67/AownerPID8s+",
+      "result": "pass",
+      "evidence": [
+        "AUTH225-00481",
+        "AUTH225-00482"
+      ],
+      "limits": "ExternalownedoldBstop/notautomaticreconnect/accountresume."
+    },
+    {
+      "check": "InvalidfreshB32token/native1/nochannel/noBlease-session/AownerPID45s+",
+      "result": "pass",
+      "evidence": [
+        "AUTH225-00286",
+        "AUTH225-00287"
+      ],
+      "limits": "Knownfreshloginnegative/nothealthyEOFdenial/security/fullauth."
+    },
+    {
+      "check": "Sameprocessretryafterpost17termination",
+      "result": "fail",
+      "evidence": [
+        "AUTH225-00660"
+      ],
+      "limits": "Nativefatalpersists/no newauth-session; do notrepeatwithoutnewobservable."
+    },
+    {
+      "check": "Manualdocs/catalog/links/WIPpreservation",
+      "result": "pass",
+      "evidence": [
+        "AUTH225-00013",
+        "AUTH225-00669",
+        "AUTH225-00668"
+      ],
+      "limits": "Fullrequire-local/historyandexactPRheadrequired; reviewwaivednotapproved."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP225-auth-fresh-process.json",
+      "bytes": 184490,
+      "sha256": "2c695906319585927fa55ffbf3e681d55a4517c3244745a1191d847730a1a9f2",
+      "count": 690
+    }
+  ],
+  "delta": {
+    "added": [
+      "Nativepriorselector11getter/store-before1requestsourcebound.",
+      "FreshBnewprocesspositive/newPID/accountlease-session/6-67/Aowner8s andinvalidfresh32tokennegative/native1/nochannel/Aowner45s,3runs595raw.",
+      "PLANNEXT-ROOM-REGISTRY/KR-R001/RUST-Q2sourceguided2rowgap; authautomaticresume/before17blockerskept."
+    ],
+    "corrected": [
+      "OldCP223retry-ack/connect logsalsocontainfatal, literalmarkerread-onlyscanexpanded; nomatchnothealthyproof.",
+      "Getterrequest1notreadback; freshprocessnewsessionnotautomaticreconnect/accountresume/matchrestore."
+    ],
+    "superseded": [
+      "CP224discriminatororiginunknownnowboundtogetterpriorvalue; semantics/security/fatalrootremainunknown.",
+      "NEXTfreshprocessnativepositive/negativealreadymeasured;do notrepeatgetter/hello/codec/fatalretry."
+    ]
+  },
+  "blockers": [
+    "SameprocessautomaticrecoveryfatalCP224andbefore17receiverselectionCP220remainblocked;nonewsource-supportedobservable/inputtojustifybroadSDK-VMgraph.",
+    "Fullauth/securefrontend/accountDB/sessionexpiry/revocation/restartfence/API/Rustnotimplemented/accepted;freshprocessprofileonly.",
+    "Generalroomregistry/2rowlistcount/selection/nativeprojectionnextM2gap;knownsingle-row91notmultirowproof."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "PerPLANKR-R001/RUST-Q2sourcefirstknown81/86/91/87/title/slot/count-rowconsumer→native2rowselect/request/UIonce layoutsupported. No allroom/mode/passwordscopeexpansion.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Blockedautomaticresume/nativefatal. Freshprocesspositive/invalidtokennegativealreadymeasured;reopenonlynewobservable/inputoractualmilestonedependency. No getter/hello/codec/fatalretry/SDK-VMrepeat.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchrepeatwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PlanningCP213/PR286delivered;M0→M1futureimplementationindependentfullRE;noRusttreeinthisREbatch.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-09T03:31:43.941209+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/sourcefirst/nativefreshprocesspositive-negative/getterpriorselector/manualselfcheck;independentreviewwaivednotapproved. ExactPRheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/login-runtime/README.md",
+      "state": "updated",
+      "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/login-runtime/fresh-process.json",
+      "state": "updated",
+      "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    }
+  ]
+}
