@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-09",
-  "baseline": "51bbf415fa02a4655246218dff7df284cd401c58",
+  "baseline": "928f2fbfa1bfadc867a64477d647022e4ffa52e6",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP224 exactnativehello/poll/validation/outerreturns1/phase2; actualsuccesshandoffreturns/local11→epilogue.3sealedruns462raw/sourcefreeze/cleanup. CP223fatalomission andentryunwindobserver corrected, oldrecords/raw preserved.",
-      "remaining": "FullretryFAIL withSIGABRT+Wineillegalinstruction; no postclose tokenbuilder/auth6-67/newsession. Discriminator11origin/meaningunknown. Before17EOFreceiver/fullauth/accountresume/expiry/revoke/restartfence/DB/API/Ruststillmissing.",
-      "next_test": "PerPLANcachefirstactualcaller/discriminatorprovenanceonly; require newsource-supportedinput/observablebeforemore runtime; no repeatfailedretry/hello/codec/permutation orSDK-VMgraph.",
+      "known": "CP2253runs595raw/nativegetter11storedbefore1request. FreshBprocesssameaccountnative0/ID-name-echo6/67/newlease-session+AownerPIDretained8s. Invalidfresh32token native1/nochannel/noBlease-session/Aowner45s. Frozeninputs/rawhash/cleanup/PCAP/nativeUIjoinsverified.",
+      "remaining": "SameprocessfatalCP224/before17EOFCP220blocked; genericaccountresume/sessionexpiry/revoke/restartfence/DB/API/fullauth/Rustmissing. Dynamicroom/2rowlist/registry/selection nextM2gap.",
+      "next_test": "PerPLANKR-R001/RUST-Q2sourcefirstknown81/86/91/87/title/slot/count-rowconsumer; native2rowselect/request/UI afterlayoutproof,notallroommodes/password. No oldgetter/hello/codec/fatalretry/SDK-VMrepeat.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Nativevalidationpositive≠fullretryhealthy;fatalomissionandobserverlimitations madeexplicit, no rootcausefrompopup/port/stack.8WIPpreserved/bothopen/scopedgatesunchanged/AUD065next228.",
+      "reason": "Freshprocessloginprofilepositiveandinvalidtokennegative≠automaticresume/fullauth. Bothissuesstayopen/8WIPpreserved/noRust/gatesunchanged/AUD065next228.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -261,7 +261,8 @@
         "docs/PROTOCOL.md#auth-two-account",
         "docs/PROTOCOL.md#auth-two-actual",
         "docs/PROTOCOL.md#auth-session-lifecycle",
-        "docs/PROTOCOL.md#auth-retry-validation"
+        "docs/PROTOCOL.md#auth-retry-validation",
+        "docs/PROTOCOL.md#auth-fresh-process"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -357,7 +358,8 @@
         "docs/evidence/login-runtime/README.md#cp221",
         "docs/evidence/login-runtime/README.md#cp222",
         "docs/evidence/login-runtime/README.md#cp223",
-        "docs/evidence/login-runtime/README.md#cp224"
+        "docs/evidence/login-runtime/README.md#cp224",
+        "docs/evidence/login-runtime/README.md#cp225"
       ],
       "prs": [
         173,
@@ -454,7 +456,8 @@
         291,
         292,
         293,
-        294
+        294,
+        295
       ],
       "successors": []
     },
@@ -793,11 +796,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP224 exactnativehello/poll/validation/outerreturns1/phase2; actualsuccesshandoffreturns/local11→epilogue.3sealedruns462raw/sourcefreeze/cleanup. CP223fatalomission andentryunwindobserver corrected, oldrecords/raw preserved.",
-      "remaining": "FullretryFAIL withSIGABRT+Wineillegalinstruction; no postclose tokenbuilder/auth6-67/newsession. Discriminator11origin/meaningunknown. Before17EOFreceiver/fullauth/accountresume/expiry/revoke/restartfence/DB/API/Ruststillmissing.",
-      "next_test": "PerPLANcachefirstactualcaller/discriminatorprovenanceonly; require newsource-supportedinput/observablebeforemore runtime; no repeatfailedretry/hello/codec/permutation orSDK-VMgraph.",
+      "known": "CP2253runs595raw/nativegetter11storedbefore1request. FreshBprocesssameaccountnative0/ID-name-echo6/67/newlease-session+AownerPIDretained8s. Invalidfresh32token native1/nochannel/noBlease-session/Aowner45s. Frozeninputs/rawhash/cleanup/PCAP/nativeUIjoinsverified.",
+      "remaining": "SameprocessfatalCP224/before17EOFCP220blocked; genericaccountresume/sessionexpiry/revoke/restartfence/DB/API/fullauth/Rustmissing. Dynamicroom/2rowlist/registry/selection nextM2gap.",
+      "next_test": "PerPLANKR-R001/RUST-Q2sourcefirstknown81/86/91/87/title/slot/count-rowconsumer; native2rowselect/request/UI afterlayoutproof,notallroommodes/password. No oldgetter/hello/codec/fatalretry/SDK-VMrepeat.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "Nativevalidationpositive≠fullretryhealthy;fatalomissionandobserverlimitations madeexplicit, no rootcausefrompopup/port/stack.8WIPpreserved/bothopen/scopedgatesunchanged/AUD065next228.",
+      "reason": "Freshprocessloginprofilepositiveandinvalidtokennegative≠automaticresume/fullauth. Bothissuesstayopen/8WIPpreserved/noRust/gatesunchanged/AUD065next228.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -812,7 +815,8 @@
         "docs/PROTOCOL.md#auth-two-account",
         "docs/PROTOCOL.md#auth-two-actual",
         "docs/PROTOCOL.md#auth-session-lifecycle",
-        "docs/PROTOCOL.md#auth-retry-validation"
+        "docs/PROTOCOL.md#auth-retry-validation",
+        "docs/PROTOCOL.md#auth-fresh-process"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -828,7 +832,8 @@
         "docs/evidence/login-runtime/README.md#cp221",
         "docs/evidence/login-runtime/README.md#cp222",
         "docs/evidence/login-runtime/README.md#cp223",
-        "docs/evidence/login-runtime/README.md#cp224"
+        "docs/evidence/login-runtime/README.md#cp224",
+        "docs/evidence/login-runtime/README.md#cp225"
       ],
       "prs": [
         286,
@@ -839,11 +844,12 @@
         291,
         292,
         293,
-        294
+        294,
+        295
       ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-09T03:03:32.361975+00:00",
+  "as_of_utc": "2026-11-09T03:30:12.819045+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
