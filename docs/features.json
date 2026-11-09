@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP228",
+  "as_of": "CP229",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -805,7 +805,8 @@
           "docs/PROTOCOL.md#four-session-native",
           "docs/evidence/room-list/README.md",
           "docs/evidence/room-list/README.md#cp227",
-          "docs/evidence/room-list/README.md#cp228"
+          "docs/evidence/room-list/README.md#cp228",
+          "docs/evidence/room-list/README.md#cp229"
         ]
       },
       "coverage": {
@@ -815,7 +816,8 @@
             "docs/PROTOCOL.md#duo-room-round",
             "docs/PROTOCOL.md#room-list-lifecycle",
             "docs/PROTOCOL.md#room-join-projection",
-            "docs/PROTOCOL.md#room-local-roster"
+            "docs/PROTOCOL.md#room-local-roster",
+            "docs/PROTOCOL.md#room-membership-registry"
           ]
         },
         "vn_reference": {
@@ -857,7 +859,8 @@
               "docs/PROTOCOL.md#room-list-lifecycle",
               "docs/evidence/room-list/README.md",
               "docs/PROTOCOL.md#room-join-projection",
-              "docs/PROTOCOL.md#room-local-roster"
+              "docs/PROTOCOL.md#room-local-roster",
+              "docs/PROTOCOL.md#room-membership-registry"
             ]
           },
           "windows_original": {
@@ -1254,14 +1257,16 @@
           "docs/PROTOCOL.md#a-survivor-admission",
           "docs/evidence/peer-endpoints/README.md#cp175",
           "docs/PROTOCOL.md#a-c-basic-cycles",
-          "docs/evidence/peer-endpoints/README.md#cp176"
+          "docs/evidence/peer-endpoints/README.md#cp176",
+          "docs/evidence/room-list/README.md#cp229"
         ]
       },
       "coverage": {
         "presence": {
           "state": "present",
           "refs": [
-            "docs/PROTOCOL.md#room-rejoin"
+            "docs/PROTOCOL.md#room-rejoin",
+            "docs/PROTOCOL.md#room-membership-registry"
           ]
         },
         "vn_reference": {
@@ -1318,7 +1323,8 @@
               "docs/evidence/peer-endpoints/README.md#cp175",
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
-              "docs/PROTOCOL.md#current-291-room-integration"
+              "docs/PROTOCOL.md#current-291-room-integration",
+              "docs/PROTOCOL.md#room-membership-registry"
             ]
           },
           "windows_original": {

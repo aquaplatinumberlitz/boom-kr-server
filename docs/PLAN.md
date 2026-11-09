@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP228: actual585→own106/110/291 riêng hai phòng, native204/6/128/errors0/ownID1-2/slot0/chief/UI;129raw sealed/cleanup. Fixed projection chưa registry/membership lifecycle. CP227 PR298 đã merge; AUD066 qua228/kế232. Internet thật chưa kiểm.
+CP229: private registry native BBack→Betarejoin và Beta→Alpha/slot1guest/Achief/peer106haiview;2run336raw+7rawstartupfailure sealed. Internalvisit-ownerfences/model19+7; chưa production/sharedleave-EOFfanout/cardoccupancy. CP228PR299/77ea70d merged; AUD066qua228/kế232. Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,18 +64,20 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-ROOM-REGISTRY / KR-R001, RUST-Q2**: [CP228](PROTOCOL.md#room-local-roster)/[raw](evidence/room-list/README.md#cp228)
-   đã đo actual585→106/110/291 riêng mỗi phòng, ownID/slot0/chief/native cursor/UI. Không chạy thêm fixed
-   projection/list/update/delete/87/error2 hoặc input controls đã giải. Tiếp **registry/membership private prototype**
-   trước khi ghép production: bind `(room session,roomID,generation,account session)`; kiểm selection82 và active
-   owner trước atomic join/leave, cấp slot có giới hạn, không dùng globalroom của ProbeService làm registry.
-   Tách policy design khỏi contract native; reuse builder và consumer đã đo, không dùng/sửa tám source WIP.
-   Phép tối thiểu: invalid/stale/duplicate/wrong-owner không đổi membership; remove/reuse room hoặc slot tăng
-   generation để delayed585/queued reply không sang membership mới; kiểm recipient theo room và account owner.
-   Sau model negative, dùng hai actual KR ordinary leave→refresh/reselect→join/585 để đối chiếu native context/
-   roster, phòng khác giữ nguyên, raw/hash/cleanup. Chỉ đo consumer leave thiếu từ nguồn đã có; không quét
-   toàn room/mode. Chưa claim Ready/start/UDP/mọi packet isolation từ roster. Audit kếCP232.
-   Firststream90/tag1/password/full/mode khác chỉ mở theo trigger implementation/acceptance.
+1. **NEXT-ROOM-REGISTRY / KR-R001/KR-R004, RUST-Q2**: [CP229](PROTOCOL.md#room-membership-registry)/[raw](evidence/room-list/README.md#cp229)
+   đã có private model/owner-room-visit fences và native BBack→Betarejoin, Beta→Alpha/slot1guest/Achief/
+   peer106haiview. Không lặp fixedprojection/list/87/error2 hoặc hai ca này. Tiếp **shared-membership cleanup**
+   trong adapter riêng trước production: guest ordinary86/EOF→107 đúng room peers, leaver về normalLobby,
+   member phòng khác không nhận107/110; host rời thì promotion dùng known110/chief policy có generation/owner.
+   Reuse CP034/035/107/199/200 consumer; không RE lại thân hàm hoặc dùng tám source WIP. Model negative
+   oldhandle/owner replacement/queuedrecipient trước native; phân biệt UIBack với EOF và startup error.
+   Native tối thiểu hai actual: B đã ở Alpha rời→A full107/base6→rewind/UIclear/ID2→0, B normalLobby;
+   queued work của visit cũ không phát vào visit mới. Thêm host/EOF control đúng gap; không tự claim mọi topology.
+   Sau prototype lifecycle mới chọn integration seam thay globalroom; không port Battle/đổi authority đồng thời.
+   **Giới hạn wire:** observed585 chỉ u32zero, không room epoch; internal queued-job fence không là phát hiện
+   mọi raw request cũ. Không reuse public(session,ID) trong process; restart fence còn thiếu. List occupancy
+   còn fixture1/4 dù registry vacated; dynamicmetadata/roomquota/password/full/mode chỉ mở theo trigger.
+   Không thêm Rust tree trong đợt RE; audit kếCP232.
 2. **NEXT-AUTH-SESSION-BINDING — blocked sameprocessrecovery**: [CP224](PROTOCOL.md#auth-retry-validation)
    fullretryfatal sauhello/validation1; [CP225](PROTOCOL.md#auth-fresh-process) getter12562C0 trả11→storeEBP-28
    trước setter12562F0(request1), errorlocal10. FreshprocessBnewlease/sessionpositive/invalidtokennegative đã đo;
@@ -94,7 +96,7 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    không chờ Battle/mọiitem và không chờ fullauthRE để thiết kế DB. Không tạo Rust tree trong đợt RE này.
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP228 không nâng gate; AUD066 qua228/audit kếCP232.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP229 không nâng gate; AUD066 qua228/audit kếCP232.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu

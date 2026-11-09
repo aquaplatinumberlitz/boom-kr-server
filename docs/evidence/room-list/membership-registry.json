@@ -1,0 +1,1480 @@
+{
+  "schema": "kre-room-membership-registry-v1",
+  "recorded_utc": "2026-11-09T05:10:10.016372+00:00",
+  "baseline": "77ea70d5294f431b08a8345da9224963582474d7",
+  "contract": "docs/PROTOCOL.md#room-membership-registry",
+  "research": "docs/RESEARCH.md#gap-room-membership",
+  "plan": "docs/PLAN.md#current-order",
+  "same_room_rejoin": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T05:00:05.275390+00:00",
+    "result": "twoactual_private_registry_Bordinary_leave_refresh_rejoin_newvisit_ownroster_Aunchanged",
+    "run_sha256": "5346a940c337b82a8b6559a75b9acfbbd6e7360da93baf39a5175df2e32b26fb",
+    "duration_s": 65.30471364,
+    "raw_count": 167,
+    "frozen_count": 392,
+    "cleanup": {
+      "net_namespace": "net:[4026533182]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+    },
+    "roles": [
+      {
+        "role": "A",
+        "identity": 1,
+        "joins": [
+          {
+            "kind": "joined",
+            "monotonic_ns": 174965186183339,
+            "member": {
+              "room": {
+                "session": 1,
+                "room_id": 101,
+                "generation": 1
+              },
+              "identity": 1,
+              "account_session": "8fb2cdccaa7331c40ec6c41e971e2c39",
+              "connection": "6",
+              "slot": 0,
+              "visit": 1
+            },
+            "sent": {
+              "seq": 55,
+              "opcode": 87,
+              "fixture": "A-registry-join-1-55.bin",
+              "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586",
+              "size": 45,
+              "monotonic_ns": 174965186164229
+            }
+          }
+        ],
+        "rosters": [
+          {
+            "kind": "roster_sent",
+            "monotonic_ns": 174965556522156,
+            "member": {
+              "room": {
+                "session": 1,
+                "room_id": 101,
+                "generation": 1
+              },
+              "identity": 1,
+              "account_session": "8fb2cdccaa7331c40ec6c41e971e2c39",
+              "connection": "6",
+              "slot": 0,
+              "visit": 1
+            },
+            "sequence": 103,
+            "sent": [
+              {
+                "seq": 58,
+                "opcode": 106,
+                "fixture": "A-registry-roster-1-106-58.bin",
+                "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934",
+                "size": 242,
+                "monotonic_ns": 174965556227446
+              },
+              {
+                "seq": 61,
+                "opcode": 110,
+                "fixture": "A-registry-roster-1-110-61.bin",
+                "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9",
+                "size": 44,
+                "monotonic_ns": 174965556334936
+              },
+              {
+                "seq": 64,
+                "opcode": 291,
+                "fixture": "A-registry-roster-1-291-64.bin",
+                "sha256": "0395bab66d0fd718776596dfeed31e756dccf6a4041113c0f66c23d43cdeb5d2",
+                "size": 166,
+                "monotonic_ns": 174965556502866
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "opcode": 82,
+            "sequence": 88,
+            "body_bytes": 11,
+            "fields": [
+              1,
+              101,
+              0,
+              1,
+              5
+            ]
+          },
+          {
+            "opcode": 585,
+            "sequence": 103,
+            "body_bytes": 4,
+            "fields": [
+              0
+            ]
+          }
+        ],
+        "native106_110": {
+          "player_end": [
+            {
+              "kind": "player_end",
+              "ns": 174965589716222,
+              "pc": "0xae3f1f",
+              "cursor": 204,
+              "payload": 204,
+              "err54": 0,
+              "err58": 0
+            }
+          ],
+          "slot_end": [
+            {
+              "kind": "slot_end",
+              "ns": 174965645429988,
+              "pc": "0xdc6762",
+              "cursor": 6,
+              "payload": 6,
+              "err54": 0,
+              "err58": 0
+            }
+          ]
+        },
+        "native291": [
+          {
+            "cursor": 128,
+            "err54": 0,
+            "err58": 0,
+            "kind": "producer_end",
+            "name": {
+              "ascii": "KRLocal",
+              "capacity": 15,
+              "hex": "4b524c6f63616c",
+              "size": 7
+            },
+            "ordinal": 1,
+            "packet": "0x12d1e0",
+            "payload": 128,
+            "record": "0x2ea32f6c",
+            "store": "0x2ea2cb68"
+          }
+        ],
+        "limits": "Raw585u32zero has no observed room/epoch; queued handle rejection is internal policy, not native stale-request classification. Predicate1 is not slotindex."
+      },
+      {
+        "role": "B",
+        "identity": 2,
+        "joins": [
+          {
+            "kind": "joined",
+            "monotonic_ns": 174965475332427,
+            "member": {
+              "room": {
+                "session": 2,
+                "room_id": 202,
+                "generation": 2
+              },
+              "identity": 2,
+              "account_session": "bda8201e1af689b594d9d5cdf07478a1",
+              "connection": "8",
+              "slot": 0,
+              "visit": 2
+            },
+            "sent": {
+              "seq": 55,
+              "opcode": 87,
+              "fixture": "B-registry-join-2-55.bin",
+              "sha256": "f0c2ccb51cfc4a9ce4e139b57c701728028437f5ef34b2d6829f684bbe8f1efb",
+              "size": 45,
+              "monotonic_ns": 174965475315207
+            }
+          },
+          {
+            "kind": "joined",
+            "monotonic_ns": 174979479510325,
+            "member": {
+              "room": {
+                "session": 2,
+                "room_id": 202,
+                "generation": 2
+              },
+              "identity": 2,
+              "account_session": "bda8201e1af689b594d9d5cdf07478a1",
+              "connection": "8",
+              "slot": 0,
+              "visit": 3
+            },
+            "sent": {
+              "seq": 73,
+              "opcode": 87,
+              "fixture": "B-registry-join-3-73.bin",
+              "sha256": "9ee8836b6adc3af2c7215bee604420ce46bec10b768cfbab409afce585af7607",
+              "size": 45,
+              "monotonic_ns": 174979479487935
+            }
+          }
+        ],
+        "rosters": [
+          {
+            "kind": "roster_sent",
+            "monotonic_ns": 174965840426801,
+            "member": {
+              "room": {
+                "session": 2,
+                "room_id": 202,
+                "generation": 2
+              },
+              "identity": 2,
+              "account_session": "bda8201e1af689b594d9d5cdf07478a1",
+              "connection": "8",
+              "slot": 0,
+              "visit": 2
+            },
+            "sequence": 97,
+            "sent": [
+              {
+                "seq": 58,
+                "opcode": 106,
+                "fixture": "B-registry-roster-2-106-58.bin",
+                "sha256": "b533937f467cd11084fc7a212e13bd892d2189ccf2438524f2730e06f9e5ab50",
+                "size": 242,
+                "monotonic_ns": 174965840111301
+              },
+              {
+                "seq": 61,
+                "opcode": 110,
+                "fixture": "B-registry-roster-2-110-61.bin",
+                "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9",
+                "size": 44,
+                "monotonic_ns": 174965840220831
+              },
+              {
+                "seq": 64,
+                "opcode": 291,
+                "fixture": "B-registry-roster-2-291-64.bin",
+                "sha256": "f541678500b576eb1e3da84bb770d501e1f67b7d11df349f51b6eaf0dfe76525",
+                "size": 166,
+                "monotonic_ns": 174965840408671
+              }
+            ]
+          },
+          {
+            "kind": "roster_sent",
+            "monotonic_ns": 174979852796043,
+            "member": {
+              "room": {
+                "session": 2,
+                "room_id": 202,
+                "generation": 2
+              },
+              "identity": 2,
+              "account_session": "bda8201e1af689b594d9d5cdf07478a1",
+              "connection": "8",
+              "slot": 0,
+              "visit": 3
+            },
+            "sequence": 166,
+            "sent": [
+              {
+                "seq": 76,
+                "opcode": 106,
+                "fixture": "B-registry-roster-3-106-76.bin",
+                "sha256": "7d824282cdf661e0a34fa698875e6729de2309a0cf488ac1d64ccb1b6daa285a",
+                "size": 242,
+                "monotonic_ns": 174979852464813
+              },
+              {
+                "seq": 79,
+                "opcode": 110,
+                "fixture": "B-registry-roster-3-110-79.bin",
+                "sha256": "d4100e591126b5f323be17e606bb4b6e905774003ad9900af73df64c3e501e4e",
+                "size": 44,
+                "monotonic_ns": 174979852572863
+              },
+              {
+                "seq": 82,
+                "opcode": 291,
+                "fixture": "B-registry-roster-3-291-82.bin",
+                "sha256": "7aceae17148c50729b637f12826d44b629455f70a6b9d756873eb4eb76ba061e",
+                "size": 166,
+                "monotonic_ns": 174979852779613
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "opcode": 82,
+            "sequence": 82,
+            "body_bytes": 11,
+            "fields": [
+              2,
+              202,
+              0,
+              1,
+              5
+            ]
+          },
+          {
+            "opcode": 585,
+            "sequence": 97,
+            "body_bytes": 4,
+            "fields": [
+              0
+            ]
+          },
+          {
+            "opcode": 86,
+            "sequence": 115,
+            "body_bytes": 0,
+            "fields": []
+          },
+          {
+            "opcode": 82,
+            "sequence": 151,
+            "body_bytes": 11,
+            "fields": [
+              2,
+              202,
+              0,
+              1,
+              5
+            ]
+          },
+          {
+            "opcode": 585,
+            "sequence": 166,
+            "body_bytes": 4,
+            "fields": [
+              0
+            ]
+          }
+        ],
+        "native106_110": {
+          "player_end": [
+            {
+              "kind": "player_end",
+              "ns": 174965879720050,
+              "pc": "0xae3f1f",
+              "cursor": 204,
+              "payload": 204,
+              "err54": 0,
+              "err58": 0
+            },
+            {
+              "kind": "player_end",
+              "ns": 174979887663459,
+              "pc": "0xae3f1f",
+              "cursor": 204,
+              "payload": 204,
+              "err54": 0,
+              "err58": 0
+            }
+          ],
+          "slot_end": [
+            {
+              "kind": "slot_end",
+              "ns": 174965940129069,
+              "pc": "0xdc6762",
+              "cursor": 6,
+              "payload": 6,
+              "err54": 0,
+              "err58": 0
+            },
+            {
+              "kind": "slot_end",
+              "ns": 174979945239507,
+              "pc": "0xdc6762",
+              "cursor": 6,
+              "payload": 6,
+              "err54": 0,
+              "err58": 0
+            }
+          ]
+        },
+        "native291": [
+          {
+            "cursor": 128,
+            "err54": 0,
+            "err58": 0,
+            "kind": "producer_end",
+            "name": {
+              "ascii": "KRGuest",
+              "capacity": 15,
+              "hex": "4b524775657374",
+              "size": 7
+            },
+            "ordinal": 1,
+            "packet": "0x12d1e0",
+            "payload": 128,
+            "record": "0x2ea32f6c",
+            "store": "0x2ea2cb68"
+          },
+          {
+            "cursor": 128,
+            "err54": 0,
+            "err58": 0,
+            "kind": "producer_end",
+            "name": {
+              "ascii": "KRGuest",
+              "capacity": 15,
+              "hex": "4b524775657374",
+              "size": 7
+            },
+            "ordinal": 2,
+            "packet": "0x12d1e0",
+            "payload": 128,
+            "record": "0x2ea32f6c",
+            "store": "0x2ea2cb68"
+          }
+        ],
+        "limits": "Raw585u32zero has no observed room/epoch; queued handle rejection is internal policy, not native stale-request classification. Predicate1 is not slotindex."
+      }
+    ],
+    "model": {
+      "source": "emu_choice",
+      "status": "design",
+      "recorded_utc": "2026-11-09T04:54:10.409555+00:00",
+      "cases": [
+        {
+          "case": "two_rooms_independent_slot0_recipients",
+          "result": "pass"
+        },
+        {
+          "case": "duplicate_join_idempotent_no_mutation",
+          "result": "pass"
+        },
+        {
+          "case": "stale_room_generation",
+          "result": "rejected_without_mutation",
+          "reason": "stale_or_unknown_room"
+        },
+        {
+          "case": "wrong_account_session",
+          "result": "rejected_without_mutation",
+          "reason": "inactive_or_wrong_owner"
+        },
+        {
+          "case": "wrong_connection",
+          "result": "rejected_without_mutation",
+          "reason": "inactive_or_wrong_owner"
+        },
+        {
+          "case": "already_in_other_room",
+          "result": "rejected_without_mutation",
+          "reason": "already_member"
+        },
+        {
+          "case": "bounded_full_room",
+          "result": "rejected_without_mutation",
+          "reason": "room_full"
+        },
+        {
+          "case": "remove_occupied_room",
+          "result": "rejected_without_mutation",
+          "reason": "room_not_empty"
+        },
+        {
+          "case": "session_collision",
+          "result": "rejected_without_mutation",
+          "reason": "room_session_collision"
+        },
+        {
+          "case": "capacity_bounds",
+          "result": "rejected_without_mutation",
+          "reason": "room_bounds"
+        },
+        {
+          "case": "duplicate585_no_second_roster",
+          "result": "rejected_without_mutation",
+          "reason": "duplicate_roster_request"
+        },
+        {
+          "case": "delayed_old585_job",
+          "result": "rejected_without_mutation",
+          "reason": "stale_or_wrong_membership"
+        },
+        {
+          "case": "delayed_old_leave",
+          "result": "rejected_without_mutation",
+          "reason": "stale_or_wrong_membership"
+        },
+        {
+          "case": "stale_cleanup_keeps_new_visit",
+          "result": "pass"
+        },
+        {
+          "case": "public_tuple_ABA_forbidden",
+          "result": "rejected_without_mutation",
+          "reason": "public_room_tuple_reuse"
+        },
+        {
+          "case": "removed_room_key",
+          "result": "rejected_without_mutation",
+          "reason": "stale_or_unknown_room"
+        },
+        {
+          "case": "room_replacement_new_ID_no_cross_room_recipient",
+          "result": "pass"
+        },
+        {
+          "case": "revoked_owner_no_roster",
+          "result": "rejected_without_mutation",
+          "reason": "stale_or_wrong_membership"
+        },
+        {
+          "case": "new_owner_old_cleanup_no_effect",
+          "result": "pass"
+        }
+      ],
+      "case_count": 19,
+      "result": "pass",
+      "source_sha256": "58efb4a0a2f68c51a26c12088999d347741aed46eb07e9d43f9e80e1d1fe03a2",
+      "final_state": {
+        "rooms": [
+          {
+            "key": {
+              "session": 1,
+              "room_id": 101,
+              "generation": 1
+            },
+            "title": "RoomAlpha",
+            "capacity": 1,
+            "members": [
+              {
+                "room": {
+                  "session": 1,
+                  "room_id": 101,
+                  "generation": 1
+                },
+                "identity": 1,
+                "account_session": "account-A",
+                "connection": "connection-A",
+                "slot": 0,
+                "visit": 1
+              }
+            ]
+          },
+          {
+            "key": {
+              "session": 2,
+              "room_id": 303,
+              "generation": 3
+            },
+            "title": "RoomGamma",
+            "capacity": 8,
+            "members": [
+              {
+                "room": {
+                  "session": 2,
+                  "room_id": 303,
+                  "generation": 3
+                },
+                "identity": 2,
+                "account_session": "account-B-new",
+                "connection": "connection-B-new",
+                "slot": 0,
+                "visit": 5
+              }
+            ]
+          }
+        ],
+        "visits": 5,
+        "room_generation": 3,
+        "tombstones": [
+          [
+            2,
+            202
+          ]
+        ],
+        "roster_sent": []
+      },
+      "limits": "Single-owner event-loop private Python policy, no durability/multithread/crash atomicity/native runtime or originalserverlaw. Captured internal handles fence delayed work; raw585u32zero has no observed wiregeneration, cannot classify indistinguishable old requests afterrejoin. No production/Rust/gate."
+    },
+    "preserved_failure": {
+      "run_sha256": "c8bd062f2d2b8017a7a59a860bf020761ded2c141f4ebf3823bde24cbc927af1",
+      "raw_count": 7,
+      "duration_s": 0.20888104,
+      "reason": "Repository import path missing before service ready; no clients launched; R2 setup correction only."
+    },
+    "hold_after_rejoin_s": 8.853811302,
+    "limits": "Private event-loop registry/design policy, two fixed public room tuples/capacity1 testprofile/single member each. Native ordinaryB86/normal24191/82/87/585/secondownroster tested, not production integration/general multi-member/fullroom/roommove/Ready/start/UDP/security or Rust/gate. Internal handles fence queued jobs; indistinguishable late raw585zero not wire-stale detection. No public tuple reuse in process; restart fence unproven. Personal291render unmeasured. Native UI must be manually inspected separately. Internet thật chưa kiểm."
+  },
+  "room_move": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T05:07:38.451696+00:00",
+    "result": "twoactual_registry_BmovesBetaToAlpha_slot1guest_Achief_peer106bothviews",
+    "run_sha256": "09d9c9421137baef2dae6b53a181ef124d1e43984123011acac602f5748d851e",
+    "duration_s": 63.812634458,
+    "raw_count": 169,
+    "frozen_count": 392,
+    "cleanup": {
+      "net_namespace": "net:[4026533182]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+    },
+    "roles": [
+      {
+        "role": "A",
+        "frame_players": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "frame_states": [
+          2,
+          0
+        ],
+        "native_players": [
+          {
+            "kind": "player_parsed",
+            "ns": 175360496560458,
+            "pc": "0xd62780",
+            "slot": 0,
+            "identity": 1,
+            "cursor": 204
+          },
+          {
+            "kind": "player_parsed",
+            "ns": 175374736520598,
+            "pc": "0xd62780",
+            "slot": 1,
+            "identity": 2,
+            "cursor": 204
+          }
+        ],
+        "own_slot_setters": [
+          0
+        ],
+        "identity_match_observations": [
+          {
+            "kind": "self_id_candidate",
+            "ns": 175360498614639,
+            "pc": "0x13b1577",
+            "candidate": 1,
+            "incoming": 1
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 175360502598641,
+            "pc": "0x124001c",
+            "index": 0,
+            "incoming": 1
+          },
+          {
+            "kind": "own_slot",
+            "ns": 175360505060292,
+            "pc": "0xdc5925",
+            "value": 1
+          },
+          {
+            "kind": "self_id_candidate",
+            "ns": 175374738747979,
+            "pc": "0x13b1577",
+            "candidate": 1,
+            "incoming": 2
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 175374740744330,
+            "pc": "0x124001c",
+            "index": 4294967295,
+            "incoming": 2
+          },
+          {
+            "kind": "own_slot",
+            "ns": 175374742965471,
+            "pc": "0xdc5925",
+            "value": 0
+          }
+        ],
+        "native87": [
+          {
+            "kind": "end87",
+            "n": 1,
+            "ns": 175360140907418,
+            "pc": "0x8179f3",
+            "cursor": 7,
+            "payload": 7,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "native106": [
+          {
+            "kind": "player_end",
+            "ns": 175360493480416,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_end",
+            "ns": 175374734255447,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "native110": [
+          {
+            "kind": "slot_end",
+            "ns": 175360540659579,
+            "pc": "0xdc6762",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "native291": [
+          {
+            "cursor": 128,
+            "err54": 0,
+            "err58": 0,
+            "kind": "producer_end",
+            "name": {
+              "ascii": "KRLocal",
+              "capacity": 15,
+              "hex": "4b524c6f63616c",
+              "size": 7
+            },
+            "ordinal": 1,
+            "packet": "0x12d1e0",
+            "payload": 128,
+            "record": "0x2ea32f6c",
+            "store": "0x2ea2cb68"
+          }
+        ],
+        "requests": [
+          {
+            "opcode": 82,
+            "sequence": 88,
+            "fields": [
+              1,
+              101,
+              0,
+              1,
+              5
+            ]
+          },
+          {
+            "opcode": 585,
+            "sequence": 103,
+            "fields": [
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "role": "B",
+        "frame_players": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "frame_states": [
+          2,
+          0,
+          2
+        ],
+        "native_players": [
+          {
+            "kind": "player_parsed",
+            "ns": 175360781573564,
+            "pc": "0xd62780",
+            "slot": 0,
+            "identity": 2,
+            "cursor": 204
+          },
+          {
+            "kind": "player_parsed",
+            "ns": 175374762561550,
+            "pc": "0xd62780",
+            "slot": 1,
+            "identity": 2,
+            "cursor": 204
+          },
+          {
+            "kind": "player_parsed",
+            "ns": 175374807561382,
+            "pc": "0xd62780",
+            "slot": 0,
+            "identity": 1,
+            "cursor": 204
+          }
+        ],
+        "own_slot_setters": [
+          0,
+          1
+        ],
+        "identity_match_observations": [
+          {
+            "kind": "self_id_candidate",
+            "ns": 175360785394535,
+            "pc": "0x13b1577",
+            "candidate": 2,
+            "incoming": 2
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 175360787207786,
+            "pc": "0x124001c",
+            "index": 0,
+            "incoming": 2
+          },
+          {
+            "kind": "own_slot",
+            "ns": 175360789297467,
+            "pc": "0xdc5925",
+            "value": 1
+          },
+          {
+            "kind": "self_id_candidate",
+            "ns": 175374764890771,
+            "pc": "0x13b1577",
+            "candidate": 2,
+            "incoming": 2
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 175374766654142,
+            "pc": "0x124001c",
+            "index": 0,
+            "incoming": 2
+          },
+          {
+            "kind": "own_slot",
+            "ns": 175374768648473,
+            "pc": "0xdc5925",
+            "value": 1
+          },
+          {
+            "kind": "self_id_candidate",
+            "ns": 175374810552203,
+            "pc": "0x13b1577",
+            "candidate": 2,
+            "incoming": 1
+          },
+          {
+            "kind": "own_match_index",
+            "ns": 175374813334944,
+            "pc": "0x124001c",
+            "index": 4294967295,
+            "incoming": 1
+          },
+          {
+            "kind": "own_slot",
+            "ns": 175374818742477,
+            "pc": "0xdc5925",
+            "value": 0
+          }
+        ],
+        "native87": [
+          {
+            "kind": "end87",
+            "n": 1,
+            "ns": 175360417384520,
+            "pc": "0x8179f3",
+            "cursor": 7,
+            "payload": 7,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "end87",
+            "n": 2,
+            "ns": 175374405587440,
+            "pc": "0x8179f3",
+            "cursor": 7,
+            "payload": 7,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "native106": [
+          {
+            "kind": "player_end",
+            "ns": 175360779360833,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_end",
+            "ns": 175374758809248,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "player_end",
+            "ns": 175374805446831,
+            "pc": "0xae3f1f",
+            "cursor": 204,
+            "payload": 204,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "native110": [
+          {
+            "kind": "slot_end",
+            "ns": 175360831800398,
+            "pc": "0xdc6762",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          },
+          {
+            "kind": "slot_end",
+            "ns": 175374790549064,
+            "pc": "0xdc6762",
+            "cursor": 6,
+            "payload": 6,
+            "err54": 0,
+            "err58": 0
+          }
+        ],
+        "native291": [
+          {
+            "cursor": 128,
+            "err54": 0,
+            "err58": 0,
+            "kind": "producer_end",
+            "name": {
+              "ascii": "KRGuest",
+              "capacity": 15,
+              "hex": "4b524775657374",
+              "size": 7
+            },
+            "ordinal": 1,
+            "packet": "0x12d1e0",
+            "payload": 128,
+            "record": "0x2ea32f6c",
+            "store": "0x2ea2cb68"
+          },
+          {
+            "cursor": 128,
+            "err54": 0,
+            "err58": 0,
+            "kind": "producer_end",
+            "name": {
+              "ascii": "KRGuest",
+              "capacity": 15,
+              "hex": "4b524775657374",
+              "size": 7
+            },
+            "ordinal": 2,
+            "packet": "0x12d1e0",
+            "payload": 128,
+            "record": "0x2ea32f6c",
+            "store": "0x2ea2cb68"
+          }
+        ],
+        "requests": [
+          {
+            "opcode": 82,
+            "sequence": 82,
+            "fields": [
+              2,
+              202,
+              0,
+              1,
+              5
+            ]
+          },
+          {
+            "opcode": 585,
+            "sequence": 97,
+            "fields": [
+              0
+            ]
+          },
+          {
+            "opcode": 86,
+            "sequence": 115,
+            "fields": []
+          },
+          {
+            "opcode": 82,
+            "sequence": 151,
+            "fields": [
+              1,
+              101,
+              0,
+              1,
+              5
+            ]
+          },
+          {
+            "opcode": 585,
+            "sequence": 166,
+            "fields": [
+              0
+            ]
+          }
+        ]
+      }
+    ],
+    "final_registry": {
+      "rooms": [
+        {
+          "key": {
+            "session": 1,
+            "room_id": 101,
+            "generation": 1
+          },
+          "title": "RoomAlpha",
+          "capacity": 8,
+          "members": [
+            {
+              "room": {
+                "session": 1,
+                "room_id": 101,
+                "generation": 1
+              },
+              "identity": 1,
+              "account_session": "bf33cfc1679a157cd6166391385f0316",
+              "connection": "6",
+              "slot": 0,
+              "visit": 1
+            },
+            {
+              "room": {
+                "session": 1,
+                "room_id": 101,
+                "generation": 1
+              },
+              "identity": 2,
+              "account_session": "9ddb711f73fdba41658249aadc89145b",
+              "connection": "8",
+              "slot": 1,
+              "visit": 3
+            }
+          ]
+        },
+        {
+          "key": {
+            "session": 2,
+            "room_id": 202,
+            "generation": 2
+          },
+          "title": "RoomBeta",
+          "capacity": 8,
+          "members": []
+        }
+      ],
+      "visits": 3,
+      "room_generation": 2,
+      "tombstones": [],
+      "roster_sent": [
+        1,
+        3
+      ]
+    },
+    "move_model": {
+      "source": "emu_choice",
+      "status": "design",
+      "result": "pass",
+      "cases": [
+        "initialtwo-roomroster",
+        "atomicBmoveBeta-toAlpha",
+        "Aretained/Bslot1/Betavacant",
+        "oldqueuedhandlefalse",
+        "oldcleanupkeepsnewvisit",
+        "wrongroomhandle-no-mutation",
+        "Bleave-removesonlyB"
+      ],
+      "registry_sha256": "58efb4a0a2f68c51a26c12088999d347741aed46eb07e9d43f9e80e1d1fe03a2",
+      "limits": "Private policy scenarios, not nativeKR/originalserverlaw/security/gate."
+    },
+    "hold_after_rejoin_s": 8.822378137,
+    "correction": "Controller early_completion inherited text Aunchanged means Acontext/account/channel retained, not unchanged roster; A receives106 for new memberB. Capacity8 only policy, two native members measured. Listcard occupancy stays fixed1/4 fromfixture, not registryderivedlist acceptance.",
+    "limits": "Private Python event-loop registry and known peer106 projection; no productionintegration/general promotion/leave-while-shared/disconnect-fanout/Ready/start/UDP/fullroom/password/eightclient/Rust/gate. Internal visit/owner fences do not classify indistinguishable raw585zero afterrejoin. 291producer not personal-render. Publictuple no-reuse perprocess, not durable restartfence. UI/capture verification separate. Internet thật chưa kiểm."
+  },
+  "capture_ui": [
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "capture": {
+        "path": "local/research/codex/room-registry-r2/leave-rejoin/cycles/tcp-auth-pair.pcap",
+        "sha256": "043679b0cf437c269a2a6b37737837918165f0bb777f7fcfb6d2a3622144e8f3",
+        "packets": 271
+      },
+      "joins": [
+        {
+          "role": "A",
+          "channel_peer": [
+            "10.77.0.2",
+            56708
+          ],
+          "captured_c2s_bytes": 1471,
+          "proof_prefix_bytes": 1471,
+          "captured_s2c_bytes": 869,
+          "dynamic_frames": [
+            {
+              "opcode": 87,
+              "seq": 55,
+              "stream_offset": 372,
+              "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586"
+            },
+            {
+              "opcode": 106,
+              "seq": 58,
+              "stream_offset": 417,
+              "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+            },
+            {
+              "opcode": 110,
+              "seq": 61,
+              "stream_offset": 659,
+              "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+            },
+            {
+              "opcode": 291,
+              "seq": 64,
+              "stream_offset": 703,
+              "sha256": "0395bab66d0fd718776596dfeed31e756dccf6a4041113c0f66c23d43cdeb5d2"
+            }
+          ],
+          "native87ends": [
+            {
+              "kind": "end87",
+              "n": 1,
+              "ns": 174965216228523,
+              "pc": "0x8179f3",
+              "cursor": 7,
+              "payload": 7,
+              "err54": 0,
+              "err58": 0
+            }
+          ]
+        },
+        {
+          "role": "B",
+          "channel_peer": [
+            "10.77.0.3",
+            34132
+          ],
+          "captured_c2s_bytes": 2191,
+          "proof_prefix_bytes": 2191,
+          "captured_s2c_bytes": 1566,
+          "dynamic_frames": [
+            {
+              "opcode": 87,
+              "seq": 55,
+              "stream_offset": 372,
+              "sha256": "f0c2ccb51cfc4a9ce4e139b57c701728028437f5ef34b2d6829f684bbe8f1efb"
+            },
+            {
+              "opcode": 106,
+              "seq": 58,
+              "stream_offset": 417,
+              "sha256": "b533937f467cd11084fc7a212e13bd892d2189ccf2438524f2730e06f9e5ab50"
+            },
+            {
+              "opcode": 110,
+              "seq": 61,
+              "stream_offset": 659,
+              "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+            },
+            {
+              "opcode": 291,
+              "seq": 64,
+              "stream_offset": 703,
+              "sha256": "f541678500b576eb1e3da84bb770d501e1f67b7d11df349f51b6eaf0dfe76525"
+            },
+            {
+              "opcode": 241,
+              "seq": 67,
+              "stream_offset": 869,
+              "sha256": "82d1071e77e18b28812e71fce54be3291db3a2aef214b248adbb15ecedaf9f88"
+            },
+            {
+              "opcode": 91,
+              "seq": 70,
+              "stream_offset": 938,
+              "sha256": "bf7f8a3d26d60305a40ea14d416652ec2943fd378be6dae18c5a1a8ebbb3c99e"
+            },
+            {
+              "opcode": 87,
+              "seq": 73,
+              "stream_offset": 1069,
+              "sha256": "9ee8836b6adc3af2c7215bee604420ce46bec10b768cfbab409afce585af7607"
+            },
+            {
+              "opcode": 106,
+              "seq": 76,
+              "stream_offset": 1114,
+              "sha256": "7d824282cdf661e0a34fa698875e6729de2309a0cf488ac1d64ccb1b6daa285a"
+            },
+            {
+              "opcode": 110,
+              "seq": 79,
+              "stream_offset": 1356,
+              "sha256": "d4100e591126b5f323be17e606bb4b6e905774003ad9900af73df64c3e501e4e"
+            },
+            {
+              "opcode": 291,
+              "seq": 82,
+              "stream_offset": 1400,
+              "sha256": "7aceae17148c50729b637f12826d44b629455f70a6b9d756873eb4eb76ba061e"
+            }
+          ],
+          "native87ends": [
+            {
+              "kind": "end87",
+              "n": 1,
+              "ns": 174965501383389,
+              "pc": "0x8179f3",
+              "cursor": 7,
+              "payload": 7,
+              "err54": 0,
+              "err58": 0
+            },
+            {
+              "kind": "end87",
+              "n": 2,
+              "ns": 174979508539749,
+              "pc": "0x8179f3",
+              "cursor": 7,
+              "payload": 7,
+              "err54": 0,
+              "err58": 0
+            }
+          ]
+        }
+      ],
+      "manual_UI": [
+        {
+          "path": "local/research/codex/room-registry-r2/leave-rejoin/cycles/B/before-rejoin.png",
+          "sha256": "73533d1e4ed5334d34de218675c57d022aa12858d7544e00e8d5d8faa8690a38",
+          "manual_observation": "NormalLobby KRGuest/two cards Alpha and Beta; fixture occupancy still1/4, not dynamic occupancy acceptance."
+        },
+        {
+          "path": "local/research/codex/room-registry-r2/leave-rejoin/cycles/A/screen-24.png",
+          "sha256": "5ee5f6f4a73dabb03573b3ddc8b2dcaf45b457e85cb6881ba9504d92fc1d0d6c",
+          "manual_observation": "Alpha/KRLocal firstslot/chief; seven other slots blank, unchanged from initial projection."
+        },
+        {
+          "path": "local/research/codex/room-registry-r2/leave-rejoin/cycles/B/screen-24.png",
+          "sha256": "825ec26d929d38f02eea0908cd705b684b4e65e11d65673504ddb2b8acf11b5b",
+          "manual_observation": "Beta/KRGuest firstslot/chief after rejoin; seven other slots blank. Character hover panel is not new character-change evidence."
+        }
+      ],
+      "reader": "Direct bounded Python stdlib PCAP/Ethernet/IPv4/TCP reassembly fallback; no TShark/REA successful capture Evidence.",
+      "limitations": "Only this saved unfragmented little-endian PCAP profile. Reject truncation/gaps/conflicting overlaps; duplicates deduplicated by sequence. Prefix comparison allows post-proof heartbeat tail. No live capture/UDP/Internet/all-packet semantic isolation/general membership claim. REA provider call failed capability_unavailable; no tool/config installation or repair."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "capture": {
+        "path": "local/research/codex/room-registry-r3/leave-rejoin/cycles/tcp-auth-pair.pcap",
+        "sha256": "04bec4ab0274a0fc0a4bd000b1fc2e3dba8a8451e135a1e387e3fed61639a7dc",
+        "packets": 262
+      },
+      "joins": [
+        {
+          "role": "A",
+          "channel_peer": [
+            "10.77.0.2",
+            58940
+          ],
+          "captured_c2s_bytes": 1471,
+          "proof_prefix_bytes": 1471,
+          "captured_s2c_bytes": 1111,
+          "dynamic_frames": [
+            {
+              "opcode": 87,
+              "seq": 55,
+              "stream_offset": 372,
+              "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586"
+            },
+            {
+              "opcode": 106,
+              "seq": 58,
+              "stream_offset": 417,
+              "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+            },
+            {
+              "opcode": 110,
+              "seq": 61,
+              "stream_offset": 659,
+              "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+            },
+            {
+              "opcode": 291,
+              "seq": 64,
+              "stream_offset": 703,
+              "sha256": "0395bab66d0fd718776596dfeed31e756dccf6a4041113c0f66c23d43cdeb5d2"
+            },
+            {
+              "opcode": 106,
+              "seq": 67,
+              "stream_offset": 869,
+              "sha256": "c0ea008c2760f0167dd73c2be8fbd8b21f7a694d7935865e4c70efdbffbc06cc"
+            }
+          ],
+          "native87ends": [
+            {
+              "kind": "end87",
+              "n": 1,
+              "ns": 175360140907418,
+              "pc": "0x8179f3",
+              "cursor": 7,
+              "payload": 7,
+              "err54": 0,
+              "err58": 0
+            }
+          ]
+        },
+        {
+          "role": "B",
+          "channel_peer": [
+            "10.77.0.3",
+            43740
+          ],
+          "captured_c2s_bytes": 2097,
+          "proof_prefix_bytes": 2097,
+          "captured_s2c_bytes": 1808,
+          "dynamic_frames": [
+            {
+              "opcode": 87,
+              "seq": 55,
+              "stream_offset": 372,
+              "sha256": "f0c2ccb51cfc4a9ce4e139b57c701728028437f5ef34b2d6829f684bbe8f1efb"
+            },
+            {
+              "opcode": 106,
+              "seq": 58,
+              "stream_offset": 417,
+              "sha256": "b533937f467cd11084fc7a212e13bd892d2189ccf2438524f2730e06f9e5ab50"
+            },
+            {
+              "opcode": 110,
+              "seq": 61,
+              "stream_offset": 659,
+              "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+            },
+            {
+              "opcode": 291,
+              "seq": 64,
+              "stream_offset": 703,
+              "sha256": "f541678500b576eb1e3da84bb770d501e1f67b7d11df349f51b6eaf0dfe76525"
+            },
+            {
+              "opcode": 241,
+              "seq": 67,
+              "stream_offset": 869,
+              "sha256": "82d1071e77e18b28812e71fce54be3291db3a2aef214b248adbb15ecedaf9f88"
+            },
+            {
+              "opcode": 91,
+              "seq": 70,
+              "stream_offset": 938,
+              "sha256": "bf7f8a3d26d60305a40ea14d416652ec2943fd378be6dae18c5a1a8ebbb3c99e"
+            },
+            {
+              "opcode": 87,
+              "seq": 73,
+              "stream_offset": 1069,
+              "sha256": "6523ddc7e0db1b15821abd244a8d99d2c9961e43c1f681a54257222145399e42"
+            },
+            {
+              "opcode": 106,
+              "seq": 76,
+              "stream_offset": 1114,
+              "sha256": "89c59e8c0182399898ba2c60cb0606b29e4f686ec95182caab86eba02392fbdb"
+            },
+            {
+              "opcode": 110,
+              "seq": 79,
+              "stream_offset": 1356,
+              "sha256": "1db0b03bde3ed9e45d246af2cffebea55aebea10424fd331264fa648f0a107a5"
+            },
+            {
+              "opcode": 291,
+              "seq": 82,
+              "stream_offset": 1400,
+              "sha256": "7aceae17148c50729b637f12826d44b629455f70a6b9d756873eb4eb76ba061e"
+            },
+            {
+              "opcode": 106,
+              "seq": 85,
+              "stream_offset": 1566,
+              "sha256": "c3a075e040c83d59756636e7dd4f71f5f421e474ddeeba523fc4a1497e6ffee3"
+            }
+          ],
+          "native87ends": [
+            {
+              "kind": "end87",
+              "n": 1,
+              "ns": 175360417384520,
+              "pc": "0x8179f3",
+              "cursor": 7,
+              "payload": 7,
+              "err54": 0,
+              "err58": 0
+            },
+            {
+              "kind": "end87",
+              "n": 2,
+              "ns": 175374405587440,
+              "pc": "0x8179f3",
+              "cursor": 7,
+              "payload": 7,
+              "err54": 0,
+              "err58": 0
+            }
+          ]
+        }
+      ],
+      "manual_UI": [
+        {
+          "path": "local/research/codex/room-registry-r3/leave-rejoin/cycles/B/before-rejoin.png",
+          "sha256": "3231cb419b3b6ade7e25253d4def455530bbe31b435ba472b9a9efc7cca4063a",
+          "manual_observation": "NormalLobby KRGuest/two cards Alpha and Beta; fixture occupancy still1/4, not dynamic occupancy acceptance."
+        },
+        {
+          "path": "local/research/codex/room-registry-r3/leave-rejoin/cycles/A/screen-24.png",
+          "sha256": "972b0848887ef5c281b547416005257c544cbf431f23c5adfb832dda9a786a5f",
+          "manual_observation": "Alpha: KRLocal firstslot/chief, KRGuest secondslot/guest, other6blank. Aaccount/context retained, roster addsB."
+        },
+        {
+          "path": "local/research/codex/room-registry-r3/leave-rejoin/cycles/B/screen-24.png",
+          "sha256": "5a9e316e3a7922c744012cb03705027f9ec4db36d06d0c37cbdf2d0f9e47da26",
+          "manual_observation": "Alpha: KRLocal firstslot/chief and ownKRGuest secondslot/guest after move, other6blank. Ownmarker/chiefbuttons checked visually; no Ready/start claim."
+        }
+      ],
+      "reader": "Direct bounded Python stdlib PCAP/Ethernet/IPv4/TCP reassembly fallback; no TShark/REA successful capture Evidence.",
+      "limitations": "Only this saved unfragmented little-endian PCAP profile. Reject truncation/gaps/conflicting overlaps; duplicates deduplicated by sequence. Prefix comparison allows post-proof heartbeat tail. No live capture/UDP/Internet/all-packet semantic isolation/general membership claim. REA provider call failed capability_unavailable; no tool/config installation or repair."
+    }
+  ],
+  "limits": "Private Python RE prototype, not production/Rust/fullroom subsystem. Internal membership/owner handles fence queued work; raw585zero lacks observed room epoch. Same-publictuple reuse forbidden perprocess, restart fence unproven. Native2members only; fixed list occupancy/no shared-leave fanout/promotion/EOF/Ready/start/UDP/security acceptance. Internet thật chưa kiểm."
+}

@@ -912,6 +912,48 @@ Chưa Ready/start/UDP/gameplay/DB/fullauth/Rust/gate. [PLAN](PLAN.md#current-ord
 theo room tuple/generation/account owner và native leave/rejoin controls, không thêm fixedprojection-only runs.
 AUD066 quaCP228/kếCP232; record/audit cũ giữ nguyên. Internet thật chưa kiểm.
 
+<a id="room-membership-registry"></a>
+### Registry private, Back/rejoin và chuyển phòng — CP229
+
+[Recipe/raw/hash](evidence/room-list/README.md#cp229), [metadata](evidence/room-list/membership-registry.json).
+Source-first đối chiếu CP034/035/107 và CP226–228; merged four-profile builders/consumer106/110/291 giữ nguyên.
+`boomkr-re@88e11ed/kr-data.md553–559` là oldVN UI hint/Bjoin chưa xác nhận; `boom-re@9ac2075/lobby.md603–615`
+chỉ mẫu kiểm ghost/chief/per-room routing, không port opcode. Không thân hàm native mới/patch/SDK/VM graph.
+
+**`emu_choice/design` registry:** một event-loop owner, không await trong mutation; room key `(session,roomID,
+internal generation)` và member handle thêm identity/account-session/connection/slot/monotonic visit.
+Join kiểm current owner/room trước cấp slot; duplicate cùng member idempotent, wrongowner/stale/full không mutation.
+Leave/cleanup so exact handle, old cleanup không xóa visit mới. Trước delivery kiểm lại owner/current room/visit.
+Public(session,ID) đã remove không reuse trong process vì native82 chưa có measured generation; tombstone không
+là durable restart fence. 19 model scenarios (owner/full/duplicate/stale/ABA/cleanup) và7 move scenarios chỉ kiểm
+policy, không originalserver law hoặc native compatibility. Atomic ở state transition event-loop, không DB/send transaction.
+
+**`kr_runtime/confirmed` run R2:** hai actual native auth/session giữ; AAlpha1/ID101/slot0chief và BBeta2/ID202/
+slot0chief. OrdinaryBBack113,581→actual86empty, registry bỏ đúng member B;1s sau private241/91 refresh normalLobby.
+Ordinary center-card82Beta→87slot0/session2→585→106/110/291 đúng ID2/KRGuest/slot0/chief; visit mới khác visit cũ,
+Acontext/roster1 giữ. Native87full7,106full204,110full6,291producer128/errors0; UI/PCAP/same8TCP/two authowners,
+8s+hold. Old queued recipient handle kiểm false, không wire send — đây là policy observable, không native stale injection.
+
+**`kr_runtime/confirmed` run R3:** sau initial hai room như trên, BBack→normalLobby rồi actual82(session1,ID101),
+87slot1/session1→native context101/Alpha/ownslotsetter1→585. B nhận own106ID2/slot1/state0 (khách),110/291,
+peer106ID1/slot0/state2 (chủ); A nhận thêm106ID2/slot1/state0, Aownslot0/chief giữ. Hai ảnh đều Alpha,
+KRLocal ô đầu/chủ, KRGuest ô hai/khách; B có Ready, A có Start nhưng không bấm hoặc nghiệm thu Ready/start.
+Native mọi106full204/110full6/291producer128/87full7/errors0; registry Alpha2members, Beta0, hai account sessions/channels giữ,
+8s+hold. Capacity8 là policy, chỉ hai actual được đo; không native8/fullroom proof.
+
+**Giới hạn/correction:** decoded actual585 ở cả hai run là4byte/u32zero, không observed room/epoch.
+Captured internal member handle chặn queued reply cũ; bytes585 cũ giống request mới sau rejoin chưa thể phân loại stale.
+Không thêm epoch vào wire hoặc tuyên bố replay protection tổng quát. Raw markerDC5925/predicate1 vẫn không là slotindex;
+291 producer/name không personal-render. R3 controller kế thừa text “Aunchanged”: Acontext/account/channel giữ,
+**roster A có thêm B**, không unchanged roster. Cards vẫn fixture occupancy1/4, không phản ánh Beta rỗng của registry.
+
+R1 lỗi import repository trước service-ready/chưa mở client:0.20888104s/7raw/exit1; giữ source/raw/cleanup,
+R2 sửa setup import trên bản riêng sau seal. R2+R3=336raw, cả batch343raw frozen/sealed/ownedcleanup0.
+PCAP direct-parser fallback kiểm271+262record/14+16dynamicframe theo stream; REA TShark provider thiếu capability,
+không có successful REA capture Evidence/không sửa toolconfig. Chưa production integration/general shared-leave/
+EOF fanout/promotion/occupancy/roomquota/Ready/start/UDP/DB/fullauth/Rust/gate. [PLAN](PLAN.md#current-order)
+tiếp shared-membership cleanup bằng107/110 đã biết, không lặp join/projection. AUD066qua228/kế232. Internet thật chưa kiểm.
+
 <a id="room-player"></a>
 ### Player, own-slot và controls phòng (CP018)
 
