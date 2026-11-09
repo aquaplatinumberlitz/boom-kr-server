@@ -28,6 +28,14 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP222: hai KR cùng service đã bind hai identity/session riêng; duplicate account bị native từ chối.**
+[Contract/giới hạn](docs/PROTOCOL.md#auth-two-actual), [bốn run/hash](docs/evidence/login-runtime/README.md#cp222):
+R3 native0/C2S6 đúng1/2/echo/actual67 cảhai,2CA/2wineserver/2netns/PCAP/8s+hold; R4 tokenB=A cho native1/nochannel,
+ownerA giữ nguyên. Hai run denial ban đầu giữ raw; suffix25 có biến môi trường, parser profile mới ghi design rõ.
+498raw đã kiểm/seal/cleanup; chưa fullauth/healthyEOFdenial/Rust/gate mới. CP220–221 đã merge
+[PR292](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/292)/`f5caefb`; audit kếCP224.
+[Bước tiếp](docs/PLAN.md#current-order): đảo token giữa endpoint, không lặp positive hoặc duplicate đã đo.
+
 **CP221: A/B đã đi qua native đúng identity; wrong-binding TCP giữ lease/owner.**
 [Contract/giới hạn](docs/PROTOCOL.md#auth-two-account), [run/hash](docs/evidence/login-runtime/README.md#cp221):
 hai positive Wine riêng ID1/KRLocal và ID2/KRGuest có auth0/C2S6 echo/actual67;119raw đã kiểm.

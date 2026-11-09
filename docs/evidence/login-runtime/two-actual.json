@@ -1,0 +1,984 @@
+{
+  "schema": "kre-auth-two-actual-v1",
+  "baseline": "f5caefb30b5af86eb9094ad396471c59a0fc6fff",
+  "build": "KR00967",
+  "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "environment": "Wine10.0-20260425/sharedphysicalkernel/twoownedprefix-display-netns/directvirtualLAN10.77.0.1root/.2A/.3B/noTCPproxy/noexternalroute",
+  "source_first": [
+    {
+      "path": "local/research/codex/auth-two-actual-r1/source-first.json",
+      "sha256": "82069cd5e3d9e7ff7eed9e1abb9e953c6b2f8dead5b66a4813ab65120ee150d7"
+    },
+    {
+      "path": "local/research/codex/auth-two-actual-r1/suffix-source-first.json",
+      "sha256": "a7d25b25ad00263e83d6232ba9b1ef793889202a69739193075d2faf8a785647"
+    },
+    {
+      "path": "local/research/codex/auth-two-actual-r1/duplicate-source-first.json",
+      "sha256": "492133d8a4e2bb1e47bac34c49297af355e127e8089725b538c10a7560bbe4ad"
+    }
+  ],
+  "profile_delta": {
+    "source_path": "local/research/codex/k2-live-stream-r1/profile.json",
+    "sha256": "69ad6ba7eb0ab89f8cc49f23cd3ca3ad3003666c5379f55c5d28eee5dcc6822b",
+    "new": "local/research/codex/auth-two-actual-r1/profile.json",
+    "new_sha256": "bf1f99989e45a4b5e47e831165ad1f43f296418253388d8ba8338532d665afee",
+    "removed": {
+      "replacement_slot": {
+        "mode": "vacant_AB_slot",
+        "capacity": "vacated_slot"
+      }
+    },
+    "reason": "Auth-only2fixedaccounts;existingProbeServiceadmission_ipsrejectsreplacement_slotcombination. No room/replacement/gameplaytested. All47fixturebytes/pinsunchanged.",
+    "source": "emu_choice",
+    "status": "design"
+  },
+  "batch": {
+    "cases": [
+      {
+        "case": "pair-r1",
+        "run_sha256": "8af2a15b9e7a2a40b268ace15ceec66eae2d7d3218801c0aa1a7910db0ec9e2c",
+        "duration_s": 81.636530747,
+        "raw_count": 177,
+        "returncode": 1,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "error": "RuntimeError('two-native-auth bound without both progress/hold')"
+      },
+      {
+        "case": "pair-suffix-r2",
+        "run_sha256": "7323c2dca3be914bb897d77bb50bdbe737d551341648d2fcb28ab171318bd29d",
+        "duration_s": 58.052439451,
+        "raw_count": 122,
+        "returncode": 1,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "error": "RuntimeError('two-native-auth bound without both progress/hold')"
+      },
+      {
+        "case": "pair-r3",
+        "run_sha256": "2fa9d958e2330d9b690bbe8b97be9861d4549ea708b8efd720b878846795bd20",
+        "duration_s": 40.781146896,
+        "raw_count": 100,
+        "returncode": 0,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "error": null
+      },
+      {
+        "case": "pair-duplicate-r4",
+        "run_sha256": "c6f5cef1bd5d5ccd4386d2942fa536222b5f530d75f5a10f5d4c755f92c40388",
+        "duration_s": 40.251220213,
+        "raw_count": 99,
+        "returncode": 0,
+        "cleanup": {
+          "net_namespace": "net:[4026533497]",
+          "remaining_pids": [],
+          "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+        },
+        "error": null
+      }
+    ],
+    "total_raw": 498,
+    "result": "2initialdeniedrunsretained_native2accountpositiveandduplicateaccountcontrolmeasured",
+    "limits": "NoEOFhealthydenial/generalaccountsecurity/fullauthgate. Native2positivevsduplicate-logincontrolscopeseparate.10networkpolicychecksaredesignonly."
+  },
+  "suffix": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "run_sha256": "7323c2dca3be914bb897d77bb50bdbe737d551341648d2fcb28ab171318bd29d",
+    "duration_s": 58.052439451,
+    "raw_count": 122,
+    "cleanup": {
+      "net_namespace": "net:[4026533497]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+    },
+    "result": "native25suffixlayoutjoin_confirmed_pairadmission_stilldenied",
+    "rows": [
+      {
+        "role": "A",
+        "source_ip": "10.77.0.2",
+        "frame_sha256": "751b7ee65065174a92875a00dbfe5c987fe3b9126b3a45487e3a174c18a7e3a3",
+        "body_bytes": 61,
+        "native_writers": [
+          {
+            "kind": "block",
+            "ns": 163436823204830,
+            "caller": "0x13ae3ce",
+            "this": "0x12cdbc",
+            "cursor": 36,
+            "args": [
+              787679716,
+              16
+            ],
+            "raw_hex": "f2cec7b0ede800000043000000009391",
+            "sha256": "d8ede4d0ff0c0460ba71f8e80fa793f733f8ba5332de6ae4d4d3b6ecf8ad55a2"
+          },
+          {
+            "kind": "u32",
+            "ns": 163436826118911,
+            "caller": "0x13ae3dd",
+            "this": "0x12cdbc",
+            "cursor": 52,
+            "args": [
+              0,
+              3145823
+            ]
+          },
+          {
+            "kind": "u32",
+            "ns": 163436830599393,
+            "caller": "0x13ae430",
+            "this": "0x12cdbc",
+            "cursor": 56,
+            "args": [
+              33574154,
+              1751343459
+            ]
+          },
+          {
+            "kind": "u8",
+            "ns": 163436833622335,
+            "caller": "0x13ae48e",
+            "this": "0x12cdbc",
+            "cursor": 60,
+            "args": [
+              0,
+              1751343459
+            ]
+          }
+        ],
+        "body_suffix_equal_native_writer_args": true,
+        "opaque16_sha256": "d8ede4d0ff0c0460ba71f8e80fa793f733f8ba5332de6ae4d4d3b6ecf8ad55a2",
+        "tail_typed": [
+          0,
+          33574154,
+          0
+        ],
+        "limits": "ObservedsourceIPrepresentationonly;unknownopaque16,firstu32andflagsemantics. No clientclaimedIPauthentication/originalserverlaw."
+      },
+      {
+        "role": "B",
+        "source_ip": "10.77.0.3",
+        "frame_sha256": "36d840af536134918c0e376d51af6c49fec0677ad3895cc38cf5cabecd52e3e1",
+        "body_bytes": 61,
+        "native_writers": [
+          {
+            "kind": "block",
+            "ns": 163444053995848,
+            "caller": "0x13ae3ce",
+            "this": "0x12cdbc",
+            "cursor": 36,
+            "args": [
+              787679716,
+              16
+            ],
+            "raw_hex": "42ac038ae0a200000043000000003230",
+            "sha256": "471647b3db0c4b50a5e27fa2c5d9714e7bc22cb5d5e2d9ddab9175469bb6fabc"
+          },
+          {
+            "kind": "u32",
+            "ns": 163444061336551,
+            "caller": "0x13ae3dd",
+            "this": "0x12cdbc",
+            "cursor": 52,
+            "args": [
+              0,
+              3145823
+            ]
+          },
+          {
+            "kind": "u32",
+            "ns": 163444072758187,
+            "caller": "0x13ae430",
+            "this": "0x12cdbc",
+            "cursor": 56,
+            "args": [
+              50351370,
+              1751343459
+            ]
+          },
+          {
+            "kind": "u8",
+            "ns": 163444079031350,
+            "caller": "0x13ae48e",
+            "this": "0x12cdbc",
+            "cursor": 60,
+            "args": [
+              0,
+              1751343459
+            ]
+          }
+        ],
+        "body_suffix_equal_native_writer_args": true,
+        "opaque16_sha256": "471647b3db0c4b50a5e27fa2c5d9714e7bc22cb5d5e2d9ddab9175469bb6fabc",
+        "tail_typed": [
+          0,
+          50351370,
+          0
+        ],
+        "limits": "ObservedsourceIPrepresentationonly;unknownopaque16,firstu32andflagsemantics. No clientclaimedIPauthentication/originalserverlaw."
+      }
+    ],
+    "next_design": "Freshboundedprofilecount1/token32,opaque16ignoredasmetadata,firstu32=0/observedsourceIPv4/flag0branchonly. Verifytokenandaccountownershipindependently; retainbaseCP217immutable. Notoriginalserversemantics orfullauth.",
+    "limits": "PairR2diagnosticonly/continuedsuffixguarddenialexpected. Nativecopyunchanged.1boundedcachedtailstaticread+passiveknownwriters,noSDKgraph/newcryptor. Sourcefrozen/rawhash/cleanupverified."
+  },
+  "positive": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "run_sha256": "2fa9d958e2330d9b690bbe8b97be9861d4549ea708b8efd720b878846795bd20",
+    "duration_s": 40.781146896,
+    "raw_count": 100,
+    "cleanup": {
+      "net_namespace": "net:[4026533497]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+    },
+    "roles": [
+      {
+        "role": "A",
+        "identity": 1,
+        "name": "KRLocal",
+        "source_ip": "10.77.0.2",
+        "token_input_sha256": "3eb1bd439947eb762998e566ccc2e099c791118b2f40579cc4f7da2b5061b7f9",
+        "native_auth_result": 0,
+        "native6_echo": 2270858923,
+        "actual67": true,
+        "source_transport_count": 4,
+        "session_id": "ebcb934066f34168bd3da636f3aeaaed",
+        "channel_connection": 6,
+        "native_fields_and_capture_joined": true,
+        "frames": [
+          {
+            "opcode": 1,
+            "sequence": 40,
+            "frame_sha256": "5bc34378d7392948b5ec386a670d03891441cca638afdcacd4d34c78906fd290",
+            "body_bytes": 61,
+            "connection": 5
+          },
+          {
+            "opcode": 60,
+            "sequence": 43,
+            "frame_sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6",
+            "body_bytes": 20,
+            "connection": 5
+          },
+          {
+            "opcode": 9,
+            "sequence": 46,
+            "frame_sha256": "4158ea45ff94894e0ae219729bef6c62a5e8f908700f2c04c4d8ed5d8224aa43",
+            "body_bytes": 8,
+            "connection": 5
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "frame_sha256": "d286c398d39600598303aba3fe8f2dd4449e50f25722201e341760457907f170",
+            "body_bytes": 4,
+            "connection": 5
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "frame_sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5",
+            "body_bytes": 0,
+            "connection": 5
+          },
+          {
+            "opcode": 40,
+            "sequence": 55,
+            "frame_sha256": "2d9bd1845ba82aea8d94e132778798f9bed95b2bbdce7436ac25f2a6bd0b86e7",
+            "body_bytes": 1,
+            "connection": 5
+          },
+          {
+            "opcode": 5,
+            "sequence": 58,
+            "frame_sha256": "24f8a51e4439d6a19c8af224b8ccc938139dc74c8ab6a38c2ea5542e1e4b871f",
+            "body_bytes": 9,
+            "connection": 5
+          },
+          {
+            "opcode": 6,
+            "sequence": 40,
+            "frame_sha256": "5b68c976112f5cfac221de6ecfede25d6d21b96ddb87091d191bc5898fa7c581",
+            "body_bytes": 43,
+            "connection": 6
+          },
+          {
+            "opcode": 544,
+            "sequence": 43,
+            "frame_sha256": "e8ff3d74c4a26ecb82c2c295b8eb385f68e655bb6581dec8977eb062bb672f18",
+            "body_bytes": 10,
+            "connection": 6
+          },
+          {
+            "opcode": 549,
+            "sequence": 46,
+            "frame_sha256": "683c014bbc8fbf2dcc1325c3788bfd26adb70ed576b02ef2b22903c4d00d65ee",
+            "body_bytes": 3,
+            "connection": 6
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "frame_sha256": "7704fb1aa46a1a17c430094ff6033bdd25cfffc9f43664b86c605e2cd4d8f5c6",
+            "body_bytes": 4,
+            "connection": 6
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "frame_sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 567,
+            "sequence": 55,
+            "frame_sha256": "63b34eaa82ebde5a2c2225d69d05afa03434b1023f40242e8ecfecab8f726132",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 67,
+            "sequence": 58,
+            "frame_sha256": "40e9433aba62af57815aa75adb3b377070436ce1808f30ba92f2743b0cc13bf9",
+            "body_bytes": 2,
+            "connection": 6
+          },
+          {
+            "opcode": 87,
+            "sequence": 61,
+            "frame_sha256": "e0ea50ce187e01bde4ab3b1fdc64419df741c1a40d92e67f13c79c617dfc4a29",
+            "body_bytes": 2,
+            "connection": 6
+          },
+          {
+            "opcode": 742,
+            "sequence": 64,
+            "frame_sha256": "a3e0de0e248cea05e63fafc1deb64e76cbdad6c9d0e54fac1804cee2d89aa638",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 741,
+            "sequence": 67,
+            "frame_sha256": "ceca4260ec672878bdfb674cf9c56d922e7ef931506c013dae5809f083c22761",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 715,
+            "sequence": 70,
+            "frame_sha256": "e28443e89692e21f334f5aa5c8e92b60d62d26bdb830d2818bf27263995ec2f0",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 715,
+            "sequence": 73,
+            "frame_sha256": "454082c17ddf7efbd9d10181cf10a8e91958e454c3afb272d9f03db8a6b66756",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 15,
+            "sequence": 76,
+            "frame_sha256": "dd260de503a5f1659afd63ecbba95b2052d9ec874f3a82116e2f6b6ff7346e58",
+            "body_bytes": 31,
+            "connection": 6
+          },
+          {
+            "opcode": 715,
+            "sequence": 79,
+            "frame_sha256": "3f2ee188ed75a78de687d3d43b9ca8a09a20c38eb081ceac73d8954929c54126",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 15,
+            "sequence": 82,
+            "frame_sha256": "61c47f68fcd23d8aa904d16a3b509d0f12a6ca9923e54266f2e8959297e7672f",
+            "body_bytes": 31,
+            "connection": 6
+          },
+          {
+            "opcode": 715,
+            "sequence": 85,
+            "frame_sha256": "bc5247901942c7f6496b3ec04de938e779ee7679f65df59905a12d614ffae2f0",
+            "body_bytes": 0,
+            "connection": 6
+          },
+          {
+            "opcode": 15,
+            "sequence": 88,
+            "frame_sha256": "1edda22f6c4db8b30969da6087dfe31dc44e5c59448ecfc409c82a203b9dfc33",
+            "body_bytes": 31,
+            "connection": 6
+          }
+        ],
+        "owners": {
+          "wineserver": {
+            "pid": 51,
+            "comm": "wineserver",
+            "namespace": "net:[4026533551]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-A",
+            "command": "/usr/lib/wine/../../bin/wineserver ",
+            "monotonic_ns": 163572804307561,
+            "start_ticks": "16356384",
+            "host_exe": "/usr/bin/wineserver"
+          },
+          "client": {
+            "pid": 159,
+            "comm": "CA-r2-stage-soc",
+            "namespace": "net:[4026533551]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-A",
+            "command": "/home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-A/CA-r2-stage-social-cmp.exe multiserveridx:0 token_1:0123456789abcdef0123456789abcdef                                                                         ",
+            "monotonic_ns": 163572805062241,
+            "start_ticks": "16356829",
+            "host_exe": "/usr/lib/wine/x86_64-unix/wine-preloader"
+          }
+        }
+      },
+      {
+        "role": "B",
+        "identity": 2,
+        "name": "KRGuest",
+        "source_ip": "10.77.0.3",
+        "token_input_sha256": "4ba68aa8767bde72e8c798ee82d1275291cea73e72ad74d35ecf48e41386eb82",
+        "native_auth_result": 0,
+        "native6_echo": 2161681055,
+        "actual67": true,
+        "source_transport_count": 4,
+        "session_id": "b7ea0f0c9b74f7731c050858d2943992",
+        "channel_connection": 8,
+        "native_fields_and_capture_joined": true,
+        "frames": [
+          {
+            "opcode": 1,
+            "sequence": 40,
+            "frame_sha256": "3f6e4816165a1e9021c8e8d72579ef0c7d71dcfd441429cd006208f831a31169",
+            "body_bytes": 61,
+            "connection": 7
+          },
+          {
+            "opcode": 60,
+            "sequence": 43,
+            "frame_sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6",
+            "body_bytes": 20,
+            "connection": 7
+          },
+          {
+            "opcode": 9,
+            "sequence": 46,
+            "frame_sha256": "4158ea45ff94894e0ae219729bef6c62a5e8f908700f2c04c4d8ed5d8224aa43",
+            "body_bytes": 8,
+            "connection": 7
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "frame_sha256": "d286c398d39600598303aba3fe8f2dd4449e50f25722201e341760457907f170",
+            "body_bytes": 4,
+            "connection": 7
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "frame_sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5",
+            "body_bytes": 0,
+            "connection": 7
+          },
+          {
+            "opcode": 40,
+            "sequence": 55,
+            "frame_sha256": "2d9bd1845ba82aea8d94e132778798f9bed95b2bbdce7436ac25f2a6bd0b86e7",
+            "body_bytes": 1,
+            "connection": 7
+          },
+          {
+            "opcode": 5,
+            "sequence": 58,
+            "frame_sha256": "24f8a51e4439d6a19c8af224b8ccc938139dc74c8ab6a38c2ea5542e1e4b871f",
+            "body_bytes": 9,
+            "connection": 7
+          },
+          {
+            "opcode": 6,
+            "sequence": 40,
+            "frame_sha256": "273dca34b3b4b3e095196d9a9581783a03ff9ddc0dcaf9e532f17b7f0046f0e9",
+            "body_bytes": 43,
+            "connection": 8
+          },
+          {
+            "opcode": 544,
+            "sequence": 43,
+            "frame_sha256": "9e8de83d04eeab32fbc33b6f4ee99fadc038249929c6bfbfc76e59af999866ad",
+            "body_bytes": 10,
+            "connection": 8
+          },
+          {
+            "opcode": 549,
+            "sequence": 46,
+            "frame_sha256": "683c014bbc8fbf2dcc1325c3788bfd26adb70ed576b02ef2b22903c4d00d65ee",
+            "body_bytes": 3,
+            "connection": 8
+          },
+          {
+            "opcode": 744,
+            "sequence": 49,
+            "frame_sha256": "7704fb1aa46a1a17c430094ff6033bdd25cfffc9f43664b86c605e2cd4d8f5c6",
+            "body_bytes": 4,
+            "connection": 8
+          },
+          {
+            "opcode": 745,
+            "sequence": 52,
+            "frame_sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 567,
+            "sequence": 55,
+            "frame_sha256": "63b34eaa82ebde5a2c2225d69d05afa03434b1023f40242e8ecfecab8f726132",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 67,
+            "sequence": 58,
+            "frame_sha256": "40e9433aba62af57815aa75adb3b377070436ce1808f30ba92f2743b0cc13bf9",
+            "body_bytes": 2,
+            "connection": 8
+          },
+          {
+            "opcode": 87,
+            "sequence": 61,
+            "frame_sha256": "e0ea50ce187e01bde4ab3b1fdc64419df741c1a40d92e67f13c79c617dfc4a29",
+            "body_bytes": 2,
+            "connection": 8
+          },
+          {
+            "opcode": 742,
+            "sequence": 64,
+            "frame_sha256": "a3e0de0e248cea05e63fafc1deb64e76cbdad6c9d0e54fac1804cee2d89aa638",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 741,
+            "sequence": 67,
+            "frame_sha256": "ceca4260ec672878bdfb674cf9c56d922e7ef931506c013dae5809f083c22761",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 715,
+            "sequence": 70,
+            "frame_sha256": "e28443e89692e21f334f5aa5c8e92b60d62d26bdb830d2818bf27263995ec2f0",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 715,
+            "sequence": 73,
+            "frame_sha256": "454082c17ddf7efbd9d10181cf10a8e91958e454c3afb272d9f03db8a6b66756",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 15,
+            "sequence": 76,
+            "frame_sha256": "bb80025368fe2f91cf2c92eadad653826c2dc8759bdc1bf43746454971874ae0",
+            "body_bytes": 31,
+            "connection": 8
+          },
+          {
+            "opcode": 715,
+            "sequence": 79,
+            "frame_sha256": "3f2ee188ed75a78de687d3d43b9ca8a09a20c38eb081ceac73d8954929c54126",
+            "body_bytes": 0,
+            "connection": 8
+          },
+          {
+            "opcode": 15,
+            "sequence": 82,
+            "frame_sha256": "ce463a61675d2a8bfa71188445523e169b66b90253de8e1ae4fd36b0efe2d96b",
+            "body_bytes": 31,
+            "connection": 8
+          }
+        ],
+        "owners": {
+          "wineserver": {
+            "pid": 163,
+            "comm": "wineserver",
+            "namespace": "net:[4026533611]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-B",
+            "command": "/usr/lib/wine/../../bin/wineserver ",
+            "monotonic_ns": 163572805240351,
+            "start_ticks": "16356832",
+            "host_exe": "/usr/bin/wineserver"
+          },
+          "client": {
+            "pid": 309,
+            "comm": "CA-r2-stage-soc",
+            "namespace": "net:[4026533611]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-B",
+            "command": "/home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe multiserveridx:0 token_1:fedcba9876543210fedcba9876543210                                                                         ",
+            "monotonic_ns": 163574987631722,
+            "start_ticks": "16357287",
+            "host_exe": "/usr/lib/wine/x86_64-unix/wine-preloader"
+          }
+        }
+      }
+    ],
+    "concurrent_two_sessions_proof": true,
+    "hold_after_both_native_s": 8.764156459,
+    "tcp_capture_records": 165,
+    "result": "twoactualKR_distinctaccountidentity_channelsessions_actual67_confirmed",
+    "limits": "Nativepositiveonly/samephysicalkernel/Winecopy4b/directvirtualLAN/privateREinmemorypolicy. Opaque16ignoredbyexplicitdesign;0/sourceIP/0tailbranchonly. No room/Battle/nativecrossidentityswap/healthyEOFnegative/accountresume/fullauth/security/Rustintegration;Internet thật chưa kiểm."
+  },
+  "duplicate_account": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "run_sha256": "c6f5cef1bd5d5ccd4386d2942fa536222b5f530d75f5a10f5d4c755f92c40388",
+    "duration_s": 40.251220213,
+    "raw_count": 99,
+    "cleanup": {
+      "net_namespace": "net:[4026533497]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+    },
+    "roles": [
+      {
+        "role": "A",
+        "native_result": 0,
+        "token_size": 32,
+        "token_input_sha256": "3eb1bd439947eb762998e566ccc2e099c791118b2f40579cc4f7da2b5061b7f9",
+        "actual_frames": [
+          {
+            "connection": 5,
+            "opcode": 1,
+            "sequence": 40,
+            "sha256": "11f218e698d802925ad1844dab330cff56e773df6ac396d9639cd508acc2fffb"
+          },
+          {
+            "connection": 5,
+            "opcode": 60,
+            "sequence": 43,
+            "sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+          },
+          {
+            "connection": 5,
+            "opcode": 9,
+            "sequence": 46,
+            "sha256": "4158ea45ff94894e0ae219729bef6c62a5e8f908700f2c04c4d8ed5d8224aa43"
+          },
+          {
+            "connection": 5,
+            "opcode": 744,
+            "sequence": 49,
+            "sha256": "d286c398d39600598303aba3fe8f2dd4449e50f25722201e341760457907f170"
+          },
+          {
+            "connection": 5,
+            "opcode": 745,
+            "sequence": 52,
+            "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+          },
+          {
+            "connection": 5,
+            "opcode": 40,
+            "sequence": 55,
+            "sha256": "2d9bd1845ba82aea8d94e132778798f9bed95b2bbdce7436ac25f2a6bd0b86e7"
+          },
+          {
+            "connection": 5,
+            "opcode": 5,
+            "sequence": 58,
+            "sha256": "24f8a51e4439d6a19c8af224b8ccc938139dc74c8ab6a38c2ea5542e1e4b871f"
+          },
+          {
+            "connection": 6,
+            "opcode": 6,
+            "sequence": 40,
+            "sha256": "d9f63dab825fa3d133e2af5ed81a387240b8b40f4fa761b1afbd3266cfa14120"
+          },
+          {
+            "connection": 6,
+            "opcode": 544,
+            "sequence": 43,
+            "sha256": "e8ff3d74c4a26ecb82c2c295b8eb385f68e655bb6581dec8977eb062bb672f18"
+          },
+          {
+            "connection": 6,
+            "opcode": 549,
+            "sequence": 46,
+            "sha256": "683c014bbc8fbf2dcc1325c3788bfd26adb70ed576b02ef2b22903c4d00d65ee"
+          },
+          {
+            "connection": 6,
+            "opcode": 744,
+            "sequence": 49,
+            "sha256": "7704fb1aa46a1a17c430094ff6033bdd25cfffc9f43664b86c605e2cd4d8f5c6"
+          },
+          {
+            "connection": 6,
+            "opcode": 745,
+            "sequence": 52,
+            "sha256": "e364b3f507e8bcd3a04056368ce580a0b2810d22f2c808190022fa53d0d4fff5"
+          },
+          {
+            "connection": 6,
+            "opcode": 567,
+            "sequence": 55,
+            "sha256": "63b34eaa82ebde5a2c2225d69d05afa03434b1023f40242e8ecfecab8f726132"
+          },
+          {
+            "connection": 6,
+            "opcode": 67,
+            "sequence": 58,
+            "sha256": "40e9433aba62af57815aa75adb3b377070436ce1808f30ba92f2743b0cc13bf9"
+          },
+          {
+            "connection": 6,
+            "opcode": 87,
+            "sequence": 61,
+            "sha256": "e0ea50ce187e01bde4ab3b1fdc64419df741c1a40d92e67f13c79c617dfc4a29"
+          },
+          {
+            "connection": 6,
+            "opcode": 742,
+            "sequence": 64,
+            "sha256": "a3e0de0e248cea05e63fafc1deb64e76cbdad6c9d0e54fac1804cee2d89aa638"
+          },
+          {
+            "connection": 6,
+            "opcode": 741,
+            "sequence": 67,
+            "sha256": "ceca4260ec672878bdfb674cf9c56d922e7ef931506c013dae5809f083c22761"
+          },
+          {
+            "connection": 6,
+            "opcode": 715,
+            "sequence": 70,
+            "sha256": "e28443e89692e21f334f5aa5c8e92b60d62d26bdb830d2818bf27263995ec2f0"
+          },
+          {
+            "connection": 6,
+            "opcode": 715,
+            "sequence": 73,
+            "sha256": "454082c17ddf7efbd9d10181cf10a8e91958e454c3afb272d9f03db8a6b66756"
+          },
+          {
+            "connection": 6,
+            "opcode": 15,
+            "sequence": 76,
+            "sha256": "ab33b3dfec797f73b98789f9f7af6e079ef81242f6d9ff3be7a99539f64861a4"
+          },
+          {
+            "connection": 6,
+            "opcode": 715,
+            "sequence": 79,
+            "sha256": "3f2ee188ed75a78de687d3d43b9ca8a09a20c38eb081ceac73d8954929c54126"
+          },
+          {
+            "connection": 6,
+            "opcode": 15,
+            "sequence": 82,
+            "sha256": "f95ef851dea2fe2a70af6ba8531096477bcaa548b8ea5c3b0060eef5dd374d7e"
+          },
+          {
+            "connection": 6,
+            "opcode": 715,
+            "sequence": 85,
+            "sha256": "bc5247901942c7f6496b3ec04de938e779ee7679f65df59905a12d614ffae2f0"
+          },
+          {
+            "connection": 6,
+            "opcode": 15,
+            "sequence": 88,
+            "sha256": "22e3bb1596761f506551fde3273daac0b3f54e212e6a5c5ff0c555f4862587c4"
+          }
+        ],
+        "owners": {
+          "wineserver": {
+            "pid": 51,
+            "comm": "wineserver",
+            "namespace": "net:[4026533551]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-A",
+            "command": "/usr/lib/wine/../../bin/wineserver ",
+            "monotonic_ns": 163725623187820,
+            "start_ticks": "16371756",
+            "host_exe": "/usr/bin/wineserver"
+          },
+          "client": {
+            "pid": 160,
+            "comm": "CA-r2-stage-soc",
+            "namespace": "net:[4026533551]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-A",
+            "command": "/home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-A/CA-r2-stage-social-cmp.exe multiserveridx:0 token_1:0123456789abcdef0123456789abcdef                                                                         ",
+            "monotonic_ns": 163725624300431,
+            "start_ticks": "16372157",
+            "host_exe": "/usr/lib/wine/x86_64-unix/wine-preloader"
+          }
+        }
+      },
+      {
+        "role": "B",
+        "native_result": 1,
+        "token_size": 32,
+        "token_input_sha256": "3eb1bd439947eb762998e566ccc2e099c791118b2f40579cc4f7da2b5061b7f9",
+        "actual_frames": [
+          {
+            "connection": 7,
+            "opcode": 1,
+            "sequence": 40,
+            "sha256": "7472e0a23e5447248d9451a146cedac40e4b5875e39554e2182234ca0dca6ad4"
+          },
+          {
+            "connection": 7,
+            "opcode": 60,
+            "sequence": 43,
+            "sha256": "45eeae34ce88e7695c969df6c9419ca9ceecc21b87aef6e3e101bbc44398f6b6"
+          },
+          {
+            "connection": 7,
+            "opcode": 15,
+            "sequence": 46,
+            "sha256": "d3efedae4eaf8150a17610136c3093f6f51003c76711a436799677fd379bce11"
+          },
+          {
+            "connection": 7,
+            "opcode": 15,
+            "sequence": 49,
+            "sha256": "4315537a5fdf0a7a62dd54a1246a96f7dacd10f4552ff0297b30dfa6db0ffca2"
+          }
+        ],
+        "owners": {
+          "wineserver": {
+            "pid": 162,
+            "comm": "wineserver",
+            "namespace": "net:[4026533611]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-B",
+            "command": "/usr/lib/wine/../../bin/wineserver ",
+            "monotonic_ns": 163725624497131,
+            "start_ticks": "16372158",
+            "host_exe": "/usr/bin/wineserver"
+          },
+          "client": {
+            "pid": 309,
+            "comm": "CA-r2-stage-soc",
+            "namespace": "net:[4026533611]",
+            "prefix": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-two-actual-r1/prefix-suffix-B",
+            "command": "/home/admin/boom/repos/boom-kr-server/local/research/codex/k4-current-291-r1/game-B/CA-r2-stage-social-cmp.exe multiserveridx:0 token_1:0123456789abcdef0123456789abcdef                                                                         ",
+            "monotonic_ns": 163727799176768,
+            "start_ticks": "16372568",
+            "host_exe": "/usr/lib/wine/x86_64-unix/wine-preloader"
+          }
+        }
+      }
+    ],
+    "owner_A_preserved_after_duplicate_login": true,
+    "B_has_no_6_67_in_observed_window": true,
+    "hold_after_both_native_s": 9.097798808,
+    "policy_events": [
+      {
+        "op": "lease_issued",
+        "connection": 5,
+        "monotonic_ns": 163741036591800,
+        "identity": 1,
+        "role": "A",
+        "wire_echo": 2511322693,
+        "expires_ns": 163751036333430
+      },
+      {
+        "op": "channel_admitted",
+        "connection": 6,
+        "monotonic_ns": 163741285500509,
+        "identity": 1,
+        "role": "A",
+        "session_id": "e325888896869efb54efa937cb877297"
+      },
+      {
+        "op": "login_reject",
+        "connection": 7,
+        "monotonic_ns": 163745394886808,
+        "reason": "account_already_active"
+      }
+    ],
+    "result": "twoactual_duplicateaccount_nativeBresult1_nochannel_Aownerpreserved_boundedhold",
+    "limits": "TwoactualKRpositive-owner/duplicate-loginnegativeusingknownresult1reply; bounded8s+holdnot45snegative/generalerrorlifecycle. Notcrossidentitychannelswap/EOFdenialhealth/sessionexpiry/restartfence/accountresume/fullauth/security. Nativeprocessownership/probes/actualframes+separatepolicyjoined,notalive/serverlogalone. Sourcefrozen/rawhash/cleanup0;Internet thật chưa kiểm."
+  },
+  "policy_checks": {
+    "source": "emu_choice",
+    "status": "design",
+    "count": 10,
+    "checks": [
+      {
+        "check": "Anativecaptureacceptedcorrectidentity",
+        "result": "pass",
+        "source": "policy_emulator/design"
+      },
+      {
+        "check": "Bnativecaptureacceptedcorrectidentity",
+        "result": "pass",
+        "source": "policy_emulator/design"
+      },
+      {
+        "check": "truncatedrejected",
+        "result": "pass",
+        "source": "policy_emulator/design"
+      },
+      {
+        "check": "trailingrejected",
+        "result": "pass",
+        "source": "policy_emulator/design"
+      },
+      {
+        "check": "count2outsideprofilerejected",
+        "result": "pass",
+        "source": "policy_emulator/design"
+      },
+      {
+        "check": "sourcefieldmismatchrejected",
+        "result": "pass",
+        "source": "policy_emulator/design"
+      },
+      {
+        "check": "unsupportedfirstu32rejected",
+        "result": "pass",
+        "source": "policy_emulator/design"
+      },
+      {
+        "check": "unsupportedflagrejected",
+        "result": "pass",
+        "source": "policy_emulator/design"
+      },
+      {
+        "check": "wrongtokenstillrejectedbeforelease",
+        "result": "pass",
+        "source": "policy_emulator/design"
+      },
+      {
+        "check": "opaque16explicitlynotcredentialandignoredasmetadata",
+        "result": "pass",
+        "source": "policy_emulator/design"
+      }
+    ],
+    "limits": "FreshprivateNetworkPolicytestwithretainednativeframes+explicitmutations;notindependentwireoracle/nativehealthydenial/securityproof. BaseAdmissionPolicyunchanged/old24invariantsnotrerunasifnewKRproof."
+  },
+  "limits": "Fourrelatedruns498raw/sealedsourcefrozen/ownedcleanup;nativepositivetwoaccountsandduplicate-logincontrolonly. Originalpolicies/profile/CP221completeunchanged,derivedknownbranchsuffixpolicyexplicitdesign,notfullauth/security/EOFhealthydenial/sessionexpiry/restartfence/DB/Rust. Internet thật chưa kiểm."
+}

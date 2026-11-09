@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-09",
-  "baseline": "09435d9386ffc6facddc3d80f1f34fdf95fbcfd3",
+  "baseline": "f5caefb30b5af86eb9094ad396471c59a0fc6fff",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP221 nativeA/Bseparate positives id-name-echo/auth0/actual67,119raw; wrongID-name/sourcekernelTCP preservesBlease/Aowner,legitBthenbinds/both67,20raw. NativeEOFhealthblockerunchanged.",
-      "remaining": "TwoactualKRsameprocess/swap/healthydenial/sessionexpiry/restartfence/DB/API/fullauth/Rustnotaccepted. PrivateREadapteronly; publicfixedtickets/nativeseparetarunsnotstrongauth.",
-      "next_test": "Source-firstCP189/200harness/admission_ips/fourtransports/per-roletoken→twoactualKRdistinctidentity/session/67sameprocess. No repeatedpositive-separate/TCPwrongbinding/getter-watch/VMgraph.",
+      "known": "CP2222actualKRsameService/distinctidentity-session/native6-echo/67/PCAPandduplicateaccountBnative1/nochannel/Aownerpreserved.498raw/4runsincludinginitialdenials;typed25suffixmeasured/explicitdesignprofile.",
+      "remaining": "Endpointaccountremap/nativewrongchannelswap/healthyEOFdenial/sessionexpiry/restartfence/DB/API/fullauth/Rustnotaccepted. Opaque16semanticsunknown,notcredential.",
+      "next_test": "Source-firstCP222pair/probes→swapvalidpublictokensbetweenendpoints,identitymustfollowverifiedaccountnotIP-label/order. Do notrepeatpositive/duplicate/TCPcontrols orgetter-watch/SDK-VM.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "CP220–221batchedPR292;CP220complete/AUD064unchanged.6relatedruns139rawsealed;R1driverassertionsretained/R2activeownershipchecks. Both epics/scopedgatesunchanged/WIPbyte-exact/nextaudit224.",
+      "reason": "Native2sessionpositiveandboundedduplicate-loginnegativeproven,notEOFhealth/45snegative/fullauth. Baseprofiles/code/historyimmutable,47wirepinsunchanged,8WIPpreserved.AUD064through220/next224.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -258,7 +258,8 @@
         "docs/PROTOCOL.md#auth-lease-eof-blocker",
         "docs/PROTOCOL.md#auth-eof-dispatch",
         "docs/PROTOCOL.md#auth-tcp-ownership",
-        "docs/PROTOCOL.md#auth-two-account"
+        "docs/PROTOCOL.md#auth-two-account",
+        "docs/PROTOCOL.md#auth-two-actual"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -351,7 +352,8 @@
         "docs/evidence/login-runtime/README.md#cp218",
         "docs/evidence/login-runtime/README.md#cp219",
         "docs/evidence/login-runtime/README.md#cp220",
-        "docs/evidence/login-runtime/README.md#cp221"
+        "docs/evidence/login-runtime/README.md#cp221",
+        "docs/evidence/login-runtime/README.md#cp222"
       ],
       "prs": [
         173,
@@ -785,11 +787,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP221 nativeA/Bseparate positives id-name-echo/auth0/actual67,119raw; wrongID-name/sourcekernelTCP preservesBlease/Aowner,legitBthenbinds/both67,20raw. NativeEOFhealthblockerunchanged.",
-      "remaining": "TwoactualKRsameprocess/swap/healthydenial/sessionexpiry/restartfence/DB/API/fullauth/Rustnotaccepted. PrivateREadapteronly; publicfixedtickets/nativeseparetarunsnotstrongauth.",
-      "next_test": "Source-firstCP189/200harness/admission_ips/fourtransports/per-roletoken→twoactualKRdistinctidentity/session/67sameprocess. No repeatedpositive-separate/TCPwrongbinding/getter-watch/VMgraph.",
+      "known": "CP2222actualKRsameService/distinctidentity-session/native6-echo/67/PCAPandduplicateaccountBnative1/nochannel/Aownerpreserved.498raw/4runsincludinginitialdenials;typed25suffixmeasured/explicitdesignprofile.",
+      "remaining": "Endpointaccountremap/nativewrongchannelswap/healthyEOFdenial/sessionexpiry/restartfence/DB/API/fullauth/Rustnotaccepted. Opaque16semanticsunknown,notcredential.",
+      "next_test": "Source-firstCP222pair/probes→swapvalidpublictokensbetweenendpoints,identitymustfollowverifiedaccountnotIP-label/order. Do notrepeatpositive/duplicate/TCPcontrols orgetter-watch/SDK-VM.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "CP220–221batchedPR292;CP220complete/AUD064unchanged.6relatedruns139rawsealed;R1driverassertionsretained/R2activeownershipchecks. Both epics/scopedgatesunchanged/WIPbyte-exact/nextaudit224.",
+      "reason": "Native2sessionpositiveandboundedduplicate-loginnegativeproven,notEOFhealth/45snegative/fullauth. Baseprofiles/code/historyimmutable,47wirepinsunchanged,8WIPpreserved.AUD064through220/next224.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -801,7 +803,8 @@
         "docs/PROTOCOL.md#auth-lease-eof-blocker",
         "docs/PROTOCOL.md#auth-eof-dispatch",
         "docs/PROTOCOL.md#auth-tcp-ownership",
-        "docs/PROTOCOL.md#auth-two-account"
+        "docs/PROTOCOL.md#auth-two-account",
+        "docs/PROTOCOL.md#auth-two-actual"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -814,7 +817,8 @@
         "docs/evidence/login-runtime/README.md#cp218",
         "docs/evidence/login-runtime/README.md#cp219",
         "docs/evidence/login-runtime/README.md#cp220",
-        "docs/evidence/login-runtime/README.md#cp221"
+        "docs/evidence/login-runtime/README.md#cp221",
+        "docs/evidence/login-runtime/README.md#cp222"
       ],
       "prs": [
         286,
@@ -828,6 +832,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-09T01:19:40.394966+00:00",
+  "as_of_utc": "2026-11-09T01:55:07.861623+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

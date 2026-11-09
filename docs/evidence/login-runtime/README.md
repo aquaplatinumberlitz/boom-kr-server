@@ -272,3 +272,31 @@ WrongID/name hoặc sai source giữ pendingB và ownerA; actualTCP B sau đó v
 BEOF không xóa ownerA. Driver synthetic/fixedpublictickets, không nativehealthydenial/swap/securityproof.
 Bản CP217 giữ nguyên; derived2accountadapter chỉ chọn known auth_A/B và role từ verifiedaccount.
 Không production/Rust integration hoặc gate mới;8WIP giữ nguyên. Internet thật chưa kiểm.
+
+<a id="cp222"></a>
+## CP222 — hai actual KR chung service; suffix môi trường và duplicate account
+
+[Contract/giới hạn](../../PROTOCOL.md#auth-two-actual), [metadata](two-actual.json),
+[câu hỏi](../../RESEARCH.md#rust-service-gaps), [thứ tự](../../PLAN.md#current-order).
+CP220–221 đã merge [PR292](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/292)/`f5caefb`.
+Raw/code/probe/recipe ở `local/research/codex/auth-two-actual-r1/`;4run gom một checkpoint, audit kế224.
+
+| Run | Quan sát | Wall/raw | run.json SHA256 |
+|---|---|---|---|
+| pair-r1 | Validtoken nhưng constant suffix policydenial; không native0 | 81.636530747s/177 | `8af2a15b9e7a2a40b268ace15ceec66eae2d7d3218801c0aa1a7910db0ec9e2c` |
+| pair-suffix-r2 | Giữ policydeny; nativewriter/cursor→suffix25 joined | 58.052439451s/122 | `7323c2dca3be914bb897d77bb50bdbe737d551341648d2fcb28ab171318bd29d` |
+| pair-r3 | Parserprofile mới;2actual/native0/ID1-2/echo/67/2session+hold | 40.781146896s/100 | `2fa9d958e2330d9b690bbe8b97be9861d4549ea708b8efd720b878846795bd20` |
+| pair-duplicate-r4 | TokenB=A; Aowner giữ, Bnative1/no6-67/8s+hold | 40.251220213s/99 | `c6f5cef1bd5d5ccd4386d2942fa536222b5f530d75f5a10f5d4c755f92c40388` |
+
+Mỗi root có recipe/runtime-preflight/raw-seal/cycles. cycles có A/B nativeclient/token/aux/suffixwriterlogs,
+CA/wineserver ownership trong virtual-network.json, raw tcp-auth-pair.pcap/index, service-state/run,
+proof-service-state[-final].json trước cleanup khi run đủ control, screenshots/process/window capture.
+498 raw kiểm hash đủ/sourcefrozen/ownedcleanup0; failedR1/R2 giữ nguyên. Clonedprefix/registry snapshots
+có provenance; copy4b và47wirefixture pins giữ nguyên. Profile thử chỉ bỏ replacement_slot, không sửa nguồn.
+Không source/config/input thay đổi giữa run. Prefix là runtime state có thể đổi; preflight pin snapshot input.
+
+R2 layoutjoin dùng exactcached13AE3BD/knownwriters/cursor36→52→56→60,existingtyped/blockcodec; không
+newcryptor/fullproviderRE. Opaque16 semanticsunknown;0/IP/0 chỉ nhánh đã đo, profile normalize làdesign.
+10policychecks tách native. R3 positive2accounts/2actual và R4 duplicate-loginnegative là scope riêng;
+R4 hold8s+ không phải45s hoặc channelEOF health. EOFreceiver/fullauth/sessionexpiry/restartfence/DB/Rust
+chưa giải; không đóng #14/#285/gate.8sourceWIP byte-exact. Internet thật chưa kiểm.
