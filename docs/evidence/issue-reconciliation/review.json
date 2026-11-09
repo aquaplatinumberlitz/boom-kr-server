@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
   "as_of": "2026-11-09",
-  "baseline": "3bd1cdd6031281ae346c58ae2ac2754ce3e0e121",
+  "baseline": "ccab4cc88d5042b0f2384a3f39a2f8593e3f1914",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP226native2row91/typed82distinctsession-ID,91one-rowupdate/empty0retainsboth,90secondstreamtag0wrongIDignore/matchingcardclear/nativeinner-outererrors0/UI/PCAP.4runs545raw/frozen/cleanup,firstwrongseq73failurekept/correct55-58.",
-      "remaining": "No87reply/membership/generalregistry/roomisolation/serverstalejoin-IDauthority; firststream90/tag1/countbounds/full/password/unknownsession/modeunmeasured. Authsameprocessfatal/before17EOF/fullauth/DB/API/Ruststillmissing.",
-      "next_test": "PerPLANselected82→known87session→8117E0lookup/context/titletwo distinctsessions; nativefullcursor/handler/UI beforedynamicregistry. No list/update/delete/codeccontrolsrepeat orSDK-VMgraph.",
+      "known": "CP227selected82→87native8117E0lookup/session-ID-title/full7errors0/Prepareheaders. Generic2/1byte/ack/91refresh/new82ID303→87Gamma/nativecallbacks/PCAP/sameauthowners.5sealedruns802raw, code1WrongPassword/inputedgefailures kept/correctcenterrecipe.",
+      "remaining": "No585reply/roster/membership/registry/tworoomstateisolation/Ready/start/UDP; whyedgeinputmissedunknown/notguardfault. Fullerrorenum/password/productauthority/fullauth/DB/API/Rustmissing; authsameprocessfatal/before17receiverblockersdistinct.",
+      "next_test": "PerPLAN585→known106/110/291room-localownID/slot0/chief/tworoomsessions/nativefullcursor/ownlookup/UI; buildersinputsnotoracle, nootherroompeer, registrybindingsbeforemutation. No repeatedlist/context/error2/inputcontrols.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Listcard/runtimeproofnotsubsystem/gatecompletion. WrongIDcardguardnotserverauth;bothissuesopen/8WIPunchanged/AUD065next228/Internet thật chưa kiểm independent.",
+      "reason": "Nativecontext/error-retrypositive≠membership/registry/gate. Code1WrongPasswordnotstaleIDreason; generic2nativeUIproven/productstaleIDpolicyexplicitdesign. Bothopen/8WIPunchanged/AUD065next228/Internet thật chưa kiểm independent.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -263,7 +263,8 @@
         "docs/PROTOCOL.md#auth-session-lifecycle",
         "docs/PROTOCOL.md#auth-retry-validation",
         "docs/PROTOCOL.md#auth-fresh-process",
-        "docs/PROTOCOL.md#room-list-lifecycle"
+        "docs/PROTOCOL.md#room-list-lifecycle",
+        "docs/PROTOCOL.md#room-join-projection"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -361,7 +362,8 @@
         "docs/evidence/login-runtime/README.md#cp223",
         "docs/evidence/login-runtime/README.md#cp224",
         "docs/evidence/login-runtime/README.md#cp225",
-        "docs/evidence/room-list/README.md"
+        "docs/evidence/room-list/README.md",
+        "docs/evidence/room-list/README.md#cp227"
       ],
       "prs": [
         173,
@@ -460,7 +462,8 @@
         293,
         294,
         295,
-        296
+        296,
+        297
       ],
       "successors": []
     },
@@ -799,11 +802,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP226native2row91/typed82distinctsession-ID,91one-rowupdate/empty0retainsboth,90secondstreamtag0wrongIDignore/matchingcardclear/nativeinner-outererrors0/UI/PCAP.4runs545raw/frozen/cleanup,firstwrongseq73failurekept/correct55-58.",
-      "remaining": "No87reply/membership/generalregistry/roomisolation/serverstalejoin-IDauthority; firststream90/tag1/countbounds/full/password/unknownsession/modeunmeasured. Authsameprocessfatal/before17EOF/fullauth/DB/API/Ruststillmissing.",
-      "next_test": "PerPLANselected82→known87session→8117E0lookup/context/titletwo distinctsessions; nativefullcursor/handler/UI beforedynamicregistry. No list/update/delete/codeccontrolsrepeat orSDK-VMgraph.",
+      "known": "CP227selected82→87native8117E0lookup/session-ID-title/full7errors0/Prepareheaders. Generic2/1byte/ack/91refresh/new82ID303→87Gamma/nativecallbacks/PCAP/sameauthowners.5sealedruns802raw, code1WrongPassword/inputedgefailures kept/correctcenterrecipe.",
+      "remaining": "No585reply/roster/membership/registry/tworoomstateisolation/Ready/start/UDP; whyedgeinputmissedunknown/notguardfault. Fullerrorenum/password/productauthority/fullauth/DB/API/Rustmissing; authsameprocessfatal/before17receiverblockersdistinct.",
+      "next_test": "PerPLAN585→known106/110/291room-localownID/slot0/chief/tworoomsessions/nativefullcursor/ownlookup/UI; buildersinputsnotoracle, nootherroompeer, registrybindingsbeforemutation. No repeatedlist/context/error2/inputcontrols.",
       "acceptance": "Eightdeliverablequestionsexplained inarchitecture+PLAN: firstslice/readiness/Python/fullservicemissing/dependencies/productchoices/design-vs-KRunknown/releasecriteria; preservedWIP/noRuntimeRustchange.",
-      "reason": "Listcard/runtimeproofnotsubsystem/gatecompletion. WrongIDcardguardnotserverauth;bothissuesopen/8WIPunchanged/AUD065next228/Internet thật chưa kiểm independent.",
+      "reason": "Nativecontext/error-retrypositive≠membership/registry/gate. Code1WrongPasswordnotstaleIDreason; generic2nativeUIproven/productstaleIDpolicyexplicitdesign. Bothopen/8WIPunchanged/AUD065next228/Internet thật chưa kiểm independent.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -820,7 +823,8 @@
         "docs/PROTOCOL.md#auth-session-lifecycle",
         "docs/PROTOCOL.md#auth-retry-validation",
         "docs/PROTOCOL.md#auth-fresh-process",
-        "docs/PROTOCOL.md#room-list-lifecycle"
+        "docs/PROTOCOL.md#room-list-lifecycle",
+        "docs/PROTOCOL.md#room-join-projection"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -838,7 +842,8 @@
         "docs/evidence/login-runtime/README.md#cp223",
         "docs/evidence/login-runtime/README.md#cp224",
         "docs/evidence/login-runtime/README.md#cp225",
-        "docs/evidence/room-list/README.md"
+        "docs/evidence/room-list/README.md",
+        "docs/evidence/room-list/README.md#cp227"
       ],
       "prs": [
         286,
@@ -851,11 +856,12 @@
         293,
         294,
         295,
-        296
+        296,
+        297
       ],
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-09T03:51:18.220460+00:00",
+  "as_of_utc": "2026-11-09T04:33:14.269977+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

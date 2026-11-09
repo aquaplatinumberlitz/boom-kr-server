@@ -842,6 +842,45 @@ mode/region khác chưa đo. Không coi clearedwrapper là xóa object/row khỏ
 SDK-VMgraph/Rust/production/gate. [Câu hỏi](RESEARCH.md#rust-service-gaps), [thứ tự](PLAN.md#current-order)
 tiếp selected82→87session/context/title; CP225mergePR296/3bd1cdd, AUD065qua224/kế228. Internet thật chưa kiểm.
 
+<a id="room-join-projection"></a>
+### Chọn row → reply87 → context phòng; generic join error — CP227
+
+[Recipe/raw/hash](evidence/room-list/README.md#cp227), [metadata](evidence/room-list/join-projection.json).
+Source-first CP028817820/8169C0/known87 + CP226two-rowlist; không RE lại codec, không gọi hàm native.
+
+**`kr_runtime/confirmed` projection dương tính:** A82(session1,ID101) nhận87(result0,slot0,session1,0,0,0),
+B82(session2,ID202) nhận87(result0,slot1,session2,0,0,0). Native8117E0 lookup row khác0, rồi123FA30
+đặt session,123FB70 lấy roomID từ row+5C,12409E0 đặt title lấy từ row: A1/101/RoomAlpha, B2/202/RoomBeta.
+8179F3 ghi7/7/errors0, UI headerS02/S03 và đúng tên. Client phát585; adapter **không trả585**,
+roster/UI ô player còn trống. Đây là context projection, không hai phòng hoạt động/membership/registry isolation.
+Hai process có thể cùng virtual address cho context; không suy chúng cùng object.
+
+**Phân biệt policy và lỗi native:** fixturebackend tuyên bố session2 hiện mang ID303 nhưng client còn row202
+là `emu_choice/design` để thử reject trước membership. Native table8177E4: result1→816A62/resource
+`WrongPassword`17158DC; result2→816B2C/resource `CantJoinRoom`17158EC. Mẫu result1 ban đầu đọc1/1/errors0,
+UI nói sai mật khẩu nên **không phù hợp làm mã staleID**; giữ ca/report/input gốc và correction, không giả đây là
+luật server gốc hoặc password đã hỗ trợ. Result2 là generic “không thể vào phòng”, không khẳng định lý do gốc.
+
+**Route generic2 đã đo:** Bactual82/ID202 bị privatepolicy trả87/onebyte2 seq55; native error branch/handlerend
+đọc1/1/errors0, UI thông báo không thể vào phòng; không setter session/title hoặc585 trước khi chấp nhận.
+Ordinary Return đóng notice,91seq58 cập nhật row2/ID303/RoomGamma (53/53/errors0), ordinary center-card
+click phát82(2,303,0,1,5),87success seq61 đi lookup/setters/7/7/errors0 tới session2/ID303/RoomGamma;
+actual585 xuất hiện sau đó. Avalid101 tiếp projection riêng; cùng auth connection/session không bị đóng để retry.
+Đây là client error/refresh/retry trên cùng channel, khác automaticloginresume bị fatal ởCP224.
+
+**Correction input:** hai ca retry đầu click lại cùng edge730,170 không có callback2501/8132B0/new82,
+không được tính recovery. Observer mới xác nhận callback đầu đi pending0/list1/vectorcount2/row202/
+eligibility1/predicate1/send811AD0,87entry812070 đặt pending0; không có proof guard chặn retry.
+Recipe ordinarymoveout300,450/.25s rồi click card-center600,150/150msdoubleclick có callback lần2/row303,
+không widgetinvoke/forcedcallback/guardwrite. Nguyên nhân edgeclick không nhận callback vẫn unknown;
+không gọi đây là sửa protocol hoặc lỗi logic client. Code1 inputcontrol giữ riêng trước ca code2 cuối.
+
+5relatedruns802raw/sourcefreeze/ownedcleanup, gồm no-retry225raw+observer155raw failures và hai correction
+control. Giữ mọi raw/source/report/checkpoint/audit cũ. Chưa reply585/roster/ownslot/currentroommembership/
+roomstateisolation/Ready/start/UDP/registry/DB/fullauth/Rust/gate. [PLAN](PLAN.md#current-order) tiếp roster
+riêng từng room bằng consumer đã biết; không lặp list/context/error2/input controls. CP226mergePR297/ccab4cc,
+AUD065qua224/kếCP228. Internet thật chưa kiểm.
+
 <a id="room-player"></a>
 ### Player, own-slot và controls phòng (CP018)
 

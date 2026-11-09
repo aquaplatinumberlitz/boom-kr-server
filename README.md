@@ -28,6 +28,16 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP227: chọn phòng đã nối đúng session, ID và tên; lỗi join có đường quay lại chọn tiếp.**
+[Contract/limits](docs/PROTOCOL.md#room-join-projection), [năm run/hash](docs/evidence/room-list/README.md#cp227):
+hai KR chọn row khác nhau → reply87 → native lookup/context đúng RoomAlpha/RoomBeta, reader7/7 không lỗi.
+Control staleID dùng lỗi2 “không thể vào phòng” → đóng thông báo → refresh → chọn ID303 → RoomGamma.
+Hai lần click retry không tạo callback và ca dùng lỗi1 “sai mật khẩu” được giữ kèm correction;
+recipe click giữa card đã đo lại. 802raw seal/hash/cleanup; chưa trả585/roster/membership/registry/Rust/gate.
+CP226 merge [PR297](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/297)/`ccab4cc`;
+AUD065 qua224/kế228. [PLAN](docs/PLAN.md#current-order) tiếp roster riêng cho từng phòng.
+
+
 **CP226: danh sách hai phòng, cập nhật và xóa card đã có native evidence.**
 [Contract/limits](docs/PROTOCOL.md#room-list-lifecycle), [bốn run/hash](docs/evidence/room-list/README.md):
 hai KR đọc count2 và chọn đúng session/roomID; S→C91 update1/empty0 giữ row khác, không xóa toàn danh sách.

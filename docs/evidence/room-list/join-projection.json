@@ -1,0 +1,1859 @@
+{
+  "schema": "kre-room-join-projection-v1",
+  "recorded_utc": "2026-11-09T04:31:04.885438+00:00",
+  "baseline": "ccab4cc88d5042b0f2384a3f39a2f8593e3f1914",
+  "contract": "docs/PROTOCOL.md#room-join-projection",
+  "research": "docs/RESEARCH.md#rust-service-gaps",
+  "plan": "docs/PLAN.md#current-order",
+  "runs": [
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "result": "twoactual_selected82_to87_sessionlookup_ID_title_full7byte_projection",
+      "run_sha256": "b91413cffeabf0050cd97e71946ff6b287be0cb215983bb55f176356e6a9b65e",
+      "duration_s": 48.952188952,
+      "raw_count": 118,
+      "frozen_count": 354,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "roles": [
+        {
+          "role": "A",
+          "selected_session": 1,
+          "selected_roomid": 101,
+          "title": "RoomAlpha",
+          "reply_slot": 0,
+          "native_lookup_setters": [
+            {
+              "kind": "begin87",
+              "n": 1,
+              "ns": 171213999099805,
+              "pc": "0x8169c0"
+            },
+            {
+              "kind": "lookup_return",
+              "n": 1,
+              "ns": 171214001111716,
+              "pc": "0x81789f",
+              "session": 1,
+              "row_object": "0x6043b6b0"
+            },
+            {
+              "kind": "session_set",
+              "n": 1,
+              "ns": 171214003767877,
+              "pc": "0x123fa30",
+              "this": "0x2ea2bcc8",
+              "caller": "0x81794f",
+              "arg": 1
+            },
+            {
+              "kind": "roomid_set",
+              "n": 1,
+              "ns": 171214008346159,
+              "pc": "0x123fb70",
+              "this": "0x2ea2bcc8",
+              "caller": "0x817987",
+              "arg": 101
+            },
+            {
+              "kind": "title_set",
+              "n": 1,
+              "ns": 171214010686090,
+              "pc": "0x12409e0",
+              "this": "0x2ea2bcc8",
+              "caller": "0x8179a6",
+              "arg": 1232104,
+              "title_hex": "526f6f6d416c706861",
+              "title_ascii": "RoomAlpha"
+            },
+            {
+              "kind": "end87",
+              "n": 1,
+              "ns": 171214015090152,
+              "pc": "0x8179f3",
+              "cursor": 7,
+              "payload": 7,
+              "err54": 0,
+              "err58": 0
+            }
+          ],
+          "actual_c2s_ops": [
+            6,
+            544,
+            549,
+            744,
+            745,
+            567,
+            67,
+            87,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            15,
+            15
+          ],
+          "reply87": {
+            "seq": 55,
+            "opcode": 87,
+            "fixture": "A-known87-projection-55.bin",
+            "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586",
+            "size": 45,
+            "monotonic_ns": 171213988564990
+          },
+          "image": {
+            "path": "local/research/codex/room-join-projection-r1/two-sessions/cycles/A/screen-17.png",
+            "sha256": "522cff645befdc6afdfb8ce3ffa8f8a345688aef2283caa0e5f8a1eebcda812a",
+            "manual_observation": "PrepareUIheaderRoomAlpha/S02; emptyroster/Ready/character-mapcontrols,notmembershipproof."
+          }
+        },
+        {
+          "role": "B",
+          "selected_session": 2,
+          "selected_roomid": 202,
+          "title": "RoomBeta",
+          "reply_slot": 1,
+          "native_lookup_setters": [
+            {
+              "kind": "begin87",
+              "n": 1,
+              "ns": 171214293981975,
+              "pc": "0x8169c0"
+            },
+            {
+              "kind": "lookup_return",
+              "n": 1,
+              "ns": 171214296214956,
+              "pc": "0x81789f",
+              "session": 2,
+              "row_object": "0x5f6cbaac"
+            },
+            {
+              "kind": "session_set",
+              "n": 1,
+              "ns": 171214299038548,
+              "pc": "0x123fa30",
+              "this": "0x2ea2bcc8",
+              "caller": "0x81794f",
+              "arg": 2
+            },
+            {
+              "kind": "roomid_set",
+              "n": 1,
+              "ns": 171214301594559,
+              "pc": "0x123fb70",
+              "this": "0x2ea2bcc8",
+              "caller": "0x817987",
+              "arg": 202
+            },
+            {
+              "kind": "title_set",
+              "n": 1,
+              "ns": 171214304053850,
+              "pc": "0x12409e0",
+              "this": "0x2ea2bcc8",
+              "caller": "0x8179a6",
+              "arg": 1232104,
+              "title_hex": "526f6f6d42657461",
+              "title_ascii": "RoomBeta"
+            },
+            {
+              "kind": "end87",
+              "n": 1,
+              "ns": 171214306962051,
+              "pc": "0x8179f3",
+              "cursor": 7,
+              "payload": 7,
+              "err54": 0,
+              "err58": 0
+            }
+          ],
+          "actual_c2s_ops": [
+            6,
+            544,
+            549,
+            744,
+            745,
+            567,
+            67,
+            87,
+            742,
+            741,
+            715,
+            715,
+            15,
+            715,
+            82,
+            544,
+            549,
+            744,
+            745,
+            585,
+            741,
+            15,
+            15
+          ],
+          "reply87": {
+            "seq": 55,
+            "opcode": 87,
+            "fixture": "B-known87-projection-55.bin",
+            "sha256": "095cd5303e5932c742ebc695b3f6699890d67be439af8b86989cada12849cb11",
+            "size": 45,
+            "monotonic_ns": 171214285433031
+          },
+          "image": {
+            "path": "local/research/codex/room-join-projection-r1/two-sessions/cycles/B/screen-17.png",
+            "sha256": "fd808bebcae6e825779ae4f92880586cb6156b28ec8f95f9e57f985a3c59a3fc",
+            "manual_observation": "PrepareUIheaderRoomBeta/S03; emptyroster/Ready/character-mapcontrols,notmembershipproof."
+          }
+        }
+      ],
+      "tcp_capture_records": 196,
+      "limits": "FixedprivateREselectionrouting/known87success7bytes/session1A-slot0/session2B-slot1, native8117E0rowlookup/123FA30session/123FB70ID/12409E0title/fullcursorUI. No585reply/playerroster/membership/generalregistry/two-roomstateisolation/authority/gameplay/Rust/gateclaim. Identicalvirtualaddressesacrossprocessesarenotsameobject. No originalserverpolicy/fullerror/password/countbounds. Internet thật chưa kiểm."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "recorded_utc": "2026-11-09T04:20:17.086294+00:00",
+      "result": "stale_ID_denial_native87result1_pass_refresh_consumed_but_input_retry_no82_FAIL",
+      "run_sha256": "2aeb9629057ffd5a882bc035729b1f77d3c5ea885dd2ff49c8c14c695b09633b",
+      "duration_s": 96.987665627,
+      "raw_count": 225,
+      "frozen_count": 370,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "native_denial": [
+        {
+          "kind": "error1_branch",
+          "ns": 172509297235931,
+          "pc": "0x816a62",
+          "result_local": 1,
+          "cursor": 1,
+          "payload": 1,
+          "err54": 0,
+          "err58": 0
+        },
+        {
+          "kind": "handler_end",
+          "ns": 172511813524450,
+          "pc": "0x8177d1",
+          "result_local": 1,
+          "cursor": 1,
+          "payload": 1,
+          "err54": 0,
+          "err58": 0
+        }
+      ],
+      "native_refresh": {
+        "kind": "end",
+        "n": 2,
+        "ns": 172517341617636,
+        "pc": "0x8152ac",
+        "count": 1,
+        "outer_used": 53,
+        "outer_size": 53,
+        "error54": 0,
+        "error58": 0
+      },
+      "actual_B82": [
+        [
+          2,
+          202,
+          0,
+          1,
+          5
+        ]
+      ],
+      "no_B585_or_context_projection": true,
+      "Avalid_projection": {
+        "monotonic_ns": 172508988757183,
+        "selection_fields": [
+          1,
+          101,
+          0,
+          1,
+          5
+        ],
+        "reply_slot": 0,
+        "reply_session": 1,
+        "sent": {
+          "seq": 55,
+          "opcode": 87,
+          "fixture": "A-known87-projection-55.bin",
+          "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586",
+          "size": 45,
+          "monotonic_ns": 172508988752283
+        },
+        "limits": "Fixedknown87sessionprojectiononly, no585reply/membership/roomisolationauthority."
+      },
+      "ui_ack": {
+        "ns": 172511814672571,
+        "window": "16777217",
+        "focus_returncode": 0,
+        "input_returncode": 0,
+        "action": "singleordinaryReturnafterobservederror1nativebranch",
+        "limits": "Acknowledgementattemptnotdialogclosedproof;handler_end/error0required."
+      },
+      "retry_click": {
+        "ns": 172523102926024,
+        "window": "16777217",
+        "focus_returncode": 0,
+        "input_returncode": 0,
+        "x": 730,
+        "y": 170,
+        "action": "ordinarysecondrowdoubleclickaftermeasuredrefreshcount1"
+      },
+      "limits": "Fixedbackend303/clientstale202policydesign+knownnative87result1; notoriginalserverstale-IDlaw. OrdinaryReturnclearsmodal/handlerend1byteerrors0,refreshcount1read53errors0/UIcardGamma. Subsequentdoubleclicknoactual82,notrecoveryaccepted. No clientfatalmarkersbounded,buttimeoutnotgeneralhealth. AcontextpositiveBdenywithoutB585/membership; no fullregistry/security/Rust/gate. Remoteclosedonfinalcleanupnotruntimefault.",
+      "next": "Sourcecache exactknownlobbycommand/guard812070/4EC70/4EC74 and selectedrow, boundedpassiveUIinputcallbacks onlyifnewsourceedge. Do notrepeatwholepositive/error controls withoutdiscriminator; no forcedguard/state/SDKgraph."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "recorded_utc": "2026-11-09T04:24:47.600907+00:00",
+      "result": "FAIL_retry82_callback_not_observed_pending_set0_at87_entry",
+      "run_sha256": "b046122fed5b673d33d6571e2cef4276f01ab74484ff84a056089f1dcfc30569",
+      "duration_s": 65.017167802,
+      "raw_count": 155,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "input_route": [
+        {
+          "kind": "pending_set",
+          "ns": 172800239110442,
+          "pc": "0x812070",
+          "eax": 1600896588,
+          "object": "0x5f6bbe4c",
+          "new_pending": 0,
+          "caller": "0xda6b70"
+        },
+        {
+          "kind": "command",
+          "ns": 172808435037061,
+          "pc": "0x810230",
+          "eax": 2501,
+          "command": 2501,
+          "object": "0x5f6bbe4c",
+          "pending": 0,
+          "has_list": 1
+        },
+        {
+          "kind": "entry",
+          "ns": 172808437359932,
+          "pc": "0x8132b0",
+          "eax": 1,
+          "index": 1,
+          "object": "0x5f6bbe4c",
+          "pending": 0,
+          "has_list": 1,
+          "row_bound": 560
+        },
+        {
+          "kind": "vector_count",
+          "ns": 172808439673223,
+          "pc": "0x8132f5",
+          "eax": 2,
+          "object": "0x5f6bbe4c",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x0"
+        },
+        {
+          "kind": "selected_row",
+          "ns": 172808441934134,
+          "pc": "0x813330",
+          "eax": 504,
+          "object": "0x5f6bbe4c",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x5f6c0f5c",
+          "roomid": 202,
+          "row44": "bcf66b5f1c216c5f7811a25c"
+        },
+        {
+          "kind": "row_eligible_return",
+          "ns": 172808445233905,
+          "pc": "0x813389",
+          "eax": 1,
+          "object": "0x5f6bbe4c",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x5f6c0f5c"
+        },
+        {
+          "kind": "predicate_return",
+          "ns": 172808448469137,
+          "pc": "0x81339b",
+          "eax": 1,
+          "object": "0x5f6bbe4c",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x5f6c0f5c"
+        },
+        {
+          "kind": "send_join_entry",
+          "ns": 172808450741208,
+          "pc": "0x811ad0",
+          "eax": 2,
+          "index": 2,
+          "object": "0x5f6bbe4c"
+        },
+        {
+          "kind": "pending_set",
+          "ns": 172808464135644,
+          "pc": "0x812070",
+          "eax": 1,
+          "object": "0x5f6bbe4c",
+          "new_pending": 1,
+          "caller": "0x81203d"
+        },
+        {
+          "kind": "pending_set",
+          "ns": 172808468588197,
+          "pc": "0x812070",
+          "eax": 1233260,
+          "object": "0x5f6bbe4c",
+          "new_pending": 0,
+          "caller": "0x8169ec"
+        }
+      ],
+      "error87_handler_end": {
+        "kind": "handler_end",
+        "ns": 172810955737843,
+        "pc": "0x8177d1",
+        "result_local": 1,
+        "cursor": 1,
+        "payload": 1,
+        "err54": 0,
+        "err58": 0
+      },
+      "retry_attempt": {
+        "ns": 172822214638941,
+        "window": "16777217",
+        "focus_returncode": 0,
+        "input_returncode": 0,
+        "x": 730,
+        "y": 170,
+        "action": "ordinarysecondrowdoubleclickaftermeasuredrefreshcount1"
+      },
+      "limits": "Initialcmd2501→8132B0/list1/pending0/vectorcount2/row202/eligibility1/predicate1/send82confirmed. 87entrysetsamepending0. Afterack/refreshordinaryretryclickno command/8132B0/sendentry,notproofpending/listguardblocked. No furthercallback/protectiongraph. Inputattemptnotnativeeventreceipt; fullretryFAIL/no new82.",
+      "next": "Oneordinarypointermotion/center-cardfollowup: moveoutthenbackintocenterbodybefore2ndclick, whilepassivesamerouteunchanged; differsinputdeliveryonly/no forcedstate. If no newcallback, declareinputblocker,notSDKgraph."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "recorded_utc": "2026-11-09T04:27:27.434097+00:00",
+      "result": "ordinary_pointermoveout_center_retry_native82_303_87session2_IDtitleGamma_after_known_result1",
+      "run_sha256": "29fd57ae9abf76ba64bc953eb8ba8c54bd9f4e703aa06ad65795172007a8d5ea",
+      "duration_s": 60.840527471,
+      "raw_count": 152,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "native_callback_route": [
+        {
+          "kind": "pending_set",
+          "ns": 172938598149847,
+          "pc": "0x812070",
+          "eax": 1600893044,
+          "object": "0x5f6bb074",
+          "new_pending": 0,
+          "caller": "0xda6b70"
+        },
+        {
+          "kind": "command",
+          "ns": 172946724845182,
+          "pc": "0x810230",
+          "eax": 2501,
+          "command": 2501,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1
+        },
+        {
+          "kind": "entry",
+          "ns": 172946727216223,
+          "pc": "0x8132b0",
+          "eax": 1,
+          "index": 1,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1,
+          "row_bound": 560
+        },
+        {
+          "kind": "vector_count",
+          "ns": 172946729810335,
+          "pc": "0x8132f5",
+          "eax": 2,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x0"
+        },
+        {
+          "kind": "selected_row",
+          "ns": 172946733035536,
+          "pc": "0x813330",
+          "eax": 504,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x5f6c0184",
+          "roomid": 202,
+          "row44": "3ffa6b5f9a106c5f4813a25c"
+        },
+        {
+          "kind": "row_eligible_return",
+          "ns": 172946735710927,
+          "pc": "0x813389",
+          "eax": 1,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x5f6c0184"
+        },
+        {
+          "kind": "predicate_return",
+          "ns": 172946738154539,
+          "pc": "0x81339b",
+          "eax": 1,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x5f6c0184"
+        },
+        {
+          "kind": "send_join_entry",
+          "ns": 172946740506810,
+          "pc": "0x811ad0",
+          "eax": 2,
+          "index": 2,
+          "object": "0x5f6bb074"
+        },
+        {
+          "kind": "pending_set",
+          "ns": 172946753484376,
+          "pc": "0x812070",
+          "eax": 1,
+          "object": "0x5f6bb074",
+          "new_pending": 1,
+          "caller": "0x81203d"
+        },
+        {
+          "kind": "pending_set",
+          "ns": 172946758147948,
+          "pc": "0x812070",
+          "eax": 1233260,
+          "object": "0x5f6bb074",
+          "new_pending": 0,
+          "caller": "0x8169ec"
+        },
+        {
+          "kind": "command",
+          "ns": 172960582460440,
+          "pc": "0x810230",
+          "eax": 2501,
+          "command": 2501,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1
+        },
+        {
+          "kind": "entry",
+          "ns": 172960584988191,
+          "pc": "0x8132b0",
+          "eax": 1,
+          "index": 1,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1,
+          "row_bound": 560
+        },
+        {
+          "kind": "vector_count",
+          "ns": 172960588776873,
+          "pc": "0x8132f5",
+          "eax": 2,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x0"
+        },
+        {
+          "kind": "selected_row",
+          "ns": 172960591312064,
+          "pc": "0x813330",
+          "eax": 504,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x5f6c0184",
+          "roomid": 303,
+          "row44": "3ffa6b5f9a106c5f4813a25c"
+        },
+        {
+          "kind": "row_eligible_return",
+          "ns": 172960593855855,
+          "pc": "0x813389",
+          "eax": 1,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x5f6c0184"
+        },
+        {
+          "kind": "predicate_return",
+          "ns": 172960596425857,
+          "pc": "0x81339b",
+          "eax": 1,
+          "object": "0x5f6bb074",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x5f6c0184"
+        },
+        {
+          "kind": "send_join_entry",
+          "ns": 172960599110448,
+          "pc": "0x811ad0",
+          "eax": 2,
+          "index": 2,
+          "object": "0x5f6bb074"
+        },
+        {
+          "kind": "pending_set",
+          "ns": 172960614341745,
+          "pc": "0x812070",
+          "eax": 1,
+          "object": "0x5f6bb074",
+          "new_pending": 1,
+          "caller": "0x81203d"
+        },
+        {
+          "kind": "pending_set",
+          "ns": 172960620085258,
+          "pc": "0x812070",
+          "eax": 1233260,
+          "object": "0x5f6bb074",
+          "new_pending": 0,
+          "caller": "0x8169ec"
+        }
+      ],
+      "error_and_success_handlers": [
+        {
+          "kind": "handler_end",
+          "ns": 172949240122602,
+          "pc": "0x8177d1",
+          "result_local": 1,
+          "cursor": 1,
+          "payload": 1,
+          "err54": 0,
+          "err58": 0
+        },
+        {
+          "kind": "handler_end",
+          "ns": 172960636999646,
+          "pc": "0x8177d1",
+          "result_local": 0,
+          "cursor": 7,
+          "payload": 7,
+          "err54": 0,
+          "err58": 0
+        }
+      ],
+      "actual_B82": [
+        [
+          2,
+          202,
+          0,
+          1,
+          5
+        ],
+        [
+          2,
+          303,
+          0,
+          1,
+          5
+        ]
+      ],
+      "native_success_projection": [
+        {
+          "kind": "begin87",
+          "n": 1,
+          "ns": 172946755850577,
+          "pc": "0x8169c0"
+        },
+        {
+          "kind": "begin87",
+          "n": 2,
+          "ns": 172960616596796,
+          "pc": "0x8169c0"
+        },
+        {
+          "kind": "lookup_return",
+          "n": 1,
+          "ns": 172960621825109,
+          "pc": "0x81789f",
+          "session": 2,
+          "row_object": "0x5f6c0184"
+        },
+        {
+          "kind": "session_set",
+          "n": 1,
+          "ns": 172960623853240,
+          "pc": "0x123fa30",
+          "this": "0x2ea2bbc0",
+          "caller": "0x81794f",
+          "arg": 2
+        },
+        {
+          "kind": "roomid_set",
+          "n": 1,
+          "ns": 172960628341182,
+          "pc": "0x123fb70",
+          "this": "0x2ea2bbc0",
+          "caller": "0x817987",
+          "arg": 303
+        },
+        {
+          "kind": "title_set",
+          "n": 1,
+          "ns": 172960630292663,
+          "pc": "0x12409e0",
+          "this": "0x2ea2bbc0",
+          "caller": "0x8179a6",
+          "arg": 1232104,
+          "title_hex": "526f6f6d47616d6d61",
+          "title_ascii": "RoomGamma"
+        },
+        {
+          "kind": "end87",
+          "n": 1,
+          "ns": 172960634057565,
+          "pc": "0x8179f3",
+          "cursor": 7,
+          "payload": 7,
+          "err54": 0,
+          "err58": 0
+        }
+      ],
+      "ordinary_retry_input": {
+        "ns": 172960879735962,
+        "window": "16777217",
+        "focus_returncode": 0,
+        "input_returncode": 0,
+        "x": 600,
+        "y": 150,
+        "move_out_returncode": 0,
+        "action": "ordinarypointermoveout300-450thenrow2center600-150doubleclickaftermeasuredrefreshcount1"
+      },
+      "limits": "Inputrecipecontrolpositive/noforcedstate; whyoldedgeclicknevertriggeredcallbackunknown. Code1nativeUIWrongPassword(resource17158DC)soearlierstale-IDpolicycode1semanticsincorrect; thisrunonlyvalidateserror1ack/refresh/inputrecovery,notrecommendedstaleIDerror. NewgenericCantJoinRoomcode2needsnativevalidation. No585reply/membership/generalregistry/security/Rust/gate.",
+      "next": "Nativegenericresult2controlsamecenterrecipe/servicepolicy, updateonlywireerrorcode/observerbranch, thenrecordrealmessage/reader/recovery. Oldcode1runskeptwithexplicitcorrection."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "recorded_utc": "2026-11-09T04:29:01.175764+00:00",
+      "result": "ordinary_pointermoveout_center_retry_native82_303_87session2_IDtitleGamma_after_generic_result2",
+      "run_sha256": "7e0a02d2b63480c9981f4bccce37bf44c8ebccaa6c65ad3fe4ad5efa2f7ae8d1",
+      "duration_s": 61.000117248,
+      "raw_count": 152,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/endrun/captureclose/ownedWineandservice/virtualtopologystop/netnamespaceextinct"
+      },
+      "native_callback_route": [
+        {
+          "kind": "pending_set",
+          "ns": 173098659372700,
+          "pc": "0x812070",
+          "eax": 1679571428,
+          "object": "0x641c39e4",
+          "new_pending": 0,
+          "caller": "0xda6b70"
+        },
+        {
+          "kind": "command",
+          "ns": 173106695816702,
+          "pc": "0x810230",
+          "eax": 2501,
+          "command": 2501,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1
+        },
+        {
+          "kind": "entry",
+          "ns": 173106698293143,
+          "pc": "0x8132b0",
+          "eax": 1,
+          "index": 1,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1,
+          "row_bound": 560
+        },
+        {
+          "kind": "vector_count",
+          "ns": 173106700774015,
+          "pc": "0x8132f5",
+          "eax": 2,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x0"
+        },
+        {
+          "kind": "selected_row",
+          "ns": 173106703648106,
+          "pc": "0x813330",
+          "eax": 504,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x641c8af4",
+          "roomid": 202,
+          "row44": "af831c640a9a1c641063945e"
+        },
+        {
+          "kind": "row_eligible_return",
+          "ns": 173106706644467,
+          "pc": "0x813389",
+          "eax": 1,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x641c8af4"
+        },
+        {
+          "kind": "predicate_return",
+          "ns": 173106709070629,
+          "pc": "0x81339b",
+          "eax": 1,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x641c8af4"
+        },
+        {
+          "kind": "send_join_entry",
+          "ns": 173106711489440,
+          "pc": "0x811ad0",
+          "eax": 2,
+          "index": 2,
+          "object": "0x641c39e4"
+        },
+        {
+          "kind": "pending_set",
+          "ns": 173106724959326,
+          "pc": "0x812070",
+          "eax": 1,
+          "object": "0x641c39e4",
+          "new_pending": 1,
+          "caller": "0x81203d"
+        },
+        {
+          "kind": "pending_set",
+          "ns": 173106730392699,
+          "pc": "0x812070",
+          "eax": 1233260,
+          "object": "0x641c39e4",
+          "new_pending": 0,
+          "caller": "0x8169ec"
+        },
+        {
+          "kind": "command",
+          "ns": 173120555356141,
+          "pc": "0x810230",
+          "eax": 2501,
+          "command": 2501,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1
+        },
+        {
+          "kind": "entry",
+          "ns": 173120557803662,
+          "pc": "0x8132b0",
+          "eax": 1,
+          "index": 1,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1,
+          "row_bound": 560
+        },
+        {
+          "kind": "vector_count",
+          "ns": 173120560503043,
+          "pc": "0x8132f5",
+          "eax": 2,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x0"
+        },
+        {
+          "kind": "selected_row",
+          "ns": 173120563543625,
+          "pc": "0x813330",
+          "eax": 504,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x641c8af4",
+          "roomid": 303,
+          "row44": "af831c640a9a1c64405b945e"
+        },
+        {
+          "kind": "row_eligible_return",
+          "ns": 173120566051076,
+          "pc": "0x813389",
+          "eax": 1,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x641c8af4"
+        },
+        {
+          "kind": "predicate_return",
+          "ns": 173120571296389,
+          "pc": "0x81339b",
+          "eax": 1,
+          "object": "0x641c39e4",
+          "pending": 0,
+          "has_list": 1,
+          "index": 1,
+          "row": "0x641c8af4"
+        },
+        {
+          "kind": "send_join_entry",
+          "ns": 173120573766860,
+          "pc": "0x811ad0",
+          "eax": 2,
+          "index": 2,
+          "object": "0x641c39e4"
+        },
+        {
+          "kind": "pending_set",
+          "ns": 173120589206007,
+          "pc": "0x812070",
+          "eax": 1,
+          "object": "0x641c39e4",
+          "new_pending": 1,
+          "caller": "0x81203d"
+        },
+        {
+          "kind": "pending_set",
+          "ns": 173120595217330,
+          "pc": "0x812070",
+          "eax": 1233260,
+          "object": "0x641c39e4",
+          "new_pending": 0,
+          "caller": "0x8169ec"
+        }
+      ],
+      "error_and_success_handlers": [
+        {
+          "kind": "handler_end",
+          "ns": 173109208953331,
+          "pc": "0x8177d1",
+          "result_local": 2,
+          "cursor": 1,
+          "payload": 1,
+          "err54": 0,
+          "err58": 0
+        },
+        {
+          "kind": "handler_end",
+          "ns": 173120611973908,
+          "pc": "0x8177d1",
+          "result_local": 0,
+          "cursor": 7,
+          "payload": 7,
+          "err54": 0,
+          "err58": 0
+        }
+      ],
+      "actual_B82": [
+        [
+          2,
+          202,
+          0,
+          1,
+          5
+        ],
+        [
+          2,
+          303,
+          0,
+          1,
+          5
+        ]
+      ],
+      "native_success_projection": [
+        {
+          "kind": "begin87",
+          "n": 1,
+          "ns": 173106728119368,
+          "pc": "0x8169c0"
+        },
+        {
+          "kind": "begin87",
+          "n": 2,
+          "ns": 173120591633908,
+          "pc": "0x8169c0"
+        },
+        {
+          "kind": "lookup_return",
+          "n": 1,
+          "ns": 173120597255331,
+          "pc": "0x81789f",
+          "session": 2,
+          "row_object": "0x641c8af4"
+        },
+        {
+          "kind": "session_set",
+          "n": 1,
+          "ns": 173120600515573,
+          "pc": "0x123fa30",
+          "this": "0x2ea2bcc8",
+          "caller": "0x81794f",
+          "arg": 2
+        },
+        {
+          "kind": "roomid_set",
+          "n": 1,
+          "ns": 173120603618814,
+          "pc": "0x123fb70",
+          "this": "0x2ea2bcc8",
+          "caller": "0x817987",
+          "arg": 303
+        },
+        {
+          "kind": "title_set",
+          "n": 1,
+          "ns": 173120605779835,
+          "pc": "0x12409e0",
+          "this": "0x2ea2bcc8",
+          "caller": "0x8179a6",
+          "arg": 1232104,
+          "title_hex": "526f6f6d47616d6d61",
+          "title_ascii": "RoomGamma"
+        },
+        {
+          "kind": "end87",
+          "n": 1,
+          "ns": 173120609538137,
+          "pc": "0x8179f3",
+          "cursor": 7,
+          "payload": 7,
+          "err54": 0,
+          "err58": 0
+        }
+      ],
+      "ordinary_retry_input": {
+        "ns": 173120849517021,
+        "window": "16777217",
+        "focus_returncode": 0,
+        "input_returncode": 0,
+        "x": 600,
+        "y": 150,
+        "move_out_returncode": 0,
+        "action": "ordinarypointermoveout300-450thenrow2center600-150doubleclickaftermeasuredrefreshcount1"
+      },
+      "limits": "Inputrecipecontrolpositive/noforcedstate; whyoldedgeclicknevertriggeredcallbackunknown. Nativecode2branch/staticCantJoinRoomresource17158EC/onebyte2fullyconsumed; code1WrongPasswordoldtestsnotappropriateproductstaleIDmessage. Thisrunvalidatesgenericcannotjoinerror/ordinaryack/refresh/inputrecovery; notoriginalserverreasonlaw. No585reply/membership/generalregistry/security/Rust/gate.",
+      "next": "Nextknown585→room-local106roster/ownslot0nativeprojection androomisolation beforegeneralregistry; no repeatformerlist/error/UIcontrols.",
+      "tcp_capture_records": 208,
+      "native_error_resource": "CantJoinRoom/17158EC"
+    }
+  ],
+  "message_input_corrections": {
+    "source": "design",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T04:31:04.884934+00:00",
+    "facts": "Native87result1imagewrongpassword/resourceWrongPassword17158DC; selecting1forstaleIDpolicymislabelsreason. Oldtestsvalidatenativeerror1/ack/inputonly, notappropriatestaleIDdenialmessage. Correctednative2resourceCantJoinRoom17158EC/noticecannotjoinroom/reader1byte→ordinaryReturn→refresh91→centerinput→87successconfirmed. No result1stale-policyclaim retained asrecommendedcontract.",
+    "input": "Initialedge730,170retryaftermodalno callback2501/8132B0/new82; source-guidedobserverprovesinitialcallbackpassed/87pending0, notpendingguardfailure. Ordinarymoveout300,450/.25s→center600,150doubleclickdeliverscallback2501/row303/new82. Whyedgeattemptmissingnativecallbackunknown; do notclaimrootcause/statefix.",
+    "images": [
+      {
+        "path": "local/research/codex/room-stale-join-r1/deny-refresh-retry/cycles/B/stale-error-before-ack.png",
+        "bytes": 148953,
+        "sha256": "3e82f57ce26295bce0bf6deb3a714dcb3780c9e5e39c820149bf36b976133cf6"
+      },
+      {
+        "path": "local/research/codex/room-join-generic-error-r1/deny-refresh-retry/cycles/B/stale-error-before-ack.png",
+        "bytes": 149024,
+        "sha256": "3ba52846b8c97027daa8b71f1f4d17393d9336239b2f863f00216ee37bcfd234"
+      },
+      {
+        "path": "local/research/codex/room-join-generic-error-r1/deny-refresh-retry/cycles/B/screen-23.png",
+        "bytes": 147408,
+        "sha256": "7a857c0715dcacd922f69859df9907a9f35f42618da2622872644a42ddea5091"
+      }
+    ],
+    "preserved": "No oldrun/source/report/record/AUD065rewritten. Firstfailure225raw/observerfailure155raw kept; nativecorrectedcode2newrun152raw.",
+    "limits": "Nativeknownhandler/UIwithinWinecopy4b; fixedstaleIDproductpolicyisdesign/notoriginalserverlaw/security. Projectionand585requestonly,no585reply/roster/membership/2roomisolation/registry/Rust/gate."
+  },
+  "error_static": {
+    "source": "kr_static",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T04:16:12.534054+00:00",
+    "question": "Known87result0projectsselectedsession; static87result1branchreadsadditionalfieldsoronlynotice? Needlegitimatedenialroutebeforestale-IDpolicycontrol.",
+    "sources": [
+      {
+        "path": "local/research/codex/duo-round-r1/8169C0.asm",
+        "sha256": "41ebe79233f7b696b49d61c0d73c452bbcd9d0d155746b781868427b3af93fde"
+      },
+      {
+        "path": "local/research/codex/room-join-projection-r1/verification.json",
+        "sha256": "78ca864acc8c74e197f51621e920c7e0eca54dce3119c3743bac776462b968da"
+      }
+    ],
+    "method": "Read-only15entryresulttable8177E4+bounded512byteprefixresult1; copiedPE/modelmatch/stopdirectjmp, no newcallee/SDKgraph. REAfallbackexplicit/previous450stimeoutproviderclosed.",
+    "table": [
+      {
+        "result": 0,
+        "branch": "0x816a2a"
+      },
+      {
+        "result": 1,
+        "branch": "0x816a62"
+      },
+      {
+        "result": 2,
+        "branch": "0x816b2c"
+      },
+      {
+        "result": 3,
+        "branch": "0x816bf6"
+      },
+      {
+        "result": 4,
+        "branch": "0x816f34"
+      },
+      {
+        "result": 5,
+        "branch": "0x817016"
+      },
+      {
+        "result": 6,
+        "branch": "0x8170f8"
+      },
+      {
+        "result": 7,
+        "branch": "0x8171d9"
+      },
+      {
+        "result": 8,
+        "branch": "0x816d89"
+      },
+      {
+        "result": 9,
+        "branch": "0x8172bb"
+      },
+      {
+        "result": 10,
+        "branch": "0x816e53"
+      },
+      {
+        "result": 11,
+        "branch": "0x816cbf"
+      },
+      {
+        "result": 12,
+        "branch": "0x81739d"
+      },
+      {
+        "result": 13,
+        "branch": "0x81752b"
+      },
+      {
+        "result": 14,
+        "branch": "0x8176f4"
+      }
+    ],
+    "result1": [
+      {
+        "va": "0x816a62",
+        "mnemonic": "call",
+        "operand": "0x544520"
+      },
+      {
+        "va": "0x816a67",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 0x34], eax"
+      },
+      {
+        "va": "0x816a6a",
+        "mnemonic": "sub",
+        "operand": "esp, 0x18"
+      },
+      {
+        "va": "0x816a6d",
+        "mnemonic": "mov",
+        "operand": "ecx, esp"
+      },
+      {
+        "va": "0x816a6f",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 0x144], esp"
+      },
+      {
+        "va": "0x816a75",
+        "mnemonic": "push",
+        "operand": "0x16ec8c0"
+      },
+      {
+        "va": "0x816a7a",
+        "mnemonic": "call",
+        "operand": "0x447420"
+      },
+      {
+        "va": "0x816a7f",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 0x148], eax"
+      },
+      {
+        "va": "0x816a85",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 4], 0"
+      },
+      {
+        "va": "0x816a8c",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 4], 0xffffffff"
+      },
+      {
+        "va": "0x816a93",
+        "mnemonic": "mov",
+        "operand": "ecx, dword ptr [ebp - 0x34]"
+      },
+      {
+        "va": "0x816a96",
+        "mnemonic": "call",
+        "operand": "0x123fa70"
+      },
+      {
+        "va": "0x816a9b",
+        "mnemonic": "nop",
+        "operand": ""
+      },
+      {
+        "va": "0x816a9c",
+        "mnemonic": "mov",
+        "operand": "edx, dword ptr [0x1a8ab40]"
+      },
+      {
+        "va": "0x816aa2",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 0x38], edx"
+      },
+      {
+        "va": "0x816aa5",
+        "mnemonic": "mov",
+        "operand": "eax, dword ptr [ebp - 0x38]"
+      },
+      {
+        "va": "0x816aa8",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 0x3c], eax"
+      },
+      {
+        "va": "0x816aab",
+        "mnemonic": "push",
+        "operand": "0x17158dc"
+      },
+      {
+        "va": "0x816ab0",
+        "mnemonic": "lea",
+        "operand": "ecx, [ebp - 0x200]"
+      },
+      {
+        "va": "0x816ab6",
+        "mnemonic": "call",
+        "operand": "0x447420"
+      },
+      {
+        "va": "0x816abb",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 4], 1"
+      },
+      {
+        "va": "0x816ac2",
+        "mnemonic": "lea",
+        "operand": "ecx, [ebp - 0x200]"
+      },
+      {
+        "va": "0x816ac8",
+        "mnemonic": "push",
+        "operand": "ecx"
+      },
+      {
+        "va": "0x816ac9",
+        "mnemonic": "call",
+        "operand": "0x52a500"
+      },
+      {
+        "va": "0x816ace",
+        "mnemonic": "add",
+        "operand": "esp, 4"
+      },
+      {
+        "va": "0x816ad1",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 0x40], eax"
+      },
+      {
+        "va": "0x816ad4",
+        "mnemonic": "push",
+        "operand": "1"
+      },
+      {
+        "va": "0x816ad6",
+        "mnemonic": "push",
+        "operand": "0x10000000"
+      },
+      {
+        "va": "0x816adb",
+        "mnemonic": "push",
+        "operand": "0x10000000"
+      },
+      {
+        "va": "0x816ae0",
+        "mnemonic": "push",
+        "operand": "ecx"
+      },
+      {
+        "va": "0x816ae1",
+        "mnemonic": "mov",
+        "operand": "esi, esp"
+      },
+      {
+        "va": "0x816ae3",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 0x14c], esp"
+      },
+      {
+        "va": "0x816ae9",
+        "mnemonic": "push",
+        "operand": "0xa1"
+      },
+      {
+        "va": "0x816aee",
+        "mnemonic": "push",
+        "operand": "0x4c"
+      },
+      {
+        "va": "0x816af0",
+        "mnemonic": "push",
+        "operand": "0"
+      },
+      {
+        "va": "0x816af2",
+        "mnemonic": "call",
+        "operand": "0x14b5e60"
+      },
+      {
+        "va": "0x816af7",
+        "mnemonic": "add",
+        "operand": "esp, 0xc"
+      },
+      {
+        "va": "0x816afa",
+        "mnemonic": "push",
+        "operand": "eax"
+      },
+      {
+        "va": "0x816afb",
+        "mnemonic": "mov",
+        "operand": "ecx, esi"
+      },
+      {
+        "va": "0x816afd",
+        "mnemonic": "call",
+        "operand": "0x529040"
+      },
+      {
+        "va": "0x816b02",
+        "mnemonic": "mov",
+        "operand": "edx, dword ptr [ebp - 0x3c]"
+      },
+      {
+        "va": "0x816b05",
+        "mnemonic": "push",
+        "operand": "edx"
+      },
+      {
+        "va": "0x816b06",
+        "mnemonic": "push",
+        "operand": "0"
+      },
+      {
+        "va": "0x816b08",
+        "mnemonic": "mov",
+        "operand": "eax, dword ptr [ebp - 0x40]"
+      },
+      {
+        "va": "0x816b0b",
+        "mnemonic": "push",
+        "operand": "eax"
+      },
+      {
+        "va": "0x816b0c",
+        "mnemonic": "call",
+        "operand": "0xc1b8f0"
+      },
+      {
+        "va": "0x816b11",
+        "mnemonic": "add",
+        "operand": "esp, 0x1c"
+      },
+      {
+        "va": "0x816b14",
+        "mnemonic": "mov",
+        "operand": "dword ptr [ebp - 4], 0xffffffff"
+      },
+      {
+        "va": "0x816b1b",
+        "mnemonic": "lea",
+        "operand": "ecx, [ebp - 0x200]"
+      },
+      {
+        "va": "0x816b21",
+        "mnemonic": "call",
+        "operand": "0x449540"
+      },
+      {
+        "va": "0x816b26",
+        "mnemonic": "nop",
+        "operand": ""
+      },
+      {
+        "va": "0x816b27",
+        "mnemonic": "jmp",
+        "operand": "0x8177d1"
+      }
+    ],
+    "limits": "Statictable/prefixnotnativeUI/fullresulterrors; productpolicyshallnotnameerror1meaninguntilnativeUIverified. No forcednativeerrorret/unconfirmed opcode."
+  },
+  "error_message_prefixes": {
+    "source": "kr_static",
+    "status": "confirmed",
+    "method": "Same8169C0resulttablebranches1..3/96byteprefix+directliteraltextonly/copiedPE-modelmatch. No wholebinarystringscan/newfunction/callees.",
+    "cases": [
+      {
+        "result": 1,
+        "branch": "0x816a62",
+        "branch_prefix_bytes": 96,
+        "instructions": [
+          {
+            "va": "0x816a62",
+            "mnemonic": "call",
+            "operand": "0x544520"
+          },
+          {
+            "va": "0x816a67",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x34], eax"
+          },
+          {
+            "va": "0x816a6a",
+            "mnemonic": "sub",
+            "operand": "esp, 0x18"
+          },
+          {
+            "va": "0x816a6d",
+            "mnemonic": "mov",
+            "operand": "ecx, esp"
+          },
+          {
+            "va": "0x816a6f",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x144], esp"
+          },
+          {
+            "va": "0x816a75",
+            "mnemonic": "push",
+            "operand": "0x16ec8c0"
+          },
+          {
+            "va": "0x816a7a",
+            "mnemonic": "call",
+            "operand": "0x447420"
+          },
+          {
+            "va": "0x816a7f",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x148], eax"
+          },
+          {
+            "va": "0x816a85",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], 0"
+          },
+          {
+            "va": "0x816a8c",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], 0xffffffff"
+          },
+          {
+            "va": "0x816a93",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 0x34]"
+          },
+          {
+            "va": "0x816a96",
+            "mnemonic": "call",
+            "operand": "0x123fa70"
+          },
+          {
+            "va": "0x816a9b",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x816a9c",
+            "mnemonic": "mov",
+            "operand": "edx, dword ptr [0x1a8ab40]"
+          },
+          {
+            "va": "0x816aa2",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x38], edx"
+          },
+          {
+            "va": "0x816aa5",
+            "mnemonic": "mov",
+            "operand": "eax, dword ptr [ebp - 0x38]"
+          },
+          {
+            "va": "0x816aa8",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x3c], eax"
+          },
+          {
+            "va": "0x816aab",
+            "mnemonic": "push",
+            "operand": "0x17158dc"
+          },
+          {
+            "va": "0x816ab0",
+            "mnemonic": "lea",
+            "operand": "ecx, [ebp - 0x200]"
+          },
+          {
+            "va": "0x816ab6",
+            "mnemonic": "call",
+            "operand": "0x447420"
+          },
+          {
+            "va": "0x816abb",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], 1"
+          }
+        ],
+        "texts": [
+          {
+            "pointer": "0x17158dc",
+            "bytes": 13,
+            "sha256": "ea00e7c4a6d82cc27a1635a15879ccfec98f150b2edb2ad3bb8a519848b20130",
+            "cp949": "WrongPassword"
+          }
+        ]
+      },
+      {
+        "result": 2,
+        "branch": "0x816b2c",
+        "branch_prefix_bytes": 96,
+        "instructions": [
+          {
+            "va": "0x816b2c",
+            "mnemonic": "call",
+            "operand": "0x544520"
+          },
+          {
+            "va": "0x816b31",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x44], eax"
+          },
+          {
+            "va": "0x816b34",
+            "mnemonic": "sub",
+            "operand": "esp, 0x18"
+          },
+          {
+            "va": "0x816b37",
+            "mnemonic": "mov",
+            "operand": "ecx, esp"
+          },
+          {
+            "va": "0x816b39",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x150], esp"
+          },
+          {
+            "va": "0x816b3f",
+            "mnemonic": "push",
+            "operand": "0x16ec8c0"
+          },
+          {
+            "va": "0x816b44",
+            "mnemonic": "call",
+            "operand": "0x447420"
+          },
+          {
+            "va": "0x816b49",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x154], eax"
+          },
+          {
+            "va": "0x816b4f",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], 2"
+          },
+          {
+            "va": "0x816b56",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], 0xffffffff"
+          },
+          {
+            "va": "0x816b5d",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 0x44]"
+          },
+          {
+            "va": "0x816b60",
+            "mnemonic": "call",
+            "operand": "0x123fa70"
+          },
+          {
+            "va": "0x816b65",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x816b66",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [0x1a8ab40]"
+          },
+          {
+            "va": "0x816b6c",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x48], ecx"
+          },
+          {
+            "va": "0x816b6f",
+            "mnemonic": "mov",
+            "operand": "edx, dword ptr [ebp - 0x48]"
+          },
+          {
+            "va": "0x816b72",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x4c], edx"
+          },
+          {
+            "va": "0x816b75",
+            "mnemonic": "push",
+            "operand": "0x17158ec"
+          },
+          {
+            "va": "0x816b7a",
+            "mnemonic": "lea",
+            "operand": "ecx, [ebp - 0x218]"
+          },
+          {
+            "va": "0x816b80",
+            "mnemonic": "call",
+            "operand": "0x447420"
+          },
+          {
+            "va": "0x816b85",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], 3"
+          }
+        ],
+        "texts": [
+          {
+            "pointer": "0x17158ec",
+            "bytes": 12,
+            "sha256": "d9c457d6a06265c3a2c8a7ba3c4013448beb0bab33bb5826a29024c380bad5a0",
+            "cp949": "CantJoinRoom"
+          }
+        ]
+      },
+      {
+        "result": 3,
+        "branch": "0x816bf6",
+        "branch_prefix_bytes": 96,
+        "instructions": [
+          {
+            "va": "0x816bf6",
+            "mnemonic": "call",
+            "operand": "0x544520"
+          },
+          {
+            "va": "0x816bfb",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x54], eax"
+          },
+          {
+            "va": "0x816bfe",
+            "mnemonic": "sub",
+            "operand": "esp, 0x18"
+          },
+          {
+            "va": "0x816c01",
+            "mnemonic": "mov",
+            "operand": "ecx, esp"
+          },
+          {
+            "va": "0x816c03",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x15c], esp"
+          },
+          {
+            "va": "0x816c09",
+            "mnemonic": "push",
+            "operand": "0x16ec8c0"
+          },
+          {
+            "va": "0x816c0e",
+            "mnemonic": "call",
+            "operand": "0x447420"
+          },
+          {
+            "va": "0x816c13",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x160], eax"
+          },
+          {
+            "va": "0x816c19",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], 4"
+          },
+          {
+            "va": "0x816c20",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], 0xffffffff"
+          },
+          {
+            "va": "0x816c27",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 0x54]"
+          },
+          {
+            "va": "0x816c2a",
+            "mnemonic": "call",
+            "operand": "0x123fa70"
+          },
+          {
+            "va": "0x816c2f",
+            "mnemonic": "nop",
+            "operand": ""
+          },
+          {
+            "va": "0x816c30",
+            "mnemonic": "mov",
+            "operand": "eax, dword ptr [0x1a8ab40]"
+          },
+          {
+            "va": "0x816c35",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x58], eax"
+          },
+          {
+            "va": "0x816c38",
+            "mnemonic": "mov",
+            "operand": "ecx, dword ptr [ebp - 0x58]"
+          },
+          {
+            "va": "0x816c3b",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 0x5c], ecx"
+          },
+          {
+            "va": "0x816c3e",
+            "mnemonic": "push",
+            "operand": "0x1705698"
+          },
+          {
+            "va": "0x816c43",
+            "mnemonic": "lea",
+            "operand": "ecx, [ebp - 0x230]"
+          },
+          {
+            "va": "0x816c49",
+            "mnemonic": "call",
+            "operand": "0x447420"
+          },
+          {
+            "va": "0x816c4e",
+            "mnemonic": "mov",
+            "operand": "dword ptr [ebp - 4], 5"
+          }
+        ],
+        "texts": [
+          {
+            "pointer": "0x1705698",
+            "bytes": 12,
+            "sha256": "b2742fca4d163b661d2cbf733ca2b17296b93a8c9658f36905ffcb1e588285f9",
+            "cp949": "InvalidGrade"
+          }
+        ]
+      }
+    ],
+    "limits": "Textbytes/branchsamefunctionnotnativecaseacceptance; choosecodeonlyafternativeUI/runtimecontrol. Nativecode1imageiswrongpasswordnotstaleIDmessage."
+  },
+  "limits": "5relatedruns802raw/frozen/cleanup. Native82→87lookup/session-ID-title/7bytes; genericerror2/1byte/ack/refresh→new82→87projection. Code1WrongPasswordnotstaleIDmessage. No585reply/membership/registry/roomstateisolation/production/Rust/gate. Internet thật chưa kiểm.",
+  "same_channel_owner_verification": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "recorded_utc": "2026-11-09T04:32:05.228731+00:00",
+    "proof_path": "local/research/codex/room-join-generic-error-r1/deny-refresh-retry/cycles/proof-service-state-final.json",
+    "proof_sha256": "0925c0271235ec0cae16550444bfa69ef2ba3c0f1f126ddfb62c6e90a2f812fa",
+    "checks": "8transports/twoinitialchannelidentitiesunchanged/nochannelclosedattestcompletion/activeexactowners1A2B; actual585afterA/Bsuccessrecordedbutunanswered. Bno585orcontextbeforedenialaccepted; previousverificationjoinswire/reader.",
+    "limits": "Serviceownerretentionnotgameplayorsecureauth/membership. Sameinitialadmissionchannel/sessionthroughroomerror/refresh/retry, notloginreconnect oraccountresume."
+  }
+}
