@@ -577,6 +577,48 @@ Hai account positive chưa đảo account giữa endpoint, chưa native wrong-ch
 [thứ tự](PLAN.md#current-order). CP220–221 đã merge PR292/f5caefb; AUD064qua220/kế224.
 EOF receiver blocker giữ nguyên; Internet thật chưa kiểm.
 
+<a id="auth-session-lifecycle"></a>
+### Account đổi endpoint; lỗi sau17 và ranh giới retry — CP223
+
+[Bảy run/raw/hash](evidence/login-runtime/README.md#cp223), [metadata](evidence/login-runtime/session-lifecycle.json).
+Không lặp CP222 positive/duplicate hoặc EOF trước17. Phép đo tiếp từ nguồn/caller cụ thể; không SDK/VMgraph.
+
+**`kr_runtime/confirmed` endpoint permutation:** cùng privatepolicy/profile, chỉ đảo token hợp lệ giữa
+hai endpoint. Source.2 nhận accountB/ID2-KRGuest trước; source.3 nhận accountA/ID1-KRLocal sau;
+nativeauth0/typed6/echo/actual67/hai session/PCAP/8s+hold nối được. Identity theo verifiedaccount ở hai
+mapping đã đo, không theo fixedIP-label hay thứ tự nhận. Đây là validaccountremap, **không** rejected
+wrong-channel-swap/securityproof. Run đã seal sauCP222, giờ giao batch này; không sửa recordCP222.
+
+**Termination test `emu_choice/design`:** đóng Bchannel sau khi cảhai actual67 và chờ5s, release đúng
+Bsession, Aowner giữ. Không gọi đây là luật TTL/revoke gốc hoặc implementation sessionexpiry.
+Sau17, B có UI connectionlost/errorcode10 và mở connect mới tới10.77.0.1:3848; không SIGSEGV trong
+cửa sổ20/30s hai ca đầu. Không suy “healthy/recovered” từ alive/FIN/UI: nativefreshlogin chưa qua.
+Khác EOF trước17 bị17C7F4C tạiCP218–220; blocker đó giữ nguyên, không tổng quát hóa qua mọi pha.
+
+**Prototype admission còn thiếu lifecycle:** ca đầu chặn Bconnect mới bởi budget4/source. Derivedpolicy
+reset counterB sau oldsession release thì còn guard ordinal>8 `replacement_not_ready` chặn; guard cũ giữ
+bất biến. Adapter riêng cho đúng Bcycle2 (A/unknownsource vẫn fenced, trần12) nhận connection9 nhưng
+không C2S byte/auth0 lần2/6/67 mới. Không retag theo port hoặc giả token/accountresume thành công.
+Các failedretry run giữ raw; one-timecounter/guard và optional ordinarydialogReturn đều là testpolicy/input.
+
+**Probe cuối khoanh điểm dừng:** copiedIATconnect16EA778/recv16EA744/AsyncSelect16EA740 được quan sát
+thụ động. NativeB newconnect caller14F489A←13AEEE5←13AD6C5←1255C0B←1255A69←125BE47;
+recv cùng socket trả15byte đúng bootstrap fixture. Framer14EF300 mode0/selector0 consume15/ret0,
+sequence40→43/available0; sau đó AsyncSelect message400/mask21. Đây là bytes/framer success, chưa
+consumer/validation success: không secondauth/C2S6/67/newsession. Tiếp đúng hello consumer13AEFE0/
+validationresult theo caller/cache, không lặp socketaccept/recv hoặc mở graph protected/SDK.
+
+**Corrections giữ provenance:** ảnh `screen-10` R1 được đọc nhầm là sauEOF nhưng timestamp trước close;
+ảnh cuối có modal. Report đầu bị pin làm input R2 giữ nguyên, thêm correction, raw không sửa.
+Thao tác dự kiến create trong R2 bị errorUI chặn; không send81, không roomacceptance hoặc causalityclaim.
+Probe connect đầu đặt watchrecv từ lần5 nhưng breakpoint start sau2bootstrap nên newconnect là lần3;
+thiếu snapshot không là no-read. Probe mới chọn actualendpoint và giữ đầy đủ cả hai report.
+
+Tổng1108raw/bảy run/sourcefrozen/ownedcleanup; nativeendpoint-remap positive tách retry **FAIL**.
+Chưa genericfreshlogin/accountresume/sessionexpiry/revocation/restartfence/DB/API/Rust/fullauth/gate mới.
+[Unknown](RESEARCH.md#rust-service-gaps), [thứ tự](PLAN.md#current-order); CP222 mergePR293/4bcabd8,
+AUD064qua220/audit kếCP224. Internet thật chưa kiểm.
+
 <a id="channel-lobby"></a>
 ### Từ auth tới UI sảnh trên copy — CP015
 

@@ -300,3 +300,38 @@ newcryptor/fullproviderRE. Opaque16 semanticsunknown;0/IP/0 chỉ nhánh đã đ
 10policychecks tách native. R3 positive2accounts/2actual và R4 duplicate-loginnegative là scope riêng;
 R4 hold8s+ không phải45s hoặc channelEOF health. EOFreceiver/fullauth/sessionexpiry/restartfence/DB/Rust
 chưa giải; không đóng #14/#285/gate.8sourceWIP byte-exact. Internet thật chưa kiểm.
+
+<a id="cp223"></a>
+## CP223 — account đổi endpoint và post17 retry boundary
+
+[Contract/giới hạn](../../PROTOCOL.md#auth-session-lifecycle), [metadata](session-lifecycle.json),
+[câu hỏi](../../RESEARCH.md#rust-service-gaps), [thứ tự](../../PLAN.md#current-order).
+CP222 đã merge [PR293](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/293)/`4bcabd8`.
+Một batch source-guided/milestone+blocker, không checkpoint từng run; audit periodic kếCP224.
+
+| Root dưới local/research/codex/ | Wall/raw/exit | run.json SHA256 |
+|---|---|---|
+| `auth-endpoint-account-r1/swapped-positive` | 41.043315091s/100/0 | `7a3a2956323670b63c369cf6ccf70159fb7096167f4ac2c29196b83110205b6a` |
+| `auth-admitted-lifecycle-r1/B-channel-eof` | 55.946399947s/135/0 | `e7e1aade669498e900e208896f134d0e5823e8b61b9b6fa2b28ff7ca740c7f53` |
+| `auth-admitted-lifecycle-r1/B-channel-eof-r2` | 66.000024111s/152/0 | `3146ab48b749c525e666b445c3694b5db9907eaa0e2a1e20ce04bc264d4f8c8b` |
+| `auth-admitted-retry-r1/B-retry` | 96.527916168s/224/1 | `7aa319dd26c1d64a871426a99ed86bbe3967adbc63c91f330bf66d1ffff79604` |
+| `auth-admitted-retry-r1/B-retry-ack` | 80.958389884s/189/1 | `defc6356e8c5775807610eae1c73605c5ae5645aff10709b38208c3e3d44f321` |
+| `auth-retry-connect-r1/connect-path` | 65.751350452s/154/1 | `c26566f7e2e8996ed90fa6375f16d20d26592545cc1857b089e6bc3c8310a578` |
+| `auth-retry-connect-r1/connect-path-r2` | 65.610310215s/154/1 | `b5f38bb8d2ebba748bd9b0a4d9ee4522defee6765cba8a2f1fda755167d24cfb` |
+
+Mỗi root có recipe/preflight/raw-seal/cycles; raw A/Bclient logs/probes, window/process/screens,
+virtual-network ownership, TCPPCAP/index, service-state/run/proof snapshots. All1108raw/sourcefrozen/
+ownedcleanup verified; returned0 observationrun không là healthpass. Code và derived reports ở local:
+auth-endpoint-account-r1,auth-admitted-lifecycle-r1,auth-admitted-retry-r1,auth-retry-connect-r1.
+
+Endpointaccountvalidtoken permutation confirmed; notwrongchanneldenial/securityproof. Post17Bclose sau
+haiactual67+5s là termination test policy, không TTL gốc. ErrorUI/newconnect có evidence; Aowner retained
+chỉ openTCP+policy/nativebaseline, không giả gameplayprogress. Retry chưa secondauth/6/67/newsession.
+Prototype4/source và ordinal8 guards được xử lý riêng/failures giữ; không port-retag hoặc force native.
+Corrected observer captures newconnect caller +recv15 exactfixture +framerret0/seq40→43/AsyncSelect;
+không nâng bytesparse thành consumer/accountresume success.
+
+`observation-correction.json` giữ lỗi đọc ảnh trướcclose và report đầu đã pin; `eof-r2-verification.json`
+khẳng định error10/khôngsend81, không coi input create thành room. `auth-retry-connect-r1/verification.json`
+giữ probe ordinal sai; `verification-r2.json` ghi actualendpointpredicate/read/framer. Không sửa raw/cũ.
+8WIP byte-exact; noRust/productionauth/gateclosure; #14/#285open. Internet thật chưa kiểm.

@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP222: haiactualKR cùngservice có distinctidentity/session/6echo/67 và duplicateaccount native1/nochannel/ownerpreserved; suffixprofile biến môi trường được đo,designparser rõ. CP220–221 đã mergePR292/f5caefb. Chưa fullauth/Rust; K6c WAN giả lập/K7 scoped đạt, Internet thật chưa kiểm. AUD064qua220/kế224.
+CP223: endpoint-accounttokenpermutationnativepositive;post17terminationerror/newconnectđãđo,fullretryFAIL.Nativerecv15/framerret0seq40→43chưa consumer/validation success.CP222mergePR293/4bcabd8;chưa fullauth/Rust.K6cWANgiảlập/K7scoped đạt,Internet thật chưa kiểm.AUD064qua220/kế224.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,13 +64,14 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-AUTH-SESSION-BINDING**: [CP222](PROTOCOL.md#auth-two-actual)/[raw](evidence/login-runtime/README.md#cp222)
-   đã có haiactualKR cùngservice/session/6ID-name-echo/67 và duplicate-account native1/nochannel giữ ownerA.
-   Không lặp positive/duplicate hoặc kernelTCP controls. Tiếp control đảo publictoken giữa hai endpoint:
-   sourceA xin accountB, sourceB xin accountA; phải native nhận identity/role theo verifiedaccount, không
-   acceptorder/IP-label. Reuse pair directTCP/cursor/probes đã freeze; chỉ đổi input và reader mapping theo IP.
-   Native wrong-channel swap/healthyEOFdenial vẫn thiếu, không gán control hợp lệ này thành deniedswapproof.
-   Sessionexpiry/restartfence/DB/API chưa triển khai; echo32bit/sourceIP/inmemory không fullauth.
+1. **NEXT-AUTH-SESSION-BINDING / retry consumer**: [CP223](PROTOCOL.md#auth-session-lifecycle)/[raw](evidence/login-runtime/README.md#cp223)
+   đã đo validaccounttoken đảoendpoint, post17Btermination→nativeerror10/newconnect trong khi Aowner giữ;
+   không lặp permutation/duplicate/EOF-before17/socketaccept/recv. Retry vẫn FAIL: privatecounterB reset
+   và boundedcycle2guard cho connection9 nhưng native chỉ recv15/framerret0/40→43, chưa secondauth/6/67.
+   Tiếp source-first cache hello13AEFE0/validation route theo actualcaller1255C0B/1255A69, rồi passive
+   entry/return/currentphase nếu cần; không đoán stage theo port, không retag/frame/forceconsumer/VMgraph.
+   Mốc kếCP224 phải audit periodic; nếu không có cạnh mới sau hai lượt thì ghi blocker và chuyển phần độc lập.
+   Genericrelogin/accountresume/sessionexpiry/restartfence/DB/API chưa đạt; echo32/sourceIP/inmemory không fullauth.
 2. **NEXT-AUTH-CHANNEL-EOF — blocked về observable receiver selection**:
    [CP219](PROTOCOL.md#auth-eof-dispatch) đã đo native bad-dispatch; [CP220](PROTOCOL.md#auth-tcp-ownership)
    getter13AEBE0 trả null ở caller khác, selected-store125783B không hit; hardwarewatch không snapshot,
@@ -83,7 +84,7 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    không chờ Battle/mọiitem và không chờ fullauthRE để thiết kế DB. Không tạo Rust tree trong đợt RE này.
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP222 không nâng gate; AUD064 qua220/audit kếCP224.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP223 không nâng gate; AUD064 qua220/audit kếCP224.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu
