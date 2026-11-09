@@ -29,6 +29,18 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP233: hai client KR thật đã vào sảnh trên cùng service Rust với ID/tên riêng.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-two-lobby), [code/run](rust/README.md),
+[evidence](docs/evidence/rust-service/README.md#cp233): KRLocal/ID1 và KRGuest/ID2 đều auth137/137,
+291128/128/errors0, personalrender/UI đúng tên; PCAP162 record/18reply khớp, giữ8.710s.
+Binding dùng IP operator + request đầu kiểmCRC + endpoint/stage/redirectlease; bỏ acceptcounter ở profile hai-client.
+Run đầu phân loại WCP chỉ theo port thất bại193raw, sửa theo CP006/103 rồi98raw positive; cả hai frozen/seal/cleanup0.
+10Rusttests,16TCP binding cases và14M1 regression đạt. **M2 vẫn dở**: phòng chung/ownslot/host/Ready/loadingbarrier/
+Back-rejoin còn thiếu; diagnosticidentity chưa accountauthentication. CP232 merge
+[PR303](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/303)/`5b3ef81`; audit kếCP236.
+[PLAN](docs/PLAN.md#current-order) tiếp fixedroom bằng contract có sẵn, Python/WIP giữ nguyên. Internet thật chưa kiểm.
+
+
 **CP232: Rust đã đưa một KR thật tới sảnh với identity cục bộ và profile đúng tên.**
 [Code/run](rust/README.md), [contract/limits](docs/PROTOCOL.md#rust-local-lobby),
 [evidence](docs/evidence/rust-service/README.md#cp232): auth0/native137/137, channel17/241/91/14 rồi291

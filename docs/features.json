@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP232",
+  "as_of": "CP233",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -435,7 +435,8 @@
           "docs/evidence/login-runtime/README.md#cp223",
           "docs/evidence/login-runtime/README.md#cp224",
           "docs/evidence/login-runtime/README.md#cp225",
-          "docs/evidence/rust-service/README.md#cp232"
+          "docs/evidence/rust-service/README.md#cp232",
+          "docs/evidence/rust-service/README.md#cp233"
         ]
       },
       "coverage": {
@@ -507,7 +508,8 @@
               "docs/PROTOCOL.md#auth-session-lifecycle",
               "docs/PROTOCOL.md#auth-retry-validation",
               "docs/PROTOCOL.md#auth-fresh-process",
-              "docs/PROTOCOL.md#rust-local-lobby"
+              "docs/PROTOCOL.md#rust-local-lobby",
+              "docs/PROTOCOL.md#rust-two-lobby"
             ]
           },
           "windows_original": {
@@ -587,7 +589,8 @@
           "docs/evidence/lobby-identity/README.md",
           "docs/evidence/lobby-identity/k3-acceptance.json",
           "docs/PROTOCOL.md#four-session-native",
-          "docs/evidence/rust-service/README.md#cp232"
+          "docs/evidence/rust-service/README.md#cp232",
+          "docs/evidence/rust-service/README.md#cp233"
         ]
       },
       "coverage": {
@@ -630,7 +633,8 @@
               "docs/PROTOCOL.md#lobby-cache-route",
               "docs/evidence/lobby-identity/k3-acceptance.json",
               "docs/PROTOCOL.md#four-session-native",
-              "docs/PROTOCOL.md#rust-local-lobby"
+              "docs/PROTOCOL.md#rust-local-lobby",
+              "docs/PROTOCOL.md#rust-two-lobby"
             ]
           },
           "windows_original": {

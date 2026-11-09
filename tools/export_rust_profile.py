@@ -59,6 +59,47 @@ def export_local_lobby(profile_path, error_path, own_body_path, *, ports, idle_s
     return result
 
 
+def export_two_lobby(profile_path, error_path, own_body_a, own_body_b, *, ports,
+                     bind, peers, redirect_path, idle_seconds=120):
+    """Two pinned lab actors, explicit destination ports; never authentication."""
+    import ipaddress
+    expected_ports = {3838, 3848, 3858}
+    if not expected_ports.issubset(ports) or len(peers) != 2 or len(set(peers)) != 2:
+        raise ValueError('two distinct peers and ports3838/3848/3858 required')
+    for ip in [bind, *peers]:
+        value = ipaddress.IPv4Address(ip)
+        if not (value.is_loopback or value in ipaddress.IPv4Network('10.0.0.0/8')
+                or value in ipaddress.IPv4Network('172.16.0.0/12')
+                or value in ipaddress.IPv4Network('192.168.0.0/16')):
+            raise ValueError('diagnostic endpoint must be loopback or RFC1918')
+    result = export(profile_path, error_path, ports=ports, idle_seconds=idle_seconds)
+    source = json.loads(Path(profile_path).read_text())
+    actors = []
+    redirect = Path(redirect_path).resolve(strict=True)
+    raw_redirect = redirect.read_bytes()
+    if len(raw_redirect) != 52 or int.from_bytes(raw_redirect[5:9], 'little') != 7:
+        raise ValueError('expected measured redirect7 frame52/sequence52')
+    for role, identity, name, own, peer in [('A', 1, 'KRLocal', own_body_a, peers[0]),
+                                          ('B', 2, 'KRGuest', own_body_b, peers[1])]:
+        cfg = export_local_lobby(profile_path, error_path, own, ports=ports,
+                                 idle_seconds=idle_seconds)['diagnostic_local_lobby']
+        row = source['fixtures']['auth_' + role]
+        p = Path(row['path']).resolve(strict=True)
+        raw = p.read_bytes()
+        if len(raw) != row['bytes'] or hashlib.sha256(raw).hexdigest() != row['sha256']:
+            raise ValueError('auth fixture pin mismatch')
+        cfg['packets']['auth_A'] = dict(fixture=dict(path=str(p), bytes=len(raw),
+            sha256=row['sha256']), sequence=43, opcode=4)
+        cfg['packets']['redirect'] = dict(fixture=dict(path=str(redirect),
+            bytes=len(raw_redirect), sha256=hashlib.sha256(raw_redirect).hexdigest()),
+            sequence=52, opcode=7)
+        actors.append(dict(peer=peer, identity=identity, name=name, profile=cfg))
+    result.update(diagnostic_login_error_only=False, bind=bind, allowed_peers=list(peers),
+                  diagnostic_two_lobby=dict(wcp_ports=list(ports), login_port=3838,
+                      channel_port=3858, actors=actors))
+    return result
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--python-profile', type=Path, required=True)
@@ -67,11 +108,26 @@ def main():
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--local-lobby-own-profile', type=Path,
                    help='Opt in to fixed KRLocal lobby; existing measured body128 input, not accounts')
+    p.add_argument('--two-lobby-own-profile-a', type=Path)
+    p.add_argument('--two-lobby-own-profile-b', type=Path)
+    p.add_argument('--two-lobby-redirect', type=Path)
+    p.add_argument('--diagnostic-bind', default='127.0.0.1')
+    p.add_argument('--diagnostic-peer-a', default='127.0.0.2')
+    p.add_argument('--diagnostic-peer-b', default='127.0.0.3')
     a = p.parse_args()
     if not 1 <= len(a.port) <= 32 or len(set(a.port)) != len(a.port) or any(not 1 <= n <= 65535 for n in a.port):
         p.error('one to32 distinct nonzero ports required')
-    config = (export_local_lobby(a.python_profile, a.login_error, a.local_lobby_own_profile, ports=a.port)
-              if a.local_lobby_own_profile else export(a.python_profile, a.login_error, ports=a.port))
+    two = [a.two_lobby_own_profile_a, a.two_lobby_own_profile_b, a.two_lobby_redirect]
+    if any(two):
+        if not all(two) or a.local_lobby_own_profile:
+            p.error('two-lobby requires A/B profiles and redirect, separately from single-lobby')
+        config = export_two_lobby(a.python_profile, a.login_error,
+            a.two_lobby_own_profile_a, a.two_lobby_own_profile_b, ports=a.port,
+            bind=a.diagnostic_bind, peers=[a.diagnostic_peer_a, a.diagnostic_peer_b],
+            redirect_path=a.two_lobby_redirect)
+    else:
+        config = (export_local_lobby(a.python_profile, a.login_error, a.local_lobby_own_profile, ports=a.port)
+                  if a.local_lobby_own_profile else export(a.python_profile, a.login_error, ports=a.port))
     with a.out.open('x') as f:
         f.write(json.dumps(config, indent=2) + '\n')
 

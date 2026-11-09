@@ -3212,6 +3212,46 @@ chưa Battle/UDP/DB/accountownership/fullauth/roomregistry/fullservice/productio
 tiếp explicitdiagnostic bindings trước2actual, không mở authSDK/generalroom/broadRE. Pythonserving/RE/reference
 và8WIP giữ; CP231PR302mergedbc55356, AUD067periodicqua232/kế236. Internet thật chưa kiểm.
 
+<a id="rust-two-lobby"></a>
+### Rust hai diagnostic identity với binding theo request/endpoint/stage — CP233
+
+[Code/run](../rust/README.md), [raw/hash](evidence/rust-service/README.md#cp233),
+[metadata](evidence/rust-service/two-lobby.json). M2partial nối tiếp [CP232](#rust-local-lobby), chưa phòng hoặc fullauth.
+Tái dùng CP058 authA/B, CP183291, CP186channel/sảnh, CP006WCPtype0/body28 và correctionCP103WCPportbiếnđổi;
+Python `own_profile`/`channel_redirect_frame` giữ reference. Không RE thêm hàm/SDK/clientpatch.
+
+**`design` policy:** opt-in `diagnostic_two_lobby`, mutuallyexclusive với M1 và singlelobby. Config bind/allowlist chỉ
+loopback/RFC1918; hai actor pin ID1/KRLocal và ID2/KRGuest, nguồnIP khác nhau. Bootstrap15 gửi trước; socket rỗng
+đóng không claimidentity. Request đầu phải frameCRC/seq40 hợp lệ: type0/body28→WCP317 opaque trên candidateports;
+1→login chỉ đúng loginport;6→channel chỉ đúng channelport. Không còn global/per-actor acceptordinal để chọn identity
+hoặc stage. WCPbody chưa genericparser, một validrequest/actor/process là labbound; profile cũ giữ scope lịch sử.
+
+Login/Channel dùng typedFlow CP232 với ID/name theoactor. Registry giữ generation, một login/channel reservation;
+redirect grant10s chỉ sau gửi7 thành công; channel chỉ bind sau C2S6 khớpID/tên rồi consumegrant. Sai identity chưa
+consumegrant; channelboundEOF/duplicatepacketclose thu hồi session, loginEOF sau redirect giữgrant tớiTTL.
+LeaseDrop đối chiếu generation/connection để không xóa owner mới. Các quy tắc này là localdesign, **IP không xác
+thực account/credential**; không password/provider/sessionsecurity/DB/resume. Flow vẫn boundedtimeouts/ancillarybudget.
+
+**`kr_runtime/confirmed`:** sameRustservice, hai actuale9copy/Wine10 trên hai netns/veth + bridge10.77.0.1,
+A10.77.0.2/B10.77.0.3, ba networknamespace khác nhau/2CA/2wineserver/no default routes/files-onlyNSS.
+Hai nativeauth137/137/result0/global0/errors0, C2S6 tự echo ID1/KRLocal và ID2/KRGuest; actual67 tới241/empty91/14/291.
+Mỗi producer291128/128/errors0 lưu đúngtên, personalrenderguard1/matchingwidget; UI screen14 cảhai đúngtên.
+PCAP162record: támtuplestreams hoàn chỉnh/18exactS2Creplies/allC2Sseq-op-len khớpRustlog; WCPtype0 thật đã dùng3838,
+không nhầm với login1 cũng3838. Hold8.710398283s sau cảhaiprofile/render, rootbinarySHA
+`bdf0c70d5a5366fd40d6e071e2f87f7660ab05881799880a6343b28148362d8e` không đổi sau finalbuild.
+
+**Failure/correction:** R1portonlyWCP3848 giảđịnh sai: nativeWCP0/body28 tới3838 và bịroutelogin;193raw/FAIL giữ.
+Seal/cleanup trước sửa. R2classifyfirstrequest theo contract đã có,98rawpositive; tổng291raw frozen/sealed/cleanup0.
+UI review banđầu chọn screen9 bằngstringorder/Bstartupblack, sau sửa chọn numericlatest14/cảhaiLobby; raw giữ nguyên.
+10Rusttests +16kernelTCPbindingnegatives +14M1regression đạt; syntheticinputs không independentnativeoracle.
+REA packetinspection không có TSharkproviderconfigured; ordinary retainedstdlibparser kiểm selectedunfragmentedIPv4TCP
+coverage/overlap/seq/CRC/bytejoins, không gán là REAEvidence. Native observer/PCAP/UI có nguồn riêng.
+
+**Còn thiếu:** fixedroom/ownslot/host/Ready/loadingbarrier/Back-rejoin và native lifecyclephòng trênRust;
+chưa Battle/UDP/DB/accountauthentication/generalroom/fullM2/fullservice/production. K0–K7 cũ giữ đúngscope.
+[PLAN](PLAN.md#current-order) tiếp portfixedroom, không thêm broadRE; Pythonserving/reference và8WIP byteexact.
+CP232PR303merge5b3ef81, AUD067qua232/audit kếCP236. **Internet thật chưa kiểm**.
+
 <a id="auth-profile"></a>
 ### Success/profile count1 đã đọc sạch trên copy — CP058
 

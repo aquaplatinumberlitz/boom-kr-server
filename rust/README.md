@@ -8,7 +8,7 @@ và [evidence](../docs/evidence/rust-service/README.md#cp231) giữ kết luận
 framing tối đa64KiB và seq theo connection. Giới hạn64KiB là design; không phải maximum của client gốc.
 `kr-service` là binary Tokio/Linux có profile **hello → login error → retry** (M1) và opt-in
 **fixed local identity1/KRLocal → channel → sảnh → profile291** (M2partial). Chưa accountauthentication,
-hai-client/phòng hoặc gameplay. Hai transport đầu dùng mapping WCP của recipe CP181;
+phòng hoặc gameplay. Opt-in `diagnostic_two_lobby` đã đo hai client KR thật tới sảnh với ID/tên riêng. Hai transport đầu dùng mapping WCP của recipe CP181;
 mọi login ở error-only profile nhận lỗi1. Local-lobby profile chỉ projector đã khai, không kiểm credential. Không dùng arrival order làm thiết kế identity production.
 
 Build/kiểm từ root repo:
@@ -52,3 +52,23 @@ trên một actualWineclient. `lobby::Flow` kiểm stage/shape/identity trước
 14kernelTCP M1regression vẫn pass. Nhu cầu hai actual/phòng/barrier/Back-rejoin giữ ở PLAN, M2 chưa hoàn tất.
 First2WCP/3login/4channel arrivalmapping chỉ lab single-client; không mở cho generalaccounts/Internet.
 Profilezero/name/level/EXP là diagnosticpolicy, không durable account/profile hoặc production.
+
+Hai-client diagnostic (CP233):
+
+```bash
+python3 tools/export_rust_profile.py --python-profile local/profile.json \
+  --login-error local/login-error1-key43.bin --two-lobby-own-profile-a local/own-A.bin \
+  --two-lobby-own-profile-b local/own-B.bin --two-lobby-redirect local/redirect7-private.bin \
+  --diagnostic-bind 10.77.0.1 --diagnostic-peer-a 10.77.0.2 --diagnostic-peer-b 10.77.0.3 \
+  --port 3838 --port 3848 --port 3858 --out local/two-lobby.json
+rust/target/debug/kr-service --config local/two-lobby.json --out local/new-two-lobby-run
+python3 tools/test_rust_lobby.py --binary rust/target/debug/kr-service \
+  --config local/two-lobby.json --out local/new-binding-tcp-check
+```
+
+Redirect7 phải là frame đã pin cho endpoint đã chọn; exporter chỉ pin fixture hiện có, không suy fieldunknown.
+Recipe native lắng nghe candidate3808..3998/step10. WCP có thể dùng login/channelport: type0/body28 sauCRC
+chọnWCP; type1/type6 cộng endpoint+IPoperator+redirectlease chọnlogin/channel, socketrỗng khôngclaim.
+[Contract/limits](../docs/PROTOCOL.md#rust-two-lobby), [raw/nativeproof](../docs/evidence/rust-service/README.md#cp233).
+Hai source IP chỉ diagnosticbinding, chưa accountauthentication. 10Rusttests/16bindingTCP/14M1regression táchnativeproof;
+phòng/Ready/barrier/Back-rejoin giữ thiếu ở PLAN; chưa fullM2. Python serving/RE/reference còn giữ.

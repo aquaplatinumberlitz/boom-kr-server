@@ -5,7 +5,7 @@ KRE-074/[#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285)
 [kiến trúc/ma trận hiện có→Rust→thiếu](../../RUST_SERVICE_ARCHITECTURE.md),
 [unknown/phép thử](../../RESEARCH.md#rust-service-gaps).
 
-Hiện hành: [contract/limits](../../PROTOCOL.md#rust-local-lobby), [thứ tự](../../PLAN.md#current-order);
+Hiện hành: [contract/limits](../../PROTOCOL.md#rust-two-lobby), [thứ tự](../../PLAN.md#current-order);
 [owner đã mở implementation](../owner-directives/rust-implementation.json). Phần dưới giữ lịch sử khảo sát CP213.
 
 ## CP213 — khảo sát/lập kế hoạch đã giao
@@ -111,3 +111,28 @@ không regeneratewireoracle. Wine10/e9copy/globalreset/privatenet-mount-PID/lo-o
 M2 còn haiactual/explicitbindings/fixedroom/ownslot/Ready/loadingbarrier/Back-rejoin/lifecycle; projector1KRLocal
 không authentication/accountownership/DB/fullservice/Battle/UDP/production. Pythonserving/RE/reference/WIP giữ.
 AUD067qua232/kế236, nextM2knowncontract/REonlyportblocker. Internet thật chưa kiểm.
+
+<a id="cp233"></a>
+## CP233 — hai identity/sảnh Rust, bỏ acceptordinal ở profile hai-client
+
+[Contract/limits](../../PROTOCOL.md#rust-two-lobby), [metadata](two-lobby.json),
+[PLAN/next/acceptance](../../PLAN.md#current-order). CP232 merge [PR303](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/303)/`5b3ef81`.
+
+| local/research/codex/ | Wall/raw/exit | run.json SHA256 |
+|---|---|---|
+| `rust-two-lobby-r1/native-pair` |82.965255701s/193/1|`9fa8c61581086ef4728472af9284d6ed9228de870bdef3c39ac46e7c9a4f3ec9`|
+| `rust-two-lobby-r2/native-pair` |40.740784007s/98/0|`b7433b807fbca992bebb660a72b99d843e6a12d869d8ffee240747e85422a70b`|
+
+291raw/frozen/seal/cleanup0. Mỗi root giữ `native-pair/runtime-preflight.json`, recipe/cycles/run/raw-seal và
+`input-retention.json`→`frozen-inputs/` exactbytes trước lần sửa tiếp; không sửa raw/preflight để trỏversionmới.
+R1failure-review giữ portonlyassumption; R2source-reuse/verification/UIreview ghi knownCP006/103correction và
+native auth137/291128/render/actualC2S6ID1-2/PCAP162/18reply/8.710shold. Screen14numericlatest thấy KRLocal/KRGuest;
+screen9Bstartupblack không làm finalUIproof. `rea-provider-limits.json` ghi REA thiếuTShark; parserstdlib có coverage/limits riêng.
+
+R2rootbinary SHA`bdf0c70d5a5366fd40d6e071e2f87f7660ab05881799880a6343b28148362d8e`, finalbuild cùnghash;
+10Rusttests (5wire+3Flow+2binding), `kernel-tcp/verification.json`16syntheticpolicycases và `m1-regression/verification.json`
+14M1cases tách nativeproof. Native là2KR/e9copy/Wine10/privateuser-net-mount-PID/bridge-veth/2netns/noexternalroute/files-onlyNSS,
+2CA/2wineserver/cursorfull+render+UI+wirejoin. Khôngclientpatch mới/không SDKRE.
+
+M2 vẫn thiếu fixedroom/ownslot/host/Ready/loadingbarrier/Back-rejoin. Diagnostic IP/name/ID/lease không là accountauth;
+Pythonserving/reference/WIP giữ, K0–K7scope cũ khôngđổi, audit kếCP236. Internet thật chưa kiểm.
