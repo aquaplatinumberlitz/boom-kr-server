@@ -1653,7 +1653,9 @@
           "docs/evidence/rust-service/README.md#cp234",
           "docs/evidence/rust-service/README.md#cp235",
           "docs/evidence/rust-service/README.md#cp237",
-          "docs/evidence/rust-service/movement-floor.json"
+          "docs/evidence/rust-service/movement-floor.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -1748,7 +1750,8 @@
             "docs/PROTOCOL.md#eight-mesh-owner-bombs",
             "docs/PROTOCOL.md#rust-movement-floor",
             "rust/crates/kr-service/src/pickups.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ],
           "delivery": "via_pr"
         },
@@ -1821,7 +1824,9 @@
           "docs/PROTOCOL.md#emulated-lan-acceptance",
           "docs/PROTOCOL.md#routed-Wine-network",
           "docs/evidence/rust-service/README.md#cp238",
-          "docs/evidence/rust-service/bombs.json"
+          "docs/evidence/rust-service/bombs.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -1884,7 +1889,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ],
           "delivery": "via_pr"
         },
@@ -1983,7 +1989,9 @@
           "docs/PROTOCOL.md#eight-mesh-owner-bombs",
           "docs/evidence/rust-service/README.md#cp238",
           "docs/evidence/rust-service/bombs.json",
-          "docs/evidence/rust-service/return-cleanup.json"
+          "docs/evidence/rust-service/return-cleanup.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -2102,7 +2110,8 @@
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
             "rust/crates/kr-service/src/room_io.rs",
-            "docs/PROTOCOL.md#rust-return-cleanup"
+            "docs/PROTOCOL.md#rust-return-cleanup",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ],
           "delivery": "via_pr"
         },
@@ -2215,7 +2224,9 @@
           "docs/evidence/rust-service/README.md#cp238",
           "docs/evidence/rust-service/bombs.json",
           "docs/evidence/rust-service/README.md#cp239",
-          "docs/evidence/rust-service/terrain.json"
+          "docs/evidence/rust-service/terrain.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -2323,7 +2334,8 @@
             "rust/crates/kr-service/src/bombs.rs",
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-terrain",
-            "rust/crates/kr-service/src/terrain.rs"
+            "rust/crates/kr-service/src/terrain.rs",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ],
           "delivery": "via_pr"
         },
@@ -2441,7 +2453,9 @@
           "docs/evidence/rust-service/README.md#cp237",
           "docs/evidence/rust-service/movement-floor.json",
           "docs/evidence/rust-service/README.md#cp239",
-          "docs/evidence/rust-service/terrain.json"
+          "docs/evidence/rust-service/terrain.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -2552,7 +2566,8 @@
             "rust/crates/kr-service/src/pickups.rs",
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-terrain",
-            "rust/crates/kr-service/src/terrain.rs"
+            "rust/crates/kr-service/src/terrain.rs",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ]
         },
         "integration": {
@@ -2646,7 +2661,9 @@
           "docs/evidence/rust-service/README.md#cp237",
           "docs/evidence/rust-service/movement-floor.json",
           "docs/evidence/rust-service/README.md#cp239",
-          "docs/evidence/rust-service/terrain.json"
+          "docs/evidence/rust-service/terrain.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -2736,7 +2753,8 @@
             "rust/crates/kr-service/src/pickups.rs",
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-terrain",
-            "rust/crates/kr-service/src/terrain.rs"
+            "rust/crates/kr-service/src/terrain.rs",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ],
           "delivery": "via_pr"
         },
@@ -2937,7 +2955,9 @@
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#four-two-team-cycles",
           "docs/PROTOCOL.md#eight-two-team-cycles",
-          "docs/evidence/rust-service/life-results.json"
+          "docs/evidence/rust-service/life-results.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -3051,7 +3071,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186",
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#rust-life-results",
-            "rust/crates/kr-service/src/life.rs"
+            "rust/crates/kr-service/src/life.rs",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ],
           "delivery": "via_pr"
         },
@@ -3683,7 +3704,9 @@
           "docs/PROTOCOL.md#eight-team-variants",
           "docs/evidence/eight-player/README.md#cp213",
           "docs/evidence/rust-service/life-results.json",
-          "docs/evidence/rust-service/return-cleanup.json"
+          "docs/evidence/rust-service/return-cleanup.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -3804,7 +3827,8 @@
             "docs/PROTOCOL.md#rust-life-results",
             "rust/crates/kr-service/src/life.rs",
             "docs/PROTOCOL.md#rust-return-cleanup",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ],
           "delivery": "via_pr"
         },
@@ -3961,7 +3985,9 @@
           "docs/PROTOCOL.md#eight-team-variants",
           "docs/evidence/eight-player/README.md#cp213",
           "docs/evidence/rust-service/life-results.json",
-          "docs/evidence/rust-service/return-cleanup.json"
+          "docs/evidence/rust-service/return-cleanup.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -4118,7 +4144,8 @@
             "docs/PROTOCOL.md#rust-life-results",
             "rust/crates/kr-service/src/life.rs",
             "docs/PROTOCOL.md#rust-return-cleanup",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ],
           "delivery": "via_pr"
         },
@@ -4258,7 +4285,9 @@
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
           "docs/PROTOCOL.md#nat-netem-host-eof",
-          "docs/PROTOCOL.md#four-transport-bounds"
+          "docs/PROTOCOL.md#four-transport-bounds",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -4375,7 +4404,8 @@
             "docs/PROTOCOL.md#a-survivor-admission",
             "docs/evidence/peer-endpoints/README.md#cp175",
             "docs/PROTOCOL.md#replacement-profile",
-            "docs/evidence/peer-endpoints/README.md#cp177"
+            "docs/evidence/peer-endpoints/README.md#cp177",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ]
         },
         "integration": {
@@ -4593,7 +4623,9 @@
           "docs/evidence/rust-service/README.md#cp239",
           "docs/evidence/rust-service/terrain.json",
           "docs/evidence/rust-service/life-results.json",
-          "docs/evidence/rust-service/return-cleanup.json"
+          "docs/evidence/rust-service/return-cleanup.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -4876,7 +4908,8 @@
             "rust/crates/kr-service/src/terrain.rs",
             "docs/PROTOCOL.md#rust-life-results",
             "rust/crates/kr-service/src/life.rs",
-            "docs/PROTOCOL.md#rust-return-cleanup"
+            "docs/PROTOCOL.md#rust-return-cleanup",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ]
         },
         "integration": {
@@ -5059,7 +5092,9 @@
           "docs/evidence/rust-service/README.md#cp239",
           "docs/evidence/rust-service/terrain.json",
           "docs/evidence/rust-service/life-results.json",
-          "docs/evidence/rust-service/return-cleanup.json"
+          "docs/evidence/rust-service/return-cleanup.json",
+          "docs/evidence/rust-service/README.md#cp242",
+          "docs/evidence/rust-service/m3-acceptance.json"
         ]
       },
       "coverage": {
@@ -5152,7 +5187,8 @@
             "rust/crates/kr-service/src/terrain.rs",
             "docs/PROTOCOL.md#rust-life-results",
             "rust/crates/kr-service/src/life.rs",
-            "docs/PROTOCOL.md#rust-return-cleanup"
+            "docs/PROTOCOL.md#rust-return-cleanup",
+            "docs/PROTOCOL.md#rust-m3-acceptance"
           ],
           "delivery": "via_pr"
         },

@@ -8740,3 +8740,37 @@ Không RE lại ABI hoặc gọi prior e9pass là ABI đúng. R3 control mới �
 M3 chưa đóng: native consumed-item reset/contest; exactoldUDP ở vòng mới + currentpositive; outcome/nonreader/queue
 control còn thiếu theo [PLAN](PLAN.md#current-order). Optionalkim/cứu/capacity4-8/accountbridge/fullservice ngoài ca này.
 K0–K7 scope cũ/K6c WAN giả lập giữ nguyên. Internet thật chưa kiểm. AUD069 qua240/audit kếCP244.
+
+<a id="rust-m3-acceptance"></a>
+## Rust M3 Battle basic hai client: nghiệm thu có giới hạn — CP242
+
+[Checklist thủ công](evidence/rust-service/m3-acceptance.json), [metadata](evidence/rust-service/m3-controls.json),
+[recipe/raw/hash](evidence/rust-service/README.md#cp242). Quyết định Codex tự đối chiếu dưới review waiver:
+**RUST-M3 đạt scope** hai identity diagnostic/KR00967/Wine/LAN giả lập/ExVillage01/basic ba item.
+CP237 đã có movement hai chiều; CP238 hai owner bom; CP239 terrain/ba effects; CP240 hai outcome đối nghịch;
+CP241 pending-hostEOF→survivor Room/IDclear/chief/no158. Mốc mới chỉ đo khoảng trống, không nghiệm thu lại mọi positive.
+
+`kr_runtime/confirmed`: hai epoch đều actual124→mỗi view đúng một165/index17/28/27, effects Roller4→5 trên B,
+Fire1→2/Bomb1→2 trên A; clock1/2/3 baseline stat và195 flags/view khớp map seed. Hai OS input ADown/BUp đồng thời,
+B thắng Roller cả hai vòng, **mỗi vòng chỉ một actual124 cho index17**; two-claimant/duplicate thuộc kernel control riêng.
+Bốn actual118/two owners→159full39/entity-ID→158full13/kind0/cleanup/terrain khớp model Python độc lập.
+Hai vòng mới cùng B chết, hai view175outer302/inner292/rank1-2/1803/refresh/Ready/Start3/hold6s;
+không gọi run này là hai outcome đối nghịch: điều đó đã có CP240.
+
+Gói17byte B→A ở vòng1 được capture và replay **toàn Ethernet frame không sửa byte** ở vòng2: PCAP có hai bản
+byte-identical với checksum IPv4/UDP đúng; native ingress nhận, inner13byte key khác current→key-drop/noapply.
+Cửa sổ riêng BRight hiện tại có native API/key/apply/peerposition thay đổi (sáu packet hai vòng).
+Không suy replay auth/current-key forgery/low8 wrap đã giải. 1.006TCP/126reply/alltuple-C2Ssequence/CRC/SHA joins,
+4.746 copied52A350 getters tách khỏi Wineexecution. 84raw/306,382s/frozen119inputs/cleanup0.
+
+`design`: test outcome queue giữ Armed và không phát cho ai khi recipientB không reserve đủ3 entries;
+retry phát175/180/refresh đúng một lần, giữ selector1, chỉ Idle sau hai refresh; oldrefresh/outcome không mở vòng mới.
+44Rusttests/51kernelTCP negative/lifecycle đạt; negative synthetic không là chứng minh native tấn công.
+Logger writer được supervise trong main select, lỗi gốc ưu tiên sau cleanup, kèm write/flush/eventordinal;
+fault sink error/pending và clean drain kiểm riêng. Giữ write/flush2s, emit200ms/shutdown3s.
+R4 native bị unavailable che sink error; kernelR2 bản sửa thấy flush timeout event141. Inputcopy lớn đồng thời là
+context, chưa đủ causalproof. RepeatR3/nativeR5 đạt; **chưa rõ nguyên nhân flush stall**, không nhận đã sửa I/O latency.
+
+Không fullgame/fullauth/inventory/reward/generalroom/capacity4–8/kim-cứu/allmaps/matchrestore/production;
+loadingEOF/selectedEndingEOF vẫn giới hạn riêng. K0–K7 lịch sử/K6c WAN giả lập không đổi. Internet thật chưa kiểm.
+[PLAN](PLAN.md#current-order) tiếp boundedworker/idleTTL/rate M5 độc lập rồi M4; audit kếCP244.

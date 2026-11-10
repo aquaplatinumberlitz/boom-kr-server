@@ -1,0 +1,103 @@
+{
+  "schema": "kre-rust-m3-acceptance-v1",
+  "checkpoint": "CP242",
+  "baseline": "08a9a0d9857c09e2bf7a80935f7364c240583219",
+  "canonical": "docs/PROTOCOL.md#rust-m3-acceptance",
+  "plan": "docs/PLAN.md#current-order",
+  "decision": {
+    "recorded_utc": "2026-11-10T05:57:26.857861+00:00",
+    "milestone": "RUST-M3",
+    "decision": "accepted_scoped_two_client_basic_battle_Wine_virtualLAN",
+    "owner": "Codex",
+    "review": "manualselfcheck/independentreviewwaivednotapproved",
+    "criteria": [
+      {
+        "id": "M3-01",
+        "criterion": "Movement hai chiều/native UDP consumer",
+        "result": "pass_with_stated_scope",
+        "evidence": "CP237; CP242 B current-positive ở hai epoch",
+        "source": "kr_runtime",
+        "limits": "Không mọi movement law hoặc authentication UDP."
+      },
+      {
+        "id": "M3-02",
+        "criterion": "Hai owner118→159 entity cùng ID→158 cleanup",
+        "result": "pass_with_stated_scope",
+        "evidence": "CP238; CP242 bốn bomb/PCAP/native159-158 cảhai",
+        "source": "kr_runtime",
+        "limits": "Basic/fuse6/map đã chọn."
+      },
+      {
+        "id": "M3-03",
+        "criterion": "Terrain/reveal và ba hiệu ứng item/reset",
+        "result": "pass_with_stated_scope",
+        "evidence": "CP239; CP242 native195 flags mỗi view/clock1-3; ba165/index17-28-27/epoch1-2",
+        "source": "kr_runtime",
+        "limits": "B thắng Roller qua hai OS inputs; chỉ một actual124 cho contest/epoch. Kernel hai claimant riêng."
+      },
+      {
+        "id": "M3-04",
+        "criterion": "Hai normal outcome đối nghịch/reset/Ready2/Start3",
+        "result": "pass_with_stated_scope",
+        "evidence": "CP240 opposite; CP242 hai lần B thua rồi Start3/hold6s",
+        "source": "kr_runtime",
+        "limits": "Report-derived/chosen rank policy; không original world authority."
+      },
+      {
+        "id": "M3-05",
+        "criterion": "Exact UDP vòng cũ + current positive",
+        "result": "pass_with_stated_scope",
+        "evidence": "CP242 frameEthernet giữ nguyên/capture hai lần/native ingress/key mismatch/drop/noapply; currentBRight nativeapply",
+        "source": "kr_runtime",
+        "limits": "Low8 wrap/forged current key vẫn unknown."
+      },
+      {
+        "id": "M3-06",
+        "criterion": "Selected malformed/duplicate/stale/wrongslot/key/deadowner",
+        "result": "pass_with_stated_scope",
+        "evidence": "CP237-241 + CP242 51kernelTCP/room model tests",
+        "source": "design",
+        "limits": "Negative synthetic không là native attack proof."
+      },
+      {
+        "id": "M3-07",
+        "criterion": "Atomic outcome queue/refresh/epoch fences",
+        "result": "pass_with_stated_scope",
+        "evidence": "CP242 outcome_queue_failure_is_atomic_and_old_refresh_cannot_open_new_round + CP241 ticket/recipient controls",
+        "source": "design",
+        "limits": "Ba entries175/180/refresh phải reserve đủ, lỗi không publish; retry đúng một lần; không mọi load/backpressure."
+      },
+      {
+        "id": "M3-08",
+        "criterion": "Host EOF pending bomb→peer Room/IDclear/chief/no late158",
+        "result": "pass_with_stated_scope",
+        "evidence": "CP241 native; CP242 51kernelTCP regression",
+        "source": "kr_runtime+design",
+        "limits": "Native hostEOF và synthetic guestEOF khác nhau; loading/selectedEndingEOF khác scope."
+      }
+    ]
+  },
+  "native": {
+    "run_sha256": "2972ed26d4ec716593036dd8c6c710f6ec850f2c1fbf573571a470c6395664ff",
+    "binary_sha256": "1fc83cef97ae0140f3a07d2926ee7359a01a7119de90f8db2880c40f44c23dba",
+    "raw_count": 84,
+    "duration_s": 306.382113174,
+    "TCP_records": 1006,
+    "reply_frames": 126,
+    "copied_getters": 4746,
+    "recipe": "local/research/codex/rust-m3-controls-native-r5/native-controls/recipe.json"
+  },
+  "source_refs": [
+    "docs/evidence/rust-service/movement-floor.json",
+    "docs/evidence/rust-service/bombs.json",
+    "docs/evidence/rust-service/terrain.json",
+    "docs/evidence/rust-service/life-results.json",
+    "docs/evidence/rust-service/return-cleanup.json",
+    "docs/evidence/rust-service/m3-controls.json"
+  ],
+  "limits": [
+    "Hai identity diagnostic, ExVillage01/basic ba item, UDP trực tiếp/Wine/virtual LAN; không fullauth, mọi map/item/mode, low8 wrap/forged current key, authoritative world, account resume/match restore hoặc production. Internet thật chưa kiểm.",
+    "Sink flush timeout chưa rõ nguyên nhân; supervision/error propagation được sửa, không nhận filesystem/scheduler đã fix.",
+    "M5 backend CP236 đã có; worker/idleTTL/rate/native ownership bridge vẫn chưa đủ; không nâng epic KRE-074 thành complete."
+  ]
+}

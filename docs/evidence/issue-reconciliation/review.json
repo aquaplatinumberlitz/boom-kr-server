@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP241",
+  "as_of": "CP242",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP240PR311/c7dd615mergedtwooppositeoutcomes/resetStart3. CP241nativependingBhostEOF→Aforfeit175180/107ID2clear/110chief/Room/4shold/no158pastdue;41Rust50TCP. ExistingCP1874bcopyselectedafterknownABIe9crash;failed25+46rawretained.",
-      "remaining": "M3consumed-itemreset/contest/exactoldUDP-currentpositive/queue-outcome controls;loading-selectedEndingEOF/generalrecovery separatelimits. M5bridge-worker-idleTTL-rate/restore-load.",
-      "next_test": "PLANM3itemreset-contest/exactoldUDP-currentpositive/queuecontrols;reusesolvedcontracts/no broadRE. AUD069next244.",
+      "known": "CP242 M3scopedaccepted via manual checklist CP237–242/native itemreset-oldUDP-positive-Start3/44Rust51TCP/84raw; CP241PR312merged.",
+      "remaining": "M5boundedworker/idleTTL/rate/nativeKRownershipbridge; M4four-eight, M6durability/M7rooms/M8ops. Loggerflushstall causalrootcauseunknown.",
+      "next_test": "PLANM5backend independent then M4; no broadRE/duplicatepositive. AUD069next244.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Manualnativepacket/IDclear/chief/UI/PCAP/getterreview;activehostEOFforfeit notnormaloutcome or deadBreceipt.41/50tests separatefromnativeproof;Python8WIPbyteexact/no gateclosure.",
+      "reason": "Codex manually compared nativePCAP/readers/UI/current and historical accepted evidence. Backend account alreadyCP236, no fullauth/production or epicclosure.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -279,7 +279,8 @@
         "docs/PROTOCOL.md#rust-bombs",
         "docs/PROTOCOL.md#rust-terrain",
         "docs/PROTOCOL.md#rust-life-results",
-        "docs/PROTOCOL.md#rust-return-cleanup"
+        "docs/PROTOCOL.md#rust-return-cleanup",
+        "docs/PROTOCOL.md#rust-m3-acceptance"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -392,7 +393,9 @@
         "docs/evidence/rust-service/bombs.json",
         "docs/evidence/rust-service/terrain.json",
         "docs/evidence/rust-service/life-results.json",
-        "docs/evidence/rust-service/return-cleanup.json"
+        "docs/evidence/rust-service/return-cleanup.json",
+        "docs/evidence/rust-service/m3-acceptance.json",
+        "docs/evidence/rust-service/m3-controls.json"
       ],
       "prs": [
         173,
@@ -506,7 +509,8 @@
         308,
         309,
         310,
-        311
+        311,
+        312
       ],
       "successors": []
     },
@@ -845,11 +849,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP240PR311/c7dd615mergedtwooppositeoutcomes/resetStart3. CP241nativependingBhostEOF→Aforfeit175180/107ID2clear/110chief/Room/4shold/no158pastdue;41Rust50TCP. ExistingCP1874bcopyselectedafterknownABIe9crash;failed25+46rawretained.",
-      "remaining": "M3consumed-itemreset/contest/exactoldUDP-currentpositive/queue-outcome controls;loading-selectedEndingEOF/generalrecovery separatelimits. M5bridge-worker-idleTTL-rate/restore-load.",
-      "next_test": "PLANM3itemreset-contest/exactoldUDP-currentpositive/queuecontrols;reusesolvedcontracts/no broadRE. AUD069next244.",
+      "known": "CP242 M3scopedaccepted via manual checklist CP237–242/native itemreset-oldUDP-positive-Start3/44Rust51TCP/84raw; CP241PR312merged.",
+      "remaining": "M5boundedworker/idleTTL/rate/nativeKRownershipbridge; M4four-eight, M6durability/M7rooms/M8ops. Loggerflushstall causalrootcauseunknown.",
+      "next_test": "PLANM5backend independent then M4; no broadRE/duplicatepositive. AUD069next244.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Manualnativepacket/IDclear/chief/UI/PCAP/getterreview;activehostEOFforfeit notnormaloutcome or deadBreceipt.41/50tests separatefromnativeproof;Python8WIPbyteexact/no gateclosure.",
+      "reason": "Codex manually compared nativePCAP/readers/UI/current and historical accepted evidence. Backend account alreadyCP236, no fullauth/production or epicclosure.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -884,7 +888,8 @@
         "docs/PROTOCOL.md#rust-terrain",
         "docs/PROTOCOL.md#rust-life-results",
         "docs/PROTOCOL.md#rust-return-cleanup",
-        "docs/PROTOCOL.md#own-profile-result-compare"
+        "docs/PROTOCOL.md#own-profile-result-compare",
+        "docs/PROTOCOL.md#rust-m3-acceptance"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -917,7 +922,9 @@
         "docs/evidence/rust-service/bombs.json",
         "docs/evidence/rust-service/terrain.json",
         "docs/evidence/rust-service/life-results.json",
-        "docs/evidence/rust-service/return-cleanup.json"
+        "docs/evidence/rust-service/return-cleanup.json",
+        "docs/evidence/rust-service/m3-acceptance.json",
+        "docs/evidence/rust-service/m3-controls.json"
       ],
       "prs": [
         286,
@@ -945,7 +952,8 @@
         308,
         309,
         310,
-        311
+        311,
+        312
       ],
       "successors": []
     }

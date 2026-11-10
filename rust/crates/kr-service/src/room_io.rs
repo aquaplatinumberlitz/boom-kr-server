@@ -1388,6 +1388,168 @@ impl Drop for Session {
 mod tests {
     use super::*;
     #[test]
+    fn outcome_queue_failure_is_atomic_and_old_refresh_cannot_open_new_round() {
+        use crate::life::Report;
+        use kr_wire::write_uint;
+        let packet = |op, payload| Reply {
+            header: [0; 37],
+            opcode: op,
+            payload,
+        };
+        let mut packets = HashMap::new();
+        for (alias, id) in [("player_A", 1u64), ("player_B", 2)] {
+            let mut payload = vec![0; 204];
+            payload[1..5].copy_from_slice(&write_uint(id, Width::U32).unwrap());
+            packets.insert(alias.into(), packet(106, payload));
+        }
+        for alias in ["rank", "rank_Awin", "rank_all_dead"] {
+            packets.insert(alias.into(), packet(175, vec![0; 302]));
+        }
+        packets.insert(
+            "return".into(),
+            packet(180, write_uint(0, Width::U8).unwrap().repeat(3)),
+        );
+        let mut model = Room::default();
+        let a = model.enter(1, 11, true).unwrap();
+        let b = model.enter(2, 22, false).unwrap();
+        model.setup(a).unwrap();
+        model.setup(b).unwrap();
+        model.ready(b).unwrap();
+        let round = model.begin(a).unwrap();
+        model.ack(a, round).unwrap();
+        model.ack(b, round).unwrap();
+        let dead_at = Instant::now() - Duration::from_secs(10);
+        for (subtype, tick, now) in [(17, 1, dead_at - Duration::from_secs(1)), (19, 2, dead_at)] {
+            let report = Report {
+                subtype,
+                slot: 0,
+                tick,
+                digest: format!("{subtype}:{tick}"),
+                forward: None,
+            };
+            assert!(
+                model
+                    .members
+                    .get_mut(&1)
+                    .unwrap()
+                    .life
+                    .apply(0, &report, now, None)
+                    .accepted
+            );
+        }
+        let report = Report {
+            subtype: 21,
+            slot: 1,
+            tick: 1,
+            digest: "survivor".into(),
+            forward: None,
+        };
+        model
+            .members
+            .get_mut(&2)
+            .unwrap()
+            .life
+            .apply(1, &report, Instant::now(), None);
+        let (ta, ra) = mpsc::channel(8);
+        let (tb, mut rb) = mpsc::channel(2);
+        let shared = Arc::new(Mutex::new(Runtime {
+            model,
+            packets,
+            channels: HashMap::from([
+                (
+                    1,
+                    Channel {
+                        connection: 11,
+                        sender: ta,
+                    },
+                ),
+                (
+                    2,
+                    Channel {
+                        connection: 22,
+                        sender: tb,
+                    },
+                ),
+            ]),
+            last_visits: HashMap::new(),
+            requested: HashSet::new(),
+            rostered: HashSet::new(),
+            title: b"RustRoom".to_vec(),
+            selector: 1,
+            ready: packet(241, vec![]),
+            ips: HashMap::new(),
+            ports: HashMap::new(),
+            floor_catalog: pickups::Catalog::default(),
+        }));
+        let mut session = Session {
+            shared: shared.clone(),
+            inbox: ra,
+            identity: 1,
+            connection: 11,
+        };
+        assert!(session.tick().is_err());
+        assert_eq!(shared.lock().unwrap().model.phase, Phase::Armed { round });
+        assert!(session.inbox.try_recv().is_err());
+        assert!(rb.try_recv().is_err());
+        // Replace only the failed test transport with enough capacity; the
+        // same mature outcome must be deliverable once, without lost state.
+        let (tb, rb) = mpsc::channel(8);
+        shared.lock().unwrap().channels.insert(
+            2,
+            Channel {
+                connection: 22,
+                sender: tb,
+            },
+        );
+        let mut other = Session {
+            shared: shared.clone(),
+            inbox: rb,
+            identity: 2,
+            connection: 22,
+        };
+        session.tick().unwrap();
+        assert!(
+            matches!(shared.lock().unwrap().model.phase,Phase::Ending{round:current,..}if current==round)
+        );
+        session.tick().unwrap();
+        let mut a_batches = Vec::new();
+        let mut b_batches = Vec::new();
+        for _ in 0..3 {
+            a_batches.push(session.inbox.try_recv().unwrap());
+            b_batches.push(other.inbox.try_recv().unwrap());
+        }
+        assert!(session.inbox.try_recv().is_err());
+        assert!(other.inbox.try_recv().is_err());
+        assert_eq!(
+            a_batches
+                .iter()
+                .map(|b| b.packets[0].1.opcode)
+                .collect::<Vec<_>>(),
+            [175, 180, 110]
+        );
+        assert_eq!(
+            read_uint(&a_batches[1].packets[0].1.payload[1..2], Width::U8).unwrap(),
+            1
+        );
+        assert!(session.valid(&a_batches[2]));
+        session.finish(&a_batches[2]).unwrap();
+        assert!(session.valid(&a_batches[2]));
+        other.finish(&b_batches[2]).unwrap();
+        assert_eq!(shared.lock().unwrap().model.phase, Phase::Idle);
+        assert!(!session.valid(&a_batches[2]));
+        {
+            let mut r = shared.lock().unwrap();
+            r.model.ready(b).unwrap();
+            let next = r.model.begin(a).unwrap();
+            assert_eq!(next, round + 1);
+        }
+        assert!(session.finish(&a_batches[2]).is_err());
+        assert!(!session.valid(&a_batches[0]));
+        // Test transport has no normal departure fixture. Avoid unrelated Drop
+        // effects obscuring the original outcome assertions.
+        shared.lock().unwrap().channels.clear();
+    }
+    #[test]
     fn recipient_queue_failure_publishes_neither_membership_nor_partial_batch() {
         let reply = Reply {
             header: [0; 37],
