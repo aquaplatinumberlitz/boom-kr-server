@@ -299,3 +299,20 @@ python3 tools/test_rust_four_room.py --binary rust/target/debug/kr-service \
 knownstats/7.196copiedgetters riêng;59Rusttests/51twoTCPregression. Four142/16722 chỉ finite/noeffect;
 own-peer trap/death chưa đồng bộ vì127 chưa forward, chưa fullM4. Rollback dùng matchedCP245binary+startupconfig,
 không đưa newflag cho oldbinary. PLAN tiếp life3recipient/rank4/reset/EOF rồi tám; M5bridge riêng.
+
+
+## Life bốn người — CP247
+
+[Contract/giới hạn](../docs/PROTOCOL.md#rust-four-life), [raw/hash](../docs/evidence/rust-service/README.md#cp247).
+Thêm `--four-life-reports` cùng `--four-owner-bombs` và đủfour-startup flags của exporter;
+đặt fixed_room.four_life_reports=true. Chỉ17/19/21→ba peer, không rank/result/terrain/generalaccount.
+
+```bash
+python3 tools/test_rust_four_room.py --binary rust/target/debug/kr-service \
+  --config local/four-config.json --life-reports --out local/new-four-life-tcp
+```
+
+Native4 Manner1/copy4b/Wine đã có A/C17→19/12recipient170/remote56→1/all4states[1,0,1,0].
+Clear21đủ3TCPwrites mới complete có unit/TCPproof, chưa nativeclear21/rescue/needle.60workspace/17fourTCP/51twoTCP đạt.
+Harness giữ PID/thread/wchan khi deadline; timeout cũ chưa rõcause. Rollback matchedCP246binary+config khôngnewflag.
+PLAN tiếp rank4/haioutcome-reset/Start3/abortEOF rồi8; M5bridge riêng.

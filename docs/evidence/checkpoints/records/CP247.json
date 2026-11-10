@@ -1,0 +1,315 @@
+{
+  "id": "CP247",
+  "previous": "CP246",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T23:48:16.288800+00:00",
+  "context_commit": "1b3bddf3372f59f165df535a07471fe531e334c2",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M4/KRE-074: solve nativeown-peertrapdeath divergence by portingknown17-19-21/threepeer170 and allrecipientclear21completion, preserve2regression and boundscopebefore rank4/results-reset/EOF.",
+  "scope": "Opt-infour_life_reports/currentboundslot/freshness/reportbudget/rejectafterdeath/3recipientatomicqueues/nooriginecho/clear21all3membershipcompletion;nativeA-C17-19→12peer170/56→1/all4[1,0,1,0]/76raw/7240copiedgetters;60tests/17fourTCP/51twoTCP/3prebind/M4partial.",
+  "artifacts": [
+    {
+      "name": "Rustkr-serviceLinux-nativefourlife17-19-threepeer170",
+      "sha256": "9fb52288cc8a48c24f2ca8766e098a2a6f307e5af52d4b907753f6330cf9d5d3"
+    },
+    {
+      "name": "CA-r2-stage-social-cmp.exe-ABIcopy-no-newpatch",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/life.rs/forward21_targets-delivered-complete/pendingdistinctmembershipset-all3-beforeonce-marker",
+    "rust/crates/kr-service/src/room_io.rs/four_life_reports-configguard/127typed-currentboundslot/threepeer170/finishrecipient/afterdeath-reject",
+    "tools/test_rust_four_room.py/life-reports17cases/PID-thread-wchanobservations5s3sdeadline",
+    "CP202rare170native56-1/CP240typedRustlife/CP246fourbombs-reused/no newfunctiondiscovery",
+    "CP246PR317merged1b3bddf/AUD070through244-next248/no gateclosure"
+  ],
+  "findings": [
+    {
+      "summary": "ActualnormalSpaceA/C→native12717then19,eachforwardexact3currentpeers/nooriginecho/12recipient170. Everyremote native56→1; freshreadonlyall4states[1,0,1,0]/B-Dalive/fourUIclock01:06viewed.874TCP/140reply/16transports fulltuple-seq-CRC-SHAjoins/76raw134.675s/frozen-cleanup0;7240copied52A350gettersseparate. FinishBreakpointcursor0afterreturnnotfull170parseproof.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-life",
+      "evidence": [
+        "RUST247-00405",
+        "RUST247-00403",
+        "RUST247-00495",
+        "RUST247-00485"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/fourlife17-19→three170/native56-1/all4states only. Clear21all3completion unitTCPonly/notnativeclear-rescue-needle. No fourrank/results-reset/EOF/8/fullM4/accountbridge/authenticatedlife/originalauthority. Finishcursor0notfull170parseproof/copiedgetteremulationseparate. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Explicitfour_life_reports requiresfour_owner_bombs/diagnostic4, no rank/result/terrain. Current17-19-21/boundslot/cursor-budget,unsupported/afteraccepteddeathcannotmutatecursor-state-forward;19needscurrent17/deathblocks118. Threepeerqueuesatomicallyreserved-before-modelpublish/subjectvisit-roundguards/no single.findrecipient.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-life",
+      "evidence": [
+        "RUST247-00047",
+        "RUST247-00211",
+        "RUST247-00032"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/fourlife17-19→three170/native56-1/all4states only. Clear21all3completion unitTCPonly/notnativeclear-rescue-needle. No fourrank/results-reset/EOF/8/fullM4/accountbridge/authenticatedlife/originalauthority. Finishcursor0notfull170parseproof/copiedgetteremulationseparate. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Clear21prefix14→170prefix6 bindsunique1-or3recipientmembershipset;onlyallTCPwrites markoncepertrap. Duplicate/wrongvisit/staledeliverycannotconsumependingothers;newtrap/blast/roundresetinvalidateold. Unitpartial2of3validandall3complete,17TCPclearfanout-once-newtrap; no nativeclear21/rescue/needle or resurrection/inventorygrant claim.60workspace/51twoTCPcurrentbinary/sourcefrozen/PIDgone.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-life",
+      "evidence": [
+        "RUST247-00045",
+        "RUST247-00211",
+        "RUST247-00664",
+        "RUST247-00016"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/fourlife17-19→three170/native56-1/all4states only. Clear21all3completion unitTCPonly/notnativeclear-rescue-needle. No fourrank/results-reset/EOF/8/fullM4/accountbridge/authenticatedlife/originalauthority. Finishcursor0notfull170parseproof/copiedgetteremulationseparate. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "KernelR1all17behaviorcasespassbutcleanup5s+3sPID885548notreaped;latersawPIDgone/noattimewchan/rootcauseunknown. TwoTCPR1openedbeforeconfirmcleanup4/timinglimit;preserveoldfailedreportand51passedlimitedreport. KernelR2PID-thread-wchaninstrumented17pass/exit0/PIDgone→sequentialtwoR2/51pass;no deadlineincrease/shutdownBtrfsfixclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-life",
+      "evidence": [
+        "RUST247-00125",
+        "RUST247-00131",
+        "RUST247-00580",
+        "RUST247-00211",
+        "RUST247-00664"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/fourlife17-19→three170/native56-1/all4states only. Clear21all3completion unitTCPonly/notnativeclear-rescue-needle. No fourrank/results-reset/EOF/8/fullM4/accountbridge/authenticatedlife/originalauthority. Finishcursor0notfull170parseproof/copiedgetteremulationseparate. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Initialverifierall127typedassumptionfailedoneD127afterownedchannelEOF;currentboundedabortdrop/noeffectalreadyinraw. Preservefailurelog/oldverifier,correctcheckeronly/norawrewrite/native rerun. NothealthyfourEOFreturnacceptance. CP246PR317merged/8WIPexact/AUD070unchangednext248/M4partial;nextallrecipientlifedelivery-currentwitness/drain→rank4/opposite2v2/resetStart3/abortEOF→8,M5bridge separate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-life",
+      "evidence": [
+        "RUST247-00216",
+        "RUST247-00668",
+        "RUST247-00405",
+        "RUST247-00033",
+        "RUST247-00036"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/fourlife17-19→three170/native56-1/all4states only. Clear21all3completion unitTCPonly/notnativeclear-rescue-needle. No fourrank/results-reset/EOF/8/fullM4/accountbridge/authenticatedlife/originalauthority. Finishcursor0notfull170parseproof/copiedgetteremulationseparate. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "NativeA-C17-19/threepeer170/native56-1/all4states",
+      "result": "pass",
+      "evidence": [
+        "RUST247-00405",
+        "RUST247-00495",
+        "RUST247-00485"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/fourlife17-19→three170/native56-1/all4states only. Clear21all3completion unitTCPonly/notnativeclear-rescue-needle. No fourrank/results-reset/EOF/8/fullM4/accountbridge/authenticatedlife/originalauthority. Finishcursor0notfull170parseproof/copiedgetteremulationseparate. Internet thật chưa kiểm."
+    },
+    {
+      "check": "7240copied52A350getters",
+      "result": "pass",
+      "evidence": [
+        "RUST247-00403"
+      ],
+      "limits": "SeparateUnicorn/counterreset/readonlywrappers/notwholebinaryoracle."
+    },
+    {
+      "check": "60Rusttests/fmt-clippy-lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST247-00007",
+        "RUST247-00005",
+        "RUST247-00016",
+        "RUST247-00003"
+      ],
+      "limits": "55service+5wire/native samebinary."
+    },
+    {
+      "check": "17fourTCPR2/51twoTCPR2sequential/3prebind",
+      "result": "pass",
+      "evidence": [
+        "RUST247-00211",
+        "RUST247-00664",
+        "RUST247-00032"
+      ],
+      "limits": "Clear21all3completion/duplicate-visit-round controls synthetic only; notnativeclear/rescue."
+    },
+    {
+      "check": "KernelR1cleanupdeadlineafter17behaviorcases",
+      "result": "fail",
+      "evidence": [
+        "RUST247-00131",
+        "RUST247-00125"
+      ],
+      "limits": "OwnedPIDlatergone/noattimewchan/rootcauseunknown;R2instrumentedpassdoesnotproveIOfix."
+    },
+    {
+      "check": "Initialnativeverifiercleanup-tail127classification",
+      "result": "fail",
+      "evidence": [
+        "RUST247-00216",
+        "RUST247-00668"
+      ],
+      "limits": "NativeRunexit0;correctverifierdistinguishesexplicitboundedabortdropaftercurrentEOF,norawrewrite/native rerun."
+    },
+    {
+      "check": "Manualdocs-catalog-issues-WIP-seals",
+      "result": "pass",
+      "evidence": [
+        "RUST247-00033",
+        "RUST247-00006"
+      ],
+      "limits": "Codexselfcheck/reviewwaived/checkerdoesnotclosegates."
+    },
+    {
+      "check": "Nativeclear21/fourrank-results-reset-EOF/eight/accountownershipbridge",
+      "result": "not_run",
+      "evidence": [
+        "RUST247-00036"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/fourlife17-19→three170/native56-1/all4states only. Clear21all3completion unitTCPonly/notnativeclear-rescue-needle. No fourrank/results-reset/EOF/8/fullM4/accountbridge/authenticatedlife/originalauthority. Finishcursor0notfull170parseproof/copiedgetteremulationseparate. Internet thật chưa kiểm."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP247-rust-four-life.json",
+      "bytes": 177649,
+      "sha256": "cecd49d2d5cd810709e1553675b9e898307450ddb96502abb573f917af5ee21b",
+      "count": 670
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rustoptinfourlife17-19-21/threepeer170/allrecipientclear21completion;nativeall4statesconsistent/60tests17four51two/3prebind.",
+      "FourharnessPID-thread-wchanobservationsatdeadline."
+    ],
+    "corrected": [
+      "CP246nativeown-peertrapdeathdivergence solvedforthis17-19path;notfullM4/rank-reset.",
+      "Verifiercleanuptail127classificationonly;kernelR1cleanupandtwoR1timinglimits preserved."
+    ],
+    "superseded": [
+      "Rustfourlifeentirelymissing;17-19native delivered/clear21syntheticonly/rank-resetEOFpending."
+    ]
+  },
+  "blockers": [
+    "KR00967Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1/fixed2v2/oneepoch only; no newpatch/freshprefix claim.",
+    "Actual17/19→three170 and nativeprotectedstates56→1/allsame[1,0,1,0] proof; FinishBreakpoint cursor0afterreturn is not full170parser proof.",
+    "Ownedteardown tail127 afterchannelEOF is explicitboundedno-effect drop, not healthyfourEOF/return acceptance. Clear21all3completion tested synthetically; no nativeclear21claim unless independent naturalcurrent21+effect is identified. No fourrank/results-reset/Start2/EOF/8/fullM4/nativeaccountbridge.",
+    "Report-derivedfuse/admission/freshness/life areemulatorpolicy, not authenticated originalauthority. Internet thật chưa kiểm.",
+    "KernelR1:17ca hành vi đạt nhưng quá cleanup5s+3s/PID885548 chưa reap; kiểm sau PIDgone, không có at-timewchan/rootcause. HaiTCPR1 mở trước xác nhận cleanup4; giữ limitation, không dùng làm acceptance cuối.",
+    "KernelR2 bổ sung PID/thread/wchan khi timeout,17pass/exit0/PIDgone; tiếp twoTCPR2 tuần tự51pass/cleanup. Không tăngdeadline/không gọi đã fix shutdown hay Btrfs.",
+    "VerifierR1 tưởng mọi127 đều typed life; một D127muộn sau ownedEOF là boundedabortdrop. Giữ loglỗi/oldverifier, chỉ sửa phép kiểm phân biệt cleanupdrop sau currentchannelEOF; không sửa raw/run."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANallrecipientlifecompletion/currentwitness/drain→CP202rank4/opposite2v2/resetStart3→scopedhostguestabortEOF→8;no duplicate17-19positive/no rank2-forfeitclone. M5bridge separate;periodicAUDnextCP248.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T23:48:16.288800+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualnative4life/raw-wire/nativeprotectedstates-UI/clear21synthetic/cleanupfailure-source selfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/four-life.json",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP247fourlife17-19native/clear21synthetic/M4rank4-resetEOFnext/M5bridgeindependent/AUD070next248/historykept."
+    }
+  ]
+}

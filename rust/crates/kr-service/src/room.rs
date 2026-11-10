@@ -338,8 +338,7 @@ impl Room {
         member.opaque123 += 1;
         Ok(())
     }
-    /// Actual167/body32 observed afterbomb1, semanticsunknown. Same isolated
-    /// reference no-response policy as123; its own budget cannot borrow123's.
+    /// Four bomb-only known142: bounded observation, no reveal or effect.
     pub fn observe_opaque142(&mut self, key: Membership) -> io::Result<()> {
         if !self.current(key) || !matches!(self.phase, Phase::Armed { .. }) {
             return Err(io::Error::other("opaque142 current armed member required"));
@@ -351,6 +350,7 @@ impl Room {
         member.opaque142 += 1;
         Ok(())
     }
+    /// Known167 sizes, semantics unknown; isolated no-response budget.
     pub fn observe_opaque167(&mut self, key: Membership) -> io::Result<()> {
         if !self.current(key) || !matches!(self.phase, Phase::Armed { .. }) {
             return Err(io::Error::other("opaque167 current armed member required"));

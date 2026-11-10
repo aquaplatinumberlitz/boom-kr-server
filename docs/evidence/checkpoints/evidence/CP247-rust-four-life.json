@@ -1,0 +1,4695 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "RUST247-00001",
+      "kind": "local",
+      "path": "local/research/codex/add_four_life_tools_tests.py",
+      "bytes": 1778,
+      "sha256": "8eff25caefca11fba9aca9fa2f08fb501b54ec87a07690238e078d0899e0ecb4"
+    },
+    {
+      "id": "RUST247-00002",
+      "kind": "local",
+      "path": "local/research/codex/append_cp247.py",
+      "bytes": 14525,
+      "sha256": "2d9ae5d9083b21a2eb175711e7fc99de398414f5354ae68264261d96e7956cb1"
+    },
+    {
+      "id": "RUST247-00003",
+      "kind": "local",
+      "path": "local/research/codex/cp247-build-final.txt",
+      "bytes": 72,
+      "sha256": "736e2582f563605dd272e5fb977840b0c0767377d27b6940c440caf75eec7157"
+    },
+    {
+      "id": "RUST247-00004",
+      "kind": "local",
+      "path": "local/research/codex/cp247-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "RUST247-00005",
+      "kind": "local",
+      "path": "local/research/codex/cp247-clippy-final.txt",
+      "bytes": 72,
+      "sha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6"
+    },
+    {
+      "id": "RUST247-00006",
+      "kind": "local",
+      "path": "local/research/codex/cp247-docs-final.txt",
+      "bytes": 251,
+      "sha256": "617af464732a9a7b181294f2a8ced85f85a1baf57770520be08d943df44f9ee6"
+    },
+    {
+      "id": "RUST247-00007",
+      "kind": "local",
+      "path": "local/research/codex/cp247-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST247-00008",
+      "kind": "local",
+      "path": "local/research/codex/cp247-issue14-before.json",
+      "bytes": 37595,
+      "sha256": "a3a50a48217d708ae1b17506eec26f466cd1902d14a9936022f5190328eca0c9"
+    },
+    {
+      "id": "RUST247-00009",
+      "kind": "local",
+      "path": "local/research/codex/cp247-issue14-updated.json",
+      "bytes": 37680,
+      "sha256": "1fd5bf9c173cdfc83c76eaa1c9eb98cb8537f7252c0f7ea4f2d4f71dc0b0a2c2"
+    },
+    {
+      "id": "RUST247-00010",
+      "kind": "local",
+      "path": "local/research/codex/cp247-issue14-updated.json.request",
+      "bytes": 34722,
+      "sha256": "d4b0d79f30558361ed22d6aa1e79fd76457eba08ed05c331a84320d4712206cc"
+    },
+    {
+      "id": "RUST247-00011",
+      "kind": "local",
+      "path": "local/research/codex/cp247-issue285-before.json",
+      "bytes": 10074,
+      "sha256": "42e9e6129cfa2193ce78e7d7fef05c72e580c1bbe1e280de7110e1e56c9f271a"
+    },
+    {
+      "id": "RUST247-00012",
+      "kind": "local",
+      "path": "local/research/codex/cp247-issue285-updated.json",
+      "bytes": 10159,
+      "sha256": "a10741cf5df3dd0140072eac035b25ab32e8b6be260af5c4b3e611ceacef9eca"
+    },
+    {
+      "id": "RUST247-00013",
+      "kind": "local",
+      "path": "local/research/codex/cp247-issue285-updated.json.request",
+      "bytes": 7173,
+      "sha256": "0a18f20c424d670d936168af537e2b78a04f6092e2b873055bca2040eb0818bc"
+    },
+    {
+      "id": "RUST247-00014",
+      "kind": "local",
+      "path": "local/research/codex/cp247-issues.txt",
+      "bytes": 639,
+      "sha256": "a4837364d8f87df2897babfe99838148ab679c1cff758c1d5738cf9750e101f3"
+    },
+    {
+      "id": "RUST247-00015",
+      "kind": "local",
+      "path": "local/research/codex/cp247-pr317-merged.json",
+      "bytes": 23190,
+      "sha256": "623add5492999d8ee735f63014c8a1f23b9a6f2bf6904ca80bf477807de4fc1c"
+    },
+    {
+      "id": "RUST247-00016",
+      "kind": "local",
+      "path": "local/research/codex/cp247-test-final.txt",
+      "bytes": 6967,
+      "sha256": "886d97314984fab93ecf774ee800a2b0b0767a5854daae28dc6d453b24ae456f"
+    },
+    {
+      "id": "RUST247-00017",
+      "kind": "local",
+      "path": "local/research/codex/four_life_fanout_test.rs",
+      "bytes": 2186,
+      "sha256": "5f5f2d229c12a2125c46aaee636ffeae8290ac93362d82dd2f58dc684cd2fa3b"
+    },
+    {
+      "id": "RUST247-00018",
+      "kind": "local",
+      "path": "local/research/codex/four_life_tcp_checks.py",
+      "bytes": 2129,
+      "sha256": "c18221b9cdee0656904e95ce9c115a4616ffb560a44794076107830140b9e5b4"
+    },
+    {
+      "id": "RUST247-00019",
+      "kind": "local",
+      "path": "local/research/codex/implement_rust_four_life.py",
+      "bytes": 7087,
+      "sha256": "18cc70e930d0cc36c53043cfffaa83d3ae87276828e51f66ad11bd1c3978b07f"
+    },
+    {
+      "id": "RUST247-00020",
+      "kind": "local",
+      "path": "local/research/codex/prepare_rust_four_life_native_r1.py",
+      "bytes": 8785,
+      "sha256": "46f78e2927db8dae66a67822fe004671261709a836cebc29a97c9368c4d68de4"
+    },
+    {
+      "id": "RUST247-00021",
+      "kind": "local",
+      "path": "local/research/codex/run_rust_four_life_native_r1.py",
+      "bytes": 879,
+      "sha256": "a571f08cb5b0281c67130d55dc5dee31d06f1e34ec698a9bdcf7d7a24d73cc6e"
+    },
+    {
+      "id": "RUST247-00022",
+      "kind": "local",
+      "path": "local/research/codex/run_rust_four_life_two_regression_r1.py",
+      "bytes": 2805,
+      "sha256": "3ad6a9616e08b958b694a970236cd1c1c7833c44b1a9867675df881d2b500d90"
+    },
+    {
+      "id": "RUST247-00023",
+      "kind": "local",
+      "path": "local/research/codex/run_rust_four_life_two_regression_r2.py",
+      "bytes": 2805,
+      "sha256": "3e08d8156f48a437f2c7c5a843ced15e63f124dde8da16d63826783649b1d2a9"
+    },
+    {
+      "id": "RUST247-00024",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-build-r1.txt",
+      "bytes": 166,
+      "sha256": "bdff28201f82ce3681809007a87d3d70b66af6ade5e623cb892f514ddf1f38bf"
+    },
+    {
+      "id": "RUST247-00025",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-clippy-r1.txt",
+      "bytes": 166,
+      "sha256": "64fb11722f4e6fe34741a8b1d4575e36b60fd0825ca052de59ef440d18cd7d87"
+    },
+    {
+      "id": "RUST247-00026",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-config-negatives-r1/four_life_two_rank.json",
+      "bytes": 24092,
+      "sha256": "597bad4b796a8a784d34bf7db39aace6bf80ca7e95db9ff8456210279fc311ee"
+    },
+    {
+      "id": "RUST247-00027",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-config-negatives-r1/four_life_two_rank.log",
+      "bytes": 85,
+      "sha256": "0fa937b3723598e8f7c1bc517f2f5728b32cb2607fb9070df5860915d17e4f3f"
+    },
+    {
+      "id": "RUST247-00028",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-config-negatives-r1/four_life_without_bombs.json",
+      "bytes": 22512,
+      "sha256": "ac007566c42e377dc015d56df9145197c1ff3ad0e0558dd9e32617475f5714fc"
+    },
+    {
+      "id": "RUST247-00029",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-config-negatives-r1/four_life_without_bombs.log",
+      "bytes": 90,
+      "sha256": "593cb2ed0ce789d8c9be19ce4073d3c8f3daf99887bd21a5549f4fff2a4156c9"
+    },
+    {
+      "id": "RUST247-00030",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-config-negatives-r1/two_life_flag.json",
+      "bytes": 17895,
+      "sha256": "0d1c006007b16e44291d330ada6d753ab5d6ec5dadc52cbaaf72b770a6f97a79"
+    },
+    {
+      "id": "RUST247-00031",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-config-negatives-r1/two_life_flag.log",
+      "bytes": 90,
+      "sha256": "593cb2ed0ce789d8c9be19ce4073d3c8f3daf99887bd21a5549f4fff2a4156c9"
+    },
+    {
+      "id": "RUST247-00032",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-config-negatives-r1/verification.json",
+      "bytes": 872,
+      "sha256": "726fff200f4e6a672c18908c69f06d643adca60788700a3e68d3cb0de69f92c2"
+    },
+    {
+      "id": "RUST247-00033",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/manual-acceptance.json",
+      "bytes": 2961,
+      "sha256": "5ae7dfd060f0444caae1f5e5ed13b49087064797756458c5629acf46a7bc12db"
+    },
+    {
+      "id": "RUST247-00034",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/README.md",
+      "bytes": 53773,
+      "sha256": "6ece00910e50185b919a276b0cb87c20ef21ec210cf2e0c86851357c8ab2389c"
+    },
+    {
+      "id": "RUST247-00035",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/docs/COVERAGE.md",
+      "bytes": 203968,
+      "sha256": "b72e1b7b98e779e9ec7c47dca18ac84f3aee7b201eaa41a5bd8b3e2a392e05bc"
+    },
+    {
+      "id": "RUST247-00036",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 95105,
+      "sha256": "20cf19ccba55c0759a52558f458038042391f3a41b3ea2be12ebf6e58d064d70"
+    },
+    {
+      "id": "RUST247-00037",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/docs/PROTOCOL.md",
+      "bytes": 782402,
+      "sha256": "14acd59c29cac0976782a16ed5f4362a76b1962abd674753bec0c84e9544934f"
+    },
+    {
+      "id": "RUST247-00038",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 48616,
+      "sha256": "8e0e9b29b552b9108a657f4112624354734d91ad1b7f2d479e4e158998ceaad9"
+    },
+    {
+      "id": "RUST247-00039",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 275320,
+      "sha256": "286e9be798282fe870db1eb12921d507dcd288ba0501a990b5a1865cf0a53d25"
+    },
+    {
+      "id": "RUST247-00040",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 40451,
+      "sha256": "820fff2326c49a1788e67fc3cb834dc2442764fdd0aa98ffb98c08feb638b6de"
+    },
+    {
+      "id": "RUST247-00041",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/docs/evidence/rust-service/README.md",
+      "bytes": 35441,
+      "sha256": "f245d4cae3fb617e97483990d75eaf2dce5bde3900ab3e02d540792aba536c05"
+    },
+    {
+      "id": "RUST247-00042",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/docs/evidence/rust-service/four-life.json",
+      "bytes": 4112,
+      "sha256": "252fc03c381121865503e9526d98851dac402b1f19fd7d9f11cb9a09588a33ac"
+    },
+    {
+      "id": "RUST247-00043",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/docs/features.json",
+      "bytes": 214285,
+      "sha256": "a4b066bf02d1799acbb87811824e16477ec5b3d0479e86c49324fb6badda0520"
+    },
+    {
+      "id": "RUST247-00044",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/rust/README.md",
+      "bytes": 21478,
+      "sha256": "24eb0af176d2656803ca0d73aeecdbfe4805cd9e8ec2735b9398d4f12dfe3224"
+    },
+    {
+      "id": "RUST247-00045",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/rust/crates/kr-service/src/life.rs",
+      "bytes": 16390,
+      "sha256": "8cfd7773a6d6644222148b16786f30ca36cc3f9513ecb2ed2872b5edb5e60a01"
+    },
+    {
+      "id": "RUST247-00046",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/rust/crates/kr-service/src/room.rs",
+      "bytes": 23755,
+      "sha256": "0f5338fee7512d74dd57cbb2a5628a4f9a8c8e7383200a90a2c0951ca2234194"
+    },
+    {
+      "id": "RUST247-00047",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 71787,
+      "sha256": "5c730b74f24195f08ee08f41b644a9f5fc61588f1442426ba258261565034949"
+    },
+    {
+      "id": "RUST247-00048",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/tools/README.md",
+      "bytes": 20097,
+      "sha256": "674211a41f33e5c95a494e1eb67453557c5bb0a3e94226a236cc761944f19181"
+    },
+    {
+      "id": "RUST247-00049",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/tools/export_rust_profile.py",
+      "bytes": 16545,
+      "sha256": "4cc6ce0ec052735513bf25ae355b99ab5689c43ee0f11550532d6b7328635c98"
+    },
+    {
+      "id": "RUST247-00050",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-delivery-r1/snapshot/tools/test_rust_four_room.py",
+      "bytes": 12221,
+      "sha256": "8a5649af7e1fe6292043141665a4894fac76e556715b85f7c59d1a8a0a44d714"
+    },
+    {
+      "id": "RUST247-00051",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1.txt",
+      "bytes": 372,
+      "sha256": "c686cd70e2a7bce0a001908ed68133c2667045c02bb7678a24d09821ef884385"
+    },
+    {
+      "id": "RUST247-00052",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/config.json",
+      "bytes": 21979,
+      "sha256": "83828b9e973a7734d2760ed6beed5ff1a0b9c13058aa692f3cf3e64f56175d88"
+    },
+    {
+      "id": "RUST247-00053",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/000-basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "RUST247-00054",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/001-exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "RUST247-00055",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/002-exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "RUST247-00056",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/003-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "RUST247-00057",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/004-compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "RUST247-00058",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/005-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "RUST247-00059",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/006-reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "RUST247-00060",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/007-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RUST247-00061",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/008-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "RUST247-00062",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/009-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "RUST247-00063",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/010-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "RUST247-00064",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/011-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "RUST247-00065",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/012-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "RUST247-00066",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/013-reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "RUST247-00067",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/014-go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "RUST247-00068",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/015-A-auth.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "RUST247-00069",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/016-A-own291.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "RUST247-00070",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/017-A-player106.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "RUST247-00071",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/018-B-auth.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "RUST247-00072",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/019-B-own291.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "RUST247-00073",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/020-B-player106.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "RUST247-00074",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/021-C-auth.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "RUST247-00075",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/022-C-own291.bin",
+      "bytes": 126,
+      "sha256": "5e4a20ae5827c99ab75343eb4cac0b8e1d3fe02085635ef7e15cb6ea1abdbd04"
+    },
+    {
+      "id": "RUST247-00076",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/023-C-player106.bin",
+      "bytes": 238,
+      "sha256": "2dce013518feef6f752c8d232f394729253f17f09c60509296b4e59e57afc72a"
+    },
+    {
+      "id": "RUST247-00077",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/024-D-auth.bin",
+      "bytes": 175,
+      "sha256": "b120da778082fdff90fde5e947c2c26ff002449dcf126bc2fd7285512ca75724"
+    },
+    {
+      "id": "RUST247-00078",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/025-D-own291.bin",
+      "bytes": 128,
+      "sha256": "218a0b0880d106ae38ddd4e056e6acb602cf1e3e79705a7672b3374b012f422c"
+    },
+    {
+      "id": "RUST247-00079",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/026-D-player106.bin",
+      "bytes": 242,
+      "sha256": "50be046ea690d70f654816db6e89a458c16985a38e254877a168f93472168183"
+    },
+    {
+      "id": "RUST247-00080",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/027-peer4.bin",
+      "bytes": 171,
+      "sha256": "819b1afb5abd4e86a44dcea4ed1b0dcdc9b73b2a2567351f23c699b3eb24c232"
+    },
+    {
+      "id": "RUST247-00081",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/028-start4.bin",
+      "bytes": 219,
+      "sha256": "bf395aea2bed32aaff8dd590887849bf400598a60e7427652a05cc5610df862d"
+    },
+    {
+      "id": "RUST247-00082",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/029-listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "RUST247-00083",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/030-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "RUST247-00084",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/031-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "RUST247-00085",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/032-test_rust_four_room.py",
+      "bytes": 11500,
+      "sha256": "7616fe5a32df0babf84f7bcf375069e5c8fff0a597e6930703f530f36147c9f7"
+    },
+    {
+      "id": "RUST247-00086",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/033-config.json",
+      "bytes": 21979,
+      "sha256": "83828b9e973a7734d2760ed6beed5ff1a0b9c13058aa692f3cf3e64f56175d88"
+    },
+    {
+      "id": "RUST247-00087",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/034-config.json",
+      "bytes": 22494,
+      "sha256": "573bbc3f49f9887311bdafef44321f835c0a9bc6ecb3319fb1fbc09bfad5f739"
+    },
+    {
+      "id": "RUST247-00088",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/035-.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST247-00089",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/036-Cargo.lock",
+      "bytes": 15941,
+      "sha256": "8a6d22da092caf4d41137c74d1062bb0a1d7efb787895648985fc4fe7068c59a"
+    },
+    {
+      "id": "RUST247-00090",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/037-Cargo.toml",
+      "bytes": 625,
+      "sha256": "c5c9e195c001a9d133374a2fcaafa1606488501409e3ae18a3e35d1a1a7330bb"
+    },
+    {
+      "id": "RUST247-00091",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/038-README.md",
+      "bytes": 20517,
+      "sha256": "3a94c8d13823ad8da9fe364bfd673df50bf7a1be6537e158040a6e5130d887b7"
+    },
+    {
+      "id": "RUST247-00092",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/039-Cargo.toml",
+      "bytes": 410,
+      "sha256": "86d4a87d409c298fc1df4187be092c8e4db7419825333448f2e652c70dc25706"
+    },
+    {
+      "id": "RUST247-00093",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/040-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "RUST247-00094",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/041-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "RUST247-00095",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/042-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "RUST247-00096",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/043-tests.rs",
+      "bytes": 17768,
+      "sha256": "95549231cbc458bc6108766894b889a27980ce12359d512208f002956c889bb6"
+    },
+    {
+      "id": "RUST247-00097",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/044-account_worker.rs",
+      "bytes": 13635,
+      "sha256": "eca3cab705f0ab0cdb9cda0929b2c324c8dd4f12683bba7d9fdf244a1ff88202"
+    },
+    {
+      "id": "RUST247-00098",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/045-tests.rs",
+      "bytes": 19933,
+      "sha256": "3de28f843cf4c14758a20cc116e2443083b04b3cfdf5e556d351394b1eb5e964"
+    },
+    {
+      "id": "RUST247-00099",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/046-accounts.rs",
+      "bytes": 25079,
+      "sha256": "963d002de5c0034fabd59b0e38b224c557fbed2ca029bf098993cc8d8a1e872f"
+    },
+    {
+      "id": "RUST247-00100",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/047-kr-admin.rs",
+      "bytes": 4426,
+      "sha256": "34d617f62c3fc3ddb37e8018c8c36eccb19d24934dfa89acd3f2959505859c4c"
+    },
+    {
+      "id": "RUST247-00101",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/048-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "RUST247-00102",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/049-bombs.rs",
+      "bytes": 14874,
+      "sha256": "8712c4c42cd1ceec044d2fe7866db30f6aa340fdb3ac52def408bc60c6bd8bfa"
+    },
+    {
+      "id": "RUST247-00103",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/050-lib.rs",
+      "bytes": 35081,
+      "sha256": "c5af868b831e9c5f31d26222ae2c947059b1fb045591ffc1af2d860d8b5c6152"
+    },
+    {
+      "id": "RUST247-00104",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/051-life.rs",
+      "bytes": 16390,
+      "sha256": "8cfd7773a6d6644222148b16786f30ca36cc3f9513ecb2ed2872b5edb5e60a01"
+    },
+    {
+      "id": "RUST247-00105",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/052-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "RUST247-00106",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/053-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "RUST247-00107",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/054-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST247-00108",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/055-pickups.rs",
+      "bytes": 14683,
+      "sha256": "0ccdf950dc8fe68d1b0a3e4a4ad9d59475693c7936865ea7431642b50bace500"
+    },
+    {
+      "id": "RUST247-00109",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/056-room.rs",
+      "bytes": 23755,
+      "sha256": "0f5338fee7512d74dd57cbb2a5628a4f9a8c8e7383200a90a2c0951ca2234194"
+    },
+    {
+      "id": "RUST247-00110",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/057-room_io.rs",
+      "bytes": 71787,
+      "sha256": "5c730b74f24195f08ee08f41b644a9f5fc61588f1442426ba258261565034949"
+    },
+    {
+      "id": "RUST247-00111",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/058-room_wire.rs",
+      "bytes": 10555,
+      "sha256": "71dff5398a49c34c114205ac9da2ea2448f695b166941c097836e8965e2c24bb"
+    },
+    {
+      "id": "RUST247-00112",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/059-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "RUST247-00113",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/060-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST247-00114",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/061-lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST247-00115",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/062-README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST247-00116",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/063-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "RUST247-00117",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/064-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST247-00118",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/065-kr-service",
+      "bytes": 43598912,
+      "sha256": "9fb52288cc8a48c24f2ca8766e098a2a6f307e5af52d4b907753f6330cf9d5d3"
+    },
+    {
+      "id": "RUST247-00119",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/066-four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "RUST247-00120",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/067-probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "RUST247-00121",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/068-room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "RUST247-00122",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/069-export_rust_profile.py",
+      "bytes": 16545,
+      "sha256": "4cc6ce0ec052735513bf25ae355b99ab5689c43ee0f11550532d6b7328635c98"
+    },
+    {
+      "id": "RUST247-00123",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/070-test_rust_foundation.py",
+      "bytes": 9019,
+      "sha256": "c18a83590988ee659da0fea0f3e13f8a8808f2b93a373cd7936b814d8082d673"
+    },
+    {
+      "id": "RUST247-00124",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/frozen-inputs/071-test_rust_room.py",
+      "bytes": 13739,
+      "sha256": "98be417a43d45cc612e6ea89163f6cf0b57ab821bde290ef137df752305910b4"
+    },
+    {
+      "id": "RUST247-00125",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/post-cleanup-review.json",
+      "bytes": 546,
+      "sha256": "2b77dd466cf5d35d841334678e8de8d61061c3ecc82e08e4f616ffdc404ab4c7"
+    },
+    {
+      "id": "RUST247-00126",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/preflight.json",
+      "bytes": 21773,
+      "sha256": "d99da419c51f486c850cc0c0e27c86085115d0f0e2c16cbb583a9adc695ac3bc"
+    },
+    {
+      "id": "RUST247-00127",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST247-00128",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/service/rust-events.jsonl",
+      "bytes": 44615,
+      "sha256": "1c27e22b8b141115a0f739346c5635bfa2261e694221d8b4363c1b4dc7b04425"
+    },
+    {
+      "id": "RUST247-00129",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/service/service-state.json",
+      "bytes": 91,
+      "sha256": "9f2a13094c1c14467fa9bcad35db2eadf910a3903ca12595530e7a9d6b508392"
+    },
+    {
+      "id": "RUST247-00130",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/service/service-state.tmp",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST247-00131",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r1/verification.json",
+      "bytes": 17796,
+      "sha256": "39a4179293e31425fb5a4cd3ae6f55ea0e6d0afc197ab49c05129ea27c7f3767"
+    },
+    {
+      "id": "RUST247-00132",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2.txt",
+      "bytes": 44,
+      "sha256": "c2f9e578cc26885733449c5fddde0a25f00052cf5a9d19ae2c3f674b731ae20e"
+    },
+    {
+      "id": "RUST247-00133",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/config.json",
+      "bytes": 21979,
+      "sha256": "f1712143e4bbecc75698d0f929600421f2c558b10cb1223c58d49d733fa257f1"
+    },
+    {
+      "id": "RUST247-00134",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/000-basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "RUST247-00135",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/001-exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "RUST247-00136",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/002-exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "RUST247-00137",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/003-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "RUST247-00138",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/004-compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "RUST247-00139",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/005-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "RUST247-00140",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/006-reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "RUST247-00141",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/007-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RUST247-00142",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/008-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "RUST247-00143",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/009-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "RUST247-00144",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/010-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "RUST247-00145",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/011-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "RUST247-00146",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/012-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "RUST247-00147",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/013-reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "RUST247-00148",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/014-go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "RUST247-00149",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/015-A-auth.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "RUST247-00150",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/016-A-own291.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "RUST247-00151",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/017-A-player106.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "RUST247-00152",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/018-B-auth.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "RUST247-00153",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/019-B-own291.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "RUST247-00154",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/020-B-player106.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "RUST247-00155",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/021-C-auth.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "RUST247-00156",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/022-C-own291.bin",
+      "bytes": 126,
+      "sha256": "5e4a20ae5827c99ab75343eb4cac0b8e1d3fe02085635ef7e15cb6ea1abdbd04"
+    },
+    {
+      "id": "RUST247-00157",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/023-C-player106.bin",
+      "bytes": 238,
+      "sha256": "2dce013518feef6f752c8d232f394729253f17f09c60509296b4e59e57afc72a"
+    },
+    {
+      "id": "RUST247-00158",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/024-D-auth.bin",
+      "bytes": 175,
+      "sha256": "b120da778082fdff90fde5e947c2c26ff002449dcf126bc2fd7285512ca75724"
+    },
+    {
+      "id": "RUST247-00159",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/025-D-own291.bin",
+      "bytes": 128,
+      "sha256": "218a0b0880d106ae38ddd4e056e6acb602cf1e3e79705a7672b3374b012f422c"
+    },
+    {
+      "id": "RUST247-00160",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/026-D-player106.bin",
+      "bytes": 242,
+      "sha256": "50be046ea690d70f654816db6e89a458c16985a38e254877a168f93472168183"
+    },
+    {
+      "id": "RUST247-00161",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/027-peer4.bin",
+      "bytes": 171,
+      "sha256": "819b1afb5abd4e86a44dcea4ed1b0dcdc9b73b2a2567351f23c699b3eb24c232"
+    },
+    {
+      "id": "RUST247-00162",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/028-start4.bin",
+      "bytes": 219,
+      "sha256": "bf395aea2bed32aaff8dd590887849bf400598a60e7427652a05cc5610df862d"
+    },
+    {
+      "id": "RUST247-00163",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/029-listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "RUST247-00164",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/030-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "RUST247-00165",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/031-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "RUST247-00166",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/032-test_rust_four_room.py",
+      "bytes": 12221,
+      "sha256": "8a5649af7e1fe6292043141665a4894fac76e556715b85f7c59d1a8a0a44d714"
+    },
+    {
+      "id": "RUST247-00167",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/033-config.json",
+      "bytes": 21979,
+      "sha256": "f1712143e4bbecc75698d0f929600421f2c558b10cb1223c58d49d733fa257f1"
+    },
+    {
+      "id": "RUST247-00168",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/034-config.json",
+      "bytes": 22494,
+      "sha256": "573bbc3f49f9887311bdafef44321f835c0a9bc6ecb3319fb1fbc09bfad5f739"
+    },
+    {
+      "id": "RUST247-00169",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/035-.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST247-00170",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/036-Cargo.lock",
+      "bytes": 15941,
+      "sha256": "8a6d22da092caf4d41137c74d1062bb0a1d7efb787895648985fc4fe7068c59a"
+    },
+    {
+      "id": "RUST247-00171",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/037-Cargo.toml",
+      "bytes": 625,
+      "sha256": "c5c9e195c001a9d133374a2fcaafa1606488501409e3ae18a3e35d1a1a7330bb"
+    },
+    {
+      "id": "RUST247-00172",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/038-README.md",
+      "bytes": 20517,
+      "sha256": "3a94c8d13823ad8da9fe364bfd673df50bf7a1be6537e158040a6e5130d887b7"
+    },
+    {
+      "id": "RUST247-00173",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/039-Cargo.toml",
+      "bytes": 410,
+      "sha256": "86d4a87d409c298fc1df4187be092c8e4db7419825333448f2e652c70dc25706"
+    },
+    {
+      "id": "RUST247-00174",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/040-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "RUST247-00175",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/041-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "RUST247-00176",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/042-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "RUST247-00177",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/043-tests.rs",
+      "bytes": 17768,
+      "sha256": "95549231cbc458bc6108766894b889a27980ce12359d512208f002956c889bb6"
+    },
+    {
+      "id": "RUST247-00178",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/044-account_worker.rs",
+      "bytes": 13635,
+      "sha256": "eca3cab705f0ab0cdb9cda0929b2c324c8dd4f12683bba7d9fdf244a1ff88202"
+    },
+    {
+      "id": "RUST247-00179",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/045-tests.rs",
+      "bytes": 19933,
+      "sha256": "3de28f843cf4c14758a20cc116e2443083b04b3cfdf5e556d351394b1eb5e964"
+    },
+    {
+      "id": "RUST247-00180",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/046-accounts.rs",
+      "bytes": 25079,
+      "sha256": "963d002de5c0034fabd59b0e38b224c557fbed2ca029bf098993cc8d8a1e872f"
+    },
+    {
+      "id": "RUST247-00181",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/047-kr-admin.rs",
+      "bytes": 4426,
+      "sha256": "34d617f62c3fc3ddb37e8018c8c36eccb19d24934dfa89acd3f2959505859c4c"
+    },
+    {
+      "id": "RUST247-00182",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/048-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "RUST247-00183",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/049-bombs.rs",
+      "bytes": 14874,
+      "sha256": "8712c4c42cd1ceec044d2fe7866db30f6aa340fdb3ac52def408bc60c6bd8bfa"
+    },
+    {
+      "id": "RUST247-00184",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/050-lib.rs",
+      "bytes": 35081,
+      "sha256": "c5af868b831e9c5f31d26222ae2c947059b1fb045591ffc1af2d860d8b5c6152"
+    },
+    {
+      "id": "RUST247-00185",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/051-life.rs",
+      "bytes": 16390,
+      "sha256": "8cfd7773a6d6644222148b16786f30ca36cc3f9513ecb2ed2872b5edb5e60a01"
+    },
+    {
+      "id": "RUST247-00186",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/052-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "RUST247-00187",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/053-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "RUST247-00188",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/054-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST247-00189",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/055-pickups.rs",
+      "bytes": 14683,
+      "sha256": "0ccdf950dc8fe68d1b0a3e4a4ad9d59475693c7936865ea7431642b50bace500"
+    },
+    {
+      "id": "RUST247-00190",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/056-room.rs",
+      "bytes": 23755,
+      "sha256": "0f5338fee7512d74dd57cbb2a5628a4f9a8c8e7383200a90a2c0951ca2234194"
+    },
+    {
+      "id": "RUST247-00191",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/057-room_io.rs",
+      "bytes": 71787,
+      "sha256": "5c730b74f24195f08ee08f41b644a9f5fc61588f1442426ba258261565034949"
+    },
+    {
+      "id": "RUST247-00192",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/058-room_wire.rs",
+      "bytes": 10555,
+      "sha256": "71dff5398a49c34c114205ac9da2ea2448f695b166941c097836e8965e2c24bb"
+    },
+    {
+      "id": "RUST247-00193",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/059-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "RUST247-00194",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/060-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST247-00195",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/061-lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST247-00196",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/062-README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST247-00197",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/063-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "RUST247-00198",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/064-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST247-00199",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/065-kr-service",
+      "bytes": 43598912,
+      "sha256": "9fb52288cc8a48c24f2ca8766e098a2a6f307e5af52d4b907753f6330cf9d5d3"
+    },
+    {
+      "id": "RUST247-00200",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/066-four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "RUST247-00201",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/067-probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "RUST247-00202",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/068-room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "RUST247-00203",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/069-export_rust_profile.py",
+      "bytes": 16545,
+      "sha256": "4cc6ce0ec052735513bf25ae355b99ab5689c43ee0f11550532d6b7328635c98"
+    },
+    {
+      "id": "RUST247-00204",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/070-test_rust_foundation.py",
+      "bytes": 9019,
+      "sha256": "c18a83590988ee659da0fea0f3e13f8a8808f2b93a373cd7936b814d8082d673"
+    },
+    {
+      "id": "RUST247-00205",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/frozen-inputs/071-test_rust_room.py",
+      "bytes": 13739,
+      "sha256": "98be417a43d45cc612e6ea89163f6cf0b57ab821bde290ef137df752305910b4"
+    },
+    {
+      "id": "RUST247-00206",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/pid-observations.json",
+      "bytes": 26228,
+      "sha256": "2cb91f5c971236fb1d2485f759a7f74f302629d018f96dfa93f9644c63be190b"
+    },
+    {
+      "id": "RUST247-00207",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/preflight.json",
+      "bytes": 21773,
+      "sha256": "6914d10a2c277f6ee89c385f950653197ecfe8e2d179a159b2b23ac9fccc55b1"
+    },
+    {
+      "id": "RUST247-00208",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST247-00209",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/service/rust-events.jsonl",
+      "bytes": 44910,
+      "sha256": "9e0d1024632c55cd2f9eac57d264b7219520512cc970e10f2a73d445b49330d1"
+    },
+    {
+      "id": "RUST247-00210",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/service/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST247-00211",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-kernel-r2/verification.json",
+      "bytes": 17747,
+      "sha256": "06da3085ef9a1d656216b923fe504bd5942bdd63610f721331817614b7914bf9"
+    },
+    {
+      "id": "RUST247-00212",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1-getters.txt",
+      "bytes": 38,
+      "sha256": "8765c4604ecae66f47198fe6761f8d1a22271ce36f372ba9b67522b3bfeaf560"
+    },
+    {
+      "id": "RUST247-00213",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1-launch.txt",
+      "bytes": 256,
+      "sha256": "6caebd6ffd4f44c13ec0529e739b19a59ebae9f65e33de21e5f1936ff309dc68"
+    },
+    {
+      "id": "RUST247-00214",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1-preparation.txt",
+      "bytes": 50,
+      "sha256": "2cae2bff5d05e785518573185c39ef9d9af0227c8aafb41369528317a03a8eb9"
+    },
+    {
+      "id": "RUST247-00215",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1-verification-r2.txt",
+      "bytes": 155,
+      "sha256": "9caa53435e7ce8bfd553ed7394af90a209e9f0f3944770174e0273e1e6bdebc4"
+    },
+    {
+      "id": "RUST247-00216",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1-verification.txt",
+      "bytes": 408,
+      "sha256": "806bf577934dfed6a9e3592f2c2833e87b0f7d33b3ea2cb266a4609838817f7e"
+    },
+    {
+      "id": "RUST247-00217",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/ack-probe.py",
+      "bytes": 768,
+      "sha256": "3a91df2276c2360ffedcbd7bb3292636fab64b077cae9ac566d38e4f5157b8e2"
+    },
+    {
+      "id": "RUST247-00218",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/auth-probe.py",
+      "bytes": 2450,
+      "sha256": "72b8c04b481b39f02ddaaf83edb73666fbf44903f6939c9c84872a5c2dd3bd4a"
+    },
+    {
+      "id": "RUST247-00219",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/bomb-probe.py",
+      "bytes": 2223,
+      "sha256": "fc89f04b8c77f6c4237f5d13daa2cfca3a96ef4194fa4fa2a6a7ef16f1550a4b"
+    },
+    {
+      "id": "RUST247-00220",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/capture_tcp.py",
+      "bytes": 1600,
+      "sha256": "b31530a9172c621fd199334466335ff0dd5de1b3cbb61b822838ad8a1761736a"
+    },
+    {
+      "id": "RUST247-00221",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/capture_udp.py",
+      "bytes": 3181,
+      "sha256": "5023320e949e7b5a229ad753ff1d7b6ae56a372fba8f2262d4b5af1ad91dd868"
+    },
+    {
+      "id": "RUST247-00222",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/config.json",
+      "bytes": 2419,
+      "sha256": "44b5089504d86d3263a03fd9f4969a70e76fc87625aa4d0d3b0f8857a4448d5c"
+    },
+    {
+      "id": "RUST247-00223",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/four-verification.json",
+      "bytes": 2050135,
+      "sha256": "6c5c80ba316d11907e846707f3cd386af34a3d10752b9986912ba3c81ce2c769"
+    },
+    {
+      "id": "RUST247-00224",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/000-C-guestB106-chief64.bin",
+      "bytes": 242,
+      "sha256": "baba396be0cc267d0bc54828a1ecc4fff464c51035722ba92650a071bcfb99a4"
+    },
+    {
+      "id": "RUST247-00225",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/001-C106-slot0-id3.bin",
+      "bytes": 242,
+      "sha256": "5232f9b513e18fa78c6bd15a1c093f2997382e695d8f98398f33f95bede3470f"
+    },
+    {
+      "id": "RUST247-00226",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/002-amend_rust_four_prelaunch_r1.py",
+      "bytes": 2392,
+      "sha256": "15cd22c85d604758ea258b1e460e63ec4ea31006ee7fa4603949c743b52d689a"
+    },
+    {
+      "id": "RUST247-00227",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/003-auth-A-final.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "RUST247-00228",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/004-auth-B-final.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "RUST247-00229",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/005-auth-C-final.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "RUST247-00230",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/006-basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "RUST247-00231",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/007-kind0.bin",
+      "bytes": 51,
+      "sha256": "5095a65ab689b03ac91e11a9d306341cf9995b5bf8dc8ac146706908c60496b7"
+    },
+    {
+      "id": "RUST247-00232",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/008-result180-full.bin",
+      "bytes": 41,
+      "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0"
+    },
+    {
+      "id": "RUST247-00233",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/009-exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "RUST247-00234",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/010-exvillage121.bin",
+      "bytes": 167,
+      "sha256": "2e6319e9e5eb55a9ad6594710ec4aeaa749b6f8eee72a1e0016beb44885a90c0"
+    },
+    {
+      "id": "RUST247-00235",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/011-exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "RUST247-00236",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/012-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "RUST247-00237",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/013-rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "RUST247-00238",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/014-compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "RUST247-00239",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/015-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "RUST247-00240",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/016-gdb_udp_membership.py",
+      "bytes": 6047,
+      "sha256": "bae5f7703374737ace27c496de3cc9c661eb33d6dc43d1e7d45d46df6431dfb9"
+    },
+    {
+      "id": "RUST247-00241",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/017-A-guest106-unready.bin",
+      "bytes": 242,
+      "sha256": "16408678ed4d2ddd219483f9bb6fae35795c8c5ee1a43f4d1b0d5873b3c0a290"
+    },
+    {
+      "id": "RUST247-00242",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/018-B106-unready.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "RUST247-00243",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/019-B110-unready.bin",
+      "bytes": 44,
+      "sha256": "eed1d08df651766528969f1c20f0ddfdd944a47368ce9ca66635852e96d5bb27"
+    },
+    {
+      "id": "RUST247-00244",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/020-reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "RUST247-00245",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/021-room91-session1.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "RUST247-00246",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/022-gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "RUST247-00247",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/023-gdb_life_rank.py",
+      "bytes": 2266,
+      "sha256": "26e5206fc0077d91ff666e63a28a815cdc3d105219819d5fdf34df038abf76c2"
+    },
+    {
+      "id": "RUST247-00248",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/024-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RUST247-00249",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/025-native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "RUST247-00250",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/026-gdb_live_positions.py",
+      "bytes": 1500,
+      "sha256": "50d2ad859928bac02c83b342da0076e424800d5314191c45a34a5ef142a2d561"
+    },
+    {
+      "id": "RUST247-00251",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/027-gdb_map_flags.py",
+      "bytes": 2835,
+      "sha256": "7f8bdeedd0df16e79c4f640bcec24f0aa78e7311caf15a3ebdf1dfa70463d41c"
+    },
+    {
+      "id": "RUST247-00252",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/028-gdb_peer_apply.py",
+      "bytes": 4560,
+      "sha256": "d4edf9eeb3e874ec38c5d84a749e0432fb8ca684fdf06bafff332fb899e285f4"
+    },
+    {
+      "id": "RUST247-00253",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/029-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "RUST247-00254",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/030-promote110-B.bin",
+      "bytes": 44,
+      "sha256": "858c5eb8c855a0ccf978574cd9c67eca7dede7e72d2d33c012b5ecb8928ca796"
+    },
+    {
+      "id": "RUST247-00255",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/031-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "RUST247-00256",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/032-B-guest106.bin",
+      "bytes": 242,
+      "sha256": "0bee9221a7efc770b9f5b57bbc504e023163e6f78552ca460edc9636dd76a252"
+    },
+    {
+      "id": "RUST247-00257",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/033-peer153-replace.bin",
+      "bytes": 135,
+      "sha256": "e6eb2fe741c021ab2c1ac82c84a42a5e4d936e0a2e8a80cb0c4cfaac326589fa"
+    },
+    {
+      "id": "RUST247-00258",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/034-rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "RUST247-00259",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/035-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "RUST247-00260",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/036-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "RUST247-00261",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/037-redirect7-loopback.bin",
+      "bytes": 52,
+      "sha256": "b514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15"
+    },
+    {
+      "id": "RUST247-00262",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/038-prepare_rust_four_life_native_r1.py",
+      "bytes": 8785,
+      "sha256": "46f78e2927db8dae66a67822fe004671261709a836cebc29a97c9368c4d68de4"
+    },
+    {
+      "id": "RUST247-00263",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/039-prepare_rust_four_native_r1.py",
+      "bytes": 13430,
+      "sha256": "d4357a865e89410f1728360e325a71995e6a2ac6262a683a3f6c9b24d3050af3"
+    },
+    {
+      "id": "RUST247-00264",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/040-prepare_rust_four_native_r3.py",
+      "bytes": 4763,
+      "sha256": "a92403451b5bf21bc40c574f842404adfc21371768d57200e7c96d0d4752f61a"
+    },
+    {
+      "id": "RUST247-00265",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/041-prepare_rust_life_native_r5.py",
+      "bytes": 13213,
+      "sha256": "08a6875de72841ea2a4310fe2b297d04a703d29437343918a5134fe16a2ac17f"
+    },
+    {
+      "id": "RUST247-00266",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/042-prepare_rust_m3_controls_r5.py",
+      "bytes": 18860,
+      "sha256": "9ff4cb4a30a899f47a4e8cfbb8f17ae45c3dcc1aed26f539fc277b7c8abb3e8f"
+    },
+    {
+      "id": "RUST247-00267",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/043-prepare_rust_return_native_r3.py",
+      "bytes": 11011,
+      "sha256": "9b8a4ce0ad382569cd6c10a3ac8859e986eee80a544212f5c2a6ed138d5b3efe"
+    },
+    {
+      "id": "RUST247-00268",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/044-prepare_rust_room_eof_native.py",
+      "bytes": 14976,
+      "sha256": "1d3e6f398a49b5b247f04ff37748bede4476dd415d04d09a9e6ea8be4b094151"
+    },
+    {
+      "id": "RUST247-00269",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/045-prepare_rust_terrain_native.py",
+      "bytes": 12847,
+      "sha256": "8f1897ad76c0e2983fff653d100924e3f14043bc7a63e5e0ad26efb7a72d419f"
+    },
+    {
+      "id": "RUST247-00270",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/046-A106-unready.bin",
+      "bytes": 242,
+      "sha256": "2dbc2c247eb94c40af6338e733c98eb18dfa833a2d48662209ce952ca9d9fec7"
+    },
+    {
+      "id": "RUST247-00271",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/047-A110-ready.bin",
+      "bytes": 44,
+      "sha256": "2b8c7ae9412c1bee0340587269b1e32af2e3c2117081bc28a331202f8f82d422"
+    },
+    {
+      "id": "RUST247-00272",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/048-A110-unready.bin",
+      "bytes": 44,
+      "sha256": "979cfad03305717aaaa203643e875d48aa1430a7d8b34ba534c7fb26668c55db"
+    },
+    {
+      "id": "RUST247-00273",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/049-B106-chief.bin",
+      "bytes": 242,
+      "sha256": "8dee2a2f58af50ebcf7487d66040c97c374683ed8726ccfe9dd13e064ebf9d86"
+    },
+    {
+      "id": "RUST247-00274",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/050-reply87-A-session1.bin",
+      "bytes": 45,
+      "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586"
+    },
+    {
+      "id": "RUST247-00275",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/051-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "RUST247-00276",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/052-join-probe.py",
+      "bytes": 1517,
+      "sha256": "aecbf6a671e6de80f93fb4151ac55e9df401c3beb57763a2575a73d7705e98af"
+    },
+    {
+      "id": "RUST247-00277",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/053-roster-probe.py",
+      "bytes": 1959,
+      "sha256": "deb0bba757d575159a0359d6e4adbc198356deeb37d88d7e841063f25828c4ff"
+    },
+    {
+      "id": "RUST247-00278",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/054-slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "RUST247-00279",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/055-reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "RUST247-00280",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/056-cleanup-probe.py",
+      "bytes": 1993,
+      "sha256": "b22a778dd03d0f3b708a8ea0fc018c71df7faf052af41951b6b961a5dc05c639"
+    },
+    {
+      "id": "RUST247-00281",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/057-list-probe.py",
+      "bytes": 1252,
+      "sha256": "8297f9cb0de08b6a990c5c9aa8ec308dce14f96f7240c47ed79ea97def7fa17d"
+    },
+    {
+      "id": "RUST247-00282",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/058-go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "RUST247-00283",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/059-reply159.bin",
+      "bytes": 77,
+      "sha256": "aafc349b2b6f518fffbac1a02df7e7c7c94a2c328fdb35d68c8fd67bb1ebef01"
+    },
+    {
+      "id": "RUST247-00284",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/060-rank175-v2.bin",
+      "bytes": 340,
+      "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd"
+    },
+    {
+      "id": "RUST247-00285",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/061-ready110-guest.bin",
+      "bytes": 44,
+      "sha256": "ad74bf8e95420203ee6b8f397b43df72fee8a977c9921ccebfa50d794b22861b"
+    },
+    {
+      "id": "RUST247-00286",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/062-run_rust_room_eof.py",
+      "bytes": 839,
+      "sha256": "584a5235c74b0f4560f07a71acdf406cf2eaba65fbc733a001cc59ac7cc33f3b"
+    },
+    {
+      "id": "RUST247-00287",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/063-A-106.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "RUST247-00288",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/064-A-auth.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "RUST247-00289",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/065-A-own291.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "RUST247-00290",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/066-B-106.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "RUST247-00291",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/067-B-auth.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "RUST247-00292",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/068-B-own291.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "RUST247-00293",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/069-C-106.bin",
+      "bytes": 238,
+      "sha256": "2dce013518feef6f752c8d232f394729253f17f09c60509296b4e59e57afc72a"
+    },
+    {
+      "id": "RUST247-00294",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/070-C-auth.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "RUST247-00295",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/071-C-own291.bin",
+      "bytes": 126,
+      "sha256": "5e4a20ae5827c99ab75343eb4cac0b8e1d3fe02085635ef7e15cb6ea1abdbd04"
+    },
+    {
+      "id": "RUST247-00296",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/072-D-106.bin",
+      "bytes": 242,
+      "sha256": "50be046ea690d70f654816db6e89a458c16985a38e254877a168f93472168183"
+    },
+    {
+      "id": "RUST247-00297",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/073-D-auth.bin",
+      "bytes": 175,
+      "sha256": "b120da778082fdff90fde5e947c2c26ff002449dcf126bc2fd7285512ca75724"
+    },
+    {
+      "id": "RUST247-00298",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/074-D-own291.bin",
+      "bytes": 128,
+      "sha256": "218a0b0880d106ae38ddd4e056e6acb602cf1e3e79705a7672b3374b012f422c"
+    },
+    {
+      "id": "RUST247-00299",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/075-config.json",
+      "bytes": 22446,
+      "sha256": "e839984d00a57ac19a8f9fdbd0b21f3d50e97ddf91dc8150bd4d28e3c719c171"
+    },
+    {
+      "id": "RUST247-00300",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/076-peer4.bin",
+      "bytes": 171,
+      "sha256": "9fbfcd39b202be6be1913d2d9c52f6d598e067982813cb374c71f9a2340aa239"
+    },
+    {
+      "id": "RUST247-00301",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/077-provenance.json",
+      "bytes": 3166,
+      "sha256": "3956712199f0bc11727d5f50a0f95f0c05da41847c7c210fd0e650169bd271f5"
+    },
+    {
+      "id": "RUST247-00302",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/078-start4.bin",
+      "bytes": 219,
+      "sha256": "bf395aea2bed32aaff8dd590887849bf400598a60e7427652a05cc5610df862d"
+    },
+    {
+      "id": "RUST247-00303",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/079-cp200-ancillary-reuse.json",
+      "bytes": 4333,
+      "sha256": "9d5da12c0ac694159fbbfcb219f7c314d23d2abd72afb0e82f66a1cfab57b1d2"
+    },
+    {
+      "id": "RUST247-00304",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/080-cp200-channel-shapes.json",
+      "bytes": 2695,
+      "sha256": "a276cddedebbd75be199314139426c2173fed2d14ef53e3746cddca13cbedb37"
+    },
+    {
+      "id": "RUST247-00305",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/081-failure-review.json",
+      "bytes": 916,
+      "sha256": "933bb778eaf8c0ddde84b36d9d61935d45c8589f39b0b8e7e131d12e4bdb4bac"
+    },
+    {
+      "id": "RUST247-00306",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/082-CA-r2-stage-social-cmp.exe",
+      "bytes": 31874560,
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "id": "RUST247-00307",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/083-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST247-00308",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/084-CA-r2-stage-social-cmp.exe",
+      "bytes": 31874560,
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "id": "RUST247-00309",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/085-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST247-00310",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/086-CA-r2-stage-social-cmp.exe",
+      "bytes": 31874560,
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "id": "RUST247-00311",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/087-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST247-00312",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/088-CA-r2-stage-social-cmp.exe",
+      "bytes": 31874560,
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "id": "RUST247-00313",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/089-nmco3.dll",
+      "bytes": 323584,
+      "sha256": "7e038696ec69db579f71e029da66f5b5500c56375ff77b24d93529ba7faf9493"
+    },
+    {
+      "id": "RUST247-00314",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/090-controller-stop-request.json",
+      "bytes": 222,
+      "sha256": "0b5c98515407f70eb191ab2abe406108f3809d87e3d85bfae1f855863e13347b"
+    },
+    {
+      "id": "RUST247-00315",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/091-failure-review.json",
+      "bytes": 813,
+      "sha256": "cbf25bacff66b9063df2dd84bbe56a00aae65d6032a80fee27e4306f538b8a5a"
+    },
+    {
+      "id": "RUST247-00316",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/092-listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "RUST247-00317",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/093-own-A.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "RUST247-00318",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/094-own-B.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "RUST247-00319",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/095-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "RUST247-00320",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/096-rust_m3_item_probe.py",
+      "bytes": 1968,
+      "sha256": "c93d128bdad3067ec581b0695d35fbe06c2ba3fc3feee80fd1ff49545e59bbce"
+    },
+    {
+      "id": "RUST247-00321",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/097-rust_native_bomb_probe.py",
+      "bytes": 2142,
+      "sha256": "5621badf8ecc591cf860dae9c7074a1a3b2dcc76dce9d388fb19c06aef90fde1"
+    },
+    {
+      "id": "RUST247-00322",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/098-rust_terrain_native_probe.py",
+      "bytes": 982,
+      "sha256": "37e502d12b7f10c7b49e07fcaf4a6ff43e1ba834efd627de2bfa2559edb8bdae"
+    },
+    {
+      "id": "RUST247-00323",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/099-player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "RUST247-00324",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/100-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "RUST247-00325",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/101-wine_probe_rust_four_startup_r1.py",
+      "bytes": 25037,
+      "sha256": "ea8db303bb9a8bc5fc6c9e10830826a0059f1a445c79d2c43927f6e7e2dc35ca"
+    },
+    {
+      "id": "RUST247-00326",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/102-wine_probe_rust_four_startup_r3.py",
+      "bytes": 25243,
+      "sha256": "3343657611976f39fb2120b87017da22431352a03403c8326609139d4ab0b758"
+    },
+    {
+      "id": "RUST247-00327",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/103-wine_probe_rust_life_r5.py",
+      "bytes": 26883,
+      "sha256": "838e4b0363df2f5d74f4ae1f97a248a04ba6f255e143835c2b8aa27f1e8f4191"
+    },
+    {
+      "id": "RUST247-00328",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/104-wine_probe_rust_m3_controls_r5.py",
+      "bytes": 34513,
+      "sha256": "80997a9dff27ba065f09851d1a7cfb1eb0c18a2b202c2a274be1f74bbb2919e0"
+    },
+    {
+      "id": "RUST247-00329",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/105-wine_probe_rust_return_r3.py",
+      "bytes": 27906,
+      "sha256": "b37257a48f07ad76133dd678844a8bcbd4f1b55ea235209123a7e043a49d380e"
+    },
+    {
+      "id": "RUST247-00330",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/106-wine_probe_rust_room_eof.py",
+      "bytes": 23522,
+      "sha256": "8350b093d4b07513f89f9d9823d5194d6ee34796d2ce251d4f107fc0cbcacc68"
+    },
+    {
+      "id": "RUST247-00331",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/107-wine_probe_rust_terrain.py",
+      "bytes": 27495,
+      "sha256": "f09396382d58f940bccc1d2cfe2e71b92bb12f3ad69a7327d29c9bc9466f1f76"
+    },
+    {
+      "id": "RUST247-00332",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/108-export_rust_profile.py",
+      "bytes": 16545,
+      "sha256": "4cc6ce0ec052735513bf25ae355b99ab5689c43ee0f11550532d6b7328635c98"
+    },
+    {
+      "id": "RUST247-00333",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/109-patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "RUST247-00334",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/110-test_rust_life.py",
+      "bytes": 17192,
+      "sha256": "e85aa5a376df93c80fd998d677854a554ad3bc78717803dea0b664655a72b623"
+    },
+    {
+      "id": "RUST247-00335",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/111-test_rust_room.py",
+      "bytes": 13739,
+      "sha256": "98be417a43d45cc612e6ea89163f6cf0b57ab821bde290ef137df752305910b4"
+    },
+    {
+      "id": "RUST247-00336",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/112-gdb_life_rank.py",
+      "bytes": 2266,
+      "sha256": "26e5206fc0077d91ff666e63a28a815cdc3d105219819d5fdf34df038abf76c2"
+    },
+    {
+      "id": "RUST247-00337",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/113-gdb_four_slot.py",
+      "bytes": 2568,
+      "sha256": "660f19021b561c53dd8aa8bd75b7b3a5458f12e2cf02055a395c958490a396bc"
+    },
+    {
+      "id": "RUST247-00338",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/114-failure-review.json",
+      "bytes": 1845,
+      "sha256": "c1caad7e5442fef54994fe2d00ca7a8965cea7a70faa26c86a0526ede7f66f85"
+    },
+    {
+      "id": "RUST247-00339",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/115-cp201-142-reuse.json",
+      "bytes": 3147,
+      "sha256": "42597aa620e5013cb486e39774c3e196ce21869021068402b8929f977bb28390"
+    },
+    {
+      "id": "RUST247-00340",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/116-cp201-167-reuse.json",
+      "bytes": 3233,
+      "sha256": "4b8abc23aee50dc1b05e0024909e4bb369bf1f2f744943210ac1cbf66bee7163"
+    },
+    {
+      "id": "RUST247-00341",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/117-reuse.json",
+      "bytes": 2269,
+      "sha256": "f85a7872f1f9d53f54eb40b5c4afe675ec446d40dc692ffc1cbbb8abdeced1d0"
+    },
+    {
+      "id": "RUST247-00342",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/118-ack-probe.py",
+      "bytes": 768,
+      "sha256": "3a91df2276c2360ffedcbd7bb3292636fab64b077cae9ac566d38e4f5157b8e2"
+    },
+    {
+      "id": "RUST247-00343",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/119-auth-probe.py",
+      "bytes": 2450,
+      "sha256": "72b8c04b481b39f02ddaaf83edb73666fbf44903f6939c9c84872a5c2dd3bd4a"
+    },
+    {
+      "id": "RUST247-00344",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/120-bomb-probe.py",
+      "bytes": 2223,
+      "sha256": "fc89f04b8c77f6c4237f5d13daa2cfca3a96ef4194fa4fa2a6a7ef16f1550a4b"
+    },
+    {
+      "id": "RUST247-00345",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/121-capture_tcp.py",
+      "bytes": 1600,
+      "sha256": "b31530a9172c621fd199334466335ff0dd5de1b3cbb61b822838ad8a1761736a"
+    },
+    {
+      "id": "RUST247-00346",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/122-capture_udp.py",
+      "bytes": 3181,
+      "sha256": "5023320e949e7b5a229ad753ff1d7b6ae56a372fba8f2262d4b5af1ad91dd868"
+    },
+    {
+      "id": "RUST247-00347",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/123-config.json",
+      "bytes": 2419,
+      "sha256": "44b5089504d86d3263a03fd9f4969a70e76fc87625aa4d0d3b0f8857a4448d5c"
+    },
+    {
+      "id": "RUST247-00348",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/124-gdb_four_slot.py",
+      "bytes": 2568,
+      "sha256": "660f19021b561c53dd8aa8bd75b7b3a5458f12e2cf02055a395c958490a396bc"
+    },
+    {
+      "id": "RUST247-00349",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/125-gdb_lite_sync.py",
+      "bytes": 624,
+      "sha256": "6e48df2e598f8d16da8db021b1e79e30707171ef7e1b3e7b6ec91ea5e85e266f"
+    },
+    {
+      "id": "RUST247-00350",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/126-gdb_live_positions.py",
+      "bytes": 1504,
+      "sha256": "231a5440bc5c1d4308446d44c4887dfb1a5cdced9896ffab7e81fe81195b04eb"
+    },
+    {
+      "id": "RUST247-00351",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/127-gdb_map_flags.py",
+      "bytes": 2835,
+      "sha256": "7f8bdeedd0df16e79c4f640bcec24f0aa78e7311caf15a3ebdf1dfa70463d41c"
+    },
+    {
+      "id": "RUST247-00352",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/128-gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "RUST247-00353",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/129-life-probe.py",
+      "bytes": 2087,
+      "sha256": "fee3ca070a057d2645abccb8b7b70715f5fb32cb76e6a4cd0935547354054a88"
+    },
+    {
+      "id": "RUST247-00354",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/130-native-config.json",
+      "bytes": 22511,
+      "sha256": "3fc4675501df624ac3b56b07e87de6c720b72afb9f414e3e9e035e372b47929e"
+    },
+    {
+      "id": "RUST247-00355",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/131-recipe.json",
+      "bytes": 1181,
+      "sha256": "45590130ec0356dd3d4875894a497c7826b311bd1595e19a1d90b2238500db64"
+    },
+    {
+      "id": "RUST247-00356",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/132-room-A.gdb",
+      "bytes": 3366,
+      "sha256": "bc83cad47ad6990d167f0e14478ed85b3d36b513bdca9d32d8db978242e731a9"
+    },
+    {
+      "id": "RUST247-00357",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/133-room-B.gdb",
+      "bytes": 3366,
+      "sha256": "e0c43076506b63ef65e8207a079328dc64269c5153627b0cbba18fd2ff892b88"
+    },
+    {
+      "id": "RUST247-00358",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/134-room-C.gdb",
+      "bytes": 3366,
+      "sha256": "526ea87378fe0aff1fa63d8b6ad0e9702f4b295ba566016927aae9df3c1dae02"
+    },
+    {
+      "id": "RUST247-00359",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/135-room-D.gdb",
+      "bytes": 3366,
+      "sha256": "64cd9e5cd70cf7b92d1973b2da526b6f905e410388fba303a71482f2e94eaadc"
+    },
+    {
+      "id": "RUST247-00360",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/136-roster-probe.py",
+      "bytes": 1959,
+      "sha256": "deb0bba757d575159a0359d6e4adbc198356deeb37d88d7e841063f25828c4ff"
+    },
+    {
+      "id": "RUST247-00361",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/137-source-reuse.json",
+      "bytes": 443,
+      "sha256": "f71e3deb129f03147e9f142a678882577aba8e44f06c65b677ff85c0343a623a"
+    },
+    {
+      "id": "RUST247-00362",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/138-topology.py",
+      "bytes": 4081,
+      "sha256": "e379c3f1d6f6fd36a2fcb4bba2aeb08c4da0abd016ec0481f4a9d46ae4a7ce4f"
+    },
+    {
+      "id": "RUST247-00363",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/139-reuse.json",
+      "bytes": 2527,
+      "sha256": "b780f7265b71e0f0520c8347acca2585579049780288b4ed26a379de79e2dc01"
+    },
+    {
+      "id": "RUST247-00364",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/140-rust_native_bomb_probe.py",
+      "bytes": 2142,
+      "sha256": "5621badf8ecc591cf860dae9c7074a1a3b2dcc76dce9d388fb19c06aef90fde1"
+    },
+    {
+      "id": "RUST247-00365",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/141-wine_probe_rust_four_life_r1.py",
+      "bytes": 27579,
+      "sha256": "3e8cb2c27b576d769faf5aba19051b59afb9ed68949edfd555790274e89585da"
+    },
+    {
+      "id": "RUST247-00366",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/142-.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST247-00367",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/143-Cargo.lock",
+      "bytes": 15941,
+      "sha256": "8a6d22da092caf4d41137c74d1062bb0a1d7efb787895648985fc4fe7068c59a"
+    },
+    {
+      "id": "RUST247-00368",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/144-Cargo.toml",
+      "bytes": 625,
+      "sha256": "c5c9e195c001a9d133374a2fcaafa1606488501409e3ae18a3e35d1a1a7330bb"
+    },
+    {
+      "id": "RUST247-00369",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/145-README.md",
+      "bytes": 20517,
+      "sha256": "3a94c8d13823ad8da9fe364bfd673df50bf7a1be6537e158040a6e5130d887b7"
+    },
+    {
+      "id": "RUST247-00370",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/146-Cargo.toml",
+      "bytes": 410,
+      "sha256": "86d4a87d409c298fc1df4187be092c8e4db7419825333448f2e652c70dc25706"
+    },
+    {
+      "id": "RUST247-00371",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/147-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "RUST247-00372",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/148-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "RUST247-00373",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/149-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "RUST247-00374",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/150-tests.rs",
+      "bytes": 17768,
+      "sha256": "95549231cbc458bc6108766894b889a27980ce12359d512208f002956c889bb6"
+    },
+    {
+      "id": "RUST247-00375",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/151-account_worker.rs",
+      "bytes": 13635,
+      "sha256": "eca3cab705f0ab0cdb9cda0929b2c324c8dd4f12683bba7d9fdf244a1ff88202"
+    },
+    {
+      "id": "RUST247-00376",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/152-tests.rs",
+      "bytes": 19933,
+      "sha256": "3de28f843cf4c14758a20cc116e2443083b04b3cfdf5e556d351394b1eb5e964"
+    },
+    {
+      "id": "RUST247-00377",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/153-accounts.rs",
+      "bytes": 25079,
+      "sha256": "963d002de5c0034fabd59b0e38b224c557fbed2ca029bf098993cc8d8a1e872f"
+    },
+    {
+      "id": "RUST247-00378",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/154-kr-admin.rs",
+      "bytes": 4426,
+      "sha256": "34d617f62c3fc3ddb37e8018c8c36eccb19d24934dfa89acd3f2959505859c4c"
+    },
+    {
+      "id": "RUST247-00379",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/155-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "RUST247-00380",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/156-bombs.rs",
+      "bytes": 14874,
+      "sha256": "8712c4c42cd1ceec044d2fe7866db30f6aa340fdb3ac52def408bc60c6bd8bfa"
+    },
+    {
+      "id": "RUST247-00381",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/157-lib.rs",
+      "bytes": 35081,
+      "sha256": "c5af868b831e9c5f31d26222ae2c947059b1fb045591ffc1af2d860d8b5c6152"
+    },
+    {
+      "id": "RUST247-00382",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/158-life.rs",
+      "bytes": 16390,
+      "sha256": "8cfd7773a6d6644222148b16786f30ca36cc3f9513ecb2ed2872b5edb5e60a01"
+    },
+    {
+      "id": "RUST247-00383",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/159-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "RUST247-00384",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/160-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "RUST247-00385",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/161-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST247-00386",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/162-pickups.rs",
+      "bytes": 14683,
+      "sha256": "0ccdf950dc8fe68d1b0a3e4a4ad9d59475693c7936865ea7431642b50bace500"
+    },
+    {
+      "id": "RUST247-00387",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/163-room.rs",
+      "bytes": 23755,
+      "sha256": "0f5338fee7512d74dd57cbb2a5628a4f9a8c8e7383200a90a2c0951ca2234194"
+    },
+    {
+      "id": "RUST247-00388",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/164-room_io.rs",
+      "bytes": 71787,
+      "sha256": "5c730b74f24195f08ee08f41b644a9f5fc61588f1442426ba258261565034949"
+    },
+    {
+      "id": "RUST247-00389",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/165-room_wire.rs",
+      "bytes": 10555,
+      "sha256": "71dff5398a49c34c114205ac9da2ea2448f695b166941c097836e8965e2c24bb"
+    },
+    {
+      "id": "RUST247-00390",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/166-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "RUST247-00391",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/167-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST247-00392",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/168-lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST247-00393",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/169-README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST247-00394",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/170-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "RUST247-00395",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/171-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST247-00396",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/frozen-inputs/172-kr-service",
+      "bytes": 43598912,
+      "sha256": "9fb52288cc8a48c24f2ca8766e098a2a6f307e5af52d4b907753f6330cf9d5d3"
+    },
+    {
+      "id": "RUST247-00397",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/gdb_four_slot.py",
+      "bytes": 2568,
+      "sha256": "660f19021b561c53dd8aa8bd75b7b3a5458f12e2cf02055a395c958490a396bc"
+    },
+    {
+      "id": "RUST247-00398",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/gdb_lite_sync.py",
+      "bytes": 624,
+      "sha256": "6e48df2e598f8d16da8db021b1e79e30707171ef7e1b3e7b6ec91ea5e85e266f"
+    },
+    {
+      "id": "RUST247-00399",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/gdb_live_positions.py",
+      "bytes": 1504,
+      "sha256": "231a5440bc5c1d4308446d44c4887dfb1a5cdced9896ffab7e81fe81195b04eb"
+    },
+    {
+      "id": "RUST247-00400",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/gdb_map_flags.py",
+      "bytes": 2835,
+      "sha256": "7f8bdeedd0df16e79c4f640bcec24f0aa78e7311caf15a3ebdf1dfa70463d41c"
+    },
+    {
+      "id": "RUST247-00401",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "RUST247-00402",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/input-retention.json",
+      "bytes": 59102,
+      "sha256": "40c089f40a90c35b214ec9d487289008055ef97d282de4a78bc9ad487a7d4042"
+    },
+    {
+      "id": "RUST247-00403",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/life-getter-verification.json",
+      "bytes": 435,
+      "sha256": "06119566d34075538fee0789ab8e4ca849b414d6744d5232f4acc5b3ec9c6385"
+    },
+    {
+      "id": "RUST247-00404",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/life-probe.py",
+      "bytes": 2087,
+      "sha256": "fee3ca070a057d2645abccb8b7b70715f5fb32cb76e6a4cd0935547354054a88"
+    },
+    {
+      "id": "RUST247-00405",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/life-verification.json",
+      "bytes": 2083807,
+      "sha256": "1e4ad0078c76f70c994c506831354afb6dfd7c218588e34d9421282f3b98aa92"
+    },
+    {
+      "id": "RUST247-00406",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-config.json",
+      "bytes": 22511,
+      "sha256": "3fc4675501df624ac3b56b07e87de6c720b72afb9f414e3e9e035e372b47929e"
+    },
+    {
+      "id": "RUST247-00407",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/CALog-before.txt",
+      "bytes": 3331,
+      "sha256": "3c5f03b0553e19ffac0e3895f90521e146a01fb87fe7003fa416ed61e823211b"
+    },
+    {
+      "id": "RUST247-00408",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/CALog-run.txt",
+      "bytes": 3134,
+      "sha256": "d4be1d4e9395a205638f1f38a219ca9878592ffa4bae7b230b85f26ddf529d8e"
+    },
+    {
+      "id": "RUST247-00409",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/all-four-ready.png",
+      "bytes": 178789,
+      "sha256": "3fc5943b145b1bf0dafc17f95ec534096046a522f6c0684e6113cdd45fd5d6a9"
+    },
+    {
+      "id": "RUST247-00410",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "95b0dd817a154cb63a4ce9e9046af77898532f924326075420e524ef99f5c0bc"
+    },
+    {
+      "id": "RUST247-00411",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/client.log",
+      "bytes": 165868,
+      "sha256": "cb93b6895bc8fce2b7ffdf1c43578895afed2b840bf7bdbcb973d848eb6b7c72"
+    },
+    {
+      "id": "RUST247-00412",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/configured-create.png",
+      "bytes": 220385,
+      "sha256": "f23c6e6b237f25769f873711214336d9ca59980a822f0faef715daa94049547d"
+    },
+    {
+      "id": "RUST247-00413",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/debug-commands.txt",
+      "bytes": 3366,
+      "sha256": "bc83cad47ad6990d167f0e14478ed85b3d36b513bdca9d32d8db978242e731a9"
+    },
+    {
+      "id": "RUST247-00414",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/four-current-movement.png",
+      "bytes": 142069,
+      "sha256": "ee37159accf6f4178fd6f360d4b10c9704c17cd89d85500d011aa9fd4ba52abf"
+    },
+    {
+      "id": "RUST247-00415",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/four-life-complete.png",
+      "bytes": 140222,
+      "sha256": "885497131e048fb65898608cae058fdbc63dff2e6c080603de7974d54ad5b41c"
+    },
+    {
+      "id": "RUST247-00416",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/fourth-ACK-withheld.png",
+      "bytes": 133711,
+      "sha256": "4ff7ebfc7dae8084caf47f169336a0402f9a054e5152333c48ed340908ceca5e"
+    },
+    {
+      "id": "RUST247-00417",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/life-A-after-death.png",
+      "bytes": 147846,
+      "sha256": "03fe7934ce1035485cde609c2fbb4fe761505789b3d590917fc199059ce54d95"
+    },
+    {
+      "id": "RUST247-00418",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/A/life-C-after-death.png",
+      "bytes": 145922,
+      "sha256": "a2a44cb6f8292a79f46cf6303543fe3b55aa5c34a089ac92b9beee08f58fa158"
+    },
+    {
+      "id": "RUST247-00419",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/CALog-before.txt",
+      "bytes": 3251,
+      "sha256": "d4b0e132947b91587cfdcff1f8d0cb9957bdf38b4301d18495b336f511d68f8d"
+    },
+    {
+      "id": "RUST247-00420",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/CALog-run.txt",
+      "bytes": 2898,
+      "sha256": "f7060fea6d92c7251f03e1d16ca90e0a8ce0e64ec4f9a8cc5bdb9ee30dd5b6af"
+    },
+    {
+      "id": "RUST247-00421",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/all-four-ready.png",
+      "bytes": 177465,
+      "sha256": "46f7a56b95c53a2b2a493faa850bc875746ec6929db488b7d03627f72702ebba"
+    },
+    {
+      "id": "RUST247-00422",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "2d466893fba7fe9e82e34c2f920acc5c1f37a3dab1d38c0c42b270d8650f30d6"
+    },
+    {
+      "id": "RUST247-00423",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/client.log",
+      "bytes": 163470,
+      "sha256": "86b3b262ad253d9644dbcb81c6829198e510d96c146110ad62935b58436d146a"
+    },
+    {
+      "id": "RUST247-00424",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/configured-create.png",
+      "bytes": 146093,
+      "sha256": "0b61df20976a238c6f746f5d6d645fa2e2d0c2167007291bdc6f881c080d8791"
+    },
+    {
+      "id": "RUST247-00425",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/debug-commands.txt",
+      "bytes": 3366,
+      "sha256": "e0c43076506b63ef65e8207a079328dc64269c5153627b0cbba18fd2ff892b88"
+    },
+    {
+      "id": "RUST247-00426",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/four-current-movement.png",
+      "bytes": 141995,
+      "sha256": "1cf61ce282337324ee4231575f74165c44d41c16dea9efb9d89e4c84e676bcdb"
+    },
+    {
+      "id": "RUST247-00427",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/four-life-complete.png",
+      "bytes": 140692,
+      "sha256": "731e35a486ee8f8b79f549348c4d79ac4c0d4cb4e973c40f716d82ef9d4e9697"
+    },
+    {
+      "id": "RUST247-00428",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/fourth-ACK-withheld.png",
+      "bytes": 133746,
+      "sha256": "f2e3131b390551ac8a2543163617f7343faa92243f7fdb7ff02671a4b10bca03"
+    },
+    {
+      "id": "RUST247-00429",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/life-A-after-death.png",
+      "bytes": 149015,
+      "sha256": "93db8188c1dd467b82c244026600e2ba00ae3aa5204f9ae7b172c8dd5b2bb385"
+    },
+    {
+      "id": "RUST247-00430",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/B/life-C-after-death.png",
+      "bytes": 144989,
+      "sha256": "af6e1b28f690b568a7324688ae00c20480dbfbe0aa1788bc10119dfb67262e19"
+    },
+    {
+      "id": "RUST247-00431",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/CALog-before.txt",
+      "bytes": 3171,
+      "sha256": "d2fc1d80e569c7e0455cfba86f6caa5831323a6388ca0cee431289125960e307"
+    },
+    {
+      "id": "RUST247-00432",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/CALog-run.txt",
+      "bytes": 2974,
+      "sha256": "2c7d613ef1a175067e57465e50ca5c51138b435890b3a8197b2aec1e7f21afa6"
+    },
+    {
+      "id": "RUST247-00433",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/all-four-ready.png",
+      "bytes": 180438,
+      "sha256": "0bdd8958c59296da851cc0c50ee1ec1f5b6b0534fe416fd80ea5651ab9daf2bc"
+    },
+    {
+      "id": "RUST247-00434",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/audio-config.json",
+      "bytes": 437,
+      "sha256": "06aae57e243867f51c98e9935eac7fd5e22ffded77397d59ec70ae3b08f5e939"
+    },
+    {
+      "id": "RUST247-00435",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/client.log",
+      "bytes": 163927,
+      "sha256": "407057fb0ce47ed8217ba426eecf080043c38024a705c535e2a8d9d5a0a1e360"
+    },
+    {
+      "id": "RUST247-00436",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/configured-create.png",
+      "bytes": 145489,
+      "sha256": "963fd21520eac8bb84d229df6ddc22479ad6799393a1de95d0ccba14614da9e0"
+    },
+    {
+      "id": "RUST247-00437",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/debug-commands.txt",
+      "bytes": 3366,
+      "sha256": "526ea87378fe0aff1fa63d8b6ad0e9702f4b295ba566016927aae9df3c1dae02"
+    },
+    {
+      "id": "RUST247-00438",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/four-current-movement.png",
+      "bytes": 142340,
+      "sha256": "b5c0df6481b1596973565687978828efbbe9ad15a3795fecb840421e4fee5557"
+    },
+    {
+      "id": "RUST247-00439",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/four-life-complete.png",
+      "bytes": 140592,
+      "sha256": "b5f6c25d263a6c3c3c2db440b4d9ce783ef73c4f1d552b0e746d783aace1b429"
+    },
+    {
+      "id": "RUST247-00440",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/fourth-ACK-withheld.png",
+      "bytes": 133965,
+      "sha256": "97e9a33737e674d047284f4384b6987673a9211cb84769504db985e00dda9a3d"
+    },
+    {
+      "id": "RUST247-00441",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/life-A-after-death.png",
+      "bytes": 146415,
+      "sha256": "332adaf804da10497ef4f02a8c4d71d4f8c845dc655cc0c67c2040aa0b00f0e1"
+    },
+    {
+      "id": "RUST247-00442",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/C/life-C-after-death.png",
+      "bytes": 143237,
+      "sha256": "bf5508f69635a8d704e715dbe60a4e861016343587772e22f68dcd77bc182e3a"
+    },
+    {
+      "id": "RUST247-00443",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/CALog-before.txt",
+      "bytes": 3130,
+      "sha256": "6fa3397814c7d22d199d4706abac68749ff171309122e88bd2b2468c5075d7eb"
+    },
+    {
+      "id": "RUST247-00444",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/CALog-run.txt",
+      "bytes": 2894,
+      "sha256": "e9fa941d7e84450641e9fc71518b880373ed8d3ec4b535b072d868a55df30739"
+    },
+    {
+      "id": "RUST247-00445",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/all-four-ready.png",
+      "bytes": 179552,
+      "sha256": "c9d6cca2f4e80373450b2d2c95f1a2410c05eb7fed38492843eee74479a83f3b"
+    },
+    {
+      "id": "RUST247-00446",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/audio-config.json",
+      "bytes": 437,
+      "sha256": "08ec68126cf6297e69eb40c475682ff61d3dbc7d0b600c67ee25a2a0790119d5"
+    },
+    {
+      "id": "RUST247-00447",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/client.log",
+      "bytes": 163196,
+      "sha256": "decc9122f4ba368f443b7656a9b9e99357e915ddeb603c6c5a3231f6335631c2"
+    },
+    {
+      "id": "RUST247-00448",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/configured-create.png",
+      "bytes": 150086,
+      "sha256": "5acc76046f258f1db7696ec842e8796c9466433765f031b3b9c1ad73196c077f"
+    },
+    {
+      "id": "RUST247-00449",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/debug-commands.txt",
+      "bytes": 3366,
+      "sha256": "64cd9e5cd70cf7b92d1973b2da526b6f905e410388fba303a71482f2e94eaadc"
+    },
+    {
+      "id": "RUST247-00450",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/four-current-movement.png",
+      "bytes": 142067,
+      "sha256": "571d0ffaf76907e2bc2fd770fe5e9a0bf4b6790075e1e13029c7780ca9f3e331"
+    },
+    {
+      "id": "RUST247-00451",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/four-life-complete.png",
+      "bytes": 140669,
+      "sha256": "e5f624abb32ee9d5438e4862cf8cf45d98c1a6ed57730cda77fb53c90fce1625"
+    },
+    {
+      "id": "RUST247-00452",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/fourth-ACK-withheld.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "RUST247-00453",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/life-A-after-death.png",
+      "bytes": 144289,
+      "sha256": "7f7bd2bbb02901db5b10a432024ab982430e3d710deb79cc1e26323e3a0f0eb9"
+    },
+    {
+      "id": "RUST247-00454",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/D/life-C-after-death.png",
+      "bytes": 140613,
+      "sha256": "71f6f0736132be3cb369e31bd94ff4a8ce6ab288c0583a0a8ea48db410ad95d7"
+    },
+    {
+      "id": "RUST247-00455",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/gate99-release",
+      "bytes": 58,
+      "sha256": "673b8cde3ea3185bea8b581710f4e46a734920ed920147f484faa5e6dec0e8f7"
+    },
+    {
+      "id": "RUST247-00456",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "RUST247-00457",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/live-A.json",
+      "bytes": 2416,
+      "sha256": "0ba2df56852b2a4c69a1e14acfbab8f3f79c29485567ddf51b8c04b0dda1110a"
+    },
+    {
+      "id": "RUST247-00458",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/live-A.jsonl",
+      "bytes": 369876,
+      "sha256": "8d85c57319ff3544eecbc6a8f174d9e105a71745de7957061d5f9aa45aef48d3"
+    },
+    {
+      "id": "RUST247-00459",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/live-B.json",
+      "bytes": 2416,
+      "sha256": "1c1a8af7ce4a2d92d0eb35c2438c36b02277516d76bd36d51fed8cd36da1f8dc"
+    },
+    {
+      "id": "RUST247-00460",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/live-B.jsonl",
+      "bytes": 372286,
+      "sha256": "d4fd408f4720ed569c8da10825619a3a7475ab087e7f4f1731055de342a2f3c6"
+    },
+    {
+      "id": "RUST247-00461",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/live-C.json",
+      "bytes": 2416,
+      "sha256": "032effe75c96d0eb040b5d2a7e82b3c0bb0c64be9840a31ed6c79cc7065d9110"
+    },
+    {
+      "id": "RUST247-00462",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/live-C.jsonl",
+      "bytes": 374706,
+      "sha256": "5ed10f044fe9b18cfe9f27e6695e38c2203d126569437d4eef707dde47476552"
+    },
+    {
+      "id": "RUST247-00463",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/live-D.json",
+      "bytes": 2416,
+      "sha256": "89f2833e7c6a3b58da57b1880513f59dd2e57225df89fa3f313aef5403064f34"
+    },
+    {
+      "id": "RUST247-00464",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/live-D.jsonl",
+      "bytes": 372294,
+      "sha256": "a7135075ce81809ec09d45e079bec1ff1fb843a7c00411addefa48aaa76c4e1d"
+    },
+    {
+      "id": "RUST247-00465",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "RUST247-00466",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/run.json",
+      "bytes": 2856078,
+      "sha256": "f6910b4a7454189754a91227500eb7f7ea3c04936d4fc0ddfb420557fbbbd3d5"
+    },
+    {
+      "id": "RUST247-00467",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/rust-events.jsonl",
+      "bytes": 81993,
+      "sha256": "e6968c0d88dc833804747caeac637c1ab6d7b620b977c6f477a2beced90d653c"
+    },
+    {
+      "id": "RUST247-00468",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST247-00469",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST247-00470",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/tcp-auth-pair.pcap",
+      "bytes": 102195,
+      "sha256": "9a79ebb6039f7bd42ac55fcd818ddc4560f842f254ba1a853968b6733bd0c03d"
+    },
+    {
+      "id": "RUST247-00471",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/tcp-capture-index.json",
+      "bytes": 265998,
+      "sha256": "0307072c2f87649f100db6a6c2be8a613f72b1f8baad62dbac94b18f3a8261d3"
+    },
+    {
+      "id": "RUST247-00472",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/udp-capture-index.json",
+      "bytes": 356722,
+      "sha256": "1a5a178d7e8d05e0b6fdfd64546953b353f6dba7d3b37ec05bf8352f931d1468"
+    },
+    {
+      "id": "RUST247-00473",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/udp-virtual.pcap",
+      "bytes": 102363,
+      "sha256": "a4e5dc2bf515e69de3602c17a0de2d3a8c861ca12bcd37824c2140c1a2c1cf39"
+    },
+    {
+      "id": "RUST247-00474",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/virtual-network.json",
+      "bytes": 44676,
+      "sha256": "23585482ee28c91f98c141c4def846b0fe854711bbda5f7785d129d5d2ffe291"
+    },
+    {
+      "id": "RUST247-00475",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/wineboot-A.log",
+      "bytes": 64346,
+      "sha256": "67f5ea896b776c70a42b54eccfa18bfc91d9e84d424b1806a68167007166832a"
+    },
+    {
+      "id": "RUST247-00476",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/wineboot-B.log",
+      "bytes": 64346,
+      "sha256": "7228878a2cc9a7fce229b3b04e8a012cc67e4eec97dd4c116e231e8516b67480"
+    },
+    {
+      "id": "RUST247-00477",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/wineboot-C.log",
+      "bytes": 64262,
+      "sha256": "0707e7d926d524c6e87c5061fa35c058190ea6832715db952bb1aecf4c4bf241"
+    },
+    {
+      "id": "RUST247-00478",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/wineboot-D.log",
+      "bytes": 64262,
+      "sha256": "cc9b1082312520c87b311cd9e78a5bd9a73f82e09178657c6472328b69c242f2"
+    },
+    {
+      "id": "RUST247-00479",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST247-00480",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "RUST247-00481",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/xvfb-C.log",
+      "bytes": 264,
+      "sha256": "18b994563c61904f959cb44346126933ebd488bf232ed5ab5e7f9fab0cd38b2c"
+    },
+    {
+      "id": "RUST247-00482",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/cycles/xvfb-D.log",
+      "bytes": 396,
+      "sha256": "23dbac212d0ee37e6c72af4571c6fe45c23e07517d20e5a9f2336c39c747b00b"
+    },
+    {
+      "id": "RUST247-00483",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/launch-exit.json",
+      "bytes": 73,
+      "sha256": "4ff7d7a04e2ce623d62cec1478049f41f92158d10d8ac788b750b85e9d368e8b"
+    },
+    {
+      "id": "RUST247-00484",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST247-00485",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/raw-seal.json",
+      "bytes": 17178,
+      "sha256": "87a9c13b08466ed8fd81d6e88df01322fa002a3a430ebb1a48a98e599c7d286a"
+    },
+    {
+      "id": "RUST247-00486",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/recipe.json",
+      "bytes": 1181,
+      "sha256": "45590130ec0356dd3d4875894a497c7826b311bd1595e19a1d90b2238500db64"
+    },
+    {
+      "id": "RUST247-00487",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/native-four/runtime-preflight.json",
+      "bytes": 39805,
+      "sha256": "9450fe12a6bdd25c8ebe7c334693740eb42dbefdbe0e2bed39bf947aac3cdae1"
+    },
+    {
+      "id": "RUST247-00488",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/room-A.gdb",
+      "bytes": 3366,
+      "sha256": "bc83cad47ad6990d167f0e14478ed85b3d36b513bdca9d32d8db978242e731a9"
+    },
+    {
+      "id": "RUST247-00489",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/room-B.gdb",
+      "bytes": 3366,
+      "sha256": "e0c43076506b63ef65e8207a079328dc64269c5153627b0cbba18fd2ff892b88"
+    },
+    {
+      "id": "RUST247-00490",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/room-C.gdb",
+      "bytes": 3366,
+      "sha256": "526ea87378fe0aff1fa63d8b6ad0e9702f4b295ba566016927aae9df3c1dae02"
+    },
+    {
+      "id": "RUST247-00491",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/room-D.gdb",
+      "bytes": 3366,
+      "sha256": "64cd9e5cd70cf7b92d1973b2da526b6f905e410388fba303a71482f2e94eaadc"
+    },
+    {
+      "id": "RUST247-00492",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/roster-probe.py",
+      "bytes": 1959,
+      "sha256": "deb0bba757d575159a0359d6e4adbc198356deeb37d88d7e841063f25828c4ff"
+    },
+    {
+      "id": "RUST247-00493",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/source-reuse.json",
+      "bytes": 443,
+      "sha256": "f71e3deb129f03147e9f142a678882577aba8e44f06c65b677ff85c0343a623a"
+    },
+    {
+      "id": "RUST247-00494",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/topology.py",
+      "bytes": 4081,
+      "sha256": "e379c3f1d6f6fd36a2fcb4bba2aeb08c4da0abd016ec0481f4a9d46ae4a7ce4f"
+    },
+    {
+      "id": "RUST247-00495",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-native-r1/ui-review.json",
+      "bytes": 780,
+      "sha256": "4f42965db7dfb04e1e8e481428562dc85cf89de2a39b696a345a0fd6e3217dea"
+    },
+    {
+      "id": "RUST247-00496",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-source-r1/reuse.json",
+      "bytes": 2527,
+      "sha256": "b780f7265b71e0f0520c8347acca2585579049780288b4ed26a379de79e2dc01"
+    },
+    {
+      "id": "RUST247-00497",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-tests-r1.txt",
+      "bytes": 7061,
+      "sha256": "695ea254ba5eaee4d60ea68a7b21b9b64ad92f918d1ef3802e7dee07ac185256"
+    },
+    {
+      "id": "RUST247-00498",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1.txt",
+      "bytes": 35,
+      "sha256": "4c890fb6448b9b942e0626b106d8da765dca5f0a69d051cab5a154ffee21d2d6"
+    },
+    {
+      "id": "RUST247-00499",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/battle-input.json",
+      "bytes": 1067,
+      "sha256": "f7314db71e18bc386a5eb3434b3b2a1bdbca8062154629890e405ad77ed1642e"
+    },
+    {
+      "id": "RUST247-00500",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/000-auth-A-final.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "RUST247-00501",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/001-auth-B-final.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "RUST247-00502",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/002-basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "RUST247-00503",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/003-result180-full.bin",
+      "bytes": 41,
+      "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0"
+    },
+    {
+      "id": "RUST247-00504",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/004-exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "RUST247-00505",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/005-exvillage121.bin",
+      "bytes": 167,
+      "sha256": "2e6319e9e5eb55a9ad6594710ec4aeaa749b6f8eee72a1e0016beb44885a90c0"
+    },
+    {
+      "id": "RUST247-00506",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/006-exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "RUST247-00507",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/007-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "RUST247-00508",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/008-rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "RUST247-00509",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/009-compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "RUST247-00510",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/010-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "RUST247-00511",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/011-B106-unready.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "RUST247-00512",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/012-reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "RUST247-00513",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/013-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RUST247-00514",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/014-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "RUST247-00515",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/015-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "RUST247-00516",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/016-peer153-replace.bin",
+      "bytes": 135,
+      "sha256": "e6eb2fe741c021ab2c1ac82c84a42a5e4d936e0a2e8a80cb0c4cfaac326589fa"
+    },
+    {
+      "id": "RUST247-00517",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/017-rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "RUST247-00518",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/018-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "RUST247-00519",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/019-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "RUST247-00520",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/020-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "RUST247-00521",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/021-reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "RUST247-00522",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/022-go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "RUST247-00523",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/023-rank175-v2.bin",
+      "bytes": 340,
+      "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd"
+    },
+    {
+      "id": "RUST247-00524",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/024-run_rust_four_life_two_regression_r1.py",
+      "bytes": 2805,
+      "sha256": "3ad6a9616e08b958b694a970236cd1c1c7833c44b1a9867675df881d2b500d90"
+    },
+    {
+      "id": "RUST247-00525",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/025-listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "RUST247-00526",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/026-own-A.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "RUST247-00527",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/027-own-B.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "RUST247-00528",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/028-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "RUST247-00529",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/029-player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "RUST247-00530",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/030-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "RUST247-00531",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/031-battle-input.json",
+      "bytes": 1067,
+      "sha256": "f7314db71e18bc386a5eb3434b3b2a1bdbca8062154629890e405ad77ed1642e"
+    },
+    {
+      "id": "RUST247-00532",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/032-terrain-input.json",
+      "bytes": 2223,
+      "sha256": "2d92d4b35c0d79baa0ba4a499aa623788a577a1138aa52e54fe9d42529af7c66"
+    },
+    {
+      "id": "RUST247-00533",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/033-config.json",
+      "bytes": 17862,
+      "sha256": "4f438e764cb9dcc26c1c579039b5464f5f2a5e72ec419f8977d2fb2bc918f75b"
+    },
+    {
+      "id": "RUST247-00534",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/034-.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST247-00535",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/035-Cargo.lock",
+      "bytes": 15941,
+      "sha256": "8a6d22da092caf4d41137c74d1062bb0a1d7efb787895648985fc4fe7068c59a"
+    },
+    {
+      "id": "RUST247-00536",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/036-Cargo.toml",
+      "bytes": 625,
+      "sha256": "c5c9e195c001a9d133374a2fcaafa1606488501409e3ae18a3e35d1a1a7330bb"
+    },
+    {
+      "id": "RUST247-00537",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/037-README.md",
+      "bytes": 20517,
+      "sha256": "3a94c8d13823ad8da9fe364bfd673df50bf7a1be6537e158040a6e5130d887b7"
+    },
+    {
+      "id": "RUST247-00538",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/038-Cargo.toml",
+      "bytes": 410,
+      "sha256": "86d4a87d409c298fc1df4187be092c8e4db7419825333448f2e652c70dc25706"
+    },
+    {
+      "id": "RUST247-00539",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/039-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "RUST247-00540",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/040-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "RUST247-00541",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/041-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "RUST247-00542",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/042-tests.rs",
+      "bytes": 17768,
+      "sha256": "95549231cbc458bc6108766894b889a27980ce12359d512208f002956c889bb6"
+    },
+    {
+      "id": "RUST247-00543",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/043-account_worker.rs",
+      "bytes": 13635,
+      "sha256": "eca3cab705f0ab0cdb9cda0929b2c324c8dd4f12683bba7d9fdf244a1ff88202"
+    },
+    {
+      "id": "RUST247-00544",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/044-tests.rs",
+      "bytes": 19933,
+      "sha256": "3de28f843cf4c14758a20cc116e2443083b04b3cfdf5e556d351394b1eb5e964"
+    },
+    {
+      "id": "RUST247-00545",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/045-accounts.rs",
+      "bytes": 25079,
+      "sha256": "963d002de5c0034fabd59b0e38b224c557fbed2ca029bf098993cc8d8a1e872f"
+    },
+    {
+      "id": "RUST247-00546",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/046-kr-admin.rs",
+      "bytes": 4426,
+      "sha256": "34d617f62c3fc3ddb37e8018c8c36eccb19d24934dfa89acd3f2959505859c4c"
+    },
+    {
+      "id": "RUST247-00547",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/047-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "RUST247-00548",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/048-bombs.rs",
+      "bytes": 14874,
+      "sha256": "8712c4c42cd1ceec044d2fe7866db30f6aa340fdb3ac52def408bc60c6bd8bfa"
+    },
+    {
+      "id": "RUST247-00549",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/049-lib.rs",
+      "bytes": 35081,
+      "sha256": "c5af868b831e9c5f31d26222ae2c947059b1fb045591ffc1af2d860d8b5c6152"
+    },
+    {
+      "id": "RUST247-00550",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/050-life.rs",
+      "bytes": 16390,
+      "sha256": "8cfd7773a6d6644222148b16786f30ca36cc3f9513ecb2ed2872b5edb5e60a01"
+    },
+    {
+      "id": "RUST247-00551",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/051-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "RUST247-00552",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/052-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "RUST247-00553",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/053-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST247-00554",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/054-pickups.rs",
+      "bytes": 14683,
+      "sha256": "0ccdf950dc8fe68d1b0a3e4a4ad9d59475693c7936865ea7431642b50bace500"
+    },
+    {
+      "id": "RUST247-00555",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/055-room.rs",
+      "bytes": 23755,
+      "sha256": "0f5338fee7512d74dd57cbb2a5628a4f9a8c8e7383200a90a2c0951ca2234194"
+    },
+    {
+      "id": "RUST247-00556",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/056-room_io.rs",
+      "bytes": 71787,
+      "sha256": "5c730b74f24195f08ee08f41b644a9f5fc61588f1442426ba258261565034949"
+    },
+    {
+      "id": "RUST247-00557",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/057-room_wire.rs",
+      "bytes": 10555,
+      "sha256": "71dff5398a49c34c114205ac9da2ea2448f695b166941c097836e8965e2c24bb"
+    },
+    {
+      "id": "RUST247-00558",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/058-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "RUST247-00559",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/059-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST247-00560",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/060-lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST247-00561",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/061-README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST247-00562",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/062-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "RUST247-00563",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/063-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST247-00564",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/064-kr-service",
+      "bytes": 43598912,
+      "sha256": "9fb52288cc8a48c24f2ca8766e098a2a6f307e5af52d4b907753f6330cf9d5d3"
+    },
+    {
+      "id": "RUST247-00565",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/065-probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "RUST247-00566",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/066-room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "RUST247-00567",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/067-test_rust_foundation.py",
+      "bytes": 9019,
+      "sha256": "c18a83590988ee659da0fea0f3e13f8a8808f2b93a373cd7936b814d8082d673"
+    },
+    {
+      "id": "RUST247-00568",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/068-test_rust_life.py",
+      "bytes": 17192,
+      "sha256": "e85aa5a376df93c80fd998d677854a554ad3bc78717803dea0b664655a72b623"
+    },
+    {
+      "id": "RUST247-00569",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/frozen-inputs/069-test_rust_room.py",
+      "bytes": 13739,
+      "sha256": "98be417a43d45cc612e6ea89163f6cf0b57ab821bde290ef137df752305910b4"
+    },
+    {
+      "id": "RUST247-00570",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/launch.txt",
+      "bytes": 61,
+      "sha256": "d8863eacb9f4d7e594aca6c6d08cffaf87a28e085b809c4bc128819a8f24a9e3"
+    },
+    {
+      "id": "RUST247-00571",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/preflight.json",
+      "bytes": 21655,
+      "sha256": "7f93f192810b1ffe2ee8201f55187ee1f96f70f645740ad4ddca87aef110dbc1"
+    },
+    {
+      "id": "RUST247-00572",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/tcp/binary-preflight.json",
+      "bytes": 163,
+      "sha256": "94bd71860285f4c39340d58d81b61a302b7ecf65cf16210268896ffe077e86c5"
+    },
+    {
+      "id": "RUST247-00573",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/tcp/config.json",
+      "bytes": 17862,
+      "sha256": "d50e8bf4a3887a8c0555eafaa197721f35667cf6cc0124fd80278863a52963d6"
+    },
+    {
+      "id": "RUST247-00574",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/tcp/pid-observations.json",
+      "bytes": 23213,
+      "sha256": "d894865ef408c6f574fb29f0cf6ea0d0ee98f9822171e88ef1193b65a1206c5a"
+    },
+    {
+      "id": "RUST247-00575",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/tcp/process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST247-00576",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/tcp/service/rust-events.jsonl",
+      "bytes": 53120,
+      "sha256": "44a67ff121197228730fda86390f4e0f925fb43cf9b27dd72420593184d38ade"
+    },
+    {
+      "id": "RUST247-00577",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/tcp/service/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST247-00578",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/tcp/verification.json",
+      "bytes": 6642,
+      "sha256": "8498679f785ea409900f9fb629fd300d6e1135a61641962b2a9646365fbcd45f"
+    },
+    {
+      "id": "RUST247-00579",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/terrain-input.json",
+      "bytes": 2223,
+      "sha256": "2d92d4b35c0d79baa0ba4a499aa623788a577a1138aa52e54fe9d42529af7c66"
+    },
+    {
+      "id": "RUST247-00580",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/timing-limit.json",
+      "bytes": 290,
+      "sha256": "66294a8cef41f4fb89736fed8832ff7b89201c0fef8162387b91ec88ce3a03d1"
+    },
+    {
+      "id": "RUST247-00581",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r1/verification.json",
+      "bytes": 23180,
+      "sha256": "6327b48964e1d4bc6c37529e57dfab2d15c6e437382fab8fdcd8a1a715c5fa21"
+    },
+    {
+      "id": "RUST247-00582",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2.txt",
+      "bytes": 35,
+      "sha256": "4c890fb6448b9b942e0626b106d8da765dca5f0a69d051cab5a154ffee21d2d6"
+    },
+    {
+      "id": "RUST247-00583",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/battle-input.json",
+      "bytes": 1067,
+      "sha256": "f7314db71e18bc386a5eb3434b3b2a1bdbca8062154629890e405ad77ed1642e"
+    },
+    {
+      "id": "RUST247-00584",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/000-auth-A-final.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "RUST247-00585",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/001-auth-B-final.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "RUST247-00586",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/002-basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "RUST247-00587",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/003-result180-full.bin",
+      "bytes": 41,
+      "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0"
+    },
+    {
+      "id": "RUST247-00588",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/004-exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "RUST247-00589",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/005-exvillage121.bin",
+      "bytes": 167,
+      "sha256": "2e6319e9e5eb55a9ad6594710ec4aeaa749b6f8eee72a1e0016beb44885a90c0"
+    },
+    {
+      "id": "RUST247-00590",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/006-exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "RUST247-00591",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/007-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "RUST247-00592",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/008-rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "RUST247-00593",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/009-compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "RUST247-00594",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/010-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "RUST247-00595",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/011-B106-unready.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "RUST247-00596",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/012-reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "RUST247-00597",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/013-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "RUST247-00598",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/014-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "RUST247-00599",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/015-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "RUST247-00600",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/016-peer153-replace.bin",
+      "bytes": 135,
+      "sha256": "e6eb2fe741c021ab2c1ac82c84a42a5e4d936e0a2e8a80cb0c4cfaac326589fa"
+    },
+    {
+      "id": "RUST247-00601",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/017-rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "RUST247-00602",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/018-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "RUST247-00603",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/019-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "RUST247-00604",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/020-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "RUST247-00605",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/021-reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "RUST247-00606",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/022-go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "RUST247-00607",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/023-rank175-v2.bin",
+      "bytes": 340,
+      "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd"
+    },
+    {
+      "id": "RUST247-00608",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/024-run_rust_four_life_two_regression_r2.py",
+      "bytes": 2805,
+      "sha256": "3e08d8156f48a437f2c7c5a843ced15e63f124dde8da16d63826783649b1d2a9"
+    },
+    {
+      "id": "RUST247-00609",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/025-listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "RUST247-00610",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/026-own-A.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "RUST247-00611",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/027-own-B.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "RUST247-00612",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/028-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "RUST247-00613",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/029-player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "RUST247-00614",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/030-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "RUST247-00615",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/031-battle-input.json",
+      "bytes": 1067,
+      "sha256": "f7314db71e18bc386a5eb3434b3b2a1bdbca8062154629890e405ad77ed1642e"
+    },
+    {
+      "id": "RUST247-00616",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/032-terrain-input.json",
+      "bytes": 2223,
+      "sha256": "2d92d4b35c0d79baa0ba4a499aa623788a577a1138aa52e54fe9d42529af7c66"
+    },
+    {
+      "id": "RUST247-00617",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/033-config.json",
+      "bytes": 17862,
+      "sha256": "4f438e764cb9dcc26c1c579039b5464f5f2a5e72ec419f8977d2fb2bc918f75b"
+    },
+    {
+      "id": "RUST247-00618",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/034-.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "RUST247-00619",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/035-Cargo.lock",
+      "bytes": 15941,
+      "sha256": "8a6d22da092caf4d41137c74d1062bb0a1d7efb787895648985fc4fe7068c59a"
+    },
+    {
+      "id": "RUST247-00620",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/036-Cargo.toml",
+      "bytes": 625,
+      "sha256": "c5c9e195c001a9d133374a2fcaafa1606488501409e3ae18a3e35d1a1a7330bb"
+    },
+    {
+      "id": "RUST247-00621",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/037-README.md",
+      "bytes": 20517,
+      "sha256": "3a94c8d13823ad8da9fe364bfd673df50bf7a1be6537e158040a6e5130d887b7"
+    },
+    {
+      "id": "RUST247-00622",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/038-Cargo.toml",
+      "bytes": 410,
+      "sha256": "86d4a87d409c298fc1df4187be092c8e4db7419825333448f2e652c70dc25706"
+    },
+    {
+      "id": "RUST247-00623",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/039-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "RUST247-00624",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/040-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "RUST247-00625",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/041-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "RUST247-00626",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/042-tests.rs",
+      "bytes": 17768,
+      "sha256": "95549231cbc458bc6108766894b889a27980ce12359d512208f002956c889bb6"
+    },
+    {
+      "id": "RUST247-00627",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/043-account_worker.rs",
+      "bytes": 13635,
+      "sha256": "eca3cab705f0ab0cdb9cda0929b2c324c8dd4f12683bba7d9fdf244a1ff88202"
+    },
+    {
+      "id": "RUST247-00628",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/044-tests.rs",
+      "bytes": 19933,
+      "sha256": "3de28f843cf4c14758a20cc116e2443083b04b3cfdf5e556d351394b1eb5e964"
+    },
+    {
+      "id": "RUST247-00629",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/045-accounts.rs",
+      "bytes": 25079,
+      "sha256": "963d002de5c0034fabd59b0e38b224c557fbed2ca029bf098993cc8d8a1e872f"
+    },
+    {
+      "id": "RUST247-00630",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/046-kr-admin.rs",
+      "bytes": 4426,
+      "sha256": "34d617f62c3fc3ddb37e8018c8c36eccb19d24934dfa89acd3f2959505859c4c"
+    },
+    {
+      "id": "RUST247-00631",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/047-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "RUST247-00632",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/048-bombs.rs",
+      "bytes": 14874,
+      "sha256": "8712c4c42cd1ceec044d2fe7866db30f6aa340fdb3ac52def408bc60c6bd8bfa"
+    },
+    {
+      "id": "RUST247-00633",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/049-lib.rs",
+      "bytes": 35081,
+      "sha256": "c5af868b831e9c5f31d26222ae2c947059b1fb045591ffc1af2d860d8b5c6152"
+    },
+    {
+      "id": "RUST247-00634",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/050-life.rs",
+      "bytes": 16390,
+      "sha256": "8cfd7773a6d6644222148b16786f30ca36cc3f9513ecb2ed2872b5edb5e60a01"
+    },
+    {
+      "id": "RUST247-00635",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/051-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "RUST247-00636",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/052-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "RUST247-00637",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/053-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "RUST247-00638",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/054-pickups.rs",
+      "bytes": 14683,
+      "sha256": "0ccdf950dc8fe68d1b0a3e4a4ad9d59475693c7936865ea7431642b50bace500"
+    },
+    {
+      "id": "RUST247-00639",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/055-room.rs",
+      "bytes": 23755,
+      "sha256": "0f5338fee7512d74dd57cbb2a5628a4f9a8c8e7383200a90a2c0951ca2234194"
+    },
+    {
+      "id": "RUST247-00640",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/056-room_io.rs",
+      "bytes": 71787,
+      "sha256": "5c730b74f24195f08ee08f41b644a9f5fc61588f1442426ba258261565034949"
+    },
+    {
+      "id": "RUST247-00641",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/057-room_wire.rs",
+      "bytes": 10555,
+      "sha256": "71dff5398a49c34c114205ac9da2ea2448f695b166941c097836e8965e2c24bb"
+    },
+    {
+      "id": "RUST247-00642",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/058-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "RUST247-00643",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/059-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "RUST247-00644",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/060-lib.rs",
+      "bytes": 5824,
+      "sha256": "2e67ade63a1c4956af36ffc9018cdccdb4b5cd810bfd27059819c81d9d2a62fa"
+    },
+    {
+      "id": "RUST247-00645",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/061-README.md",
+      "bytes": 692,
+      "sha256": "a3c8ea7b67bcf82f4cd773ba18dec87c895e3e4c6b0e5b604ba67dbd6c85cda3"
+    },
+    {
+      "id": "RUST247-00646",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/062-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "RUST247-00647",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/063-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "RUST247-00648",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/064-kr-service",
+      "bytes": 43598912,
+      "sha256": "9fb52288cc8a48c24f2ca8766e098a2a6f307e5af52d4b907753f6330cf9d5d3"
+    },
+    {
+      "id": "RUST247-00649",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/065-probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "RUST247-00650",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/066-room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "RUST247-00651",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/067-test_rust_foundation.py",
+      "bytes": 9019,
+      "sha256": "c18a83590988ee659da0fea0f3e13f8a8808f2b93a373cd7936b814d8082d673"
+    },
+    {
+      "id": "RUST247-00652",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/068-test_rust_life.py",
+      "bytes": 17192,
+      "sha256": "e85aa5a376df93c80fd998d677854a554ad3bc78717803dea0b664655a72b623"
+    },
+    {
+      "id": "RUST247-00653",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/frozen-inputs/069-test_rust_room.py",
+      "bytes": 13739,
+      "sha256": "98be417a43d45cc612e6ea89163f6cf0b57ab821bde290ef137df752305910b4"
+    },
+    {
+      "id": "RUST247-00654",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/launch.txt",
+      "bytes": 61,
+      "sha256": "d8863eacb9f4d7e594aca6c6d08cffaf87a28e085b809c4bc128819a8f24a9e3"
+    },
+    {
+      "id": "RUST247-00655",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/preflight.json",
+      "bytes": 21655,
+      "sha256": "01fa4115f1a4cac67dc243089c2a4a704ee345b88a2a809db6673e349dde1757"
+    },
+    {
+      "id": "RUST247-00656",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/tcp/binary-preflight.json",
+      "bytes": 163,
+      "sha256": "94bd71860285f4c39340d58d81b61a302b7ecf65cf16210268896ffe077e86c5"
+    },
+    {
+      "id": "RUST247-00657",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/tcp/config.json",
+      "bytes": 17862,
+      "sha256": "b2cd69c976a4ef93bc1f8a0fd799a2625e8f9c80ffac640989a6ae9c026514b3"
+    },
+    {
+      "id": "RUST247-00658",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/tcp/pid-observations.json",
+      "bytes": 23212,
+      "sha256": "251da102b28f898d053b7125776c670f44f83b34f4d6afb37b833c074f83ceed"
+    },
+    {
+      "id": "RUST247-00659",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/tcp/process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST247-00660",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/tcp/service/rust-events.jsonl",
+      "bytes": 53120,
+      "sha256": "ef695f12a5177c6b9e53b5e4d9ebac75d473c80040887b30a17f33279f2b734a"
+    },
+    {
+      "id": "RUST247-00661",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/tcp/service/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "RUST247-00662",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/tcp/verification.json",
+      "bytes": 6642,
+      "sha256": "c9fd3eb09eea4bf15c39a88375176da17f567b1f18ba855597080280fadbdc92"
+    },
+    {
+      "id": "RUST247-00663",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/terrain-input.json",
+      "bytes": 2223,
+      "sha256": "2d92d4b35c0d79baa0ba4a499aa623788a577a1138aa52e54fe9d42529af7c66"
+    },
+    {
+      "id": "RUST247-00664",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-life-two-regression-r2/verification.json",
+      "bytes": 23180,
+      "sha256": "e5c397e0502021390c44fa891e8fdf5fe66fd0f41e463cecd5a7068b39e5ec05"
+    },
+    {
+      "id": "RUST247-00665",
+      "kind": "local",
+      "path": "local/research/codex/update_cp247_docs.py",
+      "bytes": 15474,
+      "sha256": "a77e50d4a24768bd834d26b004eca74ffd0511f0405840d99136deafc261bec0"
+    },
+    {
+      "id": "RUST247-00666",
+      "kind": "local",
+      "path": "local/research/codex/update_issues_cp247.py",
+      "bytes": 5644,
+      "sha256": "8882042c436b1b3a49a61320be6a97bace252968bd9c77a7a81df7ee4be8a281"
+    },
+    {
+      "id": "RUST247-00667",
+      "kind": "local",
+      "path": "local/research/codex/verify_rust_four_life.py",
+      "bytes": 5103,
+      "sha256": "8b5734d577a9c970b9d6a5007613e878c0000e70f39f28bc10dad6cddd5c2a6b"
+    },
+    {
+      "id": "RUST247-00668",
+      "kind": "local",
+      "path": "local/research/codex/verify_rust_four_life_before_cleanup_review.py",
+      "bytes": 4666,
+      "sha256": "ce42cf620f73348044686872009df5dfad1ab77a3219fd1c77788f3c9c127e9f"
+    },
+    {
+      "id": "RUST247-00669",
+      "kind": "local",
+      "path": "local/research/codex/verify_rust_four_life_getters.py",
+      "bytes": 1231,
+      "sha256": "ce37f0e5c3bd8a3155b5341cf6f8d091b82968eb18aa2b06dbd410d8881e0d58"
+    },
+    {
+      "id": "RUST247-00670",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_rust_four_life_r1.py",
+      "bytes": 27579,
+      "sha256": "3e8cb2c27b576d769faf5aba19051b59afb9ed68949edfd555790274e89585da"
+    }
+  ]
+}
