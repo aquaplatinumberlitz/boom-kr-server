@@ -74,20 +74,22 @@ impl Flow {
                 Stage::Lobby,
                 vec!["ready", "roomlist_A", "channel_list", "own291"],
             ),
-            _ if matches!(
-                (opcode, body.len()),
-                (60, 20)
-                    | (15, 31)
-                    | (744, 4)
-                    | (745, 0)
-                    | (40, 1)
-                    | (544, 10)
-                    | (549, 3)
-                    | (567, 0)
-                    | (742, 0)
-                    | (741, 0)
-                    | (715, 0)
-            ) =>
+            // CP200/245: known name5 profile emits opaque544/8; name7
+            // profiles emit544/10. Size policy only, no field/ACK semantics.
+            _ if (opcode == 544 && body.len() == 3 + self.name.len())
+                || matches!(
+                    (opcode, body.len()),
+                    (60, 20)
+                        | (15, 31)
+                        | (744, 4)
+                        | (745, 0)
+                        | (40, 1)
+                        | (549, 3)
+                        | (567, 0)
+                        | (742, 0)
+                        | (741, 0)
+                        | (715, 0)
+                ) =>
             {
                 self.ignored += 1;
                 if self.ignored > 256 {
@@ -127,6 +129,30 @@ pub(crate) fn decode_bytes(mut encoded: &[u8]) -> io::Result<Vec<u8>> {
 mod tests {
     use super::*;
     use kr_wire::write_uint;
+    #[test]
+    fn ancillary544_has_known_name_profile_size_and_never_advances_stage() {
+        for (identity, name) in [
+            (1, b"KRLocal".as_slice()),
+            (2, b"KRGuest".as_slice()),
+            (3, b"KRNew".as_slice()),
+            (4, b"KRPeer4".as_slice()),
+        ] {
+            let mut flow = Flow::for_identity(true, identity, name);
+            flow.stage = Stage::Ready;
+            let len = 3 + name.len();
+            assert!(flow.packet(544, &vec![0; len]).unwrap().is_empty());
+            assert_eq!(flow.stage, Stage::Ready);
+            assert!(
+                flow.packet(544, &vec![0; if len == 8 { 10 } else { 8 }])
+                    .is_err()
+            );
+            assert_eq!(flow.stage, Stage::Ready);
+            flow.packet(67, &[0; 2]).unwrap();
+            assert_eq!(flow.stage, Stage::Lobby);
+            assert!(flow.packet(544, &vec![0; len]).unwrap().is_empty());
+            assert_eq!(flow.stage, Stage::Lobby);
+        }
+    }
     #[test]
     fn wrong_stage_never_advances_and_duplicate_login_is_not_accepted() {
         let mut flow = Flow::login();

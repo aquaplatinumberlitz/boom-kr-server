@@ -252,3 +252,10 @@ Từ CP244, `test_rust_account_worker.py` chạy7worker cases/7schema2DBs; mô t
 `test_rust_idle_migration.py --binary <kr-admin> --baseline <sealed-CP243-worker-root> --out <new-private-dir>`
 chỉ nâng5DB copies/mở10CLIprocess, so mọi oldbusinessrows/0001checksum/oldidleNULL/schema2. Không sửa baseline,
 không backup/restore production hoặc nativeKR auth proof.
+
+
+`export_rust_profile.py --four-startup-derived-dir <new-local-dir> --four-startup-peer-c <private-IP>
+--four-startup-peer-d <private-IP>` mở rộng existing two-lobby/fixed-room inputs thành diagnostic4startup.
+[Cách dùng/giới hạn](../rust/README.md#bốn-client-startup--cp245), [contract](../docs/PROTOCOL.md#rust-four-startup).
+`test_rust_four_room.py --binary <kr-service> --config <four-config> --out <new-local-dir>` giữ7TCPcases,
+preflight/frozen source-binary-fixtures/rawhashes/processcleanup; không thay native acceptance hoặc sinh oracle.

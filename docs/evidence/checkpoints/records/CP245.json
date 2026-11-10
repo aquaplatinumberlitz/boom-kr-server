@@ -1,0 +1,314 @@
+{
+  "id": "CP245",
+  "previous": "CP244",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T08:15:58.029482+00:00",
+  "context_commit": "e601ca75eb709aa06f576ee8200bee77cfcd4110",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M4/KRE-074: port measured four-startup contract to Rust with native4 identity-room-loading/currentmovement acceptance and preserve2 regression/WIP; deliver subset before fourBattle.",
+  "scope": "Bounded4actors/names5-7/ancillary544sizes/ownslots/alternating2v2-Manner1/121fourrows/99fourACKbarrier/153fourendpoints/12currentremoteprogress; startup-onlyguards,58tests/7fourTCP/51twoTCP; failuresretained/M4partial.",
+  "artifacts": [
+    {
+      "name": "Rustkr-serviceLinux-nativeR3-fourstartup",
+      "sha256": "bab87fed37752efcca68ac3553a250c87a7eb0f567189eea3351d1e182e7a382"
+    },
+    {
+      "name": "CA-r2-stage-social-cmp.exe-ABIcorrectedcopy-no-newpatch",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/lib.rs/load_config-load_lobby/known2or4name5-7",
+    "rust/crates/kr-service/src/lobby.rs/Flow.packet/opaque5448-10-sizepolicy-stagebudget",
+    "rust/crates/kr-service/src/room.rs/with_capacity-begin-ack/4Ready-ACK-currentepoch",
+    "rust/crates/kr-service/src/room_io.rs/load-Sessions/4roster-subject-guard-each106/startup-only-Battle-config-118124142-reject",
+    "rust/crates/kr-service/src/room_wire.rs/player-peer/known200-204/133peeractual99",
+    "tools/export_rust_profile.py/expand_four_startup/inputgenerationnotoracle/committedPythonbuilder",
+    "CP200-207source-reuse/CP244PR315e601ca7merged/AUD070next248"
+  ],
+  "findings": [
+    {
+      "summary": "Four KR Wine nativeauth/profile291/106 namesIDs1-4/slots0-3 parsedfull/errors0;Manner1 actual81-86/87/fixedalternating2v2. Four121181outer152inner/peer153133fullcursor;read-only D99held≥3s first3ACKnoGO, fourthactual99→197196153/clockspawn/all4UI.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-startup",
+      "evidence": [
+        "RUST245-00767",
+        "RUST245-01030",
+        "RUST245-01018"
+      ],
+      "limits": "Winecopy4b/privateLAN/sharedkernel/diagnosticIPidentity/Manner1fixed2v2/startup-only; nofourBattle/results-reset/EOF/8/accountauth/fullM4. UDP6Aedges not12Ethernetcaptures, readonlycoordinates no new key/applyprobes; getteremulation separate. Publicexporter enhancedpostseal/retainedpre-runbytes verified. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Four boundedOSinputs A-B-Cright/Ddown yield12directedremote currentcoordinateprogress+4self,7128copied52A350getterchecks separately.16TCP/698records/112replyfulltuple-C2Sseq-CRC-SHA joins;kv-a741UDPobservations covers6Aedgesonly,no12Ethernet/keyapply-probes claim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-startup",
+      "evidence": [
+        "RUST245-00767",
+        "RUST245-01022"
+      ],
+      "limits": "Winecopy4b/privateLAN/sharedkernel/diagnosticIPidentity/Manner1fixed2v2/startup-only; nofourBattle/results-reset/EOF/8/accountauth/fullM4. UDP6Aedges not12Ethernetcaptures, readonlycoordinates no new key/applyprobes; getteremulation separate. Publicexporter enhancedpostseal/retainedpre-runbytes verified. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R1Cname5actual6/41→5448rejectedold10whitelist; CP200raw crosscheck only544size differs/67still2/15still31. Fixed knownname8-10opaque/noACK/stage-budget unchanged/testnegative. R2wrongReady-Startcoords no95/104/99, ownedSIGINT130finallycleanup; R3knownCP200605526.146native raw/retainedinputs verified/failuresimmutable/notfreshprefix.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-startup",
+      "evidence": [
+        "RUST245-00141",
+        "RUST245-00140",
+        "RUST245-00514",
+        "RUST245-00027"
+      ],
+      "limits": "Winecopy4b/privateLAN/sharedkernel/diagnosticIPidentity/Manner1fixed2v2/startup-only; nofourBattle/results-reset/EOF/8/accountauth/fullM4. UDP6Aedges not12Ethernetcaptures, readonlycoordinates no new key/applyprobes; getteremulation separate. Publicexporter enhancedpostseal/retainedpre-runbytes verified. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Rustbounded4per106subjectguard/endpoints/known5-7projection/startup-onlyrejectfourBattle-terrain-118124142.58workspace/7fourTCPpublicexportoutput/51twoTCPsamefinalbinary. CP200-207measuredmainbaseline reused notWIP. PublicexporterpostsealR3 nativeprivatepreparer/oldsource retainedhash exact;generatedinputs notoracle.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-startup",
+      "evidence": [
+        "RUST245-00042",
+        "RUST245-01111",
+        "RUST245-01139",
+        "RUST245-01146",
+        "RUST245-00950"
+      ],
+      "limits": "Winecopy4b/privateLAN/sharedkernel/diagnosticIPidentity/Manner1fixed2v2/startup-only; nofourBattle/results-reset/EOF/8/accountauth/fullM4. UDP6Aedges not12Ethernetcaptures, readonlycoordinates no new key/applyprobes; getteremulation separate. Publicexporter enhancedpostseal/retainedpre-runbytes verified. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Two-regressionR1unexpectedEOF/cleanupdeadline withDstateBtrfsobserved atcleanup,notcausalEOFdiagnosis;R2sameoldbinary/R3finalbinary51pass aftercopyfinished/outside-runflush,no deadlineincrease/fixclaim. CP244PR315mergedbackendStore-worker-idle-ratepresent/M5nativebridgepartial.8WIPexact/records-auditsimmutable/AUD070through244-next248/M4partial/no gateclose.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-startup",
+      "evidence": [
+        "RUST245-01118",
+        "RUST245-01119",
+        "RUST245-00027",
+        "RUST245-00030"
+      ],
+      "limits": "Winecopy4b/privateLAN/sharedkernel/diagnosticIPidentity/Manner1fixed2v2/startup-only; nofourBattle/results-reset/EOF/8/accountauth/fullM4. UDP6Aedges not12Ethernetcaptures, readonlycoordinates no new key/applyprobes; getteremulation separate. Publicexporter enhancedpostseal/retainedpre-runbytes verified. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "NativeR3fourstartup-room-loading-currentmovement",
+      "result": "pass",
+      "evidence": [
+        "RUST245-00767",
+        "RUST245-01030",
+        "RUST245-01018"
+      ],
+      "limits": "Winecopy4b/privateLAN/sharedkernel/diagnosticIPidentity/Manner1fixed2v2/startup-only; nofourBattle/results-reset/EOF/8/accountauth/fullM4. UDP6Aedges not12Ethernetcaptures, readonlycoordinates no new key/applyprobes; getteremulation separate. Publicexporter enhancedpostseal/retainedpre-runbytes verified. Internet thật chưa kiểm."
+    },
+    {
+      "check": "Copied-native-getters-separateUnicorn",
+      "result": "pass",
+      "evidence": [
+        "RUST245-01022"
+      ],
+      "limits": "7128readonlysnapshots/counterreset;notWinewholebinary/API-key-applycallproof."
+    },
+    {
+      "check": "58Rusttests/fmt-clippy-lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST245-00006",
+        "RUST245-00004",
+        "RUST245-00019",
+        "RUST245-00002"
+      ],
+      "limits": "53service+5wire, nativeR3samebinaryhash."
+    },
+    {
+      "check": "7fourpublicexportTCP/51twoTCPfinalbinary",
+      "result": "pass",
+      "evidence": [
+        "RUST245-01111",
+        "RUST245-01139"
+      ],
+      "limits": "SyntheticTCP/generatornotoracle/nativeR3privatepreparer."
+    },
+    {
+      "check": "NativeR1ancillarysize/R2controller failuresretained",
+      "result": "fail",
+      "evidence": [
+        "RUST245-00141",
+        "RUST245-00514"
+      ],
+      "limits": "R1fixknown544size/R2controlled130cleanup/correctknowncoordinatesbeforeR3;allrawretained."
+    },
+    {
+      "check": "TwoTCPR1unexpectedEOF-cleanupdeadline",
+      "result": "fail",
+      "evidence": [
+        "RUST245-01118",
+        "RUST245-01119"
+      ],
+      "limits": "Dstateobservedcleanup/notcausalproof/R2-R3pass/no deadlineincrease."
+    },
+    {
+      "check": "Manualdocs-catalog-issues-WIP-seals-retainedinputs",
+      "result": "pass",
+      "evidence": [
+        "RUST245-00027",
+        "RUST245-00005"
+      ],
+      "limits": "Codexselfcheck/reviewwaived;no gateautoacceptance/auditcounterreset."
+    },
+    {
+      "check": "FourBattle-life-rank4-results-reset-EOF-eight/nativeKRaccountbridge",
+      "result": "not_run",
+      "evidence": [
+        "RUST245-00030"
+      ],
+      "limits": "Winecopy4b/privateLAN/sharedkernel/diagnosticIPidentity/Manner1fixed2v2/startup-only; nofourBattle/results-reset/EOF/8/accountauth/fullM4. UDP6Aedges not12Ethernetcaptures, readonlycoordinates no new key/applyprobes; getteremulation separate. Publicexporter enhancedpostseal/retainedpre-runbytes verified. Internet thật chưa kiểm."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP245-rust-four-startup.json",
+      "bytes": 308148,
+      "sha256": "d3f5c81c183aa54badb65afb3e25c65345f1b8b3322b4f7270d73415160f5497",
+      "count": 1150
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rustfourstartup-room-loading-currentprogress12/nativeManner1/fixed2v2/58tests/7fourTCP/51twoTCP.",
+      "Publicfourstartupexporter/pinnedinputs/provenance/generationnotoracle."
+    ],
+    "corrected": [
+      "KnownCname5opaque5448whitelist/size-onlypolicy;eachpeer106subjectfence.",
+      "NativeR3mode explicitlyManner1 ratherthanoldFree0assumption;retainedpre-runexporter verification."
+    ],
+    "superseded": [
+      "Rustfourstartup entirelymissing; now deliveredsubset, M4fourBattle/eightstillpending."
+    ]
+  },
+  "blockers": [
+    "Diagnosticoperator-IPidentity; notaccountauthentication or generalroom/capacity8.",
+    "Read-only coordinates before/after normalOSinputs, no new key/E668AD apply-call probes; hosttimes notgameticks.",
+    "No fourBattle/bombs/results/reset/Start2/hostguestEOF/fullM4/production; twoM3baseline separate.",
+    "Wine4bcopy/privatevirtualLAN/sharedkernel/no externalroute; Internet thật chưa kiểm.",
+    "UDP capture kv-a chỉ sáu cạnh A; 12 directed current progress từ native coordinates, không 12 Ethernet captures hoặc key/apply-call probes mới.",
+    "R3 tái dùng prefix/game private R1 sau cleanup, không cold prefix/fresh installation; copy ABI sửa từ CP187/200, không patch mới.",
+    "Public exporter thêm sau seal R3: kernel7 dùng output public; native R3 dùng private preparer. Retained old exporter exact bytes được kiểm, không thay raw/preflight bằng current source.",
+    "R1 ancillary544/8 bị từ chối; R2 controller Ready/Start sai tọa độ, intentional130/cleanup; giữ failures. Two-regressionR1 EOF/shutdown có D-state Btrfs lúc cleanup, không chứng minh nguyên nhân EOF hoặc đã fix I/O."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANfour-ownerbomb/per-rolecapacity-power-fuse→170three-recipients/rank4opposite2v2-resetStart3→hostguestabortEOF→eight; reuseCP201-207/no duplicate startup. M5bridge separately/no broadSDKRE. Auditnext248.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T08:15:58.029482+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualnative4startup/runtime/raw/cursor/coordinates/UI/source/negative selfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/four-startup.json",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP245fourstartupnative/M4partial/fourBattle-next/M5backendpresent-bridgepartial/AUD070next248/historykept."
+    }
+  ]
+}

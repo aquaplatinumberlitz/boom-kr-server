@@ -105,6 +105,15 @@ pub struct Session {
 fn err(s: &str) -> io::Error {
     io::Error::other(s.to_owned())
 }
+fn player_alias(id: u32) -> io::Result<&'static str> {
+    match id {
+        1 => Ok("player_A"),
+        2 => Ok("player_B"),
+        3 => Ok("player_C"),
+        4 => Ok("player_D"),
+        _ => Err(err("unsupported diagnostic player identity")),
+    }
+}
 pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Result<Shared> {
     if cfg.title.is_empty()
         || cfg.title.len() > 32
@@ -112,20 +121,38 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
     {
         return Err(err("fixed room title must be bounded ASCII"));
     }
-    let expected = [
+    let count = actors.len();
+    if !matches!(count, 2 | 4)
+        || actors
+            .values()
+            .any(|a| a.identity == 0 || a.identity as usize > count)
+    {
+        return Err(err("unsupported diagnostic roster"));
+    }
+    // Four profile first covers startup/room/loading. Reject unported terrain and
+    // result policies before binding rather than silently selecting two-player ranks.
+    if count == 4 && (cfg.battle.is_some() || cfg.terrain.is_some()) {
+        return Err(err("four-player Battle/terrain policy not ported"));
+    }
+    let mut expected = vec![
         ("create", 86, 11),
         ("join", 87, 7),
-        ("player_A", 106, 204),
-        ("player_B", 106, 204),
         ("listing", 91, 0),
         ("table", 238, 72),
         ("map", 117, 8),
         ("floor", 582, 46),
-        ("start", 121, 129),
+        ("start", 121, 129 + 26 * (count - 2)),
         ("go", 197, 14),
         ("play", 196, 7),
-        ("peer", 153, 97),
+        ("peer", 153, 61 + 18 * count),
     ];
+    for actor in actors.values() {
+        expected.push((
+            player_alias(actor.identity)?,
+            106,
+            190 + 2 * actor.name.len(),
+        ));
+    }
     if cfg.packets.len() != expected.len() {
         return Err(err("fixed room packet set mismatch"));
     }
@@ -165,9 +192,11 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
     if room_wire::listing_title(&packets["listing"].payload)? != cfg.title.as_bytes() {
         return Err(err("fixed listing title mismatch"));
     }
-    for id in [1, 2] {
-        let alias = if id == 1 { "player_A" } else { "player_B" };
-        if read_uint(&packets[alias].payload[1..5], Width::U32).map_err(io::Error::other)? != id {
+    for actor in actors.values() {
+        let alias = player_alias(actor.identity)?;
+        if read_uint(&packets[alias].payload[1..5], Width::U32).map_err(io::Error::other)?
+            != u64::from(actor.identity)
+        {
             return Err(err("room player identity mismatch"));
         }
     }
@@ -225,7 +254,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
             );
         }
     }
-    let mut model = Room::default();
+    let mut model = Room::with_capacity(count)?;
     model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
         model,
@@ -265,11 +294,7 @@ impl Runtime {
         p
     }
     fn player(&self, m: &Member, host: Option<u32>) -> io::Result<Reply> {
-        let alias = if m.key.identity == 1 {
-            "player_A"
-        } else {
-            "player_B"
-        };
+        let alias = player_alias(m.key.identity)?;
         Ok(self.reply(
             alias,
             None,
@@ -281,11 +306,7 @@ impl Runtime {
         ))
     }
     fn slot(&self, m: &Member, host: Option<u32>) -> io::Result<Reply> {
-        let alias = if m.key.identity == 1 {
-            "player_A"
-        } else {
-            "player_B"
-        };
+        let alias = player_alias(m.key.identity)?;
         Ok(self.reply(
             alias,
             Some(110),
@@ -877,11 +898,17 @@ impl Session {
                         vec![("own110".into(), r.slot(&m, next.host)?)],
                     ),
                 ));
-                let mut peers = Vec::new();
                 for peer in next.members.values() {
                     if peer.key != m.key {
                         if !r.rostered.contains(&(m.key, peer.key)) {
-                            peers.push(("peer106".into(), r.player(peer, next.host)?));
+                            let mut batch = Runtime::member_batch(
+                                m.key,
+                                None,
+                                3000,
+                                vec![("peer106".into(), r.player(peer, next.host)?)],
+                            );
+                            batch.subject = Some(peer.key);
+                            effects.push((self.identity, batch));
                             roster_pairs.push((m.key, peer.key));
                         }
                         if r.requested.contains(&peer.key)
@@ -898,16 +925,6 @@ impl Session {
                             effects.push((peer.key.identity, batch));
                         }
                     }
-                }
-                if !peers.is_empty() {
-                    let peer = next
-                        .members
-                        .values()
-                        .find(|peer| peer.key != m.key)
-                        .expect("two members");
-                    let mut batch = Runtime::member_batch(m.key, None, 3000, peers);
-                    batch.subject = Some(peer.key);
-                    effects.push((self.identity, batch));
                 }
                 let mut final_batch = Runtime::member_batch(
                     m.key,
@@ -1014,7 +1031,7 @@ impl Session {
                     let complete = next.ack(m.key, round)?;
                     loaded_endpoint = Some((m.key, port));
                     if complete {
-                        let mut endpoints = [(0, 0); 2];
+                        let mut endpoints = vec![(0, 0); next.capacity()];
                         for peer in next.members.values() {
                             let p = if peer.key == m.key {
                                 port
@@ -1060,7 +1077,7 @@ impl Session {
                                                 &r.packets["peer"].payload,
                                                 key,
                                                 peer.slot,
-                                                endpoints,
+                                                &endpoints,
                                             )?),
                                         ),
                                     )],
@@ -1141,6 +1158,9 @@ impl Session {
                 }
             }
             118 => {
+                if next.capacity() != 2 {
+                    return Err(err("four-player gameplay not ported"));
+                }
                 let member = r.member(self.identity, self.connection)?;
                 let request = bombs::Request::parse(body)?;
                 let result = if matches!(next.phase, Phase::Armed { .. })
@@ -1217,6 +1237,9 @@ impl Session {
                 }
             }
             142 => {
+                if next.capacity() != 2 {
+                    return Err(err("four-player gameplay not ported"));
+                }
                 let member = r.member(self.identity, self.connection)?;
                 if body.len() != 7 {
                     return Err(err("known142 size"));
@@ -1247,6 +1270,9 @@ impl Session {
                 });
             }
             124 => {
+                if next.capacity() != 2 {
+                    return Err(err("four-player gameplay not ported"));
+                }
                 let member = r.member(self.identity, self.connection)?;
                 let request = pickups::Request::parse(body)?;
                 let decision = if next.members[&self.identity].life.blocked_pickup() {

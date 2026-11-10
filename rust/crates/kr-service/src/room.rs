@@ -16,6 +16,7 @@ pub struct Membership {
 pub struct Member {
     pub key: Membership,
     pub slot: u8,
+    pub team: u8,
     pub ready: bool,
     pub setup: bool,
     late_after_abort: u16,
@@ -49,7 +50,8 @@ pub struct Room {
     aborted: Option<(u64, Vec<Membership>)>,
     pub(crate) pickups: crate::pickups::Round,
     pub(crate) bombs: crate::bombs::Ledger,
-    pub(crate) bomb_capacity: [usize; 2],
+    capacity: usize,
+    pub(crate) bomb_capacity: Vec<usize>,
     pub(crate) terrain: Option<crate::terrain::Terrain>,
     pub(crate) last_blast: Option<std::time::Instant>,
 }
@@ -64,13 +66,33 @@ impl Default for Room {
             aborted: None,
             pickups: crate::pickups::Round::default(),
             bombs: crate::bombs::Ledger::default(),
-            bomb_capacity: [1, 2],
+            capacity: 2,
+            bomb_capacity: vec![1, 2],
             terrain: None,
             last_blast: None,
         }
     }
 }
 impl Room {
+    /// Explicit diagnostic profiles measured at CP235/200. Not general admission.
+    pub(crate) fn with_capacity(capacity: usize) -> io::Result<Self> {
+        if !matches!(capacity, 2 | 4) {
+            return Err(io::Error::other("unsupported diagnostic room capacity"));
+        }
+        Ok(Self {
+            capacity,
+            bomb_capacity: if capacity == 4 {
+                vec![1, 2, 1, 1]
+            } else {
+                vec![1, 2]
+            },
+            ..Self::default()
+        })
+    }
+    pub(crate) fn capacity(&self) -> usize {
+        self.capacity
+    }
+
     pub fn current(&self, key: Membership) -> bool {
         self.members
             .get(&key.identity)
@@ -82,7 +104,7 @@ impl Room {
         connection: u64,
         create: bool,
     ) -> io::Result<Membership> {
-        if !(1..=2).contains(&identity)
+        if !(1..=self.capacity as u32).contains(&identity)
             || self.phase != Phase::Idle
             || self.members.contains_key(&identity)
             || self
@@ -98,7 +120,7 @@ impl Room {
             if identity != 1 || self.host.is_some() || !self.members.is_empty() {
                 return Err(io::Error::other("fixed room requires first host create"));
             }
-        } else if self.host.is_none() || self.members.len() >= 2 {
+        } else if self.host.is_none() || self.members.len() >= self.capacity {
             return Err(io::Error::other("no fixed room or full"));
         }
         let visit = self
@@ -116,6 +138,7 @@ impl Room {
             Member {
                 key,
                 slot: (identity - 1) as u8,
+                team: ((identity - 1) % 2) as u8,
                 ready: false,
                 setup: false,
                 late_after_abort: 0,
@@ -199,14 +222,14 @@ impl Room {
         if !self.current(key)
             || self.host != Some(key.identity)
             || self.phase != Phase::Idle
-            || self.members.len() != 2
+            || self.members.len() != self.capacity
             || !self
                 .members
                 .values()
                 .all(|m| m.setup && (m.key.identity == key.identity || m.ready))
         {
             return Err(io::Error::other(
-                "Start requires current host and two loaded-room ready members",
+                "Start requires current host and all configured loaded-room ready members",
             ));
         }
         let round = self
@@ -227,7 +250,11 @@ impl Room {
         if let Some(terrain) = &mut self.terrain {
             terrain.begin(round);
         }
-        self.bomb_capacity = [1, 2];
+        self.bomb_capacity = if self.capacity == 4 {
+            vec![1, 2, 1, 1]
+        } else {
+            vec![1, 2]
+        };
         self.phase = Phase::Loading {
             round,
             roster,
@@ -386,6 +413,54 @@ mod tests {
         r.setup(b).unwrap();
         r.ready(b).unwrap();
         (r, a, b)
+    }
+    #[test]
+    fn four_members_require_all_ready_and_current_ack_and_keep_two_path_separate() {
+        assert!(Room::with_capacity(3).is_err());
+        assert!(Room::with_capacity(8).is_err()); // eight needs its own port/evidence
+        let mut r = Room::with_capacity(4).unwrap();
+        let a = r.enter(1, 11, true).unwrap();
+        let b = r.enter(2, 22, false).unwrap();
+        let c = r.enter(3, 33, false).unwrap();
+        for key in [a, b, c] {
+            r.setup(key).unwrap();
+        }
+        r.ready(b).unwrap();
+        r.ready(c).unwrap();
+        assert!(r.begin(a).is_err());
+        let d = r.enter(4, 44, false).unwrap();
+        r.setup(d).unwrap();
+        assert!(r.begin(a).is_err());
+        r.ready(d).unwrap();
+        assert!(r.enter(5, 55, false).is_err());
+        let round = r.begin(a).unwrap();
+        assert_eq!(r.bomb_capacity, [1, 2, 1, 1]);
+        assert_eq!(
+            r.members
+                .values()
+                .map(|m| (m.slot, m.team))
+                .collect::<Vec<_>>(),
+            [(0, 0), (1, 1), (2, 0), (3, 1)]
+        );
+        for key in [a, b, c] {
+            assert!(!r.ack(key, round).unwrap());
+        }
+        assert!(matches!(r.phase, Phase::Loading { .. }));
+        assert!(r.ack(c, round).is_err());
+        assert!(r.ack(d, round + 1).is_err());
+        assert!(r.ack(d, round).unwrap());
+        let survivors = r.leave(b).unwrap();
+        assert_eq!(survivors.len(), 3);
+        assert_eq!(r.phase, Phase::Idle);
+        assert!(!r.deliverable(a, Some(round)));
+        let replacement = r.enter(2, 66, false).unwrap();
+        assert_ne!(replacement, b);
+        assert!(!r.current(b));
+        assert!(r.ack(b, round).is_err());
+        let mut two = Room::default();
+        assert!(two.enter(3, 33, true).is_err());
+        assert_eq!(two.capacity(), 2);
+        assert_eq!(two.bomb_capacity, [1, 2]);
     }
     #[test]
     fn active_abort_fences_jobs_and_keeps_survivor_until_forfeit_refresh() {
