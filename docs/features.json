@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP239",
+  "as_of": "CP240",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -2933,7 +2933,8 @@
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#four-two-team-cycles",
-          "docs/PROTOCOL.md#eight-two-team-cycles"
+          "docs/PROTOCOL.md#eight-two-team-cycles",
+          "docs/evidence/rust-service/life-results.json"
         ]
       },
       "coverage": {
@@ -3045,7 +3046,9 @@
             "docs/PROTOCOL.md#rescue-reverse",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/185",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/186",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#rust-life-results",
+            "rust/crates/kr-service/src/life.rs"
           ],
           "delivery": "via_pr"
         },
@@ -3077,7 +3080,9 @@
             "docs/PROTOCOL.md#virtual-basic-cycles",
             "docs/PROTOCOL.md#current-basic-cycles-291",
             "docs/PROTOCOL.md#current-basic-contest-reset",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#rust-life-results",
+            "rust/crates/kr-service/src/life.rs"
           ]
         },
         "gate": {
@@ -3673,7 +3678,8 @@
           "docs/PROTOCOL.md#eight-two-team-cycles",
           "docs/PROTOCOL.md#eight-portable-battle",
           "docs/PROTOCOL.md#eight-team-variants",
-          "docs/evidence/eight-player/README.md#cp213"
+          "docs/evidence/eight-player/README.md#cp213",
+          "docs/evidence/rust-service/life-results.json"
         ]
       },
       "coverage": {
@@ -3790,7 +3796,9 @@
             "server/four_battle_policy.py",
             "server/test_four_battle_policy.py",
             "docs/PROTOCOL.md#eight-two-team-cycles",
-            "docs/PROTOCOL.md#eight-portable-battle"
+            "docs/PROTOCOL.md#eight-portable-battle",
+            "docs/PROTOCOL.md#rust-life-results",
+            "rust/crates/kr-service/src/life.rs"
           ],
           "delivery": "via_pr"
         },
@@ -3826,7 +3834,9 @@
             "docs/PROTOCOL.md#four-transport-bounds",
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#eight-portable-battle",
-            "docs/PROTOCOL.md#eight-team-variants"
+            "docs/PROTOCOL.md#eight-team-variants",
+            "docs/PROTOCOL.md#rust-life-results",
+            "rust/crates/kr-service/src/life.rs"
           ]
         },
         "gate": {
@@ -3941,7 +3951,8 @@
           "docs/PROTOCOL.md#eight-two-team-cycles",
           "docs/PROTOCOL.md#eight-portable-battle",
           "docs/PROTOCOL.md#eight-team-variants",
-          "docs/evidence/eight-player/README.md#cp213"
+          "docs/evidence/eight-player/README.md#cp213",
+          "docs/evidence/rust-service/life-results.json"
         ]
       },
       "coverage": {
@@ -4094,7 +4105,9 @@
             "docs/PROTOCOL.md#four-member-abort-room",
             "docs/PROTOCOL.md#four-health-identity",
             "docs/PROTOCOL.md#eight-two-team-cycles",
-            "docs/PROTOCOL.md#eight-portable-battle"
+            "docs/PROTOCOL.md#eight-portable-battle",
+            "docs/PROTOCOL.md#rust-life-results",
+            "rust/crates/kr-service/src/life.rs"
           ],
           "delivery": "via_pr"
         },
@@ -4152,7 +4165,9 @@
             "docs/PROTOCOL.md#four-netem-restart",
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#eight-portable-battle",
-            "docs/PROTOCOL.md#eight-team-variants"
+            "docs/PROTOCOL.md#eight-team-variants",
+            "docs/PROTOCOL.md#rust-life-results",
+            "rust/crates/kr-service/src/life.rs"
           ]
         },
         "gate": {
@@ -4563,7 +4578,8 @@
           "docs/evidence/rust-service/README.md#cp238",
           "docs/evidence/rust-service/bombs.json",
           "docs/evidence/rust-service/README.md#cp239",
-          "docs/evidence/rust-service/terrain.json"
+          "docs/evidence/rust-service/terrain.json",
+          "docs/evidence/rust-service/life-results.json"
         ]
       },
       "coverage": {
@@ -4843,7 +4859,9 @@
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
             "docs/PROTOCOL.md#rust-terrain",
-            "rust/crates/kr-service/src/terrain.rs"
+            "rust/crates/kr-service/src/terrain.rs",
+            "docs/PROTOCOL.md#rust-life-results",
+            "rust/crates/kr-service/src/life.rs"
           ]
         },
         "integration": {
@@ -4944,7 +4962,9 @@
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
             "docs/PROTOCOL.md#rust-terrain",
-            "rust/crates/kr-service/src/terrain.rs"
+            "rust/crates/kr-service/src/terrain.rs",
+            "docs/PROTOCOL.md#rust-life-results",
+            "rust/crates/kr-service/src/life.rs"
           ]
         },
         "gate": {
@@ -5021,7 +5041,8 @@
           "docs/evidence/rust-service/README.md#cp238",
           "docs/evidence/rust-service/bombs.json",
           "docs/evidence/rust-service/README.md#cp239",
-          "docs/evidence/rust-service/terrain.json"
+          "docs/evidence/rust-service/terrain.json",
+          "docs/evidence/rust-service/life-results.json"
         ]
       },
       "coverage": {
@@ -5111,7 +5132,9 @@
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
             "docs/PROTOCOL.md#rust-terrain",
-            "rust/crates/kr-service/src/terrain.rs"
+            "rust/crates/kr-service/src/terrain.rs",
+            "docs/PROTOCOL.md#rust-life-results",
+            "rust/crates/kr-service/src/life.rs"
           ],
           "delivery": "via_pr"
         },
@@ -5138,7 +5161,9 @@
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
             "docs/PROTOCOL.md#rust-terrain",
-            "rust/crates/kr-service/src/terrain.rs"
+            "rust/crates/kr-service/src/terrain.rs",
+            "docs/PROTOCOL.md#rust-life-results",
+            "rust/crates/kr-service/src/life.rs"
           ]
         },
         "gate": {

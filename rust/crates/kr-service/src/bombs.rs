@@ -228,6 +228,9 @@ impl Ledger {
     }
     /// Each actual TCP recipient consumes its own deadline once. Release the
     /// reservation only after BOTH writes succeed; this is not native-execution ACK.
+    pub fn pending(&self) -> bool {
+        !self.active.is_empty()
+    }
     pub fn active(&self, ticket: &Ticket) -> bool {
         Arc::ptr_eq(&self.scope, &ticket.scope)
             && self.generation == Some(ticket.round)

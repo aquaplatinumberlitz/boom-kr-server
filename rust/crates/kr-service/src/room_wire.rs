@@ -189,6 +189,12 @@ pub fn room_selector(body: &[u8], opcode: u32, selector: u8) -> io::Result<Vec<u
     let offset = match (opcode, body.len()) {
         (86, 11) => 7,
         (87, 7) => 5,
+        (180, 3)
+            if read_uint(&body[..1], Width::U8).map_err(io::Error::other)? == 0
+                && read_uint(&body[2..], Width::U8).map_err(io::Error::other)? == 0 =>
+        {
+            1
+        }
         _ => return Err(io::Error::other("unsupported mode reply")),
     };
     if selector > 1 {

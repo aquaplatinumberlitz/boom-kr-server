@@ -4,6 +4,7 @@
 pub mod accounts;
 pub mod binding;
 mod bombs;
+mod life;
 pub mod lobby;
 mod pickups;
 pub mod room;
@@ -511,6 +512,8 @@ async fn local_lobby_connection(
     let mut pending: Vec<room_io::Batch> = Vec::new();
     let mut send_sequence = 43u32;
     let mut buf = [0; 4096];
+    let mut read_deadline =
+        Instant::now() + Duration::from_secs(profile.config.idle_timeout_seconds);
     loop {
         while let Some(packet) = if let Some(packet) = initial_packet.take() {
             Some(packet)
@@ -521,7 +524,7 @@ async fn local_lobby_connection(
                 && room_io::Session::handles(packet.opcode)
             {
                 let observation = session.packet(packet.opcode, &packet.payload)?;
-                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice}))).await?;
+                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
                 continue;
             }
             let aliases = flow.packet(packet.opcode, &packet.payload)?;
@@ -555,6 +558,9 @@ async fn local_lobby_connection(
             {
                 room_session = Some(room_io::Session::open(shared, flow.identity(), id)?);
             }
+        }
+        if let Some(session) = &room_session {
+            session.tick()?;
         }
         pending.sort_by_key(|batch| batch.due);
         while pending
@@ -600,19 +606,25 @@ async fn local_lobby_connection(
             .first()
             .map(|b| b.due)
             .unwrap_or_else(|| Instant::now() + Duration::from_secs(3600));
+        let deadline = if room_session.is_some() {
+            deadline.min(Instant::now() + Duration::from_millis(100))
+        } else {
+            deadline
+        };
         let n = tokio::select! {
             _=stop.changed()=>return Ok(()),
-            _=tokio::time::sleep_until(deadline.into()),if !pending.is_empty()=>continue,
+            _=tokio::time::sleep_until(deadline.into()),if !pending.is_empty() || room_session.is_some()=>continue,
             batch=async {match &mut room_session {Some(session)=>session.inbox.recv().await,None=>std::future::pending().await}}=>{
                 let batch=batch.ok_or_else(||io::Error::other("room inbox closed"))?;
                 if pending.len()>=16 {return Err(io::Error::other("room timer queue bound"));}
                 pending.push(batch);continue;
             },
-            v=timeout(Duration::from_secs(profile.config.idle_timeout_seconds),socket.read(&mut buf[..cap]))=>v.map_err(|_|io::Error::other("lobby read idle timeout"))??
+            v=tokio::time::timeout_at(read_deadline.into(),socket.read(&mut buf[..cap]))=>v.map_err(|_|io::Error::other("lobby read idle timeout"))??
         };
         if n == 0 {
             return rx.finish().map_err(io::Error::other);
         }
+        read_deadline = Instant::now() + Duration::from_secs(profile.config.idle_timeout_seconds);
         rx.push(&buf[..n]).map_err(io::Error::other)?;
     }
 }

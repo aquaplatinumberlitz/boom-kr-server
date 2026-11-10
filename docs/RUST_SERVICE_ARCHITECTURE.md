@@ -38,10 +38,12 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 
 M1 đã pin trong Cargo.lock/toolchain: Tokio1.53.3 cho boundedI/O/timeout/signal, serde1.0.229/serde_json1.0.154 cho config/log,
 sha2 0.11.1 cho fixtureprovenance. kr-wire không dependency. bytes là transitiveTokio; chưa cần trực tiếp.
-Các đợt sau dự kiến tracing; rusqlite bundled cho DB worker; argon2/Argon2id-PHC, getrandom và
-zeroize nếu giữ secret trong memory. encoding_rs cho KR cp949 chỉ khi consumer đối chiếu, không mặc định
-UTF-8 trên wire. Foundation đã pin toolchain/lockfile/version; crates publish=false, chưa đóng gói release/SBOM/licenseaudit. HTTP framework chỉ thêm khi cần
-web thật; CLI/Unixsocket đủ cho bản đầu. Nhóm account/DB/web này chưa được thêm/build/test trong repo; trạng thái milestone ở PLAN.
+CP236 đã thêm/build/test/merge Argon2id (`argon2=0.6.0`), SQLite bundled (`rusqlite=0.40.2`),
+`getrandom=0.4.3`, `zeroize=1.9.1` trong lockfile. [Backend account/DB](PROTOCOL.md#rust-account-backend)
+và CLI đã có 11 account tests/33 CLI process; chưa serving DB worker, idleTTL, native KR bridge hoặc restore.
+Tracing/metrics và HTTP framework chỉ thêm khi có nhu cầu; CLI hiện có không phải web/API đã phục vụ.
+`encoding_rs` chỉ thêm khi có consumer cp949 cần đối chiếu. Linux build/native proof đã có ở M1–M3 theo PLAN;
+chưa release package/SBOM/license audit hoặc vận hành production.
 
 ## Nguồn đã khảo sát và quyết định tái sử dụng
 
@@ -84,8 +86,8 @@ KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma tr
 | KR-F008/F009 → [kim reset](PROTOCOL.md#needle-round-reset), [cứu](PROTOCOL.md#rescue-two-results) | present; V/S/E/N hẹp theo pair/single credit/report. Impl=partial; integration F008=unknown/F009=partial ngoài ca dẫn nguồn; main; K5 scoped; không proof4/8 | Chuyển riêng sau basic; credit/report policy giữ design. Client tính contact/trap/death một phần; fixture145 không là inventory authentication | Rust native pair: cứu hai chiều, chạm địch/chết, kim hết credit, reset. Không mở lại consumer đã giải; 4/8 integration, inventory credit và race khác cần proof tương ứng |
 | KR-F010–F014 → [families](PROTOCOL.md#item-families) | present/candidate theo ID; V static/S partial; E/N unknown. Impl=unknown; integration=unknown; delivery=unknown. K5 passed không xác nhận các nhóm này | Chưa đủ chuyển hành vi. Có thể giữ taxonomy/backend definitions nhưng disable effect chưa rõ; không suy từ tên/icon | Mỗi family cần consumer + một ca dùng/không đủ điều kiện/consume/expire/peer/reset. Chọn theo sản phẩm, không RE mọi row như cơ chế độc lập |
 | KR-X001/X002/X003 → [result](PROTOCOL.md#current-basic-cycles-291), [four abort](PROTOCOL.md#four-member-abort-room) | present; V/S/E/N/T; 175/180, rank/room/reset/Start3, host/guest EOF. Impl=partial; integration=partial; main; K5/K6/K7 scoped | Chuyển result builder, life/witness/settle/abort/fence hiện tại. Chưa durable results/rewards; ba survivor về phòng có fence không nghĩa ba người chơi tiếp | Rust hai normal results/reset/Start3; EOF không late158; bốn người kiểm host/guest rớt và survivor cleanup/promotion. Fresh server, reconnect, account resume, match restore phải tách |
-| KR-S001/S002 → [health/identity](PROTOCOL.md#four-health-identity), [restart](PROTOCOL.md#four-netem-restart) | Native presence của S002=unknown; D/T/N cho service. Impl=partial; integration=partial; main; K7 scoped. JSON pin/67bundle/health/new server/4actual đã đo | Chuyển metadata/budgets/deadline/package. JSON pin giữ identity operator không phải account DB. Chưa có Rust build/CI/native proof | Rust package Linux chạy sau relocation, hash/config đúng, fail trước listen với input lỗi; nonreader/quota/fault/shutdown và fresh server/same DB/native4 dưới impairment |
-| Backend account/profile/inventory/reward/admin; KRE-074 → [gaps](RESEARCH.md#rust-service-gaps) | Wire/consumer/authority chưa đủ; chưa triển khai/tích hợp/merge trong repo; chưa có gate từng hệ thống. UI/asset presence không proof toàn hệ thống | Backend design làm độc lập qua CLI/API; không gửi unknown wire. Catalog30 feature không phải danh mục đầy đủ của production service | DB thật: concurrent/transaction/replay/crash/restore. Mỗi client projection/login/equip/balance/reward cần KR observation và negative trước expose |
+| KR-S001/S002 → [health/identity](PROTOCOL.md#four-health-identity), [restart](PROTOCOL.md#four-netem-restart) | Native presence của S002=unknown; D/T/N cho service. Impl=partial; integration=partial; main; K7 scoped. JSON pin/67bundle/health/new server/4actual đã đo | Chuyển metadata/budgets/deadline/package. JSON pin giữ identity operator không phải account DB. Rust build/native M1–M3 đã có; chưa package/restore/load acceptance | Rust package Linux chạy sau relocation, hash/config đúng, fail trước listen với input lỗi; nonreader/quota/fault/shutdown và fresh server/same DB/native4 dưới impairment |
+| Backend account/profile/inventory/reward/admin; KRE-074 → [gaps](RESEARCH.md#rust-service-gaps) | CP236 account/profile/session/SQLite/adminCLI đã triển khai/test/merge; native KR account bridge, inventory/reward và ops chưa đủ, M5 vẫn partial. UI/asset presence không proof toàn hệ thống | Backend design làm độc lập qua CLI/API; không gửi unknown wire. Catalog30 feature không phải danh mục đầy đủ của production service | DB thật: concurrent/transaction/replay/crash/restore. Mỗi client projection/login/equip/balance/reward cần KR observation và negative trước expose |
 
 
 ## Module và dòng dữ liệu

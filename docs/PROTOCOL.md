@@ -8654,3 +8654,52 @@ M3 cònlife/report-derived17-19-21→170/results175/180/reset/twooutcomes/oldpac
 Không nativechainvariants/allmaps/generalphysics/auth/kim-cứu/capacity4-8/fullM3/fullservice/production.
 Opaque123/167 policy/semanticsunknown vàshutdownrootcauseunknown giữ. Pythonserving/RE/reference,
 [PLAN](PLAN.md#current-order) duy nhất giữ thứtự. CP240auditrequired; Internet thật chưa kiểm.
+
+<a id="rust-life-results"></a>
+## Rust report-derived life, kết quả và reset — CP240 / M3 partial
+
+[Code](../rust/crates/kr-service/src/life.rs), [owner/queues](../rust/crates/kr-service/src/room_io.rs),
+[metadata](evidence/rust-service/life-results.json), [recipe/raw](evidence/rust-service/README.md#cp240).
+Tái dùng CP023/028 envelopes và translation, CP102/103 cursor/drained21, CP188/189 life/rank/reset;
+không RE opcode/helper hoặc nhập wire VN. Python vẫn reference/rollback, backend M5 độc lập.
+
+`design`: optional Battle profile chỉ bật với current-trap/death và post_blast_untrapped_drained, bốn fixture đã pin.
+127 prefix14, trap17 raw14 và death19 raw11/envelope đã đo; biến thể khác fail closed trước cursor.
+Cursor riêng connection: serial arithmetic u32, duplicate body cùng tick, tối đa64 body/tick và4096 report/vòng.
+Start xóa trap/death/forward marker, **giữ cursor**; body cũ đã thấy không thành report mới. First-seen/forged-forward
+vẫn thiếu authentication/wire epoch; không dùng tick của peer khác hoặc cached124 làm đồng hồ chung.
+19 phải có17 hiện hành, không được chết lại;17 mới không xóa death history. 17/19 chuyển170 sang peer, không selfecho.
+21 mới hơn current trap và latest successful full-roster158 (nếu đã có blast) có thể clear peer một lần/trap;
+marker chỉ complete sau TCP write;
+21 không mở lại quyền nhặt. Trap/death khóa124 theo report. Unknown subtype chỉ bounded observation, không world effect.
+
+Result chọn sau death8s, survivor21 mới hơn death/trap/latest successful158 và hết pending bomb jobs.
+All-dead dùng policy rank2 riêng, đợi latest death8s; không suy tie enum/luật server gốc. Reserve đủ sáu queue entries
+cho hai recipient trước publish Ending:175 ngay,180 sau5s, hai110 refresh sau3s nữa. Complete refresh đủ roster mới Idle;
+Ready/Start/late callbacks có membership/round fences. Full TCP write không là native execution ACK/atomic delivery.
+
+Native post-result202/22 chỉ current Ending/closed member, prefix0/1 và budget; không active Battle-exit implementation.
+Native180 gửi lại585/zero: bounded no-response khi kết quả đã chọn/closed, giữ110 refresh, không cấp visit/setup mới.
+167 body16 đã thấy ở run lỗi R1; chỉ thêm đúng envelope này vào4/32 bounded opaque policy, **semantics vẫn unknown**.
+Polling result dùng100ms; idle read deadline tuyệt đối giữ từ lần đọc bytes, không bị poll reset.
+
+`kr_runtime/confirmed` trên KR00967/e9/Wine/virtualLAN: vòng1 actualA118→17→19, B21; vòng2 B118→17→19,A21.
+Hai view state loser1/other0 trước175, native175 đủ outer302/inner292/errors0, ranks2/1 đảo đúng; hai180 đủ3/errors0,
+refresh/actualReady/Start tới clock3 và giữ6s. Ảnh return2 A có vùng nút Ready trắng;
+later actual95/Start3 đã đo, không gọi đã giải nguyên nhân render. Ba clock seed195 khớp, stat baseline theo vai; không consumed-item-reset proof.
+TCP745 records/108 exact replies và tất cả connection/C2S-sequence joins; 66 raw/201.905s sealed/cleanup0.
+Native-tested binary `a4798db20fb0797d523226a70b0b51ee9b4c264db3f1aae1d6448e5dcd0cf229`. Copied52A350 getter checks riêng, không Wine gamecall/oracle toàn binary.
+PeerFinish cursor sau return có giới hạn cũ; không lấy nó làm full170 parse proof. Native pre175 state và175 parser là evidence riêng.
+
+40 Rust tests/44 kernelTCP: malformed blob, slot/death prerequisites, duplicate/stale qua reset/current positive,
+closed202/585 không đổi kết quả, hai winner và all-dead, once peer21, pickup vẫn blocked, EOF/generation/absolute idle20s.
+Kernel/all-dead/peer21 positives không tự trở thành native control. R1 thiếu167/16, R2 thiếu202, R3 thiếu post180585;
+46+46+48+50 raw failures giữ nguyên, mỗi run seal/cleanup trước sửa. R4 chỉ có một ending/return: click ngắn không95;
+R5 giữ nguyên binary, dùng input CP188 focus12s/off-hover/heldmouse1s; budget240s khai trước run cho bốn thao tác return,
+service/loading/write/shutdown deadline không đổi. Verifier đầu so boolean flags với kinds0/1/2 sai, sửa đúng projection
+`int(kind!=0)` đã có CP239 rồi kiểm đủ195×3×2 từ cùng raw; log fail giữ, không đổi oracle hoặc runtime. Không thay source/config giữa run hoặc nới deadline để pass.
+
+M3 chưa đủ acceptance: native consumed-item reset/contest; exact oldUDP/current positive trên Rust; dead-owner/queue cases;
+hostEOF với bom chờ phải đưa survivor về phòng (107/110 giữa scene chưa đủ). Chưa kim/cứu/fullauth/fullservice,
+không nativeall-dead/peer21clear/trận3 outcome/chain variants/generalphysics. [PLAN](PLAN.md#current-order) giữ bước tiếp.
+K0–K7 scope cũ giữ nguyên/K6c WAN giả lập. Internet thật chưa kiểm. AUD069 qua240/audit kế244.

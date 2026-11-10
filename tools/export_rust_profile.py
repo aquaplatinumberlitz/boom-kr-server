@@ -120,6 +120,13 @@ def add_fixed_room(config, profile_path, listing_path, title):
     config['diagnostic_two_lobby']['fixed_room'] = dict(title=title, packets=packets)
     if profile.get('bomb_terrain') is not None:
         config['diagnostic_two_lobby']['fixed_room']['terrain'] = profile['bomb_terrain']
+    if profile.get('result_freshness')=={'mode':'post_blast_untrapped_drained'} and profile.get('death_lifecycle')=={'mode':'current_trap'}:
+        battle={}
+        for alias,opcode in [('rank',175),('rank_Awin',175),('rank_all_dead',175),('return',180)]:
+            row=profile['fixtures'][alias];p=Path(row['path']).resolve(strict=True);raw=p.read_bytes()
+            if len(raw)!=row['bytes'] or hashlib.sha256(raw).hexdigest()!=row['sha256']:raise ValueError('Battle fixture pin mismatch: '+alias)
+            battle[alias]=dict(fixture=dict(path=str(p),bytes=len(raw),sha256=row['sha256']),sequence=row['sequence'],opcode=opcode)
+        config['diagnostic_two_lobby']['fixed_room']['battle']=dict(mode='post_blast_untrapped_drained',packets=battle)
     return config
 
 
