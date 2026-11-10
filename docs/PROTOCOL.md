@@ -8611,3 +8611,46 @@ vẫn giữ, passingrepeatkhôngfixclaim. Preflight135sargreject trướcnamespa
 
 M3 cònterrain/reveal/chain/life/result-reset/twooutcomes/kim-cứu/capacity4-8/accountbridge; khôngoriginalserverauthority/
 fullservice/production. Pythongiữ reference/serving, [PLAN](PLAN.md#current-order) giữ thứ tự. Internet thật chưa kiểm.
+
+
+<a id="rust-terrain"></a>
+## Rust boundedterrain/reveal/ba basicitems — CP239 / M3partial
+
+[Code](../rust/crates/kr-service/src/terrain.rs), [claims](../rust/crates/kr-service/src/pickups.rs),
+[raw/metadata](evidence/rust-service/terrain.json), [recipe](evidence/rust-service/README.md#cp239).
+SourcefirstCP172/174 vàPythonTerrainShadow/load_terrain/current142guard; CP238ledger-recipientcompletion và
+CP237floorcatalog. Không binaryfunction/wirelayoutRE mới, không importVNopcode/engineRewrite.
+
+Policy`design`: optionaltrustedterrain spec từcùngPythonprofile/export,15×13/195kinds0..2/maxpower1..2,
+seedSHA vàrawmap/startframeSHA khớp trước bind; mapassetdigest là provenance dooperator khai, không attestation.
+Candidategeometry kiểmfloor/solid/box/pendingoccupancy trướcpublish IDserial/reservation. Cascade dùng immutable
+snapshot cho cảroot/secondary/raystop; clearbox mộtlần. Chainsecondary own158 sau đó có thểkhôngdelta nhưreference,
+khôngreleasecapacitysớm hoặc nhận mọichainvariantđãnative.
+
+Sau158write thànhcông **đủ originalroster**, roomowner commitblast/clearcells cùnggeneration/rootID.
+Partialrecipientwrite khôngclearance; EOF/newround resetpending/clearance/claims.142known7bytes kiểmboundslot,
+auxFFFFFFFF/knownhidden cell/currentgeneration+committedclearance; duplicate idempotent. Chỉđúngôhidden từcùng582
+mới chuyểneligible, rồi124samekey/catalog/onewinner→165; không cấp broadworlddistance/authauthority.
+Clientlogicalcounter khôngserverclock/serial; **old142bytes saulegitimatecurrentclear khôngphânbiệt**, giữCP172limit.
+Bombpickupkind0 cộngpendingcapacity theo designAmax10/Bmax7 hiệncó; khônggeneralcharacterstats/mọiinventory.
+
+`kr_runtime/confirmed` hẹp trênKR00967/e9/Wine/privatevirtualLAN: actualAbomb118/root1, hai158native;
+maparray195cells mỗiview tạiclock/before158/after158: trước bằngseed, sau đúng195flags theoPythonkernelđộc lập
+vớiactual118, chỉclear(2,3)/(3,2). Không lấyRust-generatedexpectedlàmoracle.
+142reveal đúngô saufullroster158commit/duplicate, actualA124indices17→28→27→mỗiview3native165/parsedtuple,
+itemfound,12/12/errors0; protectedactorfields **5E8 5→6 (Roller17),4BC1→2(Fire28),4A4 1→2(Bomb27)**.
+1314copiednative52A350getters xácminhrawflags/statwrappers táchruntime; rawmodO/counterreset/emulationlimits cũgiữ.
+TCP410/66exactreplies/alltuples-C2Sjoins,6shold/FINsaucompletion;54raw/86.998s frozen-retained-seal/cleanup0.
+UI hai viewlocalarrow/peer/cells/itemgone/cùngtimer; không gamefunctioncall/statewrite/clientpatch mới.
+
+35Rusttests/43kernelTCP kiểmgeometry/block-chain/reset/clearance, invalidclaim/phase/dupe,
+**first158recipient chưa mởclearance, secondwrite mớicommit**, hidden124trước142nogrant/142duplicate/once165,
+oldgeneration/EOFpending/queuefail khôngmấtIDserial. Negative/modeltests khôngnativeattackproof.
+New180sexperimentbudget khai báo trước run cho readonlyfeedbackroute; actual86.998s, nominal45ms OS pulsekhông
+phải gametick/physicslaw, không tăng service shutdowndeadline. Compile helperLowerHex/privatevisibility đãsửa,
+failedlogs giữ; không có runtime ởbinarychưabuildxong. Source/config/inputfrozen trongrun.
+
+M3 cònlife/report-derived17-19-21→170/results175/180/reset/twooutcomes/oldpacket-currentpositive controls.
+Không nativechainvariants/allmaps/generalphysics/auth/kim-cứu/capacity4-8/fullM3/fullservice/production.
+Opaque123/167 policy/semanticsunknown vàshutdownrootcauseunknown giữ. Pythonserving/RE/reference,
+[PLAN](PLAN.md#current-order) duy nhất giữ thứtự. CP240auditrequired; Internet thật chưa kiểm.

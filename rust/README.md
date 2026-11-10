@@ -187,3 +187,18 @@ python3 tools/test_rust_room.py --binary rust/target/debug/kr-service --config l
 
 40kernelTCPcases+32Rusttests tách nativeproof; toolpinhashbinarytrướcPopen vàso lạisau cleanup.
 Đợibuildxong trướclaunch; freeze tấtcảinput/source/config/binary trongrun, khôngthaylivebinary.
+
+
+## Boundedterrain/hiddenitems — CP239
+
+[Contract](../docs/PROTOCOL.md#rust-terrain), [raw/hash](../docs/evidence/rust-service/README.md#cp239).
+Optional`fixed_room.terrain` lấy từtrustedPython`bomb_terrain`: seed/map/startSHA,15×13/maxpower2 được kiểm trướcbind.
+Geometrycandidate trướcIDcommit;fullroster158writecompletion mớicommitclearance;142đúngcurrentclearedhidden cell
+mớirelease124/165. Hiddencatalog vẫn từcùng582. Nativeoneepoch/195flags/3effects đã đo, chưareset/life/results/fullM3.
+
+```bash
+python3 tools/test_rust_room.py --binary rust/target/debug/kr-service --config local/native-fixed-room.json --out local/new-terrain-check --pickup-checks --bomb-checks --terrain-profile local/python-profile.json
+```
+
+35Rusttests/43TCPcases tách nativeacceptance. Negative/model agreement khônglà originalserverauthority.
+Không hot-swap backend giữa activeconnection;chờ source/config/binary/rawseal/cleanup trướcđổi input.

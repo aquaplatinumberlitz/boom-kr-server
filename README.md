@@ -29,6 +29,15 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP239: Rust đã có terrain/reveal và ba hiệu ứng item basic trên hai KR thật.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-terrain), [raw/hash](docs/evidence/rust-service/README.md#cp239).
+Cảhai195flags khớp kernel thamchiếu trên actual118: chỉô2,3 và3,2clear;142đúngô sau158commitmởhidden27/28.
+Actual124→mỗi view ba165full12/errors0/founditem: Roller5→6,Fire1→2,Bomb1→2;1314copiedgetters/410TCP/66reply.
+54raw frozen/seal/cleanup0;35Rusttests/43TCPcases đạt. M3 **còn life/result-reset/haioutcome**, không fullgame.
+CP238 merge [PR309](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/309)/`7ecfba3`;
+[PLAN](docs/PLAN.md#current-order) tiếp17/19/21→170→175/180/reset; CP240 phải audit địnhkỳ.
+Python/8WIP/accountDB giữ. Internet thật chưa kiểm.
+
 **CP238: hai client KR thật đã đặt và nổ bom qua Rust.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-bombs), [raw/hash](docs/evidence/rust-service/README.md#cp238).
 A/B actual118→159full39/entity,158full13/lookupđúngID1-2/kind0/cleanup trêncảhai; fuse6 và6shold sauhai bom.

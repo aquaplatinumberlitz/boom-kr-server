@@ -246,3 +246,21 @@ Kernelr2 launchedbeforependingbuildcompletion/old167reject/finalhashambiguous; f
 unchangedcheck/awaitbuildpass. No OSdiskfull/auth/gateclaim từkernelmodel. No newbinaryfunctionRE; provenanceknown
 Pythonpolicy/wire andKRreadonlycallbacksites. 167unknownopaque;142noreveal;M3terrain/life/result-reset kế tiếp.
 Python/8WIP/accountDBgiữ;AUD068qua236/kế240. Internet thật chưa kiểm.
+
+
+<a id="cp239"></a>
+## CP239 — Rustterrain/revealhidden và ba itemeffects
+
+[Contract](../../PROTOCOL.md#rust-terrain), [metadata](terrain.json), [code/run](../../../rust/README.md).
+BaselineCP238/PR309/7ecfba3; `local/research/codex/rust-terrain-native-r1` giữpreflight/inputretention/frozenbinary/
+recipe/bounded180s/54rawsealed/cleanup0. Actual86.997765664s/oneepoch, không rerunCP238twoownerbombscope.
+`terrain-verification.json` giữ410TCP/66reply/allC2Sjoins/195flagsbothviews/clear2cells/current142→three124165effects;
+`peer-getter-verification.json` giữ1314copiedgetters/rawwrappers;`ui-review.json` đãxemhai ảnh cuối.
+
+`rust-terrain-tests-r3.txt`/fmt/clippy/build và`rust-terrain-kernel-r1/room/verification.json` giữ35tests/43TCPcases,
+partialfullroster158no-clearance/hiddenbefore142nogrant/geometry-reset/duplicate-currentclaim/EOFfences.
+CompileLowerHex/privateinterfacefixes cófailedlogs riêng, khôngnativebeforefix; no source/configchangesmidrun.
+Pythonkernel reuse CP172/174 là comparisonđộc lậpRust, nativeflags/packet/stat mới là compatibilityproofhẹp;
+không allworldauthority/nativechainvariants/native reset/results. Opaque123/167 vàshutdownunknown giữ.
+M3tiếplife170/result175/return180/reset/twooutcomes;CP240 phải auditperiodic. Python/8WIP/oldrecords giữ.
+Internet thật chưa kiểm.

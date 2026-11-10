@@ -36,10 +36,11 @@ class Client:
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--binary',type=Path,required=True);p.add_argument('--config',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--bomb-checks',action='store_true',help='Synthetic118/159/158 capacity/fuse/EOF ticket checks');p.add_argument('--pickup-checks',action='store_true',help='Floor124/165 policy negatives and one-winner confirmation, synthetic only');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--binary',type=Path,required=True);p.add_argument('--config',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--terrain-profile',type=Path,help='Use existing pinned Python bomb_terrain spec for syntheticgeometry-reveal checks');p.add_argument('--bomb-checks',action='store_true',help='Synthetic118/159/158 capacity/fuse/EOF ticket checks');p.add_argument('--pickup-checks',action='store_true',help='Floor124/165 policy negatives and one-winner confirmation, synthetic only');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
     cfg=copy.deepcopy(json.loads(a.config.read_text()));ports=set()
     while len(ports)<3:ports.add(free_port())
     login,wcp,channel=sorted(ports);cfg.update(bind='127.0.0.1',allowed_peers=['127.0.0.2','127.0.0.3'],ports=sorted(ports));two=cfg['diagnostic_two_lobby'];two.update(login_port=login,login_candidate_ports=[login,wcp],channel_port=channel,wcp_ports=sorted(ports))
+    if a.terrain_profile:two['fixed_room']['terrain']=json.loads(a.terrain_profile.read_text())['bomb_terrain']
     for i,actor in enumerate(two['actors']):actor['peer']=cfg['allowed_peers'][i]
     cp=a.out/'config.json';cp.write_text(json.dumps(cfg,indent=2)+'\n');hello=Path(cfg['bootstrap']['path']).read_bytes();header=Path(two['actors'][0]['profile']['own_header']['path']).read_bytes()[:37]
     binary_sha_before=hashlib.sha256(a.binary.read_bytes()).hexdigest();(a.out/'binary-preflight.json').write_text(json.dumps(dict(path=str(a.binary.resolve()),sha256=binary_sha_before),indent=2)+'\n')
@@ -141,6 +142,18 @@ def main():
                 for client in clients:
                     _,data=client.receive(158);assert c.read_fields(data,[1,2,1,4,4,1])==[1,index,0,2,0xffffffff,255]
             note('fuse_jobs_deliver_exact_once_each_current_ID_to_both')
+            if a.terrain_profile:
+                def report(row=2,col=3,slot=0,aux=0xffffffff):return c.pack_fields([row,col,slot,aux],[1,1,1,4])
+                # Only the current root's actual full-roster158 completion can
+                # clear matching hidden27/28. Wrongboundslot/aux/cell do not.
+                for request in [report(slot=1),report(aux=0),report(row=5,col=5)]:A.send(142,request);A.quiet();B.quiet()
+                A.send(124,pickup(row=2,column=3,index=27,kind=0));A.quiet();B.quiet();note('hidden124_before142_no_grant_after_blast')
+                A.send(142,report());A.quiet();B.quiet();A.send(142,report());A.quiet();B.quiet();note('currentcleared142_reveal_and_duplicate_no_reply')
+                A.send(124,pickup(row=2,column=3,index=27,kind=0))
+                for client in clients:
+                    _,data=client.receive(165);assert c.read_fields(data,[1,1,1,1,1,4,2,1])==[1,0,0,2,3,27,0,0]
+                A.send(124,pickup(row=2,column=3,index=27,kind=0));A.quiet();B.quiet();note('hidden27_once_after_currentclearance_and142')
+
             A.send(118,bomb());A.quiet();B.quiet();note('serial_stays_consumed_after_explosion')
             A.send(118,bomb(serial=2,column=4));spawn(0,2,3,4,4);note('released_capacity_next_ID4')
             A.close();B.receive(107);B.receive(110);time.sleep(6.2);B.quiet();note('owner_EOF_fences_pending158_no_late_delivery')

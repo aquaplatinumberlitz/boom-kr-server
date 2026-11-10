@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP238",
+  "as_of": "CP239",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP237PR308/70f00d0mergedmovement-floor. CP238RustactualA/B118→15939/entity/15813/lookupIDs1-2/kind0cleanup/TCP419-66reply/48rawfinal;32Rusttests/40TCP;44+50failedrawretained. M3partial/167unknown/noaccountbridge.",
-      "remaining": "M3terrain/reveal/chain/life-result-reset/2outcomes;M5bridge-lease-worker-idleTTL-rate/M8restore-load;shutdownrootcauseunknown. No fullservicegateclosure.",
-      "next_test": "PLANboundedterrain/currentclearedcell142/committed158fullroster→hidden124165;thenlife-results-reset/twooutcomes. DonotrepeatbasicbombjustforCP;AUD068next240.",
+      "known": "CP238PR309/7ecfba3mergedtwoownerbombs. CP239native195flags/2cellclear/current142→hidden27-28/3native165statdeltas/1314getters/54rawsealed/TCP410-66reply/35Rusttests43TCP. M3partial/no life-result-reset/nativeaccountbridge.",
+      "remaining": "M3life17-19-21/170/results175-return180/reset/2outcomes/nativeoldpacketcontrols;M5bridge-worker-idleTTL-rate/M8restore-load. Originalauthority/generalphysics/old142epochunknown.",
+      "next_test": "PLANknownlife/result/reset/twooutcomes fromCP188/189;donotrepeatterrainjustforCP. CP240periodicauditrequired/AUD068through236.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "ManualPCAP/nativeentity-fullcursor-kind0cleanup/UIreview. Atrap/HELPnothealthyactorproof;opaque167designpolicy/142nohiddenrelease;failuresretained/Python8WIPunchanged.",
+      "reason": "Manualnative195flags/packet-actorstat/UI/copygetterreview, policynegative separate;singleepochnotnativechain/reset. No gateclosure/Python8WIPunchanged.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -276,7 +276,8 @@
         "docs/PROTOCOL.md#rust-m2-acceptance",
         "docs/PROTOCOL.md#rust-account-backend",
         "docs/PROTOCOL.md#rust-movement-floor",
-        "docs/PROTOCOL.md#rust-bombs"
+        "docs/PROTOCOL.md#rust-bombs",
+        "docs/PROTOCOL.md#rust-terrain"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -386,7 +387,8 @@
         "docs/evidence/rust-service/README.md#cp235",
         "docs/evidence/rust-service/accounts-backend.json",
         "docs/evidence/rust-service/movement-floor.json",
-        "docs/evidence/rust-service/bombs.json"
+        "docs/evidence/rust-service/bombs.json",
+        "docs/evidence/rust-service/terrain.json"
       ],
       "prs": [
         173,
@@ -497,7 +499,8 @@
         305,
         306,
         307,
-        308
+        308,
+        309
       ],
       "successors": []
     },
@@ -836,11 +839,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP237PR308/70f00d0mergedmovement-floor. CP238RustactualA/B118→15939/entity/15813/lookupIDs1-2/kind0cleanup/TCP419-66reply/48rawfinal;32Rusttests/40TCP;44+50failedrawretained. M3partial/167unknown/noaccountbridge.",
-      "remaining": "M3terrain/reveal/chain/life-result-reset/2outcomes;M5bridge-lease-worker-idleTTL-rate/M8restore-load;shutdownrootcauseunknown. No fullservicegateclosure.",
-      "next_test": "PLANboundedterrain/currentclearedcell142/committed158fullroster→hidden124165;thenlife-results-reset/twooutcomes. DonotrepeatbasicbombjustforCP;AUD068next240.",
+      "known": "CP238PR309/7ecfba3mergedtwoownerbombs. CP239native195flags/2cellclear/current142→hidden27-28/3native165statdeltas/1314getters/54rawsealed/TCP410-66reply/35Rusttests43TCP. M3partial/no life-result-reset/nativeaccountbridge.",
+      "remaining": "M3life17-19-21/170/results175-return180/reset/2outcomes/nativeoldpacketcontrols;M5bridge-worker-idleTTL-rate/M8restore-load. Originalauthority/generalphysics/old142epochunknown.",
+      "next_test": "PLANknownlife/result/reset/twooutcomes fromCP188/189;donotrepeatterrainjustforCP. CP240periodicauditrequired/AUD068through236.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "ManualPCAP/nativeentity-fullcursor-kind0cleanup/UIreview. Atrap/HELPnothealthyactorproof;opaque167designpolicy/142nohiddenrelease;failuresretained/Python8WIPunchanged.",
+      "reason": "Manualnative195flags/packet-actorstat/UI/copygetterreview, policynegative separate;singleepochnotnativechain/reset. No gateclosure/Python8WIPunchanged.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -871,7 +874,8 @@
         "docs/PROTOCOL.md#rust-account-backend",
         "docs/PLAN.md#current-order",
         "docs/PROTOCOL.md#rust-movement-floor",
-        "docs/PROTOCOL.md#rust-bombs"
+        "docs/PROTOCOL.md#rust-bombs",
+        "docs/PROTOCOL.md#rust-terrain"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -901,7 +905,8 @@
         "docs/evidence/rust-service/README.md#cp235",
         "docs/evidence/rust-service/accounts-backend.json",
         "docs/evidence/rust-service/movement-floor.json",
-        "docs/evidence/rust-service/bombs.json"
+        "docs/evidence/rust-service/bombs.json",
+        "docs/evidence/rust-service/terrain.json"
       ],
       "prs": [
         286,
@@ -926,7 +931,8 @@
         305,
         306,
         307,
-        308
+        308,
+        309
       ],
       "successors": []
     }

@@ -21,6 +21,8 @@ use tokio::sync::mpsc;
 pub struct Config {
     pub title: String,
     pub packets: HashMap<String, LobbyPacketPin>,
+    #[serde(default)]
+    pub terrain: Option<crate::terrain::Config>,
 }
 pub type Shared = Arc<Mutex<Runtime>>;
 struct Channel {
@@ -158,8 +160,20 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         .packets["ready"]
         .clone();
     let packets_floor_body = packets["floor"].payload.clone();
+    let terrain = cfg
+        .terrain
+        .as_ref()
+        .map(|spec| {
+            spec.validate(
+                &cfg.packets["map"].fixture.load()?,
+                &cfg.packets["start"].fixture.load()?,
+            )
+        })
+        .transpose()?;
+    let mut model = Room::default();
+    model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
-        model: Room::default(),
+        model,
         packets,
         channels: HashMap::new(),
         last_visits: HashMap::new(),
@@ -446,6 +460,11 @@ impl Session {
             let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
             if !runtime.model.bombs.delivered(ticket, *recipient) {
                 return Err(err("stale bomb delivery completion"));
+            }
+            if !runtime.model.bombs.active(ticket)
+                && let Some(terrain) = &mut runtime.model.terrain
+            {
+                terrain.blast_committed(ticket.round, ticket.id);
             }
         }
 
@@ -840,6 +859,19 @@ impl Session {
                         })
                     }
                     Ok(ticket) => {
+                        if let Some(terrain) = &mut next.terrain
+                            && terrain.place(request.terrain_bomb(ticket.id)).is_err()
+                        {
+                            // Discard every candidate allocation/serial/reservation.
+                            return Ok(Observation {
+                                bomb: Some(BombObservation {
+                                    accepted: false,
+                                    id: None,
+                                    reason: "terrain_placement",
+                                }),
+                                ..Observation::default()
+                            });
+                        }
                         let spawn = r.reply("start", Some(159), Some(request.spawn159(ticket.id)?));
                         let blast =
                             r.reply("start", Some(158), Some(bombs::explode158(ticket.id)?));
@@ -881,15 +913,28 @@ impl Session {
                 }
                 let slot = read_uint(&body[2..3], Width::U8).map_err(io::Error::other)?;
                 let aux = read_uint(&body[3..], Width::U32).map_err(io::Error::other)?;
-                terrain_notice = Some(if !matches!(next.phase, Phase::Armed { .. }) {
-                    "inactive_round"
-                } else if slot != u64::from(member.slot) || aux != u64::from(u32::MAX) {
-                    "unsupported_report"
+                terrain_notice = Some(if let Phase::Armed { round } = next.phase {
+                    let row = read_uint(&body[..1], Width::U8).map_err(io::Error::other)? as u8;
+                    let col = read_uint(&body[1..2], Width::U8).map_err(io::Error::other)? as u8;
+                    if slot != u64::from(member.slot) || aux != u64::from(u32::MAX) {
+                        "unsupported_report"
+                    } else if !next.pickups.hidden_cell(row, col) {
+                        "unknown_hidden_cell"
+                    } else if next
+                        .terrain
+                        .as_ref()
+                        .and_then(|t| t.clearance(round, row, col))
+                        .is_none()
+                    {
+                        "no_current_committed_clearance"
+                    } else if next.pickups.reveal(round, row, col) {
+                        "revealed_current_hidden_cell"
+                    } else {
+                        "already_revealed"
+                    }
                 } else {
-                    "terrain_not_ported_no_reveal_grant"
+                    "inactive_round"
                 });
-                // Known142 layout; do not infer cleared terrain or release hidden
-                // claims before the terrain kernel/committed158 proof is ported.
             }
             124 => {
                 let member = r.member(self.identity, self.connection)?;
@@ -900,6 +945,11 @@ impl Session {
                     request.decision("inactive_round")
                 };
                 if decision.accepted {
+                    if request.kind() == 0 {
+                        let slot = usize::from(member.slot);
+                        let maximum = [10, 7][slot];
+                        next.bomb_capacity[slot] = (next.bomb_capacity[slot] + 1).min(maximum);
+                    }
                     let Phase::Armed { round } = next.phase else {
                         unreachable!("accepted only in armed round")
                     };
@@ -1096,6 +1146,15 @@ mod tests {
         assert!(rb.try_recv().is_err());
         // Spawn and due158 each need one reserved slot per recipient. A failed
         // publication must leave ID1/serial1/capacity available for a real retry.
+        shared.lock().unwrap().model.terrain = Some(crate::terrain::tests::map());
+        shared
+            .lock()
+            .unwrap()
+            .model
+            .terrain
+            .as_mut()
+            .unwrap()
+            .begin(round);
         let mut bomb_body = Vec::new();
         for (value, width) in [
             (12346, Width::U32),
@@ -1118,6 +1177,7 @@ mod tests {
             tb.try_send(Runtime::member_batch(peer, Some(round), 0, vec![]))
                 .unwrap_or_else(|_| panic!("fill B"));
         }
+        bomb_body[11] = kr_wire::write_uint(4, Width::U8).unwrap()[0];
         assert!(session.packet(118, &bomb_body).is_err());
         assert!(session.inbox.try_recv().is_err());
         for _ in 0..2 {
@@ -1144,7 +1204,29 @@ mod tests {
             .bombs
             .delivered(ticket, *recipient);
         assert!(session.valid(&due_a));
+        assert_eq!(
+            shared
+                .lock()
+                .unwrap()
+                .model
+                .terrain
+                .as_ref()
+                .unwrap()
+                .clearance(round, 3, 5),
+            None
+        );
         session.finish(&due_a).unwrap();
+        assert_eq!(
+            shared
+                .lock()
+                .unwrap()
+                .model
+                .terrain
+                .as_ref()
+                .unwrap()
+                .clearance(round, 3, 5),
+            Some(1)
+        );
         assert!(!session.valid(&due_a));
         // Counter does not reuse the old wire ID; leave invalidates every due job.
         bomb_body[6..10].copy_from_slice(&kr_wire::write_uint(2, Width::U32).unwrap());
