@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP240: Rust native hai outcome đối nghịch/175-180/reset/Ready2-Start3 đạt subset; M3 còn control UDP cũ, item reset/contest, dead-owner và hostEOF scene return. CP239 PR310/35bb05f merged; AUD069 qua240/audit kế244. Internet thật chưa kiểm.
+CP241: Rust pending-hostEOF→survivor forfeit175/180/nativeIDclear/chief/Room/pastduefence đã có;41tests/50TCP. M3 còn item consumed-reset/contest, exactoldUDP/currentpositive, queue controls. CP240 PR311/c7dd615 merged;AUD069qua240/kế244. Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -82,14 +82,16 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    Không lặp lại nativepositive chỉđể thêmCP; oneepoch này chưa native reset/chainvariants/generalphysics.
    [CP240](PROTOCOL.md#rust-life-results) đã có report17/19→170, hai outcome đối nghịch/175-180/refresh/Ready2-Start3
    trên hai KR/Wine; 44 kernelTCP gồm cursor qua vòng mới/closed202-585/idle deadline. Native peer21clear/all-dead chưa chạy.
-   **Tiếp M3: consumed-item reset/contest; exact UDP cũ ở vòng mới + current positive; dead-owner/queue controls;
-   hostEOF với bom chờ đưa peer về Room, IDclear/chief và fence qua due.** Dùng contract CP188/189/155, không quét RE lại.
+   [CP241](PROTOCOL.md#rust-return-cleanup) đã đo hostB EOF sau actual118/159 trước fuse: A nhận forfeit175/180,
+   native107ID2→0/110chief/UI phòng/4s hold và no158; dead-owner118/noID, drain/fresh21/EOF kiểm riêng trong50kernelTCP.
+   **Tiếp M3: consumed-item reset/contest; exact UDP cũ ở vòng mới + current positive; queue controls** còn thiếu.
+   Dùng contract CP188/189/155, không quét RE lại. LoadingEOF/EOF khi Ending đã chọn có giới hạn riêng, không suy mọi disconnect.
    Giữ report-derived/designauthority; M5backend độc lập, không chờ fullauth/SDKRE.
    Opaque167/body4,16hoặc32 giữArmedmember/budget64/noACK-effect-forward/semanticsunknown; không mởmọiopcode.
    Catalog lấy từcùng582 đã pin, hiddenlist2 chỉeligible saucurrentclearance+142đúngô; `123/10` là observedopaque có budget64/Armedmember,
    noACK-effect-forward, semanticsunknown. Không lấy nativepositive để suy originalauthority/fullmovementlaw/M3complete.
    Chọn backend/config trước run, freeze đến seal/cleanup; Python giữ reference/serving và rollback.
-   Sprite A còn sau EOF thuộc fullscene/outcome/return ở M3, không gọi roster107 đã giải gameplaydisconnect.
+   Sprite/scene sau active hostEOF đã có control CP241; không backfill CP235/240107-110 giữa Battle thành fullreturn.
    Native wrong-version error UI chưa kiểm; guard unsupportedoperatorprofile trước bind đã đủ scope M2 được nêu rõ.
    Shutdown timeout CP234 chưa rõ rootcause, tái hiện kernelCP237/SIGKILLwait rồiPIDgone;22caserepeatinstrumented đạt; giữ phép đo PID/thread
    khi tái hiện ở M7, không tăng deadline hoặc gọi đã fix. Không mở fullauth/SDK/generalroom/broadRE làm dependency.
@@ -131,7 +133,7 @@ Owner/selfcheck Codex, independentreviewwaived; PR/exacthead vẫn bắt buộc.
 | RUST-M0 Baseline/reproducibility | Đạt scopeCP231: exactPython784a0d8/archive/server-tools/47fixturepins/CP181recipe/rollback; támWIP loại khỏi baseline. Không standaloneclientbundle |
 | RUST-M1 Foundation + wire/connection chạy native | Đạt scopeCP231: Rustmode2/selector3/pinnedhello-WCP/nativeerror1→ordinaryretry→error1/seqreset;5wire+14TCPcases. Chưa login thành công/sảnh/fullcodec; M2 tiếp, M5backend độc lập |
 | RUST-M2 Bootstrap→local login/identity→sảnh→fixedroom | CP235đạt scoped:2actualfixedroom/ownslots/hostBack-rejoin/Ready/barrier/clock-spawn+healthyBsessionEOF;negative/profileguard có phương pháp và giới hạn. Khôngaccountauth/generalroom/Battle. Diagnosticidentity không fullauth, tiếp contract đã biết |
-| RUST-M3 Hai client native→Battlebasic→result/reset/trận2 | CP240partial: movement/bom/terrain/basicitems và hai native outcome/reset/Start3 đã có; còn consumed-item reset/contest, exactoldUDP/currentpositive, dead-owner/queue và hostEOF scene return. M2; account/DB backend không cần đợi M3. GiữUDP trực tiếp, không authoritativeengine rewrite |
+| RUST-M3 Hai client native→Battlebasic→result/reset/trận2 | CP240partial: movement/bom/terrain/basicitems và hai native outcome/reset/Start3 đã có; còn consumed-item reset/contest, exactoldUDP/currentpositive và queue controls;CP241activehostEOF nativeRoom,dead-owner/drain kernelcontrols. M2; account/DB backend không cần đợi M3. GiữUDP trực tiếp, không authoritativeengine rewrite |
 | RUST-M4 Bốn rồi tám/đội hình cố định theo contract | M3; baselinefourmain trước eight; dùng CP213teamdelta sau deliveryriêng, không chờ mọi item/mission |
 | RUST-M5 Account/profile/DB và sessionownership | CP236 backend đầu tiên: SQLite/Argon2id/identity-profile/session/auditCLI, 11tests+33CLIprocess; chưa fullM5. Backend có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
 | RUST-M6 Inventory/progression/result-reward durability | Backend M5, actualmatchinput M3; KRwireprojection/effect cần từngconsumer. Không cần full8/mọiitem để làm ledger |

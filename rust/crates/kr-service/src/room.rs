@@ -235,6 +235,24 @@ impl Room {
         };
         Ok(round)
     }
+    /// CP188/189 chosen forfeit policy: invalidate every pending job immediately,
+    /// retain current survivor membership until delayed rank/return/cleanup.
+    pub fn abort_play(&mut self, key: Membership) -> io::Result<u64> {
+        if !self.current(key) {
+            return Err(io::Error::other("stale abort membership"));
+        }
+        let Phase::Armed { round } = self.phase else {
+            return Err(io::Error::other("forfeit requires active Battle"));
+        };
+        self.leave(key)?;
+        if !self.members.is_empty() {
+            self.phase = Phase::Ending {
+                round,
+                refreshed: BTreeSet::new(),
+            };
+        }
+        Ok(round)
+    }
     pub fn outcome_deliverable(&self, key: Membership, round: u64) -> bool {
         self.current(key)
             && matches!(self.phase, Phase::Ending { round: current, .. } if current == round)
@@ -368,6 +386,29 @@ mod tests {
         r.setup(b).unwrap();
         r.ready(b).unwrap();
         (r, a, b)
+    }
+    #[test]
+    fn active_abort_fences_jobs_and_keeps_survivor_until_forfeit_refresh() {
+        let (mut r, a, b) = prepared();
+        let round = r.begin(a).unwrap();
+        r.ack(a, round).unwrap();
+        r.ack(b, round).unwrap();
+        assert_eq!(r.abort_play(a).unwrap(), round);
+        assert_eq!(r.host, Some(2));
+        assert!(!r.current(a));
+        assert!(r.outcome_deliverable(b, round));
+        assert!(!r.deliverable(b, Some(round)));
+        assert!(r.abort_play(a).is_err());
+        assert!(r.begin(b).is_err());
+        r.refreshed(b, round).unwrap();
+        assert_eq!(r.phase, Phase::Idle);
+        assert!(!r.outcome_deliverable(b, round));
+        let rejoin = r.enter(1, 33, false).unwrap();
+        r.setup(rejoin).unwrap();
+        r.ready(rejoin).unwrap();
+        let next = r.begin(b).unwrap();
+        assert_eq!(next, round + 1);
+        assert!(r.refreshed(b, round).is_err());
     }
     #[test]
     fn outcome_barrier_blocks_start_and_old_completion_cannot_adopt_next_round() {
