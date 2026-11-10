@@ -77,14 +77,14 @@ def main():
     evidence = [dict(path=str(p), bytes=p.stat().st_size, sha256=sha(p))
                 for p in sorted(root.rglob('*')) if p.is_file()]
     text = (root / 'process.log').read_text(errors='replace')
-    ok = code == 0 and unchanged and len(databases) == 5 and '5 passed; 0 failed' in text
+    ok = code == 0 and unchanged and len(databases) == 7 and '7 passed; 0 failed' in text
     report = dict(result='pass' if ok else 'fail', duration_s=time.monotonic()-started,
         returncode=code, pid=process.pid, remaining_pid=None if process.poll() is not None else process.pid,
         source_frozen=unchanged, binary_sha256=sha(binary), databases=databases, evidence=evidence,
         limits='Backend design; real SQLite/KDF/dedicated thread on current-thread Tokio, no KR/native wire bridge, idleTTL/rate/load/OSdiskfull/restore or hard OS I/O deadline claim. Expected injected worker panic/audit fault retained in passing test log.')
     (root / 'verification.json').write_text(json.dumps(report, indent=2)+'\n')
     assert ok, 'worker acceptance failed; retained raw and process log'
-    print('PASS 5 worker cases/5 retained SQLite DBs/source frozen/process gone; no KR bridge proof')
+    print('PASS 7 worker cases/7 retained SQLite DBs/source frozen/process gone; no KR bridge proof')
 
 
 if __name__ == '__main__':

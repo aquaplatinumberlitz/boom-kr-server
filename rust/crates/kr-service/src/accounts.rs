@@ -16,6 +16,8 @@ use std::{
 use zeroize::Zeroizing;
 
 const MIGRATION: &str = include_str!("../migrations/0001_accounts.sql");
+const MIGRATION_IDLE: &str = include_str!("../migrations/0002_session_idle.sql");
+pub const SCHEMA_VERSION: i32 = 2;
 const APPLICATION_ID: i32 = 0x4b524143;
 const TTL_MAX: i64 = 86_400;
 static HASH_WORK: AtomicUsize = AtomicUsize::new(0);
@@ -250,8 +252,11 @@ impl Store {
     fn migrate(db: &mut Connection) -> Result<()> {
         let tx = db.transaction_with_behavior(TransactionBehavior::Immediate)?;
         let app: i32 = tx.pragma_query_value(None, "application_id", |r| r.get(0))?;
-        let version: i32 = tx.pragma_query_value(None, "user_version", |r| r.get(0))?;
-        let digest = hex(&Sha256::digest(MIGRATION.as_bytes()));
+        let mut version: i32 = tx.pragma_query_value(None, "user_version", |r| r.get(0))?;
+        let digests = [
+            hex(&Sha256::digest(MIGRATION.as_bytes())),
+            hex(&Sha256::digest(MIGRATION_IDLE.as_bytes())),
+        ];
         if app == 0 && version == 0 {
             let count: i64 = tx.query_row(
                 "SELECT count(*) FROM sqlite_master WHERE name NOT LIKE 'sqlite_%'",
@@ -262,17 +267,34 @@ impl Store {
                 return Err(Error::Schema);
             }
             tx.execute_batch(MIGRATION)?;
-            tx.execute("INSERT INTO schema_migrations VALUES(1,?1)", [&digest])?;
+            tx.execute("INSERT INTO schema_migrations VALUES(1,?1)", [&digests[0]])?;
             tx.pragma_update(None, "application_id", APPLICATION_ID)?;
             tx.pragma_update(None, "user_version", 1)?;
-        } else if app != APPLICATION_ID || version != 1 {
+            version = 1;
+        } else if app != APPLICATION_ID || !(1..=SCHEMA_VERSION).contains(&version) {
             return Err(Error::Schema);
         }
         let migrations: Vec<(i32, String)> = tx
             .prepare("SELECT version,sha256 FROM schema_migrations ORDER BY version")?
             .query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?
             .collect::<std::result::Result<_, _>>()?;
-        if migrations != [(1, digest)] {
+        let wanted: Vec<_> = digests
+            .iter()
+            .take(version as usize)
+            .enumerate()
+            .map(|(i, s)| (i as i32 + 1, s.clone()))
+            .collect();
+        if migrations != wanted {
+            return Err(Error::Schema);
+        }
+        // Validate the old live schema BEFORE upgrading, so a migration cannot
+        // conceal a pre-existing missing index/foreign trigger/altered constraint.
+        let expected = Connection::open_in_memory()?;
+        expected.execute_batch(MIGRATION)?;
+        if version == SCHEMA_VERSION {
+            expected.execute_batch(MIGRATION_IDLE)?;
+        }
+        if Self::schema(&tx)? != Self::schema(&expected)? {
             return Err(Error::Schema);
         }
         let state: (i64, i64, i64) = tx.query_row(
@@ -287,12 +309,14 @@ impl Store {
         if state.0 < 0 || state.1 < 0 || state.2 <= max_wire || state.2 > 4_294_967_296 {
             return Err(Error::Schema);
         }
-        // A checksum identifies the migration source, not the live DB schema.
-        // Check the actual tables/indexes/triggers too (including missing UNIQUE).
-        let expected = Connection::open_in_memory()?;
-        expected.execute_batch(MIGRATION)?;
-        if Self::schema(&tx)? != Self::schema(&expected)? {
-            return Err(Error::Schema);
+        if version == 1 {
+            tx.execute_batch(MIGRATION_IDLE)?;
+            tx.execute("INSERT INTO schema_migrations VALUES(2,?1)", [&digests[1]])?;
+            tx.pragma_update(None, "user_version", SCHEMA_VERSION)?;
+            expected.execute_batch(MIGRATION_IDLE)?;
+            if Self::schema(&tx)? != Self::schema(&expected)? {
+                return Err(Error::Schema);
+            }
         }
         tx.commit()?;
         Ok(())
@@ -423,6 +447,31 @@ impl Store {
         Self::player(&self.db, account)
     }
     pub fn login(&mut self, login: &str, password: &[u8], ttl: i64, now: i64) -> Result<Grant> {
+        self.issue_session(login, password, ttl, None, now)
+    }
+    /// Company backend policy, opt-in for new sessions. Existing schema1 sessions
+    /// retain absolute TTL after migration; only successful own-player auth renews.
+    pub fn login_with_idle(
+        &mut self,
+        login: &str,
+        password: &[u8],
+        ttl: i64,
+        idle: i64,
+        now: i64,
+    ) -> Result<Grant> {
+        if !(1..=TTL_MAX).contains(&idle) {
+            return Err(Error::InvalidInput);
+        }
+        self.issue_session(login, password, ttl, Some(idle), now)
+    }
+    fn issue_session(
+        &mut self,
+        login: &str,
+        password: &[u8],
+        ttl: i64,
+        idle: Option<i64>,
+        now: i64,
+    ) -> Result<Grant> {
         let login = login_name(login)?;
         if !(1..=TTL_MAX).contains(&ttl) {
             return Err(Error::InvalidInput);
@@ -443,7 +492,7 @@ impl Store {
         if !valid || disabled {
             return Err(Error::InvalidCredentials);
         }
-        self.issue(account, phc, version, ttl, now)
+        self.issue(account, phc, version, ttl, idle, now)
     }
     fn issue(
         &mut self,
@@ -451,6 +500,7 @@ impl Store {
         phc: String,
         version: i64,
         ttl: i64,
+        idle: Option<i64>,
         now: i64,
     ) -> Result<Grant> {
         let raw = Zeroizing::new(self.random::<32>()?);
@@ -464,17 +514,19 @@ impl Store {
             // win over an in-flight hash; never publish a session for old credentials.
             let current: (String,i64,bool) = tx.query_row("SELECT password_phc,credential_version,disabled FROM accounts WHERE id=?1", [account], |r| Ok((r.get(0)?,r.get(1)?,r.get(2)?)))?;
             if current!=(phc,version,false) { return Err(Error::InvalidCredentials); }
-            tx.execute("UPDATE sessions SET revoked_at=?1 WHERE revoked_at IS NULL AND expires_at<=?1", [now])?;
+            tx.execute("UPDATE sessions SET revoked_at=?1 WHERE revoked_at IS NULL AND (expires_at<=?1 OR (idle_timeout_seconds IS NOT NULL AND last_seen_at<=?1-idle_timeout_seconds))", [now])?;
             if tx.query_row("SELECT count(*) FROM sessions WHERE account_id=?1 AND revoked_at IS NULL", [account], |r| r.get::<_,i64>(0))? != 0 { return Err(Error::ActiveSession); }
-            tx.execute("INSERT INTO sessions(account_id,token_hash,boot_epoch,credential_version,issued_at,expires_at) VALUES(?1,?2,?3,?4,?5,?6)", params![account,digest,epoch,version,now,expires])?;
+            tx.execute("INSERT INTO sessions(account_id,token_hash,boot_epoch,credential_version,issued_at,expires_at,idle_timeout_seconds,last_seen_at) VALUES(?1,?2,?3,?4,?5,?6,?7,?8)", params![account,digest,epoch,version,now,expires,idle,idle.map(|_|now)])?;
             Ok(Grant {player:Self::player(tx,account)?,token,expires_at:expires})
         })
     }
     pub fn authorize(&mut self, token: &Token, expected_player: i64, now: i64) -> Result<Player> {
         let digest = token.digest();
         self.at(now, |tx| {
-            let account: Option<i64> = tx.query_row("SELECT a.id FROM sessions s JOIN accounts a ON a.id=s.account_id JOIN runtime_state r ON r.id=1 JOIN players p ON p.account_id=a.id WHERE s.token_hash=?1 AND p.id=?2 AND s.revoked_at IS NULL AND s.expires_at>?3 AND s.issued_at<=?3 AND s.boot_epoch=r.epoch AND s.credential_version=a.credential_version AND a.disabled=0", params![digest,expected_player,now], |r| r.get(0)).optional()?;
-            Self::player(tx,account.ok_or(Error::InvalidSession)?)
+            let account: Option<i64> = tx.query_row("SELECT a.id FROM sessions s JOIN accounts a ON a.id=s.account_id JOIN runtime_state r ON r.id=1 JOIN players p ON p.account_id=a.id WHERE s.token_hash=?1 AND p.id=?2 AND s.revoked_at IS NULL AND s.expires_at>?3 AND s.issued_at<=?3 AND s.boot_epoch=r.epoch AND s.credential_version=a.credential_version AND a.disabled=0 AND (s.idle_timeout_seconds IS NULL OR s.last_seen_at>?3-s.idle_timeout_seconds)", params![digest,expected_player,now], |r| r.get(0)).optional()?;
+            let account=account.ok_or(Error::InvalidSession)?;
+            tx.execute("UPDATE sessions SET last_seen_at=?1 WHERE token_hash=?2 AND account_id=?3 AND idle_timeout_seconds IS NOT NULL",params![now,digest,account])?;
+            Self::player(tx,account)
         })
     }
     /// Worker-only compensation for a committed login result never accepted by

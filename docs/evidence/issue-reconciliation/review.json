@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP243",
+  "as_of": "CP244",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP242M3scopedaccepted/PR313da1b925merged. CP243M5typedboundedDB-KDFworker/loginresulthandoff/exacttokencompensation/49Rusttests/5retainedSQLiteDBs.",
-      "remaining": "M5idleTTL/rate/nativeKRbridge/worker-to-servingintegration; M4capacity/M6durability/M7rooms/M8ops. No nativeaccountauth yet.",
-      "next_test": "PLANM5idleTTL/rate thenM4; nextCP244periodicaudit. No duplicateM3nativepositive/broadSDKRE.",
+      "known": "M3CP242scopedaccepted;M5CP236Store/CP243workerPR314merged/CP244schema2idleTTL-ratebackend/55Rust7workerDBs/5migrationcopies10opens/33CLIregression.",
+      "remaining": "NativeKRbridge/multitransportownership/worker-to-serving;M4capacity/M6durability/M7rooms/M8ops. Rateprocesslocal/no productionabuseclaim.",
+      "next_test": "PLANM4four→eight;M5bridgegaponly;AUD070through244/next248/no duplicateM3positive.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Manual backendAPI/state/lifecycle + retainedDBsummary review. Backend worker is independent of gameplayRE; no KRwire/authgate or epicclosure.",
+      "reason": "Manualbackendpolicy/migrationconservation/rawDBs/audit review, no nativeaccountauth/servicegate or epicclosure.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -281,7 +281,8 @@
         "docs/PROTOCOL.md#rust-life-results",
         "docs/PROTOCOL.md#rust-return-cleanup",
         "docs/PROTOCOL.md#rust-m3-acceptance",
-        "docs/PROTOCOL.md#rust-account-worker"
+        "docs/PROTOCOL.md#rust-account-worker",
+        "docs/PROTOCOL.md#rust-account-idle-rate"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -397,7 +398,8 @@
         "docs/evidence/rust-service/return-cleanup.json",
         "docs/evidence/rust-service/m3-acceptance.json",
         "docs/evidence/rust-service/m3-controls.json",
-        "docs/evidence/rust-service/account-worker.json"
+        "docs/evidence/rust-service/account-worker.json",
+        "docs/evidence/rust-service/account-idle-rate.json"
       ],
       "prs": [
         173,
@@ -513,7 +515,8 @@
         310,
         311,
         312,
-        313
+        313,
+        314
       ],
       "successors": []
     },
@@ -852,11 +855,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP242M3scopedaccepted/PR313da1b925merged. CP243M5typedboundedDB-KDFworker/loginresulthandoff/exacttokencompensation/49Rusttests/5retainedSQLiteDBs.",
-      "remaining": "M5idleTTL/rate/nativeKRbridge/worker-to-servingintegration; M4capacity/M6durability/M7rooms/M8ops. No nativeaccountauth yet.",
-      "next_test": "PLANM5idleTTL/rate thenM4; nextCP244periodicaudit. No duplicateM3nativepositive/broadSDKRE.",
+      "known": "M3CP242scopedaccepted;M5CP236Store/CP243workerPR314merged/CP244schema2idleTTL-ratebackend/55Rust7workerDBs/5migrationcopies10opens/33CLIregression.",
+      "remaining": "NativeKRbridge/multitransportownership/worker-to-serving;M4capacity/M6durability/M7rooms/M8ops. Rateprocesslocal/no productionabuseclaim.",
+      "next_test": "PLANM4four→eight;M5bridgegaponly;AUD070through244/next248/no duplicateM3positive.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Manual backendAPI/state/lifecycle + retainedDBsummary review. Backend worker is independent of gameplayRE; no KRwire/authgate or epicclosure.",
+      "reason": "Manualbackendpolicy/migrationconservation/rawDBs/audit review, no nativeaccountauth/servicegate or epicclosure.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -893,7 +896,8 @@
         "docs/PROTOCOL.md#rust-return-cleanup",
         "docs/PROTOCOL.md#own-profile-result-compare",
         "docs/PROTOCOL.md#rust-m3-acceptance",
-        "docs/PROTOCOL.md#rust-account-worker"
+        "docs/PROTOCOL.md#rust-account-worker",
+        "docs/PROTOCOL.md#rust-account-idle-rate"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -929,7 +933,8 @@
         "docs/evidence/rust-service/return-cleanup.json",
         "docs/evidence/rust-service/m3-acceptance.json",
         "docs/evidence/rust-service/m3-controls.json",
-        "docs/evidence/rust-service/account-worker.json"
+        "docs/evidence/rust-service/account-worker.json",
+        "docs/evidence/rust-service/account-idle-rate.json"
       ],
       "prs": [
         286,
@@ -959,7 +964,8 @@
         310,
         311,
         312,
-        313
+        313,
+        314
       ],
       "successors": []
     }

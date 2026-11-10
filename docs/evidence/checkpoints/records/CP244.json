@@ -1,0 +1,315 @@
+{
+  "id": "CP244",
+  "previous": "CP243",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T06:59:09.229724+00:00",
+  "context_commit": "dc71e337b9c2b2d0100de3882c2a1698083935f6",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M5/KRE-074: add opt-in idleTTL and bounded shared per-principal rate independentlygameplay, prove historicalschema1account/sessiondata conservation; periodicAUD070through244/noreset.",
+  "scope": "Schema2transaction/oldlivevalidation/0001immutablehash/idleonlynewsession-owner-renew/maxabsolute/clock-reopen;workerfixedwindow-clones-bounds/fullqueuecharge;55Rust7workerDBs/5oldcopies10opens/33CLI/AUD070/M5bridgepartial.",
+  "artifacts": [
+    {
+      "name": "Rustidle-ratecompiledLinux-testbinary/nativeKRnotrun",
+      "sha256": "70c392e838fb6ef781abf334574e527e9dd503644a063f7e5f8a6657ebe5cb60"
+    },
+    {
+      "name": "Rustkr-servicebuilt-only-atCP244/nativebaselinekeptCP242",
+      "sha256": "cf1ad8fdf1b8e97388e6fcf4d8d5c71a46fb16a4bdaaa5e79a341d5dadc29855"
+    },
+    {
+      "name": "Rustkr-adminschema2migrationCLI",
+      "sha256": "835b03f80d56e506a964e4825017a4032893bdfd91ff9915d8dd0e9a36cf3061"
+    },
+    {
+      "name": "Immutable0001migrationfromCP236",
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/accounts.rs/migrate-issue_session-issue-authorize/0002_session_idle.sql/schema2",
+    "rust/crates/kr-service/src/account_worker/rate.rs/Limiter-check-commit/Admission-lock/sharedclones/try_login_with_idle",
+    "tools/test_rust_idle_migration.py/5sealedoldcopies-10opens/allbusinessoldrowsdigest/schema2-oldidleNULL/baselineunchanged",
+    "CP243PR314mergeddc71e33/M3CP242scopednativebaseline/AUD070through244next248/noreset"
+  ],
+  "findings": [
+    {
+      "summary": "Schema2 validatesapp/version/checksum/liveoldschema BEFORE upgrade,then002transaction/checksum/live schema.0001sourcehashunchanged.5sealedCP243DBcopies/10CLIopens preserveeveryoldbusinessrow/field/ID-profile-PHC-tokenhash-audit-UTC,oldidleNULL/absoluteTTL/repeatopen;baselineunchanged. SQLiteFULLupgrade rollbackcolumns-version-data test,CLIinitreportsactual2.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-idle-rate",
+      "evidence": [
+        "RUST244-00309",
+        "RUST244-00305",
+        "RUST244-00123"
+      ],
+      "limits": "Designbackend/schema2/typedworkeronly/noKRauthlease-nativeownership-servingintegration/M5partial. OldsessionsabsoluteTTL/newidleoptin;rateperworkerprocesslocal/reopenreset/noglobalabuseclaim. MigrationSQLiteFULLnotOSdiskfull/no productionrestore/downgrade. M3nativeCP242baselinekept/backendbuildnotnativecertified. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Newsessionidleoptin1..86400 throughStore/worker;onlycorrectcurrenttoken+ownplayer/epoch/version/disabled/absolute-idlewindow renewlast_seen. Wrongplayer/token no renewal/absoluteceiling/clockrollback-reopen no revive. Newloginrevokeidleexpiredtransaction;externalban-revoke still wins. NoKRtransportautoactivity/binding.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-idle-rate",
+      "evidence": [
+        "RUST244-00309",
+        "RUST244-00376",
+        "RUST244-00318"
+      ],
+      "limits": "Designbackend/schema2/typedworkeronly/noKRauthlease-nativeownership-servingintegration/M5partial. OldsessionsabsoluteTTL/newidleoptin;rateperworkerprocesslocal/reopenreset/noglobalabuseclaim. MigrationSQLiteFULLnotOSdiskfull/no productionrestore/downgrade. M3nativeCP242baselinekept/backendbuildnotnativecertified. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Sharedworkercloneadmissionfixedwindow/casefoldSHAprincipal/default5-60s-1024keys/configbounds1-1000-3600s-4096keys. Fullclosedqueue notcharged/acceptedcancelcharged/unknownsamepolicy/fulltableonlypruneexpired/noactiveeviction/monotonicnegativefailclosed. Processlocal/perworker/reopenreset/StoreCLItrustedbypass,notglobalnetworkabuseproof.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-idle-rate",
+      "evidence": [
+        "RUST244-00307",
+        "RUST244-00306",
+        "RUST244-00376"
+      ],
+      "limits": "Designbackend/schema2/typedworkeronly/noKRauthlease-nativeownership-servingintegration/M5partial. OldsessionsabsoluteTTL/newidleoptin;rateperworkerprocesslocal/reopenreset/noglobalabuseclaim. MigrationSQLiteFULLnotOSdiskfull/no productionrestore/downgrade. M3nativeCP242baselinekept/backendbuildnotnativecertified. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "55Rusttests/7workerrealSQLiteDBcases(sourcefrozen/PIDgone)/5oldmigrationcopies10CLIopens/33CLIregression2account9audit. CLIrun1passedwithnew002sourcepinmissing;preserveR1/add002pinbeforeR2pass. Compilefailmissingidleargandoldtestissueargkept/correctedbeforeacceptance. Rawsyntheticcredentialsprivate;notnativeKRauth/nativebinarycertification.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-idle-rate",
+      "evidence": [
+        "RUST244-00376",
+        "RUST244-00123",
+        "RUST244-00285",
+        "RUST244-00291"
+      ],
+      "limits": "Designbackend/schema2/typedworkeronly/noKRauthlease-nativeownership-servingintegration/M5partial. OldsessionsabsoluteTTL/newidleoptin;rateperworkerprocesslocal/reopenreset/noglobalabuseclaim. MigrationSQLiteFULLnotOSdiskfull/no productionrestore/downgrade. M3nativeCP242baselinekept/backendbuildnotnativecertified. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "AUD070periodic244 manuallyreadcoreorder/code/rawCP241-244:fixstaleM3pendingcurrentPLAN-RESEARCH/stateM3scopedaccepted;M5backendworker-idle-ratepresentnativebridgepartial;DBthreadnotAIworker. NextM4four-eight/bridgegaponly;Python8WIPbyteexact/historyimmutable/noauditcounterreset/next248. Loggercausality/retryfatal limitskept.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-idle-rate",
+      "evidence": [
+        "RUST244-00298",
+        "RUST244-00291",
+        "RUST244-00294"
+      ],
+      "limits": "Designbackend/schema2/typedworkeronly/noKRauthlease-nativeownership-servingintegration/M5partial. OldsessionsabsoluteTTL/newidleoptin;rateperworkerprocesslocal/reopenreset/noglobalabuseclaim. MigrationSQLiteFULLnotOSdiskfull/no productionrestore/downgrade. M3nativeCP242baselinekept/backendbuildnotnativecertified. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "55Rusttests/fmt/clippy/lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST244-00316",
+        "RUST244-00286",
+        "RUST244-00318",
+        "RUST244-00124"
+      ],
+      "limits": "50service+5wire;backendbuilt-only/notnativeKRproof."
+    },
+    {
+      "check": "7workerrealSQLitecases/sourcefrozen/7DBs/PIDgone",
+      "result": "pass",
+      "evidence": [
+        "RUST244-00376"
+      ],
+      "limits": "Backendidle-rate/ownershippolicy;notKRtransportbridge."
+    },
+    {
+      "check": "5sealed-v1DBcopies/10CLIopens/alloldrowsconservation",
+      "result": "pass",
+      "evidence": [
+        "RUST244-00123"
+      ],
+      "limits": "Copy-only/no originalevidencemutation;notproductionbackuprestore."
+    },
+    {
+      "check": "33CLIregression/full002pin",
+      "result": "pass",
+      "evidence": [
+        "RUST244-00285",
+        "RUST244-00217"
+      ],
+      "limits": "R1also33passbut002separatesourcepinmissing;R1kept,notfinalsourcepinacceptance."
+    },
+    {
+      "check": "Initialcompilefailures",
+      "result": "fail",
+      "evidence": [
+        "RUST244-00287",
+        "RUST244-00288"
+      ],
+      "limits": "Missingidleissueparameter/oldtestcallarityfixedbeforeacceptanceruns."
+    },
+    {
+      "check": "ManualAUD070/docs-catalog/issues/WIP",
+      "result": "pass",
+      "evidence": [
+        "RUST244-00291",
+        "RUST244-00298",
+        "RUST244-00003"
+      ],
+      "limits": "Codexselfcheck/reviewwaived/checkerdoesnotdecidesemantics/gates."
+    },
+    {
+      "check": "NativeKRaccountbridge/globalabuse/M4capacity/restore-load",
+      "result": "not_run",
+      "evidence": [
+        "RUST244-00294"
+      ],
+      "limits": "Designbackend/schema2/typedworkeronly/noKRauthlease-nativeownership-servingintegration/M5partial. OldsessionsabsoluteTTL/newidleoptin;rateperworkerprocesslocal/reopenreset/noglobalabuseclaim. MigrationSQLiteFULLnotOSdiskfull/no productionrestore/downgrade. M3nativeCP242baselinekept/backendbuildnotnativecertified. Internet thật chưa kiểm."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP244-rust-idle-rate.json",
+      "bytes": 101659,
+      "sha256": "0fd61fcd36e310453d973bff63a47cfd17ea88b1c96d432cc9991d4b3fa834da",
+      "count": 378
+    }
+  ],
+  "delta": {
+    "added": [
+      "M5backendidleTTL/schema2/per-worker-principalrate/55tests/7workerDBs/5migrationcopies-10opens/33CLI.",
+      "AUD070periodicthrough244-next248."
+    ],
+    "corrected": [
+      "CurrentPLAN-RESEARCHstaleM3pendingwording;stateCP242scopedacceptance/nextM4-M5bridge.",
+      "CLIinitliteral1nowactualschema2;harness002pinaddedafterR1beforeR2."
+    ],
+    "superseded": [
+      "M5backendidleTTL/rateentirelymissingcurrentstate;nowimplementedsubset/nativeKRintegrationstillmissing."
+    ]
+  },
+  "blockers": [
+    "Backenddesign/schema2/typedworker only; chưa KR account/transport lease/serving startup integration hoặc native authentication, M5 partial.",
+    "Old schema1 sessions giữ absolute TTL; idleTTL chỉ API login_with_idle mới, successful own-player authorize gia hạn.",
+    "Per-worker process-local fixed window, default5attempt/60s/1024principals, không global/durable/multiprocess/IP/device/network abuse defense; reopen reset rate. Store/adminCLI trusted bypass worker limiter.",
+    "Queuefull/closed không charge; admittedcancellation vẫn charge; default policy là companydesign không luật server KR gốc.",
+    "Schema2 không downgrade; rollback dùng binary hiểu schema2 hoặc restore đã kiểm/backup riêng, không xóa users/DB. OSdiskfull/backuprestore/load chưa nghiệm thu.",
+    "M3 native CP242 baseline giữ; build mới backend-only chưa native-certified. Internet thật chưa kiểm."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANM4baselinefourthen8usingmeasuredcontracts/knownPythonbaselineexcludeWIP;M5nativeownershipbridge/worker-to-KRgaponly separate. No duplicateM3nativepositive/broadSDKRE. AUD070through244next248.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T06:59:09.229724+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualbackend-idle-rate-migration/AUD070selfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/account-idle-rate.json",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD070.json",
+      "state": "updated",
+      "reason": "CP244M5backendidle-rate/schema2conservation/AUD070through244-next248/M4next/M5bridgepartial/historykept."
+    }
+  ]
+}

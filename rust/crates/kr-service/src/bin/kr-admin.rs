@@ -1,6 +1,6 @@
 //! Local trusted-administrator interface. JSON credentials are stdin-only.
 #![forbid(unsafe_code)]
-use kr_service::accounts::{Admin, Error, Store, Token};
+use kr_service::accounts::{Admin, Error, SCHEMA_VERSION, Store, Token};
 use serde::Deserialize;
 use serde_json::{Value, json};
 use std::{
@@ -88,7 +88,7 @@ fn run() -> Result<Value, Error> {
     .map_err(|_| Error::ClockRollback)?;
     let mut s = Store::open(Path::new(&args[1]))?;
     Ok(match r.command {
-        Command::Init {} => json!({"schema":1}),
+        Command::Init {} => json!({"schema":SCHEMA_VERSION}),
         Command::BeginInstance {} => json!({"epoch":s.begin_instance(&admin,now)?}),
         Command::Create {
             login,

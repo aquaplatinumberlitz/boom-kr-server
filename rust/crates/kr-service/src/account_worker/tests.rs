@@ -206,6 +206,7 @@ fn admission_is_bounded_cancelled_and_queue_expired_work_never_issues_a_token() 
                 login: "alice".into(),
                 password: Zeroizing::new(PASSWORD.to_vec()),
                 ttl: 60,
+                idle: None,
                 now: 101,
                 deadline: Instant::now() - Duration::from_secs(1),
                 reply,
@@ -356,5 +357,145 @@ fn unpolled_handoff_expires_on_real_worker_and_account_can_login_again() {
             Ok(next.player)
         );
         worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn cloned_principals_share_rate_but_full_queue_does_not_charge_and_cancelled_admission_does() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let policy = RatePolicy {
+            attempts: 2,
+            interval: Duration::from_secs(60),
+            principals: 2,
+        };
+        let worker = Worker::open_with_rate(temp.db(), 1, Duration::from_secs(5), policy)
+            .await
+            .unwrap();
+        let c = worker.client();
+        let clone = c.clone();
+        let resume = pause(&c).await;
+        let canceled = c.try_login("ALICE", PASSWORD, 60, 101).unwrap();
+        assert!(matches!(
+            clone.try_login("unknown", PASSWORD, 60, 101),
+            Err(Error::Busy)
+        ));
+        drop(canceled);
+        resume.send(()).unwrap();
+        let resume = pause(&c).await;
+        assert_eq!(temp.active(), 0);
+        resume.send(()).unwrap();
+        let grant = clone
+            .try_login("alice", PASSWORD, 60, 102)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        assert!(matches!(
+            c.try_login("ALICE", PASSWORD, 60, 102),
+            Err(Error::RateLimited)
+        ));
+        for _ in 0..2 {
+            assert!(matches!(
+                clone
+                    .try_login("unknown", PASSWORD, 60, 103)
+                    .unwrap()
+                    .wait()
+                    .await,
+                Err(Error::Backend(accounts::Error::InvalidCredentials))
+            ));
+        }
+        assert!(matches!(
+            c.try_login("UNKNOWN", PASSWORD, 60, 103),
+            Err(Error::RateLimited)
+        ));
+        assert!(matches!(
+            c.try_login("another", PASSWORD, 60, 103),
+            Err(Error::RateLimited)
+        ));
+        assert_eq!(
+            c.try_authorize(&grant.token, grant.player.player_id, 104)
+                .unwrap()
+                .wait()
+                .await,
+            Ok(grant.player)
+        );
+        worker.shutdown().await.unwrap();
+        let worker = Worker::open_with_rate(temp.db(), 1, Duration::from_secs(5), policy)
+            .await
+            .unwrap();
+        // Ephemeral admission counters reset on worker reopen. Session persistence
+        // does not: this reaches Store and returns ActiveSession, not RateLimited.
+        assert!(matches!(
+            worker
+                .client()
+                .try_login("alice", PASSWORD, 60, 105)
+                .unwrap()
+                .wait()
+                .await,
+            Err(Error::Backend(accounts::Error::ActiveSession))
+        ));
+        worker.shutdown().await.unwrap();
+    });
+}
+#[test]
+fn worker_idle_renews_only_correct_owner_and_external_revoke_still_wins() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let worker = Worker::open(temp.db(), 2, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let c = worker.client();
+        let g = c
+            .try_login_with_idle("alice", PASSWORD, 100, 10, 101)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        assert!(
+            c.try_authorize(&g.token, g.player.player_id, 109)
+                .unwrap()
+                .wait()
+                .await
+                .is_ok()
+        );
+        assert_eq!(
+            c.try_authorize(&g.token, g.player.player_id + 1, 118)
+                .unwrap()
+                .wait()
+                .await,
+            Err(Error::Backend(accounts::Error::InvalidSession))
+        );
+        let last: i64 = temp
+            .sql()
+            .query_row("SELECT last_seen_at FROM sessions", [], |r| r.get(0))
+            .unwrap();
+        assert_eq!(last, 109);
+        assert_eq!(
+            c.try_authorize(&g.token, g.player.player_id, 119)
+                .unwrap()
+                .wait()
+                .await,
+            Err(Error::Backend(accounts::Error::InvalidSession))
+        );
+        let g = c
+            .try_login_with_idle("alice", PASSWORD, 100, 10, 119)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        let mut store = Store::open(&temp.db()).unwrap();
+        store.revoke(&admin(), g.player.account_id, 120).unwrap();
+        assert_eq!(
+            c.try_authorize(&g.token, g.player.player_id, 121)
+                .unwrap()
+                .wait()
+                .await,
+            Err(Error::Backend(accounts::Error::InvalidSession))
+        );
+        worker.shutdown().await.unwrap();
+        assert_eq!(temp.active(), 0);
     });
 }

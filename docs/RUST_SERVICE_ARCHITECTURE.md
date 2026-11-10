@@ -40,7 +40,7 @@ M1 đã pin trong Cargo.lock/toolchain: Tokio1.53.3 cho boundedI/O/timeout/signa
 sha2 0.11.1 cho fixtureprovenance. kr-wire không dependency. bytes là transitiveTokio; chưa cần trực tiếp.
 CP236 đã thêm/build/test/merge Argon2id (`argon2=0.6.0`), SQLite bundled (`rusqlite=0.40.2`),
 `getrandom=0.4.3`, `zeroize=1.9.1` trong lockfile. [Backend account/DB](PROTOCOL.md#rust-account-backend)
-và CLI có CP236/11accounttests/33CLIprocess; CP243 thêm boundedworker/handoff/compensation (5worker cases/5retainedDBs). Chưa nối worker vào KR serving/idleTTL/rate/nativeKRbridge hoặc restore.
+và CLI có CP236/11accounttests/33CLIprocess; CP243 thêm boundedworker/handoff/compensation (5worker cases/5retainedDBs). CP244 thêm schema2/idleTTL/per-worker rate; chưa nối worker vào KR serving/nativeKRbridge hoặc restore.
 Tracing/metrics và HTTP framework chỉ thêm khi có nhu cầu; CLI hiện có không phải web/API đã phục vụ.
 `encoding_rs` chỉ thêm khi có consumer cp949 cần đối chiếu. Linux build/native proof đã có ở M1–M3 theo PLAN;
 chưa release package/SBOM/license audit hoặc vận hành production.
@@ -139,7 +139,7 @@ giữ measuredkeyrotation/exhaustion/peerlifetime và nativeoldframecontrol, kh�
 CP236 hiện thực lát cắt design dưới bằng [backend account](PROTOCOL.md#rust-account-backend) và
 [CLI](../rust/README.md#account-admin-cli); schema1 chỉ account/player-name-version/session/runtime-state/audit,
 không xem toàn bảng design phía dưới đã triển khai. Identity persistence/backend authorization đã testSQLite,
-CP243đãcóboundedworker/handoff/exacttokencompensation; chưa KRservingbridge/character/XP/inventory/ledger/outbox/idleTTL/rate/restore. M5 độc lập M3 theo PLAN.
+CP243đãcóboundedworker/handoff/exacttokencompensation, CP244 schema2/idleTTL/per-worker rate; chưa KRservingbridge/character/XP/inventory/ledger/outbox/restore. M5 độc lập M3 theo PLAN.
 
 Tách ba biên: **backend nội bộ design**, **admin/web/launcher interface mới design**, **wire KR phục hồi**.
 CLIcreateaccount hoặc webHTTPS không là màn đăng ký/login gốc đã chứng minh. Localfixtureauth137/291,

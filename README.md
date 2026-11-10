@@ -29,6 +29,16 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP244: M5 backend có idle TTL và rate limit; chưa nối account vào client KR.**
+[Contract](docs/PROTOCOL.md#rust-account-idle-rate), [raw/hash](docs/evidence/rust-service/README.md#cp244).
+Schema2 migration giữ mọi hàng/cột cũ trên5 bản sao DB CP243/10lần mở; session cũ giữ absoluteTTL.
+Session mới opt-in idleTTL, chỉ own-player authorize gia hạn; rate process-local dùng chung worker handles.
+55Rusttests,7worker cases/7DBs; accountCLI regression33process. M5 vẫn partial: nativeKRbridge/transportownership chưa đủ.
+CP243 merge [PR314](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/314)/`dc71e33`; M3 scoped đạt CP242.
+AUD070 quaCP244, audit kếCP248. PLAN chuyển M4 bốn rồi tám, bridge M5 riêng. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP243: M5 có worker DB/hash với queue hữu hạn, chưa nối đăng nhập KR.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-account-worker), [raw/hash](docs/evidence/rust-service/README.md#cp243).
 Tái dùng backend CP236: SQLite/KDF trên thread riêng, cancel/expiry khi chờ, handoff login và thu hồi đúng token
@@ -36,8 +46,6 @@ nếu caller không nhận. Lỗi audit thu hồi đóng worker/giữ rooterror;
 5 ca worker/5 SQLite DB giữ lại, toàn workspace49 tests; chưa idleTTL/rate/native ownership bridge, M5 vẫn partial.
 M3 basic hai client đã nghiệm thu [CP242](docs/PROTOCOL.md#rust-m3-acceptance)/[PR313](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/313),
 merge `da1b925`. Tiếp idleTTL/rate M5 rồi M4 theo PLAN; audit kếCP244. Internet thật chưa kiểm.
-
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP242: M3 đạt phạm vi Battle basic hai client KR trên Rust/Wine/LAN giả lập.**
 [Acceptance thủ công](docs/PROTOCOL.md#rust-m3-acceptance), [raw/hash](docs/evidence/rust-service/README.md#cp242).
