@@ -1,6 +1,7 @@
 //! Fixed-room adapters with bounded recipient queues and membership fences.
 use super::{ActorProfile, LobbyPacketPin, Reply};
 use crate::{
+    pickups,
     room::{Member, Membership, Phase, Room},
     room_wire,
 };
@@ -54,6 +55,12 @@ pub struct Runtime {
     ready: Reply,
     ips: HashMap<u32, u32>,
     ports: HashMap<Membership, u16>,
+    floor_catalog: pickups::Catalog,
+}
+#[derive(Default)]
+pub struct Observation {
+    pub dropped_after_abort: bool,
+    pub pickup: Option<pickups::Decision>,
 }
 pub struct Session {
     shared: Shared,
@@ -136,6 +143,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         .ok_or_else(|| err("missing actors"))?
         .packets["ready"]
         .clone();
+    let packets_floor_body = packets["floor"].payload.clone();
     Ok(Arc::new(Mutex::new(Runtime {
         model: Room::default(),
         packets,
@@ -151,6 +159,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
             .map(|(ip, a)| (a.identity, u32::from(*ip)))
             .collect(),
         ports: HashMap::new(),
+        floor_catalog: pickups::Catalog::from_floor(&packets_floor_body)?,
     })))
 }
 impl Runtime {
@@ -344,7 +353,7 @@ impl Session {
     pub fn handles(opcode: u32) -> bool {
         matches!(
             opcode,
-            81 | 82 | 585 | 86 | 95 | 104 | 99 | 528 | 127 | 96 | 266 | 190
+            81 | 82 | 585 | 86 | 95 | 104 | 99 | 528 | 127 | 96 | 266 | 190 | 124 | 123
         )
     }
     pub fn valid(&self, batch: &Batch) -> bool {
@@ -407,7 +416,7 @@ impl Session {
         }
         Ok(())
     }
-    pub fn packet(&self, opcode: u32, body: &[u8]) -> io::Result<bool> {
+    pub fn packet(&self, opcode: u32, body: &[u8]) -> io::Result<Observation> {
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
         if r.channels
             .get(&self.identity)
@@ -424,6 +433,7 @@ impl Session {
         let mut roster_pairs = Vec::new();
         let mut room_choice = None;
         let mut dropped_after_abort = false;
+        let mut pickup = None;
         match opcode {
             528 => {
                 if !body.is_empty() {
@@ -636,6 +646,7 @@ impl Session {
                     return Err(err("unsupported Start104 envelope"));
                 }
                 let round = next.begin(m.key)?;
+                next.pickups = pickups::Round::begin(round, &r.floor_catalog)?;
                 for peer in next.members.values() {
                     effects.push((
                         peer.key.identity,
@@ -681,11 +692,7 @@ impl Session {
                             };
                             endpoints[usize::from(peer.slot)] = (r.ips[&peer.key.identity], p);
                         }
-                        let key = 12345u32
-                            .checked_add(
-                                u32::try_from(round).map_err(|_| err("round key exhausted"))?,
-                            )
-                            .ok_or_else(|| err("round key exhausted"))?;
+                        let key = crate::room::wire_key(round)?;
                         for peer in next.members.values() {
                             effects.push((
                                 peer.key.identity,
@@ -750,6 +757,39 @@ impl Session {
                 // CP019/020 known map-selection/setup traffic; Python leaves
                 // these shapes unanswered. No new authority/side effect.
             }
+            123 => {
+                let m = r.member(self.identity, self.connection)?;
+                if body.len() != 10 {
+                    return Err(err("opaque123 measured size"));
+                }
+                next.observe_opaque123(m.key)?;
+            }
+            124 => {
+                let member = r.member(self.identity, self.connection)?;
+                let request = pickups::Request::parse(body)?;
+                let decision = if let Phase::Armed { round } = next.phase {
+                    next.pickups.claim(round, member.slot, &request)
+                } else {
+                    request.decision("inactive_round")
+                };
+                if decision.accepted {
+                    let Phase::Armed { round } = next.phase else {
+                        unreachable!("accepted only in armed round")
+                    };
+                    let reply = r.reply("start", Some(165), Some(request.confirmation()?));
+                    for peer in next.members.values() {
+                        let mut batch = Runtime::member_batch(
+                            peer.key,
+                            Some(round),
+                            0,
+                            vec![("floor165".into(), reply.clone())],
+                        );
+                        batch.subject = Some(member.key);
+                        effects.push((peer.key.identity, batch));
+                    }
+                }
+                pickup = Some(decision);
+            }
             127 => {
                 let m = r.member(self.identity, self.connection)?;
                 if !(1..=4096).contains(&body.len()) {
@@ -794,7 +834,10 @@ impl Session {
         if let Some((key, port)) = loaded_endpoint {
             r.ports.insert(key, port);
         }
-        Ok(dropped_after_abort)
+        Ok(Observation {
+            dropped_after_abort,
+            pickup,
+        })
     }
 }
 impl Drop for Session {
@@ -844,6 +887,7 @@ mod tests {
             ready: reply.clone(),
             ips: HashMap::new(),
             ports: HashMap::new(),
+            floor_catalog: pickups::Catalog::default(),
         };
         let mut next = runtime.model.clone();
         let key = next.enter(1, 11, true).unwrap();
@@ -866,5 +910,56 @@ mod tests {
         assert!(runtime.model.current(key));
         assert!(ra.try_recv().is_ok());
         assert!(rb.try_recv().is_ok());
+
+        // A successfully parsed claim must NOT be consumed when B's bounded
+        // queue cannot be reserved. Retry then reaches BOTH recipients once.
+        let mut active = runtime.model.clone();
+        let peer = active.enter(2, 22, false).unwrap();
+        active.setup(key).unwrap();
+        active.setup(peer).unwrap();
+        active.ready(peer).unwrap();
+        let round = active.begin(key).unwrap();
+        active.ack(key, round).unwrap();
+        active.ack(peer, round).unwrap();
+        active.pickups = pickups::Round::begin(round, &pickups::tests::catalog()).unwrap();
+        runtime.model = active;
+        runtime.packets.insert("start".into(), reply.clone());
+        tb.try_send(Runtime::member_batch(peer, Some(round), 0, vec![]))
+            .unwrap_or_else(|_| panic!("fill B"));
+        let shared = Arc::new(Mutex::new(runtime));
+        let session = Session {
+            shared: shared.clone(),
+            inbox: ra,
+            identity: 1,
+            connection: 11,
+        };
+        let mut body = Vec::new();
+        for (value, width) in [
+            (0, kr_wire::Width::U8),
+            (0, kr_wire::Width::U8),
+            (4, kr_wire::Width::U8),
+            (3, kr_wire::Width::U8),
+            (17, kr_wire::Width::U32),
+            (2, kr_wire::Width::U16),
+            (23, kr_wire::Width::U32),
+            (12346, kr_wire::Width::U32),
+            (0, kr_wire::Width::U8),
+        ] {
+            body.extend(kr_wire::write_uint(value, width).unwrap());
+        }
+        assert!(session.packet(124, &body).is_err());
+        assert!(rb.try_recv().is_ok());
+        let mut session = session;
+        assert!(session.inbox.try_recv().is_err());
+        assert!(session.packet(124, &body).unwrap().pickup.unwrap().accepted);
+        let a = session.inbox.try_recv().unwrap();
+        let b = rb.try_recv().unwrap();
+        assert_eq!(a.packets[0].1.opcode, 165);
+        assert_eq!(a.packets[0].1.payload, b.packets[0].1.payload);
+        assert!(!session.packet(124, &body).unwrap().pickup.unwrap().accepted);
+        assert!(session.inbox.try_recv().is_err());
+        assert!(rb.try_recv().is_err());
+        // This queue-only fixture has no native departure templates.
+        shared.lock().unwrap().channels.clear();
     }
 }

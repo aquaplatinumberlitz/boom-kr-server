@@ -29,6 +29,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP237: Rust đã có movement hai chiều và nhặt Roller trên client KR thật.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-movement-floor), [raw/hash](docs/evidence/rust-service/README.md#cp237).
+Hai cửa sổ ADown/BRight có PCAP217UDP→87ingress native→key/apply→peerposition; TCP368/58reply khớp.
+Actual124/index17→một165 mỗi view, native12/12/errors0/itemfound và stat5→6. 58raw run cuối/cleanup0;
+51+55raw hai run lỗi giữ nguyên. 30Rusttests/22TCPcases/696copiedgetters/87nativeCRC đạt.
+M3 **còn dở**: bom/terrain/life/result-reset/haioutcome chưa port; `123/10` chỉ opaqueobserve policy có budget,
+chưa biết semantics. Shutdown timeout cũ tái hiện ở kerneltest, repeatinstrumented đạt nhưng chưa rõ nguyên nhân.
+CP236 account/DB đã merge [PR307](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/307)/`9748dcb`;
+[PLAN](docs/PLAN.md#current-order) tiếp allocator/bom theo contract đã đo. Audit kếCP240. Python/8WIP giữ.
+Internet thật chưa kiểm.
+
 **CP236: M5 đã có lát cắt account/DB độc lập gameplay.**
 [Contract backend](docs/PROTOCOL.md#rust-account-backend), [CLI](rust/README.md#account-admin-cli),
 [bằng chứng](docs/evidence/rust-service/README.md#cp236): SQLite migration/checksum/schema thực, Argon2id,

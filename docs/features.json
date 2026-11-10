@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP236",
+  "as_of": "CP237",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1651,7 +1651,9 @@
           "docs/PROTOCOL.md#eight-team-variants",
           "docs/evidence/eight-player/README.md#cp213",
           "docs/evidence/rust-service/README.md#cp234",
-          "docs/evidence/rust-service/README.md#cp235"
+          "docs/evidence/rust-service/README.md#cp235",
+          "docs/evidence/rust-service/README.md#cp237",
+          "docs/evidence/rust-service/movement-floor.json"
         ]
       },
       "coverage": {
@@ -1719,7 +1721,8 @@
               "docs/PROTOCOL.md#eight-mesh-owner-bombs",
               "docs/PROTOCOL.md#eight-team-variants",
               "docs/PROTOCOL.md#rust-fixed-room",
-              "docs/PROTOCOL.md#rust-m2-acceptance"
+              "docs/PROTOCOL.md#rust-m2-acceptance",
+              "docs/PROTOCOL.md#rust-movement-floor"
             ]
           },
           "windows_original": {
@@ -1742,7 +1745,10 @@
             "docs/PROTOCOL.md#probe-service",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
             "docs/PROTOCOL.md#eight-session-preview",
-            "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+            "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+            "docs/PROTOCOL.md#rust-movement-floor",
+            "rust/crates/kr-service/src/pickups.rs",
+            "rust/crates/kr-service/src/room_io.rs"
           ],
           "delivery": "via_pr"
         },
@@ -1767,7 +1773,10 @@
             "docs/PROTOCOL.md#current-basic-contest-reset",
             "docs/PROTOCOL.md#emulated-lan-acceptance",
             "docs/PROTOCOL.md#routed-Wine-network",
-            "docs/PROTOCOL.md#eight-team-variants"
+            "docs/PROTOCOL.md#eight-team-variants",
+            "docs/PROTOCOL.md#rust-movement-floor",
+            "rust/crates/kr-service/src/pickups.rs",
+            "rust/crates/kr-service/src/room_io.rs"
           ]
         },
         "gate": {
@@ -2392,7 +2401,9 @@
           "docs/PROTOCOL.md#a-c-basic-cycles",
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/PROTOCOL.md#current-basic-cycles-291",
-          "docs/PROTOCOL.md#current-basic-contest-reset"
+          "docs/PROTOCOL.md#current-basic-contest-reset",
+          "docs/evidence/rust-service/README.md#cp237",
+          "docs/evidence/rust-service/movement-floor.json"
         ]
       },
       "coverage": {
@@ -2468,7 +2479,8 @@
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
-              "docs/PROTOCOL.md#current-basic-contest-reset"
+              "docs/PROTOCOL.md#current-basic-contest-reset",
+              "docs/PROTOCOL.md#rust-movement-floor"
             ]
           },
           "windows_original": {
@@ -2496,7 +2508,10 @@
             "docs/PROTOCOL.md#current-hidden-items",
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/97",
             "docs/PROTOCOL.md#basic-battle",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
+            "docs/PROTOCOL.md#rust-movement-floor",
+            "rust/crates/kr-service/src/pickups.rs",
+            "rust/crates/kr-service/src/room_io.rs"
           ]
         },
         "integration": {
@@ -2523,7 +2538,10 @@
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#current-basic-cycles-291",
-            "docs/PROTOCOL.md#current-basic-contest-reset"
+            "docs/PROTOCOL.md#current-basic-contest-reset",
+            "docs/PROTOCOL.md#rust-movement-floor",
+            "rust/crates/kr-service/src/pickups.rs",
+            "rust/crates/kr-service/src/room_io.rs"
           ]
         },
         "gate": {
@@ -2581,7 +2599,9 @@
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/PROTOCOL.md#emulated-lan-acceptance",
           "docs/PROTOCOL.md#four-owner-bombs",
-          "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+          "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+          "docs/evidence/rust-service/README.md#cp237",
+          "docs/evidence/rust-service/movement-floor.json"
         ]
       },
       "coverage": {
@@ -2636,7 +2656,8 @@
               "docs/PROTOCOL.md#current-basic-contest-reset",
               "docs/PROTOCOL.md#emulated-lan-acceptance",
               "docs/PROTOCOL.md#four-owner-bombs",
-              "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+              "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+              "docs/PROTOCOL.md#rust-movement-floor"
             ]
           },
           "windows_original": {
@@ -2664,7 +2685,10 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
             "docs/PROTOCOL.md#capacity-reservations",
             "server/test_capacity_reservations.py",
-            "docs/PROTOCOL.md#eight-mesh-owner-bombs"
+            "docs/PROTOCOL.md#eight-mesh-owner-bombs",
+            "docs/PROTOCOL.md#rust-movement-floor",
+            "rust/crates/kr-service/src/pickups.rs",
+            "rust/crates/kr-service/src/room_io.rs"
           ],
           "delivery": "via_pr"
         },
@@ -2684,7 +2708,10 @@
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/PROTOCOL.md#current-basic-cycles-291",
             "docs/PROTOCOL.md#current-basic-contest-reset",
-            "docs/PROTOCOL.md#emulated-lan-acceptance"
+            "docs/PROTOCOL.md#emulated-lan-acceptance",
+            "docs/PROTOCOL.md#rust-movement-floor",
+            "rust/crates/kr-service/src/pickups.rs",
+            "rust/crates/kr-service/src/room_io.rs"
           ]
         },
         "gate": {
@@ -4483,7 +4510,9 @@
           "docs/PROTOCOL.md#four-owner-bombs",
           "docs/PROTOCOL.md#four-two-team-cycles",
           "docs/PROTOCOL.md#four-portable-guards",
-          "docs/PROTOCOL.md#four-transport-bounds"
+          "docs/PROTOCOL.md#four-transport-bounds",
+          "docs/evidence/rust-service/README.md#cp237",
+          "docs/evidence/rust-service/movement-floor.json"
         ]
       },
       "coverage": {
@@ -4714,7 +4743,6 @@
             "docs/PROTOCOL.md#result-freshness-guard",
             "server/test_result_freshness.py",
             "docs/PROTOCOL.md#selector-closed-readiness",
-            "server/test_departure_send_failure.py",
             "docs/PROTOCOL.md#drained-result-local-clear",
             "docs/PROTOCOL.md#peer21-ending-order",
             "tools/probe_channel_identity.py",
@@ -4757,7 +4785,10 @@
             "server/test_four_player_service.py",
             "server/four_battle_policy.py",
             "server/test_four_battle_policy.py",
-            "server/test_four_input_guards.py"
+            "server/test_four_input_guards.py",
+            "docs/PROTOCOL.md#rust-movement-floor",
+            "rust/crates/kr-service/src/pickups.rs",
+            "rust/crates/kr-service/src/room_io.rs"
           ]
         },
         "integration": {
@@ -4851,7 +4882,10 @@
             "docs/PROTOCOL.md#portable-probe-bundle",
             "docs/PROTOCOL.md#emulated-lan-acceptance",
             "docs/PROTOCOL.md#routed-Wine-network",
-            "docs/PROTOCOL.md#four-transport-bounds"
+            "docs/PROTOCOL.md#four-transport-bounds",
+            "docs/PROTOCOL.md#rust-movement-floor",
+            "rust/crates/kr-service/src/pickups.rs",
+            "rust/crates/kr-service/src/room_io.rs"
           ]
         },
         "gate": {
@@ -4922,7 +4956,9 @@
           "docs/PROTOCOL.md#eight-team-variants",
           "docs/evidence/eight-player/README.md#cp213",
           "docs/evidence/rust-service/README.md#cp236",
-          "docs/evidence/rust-service/accounts-backend.json"
+          "docs/evidence/rust-service/accounts-backend.json",
+          "docs/evidence/rust-service/README.md#cp237",
+          "docs/evidence/rust-service/movement-floor.json"
         ]
       },
       "coverage": {
@@ -5005,7 +5041,10 @@
             "docs/PROTOCOL.md#eight-portable-battle",
             "docs/PROTOCOL.md#rust-account-backend",
             "rust/crates/kr-service/src/accounts.rs",
-            "rust/crates/kr-service/src/bin/kr-admin.rs"
+            "rust/crates/kr-service/src/bin/kr-admin.rs",
+            "docs/PROTOCOL.md#rust-movement-floor",
+            "rust/crates/kr-service/src/pickups.rs",
+            "rust/crates/kr-service/src/room_io.rs"
           ],
           "delivery": "via_pr"
         },
@@ -5025,7 +5064,10 @@
             "docs/PROTOCOL.md#eight-team-variants",
             "docs/PROTOCOL.md#rust-account-backend",
             "rust/crates/kr-service/src/accounts.rs",
-            "rust/crates/kr-service/src/bin/kr-admin.rs"
+            "rust/crates/kr-service/src/bin/kr-admin.rs",
+            "docs/PROTOCOL.md#rust-movement-floor",
+            "rust/crates/kr-service/src/pickups.rs",
+            "rust/crates/kr-service/src/room_io.rs"
           ]
         },
         "gate": {

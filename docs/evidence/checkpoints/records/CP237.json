@@ -1,0 +1,300 @@
+{
+  "id": "CP237",
+  "previous": "CP236",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T00:59:26.231157+00:00",
+  "context_commit": "9748dcb330fdf15a66cbf0011b354882bb029ad0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M3/KRE-074: port native-blocking floor124→165 with currentcatalog/onewinner/allqueuefences, thenverifybothactualKRdirectUDPmovement windows;bound123opaque policywithoutclaimingsemantics.",
+  "scope": "Floorcatalog/list1-current124165/opaque123boundedcurrentmember;30Rusttests/22TCP/native2windows+Roller5→6/ticknotserial;R1-R2failurespreserved/164runtime rawtotal;M3remains partial.",
+  "artifacts": [
+    {
+      "name": "NativeKR00967originalunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "e9Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "Rustnative-testedM3movement-floorbinary",
+      "sha256": "e1ae6aebc805cd379e1e68d8dcf64f8a5d55b432d0609e1d7ff21b7845ddbc0d"
+    },
+    {
+      "name": "ExistingKRmodOnativeemulationonly",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/pickups.rs/Catalog::from_floor/Request/Round::claim;room_io.rs/124-165candidatequeuepublication/123observe;room.rs/currentArmedbudget64/sharedwire_key",
+    "Nativee9/Wine/directLAN/R3run2206fd89f0ffbe7fc170c37b1dc2b096b377f67cbcf29649cc20a6d95d778f0c/58raw/79.873832747s/TCP368-58reply/UDP217-87API/2windows/696getters87CRC/5E8:5→6eachview",
+    "R1run684ff50d51rawunsupported124;R2run4facf95d55rawunsupported123;allfrozen-retained-cleanup0/unknown123policysemantics/SIGTERMkernelanomalyrootcauseunknown/AUD068next240"
+  ],
+  "findings": [
+    {
+      "summary": "Floorcurrent124 parses19byteactualknownlayout;catalogfromsamepinned582/list1only,hiddenlist2noteligible;boundslot-context-Armed-key-exactitem/consumed guard. Candidateclone+reserveALLrecipientqueues thenconsume/enqueue,subject/member-roundfences. No tickasfreshnessserial orphysicalTCPatomicityclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-movement-floor",
+      "evidence": [
+        "RUST237-00039",
+        "RUST237-00041",
+        "RUST237-00048"
+      ],
+      "limits": "Oneepoch/2inputwindows/onefloorRoller/M3partial;no bombs-terrain-life-result-reset-twooutcomes/accountbridge/inventory/reward/fullservice. Opaque123semanticsunknown/observepolicyonly;shutdownrootcauseunknown;copygetter-CRCemulationnotruntimecall. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "TwoactualKRRust ADown/BRight directUDP PCAP217→87nativeAPI sourceIPport/hash→currentkey/profileID/apply13/cursor13→target/currentpeerposition,6shold/FINaftercompletion;TCP368/58reply/alltuples/allC2Sjoins.58rawsealed/frozen/cleanup0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-movement-floor",
+      "evidence": [
+        "RUST237-00464",
+        "RUST237-00538"
+      ],
+      "limits": "Oneepoch/2inputwindows/onefloorRoller/M3partial;no bombs-terrain-life-result-reset-twooutcomes/accountbridge/inventory/reward/fullservice. Opaque123semanticsunknown/observepolicyonly;shutdownrootcauseunknown;copygetter-CRCemulationnotruntimecall. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ActualA124floorRoller17/kind2/current12346 producesexactone165perview;nativeparsedtuple/itemfound17/full12/error0 andprotectedactor5E8:5→6both.696copiednativegetter/87CRC+selected128bytehelpersregionmatchsupplement runtime;notworldauthority/inventory.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-movement-floor",
+      "evidence": [
+        "RUST237-00464",
+        "RUST237-00531",
+        "RUST237-00530",
+        "RUST237-00529"
+      ],
+      "limits": "Oneepoch/2inputwindows/onefloorRoller/M3partial;no bombs-terrain-life-result-reset-twooutcomes/accountbridge/inventory/reward/fullservice. Opaque123semanticsunknown/observepolicyonly;shutdownrootcauseunknown;copygetter-CRCemulationnotruntimecall. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R1unsupported12451rawandR2unsupported12355raw retained. 123/body10 semanticsunknown;Pythonreferenceunknowncase noresponse→chooseArmedboundmember/64budget/exactshapeobserveonly/noACK-effect-forward. Kernelshutdownanomalyrecurs/PIDgonepostinspection;instrumented22caserepeatpassnotrootcausefix. PLANbombnext/M3partial.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-movement-floor",
+      "evidence": [
+        "RUST237-00075",
+        "RUST237-00226",
+        "RUST237-00056",
+        "RUST237-00054",
+        "RUST237-00025"
+      ],
+      "limits": "Oneepoch/2inputwindows/onefloorRoller/M3partial;no bombs-terrain-life-result-reset-twooutcomes/accountbridge/inventory/reward/fullservice. Opaque123semanticsunknown/observepolicyonly;shutdownrootcauseunknown;copygetter-CRCemulationnotruntimecall. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt-clippy/30tests/lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST237-00045",
+        "RUST237-00044",
+        "RUST237-00048",
+        "RUST237-00043"
+      ],
+      "limits": "25serviceincl11account+5wire;policytestsseparate nativeproof."
+    },
+    {
+      "check": "22kernelTCPfloor/opaque/room-lifecycle/queue cases",
+      "result": "pass",
+      "evidence": [
+        "RUST237-00054"
+      ],
+      "limits": "Instrumentationrepeatnotrootcausefix; syntheticinputsnotnativeoracle."
+    },
+    {
+      "check": "Native2movementwindows/floor165/PCAP/fullcursor/UI/frozen58rawcleanup0",
+      "result": "pass",
+      "evidence": [
+        "RUST237-00464",
+        "RUST237-00538",
+        "RUST237-00526"
+      ],
+      "limits": "Oneepoch/2inputwindows/onefloorRoller/M3partial;no bombs-terrain-life-result-reset-twooutcomes/accountbridge/inventory/reward/fullservice. Opaque123semanticsunknown/observepolicyonly;shutdownrootcauseunknown;copygetter-CRCemulationnotruntimecall. Internet thật chưa kiểm."
+    },
+    {
+      "check": "Copiednative696getter/87CRC/helperregionidentity",
+      "result": "pass",
+      "evidence": [
+        "RUST237-00531",
+        "RUST237-00530",
+        "RUST237-00529"
+      ],
+      "limits": "KRmodO+counterreset/selected128bytesonly/notwholefunction/gamecall/originalauthority."
+    },
+    {
+      "check": "R1unsupported124/R2unsupported123/kernelshutdown deadlines",
+      "result": "fail",
+      "evidence": [
+        "RUST237-00075",
+        "RUST237-00226",
+        "RUST237-00056"
+      ],
+      "limits": "Allfailurespreserved; newnativeR3positiveonlyaftersealedfixes;shutdowncauseunknown."
+    },
+    {
+      "check": "M3bom-terrain-life-result-reset/twooutcomes/nativeaccountbridge",
+      "result": "not_run",
+      "evidence": [
+        "RUST237-00028",
+        "RUST237-00030"
+      ],
+      "limits": "PartialM3no gateclosure. Nextknowncontractport, no repeatedsolvedmovement/broadSDKRE."
+    },
+    {
+      "check": "Docs/catalog/links/issuebacklinks/WIP/manualacceptance",
+      "result": "pass",
+      "evidence": [
+        "RUST237-00006",
+        "RUST237-00025"
+      ],
+      "limits": "Fullhistory/exactheadrequiredafterappend; no checkersemanticapproval."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP237-rust-movement-floor.json",
+      "bytes": 142912,
+      "sha256": "93298076bac4f1d97b413e0adc7b26161a6a63682f519b8a062ef64db0a28598",
+      "count": 552
+    }
+  ],
+  "delta": {
+    "added": [
+      "Floor124→165boundedcurrentcatalog/onewinner/allqueuepublication;opaque123read-onlyboundedpolicy/unknownsemantics.",
+      "NativeKRbothdirectionsUDPmovement+Roller5→6/58rawpositive with51+55rawfailedretained/696getter87CRC.",
+      "30Rusttests/22TCPcases/SIGTERMdeadlineinstrumentation;PLANknownbomballocatornext/M3partial."
+    ],
+    "corrected": [
+      "R1closurecausedunimplemented124, not127length185; R2floor165alreadypositivebut123closesB, notfullmovementpass.",
+      "Synthetictesthelper endian/teardown fixture corrected withfailedlogsretained;runtimeparserknownendiancorrect.",
+      "Kernelshutdownanomaly recurred, repeatnotfix;123unknownnotcontractsemanticconfirmation."
+    ],
+    "superseded": [
+      "PLANM3firstmovementmeasurement missing:nowacceptedsubset, proceed118/159/158 beforeterrain/life/result-reset."
+    ]
+  },
+  "blockers": [
+    "M3partial/oneepoch/twoinputwindows/onefloorRoller; no bomb/terrain/reveal/life/result-reset/twooutcomes/needle/rescue/capacity4-8 acceptance.",
+    "DiagnosticIPidentitynotaccountauthentication;M5bridge/lease/worker/idleTTL/rate/restore remainpartial.",
+    "Opaque123semanticsunknown/no generalizedACKororiginalserverauthority;oldraw142andP2PUDPfreshness limits unchanged.",
+    "Queuepublication atomic withinmodel, physicalTCPdelivery notatomic; no durableinventory/reward.",
+    "Oldshutdownanomaly repeated/no rootcauseproof;deadlinePIDinstrumentation retained forfuturefailure.",
+    "Copiednativegetter/CRC onmodOa08950 withcounterreset, selected128-bytehelpersmatchnativecopy, notwholebinary/function/lifecycle proof. REApacketprovider still unavailable; stdlibPCAPjoins not REA Evidence.",
+    "Internet thật chưa kiểm.",
+    "KnownM3allocator/currentowner-serial/fuse6/reservation/terrain/life/results/reset/twooutcomes stillunimplemented."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANportknown118→159→158 allocator/currentowner-serial/fuse6/reservation/round-recipientfences;then terrain/reveal/life/result-reset/2outcomes. Do notrepeatnative2movementwindowsjustforCP;M5backendindependent/authbridgepartial. AUD068through236,nextCP240.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T00:59:26.231157+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/M3movement-floor-nativeproof+policytests/manualselfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/rust-service/movement-floor.json",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP237M3movement-floor/subsetnativeproof/unknown123/budget-policy/failures/shutdownlimits/bombnext/AUD068next240."
+    }
+  ]
+}
