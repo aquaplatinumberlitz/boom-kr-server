@@ -22,6 +22,7 @@ pub struct Member {
     late_after_abort: u16,
     opaque123: u16,
     opaque167: u16,
+    opaque142: u16,
     pub(crate) life: crate::life::Player,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -144,6 +145,7 @@ impl Room {
                 late_after_abort: 0,
                 opaque123: 0,
                 opaque167: 0,
+                opaque142: 0,
                 life: crate::life::Player::default(),
             },
         );
@@ -240,6 +242,7 @@ impl Room {
         for member in self.members.values_mut() {
             member.opaque123 = 0;
             member.opaque167 = 0;
+            member.opaque142 = 0;
             member.life.begin();
             member.late_after_abort = 0;
         }
@@ -337,6 +340,17 @@ impl Room {
     }
     /// Actual167/body32 observed afterbomb1, semanticsunknown. Same isolated
     /// reference no-response policy as123; its own budget cannot borrow123's.
+    pub fn observe_opaque142(&mut self, key: Membership) -> io::Result<()> {
+        if !self.current(key) || !matches!(self.phase, Phase::Armed { .. }) {
+            return Err(io::Error::other("opaque142 current armed member required"));
+        }
+        let member = self.members.get_mut(&key.identity).expect("current member");
+        if member.opaque142 >= 64 {
+            return Err(io::Error::other("opaque142 observation budget"));
+        }
+        member.opaque142 += 1;
+        Ok(())
+    }
     pub fn observe_opaque167(&mut self, key: Membership) -> io::Result<()> {
         if !self.current(key) || !matches!(self.phase, Phase::Armed { .. }) {
             return Err(io::Error::other("opaque167 current armed member required"));
@@ -528,6 +542,10 @@ mod tests {
         for _ in 0..64 {
             r.observe_opaque167(a).unwrap();
         }
+        for _ in 0..64 {
+            r.observe_opaque142(a).unwrap();
+        }
+        assert!(r.observe_opaque142(a).is_err());
         assert!(r.observe_opaque167(a).is_err());
         r.leave(a).unwrap();
         assert!(r.observe_opaque123(b).is_err());
@@ -542,6 +560,8 @@ mod tests {
         assert!(r.observe_opaque123(a2).is_ok());
         assert!(r.observe_opaque167(a).is_err());
         assert!(r.observe_opaque167(a2).is_ok());
+        assert!(r.observe_opaque142(a).is_err());
+        assert!(r.observe_opaque142(a2).is_ok());
         assert_eq!(r.phase, Phase::Armed { round: next });
     }
     #[test]

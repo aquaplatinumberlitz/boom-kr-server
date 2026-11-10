@@ -25,6 +25,9 @@ pub struct Config {
     pub terrain: Option<crate::terrain::Config>,
     #[serde(default)]
     pub battle: Option<BattleConfig>,
+    /// Opt-in measured CP201 capacity1/2/1/1, power1, design fuse6 seconds.
+    #[serde(default)]
+    pub four_owner_bombs: bool,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -81,6 +84,7 @@ pub struct Runtime {
     ips: HashMap<u32, u32>,
     ports: HashMap<Membership, u16>,
     floor_catalog: pickups::Catalog,
+    four_owner_bombs: bool,
 }
 #[derive(serde::Serialize)]
 pub struct BombObservation {
@@ -122,6 +126,9 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         return Err(err("fixed room title must be bounded ASCII"));
     }
     let count = actors.len();
+    if cfg.four_owner_bombs && count != 4 {
+        return Err(err("four-owner bombs require the four diagnostic profile"));
+    }
     if !matches!(count, 2 | 4)
         || actors
             .values()
@@ -272,6 +279,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
             .collect(),
         ports: HashMap::new(),
         floor_catalog: pickups::Catalog::from_floor(&packets_floor_body)?,
+        four_owner_bombs: cfg.four_owner_bombs,
     })))
 }
 impl Runtime {
@@ -1129,7 +1137,9 @@ impl Session {
             }
             167 => {
                 let member = r.member(self.identity, self.connection)?;
-                if ![4, 16, 32].contains(&body.len()) {
+                if ![4, 16, 32].contains(&body.len())
+                    && !(next.capacity() == 4 && r.four_owner_bombs && body.len() == 22)
+                {
                     return Err(err("opaque167 measured sizes"));
                 }
                 if matches!(next.phase, Phase::Ending { .. }) {
@@ -1158,12 +1168,14 @@ impl Session {
                 }
             }
             118 => {
-                if next.capacity() != 2 {
+                if next.capacity() == 4 && !r.four_owner_bombs {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
                 let request = bombs::Request::parse(body)?;
-                let result = if matches!(next.phase, Phase::Armed { .. })
+                let result = if next.capacity() == 4 && request.power() != 1 {
+                    Err("unsupported_four_power")
+                } else if matches!(next.phase, Phase::Armed { .. })
                     && next.members[&self.identity].life.death.is_some()
                 {
                     Err("dead_owner")
@@ -1237,7 +1249,7 @@ impl Session {
                 }
             }
             142 => {
-                if next.capacity() != 2 {
+                if next.capacity() == 4 && !r.four_owner_bombs {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
@@ -1246,7 +1258,21 @@ impl Session {
                 }
                 let slot = read_uint(&body[2..3], Width::U8).map_err(io::Error::other)?;
                 let aux = read_uint(&body[3..], Width::U32).map_err(io::Error::other)?;
-                terrain_notice = Some(if let Phase::Armed { round } = next.phase {
+                terrain_notice = Some(if next.capacity() == 4 {
+                    // CP201 actual142 follows explosions, including aux37 and -1.
+                    // Observe the measured shape only. No reveal/eligibility/item effect.
+                    let row = read_uint(&body[..1], Width::U8).map_err(io::Error::other)?;
+                    let col = read_uint(&body[1..2], Width::U8).map_err(io::Error::other)?;
+                    if slot != u64::from(member.slot)
+                        || row >= 13
+                        || col >= 15
+                        || ![37, u64::from(u32::MAX)].contains(&aux)
+                    {
+                        return Err(err("unsupported four bomb-only142 report"));
+                    }
+                    next.observe_opaque142(member.key)?;
+                    "four_bomb_only_observed_no_reveal"
+                } else if let Phase::Armed { round } = next.phase {
                     let row = read_uint(&body[..1], Width::U8).map_err(io::Error::other)? as u8;
                     let col = read_uint(&body[1..2], Width::U8).map_err(io::Error::other)? as u8;
                     if slot != u64::from(member.slot) || aux != u64::from(u32::MAX) {
@@ -1506,6 +1532,7 @@ mod tests {
             ips: HashMap::new(),
             ports: HashMap::new(),
             floor_catalog: pickups::Catalog::default(),
+            four_owner_bombs: false,
         }));
         let mut session = Session {
             shared: shared.clone(),
@@ -1612,6 +1639,7 @@ mod tests {
             ips: HashMap::new(),
             ports: HashMap::new(),
             floor_catalog: pickups::Catalog::default(),
+            four_owner_bombs: false,
         };
         let mut next = runtime.model.clone();
         let key = next.enter(1, 11, true).unwrap();

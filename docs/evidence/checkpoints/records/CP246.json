@@ -1,0 +1,310 @@
+{
+  "id": "CP246",
+  "previous": "CP245",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T23:19:31.394774+00:00",
+  "context_commit": "d0c2ba3eacd9f62fc2352a7ff4845f9bfb10c7ab",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M4/KRE-074: port four-owner bomb contract/capacity-power-fuse toRust, independentlyverifyactual118/native159entity/158allfourrecipients; keepstartupoptout/two-regression/WIP/failures and expose remaininglife divergence.",
+  "scope": "Opt-infour_owner_bombs/knowncapacities1-2-1-1-power1-fuse6/all4writecompletion/known142-16722boundednoeffect;native16entity159-16full158lookup-kind0cleanup/Manner1stats/84raw/7196copiedgetters;59tests/14fourTCP/51twoTCP/3prebind/M4partial.",
+  "artifacts": [
+    {
+      "name": "Rustkr-serviceLinux-nativeR2-four-owner-bombs",
+      "sha256": "04cd9c9798facc779edeef34c7228874c753a1af28a44c0449fa6feed8ba4218"
+    },
+    {
+      "name": "CA-r2-stage-social-cmp.exe-ABIcopy-no-newpatch",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/bombs.rs/Ledger-place-delivered/2or4roster/allrecipientsbeforecapacityrelease",
+    "rust/crates/kr-service/src/room_io.rs/four_owner_bombs-optin-fouronly/power1/118fanout/142opaque/16722fouronly",
+    "rust/crates/kr-service/src/room.rs/observe_opaque142/currentArmed-budget64-roundvisitreset",
+    "CP201knownstats-118159158/CP238correctednative159158lookup-kind0cleanup/CP245startupreused-no-newfunctionRE",
+    "CP245PR316mergedd0c2ba3/AUD070through244next248/no gateclose"
+  ],
+  "findings": [
+    {
+      "summary": "FouractualKRWine/Manner1knownstatsall4views capacity1-2-1-1/power1/maximaexactCP201;actualnormalSpace118currentkey12346/slot0-3/power1/serial→IDs1-4.16native159full39/errors0/entitynonzero/protectedcoordsmatchrequestcell;16native158full13/currentIDlookup-kind0-cleanupsameentity/delay≥5.8s.902TCP/144reply/16transportsjoin;84raw139.844s/frozen/cleanup0;7196copiedgettersseparate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-owner-bombs",
+      "evidence": [
+        "RUST246-00487",
+        "RUST246-00485",
+        "RUST246-00755"
+      ],
+      "limits": "Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/four-ownerbombs only; no fourlife170/results-reset/EOF/8/accountauth/fullM4.142-167boundedobserve/noeffect/nosemantics;own-peertrapdeathdivergence unaccepted. Copiedgettersemulationseparate. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Startup4optoutkept;explicitfour_owner_bombs=trueonly4/knowncapacity-power-fuse. Ledgerbounded2or4unique/currentticket-round-membership/owner-serial/IDcommit/all4writesbeforereservationrelease.59Rusttests/14fourTCP/51twoTCPcurrentbinary/fullsource-inputpins,3processprebindrejectflagontwo/fourrank/fourterrain. No accepteddeath4/deadownerclaim yet.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-owner-bombs",
+      "evidence": [
+        "RUST246-00045",
+        "RUST246-00047",
+        "RUST246-00208",
+        "RUST246-00934",
+        "RUST246-00032"
+      ],
+      "limits": "Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/four-ownerbombs only; no fourlife170/results-reset/EOF/8/accountauth/fullM4.142-167boundedobserve/noeffect/nosemantics;own-peertrapdeathdivergence unaccepted. Copiedgettersemulationseparate. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R1all4channelsclosedat16722afterAbomb;historicalCP20112frames22/new4frames22decodedCRC-sequence match. R1latercontroller screenshottimeoutis separate/rootcausenotproved;73rawexit1/frozen/cleanup0retained. Fixonlyfourbomboptin16722/noACK-effect-forward/budget64andclosureguardbefore nextscreenshot. Four142known7/selfslot/mapbounds/aux37-or-minus1/Armed64budget onlyobserve/no reveal/grant.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-owner-bombs",
+      "evidence": [
+        "RUST246-00217",
+        "RUST246-00768",
+        "RUST246-00767",
+        "RUST246-00487"
+      ],
+      "limits": "Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/four-ownerbombs only; no fourlife170/results-reset/EOF/8/accountauth/fullM4.142-167boundedobserve/noeffect/nosemantics;own-peertrapdeathdivergence unaccepted. Copiedgettersemulationseparate. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "All4UIreviewshowsown-peertrapdeathdivergencewhile127notforwarded; nativeownerbombs acceptance doesnotassertsharedlife/result/reset. Next170all3recipients/currentclear21completion/rank4opposite2v2/resetStart3/abortEOFthen8; do notclone rank2/forfeit2policy. No broadRE/duplicateownerbombs. M5backendpresent-nativeownershipbridge separate.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-owner-bombs",
+      "evidence": [
+        "RUST246-00766",
+        "RUST246-00036",
+        "RUST246-00033"
+      ],
+      "limits": "Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/four-ownerbombs only; no fourlife170/results-reset/EOF/8/accountauth/fullM4.142-167boundedobserve/noeffect/nosemantics;own-peertrapdeathdivergence unaccepted. Copiedgettersemulationseparate. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "TwoTCPR1wrongoldroomharness/rankenabledconfig passed41cases thenexpectsimmediate107but currentpolicyselecteddelayedforfeit. Failure/sourcefrozen/PIDgonekept;correctexistinglifeharnessR2passes51onsamebinary/no deadlineincrease/serverIOfixclaim. CP245PR316merged/8WIPexact/AUD070through244-next248/historyimmutable/#14-285OPEN.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-owner-bombs",
+      "evidence": [
+        "RUST246-00773",
+        "RUST246-00934",
+        "RUST246-00033"
+      ],
+      "limits": "Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/four-ownerbombs only; no fourlife170/results-reset/EOF/8/accountauth/fullM4.142-167boundedobserve/noeffect/nosemantics;own-peertrapdeathdivergence unaccepted. Copiedgettersemulationseparate. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Nativefour-owner118-159entity-158lookup-kind0-cleanup",
+      "result": "pass",
+      "evidence": [
+        "RUST246-00487",
+        "RUST246-00755"
+      ],
+      "limits": "Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/four-ownerbombs only; no fourlife170/results-reset/EOF/8/accountauth/fullM4.142-167boundedobserve/noeffect/nosemantics;own-peertrapdeathdivergence unaccepted. Copiedgettersemulationseparate. Internet thật chưa kiểm."
+    },
+    {
+      "check": "7196copied52A350getters",
+      "result": "pass",
+      "evidence": [
+        "RUST246-00485"
+      ],
+      "limits": "SeparateUnicorn/counterreset notWinewholebinaryoracle."
+    },
+    {
+      "check": "59Rusttests/fmt-clippy-lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST246-00006",
+        "RUST246-00004",
+        "RUST246-00015",
+        "RUST246-00002"
+      ],
+      "limits": "54service+5wire;samebinarynativeR2."
+    },
+    {
+      "check": "14fourTCP/51twoTCP/3prebindprocessnegatives",
+      "result": "pass",
+      "evidence": [
+        "RUST246-00208",
+        "RUST246-00934",
+        "RUST246-00032"
+      ],
+      "limits": "Syntheticpolicy inputs independentofnativeacceptance/generatornotoracle."
+    },
+    {
+      "check": "NativeR1four167sizefailure-controllerlatertimeout",
+      "result": "fail",
+      "evidence": [
+        "RUST246-00217",
+        "RUST246-00468"
+      ],
+      "limits": "73raw/sourcefrozen/cleanup0/firstchannelclosureidentified-notallIOfailuresrootcausefixed;R2afterknownshape correctionpass."
+    },
+    {
+      "check": "TwoTCPR1wrongoldharness/rankconfig",
+      "result": "fail",
+      "evidence": [
+        "RUST246-00773"
+      ],
+      "limits": "41cases thenwrongimmediateEOF107expectation;correctexistinglifeharnessR2pass51/samebinary/deadlines."
+    },
+    {
+      "check": "UIreviewdocs-catalog-issues-WIP-rawhashes",
+      "result": "pass",
+      "evidence": [
+        "RUST246-00766",
+        "RUST246-00033",
+        "RUST246-00005"
+      ],
+      "limits": "Own-peertrapdeathdivergenceexplicitlyunaccepted;Codexselfcheck/reviewwaived/no gateautoclosure."
+    },
+    {
+      "check": "Fourlife/results-reset/EOF/eight/nativeaccountownershipbridge",
+      "result": "not_run",
+      "evidence": [
+        "RUST246-00036"
+      ],
+      "limits": "Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/four-ownerbombs only; no fourlife170/results-reset/EOF/8/accountauth/fullM4.142-167boundedobserve/noeffect/nosemantics;own-peertrapdeathdivergence unaccepted. Copiedgettersemulationseparate. Internet thật chưa kiểm."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP246-rust-four-owner-bombs.json",
+      "bytes": 250562,
+      "sha256": "0c51dc367ae0e1d022e5963ac87745b7bbce557957523184916f0096998b7bb3",
+      "count": 940
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rustoptinfour-ownerbom/native16entity159-16full158/knownstatsManner1/59tests14four51twoTCP/3prebind."
+    ],
+    "corrected": [
+      "Four-onlyopaque16722knownCRCseqshapes/142knownshapeobserve-noreveal;R1failurepreserved.",
+      "Two-regressionusesexistinglifeharnesswithrankprofile;wrongoldroomharnessfailurepreserved."
+    ],
+    "superseded": [
+      "Rustfour-ownerbomb entirelymissing; deliveredsubset,sharedlife/results-reset/EOF/eightpending."
+    ]
+  },
+  "blockers": [
+    "FouractualKR00967Wine10.0-20260425/copy4b/privatevirtualLAN/sharedkernel/Manner1/fixedalternating2v2/currentoneepoch only, notFree0 run.",
+    "Capacities1/2/1/1,powers1/fuse6 design; originalauthority/fullterrain/reveal/chain/loot/inventory not established.142knownshape observed/budget only; no grant/effect/ACK.",
+    "No fourlife170/results175180/reset/Start2/hostguestEOF/eight/fullM4/accountbridge/production acceptance. Startup base report limits remain scoped to startup.",
+    "No newpatch/freshprefix claim; oldprivate4bprefixes reused afterseal/newprocesses. Internet thật chưa kiểm.",
+    "Ảnh cuối mỗi own/peer có trap/death khác nhau vì127 chưa forward; không shared-life/gameplayconsistency acceptance. Dead-owner policy bốn chưa nhận death report, không suy guard hai người đã mở cho bốn.",
+    "R1 73raw/exit1/cleanup0: fouractual16722 rejected, rồi controller screenshot timeout; không chứng minh nguyên nhân screenshotstall. CP20112historical16722+new4frames có CRC/sequence; four-onlysize guard/noeffect/budget, không đoán semantics.",
+    "Two-regressionR1 chọn nhầm oldroomharness cùng rank-enabledconfig,41cases rồi chờ immediate107 trái delayedforfeit; giữfailure, dùng existinglifeharnessR2/51pass/samebinary/no deadlineincrease. Không gọi Btrfs/oldanomaly đã fix."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANlife170all3recipients/currentclear21fanoutcompletion→rank4/opposite2v2-resetStart3→hostguestabortEOF→8;reuseCP202-207/notclone2rank-forfeit/no broadRE/duplicatebom. M5bridge separate;AUD070next248.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T23:19:31.394774+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualnative4ownerbomb/raw-cursor-entity-coordinates-stat-UI-negative-sourcecheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/four-owner-bombs.json",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    }
+  ]
+}

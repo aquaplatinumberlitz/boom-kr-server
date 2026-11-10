@@ -259,3 +259,9 @@ không backup/restore production hoặc nativeKR auth proof.
 [Cách dùng/giới hạn](../rust/README.md#bốn-client-startup--cp245), [contract](../docs/PROTOCOL.md#rust-four-startup).
 `test_rust_four_room.py --binary <kr-service> --config <four-config> --out <new-local-dir>` giữ7TCPcases,
 preflight/frozen source-binary-fixtures/rawhashes/processcleanup; không thay native acceptance hoặc sinh oracle.
+
+
+CP246: exporter `--four-owner-bombs` chỉ đi cùng đủfour-startupflags; `test_rust_four_room.py --owner-bombs`
+kiểm14syntheticcases/capacityB2-D1/all4writes/known142-167/noeffect. [Contract/nativegiới hạn](../docs/PROTOCOL.md#rust-four-owner-bombs).
+Hồi quy rank-enabled hai người dùng `test_rust_life.py` với pinned `--battle-profile` và `--pickup-checks`;
+old `test_rust_room.py` immediateEOF107 không là acceptance đúng khi profile đã chọn delayedforfeit.

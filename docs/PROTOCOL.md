@@ -8888,3 +8888,41 @@ opaque/noeffect; chưa fourlife/bom/results/reset/Start2/EOF, chưa tám/fullacc
 M3 hai client đã đạt CP242 giữ regression; M4 partial. [PLAN](PLAN.md#current-order) tiếp fourownerbom/life170 đủ
 ba recipient→rank4/outcomes/reset/Start3→abort/EOF, không clone two-player ranks/policy. M5backend đã mergeCP244,
 KRbridge riêng; AUD070 qua244 không đổi/audit kế248. Internet thật chưa kiểm.
+
+<a id="rust-four-owner-bombs"></a>
+## Rust bốn owner bom: opt-in, current native entity và nổ — CP246 / M4 partial
+
+[Allocator](../rust/crates/kr-service/src/bombs.rs), [adapter](../rust/crates/kr-service/src/room_io.rs),
+[metadata](evidence/rust-service/four-owner-bombs.json), [raw/hash](evidence/rust-service/README.md#cp246).
+Tái dùng CP201/CP238/CP245; CP201 là Free0, **run Rust hiện hành là Manner1/cố định2v2**.
+Không RE thân hàm mới hoặc import Python WIP. Consumer mới phải được đo trên Rust, không dùng generator làm oracle.
+
+`fixed_room.four_owner_bombs=true` chỉ hợp lệ diagnostic4, bật capacity1/2/1/1, power1 và designfuse6s.
+Startup4 không có flag giữ reject118/142; Battle/terrain config4 và124 vẫn reject. Ledger chỉ2 hoặc4 unique current
+members, serial riêng owner, chỉ accepted lấy ID; reserve mọi spawn/deadline queues trước publish. Reservation nhả khi
+**cả bốn TCP writes158 thành công**, không là nativeexecutionACK; member/visit/round/ticketscope cũ/EOF vô hiệu pending.
+Wrongkey/owner/power2/duplicate/capacity không lấy serial-ID; B2 khác D1, ba writes không nhả reservation.
+Chưa fouraccepteddeath nên không nhận dead-owner guard bốn đã đạt; life127 hiện chưa apply/forward.
+
+CP201 raw đã có142body7/selfslot/aux37 hoặc-1 và167body22; Rusttwo whitelist1674/16/32 chưa đủ cho bốn.
+R1 sau Abom đóng4channel tại actual16722, rồi controller screenshot timeout; giữ73raw/150,767s/exit1/cleanup0.
+Newraw4frames22 và historicalCP20112frames22 đều CRC/seq checked. Chỉ thêm16722 cho fourbombopt-in,
+noACK/effect/forward, giữ own64budget. Four142 chỉ knownsize/selfslot/13×15bounds/aux37/-1/currentArmedmember,
+budget64/round/visit riêng, **không reveal/eligibleitem/response**. Không gán semantics field167; heartbeat/other shapes giữ.
+Controller mới kiểm channelclosure sau mỗi7s ownerhold trước screenshot, không che lỗi gốc bằng ảnh; chưa giải mọi screenshot/I/Ostall.
+
+Native R2 trên Wine10.0-20260425/copy4b781fbc…/private root+A–D netns/bridge/no default route, reusedcachedprefixes/newprocesses,
+không patch mới/coldinstall. Bốn view cùng stat/max CP201: A1/10,1/7,5/7;B2/7,1/9,4/8;C1/8,1/5,5/8;D1/10,1/8,4/8
+(capacity,power,speed). Actual normalSpace mỗi owner118/currentkey12346/slot0–3/power1/serial→ID1–4.
+16native15939/39/errors0/entitynonzero/protectedcoords=(column×40,row×40+39);16native15813/13/errors0,
+corrected lookup→kind0→cleanup cùng entity/currentID và delay≥5,8s. 7.196copied52A350getterchecks riêng trongUnicorn,
+không gọi inferior/không wholebinaryoracle.902TCP/144exactreply/16transports fulltuple/C2Sseq/CRC/SHA joins;
+84raw/139,844435953s/sourcefrozen/cleanup0,12actual142 chỉobserve. No165/170/175/180.
+
+59Rusttests/14fourTCP gồm capacity/serial/all4completion/known142-167/noeffect;51twoTCP life-result-reset-EOF trênsamefinalbinary.
+Two-regressionR1 chọn oldroomharness với rank-enabledconfig:41cases rồi immediate107 expectation sai delayedforfeit,
+timeout6s/PIDgone/sourcefrozen; giữfailure, dùng existinglifeharnessR2/51pass, không tăngdeadline hoặc gọi server/IOfix.
+Ảnh bốn cuối run có **own/peer trap-death khác nhau** khi127 chưa forward; không suy sharedlife/outcomes/fullM4.
+[PLAN](PLAN.md#current-order) tiếp170đủ3recipient/clear21fanout→rank4/opposite2v2/reset/Start3→scopedabort/EOF→8.
+Rollback giữ cặp binary+config startup CP245; oldbinary không hiểu newflag. M5backend đã có/KRbridge riêng,
+AUD070 qua244 không đổi/audit kế248. Internet thật chưa kiểm.

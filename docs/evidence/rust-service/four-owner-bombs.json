@@ -1,0 +1,277 @@
+{
+  "schema": "kre-rust-four-owner-bombs-v1",
+  "checkpoint": "CP246",
+  "canonical": "docs/PROTOCOL.md#rust-four-owner-bombs",
+  "plan": "docs/PLAN.md#current-order",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "baseline": "d0c2ba3eacd9f62fc2352a7ff4845f9bfb10c7ab",
+  "native": {
+    "path": "local/research/codex/rust-four-bombs-native-r2",
+    "run_sha256": "eb35624feaac1f0be4348a5ded07898df3daae355d3c9ea0b5fc588462321bce",
+    "binary_sha256": "04cd9c9798facc779edeef34c7228874c753a1af28a44c0449fa6feed8ba4218",
+    "raw_count": 84,
+    "duration_s": 139.844435953,
+    "tcp": {
+      "records": 902,
+      "replies": 144,
+      "joins": [
+        {
+          "connection": 1,
+          "kind": "HelloOnly",
+          "peer": "10.77.0.2:37294",
+          "local": "10.77.0.1:3848",
+          "c2s_bytes": 0,
+          "s2c_bytes": 15,
+          "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1",
+          "replies": 0
+        },
+        {
+          "connection": 2,
+          "kind": "Wcp",
+          "peer": "10.77.0.2:51738",
+          "local": "10.77.0.1:3838",
+          "c2s_bytes": 66,
+          "s2c_bytes": 332,
+          "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d",
+          "replies": 0
+        },
+        {
+          "connection": 3,
+          "kind": "HelloOnly",
+          "peer": "10.77.0.3:41640",
+          "local": "10.77.0.1:3848",
+          "c2s_bytes": 0,
+          "s2c_bytes": 15,
+          "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1",
+          "replies": 0
+        },
+        {
+          "connection": 4,
+          "kind": "Wcp",
+          "peer": "10.77.0.3:41644",
+          "local": "10.77.0.1:3848",
+          "c2s_bytes": 66,
+          "s2c_bytes": 332,
+          "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d",
+          "replies": 0
+        },
+        {
+          "connection": 5,
+          "kind": "HelloOnly",
+          "peer": "10.77.0.4:42782",
+          "local": "10.77.0.1:3838",
+          "c2s_bytes": 0,
+          "s2c_bytes": 15,
+          "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1",
+          "replies": 0
+        },
+        {
+          "connection": 6,
+          "kind": "Wcp",
+          "peer": "10.77.0.4:56448",
+          "local": "10.77.0.1:3848",
+          "c2s_bytes": 66,
+          "s2c_bytes": 332,
+          "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d",
+          "replies": 0
+        },
+        {
+          "connection": 7,
+          "kind": "Login",
+          "peer": "10.77.0.2:50254",
+          "local": "10.77.0.1:3838",
+          "c2s_bytes": 350,
+          "s2c_bytes": 352,
+          "s2c_sha256": "d95810f0129e0829d3a2436c18dd8c7a772597c7e1056f8d681a5b2181ae0b70",
+          "replies": 4
+        },
+        {
+          "connection": 8,
+          "kind": "Channel",
+          "peer": "10.77.0.2:51204",
+          "local": "10.77.0.1:3858",
+          "c2s_bytes": 4021,
+          "s2c_bytes": 2875,
+          "s2c_sha256": "788422580ddb70af0ebb2da8b84e35b784ce5af3cee28535d6e5ee01726699ad",
+          "replies": 29
+        },
+        {
+          "connection": 9,
+          "kind": "HelloOnly",
+          "peer": "10.77.0.5:41046",
+          "local": "10.77.0.1:3848",
+          "c2s_bytes": 0,
+          "s2c_bytes": 15,
+          "s2c_sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1",
+          "replies": 0
+        },
+        {
+          "connection": 10,
+          "kind": "Wcp",
+          "peer": "10.77.0.5:41058",
+          "local": "10.77.0.1:3848",
+          "c2s_bytes": 66,
+          "s2c_bytes": 332,
+          "s2c_sha256": "d4c2233e86c5496f9050cdbea0c4251bff5c360d50d34222aef9ee63710d270d",
+          "replies": 0
+        },
+        {
+          "connection": 11,
+          "kind": "Login",
+          "peer": "10.77.0.3:50252",
+          "local": "10.77.0.1:3838",
+          "c2s_bytes": 350,
+          "s2c_bytes": 352,
+          "s2c_sha256": "686643cce38d529bffdbfcd2ccd902675f1908c7b96b7b77664e1830a0180d9b",
+          "replies": 4
+        },
+        {
+          "connection": 12,
+          "kind": "Channel",
+          "peer": "10.77.0.3:45474",
+          "local": "10.77.0.1:3858",
+          "c2s_bytes": 3843,
+          "s2c_bytes": 3057,
+          "s2c_sha256": "f2ccb84fb4fe6e298809c3b0a4f7fc0802b438b21f2d6aa91def69d42c17f86b",
+          "replies": 32
+        },
+        {
+          "connection": 13,
+          "kind": "Login",
+          "peer": "10.77.0.4:46420",
+          "local": "10.77.0.1:3848",
+          "c2s_bytes": 350,
+          "s2c_bytes": 350,
+          "s2c_sha256": "1fc7a2a98782273773bc964c2f2c0270a8655c2e42c1117389aebaf4d189f5e5",
+          "replies": 4
+        },
+        {
+          "connection": 14,
+          "kind": "Channel",
+          "peer": "10.77.0.4:59618",
+          "local": "10.77.0.1:3858",
+          "c2s_bytes": 3709,
+          "s2c_bytes": 3099,
+          "s2c_sha256": "8e7f764b46f3906911db25195634c90e5f92b75aa730d4d6e83042ed16484a1a",
+          "replies": 33
+        },
+        {
+          "connection": 15,
+          "kind": "Login",
+          "peer": "10.77.0.5:51988",
+          "local": "10.77.0.1:3838",
+          "c2s_bytes": 350,
+          "s2c_bytes": 352,
+          "s2c_sha256": "4b5ac945c3da8d6d6e1e0cffafc8b9bc6a66f55a58fecae0f7fd78817384aff2",
+          "replies": 4
+        },
+        {
+          "connection": 16,
+          "kind": "Channel",
+          "peer": "10.77.0.5:42390",
+          "local": "10.77.0.1:3858",
+          "c2s_bytes": 3644,
+          "s2c_bytes": 3145,
+          "s2c_sha256": "7a40a3abe0da314f2524c9a0b4461a309feafb2f54b7e6622a2a3733a4475fb0",
+          "replies": 34
+        }
+      ]
+    },
+    "mode": {
+      "selector": 1,
+      "label": "Manner",
+      "source": "actual81and86-87echo/CP162",
+      "limits": "Fixedalternating2v2startup only; no teamchange UI/othermode or fourBattle acceptance."
+    },
+    "stats": [
+      {
+        "capacity": 1,
+        "capacity_max": 10,
+        "power": 1,
+        "power_max": 7,
+        "speed": 5,
+        "speed_max": 7
+      },
+      {
+        "capacity": 2,
+        "capacity_max": 7,
+        "power": 1,
+        "power_max": 9,
+        "speed": 4,
+        "speed_max": 8
+      },
+      {
+        "capacity": 1,
+        "capacity_max": 8,
+        "power": 1,
+        "power_max": 5,
+        "speed": 5,
+        "speed_max": 8
+      },
+      {
+        "capacity": 1,
+        "capacity_max": 10,
+        "power": 1,
+        "power_max": 8,
+        "speed": 4,
+        "speed_max": 8
+      }
+    ],
+    "accepted_owners": 4,
+    "recipient159": 16,
+    "recipient158": 16,
+    "getter_checks": 7196,
+    "observation142": 12,
+    "cleanup": {
+      "net_namespace": "net:[4026533182]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "10.0-20260425"
+  },
+  "policy": {
+    "config": "fixed_room.four_owner_bombs=true; opt-in four-only/CP245startup remains off",
+    "capacities": [
+      1,
+      2,
+      1,
+      1
+    ],
+    "powers": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "fuse_seconds": 6,
+    "completion": "reservation releases only after all4 currentrecipientwrites; membership/round/ticketscopes and EOF fences",
+    "observation": "142knownbody7/selfslot/mapbounds/aux37-or-FFFFFFFF/noeffect/budget64;16722fourbomb-only/noeffect/existing64budget",
+    "still_rejected": "fourBattle/terrain cfg,124; no fourlife/result/reset policy"
+  },
+  "tests": {
+    "workspace": 59,
+    "fourTCP": 14,
+    "twoTCP": 51,
+    "source_frozen": true,
+    "prebind_negative_profiles": 3,
+    "prebind_path": "local/research/codex/rust-four-bombs-config-negatives-r1/verification.json"
+  },
+  "reuse": {
+    "path": "local/research/codex/rust-four-bombs-source-r1/reuse.json",
+    "shape142": "local/research/codex/rust-four-bombs-source-r1/cp201-142-reuse.json",
+    "shape167": "local/research/codex/rust-four-bombs-source-r1/cp201-167-reuse.json",
+    "sources": "CP201 stats/owner159158; CP238 correctedlookup-kind0-cleanup native sites; CP245fourstartup; same committed Python reference, no new binary function discovery"
+  },
+  "limits": [
+    "FouractualKR00967Wine10.0-20260425/copy4b/privatevirtualLAN/sharedkernel/Manner1/fixedalternating2v2/currentoneepoch only, notFree0 run.",
+    "Capacities1/2/1/1,powers1/fuse6 design; originalauthority/fullterrain/reveal/chain/loot/inventory not established.142knownshape observed/budget only; no grant/effect/ACK.",
+    "No fourlife170/results175180/reset/Start2/hostguestEOF/eight/fullM4/accountbridge/production acceptance. Startup base report limits remain scoped to startup.",
+    "No newpatch/freshprefix claim; oldprivate4bprefixes reused afterseal/newprocesses. Internet thật chưa kiểm.",
+    "Ảnh cuối mỗi own/peer có trap/death khác nhau vì127 chưa forward; không shared-life/gameplayconsistency acceptance. Dead-owner policy bốn chưa nhận death report, không suy guard hai người đã mở cho bốn.",
+    "R1 73raw/exit1/cleanup0: fouractual16722 rejected, rồi controller screenshot timeout; không chứng minh nguyên nhân screenshotstall. CP20112historical16722+new4frames có CRC/sequence; four-onlysize guard/noeffect/budget, không đoán semantics.",
+    "Two-regressionR1 chọn nhầm oldroomharness cùng rank-enabledconfig,41cases rồi chờ immediate107 trái delayedforfeit; giữfailure, dùng existinglifeharnessR2/51pass/samebinary/no deadlineincrease. Không gọi Btrfs/oldanomaly đã fix."
+  ],
+  "audit": "AUD070 through244 unchanged/next248/M4partial/no gate closure"
+}

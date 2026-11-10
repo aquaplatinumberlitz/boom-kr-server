@@ -5,12 +5,13 @@ sys.path.insert(0,str(Path.cwd()));from tools.test_rust_room import Client
 from tools.test_rust_foundation import free_port
 from server import probe_codec as c
 from server.room_title import _encode_bytes
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--binary',type=Path,required=True);parser.add_argument('--config',type=Path,required=True);parser.add_argument('--out',type=Path,required=True);args=parser.parse_args()
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--binary',type=Path,required=True);parser.add_argument('--config',type=Path,required=True);parser.add_argument('--out',type=Path,required=True);parser.add_argument('--owner-bombs',action='store_true');args=parser.parse_args()
 root=args.out;root.mkdir(parents=True,exist_ok=False);cfg=json.loads(args.config.read_text());two=cfg['diagnostic_two_lobby'];assert len(two['actors'])==4
 ports=set()
 while len(ports)<3:ports.add(free_port())
 login,wcp,channel=sorted(ports);cfg.update(bind='127.0.0.1',allowed_peers=['127.0.0.'+str(i+2)for i in range(4)],ports=sorted(ports));two.update(login_port=login,login_candidate_ports=[login,wcp],wcp_ports=sorted(ports),channel_port=channel)
 for i,actor in enumerate(two['actors']):actor['peer']=cfg['allowed_peers'][i]
+if args.owner_bombs:two['fixed_room']['four_owner_bombs']=True
 config=root/'config.json';config.write_text(json.dumps(cfg,indent=2)+'\n');binary=args.binary;sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 files=[binary,Path(__file__),args.config,config,Path('tools/test_rust_room.py'),Path('tools/test_rust_foundation.py'),Path('server/probe_codec.py'),Path('server/room_title.py'),Path('tools/export_rust_profile.py'),Path('server/four_player_profile.py')]+[p for p in Path('rust').rglob('*')if p.is_file()and'target'not in p.parts]
 def fixtures(value):
@@ -76,6 +77,42 @@ try:
   assert at==len(body)
  note('no_GO_with_three_ACKs_then_current_four_peer_endpoints')
  quiet();note('four_channels_quiet_after_loading')
+ if args.owner_bombs:
+  def bomb(client,slot,serial,row,col,power=1,key=12346):
+   client.send(118,c.pack_fields([key,0,slot,serial,row,col,1,0,0,0,power,1,0],[4,1,1,4,1,1,1,1,1,1,1,4,1]))
+  # Reject wrong epoch/slot/power without taking an ID or mutating reservations.
+  bomb(clients[0],0,0,3,2,key=12345);quiet()
+  bomb(clients[0],1,0,3,2);quiet()
+  bomb(clients[0],0,0,3,2,power=2);quiet()
+  note('four_bombs_reject_wrong_key_owner_and_power_without_reply')
+  for slot,client in enumerate(clients):
+   bomb(client,slot,7,3,2+slot)
+   for target in clients:
+    _,body=target.receive(159);f=c.read_fields(body,[1,1,2,4,4,4,1,1,1,4,1,2,2,1,8,1,1]);assert f[1]==slot and f[3]==7 and f[6:9]==[3,2+slot,1] and f[11]==slot+1
+  note('four_owner_same_serial_independent_ids_and_16_spawn_replies')
+  # D has one reserved; B can place a second. No serial/ID spent on rejection.
+  bomb(clients[3],3,8,4,5);quiet()
+  bomb(clients[0],0,7,3,2);quiet()
+  bomb(clients[1],1,8,4,3)
+  for target in clients:
+   _,body=target.receive(159);assert c.read_fields(body,[1,1,2,4,4,4,1,1,1,4,1,2,2,1,8,1,1])[11]==5
+  note('D_capacity_one_B_capacity_two_duplicate_no_id')
+  for target in clients:
+   got=[]
+   for _ in range(5):
+    target.sock.settimeout(8)
+    _,body=target.receive(158);f=c.read_fields(body,[1,2,1,4,4,1]);assert f[0]==1 and f[2:]==[0,2,0xffffffff,255];got.append(f[1])
+   assert sorted(got)==[1,2,3,4,5]
+  note('five_blasts_all_four_recipients_complete_at_design_fuse')
+  for client in clients:client.send(167,bytes(22))
+  quiet();note('four_only_measured167_22_opaque_no_effect')
+  for slot,client in enumerate(clients):
+   for aux in [37,0xffffffff]:client.send(142,c.pack_fields([3,2,slot,aux],[1,1,1,4]))
+  quiet();note('measured_four142_aux37_and_minus1_bounded_no_reveal_effect')
+  bomb(clients[3],3,8,4,5)
+  for target in clients:
+   _,body=target.receive(159);assert c.read_fields(body,[1,1,2,4,4,4,1,1,1,4,1,2,2,1,8,1,1])[11]==6
+  note('D_rejected_serial_can_retry_after_all_recipients_complete')
 except BaseException as exc:
  error=repr(exc);raise
 finally:
@@ -87,7 +124,7 @@ finally:
   try:proc.wait(timeout=3)
   except subprocess.TimeoutExpired:error=error or 'Owned PID still present after cleanup deadline'
  rawlog.close();unchanged=all(Path(x['path']).stat().st_size==x['bytes'] and sha(x['path'])==x['sha256']for x in pins)
- report=dict(result='pass'if error is None and proc.returncode==0 and unchanged else'fail',cases=cases,error=error,returncode=proc.returncode,binary_sha256=sha(binary),source_frozen=unchanged,remaining_pid=None if proc.poll()is not None else proc.pid,limits='SyntheticTCP/policy/fixture inputs only, not nativeKR4compatibility/Battle/8/accountauth. Inputgenerator is not oracle.')
+ report=dict(result='pass'if error is None and proc.returncode==0 and unchanged else'fail',cases=cases,error=error,returncode=proc.returncode,binary_sha256=sha(binary),source_frozen=unchanged,remaining_pid=None if proc.poll()is not None else proc.pid,limits='SyntheticTCP/policy/fixture inputs only, not nativeKR4compatibility/life-results/8/accountauth. Inputgenerator is not oracle.')
  rows=[dict(path=str(p),bytes=p.stat().st_size,sha256=sha(p))for p in sorted(root.rglob('*'))if p.is_file()];report['raw_files']=rows
  (root/'verification.json').write_text(json.dumps(report,indent=2)+'\n');print(report['result'],len(cases),'syntheticfour cases, notnativeproof')
  assert report['result']=='pass',report['error'] or 'service cleanup or source pin failure'

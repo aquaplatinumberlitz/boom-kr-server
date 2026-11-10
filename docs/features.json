@@ -306,7 +306,9 @@
           "docs/PROTOCOL.md#bootstrap-recipe-scope",
           "docs/evidence/live-codec-stream/README.md",
           "docs/evidence/live-codec-stream/README.md#cp181",
-          "docs/evidence/rust-service/README.md#cp231"
+          "docs/evidence/rust-service/README.md#cp231",
+          "docs/evidence/rust-service/four-owner-bombs.json",
+          "docs/evidence/rust-service/README.md#cp246"
         ]
       },
       "coverage": {
@@ -344,7 +346,8 @@
               "docs/evidence/probe-service/README.md",
               "docs/evidence/live-codec-stream/README.md",
               "docs/evidence/live-codec-stream/README.md#cp181",
-              "docs/PROTOCOL.md#rust-foundation"
+              "docs/PROTOCOL.md#rust-foundation",
+              "docs/PROTOCOL.md#rust-four-owner-bombs"
             ]
           },
           "windows_original": {
@@ -365,7 +368,8 @@
           "refs": [
             "server/probe_service.py",
             "docs/PROTOCOL.md#probe-service",
-            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57"
+            "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/57",
+            "docs/PROTOCOL.md#rust-four-owner-bombs"
           ],
           "delivery": "via_pr"
         },
@@ -1515,7 +1519,9 @@
           "docs/evidence/rust-service/README.md#cp234",
           "docs/evidence/rust-service/README.md#cp235",
           "docs/evidence/rust-service/four-startup.json",
-          "docs/evidence/rust-service/README.md#cp245"
+          "docs/evidence/rust-service/README.md#cp245",
+          "docs/evidence/rust-service/four-owner-bombs.json",
+          "docs/evidence/rust-service/README.md#cp246"
         ]
       },
       "coverage": {
@@ -1564,7 +1570,8 @@
               "docs/PROTOCOL.md#eight-two-team-cycles",
               "docs/PROTOCOL.md#rust-fixed-room",
               "docs/PROTOCOL.md#rust-m2-acceptance",
-              "docs/PROTOCOL.md#rust-four-startup"
+              "docs/PROTOCOL.md#rust-four-startup",
+              "docs/PROTOCOL.md#rust-four-owner-bombs"
             ]
           },
           "windows_original": {
@@ -1589,7 +1596,8 @@
             "docs/PROTOCOL.md#loading-timeout",
             "docs/PROTOCOL.md#loading-timeout-positive",
             "docs/PROTOCOL.md#eight-two-team-cycles",
-            "docs/PROTOCOL.md#rust-four-startup"
+            "docs/PROTOCOL.md#rust-four-startup",
+            "docs/PROTOCOL.md#rust-four-owner-bombs"
           ],
           "delivery": "via_pr"
         },
@@ -1683,7 +1691,9 @@
           "docs/evidence/rust-service/README.md#cp242",
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/evidence/rust-service/four-startup.json",
-          "docs/evidence/rust-service/README.md#cp245"
+          "docs/evidence/rust-service/README.md#cp245",
+          "docs/evidence/rust-service/four-owner-bombs.json",
+          "docs/evidence/rust-service/README.md#cp246"
         ]
       },
       "coverage": {
@@ -1753,7 +1763,8 @@
               "docs/PROTOCOL.md#rust-fixed-room",
               "docs/PROTOCOL.md#rust-m2-acceptance",
               "docs/PROTOCOL.md#rust-movement-floor",
-              "docs/PROTOCOL.md#rust-four-startup"
+              "docs/PROTOCOL.md#rust-four-startup",
+              "docs/PROTOCOL.md#rust-four-owner-bombs"
             ]
           },
           "windows_original": {
@@ -1781,7 +1792,8 @@
             "rust/crates/kr-service/src/pickups.rs",
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-m3-acceptance",
-            "docs/PROTOCOL.md#rust-four-startup"
+            "docs/PROTOCOL.md#rust-four-startup",
+            "docs/PROTOCOL.md#rust-four-owner-bombs"
           ],
           "delivery": "via_pr"
         },
@@ -4661,7 +4673,9 @@
           "docs/evidence/rust-service/README.md#cp244",
           "docs/evidence/rust-service/account-idle-rate.json",
           "docs/evidence/rust-service/four-startup.json",
-          "docs/evidence/rust-service/README.md#cp245"
+          "docs/evidence/rust-service/README.md#cp245",
+          "docs/evidence/rust-service/four-owner-bombs.json",
+          "docs/evidence/rust-service/README.md#cp246"
         ]
       },
       "coverage": {
@@ -4827,7 +4841,8 @@
               "docs/PROTOCOL.md#four-two-team-cycles",
               "docs/PROTOCOL.md#four-portable-guards",
               "docs/PROTOCOL.md#four-transport-bounds",
-              "docs/PROTOCOL.md#rust-four-startup"
+              "docs/PROTOCOL.md#rust-four-startup",
+              "docs/PROTOCOL.md#rust-four-owner-bombs"
             ]
           },
           "windows_original": {
@@ -4949,7 +4964,8 @@
             "docs/PROTOCOL.md#rust-m3-acceptance",
             "docs/PROTOCOL.md#rust-account-worker",
             "docs/PROTOCOL.md#rust-account-idle-rate",
-            "docs/PROTOCOL.md#rust-four-startup"
+            "docs/PROTOCOL.md#rust-four-startup",
+            "docs/PROTOCOL.md#rust-four-owner-bombs"
           ]
         },
         "integration": {

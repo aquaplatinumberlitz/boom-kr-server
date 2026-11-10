@@ -29,6 +29,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP246: bốn owner đã đặt/nổ bom qua Rust trên client KR thật; M4 còn life/result/reset.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-four-owner-bombs), [raw/hash](docs/evidence/rust-service/README.md#cp246).
+Manner1/cố định2v2: actual118 từng slot→ID1–4→16native159entity/full39 và16native158/full13/lookup-kind0-cleanup.
+Stat capacity1/2/1/1/power1 khớp bốn view, fuse6;7.196copiedgetters.84raw/139,844s sealed/cleanup0,902TCP/144reply.
+59Rusttests/14fourTCP/51twoTCP đạt. R1fail16722/73raw giữ; four142/167 chỉ boundedobserve/noeffect.
+Ảnh own/peer trap-death còn lệch vì127 chưa forward: chưa sharedlife/outcome/reset/EOF hoặc fullM4/tám.
+CP245 đã merge [PR316](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/316)/`d0c2ba3`;
+M5backend đã có, nativebridge riêng. AUD070 qua244/audit kế248; Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP245: bốn client KR thật đã qua phòng/loading và movement trên Rust; M4 còn battle.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-four-startup), [raw/hash](docs/evidence/rust-service/README.md#cp245).
 Run Manner1/đội cố định2v2: bốn ID/slot/tên đúng, ba ACK chưa GO, ACK thứ tư mới clock/spawn;
@@ -36,8 +47,6 @@ Run Manner1/đội cố định2v2: bốn ID/slot/tên đúng, ba ACK chưa GO, 
 58Rusttests,7fourTCP/51twoTCP đạt; hai native failure39+43raw giữ nguyên. Chưa bom/life/result/reset/EOF bốn người.
 M5 backend account/SQLite/worker/idleTTL/rate đã merge [PR315](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/315)/`e601ca7`;
 chưa KR account bridge/ownership. AUD070 qua244, audit kế248; Internet thật chưa kiểm.
-
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP244: M5 backend có idle TTL và rate limit; chưa nối account vào client KR.**
 [Contract](docs/PROTOCOL.md#rust-account-idle-rate), [raw/hash](docs/evidence/rust-service/README.md#cp244).
