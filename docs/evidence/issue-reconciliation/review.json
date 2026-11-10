@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP244",
+  "as_of": "CP245",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "M3CP242scopedaccepted;M5CP236Store/CP243workerPR314merged/CP244schema2idleTTL-ratebackend/55Rust7workerDBs/5migrationcopies10opens/33CLIregression.",
-      "remaining": "NativeKRbridge/multitransportownership/worker-to-serving;M4capacity/M6durability/M7rooms/M8ops. Rateprocesslocal/no productionabuseclaim.",
-      "next_test": "PLANM4four→eight;M5bridgegaponly;AUD070through244/next248/no duplicateM3positive.",
+      "known": "M3CP242scoped;M5backendCP236-243-244PR315merged;CP245four-native-Manner1startup-room-loading-12remoteprogress/64raw/58tests/7fourTCP/51twoTCP.",
+      "remaining": "M4fourbomb/life/results-reset/EOF then8;M5nativeKRbridge/multitransportownership/worker-to-serving;M6durability/M7rooms/M8ops.",
+      "next_test": "PLANfour-ownerCP201→170three-recipients→CP202rank4/outcomes/reset/Start3→scopedabort/EOF→8. No duplicate startup.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Manualbackendpolicy/migrationconservation/rawDBs/audit review, no nativeaccountauth/servicegate or epicclosure.",
+      "reason": "Native startup/movement and negatives checked with evidence limits; no fourBattle/M4/authgate/epic closure.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -282,7 +282,8 @@
         "docs/PROTOCOL.md#rust-return-cleanup",
         "docs/PROTOCOL.md#rust-m3-acceptance",
         "docs/PROTOCOL.md#rust-account-worker",
-        "docs/PROTOCOL.md#rust-account-idle-rate"
+        "docs/PROTOCOL.md#rust-account-idle-rate",
+        "docs/PROTOCOL.md#rust-four-startup"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -399,7 +400,8 @@
         "docs/evidence/rust-service/m3-acceptance.json",
         "docs/evidence/rust-service/m3-controls.json",
         "docs/evidence/rust-service/account-worker.json",
-        "docs/evidence/rust-service/account-idle-rate.json"
+        "docs/evidence/rust-service/account-idle-rate.json",
+        "docs/evidence/rust-service/four-startup.json"
       ],
       "prs": [
         173,
@@ -516,7 +518,8 @@
         311,
         312,
         313,
-        314
+        314,
+        315
       ],
       "successors": []
     },
@@ -855,11 +858,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "M3CP242scopedaccepted;M5CP236Store/CP243workerPR314merged/CP244schema2idleTTL-ratebackend/55Rust7workerDBs/5migrationcopies10opens/33CLIregression.",
-      "remaining": "NativeKRbridge/multitransportownership/worker-to-serving;M4capacity/M6durability/M7rooms/M8ops. Rateprocesslocal/no productionabuseclaim.",
-      "next_test": "PLANM4four→eight;M5bridgegaponly;AUD070through244/next248/no duplicateM3positive.",
+      "known": "M3CP242scoped;M5backendCP236-243-244PR315merged;CP245four-native-Manner1startup-room-loading-12remoteprogress/64raw/58tests/7fourTCP/51twoTCP.",
+      "remaining": "M4fourbomb/life/results-reset/EOF then8;M5nativeKRbridge/multitransportownership/worker-to-serving;M6durability/M7rooms/M8ops.",
+      "next_test": "PLANfour-ownerCP201→170three-recipients→CP202rank4/outcomes/reset/Start3→scopedabort/EOF→8. No duplicate startup.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Manualbackendpolicy/migrationconservation/rawDBs/audit review, no nativeaccountauth/servicegate or epicclosure.",
+      "reason": "Native startup/movement and negatives checked with evidence limits; no fourBattle/M4/authgate/epic closure.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -897,7 +900,8 @@
         "docs/PROTOCOL.md#own-profile-result-compare",
         "docs/PROTOCOL.md#rust-m3-acceptance",
         "docs/PROTOCOL.md#rust-account-worker",
-        "docs/PROTOCOL.md#rust-account-idle-rate"
+        "docs/PROTOCOL.md#rust-account-idle-rate",
+        "docs/PROTOCOL.md#rust-four-startup"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -934,7 +938,8 @@
         "docs/evidence/rust-service/m3-acceptance.json",
         "docs/evidence/rust-service/m3-controls.json",
         "docs/evidence/rust-service/account-worker.json",
-        "docs/evidence/rust-service/account-idle-rate.json"
+        "docs/evidence/rust-service/account-idle-rate.json",
+        "docs/evidence/rust-service/four-startup.json"
       ],
       "prs": [
         286,
@@ -965,7 +970,8 @@
         311,
         312,
         313,
-        314
+        314,
+        315
       ],
       "successors": []
     }

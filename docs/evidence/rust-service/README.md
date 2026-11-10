@@ -351,3 +351,24 @@ AUD070 đối chiếu README→PLAN→PROTOCOL→RESEARCH→evidence/code/raw CP
 Sửa currentPLAN/RESEARCH staleM3partial wording, không sửa completecheckpoint/audit/raw cũ. M3CP242nativebaseline giữ;
 M5backendidle/rate đạt subset, bridge/ownership/worker-to-KR chưa đủ. TiếpM4four/eight, không broadSDK/duplicatepositive.
 Internet thật chưa kiểm.
+
+
+<a id="cp245"></a>
+## CP245 — bốn native startup/room/loading/currentprogress; M4 partial
+
+[Contract/giới hạn](../../PROTOCOL.md#rust-four-startup), [metadata](four-startup.json), [PLAN](../../PLAN.md#current-order).
+Baseline PR315/e601ca7; source reuse tại `local/research/codex/rust-m4-source-survey-r1/reuse.json`.
+`rust-four-startup-native-r3/`: four-verification/peer-getter-verification/ui-review/input-retention.json,
+native-four/runtime-preflight/recipe/raw-seal.json và cycles A–D/rawPCAP/native logs/ảnh. R3Manner1, khôngFree0.
+64raw/105,413713755s/runSHA4d0aed96…/binarybab87fed…/cleanup0;698TCP/112exactreply/16transports;
+12remote currentprogress/4self/7.128copiedgetters, kv-a UDP sáu cạnh A. Đã xem ảnh cả4 tên/actor/arrow/clock01:33.
+`rust-four-startup-native-r1/`:39raw/exit1/cleanup0/5448 bị từ chối; failure-review/channel-input-review/
+cp200-ancillary-reuse.json giữ đối chiếu CP200. R2:43raw/intentional130/finallycleanup/controller sai tọa độ,
+failure-review/controller-stop-request giữ; R3 dùng known605,526. Không patch mới, không freshprefix claim.
+Old verification/getter copies trước mode review giữ; final verifier đọc exact retained pre-run inputs,
+publicexporter nâng sau run không sửa raw. Hai script verify_rust_four_startup.py/verify_rust_four_getters.py local.
+`rust-four-startup-public-kernel-r1/`:7syntheticfour cases/sourcefrozen/currentbinary; export-r1 generatedinputs
+không oracle/native acceptance. `rust-four-startup-two-regression-r3/`:51twoTCP/currentbinarypass, R2oldbinary51pass;
+R1EOF/cleanupfailure giữPIDobservations/D-stateBtrfs, chưa causalrootcause. Logs fmt/clippy/tests/build-final giữ58tests.
+Không fourbom/life/result/reset/EOF/tám/fullauthgateclosure; startup4 chặn unportedBattle. Tám PythonWIP byte-exact,
+AUD070 qua244/audit kế248. Internet thật chưa kiểm.

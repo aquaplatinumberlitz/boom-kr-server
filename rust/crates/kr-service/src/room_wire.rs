@@ -1,4 +1,4 @@
-//! Measured two-player field adapters; opaque template bytes stay opaque.
+//! Measured two/four-player field adapters; opaque template bytes stay opaque.
 use crate::room::Member;
 use kr_wire::{Width, read_uint, write_uint};
 use std::io;
@@ -9,7 +9,8 @@ fn put(v: u64, w: Width) -> io::Result<Vec<u8>> {
     write_uint(v, w).map_err(io::Error::other)
 }
 pub fn player(template: &[u8], member: &Member, chief: bool) -> io::Result<Vec<u8>> {
-    if template.len() != 204 || uint(&template[1..5], Width::U32)? != u64::from(member.key.identity)
+    if ![200, 204].contains(&template.len())
+        || uint(&template[1..5], Width::U32)? != u64::from(member.key.identity)
     {
         return Err(io::Error::other("wrong pinned player106 identity"));
     }
@@ -23,7 +24,7 @@ pub fn player(template: &[u8], member: &Member, chief: bool) -> io::Result<Vec<u
     } else {
         0
     };
-    let team = u64::from(member.slot); // fixed two-player opposing-team policy
+    let team = u64::from(member.team); // fixed measured alternating diagnostic teams
     body[12..16].copy_from_slice(&put((prior & 0xffff0000) | low | (team << 5), Width::U32)?);
     Ok(body)
 }
@@ -102,10 +103,13 @@ pub fn peer(
     template: &[u8],
     key: u32,
     recipient: u8,
-    endpoints: [(u32, u16); 2],
+    endpoints: &[(u32, u16)],
 ) -> io::Result<Vec<u8>> {
-    if template.len() < 35 || recipient > 1 {
-        return Err(io::Error::other("unsupported two-player peer153"));
+    if template.len() < 35
+        || !matches!(endpoints.len(), 2 | 4)
+        || usize::from(recipient) >= endpoints.len()
+    {
+        return Err(io::Error::other("unsupported diagnostic peer153"));
     }
     let mut out = template[..35].to_vec();
     out[15..19].copy_from_slice(&put(u64::from(key), Width::U32)?);
@@ -127,7 +131,7 @@ pub fn peer(
             }
         }
     }
-    for _ in 2..26 {
+    for _ in endpoints.len()..26 {
         out.extend(put(0, Width::U8)?);
     }
     Ok(out)
@@ -224,4 +228,62 @@ pub fn replace_listing_title(body: &[u8], title: &[u8]) -> io::Result<Vec<u8>> {
     out.extend(put(blob.len() as u64, Width::U32)?);
     out.extend(encode_bytes(&blob)?);
     Ok(out)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn four_peer_endpoints_are_distinct_self_zero_and_all_inactive_slots_explicit() {
+        let endpoints = [
+            (0x0a4d0002, 32001),
+            (0x0a4d0003, 32002),
+            (0x0a4d0004, 32003),
+            (0x0a4d0005, 32004),
+        ];
+        for recipient in 0..4 {
+            let body = peer(&[0; 97], 12346, recipient, &endpoints).unwrap();
+            assert_eq!(body.len(), 133);
+            let mut at = 35;
+            for (slot, endpoint) in endpoints.iter().enumerate() {
+                assert_eq!(uint(&body[at..at + 1], Width::U8).unwrap(), 1);
+                at += 1;
+                let expected = if slot == usize::from(recipient) {
+                    (0, 0)
+                } else {
+                    *endpoint
+                };
+                assert_eq!(
+                    uint(&body[at..at + 4], Width::U32).unwrap(),
+                    u64::from(expected.0)
+                );
+                assert_eq!(
+                    uint(&body[at + 4..at + 6], Width::U16).unwrap(),
+                    u64::from(expected.1)
+                );
+                for offset in [6, 12] {
+                    assert_eq!(
+                        uint(&body[at + offset..at + offset + 4], Width::U32).unwrap(),
+                        0
+                    );
+                    assert_eq!(
+                        uint(&body[at + offset + 4..at + offset + 6], Width::U16).unwrap(),
+                        0
+                    );
+                }
+                at += 18;
+            }
+            for _ in 4..26 {
+                assert_eq!(uint(&body[at..at + 1], Width::U8).unwrap(), 0);
+                at += 1;
+            }
+            assert_eq!(at, body.len());
+        }
+        assert!(peer(&[0; 97], 12346, 4, &endpoints).is_err());
+        assert!(peer(&[0; 97], 12346, 0, &endpoints[..3]).is_err());
+        let mut missing = endpoints;
+        missing[1] = (0, 0);
+        assert!(peer(&[0; 97], 12346, 0, &missing).is_err());
+        assert_eq!(peer(&[0; 97], 12346, 0, &endpoints[..2]).unwrap().len(), 97);
+    }
 }

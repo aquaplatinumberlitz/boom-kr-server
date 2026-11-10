@@ -8849,3 +8849,42 @@ AUD070 quaCP244 đối chiếu CP241–244, sửa PLAN/RESEARCH còn gợi M3 ch
 reviewwaived/Codexselfcheck, checker không xác nhận ngữ nghĩa/gate. M5 vẫn partial: nativeKRbridge/transportownership/
 worker-to-serving thiếu; inventory/reward/restore/load riêng. M3nativebaselineCP242 giữ, rootbuild mới chưa nativecertified.
 [PLAN](PLAN.md#current-order) tiếp M4four/eight và M5bridge theo gap thực tế; audit kếCP248. Internet thật chưa kiểm.
+
+<a id="rust-four-startup"></a>
+## Rust bốn client: phòng, loading và current movement — CP245 / M4 partial
+
+[Code](../rust/crates/kr-service/src/room_io.rs), [metadata](evidence/rust-service/four-startup.json),
+[raw/hash](evidence/rust-service/README.md#cp245). Tái dùng CP200–207 và committed Python builder
+`four_player_profile.py` hash61690446… tại dc71e33; loại tám WIP khỏi baseline, không RE binary mới.
+CP200 startup và CP201 stat/bom là contract đầu vào; Rust phải có native acceptance riêng, generator không là oracle.
+
+Diagnostic roster chỉ2 hoặc4, IP operator→ID/tên cố định. Four: KRLocal/1/slot0, KRGuest/2/1,
+KRNew/3/2, KRPeer4/4/3; team alternating0/1. **R3 actual81/86/87 là Manner1**, không gọi Free0
+như CP200/202 cũ. Auth/profile291/106 có size theo hai name đã biết5/7: C135/126/200, A/B/D137/128/204.
+R1 chỉ ra ancillary544 C/body8; CP200 raw đối chiếu cùngshape, name7/body10. Cho đúng knownsize/opaque,
+không gán field/ACK;67 vẫn2, heartbeat15 vẫn31, budget/stage giữ. Mỗi peer106 batch có subject membership riêng.
+
+Room admission/Ready/round/visit guards mở bounded4;121 outer181/inner152,153 body133/26flag rows,
+own endpoint zero và ba actual99 peer tuples. D99 giữ read-only theo recipe cũ: first3 ACK ≥3s không GO;
+fourth actual99 mới197/196/153/clock. Native bốn view fullcursor/errors0/IDs1–4/slots0–3, clock/spawn/ảnh đúng.
+Normal OS input A/B/C Right, D Down mỗi0,25s:12 directed remote current-coordinate progress +4self;
+7.128 copied-native52A350 getter checks trên read-only wrappers trong Unicorn riêng. Không có key/E668AD
+apply-call probes mới; không coi copied emulation là Wine execution. PCAP kv-a chỉ sáu cạnh A, không cả12Ethernetedges.
+
+Native R3 binary bab87fed…/client4b781fbc…/Wine10.0-20260425, private root+A/B/C/D netns/bridge/no default route,
+16TCP transports/698records/112exactreplies nối fulltuple/C2Sseq/CRC/hash;64raw/105,413713755s/sourcefrozen/cleanup0.
+R1 39raw fail544/8 trước fix; R2 43raw controller Ready/Start sai410,566 nên không95/104/99,
+intentionalSIGINT130/finallycleanup, R3 dùng CP200605,526. Giữ failures/oldinputs; R3 dùng lại private prefix/game
+sau seal R1, không coldprefix/freshinstall. Không đổi client patch: ABI-only copy CP187/200.
+
+58workspace tests (53service+5wire),7fourTCP trên public exporter output và51twoTCP trên samefinalbinary đạt.
+Public exporter thêm **sau seal R3**; native dùng private preparer, retained pre-run exporter hash4d1a3dea… kiểm
+đúng originalbytes; không sửa preflight/raw thành current source. Generated peer tail chỉ template, runtime dựng từ99.
+TwoTCPR1 unexpectedEOF/cleanupdeadline giữ; D-state Btrfs quan sát lúc cleanup không chứng minh nguyên nhân EOF;
+sameoldbinaryR2 và finalR3 đều51pass sau inputcopy kết thúc, không tăng deadline/không claim I/O fix.
+
+**Startup4 hiện reject Battle/terrain config trước bind và gameplay118/124/142**. 127 ngoài Battle vẫn bounded
+opaque/noeffect; chưa fourlife/bom/results/reset/Start2/EOF, chưa tám/fullaccount/generalroom/production.
+M3 hai client đã đạt CP242 giữ regression; M4 partial. [PLAN](PLAN.md#current-order) tiếp fourownerbom/life170 đủ
+ba recipient→rank4/outcomes/reset/Start3→abort/EOF, không clone two-player ranks/policy. M5backend đã mergeCP244,
+KRbridge riêng; AUD070 qua244 không đổi/audit kế248. Internet thật chưa kiểm.

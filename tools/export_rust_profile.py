@@ -130,6 +130,90 @@ def add_fixed_room(config, profile_path, listing_path, title):
     return config
 
 
+def expand_four_startup(config, derived_dir, peers):
+    """Explicit CP200 four-role startup profile. Generated input is not an oracle.
+
+    Reuse the measured local zero-profile builders already in this repository;
+    keep the two-player exporter unchanged and disable unported four Battle.
+    """
+    import copy
+    import ipaddress
+    from server import four_player_profile as four
+    from server import probe_codec as codec
+    config = copy.deepcopy(config)
+    two = config.get('diagnostic_two_lobby', {})
+    if len(two.get('actors', [])) != 2 or 'fixed_room' not in two:
+        raise ValueError('four startup requires a complete two-role fixed-room input')
+    if len(peers) != 4 or len(set(peers)) != 4:
+        raise ValueError('four distinct diagnostic peers required')
+    for address in [config['bind'], *peers]:
+        ip = ipaddress.IPv4Address(address)
+        if not (ip.is_loopback or any(ip in ipaddress.IPv4Network(net) for net in
+                ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16'])):
+            raise ValueError('four startup endpoints must be loopback or RFC1918')
+    derived_dir = Path(derived_dir).resolve()
+    if not derived_dir.is_relative_to(Path(__file__).resolve().parents[1] / 'local'):
+        raise ValueError('derived wire inputs must stay under this repository local/')
+
+    def pinned(row):
+        path = Path(row['fixture']['path'])
+        raw = path.read_bytes()
+        if len(raw) != row['fixture']['bytes'] or hashlib.sha256(raw).hexdigest() != row['fixture']['sha256']:
+            raise ValueError('four startup source fixture pin mismatch')
+        return raw
+
+    room = two['fixed_room']
+    common = two['actors'][0]['profile']
+    player_template = room['packets']['player_B']
+    player_raw = pinned(player_template)
+    player = codec.frame_body(player_raw, player_template['sequence'])
+    auth_template = common['packets']['auth_A']
+    auth = codec.frame_body(pinned(auth_template), auth_template['sequence'])
+    derived_dir.mkdir(parents=True, exist_ok=False)
+
+    def pin(name, data):
+        path = derived_dir / (name + '.bin')
+        path.write_bytes(data)
+        return dict(path=str(path), bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+
+    def packet(name, template, body, sequence=None):
+        seq = template['sequence'] if sequence is None else sequence
+        raw = codec.encode(pinned(template)[:37], template['opcode'], body, seq)
+        return dict(fixture=pin(name, raw), sequence=seq, opcode=template['opcode'])
+
+    actors = []
+    for role, ip in zip(four.ROLES, peers):
+        member = four.MEMBERS[role]
+        profile = copy.deepcopy(common)
+        body = four.player_body(player, member, chief=role == 'A')
+        header = packet(role + '-player106', player_template, body, 58)
+        profile['own_header'] = header['fixture']
+        profile['packets']['auth_A'] = packet(role + '-auth', auth_template, four.auth_body(auth, member))
+        profile['packets']['own291'] = dict(fixture=pin(role + '-own291', four.own_body(body)), sequence=None, opcode=291)
+        room['packets']['player_' + role] = header
+        actors.append(dict(peer=ip, identity=member['identity'], name=member['name'], profile=profile))
+    start = room['packets']['start']
+    room['packets']['start'] = packet('start4', start, four.start_body(codec.frame_body(pinned(start), start['sequence'])))
+    peer = room['packets']['peer']
+    endpoints = {role: (int(ipaddress.IPv4Address(ip)), 32001 + index)
+                 for index, (role, ip) in enumerate(zip(four.ROLES, peers))}
+    # Rust preserves this measured prefix and builds endpoints from actual99;
+    # these bounded template tuples do not choose a client's runtime UDP port.
+    room['packets']['peer'] = packet('peer4', peer, four.peer_body(codec.frame_body(pinned(peer), peer['sequence']), 12346, 'A', endpoints))
+    room.pop('battle', None)
+    room.pop('terrain', None)
+    two['actors'] = actors
+    config['allowed_peers'] = list(peers)
+    config['max_connections'] = max(24, config['max_connections'])
+    source = Path(four.__file__)
+    (derived_dir / 'provenance.json').write_text(json.dumps(dict(
+        scope='Four diagnostic startup/room/loading only; four Battle/terrain policies disabled, no native acceptance from generation.',
+        builder_path=str(source), builder_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),
+        contract='docs/PROTOCOL.md#four-session-native',
+        limits='Operator-IP identities, fixed alternating teams/zero profiles/known ASCII5-7 names; not authentication or general capacity.'), indent=2) + '\n')
+    return config
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--python-profile', type=Path, required=True)
@@ -147,6 +231,9 @@ def main():
     p.add_argument('--fixed-room-python-profile', type=Path)
     p.add_argument('--fixed-room-listing', type=Path)
     p.add_argument('--fixed-room-title')
+    p.add_argument('--four-startup-derived-dir', type=Path, help='Explicit startup-only four-role expansion; creates a new directory under local/')
+    p.add_argument('--four-startup-peer-c')
+    p.add_argument('--four-startup-peer-d')
     a = p.parse_args()
     if not 1 <= len(a.port) <= 32 or len(set(a.port)) != len(a.port) or any(not 1 <= n <= 65535 for n in a.port):
         p.error('one to32 distinct nonzero ports required')
@@ -166,6 +253,12 @@ def main():
         if not all(room) or not all(two):
             p.error('fixed room requires two-lobby and room profile/listing/title')
         config = add_fixed_room(config, *room)
+    four = [a.four_startup_derived_dir, a.four_startup_peer_c, a.four_startup_peer_d]
+    if any(four):
+        if not all(four) or not all(two) or not all(room):
+            p.error('four startup requires two-lobby/fixed-room inputs plus derived directory and C/D peers')
+        config = expand_four_startup(config, a.four_startup_derived_dir,
+            [a.diagnostic_peer_a, a.diagnostic_peer_b, a.four_startup_peer_c, a.four_startup_peer_d])
     with a.out.open('x') as f:
         f.write(json.dumps(config, indent=2) + '\n')
 

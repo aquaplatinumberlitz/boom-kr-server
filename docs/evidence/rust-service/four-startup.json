@@ -1,0 +1,90 @@
+{
+  "schema": "kre-rust-four-startup-v1",
+  "checkpoint": "CP245",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/PROTOCOL.md#rust-four-startup",
+  "plan": "docs/PLAN.md#current-order",
+  "baseline": "e601ca75eb709aa06f576ee8200bee77cfcd4110",
+  "native": {
+    "path": "local/research/codex/rust-four-startup-native-r3",
+    "run_sha256": "4d0aed96fba07410e32438432fc1d6eabf46ffd46073ac23bd5812d39b97c1db",
+    "binary_sha256": "bab87fed37752efcca68ac3553a250c87a7eb0f567189eea3351d1e182e7a382",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "10.0-20260425",
+    "mode": {
+      "selector": 1,
+      "label": "Manner",
+      "source": "actual81and86-87echo/CP162",
+      "limits": "Fixedalternating2v2startup only; no teamchange UI/othermode or fourBattle acceptance."
+    },
+    "raw_count": 64,
+    "duration_s": 105.413713755,
+    "tcp_records": 698,
+    "exact_replies": 112,
+    "transports": 16,
+    "directed_remote_progress": 12,
+    "getter_checks": 7128,
+    "cleanup": {
+      "net_namespace": "net:[4026532806]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    }
+  },
+  "policy": {
+    "actors": [
+      "KRLocal/1",
+      "KRGuest/2",
+      "KRNew/3",
+      "KRPeer4/4"
+    ],
+    "teams": "alternating0/1 fixed2v2; actual81 Manner1",
+    "scope": "startup/room/loading/currentmovement only; reject four Battle/terrain config before bind and gameplay118/124/142",
+    "identity": "diagnostic operator IP, not credential authentication",
+    "ancillary": "544 body8 for known name5, body10 name7; opaque/noACK/unchanged budget; 67 still2/heartbeat15 still31"
+  },
+  "reuse": {
+    "path": "local/research/codex/rust-m4-source-survey-r1/reuse.json",
+    "contracts": [
+      "docs/PROTOCOL.md#four-session-native",
+      "docs/PROTOCOL.md#four-owner-bombs",
+      "docs/PROTOCOL.md#four-two-team-cycles",
+      "docs/PROTOCOL.md#four-member-abort-room"
+    ],
+    "direct": "Committed Python builder four_player_profile.py SHA61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11; CP200-207 measured facts, no WIP service import or new binary RE"
+  },
+  "tests": {
+    "workspace": 58,
+    "service": 53,
+    "wire": 5,
+    "four_synthetic": "local/research/codex/rust-four-startup-public-kernel-r1/verification.json",
+    "four_cases": 7,
+    "two_regression": "local/research/codex/rust-four-startup-two-regression-r3/verification.json",
+    "two_cases": 51
+  },
+  "failures": [
+    {
+      "path": "local/research/codex/rust-four-startup-native-r1",
+      "raw_count": 39,
+      "exit": 1,
+      "reason": "544/8 KRNew rejected by old544/10 whitelist; fixed lobby with negative tests, CP200 raw independently checked"
+    },
+    {
+      "path": "local/research/codex/rust-four-startup-native-r2",
+      "raw_count": 43,
+      "exit": 130,
+      "reason": "Ready/Start controller wrong coordinates410,566; owned SIGINT/finally cleanup; CP200 known605,526 used for R3"
+    }
+  ],
+  "limits": [
+    "Diagnosticoperator-IPidentity; notaccountauthentication or generalroom/capacity8.",
+    "Read-only coordinates before/after normalOSinputs, no new key/E668AD apply-call probes; hosttimes notgameticks.",
+    "No fourBattle/bombs/results/reset/Start2/hostguestEOF/fullM4/production; twoM3baseline separate.",
+    "Wine4bcopy/privatevirtualLAN/sharedkernel/no externalroute; Internet thật chưa kiểm.",
+    "UDP capture kv-a chỉ sáu cạnh A; 12 directed current progress từ native coordinates, không 12 Ethernet captures hoặc key/apply-call probes mới.",
+    "R3 tái dùng prefix/game private R1 sau cleanup, không cold prefix/fresh installation; copy ABI sửa từ CP187/200, không patch mới.",
+    "Public exporter thêm sau seal R3: kernel7 dùng output public; native R3 dùng private preparer. Retained old exporter exact bytes được kiểm, không thay raw/preflight bằng current source.",
+    "R1 ancillary544/8 bị từ chối; R2 controller Ready/Start sai tọa độ, intentional130/cleanup; giữ failures. Two-regressionR1 EOF/shutdown có D-state Btrfs lúc cleanup, không chứng minh nguyên nhân EOF hoặc đã fix I/O."
+  ],
+  "audit": "AUD070 through244 unchanged; nextCP248/M4partial/no gate closure"
+}

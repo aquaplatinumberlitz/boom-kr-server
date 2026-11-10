@@ -232,10 +232,10 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             || two.wcp_ports.iter().copied().collect::<HashSet<_>>().len() != two.wcp_ports.len()
             || two.wcp_ports.iter().any(|p| !config.ports.contains(p))
             || ports.iter().any(|p| !config.ports.contains(p))
-            || two.actors.len() != 2
-            || config.allowed_peers.len() != 2
+            || !matches!(two.actors.len(), 2 | 4)
+            || config.allowed_peers.len() != two.actors.len()
         {
-            return Err(io::Error::other("invalid two-actor diagnostic endpoints"));
+            return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
         let mut actors = HashMap::new();
         let mut identities = HashSet::new();
@@ -243,6 +243,8 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             let expected = match actor.identity {
                 1 => "KRLocal",
                 2 => "KRGuest",
+                3 if two.actors.len() == 4 => "KRNew",
+                4 if two.actors.len() == 4 => "KRPeer4",
                 _ => return Err(io::Error::other("unsupported diagnostic identity")),
             };
             if actor.name != expected
@@ -297,12 +299,12 @@ fn load_lobby(
     let mut packets = HashMap::new();
     let own_header_raw = local.own_header.load()?;
     let own_template = decode(&own_header_raw, 58).map_err(io::Error::other)?;
-    if own_template.opcode != 106 || own_template.payload.len() != 204 {
+    if own_template.opcode != 106 || own_template.payload.len() != 190 + 2 * name.len() {
         return Err(io::Error::other("unsupported own291 header template"));
     }
     let own_header: [u8; HEADER_LEN] = own_header_raw[..HEADER_LEN].try_into().expect("decoded106");
     let expected = [
-        ("auth_A", 4, 137),
+        ("auth_A", 4, 130 + name.len()),
         ("netinfo", 15, 31),
         ("flags", 62, 3),
         ("redirect", 7, 14),
@@ -310,7 +312,7 @@ fn load_lobby(
         ("ready", 241, 31),
         ("roomlist_A", 91, 2),
         ("channel_list", 14, 44),
-        ("own291", 291, 128),
+        ("own291", 291, 121 + name.len()),
     ];
     if local.packets.len() != expected.len() {
         return Err(io::Error::other("unsupported local lobby packet set"));

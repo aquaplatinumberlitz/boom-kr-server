@@ -258,3 +258,27 @@ Rate per-worker, sharedclones, không global/durable; fullqueue không charge, a
 `test_rust_account_worker.py` giữ7schema2DBs; `test_rust_idle_migration.py --binary rust/target/debug/kr-admin
 --baseline local/research/codex/rust-account-worker-acceptance-r1 --out local/<new-private-dir>` kiểm5copyDB cũ,
 10CLIopens và full old-row conservation. Baseline CP243 không sửa; raw không publish.
+
+
+## Bốn client startup — CP245
+
+[Contract/giới hạn](../docs/PROTOCOL.md#rust-four-startup), [raw/hash](../docs/evidence/rust-service/README.md#cp245).
+Với đủ các flags two-lobby/fixed-room ở trên, thêm:
+
+```text
+--four-startup-derived-dir local/new-four-inputs
+--four-startup-peer-c 10.77.0.4 --four-startup-peer-d 10.77.0.5
+```
+
+Exporter tạo directory mới dưới local/, pin generated frames/provenance dùng committed four_player_profile.py,
+giữ hai-client path. Chỉ diagnostic4/knownnames/IP, không auth; bỏ Battle/terrain vì chưa port bốn.
+Chạy service cùng cách hai-client, topology cô lập theo recipe. Public export output đã kiểm7TCPcases;
+native R3 dùng privatepreparer trước exporter enhancement, không gọi mọi generated input đã native-tested.
+
+```bash
+python3 tools/test_rust_four_room.py --binary rust/target/debug/kr-service \
+  --config local/four-config.json --out local/new-four-tcp
+```
+
+Native scope: Manner1/đội alternating2v2/room/4ACKbarrier/clock/currentprogress12; chưa fourBattle/results/reset/EOF.
+58workspace tests; two-client51TCPregression giữ. PLAN tiếp fourownerbom/life/rank4/abort rồi tám.
