@@ -1,5 +1,6 @@
 //! Fixed-room adapters with bounded recipient queues and membership fences.
 use super::{ActorProfile, LobbyPacketPin, Reply};
+use crate::bombs;
 use crate::{
     pickups,
     room::{Member, Membership, Phase, Room},
@@ -29,6 +30,10 @@ struct Channel {
 #[derive(Clone)]
 pub enum Guard {
     Channel,
+    Bomb {
+        member: Membership,
+        ticket: bombs::Ticket,
+    },
     Member(Membership, Option<u64>),
     Lobby {
         identity: u32,
@@ -42,6 +47,7 @@ pub struct Batch {
     pub packets: Vec<(String, Reply)>,
     pub setup: Option<Membership>,
     pub subject: Option<Membership>,
+    pub bomb_complete: Option<(bombs::Ticket, Membership)>,
 }
 pub struct Runtime {
     model: Room,
@@ -57,10 +63,18 @@ pub struct Runtime {
     ports: HashMap<Membership, u16>,
     floor_catalog: pickups::Catalog,
 }
+#[derive(serde::Serialize)]
+pub struct BombObservation {
+    pub accepted: bool,
+    pub id: Option<u16>,
+    pub reason: &'static str,
+}
 #[derive(Default)]
 pub struct Observation {
     pub dropped_after_abort: bool,
     pub pickup: Option<pickups::Decision>,
+    pub bomb: Option<BombObservation>,
+    pub terrain_notice: Option<&'static str>,
 }
 pub struct Session {
     shared: Shared,
@@ -225,6 +239,7 @@ impl Runtime {
             packets,
             setup: None,
             subject: None,
+            bomb_complete: None,
         }
     }
     fn lobby_batch(
@@ -244,6 +259,7 @@ impl Runtime {
             packets,
             setup: None,
             subject: None,
+            bomb_complete: None,
         }
     }
     // Reserve every recipient queue entry before publishing any state or batch.
@@ -353,7 +369,22 @@ impl Session {
     pub fn handles(opcode: u32) -> bool {
         matches!(
             opcode,
-            81 | 82 | 585 | 86 | 95 | 104 | 99 | 528 | 127 | 96 | 266 | 190 | 124 | 123
+            81 | 82
+                | 585
+                | 86
+                | 95
+                | 104
+                | 99
+                | 528
+                | 127
+                | 96
+                | 266
+                | 190
+                | 124
+                | 123
+                | 118
+                | 142
+                | 167
         )
     }
     pub fn valid(&self, batch: &Batch) -> bool {
@@ -371,6 +402,10 @@ impl Session {
         }
         match batch.guard {
             Guard::Channel => true,
+            Guard::Bomb { member, ref ticket } => {
+                r.model.deliverable(member, Some(ticket.round))
+                    && r.model.bombs.deliverable(ticket, member)
+            }
             Guard::Member(key, round) => r.model.deliverable(key, round),
             Guard::Lobby {
                 identity,
@@ -407,6 +442,13 @@ impl Session {
         }
     }
     pub fn finish(&self, batch: &Batch) -> io::Result<()> {
+        if let Some((ticket, recipient)) = &batch.bomb_complete {
+            let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            if !runtime.model.bombs.delivered(ticket, *recipient) {
+                return Err(err("stale bomb delivery completion"));
+            }
+        }
+
         if let Some(key) = batch.setup {
             self.shared
                 .lock()
@@ -434,6 +476,8 @@ impl Session {
         let mut room_choice = None;
         let mut dropped_after_abort = false;
         let mut pickup = None;
+        let mut bomb = None;
+        let mut terrain_notice = None;
         match opcode {
             528 => {
                 if !body.is_empty() {
@@ -757,12 +801,95 @@ impl Session {
                 // CP019/020 known map-selection/setup traffic; Python leaves
                 // these shapes unanswered. No new authority/side effect.
             }
+            167 => {
+                let member = r.member(self.identity, self.connection)?;
+                if ![4, 32].contains(&body.len()) {
+                    return Err(err("opaque167 measured sizes"));
+                }
+                next.observe_opaque167(member.key)?;
+            }
             123 => {
                 let m = r.member(self.identity, self.connection)?;
                 if body.len() != 10 {
                     return Err(err("opaque123 measured size"));
                 }
                 next.observe_opaque123(m.key)?;
+            }
+            118 => {
+                let member = r.member(self.identity, self.connection)?;
+                let request = bombs::Request::parse(body)?;
+                let result = if let Phase::Armed { round } = next.phase {
+                    let roster: Vec<_> = next.members.values().map(|m| m.key).collect();
+                    next.bombs.place(
+                        round,
+                        member.key,
+                        member.slot,
+                        &request,
+                        &roster,
+                        next.bomb_capacity[usize::from(member.slot)],
+                    )?
+                } else {
+                    Err("inactive_round")
+                };
+                match result {
+                    Err(reason) => {
+                        bomb = Some(BombObservation {
+                            accepted: false,
+                            id: None,
+                            reason,
+                        })
+                    }
+                    Ok(ticket) => {
+                        let spawn = r.reply("start", Some(159), Some(request.spawn159(ticket.id)?));
+                        let blast =
+                            r.reply("start", Some(158), Some(bombs::explode158(ticket.id)?));
+                        for peer in next.members.values() {
+                            let mut immediate = Runtime::member_batch(
+                                peer.key,
+                                Some(ticket.round),
+                                0,
+                                vec![("bomb159".into(), spawn.clone())],
+                            );
+                            immediate.subject = Some(member.key);
+                            effects.push((peer.key.identity, immediate));
+                            let mut due = Runtime::member_batch(
+                                peer.key,
+                                Some(ticket.round),
+                                6000,
+                                vec![("bomb158".into(), blast.clone())],
+                            );
+                            due.guard = Guard::Bomb {
+                                member: peer.key,
+                                ticket: ticket.clone(),
+                            };
+                            due.subject = Some(member.key);
+                            due.bomb_complete = Some((ticket.clone(), peer.key));
+                            effects.push((peer.key.identity, due));
+                        }
+                        bomb = Some(BombObservation {
+                            accepted: true,
+                            id: Some(ticket.id),
+                            reason: "accepted",
+                        });
+                    }
+                }
+            }
+            142 => {
+                let member = r.member(self.identity, self.connection)?;
+                if body.len() != 7 {
+                    return Err(err("known142 size"));
+                }
+                let slot = read_uint(&body[2..3], Width::U8).map_err(io::Error::other)?;
+                let aux = read_uint(&body[3..], Width::U32).map_err(io::Error::other)?;
+                terrain_notice = Some(if !matches!(next.phase, Phase::Armed { .. }) {
+                    "inactive_round"
+                } else if slot != u64::from(member.slot) || aux != u64::from(u32::MAX) {
+                    "unsupported_report"
+                } else {
+                    "terrain_not_ported_no_reveal_grant"
+                });
+                // Known142 layout; do not infer cleared terrain or release hidden
+                // claims before the terrain kernel/committed158 proof is ported.
             }
             124 => {
                 let member = r.member(self.identity, self.connection)?;
@@ -837,6 +964,8 @@ impl Session {
         Ok(Observation {
             dropped_after_abort,
             pickup,
+            bomb,
+            terrain_notice,
         })
     }
 }
@@ -858,8 +987,8 @@ mod tests {
             opcode: 107,
             payload: vec![],
         };
-        let (ta, mut ra) = mpsc::channel(1);
-        let (tb, mut rb) = mpsc::channel(1);
+        let (ta, mut ra) = mpsc::channel(2);
+        let (tb, mut rb) = mpsc::channel(2);
         let mut runtime = Runtime {
             model: Room::default(),
             packets: HashMap::new(),
@@ -892,8 +1021,10 @@ mod tests {
         let mut next = runtime.model.clone();
         let key = next.enter(1, 11, true).unwrap();
         let batch = || Runtime::member_batch(key, None, 0, vec![("test".into(), reply.clone())]);
-        tb.try_send(batch())
-            .unwrap_or_else(|_| panic!("fill bounded queue"));
+        for _ in 0..2 {
+            tb.try_send(batch())
+                .unwrap_or_else(|_| panic!("fill bounded queue"));
+        }
         assert!(
             runtime
                 .publish(next.clone(), vec![(1, batch()), (2, batch())])
@@ -901,6 +1032,7 @@ mod tests {
         );
         assert!(runtime.model.members.is_empty());
         assert!(ra.try_recv().is_err());
+        assert!(rb.try_recv().is_ok());
         assert!(rb.try_recv().is_ok());
         assert!(
             runtime
@@ -924,8 +1056,10 @@ mod tests {
         active.pickups = pickups::Round::begin(round, &pickups::tests::catalog()).unwrap();
         runtime.model = active;
         runtime.packets.insert("start".into(), reply.clone());
-        tb.try_send(Runtime::member_batch(peer, Some(round), 0, vec![]))
-            .unwrap_or_else(|_| panic!("fill B"));
+        for _ in 0..2 {
+            tb.try_send(Runtime::member_batch(peer, Some(round), 0, vec![]))
+                .unwrap_or_else(|_| panic!("fill B"));
+        }
         let shared = Arc::new(Mutex::new(runtime));
         let session = Session {
             shared: shared.clone(),
@@ -949,6 +1083,7 @@ mod tests {
         }
         assert!(session.packet(124, &body).is_err());
         assert!(rb.try_recv().is_ok());
+        assert!(rb.try_recv().is_ok());
         let mut session = session;
         assert!(session.inbox.try_recv().is_err());
         assert!(session.packet(124, &body).unwrap().pickup.unwrap().accepted);
@@ -959,6 +1094,68 @@ mod tests {
         assert!(!session.packet(124, &body).unwrap().pickup.unwrap().accepted);
         assert!(session.inbox.try_recv().is_err());
         assert!(rb.try_recv().is_err());
+        // Spawn and due158 each need one reserved slot per recipient. A failed
+        // publication must leave ID1/serial1/capacity available for a real retry.
+        let mut bomb_body = Vec::new();
+        for (value, width) in [
+            (12346, Width::U32),
+            (0, Width::U8),
+            (0, Width::U8),
+            (1, Width::U32),
+            (3, Width::U8),
+            (3, Width::U8),
+            (1, Width::U8),
+            (0, Width::U8),
+            (0, Width::U8),
+            (0, Width::U8),
+            (1, Width::U8),
+            (1, Width::U32),
+            (0, Width::U8),
+        ] {
+            bomb_body.extend(kr_wire::write_uint(value, width).unwrap());
+        }
+        for _ in 0..2 {
+            tb.try_send(Runtime::member_batch(peer, Some(round), 0, vec![]))
+                .unwrap_or_else(|_| panic!("fill B"));
+        }
+        assert!(session.packet(118, &bomb_body).is_err());
+        assert!(session.inbox.try_recv().is_err());
+        for _ in 0..2 {
+            assert!(rb.try_recv().is_ok());
+        }
+        let accepted = session.packet(118, &bomb_body).unwrap().bomb.unwrap();
+        assert!(accepted.accepted);
+        assert_eq!(accepted.id, Some(1));
+        let spawn_a = session.inbox.try_recv().unwrap();
+        let due_a = session.inbox.try_recv().unwrap();
+        let spawn_b = rb.try_recv().unwrap();
+        let due_b = rb.try_recv().unwrap();
+        assert_eq!(spawn_a.packets[0].1.opcode, 159);
+        assert_eq!(spawn_a.packets[0].1.payload, spawn_b.packets[0].1.payload);
+        assert_eq!(due_a.packets[0].1.opcode, 158);
+        assert_eq!(due_a.packets[0].1.payload, due_b.packets[0].1.payload);
+        assert!(due_a.due.duration_since(spawn_a.due) >= Duration::from_secs(6));
+        assert!(session.valid(&due_a));
+        let (ticket, recipient) = due_b.bomb_complete.as_ref().unwrap();
+        shared
+            .lock()
+            .unwrap()
+            .model
+            .bombs
+            .delivered(ticket, *recipient);
+        assert!(session.valid(&due_a));
+        session.finish(&due_a).unwrap();
+        assert!(!session.valid(&due_a));
+        // Counter does not reuse the old wire ID; leave invalidates every due job.
+        bomb_body[6..10].copy_from_slice(&kr_wire::write_uint(2, Width::U32).unwrap());
+        assert_eq!(
+            session.packet(118, &bomb_body).unwrap().bomb.unwrap().id,
+            Some(2)
+        );
+        session.inbox.try_recv().unwrap();
+        let old_due = session.inbox.try_recv().unwrap();
+        shared.lock().unwrap().model.leave(key).unwrap();
+        assert!(!session.valid(&old_due));
         // This queue-only fixture has no native departure templates.
         shared.lock().unwrap().channels.clear();
     }

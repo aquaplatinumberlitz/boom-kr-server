@@ -20,6 +20,7 @@ pub struct Member {
     pub setup: bool,
     late_after_abort: u16,
     opaque123: u16,
+    opaque167: u16,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Phase {
@@ -42,6 +43,8 @@ pub struct Room {
     round: u64,
     aborted: Option<(u64, Vec<Membership>)>,
     pub(crate) pickups: crate::pickups::Round,
+    pub(crate) bombs: crate::bombs::Ledger,
+    pub(crate) bomb_capacity: [usize; 2],
 }
 impl Default for Room {
     fn default() -> Self {
@@ -53,6 +56,8 @@ impl Default for Room {
             round: 0,
             aborted: None,
             pickups: crate::pickups::Round::default(),
+            bombs: crate::bombs::Ledger::default(),
+            bomb_capacity: [1, 2],
         }
     }
 }
@@ -106,6 +111,7 @@ impl Room {
                 setup: false,
                 late_after_abort: 0,
                 opaque123: 0,
+                opaque167: 0,
             },
         );
         if create {
@@ -166,6 +172,7 @@ impl Room {
                 .min_by_key(|m| m.slot)
                 .map(|m| m.key.identity);
         }
+        self.bombs.finish();
         self.pickups.finish();
         self.phase = Phase::Idle;
         for m in self.members.values_mut() {
@@ -194,9 +201,12 @@ impl Room {
         let roster = self.members.values().map(|m| m.key).collect();
         for member in self.members.values_mut() {
             member.opaque123 = 0;
+            member.opaque167 = 0;
         }
         self.aborted = None;
         self.round = round;
+        self.bombs.begin(round);
+        self.bomb_capacity = [1, 2];
         self.phase = Phase::Loading {
             round,
             roster,
@@ -215,6 +225,19 @@ impl Room {
             return Err(io::Error::other("opaque123 observation budget"));
         }
         member.opaque123 += 1;
+        Ok(())
+    }
+    /// Actual167/body32 observed afterbomb1, semanticsunknown. Same isolated
+    /// reference no-response policy as123; its own budget cannot borrow123's.
+    pub fn observe_opaque167(&mut self, key: Membership) -> io::Result<()> {
+        if !self.current(key) || !matches!(self.phase, Phase::Armed { .. }) {
+            return Err(io::Error::other("opaque167 current armed member required"));
+        }
+        let member = self.members.get_mut(&key.identity).expect("current member");
+        if member.opaque167 >= 64 {
+            return Err(io::Error::other("opaque167 observation budget"));
+        }
+        member.opaque167 += 1;
         Ok(())
     }
     pub fn observe_after_abort(&mut self, key: Membership) -> io::Result<()> {
@@ -284,6 +307,10 @@ mod tests {
             r.observe_opaque123(a).unwrap();
         }
         assert!(r.observe_opaque123(a).is_err());
+        for _ in 0..64 {
+            r.observe_opaque167(a).unwrap();
+        }
+        assert!(r.observe_opaque167(a).is_err());
         r.leave(a).unwrap();
         assert!(r.observe_opaque123(b).is_err());
         assert!(r.observe_opaque123(a).is_err());
@@ -295,6 +322,8 @@ mod tests {
         r.ack(b, next).unwrap();
         assert!(r.observe_opaque123(a).is_err());
         assert!(r.observe_opaque123(a2).is_ok());
+        assert!(r.observe_opaque167(a).is_err());
+        assert!(r.observe_opaque167(a2).is_ok());
         assert_eq!(r.phase, Phase::Armed { round: next });
     }
     #[test]

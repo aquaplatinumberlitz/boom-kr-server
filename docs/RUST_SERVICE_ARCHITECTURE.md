@@ -112,7 +112,7 @@ cho deterministiclifecycle và binaryLinux. Chưa cần kr-game/kr-storecrate, e
 hoặc boom-coredependency. Unknownfield giữ kiểu opaque+hash profile/limits, không tự đặt tên auth/session.
 
 CP237 đã thêm [floor pickup](PROTOCOL.md#rust-movement-floor) từcùng582pin vào roomowner/clone+reservequeues,
-không nhập DB/inventory/reward vào worlditem. NativeUDP/movement/floorRoller đã đo; M3bomb/life/result-reset cònthiếu.
+không nhập DB/inventory/reward vào worlditem. NativeUDP/movement/floorRoller đã đo; [CP238](PROTOCOL.md#rust-bombs) thêmroomledger/monotonicID/membership-round-allocationticket/fuse6/tworecipientwrites; terrain/reveal/life/result-reset cònthiếu.
 Opaque123/10 chỉboundedobserve, không contractsemantics/authority; giữ unknown trong RESEARCH.
 
 Dòng dữ liệu: nativeTCP→reader/codec mỗi connection/direction→stage/session adapter→owner phòng→

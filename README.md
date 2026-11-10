@@ -29,6 +29,15 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP238: hai client KR thật đã đặt và nổ bom qua Rust.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-bombs), [raw/hash](docs/evidence/rust-service/README.md#cp238).
+A/B actual118→159full39/entity,158full13/lookupđúngID1-2/kind0/cleanup trêncảhai; fuse6 và6shold sauhai bom.
+TCP419/66reply khớp; 48rawfinal frozen/seal/cleanup0.32Rusttests/40TCPcases đạt.
+Hai run lỗi44+50raw giữ nguyên; `167/4,32` chỉ boundedopaqueobserve/semanticsunknown,142 chưa mởhiddeneligibility.
+M3 vẫn thiếu terrain/reveal/life/result-reset/haioutcome. CP237 merge [PR308](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/308)/`70f00d0`.
+[PLAN](docs/PLAN.md#current-order) tiếp boundedterrain/reveal rồi life/results/reset, audit kếCP240.
+Python/8WIP/accountDB giữ; Internet thật chưa kiểm.
+
 **CP237: Rust đã có movement hai chiều và nhặt Roller trên client KR thật.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-movement-floor), [raw/hash](docs/evidence/rust-service/README.md#cp237).
 Hai cửa sổ ADown/BRight có PCAP217UDP→87ingress native→key/apply→peerposition; TCP368/58reply khớp.

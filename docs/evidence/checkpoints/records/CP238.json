@@ -1,0 +1,285 @@
+{
+  "id": "CP238",
+  "previous": "CP237",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T01:45:27.446766+00:00",
+  "context_commit": "70f00d075380a20c5bb96cdd75f6c1bac8cc7a69",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M3/KRE-074: port knownbasic118→159→158/owner-serial-ID/reservation/fuse6+ticket-recipientfences andverifybothactualKRowners;do notrepeatacceptedmovement/floorasnewscope.",
+  "scope": "Roomledger/basicbombwire/twoowneroneepoch/nativefullcursor-entitylookup-kind0cleanup/48finalraw with44+50failedraw;32Rusttests/40TCP;opaque167observed4-32noresponseunknown;terrain-life-result-resetstillpartial.",
+  "artifacts": [
+    {
+      "name": "NativeKR00967originalunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "e9Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "Rustnative-testedtwoownerbombbinary",
+      "sha256": "71986ec657eeb23b13589aba3f2d1661b3e6390caf5eecd16b14193d16cea661"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/bombs.rs/Request-Ledger-Ticket/place-deliverable-delivered/explode158;room_io.rs/118fourqueueentries/GuardBomb/finishrecipient/142noreveal/167boundedobserve;room.rs/owner-generationbudget",
+    "NativeR3run20b2d38a31510b7d1c6d07256042fe3e120f4681be5fb7ac7eb72f28340bbe98/48raw/85.233042032s/TCP419-66reply/actualA-B118/each15939-15813/sameentityID1-2/kind0cleanup/6shold/FINaftercompletion",
+    "R1run68296e9b44rawApositive16732reject;R2rune4fb327850rawbothpositive1674reject/controllerDown39.3s;preflight135argreject/no runtime;kernelbuildlaunchracefailure/hashfinallyambiguous retained;40finalcasespreattachpinned/unchanged/cleanup0."
+  ],
+  "findings": [
+    {
+      "summary": "Basicbomb11822/currentArmed-boundowner-key/serialduplicate-conflict/cell-powerbounds/pendingcapacityA1B2/occupiedcell→monotonicID1..65535/noreuseacrossStart. Arcroomscope+round+allocation+owner+recipientticket;candidateclone/reserveall4spawn-deadlinequeuesbeforeIDserialreservationpublish. Perrecipient158writeonce/releaseafterbothwrites, notnativeACK.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-bombs",
+      "evidence": [
+        "RUST238-00039",
+        "RUST238-00042",
+        "RUST238-00543"
+      ],
+      "limits": "M3partial/twoownerbasicbombs/oneepoch;terrain-reveal-worldauthority/life-result-reset/2outcomes/accountbridge/fullservice notaccepted. Opaque167/4-32semanticsunknown/designobserveonly;142nohiddenrelease. AtrapHELP/Bstandingnothealthyactorproof. Failedruns/inputtiming/buildlaunchraceretained;shutdowncauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ActualKR00967/e9/Wine/privatehosts A118/B118→both159full39-error0/distinctentities→6s158full13-error0/lookupID1-2sameentities/kind0-cleanup,6shold/FINaftercompletion. TCP419/66exactreplies/alltuples-C2Sjoins/48rawfrozen-seal-cleanup0. FinalUI Atrap/Bstanding,notlife/fullM3.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-bombs",
+      "evidence": [
+        "RUST238-00387",
+        "RUST238-00534"
+      ],
+      "limits": "M3partial/twoownerbasicbombs/oneepoch;terrain-reveal-worldauthority/life-result-reset/2outcomes/accountbridge/fullservice notaccepted. Opaque167/4-32semanticsunknown/designobserveonly;142nohiddenrelease. AtrapHELP/Bstandingnothealthyactorproof. Failedruns/inputtiming/buildlaunchraceretained;shutdowncauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Actual167/body32then4semanticsunknown;currentArmedmember/budget64/knownsizesnoACK-effect-forwardpolicychosenagainstPythonunknowncasenoresponse.142knownshapeobservedwithouteligiblehiddenrelease.32Rusttests/40kernelTCPmodel+queuefences separatefromnativepositive.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-bombs",
+      "evidence": [
+        "RUST238-00030",
+        "RUST238-00080",
+        "RUST238-00026"
+      ],
+      "limits": "M3partial/twoownerbasicbombs/oneepoch;terrain-reveal-worldauthority/life-result-reset/2outcomes/accountbridge/fullservice notaccepted. Opaque167/4-32semanticsunknown/designobserveonly;142nohiddenrelease. AtrapHELP/Bstandingnothealthyactorproof. Failedruns/inputtiming/buildlaunchraceretained;shutdowncauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "R1Apositive44rawandR2bothpositive50rawfailoverallretained;controllerR2Downactual39.3snotnominal600ms, R3noshotwhilekeyheld/actual1.037-1.035s. KerneltestoncePopenbeforebuildcomplete/old167reject,awaitbuild+prePopenpin/unchangedfinal40casespass;notrootcausefixforoldCP237shutdownanomaly. PLANterrain-reveal-life-result-resetnext.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-bombs",
+      "evidence": [
+        "RUST238-00086",
+        "RUST238-00238",
+        "RUST238-00060",
+        "RUST238-00534",
+        "RUST238-00029"
+      ],
+      "limits": "M3partial/twoownerbasicbombs/oneepoch;terrain-reveal-worldauthority/life-result-reset/2outcomes/accountbridge/fullservice notaccepted. Opaque167/4-32semanticsunknown/designobserveonly;142nohiddenrelease. AtrapHELP/Bstandingnothealthyactorproof. Failedruns/inputtiming/buildlaunchraceretained;shutdowncauseunknown. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt-clippy/32tests/lockedbuild/nativebinaryequal",
+      "result": "pass",
+      "evidence": [
+        "RUST238-00541",
+        "RUST238-00540",
+        "RUST238-00543",
+        "RUST238-00539"
+      ],
+      "limits": "27serviceincl11account+5wire;queueandledgerpolicytestsnotnativeoriginalauthority."
+    },
+    {
+      "check": "40kernelTCPowner-key-serial-capacity-ID/fuse/EOF/opaque/floor/roomcases",
+      "result": "pass",
+      "evidence": [
+        "RUST238-00080"
+      ],
+      "limits": "Preattachbinarypin/unchangedcheck/cleanup0;syntheticnotnativeattackproof."
+    },
+    {
+      "check": "NativeA-B118/15939/15813/sameentitylookupkind0cleanup/TCP419-66reply/48rawcleanup0",
+      "result": "pass",
+      "evidence": [
+        "RUST238-00387",
+        "RUST238-00534",
+        "RUST238-00525"
+      ],
+      "limits": "M3partial/twoownerbasicbombs/oneepoch;terrain-reveal-worldauthority/life-result-reset/2outcomes/accountbridge/fullservice notaccepted. Opaque167/4-32semanticsunknown/designobserveonly;142nohiddenrelease. AtrapHELP/Bstandingnothealthyactorproof. Failedruns/inputtiming/buildlaunchraceretained;shutdowncauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "check": "R1unsupported16732/R2unsupported1674/kerneloldbinarylaunchrace",
+      "result": "fail",
+      "evidence": [
+        "RUST238-00086",
+        "RUST238-00238",
+        "RUST238-00060"
+      ],
+      "limits": "Allfailurespreserved;R3passonlyafterseal/freshinput. Preflight135rejectbeforeactualrunseparate."
+    },
+    {
+      "check": "Terrain-reveal/worldauthority/life-result-reset/twooutcomes/nativeaccountbridge",
+      "result": "not_run",
+      "evidence": [
+        "RUST238-00029",
+        "RUST238-00031"
+      ],
+      "limits": "M3partial;142knownshapeonly/noreleasehidden,167unknown/observepolicy."
+    },
+    {
+      "check": "Docs/catalog/issuebacklinks/WIP/manualacceptance",
+      "result": "pass",
+      "evidence": [
+        "RUST238-00007",
+        "RUST238-00026"
+      ],
+      "limits": "Fullhistory/exactheadrequiredafterappend; no semanticgateinference."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP238-rust-bombs.json",
+      "bytes": 143259,
+      "sha256": "e0a2d1a396c877385e0b87390d9daa4dab867e6eab0a2e1bf526a07524db5aef",
+      "count": 552
+    }
+  ],
+  "delta": {
+    "added": [
+      "Basicbombtyped118159158/owner-serial-ID-capacity/Arcscopedallocationtickets/4queuepublication/perrecipientduewritefences.",
+      "Native2ownerbombs/48positive raw/44+50failed retained/32Rusttests/40kernelcases.",
+      "Opaque1674-32boundednoresponseunknown/142norelease;PLANterrainthenlife-result-reset."
+    ],
+    "corrected": [
+      "ControllerR2heldDown39snominal600msfalse;R3noblockingkeysnapshots/actualtimingsreported.",
+      "Kernelbuild-Popenorderingracefailedrunretained;binarypinbeforelaunch+unchangedafter/awaitbuild.",
+      "Do not call AtrapHELP+Bstandinghealthyactors or fullM3fromnativebombconsumerproof."
+    ],
+    "superseded": [
+      "PLANbasicallocator/bombportmissing:nowacceptednativesubset, proceedboundedterrain/reveal thenlife/results/reset."
+    ]
+  },
+  "blockers": [
+    "Oneepoch/2ownerbasicbombs/ordinaryOSinput; no terrainworldvalidation/hiddenreveal/life/result-reset/2outcomes/fullM3/accountbridge/production.",
+    "142knownlayoutreportsdeniedreveal, no blanketeligibility. Opaque167meaningunknown/shape-onlypolicy, not recoveredoriginalserverresponse.",
+    "CapacityA1/B2 andmaxpower2 sameboundedprofiledesign; nativeglobalstats/collision/distance/allmaps/generalchainauthority unproven; no immediatecapacityreleaseonchain.",
+    "Timersqueuefencedbeforestartwrite;physicalTCPpartialwrite cannotrollback. PeerUDP remainsdirect, servercannotfenceallalready-sentoldtraffic.",
+    "CP237kernelshutdownanomalyrootcauseunknown;40casepassesnotfix. R2held-keyactualtimestamps retained, no causalclaimorprecise600ms input.",
+    "Internet thật chưa kiểm.",
+    "FinalUI A trapped/HELP, Bstanding; no healthyactor/life170/result policy claim despite channelsremainingopen.",
+    "M3terrain/hiddenreveal/chain/life-result-reset/twooutcomes remainunimplemented;accountbridgeindependentstillmissing."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANboundedterrain/currentclearedcell142+committed158fullroster→hidden124165, thenlife-result175/return180/reset/twooutcomes. Donotrepeatacceptedmovement-basicbombjustforCP. M5backendindependent/bridgepartial/AUD068nextCP240.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T01:45:27.446766+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/M3twoownerbombnativeproof+ledgerqueuepolicytests/manualselfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/rust-service/bombs.json",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    }
+  ]
+}
