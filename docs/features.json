@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP235",
+  "as_of": "CP236",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -438,7 +438,9 @@
           "docs/evidence/rust-service/README.md#cp232",
           "docs/evidence/rust-service/README.md#cp233",
           "docs/evidence/rust-service/README.md#cp234",
-          "docs/evidence/rust-service/README.md#cp235"
+          "docs/evidence/rust-service/README.md#cp235",
+          "docs/evidence/rust-service/README.md#cp236",
+          "docs/evidence/rust-service/accounts-backend.json"
         ]
       },
       "coverage": {
@@ -541,7 +543,10 @@
             "docs/PROTOCOL.md#service-channel-endpoint",
             "server/own_profile.py",
             "docs/PROTOCOL.md#k3-version-identity-controls",
-            "docs/PROTOCOL.md#eight-session-preview"
+            "docs/PROTOCOL.md#eight-session-preview",
+            "docs/PROTOCOL.md#rust-account-backend",
+            "rust/crates/kr-service/src/accounts.rs",
+            "rust/crates/kr-service/src/bin/kr-admin.rs"
           ],
           "delivery": "via_pr"
         },
@@ -553,7 +558,10 @@
             "docs/evidence/current-profile-c/README.md",
             "docs/evidence/preclock-eof/README.md",
             "docs/evidence/nmco-locale-stability/README.md",
-            "docs/PROTOCOL.md#service-channel-endpoint"
+            "docs/PROTOCOL.md#service-channel-endpoint",
+            "docs/PROTOCOL.md#rust-account-backend",
+            "rust/crates/kr-service/src/accounts.rs",
+            "rust/crates/kr-service/src/bin/kr-admin.rs"
           ]
         },
         "gate": {
@@ -4912,7 +4920,9 @@
           "docs/PROTOCOL.md#emulated-wan-acceptance",
           "docs/evidence/peer-endpoints/README.md#cp212",
           "docs/PROTOCOL.md#eight-team-variants",
-          "docs/evidence/eight-player/README.md#cp213"
+          "docs/evidence/eight-player/README.md#cp213",
+          "docs/evidence/rust-service/README.md#cp236",
+          "docs/evidence/rust-service/accounts-backend.json"
         ]
       },
       "coverage": {
@@ -4992,7 +5002,10 @@
             "docs/PROTOCOL.md#eight-session-preview",
             "docs/PROTOCOL.md#eight-mesh-owner-bombs",
             "docs/PROTOCOL.md#eight-two-team-cycles",
-            "docs/PROTOCOL.md#eight-portable-battle"
+            "docs/PROTOCOL.md#eight-portable-battle",
+            "docs/PROTOCOL.md#rust-account-backend",
+            "rust/crates/kr-service/src/accounts.rs",
+            "rust/crates/kr-service/src/bin/kr-admin.rs"
           ],
           "delivery": "via_pr"
         },
@@ -5009,7 +5022,10 @@
             "docs/PROTOCOL.md#four-netem-restart",
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#eight-portable-battle",
-            "docs/PROTOCOL.md#eight-team-variants"
+            "docs/PROTOCOL.md#eight-team-variants",
+            "docs/PROTOCOL.md#rust-account-backend",
+            "rust/crates/kr-service/src/accounts.rs",
+            "rust/crates/kr-service/src/bin/kr-admin.rs"
           ]
         },
         "gate": {

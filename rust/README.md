@@ -1,5 +1,8 @@
 # Rust foundation KR00967
 
+CP236 thêm backend account/DB qua [CLI](#account-admin-cli), chưa gắn vào native login adapter.
+[Contract/giới hạn](../docs/PROTOCOL.md#rust-account-backend); accountDB độc lập gameplay và không đóng toàn M5.
+
 Đợt implementation được mở bởi [owner09/11](../docs/evidence/owner-directives/rust-implementation.json).
 [PLAN](../docs/PLAN.md#current-order) giữ thứ tự; [contract/limits](../docs/PROTOCOL.md#rust-foundation)
 và [evidence](../docs/evidence/rust-service/README.md#cp231) giữ kết luận có nguồn.
@@ -105,3 +108,48 @@ python3 tools/test_rust_shutdown.py --binary rust/target/debug/kr-service \
 
 Các lệnh trên kiểm config/kernelTCP, không thay native KR evidence. Shutdown tool giữ PID/thread/wchan khi deadline
 lỗi; timeout cũ chưa biết nguyên nhân. Python serving/RE/reference còn giữ; PLAN tiếp M3, audit kếCP236.
+
+
+<a id="account-admin-cli"></a>
+## Account/DB CLI nội bộ — CP236
+
+Binary `rust/target/debug/kr-admin <đường-dẫn-DB>`; parent đã tồn tại mode0700 dưới đường dẫn admin tin cậy,
+DB mới mode0600. Không dùng thư mục repo/publicstorage. `cargo build --workspace --locked` tạo cả hai binary;
+`cargo run` mặc định vẫn `kr-service`. Backend sync, chưa được gọi trong Tokio room/network handler.
+
+Mỗi lần chạy nhận **một JSON object từ stdin**, tối đa4096bytes; không đưa password/token vào argv/shellhistory/log.
+Dùng trusted local terminal/helper có secretinput riêng; login trả token một lần ởstdout, coi output là secret.
+Format (chỉ mô tả field, không là credential thật):
+
+```json
+{"actor":"local-admin","reason":"internal provisioning","command":{"op":"init"}}
+```
+
+Mọi request có `actor`, `reason`, `command`. Trường không khai báo bị reject; lỗi chỉ mã enum ởstderr/exit1.
+`actor/reason` là lời khai adminlocal, không RBAC; không ghi secret trong reason. Account/user không truy cập CLI trực tiếp.
+
+| command.op | Field bổ sung trong command | Kết quả |
+|---|---|---|
+| init | không | schema1; mở lại không revoke |
+| begin-instance | không | epoch mới + revoke toàn session cũ + audit; chỉ gọi khi bắt đầu instance mới |
+| create | login, name, password | account/player/wireID bền vững |
+| lookup | login | player và profileversion; admin-only |
+| login | login, password, ttl_seconds | ownplayer, expires_at, secret token; chưa KRlogin |
+| authorize | token, player_id | ownplayer hoặc InvalidSession |
+| rename | account_id, name, expected_version | CAS profileversion tăng; không đổi player/wireID |
+| revoke | account_id | revoke sessions/audit |
+| disable / enable | account_id | ban/unban/audit; enable không revive token cũ |
+| password-reset | account_id, password | credentialversion tăng/revoke/audit |
+
+Policy: login3..32 ASCIIalnum/underscore/lowercaseunique; name3..15 cùng alphabet; password12..128bytes.
+AbsoluteTTL1..86400s; chưa idleTTL, authnetworkratelimit, restore, clientbridge hoặc multiplayerauth.
+Không tự downgrade/repairDB hoặc fallback unauthenticated khi lỗi. Clockrollback failclosed, cần xử lý clock chủ động.
+`begin-instance` manual chưa là exclusive gameinstance lock; không chạy hai service owner cùng store.
+
+```bash
+python3 tools/test_rust_accounts.py --binary rust/target/debug/kr-admin --out local/new-account-check
+```
+
+33process CLI/realSQLite là backendacceptance; 11Rustaccounttests thêm concurrency/expiry/clock/reset-race/fault.
+Giữ failures và raw/hash/private synthetic token outputs theo evidence; không dùng teststore cho production.
+Dynamic KR account/identity projection cần measured authbridge và native positive/negative trước expose.

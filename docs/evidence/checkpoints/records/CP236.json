@@ -1,0 +1,256 @@
+{
+  "id": "CP236",
+  "previous": "CP235",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T00:11:34.834432+00:00",
+  "context_commit": "bb673a4f4204fc6163c4adfa4ba7f9a330cf5518",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M5/KRE-074: implement independent account/DB backend now rather than wait gameplayRE; preserve separate nativeKRbridge acceptance, auditperiodicCP236.",
+  "scope": "SQLitemigration+Argon2id/account-player/nameCAS/sessionsTTL-revoke-epoch-clock/auditedlocalCLI;26Rusttests+33CLIprocess;CLI1failure preserved/corrected;AUD068through236.",
+  "artifacts": [
+    {
+      "name": "kr-adminCLItestedbinary",
+      "sha256": "f0180548e88ea8d257bddbb48e91c64d743bda72605f483098e04dd3b16ff810"
+    },
+    {
+      "name": "CP235nativeM2baselineunchangedretained",
+      "sha256": "ab06ae3f8d00e7baa3146ff503f3d11086df5e31819208025dcf53ca1c18992e"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/accounts.rs/Store/migrate-clock-at-issue-authorize-audit;src/accounts/tests.rs/11realSQLitecases;src/bin/kr-admin.rs/stdinJSONstrictCLI;migrations/0001_accounts.sql/schema1",
+    "local/research/codex/rust-accounts-r1/cli-r2/verification.json/33process/2accounts/9audit/sourcefrozen/cleanup0",
+    "local/research/codex/rust-accounts-r1/cli/failure-review.json/strictunknownfieldfailure/74filessealed;CLI2corrected78files;AUD068/nextCP240;CP235PR306bb673a4merged"
+  ],
+  "findings": [
+    {
+      "summary": "InitialM5backendSQLiteexactmigration/liveDDL/FK/quickcheck/privateWAL-FULL/busy250ms, Argon2idPHC19456KiB-2-1/salt16/quota2/dummywork; persistentaccount-player-wireID/nameprofileCAS; newbackenddesignnotKRwire.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-backend",
+      "evidence": [
+        "RUST236-00033",
+        "RUST236-00032"
+      ],
+      "limits": "Designbackendonly/no nativeKRaccountbridge/lease/idleTTL/servingworker/rate/restore/production;M5partial/M3independent;SQLFULLpagecapnotOSdiskfull;rawsynthetictokensprivate;Python8WIPunchanged;Internet thật chưa kiểm."
+    },
+    {
+      "summary": "SessionsCSPRNG32/hashonly-atrest/absoluteTTL/oneactive/recheckcredentialsafterKDF/ownplayer;expiry-revoke-ban-reset-bootepoch andpersistentUTCdenialobservation;auditedadminTXfailclosed.26Rusttests/33CLIprocess/2accounts/9audit pass.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-backend",
+      "evidence": [
+        "RUST236-00199",
+        "RUST236-00119",
+        "RUST236-00016"
+      ],
+      "limits": "Designbackendonly/no nativeKRaccountbridge/lease/idleTTL/servingworker/rate/restore/production;M5partial/M3independent;SQLFULLpagecapnotOSdiskfull;rawsynthetictokensprivate;Python8WIPunchanged;Internet thật chưa kiểm."
+    },
+    {
+      "summary": "CLIunitvariantunknownfieldnegativefirstfailed;74rawsealed/frozenbeforefix;emptystructvariantstrictnewrun78raw/33process pass. M5partial/no nativeKRauthclaim;M3nextindependent, no broaderRE;periodicAUD068through236/next240.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-backend",
+      "evidence": [
+        "RUST236-00120",
+        "RUST236-00051",
+        "RUST236-00019"
+      ],
+      "limits": "Designbackendonly/no nativeKRaccountbridge/lease/idleTTL/servingworker/rate/restore/production;M5partial/M3independent;SQLFULLpagecapnotOSdiskfull;rawsynthetictokensprivate;Python8WIPunchanged;Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt-clippy/26tests/lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST236-00197",
+        "RUST236-00195",
+        "RUST236-00199",
+        "RUST236-00038"
+      ],
+      "limits": "11account+10service/model+5wire;backendnotnativeKRauth."
+    },
+    {
+      "check": "RealSQLite/adminCLI33process/2accounts/9audit/privateatrest/cleanup0",
+      "result": "pass",
+      "evidence": [
+        "RUST236-00119",
+        "RUST236-00051"
+      ],
+      "limits": "Designbackendonly/no nativeKRaccountbridge/lease/idleTTL/servingworker/rate/restore/production;M5partial/M3independent;SQLFULLpagecapnotOSdiskfull;rawsynthetictokensprivate;Python8WIPunchanged;Internet thật chưa kiểm."
+    },
+    {
+      "check": "CLI1strictunknownfield",
+      "result": "fail",
+      "evidence": [
+        "RUST236-00120",
+        "RUST236-00131"
+      ],
+      "limits": "Unitvariantignoredextra;fixedonlyafterseal/newrunCLI2pass, no suppressedfailure."
+    },
+    {
+      "check": "NativeKRaccountbridge/transportlease/idleTTL/servingworker/rate/restore",
+      "result": "not_run",
+      "evidence": [
+        "RUST236-00019",
+        "RUST236-00021"
+      ],
+      "limits": "M5notcomplete;backendacceptance separate/no game runtimebehavior change."
+    },
+    {
+      "check": "Docs/catalog/issuebacklinks/WIP/historyinputs/manualaudit",
+      "result": "pass",
+      "evidence": [
+        "RUST236-00007",
+        "RUST236-00016"
+      ],
+      "limits": "Fullhistory/exactheadrequired afterappend;manualperiodicAUD068notcheckersemanticapproval."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP236-rust-accounts.json",
+      "bytes": 51082,
+      "sha256": "ce3f0fe253b8eed6ce53330e19c9cacec2c8328f55c009887cdf03ad8bc6728f",
+      "count": 202
+    }
+  ],
+  "delta": {
+    "added": [
+      "M5accountDBbackend+auditedCLI independentgameplay;26tests/33process/2accounts/9audit.",
+      "Strictschema/clock/reset-race/faultproof andpreservedCLI1failure.",
+      "AUD068periodicthrough236/next240;CP235PR306merged."
+    ],
+    "corrected": [
+      "M5onlydesign/DBexpirywhollymissing statements replaced with exactbackendimplementationvsnativebridge limits.",
+      "CLIunknownfieldguard fixed aftersealedfailure; checksumalone strengthenedwithliveschema; persistentclockdenial preventsrevival."
+    ],
+    "superseded": [
+      "BackendM5waitsforgameplay implicitordering;PLANM3next andM5independent."
+    ]
+  },
+  "blockers": [
+    "M3nativeUDPmovement/Battle/result-reset/twooutcomes notaccepted;Amap-sprite/fullsceneoutcome-return unresolved;oldshutdownanomalyrootcauseunknown.",
+    "Backend CLI only; diagnostic KR login unchanged/unauthenticated; no native accountbridge or transportlease.",
+    "No idleTTL/network/account rate/servingDB-hashworker/instanceexclusive-lock/load/restore.",
+    "Profile name/version only; no character/XP/inventory/ledger/reward.",
+    "Admin trusted local directory/mode permissions, no remoteRBAC or tamperproofaudit; begin-instance explicit, open does not revoke.",
+    "No new native acceptance for rebuilt game binary; CP235 baseline retained separately.",
+    "Internet thật chưa kiểm.",
+    "CP224sameprocessretryfatal/CP220EOFreceiver stillblocked, onlynewobservablesjustifyRE;no fullclientREdependency.",
+    "K0–K7scopeunchanged/K6cWANgiảlập;Internet thật chưa kiểm isseparatebacklog."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANM3firstactualKRdirectUDPmovement/PCAP→nativeAPI-key-applybothdirectionsusingknown153/currentkey;thenBattle-result-reset. M5backend independent/partial;bridge-lease-worker-idleTTL-rate needownacceptance, no broadauthREdependency. NextauditCP240.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T00:11:34.834432+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/M5backendSQLite-CLI/designpolicytests+manualAUD068/selfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/rust-service/accounts-backend.json",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP236M5backendinitialslice/realSQLite-CLIproof/failurelimits/nativebridgepartial/M3independent/AUD068next240."
+    }
+  ]
+}

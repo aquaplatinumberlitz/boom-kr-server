@@ -188,3 +188,23 @@ còn trênmap, chưasceneactordeletion/result/forfeit/return. Binary/finalbuild
 ở `final-*.txt`. CP234timeout chưarootcausefix, thêm12racebaseline ở `m2-shutdown-races-r1/` và12race mới đềuđạt;
 không sửa oldfailure. M2scopedaccepted khôngfullgame/accountauth/generalroom/fullservice; PLANM3next/auditCP236.
 Internet thật chưa kiểm.
+
+
+<a id="cp236"></a>
+## CP236 — M5 backend account/DB trước gameplay hoàn chỉnh
+
+[Contract/giới hạn](../../PROTOCOL.md#rust-account-backend), [metadata](accounts-backend.json),
+[CLI/recipe](../../../rust/README.md#account-admin-cli). Baseline CP235 mergePR306/bb673a4; M2native đã giữ binary cũ,
+không chạy lại native để chứng minh backend. Nguồn design công ty, không là wire/accountserverKR confirmed.
+
+`local/research/codex/rust-accounts-r1/` giữ 26Rusttests/fmt/clippy/build và binaryCLI `f0180548e88ea8d257bddbb48e91c64d743bda72605f483098e04dd3b16ff810`.
+`cli/` failedunknownfield giữ nguồn/binary/rawseal; `cli-r2/` 33process/2account/9audit, strictnegative,
+accountidentity/profileCAS/reopen/ownership/ban-reset-revoke/epoch, integrity/FK/plaintextscan vàcleanup0.
+Cả hai run frozen source/binary/tool, chỉ sửa sau seal; raw token là synthetic secret nội bộ/private0700,
+không commit raw/DB/binary. Checkpoint external manifest pin đầy đủ file/size/hash của hai run và snapshots.
+
+11accounttests gồm twoDBconnections loginrace, resetafterverify-beforecommit, expiry→denial→rollback→reopen,
+wrongowner, dummyKDF/PHCbounds/processquota, auditabort/SQLiteFULLpagecap/allocatorrollback, busy250ms,
+entropyfault và future/checksum/missinguniqueindex/privatepath. Không suy testmodel hoặc CLI là nativeKRauth.
+M5 giữpartial (bridge/lease/worker/idleTTL/rate/restore); M3knownUDPmovement kế tiếp, không phụ thuộc fullauth.
+AUD068 periodic qua236; next240. #14/#285OPEN/Python+8WIP giữ; Internet thật chưa kiểm.
