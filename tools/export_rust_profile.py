@@ -118,6 +118,8 @@ def add_fixed_room(config, profile_path, listing_path, title):
     raw = p.read_bytes()
     packets['listing'] = dict(fixture=dict(path=str(p), bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest()), sequence=49, opcode=91)
     config['diagnostic_two_lobby']['fixed_room'] = dict(title=title, packets=packets)
+    if profile.get('bomb_terrain') is not None:
+        config['diagnostic_two_lobby']['fixed_room']['terrain'] = profile['bomb_terrain']
     return config
 
 

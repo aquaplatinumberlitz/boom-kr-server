@@ -1,0 +1,50 @@
+{
+  "schema": "kre-rust-terrain-v1",
+  "checkpoint": "CP239",
+  "baseline_commit": "7ecfba33d03a75b0b3ae08cd70102f6bfbc22182",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "contract": "docs/PROTOCOL.md#rust-terrain",
+  "plan": "docs/PLAN.md#current-order",
+  "run_sha256": "35d00642f1f06963121232f926d49141a122e0e936f9b3b08df1271669b76cf3",
+  "binary_sha256": "6ad78ad49bf7c084e8820b7eb838767a26c1cb75b68604ff3ae641a75f7623b8",
+  "raw_count": 54,
+  "duration_s": 86.997765664,
+  "TCP": {
+    "records": 410,
+    "replies": 66
+  },
+  "native": "Bothviews195flags before/afterrootbomb1:exact195matchexistingPythonboundedkernel, onlycells2-3/3-2clear. Fullroster158writecommit→142samecells/revealed+duplicate→actualA124indices17/28/27→eachview3native165full12-error0/itemfound/stat5E8:5→6,4BC:1→2,4A4:1→2.6shold/FINaftercompletion/noinputstatewrites/54rawfrozen-seal-cleanup0.",
+  "design": "Optionaltrustedpinned15x13seed/map-startframeSHA/maxpower2;validategeometrybeforepublishingIDserialreservation;immutableterraincascade snapshot. Commitclearanceonlyafterlastoriginalrecipient158TCPwritecompletion;142boundslot-aux-knowncell/currentgeneration-clearance,duplicatesidempotent;hiddeneligiblemovesfromsame582catalog/onewinner/reset. Bombcapacitypickup incrementswithinexistingA10/B7profiledesign,notgeneralstatsauthority.",
+  "tests": {
+    "rust": 35,
+    "kernel_TCP": 43,
+    "copied_native_getters": 1314,
+    "reports": [
+      "local/research/codex/rust-terrain-tests-r3.txt",
+      "local/research/codex/rust-terrain-clippy-final.txt",
+      "local/research/codex/rust-terrain-kernel-r1/room/verification.json",
+      "local/research/codex/rust-terrain-native-r1/peer-getter-verification.json"
+    ]
+  },
+  "reuse": [
+    "CP172/174geometry/hidden-currentcell/fullroster158/wire/stat/native195flags/targetroute",
+    "CP238ledger/allocationtickets/recipientcompletion/CP237floorcatalog/knownreadonlyfeedback",
+    "ExistingPythonTerrainShadow/load_terrain compareonlyactualnative118/flags;notaneworaclefromRustencoder"
+  ],
+  "compile_fixes": [
+    "sha2newarraydoesnotimplementLowerHex:reuseexistingcrateSHAhelper",
+    "Config/validatevisibility tightenedforprivateinterfaceclippy;failedlogsretained/no runtimebeforefix"
+  ],
+  "limits": [
+    "Oneepoch/oneownerbomb/threebasicitemeffects/15x13samepinnedmap; no nativechainvariants/generalphysics/distance/originalserverauthority.",
+    "Terrain/revealnegative kerneltests separatefromnativepositive, notattackcontrols. Old142bytesafterlegitimatecurrentclear remainindistinguishable/knownCP172limit.",
+    "Full-rosterTCPwritecompletion not nativeexecutionACK/atomicphysicaldelivery;oldUDP/low8wrap/accountauth limitsunchanged.",
+    "No native reset/twooutcomes/life170/result175/return180/Ready2Start3,kim-cứu/capacity4-8/fullM3/fullservice/production.",
+    "M5backend/CLImerged, KRbridge/lease/worker/idleTTL/rate/restore notpartofthisslice. Opaque123/167policy unchanged/semanticsunknown;shutdownrootcauseunknown.",
+    "Budget180sdeclaredfornewfeedbackroute, actual86.998s/routepositionsactualtimestamps;nominal45msnotactualphysics. No service shutdowndeadlineincrease.",
+    "Internet thật chưa kiểm."
+  ],
+  "next": "PLANlife/report17-19-21/170/result175/return180/reset/twooutcomes onRust;reuseexistingCP188/189contracts,REonlyimplementationdiscrepancy. CP240periodicauditrequired/noreset.",
+  "review": "Codexselfcheck/independentreviewwaivednotapproved/exactheadrequired;AUD068through236/nextCP240"
+}

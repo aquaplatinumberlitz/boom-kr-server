@@ -45,6 +45,7 @@ pub struct Room {
     pub(crate) pickups: crate::pickups::Round,
     pub(crate) bombs: crate::bombs::Ledger,
     pub(crate) bomb_capacity: [usize; 2],
+    pub(crate) terrain: Option<crate::terrain::Terrain>,
 }
 impl Default for Room {
     fn default() -> Self {
@@ -58,6 +59,7 @@ impl Default for Room {
             pickups: crate::pickups::Round::default(),
             bombs: crate::bombs::Ledger::default(),
             bomb_capacity: [1, 2],
+            terrain: None,
         }
     }
 }
@@ -173,6 +175,9 @@ impl Room {
                 .map(|m| m.key.identity);
         }
         self.bombs.finish();
+        if let Some(terrain) = &mut self.terrain {
+            terrain.finish();
+        }
         self.pickups.finish();
         self.phase = Phase::Idle;
         for m in self.members.values_mut() {
@@ -206,6 +211,9 @@ impl Room {
         self.aborted = None;
         self.round = round;
         self.bombs.begin(round);
+        if let Some(terrain) = &mut self.terrain {
+            terrain.begin(round);
+        }
         self.bomb_capacity = [1, 2];
         self.phase = Phase::Loading {
             round,

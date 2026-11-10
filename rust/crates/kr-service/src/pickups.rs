@@ -17,7 +17,7 @@ pub(crate) struct Item {
 #[derive(Clone, Debug, Default)]
 pub(crate) struct Catalog {
     floor: BTreeMap<u32, Item>,
-    hidden: BTreeSet<u32>,
+    hidden: BTreeMap<u32, Item>,
 }
 impl Catalog {
     /// Decode only the already measured raw (tag0) serialized582 branch. Catalog
@@ -73,7 +73,7 @@ impl Catalog {
                 if group == 0 {
                     result.floor.insert(index, item);
                 } else {
-                    result.hidden.insert(index);
+                    result.hidden.insert(index, item);
                 }
             }
         }
@@ -131,6 +131,9 @@ impl Request {
             key: v[7] as u32,
         })
     }
+    pub fn kind(&self) -> u16 {
+        self.item.kind
+    }
     pub fn confirmation(&self) -> io::Result<Vec<u8>> {
         let mut result = Vec::with_capacity(12);
         for (v, w) in [
@@ -171,6 +174,7 @@ pub(crate) struct Round {
     key: u32,
     catalog: Catalog,
     consumed: BTreeSet<u32>,
+    revealed_cells: BTreeSet<(u8, u8)>,
 }
 impl Round {
     pub fn begin(generation: u64, catalog: &Catalog) -> io::Result<Self> {
@@ -179,15 +183,46 @@ impl Round {
             key: crate::room::wire_key(generation)?,
             catalog: catalog.clone(),
             consumed: BTreeSet::new(),
+            revealed_cells: BTreeSet::new(),
         })
     }
     pub fn finish(&mut self) {
         self.generation = None;
         self.catalog = Catalog::default();
         self.consumed.clear();
+        self.revealed_cells.clear();
     }
     /// Mutate only the candidate model. Caller reserves ALL recipient queues
     /// before publishing this consumed set, under the same room owner lock.
+    pub fn reveal(&mut self, generation: u64, row: u8, column: u8) -> bool {
+        if self.generation != Some(generation) {
+            return false;
+        }
+        let ids: Vec<_> = self
+            .catalog
+            .hidden
+            .values()
+            .filter(|item| (item.row, item.column) == (row, column))
+            .map(|item| item.index)
+            .collect();
+        if ids.is_empty() {
+            return false;
+        }
+        self.revealed_cells.insert((row, column));
+        for id in ids {
+            let item = self.catalog.hidden.remove(&id).expect("matchedhidden");
+            self.catalog.floor.insert(id, item);
+        }
+        true
+    }
+    pub fn hidden_cell(&self, row: u8, column: u8) -> bool {
+        self.revealed_cells.contains(&(row, column))
+            || self
+                .catalog
+                .hidden
+                .values()
+                .any(|item| (item.row, item.column) == (row, column))
+    }
     pub fn claim(&mut self, generation: u64, bound_slot: u8, request: &Request) -> Decision {
         let reason = if self.generation != Some(generation) {
             "inactive_round"
@@ -197,7 +232,7 @@ impl Round {
             "slot_mismatch"
         } else if request.context != 0 {
             "context_mismatch"
-        } else if self.catalog.hidden.contains(&request.item.index) {
+        } else if self.catalog.hidden.contains_key(&request.item.index) {
             "hidden_unrevealed"
         } else if self.catalog.floor.get(&request.item.index) != Some(&request.item) {
             "catalog_mismatch"
@@ -225,7 +260,15 @@ pub(crate) mod tests {
                     kind: 2,
                 },
             )]),
-            hidden: BTreeSet::from([27]),
+            hidden: BTreeMap::from([(
+                27,
+                Item {
+                    index: 27,
+                    row: 2,
+                    column: 3,
+                    kind: 0,
+                },
+            )]),
         }
     }
     fn request() -> Request {
@@ -241,6 +284,30 @@ pub(crate) mod tests {
             client_tick: 23,
             key: 12346,
         }
+    }
+    #[test]
+    fn reveal_moves_only_current_matching_hidden_cell_and_reset_clears_it() {
+        let mut round = Round::begin(1, &catalog()).unwrap();
+        let mut hidden = request();
+        hidden.item = Item {
+            index: 27,
+            row: 2,
+            column: 3,
+            kind: 0,
+        };
+        assert_eq!(round.claim(1, 0, &hidden).reason, "hidden_unrevealed");
+        assert!(!round.reveal(2, 2, 3));
+        assert!(!round.reveal(1, 3, 3));
+        assert!(round.reveal(1, 2, 3));
+        assert!(round.hidden_cell(2, 3));
+        assert!(!round.reveal(1, 2, 3));
+        assert!(round.claim(1, 0, &hidden).accepted);
+        assert!(!round.claim(1, 0, &hidden).accepted);
+        let mut reset = Round::begin(2, &catalog()).unwrap();
+        hidden.key += 1;
+        assert_eq!(reset.claim(2, 0, &hidden).reason, "hidden_unrevealed");
+        reset.finish();
+        assert!(!reset.reveal(2, 2, 3));
     }
     #[test]
     fn wrong_claims_never_reserve_index_and_only_one_bound_winner() {

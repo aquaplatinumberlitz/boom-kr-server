@@ -56,6 +56,15 @@ impl Request {
             power: v[10] as u8,
         })
     }
+    pub fn terrain_bomb(&self, id: u16) -> crate::terrain::Bomb {
+        crate::terrain::Bomb {
+            id,
+            owner: self.owner,
+            row: self.row,
+            column: self.column,
+            power: self.power,
+        }
+    }
     pub fn spawn159(&self, id: u16) -> io::Result<Vec<u8>> {
         let fields = [
             (0, Width::U8),
@@ -219,6 +228,13 @@ impl Ledger {
     }
     /// Each actual TCP recipient consumes its own deadline once. Release the
     /// reservation only after BOTH writes succeed; this is not native-execution ACK.
+    pub fn active(&self, ticket: &Ticket) -> bool {
+        Arc::ptr_eq(&self.scope, &ticket.scope)
+            && self.generation == Some(ticket.round)
+            && self.active.get(&ticket.id).is_some_and(|a| {
+                a.ticket.allocation == ticket.allocation && a.ticket.owner == ticket.owner
+            })
+    }
     pub fn delivered(&mut self, ticket: &Ticket, recipient: Membership) -> bool {
         if !self.deliverable(ticket, recipient) {
             return false;

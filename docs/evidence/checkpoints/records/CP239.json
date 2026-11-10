@@ -1,0 +1,295 @@
+{
+  "id": "CP239",
+  "previous": "CP238",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T02:20:19.781013+00:00",
+  "context_commit": "7ecfba33d03a75b0b3ae08cd70102f6bfbc22182",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M3/KRE-074: port existingboundedterrain/currentclearedcell/fullroster158commit→142hiddenreveal/124165, verify195nativeflags and3basicitemstat effects beforelife/result-resetport.",
+  "scope": "Pinnedterrainconfig/kernel/candidateplacement/fullroster158clearance/142currentcell/hiddeneligibility-onewinner/reset;35Rusttests43TCP/nativeoneepoch195flags-three165effects/1314getters/54rawcleanup0;M3partial.",
+  "artifacts": [
+    {
+      "name": "NativeKR00967originalunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "e9Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "Rustnative-testedterrain-itembinary",
+      "sha256": "6ad78ad49bf7c084e8820b7eb838767a26c1cb75b68604ff3ae641a75f7623b8"
+    },
+    {
+      "name": "ExistingKRmodOcopiedgetteronly",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/terrain.rs/pinnedconfig/immutablecascade/clearance;room_io.rs/candidateplace/fullrosterlast158writecommit/142currentcell;pickups.rs/hiddeneligible/onewinner;tools/export_rust_profile.py/trustedterrainpins",
+    "NativeR1run35d00642f1f06963121232f926d49141a122e0e936f9b3b08df1271669b76cf3/54raw/86.997765664s/TCP410-66reply/195flagsperviewclock-before-after/only2cells/actualA12417-28-27/native3x16512/error0/stats5→6,1→2,1→2/1314copiedgetters",
+    "35Rusttests/43kernelTCP/privateflags-statreadonlyfeedback/180spredeclaredexperimentbudget/no midrunsource-configchange;CP238PR3097ecfba3merged/AUD068nextCP240periodicrequired"
+  ],
+  "findings": [
+    {
+      "summary": "Optionaltrustedterrain15x13/kinds195/maxpower2/seed-map-startSHA beforebind;candidategeometrybeforeIDserialpublish/immutablecascade. Fulloriginalroster158TCPwritecompletion mớicommitcurrentgenerationclearance;142boundslot-aux-knownhidden-currentcell/duplicateidempotent→matchinghiddeneligiblefromsame582/124onewinner;Startleave reset.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-terrain",
+      "evidence": [
+        "RUST239-00038",
+        "RUST239-00037",
+        "RUST239-00035"
+      ],
+      "limits": "M3partial/oneepoch-oneownerbomb-threebasicitems/pinned15x13;no nativechainvariants/generalphysics/distance/originalauthority/life-result-reset/twooutcomes/accountbridge/fullservice. Old142afterlegitcurrentclearindistinguishable. FullrosterTCPwritesnotnativeACK/physicalatomicity. Opaque123/167unknown/shutdowncauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ActualKR00967/e9/Wine/privatehostsoneepoch:both195flagsclock-before158equalpinnedseed/after158matchesexistingPythonkernelonactualA118/only(2,3),(3,2)clear. Currentfullroster158then142reveal/duplicates→actual12417-28-27, eachview3native165full12/error0/founditem/statRoller5→6/Fire1→2/Bomb1→2.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-terrain",
+      "evidence": [
+        "RUST239-00211",
+        "RUST239-00213"
+      ],
+      "limits": "M3partial/oneepoch-oneownerbomb-threebasicitems/pinned15x13;no nativechainvariants/generalphysics/distance/originalauthority/life-result-reset/twooutcomes/accountbridge/fullservice. Old142afterlegitcurrentclearindistinguishable. FullrosterTCPwritesnotnativeACK/physicalatomicity. Opaque123/167unknown/shutdowncauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "1314copiednative52A350 getters verifyactualraw195flag/statwrappers;TCP410/66exactreplies/alltuples-C2Sjoins/6shold-FINaftercompletion/54rawfrozen-seal-cleanup0.35Rusttests/43TCPcases testpartialrecipientnogrant, geometry/reset/claim-onewinner/EOF. Modelnegative notnativeattackproof;M3life/result-resetnext.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-terrain",
+      "evidence": [
+        "RUST239-00211",
+        "RUST239-00205",
+        "RUST239-00202",
+        "RUST239-00052"
+      ],
+      "limits": "M3partial/oneepoch-oneownerbomb-threebasicitems/pinned15x13;no nativechainvariants/generalphysics/distance/originalauthority/life-result-reset/twooutcomes/accountbridge/fullservice. Old142afterlegitcurrentclearindistinguishable. FullrosterTCPwritesnotnativeACK/physicalatomicity. Opaque123/167unknown/shutdowncauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Oneepoch/oneowner/threeitemsnotnativechainvariants/native reset/worldauthority;old142aftercurrentclearstillindistinguishable. CompilehelperLowerHex/privatevisibilityfailures fixedbeforefirstnative;180sexperimentbudgetpredeclared/actual86.998s/service shutdown unchanged. PLANlife170/result175-return180/reset/twooutcomes;CP240auditrequired.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-terrain",
+      "evidence": [
+        "RUST239-00020",
+        "RUST239-00023",
+        "RUST239-00025"
+      ],
+      "limits": "M3partial/oneepoch-oneownerbomb-threebasicitems/pinned15x13;no nativechainvariants/generalphysics/distance/originalauthority/life-result-reset/twooutcomes/accountbridge/fullservice. Old142afterlegitcurrentclearindistinguishable. FullrosterTCPwritesnotnativeACK/physicalatomicity. Opaque123/167unknown/shutdowncauseunknown. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt-clippy/35tests/lockedbuild/nativefinalbinary",
+      "result": "pass",
+      "evidence": [
+        "RUST239-00044",
+        "RUST239-00017",
+        "RUST239-00216",
+        "RUST239-00015"
+      ],
+      "limits": "30serviceincl11account+5wire;finalvisibilitytighteningonlyaftertests beforeclippy/build/native;exactheadrechecksrequired."
+    },
+    {
+      "check": "43kernelTCPgeometry-reveal/hiddenonce/partialrecipient-clearance/queueEOF",
+      "result": "pass",
+      "evidence": [
+        "RUST239-00052"
+      ],
+      "limits": "Preattachbinarypin/unchanged/cleanup0;syntheticnegative separatefromnative."
+    },
+    {
+      "check": "Native195flags/2clearcells/142-3x124165stat/TCP410-66reply/54rawcleanup0",
+      "result": "pass",
+      "evidence": [
+        "RUST239-00211",
+        "RUST239-00213",
+        "RUST239-00202"
+      ],
+      "limits": "M3partial/oneepoch-oneownerbomb-threebasicitems/pinned15x13;no nativechainvariants/generalphysics/distance/originalauthority/life-result-reset/twooutcomes/accountbridge/fullservice. Old142afterlegitcurrentclearindistinguishable. FullrosterTCPwritesnotnativeACK/physicalatomicity. Opaque123/167unknown/shutdowncauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "check": "1314copiednativegetter",
+      "result": "pass",
+      "evidence": [
+        "RUST239-00205"
+      ],
+      "limits": "ExistingKRmodO/counterreset/rawruntimewrappers/emulation notgamefunctioncall/wholebinaryequality."
+    },
+    {
+      "check": "InitialcompileLowerHex/privateinterface",
+      "result": "fail",
+      "evidence": [
+        "RUST239-00214",
+        "RUST239-00018",
+        "RUST239-00019"
+      ],
+      "limits": "Fixedbeforefirstnative;source/runtime notmutatedmidrun."
+    },
+    {
+      "check": "Nativechain/reset/life170/result175-return180/twooutcomes/accountbridge",
+      "result": "not_run",
+      "evidence": [
+        "RUST239-00023",
+        "RUST239-00025"
+      ],
+      "limits": "M3partial/counter240auditnext;no gateclosure."
+    },
+    {
+      "check": "Docs/catalog/links/issuebacklinks/WIP/manualacceptance",
+      "result": "pass",
+      "evidence": [
+        "RUST239-00005",
+        "RUST239-00020"
+      ],
+      "limits": "Fullhistory/exactheadafterappend required/checker notsemanticapproval."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP239-rust-terrain.json",
+      "bytes": 57772,
+      "sha256": "36cc5d7c9ffb78fc85b033f9cfed0bb0f32ef2bd1f478f7621ca7a076e5aab63",
+      "count": 221
+    }
+  ],
+  "delta": {
+    "added": [
+      "Optionalpinnedterrainkernel/currentgeometry/immutablecascade/fullroster158clearance/142hiddenreveal+claimonce/Bombcapacitypickupdesign.",
+      "Native195flagsbothviews/currenttwohidden/three165stateffects/1314copiedgetters/54rawfrozen-seal-cleanup0/TCP410-66reply.",
+      "35Rusttests/43kernelTCP/currentclaimqueuefences;PLANlife-result-resetnext/CP240auditrequired."
+    ],
+    "corrected": [
+      "PLANhiddenlist2noteligible wording supersededwithinmeasuredcurrentclearance/142path, withoutoriginalauthorityclaim.",
+      "CompileSHAhelper/privateinterfacefailures preserved/fixedbeforefirstnative, notmidrun."
+    ],
+    "superseded": [
+      "PLANterrain/reveal/threebasicitems missing:nowacceptedoneepochsubset, proceedknownlife170/result175-return180/reset/twooutcomes."
+    ]
+  },
+  "blockers": [
+    "Oneepoch/oneownerbomb/threebasicitemeffects/15x13samepinnedmap; no nativechainvariants/generalphysics/distance/originalserverauthority.",
+    "Terrain/revealnegative kerneltests separatefromnativepositive, notattackcontrols. Old142bytesafterlegitimatecurrentclear remainindistinguishable/knownCP172limit.",
+    "Full-rosterTCPwritecompletion not nativeexecutionACK/atomicphysicaldelivery;oldUDP/low8wrap/accountauth limitsunchanged.",
+    "No native reset/twooutcomes/life170/result175/return180/Ready2Start3,kim-cứu/capacity4-8/fullM3/fullservice/production.",
+    "M5backend/CLImerged, KRbridge/lease/worker/idleTTL/rate/restore notpartofthisslice. Opaque123/167policy unchanged/semanticsunknown;shutdownrootcauseunknown.",
+    "Budget180sdeclaredfornewfeedbackroute, actual86.998s/routepositionsactualtimestamps;nominal45msnotactualphysics. No service shutdowndeadlineincrease.",
+    "Internet thật chưa kiểm.",
+    "M3life/report17-19-21/170/results175-return180/reset/twooutcomes/nativeoldpacketcontrols remainunimplemented."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANportknownlife17-19-21/170/result175/return180/reset/twooutcomes/Ready2Start3 andnativeoldpacket-currentpositivecontrols. DonotrepeatterrainjustforCP;M5backendindependent/bridgepartial. CP240periodicauditrequired/AUD068through236.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T02:20:19.781013+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/M3terrain-hiddennativeproof+queue-policytests/manualselfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "docs/evidence/rust-service/terrain.json",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    }
+  ]
+}

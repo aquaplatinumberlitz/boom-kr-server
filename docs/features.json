@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP238",
+  "as_of": "CP239",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -2210,7 +2210,9 @@
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#four-owner-bombs",
           "docs/evidence/rust-service/README.md#cp238",
-          "docs/evidence/rust-service/bombs.json"
+          "docs/evidence/rust-service/bombs.json",
+          "docs/evidence/rust-service/README.md#cp239",
+          "docs/evidence/rust-service/terrain.json"
         ]
       },
       "coverage": {
@@ -2283,7 +2285,8 @@
               "docs/PROTOCOL.md#a-c-basic-cycles",
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
-              "docs/PROTOCOL.md#four-owner-bombs"
+              "docs/PROTOCOL.md#four-owner-bombs",
+              "docs/PROTOCOL.md#rust-terrain"
             ]
           },
           "windows_original": {
@@ -2315,7 +2318,9 @@
             "server/test_terrain_policy.py",
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-terrain",
+            "rust/crates/kr-service/src/terrain.rs"
           ],
           "delivery": "via_pr"
         },
@@ -2351,7 +2356,9 @@
             "docs/PROTOCOL.md#current-basic-cycles-291",
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-terrain",
+            "rust/crates/kr-service/src/terrain.rs"
           ]
         },
         "gate": {
@@ -2429,7 +2436,9 @@
           "docs/PROTOCOL.md#current-basic-cycles-291",
           "docs/PROTOCOL.md#current-basic-contest-reset",
           "docs/evidence/rust-service/README.md#cp237",
-          "docs/evidence/rust-service/movement-floor.json"
+          "docs/evidence/rust-service/movement-floor.json",
+          "docs/evidence/rust-service/README.md#cp239",
+          "docs/evidence/rust-service/terrain.json"
         ]
       },
       "coverage": {
@@ -2506,7 +2515,8 @@
               "docs/evidence/peer-endpoints/README.md#cp176",
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
-              "docs/PROTOCOL.md#rust-movement-floor"
+              "docs/PROTOCOL.md#rust-movement-floor",
+              "docs/PROTOCOL.md#rust-terrain"
             ]
           },
           "windows_original": {
@@ -2537,7 +2547,9 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/99",
             "docs/PROTOCOL.md#rust-movement-floor",
             "rust/crates/kr-service/src/pickups.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-terrain",
+            "rust/crates/kr-service/src/terrain.rs"
           ]
         },
         "integration": {
@@ -2567,7 +2579,9 @@
             "docs/PROTOCOL.md#current-basic-contest-reset",
             "docs/PROTOCOL.md#rust-movement-floor",
             "rust/crates/kr-service/src/pickups.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-terrain",
+            "rust/crates/kr-service/src/terrain.rs"
           ]
         },
         "gate": {
@@ -2627,7 +2641,9 @@
           "docs/PROTOCOL.md#four-owner-bombs",
           "docs/PROTOCOL.md#eight-mesh-owner-bombs",
           "docs/evidence/rust-service/README.md#cp237",
-          "docs/evidence/rust-service/movement-floor.json"
+          "docs/evidence/rust-service/movement-floor.json",
+          "docs/evidence/rust-service/README.md#cp239",
+          "docs/evidence/rust-service/terrain.json"
         ]
       },
       "coverage": {
@@ -2683,7 +2699,8 @@
               "docs/PROTOCOL.md#emulated-lan-acceptance",
               "docs/PROTOCOL.md#four-owner-bombs",
               "docs/PROTOCOL.md#eight-mesh-owner-bombs",
-              "docs/PROTOCOL.md#rust-movement-floor"
+              "docs/PROTOCOL.md#rust-movement-floor",
+              "docs/PROTOCOL.md#rust-terrain"
             ]
           },
           "windows_original": {
@@ -2714,7 +2731,9 @@
             "docs/PROTOCOL.md#eight-mesh-owner-bombs",
             "docs/PROTOCOL.md#rust-movement-floor",
             "rust/crates/kr-service/src/pickups.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-terrain",
+            "rust/crates/kr-service/src/terrain.rs"
           ],
           "delivery": "via_pr"
         },
@@ -2737,7 +2756,9 @@
             "docs/PROTOCOL.md#emulated-lan-acceptance",
             "docs/PROTOCOL.md#rust-movement-floor",
             "rust/crates/kr-service/src/pickups.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-terrain",
+            "rust/crates/kr-service/src/terrain.rs"
           ]
         },
         "gate": {
@@ -4540,7 +4561,9 @@
           "docs/evidence/rust-service/README.md#cp237",
           "docs/evidence/rust-service/movement-floor.json",
           "docs/evidence/rust-service/README.md#cp238",
-          "docs/evidence/rust-service/bombs.json"
+          "docs/evidence/rust-service/bombs.json",
+          "docs/evidence/rust-service/README.md#cp239",
+          "docs/evidence/rust-service/terrain.json"
         ]
       },
       "coverage": {
@@ -4818,7 +4841,9 @@
             "rust/crates/kr-service/src/pickups.rs",
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-bombs",
-            "rust/crates/kr-service/src/bombs.rs"
+            "rust/crates/kr-service/src/bombs.rs",
+            "docs/PROTOCOL.md#rust-terrain",
+            "rust/crates/kr-service/src/terrain.rs"
           ]
         },
         "integration": {
@@ -4917,7 +4942,9 @@
             "rust/crates/kr-service/src/pickups.rs",
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-bombs",
-            "rust/crates/kr-service/src/bombs.rs"
+            "rust/crates/kr-service/src/bombs.rs",
+            "docs/PROTOCOL.md#rust-terrain",
+            "rust/crates/kr-service/src/terrain.rs"
           ]
         },
         "gate": {
@@ -4992,7 +5019,9 @@
           "docs/evidence/rust-service/README.md#cp237",
           "docs/evidence/rust-service/movement-floor.json",
           "docs/evidence/rust-service/README.md#cp238",
-          "docs/evidence/rust-service/bombs.json"
+          "docs/evidence/rust-service/bombs.json",
+          "docs/evidence/rust-service/README.md#cp239",
+          "docs/evidence/rust-service/terrain.json"
         ]
       },
       "coverage": {
@@ -5080,7 +5109,9 @@
             "rust/crates/kr-service/src/pickups.rs",
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-bombs",
-            "rust/crates/kr-service/src/bombs.rs"
+            "rust/crates/kr-service/src/bombs.rs",
+            "docs/PROTOCOL.md#rust-terrain",
+            "rust/crates/kr-service/src/terrain.rs"
           ],
           "delivery": "via_pr"
         },
@@ -5105,7 +5136,9 @@
             "rust/crates/kr-service/src/pickups.rs",
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-bombs",
-            "rust/crates/kr-service/src/bombs.rs"
+            "rust/crates/kr-service/src/bombs.rs",
+            "docs/PROTOCOL.md#rust-terrain",
+            "rust/crates/kr-service/src/terrain.rs"
           ]
         },
         "gate": {
