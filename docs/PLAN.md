@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP235: M2 scoped đạt qua đối chiếu10criteria; RustnativeBsamePID/channel/IDclear+9late-reportdrops/UIclock8.231s sauownedAEOF, PCAP345/56reply/44rawsealed.15Rusttests/6profileguards/12shutdownraces/8roomTCP/16binding/14M1. Guardversionprelisten≠nativewrongversionUI;Aspritecòn/M3,oldshutdowntimeoutunknown/M7. CP234PR305/f15a2bamerged;AUD067qua232/kế236. Internet thật chưa kiểm.
+CP236: M5backend đầu tiên đã triển khai/kiểm SQLite thật+CLI; chưa KRbridge/đóngM5. M3 tiếp UDP/movement, không cần chờ accountRE. CP235PR306/bb673a4 merged. AUD068qua236/auditkế240; Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,7 +64,12 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-RUST-FIRST-SLICE / RUST-M3 Battle hai client / KRE-074/#285**:
+1. **NEXT-RUST-FIRST-SLICE / RUST-M3 Battle hai client + M5 backend độc lập / KRE-074/#285**:
+   [CP236](PROTOCOL.md#rust-account-backend) đã giao lát cắt backend M5 bằng SQLite thật/CLI: account,
+   password/session, identity/profile/version và audited admin. Không cần chờ gameplay để viết backend;
+   cũng không lấy KR authbridge chưa giao làm dependency chặn M3. Codex solo luân phiên hai nhánh công việc,
+   không có worker/runtime đồng thời. M5 còn worker/idleTTL/rate, authlease nhiều transport và native bridge;
+   inventory/progression/resultreward ở M6, restore đầy đủ ở M8. [CLI/giới hạn](../rust/README.md#account-admin-cli).
    [CP235](PROTOCOL.md#rust-m2-acceptance)/[checklist](evidence/rust-service/m2-acceptance.json) chốt M2:
    bootstrap→identity/sảnh→fixedroom/ownslots→hostBack/chief→rejoin/Ready→native2actualloadingbarrier/spawn;
    survivor sau ownedpeerEOF giữ process/channel/clock và late report drop có giới hạn. Không làm lại M2 positive.
@@ -77,12 +82,12 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    Native wrong-version error UI chưa kiểm; guard unsupportedoperatorprofile trước bind đã đủ scope M2 được nêu rõ.
    Một shutdown timeout CP234 chưa rõ rootcause, không tái hiện ở ba repeat+12race cũ+12race mới; giữ phép đo PID/thread
    khi tái hiện ở M7, không tăng deadline hoặc gọi đã fix. Không mở fullauth/SDK/generalroom/broadRE làm dependency.
-   Pythonrollback/8WIP giữ; checkpoint kếCP236 phải audit README→PLAN→PROTOCOL→RESEARCH→evidence/code/raw.
+   Pythonrollback/8WIP giữ; AUD068 quaCP236 đã audit README→PLAN→PROTOCOL→RESEARCH→evidence/code/raw, audit kếCP240.
 2. **NEXT-AUTH-SESSION-BINDING — blocked sameprocessrecovery**: [CP224](PROTOCOL.md#auth-retry-validation)
    fullretryfatal sauhello/validation1; [CP225](PROTOCOL.md#auth-fresh-process) getter12562C0 trả11→storeEBP-28
    trước setter12562F0(request1), errorlocal10. FreshprocessBnewlease/sessionpositive/invalidtokennegative đã đo;
    không lặp getter/hello/codec/failedretry hoặc quét SDK/VM. Chỉ mở automaticresume khi có observable/input
-   mới có nguồn hoặc thực sự chặn milestone. Sessionexpiry/revoke/restartfence/DB/API chưa đạt; freshlogin
+   mới có nguồn hoặc thực sự chặn milestone. Sessionexpiry/revoke/restartfence/DB qua CLIbackend đã có CP236; KRbridge/API phục vụ chưa đạt; freshlogin
    không là accountresume/matchrestore. Phần backenddesign/port readiness không cần chờ mọiclientRE.
 3. **NEXT-AUTH-CHANNEL-EOF — blocked về observable receiver selection**:
    [CP219](PROTOCOL.md#auth-eof-dispatch) đã đo native bad-dispatch; [CP220](PROTOCOL.md#auth-tcp-ownership)
@@ -96,11 +101,11 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    không là dependency M1. Default ProbeService vẫn globalroom/round/jobs/host, chưa multiroom production.
    Otherroom cleanup exclusion mới modelonly/no thirdnative, listoccupancy fixture, hostpostgetter unobservedbudget20;
    known110/UIchief đã có nên không lặp để thêm cùng kết luận. Quota/restartfence/password/full/mode/round theo room
-   giữ trigger riêng. Internalqueuedfence không là raw585zero wire-replay protection. Audit kếCP236.
+   giữ trigger riêng. Internalqueuedfence không là raw585zero wire-replay protection. Audit kếCP240.
 
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP235 M2scopedaccepted/M3next, M0/M1 giữ scope, không nâng K0–K7/fullservice; AUD067 qua232/audit kếCP236.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP235 M2scopedaccepted/M3next, M0/M1 giữ scope, không nâng K0–K7/fullservice; AUD068 qua236/audit kếCP240.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu
@@ -117,7 +122,7 @@ Owner/selfcheck Codex, independentreviewwaived; PR/exacthead vẫn bắt buộc.
 | RUST-M2 Bootstrap→local login/identity→sảnh→fixedroom | CP235đạt scoped:2actualfixedroom/ownslots/hostBack-rejoin/Ready/barrier/clock-spawn+healthyBsessionEOF;negative/profileguard có phương pháp và giới hạn. Khôngaccountauth/generalroom/Battle. Diagnosticidentity không fullauth, tiếp contract đã biết |
 | RUST-M3 Hai client native→Battlebasic→result/reset/trận2 | M2; account/DB backend không cần đợi M3. GiữUDP trực tiếp, không authoritativeengine rewrite |
 | RUST-M4 Bốn rồi tám/đội hình cố định theo contract | M3; baselinefourmain trước eight; dùng CP213teamdelta sau deliveryriêng, không chờ mọi item/mission |
-| RUST-M5 Account/profile/DB và sessionownership | Backend phụ thuộc M1/M0design, có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
+| RUST-M5 Account/profile/DB và sessionownership | CP236 backend đầu tiên: SQLite/Argon2id/identity-profile/session/auditCLI, 11tests+33CLIprocess; chưa fullM5. Backend có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
 | RUST-M6 Inventory/progression/result-reward durability | Backend M5, actualmatchinput M3; KRwireprojection/effect cần từngconsumer. Không cần full8/mọiitem để làm ledger |
 | RUST-M7 General lobby/rooms/selection và userflows cần cho nội bộ | M2 + M5ownership, M3lifecycle; M4 chỉ cần nếu mở8capacity. RE roomlist/member/character/team/equip theo phép đo, không mọi mode |
 | RUST-M8 Hardening/admin/backup/restore/package và nghiệm thu service | M1–3/M5–7 cho internalservice; M4 nếu quảng bá4/8 theo scope. Ops/tests phát triển từM1, không chờ cuối mới thêm |
@@ -210,6 +215,8 @@ results không chứng minh items/kim/cứu4/8. Rollback package/profile percapa
 chuyển milestone khi từng capacity advertised đủ; không chờ modesphụ.
 
 **RUST-M5 — account/profileDB và ownership; có thể tiến hành độc lập gameplay.**
+CP236 đã có [backend](PROTOCOL.md#rust-account-backend)/[CLI](../rust/README.md#account-admin-cli) dùng SQLite thật;
+chưa KRbridge/worker/idleTTL/per-account-ratelimit/productionrestore nên **không đóng M5**. Không bắt M3/M4 đợi phần đó.
 Module application/accounts/profiles/session/store/sqlite/migrations/adminCLI; architecture định schema/invariants.
 Backendimplementation: Argon2id/PHC/CSPRNG/hash-atrest/sessionTTL-revoke/oneactive; account→player→wireidentity,
 lease nhiềustage/sockets thay rolearrival/sourceIP, nameencoding/bounds, schema/version/conflict/startupvalidation.

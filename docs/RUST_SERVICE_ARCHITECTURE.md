@@ -130,6 +130,11 @@ giữ measuredkeyrotation/exhaustion/peerlifetime và nativeoldframecontrol, kh�
 
 ## Account, identity và dữ liệu bền vững
 
+CP236 hiện thực lát cắt design dưới bằng [backend account](PROTOCOL.md#rust-account-backend) và
+[CLI](../rust/README.md#account-admin-cli); schema1 chỉ account/player-name-version/session/runtime-state/audit,
+không xem toàn bảng design phía dưới đã triển khai. Identity persistence/backend authorization đã testSQLite,
+chưa KRbridge/character/XP/inventory/ledger/outbox/idleTTL/servingworker/restore. M5 độc lập M3 theo PLAN.
+
 Tách ba biên: **backend nội bộ design**, **admin/web/launcher interface mới design**, **wire KR phục hồi**.
 CLIcreateaccount hoặc webHTTPS không là màn đăng ký/login gốc đã chứng minh. Localfixtureauth137/291,
 acceptorder/sourceIP không chứng minh chủaccount. Một gamesession có nhiều bootstrap/login/channel

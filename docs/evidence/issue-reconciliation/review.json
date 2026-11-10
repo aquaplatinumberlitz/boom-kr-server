@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP235",
+  "as_of": "CP236",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP235: M2 scoped accepted by10criteria; nativeBsamePID/channel/IDclear/9late127drops/UIclock8.231safterownedAEOF; PCAP345/56reply/44rawsealed.15Rusttests/6prelistenguards/12shutdownraces/8roomTCP/16binding/14M1. CP234PR305/f15a2bamerged.",
-      "remaining": "M3BattleUDP/movement/bombs/terrain-life/result-reset/twooutcomes;Amap-sprite/fullsceneoutcome afterEOF unresolved. Guardversionprelisten notnativewrongversionUI; oldshutdownanomalyrootcauseunknown. Noaccountauth/DB/generalroom/fullservice.",
-      "next_test": "PLANM3firstslice directUDP/movement twoactualKR withPCAP→nativeAPI-key-apply→peerprogress;thenbomb/life/result/reset. No repeatedM2positive/broadRE/authSDKdependency; auditnextCP236.",
+      "known": "CP235M2 scoped accepted/PR306bb673a4 merged. CP236 realSQLite/Argon2id/persistentplayer-profile/session/revoke-expiry-epoch/auditCLI backend implemented independently gameplay;26Rusttests/33CLIprocess/2accounts/9audit. No KRauthbridge/gateclaim.",
+      "remaining": "M3nativeUDP/Battle/result-reset;M5KRbridge/transportleases/idleTTL/servingworker/rate;M6inventory-reward/M8restore-load. Historicalnativeauthretry/EOFblocked only reopen by new observable.",
+      "next_test": "PLANM3firstactualKRUDPmovement PCAP→nativekey/apply;M5backend independent/no broadRE;AUD068through236/nextCP240.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "M2milestoneacceptedonlyscopeddiagnosticpath;#14/#285 remainOPEN/Pythonserving8WIPpreserved/AUD067next236/Internet thật chưa kiểm.",
+      "reason": "Owner explicitly asks account/DB parallel with gameplay; backend design did not need clientRE. M5partial, epicopen/Pythonreference/WIP retained.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -273,7 +273,8 @@
         "docs/PROTOCOL.md#rust-local-lobby",
         "docs/PROTOCOL.md#rust-two-lobby",
         "docs/PROTOCOL.md#rust-fixed-room",
-        "docs/PROTOCOL.md#rust-m2-acceptance"
+        "docs/PROTOCOL.md#rust-m2-acceptance",
+        "docs/PROTOCOL.md#rust-account-backend"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -380,7 +381,8 @@
         "docs/evidence/rust-service/README.md#cp232",
         "docs/evidence/rust-service/README.md#cp233",
         "docs/evidence/rust-service/README.md#cp234",
-        "docs/evidence/rust-service/README.md#cp235"
+        "docs/evidence/rust-service/README.md#cp235",
+        "docs/evidence/rust-service/accounts-backend.json"
       ],
       "prs": [
         173,
@@ -488,7 +490,8 @@
         302,
         303,
         304,
-        305
+        305,
+        306
       ],
       "successors": []
     },
@@ -827,11 +830,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP235: M2 scoped accepted by10criteria; nativeBsamePID/channel/IDclear/9late127drops/UIclock8.231safterownedAEOF; PCAP345/56reply/44rawsealed.15Rusttests/6prelistenguards/12shutdownraces/8roomTCP/16binding/14M1. CP234PR305/f15a2bamerged.",
-      "remaining": "M3BattleUDP/movement/bombs/terrain-life/result-reset/twooutcomes;Amap-sprite/fullsceneoutcome afterEOF unresolved. Guardversionprelisten notnativewrongversionUI; oldshutdownanomalyrootcauseunknown. Noaccountauth/DB/generalroom/fullservice.",
-      "next_test": "PLANM3firstslice directUDP/movement twoactualKR withPCAP→nativeAPI-key-apply→peerprogress;thenbomb/life/result/reset. No repeatedM2positive/broadRE/authSDKdependency; auditnextCP236.",
+      "known": "CP235M2 scoped accepted/PR306bb673a4 merged. CP236 realSQLite/Argon2id/persistentplayer-profile/session/revoke-expiry-epoch/auditCLI backend implemented independently gameplay;26Rusttests/33CLIprocess/2accounts/9audit. No KRauthbridge/gateclaim.",
+      "remaining": "M3nativeUDP/Battle/result-reset;M5KRbridge/transportleases/idleTTL/servingworker/rate;M6inventory-reward/M8restore-load. Historicalnativeauthretry/EOFblocked only reopen by new observable.",
+      "next_test": "PLANM3firstactualKRUDPmovement PCAP→nativekey/apply;M5backend independent/no broadRE;AUD068through236/nextCP240.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "M2milestoneacceptedonlyscopeddiagnosticpath;#14/#285 remainOPEN/Pythonserving8WIPpreserved/AUD067next236/Internet thật chưa kiểm.",
+      "reason": "Owner explicitly asks account/DB parallel with gameplay; backend design did not need clientRE. M5partial, epicopen/Pythonreference/WIP retained.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -858,7 +861,9 @@
         "docs/PROTOCOL.md#rust-local-lobby",
         "docs/PROTOCOL.md#rust-two-lobby",
         "docs/PROTOCOL.md#rust-fixed-room",
-        "docs/PROTOCOL.md#rust-m2-acceptance"
+        "docs/PROTOCOL.md#rust-m2-acceptance",
+        "docs/PROTOCOL.md#rust-account-backend",
+        "docs/PLAN.md#current-order"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -885,7 +890,8 @@
         "docs/evidence/rust-service/README.md#cp232",
         "docs/evidence/rust-service/README.md#cp233",
         "docs/evidence/rust-service/README.md#cp234",
-        "docs/evidence/rust-service/README.md#cp235"
+        "docs/evidence/rust-service/README.md#cp235",
+        "docs/evidence/rust-service/accounts-backend.json"
       ],
       "prs": [
         286,
@@ -907,7 +913,8 @@
         302,
         303,
         304,
-        305
+        305,
+        306
       ],
       "successors": []
     }

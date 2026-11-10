@@ -1,6 +1,7 @@
-//! Bounded diagnostic KR00967 transport; no account authentication or gameplay.
+//! Bounded diagnostic KR00967 transport; local account backend has no native adapter.
 #![forbid(unsafe_code)]
 
+pub mod accounts;
 pub mod binding;
 pub mod lobby;
 pub mod room;

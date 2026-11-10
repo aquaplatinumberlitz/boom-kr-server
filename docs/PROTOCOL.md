@@ -8481,3 +8481,47 @@ phải chuẩn bị theo recipe có hash trước khi gọi control; PS không t
 verifier12314checks phần lớn packetintegrity không tự đóng gate. K2a tái dùng oracleKR cũ, không
 runtimecodec mới ở Windows. K1/fullK2/K3–K7/fullmatch/LANInternet8clients tiếp mở; gameplayWineCP176
 và replacementCP177 giữ nguồn riêng. Sourcefact/limits ở đây, thứ tự chỉ ở PLAN.
+
+
+<a id="rust-account-backend"></a>
+## Backend account Rust độc lập client — CP236 / RUST-M5 / KRE-074
+
+Nguồn `design/design`, không là contract server KR gốc. [Implementation](../rust/crates/kr-service/src/accounts.rs),
+[migration](../rust/crates/kr-service/migrations/0001_accounts.sql), [CLI](../rust/README.md#account-admin-cli),
+[bằng chứng](evidence/rust-service/README.md#cp236). Tái dùng design account CP213/M5, M1 crate/lock/tests,
+CP235 baseline transport. Không import VN wire/accountserver hoặc suy diagnostic137/291 là auth.
+
+- SQLite bundled, schema1/applicationID `KRAC`, migration sourceSHA256 + so live schema với schema sinh từ đúngmigration
+  (tables/indexes/triggers), quickcheck/FK/startupallocator; từ chối foreign/future/checksum/schema hỏng, không downgrade.
+  Parent phải là directory riêng mode0700 dưới đường dẫn admin tin cậy, DBregular/nosymlink/mode0600; WAL/FULL,
+  FK on/trusted_schema off, busy250ms. Không chống admin sửa DB/ancestorpath hoặc mã hóa DB.
+- Login backend ASCII3..32 alnum/underscore, lowercaseunique; displayname ASCII3..15 là policy nội bộ, chưa nativeprojection.
+  Account→player1:1/FK, wireID allocator1..u32MAX riêng slot/accountID, không tái cấp qua reopen; tên đổi theo version CAS.
+  Chưa character/XP/inventory. CLI account lookup/rename là admin, không quyền client tự khaiaccountID.
+- Password12..128bytes, randomsalt16bytes, Argon2id v19/m19456KiB/t2/p1/output32, PHC atrest; chỉ nhận đúng PHCparams/length
+  trước verify, tránh KDFunbounded. Unknownuser chạy dummyKDF cùng cost. Tối đa2 hash đồng thời/process, vượt trảBusy;
+  CLI tuần tự, chưa benchmark/load hoặc giới hạn đa process/per-account. Không log password/PHC/token trong diagnostics.
+- Sessiontoken CSPRNG32bytes→64lowerhex, DB chỉ SHA256 của chuỗi token; absoluteTTL1..86400s, một active/account
+  theo transaction+partialuniqueindex. Issuance recheck credentialversion/PHC/disabled dưới write lock sau KDF,
+  reset/ban thắng in-flightverify; expiry/revoke/disable/reset chặn ownership. Authorize trả ownplayer chỉ khi tokenhash,
+  playerID, credentialversion, bootepoch, UTC và disabled đồng thời hợp lệ. Không authenticated transportlease/idleTTL.
+- `open` không revoke. `begin-instance` là hành động admin explicit: tăng persistentepoch và revoke mọi session cũ cùng
+  audit; chưa tự gắn service startup hoặc chống hai gameprocess đồng thời. UTCwatermark ghi cả denial trước businessTX,
+  đồng hồ lùi failclosed qua reopen, token đã thấy expired không revive. Không resetclock tự động; chỉnh clock cần runbook.
+- Create account+player+allocator+audit, rename/version+audit, ban/unban/reset/revoke/bootepoch+audit atomic.
+  Auditactor/reason do trusted localoperator khai, randomrequestID, UTC; audit lỗi thì rollback mutation, watermark có thể tăng.
+  Không remoteRBAC/tamperproofaudit/adminretryidempotency hoặc rewardexactlyonce claim. SQL/FULL/busy/entropy lỗi không trả success.
+
+26Rusttests =11account+10transport/model+5wire retainedvectors; 33CLIprocess/2persistentaccounts/9auditedmutations,
+reopen/profileCAS/ownership/ban-reset-revoke/instancefence, SQLite integrity/FK và plaintext-atrest scan đạt.
+Ca fault bao gồm realtwoDBconnections loginrace, reset giữa verify/commit, strictPHC/quota, audittriggerabort,
+SQLite `max_page_count` FULL giữa audit (không phải OSdiskfull), busy250ms, entropyfault, future/checksum/dropindex,
+expiry forward→rollback→reopen. Native M2 cũ giữ baselinebinary/hash; **không chạy native KR mới cho backendCLI**.
+Run CLI1 phát hiện serde unitvariant bỏ qua unknownfield: giữfailure/raw, đổi init/begin thành emptystructvariant,
+CLI2 strictnegative đạt; không thay input/source giữa hai run. Secretinput≤4096bytes/stdin-only, output token chỉ login
+explicit; rawtoken chỉ syntheticlocal dưới private directory, không commit secretDB/binary/raw.
+
+M5 chưa complete: boundedservingDB/hashworker, idleTTL/rate và lease/session binding vào các socket KR,
+expiry/revoke/freshlogin native hai testaccounts/negative, DBrestartadmission/lifecycle/backuprestore/load còn thiếu.
+Không expose password trên legacyTCP hoặc gán sourceIP thành owner. M6 inventory/progression/resultreward riêng.
+Python serving/RE/reference giữ; [PLAN](PLAN.md#current-order) giữ thứ tự. Internet thật chưa kiểm.

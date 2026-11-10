@@ -29,6 +29,19 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP236: M5 đã có lát cắt account/DB độc lập gameplay.**
+[Contract backend](docs/PROTOCOL.md#rust-account-backend), [CLI](rust/README.md#account-admin-cli),
+[bằng chứng](docs/evidence/rust-service/README.md#cp236): SQLite migration/checksum/schema thực, Argon2id,
+account→player/wireID bền vững, profile tên/version, session TTL/revoke/ban/reset/boot epoch, admin audit cùng transaction.
+26 Rust tests (11 account,10 service,5 wire) và33 process CLI/2account/9audit đạt; không lưu plaintext password/token vào DB.
+Một ca CLI unknownfield đầu tiên lỗi, đã giữ raw/seal và sửa strict variant trước run mới.
+Đây là backend công ty, **chưa nối đăng nhập KR**; M5 chưa đạt đầy đủ, chưa inventory/reward/idleTTL/worker/restore.
+CP235 merge [PR306](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/306)/`bb673a4`;
+[PLAN](docs/PLAN.md#current-order) tiếp M3 UDP/movement, M5 không cần chờ Battle và ngược lại.
+AUD068 qua236, audit kếCP240. Python/WIP giữ nguyên. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP235: M2 đạt trong phạm vi hai identity cục bộ, một phòng và loading trên Wine.**
 [Đối chiếu acceptance](docs/PROTOCOL.md#rust-m2-acceptance), [bằng chứng](docs/evidence/rust-service/README.md#cp235),
 [cách chạy](rust/README.md). Sau khi dừng riêng A, B giữ nguyên process/channel, native xóa ID của A,
