@@ -293,3 +293,24 @@ Wine/e9/two private virtualhosts/no default route nhưCP240; BownedPID fault có
 NativeA175302-292/rank1-2/1803/107ID2→0/110chief1/Room/4shold/no158. R1startupfailure25raw vàR2knownABIcrash46raw đãseal/cleanup giữ; R3copy4b từexistingCP187strictpatch/newfilename/e9untouched,
 BchannelEOF trước67/room/fault; no rootcausefix.41Rusttests/50kernelTCP tách nguồn; M3 vẫnpartial/AUD069next244.
 Internet thật chưa kiểm.
+
+
+<a id="cp242"></a>
+## CP242 — M3 scoped acceptance, itemreset/oldUDP/queue và logger supervision
+
+[Acceptance](m3-acceptance.json), [metadata](m3-controls.json), [contract/limits](../../PROTOCOL.md#rust-m3-acceptance).
+Baseline CP241/PR312/08a9a0d; native binary `1fc83cef97ae0140f3a07d2926ee7359a01a7119de90f8db2880c40f44c23dba`.
+`local/research/codex/rust-m3-controls-native-r5/native-controls/` giữ recipe/preflight/raw-seal/cycles;
+runSHA `2972ed26d4ec716593036dd8c6c710f6ec850f2c1fbf573571a470c6395664ff`/84raw/306,382s/frozen119inputs/cleanup0.
+Root R5 giữ controls-verification/peer-getter-verification/UIreview/verifier-review/input-retention.
+Recipe prepare_rust_m3_controls_r5.py→run_rust_m3_controls_r5.py→verify_rust_m3_controls.py/getters;
+copy4b/Wine/privatehosts/no default route như CP241. Verifier sửa biến output shadowing trên cùng raw, không đổi runtime.
+
+R1/R2 route X80 trước blast sai; R3 controller dùng reply cache sai sau long route; R4 logger receiver đóng/maskederror:
+51+51+55+60raw giữ nguyên/seal/cleanup. Correct root X120/Y159→blast→FireX80 đã biết CP239, không RE lại.
+KernelR2 lỗi flush timeout event141 được bản sửa giữ đúng, 27case trước lỗi/PIDnone; R3 51case pass/cùngbinary/
+unchanged/PIDnone; không tăngdeadline hoặc nhận causalrootcause. 44Rusttests; tests/fmt/clippy/build logs suffix controls-r2/r3.
+M3 chốt bằng đọc acceptance và đối chiếu CP237–242, không từ exitcode/script. OS contest chỉ một actual124/index17/epoch;
+hai claimant negative thuộc kernel. Hai outcome đối nghịch CP240, activehostEOF CP241, không duplicate claim.
+M5backendCP236 đã có; tiếp worker/idleTTL/rate độc lập rồiM4 trong PLAN. AUD069qua240/next244; Python/8WIP giữ nguyên.
+Internet thật chưa kiểm.

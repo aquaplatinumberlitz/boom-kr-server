@@ -225,3 +225,12 @@ Internet thật chưa kiểm.
 Battleprofile đã pin bật activeEOFforfeit12s→175→5s180→3s107/110; không active Battle-exit hoặc matchrestore.
 `test_rust_life.py` thêm dead-owner/pendingbomb-freshsurvivor/EOFforfeit controls; `--idle-seconds 30` kiểm absoluteidle.
 Các giới hạn native/synthetic và M3 còn thiếu theo PLAN. Internet thật chưa kiểm.
+
+
+## CP242: M3 đạt scope basic hai client
+
+[Acceptance](../docs/PROTOCOL.md#rust-m3-acceptance), [raw/hash](../docs/evidence/rust-service/README.md#cp242).
+Hai epoch ba item/effect/reset, exact oldUDP native key-drop rồi current-positive, Start3/hold6s; 84raw/cleanup0.
+44tests/51TCP; logger giữ sink rooterror, flush stall vẫn unknown/deadline unchanged. CP237–241 giữ native
+movement/oppositeoutcomes/hostEOF. Không fullgame/auth/production; accountDB CP236 có, worker/idleTTL/rate/nativebridge còn riêng.
+[PLAN](../docs/PLAN.md#current-order) giữ thứ tự; Internet thật chưa kiểm.

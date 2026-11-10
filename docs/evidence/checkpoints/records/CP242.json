@@ -1,0 +1,287 @@
+{
+  "id": "CP242",
+  "previous": "CP241",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T06:00:37.588325+00:00",
+  "context_commit": "08a9a0d9857c09e2bf7a80935f7364c240583219",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M3/KRE-074: finish remaining itemconsumed-reset/OScontest/exactoldUDP-currentpositive/atomicoutcomequeue; diagnose runtime loggerfailure and manually decide scoped M3; M5 backend next independently.",
+  "scope": "Native2epochs/3basicitemeffectsreset/clock1-3 flags/stats/exactEthernetreplay-keydrop-currentapply;logger supervision/errorprovenance with unchanged deadlines;44Rust51TCP;manualM3acceptanceCP237-242/notepicclosure.",
+  "artifacts": [
+    {
+      "name": "Rustnative-testedM3controls/logger-supervisionbinary",
+      "sha256": "1fc83cef97ae0140f3a07d2926ee7359a01a7119de90f8db2880c40f44c23dba"
+    },
+    {
+      "name": "KnownCP187-241Wine4bprivatecopy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/logging.rs/write_events-finish/lib.rs/serve supervision;room_io.rs/outcome_queue_failure_is_atomic_and_old_refresh_cannot_open_new_round",
+    "NativeR5 2972ed26d4ec716593036dd8c6c710f6ec850f2c1fbf573571a470c6395664ff/1006TCP-126reply/4746copiedgetters/84raw306.382s/frozen119inputs/cleanup0",
+    "Nativeingress/keydropold13byteinner/currentpositiveAPI-apply/sameEthernetcapturedtwice;twoOSinputcontestonlyoneactual124index17perepoch",
+    "CP241PR31208a9a0dmerged/M3acceptedscopedCP237-242/AUD069through240next244"
+  ],
+  "findings": [
+    {
+      "summary": "TwoactualKR00967/4bWine/privateLAN:epoch1-2 actual124indices17/28/27→one165eachview/index/epoch, stat effects/resetclock1-3/195flags eachview; fouractual118/twoowners/native15939-15813/entityIDkind0cleanup; sameBlose175302-292/1803/refresh/Ready/Start3hold6s. ActualtwoOScontestinputs,Bwinsboth,oneactual124per17perepoch;notnative2claimantclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-m3-acceptance",
+      "evidence": [
+        "RUST242-00831",
+        "RUST242-01048",
+        "RUST242-01039"
+      ],
+      "limits": "M3scopedtwoidentity/basicmap/3items/UDPdirect/WinevirtualLAN;nativecontestonlyoneactual124per17perepoch,2claimantkernel;newrunbothBlose/oppositeCP240/hostEOFCP241;notfullgame/auth/4-8/production/low8wrap/forgedcurrentkey/loading-selectedEndingEOF/restore. Sinkstallrootcauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ExactcapturedR1BtoA17byteUDP/fullEthernetreplayunchangedunderR2. PCAPtwoidenticalframes/IPUDPchecksums;nativeingress/keymismatch/drop/noapply;separatecurrentBRightAPI/key/apply/positionpositive(6packets). 1006TCP/126exactreplies/alltuplesC2Ssequence-CRC-SHAjoined;4746copiednativegettersseparateUnicornnotWinegamecalls.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-m3-acceptance",
+      "evidence": [
+        "RUST242-00831",
+        "RUST242-01042",
+        "RUST242-01049"
+      ],
+      "limits": "M3scopedtwoidentity/basicmap/3items/UDPdirect/WinevirtualLAN;nativecontestonlyoneactual124per17perepoch,2claimantkernel;newrunbothBlose/oppositeCP240/hostEOFCP241;notfullgame/auth/4-8/production/low8wrap/forgedcurrentkey/loading-selectedEndingEOF/restore. Sinkstallrootcauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Outcomequeuefailure reserves3entriesor publishesnothing/Armedunchanged;retry175180refreshonce/selector1/tworefreshbeforeIdle/oldcompletionnewroundfence.44Rusttests/51kernelTCPnegative-lifecycle/binarypinunchanged/PIDnone. Designnegativeinputsnotnativeattacks.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-m3-acceptance",
+      "evidence": [
+        "RUST242-00040",
+        "RUST242-01052",
+        "RUST242-00065"
+      ],
+      "limits": "M3scopedtwoidentity/basicmap/3items/UDPdirect/WinevirtualLAN;nativecontestonlyoneactual124per17perepoch,2claimantkernel;newrunbothBlose/oppositeCP240/hostEOFCP241;notfullgame/auth/4-8/production/low8wrap/forgedcurrentkey/loading-selectedEndingEOF/restore. Sinkstallrootcauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Logwriter supervisedinmainselect, originalIOfailurephase/eventordinal retainedthroughcleanup evenemitstoppedfails;faultwrite-flushpending/errorsandcleandraintested, deadlinesunchanged(2s200ms3s). R4nativeunavailablemaskedwriter;kernelR2observedflush-timeout141/PIDnone duringinputcopy,R3/R5pass. Notcausalproof/filesystemlatencyfix;R4originalcauseunknown.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-m3-acceptance",
+      "evidence": [
+        "RUST242-00039",
+        "RUST242-00038",
+        "RUST242-00633",
+        "RUST242-00053"
+      ],
+      "limits": "M3scopedtwoidentity/basicmap/3items/UDPdirect/WinevirtualLAN;nativecontestonlyoneactual124per17perepoch,2claimantkernel;newrunbothBlose/oppositeCP240/hostEOFCP241;notfullgame/auth/4-8/production/low8wrap/forgedcurrentkey/loading-selectedEndingEOF/restore. Sinkstallrootcauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ManualCP237-242criterionreviewacceptsM3scopedbasic2client;oppositeoutcomesCP240,hostEOFCP241reused. Epic14/285remainOPEN;M5SQLitebackendalreadyCP236/worker-idleTTL-rate next independently thenM4;nativeKRbridgepartial. Verifierr1outputshadowingcorrectedonfullsameraw;R1-4failures217rawfrozen/sealed/cleanupretained. AUD069next244/Python8WIPbyteexact.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-m3-acceptance",
+      "evidence": [
+        "RUST242-00025",
+        "RUST242-00028",
+        "RUST242-01049"
+      ],
+      "limits": "M3scopedtwoidentity/basicmap/3items/UDPdirect/WinevirtualLAN;nativecontestonlyoneactual124per17perepoch,2claimantkernel;newrunbothBlose/oppositeCP240/hostEOFCP241;notfullgame/auth/4-8/production/low8wrap/forgedcurrentkey/loading-selectedEndingEOF/restore. Sinkstallrootcauseunknown. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt-clippy/44tests/lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST242-00041",
+        "RUST242-00024",
+        "RUST242-01052",
+        "RUST242-00022"
+      ],
+      "limits": "39serviceincl11account+5wire;exactheadchecksrequired."
+    },
+    {
+      "check": "51kernelTCP/current-stale-round-EOF",
+      "result": "pass",
+      "evidence": [
+        "RUST242-00065"
+      ],
+      "limits": "Syntheticnegative/lifecycle,notnativewireoracle."
+    },
+    {
+      "check": "Native2epochitemreset/oldUDPdrop-currentapply/PCAP/UI/Start3/rawseal",
+      "result": "pass",
+      "evidence": [
+        "RUST242-00831",
+        "RUST242-01048",
+        "RUST242-01039",
+        "RUST242-01042"
+      ],
+      "limits": "M3scopedtwoidentity/basicmap/3items/UDPdirect/WinevirtualLAN;nativecontestonlyoneactual124per17perepoch,2claimantkernel;newrunbothBlose/oppositeCP240/hostEOFCP241;notfullgame/auth/4-8/production/low8wrap/forgedcurrentkey/loading-selectedEndingEOF/restore. Sinkstallrootcauseunknown. Internet thật chưa kiểm."
+    },
+    {
+      "check": "NativeR1-4failures/kernelR2flushstall",
+      "result": "fail",
+      "evidence": [
+        "RUST242-00070",
+        "RUST242-00257",
+        "RUST242-00443",
+        "RUST242-00633",
+        "RUST242-00053"
+      ],
+      "limits": "Preserved217failednativerawandkernel27casesbeforefail;notacceptance;R4originalsinkcauseunknown."
+    },
+    {
+      "check": "ManualM3acceptanceCP237-242/docs-catalog/issues/WIP",
+      "result": "pass",
+      "evidence": [
+        "RUST242-00025",
+        "RUST242-00003"
+      ],
+      "limits": "Codexselfcheckunderreviewwaiver;noindependentreview/fullservice/epicclosure/checkersemantics."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP242-rust-m3-controls.json",
+      "bytes": 285896,
+      "sha256": "000a59e6b7d96f794bedb16a35987ae32ce25f35c699ab74da28d85f4a0bdac1",
+      "count": 1062
+    }
+  ],
+  "delta": {
+    "added": [
+      "RemainingM3itemreset/oldUDP-currentpositive/queuecontrol/nativeproof;manualscopedM3acceptance.",
+      "Logwritersupervision/rootcauseerrorpropagation/faulttests;deadlinesunchanged."
+    ],
+    "corrected": [
+      "Controllerroute/cachefailuresretained;source-firstCP239routeandfreshqueriesreused.",
+      "Verifierr1exactframecapturesfieldshadowingfixedonfullsameraw;R4maskedloggerfailurefollowuprealflushstallnotclaimedfixed."
+    ],
+    "superseded": [
+      "CurrentM3partialstatusinCP241nowM3scopedaccepted;historyunchanged,allbroaderlimitsretained."
+    ]
+  },
+  "blockers": [
+    "Hai identity diagnostic, ExVillage01/basic ba item, UDP trực tiếp/Wine/virtual LAN; không fullauth, mọi map/item/mode, low8 wrap/forged current key, authoritative world, account resume/match restore hoặc production. Internet thật chưa kiểm.",
+    "Sink flush timeout chưa rõ nguyên nhân; supervision/error propagation được sửa, không nhận filesystem/scheduler đã fix.",
+    "M5 backend CP236 đã có; worker/idleTTL/rate/native ownership bridge vẫn chưa đủ; không nâng epic KRE-074 thành complete."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANM5boundedDBhashworker/idleTTL/perprincipalrate independent;nativeownershipbridge separate;thenM4four-eight. No duplicateM3nativepositive/broadRE. AUD069next244.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T06:00:37.588325+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "CodexmanualM3acceptanceselfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/m3-controls.json",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/m3-acceptance.json",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP242scopedM3acceptance/newnativecontrols/loggerfailureprovenance;nextM5backendthenM4/oldcompletehistorykept."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "unchanged",
+      "reason": "Existingmodulararchitecture/backenddesignunchanged;PLANkeepsorder/newcontractlinkedfromcatalog,notarchitecturedecision."
+    }
+  ]
+}

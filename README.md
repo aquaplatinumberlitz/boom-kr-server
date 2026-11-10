@@ -29,6 +29,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP242: M3 đạt phạm vi Battle basic hai client KR trên Rust/Wine/LAN giả lập.**
+[Acceptance thủ công](docs/PROTOCOL.md#rust-m3-acceptance), [raw/hash](docs/evidence/rust-service/README.md#cp242).
+Hai vòng nhặt lại ba item/reset, exact UDP cũ bị native key-drop rồi current movement apply; Start3/hold6s.
+84 raw/306,382s sealed/cleanup0, 1.006 TCP/126 reply, 4.746 copied getters; 44 Rust tests/51 TCP đạt.
+Đối nghịch outcome lấy CP240, hostEOF lấy CP241; không fullgame/auth/production. Logger nay giữ lỗi sink gốc,
+flush stall còn chưa rõ nguyên nhân. M5 backend đã có CP236; tiếp worker/idleTTL/rate độc lập trước M4.
+CP241 merge [PR312](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/312)/`08a9a0d`.
+Audit kếCP244. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP241: Rust đã đưa survivor về phòng sau host EOF khi bom đang chờ.**
 [Contract](docs/PROTOCOL.md#rust-return-cleanup), [raw/hash](docs/evidence/rust-service/README.md#cp241).
 B host đặt bom rồi dừng đúng PID đã kiểm; A nhận forfeit175→180→107 xóa ID2→110/chief và UI phòng,
@@ -36,8 +47,6 @@ không158 qua fuse+4s. 48 raw/89.914s sealed/cleanup0; 41Rusttests/50TCP đạt.
 M3 còn item consumed-reset/contest, exact UDP cũ + current positive và queue controls; không fullservice.
 CP240 merge [PR311](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/311)/`c7dd615`.
 M5 SQLite/account backend đã có CP236, native bridge còn riêng. Audit kếCP244. Internet thật chưa kiểm.
-
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP240: Rust đã chạy hai kết quả đối nghịch, về phòng và Start3 trên hai client KR thật.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-life-results), [raw/hash](docs/evidence/rust-service/README.md#cp240).

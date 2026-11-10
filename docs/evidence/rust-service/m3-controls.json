@@ -1,0 +1,61 @@
+{
+  "schema": "kre-rust-m3-controls-v1",
+  "checkpoint": "CP242",
+  "canonical": "docs/PROTOCOL.md#rust-m3-acceptance",
+  "plan": "docs/PLAN.md#current-order",
+  "native": {
+    "run_sha256": "2972ed26d4ec716593036dd8c6c710f6ec850f2c1fbf573571a470c6395664ff",
+    "binary_sha256": "1fc83cef97ae0140f3a07d2926ee7359a01a7119de90f8db2880c40f44c23dba",
+    "raw_count": 84,
+    "duration_s": 306.382113174,
+    "TCP_records": 1006,
+    "reply_frames": 126,
+    "copied_getters": 4746,
+    "recipe": "local/research/codex/rust-m3-controls-native-r5/native-controls/recipe.json"
+  },
+  "raw_root": "local/research/codex/rust-m3-controls-native-r5",
+  "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "environment": "Wine10.0-20260425; private root/A/B namespaces/no default route, virtual LAN; giữ patch/probe recipe CP241/189/155, không Internet",
+  "reuse": [
+    "CP188/189 item contest/reset and finite OS input feedback",
+    "CP155 exact Ethernet replay/12 read-only native probes",
+    "CP239 root bomb X120/Y159 then hidden Fire/Bomb route",
+    "CP240 post-return focus12/offhover/heldclick1",
+    "CP241 strict known4b copy/owned lifecycle"
+  ],
+  "tests": {
+    "rust": 44,
+    "kernel_TCP": 51,
+    "kernel_path": "local/research/codex/rust-m3-controls-kernel-r3/verification.json",
+    "native_verifier": "local/research/codex/rust-m3-controls-native-r5/controls-verification.json",
+    "copied_getters": "local/research/codex/rust-m3-controls-native-r5/peer-getter-verification.json"
+  },
+  "failures": [
+    {
+      "run": "rust-m3-controls-native-r1",
+      "review": "local/research/codex/rust-m3-controls-native-r1/failure-review.json"
+    },
+    {
+      "run": "rust-m3-controls-native-r2",
+      "review": "local/research/codex/rust-m3-controls-native-r2/failure-review.json"
+    },
+    {
+      "run": "rust-m3-controls-native-r3",
+      "review": "local/research/codex/rust-m3-controls-native-r3/failure-review.json"
+    },
+    {
+      "run": "rust-m3-controls-native-r4",
+      "review": "local/research/codex/rust-m3-controls-native-r4/failure-review.json"
+    },
+    {
+      "run": "rust-m3-controls-kernel-r2",
+      "review": "local/research/codex/rust-m3-controls-kernel-r2/failure-review.json"
+    }
+  ],
+  "limits": [
+    "Hai identity diagnostic, ExVillage01/basic ba item, UDP trực tiếp/Wine/virtual LAN; không fullauth, mọi map/item/mode, low8 wrap/forged current key, authoritative world, account resume/match restore hoặc production. Internet thật chưa kiểm.",
+    "Sink flush timeout chưa rõ nguyên nhân; supervision/error propagation được sửa, không nhận filesystem/scheduler đã fix.",
+    "M5 backend CP236 đã có; worker/idleTTL/rate/native ownership bridge vẫn chưa đủ; không nâng epic KRE-074 thành complete."
+  ],
+  "audit": "AUD069 qua240; kếCP244, không reset counter"
+}

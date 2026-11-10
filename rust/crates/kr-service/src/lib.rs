@@ -6,6 +6,7 @@ pub mod binding;
 mod bombs;
 mod life;
 pub mod lobby;
+mod logging;
 mod pickups;
 pub mod room;
 mod room_io;
@@ -741,27 +742,15 @@ pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
         .create_new(true)
         .open(out.join("rust-events.jsonl"))
         .await?;
-    let (log, mut events) = mpsc::channel::<Value>(256);
-    let writer = tokio::spawn(async move {
-        let mut file = file;
-        while let Some(value) = events.recv().await {
-            let mut data = serde_json::to_vec(&value).map_err(io::Error::other)?;
-            data.push(b'\n');
-            timeout(Duration::from_secs(2), file.write_all(&data))
-                .await
-                .map_err(|_| io::Error::other("log write timeout"))??;
-            timeout(Duration::from_secs(2), file.flush())
-                .await
-                .map_err(|_| io::Error::other("log flush timeout"))??;
-        }
-        Ok::<_, io::Error>(())
-    });
     let start = Instant::now();
     let boot = SystemTime::now()
         .duration_since(UNIX_EPOCH)
         .map_err(io::Error::other)?
         .as_nanos();
-    emit(&log,json!({"event":"boot","pid":std::process::id(),"boot":boot.to_string(),"package":env!("CARGO_PKG_VERSION"),"source":option_env!("KR_SOURCE_REV").unwrap_or("unpublished"),"profile":if profile.bound.is_some(){"diagnostic_two_lobby"}else if profile.lobby.is_some(){"diagnostic_local_lobby"}else{"diagnostic_login_error_only"},"bootstrap_sha256":profile.config.bootstrap.sha256,"error_sha256":profile.config.login_error.sha256})).await?;
+    let mut term = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
+    let (log, events) = mpsc::channel::<Value>(256);
+    let mut writer = tokio::spawn(logging::write_events(file, events, Duration::from_secs(2)));
+    let mut writer_result = None;
     let profile = Arc::new(profile);
     let (shutdown, stop) = watch::channel(false);
     let (accept_tx, mut accepted) = mpsc::channel::<(TcpStream, SocketAddr)>(32);
@@ -780,16 +769,21 @@ pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
     let quota = Arc::new(Semaphore::new(profile.config.max_connections));
     let mut workers = JoinSet::new();
     let mut next_id = 0u64;
-    let mut term = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
+    let mut failure = None;
+    let outcome: io::Result<()> = async {
+    emit(&log,json!({"event":"boot","pid":std::process::id(),"boot":boot.to_string(),"package":env!("CARGO_PKG_VERSION"),"source":option_env!("KR_SOURCE_REV").unwrap_or("unpublished"),"profile":if profile.bound.is_some(){"diagnostic_two_lobby"}else if profile.lobby.is_some(){"diagnostic_local_lobby"}else{"diagnostic_login_error_only"},"bootstrap_sha256":profile.config.bootstrap.sha256,"error_sha256":profile.config.login_error.sha256})).await?;
     state(out, true, false).await?;
     emit(
         &log,
         stamp(start, json!({"event":"ready","ports":profile.config.ports})),
     )
     .await?;
-    let mut failure = None;
-    let outcome: io::Result<()> = async { loop {
+ loop {
         tokio::select! {
+            result=&mut writer=>{
+                writer_result=Some(logging::joined(result).and_then(|()|Err(io::Error::other("log writer stopped unexpectedly"))));
+                break;
+            },
             _=term.recv()=>break,
             value=tokio::signal::ctrl_c()=>{if let Err(e)=value {failure=Some(e);}break;},
             result=listeners.join_next(),if !listeners.is_empty()=>{failure=Some(io::Error::other(format!("listener stopped: {result:?}")));break;},
@@ -827,13 +821,11 @@ pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
         while listeners.join_next().await.is_some() {}
         while workers.join_next().await.is_some() {}
     }
-    state(out, false, true).await?;
-    emit(&log,stamp(start,json!({"event":"stopped","connections":next_id,"error":failure.as_ref().map(ToString::to_string)}))).await?;
+    let state_result = state(out, false, true).await;
+    let final_event = emit(&log,stamp(start,json!({"event":"stopped","connections":next_id,"error":failure.as_ref().map(ToString::to_string)}))).await;
     drop(log);
-    timeout(Duration::from_secs(3), writer)
-        .await
-        .map_err(|_| io::Error::other("logger shutdown timeout"))?
-        .map_err(io::Error::other)??;
+    logging::finish(writer, writer_result, final_event).await?;
+    state_result?;
     if let Some(error) = failure {
         return Err(error);
     }
