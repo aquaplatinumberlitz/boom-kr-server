@@ -8774,3 +8774,40 @@ context, chưa đủ causalproof. RepeatR3/nativeR5 đạt; **chưa rõ nguyên 
 Không fullgame/fullauth/inventory/reward/generalroom/capacity4–8/kim-cứu/allmaps/matchrestore/production;
 loadingEOF/selectedEndingEOF vẫn giới hạn riêng. K0–K7 lịch sử/K6c WAN giả lập không đổi. Internet thật chưa kiểm.
 [PLAN](PLAN.md#current-order) tiếp boundedworker/idleTTL/rate M5 độc lập rồi M4; audit kếCP244.
+
+<a id="rust-account-worker"></a>
+## Worker account/DB hữu hạn và login-result handoff — CP243 / M5 partial
+
+[Worker](../rust/crates/kr-service/src/account_worker.rs), [Store](../rust/crates/kr-service/src/accounts.rs),
+[metadata/acceptance](evidence/rust-service/account-worker.json), [raw/recipe](evidence/rust-service/README.md#cp243).
+Nguồn `design/design`: tái dùng CP236/schema1/Argon2quota/Store clock-audit; không native function/wire RE mới.
+M3 scoped CP242 giữ baseline, **không nối worker này vào socket KR hoặc diagnostic IP identity**.
+
+`Worker::open(path, capacity, queue_ttl)` mở/schema-check Store trên một thread `kr-account-db`, không KDF/SQLite
+trong Tokio task. Client clone dùng chung admission; 1–64 queue entries +1 executing, không tạo thread/job theo request.
+`try_login`/`try_authorize` trả typed Pending; bounds name/password/token/TTL trước cấp phát bản secret copy,
+full→Busy/closed→Closed; password/token worker sở hữu Zeroizing/noDebug. Mỗi worker tuần tự; hashquota2/process CP236
+vẫn giữ. Không tự begin-instance/revoke hay khóa độc quyền DB/multipleprocess; caller là trusted internal code/UTC.
+
+Job bị hủy hoặc quá queue TTL trước execution không gọi Store/cấp token. Đã chạy KDF/SQLite thì không giả rollback
+bằng async timeout. Login commit chỉ coi đã giao khi caller poll `Pending::wait` và claim handoff dưới mutex;
+**oneshot.send thành công chưa đủ**. Handoff timeout dùng cùng duration1ms–60s nhưng là giai đoạn riêng sau execution.
+Caller bỏ result/không poll/claim thua expiry→thu hồi chính token vừa cấp cùng `abandoned_login` audit trong transaction.
+Không thu hồi toàn account; old cleanup không hủy session mới hơn hoặc lùi UTC watermark. QueueExpired có thể ở queue
+hoặc handoff; không là idleTTL/sessionexpiry/rate limit. API caller đã nhận Grant còn phải xử lý transport/session lifecycle.
+
+Compensation/audit lỗi→rollback transaction, đóng admission mọi clone, shutdown trả root backend error; **session có thể
+vẫn active**, cần operator revoke/begin-instance trước khôi phục phục vụ. Không tự ghi cleanup success. Worker panic cũng
+đóng admission. Owner Drop chỉ khởi động close; `shutdown().await` đóng nhận việc, drain/cancel accepted jobs và join.
+Không hard OS I/O/shutdown latency/load/SLO claim; syscall/KDF đang chạy không bị kill bằng timer.
+
+49workspace tests (44service incl5worker +5wire); 5worker tests riêng chạy trên current-thread Tokio với real SQLite/KDF,
+barrier chứng minh Tokio vẫn tiến khi DB thread giữ; bounded/full/oversized/queued cancel/expiry, caller chưa poll dù send
+thành công, handoffexpiry→revoke→login lại, wrongplayer, stalecleanup/newsession/clock, auditabort/panic/startupfail/join.
+Giữ5 DB quiescent/integrity/FK/schema1/active/audit đối chiếu; faultDB vẫn active1 đúng rollback và workerclosed, không recoveryclaim.
+Testpanic cố ý nằm trong rawlog, không client/server runtime crash. Harness build/pin/testbinary/source unchanged/PIDgone.
+Clippy r1 lỗi collapsible-if được sửa trước run nghiệm thu; logs giữ. Không native KR run mới cho backendlibrary này,
+binary build mới không tự thành native-certified; M3 native baseline/frozenbinary vẫn ở CP242.
+
+M5 vẫn thiếu idleTTL/per-account rate/authenticated multi-transport lease/nativeKRbridge; M6inventory/reward và M8restore/load
+riêng. [PLAN](PLAN.md#current-order) tiếp idleTTL/rate rồiM4, audit kếCP244. Internet thật chưa kiểm.

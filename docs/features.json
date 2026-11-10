@@ -440,7 +440,9 @@
           "docs/evidence/rust-service/README.md#cp234",
           "docs/evidence/rust-service/README.md#cp235",
           "docs/evidence/rust-service/README.md#cp236",
-          "docs/evidence/rust-service/accounts-backend.json"
+          "docs/evidence/rust-service/accounts-backend.json",
+          "docs/evidence/rust-service/README.md#cp243",
+          "docs/evidence/rust-service/account-worker.json"
         ]
       },
       "coverage": {
@@ -546,7 +548,8 @@
             "docs/PROTOCOL.md#eight-session-preview",
             "docs/PROTOCOL.md#rust-account-backend",
             "rust/crates/kr-service/src/accounts.rs",
-            "rust/crates/kr-service/src/bin/kr-admin.rs"
+            "rust/crates/kr-service/src/bin/kr-admin.rs",
+            "docs/PROTOCOL.md#rust-account-worker"
           ],
           "delivery": "via_pr"
         },
@@ -4625,7 +4628,9 @@
           "docs/evidence/rust-service/life-results.json",
           "docs/evidence/rust-service/return-cleanup.json",
           "docs/evidence/rust-service/README.md#cp242",
-          "docs/evidence/rust-service/m3-acceptance.json"
+          "docs/evidence/rust-service/m3-acceptance.json",
+          "docs/evidence/rust-service/README.md#cp243",
+          "docs/evidence/rust-service/account-worker.json"
         ]
       },
       "coverage": {
@@ -4909,7 +4914,8 @@
             "docs/PROTOCOL.md#rust-life-results",
             "rust/crates/kr-service/src/life.rs",
             "docs/PROTOCOL.md#rust-return-cleanup",
-            "docs/PROTOCOL.md#rust-m3-acceptance"
+            "docs/PROTOCOL.md#rust-m3-acceptance",
+            "docs/PROTOCOL.md#rust-account-worker"
           ]
         },
         "integration": {
@@ -5094,7 +5100,9 @@
           "docs/evidence/rust-service/life-results.json",
           "docs/evidence/rust-service/return-cleanup.json",
           "docs/evidence/rust-service/README.md#cp242",
-          "docs/evidence/rust-service/m3-acceptance.json"
+          "docs/evidence/rust-service/m3-acceptance.json",
+          "docs/evidence/rust-service/README.md#cp243",
+          "docs/evidence/rust-service/account-worker.json"
         ]
       },
       "coverage": {
@@ -5188,7 +5196,8 @@
             "docs/PROTOCOL.md#rust-life-results",
             "rust/crates/kr-service/src/life.rs",
             "docs/PROTOCOL.md#rust-return-cleanup",
-            "docs/PROTOCOL.md#rust-m3-acceptance"
+            "docs/PROTOCOL.md#rust-m3-acceptance",
+            "docs/PROTOCOL.md#rust-account-worker"
           ],
           "delivery": "via_pr"
         },

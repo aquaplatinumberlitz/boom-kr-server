@@ -314,3 +314,22 @@ M3 chốt bằng đọc acceptance và đối chiếu CP237–242, không từ e
 hai claimant negative thuộc kernel. Hai outcome đối nghịch CP240, activehostEOF CP241, không duplicate claim.
 M5backendCP236 đã có; tiếp worker/idleTTL/rate độc lập rồiM4 trong PLAN. AUD069qua240/next244; Python/8WIP giữ nguyên.
 Internet thật chưa kiểm.
+
+
+<a id="cp243"></a>
+## CP243 — bounded account worker/handoff/compensation; M5 partial
+
+[Contract](../../PROTOCOL.md#rust-account-worker), [metadata](account-worker.json), [API/run](../../../rust/README.md#account-worker-nội-bộ--cp243).
+CP242/PR313/merge da1b925; tái dùng CP236Store/schema1/Argon2/clock/audit. Không RE mới, không đổi diagnostic KR transports.
+`local/research/codex/rust-account-worker-acceptance-r1/` giữ preflight/source-testbinary frozen/processlog/5SQLiteDBs,
+verification.json/retained-db-review.json. Recipe `python3 tools/test_rust_account_worker.py --out <new-private-dir>`;
+5worker tests source-frozen/processgone và independent SQLite integrity/FK/schema/active/audit check.
+FaultDB active1 do compensation auditabort rollback, workerclosed/rootConflict; không tuyên bố thu hồi thành công.
+Unpolled successful oneshot vẫn phải claim, expiry/droppedcaller revoke exacttoken/audit, stalecleanup không hủy newergrant.
+Raw local/private có synthetic test credentials/DB; chỉ metadata/hash commit, không upload raw/token/PHC.
+
+49workspace tests/lockedbuild/fmt/clippy; logs `rust-account-worker-*-final.txt` và clippy-r3.txt.
+Clippy-r1 collapsible-if failure giữ, r2/r3pass trước acceptance. Testpanic được chủ động inject vào riêng workerthread,
+không là native client crash. BackendCLI/absoluteTTL CP236 giữ; chưa idleTTL/rate/KRauthlease/bridge/sessionresume/restore/load.
+Không chạy lại M3positive để tăngCP: baseline nativeCP242 vẫn pin riêng, binarybuildCP243 không tự chứng minh native compatibility.
+PLAN tiếp idleTTL/rate M5 rồiM4; audit kếCP244/không reset. Python8WIP giữ nguyên. Internet thật chưa kiểm.

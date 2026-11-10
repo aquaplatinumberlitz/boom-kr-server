@@ -1,6 +1,6 @@
+use super::TEST_SERIAL as SERIAL;
 use super::*;
-use std::sync::{Mutex, atomic::AtomicU64};
-static SERIAL: Mutex<()> = Mutex::new(());
+use std::sync::atomic::AtomicU64;
 static NEXT: AtomicU64 = AtomicU64::new(0);
 const PASSWORD: &[u8] = b"test-only-password-one";
 const OTHER: &[u8] = b"test-only-password-two";

@@ -29,6 +29,16 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP243: M5 có worker DB/hash với queue hữu hạn, chưa nối đăng nhập KR.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-account-worker), [raw/hash](docs/evidence/rust-service/README.md#cp243).
+Tái dùng backend CP236: SQLite/KDF trên thread riêng, cancel/expiry khi chờ, handoff login và thu hồi đúng token
+nếu caller không nhận. Lỗi audit thu hồi đóng worker/giữ rooterror; không giả cleanup đã thành công.
+5 ca worker/5 SQLite DB giữ lại, toàn workspace49 tests; chưa idleTTL/rate/native ownership bridge, M5 vẫn partial.
+M3 basic hai client đã nghiệm thu [CP242](docs/PROTOCOL.md#rust-m3-acceptance)/[PR313](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/313),
+merge `da1b925`. Tiếp idleTTL/rate M5 rồi M4 theo PLAN; audit kếCP244. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP242: M3 đạt phạm vi Battle basic hai client KR trên Rust/Wine/LAN giả lập.**
 [Acceptance thủ công](docs/PROTOCOL.md#rust-m3-acceptance), [raw/hash](docs/evidence/rust-service/README.md#cp242).
 Hai vòng nhặt lại ba item/reset, exact UDP cũ bị native key-drop rồi current movement apply; Start3/hold6s.
@@ -37,8 +47,6 @@ Hai vòng nhặt lại ba item/reset, exact UDP cũ bị native key-drop rồi c
 flush stall còn chưa rõ nguyên nhân. M5 backend đã có CP236; tiếp worker/idleTTL/rate độc lập trước M4.
 CP241 merge [PR312](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/312)/`08a9a0d`.
 Audit kếCP244. Internet thật chưa kiểm.
-
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP241: Rust đã đưa survivor về phòng sau host EOF khi bom đang chờ.**
 [Contract](docs/PROTOCOL.md#rust-return-cleanup), [raw/hash](docs/evidence/rust-service/README.md#cp241).

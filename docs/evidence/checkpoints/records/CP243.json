@@ -1,0 +1,268 @@
+{
+  "id": "CP243",
+  "previous": "CP242",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T06:31:19.031819+00:00",
+  "context_commit": "da1b925a9cf3fb392fd62a0125f94a0a1daf942a",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M5/KRE-074: backendaccountDBdoesnotwaitgameplay; provideboundedtypedDB-KDFworkerwithqueuecancellation/expiry/realresultacceptance/exacttokencompensation and joinedfailurecleanup, preservingKRdiagnosticpath.",
+  "scope": "TypedinternalWorker-Client-Pending/separatethread/queue1-64+oneexecuting/boundedinputs/login-authorize/resultclaim/compensationtransaction-audit/UTC-newersessionfences/faultclosed-joined;5realSQLitecases/49workspace tests;M5partial.",
+  "artifacts": [
+    {
+      "name": "RustaccountworkercompiledLinux-testbinary/nativeKRnotrun",
+      "sha256": "63099c4bd64f060840492a126eadef0c0bd679751321d40ab8057886db42a7c3"
+    },
+    {
+      "name": "Rustkr-servicebuilt-only-atCP243/nativebaselinekeptCP242",
+      "sha256": "ef96eccac556a9310dc0c6a3a4ec39788714a9d69c98eafb9e2cbdd1c961f663"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/account_worker.rs/Worker-open-shutdown/Client-try_login-authorize/Pending-wait/Handoff/deliver_login/run",
+    "rust/crates/kr-service/src/accounts.rs/release_undelivered/exacttoken-account-update+abandoned_login-audit+maxUTCwatermark",
+    "tools/test_rust_account_worker.py/5retainedSQLiteDBs/processlog/source-testbinarypins;5worker tests oncurrentthreadTokio/49workspace tests",
+    "CP242PR313merged/da1b925/M3scopedaccepted/CP236Store-schema1reuse/noRE/nativebridge;AUD069nextCP244"
+  ],
+  "findings": [
+    {
+      "summary": "Workeropen/schema-checksStoreononededicatedthread, typedcloneClientsharesbounded1–64queue+oneexecuting, no threadperjob/SQLiteKDFonTokio. Bounds before secretcopy, Zeroizing/noDebug, fullBusy/Closed; queueTTL checkedbeforeexecution/canceledqueuedjobskip;explicitshutdownclosesallclones/drains-joins/Dropcloseonly. No bootepochautomaticrevoke/singletonclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-worker",
+      "evidence": [
+        "RUST243-00078",
+        "RUST243-00069"
+      ],
+      "limits": "Designbackendonly/noKRsocket-bridge/nativeauth/idleTTL/rate/newnativebinarycertification. Queueexpiry-beforeexecution+handoffclaim,notrollbackinflightKDF/SQLite. Compensationauditfaultmayleaveactivesession/workerclosed/operatorrecovery. Explicitshutdownjoin/nohardOSlatency/multipleprocesssingletonclaim. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Loginresultcommit onlydeliveredwhenPending.waitclaimsmutexhandoff;oneshotsendOkaloneinsufficient. Unpolled/dropped/expiredhandoffreleasesexacttoken+abandoned_loginaudittransaction, notwholeaccount. Stalecleanupcannotrevokeanewersession/rollbackUTCwatermark. InflightDB-KDFnotforciblycancelled;queueTTLnotidleTTL/rate.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-worker",
+      "evidence": [
+        "RUST243-00078",
+        "RUST243-00080",
+        "RUST243-00059"
+      ],
+      "limits": "Designbackendonly/noKRsocket-bridge/nativeauth/idleTTL/rate/newnativebinarycertification. Queueexpiry-beforeexecution+handoffclaim,notrollbackinflightKDF/SQLite. Compensationauditfaultmayleaveactivesession/workerclosed/operatorrecovery. Explicitshutdownjoin/nohardOSlatency/multipleprocesssingletonclaim. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "RealSQLite/KDF5workercases+retained5quiescentDBs/integrity-FK-schema1/audit-activecounts. CurrentthreadTokioheartbeat whileworkerbarrierheld;boundedfull/input/cancel-queueexpiry/handoffexpiry-relogin/wrongplayer/stalecleanup-clock/auditabort-panic-openfailure-join.49workspace tests/fmt/clippy/lockedbuild. ExpectedfaultDBactive1transactionrollbackandworkerclosed/rootConflict;notcleanupsuccess.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-worker",
+      "evidence": [
+        "RUST243-00060",
+        "RUST243-00059",
+        "RUST243-00086"
+      ],
+      "limits": "Designbackendonly/noKRsocket-bridge/nativeauth/idleTTL/rate/newnativebinarycertification. Queueexpiry-beforeexecution+handoffclaim,notrollbackinflightKDF/SQLite. Compensationauditfaultmayleaveactivesession/workerclosed/operatorrecovery. Explicitshutdownjoin/nohardOSlatency/multipleprocesssingletonclaim. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Compensationorworkerpanicclosesadmission;shutdownjoinpreservesbackendrooterrorinsteadClosed masking. Failed compensation leavesactivesession untiloperatorrevoke/begin-instance; no nativeauth/serviceintegration/recoveryclaim. Clippyr1collapsible-if failure kept/fixedbeforeacceptance. M5partial/idleTTL-rate thenM4;M3nativeCP242reused/Python8WIPbyteexact/AUD069next244.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-worker",
+      "evidence": [
+        "RUST243-00065",
+        "RUST243-00062",
+        "RUST243-00068",
+        "RUST243-00073"
+      ],
+      "limits": "Designbackendonly/noKRsocket-bridge/nativeauth/idleTTL/rate/newnativebinarycertification. Queueexpiry-beforeexecution+handoffclaim,notrollbackinflightKDF/SQLite. Compensationauditfaultmayleaveactivesession/workerclosed/operatorrecovery. Explicitshutdownjoin/nohardOSlatency/multipleprocesssingletonclaim. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "49Rusttests/fmt/clippy/lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST243-00085",
+        "RUST243-00064",
+        "RUST243-00086",
+        "RUST243-00061"
+      ],
+      "limits": "44serviceincluding5worker+5wire;newrootbinarybuilt-only/notnativeKRcertified."
+    },
+    {
+      "check": "5dedicatedworkerrealSQLitecases/sourcefrozen/5retainedDBs/PIDgone",
+      "result": "pass",
+      "evidence": [
+        "RUST243-00060",
+        "RUST243-00059"
+      ],
+      "limits": "Designbackendonly/noKRsocket-bridge/nativeauth/idleTTL/rate/newnativebinarycertification. Queueexpiry-beforeexecution+handoffclaim,notrollbackinflightKDF/SQLite. Compensationauditfaultmayleaveactivesession/workerclosed/operatorrecovery. Explicitshutdownjoin/nohardOSlatency/multipleprocesssingletonclaim. Internet thật chưa kiểm."
+    },
+    {
+      "check": "Clippyinitialstylefailure",
+      "result": "fail",
+      "evidence": [
+        "RUST243-00062"
+      ],
+      "limits": "collapsible-if fixedbeforeacceptance;notruntimefailure."
+    },
+    {
+      "check": "NativeKRaccountbridge/idleTTL-rate/servingDBintegration/restore-load",
+      "result": "not_run",
+      "evidence": [
+        "RUST243-00068",
+        "RUST243-00070"
+      ],
+      "limits": "Notimplementedoracceptedbythisbackendworkercheckpoint;M5partial."
+    },
+    {
+      "check": "Manualbackendsubset/docs-catalog/issues/WIP",
+      "result": "pass",
+      "evidence": [
+        "RUST243-00065",
+        "RUST243-00003"
+      ],
+      "limits": "Reviewwaived/Codexselfcheck/no independentapproval/gateclosure;fullhistory/exactheadrequired."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP243-rust-account-worker.json",
+      "bytes": 24645,
+      "sha256": "e53011bbd5fbd2e2fe98a430b1145cd45b10e469e4ee030f76e686c2e58dd7e4",
+      "count": 89
+    }
+  ],
+  "delta": {
+    "added": [
+      "M5typedboundedStore-KDFworker/resultacceptance/exacttokencompensation/faultclosed-joined/5retainedDBcases."
+    ],
+    "corrected": [
+      "CurrentM5backendworkerlistedmissinginCP242:nowdeliveredlibrarysubset,serving/nativeintegrationstillmissing.",
+      "SuccessfuloneshotsendnotproofcalleracceptedGrant;handoffclaimbeforeexposeresult/compensateunacceptedcommit."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "Backend library only; login/authorize typed seam chưa nối vào KR socket/service startup, không native KR account authentication.",
+    "Không idleTTL/per-account rate/network API/authlease/transportownership; M5 vẫn partial.",
+    "Queue TTL chỉ trước execution và handoff TTL riêng dùng cùng config; không cancel/rollback KDF/SQLite đang chạy, không hard OS I/O/shutdown/SLO claim.",
+    "Drop owner chỉ đóng admission; shutdown explicit mới drain/join. Không auto begin-instance hay khóa độc quyền nhiều process; caller dùng UTC tin cậy.",
+    "Nếu compensation/audit lỗi: worker đóng, shutdown giữ lỗi; session transaction có thể vẫn active, cần operator revoke hoặc begin-instance. Không tự coi cleanup thành công.",
+    "Internet thật chưa kiểm; Wine/LAN/WAN scope owner giữ nguyên."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANM5idleTTL/perprincipalrate next independently;nativeownershipbridge/worker-KRintegration separate;thenM4four-eight. NextCP244mustperiodicaudit;no duplicateM3nativepositive/broadRE.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T06:31:19.031819+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualbackendworkeracceptance/selfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "docs/evidence/rust-service/account-worker.json",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    }
+  ]
+}

@@ -1,0 +1,360 @@
+use super::*;
+use crate::accounts::{Admin, TEST_SERIAL};
+use std::{
+    fs,
+    os::unix::fs::PermissionsExt,
+    sync::atomic::{AtomicU64, Ordering},
+};
+static NEXT: AtomicU64 = AtomicU64::new(0);
+const PASSWORD: &[u8] = b"worker-test-password";
+struct Temp(PathBuf, bool);
+impl Temp {
+    fn new() -> Self {
+        let retained = std::env::var_os("KR_ACCOUNT_WORKER_TEST_RAW").map(PathBuf::from);
+        let retain = retained.is_some();
+        let parent = retained.unwrap_or_else(std::env::temp_dir);
+        if retain {
+            let meta = fs::symlink_metadata(&parent).unwrap();
+            assert!(meta.is_dir() && meta.permissions().mode() & 0o077 == 0);
+        }
+        let current = std::thread::current();
+        let case = current
+            .name()
+            .unwrap_or("unnamed")
+            .rsplit("::")
+            .next()
+            .unwrap();
+        let p = parent.join(format!(
+            "kr-worker-{}-{}-{case}",
+            std::process::id(),
+            NEXT.fetch_add(1, Ordering::Relaxed)
+        ));
+        fs::create_dir(&p).unwrap();
+        fs::set_permissions(&p, fs::Permissions::from_mode(0o700)).unwrap();
+        let temp = Self(p, retain);
+        let mut store = Store::open(&temp.db()).unwrap();
+        store.begin_instance(&admin(), 100).unwrap();
+        store
+            .create_account(&admin(), "Alice", "Alice", PASSWORD, 100)
+            .unwrap();
+        temp
+    }
+    fn db(&self) -> PathBuf {
+        self.0.join("accounts.sqlite")
+    }
+    fn sql(&self) -> rusqlite::Connection {
+        rusqlite::Connection::open(self.db()).unwrap()
+    }
+    fn active(&self) -> i64 {
+        self.sql()
+            .query_row(
+                "SELECT count(*) FROM sessions WHERE revoked_at IS NULL",
+                [],
+                |r| r.get(0),
+            )
+            .unwrap()
+    }
+}
+impl Drop for Temp {
+    fn drop(&mut self) {
+        if !self.1 {
+            let _ = fs::remove_dir_all(&self.0);
+        }
+    }
+}
+fn admin() -> Admin<'static> {
+    Admin {
+        actor: "test-admin",
+        reason: "bounded account worker tests",
+    }
+}
+fn rt() -> tokio::runtime::Runtime {
+    tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+        .unwrap()
+}
+async fn pause(client: &Client) -> std::sync::mpsc::Sender<()> {
+    tokio::time::timeout(Duration::from_secs(3), async {
+        loop {
+            let (entered, ready) = oneshot::channel();
+            let (resume, rx) = std::sync::mpsc::channel();
+            match client.submit(Command::Pause {
+                entered,
+                resume: rx,
+            }) {
+                Ok(()) => {
+                    ready.await.unwrap();
+                    return resume;
+                }
+                Err(Error::Busy) => tokio::task::yield_now().await,
+                other => panic!("unexpected admission result: {other:?}"),
+            }
+        }
+    })
+    .await
+    .unwrap()
+}
+#[test]
+fn real_sqlite_login_authorize_and_blocked_worker_leave_tokio_responsive() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let worker = Worker::open(temp.db(), 4, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let client = worker.client();
+        let resume = pause(&client).await;
+        let pending = client.try_login("ALICE", PASSWORD, 60, 101).unwrap();
+        // This single-thread Tokio executor remains responsive while the account
+        // thread is held at a deterministic barrier and the real login is queued.
+        tokio::time::timeout(
+            Duration::from_secs(1),
+            tokio::time::sleep(Duration::from_millis(5)),
+        )
+        .await
+        .unwrap();
+        assert_eq!(temp.active(), 0);
+        resume.send(()).unwrap();
+        let grant = pending.wait().await.unwrap();
+        assert_eq!(grant.player.display_name, "Alice");
+        assert_eq!(
+            client
+                .try_authorize(&grant.token, grant.player.player_id, 102)
+                .unwrap()
+                .wait()
+                .await,
+            Ok(grant.player.clone())
+        );
+        assert_eq!(
+            client
+                .try_authorize(&grant.token, grant.player.player_id + 1, 102)
+                .unwrap()
+                .wait()
+                .await,
+            Err(Error::Backend(accounts::Error::InvalidSession))
+        );
+        assert!(matches!(
+            client
+                .try_login("alice", PASSWORD, 60, 103)
+                .unwrap()
+                .wait()
+                .await,
+            Err(Error::Backend(accounts::Error::ActiveSession))
+        ));
+        assert!(matches!(
+            client
+                .try_login("unknown", PASSWORD, 60, 103)
+                .unwrap()
+                .wait()
+                .await,
+            Err(Error::Backend(accounts::Error::InvalidCredentials))
+        ));
+        worker.shutdown().await.unwrap();
+        assert!(client.is_closed());
+        assert!(matches!(
+            client.try_login("alice", PASSWORD, 60, 104),
+            Err(Error::Closed)
+        ));
+        let mut store = Store::open(&temp.db()).unwrap();
+        assert_eq!(
+            store
+                .authorize(&grant.token, grant.player.player_id, 104)
+                .unwrap(),
+            grant.player
+        );
+        store
+            .revoke(&admin(), grant.player.account_id, 105)
+            .unwrap();
+        assert_eq!(
+            store.authorize(&grant.token, grant.player.player_id, 106),
+            Err(accounts::Error::InvalidSession)
+        );
+    });
+}
+#[test]
+fn admission_is_bounded_cancelled_and_queue_expired_work_never_issues_a_token() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        assert!(matches!(
+            Worker::open(temp.db(), 0, Duration::from_secs(1)).await,
+            Err(Error::InvalidInput)
+        ));
+        let worker = Worker::open(temp.db(), 1, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let client = worker.client();
+        let resume = pause(&client).await;
+        let cancelled = client.try_login("alice", PASSWORD, 60, 101).unwrap();
+        assert!(matches!(
+            client.try_login("alice", PASSWORD, 60, 101),
+            Err(Error::Busy)
+        ));
+        assert!(matches!(
+            client.try_login(&"a".repeat(10000), PASSWORD, 60, 101),
+            Err(Error::InvalidInput)
+        ));
+        drop(cancelled);
+        resume.send(()).unwrap();
+        let resume = pause(&client).await;
+        assert_eq!(temp.active(), 0);
+        let (reply, rx) = oneshot::channel();
+        let handoff = Handoff::new();
+        client
+            .submit(Command::Login {
+                login: "alice".into(),
+                password: Zeroizing::new(PASSWORD.to_vec()),
+                ttl: 60,
+                now: 101,
+                deadline: Instant::now() - Duration::from_secs(1),
+                reply,
+                handoff: handoff.clone(),
+                handoff_ttl: Duration::from_secs(1),
+            })
+            .unwrap();
+        resume.send(()).unwrap();
+        assert!(matches!(
+            Pending {
+                reply: Some(rx),
+                handoff: Some(handoff)
+            }
+            .wait()
+            .await,
+            Err(Error::QueueExpired)
+        ));
+        assert_eq!(temp.active(), 0);
+        let grant = client
+            .try_login("alice", PASSWORD, 60, 102)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        let authorized = client
+            .try_authorize(&grant.token, grant.player.player_id, 103)
+            .unwrap();
+        worker.shutdown().await.unwrap();
+        assert!(client.is_closed());
+        assert_eq!(authorized.wait().await, Ok(grant.player));
+    });
+}
+#[test]
+fn unconsumed_committed_result_is_revoked_atomically_without_revoking_a_newer_session() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    let mut store = Store::open(&temp.db()).unwrap();
+    let grant = store.login("alice", PASSWORD, 60, 101).unwrap();
+    let old = Grant {
+        player: grant.player.clone(),
+        token: Token::parse(grant.token.expose_secret()).unwrap(),
+        expires_at: grant.expires_at,
+    };
+    // oneshot.send succeeds, but the result has not been polled by its caller.
+    let (reply, rx) = oneshot::channel();
+    let handoff = Handoff::new();
+    deliver_login(&mut store, reply, Ok(grant), 101, &handoff, Duration::ZERO).unwrap();
+    assert_eq!(temp.active(), 0);
+    assert!(matches!(
+        rt().block_on(
+            Pending {
+                reply: Some(rx),
+                handoff: Some(handoff)
+            }
+            .wait()
+        ),
+        Err(Error::QueueExpired)
+    ));
+    let audit: i64 = temp
+        .sql()
+        .query_row(
+            "SELECT count(*) FROM admin_audit WHERE operation='abandoned_login'",
+            [],
+            |r| r.get(0),
+        )
+        .unwrap();
+    assert_eq!(audit, 1);
+    let current = store.login("alice", PASSWORD, 60, 102).unwrap();
+    store
+        .authorize(&current.token, current.player.player_id, 110)
+        .unwrap();
+    store.release_undelivered(&old, 101).unwrap();
+    assert_eq!(temp.active(), 1);
+    assert_eq!(
+        store.authorize(&current.token, current.player.player_id, 109),
+        Err(accounts::Error::ClockRollback)
+    );
+    assert!(
+        store
+            .authorize(&current.token, current.player.player_id, 111)
+            .is_ok()
+    );
+    let handoff = Handoff::new();
+    handoff.claim().unwrap();
+    assert!(handoff.accepted(Duration::ZERO).unwrap());
+    handoff.abandon();
+    assert!(handoff.accepted(Duration::ZERO).unwrap());
+}
+#[test]
+fn compensation_fault_and_panic_close_admission_and_shutdown_preserves_root_error() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let worker=Worker::open(temp.db(),2,Duration::from_secs(5)).await.unwrap();let client=worker.client();
+        temp.sql().execute_batch("CREATE TRIGGER fail_abandoned_audit BEFORE INSERT ON admin_audit WHEN NEW.operation='abandoned_login' BEGIN SELECT RAISE(ABORT,'injected audit failure'); END;").unwrap();
+        let pending=client.try_login("alice",PASSWORD,60,101).unwrap();
+        tokio::time::timeout(Duration::from_secs(5),async {while temp.active()==0{tokio::time::sleep(Duration::from_millis(5)).await;}}).await.unwrap();
+        drop(pending);
+        tokio::time::timeout(Duration::from_secs(3),async {while !client.is_closed(){tokio::task::yield_now().await;}}).await.unwrap();
+        assert_eq!(worker.shutdown().await,Err(Error::Backend(accounts::Error::Conflict)));
+        // Audit failure rolls back compensation; worker closes instead of claiming
+        // cleanup succeeded. Operator revoke/begin-instance recovery is required.
+        assert_eq!(temp.active(),1);
+        temp.sql().execute_batch("DROP TRIGGER fail_abandoned_audit;").unwrap();
+        let worker=Worker::open(temp.db(),1,Duration::from_secs(1)).await.unwrap();let client=worker.client();client.submit(Command::Panic).unwrap();
+        tokio::time::timeout(Duration::from_secs(3),async {while !client.is_closed(){tokio::task::yield_now().await;}}).await.unwrap();
+        assert_eq!(worker.shutdown().await,Err(Error::WorkerFault));
+        let path=temp.0.join("missing-parent/db");assert!(matches!(Worker::open(path,1,Duration::from_secs(1)).await,Err(Error::Backend(accounts::Error::Storage))));
+    });
+}
+
+#[test]
+fn unpolled_handoff_expires_on_real_worker_and_account_can_login_again() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let worker = Worker::open(temp.db(), 2, Duration::from_secs(1))
+            .await
+            .unwrap();
+        let client = worker.client();
+        let pending = client.try_login("alice", PASSWORD, 60, 101).unwrap();
+        tokio::time::timeout(Duration::from_secs(10), async {
+            // The job is committed and waiting for result acceptance. Do not poll
+            // Pending: a successful oneshot send must not count as acceptance.
+            while temp.active() == 0 {
+                tokio::time::sleep(Duration::from_millis(5)).await;
+            }
+            while temp.active() != 0 {
+                tokio::time::sleep(Duration::from_millis(5)).await;
+            }
+        })
+        .await
+        .unwrap();
+        assert!(matches!(pending.wait().await, Err(Error::QueueExpired)));
+        let next = client
+            .try_login("alice", PASSWORD, 60, 102)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        assert_eq!(temp.active(), 1);
+        assert_eq!(
+            client
+                .try_authorize(&next.token, next.player.player_id, 103)
+                .unwrap()
+                .wait()
+                .await,
+            Ok(next.player)
+        );
+        worker.shutdown().await.unwrap();
+    });
+}

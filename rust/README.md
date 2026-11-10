@@ -234,3 +234,15 @@ Hai epoch ba item/effect/reset, exact oldUDP native key-drop rồi current-posit
 44tests/51TCP; logger giữ sink rooterror, flush stall vẫn unknown/deadline unchanged. CP237–241 giữ native
 movement/oppositeoutcomes/hostEOF. Không fullgame/auth/production; accountDB CP236 có, worker/idleTTL/rate/nativebridge còn riêng.
 [PLAN](../docs/PLAN.md#current-order) giữ thứ tự; Internet thật chưa kiểm.
+
+
+## Account worker nội bộ — CP243
+
+`account_worker::Worker::open(db, capacity, queue_ttl).await` → `client()` →
+`client.try_login(name, password, ttl, trusted_utc)?.wait().await`; authorize tương tự với token/ownplayer.
+Typed seam, chưa KR socket/API. Gọi `shutdown().await` để đóng admission mọi clone/drain/join; Drop không là joined cleanup.
+Queue1–64+one executing, queue/handoff expiry; `Pending::wait` phải claim result trước handoff deadline.
+Result bỏ sau commit chỉ revoke token đó/audit; audit lỗi đóng worker/session có thể active, cần operator recovery.
+[Contract/limits](../docs/PROTOCOL.md#rust-account-worker), [raw/hash](../docs/evidence/rust-service/README.md#cp243).
+Kiểm với `python3 tools/test_rust_account_worker.py --out local/<new-private-dir>`:5worker cases/5retainedSQLiteDBs,
+source/testbinary pinned/PIDgone. Đây là backenddesign, không nativeKRbridge/idleTTL/rate/fullM5.

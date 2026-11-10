@@ -19,6 +19,8 @@ const MIGRATION: &str = include_str!("../migrations/0001_accounts.sql");
 const APPLICATION_ID: i32 = 0x4b524143;
 const TTL_MAX: i64 = 86_400;
 static HASH_WORK: AtomicUsize = AtomicUsize::new(0);
+#[cfg(test)]
+pub(crate) static TEST_SERIAL: std::sync::Mutex<()> = std::sync::Mutex::new(());
 
 /// Redacted errors: SQL/PHC/token/password values never become user diagnostics.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -474,6 +476,41 @@ impl Store {
             let account: Option<i64> = tx.query_row("SELECT a.id FROM sessions s JOIN accounts a ON a.id=s.account_id JOIN runtime_state r ON r.id=1 JOIN players p ON p.account_id=a.id WHERE s.token_hash=?1 AND p.id=?2 AND s.revoked_at IS NULL AND s.expires_at>?3 AND s.issued_at<=?3 AND s.boot_epoch=r.epoch AND s.credential_version=a.credential_version AND a.disabled=0", params![digest,expected_player,now], |r| r.get(0)).optional()?;
             Self::player(tx,account.ok_or(Error::InvalidSession)?)
         })
+    }
+    /// Worker-only compensation for a committed login result never accepted by
+    /// its caller. Revoke only that token, never a newer session of the account.
+    pub(crate) fn release_undelivered(&mut self, grant: &Grant, now: i64) -> Result<()> {
+        if now < 0 {
+            return Err(Error::ClockRollback);
+        }
+        let request = hex(&self.random::<32>()?);
+        let digest = grant.token.digest();
+        let tx = self
+            .db
+            .transaction_with_behavior(TransactionBehavior::Immediate)?;
+        let last: i64 = tx.query_row("SELECT last_utc FROM runtime_state WHERE id=1", [], |r| {
+            r.get(0)
+        })?;
+        // Another DB connection may have observed a later UTC during KDF/result
+        // handoff. Compensation must not turn the durable watermark backwards.
+        let now = now.max(last);
+        Self::clock(&tx, now)?;
+        let changed = tx.execute("UPDATE sessions SET revoked_at=?1 WHERE token_hash=?2 AND account_id=?3 AND revoked_at IS NULL", params![now,digest,grant.player.account_id])?;
+        if changed != 0 {
+            Self::audit(
+                &tx,
+                &request,
+                &Admin {
+                    actor: "account-worker",
+                    reason: "login result not accepted by caller",
+                },
+                "abandoned_login",
+                Some(grant.player.account_id),
+                now,
+            )?;
+        }
+        tx.commit()?;
+        Ok(())
     }
     /// Administrative revocation; not a client logout wire/API claim.
     pub fn revoke(&mut self, admin: &Admin<'_>, account: i64, now: i64) -> Result<()> {

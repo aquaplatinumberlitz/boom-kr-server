@@ -1,6 +1,7 @@
 //! Bounded diagnostic KR00967 transport; local account backend has no native adapter.
 #![forbid(unsafe_code)]
 
+pub mod account_worker;
 pub mod accounts;
 pub mod binding;
 mod bombs;
