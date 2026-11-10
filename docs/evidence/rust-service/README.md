@@ -228,3 +228,21 @@ R2floor165nativepositive nhưngB123/10closesB/onephase; R3boundedopaque123policy
 instrumentedrepeatpass khôngrootcausefix. Hai failedunit-test logs giữ để truytestfixture sửa endian/teardown;
 không gán là lỗi runtimeparser. REApacketprovider chưa có, stdlibPCAPjoins không là REAEvidence; copiedKRmodO/native
 Unicorn/helperbytes có provenance riêng. Không nativeaccountauth/bom/result-reset/fullM3. Audit kếCP240; Internet thật chưa kiểm.
+
+
+<a id="cp238"></a>
+## CP238 — Rusthaiownerbom/serial-ID/deadlinefences
+
+[Contract](../../PROTOCOL.md#rust-bombs), [metadata](bombs.json), [code/run](../../../rust/README.md).
+BaselineCP237/PR308/70f00d0. `local/research/codex/rust-bombs-native-r1`, `-r2`, `-r3` giữ44/50/48raw,
+preflight/inputretention/frozenbinary/recipe/rawseal/cleanup0. R1Apositive/16732closes;R2bothpositive/1674closesA,
+Akeyhold~39s-controllerblocking giữtimestamplimits;R3nosnapshotwhilekeyheld/haiowner/6sholdpass.
+Preflight135argumentrejection giữ riêng/trước actualruntime, recipe120s mới. `bomb-verification.json` rootR3 giữ
+TCP419/66reply/allC2S/native118→159/entity→158/lookupID1-2kind0cleanup, source/actualtimings/limits;
+UIreview riêng. Binary `71986ec657eeb23b13589aba3f2d1661b3e6390caf5eecd16b14193d16cea661` native-tested.
+
+`rust-bombs-r3-tests.txt`/fmt/clippy/build, `rust-bombs-kernel-r4/room/verification.json` giữ32Rusttests/40TCPcases.
+Kernelr2 launchedbeforependingbuildcompletion/old167reject/finalhashambiguous; failedresultgiữ, r3-r4pintrướcPopen/
+unchangedcheck/awaitbuildpass. No OSdiskfull/auth/gateclaim từkernelmodel. No newbinaryfunctionRE; provenanceknown
+Pythonpolicy/wire andKRreadonlycallbacksites. 167unknownopaque;142noreveal;M3terrain/life/result-reset kế tiếp.
+Python/8WIP/accountDBgiữ;AUD068qua236/kế240. Internet thật chưa kiểm.

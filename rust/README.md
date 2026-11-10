@@ -170,3 +170,20 @@ python3 tools/test_rust_room.py --binary rust/target/debug/kr-service --config l
 22kernelTCPcases/30Rusttests là policyregression, tách nativeWineproof và copiedgetter/CRC checks.
 Native recipe giữ source/binary/config frozen tới seal; không dùng syntheticinputs làm oracle. Shutdown timeout
 cũ/CP237kernelrepeat vẫn chưa rõ rootcause, PID/thread/wchan được ghi khi tái hiện; không tăng deadline để pass.
+
+
+## Haiownerbom/allocator — CP238
+
+[Contract/giới hạn](../docs/PROTOCOL.md#rust-bombs), [raw/hash](../docs/evidence/rust-service/README.md#cp238).
+Known11822byte/currentkey-boundowner/serial/cellbounds/capacityA1B2→15939/ID,6s→15813/kind0;
+ticketroomscope-round-allocation-owner-recipient giữ xuyênqueue, EOF/roundchangefence/noIDreusequaStart.
+Nativehaiowner/entitylookup/kind0/cleanup chỉscopehẹp, chưaterrain/hiddenreveal/life/result-reset/fullM3.
+167/body4hoặc32 opaqueobservebudget64/currentArmedmember/noresponse/semanticsunknown;142knownshape chỉghi
+rejectionnoreveal đến khi portterrain. KhôngplaceholderACK hoặcnormal-successcho unknownwire.
+
+```bash
+python3 tools/test_rust_room.py --binary rust/target/debug/kr-service --config local/native-fixed-room.json --out local/new-bomb-policy-check --pickup-checks --bomb-checks
+```
+
+40kernelTCPcases+32Rusttests tách nativeproof; toolpinhashbinarytrướcPopen vàso lạisau cleanup.
+Đợibuildxong trướclaunch; freeze tấtcảinput/source/config/binary trongrun, khôngthaylivebinary.

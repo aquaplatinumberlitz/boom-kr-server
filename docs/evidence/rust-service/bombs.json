@@ -1,0 +1,226 @@
+{
+  "schema": "kre-rust-bombs-v1",
+  "checkpoint": "CP238",
+  "baseline_commit": "70f00d075380a20c5bb96cdd75f6c1bac8cc7a69",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "contract": "docs/PROTOCOL.md#rust-bombs",
+  "plan": "docs/PLAN.md#current-order",
+  "binary_sha256": "71986ec657eeb23b13589aba3f2d1661b3e6390caf5eecd16b14193d16cea661",
+  "run_sha256": "20b2d38a31510b7d1c6d07256042fe3e120f4681be5fb7ac7eb72f28340bbe98",
+  "raw_count": 48,
+  "duration_s": 85.233042032,
+  "TCP": {
+    "records": 419,
+    "replies": 66
+  },
+  "actual118": [
+    {
+      "identity": 1,
+      "sequence": 199,
+      "fields": [
+        12346,
+        0,
+        0,
+        0,
+        3,
+        3,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "frame_sha256": "fb577da9f1cc72300a10aa17ae8b93822d4c537128d7c7f1108187cbd83c5ef3"
+    },
+    {
+      "identity": 2,
+      "sequence": 154,
+      "fields": [
+        12346,
+        0,
+        1,
+        1,
+        9,
+        3,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "frame_sha256": "d1076d1640414282f9fb7be5ebc8eebc87de8b7284553f7358a0196fe2ce44f2"
+    }
+  ],
+  "wire159158": {
+    "1": {
+      "spawn": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          3,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          9,
+          3,
+          1,
+          1,
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "blast": [
+        [
+          1,
+          1,
+          0,
+          2,
+          4294967295,
+          255
+        ],
+        [
+          1,
+          2,
+          0,
+          2,
+          4294967295,
+          255
+        ]
+      ]
+    },
+    "2": {
+      "spawn": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          3,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          9,
+          3,
+          1,
+          1,
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "blast": [
+        [
+          1,
+          1,
+          0,
+          2,
+          4294967295,
+          255
+        ],
+        [
+          1,
+          2,
+          0,
+          2,
+          4294967295,
+          255
+        ]
+      ]
+    }
+  },
+  "native": "EachactualownerA/B118→bothview159full39/error0/distinctnonzeroentity→6s158full13/error0/lookupID1-2sameentity/kind0/cleanup;bothhealthyhold6s/FINaftercompletion.",
+  "design": "Knownbasic118variant/currentArmed-boundowner/key;serialscope(member,round)/duplicate-conflict/capacityA1-B2/occupiedpendingcell;monotonicwireIDnoreset1..65535/exhaustfail;Arcroomscope+round+allocation+owner+recipientticket. Clonecandidate/reserveallspawn+deadlinequeuesbeforepublishingID-serial-reservations. Fuse6deadlineperrecipient;once-writecompletionperrecipient/releasecapacityafterbothTCPwrites, notnativeACK/chainrelease/durableexactlyonce.",
+  "opaque": {
+    "source": "emu_choice",
+    "status": "design",
+    "observed": "Native167/body32thenbody4;meaningunknown",
+    "policy": "CurrentArmedboundmemberonly/samefinite64perround/exact4or32/noACK-effect-forward, parallel123budgetseparate. Pythonreferenceunknowncase noresponse. 142knownshape observed/nohiddeneligible untilterrainported."
+  },
+  "tests": {
+    "rust": 32,
+    "kernel_TCP": 40,
+    "report": "local/research/codex/rust-bombs-kernel-r4/room/verification.json",
+    "allocator": "Duplicate/conflictingserial/key-owner/cell-power/capacity/foreignroomscope/oldround-reusedmembership/IDexhaustionbycheckedconversion;candidatequeuefullrollbackall4entries/receipt-one-shot/EOFfence."
+  },
+  "failures": [
+    {
+      "run": "rust-bombs-native-r1",
+      "raw": 44,
+      "finding": "Aownernativebombpositive, unknown167/32closesboth;overallfail/cleanup0"
+    },
+    {
+      "run": "rust-bombs-native-r2",
+      "raw": 50,
+      "finding": "Bothownerbombspositivebutshort167/4closesAinhold;controllerAkeydown~39sprolongedbysnapshots/sourceobservednotnominal600ms;overallfail/cleanup0"
+    },
+    {
+      "path": "local/research/codex/rust-bombs-native-r1/preflight-rejected-135s/review.json",
+      "finding": "135sargumentrejectedbeforeactualrun;new120srecipe/pinsbeforefirstactualruntime"
+    },
+    {
+      "path": "local/research/codex/rust-bombs-kernel-r2/room/failure-review.json",
+      "finding": "KernelPopenracedpendingbuild;old167rejection/pinhashatfinallyambiguous. Preservedfailedtest;finalr3-r4passedafterawaitbuild/newprePopenpin+unchangedcheck."
+    }
+  ],
+  "limits": [
+    "Oneepoch/2ownerbasicbombs/ordinaryOSinput; no terrainworldvalidation/hiddenreveal/life/result-reset/2outcomes/fullM3/accountbridge/production.",
+    "142knownlayoutreportsdeniedreveal, no blanketeligibility. Opaque167meaningunknown/shape-onlypolicy, not recoveredoriginalserverresponse.",
+    "CapacityA1/B2 andmaxpower2 sameboundedprofiledesign; nativeglobalstats/collision/distance/allmaps/generalchainauthority unproven; no immediatecapacityreleaseonchain.",
+    "Timersqueuefencedbeforestartwrite;physicalTCPpartialwrite cannotrollback. PeerUDP remainsdirect, servercannotfenceallalready-sentoldtraffic.",
+    "CP237kernelshutdownanomalyrootcauseunknown;40casepassesnotfix. R2held-keyactualtimestamps retained, no causalclaimorprecise600ms input.",
+    "Internet thật chưa kiểm.",
+    "FinalUI A trapped/HELP, Bstanding; no healthyactor/life170/result policy claim despite channelsremainingopen."
+  ],
+  "next": "PLANterrainkernel/reveal142/currentclearedcell/committed158proof thenhidden124165;life/result175/return180/reset/twooutcomes. Donotrepeatacceptedmovement/basicbombjustforCP;M5backendindependent/bridgepartial.",
+  "review": "Codexselfcheck/independentreviewwaivednotapproved;AUD068through236/nextCP240;exactheadchecksrequired"
+}

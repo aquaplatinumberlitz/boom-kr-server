@@ -8566,3 +8566,48 @@ và opaque123budget; synthetic negatives không là nativeattacks. Một kernels
 PID đã mất ở lần nhìn sau; giữ failure/instrumentstatus-thread-wchan, repeat22cases đạt **không là rootcausefix**.
 M3 chưa bom/terrain/reveal/life/result-reset/twooutcomes/kim-cứu/capacity4-8; M5 chưa KRaccountbridge.
 Python giữ serving/RE/reference, không hot-swap backend giữa run. Internet thật chưa kiểm.
+
+
+<a id="rust-bombs"></a>
+## Rust hai owner bom và deadline ticket — CP238 / RUST-M3 partial
+
+[Codeallocator](../rust/crates/kr-service/src/bombs.rs), [queueadapter](../rust/crates/kr-service/src/room_io.rs),
+[metadata/raw](evidence/rust-service/bombs.json), [recipe](evidence/rust-service/README.md#cp238).
+Reuse CP024/028/037/044/171/174/188–189/PythonProbeRoom-RoundFence-ProbeService; CP237nativecopy/room/barrier.
+Không RE nativefunction mới, không import VNopcode hoặcengineRustcũ. Wire11822/15939/15813 chỉvariant basicđãđo.
+
+Policy`design`: currentArmed/socket-boundowner/153key; knownbasic118variant/rawshape, row0..12/col0..14/power1..2.
+Khôngworldterrainvalidation ở lát cắt này; currentnativeclient là nguồn positive cell/input, syntheticoutsidebounds reject.
+Serial `(membership,round,serial)` giữ digestfields: duplicate/conflict không cấp ID, không xóa serial sau nổ.
+ID toànroom tăng1..65535/khôngresetquaStart/exhaustfail, allocationcounter riêng/checked; pendingcapacityA1/B2,
+occupiedpendingcell guard. Capacitychưa chainrelease hoặcstatsmọichar; không lấy survivorreport làm authority.
+
+Modelclone chuẩn bị ticket/ID/serial/reservation, reserve **cả spawn và deadline queue của cảhai** trước publish.
+Mỗi delayedbatch giữ originalArcroomscope/round/allocation/ID/ownermembership/recipient; không lookup ID rồi lấyticketmới.
+Recipient+subject+round kiểm trướcwrite; writecompleted mới consume **recipient receipt** mộtlần. Capacity chỉrelease
+sauhaiTCPwrites158thànhcông, không là nativeexecutionACK/durableexactlyonce. EOF/leave/newround clearactive ledger;
+partialwrite khôngrollbackbytes, đóng đúngtransport/vôhiệu membership/round. Nổ sau6s là policy thamchiếuPython,
+không khẳng định fusegốc; queue/time/readiness deadlines giữbound. Nohot-swapbackend giữa run.
+
+`kr_runtime/confirmed` hẹp R3: actualA118 rồiactualB118/đúngslot-serial-currentkey12346 → mỗi15939/39/errors0,
+entitynonzero khác nhau;15813/13/errors0 lookupID1/2 **cùngentity159** trên từng view, kind0 rồicleanup.
+Haiowner/same2process-channel/oneepoch/6shold sau cảhai, FINsaucompletion. FinalUI A bịtrap/HELP,Bstanding;
+đây không là healthyactor/life-forward/rescue/death/resultacceptance, chỉbombconsumer+channelhold. WirePCAPalltuples/S2Cseq-SHA/C2Sjoins
+vànativecallbacks tách serverlogs. ControllerOSSpace/escapeordinary, không gamecall/statepatch/clientpatch mới.
+Snapshotkhi đanggiữphím ởR2 gây inputDown~39s; rawtimestampsgiữ, không nhận600msnhư dựkiến. R3bỏsnapgiữaphím,
+luôn báo actualtiming; không suy causality từ sceneinput hoặc nhận đầy đủlife/gameplay.
+
+R1nativebomApositive/44rawnhưng167/body32unsupportedclosesboth. R2haiownerbompositive/50rawnhưng167/body4
+shortvariantclosesA tronghold; cảhaioverallfail/frozen-seal-cleanup0. **167semantics unknown**, Rustchọn
+`emu_choice/design` currentArmedboundmember/exact4or32/budget64/member-round/noACK-effect-forward; Pythonunknowncase
+noresponse chỉreferencepolicy, không recoveredserverbehavior. Không nhétbody4vào32/hayignoremọiunknownopcode.
+1427byte knownlayout được ghi observedrejection, chưaterrain thì **khôngrevealhidden/khônggrant165hidden**.
+
+32Rusttests/40kernelTCPcases kiểm malformed-knownvariant/key-owner/cell-power/duplicate-conflict/capacity/ID/tickets/
+foreignroom/oldround-reusedmembership/tworeceiptonce/queuefailureall4entriesrollback/noID-serialreservation/EOFpending158.
+Kerneltestlaunch từngracependingbuild rồireject167: giữfail/hash-atfinallyambiguous; sửa awaitbuildthực+hashtrướcPopen/
+unchangedcheck,40casespass đúngfinalbinary. Syntheticnegatives không nativeattackproof. CP237shutdownrootcauseunknown
+vẫn giữ, passingrepeatkhôngfixclaim. Preflight135sargreject trướcnamespace/clientrun cũnggiữ, dùng120srecipe mới.
+
+M3 cònterrain/reveal/chain/life/result-reset/twooutcomes/kim-cứu/capacity4-8/accountbridge; khôngoriginalserverauthority/
+fullservice/production. Pythongiữ reference/serving, [PLAN](PLAN.md#current-order) giữ thứ tự. Internet thật chưa kiểm.
