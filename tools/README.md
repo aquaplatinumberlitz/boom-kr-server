@@ -241,3 +241,8 @@ UnbalancedManner104 bịreject trướcroundallocation. Đây là codeWIP đã c
 planningPR không chứa code này. Layout là operatorpreset, chưa interactiveC2Steamchange.
 Gói `eight-client-battle` vẫn khóa4v4/Free và từ chối override hai flags; không phát hành client/guardcopy.
 [Nativecases/giới hạn](../docs/PROTOCOL.md#eight-team-variants); thứtự/negativepending chỉ ởPLAN.
+
+
+`test_rust_account_worker.py --out local/<new-private-dir>`: build locked Rust testbinary, giữ source/testbinary,
+chạy5 boundedworker cases trên realSQLite/KDF/current-threadTokio, giữ5 DB và kiểm integrity/FK/schema/audit/active.
+Chỉ backend design; expected fault/panic trong test log, không KR/client/native account acceptance.
