@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP234",
+  "as_of": "CP235",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -437,7 +437,8 @@
           "docs/evidence/login-runtime/README.md#cp225",
           "docs/evidence/rust-service/README.md#cp232",
           "docs/evidence/rust-service/README.md#cp233",
-          "docs/evidence/rust-service/README.md#cp234"
+          "docs/evidence/rust-service/README.md#cp234",
+          "docs/evidence/rust-service/README.md#cp235"
         ]
       },
       "coverage": {
@@ -511,7 +512,8 @@
               "docs/PROTOCOL.md#auth-fresh-process",
               "docs/PROTOCOL.md#rust-local-lobby",
               "docs/PROTOCOL.md#rust-two-lobby",
-              "docs/PROTOCOL.md#rust-fixed-room"
+              "docs/PROTOCOL.md#rust-fixed-room",
+              "docs/PROTOCOL.md#rust-m2-acceptance"
             ]
           },
           "windows_original": {
@@ -593,7 +595,8 @@
           "docs/PROTOCOL.md#four-session-native",
           "docs/evidence/rust-service/README.md#cp232",
           "docs/evidence/rust-service/README.md#cp233",
-          "docs/evidence/rust-service/README.md#cp234"
+          "docs/evidence/rust-service/README.md#cp234",
+          "docs/evidence/rust-service/README.md#cp235"
         ]
       },
       "coverage": {
@@ -638,7 +641,8 @@
               "docs/PROTOCOL.md#four-session-native",
               "docs/PROTOCOL.md#rust-local-lobby",
               "docs/PROTOCOL.md#rust-two-lobby",
-              "docs/PROTOCOL.md#rust-fixed-room"
+              "docs/PROTOCOL.md#rust-fixed-room",
+              "docs/PROTOCOL.md#rust-m2-acceptance"
             ]
           },
           "windows_original": {
@@ -826,7 +830,8 @@
           "docs/evidence/room-list/README.md#cp228",
           "docs/evidence/room-list/README.md#cp229",
           "docs/evidence/room-list/README.md#cp230",
-          "docs/evidence/rust-service/README.md#cp234"
+          "docs/evidence/rust-service/README.md#cp234",
+          "docs/evidence/rust-service/README.md#cp235"
         ]
       },
       "coverage": {
@@ -882,7 +887,8 @@
               "docs/PROTOCOL.md#room-local-roster",
               "docs/PROTOCOL.md#room-membership-registry",
               "docs/PROTOCOL.md#room-shared-cleanup",
-              "docs/PROTOCOL.md#rust-fixed-room"
+              "docs/PROTOCOL.md#rust-fixed-room",
+              "docs/PROTOCOL.md#rust-m2-acceptance"
             ]
           },
           "windows_original": {
@@ -972,7 +978,8 @@
           "docs/PROTOCOL.md#eight-portable-battle",
           "docs/PROTOCOL.md#eight-team-variants",
           "docs/evidence/eight-player/README.md#cp213",
-          "docs/evidence/rust-service/README.md#cp234"
+          "docs/evidence/rust-service/README.md#cp234",
+          "docs/evidence/rust-service/README.md#cp235"
         ]
       },
       "coverage": {
@@ -1024,7 +1031,8 @@
               "docs/PROTOCOL.md#eight-two-team-cycles",
               "docs/PROTOCOL.md#eight-portable-battle",
               "docs/PROTOCOL.md#eight-team-variants",
-              "docs/PROTOCOL.md#rust-fixed-room"
+              "docs/PROTOCOL.md#rust-fixed-room",
+              "docs/PROTOCOL.md#rust-m2-acceptance"
             ]
           },
           "windows_original": {
@@ -1284,7 +1292,8 @@
           "docs/evidence/peer-endpoints/README.md#cp176",
           "docs/evidence/room-list/README.md#cp229",
           "docs/evidence/room-list/README.md#cp230",
-          "docs/evidence/rust-service/README.md#cp234"
+          "docs/evidence/rust-service/README.md#cp234",
+          "docs/evidence/rust-service/README.md#cp235"
         ]
       },
       "coverage": {
@@ -1352,7 +1361,8 @@
               "docs/PROTOCOL.md#current-291-room-integration",
               "docs/PROTOCOL.md#room-membership-registry",
               "docs/PROTOCOL.md#room-shared-cleanup",
-              "docs/PROTOCOL.md#rust-fixed-room"
+              "docs/PROTOCOL.md#rust-fixed-room",
+              "docs/PROTOCOL.md#rust-m2-acceptance"
             ]
           },
           "windows_original": {
@@ -1472,7 +1482,8 @@
           "docs/PROTOCOL.md#four-slot-native-consumers",
           "docs/PROTOCOL.md#four-session-native",
           "docs/PROTOCOL.md#eight-two-team-cycles",
-          "docs/evidence/rust-service/README.md#cp234"
+          "docs/evidence/rust-service/README.md#cp234",
+          "docs/evidence/rust-service/README.md#cp235"
         ]
       },
       "coverage": {
@@ -1519,7 +1530,8 @@
               "docs/PROTOCOL.md#four-slot-native-consumers",
               "docs/PROTOCOL.md#four-session-native",
               "docs/PROTOCOL.md#eight-two-team-cycles",
-              "docs/PROTOCOL.md#rust-fixed-room"
+              "docs/PROTOCOL.md#rust-fixed-room",
+              "docs/PROTOCOL.md#rust-m2-acceptance"
             ]
           },
           "windows_original": {
@@ -1630,7 +1642,8 @@
           "docs/PROTOCOL.md#eight-mesh-owner-bombs",
           "docs/PROTOCOL.md#eight-team-variants",
           "docs/evidence/eight-player/README.md#cp213",
-          "docs/evidence/rust-service/README.md#cp234"
+          "docs/evidence/rust-service/README.md#cp234",
+          "docs/evidence/rust-service/README.md#cp235"
         ]
       },
       "coverage": {
@@ -1697,7 +1710,8 @@
               "docs/PROTOCOL.md#four-session-native",
               "docs/PROTOCOL.md#eight-mesh-owner-bombs",
               "docs/PROTOCOL.md#eight-team-variants",
-              "docs/PROTOCOL.md#rust-fixed-room"
+              "docs/PROTOCOL.md#rust-fixed-room",
+              "docs/PROTOCOL.md#rust-m2-acceptance"
             ]
           },
           "windows_original": {

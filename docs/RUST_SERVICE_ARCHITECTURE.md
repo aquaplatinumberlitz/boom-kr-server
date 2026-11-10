@@ -67,7 +67,7 @@ Mức: S=KRstaticpartial; E=emulationchecked; N=native KR/Wine/copyđãkhai; T=s
 D=emulator/thiết kế backend; V=VNreference. Chúng không thay nhau. Presence/mức chi tiết ở [COVERAGE](COVERAGE.md).
 LAN/WAN netns theo [scope mạng](PROTOCOL.md#emulated-wan-acceptance), không nâng internetunknown.
 Sẵn sàng hẹp là port profile có giới hạn, không fullsubsystem. KRE-005b/#14 demo/RE, KRE-003/#3 codec rộng,
-KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma trận survey tạiCP213 giữ mốc nguồn, runtimeRust mới ở [contract](PROTOCOL.md#rust-fixed-room).
+KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma trận survey tạiCP213 giữ mốc nguồn, runtimeRust/M2 scoped ở [contract](PROTOCOL.md#rust-m2-acceptance).
 
 | Feature/KRE → nguồn chuẩn | Presence, bằng chứng; implementation / integration / merge / gate | Chuyển Rust và giới hạn | RE tối thiểu / nghiệm thu Rust |
 |---|---|---|---|

@@ -407,7 +407,7 @@ impl Session {
         }
         Ok(())
     }
-    pub fn packet(&self, opcode: u32, body: &[u8]) -> io::Result<()> {
+    pub fn packet(&self, opcode: u32, body: &[u8]) -> io::Result<bool> {
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
         if r.channels
             .get(&self.identity)
@@ -423,6 +423,7 @@ impl Session {
         let mut loaded_endpoint = None;
         let mut roster_pairs = Vec::new();
         let mut room_choice = None;
+        let mut dropped_after_abort = false;
         match opcode {
             528 => {
                 if !body.is_empty() {
@@ -659,76 +660,87 @@ impl Session {
                 if port == 0 {
                     return Err(err("loading UDP port zero"));
                 }
-                let Phase::Loading { round, .. } = next.phase else {
-                    return Err(err("no loading barrier"));
-                };
-                let complete = next.ack(m.key, round)?;
-                loaded_endpoint = Some((m.key, port));
-                if complete {
-                    let mut endpoints = [(0, 0); 2];
-                    for peer in next.members.values() {
-                        let p = if peer.key == m.key {
-                            port
-                        } else {
-                            *r.ports
-                                .get(&peer.key)
-                                .ok_or_else(|| err("missing current loading endpoint"))?
-                        };
-                        endpoints[usize::from(peer.slot)] = (r.ips[&peer.key.identity], p);
-                    }
-                    let key = 12345u32
-                        .checked_add(u32::try_from(round).map_err(|_| err("round key exhausted"))?)
-                        .ok_or_else(|| err("round key exhausted"))?;
-                    for peer in next.members.values() {
-                        effects.push((
-                            peer.key.identity,
-                            Runtime::member_batch(
-                                peer.key,
-                                Some(round),
-                                0,
-                                vec![("go197".into(), r.reply("go", None, None))],
-                            ),
-                        ));
-                        effects.push((
-                            peer.key.identity,
-                            Runtime::member_batch(
-                                peer.key,
-                                Some(round),
-                                1000,
-                                vec![("play196".into(), r.reply("play", None, None))],
-                            ),
-                        ));
-                        effects.push((
-                            peer.key.identity,
-                            Runtime::member_batch(
-                                peer.key,
-                                Some(round),
-                                2000,
-                                vec![(
-                                    "peer153".into(),
-                                    r.reply(
-                                        "peer",
-                                        None,
-                                        Some(room_wire::peer(
-                                            &r.packets["peer"].payload,
-                                            key,
-                                            peer.slot,
-                                            endpoints,
-                                        )?),
-                                    ),
-                                )],
-                            ),
-                        ));
+                if next.phase == Phase::Idle {
+                    next.observe_after_abort(m.key)?;
+                    dropped_after_abort = true;
+                } else {
+                    let Phase::Loading { round, .. } = next.phase else {
+                        return Err(err("no loading barrier"));
+                    };
+                    let complete = next.ack(m.key, round)?;
+                    loaded_endpoint = Some((m.key, port));
+                    if complete {
+                        let mut endpoints = [(0, 0); 2];
+                        for peer in next.members.values() {
+                            let p = if peer.key == m.key {
+                                port
+                            } else {
+                                *r.ports
+                                    .get(&peer.key)
+                                    .ok_or_else(|| err("missing current loading endpoint"))?
+                            };
+                            endpoints[usize::from(peer.slot)] = (r.ips[&peer.key.identity], p);
+                        }
+                        let key = 12345u32
+                            .checked_add(
+                                u32::try_from(round).map_err(|_| err("round key exhausted"))?,
+                            )
+                            .ok_or_else(|| err("round key exhausted"))?;
+                        for peer in next.members.values() {
+                            effects.push((
+                                peer.key.identity,
+                                Runtime::member_batch(
+                                    peer.key,
+                                    Some(round),
+                                    0,
+                                    vec![("go197".into(), r.reply("go", None, None))],
+                                ),
+                            ));
+                            effects.push((
+                                peer.key.identity,
+                                Runtime::member_batch(
+                                    peer.key,
+                                    Some(round),
+                                    1000,
+                                    vec![("play196".into(), r.reply("play", None, None))],
+                                ),
+                            ));
+                            effects.push((
+                                peer.key.identity,
+                                Runtime::member_batch(
+                                    peer.key,
+                                    Some(round),
+                                    2000,
+                                    vec![(
+                                        "peer153".into(),
+                                        r.reply(
+                                            "peer",
+                                            None,
+                                            Some(room_wire::peer(
+                                                &r.packets["peer"].payload,
+                                                key,
+                                                peer.slot,
+                                                endpoints,
+                                            )?),
+                                        ),
+                                    )],
+                                ),
+                            ));
+                        }
                     }
                 }
             }
             190 => {
-                r.member(self.identity, self.connection)?;
-                if !matches!(next.phase, Phase::Armed { .. }) || !body.is_empty() {
-                    return Err(err("known190 observation shape/stage"));
+                let m = r.member(self.identity, self.connection)?;
+                if !body.is_empty() {
+                    return Err(err("known190 observation shape"));
                 }
-                // CP021 captured ancillary, unanswered by Python reference.
-                // No semantic inference, reply or gameplay side effect.
+                if next.phase == Phase::Idle {
+                    next.observe_after_abort(m.key)?;
+                    dropped_after_abort = true;
+                } else if !matches!(next.phase, Phase::Armed { .. }) {
+                    return Err(err("known190 observation phase"));
+                }
             }
             96 | 266 => {
                 r.member(self.identity, self.connection)?;
@@ -739,11 +751,15 @@ impl Session {
                 // these shapes unanswered. No new authority/side effect.
             }
             127 => {
-                // M2 stops at loading/spawn: retain bounded observations without
-                // forwarding, acknowledging or granting gameplay effects.
-                r.member(self.identity, self.connection)?;
-                if !matches!(next.phase, Phase::Armed { .. }) || !(1..=4096).contains(&body.len()) {
-                    return Err(err("M2 report observation phase/size"));
+                let m = r.member(self.identity, self.connection)?;
+                if !(1..=4096).contains(&body.len()) {
+                    return Err(err("M2 report observation size"));
+                }
+                if next.phase == Phase::Idle {
+                    next.observe_after_abort(m.key)?;
+                    dropped_after_abort = true;
+                } else if !matches!(next.phase, Phase::Armed { .. }) {
+                    return Err(err("M2 report observation phase"));
                 }
             }
             _ => return Err(err("unsupported room request")),
@@ -778,7 +794,7 @@ impl Session {
         if let Some((key, port)) = loaded_endpoint {
             r.ports.insert(key, port);
         }
-        Ok(())
+        Ok(dropped_after_abort)
     }
 }
 impl Drop for Session {

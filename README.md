@@ -29,6 +29,18 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP235: M2 đạt trong phạm vi hai identity cục bộ, một phòng và loading trên Wine.**
+[Đối chiếu acceptance](docs/PROTOCOL.md#rust-m2-acceptance), [bằng chứng](docs/evidence/rust-service/README.md#cp235),
+[cách chạy](rust/README.md). Sau khi dừng riêng A, B giữ nguyên process/channel, native xóa ID của A,
+chín report muộn được drop và UI/clock tiếp tục 8,231 giây. PCAP345/56reply khớp; 44raw frozen/seal/cleanup0.
+15Rusttests,6guard trước bind,12shutdown race,8roomTCP,16binding và14M1 đạt. Guard version là policy hỗ trợ
+profile KR00967 trước bind; chưa đo UI lỗi version. Sprite A còn trên map sau EOF và timeoutshutdown cũ chưa rõ
+nguyên nhân được giữ thành giới hạn M3/M7; không nhận là fullBattle/accountauth/fullservice.
+CP234 đã merge [PR305](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/305)/`f15a2ba`.
+[PLAN](docs/PLAN.md#current-order) chuyển M3 Battle theo contract đã có; audit kế CP236. Python và WIP giữ nguyên.
+Internet thật chưa kiểm.
+
+
 **CP234: Rust đã đưa hai KR thật từ phòng qua Back/rejoin/Ready tới loading và spawn.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-fixed-room), [evidence](docs/evidence/rust-service/README.md#cp234),
 [code/run](rust/README.md): ownID1/slot0 và ID2/slot1, hostA Back→B nativeclearID1/chief→A rejoin/Ready→B Start;
