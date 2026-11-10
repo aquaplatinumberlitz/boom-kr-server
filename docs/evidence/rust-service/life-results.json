@@ -1,0 +1,59 @@
+{
+  "schema": "kre-rust-life-results-v1",
+  "checkpoint": "CP240",
+  "baseline_commit": "35bb05f2f85523702392effc05d78d88d6afe3ae",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "contract": "docs/PROTOCOL.md#rust-life-results",
+  "plan": "docs/PLAN.md#current-order",
+  "run_sha256": "657a48b88409763d3ac6931ecf5095bf11deb07999a15f1288a8365935827ca5",
+  "binary_sha256": "a4798db20fb0797d523226a70b0b51ee9b4c264db3f1aae1d6448e5dcd0cf229",
+  "raw_count": 66,
+  "duration_s": 201.904629376,
+  "TCP": {
+    "records": 745,
+    "replies": 108
+  },
+  "native": "Two opposite actual17-19→170/life1-other0before175/302-292rank2-1swapped/1803/reset110/Ready2Start3/clock6shold.Threeclockseed195/rolebaselines, no consumed-item reset proof.",
+  "policy": "Connection cursor survivesStart, currenttrap-death-history/oncepeer21, drainedsurvivor-result/settle8/all-deadseparate/reserveall6queues/return5-refresh3/fullrosterending;closed202-585boundedobservation. Absolute readidle deadline survives100mspoll.",
+  "tests": {
+    "rust": 40,
+    "kernel_TCP": 44,
+    "report": "local/research/codex/rust-life-kernel-r5/verification.json",
+    "copied_native_getters": 1266
+  },
+  "failed_runs": [
+    {
+      "run": "rust-life-native-r1",
+      "raw_files": 46,
+      "reason": "Missing observedopaque167body16"
+    },
+    {
+      "run": "rust-life-native-r2",
+      "raw_files": 46,
+      "reason": "Post175202notportedsoclosesbefore180"
+    },
+    {
+      "run": "rust-life-native-r3",
+      "raw_files": 48,
+      "reason": "Post180585duplicaterejectionbefore110refresh"
+    },
+    {
+      "run": "rust-life-native-r4",
+      "raw_files": 50,
+      "reason": "One normal result-room return, short postreturnReady click producedno95;restoredknownCP188focus-holdrecipeinR5"
+    }
+  ],
+  "limits": [
+    "Report-derived emulator policy, not authenticated world/life or original rank authority.",
+    "Native positive separate from synthetic stale/duplicate/all-dead/queue controls. No nativeall-dead/kim-rescue/fullM3accountbridge/fullservice/thirdoutcome.",
+    "Two current diagnostic identities onWine/privatevirtualLAN; Internet thật chưa kiểm.",
+    "M3partial;consumed-item reset/contest/exactoldUDP-currentpositive/dead-owner-queue/hostEOF scene return remain.",
+    "167/4,16,32 unknown semantics;123/10 unknown; no new world authority.",
+    "Old142aftercurrentclear/wireepoch/low8UDP/keywrap limits unchanged.",
+    "M5 backend present/bridge partial; no accountresume/matchrestore/production.",
+    "Return2 AReadybuttonwhiteonescreenshot; lateractual95/Start3passed/notpersistentUIorrootcausefix.",
+    "Verifierfirstattemptusedkinds0/1/2insteadknownnativebooleanflags;existingCP239projectioncorrected, samefullraw195cellsall3clocksbothviewschecked."
+  ],
+  "review": "Codex solo/selfcheck, independentreviewwaived/notapproved;AUD069through240/next244"
+}

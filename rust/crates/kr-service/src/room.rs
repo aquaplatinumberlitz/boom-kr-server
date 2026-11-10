@@ -21,6 +21,7 @@ pub struct Member {
     late_after_abort: u16,
     opaque123: u16,
     opaque167: u16,
+    pub(crate) life: crate::life::Player,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Phase {
@@ -32,6 +33,10 @@ pub enum Phase {
     },
     Armed {
         round: u64,
+    },
+    Ending {
+        round: u64,
+        refreshed: BTreeSet<Membership>,
     },
 }
 #[derive(Clone, Debug)]
@@ -46,6 +51,7 @@ pub struct Room {
     pub(crate) bombs: crate::bombs::Ledger,
     pub(crate) bomb_capacity: [usize; 2],
     pub(crate) terrain: Option<crate::terrain::Terrain>,
+    pub(crate) last_blast: Option<std::time::Instant>,
 }
 impl Default for Room {
     fn default() -> Self {
@@ -60,6 +66,7 @@ impl Default for Room {
             bombs: crate::bombs::Ledger::default(),
             bomb_capacity: [1, 2],
             terrain: None,
+            last_blast: None,
         }
     }
 }
@@ -114,6 +121,7 @@ impl Room {
                 late_after_abort: 0,
                 opaque123: 0,
                 opaque167: 0,
+                life: crate::life::Player::default(),
             },
         );
         if create {
@@ -157,7 +165,9 @@ impl Room {
             return Err(io::Error::other("stale membership cleanup"));
         }
         let round = match self.phase {
-            Phase::Loading { round, .. } | Phase::Armed { round } => Some(round),
+            Phase::Loading { round, .. } | Phase::Armed { round } | Phase::Ending { round, .. } => {
+                Some(round)
+            }
             Phase::Idle => None,
         };
         if let Some(round) = round {
@@ -207,9 +217,12 @@ impl Room {
         for member in self.members.values_mut() {
             member.opaque123 = 0;
             member.opaque167 = 0;
+            member.life.begin();
+            member.late_after_abort = 0;
         }
         self.aborted = None;
         self.round = round;
+        self.last_blast = None;
         self.bombs.begin(round);
         if let Some(terrain) = &mut self.terrain {
             terrain.begin(round);
@@ -221,6 +234,48 @@ impl Room {
             loaded: BTreeSet::new(),
         };
         Ok(round)
+    }
+    pub fn outcome_deliverable(&self, key: Membership, round: u64) -> bool {
+        self.current(key)
+            && matches!(self.phase, Phase::Ending { round: current, .. } if current == round)
+    }
+    pub fn end(&mut self, round: u64) -> io::Result<()> {
+        if self.phase != (Phase::Armed { round }) {
+            return Err(io::Error::other("outcome requires active round"));
+        }
+        self.phase = Phase::Ending {
+            round,
+            refreshed: BTreeSet::new(),
+        };
+        self.bombs.finish();
+        self.pickups.finish();
+        if let Some(terrain) = &mut self.terrain {
+            terrain.finish();
+        }
+        for member in self.members.values_mut() {
+            member.ready = false;
+        }
+        Ok(())
+    }
+    pub fn refreshed(&mut self, key: Membership, round: u64) -> io::Result<()> {
+        if !self.current(key) {
+            return Err(io::Error::other("stale outcome recipient"));
+        }
+        let Phase::Ending {
+            round: current,
+            refreshed,
+        } = &mut self.phase
+        else {
+            return Err(io::Error::other("no pending outcome"));
+        };
+        if *current != round || !refreshed.insert(key) {
+            return Err(io::Error::other("duplicate/stale outcome completion"));
+        }
+        if refreshed.len() == self.members.len() {
+            self.aborted = Some((round, self.members.values().map(|m| m.key).collect()));
+            self.phase = Phase::Idle;
+        }
+        Ok(())
     }
     /// Opaque actual123/body10 while Armed: bounded reference no-response policy,
     /// not recovered message semantics. No queue, world, inventory or ACK effect.
@@ -246,6 +301,17 @@ impl Room {
             return Err(io::Error::other("opaque167 observation budget"));
         }
         member.opaque167 += 1;
+        Ok(())
+    }
+    pub fn observe_closed(&mut self, key: Membership) -> io::Result<()> {
+        if !self.current(key) || !matches!(self.phase, Phase::Ending { .. }) {
+            return Err(io::Error::other("not current closed member"));
+        }
+        let member = self.members.get_mut(&key.identity).expect("current member");
+        if member.late_after_abort >= 64 {
+            return Err(io::Error::other("closed report budget"));
+        }
+        member.late_after_abort += 1;
         Ok(())
     }
     pub fn observe_after_abort(&mut self, key: Membership) -> io::Result<()> {
@@ -302,6 +368,34 @@ mod tests {
         r.setup(b).unwrap();
         r.ready(b).unwrap();
         (r, a, b)
+    }
+    #[test]
+    fn outcome_barrier_blocks_start_and_old_completion_cannot_adopt_next_round() {
+        let (mut r, a, b) = prepared();
+        let round = r.begin(a).unwrap();
+        r.ack(a, round).unwrap();
+        r.ack(b, round).unwrap();
+        r.end(round).unwrap();
+        assert!(!r.deliverable(a, Some(round)));
+        assert!(r.outcome_deliverable(a, round));
+        assert!(r.begin(a).is_err());
+        r.refreshed(a, round).unwrap();
+        assert!(r.refreshed(a, round).is_err());
+        assert!(matches!(r.phase, Phase::Ending { .. }));
+        r.refreshed(b, round).unwrap();
+        assert_eq!(r.phase, Phase::Idle);
+        assert!(!r.outcome_deliverable(a, round));
+        r.ready(b).unwrap();
+        let next = r.begin(a).unwrap();
+        assert_eq!(next, round + 1);
+        assert!(r.refreshed(a, round).is_err());
+        assert!(matches!(r.phase,Phase::Loading{round:current,..} if current==next));
+        r.ack(a, next).unwrap();
+        r.ack(b, next).unwrap();
+        r.end(next).unwrap();
+        r.leave(a).unwrap();
+        assert!(!r.outcome_deliverable(b, next));
+        assert!(r.refreshed(b, next).is_err());
     }
     #[test]
     fn opaque123_has_current_armed_membership_and_finite_per_round_budget() {

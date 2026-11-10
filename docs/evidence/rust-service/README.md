@@ -264,3 +264,19 @@ Pythonkernel reuse CP172/174 là comparisonđộc lậpRust, nativeflags/packet/
 không allworldauthority/nativechainvariants/native reset/results. Opaque123/167 vàshutdownunknown giữ.
 M3tiếplife170/result175/return180/reset/twooutcomes;CP240 phải auditperiodic. Python/8WIP/oldrecords giữ.
 Internet thật chưa kiểm.
+
+<a id="cp240"></a>
+## CP240 — Rust life/result/reset, hai kết quả đối nghịch
+
+[Contract](../../PROTOCOL.md#rust-life-results), [metadata](life-results.json), [PLAN](../../PLAN.md#current-order).
+Raw: `local/research/codex/rust-life-native-r5/native-life/`; `life-verification.json`, copied-getter report,
+`input-retention.json` và `native-life/raw-seal.json`. Run SHA `657a48b88409763d3ac6931ecf5095bf11deb07999a15f1288a8365935827ca5`;
+66 raw/201.905s/frozen inputs/cleanup0, binary `a4798db20fb0797d523226a70b0b51ee9b4c264db3f1aae1d6448e5dcd0cf229`.
+Recipe: `prepare_rust_life_native_r5.py` → `run_rust_life_r5.py` → `verify_rust_life.py`;
+Wine/e9/ba namespaces riêng, no default route, router/topology giống CP239 LAN đã pin. Không Internet thật.
+
+Hai vòng có actual17→19/opposite21/170; native hai view loser1/other0 trước175, outer302/inner292/rank2-1 đảo,
+1803 và Ready/Start3/clock6s. Kernel44 cases và40 Rust tests riêng. Native peer21clear/all-dead chưa chạy;
+M3 vẫn thiếu control trong PLAN. R1/R2/R3/R4:46+46+48+50 raw đã seal trước sửa16716/202/post180585; giữ failures. R5 dùng input CP188 focus12s/heldmouse1s đã đo; budget240s khai trước run cho bốn thao tác return, service/loading deadlines giữ nguyên.
+Audit AUD069 qua240 sửa ma trận kiến trúc còn nói account/DB chưa triển khai dù CP236 đã merge;
+SQLite/backend CLI đã có, native bridge chưa có. Audit kếCP244, không reset counter. Internet thật chưa kiểm.

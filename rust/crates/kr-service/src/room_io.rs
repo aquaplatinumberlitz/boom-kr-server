@@ -23,6 +23,14 @@ pub struct Config {
     pub packets: HashMap<String, LobbyPacketPin>,
     #[serde(default)]
     pub terrain: Option<crate::terrain::Config>,
+    #[serde(default)]
+    pub battle: Option<BattleConfig>,
+}
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct BattleConfig {
+    pub mode: String,
+    pub packets: HashMap<String, LobbyPacketPin>,
 }
 pub type Shared = Arc<Mutex<Runtime>>;
 struct Channel {
@@ -37,6 +45,13 @@ pub enum Guard {
         ticket: bombs::Ticket,
     },
     Member(Membership, Option<u64>),
+    Outcome(Membership, u64),
+    Life {
+        recipient: Membership,
+        source: Membership,
+        round: u64,
+        clear21: Option<(String, Instant)>,
+    },
     Lobby {
         identity: u32,
         connection: u64,
@@ -50,6 +65,8 @@ pub struct Batch {
     pub setup: Option<Membership>,
     pub subject: Option<Membership>,
     pub bomb_complete: Option<(bombs::Ticket, Membership)>,
+    pub life_complete: Option<(Membership, u64, String)>,
+    pub outcome_complete: Option<(Membership, u64)>,
 }
 pub struct Runtime {
     model: Room,
@@ -77,6 +94,7 @@ pub struct Observation {
     pub pickup: Option<pickups::Decision>,
     pub bomb: Option<BombObservation>,
     pub terrain_notice: Option<&'static str>,
+    pub life: Option<crate::life::Decision>,
 }
 pub struct Session {
     shared: Shared,
@@ -170,6 +188,43 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
             )
         })
         .transpose()?;
+    if let Some(battle) = &cfg.battle {
+        if battle.mode != "post_blast_untrapped_drained" || battle.packets.len() != 4 {
+            return Err(err("unsupported Battle profile"));
+        }
+        for (alias, op, size) in [
+            ("rank", 175, 302),
+            ("rank_Awin", 175, 302),
+            ("rank_all_dead", 175, 302),
+            ("return", 180, 3),
+        ] {
+            let pin = battle
+                .packets
+                .get(alias)
+                .ok_or_else(|| err("missing Battle fixture"))?;
+            let raw = pin.fixture.load()?;
+            let packet = decode(
+                &raw,
+                pin.sequence
+                    .ok_or_else(|| err("missing Battle fixture sequence"))?,
+            )
+            .map_err(io::Error::other)?;
+            if pin.opcode != op || packet.opcode != op || packet.payload.len() != size {
+                return Err(err("unsupported Battle fixture opcode/size"));
+            }
+            if op == 180 {
+                room_wire::room_selector(&packet.payload, 180, 0)?;
+            }
+            packets.insert(
+                alias.into(),
+                Reply {
+                    header: raw[..37].try_into().expect("decoded header"),
+                    opcode: op,
+                    payload: packet.payload,
+                },
+            );
+        }
+    }
     let mut model = Room::default();
     model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
@@ -254,6 +309,8 @@ impl Runtime {
             setup: None,
             subject: None,
             bomb_complete: None,
+            life_complete: None,
+            outcome_complete: None,
         }
     }
     fn lobby_batch(
@@ -274,6 +331,8 @@ impl Runtime {
             setup: None,
             subject: None,
             bomb_complete: None,
+            life_complete: None,
+            outcome_complete: None,
         }
     }
     // Reserve every recipient queue entry before publishing any state or batch.
@@ -380,6 +439,92 @@ impl Session {
             connection,
         })
     }
+    pub fn tick(&self) -> io::Result<()> {
+        let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        if !r.packets.contains_key("rank") {
+            return Ok(());
+        }
+        let Phase::Armed { round } = r.model.phase else {
+            return Ok(());
+        };
+        if r.model.members.len() != 2 {
+            return Ok(());
+        }
+        let now = Instant::now();
+        let members: Vec<_> = r.model.members.values().collect();
+        let dead: Vec<_> = members
+            .iter()
+            .filter_map(|m| m.life.death.map(|at| (m.slot, at)))
+            .collect();
+        let alias = if dead.len() == 2 {
+            if dead
+                .iter()
+                .any(|(_, at)| now.duration_since(*at) < Duration::from_secs(8))
+            {
+                return Ok(());
+            }
+            "rank_all_dead"
+        } else if let Some(&(slot, at)) = dead.first() {
+            if now.duration_since(at) < Duration::from_secs(8)
+                || r.model.bombs.pending()
+                || !members.iter().any(|m| {
+                    m.slot != slot
+                        && m.life.survivor.is_some_and(|s| {
+                            s > at && m.life.current_survivor(s, r.model.last_blast)
+                        })
+                })
+            {
+                return Ok(());
+            }
+            if slot == 0 { "rank" } else { "rank_Awin" }
+        } else {
+            return Ok(());
+        };
+        let mut next = r.model.clone();
+        next.end(round)?;
+        let mut effects = Vec::new();
+        let returning = r.reply(
+            "return",
+            None,
+            Some(room_wire::room_selector(
+                &r.packets["return"].payload,
+                180,
+                r.selector,
+            )?),
+        );
+        let slots = next
+            .members
+            .values()
+            .map(|m| r.slot(m, next.host))
+            .collect::<io::Result<Vec<_>>>()?;
+        for peer in next.members.values() {
+            for (delay, packets, complete) in [
+                (
+                    0,
+                    vec![("rank175".into(), r.reply(alias, None, None))],
+                    false,
+                ),
+                (5000, vec![("return180".into(), returning.clone())], false),
+                (
+                    8000,
+                    slots
+                        .iter()
+                        .enumerate()
+                        .map(|(i, p)| (format!("refresh110-{i}"), p.clone()))
+                        .collect(),
+                    true,
+                ),
+            ] {
+                let mut batch = Runtime::member_batch(peer.key, Some(round), delay, packets);
+                batch.guard = Guard::Outcome(peer.key, round);
+                if complete {
+                    batch.outcome_complete = Some((peer.key, round));
+                }
+                effects.push((peer.key.identity, batch));
+            }
+        }
+        r.publish(next, effects)
+    }
     pub fn handles(opcode: u32) -> bool {
         matches!(
             opcode,
@@ -399,6 +544,7 @@ impl Session {
                 | 118
                 | 142
                 | 167
+                | 202
         )
     }
     pub fn valid(&self, batch: &Batch) -> bool {
@@ -421,6 +567,24 @@ impl Session {
                     && r.model.bombs.deliverable(ticket, member)
             }
             Guard::Member(key, round) => r.model.deliverable(key, round),
+            Guard::Outcome(key, round) => r.model.outcome_deliverable(key, round),
+            Guard::Life {
+                recipient,
+                source,
+                round,
+                ref clear21,
+            } => {
+                r.model.deliverable(recipient, Some(round))
+                    && r.model.current(source)
+                    && matches!(r.model.phase,Phase::Armed { round:current } if current==round)
+                    && clear21.as_ref().is_none_or(|(digest, at)| {
+                        r.model.members[&source.identity].life.forward21_valid(
+                            digest,
+                            *at,
+                            r.model.last_blast,
+                        )
+                    })
+            }
             Guard::Lobby {
                 identity,
                 connection,
@@ -456,15 +620,40 @@ impl Session {
         }
     }
     pub fn finish(&self, batch: &Batch) -> io::Result<()> {
+        if let Some((source, round, digest)) = &batch.life_complete {
+            let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            if runtime.model.current(*source)
+                && runtime.model.phase == (Phase::Armed { round: *round })
+            {
+                runtime
+                    .model
+                    .members
+                    .get_mut(&source.identity)
+                    .expect("current source")
+                    .life
+                    .forward21_complete(digest);
+            }
+        }
+        if let Some((recipient, round)) = batch.outcome_complete {
+            self.shared
+                .lock()
+                .map_err(|_| err("room unavailable"))?
+                .model
+                .refreshed(recipient, round)?;
+        }
         if let Some((ticket, recipient)) = &batch.bomb_complete {
             let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
             if !runtime.model.bombs.delivered(ticket, *recipient) {
                 return Err(err("stale bomb delivery completion"));
             }
-            if !runtime.model.bombs.active(ticket)
-                && let Some(terrain) = &mut runtime.model.terrain
-            {
-                terrain.blast_committed(ticket.round, ticket.id);
+            if !runtime.model.bombs.active(ticket) {
+                runtime.model.last_blast = Some(Instant::now());
+                for member in runtime.model.members.values_mut() {
+                    member.life.blast_committed();
+                }
+                if let Some(terrain) = &mut runtime.model.terrain {
+                    terrain.blast_committed(ticket.round, ticket.id);
+                }
             }
         }
 
@@ -497,6 +686,7 @@ impl Session {
         let mut pickup = None;
         let mut bomb = None;
         let mut terrain_notice = None;
+        let mut life = None;
         match opcode {
             528 => {
                 if !body.is_empty() {
@@ -587,7 +777,20 @@ impl Session {
                 }
                 let m = r.member(self.identity, self.connection)?;
                 if r.requested.contains(&m.key) {
-                    return Err(err("duplicate setup585"));
+                    // Native180 sends585 again. The retained Python profile ignores
+                    // this tail;110 refresh owns the return. Raw585 has no epoch.
+                    if matches!(next.phase, Phase::Ending { .. }) {
+                        next.observe_closed(m.key)?;
+                    } else if next.phase == Phase::Idle {
+                        next.observe_after_abort(m.key)?;
+                    } else {
+                        return Err(err("duplicate setup585"));
+                    }
+                    r.publish(next, vec![])?;
+                    return Ok(Observation {
+                        dropped_after_abort: true,
+                        ..Observation::default()
+                    });
                 }
                 effects.push((
                     self.identity,
@@ -808,6 +1011,9 @@ impl Session {
                 if next.phase == Phase::Idle {
                     next.observe_after_abort(m.key)?;
                     dropped_after_abort = true;
+                } else if matches!(next.phase, Phase::Ending { .. }) {
+                    next.observe_closed(m.key)?;
+                    dropped_after_abort = true;
                 } else if !matches!(next.phase, Phase::Armed { .. }) {
                     return Err(err("known190 observation phase"));
                 }
@@ -820,19 +1026,52 @@ impl Session {
                 // CP019/020 known map-selection/setup traffic; Python leaves
                 // these shapes unanswered. No new authority/side effect.
             }
+            202 => {
+                let member = r.member(self.identity, self.connection)?;
+                if body.len() != 22
+                    || read_uint(&body[..1], Width::U8).map_err(io::Error::other)? != 0
+                    || read_uint(&body[1..2], Width::U8).map_err(io::Error::other)? != 1
+                {
+                    return Err(err("unsupported closed-result202 envelope"));
+                }
+                if matches!(next.phase, Phase::Ending { .. }) {
+                    next.observe_closed(member.key)?;
+                } else if next.phase == Phase::Idle {
+                    next.observe_after_abort(member.key)?;
+                } else {
+                    return Err(err("active battle exit202 not ported"));
+                }
+                dropped_after_abort = true;
+            }
             167 => {
                 let member = r.member(self.identity, self.connection)?;
-                if ![4, 32].contains(&body.len()) {
+                if ![4, 16, 32].contains(&body.len()) {
                     return Err(err("opaque167 measured sizes"));
                 }
-                next.observe_opaque167(member.key)?;
+                if matches!(next.phase, Phase::Ending { .. }) {
+                    next.observe_closed(member.key)?;
+                    dropped_after_abort = true;
+                } else if next.phase == Phase::Idle {
+                    next.observe_after_abort(member.key)?;
+                    dropped_after_abort = true;
+                } else {
+                    next.observe_opaque167(member.key)?;
+                }
             }
             123 => {
                 let m = r.member(self.identity, self.connection)?;
                 if body.len() != 10 {
                     return Err(err("opaque123 measured size"));
                 }
-                next.observe_opaque123(m.key)?;
+                if matches!(next.phase, Phase::Ending { .. }) {
+                    next.observe_closed(m.key)?;
+                    dropped_after_abort = true;
+                } else if next.phase == Phase::Idle {
+                    next.observe_after_abort(m.key)?;
+                    dropped_after_abort = true;
+                } else {
+                    next.observe_opaque123(m.key)?;
+                }
             }
             118 => {
                 let member = r.member(self.identity, self.connection)?;
@@ -939,7 +1178,9 @@ impl Session {
             124 => {
                 let member = r.member(self.identity, self.connection)?;
                 let request = pickups::Request::parse(body)?;
-                let decision = if let Phase::Armed { round } = next.phase {
+                let decision = if next.members[&self.identity].life.blocked_pickup() {
+                    request.decision("report_ineligible")
+                } else if let Phase::Armed { round } = next.phase {
                     next.pickups.claim(round, member.slot, &request)
                 } else {
                     request.decision("inactive_round")
@@ -970,13 +1211,57 @@ impl Session {
             127 => {
                 let m = r.member(self.identity, self.connection)?;
                 if !(1..=4096).contains(&body.len()) {
-                    return Err(err("M2 report observation size"));
+                    return Err(err("report observation size"));
                 }
                 if next.phase == Phase::Idle {
                     next.observe_after_abort(m.key)?;
                     dropped_after_abort = true;
-                } else if !matches!(next.phase, Phase::Armed { .. }) {
-                    return Err(err("M2 report observation phase"));
+                } else if matches!(next.phase, Phase::Ending { .. }) {
+                    // Closed-round transport observation only; no cursor, world or result mutation.
+                    next.observe_closed(m.key)?;
+                    dropped_after_abort = true;
+                } else if let Phase::Armed { round } = next.phase {
+                    if r.packets.contains_key("rank") {
+                        let report = crate::life::Report::parse(body)?;
+                        let now = Instant::now();
+                        let last_blast = next.last_blast;
+                        let decision = next
+                            .members
+                            .get_mut(&self.identity)
+                            .expect("current member")
+                            .life
+                            .apply(m.slot, &report, now, last_blast);
+                        if decision.forward {
+                            let peer = next
+                                .members
+                                .values()
+                                .find(|p| p.key != m.key)
+                                .ok_or_else(|| err("missing life recipient"))?;
+                            let mut batch = Runtime::member_batch(
+                                peer.key,
+                                Some(round),
+                                0,
+                                vec![(
+                                    format!("life170-{}", report.subtype),
+                                    r.reply("start", Some(170), report.forward.clone()),
+                                )],
+                            );
+                            batch.guard = Guard::Life {
+                                recipient: peer.key,
+                                source: m.key,
+                                round,
+                                clear21: (report.subtype == 21)
+                                    .then(|| (report.digest.clone(), now)),
+                            };
+                            if report.subtype == 21 {
+                                batch.life_complete = Some((m.key, round, report.digest.clone()));
+                            }
+                            effects.push((peer.key.identity, batch));
+                        }
+                        life = Some(decision);
+                    }
+                } else {
+                    return Err(err("report observation phase"));
                 }
             }
             _ => return Err(err("unsupported room request")),
@@ -1016,6 +1301,7 @@ impl Session {
             pickup,
             bomb,
             terrain_notice,
+            life,
         })
     }
 }

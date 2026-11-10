@@ -202,3 +202,19 @@ python3 tools/test_rust_room.py --binary rust/target/debug/kr-service --config l
 
 35Rusttests/43TCPcases tách nativeacceptance. Negative/model agreement khônglà originalserverauthority.
 Không hot-swap backend giữa activeconnection;chờ source/config/binary/rawseal/cleanup trướcđổi input.
+
+<a id="life-result-checks"></a>
+## Life/result/reset có giới hạn — CP240
+
+[Contract/limits](../docs/PROTOCOL.md#rust-life-results), [bằng chứng](../docs/evidence/rust-service/README.md#cp240).
+`export_rust_profile.py` thêm optional `fixed_room.battle` khi Python profile khai đúng `death_lifecycle=current_trap`
+và `result_freshness=post_blast_untrapped_drained`; bốn captured fixtures phải đúng hash/sequence/opcode/size trước bind.
+Giữ profile diagnostic IP/identity; SQLite backend hiện chưa nối vào KR login.
+
+Kiểm TCP policy (config/profile local đã pin, chọn output mới mỗi lần):
+```bash
+python3 tools/test_rust_life.py --binary rust/target/debug/kr-service --config CONFIG.json --battle-profile PROFILE.json --idle-seconds 20 --out LOCAL_NEW_DIR
+```
+Native Wine hai outcome/reset/Start3 đã có; kernel negatives/all-dead/peer21 không thay native proof.
+M3 còn control item reset/contest, oldUDP/currentpositive, dead-owner/queue và hostEOF scene return theo PLAN.
+Internet thật chưa kiểm.

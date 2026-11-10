@@ -1,0 +1,298 @@
+{
+  "id": "CP240",
+  "previous": "CP239",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-10T03:16:56.923111+00:00",
+  "context_commit": "35bb05f2f85523702392effc05d78d88d6afe3ae",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M3/KRE-074: port knownreport17-19-21→170/result175-return180/reset/twooppositeoutcomes/Ready2Start3 whilepreservingPythonpolicy/connectioncursor/queuefences andperiodicaudit.",
+  "scope": "OptionalpinnedBattlepolicy/cursor-trap-death-drainedsurvivor/oncepeer21/result6queueentries/Ending-reset/absoluteidle;40Rust44TCP/native2oppositeoutcomes/Start3;M3partial/AUD069.",
+  "artifacts": [
+    {
+      "name": "NativeKR00967originalunchanged",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "name": "e9Winecopyunchanged",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "ExistingKRmodOcopiedgetteronly",
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "name": "Rustnative-testedlife-result-resetbinary",
+      "sha256": "a4798db20fb0797d523226a70b0b51ee9b4c264db3f1aae1d6448e5dcd0cf229"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/life.rs/report-cursor/trap-death-survivor/room_io.rs/serializedresult-fullqueue-reservations/room.rs/Ending-refresh/room_wire.rs/180selector/lib.rs/absoluteidle",
+    "NativeR5 657a48b88409763d3ac6931ecf5095bf11deb07999a15f1288a8365935827ca5/TCP745-108/2opposite175302-292-1803/reset/Ready2Start3/clock6shold;knownCP188postreturnOSrecipe/240sexperimentbudget",
+    "CP239PR310/35bb05fmerged;AUD069periodicthrough240/next244/counterunreset;M5backendpartial/nativebridgeindependent"
+  ],
+  "findings": [
+    {
+      "summary": "Report-derivedRustpolicy:strict127envelopes/persistentconnectioncursor/currenttrap-deathhistory/oncepeer21;Startresetmarkersnotcursor. Full-roster158invalidatesold21;drainedfreshsurvivor/death8s/all-deadseparate/reserveall6result-return-refreshqueuesbeforepublish/Endingfences. Absoluteidledeadline survives100mspoll;closed202-585boundednoresponse.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-life-results",
+      "evidence": [
+        "RUST240-00054",
+        "RUST240-00056",
+        "RUST240-00053"
+      ],
+      "limits": "M3partial/diagnosticAB/pinnedmap/report-derivedauthority;no nativeconsumed-item-reset/contest/exactoldUDP-currentpositive/deadowner-queue/hostEOFscene-return/all-dead/peer21clear/thirdoutcome/fullservice. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "TwoactualKR00967/e9/Wine/privatehosts:epoch1A17-19/B21→bothviewsstate[1,0]/ranks[2,1];epoch2B17-19/A21→[0,1]/[1,2]. Bothnative175outer302-inner292/errors0/1803/refresh/actualReadyStart3/clock6shold.Threeclockseed195/rolebaselines, notconsumed-itemreset. AllTCPconnection/C2Ssequence/replySHAjoins/seal-cleanup0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-life-results",
+      "evidence": [
+        "RUST240-00924",
+        "RUST240-01003",
+        "RUST240-00994"
+      ],
+      "limits": "M3partial/diagnosticAB/pinnedmap/report-derivedauthority;no nativeconsumed-item-reset/contest/exactoldUDP-currentpositive/deadowner-queue/hostEOFscene-return/all-dead/peer21clear/thirdoutcome/fullservice. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "40Rusttests/44kernelTCP verifyselectedmalformed/slot/deathprereq/stale-dupeoverreset/currentpositive/all-dead/oncepeer21/closed202-585/absoluteidle20. Copiednative52A350 onretainedruntimewrappers separatefromWineexecution. R1-4failures190rawretained/sealedbeforeeachchange;R5samefinalbinaryasR4/knownCP188inputrestored,notcausalfix.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-life-results",
+      "evidence": [
+        "RUST240-00099",
+        "RUST240-00997",
+        "RUST240-00038"
+      ],
+      "limits": "M3partial/diagnosticAB/pinnedmap/report-derivedauthority;no nativeconsumed-item-reset/contest/exactoldUDP-currentpositive/deadowner-queue/hostEOFscene-return/all-dead/peer21clear/thirdoutcome/fullservice. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "AUD069manualcore-docs/code/raw reconcilesCP237–240. CorrectarchitectureaccountDBunimplementedclaim toCP236actualbackend/CLI/lockfile;nativeKRbridgepartial. M3overallpartial:nextitemreset-contest/oldUDP-positive/deadowner-queue/hostEOFscene-return. OldREADMEblocksmarkedhistorical/K0–K7scopesunchanged/nextaudit244.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-life-results",
+      "evidence": [
+        "RUST240-00045",
+        "RUST240-00041",
+        "RUST240-00044"
+      ],
+      "limits": "M3partial/diagnosticAB/pinnedmap/report-derivedauthority;no nativeconsumed-item-reset/contest/exactoldUDP-currentpositive/deadowner-queue/hostEOFscene-return/all-dead/peer21clear/thirdoutcome/fullservice. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustfmt-clippy/40tests/lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST240-01005",
+        "RUST240-00037",
+        "RUST240-00030"
+      ],
+      "limits": "35service incl11account+5wire;exactheadrechecksrequired."
+    },
+    {
+      "check": "44kernelTCP/lifecycle/cursor/closed202-585/absoluteidle20",
+      "result": "pass",
+      "evidence": [
+        "RUST240-00099"
+      ],
+      "limits": "Synthetic negatives/all-dead/peer21 are notnativeattackproof;binarypin/unchanged/PIDnone."
+    },
+    {
+      "check": "Native2oppositeoutcomes/reset/Ready2Start3/fullPCAP/seal/cleanup",
+      "result": "pass",
+      "evidence": [
+        "RUST240-00924",
+        "RUST240-01003",
+        "RUST240-00994"
+      ],
+      "limits": "M3partial/diagnosticAB/pinnedmap/report-derivedauthority;no nativeconsumed-item-reset/contest/exactoldUDP-currentpositive/deadowner-queue/hostEOFscene-return/all-dead/peer21clear/thirdoutcome/fullservice. Internet thật chưa kiểm."
+    },
+    {
+      "check": "Copiednative52A350runtimewrappers",
+      "result": "pass",
+      "evidence": [
+        "RUST240-00997"
+      ],
+      "limits": "Unicorn/counterreset/modelartifact/oldlimitations;notWinegamecall orwholebinaryequivalence."
+    },
+    {
+      "check": "NativeR1-4 compatibility andinput failures",
+      "result": "fail",
+      "evidence": [
+        "RUST240-00266",
+        "RUST240-00441",
+        "RUST240-00618",
+        "RUST240-00796"
+      ],
+      "limits": "All190rawpreserved/sealed/cleanupbeforechanges;R4oneoutcome-returnnottwocycles;R5knownpostreturnOSrecipe,notcausalfix."
+    },
+    {
+      "check": "FullM3controls/hostEOFscene-return/nativeaccountbridge/fullservice",
+      "result": "not_run",
+      "evidence": [
+        "RUST240-00041",
+        "RUST240-00043"
+      ],
+      "limits": "StillM3partial;no gateclosure."
+    },
+    {
+      "check": "Docs/catalog/issues/AUD069/WIP/manualacceptance",
+      "result": "pass",
+      "evidence": [
+        "RUST240-00003",
+        "RUST240-00038",
+        "RUST240-00045"
+      ],
+      "limits": "Fullhistory/exactheadchecksrequired/checkerdoesnotvalidateacceptance."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP240-rust-life-results.json",
+      "bytes": 264515,
+      "sha256": "b98417685d6fed3050055e24183ca5a7baab976cd93d09228b287741ada4d1d5",
+      "count": 1017
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rustreportlife/result-resetpolicy/native2oppositeoutcomes/Ready2Start3/40tests44TCP.",
+      "AUD069periodicthrough240/next244/Python8WIPpreserved."
+    ],
+    "corrected": [
+      "Observed16716/closed202/post180585support;4failedruns190rawsealed/retained.",
+      "Relativeidledeadlinewouldresetunderpoll:absolutedeadline+idle20control.",
+      "KnownCP188postreturninputneeded/R4shortclickno95;restoredrecipe/newdeclared240sbudget/service-deadlinesunchanged.",
+      "ArchitecturefalseaccountDBnotimplementedclaim correctedtoCP236backend/nativebridgepartial."
+    ],
+    "superseded": [
+      "M3life-result-resetcompletelymissing;nowacceptedsubset/native2cycles, remainingcontrols stayPLAN."
+    ]
+  },
+  "blockers": [
+    "Report-derived emulator policy, not authenticated world/life or original rank authority.",
+    "Native positive separate from synthetic stale/duplicate/all-dead/queue controls. No nativeall-dead/kim-rescue/fullM3accountbridge/fullservice/thirdoutcome.",
+    "Two current diagnostic identities onWine/privatevirtualLAN; Internet thật chưa kiểm.",
+    "M3partial;consumed-item reset/contest/exactoldUDP-currentpositive/dead-owner-queue/hostEOF scene return remain.",
+    "167/4,16,32 unknown semantics;123/10 unknown; no new world authority.",
+    "Old142aftercurrentclear/wireepoch/low8UDP/keywrap limits unchanged.",
+    "M5 backend present/bridge partial; no accountresume/matchrestore/production.",
+    "Return2 AReadybuttonwhiteonescreenshot; lateractual95/Start3passed/notpersistentUIorrootcausefix.",
+    "Verifierfirstattemptusedkinds0/1/2insteadknownnativebooleanflags;existingCP239projectioncorrected, samefullraw195cellsall3clocksbothviewschecked."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANM3consumed-itemreset/contest/exactoldUDP+currentpositive/deadowner-queue/hostEOFpendingbombnativepeerRoom-IDclear-chief/pastduefence. ReuseCP188/189/155onlygapRE;M5backendindependent/bridgepartial/AUD069next244.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-10T03:16:56.923111+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsolo/native-life-resultsubset/manualAUD069;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "docs/evidence/rust-service/life-results.json",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    }
+  ]
+}

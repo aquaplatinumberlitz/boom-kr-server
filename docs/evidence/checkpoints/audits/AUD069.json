@@ -1,0 +1,95 @@
+{
+  "id": "AUD069",
+  "trigger": "periodic",
+  "completed_through": "CP240",
+  "recorded_utc": "2026-11-10T03:16:56.923111+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/RESEARCH.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/rust-service/README.md",
+    "docs/evidence/rust-service/life-results.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_wire.rs",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/life.rs",
+    "tools/export_rust_profile.py",
+    "tools/test_rust_life.py",
+    "docs/evidence/checkpoints/audits/AUD068.json",
+    "local/research/codex/rust-life-native-r5/life-verification.json",
+    "local/research/codex/rust-life-native-r5/peer-getter-verification.json",
+    "local/research/codex/rust-life-native-r5/ui-review.json",
+    "local/research/codex/rust-life-native-r5/native-life/raw-seal.json",
+    "local/research/codex/rust-life-kernel-r5/verification.json",
+    "local/research/codex/rust-life-delivery-r1/manual-acceptance.json"
+  ],
+  "method": "Manual core-doc-order/source/retainedraw-native-PCAP/securestate/native175rows/UI/failure review CP237–240. Checker verifies files/hashes/history, never semanticacceptance. R5 images viewed byCodex; allraw/frozeninputsizeSHA verified for5runs. No newbinaryfunctionRE, no changedcompletehistory.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Architecture still said account/DB dependencies and backend were notimplemented/build/tested although CP236merged.",
+      "correction": "State actualpinnedArgon2id/SQLite/getrandom/zeroize and11accounttests/33CLIprocess;nativeKRbridge/worker/idleTTL/restore remainmissing;M5partial/independentgameplay.",
+      "fixed_in": [
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "README.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "M3 lifecycle absent inRust; initial envelopes closedon16716/202/post180585; one shortReadyclick producedno95.",
+      "correction": "Preserve4failednative runs190raw;exactobservedclosedtailsbounded/noresponse;samefinalbinary R5usesknownCP188focus-heldmouse recipe, notnewcausality. Nativeactualtwooutcomes/reset/Start3 separatelyacceptedsubset.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/life.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/life-results.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Newperiodicresultpoll couldcancel/restart relative readtimeout forever.",
+      "correction": "Absolute readdeadline resetonlyafteractualincomingbytes. Kernel idle20stillcloseswhileroompolling;servicewrite/loading/SIGTERMdeadlinesunchanged.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/lib.rs",
+        "tools/test_rust_life.py"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Twooutcomes alone couldbeconfusedwithfullM3;oldREADMEcheckpointblocksunder currentstate saidmissingfeaturesalreadyported.",
+      "correction": "M3partial:stillitem-consumed-reset/contest/exactoldUDP-currentpositive/deadowner-queue/hostEOFscene-return;olderREADMEblocksmarkedhistorical;K0–K7scopeunchanged/Internetunverifiedbacklog.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Report-derived emulator policy, not authenticated world/life or original rank authority.",
+    "Native positive separate from synthetic stale/duplicate/all-dead/queue controls. No nativeall-dead/kim-rescue/fullM3accountbridge/fullservice/thirdoutcome.",
+    "Two current diagnostic identities onWine/privatevirtualLAN; Internet thật chưa kiểm.",
+    "M3partial;consumed-item reset/contest/exactoldUDP-currentpositive/dead-owner-queue/hostEOF scene return remain.",
+    "167/4,16,32 unknown semantics;123/10 unknown; no new world authority.",
+    "Old142aftercurrentclear/wireepoch/low8UDP/keywrap limits unchanged.",
+    "M5 backend present/bridge partial; no accountresume/matchrestore/production.",
+    "Return2 AReadybuttonwhiteonescreenshot; lateractual95/Start3passed/notpersistentUIorrootcausefix.",
+    "Verifierfirstattemptusedkinds0/1/2insteadknownnativebooleanflags;existingCP239projectioncorrected, samefullraw195cellsall3clocksbothviewschecked.",
+    "CP237shutdownanomalyrootcauseunknown; passingrepeatnotfix.",
+    "M5accountbackendpresentbutnativeKRbridge/worker/rate/idleTTL/restore notimplemented.",
+    "CP224sameprocessretryfatal/CP220EOFreceiverremainblocked;no broadRE dependency.",
+    "Internet thật chưa kiểm."
+  ]
+}

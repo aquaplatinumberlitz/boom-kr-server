@@ -29,6 +29,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP240: Rust đã chạy hai kết quả đối nghịch, về phòng và Start3 trên hai client KR thật.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-life-results), [raw/hash](docs/evidence/rust-service/README.md#cp240).
+Vòng1 A chết/B thắng; vòng2 B chết/A thắng: hai view cùng state1/0 trước175, đọc đủ302/292 byte và rank2/1 đảo đúng.
+Hai180/refresh/Ready rồi clock trận3 giữ6 giây; 66 raw đã seal/cleanup0. M3 **còn mở**: consumed-item reset/contest,
+exact UDP cũ + current positive, dead-owner/queue controls và hostEOF đưa peer về phòng. Không full game/accountauth.
+CP239 đã merge [PR310](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/310)/`35bb05f`.
+AUD069 qua240, audit kế CP244. [PLAN](docs/PLAN.md#current-order) giữ thứ tự; M5 backend/SQLite đã có CP236,
+cầu nối KR vẫn riêng. Python và tám WIP giữ nguyên. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP239: Rust đã có terrain/reveal và ba hiệu ứng item basic trên hai KR thật.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-terrain), [raw/hash](docs/evidence/rust-service/README.md#cp239).
 Cảhai195flags khớp kernel thamchiếu trên actual118: chỉô2,3 và3,2clear;142đúngô sau158commitmởhidden27/28.
@@ -68,8 +79,6 @@ Một ca CLI unknownfield đầu tiên lỗi, đã giữ raw/seal và sửa stri
 CP235 merge [PR306](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/306)/`bb673a4`;
 [PLAN](docs/PLAN.md#current-order) tiếp M3 UDP/movement, M5 không cần chờ Battle và ngược lại.
 AUD068 qua236, audit kếCP240. Python/WIP giữ nguyên. Internet thật chưa kiểm.
-
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP235: M2 đạt trong phạm vi hai identity cục bộ, một phòng và loading trên Wine.**
 [Đối chiếu acceptance](docs/PROTOCOL.md#rust-m2-acceptance), [bằng chứng](docs/evidence/rust-service/README.md#cp235),
