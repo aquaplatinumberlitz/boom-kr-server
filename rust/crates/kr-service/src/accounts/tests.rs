@@ -233,9 +233,9 @@ fn migration_reopen_future_checksum_unknown_database_and_permissions() {
     drop(temp.store());
     drop(temp.store());
     let db = Connection::open(temp.db()).unwrap();
-    db.pragma_update(None, "user_version", 2).unwrap();
+    db.pragma_update(None, "user_version", 3).unwrap();
     assert!(matches!(Store::open(&temp.db()), Err(Error::Schema)));
-    db.pragma_update(None, "user_version", 1).unwrap();
+    db.pragma_update(None, "user_version", 2).unwrap();
     db.execute("UPDATE schema_migrations SET sha256=?1", ["0".repeat(64)])
         .unwrap();
     assert!(matches!(Store::open(&temp.db()), Err(Error::Schema)));
@@ -361,7 +361,7 @@ fn credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_che
         .reset_password(&admin(), p.account_id, OTHER, 101)
         .unwrap();
     assert!(matches!(
-        s.issue(p.account_id, phc, 1, 60, 101),
+        s.issue(p.account_id, phc, 1, 60, None, 101),
         Err(Error::InvalidCredentials)
     ));
     let count: i64 =
@@ -402,4 +402,142 @@ fn sqlite_full_during_audit_rolls_back_account_player_and_allocator() {
         s.db.query_row("SELECT count(*) FROM players", [], |r| r.get(0))
             .unwrap();
     assert_eq!((accounts, players), (1, 1));
+}
+
+#[test]
+fn explicit_idle_authorization_renews_only_owner_never_extends_absolute_or_revives_after_clock_rollback()
+ {
+    let _serial = SERIAL.lock().unwrap();
+    let (temp, mut s, p) = fresh();
+    let g = s.login_with_idle("alice", PASSWORD, 100, 10, 101).unwrap();
+    assert_eq!(s.authorize(&g.token, p.player_id, 110).unwrap(), p);
+    assert_eq!(
+        s.authorize(&g.token, p.player_id + 1, 119),
+        Err(Error::InvalidSession)
+    );
+    assert_eq!(
+        s.authorize(&g.token, p.player_id, 120),
+        Err(Error::InvalidSession)
+    );
+    assert_eq!(
+        s.authorize(&g.token, p.player_id, 119),
+        Err(Error::ClockRollback)
+    );
+    drop(s);
+    let mut s = temp.store();
+    assert_eq!(
+        s.authorize(&g.token, p.player_id, 120),
+        Err(Error::InvalidSession)
+    );
+    let next = s.login_with_idle("alice", PASSWORD, 20, 10, 120).unwrap();
+    assert!(s.authorize(&next.token, p.player_id, 129).is_ok());
+    assert!(s.authorize(&next.token, p.player_id, 138).is_ok());
+    assert_eq!(
+        s.authorize(&next.token, p.player_id, 140),
+        Err(Error::InvalidSession)
+    );
+    assert!(matches!(
+        s.login_with_idle("alice", PASSWORD, 10, 0, 140),
+        Err(Error::InvalidInput)
+    ));
+}
+
+fn legacy_idle_fixture(db: &mut Connection) -> Token {
+    db.execute_batch(MIGRATION).unwrap();
+    let digest = hex(&Sha256::digest(MIGRATION.as_bytes()));
+    db.execute("INSERT INTO schema_migrations VALUES(1,?1)", [digest])
+        .unwrap();
+    db.pragma_update(None, "application_id", APPLICATION_ID)
+        .unwrap();
+    db.pragma_update(None, "user_version", 1).unwrap();
+    db.execute(
+        "UPDATE runtime_state SET epoch=1,last_utc=100,next_wire_id=43 WHERE id=1",
+        [],
+    )
+    .unwrap();
+    let phc = password_hash(PASSWORD, b"fixture-old-salt").unwrap();
+    db.execute(
+        "INSERT INTO accounts(id,login,password_phc,created_at) VALUES(9,'alice',?1,100)",
+        [phc],
+    )
+    .unwrap();
+    db.execute("INSERT INTO players(id,account_id,wire_id,display_name,profile_version) VALUES(7,9,42,'Alice',3)",[]).unwrap();
+    let token = Token::parse(&"a".repeat(64)).unwrap();
+    db.execute("INSERT INTO sessions(id,account_id,token_hash,boot_epoch,credential_version,issued_at,expires_at) VALUES(6,9,?1,1,1,100,1000)",[token.digest()]).unwrap();
+    db.execute("INSERT INTO admin_audit(id,request_id,actor,operation,account_id,reason,at_utc,details) VALUES(2,?1,'test','historical',9,'preserve',100,'{}')",["b".repeat(64)]).unwrap();
+    token
+}
+fn old_idle_data(db: &Connection) -> Vec<Vec<Vec<rusqlite::types::Value>>> {
+    ["SELECT * FROM accounts ORDER BY id","SELECT * FROM players ORDER BY id","SELECT * FROM runtime_state","SELECT id,account_id,token_hash,boot_epoch,credential_version,issued_at,expires_at,revoked_at FROM sessions ORDER BY id","SELECT * FROM admin_audit ORDER BY id"]
+        .iter().map(|sql|{let mut stmt=db.prepare(sql).unwrap();let n=stmt.column_count();stmt.query_map([],|r|(0..n).map(|i|r.get(i)).collect::<std::result::Result<Vec<_>,_>>()).unwrap().collect::<std::result::Result<Vec<_>,_>>().unwrap()}).collect()
+}
+#[test]
+fn schema1_upgrade_preserves_all_old_account_session_profile_audit_data_and_old_absolute_ttl() {
+    let _serial = SERIAL.lock().unwrap();
+    let mut db = Connection::open_in_memory().unwrap();
+    let token = legacy_idle_fixture(&mut db);
+    let before = old_idle_data(&db);
+    Store::migrate(&mut db).unwrap();
+    assert_eq!(old_idle_data(&db), before);
+    Store::migrate(&mut db).unwrap();
+    assert_eq!(old_idle_data(&db), before);
+    let version: i64 = db
+        .pragma_query_value(None, "user_version", |r| r.get(0))
+        .unwrap();
+    assert_eq!(version, 2);
+    let idle: (Option<i64>, Option<i64>) = db
+        .query_row(
+            "SELECT idle_timeout_seconds,last_seen_at FROM sessions WHERE id=6",
+            [],
+            |r| Ok((r.get(0)?, r.get(1)?)),
+        )
+        .unwrap();
+    assert_eq!(idle, (None, None));
+    let mut store = Store {
+        db,
+        random: entropy,
+    };
+    let p = store.authorize(&token, 7, 900).unwrap();
+    assert_eq!(
+        (p.account_id, p.player_id, p.wire_id, p.profile_version),
+        (9, 7, 42, 3)
+    );
+    assert_eq!(store.authorize(&token, 7, 1000), Err(Error::InvalidSession));
+}
+#[test]
+fn schema1_corruption_or_upgrade_full_rejects_without_partial_columns_or_version_bump() {
+    let _serial = SERIAL.lock().unwrap();
+    let mut db = Connection::open_in_memory().unwrap();
+    legacy_idle_fixture(&mut db);
+    db.execute_batch("DROP INDEX session_expiry").unwrap();
+    assert_eq!(Store::migrate(&mut db), Err(Error::Schema));
+    let version: i64 = db
+        .pragma_query_value(None, "user_version", |r| r.get(0))
+        .unwrap();
+    assert_eq!(version, 1);
+    assert!(
+        db.prepare("SELECT idle_timeout_seconds FROM sessions")
+            .is_err()
+    );
+    let mut db = Connection::open_in_memory().unwrap();
+    legacy_idle_fixture(&mut db);
+    let before = old_idle_data(&db);
+    let pages: i64 = db
+        .pragma_query_value(None, "page_count", |r| r.get(0))
+        .unwrap();
+    db.pragma_update(None, "max_page_count", pages).unwrap();
+    assert_eq!(Store::migrate(&mut db), Err(Error::Storage));
+    assert_eq!(old_idle_data(&db), before);
+    let version: i64 = db
+        .pragma_query_value(None, "user_version", |r| r.get(0))
+        .unwrap();
+    assert_eq!(version, 1);
+    assert!(
+        db.prepare("SELECT idle_timeout_seconds FROM sessions")
+            .is_err()
+    );
+    db.pragma_update(None, "max_page_count", pages + 32)
+        .unwrap();
+    Store::migrate(&mut db).unwrap();
+    assert_eq!(old_idle_data(&db), before);
 }

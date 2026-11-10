@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP243: M5 bounded DB/hash worker + login-result handoff/exact-token compensation đã có;5 worker cases/5 retained SQLite DBs/49Rusttests. M3scopedacceptedCP242 PR313/da1b925merged. M5 còn idleTTL/rate/nativeKRbridge; tiếp idleTTL/rate rồiM4. AUD069nextCP244. Internet thật chưa kiểm.
+CP244: M5idleTTL/rate/schema2 backend đã có;55Rusttests/7workerDBs/5oldDBcopies-10CLIopens/33CLIregression. M5nativeKRbridge/ownership vẫnpartial; M3scopedCP242. CP243PR314/dc71e33merged. TiếpM4four→eight, bridgeM5riêng. AUD070qua244/next248. Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,11 +64,11 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
-1. **NEXT-RUST-FIRST-SLICE / RUST-M5 backend tiếp theo + M4 sau M3 đã đạt scope / KRE-074/#285**:
+1. **NEXT-RUST-FIRST-SLICE / RUST-M4 bốn rồi tám + M5 bridge độc lập / KRE-074/#285**:
    [CP236](PROTOCOL.md#rust-account-backend) đã giao lát cắt backend M5 bằng SQLite thật/CLI: account,
    password/session, identity/profile/version và audited admin. Không cần chờ gameplay để viết backend;
    cũng không lấy KR authbridge chưa giao làm dependency chặn M3. Codex solo luân phiên hai nhánh công việc,
-   không có worker/runtime đồng thời. [CP243](PROTOCOL.md#rust-account-worker) đã có boundedworker/handoff/compensation; M5 còn idleTTL/rate, authlease nhiều transport và native bridge;
+   không có subagent hoặc hai thí nghiệm runtime đồng thời; DBworker là thread trong backend. [CP243](PROTOCOL.md#rust-account-worker) đã có boundedworker/handoff/compensation; [CP244](PROTOCOL.md#rust-account-idle-rate) thêm idleTTL/rate; M5 còn authlease nhiều transport/worker-to-KR và native bridge;
    inventory/progression/resultreward ở M6, restore đầy đủ ở M8. [CLI/giới hạn](../rust/README.md#account-admin-cli).
    [CP235](PROTOCOL.md#rust-m2-acceptance)/[checklist](evidence/rust-service/m2-acceptance.json) chốt M2:
    bootstrap→identity/sảnh→fixedroom/ownslots→hostBack/chief→rejoin/Ready→native2actualloadingbarrier/spawn;
@@ -90,21 +90,23 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
    không lặp lại hay broadRE. Native contest chỉ một actual124/index17/epoch, hai claimant kiểm kernel riêng.
    [CP243](PROTOCOL.md#rust-account-worker) đã giao worker DB/hash/thread riêng/queue1–64+one active,
    cancel/queueexpiry/handoff/compensate exact token/audit và rootfault/join, 5retainedDBs/49tests.
-   **Tiếp M5 idle TTL và per-principal rate**, giữ backward-compatible schema migration/counter/evidence;
-   native ownership bridge tách riêng. Không gọi queue TTL là idleTTL/sessionexpiry hoặc rate limit.
-   Sau lát cắt backend này chuyển M4 baselinefour rồi eight theo contract đã có; không chờ fullauth/SDK/generalroom.
+   [CP244](PROTOCOL.md#rust-account-idle-rate) đã giao schema2/idleTTL opt-in và per-principal rate worker
+   (process-local),55tests/7workerDBs/5schema1copies-10CLIopens/33CLIregression; 0001 hash và mọi old rows giữ.
+   **Tiếp M4 baseline bốn rồi tám client** theo contract đã có; M5 native ownership bridge/worker-to-KR riêng,
+   chỉ RE khoảng trống route/token/multi-socket thật sự chặn binding. Không chờ fullauth/SDK/generalroom.
+   Queue TTL/handoff khác idleTTL/sessionexpiry/rate; typed backend đã đạt không chứng minh KR authentication.
    LoadingEOF/EOF khi Ending đã chọn có giới hạn riêng, không suy mọi disconnect. Logger supervision giữ lỗi gốc;
    kernelR2 flush timeout khi inputcopy chạy đồng thời, repeatR3/R5pass, rootcause chưa rõ/deadline giữ nguyên.
    Giữ report-derived/designauthority; M5backend độc lập, không chờ fullauth/SDKRE.
    Opaque167/body4,16hoặc32 giữArmedmember/budget64/noACK-effect-forward/semanticsunknown; không mởmọiopcode.
    Catalog lấy từcùng582 đã pin, hiddenlist2 chỉeligible saucurrentclearance+142đúngô; `123/10` là observedopaque có budget64/Armedmember,
-   noACK-effect-forward, semanticsunknown. Không lấy nativepositive để suy originalauthority/fullmovementlaw/M3complete.
+   noACK-effect-forward, semanticsunknown. Không lấy nativepositive để suy originalauthority/fullmovementlaw hoặc chức năng ngoài scope M3 đã nghiệm thu CP242.
    Chọn backend/config trước run, freeze đến seal/cleanup; Python giữ reference/serving và rollback.
    Sprite/scene sau active hostEOF đã có control CP241; không backfill CP235/240107-110 giữa Battle thành fullreturn.
    Native wrong-version error UI chưa kiểm; guard unsupportedoperatorprofile trước bind đã đủ scope M2 được nêu rõ.
    Shutdown timeout CP234 chưa rõ rootcause, tái hiện kernelCP237/SIGKILLwait rồiPIDgone;22caserepeatinstrumented đạt; giữ phép đo PID/thread
    khi tái hiện ở M7, không tăng deadline hoặc gọi đã fix. Không mở fullauth/SDK/generalroom/broadRE làm dependency.
-   Pythonrollback/8WIP giữ; AUD069 quaCP240 đã audit README→PLAN→PROTOCOL→RESEARCH→evidence/code/raw, audit kếCP244.
+   Pythonrollback/8WIP giữ; AUD070 quaCP244 audit README→PLAN→PROTOCOL→RESEARCH→evidence/code/raw, audit kếCP248.
 2. **NEXT-AUTH-SESSION-BINDING — blocked sameprocessrecovery**: [CP224](PROTOCOL.md#auth-retry-validation)
    fullretryfatal sauhello/validation1; [CP225](PROTOCOL.md#auth-fresh-process) getter12562C0 trả11→storeEBP-28
    trước setter12562F0(request1), errorlocal10. FreshprocessBnewlease/sessionpositive/invalidtokennegative đã đo;
@@ -127,7 +129,7 @@ Team source WIP giữ nguyên/chưa merge, không chọn làm baseline Rust.
 
 
 [Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
-[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP235 M2scopedaccepted/CP242 M3scopedaccepted; M5idleTTL/rate tiếp rồiM4 giữ ở mục1, M0/M1 giữ scope, không nâng K0–K7/fullservice; AUD069 qua240/audit kếCP244.
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP235 M2scopedaccepted/CP242 M3scopedaccepted; M4four/eight tiếp và M5bridge riêng giữ ở mục1, M0/M1 giữ scope, không nâng K0–K7/fullservice; AUD070 qua244/audit kếCP248.
 
 <a id="rust-service-milestones"></a>
 ### Milestone Rust: dependency, đầu ra và nghiệm thu
@@ -142,9 +144,9 @@ Owner/selfcheck Codex, independentreviewwaived; PR/exacthead vẫn bắt buộc.
 | RUST-M0 Baseline/reproducibility | Đạt scopeCP231: exactPython784a0d8/archive/server-tools/47fixturepins/CP181recipe/rollback; támWIP loại khỏi baseline. Không standaloneclientbundle |
 | RUST-M1 Foundation + wire/connection chạy native | Đạt scopeCP231: Rustmode2/selector3/pinnedhello-WCP/nativeerror1→ordinaryretry→error1/seqreset;5wire+14TCPcases. Chưa login thành công/sảnh/fullcodec; M2 tiếp, M5backend độc lập |
 | RUST-M2 Bootstrap→local login/identity→sảnh→fixedroom | CP235đạt scoped:2actualfixedroom/ownslots/hostBack-rejoin/Ready/barrier/clock-spawn+healthyBsessionEOF;negative/profileguard có phương pháp và giới hạn. Khôngaccountauth/generalroom/Battle. Diagnosticidentity không fullauth, tiếp contract đã biết |
-| RUST-M3 Hai client native→Battlebasic→result/reset/trận2 | CP242 scopedaccepted: CP237–241 movement/bom/terrain/life/oppositeoutcomes/activehostEOF + native itemreset/contest/exactoldUDP-currentpositive/Start3/queue controls. Không fullgame; M5workerCP243 đã có, idleTTL/rate tiếp trướcM4. M2; account/DB backend không cần đợi M3. GiữUDP trực tiếp, không authoritativeengine rewrite |
+| RUST-M3 Hai client native→Battlebasic→result/reset/trận2 | CP242 scopedaccepted: CP237–241 movement/bom/terrain/life/oppositeoutcomes/activehostEOF + native itemreset/contest/exactoldUDP-currentpositive/Start3/queue controls. Không fullgame; M5backendworker/idleTTL/rate CP243–244 đã có; M4 tiếp. M2; account/DB backend không cần đợi M3. GiữUDP trực tiếp, không authoritativeengine rewrite |
 | RUST-M4 Bốn rồi tám/đội hình cố định theo contract | M3; baselinefourmain trước eight; dùng CP213teamdelta sau deliveryriêng, không chờ mọi item/mission |
-| RUST-M5 Account/profile/DB và sessionownership | CP236 backend SQLite/Argon2id/identity-profile/session/auditCLI và CP243 boundedworker/handoff/compensation đã có; chưa idleTTL/rate/native bridge/fullM5. Backend có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
+| RUST-M5 Account/profile/DB và sessionownership | CP236 backend SQLite/Argon2id/identity-profile/session/auditCLI và CP243 boundedworker/handoff/compensation đã có; CP244 thêm idleTTL/rate/schema2; chưa KRserving/ownershipbridge/fullM5. Backend có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
 | RUST-M6 Inventory/progression/result-reward durability | Backend M5, actualmatchinput M3; KRwireprojection/effect cần từngconsumer. Không cần full8/mọiitem để làm ledger |
 | RUST-M7 General lobby/rooms/selection và userflows cần cho nội bộ | M2 + M5ownership, M3lifecycle; M4 chỉ cần nếu mở8capacity. RE roomlist/member/character/team/equip theo phép đo, không mọi mode |
 | RUST-M8 Hardening/admin/backup/restore/package và nghiệm thu service | M1–3/M5–7 cho internalservice; M4 nếu quảng bá4/8 theo scope. Ops/tests phát triển từM1, không chờ cuối mới thêm |
@@ -238,7 +240,7 @@ chuyển milestone khi từng capacity advertised đủ; không chờ modesphụ
 
 **RUST-M5 — account/profileDB và ownership; có thể tiến hành độc lập gameplay.**
 CP236 đã có [backend](PROTOCOL.md#rust-account-backend)/[CLI](../rust/README.md#account-admin-cli) dùng SQLite thật;
-[CP243](PROTOCOL.md#rust-account-worker) có boundedworker/handoff; chưa KRbridge/idleTTL/per-account-ratelimit/productionrestore nên **không đóng M5**. Không bắt M3/M4 đợi phần đó.
+[CP243](PROTOCOL.md#rust-account-worker) có boundedworker/handoff và [CP244](PROTOCOL.md#rust-account-idle-rate) có idleTTL/rate/schema2; chưa KRbridge/worker-to-serving/productionrestore nên **không đóng M5**. Không bắt M3/M4 đợi phần đó.
 Module application/accounts/profiles/session/store/sqlite/migrations/adminCLI; architecture định schema/invariants.
 Backendimplementation: Argon2id/PHC/CSPRNG/hash-atrest/sessionTTL-revoke/oneactive; account→player→wireidentity,
 lease nhiềustage/sockets thay rolearrival/sourceIP, nameencoding/bounds, schema/version/conflict/startupvalidation.

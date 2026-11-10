@@ -1,0 +1,106 @@
+{
+  "id": "AUD070",
+  "trigger": "periodic",
+  "completed_through": "CP244",
+  "recorded_utc": "2026-11-10T06:59:09.229724+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/rust-service/README.md",
+    "docs/evidence/rust-service/account-idle-rate.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "rust/crates/kr-service/src/account_worker.rs",
+    "rust/crates/kr-service/src/account_worker/rate.rs",
+    "rust/crates/kr-service/src/account_worker/tests.rs",
+    "rust/crates/kr-service/src/accounts.rs",
+    "rust/crates/kr-service/src/accounts/tests.rs",
+    "rust/crates/kr-service/src/bin/kr-admin.rs",
+    "rust/crates/kr-service/migrations/0002_session_idle.sql",
+    "tools/test_rust_accounts.py",
+    "tools/test_rust_account_worker.py",
+    "tools/test_rust_idle_migration.py",
+    "docs/evidence/checkpoints/audits/AUD069.json",
+    "docs/evidence/rust-service/m3-acceptance.json",
+    "docs/evidence/rust-service/account-worker.json",
+    "local/research/codex/rust-m3-controls-native-r5/controls-verification.json",
+    "local/research/codex/rust-m3-controls-native-r5/ui-review.json",
+    "local/research/codex/rust-m3-controls-native-r5/native-controls/raw-seal.json",
+    "local/research/codex/rust-account-worker-acceptance-r1/verification.json",
+    "local/research/codex/rust-idle-rate-worker-acceptance-r1/verification.json",
+    "local/research/codex/rust-idle-migration-acceptance-r1/verification.json",
+    "local/research/codex/rust-idle-rate-cli-acceptance-r2/verification.json",
+    "local/research/codex/rust-idle-rate-delivery-r1/manual-acceptance.json"
+  ],
+  "method": "Manual README→PLAN→PROTOCOL→RESEARCH→evidence/source review CP241–244. NativeCP241-242 already read/PCAP-wrapper-UI reviewed inthissession;backendDBpolicy/raw-DBschema/audit-activecounts/migrationconservation reviewed separately. Checker hashes/historynotsemantics. No oldcomplete/audit/raw rewrite or counterreset.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CurrentPLAN still warned M3complete and RESEARCHQ1 still said next M3native after CP242 manual acceptance.",
+      "correction": "State M3 scopedacceptedCP237–242 with nativeOScontestactual124 limit/oppositeCP240/EOFCP241;nextM4capacity,M5bridge separate,notfullgame.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "M5worker/idleTTL/rate missing currentstate becomesstale after CP243/244; no-worker instruction could be confused with DB thread.",
+      "correction": "State backendStoreCP236/workerCP243/idle-rate-schema2CP244present;no AI subagent/no concurrentexperiments,DBthreadinternal. NativeKRauthlease/worker-to-serving still missing, M5partial.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Schema1requiresmigrationandCLIinitliteral1wouldmisreportactualschema; risk upgradingbeforevalidatingoldliveobjects or changingoldsessionTTL.",
+      "correction": "Keep0001bytehash;validateoldchecksum/liveSchemafirst,transaction002,oldidleNULL/absoluteTTL,CLIreports2.5copyDBs/alloldrows/10opens,SQLiteFULLrollback reviewed;no oldevidenceDBmutation/downgrade.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/accounts.rs",
+        "rust/crates/kr-service/src/bin/kr-admin.rs",
+        "rust/crates/kr-service/migrations/0002_session_idle.sql",
+        "tools/test_rust_idle_migration.py"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Accountbackend/oneshotreply/rate could be overclaimed as KRownership, durableglobalrate or successfulcompensation.",
+      "correction": "CP243handoffclaim/exacttoken/auditfaultrollbackmayleaveactive1;CP244rateprocesslocal/reopenreset/fullqueue-nocharge,oldabsolutevsnewidle/no nativeKRbridge. 7DBstates/FK/schema/audit counts manually compared. No authgate/epicclosure.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/account-worker.json",
+        "docs/evidence/rust-service/account-idle-rate.json"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "CLIregressionR1preflight did not separately pin new002source though binaryfrozen/33casespassed.",
+      "correction": "PreserveR1;add002sourcepinbeforeR2/33casespass. NativeCP242frozenbinaryremainsnativebaseline,newbackendbuildnotnativecertified. Runtime/R4sinkoriginalcause/CP237shutdownanomaly remainunknown.",
+      "fixed_in": [
+        "tools/test_rust_accounts.py",
+        "docs/evidence/rust-service/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Backenddesign/schema2/typedworker only; chưa KR account/transport lease/serving startup integration hoặc native authentication, M5 partial.",
+    "Old schema1 sessions giữ absolute TTL; idleTTL chỉ API login_with_idle mới, successful own-player authorize gia hạn.",
+    "Per-worker process-local fixed window, default5attempt/60s/1024principals, không global/durable/multiprocess/IP/device/network abuse defense; reopen reset rate. Store/adminCLI trusted bypass worker limiter.",
+    "Queuefull/closed không charge; admittedcancellation vẫn charge; default policy là companydesign không luật server KR gốc.",
+    "Schema2 không downgrade; rollback dùng binary hiểu schema2 hoặc restore đã kiểm/backup riêng, không xóa users/DB. OSdiskfull/backuprestore/load chưa nghiệm thu.",
+    "M3 native CP242 baseline giữ; build mới backend-only chưa native-certified. Internet thật chưa kiểm.",
+    "CP237shutdownanomaly/CP242flushstallcausalrootcauseunknown;supervisionfixnotlatencyfix.",
+    "Nativecontestonlyoneactual124/index17/epoch;two-claimantkernel separate.",
+    "SameprocessretryfatalCP224/EOFreceiverCP220blocked;reopenonlynewobservable/milestonedependency.",
+    "M4four-eight portnext;M6inventoryreward/M7generalrooms/M8restore-loadnotaccepted."
+  ]
+}

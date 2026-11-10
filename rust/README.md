@@ -246,3 +246,15 @@ Result bỏ sau commit chỉ revoke token đó/audit; audit lỗi đóng worker/
 [Contract/limits](../docs/PROTOCOL.md#rust-account-worker), [raw/hash](../docs/evidence/rust-service/README.md#cp243).
 Kiểm với `python3 tools/test_rust_account_worker.py --out local/<new-private-dir>`:5worker cases/5retainedSQLiteDBs,
 source/testbinary pinned/PIDgone. Đây là backenddesign, không nativeKRbridge/idleTTL/rate/fullM5.
+
+
+## Schema2 idle TTL và login rate — CP244
+
+[Contract/limits](../docs/PROTOCOL.md#rust-account-idle-rate). `Worker::open` dùng rate5/60s/1024principal;
+`open_with_rate(..., RatePolicy)` đổi policy trong bounds. `try_login_with_idle(..., ttl, idle, utc)` bật idle cho phiên mới;
+`try_login`/adminCLI giữ absolute-only. Chỉ correct ownplayer authorize gia hạn; chưa gắn KR socket.
+Schema1 tự migrate transaction lên2, giữ mọi old rows/0001hash/oldidleNULL; CLIinit báo2. Không downgrade về binaryschema1.
+Rate per-worker, sharedclones, không global/durable; fullqueue không charge, admittedcancel charge.
+`test_rust_account_worker.py` giữ7schema2DBs; `test_rust_idle_migration.py --binary rust/target/debug/kr-admin
+--baseline local/research/codex/rust-account-worker-acceptance-r1 --out local/<new-private-dir>` kiểm5copyDB cũ,
+10CLIopens và full old-row conservation. Baseline CP243 không sửa; raw không publish.

@@ -1,7 +1,9 @@
 //! Typed bounded account queue; blocking SQLite/KDF work stays off Tokio tasks.
 //! No KR socket adapter. Queue expiry is checked before execution, not a timeout
 //! or rollback guarantee for an operation already running in SQLite/Argon2.
+mod rate;
 use crate::accounts::{self, Grant, Player, Store, Token};
+pub use rate::RatePolicy;
 use std::{
     path::PathBuf,
     sync::{Arc, Condvar, Mutex},
@@ -17,6 +19,7 @@ pub enum Error {
     Busy,
     Closed,
     QueueExpired,
+    RateLimited,
     WorkerFault,
     Backend(accounts::Error),
 }
@@ -97,7 +100,11 @@ impl Handoff {
         Ok(*state == Delivery::Claimed)
     }
 }
-type Gate = Arc<Mutex<Option<mpsc::Sender<Command>>>>;
+struct Admission {
+    sender: Option<mpsc::Sender<Command>>,
+    limiter: rate::Limiter,
+}
+type Gate = Arc<Mutex<Admission>>;
 #[derive(Clone)]
 pub struct Client {
     gate: Gate,
@@ -113,6 +120,7 @@ enum Command {
         login: String,
         password: Zeroizing<Vec<u8>>,
         ttl: i64,
+        idle: Option<i64>,
         now: i64,
         deadline: Instant,
         reply: oneshot::Sender<Result<Grant>>,
@@ -135,7 +143,7 @@ enum Command {
     Panic,
 }
 fn close(gate: &Gate) {
-    gate.lock().unwrap_or_else(|e| e.into_inner()).take();
+    gate.lock().unwrap_or_else(|e| e.into_inner()).sender.take();
 }
 struct CloseOnExit(Gate);
 impl Drop for CloseOnExit {
@@ -149,13 +157,24 @@ impl Worker {
     /// Does not begin a new boot epoch/revoke sessions; that remains explicit.
     /// Bounds: 1..64 queued jobs plus one running, 1ms..60s queue TTL and, separately, result handoff TTL.
     pub async fn open(path: PathBuf, capacity: usize, queue_ttl: Duration) -> Result<Self> {
+        Self::open_with_rate(path, capacity, queue_ttl, RatePolicy::default()).await
+    }
+    pub async fn open_with_rate(
+        path: PathBuf,
+        capacity: usize,
+        queue_ttl: Duration,
+        rate: RatePolicy,
+    ) -> Result<Self> {
         if !(1..=64).contains(&capacity)
             || !(Duration::from_millis(1)..=Duration::from_secs(60)).contains(&queue_ttl)
         {
             return Err(Error::InvalidInput);
         }
         let (tx, rx) = mpsc::channel(capacity);
-        let gate = Arc::new(Mutex::new(Some(tx)));
+        let gate = Arc::new(Mutex::new(Admission {
+            sender: Some(tx),
+            limiter: rate::Limiter::new(rate)?,
+        }));
         let client = Client {
             gate: gate.clone(),
             queue_ttl,
@@ -217,6 +236,7 @@ impl Client {
     fn submit(&self, command: Command) -> Result<()> {
         let guard = self.gate.lock().map_err(|_| Error::Closed)?;
         guard
+            .sender
             .as_ref()
             .ok_or(Error::Closed)?
             .try_send(command)
@@ -228,7 +248,7 @@ impl Client {
     pub fn is_closed(&self) -> bool {
         self.gate
             .lock()
-            .map(|g| g.as_ref().is_none_or(mpsc::Sender::is_closed))
+            .map(|g| g.sender.as_ref().is_none_or(mpsc::Sender::is_closed))
             .unwrap_or(true)
     }
     pub fn try_login(
@@ -236,6 +256,29 @@ impl Client {
         login: &str,
         password: &[u8],
         ttl: i64,
+        now: i64,
+    ) -> Result<Pending<Grant>> {
+        self.submit_login(login, password, ttl, None, now)
+    }
+    pub fn try_login_with_idle(
+        &self,
+        login: &str,
+        password: &[u8],
+        ttl: i64,
+        idle: i64,
+        now: i64,
+    ) -> Result<Pending<Grant>> {
+        if !(1..=86400).contains(&idle) {
+            return Err(Error::InvalidInput);
+        }
+        self.submit_login(login, password, ttl, Some(idle), now)
+    }
+    fn submit_login(
+        &self,
+        login: &str,
+        password: &[u8],
+        ttl: i64,
+        idle: Option<i64>,
         now: i64,
     ) -> Result<Pending<Grant>> {
         // Bound all secret/name allocation before admission, including rejected jobs.
@@ -251,16 +294,34 @@ impl Client {
         }
         let (reply, rx) = oneshot::channel();
         let handoff = Handoff::new();
-        self.submit(Command::Login {
+        let command = Command::Login {
             login: login.into(),
             password: Zeroizing::new(password.to_vec()),
             ttl,
+            idle,
             now,
             deadline: Instant::now() + self.queue_ttl,
             reply,
             handoff: handoff.clone(),
             handoff_ttl: self.queue_ttl,
-        })?;
+        };
+        let key = rate::Limiter::key(login);
+        let now_monotonic = Instant::now();
+        let mut guard = self.gate.lock().map_err(|_| Error::Closed)?;
+        if guard.sender.as_ref().is_none_or(mpsc::Sender::is_closed) {
+            return Err(Error::Closed);
+        }
+        guard.limiter.check(key, now_monotonic)?;
+        guard
+            .sender
+            .as_ref()
+            .ok_or(Error::Closed)?
+            .try_send(command)
+            .map_err(|e| match e {
+                mpsc::error::TrySendError::Full(_) => Error::Busy,
+                mpsc::error::TrySendError::Closed(_) => Error::Closed,
+            })?;
+        guard.limiter.commit(key, now_monotonic);
         Ok(Pending {
             reply: Some(rx),
             handoff: Some(handoff),
@@ -326,6 +387,7 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>) -> Result<()> {
                 login,
                 password,
                 ttl,
+                idle,
                 now,
                 deadline,
                 reply,
@@ -339,9 +401,11 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>) -> Result<()> {
                     let _ = reply.send(Err(Error::QueueExpired));
                     continue;
                 }
-                let result = store
-                    .login(&login, &password, ttl, now)
-                    .map_err(Error::Backend);
+                let result = match idle {
+                    Some(idle) => store.login_with_idle(&login, &password, ttl, idle, now),
+                    None => store.login(&login, &password, ttl, now),
+                }
+                .map_err(Error::Backend);
                 deliver_login(store, reply, result, now, &handoff, handoff_ttl)?;
             }
             Command::Authorize {

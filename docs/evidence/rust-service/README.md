@@ -333,3 +333,21 @@ Clippy-r1 collapsible-if failure giữ, r2/r3pass trước acceptance. Testpanic
 không là native client crash. BackendCLI/absoluteTTL CP236 giữ; chưa idleTTL/rate/KRauthlease/bridge/sessionresume/restore/load.
 Không chạy lại M3positive để tăngCP: baseline nativeCP242 vẫn pin riêng, binarybuildCP243 không tự chứng minh native compatibility.
 PLAN tiếp idleTTL/rate M5 rồiM4; audit kếCP244/không reset. Python8WIP giữ nguyên. Internet thật chưa kiểm.
+
+
+<a id="cp244"></a>
+## CP244 — schema2 idleTTL/rate backend và AUD070; M5 vẫn partial
+
+[Contract](../../PROTOCOL.md#rust-account-idle-rate), [metadata](account-idle-rate.json), [PLAN](../../PLAN.md#current-order).
+BaselineCP243/PR314/mergeddc71e33. 0001hash/schema1 history giữ; 002transaction validateoldschema-first/checksum/version,
+nullableidleoldrows; CLIinit schema2. Backenddesign, không KRwire/newnative RE hoặc nativeauth/servingintegration.
+`local/research/codex/rust-idle-rate-worker-acceptance-r1/`:7worker cases/7schema2DBs/54pinnedfiles/sourcefrozen/PIDgone.
+`rust-idle-migration-acceptance-r1/`:5sealedCP243DB copies/10CLIopens/109files, independent hashes/counts mọi oldbusiness
+rows/schema1→2/repeatopen/FK/integrity/oldidleNULL; originalbaselineunchanged. `rust-idle-rate-cli-acceptance-r2/`
+giữ33CLIprocess/2account/9audit, regressionabsoluteTTL. R1cũngpass nhưngpreflightchưapin002riêng; giữR1, thêm002pintrướcR2. Migrationraw/filehash/report và testbinary frozen local/private.
+55Rusttests/fmt/clippy/lockedbuild; logs rust-idle-rate-*-final.txt. Initialcompilefail missingidleparameter và oldtestissuearg
+giữclippy-r1/r2; sửa trước runs. Unit002SQLiteFULL rollback dùngmax_page_count, khôngOSdiskfull.
+AUD070 đối chiếu README→PLAN→PROTOCOL→RESEARCH→evidence/code/raw CP241–244; nextCP248/không reset.
+Sửa currentPLAN/RESEARCH staleM3partial wording, không sửa completecheckpoint/audit/raw cũ. M3CP242nativebaseline giữ;
+M5backendidle/rate đạt subset, bridge/ownership/worker-to-KR chưa đủ. TiếpM4four/eight, không broadSDK/duplicatepositive.
+Internet thật chưa kiểm.

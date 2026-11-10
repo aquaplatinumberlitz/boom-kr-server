@@ -34,6 +34,7 @@ def main():
                     Path('rust/crates/kr-service/src/accounts/tests.rs'),
                     Path('rust/crates/kr-service/src/bin/kr-admin.rs'),
                     Path('rust/crates/kr-service/migrations/0001_accounts.sql'),
+                    Path('rust/crates/kr-service/migrations/0002_session_idle.sql'),
                     Path(__file__), binary]
     frozen = root / 'frozen'
     frozen.mkdir(mode=0o700)

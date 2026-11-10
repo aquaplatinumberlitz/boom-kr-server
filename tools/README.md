@@ -246,3 +246,9 @@ Gói `eight-client-battle` vẫn khóa4v4/Free và từ chối override hai flag
 `test_rust_account_worker.py --out local/<new-private-dir>`: build locked Rust testbinary, giữ source/testbinary,
 chạy5 boundedworker cases trên realSQLite/KDF/current-threadTokio, giữ5 DB và kiểm integrity/FK/schema/audit/active.
 Chỉ backend design; expected fault/panic trong test log, không KR/client/native account acceptance.
+
+
+Từ CP244, `test_rust_account_worker.py` chạy7worker cases/7schema2DBs; mô tả5DB phía trên là scopeCP243.
+`test_rust_idle_migration.py --binary <kr-admin> --baseline <sealed-CP243-worker-root> --out <new-private-dir>`
+chỉ nâng5DB copies/mở10CLIprocess, so mọi oldbusinessrows/0001checksum/oldidleNULL/schema2. Không sửa baseline,
+không backup/restore production hoặc nativeKR auth proof.

@@ -8811,3 +8811,41 @@ binary build mới không tự thành native-certified; M3 native baseline/froze
 
 M5 vẫn thiếu idleTTL/per-account rate/authenticated multi-transport lease/nativeKRbridge; M6inventory/reward và M8restore/load
 riêng. [PLAN](PLAN.md#current-order) tiếp idleTTL/rate rồiM4, audit kếCP244. Internet thật chưa kiểm.
+
+<a id="rust-account-idle-rate"></a>
+## Account idle TTL và worker rate limit, schema2 — CP244 / M5 partial
+
+[Store/migrate](../rust/crates/kr-service/src/accounts.rs), [migration002](../rust/crates/kr-service/migrations/0002_session_idle.sql),
+[limiter](../rust/crates/kr-service/src/account_worker/rate.rs), [metadata](evidence/rust-service/account-idle-rate.json),
+[raw/hash](evidence/rust-service/README.md#cp244). Nguồn `design/design`, không contract KR gốc; không native RE mới.
+
+Mở DB xác minh AppID/version/checksum và **actual schema cũ trước upgrade**, rồi 002/version/checksum/schema trong
+transaction. 0001 source/hash giữ nguyên. Schema2 thêm nullable idle_timeout_seconds/last_seen_at +partialindex;
+mọi old account/player/wireID/profile/PHC/session tokenhash/audit/UTC giữ nguyên, session cũ idleNULL dùng absoluteTTL.
+Future/corrupt/checksum sai bị reject; SQLiteFULL trong002 rollback columns/version/data, retry khi đủpages đạt.
+CLI init trả schema2 thực, không giữ literal1 sai. Không downgrade/deleteusers; oldbinary schema1 reject2 đúng chủ ý.
+
+API `Store::login_with_idle`/`Client::try_login_with_idle`: idle1..86400s explicit cho **new session**. Chỉ authorize đúng
+currenttoken+ownplayer+epoch+credentialversion/disabled+absoluteTTL+idlewindow mới ghi last_seen=UTC. Boundary now≥last+idle
+bị từ chối; wrongplayer/token không gia hạn. Renew không vượt absoluteTTL; durable UTCwatermark và reopen không revive
+expiredtoken khi clock lùi. New login transaction revoke idle-expired active trước cấp session khác; ban/revoke/reset vẫn thắng.
+Không tự dùng socketalive/heartbeat tùy ý làm activity hoặc đổi luật phiên cũ; KRbridge phải chỉ gọi authorize tại đúng seam.
+
+Worker admission dùng chung một mutex/limiter cho mọi Clientclone, casefold principal ASCII trước SHA256 key.
+Fixedwindow monotonic: default5attempt/60s/1024principal; `open_with_rate` cho1..1000attempt,1..3600s,1..4096principal.
+Full/closed queue không charge; acceptedjob dù caller cancel vẫn charge. Unknownprincipal cùng policy; tablefull chỉ prune
+expired, không evict activekey để cho attacker đổi tên. RateLimited trước KDF. Store/adminCLI trusted không đi limiter;
+rate process-local mỗi worker, reopen reset; không distributed/global/network/IP/device/production abuse defense.
+Authorize chưa per-session/networkrate, queue vẫn hữu hạn; nativecredential/multi-transport ownership chưa nối.
+
+55Rusttests:50service+5wire. 7worker cases/7retained schema2 DBs; clone/casefold/fullqueue-nocharge/cancelcharge/unknown/
+fulltable/reopen và idle đúngowner/wrongplayer/externalrevoke. Limiter model kiểm exactwindow/clockreverse/noactiveeviction.
+Migration harness độc lập:5 bản sao DB CP243 đã seal,10CLIinit mở lần đầu/lặp lại; so hash/count **mọi cột cũ ở mọi bảng
+business**, schema1→2/checksum, oldidleNULL/FK/integrity; baseline không mở hoặc sửa, copy-only. SQL FULL ở unit test là
+SQLite max_page_count, không OSdiskfull. 33CLI account regression trên schema2 riêng. Source/binary/input giữ từ preflight
+đến seal/processgone; raw credentials chỉ private local. Không lấy Python/Rust đồng ý thay native authentication.
+
+AUD070 quaCP244 đối chiếu CP241–244, sửa PLAN/RESEARCH còn gợi M3 chưa xong và phân biệt DBworker với subagent;
+reviewwaived/Codexselfcheck, checker không xác nhận ngữ nghĩa/gate. M5 vẫn partial: nativeKRbridge/transportownership/
+worker-to-serving thiếu; inventory/reward/restore/load riêng. M3nativebaselineCP242 giữ, rootbuild mới chưa nativecertified.
+[PLAN](PLAN.md#current-order) tiếp M4four/eight và M5bridge theo gap thực tế; audit kếCP248. Internet thật chưa kiểm.
