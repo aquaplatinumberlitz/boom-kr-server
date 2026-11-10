@@ -208,3 +208,23 @@ wrongowner, dummyKDF/PHCbounds/processquota, auditabort/SQLiteFULLpagecap/alloca
 entropyfault và future/checksum/missinguniqueindex/privatepath. Không suy testmodel hoặc CLI là nativeKRauth.
 M5 giữpartial (bridge/lease/worker/idleTTL/rate/restore); M3knownUDPmovement kế tiếp, không phụ thuộc fullauth.
 AUD068 periodic qua236; next240. #14/#285OPEN/Python+8WIP giữ; Internet thật chưa kiểm.
+
+
+<a id="cp237"></a>
+## CP237 — Rust native movement hai chiều và floor124→165
+
+[Contract](../../PROTOCOL.md#rust-movement-floor), [metadata](movement-floor.json), [code/run](../../../rust/README.md).
+Baseline CP236/PR307/9748dcb, Codexsolo/tựkiểm/reviewwaived. Giữ Python/8WIP; M3partial, K0–K7khôngnângscope.
+
+Ba root `local/research/codex/rust-m3-movement-r1`, `-r2`, `-r3` giữ lần lượt51/55/58raw (164runtime raw tổng),
+preflight/retainedinput/frozenbinary/helper/config, recipe vàcleanup0. R1C2S124/19 chưaadapter closesA (127/185đãaccept);
+R2floor165nativepositive nhưngB123/10closesB/onephase; R3boundedopaque123policy vàhai movementwindows/6shold đạt.
+`movement-verification.json`, `peer-getter-verification.json`, `peer-crc-verification.json`, `ui-review.json`,
+`native-oracle-byte-review.json` tại rootR3. R3binarye1ae6aeb…/run2206fd89…; TCP368/58reply, UDP217/87APIjoins,
+696copiedgetters/87CRC; mỗi165native12/error0/found17/5E8:5→6. Chuỗi byte không phát hành, chỉ metadata/hash.
+
+`rust-m3-final-tests.txt`/fmt/clippy/build và `rust-m3-floor-final-r2/room/verification.json` giữ30tests/22TCPcases.
+`rust-m3-floor-final/room` giữ kernelshutdownfailure/SIGTERM-SIGKILLdeadline/PIDgonepostinspection/không đủPIDstate;
+instrumentedrepeatpass khôngrootcausefix. Hai failedunit-test logs giữ để truytestfixture sửa endian/teardown;
+không gán là lỗi runtimeparser. REApacketprovider chưa có, stdlibPCAPjoins không là REAEvidence; copiedKRmodO/native
+Unicorn/helperbytes có provenance riêng. Không nativeaccountauth/bom/result-reset/fullM3. Audit kếCP240; Internet thật chưa kiểm.

@@ -111,6 +111,10 @@ kr-wire không Tokio/DB/domain; parse trả lỗi+bounds, không tự authorizec
 cho deterministiclifecycle và binaryLinux. Chưa cần kr-game/kr-storecrate, engine/render/clientRustmới
 hoặc boom-coredependency. Unknownfield giữ kiểu opaque+hash profile/limits, không tự đặt tên auth/session.
 
+CP237 đã thêm [floor pickup](PROTOCOL.md#rust-movement-floor) từcùng582pin vào roomowner/clone+reservequeues,
+không nhập DB/inventory/reward vào worlditem. NativeUDP/movement/floorRoller đã đo; M3bomb/life/result-reset cònthiếu.
+Opaque123/10 chỉboundedobserve, không contractsemantics/authority; giữ unknown trong RESEARCH.
+
 Dòng dữ liệu: nativeTCP→reader/codec mỗi connection/direction→stage/session adapter→owner phòng→
 policy/ticket timer→boundedwriter→native. Applicationcommands/resultIDs→boundedDB worker→transaction/outbox;
 adminCLI/HTTPSdesignAPI đi qua cùng application layer. PeerUDPdirect theo153, không phải Rustsnapshot.

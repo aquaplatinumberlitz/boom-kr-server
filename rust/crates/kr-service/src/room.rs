@@ -19,6 +19,7 @@ pub struct Member {
     pub ready: bool,
     pub setup: bool,
     late_after_abort: u16,
+    opaque123: u16,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Phase {
@@ -40,6 +41,7 @@ pub struct Room {
     visit: u64,
     round: u64,
     aborted: Option<(u64, Vec<Membership>)>,
+    pub(crate) pickups: crate::pickups::Round,
 }
 impl Default for Room {
     fn default() -> Self {
@@ -50,6 +52,7 @@ impl Default for Room {
             visit: 0,
             round: 0,
             aborted: None,
+            pickups: crate::pickups::Round::default(),
         }
     }
 }
@@ -102,6 +105,7 @@ impl Room {
                 ready: false,
                 setup: false,
                 late_after_abort: 0,
+                opaque123: 0,
             },
         );
         if create {
@@ -162,6 +166,7 @@ impl Room {
                 .min_by_key(|m| m.slot)
                 .map(|m| m.key.identity);
         }
+        self.pickups.finish();
         self.phase = Phase::Idle;
         for m in self.members.values_mut() {
             m.ready = false;
@@ -187,6 +192,9 @@ impl Room {
             .checked_add(1)
             .ok_or_else(|| io::Error::other("round counter exhausted"))?;
         let roster = self.members.values().map(|m| m.key).collect();
+        for member in self.members.values_mut() {
+            member.opaque123 = 0;
+        }
         self.aborted = None;
         self.round = round;
         self.phase = Phase::Loading {
@@ -195,6 +203,19 @@ impl Room {
             loaded: BTreeSet::new(),
         };
         Ok(round)
+    }
+    /// Opaque actual123/body10 while Armed: bounded reference no-response policy,
+    /// not recovered message semantics. No queue, world, inventory or ACK effect.
+    pub fn observe_opaque123(&mut self, key: Membership) -> io::Result<()> {
+        if !self.current(key) || !matches!(self.phase, Phase::Armed { .. }) {
+            return Err(io::Error::other("opaque123 current armed member required"));
+        }
+        let member = self.members.get_mut(&key.identity).expect("current member");
+        if member.opaque123 >= 64 {
+            return Err(io::Error::other("opaque123 observation budget"));
+        }
+        member.opaque123 += 1;
+        Ok(())
     }
     pub fn observe_after_abort(&mut self, key: Membership) -> io::Result<()> {
         if !self.current(key)
@@ -250,6 +271,31 @@ mod tests {
         r.setup(b).unwrap();
         r.ready(b).unwrap();
         (r, a, b)
+    }
+    #[test]
+    fn opaque123_has_current_armed_membership_and_finite_per_round_budget() {
+        let (mut r, a, b) = prepared();
+        assert!(r.observe_opaque123(a).is_err());
+        let round = r.begin(a).unwrap();
+        assert!(r.observe_opaque123(a).is_err());
+        r.ack(a, round).unwrap();
+        r.ack(b, round).unwrap();
+        for _ in 0..64 {
+            r.observe_opaque123(a).unwrap();
+        }
+        assert!(r.observe_opaque123(a).is_err());
+        r.leave(a).unwrap();
+        assert!(r.observe_opaque123(b).is_err());
+        assert!(r.observe_opaque123(a).is_err());
+        let a2 = r.enter(1, 12, false).unwrap();
+        r.setup(a2).unwrap();
+        r.ready(a2).unwrap();
+        let next = r.begin(b).unwrap();
+        r.ack(a2, next).unwrap();
+        r.ack(b, next).unwrap();
+        assert!(r.observe_opaque123(a).is_err());
+        assert!(r.observe_opaque123(a2).is_ok());
+        assert_eq!(r.phase, Phase::Armed { round: next });
     }
     #[test]
     fn host_leave_promotes_survivor_and_old_visit_cannot_clear_rejoin() {
@@ -336,4 +382,11 @@ mod abort_tests {
         assert!(next > round);
         assert!(r.observe_after_abort(b).is_err());
     }
+}
+
+/// Existing fixed diagnostic12345+generation policy; not account authentication.
+pub(crate) fn wire_key(round: u64) -> io::Result<u32> {
+    12345u32
+        .checked_add(u32::try_from(round).map_err(|_| io::Error::other("round key exhausted"))?)
+        .ok_or_else(|| io::Error::other("round key exhausted"))
 }

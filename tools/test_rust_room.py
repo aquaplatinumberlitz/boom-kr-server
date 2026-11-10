@@ -36,14 +36,25 @@ class Client:
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--binary',type=Path,required=True);p.add_argument('--config',type=Path,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--binary',type=Path,required=True);p.add_argument('--config',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--pickup-checks',action='store_true',help='Floor124/165 policy negatives and one-winner confirmation, synthetic only');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
     cfg=copy.deepcopy(json.loads(a.config.read_text()));ports=set()
     while len(ports)<3:ports.add(free_port())
     login,wcp,channel=sorted(ports);cfg.update(bind='127.0.0.1',allowed_peers=['127.0.0.2','127.0.0.3'],ports=sorted(ports));two=cfg['diagnostic_two_lobby'];two.update(login_port=login,login_candidate_ports=[login,wcp],channel_port=channel,wcp_ports=sorted(ports))
     for i,actor in enumerate(two['actors']):actor['peer']=cfg['allowed_peers'][i]
     cp=a.out/'config.json';cp.write_text(json.dumps(cfg,indent=2)+'\n');hello=Path(cfg['bootstrap']['path']).read_bytes();header=Path(two['actors'][0]['profile']['own_header']['path']).read_bytes()[:37]
     output=(a.out/'process.log').open('x');proc=subprocess.Popen([str(a.binary.resolve()),'--config',str(cp),'--out',str(a.out/'service')],stdout=output,stderr=subprocess.STDOUT,start_new_session=True)
-    clients=[];cases=[];error=None
+    clients=[];cases=[];error=None;observations=[]
+    def snapshot(label):
+        item=dict(label=label,pid=proc.pid,returncode=proc.poll(),ns=time.monotonic_ns(),threads=[])
+        base=Path('/proc')/str(proc.pid)
+        for key in ['status','wchan','stat']:
+            try:item[key]=(base/key).read_text()
+            except OSError as exc:item[key]=repr(exc)
+        if (base/'task').exists():
+            for thread in (base/'task').iterdir():
+                try:item['threads'].append(dict(tid=thread.name,status=(thread/'status').read_text(),wchan=(thread/'wchan').read_text()))
+                except OSError:pass
+        observations.append(item);(a.out/'pid-observations.json').write_text(json.dumps(observations,indent=2)+'\n')
     def note(case):cases.append(dict(case=case,result='pass'))
     try:
         deadline=time.monotonic()+5
@@ -76,23 +87,50 @@ def main():
         for s in clients:
             _,body=s.receive(110);assert c.read_fields(body,[1,4,1])==[0,4,0]
         note('guestReady_broadcast_by_current_membership')
+        def pickup(slot=0,key=12346,context=0,row=4,column=3,index=17,kind=2):
+            return c.pack_fields([context,slot,row,column,index,kind,100,key,0],[1,1,1,1,4,2,4,4,1])
+        if a.pickup_checks:
+            A.send(124,pickup());A.quiet();B.quiet();note('pickup_before_Start_no_grant')
         B.send(104,bytes(20))
         for s in clients:s.receive(582);s.receive(121)
+        if a.pickup_checks:
+            A.send(124,pickup());A.quiet();B.quiet();note('pickup_during_loading_no_grant')
         A.send(99,c.pack_fields([0,0,32001,0,0,0,0,0,0],[4,4,2,4,2,1,1,1,4]));A.quiet();B.quiet();note('one_loaded_member_does_not_emit_GO')
         B.send(99,c.pack_fields([0,0,32002,0,0,0,0,0,0],[4,4,2,4,2,1,1,1,4]))
         for s in clients:s.receive(197)
         for s in clients:s.receive(196);_,body=s.receive(153);assert len(body)==97
         note('both_ACKs_open_one_barrier_go_play_current_endpoints')
+        if a.pickup_checks:
+            A.send(123,bytes(10));A.quiet();B.quiet();note('opaque123_current_armed_no_reply_or_effect')
+            for label,request in [
+                ('wrong_key',pickup(key=12345)),('wrong_slot',pickup(slot=1)),
+                ('wrong_context',pickup(context=1)),('wrong_row',pickup(row=3)),
+                ('wrong_column',pickup(column=4)),('wrong_kind',pickup(kind=0)),
+                ('unknown_index',pickup(index=999)),('hidden_unrevealed',pickup(row=2,column=3,index=27,kind=0))]:
+                A.send(124,request);A.quiet();B.quiet();note('pickup_'+label+'_no_grant')
+            A.send(124,pickup())
+            for s in clients:
+                _,body=s.receive(165);assert c.read_fields(body,[1,1,1,1,1,4,2,1])==[1,0,0,4,3,17,2,0]
+            note('current_floor124_one165_per_peer_same_winner_index')
+            for label,client,request in [('duplicate',A,pickup()),('other_bound_contender',B,pickup(slot=1))]:
+                client.send(124,request);A.quiet();B.quiet();note('pickup_'+label+'_no_second_grant')
+
         for s in clients:s.close()
-        clients=[];time.sleep(.1);os.killpg(proc.pid,signal.SIGTERM);assert proc.wait(timeout=5)==0;note('owned_EOF_and_SIGTERM_cleanup')
+        clients=[];time.sleep(.1);snapshot('before-SIGTERM');os.killpg(proc.pid,signal.SIGTERM)
+        try:rc=proc.wait(timeout=5)
+        except subprocess.TimeoutExpired:snapshot('SIGTERM-deadline');raise
+        assert rc==0;note('owned_EOF_and_SIGTERM_cleanup')
     except Exception as exc:error=repr(exc);raise
     finally:
         for s in clients:s.close()
         if proc.poll() is None:
             os.killpg(proc.pid,signal.SIGTERM)
             try:proc.wait(timeout=5)
-            except subprocess.TimeoutExpired:os.killpg(proc.pid,signal.SIGKILL);proc.wait(timeout=2)
+            except subprocess.TimeoutExpired:
+                snapshot('cleanup-SIGTERM-deadline');os.killpg(proc.pid,signal.SIGKILL)
+                try:proc.wait(timeout=2)
+                except subprocess.TimeoutExpired:snapshot('SIGKILL-deadline');error=error or 'Owned PID still present after SIGKILL deadline'
         output.close();rows=[dict(path=str(p),bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(a.out.rglob('*')) if p.is_file()]
-        (a.out/'verification.json').write_text(json.dumps(dict(result='pass' if error is None else 'fail',cases=cases,error=error,raw_files=rows,binary_sha256=hashlib.sha256(a.binary.read_bytes()).hexdigest(),limits='SyntheticpolicyTCP inputs incl95/104envelopes, notnativewiresemantic/acceptance;internalgenerationtestsnotrawreplayproof.'),indent=2)+'\n')
+        (a.out/'verification.json').write_text(json.dumps(dict(result='pass' if error is None else 'fail',cases=cases,error=error,raw_files=rows,binary_sha256=hashlib.sha256(a.binary.read_bytes()).hexdigest(),remaining_pid=proc.pid if proc.poll() is None else None,limits='SyntheticpolicyTCP inputs incl95/104envelopes, notnativewiresemantic/acceptance;internalgenerationtestsnotrawreplayproof.'),indent=2)+'\n')
     print('PASS',len(cases),'fixedroomTCP/lifecycle/barrier cases; notnativeproof')
 if __name__=='__main__':main()

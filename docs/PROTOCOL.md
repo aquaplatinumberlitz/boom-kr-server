@@ -8525,3 +8525,44 @@ M5 chưa complete: boundedservingDB/hashworker, idleTTL/rate và lease/session b
 expiry/revoke/freshlogin native hai testaccounts/negative, DBrestartadmission/lifecycle/backuprestore/load còn thiếu.
 Không expose password trên legacyTCP hoặc gán sourceIP thành owner. M6 inventory/progression/resultreward riêng.
 Python serving/RE/reference giữ; [PLAN](PLAN.md#current-order) giữ thứ tự. Internet thật chưa kiểm.
+
+
+<a id="rust-movement-floor"></a>
+## Rust movement và floor pickup — CP237 / RUST-M3 partial / KRE-074
+
+[Code](../rust/crates/kr-service/src/pickups.rs), [model/queue](../rust/crates/kr-service/src/room_io.rs),
+[metadata/raw](evidence/rust-service/movement-floor.json), [recipe](evidence/rust-service/README.md#cp237).
+Tái dùng CP030/031/049/055/063 floor/writer/stat/key/logicaltick, CP142/189/191 currentUDP/nativeapply,
+CP235fixedroom/queues. Không RE body/SDK mới hoặc port VNopcode. Nguồn legacy modO chỉ làm copiedgetter/CRC
+đã có hash/locator, không nhập scope/wire clientRust cũ; [nguồn chuẩn](REFERENCES.md).
+
+Policy `design`: đọc catalog từ **cùng582 đã pin/gửi**, typedlength→knownserializedrawtag0→ba list;
+list1 eligible, list2 luôn hidden-unrevealed, list3 nonempty/variant/duplicateindex/unsupportedkind từ chối trước bind.
+Giới hạn64records/4096bytes/ExVillage01 13×15/kinds0..2; fixedroom vẫn pin46byte582, không general map/parser.
+Không có catalog JSON thứhai dễ lệch. Actual12419byte theo [CP030](#item-pickup), flag0, ctx0, socket-boundslot,
+currentArmed/153u32key, exactindex/cell/kind và chưa consumed mới có positive16512byte tới cảhai.
+`t` chỉ metadata logicalcounter theo CP055, **không là serial/timestamp chốngreplay**; không bịa serial vào124.
+Claim trên modelclone, reserve toàn recipientqueues rồi mới publishconsumed+enqueue; queuedsubject/member/round
+fence trước send. Queuefull không grant/partialpublish; TCP đã ghi một phần không atomic/rollback.
+Start mới resetclaims/key, leave/EOF clearactiveclaims; identicaloldkey reuse/wrap/fullauth/distance chưa được chứng minh.
+
+`kr_runtime/confirmed` hẹp: R3 e9/Wine/privatevirtualLAN hai namespace/IP/wineserver, normalroom/Back/rejoin/
+Ready/withheld99 barrier→spawn. ADown rồiBRight có 217vethUDPrecords/87nativeingress exactsource-IP/port/hash;
+selector0/keyXORprofileID/apply13/cursor13, protectedtarget/currentpositions thay đổi đúngactor cảhai.
+TCP368/58reply/alltuples-C2Sjoins; oneepoch/6shold sauhaiinput, haiFIN saucompletion. A124index17/kind2/key12346
+→one165perview, nativeparsed đúngtuple, itemfound17,12/12/errors0, protectedactor+5E8 **5→6** cảhai.
+696copied52A350getter và87copied14A5860CRC trên rawactual; modOa08950/counterreset/selected128bytehelpersmatchcopy
+là emulation bổsung, không gamefunctioncall/wholefunctionequality. UI hai view đúnglocalarrow/peerposition/itemgone.
+58raw cuối frozen/seal/cleanup0; R1 unsupported12451raw vàR2 unsupported12355raw giữ failure/positive subset riêng.
+
+R2 quan sát actualB **123/body10** nhưng semantics còn `unknown`. Pythonreference không có case123/response;
+Rust chọn `emu_choice/design` observe-only cho currentArmedmember, tối đa64/member/round, exactsize10,
+**không ACK/effect/forward/inventory mutation**. Counter và opaqueinput không chứng minh request hợp lệ/auth/servergốc.
+Boundedsearch hai snapshot cũ không tìm được123join, không kết luận opcode vắng ở client/traffic khác.
+Không mở acceptmọiopcode/body hoặc tự trả packet. Chỉ RE field/response nếu thật sự chặn implementation tiếp.
+
+30Rusttests/22kernelTCPcases kiểm wrongkey-slot-ctx-cell-kind/index/hidden/duplicate/onewinner/phase/reset/queuefull
+và opaque123budget; synthetic negatives không là nativeattacks. Một kernelshutdownSIGTERM5s/SIGKILL2s timeout,
+PID đã mất ở lần nhìn sau; giữ failure/instrumentstatus-thread-wchan, repeat22cases đạt **không là rootcausefix**.
+M3 chưa bom/terrain/reveal/life/result-reset/twooutcomes/kim-cứu/capacity4-8; M5 chưa KRaccountbridge.
+Python giữ serving/RE/reference, không hot-swap backend giữa run. Internet thật chưa kiểm.

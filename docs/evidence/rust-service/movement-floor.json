@@ -1,0 +1,103 @@
+{
+  "schema": "kre-rust-movement-floor-v1",
+  "checkpoint": "CP237",
+  "baseline_commit": "9748dcb330fdf15a66cbf0011b354882bb029ad0",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "contract": "docs/PROTOCOL.md#rust-movement-floor",
+  "plan": "docs/PLAN.md#current-order",
+  "binary_sha256": "e1ae6aebc805cd379e1e68d8dcf64f8a5d55b432d0609e1d7ff21b7845ddbc0d",
+  "run_sha256": "2206fd89f0ffbe7fc170c37b1dc2b096b377f67cbcf29649cc20a6d95d778f0c",
+  "native_run": "local/research/codex/rust-m3-movement-r3/native-movement",
+  "raw_count": 58,
+  "TCP": {
+    "records": 368,
+    "replies": 58
+  },
+  "UDP": {
+    "records": 217,
+    "api_joins": 87
+  },
+  "windows": [
+    {
+      "phase": "A-Down",
+      "changed_target_count": 15,
+      "current_before": {
+        "0x28": 0,
+        "0x4c": 120,
+        "0x58": 159
+      },
+      "current_after": {
+        "0x28": 15,
+        "0x4c": 120,
+        "0x58": 364
+      }
+    },
+    {
+      "phase": "B-Right",
+      "changed_target_count": 3,
+      "current_before": {
+        "0x28": 0,
+        "0x4c": 120,
+        "0x58": 399
+      },
+      "current_after": {
+        "0x28": 14,
+        "0x4c": 200,
+        "0x58": 399
+      }
+    }
+  ],
+  "floor": "ActualA124/context0/slot0/row4/col3/index17/kind2/current12346→one165perpeer;bothnative12/12/error0/found17/protected5E8:5→6, sameactor. Catalog frompinned582list1only;list2noteligible.",
+  "design": "Exactboundmember/currentArmed/key/context/catalog/consumedindex;clonecandidate/reserveALLqueuesbeforeconsume+enqueue/subject-recipient-roundguards. Raw582tag0only/singlefixedmap/Bomb-Fire-Roller;no secondindependentcatalogconfiguration. Logicaltickmetadata notfreshnessserial.",
+  "opaque123": {
+    "source": "emu_choice",
+    "status": "design",
+    "policy": "ActualB123/body10observed;currentArmedmemberonly/noACK-effect-forward/64permember-round, semanticsunknown. Pythonreceive_channel no123case returnsnoresponse; boundedoldtwosnapshotsearchfoundno123join/noabsenceclaim.",
+    "reuse": "local/research/codex/rust-m3-123-reuse.json"
+  },
+  "checks": {
+    "rust_tests": 30,
+    "pickup_tests": 3,
+    "opaque123_model_test": 1,
+    "extended_queue_atomicity_test": true,
+    "kernel_TCP_cases": 22,
+    "copied_native_getters": 696,
+    "copied_native_UDP_CRC": 87
+  },
+  "failures": [
+    {
+      "run": "rust-m3-movement-r1",
+      "raw": 51,
+      "finding": "124/19unimplemented closesA afteraccepted127/185;storedPCAPsourcefailure unchanged"
+    },
+    {
+      "run": "rust-m3-movement-r2",
+      "raw": 55,
+      "finding": "Floor165positivebut123/10unimplemented closesB;onephaseonly/failedoverall"
+    },
+    {
+      "path": "local/research/codex/rust-m3-floor-final/room/failure-review.json",
+      "finding": "KernelSIGTERM/SIGKILLdeadline;PIDgonepostinspection/noatdeadlinePIDstate. Instrumented22caserepeatpassnotrootcausefix."
+    },
+    {
+      "path": "local/research/codex/rust-m3-tests-first.txt",
+      "finding": "Syntheticfloor-test helper wrong endian corrected; runtimeparseralreadyusesknownLEbytes."
+    },
+    {
+      "path": "local/research/codex/rust-m3-tests-final.txt",
+      "finding": "Queueonlyunitfixture teardown lackednative departuretemplates; fixturechannelsclearedafterqueueassertions. All30finalRusttests pass."
+    }
+  ],
+  "limits": [
+    "M3partial/oneepoch/twoinputwindows/onefloorRoller; no bomb/terrain/reveal/life/result-reset/twooutcomes/needle/rescue/capacity4-8 acceptance.",
+    "DiagnosticIPidentitynotaccountauthentication;M5bridge/lease/worker/idleTTL/rate/restore remainpartial.",
+    "Opaque123semanticsunknown/no generalizedACKororiginalserverauthority;oldraw142andP2PUDPfreshness limits unchanged.",
+    "Queuepublication atomic withinmodel, physicalTCPdelivery notatomic; no durableinventory/reward.",
+    "Oldshutdownanomaly repeated/no rootcauseproof;deadlinePIDinstrumentation retained forfuturefailure.",
+    "Copiednativegetter/CRC onmodOa08950 withcounterreset, selected128-bytehelpersmatchnativecopy, notwholebinary/function/lifecycle proof. REApacketprovider still unavailable; stdlibPCAPjoins not REA Evidence.",
+    "Internet thật chưa kiểm."
+  ],
+  "next": "PLANportcurrent118→159→158 allocator/serial/fuse6+fences thenterrain142/itemreveal andlife/result/reset/twooutcomes; do notrepeatknownmovement merelytoaddcheckpoints.",
+  "review": "Codexselfcheck/independentreviewwaivednotapproved;publication exacthead required; AUD068through236/nextCP240"
+}

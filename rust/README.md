@@ -153,3 +153,20 @@ python3 tools/test_rust_accounts.py --binary rust/target/debug/kr-admin --out lo
 33process CLI/realSQLite là backendacceptance; 11Rustaccounttests thêm concurrency/expiry/clock/reset-race/fault.
 Giữ failures và raw/hash/private synthetic token outputs theo evidence; không dùng teststore cho production.
 Dynamic KR account/identity projection cần measured authbridge và native positive/negative trước expose.
+
+
+## M3 movement/floor trên native KR — CP237
+
+[Contract/giới hạn](../docs/PROTOCOL.md#rust-movement-floor), [raw/hash](../docs/evidence/rust-service/README.md#cp237).
+Cùng fixedroom profile đã pin: catalog đọc từ582list1,124currentmember/key/ctx/itemexact→165mộtlần/cảhai;
+list2 cònhidden, khônginventory/reward. NativeADown/BRight/PCAP→key/apply/currentpeerprogress, floorRoller5→6
+trên hai view; M3bom/terrain/life/result-reset/twooutcomes chưa có.
+`123/10` chỉ opaqueobserve64/member/Armedround/noACK-effect-forward; semanticsunknown, không hỗtrợmọiopcode.
+
+```bash
+python3 tools/test_rust_room.py --binary rust/target/debug/kr-service --config local/native-fixed-room.json --out local/new-floor-policy-check --pickup-checks
+```
+
+22kernelTCPcases/30Rusttests là policyregression, tách nativeWineproof và copiedgetter/CRC checks.
+Native recipe giữ source/binary/config frozen tới seal; không dùng syntheticinputs làm oracle. Shutdown timeout
+cũ/CP237kernelrepeat vẫn chưa rõ rootcause, PID/thread/wchan được ghi khi tái hiện; không tăng deadline để pass.

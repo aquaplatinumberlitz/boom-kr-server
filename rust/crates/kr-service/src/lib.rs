@@ -4,6 +4,7 @@
 pub mod accounts;
 pub mod binding;
 pub mod lobby;
+mod pickups;
 pub mod room;
 mod room_io;
 mod room_wire;
@@ -517,8 +518,8 @@ async fn local_lobby_connection(
             if let Some(session) = &room_session
                 && room_io::Session::handles(packet.opcode)
             {
-                let dropped_after_abort = session.packet(packet.opcode, &packet.payload)?;
-                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":dropped_after_abort}))).await?;
+                let observation = session.packet(packet.opcode, &packet.payload)?;
+                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"pickup":observation.pickup}))).await?;
                 continue;
             }
             let aliases = flow.packet(packet.opcode, &packet.payload)?;
