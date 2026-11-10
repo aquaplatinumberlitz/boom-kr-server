@@ -372,3 +372,24 @@ không oracle/native acceptance. `rust-four-startup-two-regression-r3/`:51twoTCP
 R1EOF/cleanupfailure giữPIDobservations/D-stateBtrfs, chưa causalrootcause. Logs fmt/clippy/tests/build-final giữ58tests.
 Không fourbom/life/result/reset/EOF/tám/fullauthgateclosure; startup4 chặn unportedBattle. Tám PythonWIP byte-exact,
 AUD070 qua244/audit kế248. Internet thật chưa kiểm.
+
+
+<a id="cp246"></a>
+## CP246 — four-owner bom/native159-158; M4 life/result/reset còn mở
+
+[Contract](../../PROTOCOL.md#rust-four-owner-bombs), [metadata](four-owner-bombs.json), [PLAN](../../PLAN.md#current-order).
+BaselineCP245/PR316/mergedd0c2ba3; source-first rust-four-bombs-source-r1/reuse.json + CP201142/167CRCseqshapes.
+`local/research/codex/rust-four-bombs-native-r2/`:bomb-verification/bomb-getter-verification/ui-review.json,
+four-verification.json là scoped startup subcheck riêng; native-four/runtime-preflight/recipe/raw-seal/cycles.
+84raw/139,844435953s/sourcefrozen/cleanup0/runSHAeb35624f…;native16entity159/full39/16full158/lookup-kind0-cleanup,
+902TCP/144exactreply/16transports/Manner1/knownstats4views/copy4b/Wine10.0-20260425/7.196copiedgetters riêng.
+Ảnh own/peer trap-death khác nhau vì127 chưaforward; không sharedlife/resultacceptance. No165/170/175/180.
+R1:73raw/150,766527131s/exit1/cleanup0/runSHAf37b0544…;actual16722 làm4channelclose, controller tiếp screenshotCtimeout,
+failure-review giữ causalgiới hạn. CP20112old +4new16722 CRC/seqkhớp; fixfour-onlyopaque22/noeffect/budget,
+controller kiểm closure giữaownerinputs; không patch mới/tăngdeadline/freshprefixclaim hoặc sửa raw cũ.
+`rust-four-bombs-kernel-r2/`:14fourTCP/sourcefrozen/PIDgone; R1 có13cases trước167fix giữ.
+`rust-four-bombs-two-regression-r2/`:51life/reset/EOF/sourcefrozen/fullsource-inputpins/PIDgone/samefinalbinary.
+R1wrongoldroomharness/rankconfig:41cases rồi chờ immediate107 sai delayedforfeit/timeout, sourcefrozen/cleanup giữ;
+failure-review giải thích sửa harness, không serverfix hoặc Btrfscausalclaim.59Rusttests/fmt/clippy/lockedbuild logs giữ. Baactualprocessprebindreject:fourflagontwo/fourrank/fourterrain, raw tại rust-four-bombs-config-negatives-r1/.
+M4 còn170ba recipient/clear21/rank4/outcomes-reset/EOF→8; M5backendnativebridge riêng, #14/#285OPEN.
+AUD070qua244/audit kế248/historyimmutable. Internet thật chưa kiểm.

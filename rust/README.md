@@ -282,3 +282,20 @@ python3 tools/test_rust_four_room.py --binary rust/target/debug/kr-service \
 
 Native scope: Manner1/đội alternating2v2/room/4ACKbarrier/clock/currentprogress12; chưa fourBattle/results/reset/EOF.
 58workspace tests; two-client51TCPregression giữ. PLAN tiếp fourownerbom/life/rank4/abort rồi tám.
+
+
+## Bốn owner bom — CP246
+
+[Contract/giới hạn](../docs/PROTOCOL.md#rust-four-owner-bombs), [raw/hash](../docs/evidence/rust-service/README.md#cp246).
+Thêm `--four-owner-bombs` vào exporter với đủ four-startup flags để đặt `fixed_room.four_owner_bombs=true`.
+Chỉ capacity1/2/1/1/power1/designfuse6; không bật Battle/terrain/life/results. Không flag giữ startup4 cũ.
+
+```bash
+python3 tools/test_rust_four_room.py --binary rust/target/debug/kr-service \
+  --config local/four-config.json --owner-bombs --out local/new-four-bomb-tcp
+```
+
+14syntheticcases khác nativeproof: CP246 actual4Wine/copy4b/Manner1 đã có118→16native159entity→16native158/kind0/cleanup,
+knownstats/7.196copiedgetters riêng;59Rusttests/51twoTCPregression. Four142/16722 chỉ finite/noeffect;
+own-peer trap/death chưa đồng bộ vì127 chưa forward, chưa fullM4. Rollback dùng matchedCP245binary+startupconfig,
+không đưa newflag cho oldbinary. PLAN tiếp life3recipient/rank4/reset/EOF rồi tám; M5bridge riêng.

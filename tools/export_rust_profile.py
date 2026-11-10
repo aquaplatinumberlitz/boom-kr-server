@@ -234,6 +234,7 @@ def main():
     p.add_argument('--four-startup-derived-dir', type=Path, help='Explicit startup-only four-role expansion; creates a new directory under local/')
     p.add_argument('--four-startup-peer-c')
     p.add_argument('--four-startup-peer-d')
+    p.add_argument('--four-owner-bombs', action='store_true', help='Opt-in measured four-owner capacity1/2/1/1, power1, fuse6; no terrain/life/results')
     a = p.parse_args()
     if not 1 <= len(a.port) <= 32 or len(set(a.port)) != len(a.port) or any(not 1 <= n <= 65535 for n in a.port):
         p.error('one to32 distinct nonzero ports required')
@@ -259,6 +260,10 @@ def main():
             p.error('four startup requires two-lobby/fixed-room inputs plus derived directory and C/D peers')
         config = expand_four_startup(config, a.four_startup_derived_dir,
             [a.diagnostic_peer_a, a.diagnostic_peer_b, a.four_startup_peer_c, a.four_startup_peer_d])
+    if a.four_owner_bombs:
+        if not all(four):
+            p.error('four-owner bombs requires the explicit four-startup profile')
+        config['diagnostic_two_lobby']['fixed_room']['four_owner_bombs'] = True
     with a.out.open('x') as f:
         f.write(json.dumps(config, indent=2) + '\n')
 

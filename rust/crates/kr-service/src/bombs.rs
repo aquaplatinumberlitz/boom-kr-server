@@ -18,6 +18,9 @@ pub(crate) struct Request {
     power: u8,
 }
 impl Request {
+    pub fn power(&self) -> u8 {
+        self.power
+    }
     pub fn parse(body: &[u8]) -> io::Result<Self> {
         let widths = [
             Width::U32,
@@ -200,7 +203,7 @@ impl Ledger {
             owner,
         };
         let recipients: BTreeSet<_> = roster.iter().copied().collect();
-        if recipients.len() != 2 || recipients.len() != roster.len() {
+        if !matches!(recipients.len(), 2 | 4) || recipients.len() != roster.len() {
             return Ok(Err("unsupported_roster"));
         }
         self.next_wire += 1;
@@ -227,7 +230,7 @@ impl Ledger {
             })
     }
     /// Each actual TCP recipient consumes its own deadline once. Release the
-    /// reservation only after BOTH writes succeed; this is not native-execution ACK.
+    /// reservation only after ALL roster writes succeed; not a native-execution ACK.
     pub fn pending(&self) -> bool {
         !self.active.is_empty()
     }
@@ -366,5 +369,85 @@ mod tests {
             ..a
         };
         assert!(!l.deliverable(&next, reused));
+    }
+    #[test]
+    fn four_owner_capacity_serial_and_all_recipient_completion_are_independent() {
+        let roster = [member(1, 11), member(2, 22), member(3, 33), member(4, 44)];
+        let mut ledger = Ledger::default();
+        ledger.begin(1);
+        let mut tickets = Vec::new();
+        for (slot, owner) in roster.into_iter().enumerate() {
+            let mut req = request(7);
+            req.owner = slot as u8;
+            req.column = 2 + slot as u8;
+            let capacity = [1, 2, 1, 1][slot];
+            let ticket = ledger
+                .place(1, owner, slot as u8, &req, &roster, capacity)
+                .unwrap()
+                .unwrap();
+            assert_eq!(ticket.id, 1 + slot as u16);
+            assert!(matches!(
+                ledger
+                    .place(1, owner, slot as u8, &req, &roster, capacity)
+                    .unwrap(),
+                Err("duplicate_serial")
+            ));
+            tickets.push((ticket, req));
+        }
+        let mut d_next = tickets[3].1.clone();
+        d_next.serial += 1;
+        d_next.row += 1;
+        assert!(matches!(
+            ledger.place(1, roster[3], 3, &d_next, &roster, 1).unwrap(),
+            Err("owner_capacity_reserved")
+        ));
+        let mut b_next = tickets[1].1.clone();
+        b_next.serial += 1;
+        b_next.row += 1;
+        let b_extra = ledger
+            .place(1, roster[1], 1, &b_next, &roster, 2)
+            .unwrap()
+            .unwrap();
+        assert_eq!(b_extra.id, 5);
+        let d = &tickets[3].0;
+        for recipient in &roster[..3] {
+            assert!(ledger.delivered(d, *recipient));
+            assert!(!ledger.delivered(d, *recipient));
+        }
+        assert!(ledger.active(d));
+        assert!(matches!(
+            ledger.place(1, roster[3], 3, &d_next, &roster, 1).unwrap(),
+            Err("owner_capacity_reserved")
+        ));
+        let replacement = Membership {
+            connection: 45,
+            visit: 2,
+            ..roster[3]
+        };
+        assert!(!ledger.delivered(d, replacement));
+        assert!(ledger.delivered(d, roster[3]));
+        assert!(!ledger.active(d));
+        let next = ledger
+            .place(1, roster[3], 3, &d_next, &roster, 1)
+            .unwrap()
+            .unwrap();
+        assert_eq!(next.id, 6);
+        for (ticket, _) in &tickets[..3] {
+            assert!(ledger.active(ticket));
+        }
+        ledger.finish();
+        for recipient in roster {
+            assert!(!ledger.deliverable(&next, recipient));
+            assert!(!ledger.delivered(&b_extra, recipient));
+        }
+        ledger.begin(2);
+        d_next.key += 1;
+        let new = ledger
+            .place(2, roster[3], 3, &d_next, &roster, 1)
+            .unwrap()
+            .unwrap();
+        assert_eq!(new.id, 7);
+        assert!(!ledger.delivered(&next, roster[3]));
+        assert!(ledger.deliverable(&new, roster[3]));
     }
 }
