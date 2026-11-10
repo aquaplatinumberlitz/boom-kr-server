@@ -8703,3 +8703,40 @@ M3 chưa đủ acceptance: native consumed-item reset/contest; exact oldUDP/curr
 hostEOF với bom chờ phải đưa survivor về phòng (107/110 giữa scene chưa đủ). Chưa kim/cứu/fullauth/fullservice,
 không nativeall-dead/peer21clear/trận3 outcome/chain variants/generalphysics. [PLAN](PLAN.md#current-order) giữ bước tiếp.
 K0–K7 scope cũ giữ nguyên/K6c WAN giả lập. Internet thật chưa kiểm. AUD069 qua240/audit kế244.
+
+<a id="rust-return-cleanup"></a>
+## Rust active host EOF với bom chờ: forfeit và về phòng — CP241 / M3 partial
+
+[Owner/queue](../rust/crates/kr-service/src/room_io.rs), [model](../rust/crates/kr-service/src/room.rs),
+[metadata](evidence/rust-service/return-cleanup.json), [recipe/raw](evidence/rust-service/README.md#cp241).
+Tái dùng CP188short-r2/CP189 activeEOF/nativeforfeit-180-107-110, Python `close_connection/tick/deliver_departure`;
+CP240 Ending/currentmembership/recipientqueues/native175302-1803. Không RE nativefunction/wirelayout mới.
+
+`design`: activeArmed channel EOF khi Battleprofile bật → leave/fence bom/terrain/claims ngay, giữ survivor Ending.
+Không dựng report19 hoặc coi disconnect là native chết. Resolve rank theo slot departed, reserve đủ3queues/survivor
+trước publish:12s forfeit175,17s180 (selector phòng),20s107 xóa departed ID rồi110 survivor/chief. Fullroster refresh
+xong mới Idle. Recipient/round guards chặn job bom cũ; partial TCPwrite không rollback/native ACK.
+GuestEOF giữ host, hostEOF promote survivor. Native control mới chỉ hostB→A; kernel riêng guestA→B.
+LoadingEOF và EOF trong Ending đã chọn vẫn đường cũ/có giới hạn, không nhận generalrecovery/matchrestore.
+118 từ accepted-dead member bị reject trước ID/serial/reservation; report-derived death không authoritativeworld.
+
+`kr_runtime/confirmed`: hai actualKR00967/4b781f/Wine/privateLAN/cùngrootRust như CP240. B đã là host sau idleA Back/
+rejoin/ReadyA/StartB; actualB118→native159 full39 ởhai view. Fault chỉ CA-B PID có namespace/prefix/startticks/
+hostexe/cmd/image mapping/SHA khớp trước SIGKILL, trước6s fuse; service/A không restart. Không fake TCPdeath/127.
+A đọc forfeit175 outer302/inner292/errors0/rank1-2,1803/errors0; sau180 native107 xóa ID2 về0,110/chief1 và
+UIA một slot còn lại/chủ phòng. Getterchief sau return không đo vì budget20 đã hết trong initialroom/rejoin;
+không nhận getter1,110full/UIchief là nguồn riêng. Hold4s saucleanup, không158 qua originaldue; B đã dừng không nhậnforfeit.
+TCP361/60 exact replies/alltuple-C2Ssequence joins; 48 raw/89.914s frozen/sealed/cleanup0.
+Binary `bff20c8890f5415847b7f3a872e1d9cd292f3150f64599c55889e6e00a0beb40`; copiednativegetter riêng từ rawwrappers, không Winegamecall/wholebinaryoracle.
+
+41Rusttests/50kernelTCP: dead-owner118noID/serial; matureddeath waits pendingbom;158 invalidateold21/fresh21positive;
+activeguestEOF fences survivor-owned pendingbomb, delayedforfeit/180/107110/idle30s. Không lấy syntheticdeath/EOF làm
+nativehostproof; native không bao gồm guestEOF/đồng thờifault/rejoin mới. R1 startupfail25raw đã seal: Bchannel6→17 rồi
+EOF trước67/sảnh/phòng/fault; nguyên nhân chưa rõ. R2 tới A175302/292/rank1-2 rồi SIGSEGV/kernelbase trước180,46raw đã seal. StackD2F64A←E5FC07
+khớp lỗi importABI CP187 đã giải: copye9 bindCompareStringA6args sai thay vì thunk2args. R3 dùng toolcopy CP187
+`patch_wine_compare.py` để tạo tên mới SHA4b781f…, giữ e9 nguyên; `.image` không đổi, chỉ14byte importrepair.
+Không RE lại ABI hoặc gọi prior e9pass là ABI đúng. R3 control mới đo targetpath, không sửa lịch sử CP235–240.
+
+M3 chưa đóng: native consumed-item reset/contest; exactoldUDP ở vòng mới + currentpositive; outcome/nonreader/queue
+control còn thiếu theo [PLAN](PLAN.md#current-order). Optionalkim/cứu/capacity4-8/accountbridge/fullservice ngoài ca này.
+K0–K7 scope cũ/K6c WAN giả lập giữ nguyên. Internet thật chưa kiểm. AUD069 qua240/audit kếCP244.

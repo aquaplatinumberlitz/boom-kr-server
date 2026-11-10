@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP240",
+  "as_of": "CP241",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "CP239PR310/35bb05fmerged. CP240native2oppositeoutcomes/life175180/refresh/ReadyStart3/66rawsealed/PCAP745-108reply/1266getters/40Rust44TCP. M3partial;M5SQLitebackendalreadymerged/nativebridgepartial.",
-      "remaining": "M3consumed-itemreset-contest/exactoldUDP-currentpositive/deadowner-queue/hostEOFscene-return. M5bridge-worker-idleTTL-rate/restore-load. Nativeall-dead/peer21clearoptionalnotclaimed.",
-      "next_test": "PLANM3remainingcontrols fromCP188/189/155;REonlyportblocker. AUD069through240/nextCP244.",
+      "known": "CP240PR311/c7dd615mergedtwooppositeoutcomes/resetStart3. CP241nativependingBhostEOF→Aforfeit175180/107ID2clear/110chief/Room/4shold/no158pastdue;41Rust50TCP. ExistingCP1874bcopyselectedafterknownABIe9crash;failed25+46rawretained.",
+      "remaining": "M3consumed-itemreset/contest/exactoldUDP-currentpositive/queue-outcome controls;loading-selectedEndingEOF/generalrecovery separatelimits. M5bridge-worker-idleTTL-rate/restore-load.",
+      "next_test": "PLANM3itemreset-contest/exactoldUDP-currentpositive/queuecontrols;reusesolvedcontracts/no broadRE. AUD069next244.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Manualnativepacket/state/rank/UI/PCAP+copiedgetterreview;4failedruns190rawretained/knownCP188inputrestored/notcausalfix. No gateclosure/Python8WIPunchanged.",
+      "reason": "Manualnativepacket/IDclear/chief/UI/PCAP/getterreview;activehostEOFforfeit notnormaloutcome or deadBreceipt.41/50tests separatefromnativeproof;Python8WIPbyteexact/no gateclosure.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -278,7 +278,8 @@
         "docs/PROTOCOL.md#rust-movement-floor",
         "docs/PROTOCOL.md#rust-bombs",
         "docs/PROTOCOL.md#rust-terrain",
-        "docs/PROTOCOL.md#rust-life-results"
+        "docs/PROTOCOL.md#rust-life-results",
+        "docs/PROTOCOL.md#rust-return-cleanup"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -390,7 +391,8 @@
         "docs/evidence/rust-service/movement-floor.json",
         "docs/evidence/rust-service/bombs.json",
         "docs/evidence/rust-service/terrain.json",
-        "docs/evidence/rust-service/life-results.json"
+        "docs/evidence/rust-service/life-results.json",
+        "docs/evidence/rust-service/return-cleanup.json"
       ],
       "prs": [
         173,
@@ -503,7 +505,8 @@
         307,
         308,
         309,
-        310
+        310,
+        311
       ],
       "successors": []
     },
@@ -842,11 +845,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP239PR310/35bb05fmerged. CP240native2oppositeoutcomes/life175180/refresh/ReadyStart3/66rawsealed/PCAP745-108reply/1266getters/40Rust44TCP. M3partial;M5SQLitebackendalreadymerged/nativebridgepartial.",
-      "remaining": "M3consumed-itemreset-contest/exactoldUDP-currentpositive/deadowner-queue/hostEOFscene-return. M5bridge-worker-idleTTL-rate/restore-load. Nativeall-dead/peer21clearoptionalnotclaimed.",
-      "next_test": "PLANM3remainingcontrols fromCP188/189/155;REonlyportblocker. AUD069through240/nextCP244.",
+      "known": "CP240PR311/c7dd615mergedtwooppositeoutcomes/resetStart3. CP241nativependingBhostEOF→Aforfeit175180/107ID2clear/110chief/Room/4shold/no158pastdue;41Rust50TCP. ExistingCP1874bcopyselectedafterknownABIe9crash;failed25+46rawretained.",
+      "remaining": "M3consumed-itemreset/contest/exactoldUDP-currentpositive/queue-outcome controls;loading-selectedEndingEOF/generalrecovery separatelimits. M5bridge-worker-idleTTL-rate/restore-load.",
+      "next_test": "PLANM3itemreset-contest/exactoldUDP-currentpositive/queuecontrols;reusesolvedcontracts/no broadRE. AUD069next244.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Manualnativepacket/state/rank/UI/PCAP+copiedgetterreview;4failedruns190rawretained/knownCP188inputrestored/notcausalfix. No gateclosure/Python8WIPunchanged.",
+      "reason": "Manualnativepacket/IDclear/chief/UI/PCAP/getterreview;activehostEOFforfeit notnormaloutcome or deadBreceipt.41/50tests separatefromnativeproof;Python8WIPbyteexact/no gateclosure.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -879,7 +882,9 @@
         "docs/PROTOCOL.md#rust-movement-floor",
         "docs/PROTOCOL.md#rust-bombs",
         "docs/PROTOCOL.md#rust-terrain",
-        "docs/PROTOCOL.md#rust-life-results"
+        "docs/PROTOCOL.md#rust-life-results",
+        "docs/PROTOCOL.md#rust-return-cleanup",
+        "docs/PROTOCOL.md#own-profile-result-compare"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -911,7 +916,8 @@
         "docs/evidence/rust-service/movement-floor.json",
         "docs/evidence/rust-service/bombs.json",
         "docs/evidence/rust-service/terrain.json",
-        "docs/evidence/rust-service/life-results.json"
+        "docs/evidence/rust-service/life-results.json",
+        "docs/evidence/rust-service/return-cleanup.json"
       ],
       "prs": [
         286,
@@ -938,7 +944,8 @@
         307,
         308,
         309,
-        310
+        310,
+        311
       ],
       "successors": []
     }

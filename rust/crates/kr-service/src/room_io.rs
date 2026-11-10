@@ -381,6 +381,62 @@ impl Runtime {
         }
         Ok(effects)
     }
+    fn forfeit_departure(
+        &self,
+        key: Membership,
+        next: &Room,
+        round: u64,
+    ) -> io::Result<Vec<(u32, Batch)>> {
+        let departed = self
+            .model
+            .members
+            .get(&key.identity)
+            .ok_or_else(|| err("missing forfeit departure"))?;
+        let removal = self.reply("player_A", Some(107), Some(room_wire::removal(departed)?));
+        let alias = if departed.slot == 0 {
+            "rank"
+        } else {
+            "rank_Awin"
+        };
+        let returning = self.reply(
+            "return",
+            None,
+            Some(room_wire::room_selector(
+                &self.packets["return"].payload,
+                180,
+                self.selector,
+            )?),
+        );
+        let mut effects = Vec::new();
+        for peer in next.members.values() {
+            // The existing Python recipe waits12s after EOF, then5s rank and3s
+            // return. No fabricated19/death report and no reply to the closed peer.
+            for (delay, packets, complete) in [
+                (
+                    12000,
+                    vec![("forfeit175".into(), self.reply(alias, None, None))],
+                    false,
+                ),
+                (17000, vec![("forfeit180".into(), returning.clone())], false),
+                (
+                    20000,
+                    vec![
+                        ("forfeit107".into(), removal.clone()),
+                        ("forfeit110".into(), self.slot(peer, next.host)?),
+                    ],
+                    true,
+                ),
+            ] {
+                let mut batch = Self::member_batch(peer.key, Some(round), delay, packets);
+                batch.guard = Guard::Outcome(peer.key, round);
+                if complete {
+                    batch.outcome_complete = Some((peer.key, round));
+                }
+                effects.push((peer.key.identity, batch));
+            }
+        }
+        Ok(effects)
+    }
     fn detach(&mut self, id: u32, connection: u64) {
         if self
             .channels
@@ -391,8 +447,19 @@ impl Runtime {
         }
         if let Ok(m) = self.member(id, connection) {
             let mut next = self.model.clone();
-            if next.leave(m.key).is_ok() {
-                let effects = self.departure(m.key, &next);
+            let closing_active =
+                self.packets.contains_key("rank") && matches!(next.phase, Phase::Armed { .. });
+            let transition = if closing_active {
+                next.abort_play(m.key).map(Some)
+            } else {
+                next.leave(m.key).map(|_| None)
+            };
+            if let Ok(forfeit_round) = transition {
+                let effects = if let Some(round) = forfeit_round {
+                    self.forfeit_departure(m.key, &next, round)
+                } else {
+                    self.departure(m.key, &next)
+                };
                 match effects.and_then(|effects| self.publish(next.clone(), effects)) {
                     Ok(()) => {}
                     Err(_) => {
@@ -1076,7 +1143,11 @@ impl Session {
             118 => {
                 let member = r.member(self.identity, self.connection)?;
                 let request = bombs::Request::parse(body)?;
-                let result = if let Phase::Armed { round } = next.phase {
+                let result = if matches!(next.phase, Phase::Armed { .. })
+                    && next.members[&self.identity].life.death.is_some()
+                {
+                    Err("dead_owner")
+                } else if let Phase::Armed { round } = next.phase {
                     let roster: Vec<_> = next.members.values().map(|m| m.key).collect();
                     next.bombs.place(
                         round,

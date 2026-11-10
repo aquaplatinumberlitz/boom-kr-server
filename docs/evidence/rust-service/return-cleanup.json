@@ -1,0 +1,50 @@
+{
+  "schema": "kre-rust-return-cleanup-v1",
+  "checkpoint": "CP241",
+  "baseline_commit": "c7dd6154c9db675490dd3d8a1d618f582e8268bb",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "contract": "docs/PROTOCOL.md#rust-return-cleanup",
+  "plan": "docs/PLAN.md#current-order",
+  "run_sha256": "336b72d66941c0eb56863d1eac78dfeedf8805de706b2530dec6f8fbddcd8249",
+  "binary_sha256": "bff20c8890f5415847b7f3a872e1d9cd292f3150f64599c55889e6e00a0beb40",
+  "raw_count": 48,
+  "duration_s": 89.913630574,
+  "TCP": {
+    "records": 361,
+    "replies": 60
+  },
+  "native": "ActualBhost118/native159both→ownedCA-Bkillbeforefuse6→Aforfeit175302-292/rank1-2/1803/107ID2clear0/110chief1/UIRoom/4shold/no158pastdue. DeadBcannotreceiveforfeit. Notnormaloutcome.",
+  "design": "ActiveEOFimmediatefence→survivorEnding/3queueentriesperrecipient/forfeit12-return17-clear20/fullrosterrefreshIdle;report-deriveddead-owner118noID-serialreservation. Loading/selectedEndingEOFoldlimits.",
+  "tests": {
+    "rust": 41,
+    "kernel_TCP": 50,
+    "report": "local/research/codex/rust-return-kernel-r1/verification.json",
+    "copied_native_getters": 14
+  },
+  "failed_runs": [
+    {
+      "run": "rust-return-native-r1",
+      "raw_count": 25,
+      "reason": "Bauthsuccess/channel6→17thenEOFbefore67/room/fault;rootcauseunknown;repeatnotfix"
+    },
+    {
+      "run": "rust-return-native-r2",
+      "raw_count": 46,
+      "reason": "A175full/rank1-2thenSIGSEGVbefore180;stackmatchesCP187knownimportABIdefect/e9copy;selectknown4bcopyforR3"
+    }
+  ],
+  "limits": [
+    "One first-round active hostBEOF control, no two normal outcomes in this run. CP240normalcycles independent.",
+    "DeadB cannot receive forfeit; no forgeddeath/report orWorldauthority. Native107IDclear/110chief/180/UIrequired, notserverlogonly.",
+    "Postreturnchiefgetterunobserved:existing20hitbudgetusedatfirstroom/rejoin;claimonlynative110full+UIchief,notgetter1.",
+    "LoadingEOF/EOFduringalreadyselectedEnding/multiplefault/rejoin/production/fullM3 stillunproven. Internet thật chưa kiểm.",
+    "M3partial;consumed-itemreset/contest/exactoldUDP-currentpositive/queuecontrolsremain.",
+    "41/50tests separatefromnative;no generalworldauthority/fullauth/accountresume/matchrestore/production.",
+    "Opaque123/167unknown/142freshness/low8UDPwrap/shutdownanomalyrootcauseunknown.",
+    "Existingchiefgetter20hitbudgetexhaustedbeforepostreturn;native110full+UIchiefobserved,nogetter1claim.",
+    "Firstverifierassumedselector0butactual81Manner1;derive81selector1andcompare180,samesealedrun/no rawchanges."
+  ],
+  "review": "Codexsolo/selfcheck/independentreviewwaivednotapproved;AUD069through240/next244",
+  "client_copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+}

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP240",
+  "as_of": "CP241",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1982,7 +1982,8 @@
           "docs/PROTOCOL.md#four-transport-bounds",
           "docs/PROTOCOL.md#eight-mesh-owner-bombs",
           "docs/evidence/rust-service/README.md#cp238",
-          "docs/evidence/rust-service/bombs.json"
+          "docs/evidence/rust-service/bombs.json",
+          "docs/evidence/rust-service/return-cleanup.json"
         ]
       },
       "coverage": {
@@ -2100,7 +2101,8 @@
             "docs/PROTOCOL.md#eight-mesh-owner-bombs",
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-return-cleanup"
           ],
           "delivery": "via_pr"
         },
@@ -2136,7 +2138,8 @@
             "docs/PROTOCOL.md#four-transport-bounds",
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-return-cleanup"
           ]
         },
         "gate": {
@@ -3679,7 +3682,8 @@
           "docs/PROTOCOL.md#eight-portable-battle",
           "docs/PROTOCOL.md#eight-team-variants",
           "docs/evidence/eight-player/README.md#cp213",
-          "docs/evidence/rust-service/life-results.json"
+          "docs/evidence/rust-service/life-results.json",
+          "docs/evidence/rust-service/return-cleanup.json"
         ]
       },
       "coverage": {
@@ -3798,7 +3802,9 @@
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#eight-portable-battle",
             "docs/PROTOCOL.md#rust-life-results",
-            "rust/crates/kr-service/src/life.rs"
+            "rust/crates/kr-service/src/life.rs",
+            "docs/PROTOCOL.md#rust-return-cleanup",
+            "rust/crates/kr-service/src/room_io.rs"
           ],
           "delivery": "via_pr"
         },
@@ -3836,7 +3842,9 @@
             "docs/PROTOCOL.md#eight-portable-battle",
             "docs/PROTOCOL.md#eight-team-variants",
             "docs/PROTOCOL.md#rust-life-results",
-            "rust/crates/kr-service/src/life.rs"
+            "rust/crates/kr-service/src/life.rs",
+            "docs/PROTOCOL.md#rust-return-cleanup",
+            "rust/crates/kr-service/src/room_io.rs"
           ]
         },
         "gate": {
@@ -3952,7 +3960,8 @@
           "docs/PROTOCOL.md#eight-portable-battle",
           "docs/PROTOCOL.md#eight-team-variants",
           "docs/evidence/eight-player/README.md#cp213",
-          "docs/evidence/rust-service/life-results.json"
+          "docs/evidence/rust-service/life-results.json",
+          "docs/evidence/rust-service/return-cleanup.json"
         ]
       },
       "coverage": {
@@ -4107,7 +4116,9 @@
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#eight-portable-battle",
             "docs/PROTOCOL.md#rust-life-results",
-            "rust/crates/kr-service/src/life.rs"
+            "rust/crates/kr-service/src/life.rs",
+            "docs/PROTOCOL.md#rust-return-cleanup",
+            "rust/crates/kr-service/src/room_io.rs"
           ],
           "delivery": "via_pr"
         },
@@ -4167,7 +4178,9 @@
             "docs/PROTOCOL.md#eight-portable-battle",
             "docs/PROTOCOL.md#eight-team-variants",
             "docs/PROTOCOL.md#rust-life-results",
-            "rust/crates/kr-service/src/life.rs"
+            "rust/crates/kr-service/src/life.rs",
+            "docs/PROTOCOL.md#rust-return-cleanup",
+            "rust/crates/kr-service/src/room_io.rs"
           ]
         },
         "gate": {
@@ -4579,7 +4592,8 @@
           "docs/evidence/rust-service/bombs.json",
           "docs/evidence/rust-service/README.md#cp239",
           "docs/evidence/rust-service/terrain.json",
-          "docs/evidence/rust-service/life-results.json"
+          "docs/evidence/rust-service/life-results.json",
+          "docs/evidence/rust-service/return-cleanup.json"
         ]
       },
       "coverage": {
@@ -4861,7 +4875,8 @@
             "docs/PROTOCOL.md#rust-terrain",
             "rust/crates/kr-service/src/terrain.rs",
             "docs/PROTOCOL.md#rust-life-results",
-            "rust/crates/kr-service/src/life.rs"
+            "rust/crates/kr-service/src/life.rs",
+            "docs/PROTOCOL.md#rust-return-cleanup"
           ]
         },
         "integration": {
@@ -4964,7 +4979,8 @@
             "docs/PROTOCOL.md#rust-terrain",
             "rust/crates/kr-service/src/terrain.rs",
             "docs/PROTOCOL.md#rust-life-results",
-            "rust/crates/kr-service/src/life.rs"
+            "rust/crates/kr-service/src/life.rs",
+            "docs/PROTOCOL.md#rust-return-cleanup"
           ]
         },
         "gate": {
@@ -5042,7 +5058,8 @@
           "docs/evidence/rust-service/bombs.json",
           "docs/evidence/rust-service/README.md#cp239",
           "docs/evidence/rust-service/terrain.json",
-          "docs/evidence/rust-service/life-results.json"
+          "docs/evidence/rust-service/life-results.json",
+          "docs/evidence/rust-service/return-cleanup.json"
         ]
       },
       "coverage": {
@@ -5134,7 +5151,8 @@
             "docs/PROTOCOL.md#rust-terrain",
             "rust/crates/kr-service/src/terrain.rs",
             "docs/PROTOCOL.md#rust-life-results",
-            "rust/crates/kr-service/src/life.rs"
+            "rust/crates/kr-service/src/life.rs",
+            "docs/PROTOCOL.md#rust-return-cleanup"
           ],
           "delivery": "via_pr"
         },
@@ -5163,7 +5181,8 @@
             "docs/PROTOCOL.md#rust-terrain",
             "rust/crates/kr-service/src/terrain.rs",
             "docs/PROTOCOL.md#rust-life-results",
-            "rust/crates/kr-service/src/life.rs"
+            "rust/crates/kr-service/src/life.rs",
+            "docs/PROTOCOL.md#rust-return-cleanup"
           ]
         },
         "gate": {

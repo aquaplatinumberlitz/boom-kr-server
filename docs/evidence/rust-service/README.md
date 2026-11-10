@@ -280,3 +280,16 @@ Hai vòng có actual17→19/opposite21/170; native hai view loser1/other0 trư�
 M3 vẫn thiếu control trong PLAN. R1/R2/R3/R4:46+46+48+50 raw đã seal trước sửa16716/202/post180585; giữ failures. R5 dùng input CP188 focus12s/heldmouse1s đã đo; budget240s khai trước run cho bốn thao tác return, service/loading deadlines giữ nguyên.
 Audit AUD069 qua240 sửa ma trận kiến trúc còn nói account/DB chưa triển khai dù CP236 đã merge;
 SQLite/backend CLI đã có, native bridge chưa có. Audit kếCP244, không reset counter. Internet thật chưa kiểm.
+
+<a id="cp241"></a>
+## CP241 — Pending-hostEOF→survivor forfeit, nativeRoom et cleanup
+
+[Contract](../../PROTOCOL.md#rust-return-cleanup), [metadata](return-cleanup.json), [PLAN](../../PLAN.md#current-order).
+Raw: `local/research/codex/rust-return-native-r3/native-return/`; verification/UI/getter reports,
+`input-retention.json` và `native-return/raw-seal.json`. Run SHA `336b72d66941c0eb56863d1eac78dfeedf8805de706b2530dec6f8fbddcd8249`;
+48 raw/89.914s/cleanup0, binary `bff20c8890f5415847b7f3a872e1d9cd292f3150f64599c55889e6e00a0beb40`.
+Recipe `prepare_rust_return_native_r3.py`→`run_rust_return_r3.py`→`verify_rust_return.py`;
+Wine/e9/two private virtualhosts/no default route nhưCP240; BownedPID fault có hash/ns/startticks/env/mappingguards.
+NativeA175302-292/rank1-2/1803/107ID2→0/110chief1/Room/4shold/no158. R1startupfailure25raw vàR2knownABIcrash46raw đãseal/cleanup giữ; R3copy4b từexistingCP187strictpatch/newfilename/e9untouched,
+BchannelEOF trước67/room/fault; no rootcausefix.41Rusttests/50kernelTCP tách nguồn; M3 vẫnpartial/AUD069next244.
+Internet thật chưa kiểm.
