@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP257",
+  "as_of": "CP258",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP256 nativefreshA/newbackend-frontend/oldnative1-6replay denied;122raw28exactreplies/cleanup0;84Rust/liveCLIloginclockfix; CP255PR327merged. CP257owner feature-group audit policy/checker34tests; no fixedCP260deadline.",
-      "remaining": "Account-owned fixedroom/basic result/reset/nextmatch and lifecycle fences per owner; generalprojection/M6-8 later.",
-      "next_test": "PLAN accountfixedroom/basic2client positive plus wrongowner/disconnect-expiry-revoke/queued-round-UDP fences; no broadRE/M4Free retry.",
+      "known": "CP258nativeaccountfixed2basic2outcomes-reset-Start3/revoke-expiry-disconnectsurvivorcleanup/manualfreshBrejoin-oldUDPdrop-currentpositive;5run280raw375exactreplies/cleanup0;84Rust59TCP16lobby;PR328merged.",
+      "remaining": "M5genericprofile beyondIDs1/2/version1/nativeDBqueuefault/affectedclientrecoverylimits;M6-8separate. VPSnativeInternetnotrun/OCIpermissionspending.",
+      "next_test": "PLANtypedDBownedprojector knownname5/7/ownership-versionnegative, smallDBfailureintegration; InternetVPSonlysupplementary/noM5dependency.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Freshlogin distinctly proved, M5 stays OPEN because full account→game path not integrated. Productionrestore is M8, not implicit M5 dependency.",
+      "reason": "Fixed2accountbasicfeaturegroup accepted/auditAUD076, fullM5OPEN. AffectedBfatalnotgracefullogout; manualfreshnotresume; legacyUDPkeyguardnotstrongauth. Networkpreflightnotnativegame.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -926,7 +926,9 @@
         "docs/PROTOCOL.md#rust-account-serving",
         "docs/PROTOCOL.md#rust-account-native-lifecycle",
         "docs/PROTOCOL.md#rust-account-fresh-login",
-        "docs/evidence/checkpoints/README.md"
+        "docs/evidence/checkpoints/README.md",
+        "docs/PROTOCOL.md#rust-account-basic",
+        "docs/PROTOCOL.md#vps-internet-preflight"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -975,7 +977,9 @@
         "docs/evidence/rust-service/account-native-lifecycle.json",
         "docs/evidence/rust-service/account-fresh-login.json",
         "docs/evidence/owner-directives/account-basic-end-to-end.json",
-        "docs/evidence/owner-directives/feature-group-audits.json"
+        "docs/evidence/owner-directives/feature-group-audits.json",
+        "docs/evidence/rust-service/account-basic.json",
+        "docs/evidence/peer-endpoints/vps-internet-preflight.json"
       ],
       "prs": [
         286,
@@ -1016,7 +1020,8 @@
         324,
         325,
         326,
-        327
+        327,
+        328
       ],
       "successors": []
     }

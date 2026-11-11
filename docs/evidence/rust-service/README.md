@@ -615,3 +615,19 @@ preflight/seal/storage-export riêng.122raw70,794s/28exactTCP/cleanup0;A mới/B
 R1ClockRollback/68raw42,544s/cleanup0 và preparation syntaxfailure giữ lại. Clock fix/84Rust/fmt/clippy/lockedbuild,
 source-first/REA session metadata ở `rust-account-fresh-source-r1`; không gọi shell-native proof là REA Evidence ID.
 AUD074 qua256/audit kế260; M5 OPEN, tiếp account-owned fixedroom/basic theo chỉ đạo mới. Internet thật chưa kiểm.
+
+<a id="cp258"></a>
+### CP258 — account-owned fixed2/basic end-to-end và lifecycle/fresh rejoin
+
+[Contract](../../PROTOCOL.md#rust-account-basic), [metadata/hash/limits](account-basic.json), [PLAN](../../PLAN.md#current-order).
+`local/research/codex/rust-account-basic-native-r3/life-verification.json`, `ownership-verification-r2.json`,
+`peer-getter-verification.json`, `ui-review.json` đối chiếu normal2oppositeoutcomes/reset/Start3/ID-profile-channel-slot.
+Ba `rust-account-basic-{revoke,expire,disconnect}-native-r1/return-verification.json` và UIreview chứng minh survivorRoom/no late158;
+affectedB revoke/expire cóWinefatal/SessionError2000, khônggracefulrecovery.
+`rust-account-basic-fresh-native-r1/fresh-verification.json`/getter/UI: newBprocess-session-frontend/channel/rejoin/newkey,
+exactoldUDPnativekeydrop/noapply/currentBmovementprogress. Native5runs/280raw/375exactTCP, sourcefrozen/seal/cleanup0.
+Mỗiroot có `native-account-basic` recipe/preflight/raw-seal/storage-export, raw `cycles`; copiedgetters/nativememory riêng.
+R1normalfailure27raw vàR2preparationfailure/source preserved; freshcheckerSyntaxError/newcheckerfix khôngnative rerun.
+Sourcefirst ở `rust-account-basic-source-r1/reuse.json`, scripts/inputhash/raw giữlocal.84Rust/59accountbasicTCP/16lobbyregression.
+AUD076 audit nhómfixed2 theo policy mới; M5OPEN/generalprofile/nativeDBqueuefault/recoverylimits; M6/M7/M8 riêng.
+Wine/sharedhostvirtualLAN/privateTMPFS/exporthash, khôngdurability/strongUDPauth/Internetclaim. Internet thật chưa kiểm.

@@ -414,3 +414,21 @@ PrivateTMPFS DB/log/raw/exporthash, khôngBtrfsdurabilityfix. NativeR2/R3/R4fail
 `tools/test_rust_account_serving.py --binary <kr-service> --admin <kr-admin> --config <two-profile> --out <new-private-dir>`
 kiểm synthetic TCP, khôngnativeoracle. Accountmode reject room/battle/unknownprofile. [CP255](../docs/PROTOCOL.md#rust-account-native-lifecycle) đã kiểm native wrong-pending-correlator/revoke/absolute expiry; [CP256](../docs/PROTOCOL.md#rust-account-fresh-login) thêm freshprocess/new backend-frontend và oldnative1-6 replay denied; generalprofile/accountroom-game/fullM5 còn thiếu. CLI login dùng transaction-time UTC, supplied-time APIs giữ guard; chưa general concurrent admin KDF acceptance.
 Python/diagnostic rollback giữ. Internet thật chưa kiểm.
+
+## Account fixed2/basic CP258
+
+[Contract/limits](../docs/PROTOCOL.md#rust-account-basic), [raw/hash](../docs/evidence/rust-service/account-basic.json).
+Opt-in `account_admission` cùng `fixed_room` nay chạy đúnghai DB-owned knownprofiles/channel/slot qua basic2outcomes/reset/Start3.
+Fixedendpoint mapping được check thêm trongroommode, không thay session ownership bằng IP. Roomcommands/ticks/duebatches
+kiểm backend qua worker; RAII detach dùng membership/round guards cũ. Native revoke/absoluteexpiry/disconnect pendingbomb
+đưaA vềphòng/no late158; B revoke/expiry cóSessionError2000/Winefatal, khônggracefulrecovery.
+Manualfresh B process/session/frontend/newchannel→rejoin/newround, exactoldUDPnativekeydrop/currentmovement đãđo.
+M5OPEN/generalprofile/nativeDBqueuefault/affectedrecovery; no inventory/rewards/multiroom/production. Internet thật chưa kiểm.
+
+```bash
+python3 tools/test_rust_life.py --binary rust/target/debug/kr-service \
+  --account-admin rust/target/debug/kr-admin --config <fixed2-profile.json> \
+  --battle-profile <pinned-Python-battle-profile.json> --bomb-checks --pickup-checks --out <new-private-dir>
+```
+
+Đây là59syntheticTCP/realSQLite/privateAPI controls, khôngnativeoracle; giữ binary/sourcefreeze/raw/hash riêng.

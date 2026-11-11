@@ -1,0 +1,118 @@
+{
+  "id": "AUD076",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "account-fixed2-basic-end-to-end"
+  ],
+  "completed_through": "CP258",
+  "recorded_utc": "2026-11-11T08:58:58.445548+00:00",
+  "auditor": "Codex manual self-audit; independentreviewwaived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/evidence/owner-directives/account-basic-end-to-end.json",
+    "docs/evidence/owner-directives/feature-group-audits.json",
+    "docs/evidence/rust-service/account-basic.json",
+    "rust/crates/kr-service/src/account_serving.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "tools/test_rust_life.py",
+    "tools/rust_account_fixture.py",
+    "local/research/codex/rust-account-basic-native-r3/life-verification.json",
+    "local/research/codex/rust-account-basic-native-r3/ownership-verification-r2.json",
+    "local/research/codex/rust-account-basic-native-r3/ui-review.json",
+    "local/research/codex/rust-account-basic-revoke-native-r1/return-verification.json",
+    "local/research/codex/rust-account-basic-revoke-native-r1/ui-review.json",
+    "local/research/codex/rust-account-basic-expire-native-r1/return-verification.json",
+    "local/research/codex/rust-account-basic-expire-native-r1/ui-review.json",
+    "local/research/codex/rust-account-basic-disconnect-native-r1/return-verification.json",
+    "local/research/codex/rust-account-basic-disconnect-native-r1/ui-review.json",
+    "local/research/codex/rust-account-basic-fresh-native-r1/fresh-verification-r3.json",
+    "local/research/codex/rust-account-basic-fresh-native-r1/ui-review.json",
+    "local/research/codex/real-internet-vps-preflight-r1/HANDOFF.md",
+    "local/research/codex/real-internet-vps-preflight-r1/OCI-CONSOLE.md",
+    "local/research/codex/real-internet-vps-preflight-r1/verification.json"
+  ],
+  "method": "Manualorderedcore-doc→source/evidence audit of wholeknown2accountbasicgroup. Reviewed6normalrank-nextmatch images,6lifecycleimages and2freshnextmatchimages, fullPCAP/native/SQLite/argv/getter verifier output and raw source/controls. Parentverified54explicitnonsecretVPSpreflightpins separately. No workerM5review; VPSworker authorizedonlysetup. Checkers do notsemanticcertifyM5.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Accountlobbyproof plus diagnosticbasic could be mistakenfor accountendtoend.",
+      "correction": "NewactualKRaccount-owned2channel/profile/slot path crossesfixedroom/basic2oppositeoutcomes/reset/Start3, withnative137291/106/175180/argv/SQLite/fullPCAP joined. Accountgamegroup nowacceptedonlyknown2scope, M5OPEN.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "rust/README.md",
+        "tools/README.md",
+        "docs/evidence/rust-service/README.md",
+        "docs/evidence/rust-service/account-basic.json",
+        "docs/evidence/peer-endpoints/README.md",
+        "docs/evidence/peer-endpoints/vps-internet-preflight.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "ActiveB expiry/revoke serverFIN could be calledgracefulclientrecovery.",
+      "correction": "SixlifecycleUIimages reviewed: AholdsRoom/chief, Bexpiry-revokeSessionError2000/Winefatal. Explicitserver/survivorfencesonly; manualfreshB newprocess/session/frontend is notsameprocess/automaticresume/matchrestore.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/account-basic.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Oldsession/newroom could be accepted fromnominalgenerationtest only; legacyUDPecho couldbeadvertisedasstrongauthentication.",
+      "correction": "59TCPincludesoldchannelrogue/free-slot/newowner/newkey. NativefreshBrejoin/newround exactoldUDPkey56!=57 keydrop/noapply +currentmovementnativeprogress, noold158 orold175180. Low8wrap/hostilecurrentpeer/strongUDPidentity notclaimed.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/account-basic.json",
+        "tools/test_rust_life.py",
+        "tools/rust_account_fixture.py"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "NormalR1post17failure mightinviteSDK/copycycling orcausalfixclaim.",
+      "correction": "R1same17fullSHA/samebinaryDLL before67 retained27raw; R2preparationGDBsyntax retained. OneboundeddeferredroomprobecontrolR3sameRust/clientpositive, causeunknown/no broadRE. FreshcheckerSyntaxError fixedpostrun/newversion; no native rerunsolelychecker.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/account-basic.json"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "VPSnetworkreadiness mayimplynativeInternet/ordinaryUDPproof orwidenK6cdependency.",
+      "correction": "12noncepayloads fullySSH/TCPencapsulatedWG/SNAT/isolation only; bareUDP0of12/0NIC/unknowncause/OCIGetVnicIAM404. Agentsetupscopeonly,54explicitnonsecretpinsverified, secrets/livefilesexcluded. OwnerIAMbootstrap pending. Internetnativeunverified/separatebacklog.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/peer-endpoints/vps-internet-preflight.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Two knownzero profile IDs1/2/version1 and fixedpeer mapping/onefixedroom/basic only. Backend ownership not peerIP principal, but roommode also requires configuredidentity endpoint to keep measuredpeerexchange valid. No genericprofile/rename/multiroom or4/8accountgame.",
+    "Native positive completecreate-session-launcher-IDprofile-room-basic-twooppositeoutcomes-reset-Start3 accepted. Revoke/expiry/disconnect controls acceptserver/survivorfences; affectedB afterrevoke/expiry displays gameSessionError2000/Winefatal. No gracefullogout/modalclose/sameprocessretry. ManualfreshB is a newprocess/session/frontend afterexplicitrevoke-stop, notaccountresume/matchrestore.",
+    "OldactualUDP fromprioraccountsession/round12346 is rejectedby nativecurrentkey12347; newcurrentBmovementapplies. Keylow8wrap/hostileknownkey-peer/spoofing/replayacrossalltopology notsolved; legacyUDP is not strongaccountauthentication.",
+    "Authorization is transaction-time check at command/tick/batch boundaries; no atomicDBtransaction heldacrossnetworkwrite/queue. Earliercommittedinflightbytes cannotbeunsent. Queuedcurrentrecipient/visit/round fences and invalidationdrop proven scope, notinstant globalrevocation/SLO. NativeDBqueuefault/load not yet accepted.",
+    "Accountprofile/generalprojection beyondfixed2 remainsM5gap. M6inventory/progression/rewards, M7dynamicmultiroom, M8restore/load/operations separate; no durableEXP/currencygrant fromrankUI. M5 remainsOPEN.",
+    "PrivateTMPFS SQLite/log/raw/exporthash aftercleanup, not Btrfs/crashdurability/backuprestore. Wine/sharedhostvirtualLAN accepted. K6c WAN giả lập unchanged; Internet thật chưa kiểm. VPSInternetcarrierpreflight is separate and no nativeInternetacceptance.",
+    "NEXTtypedDBownedprofileprojection knownname5/7 beyondIDs1/2, nativeDBqueuefailure integration perPLAN. M5OPEN/no artificialfullservicegate.",
+    "Auditperfeaturegroup/seriouscontradiction, nofixedCPdeadline. Oldcomplete/audits/raw unchanged."
+  ]
+}

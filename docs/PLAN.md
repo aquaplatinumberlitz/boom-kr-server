@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP256: native freshprocess/newbackend-newfrontend/oldnative1-6replay denied đạt;84Rust/122raw28exactTCP/cleanup0. M5 vẫn mở; NEXT account-owned fixedroom/basic end-to-end theo chỉ đạo mới. AUD074qua256; từ sauCP256 audit khi hoàn tất nhóm tính năng, không lịch4CP. Internet thật chưa kiểm.
+CP258: account-owned fixed2/basic end-to-end + revoke/expiry/disconnect + manualfresh rejoin/oldUDPdrop-currentpositive đã đạt scope;5run280raw375exactTCP/cleanup0. M5OPEN/generalprofile/nativeDBqueuefault/recoverylimits; AUD076auditnhóm, không lịch4CP. Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -137,7 +137,7 @@ R1 đi trước M7, G1 và M6 vì cả ba đều sửa lõi phòng; làm R1 sau 
 <!-- active-issue: 14 --> [KRE-074/#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285) giữ epic chuyển Rust. <!-- active-issue: 285 -->
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Theo [policy mới](evidence/owner-directives/feature-group-audits.json), không deadline audit theo sốCP. Nhóm công việc đang ưu tiên
-là **account-owned fixedroom/basic end-to-end** với acceptance/lifecycle phía dưới; audit khi nhóm này hoàn tất, hoặc ngay khi có
+là các lát cắt M5 dưới đây; **account-owned fixedroom/basic end-to-end** hoàn tất scope CP258/AUD076. Audit khi nhóm kế hoàn tất, hoặc ngay khi có
 mâu thuẫn nghiêm trọng. Checkpoint trung gian không tự phát sinh audit. Counter/audit cũ giữ lịch sử.
 
 Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã đo; [provenance/kiểm](evidence/eight-player/team-code-delivery.json). Baseline Rust cũ không hồi quy theo delivery này.
@@ -225,15 +225,22 @@ Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã
    NativeA chỉ noticeerror10/boundednoterminal, **chưa modalclose/retry/recovery**; CP220/224 blockers không bị rút.
    PR326/CP254 đã merge5dcb9af; không Rustsourcechange. Native counter semantics là declared input fault/compoundguard,
    không originalclientnormalbehavior, independentbranchcoverage hoặc alreadyactiveBmatch proof. Backend/C2S6echo32khácstrong64.
-   **NEXT theo [chỉ đạo account xuyên suốt](evidence/owner-directives/account-basic-end-to-end.json):** freshlogin/native-byte replay đã đạt CP256; tiếp nối account mode vào **phòng cố định/basic đã có**:
-   create→backend session→private launcher→native đúng player/profile→fixedroom→Battle→175/180/reset→Start2/3.
-   Account phải giữ ownership identity/transport/membership; kiểm wrong-owner, disconnect/expiry/revoke và stale queued/round/UDP fences
-   bằng native cùng đối chứng kernel. Hai account/fixed known profiles là lát cắt đầu; không chờ generalprofile/multiroom/inventory hoặc M4Free.
-   Freshprocess/newbackendSession/newfrontend khác sameprocessretry/accountresume/matchrestore. Generic DB-owned projection beyond1/2
-   còn backlog M5 theo trigger; nhiều phòng/general membership ở M7. Không suy native accountlobby + diagnosticgame thành accountgame.
-   [CP256](PROTOCOL.md#rust-account-fresh-login) đã có native freshprocess/newbackend-newfrontend/oldnative1-6 replay denied/healthyB8s;122raw70,794s/28exactTCP/cleanup0.
-   CLI login sửa timestamp trước KDF thành UTC tại writer transactions; explicit supplied-time APIs vẫn strict,84tests. NativeR1ClockRollback/68raw giữ lại.
-   AUD074 đối chiếu CP253–256; [chỉ đạo mới](evidence/owner-directives/feature-group-audits.json) thay lịch4CP bằng audit khi hoàn tất nhóm tính năng; ownerWine/LAN/WAN giảlập giữ, Internet thật là backlog riêng.
+   **CP258 đã nghiệm thu nhóm account-owned fixed2/basic xuyên suốt**, theo [chỉ đạo](evidence/owner-directives/account-basic-end-to-end.json)
+   và [contract/limits](PROTOCOL.md#rust-account-basic): create→session→private launcher→native đúngprofile/channel/slot→fixedroom→
+   basic2oppositeoutcomes→175180/reset/Start3. Normal68raw203,751s/106exactreply; ba hostB revoke/expiry/disconnect
+   khiownbombpending→survivorA175180/107ID2clear/110chief/Room/no158pastdue, mỗi48raw/60reply. NativeB revoke/expiry
+   hiệngameSessionError2000/Winefatal; chỉserver/survivorfenceđạt, khônggracefulrecovery. Khôngsửa raw hoặcgọi fatal là logoutsuccess.
+   Manualfresh B process/backend/frontend mới saurevoke-stop→sameID/newchannel/rejoinslot/Ready/AStart/current12347;
+   exactoldBUDP12346/nativekeydrop/noapply, freshBcurrentmovementapply/progress.68raw172,400s/89exactreply/cleanup0.
+   Tổng5run280raw375exactTCP;84Rust/59account-basicTCP/16lobbyregression. Oldchannel6roguereplay/newmembership/nextkey
+   kiểmTCP riêng, khôngsuy thành nativehostilepeer/strongUDPauth. Group auditAUD076, không lịchcheckpointcốđịnh.
+   **NEXT-M5: typed DB-owned profile projection beyondIDs1/2 trongwireknownname5/7**, cùng ownership/versionnegative;
+   backend Store/worker/KDF không làm lại. NativeDB/queue failclosed là gap cần ca integration nhỏ, recoveryCP220/224 chỉ mở
+   khiobservable mới/milestonechặn. Profile tổngquát làM5gap; khôngép fullservice/restore/multiroom trướcnhómfixed2đãđạt.
+   M5tổngthể vẫnOPEN; inventory/reward M6, nhiều phòng/generalregistry M7, durableops/restore M8 riêng.
+   Theo owner mới có VPSInternetbổsung: tiềnkiểmsetup doagentriêng, khôngđổinativeM5runinput/source/sharedWine;
+   không nhậnnetworknoncepreflight lànativeInternetgame. NếucloudUDPchưađủquyền vẫntiếpcôngviệcM5độclập;
+   K6cWANgiảlập/K7scopeđãđạt, Internet thật chưa kiểm và khôngdependencyngầm.
    M4 vẫn mở do Free1v7haioutcomes/selector0nativepersist; native9 criterion có bằng chứng scope riêng, không tự đóng cả M4.
    Không nâng baseline8 thành fullM4/terrain-items8/auth. Shared8EOF chỉmodel/TCPfence/no175180, chưa7nativeRoomreturn.
    Queue8inbox16 giữlocalpending16/2-4inbox8; unique7life/8bomballwrites. CP209sealedraw142/167 khácfour đã đối chiếu,
@@ -406,7 +413,7 @@ chuyển milestone khi từng capacity advertised đủ; không chờ modesphụ
 
 **RUST-M5 — account/profileDB và ownership; có thể tiến hành độc lập gameplay.**
 CP236 đã có [backend](PROTOCOL.md#rust-account-backend)/[CLI](../rust/README.md#account-admin-cli) dùng SQLite thật;
-[CP243](PROTOCOL.md#rust-account-worker) có boundedworker/handoff và [CP244](PROTOCOL.md#rust-account-idle-rate) có idleTTL/rate/schema2; CP254 thêm fixed2native account lobby/private launcher, CP255 thêm ba native negative/lifecycle; freshlogin/replay và account-owned fixedroom/basic end-to-end theo chỉ đạo mới còn thiếu, nên **không đóng M5**. Production restore thuộc M8, không là dependency M5. Không bắt M3/M4 đợi phần đó.
+[CP243](PROTOCOL.md#rust-account-worker) có boundedworker/handoff và [CP244](PROTOCOL.md#rust-account-idle-rate) có idleTTL/rate/schema2; CP254 thêm fixed2native account lobby/private launcher, CP255 thêm ba native negative/lifecycle; CP258 đã có freshlogin/replay/account-owned fixedroom-basic end-to-end scope2knownprofiles và lifecycle; generalprofile/nativeDBqueuefault/affectedclientrecovery còn giới hạn nên **không đóng M5**. Production restore thuộc M8, không là dependency M5. Không bắt M3/M4 đợi phần đó.
 Module application/accounts/profiles/session/store/sqlite/migrations/adminCLI; architecture định schema/invariants.
 Backendimplementation: Argon2id/PHC/CSPRNG/hash-atrest/sessionTTL-revoke/oneactive; account→player→wireidentity,
 lease nhiềustage/sockets thay rolearrival/sourceIP, nameencoding/bounds, schema/version/conflict/startupvalidation.

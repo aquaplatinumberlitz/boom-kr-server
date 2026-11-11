@@ -698,6 +698,16 @@ impl Session {
             connection,
         })
     }
+    /// Ancillary lobby observations must not be accepted during room/Battle.
+    pub fn in_lobby(&self) -> bool {
+        self.shared.lock().is_ok_and(|runtime| {
+            runtime
+                .channels
+                .get(&self.identity)
+                .is_some_and(|channel| channel.connection == self.connection)
+                && !runtime.model.members.contains_key(&self.identity)
+        })
+    }
     pub fn tick(&self) -> io::Result<()> {
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
         if r.abort.is_some() {

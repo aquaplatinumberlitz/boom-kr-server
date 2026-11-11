@@ -319,3 +319,8 @@ PrivateTMPFS DB/log/raw/exporthash, khôngBtrfsdurabilityfix. NativeR2/R3/R4fail
 `tools/test_rust_account_serving.py --binary <kr-service> --admin <kr-admin> --config <two-profile> --out <new-private-dir>`
 kiểm synthetic TCP, khôngnativeoracle. Accountmode reject room/battle/unknownprofile; native negative/lifecycle/fullM5 còn thiếu.
 Python/diagnostic rollback giữ. Internet thật chưa kiểm.
+
+`test_rust_life.py --account-admin <kr-admin>` tái dùng cùng basicTCP suite qua realSQLite/privateUnix launcher;
+[rust_account_fixture.py](../tools/rust_account_fixture.py) giữ credentials trongprivate raw, khôngpublicpasswordAPI.
+59ca gồm freshowner/free-slot/newchannel/rejoin/currentnextkey và oldchannelcorrelatornegative;16accountlobbyregression riêng.
+NativeKRacceptance xem [accountbasic](../docs/PROTOCOL.md#rust-account-basic), không suy từ syntheticencoder/serverlog.

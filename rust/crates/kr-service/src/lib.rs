@@ -249,9 +249,9 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
         if let Some(account) = &two.account_admission {
-            if two.actors.len() != 2 || two.fixed_room.is_some() {
+            if two.actors.len() != 2 {
                 return Err(io::Error::other(
-                    "account lobby supports exactly two profiles, no room adapter",
+                    "account adapter supports exactly two measured profiles",
                 ));
             }
             account.validate()?;
@@ -559,6 +559,7 @@ async fn local_lobby_connection(
             // Semantics unknown; bounded observation only, no ACK/activity/state effect.
             if matches!(account, Some(account_serving::Lease::Channel(_)))
                 && flow.stage == lobby::Stage::Lobby
+                && room_session.as_ref().is_none_or(room_io::Session::in_lobby)
                 && packet.opcode == 87
                 && packet.payload
                     == kr_wire::write_uint(0, kr_wire::Width::U16).map_err(io::Error::other)?
@@ -578,6 +579,12 @@ async fn local_lobby_connection(
             if let Some(session) = &room_session
                 && room_io::Session::handles(packet.opcode)
             {
+                if let Some(account) = &mut account {
+                    // Admission of a current owned room command is activity.
+                    // No runtime lock is held across the bounded DB worker await;
+                    // Session::packet rechecks connection/membership afterwards.
+                    tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(true)=>value? };
+                }
                 let observation = session.packet(packet.opcode, &packet.payload)?;
                 emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
                 continue;
@@ -632,6 +639,9 @@ async fn local_lobby_connection(
             next_auth_check = Instant::now() + Duration::from_secs(1);
         }
         if let Some(session) = &room_session {
+            if let Some(account) = &mut account {
+                tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(false)=>value? };
+            }
             session.tick()?;
         }
         pending.sort_by_key(|batch| batch.due);
@@ -643,6 +653,9 @@ async fn local_lobby_connection(
             let Some(session) = &room_session else {
                 return Err(io::Error::other("missing room session"));
             };
+            if let Some(account) = &mut account {
+                tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(false)=>value? };
+            }
             if !session.valid(&batch) {
                 emit(&log,stamp(start,json!({"event":"room_queued_dropped","connection":id,"reason":"membership_phase_generation"}))).await?;
                 continue;
