@@ -383,3 +383,23 @@ phòng vẫn tám slot. Exporter có `--ninth-admission-probe-peer`/`--ninth-adm
 không có roomplayer_I. `test_rust_ninth_admission.py` kiểm sáu ca TCP; `rust_ninth_probe.py` cung cấp tám member tổng hợp
 cho native harness. [Native scope/giới hạn](../docs/PROTOCOL.md#rust-ninth-admission): một KR visitor, tám member TCP,
 không chín client native hoặc fullM4/auth. Freeactual32control vẫn startupblocked; M5bridge độc lập tiếp theo trong PLAN.
+
+<a id="account-admission-bridge"></a>
+## Admission account ở mức thư viện, CP253
+
+`account_bridge::Bridge` dùng bounded account worker hiện có để kiểm strong backend session/own Player,
+cấp frontend32 riêng và chuyển một lần login → redirect-delivery → channel generation.
+`Channel::check` authorize lại và fail closed; source IP hoặc field36 echo không tự tạo quyền.
+[Contract/giới hạn](../docs/PROTOCOL.md#rust-account-bridge), [raw/hash](../docs/evidence/rust-service/README.md#cp253).
+Chưa gắn listener/profilewriter/launcher API. TTL dùng chung10s cần kiểm startup khi nối native;
+không coi replay parser ngoại tuyến là KR đã dùng backend account, full authentication hoặc M5 complete.
+
+```bash
+python3 tools/test_rust_account_bridge.py --out local/new-account-bridge-check \
+  --oracle-manifest local/retained-native-bridge-oracle.json
+```
+
+Manifest oracle phải pin raw native đã đo, expected token SHA/name-ID-echo từ nguồn độc lập;
+example `check_account_bridge_wire` chỉ decode stdin hữu hạn, không listener hoặc log plaintext token.
+Test lưu DB/raw vào directory riêng0700 và kiểm source/hash/PIDgone; password/DB/token không commit.
+Python và diagnostic Rust serving giữ vai trò hiện tại. Native end-to-end M5 vẫn theo PLAN.

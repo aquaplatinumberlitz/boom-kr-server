@@ -115,6 +115,11 @@ pub struct Worker {
     thread: Option<thread::JoinHandle<Result<()>>>,
 }
 
+enum AuthorizationTime {
+    Supplied(i64),
+    ExecutionUtc,
+}
+
 enum Command {
     Login {
         login: String,
@@ -130,7 +135,7 @@ enum Command {
     Authorize {
         token: Token,
         player: i64,
-        now: i64,
+        now: AuthorizationTime,
         deadline: Instant,
         reply: oneshot::Sender<Result<Player>>,
     },
@@ -331,6 +336,22 @@ impl Client {
         if player < 1 || now < 0 {
             return Err(Error::InvalidInput);
         }
+        self.authorize(token, player, AuthorizationTime::Supplied(now))
+    }
+    /// Serving adapters use execution-time UTC, never the timestamp of queue admission.
+    /// The existing explicit-time API remains for offline tests/trusted callers.
+    pub fn try_authorize_current(&self, token: &Token, player: i64) -> Result<Pending<Player>> {
+        if player < 1 {
+            return Err(Error::InvalidInput);
+        }
+        self.authorize(token, player, AuthorizationTime::ExecutionUtc)
+    }
+    fn authorize(
+        &self,
+        token: &Token,
+        player: i64,
+        now: AuthorizationTime,
+    ) -> Result<Pending<Player>> {
         let token = Token::parse(token.expose_secret()).map_err(Error::Backend)?;
         let (reply, rx) = oneshot::channel();
         self.submit(Command::Authorize {
@@ -422,7 +443,17 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>) -> Result<()> {
                     let _ = reply.send(Err(Error::QueueExpired));
                     continue;
                 }
-                let _ = reply.send(store.authorize(&token, player, now).map_err(Error::Backend));
+                let now = match now {
+                    AuthorizationTime::Supplied(now) => Ok(now),
+                    AuthorizationTime::ExecutionUtc => std::time::SystemTime::now()
+                        .duration_since(std::time::UNIX_EPOCH)
+                        .ok()
+                        .and_then(|t| i64::try_from(t.as_secs()).ok())
+                        .ok_or(Error::Backend(accounts::Error::ClockRollback)),
+                };
+                let result = now
+                    .and_then(|now| store.authorize(&token, player, now).map_err(Error::Backend));
+                let _ = reply.send(result);
             }
             #[cfg(test)]
             Command::Pause { entered, resume } => {
@@ -436,4 +467,4 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>) -> Result<()> {
     Ok(())
 }
 #[cfg(test)]
-mod tests;
+pub(crate) mod tests;

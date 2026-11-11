@@ -74,7 +74,7 @@ fn rt() -> tokio::runtime::Runtime {
         .build()
         .unwrap()
 }
-async fn pause(client: &Client) -> std::sync::mpsc::Sender<()> {
+pub(crate) async fn pause(client: &Client) -> std::sync::mpsc::Sender<()> {
     tokio::time::timeout(Duration::from_secs(3), async {
         loop {
             let (entered, ready) = oneshot::channel();

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP252",
+  "as_of": "CP253",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -454,7 +454,9 @@
           "docs/evidence/rust-service/README.md#cp244",
           "docs/evidence/rust-service/account-idle-rate.json",
           "docs/evidence/rust-service/four-startup.json",
-          "docs/evidence/rust-service/README.md#cp245"
+          "docs/evidence/rust-service/README.md#cp245",
+          "docs/PROTOCOL.md#rust-account-bridge",
+          "docs/evidence/rust-service/account-bridge.json"
         ]
       },
       "coverage": {
@@ -564,7 +566,10 @@
             "rust/crates/kr-service/src/bin/kr-admin.rs",
             "docs/PROTOCOL.md#rust-account-worker",
             "docs/PROTOCOL.md#rust-account-idle-rate",
-            "docs/PROTOCOL.md#rust-four-startup"
+            "docs/PROTOCOL.md#rust-four-startup",
+            "docs/PROTOCOL.md#rust-account-bridge",
+            "rust/crates/kr-service/src/account_bridge.rs",
+            "rust/crates/kr-service/src/account_bridge/wire.rs"
           ],
           "delivery": "via_pr"
         },
@@ -579,7 +584,8 @@
             "docs/PROTOCOL.md#service-channel-endpoint",
             "docs/PROTOCOL.md#rust-account-backend",
             "rust/crates/kr-service/src/accounts.rs",
-            "rust/crates/kr-service/src/bin/kr-admin.rs"
+            "rust/crates/kr-service/src/bin/kr-admin.rs",
+            "docs/PROTOCOL.md#rust-account-bridge"
           ]
         },
         "gate": {

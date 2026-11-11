@@ -1,0 +1,305 @@
+{
+  "id": "CP253",
+  "previous": "CP252",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T04:37:24.282055+00:00",
+  "context_commit": "e17b78b8f988d1abd6e791b1630faf90ee7e9066",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/M5: implement minimal worker/backend session→KR frontend32/login/redirect/channel ownership library, retaining native wire provenance; separate serving/native acceptance instead of redoing DB/KDF or blocked M4 startup.",
+  "scope": "Library only, no listener/config/runtime behavior change. Execution-time UTC/RAII generation/oneuse launch; 80workspace tests/7bridgecases/6DB/3retained-native parser replay. M5partial/M4Freeblocked/AUD073next256.",
+  "artifacts": [
+    {
+      "name": "Rust account bridge test binary, not native KR serving",
+      "sha256": "de1d98b7d6c32a58251c6fbee88a5d290370a5052019bded4cd73a6b63d53377"
+    },
+    {
+      "name": "Rust offline wire checker example, no listener",
+      "sha256": "5283f82cde95f091cd60fbd7db7c3c4809e07522bd7d9c93b48c88efe57e6cfb"
+    },
+    {
+      "name": "Rust kr-service rebuilt only, M5 native not run",
+      "sha256": "cdb74b46bb5f1d5bed25c51b247cf0e88e0e5d387cf13826607b5bd0f77e5f96"
+    }
+  ],
+  "locators": [
+    "account_bridge::Bridge::issue/login/channel and Channel::check; backend64 distinct CSPRNG128bit/frontend32; Registry/Guard phased ownership and postawait generation fences",
+    "account_worker::try_authorize_current/AuthorizationTime::ExecutionUtc; old explicit-time API preserved",
+    "account_bridge::wire::login_token/channel_identity: CP214–217/225 measured count1/32 and name5/7 optional-off; CP216 bool at name+31,23otheropaque bytes",
+    "CP217 native writer/input SHA and native channel echo/nameID; 3 unchanged complete-pinned bodies offline replay, not new native run",
+    "CP252PR324/e17b78b merged; M4Free startup blocked/no repeat without observable; PLAN next listener/profilewriter/private-launcher seam/native2accounts. AUD073nextCP256"
+  ],
+  "findings": [
+    {
+      "summary": "M5 library reuses CP236/243/244 Store/worker; own strong session64→separate frontend32, one-use login and explicit redirect delivered seam→one owned channel. Same-IP two accounts remain separate; echo32 is only correlator, sourceIP not principal. No native password UI/launcher API/listener changes.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-bridge",
+      "evidence": [
+        "RUST253-0197",
+        "RUST253-0153"
+      ],
+      "limits": "Library seam only. Existing diagnostic service listener/config/packet logging/room behavior unchanged; kr-service rebuilt but not natively certified for M5.; Three old native bodies replayed offline are not a fresh KR end-to-end run on Rust account backend; two implementations agreeing is not a native authentication oracle.; Field36 echo32 and peer IPv4 remain legacy correlators/profile fences, not strong channel credentials. Opaque16 and other23 C2S6 trailing bytes are not interpreted as secrets. No original server auth or encrypted transport claim.; Only count1/token32/body61 and channel name5/name7/count1/optional-off. Backend names3..15 do not automatically all project to KR. Dynamic account profile writer and listener integration still missing.; Process-local capacity1..32, original launch TTL1ms..10s, echo budget1024/no reuse until process exit. No durable restart/multi-process replay fence; check launch startup timing before serving integration. Expired pending entries swept on new admission, bound entries require check/drop by serving caller.; Worker current UTC is sampled when DB work executes; authorization is a transaction-time check, not continuous revocation. Serving must select authorization boundaries and invalidate room/UDP/queued work on failure; no socket integration or periodic check has been implemented.; Backend session is borrowed, never created by this bridge; cancellation only removes bridge generation and zeroizes copies, does not revoke a caller-owned session. Backend idle renewal occurs on each successful own-player authorization including a canceled operation that was already running.; No launcher/admin web API, native password UI, frontend error-reply adaptation, account resume/match restore, ban UI, multiroom, result-reward durability, load or backup/restore acceptance. M5 remains partial and M4 Free remains blocked; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Worker execution-time UTC, not submit timestamp; queued session expiry rejects at execution. No lock held across DB await; postawait phase-generation-deadline, canceled reservations/Busy/Closed/old drops, repeated revoke/profile/DB failure failclosed. Borrowed session not revoked on bridge cancellation; own authorize may renew idle if already executed.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-bridge",
+      "evidence": [
+        "RUST253-0200",
+        "RUST253-0198",
+        "RUST253-0153"
+      ],
+      "limits": "Library seam only. Existing diagnostic service listener/config/packet logging/room behavior unchanged; kr-service rebuilt but not natively certified for M5.; Three old native bodies replayed offline are not a fresh KR end-to-end run on Rust account backend; two implementations agreeing is not a native authentication oracle.; Field36 echo32 and peer IPv4 remain legacy correlators/profile fences, not strong channel credentials. Opaque16 and other23 C2S6 trailing bytes are not interpreted as secrets. No original server auth or encrypted transport claim.; Only count1/token32/body61 and channel name5/name7/count1/optional-off. Backend names3..15 do not automatically all project to KR. Dynamic account profile writer and listener integration still missing.; Process-local capacity1..32, original launch TTL1ms..10s, echo budget1024/no reuse until process exit. No durable restart/multi-process replay fence; check launch startup timing before serving integration. Expired pending entries swept on new admission, bound entries require check/drop by serving caller.; Worker current UTC is sampled when DB work executes; authorization is a transaction-time check, not continuous revocation. Serving must select authorization boundaries and invalidate room/UDP/queued work on failure; no socket integration or periodic check has been implemented.; Backend session is borrowed, never created by this bridge; cancellation only removes bridge generation and zeroizes copies, does not revoke a caller-owned session. Backend idle renewal occurs on each successful own-player authorization including a canceled operation that was already running.; No launcher/admin web API, native password UI, frontend error-reply adaptation, account resume/match restore, ban UI, multiroom, result-reward durability, load or backup/restore acceptance. M5 remains partial and M4 Free remains blocked; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Three unchanged CP217 raw bodies replayed through Rust decoder match native input-token SHA and channel ID/name/echo from native writer/chain. Existing crypt reused; no new encoder oracle or runtime KR client/accountbackend acceptance.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/PROTOCOL.md#rust-account-bridge",
+      "evidence": [
+        "RUST253-0217",
+        "RUST253-0155"
+      ],
+      "limits": "Retained native input provenance and offline parser replay only; no live Rust account compatibility or original server authentication proof."
+    },
+    {
+      "summary": "80workspace tests/7bridgecases6schema2DB/12account-player/sourcefrozen/PIDgone; same-IP owners/oneuse/expiry-revoke-profile/DBfault/cancel/queue generation. R1 acceptance retained; manual optional-off omission fixed before R2,23otherbytes opaque. Preliminary compile/test Busy failures retained, barrier fixes test drain assumption without capacity/deadline increase.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-bridge",
+      "evidence": [
+        "RUST253-0212",
+        "RUST253-0086",
+        "RUST253-0153",
+        "RUST253-0184"
+      ],
+      "limits": "Library seam only. Existing diagnostic service listener/config/packet logging/room behavior unchanged; kr-service rebuilt but not natively certified for M5.; Three old native bodies replayed offline are not a fresh KR end-to-end run on Rust account backend; two implementations agreeing is not a native authentication oracle.; Field36 echo32 and peer IPv4 remain legacy correlators/profile fences, not strong channel credentials. Opaque16 and other23 C2S6 trailing bytes are not interpreted as secrets. No original server auth or encrypted transport claim.; Only count1/token32/body61 and channel name5/name7/count1/optional-off. Backend names3..15 do not automatically all project to KR. Dynamic account profile writer and listener integration still missing.; Process-local capacity1..32, original launch TTL1ms..10s, echo budget1024/no reuse until process exit. No durable restart/multi-process replay fence; check launch startup timing before serving integration. Expired pending entries swept on new admission, bound entries require check/drop by serving caller.; Worker current UTC is sampled when DB work executes; authorization is a transaction-time check, not continuous revocation. Serving must select authorization boundaries and invalidate room/UDP/queued work on failure; no socket integration or periodic check has been implemented.; Backend session is borrowed, never created by this bridge; cancellation only removes bridge generation and zeroizes copies, does not revoke a caller-owned session. Backend idle renewal occurs on each successful own-player authorization including a canceled operation that was already running.; No launcher/admin web API, native password UI, frontend error-reply adaptation, account resume/match restore, ban UI, multiroom, result-reward durability, load or backup/restore acceptance. M5 remains partial and M4 Free remains blocked; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "PR324 CP252 merged; current M5 librarypartial and native/listener/launcher/profilewriter gaps explicit in canonical docs/catalog/issue285. M4 Free blocked/no repeat; fullauth/economy/ops not closed. Owner Wine/LAN/K6c WAN giả lập retained/Internet thật chưa kiểm separatebacklog; periodic remainsCP256.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-bridge",
+      "evidence": [
+        "RUST253-0184",
+        "RUST253-0187",
+        "RUST253-0019",
+        "RUST253-0014"
+      ],
+      "limits": "Library seam only. Existing diagnostic service listener/config/packet logging/room behavior unchanged; kr-service rebuilt but not natively certified for M5.; Three old native bodies replayed offline are not a fresh KR end-to-end run on Rust account backend; two implementations agreeing is not a native authentication oracle.; Field36 echo32 and peer IPv4 remain legacy correlators/profile fences, not strong channel credentials. Opaque16 and other23 C2S6 trailing bytes are not interpreted as secrets. No original server auth or encrypted transport claim.; Only count1/token32/body61 and channel name5/name7/count1/optional-off. Backend names3..15 do not automatically all project to KR. Dynamic account profile writer and listener integration still missing.; Process-local capacity1..32, original launch TTL1ms..10s, echo budget1024/no reuse until process exit. No durable restart/multi-process replay fence; check launch startup timing before serving integration. Expired pending entries swept on new admission, bound entries require check/drop by serving caller.; Worker current UTC is sampled when DB work executes; authorization is a transaction-time check, not continuous revocation. Serving must select authorization boundaries and invalidate room/UDP/queued work on failure; no socket integration or periodic check has been implemented.; Backend session is borrowed, never created by this bridge; cancellation only removes bridge generation and zeroizes copies, does not revoke a caller-owned session. Backend idle renewal occurs on each successful own-player authorization including a canceled operation that was already running.; No launcher/admin web API, native password UI, frontend error-reply adaptation, account resume/match restore, ban UI, multiroom, result-reward durability, load or backup/restore acceptance. M5 remains partial and M4 Free remains blocked; Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "80workspace/fmt/clippy/lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST253-0212",
+        "RUST253-0158",
+        "RUST253-0157"
+      ],
+      "limits": "75service+5wire; no live native M5."
+    },
+    {
+      "check": "7librarycases6realDB/sourcefrozen/PIDgone",
+      "result": "pass",
+      "evidence": [
+        "RUST253-0153"
+      ],
+      "limits": "Library policy/SQLite worker, not native client account backend."
+    },
+    {
+      "check": "3CP217retainednativebodies/originalcompletepins",
+      "result": "pass",
+      "evidence": [
+        "RUST253-0217",
+        "RUST253-0155"
+      ],
+      "limits": "Offline parser replay only, not native end-to-end."
+    },
+    {
+      "check": "Preliminarycompileandqueuedcancel-test",
+      "result": "fail",
+      "evidence": [
+        "RUST253-0160",
+        "RUST253-0213",
+        "RUST253-0214",
+        "RUST253-0215"
+      ],
+      "limits": "Pre-acceptance failures retained; fix coercion/API and deterministic drain barrier. R3onefailure poisons serial lock causing2dependentfailures."
+    },
+    {
+      "check": "R1manual_optional_branch_gap/R2guard",
+      "result": "pass",
+      "evidence": [
+        "RUST253-0086",
+        "RUST253-0153",
+        "RUST253-0199"
+      ],
+      "limits": "R1tests passed but boolbranch unconstrained; R2 adds negative/guard, no frozen-run edits or old raw rewrite."
+    },
+    {
+      "check": "Canonicaldocs/catalog/issue285-open",
+      "result": "pass",
+      "evidence": [
+        "RUST253-0010",
+        "RUST253-0184"
+      ],
+      "limits": "Selfcheck/waived review, no gate closure."
+    },
+    {
+      "check": "Listener/profilewriter/launcherAPI/liveKR2accounts/M5closure",
+      "result": "not_run",
+      "evidence": [
+        "RUST253-0187"
+      ],
+      "limits": "Next per PLAN; M5partial, M4Freeblocked, no fullauth/production/Internet claim."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP253-rust-account-bridge.json",
+      "bytes": 60884,
+      "sha256": "6345a5c883b682212866eaf800cfd50afd6a98d384606be2abc78e70ab2e5828",
+      "count": 220
+    }
+  ],
+  "delta": {
+    "added": [
+      "M5 minimal account admission library and execution-time worker authorization.",
+      "7librarycases/6DB/3independentretainednativebodyreplay/80workspace tests."
+    ],
+    "corrected": [
+      "Preliminary compile/API/test-drain assumption and optional-string-off guard before final acceptance; failures/raw preserved.",
+      "Unpublished metadata builder pinned its own stdout before final append. Preserve full failed declaration/index/raw, exclude mutable log from published pins; no committed checkpoint history changed."
+    ],
+    "superseded": [
+      "M5 account→nativewire library entirely absent; library seam now present, listener/native integration still absent."
+    ]
+  },
+  "blockers": [
+    "Library seam only. Existing diagnostic service listener/config/packet logging/room behavior unchanged; kr-service rebuilt but not natively certified for M5.",
+    "Three old native bodies replayed offline are not a fresh KR end-to-end run on Rust account backend; two implementations agreeing is not a native authentication oracle.",
+    "Field36 echo32 and peer IPv4 remain legacy correlators/profile fences, not strong channel credentials. Opaque16 and other23 C2S6 trailing bytes are not interpreted as secrets. No original server auth or encrypted transport claim.",
+    "Only count1/token32/body61 and channel name5/name7/count1/optional-off. Backend names3..15 do not automatically all project to KR. Dynamic account profile writer and listener integration still missing.",
+    "Process-local capacity1..32, original launch TTL1ms..10s, echo budget1024/no reuse until process exit. No durable restart/multi-process replay fence; check launch startup timing before serving integration. Expired pending entries swept on new admission, bound entries require check/drop by serving caller.",
+    "Worker current UTC is sampled when DB work executes; authorization is a transaction-time check, not continuous revocation. Serving must select authorization boundaries and invalidate room/UDP/queued work on failure; no socket integration or periodic check has been implemented.",
+    "Backend session is borrowed, never created by this bridge; cancellation only removes bridge generation and zeroizes copies, does not revoke a caller-owned session. Backend idle renewal occurs on each successful own-player authorization including a canceled operation that was already running.",
+    "No launcher/admin web API, native password UI, frontend error-reply adaptation, account resume/match restore, ban UI, multiroom, result-reward durability, load or backup/restore acceptance. M5 remains partial and M4 Free remains blocked; Internet thật chưa kiểm."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLAN next M5 opt-in listener/private-launcher/profilewriter/ownership boundaries, TCP failure controls then Wine/LAN freshnative2accounts with raw/hash/cleanup; launch startupTTL measurement before serving. No DB/KDF redo, broadSDKRE or M4Free retry without observable. AUD073through252-next256.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T04:37:24.282055+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex manual source/backend/oracle-provenance/cancellation/DB/hash/docs selfcheck; independent review waived, not approval; exact-head PR checks required.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/account-bridge.json",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    }
+  ]
+}

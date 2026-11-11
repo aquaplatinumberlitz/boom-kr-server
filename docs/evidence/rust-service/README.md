@@ -556,3 +556,28 @@ NativeR2 verifier đầu reject blanketnonEOF, reportfail giữ; bản mới ph�
 FIN/RST saucompletion, không xóa lỗi hoặc rerun client. Script/version/raw/inputretention đều được pin.
 AUD072 correction giữ riêng; AUD073periodicquaCP252/audit kếCP256, không reset cadence. M4OPEN vìFreepositive thiếu;
 M5worker-to-KR/ownershipbridge tiếp độc lập. Internet thật chưa kiểm.
+
+<a id="cp253"></a>
+## CP253 — account admission library, chưa listener/native M5
+
+[Contract](../../PROTOCOL.md#rust-account-bridge), [metadata](account-bridge.json), [thứ tự](../../PLAN.md#current-order).
+Baseline PR324/e17b78b; reuse nguồn ở `local/research/codex/rust-m5-bridge-source-r1/reuse.json` và
+`oracle.json`: CP217 complete pins giữ nguyên, expected token SHA/name-ID-echo từ native writer/chain.
+Không gọi native client mới, không RE binary hoặc thay runtime diagnostic.
+
+```bash
+python3 tools/test_rust_account_bridge.py \
+  --out local/research/codex/rust-account-bridge-acceptance-r2 \
+  --oracle-manifest local/research/codex/rust-m5-bridge-source-r1/oracle.json
+```
+
+R2:7ca thư viện/6DB/12account-player,3body replay,65file raw/15,069s/sourcefrozen/PIDgone;
+DB integrity/FK/schema2 và không plaintext password đạt. Output example chỉ digest/identity/correlator,
+không xuất token/password. 80workspace tests/fmt/clippy/lockedbuild tách native proof.
+R1 pass nhưng chưa constrain bool optional-string, giữ source/raw; R2 thêm guard/negative trước run mới.
+Preliminary compile errors và queuecancel test Busy giữ log; barrier sửa giả định drain trong test.
+Không tăng queue/timeout, không đổi source/input trong frozen run. Full checkpoint pin cả hai run/failure.
+
+Next: listener/profilewriter/launcher integration và native ownership/expiry/revoke/lifecycle theo PLAN;
+M5 vẫn partial. Backend64 không là native32, echo32 không strongcredential, tokenAPI chưa exposed.
+K6c WAN giả lập; **Internet thật chưa kiểm**.
