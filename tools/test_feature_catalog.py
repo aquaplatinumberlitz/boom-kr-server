@@ -66,6 +66,7 @@ class CatalogTests(unittest.TestCase):
         data = self.data()
         f = self.feature(data)
         f['coverage']['gate']['state'] = 'passed'
+        f['coverage']['gate'].pop('acceptance', None)
         self.assert_error(data, 'passed gate needs explicit acceptance')
         f['refs']['question'] = 'docs/RESEARCH.md#q-023'
         self.assert_error(data, 'question locator mismatch')
