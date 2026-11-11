@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP258",
+  "as_of": "CP259",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP258nativeaccountfixed2basic2outcomes-reset-Start3/revoke-expiry-disconnectsurvivorcleanup/manualfreshBrejoin-oldUDPdrop-currentpositive;5run280raw375exactreplies/cleanup0;84Rust59TCP16lobby;PR328merged.",
-      "remaining": "M5genericprofile beyondIDs1/2/version1/nativeDBqueuefault/affectedclientrecoverylimits;M6-8separate. VPSnativeInternetnotrun/OCIpermissionspending.",
-      "next_test": "PLANtypedDBownedprojector knownname5/7/ownership-versionnegative, smallDBfailureintegration; InternetVPSonlysupplementary/noM5dependency.",
+      "known": "PR330/CP258 merged1b8d6f2; PR329/RoomRules synchronized;86Rust59accountTCP143roomframes unchanged; privateARMbuild86tests pass. ProjectorWIP preserved/notmerged.",
+      "remaining": "N1 nativeInternet/NAT unknown; GetVnic404 afterDG+policycreated/currentlocatorsverified; M5 genericprofile/nativeDBqueuefault/recoverylimits remain.",
+      "next_test": "PLAN N1 with savedIAMconfiguration diagnosis first; then R1b-g, R1f uses N1. No blind IAM polling or M4Free retries.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Fixed2accountbasicfeaturegroup accepted/auditAUD076, fullM5OPEN. AffectedBfatalnotgracefullogout; manualfreshnotresume; legacyUDPkeyguardnotstrongauth. Networkpreflightnotnativegame.",
+      "reason": "OwnerPR329 priority supersedes old projector-first order; no N1/R1 groupcomplete or newnativeclaim; K6cK7emulatedWANunchanged.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -928,7 +928,10 @@
         "docs/PROTOCOL.md#rust-account-fresh-login",
         "docs/evidence/checkpoints/README.md",
         "docs/PROTOCOL.md#rust-account-basic",
-        "docs/PROTOCOL.md#vps-internet-preflight"
+        "docs/PROTOCOL.md#vps-internet-preflight",
+        "docs/PROTOCOL.md#rust-pr329-integration",
+        "docs/PLAN.md#rust-n1",
+        "docs/PLAN.md#rust-r1"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -979,7 +982,9 @@
         "docs/evidence/owner-directives/account-basic-end-to-end.json",
         "docs/evidence/owner-directives/feature-group-audits.json",
         "docs/evidence/rust-service/account-basic.json",
-        "docs/evidence/peer-endpoints/vps-internet-preflight.json"
+        "docs/evidence/peer-endpoints/vps-internet-preflight.json",
+        "docs/evidence/rust-service/pr329-integration.json",
+        "docs/evidence/owner-directives/pr329-integration-order.json"
       ],
       "prs": [
         286,
@@ -1021,7 +1026,9 @@
         325,
         326,
         327,
-        328
+        328,
+        329,
+        330
       ],
       "successors": []
     }

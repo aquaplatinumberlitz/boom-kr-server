@@ -1,0 +1,42 @@
+{
+  "schema": "kre-pr329-account-integration-v1",
+  "checkpoint": "CP259",
+  "baseline": "1b8d6f268f172b808673bc763413720fc91813e3",
+  "canonical": "docs/PROTOCOL.md#rust-pr329-integration",
+  "plan": "docs/PLAN.md#current-order",
+  "directive": "docs/evidence/owner-directives/pr329-integration-order.json",
+  "source": "design",
+  "status": "design",
+  "integration": "Active rust/m5-account-basic fast-forwarded main1b8d6f2 includingPR329073700e/RoomRules andCP258PR330. No rebase/reset, own5fileprojectorWIP kept at stashaa4800a30ec87932ce425bae5969bc45c2dd2411 and snapshot; no unknownWIP touched.",
+  "binary_sha256": "443ddd1e84fe50b3d1671da69dec3dce52c4460a09b8fcf0c3e7400fc1242173",
+  "native_baseline_sha256": "f268863f54ea7982a111df453ed0bc99c1c084f77585f5510eff2146f49646a0",
+  "checks": {
+    "fmt": "pass",
+    "clippy": "pass",
+    "workspace_tests": 86,
+    "service_tests": 81,
+    "wire_tests": 5,
+    "locked_build": "pass",
+    "account_TCP": 59,
+    "room_frames_exact_SHA_vs_CP258": 143
+  },
+  "limits": [
+    "Postmergebuild/unit/TCP is not a new nativecertification; CP258binaryf268 remains exactoldnativeevidence, no rewriting record/audit/raw. FinalR1 native2/4/8/account regression perPLAN.",
+    "ProjectorWIP has88Rust17syntheticTCP/PIDgone but no native/delivery; preservedincompletenotmerged. NeworderN1→R1b-g overrides oldprojectorpriority.",
+    "N1 raw UDP0of12/0NIC/unknowncause; SSH-TCPnonce12payload preflightonly. Ownercreatedpolicy+dynamicgroup; freshsigner11Nov12:22UTC stillGetVnic404NotAuthorizedOrNotFound. Need saveddomain/matchingrule/policy/rootcompartment; no ACLread/mutation/nativeN1/a-b-cdecision.",
+    "Phase1 internal50users8rooms/realInternet/N1 required separately, oldK6cK7emulatedWANscopeunchanged. Longtermfullgameplay; G1map-itemlist/M4Free1v7/rewardbeyondzero remainownerdecisions."
+  ],
+  "arm_build": {
+    "source_commit": "1b8d6f268f172b808673bc763413720fc91813e3",
+    "archive_sha256": "49f41c72a65c79f8388c79d3be906ebd6907cb09927a4856eb19732cd8e74815",
+    "toolchain": "1.99.0",
+    "target": "aarch64-unknown-linux-gnu",
+    "locked_build": "pass",
+    "workspace_tests": 86,
+    "service_sha256": "6b125abc79f4f719dcce1a3517f3a82ae10eaf79545408ab5e98465361c5517e",
+    "admin_sha256": "9860dfc78f9f29ebf9547e93b83aeeef4943dfbd272407edd6e2aa28fe333b73",
+    "evidence": "local/research/codex/real-internet-n1-arm-build-r1/remote-evidence/build-result.json",
+    "limits": "Private native Linux ARM build and unit tests only; no public game listener or KR runtime acceptance."
+  },
+  "iam_check": "local/research/codex/real-internet-vps-iam-effective-r4/result.json"
+}

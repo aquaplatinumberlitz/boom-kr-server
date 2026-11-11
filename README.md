@@ -33,6 +33,16 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP259: đã đồng bộ main PR329/PR330 và chuyển ưu tiên sang N1 theo chỉ đạo mới.**
+[Quyết định/giữ WIP](docs/evidence/owner-directives/pr329-integration-order.json), [kiểm sau gộp](docs/evidence/rust-service/pr329-integration.json).
+Fmt, clippy, 86 test Rust, locked build và 59 ca account TCP đạt; 143 frame phòng khớp hash với CP258.
+Bằng chứng native CP258 vẫn gắn binary đã đo, chưa tự chứng nhận binary sau `RoomRules`.
+WIP projector được giữ trong snapshot/stash, chưa chạy native hoặc merge; thứ tự ở [PLAN](docs/PLAN.md#current-order).
+Policy và dynamic group OCI đã tạo, nhưng lần kiểm mới 11/11 12:22 UTC vẫn bị `GetVnic 404 NotAuthorizedOrNotFound`; cần đối chiếu cấu hình group/policy đã lưu. VPS đã build/test Rust ARM64 (86 test), chưa mở game listener hoặc chạy native N1. Chưa có kết luận (a)/(b)/(c). Internet thật chưa kiểm.
+
+### Mốc trước — phạm vi CP258 vẫn giữ nguyên
+
+
 **CP258: account → phòng cố định → hai trận basic/kết quả/reset → Start3 đã chạy trên hai KR thật.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-account-basic), [raw/hash](docs/evidence/rust-service/README.md#cp258).
 Account sở hữu đúng ID/profile/channel/slot; revoke/expiry/disconnect khi bom chờ đưa survivor về phòng, không nổ muộn.

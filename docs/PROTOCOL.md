@@ -9445,3 +9445,32 @@ Topology/config/cleanup/keyexclusions ởmetadata/HANDOFFlocal, chỉnonceports4
 BareUDP51837 gửi12/lượt2window nhưng0reply/0packettớiNIC; upstreamcauseunknown, khôngkếtluậnOCIduynhất.
 InstanceprincipalGetVnic404/IAMthiếu, chưađọcNSG/SecurityList hoặcchỉnhcloudACL; ownerđangnhậnIAMbootstrapinstructions.
 Không dùngnetworkaccept/nonce/SSH làmnativegameproof. K6cWANgiảlậpgiữscope, **Internet thật chưa kiểm** ởmứcgame/ISP/CGNAT.
+
+<a id="rust-pr329-integration"></a>
+## Đồng bộ PR329/RoomRules sau account/basic — CP259
+
+[Chỉ đạo ưu tiên mới](evidence/owner-directives/pr329-integration-order.json),
+[metadata/build](evidence/rust-service/pr329-integration.json), [PLAN](PLAN.md#current-order).
+Nguồn **design/design**; các phép kiểm source, build và TCP được phân biệt với native.
+
+Nhánh `rust/m5-account-basic` fast-forward tới main `1b8d6f2`, gồm PR329/`073700e` và PR330/CP258.
+Sáu cờ của Runtime nay nằm trong `r.rules.*`; `life_enabled`, `team_results`, `owner_bombs` thuộc `RoomRules`.
+Cấu hình JSON giữ nguyên. Không thêm cờ theo sức chứa, alias identity hoặc nhánh capacity mới.
+
+Sau gộp thật: fmt, clippy, 86 test workspace (81 service + 5 wire), locked build và 59 ca account TCP đạt.
+143 frame phản hồi phòng khớp alias/opcode/sequence/size/SHA với CP258 theo từng identity.
+Đây là kiểm TCP tổng hợp. Native CP258 vẫn pin binary trước R1a; hồi quy native 2/4/8/account ở cuối R1.
+WIP projector 5 file được giữ bằng snapshot và stash; 88 test Rust/17 ca TCP đạt, chưa native hoặc merge.
+
+Ưu tiên mới: N1 → R1b–g → M7 → G1 song song M6 thu hẹp → M8. N1 phải đo cổng 99 và tuple UDP sau NAT,
+từng chiều, đích native trả lời (nguồn quan sát hoặc 153), hai NAT khác nhau và ca chung NAT.
+Kết luận (a) trực tiếp, (b) học endpoint hoặc (c) relay cần bằng chứng theo acceptance.
+12 payload nonce qua WG đóng gói trong SSH/TCP và UDP trực tiếp 0/12 không quyết định được ba nhánh này.
+Chủ dự án đã tạo policy và dynamic group. Fresh signer 11/11 12:22 UTC vẫn trả `GetVnic 404
+NotAuthorizedOrNotFound`; cấu hình domain/matching rule/policy/root compartment còn cần đối chiếu.
+Chưa đọc được ACL, chưa sửa cloud ACL hoặc chạy native N1. Rust ARM64 trên VPS đã locked build và
+86 test đạt từ archive main `1b8d6f2`; không mở game listener. Build/test không chứng minh UDP Internet hoặc native game.
+
+Đích giai đoạn 1 là dịch vụ nội bộ 50 người/8 phòng và Internet thật; dài hạn giữ đầy đủ gameplay.
+N1 là dependency của đích mới; scope K6c/K7 bằng WAN giả lập giữ nguyên.
+Map/item G1, M4 Free 1v7 và thưởng ngoài mức 0 chờ chủ dự án. **Internet thật chưa kiểm** ở mức native game.
