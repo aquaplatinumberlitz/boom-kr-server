@@ -1,0 +1,309 @@
+{
+  "id": "CP248",
+  "previous": "CP247",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T00:26:23.672768+00:00",
+  "context_commit": "d6cbf9ef971c1e2e95fe2040a47634ab396f94d0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M4/KRE-074: port known typed four175180 and allrecipient life completion; native opposite2v2/results-reset-Start3 before scoped unrankedEOF/eight; periodicAUD071through248.",
+  "scope": "Optinfour_results with4life/bombs;typedrank16+4x131+12/winner/currentwitness-bombdrain-settle8/all170writes;normal175→180→16refresh/Ready-Start2-3;84raw/1691TCP280reply/48copiedgetters/62tests24four51two4prebind/M4partial.",
+  "artifacts": [
+    {
+      "name": "Rustkr-serviceLinux-nativefourresults-resetStart3",
+      "sha256": "8503e27ef95e6b79825ad8fc70c0690f0b89c531e7b046d72ac0738b6923f51d"
+    },
+    {
+      "name": "CA-r2-stage-social-cmp.exe-ABIcopy-no-newpatch",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/four_results.rs/winner-rank_body-return_body/CP202nativeacceptedhashes",
+    "rust/crates/kr-service/src/life.rs/forward_report_targets-report_delivered-delivery_pending/allrecipientmemberships",
+    "rust/crates/kr-service/src/room_io.rs/four_results-tick-outcomequeues-reset/legacybattle2guard-no2forfeit",
+    "CP202rank4CP247lifeCP248nativeR1/currentManner1/CP247PR318mergedd6cbf9e/AUD071-next252"
+  ],
+  "findings": [
+    {
+      "summary": "Same4 native Manner1/fixed2v2: R1A-C17/19→three170/pre175states[1,0,1,0]/ranks[2,1,2,1];R2B-D opposite. All4full175562outer552inner16slots/errors0/rankmemory and1803.1691TCP/280exactreply/16transports/fulltuple-C2Sseq-CRC-SHAjoins,84raw236.896244281s/frozen/cleanup0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-results",
+      "evidence": [
+        "RUST248-00419",
+        "RUST248-00415"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixedalternating2v2/same4/oppositeoutcomes/rank4-reset-Start3 scoped only. Native all4 parsers/rankmemory independent from screenshot coverage: A rankshots still Battle. Copiedgetter/fixturehash separate not native oracle. No native clear21-rescue-needle/terrain4/hostguest healthyEOF/eight/fullM4/accountbridge/originalauthority/production. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ActualReadyBCD/StartA/99x4→Start2thenStart3/keys12346–48/121181-peer153133 full eachround/samechannels;hold6safterclock3freshall4state0/correctnames-actors.48copied52A350checks separate from Wine. B/C/D boards both rounds correct; A rankshots still Battle/no panel/no timingcause claim, A nativeparser-rank-resetindependent.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-results",
+      "evidence": [
+        "RUST248-00419",
+        "RUST248-00418",
+        "RUST248-00427"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixedalternating2v2/same4/oppositeoutcomes/rank4-reset-Start3 scoped only. Native all4 parsers/rankmemory independent from screenshot coverage: A rankshots still Battle. Copiedgetter/fixturehash separate not native oracle. No native clear21-rescue-needle/terrain4/hostguest healthyEOF/eight/fullM4/accountbridge/originalauthority/production. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Typedrank4known16+4x131+12/552inner562outer/winnerteamrank1loser2/economy0;twohashesactualCP202sealednativeacceptedfixtures wire regressiononly. Four_results requires4life-bombs;legacybattle2/terrain4reject. Winnerall170writes+current21witnessafterlatestdeath-blast/bombdrain/settle8. Duplicate/wrongvisit cannot consumependingthird;resetclearslife notcursor.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-results",
+      "evidence": [
+        "RUST248-00044",
+        "RUST248-00046",
+        "RUST248-00131"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixedalternating2v2/same4/oppositeoutcomes/rank4-reset-Start3 scoped only. Native all4 parsers/rankmemory independent from screenshot coverage: A rankshots still Battle. Copiedgetter/fixturehash separate not native oracle. No native clear21-rescue-needle/terrain4/hostguest healthyEOF/eight/fullM4/accountbridge/originalauthority/production. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "62workspace57service5wire/fmt-clippylockedbuild;24fourTCP/oppositevectors16refreshReadyStart3-oldreport/currentclearcontrols,51twoTCPsequential/PIDgone/sourcefrozen,4actualprebindnegatives. Samebinary as native; not newnative2or4EOFcertification.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-results",
+      "evidence": [
+        "RUST248-00430",
+        "RUST248-00131",
+        "RUST248-00514",
+        "RUST248-00030"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixedalternating2v2/same4/oppositeoutcomes/rank4-reset-Start3 scoped only. Native all4 parsers/rankmemory independent from screenshot coverage: A rankshots still Battle. Copiedgetter/fixturehash separate not native oracle. No native clear21-rescue-needle/terrain4/hostguest healthyEOF/eight/fullM4/accountbridge/originalauthority/production. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "InitialverifierKeyError elapsed_ns metadataevents kept/oldverifier/currenttimestampfilterR2;retainedpre-runhash validated separately/versionedinputs/no raw-preflight rewrite/native rerun. AUD071manualCP245–248 correctscopedrankresetdone/nativeA-vs-UIlimit/nextEOF-eight/M5bridgeindependent;8WIPexact/PR318merged/historyimmutable.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-results",
+      "evidence": [
+        "RUST248-00136",
+        "RUST248-00518",
+        "RUST248-00326",
+        "RUST248-00419",
+        "RUST248-00037",
+        "RUST248-00031"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixedalternating2v2/same4/oppositeoutcomes/rank4-reset-Start3 scoped only. Native all4 parsers/rankmemory independent from screenshot coverage: A rankshots still Battle. Copiedgetter/fixturehash separate not native oracle. No native clear21-rescue-needle/terrain4/hostguest healthyEOF/eight/fullM4/accountbridge/originalauthority/production. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native same4 opposite2v2/full175180/resetStart3",
+      "result": "pass",
+      "evidence": [
+        "RUST248-00419",
+        "RUST248-00415",
+        "RUST248-00427"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixedalternating2v2/same4/oppositeoutcomes/rank4-reset-Start3 scoped only. Native all4 parsers/rankmemory independent from screenshot coverage: A rankshots still Battle. Copiedgetter/fixturehash separate not native oracle. No native clear21-rescue-needle/terrain4/hostguest healthyEOF/eight/fullM4/accountbridge/originalauthority/production. Internet thật chưa kiểm."
+    },
+    {
+      "check": "48copied52A350getters",
+      "result": "pass",
+      "evidence": [
+        "RUST248-00418"
+      ],
+      "limits": "SeparateUnicorn/readonlywrappers/counterreset/notwholebinaryoracle."
+    },
+    {
+      "check": "62Rusttests/fmt-clippy-lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST248-00004",
+        "RUST248-00021",
+        "RUST248-00430",
+        "RUST248-00020"
+      ],
+      "limits": "57service+5wire/native samebinary."
+    },
+    {
+      "check": "24fourTCP/51twoTCP sequential/4prebind",
+      "result": "pass",
+      "evidence": [
+        "RUST248-00131",
+        "RUST248-00514",
+        "RUST248-00030"
+      ],
+      "limits": "SyntheticTCP/guards only; not nativeEOF or fullM4."
+    },
+    {
+      "check": "Initialnativeverifier elapsed_ns assumption",
+      "result": "fail",
+      "evidence": [
+        "RUST248-00136",
+        "RUST248-00518"
+      ],
+      "limits": "Metadataevent lacks timestamp; corrected R2 partition only; raw/preflight/retained original unchanged."
+    },
+    {
+      "check": "ManualAUD071/docs-catalog-issues-WIP-seals",
+      "result": "pass",
+      "evidence": [
+        "RUST248-00031",
+        "RUST248-00037",
+        "RUST248-00003"
+      ],
+      "limits": "Codexselfcheck/reviewwaived/checkerdoesnotclosegate."
+    },
+    {
+      "check": "NativeAresultpanelcapture/clear21/healthyfourEOF/eight/accountbridge",
+      "result": "not_run",
+      "evidence": [
+        "RUST248-00034"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixedalternating2v2/same4/oppositeoutcomes/rank4-reset-Start3 scoped only. Native all4 parsers/rankmemory independent from screenshot coverage: A rankshots still Battle. Copiedgetter/fixturehash separate not native oracle. No native clear21-rescue-needle/terrain4/hostguest healthyEOF/eight/fullM4/accountbridge/originalauthority/production. Internet thật chưa kiểm."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP248-rust-four-results.json",
+      "bytes": 139386,
+      "sha256": "5d15747132669dc52775c9d4aa5648e087208a37acccd53436874aaf86baf077",
+      "count": 520
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rustfour_results/typedrank4/all170deliverybarrier/nativeopposite2v2/resetStart3/62tests24four51two4prebind.",
+      "AUD071periodicthrough248/next252."
+    ],
+    "corrected": [
+      "Currentrank4-resetpending becomes scoped done; M4nextEOF-eight and M5nativebridge separate.",
+      "Verifiertimestampmetadataassumption corrected preservingoriginal/raw."
+    ],
+    "superseded": [
+      "Fourrank-results-resetentirelymissing;nowdeliveredscoped/notEOF-fullM4."
+    ]
+  },
+  "blockers": [
+    "Same4KR00967Wine4b/privateLAN/sharedkernel/currentManner1/fixedalternating2v2/oneVillage01; notoriginalserverauthority/generalroom/accountauth.",
+    "Rank4bodyhashcomparison toCP202nativeacceptedfixture separatefromnative175full562outer552inner/16slots/prestates and180full3proof. Economy0/fuse6/settle8/report-derivedwitness-drain aredesign.",
+    "Peer170Finishcursor0afterreturn notfullparseproof; native56-1/pre175states independent. No nativeclear21/rescue/needle/terrain-inventory/eight/healthyhostguestEOF/fullM4claim.",
+    "Coldinstall/freshprefix/matchrestore/accountresume notrun. Internet thật chưa kiểm.",
+    "Ảnh bảng điểm B/C/D đủ hai vector; hai ảnh A vẫn Battle nên không chứng minh Aresultpanelrender/timingcause. NativeA175/180/memoryrank/Ready-Start2-3 có proof riêng; chụp A muộn hơn khi plannedEOFcontrol cần native, không lặp hai chu kỳ chỉ để lấy ảnh.",
+    "VerifierR1 KeyError elapsed_ns ở metadataevent không có timestamp. Giữ oldverifier/log; R2 phân vùng chỉ eventcótimestamp, kiểm lại cùngsealedraw. Retained pre-run verifier hash giữ, không sửa preflight/raw/source cũ.",
+    "FouractiveEOF hiện chưa unranked180→roomcleanup; typedrank4 không kích hoạt two-playerforfeit. M4 còn scopedhostguestEOF rồi tám.",
+    "CP247cleanupdeadline/PIDgone và nguyên nhân shutdown/Btrfs vẫnunknown; current2cyclescleanup0 không là IOfix. Nativeclear21/rescue/needle/terrain-inventory4 vẫn thiếu."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANscopedhostguestEOF/unranked180/survivorroomcleanup-promotionCP204–205 then8;no2forfeitclone/duplicate2normalcyclesforAimage. M5nativeownershipbridge independent. AUD071through248next252.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T00:26:23.672768+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualnativefourresults-reset/allrecipientlifedelivery/raw-wire-rankmemory-UIlimit/AUD071selfcheck; independentreviewwaived notapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/four-results.json",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD071.json",
+      "state": "updated",
+      "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    }
+  ]
+}

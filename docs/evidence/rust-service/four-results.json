@@ -1,0 +1,114 @@
+{
+  "schema": "kre-rust-four-results-v1",
+  "checkpoint": "CP248",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/PROTOCOL.md#rust-four-results",
+  "plan": "docs/PLAN.md#current-order",
+  "baseline": "d6cbf9ef971c1e2e95fe2040a47634ab396f94d0",
+  "native": {
+    "path": "local/research/codex/rust-four-results-native-r1",
+    "run_sha256": "df28e911bcb36aa1587052601c3d37a90dce3e13aaca280c4d8da856cc4cc032",
+    "binary_sha256": "8503e27ef95e6b79825ad8fc70c0690f0b89c531e7b046d72ac0738b6923f51d",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "10.0-20260425",
+    "mode": "Manner1/fixedalternating2v2",
+    "raw_count": 84,
+    "duration_s": 236.896244281,
+    "tcp_records": 1691,
+    "exact_replies": 280,
+    "transports": 16,
+    "cycles": [
+      {
+        "round": 1,
+        "key": 12346,
+        "dead": [
+          1,
+          3
+        ],
+        "winner": 1,
+        "latest_death_ns": 134945042396,
+        "latest_blast_ns": 128550837347,
+        "first_rank_ns": 142968185022,
+        "witnesses": [
+          2,
+          4
+        ],
+        "native_states": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "round": 2,
+        "key": 12347,
+        "dead": [
+          2,
+          4
+        ],
+        "winner": 0,
+        "latest_death_ns": 199702229775,
+        "latest_blast_ns": 193296493021,
+        "first_rank_ns": 207779963357,
+        "witnesses": [
+          1,
+          3
+        ],
+        "native_states": [
+          0,
+          1,
+          0,
+          1
+        ]
+      }
+    ],
+    "rank_outer": 562,
+    "rank_inner": 552,
+    "return_body": 3,
+    "copied_getters": 48,
+    "cleanup": {
+      "net_namespace": "net:[4026534054]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "total_budget_seconds": 300,
+    "IO_deadlines": "unchanged"
+  },
+  "policy": {
+    "config": "fixed_room.four_results=true requires diagnostic4/four_life_reports/four_owner_bombs; legacyBattle2 andterrain4 reject",
+    "rank": "CP20216header+4x131rows+12empty=552inner/562outer/header9FF/zeroeconomy/wholewinningteamrank1loser2",
+    "choice": "exactly1aliveTeam/accepteddeaths;latest=maxlastdeath-lastblast/settle8/no pendingbomb/allrecipient170writes done/current21witnessafterlatest-currenttrap;all-dead/tieunsupported4",
+    "delivery": "17/19 pendingdigest→distinctrecipientmemberships;allwritesbeforeEnding,21alreadyhasallrecipientcompletion;atomicqueuepublish/roundvisitguards/resetcursorretained",
+    "lifecycle": "normal175→5s180→3s4slotrefresh perrecipient→actualReady-Start2oppositeoutcome-Start3;fouractiveEOFnotaccepted"
+  },
+  "tests": {
+    "workspace": 62,
+    "service": 57,
+    "wire": 5,
+    "fourTCP": 24,
+    "twoTCP": 51,
+    "prebind": 4,
+    "four_path": "local/research/codex/rust-four-results-kernel-r1/verification.json",
+    "two_path": "local/research/codex/rust-four-results-two-regression-r1/verification.json",
+    "prebind_path": "local/research/codex/rust-four-results-config-negatives-r1/verification.json"
+  },
+  "reuse": {
+    "path": "local/research/codex/rust-four-results-source-r1/reuse.json",
+    "rank_oracles": "local/research/codex/rust-four-results-source-r1/cp202-rank-oracles.json",
+    "direct": "CP202known175180/16slotrank/nativeprobes;CP247life3peer/currentManner1. No new functionRE/VNwire/WIPimport.",
+    "limits": "NativeacceptedCP202bodyhashregression is separatefromcurrentRustnativefullconsumerproof; generatornotoracle."
+  },
+  "limits": [
+    "Same4KR00967Wine4b/privateLAN/sharedkernel/currentManner1/fixedalternating2v2/oneVillage01; notoriginalserverauthority/generalroom/accountauth.",
+    "Rank4bodyhashcomparison toCP202nativeacceptedfixture separatefromnative175full562outer552inner/16slots/prestates and180full3proof. Economy0/fuse6/settle8/report-derivedwitness-drain aredesign.",
+    "Peer170Finishcursor0afterreturn notfullparseproof; native56-1/pre175states independent. No nativeclear21/rescue/needle/terrain-inventory/eight/healthyhostguestEOF/fullM4claim.",
+    "Coldinstall/freshprefix/matchrestore/accountresume notrun. Internet thật chưa kiểm.",
+    "Ảnh bảng điểm B/C/D đủ hai vector; hai ảnh A vẫn Battle nên không chứng minh Aresultpanelrender/timingcause. NativeA175/180/memoryrank/Ready-Start2-3 có proof riêng; chụp A muộn hơn khi plannedEOFcontrol cần native, không lặp hai chu kỳ chỉ để lấy ảnh.",
+    "VerifierR1 KeyError elapsed_ns ở metadataevent không có timestamp. Giữ oldverifier/log; R2 phân vùng chỉ eventcótimestamp, kiểm lại cùngsealedraw. Retained pre-run verifier hash giữ, không sửa preflight/raw/source cũ.",
+    "FouractiveEOF hiện chưa unranked180→roomcleanup; typedrank4 không kích hoạt two-playerforfeit. M4 còn scopedhostguestEOF rồi tám.",
+    "CP247cleanupdeadline/PIDgone và nguyên nhân shutdown/Btrfs vẫnunknown; current2cyclescleanup0 không là IOfix. Nativeclear21/rescue/needle/terrain-inventory4 vẫn thiếu."
+  ],
+  "audit": "AUD071through248/next252/noreset;manualCodexselfcheck/reviewwaived/checkernotsemanticgate"
+}

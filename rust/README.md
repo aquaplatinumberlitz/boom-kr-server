@@ -316,3 +316,20 @@ Native4 Manner1/copy4b/Wine đã có A/C17→19/12recipient170/remote56→1/all4
 Clear21đủ3TCPwrites mới complete có unit/TCPproof, chưa nativeclear21/rescue/needle.60workspace/17fourTCP/51twoTCP đạt.
 Harness giữ PID/thread/wchan khi deadline; timeout cũ chưa rõcause. Rollback matchedCP246binary+config khôngnewflag.
 PLAN tiếp rank4/haioutcome-reset/Start3/abortEOF rồi8; M5bridge riêng.
+
+
+## Kết quả 2v2 bốn người — CP248
+
+[Contract/giới hạn](../docs/PROTOCOL.md#rust-four-results), [raw/hash](../docs/evidence/rust-service/README.md#cp248).
+Thêm `--four-results` với `--four-life-reports --four-owner-bombs`/đủfour-startup flags; fixed_room.four_results=true.
+Typedrank4/16slots/zeroeconomy; currentwitness/bombdrain/allrecipient170writes/settle8; all-dead/tie4 unsupported.
+
+```bash
+python3 tools/test_rust_four_room.py --binary rust/target/debug/kr-service \
+  --config local/four-config.json --results --out local/new-four-results-tcp
+```
+
+62workspace/24fourTCP/51twoTCP/4prebind đạt; native same4/currentManner1 hai opposite2v2/full175180/reset/Start3.
+Ảnh bảng điểm B/C/D đủ2vectors; Aảnh vẫnBattle, chỉ nativeAparser/rank/resetproof riêng. Chưa healthyfourEOF/eight/fullM4.
+Rollback matchedCP247binary+config khôngnewflag; không dùng two-rank fixture/config cho4. PLAN tiếp unrankedabort/EOF rồi8,
+M5bridge riêng; audit kế252. Internet thật chưa kiểm.

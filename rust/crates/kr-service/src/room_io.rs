@@ -30,6 +30,8 @@ pub struct Config {
     pub four_owner_bombs: bool,
     #[serde(default)]
     pub four_life_reports: bool,
+    #[serde(default)]
+    pub four_results: bool,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -88,6 +90,7 @@ pub struct Runtime {
     floor_catalog: pickups::Catalog,
     four_owner_bombs: bool,
     four_life_reports: bool,
+    four_results: bool,
 }
 #[derive(serde::Serialize)]
 pub struct BombObservation {
@@ -129,6 +132,9 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         return Err(err("fixed room title must be bounded ASCII"));
     }
     let count = actors.len();
+    if cfg.four_results && (count != 4 || !cfg.four_life_reports || !cfg.four_owner_bombs) {
+        return Err(err("four results require opt-in four life and owner bombs"));
+    }
     if cfg.four_life_reports && (count != 4 || !cfg.four_owner_bombs) {
         return Err(err("four life reports require opt-in four-owner bombs"));
     }
@@ -287,6 +293,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         floor_catalog: pickups::Catalog::from_floor(&packets_floor_body)?,
         four_owner_bombs: cfg.four_owner_bombs,
         four_life_reports: cfg.four_life_reports,
+        four_results: cfg.four_results,
     })))
 }
 impl Runtime {
@@ -544,57 +551,77 @@ impl Session {
     }
     pub fn tick(&self) -> io::Result<()> {
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
-        if !r.packets.contains_key("rank") {
+        if !r.packets.contains_key("rank") && !r.four_results {
             return Ok(());
         }
         let Phase::Armed { round } = r.model.phase else {
             return Ok(());
         };
-        if r.model.members.len() != 2 {
+        if r.model.members.len() != r.model.capacity() {
             return Ok(());
         }
         let now = Instant::now();
-        let members: Vec<_> = r.model.members.values().collect();
-        let dead: Vec<_> = members
-            .iter()
-            .filter_map(|m| m.life.death.map(|at| (m.slot, at)))
-            .collect();
-        let alias = if dead.len() == 2 {
-            if dead
-                .iter()
-                .any(|(_, at)| now.duration_since(*at) < Duration::from_secs(8))
-            {
+        let rank = if r.four_results {
+            let Some(team) = crate::four_results::winner(&r.model, now) else {
                 return Ok(());
-            }
-            "rank_all_dead"
-        } else if let Some(&(slot, at)) = dead.first() {
-            if now.duration_since(at) < Duration::from_secs(8)
-                || r.model.bombs.pending()
-                || !members.iter().any(|m| {
-                    m.slot != slot
-                        && m.life.survivor.is_some_and(|s| {
-                            s > at && m.life.current_survivor(s, r.model.last_blast)
-                        })
-                })
-            {
-                return Ok(());
-            }
-            if slot == 0 { "rank" } else { "rank_Awin" }
+            };
+            r.reply(
+                "start",
+                Some(175),
+                Some(crate::four_results::rank_body(team)?),
+            )
         } else {
-            return Ok(());
+            let members: Vec<_> = r.model.members.values().collect();
+            let dead: Vec<_> = members
+                .iter()
+                .filter_map(|m| m.life.death.map(|at| (m.slot, at)))
+                .collect();
+            let alias = if dead.len() == 2 {
+                if dead
+                    .iter()
+                    .any(|(_, at)| now.duration_since(*at) < Duration::from_secs(8))
+                {
+                    return Ok(());
+                }
+                "rank_all_dead"
+            } else if let Some(&(slot, at)) = dead.first() {
+                if now.duration_since(at) < Duration::from_secs(8)
+                    || r.model.bombs.pending()
+                    || !members.iter().any(|m| {
+                        m.slot != slot
+                            && m.life.survivor.is_some_and(|s| {
+                                s > at && m.life.current_survivor(s, r.model.last_blast)
+                            })
+                    })
+                {
+                    return Ok(());
+                }
+                if slot == 0 { "rank" } else { "rank_Awin" }
+            } else {
+                return Ok(());
+            };
+            r.reply(alias, None, None)
         };
         let mut next = r.model.clone();
         next.end(round)?;
         let mut effects = Vec::new();
-        let returning = r.reply(
-            "return",
-            None,
-            Some(room_wire::room_selector(
-                &r.packets["return"].payload,
-                180,
-                r.selector,
-            )?),
-        );
+        let returning = if r.four_results {
+            r.reply(
+                "start",
+                Some(180),
+                Some(crate::four_results::return_body(r.selector)?),
+            )
+        } else {
+            r.reply(
+                "return",
+                None,
+                Some(room_wire::room_selector(
+                    &r.packets["return"].payload,
+                    180,
+                    r.selector,
+                )?),
+            )
+        };
         let slots = next
             .members
             .values()
@@ -602,11 +629,7 @@ impl Session {
             .collect::<io::Result<Vec<_>>>()?;
         for peer in next.members.values() {
             for (delay, packets, complete) in [
-                (
-                    0,
-                    vec![("rank175".into(), r.reply(alias, None, None))],
-                    false,
-                ),
+                (0, vec![("rank175".into(), rank.clone())], false),
                 (5000, vec![("return180".into(), returning.clone())], false),
                 (
                     8000,
@@ -735,7 +758,7 @@ impl Session {
                     .get_mut(&source.identity)
                     .expect("current source")
                     .life
-                    .forward21_delivered(digest, *recipient);
+                    .report_delivered(digest, *recipient);
             }
         }
         if let Some((recipient, round)) = batch.outcome_complete {
@@ -1386,6 +1409,12 @@ impl Session {
                                     .expect("current source")
                                     .life
                                     .forward21_targets(&report.digest, &recipients)?;
+                            } else {
+                                next.members
+                                    .get_mut(&self.identity)
+                                    .expect("current source")
+                                    .life
+                                    .forward_report_targets(&report.digest, &recipients)?;
                             }
                             for recipient in recipients {
                                 let mut batch = Runtime::member_batch(
@@ -1405,10 +1434,8 @@ impl Session {
                                     clear21: (report.subtype == 21)
                                         .then(|| (report.digest.clone(), now)),
                                 };
-                                if report.subtype == 21 {
-                                    batch.life_complete =
-                                        Some((m.key, round, report.digest.clone(), recipient));
-                                }
+                                batch.life_complete =
+                                    Some((m.key, round, report.digest.clone(), recipient));
                                 effects.push((recipient.identity, batch));
                             }
                         }
@@ -1565,6 +1592,7 @@ mod tests {
             floor_catalog: pickups::Catalog::default(),
             four_owner_bombs: false,
             four_life_reports: false,
+            four_results: false,
         }));
         let mut session = Session {
             shared: shared.clone(),
@@ -1673,6 +1701,7 @@ mod tests {
             floor_catalog: pickups::Catalog::default(),
             four_owner_bombs: false,
             four_life_reports: false,
+            four_results: false,
         };
         let mut next = runtime.model.clone();
         let key = next.enter(1, 11, true).unwrap();

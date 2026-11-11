@@ -413,3 +413,26 @@ KernelR2 thêm PID/thread/wchan/17pass/exit0/PIDgone; two-regressionR2 chạy sa
 Ba prebindcases ở rust-four-life-config-negatives-r1.60Rusttests/fmt/clippy/lockedbuild; clear21all3completion chỉunit/TCP.
 Không tăngdeadline/fixclaim/shutdownrootcause hoặc nativeclear21/rescue/needle. Tám PythonWIP giữ nguyên;
 #14/#285OPEN/M4partial/M5bridge riêng; AUD070qua244/audit kế248. Internet thật chưa kiểm.
+
+
+<a id="cp248"></a>
+## CP248 — same4opposite2v2/native175180/reset/Start3; AUD071
+
+[Contract](../../PROTOCOL.md#rust-four-results), [metadata](four-results.json), [PLAN](../../PLAN.md#current-order).
+BaselineCP247/PR318/mergedd6cbf9e. `local/research/codex/rust-four-results-source-r1/reuse.json` + cp202-rank-oracles.json
+giữ oldnativeaccepted1758frames/2bodyhashes/layout; constructorhashregression riêng currentnativeconsumerproof.
+`rust-four-results-native-r1/`:results-verification/results-getter-verification/ui-review.json,
+native-four/runtime-preflight/recipe/raw-seal/cycles.84raw/236,896244281s/exit0/frozen/cleanup0/runSHAdf28e911…,
+binary8503e27e…/currentManner1/fixed2v2/same16transports/1691TCP280reply/48copiedgetters riêngUnicorn.
+Nativeall4pre175states[1,0,1,0]→[0,1,0,1]/ranks2-1-2-1→1-2-1-2/full562outer552inner16slots/1803,
+actualReadyStart2-3/keys12346–48/currentStart3freshstates0/6shold. Budget300s hai fullcycles, I/Odeadlines giữ.
+UIreview xem12ảnh: B/C/Dscoretwooppositevectors; A2rankshotsstillBattle nên không AUIpanelproof/timingcause.
+All4Start3ảnhclock01:53/actorsnames; nativeA175180-rankmemory/reset proof riêng, không pixelidentity.
+VerifierR1 lỗi elapsed_ns ởmetadataevent, oldverifier `verify_rust_four_results_before_elapsed_fix.py`/loggiữ;
+R2phânvùngtimestampedevents/cùngrawpass, retainedpre-run verifierhash không sửa. No native rerun.
+`rust-four-results-kernel-r1/`:24fourTCP/sourcefrozen/cleanup0/PIDgone; `rust-four-results-two-regression-r1/`:51twoTCP
+tuần tự/fullsourcepins/samebinary/PIDgone.4prebindcases config-negatives-r1;62Rusttests/fmt/clippy/lockedbuild.
+AUD071 periodicqua248 đối chiếu README→PLAN→PROTOCOL→RESEARCH→evidence/code/raw CP245–248;next252/khôngreset.
+Sửa currentrankpending/legacyBattlecfgambiguity, táchnativeall4parserproof vớiAUIcapturegap; giữoldcomplete/audits/raw/failures.
+M4 cònunrankedhostguestabortEOF→roomcleanup/promotion rồi8;nativeclear21/rescue/needle/terrain-inventory4 chưa đủ.
+M5backendpresent/nativebridge riêng/#14/#285OPEN/8WIPbyteexact;shutdownrootcausechưa rõ; Internet thật chưa kiểm.

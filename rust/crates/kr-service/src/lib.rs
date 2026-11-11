@@ -5,6 +5,7 @@ pub mod account_worker;
 pub mod accounts;
 pub mod binding;
 mod bombs;
+mod four_results;
 mod life;
 pub mod lobby;
 mod logging;

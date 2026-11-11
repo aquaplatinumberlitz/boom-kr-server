@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP247",
+  "as_of": "CP248",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "M3CP242scoped;M5backendmerged;CP246fourbomPR317merged;CP247fourlife17-19threepeer170/native56-1/all4states/76raw/60tests/17fourTCP/51twoTCP.",
-      "remaining": "M4rank4/results-reset/EOF then8;M5nativeKRbridge/multitransportownership/worker-to-serving;M6durability/M7rooms/M8ops.",
-      "next_test": "PLANallrecipientlife/currentwitness/drain→CP202rank4/oppositeoutcomes/reset/Start3→scopedabortEOF→8;nativeclear21notaccepted/no duplicate17-19positive.",
+      "known": "M3CP242scoped/M5backendmerged;CP247fourlifePR318merged;CP248same4opposite2v2/rank4-native175180/reset-Start3/84raw/62tests/24fourTCP/51twoTCP/AUD071through248next252.",
+      "remaining": "M4scopedhostguestEOF/unrankedabort then8/Aresultpanelcapturegap;M5nativeKRbridge/multitransportownership/worker-to-serving;M6durability/M7rooms/M8ops.",
+      "next_test": "PLANscopedhostguestEOF/unranked180-roomcleanup/promotion→8;foldlaterAUIframeinto meaningfullifecyclecontrol/no duplicate2normalcycles;AUD071through248-next252.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "NativeA-C17-19/threepeer170/native56-1/all4statesverified; clear21syntheticonly/results-resetEOFpending. No M4/authgate/epicclosure.",
+      "reason": "Nativeall4twooppositeranks/full175180/reset/Start3verified; AUIrankshotcoveragegapexplicit, clear21syntheticonly/EOF-eightpending. No M4/authgate/epicclosure.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -285,7 +285,8 @@
         "docs/PROTOCOL.md#rust-account-idle-rate",
         "docs/PROTOCOL.md#rust-four-startup",
         "docs/PROTOCOL.md#rust-four-owner-bombs",
-        "docs/PROTOCOL.md#rust-four-life"
+        "docs/PROTOCOL.md#rust-four-life",
+        "docs/PROTOCOL.md#rust-four-results"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -405,7 +406,8 @@
         "docs/evidence/rust-service/account-idle-rate.json",
         "docs/evidence/rust-service/four-startup.json",
         "docs/evidence/rust-service/four-owner-bombs.json",
-        "docs/evidence/rust-service/four-life.json"
+        "docs/evidence/rust-service/four-life.json",
+        "docs/evidence/rust-service/four-results.json"
       ],
       "prs": [
         173,
@@ -525,7 +527,8 @@
         314,
         315,
         316,
-        317
+        317,
+        318
       ],
       "successors": []
     },
@@ -864,11 +867,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "M3CP242scoped;M5backendmerged;CP246fourbomPR317merged;CP247fourlife17-19threepeer170/native56-1/all4states/76raw/60tests/17fourTCP/51twoTCP.",
-      "remaining": "M4rank4/results-reset/EOF then8;M5nativeKRbridge/multitransportownership/worker-to-serving;M6durability/M7rooms/M8ops.",
-      "next_test": "PLANallrecipientlife/currentwitness/drain→CP202rank4/oppositeoutcomes/reset/Start3→scopedabortEOF→8;nativeclear21notaccepted/no duplicate17-19positive.",
+      "known": "M3CP242scoped/M5backendmerged;CP247fourlifePR318merged;CP248same4opposite2v2/rank4-native175180/reset-Start3/84raw/62tests/24fourTCP/51twoTCP/AUD071through248next252.",
+      "remaining": "M4scopedhostguestEOF/unrankedabort then8/Aresultpanelcapturegap;M5nativeKRbridge/multitransportownership/worker-to-serving;M6durability/M7rooms/M8ops.",
+      "next_test": "PLANscopedhostguestEOF/unranked180-roomcleanup/promotion→8;foldlaterAUIframeinto meaningfullifecyclecontrol/no duplicate2normalcycles;AUD071through248-next252.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "NativeA-C17-19/threepeer170/native56-1/all4statesverified; clear21syntheticonly/results-resetEOFpending. No M4/authgate/epicclosure.",
+      "reason": "Nativeall4twooppositeranks/full175180/reset/Start3verified; AUIrankshotcoveragegapexplicit, clear21syntheticonly/EOF-eightpending. No M4/authgate/epicclosure.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -909,7 +912,8 @@
         "docs/PROTOCOL.md#rust-account-idle-rate",
         "docs/PROTOCOL.md#rust-four-startup",
         "docs/PROTOCOL.md#rust-four-owner-bombs",
-        "docs/PROTOCOL.md#rust-four-life"
+        "docs/PROTOCOL.md#rust-four-life",
+        "docs/PROTOCOL.md#rust-four-results"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -949,7 +953,8 @@
         "docs/evidence/rust-service/account-idle-rate.json",
         "docs/evidence/rust-service/four-startup.json",
         "docs/evidence/rust-service/four-owner-bombs.json",
-        "docs/evidence/rust-service/four-life.json"
+        "docs/evidence/rust-service/four-life.json",
+        "docs/evidence/rust-service/four-results.json"
       ],
       "prs": [
         286,
@@ -983,7 +988,8 @@
         314,
         315,
         316,
-        317
+        317,
+        318
       ],
       "successors": []
     }

@@ -8967,3 +8967,46 @@ chỉ sửa phân loại cleanup-tail, không sửa raw/run hoặc gọi healthy
 [PLAN](PLAN.md#current-order) tiếp rank4/haiopposite2v2/reset/Start3/scopedabortEOF rồi8. Outcome phải xét
 currentwitness/drain/settle8 và allrecipient life delivery; không clone rank2/forfeitpolicy hoặc để Ending làm mất170.
 M4partial, M5backend đã có/nativebridge riêng. AUD070qua244/audit kế248; Internet thật chưa kiểm.
+
+<a id="rust-four-results"></a>
+## Rust bốn người: hai kết quả 2v2 đối nghịch, reset/Start3 — CP248 / M4 partial
+
+[Result](../rust/crates/kr-service/src/four_results.rs), [delivery](../rust/crates/kr-service/src/life.rs),
+[metadata](evidence/rust-service/four-results.json), [raw/hash](evidence/rust-service/README.md#cp248).
+Nguồn CP202 nativeaccepted175/180/layout/rareprobes, CP247three170/currentManner1; không RE thêm hàm/VNwire/import WIP.
+
+`fixed_room.four_results=true` cần diagnostic4/four_life_reports/four_owner_bombs. Không bật theo packet `rank` hai người;
+legacyBattle2 vàterrain4cfg vẫn reject. Typed rank dùng16header (byte9FF) +4×131rows +12empty =552inner/562outer,
+cả đội thắngrank1/thuarank2/economy0. Hai payload SHA khớp actualsealedCP202 fixtures; đây là **wire regression**,
+không encoder tự chứng minh nativecompatibility. Return180known3bytes echo selector0/1.
+
+Outcome chỉ khi đúng một team chưa có accepteddeath, latest=maxdeath-lastblast qua8s, không pendingbom,
+có current21witness sau latest/currenttrap. All-dead/tie4 chưa hỗ trợ; không ghép rank_all_dead hai người.
+17/19 giữ pendingdigest→tập distinctrecipientmemberships; cùng pending21, **mọi TCPwrites170 phải hoàn tất trước Ending**,
+không làm mất170 còn queued khi guardphase đổi. Duplicate/wrongvisitcompletion không nhả recipient khác;
+begin resetpending/life nhưng giữ connectioncursor; 21 bị blast/newtrap invalidate như CP247.
+Reserve mọi queue trước publish; thành công writes không là nativeexecutionACK. Authority/fuse6/settle8/rank/economy là design.
+
+Native cùng4 Wine10.0-20260425/copy4b/private root+A–Dnetns/bridge/no default route/currentManner1/fixed2v2:
+R1 A/CnormalSpace→17/19→three170, nativepre175all4states[1,0,1,0], ranks[2,1,2,1]. R2 B/D cùngpath,
+states[0,1,0,1]/ranks[1,2,1,2]. Mỗi view175outer562/562/errors0, inner552/552/16slots/rankmemory đúng và1803/3/errors0.
+Currentwitness21 sau death/blast, drained158 và all170 trước rank được đối chiếu cùngstream/C2Sseq-CRC-SHA/fulltuple;
+nativeprotected56→1/pre175states independent, không dùng serverlog-only. Rare170Finishcursor0 không là fullparseproof.
+Normal175→5s180→3s4slot110refresh mỗi view; actual95BCD/104A/99×4 đưa Start2 rồi Start3 cùng16TCPtransports,
+keys12346/12347/12348; peer153133/121181 parsers full mỗi vòng. Sau clock3hold6s lấy freshreadonlyall4state0.
+48copied52A350getters kiểm32pre175+16Start3wrappers riêngUnicorn/counterreset; callbackclock ban đầu không dùng suy state0.
+84raw/236,896244281s/sourcefrozen/cleanup0,1.691TCP/280exactreply. Recipe khai300s tổng cho2cycles, I/O/cleanupdeadlines giữ.
+
+62Rusttests (57service+5wire),24fourTCP gồmoppositevectors/16refresh/Ready-Start3/oldreportnegative/currentclearpositive,
+51twoTCP tuần tự/cùngfinalbinary,4processprebindrejects. VerifierR1 KeyError metadataevent thiếuelapsed_ns được giữ;
+R2 chỉ phân vùng timestampedevents, giữretainedpre-run verifierhash/oldsource/log/raw. Không chạy lại native chỉ sửa checker.
+
+Đã xem8rankshots+4Start3shots. B/C/D thấy bảng4tên/LOSE-PERFECT đổi đúng hai vector/zeroeconomy; **hai ảnh A vẫnBattle**,
+không chứng minh Aresultpanelrender hoặc nguyên nhân timing. NativeA175/180/rankmemory/Ready-Start2-3 là proof riêng.
+All4Start3ảnhclock01:53/correctnames/actorsalive; không pixelidentity/fullworldconsistency.
+
+**M4 còn scoped host/guestEOF/unrankedabort→180/roomcleanup rồi tám**; fourresultflag không chọn two-forfeit,
+nhưng hiện activeEOF4 chưa có unranked180/native survivorroom proof. AUIrankcapturegap để đo muộn hơn trong plannedlifecycle,
+không lặp hai cycles chỉ lấy ảnh. Nativeclear21/rescue/needle/terrain-inventory4/fullauth/generalroom/fullM4/production chưa đạt.
+M5backend đã có, nativeownershipbridge riêng. AUD071 qua248/next252/Codexselfcheck/reviewwaived; checker không tự đóng gate.
+CP247shutdown/Btrfsrootcause vẫnunknown/deadlinesgiữ; Internet thật chưa kiểm.
