@@ -432,3 +432,9 @@ python3 tools/test_rust_life.py --binary rust/target/debug/kr-service \
 ```
 
 Đây là59syntheticTCP/realSQLite/privateAPI controls, khôngnativeoracle; giữ binary/sourcefreeze/raw/hash riêng.
+
+
+R1b/CP262 chuyển lựa chọn nội bộ trong `RoomRules` thành Result/Departure/Bomb/Life/TeamPolicy;
+JSON compatibility của profile cũ giữ nguyên. Fixture `rank` cung cấp bytes, không bật luật.
+[Contract và giới hạn](../docs/PROTOCOL.md#rust-r1b-policies), [acceptance cuối R1](../docs/PLAN.md#rust-r1).
+298ca TCP mỗi binary và3189frame phòng khớp; candidate chưa native, không thừa kế chứng nhận ARM/Internet CP261.

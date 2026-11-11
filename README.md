@@ -33,6 +33,13 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP262: R1b đã chuyển luật phòng sang chính sách có tên, giữ byte của ba profile hiện có.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-r1b-policies), [bằng chứng](docs/evidence/rust-service/r1b-policies.json).
+`ResultPolicy`, `DeparturePolicy`, `BombPolicy`, `LifePolicy`, `TeamPolicy` thay các cờ nội bộ; fixture `rank` chỉ cấp bytes.
+90 test Rust/fmt/clippy/locked build,298ca TCP mỗi binary và3.189frame phòng khớp byte/hash với baseline.
+JSON cũ giữ nguyên; chưa đổi identity/slot/registry/transport của R1c–g hoặc nghiệm thu native lại binary mới.
+Tiếp R1c; **N1 vẫn mở** vì chưa xác nhận môi trường di động/ISP-CGNAT, R1f vẫn phải sửa ca chung NAT.
+
 **CP261: hai KR thật đã qua account → phòng/basic → hai kết quả đối nghịch/reset → Start3 trên đường Internet đã đo.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-internet-observation), [bằng chứng](docs/evidence/rust-service/internet-observation.json).
 Native login field51 điều khiển ngưỡng chờ channel: fixture0 ghi đè cache thành0 gây timeout; control30000 vào sảnh ở cảhai.

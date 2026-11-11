@@ -27,7 +27,7 @@ fixtures(cfg);frozen=r/'frozen-inputs';frozen.mkdir();pins=[]
 for i,p in enumerate(sorted(set(files))):
  dst=frozen/f'{i:03d}-{p.name}';shutil.copyfile(p,dst);pins.append(dict(path=str(p),retained_path=str(dst),bytes=p.stat().st_size,sha256=sha(p)))
 (r/'preflight.json').write_text(json.dumps(dict(files=pins,scope='Synthetic8 TCP only; frozen before Popen'),indent=2)+'\n')
-output=(r/'process.log').open('x');proc=subprocess.Popen([str(binary.resolve()),'--config',str(config),'--out',str(r/'service')],stdout=output,stderr=subprocess.STDOUT);clients=[];cases=[];error=None
+output=(r/'process.log').open('x');proc=subprocess.Popen([str(binary.resolve()),'--config',str(config),'--out',str(r/'service')],stdout=output,stderr=subprocess.STDOUT);clients=[];observed_clients=[];cases=[];error=None
 hello=Path(cfg['bootstrap']['path']).read_bytes();header=Path(two['actors'][0]['profile']['own_header']['path']).read_bytes()[:37];power=[1,1,1,1,1,1,2,2]
 def note(label):cases.append(label)
 def quiet():
@@ -98,7 +98,7 @@ def scenario():
   client=Client(slot,wcp if slot%2==0 else login,header,hello);client.send(1,bytes([0x5e,0x5b])+c.pack_fields([13],[2])+bytes(38));client.receive(4);client.send(9,bytes(8));client.receive(15);client.receive(62);client.send(5,bytes(9));client.receive(7);client.close()
   client=Client(slot,channel,header,hello);name=actor['name'].encode();client.send(6,bytes(2)+c.pack_fields([len(name)],[2])+_encode_bytes(name)+c.pack_fields([slot+1],[4])+bytes(28));client.receive(17);client.send(544,bytes(3+len(name)));client.send(67,bytes(2))
   for op in[241,91,14,291]:client.receive(op)
-  clients.append(client)
+  clients.append(client);observed_clients.append(client)
  note('eight_distinct_channel_profiles_and_five_character_C_name')
  title=two['fixed_room']['title'].encode();clients[0].send(81,c.pack_fields([len(title)],[2])+_encode_bytes(title)+c.pack_fields([0],[2])+c.pack_fields([0,a.selector,5,8191,0,0,0,0xffffffff,0,0,0,0],[4]*12)+c.pack_fields([0]*4,[1]*4));assert c.read_fields(clients[0].receive(86)[1][7:8],[1])==[a.selector]
  for slot,target in enumerate(clients[1:],1):
@@ -156,6 +156,13 @@ def scenario():
 try:scenario()
 except BaseException as exc:error=repr(exc);raise
 finally:
+ if error is None:
+  # Preserve the consumed boundary, including H's earlier explicit EOF. Only
+  # unread notifications from simultaneous final cleanup fall outside it.
+  (r/'wire-boundary.json').write_text(json.dumps(dict(
+   receivers=[dict(identity=i+1,next_sequence=client.rx)for i,client in enumerate(observed_clients)],
+   limits='Successfully decoded TCP frames before finally closes; explicit H EOF/fences remain covered. Raw logs retain unread scheduler-dependent final cleanup notifications. Not native KR evidence.'
+  ),indent=2)+'\n')
  for target in clients:target.close()
  proc.send_signal(signal.SIGTERM)if proc.poll()is None else None
  try:proc.wait(timeout=5)

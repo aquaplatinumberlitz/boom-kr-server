@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP261",
-  "baseline": "f95e4cfa579d5363840f7e32336ae3595b2f9148",
+  "as_of": "CP262",
+  "baseline": "1b4bfeb49870f33dfb5b6e4629ce49485a5f084c",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "R10native2account/basic2oppositeoutcomes/reset/Start3/serverNIC752TCP106reply/78UDPjoins77helper/2286gettermodel; field51waitcontract30000designcontrol; sourceRustCP260unchanged. R11sameNATnegativeAheld/Bdenied.",
-      "remaining": "N1OPEN requiredmobile/ISP-CGNATphysicaluplinkunattested; no inferencefromIP/agentlabels. R1f sessiontransportbindingforsharedNAT/notimplemented. M5generalprofile/nativeDBfault/recovery andphase1remainingmilestones separate.",
-      "next_test": "PLAN exactuplinkprovenance/gapmeasurement; field51policyintegrationseparatelyaccepted. R1b-e independentrefactorallowedaccountmerged, R1f/M8N1dependencyretained. No broadSDK/contentstub/guardreruns.",
+      "known": "R1btypedResult/Departure/Bomb/Life/TeamPolicy, no fixturepresenceauthority;90Rust/298TCPmỗibinary/3189exactroomframes over13suites. Measurementboundariesandinitialtailmismatches retained. CP261PR336merged.",
+      "remaining": "NativeR1bcandidate notrun/finalR1native2/4/8/account remains. R1c-g andN1requiredphysicalmobileISP-CGNATattestation/sharedNATsessionbinding/M5generalprofile independentgaps.",
+      "next_test": "PLANR1c identity-slot/common106template/eightfixture bytecomparison, REonlyunknownmismatch. N1factpending/R1fM8dependency retained; no broadRE ornativeclaimfromdifferential.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Independentnativewire/state/ownership/UI/captureverification, AUD078seriousattribution/provenancecorrection; no completedN1gate/group, CP260PR335merged, CP261pendingexactheadPRdelivery.",
+      "reason": "AUD079featuregroupR1b, independentreviewwaived, no fixed4CPcadence; CP262deliverypendingPR/exacthead checks. Oldcomplete/history/rawandprojectorstash preserved.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",

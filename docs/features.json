@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP261",
+  "as_of": "CP262",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -4945,7 +4945,9 @@
           "docs/evidence/rust-service/argv-provenance.json",
           "docs/evidence/rust-service/README.md#cp252",
           "docs/PROTOCOL.md#rust-internet-observation",
-          "docs/evidence/rust-service/internet-observation.json"
+          "docs/evidence/rust-service/internet-observation.json",
+          "docs/PROTOCOL.md#rust-r1b-policies",
+          "docs/evidence/rust-service/r1b-policies.json"
         ]
       },
       "coverage": {
@@ -5253,7 +5255,9 @@
             "docs/evidence/rust-service/eight-baseline.json",
             "docs/evidence/rust-service/README.md#cp250",
             "docs/PROTOCOL.md#rust-controlled-network",
-            "rust/crates/kr-service/src/network.rs"
+            "rust/crates/kr-service/src/network.rs",
+            "rust/crates/kr-service/src/rules.rs",
+            "docs/PROTOCOL.md#rust-r1b-policies"
           ]
         },
         "integration": {

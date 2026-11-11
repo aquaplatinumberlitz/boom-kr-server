@@ -31,7 +31,7 @@ for i,p in enumerate(files):
  dest=frozen/f'{i:03d}-{p.name}';shutil.copyfile(p,dest)
  with dest.open('rb')as handle:os.fsync(handle.fileno())
  pins.append(dict(path=str(p),retained_path=str(dest),bytes=p.stat().st_size,sha256=sha(p)))
-(root/'preflight.json').write_text(json.dumps(dict(files=pins,limits='Retainedstaticinputs/binarybeforePopen;no native client'),indent=2)+'\n');rawlog=(root/'process.log').open('w');proc=subprocess.Popen([str(binary.resolve()),'--config',str(config),'--out',str(root/'service')],stdout=rawlog,stderr=subprocess.STDOUT);clients=[];cases=[];error=None;hello=Path(cfg['bootstrap']['path']).read_bytes();header=Path(two['actors'][0]['profile']['own_header']['path']).read_bytes()[:37]
+(root/'preflight.json').write_text(json.dumps(dict(files=pins,limits='Retainedstaticinputs/binarybeforePopen;no native client'),indent=2)+'\n');rawlog=(root/'process.log').open('w');proc=subprocess.Popen([str(binary.resolve()),'--config',str(config),'--out',str(root/'service')],stdout=rawlog,stderr=subprocess.STDOUT);clients=[];observed_clients=[];cases=[];error=None;hello=Path(cfg['bootstrap']['path']).read_bytes();header=Path(two['actors'][0]['profile']['own_header']['path']).read_bytes()[:37]
 def note(label):cases.append(label)
 def pid_snapshot(label):
  item=dict(label=label,pid=proc.pid,returncode=proc.poll(),ns=time.monotonic_ns(),threads=[])
@@ -58,7 +58,7 @@ try:
   client=Client(role,wcp if role%2==0 else login,header,hello);client.send(1,bytes([0x5e,0x5b])+c.pack_fields([13],[2])+bytes(38));client.receive(4);client.send(9,bytes(8));client.receive(15);client.receive(62);client.send(5,bytes(9));client.receive(7);client.close()
   client=Client(role,channel,header,hello);name=actor['name'].encode();client.send(6,bytes(2)+c.pack_fields([len(name)],[2])+_encode_bytes(name)+c.pack_fields([role+1],[4])+bytes(28));client.receive(17);client.send(544,bytes(3+len(name)));client.send(67,bytes(2))
   for opcode in [241,91,14,291]:client.receive(opcode)
-  clients.append(client)
+  clients.append(client);observed_clients.append(client)
  note('four_distinct_identity_channel_short_name_C_and_profile544_shapes')
  A=clients[0];title=two['fixed_room']['title'].encode();create=c.pack_fields([len(title)],[2])+_encode_bytes(title)+c.pack_fields([0],[2])+c.pack_fields([0,0,5,8191,0,0,0,0xffffffff,0,0,0,0],[4]*12)+c.pack_fields([0]*4,[1]*4)
  A.send(81,create);A.receive(86)
@@ -235,6 +235,14 @@ try:
 except BaseException as exc:
  error=repr(exc);raise
 finally:
+ if error is None:
+  # Record the receiver's verified sequence boundary before simultaneous cleanup
+  # closes. Unread departure frames from that teardown are scheduler-dependent;
+  # explicit EOF cases above remain inside this consumed-frame boundary.
+  (root/'wire-boundary.json').write_text(json.dumps(dict(
+   receivers=[dict(identity=i+1,next_sequence=client.rx)for i,client in enumerate(observed_clients)],
+   limits='Successfully decoded TCP frames only; excludes unread simultaneous-finally-close tail. Raw event logs retain that tail. Not native KR evidence.'
+  ),indent=2)+'\n')
  for client in clients:client.close()
  pid_snapshot('before-SIGTERM')
  proc.send_signal(signal.SIGTERM)if proc.poll()is None else None

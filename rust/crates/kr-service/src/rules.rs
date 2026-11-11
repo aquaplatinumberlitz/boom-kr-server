@@ -1,20 +1,62 @@
-//! Room rules of the measured diagnostic profiles (RUST-R1a).
-//! Single home for what a fixed room supports. Flags, tables and startup checks
-//! are moved here unchanged from room.rs/room_io.rs; this is emulator policy
-//! selection, not original KR authority. New rules belong here, not in new
-//! per-capacity branches of the packet handlers.
+//! Policies selected by the measured diagnostic profiles (RUST-R1b).
+//! Legacy JSON flags are interpreted only at admission/configuration time.
+//! These are emulator choices, not recovered original KR authority.
 use crate::room_io::Config;
 use std::io;
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub(crate) enum ResultPolicy {
+    #[default]
+    Disabled,
+    Duel,
+    Teams,
+}
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub(crate) enum DeparturePolicy {
+    #[default]
+    Leave,
+    Forfeit,
+    UnrankedReturn,
+    FenceActive,
+}
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub(crate) enum BombPolicy {
+    #[default]
+    Basic,
+    Disabled,
+    OwnerReports,
+}
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub(crate) enum LifePolicy {
+    #[default]
+    Observe,
+    DuelReports,
+    TeamReports,
+}
+
+impl LifePolicy {
+    pub(crate) fn reports_enabled(self) -> bool {
+        self != Self::Observe
+    }
+}
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub(crate) enum TeamPolicy {
+    #[default]
+    Any,
+    BalancedManner,
+}
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct RoomRules {
-    /// Opt-in measured CP201 capacity1/2/1/1, power1, design fuse6 seconds.
-    pub(crate) four_owner_bombs: bool,
-    pub(crate) four_life_reports: bool,
-    pub(crate) four_results: bool,
-    pub(crate) four_abort_room: bool,
-    /// CP208–210 explicit fixed8 baseline; not four abort/items/terrain.
-    pub(crate) eight_battle: bool,
+    pub(crate) result: ResultPolicy,
+    pub(crate) departure: DeparturePolicy,
+    pub(crate) bomb: BombPolicy,
+    pub(crate) life: LifePolicy,
+    pub(crate) teams: TeamPolicy,
     /// Opt-in ninth diagnostic lobby actor for the full-room negative consumer.
     pub(crate) ninth_admission_probe: bool,
 }
@@ -55,24 +97,51 @@ impl RoomRules {
         }
         Ok((
             Self {
-                four_owner_bombs: cfg.four_owner_bombs,
-                four_life_reports: cfg.four_life_reports,
-                four_results: cfg.four_results,
-                four_abort_room: cfg.four_abort_room,
-                eight_battle: cfg.eight_battle,
+                result: if cfg.four_results || cfg.eight_battle {
+                    ResultPolicy::Teams
+                } else if cfg.battle.is_some() {
+                    ResultPolicy::Duel
+                } else {
+                    ResultPolicy::Disabled
+                },
+                departure: match count {
+                    8 => DeparturePolicy::FenceActive,
+                    _ if cfg.four_abort_room => DeparturePolicy::UnrankedReturn,
+                    _ if cfg.battle.is_some() => DeparturePolicy::Forfeit,
+                    _ => DeparturePolicy::Leave,
+                },
+                bomb: if cfg.four_owner_bombs || cfg.eight_battle {
+                    BombPolicy::OwnerReports
+                } else if matches!(count, 4 | 8) {
+                    BombPolicy::Disabled
+                } else {
+                    BombPolicy::Basic
+                },
+                life: if cfg.four_life_reports || cfg.eight_battle {
+                    LifePolicy::TeamReports
+                } else if cfg.battle.is_some() {
+                    LifePolicy::DuelReports
+                } else {
+                    LifePolicy::Observe
+                },
+                teams: if cfg.eight_battle {
+                    TeamPolicy::BalancedManner
+                } else {
+                    TeamPolicy::Any
+                },
                 ninth_admission_probe: cfg.ninth_admission_probe,
             },
             count,
         ))
     }
     pub(crate) fn life_enabled(&self) -> bool {
-        self.four_life_reports || self.eight_battle
+        self.life == LifePolicy::TeamReports
     }
     pub(crate) fn team_results(&self) -> bool {
-        self.four_results || self.eight_battle
+        self.result == ResultPolicy::Teams
     }
     pub(crate) fn owner_bombs(&self) -> bool {
-        self.four_owner_bombs || self.eight_battle
+        self.bomb == BombPolicy::OwnerReports
     }
 }
 
@@ -104,14 +173,18 @@ mod tests {
         let two = RoomRules::default();
         assert!(!two.life_enabled() && !two.team_results() && !two.owner_bombs());
         let four = RoomRules {
-            four_owner_bombs: true,
-            four_life_reports: true,
-            four_results: true,
+            bomb: BombPolicy::OwnerReports,
+            life: LifePolicy::TeamReports,
+            result: ResultPolicy::Teams,
             ..RoomRules::default()
         };
         assert!(four.life_enabled() && four.team_results() && four.owner_bombs());
         let eight = RoomRules {
-            eight_battle: true,
+            bomb: BombPolicy::OwnerReports,
+            life: LifePolicy::TeamReports,
+            result: ResultPolicy::Teams,
+            departure: DeparturePolicy::FenceActive,
+            teams: TeamPolicy::BalancedManner,
             ..RoomRules::default()
         };
         assert!(eight.life_enabled() && eight.team_results() && eight.owner_bombs());

@@ -1,0 +1,62 @@
+{
+  "schema": "kre-rust-r1b-policies-v1",
+  "checkpoint": "CP262",
+  "baseline": "1b4bfeb49870f33dfb5b6e4629ce49485a5f084c",
+  "canonical": "docs/PROTOCOL.md#rust-r1b-policies",
+  "plan": "docs/PLAN.md#rust-r1",
+  "source": "design",
+  "status": "design",
+  "implementation": "TypedResult/Departure/Bomb/Life/TeamPolicy normalizedfromlegacyJSONatRoomRulesadmission; nofixturepresenceauthority. No wireorprofilebehaviorchangeclaimedoutside2/4/8testedprofiles.",
+  "integration": "Candidatecode/TCP/differentialverified; PRdeliverypending, independentreviewwaived. FinalR1native2/4/8/accountstillrequired.",
+  "checks": {
+    "fmt": "pass",
+    "clippy": "pass",
+    "workspace_Rust_tests": 90,
+    "locked_build": "pass",
+    "TCP_cases_per_binary": 298,
+    "suites": 13,
+    "exact_room_frames": 3189
+  },
+  "source_stash": "ba7572b37fd5a6fba4240f810000b7069d1426b4",
+  "projector_stash_preserved": "aa4800a30ec87932ce425bae5969bc45c2dd2411",
+  "candidate_binaries": [
+    {
+      "path": "local/research/codex/r1b-recovery-r2/candidate-kr-service",
+      "bytes": 52832816,
+      "sha256": "26bb7be6a6322842d5199da31226ec606e7dcf33b2d8f90a8af0895ada614dd3"
+    },
+    {
+      "path": "local/research/codex/r1b-recovery-r2/candidate-kr-admin",
+      "bytes": 44943752,
+      "sha256": "510ac8c3c0e2eb4caa0526eabab70d268f80ce758052088d001c2e90e1c8795a"
+    }
+  ],
+  "source_archive": {
+    "path": "local/research/codex/r1b-recovery-r2/candidate-current-source.tar",
+    "sha256": "8b4228b9c4ef549b2efbbaa99e55d5b76592c262a328bd86776d47d84f7ffb6a"
+  },
+  "differential": "local/research/codex/r1b-policies-regression-r4/wire-comparison-r6.json",
+  "batches": [
+    {
+      "path": "local/research/codex/r1b-policies-regression-r4/evidence-index.json"
+    },
+    {
+      "path": "local/research/codex/r1b-policies-account-r4/evidence-index.json"
+    },
+    {
+      "path": "local/research/codex/r1b-eight-boundary-r5/evidence-index.json"
+    },
+    {
+      "path": "local/research/codex/r1b-ninth-boundary-r6/evidence-index.json"
+    }
+  ],
+  "limits": [
+    "SyntheticTCP/differential only; no newnativeKR/Internet/fullR1 orM5/gameauthorityclaim. Existingnativeevidence remains tiedtoactualoldbinary/env.",
+    "Allfour/eight/ninthreceiverboundaries preserveassertedexplicitEOF/negativecases; unreadfinalcleanupnotifications retainedraw/notclaimedidentical. No manualdropbyopcode/alias tohide discrepancy.",
+    "No codec/packetheader/template/identity-slot/registry/sessiontransport changes; R1c-gremain, sameNATidentityrequiresR1f.",
+    "No newcapacityflags/identityaliases or newcapacitybranch incorehandlers; existinglegacyprofiles normalizedinsideRoomRules. JSONflagsleftcompatible.",
+    "N1OPEN mobile/ISP-CGNATfactunattested; boundedInternetpathworksCP261/sourceARMCP260, no nativeacceptanceofR1bcandidate.",
+    "FeaturegroupauditAUD079, nofixed4CPcadence. Oldcomplete/raw/audits unchanged; privateVPSinformationstayslocal."
+  ],
+  "recorded_utc": "2026-11-11T17:13:29.790648+00:00"
+}
