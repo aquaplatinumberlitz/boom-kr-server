@@ -719,3 +719,21 @@ quan sát cloud, không thêm DNAT public. Đo đủ hai cổng sau NAT khác99/
 helper và không UDP tới service. Hai kết quả/reset/Start3 qua TCP không nâng thành UDP acceptance.
 AUD083 hoàn tất nhóm phép đo N1b, không hoàn tất relay/R1f/fullM5. Không native lượt3; thiết kế relay/endpoint trước R1f.
 Hạ tầng/định danh/config chỉ local. R1e PR344 đã merge; K6c/K7/N1 acceptance cũ và complete evidence giữ nguyên.
+
+<a id="cp267"></a>
+### CP267 — thiết kế endpoint và relay trước R1f
+
+[Quyết định](../../RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design), [scope](../../PROTOCOL.md#rust-relay-endpoint-scope),
+[metadata/reuse](relay-endpoint-design.json), [acceptance/thứ tự](../../PLAN.md#rust-relay).
+Chỉ design/docs; nativeN1b2runs CP266 không chạy lại. LegacyDirect giữ default; reverse-edge relay candidate có nguồn
+CP045/138/193/261/266, chưa implementation. Route/session/membership/round, reservation/queue/resource/rebind/cleanup/
+portreuse và sameIPspoof limits đã tách rõ. Guard256 có ở Python, chưa ở Rust; không nhận là runtime đã bảo vệ.
+AUD084 audit nhóm thiết kế; PR345 đã merge. Tiếp R1f, R1g, relay implementation/native riêng; không nâng gate/M5/R1.
+
+<a id="cp268"></a>
+### CP268 — correction checker danh tính checkpoint docs
+
+[Scope/giới hạn](../../PROTOCOL.md#documentation-checkpoint-identity), [metadata](documentation-identity.json).
+57 checkpoint tests đạt. CP267 pin/record/audit bất biến, run checker lỗi giữ local. Chỉ design/documentation với
+canonical docs pin đầy đủ dùng artifacts rỗng; runtime/static/test/confirmed không được miễn artifact/hash/history.
+AUD085 audit nhóm schema-tool; không runtime/implementation/gate mới. Thứ tự R1f/relay giữ PLAN.

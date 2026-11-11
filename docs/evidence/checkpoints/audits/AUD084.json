@@ -1,0 +1,70 @@
+{
+  "id": "AUD084",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "relay-endpoint-design-before-r1f"
+  ],
+  "completed_through": "CP267",
+  "recorded_utc": "2026-11-11T22:08:39.908058+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/evidence/rust-service/relay-endpoint-design.json",
+    "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/room.rs",
+    "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/room_io.rs",
+    "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/lib.rs",
+    "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/account_bridge.rs",
+    "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/account_bridge/wire.rs",
+    "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/account_serving.rs",
+    "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/network.rs",
+    "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-wire/src/kr00967/room.rs",
+    "local/research/codex/relay-design-delivery-r1/source/server/udp_round_keys.py",
+    "local/research/codex/relay-endpoint-source-reuse-r1/survey.json",
+    "local/research/codex/relay-endpoint-source-reuse-r1/decision-review.json"
+  ],
+  "method": "Manualcanonicaldocs→CP045/138/193/261/266cachedcontract→currentloader/accountlease/99-153builder/roundkeysource→designownership/resource/lifecycle→readiness/nextacceptance audit. No newruntimeorbinaryclaim.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "N1bnegative required concrete endpoint/relay design beforeR1f; endpointlearning alone has no measured UDP path.",
+      "correction": "Recordseparatemodule/ownershipseam; LegacyDirectunchanged/opt-inreverseedgecandidate, nativeunknownsandresource/lifecyclerequirements. R1fthenR1gthenrelayfeature/nativeperPLAN.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "LocaldraftassumedPython256roundkeyguard appliedtoRust.",
+      "correction": "CheckedRoom::begin/ wire_key source: u64/u32overflowonly. ExplicitRust256guardabsent; separatekey/portlifetimetaskbeforerelayacceptance, no falsecurrentprotectionclaim or refactorbehaviorchange.",
+      "fixed_in": [
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Socketedge/observedtuplecouldbemistaken foraccountauth andRAMgenerationforrawportreusefence.",
+      "correction": "SamIPspoof/rebind/rawoldportreuse/restartlimits explicit; controlplaneleasevsUDPcandidateidentity separate, prototypequarantinefailclosednotdurableserviceacceptance.",
+      "fixed_in": [
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Design acceptedonlydocs/module/measurementseams, relayalgorithmcandidate andno implementation/nativepromotion.",
+    "Native153perrecipientreverseedge/sourcelearning/twocycles/stale/EOF/sharedNATandloadrequiredbyPLAN.",
+    "SameIPfirstdatagramspoofnot solvedbyportassignment; noCRCkeyauthenticationclaim.",
+    "Portreuse/restart/keylifetime notproved; Rust256guardabsent atbaseline, separatetaskbeforeacceptance.",
+    "CurrentN1/K6c/K7scopeunchanged; M5generalprofile/nativeDBqueuefault andR1native2/4/8/account remain.",
+    "VPS/OCIactualendpoints/IDs/config/topology/access privateonlyignoredlocal."
+  ]
+}

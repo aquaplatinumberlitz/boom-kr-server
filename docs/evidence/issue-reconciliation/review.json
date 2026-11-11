@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP266",
-  "baseline": "258abf8",
+  "as_of": "CP267",
+  "baseline": "7208404",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "R1e mergedPR344; N1b exactly2nativeCP261baseline with directUDPnegative. Secondrunbothportmismatches/native82send/zeroingress-helper/serviceUDP0. StrictTCP/lifecycle/ownership/rawcleanup pass separately.",
-      "remaining": "Relay/endpointdesignbeforeR1f; sharedNATsessionbinding/R1g/finalR1native2/4/8/account; M5generalprofiles/nativeDBqueuefault; no relayimplementation or two-NATgameplay acceptance.",
-      "next_test": "Design scopedrelay/endpoint seam+minimalnativegap; no thirdN1b or broadRE. Follow dashboard.",
+      "known": "CP266PR345merged. CP267designLegacyDirect/opt-inreverseedgecandidate/RouteKeylifecycle/resourcebounds; nonewimplementation/native.",
+      "remaining": "R1fsharedNATsessionprofilelookup/R1g; separateN1Rrelaynative/keyportlifetimes/restart/sameIPspooflimits; M5generalprofile/nativeDBfault/load.",
+      "next_test": "R1fbyte-preservingtransportbindingwithsameIPsessions; relaynativeonlyafternewimplementation, noN1b3.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "AUD083boundedN1bmeasurementnegative, notrelay/R1f/fullM5closure. ExactheadPRpending; reviewwaived.",
+      "reason": "AUD084designonly, notrelay/R1f/gateacceptance. Python256guardnotRust; sourcecounterlimitsseparated. Reviewwaived.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",

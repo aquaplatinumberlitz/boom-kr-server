@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP266",
+  "as_of": "CP268",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -464,7 +464,10 @@
           "docs/evidence/rust-service/account-basic.json",
           "docs/PROTOCOL.md#rust-account-basic",
           "docs/PROTOCOL.md#rust-internet-observation",
-          "docs/evidence/rust-service/internet-observation.json"
+          "docs/evidence/rust-service/internet-observation.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json"
         ]
       },
       "coverage": {
@@ -1814,7 +1817,10 @@
           "docs/PROTOCOL.md#rust-n1-acceptance",
           "docs/evidence/rust-service/n1-acceptance.json",
           "docs/PROTOCOL.md#rust-n1b-dual-nat",
-          "docs/evidence/rust-service/n1b-dual-nat.json"
+          "docs/evidence/rust-service/n1b-dual-nat.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json"
         ]
       },
       "coverage": {
@@ -3781,7 +3787,10 @@
           "docs/PROTOCOL.md#emulated-wan-acceptance",
           "docs/evidence/peer-endpoints/README.md#cp212",
           "docs/PROTOCOL.md#rust-n1b-dual-nat",
-          "docs/evidence/rust-service/n1b-dual-nat.json"
+          "docs/evidence/rust-service/n1b-dual-nat.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json"
         ]
       },
       "coverage": {
@@ -4276,7 +4285,10 @@
           "docs/evidence/rust-service/argv-provenance.json",
           "docs/evidence/rust-service/README.md#cp252",
           "docs/PROTOCOL.md#rust-internet-observation",
-          "docs/evidence/rust-service/internet-observation.json"
+          "docs/evidence/rust-service/internet-observation.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json"
         ]
       },
       "coverage": {
@@ -4976,7 +4988,10 @@
           "docs/PROTOCOL.md#rust-r1e-registry",
           "docs/evidence/rust-service/r1e-registry.json",
           "docs/PROTOCOL.md#rust-n1b-dual-nat",
-          "docs/evidence/rust-service/n1b-dual-nat.json"
+          "docs/evidence/rust-service/n1b-dual-nat.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json"
         ]
       },
       "coverage": {
@@ -5492,7 +5507,12 @@
           "docs/evidence/rust-service/account-idle-rate.json",
           "docs/evidence/eight-player/team-code-delivery.json",
           "docs/PROTOCOL.md#rust-n1b-dual-nat",
-          "docs/evidence/rust-service/n1b-dual-nat.json"
+          "docs/evidence/rust-service/n1b-dual-nat.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json",
+          "docs/PROTOCOL.md#documentation-checkpoint-identity",
+          "docs/evidence/rust-service/documentation-identity.json"
         ]
       },
       "coverage": {

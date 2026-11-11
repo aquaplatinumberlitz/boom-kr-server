@@ -33,14 +33,14 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP266: N1b đã đo đủ hai lượt; UDP trực tiếp thất bại khi cả hai phía đổi cổng.**
-[Đối chiếu native/capture và giới hạn](docs/PROTOCOL.md#rust-n1b-dual-nat), [raw/hash](docs/evidence/rust-service/n1b-dual-nat.json).
-Hai KR/Wine vẫn đi qua account/phòng, hai kết quả/reset và Start3 qua TCP, nhưng không có ingress/helper movement UDP
-trong các cửa sổ đo. Lượt đối chứng thấy cả hai cổng sau NAT khác packet99; native chỉ gửi tới endpoint153,
-không có UDP tới service để học endpoint. Đây là kết quả âm có bằng chứng, chưa phải hỗ trợ hai NAT hoặc relay.
-R1e đã merge [PR344](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/344). Tiếp thiết kế relay/endpoint trước R1f
-ở [dashboard](docs/PLAN.md#dashboard); không chạy lượt N1b thứ ba. N1 một phía tới được/K6c WAN giả lập giữ scope.
-Shared-NAT, full M5 và native cuối R1 vẫn chưa đạt. Hạ tầng chỉ local; mốc cũ ở [HISTORY](docs/HISTORY.md).
+**CP268: sửa checker cho checkpoint thiết kế có tài liệu chuẩn đã pin.**
+CP267 là design/docs, không có binary mới; lần kiểm lịch sử phát hiện schema cũ bắt artifact cho cả trường hợp đó.
+[Correction/giới hạn](docs/PROTOCOL.md#documentation-checkpoint-identity), [evidence](docs/evidence/rust-service/documentation-identity.json).
+Record CP267 đã commit giữ nguyên. Checker chỉ nhận danh tính từ docs chuẩn có SHA khi mọi finding là design/documentation,
+status design/candidate/unknown; runtime/static/test vẫn cần artifact. 57 test checkpoint đạt, không native/gate claim.
+[Thiết kế endpoint](docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design) giữ nguyên; tiếp R1f theo
+[dashboard](docs/PLAN.md#dashboard). Relay chưa triển khai; scope N1/K6c/K7/M5 không đổi. Hạ tầng chỉ local.
+Mốc cũ ở [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
 

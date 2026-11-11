@@ -1,0 +1,222 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "DOCIDCP268-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3981,
+      "sha256": "d445d42a97440f3afe5f6a791d089930f68bac0bee3502b2333c5919a3e55be3"
+    },
+    {
+      "id": "DOCIDCP268-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 221319,
+      "sha256": "19de944026b502ce3b8a700c4b54c9839076f5a9ad1ff871367048230031f7f3"
+    },
+    {
+      "id": "DOCIDCP268-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 68503,
+      "sha256": "840afb08f5ae744a42454900290a1f8a29a714de0c3a729ecefa535b0fc0bfc7"
+    },
+    {
+      "id": "DOCIDCP268-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 138154,
+      "sha256": "967b011879d0b32a179675cce96d29e5dcdb0b7907fa40bbfba4b15863a4a27b"
+    },
+    {
+      "id": "DOCIDCP268-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 867686,
+      "sha256": "f2236b9f4080bb3cd7e659b71efa93ff2b02cc7eb052bc154aa4bd8165677c5b"
+    },
+    {
+      "id": "DOCIDCP268-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 56195,
+      "sha256": "6b5d7432a58bf8633069591cf62999f1901334c2bc4fed1b8d617c3d0c0f63da"
+    },
+    {
+      "id": "DOCIDCP268-00007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/README.md",
+      "bytes": 15508,
+      "sha256": "413185b80d07ecf854549d3fb1a98dbb9d62c0fe36f09c6abd66fb0496533f3d"
+    },
+    {
+      "id": "DOCIDCP268-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD085.json",
+      "bytes": 2016,
+      "sha256": "da86b687e65e5501678b5f7e16858ff22cf1e0fe19055a2f659b90c1879671d1"
+    },
+    {
+      "id": "DOCIDCP268-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 63408,
+      "sha256": "bc8fa64c916955664cc43492e9532698ff4f4aa51734f8beb867e480559007eb"
+    },
+    {
+      "id": "DOCIDCP268-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/documentation-identity.json",
+      "bytes": 1833,
+      "sha256": "3466d809c4b91a554a20abfcfdd1b32cbdf0875e99361bd8b69eeb3c1d9e06ce"
+    },
+    {
+      "id": "DOCIDCP268-00011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 233375,
+      "sha256": "db80d691706b7e685863b47e6ad767a094fba06779b31f2705128dba2c065240"
+    },
+    {
+      "id": "DOCIDCP268-00012",
+      "kind": "local",
+      "path": "local/research/codex/append_cp268.py",
+      "bytes": 8229,
+      "sha256": "1658d5502b70e6d0277a159946a307e014670abd9484b8af90d6f07fffdb2641"
+    },
+    {
+      "id": "DOCIDCP268-00013",
+      "kind": "local",
+      "path": "local/research/codex/cp267-exact-head-history.txt",
+      "bytes": 116412,
+      "sha256": "ff52b23e8d64ef4f2d582a2f7423774832ec84882cee221480b3c96c4169ee4e"
+    },
+    {
+      "id": "DOCIDCP268-00014",
+      "kind": "local",
+      "path": "local/research/codex/cp268-checkpoint-tests-r1.txt",
+      "bytes": 156,
+      "sha256": "8ee49bdc1879472b61c5aafb134f09cca68436f23378966dbbca12233784f6ff"
+    },
+    {
+      "id": "DOCIDCP268-00015",
+      "kind": "local",
+      "path": "local/research/codex/cp268-docs-preappend.txt",
+      "bytes": 251,
+      "sha256": "6b22a87ab395ee3c8f31019bae5632d01be897e70155fd7b736c358513801c94"
+    },
+    {
+      "id": "DOCIDCP268-00016",
+      "kind": "local",
+      "path": "local/research/codex/document_cp268.py",
+      "bytes": 7048,
+      "sha256": "00644cc79c577d87c9865f71c02b8a798ebd85aa84896e3350cf0c162570a227"
+    },
+    {
+      "id": "DOCIDCP268-00017",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/selfcheck.json",
+      "bytes": 1327,
+      "sha256": "568325a87b45321d55c12526b9e69cbfd65bda98995c988851209a055586abcb"
+    },
+    {
+      "id": "DOCIDCP268-00018",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/README.md",
+      "bytes": 3981,
+      "sha256": "d445d42a97440f3afe5f6a791d089930f68bac0bee3502b2333c5919a3e55be3"
+    },
+    {
+      "id": "DOCIDCP268-00019",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/docs/COVERAGE.md",
+      "bytes": 221319,
+      "sha256": "19de944026b502ce3b8a700c4b54c9839076f5a9ad1ff871367048230031f7f3"
+    },
+    {
+      "id": "DOCIDCP268-00020",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/docs/HISTORY.md",
+      "bytes": 68503,
+      "sha256": "840afb08f5ae744a42454900290a1f8a29a714de0c3a729ecefa535b0fc0bfc7"
+    },
+    {
+      "id": "DOCIDCP268-00021",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 138154,
+      "sha256": "967b011879d0b32a179675cce96d29e5dcdb0b7907fa40bbfba4b15863a4a27b"
+    },
+    {
+      "id": "DOCIDCP268-00022",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/docs/PROTOCOL.md",
+      "bytes": 867686,
+      "sha256": "f2236b9f4080bb3cd7e659b71efa93ff2b02cc7eb052bc154aa4bd8165677c5b"
+    },
+    {
+      "id": "DOCIDCP268-00023",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 56195,
+      "sha256": "6b5d7432a58bf8633069591cf62999f1901334c2bc4fed1b8d617c3d0c0f63da"
+    },
+    {
+      "id": "DOCIDCP268-00024",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/docs/evidence/checkpoints/README.md",
+      "bytes": 15508,
+      "sha256": "413185b80d07ecf854549d3fb1a98dbb9d62c0fe36f09c6abd66fb0496533f3d"
+    },
+    {
+      "id": "DOCIDCP268-00025",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/docs/evidence/rust-service/README.md",
+      "bytes": 63408,
+      "sha256": "bc8fa64c916955664cc43492e9532698ff4f4aa51734f8beb867e480559007eb"
+    },
+    {
+      "id": "DOCIDCP268-00026",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/docs/evidence/rust-service/documentation-identity.json",
+      "bytes": 1833,
+      "sha256": "3466d809c4b91a554a20abfcfdd1b32cbdf0875e99361bd8b69eeb3c1d9e06ce"
+    },
+    {
+      "id": "DOCIDCP268-00027",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/docs/features.json",
+      "bytes": 233375,
+      "sha256": "db80d691706b7e685863b47e6ad767a094fba06779b31f2705128dba2c065240"
+    },
+    {
+      "id": "DOCIDCP268-00028",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/tools/check_checkpoints.py",
+      "bytes": 36677,
+      "sha256": "a9c92f3a8700e6f18b7957ca1d7788f5c825bc2cc358f6bbc1b9d756879e76de"
+    },
+    {
+      "id": "DOCIDCP268-00029",
+      "kind": "local",
+      "path": "local/research/codex/documentation-identity-delivery-r1/snapshot/tools/test_checkpoints.py",
+      "bytes": 21207,
+      "sha256": "eeae1afdaa68badefb41bd0e82a12a1d753f4793dec9ce45bf1b79d594dfb598"
+    },
+    {
+      "id": "DOCIDCP268-00030",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 36677,
+      "sha256": "a9c92f3a8700e6f18b7957ca1d7788f5c825bc2cc358f6bbc1b9d756879e76de"
+    },
+    {
+      "id": "DOCIDCP268-00031",
+      "kind": "repository",
+      "path": "tools/test_checkpoints.py",
+      "bytes": 21207,
+      "sha256": "eeae1afdaa68badefb41bd0e82a12a1d753f4793dec9ce45bf1b79d594dfb598"
+    }
+  ]
+}

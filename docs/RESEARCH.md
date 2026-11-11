@@ -101,12 +101,32 @@ DB/KDF/session/worker/idleTTL/rate đã có; [CP253 admission library](PROTOCOL.
 CP258 account-owned fixed2/basic giữ scope; CP261/264 N1 đạt đúng một phía tới được. R1a–R1e đã merge,
 R1e PR344 giữ kiểm source/TCP, chưa native binary mới. [N1b CP266](PROTOCOL.md#rust-n1b-dual-nat) đã dùng đủ hai lượt:
 hai cổng sau NAT khác99/153, native gửi tới endpoint153 nhưng không ingress/helper UDP và không UDP tới service.
-Hai kết quả/reset/Start3 qua TCP không đủ chứng nhận peer movement. NEXT thiết kế relay/endpoint trước R1f theo
+Hai kết quả/reset/Start3 qua TCP không đủ chứng nhận peer movement. CP267 đã chốt [thiết kế](RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design); NEXT R1f rồi relay opt-in theo
 [dashboard](PLAN.md#dashboard), không lượt N1b thứ ba, không broadRE. Cần đo tối thiểu đường gửi tới endpoint trung gian,
 key/consumer/apply và reply/rebinding/lifecycle nếu thiết kế chọn relay; chưa có proof cho server-source learning tự động.
 R1f shared-NAT session identity, R1g và native cuối R1 2/4/8/account giữ riêng. M5generalprofile/nativeDBqueuefault,
 field51policy integration/projector WIP không bị coi đã xong. Không suy lớp CGNAT hoặc mọiISP từ ca này; hạ tầng local.
 
+
+<a id="gap-relay-endpoint"></a>
+### Relay endpoint sau N1b — KRE-074/KR-F015
+
+Owner/tự kiểm Codex; source **design/candidate** cho reverse-edge forwarding, chưa implementation/native.
+Nguồn cần dùng đủ đã có: CP045/138 proxy nguyênpayload, CP193 native endpoint negative/positive, CP261 observed-source,
+CP266 haiNATâm; [reuse/hash](evidence/rust-service/relay-endpoint-design.json). Không mở lại body peer/codec hoặc nhập
+wire VN. R1f giữ direct legacy; relay là task riêng [PLAN](PLAN.md#rust-relay).
+
+| Unknown | Backend policy có thể chọn | Phép đo tối thiểu để đóng |
+|---|---|---|
+| KR cùng public endpoint nhiều port và reverse socket source | Route theo MembershipKey+RoomId+round, mỗi hướng một socket; no fallback | Native153→send/recv→key/helper→remote actor, cả hai chiều; không chỉ echo/TCP |
+| Khởi động/học tuple trước khi có dữ liệu hai phía | Bind trước publish; pending queue/byte/TTL hữu hạn, thiếu budget fail closed | Hai KR chủ động send; giữ một peer muộn rồi đối chứng forward khi đủ; không tự tạo gameUDP |
+| Rebinding và hai session cùng IP | Session lease cấp route; ban đầu pin tuple và từ chối đổi tự động | IP chung không chọn nhầm actor/route; tuple lạ không đổi owner; không nhận CRC/key là MAC. Chống spoof giữa cùngIP còn giới hạn nếu wire thiếu auth |
+| Late old datagram qua reset/restart/portreuse | Route generation+quarantine/no in-process reuse cho prototype; hết pool từ chối | Exact old/current positive sau reset và stale callback trước send. Reuse/restart cần native riêng trước vận hành lâu dài; queueclear không đủ |
+| Key lowbyte lặp | Quyết định guard ở task riêng, không thay legacy trong refactor | Rust hiện chỉ checked u64/u32, Python có256guard; test và native stale đúng cơ chế trước khi nhận hết tuổi thọ an toàn |
+| Relay4/8 và tải50 | Thuật toán n(n−1), budget socket/FD/queue/port cho active+quarantine | Fixed2 positive trước; mesh/isolation/load riêng, không suy350socketbound là benchmark |
+
+Tiêu chí nghiệm thu đầy đủ ở PLAN, quyền/scope ở PROTOCOL; không có lịch RE toàn client. Không thêm Internet thật
+thành dependency ngầm của K6c/K7 đã nghiệm thu WAN giả lập hoặc yêu cầu Windows/máy vật lý khác.
 
 Trạng thái lịch sử tại [CP251](PROTOCOL.md#rust-eight-teams): fixed1v7 code/TCP và native8Manner1v7negative trên8d; Freepositive2outcomes/selector0persist chưa có do copy4bD/8dGpost17preRoom. CùngCP250HGfamily/causalunknown, không retry hoặc SDKgraph khi chưa có observable mới; Tại mốc đó PLAN chuyển native9admissionbridge/consumer độc lập; CP252 phía trên đã đo gap này. Raw/hash/failedprebindchecker-harness được giữ, không nâng M4.
 
