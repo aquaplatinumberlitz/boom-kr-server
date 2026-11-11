@@ -8,7 +8,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 **Mỗi phiên chỉ cần đọc mục này.** Phần còn lại của file là tham chiếu (acceptance, lịch sử), tra theo anchor khi cần.
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP268 / AUD085**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP269 / AUD086**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Dài hạn: gameplay đầy đủ.
@@ -19,7 +19,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 | M4 bốn và tám người | Đạt phần đội cố định và Manner | Free 1v7 là giới hạn đã biết, không retry |
 | M5 tài khoản | Account → phòng → trận → kết quả đã chạy native (CP258) | Hồ sơ tổng quát cho mọi account; lỗi hàng đợi DB khi đang native |
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; thiết kế CP267 đã chốt, relay implementation/native còn thiếu |
-| [R1](#rust-r1) lõi phòng | R1a–R1e đã merge; N1b hoàn tất phép đo âm | R1f, R1g, relay opt-in và native hồi quy/acceptance riêng |
+| [R1](#rust-r1) lõi phòng | R1a–R1e đã merge; R1f source/TCP đạt, đang bàn giao | R1g, relay opt-in và native hồi quy/acceptance riêng |
 | M7 phòng tổng quát | Chưa bắt đầu | Toàn bộ; cần R1 |
 | [G1](#rust-g1) sáu map ladder và item | Chưa bắt đầu; có [kiểm kê](CONTENT.md) | Phép thử đổi map, rồi từng map và nhóm item |
 | M6 lưu kết quả, thưởng 0 | Chưa bắt đầu | Toàn bộ; cần R1 |
@@ -27,8 +27,8 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 
 **Thứ tự việc:**
 
-1. **R1f** theo [thiết kế endpoint đã chốt](RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design): session/lease chọn
-   identity/profile thay IP; ca hai người chung NAT. Tách endpoint plan, giữ `LegacyDirect` và bytes profile cũ.
+1. Hoàn tất PR R1f source/TCP:104Rust,306legacyTCP/3169+24frameCP265,59shared-IP/16account-serving.
+   Chưa native candidate/shared-NATUDP; không mở relay trong PR refactor.
 2. R1g trần kết nối theo tải đích.
 3. **[RUST-N1R relay opt-in](#rust-relay)**: implementation và native riêng sau R1f/R1g; không gộp tính năng relay
    vào PR refactor. N1b đã dùng đủ2lượt; đây là nghiệm thu implementation mới, không retry baseline N1b.
@@ -39,7 +39,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 
 **Blocker và việc tồn:**
 
-- Direct UDP âm ở hai NAT đổi cổng; thiết kế CP267 đã tách việc R1f khỏi relay opt-in. Chưa có relay implementation/native proof; N1b không retry. PR345 đã merge. CP268 sửa schema danh tính checkpoint docs, record CP267 giữ nguyên; PR thiết kế còn chờ exact-head/history/CI.
+- Direct UDP âm ở hai NAT đổi cổng; thiết kế CP267 đã tách việc R1f khỏi relay opt-in. Chưa có relay implementation/native proof; N1b không retry. PR345 đã merge. CP267–268 đã merge sau exact-head/history/CI; record CP267 giữ nguyên.
 - R1e serving vẫn fixed-room cũ; cấu hình/tạo/chọn nhiều phòng tổng quát và occupancy thuộc M7, không suy đã có từ container/unit.
 - `local/` (bằng chứng thô và fixture) chưa có backup ngoài máy này.
 
@@ -666,6 +666,12 @@ không lookup alias identity. 94 Rust/305 TCP đạt; 298 ca cũ và 3.189 frame
 Bộ mới có B tạo phòng/A vào slot1, chuyển host/rejoin và năm guard hợp lệ pin nhưng sai body/header/identity/tên/policy.
 Chỉ kiểm source/TCP, chưa native candidate; profile account tổng quát và session cùng NAT không được suy là đã sửa.
 Audit nhóm AUD080; [contract/giới hạn](PROTOCOL.md#rust-r1c-player-slots). **Tiếp R1d**, cuối R1 vẫn giữ native bên dưới.
+
+**R1f — CP269:** account profiles keyed PlayerId, legacy IP index riêng; frontend token chọn expectedmetadata sau
+lookup issuedplayer, transport/sourceIP chỉ restriction. Channel lease chọn owner/profile, không có fixedroom IP→identity
+fence cũ. Shared-IPconfig chỉ accountmode; endpoint theo currentchannelconnection và LegacyDirectPlan(round/members/slot).
+104Rust/fmt/clippy/lockedbuild,306TCPlegacy và3169+24frameCP265 khớp;59sharedIPfullaccountlife/16accountserving đạt.
+Chỉ source/TCP; native cuối R1 vẫn bắt buộc. Relay/key256/portreuse/M5generalprofile giữ riêng; [scope/evidence](PROTOCOL.md#rust-r1f-session-binding).
 
 R1a–R1b và R1d không đổi hành vi. R1c, R1e, R1f và R1g chỉ thêm hành vi ở chế độ mới; profile cũ phải giữ nguyên byte.
 Acceptance cuối R1: toàn bộ bộ TCP hiện có đạt, cộng **một lượt native hồi quy cho mỗi profile 2, 4, 8 người và đường

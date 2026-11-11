@@ -33,14 +33,13 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP268: sửa checker cho checkpoint thiết kế có tài liệu chuẩn đã pin.**
-CP267 là design/docs, không có binary mới; lần kiểm lịch sử phát hiện schema cũ bắt artifact cho cả trường hợp đó.
-[Correction/giới hạn](docs/PROTOCOL.md#documentation-checkpoint-identity), [evidence](docs/evidence/rust-service/documentation-identity.json).
-Record CP267 đã commit giữ nguyên. Checker chỉ nhận danh tính từ docs chuẩn có SHA khi mọi finding là design/documentation,
-status design/candidate/unknown; runtime/static/test vẫn cần artifact. 57 test checkpoint đạt, không native/gate claim.
-[Thiết kế endpoint](docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design) giữ nguyên; tiếp R1f theo
-[dashboard](docs/PLAN.md#dashboard). Relay chưa triển khai; scope N1/K6c/K7/M5 không đổi. Hạ tầng chỉ local.
-Mốc cũ ở [HISTORY](docs/HISTORY.md).
+**CP269: R1f đã tách account profile/endpoint khỏi IP chọn identity, kiểm source/TCP đạt.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-r1f-session-binding), [evidence](docs/evidence/rust-service/r1f-session-binding.json).
+Profile lấy từ PlayerId của frontend/session lease; hai account chung IP vẫn giữ profile và membership riêng.
+104 test Rust/fmt/clippy/locked build đạt;306 ca TCP legacy và3169+24frame khớp CP265; thêm59shared-IP và16account serving.
+Endpoint direct theo channel hiện hành, vẫn dùng cổng99; chưa relay/NATlearning hoặc native shared-NAT gameplay.
+Thiết kế/schema CP267–268 đã merge; R1f đang bàn giao riêng. Tiếp R1g, relay opt-in và native cuối R1 theo
+[dashboard](docs/PLAN.md#dashboard). Full M5 còn mở; thông tin VPS chỉ local. Mốc cũ ở [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
 
