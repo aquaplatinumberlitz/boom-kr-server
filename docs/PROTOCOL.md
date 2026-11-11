@@ -9314,3 +9314,35 @@ R5boundedpolicy mới pass; initialpostrunchecker thiếuhashlib được giữ 
 M5 vẫn partial: native wrong-owner/channel swap/expiry/revoke/replay/fault/freshlogin/lifecycle và account room-game integration
 chưa nghiệm thu. Không accountresume/matchrestore/generalprofile/fullauth/production. Python/diagnostic rollback giữ.
 Wine/LAN/WAN giả lập chấp nhận; **Internet thật chưa kiểm**.
+
+<a id="rust-account-native-lifecycle"></a>
+## Account native negative/lifecycle — CP255, không đổi server CP254
+
+[Metadata/limits](evidence/rust-service/account-native-lifecycle.json), [raw](evidence/rust-service/README.md#cp255),
+[thứ tự](PLAN.md#current-order). Nguồn **kr_runtime/confirmed** cho các quan sát hẹp dưới; debugger control là **design**.
+Tái dùng CP216 reader10FE043→setter13B0D30/index0/caller10FE05F/value[ESP+8]→getter13AE834→serializer4CD040→wire6;
+CP254 Rustbinary/copy4b/Wine10.0-20260425/3netns/directTCP/privateTMPFS/PCAP/UI/cursor/argv. Không hàm binary mới/SDKgraph.
+Skill REA42 dùng phương pháp/evidence boundary; REA session metadata không là native Evidence, không mở/sửa DBnguồn.
+
+**Wrong pending correlator:** A send1 gate trướcauth≤30s, B send6 giữ≤6s trong handoff10s. NativeBsetter ghi echo thực,
+A setter thay đúng4byte argument sangB echo, giữ nguyên AID/name/authresult. Nativegetter/serializer/C2S6 corroborate,
+fullPCAP AID1/KRLocal/echoB→chỉhello/no17-no291/noAchannelgrant; Bpending không mất, actualB6đúng→17/291/render/8shold.
+Compoundpeer/ID-name/echo guards, không chứng minh mỗi nhánh độc lập. Không forceauthstate, gọi function hoặc đổi fileclient.
+78raw41,686s/13exactreply; A noticeerror10 ởloginscene, B lobbypanelKRGuest. Không đãactiveBmatch hoặc graceful recovery.
+
+**Revoke khi active:** cảhai đãnative137/291/render trước, realauditedCLI revokeaccountA; worker periodicinspect đóng
+đúng currentchannelA với InvalidSession. SQLite revocation/audit và PCAPserverFIN đối chiếu; delay sauCLIreturn0,718181637s.
+Bcurrentchannel/render/DBphiên giữ≥8s.79raw44,268s/18exactreply. UIA KRLocal còncachepanel+noticeerror10, không coi là logoutUIcomplete.
+
+**Tự hết hạn:** nativeAbackendSession absoluteTTL60s/idleNULL, native2profiles trướcexpiry; không sửa DB để ép hết hạn.
+PCAPserverFIN0,484608s sauexpires_at, SQLiteAexpired/revokedNULL/noauditrevoke, Bsession1200s/current/render/channel≥8s.
+123raw70,445s/18exactreply. Đây là expiry backend session đang bound, không pendingfrontend/handoff/idleTTL.
+
+Cả3run sourcefrozen/exit0/seal/cleanup0, fulltuple/CRC/seq/SHA và native137/291/producer/control/CAargv đối chiếu,
+6ảnh cuối đã xem. A không có terminalsignal trong boundedhold, noticeerror10 chưa được đóng; không kiểm ordinaryReturn,
+sameprocessretry/freshlogin/resume. Initialchecker syntax lỗi được giữ rồi sửa checker riêng; không rerun native vì checker.
+Delay là số đoquietLAN/TMPFS, không load/SLO/alltopology. PrivateRAMDB/exporthash không Btrfsfix/crashdurability/backuprestore.
+
+M5 còn freshlogin/replay/projector tổngquát và accountroom-game integration; fixed2zero-profile không fullaccountservice.
+CP220/224 recovery blockers giữ nguyên; không mở SDK VM chỉ để đóng modal. Source/ID catalog giữscope cũ, không gateclosure.
+K6c WAN giả lập không đổi; **Internet thật chưa kiểm**.

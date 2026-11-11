@@ -593,3 +593,15 @@ PrivateTMPFS DB/log/raw/exporthash, khôngBtrfsdurabilityfix. NativeR2/R3/R4fail
 `tools/test_rust_account_serving.py --binary <kr-service> --admin <kr-admin> --config <two-profile> --out <new-private-dir>`
 kiểm synthetic TCP, khôngnativeoracle. Accountmode reject room/battle/unknownprofile; native negative/lifecycle/fullM5 còn thiếu.
 Python/diagnostic rollback giữ. Internet thật chưa kiểm.
+
+<a id="cp255"></a>
+## CP255 — native account wrong-correlator/revoke/absolute expiry
+
+[Contract](../../PROTOCOL.md#rust-account-native-lifecycle), [metadata/limits](account-native-lifecycle.json), [PLAN](../../PLAN.md#current-order).
+SameCP254server/4b, no newserver source; GDB/ordinaryCLI controllers/sourcepins ở `local/research/codex/rust-account-swap-source-r1`
+và frozen-inputs từngrun. Swap78raw41,686s/13reply; revoke79raw44,268s/18reply; expire123raw70,445s/18reply, tấtcảseal/cleanup0.
+`negative-verification.json` ở `rust-account-swap-r1`; `lifecycle-verification.json` và UIreview ở
+`rust-account-revoke-native-r1`, `rust-account-expire-native-r1`. FullPCAP/native cursors/control/argv/SQLite/audit/FIN và6UIảnh kiểm.
+Sourcehashbinary/knownABI reused, không mở thêmbinarybody/SDK; REAsessionavailabilitymetadata retained, không là nativeEvidence.
+A notice10/boundednoterminal, chưa ordinaryReturn/modalclose/retry/freshlogin; Bpending→ownclaim hoặc activeB giữ≥8s đúng từngcase.
+TMPFSDB-log-raw/exporthash khôngdurability/SLO/Btrfsfix; M5partial/nextperPLAN, auditCP256. Internet thật chưa kiểm.
