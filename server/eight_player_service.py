@@ -17,7 +17,14 @@ class EightPlayerService(FourPlayerService):
     PLAYER_PROFILE = eight
     RANK_BODY = staticmethod(rank_body)
 
-    def __init__(self,*args,bomb_profile=None,battle_outcome=False,**kwargs):
+    def __init__(self,*args,bomb_profile=None,battle_outcome=False,team_layout='4v4',allow_manner=False,**kwargs):
+        if type(allow_manner) is not bool:
+            raise ValueError('allow_manner requires bool')
+        if allow_manner and getattr(args[0] if args else kwargs.get('profile'),'data',{}).get('room_team_mode')!={'mode':'create81_to_86_87'}:
+            raise ValueError('Manner requires measured 86/87/180 selector echo policy')
+        self.PLAYER_PROFILE=eight.TeamProfile(team_layout)
+        self.team_layout=team_layout
+        self.ROOM_SELECTORS=(0,1) if allow_manner else (0,)
         if type(battle_outcome) is not bool or (battle_outcome and bomb_profile is None):
             raise ValueError('eight session preview outcome requires explicit measured bomb profile and bool')
         if bomb_profile is not None and json.dumps(bomb_profile,sort_keys=True) != json.dumps(BASELINE,sort_keys=True):
@@ -29,6 +36,8 @@ class EightPlayerService(FourPlayerService):
         self.state['limits']=('Eight initial sessions/room/load/peer only; '
             'no eight combat/results/items/terrain/kim/rescue/accountauth/resume/Internet or gate.')
         self.state['network']['peer_ips']=dict(self.source_ips)
+        self.state['operator_team_layout']=dict(source='design',layout=team_layout,accepted_selectors=list(self.ROOM_SELECTORS),
+            limits='Fixed operator roster, not interactive C2S team change or original room authority.')
         if bomb_profile is not None:
             self.bomb_admission=EightBombAdmission(self.room,self.role_slots,
                 bomb_profile['capacities'],bomb_profile['powers'])
@@ -43,16 +52,27 @@ class EightPlayerService(FourPlayerService):
                 self.state['policy_sources'].append(dict(path=str(path),sha256=hashlib.sha256(path.read_bytes()).hexdigest()))
         if battle_outcome:
             self.battle_reports=EightBattleReports(self.room,self.role_slots,
-                {r:m['team'] for r,m in eight.MEMBERS.items()})
+                {r:m['team'] for r,m in self.player_profile.MEMBERS.items()})
             self.state['eight_outcome_policy']=dict(source='design',
-                mode='current_eight_4v4_report_derived_drained_settle8s',
+                mode='current_eight_'+team_layout+'_report_derived_drained_settle8s',
                 limits='Report-derived life, seven peer forwards and fixed rank8/reset only; '
                        'not authenticated life or original world authority.')
-            self.state['limits']=('Eight fixed 4v4 report-derived result/reset with explicit baseline bombs; '
+            self.state['limits']=('Eight fixed operator-team report-derived result/reset with explicit baseline bombs; '
                 'no full items/terrain/kim/rescue/accountauth/resume/Internet or gate.')
             module=sys.modules[EightBattleReports.__module__];path=Path(module.__file__).resolve()
             self.state['policy_sources'].append(dict(path=str(path),sha256=hashlib.sha256(path.read_bytes()).hexdigest()))
         self.observability=FourObservability(self)
+
+    def receive_channel(self,event,frame,sequence,body):
+        opcode=int.from_bytes(frame[5:9],'little')
+        if opcode==104 and event['role']=='A' and self.room_team_selector==1:
+            counts={}
+            for member in self.player_profile.MEMBERS.values():
+                counts[member['team']]=counts.get(member['team'],0)+1
+            if len(set(counts.values()))!=1:
+                self.reject(event,opcode,sequence,'manner_fixed_teams_unbalanced')
+                return
+        return super().receive_channel(event,frame,sequence,body)
 
 
 def main():
@@ -65,6 +85,8 @@ def main():
     parser.add_argument('--channel-ip')
     parser.add_argument('--channel-port',type=int)
     parser.add_argument('--bomb-profile',type=Path,help='explicit measured eight-owner baseline; no outcome policy')
+    parser.add_argument('--team-layout',choices=tuple(eight.TEAM_LAYOUTS),default='4v4',help='fixed operator roster; not interactive team change')
+    parser.add_argument('--allow-manner',action='store_true',help='allow measured selector1 with server fixed-team balance guard')
     parser.add_argument('--battle-outcome',action='store_true',help='opt in fixed report-derived eight-member 4v4 result/reset')
     args=parser.parse_args()
     try:
@@ -74,7 +96,7 @@ def main():
         service=EightPlayerService(FixtureProfile(args.profile),args.out,ips,
             bind_ip=args.bind_ip,channel_ip=args.channel_ip,channel_port=args.channel_port,
             bomb_profile=json.loads(args.bomb_profile.read_text()) if args.bomb_profile else None,
-            battle_outcome=args.battle_outcome)
+            battle_outcome=args.battle_outcome,team_layout=args.team_layout,allow_manner=args.allow_manner)
     except ValueError as error:
         parser.error(str(error))
     args.out.mkdir(parents=True,exist_ok=True)

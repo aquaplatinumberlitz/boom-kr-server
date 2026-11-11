@@ -63,6 +63,7 @@ Ready2–3/Start3;4351joins/128copiedgetters. Reuse cached175parser và actual12
 không codec/rowRE mới. Reportderivedlife/rank/economy0/settle8 vẫndesign, không worldauthority.
 [CP211](PROTOCOL.md#eight-portable-battle) giải native8portable:71pins/47aliases/18bundle/767packagedTCP,
 Python-I/relocation/modulepath/sourcehash-config byteproof vàsame8two4v4cycles/resetStart3/4417+112joins/cleanup0.
+[Python source CP213](evidence/eight-player/team-code-delivery.json) được giao riêng trước Rust variants; không cần RE lại wire hoặc chạy lại Python positives.
 [CP213](PROTOCOL.md#eight-team-variants) bổ sung actual8Free1–7 và Manner4–4, mỗi run hai oppositeoutcomes/reset/Start3;
 4344+125 và4357+124gameplay/modejoins,128copiedgetters/run. Selector giữ0/1 qua86/87/180 ở cả8view;
 không cần RE lại175/codec/knownbalancedguard. Fixedoperatorpreset không là interactiveC2Steamchange.

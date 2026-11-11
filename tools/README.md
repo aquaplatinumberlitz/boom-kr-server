@@ -237,7 +237,7 @@ Không Internet/1–7actual/fullinventory/auth; source-IPadmission là operatorp
 
 `server.eight_player_service` thêm `--team-layout 4v4|1v7`; `--allow-manner` chỉ dùng với profile đã có
 `room_team_mode=create81_to_86_87`. Default4v4/Free0; opt-in Manner1 từ UI dùng selector echo qua86/87/180.
-UnbalancedManner104 bịreject trướcroundallocation. Đây là codeWIP đã có localnativeevidence, chưa giao main;
+UnbalancedManner104 bịreject trướcroundallocation. Source CP213 được giao riêng, giữ nguyên bytes runtime: [provenance](../docs/evidence/eight-player/team-code-delivery.json);
 planningPR không chứa code này. Layout là operatorpreset, chưa interactiveC2Steamchange.
 Gói `eight-client-battle` vẫn khóa4v4/Free và từ chối override hai flags; không phát hành client/guardcopy.
 [Nativecases/giới hạn](../docs/PROTOCOL.md#eight-team-variants); thứtự/negativepending chỉ ởPLAN.

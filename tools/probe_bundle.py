@@ -129,9 +129,9 @@ def export_bundle(profile, source_root, out, *, four_bomb_profile=None, eight_se
         launcher = launcher.replace("'server/four_player_service.py'} <= seen",
             "'server/four_player_service.py', 'server/eight_battle_policy.py', 'server/eight_bomb_policy.py', 'eight-bomb-profile.json'} <= seen")
         launcher = launcher.replace("if any(arg == '--profile' or arg.startswith('--profile=') for arg in sys.argv[1:]):",
-            "if any(arg == flag or arg.startswith(flag + '=') for flag in ['--profile', '--bomb-profile', '--battle-outcome'] for arg in sys.argv[1:]):")
+            "if any(arg == flag or arg.startswith(flag + '=') for flag in ['--profile', '--bomb-profile', '--battle-outcome', '--team-layout', '--allow-manner'] for arg in sys.argv[1:]):")
         launcher = launcher.replace("sys.argv[1:1] = ['--profile', str(root / 'profile.json')]",
-            "sys.argv[1:1] = ['--profile', str(root / 'profile.json'), '--bomb-profile', str(root / 'eight-bomb-profile.json'), '--battle-outcome']")
+            "sys.argv[1:1] = ['--profile', str(root / 'profile.json'), '--bomb-profile', str(root / 'eight-bomb-profile.json'), '--battle-outcome', '--team-layout', '4v4']")
     payloads['run.py'] = launcher.encode()
     context = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     manifest = dict(

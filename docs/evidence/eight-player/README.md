@@ -261,3 +261,8 @@ balancebranch/Startreturn7/noactual104/no99/noBattlewire/clocks. Emptyguard khô
 sửa nguyên nhân startup hoặc nonemptybranch; knowncopy hash khác4b, không gán negative này thành4bproof.
 Vẫn dùng script verify_eight_manner_negative.py/hash riêng, không sửa ba failedstartupraw cũ.
 Chủ dự án chuyển sang planning-onlyRust sau khi mọi run seal; code team còn WIP, không stage vào planningPR.
+
+
+## Delivery Python team CP213 — 11/11/2026
+
+[Source pins/baseline/giới hạn](team-code-delivery.json): tám file WIP giữ đúng SHA từ CP213, giao qua PR riêng trước khi Rust dùng làm reference. Kiểm lại 366 server + 13 bundle + 5 preset tests; không chạy lại các ca native đã đủ. CP213 complete/raw/hash không đổi; không nhận Rust Free1v7/Mannernegative hoặc đóng M4 từ delivery. PLAN giữ thứ tự tiếp.

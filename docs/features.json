@@ -1016,7 +1016,8 @@
           "docs/evidence/rust-service/README.md#cp248",
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
-          "docs/evidence/rust-service/README.md#cp250"
+          "docs/evidence/rust-service/README.md#cp250",
+          "docs/evidence/eight-player/team-code-delivery.json"
         ]
       },
       "coverage": {
@@ -1748,7 +1749,8 @@
           "docs/evidence/rust-service/README.md#cp248",
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
-          "docs/evidence/rust-service/README.md#cp250"
+          "docs/evidence/rust-service/README.md#cp250",
+          "docs/evidence/eight-player/team-code-delivery.json"
         ]
       },
       "coverage": {
@@ -3850,7 +3852,8 @@
           "docs/evidence/rust-service/README.md#cp249",
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
-          "docs/evidence/rust-service/README.md#cp250"
+          "docs/evidence/rust-service/README.md#cp250",
+          "docs/evidence/eight-player/team-code-delivery.json"
         ]
       },
       "coverage": {
@@ -4163,7 +4166,8 @@
           "docs/evidence/rust-service/README.md#cp249",
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
-          "docs/evidence/rust-service/README.md#cp250"
+          "docs/evidence/rust-service/README.md#cp250",
+          "docs/evidence/eight-player/team-code-delivery.json"
         ]
       },
       "coverage": {
@@ -5342,7 +5346,8 @@
           "docs/evidence/rust-service/README.md#cp243",
           "docs/evidence/rust-service/account-worker.json",
           "docs/evidence/rust-service/README.md#cp244",
-          "docs/evidence/rust-service/account-idle-rate.json"
+          "docs/evidence/rust-service/account-idle-rate.json",
+          "docs/evidence/eight-player/team-code-delivery.json"
         ]
       },
       "coverage": {
