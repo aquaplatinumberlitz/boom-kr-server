@@ -1,5 +1,5 @@
-//! Opt-in fixed two-profile account lobby, private launcher control only.
-//! Not a general account projection, public password API, room or battle adapter.
+//! Opt-in fixed two-profile account lobby/basic adapter, private launcher only.
+//! Not a general account projection, public password API or dynamic room service.
 use crate::{
     account_bridge::{self, Bridge},
     account_worker::{Client, Worker},
@@ -335,6 +335,17 @@ pub(crate) async fn connection(
                 .find(|a| a.identity == owned.wire_id && a.name == owned.display_name.as_bytes())
                 .filter(|_| owned.profile_version == 1)
                 .ok_or_else(|| io::Error::other("unsupported owned account profile"))?;
+            // The measured room exchanges fixed peer endpoints. Ownership still
+            // comes from the backend session, but this small profile also fences
+            // each owned identity to its configured endpoint before room attach.
+            if endpoints.fixed_room.is_some()
+                && bound.actors.get(&peer).is_none_or(|configured| {
+                    configured.identity != owned.wire_id
+                        || configured.name != owned.display_name.as_bytes()
+                })
+            {
+                return Err(io::Error::other("owned room endpoint profile mismatch"));
+            }
             let mut packets = actor.packets.clone();
             if echo {
                 let Lease::Login(Some(login)) = &lease else {

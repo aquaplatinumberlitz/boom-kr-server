@@ -2164,3 +2164,11 @@ K6c WAN giả lập và K7 scoped đạt bởi Codex manual comparison, không b
 Full game/fullauth/allitems/allmode/Internet ngoài proof; không thêm8client làm dependency.
 AUD062 periodic quaCP212/audit kếCP216; team WIP preserved, không tính là code đã merge/đã đo native.
 CP212 đang giao PR sau kiểm exact head; trạng thái merge tra GitHub/lịch sử.
+
+### VPS Internet network preflight — bổ sung CP258, chưa nativegame
+
+[Contract/limits](../../PROTOCOL.md#vps-internet-preflight), [metadata](vps-internet-preflight.json).
+Nguồnnonsecret `local/research/codex/real-internet-vps-preflight-r1/evidence-index.json` pin54files; parentverify riêng.
+12nonce TCP/UDP quaWG-overSSH/TCP/remoteSNAT vànegativeegress đạt. BareUDP0of12/0NIC; OCIGetVnicIAM404,
+chưacloudACL/nativegame. Liveephemeralnamespace/tunnel/privatekeys khôngpin nhưrunbấtbiến; cleanup/handoff riêng.
+K6cWANgiảlậpkhôngđổi; Internet thật chưa kiểm ởmứcnativegame/ISP/CGNAT.

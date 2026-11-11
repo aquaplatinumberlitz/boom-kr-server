@@ -29,6 +29,16 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP258: account → phòng cố định → hai trận basic/kết quả/reset → Start3 đã chạy trên hai KR thật.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-account-basic), [raw/hash](docs/evidence/rust-service/README.md#cp258).
+Account sở hữu đúng ID/profile/channel/slot; revoke/expiry/disconnect khi bom chờ đưa survivor về phòng, không nổ muộn.
+Manualfresh B dùng process/backend/frontend mới vào lại slot và trận mới; UDP nguyên bản cũ bị native key-drop, currentmovement áp dụng.
+5run/280raw/375exactTCP/cleanup0;84Rust/59account-basicTCP/16lobbyregression. AffectedB revoke/expiry có lỗi phiên/Winefatal,
+**chưa graceful recovery; M5 tổng thể vẫn mở** (generalprofile/nativeDBqueuefault). M6/M7/M8 riêng, không dependency lát cắt này.
+Audit nhóm AUD076; không lịch4CP. Internet thật chưa kiểm; VPS preflight riêng chưa là nativeInternetE2E.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP256: fresh login account trên KR thật và chặn replay request cũ đã đạt; M5 vẫn mở.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-account-fresh-login), [raw/hash](docs/evidence/rust-service/README.md#cp256).
 A mới/process-session-frontend mới vào đúng KRLocal, B giữ phiên; hai request native cũ phát lại bị từ chối, giữ sảnh8s.
@@ -36,7 +46,6 @@ A mới/process-session-frontend mới vào đúng KRLocal, B giữ phiên; hai 
 **Chưa account → phòng → Battle → kết quả/reset → trận tiếp**; đây là ưu tiên kế theo [chỉ đạo](docs/evidence/owner-directives/account-basic-end-to-end.json).
 AUD074 quaCP256; [chỉ đạo mới](docs/evidence/owner-directives/feature-group-audits.json) bỏ lịch4CP, audit khi xong nhóm tính năng. Internet thật chưa kiểm.
 
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP255: ba ca account native âm tính/lifecycle đã đạt, M5 vẫn mở.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-account-native-lifecycle), [raw/hash](docs/evidence/rust-service/README.md#cp255).

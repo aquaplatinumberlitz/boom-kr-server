@@ -36,7 +36,7 @@ class Client:
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--binary',type=Path,required=True);p.add_argument('--config',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--idle-seconds',type=int,default=120,help='Read deadline preserved across room timer polls');p.add_argument('--battle-profile',type=Path,required=True,help='Retained Python profile with pinned outcome fixtures');p.add_argument('--terrain-profile',type=Path,help='Use existing pinned Python bomb_terrain spec for syntheticgeometry-reveal checks');p.add_argument('--bomb-checks',action='store_true',help='Synthetic118/159/158 capacity/fuse/EOF ticket checks');p.add_argument('--pickup-checks',action='store_true',help='Floor124/165 policy negatives and one-winner confirmation, synthetic only');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--binary',type=Path,required=True);p.add_argument('--config',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--account-admin',type=Path,help='Opt-in real backend/private-launcher account-owned fixed-room regression');p.add_argument('--idle-seconds',type=int,default=120,help='Read deadline preserved across room timer polls');p.add_argument('--battle-profile',type=Path,required=True,help='Retained Python profile with pinned outcome fixtures');p.add_argument('--terrain-profile',type=Path,help='Use existing pinned Python bomb_terrain spec for syntheticgeometry-reveal checks');p.add_argument('--bomb-checks',action='store_true',help='Synthetic118/159/158 capacity/fuse/EOF ticket checks');p.add_argument('--pickup-checks',action='store_true',help='Floor124/165 policy negatives and one-winner confirmation, synthetic only');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
     cfg=copy.deepcopy(json.loads(a.config.read_text()));ports=set()
     while len(ports)<3:ports.add(free_port())
     login,wcp,channel=sorted(ports);cfg.update(idle_timeout_seconds=a.idle_seconds,bind='127.0.0.1',allowed_peers=['127.0.0.2','127.0.0.3'],ports=sorted(ports));two=cfg['diagnostic_two_lobby'];two.update(login_port=login,login_candidate_ports=[login,wcp],channel_port=channel,wcp_ports=sorted(ports))
@@ -47,6 +47,10 @@ def main():
     two['fixed_room']['battle']=dict(mode='post_blast_untrapped_drained',packets=battle)
     if a.terrain_profile:two['fixed_room']['terrain']=json.loads(a.terrain_profile.read_text())['bomb_terrain']
     for i,actor in enumerate(two['actors']):actor['peer']=cfg['allowed_peers'][i]
+    account_fixture=None
+    if a.account_admin:
+        from tools.rust_account_fixture import AccountFixture
+        account_fixture=AccountFixture(a.account_admin,a.out,cfg)
     cp=a.out/'config.json';cp.write_text(json.dumps(cfg,indent=2)+'\n');hello=Path(cfg['bootstrap']['path']).read_bytes();header=Path(two['actors'][0]['profile']['own_header']['path']).read_bytes()[:37]
     binary_sha_before=hashlib.sha256(a.binary.read_bytes()).hexdigest();(a.out/'binary-preflight.json').write_text(json.dumps(dict(path=str(a.binary.resolve()),sha256=binary_sha_before),indent=2)+'\n')
     output=(a.out/'process.log').open('x');proc=subprocess.Popen([str(a.binary.resolve()),'--config',str(cp),'--out',str(a.out/'service')],stdout=output,stderr=subprocess.STDOUT,start_new_session=True)
@@ -71,6 +75,9 @@ def main():
             assert proc.poll() is None,'prelisten rejection';time.sleep(.01)
         else:raise AssertionError('startup timeout')
         for role in [0,1]:
+            if account_fixture is not None:
+                clients.append(account_fixture.connect(role,login,channel,header,hello,Client))
+                continue
             s=Client(role,wcp if role==0 else login,header,hello);s.send(1,bytes([0x5e,0x5b])+c.pack_fields([13],[2])+bytes(38));s.receive(4);s.send(9,bytes(8));s.receive(15);s.receive(62);s.send(5,bytes(9));s.receive(7);s.close()
             s=Client(role,channel,header,hello);name=[b'KRLocal',b'KRGuest'][role];s.send(6,bytes(2)+c.pack_fields([7],[2])+_encode_bytes(name)+c.pack_fields([role+1],[4])+bytes(28));s.receive(17);s.send(67,bytes(2))
             for op in [241,91,14,291]:s.receive(op)
@@ -204,6 +211,36 @@ def main():
         _,body=B.receive(110);assert c.read_fields(body,[1,4,1])==[1,34,0]
         note('forfeit_return180_then_departed_IDclear_and_survivor_chief110')
         B.send(127,report(19,0x7fffffff,slot=1));B.quiet();note('EOF_fences_round_and_late_life_reports')
+        if account_fixture is not None:
+            old_channel = account_fixture.channel_requests[0]
+            old_session = account_fixture.sessions[0]
+            account_fixture.command(dict(op='revoke', account_id=account_fixture.players[0]['account_id']))
+            grant = account_fixture.command(dict(op='login', login='alice',
+                password='account-basic-test-password', ttl_seconds=1200))
+            assert grant['token'] != old_session and grant['player'] == account_fixture.players[0]
+            account_fixture.sessions[0] = grant['token']
+            A = account_fixture.connect(0, login, channel, header, hello, Client)
+            clients[0] = A
+            A.receive(91)
+            note('fresh_backend_frontend_channel_same_player_after_departed_owner_revoke')
+            A.send(82,c.pack_fields([1,1,0,1,5],[2,4,2,1,2]));_,body=A.receive(87)
+            assert c.read_fields(body[1:2],[1]) == [0]
+            A.send(585,c.pack_fields([0],[4]));setup(A)
+            _,body=B.receive(106);assert c.read_fields(body[1:5],[4]) == [1]
+            note('fresh_owned_channel_rejoins_only_free_slot_survivor_membership_retained')
+            rogue = Client(0,channel,header,hello)
+            try:
+                rogue.send(6,old_channel)
+                try:assert rogue.sock.recv(1) == b''
+                except ConnectionResetError:pass
+            finally:rogue.close()
+            quiet_pair()
+            note('old_channel_correlator_on_unbound_transport_cannot_erase_fresh_room_owner')
+            restart(12350)
+            quiet_pair()
+            note('fresh_owner_next_round_uses_new_key_no_old_bomb_or_outcome')
+            forwarded(A,B,17,1,0);forwarded(A,B,21,2,0)
+            note('fresh_connection_current_life_cursor_applies_after_old_channel_denial')
         if a.idle_seconds<=30:
             B.sock.settimeout(a.idle_seconds+3);idle_before=time.monotonic();assert B.sock.recv(1)==b'';assert time.monotonic()-idle_before>=a.idle_seconds-1;note('absolute_read_idle_deadline_survives_periodic_room_poll')
         for s in clients:s.close()
@@ -221,7 +258,11 @@ def main():
                 snapshot('cleanup-SIGTERM-deadline');os.killpg(proc.pid,signal.SIGKILL)
                 try:proc.wait(timeout=2)
                 except subprocess.TimeoutExpired:snapshot('SIGKILL-deadline');error=error or 'Owned PID still present after SIGKILL deadline'
+        if account_fixture is not None:
+            try:account_fixture.close()
+            except OSError as exc:error=error or repr(exc)
         output.close();rows=[dict(path=str(p),bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(a.out.rglob('*')) if p.is_file()]
         (a.out/'verification.json').write_text(json.dumps(dict(result='pass' if error is None else 'fail',cases=cases,error=error,raw_files=rows,binary_sha256=binary_sha_before,binary_unchanged=hashlib.sha256(a.binary.read_bytes()).hexdigest()==binary_sha_before,remaining_pid=proc.pid if proc.poll() is None else None,limits='SyntheticpolicyTCP inputs incl95/104envelopes, notnativewiresemantic/acceptance;internalgenerationtestsnotrawreplayproof.'),indent=2)+'\n')
+    if error is not None:raise RuntimeError(error)
     print('PASS',len(cases),'fixedroomTCP/lifecycle/barrier cases; notnativeproof')
 if __name__=='__main__':main()

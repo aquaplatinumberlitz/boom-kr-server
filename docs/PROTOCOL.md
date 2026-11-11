@@ -9378,3 +9378,70 @@ account→phòng cố định→basic→kết quả/reset→trận tiếp, kiể
 Diagnostic Battle M3 và account lobby không tự hợp thành account Battle. Generic projection/M6inventory/M7multiroom/M8restore riêng;
 không đưa productionrestore thành dependency M5. CP220/224 sameprocess recovery blockers giữ nguyên; không SDK/copy retry.
 AUD074 quaCP256 là audit theo lịch cũ cuối cùng; [policy mới](evidence/owner-directives/feature-group-audits.json) từ sauCP256 audit theo nhóm tính năng, không deadline CP260. K6c WAN giả lập; **Internet thật chưa kiểm**.
+
+<a id="rust-account-basic"></a>
+## Account-owned phòng cố định/basic xuyên suốt — CP258, M5 còn mở
+
+[Metadata/hash](evidence/rust-service/account-basic.json), [raw/recipe](evidence/rust-service/README.md#cp258),
+[owner scope](evidence/owner-directives/account-basic-end-to-end.json), [PLAN](PLAN.md#current-order).
+Nguồn **kr_runtime/confirmed** cho các đường đã đo; authority/backendfence/timer vẫn **design/design** như M3/CP254.
+Không RE lại binary/codec hoặc port VN. Reuse CP235–242 room/basic/reset/EOF; CP253–256 account/private launcher/ownership.
+
+`account_admission` opt-in nay ghép `fixed_room` cho đúnghai knownzero profiles ID1/KRLocal vàID2/KRGuest/version1.
+Backend Channel xác nhận quyền rồi chọn ID/name; không dùng arrival/IP làm principal. Riêng roommode còn kiểm identity↔peer
+mapping đã configure để endpoint P2P cố định đúng; unknownpeer/profile/version/roomcapacity lỗi failclosed, khôngfallback diagnostic.
+Native account cấpfrontend32 riêng từbackend64, actual1→137/field36→actual6/67→own291 render→roomSession cùng connection.
+Roomslot/membershipvisit/round/recipient queue và UDPkey dùng cơ chế M3 có nguồn, không thêm wireepoch hoặc sessionkey giả.
+
+Authorize qua boundedworker trước roomcommand, tick và duebatch; sau await recheck Session connection/membership/round,
+không giữ runtime mutex qua DBawait. Command admission renewidle trướcroomvalidation; background/tick/batchinspect không renew.
+DB/queue/expired/revoked failure trả lỗi→drop ownedSession detach/queue cleanup; drop bridge generation cũ không xóa owner mới.
+Đây là check tại transaction boundary, khôngatomicDB+socketwrite: bytes đã ghi trướcrevoke khôngthu hồi được; khôngSLO
+instantrevocation hoặc continuousglobalcredentialclaim. Opaque87 exactbody chỉ accountLobby và Session::in_lobby, khôngroom/Battle.
+
+**Native positive:** realCLI2accounts/session→privateAPIfrontend→actualnativeauth137/own291128/render/CAargv/SQLiteownership,
+room ownslot/ID/name/native106, hostBack/promotion/rejoin/Ready/loadingbarrier; cùngchannels qua haioppositeoutcomes vàStart3.
+Nativepre175 `[1,0]`→`[0,1]`, rank2/1 đảo,175302outer/292inner/1803/refresh/keys12346–48/clock01:53;6ảnh đã xem.
+68raw203,750626716s/1.466TCP/106exactreplies/1.266copiednativegetter checks; sourcefrozen/seal/cleanup0.
+
+**Active host lifecycle:** B đã cùngaccount-ownedBattle, actualB118→159/nativeentity39 trướcfuse6, rồi realadminrevoke,
+naturalbackendabsoluteTTL120s/idleNULL/noDBmutation hoặc ownedCA-BSIGKILL cóPID/startticks/namespace/map/hash guard.
+ExactcurrentBchannelFIN/RST/SQLite-audit đốichiếu; A còncurrentaccount/channel→forfeit175/180→107ID2clear→110chief/Room≥4s,
+không158 muộn hoặcfake19. Mỗi48raw/60exactreply: revoke92,806s/724TCP, expiry148,216s/820TCP, disconnect91,026s/708TCP.
+Mỗi14copiednativegetter checks. Nativechiefgetter saureturn hếtbudget20/unobserved; claim full110+UIchief riêng.
+**B saurevoke/expiry có gameSessionError(2000:0) và Winefatal**: không claimgracefullogout/modalclose/retry hoặcpeerBsurvival.
+
+**Manualfresh B + vòng mới:** reuse revoke/pendingcleanup trênA; dừng đúng WineB, cấp backend mới/privatefrontend mới,
+process B mới cùngID/profile/newchannel→rejoinslot/Ready→AStart→nativeAclock2/Bfreshclock1/currentkey12347, khôngold158/175180.
+ActualoldB UDP frame từ chínhrun/epoch12346 được replay nguyênEthernet ởveth: nativeingress/queue/consumerkey56≠57→key_drop,
+không apply đúngoldpayload; currentfreshBRightinput key57→nativeapply/xprogress. A/newB không FIN/RST trướccompletion,
+SQLite2accounts3sessions/oldBrevoked/newB-Avalid/CAargv/PIDstartticks và2ảnhBattle01:45 kiểm.68raw172,400479137s/89exactreply/
+146copiedgetter checks/cleanup0. Manualfreshprocess là flow mới; không sameprocessretry/automaticresume/matchrestore.
+Keylow8wrap/compromisedcurrentpeer/spoofing không được giải từca này; UDP vẫn legacyP2P khôngstrongaccountauth.
+
+**Kiểm tích hợp:**84workspace/fmt/clippy/lockedbuild,59account-basicTCP/realSQLite/privateAPI gồm oldchannel6 trênroguetransport
+không xóa freshowner, rejoinfree-slot/survivormembership/currentnextkey và wrongslot/duplicate/stalelife/deadowner/bombfences;
+16lobbyregression đạt. Synthetic/body-encoder khôngnativeoracle; proofnativetừngcase riêng ởtrên.
+**Failures:** R1eagerroomprobe27raw36,128s Aillegalinstruction02260DF8/Bbefore67,17frameSHA giốngCP254positive/no servererror,
+khôngcausalSDK/codecclaim. R2preparationGDBPythonSyntaxError/no runtime giữ; R3boundedcontrol cài roomobservers sauown291end
+D30122/separateglobals trênCP254lobbyrecipe→positive, sameRust/clientfiles. Không nhậnđã tìmrootcause. Freshpostrunchecker syntax
+lỗi giữ/newversionfix khôngnative rerun. Tấtcảrun đãseal/cleanup trướcmọi source/configđổi.
+
+Nhóm **account-fixed2-basic-end-to-end** đạt scope trên và auditAUD076 theo policy mới; **M5 tổngthể vẫnpartial/open**:
+generic DB-owned profile projection beyondIDs1/2/version1/name5-7 và nativeDBqueuefault/integration cònthiếu;
+affectedclientrecovery cógiớihạn thực. Inventory/progression/reward M6, multiroom M7, restore/productionops M8 riêng.
+PrivateTMPFS DB/raw/log/exporthash khôngBtrfs/crashdurability/backuprestore. Wine10.0-20260425/copy4b/3netns/virtualLAN/noexternalroute;
+K6cWANgiảlập giữscope. VPS networkpreflight là việc riêng, khôngnativeInternetgame; **Internet thật chưa kiểm**.
+
+<a id="vps-internet-preflight"></a>
+## VPS Internet bổ sung — network preflight, chưa nativegame
+
+[Metadata/hash/limits](evidence/peer-endpoints/vps-internet-preflight.json), [PLAN](PLAN.md#current-order).
+Owner cho agent riêng setup VPSOracleARM64/A1Flex/Ubuntu24.04.4. ClientKRx86/Wine vẫnởhostlocal, khônghaihostnative.
+Networknonce12/12TCP-UDP quaWG **đóng gói hoàn toàn SSH/TCP22** trênInternet thật; PCAP trước/sauLinuxSNAT khớp
+payloadSHA,3negativeegressENETUNREACH/no default-route; firewall/routes hostVPS nhưbaseline, Docker giữ.
+WGMTU1280/veth1500/underlayNIC9000, khôngnetemlatency/jitter/loss/reorder/bandwidthcap; TCPcarrier córeliability/HOL khácUDP.
+Topology/config/cleanup/keyexclusions ởmetadata/HANDOFFlocal, chỉnonceports41971/41972; chưa gameports/nativeKRrun.
+BareUDP51837 gửi12/lượt2window nhưng0reply/0packettớiNIC; upstreamcauseunknown, khôngkếtluậnOCIduynhất.
+InstanceprincipalGetVnic404/IAMthiếu, chưađọcNSG/SecurityList hoặcchỉnhcloudACL; ownerđangnhậnIAMbootstrapinstructions.
+Không dùngnetworkaccept/nonce/SSH làmnativegameproof. K6cWANgiảlậpgiữscope, **Internet thật chưa kiểm** ởmứcgame/ISP/CGNAT.

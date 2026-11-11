@@ -1,0 +1,34 @@
+{
+  "schema": "kre-real-internet-vps-preflight-v1",
+  "recorded_utc": "2026-11-11T08:53:47.259745+00:00",
+  "canonical": "docs/PROTOCOL.md#vps-internet-preflight",
+  "plan": "docs/PLAN.md#current-order",
+  "source": "design",
+  "status": "design",
+  "authorization": "Owner explicitly authorized additionalVPS setup and subagent for thisVPSsubtask; does not override soloM5native/sourceworkflow.",
+  "environment": "OracleUbuntu24.04.4/A1FlexARM64/ap-osaka-1, ownednamespace routingonly; nativeKRx86 remainslocalWine.",
+  "raw_root": "local/research/codex/real-internet-vps-preflight-r1",
+  "evidence_index": {
+    "path": "local/research/codex/real-internet-vps-preflight-r1/evidence-index.json",
+    "sha256": "e3101eb075c8114220cb200eedcf025889799d9fc65e171c31fd8ba26fce8592",
+    "count": 54
+  },
+  "verified": "Parentverified54explicitnonsecretfilepins;12of12controllednonceTCP-UDP/WG-overSSH-TCP22/remoteLinuxSNAT before-afterPCAP exactpayloadSHA;3negativeegress ENETUNREACH, hostfirewall-routes baselineunchanged/Dockerpreserved.",
+  "topology": "Localowneduser-netnsWG10.254.217.2/30 MTU1280→WGdatagramsfullyencapsulatedSSH-TCP22 realInternet→VPSrouterkrwanr1WG10.254.217.1/30→LinuxSNAT10.254.218.1/30→isolatednonceendpointkrwanend1/10.254.218.2/32 TCP41971 UDP41972. No default route inclientendpoint; forwarddefaultDROP scopedstateful; privatecontrolsnotpublicgame.",
+  "configured_impairments": "No configuredlatency/jitter/loss/reordering/bandwidthcap; WGMTU1280/veth1500/underlayNIC9000; IPv4only/TCPcarrierreliability-HOLlimits.",
+  "raw_udp": {
+    "port": 51837,
+    "probe_windows": 2,
+    "sent": 12,
+    "replies": 0,
+    "remote_NIC_packets": 0,
+    "meaning": "BareUDPfailedintwowindows,upstreamcauseunknown;notproofOCIalone"
+  },
+  "cloud_access": "Instanceprincipal signer works butGetVnic404NotAuthorizedOrNotFound; noAPIkeyconfig, cannotdiscoverNSG/SecurityListorchangeOCIACL yet. User nowrequests IAMbootstrap instructions; no cloudACLmutationsclaimed.",
+  "limits": [
+    "Networknoncepreflight only; no nativeKR/E2E/gameacceptance. FullySSH/TCPencapsulatedUDP is not bareInternetUDP/ISP-CGNAT/NATdiscovery proof.",
+    "ARMVPSnotnativeKRx86host; futureWine usesseparatetasklocalnamespace/prefix, no existingM5sharedclient mutations.",
+    "Liveephemeraltunnel/helpers are readiness notsealednativerun; privatekeys/livefiles excludedfromnonsecretevidence index. Explicitcleanup recipesretained.",
+    "K6c WAN giả lập unchanged, Internet thật chưa kiểm atnativegamelevel and notdependencyM5/K7."
+  ]
+}
