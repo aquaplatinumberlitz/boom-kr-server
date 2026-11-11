@@ -3,6 +3,8 @@
 
 #![forbid(unsafe_code)]
 
+pub mod kr00967;
+
 use std::{error::Error, fmt};
 
 pub const HEADER_LEN: usize = 37;

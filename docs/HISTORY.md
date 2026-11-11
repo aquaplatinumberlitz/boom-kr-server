@@ -5,6 +5,64 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP263: R1c đã tách player identity khỏi luật cấp slot và dùng chung template 106.**
+[Contract/giới hạn](PROTOCOL.md#rust-r1c-player-slots), [bằng chứng](evidence/rust-service/r1c-player-slots.json).
+Mặc định legacy giữ byte; `first_vacant` cấp slot độc lập, người tạo là host. Runtime không chọn fixture theo alias identity.
+94 test Rust, 305 ca TCP và 3.189 frame phòng cũ khớp baseline CP262; 30 fixture 106 không có chênh lệch ngoài trường đã biết.
+Ca TCP mới kiểm player 2 tạo phòng, player 1 vào slot 1, chuyển host/vào lại và năm guard trước bind.
+[PR337](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/337) đã merge R1b; tiếp R1d theo PLAN.
+Chưa chứng nhận native binary mới, chưa general profile/full M5 hoặc shared-NAT; **N1 vẫn mở** điều kiện uplink.
+
+**CP262: R1b đã chuyển luật phòng sang chính sách có tên, giữ byte của ba profile hiện có.**
+[Contract/giới hạn](PROTOCOL.md#rust-r1b-policies), [bằng chứng](evidence/rust-service/r1b-policies.json).
+`ResultPolicy`, `DeparturePolicy`, `BombPolicy`, `LifePolicy`, `TeamPolicy` thay các cờ nội bộ; fixture `rank` chỉ cấp bytes.
+90 test Rust/fmt/clippy/locked build,298ca TCP mỗi binary và3.189frame phòng khớp byte/hash với baseline.
+JSON cũ giữ nguyên; chưa đổi identity/slot/registry/transport của R1c–g hoặc nghiệm thu native lại binary mới.
+Tiếp R1c; **N1 vẫn mở** vì chưa xác nhận môi trường di động/ISP-CGNAT, R1f vẫn phải sửa ca chung NAT.
+
+**CP261: hai KR thật đã qua account → phòng/basic → hai kết quả đối nghịch/reset → Start3 trên đường Internet đã đo.**
+[Contract/giới hạn](PROTOCOL.md#rust-internet-observation), [bằng chứng](evidence/rust-service/internet-observation.json).
+Native login field51 điều khiển ngưỡng chờ channel: fixture0 ghi đè cache thành0 gây timeout; control30000 vào sảnh ở cảhai.
+Control là policy server được khai rõ, clientcopy4b giữ nguyên. Runtime ARM/source giữ CP260; frontendTTL120 là config đã hỗ trợ.
+752TCP/106reply/91raw,78nativeUDP ingress/77helper-apply/78join các capture,2.286copiedgetters,cleanupđạt.
+Cổng A tự báo99 khác cổng sau NAT; B thực gửi về nguồn quan sát được, không chỉ cổng153. Ca chungNAT: A giữ sảnh8s,
+B đúng frontend/session nhưng bị binding theoIP/metadata từ chối; R1f còn phải sửa.
+**N1 chưa đóng:** chưa có nguồn xác nhận uplink di động/CGNAT của ISP như môi trường tối thiểu trong PLAN; không suy từ IP.
+Kết quả chỉ chứng nhận đường đã đo; chưa chứng nhận mọi NAT/ISP hoặc sharedNATplay. K6c/K7scopegiữ; detailsVPS chỉlocal.
+
+**CP260: tiền kiểm Internet đã thông; native account qua NAT nhận auth thành công, N1 vẫn mở.**
+[Contract và giới hạn](PROTOCOL.md#rust-controlled-network), [bằng chứng](evidence/rust-service/controlled-network.json).
+Rust có chế độ mạng controlled với allowlist và mapping metadata login tường minh; quyền account/session vẫn theo transport thật.
+90 test Rust, hai bộ 59 ca account TCP, 9 guard mạng và 5 guard metadata đạt. Hai KR/Wine nhận auth result0 qua mạng thật,
+nhưng lỗi chờ channel trước own291/phòng. R7 xác nhận modal timeout/đóng client xảy ra trước HTTP JSON rỗng;
+lỗi HTTP là nhánh phát sinh sau đó, chưa phải nguyên nhân mất channel. Guard cũ cũng chưa giúp vào sảnh.
+Chưa có 99/153, UDP gameplay, hai kết quả/reset hoặc ca chung NAT; chưa chọn direct/học endpoint/relay.
+Thông tin hạ tầng/raw giữ riêng trong `local/`. **Internet thật chưa kiểm ở mức game KR**; K6c/K7 WAN giả lập giữ nguyên.
+
+**CP259: đã đồng bộ main PR329/PR330 và chuyển ưu tiên sang N1 theo chỉ đạo mới.**
+[Quyết định/giữ WIP](evidence/owner-directives/pr329-integration-order.json), [kiểm sau gộp](evidence/rust-service/pr329-integration.json).
+Fmt, clippy, 86 test Rust, locked build và 59 ca account TCP đạt; 143 frame phòng khớp hash với CP258.
+Bằng chứng native CP258 vẫn gắn binary đã đo, chưa tự chứng nhận binary sau `RoomRules`.
+WIP projector được giữ trong snapshot/stash, chưa chạy native hoặc merge; thứ tự ở [PLAN](PLAN.md#current-order).
+
+
+### Mốc trước — phạm vi CP258 vẫn giữ nguyên
+
+
+**CP258: account → phòng cố định → hai trận basic/kết quả/reset → Start3 đã chạy trên hai KR thật.**
+[Contract/giới hạn](PROTOCOL.md#rust-account-basic), [raw/hash](evidence/rust-service/README.md#cp258).
+Account sở hữu đúng ID/profile/channel/slot; revoke/expiry/disconnect khi bom chờ đưa survivor về phòng, không nổ muộn.
+Manualfresh B dùng process/backend/frontend mới vào lại slot và trận mới; UDP nguyên bản cũ bị native key-drop, currentmovement áp dụng.
+5run/280raw/375exactTCP/cleanup0;84Rust/59account-basicTCP/16lobbyregression. AffectedB revoke/expiry có lỗi phiên/Winefatal,
+**chưa graceful recovery; M5 tổng thể vẫn mở** (generalprofile/nativeDBqueuefault). M6/M7/M8 riêng, không dependency lát cắt này.
+Audit nhóm AUD076; không lịch4CP. Internet thật chưa kiểm; VPS preflight riêng chưa là nativeInternetE2E.
+
+### Các mốc trước
+
+Đã chuyển sang [docs/HISTORY.md](HISTORY.md). Hiện trạng và việc kế tiếp ở [Bảng điều hành](PLAN.md#dashboard).
+
+
+
 **CP256: fresh login account trên KR thật và chặn replay request cũ đã đạt; M5 vẫn mở.**
 [Contract/giới hạn](PROTOCOL.md#rust-account-fresh-login), [raw/hash](evidence/rust-service/README.md#cp256).
 A mới/process-session-frontend mới vào đúng KRLocal, B giữ phiên; hai request native cũ phát lại bị từ chối, giữ sảnh8s.

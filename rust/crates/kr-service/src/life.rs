@@ -1,6 +1,7 @@
 //! Report-derived Battle compatibility policy from CP023/102/103/188/189.
 //! A forward client tick is not authenticated life, location, or a wire epoch.
-use kr_wire::{Width, read_uint, write_uint};
+#[cfg(test)]
+use kr_wire::{Width, write_uint};
 use std::{
     collections::{BTreeMap, BTreeSet},
     io,
@@ -14,64 +15,16 @@ pub(crate) struct Report {
     pub digest: String,
     pub forward: Option<Vec<u8>>,
 }
-fn uint(b: &[u8], w: Width) -> io::Result<u64> {
-    read_uint(b, w).map_err(io::Error::other)
-}
+
 impl Report {
     pub fn parse(body: &[u8]) -> io::Result<Self> {
-        if !(14..=4096).contains(&body.len()) {
-            return Err(io::Error::other("report127 bounded prefix"));
-        }
-        let subtype = uint(&body[..1], Width::U8)? as u8;
-        let forward = if matches!(subtype, 17 | 19) {
-            let size = if subtype == 17 { 14usize } else { 11 };
-            if body.len() != 18 + size || uint(&body[14..18], Width::U32)? != size as u64 {
-                return Err(io::Error::other("report127 supported blob size"));
-            }
-            let mut raw = Vec::new();
-            let mut offset = 18;
-            while offset < body.len() {
-                let (width, n) = match body.len() - offset {
-                    4..=usize::MAX => (Width::U32, 4),
-                    2..=3 => (Width::U16, 2),
-                    _ => (Width::U8, 1),
-                };
-                raw.extend_from_slice(&uint(&body[offset..offset + n], width)?.to_le_bytes()[..n]);
-                offset += n;
-            }
-            let mut envelope = vec![24];
-            envelope.extend_from_slice(&((size - 5) as u32).to_le_bytes());
-            envelope.push(0);
-            if raw[..6] != envelope {
-                return Err(io::Error::other("report127 supported raw envelope"));
-            }
-            let mut out = body[..6].to_vec();
-            if subtype == 17 {
-                out.extend(
-                    write_uint(
-                        u32::from_le_bytes(raw[10..14].try_into().expect("trap size")) as u64,
-                        Width::U32,
-                    )
-                    .map_err(io::Error::other)?,
-                );
-            } else {
-                out.extend_from_slice(&body[14..]);
-            }
-            Some(out)
-        } else if subtype == 21 {
-            if body.len() != 14 {
-                return Err(io::Error::other("report21 measured prefix size"));
-            }
-            Some(body[..6].to_vec())
-        } else {
-            None
-        };
+        let parsed = kr_wire::kr00967::report127(body)?;
         Ok(Self {
-            subtype,
-            slot: uint(&body[1..2], Width::U8)? as u8,
-            tick: uint(&body[6..10], Width::U32)? as u32,
+            subtype: parsed.subtype,
+            slot: parsed.slot,
+            tick: parsed.tick,
             digest: crate::sha256_hex(body),
-            forward,
+            forward: parsed.forward,
         })
     }
 }

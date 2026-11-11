@@ -1,7 +1,7 @@
 //! Bounded fixture allocator. CP028/037/044/171/174/188–189 reference policies.
 //! No general KR authority, chain, terrain, life, inventory, or result semantics.
 use crate::room::{Membership, wire_key};
-use kr_wire::{Width, read_uint, write_uint};
+use kr_wire::{Width, read_uint};
 use std::{
     collections::{BTreeMap, BTreeSet},
     io,
@@ -69,30 +69,14 @@ impl Request {
         }
     }
     pub fn spawn159(&self, id: u16) -> io::Result<Vec<u8>> {
-        let fields = [
-            (0, Width::U8),
-            (u64::from(self.owner), Width::U8),
-            (0, Width::U16),
-            (u64::from(self.serial), Width::U32),
-            (0, Width::U32),
-            (0, Width::U32),
-            (u64::from(self.row), Width::U8),
-            (u64::from(self.column), Width::U8),
-            (u64::from(self.power), Width::U8),
-            (1, Width::U32),
-            (0, Width::U8),
-            (u64::from(id), Width::U16),
-            (0, Width::U16),
-            (1, Width::U8),
-            (0, Width::U64),
-            (0, Width::U8),
-            (0, Width::U8),
-        ];
-        let mut out = Vec::with_capacity(39);
-        for (v, w) in fields {
-            out.extend(write_uint(v, w).map_err(io::Error::other)?);
-        }
-        Ok(out)
+        kr_wire::kr00967::spawn159(
+            self.owner,
+            self.serial,
+            self.row,
+            self.column,
+            self.power,
+            id,
+        )
     }
 }
 #[derive(Clone, Debug)]
@@ -253,20 +237,7 @@ impl Ledger {
         true
     }
 }
-pub(crate) fn explode158(id: u16) -> io::Result<Vec<u8>> {
-    let mut out = Vec::with_capacity(13);
-    for (v, w) in [
-        (1, Width::U8),
-        (u64::from(id), Width::U16),
-        (0, Width::U8),
-        (2, Width::U32),
-        (u64::from(u32::MAX), Width::U32),
-        (255, Width::U8),
-    ] {
-        out.extend(write_uint(v, w).map_err(io::Error::other)?);
-    }
-    Ok(out)
-}
+pub(crate) use kr_wire::kr00967::explode158;
 #[cfg(test)]
 mod tests {
     use super::*;

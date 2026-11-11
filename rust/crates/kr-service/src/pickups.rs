@@ -1,6 +1,8 @@
 //! Floor-only fixture policy, CP030/031/049/055/063. Not native world authority.
 //! List2 stays unavailable until terrain/reveal is ported; no inventory/reward.
-use kr_wire::{Width, read_uint, write_uint};
+#[cfg(test)]
+use kr_wire::write_uint;
+use kr_wire::{Width, read_uint};
 use serde::Serialize;
 use std::{
     collections::{BTreeMap, BTreeSet},
@@ -135,20 +137,14 @@ impl Request {
         self.item.kind
     }
     pub fn confirmation(&self) -> io::Result<Vec<u8>> {
-        let mut result = Vec::with_capacity(12);
-        for (v, w) in [
-            (1, Width::U8),
-            (u64::from(self.context), Width::U8),
-            (u64::from(self.slot), Width::U8),
-            (u64::from(self.item.row), Width::U8),
-            (u64::from(self.item.column), Width::U8),
-            (u64::from(self.item.index), Width::U32),
-            (u64::from(self.item.kind), Width::U16),
-            (0, Width::U8),
-        ] {
-            result.extend(write_uint(v, w).map_err(io::Error::other)?);
-        }
-        Ok(result)
+        kr_wire::kr00967::pickup165(
+            self.context,
+            self.slot,
+            self.item.row,
+            self.item.column,
+            self.item.index,
+            self.item.kind,
+        )
     }
     pub fn decision(&self, reason: &'static str) -> Decision {
         Decision {

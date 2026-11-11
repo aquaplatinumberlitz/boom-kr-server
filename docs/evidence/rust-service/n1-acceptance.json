@@ -1,0 +1,63 @@
+{
+  "schema": "kre-rust-n1-acceptance-v1",
+  "checkpoint": "CP264",
+  "recorded_utc": "2026-11-11T20:38:50.667042+00:00",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "gate": "RUST-N1",
+  "gate_state": "passed",
+  "scope": "Internet thật: ít nhất một phía tới được theo địa chỉ server báo; đường CP261 đã đo.",
+  "owner_directive": "docs/evidence/owner-directives/n1-uplink-and-result.json",
+  "canonical": "docs/PROTOCOL.md#rust-n1-acceptance",
+  "plan": "docs/PLAN.md#rust-n1-result",
+  "runtime_evidence": "docs/evidence/rust-service/internet-observation.json",
+  "runtime_checkpoint": "CP261",
+  "new_runtime": false,
+  "environment_provenance": "Chủ dự án xác nhận uplink đợt N1 là hotspot điện thoại 4G. Không suy kiểu NAT/CGNAT từ địa chỉ.",
+  "artifacts": {
+    "copy4b": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "arm_service": "3f36acafef5cd7a467cfcda9d9a11cad9fb9e81451e4ed6bb484f7d737f3fdda",
+    "arm_admin": "74d7079cd445903fa87db8474781e9d1033373265cb6ef027f777f112ee0b241"
+  },
+  "acceptance": [
+    {
+      "criterion": "Hai KR/Wine account/profile/phòng/basic hai kết quả đối nghịch/reset/trận tiếp",
+      "result": "pass",
+      "evidence": "local/research/codex/n1-native-wait-control-r10/life-verification.json"
+    },
+    {
+      "criterion": "Đối chiếu packet99 với UDP sau NAT và reply về observed-source thay vì chỉ153",
+      "result": "pass",
+      "evidence": "local/research/codex/n1-native-wait-control-r10/udp-verification.json"
+    },
+    {
+      "criterion": "Identity/account ownership/native consumer/UI và UDP ingress/apply",
+      "result": "pass",
+      "evidence": "local/research/codex/n1-native-wait-control-r10/ownership-verification.json"
+    },
+    {
+      "criterion": "Ca chung NAT được ghi nhận",
+      "result": "pass_negative_recorded",
+      "evidence": "local/research/codex/n1-native-shared-r11/shared-verification.json"
+    },
+    {
+      "criterion": "Uplink thực tế và phạm vi nghiệm thu",
+      "result": "owner_attested_scoped",
+      "evidence": "docs/evidence/owner-directives/n1-uplink-and-result.json"
+    }
+  ],
+  "raw_reverification": {
+    "verified": 1124,
+    "unavailable": 0,
+    "result": "pass",
+    "path": "local/research/codex/cp264-n1-cp261-verify.txt"
+  },
+  "limits": [
+    "Giữ nguyên CP261 record/raw/binary và kết quả lúc đó; quyết định phạm vi/đóng ghi ở CP264, không sửa gate_state cũ.",
+    "N1b cả hai phía NAT đổi cổng còn mở, làm sau R1e/trước R1f theo dashboard, tối đa hai native runs.",
+    "Ca chung NAT là negative binding limitation, cần R1f; không chứng nhận shared-NAT gameplay.",
+    "Không chứng nhận mọi NAT/ISP/CGNAT thực tế hoặc topology; không nâng fullM5/production/50user.",
+    "Thông tin VPS/OCI/topology thực chỉ local; metadata mới không sao chép định danh/cấu hình hạ tầng.",
+    "K6c/K7 WAN giả lập giữ scope, không sửa lịch sử hoặc tạo dependency Internet mới."
+  ]
+}

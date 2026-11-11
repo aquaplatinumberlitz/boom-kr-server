@@ -9691,3 +9691,55 @@ Listener/launcher vẫn giới hạn các profile diagnostic đã đo và bridge
 không mặc định scalar cho inventory/accessory hoặc chứng nhận profile tổng quát M5. Transport binding và nhiều session chung NAT
 vẫn là R1f. N1 uplink di động/ISP-CGNAT chưa xác nhận; không đóng gate N1 hoặc sửa K6c/K7. Binary mới chưa được nghiệm thu native;
 cuối R1 vẫn cần native 2/4/8/account. Sửa tên helper ghi nhầm `admit` ở mô tả R1b thành đúng `from_config`; record/audit/raw CP262 giữ nguyên.
+
+<a id="rust-r1d-wire-builders"></a>
+## R1d — header chuẩn và builder theo opcode — CP264
+
+Nguồn **design/design**, kiểm source/unit/TCP; [metadata/hash](evidence/rust-service/r1d-wire-builders.json),
+[dashboard/thứ tự](PLAN.md#dashboard). Dùng lại CP263 layout106/slot, CP202/210/213 rank/return, cùng pure serializers
+của bombs/pickups/life/room_wire hiện có; không mở RE consumer mới hoặc port wire VN. Survey50 frame có cùng header
+sau bỏ opcode/length mà encoder vốn ghi lại; helper Rust tái tạo đủ50 frame với body do Python decoder cấp.
+Đây là input fixture equivalence, không oracle native mới.
+
+`kr-wire::kr00967` giữ một header đã pin cho profile mode2/selector3 và các body builder:
+room81/82/86/87/91/106/107/110/121/153/585, bomb158/159, pickup165, report127→170, rank175/return180.
+Builder chỉ nhận field/template; không nhận account/session/room model/timer hoặc quyết định authority.
+Profile106 zero/optional limits giữ nguyên; byte opaque vẫn từ template có pin, không tự gán nghĩa.
+Service giữ policy admission, identity/slot/team, winner/settle, queue/bomb/life/generation fences, lựa chọn endpoint và kết quả.
+`room_wire` chỉ còn adapter membership→field, `four_results` giữ winner; helper field-byte dùng ở wire crate.
+
+Alias JSON cũ được chuyển một lần thành `Template` có tên tại `room_packets::normalize_legacy`. Runtime không lookup
+fixture alias hay mượn header từ `start`/`player_A`; packet mới có opcode tường minh, header chuẩn và body do builder cấp.
+Các body opaque dùng lại giữ trong enum template; việc nạp JSON vẫn kiểm hash/opcode/size và không đổi input format.
+Header không thuộc profile bị từ chối trước bind, kể cả mọi fixture cùng một header lạ với hash hợp lệ.
+Log alias để tra evidence giữ nguyên; nó không chọn packet bytes. Chưa full grammar/modes khác hoặc general profile.
+
+96 test Rust/fmt/clippy/locked build và14 suite/306 ca TCP đạt; source/binary/input cố định, cleanup từng suite đạt.
+298 ca cũ có3169 frame đọc được khớp identity/normalized visit/alias/opcode/sequence/size/fullSHA với CP263;
+ca first-vacant thêm24 frame khớp. Sáu pre-bind guards +hai slot lifecycle là8 ca trong suite mới.
+Phạm vi nhỏ hơn3189 báo trước do dùng actual receiver boundary cho cả eight-manner và manner-negative ở lần so này:
+6 và14 notification đóng cuối của baseline chưa được driver đọc. Giữ nguyên raw cả hai bên, không loại theo opcode/alias.
+Ca eighth EOF và visitor negative vẫn được assert; không claim unread tail byte-identical.
+
+WIP foundation ban đầu truyền slot đã encode vào builder110 dẫn đến encode hai lần; run lỗi/raw đã giữ, cleanup hoàn tất.
+Sửa adapter decode slot trước builder, thêm test đúng điểm nối,43 TCP/56 frame đối chứng đạt trước khi mở chuyển toàn bộ.
+Bộ đầy đủ hiện đạt trên source sửa; không sửa raw hoặc record mốc cũ để đạt checker. Main PR339–341 đã gộp sau seal run,
+Rust source không đổi, kiểm sau gộp đạt; CI dùng toàn module catalog test đã được sửa ở main.
+Binary mới chưa native, không thừa kế CP261 hoặc các gate cũ. R1e/N1b/R1f/R1g và native cuối R1 còn theo dashboard.
+
+<a id="rust-n1-acceptance"></a>
+## N1 — quyết định phạm vi Internet thật — CP264
+
+Nguồn **kr_runtime/confirmed** trong đúng đường đã đo CP261 và **owner directive** cho uplink/phạm vi chấp nhận;
+[quyết định và đối chiếu acceptance](evidence/rust-service/n1-acceptance.json), [PLAN](PLAN.md#rust-n1-result).
+Chủ dự án xác nhận uplink đợt đo là hotspot điện thoại4G; không suy NAT class/CGNAT từ IP hoặc nhãn agent cũ.
+CP261 đã đo hai KR/Wine account→profile→phòng/basic→hai kết quả đối nghịch/reset→trận tiếp, native UDP hai chiều,
+99 khác cổng sau NAT, remote trả về observed-source; shared-NAT negative ghi rõ binding limit. Đối chiếu lại1124 pin
+CP261 không thiếu/sai hash. Run, client4b, binary ARMCP260 và fixtures/TTL của CP261 giữ nguyên, không chạy native mới.
+
+**RUST-N1 passed đúng phạm vi: ít nhất một phía tới được theo địa chỉ server báo.** Đây là quyết định mới theo
+[owner source](evidence/owner-directives/n1-uplink-and-result.json), thay trạng thái open do thiếu fact ởCP261–263;
+record/audit/raw và metadata `internet-observation.json` của mốc cũ bất biến, vẫn mô tả lúc đó.
+Không chứng nhận cả hai phía NAT đổi cổng: N1b mở riêng, tối đa hai native runs sau R1e/trước R1f theo PLAN.
+Không chứng nhận shared-NAT gameplay, mọi NAT/ISP/CGNAT/IPv6/fullM5/production; shared-NAT cần R1f.
+K6c/K7 WAN giả lập giữ scope đã đạt, không đưa Internet thành dependency gate cũ. Hạ tầng/topology thực chỉ local.

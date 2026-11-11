@@ -1,0 +1,368 @@
+{
+  "id": "CP264",
+  "previous": "CP263",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T20:42:31.324483+00:00",
+  "context_commit": "c8e64bdd339072f34216a5f3dab3f9220efcc736",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/R1d: pin canonicalheader/pure opcodebodybuilders, replace runtime fixturealias/donor dependence while preserving wire. Recordowner-approved scopedN1acceptance usingCP261nativeevidence and4Gattestation.",
+  "scope": "R1d source/TCP refactor+scopedN1decision. No newnative run/fieldhypothesis, no fullR1/M5/production claim. PreserveCP261nativebinary/raw and newdashboard order.",
+  "artifacts": [
+    {
+      "name": "kr-service",
+      "sha256": "691a39e344a41f4fa97e288362e12ad31f0a1728545953e732edc88c55f4a3cd"
+    },
+    {
+      "name": "kr-admin",
+      "sha256": "1a9ed22b761a9940db0e130c82903d26bbf54810040f0ec930a5c8c796879672"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md#rust-r1d-wire-builders",
+    "docs/PROTOCOL.md#rust-n1-acceptance",
+    "kr-wire::kr00967 HEADER/room/player/battle; room_packets normalizelegacy→typedTemplate→explicitopcode/header",
+    "CP263baseline→306TCP/3169consumedoldroomframes+24firstvacant/50retainedheaderframe",
+    "Owner4G/scopedN1directive +CP261native2outcomes/reset/Start3/UDP/sharedNATnegative,1124pinsreverified",
+    "MainPR339-341 merged aftersealrun; finalR1native/N1b/sharedNAT/profilelimits retained"
+  ],
+  "findings": [
+    {
+      "summary": "Measuredpurebuildersmovedtowirecrate; roomruntime uses canonicalheader/opcode/typedtemplates, legacyJSONaliasnormalizedonce. Servicepolicy/session/fences unchanged.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1d-wire-builders",
+      "evidence": [
+        "R1DN1CP264-01231",
+        "R1DN1CP264-01232",
+        "R1DN1CP264-01240"
+      ],
+      "limits": "Source/unit/TCP tổng hợp của R1d, không native candidate mới; cuối R1 còn native2/4/8/account.; JSON alias cũ chỉ là input compatibility ở admission; body opaque còn dùng template có pin. Không dựng wire của field/optional/mode chưa hiểu.; Header chuẩn chỉ profile KR00967 mode2/selector3 đã đo. Header lạ bị từ chối trước bind; không full grammar/mode/prefix.; Packet field/body builder không quyết định account, identity, team, timer, kết quả, reward hoặc endpoint; policy/ownership ở service giữ nguyên.; 3169 frame cũ và24 first-vacant được so theo boundary receiver; unread cleanup tail giữ raw, không claim bằng toàn log.; N1 được chấp nhận riêng theo owner + CP261 cho ít nhất một phía tới được; N1b hai phía NAT đổi cổng chưa kiểm. Không suy mọi NAT/ISP/CGNAT/IPv6, fullM5 hoặc production."
+    },
+    {
+      "summary": "96Rust/fmt/clippy/lockedbuild and306TCP pass;3169consumedoldroomframes+24firstvacant byteequalCP263, source/inputfrozen/cleanup.50retainedfullframesheaderinputequivalence, notnative.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1d-wire-builders",
+      "evidence": [
+        "R1DN1CP264-00152",
+        "R1DN1CP264-01400",
+        "R1DN1CP264-01401",
+        "R1DN1CP264-00146"
+      ],
+      "limits": "Source/unit/TCP tổng hợp của R1d, không native candidate mới; cuối R1 còn native2/4/8/account.; JSON alias cũ chỉ là input compatibility ở admission; body opaque còn dùng template có pin. Không dựng wire của field/optional/mode chưa hiểu.; Header chuẩn chỉ profile KR00967 mode2/selector3 đã đo. Header lạ bị từ chối trước bind; không full grammar/mode/prefix.; Packet field/body builder không quyết định account, identity, team, timer, kết quả, reward hoặc endpoint; policy/ownership ở service giữ nguyên.; 3169 frame cũ và24 first-vacant được so theo boundary receiver; unread cleanup tail giữ raw, không claim bằng toàn log.; N1 được chấp nhận riêng theo owner + CP261 cho ít nhất một phía tới được; N1b hai phía NAT đổi cổng chưa kiểm. Không suy mọi NAT/ISP/CGNAT/IPv6, fullM5 hoặc production."
+    },
+    {
+      "summary": "WIP slot110 doubleencodingfixedwithseamtest; failedraw/controlretained. Newheadernegativeprebind andconsistentreceiverboundaryscope retainunreadtailswithoutarbitrarydrop.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1d-wire-builders",
+      "evidence": [
+        "R1DN1CP264-01406",
+        "R1DN1CP264-01472",
+        "R1DN1CP264-01195",
+        "R1DN1CP264-01401"
+      ],
+      "limits": "Source/unit/TCP tổng hợp của R1d, không native candidate mới; cuối R1 còn native2/4/8/account.; JSON alias cũ chỉ là input compatibility ở admission; body opaque còn dùng template có pin. Không dựng wire của field/optional/mode chưa hiểu.; Header chuẩn chỉ profile KR00967 mode2/selector3 đã đo. Header lạ bị từ chối trước bind; không full grammar/mode/prefix.; Packet field/body builder không quyết định account, identity, team, timer, kết quả, reward hoặc endpoint; policy/ownership ở service giữ nguyên.; 3169 frame cũ và24 first-vacant được so theo boundary receiver; unread cleanup tail giữ raw, không claim bằng toàn log.; N1 được chấp nhận riêng theo owner + CP261 cho ít nhất một phía tới được; N1b hai phía NAT đổi cổng chưa kiểm. Không suy mọi NAT/ISP/CGNAT/IPv6, fullM5 hoặc production."
+    },
+    {
+      "summary": "CP261native2KRaccount/profile/room/basic2outcomes/reset/Start3/actualUDPandobservedsourcebehavior rechecked;1124pins verified. No newrun or alterednativebinary.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-n1-acceptance",
+      "evidence": [
+        "R1DN1CP264-00036",
+        "R1DN1CP264-00045",
+        "R1DN1CP264-00050"
+      ],
+      "limits": "Source/unit/TCP tổng hợp của R1d, không native candidate mới; cuối R1 còn native2/4/8/account.; JSON alias cũ chỉ là input compatibility ở admission; body opaque còn dùng template có pin. Không dựng wire của field/optional/mode chưa hiểu.; Header chuẩn chỉ profile KR00967 mode2/selector3 đã đo. Header lạ bị từ chối trước bind; không full grammar/mode/prefix.; Packet field/body builder không quyết định account, identity, team, timer, kết quả, reward hoặc endpoint; policy/ownership ở service giữ nguyên.; 3169 frame cũ và24 first-vacant được so theo boundary receiver; unread cleanup tail giữ raw, không claim bằng toàn log.; N1 được chấp nhận riêng theo owner + CP261 cho ít nhất một phía tới được; N1b hai phía NAT đổi cổng chưa kiểm. Không suy mọi NAT/ISP/CGNAT/IPv6, fullM5 hoặc production."
+    },
+    {
+      "summary": "RUST-N1passedonlyowner-approvedonesidereachablescope with4Gattestation+CP261behavior. N1b bothNATportchanges andR1fsharedNATremainopen; oldrecords/rawunchanged.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-n1-acceptance",
+      "evidence": [
+        "R1DN1CP264-00013",
+        "R1DN1CP264-00016",
+        "R1DN1CP264-00057"
+      ],
+      "limits": "Source/unit/TCP tổng hợp của R1d, không native candidate mới; cuối R1 còn native2/4/8/account.; JSON alias cũ chỉ là input compatibility ở admission; body opaque còn dùng template có pin. Không dựng wire của field/optional/mode chưa hiểu.; Header chuẩn chỉ profile KR00967 mode2/selector3 đã đo. Header lạ bị từ chối trước bind; không full grammar/mode/prefix.; Packet field/body builder không quyết định account, identity, team, timer, kết quả, reward hoặc endpoint; policy/ownership ở service giữ nguyên.; 3169 frame cũ và24 first-vacant được so theo boundary receiver; unread cleanup tail giữ raw, không claim bằng toàn log.; N1 được chấp nhận riêng theo owner + CP261 cho ít nhất một phía tới được; N1b hai phía NAT đổi cổng chưa kiểm. Không suy mọi NAT/ISP/CGNAT/IPv6, fullM5 hoặc production."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rust96_fmt_clippy_lockedbuild_postmerge",
+      "result": "pass",
+      "evidence": [
+        "R1DN1CP264-00152"
+      ],
+      "limits": "Source/unit notnativeR1dcertification."
+    },
+    {
+      "check": "306TCP_3169old_24firstvacant_exactframes",
+      "result": "pass",
+      "evidence": [
+        "R1DN1CP264-01400",
+        "R1DN1CP264-01401",
+        "R1DN1CP264-01195"
+      ],
+      "limits": "Consumedreceiverboundaryscope; allrawretained, sourcefrozen/ownedPIDscleaned."
+    },
+    {
+      "check": "N1_scoped_acceptance_owner_and_CP261",
+      "result": "pass",
+      "evidence": [
+        "R1DN1CP264-00016",
+        "R1DN1CP264-00036"
+      ],
+      "limits": "One-side-reachableonly; ownerattests4G, noNATclassinference/newnative."
+    },
+    {
+      "check": "R1d_native_finalR1_and_N1b",
+      "result": "not_run",
+      "evidence": [
+        "R1DN1CP264-00057"
+      ],
+      "limits": "FinalR1native2/4/8/account andN1b max2nativeafterR1e/beforeR1f remain."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP264-r1d-n1-acceptance.json",
+      "bytes": 403328,
+      "sha256": "36453c560393c79c6cc8010c9320e06b88093bc4ea78a576e8a2e2edab0cef6d",
+      "count": 1512
+    }
+  ],
+  "delta": {
+    "added": [
+      "Canonicalheader/pureopcodebuilders andtypedroomtemplatenormalization, exactwireverification.",
+      "NewscopedN1acceptancedecisionbasedonunchangedCP261nativeandowner4Gattestation."
+    ],
+    "corrected": [
+      "CurrentN1openprovenanceblocker resolvedbyownerfact+explicitacceptancescope; oldCP261-263historyunchanged.",
+      "Slot110logicalencodedboundaryfixedandconsumedframecountscopemadeexplicit; failrawretained.",
+      "Dashboardoverwrite/latestREADMEhistorypolicy andfullcatalogtestCIincorporatedfrommain."
+    ],
+    "superseded": [
+      "R1dpending→source/TCPverifiedpendingPR. N1open→passedonesidereachableonly; N1bnotclosed."
+    ]
+  },
+  "blockers": [
+    "Source/unit/TCP tổng hợp của R1d, không native candidate mới; cuối R1 còn native2/4/8/account.",
+    "JSON alias cũ chỉ là input compatibility ở admission; body opaque còn dùng template có pin. Không dựng wire của field/optional/mode chưa hiểu.",
+    "Header chuẩn chỉ profile KR00967 mode2/selector3 đã đo. Header lạ bị từ chối trước bind; không full grammar/mode/prefix.",
+    "Packet field/body builder không quyết định account, identity, team, timer, kết quả, reward hoặc endpoint; policy/ownership ở service giữ nguyên.",
+    "3169 frame cũ và24 first-vacant được so theo boundary receiver; unread cleanup tail giữ raw, không claim bằng toàn log.",
+    "N1 được chấp nhận riêng theo owner + CP261 cho ít nhất một phía tới được; N1b hai phía NAT đổi cổng chưa kiểm. Không suy mọi NAT/ISP/CGNAT/IPv6, fullM5 hoặc production.",
+    "Giữ nguyên CP261 record/raw/binary và kết quả lúc đó; quyết định phạm vi/đóng ghi ở CP264, không sửa gate_state cũ.",
+    "N1b cả hai phía NAT đổi cổng còn mở, làm sau R1e/trước R1f theo dashboard, tối đa hai native runs.",
+    "Ca chung NAT là negative binding limitation, cần R1f; không chứng nhận shared-NAT gameplay.",
+    "Không chứng nhận mọi NAT/ISP/CGNAT thực tế hoặc topology; không nâng fullM5/production/50user.",
+    "Thông tin VPS/OCI/topology thực chỉ local; metadata mới không sao chép định danh/cấu hình hạ tầng.",
+    "K6c/K7 WAN giả lập giữ scope, không sửa lịch sử hoặc tạo dependency Internet mới."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Dashboard R1e registry after R1d PRmerge; N1b bothNATportchanges max2native before R1f; thenR1f sessionidentity/sharedNAT, R1g, finalnative2/4/8/account. No broadRE orN1bpassedclaim.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T20:42:31.324483+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex manual purewire/serviceauthority/sourceTCPdifferential andowner+CP261nativeacceptance audit; independentreviewwaived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/r1d-wire-builders.json",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/n1-acceptance.json",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/four_results.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/life.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/player_template.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_wire.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_packets.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/lib.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967/player.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967/battle.rs",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    },
+    {
+      "path": "tools/test_rust_player_slots.py",
+      "state": "updated",
+      "reason": "R1dsource/TCPscope andscopedN1acceptance, dashboard/R1eN1bnext; oldcompleterawunchanged."
+    }
+  ],
+  "completed_feature_groups": [
+    "r1d-wire-builders",
+    "n1-one-side-reachable-acceptance"
+  ]
+}

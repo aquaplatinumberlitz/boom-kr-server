@@ -8,7 +8,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 **Mỗi phiên chỉ cần đọc mục này.** Phần còn lại của file là tham chiếu (acceptance, lịch sử), tra theo anchor khi cần.
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, sau CP263**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP264 / AUD081**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Dài hạn: gameplay đầy đủ.
@@ -18,8 +18,8 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, s
 | M0–M3 nền tảng, phòng cố định, trận hai người | Đạt trong phạm vi đã ghi | Không |
 | M4 bốn và tám người | Đạt phần đội cố định và Manner | Free 1v7 là giới hạn đã biết, không retry |
 | M5 tài khoản | Account → phòng → trận → kết quả đã chạy native (CP258) | Hồ sơ tổng quát cho mọi account; lỗi hàng đợi DB khi đang native |
-| [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP261, [kết luận](#rust-n1-result)) | N1b: cả hai phía sau NAT đổi cổng |
-| [R1](#rust-r1) lõi phòng | R1a–R1c đã merge; R1d đang làm | R1e, N1b, R1f, R1g, rồi một lượt native hồi quy 2/4/8/account |
+| [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b: cả hai phía sau NAT đổi cổng |
+| [R1](#rust-r1) lõi phòng | R1a–R1c đã merge; R1d source/TCP đạt, đang bàn giao PR | R1e, N1b, R1f, R1g, rồi một lượt native hồi quy 2/4/8/account |
 | M7 phòng tổng quát | Chưa bắt đầu | Toàn bộ; cần R1 |
 | [G1](#rust-g1) sáu map ladder và item | Chưa bắt đầu; có [kiểm kê](CONTENT.md) | Phép thử đổi map, rồi từng map và nhóm item |
 | M6 lưu kết quả, thưởng 0 | Chưa bắt đầu | Toàn bộ; cần R1 |
@@ -27,8 +27,8 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, s
 
 **Thứ tự việc:**
 
-1. R1d header chuẩn và builder theo opcode (đang làm).
-2. R1e registry nhiều phòng.
+1. Hoàn tất PR R1d (96 Rust/306 TCP/3169+24 frame so byte); giữ native cuối R1.
+2. R1e registry nhiều phòng sau khi R1d merge.
 3. **N1b** theo [mục kết luận N1](#rust-n1-result): tối đa hai lượt native, làm trước R1f vì kết quả quyết định R1f.
 4. R1f identity theo session thay IP, sửa ca hai người chung NAT; endpoint theo kết quả N1b.
 5. R1g trần kết nối theo tải đích.
@@ -38,7 +38,11 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, s
 
 **Blocker và việc tồn:**
 
-- Chưa có blocker chặn thứ tự trên.
+- Bàn giao R1d PR343 đang chờ CI:
+  [GitHub Status](https://www.githubstatus.com/) báo Actions `major_outage` tại lần kiểm 12/11;
+  hai workflow còn `queued`, chưa có job/runner. Local 96 Rust/306 TCP/83 Python và421748 pin/lịch sử đã đạt.
+  Không merge khi CI chưa đạt. Khi Actions phục hồi: kiểm đúng head và `gh pr checks 343`, rồi merge và tiếp R1e.
+  Trong lúc chờ chỉ chuẩn bị R1e ở local; chưa tích hợp đường phục vụ hoặc đóng R1e.
 - `local/` (bằng chứng thô và fixture) chưa có backup ngoài máy này.
 
 **Quy ước:**
@@ -576,7 +580,7 @@ client trong đợt đo là **hotspot điện thoại 4G**; đây là câu trả
 Kết quả: hai client KR thật qua đường Internet đã đo chạy trọn account → phòng → hai kết quả đối nghịch → reset →
 trận tiếp. Cổng UDP client A tự báo ở packet 99 **khác** cổng thật sau NAT, nhưng client B **trả lời về địa chỉ nguồn nó
 quan sát được**, nên UDP vẫn thông hai chiều. **N1 đạt trong phạm vi: ít nhất một phía tới được theo địa chỉ server báo**
-(ở đây phía B đi qua NAT do ta kiểm soát). Codex ghi nhận việc đóng này vào checkpoint kế tiếp theo quy trình.
+(ở đây phía B đi qua NAT do ta kiểm soát). CP264 đã đối chiếu lại1124 pin CP261 và ghi nhận đóng phạm vi này; [quyết định/evidence](evidence/rust-service/n1-acceptance.json).
 
 Chưa đo, và là ca phổ biến khi hai người chơi đều ở nhà: **cả hai phía sau NAT đổi cổng**. Khi đó địa chỉ server báo
 cho cả hai chiều đều sai và có thể không gói đầu nào tới nơi.
@@ -587,7 +591,7 @@ hai đầu. Kết luận cần có: (a) vẫn thông, ghi rõ nhờ cơ chế n�
 mà server học được, khi đó R1f cho server học endpoint thật; (c) không thông và không có đường học, khi đó mở mốc thiết
 kế relay trước R1f. Ca hai người chung một NAT không thuộc N1b; nó được sửa ở R1f.
 
-**CP261 — quan sát chưa đóng gate:** recipe hai account/basic đạt haioutcomes/reset/Start3 vàactualUDP2chiều;
+**Lịch sử CP261 — lúc ghi chưa đóng gate (CP264 đã chốt theo phạm vi bên trên):** recipe hai account/basic đạt haioutcomes/reset/Start3 vàactualUDP2chiều;
 99 tựbáo≠postNAT ởA, Bnative trảvềnguồnquan sát. Ca chungNAT đãghi negative; session/lease binding R1f cònthiếu.
 Nhánh(a) **chỉ trên đường đã đo**, không cần relay/serverhọcport ởđườngnày. Chưa xácnhận điều kiện uplinkdiđộng/
 ISP-CGNAT ởtrên; không dùngnhãnagent/IPprefix làm bằngchứng, giữN1OPEN và acceptance nguyênvẹn.
