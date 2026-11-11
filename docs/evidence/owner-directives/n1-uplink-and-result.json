@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-11T19:13:49+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án nói trong phiên Claude Code ngày 2026-11-11: \"hiện mạng từ máy tính đang là của điện thoại phát qua 4g\"; ngày 2026-11-12 giao Claude tự quyết các việc điều hành (\"cho mày tự quyết hết, ko cần hỏi\").",
+  "fact": "Uplink Internet của máy chạy client KR trong đợt đo N1 là hotspot điện thoại qua mạng di động 4G. Máy kiểm tra cùng ngày cho thấy default route đi qua wlan0 172.20.10.2/28 (dải hotspot của điện thoại).",
+  "decision": "N1 đạt trong phạm vi 'ít nhất một phía tới được theo địa chỉ server báo', dựa trên bằng chứng CP261. Mở N1b cho ca cả hai phía sau NAT đổi cổng, làm trước R1f. Ca hai người chung một NAT thuộc R1f.",
+  "limits": "Không suy loại NAT của nhà mạng từ địa chỉ IP; chỉ ghi điều chủ dự án xác nhận và điều CP261 đã đo. Không chứng nhận mọi NAT/ISP. Việc ghi nhận đóng N1 vào manifest do Codex làm ở checkpoint kế tiếp.",
+  "plan": "docs/PLAN.md#rust-n1-result",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}
