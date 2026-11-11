@@ -81,7 +81,7 @@ impl Default for Room {
             capacity: 2,
             fixed_teams: vec![0, 1],
             sealed_abort: false,
-            bomb_capacity: vec![1, 2],
+            bomb_capacity: crate::rules::default_bomb_capacity(2),
             terrain: None,
             last_blast: None,
         }
@@ -96,11 +96,7 @@ impl Room {
         Ok(Self {
             capacity,
             fixed_teams: (0..capacity).map(|slot| (slot % 2) as u8).collect(),
-            bomb_capacity: match capacity {
-                8 => vec![1, 2, 1, 1, 2, 1, 1, 1], // CP209 actual baseline
-                4 => vec![1, 2, 1, 1],
-                _ => vec![1, 2],
-            },
+            bomb_capacity: crate::rules::default_bomb_capacity(capacity),
             ..Self::default()
         })
     }
@@ -295,11 +291,7 @@ impl Room {
         if let Some(terrain) = &mut self.terrain {
             terrain.begin(round);
         }
-        self.bomb_capacity = match self.capacity {
-            8 => vec![1, 2, 1, 1, 2, 1, 1, 1],
-            4 => vec![1, 2, 1, 1],
-            _ => vec![1, 2],
-        };
+        self.bomb_capacity = crate::rules::default_bomb_capacity(self.capacity);
         self.phase = Phase::Loading {
             round,
             roster,
