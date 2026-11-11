@@ -189,7 +189,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         || config.ports.len() > 32
         || config.ports.contains(&0)
         || config.ports.iter().copied().collect::<HashSet<_>>().len() != config.ports.len()
-        || !(1..=64).contains(&config.max_connections)
+        || !network::admission_budget(config.max_connections, &config.allowed_peers)
         || !(1..=120).contains(&config.idle_timeout_seconds)
         || !(1..=10_000).contains(&config.write_timeout_ms)
     {
@@ -255,7 +255,6 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             || two.wcp_ports.iter().any(|p| !config.ports.contains(p))
             || ports.iter().any(|p| !config.ports.contains(p))
             || !(matches!(two.actors.len(), 2 | 4 | 8) || (ninth_probe && two.actors.len() == 9))
-            || (two.account_admission.is_none() && config.allowed_peers.len() != two.actors.len())
         {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
@@ -327,18 +326,8 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
                 return Err(io::Error::other("duplicate diagnostic endpoint"));
             }
         }
-        if two.account_admission.is_some()
-            && config.allowed_peers.iter().copied().collect::<HashSet<_>>()
-                != two
-                    .actors
-                    .iter()
-                    .map(|actor| actor.peer)
-                    .collect::<HashSet<_>>()
-        {
-            return Err(io::Error::other(
-                "account peer allowlist does not match profiles",
-            ));
-        }
+        // Every pinned actor must be allowed (checked above), but additional
+        // allowed source IPs do not allocate or select a player identity.
         let room = two
             .fixed_room
             .as_ref()
