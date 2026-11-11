@@ -33,13 +33,13 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP269: R1f đã tách account profile/endpoint khỏi IP chọn identity, kiểm source/TCP đạt.**
-[Contract/giới hạn](docs/PROTOCOL.md#rust-r1f-session-binding), [evidence](docs/evidence/rust-service/r1f-session-binding.json).
-Profile lấy từ PlayerId của frontend/session lease; hai account chung IP vẫn giữ profile và membership riêng.
-104 test Rust/fmt/clippy/locked build đạt;306 ca TCP legacy và3169+24frame khớp CP265; thêm59shared-IP và16account serving.
-Endpoint direct theo channel hiện hành, vẫn dùng cổng99; chưa relay/NATlearning hoặc native shared-NAT gameplay.
-Thiết kế/schema CP267–268 đã merge; R1f đang bàn giao riêng. Tiếp R1g, relay opt-in và native cuối R1 theo
-[dashboard](docs/PLAN.md#dashboard). Full M5 còn mở; thông tin VPS chỉ local. Mốc cũ ở [HISTORY](docs/HISTORY.md).
+**CP270: R1g đã kiểm trần admission và allowlist độc lập số profile.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-r1g-admission), [evidence](docs/evidence/rust-service/r1g-admission.json).
+Cấu hình cho phép1–1024transport và1–256entry allowlist; vẫn kiểm source/lease/profile riêng. Giá trị cấu hình cũ giữ nguyên.
+105Rust/fmt/clippy/lockedbuild đạt;306TCPlegacy/3169+24frame khớp CP269;10ca admission đạt, gồm65socket giữ đồng thời,
+kết nối66 bị chặn và phục hồi permit. Đây chưa phải kiểm50người chơi KR hoặc native candidate.
+R1f đã merge PR347; R1g đang bàn giao PR. Tiếp relay opt-in và native cuối R1 theo [dashboard](docs/PLAN.md#dashboard).
+Full M5/M7/M8 còn mở; hạ tầng chỉ local. Mốc cũ ở [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
 

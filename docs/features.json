@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP269",
+  "as_of": "CP270",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -469,7 +469,9 @@
           "docs/PROTOCOL.md#rust-relay-endpoint-scope",
           "docs/evidence/rust-service/relay-endpoint-design.json",
           "docs/PROTOCOL.md#rust-r1f-session-binding",
-          "docs/evidence/rust-service/r1f-session-binding.json"
+          "docs/evidence/rust-service/r1f-session-binding.json",
+          "docs/PROTOCOL.md#rust-r1g-admission",
+          "docs/evidence/rust-service/r1g-admission.json"
         ]
       },
       "coverage": {
@@ -5001,7 +5003,9 @@
           "docs/PROTOCOL.md#rust-relay-endpoint-scope",
           "docs/evidence/rust-service/relay-endpoint-design.json",
           "docs/PROTOCOL.md#rust-r1f-session-binding",
-          "docs/evidence/rust-service/r1f-session-binding.json"
+          "docs/evidence/rust-service/r1f-session-binding.json",
+          "docs/PROTOCOL.md#rust-r1g-admission",
+          "docs/evidence/rust-service/r1g-admission.json"
         ]
       },
       "coverage": {
@@ -5524,7 +5528,9 @@
           "docs/PROTOCOL.md#documentation-checkpoint-identity",
           "docs/evidence/rust-service/documentation-identity.json",
           "docs/PROTOCOL.md#rust-r1f-session-binding",
-          "docs/evidence/rust-service/r1f-session-binding.json"
+          "docs/evidence/rust-service/r1f-session-binding.json",
+          "docs/PROTOCOL.md#rust-r1g-admission",
+          "docs/evidence/rust-service/r1g-admission.json"
         ]
       },
       "coverage": {

@@ -745,3 +745,11 @@ AUD085 audit nhóm schema-tool; không runtime/implementation/gate mới. Thứ 
 104Rust/fmt/clippy/lockedbuild;306TCPlegacy/3169+24frameCP265 khớp,59shared-IP fullaccountlife và16accountserving đạt.
 Source/body/tool/binary frozen, ownedPID gone; initialclippyfailures giữ. AUD086 audit nhóm source/TCPrefactor;
 chưa nativecandidate/shared-NATUDP/relay/fullM5. CP267–268 đã merge riêng, giữ record CP267 nguyên bytes.
+
+<a id="cp270"></a>
+### CP270 — R1g admission và allowlist độc lập profile
+
+[Scope](../../PROTOCOL.md#rust-r1g-admission), [metadata/hash](r1g-admission.json), [PLAN](../../PLAN.md#dashboard).
+105Rust/fmt/clippy/lockedbuild;306TCPlegacy/3169+24frameCP269 khớp và10admission đạt. R2actualcheckout/sourcefreeze/
+producerpin/PIDcleanup/rawseal; R1wrongcwd excluded/addendum/raw giữ.65heldsocket không là65KR hoặc tải50người.
+AUD087 audit nhóm refactor R1g; chưa nativecandidate/fullR1/relay/M5. R1f PR347 đã merge; tiếp PLAN.

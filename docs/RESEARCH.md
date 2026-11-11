@@ -105,7 +105,8 @@ Hai kết quả/reset/Start3 qua TCP không đủ chứng nhận peer movement. 
 [dashboard](PLAN.md#dashboard), không lượt N1b thứ ba, không broadRE. Cần đo tối thiểu đường gửi tới endpoint trung gian,
 key/consumer/apply và reply/rebinding/lifecycle nếu thiết kế chọn relay; chưa có proof cho server-source learning tự động.
 R1f CP269 đã đạt source/TCP shared-IP knownprofiles/LegacyDirectPlan; [giới hạn](PROTOCOL.md#rust-r1f-session-binding).
-R1g và native cuối R1 2/4/8/account còn lại; chưa native shared-NATUDP/relay. M5generalprofile/nativeDBqueuefault,
+[R1g CP270](PROTOCOL.md#rust-r1g-admission) đã kiểm source/TCP admission/allowlist; chưa tải50 hoặc native candidate.
+Native cuối R1 2/4/8/account và relay/twoNAT vẫn còn lại. M5generalprofile/nativeDBqueuefault,
 field51policy integration/projector WIP không bị coi đã xong. Không suy lớp CGNAT hoặc mọiISP từ ca này; hạ tầng local.
 
 

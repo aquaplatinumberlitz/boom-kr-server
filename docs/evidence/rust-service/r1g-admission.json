@@ -1,0 +1,78 @@
+{
+  "schema": "kre-rust-r1g-admission-v1",
+  "checkpoint": "CP270",
+  "recorded_utc": "2026-11-11T22:48:47.019184+00:00",
+  "baseline": "39a401a2f114507c4669a373e7eded1fcea4f0fa",
+  "source": "design",
+  "status": "design",
+  "canonical": "docs/PROTOCOL.md#rust-r1g-admission",
+  "plan": "docs/PLAN.md#rust-r1",
+  "source_files": [
+    {
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 45088,
+      "sha256": "10ab5c35d5955eb8dfc4cb89dbdd4e6ea84e5d985c42a210eb944bbf347e23fc"
+    },
+    {
+      "path": "rust/crates/kr-service/src/network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "path": "tools/test_rust_admission_limits.py",
+      "bytes": 9332,
+      "sha256": "adbeef9c653a152774dce97762d9a8f7628bc562d6d2b776de5278e446ac1ec0"
+    }
+  ],
+  "candidate_binaries": [
+    {
+      "name": "kr-service",
+      "path": "local/research/codex/r1g-regression-r2/kr-service",
+      "bytes": 54635408,
+      "sha256": "ae0d400e7395ef72f9de1f1075f2c6f5f42a7b05be8b9a518709e68aba7d3d01"
+    },
+    {
+      "name": "kr-admin",
+      "path": "local/research/codex/r1g-regression-r2/kr-admin",
+      "bytes": 46471896,
+      "sha256": "241bf69908de8a763511dc956f7e9125357ae8c770900827e19cfeb4e12defb5"
+    }
+  ],
+  "verification": {
+    "Rust": 105,
+    "legacy_TCP": 306,
+    "admission_TCP": 10,
+    "legacy_frames": 3169,
+    "first_vacant_frames": 24
+  },
+  "runs": [
+    {
+      "path": "local/research/codex/r1g-regression-r2/verification.json",
+      "sha256": "8df7c51bed2ce9423828e36684ae36a24d63d3aa139cb387c0f8c8533231feec"
+    },
+    {
+      "path": "local/research/codex/r1g-admission-r2/verification.json",
+      "sha256": "6270ed42c4d592c4499a8041fd0770e3e4d4efc7ec9c55d26123b7e554a4dd6e"
+    }
+  ],
+  "differential": {
+    "path": "local/research/codex/r1g-regression-r2/wire-comparison.json",
+    "sha256": "5d55ead58ebf5ff50f116985b9eb5691632b7698a7fc48bba77783ff55c47c9e",
+    "baseline": "CP269 r1f-regression-r1",
+    "scope": "Consumedreceiverboundaries; unreadtailsretained"
+  },
+  "excluded": {
+    "path": "local/research/codex/r1g-regression-r1-cwd-addendum.json",
+    "sha256": "65bcebd11e64a91d2019600243d55c36487c061795c56b51402267f9563fb2f5",
+    "reason": "R1g binary butwrongprimaryR1fsource snapshot; do notuseforR1gsourcecertification."
+  },
+  "limits": [
+    "Source/unit/syntheticTCP only; no nativecandidate/finalR1, 50players/8rooms loadacceptance orfullserviceclaim.",
+    "Resourcepolicy1..1024connections and1..256allowlistentries aredesignbounds, notKRlimits or measuredsafeproductionload. Existingconfiguredvalues/defaultsunchanged.",
+    "65heldtransports/66thdenial/release-recovery provesonlysocketadmission lifecycle, not65players/accounts or gameworkload.",
+    "Allowlistedunmappeddiagnostic source stillgetsnoidentity; accountlease/profileconstraintsR1fremain. Generalprofiles/M5nativeDBqueuefault/multiroomM7 stillmissing.",
+    "Wrongcwdregressionr1sourceattributionexcluded, raw/PIDcleanupkept; r2actualcheckout/producerpin/sourcefreeze provides evidence.",
+    "No relay/UDPdiscovery/portreuse/key256policychanges. N1bnegative andcurrentN1/K6c/K7scopesunchanged.",
+    "ActualVPS/OCIidentifiers/config/access stayignoredlocal."
+  ]
+}

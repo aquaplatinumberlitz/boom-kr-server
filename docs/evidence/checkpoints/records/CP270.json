@@ -1,0 +1,278 @@
+{
+  "id": "CP270",
+  "previous": "CP269",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T22:50:40.676140+00:00",
+  "context_commit": "39a401a2f114507c4669a373e7eded1fcea4f0fa",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/R1g: configureconnectionandallowlistbudgetsindependentprofilecount, preservelegacy2/4/8/accountwire andprovebudget/rejection/releaseguards without50player/nativeclaim.",
+  "scope": "R1gsource/unit/syntheticTCPrefactor; no wire/relay/gameplaypolicy ornewnativebehaviorclaim. WrongcwdR1excludedfromsourceproof, correctR2 frozen.",
+  "artifacts": [
+    {
+      "name": "kr-service",
+      "sha256": "ae0d400e7395ef72f9de1f1075f2c6f5f42a7b05be8b9a518709e68aba7d3d01"
+    },
+    {
+      "name": "kr-admin",
+      "sha256": "241bf69908de8a763511dc956f7e9125357ae8c770900827e19cfeb4e12defb5"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md#rust-r1g-admission",
+    "network::admission_budget connections1..1024/peers1..256, configuredactorssubsetallowlist",
+    "105Rust/306legacyTCP/3169+24exactCP269/10admissionTCP65held66thdeniedrelease",
+    "r2actualcheckoutassert+producerpin/sourcehashfreeze vswrongcwdR1source-excluded",
+    "R1fPR347merged; nextN1Rrelay+finalR1native2/4/8/account, not50playeracceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Transportbudget/allowlistcountindependentpinnedprofilecount; defaults/fieldswireunchanged, unknownalloweddiagnosticsourcegetsnoidentity.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1g-admission",
+      "evidence": [
+        "R1GCP270-00077",
+        "R1GCP270-00078",
+        "R1GCP270-00057"
+      ],
+      "limits": "Source/unit/syntheticTCP only; no nativecandidate/finalR1, 50players/8rooms loadacceptance orfullserviceclaim.; Resourcepolicy1..1024connections and1..256allowlistentries aredesignbounds, notKRlimits or measuredsafeproductionload. Existingconfiguredvalues/defaultsunchanged.; 65heldtransports/66thdenial/release-recovery provesonlysocketadmission lifecycle, not65players/accounts or gameworkload.; Allowlistedunmappeddiagnostic source stillgetsnoidentity; accountlease/profileconstraintsR1fremain. Generalprofiles/M5nativeDBqueuefault/multiroomM7 stillmissing.; Wrongcwdregressionr1sourceattributionexcluded, raw/PIDcleanupkept; r2actualcheckout/producerpin/sourcefreeze provides evidence.; No relay/UDPdiscovery/portreuse/key256policychanges. N1bnegative andcurrentN1/K6c/K7scopesunchanged.; ActualVPS/OCIidentifiers/config/access stayignoredlocal."
+    },
+    {
+      "summary": "105Rust/fmt/clippy/lockedbuild,306legacyTCP/3169+24exactCP269,10admissionnegative/lifecyclepass; no native/loadclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1g-admission",
+      "evidence": [
+        "R1GCP270-02627",
+        "R1GCP270-00062",
+        "R1GCP270-00061",
+        "R1GCP270-02624",
+        "R1GCP270-02625",
+        "R1GCP270-00057"
+      ],
+      "limits": "Source/unit/syntheticTCP only; no nativecandidate/finalR1, 50players/8rooms loadacceptance orfullserviceclaim.; Resourcepolicy1..1024connections and1..256allowlistentries aredesignbounds, notKRlimits or measuredsafeproductionload. Existingconfiguredvalues/defaultsunchanged.; 65heldtransports/66thdenial/release-recovery provesonlysocketadmission lifecycle, not65players/accounts or gameworkload.; Allowlistedunmappeddiagnostic source stillgetsnoidentity; accountlease/profileconstraintsR1fremain. Generalprofiles/M5nativeDBqueuefault/multiroomM7 stillmissing.; Wrongcwdregressionr1sourceattributionexcluded, raw/PIDcleanupkept; r2actualcheckout/producerpin/sourcefreeze provides evidence.; No relay/UDPdiscovery/portreuse/key256policychanges. N1bnegative andcurrentN1/K6c/K7scopesunchanged.; ActualVPS/OCIidentifiers/config/access stayignoredlocal."
+    },
+    {
+      "summary": "WrongcwdR1rawretained/excluded; correctR2source/producerfreezeandcleanupverified. Manualsource/limits auditkeepsN1/K6c/K7/M5/fullR1gates unchanged.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-r1g-admission",
+      "evidence": [
+        "R1GCP270-01352",
+        "R1GCP270-00063",
+        "R1GCP270-00004"
+      ],
+      "limits": "Source/unit/syntheticTCP only; no nativecandidate/finalR1, 50players/8rooms loadacceptance orfullserviceclaim.; Resourcepolicy1..1024connections and1..256allowlistentries aredesignbounds, notKRlimits or measuredsafeproductionload. Existingconfiguredvalues/defaultsunchanged.; 65heldtransports/66thdenial/release-recovery provesonlysocketadmission lifecycle, not65players/accounts or gameworkload.; Allowlistedunmappeddiagnostic source stillgetsnoidentity; accountlease/profileconstraintsR1fremain. Generalprofiles/M5nativeDBqueuefault/multiroomM7 stillmissing.; Wrongcwdregressionr1sourceattributionexcluded, raw/PIDcleanupkept; r2actualcheckout/producerpin/sourcefreeze provides evidence.; No relay/UDPdiscovery/portreuse/key256policychanges. N1bnegative andcurrentN1/K6c/K7scopesunchanged.; ActualVPS/OCIidentifiers/config/access stayignoredlocal."
+    }
+  ],
+  "verification": [
+    {
+      "check": "105Rust_fmt_clippy_lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "R1GCP270-02627",
+        "R1GCP270-00062",
+        "R1GCP270-00061",
+        "R1GCP270-00080"
+      ],
+      "limits": "Source/unitonly."
+    },
+    {
+      "check": "CorrectR2_306legacyTCP_3169plus24exact",
+      "result": "pass",
+      "evidence": [
+        "R1GCP270-02624",
+        "R1GCP270-02625"
+      ],
+      "limits": "Actualreceiverboundaries, unreadtailpreserved; no nativeclaim."
+    },
+    {
+      "check": "10_admission_budget_identity_lifecycle",
+      "result": "pass",
+      "evidence": [
+        "R1GCP270-00057"
+      ],
+      "limits": "65TCPheldtransportnot65KR/50playerworkload."
+    },
+    {
+      "check": "InitialR1cwdsourceattribution",
+      "result": "fail",
+      "evidence": [
+        "R1GCP270-01352"
+      ],
+      "limits": "Retainedwrongsourcecopyrun excludedfromsourcecertification, correctedR2separate."
+    },
+    {
+      "check": "NativefinalR1_N1R_50playerM8",
+      "result": "not_run",
+      "evidence": [
+        "R1GCP270-00063"
+      ],
+      "limits": "SeparateacceptanceperPLAN, notclosedfromR1g."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP270-r1g-admission.json",
+      "bytes": 702444,
+      "sha256": "1c5e1b7b7b6bda56b017b12299070954438c3ea7a5054803bae0f50fcdc6c11d",
+      "count": 2631
+    }
+  ],
+  "delta": {
+    "added": [
+      "Configurabletransport/allowlistbudgetsindependentprofiles, boundedsource/admission/resourceguards.",
+      "105Rust/306TCP/3169+24frameexactCP269 and10admission withfrozenR2source/cleanup."
+    ],
+    "corrected": [
+      "WrongcwdR1sourceattribution explicitlyexcluded, rawretained; R2correctsmeasurementwithnewrun."
+    ],
+    "superseded": [
+      "R1gmissing→boundedsource/TCPverifiedpendingPR; native/relay/50player/fullR1remain."
+    ]
+  },
+  "blockers": [
+    "Source/unit/syntheticTCP only; no nativecandidate/finalR1, 50players/8rooms loadacceptance orfullserviceclaim.",
+    "Resourcepolicy1..1024connections and1..256allowlistentries aredesignbounds, notKRlimits or measuredsafeproductionload. Existingconfiguredvalues/defaultsunchanged.",
+    "65heldtransports/66thdenial/release-recovery provesonlysocketadmission lifecycle, not65players/accounts or gameworkload.",
+    "Allowlistedunmappeddiagnostic source stillgetsnoidentity; accountlease/profileconstraintsR1fremain. Generalprofiles/M5nativeDBqueuefault/multiroomM7 stillmissing.",
+    "Wrongcwdregressionr1sourceattributionexcluded, raw/PIDcleanupkept; r2actualcheckout/producerpin/sourcefreeze provides evidence.",
+    "No relay/UDPdiscovery/portreuse/key256policychanges. N1bnegative andcurrentN1/K6c/K7scopesunchanged.",
+    "ActualVPS/OCIidentifiers/config/access stayignoredlocal."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "AfterR1gPRmergeN1Rrelaycandidateimplementation/native perdesign, thenfinalR1native2/4/8/account. NoN1b3/broadRE; M5generalprofile/nativeDBfault/M7/M8loadbackuprestartremain.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T22:50:40.676140+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualsource/limits/identity/unit/TCP/differential/raw/privacyaudit; independentreviewwaived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/evidence/rust-service/r1g-admission.json",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "rust/crates/kr-service/src/network.rs",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    },
+    {
+      "path": "tools/test_rust_admission_limits.py",
+      "state": "updated",
+      "reason": "R1gadmissionlimits/source/TCPscope andnextrelay/native; wrongcwdexcluded, no load/gatepromotion."
+    }
+  ],
+  "completed_feature_groups": [
+    "r1g-admission-budgets-and-allowlist"
+  ]
+}

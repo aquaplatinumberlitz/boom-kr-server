@@ -9879,3 +9879,33 @@ fixturetest gọi sai tên method/map-iteration lint được giữ rồi sửa 
 Các ca này là **TCP tổng hợp**, không hai KR native hoặc đồng bộ UDP sau NAT. Endpoint153 vẫn IP channel/cổng99 tự
 báo; không học cổng, holepunch, relay hoặc chữa N1bnegative. M5generalprofile/nativeDBqueuefault, key256/portreuse/
 restart và sameIPUDPspoof còn riêng. Chỉ nghiệm thu fullR1 sau native2/4/8/account; không nâng gate từ source/TCP.
+
+<a id="rust-r1g-admission"></a>
+## R1g — ngân sách transport và allowlist — CP270
+
+Nguồn **design/design**, kiểm source/unit/TCP; [metadata/hash](evidence/rust-service/r1g-admission.json),
+[native/việc tiếp](PLAN.md#rust-r1). Dùng lại semaphore/accepted queue/allowlist/channellease đã có, R1fprofile theo
+session và các byte fixtures đã seal; không contract wire/RE mới hoặc tự port protocol VN.
+
+`network::admission_budget` kiểm `max_connections`1..1024 và `allowed_peers`1..256entry trước bind. Đây là giới hạn
+operator design; không là giới hạn server KR gốc hoặc benchmark an toàn. Các field/default/giá trị cấu hình cũ
+không đổi; operator có thể chọn256transport cho đích khoảng200+headroom, nhưng tải thực thuộc M8.
+Accept queue32 và logger256 vẫn giữ budget riêng, private launcher/DB worker/profile count không bị tự nâng theo
+max_connections. Không suy trần socket cho phép50account hoặc8phòng khi M5generalprofile/M7 chưa có.
+
+Bỏ điều kiện số IP allowlist bằng số actor và so tập allowlist bằng tập profile. Từng actor configuredpeer vẫn phải
+được allow; diagnostic duplicateactor endpoints vẫn bị từ chối. IP allowlisted thêm không tự chọn identity: diagnostic
+không có mapping đóng với `unmapped diagnostic actor`; account cần frontend/session/DB/channellease và knownprofile.
+R1f currentchannelendpoint/LegacyDirectPlan vẫn giữ, không NATlearning/relay, không cờ hay nhánh sức chứa mới.
+
+105Rust tests/fmt/clippy/lockedbuild đạt. Native-tested fixtures chỉ làm input độc lập;14suite/306TCP legacy đạt,
+3169consumedroomframes+24firstvacant khớp CP269 theo fullSHA/sequence/opcode/identity/normalizedvisit; unreadtail giữ.
+10ca admission kiểm65TCPtransport cùng giữ/hello thực nhận,66thbị chặn, một EOF trả permit rồi admit lại, source bị
+cấm không chiếm permit, bounds0/1025/empty/257peers bị chặn trước bind, allowlist3IP/profile2 không cấp identity cho
+IP không mapped. Số socket không phải số người KR; hello/TCP/proclog không được dùng làm native gameplay proof.
+
+Lượt hồi quy đầu chạy sai cwd: binaryR1g nhưng snapshotrepository là R1f; raw/cleanup giữ cùng addendum, không dùng
+để chứng nhận source. Lượt2 chạy đúng worktree, có cwdassert và pin producer, source/tool/binary/fixture giữ nguyên
+đến seal; ownedPID cleanup đạt. Không sửa lượt cũ hoặc lấy reportpass của nó thay bằng chứng source đúng.
+R1f PR347 đã merge; fullR1 vẫn cần native2/4/8/account. Relay/currenttwoNAT, M5generalprofile/nativeDBqueuefault,
+M7multiroom, key/portreuse/restart và workload50/8roomM8 chưa chứng nhận. K6c/K7/N1 scope cũ giữ nguyên.
