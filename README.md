@@ -33,6 +33,14 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP263: R1c đã tách player identity khỏi luật cấp slot và dùng chung template 106.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-r1c-player-slots), [bằng chứng](docs/evidence/rust-service/r1c-player-slots.json).
+Mặc định legacy giữ byte; `first_vacant` cấp slot độc lập, người tạo là host. Runtime không chọn fixture theo alias identity.
+94 test Rust, 305 ca TCP và 3.189 frame phòng cũ khớp baseline CP262; 30 fixture 106 không có chênh lệch ngoài trường đã biết.
+Ca TCP mới kiểm player 2 tạo phòng, player 1 vào slot 1, chuyển host/vào lại và năm guard trước bind.
+[PR337](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/337) đã merge R1b; tiếp R1d theo PLAN.
+Chưa chứng nhận native binary mới, chưa general profile/full M5 hoặc shared-NAT; **N1 vẫn mở** điều kiện uplink.
+
 **CP262: R1b đã chuyển luật phòng sang chính sách có tên, giữ byte của ba profile hiện có.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-r1b-policies), [bằng chứng](docs/evidence/rust-service/r1b-policies.json).
 `ResultPolicy`, `DeparturePolicy`, `BombPolicy`, `LifePolicy`, `TeamPolicy` thay các cờ nội bộ; fixture `rank` chỉ cấp bytes.

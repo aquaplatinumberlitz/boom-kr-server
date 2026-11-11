@@ -13,6 +13,7 @@ pub mod lobby;
 mod logging;
 pub mod network;
 mod pickups;
+mod player_template;
 pub mod room;
 mod room_io;
 mod room_wire;

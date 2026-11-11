@@ -9626,7 +9626,7 @@ Nguồn **design/design** cho cách tổ chức source; không RE hoặc đổi 
 Reuse R1a/PR329, CP259–260 source và ownWIP ba file đã giữ trong stash; source của các đường phòng khớp
 baseline đó trước khi khôi phục. Projector stash riêng không được pop hoặc ghép vào refactor.
 
-`RoomRules::admit` chuyển JSON cũ thành `ResultPolicy` (Disabled/Duel/Teams), `DeparturePolicy`
+`RoomRules::from_config` chuyển JSON cũ thành `ResultPolicy` (Disabled/Duel/Teams), `DeparturePolicy`
 (Leave/Forfeit/UnrankedReturn/FenceActive), `BombPolicy` (Basic/Disabled/OwnerReports), `LifePolicy`
 (Observe/DuelReports/TeamReports) và `TeamPolicy` (Any/BalancedManner). Các lựa chọn compatibility của
 profile2/4/8 giữ ý nghĩa cũ; không thêm trường `four_*`/`eight_*`, alias identity hoặc nhánh sức chứa mới
@@ -9655,3 +9655,39 @@ Không đổi codec/header/packet/field51 policy, room identity/slot/host/team a
 R1c–g còn lại theo PLAN. N1 native2account/gameplay đã đo tạiCP261 vẫn gắn source/binary ARMCP260;
 R1b candidate chưa chạy native và không thừa kế certification đó. Cuối R1 vẫn phải chạy native2/4/8/account.
 N1 mobile/ISP-CGNAT còn chưa xác nhận; sharedNAT fixedIP limit cần R1f. Không đóng N1/fullR1/M5/M4 hoặc production.
+
+<a id="rust-r1c-player-slots"></a>
+## R1c — identity, slot và một template 106 — CP263
+
+Nguồn **design/design**, kiểm source/unit/TCP, không thêm kết luận native KR. [Metadata/hash](evidence/rust-service/r1c-player-slots.json),
+[thứ tự/acceptance cuối R1](PLAN.md#rust-r1). R1b đã merge PR337 tại baseline của mốc này.
+Reuse layout KR106/string/profile đã đo tại [room-player](#room-player), Python `four_player_profile.py`
+và các fixture CP018/020/026/199 đã có. 30 body trong năm config/14 pin khác nhau đều khớp phép biến đổi các field đã biết;
+không có chênh lệch unknown cần RE thêm. Python là mẫu phương pháp; phép so input fixture không tự là native proof mới.
+
+`PlayerId` là alias `u32` của identity backend/wire; **không phải newtype kiểm kiểu**. Membership vẫn gồm identity,
+connection và visit. `RoomRules::from_config` chọn `SlotAllocation`: mặc định `legacy_identity` giữ slot=identity−1,
+creator1 và wire của profile cũ; opt-in `first_vacant` lấy slot trống nhỏ nhất và host là người tạo. Team theo bảng slot
+đã có. Zero ID, trùng identity/connection, đầy phòng, sai phase hoặc slot không hợp lệ bị chặn trước tăng visit/publish.
+Rời phòng chuyển host theo slot như trước; tái dùng slot không làm membership/visit cũ có quyền trên member mới.
+Policy này là design của server; không nhận là quy tắc server KR gốc. Unit dùng ID70000/42 để kiểm tách identity/slot,
+full/duplicate atomicity, host transfer, vacancy reuse và stale membership/ACK.
+
+Ở admission, một `PlayerTemplate` lấy prefix/suffix opaque từ fixture106 đầu; nhánh profile là name +98 byte zero,
+hai tên inner/outer phải cùng nhau, tên ASCII 5/7 byte theo profile đang hỗ trợ. Chỉ thay identity/tên/slot/state/đội đã biết;
+opaque bytes được giữ. Body sinh ra phải bằng từng fixture cũ; header cũng bằng sau bỏ riêng trường length do codec tính lại.
+Lệch bất kỳ byte khác làm startup từ chối trước bind, kể cả hash input hợp lệ. Runtime cache projection theo PlayerId;
+không còn lookup alias identity để gửi106/110. Alias legacy chỉ còn adapter nạp config cũ và donor header107 đã có;
+việc bỏ phụ thuộc packet/header vào fixture tiếp tục ở R1d, không mở rộng lát cắt này.
+
+94 Rust tests/fmt/clippy/locked build và 14 suite/305 ca TCP đạt. Trong đó 298 ca cũ được so với baseline CP262 đã seal:
+3.189 frame phòng khớp identity/normalized visit/alias/opcode/sequence/size/full SHA. Giữ boundary receiver và raw tail như R1b;
+không dùng thứ tự log giữa recipient độc lập làm contract. Bảy ca mới gồm năm pre-bind guard với pin hợp lệ và hai kiểm TCP:
+B tạo phòng/host slot0, A identity1 ở slot1; sau B rời phòng, A giữ slot1 thành host, B vào lại slot0 thành khách.
+Tên/ID/state ở cả hai roster được đọc đối chiếu. Đợt runner đầu mất executable mode khi chụp binary, chưa chạy service;
+log giữ nguyên, sửa copier ở đợt mới mà không đổi source/config/input của service.
+
+Listener/launcher vẫn giới hạn các profile diagnostic đã đo và bridge account hiện có; không tự phục vụ ID/profile tùy ý,
+không mặc định scalar cho inventory/accessory hoặc chứng nhận profile tổng quát M5. Transport binding và nhiều session chung NAT
+vẫn là R1f. N1 uplink di động/ISP-CGNAT chưa xác nhận; không đóng gate N1 hoặc sửa K6c/K7. Binary mới chưa được nghiệm thu native;
+cuối R1 vẫn cần native 2/4/8/account. Sửa tên helper ghi nhầm `admit` ở mô tả R1b thành đúng `from_config`; record/audit/raw CP262 giữ nguyên.

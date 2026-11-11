@@ -1,0 +1,80 @@
+{
+  "schema": "kre-rust-r1c-player-slots-v1",
+  "checkpoint": "CP263",
+  "baseline": "227daf17bc4bf746f524114d7c1016ff5c8ad985",
+  "canonical": "docs/PROTOCOL.md#rust-r1c-player-slots",
+  "plan": "docs/PLAN.md#rust-r1",
+  "source": "design",
+  "status": "design",
+  "recorded_utc": "2026-11-11T17:42:46.835527+00:00",
+  "implementation": "RoomRules::from_config chọn SlotAllocation; Room::enter cấp slot tách PlayerId, creator là host. Nạp một PlayerTemplate106, tái tạo và so với mọi fixture cũ, cache projection theo PlayerId thay lookup alias trong runtime.",
+  "integration": "Source và TCP đã kiểm; delivery PR pending, review độc lập waived. Không chuyển gate native.",
+  "checks": {
+    "Rust_tests": 94,
+    "fmt": "pass",
+    "clippy": "pass",
+    "locked_build": "pass",
+    "legacy_TCP_cases": 298,
+    "new_slot_template_TCP_cases": 7,
+    "total_TCP_cases": 305,
+    "suites": 14,
+    "exact_legacy_room_frames": 3189,
+    "fixture_inputs_compared": 30,
+    "distinct_fixture_pins": 14
+  },
+  "candidate_binaries": [
+    {
+      "path": "local/research/codex/r1c-regression-r2/kr-service",
+      "bytes": 53054416,
+      "sha256": "2e50539c8b43b06ef5b4bd7f5780fa371951c5b86f280551b29b62feda239eaa"
+    },
+    {
+      "path": "local/research/codex/r1c-regression-r2/kr-admin",
+      "bytes": 45093992,
+      "sha256": "6a127f78947750c3d9f01e5036236390dea14cca3ed8cb5a0f911f0c7f2b6ea6"
+    }
+  ],
+  "source_archive": {
+    "path": "local/research/codex/r1c-source-r2.tar",
+    "bytes": 2017280,
+    "sha256": "6efd959d8261ce4dc33c610ba91a3edae40bddf34b2c7db4d4b3a2bd3dc37e85"
+  },
+  "baseline_evidence": [
+    "docs/evidence/rust-service/r1b-policies.json",
+    "docs/evidence/checkpoints/records/CP262.json"
+  ],
+  "reuse": [
+    {
+      "source": "server/four_player_profile.py; docs/PROTOCOL.md#room-player; CP018/020/026/199",
+      "kind": "kr_static/kr_runtime trước đó và design Python reference",
+      "use": "Đúng layout106, hai tên và98 byte zero-profile; phép biến đổi field đã biết. Không chuyển wire VN.",
+      "avoided": "Không RE lại consumer106/string/profile hoặc tạo fixture mới theo từng identity."
+    },
+    {
+      "source": "local/research/codex/r1c-template-source-survey-r1/all-profiles.json",
+      "kind": "fixture comparison, không native mới",
+      "use": "30 body của5 config/tất cả8 identity khớp phép biến đổi known-field; không có unknown byte phải RE.",
+      "avoided": "Không đo runtime lại chỉ để xác nhận layout nguồn đã có."
+    },
+    {
+      "source": "CP262 sealed candidate suites/boundaries; r1c-regression-r2/wire-comparison.json",
+      "kind": "TCP differential",
+      "use": "Tái dùng baseline đã seal, chạy candidate mới theo cùng input; exact per-recipient/frame SHA.",
+      "avoided": "Không chạy lại baseline hoặc các native gate đã có chỉ do refactor."
+    }
+  ],
+  "evidence": {
+    "batch": "local/research/codex/r1c-regression-r2/evidence-index.json",
+    "comparison": "local/research/codex/r1c-regression-r2/wire-comparison.json",
+    "survey": "local/research/codex/r1c-template-source-survey-r1/all-profiles.json",
+    "failed_runner": "local/research/codex/r1c-regression-r1/harness-failure.json"
+  },
+  "limits": [
+    "Kiểm source/unit và TCP tổng hợp; không là chứng nhận native mới hoặc luật server KR gốc. Native cuối R1 vẫn cần 2/4/8 client và đường account.",
+    "PlayerId là alias u32 của identity backend/wire, không phải newtype bảo đảm kiểu. FirstVacant là policy design; transport/session vẫn dùng đường cũ đến R1f.",
+    "Listener/launcher vẫn chỉ nhận các profile diagnostic đã đo; không mở arbitrary account/profile bằng cách mặc định scalar hoặc thay tên. Hồ sơ tổng quát M5 và shared-NAT R1f còn thiếu.",
+    "Template chỉ hỗ trợ nhánh zero-profile đã đo với tên ASCII 5/7 byte. Opaque fields giữ nguyên; lệch ngoài trường đã biết từ chối trước bind, cần đo KR khi có nhu cầu mới.",
+    "Byte comparison chỉ claim frame đã đọc theo boundary có sẵn; tail cleanup chưa đọc giữ raw. Hai bộ cùng đúng không thay thế native oracle.",
+    "N1 vẫn mở do chưa xác minh uplink di động/ISP-CGNAT; K6c/K7 WAN giả lập giữ scope, không sửa lịch sử. Hạ tầng VPS/OCI chỉ local."
+  ]
+}

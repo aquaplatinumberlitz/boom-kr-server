@@ -2,10 +2,14 @@
 //! Wire adapters reference CP028/034/035/229/230; no gameplay is implemented here.
 //! Generation arguments fence internal work; raw585/99 lack a measured visit/round token.
 //! Passing a current generation cannot prove an old wire ACK was rejected.
+use crate::rules::SlotAllocation;
 use std::{
     collections::{BTreeMap, BTreeSet},
     io,
 };
+/// Backend/session player identity. Slot indexes are allocated separately.
+pub type PlayerId = u32;
+
 /// CP213 fixed operator layouts; not a client team-selection protocol.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Deserialize)]
 pub enum EightTeamLayout {
@@ -17,7 +21,7 @@ pub enum EightTeamLayout {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Membership {
-    pub identity: u32,
+    pub identity: PlayerId,
     pub connection: u64,
     pub visit: u64,
 }
@@ -52,8 +56,8 @@ pub enum Phase {
 }
 #[derive(Clone, Debug)]
 pub struct Room {
-    pub members: BTreeMap<u32, Member>,
-    pub host: Option<u32>,
+    pub members: BTreeMap<PlayerId, Member>,
+    pub host: Option<PlayerId>,
     pub phase: Phase,
     visit: u64,
     round: u64,
@@ -61,6 +65,7 @@ pub struct Room {
     pub(crate) pickups: crate::pickups::Round,
     pub(crate) bombs: crate::bombs::Ledger,
     capacity: usize,
+    allocation: SlotAllocation,
     fixed_teams: Vec<u8>,
     sealed_abort: bool,
     pub(crate) bomb_capacity: Vec<usize>,
@@ -79,6 +84,7 @@ impl Default for Room {
             pickups: crate::pickups::Round::default(),
             bombs: crate::bombs::Ledger::default(),
             capacity: 2,
+            allocation: SlotAllocation::LegacyIdentity,
             fixed_teams: vec![0, 1],
             sealed_abort: false,
             bomb_capacity: crate::rules::default_bomb_capacity(2),
@@ -89,12 +95,17 @@ impl Default for Room {
 }
 impl Room {
     /// Explicit diagnostic profiles measured at CP235/200. Not general admission.
+    #[cfg(test)]
     pub(crate) fn with_capacity(capacity: usize) -> io::Result<Self> {
+        Self::with_allocation(capacity, SlotAllocation::LegacyIdentity)
+    }
+    pub(crate) fn with_allocation(capacity: usize, allocation: SlotAllocation) -> io::Result<Self> {
         if !matches!(capacity, 2 | 4 | 8) {
             return Err(io::Error::other("unsupported diagnostic room capacity"));
         }
         Ok(Self {
             capacity,
+            allocation,
             fixed_teams: (0..capacity).map(|slot| (slot % 2) as u8).collect(),
             bomb_capacity: crate::rules::default_bomb_capacity(capacity),
             ..Self::default()
@@ -137,12 +148,12 @@ impl Room {
     }
     pub fn enter(
         &mut self,
-        identity: u32,
+        identity: PlayerId,
         connection: u64,
         create: bool,
     ) -> io::Result<Membership> {
         if self.sealed_abort
-            || !(1..=self.capacity as u32).contains(&identity)
+            || identity == 0
             || self.phase != Phase::Idle
             || self.members.contains_key(&identity)
             || self
@@ -155,11 +166,32 @@ impl Room {
             ));
         }
         if create {
-            if identity != 1 || self.host.is_some() || !self.members.is_empty() {
+            if (self.allocation == SlotAllocation::LegacyIdentity && identity != 1)
+                || self.host.is_some()
+                || !self.members.is_empty()
+            {
                 return Err(io::Error::other("fixed room requires first host create"));
             }
         } else if self.host.is_none() || self.members.len() >= self.capacity {
             return Err(io::Error::other("no fixed room or full"));
+        }
+        let slot = match self.allocation {
+            SlotAllocation::LegacyIdentity => identity
+                .checked_sub(1)
+                .filter(|slot| (*slot as usize) < self.capacity)
+                .map(|slot| slot as u8),
+            SlotAllocation::FirstVacant => (0..self.capacity)
+                .find(|slot| {
+                    !self
+                        .members
+                        .values()
+                        .any(|member| usize::from(member.slot) == *slot)
+                })
+                .map(|slot| slot as u8),
+        }
+        .ok_or_else(|| io::Error::other("no eligible room slot"))?;
+        if self.members.values().any(|member| member.slot == slot) {
+            return Err(io::Error::other("room slot already occupied"));
         }
         let visit = self
             .visit
@@ -175,8 +207,8 @@ impl Room {
             identity,
             Member {
                 key,
-                slot: (identity - 1) as u8,
-                team: self.fixed_teams[(identity - 1) as usize],
+                slot,
+                team: self.fixed_teams[usize::from(slot)],
                 ready: false,
                 setup: false,
                 late_after_abort: 0,
@@ -477,6 +509,50 @@ impl Room {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn unrelated_player_ids_allocate_slots_and_fence_reused_memberships() {
+        let mut room = Room::with_allocation(2, SlotAllocation::FirstVacant).unwrap();
+        assert!(room.enter(0, 1, true).is_err());
+        let creator = room.enter(70000, 11, true).unwrap();
+        let guest = room.enter(42, 22, false).unwrap();
+        assert_eq!(room.host, Some(70000));
+        assert_eq!((room.members[&70000].slot, room.members[&42].slot), (0, 1));
+        assert!(room.enter(90000, 33, false).is_err());
+        assert!(room.enter(70000, 44, false).is_err());
+        let visits = room.visit;
+        room.leave(creator).unwrap();
+        assert_eq!(room.host, Some(42));
+        assert!(room.enter(90000, 22, false).is_err());
+        assert_eq!(room.visit, visits);
+        let replacement = room.enter(70000, 44, false).unwrap();
+        assert_eq!(room.members[&70000].slot, 0);
+        assert_eq!(room.host, Some(42));
+        assert!(replacement.visit > creator.visit);
+        assert!(!room.current(creator));
+        assert!(room.leave(creator).is_err());
+        assert!(room.current(replacement) && room.current(guest));
+        room.setup(replacement).unwrap();
+        room.setup(guest).unwrap();
+        room.ready(replacement).unwrap();
+        let round = room.begin(guest).unwrap();
+        assert!(!room.deliverable(creator, Some(round)));
+        assert!(room.ack(creator, round).is_err());
+        assert!(!room.ack(replacement, round).unwrap());
+        assert!(room.ack(guest, round).unwrap());
+    }
+    #[test]
+    fn legacy_allocation_keeps_identity_slots_and_rejects_out_of_range_atomically() {
+        let mut room = Room::default();
+        assert!(room.enter(42, 11, true).is_err());
+        assert!(room.enter(2, 22, true).is_err());
+        let host = room.enter(1, 11, true).unwrap();
+        let visit = room.visit;
+        assert!(room.enter(42, 22, false).is_err());
+        assert_eq!(room.visit, visit);
+        assert!(room.current(host));
+        let guest = room.enter(2, 22, false).unwrap();
+        assert_eq!(room.members[&guest.identity].slot, 1);
+    }
     fn prepared() -> (Room, Membership, Membership) {
         let mut r = Room::default();
         let a = r.enter(1, 11, true).unwrap();

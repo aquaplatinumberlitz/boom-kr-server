@@ -4,6 +4,16 @@
 use crate::room_io::Config;
 use std::io;
 
+/// Legacy profiles retain identity-1 slots; general admission allocates a
+/// vacant slot independently of the backend/session player identity.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub(crate) enum SlotAllocation {
+    #[default]
+    LegacyIdentity,
+    FirstVacant,
+}
+
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub(crate) enum ResultPolicy {
     #[default]
@@ -52,6 +62,7 @@ pub(crate) enum TeamPolicy {
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct RoomRules {
+    pub(crate) slot_allocation: SlotAllocation,
     pub(crate) result: ResultPolicy,
     pub(crate) departure: DeparturePolicy,
     pub(crate) bomb: BombPolicy,
@@ -97,6 +108,7 @@ impl RoomRules {
         }
         Ok((
             Self {
+                slot_allocation: cfg.slot_allocation,
                 result: if cfg.four_results || cfg.eight_battle {
                     ResultPolicy::Teams
                 } else if cfg.battle.is_some() {

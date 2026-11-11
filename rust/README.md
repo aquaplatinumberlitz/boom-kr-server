@@ -438,3 +438,10 @@ R1b/CP262 chuyển lựa chọn nội bộ trong `RoomRules` thành Result/Depar
 JSON compatibility của profile cũ giữ nguyên. Fixture `rank` cung cấp bytes, không bật luật.
 [Contract và giới hạn](../docs/PROTOCOL.md#rust-r1b-policies), [acceptance cuối R1](../docs/PLAN.md#rust-r1).
 298ca TCP mỗi binary và3189frame phòng khớp; candidate chưa native, không thừa kế chứng nhận ARM/Internet CP261.
+
+
+R1c/CP263: `fixed_room.slot_allocation` mặc định `legacy_identity`; opt-in `first_vacant` cấp slot trống
+độc lập với player ID, người tạo là host. Chưa mở arbitrary account/profile/transport bằng cấu hình này.
+Một template106 tái tạo và đối chiếu mọi fixture cũ trước bind; opaque khác nhau bị từ chối dù pin hợp lệ.
+94 Rust/305 TCP và3189 frame cũ khớp; [contract/giới hạn](../docs/PROTOCOL.md#rust-r1c-player-slots).
+Native candidate vẫn thuộc acceptance cuối R1, tiếp R1d theo PLAN.

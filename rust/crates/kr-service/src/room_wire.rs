@@ -14,18 +14,34 @@ pub fn player(template: &[u8], member: &Member, chief: bool) -> io::Result<Vec<u
     {
         return Err(io::Error::other("wrong pinned player106 identity"));
     }
+    player_state(template, member.slot, member.team, member.ready, chief)
+}
+/// Update only measured slot/state fields. Shared by runtime projection and
+/// the startup comparison against the retained legacy106 fixture inputs.
+pub(crate) fn player_state(
+    template: &[u8],
+    slot: u8,
+    team: u8,
+    ready: bool,
+    chief: bool,
+) -> io::Result<Vec<u8>> {
+    if ![200, 204].contains(&template.len()) || slot >= 26 || team > 1 {
+        return Err(io::Error::other("unsupported player106 slot/team"));
+    }
     let mut body = template.to_vec();
-    body[0] = put(u64::from(member.slot), Width::U8)?[0];
+    body[0] = put(u64::from(slot), Width::U8)?[0];
     let prior = uint(&body[12..16], Width::U32)?;
     let low = if chief {
         2
-    } else if member.ready {
+    } else if ready {
         4
     } else {
         0
     };
-    let team = u64::from(member.team); // fixed measured alternating diagnostic teams
-    body[12..16].copy_from_slice(&put((prior & 0xffff0000) | low | (team << 5), Width::U32)?);
+    body[12..16].copy_from_slice(&put(
+        (prior & 0xffff0000) | low | (u64::from(team) << 5),
+        Width::U32,
+    )?);
     Ok(body)
 }
 pub fn slot(template: &[u8], member: &Member, chief: bool) -> io::Result<Vec<u8>> {

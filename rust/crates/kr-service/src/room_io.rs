@@ -3,7 +3,7 @@ use super::{ActorProfile, LobbyPacketPin, Reply};
 use crate::bombs;
 use crate::{
     pickups,
-    room::{Member, Membership, Phase, Room},
+    room::{Member, Membership, Phase, PlayerId, Room},
     room_wire,
     rules::{self, DeparturePolicy, ResultPolicy, RoomRules, TeamPolicy},
 };
@@ -22,6 +22,8 @@ use tokio::sync::mpsc;
 pub struct Config {
     pub title: String,
     pub packets: HashMap<String, LobbyPacketPin>,
+    #[serde(default)]
+    pub(crate) slot_allocation: rules::SlotAllocation,
     #[serde(default)]
     pub terrain: Option<crate::terrain::Config>,
     #[serde(default)]
@@ -90,6 +92,7 @@ pub struct Batch {
 }
 pub struct Runtime {
     model: Room,
+    players: HashMap<PlayerId, Reply>,
     packets: HashMap<String, Reply>,
     channels: HashMap<u32, Channel>,
     last_visits: HashMap<u32, u64>,
@@ -141,7 +144,7 @@ pub struct Session {
 fn err(s: &str) -> io::Error {
     io::Error::other(s.to_owned())
 }
-fn player_alias(id: u32) -> io::Result<&'static str> {
+fn legacy_player_alias(id: u32) -> io::Result<&'static str> {
     match id {
         1 => Ok("player_A"),
         2 => Ok("player_B"),
@@ -192,7 +195,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
             continue;
         }
         expected.push((
-            player_alias(actor.identity)?,
+            legacy_player_alias(actor.identity)?,
             106,
             190 + 2 * actor.name.len(),
         ));
@@ -236,16 +239,35 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
     if room_wire::listing_title(&packets["listing"].payload)? != cfg.title.as_bytes() {
         return Err(err("fixed listing title mismatch"));
     }
+    // Normalize the old per-player fixture interface once. Runtime projections
+    // come from one template; a changed opaque field must fail before bind.
+    let template_reply = packets[legacy_player_alias(1)?].clone();
+    let template = crate::player_template::PlayerTemplate::parse(&template_reply.payload)?;
+    let mut players = HashMap::new();
     for actor in actors.values() {
         if cfg.ninth_admission_probe && actor.identity == 9 {
             continue;
         }
-        let alias = player_alias(actor.identity)?;
-        if read_uint(&packets[alias].payload[1..5], Width::U32).map_err(io::Error::other)?
-            != u64::from(actor.identity)
-        {
-            return Err(err("room player identity mismatch"));
+        let captured = &packets[legacy_player_alias(actor.identity)?];
+        let mut body = template.project(actor.identity, &actor.name)?;
+        let slot = (actor.identity - 1) as u8;
+        body = room_wire::player_state(&body, slot, slot % 2, false, actor.identity == 1)?;
+        let mut template_header = template_reply.header;
+        let mut captured_header = captured.header;
+        // The codec recomputes length for the shorter measured name5 profile.
+        template_header[13..17].fill(0);
+        captured_header[13..17].fill(0);
+        if body != captured.payload || template_header != captured_header {
+            return Err(err("room player common-template mismatch"));
         }
+        players.insert(
+            actor.identity,
+            Reply {
+                header: template_reply.header,
+                opcode: 106,
+                payload: body,
+            },
+        );
     }
     let ready = actors
         .values()
@@ -301,7 +323,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
             );
         }
     }
-    let mut model = Room::with_capacity(count)?;
+    let mut model = Room::with_allocation(count, rules.slot_allocation)?;
     if let Some(layout) = cfg.eight_team_layout {
         model.set_eight_layout(layout)?;
     }
@@ -312,6 +334,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
     model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
         model,
+        players,
         packets,
         channels: HashMap::new(),
         last_visits: HashMap::new(),
@@ -349,29 +372,20 @@ impl Runtime {
         }
         p
     }
-    fn player(&self, m: &Member, host: Option<u32>) -> io::Result<Reply> {
-        let alias = player_alias(m.key.identity)?;
-        Ok(self.reply(
-            alias,
-            None,
-            Some(room_wire::player(
-                &self.packets[alias].payload,
-                m,
-                host == Some(m.key.identity),
-            )?),
-        ))
+    fn player(&self, m: &Member, host: Option<PlayerId>) -> io::Result<Reply> {
+        let mut reply = self
+            .players
+            .get(&m.key.identity)
+            .ok_or_else(|| err("missing current player projection"))?
+            .clone();
+        reply.payload = room_wire::player(&reply.payload, m, host == Some(m.key.identity))?;
+        Ok(reply)
     }
-    fn slot(&self, m: &Member, host: Option<u32>) -> io::Result<Reply> {
-        let alias = player_alias(m.key.identity)?;
-        Ok(self.reply(
-            alias,
-            Some(110),
-            Some(room_wire::slot(
-                &self.packets[alias].payload,
-                m,
-                host == Some(m.key.identity),
-            )?),
-        ))
+    fn slot(&self, m: &Member, host: Option<PlayerId>) -> io::Result<Reply> {
+        let mut reply = self.player(m, host)?;
+        reply.opcode = 110;
+        reply.payload = room_wire::slot(&reply.payload, m, host == Some(m.key.identity))?;
+        Ok(reply)
     }
     fn member_batch(
         key: Membership,
@@ -1729,6 +1743,20 @@ impl Drop for Session {
 }
 
 #[cfg(test)]
+fn synthetic_players(packets: &HashMap<String, Reply>) -> HashMap<PlayerId, Reply> {
+    packets
+        .values()
+        .filter(|packet| packet.opcode == 106)
+        .map(|packet| {
+            (
+                read_uint(&packet.payload[1..5], Width::U32).unwrap() as PlayerId,
+                packet.clone(),
+            )
+        })
+        .collect()
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
     #[test]
@@ -1798,6 +1826,7 @@ mod tests {
         let (tb, mut rb) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
             model,
+            players: synthetic_players(&packets),
             packets,
             channels: HashMap::from([
                 (
@@ -1918,6 +1947,7 @@ mod tests {
         let (tb, mut rb) = mpsc::channel(2);
         let mut runtime = Runtime {
             model: Room::default(),
+            players: HashMap::new(),
             packets: HashMap::new(),
             channels: HashMap::from([
                 (
@@ -2154,7 +2184,7 @@ mod four_abort_tests {
                 .copy_from_slice(&kr_wire::write_uint(key.identity as u64, Width::U32).unwrap());
             body[12..16].copy_from_slice(&kr_wire::write_uint(0, Width::U32).unwrap());
             packets.insert(
-                player_alias(key.identity).unwrap().into(),
+                legacy_player_alias(key.identity).unwrap().into(),
                 packet(106, body),
             );
             let (sender, inbox) = mpsc::channel(8);
@@ -2169,6 +2199,7 @@ mod four_abort_tests {
         }
         let shared = Arc::new(Mutex::new(Runtime {
             model,
+            players: synthetic_players(&packets),
             packets,
             channels,
             last_visits: HashMap::new(),
@@ -2459,6 +2490,7 @@ mod ninth_probe_tests {
         let (sender, inbox) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
             model,
+            players: HashMap::new(),
             packets: HashMap::from([(
                 "join".into(),
                 Reply {
@@ -2494,6 +2526,7 @@ mod ninth_probe_tests {
                 departure: DeparturePolicy::FenceActive,
                 teams: TeamPolicy::BalancedManner,
                 ninth_admission_probe: true,
+                slot_allocation: rules::SlotAllocation::LegacyIdentity,
             },
             abort: None,
         }));
