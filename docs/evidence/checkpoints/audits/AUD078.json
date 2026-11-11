@@ -1,0 +1,70 @@
+{
+  "id": "AUD078",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP261",
+  "recorded_utc": "2026-11-11T16:35:23.249035+00:00",
+  "auditor": "Codex manual self-audit; independentreviewwaived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/internet-observation.json",
+    "local/research/codex/n1-native-wait-r8/native/timer-verification.json",
+    "local/research/codex/n1-native-wait-r8/timing-verification.json",
+    "local/research/codex/n1-native-wait-control-r9/derived/verification.json",
+    "local/research/codex/n1-native-wait-control-r9/derived/A-denial-timing.json",
+    "local/research/codex/n1-native-wait-control-r10/life-verification.json",
+    "local/research/codex/n1-native-wait-control-r10/ownership-verification.json",
+    "local/research/codex/n1-native-wait-control-r10/udp-verification.json",
+    "local/research/codex/n1-native-wait-control-r10/peer153-probe-correction.json",
+    "local/research/codex/n1-native-wait-control-r10/ui-review.json",
+    "local/research/codex/n1-native-shared-r11/shared-verification.json",
+    "local/research/codex/n1-physical-uplink-provenance-r1/verification.json"
+  ],
+  "method": "Manual sourcefirst CP058field51/cacheCP015wait→R8actualthreshold→R9/R10serverinputcontrol/nativechain; native/PCAP/frame/SQLite/argv/roster/life/getters/UIreports inspected and matched twooutcomes/thirdclock/sharednegative. Inspected5actualimages. RetainedFinishmarker/crosshosttimestamp/reportendianfailures andexcludedwrongclaims; no newKRrunsolelyreportfix. ExactsharedNATfrontends/source/metadataownershipchecked independently. Readphysicaluplinksourceaudit; no sourceevidence forrequiredmobile/ISP-CGNAT, no gatepromotion.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Agentmobile/CGNATlabels andpostNATtuple might be mistaken for PLANrequiredphysicaluplink attestation.",
+      "correction": "ObservedInternet/NATportremap nativegamepath yes; operator/mobile/ISP-CGNATunattestedinsearchedsource. Oldunsupportedlabels retainedbutexcluded; N1OPEN/acceptanceunchanged, no IPprefixinference.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/internet-observation.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "GDBFinish getter/peer_end markers orcrosshostclockdifference couldimplyexactnativeconsumer/latencyproof.",
+      "correction": "R9wronggetterFinishmarkerexcluded/R10directpostcallAX+dialog confirms30000. Peer_endpayload10/21cursor0 excludedfrom153handlerproof; threenativeframer15397/return0each andnativeUDPhelper/apply independent. Afrontendexpiredtimeboundfromsame-serverPCAPSYN→request84.744s, not143scrosshostlatency.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/internet-observation.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "R10success could hide sharedNATfixedIPbinding orpromote fullaccountservice.",
+      "correction": "R11samepublicsource/2correctfrontends/Anativehold8s/Bauth1nogrant explicitlyrecordsR1flimit. No sharedNATgame/generalprofile/nativeInternetlifecycle/fullM5/production claim.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "N1 remainsOPEN pendingexactrequiredmobile/ISP-CGNATprovenance ormeasurement; no acceptance change or inference from IPprefix/agentlabels.",
+    "SharedNATtwo-accountsupport is absent; R11negative records currentbindinglimit, inputtoR1f, notan acceptedplaymode.",
+    "Actualinfrastructuretopology/access/configuration/raw private local; public metadata containsgenericcontracts/counts/hashlocators only.",
+    "30000isexplicitserverdesigncontrol, notoriginaldefault/timermax; genericprofile/namevariants/otherauthfields remain separate. Sourceintegration requiresitsownacceptance.",
+    "Knownfixed2accountprofile/Winecopies only; noInternetexpiry/revoke/stale/disconnect/fullM5, production/50users/8rooms/otherNATclasses/IPv6 claim.",
+    "PartialfailureR8/R9, REA450stimeout andprobe/reportmistakes retained. Originalsource/raw/checkpoints unchanged; no liveinferiorgamefunctioncalls.",
+    "Independent review waived; gate decisions manual; K6cWANemulated/K7 acceptedscopes unchanged.",
+    "No completedN1featuregroup orperiodicdeadline; audittriggerscontradiction, notgateacceptance. R1b-eindependentrefactorperowneraccountmergedcondition."
+  ]
+}

@@ -1,6 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
+CP261: actualInternetpath2KR/account/profile/room/basic2oppositeoutcomes/reset/Start3 đođạt;99postNATmismatch/Bobserved-source reply/nativeUDP2chiều cóproof. SharedNATnegativeBdenied/Aheld8s xácnhậnR1f gap. N1OPEN: mobile/ISP-CGNAT môi trường tốithiểu chưaxácnhận; khôngsuytừIP/agentlabel. NEXT chốtprovenanceuplink vàfield51policyimplementation; R1brefactorWIP cóthểtiếpđộc lập theođiềukiện accountmerge củaowner, chưabỏN1dependencyR1f/M8.
 CP260: controlled network/mapping metadata account có90Rust/hai59TCP/9network+5metadata guards; native auth0 trên hai KR qua NAT. Lỗi chờ channel có trước HTTP JSON rỗng; N1OPEN, chưa direct/learning/relay. NEXT đo timer/recv trước modal2 tại1113AA0, đối chiếu packet17 trên PCAP; không dựng HTTPstub như causalfix. R1bWIP/projector giữ nguyên; không đóng nhóm/gate.
 CP258: account-owned fixed2/basic end-to-end + revoke/expiry/disconnect + manualfresh rejoin/oldUDPdrop-currentpositive đã đạt scope;5run280raw375exactTCP/cleanup0. M5OPEN/generalprofile/nativeDBqueuefault/recoverylimits; AUD076auditnhóm, không lịch4CP. Internet thật chưa kiểm.
 
@@ -245,25 +246,21 @@ Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã
    gồm PR329/R1a. WIP projector gồm 5 file, 88 test Rust và 17 ca TCP được giữ trong snapshot và stash riêng;
    chưa chạy native hoặc merge. Không tiếp tục projector trước N1/R1.
 
-   **NEXT: [RUST-N1](#rust-n1).** Phải đối chiếu cổng tự báo trong 99 với nguồn UDP sau NAT, đo từng chiều,
-   đích native trả lời (nguồn quan sát hay 153), hai NAT khác nhau và trường hợp chung NAT. Chỉ chọn (a)/(b)/(c)
-   khi có bằng chứng. VPS hiện có 12 payload nonce qua WG đóng gói trong SSH/TCP; UDP trực tiếp nhận 0/12,
-   NIC VPS không thấy gói ở các lượt lịch sử đó. **Delta hiện hành:** quyền điều khiển đã dùng được;
-   tiền kiểm UDP trực tiếp và routing hai chiều có raw/capture phù hợp, chưa là KR native acceptance.
-   Lượt đầu lỗi JSON điều phối; lượt kế hai KR có native auth result0 nhưng A chủ động FIN channel
-   sau frame17 trên transport, trước own291/phòng. Frame17 khớp capture các đầu; chưa có native17 consumer/99.
-   Đối chứng account kế tiếp xác nhận hai native request frontend32/shape đúng nhưng IP tự báo khác
-   TCP source sau NAT, chạm guard metadata hẹp; cả hai bị từ chối trước cấp identity. Raw/cleanup giữ nguyên.
-   Mapping metadata tường minh đã qua90Rust/hai59TCP/5guard config và native hai authresult0; actual-peer/session
-   ownership giữ nguyên, chưa sửa shared-NAT binding/R1f. Lượt native tiếp xác nhận input JSON HTTP content size0
-   trước throw/SIGABRT; không có own291/99. Đối chứng copy8d empty-guard chạy nhánh empty nhưng vẫn SIGILL cleanup,
-   không startupfix. **R7 sửa hướng điều tra:** native modal2 return1113AA0 và globalclose1254CED xảy ra trước
-   actualURL/InternetOpenUrlAreturn0→emptyJSONthrow; chưa có send/readHTTP. HTTP lỗi là đoạn sau của đường đóng,
-   chưa giải thích mấtchannel ban đầu. **Phép tiếp:** reuseCP015postwait timer1113Axx, đo elapsed/threshold/socket
-   recv và exact17 timing trước modal2, không dựng contentstub/bypass cleanup hoặc mởSDK rộng.
-   Chỉ sau native channel/own291 mới đo99/UDP. Không quy diagnostic17 cũ cho account metadata guard hoặc coi
-   content thất bại là bằng chứng cần relay. Run/seal/cleanup đã có; raw/định danh hạ tầng chỉ giữ `local/`.
-   N1 vẫn thiếu actual99/153/UDP hai chiều, hai vòng và ca chung NAT; không suy gameInternet từ tiền kiểm.
+   **[RUST-N1](#rust-n1): đã có native quan sát trên đường Internet, còn mở điều kiện môi trường.**
+   [CP261](PROTOCOL.md#rust-internet-observation) xác nhận field51/u16/body121 của auth137 đi qua setter/cache194/
+   getter13B4030→dialog460. Fixture0 gâyactualtimeout trước17; control30000 và frontendTTL120 (config hiện có)
+   cho hai native account/own291/room/basic/haioutcomes/reset/Start3, không patchthreshold/client.
+   Native99/153 soactualpostNAT: Aportremap, Btrả lời vềnguồnquan sát; UDP2chiều/nativehelper/apply và3clock cóproof.
+   Không cần relay hoặc serverhọcport trong đường đã đo; không suy thành mọiNAT/holepunch/supportInternetphổquát.
+   Ca cùngNAT actual2native/2correctfrontend/sharedpeer: Aown291rendergiữ8s, Bauth1/nogrant do lookupmetadata theoIP;
+   đưa vàoR1f session/lease transportidentity, không coi đây là sharedNATgameđạt.
+   **Còn thiếu trước đóngN1 đúng acceptance:** xácnhận uplinkA là diđộng/CGNAT thật hoặc đonative ởuplinkphùhợp.
+   Nguồn đã lưu chỉ xácnhận Internet/publictuple/NATđổicổng; nhãnagent cũ mobile/CGNAT khôngcóprovenance bịloại.
+   Ownerquestion đangchờ; không tự đổimôi trường hoặc mở thêmISP/topology. Chưa tuyênbốN1passed.
+   Phầnquan sátkiếntrúc đã đủ cho đườnghiệncó; R1b→R1e táicấutrúc khôngđổiwire độc lập cóthểtiếptục theoowner
+   choR1bắtđầusauaccountmerge; R1f/M8 vẫn giữN1/mạngchungNAT limits. Không làm lạiJSONguard/SDK/provider rộng.
+   Field51control chỉ ởfixturelocal; phép triểnkhai policytườngminh vàoadapter cần giữdefault/nativebinaryprovenance
+   và acceptance riêng, không tựđổi toànzeroauthprofile thànhoriginaldefault. Raw/địnhdanh/cấuhìnhVPS chỉlocal.
 
    Sau N1, làm R1b→R1g theo bảng. R1a đã merge PR329/`073700e`; không thêm tính năng hoặc đổi byte wire.
    R1f dùng kết quả N1. Cuối R1 mới chạy native hồi quy 2/4/8 người và đường account theo acceptance.
@@ -518,6 +515,12 @@ Acceptance: kết luận có bằng chứng cho một trong ba nhánh — (a) tr
 endpoint thật (đầu vào cho R1f); (c) cần relay, khi đó mở mốc thiết kế relay riêng trước M7. Một ca hai người chơi
 chung một NAT cũng phải được ghi nhận, vì binding theo IP nguồn hiện tại không phân biệt được họ.
 Ngoài phạm vi: mọi loại NAT, IPv6, nhiều ISP. Một nhà mạng di động và một IP public là đủ cho quyết định kiến trúc.
+
+**CP261 — quan sát chưa đóng gate:** recipe hai account/basic đạt haioutcomes/reset/Start3 vàactualUDP2chiều;
+99 tựbáo≠postNAT ởA, Bnative trảvềnguồnquan sát. Ca chungNAT đãghi negative; session/lease binding R1f cònthiếu.
+Nhánh(a) **chỉ trên đường đã đo**, không cần relay/serverhọcport ởđườngnày. Chưa xácnhận điều kiện uplinkdiđộng/
+ISP-CGNAT ởtrên; không dùngnhãnagent/IPprefix làm bằngchứng, giữN1OPEN và acceptance nguyênvẹn.
+[Provenance/giới hạn/phép tiếp](PROTOCOL.md#rust-internet-observation).
 
 <a id="rust-r1"></a>
 **RUST-R1 — tái cấu trúc lõi phòng trước khi xây tiếp.**

@@ -33,6 +33,16 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP261: hai KR thật đã qua account → phòng/basic → hai kết quả đối nghịch/reset → Start3 trên đường Internet đã đo.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-internet-observation), [bằng chứng](docs/evidence/rust-service/internet-observation.json).
+Native login field51 điều khiển ngưỡng chờ channel: fixture0 ghi đè cache thành0 gây timeout; control30000 vào sảnh ở cảhai.
+Control là policy server được khai rõ, clientcopy4b giữ nguyên. Runtime ARM/source giữ CP260; frontendTTL120 là config đã hỗ trợ.
+752TCP/106reply/91raw,78nativeUDP ingress/77helper-apply/78join các capture,2.286copiedgetters,cleanupđạt.
+Cổng A tự báo99 khác cổng sau NAT; B thực gửi về nguồn quan sát được, không chỉ cổng153. Ca chungNAT: A giữ sảnh8s,
+B đúng frontend/session nhưng bị binding theoIP/metadata từ chối; R1f còn phải sửa.
+**N1 chưa đóng:** chưa có nguồn xác nhận uplink di động/CGNAT của ISP như môi trường tối thiểu trong PLAN; không suy từ IP.
+Kết quả chỉ chứng nhận đường đã đo; chưa chứng nhận mọi NAT/ISP hoặc sharedNATplay. K6c/K7scopegiữ; detailsVPS chỉlocal.
+
 **CP260: tiền kiểm Internet đã thông; native account qua NAT nhận auth thành công, N1 vẫn mở.**
 [Contract và giới hạn](docs/PROTOCOL.md#rust-controlled-network), [bằng chứng](docs/evidence/rust-service/controlled-network.json).
 Rust có chế độ mạng controlled với allowlist và mapping metadata login tường minh; quyền account/session vẫn theo transport thật.
