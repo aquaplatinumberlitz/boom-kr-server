@@ -1,0 +1,40 @@
+{
+  "id": "AUD072",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP251",
+  "recorded_utc": "2026-11-11T03:28:38.083344+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/eight-baseline.json",
+    "docs/evidence/rust-service/eight-teams.json",
+    "docs/evidence/rust-service/argv-provenance.json",
+    "docs/evidence/checkpoints/records/CP250.json",
+    "docs/evidence/checkpoints/records/CP251.json"
+  ],
+  "method": "Manual ordered read→exact frozenconfig vsrun.role_args/scalarargs→source launch operand; hash each retainedconfig, no runtime repetition. Followup currentdocs correction; immutable complete/audit/raw kept. No provider/bodyRE.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP250 claimedR5restoredperrole32fromCP210; CP251 reusedthatinterpretation.",
+      "correction": "Actual13 perrole; scalar32unused. CP210also13actual. Keep gameplay/life/results/negativeproof; withdraw32-restoration/argchangeinference. Newboundedactual32controlpossible, no causalstartupfix.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/argv-provenance.json",
+        "docs/evidence/rust-service/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Native9fixture-TCP/nativeconsumer scope remainsinprogress; no ninthnativeclaim yet.",
+    "Free1v7native2outcomes/selector0persist stillmissing; actualperrole32control onlyafterguardingargv/previousrunseal.",
+    "Periodic CP252 audit stilldue; AUD072 doesnotreset248→252 cadence.",
+    "OtherM5authbridge/Btrfsdurability/fullgame/Internet remainseparate."
+  ]
+}

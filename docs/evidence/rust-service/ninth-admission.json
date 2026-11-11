@@ -1,0 +1,61 @@
+{
+  "schema": "kre-rust-ninth-admission-v1",
+  "checkpoint": "CP252",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/PROTOCOL.md#rust-ninth-admission",
+  "baseline": "9b37b14de663f0cb98807a445ce20b08965372e6",
+  "binary_sha256": "4d21781aabbd3ab78561e378f65e41c3b04db252e5ccc8bf9b0d8451da95a8c7",
+  "implementation": "Explicit ninth_admission_probe permits nine diagnostic lobby identities with exactly eight room slots. Nativevisitor9 valid82/fullidle model8 returns generic87/result2 beforeenter/slot/visit/round. No effect onothermembers; queuefailure atomic. Notgeneralvacancy/replacement admission.",
+  "native": {
+    "path": "local/research/codex/rust-ninth-native-r2",
+    "actual_clients": 1,
+    "synthetic_occupants": 8,
+    "diagnostic_identity": 9,
+    "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "10.0-20260425",
+    "run_sha256": "290775e86b5b04bb2a67679a134b57d5dc3eebfe616dad81103b41c5a34fd755",
+    "raw_count": 19,
+    "duration_s": 35.407594284,
+    "cleanup": {
+      "net_namespace": "net:[4026533182]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "tcp_records": 1384,
+    "exact_replies": 249,
+    "proof": "20TCP/9channelidentities/8syntheticsetup-ready beforeactual9request82; nativeauth137/own291128/renderKRPeer9; C2S6ID9; nativeerror2branch→ordinaryReturn→handler_end1of1/errors0/hold3s/no585-noRoomgrant; twoUIimages reviewed."
+  },
+  "tests": {
+    "workspace": 73,
+    "service": 68,
+    "wire": 5,
+    "syntheticTCP": 6,
+    "prebind": 4
+  },
+  "argv_correction": "docs/evidence/rust-service/argv-provenance.json",
+  "free_control": {
+    "result": "failed_pre_room",
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "run": "local/research/codex/rust-eight-free-argv32-r1",
+    "binary_sha256": "4d21781aabbd3ab78561e378f65e41c3b04db252e5ccc8bf9b0d8451da95a8c7",
+    "copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "raw_count": 66,
+    "duration_s": 48.888173952,
+    "run_sha256": "69f87cd77f84234a8a7a8e1e44f9576beffd8bb63ab8853d552233dd2b634c8f",
+    "observation": "All8perrolePopenargumentlists32 andfrozen; independentCAcommandlineverifiedA-GincludingfailedD, Hnotobservedbeforecleanup. Dauth17end→EOFbeforeown291, A-B-Cprofile-renderpositive, Eauthpartial/F-Hnotauthdoneatfailclosed. No Roomrequests/Battle/Freeoutcomes.",
+    "inference": "Actual32correctiondoesnotresolvepost17startup onthisrun. Withdrawanyinference32alonecausallyfixesSDK; samefamilyasCP250HG/CP251D-Gunknown.",
+    "limits": "NewRustbinaryincludesdefault-offninthprobe; explicitinputcontrol/notclaimsinglefactorcausalproof. Allsourcefrozen/exit1/cleanup0/rawsealed; notnativeFreegameplay orM4acceptance.",
+    "next": "No furtherFree retrieswithoutnewobservable. Native9criterion fulfilled inlimitedoneactual+8syntheticenvironment; M5worker-to-KR/authownershipbridge independentnext perPLAN."
+  },
+  "limits": [
+    "One nativevisitorand8syntheticoccupants; not9simultaneousnativeclients ornew8nativegameplay. Identity9alreadyexistsinlobby; join grantsno Roommembership/slot/visit/round.",
+    "Generic2nativeconsumer confirmedCP227; roomcapacityreasonisourdesign, notoriginalfullroom-specificcode. Listingcard retainsfixedcachedoccupancy whileauthoritativemembership8 isserverpolicy; notdynamicroomlistacceptance.",
+    "NativeR1error2branchpassedbutcontrollerwaitedforhandler_endwithoutdismissingmodal; synthetic120sidle eventuallyclosed/runexit1/17raw retained. R2ordinaryReturn fix/new35.408srun. No serverchangefornativecontrol.",
+    "Originalverifier rejectedallnonEOFcloseevents; postrunanalysis classifies7Brokenpipe fanoutduringownedsyntheticteardown withall9channelFIN/RSTaftercompletion/PCAPfulltuple proof. Allerrors/raw retained, no runtimererunjustchecker.",
+    "AUD072correctsCP250perrole32claim: actualold13/scalar32unused. Native9andFreecontrolassertactual32Popenargs; independentCAprocargvrecordedforvisitor9andFreeA-G(includingfailedD), Hnotobservedbeforecleanup.",
+    "Freeactual32control48.888s/66raw stopsDpost17preRoom; noFree2outcomes/selector0persist/causalSDKfix/M4closure. No furtherretrywithoutnewobservable; M5bridgeindependentnext.",
+    "Privatevirtualhost+root8loopbacksynthetics/sharedkernel/noexternalroute/Wineaccepted/TMPFSrawexporthash; noBtrfsdurabilityfix/fullauth/fullgame/production. Internet thật chưa kiểm."
+  ]
+}

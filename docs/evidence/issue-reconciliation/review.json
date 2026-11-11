@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP251",
+  "as_of": "CP252",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -873,8 +873,8 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP250Rust8Manner4v4twooutcomes/reset-Start3 mergedPR321/de84217; PythonCP213teamreference deliveredbyteexactPR322/83abe4b. CP251Rustfixed1v7/TCP/native8Manner1v7negative8d,71Rusttests35eightTCP8prebind32fourTCP; auditnext252.",
-      "remaining": "M4OPEN: Free1v7twooutcomes-selector0nativeblockedby4bD/8dGpost17beforeRoom/no newobservable/no retry; native9admissionbridge-consumer independentnext. M5backendpresent/nativeownershipbridge separate; no fullauth/production; Internet thật chưa kiểm.",
+      "known": "CP251PR3239b37b14 merged. CP252nativevisitor9/fullgeneric87/noRoomgrant inoneKR+8synthetic scope;73Rust/6TCP/4prebind,19raw35.408s/cleanup0/1384TCP249reply. AUD072correctsactualold13/scalar32unused; no causalSDKfix.",
+      "remaining": "M4Free2outcomes/selector0persist stillblocked afteractual32Dpost17control/66raw48.888s; no retrywithoutnewobservable. NEXTM5worker-to-KR/ownershipbridge independent/backendalreadyexists. PeriodicCP252 auditseparatefromAUD072; nofullauth/production. Internet thật chưa kiểm.",
       "next_test": "PLANfixedteamvariantsCP213port/native/separatedeliveryfromWIP;then native9admissionbridge/consumer/M4acceptance. No duplicate8Mannerbaseline/fourpositive;M5bridgeindependent/AUD071next252.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
       "reason": "Same8twooppositeoutcomes/nativefullrankresetStart3/mesh-stats-bom8/24UIimagesverified, actualDcollateralhonest. TMPFS/failedruns/verifiercorrections retained;no M4-auth-epicgateclosure.",
@@ -1006,6 +1006,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-11T03:01:53.041662+00:00",
+  "as_of_utc": "2026-11-11T03:59:03.986916+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

@@ -40,6 +40,9 @@ pub struct Config {
     /// Explicit CP213 fixed operator teams, only with eight_battle.
     #[serde(default)]
     pub eight_team_layout: Option<crate::room::EightTeamLayout>,
+    /// Opt-in ninth diagnostic lobby actor for the full-room negative consumer.
+    #[serde(default)]
+    pub ninth_admission_probe: bool,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -102,6 +105,7 @@ pub struct Runtime {
     four_results: bool,
     four_abort_room: bool,
     eight_battle: bool,
+    ninth_admission_probe: bool,
     abort: Option<FourAbort>,
 }
 /// Single-loss CP205 diagnostic lifecycle; preserved through final cleanup.
@@ -126,6 +130,7 @@ pub struct BombObservation {
 pub struct Observation {
     pub dropped_after_abort: bool,
     pub start_rejection: Option<&'static str>,
+    pub admission_rejection: Option<&'static str>,
     pub pickup: Option<pickups::Decision>,
     pub bomb: Option<BombObservation>,
     pub terrain_notice: Option<&'static str>,
@@ -160,7 +165,18 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
     {
         return Err(err("fixed room title must be bounded ASCII"));
     }
-    let count = actors.len();
+    let actor_count = actors.len();
+    let count = if cfg.ninth_admission_probe {
+        if actor_count != 9 || !cfg.eight_battle {
+            return Err(err(
+                "ninth admission probe requires nine lobby actors and eight battle",
+            ));
+        }
+        8
+    } else {
+        actor_count
+    };
+
     if cfg.eight_team_layout.is_some() && (!cfg.eight_battle || count != 8) {
         return Err(err("eight team layout requires opt-in eight battle"));
     }
@@ -182,7 +198,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
     if !matches!(count, 2 | 4 | 8)
         || actors
             .values()
-            .any(|a| a.identity == 0 || a.identity as usize > count)
+            .any(|a| a.identity == 0 || a.identity as usize > actor_count)
     {
         return Err(err("unsupported diagnostic roster"));
     }
@@ -204,6 +220,9 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         ("peer", 153, 61 + 18 * count),
     ];
     for actor in actors.values() {
+        if cfg.ninth_admission_probe && actor.identity == 9 {
+            continue;
+        }
         expected.push((
             player_alias(actor.identity)?,
             106,
@@ -250,6 +269,9 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         return Err(err("fixed listing title mismatch"));
     }
     for actor in actors.values() {
+        if cfg.ninth_admission_probe && actor.identity == 9 {
+            continue;
+        }
         let alias = player_alias(actor.identity)?;
         if read_uint(&packets[alias].payload[1..5], Width::U32).map_err(io::Error::other)?
             != u64::from(actor.identity)
@@ -341,6 +363,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         four_results: cfg.four_results,
         four_abort_room: cfg.four_abort_room,
         eight_battle: cfg.eight_battle,
+        ninth_admission_probe: cfg.ninth_admission_probe,
         abort: None,
     })))
 }
@@ -1029,6 +1052,26 @@ impl Session {
                     room_wire::join_context(body)?;
                     (r.title.clone(), r.selector)
                 };
+                if r.ninth_admission_probe && self.identity == 9 {
+                    // CP227 generic2 is native-confirmed, capacity is our design reason.
+                    // This probe never acquires a room slot/visit/round. Vacancy and
+                    // replacement admission remain outside this fixed diagnostic profile.
+                    if opcode != 82 || next.members.len() != 8 || next.phase != Phase::Idle {
+                        return Err(err("ninth probe requires full idle eight-room"));
+                    }
+                    let body = kr_wire::write_uint(2, Width::U8).map_err(io::Error::other)?;
+                    let batch = r.lobby_batch(
+                        self.identity,
+                        self.connection,
+                        0,
+                        vec![("full87".into(), r.reply("join", None, Some(body)))],
+                    );
+                    r.publish(next, vec![(self.identity, batch)])?;
+                    return Ok(Observation {
+                        admission_rejection: Some("diagnostic_eight_room_full"),
+                        ..Observation::default()
+                    });
+                }
                 let key = next.enter(self.identity, self.connection, opcode == 81)?;
                 let m = next.members[&self.identity].clone();
                 let reply = if opcode == 81 {
@@ -1702,6 +1745,7 @@ impl Session {
         }
         Ok(Observation {
             start_rejection: None,
+            admission_rejection: None,
             dropped_after_abort,
             pickup,
             bomb,
@@ -1819,6 +1863,7 @@ mod tests {
             four_results: false,
             four_abort_room: false,
             eight_battle: false,
+            ninth_admission_probe: false,
             abort: None,
         }));
         let mut session = Session {
@@ -1931,6 +1976,7 @@ mod tests {
             four_results: false,
             four_abort_room: false,
             eight_battle: false,
+            ninth_admission_probe: false,
             abort: None,
         };
         let mut next = runtime.model.clone();
@@ -2171,6 +2217,7 @@ mod four_abort_tests {
             four_results: true,
             four_abort_room: true,
             eight_battle: false,
+            ninth_admission_probe: false,
             abort: None,
         }));
         let sessions = inboxes
@@ -2425,5 +2472,136 @@ mod eight_baseline_tests {
                 .len(),
             205
         );
+    }
+}
+
+#[cfg(test)]
+mod ninth_probe_tests {
+    use super::*;
+    fn full() -> Session {
+        let mut model = Room::with_capacity(8).unwrap();
+        for i in 1..=8 {
+            let key = model.enter(i, u64::from(i) + 10, i == 1).unwrap();
+            model.setup(key).unwrap();
+            if i > 1 {
+                model.ready(key).unwrap();
+            }
+        }
+        let (sender, inbox) = mpsc::channel(2);
+        let shared = Arc::new(Mutex::new(Runtime {
+            model,
+            packets: HashMap::from([(
+                "join".into(),
+                Reply {
+                    header: [0; 37],
+                    opcode: 87,
+                    payload: vec![0; 7],
+                },
+            )]),
+            channels: HashMap::from([(
+                9,
+                Channel {
+                    connection: 99,
+                    sender,
+                },
+            )]),
+            last_visits: HashMap::new(),
+            requested: HashSet::new(),
+            rostered: HashSet::new(),
+            title: b"RustRoom".to_vec(),
+            selector: 1,
+            ready: Reply {
+                header: [0; 37],
+                opcode: 241,
+                payload: vec![],
+            },
+            ips: HashMap::new(),
+            ports: HashMap::new(),
+            floor_catalog: pickups::Catalog::default(),
+            four_owner_bombs: false,
+            four_life_reports: false,
+            four_results: false,
+            four_abort_room: false,
+            eight_battle: true,
+            ninth_admission_probe: true,
+            abort: None,
+        }));
+        Session {
+            shared,
+            inbox,
+            identity: 9,
+            connection: 99,
+        }
+    }
+    fn join() -> Vec<u8> {
+        [
+            (1, Width::U16),
+            (1, Width::U32),
+            (0, Width::U16),
+            (1, Width::U8),
+            (5, Width::U16),
+        ]
+        .into_iter()
+        .flat_map(|(value, width)| kr_wire::write_uint(value, width).unwrap())
+        .collect()
+    }
+    #[test]
+    fn full_probe_error_has_no_membership_slot_round_or_other_recipient_effects() {
+        let mut session = full();
+        let original: Vec<_> = session
+            .shared
+            .lock()
+            .unwrap()
+            .model
+            .members
+            .values()
+            .map(|m| (m.key, m.slot, m.team, m.ready, m.setup))
+            .collect();
+        for _ in 0..2 {
+            let observation = session.packet(82, &join()).unwrap();
+            assert_eq!(
+                observation.admission_rejection,
+                Some("diagnostic_eight_room_full")
+            );
+            let batch = session.inbox.try_recv().unwrap();
+            assert!(session.valid(&batch));
+            assert!(matches!(batch.guard, Guard::Lobby { identity: 9, .. }));
+            assert_eq!(batch.packets.len(), 1);
+            assert_eq!(batch.packets[0].1.opcode, 87);
+            assert_eq!(
+                read_uint(&batch.packets[0].1.payload, Width::U8).unwrap(),
+                2
+            );
+            let r = session.shared.lock().unwrap();
+            assert_eq!(r.model.phase, Phase::Idle);
+            assert!(!r.model.members.contains_key(&9));
+            assert!(!r.last_visits.contains_key(&9));
+            assert!(!r.requested.iter().any(|m| m.identity == 9));
+            assert_eq!(
+                r.model
+                    .members
+                    .values()
+                    .map(|m| (m.key, m.slot, m.team, m.ready, m.setup))
+                    .collect::<Vec<_>>(),
+                original
+            );
+        }
+        // The negative path must not consume the next round generation.
+        let mut r = session.shared.lock().unwrap();
+        let host = r.model.members[&1].key;
+        assert_eq!(r.model.begin(host).unwrap(), 1);
+    }
+    #[test]
+    fn queue_failure_and_wrong_context_cannot_mutate_the_full_room() {
+        let session = full();
+        assert!(session.packet(82, &[]).is_err());
+        session.packet(82, &join()).unwrap();
+        session.packet(82, &join()).unwrap();
+        assert!(session.packet(82, &join()).is_err());
+        let r = session.shared.lock().unwrap();
+        assert_eq!(r.model.phase, Phase::Idle);
+        assert_eq!(r.model.members.len(), 8);
+        assert!(!r.model.members.contains_key(&9));
+        assert!(!r.last_visits.contains_key(&9));
     }
 }

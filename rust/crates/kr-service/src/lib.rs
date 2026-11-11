@@ -216,6 +216,10 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         .map(|local| load_lobby(local, 1, b"KRLocal"))
         .transpose()?;
     let bound = if let Some(two) = &config.diagnostic_two_lobby {
+        let ninth_probe = two
+            .fixed_room
+            .as_ref()
+            .is_some_and(|room| room.ninth_admission_probe);
         let ports = [two.login_port, two.channel_port];
         if ports.into_iter().collect::<HashSet<_>>().len() != 2
             || two
@@ -233,7 +237,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             || two.wcp_ports.iter().copied().collect::<HashSet<_>>().len() != two.wcp_ports.len()
             || two.wcp_ports.iter().any(|p| !config.ports.contains(p))
             || ports.iter().any(|p| !config.ports.contains(p))
-            || !matches!(two.actors.len(), 2 | 4 | 8)
+            || !(matches!(two.actors.len(), 2 | 4 | 8) || (ninth_probe && two.actors.len() == 9))
             || config.allowed_peers.len() != two.actors.len()
         {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
@@ -244,12 +248,13 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             let expected = match actor.identity {
                 1 => "KRLocal",
                 2 => "KRGuest",
-                3 if matches!(two.actors.len(), 4 | 8) => "KRNew",
-                4 if matches!(two.actors.len(), 4 | 8) => "KRPeer4",
-                5 if two.actors.len() == 8 => "KRPeer5",
-                6 if two.actors.len() == 8 => "KRPeer6",
-                7 if two.actors.len() == 8 => "KRPeer7",
-                8 if two.actors.len() == 8 => "KRPeer8",
+                3 if matches!(two.actors.len(), 4 | 8 | 9) => "KRNew",
+                4 if matches!(two.actors.len(), 4 | 8 | 9) => "KRPeer4",
+                5 if matches!(two.actors.len(), 8 | 9) => "KRPeer5",
+                6 if matches!(two.actors.len(), 8 | 9) => "KRPeer6",
+                7 if matches!(two.actors.len(), 8 | 9) => "KRPeer7",
+                8 if matches!(two.actors.len(), 8 | 9) => "KRPeer8",
+                9 if ninth_probe && two.actors.len() == 9 => "KRPeer9",
                 _ => return Err(io::Error::other("unsupported diagnostic identity")),
             };
             if actor.name != expected
@@ -533,7 +538,7 @@ async fn local_lobby_connection(
                 && room_io::Session::handles(packet.opcode)
             {
                 let observation = session.packet(packet.opcode, &packet.payload)?;
-                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
+                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
                 continue;
             }
             let aliases = flow.packet(packet.opcode, &packet.payload)?;

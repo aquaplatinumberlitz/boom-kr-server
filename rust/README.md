@@ -376,3 +376,10 @@ CP251: fixed-room config nhận `eight_team_layout: "4v4"|"1v7"` chỉ với `ei
 trước roundallocation, không phát errorwire tự đoán. [Contract/nativecopy8d/Freeblocked](../docs/PROTOCOL.md#rust-eight-teams).
 Đã kiểm TCP Free1v7/Manner4v4 và Manner1v7 `--selector 1 --manner-negative` trong `test_rust_eight_room.py`;
 native Free2outcomes còn thiếu, không nhận fullM4/auth. Python team reference đã giao riêng PR322. Internet thật chưa kiểm.
+
+
+CP252: fixed-room config có `ninth_admission_probe: true` với chín diagnostic lobby actors và `eight_battle`;
+phòng vẫn tám slot. Exporter có `--ninth-admission-probe-peer`/`--ninth-admission-derived-dir`, tạo visitor KRPeer9;
+không có roomplayer_I. `test_rust_ninth_admission.py` kiểm sáu ca TCP; `rust_ninth_probe.py` cung cấp tám member tổng hợp
+cho native harness. [Native scope/giới hạn](../docs/PROTOCOL.md#rust-ninth-admission): một KR visitor, tám member TCP,
+không chín client native hoặc fullM4/auth. Freeactual32control vẫn startupblocked; M5bridge độc lập tiếp theo trong PLAN.

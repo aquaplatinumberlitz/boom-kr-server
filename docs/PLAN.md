@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP251: Rustfixed1v7/TCP+nativeManner1v7negative8d đã có; Free2nativecasespost17preRoomblocked/no retrieswithoutnewobservable. Tiếp native9admissionbridge độc lập rồi M4reconciliation; Freepositive còn thiếu. M5bridge riêng; auditCP252. Internet thật chưa kiểm.
+CP252: nativevisitor9/full87generic2/noRoomgrant đã có (1KR+8synthetic), argvAUD072 correction và actual32Freecontrol vẫnpost17blocked. M4cònFree2outcomes; chuyển M5worker-to-KR/ownership bridge độc lập. AUD073qua252/audit kếCP256; Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -64,7 +64,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
 Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã đo; [provenance/kiểm](evidence/eight-player/team-code-delivery.json). Baseline Rust cũ không hồi quy theo delivery này.
 
-1. **NEXT-RUST-FIRST-SLICE / RUST-M4 bốn rồi tám + M5 bridge độc lập / KRE-074/#285**:
+1. **NEXT-RUST-FIRST-SLICE / M5 worker-to-KR và ownership bridge / M4 Free startup bị chặn / KRE-074/#285**:
    [CP236](PROTOCOL.md#rust-account-backend) đã giao lát cắt backend M5 bằng SQLite thật/CLI: account,
    password/session, identity/profile/version và audited admin. Không cần chờ gameplay để viết backend;
    cũng không lấy KR authbridge chưa giao làm dependency chặn M3. Codex solo luân phiên hai nhánh công việc,
@@ -118,9 +118,18 @@ Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã
    **Free1v7 native haioutcomes/selector0persist vẫn bị chặn ở startup**: copy4bD52,509s/66raw và copy8dG60,841s/67raw
    đều post17 trướcRoom, không phải policyteamfailure đã xác định. Cùng family CP250H/G; không repeat8startup/SDKgraph
    hoặc đổi copy để retry khi chưa có observable mới. Hai lượt sourcefrozen/seal/cleanup giữ nguyên.
-   **NEXT: native9admissionbridge/consumer độc lập** (unknownIP/socketreject không đủ), chỉ RE error87/admissionroute
-   còn thiếu bằng cache/nguồn rồi phép đo tối thiểu. Sau đó đối chiếu M4 với Freepositive còn thiếu, không tự đóng M4.
-   Mở lại Free startup khi có call/return/error observable mới, thử có control; không lặp Manner4v4 twooutcomes đãđạt CP250.
+   [CP252](PROTOCOL.md#rust-ninth-admission) đã có bridge visitor9: một KR thật/Wine/copy4b, tám member TCP tổng hợp,
+   validlobby/C2S6ID9/actual82/full87generic2/native1of1-errors0/ordinaryReturn/hold3s/no585-noRoomgrant.
+   19raw/35,408s/cleanup0/1.384TCP249reply,73Rusttests/6TCP/4prebind đạt; không gọi là9native hoặc generalroomadmission.
+   NativeR1thiếuReturn nên modalwait→120sidle/runfail giữ17raw; R2chỉ sửa controller. Verifiercleanup-tail correction giữ
+   7Brokenpipe trong syntheticteardown; PCAP chứng minh mọi channelFIN/RST sau completion, không xóa lỗi hay rerun native.
+   AUD072 sửa claimCP250restore32: actualper-role13 cũ, scalar32khônglaunch. Control actualperrole32 mới/cùngcopy4b/
+   currentbinarydefault-offninth vẫn Dpost17 trướcRoom (66raw/48,888s/cleanup0). IndependentCAargv A–G gồmD, Hchưa quan sát;
+   không nativeFreegameplay/causalSDKfix. **Dừng Free retry** tới khi có observable call/return/error mới; không SDKgraph/copycycling.
+   **NEXT: M5 worker-to-KR/ownership bridge độc lập.** Đối chiếu backend CP236/243/244 và wire CP214–217/220/225;
+   chọn lát cắt freshlogin → account-ownedplayer/session → measuredchannelhandoff, giữ accountresume/matchrestore riêng.
+   RE chỉ phần field/route thực sự chặn binding; không làm lại DB/KDF/idleTTL/rate, không chờ M4Free hoặc mở quét SDK.
+   M4 vẫn mở do Free1v7haioutcomes/selector0nativepersist; native9 criterion có bằng chứng scope riêng, không tự đóng cả M4.
    Không nâng baseline8 thành fullM4/terrain-items8/auth. Shared8EOF chỉmodel/TCPfence/no175180, chưa7nativeRoomreturn.
    Queue8inbox16 giữlocalpending16/2-4inbox8; unique7life/8bomballwrites. CP209sealedraw142/167 khácfour đã đối chiếu,
    chỉ boundednoeffect/semanticsunknown. R1args540>hardcap480prelaunchrejected;R2wrongnativeports/controller4scope/captureIPs
@@ -190,7 +199,7 @@ Owner/selfcheck Codex, independentreviewwaived; PR/exacthead vẫn bắt buộc.
 | RUST-M1 Foundation + wire/connection chạy native | Đạt scopeCP231: Rustmode2/selector3/pinnedhello-WCP/nativeerror1→ordinaryretry→error1/seqreset;5wire+14TCPcases. Chưa login thành công/sảnh/fullcodec; M2 tiếp, M5backend độc lập |
 | RUST-M2 Bootstrap→local login/identity→sảnh→fixedroom | CP235đạt scoped:2actualfixedroom/ownslots/hostBack-rejoin/Ready/barrier/clock-spawn+healthyBsessionEOF;negative/profileguard có phương pháp và giới hạn. Khôngaccountauth/generalroom/Battle. Diagnosticidentity không fullauth, tiếp contract đã biết |
 | RUST-M3 Hai client native→Battlebasic→result/reset/trận2 | CP242 scopedaccepted: CP237–241 movement/bom/terrain/life/oppositeoutcomes/activehostEOF + native itemreset/contest/exactoldUDP-currentpositive/Start3/queue controls. Không fullgame; M5backendworker/idleTTL/rate CP243–244 đã có; M4 tiếp. M2; account/DB backend không cần đợi M3. GiữUDP trực tiếp, không authoritativeengine rewrite |
-| RUST-M4 Bốn rồi tám/đội hình cố định theo contract | CP245 four startup/loading và CP246 four-ownerbom/knownstats/16native159158 đã có, M4partial; CP247fourlife/three170/clear21completion và CP248nativeopposite2v2/rank4-reset-Start3 đã có; CP249scopedguest-hostEOF/unrankedreturn-threeRoom đã có; CP250eightbaselineManner4v4/mesh-statbom8/life-rankreset đã có; CP251fixed1v7/TCP+nativeMannernegative8d đã có; Free2nativeoutcomes/selector0persist còn startupblocked, native9admissionbridge tiếp trước xétM4. M3; baselinefourmain trước eight; dùng CP213teamdelta sau PR Python delivery riêng, không chờ mọi item/mission |
+| RUST-M4 Bốn rồi tám/đội hình cố định theo contract | CP245 four startup/loading và CP246 four-ownerbom/knownstats/16native159158 đã có, M4partial; CP247fourlife/three170/clear21completion và CP248nativeopposite2v2/rank4-reset-Start3 đã có; CP249scopedguest-hostEOF/unrankedreturn-threeRoom đã có; CP250eightbaselineManner4v4/mesh-statbom8/life-rankreset đã có; CP252native9bridge1KR+8synthetic đã có; Free2nativeoutcomes/selector0persist vẫn startupblocked cảactual32control. M4OPEN/M5bridgeindependentnext. M3; baselinefourmain trước eight; dùng CP213teamdelta sau PR Python delivery riêng, không chờ mọi item/mission |
 | RUST-M5 Account/profile/DB và sessionownership | CP236 backend SQLite/Argon2id/identity-profile/session/auditCLI và CP243 boundedworker/handoff/compensation đã có; CP244 thêm idleTTL/rate/schema2; chưa KRserving/ownershipbridge/fullM5. Backend có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
 | RUST-M6 Inventory/progression/result-reward durability | Backend M5, actualmatchinput M3; KRwireprojection/effect cần từngconsumer. Không cần full8/mọiitem để làm ledger |
 | RUST-M7 General lobby/rooms/selection và userflows cần cho nội bộ | M2 + M5ownership, M3lifecycle; M4 chỉ cần nếu mở8capacity. RE roomlist/member/character/team/equip theo phép đo, không mọi mode |

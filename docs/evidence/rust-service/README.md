@@ -522,3 +522,37 @@ Nativecopy4b và8d SHA đầy đủ ở metadata/inputpins; không clientpatch m
 và guardchecker wrongexpectedreason giữ ở source-first/failure reports. UDP supervision fakefaultcontrol đạt,
 negative actualcapturer không lỗi nhưng khôngBattleUDP; chưa có14Aedges/full56wire/nativeAPIkeyapplyproof mới.
 AUD071qua248/audit kếCP252; reviewwaived/Codexselfcheck/PRexacthead, không gateclosure. Internet thật chưa kiểm.
+
+
+## AUD072 — correction argv sau CP251
+
+[Metadata/SHA/source sites](argv-provenance.json), [contract/giới hạn](../../PROTOCOL.md#argv-provenance-correction).
+Audit đối chiếu source launch và frozenconfig/run.role_args CP250R3/R4/R5, ba run CP251, cùng actualCP210.
+Claim32perrole không đúng: actualtoken13, scalar32 không tới launch; không sửa complete/audit/raw cũ hoặc bỏ nativeproof.
+Đây là seriouscontradiction audit riêng, periodic kếCP252 vẫn giữ.
+
+
+<a id="cp252"></a>
+## CP252 — native visitor thứ chín, argv correction và Freecontrol vẫn bị chặn
+
+[Contract/giới hạn](../../PROTOCOL.md#rust-ninth-admission), [metadata/SHA](ninth-admission.json), [PLAN](../../PLAN.md#current-order).
+Baseline PR323/`9b37b14`; binary SHA`4d21781a…` dùng cho native9 và Freeactual32control.
+
+- `local/research/codex/rust-ninth-native-r2/`:19raw/35,407594284s/runSHA`290775e86b5b04bb2a67679a134b57d5dc3eebfe616dad81103b41c5a34fd755`,
+  20TCP/1.384records/249exactreply, oneactualvisitor9/eightTCPsynthetics/actual82/native87generic2/ordinaryReturn/
+  handler_end1of1-errors0/hold3s/no585/Roomgrant/cleanup0. `ninth-verification.json`, actual-CA-argv và hai ảnh được xem giữ nguồn riêng.
+- `rust-ninth-native-r1/`:17raw/121,273s/runSHA`a5d4d308fd9acd896ae395a41243df25b822d616bdc596cdda1ea59b6743d474`,exit1:
+  nativeerror2branch đã đọc1/1/errors0, nhưng controller không đóng notice nên synthetic120sidle; không gọi toàn runpass.
+- `rust-eight-free-argv32-r1/`:66raw/48,888173952s/runSHA`69f87cd77f84234a8a7a8e1e44f9576beffd8bb63ab8853d552233dd2b634c8f`,exit1/cleanup0.
+  All8actualPopenlist32, independentCAargv A–G bao gồmfailedD; Hchưa observer ghi. Dpost17 trướcRoom, không Freegameplay/causalfix.
+
+Recipe `prepare_rust_ninth_native_r2.py`→preflight→run→ownedcleanup→TMPFSexportallsizeSHA→seal; một Winehostảo vàroot8loopbacks,
+nooutside/sharedkernel/copy4b/Wine10.0-20260425/cachedprefix/newprocess. Native errorprobe từ CP227, không hàm mới/patch mới.
+Freecontrol dùng `prepare_rust_eight_free_argv32.py`, cùng copy/profile, currentbinaryninthflagoff; actual argv được assert trước
+Popen và đối chiếu procCA riêng. Source/config giữ nguyên tới seal. Không dùng scalar CLI làm actualargv nữa.
+
+6TCP/4prebind/73Rusttests/fmt-clippy-lockedbuild đạt. TCPR1 loaderalias9 sai,94raw giữ/PIDgone; R2 chỉ đòi tám playerfixtures.
+NativeR2 verifier đầu reject blanketnonEOF, reportfail giữ; bản mới phân loại7Brokenpipe trong ownedcleanup bằng actual9channel
+FIN/RST saucompletion, không xóa lỗi hoặc rerun client. Script/version/raw/inputretention đều được pin.
+AUD072 correction giữ riêng; AUD073periodicquaCP252/audit kếCP256, không reset cadence. M4OPEN vìFreepositive thiếu;
+M5worker-to-KR/ownershipbridge tiếp độc lập. Internet thật chưa kiểm.

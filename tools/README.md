@@ -292,3 +292,9 @@ startup8/ACK8/peer205/bom8-statpowers/allrecipientlife7/rank8-reset-Start3/EOFfe
 CP251: `test_rust_eight_room.py --selector 0|1` kiểm actualTCP với fixed `eight_team_layout` trong config;
 `--manner-negative` chỉ cho1v7/selector1, kiểm hai104/noBattlewire/transportalive-Back86. Exporter nhận
 `--eight-team-layout 4v4|1v7` khi có `--eight-battle`. [Native/failedruns/giới hạn](../docs/PROTOCOL.md#rust-eight-teams).
+
+
+CP252: `export_rust_profile.py --ninth-admission-probe-peer <private-IP> --ninth-admission-derived-dir <local-dir>`
+chỉ dùng sau eight-battle; tạo lobby identity9, không thêm slot phòng. `test_rust_ninth_admission.py --binary ...
+--config ... --out ...` kiểm sáu ca realTCP tổng hợp. `rust_ninth_probe.py` có `seed_eight` cho harness cô lập;
+tám connection đó là synthetic, phải ghi rõ khi kết hợp client KR thật. [Recipe và giới hạn](../docs/PROTOCOL.md#rust-ninth-admission).
