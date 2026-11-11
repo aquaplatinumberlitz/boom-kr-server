@@ -96,7 +96,8 @@ def validate(data, root=ROOT, previous=None):
         check(all(re.fullmatch(r'https://github.com/aquaplatinumberlitz/boom-kr-server/issues/[0-9]+', u) for u in issue_urls), f'{ident}: invalid issue URL')
         refs = node.get('refs', {})
         check(set(refs) == {'contract', 'question', 'plan', 'evidence'}, f'{ident}: canonical refs invalid')
-        check(refs.get('contract', '').startswith('docs/PROTOCOL.md#'), f'{ident}: contract must have locator')
+        check(bool(re.fullmatch(r'docs/(?:PROTOCOL\.md|protocol/[a-z0-9-]+\.md)#[^#]+',
+                                refs.get('contract', ''))), f'{ident}: contract must have locator')
         check(refs.get('plan') == 'docs/PLAN.md#current-order', f'{ident}: work order must link canonical PLAN')
         check(ident in rows, f'{ident}: missing canonical gap/test row')
         if ident in rows:

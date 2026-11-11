@@ -191,14 +191,49 @@ fn two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest() {
         })
         .collect();
     let results: Vec<_> = threads.into_iter().map(|t| t.join().unwrap()).collect();
-    assert_eq!(results.iter().filter(|r| r.is_ok()).count(), 1);
+    let outcomes: Vec<_> = results
+        .iter()
+        .map(|r| match r {
+            Ok(_) => "granted".to_owned(),
+            Err(error) => format!("{error:?}"),
+        })
+        .collect();
+    assert_eq!(
+        results.iter().filter(|r| r.is_ok()).count(),
+        1,
+        "{outcomes:?}"
+    );
+    // The SQLite writer wait is intentionally bounded. Under contention the
+    // loser may fail closed with Busy before it can observe ActiveSession.
+    // Never accept another error or a second grant; verify the settled result.
     assert_eq!(
         results
             .iter()
-            .filter(|r| matches!(r, Err(Error::ActiveSession)))
+            .filter(|r| matches!(r, Err(Error::ActiveSession | Error::Busy)))
             .count(),
-        1
+        1,
+        "{outcomes:?}"
     );
+    let mut settled = temp.store();
+    assert!(matches!(
+        settled.login("alice", PASSWORD, 60, 101),
+        Err(Error::ActiveSession)
+    ));
+    // Exercise the bounded Busy path deterministically rather than depending
+    // on a slow CI runner to hold the winning transaction for long enough.
+    let locker = Connection::open(temp.db()).unwrap();
+    locker.execute_batch("BEGIN IMMEDIATE").unwrap();
+    let before = std::time::Instant::now();
+    assert!(matches!(
+        settled.login("alice", PASSWORD, 60, 101),
+        Err(Error::Busy)
+    ));
+    assert!(before.elapsed() < Duration::from_secs(2));
+    locker.execute_batch("ROLLBACK").unwrap();
+    assert!(matches!(
+        settled.login("alice", PASSWORD, 60, 101),
+        Err(Error::ActiveSession)
+    ));
     let token = results
         .iter()
         .find_map(|r| r.as_ref().ok())

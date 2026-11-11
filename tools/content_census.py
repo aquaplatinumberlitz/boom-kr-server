@@ -289,6 +289,127 @@ def classify(family):
     return "other", ""
 
 
+# Nhóm theo đường dẫn trong index; chỉ gộp khi tên chỉ rõ cùng hệ thống.
+# Wiki là tên trang đối chiếu thủ công, như THEMES/MISSION; không suy luật từ wiki.
+SYSTEMS = [
+    ("Cửa hàng", ["FxStage/Shop", "FxDesktop/Etc:Shop", "FxStage/Lobby:Shop"], [], []),
+    ("Bang hội", ["FxDesktop/Guild", "FxDesktop/Etc:Guild", "FxStage/Lobby:Guild"], [], []),
+    ("Bạn bè / Messenger", ["FxDesktop/GlobalUI:BtMessenger"], [], []),
+    ("Nhiệm vụ", ["FxContents/DailyMission", "FxDesktop/Quest", "fx/CAMission", "fx/MissionPong",
+                       "FxDesktop/Etc:Mission", "FxStage/Game:Mission", "fx/Dialog:Mission"], [], []),
+    ("Ladder", ["FxContents/Ladder", "FxContents/WeeklyLadder", "CharTE/LadderDeco"], ["크레이지_아케이드래더"], []),
+    ("Xếp hạng CAJJang", ["FxContents/UXCAJJangRatingMark"], [], []),
+    ("Xếp hạng", ["FxDesktop/Etc:Ranking", "FxStage/Lobby:Ranking", "FxStage/Game:Ranking"], [], []),
+    ("Sự kiện theo tiền tố Event", ["FxDesktop/Etc:Event", "FxStage/Lobby:Event", "FxStage/Game:Event"], [], []),
+    ("Chat", ["FxDesktop/Chatting", "FxDesktop/WhisperLog"], [], []),
+    ("Exchange", ["FxDesktop/Exchange"], [], []),
+    ("Level", ["FxDesktop/Level"], ["크레이지_아케이드경험치표"], []),
+    ("PCRoomBenefit", ["fx/PCRoomBenefit"], [], []),
+    ("Sự kiện TakeCareOfEvent", ["FxDesktop/TakeCareOfEvent"], [], []),
+    ("CAPass", ["FxContents/CAPass"], [], []),
+    ("MagicMarket", ["FxContents/MagicMarket"], [], []),
+    ("Bộ sưu tập item", ["FxContents/ItemCollection"], ["크레이지_아케이드아이템"], []),
+    ("Hồ sơ / MyInfo", ["FxDesktop/MyInfo"], [], ["KR-L003"]),
+    ("Chọn nhân vật", ["FxContents/CharacterSelect", "FxContents/CharacterSelectAll"], [], []),
+    ("Trang trí avatar", ["CharTE/AvatarDeco", "FxAsset/AvatarDeco"], [], []),
+    ("Trang trí nhân vật", ["CharTE/CharDeco", "CharTE/CharDecoAdj"], [], []),
+    ("Trang trí bom", ["CharTE/BombDeco"], [], []),
+    ("Trang trí cấp", ["CharTE/GradeDeco"], [], []),
+    ("Cảm xúc / Emoticon", ["EmoTE/Character", "fx/Emoticon"], [], []),
+    ("Trang trí ID", ["EmoTE/IDDeco"], [], []),
+    ("Nhân vật", ["FxCharacter/Character", "FxContents/Attr:BomberAttr"], [], []),
+    ("Item", ["fx/Item", "FxContents/Attr:ItemAttr"], ["크레이지_아케이드아이템"], ["KR-F006", "KR-F007", "KR-F008", "KR-F010", "KR-F011", "KR-F012", "KR-F013", "KR-F014"]),
+    ("Map", ["FxMap/Map", "FxMap/Theme", "FxMap/Etc", "FxMap/MapScriptTemplate", "FxContents/Attr:MapGroup"], ["크레이지_아케이드맵"], ["KR-R003"]),
+    ("Ô map", ["FxTile/*", "fx/TileCustom", "fx/TileConv", "fx/TileInfo", "fx/TilePractice", "fx/TileRPG", "fx/TileTransparent"], ["크레이지_아케이드맵"], []),
+    ("Monster", ["FxMonster/Monster", "FxMonster/MonsterSeason2"], ["크레이지_아케이드몬스터_모드", "크레이지_아케이드몬스터_모드시즌2"], []),
+    ("Hidden Catch", ["FxHiddenCatch/HiddenCatch", "FxHiddenCatch/Prepare_HC"], [], []),
+    ("RPG", ["FxContents/RPG", "FxContents/RPGMyInfo"], [], []),
+    ("CAHero", ["FxContents/CAHero"], [], []),
+    ("SandBox", ["FxContents/SandBox"], [], []),
+    ("ConfusedFight", ["FxContents/ConfusedFight"], [], []),
+    ("AIBattle", ["FxContents/AIBattle"], [], []),
+    ("Antarctic", ["FxContents/Antarctic"], [], []),
+    ("HoneyButterChip", ["FxContents/HoneyButterChip"], [], []),
+    ("DIYBomb", ["FxContents/DIYBomb"], [], []),
+    ("MineExplore", ["FxContents/MineExplore"], [], []),
+    ("IamWriggle", ["FxContents/IamWriggle"], [], []),
+    ("IamBoss", ["FxContents/IamBoss"], [], []),
+    ("SnowyChamp", ["FxContents/SnowyChamp"], [], []),
+    ("LuckyCard", ["FxContents/LuckyCard"], [], []),
+    ("Ghép trận UXMatching", ["FxContents/UXMatching"], [], []),
+    ("Sảnh", ["FxStage/Lobby", "FxDesktop/LobbySquare", "FxDesktop/TileLobbySquare", "FxDesktop/Square"], [], ["KR-L002"]),
+    ("Đăng nhập", ["FxDesktop/LoginStage", "FxDesktop/SpecialLogin", "FxStage/SelectServerStage"], [], ["KR-L001"]),
+    ("Hướng dẫn", ["FxStage/Tutorial"], [], []),
+    ("Kết quả", ["FxStage/StageClear"], [], ["KR-X001"]),
+    ("Trận đấu", ["FxStage/Game"], ["크레이지_아케이드게임_모드"], ["KR-F001", "KR-F002", "KR-F004", "KR-F005", "KR-F009"]),
+    ("Pet", ["fx/Pet"], ["크레이지_아케이드펫"], []),
+    ("CustomMap", ["fx/CustomMap"], [], []),
+    ("Câu cá", ["fx/FishingObjects", "CharTE/FishingDeco", "FxDesktop/FishTrade"], [], []),
+    ("Couple", ["fx/Couple"], [], []),
+    ("GrowSprout", ["fx/GrowSprout"], [], []),
+    ("DTT", ["fx/DTT", "fx/DTT_seasonShop"], [], []),
+    ("Partners", ["fx/Partners", "fx/TilePartners", "fx/TilePartners_Ground"], [], []),
+    ("LineFriends", ["fx/LineFriends"], [], []),
+    ("MonWars", ["fx/MonWars"], [], []),
+    ("RetroWriggle", ["fx/RetroWriggle"], [], []),
+    ("SelectionBox", ["fx/SelectionBox"], [], []),
+]
+READ_ATTR = {("FxContents", "Attr/ItemAttr"), ("FxContents", "Attr/BomberAttr"),
+             ("FxContents", "Attr/MapGroup")}
+WIKI = Path("/home/admin/boom/kr-namu-wiki/text")
+
+
+def resource_group(stem, name):
+    parts = name.split("/", 1)
+    group = parts[0]
+    rest = parts[1] if len(parts) > 1 else ""
+    # Các entry Attr là bảng riêng; tách tiền tố rõ ràng trong nhóm UI chung.
+    if group == "Attr":
+        return f"{stem}/{group}:{rest}"
+    if (stem, group) in {("FxDesktop", "Etc"), ("FxStage", "Lobby"),
+                          ("FxStage", "Game"), ("fx", "Dialog")}:
+        for prefix in ("Shop", "Guild", "Mission", "Ranking", "Event"):
+            if rest.lower().startswith(prefix.lower()):
+                return f"{stem}/{group}:{prefix}"
+    if stem == "FxDesktop" and group == "GlobalUI" and rest.startswith("BtMessenger"):
+        return f"{stem}/{group}:BtMessenger"
+    return f"{stem}/{group}"
+
+
+def resource_inventory(packs):
+    grouped = collections.defaultdict(list)
+    unread_attr = []
+    for stem, pack in sorted(packs.items()):
+        for name, _, size, _ in pack.order:
+            grouped[resource_group(stem, name)].append(name)
+            if name.lower().startswith("attr/") and (stem, name) not in READ_ATTR:
+                unread_attr.append(dict(pack=stem, name=name, bytes=size))
+    nodes = {node["id"] for node in json.loads((ROOT / "docs/features.json").read_text())["nodes"]}
+    systems = []
+    owners = {}
+    for title, patterns, wiki, ids in SYSTEMS:
+        if not set(ids) <= nodes:
+            raise ValueError(f"ID catalog không tồn tại: {set(ids) - nodes}")
+        matched = sorted(group for group in grouped for pattern in patterns
+                         if group == pattern or (pattern.endswith("/*") and group.startswith(pattern[:-1])))
+        if not matched:
+            continue
+        for group in matched:
+            if group in owners:
+                raise ValueError(f"nhóm trùng hệ thống: {group}")
+            owners[group] = title
+        systems.append(dict(name=title, groups=matched, entries=sum(len(grouped[g]) for g in matched),
+                            wiki=[page for page in wiki if (WIKI / (page + ".txt")).is_file()], ids=ids))
+    groups = []
+    for group, names in sorted(grouped.items()):
+        extensions = collections.Counter(Path(name).suffix.lower() for name in names)
+        types = ", ".join(f"{ext or 'không đuôi'} ({count})" for ext, count in
+                          sorted(extensions.items(), key=lambda row: (-row[1], row[0])))
+        groups.append(dict(name=group.split("/", 1)[1], pack=group.split("/", 1)[0],
+                           entries=len(names), types=types, system=owners.get(group, "")))
+    return groups, systems, sorted(unread_attr, key=lambda row: (row["pack"], row["name"]))
+
+
 # --- dựng census ----------------------------------------------------------
 def build(client):
     packs, sources = {}, {}
@@ -343,7 +464,9 @@ def build(client):
         item["maps_drop"] += drop_maps.get(name, 0)
         item["maps_placed"] += place_maps.get(name, 0)
     themes = sorted(name.split("/", 1)[1] for name, *_ in fx_map.order if name.startswith("Theme/"))
+    resource_groups, systems, unread_attr = resource_inventory(packs)
     return dict(
+        resource_groups=resource_groups, systems=systems, unread_attr=unread_attr,
         schema="kre-content-census-v1", build="KR00967", client_exe_sha256=sha256(client / "CA.exe"),
         limits="Metadata tĩnh từ pack. category/wiki suy từ tên; không phải bằng chứng runtime hay wire.",
         packs=sources, maps=maps, maps_failed=failed, map_groups=map_groups, themes=themes,
@@ -532,6 +655,48 @@ def render(census):
             f"{title.split(' (')[0].lower()} {sum(len(e) for _, e in by_category.get(key, []))}"
             for key, title in CATEGORIES if by_category.get(key)) + ".",
     ]
+    systems = census["systems"]
+    groups = census["resource_groups"]
+    with_ids = sum(bool(system["ids"]) for system in systems)
+    unclassified = [group for group in groups if not group["system"]]
+    lines += [
+        "", "## Hệ thống của client", "",
+        "Tài nguyên có mặt trong build **không chứng minh tính năng còn chạy hay server phải làm gì**. "
+        "Gộp nhóm và ghép wiki chỉ dựa vào tên; ID chỉ cho biết catalog có cơ chế liên quan, "
+        "không chứng minh đã hỗ trợ toàn bộ hệ thống. Các nhóm chưa đủ tên để gộp được giữ riêng.", "",
+        "Mỗi entry thuộc một nhóm theo thư mục đầu trong index; bảng Attr và các tiền tố Shop/Guild/Mission/Ranking/Event/BtMessenger rõ tên trong nhóm UI chung được tách riêng. "
+        "Số mục không phải số tính năng; không cộng trùng giữa các hệ thống. Tên entry thường không có đuôi, "
+        "nên cột loại chỉ thống kê đuôi tên trong index, không suy định dạng binary.", "",
+        "| Hệ thống | Có ID catalog | Chưa có ID |", "|---|---|---|",
+        f"| {len(systems)} | {with_ids} | {len(systems) - with_ids} |", "",
+        "| Hệ thống | Nhóm tài nguyên (pack/nhóm; số mục) | Wiki khớp tên | ID catalog liên quan | Server phải làm gì |",
+        "|---|---|---|---|---|",
+    ]
+    counts = {f"{g['pack']}/{g['name']}": g['entries'] for g in groups}
+    for system in systems:
+        evidence = ", ".join(f"`{group}` ({counts[group]})" for group in system["groups"])
+        wiki = ", ".join(system["wiki"]) or "—"
+        ids = ", ".join(f"`{id_}`" for id_ in system["ids"]) or "chưa có"
+        lines.append(f"| {system['name']} | {evidence} | {wiki} | {ids} |  |")
+    lines += ["", "### Nhóm tài nguyên trong mọi pack", "",
+              "`chưa phân loại` gồm nhóm dùng chung, tên mơ hồ hoặc không đủ căn cứ gắn với hệ thống; "
+              "không có nghĩa là không có tính năng. `:` chỉ tiền tố/bảng đã tách trong thư mục.", "",
+              "| Nhóm | Pack | Số mục | Loại file chính theo đuôi tên (số mục) | Hệ thống |",
+              "|---|---|---|---|---|"]
+    for group in groups:
+        lines.append(f"| `{group['name']}` | `{group['pack']}` | {group['entries']} | {group['types']} | "
+                     f"{group['system'] or 'chưa phân loại'} |")
+    lines += ["", f"**Chưa phân loại:** {len(unclassified)} nhóm, "
+              f"{sum(g['entries'] for g in unclassified):,} mục.", "",
+              "### Bảng Attr chưa đọc", "",
+              "Chỉ liệt kê tên và kích thước entry trong index; không giải layout.", ""]
+    if census["unread_attr"]:
+        lines += ["| Pack | Tên | Byte |", "|---|---|---|"]
+        for attr in census["unread_attr"]:
+            lines.append(f"| `{attr['pack']}` | `{attr['name']}` | {attr['bytes']:,} |")
+    else:
+        lines.append("Không có: ba bảng `FxContents/Attr` đều đã được tool đọc.")
+    lines.append("")
     tags, funcs, triggers = collections.Counter(), collections.Counter(), collections.Counter()
     for entry in scripted:
         tags.update(entry["script_tags"])

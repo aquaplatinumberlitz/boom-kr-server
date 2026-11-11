@@ -14,10 +14,10 @@ Docs, tools, code và evidence mới đều ở đây. Không cần mở worktre
 boom-kr-server/
   AGENTS.md                 quy tắc của project này
   docs/
-    PLAN.md                 lộ trình K0–K7, task và gate
+    PLAN.md                 lộ trình Rust, acceptance và thứ tự hiện hành
     features.json           chỉ mục cơ chế/ID/dependency/trạng thái có nguồn
     COVERAGE.md             bảng/cây/thẻ tra cứu sinh từ catalog
-    PROTOCOL.md             contract KR, ma trận reuse VN→KR và authority
+    PROTOCOL.md             mục lục contract; chi tiết theo chủ đề trong protocol/
     RESEARCH.md             câu hỏi mở, owner và điều kiện đóng
     REFERENCES.md           nguồn RE cũ, provenance và bản đồ migration
     evidence/               metadata/hash; không chứa binary hoặc decompile
@@ -33,13 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP270: R1g đã kiểm trần admission và allowlist độc lập số profile.**
-[Contract/giới hạn](docs/PROTOCOL.md#rust-r1g-admission), [evidence](docs/evidence/rust-service/r1g-admission.json).
-Cấu hình cho phép1–1024transport và1–256entry allowlist; vẫn kiểm source/lease/profile riêng. Giá trị cấu hình cũ giữ nguyên.
-105Rust/fmt/clippy/lockedbuild đạt;306TCPlegacy/3169+24frame khớp CP269;10ca admission đạt, gồm65socket giữ đồng thời,
-kết nối66 bị chặn và phục hồi permit. Đây chưa phải kiểm50người chơi KR hoặc native candidate.
-R1f đã merge PR347; R1g đang bàn giao PR. Tiếp relay opt-in và native cuối R1 theo [dashboard](docs/PLAN.md#dashboard).
-Full M5/M7/M8 còn mở; hạ tầng chỉ local. Mốc cũ ở [HISTORY](docs/HISTORY.md).
+**CP272: contract đã chia theo chủ đề; R1g đã merge PR348.**
+Tra packet/cơ chế tại [mục lục contract](docs/PROTOCOL.md), câu hỏi còn mở tại [RESEARCH](docs/RESEARCH.md).
+PLAN giữ thứ tự công việc; diễn biến checkpoint chuyển sang [HISTORY](docs/HISTORY.md).
+Full R1 còn native hồi quy 2/4/8/account; N1R còn integration và native relay qua hai NAT.
+M5 còn hồ sơ tổng quát/native DB-queue fault; M7/G1/M6/M8 theo [Bảng điều hành](docs/PLAN.md#dashboard).
+Không đổi runtime hoặc phạm vi nghiệm thu trong đợt tài liệu này. Hạ tầng thực chỉ lưu local.
 
 ## Bắt đầu
 

@@ -12,14 +12,14 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 
 | Câu hỏi | Kết luận của đợt nghiên cứu |
 |---|---|
-| Bắt đầu Rust ở đâu? | Chốt baseline Python rồi viết codec KR và vòng đời connection. Dùng client thật kiểm hello, lỗi đăng nhập và retry trước khi mở rộng sảnh/phòng/trận |
+| Tiếp Rust ở đâu? | M0–M4 scoped và account fixed2/basic đã có native; R1a–g đã merge source/TCP. Sau đợt docs, nối và nghiệm thu N1R relay rồi native hồi quy cuối R1 theo PLAN |
 | Chuyển được gì ngay? | Profile codec đã đo, các packet tối thiểu của đường offline, cơ chế phòng/trận cơ bản, ticket/epoch, endpoint exchange và kết quả/reset. Chuyển đúng phạm vi bằng chứng, giữ policy hiện tại |
-| Chưa đủ phần nào? | Xác thực tài khoản và quyền sở hữu identity qua nhiều socket; phòng tổng quát; inventory/progression/phần thưởng trên client; nhiều item/mode chưa có runtime proof |
+| Chưa đủ phần nào? | Hồ sơ account tổng quát và native DB-queue fault; relay hai NAT/native cuối R1; phòng tổng quát, terrain/item 4/8; inventory/progression và vận hành đích |
 | Python còn làm gì? | Giữ bản tham chiếu phục vụ được, công cụ RE và đối chứng. Chỉ rút khỏi đường phục vụ từng lát cắt khi Rust đã qua native acceptance tương ứng |
-| Cần xây gì để vận hành? | Account/DB, session expiry/revocation, hồ sơ và inventory, transaction kết quả/phần thưởng, quản trị có audit, giám sát, backup đã thử restore, deploy/rollback và kiểm tải |
+| Cần xây gì để vận hành? | Account/DB/session đã có backend và bridge fixed2; còn hồ sơ tổng quát, lưu kết quả/thưởng 0, admin vận hành, giám sát, backup đã thử restore, deploy/rollback và kiểm tải. Inventory là giai đoạn sau |
 | Kiến trúc chọn gì? | Cùng repo, hai crate, một process Linux; Tokio và queue hữu hạn; owner phòng xử lý tuần tự; SQLite ở giai đoạn nội bộ. Các lựa chọn này là design, không phải luật server gốc |
-| RE tiếp theo để làm gì? | Chỉ đo khoảng trống chặn lát cắt. Backend account/DB có thể làm độc lập; bridge để client KR sử dụng account vẫn cần phép đo riêng |
-| Khi nào đủ bàn giao? | Theo tiêu chí demo, dịch vụ nội bộ và phát hành rộng hơn trong PLAN. Chưa ước lượng ngày hoặc số checkpoint; Internet thật chưa kiểm |
+| RE tiếp theo để làm gì? | Chỉ đo khoảng trống chặn lát cắt. Account fixed2/basic đã có; chỉ đo profile/DB fault, relay hoặc consumer/lifecycle đang chặn mốc hiện hành, không nghiên cứu dàn trải |
+| Khi nào đủ bàn giao? | Theo tiêu chí demo, dịch vụ nội bộ và phát hành rộng hơn trong PLAN. Không hứa ngày; N1 đạt một phía tới được, N1b hai NAT đổi cổng âm. Chưa đủ vận hành 50 người/8 phòng |
 
 ## Quyết định và căn cứ
 
@@ -29,7 +29,7 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 | Cùng repo boom-kr-server, rust/Cargo.toml, rust/crates/kr-wire và kr-service | Contract/evidence/tool/issue cùng lịch sử; giữ server/ Python. Chỉ hai crate: wire thuần và service lib+binary. **Implementation đã mở theo owner09/11; dùng rust/ cùng repo** |
 | Một process Linux, nhiều listener/stage, mỗi room một owner serialize | Hiện một phòng/2–8 người; không cần microservices/IPC. Chỉ tách process khi có đo tải, ownership hoặc failure isolation cụ thể |
 | Tokio I/O, bounded queues theo byte và message, writer riêng mỗi socket | Nonreader không chặn phòng, stage/seq/order theo connection. Không spawn unsupervised task cho từng timer |
-| Giữ direct UDP legacy; tách seam endpoint để thiết kế relay theo N1b | Native tự tính movement/geometry. [CP266](PROTOCOL.md#rust-n1b-dual-nat) cho kết quả âm ở hai NAT đổi cổng; thiết kế relay trước R1f theo PLAN. Không thay movement bằng TCP-only/snapshot hoặc coi discovery/relay đã phục hồi |
+| Giữ direct UDP legacy; tách seam endpoint để thiết kế relay theo N1b | Native tự tính movement/geometry. [CP266](PROTOCOL.md#rust-n1b-dual-nat) cho kết quả âm ở hai NAT đổi cổng; thiết kế relay đã chốt và R1f đã merge; integration/native relay theo PLAN. Không thay movement bằng TCP-only/snapshot hoặc coi discovery/relay đã phục hồi |
 | SQLite WAL/local persistent volume, một service instance | Transaction/unique/index/backup đơn giản. DB worker blocking riêng, queue hữu hạn. PostgreSQL chỉ khi có multiwriter/HA/load; domain không khóa vào SQLite |
 | Backend account/session/inventory/reward là design; adapter KR riêng | Local identity/login-result không xác thực đầy đủ. Backend làm sớm, client binding chỉ bật sau khi đo ownership/token/multi-connection |
 | Giữ semantics/profile Python trong lần chuyển đầu | Fuse/drop/report-derivedlife/rank/terrain vẫn design; shadow discrepancy trước enforce validator mới |
@@ -92,58 +92,61 @@ KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma tr
 
 ## Module và dòng dữ liệu
 
-Trạng thái cấu trúc dưới đây bắt đầu đối chiếu tại `78daa71` (11/11); PR329/R1a đã merge073700e và đồng bộ sau CP258 tại1b8d6f2 (CP259). Sáucờ nay nằm Runtime.rules/RoomRules, các khoảng lệch R1b–g vẫn còn. Bản "đề xuất" ban đầu của tài liệu này chưa
-được hiện thực nguyên dạng; phần lệch được ghi rõ để [RUST-R1](PLAN.md#rust-r1) xử lý, không coi là đã đạt.
+Cấu trúc đối chiếu sau PR348: R1a–R1g đã merge source/TCP. Native cuối R1 vẫn ở
+[acceptance](PLAN.md#rust-r1); cấu trúc source không tự đóng gate.
 
 **Cấu trúc thực tế:**
 
     rust/Cargo.toml, Cargo.lock, rust-toolchain.toml
-    rust/crates/kr-wire/src/lib.rs
-      frame, crypt/CRC, sequence, Receiver, số nguyên có độ rộng; chưa có module packet theo opcode
+    rust/crates/kr-wire/src/lib.rs       framing, crypt/CRC, sequence, Receiver, primitive widths
+    rust/crates/kr-wire/src/kr00967.rs   header chuẩn và builder/parser KR chung
+    rust/crates/kr-wire/src/kr00967/{player,room,battle}.rs
     rust/crates/kr-wire/tests/native_vectors.rs
     rust/crates/kr-service/src/
-      main, lib        config, listener, vòng đời connection, bootstrap/WCP/login (chưa tách module)
-      binding          lease transport theo IP nguồn (diagnostic)
-      lobby            luồng login → channel → sảnh
-      room             model phòng: membership, phase, vòng
-      rules            luật phòng theo profile (R1a)
-      room_io          một phòng toàn cục, hàng đợi recipient, xử lý opcode, timer
-      room_wire        vá field trên template packet đã pin
-      bombs, pickups, terrain, life, four_results     chính sách trận
-      accounts, account_worker, account_bridge, account_serving     backend account và cầu nối KR
+      main, lib        config, listener, connection/bootstrap/WCP/login; chưa tách process
+      network          phạm vi mạng, budget transport/allowlist
+      binding          legacy diagnostic transport lease/IP index
+      lobby            login → channel → sảnh
+      room             PlayerId, slot, Membership, phase và round
+      rules            Result/Departure/Bomb/Life/TeamPolicy, normalize JSON compatibility
+      player_template  template profile106 chung, projection identity/name/slot
+      room_registry    typed RoomKey; container/listing/recipient isolation
+      room_io          owner + bounded recipient queues; serving vẫn chọn phòng cố định
+      room_packets     template pins và packet normalization
+      room_wire        bridge tới builder KR; một số body còn template opaque đã pin
+      peer_routes      LegacyDirectPlan theo round/member/slot; chưa relay/NAT discovery
+      bombs, pickups, terrain, life, four_results     policy trận hiện hành
+      accounts, account_worker, account_bridge, account_serving     DB/worker/launcher/session binding
       logging
+      bin/kr-admin.rs
     rust/crates/kr-service/migrations/     schema SQLite
-    server/, tools/, docs/, local/          như cũ
+    server/, tools/, docs/, local/          Python RE/reference, harness và evidence
 
-**Cấu trúc đích sau R1** (tên module là định hướng, chốt khi làm từng bước):
+**Ranh giới mở rộng:** một process/hai crate và mutex owner hiện đủ cho phạm vi đang đo.
+Không cần tạo trước các module `transport/session/policies/store` riêng chỉ để khớp sơ đồ cũ; chỉ tách khi
+implementation hoặc đo tải chỉ ra ranh giới hữu ích. M7 nối nhiều phòng vào registry; N1R nối policy endpoint
+opt-in; M6 thêm lưu kết quả; M8 bổ sung telemetry/admin/deploy. PLAN giữ dependency và thứ tự.
 
-    kr-wire/src/kr00967/{bootstrap,login,room,battle}   header chuẩn đã pin + builder/parser body theo opcode
-    kr-service/src/
-      config, transport, connection, session            identity lấy từ session, không từ IP
-      lobby, registry                                   RoomId → phòng; listing dựng từ registry
-      room, rules, room_io                              mỗi phòng một RoomRules; không nhánh theo sức chứa
-      policies/{bomb,item,terrain,life,result}
-      application/{accounts,profiles,results}, store/{sqlite,migrations}, admin, telemetry
-
-| Khoảng lệch giữa thực tế và thiết kế | Hệ quả nếu để nguyên | Bước xử lý |
+| Khoảng trống thực tế | Ranh giới đã có | Phần còn phải nghiệm thu |
 |---|---|---|
-| Một phòng toàn cục thay cho mỗi phòng một owner | Không mở được nhiều phòng (M7) | R1e |
-| Identity là slot; chỉ identity 1 tạo được phòng; mỗi identity một fixture 106 | Account bất kỳ không vào phòng được | R1c |
-| Sáu cờ theo sức chứa; ba đường rời phòng; hai đường tính kết quả | Mỗi tính năng mới phải viết ba lần; terrain/item chưa chạy ở 4 và 8 người | R1a, R1b |
-| Header khung mượn từ fixture bất kỳ; body là template vá field | Packet phụ thuộc bộ fixture trong `local/`; khó thêm packet mới | R1d |
-| Nhận diện client theo IP nguồn; endpoint 153 dùng IP cấu hình | Hai người chung NAT trùng nhau; sai địa chỉ sau NAT | R1f, theo kết quả [RUST-N1](PLAN.md#rust-n1) |
-| [CP270](PROTOCOL.md#rust-r1g-admission) đã cho cấu hình trần transport/allowlist độc lập profile | Budget design không tự chứng nhận50người hoặc nâng profile/room count | R1g source/TCP đã kiểm; tải/queues thực ở M8 |
-| Chưa có `tests/{lifecycle,differential,store_faults}`; bộ TCP nằm ở `tools/test_rust_*.py` ngoài `cargo test` | Hồi quy phụ thuộc người chạy tay | M8, làm dần từ R1 |
+| Serving nhiều phòng/chọn đội/nhân vật | R1e registry và queue isolation; R1c PlayerId độc lập slot | M7 nối wire/occupancy và native nhiều phòng, không suy từ container/unit |
+| Profile account tổng quát | R1c template106; R1f account/session-owned PlayerId, legacy IP index riêng | Profile291/projection account bất kỳ và native DB-queue fault M5 |
+| Terrain/item 4/8, map và item mới | RoomRules typed policies; R1b không còn chọn luật từ fixture `rank` | G1 theo scope sáu map; JSON cờ cũ chỉ compatibility, không thêm cờ/nhánh theo sức chứa |
+| Body packet còn template opaque | R1d header chuẩn và `kr00967` builders; player_template chung | Chỉ mở field/consumer đang chặn M7/G1, không suy đã có schema mọi packet |
+| Hai NAT đổi cổng | R1f current-channel LegacyDirectPlan; N1/N1b đã có kết luận | N1R integration/native; không học port tự động hoặc relay native từ source/TCP |
+| Tải 50 người/8 phòng | R1g cho cấu hình transport/allowlist độc lập profile | M8 workload, queues/FD/backpressure/restart/backup-restore; budget không là benchmark |
+| Tự động hóa nghiệm thu | Unit trong crate; harness TCP/native tại tools/ và evidence | Native cuối R1 và recipe/load/restore M8; CI không thay raw/native proof |
 
-Mutex đồng bộ quanh phòng (`Arc<Mutex<Runtime>>`, không giữ qua await) đáp ứng yêu cầu "owner phòng xử lý tuần tự";
-R1 giữ cách này và chỉ đổi từ một phòng sang registry, không chuyển sang actor nếu chưa có số đo cho thấy cần.
+Mutex đồng bộ quanh phòng (`Arc<Mutex<Runtime>>`, không giữ qua await) giữ owner xử lý tuần tự.
+Không chuyển sang actor/microservice khi chưa có số đo cần thiết. Source relay thử nghiệm ở nhánh riêng chưa
+nối serving hoặc nghiệm thu; đợt docs không thay runtime và không nhập phần đó vào cấu trúc main.
 
 kr-wire không Tokio/DB/domain; parse trả lỗi+bounds, không tự authorizecommand. kr-service có library
 cho deterministiclifecycle và binaryLinux. Chưa cần kr-game/kr-storecrate, engine/render/clientRustmới
 hoặc boom-coredependency. Unknownfield giữ kiểu opaque+hash profile/limits, không tự đặt tên auth/session.
 
 CP237 đã thêm [floor pickup](PROTOCOL.md#rust-movement-floor) từcùng582pin vào roomowner/clone+reservequeues,
-không nhập DB/inventory/reward vào worlditem. NativeUDP/movement/floorRoller đã đo; [CP238](PROTOCOL.md#rust-bombs) thêmroomledger/monotonicID/membership-round-allocationticket/fuse6/tworecipientwrites; [CP239](PROTOCOL.md#rust-terrain) thêmterraincandidate+fullroster158commit/currentcell142/hiddenclaims; life/result-reset cònthiếu.
+không nhập DB/inventory/reward vào worlditem. NativeUDP/movement/floorRoller đã đo; [CP238](PROTOCOL.md#rust-bombs) thêmroomledger/monotonicID/membership-round-allocationticket/fuse6/tworecipientwrites; [CP239](PROTOCOL.md#rust-terrain) thêmterraincandidate+fullroster158commit/currentcell142/hiddenclaims; life/result-reset đã có native M3 theo [phạm vi](protocol/life-results.md#rust-life-results); phần mở rộng vẫn theo PLAN.
 Opaque123/10 chỉboundedobserve, không contractsemantics/authority; giữ unknown trong RESEARCH.
 
 Dòng dữ liệu: nativeTCP→reader/codec mỗi connection/direction→stage/session adapter→owner phòng→
@@ -262,7 +265,7 @@ làmoracle. Policy/authoritythayđổi làtaskriêng saubaselineport.
 | Matchrestore | Durableworld/timer/RNG/epoch/peerrekey/nativejoin-loading; ngoài scopeđầu, khôngsuytừDBaccountpersist |
 
 Không hứa ngày/sốCP/phầntrăm. Ướclượng sau khi lát cắt đầu có đotải/reliability/REbridge, nêu assumptions.
-Internet thật chưa kiểm; Internet/ISP/CGNAT làbacklogriêng, khôngdependencyngầm K6c/K7 đãnghiệmthu.
+N1 đạt một phía tới được; N1b hai NAT đổi cổng âm. Topology/ISP/CGNAT khác và relay native còn thiếu theo PLAN, không là dependency ngầm K6c/K7.
 
 <a id="relay-endpoint-design"></a>
 ## Endpoint và relay sau N1b — quyết định thiết kế CP267

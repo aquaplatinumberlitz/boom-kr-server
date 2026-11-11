@@ -3,6 +3,8 @@ import copy
 import unittest
 
 import feature_catalog as catalog
+# Keep navigation/size checks in the existing docs CI entry point.
+from test_check_docs import DocsTests
 
 
 class CatalogTests(unittest.TestCase):
@@ -61,6 +63,13 @@ class CatalogTests(unittest.TestCase):
         self.assert_error(data, 'via_pr requires PR source')
         f['coverage']['runtime'].pop('windows_original')
         self.assert_error(data, 'runtime environments')
+
+    def test_contract_can_point_directly_to_topic_but_requires_a_real_anchor(self):
+        data = self.data()
+        self.feature(data)['refs']['contract'] = 'docs/protocol/auth-session.md#login-auth'
+        self.assertEqual(catalog.validate(data), [])
+        self.feature(data)['refs']['contract'] = 'docs/protocol/auth-session.md#invented-anchor'
+        self.assert_error(data, 'missing anchor')
 
     def test_no_auto_gate_closure_and_question_required(self):
         data = self.data()
