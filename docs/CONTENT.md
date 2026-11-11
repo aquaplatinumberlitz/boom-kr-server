@@ -654,6 +654,307 @@ Mã mode trên wire (trường mode khi tạo phòng) và luật thắng của t
 - **Pack riêng:** FxHiddenCatch (Hidden Catch), FxMonster (quái mùa 1 và mùa 2, tàu).
 - **Theo số map ở trên:** map đấu thường theo theme 169, biến thể của map đấu 144, nhiệm vụ và mode riêng 122, monster mode 368, rpg và ca hero 124, hidden catch 37, màn thưởng 43, sảnh, cửa hàng, tutorial, map tuỳ biến 36, chưa phân nhóm 108.
 
+## Hệ thống của client
+
+Tài nguyên có mặt trong build **không chứng minh tính năng còn chạy hay server phải làm gì**. Gộp nhóm và ghép wiki chỉ dựa vào tên; ID chỉ cho biết catalog có cơ chế liên quan, không chứng minh đã hỗ trợ toàn bộ hệ thống. Các nhóm chưa đủ tên để gộp được giữ riêng.
+
+Mỗi entry thuộc một nhóm theo thư mục đầu trong index; bảng Attr và các tiền tố Shop/Guild/Mission/Ranking/Event/BtMessenger rõ tên trong nhóm UI chung được tách riêng. Số mục không phải số tính năng; không cộng trùng giữa các hệ thống. Tên entry thường không có đuôi, nên cột loại chỉ thống kê đuôi tên trong index, không suy định dạng binary.
+
+| Hệ thống | Có ID catalog | Chưa có ID |
+|---|---|---|
+| 59 | 7 | 52 |
+
+| Hệ thống | Nhóm tài nguyên (pack/nhóm; số mục) | Wiki khớp tên | ID catalog liên quan | Server phải làm gì |
+|---|---|---|---|---|
+| Cửa hàng | `FxStage/Shop` (412) | — | chưa có |  |
+| Bang hội | `FxDesktop/Etc:Guild` (2), `FxDesktop/Guild` (26) | — | chưa có |  |
+| Bạn bè / Messenger | `FxDesktop/GlobalUI:BtMessenger` (2) | — | chưa có |  |
+| Nhiệm vụ | `FxContents/DailyMission` (22), `FxDesktop/Quest` (59), `FxStage/Game:Mission` (2), `fx/CAMission` (20), `fx/MissionPong` (10) | — | chưa có |  |
+| Ladder | `CharTE/LadderDeco` (89), `FxContents/Ladder` (9), `FxContents/WeeklyLadder` (12) | 크레이지_아케이드래더 | chưa có |  |
+| Xếp hạng CAJJang | `FxContents/UXCAJJangRatingMark` (61) | — | chưa có |  |
+| Sự kiện theo tiền tố Event | `FxDesktop/Etc:Event` (2), `FxStage/Game:Event` (3), `FxStage/Lobby:Event` (11) | — | chưa có |  |
+| Chat | `FxDesktop/Chatting` (5), `FxDesktop/WhisperLog` (3) | — | chưa có |  |
+| Exchange | `FxDesktop/Exchange` (13) | — | chưa có |  |
+| Level | `FxDesktop/Level` (12) | 크레이지_아케이드경험치표 | chưa có |  |
+| PCRoomBenefit | `fx/PCRoomBenefit` (16) | — | chưa có |  |
+| Sự kiện TakeCareOfEvent | `FxDesktop/TakeCareOfEvent` (39) | — | chưa có |  |
+| CAPass | `FxContents/CAPass` (9) | — | chưa có |  |
+| MagicMarket | `FxContents/MagicMarket` (57) | — | chưa có |  |
+| Bộ sưu tập item | `FxContents/ItemCollection` (27) | 크레이지_아케이드아이템 | chưa có |  |
+| Hồ sơ / MyInfo | `FxDesktop/MyInfo` (208) | — | `KR-L003` |  |
+| Chọn nhân vật | `FxContents/CharacterSelect` (34), `FxContents/CharacterSelectAll` (33) | — | chưa có |  |
+| Trang trí avatar | `CharTE/AvatarDeco` (7797), `FxAsset/AvatarDeco` (10) | — | chưa có |  |
+| Trang trí nhân vật | `CharTE/CharDeco` (3896), `CharTE/CharDecoAdj` (2592) | — | chưa có |  |
+| Trang trí bom | `CharTE/BombDeco` (594) | — | chưa có |  |
+| Trang trí cấp | `CharTE/GradeDeco` (211) | — | chưa có |  |
+| Cảm xúc / Emoticon | `EmoTE/Character` (1479), `fx/Emoticon` (52) | — | chưa có |  |
+| Trang trí ID | `EmoTE/IDDeco` (3176) | — | chưa có |  |
+| Nhân vật | `FxCharacter/Character` (3571), `FxContents/Attr:BomberAttr` (1) | — | chưa có |  |
+| Item | `FxContents/Attr:ItemAttr` (1), `fx/Item` (1091) | 크레이지_아케이드아이템 | `KR-F006`, `KR-F007`, `KR-F008`, `KR-F010`, `KR-F011`, `KR-F012`, `KR-F013`, `KR-F014` |  |
+| Map | `FxContents/Attr:MapGroup` (1), `FxMap/Etc` (1151), `FxMap/Map` (1151), `FxMap/MapScriptTemplate` (409), `FxMap/Theme` (142) | 크레이지_아케이드맵 | `KR-R003` |  |
+| Ô map | `FxTile/Tile00` (23), `FxTile/Tile01` (37), `FxTile/Tile02` (35), `FxTile/Tile03` (35), `FxTile/Tile04` (44), `FxTile/Tile05` (56), `FxTile/Tile06` (34), `FxTile/Tile07` (76), `FxTile/Tile08` (57), `FxTile/Tile09` (82), `FxTile/Tile10` (111), `FxTile/Tile11` (14), `FxTile/Tile12` (56), `FxTile/Tile13` (16), `FxTile/Tile15` (31), `FxTile/Tile16` (51), `FxTile/Tile17` (37), `FxTile/Tile18` (41), `FxTile/Tile19` (39), `FxTile/Tile20` (11), `FxTile/Tile21` (104), `FxTile/Tile22` (15), `FxTile/Tile23` (71), `FxTile/Tile24` (63), `FxTile/Tile25` (1), `FxTile/Tile26` (72), `FxTile/Tile27` (13), `FxTile/Tile28` (125), `FxTile/Tile29` (57), `FxTile/Tile30` (33), `FxTile/Tile31` (97), `FxTile/Tile32` (24), `FxTile/Tile33` (9), `FxTile/Tile35` (27), `FxTile/Tile36` (53), `FxTile/Tile38` (27), `FxTile/Tile39` (64), `FxTile/Tile40` (10), `FxTile/Tile41` (6), `FxTile/Tile42` (14), `FxTile/Tile43` (29), `FxTile/Tile44` (31), `FxTile/Tile45` (53), `FxTile/Tile46` (19), `FxTile/Tile47` (53), `FxTile/Tile48` (39), `FxTile/Tile50` (92), `FxTile/Tile51` (83), `FxTile/Tile52` (1), `FxTile/Tile53` (15), `FxTile/Tile54` (131), `FxTile/Tile55` (1), `FxTile/Tile57` (43), `FxTile/Tile58` (53), `FxTile/Tile59` (35), `FxTile/Tile60` (50), `FxTile/Tile61` (75), `FxTile/Tile62` (94), `FxTile/Tile63` (50), `FxTile/Tile64` (39), `FxTile/Tile65` (69), `FxTile/Tile66` (73), `FxTile/Tile67` (33), `FxTile/Tile68` (31), `FxTile/Tile69` (91), `FxTile/Tile70` (53), `FxTile/Tile71` (29), `FxTile/Tile72` (49), `FxTile/Tile73` (63), `fx/TileConv` (28), `fx/TileCustom` (95), `fx/TileInfo` (1), `fx/TilePractice` (4), `fx/TileRPG` (2), `fx/TileTransparent` (1) | 크레이지_아케이드맵 | chưa có |  |
+| Monster | `FxMonster/Monster` (1022), `FxMonster/MonsterSeason2` (236) | 크레이지_아케이드몬스터_모드, 크레이지_아케이드몬스터_모드시즌2 | chưa có |  |
+| Hidden Catch | `FxHiddenCatch/HiddenCatch` (291), `FxHiddenCatch/Prepare_HC` (12) | — | chưa có |  |
+| RPG | `FxContents/RPG` (134), `FxContents/RPGMyInfo` (29) | — | chưa có |  |
+| CAHero | `FxContents/CAHero` (69) | — | chưa có |  |
+| SandBox | `FxContents/SandBox` (79) | — | chưa có |  |
+| ConfusedFight | `FxContents/ConfusedFight` (50) | — | chưa có |  |
+| AIBattle | `FxContents/AIBattle` (10) | — | chưa có |  |
+| Antarctic | `FxContents/Antarctic` (15) | — | chưa có |  |
+| HoneyButterChip | `FxContents/HoneyButterChip` (18) | — | chưa có |  |
+| DIYBomb | `FxContents/DIYBomb` (9) | — | chưa có |  |
+| MineExplore | `FxContents/MineExplore` (8) | — | chưa có |  |
+| IamWriggle | `FxContents/IamWriggle` (7) | — | chưa có |  |
+| IamBoss | `FxContents/IamBoss` (4) | — | chưa có |  |
+| SnowyChamp | `FxContents/SnowyChamp` (6) | — | chưa có |  |
+| LuckyCard | `FxContents/LuckyCard` (5) | — | chưa có |  |
+| Ghép trận UXMatching | `FxContents/UXMatching` (163) | — | chưa có |  |
+| Sảnh | `FxDesktop/LobbySquare` (104), `FxDesktop/Square` (19), `FxDesktop/TileLobbySquare` (898), `FxStage/Lobby` (203) | — | `KR-L002` |  |
+| Đăng nhập | `FxDesktop/LoginStage` (30), `FxDesktop/SpecialLogin` (2), `FxStage/SelectServerStage` (5) | — | `KR-L001` |  |
+| Hướng dẫn | `FxStage/Tutorial` (74) | — | chưa có |  |
+| Kết quả | `FxStage/StageClear` (19) | — | `KR-X001` |  |
+| Trận đấu | `FxStage/Game` (538) | 크레이지_아케이드게임_모드 | `KR-F001`, `KR-F002`, `KR-F004`, `KR-F005`, `KR-F009` |  |
+| Pet | `fx/Pet` (1356) | 크레이지_아케이드펫 | chưa có |  |
+| CustomMap | `fx/CustomMap` (158) | — | chưa có |  |
+| Câu cá | `CharTE/FishingDeco` (1), `FxDesktop/FishTrade` (2), `fx/FishingObjects` (70) | — | chưa có |  |
+| Couple | `fx/Couple` (28) | — | chưa có |  |
+| GrowSprout | `fx/GrowSprout` (43) | — | chưa có |  |
+| DTT | `fx/DTT` (29), `fx/DTT_seasonShop` (14) | — | chưa có |  |
+| Partners | `fx/Partners` (13), `fx/TilePartners` (10), `fx/TilePartners_Ground` (4) | — | chưa có |  |
+| LineFriends | `fx/LineFriends` (7) | — | chưa có |  |
+| MonWars | `fx/MonWars` (7) | — | chưa có |  |
+| RetroWriggle | `fx/RetroWriggle` (15) | — | chưa có |  |
+| SelectionBox | `fx/SelectionBox` (7) | — | chưa có |  |
+
+### Nhóm tài nguyên trong mọi pack
+
+`chưa phân loại` gồm nhóm dùng chung, tên mơ hồ hoặc không đủ căn cứ gắn với hệ thống; không có nghĩa là không có tính năng. `:` chỉ tiền tố/bảng đã tách trong thư mục.
+
+| Nhóm | Pack | Số mục | Loại file chính theo đuôi tên (số mục) | Hệ thống |
+|---|---|---|---|---|
+| `AvatarDeco` | `CharTE` | 7797 | không đuôi (7797) | Trang trí avatar |
+| `BombDeco` | `CharTE` | 594 | không đuôi (594) | Trang trí bom |
+| `CharDeco` | `CharTE` | 3896 | không đuôi (3896) | Trang trí nhân vật |
+| `CharDecoAdj` | `CharTE` | 2592 | không đuôi (2592) | Trang trí nhân vật |
+| `FishingDeco` | `CharTE` | 1 | không đuôi (1) | Câu cá |
+| `GradeDeco` | `CharTE` | 211 | không đuôi (211) | Trang trí cấp |
+| `Icon` | `CharTE` | 5563 | không đuôi (5563) | chưa phân loại |
+| `LadderDeco` | `CharTE` | 89 | không đuôi (89) | Ladder |
+| `ObjectTable` | `CharTE` | 1 | không đuôi (1) | chưa phân loại |
+| `Character` | `EmoTE` | 1479 | không đuôi (1479) | Cảm xúc / Emoticon |
+| `Fanfare` | `EmoTE` | 59 | không đuôi (59) | chưa phân loại |
+| `IDDeco` | `EmoTE` | 3176 | không đuôi (3176) | Trang trí ID |
+| `Icon` | `EmoTE` | 3271 | không đuôi (3271) | chưa phân loại |
+| `ObjectTable` | `EmoTE` | 1 | không đuôi (1) | chưa phân loại |
+| `Slot` | `EmoTE` | 1996 | không đuôi (1996) | chưa phân loại |
+| `Wave` | `EmoTE` | 58 | không đuôi (58) | chưa phân loại |
+| `AvatarDeco` | `FxAsset` | 10 | không đuôi (10) | Trang trí avatar |
+| `ObjectTable` | `FxAsset` | 1 | không đuôi (1) | chưa phân loại |
+| `Character` | `FxCharacter` | 3571 | không đuôi (3571) | Nhân vật |
+| `AIBattle` | `FxContents` | 10 | không đuôi (10) | AIBattle |
+| `Antarctic` | `FxContents` | 15 | không đuôi (15) | Antarctic |
+| `Attr:BomberAttr` | `FxContents` | 1 | không đuôi (1) | Nhân vật |
+| `Attr:ItemAttr` | `FxContents` | 1 | không đuôi (1) | Item |
+| `Attr:MapGroup` | `FxContents` | 1 | không đuôi (1) | Map |
+| `CAHero` | `FxContents` | 69 | không đuôi (69) | CAHero |
+| `CAPass` | `FxContents` | 9 | không đuôi (9) | CAPass |
+| `CharacterSelect` | `FxContents` | 34 | không đuôi (34) | Chọn nhân vật |
+| `CharacterSelectAll` | `FxContents` | 33 | không đuôi (33) | Chọn nhân vật |
+| `ConfusedFight` | `FxContents` | 50 | không đuôi (50) | ConfusedFight |
+| `DIYBomb` | `FxContents` | 9 | không đuôi (9) | DIYBomb |
+| `DailyMission` | `FxContents` | 22 | không đuôi (22) | Nhiệm vụ |
+| `HoneyButterChip` | `FxContents` | 18 | không đuôi (18) | HoneyButterChip |
+| `IamBoss` | `FxContents` | 4 | không đuôi (4) | IamBoss |
+| `IamWriggle` | `FxContents` | 7 | không đuôi (7) | IamWriggle |
+| `ItemCollection` | `FxContents` | 27 | không đuôi (27) | Bộ sưu tập item |
+| `Ladder` | `FxContents` | 9 | không đuôi (9) | Ladder |
+| `LuckyCard` | `FxContents` | 5 | không đuôi (5) | LuckyCard |
+| `MagicMarket` | `FxContents` | 57 | không đuôi (57) | MagicMarket |
+| `MineExplore` | `FxContents` | 8 | không đuôi (8) | MineExplore |
+| `RPG` | `FxContents` | 134 | không đuôi (134) | RPG |
+| `RPGMyInfo` | `FxContents` | 29 | không đuôi (29) | RPG |
+| `SandBox` | `FxContents` | 79 | không đuôi (79) | SandBox |
+| `SnowyChamp` | `FxContents` | 6 | không đuôi (6) | SnowyChamp |
+| `UXCAJJangRatingMark` | `FxContents` | 61 | không đuôi (61) | Xếp hạng CAJJang |
+| `UXMatching` | `FxContents` | 163 | không đuôi (163) | Ghép trận UXMatching |
+| `WeeklyLadder` | `FxContents` | 12 | không đuôi (12) | Ladder |
+| `AIaider` | `FxDesktop` | 1 | không đuôi (1) | chưa phân loại |
+| `Banner` | `FxDesktop` | 1 | không đuôi (1) | chưa phân loại |
+| `BnbNavi` | `FxDesktop` | 20 | không đuôi (20) | chưa phân loại |
+| `Bomb` | `FxDesktop` | 54 | không đuôi (54) | chưa phân loại |
+| `Captain2` | `FxDesktop` | 5 | không đuôi (5) | chưa phân loại |
+| `Chatting` | `FxDesktop` | 5 | không đuôi (5) | Chat |
+| `ClientData` | `FxDesktop` | 3 | không đuôi (3) | chưa phân loại |
+| `Etc` | `FxDesktop` | 196 | không đuôi (196) | chưa phân loại |
+| `Etc:Event` | `FxDesktop` | 2 | không đuôi (2) | Sự kiện theo tiền tố Event |
+| `Etc:Guild` | `FxDesktop` | 2 | không đuôi (2) | Bang hội |
+| `Exchange` | `FxDesktop` | 13 | không đuôi (13) | Exchange |
+| `ExtensionShadow` | `FxDesktop` | 1 | không đuôi (1) | chưa phân loại |
+| `FishTrade` | `FxDesktop` | 2 | không đuôi (2) | Câu cá |
+| `FullMoon` | `FxDesktop` | 15 | không đuôi (15) | chưa phân loại |
+| `GlobalUI` | `FxDesktop` | 76 | không đuôi (76) | chưa phân loại |
+| `GlobalUI:BtMessenger` | `FxDesktop` | 2 | không đuôi (2) | Bạn bè / Messenger |
+| `Guild` | `FxDesktop` | 26 | không đuôi (26) | Bang hội |
+| `Help` | `FxDesktop` | 1 | không đuôi (1) | chưa phân loại |
+| `Icon` | `FxDesktop` | 124 | không đuôi (124) | chưa phân loại |
+| `InstanceReward` | `FxDesktop` | 10 | không đuôi (10) | chưa phân loại |
+| `Level` | `FxDesktop` | 12 | không đuôi (12) | Level |
+| `LobbySquare` | `FxDesktop` | 104 | không đuôi (104) | Sảnh |
+| `LoginStage` | `FxDesktop` | 30 | không đuôi (30) | Đăng nhập |
+| `MultiServer` | `FxDesktop` | 4 | không đuôi (4) | chưa phân loại |
+| `MyInfo` | `FxDesktop` | 208 | không đuôi (208) | Hồ sơ / MyInfo |
+| `NM` | `FxDesktop` | 49 | không đuôi (49) | chưa phân loại |
+| `NoticeImg` | `FxDesktop` | 2 | không đuôi (2) | chưa phân loại |
+| `OneClick` | `FxDesktop` | 9 | không đuôi (9) | chưa phân loại |
+| `Quest` | `FxDesktop` | 59 | không đuôi (59) | Nhiệm vụ |
+| `SItem` | `FxDesktop` | 11 | không đuôi (11) | chưa phân loại |
+| `Speaker` | `FxDesktop` | 9 | không đuôi (9) | chưa phân loại |
+| `SpecialLogin` | `FxDesktop` | 2 | không đuôi (2) | Đăng nhập |
+| `Square` | `FxDesktop` | 19 | không đuôi (19) | Sảnh |
+| `StaticChar` | `FxDesktop` | 20 | không đuôi (20) | chưa phân loại |
+| `TakeCareOfEvent` | `FxDesktop` | 39 | không đuôi (39) | Sự kiện TakeCareOfEvent |
+| `TileLobbySquare` | `FxDesktop` | 898 | không đuôi (898) | Sảnh |
+| `UX` | `FxDesktop` | 28 | không đuôi (28) | chưa phân loại |
+| `WhisperLog` | `FxDesktop` | 3 | không đuôi (3) | Chat |
+| `WhiteAngel` | `FxDesktop` | 5 | không đuôi (5) | chưa phân loại |
+| `bnbolympic` | `FxDesktop` | 7 | không đuôi (7) | chưa phân loại |
+| `HiddenCatch` | `FxHiddenCatch` | 291 | không đuôi (291) | Hidden Catch |
+| `Prepare_HC` | `FxHiddenCatch` | 12 | không đuôi (12) | Hidden Catch |
+| `Bonus` | `FxMap` | 16 | không đuôi (16) | chưa phân loại |
+| `BonusPrepare` | `FxMap` | 1 | không đuôi (1) | chưa phân loại |
+| `Etc` | `FxMap` | 1151 | không đuôi (1151) | Map |
+| `Map` | `FxMap` | 1151 | không đuôi (1151) | Map |
+| `MapScriptTemplate` | `FxMap` | 409 | không đuôi (409) | Map |
+| `PraticePrepare` | `FxMap` | 3 | không đuôi (3) | chưa phân loại |
+| `Prepare` | `FxMap` | 155 | không đuôi (155) | chưa phân loại |
+| `Shadow` | `FxMap` | 1 | không đuôi (1) | chưa phân loại |
+| `ShipEffect` | `FxMap` | 4 | không đuôi (4) | chưa phân loại |
+| `Theme` | `FxMap` | 142 | không đuôi (142) | Map |
+| `Monster` | `FxMonster` | 1022 | không đuôi (1022) | Monster |
+| `MonsterSeason2` | `FxMonster` | 236 | không đuôi (236) | Monster |
+| `Ship` | `FxMonster` | 145 | không đuôi (145) | chưa phân loại |
+| `MP3` | `FxSound` | 157 | không đuôi (157) | chưa phân loại |
+| `Wave` | `FxSound` | 640 | không đuôi (640) | chưa phân loại |
+| `Game` | `FxStage` | 538 | không đuôi (538) | Trận đấu |
+| `Game:Event` | `FxStage` | 3 | không đuôi (3) | Sự kiện theo tiền tố Event |
+| `Game:Mission` | `FxStage` | 2 | không đuôi (2) | Nhiệm vụ |
+| `Lobby` | `FxStage` | 203 | không đuôi (203) | Sảnh |
+| `Lobby:Event` | `FxStage` | 11 | không đuôi (11) | Sự kiện theo tiền tố Event |
+| `SelectServerStage` | `FxStage` | 5 | không đuôi (5) | Đăng nhập |
+| `Shop` | `FxStage` | 412 | không đuôi (412) | Cửa hàng |
+| `StageClear` | `FxStage` | 19 | không đuôi (19) | Kết quả |
+| `StageCredit` | `FxStage` | 7 | không đuôi (7) | chưa phân loại |
+| `Tutorial` | `FxStage` | 74 | không đuôi (74) | Hướng dẫn |
+| `Tile00` | `FxTile` | 23 | không đuôi (23) | Ô map |
+| `Tile01` | `FxTile` | 37 | không đuôi (37) | Ô map |
+| `Tile02` | `FxTile` | 35 | không đuôi (35) | Ô map |
+| `Tile03` | `FxTile` | 35 | không đuôi (35) | Ô map |
+| `Tile04` | `FxTile` | 44 | không đuôi (44) | Ô map |
+| `Tile05` | `FxTile` | 56 | không đuôi (56) | Ô map |
+| `Tile06` | `FxTile` | 34 | không đuôi (34) | Ô map |
+| `Tile07` | `FxTile` | 76 | không đuôi (76) | Ô map |
+| `Tile08` | `FxTile` | 57 | không đuôi (57) | Ô map |
+| `Tile09` | `FxTile` | 82 | không đuôi (82) | Ô map |
+| `Tile10` | `FxTile` | 111 | không đuôi (111) | Ô map |
+| `Tile11` | `FxTile` | 14 | không đuôi (14) | Ô map |
+| `Tile12` | `FxTile` | 56 | không đuôi (56) | Ô map |
+| `Tile13` | `FxTile` | 16 | không đuôi (16) | Ô map |
+| `Tile15` | `FxTile` | 31 | không đuôi (31) | Ô map |
+| `Tile16` | `FxTile` | 51 | không đuôi (51) | Ô map |
+| `Tile17` | `FxTile` | 37 | không đuôi (37) | Ô map |
+| `Tile18` | `FxTile` | 41 | không đuôi (41) | Ô map |
+| `Tile19` | `FxTile` | 39 | không đuôi (39) | Ô map |
+| `Tile20` | `FxTile` | 11 | không đuôi (11) | Ô map |
+| `Tile21` | `FxTile` | 104 | không đuôi (104) | Ô map |
+| `Tile22` | `FxTile` | 15 | không đuôi (15) | Ô map |
+| `Tile23` | `FxTile` | 71 | không đuôi (71) | Ô map |
+| `Tile24` | `FxTile` | 63 | không đuôi (63) | Ô map |
+| `Tile25` | `FxTile` | 1 | không đuôi (1) | Ô map |
+| `Tile26` | `FxTile` | 72 | không đuôi (72) | Ô map |
+| `Tile27` | `FxTile` | 13 | không đuôi (13) | Ô map |
+| `Tile28` | `FxTile` | 125 | không đuôi (125) | Ô map |
+| `Tile29` | `FxTile` | 57 | không đuôi (57) | Ô map |
+| `Tile30` | `FxTile` | 33 | không đuôi (33) | Ô map |
+| `Tile31` | `FxTile` | 97 | không đuôi (97) | Ô map |
+| `Tile32` | `FxTile` | 24 | không đuôi (24) | Ô map |
+| `Tile33` | `FxTile` | 9 | không đuôi (9) | Ô map |
+| `Tile35` | `FxTile` | 27 | không đuôi (27) | Ô map |
+| `Tile36` | `FxTile` | 53 | không đuôi (53) | Ô map |
+| `Tile38` | `FxTile` | 27 | không đuôi (27) | Ô map |
+| `Tile39` | `FxTile` | 64 | không đuôi (64) | Ô map |
+| `Tile40` | `FxTile` | 10 | không đuôi (10) | Ô map |
+| `Tile41` | `FxTile` | 6 | không đuôi (6) | Ô map |
+| `Tile42` | `FxTile` | 14 | không đuôi (14) | Ô map |
+| `Tile43` | `FxTile` | 29 | không đuôi (29) | Ô map |
+| `Tile44` | `FxTile` | 31 | không đuôi (31) | Ô map |
+| `Tile45` | `FxTile` | 53 | không đuôi (53) | Ô map |
+| `Tile46` | `FxTile` | 19 | không đuôi (19) | Ô map |
+| `Tile47` | `FxTile` | 53 | không đuôi (53) | Ô map |
+| `Tile48` | `FxTile` | 39 | không đuôi (39) | Ô map |
+| `Tile50` | `FxTile` | 92 | không đuôi (92) | Ô map |
+| `Tile51` | `FxTile` | 83 | không đuôi (83) | Ô map |
+| `Tile52` | `FxTile` | 1 | không đuôi (1) | Ô map |
+| `Tile53` | `FxTile` | 15 | không đuôi (15) | Ô map |
+| `Tile54` | `FxTile` | 131 | không đuôi (131) | Ô map |
+| `Tile55` | `FxTile` | 1 | không đuôi (1) | Ô map |
+| `Tile57` | `FxTile` | 43 | không đuôi (43) | Ô map |
+| `Tile58` | `FxTile` | 53 | không đuôi (53) | Ô map |
+| `Tile59` | `FxTile` | 35 | không đuôi (35) | Ô map |
+| `Tile60` | `FxTile` | 50 | không đuôi (50) | Ô map |
+| `Tile61` | `FxTile` | 75 | không đuôi (75) | Ô map |
+| `Tile62` | `FxTile` | 94 | không đuôi (94) | Ô map |
+| `Tile63` | `FxTile` | 50 | không đuôi (50) | Ô map |
+| `Tile64` | `FxTile` | 39 | không đuôi (39) | Ô map |
+| `Tile65` | `FxTile` | 69 | không đuôi (69) | Ô map |
+| `Tile66` | `FxTile` | 73 | không đuôi (73) | Ô map |
+| `Tile67` | `FxTile` | 33 | không đuôi (33) | Ô map |
+| `Tile68` | `FxTile` | 31 | không đuôi (31) | Ô map |
+| `Tile69` | `FxTile` | 91 | không đuôi (91) | Ô map |
+| `Tile70` | `FxTile` | 53 | không đuôi (53) | Ô map |
+| `Tile71` | `FxTile` | 29 | không đuôi (29) | Ô map |
+| `Tile72` | `FxTile` | 49 | không đuôi (49) | Ô map |
+| `Tile73` | `FxTile` | 63 | không đuôi (63) | Ô map |
+| `CAMission` | `fx` | 20 | không đuôi (20) | Nhiệm vụ |
+| `Couple` | `fx` | 28 | không đuôi (28) | Couple |
+| `CustomMap` | `fx` | 158 | không đuôi (158) | CustomMap |
+| `DTT` | `fx` | 29 | không đuôi (29) | DTT |
+| `DTT_seasonShop` | `fx` | 14 | không đuôi (14) | DTT |
+| `Dialog` | `fx` | 254 | không đuôi (254) | chưa phân loại |
+| `Emoticon` | `fx` | 52 | không đuôi (52) | Cảm xúc / Emoticon |
+| `FishingObjects` | `fx` | 70 | không đuôi (70) | Câu cá |
+| `GreenPC` | `fx` | 10 | không đuôi (10) | chưa phân loại |
+| `GrowSprout` | `fx` | 43 | không đuôi (43) | GrowSprout |
+| `Item` | `fx` | 1091 | không đuôi (1091) | Item |
+| `LineFriends` | `fx` | 7 | không đuôi (7) | LineFriends |
+| `MissionPong` | `fx` | 10 | không đuôi (10) | Nhiệm vụ |
+| `MonWars` | `fx` | 7 | không đuôi (7) | MonWars |
+| `MotionBlur` | `fx` | 739 | không đuôi (739) | chưa phân loại |
+| `ObjectTable` | `fx` | 3 | không đuôi (3) | chưa phân loại |
+| `PCRoomBenefit` | `fx` | 16 | không đuôi (16) | PCRoomBenefit |
+| `Partners` | `fx` | 13 | không đuôi (13) | Partners |
+| `Pet` | `fx` | 1356 | không đuôi (1356) | Pet |
+| `Retro` | `fx` | 5 | không đuôi (5) | chưa phân loại |
+| `RetroWriggle` | `fx` | 15 | không đuôi (15) | RetroWriggle |
+| `SelectionBox` | `fx` | 7 | không đuôi (7) | SelectionBox |
+| `TileConv` | `fx` | 28 | không đuôi (28) | Ô map |
+| `TileCustom` | `fx` | 95 | không đuôi (95) | Ô map |
+| `TileInfo` | `fx` | 1 | không đuôi (1) | Ô map |
+| `TilePartners` | `fx` | 10 | không đuôi (10) | Partners |
+| `TilePartners_Ground` | `fx` | 4 | không đuôi (4) | Partners |
+| `TilePractice` | `fx` | 4 | không đuôi (4) | Ô map |
+| `TileRPG` | `fx` | 2 | không đuôi (2) | Ô map |
+| `TileTransparent` | `fx` | 1 | không đuôi (1) | Ô map |
+| `XML` | `fx` | 1 | không đuôi (1) | chưa phân loại |
+
+**Chưa phân loại:** 47 nhóm, 13,742 mục.
+
+### Bảng Attr chưa đọc
+
+Chỉ liệt kê tên và kích thước entry trong index; không giải layout.
+
+Không có: ba bảng `FxContents/Attr` đều đã được tool đọc.
+
+
 ## Script map
 
 770 map có `<mapscript>`. Số trong ngoặc là số map dùng. Script do client đọc; phần nào cần server
