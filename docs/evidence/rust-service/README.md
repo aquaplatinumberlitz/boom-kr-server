@@ -691,3 +691,13 @@ AuditnhómAUD079; R1c-g/N1environment/sharedNAT/M5generalprofile vàphase1milest
 30 fixture inputs không có unknown byte. Source/binary/frozen inputs/cleanup và raw so byte ở `r1c-regression-r2`;
 đợt runner r1 mất executable mode trước exec giữ riêng, không gán lỗi cho service. Survey và provenance ở
 `r1c-template-source-survey-r1`. Audit nhóm AUD080; chưa native candidate, full M5, shared-NAT hoặc N1 closure.
+
+<a id="cp264"></a>
+### CP264 — R1d wire builders và N1 theo phạm vi owner
+
+[R1d](../../PROTOCOL.md#rust-r1d-wire-builders), [metadata/hash](r1d-wire-builders.json);
+[N1 acceptance](n1-acceptance.json), [dashboard](../../PLAN.md#dashboard).
+96Rust/306TCP/3169+24exactframes; batch/source/binary ở `r1d-regression-r3`, các foundation failed/pass giữ riêng.
+50 retainedframes header khớp;96 Rust tests gồm các seam/opaque/ownership tests hiện có.
+N1 ghi nhận từ CP261+owner4G, không native mới;1124 pinCP261 kiểm lại đạt. N1b/sharedNAT/nativecuốiR1/fullM5 giữ giới hạn.
+AUD081 audit hai nhóm wire-refactor/N1 acceptance; record/raw mốc cũ không sửa. Hạ tầng chỉ local.

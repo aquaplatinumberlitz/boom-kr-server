@@ -445,3 +445,9 @@ R1c/CP263: `fixed_room.slot_allocation` mặc định `legacy_identity`; opt-in 
 Một template106 tái tạo và đối chiếu mọi fixture cũ trước bind; opaque khác nhau bị từ chối dù pin hợp lệ.
 94 Rust/305 TCP và3189 frame cũ khớp; [contract/giới hạn](../docs/PROTOCOL.md#rust-r1c-player-slots).
 Native candidate vẫn thuộc acceptance cuối R1, tiếp R1d theo PLAN.
+
+
+R1d/CP264: `kr-wire::kr00967` giữ header chuẩn và pure room/player/battle body builders. JSON alias cũ chỉ được
+normalize ở config admission; runtime phòng dùng enum template/opcode, không mượn header fixture khác.
+96 Rust/306 TCP,3169 frame cũ +24 first-vacant khớp; [contract/limits](../docs/PROTOCOL.md#rust-r1d-wire-builders).
+Native candidate chưa kiểm; N1 được chấp nhận từ CP261 theo owner4G/phạm vi riêng, N1b vẫn chưa kiểm.

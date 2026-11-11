@@ -1,0 +1,57 @@
+{
+  "schema": "kre-rust-r1d-wire-builders-v1",
+  "checkpoint": "CP264",
+  "baseline": "c8e64bdd339072f34216a5f3dab3f9220efcc736",
+  "upstream_main": "9e3bdd8dc406eb3cbf17b2c38059db2b659d391c",
+  "canonical": "docs/PROTOCOL.md#rust-r1d-wire-builders",
+  "plan": "docs/PLAN.md#dashboard",
+  "source": "design",
+  "status": "design",
+  "recorded_utc": "2026-11-11T20:38:50.667042+00:00",
+  "implementation": "kr-wire::kr00967 giữ header, room/player/battle body builders; room_packets chuyển alias JSON sang Template một lần, runtime không dùng alias để lấy packet/header.",
+  "integration": "R1d source/TCP verified, PR delivery pending; finalR1/native not accepted.",
+  "checks": {
+    "Rust_tests": 96,
+    "fmt": "pass",
+    "clippy": "pass",
+    "locked_build": "pass",
+    "TCP_cases": 306,
+    "suites": 14,
+    "legacy_cases": 298,
+    "legacy_consumed_room_frames": 3169,
+    "first_vacant_room_frames": 24,
+    "retained_header_frames": 50
+  },
+  "candidate_binaries": [
+    {
+      "path": "local/research/codex/r1d-regression-r3/kr-service",
+      "bytes": 53195384,
+      "sha256": "691a39e344a41f4fa97e288362e12ad31f0a1728545953e732edc88c55f4a3cd"
+    },
+    {
+      "path": "local/research/codex/r1d-regression-r3/kr-admin",
+      "bytes": 45310624,
+      "sha256": "1a9ed22b761a9940db0e130c82903d26bbf54810040f0ec930a5c8c796879672"
+    }
+  ],
+  "source_archive": {
+    "path": "local/research/codex/r1d-source-r3.tar",
+    "bytes": 2037760,
+    "sha256": "42fd9f5d37ec4edb1104067ecc4f24518fa96a5fb6710a5a1f342e949b773635"
+  },
+  "evidence": {
+    "batch": "local/research/codex/r1d-regression-r3/evidence-index.json",
+    "comparison": "local/research/codex/r1d-regression-r3/wire-comparison.json",
+    "foundation": "local/research/codex/r1d-foundation-verification-r2.json",
+    "header_equivalence": "local/research/codex/r1d-header-equivalence-r1/verification.json",
+    "source_provenance": "local/research/codex/cp264-source-provenance.json"
+  },
+  "limits": [
+    "Source/unit/TCP tổng hợp của R1d, không native candidate mới; cuối R1 còn native2/4/8/account.",
+    "JSON alias cũ chỉ là input compatibility ở admission; body opaque còn dùng template có pin. Không dựng wire của field/optional/mode chưa hiểu.",
+    "Header chuẩn chỉ profile KR00967 mode2/selector3 đã đo. Header lạ bị từ chối trước bind; không full grammar/mode/prefix.",
+    "Packet field/body builder không quyết định account, identity, team, timer, kết quả, reward hoặc endpoint; policy/ownership ở service giữ nguyên.",
+    "3169 frame cũ và24 first-vacant được so theo boundary receiver; unread cleanup tail giữ raw, không claim bằng toàn log.",
+    "N1 được chấp nhận riêng theo owner + CP261 cho ít nhất một phía tới được; N1b hai phía NAT đổi cổng chưa kiểm. Không suy mọi NAT/ISP/CGNAT/IPv6, fullM5 hoặc production."
+  ]
+}

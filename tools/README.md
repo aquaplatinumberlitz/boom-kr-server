@@ -342,3 +342,8 @@ kiểm TCP `first_vacant`: B tạo phòng, A vào slot1, chuyển host, B tái d
 Năm guard trước bind dùng pin hợp lệ nhưng thay opaque body/header, một tên, identity hoặc policy không hợp lệ.
 Lưu config/raw log/receiver boundary/binary hash và cleanup; đây là synthetic TCP, không native KR acceptance.
 [Contract và giới hạn](../docs/PROTOCOL.md#rust-r1c-player-slots).
+
+
+`test_rust_player_slots.py` bổ sung ca `foreign-common-header`: mọi fixture phòng được đổi cùng byte opaque
+header và pin hash mới hợp lệ; phải từ chối trước bind vì ngoài header profile00967. Bộ hiện8 ca gồm6pre-bind
+negative và2slot lifecycle; [R1d contract/limits](../docs/PROTOCOL.md#rust-r1d-wire-builders).

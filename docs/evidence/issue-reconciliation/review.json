@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP263",
-  "baseline": "227daf17bc4bf746f524114d7c1016ff5c8ad985",
+  "as_of": "CP264",
+  "baseline": "9e3bdd8dc406eb3cbf17b2c38059db2b659d391c",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "R1b merged PR337; R1c SlotAllocation/common106 template,94 Rust/305 TCP/3189 exact old room frames/30 fixture comparisons.",
-      "remaining": "FinalR1 native2/4/8/account; R1d-g, N1 uplink provenance/shared-NAT transport and M5 general profiles/native DB/queue faults.",
-      "next_test": "PLAN R1d canonical header/opcode builders; preserve old wire, RE only unknown mismatch.",
+      "known": "R1d canonical header/pure body builders/typed legacy normalization;96Rust/306TCP/3169+24 exactframe/50header. N1 scoped acceptance recorded usingCP261+owner4G;1124 pins reverified.",
+      "remaining": "R1e, N1b both NAT port-change bounded2native, R1f shared-NAT/session identity, R1g/finalnative2/4/8/account. M5 general profiles/nativeDBqueuefault and production limits.",
+      "next_test": "Dashboard R1e registry after R1d merge, then N1b beforeR1f; no broadRE or old native controls repeated without new gap.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "AUD080 R1c feature-group audit, independent review waived. Phase1 maps/items/Free knownlimit/reward0 decisions already approved. CP263 exact-head PR delivery pending.",
+      "reason": "AUD081 wire-refactor and scopedN1 acceptance feature groups; owner scope/directive and existingnativeevidence combined without rewritingCP261. Exacthead PR pending, review waived.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
