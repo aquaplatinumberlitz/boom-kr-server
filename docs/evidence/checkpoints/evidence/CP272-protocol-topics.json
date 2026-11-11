@@ -1,0 +1,586 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "DOC272-001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3728,
+      "sha256": "0b4137158dce32a1fbd6a26ee30ceff40efc654c05f0d759489f1f68518d71be"
+    },
+    {
+      "id": "DOC272-002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 238150,
+      "sha256": "a9f4333c0372def20d595a44ef683c0c214f0e700aa0b6d86ffefa7b38db79ea"
+    },
+    {
+      "id": "DOC272-003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 136051,
+      "sha256": "1fcd93ea194fc9ec283198eb0a9f3efe8c4a28fea55d9feaa6ad56770c85455d"
+    },
+    {
+      "id": "DOC272-004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 49870,
+      "sha256": "870aec68e5230a906d0de977a3bd145a6d6f9c498c72843389686332ab448240"
+    },
+    {
+      "id": "DOC272-005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "DOC272-006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 26764,
+      "sha256": "e28ec5035f5d79d7022c41a251698ad63bd83a830340ccbda5cc81c9baa205b3"
+    },
+    {
+      "id": "DOC272-007",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 43562,
+      "sha256": "eeb28372958fde43035105273d12c17151a137628a2aacd08988958ecf2f68c7"
+    },
+    {
+      "id": "DOC272-008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD088.json",
+      "bytes": 3490,
+      "sha256": "ac033513271c820b0c8fe25707f18c347591ab7ca3f0b02f8117ba79f9905874"
+    },
+    {
+      "id": "DOC272-009",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 249340,
+      "sha256": "6d4564dd4bebbf9a89094807311c6e645fcc5590833b09fd665c1450c2e75dac"
+    },
+    {
+      "id": "DOC272-010",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 73698,
+      "sha256": "d6737e94713ffdf14605a3545b021342d1cc381b48398a7cd5eb3fe4258d5e8e"
+    },
+    {
+      "id": "DOC272-011",
+      "kind": "repository",
+      "path": "docs/protocol/bombs.md",
+      "bytes": 62697,
+      "sha256": "378cbe2cf5a186b5865ff82ce2167085076ba8c6cc753e79887b81f5d8296358"
+    },
+    {
+      "id": "DOC272-012",
+      "kind": "repository",
+      "path": "docs/protocol/bootstrap-codec.md",
+      "bytes": 28850,
+      "sha256": "f7b0e190eb630ee0e08d7c25045605946b14c5e248e043a694aaf23bcced5641"
+    },
+    {
+      "id": "DOC272-013",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 57563,
+      "sha256": "f373d53abb6db05cc09d25fbf8a8ea35eaa2376d739cd13382dbe2404e7b6889"
+    },
+    {
+      "id": "DOC272-014",
+      "kind": "repository",
+      "path": "docs/protocol/life-results.md",
+      "bytes": 98677,
+      "sha256": "53faf64fdffff98447064b2e764bdb3d492c6855b68b2a1077987fff4e70c412"
+    },
+    {
+      "id": "DOC272-015",
+      "kind": "repository",
+      "path": "docs/protocol/load-phase.md",
+      "bytes": 56007,
+      "sha256": "ad1c03a3f97bad16a93018f55b6da17ba6fe98150c008d05d8bb2cac80b638d0"
+    },
+    {
+      "id": "DOC272-016",
+      "kind": "repository",
+      "path": "docs/protocol/lobby-profile.md",
+      "bytes": 39790,
+      "sha256": "2a2b4ab211911e90b2c57f16a7bfce8650cb760e885f2245e6453e510f1fd260"
+    },
+    {
+      "id": "DOC272-017",
+      "kind": "repository",
+      "path": "docs/protocol/multiplayer-team.md",
+      "bytes": 105439,
+      "sha256": "7c61ebdcfac85b0b44e9d93addd065bbca6a03643d2325c3fd8e8a8da763117f"
+    },
+    {
+      "id": "DOC272-018",
+      "kind": "repository",
+      "path": "docs/protocol/networks.md",
+      "bytes": 76942,
+      "sha256": "0c3c0b4d236f93fc4c28facc8af933c17d371faff0e7ba42d85652ecd40a6d47"
+    },
+    {
+      "id": "DOC272-019",
+      "kind": "repository",
+      "path": "docs/protocol/room-membership.md",
+      "bytes": 99798,
+      "sha256": "1eb55aec65ed52e352f9a544c77809c2e796d62eb7f05fa61fa90854dd956886"
+    },
+    {
+      "id": "DOC272-020",
+      "kind": "repository",
+      "path": "docs/protocol/rust-boundary.md",
+      "bytes": 58252,
+      "sha256": "221560aebc67aca5e3829526f7941c5c6833e3761b1f0baa0cbc982abeb230ac"
+    },
+    {
+      "id": "DOC272-021",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 40195,
+      "sha256": "b351147123d6ceb77037c1a5257365f82b2d1b81e9287f851e83f65d1380a308"
+    },
+    {
+      "id": "DOC272-022",
+      "kind": "repository",
+      "path": "docs/protocol/udp-peer.md",
+      "bytes": 71122,
+      "sha256": "770ccf98c271a2d080152ad4968ca7e1d0bda2b4159a4e11b3392078aba367d3"
+    },
+    {
+      "id": "DOC272-023",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/PROTOCOL.before.md",
+      "bytes": 875077,
+      "sha256": "ce760970ea69ca267c69934a01144a98df08ba5eea36949cb43f4dedb4ced1f4"
+    },
+    {
+      "id": "DOC272-024",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/anchor-map.json",
+      "bytes": 41854,
+      "sha256": "d76b2c73bf42c6a7dd51a16f2690b94ae0b7a4e2b8fe866d23abdbb48ab748d0"
+    },
+    {
+      "id": "DOC272-025",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/append_cp272.py",
+      "bytes": 9690,
+      "sha256": "0cf77b6a630fe71206eb784767e0ffe10c73483a4707b6934e55272c38fc1e44"
+    },
+    {
+      "id": "DOC272-026",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/catalog-final.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "DOC272-027",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "DOC272-028",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/check-docs-current.txt",
+      "bytes": 274,
+      "sha256": "ffcab29ce15a5426132c970a55dfc6401af10d7be314df5b60915dc23b7975d3"
+    },
+    {
+      "id": "DOC272-029",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/check-docs-final-preappend.txt",
+      "bytes": 274,
+      "sha256": "c58d10e2c60c91d92ff7d88bde503a095550a8f2605ed2969e6b78c8d6d75288"
+    },
+    {
+      "id": "DOC272-030",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/check-docs-initial.txt",
+      "bytes": 274,
+      "sha256": "c58d10e2c60c91d92ff7d88bde503a095550a8f2605ed2969e6b78c8d6d75288"
+    },
+    {
+      "id": "DOC272-031",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/ci-exact-modules.txt",
+      "bytes": 190,
+      "sha256": "4d5c73b41d88c647ae11413a7215a00aecec3ddb8bbffe91a5aad02aa6781d31"
+    },
+    {
+      "id": "DOC272-032",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/ci-python-tests.txt",
+      "bytes": 190,
+      "sha256": "a9ec40a047fba896c4c28fdbc266737438608509fb6e6e4e5ee5ed111e92b865"
+    },
+    {
+      "id": "DOC272-033",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/content-census.txt",
+      "bytes": 63,
+      "sha256": "c60a8fc4ffbf20633ee4b4877257015b97428959899f6841fc026e9d125ec4d2"
+    },
+    {
+      "id": "DOC272-034",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/docs-final.txt",
+      "bytes": 274,
+      "sha256": "69e735fb97f10198f9416d8157eafd68d8969095d574804a7692e0eb0f7c2209"
+    },
+    {
+      "id": "DOC272-035",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/final-move-proof-published-script.json",
+      "bytes": 676,
+      "sha256": "d76a9de405e6757f97c856e5a8ee09a91c92c1513189852627960d76d1d45072"
+    },
+    {
+      "id": "DOC272-036",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/final-move-proof.json",
+      "bytes": 676,
+      "sha256": "d76a9de405e6757f97c856e5a8ee09a91c92c1513189852627960d76d1d45072"
+    },
+    {
+      "id": "DOC272-037",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/fragments.json",
+      "bytes": 267,
+      "sha256": "fa193de272966af7d238fc31757ba474e943acb2ced1e9fa5d092d45254efc3f"
+    },
+    {
+      "id": "DOC272-038",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/history-movement.json",
+      "bytes": 42151,
+      "sha256": "eb05e3323470df721d090e42dd060f76f94f2875ede2f24879cd3c30247f44d3"
+    },
+    {
+      "id": "DOC272-039",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/move-proof-final.json",
+      "bytes": 676,
+      "sha256": "d76a9de405e6757f97c856e5a8ee09a91c92c1513189852627960d76d1d45072"
+    },
+    {
+      "id": "DOC272-040",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/move_protocol.py",
+      "bytes": 7317,
+      "sha256": "134cc5ffd42531610a3b025eb8948f67d6d3f2cfad439918d9ab842bf8a9c7f7"
+    },
+    {
+      "id": "DOC272-041",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/movement.json",
+      "bytes": 76857,
+      "sha256": "acc276921aad5f554f412a1581bae7b7c8f9c05ded2c04a64d9001491d4d7107"
+    },
+    {
+      "id": "DOC272-042",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/partition.json",
+      "bytes": 2688,
+      "sha256": "9f7cd2ebba80fe78576b6c8c72d1f9bab77a4a033d9708122b0981f912abbbe9"
+    },
+    {
+      "id": "DOC272-043",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/partition.py",
+      "bytes": 2086,
+      "sha256": "5f49d48f34ac79a610be40ffa600ccf7746407d0d8d14a0e77290915b82dac33"
+    },
+    {
+      "id": "DOC272-044",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/privacy.json",
+      "bytes": 288,
+      "sha256": "4264a5ec7fb45a02c067d38e4f1f7b859ceae4195b82aa21444d62769eccf476"
+    },
+    {
+      "id": "DOC272-045",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/protocol-move-proof.json",
+      "bytes": 2693,
+      "sha256": "ff50f588cb92d619fc3e756bf95e7497e2ce6f2243a1c8b4f9e918faacf72e87"
+    },
+    {
+      "id": "DOC272-046",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/scan_fragments.py",
+      "bytes": 1601,
+      "sha256": "2cd4d5e020a1c6ed47eea5f1f3b6bcf33a12d0f30dc904c695c26f61ceb8f588"
+    },
+    {
+      "id": "DOC272-047",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/README.md",
+      "bytes": 3728,
+      "sha256": "0b4137158dce32a1fbd6a26ee30ceff40efc654c05f0d759489f1f68518d71be"
+    },
+    {
+      "id": "DOC272-048",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/COVERAGE.md",
+      "bytes": 238150,
+      "sha256": "a9f4333c0372def20d595a44ef683c0c214f0e700aa0b6d86ffefa7b38db79ea"
+    },
+    {
+      "id": "DOC272-049",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/HISTORY.md",
+      "bytes": 136051,
+      "sha256": "1fcd93ea194fc9ec283198eb0a9f3efe8c4a28fea55d9feaa6ad56770c85455d"
+    },
+    {
+      "id": "DOC272-050",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/PLAN.md",
+      "bytes": 49870,
+      "sha256": "870aec68e5230a906d0de977a3bd145a6d6f9c498c72843389686332ab448240"
+    },
+    {
+      "id": "DOC272-051",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "DOC272-052",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 26764,
+      "sha256": "e28ec5035f5d79d7022c41a251698ad63bd83a830340ccbda5cc81c9baa205b3"
+    },
+    {
+      "id": "DOC272-053",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 43562,
+      "sha256": "eeb28372958fde43035105273d12c17151a137628a2aacd08988958ecf2f68c7"
+    },
+    {
+      "id": "DOC272-054",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/features.json",
+      "bytes": 249340,
+      "sha256": "6d4564dd4bebbf9a89094807311c6e645fcc5590833b09fd665c1450c2e75dac"
+    },
+    {
+      "id": "DOC272-055",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/auth-session.md",
+      "bytes": 73662,
+      "sha256": "263fd8cc227bcb6ae1e89b11c77d07d4cfcc3a23378741954158678c1b42f5ba"
+    },
+    {
+      "id": "DOC272-056",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/bombs.md",
+      "bytes": 62661,
+      "sha256": "63d9a736eeec0a0dc4def3d749b36425e49ede02f343c2a840c3025a8369d07a"
+    },
+    {
+      "id": "DOC272-057",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/bootstrap-codec.md",
+      "bytes": 28814,
+      "sha256": "0540d71de00dd9e1ef872b72bd8f0b622f2fde91c2c10136799fdc95d4fe1099"
+    },
+    {
+      "id": "DOC272-058",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/items-stats.md",
+      "bytes": 57527,
+      "sha256": "e65ab86ede0eced3c49553b3149b76ac3e156a5df598de8aae703ca11028616e"
+    },
+    {
+      "id": "DOC272-059",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/life-results.md",
+      "bytes": 98641,
+      "sha256": "6779df5a9cf726ea15062ae0454b33e34f93b46c6dd0d0172a9de5a8879f762d"
+    },
+    {
+      "id": "DOC272-060",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/load-phase.md",
+      "bytes": 55971,
+      "sha256": "9485d7d3da782c96363304d719c6c70158ffa023c610cdb67acb22e8c24e62fd"
+    },
+    {
+      "id": "DOC272-061",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/lobby-profile.md",
+      "bytes": 39754,
+      "sha256": "b726551a5bb5d644cbcda7b78b5f811ed0824b7bb90ced889e1d6ef004d17230"
+    },
+    {
+      "id": "DOC272-062",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/multiplayer-team.md",
+      "bytes": 105403,
+      "sha256": "27a119277b3033f6e8c69d8130b487c8aa7a1bcb1b47094870db39d917213a35"
+    },
+    {
+      "id": "DOC272-063",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/networks.md",
+      "bytes": 76906,
+      "sha256": "582052168db249abb9eb20e2b2c675fd54686ea7dd20fe4594d5be837a467368"
+    },
+    {
+      "id": "DOC272-064",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/room-membership.md",
+      "bytes": 99762,
+      "sha256": "15002531c65ddb1dd59beae321726b542b1249863f5c9a130b923948bdc18b8e"
+    },
+    {
+      "id": "DOC272-065",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/rust-boundary.md",
+      "bytes": 58216,
+      "sha256": "300455213d98fe0d76dd5a85d9a9c5a483a0aaccfd8530e9b4d89934154e07af"
+    },
+    {
+      "id": "DOC272-066",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/terrain.md",
+      "bytes": 40159,
+      "sha256": "c7810c2e80c628497b076ab86db0b8d7f88b42662ce6ac92b0f9d5e399c1a588"
+    },
+    {
+      "id": "DOC272-067",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/docs/protocol/udp-peer.md",
+      "bytes": 71086,
+      "sha256": "79027bccd1e6bd22aec2eb2edfdcb3dfd25f413ae280190bf3acddaa2e6ecdc5"
+    },
+    {
+      "id": "DOC272-068",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/tools/check_docs.py",
+      "bytes": 4401,
+      "sha256": "03f19e70f78cd927d99f9b1c5f8478c0043a1cf995db5b0597240e9d6141ab56"
+    },
+    {
+      "id": "DOC272-069",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/tools/feature_catalog.py",
+      "bytes": 15748,
+      "sha256": "777a7669f1258a74fd6d29ca75033175574dc5b36954ddcc716a3246ce6623a7"
+    },
+    {
+      "id": "DOC272-070",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/tools/test_check_docs.py",
+      "bytes": 1816,
+      "sha256": "27b0f45074deb13eb3aef64e4db9bf930c288542d63050f4f45bfc6a30899915"
+    },
+    {
+      "id": "DOC272-071",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/tools/test_feature_catalog.py",
+      "bytes": 3717,
+      "sha256": "f02c7dce23d9ab95876bcb6c02cc7e4b601723bf09b3d8bf6ec06a64a1e72997"
+    },
+    {
+      "id": "DOC272-072",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/snapshot/tools/verify_protocol_migration.py",
+      "bytes": 4070,
+      "sha256": "8f87cef7782e942ab5ea9eec2eb7873ba1615642e3c3db677949fffac1970162"
+    },
+    {
+      "id": "DOC272-073",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/targeted-tests.txt",
+      "bytes": 111,
+      "sha256": "345ee692e7d3f0585e4ae2f9902ea3ae41a62a7f1eff679fa5892cc07dedd216"
+    },
+    {
+      "id": "DOC272-074",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/update_architecture.py",
+      "bytes": 6542,
+      "sha256": "eddd81fc7f1ffdffbb7dc3696d4411274270b43bbaac6b49f242bc99e08ab262"
+    },
+    {
+      "id": "DOC272-075",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/update_current.py",
+      "bytes": 11907,
+      "sha256": "e2d4f6eace5574a107e542a50ac0c02a15c3986fb46d76d85d91c01a018fe1b3"
+    },
+    {
+      "id": "DOC272-076",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/verify_move.py",
+      "bytes": 3578,
+      "sha256": "da9c11c10a46be2ed803ff90174efb081ae4b7ed8e985b36ce174635a4040624"
+    },
+    {
+      "id": "DOC272-077",
+      "kind": "repository",
+      "path": "tools/check_docs.py",
+      "bytes": 4401,
+      "sha256": "03f19e70f78cd927d99f9b1c5f8478c0043a1cf995db5b0597240e9d6141ab56"
+    },
+    {
+      "id": "DOC272-078",
+      "kind": "repository",
+      "path": "tools/feature_catalog.py",
+      "bytes": 15748,
+      "sha256": "777a7669f1258a74fd6d29ca75033175574dc5b36954ddcc716a3246ce6623a7"
+    },
+    {
+      "id": "DOC272-079",
+      "kind": "repository",
+      "path": "tools/test_check_docs.py",
+      "bytes": 1816,
+      "sha256": "27b0f45074deb13eb3aef64e4db9bf930c288542d63050f4f45bfc6a30899915"
+    },
+    {
+      "id": "DOC272-080",
+      "kind": "repository",
+      "path": "tools/test_feature_catalog.py",
+      "bytes": 3717,
+      "sha256": "f02c7dce23d9ab95876bcb6c02cc7e4b601723bf09b3d8bf6ec06a64a1e72997"
+    },
+    {
+      "id": "DOC272-081",
+      "kind": "repository",
+      "path": "tools/verify_protocol_migration.py",
+      "bytes": 4130,
+      "sha256": "e7ca5b4543dd58b54502cdc4af96eedb1474df3a2af66f543be7dbdd2dcb9861"
+    },
+    {
+      "id": "DOC272-082",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/move-proof-prepublication-final.json",
+      "bytes": 676,
+      "sha256": "6fbc09eca5ffde79026e9e205f245120f36e1323d7682c822c9faa9bbd81e6c1"
+    },
+    {
+      "id": "DOC272-083",
+      "kind": "local",
+      "path": "local/research/codex/docs-refactor-r1/docs-prepublication-final.txt",
+      "bytes": 274,
+      "sha256": "69e735fb97f10198f9416d8157eafd68d8969095d574804a7692e0eb0f7c2209"
+    }
+  ]
+}

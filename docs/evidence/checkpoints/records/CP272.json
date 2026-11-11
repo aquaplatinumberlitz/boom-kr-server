@@ -1,0 +1,342 @@
+{
+  "id": "CP272",
+  "previous": "CP271",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T23:31:18.781756+00:00",
+  "context_commit": "cbe69c128e299a4fc0bf8bcba358a24fdaeb120c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074: losslessly reorganize protocol by mechanism, move chronological status to HISTORY, correct post-R1g current docs and enforce navigation/size budgets before relay work.",
+  "scope": "One documentation/tooling checkpoint, no runtime/contract/evidence-level changes. Existing evidence and complete records/audits immutable; only new checkpoint/audit/index appended.",
+  "artifacts": [
+    {
+      "name": "documentation-checker-source",
+      "sha256": "03f19e70f78cd927d99f9b1c5f8478c0043a1cf995db5b0597240e9d6141ab56"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md",
+    "docs/protocol/",
+    "tools/verify_protocol_migration.py",
+    "docs/PLAN.md#dashboard",
+    "docs/RESEARCH.md#rust-service-gaps"
+  ],
+  "findings": [
+    {
+      "summary": "276 sections moved into13 topic files;9909 original content lines exactly preserved modulo relative Markdown link paths,548 old anchors and catalog state/ID preserved; current index122 plus stubs399 total.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md",
+      "evidence": [
+        "DOC272-081",
+        "DOC272-039",
+        "DOC272-082"
+      ],
+      "limits": "Documentation relocation proof only; no KR contract/native/gate confirmation."
+    },
+    {
+      "summary": "Current docs corrected to merged R1a-g, session-owned account profiles, configurable transport budget and N1/N1b final scopes; chronological content moved to HISTORY; open native/M5/relay/service gaps remain.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PLAN.md#dashboard",
+      "evidence": [
+        "DOC272-001",
+        "DOC272-004",
+        "DOC272-006",
+        "DOC272-007",
+        "DOC272-008"
+      ],
+      "limits": "Does not close R1/M5/N1R or claim general profile/multiroom/load readiness."
+    },
+    {
+      "summary": "Docs checker validates local fragments and current-doc line budgets; catalog accepts direct topic locators.90 existing-CI-module tests and census pass; no workflow/CORE_DOCS/runtime changes.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md",
+      "evidence": [
+        "DOC272-077",
+        "DOC272-079",
+        "DOC272-078",
+        "DOC272-031",
+        "DOC272-033",
+        "DOC272-034"
+      ],
+      "limits": "Tool tests do not validate protocol semantics or native behavior."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Lossless_9909lines_548anchors_13topics_catalogstates_immutable_old_evidence",
+      "result": "pass",
+      "evidence": [
+        "DOC272-081",
+        "DOC272-039",
+        "DOC272-082"
+      ],
+      "limits": "Original intro/new navigation/index/stubs excluded; only link path normalization."
+    },
+    {
+      "check": "Docs_fragments_budgets_90_CI_module_tests_content_census",
+      "result": "pass",
+      "evidence": [
+        "DOC272-031",
+        "DOC272-033",
+        "DOC272-034",
+        "DOC272-083"
+      ],
+      "limits": "Existing workflow unchanged; test_check_docs imported through test_feature_catalog."
+    },
+    {
+      "check": "Runtime_changes_native_R1_M5_relay",
+      "result": "not_run",
+      "evidence": [
+        "DOC272-008"
+      ],
+      "limits": "Documentation task; no source/config/input mutation to runtime."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP272-protocol-topics.json",
+      "bytes": 19756,
+      "sha256": "2a4138e952a6e9bfeef3a138fade7a3a3b9ac72cba747ca90f3d49f60f929b8b",
+      "count": 83
+    }
+  ],
+  "delta": {
+    "added": [
+      "Topic index/compatibility stubs, direct catalog locators, fragment and size guards, migration proof."
+    ],
+    "corrected": [
+      "Post-R1g stale current architecture/identity/budget/N1-N1b status; historical narratives relocated without changing completed records."
+    ],
+    "superseded": [
+      "Monolithic PROTOCOL/current-order chronology; all historical anchors remain navigable."
+    ]
+  },
+  "blockers": [
+    "N1R source experiment remains separate, not serving/native certified.",
+    "Final R1 native2/4/8/account, full M5 general profile/native DB-queue fault and M7/G1/M6/M8 unchanged.",
+    "Historical contract statements retain scope/time; index directs readers to current PLAN.",
+    "No runtime/CI workflow/CORE_DOCS change; no infrastructure identifiers published."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Finish docs PR exact-head local/history and CI before merge. Then resume N1R opt-in integration/native and final R1 native per PLAN; no baseline N1b retry.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T23:31:18.781756+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo manual documentation/source/evidence/proof audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/bombs.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/bootstrap-codec.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/life-results.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/load-phase.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/lobby-profile.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/multiplayer-team.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/networks.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/room-membership.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/rust-boundary.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "docs/protocol/udp-peer.md",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "tools/check_docs.py",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "tools/feature_catalog.py",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "tools/test_check_docs.py",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "tools/test_feature_catalog.py",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "tools/verify_protocol_migration.py",
+      "state": "updated",
+      "reason": "Topic relocation, current factual correction, navigation and document-budget enforcement; no contract/evidence-level promotion."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Runtime/acceptance evidence and complete checkpoint records remain immutable; this task changes navigation only."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "unchanged",
+      "reason": "Runtime/acceptance evidence and complete checkpoint records remain immutable; this task changes navigation only."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "unchanged",
+      "reason": "Runtime/acceptance evidence and complete checkpoint records remain immutable; this task changes navigation only."
+    },
+    {
+      "path": "docs/evidence/rust-service/r1g-admission.json",
+      "state": "unchanged",
+      "reason": "Runtime/acceptance evidence and complete checkpoint records remain immutable; this task changes navigation only."
+    },
+    {
+      "path": "docs/evidence/rust-service/r1g-ci-correction.json",
+      "state": "unchanged",
+      "reason": "Runtime/acceptance evidence and complete checkpoint records remain immutable; this task changes navigation only."
+    },
+    {
+      "path": "tools/check_checkpoints.py",
+      "state": "unchanged",
+      "reason": "Runtime/acceptance evidence and complete checkpoint records remain immutable; this task changes navigation only."
+    },
+    {
+      "path": ".github/workflows/docs.yml",
+      "state": "unchanged",
+      "reason": "Runtime/acceptance evidence and complete checkpoint records remain immutable; this task changes navigation only."
+    }
+  ],
+  "completed_feature_groups": [
+    "contract-topic-navigation-and-current-docs"
+  ]
+}
