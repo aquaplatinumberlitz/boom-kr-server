@@ -46,17 +46,16 @@ pub(crate) fn player_state(
 }
 pub fn slot(template: &[u8], member: &Member, chief: bool) -> io::Result<Vec<u8>> {
     let p = player(template, member, chief)?;
-    let mut out = vec![p[0]];
-    out.extend_from_slice(&p[12..16]);
-    out.extend(put(0, Width::U8)?);
-    Ok(out)
+    kr_wire::kr00967::slot110(
+        uint(&p[..1], Width::U8)? as u8,
+        uint(&p[12..16], Width::U32)? as u32,
+    )
+    .map_err(io::Error::other)
 }
 pub fn removal(member: &Member) -> io::Result<Vec<u8>> {
-    let mut out = put(u64::from(member.slot), Width::U8)?;
-    out.extend(put(u64::from(member.key.identity), Width::U32)?);
-    out.extend(put(0, Width::U8)?);
-    Ok(out)
+    kr_wire::kr00967::removal107(member.slot, member.key.identity).map_err(io::Error::other)
 }
+
 pub fn join(template: &[u8], member: &Member) -> io::Result<Vec<u8>> {
     if template.len() != 7 || uint(&template[..1], Width::U8)? != 0 {
         return Err(io::Error::other("wrong join87 template"));
@@ -279,6 +278,21 @@ pub fn replace_listing_title(body: &[u8], title: &[u8]) -> io::Result<Vec<u8>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn projected_slot_is_decoded_before_crossing_the_typed_wire_builder_boundary() {
+        let mut room = crate::room::Room::default();
+        room.enter(1, 11, true).unwrap();
+        let key = room.enter(2, 22, false).unwrap();
+        let member = &room.members[&key.identity];
+        let mut template = vec![0; 204];
+        template[1..5].copy_from_slice(&put(2, Width::U32).unwrap());
+        template[12..16].copy_from_slice(&put(0x12340000, Width::U32).unwrap());
+        let body = slot(&template, member, false).unwrap();
+        assert_eq!(body.len(), 6);
+        assert_eq!(uint(&body[..1], Width::U8).unwrap(), 1);
+        assert_eq!(uint(&body[1..5], Width::U32).unwrap(), 0x12340020);
+        assert_eq!(uint(&body[5..], Width::U8).unwrap(), 0);
+    }
     #[test]
     fn four_peer_endpoints_are_distinct_self_zero_and_all_inactive_slots_explicit() {
         let endpoints = [
