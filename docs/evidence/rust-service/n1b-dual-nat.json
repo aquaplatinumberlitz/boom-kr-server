@@ -1,0 +1,177 @@
+{
+  "schema": "kre-rust-n1b-v1",
+  "checkpoint": "CP266",
+  "recorded_utc": "2026-11-11T21:47:56.796180+00:00",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "baseline": "258abf88c3de56cc619a066f124bddca02a3bf7d",
+  "canonical": "docs/PROTOCOL.md#rust-n1b-dual-nat",
+  "plan": "docs/PLAN.md#rust-n1-result",
+  "native_runs": 2,
+  "max_native_runs": 2,
+  "gate_state": "measurement_complete_direct_udp_failed",
+  "artifacts": {
+    "copy4b": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "arm_service": "3f36acafef5cd7a467cfcda9d9a11cad9fb9e81451e4ed6bb484f7d737f3fdda",
+    "arm_admin": "74d7079cd445903fa87db8474781e9d1033373265cb6ef027f777f112ee0b241"
+  },
+  "runs": [
+    {
+      "id": "n1b-native-r1",
+      "native_run": 1,
+      "raw_seal": {
+        "path": "local/research/codex/n1b-native-r1/native/raw-seal.json",
+        "sha256": "e3eb1b139fc52ffccb5debe1ea5aa25eac9a6639c1d694aed4a372f88dcd58f7"
+      },
+      "verification": {
+        "path": "local/research/codex/n1b-native-r1/negative-udp-verification.json",
+        "sha256": "b8f186090c88f5eecd53f505f263c2e69258624d75147f05ba13e6ef5ba2e39a"
+      },
+      "native_send": {
+        "A": 40,
+        "B": 41
+      },
+      "native_ingress": {
+        "A": 0,
+        "B": 0
+      },
+      "server_namespace_udp": 0,
+      "raw_files": 87,
+      "frozen_inputs": 183,
+      "lifecycle": {
+        "path": "local/research/codex/n1b-native-r1/life-verification.json",
+        "sha256": "bf947cda6fa039f205f8dfa678ca8797bff012bb7840623b21a67448ae0b503e",
+        "result": "pass",
+        "TCP_records": 729,
+        "TCP_replies": 106
+      },
+      "ownership": {
+        "path": "local/research/codex/n1b-native-r1/ownership-verification.json",
+        "sha256": "d4d84e9c68221df19d8e895e5f5bbf284ee8c6b1b54d8e90b29fb5e260fc35f2",
+        "result": "pass_bounded_fixed2"
+      },
+      "duration_seconds": 229.472224891,
+      "both_nat_mismatches_measured": false,
+      "life": {
+        "A": {
+          "clock_rounds": [
+            1,
+            2,
+            3
+          ],
+          "rank_rounds": [
+            1,
+            2
+          ],
+          "return_rounds": [
+            1,
+            2
+          ]
+        },
+        "B": {
+          "clock_rounds": [
+            1,
+            2,
+            3
+          ],
+          "rank_rounds": [
+            1,
+            2
+          ],
+          "return_rounds": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "n1b-native-r2",
+      "native_run": 2,
+      "raw_seal": {
+        "path": "local/research/codex/n1b-native-r2/native/raw-seal.json",
+        "sha256": "957d46ba4c5f578531e90aa061ae3a7b6ba8ad7d54086cc447241a1e4b4c8596"
+      },
+      "verification": {
+        "path": "local/research/codex/n1b-native-r2/negative-udp-verification.json",
+        "sha256": "b8ef1f2884e194704e30195445cd644516cf3b8a348ff28d98c9c1906d571399"
+      },
+      "native_send": {
+        "A": 40,
+        "B": 42
+      },
+      "native_ingress": {
+        "A": 0,
+        "B": 0
+      },
+      "server_namespace_udp": 0,
+      "raw_files": 87,
+      "frozen_inputs": 183,
+      "lifecycle": {
+        "path": "local/research/codex/n1b-native-r2/life-verification.json",
+        "sha256": "9d8e54a73dc40aa934bc53e20142c0fed89c103a75e641adff4f8c0ab0805665",
+        "result": "pass",
+        "TCP_records": 724,
+        "TCP_replies": 106
+      },
+      "ownership": {
+        "path": "local/research/codex/n1b-native-r2/ownership-verification.json",
+        "sha256": "ef62f40089d924e4471ab28e47e754c1e7a5c9dcc89b7df0278cfa52e6b077f3",
+        "result": "pass_bounded_fixed2"
+      },
+      "duration_seconds": 226.872623912,
+      "both_nat_mismatches_measured": true,
+      "life": {
+        "A": {
+          "clock_rounds": [
+            1,
+            2,
+            3
+          ],
+          "rank_rounds": [
+            1,
+            2
+          ],
+          "return_rounds": [
+            1,
+            2
+          ]
+        },
+        "B": {
+          "clock_rounds": [
+            1,
+            2,
+            3
+          ],
+          "rank_rounds": [
+            1,
+            2
+          ],
+          "return_rounds": [
+            1,
+            2
+          ]
+        }
+      }
+    }
+  ],
+  "decision": "Open a relay/endpoint design slice before R1f. The unchanged recipe has no observed UDP source-learning path to the game service; advertising selfreported ports alone fails on the measured two-port-changing path. Do not implement endpoint learning as a confirmed fix.",
+  "reuse": [
+    {
+      "source": "CP261 retained ARM baseline/client4b/native account recipe and observers; CP264 scoped acceptance; CP265 R1e merged PR344",
+      "direct": "Retain server/client/config/fixture/body99/153/native send/getter/ingress and lifecycle recipes. Only B NAT and second-run cloud observation exception differ.",
+      "method_only": "Previous positive verifier parser/reassembly and post-run ACL/routing/raw/quiescence checks. Negative assertions are separate and not a weakened positive test.",
+      "must_measure": "Both selfreported-vs-postNAT ports in same run, native destination/ingress and UDP seen by service; R2 supplies R1 missing ApostNAT capture.",
+      "avoided": "No codec/account/room/battle reimplementation, no broadSDK/static scan, no repeats of one-side-reachable N1 positives as new gate claims."
+    }
+  ],
+  "limits": [
+    "N1b is a completed bounded architecture measurement with a negative directUDP result, not a passed two-NAT gameplay gate or implemented relay.",
+    "Current finite native send/ingress windows and full named captures show no UDP arriving at the service; this is not proof that every KR mode/protocol lacks NAT traversal.",
+    "Same CP261 retained ARM service/admin and copy4b/Wine; no runtime source/config/input changed during either run. Current R1e binary is not natively certified by these runs.",
+    "B is controlled port-changing NAT; two roles share a physical host and B uplink uses an encapsulated carrier. Only the peer leg measured traverses real Internet. Not two independent householdISPs, all NAT classes, or CGNAT type certification.",
+    "R1cloud filter hides ApostNAT; R2 restricts the cloud observation exception to the already-allowlisted peer and reported destination port, with no Linux public DNAT. Both run raw/results are retained separately.",
+    "Actual VPS/OCI endpoints, IDs, topology, policies, routes, ranges and access details stay local. Public metadata includes only evidence hashes and bounded conclusions.",
+    "CP264 N1 one-side-reachable acceptance and CP212 K6c/K7 simulatedWAN remain unchanged. M5 generalprofiles/nativeDBqueuefault, R1f sharedNAT and finalR1native remain open."
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP265",
+  "as_of": "CP266",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1812,7 +1812,9 @@
           "docs/PROTOCOL.md#rust-internet-observation",
           "docs/evidence/rust-service/internet-observation.json",
           "docs/PROTOCOL.md#rust-n1-acceptance",
-          "docs/evidence/rust-service/n1-acceptance.json"
+          "docs/evidence/rust-service/n1-acceptance.json",
+          "docs/PROTOCOL.md#rust-n1b-dual-nat",
+          "docs/evidence/rust-service/n1b-dual-nat.json"
         ]
       },
       "coverage": {
@@ -1888,7 +1890,8 @@
               "docs/PROTOCOL.md#rust-four-results",
               "docs/PROTOCOL.md#rust-eight-baseline",
               "docs/evidence/rust-service/eight-baseline.json",
-              "docs/evidence/rust-service/README.md#cp250"
+              "docs/evidence/rust-service/README.md#cp250",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
             ]
           },
           "windows_original": {
@@ -1900,8 +1903,11 @@
             "refs": []
           },
           "internet": {
-            "state": "unknown",
-            "refs": []
+            "state": "observed",
+            "refs": [
+              "docs/PROTOCOL.md#rust-n1-acceptance",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
+            ]
           }
         },
         "implementation": {
@@ -3773,7 +3779,9 @@
           "docs/PROTOCOL.md#udp-netem-cycles",
           "docs/PROTOCOL.md#nat-netem-host-eof",
           "docs/PROTOCOL.md#emulated-wan-acceptance",
-          "docs/evidence/peer-endpoints/README.md#cp212"
+          "docs/evidence/peer-endpoints/README.md#cp212",
+          "docs/PROTOCOL.md#rust-n1b-dual-nat",
+          "docs/evidence/rust-service/n1b-dual-nat.json"
         ]
       },
       "coverage": {
@@ -3805,7 +3813,8 @@
             "refs": [
               "docs/PROTOCOL.md#nat-endpoint-control",
               "docs/evidence/peer-endpoints/README.md#cp193",
-              "docs/PROTOCOL.md#nat-two-cycles"
+              "docs/PROTOCOL.md#nat-two-cycles",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
             ]
           },
           "windows_original": {
@@ -3817,8 +3826,11 @@
             "refs": []
           },
           "internet": {
-            "state": "unknown",
-            "refs": []
+            "state": "observed",
+            "refs": [
+              "docs/PROTOCOL.md#rust-n1-acceptance",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
+            ]
           }
         },
         "implementation": {
@@ -3843,7 +3855,8 @@
         }
       },
       "issues": [
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
       ]
     },
     {
@@ -4961,7 +4974,9 @@
           "docs/PROTOCOL.md#rust-n1-acceptance",
           "docs/evidence/rust-service/n1-acceptance.json",
           "docs/PROTOCOL.md#rust-r1e-registry",
-          "docs/evidence/rust-service/r1e-registry.json"
+          "docs/evidence/rust-service/r1e-registry.json",
+          "docs/PROTOCOL.md#rust-n1b-dual-nat",
+          "docs/evidence/rust-service/n1b-dual-nat.json"
         ]
       },
       "coverage": {
@@ -5136,7 +5151,8 @@
               "docs/evidence/rust-service/README.md#cp249",
               "docs/PROTOCOL.md#rust-eight-baseline",
               "docs/evidence/rust-service/eight-baseline.json",
-              "docs/evidence/rust-service/README.md#cp250"
+              "docs/evidence/rust-service/README.md#cp250",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
             ]
           },
           "windows_original": {
@@ -5474,7 +5490,9 @@
           "docs/evidence/rust-service/account-worker.json",
           "docs/evidence/rust-service/README.md#cp244",
           "docs/evidence/rust-service/account-idle-rate.json",
-          "docs/evidence/eight-player/team-code-delivery.json"
+          "docs/evidence/eight-player/team-code-delivery.json",
+          "docs/PROTOCOL.md#rust-n1b-dual-nat",
+          "docs/evidence/rust-service/n1b-dual-nat.json"
         ]
       },
       "coverage": {
@@ -5513,7 +5531,8 @@
               "docs/PROTOCOL.md#eight-mesh-owner-bombs",
               "docs/PROTOCOL.md#eight-two-team-cycles",
               "docs/PROTOCOL.md#eight-portable-battle",
-              "docs/PROTOCOL.md#eight-team-variants"
+              "docs/PROTOCOL.md#eight-team-variants",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
             ]
           },
           "windows_original": {

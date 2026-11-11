@@ -9783,3 +9783,33 @@ là archive dependency bất biến. Build/lockfile/source của run serving đ�
 
 R1e chỉ refactor nền theo acceptance của PLAN; không đóng fullR1/M7/M5 hoặc chứng nhận binary native.
 Tiếp N1b tối đa hai native runs trước R1f, rồi R1g và native cuối R1 2/4/8/account. N1 one-side scope giữ; VPS chỉ local.
+
+<a id="rust-n1b-dual-nat"></a>
+## N1b — hai phía NAT đổi cổng: kết quả âm — CP266
+
+Nguồn **kr_runtime/confirmed** trong recipe và cửa sổ đã đo; [metadata/hash](evidence/rust-service/n1b-dual-nat.json),
+[kết luận và việc tiếp](PLAN.md#rust-n1-result). R1e đã merge PR344; phép mạng dùng lại ARM service/admin CP261,
+copy4b/Wine và toàn fixture/account/lifecycle/observer đã có. Không chứng nhận native binary R1e mới.
+
+Hai lượt giữ nguyên server source/config/fixture; phía B đổi sang SNAT ngẫu nhiên có stateful return, bỏ DNAT public.
+Lượt1 không có ngoại lệ ingress ở cloud nên thiếu góc nhìn cổng A sau NAT. Sau seal/cleanup/quiescence, lượt2 chỉ
+cho nguồn peer đã allowlist đi qua cloud ở cổng B tự báo để quan sát; vẫn không DNAT tới B. Cấu hình NAT/filtering,
+MTU, route, carrier, thông số impairment thực và giới hạn mô phỏng được pin đầy đủ **trong local**, theo chỉ đạo riêng tư.
+Không cấu hình netem delay/jitter/loss/reorder/bandwidth; độ trễ/mất gói Internet thực không được suy thành tham số đặt.
+
+PCAP serverNIC được ráp TCP theo accepted tuple và sequence, decode độc lập packet99/153: native getter bằng cổng99;
+153 vẫn quảng bá cổng tự báo. Lượt2 đối chiếu hash payload từ native send→preNAT→public capture, thấy cả hai cổng sau
+NAT khác cổng quảng bá. Trong các cửa sổ input movement của cả hai vòng, native chỉ gửi tới địa chỉ/cổng153; cả hai
+không có ingress/helper UDP. Capture không có UDP tới namespace service để server học mapping. Số mẫu/capturejoins
+và cửa sổ hữu hạn ở report local, không diễn giải mọi datagram hoặc mọi protocol của client.
+
+Cả hai recipe vẫn nhận hai kết quả/reset và Start3 qua TCP. Đây là đối chứng cho việc **lifecycle TCP chạy không đồng
+nghĩa UDP peer hoạt động**. Không nhận kết quả/trận đó là nghiệm thu đồng bộ gameplay qua hai NAT.
+Kết luận nhánh(c) cho recipe hiện hành: cần lát cắt thiết kế relay/endpoint trước R1f. Học cổng trên server chưa là
+fix đủ bằng chứng vì chưa có UDP đến service; không suy client không bao giờ hỗ trợ cơ chế khác.
+
+Hai run đóng resource đúng recipe, raw/seal giữ nguyên; đối chiếu ACL/rules/routes với baseline, controller/namespace/
+listener đã cleanup và mọi file remote khớp tar cuối. Parent-owned uplink được đóng riêng. Lượt1 và đối chứng lượt2
+không trộn thành một runtime; không thêm lượt3 hoặc thay input khi run đang chạy.
+N1 CP264 vẫn đạt scope một phía tới được; K6c/K7 WAN giả lập giữ nguyên. Relay chưa triển khai, shared-NAT identity,
+full M5, native cuối R1 và vận hành 50 người còn riêng. Thông tin thực về VPS/OCI/access/topology không đưa lên GitHub.

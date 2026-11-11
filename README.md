@@ -33,14 +33,14 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP265: R1e nền registry và listing đã kiểm, profile cũ giữ bytes.**
-[Contract/giới hạn](docs/PROTOCOL.md#rust-r1e-registry), [evidence](docs/evidence/rust-service/r1e-registry.json).
-Registry giữ các room runtime riêng; listing91 dựng từ entry/title hiện hành, batch có origin/recipient fence.
-101 test Rust/fmt/clippy/locked build và306 ca TCP đạt;3169 frame cũ +24 first-vacant khớp CP264.
-Hai room/queue/listing được kiểm unit; serving vẫn phòng fixed cũ, chưa tạo/chọn nhiều phòng tổng quát M7.
-R1d đã merge PR343. CP265/AUD082 đang bàn giao; [dashboard](docs/PLAN.md#dashboard) tiếp N1b trước R1f.
-N1 vẫn đạt đúng scope một phía tới được; N1b/shared-NAT/native cuối R1/fullM5 chưa đạt. Hạ tầng chỉ local.
-Mốc cũ ở [HISTORY](docs/HISTORY.md).
+**CP266: N1b đã đo đủ hai lượt; UDP trực tiếp thất bại khi cả hai phía đổi cổng.**
+[Đối chiếu native/capture và giới hạn](docs/PROTOCOL.md#rust-n1b-dual-nat), [raw/hash](docs/evidence/rust-service/n1b-dual-nat.json).
+Hai KR/Wine vẫn đi qua account/phòng, hai kết quả/reset và Start3 qua TCP, nhưng không có ingress/helper movement UDP
+trong các cửa sổ đo. Lượt đối chứng thấy cả hai cổng sau NAT khác packet99; native chỉ gửi tới endpoint153,
+không có UDP tới service để học endpoint. Đây là kết quả âm có bằng chứng, chưa phải hỗ trợ hai NAT hoặc relay.
+R1e đã merge [PR344](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/344). Tiếp thiết kế relay/endpoint trước R1f
+ở [dashboard](docs/PLAN.md#dashboard); không chạy lượt N1b thứ ba. N1 một phía tới được/K6c WAN giả lập giữ scope.
+Shared-NAT, full M5 và native cuối R1 vẫn chưa đạt. Hạ tầng chỉ local; mốc cũ ở [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
 

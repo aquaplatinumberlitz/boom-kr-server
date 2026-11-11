@@ -8,7 +8,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 **Mỗi phiên chỉ cần đọc mục này.** Phần còn lại của file là tham chiếu (acceptance, lịch sử), tra theo anchor khi cần.
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP265 / AUD082**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP266 / AUD083**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Dài hạn: gameplay đầy đủ.
@@ -18,8 +18,8 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 | M0–M3 nền tảng, phòng cố định, trận hai người | Đạt trong phạm vi đã ghi | Không |
 | M4 bốn và tám người | Đạt phần đội cố định và Manner | Free 1v7 là giới hạn đã biết, không retry |
 | M5 tài khoản | Account → phòng → trận → kết quả đã chạy native (CP258) | Hồ sơ tổng quát cho mọi account; lỗi hàng đợi DB khi đang native |
-| [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b: cả hai phía sau NAT đổi cổng |
-| [R1](#rust-r1) lõi phòng | R1a–R1d đã merge; R1e source/TCP đạt, đang bàn giao PR | N1b, R1f, R1g, rồi một lượt native hồi quy 2/4/8/account |
+| [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b đã đo: direct UDP thất bại; cần thiết kế relay/endpoint |
+| [R1](#rust-r1) lõi phòng | R1a–R1e đã merge; N1b hoàn tất phép đo âm | Thiết kế relay/endpoint, R1f, R1g, rồi native hồi quy 2/4/8/account |
 | M7 phòng tổng quát | Chưa bắt đầu | Toàn bộ; cần R1 |
 | [G1](#rust-g1) sáu map ladder và item | Chưa bắt đầu; có [kiểm kê](CONTENT.md) | Phép thử đổi map, rồi từng map và nhóm item |
 | M6 lưu kết quả, thưởng 0 | Chưa bắt đầu | Toàn bộ; cần R1 |
@@ -27,18 +27,18 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 
 **Thứ tự việc:**
 
-1. Hoàn tất PR R1e (101 Rust/306 TCP/3169+24 frame so byte, unit hai room/queues/listing).
-2. Sau R1e merge, chuẩn bị và chạy N1b ở mục dưới; không mở scope M7 trước các bước R1 còn lại.
-3. **N1b** theo [mục kết luận N1](#rust-n1-result): tối đa hai lượt native, làm trước R1f vì kết quả quyết định R1f.
-4. R1f identity theo session thay IP, sửa ca hai người chung NAT; endpoint theo kết quả N1b.
-5. R1g trần kết nối theo tải đích.
-6. Native hồi quy cuối R1: mỗi profile 2, 4, 8 người và đường account một lượt.
-7. Phép thử đổi map sang Village10 (`local/research/claude/codex-prompt-map-probe.md`), tối đa hai lượt.
-8. M7, rồi G1 song song M6, rồi M8.
+1. **Thiết kế relay/endpoint sau N1b** theo [kết luận](#rust-n1-result): chốt seam endpoint và lifecycle/socket/queue,
+   phân biệt policy tự chọn với wire/client phải đo. Không coi server học cổng là fix khi client chưa gửi UDP tới service.
+2. R1f identity theo session thay IP, ca hai người chung NAT; endpoint theo thiết kế trên. Giữ bytes profile legacy.
+3. R1g trần kết nối theo tải đích.
+4. Native hồi quy cuối R1: mỗi profile 2, 4, 8 người và đường account một lượt. Nếu mở relay mới, phải có native
+   relay riêng (movement hai chiều, stale/reset/EOF) trước khi tuyên bố hỗ trợ hai NAT; không lấy hồi quy TCP làm proof.
+5. Phép thử đổi map sang Village10 (`local/research/claude/codex-prompt-map-probe.md`), tối đa hai lượt.
+6. M7, rồi G1 song song M6, rồi M8.
 
 **Blocker và việc tồn:**
 
-- Chưa có blocker chặn thứ tự trên. PR343 đã qua CI và merge; sự cố Actions trước đó giữ ở lịch sử/local.
+- Direct UDP không dùng được ở ca hai phía đổi cổng đã đo; thiết kế relay/endpoint là bước kế tiếp trước R1f. N1b đã dùng đủ hai lượt native, không retry. PR344 đã merge; không còn blocker CI R1e.
 - R1e serving vẫn fixed-room cũ; cấu hình/tạo/chọn nhiều phòng tổng quát và occupancy thuộc M7, không suy đã có từ container/unit.
 - `local/` (bằng chứng thô và fixture) chưa có backup ngoài máy này.
 
@@ -587,6 +587,19 @@ cho cả hai chiều đều sai và có thể không gói đầu nào tới nơi
 hai đầu. Kết luận cần có: (a) vẫn thông, ghi rõ nhờ cơ chế nào; (b) không thông nhưng client có gửi UDP tới một địa chỉ
 mà server học được, khi đó R1f cho server học endpoint thật; (c) không thông và không có đường học, khi đó mở mốc thiết
 kế relay trước R1f. Ca hai người chung một NAT không thuộc N1b; nó được sửa ở R1f.
+
+**Kết quả N1b — CP266:** đã dùng đúng hai lượt native trên binary baseline CP261, giữ riêng raw/hash/cleanup.
+Cả hai đi hết account/phòng → hai kết quả/reset → Start3, nhưng các cửa sổ native UDP không có ingress/helper ở cả hai
+phía. Lượt2 cho phép quan sát gói ở lớp cloud, vẫn không có ánh xạ DNAT public, đã thấy **cả hai cổng nguồn sau NAT
+khác packet99**. Native gửi tới cổng153, không có UDP tới service trong capture để học endpoint.
+[Contract/đối chiếu](PROTOCOL.md#rust-n1b-dual-nat), [evidence](evidence/rust-service/n1b-dual-nat.json).
+Kết luận theo nhánh **(c) cho đúng recipe đã đo**: mở lát cắt thiết kế relay/endpoint trước R1f; không retry N1b,
+không coi relay đã triển khai hoặc không thể có traversal ở mọi nhánh client. TCP kết quả không chứng minh đồng bộ UDP.
+Thiết kế phải tách endpoint khỏi session identity, giữ direct legacy; nêu binding socket/recipient/round, giới hạn queue,
+nguồn datagram/học mapping/rebinding, cleanup/reset/revoke và phép native tối thiểu. Acceptance thiết kế: quyết định
+module/interface và phép đo gap rõ, không cần RE toàn client. Implementation relay chỉ được claim sau native chứng minh
+send→relay capture→peer ingress/key/helper/apply, hai chiều/hai vòng/reset/old packet/EOF; ngoài phạm vi đo CP266.
+K6c/K7/N1 acceptance cũ không đổi; shared-NAT identity vẫn R1f, không bị lẫn với failure UDP của N1b.
 
 **Lịch sử CP261 — lúc ghi chưa đóng gate (CP264 đã chốt theo phạm vi bên trên):** recipe hai account/basic đạt haioutcomes/reset/Start3 vàactualUDP2chiều;
 99 tựbáo≠postNAT ởA, Bnative trảvềnguồnquan sát. Ca chungNAT đãghi negative; session/lease binding R1f cònthiếu.
