@@ -1,0 +1,80 @@
+{
+  "schema": "kre-rust-controlled-network-v1",
+  "checkpoint": "CP260",
+  "baseline": "ef106731887dc800d09b82c01ae6a8480d6015de",
+  "canonical": "docs/PROTOCOL.md#rust-controlled-network",
+  "plan": "docs/PLAN.md#current-order",
+  "source": "design",
+  "status": "design",
+  "implementation": "Explicit controlled_internet allowlist and captured reported_login_ipv4 metadata; transport/session ownership unchanged, default private_lab strict.",
+  "native_environment": "ActualKR00967 copiedclient/Wine/isolatedLinux; controlled real-Internet path. Actualtopology/endpoints/configuration/credentials stay private local by owner directive.",
+  "artifacts": {
+    "copy4b": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "existing_emptyguard_copy8d": "8d7194fd4f9a5a798282fc995f2d880ff0a702ffc1e61ca06aba221632f7e16a",
+    "arm_service": "3f36acafef5cd7a467cfcda9d9a11cad9fb9e81451e4ed6bb484f7d737f3fdda",
+    "arm_admin": "74d7079cd445903fa87db8474781e9d1033373265cb6ef027f777f112ee0b241",
+    "rust_source_archive": "61dd051c90329bdaccddd3a067f827d7899b3e618455ae6e48ec4606ce5b215f"
+  },
+  "checks": {
+    "fmt": "pass",
+    "clippy": "pass",
+    "locked_build": "pass",
+    "Rust_tests": 90,
+    "default_account_TCP": 59,
+    "mapped_metadata_account_TCP": 59,
+    "network_guards": 9,
+    "metadata_guards": 5,
+    "ARM_locked_build_and_tests": "pass"
+  },
+  "runs": [
+    {
+      "id": "n1-native-baseline-r1",
+      "scope": "Orchestration JSONfailure, no native login; retained",
+      "seal": "local/research/codex/n1-native-baseline-r1/native/raw-seal.json"
+    },
+    {
+      "id": "n1-native-baseline-r2",
+      "scope": "Diagnosticnativeauth0, frame17transport thenFIN, beforeown291; retained",
+      "seal": "local/research/codex/n1-native-baseline-r2/native/raw-seal.json"
+    },
+    {
+      "id": "n1-native-account-r3",
+      "scope": "Frontend32/body61 match; reportedIP metadata mismatch deniesauth; independentpacketproof",
+      "seal": "local/research/codex/n1-native-account-r3/native/raw-seal.json"
+    },
+    {
+      "id": "n1-native-account-r4",
+      "scope": "Explicitmapping nativeauth0 both; later contentabort beforeown291",
+      "seal": "local/research/codex/n1-native-account-r4/native/raw-seal.json"
+    },
+    {
+      "id": "n1-native-content-r5",
+      "scope": "Passiveinput0/cap15→samethreadthrow→SIGABRT",
+      "seal": "local/research/codex/n1-native-content-r5/native/raw-seal.json"
+    },
+    {
+      "id": "n1-native-guard-r6",
+      "scope": "Existingcopy8d emptybranch/output0 thenSIGILLcleanup; notstartupfix",
+      "seal": "local/research/codex/n1-native-guard-r6/native/raw-seal.json"
+    },
+    {
+      "id": "n1-native-http-r7",
+      "scope": "Original4b native modal2/globalclose precede URL/openNULL/emptythrow; HTTP notproveninitialcause",
+      "seal": "local/research/codex/n1-native-http-r7/native/raw-seal.json"
+    }
+  ],
+  "verification": "local/research/codex/n1-native-http-r7/native/http-verification.json",
+  "ordering_correction": "local/research/codex/n1-native-http-r7/native/ordering-correction.json",
+  "source_archive": "local/research/codex/n1-login-metadata-source-r1/source.json",
+  "privacy": "docs/evidence/owner-directives/private-infrastructure.json",
+  "limits": [
+    "N1 OPEN: no native own291/room/99/153/UDP gameplay, outcomes/reset/Start3 or sameNAT acceptance; no direct/learning/relay decision.",
+    "Successfulbackend/channelbinding and native authresult0 are distinct fromnativechannelconsumer; no fullM5/sharedNAT/R1f/generalprofile/authscopeupgrade.",
+    "R7 original failure occurs before HTTP; exact channel timer/recv state still unknown. Next targeted measurement uses cachedCP015waitblock; no contentstub or broadSDK.",
+    "Existingguard8d not promoted; original4b/client/source/raw preserved. Prefixes reused after cleanup, notfreshprefix reliability.",
+    "IAM/routing/bareUDPnonce readiness is infrastructureproof only; earlier failures retained. Raw/hash/cleanup evidence private local, no public infrastructure details.",
+    "K6c WAN giả lập/K7 accepted scopes unchanged; Internet thật chưa kiểm ở mức game KR."
+  ],
+  "gate_state": "open",
+  "completed_feature_groups": []
+}

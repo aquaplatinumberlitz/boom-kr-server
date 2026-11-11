@@ -188,3 +188,11 @@ và kiểm size/SHA đúng như raw, không dùng Git fallback. Không chấp nh
 path ngoài local hoặc symlink thoát. Đường dẫn relative mới vẫn bắt buộc kindlocal đúng; checkpoint mới
 chuẩn hóa relative khi lập evidence list. Clone host khác thiếu đường dẫn này sẽ báo unverified/error
 với require-local, không tự tìm file hay đổi record. Tương thích path không xác nhận kết luận RE hoặc gate.
+
+Bổ sung tại PR của CP260: ba tài liệu JSON hiện hành `docs/features.json`,
+`docs/evidence/issue-reconciliation/github-snapshot.json` và `review.json` có thể đổi sau checkpoint.
+Pin cũ chỉ được xác minh bằng **đúng khai báo evidence và blob byte/size/SHA tại commit đầu tiên công bố
+record v2 complete tương ứng**. Blob trùng ở commit về sau hoặc checkpoint khác không cứu được pin thiếu.
+Checker báo `HISTORICAL METADATA DOC VERIFIED`; không đổi record/evidence manifest cũ hoặc dùng nội dung
+hiện tại thay nội dung đã pin. Các JSON runtime/evidence, checkpoint/audit và file local/binary không thuộc
+ngoại lệ này, vẫn kiểm nghiêm như trước. Đây là xác minh phiên bản tài liệu, không chứng nhận runtime/gate.

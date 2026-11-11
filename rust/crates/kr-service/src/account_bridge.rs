@@ -344,7 +344,19 @@ impl Bridge {
         Ok(player)
     }
     pub async fn login(&self, body: &[u8], peer: Ipv4Addr, connection: u64) -> Result<Login> {
-        let digest = wire::login_token(body, peer)?.digest();
+        self.login_with_reported_address(body, peer, peer, connection)
+            .await
+    }
+    /// Controlled profile metadata can differ after NAT. The token's owner,
+    /// lease and connection remain bound to the actual transport `peer` below.
+    pub(crate) async fn login_with_reported_address(
+        &self,
+        body: &[u8],
+        peer: Ipv4Addr,
+        reported: Ipv4Addr,
+        connection: u64,
+    ) -> Result<Login> {
+        let digest = wire::login_token(body, reported)?.digest();
         if connection == 0 {
             return Err(Error::InvalidInput);
         }

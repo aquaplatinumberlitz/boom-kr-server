@@ -97,6 +97,36 @@ class SourceHistoryTests(unittest.TestCase):
         source.write_text('current\n')
         self.assertTrue(self.verify(item | {'path': 'server/not-published.py'})[0])
 
+    def test_catalog_metadata_requires_exact_publication_not_later_matches(self):
+        item, path = self.fixture('docs/features.json')
+        later = b'{"later": true}\n'
+        path.write_bytes(later)
+        self.commit()
+        path.write_text('{"current": true}\n')
+        errors, warnings, checked, missing = self.verify(item)
+        self.assertEqual((errors, checked, missing), ([], 1, 0))
+        self.assertTrue(any('HISTORICAL METADATA DOC VERIFIED' in w for w in warnings))
+        requested = item | dict(bytes=len(later), sha256=hashlib.sha256(later).hexdigest())
+        self.assertTrue(self.verify(requested)[0])
+        self.assertTrue(checker.verify_evidence_item(item, self.root, True, 'CP002')[0])
+
+    def test_issue_snapshot_metadata_keeps_external_manifest_authentication(self):
+        item, path = self.fixture(
+            'docs/evidence/issue-reconciliation/github-snapshot.json', external=True)
+        path.write_text('{"current": true}\n')
+        self.assertEqual(self.verify(item)[0], [])
+        self.assertTrue(self.verify(item | {'sha256': 'f' * 64})[0])
+
+    def test_issue_review_metadata_can_evolve_after_publication(self):
+        item, path = self.fixture('docs/evidence/issue-reconciliation/review.json')
+        path.write_text('{"current": true}\n')
+        self.assertEqual(self.verify(item)[0], [])
+
+    def test_other_json_evidence_cannot_use_metadata_history_fallback(self):
+        item, path = self.fixture('docs/evidence/rust-service/runtime.json')
+        path.write_text('{"changed": true}\n')
+        self.assertTrue(self.verify(item)[0])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -246,6 +246,69 @@ fn two_accounts_same_ip_one_use_and_channel_owner_are_independent() {
 }
 
 #[test]
+fn controlled_metadata_does_not_replace_transport_or_session_ownership() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, player, _) = Temp::new();
+    rt().block_on(async {
+        let w = worker(&temp).await;
+        let grant = grant(&w, "Alice").await;
+        let bridge = Bridge::new(w.client(), 2, Duration::from_secs(10)).unwrap();
+        let transport = Ipv4Addr::new(198, 51, 100, 7);
+        let reported = Ipv4Addr::new(10, 1, 2, 3);
+        let launch = bridge
+            .issue(&grant.token, player.player_id, transport)
+            .await
+            .unwrap();
+        let body = login_body(launch.token().expose_secret(), reported);
+        // The legacy public method remains strict and a metadata mismatch must
+        // not consume the grant before the deliberate controlled-profile call.
+        assert!(bridge.login(&body, transport, 1).await.is_err());
+        assert!(
+            bridge
+                .login_with_reported_address(&body, transport, PEER, 1)
+                .await
+                .is_err()
+        );
+        assert!(
+            bridge
+                .login_with_reported_address(&body, reported, reported, 1)
+                .await
+                .is_err()
+        );
+        let forged = login_body(&"0".repeat(32), reported);
+        assert!(
+            bridge
+                .login_with_reported_address(&forged, transport, reported, 1)
+                .await
+                .is_err()
+        );
+        let login = bridge
+            .login_with_reported_address(&body, transport, reported, 1)
+            .await
+            .unwrap();
+        assert_eq!(login.player, player);
+        assert!(
+            bridge
+                .login_with_reported_address(&body, transport, reported, 2)
+                .await
+                .is_err()
+        );
+        let channel = channel_body(&player, login.echo);
+        login.redirected().unwrap();
+        assert!(bridge.channel(&channel, reported, 2).await.is_err());
+        let mut owned = bridge.channel(&channel, transport, 2).await.unwrap();
+        owned.check().await.unwrap();
+        temp.store()
+            .revoke(&admin(), player.account_id, now())
+            .unwrap();
+        assert!(owned.check().await.is_err());
+        drop(owned);
+        assert!(lock(&bridge.shared).unwrap().entries.is_empty());
+        w.shutdown().await.unwrap();
+    });
+}
+
+#[test]
 fn expiry_revoke_rename_and_unknown_session_fail_closed_at_handoff() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let (temp, a, _) = Temp::new();

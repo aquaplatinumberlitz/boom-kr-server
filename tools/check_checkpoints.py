@@ -21,6 +21,11 @@ SOURCES = {"kr_static", "kr_runtime", "vn_static", "vn_runtime", "emu_choice", "
 STATES = {"confirmed", "candidate", "unknown", "design"}
 SHA = re.compile(r"[0-9a-f]{64}")
 COMMIT = re.compile(r"[0-9a-f]{40}")
+MUTABLE_METADATA_DOCS = {
+    'docs/features.json',
+    'docs/evidence/issue-reconciliation/github-snapshot.json',
+    'docs/evidence/issue-reconciliation/review.json',
+}
 
 
 def audit_core_read_order(read_files):
@@ -99,6 +104,14 @@ def historical_checkpoint_source(root, relative, expected_sha, expected_bytes, c
     if (not re.fullmatch(r'CP[0-9]{3,}', checkpoint)
             or Path(relative).parts[0] not in {'server', 'tools'}
             or Path(relative).suffix != '.py'):
+        return None
+    return historical_checkpoint_publication(
+        root, relative, expected_sha, expected_bytes, checkpoint)
+
+
+def historical_checkpoint_publication(root, relative, expected_sha, expected_bytes, checkpoint):
+    """Require an exact declared blob at the first publication of this record."""
+    if not re.fullmatch(r'CP[0-9]{3,}', checkpoint):
         return None
     record_path = f'docs/evidence/checkpoints/records/{checkpoint}.json'
     try:
@@ -182,6 +195,10 @@ def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence")
         historical_kind = 'DOC'
         if not absolute_local_pin and kind == "repository" and path.suffix == ".md":
             revision = historical_repository_blob(root, value, item.get("sha256"), item.get("bytes"))
+        elif not absolute_local_pin and kind == 'repository' and value in MUTABLE_METADATA_DOCS:
+            revision = historical_checkpoint_publication(
+                root, value, item.get('sha256'), item.get('bytes'), where)
+            historical_kind = 'METADATA DOC'
         elif not absolute_local_pin and kind == 'repository':
             revision = historical_checkpoint_source(root, value, item.get('sha256'), item.get('bytes'), where)
             historical_kind = 'SOURCE'

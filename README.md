@@ -33,12 +33,21 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP260: tiền kiểm Internet đã thông; native account qua NAT nhận auth thành công, N1 vẫn mở.**
+[Contract và giới hạn](docs/PROTOCOL.md#rust-controlled-network), [bằng chứng](docs/evidence/rust-service/controlled-network.json).
+Rust có chế độ mạng controlled với allowlist và mapping metadata login tường minh; quyền account/session vẫn theo transport thật.
+90 test Rust, hai bộ 59 ca account TCP, 9 guard mạng và 5 guard metadata đạt. Hai KR/Wine nhận auth result0 qua mạng thật,
+nhưng lỗi chờ channel trước own291/phòng. R7 xác nhận modal timeout/đóng client xảy ra trước HTTP JSON rỗng;
+lỗi HTTP là nhánh phát sinh sau đó, chưa phải nguyên nhân mất channel. Guard cũ cũng chưa giúp vào sảnh.
+Chưa có 99/153, UDP gameplay, hai kết quả/reset hoặc ca chung NAT; chưa chọn direct/học endpoint/relay.
+Thông tin hạ tầng/raw giữ riêng trong `local/`. **Internet thật chưa kiểm ở mức game KR**; K6c/K7 WAN giả lập giữ nguyên.
+
 **CP259: đã đồng bộ main PR329/PR330 và chuyển ưu tiên sang N1 theo chỉ đạo mới.**
 [Quyết định/giữ WIP](docs/evidence/owner-directives/pr329-integration-order.json), [kiểm sau gộp](docs/evidence/rust-service/pr329-integration.json).
 Fmt, clippy, 86 test Rust, locked build và 59 ca account TCP đạt; 143 frame phòng khớp hash với CP258.
 Bằng chứng native CP258 vẫn gắn binary đã đo, chưa tự chứng nhận binary sau `RoomRules`.
 WIP projector được giữ trong snapshot/stash, chưa chạy native hoặc merge; thứ tự ở [PLAN](docs/PLAN.md#current-order).
-Policy và dynamic group OCI đã tạo, nhưng lần kiểm mới 11/11 12:22 UTC vẫn bị `GetVnic 404 NotAuthorizedOrNotFound`; cần đối chiếu cấu hình group/policy đã lưu. VPS đã build/test Rust ARM64 (86 test), chưa mở game listener hoặc chạy native N1. Chưa có kết luận (a)/(b)/(c). Internet thật chưa kiểm.
+
 
 ### Mốc trước — phạm vi CP258 vẫn giữ nguyên
 

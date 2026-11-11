@@ -1,0 +1,56 @@
+{
+  "id": "AUD077",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP260",
+  "recorded_utc": "2026-11-11T15:20:29.002254+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/controlled-network.json",
+    "local/research/codex/n1-native-http-r7/native/cycles/A/client.log",
+    "local/research/codex/n1-native-http-r7/native/cycles/B/client.log",
+    "local/research/codex/n1-native-http-r7/native/ordering-correction.json",
+    "local/research/codex/postwait-r1/channel-wait-block.asm",
+    "local/research/codex/n1-native-http-r7-cleanup-audit/verification.json",
+    "rust/crates/kr-service/src/network.rs",
+    "rust/crates/kr-service/src/account_bridge.rs",
+    "rust/crates/kr-service/src/account_serving.rs"
+  ],
+  "method": "Manual core-doc→raw/native-order→cachedwaitsource audit after R7 invalidated working initialHTTPcause attribution. Read both actual logs around auth/hello/redirect/modal2/globalclose/HTTP/throw, compare known CP015timer branch; no inference of nativepacket17 consumer fromserverlog. Source ownership/mapping boundaries read separately. No automated semantic acceptance.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Working interpretation HTTP emptyJSON is the initial channel startup blocker could drive repeatedguard/contentstub work.",
+      "correction": "Both native logs have modal2return1113AA0/globalclose1254CED before actualURL/openNULL/emptyJSONthrow. HTTP failure is later in shutdown path; initialchannelcause remainsunknown. NEXT targetedtimer/recv/packet17measurement beforemodal2; no contentstub/bypass.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/controlled-network.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Nativeauth0 and backendchannelbinding orUDPpreflight might be mistaken for N1completion.",
+      "correction": "No own291/99/153/nativeUDP/gameplay/sameNAT; no a/b/cdecision. K6cK7WANemulatedscopeunchanged; nativeInternetgame unverified.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/controlled-network.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "N1 OPEN: no native own291/room/99/153/UDP gameplay, outcomes/reset/Start3 or sameNAT acceptance; no direct/learning/relay decision.",
+    "Successfulbackend/channelbinding and native authresult0 are distinct fromnativechannelconsumer; no fullM5/sharedNAT/R1f/generalprofile/authscopeupgrade.",
+    "R7 original failure occurs before HTTP; exact channel timer/recv state still unknown. Next targeted measurement uses cachedCP015waitblock; no contentstub or broadSDK.",
+    "Existingguard8d not promoted; original4b/client/source/raw preserved. Prefixes reused after cleanup, notfreshprefix reliability.",
+    "IAM/routing/bareUDPnonce readiness is infrastructureproof only; earlier failures retained. Raw/hash/cleanup evidence private local, no public infrastructure details.",
+    "K6c WAN giả lập/K7 accepted scopes unchanged; Internet thật chưa kiểm ở mức game KR.",
+    "No completed feature group declared; no fixedfourCPaudit cadence. Nativeinitialerror needs new observable, not broadSDK or retrywithoutmeasurement."
+  ]
+}

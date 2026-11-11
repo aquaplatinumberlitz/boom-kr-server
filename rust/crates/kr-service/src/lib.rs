@@ -11,6 +11,7 @@ mod four_results;
 mod life;
 pub mod lobby;
 mod logging;
+pub mod network;
 mod pickups;
 pub mod room;
 mod room_io;
@@ -103,6 +104,8 @@ pub struct Config {
     pub diagnostic_login_error_only: bool,
     pub bind: Ipv4Addr,
     pub allowed_peers: Vec<Ipv4Addr>,
+    #[serde(default)]
+    pub network_scope: network::NetworkScope,
     pub ports: Vec<u16>,
     pub max_connections: usize,
     pub idle_timeout_seconds: u64,
@@ -120,6 +123,10 @@ pub struct Config {
 #[serde(deny_unknown_fields)]
 pub struct DiagnosticActorConfig {
     pub peer: Ipv4Addr,
+    /// Explicit captured client metadata for controlled NAT measurements.
+    /// Session/transport ownership still uses `peer`, never this field.
+    #[serde(default)]
+    pub reported_login_ipv4: Option<Ipv4Addr>,
     pub identity: u32,
     pub name: String,
     pub profile: LocalLobbyConfig,
@@ -142,6 +149,7 @@ struct ActorProfile {
     identity: u32,
     name: Vec<u8>,
     packets: HashMap<String, Reply>,
+    reported_login_ipv4: Option<Ipv4Addr>,
 }
 struct BoundProfiles {
     actors: HashMap<Ipv4Addr, ActorProfile>,
@@ -168,12 +176,9 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         + usize::from(two);
     if config.schema != "kr-rust-diagnostic-v1"
         || modes != 1
-        || !(config.bind.is_loopback() || (two && config.bind.is_private()))
-        || config.allowed_peers.is_empty()
-        || config
-            .allowed_peers
-            .iter()
-            .any(|p| !(p.is_loopback() || (two && p.is_private())))
+        || !config
+            .network_scope
+            .permits(config.bind, &config.allowed_peers, two)
         || config.ports.is_empty()
         || config.ports.len() > 32
         || config.ports.contains(&0)
@@ -277,6 +282,17 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             {
                 return Err(io::Error::other("invalid diagnostic actor binding"));
             }
+            if let Some(reported) = actor.reported_login_ipv4
+                && (config.network_scope != network::NetworkScope::ControlledInternet
+                    || two.account_admission.is_none()
+                    || reported.is_unspecified()
+                    || reported.is_multicast()
+                    || reported.is_broadcast())
+            {
+                return Err(io::Error::other(
+                    "invalid controlled login metadata mapping",
+                ));
+            }
             let packets = load_lobby(&actor.profile, actor.identity, actor.name.as_bytes())?;
             if two.account_admission.is_some() {
                 account_serving::validate_projection(&packets, actor.name.as_bytes())?;
@@ -288,6 +304,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
                         identity: actor.identity,
                         name: actor.name.as_bytes().to_vec(),
                         packets,
+                        reported_login_ipv4: actor.reported_login_ipv4,
                     },
                 )
                 .is_some()
