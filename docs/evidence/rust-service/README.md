@@ -682,3 +682,12 @@ Bốnrootbatch cóevidence-indexseal: r4regression/account vàr5eight-boundary/r
 PIDgone đều kiểm. R4tailmismatch/initialcomparers giữriêng; R5/R6 chỉ chạy lại đúng hai ca thiếu boundary.
 Source/binaryarchive ở `r1b-recovery-r2`; chưa nativecandidate, khôngthừa kế ARM3f36/CP261Internetproof.
 AuditnhómAUD079; R1c-g/N1environment/sharedNAT/M5generalprofile vàphase1milestonesgiữ riêng.
+
+<a id="cp263"></a>
+### CP263 — R1c identity/slot và template 106 chung
+
+[Contract](../../PROTOCOL.md#rust-r1c-player-slots), [metadata/hash](r1c-player-slots.json), [PLAN](../../PLAN.md#rust-r1).
+94 Rust/fmt/clippy/locked build; 305 TCP gồm298 ca cũ +7 ca slot/template;3189 frame phòng cũ khớp baseline CP262.
+30 fixture inputs không có unknown byte. Source/binary/frozen inputs/cleanup và raw so byte ở `r1c-regression-r2`;
+đợt runner r1 mất executable mode trước exec giữ riêng, không gán lỗi cho service. Survey và provenance ở
+`r1c-template-source-survey-r1`. Audit nhóm AUD080; chưa native candidate, full M5, shared-NAT hoặc N1 closure.

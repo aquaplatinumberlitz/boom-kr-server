@@ -1,0 +1,298 @@
+{
+  "id": "CP263",
+  "previous": "CP262",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T17:46:21.015069+00:00",
+  "context_commit": "227daf17bc4bf746f524114d7c1016ff5c8ad985",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/R1c: separate player identity from room slot/creator, normalize measured106 inputs through one template while keeping legacy wire and lifecycle fences.",
+  "scope": "Room allocation policy/common106 template plus focused unit/TCP negative/lifecycle tests. No new native certification, generic account profiles, transport identity or room registry.",
+  "artifacts": [
+    {
+      "name": "kr-service",
+      "sha256": "2e50539c8b43b06ef5b4bd7f5780fa371951c5b86f280551b29b62feda239eaa"
+    },
+    {
+      "name": "kr-admin",
+      "sha256": "6a127f78947750c3d9f01e5036236390dea14cca3ed8cb5a0f911f0c7f2b6ea6"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md#rust-r1c-player-slots",
+    "RoomRules::from_config→SlotAllocation; Room::enter→independent slot and creator host",
+    "PlayerTemplate::parse/project→legacy fixture body/header comparison→runtime PlayerId projections",
+    "CP262 sealed baseline vs CP263 candidate:298 old TCP cases/3189 exact room frames",
+    "Seven new slot/template cases;30 fixture comparisons;94 Rust tests",
+    "PR337 R1b merged at current baseline; projector WIP preserved"
+  ],
+  "findings": [
+    {
+      "summary": "RoomRules selects legacy/default or FirstVacant slot policy; creator hosts in new mode, identities70000/42 tested separately from slots with stale connection/visit/ACK fences.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1c-player-slots",
+      "evidence": [
+        "R1CCP263-02158",
+        "R1CCP263-02161",
+        "R1CCP263-02327"
+      ],
+      "limits": "Kiểm source/unit và TCP tổng hợp; không là chứng nhận native mới hoặc luật server KR gốc. Native cuối R1 vẫn cần 2/4/8 client và đường account.; PlayerId là alias u32 của identity backend/wire, không phải newtype bảo đảm kiểu. FirstVacant là policy design; transport/session vẫn dùng đường cũ đến R1f.; Listener/launcher vẫn chỉ nhận các profile diagnostic đã đo; không mở arbitrary account/profile bằng cách mặc định scalar hoặc thay tên. Hồ sơ tổng quát M5 và shared-NAT R1f còn thiếu.; Template chỉ hỗ trợ nhánh zero-profile đã đo với tên ASCII 5/7 byte. Opaque fields giữ nguyên; lệch ngoài trường đã biết từ chối trước bind, cần đo KR khi có nhu cầu mới.; Byte comparison chỉ claim frame đã đọc theo boundary có sẵn; tail cleanup chưa đọc giữ raw. Hai bộ cùng đúng không thay thế native oracle.; N1 vẫn mở do chưa xác minh uplink di động/ISP-CGNAT; K6c/K7 WAN giả lập giữ scope, không sửa lịch sử. Hạ tầng VPS/OCI chỉ local."
+    },
+    {
+      "summary": "One measured zero-profile106 template reproduces30 retained input bodies; valid-pin opaque/header/name/identity mismatch fails before bind. Runtime projections keyed by PlayerId.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1c-player-slots",
+      "evidence": [
+        "R1CCP263-02329",
+        "R1CCP263-02123",
+        "R1CCP263-02157"
+      ],
+      "limits": "Kiểm source/unit và TCP tổng hợp; không là chứng nhận native mới hoặc luật server KR gốc. Native cuối R1 vẫn cần 2/4/8 client và đường account.; PlayerId là alias u32 của identity backend/wire, không phải newtype bảo đảm kiểu. FirstVacant là policy design; transport/session vẫn dùng đường cũ đến R1f.; Listener/launcher vẫn chỉ nhận các profile diagnostic đã đo; không mở arbitrary account/profile bằng cách mặc định scalar hoặc thay tên. Hồ sơ tổng quát M5 và shared-NAT R1f còn thiếu.; Template chỉ hỗ trợ nhánh zero-profile đã đo với tên ASCII 5/7 byte. Opaque fields giữ nguyên; lệch ngoài trường đã biết từ chối trước bind, cần đo KR khi có nhu cầu mới.; Byte comparison chỉ claim frame đã đọc theo boundary có sẵn; tail cleanup chưa đọc giữ raw. Hai bộ cùng đúng không thay thế native oracle.; N1 vẫn mở do chưa xác minh uplink di động/ISP-CGNAT; K6c/K7 WAN giả lập giữ scope, không sửa lịch sử. Hạ tầng VPS/OCI chỉ local."
+    },
+    {
+      "summary": "94 Rust/fmt/clippy/locked build and305 TCP cases pass. Old298 cases/3189 consumed room frames match sealedCP262; all260 measured inputs unchanged and owned processes reaped.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1c-player-slots",
+      "evidence": [
+        "R1CCP263-02327",
+        "R1CCP263-02323",
+        "R1CCP263-02324"
+      ],
+      "limits": "Kiểm source/unit và TCP tổng hợp; không là chứng nhận native mới hoặc luật server KR gốc. Native cuối R1 vẫn cần 2/4/8 client và đường account.; PlayerId là alias u32 của identity backend/wire, không phải newtype bảo đảm kiểu. FirstVacant là policy design; transport/session vẫn dùng đường cũ đến R1f.; Listener/launcher vẫn chỉ nhận các profile diagnostic đã đo; không mở arbitrary account/profile bằng cách mặc định scalar hoặc thay tên. Hồ sơ tổng quát M5 và shared-NAT R1f còn thiếu.; Template chỉ hỗ trợ nhánh zero-profile đã đo với tên ASCII 5/7 byte. Opaque fields giữ nguyên; lệch ngoài trường đã biết từ chối trước bind, cần đo KR khi có nhu cầu mới.; Byte comparison chỉ claim frame đã đọc theo boundary có sẵn; tail cleanup chưa đọc giữ raw. Hai bộ cùng đúng không thay thế native oracle.; N1 vẫn mở do chưa xác minh uplink di động/ISP-CGNAT; K6c/K7 WAN giả lập giữ scope, không sửa lịch sử. Hạ tầng VPS/OCI chỉ local."
+    },
+    {
+      "summary": "R1 preexec copier mode failure preserved/corrected separately; no service defect inferred. Scope remains design/source/TCP, not native/fullM5/N1/finalR1 closure.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1c-player-slots",
+      "evidence": [
+        "R1CCP263-00849",
+        "R1CCP263-00025"
+      ],
+      "limits": "Kiểm source/unit và TCP tổng hợp; không là chứng nhận native mới hoặc luật server KR gốc. Native cuối R1 vẫn cần 2/4/8 client và đường account.; PlayerId là alias u32 của identity backend/wire, không phải newtype bảo đảm kiểu. FirstVacant là policy design; transport/session vẫn dùng đường cũ đến R1f.; Listener/launcher vẫn chỉ nhận các profile diagnostic đã đo; không mở arbitrary account/profile bằng cách mặc định scalar hoặc thay tên. Hồ sơ tổng quát M5 và shared-NAT R1f còn thiếu.; Template chỉ hỗ trợ nhánh zero-profile đã đo với tên ASCII 5/7 byte. Opaque fields giữ nguyên; lệch ngoài trường đã biết từ chối trước bind, cần đo KR khi có nhu cầu mới.; Byte comparison chỉ claim frame đã đọc theo boundary có sẵn; tail cleanup chưa đọc giữ raw. Hai bộ cùng đúng không thay thế native oracle.; N1 vẫn mở do chưa xác minh uplink di động/ISP-CGNAT; K6c/K7 WAN giả lập giữ scope, không sửa lịch sử. Hạ tầng VPS/OCI chỉ local."
+    },
+    {
+      "summary": "R1b merge verified. Owner phase1 decisions and helper symbol corrected in current docs; historical records/audits/raw remain immutable.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-r1c-player-slots",
+      "evidence": [
+        "R1CCP263-00019",
+        "R1CCP263-00025",
+        "R1CCP263-00003"
+      ],
+      "limits": "Kiểm source/unit và TCP tổng hợp; không là chứng nhận native mới hoặc luật server KR gốc. Native cuối R1 vẫn cần 2/4/8 client và đường account.; PlayerId là alias u32 của identity backend/wire, không phải newtype bảo đảm kiểu. FirstVacant là policy design; transport/session vẫn dùng đường cũ đến R1f.; Listener/launcher vẫn chỉ nhận các profile diagnostic đã đo; không mở arbitrary account/profile bằng cách mặc định scalar hoặc thay tên. Hồ sơ tổng quát M5 và shared-NAT R1f còn thiếu.; Template chỉ hỗ trợ nhánh zero-profile đã đo với tên ASCII 5/7 byte. Opaque fields giữ nguyên; lệch ngoài trường đã biết từ chối trước bind, cần đo KR khi có nhu cầu mới.; Byte comparison chỉ claim frame đã đọc theo boundary có sẵn; tail cleanup chưa đọc giữ raw. Hai bộ cùng đúng không thay thế native oracle.; N1 vẫn mở do chưa xác minh uplink di động/ISP-CGNAT; K6c/K7 WAN giả lập giữ scope, không sửa lịch sử. Hạ tầng VPS/OCI chỉ local."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rust94_fmt_clippy_lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "R1CCP263-02327"
+      ],
+      "limits": "Source/unit; native candidate not run."
+    },
+    {
+      "check": "305TCP_3189_exact_old_room_frames",
+      "result": "pass",
+      "evidence": [
+        "R1CCP263-02323",
+        "R1CCP263-02324",
+        "R1CCP263-02123"
+      ],
+      "limits": "298 old cases+7 new cases; per-recipient receiver boundary/raw tail scope; source frozen while running."
+    },
+    {
+      "check": "R1c_native_candidate_final_R1",
+      "result": "not_run",
+      "evidence": [
+        "R1CCP263-00025"
+      ],
+      "limits": "Native2/4/8/account after remaining R1 steps; no inherited certification."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP263-r1c-player-slots.json",
+      "bytes": 629955,
+      "sha256": "adce4642fcc4d15faa584dfa12a2ab80659bfa62b82e1ec66e474b17bb349edb",
+      "count": 2357
+    }
+  ],
+  "delta": {
+    "added": [
+      "SlotAllocation and common106 template with runtime PlayerId projection cache.",
+      "Source/fixture/TCP negative/lifecycle validation and exact old-wire comparison."
+    ],
+    "corrected": [
+      "Current-order owner decisions no longer falsely pending; R1b helper symbol from_config.",
+      "Task-local snapshot preserves binary executable mode; failed before-exec batch retained."
+    ],
+    "superseded": [
+      "R1c pending → implemented/source-TCP verified candidate pendingPR; no native gate promotion."
+    ]
+  },
+  "blockers": [
+    "Kiểm source/unit và TCP tổng hợp; không là chứng nhận native mới hoặc luật server KR gốc. Native cuối R1 vẫn cần 2/4/8 client và đường account.",
+    "PlayerId là alias u32 của identity backend/wire, không phải newtype bảo đảm kiểu. FirstVacant là policy design; transport/session vẫn dùng đường cũ đến R1f.",
+    "Listener/launcher vẫn chỉ nhận các profile diagnostic đã đo; không mở arbitrary account/profile bằng cách mặc định scalar hoặc thay tên. Hồ sơ tổng quát M5 và shared-NAT R1f còn thiếu.",
+    "Template chỉ hỗ trợ nhánh zero-profile đã đo với tên ASCII 5/7 byte. Opaque fields giữ nguyên; lệch ngoài trường đã biết từ chối trước bind, cần đo KR khi có nhu cầu mới.",
+    "Byte comparison chỉ claim frame đã đọc theo boundary có sẵn; tail cleanup chưa đọc giữ raw. Hai bộ cùng đúng không thay thế native oracle.",
+    "N1 vẫn mở do chưa xác minh uplink di động/ISP-CGNAT; K6c/K7 WAN giả lập giữ scope, không sửa lịch sử. Hạ tầng VPS/OCI chỉ local."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLAN R1d canonical pinned header and kr00967 opcode builders, preserving legacy profile bytes; RE only an unknown discrepancy. R1f/M8 keep N1 physical-uplink/shared-NAT dependency. FinalR1 native2/4/8/account remains required.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T17:46:21.015069+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex manual source/template/allocation/unit/TCP/differential self-check; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "docs/evidence/rust-service/r1c-player-slots.json",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room.rs",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_wire.rs",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "rust/crates/kr-service/src/player_template.rs",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    },
+    {
+      "path": "tools/test_rust_player_slots.py",
+      "state": "updated",
+      "reason": "R1c implementation/source-TCP evidence, limits, R1b merge and next R1d; no historical complete/raw rewrite."
+    }
+  ],
+  "completed_feature_groups": [
+    "r1c-player-identity-slots-template"
+  ]
+}

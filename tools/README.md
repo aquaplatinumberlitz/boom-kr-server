@@ -335,3 +335,10 @@ Các harness `test_rust_four_room.py`, `test_rust_eight_room.py` và `test_rust_
 `wire-boundary.json` khi scenario đạt: next_sequence thực của receiver trước finally-close. So differential
 chỉ claim frame đã được driver đọc; raw vẫn giữ notification đóng cuối không đọc. Explicit EOF và negative
 assertions vẫn giữ. Đây là phép đo synthetic TCP, không native KR oracle; [giới hạn R1b](../docs/PROTOCOL.md#rust-r1b-policies).
+
+
+`test_rust_player_slots.py --binary /path/to/kr-service --config /path/to/local-fixed2-config.json --out /path/to/new-output`
+kiểm TCP `first_vacant`: B tạo phòng, A vào slot1, chuyển host, B tái dùng slot0; đối chiếu ID/tên/state ở cả hai view.
+Năm guard trước bind dùng pin hợp lệ nhưng thay opaque body/header, một tên, identity hoặc policy không hợp lệ.
+Lưu config/raw log/receiver boundary/binary hash và cleanup; đây là synthetic TCP, không native KR acceptance.
+[Contract và giới hạn](../docs/PROTOCOL.md#rust-r1c-player-slots).
