@@ -33,14 +33,14 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP266: N1b đã đo đủ hai lượt; UDP trực tiếp thất bại khi cả hai phía đổi cổng.**
-[Đối chiếu native/capture và giới hạn](docs/PROTOCOL.md#rust-n1b-dual-nat), [raw/hash](docs/evidence/rust-service/n1b-dual-nat.json).
-Hai KR/Wine vẫn đi qua account/phòng, hai kết quả/reset và Start3 qua TCP, nhưng không có ingress/helper movement UDP
-trong các cửa sổ đo. Lượt đối chứng thấy cả hai cổng sau NAT khác packet99; native chỉ gửi tới endpoint153,
-không có UDP tới service để học endpoint. Đây là kết quả âm có bằng chứng, chưa phải hỗ trợ hai NAT hoặc relay.
-R1e đã merge [PR344](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/344). Tiếp thiết kế relay/endpoint trước R1f
-ở [dashboard](docs/PLAN.md#dashboard); không chạy lượt N1b thứ ba. N1 một phía tới được/K6c WAN giả lập giữ scope.
-Shared-NAT, full M5 và native cuối R1 vẫn chưa đạt. Hạ tầng chỉ local; mốc cũ ở [HISTORY](docs/HISTORY.md).
+**CP267: đã chốt thiết kế endpoint/relay sau N1b; tiếp R1f session binding.**
+[Thiết kế/module/lifecycle](docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design),
+[phạm vi](docs/PROTOCOL.md#rust-relay-endpoint-scope), [evidence/reuse](docs/evidence/rust-service/relay-endpoint-design.json).
+Giữ direct legacy; relay opt-in dùng socket từng hướng, forward nguyên payload từ reverse socket là phương án cần đo.
+R1f và relay implementation là hai lát cắt riêng theo [dashboard](docs/PLAN.md#dashboard).
+Chưa triển khai relay hoặc có native proof mới. N1b âm đã giao [PR345](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/345);
+N1 một phía tới được/K6c/K7 giữ scope. M5 tổng quát và shared-NAT còn mở. Thông tin VPS chỉ local.
+Mốc cũ ở [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
 

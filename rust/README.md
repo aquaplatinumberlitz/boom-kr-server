@@ -460,3 +460,7 @@ R1e/CP265: fixed-room serving đi qua Registry<Shared>, listing91 từ entry/tit
 CP266: [N1b hai NAT đổi cổng](../docs/PROTOCOL.md#rust-n1b-dual-nat) đã đo hai lượt trên binary baseline CP261:
 UDP trực tiếp âm; TCP account/kết quả/reset không là bằng chứng movement. R1e đã merge PR344, native cuối R1 vẫn còn.
 Tiếp thiết kế relay/endpoint trước R1f theo PLAN; không đổi runtime source trong đợt mạng hoặc coi relay đã có.
+
+CP267 chốt [seam endpoint/relay](../docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design) cho R1f và lát cắt relay riêng.
+Chưa có module/runtime relay; giữ direct legacy. Rust chưa có guard256 của helper Python; cần task key/port lifetime
+riêng trước nghiệm thu relay, không đưa thay đổi này vào refactor giữ bytes.

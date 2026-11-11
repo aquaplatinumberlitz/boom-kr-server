@@ -1,0 +1,55 @@
+{
+  "schema": "kre-relay-endpoint-design-v1",
+  "checkpoint": "CP267",
+  "recorded_utc": "2026-11-11T22:06:27.551785+00:00",
+  "baseline": "7208404d1b5bb1a8aa37bd2d1b37d451d7c5012d",
+  "source": "design",
+  "status": "design",
+  "canonical": "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+  "contract_scope": "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+  "plan": "docs/PLAN.md#rust-relay",
+  "implementation_started": false,
+  "new_runtime": false,
+  "decisions": [
+    "Oneprocess/twocrates, kr-service endpointpolicy/routes/sockets; LegacyDirect default byte-compatible, relay opt-in separatefromR1frefactor.",
+    "Directed-edge candidate P(j,i); forwardunchangedpayloadj from P(i,j) to observedtuplei, fullRouteKey ownership/currentchecks beforecommit/enqueue/send.",
+    "Bindoutsideownerlock→recheckgeneration→atomicpublish, boundedresources/queue/rate/TTL; failclosedonexhaustion.",
+    "Noinprocessportreuse forfirstboundedprototype, no silent rebind; currentIP/CRC/low8key not accountauthentication. Restart/reuse/sameIPspoof limitations explicit."
+  ],
+  "runtime_claim": "None. CP266 measurementnegative and historical scoped positives reused, not new relaycompatibility.",
+  "reuse": [
+    {
+      "locator": "PROTOCOL#udp-generation CP045/#peer-endpoint-ip CP138/#nat-endpoint-control CP193",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "direct": "Known99/153/API/key/helper/applyoracles andunchangedpayloadproxy methodology",
+      "limits": "Historicalcopy/environment/scopedwindows only, notcurrentInternetrelayproof",
+      "avoided": "No broadpeergraph/UDPcodec/originalrelayRE"
+    },
+    {
+      "locator": "PROTOCOL#rust-internet-observation CP261/#rust-n1b-dual-nat CP266",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "direct": "Observedsourceportreply +bothport-changingnegative andcurrentnativeWinecaptureaccountrecipe",
+      "limits": "TwoN1bbaselinerunsconsumed; no newnative",
+      "avoided": "No repeatedN1bbaseline oraccountlifecycleRE"
+    },
+    {
+      "locator": "rust/crates/kr-service/src/{room_io,account_bridge,account_serving,network,room}.rs / kr-wire/src/kr00967/room.rs / server/udp_round_keys.py",
+      "source": "design",
+      "status": "design",
+      "direct": "Session/round/roomkeys/currentlegacybuilders andtypedownershipseams",
+      "limits": "Rustcounteroverflowonly; no256guard. PythonhelperisnotRustbehavior.",
+      "avoided": "NoVNserverport/newprotocolorcrate/service"
+    }
+  ],
+  "source_survey": "local/research/codex/relay-endpoint-source-reuse-r1/survey.json",
+  "limits": [
+    "Design acceptedonlydocs/module/measurementseams, relayalgorithmcandidate andno implementation/nativepromotion.",
+    "Native153perrecipientreverseedge/sourcelearning/twocycles/stale/EOF/sharedNATandloadrequiredbyPLAN.",
+    "SameIPfirstdatagramspoofnot solvedbyportassignment; noCRCkeyauthenticationclaim.",
+    "Portreuse/restart/keylifetime notproved; Rust256guardabsent atbaseline, separatetaskbeforeacceptance.",
+    "CurrentN1/K6c/K7scopeunchanged; M5generalprofile/nativeDBqueuefault andR1native2/4/8/account remain.",
+    "VPS/OCIactualendpoints/IDs/config/topology/access privateonlyignoredlocal."
+  ]
+}

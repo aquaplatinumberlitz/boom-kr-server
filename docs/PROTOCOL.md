@@ -9813,3 +9813,16 @@ listener đã cleanup và mọi file remote khớp tar cuối. Parent-owned upli
 không trộn thành một runtime; không thêm lượt3 hoặc thay input khi run đang chạy.
 N1 CP264 vẫn đạt scope một phía tới được; K6c/K7 WAN giả lập giữ nguyên. Relay chưa triển khai, shared-NAT identity,
 full M5, native cuối R1 và vận hành 50 người còn riêng. Thông tin thực về VPS/OCI/access/topology không đưa lên GitHub.
+
+<a id="rust-relay-endpoint-scope"></a>
+## Ranh giới endpoint/relay — thiết kế CP267
+
+Nguồn **design/design**; [quyết định/module](RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design),
+[metadata/reuse](evidence/rust-service/relay-endpoint-design.json), [phép kiểm](PLAN.md#rust-relay).
+Đây là quyết định chuẩn bị implementation sau N1b, không có wire hoặc runtime mới. Legacy153/99/UDP giữ contract
+đã đo. Policy mới chỉ thay endpoint153 trong opt-in; payloadUDP forward nguyên bản, không thêm token/field/movement
+snapshot hoặc áp authority VN. KR có nhận reverse-edge socket hay không vẫn candidate, phải native proof.
+R1f tách PlayerId/session lease khỏi sourceIP và để endpoint ở plan riêng; không lấy IPmetadata/CRC/low8key làm auth.
+Rust `Room::begin` và `wire_key` tại baseline CP266 chỉ checked counter/overflow, **chưa có guard256 như Python
+UdpRoundKeys**; không thừa kế giới hạn Python qua mô tả. Giới hạn vòng/portreuse phải xử lý riêng trước relay acceptance.
+Các gate/record/raw cũ giữ nguyên; design hoàn tất không đồng nghĩa relay/R1f/fullM5 đã nghiệm thu.
