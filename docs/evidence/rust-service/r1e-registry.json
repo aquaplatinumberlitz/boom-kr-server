@@ -1,0 +1,56 @@
+{
+  "schema": "kre-rust-r1e-registry-v1",
+  "checkpoint": "CP265",
+  "baseline": "4195b00ea07646c41d64f4c7a01eb844be1aebdd",
+  "canonical": "docs/PROTOCOL.md#rust-r1e-registry",
+  "plan": "docs/PLAN.md#dashboard",
+  "source": "design",
+  "status": "design",
+  "recorded_utc": "2026-11-11T21:21:25.050422+00:00",
+  "implementation": "BoundProfiles giữ Registry<Shared>; mỗi room có Runtime/RoomRules/queue riêng. Registrykey(session,RoomId,generation), publictuple tombstone trong process. Listing91 từ currententries/title, batchorigin+recipient fence tại publish/valid.",
+  "integration": "Fixedprofile/sourceTCP verified; PR pending. M7generalroom/productionmultilobby chưa triển khai.",
+  "checks": {
+    "Rust_tests": 101,
+    "fmt": "pass",
+    "clippy": "pass",
+    "locked_build": "pass",
+    "TCP_cases": 306,
+    "suites": 14,
+    "legacy_consumed_room_frames": 3169,
+    "first_vacant_room_frames": 24,
+    "retained_listing91_inputs": 3,
+    "registry_tests": 5
+  },
+  "candidate_binaries": [
+    {
+      "path": "local/research/codex/r1e-regression-r1/kr-service",
+      "bytes": 54405040,
+      "sha256": "cdd505bc22c090bbdc6994e399962201c1bf806e9439f226b25fca8c40f87833"
+    },
+    {
+      "path": "local/research/codex/r1e-regression-r1/kr-admin",
+      "bytes": 46299744,
+      "sha256": "c60adaa260e444d17352970cbaf5d21cb15b72def555e687146b6ca929be853d"
+    }
+  ],
+  "source_archive": {
+    "path": "local/research/codex/r1e-source-r1.tar",
+    "bytes": 2058240,
+    "sha256": "5d552a7ba2a07e1cc78e9fd8ce2e455283ccf313a4c4c039daee879b733b5926"
+  },
+  "evidence": {
+    "batch": "local/research/codex/r1e-regression-r1/evidence-index.json",
+    "comparison": "local/research/codex/r1e-regression-r1/wire-comparison.json",
+    "listing": "local/research/codex/r1e-listing-wire-check-r1/verification.json",
+    "preparation": "local/research/codex/r1e-origin-fence-preparation.json",
+    "source_survey": "local/research/codex/r1e-source-survey-r1/provenance.json"
+  },
+  "limits": [
+    "R1e là refactor nền registry; serving vẫn một phòng fixed/public tuple1/1 để giữ profile2/4/8/account. Chưa giao operator config nhiều phòng hoặc tạo/chọn phòng tổng quát M7.",
+    "Hai registry entry/recipient isolation/retirement/listing kiểm bằng unit với Session thực và marker synthetic; không native gameplay hai phòng.",
+    "Listing giữ22 byte opaque mỗi row; chưa dynamic occupancy/quota/password/mode/room deletion UI hoặc durable restart fence. Native91count0 không tự clear-all.",
+    "Batch origin là fence nội bộ theo room token/recipient/connection, không thêm wireepoch hay chứng minh từ chối raw585/99 không phân biệt được sau rejoin.",
+    "API container generic không tự có authority; retirement cần caller kiểm channel/member/jobs dưới cùng lock order. Chưa nghiệm thu concurrent select/remove hoặc dynamic production lifecycle.",
+    "Native cuối R1 2/4/8/account còn bắt buộc; tiếp N1b tối đa2native trướcR1f. Shared-NAT/fullM5/production không được nâng từ lần này."
+  ]
+}

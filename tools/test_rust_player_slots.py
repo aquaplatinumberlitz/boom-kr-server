@@ -56,13 +56,25 @@ def main():
     base = json.loads(a.config.read_text())
     binary_sha = hashlib.sha256(a.binary.read_bytes()).hexdigest()
     cases = []
-    for case in ['opaque-body', 'opaque-header', 'disagreeing-names', 'wrong-identity', 'invalid-slot-policy']:
+    for case in ['opaque-body', 'opaque-header', 'disagreeing-names', 'wrong-identity', 'invalid-slot-policy', 'foreign-common-header']:
         root = a.out / case
         root.mkdir()
         cfg = configure(base)
         room = cfg['diagnostic_two_lobby']['fixed_room']
         if case == 'invalid-slot-policy':
             room['slot_allocation'] = 'identity_is_slot'
+        elif case == 'foreign-common-header':
+            # A mutually consistent foreign header is still outside the pinned
+            # KR00967 profile; valid fixture hashes must not select a new profile.
+            for alias, pin in room['packets'].items():
+                raw = Path(pin['fixture']['path']).read_bytes()
+                body = c.frame_body(raw, pin['sequence'])
+                header = bytearray(raw[:37])
+                header[30] ^= 1
+                raw = c.encode(header, pin['opcode'], body, pin['sequence'])
+                fixture = root / (alias + '.bin')
+                fixture.write_bytes(raw)
+                pin['fixture'] = dict(path=str(fixture.resolve()), bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest())
         else:
             pin = room['packets']['player_B']
             raw = Path(pin['fixture']['path']).read_bytes()
@@ -91,7 +103,8 @@ def main():
                 stop(proc)
         assert rc != 0 and not (root / 'service/service-state.json').exists(), case
         error = (root / 'process.log').read_text()
-        assert ('room player common-template mismatch' in error if case != 'invalid-slot-policy' else 'unknown variant' in error), (case, error)
+        expected_error = {'invalid-slot-policy': 'unknown variant', 'foreign-common-header': 'unsupported room header profile'}.get(case, 'room player common-template mismatch')
+        assert expected_error in error, (case, error)
         for port in cfg['ports']:
             with socket.socket() as sock:
                 sock.bind(('127.0.0.1', port))

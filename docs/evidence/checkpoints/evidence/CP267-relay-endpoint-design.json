@@ -1,0 +1,362 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "RELAYDESCP267-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3908,
+      "sha256": "2b5f51fea85308016f91f9bc3cc2dbd26f2f9dfd304b73822c49b1907417cf18"
+    },
+    {
+      "id": "RELAYDESCP267-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 221197,
+      "sha256": "c648da45a0f332f38c75d34c26a62ae05715d9ec7239f73ff2674319b6646e98"
+    },
+    {
+      "id": "RELAYDESCP267-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 67676,
+      "sha256": "9364bb2a431187a8a3c4dfa7203629f4d3fca0937aa8f0c1b86b46e404721c17"
+    },
+    {
+      "id": "RELAYDESCP267-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 138029,
+      "sha256": "f40206e0b9986b0eb8e9573fdbd638d294be627837249b4970aa87f72f50d950"
+    },
+    {
+      "id": "RELAYDESCP267-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 866105,
+      "sha256": "b452697ff4886548350363edf81f63d6a939925a86b502343cc2562db893e5ca"
+    },
+    {
+      "id": "RELAYDESCP267-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 56195,
+      "sha256": "6b5d7432a58bf8633069591cf62999f1901334c2bc4fed1b8d617c3d0c0f63da"
+    },
+    {
+      "id": "RELAYDESCP267-00007",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 42843,
+      "sha256": "600f749e816aae20a04a51079804e44e7a246ac3a3467e8b913a6ba9a2ac89d8"
+    },
+    {
+      "id": "RELAYDESCP267-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD084.json",
+      "bytes": 3798,
+      "sha256": "da946f430b0cb16cd5b8a3fd1b09cfd4e06531675f61adcd5df46365c85b6019"
+    },
+    {
+      "id": "RELAYDESCP267-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 284156,
+      "sha256": "6fdc06fa782e81616d5516c677550ad5a6d8d002bdc0b208b0e3c4cc67a64e92"
+    },
+    {
+      "id": "RELAYDESCP267-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42579,
+      "sha256": "1a3bedf83c55230c8c83599a404aacd8c000fc56b2beeb3d8ecfb02025c119cf"
+    },
+    {
+      "id": "RELAYDESCP267-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 62843,
+      "sha256": "a07c82b9a8b10a0c3a2acc80d4fb06b361a6b14d6de21add24a93b1c9f41e89e"
+    },
+    {
+      "id": "RELAYDESCP267-00012",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/relay-endpoint-design.json",
+      "bytes": 3217,
+      "sha256": "fd1fce048c2ae9e8c53c2730fd53e71223e39e3ef888d86f16d3a8ade3bfd9d2"
+    },
+    {
+      "id": "RELAYDESCP267-00013",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 233243,
+      "sha256": "e253c249c9e7ac463926e5a5d87a2044a3a2b5bfa3ce42d843e751271eb7f659"
+    },
+    {
+      "id": "RELAYDESCP267-00014",
+      "kind": "local",
+      "path": "local/research/codex/append_cp267.py",
+      "bytes": 10316,
+      "sha256": "ce44419ef4a558a6ba0b0aa3c052e007b7a4332540518fb64c9971ca67c13177"
+    },
+    {
+      "id": "RELAYDESCP267-00015",
+      "kind": "local",
+      "path": "local/research/codex/check_cp267_privacy.py",
+      "bytes": 1842,
+      "sha256": "3131106a137b3d403673980f8dcc6f2296c4cf94793c7447548b6fb50394c051"
+    },
+    {
+      "id": "RELAYDESCP267-00016",
+      "kind": "local",
+      "path": "local/research/codex/cp266-exact-head-history.txt",
+      "bytes": 114251,
+      "sha256": "47f82a332ca3b8ceb9bd29948b4aaa6d1249860a2d31e767d9325798e69c6b44"
+    },
+    {
+      "id": "RELAYDESCP267-00017",
+      "kind": "local",
+      "path": "local/research/codex/cp266-pr345-merged.json",
+      "bytes": 245,
+      "sha256": "fa5cf67bcec29e05f13ae38a723f17825b9c0ecd43f162c546d14d815a9c9d4a"
+    },
+    {
+      "id": "RELAYDESCP267-00018",
+      "kind": "local",
+      "path": "local/research/codex/cp267-docs-preappend.txt",
+      "bytes": 251,
+      "sha256": "d9e3dbf8d67963254c3b2ce75139bf58bffcf5fea9b94369af9d6a8308fa13e9"
+    },
+    {
+      "id": "RELAYDESCP267-00019",
+      "kind": "local",
+      "path": "local/research/codex/cp267-issue-before.json",
+      "bytes": 2809,
+      "sha256": "1c3d445c55c99ceaad6cd2169afbe4fdac56b86e31541678e0a4896bd3a2f564"
+    },
+    {
+      "id": "RELAYDESCP267-00020",
+      "kind": "local",
+      "path": "local/research/codex/cp267-issue-body.md",
+      "bytes": 2609,
+      "sha256": "c5ada55d3f25a047838da25477d8856aedb043d44f583adbc528b0dd3e8f6917"
+    },
+    {
+      "id": "RELAYDESCP267-00021",
+      "kind": "local",
+      "path": "local/research/codex/cp267-issue-updated.json",
+      "bytes": 2716,
+      "sha256": "8b756a0271b63fb6bd815e8a800dbe74d23f87f0d3e22e4d8abdbf7c4a513f0c"
+    },
+    {
+      "id": "RELAYDESCP267-00022",
+      "kind": "local",
+      "path": "local/research/codex/cp267-privacy-preappend.json",
+      "bytes": 288,
+      "sha256": "53e9f86fb09136d5b13167b792cb526f4139f56240f0bcc2e4cfde0ff5b919bd"
+    },
+    {
+      "id": "RELAYDESCP267-00023",
+      "kind": "local",
+      "path": "local/research/codex/document_cp267.py",
+      "bytes": 21882,
+      "sha256": "2cd19bde03b840b4162cbfc3cb87ba974dbda863d190d8016e6ddce097a44512"
+    },
+    {
+      "id": "RELAYDESCP267-00024",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/selfcheck.json",
+      "bytes": 2002,
+      "sha256": "f7e8d5c19405052c53397b360bdf7af34f8fb409285cc716948cfeec2f119e3b"
+    },
+    {
+      "id": "RELAYDESCP267-00025",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/README.md",
+      "bytes": 3908,
+      "sha256": "2b5f51fea85308016f91f9bc3cc2dbd26f2f9dfd304b73822c49b1907417cf18"
+    },
+    {
+      "id": "RELAYDESCP267-00026",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/COVERAGE.md",
+      "bytes": 221197,
+      "sha256": "c648da45a0f332f38c75d34c26a62ae05715d9ec7239f73ff2674319b6646e98"
+    },
+    {
+      "id": "RELAYDESCP267-00027",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/HISTORY.md",
+      "bytes": 67676,
+      "sha256": "9364bb2a431187a8a3c4dfa7203629f4d3fca0937aa8f0c1b86b46e404721c17"
+    },
+    {
+      "id": "RELAYDESCP267-00028",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 138029,
+      "sha256": "f40206e0b9986b0eb8e9573fdbd638d294be627837249b4970aa87f72f50d950"
+    },
+    {
+      "id": "RELAYDESCP267-00029",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/PROTOCOL.md",
+      "bytes": 866105,
+      "sha256": "b452697ff4886548350363edf81f63d6a939925a86b502343cc2562db893e5ca"
+    },
+    {
+      "id": "RELAYDESCP267-00030",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 56195,
+      "sha256": "6b5d7432a58bf8633069591cf62999f1901334c2bc4fed1b8d617c3d0c0f63da"
+    },
+    {
+      "id": "RELAYDESCP267-00031",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 42843,
+      "sha256": "600f749e816aae20a04a51079804e44e7a246ac3a3467e8b913a6ba9a2ac89d8"
+    },
+    {
+      "id": "RELAYDESCP267-00032",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 284156,
+      "sha256": "6fdc06fa782e81616d5516c677550ad5a6d8d002bdc0b208b0e3c4cc67a64e92"
+    },
+    {
+      "id": "RELAYDESCP267-00033",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42579,
+      "sha256": "1a3bedf83c55230c8c83599a404aacd8c000fc56b2beeb3d8ecfb02025c119cf"
+    },
+    {
+      "id": "RELAYDESCP267-00034",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/evidence/rust-service/README.md",
+      "bytes": 62843,
+      "sha256": "a07c82b9a8b10a0c3a2acc80d4fb06b361a6b14d6de21add24a93b1c9f41e89e"
+    },
+    {
+      "id": "RELAYDESCP267-00035",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/evidence/rust-service/relay-endpoint-design.json",
+      "bytes": 3217,
+      "sha256": "fd1fce048c2ae9e8c53c2730fd53e71223e39e3ef888d86f16d3a8ade3bfd9d2"
+    },
+    {
+      "id": "RELAYDESCP267-00036",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/docs/features.json",
+      "bytes": 233243,
+      "sha256": "e253c249c9e7ac463926e5a5d87a2044a3a2b5bfa3ce42d843e751271eb7f659"
+    },
+    {
+      "id": "RELAYDESCP267-00037",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/snapshot/rust/README.md",
+      "bytes": 32583,
+      "sha256": "fc89cc497a78b4b7a871252151ac28bc76561eebe0b1a8ab788207fd4497dcc5"
+    },
+    {
+      "id": "RELAYDESCP267-00038",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/account_bridge/wire.rs",
+      "bytes": 2425,
+      "sha256": "46788879355ca0a71582271c8faa83815cc6c45c5e88f2693a503faf77cdd3f6"
+    },
+    {
+      "id": "RELAYDESCP267-00039",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 15433,
+      "sha256": "cdd0333431ad63da9cab2fb3a2e557a40e12774dd82d47d8f1000cbb662cb43c"
+    },
+    {
+      "id": "RELAYDESCP267-00040",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 18920,
+      "sha256": "b5d738b2f7439bc51e98153d4b4dd1e9ef48da455cb808f5b0a9e9195d0ed7ec"
+    },
+    {
+      "id": "RELAYDESCP267-00041",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/lib.rs",
+      "bytes": 43980,
+      "sha256": "dfde03ebc2934a050ba371c241982cb7947251cbbc500adc0c508555b814d59d"
+    },
+    {
+      "id": "RELAYDESCP267-00042",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/network.rs",
+      "bytes": 2802,
+      "sha256": "a256e5c9a0ef5a808ab037fc0021785ae8cf726a307c53da13f27a338fc9e2c3"
+    },
+    {
+      "id": "RELAYDESCP267-00043",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/room.rs",
+      "bytes": 29741,
+      "sha256": "ff9b604c620dae63b8ceefc8855f3fea3fb7edf789a0b9beba80a0165579cfbe"
+    },
+    {
+      "id": "RELAYDESCP267-00044",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 111841,
+      "sha256": "a8aff00f5a786f863ddbfa2026a8c80a83b581d6ad94f28a5370d94ab1b4c8e8"
+    },
+    {
+      "id": "RELAYDESCP267-00045",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-wire/src/kr00967/room.rs",
+      "bytes": 14268,
+      "sha256": "63a2097b88d9cc2c337a34220253cb6b5ff0f06835eed7538699ba68d75f351d"
+    },
+    {
+      "id": "RELAYDESCP267-00046",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "RELAYDESCP267-00047",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-draft-r1.md",
+      "bytes": 7985,
+      "sha256": "ddb7922e9ca1762fcb08a95a1fe9d96ea32d760a1da576d550271a79a82d7c10"
+    },
+    {
+      "id": "RELAYDESCP267-00048",
+      "kind": "local",
+      "path": "local/research/codex/relay-endpoint-source-reuse-r1/decision-review.json",
+      "bytes": 3619,
+      "sha256": "30b66e2c59aac956eee64b83ad2d6351dc8b23212a539ef4de8c0140439b6034"
+    },
+    {
+      "id": "RELAYDESCP267-00049",
+      "kind": "local",
+      "path": "local/research/codex/relay-endpoint-source-reuse-r1/survey.json",
+      "bytes": 4747,
+      "sha256": "1e2cc4ac69c4c58e0b56e606c1243958dcfa8c6c420dfe844fa77787d453660f"
+    },
+    {
+      "id": "RELAYDESCP267-00050",
+      "kind": "local",
+      "path": "local/research/codex/update_issue_cp267.py",
+      "bytes": 4255,
+      "sha256": "c481f233ca3eeb7854545011bac037759cd4885fbd9f5a9ec84697070f7b9326"
+    },
+    {
+      "id": "RELAYDESCP267-00051",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 32583,
+      "sha256": "fc89cc497a78b4b7a871252151ac28bc76561eebe0b1a8ab788207fd4497dcc5"
+    }
+  ]
+}

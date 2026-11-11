@@ -1,0 +1,281 @@
+{
+  "id": "CP265",
+  "previous": "CP264",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T21:25:46.602917+00:00",
+  "context_commit": "4195b00ea07646c41d64f4c7a01eb844be1aebdd",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/R1e: roomregistry/currentlisting/perroomqueues andoriginrecipientfences whilepreservingfixed2/4/8/accountwire; unit2roomisolation withoutM7/nativepromotion.",
+  "scope": "R1eref fullroomcontainer/listing andbatchoriginfoundation. Legacyfixedserving1/1 only; nooperatorgeneralroomconfig/create/join ornewnative.",
+  "artifacts": [
+    {
+      "name": "kr-service",
+      "sha256": "cdd505bc22c090bbdc6994e399962201c1bf806e9439f226b25fca8c40f87833"
+    },
+    {
+      "name": "kr-admin",
+      "sha256": "c60adaa260e444d17352970cbaf5d21cb15b72def555e687146b6ca929be853d"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md#rust-r1e-registry",
+    "BoundProfiles.rooms Registry<Shared>→currentkey→synchronousSessionopen; currententry/title→wirelisting91",
+    "Runtime.scope/Batch.origin→atomicpublish→validrecipient/currentroom beforeguards",
+    "101Rust/306TCP/3169old+24firstvacant exactCP264;3retainedCP226listinginputs",
+    "Copiedr4forcedoldbatchnegative/r5unpublishedfixturefailure/r6candidate91unit; rawpreserved",
+    "PR343merged4195b00; nextN1bmax2native beforeR1f, notM7/generalprofile"
+  ],
+  "findings": [
+    {
+      "summary": "RegistrymapsRoomId→perroomRuntime/Rules/model/queues; currentlistingfromentries/title. Legacyserving1/1route preservesprofile, M7generalconfig/flowsremain.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1e-registry",
+      "evidence": [
+        "R1ECP265-01364",
+        "R1ECP265-01375",
+        "R1ECP265-01382"
+      ],
+      "limits": "R1e là refactor nền registry; serving vẫn một phòng fixed/public tuple1/1 để giữ profile2/4/8/account. Chưa giao operator config nhiều phòng hoặc tạo/chọn phòng tổng quát M7.; Hai registry entry/recipient isolation/retirement/listing kiểm bằng unit với Session thực và marker synthetic; không native gameplay hai phòng.; Listing giữ22 byte opaque mỗi row; chưa dynamic occupancy/quota/password/mode/room deletion UI hoặc durable restart fence. Native91count0 không tự clear-all.; Batch origin là fence nội bộ theo room token/recipient/connection, không thêm wireepoch hay chứng minh từ chối raw585/99 không phân biệt được sau rejoin.; API container generic không tự có authority; retirement cần caller kiểm channel/member/jobs dưới cùng lock order. Chưa nghiệm thu concurrent select/remove hoặc dynamic production lifecycle.; Native cuối R1 2/4/8/account còn bắt buộc; tiếp N1b tối đa2native trướcR1f. Shared-NAT/fullM5/production không được nâng từ lần này."
+    },
+    {
+      "summary": "Roomorigin+recipient/connection batchfences preventforcedforeignSessionoldcachebatch. Sequentialretirement/publictupleABA safeguards tested; no wireepoch/concurrent/globalauthorityclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1e-registry",
+      "evidence": [
+        "R1ECP265-00202",
+        "R1ECP265-00283",
+        "R1ECP265-01373"
+      ],
+      "limits": "R1e là refactor nền registry; serving vẫn một phòng fixed/public tuple1/1 để giữ profile2/4/8/account. Chưa giao operator config nhiều phòng hoặc tạo/chọn phòng tổng quát M7.; Hai registry entry/recipient isolation/retirement/listing kiểm bằng unit với Session thực và marker synthetic; không native gameplay hai phòng.; Listing giữ22 byte opaque mỗi row; chưa dynamic occupancy/quota/password/mode/room deletion UI hoặc durable restart fence. Native91count0 không tự clear-all.; Batch origin là fence nội bộ theo room token/recipient/connection, không thêm wireepoch hay chứng minh từ chối raw585/99 không phân biệt được sau rejoin.; API container generic không tự có authority; retirement cần caller kiểm channel/member/jobs dưới cùng lock order. Chưa nghiệm thu concurrent select/remove hoặc dynamic production lifecycle.; Native cuối R1 2/4/8/account còn bắt buộc; tiếp N1b tối đa2native trướcR1f. Shared-NAT/fullM5/production không được nâng từ lần này."
+    },
+    {
+      "summary": "101workspaceRust/fmt/clippy/lockedbuild and306TCPpass;3169old+24firstvacant frames exactCP264, inputsfrozen/processesreaped;3CP226listinginput bodies equal actualRustbuilder.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1e-registry",
+      "evidence": [
+        "R1ECP265-01546",
+        "R1ECP265-01543",
+        "R1ECP265-01544",
+        "R1ECP265-00053"
+      ],
+      "limits": "R1e là refactor nền registry; serving vẫn một phòng fixed/public tuple1/1 để giữ profile2/4/8/account. Chưa giao operator config nhiều phòng hoặc tạo/chọn phòng tổng quát M7.; Hai registry entry/recipient isolation/retirement/listing kiểm bằng unit với Session thực và marker synthetic; không native gameplay hai phòng.; Listing giữ22 byte opaque mỗi row; chưa dynamic occupancy/quota/password/mode/room deletion UI hoặc durable restart fence. Native91count0 không tự clear-all.; Batch origin là fence nội bộ theo room token/recipient/connection, không thêm wireepoch hay chứng minh từ chối raw585/99 không phân biệt được sau rejoin.; API container generic không tự có authority; retirement cần caller kiểm channel/member/jobs dưới cùng lock order. Chưa nghiệm thu concurrent select/remove hoặc dynamic production lifecycle.; Native cuối R1 2/4/8/account còn bắt buộc; tiếp N1b tối đa2native trướcR1f. Shared-NAT/fullM5/production không được nâng từ lần này."
+    },
+    {
+      "summary": "R1eacceptedonlyboundedrefactorscope/AUD082; no nativeM7/fullR1/M5promotion. PR343merged; dashboardcontinuesN1bmax2native beforeR1f.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-r1e-registry",
+      "evidence": [
+        "R1ECP265-00031",
+        "R1ECP265-00020",
+        "R1ECP265-00004"
+      ],
+      "limits": "R1e là refactor nền registry; serving vẫn một phòng fixed/public tuple1/1 để giữ profile2/4/8/account. Chưa giao operator config nhiều phòng hoặc tạo/chọn phòng tổng quát M7.; Hai registry entry/recipient isolation/retirement/listing kiểm bằng unit với Session thực và marker synthetic; không native gameplay hai phòng.; Listing giữ22 byte opaque mỗi row; chưa dynamic occupancy/quota/password/mode/room deletion UI hoặc durable restart fence. Native91count0 không tự clear-all.; Batch origin là fence nội bộ theo room token/recipient/connection, không thêm wireepoch hay chứng minh từ chối raw585/99 không phân biệt được sau rejoin.; API container generic không tự có authority; retirement cần caller kiểm channel/member/jobs dưới cùng lock order. Chưa nghiệm thu concurrent select/remove hoặc dynamic production lifecycle.; Native cuối R1 2/4/8/account còn bắt buộc; tiếp N1b tối đa2native trướcR1f. Shared-NAT/fullM5/production không được nâng từ lần này."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rust101_fmt_clippy_lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "R1ECP265-01546"
+      ],
+      "limits": "Source/unit only."
+    },
+    {
+      "check": "306TCP_3169old_24firstvacant_exactframes",
+      "result": "pass",
+      "evidence": [
+        "R1ECP265-01543",
+        "R1ECP265-01544"
+      ],
+      "limits": "Fixedprofile/consumedreceiverboundaryscope; frozeninputs/PIDcleanup."
+    },
+    {
+      "check": "two_room_registry_queues_listing_origin",
+      "result": "pass",
+      "evidence": [
+        "R1ECP265-01546",
+        "R1ECP265-00283",
+        "R1ECP265-00053"
+      ],
+      "limits": "ActualSessioncode/unitmarkers plusretainedinputbytes; notnative/generalroomserving."
+    },
+    {
+      "check": "R1e_native_finalR1_or_M7generalrooms",
+      "result": "not_run",
+      "evidence": [
+        "R1ECP265-00031"
+      ],
+      "limits": "NativefinalR1 andM7separateacceptance; N1bnext."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP265-r1e-registry.json",
+      "bytes": 415949,
+      "sha256": "5a182691383e2fc7db9066e2aeec87834c4f99185f25c514bcd830e24f0b36a8",
+      "count": 1567
+    }
+  ],
+  "delta": {
+    "added": [
+      "Registry/currentlisting/perroomqueuefoundation andinternalbatchoriginfence.",
+      "Two-roomunit/negativecontrols, retained3listinginputequivalence andfixedwire306TCPverification."
+    ],
+    "corrected": [
+      "Forcedoldbatchguardassumption madeexplicit; originfenceadded, directunpublishedsyntheticfixture nowusesactualpublish/inbox.",
+      "ActionsoutageblockedPR343nowresolved/merged; dashboardupdatedwithoutchangingoldcompleteevidence."
+    ],
+    "superseded": [
+      "R1epending→boundedrefactorverifiedpendingPR, noM7/nativegatepromotion."
+    ]
+  },
+  "blockers": [
+    "R1e là refactor nền registry; serving vẫn một phòng fixed/public tuple1/1 để giữ profile2/4/8/account. Chưa giao operator config nhiều phòng hoặc tạo/chọn phòng tổng quát M7.",
+    "Hai registry entry/recipient isolation/retirement/listing kiểm bằng unit với Session thực và marker synthetic; không native gameplay hai phòng.",
+    "Listing giữ22 byte opaque mỗi row; chưa dynamic occupancy/quota/password/mode/room deletion UI hoặc durable restart fence. Native91count0 không tự clear-all.",
+    "Batch origin là fence nội bộ theo room token/recipient/connection, không thêm wireepoch hay chứng minh từ chối raw585/99 không phân biệt được sau rejoin.",
+    "API container generic không tự có authority; retirement cần caller kiểm channel/member/jobs dưới cùng lock order. Chưa nghiệm thu concurrent select/remove hoặc dynamic production lifecycle.",
+    "Native cuối R1 2/4/8/account còn bắt buộc; tiếp N1b tối đa2native trướcR1f. Shared-NAT/fullM5/production không được nâng từ lần này."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Dashboard N1b afterR1ePRmerge: bothsidesport-changingNAT,max2native; thenR1f/sharedNAT/sessionidentity,R1g,nativefinalR12/4/8/account. M7generalroomconfig/flow later, no broadRE.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T21:25:46.602917+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualregistry/lockorder/listing/batchfences/sourceunitTCPdifferentialaudit; independentreviewwaived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/r1e-registry.json",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_registry.rs",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "state": "updated",
+      "reason": "R1eboundedrefactor/evidence/limits, PR343merge andN1bnext; oldcomplete/rawunchanged."
+    }
+  ],
+  "completed_feature_groups": [
+    "r1e-room-registry-listing-origin"
+  ]
+}

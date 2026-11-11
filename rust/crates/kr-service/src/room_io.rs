@@ -1,18 +1,19 @@
 //! Fixed-room adapters with bounded recipient queues and membership fences.
 use super::{ActorProfile, LobbyPacketPin, Reply};
 use crate::bombs;
+use crate::room_packets::{Template, normalize_legacy, packet};
 use crate::{
     pickups,
     room::{Member, Membership, Phase, PlayerId, Room},
     room_wire,
     rules::{self, DeparturePolicy, ResultPolicy, RoomRules, TeamPolicy},
 };
+use kr_wire::kr00967 as wire;
 use kr_wire::{Width, decode, read_uint};
 use serde::Deserialize;
 use std::{
     collections::{HashMap, HashSet},
     io,
-    net::Ipv4Addr,
     sync::{Arc, Mutex},
     time::{Duration, Instant},
 };
@@ -57,6 +58,7 @@ pub type Shared = Arc<Mutex<Runtime>>;
 struct Channel {
     connection: u64,
     sender: mpsc::Sender<Batch>,
+    endpoint: u32,
 }
 #[derive(Clone)]
 pub enum Guard {
@@ -80,6 +82,7 @@ pub enum Guard {
     },
 }
 pub struct Batch {
+    origin: Option<(Arc<()>, u32, u64)>,
     pub guard: Guard,
     pub due: Instant,
     pub packets: Vec<(String, Reply)>,
@@ -91,9 +94,10 @@ pub struct Batch {
     pub abort_return_complete: Option<(Membership, u64)>,
 }
 pub struct Runtime {
+    scope: Arc<()>,
     model: Room,
     players: HashMap<PlayerId, Reply>,
-    packets: HashMap<String, Reply>,
+    bodies: HashMap<Template, Vec<u8>>,
     channels: HashMap<u32, Channel>,
     last_visits: HashMap<u32, u64>,
     requested: HashSet<Membership>,
@@ -157,7 +161,7 @@ fn legacy_player_alias(id: u32) -> io::Result<&'static str> {
         _ => Err(err("unsupported diagnostic player identity")),
     }
 }
-pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Result<Shared> {
+pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Result<Shared> {
     if cfg.title.is_empty()
         || cfg.title.len() > 32
         || !cfg.title.bytes().all(|b| (32..=126).contains(&b))
@@ -222,6 +226,9 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         {
             return Err(err("room opcode/size mismatch"));
         }
+        if opcode != 106 && !wire::header_matches(&raw[..37]) {
+            return Err(err("unsupported room header profile"));
+        }
         packets.insert(
             alias.to_owned(),
             Reply {
@@ -236,13 +243,16 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
     {
         return Err(err("expected measured single room listing"));
     }
-    if room_wire::listing_title(&packets["listing"].payload)? != cfg.title.as_bytes() {
+    if wire::listing91_title(&packets["listing"].payload)? != cfg.title.as_bytes() {
         return Err(err("fixed listing title mismatch"));
     }
     // Normalize the old per-player fixture interface once. Runtime projections
     // come from one template; a changed opaque field must fail before bind.
     let template_reply = packets[legacy_player_alias(1)?].clone();
     let template = crate::player_template::PlayerTemplate::parse(&template_reply.payload)?;
+    if !wire::header_matches(&template_reply.header) {
+        return Err(err("unsupported room header profile"));
+    }
     let mut players = HashMap::new();
     for actor in actors.values() {
         if cfg.ninth_admission_probe && actor.identity == 9 {
@@ -251,7 +261,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         let captured = &packets[legacy_player_alias(actor.identity)?];
         let mut body = template.project(actor.identity, &actor.name)?;
         let slot = (actor.identity - 1) as u8;
-        body = room_wire::player_state(&body, slot, slot % 2, false, actor.identity == 1)?;
+        body = wire::player106_state(&body, slot, slot % 2, false, actor.identity == 1)?;
         let mut template_header = template_reply.header;
         let mut captured_header = captured.header;
         // The codec recomputes length for the shorter measured name5 profile.
@@ -269,12 +279,16 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
             },
         );
     }
-    let ready = actors
+    let mut ready = actors
         .values()
         .next()
         .ok_or_else(|| err("missing actors"))?
         .packets["ready"]
         .clone();
+    if !wire::header_matches(&ready.header) {
+        return Err(err("unsupported room header profile"));
+    }
+    ready.header = wire::HEADER;
     let packets_floor_body = packets["floor"].payload.clone();
     let terrain = cfg
         .terrain
@@ -310,8 +324,11 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
             if pin.opcode != op || packet.opcode != op || packet.payload.len() != size {
                 return Err(err("unsupported Battle fixture opcode/size"));
             }
+            if !wire::header_matches(&raw[..37]) {
+                return Err(err("unsupported room header profile"));
+            }
             if op == 180 {
-                room_wire::room_selector(&packet.payload, 180, 0)?;
+                wire::selector_reply(&packet.payload, 180, 0)?;
             }
             packets.insert(
                 alias.into(),
@@ -329,13 +346,14 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
     }
     if cfg.eight_battle {
         let start = packets.get_mut("start").expect("validated start");
-        start.payload = room_wire::start_teams(&start.payload, model.fixed_teams())?;
+        start.payload = wire::start121_teams(&start.payload, model.fixed_teams())?;
     }
     model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
+        scope: Arc::new(()),
         model,
         players,
-        packets,
+        bodies: normalize_legacy(&packets),
         channels: HashMap::new(),
         last_visits: HashMap::new(),
         requested: HashSet::new(),
@@ -344,14 +362,24 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         selector: 0,
         ready,
         ips: actors
-            .iter()
-            .map(|(ip, a)| (a.identity, u32::from(*ip)))
+            .values()
+            .map(|a| (a.identity, u32::from(a.configured_peer)))
             .collect(),
         ports: HashMap::new(),
         floor_catalog: pickups::Catalog::from_floor(&packets_floor_body)?,
         rules,
         abort: None,
     })))
+}
+pub(crate) fn listing_row(shared: &Shared) -> io::Result<wire::ListingRow> {
+    let runtime = shared.lock().map_err(|_| err("room unavailable"))?;
+    let mut rows = wire::listing91_parse_rows(runtime.body(Template::Listing91))?;
+    if rows.len() != 1 {
+        return Err(err("expected one room template row"));
+    }
+    let mut row = rows.remove(0);
+    row.title = runtime.title.clone();
+    Ok(row)
 }
 impl Runtime {
     fn member(&self, id: u32, connection: u64) -> io::Result<Member> {
@@ -362,24 +390,25 @@ impl Runtime {
             .cloned()
             .ok_or_else(|| err("missing/current room membership"))
     }
-    fn reply(&self, alias: &str, opcode: Option<u32>, body: Option<Vec<u8>>) -> Reply {
-        let mut p = self.packets[alias].clone();
-        if let Some(op) = opcode {
-            p.opcode = op;
-        }
-        if let Some(b) = body {
-            p.payload = b;
-        }
-        p
+    fn body(&self, key: Template) -> &[u8] {
+        &self.bodies[&key]
+    }
+    fn reply(&self, key: Template, body: Option<Vec<u8>>) -> Reply {
+        packet(
+            key.opcode(),
+            body.unwrap_or_else(|| self.body(key).to_vec()),
+        )
     }
     fn player(&self, m: &Member, host: Option<PlayerId>) -> io::Result<Reply> {
-        let mut reply = self
+        let reply = self
             .players
             .get(&m.key.identity)
             .ok_or_else(|| err("missing current player projection"))?
             .clone();
-        reply.payload = room_wire::player(&reply.payload, m, host == Some(m.key.identity))?;
-        Ok(reply)
+        Ok(packet(
+            106,
+            room_wire::player(&reply.payload, m, host == Some(m.key.identity))?,
+        ))
     }
     fn slot(&self, m: &Member, host: Option<PlayerId>) -> io::Result<Reply> {
         let mut reply = self.player(m, host)?;
@@ -394,6 +423,7 @@ impl Runtime {
         packets: Vec<(String, Reply)>,
     ) -> Batch {
         Batch {
+            origin: None,
             guard: Guard::Member(key, round),
             due: Instant::now() + Duration::from_millis(delay),
             packets,
@@ -413,6 +443,7 @@ impl Runtime {
         packets: Vec<(String, Reply)>,
     ) -> Batch {
         Batch {
+            origin: None,
             guard: Guard::Lobby {
                 identity: id,
                 connection,
@@ -432,7 +463,7 @@ impl Runtime {
     // Physical TCP delivery can still fail; barrier/recipient fences remain required.
     fn publish(&mut self, next: Room, effects: Vec<(u32, Batch)>) -> io::Result<()> {
         let mut reserved = Vec::new();
-        for (id, batch) in effects {
+        for (id, mut batch) in effects {
             let channel = self
                 .channels
                 .get(&id)
@@ -442,6 +473,7 @@ impl Runtime {
                 .clone()
                 .try_reserve_owned()
                 .map_err(|_| err("room recipient queue unavailable"))?;
+            batch.origin = Some((self.scope.clone(), id, channel.connection));
             reserved.push((permit, batch));
         }
         self.model = next;
@@ -456,7 +488,7 @@ impl Runtime {
             .members
             .get(&key.identity)
             .ok_or_else(|| err("missing departure"))?;
-        let remove = self.reply("player_A", Some(107), Some(room_wire::removal(departed)?));
+        let remove = packet(107, room_wire::removal(departed)?);
         let mut effects = Vec::new();
         for peer in next.members.values() {
             effects.push((
@@ -485,17 +517,16 @@ impl Runtime {
             .members
             .get(&key.identity)
             .ok_or_else(|| err("missing forfeit departure"))?;
-        let removal = self.reply("player_A", Some(107), Some(room_wire::removal(departed)?));
+        let removal = packet(107, room_wire::removal(departed)?);
         let alias = if departed.slot == 0 {
-            "rank"
+            Template::SlotOneWins175
         } else {
-            "rank_Awin"
+            Template::SlotZeroWins175
         };
         let returning = self.reply(
-            "return",
-            None,
-            Some(room_wire::room_selector(
-                &self.packets["return"].payload,
+            Template::Return180,
+            Some(wire::selector_reply(
+                self.body(Template::Return180),
                 180,
                 self.selector,
             )?),
@@ -507,7 +538,7 @@ impl Runtime {
             for (delay, packets, complete) in [
                 (
                     12000,
-                    vec![("forfeit175".into(), self.reply(alias, None, None))],
+                    vec![("forfeit175".into(), self.reply(alias, None))],
                     false,
                 ),
                 (17000, vec![("forfeit180".into(), returning.clone())], false),
@@ -546,7 +577,7 @@ impl Runtime {
             return Ok(());
         }
         let round = job.round;
-        let remove = self.reply("start", Some(107), Some(room_wire::removal(&job.departed)?));
+        let remove = packet(107, room_wire::removal(&job.departed)?);
         let mut packets = vec![("abort107".into(), remove)];
         for peer in self.model.members.values() {
             packets.push((
@@ -588,11 +619,7 @@ impl Runtime {
             {
                 let result = (|| -> io::Result<AbortTransition> {
                     let round = next.abort_four(m.key)?;
-                    let returning = self.reply(
-                        "start",
-                        Some(180),
-                        Some(crate::four_results::return_body(self.selector)?),
-                    );
+                    let returning = packet(180, crate::four_results::return_body(self.selector)?);
                     let mut effects = Vec::new();
                     for peer in next.members.values() {
                         let mut batch = Self::member_batch(
@@ -686,20 +713,37 @@ impl Runtime {
 }
 impl Session {
     pub fn open(shared: &Shared, identity: u32, connection: u64) -> io::Result<Self> {
+        Self::open_with_peer(shared, identity, connection, None)
+    }
+    pub fn open_with_peer(
+        shared: &Shared,
+        identity: u32,
+        connection: u64,
+        peer: Option<std::net::Ipv4Addr>,
+    ) -> io::Result<Self> {
         let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
         if runtime.channels.contains_key(&identity) {
             return Err(err("duplicate room channel"));
         }
         let (sender, inbox) = mpsc::channel(rules::recipient_queue(runtime.model.capacity()));
-        runtime
-            .channels
-            .insert(identity, Channel { connection, sender });
+        let endpoint = peer
+            .map(u32::from)
+            .or_else(|| runtime.ips.get(&identity).copied())
+            .unwrap_or(0);
+        runtime.channels.insert(
+            identity,
+            Channel {
+                connection,
+                sender,
+                endpoint,
+            },
+        );
         if runtime.model.host.is_some() {
             let batch = runtime.lobby_batch(
                 identity,
                 connection,
                 0,
-                vec![("listing91".into(), runtime.reply("listing", None, None))],
+                vec![("listing91".into(), runtime.reply(Template::Listing91, None))],
             );
             let unchanged = runtime.model.clone();
             if runtime.publish(unchanged, vec![(identity, batch)]).is_err() {
@@ -743,10 +787,9 @@ impl Session {
             let Some(team) = crate::four_results::winner(&r.model, now) else {
                 return Ok(());
             };
-            r.reply(
-                "start",
-                Some(175),
-                Some(crate::four_results::rank_body(r.model.fixed_teams(), team)?),
+            packet(
+                175,
+                crate::four_results::rank_body(r.model.fixed_teams(), team)?,
             )
         } else {
             let members: Vec<_> = r.model.members.values().collect();
@@ -761,7 +804,7 @@ impl Session {
                 {
                     return Ok(());
                 }
-                "rank_all_dead"
+                Template::AllDead175
             } else if let Some(&(slot, at)) = dead.first() {
                 if now.duration_since(at) < Duration::from_secs(8)
                     || r.model.bombs.pending()
@@ -774,27 +817,26 @@ impl Session {
                 {
                     return Ok(());
                 }
-                if slot == 0 { "rank" } else { "rank_Awin" }
+                if slot == 0 {
+                    Template::SlotOneWins175
+                } else {
+                    Template::SlotZeroWins175
+                }
             } else {
                 return Ok(());
             };
-            r.reply(alias, None, None)
+            r.reply(alias, None)
         };
         let mut next = r.model.clone();
         next.end(round)?;
         let mut effects = Vec::new();
         let returning = if r.rules.team_results() {
-            r.reply(
-                "start",
-                Some(180),
-                Some(crate::four_results::return_body(r.selector)?),
-            )
+            packet(180, crate::four_results::return_body(r.selector)?)
         } else {
             r.reply(
-                "return",
-                None,
-                Some(room_wire::room_selector(
-                    &r.packets["return"].payload,
+                Template::Return180,
+                Some(wire::selector_reply(
+                    r.body(Template::Return180),
                     180,
                     r.selector,
                 )?),
@@ -855,6 +897,17 @@ impl Session {
         let Ok(r) = self.shared.lock() else {
             return false;
         };
+        if !batch
+            .origin
+            .as_ref()
+            .is_some_and(|(scope, identity, connection)| {
+                Arc::ptr_eq(scope, &r.scope)
+                    && *identity == self.identity
+                    && *connection == self.connection
+            })
+        {
+            return false;
+        }
         if r.channels
             .get(&self.identity)
             .is_none_or(|c| c.connection != self.connection)
@@ -1017,16 +1070,16 @@ impl Session {
                     self.identity,
                     self.connection,
                     0,
-                    vec![("table238".into(), r.reply("table", None, None))],
+                    vec![("table238".into(), r.reply(Template::Table238, None))],
                 );
                 batch.guard = Guard::Channel;
                 effects.push((self.identity, batch));
             }
             81 | 82 => {
                 let (title, selector) = if opcode == 81 {
-                    (room_wire::create_title(body)?, room_wire::selector(body)?)
+                    (wire::create81_title(body)?, wire::create81_selector(body)?)
                 } else {
-                    room_wire::join_context(body)?;
+                    wire::join82_context(body)?;
                     (r.title.clone(), r.selector)
                 };
                 if r.rules.ninth_admission_probe && self.identity == 9 {
@@ -1041,7 +1094,7 @@ impl Session {
                         self.identity,
                         self.connection,
                         0,
-                        vec![("full87".into(), r.reply("join", None, Some(body)))],
+                        vec![("full87".into(), r.reply(Template::Join87, Some(body)))],
                     );
                     r.publish(next, vec![(self.identity, batch)])?;
                     return Ok(Observation {
@@ -1053,20 +1106,18 @@ impl Session {
                 let m = next.members[&self.identity].clone();
                 let reply = if opcode == 81 {
                     r.reply(
-                        "create",
-                        None,
-                        Some(room_wire::room_selector(
-                            &r.packets["create"].payload,
+                        Template::Create86,
+                        Some(wire::selector_reply(
+                            r.body(Template::Create86),
                             86,
                             selector,
                         )?),
                     )
                 } else {
                     r.reply(
-                        "join",
-                        None,
-                        Some(room_wire::room_selector(
-                            &room_wire::join(&r.packets["join"].payload, &m)?,
+                        Template::Join87,
+                        Some(wire::selector_reply(
+                            &room_wire::join(r.body(Template::Join87), &m)?,
                             87,
                             selector,
                         )?),
@@ -1096,10 +1147,9 @@ impl Session {
                                     vec![(
                                         "listing91".into(),
                                         r.reply(
-                                            "listing",
-                                            None,
-                                            Some(room_wire::replace_listing_title(
-                                                &r.packets["listing"].payload,
+                                            Template::Listing91,
+                                            Some(wire::listing91_replace_title(
+                                                r.body(Template::Listing91),
                                                 &title,
                                             )?),
                                         ),
@@ -1113,7 +1163,7 @@ impl Session {
                 new_key = Some(key);
             }
             585 => {
-                if !room_wire::is_zero_setup(body)? {
+                if !wire::zero585_setup(body)? {
                     return Err(err("unsupported setup585"));
                 }
                 let m = r.member(self.identity, self.connection)?;
@@ -1196,8 +1246,8 @@ impl Session {
                     None,
                     4000,
                     vec![
-                        ("table238".into(), r.reply("table", None, None)),
-                        ("map117".into(), r.reply("map", None, None)),
+                        ("table238".into(), r.reply(Template::Table238, None)),
+                        ("map117".into(), r.reply(Template::Map117, None)),
                     ],
                 );
                 final_batch.setup = Some(m.key);
@@ -1219,7 +1269,7 @@ impl Session {
                         1000,
                         vec![
                             ("return241".into(), r.ready.clone()),
-                            ("return91".into(), r.reply("listing", None, None)),
+                            ("return91".into(), r.reply(Template::Listing91, None)),
                         ],
                     ),
                 ));
@@ -1279,8 +1329,8 @@ impl Session {
                             Some(round),
                             0,
                             vec![
-                                ("floor582".into(), r.reply("floor", None, None)),
-                                ("start121".into(), r.reply("start", None, None)),
+                                ("floor582".into(), r.reply(Template::Floor582, None)),
+                                ("start121".into(), r.reply(Template::Start121, None)),
                             ],
                         ),
                     ));
@@ -1305,7 +1355,7 @@ impl Session {
                     let complete = next.ack(m.key, round)?;
                     loaded_endpoint = Some((m.key, port));
                     if complete {
-                        let mut endpoints = vec![(0, 0); next.capacity()];
+                        let mut endpoint_rows = Vec::with_capacity(next.capacity());
                         for peer in next.members.values() {
                             let p = if peer.key == m.key {
                                 port
@@ -1314,8 +1364,18 @@ impl Session {
                                     .get(&peer.key)
                                     .ok_or_else(|| err("missing current loading endpoint"))?
                             };
-                            endpoints[usize::from(peer.slot)] = (r.ips[&peer.key.identity], p);
+                            let channel = r
+                                .channels
+                                .get(&peer.key.identity)
+                                .filter(|channel| channel.connection == peer.key.connection)
+                                .ok_or_else(|| err("missing current endpoint channel"))?;
+                            endpoint_rows.push((peer.key, peer.slot, channel.endpoint, p));
                         }
+                        let plan = crate::peer_routes::LegacyDirectPlan::new(
+                            round,
+                            next.capacity(),
+                            endpoint_rows,
+                        )?;
                         let key = crate::room::wire_key(round)?;
                         for peer in next.members.values() {
                             effects.push((
@@ -1324,7 +1384,7 @@ impl Session {
                                     peer.key,
                                     Some(round),
                                     0,
-                                    vec![("go197".into(), r.reply("go", None, None))],
+                                    vec![("go197".into(), r.reply(Template::Go197, None))],
                                 ),
                             ));
                             effects.push((
@@ -1333,7 +1393,7 @@ impl Session {
                                     peer.key,
                                     Some(round),
                                     1000,
-                                    vec![("play196".into(), r.reply("play", None, None))],
+                                    vec![("play196".into(), r.reply(Template::Play196, None))],
                                 ),
                             ));
                             effects.push((
@@ -1345,13 +1405,12 @@ impl Session {
                                     vec![(
                                         "peer153".into(),
                                         r.reply(
-                                            "peer",
-                                            None,
-                                            Some(room_wire::peer(
-                                                &r.packets["peer"].payload,
+                                            Template::Peer153,
+                                            Some(wire::peer153(
+                                                r.body(Template::Peer153),
                                                 key,
                                                 peer.slot,
-                                                &endpoints,
+                                                plan.for_recipient(round, peer.key)?,
                                             )?),
                                         ),
                                     )],
@@ -1487,9 +1546,8 @@ impl Session {
                                 ..Observation::default()
                             });
                         }
-                        let spawn = r.reply("start", Some(159), Some(request.spawn159(ticket.id)?));
-                        let blast =
-                            r.reply("start", Some(158), Some(bombs::explode158(ticket.id)?));
+                        let spawn = packet(159, request.spawn159(ticket.id)?);
+                        let blast = packet(158, bombs::explode158(ticket.id)?);
                         for peer in next.members.values() {
                             let mut immediate = Runtime::member_batch(
                                 peer.key,
@@ -1594,7 +1652,7 @@ impl Session {
                     let Phase::Armed { round } = next.phase else {
                         unreachable!("accepted only in armed round")
                     };
-                    let reply = r.reply("start", Some(165), Some(request.confirmation()?));
+                    let reply = packet(165, request.confirmation()?);
                     for peer in next.members.values() {
                         let mut batch = Runtime::member_batch(
                             peer.key,
@@ -1669,7 +1727,12 @@ impl Session {
                                     0,
                                     vec![(
                                         format!("life170-{}", report.subtype),
-                                        r.reply("start", Some(170), report.forward.clone()),
+                                        packet(
+                                            170,
+                                            report.forward.clone().ok_or_else(|| {
+                                                err("missing validated life170 body")
+                                            })?,
+                                        ),
                                     )],
                                 );
                                 batch.subject = Some(m.key);
@@ -1705,11 +1768,8 @@ impl Session {
             r.ports.remove(&key);
         }
         if let Some((title, selector)) = room_choice {
-            let listing = room_wire::replace_listing_title(&r.packets["listing"].payload, &title)?;
-            r.packets
-                .get_mut("listing")
-                .expect("validated listing")
-                .payload = listing;
+            let listing = wire::listing91_replace_title(r.body(Template::Listing91), &title)?;
+            r.bodies.insert(Template::Listing91, listing);
             r.title = title;
             r.selector = selector;
         }
@@ -1825,13 +1885,15 @@ mod tests {
         let (ta, ra) = mpsc::channel(8);
         let (tb, mut rb) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            scope: Arc::new(()),
             model,
             players: synthetic_players(&packets),
-            packets,
+            bodies: normalize_legacy(&packets),
             channels: HashMap::from([
                 (
                     1,
                     Channel {
+                        endpoint: 0,
                         connection: 11,
                         sender: ta,
                     },
@@ -1839,6 +1901,7 @@ mod tests {
                 (
                     2,
                     Channel {
+                        endpoint: 0,
                         connection: 22,
                         sender: tb,
                     },
@@ -1884,6 +1947,7 @@ mod tests {
         shared.lock().unwrap().channels.insert(
             2,
             Channel {
+                endpoint: 0,
                 connection: 22,
                 sender: tb,
             },
@@ -1946,13 +2010,15 @@ mod tests {
         let (ta, mut ra) = mpsc::channel(2);
         let (tb, mut rb) = mpsc::channel(2);
         let mut runtime = Runtime {
+            scope: Arc::new(()),
             model: Room::default(),
             players: HashMap::new(),
-            packets: HashMap::new(),
+            bodies: HashMap::new(),
             channels: HashMap::from([
                 (
                     1,
                     Channel {
+                        endpoint: 0,
                         connection: 11,
                         sender: ta,
                     },
@@ -1960,6 +2026,7 @@ mod tests {
                 (
                     2,
                     Channel {
+                        endpoint: 0,
                         connection: 22,
                         sender: tb.clone(),
                     },
@@ -2014,7 +2081,9 @@ mod tests {
         active.ack(peer, round).unwrap();
         active.pickups = pickups::Round::begin(round, &pickups::tests::catalog()).unwrap();
         runtime.model = active;
-        runtime.packets.insert("start".into(), reply.clone());
+        runtime
+            .bodies
+            .insert(Template::Start121, reply.payload.clone());
         for _ in 0..2 {
             tb.try_send(Runtime::member_batch(peer, Some(round), 0, vec![]))
                 .unwrap_or_else(|_| panic!("fill B"));
@@ -2191,6 +2260,7 @@ mod four_abort_tests {
             channels.insert(
                 key.identity,
                 Channel {
+                    endpoint: 0,
                     connection: key.connection,
                     sender,
                 },
@@ -2198,9 +2268,10 @@ mod four_abort_tests {
             inboxes.push((i, inbox));
         }
         let shared = Arc::new(Mutex::new(Runtime {
+            scope: Arc::new(()),
             model,
             players: synthetic_players(&packets),
-            packets,
+            bodies: normalize_legacy(&packets),
             channels,
             last_visits: HashMap::new(),
             requested: keys.into_iter().collect(),
@@ -2237,7 +2308,15 @@ mod four_abort_tests {
     #[test]
     fn unranked_recovery_requires_three_post_write_setups_then_all_refresh_completions() {
         let (shared, mut sessions, keys, round) = runtime();
-        let old = Runtime::member_batch(keys[1], Some(round), 6000, vec![]);
+        let queued = Runtime::member_batch(keys[1], Some(round), 6000, vec![]);
+        {
+            let mut runtime = shared.lock().unwrap();
+            let next = runtime.model.clone();
+            runtime
+                .publish(next, vec![(keys[1].identity, queued)])
+                .unwrap();
+        }
+        let old = sessions[1].inbox.try_recv().unwrap();
         assert!(sessions[1].valid(&old));
         shared.lock().unwrap().detach(1, keys[0].connection);
         assert!(!sessions[1].valid(&old));
@@ -2467,9 +2546,7 @@ mod eight_baseline_tests {
         assert_eq!(room.bomb_capacity, [1, 2, 1, 1, 2, 1, 1, 1]);
         let endpoints: Vec<_> = (0..8).map(|i| (0x0a4d0002 + i, 32001 + i as u16)).collect();
         assert_eq!(
-            room_wire::peer(&[0; 61], 12346, 7, &endpoints)
-                .unwrap()
-                .len(),
+            wire::peer153(&[0; 61], 12346, 7, &endpoints).unwrap().len(),
             205
         );
     }
@@ -2489,19 +2566,14 @@ mod ninth_probe_tests {
         }
         let (sender, inbox) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            scope: Arc::new(()),
             model,
             players: HashMap::new(),
-            packets: HashMap::from([(
-                "join".into(),
-                Reply {
-                    header: [0; 37],
-                    opcode: 87,
-                    payload: vec![0; 7],
-                },
-            )]),
+            bodies: HashMap::from([(Template::Join87, vec![0; 7])]),
             channels: HashMap::from([(
                 9,
                 Channel {
+                    endpoint: 0,
                     connection: 99,
                     sender,
                 },
@@ -2607,5 +2679,193 @@ mod ninth_probe_tests {
         assert_eq!(r.model.members.len(), 8);
         assert!(!r.model.members.contains_key(&9));
         assert!(!r.last_visits.contains_key(&9));
+    }
+}
+
+#[cfg(test)]
+mod registry_foundation_tests {
+    use super::*;
+    use crate::room_registry::{Registry, RoomId, RoomKey};
+    fn empty(marker: u8) -> Shared {
+        Arc::new(Mutex::new(Runtime {
+            scope: Arc::new(()),
+            model: Room::default(),
+            players: HashMap::new(),
+            bodies: HashMap::from([(Template::Table238, vec![marker])]),
+            channels: HashMap::new(),
+            last_visits: HashMap::new(),
+            requested: HashSet::new(),
+            rostered: HashSet::new(),
+            title: b"ProbeRoom".to_vec(),
+            selector: 0,
+            ready: packet(241, vec![]),
+            ips: HashMap::new(),
+            ports: HashMap::new(),
+            floor_catalog: pickups::Catalog::default(),
+            rules: RoomRules::default(),
+            abort: None,
+        }))
+    }
+    #[test]
+    fn registry_routes_actual_session_queues_without_cross_room_recipients() {
+        let mut rooms = Registry::default();
+        let alpha = rooms.insert(1, RoomId(101), empty(0xa1)).unwrap();
+        let beta = rooms.insert(2, RoomId(202), empty(0xb2)).unwrap();
+        let selected = rooms.selection(1, RoomId(101)).unwrap();
+        let mut a = Session::open(rooms.get(selected).unwrap(), 1, 11).unwrap();
+        let mut b = Session::open(rooms.get(beta).unwrap(), 2, 22).unwrap();
+        a.packet(528, &[]).unwrap();
+        let first = a.inbox.try_recv().unwrap();
+        assert!(a.valid(&first));
+        assert_eq!(first.packets[0].1.opcode, 238);
+        assert_eq!(first.packets[0].1.payload, vec![0xa1]);
+        assert!(b.inbox.try_recv().is_err());
+        b.packet(528, &[]).unwrap();
+        let second = b.inbox.try_recv().unwrap();
+        assert!(b.valid(&second));
+        assert_eq!(second.packets[0].1.payload, vec![0xb2]);
+        assert!(a.inbox.try_recv().is_err());
+        assert!(rooms.selection(1, RoomId(202)).is_err());
+        assert!(
+            rooms
+                .get(RoomKey {
+                    generation: beta.generation + 1,
+                    ..beta
+                })
+                .is_err()
+        );
+        assert!(a.inbox.try_recv().is_err() && b.inbox.try_recv().is_err());
+        drop(a);
+        assert!(
+            rooms
+                .get(alpha)
+                .unwrap()
+                .lock()
+                .unwrap()
+                .channels
+                .is_empty()
+        );
+        assert_eq!(rooms.get(beta).unwrap().lock().unwrap().channels.len(), 1);
+        b.packet(528, &[]).unwrap();
+        assert_eq!(b.inbox.try_recv().unwrap().packets[0].1.payload, vec![0xb2]);
+    }
+    #[test]
+    fn full_actual_recipient_queue_in_one_room_does_not_charge_other_room_queue() {
+        let mut rooms = Registry::default();
+        let alpha = rooms.insert(1, RoomId(101), empty(0xa1)).unwrap();
+        let beta = rooms.insert(2, RoomId(202), empty(0xb2)).unwrap();
+        let mut a = Session::open(rooms.get(alpha).unwrap(), 1, 11).unwrap();
+        let mut b = Session::open(rooms.get(beta).unwrap(), 2, 22).unwrap();
+        let capacity = rules::recipient_queue(2);
+        for _ in 0..capacity {
+            a.packet(528, &[]).unwrap();
+        }
+        assert!(a.packet(528, &[]).is_err());
+        assert_eq!(a.inbox.len(), capacity);
+        assert!(b.inbox.try_recv().is_err());
+        b.packet(528, &[]).unwrap();
+        assert_eq!(b.inbox.try_recv().unwrap().packets[0].1.payload, vec![0xb2]);
+        for _ in 0..capacity {
+            assert_eq!(a.inbox.try_recv().unwrap().packets[0].1.payload, vec![0xa1]);
+        }
+        assert!(a.inbox.try_recv().is_err());
+        a.packet(528, &[]).unwrap();
+        assert_eq!(a.inbox.try_recv().unwrap().packets[0].1.payload, vec![0xa1]);
+    }
+    #[test]
+    fn registry_retirement_rejects_live_channel_and_keeps_queued_recipient_valid() {
+        let mut rooms = Registry::default();
+        let alpha = rooms.insert(1, RoomId(101), empty(0xa1)).unwrap();
+        let beta = rooms.insert(2, RoomId(202), empty(0xb2)).unwrap();
+        let mut a = Session::open(rooms.get(alpha).unwrap(), 1, 11).unwrap();
+        let mut b = Session::open(rooms.get(beta).unwrap(), 2, 22).unwrap();
+        a.packet(528, &[]).unwrap();
+        let can_retire = |shared: &Shared| {
+            let room = shared.lock().unwrap();
+            room.channels.is_empty()
+                && room.model.members.is_empty()
+                && room.model.phase == Phase::Idle
+                && !room.model.bombs.pending()
+        };
+        assert!(rooms.remove_if(alpha, can_retire).is_err());
+        let queued = a.inbox.try_recv().unwrap();
+        assert!(a.valid(&queued));
+        assert_eq!(queued.packets[0].1.payload, vec![0xa1]);
+        assert_eq!(rooms.selection(1, RoomId(101)).unwrap(), alpha);
+        drop(a);
+        let retired = rooms.remove_if(alpha, can_retire).unwrap();
+        assert!(retired.lock().unwrap().channels.is_empty());
+        assert!(rooms.get(alpha).is_err());
+        assert!(rooms.selection(1, RoomId(101)).is_err());
+        assert!(rooms.insert(1, RoomId(101), empty(0xa3)).is_err());
+        let replacement = rooms.insert(1, RoomId(303), empty(0xa3)).unwrap();
+        assert!(replacement.generation > alpha.generation);
+        assert!(rooms.get(alpha).is_err());
+        let mut replacement_session =
+            Session::open(rooms.get(replacement).unwrap(), 1, 33).unwrap();
+        replacement_session.packet(528, &[]).unwrap();
+        assert_eq!(
+            replacement_session.inbox.try_recv().unwrap().packets[0]
+                .1
+                .payload,
+            vec![0xa3]
+        );
+        assert!(!replacement_session.valid(&queued));
+        assert!(b.inbox.try_recv().is_err());
+        b.packet(528, &[]).unwrap();
+        assert_eq!(b.inbox.try_recv().unwrap().packets[0].1.payload, vec![0xb2]);
+    }
+    #[test]
+    fn registry_listing_uses_current_room_titles_and_keys_with_no_cross_room_state() {
+        let mut rooms = Registry::default();
+        let alpha = empty(0xa1);
+        let beta = empty(0xb2);
+        let template = wire::listing91_from_rows(&[wire::ListingRow {
+            session: 1,
+            room_id: 1,
+            title: b"Template".to_vec(),
+            opaque: [0x17; 22],
+        }])
+        .unwrap();
+        for shared in [&alpha, &beta] {
+            shared
+                .lock()
+                .unwrap()
+                .bodies
+                .insert(Template::Listing91, template.clone());
+        }
+        alpha.lock().unwrap().title = b"RoomAlpha".to_vec();
+        beta.lock().unwrap().title = b"RoomBeta".to_vec();
+        let a = rooms.insert(1, RoomId(101), alpha.clone()).unwrap();
+        let b = rooms.insert(2, RoomId(202), beta.clone()).unwrap();
+        let rows = wire::listing91_parse_rows(&rooms.listing91().unwrap()).unwrap();
+        assert_eq!(
+            (rows[0].session, rows[0].room_id, rows[0].title.as_slice()),
+            (1, 101, b"RoomAlpha".as_slice())
+        );
+        assert_eq!(
+            (rows[1].session, rows[1].room_id, rows[1].title.as_slice()),
+            (2, 202, b"RoomBeta".as_slice())
+        );
+        assert_eq!(rows[0].opaque, [0x17; 22]);
+        assert_eq!(rows[1].opaque, [0x17; 22]);
+        beta.lock().unwrap().title = b"RoomGamma".to_vec();
+        let updated = wire::listing91_parse_rows(&rooms.listing91().unwrap()).unwrap();
+        assert_eq!(updated[0], rows[0]);
+        assert_eq!(updated[1].title, b"RoomGamma");
+        rooms
+            .remove_if(b, |shared| shared.lock().unwrap().channels.is_empty())
+            .unwrap();
+        let remaining = wire::listing91_parse_rows(&rooms.listing91().unwrap()).unwrap();
+        assert_eq!(remaining, vec![rows[0].clone()]);
+        assert_eq!(rooms.selection(1, RoomId(101)).unwrap(), a);
+        rooms
+            .remove_if(a, |shared| shared.lock().unwrap().channels.is_empty())
+            .unwrap();
+        assert!(
+            wire::listing91_parse_rows(&rooms.listing91().unwrap())
+                .unwrap()
+                .is_empty()
+        );
     }
 }

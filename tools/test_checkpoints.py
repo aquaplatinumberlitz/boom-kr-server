@@ -107,6 +107,45 @@ class CheckpointsTest(unittest.TestCase):
         self.record["findings"][0]["method"] = "arbitrary"
         self.assertTrue(any("invalid evidence method" in e for e in self.errors()))
 
+    def documentation_fixture(self):
+        data = (self.root / "docs/PROTOCOL.md").read_bytes()
+        self.record["artifacts"] = []
+        self.record["evidence"] = [{"id": "E1", "kind": "repository", "path": "docs/PROTOCOL.md",
+                                    "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}]
+
+    def test_documentation_identity_requires_pinned_canonical_docs_and_keeps_hash_checks(self):
+        self.documentation_fixture()
+        errors, warnings, stats = checker.validate(self.manifest, self.root, True)
+        self.assertEqual(errors, [])
+        self.assertEqual(stats["evidence_verified"], 1)
+        self.assertTrue(any("DOCUMENTATION identity" in w for w in warnings))
+        self.record["evidence"][0]["sha256"] = "f" * 64
+        self.assertTrue(any("hash mismatch" in e for e in self.errors()))
+
+    def test_documentation_identity_cannot_replace_runtime_static_or_test_artifacts(self):
+        for source, method, status in [("kr_runtime", "runtime", "confirmed"),
+                                       ("kr_static", "static", "confirmed"),
+                                       ("design", "test", "design"),
+                                       ("design", "documentation", "confirmed")]:
+            with self.subTest(source=source, method=method, status=status):
+                self.documentation_fixture()
+                self.record["findings"][0].update(source=source, method=method, status=status)
+                self.assertTrue(any("artifact identity" in e for e in self.errors()))
+        self.record["findings"][0].update(source="design", method="documentation", status="design")
+
+    def test_documentation_identity_needs_canonical_pin_referenced_document_and_locators(self):
+        self.record["artifacts"] = []
+        self.assertTrue(any("artifact identity" in e for e in self.errors()))
+        self.documentation_fixture()
+        self.record["findings"][0]["canonical"] = "docs/PLAN.md"
+        self.assertTrue(any("artifact identity" in e for e in self.errors()))
+        self.record["findings"][0]["canonical"] = "docs/PROTOCOL.md"
+        self.record["findings"][0]["evidence"] = ["unknown"]
+        self.assertTrue(any("artifact identity" in e for e in self.errors()))
+        self.record["findings"][0]["evidence"] = ["E1"]
+        self.record["locators"] = []
+        self.assertTrue(any("artifact identity" in e for e in self.errors()))
+
     def test_id_counter_gap_and_missing_fields(self):
         self.record["id"] = "CP002"
         del self.record["question"]

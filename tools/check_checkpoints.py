@@ -209,6 +209,34 @@ def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence")
     return errors, warnings, checked, unavailable
 
 
+def documentation_identity(record, evidence):
+    """A documentation-only checkpoint has pinned canonical documents, not a binary.
+
+    This is declaration validation only. The common evidence verifier still
+    checks every file/hash/history; it must not certify implementation/runtime.
+    """
+    findings = record.get("findings")
+    if record.get("artifacts") != [] or not isinstance(findings, list) or not findings:
+        return False
+    docs = {
+        item.get("path"): item.get("id") for item in evidence
+        if isinstance(item, dict) and item.get("kind") == "repository"
+        and isinstance(item.get("path"), str) and item["path"].startswith("docs/")
+        and item["path"].endswith(".md") and SHA.fullmatch(str(item.get("sha256", "")))
+        and isinstance(item.get("bytes"), int) and item["bytes"] > 0
+    }
+    for finding in findings:
+        if not isinstance(finding, dict) or finding.get("source") != "design" \
+                or finding.get("method") != "documentation" \
+                or finding.get("status") not in {"design", "candidate", "unknown"}:
+            return False
+        canonical = str(finding.get("canonical", "")).split("#", 1)[0]
+        if canonical not in docs or not isinstance(finding.get("evidence"), list) \
+                or not set(finding["evidence"]).intersection(docs.values()):
+            return False
+    return True
+
+
 def validate(manifest, root=ROOT, require_local=False):
     errors, warnings = [], []
     checked, unavailable = 0, 0
@@ -289,10 +317,14 @@ def validate(manifest, root=ROOT, require_local=False):
         for artifact in record.get("artifacts", []):
             if not isinstance(artifact, dict) or not SHA.fullmatch(str(artifact.get("sha256", ""))):
                 errors.append(f"{where}: invalid artifact identity")
-        if not record.get("artifacts") or not record.get("locators"):
+        declared_evidence = list(store.evidence(record, root)) if not record.get("artifacts") else None
+        doc_identity = declared_evidence is not None and documentation_identity(record, declared_evidence)
+        if (not record.get("artifacts") and not doc_identity) or not record.get("locators"):
             errors.append(f"{where}: artifact identity and locators/run IDs required")
+        if doc_identity:
+            warnings.append(f"{where}: DOCUMENTATION identity from pinned canonical docs; not implementation/runtime certification")
         evidence_ids = set()
-        for item in store.evidence(record, root):
+        for item in (declared_evidence if declared_evidence is not None else store.evidence(record, root)):
             evidence_file(item, where)
             if isinstance(item, dict):
                 if item.get("id") in evidence_ids:

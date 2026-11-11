@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP263",
+  "as_of": "CP269",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -464,7 +464,12 @@
           "docs/evidence/rust-service/account-basic.json",
           "docs/PROTOCOL.md#rust-account-basic",
           "docs/PROTOCOL.md#rust-internet-observation",
-          "docs/evidence/rust-service/internet-observation.json"
+          "docs/evidence/rust-service/internet-observation.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json",
+          "docs/PROTOCOL.md#rust-r1f-session-binding",
+          "docs/evidence/rust-service/r1f-session-binding.json"
         ]
       },
       "coverage": {
@@ -885,7 +890,9 @@
           "docs/evidence/rust-service/four-startup.json",
           "docs/evidence/rust-service/README.md#cp245",
           "docs/evidence/rust-service/account-basic.json",
-          "docs/PROTOCOL.md#rust-account-basic"
+          "docs/PROTOCOL.md#rust-account-basic",
+          "docs/PROTOCOL.md#rust-r1e-registry",
+          "docs/evidence/rust-service/r1e-registry.json"
         ]
       },
       "coverage": {
@@ -1055,7 +1062,9 @@
           "docs/evidence/rust-service/account-basic.json",
           "docs/PROTOCOL.md#rust-account-basic",
           "docs/PROTOCOL.md#rust-internet-observation",
-          "docs/evidence/rust-service/internet-observation.json"
+          "docs/evidence/rust-service/internet-observation.json",
+          "docs/PROTOCOL.md#rust-r1f-session-binding",
+          "docs/evidence/rust-service/r1f-session-binding.json"
         ]
       },
       "coverage": {
@@ -1413,7 +1422,9 @@
           "docs/evidence/rust-service/README.md#cp235",
           "docs/PROTOCOL.md#rust-four-abort",
           "docs/evidence/rust-service/four-abort.json",
-          "docs/evidence/rust-service/README.md#cp249"
+          "docs/evidence/rust-service/README.md#cp249",
+          "docs/PROTOCOL.md#rust-r1e-registry",
+          "docs/evidence/rust-service/r1e-registry.json"
         ]
       },
       "coverage": {
@@ -1806,7 +1817,16 @@
           "docs/evidence/rust-service/argv-provenance.json",
           "docs/evidence/rust-service/README.md#cp252",
           "docs/PROTOCOL.md#rust-internet-observation",
-          "docs/evidence/rust-service/internet-observation.json"
+          "docs/evidence/rust-service/internet-observation.json",
+          "docs/PROTOCOL.md#rust-n1-acceptance",
+          "docs/evidence/rust-service/n1-acceptance.json",
+          "docs/PROTOCOL.md#rust-n1b-dual-nat",
+          "docs/evidence/rust-service/n1b-dual-nat.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json",
+          "docs/PROTOCOL.md#rust-r1f-session-binding",
+          "docs/evidence/rust-service/r1f-session-binding.json"
         ]
       },
       "coverage": {
@@ -1882,7 +1902,8 @@
               "docs/PROTOCOL.md#rust-four-results",
               "docs/PROTOCOL.md#rust-eight-baseline",
               "docs/evidence/rust-service/eight-baseline.json",
-              "docs/evidence/rust-service/README.md#cp250"
+              "docs/evidence/rust-service/README.md#cp250",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
             ]
           },
           "windows_original": {
@@ -1894,8 +1915,11 @@
             "refs": []
           },
           "internet": {
-            "state": "unknown",
-            "refs": []
+            "state": "observed",
+            "refs": [
+              "docs/PROTOCOL.md#rust-n1-acceptance",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
+            ]
           }
         },
         "implementation": {
@@ -3767,7 +3791,12 @@
           "docs/PROTOCOL.md#udp-netem-cycles",
           "docs/PROTOCOL.md#nat-netem-host-eof",
           "docs/PROTOCOL.md#emulated-wan-acceptance",
-          "docs/evidence/peer-endpoints/README.md#cp212"
+          "docs/evidence/peer-endpoints/README.md#cp212",
+          "docs/PROTOCOL.md#rust-n1b-dual-nat",
+          "docs/evidence/rust-service/n1b-dual-nat.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json"
         ]
       },
       "coverage": {
@@ -3799,7 +3828,8 @@
             "refs": [
               "docs/PROTOCOL.md#nat-endpoint-control",
               "docs/evidence/peer-endpoints/README.md#cp193",
-              "docs/PROTOCOL.md#nat-two-cycles"
+              "docs/PROTOCOL.md#nat-two-cycles",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
             ]
           },
           "windows_original": {
@@ -3811,8 +3841,11 @@
             "refs": []
           },
           "internet": {
-            "state": "unknown",
-            "refs": []
+            "state": "observed",
+            "refs": [
+              "docs/PROTOCOL.md#rust-n1-acceptance",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
+            ]
           }
         },
         "implementation": {
@@ -3837,7 +3870,8 @@
         }
       },
       "issues": [
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
       ]
     },
     {
@@ -4257,7 +4291,12 @@
           "docs/evidence/rust-service/argv-provenance.json",
           "docs/evidence/rust-service/README.md#cp252",
           "docs/PROTOCOL.md#rust-internet-observation",
-          "docs/evidence/rust-service/internet-observation.json"
+          "docs/evidence/rust-service/internet-observation.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json",
+          "docs/PROTOCOL.md#rust-r1f-session-binding",
+          "docs/evidence/rust-service/r1f-session-binding.json"
         ]
       },
       "coverage": {
@@ -4949,7 +4988,20 @@
           "docs/PROTOCOL.md#rust-r1b-policies",
           "docs/evidence/rust-service/r1b-policies.json",
           "docs/PROTOCOL.md#rust-r1c-player-slots",
-          "docs/evidence/rust-service/r1c-player-slots.json"
+          "docs/evidence/rust-service/r1c-player-slots.json",
+          "docs/PROTOCOL.md#rust-r1d-wire-builders",
+          "docs/evidence/rust-service/r1d-wire-builders.json",
+          "docs/PROTOCOL.md#rust-n1-acceptance",
+          "docs/evidence/rust-service/n1-acceptance.json",
+          "docs/PROTOCOL.md#rust-r1e-registry",
+          "docs/evidence/rust-service/r1e-registry.json",
+          "docs/PROTOCOL.md#rust-n1b-dual-nat",
+          "docs/evidence/rust-service/n1b-dual-nat.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json",
+          "docs/PROTOCOL.md#rust-r1f-session-binding",
+          "docs/evidence/rust-service/r1f-session-binding.json"
         ]
       },
       "coverage": {
@@ -5124,7 +5176,8 @@
               "docs/evidence/rust-service/README.md#cp249",
               "docs/PROTOCOL.md#rust-eight-baseline",
               "docs/evidence/rust-service/eight-baseline.json",
-              "docs/evidence/rust-service/README.md#cp250"
+              "docs/evidence/rust-service/README.md#cp250",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
             ]
           },
           "windows_original": {
@@ -5261,7 +5314,11 @@
             "rust/crates/kr-service/src/rules.rs",
             "docs/PROTOCOL.md#rust-r1b-policies",
             "rust/crates/kr-service/src/player_template.rs",
-            "docs/PROTOCOL.md#rust-r1c-player-slots"
+            "docs/PROTOCOL.md#rust-r1c-player-slots",
+            "rust/crates/kr-wire/src/kr00967.rs",
+            "rust/crates/kr-service/src/room_packets.rs",
+            "rust/crates/kr-service/src/room_registry.rs",
+            "docs/PROTOCOL.md#rust-r1e-registry"
           ]
         },
         "integration": {
@@ -5458,7 +5515,16 @@
           "docs/evidence/rust-service/account-worker.json",
           "docs/evidence/rust-service/README.md#cp244",
           "docs/evidence/rust-service/account-idle-rate.json",
-          "docs/evidence/eight-player/team-code-delivery.json"
+          "docs/evidence/eight-player/team-code-delivery.json",
+          "docs/PROTOCOL.md#rust-n1b-dual-nat",
+          "docs/evidence/rust-service/n1b-dual-nat.json",
+          "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+          "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+          "docs/evidence/rust-service/relay-endpoint-design.json",
+          "docs/PROTOCOL.md#documentation-checkpoint-identity",
+          "docs/evidence/rust-service/documentation-identity.json",
+          "docs/PROTOCOL.md#rust-r1f-session-binding",
+          "docs/evidence/rust-service/r1f-session-binding.json"
         ]
       },
       "coverage": {
@@ -5497,7 +5563,8 @@
               "docs/PROTOCOL.md#eight-mesh-owner-bombs",
               "docs/PROTOCOL.md#eight-two-team-cycles",
               "docs/PROTOCOL.md#eight-portable-battle",
-              "docs/PROTOCOL.md#eight-team-variants"
+              "docs/PROTOCOL.md#eight-team-variants",
+              "docs/PROTOCOL.md#rust-n1b-dual-nat"
             ]
           },
           "windows_original": {

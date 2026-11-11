@@ -9691,3 +9691,191 @@ Listener/launcher vẫn giới hạn các profile diagnostic đã đo và bridge
 không mặc định scalar cho inventory/accessory hoặc chứng nhận profile tổng quát M5. Transport binding và nhiều session chung NAT
 vẫn là R1f. N1 uplink di động/ISP-CGNAT chưa xác nhận; không đóng gate N1 hoặc sửa K6c/K7. Binary mới chưa được nghiệm thu native;
 cuối R1 vẫn cần native 2/4/8/account. Sửa tên helper ghi nhầm `admit` ở mô tả R1b thành đúng `from_config`; record/audit/raw CP262 giữ nguyên.
+
+<a id="rust-r1d-wire-builders"></a>
+## R1d — header chuẩn và builder theo opcode — CP264
+
+Nguồn **design/design**, kiểm source/unit/TCP; [metadata/hash](evidence/rust-service/r1d-wire-builders.json),
+[dashboard/thứ tự](PLAN.md#dashboard). Dùng lại CP263 layout106/slot, CP202/210/213 rank/return, cùng pure serializers
+của bombs/pickups/life/room_wire hiện có; không mở RE consumer mới hoặc port wire VN. Survey50 frame có cùng header
+sau bỏ opcode/length mà encoder vốn ghi lại; helper Rust tái tạo đủ50 frame với body do Python decoder cấp.
+Đây là input fixture equivalence, không oracle native mới.
+
+`kr-wire::kr00967` giữ một header đã pin cho profile mode2/selector3 và các body builder:
+room81/82/86/87/91/106/107/110/121/153/585, bomb158/159, pickup165, report127→170, rank175/return180.
+Builder chỉ nhận field/template; không nhận account/session/room model/timer hoặc quyết định authority.
+Profile106 zero/optional limits giữ nguyên; byte opaque vẫn từ template có pin, không tự gán nghĩa.
+Service giữ policy admission, identity/slot/team, winner/settle, queue/bomb/life/generation fences, lựa chọn endpoint và kết quả.
+`room_wire` chỉ còn adapter membership→field, `four_results` giữ winner; helper field-byte dùng ở wire crate.
+
+Alias JSON cũ được chuyển một lần thành `Template` có tên tại `room_packets::normalize_legacy`. Runtime không lookup
+fixture alias hay mượn header từ `start`/`player_A`; packet mới có opcode tường minh, header chuẩn và body do builder cấp.
+Các body opaque dùng lại giữ trong enum template; việc nạp JSON vẫn kiểm hash/opcode/size và không đổi input format.
+Header không thuộc profile bị từ chối trước bind, kể cả mọi fixture cùng một header lạ với hash hợp lệ.
+Log alias để tra evidence giữ nguyên; nó không chọn packet bytes. Chưa full grammar/modes khác hoặc general profile.
+
+96 test Rust/fmt/clippy/locked build và14 suite/306 ca TCP đạt; source/binary/input cố định, cleanup từng suite đạt.
+298 ca cũ có3169 frame đọc được khớp identity/normalized visit/alias/opcode/sequence/size/fullSHA với CP263;
+ca first-vacant thêm24 frame khớp. Sáu pre-bind guards +hai slot lifecycle là8 ca trong suite mới.
+Phạm vi nhỏ hơn3189 báo trước do dùng actual receiver boundary cho cả eight-manner và manner-negative ở lần so này:
+6 và14 notification đóng cuối của baseline chưa được driver đọc. Giữ nguyên raw cả hai bên, không loại theo opcode/alias.
+Ca eighth EOF và visitor negative vẫn được assert; không claim unread tail byte-identical.
+
+WIP foundation ban đầu truyền slot đã encode vào builder110 dẫn đến encode hai lần; run lỗi/raw đã giữ, cleanup hoàn tất.
+Sửa adapter decode slot trước builder, thêm test đúng điểm nối,43 TCP/56 frame đối chứng đạt trước khi mở chuyển toàn bộ.
+Bộ đầy đủ hiện đạt trên source sửa; không sửa raw hoặc record mốc cũ để đạt checker. Main PR339–341 đã gộp sau seal run,
+Rust source không đổi, kiểm sau gộp đạt; CI dùng toàn module catalog test đã được sửa ở main.
+Binary mới chưa native, không thừa kế CP261 hoặc các gate cũ. R1e/N1b/R1f/R1g và native cuối R1 còn theo dashboard.
+
+<a id="rust-n1-acceptance"></a>
+## N1 — quyết định phạm vi Internet thật — CP264
+
+Nguồn **kr_runtime/confirmed** trong đúng đường đã đo CP261 và **owner directive** cho uplink/phạm vi chấp nhận;
+[quyết định và đối chiếu acceptance](evidence/rust-service/n1-acceptance.json), [PLAN](PLAN.md#rust-n1-result).
+Chủ dự án xác nhận uplink đợt đo là hotspot điện thoại4G; không suy NAT class/CGNAT từ IP hoặc nhãn agent cũ.
+CP261 đã đo hai KR/Wine account→profile→phòng/basic→hai kết quả đối nghịch/reset→trận tiếp, native UDP hai chiều,
+99 khác cổng sau NAT, remote trả về observed-source; shared-NAT negative ghi rõ binding limit. Đối chiếu lại1124 pin
+CP261 không thiếu/sai hash. Run, client4b, binary ARMCP260 và fixtures/TTL của CP261 giữ nguyên, không chạy native mới.
+
+**RUST-N1 passed đúng phạm vi: ít nhất một phía tới được theo địa chỉ server báo.** Đây là quyết định mới theo
+[owner source](evidence/owner-directives/n1-uplink-and-result.json), thay trạng thái open do thiếu fact ởCP261–263;
+record/audit/raw và metadata `internet-observation.json` của mốc cũ bất biến, vẫn mô tả lúc đó.
+Không chứng nhận cả hai phía NAT đổi cổng: N1b mở riêng, tối đa hai native runs sau R1e/trước R1f theo PLAN.
+Không chứng nhận shared-NAT gameplay, mọi NAT/ISP/CGNAT/IPv6/fullM5/production; shared-NAT cần R1f.
+K6c/K7 WAN giả lập giữ scope đã đạt, không đưa Internet thành dependency gate cũ. Hạ tầng/topology thực chỉ local.
+
+<a id="rust-r1e-registry"></a>
+## R1e — registry phòng, listing và batch origin — CP265
+
+Nguồn **design/design**, source/unit/TCP; [metadata/hash](evidence/rust-service/r1e-registry.json), [dashboard](PLAN.md#dashboard).
+Reuse [CP226 listing](#room-list-lifecycle), [CP229 registry](#room-membership-registry), CP230 cleanup và R1d builders;
+Python prototype chỉ mẫu policy/session-room-generation/visit/tombstone, không port nguyên service hoặc wire VN.
+Không RE lại native91/87/106/107/110 đã có; ba input91 CP226 (2/1/0row) tái tạo đúng bằng builder Rust mới.
+Đây là fixture equivalence, không native mới. R1d/PR343 đã merge sau CI phục hồi; record/raw CP264 giữ nguyên.
+
+`BoundProfiles.rooms` là registry đồng bộ `RoomId→Entry<Shared>`; mỗi `Shared` giữ model/RoomRules/member/queue riêng.
+Key gồm session, ID và generation tăng; trùng ID/session, zero ID/session hoặc publictuple đã dùng bị chặn trước mutation.
+Không reuse cùng publictuple trong process vì request82 chưa có epoch đã đo; tombstone không phải durable restart fence.
+Chọn entry rồi mở channel dưới lock registry→room, không await trong đoạn đó. Listing91 tạo từ các entry hiện hành,
+đọc title trong từng room dưới cùng thứ tự lock rồi bỏ lock trước socket await. Snapshot từng room không được coi
+là transaction nhất quán toàn registry khi gameplay thay đổi. Giữ22byte opaque từ template, không tự đổi occupancy/quota.
+
+Serving hiện vẫn đăng ký một entry1/1 từ `fixed_room` và chọn đúng entry đó sau lobby67. Đây là compatibility route
+để giữ bytes profile2/4/8/account; **chưa** thêm operator multi-room config hay request81/82 tổng quát. M7 sẽ sử dụng
+registry/API này để tạo/chọn/chuyển phòng; kết quả unit hai entry không là native hai phòng/gameplay đã giao.
+Unit kiểm hai Session/inbox thực qua registry: table238 đúng recipient, đầy queueA không chiếm/chặn queueB,
+đóngA không xóaB. Unit listing kiểm2entry đúng session/ID/title/opaque, đổiB không đổiA, gỡB/A→count1/0.
+Native91count0 không tự clear-all; đường delete90/dynamic occupancy khi M7 cần acceptance riêng.
+
+Phép thử cố ý truyền batch cache cũ sang Session phòng mới cho thấy guard Channel cũ tin inbox riêng;
+**không phải** packet leak qua mạng đã quan sát. R1e gắn `(roomscope,recipientID,connection)` khi reserve/publish,
+`valid` kiểm origin trước các guard membership/round cũ. Roomscope là token nội bộ riêng mỗi Runtime, không wirefield.
+Batch từ room đã gỡ hoặc Session khác bị chặn kể cả các scalar tình cờ giống; policy auth/session vẫn ở service.
+Retirement guard được thử tuần tự với live channel/queued batch; container generic không tự quyết authority, caller phải
+kiểm channel/member/jobs và lock order. Không claim concurrent select/remove hoặc raw585/99 stale phân biệt được.
+
+Giữ failed copied-source r4 (forced oldbatch accepted), r5 (fence đạt nhưng fixture unranked cũ tạo batch chưa publish),
+r6 dùng cùng fence và cho fixture đi qua publish/inbox thật:91 unit của bản sao đạt. Không nới guard để qua test.
+Source tích hợp thêm listing:101 workspace tests/fmt/clippy/locked build và14suite306 TCP đạt;3169 frame cũ +24
+first-vacant khớp CP264 theo boundary receiver, unread cleanup tail giữ raw. Code/binary/input frozen, owned PID đã dọn.
+Cache extern rlibs của probe được hash lúc compile; executable/copy source giữ riêng, không coi target cache mutable
+là archive dependency bất biến. Build/lockfile/source của run serving đã snapshot riêng để tái lập.
+
+R1e chỉ refactor nền theo acceptance của PLAN; không đóng fullR1/M7/M5 hoặc chứng nhận binary native.
+Tiếp N1b tối đa hai native runs trước R1f, rồi R1g và native cuối R1 2/4/8/account. N1 one-side scope giữ; VPS chỉ local.
+
+<a id="rust-n1b-dual-nat"></a>
+## N1b — hai phía NAT đổi cổng: kết quả âm — CP266
+
+Nguồn **kr_runtime/confirmed** trong recipe và cửa sổ đã đo; [metadata/hash](evidence/rust-service/n1b-dual-nat.json),
+[kết luận và việc tiếp](PLAN.md#rust-n1-result). R1e đã merge PR344; phép mạng dùng lại ARM service/admin CP261,
+copy4b/Wine và toàn fixture/account/lifecycle/observer đã có. Không chứng nhận native binary R1e mới.
+
+Hai lượt giữ nguyên server source/config/fixture; phía B đổi sang SNAT ngẫu nhiên có stateful return, bỏ DNAT public.
+Lượt1 không có ngoại lệ ingress ở cloud nên thiếu góc nhìn cổng A sau NAT. Sau seal/cleanup/quiescence, lượt2 chỉ
+cho nguồn peer đã allowlist đi qua cloud ở cổng B tự báo để quan sát; vẫn không DNAT tới B. Cấu hình NAT/filtering,
+MTU, route, carrier, thông số impairment thực và giới hạn mô phỏng được pin đầy đủ **trong local**, theo chỉ đạo riêng tư.
+Không cấu hình netem delay/jitter/loss/reorder/bandwidth; độ trễ/mất gói Internet thực không được suy thành tham số đặt.
+
+PCAP serverNIC được ráp TCP theo accepted tuple và sequence, decode độc lập packet99/153: native getter bằng cổng99;
+153 vẫn quảng bá cổng tự báo. Lượt2 đối chiếu hash payload từ native send→preNAT→public capture, thấy cả hai cổng sau
+NAT khác cổng quảng bá. Trong các cửa sổ input movement của cả hai vòng, native chỉ gửi tới địa chỉ/cổng153; cả hai
+không có ingress/helper UDP. Capture không có UDP tới namespace service để server học mapping. Số mẫu/capturejoins
+và cửa sổ hữu hạn ở report local, không diễn giải mọi datagram hoặc mọi protocol của client.
+
+Cả hai recipe vẫn nhận hai kết quả/reset và Start3 qua TCP. Đây là đối chứng cho việc **lifecycle TCP chạy không đồng
+nghĩa UDP peer hoạt động**. Không nhận kết quả/trận đó là nghiệm thu đồng bộ gameplay qua hai NAT.
+Kết luận nhánh(c) cho recipe hiện hành: cần lát cắt thiết kế relay/endpoint trước R1f. Học cổng trên server chưa là
+fix đủ bằng chứng vì chưa có UDP đến service; không suy client không bao giờ hỗ trợ cơ chế khác.
+
+Hai run đóng resource đúng recipe, raw/seal giữ nguyên; đối chiếu ACL/rules/routes với baseline, controller/namespace/
+listener đã cleanup và mọi file remote khớp tar cuối. Parent-owned uplink được đóng riêng. Lượt1 và đối chứng lượt2
+không trộn thành một runtime; không thêm lượt3 hoặc thay input khi run đang chạy.
+N1 CP264 vẫn đạt scope một phía tới được; K6c/K7 WAN giả lập giữ nguyên. Relay chưa triển khai, shared-NAT identity,
+full M5, native cuối R1 và vận hành 50 người còn riêng. Thông tin thực về VPS/OCI/access/topology không đưa lên GitHub.
+
+<a id="rust-relay-endpoint-scope"></a>
+## Ranh giới endpoint/relay — thiết kế CP267
+
+Nguồn **design/design**; [quyết định/module](RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design),
+[metadata/reuse](evidence/rust-service/relay-endpoint-design.json), [phép kiểm](PLAN.md#rust-relay).
+Đây là quyết định chuẩn bị implementation sau N1b, không có wire hoặc runtime mới. Legacy153/99/UDP giữ contract
+đã đo. Policy mới chỉ thay endpoint153 trong opt-in; payloadUDP forward nguyên bản, không thêm token/field/movement
+snapshot hoặc áp authority VN. KR có nhận reverse-edge socket hay không vẫn candidate, phải native proof.
+R1f tách PlayerId/session lease khỏi sourceIP và để endpoint ở plan riêng; không lấy IPmetadata/CRC/low8key làm auth.
+Rust `Room::begin` và `wire_key` tại baseline CP266 chỉ checked counter/overflow, **chưa có guard256 như Python
+UdpRoundKeys**; không thừa kế giới hạn Python qua mô tả. Giới hạn vòng/portreuse phải xử lý riêng trước relay acceptance.
+Các gate/record/raw cũ giữ nguyên; design hoàn tất không đồng nghĩa relay/R1f/fullM5 đã nghiệm thu.
+
+<a id="documentation-checkpoint-identity"></a>
+## Danh tính checkpoint thuần tài liệu — correction CP268
+
+Nguồn **design/design**, kiểm tool/schema; [metadata](evidence/rust-service/documentation-identity.json),
+[workflow](evidence/checkpoints/README.md). CP267 khai `artifacts=[]` vì không có binary/runtime mới; kiểm lịch sử đầu
+xác minh424095 pin nhưng lỗi schema "artifact identity and locators/run IDs required". Không sửa complete record,
+audit hoặc evidence CP267 để vượt checker, không gọi lượt lỗi là đạt.
+
+Checker nhận danh tính từ tài liệu chuẩn có pin khi artifacts đúng mảng rỗng và **mọi** finding có source design,
+method documentation, status design/candidate/unknown. Mỗi canonical phải là docs/*.md có kind repository/size/SHA
+trong evidence; mỗi finding phải dẫn ít nhất một tài liệu đã pin. Locator và các kiểm hash/history/continuity/audit/
+docs_sync/evidence-reference giữ nguyên. In warning riêng không chứng nhận implementation/runtime.
+Kr_runtime/kr_static, method runtime/static/emulation/test, status confirmed hoặc thiếu canonical pin vẫn không được
+miễn artifact. Sourcepin tài liệu không chứng minh nội dung đúng; audit thủ công/acceptance vẫn giữ vai trò cũ.
+57 test checkpoint gồm positive/docs-pinned và negative hash/source/method/status/canonical/locator đạt.
+Đây là correction công cụ, không có contract KR hoặc runtime/acceptance mới; thiết kế CP267 và gate cũ giữ phạm vi.
+
+<a id="rust-r1f-session-binding"></a>
+## R1f — identity/profile theo session và endpoint theo channel — CP269
+
+Nguồn **design/design**, kiểm source/unit/TCP, chưa native candidate; [metadata/hash](evidence/rust-service/r1f-session-binding.json),
+[thứ tự và native cuối R1](PLAN.md#rust-r1), [thiết kế relay tách riêng](RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design).
+Dùng lại frontend32/body61→issuedplayer/session DB→echo/channel/lease CP253–258, metadata address CP260 và99/153 builders
+CP264; không wire mới hoặc port VN. Không còn khoảng trống layout cần RE cho refactor này.
+
+`BoundProfiles.actors` keyed PlayerId, chỉ mục `legacy_peers` dùng đường diagnostic không auth. Account mode cho hai
+profile đã biết cùng peer IP; allowlist phải khớp tập IP của cấu hình, không dùng số actor để buộc IP duy nhất.
+Diagnostic legacy vẫn từ chối trùng endpoint và giữ binding cũ; không coi nó là xác thực tài khoản.
+
+`Bridge::login_for_profile` parse reportedIPv4 như metadata không tin cậy, kiểm body61/token32/opaque shape, tìm đúng
+issued frontend rồi mới lấy expectedaddress từ **player của lease đó**. So actualpeer với peer của token vẫn giữ;
+wrong metadata/unknown profile không chọn actor khác hoặc lấy reportedIP làm quyền. Frontend một lần, generation,
+DB authorize/version/expiry/revoke và channel identity/name/echo/connection kiểm như trước. Unknown name/ID/profileversion
+vẫn từ chối; chưa projection cho mọi account. Guard fixedroom IP→identity cũ đã bỏ vì ownership từ lease.
+
+Channel account giữ địa chỉ từ actual admitted transport, theo đúng connection; legacy giữ configuredpeer. Không sửa
+map IP của player toàn cục khi một socket mới đến. `LegacyDirectPlan` chụp round/membership/slot/endpoint tại loading99,
+chặn missing/duplicate/outside slot/address0/port0 và recipient khác visit/connection/round trước builder153. Slot độc lập
+PlayerId; selfentry vẫn zero bởi builder cũ. Plan chỉ là snapshot nội bộ dưới room lock, không relay hay wireepoch;
+publication/batch origin/recipient/currentmodel fences CP265 tiếp tục áp dụng sau đó.
+
+104Rust tests đạt, gồm token-selected metadata hai account chungIP, wrongmetadata/unknownprofile không ăn frontend,
+revokeA/Bhealthy và plan sharedIP/nonidentityslot/stale visit/connection/round/invalid rows. Fmt/clippy/lockedbuild đạt.
+14suite/306TCP legacy đạt,3169 consumedroomframes+24firstvacant khớp CP265 theo identity/normalizedvisit/opcode/sequence/
+length/fullSHA; unreadtail giữ riêng. Thêm59TCP cùng sourceIP với reportedmetadata khác nhau, xuyên account→phòng→
+hai kết quả/reset/Start3/revokeA/fresh rejoin; packet153 được decode kiểm IP chung và cổng đúng slot. 16accountserving
+negative/lifecycle cũ đạt. Source/tool/binary/input frozen, ownedPID cleanup, raw/hashes giữ; lỗi clippy ban đầu ở
+fixturetest gọi sai tên method/map-iteration lint được giữ rồi sửa trước các run cuối, không đổi input đang chạy.
+
+Các ca này là **TCP tổng hợp**, không hai KR native hoặc đồng bộ UDP sau NAT. Endpoint153 vẫn IP channel/cổng99 tự
+báo; không học cổng, holepunch, relay hoặc chữa N1bnegative. M5generalprofile/nativeDBqueuefault, key256/portreuse/
+restart và sameIPUDPspoof còn riêng. Chỉ nghiệm thu fullR1 sau native2/4/8/account; không nâng gate từ source/TCP.

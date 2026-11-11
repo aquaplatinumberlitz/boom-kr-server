@@ -691,3 +691,57 @@ AuditnhómAUD079; R1c-g/N1environment/sharedNAT/M5generalprofile vàphase1milest
 30 fixture inputs không có unknown byte. Source/binary/frozen inputs/cleanup và raw so byte ở `r1c-regression-r2`;
 đợt runner r1 mất executable mode trước exec giữ riêng, không gán lỗi cho service. Survey và provenance ở
 `r1c-template-source-survey-r1`. Audit nhóm AUD080; chưa native candidate, full M5, shared-NAT hoặc N1 closure.
+
+<a id="cp264"></a>
+### CP264 — R1d wire builders và N1 theo phạm vi owner
+
+[R1d](../../PROTOCOL.md#rust-r1d-wire-builders), [metadata/hash](r1d-wire-builders.json);
+[N1 acceptance](n1-acceptance.json), [dashboard](../../PLAN.md#dashboard).
+96Rust/306TCP/3169+24exactframes; batch/source/binary ở `r1d-regression-r3`, các foundation failed/pass giữ riêng.
+50 retainedframes header khớp;96 Rust tests gồm các seam/opaque/ownership tests hiện có.
+N1 ghi nhận từ CP261+owner4G, không native mới;1124 pinCP261 kiểm lại đạt. N1b/sharedNAT/nativecuốiR1/fullM5 giữ giới hạn.
+AUD081 audit hai nhóm wire-refactor/N1 acceptance; record/raw mốc cũ không sửa. Hạ tầng chỉ local.
+
+<a id="cp265"></a>
+### CP265 — R1e registry/listing và batch origin
+
+[Contract](../../PROTOCOL.md#rust-r1e-registry), [metadata/hash](r1e-registry.json), [dashboard](../../PLAN.md#dashboard).
+101Rust/306TCP,3169+24frame khớpCP264; unit haiRoomSessionqueues/listing/removal và3CP226listing inputs.
+Source/binary/frozen inputs/cleanup ở `r1e-regression-r1`; copied-source r3–r6/failed controls giữ riêng.
+AUD082 cho nhóm refactor R1e; chưa nativecandidate/M7generalrooms/fullR1. Tiếp N1b theo PLAN.
+
+<a id="cp266"></a>
+### CP266 — N1b hai NAT đổi cổng, direct UDP âm
+
+[Contract/giới hạn](../../PROTOCOL.md#rust-n1b-dual-nat), [raw/hash](n1b-dual-nat.json), [việc tiếp](../../PLAN.md#dashboard).
+Hai lượt native CP261 baseline/copy4b/Wine, mỗi lượt frozen inputs/rawseal/cleanup/quiescence riêng. Lượt2 là đối chứng
+quan sát cloud, không thêm DNAT public. Đo đủ hai cổng sau NAT khác99/153; native send/capture nhưng không peer ingress/
+helper và không UDP tới service. Hai kết quả/reset/Start3 qua TCP không nâng thành UDP acceptance.
+AUD083 hoàn tất nhóm phép đo N1b, không hoàn tất relay/R1f/fullM5. Không native lượt3; thiết kế relay/endpoint trước R1f.
+Hạ tầng/định danh/config chỉ local. R1e PR344 đã merge; K6c/K7/N1 acceptance cũ và complete evidence giữ nguyên.
+
+<a id="cp267"></a>
+### CP267 — thiết kế endpoint và relay trước R1f
+
+[Quyết định](../../RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design), [scope](../../PROTOCOL.md#rust-relay-endpoint-scope),
+[metadata/reuse](relay-endpoint-design.json), [acceptance/thứ tự](../../PLAN.md#rust-relay).
+Chỉ design/docs; nativeN1b2runs CP266 không chạy lại. LegacyDirect giữ default; reverse-edge relay candidate có nguồn
+CP045/138/193/261/266, chưa implementation. Route/session/membership/round, reservation/queue/resource/rebind/cleanup/
+portreuse và sameIPspoof limits đã tách rõ. Guard256 có ở Python, chưa ở Rust; không nhận là runtime đã bảo vệ.
+AUD084 audit nhóm thiết kế; PR345 đã merge. Tiếp R1f, R1g, relay implementation/native riêng; không nâng gate/M5/R1.
+
+<a id="cp268"></a>
+### CP268 — correction checker danh tính checkpoint docs
+
+[Scope/giới hạn](../../PROTOCOL.md#documentation-checkpoint-identity), [metadata](documentation-identity.json).
+57 checkpoint tests đạt. CP267 pin/record/audit bất biến, run checker lỗi giữ local. Chỉ design/documentation với
+canonical docs pin đầy đủ dùng artifacts rỗng; runtime/static/test/confirmed không được miễn artifact/hash/history.
+AUD085 audit nhóm schema-tool; không runtime/implementation/gate mới. Thứ tự R1f/relay giữ PLAN.
+
+<a id="cp269"></a>
+### CP269 — R1f session/profile ownership và LegacyDirectPlan
+
+[Contract/giới hạn](../../PROTOCOL.md#rust-r1f-session-binding), [metadata/hash](r1f-session-binding.json), [PLAN](../../PLAN.md#dashboard).
+104Rust/fmt/clippy/lockedbuild;306TCPlegacy/3169+24frameCP265 khớp,59shared-IP fullaccountlife và16accountserving đạt.
+Source/body/tool/binary frozen, ownedPID gone; initialclippyfailures giữ. AUD086 audit nhóm source/TCPrefactor;
+chưa nativecandidate/shared-NATUDP/relay/fullM5. CP267–268 đã merge riêng, giữ record CP267 nguyên bytes.

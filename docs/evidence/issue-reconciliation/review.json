@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP263",
-  "baseline": "227daf17bc4bf746f524114d7c1016ff5c8ad985",
+  "as_of": "CP269",
+  "baseline": "f89504d561cf5aa6f619e94ed4c635a27b4f6250",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "R1b merged PR337; R1c SlotAllocation/common106 template,94 Rust/305 TCP/3189 exact old room frames/30 fixture comparisons.",
-      "remaining": "FinalR1 native2/4/8/account; R1d-g, N1 uplink provenance/shared-NAT transport and M5 general profiles/native DB/queue faults.",
-      "next_test": "PLAN R1d canonical header/opcode builders; preserve old wire, RE only unknown mismatch.",
+      "known": "CP267-268merged; R1f104Rust/306legacyTCP/3169+24exactCP265/59shared-IP/16account-serving. Profilesbytoken-ownedPlayerId, currentchanneldirectendpoint, membership/roundsnapshot.",
+      "remaining": "NativefinalR12/4/8/account; R1g/N1Rrelaynative; M5generalprofile/nativeDBqueuefault; sharedIPUDPspoof/keyportreuse/restart/load/backup.",
+      "next_test": "AfterR1fPRmergeR1gthenN1Rperdashboard; noN1b3 or broadRE.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "AUD080 R1c feature-group audit, independent review waived. Phase1 maps/items/Free knownlimit/reward0 decisions already approved. CP263 exact-head PR delivery pending.",
+      "reason": "AUD086boundedsource/TCPrefactor, notnative/fullR1/M5certification. Reviewwaived, PRpendingexactheadCI.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",

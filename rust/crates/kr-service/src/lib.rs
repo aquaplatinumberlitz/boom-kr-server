@@ -12,10 +12,13 @@ mod life;
 pub mod lobby;
 mod logging;
 pub mod network;
+mod peer_routes;
 mod pickups;
 mod player_template;
 pub mod room;
 mod room_io;
+mod room_packets;
+pub mod room_registry;
 mod room_wire;
 mod rules;
 mod terrain;
@@ -151,11 +154,13 @@ struct ActorProfile {
     name: Vec<u8>,
     packets: HashMap<String, Reply>,
     reported_login_ipv4: Option<Ipv4Addr>,
+    configured_peer: Ipv4Addr,
 }
 struct BoundProfiles {
-    actors: HashMap<Ipv4Addr, ActorProfile>,
+    actors: HashMap<room::PlayerId, ActorProfile>,
+    legacy_peers: HashMap<Ipv4Addr, room::PlayerId>,
     registry: binding::Shared,
-    room: Option<room_io::Shared>,
+    rooms: Option<Arc<std::sync::Mutex<room_registry::Registry<room_io::Shared>>>>,
 }
 pub struct Validated {
     config: Config,
@@ -250,7 +255,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             || two.wcp_ports.iter().any(|p| !config.ports.contains(p))
             || ports.iter().any(|p| !config.ports.contains(p))
             || !(matches!(two.actors.len(), 2 | 4 | 8) || (ninth_probe && two.actors.len() == 9))
-            || config.allowed_peers.len() != two.actors.len()
+            || (two.account_admission.is_none() && config.allowed_peers.len() != two.actors.len())
         {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
@@ -264,6 +269,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         }
         let mut actors = HashMap::new();
         let mut identities = HashSet::new();
+        let mut legacy_peers = HashMap::new();
         for actor in &two.actors {
             let expected = match actor.identity {
                 1 => "KRLocal",
@@ -300,12 +306,13 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             }
             if actors
                 .insert(
-                    actor.peer,
+                    actor.identity,
                     ActorProfile {
                         identity: actor.identity,
                         name: actor.name.as_bytes().to_vec(),
                         packets,
                         reported_login_ipv4: actor.reported_login_ipv4,
+                        configured_peer: actor.peer,
                     },
                 )
                 .is_some()
@@ -313,15 +320,42 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
                 return Err(io::Error::other("duplicate diagnostic endpoint"));
             }
         }
+        for actor in &two.actors {
+            if legacy_peers.insert(actor.peer, actor.identity).is_some()
+                && two.account_admission.is_none()
+            {
+                return Err(io::Error::other("duplicate diagnostic endpoint"));
+            }
+        }
+        if two.account_admission.is_some()
+            && config.allowed_peers.iter().copied().collect::<HashSet<_>>()
+                != two
+                    .actors
+                    .iter()
+                    .map(|actor| actor.peer)
+                    .collect::<HashSet<_>>()
+        {
+            return Err(io::Error::other(
+                "account peer allowlist does not match profiles",
+            ));
+        }
         let room = two
             .fixed_room
             .as_ref()
             .map(|cfg| room_io::load(cfg, &actors))
             .transpose()?;
+        let rooms = room
+            .map(|shared| -> io::Result<_> {
+                let mut registry = room_registry::Registry::default();
+                registry.insert(1, room_registry::RoomId(1), shared)?;
+                Ok(Arc::new(std::sync::Mutex::new(registry)))
+            })
+            .transpose()?;
         Some(BoundProfiles {
             actors,
+            legacy_peers,
             registry: binding::Shared::default(),
-            room,
+            rooms,
         })
     } else {
         None
@@ -645,9 +679,24 @@ async fn local_lobby_connection(
             }
             if packet.opcode == 67
                 && flow.stage == lobby::Stage::Lobby
-                && let Some(shared) = profile.bound.as_ref().and_then(|b| b.room.as_ref())
+                && let Some(registry) = profile.bound.as_ref().and_then(|b| b.rooms.as_ref())
             {
-                room_session = Some(room_io::Session::open(shared, flow.identity(), id)?);
+                // Keep registry selection and channel admission synchronous under
+                // registry -> room lock order; no await while either lock is held.
+                let registry = registry
+                    .lock()
+                    .map_err(|_| io::Error::other("room registry unavailable"))?;
+                let key = registry.selection(1, room_registry::RoomId(1))?;
+                let shared = registry.get(key)?;
+                room_session = Some(if account.is_some() {
+                    let peer = match socket.peer_addr()?.ip() {
+                        IpAddr::V4(peer) => peer,
+                        _ => return Err(io::Error::other("account endpoint requires IPv4")),
+                    };
+                    room_io::Session::open_with_peer(shared, flow.identity(), id, Some(peer))?
+                } else {
+                    room_io::Session::open(shared, flow.identity(), id)?
+                });
             }
         }
         if account.is_some() && Instant::now() >= next_auth_check {
@@ -682,10 +731,25 @@ async fn local_lobby_connection(
                 if !session.valid(&batch) {
                     return Err(io::Error::other("room membership changed during batch"));
                 }
-                let Some(reply) = session.project(reply)? else {
+                let Some(mut reply) = session.project(reply)? else {
                     continue;
                 };
-                let frame = encode(&reply.header, reply.opcode, &reply.payload, send_sequence)
+                if reply.opcode == 91 {
+                    let rooms = profile
+                        .bound
+                        .as_ref()
+                        .and_then(|bound| bound.rooms.as_ref())
+                        .ok_or_else(|| io::Error::other("missing room registry"))?;
+                    // Build the list from current room entries under synchronous
+                    // registry -> room lock order; release before socket await.
+                    reply.payload = {
+                        let registry = rooms
+                            .lock()
+                            .map_err(|_| io::Error::other("room registry unavailable"))?;
+                        registry.listing91()?
+                    };
+                }
+                let frame = kr_wire::kr00967::encode(reply.opcode, &reply.payload, send_sequence)
                     .map_err(io::Error::other)?;
                 timeout(
                     Duration::from_millis(profile.config.write_timeout_ms),
@@ -751,8 +815,9 @@ async fn bound_connection(
         _ => return Err(io::Error::other("IPv4 diagnostic only")),
     };
     let actor = bound
-        .actors
+        .legacy_peers
         .get(&peer)
+        .and_then(|identity| bound.actors.get(identity))
         .ok_or_else(|| io::Error::other("unmapped diagnostic actor"))?;
     let endpoints = profile
         .config

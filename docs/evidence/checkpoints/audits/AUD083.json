@@ -1,0 +1,83 @@
+{
+  "id": "AUD083",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "n1b-dual-port-changing-nat-measurement"
+  ],
+  "completed_through": "CP266",
+  "recorded_utc": "2026-11-11T21:51:59.717045+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/n1b-dual-nat.json",
+    "local/research/codex/n1b-native-r1/native/raw-seal.json",
+    "local/research/codex/n1b-native-r1/negative-udp-verification.json",
+    "local/research/codex/n1b-native-r1/life-verification.json",
+    "local/research/codex/n1b-native-r1/ownership-verification.json",
+    "local/research/codex/n1b-native-r1/environment-private.json",
+    "local/research/codex/n1b-native-r2/native/raw-seal.json",
+    "local/research/codex/n1b-native-r2/negative-udp-verification.json",
+    "local/research/codex/n1b-native-r2/life-verification.json",
+    "local/research/codex/n1b-native-r2/ownership-verification.json",
+    "local/research/codex/n1b-native-r2/environment-private.json",
+    "local/research/codex/n1b-native-r1-cleanup-audit/verification.json",
+    "local/research/codex/n1b-native-r1-cleanup-audit/quiescence-verification.json",
+    "local/research/codex/n1b-native-r2-cleanup-audit/verification.json",
+    "local/research/codex/n1b-native-r2-cleanup-audit/quiescence-verification.json"
+  ],
+  "method": "Manual canonical docs→frozenCP261baseline/independentTCPdecode99-153→nativeUDPsend/packetpayloadhashcapturejoin/ingresszero→strictlifecycle/ownership→rawseals/exactcleanup/quiescence audit. Scope decision notchecker/nativealive/serverlog inference.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "One-side-reachable N1 positive may be mistaken for bothport-changingNAT support; TCP outcomes could hide no peermovement.",
+      "correction": "SeparateN1b2runs: directUDPnegative, secondrunbothportmismatches/native82sendandzeroingress-helper/serviceUDP0. StrictTCP/owneroverlay is separate. N1oldscopeunchanged, no two-NATgatepassed.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Run1cloudfilterpreventspostAportvisibility; absencecouldbe mistaken forfullymeasuredtwoportmismatch.",
+      "correction": "Sealrun1thenrun2restrictedcloud-observationcontrol withoutstaticLinuxDNAT; run1unknownkept, run2same-native-payload joinscapturebothports. Exactly2nativeused, no retryormergedrunclaim.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1b-dual-nat.json",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Server-learning endpoints might be assumed enough forR1f thoughnoUDPsource-learningpathhasbeenobserved.",
+      "correction": "Openrelay/endpointdesignslice beforeR1f, withminimalwire/nativequestions andlifecycleacceptance. Not protocol-wideimpossibility orrestoredoriginalrelay; no relayimplclaim.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Copiedtoolconsole/reportlabels stillsayR10 orrun1althoughactualpathsandnative_runidentifynewN1bruns.",
+      "correction": "Retainoriginaloutputs/rawunchanged; environment-privateaddendum identifiesinheritedlabels separately. Assertionsuseactualnewpath/controllerPID/tuple/hash/configandquiescence. Privateinfraidentifierscheckedabsentfrompublicdocs/issue.",
+      "fixed_in": [
+        "local/research/codex/n1b-native-r1/environment-private.json",
+        "local/research/codex/n1b-native-r2/environment-private.json",
+        "local/research/codex/cp266-privacy-preappend.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "N1b is a completed bounded architecture measurement with a negative directUDP result, not a passed two-NAT gameplay gate or implemented relay.",
+    "Current finite native send/ingress windows and full named captures show no UDP arriving at the service; this is not proof that every KR mode/protocol lacks NAT traversal.",
+    "Same CP261 retained ARM service/admin and copy4b/Wine; no runtime source/config/input changed during either run. Current R1e binary is not natively certified by these runs.",
+    "B is controlled port-changing NAT; two roles share a physical host and B uplink uses an encapsulated carrier. Only the peer leg measured traverses real Internet. Not two independent householdISPs, all NAT classes, or CGNAT type certification.",
+    "R1cloud filter hides ApostNAT; R2 restricts the cloud observation exception to the already-allowlisted peer and reported destination port, with no Linux public DNAT. Both run raw/results are retained separately.",
+    "Actual VPS/OCI endpoints, IDs, topology, policies, routes, ranges and access details stay local. Public metadata includes only evidence hashes and bounded conclusions.",
+    "CP264 N1 one-side-reachable acceptance and CP212 K6c/K7 simulatedWAN remain unchanged. M5 generalprofiles/nativeDBqueuefault, R1f sharedNAT and finalR1native remain open."
+  ]
+}

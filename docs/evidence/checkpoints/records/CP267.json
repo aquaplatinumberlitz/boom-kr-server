@@ -1,0 +1,231 @@
+{
+  "id": "CP267",
+  "previous": "CP266",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T22:08:39.908058+00:00",
+  "context_commit": "7208404d1b5bb1a8aa37bd2d1b37d451d7c5012d",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/KR-F015: concreteendpoint/relaydesignbeforeR1fafterN1bnegative; define module/lease/reservation/resource/cleanupseams andminimalKRacceptance withoutimplementation/nativepromotion.",
+  "scope": "Design/sourcecomparisondocs only. NoRust/Pythonservingcode/configchange or newruntime. LegacyDirectunchanged, reverse-edgeopt-in candidate separateafterR1f/R1g.",
+  "artifacts": [],
+  "locators": [
+    "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+    "docs/PROTOCOL.md#rust-relay-endpoint-scope",
+    "CP045/138/193cachedproxy/mappedendpointscopedproof;CP261source-reply/CP266N1bnegative",
+    "Room::begin u64checkedadd/room::wire_key u32checkedadd; PythonUdpRoundKeys256guardnotRust",
+    "PR345merged7208404; NEXT R1f sessionprofilelookup+LegacyDirectendpointplan"
+  ],
+  "findings": [
+    {
+      "summary": "Selectedmodule/lease/reservation/queue/socket/resource/cleanupboundaries; preserveLegacyDirect, opt-inrelayseparatefeatureafterR1f/R1g.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+      "evidence": [
+        "RELAYDESCP267-00024",
+        "RELAYDESCP267-00007",
+        "RELAYDESCP267-00004"
+      ],
+      "limits": "Design acceptedonlydocs/module/measurementseams, relayalgorithmcandidate andno implementation/nativepromotion.; Native153perrecipientreverseedge/sourcelearning/twocycles/stale/EOF/sharedNATandloadrequiredbyPLAN.; SameIPfirstdatagramspoofnot solvedbyportassignment; noCRCkeyauthenticationclaim.; Portreuse/restart/keylifetime notproved; Rust256guardabsent atbaseline, separatetaskbeforeacceptance.; CurrentN1/K6c/K7scopeunchanged; M5generalprofile/nativeDBqueuefault andR1native2/4/8/account remain.; VPS/OCIactualendpoints/IDs/config/topology/access privateonlyignoredlocal."
+    },
+    {
+      "summary": "DirectededgeP(j,i)andreverse-sourceP(i,j) unchangedpayloadforwarding is candidate requiring native153/send/ingress/key/helper/apply/twocycles/stalecases, notconfirmedInternetrelay.",
+      "source": "design",
+      "status": "candidate",
+      "method": "documentation",
+      "canonical": "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+      "evidence": [
+        "RELAYDESCP267-00048",
+        "RELAYDESCP267-00006"
+      ],
+      "limits": "Design acceptedonlydocs/module/measurementseams, relayalgorithmcandidate andno implementation/nativepromotion.; Native153perrecipientreverseedge/sourcelearning/twocycles/stale/EOF/sharedNATandloadrequiredbyPLAN.; SameIPfirstdatagramspoofnot solvedbyportassignment; noCRCkeyauthenticationclaim.; Portreuse/restart/keylifetime notproved; Rust256guardabsent atbaseline, separatetaskbeforeacceptance.; CurrentN1/K6c/K7scopeunchanged; M5generalprofile/nativeDBqueuefault andR1native2/4/8/account remain.; VPS/OCIactualendpoints/IDs/config/topology/access privateonlyignoredlocal."
+    },
+    {
+      "summary": "Rusthascounteroverflowonly, notPython256lowbyteguard; portreuse/restart/sameIPspoofnotproved. Localdraftassumptioncorrectedbeforedelivery, no runtimebehaviorchange.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+      "evidence": [
+        "RELAYDESCP267-00043",
+        "RELAYDESCP267-00046",
+        "RELAYDESCP267-00005"
+      ],
+      "limits": "Design acceptedonlydocs/module/measurementseams, relayalgorithmcandidate andno implementation/nativepromotion.; Native153perrecipientreverseedge/sourcelearning/twocycles/stale/EOF/sharedNATandloadrequiredbyPLAN.; SameIPfirstdatagramspoofnot solvedbyportassignment; noCRCkeyauthenticationclaim.; Portreuse/restart/keylifetime notproved; Rust256guardabsent atbaseline, separatetaskbeforeacceptance.; CurrentN1/K6c/K7scopeunchanged; M5generalprofile/nativeDBqueuefault andR1native2/4/8/account remain.; VPS/OCIactualendpoints/IDs/config/topology/access privateonlyignoredlocal."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Targeted_source_reuse_design_scope_audit",
+      "result": "pass",
+      "evidence": [
+        "RELAYDESCP267-00024",
+        "RELAYDESCP267-00049"
+      ],
+      "limits": "Manualsource/design only; no native/implementationacceptance."
+    },
+    {
+      "check": "Docs_catalog_links_known_private_values",
+      "result": "pass",
+      "evidence": [
+        "RELAYDESCP267-00018",
+        "RELAYDESCP267-00022"
+      ],
+      "limits": "Syntax/link/privacyexactvaluesnotsemanticcertification."
+    },
+    {
+      "check": "Relay_implementation_native_R1f",
+      "result": "not_run",
+      "evidence": [
+        "RELAYDESCP267-00024"
+      ],
+      "limits": "Designonly; nativeR1f/relay/finalR1remain."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP267-relay-endpoint-design.json",
+      "bytes": 12987,
+      "sha256": "9f0e19678ad56e27eeba8cecbfcdf0c8b0dc86e0ac015bf213e9638f9d42855a",
+      "count": 51
+    }
+  ],
+  "delta": {
+    "added": [
+      "Concretemodule/reverseedgecandidatedesign/lifecycle/resource/rollback/nativeacceptance beforeR1f.",
+      "ExplicitRUST-N1RseparatefeatureplacementafterR1f/R1g; sourcekeylifetimegaprecorded."
+    ],
+    "corrected": [
+      "Do notinheritPython256guardintoRust; do notclaimsameIPUDPauthoroldrawportreusefencefromRAMgeneration."
+    ],
+    "superseded": [
+      "Endpointdesignpending→docsdesigncomplete; relayimplementation/nativecandidateunknown. PR345nowmerged."
+    ]
+  },
+  "blockers": [
+    "Design acceptedonlydocs/module/measurementseams, relayalgorithmcandidate andno implementation/nativepromotion.",
+    "Native153perrecipientreverseedge/sourcelearning/twocycles/stale/EOF/sharedNATandloadrequiredbyPLAN.",
+    "SameIPfirstdatagramspoofnot solvedbyportassignment; noCRCkeyauthenticationclaim.",
+    "Portreuse/restart/keylifetime notproved; Rust256guardabsent atbaseline, separatetaskbeforeacceptance.",
+    "CurrentN1/K6c/K7scopeunchanged; M5generalprofile/nativeDBqueuefault andR1native2/4/8/account remain.",
+    "VPS/OCIactualendpoints/IDs/config/topology/access privateonlyignoredlocal."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "DashboardR1fsession/lease→PlayerIdprofilelookupsharedNAT+LegacyDirectendpointplan; thenR1g andseparaterelaycandidateimplementation/nativeperPLAN. No broadRE or N1b3; M5generalprofile/nativeDBfaultremain.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T22:08:39.908058+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualsource/reuse/design/docs/lifecycle/resourceself-audit; independentreviewwaived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/evidence/rust-service/relay-endpoint-design.json",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Endpointdesignscope/ownershiplimits/nextR1f andseparaterelayacceptance; no runtimeoroldcompletechange."
+    }
+  ],
+  "completed_feature_groups": [
+    "relay-endpoint-design-before-r1f"
+  ]
+}

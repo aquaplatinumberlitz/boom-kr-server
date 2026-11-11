@@ -445,3 +445,26 @@ R1c/CP263: `fixed_room.slot_allocation` mặc định `legacy_identity`; opt-in 
 Một template106 tái tạo và đối chiếu mọi fixture cũ trước bind; opaque khác nhau bị từ chối dù pin hợp lệ.
 94 Rust/305 TCP và3189 frame cũ khớp; [contract/giới hạn](../docs/PROTOCOL.md#rust-r1c-player-slots).
 Native candidate vẫn thuộc acceptance cuối R1, tiếp R1d theo PLAN.
+
+
+R1d/CP264: `kr-wire::kr00967` giữ header chuẩn và pure room/player/battle body builders. JSON alias cũ chỉ được
+normalize ở config admission; runtime phòng dùng enum template/opcode, không mượn header fixture khác.
+96 Rust/306 TCP,3169 frame cũ +24 first-vacant khớp; [contract/limits](../docs/PROTOCOL.md#rust-r1d-wire-builders).
+Native candidate chưa kiểm; N1 được chấp nhận từ CP261 theo owner4G/phạm vi riêng, N1b vẫn chưa kiểm.
+
+
+R1e/CP265: fixed-room serving đi qua Registry<Shared>, listing91 từ entry/title hiện hành; batch origin/recipient fence
+được đặt tại atomicpublish. API container/tworoom unit không là multi-room operator config/M7.
+101 Rust/306 TCP và3169+24 frame khớp; [contract/limits](../docs/PROTOCOL.md#rust-r1e-registry).
+
+CP266: [N1b hai NAT đổi cổng](../docs/PROTOCOL.md#rust-n1b-dual-nat) đã đo hai lượt trên binary baseline CP261:
+UDP trực tiếp âm; TCP account/kết quả/reset không là bằng chứng movement. R1e đã merge PR344, native cuối R1 vẫn còn.
+Tiếp thiết kế relay/endpoint trước R1f theo PLAN; không đổi runtime source trong đợt mạng hoặc coi relay đã có.
+
+CP267 chốt [seam endpoint/relay](../docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design) cho R1f và lát cắt relay riêng.
+Chưa có module/runtime relay; giữ direct legacy. Rust chưa có guard256 của helper Python; cần task key/port lifetime
+riêng trước nghiệm thu relay, không đưa thay đổi này vào refactor giữ bytes.
+
+CP269 [R1f](../docs/PROTOCOL.md#rust-r1f-session-binding): account profile theo frontend/session PlayerId, endpoint theo
+currentchannel, LegacyDirectPlan giữ bytes. 104Rust/306TCPlegacy/3169+24exactframes;59shared-IP và16accountserving đạt.
+Chưa native candidate/shared-NAT UDP/NATlearning hoặc relay; native cuối R1 và full M5 giữ PLAN.

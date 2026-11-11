@@ -1,0 +1,46 @@
+{
+  "schema": "kre-documentation-identity-v1",
+  "checkpoint": "CP268",
+  "recorded_utc": "2026-11-11T22:21:02.239415+00:00",
+  "baseline": "b1889e79f136ffd5e4156383e5f774ba3ca546f0",
+  "source": "design",
+  "status": "design",
+  "canonical": "docs/PROTOCOL.md#documentation-checkpoint-identity",
+  "source_files": [
+    {
+      "path": "tools/check_checkpoints.py",
+      "bytes": 36677,
+      "sha256": "a9c92f3a8700e6f18b7957ca1d7788f5c825bc2cc358f6bbc1b9d756879e76de"
+    },
+    {
+      "path": "tools/test_checkpoints.py",
+      "bytes": 21207,
+      "sha256": "eeae1afdaa68badefb41bd0e82a12a1d753f4793dec9ce45bf1b79d594dfb598"
+    }
+  ],
+  "initial_failure": {
+    "path": "local/research/codex/cp267-exact-head-history.txt",
+    "sha256": "ff52b23e8d64ef4f2d582a2f7423774832ec84882cee221480b3c96c4169ee4e",
+    "verified": 424095,
+    "errors": 1,
+    "reason": "CP267 docs-only artifacts empty; old checker always requires artifact identity"
+  },
+  "tests": {
+    "path": "local/research/codex/cp268-checkpoint-tests-r1.txt",
+    "sha256": "8ee49bdc1879472b61c5aafb134f09cca68436f23378966dbbca12233784f6ff",
+    "count": 57,
+    "result": "pass"
+  },
+  "change": "Accept exactemptyartifacts onlydesign/documentation/nonconfirmedfindings withpinnedrepositorycanonicaldocs andeachfindingdocreference. Keepallhash/history/continuity/audit/nativeartifact requirements.",
+  "unchanged": [
+    "CP267completerecord/evidence/audit bytes",
+    "NoRust/Pythonservingbehavior/config/nativechange",
+    "Runtime/static/emulation/test/confirmed artifactrequirements",
+    "N1/K6c/K7/M5/R1acceptance"
+  ],
+  "limits": [
+    "Schema/provenancevalidation only, notsemantic/nativecertification.",
+    "FullhistoryandCI mustpassonnewexactheadbeforemerge; initialfailurekept.",
+    "No actualVPSidentifiers/config/access intrackeddata."
+  ]
+}

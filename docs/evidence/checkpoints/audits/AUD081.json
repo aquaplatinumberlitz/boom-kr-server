@@ -1,0 +1,116 @@
+{
+  "id": "AUD081",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "r1d-wire-builders",
+    "n1-one-side-reachable-acceptance"
+  ],
+  "completed_through": "CP264",
+  "recorded_utc": "2026-11-11T20:42:31.324483+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/four_results.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/life.rs",
+    "rust/crates/kr-service/src/pickups.rs",
+    "rust/crates/kr-service/src/player_template.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_wire.rs",
+    "rust/crates/kr-service/src/room_packets.rs",
+    "rust/crates/kr-wire/src/lib.rs",
+    "rust/crates/kr-wire/src/kr00967.rs",
+    "rust/crates/kr-wire/src/kr00967/room.rs",
+    "rust/crates/kr-wire/src/kr00967/player.rs",
+    "rust/crates/kr-wire/src/kr00967/battle.rs",
+    "tools/test_rust_player_slots.py",
+    "docs/evidence/rust-service/r1d-wire-builders.json",
+    "docs/evidence/rust-service/n1-acceptance.json",
+    "docs/evidence/owner-directives/n1-uplink-and-result.json",
+    "local/research/codex/r1d-regression-r3/verification.json",
+    "local/research/codex/r1d-regression-r3/wire-comparison.json",
+    "local/research/codex/r1d-regression-r3/player-slots/verification.json",
+    "local/research/codex/r1d-header-equivalence-r1/verification.json",
+    "local/research/codex/r1d-two-room-r1/analysis.json",
+    "local/research/codex/n1-native-wait-control-r10/life-verification.json",
+    "local/research/codex/n1-native-wait-control-r10/ownership-verification.json",
+    "local/research/codex/n1-native-wait-control-r10/udp-verification.json",
+    "local/research/codex/n1-native-shared-r11/shared-verification.json",
+    "local/research/codex/cp264-n1-cp261-verify.txt"
+  ],
+  "method": "Manual dashboard/core-doc→pure serializers/admission/runtime→fixed binaries/source/TCP frames→CP261native evidence and owner scope audit. No worker/independent approval. Rechecked source after upstream merge and all own raw pins; kept scientific/historical limits explicit.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Room packet bytes/header selected through string fixture alias and unrelated header donors; pure serializers mixed with policy source.",
+      "correction": "kr-wire::kr00967 holds header and room/player/battle builders; legacy config normalized once into typedtemplates, runtime opcode explicit. Service authority/fences preserved. Unknown body bytes remain pinned templates.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/bombs.rs",
+        "rust/crates/kr-service/src/four_results.rs",
+        "rust/crates/kr-service/src/lib.rs",
+        "rust/crates/kr-service/src/life.rs",
+        "rust/crates/kr-service/src/pickups.rs",
+        "rust/crates/kr-service/src/player_template.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/room_wire.rs",
+        "rust/crates/kr-service/src/room_packets.rs",
+        "rust/crates/kr-wire/src/lib.rs",
+        "rust/crates/kr-wire/src/kr00967.rs",
+        "rust/crates/kr-wire/src/kr00967/room.rs",
+        "rust/crates/kr-wire/src/kr00967/player.rs",
+        "rust/crates/kr-wire/src/kr00967/battle.rs",
+        "tools/test_rust_player_slots.py",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Earlier differential count3189 included20 unread finalnotifications in two8player suites; could be mistaken for consumed boundary scope.",
+      "correction": "Compare actualreceiverboundaries consistently:3169old+24firstvacant frames equal; retain old/final raw tails and initialfoundation slot110 double-encode failure, correctedseam control. No native promotion.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/r1d-wire-builders.json",
+        "local/research/codex/r1d-regression-r3/wire-comparison.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "N1 open due unknownuplink fact at CP261-263; current owner has attested4G and explicitly scoped acceptance to one-side reachable.",
+      "correction": "CP264combines1124reverifiedCP261pins/nativebehavior withownerdecision, recordsRUST-N1passedonlyscope. N1b bothport-changingNAT open andsharedNATnegative needsR1f; no oldrecord/raw/binary rewrite.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/n1-acceptance.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "README retained multiple oldstatusentries although new upstream directs latestonly/dashboard overwritten.",
+      "correction": "Moved oldentries intoHISTORYwithrelative links, READMEonlyCP264; dashboardstatusupdatedinplace. Mergedupstreamfullcatalogtestfix/CIwithoutchangingruntimesource.",
+      "fixed_in": [
+        "README.md",
+        "docs/HISTORY.md",
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Source/unit/TCP tổng hợp của R1d, không native candidate mới; cuối R1 còn native2/4/8/account.",
+    "JSON alias cũ chỉ là input compatibility ở admission; body opaque còn dùng template có pin. Không dựng wire của field/optional/mode chưa hiểu.",
+    "Header chuẩn chỉ profile KR00967 mode2/selector3 đã đo. Header lạ bị từ chối trước bind; không full grammar/mode/prefix.",
+    "Packet field/body builder không quyết định account, identity, team, timer, kết quả, reward hoặc endpoint; policy/ownership ở service giữ nguyên.",
+    "3169 frame cũ và24 first-vacant được so theo boundary receiver; unread cleanup tail giữ raw, không claim bằng toàn log.",
+    "N1 được chấp nhận riêng theo owner + CP261 cho ít nhất một phía tới được; N1b hai phía NAT đổi cổng chưa kiểm. Không suy mọi NAT/ISP/CGNAT/IPv6, fullM5 hoặc production.",
+    "Giữ nguyên CP261 record/raw/binary và kết quả lúc đó; quyết định phạm vi/đóng ghi ở CP264, không sửa gate_state cũ.",
+    "N1b cả hai phía NAT đổi cổng còn mở, làm sau R1e/trước R1f theo dashboard, tối đa hai native runs.",
+    "Ca chung NAT là negative binding limitation, cần R1f; không chứng nhận shared-NAT gameplay.",
+    "Không chứng nhận mọi NAT/ISP/CGNAT thực tế hoặc topology; không nâng fullM5/production/50user.",
+    "Thông tin VPS/OCI/topology thực chỉ local; metadata mới không sao chép định danh/cấu hình hạ tầng.",
+    "K6c/K7 WAN giả lập giữ scope, không sửa lịch sử hoặc tạo dependency Internet mới."
+  ]
+}

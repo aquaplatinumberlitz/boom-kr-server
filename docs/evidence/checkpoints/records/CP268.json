@@ -1,0 +1,217 @@
+{
+  "id": "CP268",
+  "previous": "CP267",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T22:22:01.301969+00:00",
+  "context_commit": "b1889e79f136ffd5e4156383e5f774ba3ca546f0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/KR-S002: correctcheckpointidentityvalidation forpurepinneddocumentation withoutrewritingcompleteCP267 orweakeningruntime/static/testartifact/hash/historyrequirements.",
+  "scope": "Checkpointtool/schema/docs only. No servingRust/Python/clientruntimebehaviorchange, noKRcontract/gatepromotion. R1fisolatedWIPseparate.",
+  "artifacts": [
+    {
+      "name": "tools/check_checkpoints.py",
+      "sha256": "a9c92f3a8700e6f18b7957ca1d7788f5c825bc2cc358f6bbc1b9d756879e76de"
+    },
+    {
+      "name": "tools/test_checkpoints.py",
+      "sha256": "eeae1afdaa68badefb41bd0e82a12a1d753f4793dec9ce45bf1b79d594dfb598"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md#documentation-checkpoint-identity",
+    "documentation_identity(record,evidence)→allfindingsdesign/documentation/nonconfirmed+canonicaldocpin/docref",
+    "Commonverify_evidence_item/hash/history/audit/locatorsnotbypassed; runtime/static/testrequireartifacts",
+    "CP267immutablecomplete:424095verified/0missing/1initialschemaerror; failurekept",
+    "57checkpointtests pass, nextfullhistoryexacthead/CI"
+  ],
+  "findings": [
+    {
+      "summary": "Docsonlyidentityusespinnedcanonicalrepodocs andstrictfindingsdeclarations; no runtime/static/testorconfirmedartifactexception.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#documentation-checkpoint-identity",
+      "evidence": [
+        "DOCIDCP268-00030",
+        "DOCIDCP268-00031",
+        "DOCIDCP268-00014"
+      ],
+      "limits": "Schema/provenancevalidation only, notsemantic/nativecertification.; FullhistoryandCI mustpassonnewexactheadbeforemerge; initialfailurekept.; No actualVPSidentifiers/config/access intrackeddata."
+    },
+    {
+      "summary": "CP267completerecord/evidence/auditunchanged; initialschemafailurepreserved andcorrectionCP268separate, no fabricatedbinary/nativeidentity.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#documentation-checkpoint-identity",
+      "evidence": [
+        "DOCIDCP268-00017",
+        "DOCIDCP268-00013"
+      ],
+      "limits": "Schema/provenancevalidation only, notsemantic/nativecertification.; FullhistoryandCI mustpassonnewexactheadbeforemerge; initialfailurekept.; No actualVPSidentifiers/config/access intrackeddata."
+    }
+  ],
+  "verification": [
+    {
+      "check": "57_checkpoint_positive_negative_tests",
+      "result": "pass",
+      "evidence": [
+        "DOCIDCP268-00014"
+      ],
+      "limits": "Schema/sourceonly, notnativecertification."
+    },
+    {
+      "check": "InitialCP267fullhistory_schema",
+      "result": "fail",
+      "evidence": [
+        "DOCIDCP268-00013"
+      ],
+      "limits": "Retainedinitialoldcheckererror, notcurrentpass. Correctedcheckerrequiresnewexactheadcheck."
+    },
+    {
+      "check": "Core_docs_scope_sync",
+      "result": "pass",
+      "evidence": [
+        "DOCIDCP268-00015",
+        "DOCIDCP268-00017"
+      ],
+      "limits": "No changetoexistingruntime/gates orimmutableCP267."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP268-documentation-identity.json",
+      "bytes": 7714,
+      "sha256": "655deda8c082bf00b0e415a3cc3e365d32e5d6a4cad5de4278e6552739a42c1e",
+      "count": 31
+    }
+  ],
+  "delta": {
+    "added": [
+      "Narrowdocumentationidentityschemawithcanonicaldocpins;57testpositive/negativecoverage."
+    ],
+    "corrected": [
+      "Blanketartifactrequirementforpuredesign checkpointCP267; record/evidence/auditnotedited."
+    ],
+    "superseded": [
+      "OldcheckerCP267schemafailure retained; newtoolcheckmustpassseparately."
+    ]
+  },
+  "blockers": [
+    "Schema/provenancevalidation only, notsemantic/nativecertification.",
+    "FullhistoryandCI mustpassonnewexactheadbeforemerge; initialfailurekept.",
+    "No actualVPSidentifiers/config/access intrackeddata."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Afterexactheadfullhistory/CI mergecurrentdesign+schemaPR; continueR1fsessionbinding/profileownership/LegacyDirectseam inisolatedworktree, thenR1g/relaynativeperPLAN. No N1b3/nativeclaimfromTCP.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T22:22:01.301969+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualschema/source/negativeguardtestanddocsreview; independentreviewwaived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "No newKRunknown/runtime; schemascope/source/provenancecorrection only."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    },
+    {
+      "path": "docs/evidence/rust-service/documentation-identity.json",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    },
+    {
+      "path": "tools/check_checkpoints.py",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    },
+    {
+      "path": "tools/test_checkpoints.py",
+      "state": "updated",
+      "reason": "Docidentityschema/failurecorrection; CP267completeimmutable andR1fnext."
+    }
+  ],
+  "completed_feature_groups": [
+    "documentation-checkpoint-identity-correction"
+  ]
+}

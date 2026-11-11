@@ -634,3 +634,73 @@ fn worker_background_inspection_does_not_renew_idle_but_player_activity_does() {
         w.shutdown().await.unwrap();
     });
 }
+
+#[test]
+fn frontend_selected_player_validates_distinct_metadata_behind_one_transport_ip() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, a, b) = Temp::new();
+    rt().block_on(async {
+        let w = worker(&temp).await;
+        let ga = grant(&w, "Alice").await;
+        let gb = grant(&w, "Bob").await;
+        let bridge = Bridge::new(w.client(), 2, Duration::from_secs(10)).unwrap();
+        let addresses = [
+            (a.wire_id, Ipv4Addr::new(10, 1, 0, 2)),
+            (b.wire_id, Ipv4Addr::new(10, 1, 0, 3)),
+        ];
+        let resolve = |p: &Player| {
+            addresses
+                .iter()
+                .find(|(id, _)| *id == p.wire_id)
+                .map(|(_, ip)| *ip)
+        };
+        let la = bridge.issue(&ga.token, a.player_id, PEER).await.unwrap();
+        let lb = bridge.issue(&gb.token, b.player_id, PEER).await.unwrap();
+        let wrong = login_body(lb.token().expose_secret(), addresses[0].1);
+        assert!(
+            bridge
+                .login_for_profile(&wrong, PEER, 11, resolve)
+                .await
+                .is_err()
+        );
+        let ab = login_body(la.token().expose_secret(), addresses[0].1);
+        let bb = login_body(lb.token().expose_secret(), addresses[1].1);
+        // Unknown profiles and wrong metadata do not consume another player's token.
+        assert!(
+            bridge
+                .login_for_profile(&ab, PEER, 11, |_| None)
+                .await
+                .is_err()
+        );
+        let aa = bridge
+            .login_for_profile(&ab, PEER, 11, resolve)
+            .await
+            .unwrap();
+        let ba = bridge
+            .login_for_profile(&bb, PEER, 22, resolve)
+            .await
+            .unwrap();
+        assert_eq!(aa.player, a);
+        assert_eq!(ba.player, b);
+        let ac = channel_body(&a, aa.echo);
+        let bc = channel_body(&b, ba.echo);
+        aa.redirected().unwrap();
+        ba.redirected().unwrap();
+        assert!(
+            bridge
+                .channel(&channel_body(&a, u32::MAX), PEER, 33)
+                .await
+                .is_err()
+        );
+        let mut ca = bridge.channel(&ac, PEER, 33).await.unwrap();
+        let mut cb = bridge.channel(&bc, PEER, 44).await.unwrap();
+        ca.check().await.unwrap();
+        cb.check().await.unwrap();
+        temp.store().revoke(&admin(), a.account_id, now()).unwrap();
+        assert!(ca.check().await.is_err());
+        cb.check().await.unwrap();
+        drop(ca);
+        drop(cb);
+        w.shutdown().await.unwrap();
+    });
+}
