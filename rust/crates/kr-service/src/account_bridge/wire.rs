@@ -9,6 +9,15 @@ fn field(bytes: &[u8], width: Width) -> Result<u64> {
     read_uint(bytes, width).map_err(|_| Error::UnsupportedWire)
 }
 
+/// Untrusted request metadata. This does not select an account or authorize a peer.
+pub(crate) fn reported_address(body: &[u8]) -> Result<Ipv4Addr> {
+    if body.len() != 61 {
+        return Err(Error::UnsupportedWire);
+    }
+    let value = field(&body[56..60], Width::U32)? as u32;
+    Ok(Ipv4Addr::from(value.to_le_bytes()))
+}
+
 /// Narrow network profile: token32/body61, opaque16, zero, reported IPv4, zero.
 /// The expected address constrains client metadata; it does not identify an
 /// account or establish the transport address observed beyond NAT.

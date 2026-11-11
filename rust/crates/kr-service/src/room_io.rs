@@ -14,7 +14,6 @@ use serde::Deserialize;
 use std::{
     collections::{HashMap, HashSet},
     io,
-    net::Ipv4Addr,
     sync::{Arc, Mutex},
     time::{Duration, Instant},
 };
@@ -59,6 +58,7 @@ pub type Shared = Arc<Mutex<Runtime>>;
 struct Channel {
     connection: u64,
     sender: mpsc::Sender<Batch>,
+    endpoint: u32,
 }
 #[derive(Clone)]
 pub enum Guard {
@@ -161,7 +161,7 @@ fn legacy_player_alias(id: u32) -> io::Result<&'static str> {
         _ => Err(err("unsupported diagnostic player identity")),
     }
 }
-pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Result<Shared> {
+pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Result<Shared> {
     if cfg.title.is_empty()
         || cfg.title.len() > 32
         || !cfg.title.bytes().all(|b| (32..=126).contains(&b))
@@ -362,8 +362,8 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         selector: 0,
         ready,
         ips: actors
-            .iter()
-            .map(|(ip, a)| (a.identity, u32::from(*ip)))
+            .values()
+            .map(|a| (a.identity, u32::from(a.configured_peer)))
             .collect(),
         ports: HashMap::new(),
         floor_catalog: pickups::Catalog::from_floor(&packets_floor_body)?,
@@ -713,14 +713,31 @@ impl Runtime {
 }
 impl Session {
     pub fn open(shared: &Shared, identity: u32, connection: u64) -> io::Result<Self> {
+        Self::open_with_peer(shared, identity, connection, None)
+    }
+    pub fn open_with_peer(
+        shared: &Shared,
+        identity: u32,
+        connection: u64,
+        peer: Option<std::net::Ipv4Addr>,
+    ) -> io::Result<Self> {
         let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
         if runtime.channels.contains_key(&identity) {
             return Err(err("duplicate room channel"));
         }
         let (sender, inbox) = mpsc::channel(rules::recipient_queue(runtime.model.capacity()));
-        runtime
-            .channels
-            .insert(identity, Channel { connection, sender });
+        let endpoint = peer
+            .map(u32::from)
+            .or_else(|| runtime.ips.get(&identity).copied())
+            .unwrap_or(0);
+        runtime.channels.insert(
+            identity,
+            Channel {
+                connection,
+                sender,
+                endpoint,
+            },
+        );
         if runtime.model.host.is_some() {
             let batch = runtime.lobby_batch(
                 identity,
@@ -1338,7 +1355,7 @@ impl Session {
                     let complete = next.ack(m.key, round)?;
                     loaded_endpoint = Some((m.key, port));
                     if complete {
-                        let mut endpoints = vec![(0, 0); next.capacity()];
+                        let mut endpoint_rows = Vec::with_capacity(next.capacity());
                         for peer in next.members.values() {
                             let p = if peer.key == m.key {
                                 port
@@ -1347,8 +1364,18 @@ impl Session {
                                     .get(&peer.key)
                                     .ok_or_else(|| err("missing current loading endpoint"))?
                             };
-                            endpoints[usize::from(peer.slot)] = (r.ips[&peer.key.identity], p);
+                            let channel = r
+                                .channels
+                                .get(&peer.key.identity)
+                                .filter(|channel| channel.connection == peer.key.connection)
+                                .ok_or_else(|| err("missing current endpoint channel"))?;
+                            endpoint_rows.push((peer.key, peer.slot, channel.endpoint, p));
                         }
+                        let plan = crate::peer_routes::LegacyDirectPlan::new(
+                            round,
+                            next.capacity(),
+                            endpoint_rows,
+                        )?;
                         let key = crate::room::wire_key(round)?;
                         for peer in next.members.values() {
                             effects.push((
@@ -1383,7 +1410,7 @@ impl Session {
                                                 r.body(Template::Peer153),
                                                 key,
                                                 peer.slot,
-                                                &endpoints,
+                                                plan.for_recipient(round, peer.key)?,
                                             )?),
                                         ),
                                     )],
@@ -1866,6 +1893,7 @@ mod tests {
                 (
                     1,
                     Channel {
+                        endpoint: 0,
                         connection: 11,
                         sender: ta,
                     },
@@ -1873,6 +1901,7 @@ mod tests {
                 (
                     2,
                     Channel {
+                        endpoint: 0,
                         connection: 22,
                         sender: tb,
                     },
@@ -1918,6 +1947,7 @@ mod tests {
         shared.lock().unwrap().channels.insert(
             2,
             Channel {
+                endpoint: 0,
                 connection: 22,
                 sender: tb,
             },
@@ -1988,6 +2018,7 @@ mod tests {
                 (
                     1,
                     Channel {
+                        endpoint: 0,
                         connection: 11,
                         sender: ta,
                     },
@@ -1995,6 +2026,7 @@ mod tests {
                 (
                     2,
                     Channel {
+                        endpoint: 0,
                         connection: 22,
                         sender: tb.clone(),
                     },
@@ -2228,6 +2260,7 @@ mod four_abort_tests {
             channels.insert(
                 key.identity,
                 Channel {
+                    endpoint: 0,
                     connection: key.connection,
                     sender,
                 },
@@ -2540,6 +2573,7 @@ mod ninth_probe_tests {
             channels: HashMap::from([(
                 9,
                 Channel {
+                    endpoint: 0,
                     connection: 99,
                     sender,
                 },

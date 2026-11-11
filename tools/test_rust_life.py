@@ -16,8 +16,9 @@ from server.room_title import _encode_bytes
 from tools.test_rust_foundation import exact,free_port
 
 class Client:
+    peers=('127.0.0.2','127.0.0.3')
     def __init__(self,role,port,header,hello):
-        self.sock=socket.socket();self.sock.settimeout(6);self.sock.bind(('127.0.0.'+str(role+2),0));self.sock.connect(('127.0.0.1',port));assert exact(self.sock,15)==hello
+        self.sock=socket.socket();self.sock.settimeout(6);self.sock.bind((self.peers[role],0));self.sock.connect(('127.0.0.1',port));assert exact(self.sock,15)==hello
         self.header=header;self.tx=40;self.rx=43
     def send(self,op,body):
         self.sock.sendall(c.encode(self.header,op,body,self.tx));self.tx+=3
@@ -36,7 +37,7 @@ class Client:
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--binary',type=Path,required=True);p.add_argument('--config',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--account-admin',type=Path,help='Opt-in real backend/private-launcher account-owned fixed-room regression');p.add_argument('--idle-seconds',type=int,default=120,help='Read deadline preserved across room timer polls');p.add_argument('--battle-profile',type=Path,required=True,help='Retained Python profile with pinned outcome fixtures');p.add_argument('--terrain-profile',type=Path,help='Use existing pinned Python bomb_terrain spec for syntheticgeometry-reveal checks');p.add_argument('--bomb-checks',action='store_true',help='Synthetic118/159/158 capacity/fuse/EOF ticket checks');p.add_argument('--pickup-checks',action='store_true',help='Floor124/165 policy negatives and one-winner confirmation, synthetic only');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--binary',type=Path,required=True);p.add_argument('--config',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--account-admin',type=Path,help='Opt-in real backend/private-launcher account-owned fixed-room regression');p.add_argument('--shared-peer',action='store_true',help='Two account sessions share one transport IP; reported metadata stays distinct, synthetic only');p.add_argument('--idle-seconds',type=int,default=120,help='Read deadline preserved across room timer polls');p.add_argument('--battle-profile',type=Path,required=True,help='Retained Python profile with pinned outcome fixtures');p.add_argument('--terrain-profile',type=Path,help='Use existing pinned Python bomb_terrain spec for syntheticgeometry-reveal checks');p.add_argument('--bomb-checks',action='store_true',help='Synthetic118/159/158 capacity/fuse/EOF ticket checks');p.add_argument('--pickup-checks',action='store_true',help='Floor124/165 policy negatives and one-winner confirmation, synthetic only');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
     cfg=copy.deepcopy(json.loads(a.config.read_text()));ports=set()
     while len(ports)<3:ports.add(free_port())
     login,wcp,channel=sorted(ports);cfg.update(idle_timeout_seconds=a.idle_seconds,bind='127.0.0.1',allowed_peers=['127.0.0.2','127.0.0.3'],ports=sorted(ports));two=cfg['diagnostic_two_lobby'];two.update(login_port=login,login_candidate_ports=[login,wcp],channel_port=channel,wcp_ports=sorted(ports))
@@ -47,6 +48,14 @@ def main():
     two['fixed_room']['battle']=dict(mode='post_blast_untrapped_drained',packets=battle)
     if a.terrain_profile:two['fixed_room']['terrain']=json.loads(a.terrain_profile.read_text())['bomb_terrain']
     for i,actor in enumerate(two['actors']):actor['peer']=cfg['allowed_peers'][i]
+    if a.shared_peer:
+        if a.account_admin is None:
+            p.error('--shared-peer requires --account-admin')
+        Client.peers=('127.0.0.2','127.0.0.2')
+        cfg.update(allowed_peers=['127.0.0.2'],network_scope='controlled_internet')
+        for i,actor in enumerate(two['actors']):
+            actor['reported_login_ipv4']='127.0.0.'+str(i+2)
+            actor['peer']=Client.peers[i]
     account_fixture=None
     if a.account_admin:
         from tools.rust_account_fixture import AccountFixture
@@ -162,6 +171,13 @@ def main():
             for client in clients:
                 client.receive(197);client.receive(196);_,peer=client.receive(153)
                 assert c.read_fields(peer[15:19],[4])==[key]
+                if a.shared_peer:
+                    recipient=clients.index(client)
+                    remote=1-recipient
+                    offset=35+remote*19
+                    address,port=c.read_fields(peer[offset+1:offset+7],[4,2])
+                    assert address==int.from_bytes(bytes([127,0,0,2]),'big')
+                    assert port==32001+remote
             note('Ready_Start_loading_current_key_'+str(key))
         A.send(127,report(19,0x7fffffff));quiet_pair();note('death_without_trap_does_not_poison_cursor')
         A.send(127,report(17,0x7fffffff,slot=1));quiet_pair();note('wrong_bound_slot_does_not_poison_cursor')

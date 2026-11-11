@@ -285,12 +285,14 @@ pub(crate) async fn connection(
             let (owned, lease, echo) = if packet.opcode == 1
                 && (port == endpoints.login_port || endpoints.login_candidate_ports.contains(&port))
             {
-                let reported = bound
-                    .actors
-                    .get(&peer)
-                    .and_then(|actor| actor.reported_login_ipv4)
-                    .unwrap_or(peer);
-                let result = tokio::select! {_=stop.changed()=>return Ok(()),v=active.bridge.login_with_reported_address(&packet.payload,peer,reported,id)=>v};
+                let result = tokio::select! {
+                    _=stop.changed()=>return Ok(()),
+                    v=active.bridge.login_for_profile(&packet.payload, peer, id, |player| {
+                        bound.actors.get(&player.wire_id)
+                            .filter(|actor| actor.name == player.display_name.as_bytes())
+                            .map(|actor| actor.reported_login_ipv4.unwrap_or(peer))
+                    })=>v
+                };
                 let login = match result {
                     Ok(login) => login,
                     Err(_) => {
@@ -340,17 +342,8 @@ pub(crate) async fn connection(
                 .find(|a| a.identity == owned.wire_id && a.name == owned.display_name.as_bytes())
                 .filter(|_| owned.profile_version == 1)
                 .ok_or_else(|| io::Error::other("unsupported owned account profile"))?;
-            // The measured room exchanges fixed peer endpoints. Ownership still
-            // comes from the backend session, but this small profile also fences
-            // each owned identity to its configured endpoint before room attach.
-            if endpoints.fixed_room.is_some()
-                && bound.actors.get(&peer).is_none_or(|configured| {
-                    configured.identity != owned.wire_id
-                        || configured.name != owned.display_name.as_bytes()
-                })
-            {
-                return Err(io::Error::other("owned room endpoint profile mismatch"));
-            }
+            // The issued frontend and channel lease own the identity. Source IPv4
+            // remains a transport restriction, never a selector for room ownership.
             let mut packets = actor.packets.clone();
             if echo {
                 let Lease::Login(Some(login)) = &lease else {

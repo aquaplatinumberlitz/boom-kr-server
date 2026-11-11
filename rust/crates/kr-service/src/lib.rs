@@ -12,6 +12,7 @@ mod life;
 pub mod lobby;
 mod logging;
 pub mod network;
+mod peer_routes;
 mod pickups;
 mod player_template;
 pub mod room;
@@ -153,9 +154,11 @@ struct ActorProfile {
     name: Vec<u8>,
     packets: HashMap<String, Reply>,
     reported_login_ipv4: Option<Ipv4Addr>,
+    configured_peer: Ipv4Addr,
 }
 struct BoundProfiles {
-    actors: HashMap<Ipv4Addr, ActorProfile>,
+    actors: HashMap<room::PlayerId, ActorProfile>,
+    legacy_peers: HashMap<Ipv4Addr, room::PlayerId>,
     registry: binding::Shared,
     rooms: Option<Arc<std::sync::Mutex<room_registry::Registry<room_io::Shared>>>>,
 }
@@ -252,7 +255,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             || two.wcp_ports.iter().any(|p| !config.ports.contains(p))
             || ports.iter().any(|p| !config.ports.contains(p))
             || !(matches!(two.actors.len(), 2 | 4 | 8) || (ninth_probe && two.actors.len() == 9))
-            || config.allowed_peers.len() != two.actors.len()
+            || (two.account_admission.is_none() && config.allowed_peers.len() != two.actors.len())
         {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
@@ -266,6 +269,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         }
         let mut actors = HashMap::new();
         let mut identities = HashSet::new();
+        let mut legacy_peers = HashMap::new();
         for actor in &two.actors {
             let expected = match actor.identity {
                 1 => "KRLocal",
@@ -302,18 +306,38 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             }
             if actors
                 .insert(
-                    actor.peer,
+                    actor.identity,
                     ActorProfile {
                         identity: actor.identity,
                         name: actor.name.as_bytes().to_vec(),
                         packets,
                         reported_login_ipv4: actor.reported_login_ipv4,
+                        configured_peer: actor.peer,
                     },
                 )
                 .is_some()
             {
                 return Err(io::Error::other("duplicate diagnostic endpoint"));
             }
+        }
+        for actor in &two.actors {
+            if legacy_peers.insert(actor.peer, actor.identity).is_some()
+                && two.account_admission.is_none()
+            {
+                return Err(io::Error::other("duplicate diagnostic endpoint"));
+            }
+        }
+        if two.account_admission.is_some()
+            && config.allowed_peers.iter().copied().collect::<HashSet<_>>()
+                != two
+                    .actors
+                    .iter()
+                    .map(|actor| actor.peer)
+                    .collect::<HashSet<_>>()
+        {
+            return Err(io::Error::other(
+                "account peer allowlist does not match profiles",
+            ));
         }
         let room = two
             .fixed_room
@@ -329,6 +353,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             .transpose()?;
         Some(BoundProfiles {
             actors,
+            legacy_peers,
             registry: binding::Shared::default(),
             rooms,
         })
@@ -663,7 +688,15 @@ async fn local_lobby_connection(
                     .map_err(|_| io::Error::other("room registry unavailable"))?;
                 let key = registry.selection(1, room_registry::RoomId(1))?;
                 let shared = registry.get(key)?;
-                room_session = Some(room_io::Session::open(shared, flow.identity(), id)?);
+                room_session = Some(if account.is_some() {
+                    let peer = match socket.peer_addr()?.ip() {
+                        IpAddr::V4(peer) => peer,
+                        _ => return Err(io::Error::other("account endpoint requires IPv4")),
+                    };
+                    room_io::Session::open_with_peer(shared, flow.identity(), id, Some(peer))?
+                } else {
+                    room_io::Session::open(shared, flow.identity(), id)?
+                });
             }
         }
         if account.is_some() && Instant::now() >= next_auth_check {
@@ -782,8 +815,9 @@ async fn bound_connection(
         _ => return Err(io::Error::other("IPv4 diagnostic only")),
     };
     let actor = bound
-        .actors
+        .legacy_peers
         .get(&peer)
+        .and_then(|identity| bound.actors.get(identity))
         .ok_or_else(|| io::Error::other("unmapped diagnostic actor"))?;
     let endpoints = profile
         .config

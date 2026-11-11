@@ -356,6 +356,19 @@ impl Bridge {
         reported: Ipv4Addr,
         connection: u64,
     ) -> Result<Login> {
+        self.login_for_profile(body, peer, connection, |_| Some(reported))
+            .await
+    }
+    /// The token-selected issued player chooses the expected metadata address.
+    /// A shared transport IPv4 must never choose a different player's profile.
+    pub(crate) async fn login_for_profile(
+        &self,
+        body: &[u8],
+        peer: Ipv4Addr,
+        connection: u64,
+        expected_address: impl FnOnce(&Player) -> Option<Ipv4Addr>,
+    ) -> Result<Login> {
+        let reported = wire::reported_address(body)?;
         let digest = wire::login_token(body, reported)?.digest();
         if connection == 0 {
             return Err(Error::InvalidInput);
@@ -372,6 +385,10 @@ impl Bridge {
                 .find(|(_, e)| e.frontend == Some(digest))
                 .ok_or(Error::Denied)?;
             if entry.phase != Phase::Issued || entry.peer != peer {
+                return Err(Error::Denied);
+            }
+            let expected = expected_address(entry.player.as_ref().ok_or(Error::Denied)?);
+            if expected != Some(reported) {
                 return Err(Error::Denied);
             }
             entry.frontend = None; // One use, even if subsequent DB authorization fails.
