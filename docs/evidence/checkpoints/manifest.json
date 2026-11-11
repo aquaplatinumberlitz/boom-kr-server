@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP253",
-  "completed_count": 253,
+  "last_id": "CP254",
+  "completed_count": 254,
   "audit_interval": 4,
   "last_periodic_audit": 252,
   "next_periodic_audit": "CP256",
@@ -2838,6 +2838,14 @@
       "path": "docs/evidence/checkpoints/records/CP253.json",
       "bytes": 22583,
       "sha256": "497b40857abd0b3afb1ca884374b01cd0a190627d7bcd7807ac0dc5c116a59b5"
+    },
+    {
+      "id": "CP254",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-11T05:44:32.321635+00:00",
+      "path": "docs/evidence/checkpoints/records/CP254.json",
+      "bytes": 20454,
+      "sha256": "914fac8b5e0ebec3f38fb4e62d1bf8790fbdef0b834f70d3e74653ccd8f65712"
     }
   ]
 }

@@ -136,6 +136,7 @@ enum Command {
         token: Token,
         player: i64,
         now: AuthorizationTime,
+        renew_idle: bool,
         deadline: Instant,
         reply: oneshot::Sender<Result<Player>>,
     },
@@ -336,7 +337,7 @@ impl Client {
         if player < 1 || now < 0 {
             return Err(Error::InvalidInput);
         }
-        self.authorize(token, player, AuthorizationTime::Supplied(now))
+        self.authorize(token, player, AuthorizationTime::Supplied(now), true)
     }
     /// Serving adapters use execution-time UTC, never the timestamp of queue admission.
     /// The existing explicit-time API remains for offline tests/trusted callers.
@@ -344,13 +345,21 @@ impl Client {
         if player < 1 {
             return Err(Error::InvalidInput);
         }
-        self.authorize(token, player, AuthorizationTime::ExecutionUtc)
+        self.authorize(token, player, AuthorizationTime::ExecutionUtc, true)
+    }
+    /// Background revocation/expiry check; successful inspection does not renew idle TTL.
+    pub fn try_inspect_current(&self, token: &Token, player: i64) -> Result<Pending<Player>> {
+        if player < 1 {
+            return Err(Error::InvalidInput);
+        }
+        self.authorize(token, player, AuthorizationTime::ExecutionUtc, false)
     }
     fn authorize(
         &self,
         token: &Token,
         player: i64,
         now: AuthorizationTime,
+        renew_idle: bool,
     ) -> Result<Pending<Player>> {
         let token = Token::parse(token.expose_secret()).map_err(Error::Backend)?;
         let (reply, rx) = oneshot::channel();
@@ -358,6 +367,7 @@ impl Client {
             token,
             player,
             now,
+            renew_idle,
             deadline: Instant::now() + self.queue_ttl,
             reply,
         })?;
@@ -433,6 +443,7 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>) -> Result<()> {
                 token,
                 player,
                 now,
+                renew_idle,
                 deadline,
                 reply,
             } => {
@@ -451,8 +462,14 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>) -> Result<()> {
                         .and_then(|t| i64::try_from(t.as_secs()).ok())
                         .ok_or(Error::Backend(accounts::Error::ClockRollback)),
                 };
-                let result = now
-                    .and_then(|now| store.authorize(&token, player, now).map_err(Error::Backend));
+                let result = now.and_then(|now| {
+                    if renew_idle {
+                        store.authorize(&token, player, now)
+                    } else {
+                        store.inspect_session(&token, player, now)
+                    }
+                    .map_err(Error::Backend)
+                });
                 let _ = reply.send(result);
             }
             #[cfg(test)]

@@ -142,6 +142,11 @@ impl Launch {
     pub fn token(&self) -> &FrontendToken {
         &self.token
     }
+    /// Transfer an issued launch to its bounded registry only after private delivery.
+    /// A send failure must drop the handle instead, cancelling the issued generation.
+    pub fn delivered(mut self) {
+        self._guard.armed = false;
+    }
 }
 /// Kept by a login socket until the actual redirect write succeeds.
 pub struct Login {
@@ -169,7 +174,14 @@ impl Channel {
     /// Must be called at serving authorization boundaries; alive is not authorization.
     /// Any failure invalidates this generation before returning to the caller.
     pub async fn check(&mut self) -> Result<()> {
-        let result = self.authorize().await;
+        self.verify(true).await
+    }
+    /// A server-side timer checks expiry/revoke without renewing player idle activity.
+    pub async fn check_idle(&mut self) -> Result<()> {
+        self.verify(false).await
+    }
+    async fn verify(&mut self, renew_idle: bool) -> Result<()> {
+        let result = self.authorize(renew_idle).await;
         if result.is_err() {
             let mut r = self.guard.shared.lock().unwrap_or_else(|e| e.into_inner());
             if r.entries
@@ -181,14 +193,19 @@ impl Channel {
         }
         result
     }
-    async fn authorize(&self) -> Result<()> {
+    async fn authorize(&self, renew_idle: bool) -> Result<()> {
         let token = {
             let mut r = lock(&self.guard.shared)?;
             copy_token(&self.guard.entry(&mut r)?.token)?
         };
-        let current = self
-            .client
-            .try_authorize_current(&token, self.player.player_id)
+        let pending = if renew_idle {
+            self.client
+                .try_authorize_current(&token, self.player.player_id)
+        } else {
+            self.client
+                .try_inspect_current(&token, self.player.player_id)
+        };
+        let current = pending
             .map_err(Error::Backend)?
             .wait()
             .await
@@ -213,7 +230,7 @@ impl Bridge {
     /// Small process-local launch registry. No persistence or multi-process fence.
     pub fn new(client: Client, capacity: usize, ttl: Duration) -> Result<Self> {
         if !(1..=32).contains(&capacity)
-            || !(Duration::from_millis(1)..=Duration::from_secs(10)).contains(&ttl)
+            || !(Duration::from_millis(1)..=Duration::from_secs(120)).contains(&ttl)
         {
             return Err(Error::InvalidInput);
         }
@@ -374,7 +391,11 @@ impl Bridge {
                 }
             }
             let echo = echo.ok_or(Error::Entropy)?;
-            guard.entry(&mut r)?.echo = Some(echo);
+            let entry = guard.entry(&mut r)?;
+            entry.echo = Some(echo);
+            // Launcher startup has its own lifetime; only the authorized login
+            // starts the shorter legacy channel handoff window.
+            entry.deadline = Instant::now() + Duration::from_secs(10);
             echo
         };
         guard.transition(Phase::Login)?;

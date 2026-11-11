@@ -489,3 +489,85 @@ fn channel_cancel_and_db_fault_invalidate_only_owned_generation() {
         w.shutdown().await.unwrap();
     });
 }
+
+#[test]
+fn delivered_launch_retained_for_startup_then_new_short_handoff_deadline() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, a, _) = Temp::new();
+    rt().block_on(async {
+        let w = worker(&temp).await;
+        let grant = grant(&w, "Alice").await;
+        assert!(Bridge::new(w.client(), 2, Duration::from_secs(121)).is_err());
+        let bridge = Bridge::new(w.client(), 2, Duration::from_secs(60)).unwrap();
+        let launch = bridge.issue(&grant.token, a.player_id, PEER).await.unwrap();
+        let body = login_body(launch.token().expose_secret(), PEER);
+        launch.delivered();
+        assert!(
+            lock(&bridge.shared).unwrap().entries[&a.player_id].deadline
+                > Instant::now() + Duration::from_secs(50)
+        );
+        // Model elapsed startup independently of the actual native WCP→login lower bound.
+        lock(&bridge.shared)
+            .unwrap()
+            .entries
+            .get_mut(&a.player_id)
+            .unwrap()
+            .deadline = Instant::now() + Duration::from_secs(30);
+        let login = bridge.login(&body, PEER, 1).await.unwrap();
+        let deadline = lock(&bridge.shared).unwrap().entries[&a.player_id].deadline;
+        assert!(deadline < Instant::now() + Duration::from_secs(11));
+        assert!(deadline > Instant::now() + Duration::from_secs(9));
+        let body = channel_body(&a, login.echo);
+        login.redirected().unwrap();
+        let channel = bridge.channel(&body, PEER, 2).await.unwrap();
+        drop(channel);
+        w.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn worker_background_inspection_does_not_renew_idle_but_player_activity_does() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, a, _) = Temp::new();
+    rt().block_on(async {
+        let w = worker(&temp).await;
+        let granted = w
+            .client()
+            .try_login_with_idle("Alice", PASSWORD, 60, 30, now())
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        let seen = || {
+            rusqlite::Connection::open(temp.db())
+                .unwrap()
+                .query_row(
+                    "SELECT last_seen_at FROM sessions WHERE revoked_at IS NULL",
+                    [],
+                    |r| r.get::<_, i64>(0),
+                )
+                .unwrap()
+        };
+        let before = seen();
+        tokio::time::sleep(Duration::from_millis(1100)).await;
+        assert_eq!(
+            w.client()
+                .try_inspect_current(&granted.token, a.player_id)
+                .unwrap()
+                .wait()
+                .await,
+            Ok(a.clone())
+        );
+        assert_eq!(seen(), before);
+        assert_eq!(
+            w.client()
+                .try_authorize_current(&granted.token, a.player_id)
+                .unwrap()
+                .wait()
+                .await,
+            Ok(a.clone())
+        );
+        assert!(seen() > before);
+        w.shutdown().await.unwrap();
+    });
+}

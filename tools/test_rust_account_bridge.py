@@ -27,6 +27,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--oracle-manifest', type=Path, required=True)
+    parser.add_argument('--expected-cases', type=int, default=9)
+    parser.add_argument('--expected-databases', type=int, default=8)
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=False, mode=0o700)
     root = args.out.resolve()
@@ -109,7 +111,7 @@ def main():
                 schema=conn.execute('SELECT version FROM schema_migrations').fetchall()))
         assert b'bridge-test-password' not in db.read_bytes()
     text = (root / 'process.log').read_text(errors='replace')
-    ok = code == 0 and unchanged and len(databases) == 6 and '7 passed; 0 failed' in text and wire_ok
+    ok = code == 0 and unchanged and len(databases) == args.expected_databases and f'{args.expected_cases} passed; 0 failed' in text and wire_ok
     evidence = [pin(p) for p in sorted(root.rglob('*')) if p.is_file()]
     report = dict(result='pass' if ok else 'fail', duration_s=time.monotonic()-started,
         returncode=code, pid=process.pid, remaining_pid=None if process.poll() is not None else process.pid,
@@ -118,7 +120,7 @@ def main():
         limits='Library/backend design and offline retained-native parser replay only; not live KR on account bridge, full authentication, serving integration, restart fence, native wrong-owner/expiry/revoke or M5 closure.')
     (root / 'verification.json').write_text(json.dumps(report, indent=2)+'\n')
     assert ok, 'bridge acceptance failed; raw/process log retained'
-    print(f'PASS 7 bridge cases/6 retained DBs/{len(oracle_results)} independent native bodies/source frozen/PID gone; no serving/native M5 claim')
+    print(f'PASS {args.expected_cases} bridge cases/{args.expected_databases} retained DBs/{len(oracle_results)} independent native bodies/source frozen/PID gone; no serving/native M5 claim')
 
 
 if __name__ == '__main__':

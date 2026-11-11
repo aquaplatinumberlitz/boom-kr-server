@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP253",
+  "as_of": "CP254",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -456,7 +456,9 @@
           "docs/evidence/rust-service/four-startup.json",
           "docs/evidence/rust-service/README.md#cp245",
           "docs/PROTOCOL.md#rust-account-bridge",
-          "docs/evidence/rust-service/account-bridge.json"
+          "docs/evidence/rust-service/account-bridge.json",
+          "docs/evidence/rust-service/account-serving.json",
+          "docs/PROTOCOL.md#rust-account-serving"
         ]
       },
       "coverage": {
@@ -532,7 +534,8 @@
               "docs/PROTOCOL.md#rust-two-lobby",
               "docs/PROTOCOL.md#rust-fixed-room",
               "docs/PROTOCOL.md#rust-m2-acceptance",
-              "docs/PROTOCOL.md#rust-four-startup"
+              "docs/PROTOCOL.md#rust-four-startup",
+              "docs/PROTOCOL.md#rust-account-serving"
             ]
           },
           "windows_original": {
@@ -569,7 +572,9 @@
             "docs/PROTOCOL.md#rust-four-startup",
             "docs/PROTOCOL.md#rust-account-bridge",
             "rust/crates/kr-service/src/account_bridge.rs",
-            "rust/crates/kr-service/src/account_bridge/wire.rs"
+            "rust/crates/kr-service/src/account_bridge/wire.rs",
+            "rust/crates/kr-service/src/account_serving.rs",
+            "docs/PROTOCOL.md#rust-account-serving"
           ],
           "delivery": "via_pr"
         },
@@ -585,7 +590,8 @@
             "docs/PROTOCOL.md#rust-account-backend",
             "rust/crates/kr-service/src/accounts.rs",
             "rust/crates/kr-service/src/bin/kr-admin.rs",
-            "docs/PROTOCOL.md#rust-account-bridge"
+            "docs/PROTOCOL.md#rust-account-bridge",
+            "docs/PROTOCOL.md#rust-account-serving"
           ]
         },
         "gate": {

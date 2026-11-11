@@ -29,6 +29,14 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP254: hai KR thật đã đăng nhập vào sảnh bằng hai account SQLite trên adapter Rust.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-account-serving), [raw/hash](docs/evidence/rust-service/README.md#cp254).
+Native auth137/own291128/ID-name-echo/render/argv đều đối chiếu,18 reply TCP khớp;100raw/41,852s/cleanup0.
+82 Rust tests,9ca thư viện/8DB,16ca TCP và11guard startup đạt. Hai profile cố định, chưa room/game hoặc full M5.
+Next: native negative/lifecycle theo PLAN; M4 Free vẫn blocked. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP253: M5 đã có thư viện nối session/account vào admission KR; chưa nối listener.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-account-bridge), [raw/hash](docs/evidence/rust-service/README.md#cp253).
 Session backend cấp token launcher riêng, dùng một lần; chuyển login → redirect → channel theo owner/generation,
@@ -39,7 +47,6 @@ CP252 đã merge [PR324](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 PLAN tiếp adapter listener/profile/launcher nhỏ rồi native hai tài khoản, failure/ownership/lifecycle; không làm lại DB/KDF.
 M4 vẫn thiếu Free 1v7 native và dừng retry tới khi có observable mới. Audit kế CP256. **Internet thật chưa kiểm**.
 
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP252: Rust đã kiểm native visitor thứ chín bị từ chối vào phòng đầy; M4 vẫn mở.**
 [Contract và giới hạn](docs/PROTOCOL.md#rust-ninth-admission), [raw/hash](docs/evidence/rust-service/README.md#cp252).

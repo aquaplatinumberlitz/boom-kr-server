@@ -308,3 +308,14 @@ qua example Rust. Kiểm integrity/FK/schema, absence plaintext password, source
 Không tạo oracle từ encoder; oracle phải có pin raw và expected từ native evidence độc lập.
 [Contract](../docs/PROTOCOL.md#rust-account-bridge), [recipe/hash](../docs/evidence/rust-service/README.md#cp253).
 Đây là kiểm library/backend và replay ngoại tuyến, chưa chạy native KR với account backend hoặc đóng M5.
+
+## Account lobby opt-in CP254
+
+[Contract/limits](../docs/PROTOCOL.md#rust-account-serving), [metadata](../docs/evidence/rust-service/account-serving.json).
+Rust `account_admission` dùng DB/private Unix socket và hai known zero-profile, session64→frontend32 riêng, không password trênTCP.
+82Rust/9library8DB3retainednativebody/16TCP/11startupguards; nativeR5 có haiKR/Wine/copy4b/137-291-render/argv/18exactTCP.
+Raw ở `local/research/codex/rust-account-native-r5/native-pair`, 100file/41,852s/cleanup0 và native-verification/UIreview ởparent.
+PrivateTMPFS DB/log/raw/exporthash, khôngBtrfsdurabilityfix. NativeR2/R3/R4fail và preparationfail giữ nguồn/raw.
+`tools/test_rust_account_serving.py --binary <kr-service> --admin <kr-admin> --config <two-profile> --out <new-private-dir>`
+kiểm synthetic TCP, khôngnativeoracle. Accountmode reject room/battle/unknownprofile; native negative/lifecycle/fullM5 còn thiếu.
+Python/diagnostic rollback giữ. Internet thật chưa kiểm.
