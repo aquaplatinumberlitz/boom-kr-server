@@ -33,7 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP270: R1g đã kiểm trần admission và allowlist độc lập số profile.**
+**CP271: sửa kỳ vọng test tranh chấp SQLite khi bàn giao R1g.**
+CI của PR348 đã phát hiện test chỉ chấp nhận `ActiveSession`, trong khi backend có đường trả `Busy` hữu hạn.
+Test giữ yêu cầu chỉ một grant, chấp nhận đúng hai lỗi đó, kiểm lại `ActiveSession` sau tranh chấp và ép khóa SQLite
+để kiểm `Busy`/phục hồi. Không đổi runtime; [correction và bằng chứng](docs/evidence/rust-service/r1g-ci-correction.json).
+
+R1g CP270 đã kiểm trần admission và allowlist độc lập số profile.
 [Contract/giới hạn](docs/PROTOCOL.md#rust-r1g-admission), [evidence](docs/evidence/rust-service/r1g-admission.json).
 Cấu hình cho phép1–1024transport và1–256entry allowlist; vẫn kiểm source/lease/profile riêng. Giá trị cấu hình cũ giữ nguyên.
 105Rust/fmt/clippy/lockedbuild đạt;306TCPlegacy/3169+24frame khớp CP269;10ca admission đạt, gồm65socket giữ đồng thời,

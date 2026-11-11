@@ -9909,3 +9909,11 @@ Lượt hồi quy đầu chạy sai cwd: binaryR1g nhưng snapshotrepository là
 đến seal; ownedPID cleanup đạt. Không sửa lượt cũ hoặc lấy reportpass của nó thay bằng chứng source đúng.
 R1f PR347 đã merge; fullR1 vẫn cần native2/4/8/account. Relay/currenttwoNAT, M5generalprofile/nativeDBqueuefault,
 M7multiroom, key/portreuse/restart và workload50/8roomM8 chưa chứng nhận. K6c/K7/N1 scope cũ giữ nguyên.
+
+**Correction CI CP271:** test race hai kết nối vẫn phải có đúng một grant; bên thua được trả `ActiveSession` hoặc
+`Busy` theo backend hiện hành (SQLite writer wait 250ms; KDF cũng có budget). Log CI cũ chỉ chứng minh assertion
+đếm `ActiveSession` thất bại sau assertion một grant đã đạt, không in lỗi thực của bên thua; không gán chắc nguyên
+nhân SQLite cho run đó. Test mới chỉ in tên outcome/error đã redacted, retry sau hai thread phải là `ActiveSession`.
+Một connection khác giữ `BEGIN IMMEDIATE` ép `Busy` hữu hạn (<2s); rollback rồi retry phải là `ActiveSession`.
+Kiểm một session/token hash và không plaintext vẫn giữ. Đây là sửa test, không đổi timeout, auth policy hoặc runtime;
+không thay CP270/raw cũ hay chứng nhận native DB-queue fault của M5. [Metadata](evidence/rust-service/r1g-ci-correction.json).

@@ -106,6 +106,9 @@ Hai kết quả/reset/Start3 qua TCP không đủ chứng nhận peer movement. 
 key/consumer/apply và reply/rebinding/lifecycle nếu thiết kế chọn relay; chưa có proof cho server-source learning tự động.
 R1f CP269 đã đạt source/TCP shared-IP knownprofiles/LegacyDirectPlan; [giới hạn](PROTOCOL.md#rust-r1f-session-binding).
 [R1g CP270](PROTOCOL.md#rust-r1g-admission) đã kiểm source/TCP admission/allowlist; chưa tải50 hoặc native candidate.
+CP271 sửa test race login của CI, giữ runtime và yêu cầu một grant; `Busy` hữu hạn được kiểm bằng khóa SQLite
+có kiểm soát và retry sau rollback. Không có log lỗi bên thua ở CI cũ để khẳng định nguyên nhân; không coi ca
+unit này là native DB-queue fault của M5. [Correction](evidence/rust-service/r1g-ci-correction.json).
 Native cuối R1 2/4/8/account và relay/twoNAT vẫn còn lại. M5generalprofile/nativeDBqueuefault,
 field51policy integration/projector WIP không bị coi đã xong. Không suy lớp CGNAT hoặc mọiISP từ ca này; hạ tầng local.
 

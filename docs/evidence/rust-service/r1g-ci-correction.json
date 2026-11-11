@@ -1,0 +1,82 @@
+{
+  "schema": "kre-rust-r1g-ci-correction-v1",
+  "checkpoint": "CP271",
+  "recorded_utc": "2026-11-11T23:05:23.401382+00:00",
+  "baseline": "f4894dffc11d3315198b1346f1e927dd76deac6c",
+  "source": "design",
+  "status": "design",
+  "canonical": "docs/PROTOCOL.md#rust-r1g-admission",
+  "plan": "docs/PLAN.md#dashboard",
+  "correction_to": "CP270 delivery CI, not its sealed local results",
+  "failed_ci": {
+    "run": 43115428477,
+    "head": "f4894dffc11d3315198b1346f1e927dd76deac6c",
+    "check": "two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest",
+    "observed": "Exactly-one-grant assertion passed; following ActiveSession-only loser assertion failed. Original loser error not printed; cause unproven."
+  },
+  "change": {
+    "path": "rust/crates/kr-service/src/accounts/tests.rs",
+    "sha256": "1efc122aba3061a85b23b33d4c47925bd06439cc0b5254665a437e56d84ce3c3",
+    "scope": "cfg(test) only. Runtime/timeout/policy unchanged.",
+    "assertions": [
+      "Exactly one successful grant; loser only ActiveSession or Busy; names redacted.",
+      "Settled retry ActiveSession; BEGIN IMMEDIATE forces Busy within 2s; ROLLBACK then ActiveSession.",
+      "Single stored session/token hash/no plaintext checks retained."
+    ]
+  },
+  "verification": {
+    "Rust": 105,
+    "fmt": "pass",
+    "clippy": "pass",
+    "native": "not_run"
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/cp270-ci-docs-failure.txt",
+      "bytes": 19569,
+      "sha256": "8b10a6564e9c2709d423eb7be9bf7bbbe35fbff684260575327bd552b1e6da82"
+    },
+    {
+      "path": "local/research/codex/cp271-ci-repair-r1/source-pin.json",
+      "bytes": 276,
+      "sha256": "9027a2e4003ef8bcf128e4ef62e62540731e455f07d4c8ebc382f1953a04cec6"
+    },
+    {
+      "path": "local/research/codex/cp271-ci-repair-r1/accounts-tests.rs",
+      "bytes": 24425,
+      "sha256": "1efc122aba3061a85b23b33d4c47925bd06439cc0b5254665a437e56d84ce3c3"
+    },
+    {
+      "path": "local/research/codex/cp271-ci-repair-r1/test-only.patch",
+      "bytes": 2243,
+      "sha256": "f09b5e3e373a0f9417aaba10df994410be31aa703918940b66290d15fbeefdf6"
+    },
+    {
+      "path": "local/research/codex/cp271-ci-repair-r1/fmt.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/research/codex/cp271-ci-repair-r1/clippy.txt",
+      "bytes": 166,
+      "sha256": "4cccdf8187e4fc3c834d8761a2724945e8260e87431ca84eb8988560c6a5b36d"
+    },
+    {
+      "path": "local/research/codex/cp271-ci-repair-r1/tests.txt",
+      "bytes": 11867,
+      "sha256": "cbe94a74cd337eaaac4bf9862c8360476695d343fb1185aace9bee45e0486bff"
+    },
+    {
+      "path": "local/research/codex/cp271-ci-repair-r1/kr-service-unit-tests",
+      "bytes": 64878416,
+      "sha256": "dc630ca630ca01c3946a35575bb9fafe5125e918d911b5b7e88b962c40700a4b"
+    }
+  ],
+  "limits": [
+    "CI failure cause not inferred from missing loser diagnostics.",
+    "Unit/source evidence only; not native M5 DB-queue fault or KR compatibility.",
+    "CP270/AUD087 and sealed raw unchanged; prior TCP/frame evidence retained because only cfg(test) changed.",
+    "Full R1/native 2/4/8/account, relay/two-NAT, general M5 profiles, M7 and M8 remain open.",
+    "Private infrastructure stays ignored local."
+  ]
+}

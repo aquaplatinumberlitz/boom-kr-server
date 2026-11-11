@@ -8,7 +8,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 **Mỗi phiên chỉ cần đọc mục này.** Phần còn lại của file là tham chiếu (acceptance, lịch sử), tra theo anchor khi cần.
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP270 / AUD087**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP271 / AUD087**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Dài hạn: gameplay đầy đủ.
@@ -27,7 +27,9 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 
 **Thứ tự việc:**
 
-1. Hoàn tất PR R1g:105Rust/306TCPlegacy/3169+24frameCP269,10admission; chưa native hoặc50người chơi.
+1. Hoàn tất PR348 R1g sau correction CP271 cho test tranh chấp SQLite: chỉ một grant, loser `ActiveSession` hoặc
+   `Busy`, settled retry `ActiveSession`, khóa DB có kiểm soát/rollback. Runtime không đổi; cần CI và checker trên
+   exact head trước merge. CP270 giữ 105Rust/306TCPlegacy/3169+24frameCP269,10admission; chưa native hoặc50người chơi.
 2. R1f đã merge PR347; nguồn/test R1g đã seal. Lượt sai cwd trước giữ raw và loại khỏi chứng nhận source.
 3. **[RUST-N1R relay opt-in](#rust-relay)**: implementation và native riêng sau R1f/R1g; không gộp tính năng relay
    vào PR refactor. N1b đã dùng đủ2lượt; đây là nghiệm thu implementation mới, không retry baseline N1b.
