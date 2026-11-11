@@ -22,6 +22,7 @@ pub mod room_registry;
 mod room_wire;
 mod rules;
 mod terrain;
+pub mod udp_relay;
 
 use kr_wire::{HEADER_LEN, Receiver, decode, encode};
 use serde::Deserialize;
