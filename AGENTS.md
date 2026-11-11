@@ -21,6 +21,12 @@ Bắt đầu M0→M1 ở `rust/` cùng repo, hai crate kr-wire/kr-service theo [
 Không chờ fullauth/generalroom hoặc mở thêm broadRE trước codec/connection đã đủ contract; chỉ RE discrepancy/gap
 chặn implementation/nghiệm thu. Không nhập scope/wire/authority của boom-rs hoặc triển khai giả thuyết như confirmed.
 
+[Đích bàn giao giai đoạn 1 đã chốt 11/11](docs/evidence/owner-directives/delivery-target.json): dịch vụ nội bộ bền vững,
+người chơi qua Internet thật, khoảng 50 người đồng thời, chế độ thường với nhiều map và item phổ biến; định hướng dài hạn
+vẫn là gameplay đầy đủ. [PLAN](docs/PLAN.md#delivery-target) giữ đường cắt phạm vi, thứ tự và các mốc RUST-N1/R1/G1.
+Lát cắt mới không thêm cờ theo sức chứa, alias theo identity hay nhánh `capacity() == N` vào lõi phòng; luật mới đặt
+trong `RoomRules` (`rust/crates/kr-service/src/rules.rs`).
+
 Mọi code/docs/tool mới thuộc repo này: `rust/`, `server/`, `tools/`, `docs/`. Không tiếp tục ghi bản tương ứng
 vào boom-rs, boom-re hoặc boomkr-re. Không nhập nguyên code legacy; dùng làm reference có provenance.
 

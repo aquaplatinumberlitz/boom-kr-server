@@ -92,22 +92,51 @@ KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma tr
 
 ## Module và dòng dữ liệu
 
-Cấu trúc dưới **đề xuất**, chưa tạo:
+Trạng thái cấu trúc dưới đây đối chiếu với code tại `78daa71` (11/11). Bản "đề xuất" ban đầu của tài liệu này chưa
+được hiện thực nguyên dạng; phần lệch được ghi rõ để [RUST-R1](PLAN.md#rust-r1) xử lý, không coi là đã đạt.
+
+**Cấu trúc thực tế:**
 
     rust/Cargo.toml, Cargo.lock, rust-toolchain.toml
-    rust/crates/kr-wire/src/
-      primitives, frame, codec, sequence, kr00967/{bootstrap,login,room,battle}
+    rust/crates/kr-wire/src/lib.rs
+      frame, crypt/CRC, sequence, Receiver, số nguyên có độ rộng; chưa có module packet theo opcode
+    rust/crates/kr-wire/tests/native_vectors.rs
     rust/crates/kr-service/src/
-      main, config, transport/{tcp,udp_endpoints}, connection, session
-      channel, lobby, room, round, policies/{bomb,item,terrain,life,result}
-      application/{accounts,profiles,inventory,rewards}
-      store/{sqlite,migrations}, admin, telemetry
-    rust/crates/kr-wire/tests/{native_vectors,stream}
-    rust/crates/kr-service/tests/{lifecycle,differential,store_faults}
-    server/     Python giữ nguyên
-    tools/      Wine/RE/probe/selectivecheckpoint/differential drivers
-    docs/       contract và nguồn chuẩn chung
-    local/      copy/raw/snapshots/DB/trace, không Git
+      main, lib        config, listener, vòng đời connection, bootstrap/WCP/login (chưa tách module)
+      binding          lease transport theo IP nguồn (diagnostic)
+      lobby            luồng login → channel → sảnh
+      room             model phòng: membership, phase, vòng
+      rules            luật phòng theo profile (R1a)
+      room_io          một phòng toàn cục, hàng đợi recipient, xử lý opcode, timer
+      room_wire        vá field trên template packet đã pin
+      bombs, pickups, terrain, life, four_results     chính sách trận
+      accounts, account_worker, account_bridge, account_serving     backend account và cầu nối KR
+      logging
+    rust/crates/kr-service/migrations/     schema SQLite
+    server/, tools/, docs/, local/          như cũ
+
+**Cấu trúc đích sau R1** (tên module là định hướng, chốt khi làm từng bước):
+
+    kr-wire/src/kr00967/{bootstrap,login,room,battle}   header chuẩn đã pin + builder/parser body theo opcode
+    kr-service/src/
+      config, transport, connection, session            identity lấy từ session, không từ IP
+      lobby, registry                                   RoomId → phòng; listing dựng từ registry
+      room, rules, room_io                              mỗi phòng một RoomRules; không nhánh theo sức chứa
+      policies/{bomb,item,terrain,life,result}
+      application/{accounts,profiles,results}, store/{sqlite,migrations}, admin, telemetry
+
+| Khoảng lệch giữa thực tế và thiết kế | Hệ quả nếu để nguyên | Bước xử lý |
+|---|---|---|
+| Một phòng toàn cục thay cho mỗi phòng một owner | Không mở được nhiều phòng (M7) | R1e |
+| Identity là slot; chỉ identity 1 tạo được phòng; mỗi identity một fixture 106 | Account bất kỳ không vào phòng được | R1c |
+| Sáu cờ theo sức chứa; ba đường rời phòng; hai đường tính kết quả | Mỗi tính năng mới phải viết ba lần; terrain/item chưa chạy ở 4 và 8 người | R1a, R1b |
+| Header khung mượn từ fixture bất kỳ; body là template vá field | Packet phụ thuộc bộ fixture trong `local/`; khó thêm packet mới | R1d |
+| Nhận diện client theo IP nguồn; endpoint 153 dùng IP cấu hình | Hai người chung NAT trùng nhau; sai địa chỉ sau NAT | R1f, theo kết quả [RUST-N1](PLAN.md#rust-n1) |
+| Trần 64 kết nối, `allowed_peers` khớp số actor | Không đạt tải đích 50 người | R1g, kiểm tải ở M8 |
+| Chưa có `tests/{lifecycle,differential,store_faults}`; bộ TCP nằm ở `tools/test_rust_*.py` ngoài `cargo test` | Hồi quy phụ thuộc người chạy tay | M8, làm dần từ R1 |
+
+Mutex đồng bộ quanh phòng (`Arc<Mutex<Runtime>>`, không giữ qua await) đáp ứng yêu cầu "owner phòng xử lý tuần tự";
+R1 giữ cách này và chỉ đổi từ một phòng sang registry, không chuyển sang actor nếu chưa có số đo cho thấy cần.
 
 kr-wire không Tokio/DB/domain; parse trả lỗi+bounds, không tự authorizecommand. kr-service có library
 cho deterministiclifecycle và binaryLinux. Chưa cần kr-game/kr-storecrate, engine/render/clientRustmới

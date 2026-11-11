@@ -29,6 +29,10 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**Đích bàn giao giai đoạn 1 (chốt 11/11):** dịch vụ nội bộ bền vững, người chơi qua Internet thật, khoảng 50 người đồng
+thời, chế độ thường với nhiều map và item phổ biến. Dài hạn vẫn hướng tới gameplay đầy đủ.
+[Đích, việc còn lại và thứ tự](docs/PLAN.md#delivery-target).
+
 **CP256: fresh login account trên KR thật và chặn replay request cũ đã đạt; M5 vẫn mở.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-account-fresh-login), [raw/hash](docs/evidence/rust-service/README.md#cp256).
 A mới/process-session-frontend mới vào đúng KRLocal, B giữ phiên; hai request native cũ phát lại bị từ chối, giữ sảnh8s.

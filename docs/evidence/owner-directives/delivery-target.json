@@ -1,0 +1,24 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-11T08:25:18+00:00",
+  "authority": "project_owner",
+  "source": "Bốn câu trả lời của chủ dự án trong phiên Claude Code ngày 2026-11-11, sau lượt review PLAN/kiến trúc Rust",
+  "decision": "Đích bàn giao GIAI ĐOẠN 1 của server Rust là mức 'Dịch vụ nội bộ bền vững' trong PLAN, phục vụ người chơi qua Internet thật với khoảng vài chục người đồng thời, gameplay chế độ thường với nhiều map và các item phổ biến; không có hạn chót cứng. Định hướng dài hạn vẫn là gameplay đầy đủ của game gốc; phạm vi giai đoạn 1 được chọn vì giới hạn thời gian và tài nguyên, không phải vì các phần còn lại bị loại bỏ.",
+  "answers": {
+    "delivery_tier": "Dịch vụ nội bộ bền vững",
+    "players": "Internet, vài chục người (khoảng 10–50 đồng thời, vài phòng cùng lúc)",
+    "gameplay": "Nhiều map + item phổ biến: chế độ thường, một số map chọn lọc, kim/cứu và các nhóm item hay gặp, chọn nhân vật, chọn đội; chưa cần cửa hàng hay cấp độ",
+    "deadline": "Không có hạn cứng",
+    "long_term": "Bổ sung cùng ngày của chủ dự án: sau này khi có thời gian vẫn muốn full gameplay, không dừng ở lựa chọn hiện tại; hiện chọn 'nhiều map + item phổ biến' vì giới hạn thời gian và tài nguyên."
+  },
+  "consequences": [
+    "Internet thật không còn là backlog tách rời đối với đích bàn giao: cần một gate riêng (RUST-N1) trước khi tuyên bố đạt đích. K6c/K7 đã nghiệm thu bằng WAN giả lập giữ nguyên.",
+    "Phòng tổng quát (M7), vận hành (M8) và lưu kết quả bền vững nằm trong đích giai đoạn 1; cửa hàng, tiền tệ, cấp độ/EXP, mode phụ, guild, chat/bạn bè thuộc giai đoạn sau, không bị loại bỏ.",
+    "Mục tiêu tải để nghiệm thu: 50 người chơi đồng thời, tối thiểu 8 phòng độc lập.",
+    "PLAN ghi cỡ việc tương đối theo milestone để theo dõi; không cam kết ngày.",
+    "Thiết kế giai đoạn 1 không được chặn đường mở rộng: luật phòng, map, item và mode phải là dữ liệu/chính sách có thể thêm, schema DB giữ chỗ cho inventory/ledger đã thiết kế, không hardcode giả định 'chỉ chế độ thường'."
+  ],
+  "plan": "docs/PLAN.md#delivery-target",
+  "scope": "Chỉ chốt đích và đường cắt phạm vi. Không tự đóng gate hay milestone nào; không đổi contract/evidence đã có; Wine/LAN/WAN giả lập vẫn được chấp nhận cho các gate cũ.",
+  "owner": "Chủ dự án quyết định; Claude ghi lại và cập nhật PLAN/kiến trúc trên nhánh plan/delivery-target-room-refactor"
+}
