@@ -29,6 +29,18 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP251: Rust có fixed1v7 và native negative Manner lệch đội; M4 vẫn mở.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-eight-teams), [raw/hash](docs/evidence/rust-service/README.md#cp251).
+Tám KR thật/Wine/copy8d: native8người/2đội/selector1→nhánh lệch đội→return7, không104/Battle;
+90raw/127,113s/cleanup0/1.513TCP/266reply. Free1v7 đã có code/TCP, nhưng hai lượt native dừng sau17 trướcphòng
+(copy4bD/copy8dG); chưa có Freehaioutcomes/selector0nativepersist. Giữ failedraw, không retry vôhạn.
+71Rusttests/35eightTCP/8prebind/32fourTCP đạt. Python team reference CP213 đã merge [PR322](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/322).
+CP250 merge [PR321](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/321)/`de84217`; Manner4v4 haioutcomes/Start3 giữscope đãđạt.
+Tiếp native9admissionbridge/consumer độc lập; Free startup chỉ mở lại khi có observable mới. M5backend đã có/bridge riêng;
+AUD071qua248/audit kếCP252. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP250: tám client KR thật đã chơi qua hai kết quả 4v4 và Start3 trên Rust.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-eight-baseline), [raw/hash](docs/evidence/rust-service/README.md#cp250).
 Cùng8/Wine/Manner1/32TCP: loading8,56chiều movement,stat/bom8owner,7peerlife/native1751082-inner1072/1803,
@@ -40,7 +52,6 @@ CP249 merge [PR320](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/3
 
 Python reference cho fixed4v4/1v7 và selector được giao riêng từ WIP CP213, giữ nguyên source đã đo: [provenance/giới hạn](docs/evidence/eight-player/team-code-delivery.json). Không phải nghiệm thu Rust variants.
 
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP249: Rust đã đưa ba survivor về phòng sau guest/host EOF khi bom còn chờ.**
 [Contract và giới hạn](docs/PROTOCOL.md#rust-four-abort), [raw/hash](docs/evidence/rust-service/README.md#cp249).

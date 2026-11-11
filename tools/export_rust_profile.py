@@ -329,6 +329,7 @@ def main():
     p.add_argument('--four-abort-room', action='store_true', help='Opt-in scoped active four-member EOF unranked return; requires four-results')
     p.add_argument('--eight-startup-derived-dir', type=Path, help='Known fixed8 producer, separate from four startup inputs')
     p.add_argument('--eight-startup-peer', action='append', default=[])
+    p.add_argument('--eight-team-layout', choices=['4v4', '1v7'], help='Fixed CP213 operator layout; requires eight-battle, not interactive team selection')
     p.add_argument('--eight-battle', action='store_true', help='Opt-in CP209/210 fixed8 bombs/life/results; no items/terrain/unrankedabort')
     a = p.parse_args()
     if not 1 <= len(a.port) <= 32 or len(set(a.port)) != len(a.port) or any(not 1 <= n <= 65535 for n in a.port):
@@ -363,6 +364,10 @@ def main():
         if not a.eight_startup_derived_dir:
             p.error('eight battle requires eight-startup profile')
         config['diagnostic_two_lobby']['fixed_room']['eight_battle'] = True
+    if a.eight_team_layout:
+        if not a.eight_battle:
+            p.error('eight-team-layout requires eight-battle')
+        config['diagnostic_two_lobby']['fixed_room']['eight_team_layout'] = a.eight_team_layout
     if a.four_owner_bombs:
         if not all(four):
             p.error('four-owner bombs requires the explicit four-startup profile')

@@ -494,3 +494,31 @@ Không14/56UDPwirecapture/nativeAPI-keyapplyclaim;56nativecurrentprogress/fullTC
 Allnativepositive/private256MiBtmpfs evidence sink/export-sizeSHA/unmount/renameaftercleanup. Btrfsflushfaults còn
 unknown, TMPFS không durabilityfix/load/production. AUD071qua248/next252/#14-285OPEN/8WIPexact.
 Internet thật chưa kiểm.
+
+
+<a id="cp251"></a>
+## CP251 — fixed1v7 port, native8 Mannernegative; Free startup blocker giữ nguyên
+
+[Contract/giới hạn](../../PROTOCOL.md#rust-eight-teams), [metadata/hash](eight-teams.json), [PLAN](../../PLAN.md#current-order).
+Baseline `83abe4b`/PR322 giao nguyên8Pythonteamfiles từ CP213; Rust binary SHA`521012fa…` dùng cho mọi run bên dưới.
+Nguồn/source-first và bodyhash CP213 ở `local/research/codex/rust-teams-source-r1/`, `rust-team-rank-oracles.json`;
+không phân tích hàm native mới hoặc port VN wire.
+
+- `rust-eight-teams-manner-negative-r1/`: 90raw/127,113194352s/runSHA`33acefb4972b7a8773849f87b3da66a030627cd8505386b74ff99f23e8309d29`,
+  32TCP/1.513records/266reply, actual8/copy8d/Manner1v7/nativecount8-cap8-2teams/balancebranch/return7/no104,
+  3shold/cleanup0. `negative-verification.json` + `negative-controls.json` giữ independentraw/native joins.
+- `rust-eight-teams-free-r1/`: copy4bD post17beforeRoom,66raw/52,509084929s/runSHA`d21dba1b11d8f2a3fddba412cc15d376ba6647f6d01f8f24791bc38885ff4aff`,exit1/cleanup0.
+- `rust-eight-teams-free-guard-r2/`: alternate8dG post17beforeRoom,67raw/60,841184141s/runSHA`e8d37eb8aefa8765d8472c73a322a9d03a9c84b3dedda6abccbd7539ab9dca42`,exit1/cleanup0.
+  Không nhận Freegameplay hoặc causalcopyrepair; không retry khi chưa có observable mới. OldCP250HGunknown giữ riêng.
+
+Recipe mới `prepare_rust_team_native.py`/`prepare_rust_team_negative.py`/`prepare_rust_team_free_guard.py` tạo thư mục
+mới, source/config/preflight frozen, known8prefixes/newprocesses/private8netns+bridge/nooutside/Wine10.0-20260425.
+Run→ownedcleanup→TMPFSexportallsizeSHA→unmount→`seal_rust_m1_r3.py`; mọi run seal trước đổi config/source.
+Nativecopy4b và8d SHA đầy đủ ở metadata/inputpins; không clientpatch mới. Mode/count/startreturn dùng probe CP147162163
+đã có. File freezer/failedinput/verifier source đều giữ ở mỗi run, không sửa complete/runtime cũ.
+
+71Rusttests/35eightTCP/8prebind/32fourTCP, fmt/clippy/lockedbuild đạt. Kernel raw ở
+`rust-eight-teams-kernel-{free,manner,negative}-r2/`, storage/exporthash giữ riêng; R1test UnboundLocalError/93raw
+và guardchecker wrongexpectedreason giữ ở source-first/failure reports. UDP supervision fakefaultcontrol đạt,
+negative actualcapturer không lỗi nhưng khôngBattleUDP; chưa có14Aedges/full56wire/nativeAPIkeyapplyproof mới.
+AUD071qua248/audit kếCP252; reviewwaived/Codexselfcheck/PRexacthead, không gateclosure. Internet thật chưa kiểm.

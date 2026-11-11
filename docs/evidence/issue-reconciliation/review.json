@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP250",
+  "as_of": "CP251",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -873,8 +873,8 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "M3CP242scoped/M5backendmerged;CP249fourEOFPR320merged;CP250native8Manner4v4/mesh56/statbom8/life7peer/opposite-rankresetStart3/156raw/69tests/16eightTCP/2-4regression123cases.",
-      "remaining": "M4fixedFree1v7/selector-Mannernegative/native9admissionbridge;M5nativeKRbridge/transportownership;M6durability/M7rooms/M8ops. Btrfsflushunknown/tmpfsnotdurabilityfix. Nativepost17EOFcausalunknown/priorargvpositive. CP250UDPcapturepartial3frames/fourIPthreadguard;native56progress/fullTCPindependent,fixinmeaningfulvariantcontrol.",
+      "known": "CP250Rust8Manner4v4twooutcomes/reset-Start3 mergedPR321/de84217; PythonCP213teamreference deliveredbyteexactPR322/83abe4b. CP251Rustfixed1v7/TCP/native8Manner1v7negative8d,71Rusttests35eightTCP8prebind32fourTCP; auditnext252.",
+      "remaining": "M4OPEN: Free1v7twooutcomes-selector0nativeblockedby4bD/8dGpost17beforeRoom/no newobservable/no retry; native9admissionbridge-consumer independentnext. M5backendpresent/nativeownershipbridge separate; no fullauth/production; Internet thật chưa kiểm.",
       "next_test": "PLANfixedteamvariantsCP213port/native/separatedeliveryfromWIP;then native9admissionbridge/consumer/M4acceptance. No duplicate8Mannerbaseline/fourpositive;M5bridgeindependent/AUD071next252.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
       "reason": "Same8twooppositeoutcomes/nativefullrankresetStart3/mesh-stats-bom8/24UIimagesverified, actualDcollateralhonest. TMPFS/failedruns/verifiercorrections retained;no M4-auth-epicgateclosure.",
@@ -1006,6 +1006,6 @@
       "successors": []
     }
   ],
-  "as_of_utc": "2026-11-09T23:43:49.010190+00:00",
+  "as_of_utc": "2026-11-11T03:01:53.041662+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

@@ -287,3 +287,8 @@ không đổi service/timeout. Run lỗi Btrfs giữ, explicittmpfs controls có
 CP250: `export_rust_profile.py` có fixed8producer riêng và `--eight-battle`; `test_rust_eight_room.py` kiểm16ca TCP
 startup8/ACK8/peer205/bom8-statpowers/allrecipientlife7/rank8-reset-Start3/EOFfences. Inputs tự sinh khôngnativeoracle.
 [Nativecontract/giới hạn](../docs/PROTOCOL.md#rust-eight-baseline); notnative9admission/fullM4/auth/production.
+
+
+CP251: `test_rust_eight_room.py --selector 0|1` kiểm actualTCP với fixed `eight_team_layout` trong config;
+`--manner-negative` chỉ cho1v7/selector1, kiểm hai104/noBattlewire/transportalive-Back86. Exporter nhận
+`--eight-team-layout 4v4|1v7` khi có `--eight-battle`. [Native/failedruns/giới hạn](../docs/PROTOCOL.md#rust-eight-teams).

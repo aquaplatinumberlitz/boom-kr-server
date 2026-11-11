@@ -369,3 +369,10 @@ R1Dcollateraldead được giữ, winningteamrank1; không deterministicmovement
 Native/tmpfsrawexporthash, Btrfsloggingdurabilityunknown. M4cònfixedFree1v7/selector/unbalancednegative/native9admission;
 không fullM4/8EOFreturn/fullauth. Rollback matchedCP249binary+profilekhôngeightflag; không hot-swap activeconnections.
 Internet thật chưa kiểm.
+
+
+CP251: fixed-room config nhận `eight_team_layout: "4v4"|"1v7"` chỉ với `eight_battle`; exporter có
+`--eight-team-layout` tương ứng. Default4v4 giữ. 106/110/121/rank cùng theo layout; Manner lệch đội reject104
+trước roundallocation, không phát errorwire tự đoán. [Contract/nativecopy8d/Freeblocked](../docs/PROTOCOL.md#rust-eight-teams).
+Đã kiểm TCP Free1v7/Manner4v4 và Manner1v7 `--selector 1 --manner-negative` trong `test_rust_eight_room.py`;
+native Free2outcomes còn thiếu, không nhận fullM4/auth. Python team reference đã giao riêng PR322. Internet thật chưa kiểm.

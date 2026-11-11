@@ -9123,3 +9123,39 @@ M4 còn RustfixedFree1v7/selectorpersistence/Mannerunbalancednegative vànative9
 đối chiếu acceptance; unknownIP/socketreject không đủ9thnativefullroom. Không interactiveC2Steamchange,
 generalrooms/native8EOF/fullitems/rescue/needle/auth/resume/fullM4. M5backend có sẵn/nativebridge riêng;
 AUD071through248/next252/reviewwaived/checker không đóng gate. Internet thật chưa kiểm.
+
+
+<a id="rust-eight-teams"></a>
+### Rust fixed1v7 và native Manner lệch đội — CP251, M4 còn mở
+
+[Metadata/hash/giới hạn](evidence/rust-service/eight-teams.json), [recipe/raw](evidence/rust-service/README.md#cp251),
+[thứ tự](PLAN.md#current-order). Tái dùng CP213 Free1v7/Manner/selector và CP250 Rust8baseline; Python source
+CP213 đã giao nguyên bytes qua PR322/`83abe4b`, không nhập WIP. Không RE lại codec/rows/rank/guard.
+
+`eight_team_layout="4v4"|"1v7"` chỉ hợp lệ khi opt-in `eight_battle`/8actor. Không khai báo giữ alternating4v4.
+Room giữ vector đội bất biến khi có member; slot/profile106/110, measured121 teambyte mỗi row26 và outcome/rank
+cùng dùng vector này. Rank1v7 khớp hai bodyhash native-accepted CP213 (wire regression, không tự là nativeRustoracle).
+Chỉ hỗ trợ fixed operatorlayout, không C2S đổi đội. Manner1v7 synthetic104 được no-op reject trướcbegin/round/key/
+pickups/queue publication, transport vẫn sống và Back86 dùng được; `start_rejection` ghi lý do. Free0 cho đội lệch;
+report-derivedlife/drain/unique7writes/freshwitness/settle8/fuse6/zeroeconomy và cursorfences giữ nguyên.
+
+**Native confirmed hẹp:** cùng8KR00967/Wine10.0-20260425/**alternatecopy8d7194…**, 32TCP/64native106/errors0,
+8auth-own291/render/ownslot và64actual106teamfields1v7; actualUI Manner1/7Ready/Start→native count8/cap8/2teams/
+selector1/balancebranch/return7; hold3s không actual104/99/Battlewire/clocks. 90raw/127,113194352s/cleanup0,
+1.513TCP/266exactreplies/fulltuple-seq-CRC-SHA. Không gọi negative này là copy4b hoặc bằng chứng sửa startup.
+Copy8d là guardempty-only đã đo trước đây; run này không đo guardbranchcoverage và không có causalfixclaim.
+CP250 copy4b Manner4v4 hai oppositeoutcomes/reset/Start3 được tái sử dụng, không chạy lại.
+
+**Free native còn thiếu:** hai run mới dừng trướcRoom, copy4bD post17 (66raw/52,509s), alternate8dG post17
+(67raw/60,841s); giữ runerror/sourcefrozen/cleanup0. A–C hoặc A–F nativeauth/profile/render dương tính trước lỗi,
+không native Freegameplay/selector0persist. Chưa rõ nguyên nhân cùng family CP250H/G; không suy Rustteamguard sai
+hoặc copy8d sửa SDK/JSON. Sau hai lượt, không retry startup khi chưa có observable mới; PLAN chuyển native9gap độc lập.
+
+71workspace tests/35eightTCP/8prebind/32normalfourTCP đạt; malformedlayout/wrongcount/flag combos từ chối trước bind,
+1v7 rank từ CP213 raw và all-seven-deaths/currentwitness/roster-drift được kiểm riêng. HarnessR1 UnboundLocalError
+trướcRoom giữ93raw/PIDgone; correctedr2 chỉ sửa testcontainer mutation. GuardcheckerR1 sai expectedreason giữstderr,
+r2 kiểm đúng `invalid diagnostic actor binding`, không đổi server. UDPcapturer nay nhậnIP2..9 và giữ workerexception,
+harness failclosed trong loop/sau stop nhưng cleanup/export vẫn chạy; injectedfaultcontrol đạt. Native negative không
+BattleUDP nên **chưa có14Aedges/full56wire/nativeAPI-keyapplyproof mới**; không hồi quy CP250partialcapture.
+TMPFS/exporthash không sửa Btrfs durability. Không native9fullroom/M4closure/M5ownership/fullgame/production;
+K6c WAN giả lập giữ đã đạt scoped, **Internet thật chưa kiểm**.
