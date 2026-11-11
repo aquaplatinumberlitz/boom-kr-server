@@ -1,0 +1,191 @@
+{
+  "id": "CP271",
+  "previous": "CP270",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T23:05:23.401382+00:00",
+  "context_commit": "f4894dffc11d3315198b1346f1e927dd76deac6c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/R1g delivery: repair the login-race test expectation without changing runtime behavior after red CI.",
+  "scope": "Test-only correction and full Rust regression; no new KR contract/native behavior or feature-group completion.",
+  "artifacts": [
+    {
+      "name": "kr-service-unit-tests",
+      "sha256": "dc630ca630ca01c3946a35575bb9fafe5125e918d911b5b7e88b962c40700a4b"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md#rust-r1g-admission",
+    "PR348 failed CI run43115428477 at f4894df",
+    "accounts::tests::two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest"
+  ],
+  "findings": [
+    {
+      "summary": "Original CI passed one-grant check but failed ActiveSession-only loser check; exact loser error was not logged. Correct test accepts only ActiveSession/Busy and checks settled retry plus deterministic SQLite lock/rollback.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1g-admission",
+      "evidence": [
+        "R1GCIC271-009",
+        "R1GCIC271-012",
+        "R1GCIC271-026",
+        "R1GCIC271-027"
+      ],
+      "limits": "CI failure cause not inferred from missing loser diagnostics.; Unit/source evidence only; not native M5 DB-queue fault or KR compatibility.; CP270/AUD087 and sealed raw unchanged; prior TCP/frame evidence retained because only cfg(test) changed.; Full R1/native 2/4/8/account, relay/two-NAT, general M5 profiles, M7 and M8 remain open.; Private infrastructure stays ignored local."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Original_PR348_CI_login_race_expectation",
+      "result": "fail",
+      "evidence": [
+        "R1GCIC271-009"
+      ],
+      "limits": "Preserved original log. Does not identify actual loser error."
+    },
+    {
+      "check": "105_Rust_fmt_clippy_test_only_correction",
+      "result": "pass",
+      "evidence": [
+        "R1GCIC271-015",
+        "R1GCIC271-013",
+        "R1GCIC271-026",
+        "R1GCIC271-027"
+      ],
+      "limits": "No production runtime source changed; no repeat TCP/native claimed."
+    },
+    {
+      "check": "Native_M5_DB_queue_fault_and_relay",
+      "result": "not_run",
+      "evidence": [
+        "R1GCIC271-007"
+      ],
+      "limits": "Unit lock test is not native DB-queue evidence."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP271-r1g-ci-correction.json",
+      "bytes": 6483,
+      "sha256": "4c779043bf5053b1a4daa3b1523a560b1bae7556e72868e71b597d8ab41f621b",
+      "count": 27
+    }
+  ],
+  "delta": {
+    "added": [
+      "Redacted outcomes; settled duplicate-login denial; deterministic bounded Busy and post-lock denial test."
+    ],
+    "corrected": [
+      "Test-only expectation excluded existing bounded Busy result. Original failed CI cause remains unproven; production behavior unchanged."
+    ],
+    "superseded": [
+      "CI-red delivery blocked pending new exact-head checks; CP270 historical local pass remains valid."
+    ]
+  },
+  "blockers": [
+    "CI failure cause not inferred from missing loser diagnostics.",
+    "Unit/source evidence only; not native M5 DB-queue fault or KR compatibility.",
+    "CP270/AUD087 and sealed raw unchanged; prior TCP/frame evidence retained because only cfg(test) changed.",
+    "Full R1/native 2/4/8/account, relay/two-NAT, general M5 profiles, M7 and M8 remain open.",
+    "Private infrastructure stays ignored local."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Finish PR348 exact-head local/history plus both CI checks; merge only green. Then N1R relay implementation/native and final R1 native per PLAN.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T23:05:23.401382+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo self-check of test-only correction, no independent review.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CI correction, source/test limits and delivery status; old records/raw unchanged."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "CI correction, source/test limits and delivery status; old records/raw unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CI correction, source/test limits and delivery status; old records/raw unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CI correction, source/test limits and delivery status; old records/raw unchanged."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CI correction, source/test limits and delivery status; old records/raw unchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CI correction, source/test limits and delivery status; old records/raw unchanged."
+    },
+    {
+      "path": "docs/evidence/rust-service/r1g-ci-correction.json",
+      "state": "updated",
+      "reason": "CI correction, source/test limits and delivery status; old records/raw unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "unchanged",
+      "reason": "No wire/policy/feature acceptance change; existing R1g source/TCP and native gaps remain authoritative."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "unchanged",
+      "reason": "No wire/policy/feature acceptance change; existing R1g source/TCP and native gaps remain authoritative."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "unchanged",
+      "reason": "No wire/policy/feature acceptance change; existing R1g source/TCP and native gaps remain authoritative."
+    }
+  ]
+}

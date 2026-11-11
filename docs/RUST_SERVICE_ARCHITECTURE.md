@@ -132,7 +132,7 @@ Trạng thái cấu trúc dưới đây bắt đầu đối chiếu tại `78daa
 | Sáu cờ theo sức chứa; ba đường rời phòng; hai đường tính kết quả | Mỗi tính năng mới phải viết ba lần; terrain/item chưa chạy ở 4 và 8 người | R1a, R1b |
 | Header khung mượn từ fixture bất kỳ; body là template vá field | Packet phụ thuộc bộ fixture trong `local/`; khó thêm packet mới | R1d |
 | Nhận diện client theo IP nguồn; endpoint 153 dùng IP cấu hình | Hai người chung NAT trùng nhau; sai địa chỉ sau NAT | R1f, theo kết quả [RUST-N1](PLAN.md#rust-n1) |
-| Trần 64 kết nối, `allowed_peers` khớp số actor | Không đạt tải đích 50 người | R1g, kiểm tải ở M8 |
+| [CP270](PROTOCOL.md#rust-r1g-admission) đã cho cấu hình trần transport/allowlist độc lập profile | Budget design không tự chứng nhận50người hoặc nâng profile/room count | R1g source/TCP đã kiểm; tải/queues thực ở M8 |
 | Chưa có `tests/{lifecycle,differential,store_faults}`; bộ TCP nằm ở `tools/test_rust_*.py` ngoài `cargo test` | Hồi quy phụ thuộc người chạy tay | M8, làm dần từ R1 |
 
 Mutex đồng bộ quanh phòng (`Arc<Mutex<Runtime>>`, không giữ qua await) đáp ứng yêu cầu "owner phòng xử lý tuần tự";

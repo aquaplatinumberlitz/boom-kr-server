@@ -31,6 +31,12 @@ impl NetworkScope {
     }
 }
 
+/// Operator admission budgets, independent of the number of pinned profiles.
+/// These are resource policy bounds, not native KR limits or measured capacity.
+pub(crate) fn admission_budget(connections: usize, peers: &[Ipv4Addr]) -> bool {
+    (1..=1024).contains(&connections) && (1..=256).contains(&peers.len())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -74,5 +80,18 @@ mod tests {
             NetworkScope::ControlledInternet
         );
         assert!(serde_json::from_str::<NetworkScope>("\"public\"").is_err());
+    }
+    #[test]
+    fn admission_budgets_support_target_transports_without_claiming_player_capacity() {
+        let peers = vec![Ipv4Addr::LOCALHOST; 50];
+        assert!(admission_budget(256, &peers));
+        assert!(admission_budget(65, &peers));
+        assert!(admission_budget(1, &[Ipv4Addr::LOCALHOST]));
+        assert!(admission_budget(1024, &vec![Ipv4Addr::LOCALHOST; 256]));
+        assert!(!admission_budget(0, &peers));
+        assert!(!admission_budget(1025, &peers));
+        assert!(!admission_budget(usize::MAX, &peers));
+        assert!(!admission_budget(256, &[]));
+        assert!(!admission_budget(256, &vec![Ipv4Addr::LOCALHOST; 257]));
     }
 }

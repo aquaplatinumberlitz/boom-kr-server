@@ -1,0 +1,194 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "R1GCIC271-001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 4380,
+      "sha256": "6ecdf23efc2a337a001482607f1ed374bef54e037323266ab0fcf94ef7217b89"
+    },
+    {
+      "id": "R1GCIC271-002",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 71065,
+      "sha256": "5bdf309d307e741c41a5210eb353fb38dfe8dbc363b0090af3c773f713cfc28f"
+    },
+    {
+      "id": "R1GCIC271-003",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 139730,
+      "sha256": "4d11a110779ed7979365d8267786e4961c2325f1c65210f3ad72331902081654"
+    },
+    {
+      "id": "R1GCIC271-004",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 875077,
+      "sha256": "ce760970ea69ca267c69934a01144a98df08ba5eea36949cb43f4dedb4ced1f4"
+    },
+    {
+      "id": "R1GCIC271-005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 56806,
+      "sha256": "92bf6e9405e40d795584f80952fd3bee158b8d97fcd40f34e6b52afe98dfef40"
+    },
+    {
+      "id": "R1GCIC271-006",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 65258,
+      "sha256": "507a8f9a0a3fb45104415615263501f9f296a1777008ef7caab477f2c5bf2cb1"
+    },
+    {
+      "id": "R1GCIC271-007",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/r1g-ci-correction.json",
+      "bytes": 3315,
+      "sha256": "740710f72404cf1e49211cefbafe703bec10ada3e5ad107cee7f13b6776bbd24"
+    },
+    {
+      "id": "R1GCIC271-008",
+      "kind": "local",
+      "path": "local/research/codex/append_cp271.py",
+      "bytes": 7624,
+      "sha256": "b3eca13bea262e6fc7923816ce2e1684eb7940751b0a3af9c9e30eb89dab74a4"
+    },
+    {
+      "id": "R1GCIC271-009",
+      "kind": "local",
+      "path": "local/research/codex/cp270-ci-docs-failure.txt",
+      "bytes": 19569,
+      "sha256": "8b10a6564e9c2709d423eb7be9bf7bbbe35fbff684260575327bd552b1e6da82"
+    },
+    {
+      "id": "R1GCIC271-010",
+      "kind": "local",
+      "path": "local/research/codex/cp270-exact-head-history.txt",
+      "bytes": 122911,
+      "sha256": "5159e941d9c05a9a4936d65e9b413e89671d70bc2a1a8c2d84cac30fc320feb1"
+    },
+    {
+      "id": "R1GCIC271-011",
+      "kind": "local",
+      "path": "local/research/codex/cp270-login-race-repair-r1.txt",
+      "bytes": 2753,
+      "sha256": "c6924940328e8c5b88cd7aa6dcd46b2e2a7d62cb65a3ec52cecbb4d0eb450641"
+    },
+    {
+      "id": "R1GCIC271-012",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/accounts-tests.rs",
+      "bytes": 24425,
+      "sha256": "1efc122aba3061a85b23b33d4c47925bd06439cc0b5254665a437e56d84ce3c3"
+    },
+    {
+      "id": "R1GCIC271-013",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/clippy.txt",
+      "bytes": 166,
+      "sha256": "4cccdf8187e4fc3c834d8761a2724945e8260e87431ca84eb8988560c6a5b36d"
+    },
+    {
+      "id": "R1GCIC271-014",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/docs-preappend.txt",
+      "bytes": 589,
+      "sha256": "0d02f970ab821685b9968f0d93efb39bce2543461d019e9e5020613f623f9b1d"
+    },
+    {
+      "id": "R1GCIC271-015",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/fmt.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R1GCIC271-016",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/kr-service-unit-tests",
+      "bytes": 64878416,
+      "sha256": "dc630ca630ca01c3946a35575bb9fafe5125e918d911b5b7e88b962c40700a4b"
+    },
+    {
+      "id": "R1GCIC271-017",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/snapshot/README.md",
+      "bytes": 4380,
+      "sha256": "6ecdf23efc2a337a001482607f1ed374bef54e037323266ab0fcf94ef7217b89"
+    },
+    {
+      "id": "R1GCIC271-018",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/snapshot/docs/HISTORY.md",
+      "bytes": 71065,
+      "sha256": "5bdf309d307e741c41a5210eb353fb38dfe8dbc363b0090af3c773f713cfc28f"
+    },
+    {
+      "id": "R1GCIC271-019",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/snapshot/docs/PLAN.md",
+      "bytes": 139730,
+      "sha256": "4d11a110779ed7979365d8267786e4961c2325f1c65210f3ad72331902081654"
+    },
+    {
+      "id": "R1GCIC271-020",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/snapshot/docs/PROTOCOL.md",
+      "bytes": 875077,
+      "sha256": "ce760970ea69ca267c69934a01144a98df08ba5eea36949cb43f4dedb4ced1f4"
+    },
+    {
+      "id": "R1GCIC271-021",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 56806,
+      "sha256": "92bf6e9405e40d795584f80952fd3bee158b8d97fcd40f34e6b52afe98dfef40"
+    },
+    {
+      "id": "R1GCIC271-022",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/snapshot/docs/evidence/rust-service/README.md",
+      "bytes": 65258,
+      "sha256": "507a8f9a0a3fb45104415615263501f9f296a1777008ef7caab477f2c5bf2cb1"
+    },
+    {
+      "id": "R1GCIC271-023",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/snapshot/docs/evidence/rust-service/r1g-ci-correction.json",
+      "bytes": 3315,
+      "sha256": "740710f72404cf1e49211cefbafe703bec10ada3e5ad107cee7f13b6776bbd24"
+    },
+    {
+      "id": "R1GCIC271-024",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/source-pin.json",
+      "bytes": 276,
+      "sha256": "9027a2e4003ef8bcf128e4ef62e62540731e455f07d4c8ebc382f1953a04cec6"
+    },
+    {
+      "id": "R1GCIC271-025",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/test-only.patch",
+      "bytes": 2243,
+      "sha256": "f09b5e3e373a0f9417aaba10df994410be31aa703918940b66290d15fbeefdf6"
+    },
+    {
+      "id": "R1GCIC271-026",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/tests.txt",
+      "bytes": 11867,
+      "sha256": "cbe94a74cd337eaaac4bf9862c8360476695d343fb1185aace9bee45e0486bff"
+    },
+    {
+      "id": "R1GCIC271-027",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/verification.json",
+      "bytes": 962,
+      "sha256": "c6ef4db34cb9803c725f3384e304957f6db77cae39f7994f08bb79d6fcbb36d1"
+    }
+  ]
+}

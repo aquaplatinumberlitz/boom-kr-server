@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP269",
-  "baseline": "f89504d561cf5aa6f619e94ed4c635a27b4f6250",
+  "as_of": "CP270",
+  "baseline": "39a401a2f114507c4669a373e7eded1fcea4f0fa",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP267-268merged; R1f104Rust/306legacyTCP/3169+24exactCP265/59shared-IP/16account-serving. Profilesbytoken-ownedPlayerId, currentchanneldirectendpoint, membership/roundsnapshot.",
-      "remaining": "NativefinalR12/4/8/account; R1g/N1Rrelaynative; M5generalprofile/nativeDBqueuefault; sharedIPUDPspoof/keyportreuse/restart/load/backup.",
-      "next_test": "AfterR1fPRmergeR1gthenN1Rperdashboard; noN1b3 or broadRE.",
+      "known": "R1fPR347merged. R1g105Rust/306legacyTCP/3169+24exactCP269/10admission; transport/allowlistbudgetsindependentprofiles. CorrectR2sourcefreeze, wrongR1cwdexcluded.",
+      "remaining": "R1gPRdelivery; N1Rrelay/nativefinalR12/4/8/account; M5generalprofile/nativeDBfault/M7/M8loadbackuprestart. No50playeror nativeclaim.",
+      "next_test": "AfterR1gmergeopt-inN1Rrelayimplementation/native; noN1b3/broadRE.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "AUD086boundedsource/TCPrefactor, notnative/fullR1/M5certification. Reviewwaived, PRpendingexactheadCI.",
+      "reason": "AUD087boundedsource/TCPadmissionrefactor. Realplayerworkload/UDP/nativeremain. Reviewwaived; PRpendingexactheadchecks.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",

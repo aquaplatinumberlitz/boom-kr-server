@@ -468,3 +468,7 @@ riêng trước nghiệm thu relay, không đưa thay đổi này vào refactor 
 CP269 [R1f](../docs/PROTOCOL.md#rust-r1f-session-binding): account profile theo frontend/session PlayerId, endpoint theo
 currentchannel, LegacyDirectPlan giữ bytes. 104Rust/306TCPlegacy/3169+24exactframes;59shared-IP và16accountserving đạt.
 Chưa native candidate/shared-NAT UDP/NATlearning hoặc relay; native cuối R1 và full M5 giữ PLAN.
+
+CP270 [R1g](../docs/PROTOCOL.md#rust-r1g-admission): `max_connections`1..1024, `allowed_peers`1..256entry,
+độc lập số actor/profile. Field/default cũ giữ; operator chọn budget theo deployment, không suy hỗ trợ50người chơi.
+105Rust/306legacyTCP/3169+24frameCP269 và10admission đạt. Native cuối R1/relay/M5generalprofile/M8load còn riêng.
