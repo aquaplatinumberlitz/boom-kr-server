@@ -15,6 +15,7 @@ mod pickups;
 pub mod room;
 mod room_io;
 mod room_wire;
+mod rules;
 mod terrain;
 
 use kr_wire::{HEADER_LEN, Receiver, decode, encode};

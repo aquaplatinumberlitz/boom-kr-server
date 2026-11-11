@@ -5,6 +5,7 @@ use crate::{
     pickups,
     room::{Member, Membership, Phase, Room},
     room_wire,
+    rules::{self, RoomRules},
 };
 use kr_wire::{Width, decode, read_uint};
 use serde::Deserialize;
@@ -100,12 +101,7 @@ pub struct Runtime {
     ips: HashMap<u32, u32>,
     ports: HashMap<Membership, u16>,
     floor_catalog: pickups::Catalog,
-    four_owner_bombs: bool,
-    four_life_reports: bool,
-    four_results: bool,
-    four_abort_room: bool,
-    eight_battle: bool,
-    ninth_admission_probe: bool,
+    rules: RoomRules,
     abort: Option<FourAbort>,
 }
 /// Single-loss CP205 diagnostic lifecycle; preserved through final cleanup.
@@ -166,35 +162,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         return Err(err("fixed room title must be bounded ASCII"));
     }
     let actor_count = actors.len();
-    let count = if cfg.ninth_admission_probe {
-        if actor_count != 9 || !cfg.eight_battle {
-            return Err(err(
-                "ninth admission probe requires nine lobby actors and eight battle",
-            ));
-        }
-        8
-    } else {
-        actor_count
-    };
-
-    if cfg.eight_team_layout.is_some() && (!cfg.eight_battle || count != 8) {
-        return Err(err("eight team layout requires opt-in eight battle"));
-    }
-    if cfg.eight_battle && count != 8 {
-        return Err(err("eight battle requires eight diagnostic actors"));
-    }
-    if cfg.four_abort_room && (count != 4 || !cfg.four_results) {
-        return Err(err("four abort-room requires opt-in four results"));
-    }
-    if cfg.four_results && (count != 4 || !cfg.four_life_reports || !cfg.four_owner_bombs) {
-        return Err(err("four results require opt-in four life and owner bombs"));
-    }
-    if cfg.four_life_reports && (count != 4 || !cfg.four_owner_bombs) {
-        return Err(err("four life reports require opt-in four-owner bombs"));
-    }
-    if cfg.four_owner_bombs && count != 4 {
-        return Err(err("four-owner bombs require the four diagnostic profile"));
-    }
+    let (rules, count) = RoomRules::from_config(cfg, actor_count)?;
     if !matches!(count, 2 | 4 | 8)
         || actors
             .values()
@@ -358,26 +326,11 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
             .collect(),
         ports: HashMap::new(),
         floor_catalog: pickups::Catalog::from_floor(&packets_floor_body)?,
-        four_owner_bombs: cfg.four_owner_bombs,
-        four_life_reports: cfg.four_life_reports,
-        four_results: cfg.four_results,
-        four_abort_room: cfg.four_abort_room,
-        eight_battle: cfg.eight_battle,
-        ninth_admission_probe: cfg.ninth_admission_probe,
+        rules,
         abort: None,
     })))
 }
 impl Runtime {
-    fn life_enabled(&self) -> bool {
-        self.four_life_reports || self.eight_battle
-    }
-    fn team_results(&self) -> bool {
-        self.four_results || self.eight_battle
-    }
-    fn owner_bombs(&self) -> bool {
-        self.four_owner_bombs || self.eight_battle
-    }
-
     fn member(&self, id: u32, connection: u64) -> io::Result<Member> {
         self.model
             .members
@@ -616,7 +569,7 @@ impl Runtime {
                 self.channels.clear();
                 return;
             }
-            if self.four_abort_room && matches!(next.phase, Phase::Armed { .. }) {
+            if self.rules.four_abort_room && matches!(next.phase, Phase::Armed { .. }) {
                 let result = (|| -> io::Result<AbortTransition> {
                     let round = next.abort_four(m.key)?;
                     let returning = self.reply(
@@ -721,9 +674,7 @@ impl Session {
         if runtime.channels.contains_key(&identity) {
             return Err(err("duplicate room channel"));
         }
-        // Eight setup can hold own106/110 + seven peer106 + map = ten batches.
-        // Keep two/four queues unchanged and the local pending bound16.
-        let (sender, inbox) = mpsc::channel(if runtime.model.capacity() == 8 { 16 } else { 8 });
+        let (sender, inbox) = mpsc::channel(rules::recipient_queue(runtime.model.capacity()));
         runtime
             .channels
             .insert(identity, Channel { connection, sender });
@@ -752,7 +703,7 @@ impl Session {
         if r.abort.is_some() {
             return r.abort_refresh();
         }
-        if !r.packets.contains_key("rank") && !r.team_results() {
+        if !r.packets.contains_key("rank") && !r.rules.team_results() {
             return Ok(());
         }
         let Phase::Armed { round } = r.model.phase else {
@@ -762,7 +713,7 @@ impl Session {
             return Ok(());
         }
         let now = Instant::now();
-        let rank = if r.team_results() {
+        let rank = if r.rules.team_results() {
             let Some(team) = crate::four_results::winner(&r.model, now) else {
                 return Ok(());
             };
@@ -806,7 +757,7 @@ impl Session {
         let mut next = r.model.clone();
         next.end(round)?;
         let mut effects = Vec::new();
-        let returning = if r.team_results() {
+        let returning = if r.rules.team_results() {
             r.reply(
                 "start",
                 Some(180),
@@ -1052,7 +1003,7 @@ impl Session {
                     room_wire::join_context(body)?;
                     (r.title.clone(), r.selector)
                 };
-                if r.ninth_admission_probe && self.identity == 9 {
+                if r.rules.ninth_admission_probe && self.identity == 9 {
                     // CP227 generic2 is native-confirmed, capacity is our design reason.
                     // This probe never acquires a room slot/visit/round. Vacancy and
                     // replacement admission remain outside this fixed diagnostic profile.
@@ -1283,7 +1234,7 @@ impl Session {
                 if !(20..=8192).contains(&body.len()) {
                     return Err(err("unsupported Start104 envelope"));
                 }
-                if r.eight_battle && r.selector == 1 && !next.balanced_teams() {
+                if r.rules.eight_battle && r.selector == 1 && !next.balanced_teams() {
                     return Ok(Observation {
                         start_rejection: Some("manner_fixed_teams_unbalanced"),
                         ..Observation::default()
@@ -1424,10 +1375,10 @@ impl Session {
             167 => {
                 let member = r.member(self.identity, self.connection)?;
                 let measured = if next.capacity() == 8 {
-                    r.eight_battle && [4, 22, 42].contains(&body.len())
+                    r.rules.eight_battle && [4, 22, 42].contains(&body.len())
                 } else {
                     [4, 16, 32].contains(&body.len())
-                        || (next.capacity() == 4 && r.four_owner_bombs && body.len() == 22)
+                        || (next.capacity() == 4 && r.rules.four_owner_bombs && body.len() == 22)
                 };
                 if !measured {
                     return Err(err("opaque167 measured sizes"));
@@ -1458,7 +1409,7 @@ impl Session {
                 }
             }
             118 => {
-                if matches!(next.capacity(), 4 | 8) && !r.owner_bombs() {
+                if matches!(next.capacity(), 4 | 8) && !r.rules.owner_bombs() {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
@@ -1542,7 +1493,7 @@ impl Session {
                 }
             }
             142 => {
-                if matches!(next.capacity(), 4 | 8) && !r.owner_bombs() {
+                if matches!(next.capacity(), 4 | 8) && !r.rules.owner_bombs() {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
@@ -1641,14 +1592,14 @@ impl Session {
                     next.observe_closed(m.key)?;
                     dropped_after_abort = true;
                 } else if let Phase::Armed { round } = next.phase {
-                    if r.packets.contains_key("rank") || r.life_enabled() {
+                    if r.packets.contains_key("rank") || r.rules.life_enabled() {
                         let report = crate::life::Report::parse(body)?;
                         let now = Instant::now();
                         let last_blast = next.last_blast;
                         let decision =
-                            if r.life_enabled() && !matches!(report.subtype, 17 | 19 | 21) {
+                            if r.rules.life_enabled() && !matches!(report.subtype, 17 | 19 | 21) {
                                 report.decision("unsupported_four_report_subtype", false)
-                            } else if r.life_enabled()
+                            } else if r.rules.life_enabled()
                                 && next.members[&self.identity].life.death.is_some()
                             {
                                 report.decision("report_after_accepted_death", false)
@@ -1858,12 +1809,7 @@ mod tests {
             ips: HashMap::new(),
             ports: HashMap::new(),
             floor_catalog: pickups::Catalog::default(),
-            four_owner_bombs: false,
-            four_life_reports: false,
-            four_results: false,
-            four_abort_room: false,
-            eight_battle: false,
-            ninth_admission_probe: false,
+            rules: RoomRules::default(),
             abort: None,
         }));
         let mut session = Session {
@@ -1971,12 +1917,7 @@ mod tests {
             ips: HashMap::new(),
             ports: HashMap::new(),
             floor_catalog: pickups::Catalog::default(),
-            four_owner_bombs: false,
-            four_life_reports: false,
-            four_results: false,
-            four_abort_room: false,
-            eight_battle: false,
-            ninth_admission_probe: false,
+            rules: RoomRules::default(),
             abort: None,
         };
         let mut next = runtime.model.clone();
@@ -2212,12 +2153,13 @@ mod four_abort_tests {
             ips: HashMap::new(),
             ports: HashMap::new(),
             floor_catalog: pickups::Catalog::default(),
-            four_owner_bombs: true,
-            four_life_reports: true,
-            four_results: true,
-            four_abort_room: true,
-            eight_battle: false,
-            ninth_admission_probe: false,
+            rules: RoomRules {
+                four_owner_bombs: true,
+                four_life_reports: true,
+                four_results: true,
+                four_abort_room: true,
+                ..RoomRules::default()
+            },
             abort: None,
         }));
         let sessions = inboxes
@@ -2518,12 +2460,11 @@ mod ninth_probe_tests {
             ips: HashMap::new(),
             ports: HashMap::new(),
             floor_catalog: pickups::Catalog::default(),
-            four_owner_bombs: false,
-            four_life_reports: false,
-            four_results: false,
-            four_abort_room: false,
-            eight_battle: true,
-            ninth_admission_probe: true,
+            rules: RoomRules {
+                eight_battle: true,
+                ninth_admission_probe: true,
+                ..RoomRules::default()
+            },
             abort: None,
         }));
         Session {

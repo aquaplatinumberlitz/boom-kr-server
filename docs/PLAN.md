@@ -35,6 +35,75 @@ client; chưa ghép `boom-core` vào đường trận. VN có P2P và client t�
 KR đã có consumer nổ/trap ở client nhưng chưa có bản đồ authority đầy đủ. Một server mới chạy được
 với client Rust không chứng minh có thể điều khiển client KR bằng snapshot/command của ADR 0009.
 
+<a id="delivery-target"></a>
+### Đích bàn giao giai đoạn 1 cho công ty — chốt 11/11
+
+Nguồn: [chỉ đạo chủ dự án](evidence/owner-directives/delivery-target.json). Mục này chỉ chốt **đích và đường cắt
+phạm vi**; không đóng gate hay milestone nào. Trạng thái từng milestone vẫn ở các mục bên dưới.
+
+**Định hướng dài hạn vẫn là gameplay đầy đủ của game gốc.** Phạm vi dưới đây là giai đoạn 1, được chọn vì giới hạn
+thời gian và tài nguyên; các phần chưa làm thuộc giai đoạn sau chứ không bị loại bỏ.
+
+| Câu hỏi | Quyết định của chủ dự án |
+|---|---|
+| Mức bàn giao | **Dịch vụ nội bộ bền vững** (hàng giữa trong [bảng ba mức](#rust-service-exit-criteria)) |
+| Người chơi | Kết nối qua **Internet thật**, khoảng 10–50 người đồng thời, vài phòng cùng lúc |
+| Gameplay giai đoạn 1 | Chế độ thường, **nhiều map chọn lọc và các item phổ biến**, kim/cứu, chọn nhân vật, chọn đội |
+| Gameplay dài hạn | Đầy đủ như game gốc, làm tiếp sau giai đoạn 1 khi có thời gian và tài nguyên |
+| Hạn chót | Không có hạn cứng; theo dõi bằng milestone và cỡ việc tương đối |
+
+**Trong đích giai đoạn 1:** tài khoản thật cho mọi người chơi (không chỉ hai profile cố định), nhiều phòng độc lập trên một kênh,
+lưu hồ sơ và kết quả trận, công cụ admin có audit, backup đã thử restore, người chơi sau NAT gia đình hoặc CGNAT.
+Mục tiêu tải dùng để nghiệm thu: **50 người chơi đồng thời, tối thiểu 8 phòng độc lập**, một instance Linux.
+
+**Giai đoạn sau (không là dependency của giai đoạn 1):** cửa hàng, tiền tệ, cấp độ/EXP, inventory mua bán, mode phụ,
+boss, mission, event, guild, chat/bạn bè, toàn bộ map và item còn lại, nhiều kênh. HA và tiêu chí của mức
+"phát hành rộng hơn" chỉ mở khi công ty quyết định phát hành ra ngoài.
+
+**Ràng buộc thiết kế từ định hướng dài hạn:** giai đoạn 1 không được chặn đường mở rộng. Luật phòng, map, item và
+mode phải là dữ liệu hoặc chính sách thêm được, không hardcode giả định "chỉ chế độ thường". Schema DB giữ chỗ cho
+inventory/ledger đã thiết kế trong [kiến trúc](RUST_SERVICE_ARCHITECTURE.md). Đây là lý do [RUST-R1](#rust-r1) đi
+trước các mốc tính năng.
+
+#### Việc còn lại để đạt đích giai đoạn 1
+
+Cỡ việc là **tương đối** (S nhỏ, M vừa, L lớn), không phải cam kết ngày. "Rủi ro RE" là mức phụ thuộc vào phép đo
+trên client KR chưa có; rủi ro cao nghĩa là cỡ việc có thể tăng.
+
+| Thứ tự | Mốc | Còn lại để đạt đích | Cỡ | Rủi ro RE |
+|---|---|---|---|---|
+| 1 | RUST-M5 (đang làm) | Account → phòng cố định → trận → kết quả → trận tiếp; sau đó hồ sơ tổng quát cho mọi account thay hai profile cố định | M | Vừa: phép chiếu hồ sơ 291 |
+| 2 | [RUST-N1](#rust-n1) Internet thật (đang đo) | UDP trực tiếp giữa hai NAT thật khác nhau. Kết quả quyết định có cần học cổng sau NAT, hole punching hoặc relay | S nếu thông, L nếu cần relay | Cao nếu cần relay |
+| 3 | [RUST-R1](#rust-r1) tái cấu trúc lõi phòng | Gỡ giả định phòng cố định trước khi xây M7/G1/M6; không thêm tính năng | M | Không |
+| 4 | RUST-M7 phòng tổng quát | Danh sách phòng động, tạo/vào/rời, lỗi phòng đầy, chọn nhân vật, chọn đội bằng thao tác trong phòng | L | Cao |
+| 5 | [RUST-G1](#rust-g1) gameplay mở rộng | Kim/cứu trên Rust, thêm map, thêm nhóm item phổ biến; terrain/item cho phòng 4 và 8 người | L | Cao: mỗi nhóm item cần consumer và ca runtime riêng |
+| 5 | RUST-M6 thu hẹp | Lưu kết quả trận và hồ sơ (nhân vật đã chọn) bền vững, thưởng bằng 0. Ledger tiền tệ và inventory để giai đoạn sau, giữ chỗ trong schema | S–M | Thấp |
+| 6 | RUST-M8 vận hành | Nâng trần kết nối, cấu hình, giám sát, admin, backup/restore, kiểm tải 50 người/8 phòng, đóng gói | M–L | Thấp |
+
+RUST-M4 đã đủ cho đích ở phần đội hình cố định 2/4/8 và Manner; Free 1v7 còn kẹt ở lỗi khởi động client chưa rõ
+nguyên nhân. Thứ tự 5 có hai mốc chạy song song vì không phụ thuộc nhau.
+
+Vì sao thứ tự này: N1 đi sớm vì nếu cần relay thì cách trao đổi địa chỉ peer (packet 153) và kiến trúc mạng đổi theo.
+R1 đi trước M7, G1 và M6 vì cả ba đều sửa lõi phòng; làm R1 sau thì phải viết lại phần đã xây trên giả định phòng cố định.
+
+#### Hệ quả đã biết từ code hiện tại
+
+- Trần kết nối đang là 64 (`max_connections` trong `kr-service/src/lib.rs`) và mỗi client dùng khoảng bốn transport;
+  50 người cần khoảng 200 kết nối cộng dự phòng. Việc nâng trần thuộc R1/M8, có kiểm tải.
+- Client được nhận diện theo IP nguồn và danh sách `allowed_peers` phải khớp số actor. Hai người chơi chung một NAT
+  sẽ trùng IP, nên đường account (session) phải thay hẳn binding theo IP trước khi mở cho Internet.
+- Địa chỉ peer gửi trong packet 153 ghép IP cấu hình với cổng UDP do client tự báo ở packet 99. Sau NAT đổi cổng,
+  địa chỉ này có thể sai; N1 đo điều đó.
+
+#### Quyết định còn chờ chủ dự án
+
+1. **Danh sách map và nhóm item cho G1.** Cần một danh sách ngắn được duyệt trong issue trước khi mở G1; chưa có
+   danh sách thì G1 chỉ làm kim/cứu và terrain/item cho phòng 4 và 8 người.
+2. **RUST-M4 Free 1v7.** Đề xuất: ghi thành giới hạn đã biết của bản bàn giao và không để chặn đích; chỉ mở lại khi có
+   quan sát mới về lỗi khởi động. Chưa quyết thì M4 giữ trạng thái mở như hiện tại.
+3. **Chính sách kết quả.** Đề xuất: lưu lịch sử trận, thưởng bằng 0, kim dùng số lượt cố định mỗi vòng theo policy
+   hiện tại. Nếu công ty muốn điểm hoặc bảng xếp hạng thì M6 tăng cỡ.
+
 ### Tiến độ hiện hành theo bằng chứng
 
 | Task/mốc | Trạng thái theo nguồn dẫn, cập nhậtCP212 | Nguồn chuẩn |
@@ -57,6 +126,11 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 
 <a id="current-order"></a>
 ### Thứ tự công việc hiện hành
+
+**Thứ tự theo [đích giai đoạn 1](#delivery-target), chốt 11/11:** (1) hoàn tất lát cắt account → phòng cố định → trận
+ở mục 1 dưới đây; (2) đo Internet thật [RUST-N1](#rust-n1); (3) tái cấu trúc lõi phòng [RUST-R1](#rust-r1);
+(4) RUST-M7; (5) [RUST-G1](#rust-g1) song song RUST-M6 thu hẹp; (6) RUST-M8. Từ nay lát cắt mới **không thêm** cờ
+`four_*`/`eight_*`, alias theo identity hay nhánh `capacity() == N` mới vào `room_io.rs`; luật mới đặt trong `RoomRules`.
 
 **Kế hoạch Rust đã giao CP213/PR286 `4f9a963`; owner đã mở implementation theo [chỉ đạo mới09/11](evidence/owner-directives/rust-implementation.json). M0/M1 đã giao, M2 đã nghiệm thu phạm vi hai identity/một phòng/loading; RE chỉ theo blocker của lát cắt.**
 [KRE-005b/#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ RE/reference backlog theo trigger; KR-L001 giữ blocker có nguồn;
@@ -235,6 +309,9 @@ Owner/selfcheck Codex, independentreviewwaived; PR/exacthead vẫn bắt buộc.
 | RUST-M6 Inventory/progression/result-reward durability | Backend M5, actualmatchinput M3; KRwireprojection/effect cần từngconsumer. Không cần full8/mọiitem để làm ledger |
 | RUST-M7 General lobby/rooms/selection và userflows cần cho nội bộ | M2 + M5ownership, M3lifecycle; M4 chỉ cần nếu mở8capacity. RE roomlist/member/character/team/equip theo phép đo, không mọi mode |
 | RUST-M8 Hardening/admin/backup/restore/package và nghiệm thu service | M1–3/M5–7 cho internalservice; M4 nếu quảng bá4/8 theo scope. Ops/tests phát triển từM1, không chờ cuối mới thêm |
+| RUST-N1 Internet thật giữa hai NAT khác nhau | Cần M3 (trận hai client). Độc lập với M5–M8; kết quả là đầu vào của R1 (bước R1f) và M8 |
+| RUST-R1 Tái cấu trúc lõi phòng, không thêm tính năng | Cần lát cắt account → phòng → trận của M5 đã merge (cùng file). Phải xong trước M7, G1 và M6 |
+| RUST-G1 Gameplay mở rộng: kim/cứu, map, nhóm item phổ biến | Cần R1. Song song được với M6/M7; mỗi map và nhóm item cần phép đo KR riêng |
 
 ```mermaid
 flowchart LR
@@ -245,11 +322,15 @@ flowchart LR
   M1 --> B5["M5 Backend account / DB"]
   M2 --> C5["M5 Client ownership bridge"]
   B5 --> C5
-  M3 --> M6["M6 Inventory / result-reward"]
-  C5 --> M6
-  M2 --> M7["M7 Phòng tổng quát"]
-  M3 --> M7
-  C5 --> M7
+  M3 --> N1["N1 Internet thật"]
+  C5 --> R1["R1 Tái cấu trúc lõi phòng"]
+  M3 --> R1
+  N1 -. "kết quả NAT" .-> R1
+  R1 --> M6["M6 Kết quả / hồ sơ bền vững"]
+  R1 --> M7["M7 Phòng tổng quát"]
+  R1 --> G1["G1 Gameplay mở rộng"]
+  G1 --> M8
+  N1 --> M8
   M6 --> M8["M8 Nghiệm thu vận hành"]
   M7 --> M8
   M4 -. "nếu công bố hỗ trợ 4/8" .-> M8
@@ -382,6 +463,72 @@ MTU/reorder/bandwidthcấu hìnhthực côngkhai, K6cWANgiảlập scope táidù
 Loadacceptance dùng workloadtarget chốt trướcbenchmark (connections/rooms/Hz/p95latency/queue/RAM), không
 gán targetproduction từ8Wine/GDB. Không hứa HA hoặc chốngmọicheat khi movementP2P/reportauthoritycònhạn.
 Rollback drain/stopadmission/fenceuncommittedround, compatiblebinary+testedDBrestore; không silentgrantloss.
+
+### Mốc bổ sung từ đích bàn giao 11/11
+
+Ba mốc dưới sinh ra từ [đích giai đoạn 1](#delivery-target). Chúng không đổi acceptance của M0–M8 đã ghi ở trên.
+
+<a id="rust-n1"></a>
+**RUST-N1 — Internet thật giữa hai NAT khác nhau.**
+Mục đích: biết sớm UDP trực tiếp giữa client có dùng được cho người chơi thật hay cần học cổng sau NAT, hole punching
+hoặc relay. K6c/K7 đã nghiệm thu bằng WAN giả lập giữ nguyên; N1 là gate của đích bàn giao, không sửa lại gate cũ.
+Topology tối thiểu: server trên VPS có IP public; client A ra bằng mạng di động (CGNAT thật); client B ra bằng một IP
+public khác (tunnel qua VPS, server trong netns riêng và SNAT để server thấy B bằng IP public). Giữ allowlist outbound
+của client theo AGENTS.
+Phép đo: chạy recipe hai client hai vòng đã có; bắt PCAP ở cả hai đầu; so **cổng UDP client tự báo trong packet 99**
+với **cổng nguồn thật** của gói UDP sau NAT; ghi chiều nào thông, chiều nào không, và client có trả lời về địa chỉ nguồn
+quan sát được hay chỉ gửi tới địa chỉ server báo trong 153.
+Acceptance: kết luận có bằng chứng cho một trong ba nhánh — (a) trực tiếp dùng được như hiện tại; (b) cần server học
+endpoint thật (đầu vào cho R1f); (c) cần relay, khi đó mở mốc thiết kế relay riêng trước M7. Một ca hai người chơi
+chung một NAT cũng phải được ghi nhận, vì binding theo IP nguồn hiện tại không phân biệt được họ.
+Ngoài phạm vi: mọi loại NAT, IPv6, nhiều ISP. Một nhà mạng di động và một IP public là đủ cho quyết định kiến trúc.
+
+<a id="rust-r1"></a>
+**RUST-R1 — tái cấu trúc lõi phòng trước khi xây tiếp.**
+Lý do, theo code tại `78daa71`: cả service chỉ có **một phòng toàn cục** (`BoundProfiles.room: Option<Shared>`,
+`lib.rs`); identity chính là slot (`Room::enter` yêu cầu identity 1..=capacity, slot = identity − 1, chỉ identity 1 được
+tạo phòng, `room.rs`); mỗi identity cần một fixture 106 riêng theo alias `player_A..H` (`room_io.rs`); mỗi sức chứa bật
+bằng cờ riêng (`four_owner_bombs`, `four_life_reports`, `four_results`, `four_abort_room`, `eight_battle`,
+`ninth_admission_probe`) và có ba đường rời phòng, hai đường tính kết quả khác nhau; một số nhánh chọn theo việc
+"có fixture `rank` hay không"; header khung được mượn từ fixture bất kỳ (ví dụ header của `start` cho packet 180);
+client được nhận diện theo IP nguồn. M7, G1 và M6 đều phải sửa đúng các chỗ này.
+
+Nguyên tắc: **không thêm tính năng, không đổi byte trên wire** của ba profile đã nghiệm thu (2, 4, 8 người). Mỗi bước
+một PR nhỏ. Không gộp R1 với RE mới.
+
+| Bước | Nội dung | Kiểm |
+|---|---|---|
+| R1a | Gom luật phòng vào một kiểu `RoomRules` (`rules.rs`): sức chứa, sáu cờ, bảng bom mặc định, cỡ hàng đợi, kiểm chéo cấu hình. Chỉ chuyển chỗ, không đổi logic | fmt, clippy, cargo test |
+| R1b | Đổi cờ thành chính sách có tên (`ResultPolicy`, `DeparturePolicy`, `BombPolicy`, `LifePolicy`); bỏ công tắc "có fixture `rank`". Ba profile chọn đúng tổ hợp chính sách cũ | Như R1a, thêm các bộ TCP `tools/test_rust_{room,four_room,eight_room,life}.py` khớp byte |
+| R1c | Tách identity khỏi slot: `PlayerId` lấy từ session, slot theo luật cấp phát, host là người tạo. Một template 106 chung, vá identity/tên/slot/đội. Profile cũ giữ luật "slot = identity − 1" | Như R1b; đối chiếu byte với tám fixture 106 hiện có, field lệch ngoài phần đã hiểu ghi unknown trong RESEARCH |
+| R1d | Một header chuẩn đã pin và builder body theo opcode trong `kr-wire` (module `kr00967`); packet không còn phụ thuộc alias fixture | Như R1b |
+| R1e | Registry phòng `RoomId → phòng`; listing 91 dựng từ registry; mỗi phòng một `RoomRules`. Giữ mutex đồng bộ, không giữ lock qua await | Như R1b, thêm unit test hai phòng không lẫn recipient |
+| R1f | Transport lấy identity từ session/lease thay cho IP nguồn; endpoint 153 theo kết quả N1 | Như R1b, thêm ca hai session cùng IP |
+| R1g | Trần kết nối và `allowed_peers` thành cấu hình theo tải đích (50 người, khoảng 200 transport) | Unit test giới hạn; kiểm tải thật thuộc M8 |
+
+R1a–R1b và R1d không đổi hành vi. R1c, R1e, R1f và R1g chỉ thêm hành vi ở chế độ mới; profile cũ phải giữ nguyên byte.
+Acceptance cuối R1: toàn bộ bộ TCP hiện có đạt, cộng **một lượt native hồi quy cho mỗi profile 2, 4, 8 người và đường
+account**, không thêm claim mới. R1b trở đi bắt đầu sau khi lát cắt account → phòng → trận merge, vì cùng sửa `room_io.rs`
+và `lib.rs`.
+
+**R1a đã làm 11/11** trên nhánh `plan/delivery-target-room-refactor` (chưa merge, chưa có checkpoint): `rules.rs` giữ
+sáu cờ, ba luật dẫn xuất, bảng bom mặc định, cỡ hàng đợi và kiểm chéo cấu hình; `room.rs`/`room_io.rs` chỉ đổi chỗ gọi.
+Kiểm: fmt và clippy đạt; 86 test Rust đạt (84 cũ, 2 mới). Các bộ TCP tổng hợp đạt trên binary sau refactor: hai người
+room 43 ca và life 51 ca; bốn người normal 32 ca, abort A và D mỗi bộ 20 ca; tám người Manner và đội cố định mỗi bộ
+16 ca; visitor thứ chín 6 ca; guard cấu hình trước bind 6 ca. Đối chứng: binary dựng từ `78daa71` cho cùng kết quả ở
+bộ room và guard. Raw và hash ở `local/research/claude/r1a-tcp-regression-r1/`. Đây là TCP tổng hợp trên loopback,
+**không phải bằng chứng native**; lượt native hồi quy nằm ở acceptance cuối R1.
+Rollback: từng bước revert được độc lập; Python reference không đổi.
+
+<a id="rust-g1"></a>
+**RUST-G1 — gameplay mở rộng cho giai đoạn 1.**
+Phạm vi: (1) kim và cứu trên Rust theo contract đã đo ở Python; (2) terrain và item nền cho phòng 4 và 8 người, hiện
+bị từ chối ở cấu hình; (3) thêm map và nhóm item theo **danh sách ngắn chủ dự án duyệt**. Chưa có danh sách thì chỉ
+làm (1) và (2). Mỗi map cần đúng dữ liệu và consumer của nó; mỗi nhóm item cần consumer cùng một ca dùng, một ca
+không đủ điều kiện, hết hạn/tiêu thụ, peer thấy đúng và reset — theo đúng yêu cầu đã ghi ở
+[kiến trúc](RUST_SERVICE_ARCHITECTURE.md). Luật đặt trong `RoomRules` và dữ liệu map/item, không thêm nhánh theo sức chứa.
+Acceptance: native trên Rust cho từng map/nhóm item được công bố, hai vòng liên tiếp, có ca âm tính. Phần chưa đo thì
+tắt, không gửi ACK giả. Toàn bộ map/item/mode còn lại thuộc giai đoạn sau theo định hướng dài hạn.
 
 <a id="rust-service-exit-criteria"></a>
 ### Khi nào đủ demo, dịch vụ nội bộ và phát hành rộng hơn?
