@@ -29,13 +29,21 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP255: ba ca account native âm tính/lifecycle đã đạt, M5 vẫn mở.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-account-native-lifecycle), [raw/hash](docs/evidence/rust-service/README.md#cp255).
+A dùng correlator đang chờ của B bị từ chối, B vẫn claim đúng; revoke A khi đang ở lobby và phiên A tự hết hạn60s
+đều đóng đúng channel A, B giữ8s. Ba run/280raw/49exactTCP/cleanup0; A có notice error10, chưa kiểm đóng modal/retry.
+Không đổi server đã nghiệm thu CP254/PR326; chưa generic profile, freshlogin/replay/room-game hoặc fullM5.
+Next theo PLAN, audit kếCP256. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP254: hai KR thật đã đăng nhập vào sảnh bằng hai account SQLite trên adapter Rust.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-account-serving), [raw/hash](docs/evidence/rust-service/README.md#cp254).
 Native auth137/own291128/ID-name-echo/render/argv đều đối chiếu,18 reply TCP khớp;100raw/41,852s/cleanup0.
 82 Rust tests,9ca thư viện/8DB,16ca TCP và11guard startup đạt. Hai profile cố định, chưa room/game hoặc full M5.
 Next: native negative/lifecycle theo PLAN; M4 Free vẫn blocked. Internet thật chưa kiểm.
 
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP253: M5 đã có thư viện nối session/account vào admission KR; chưa nối listener.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-account-bridge), [raw/hash](docs/evidence/rust-service/README.md#cp253).

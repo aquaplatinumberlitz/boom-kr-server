@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP254: M5 account adapter có hai native lobby/SQLite/private launcher/18exactTCP; chưa native negatives/room-game/fullM5. Next theo current-order; M4Free blocked/audit kếCP256. Internet thật chưa kiểm.
+CP255: native wrong-pending-correlator/active revoke/absolute expiry60s đạt scope hẹp, 3run280raw49exactreply; sameCP254Rust. M5partial/next freshlogin-replay/projector/integration theo current-order; audit kếCP256. Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -139,11 +139,20 @@ Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã
    LaunchTTL60/handoff10/periodicinspect1s không renew idle; current67 activity mới renew. Exactopaque87/body2 chỉaccountLobby,
    budget16/noACK-noeffect, semanticsunknown. Knownlogin3848 từCP234, không mở mọi port hoặc unknown opcode.
    Fixed KRLocal/ID1 vàKRGuest/ID2/zero-profile/version1, reject profilekhác/rename/room/battle, không fallback theo IP.
-   **NEXT: native account negative/lifecycle**, chọn một ca accountA wrong-channel echo/ID swap khi B giữ nguyên,
-   rồi expiry/revoke/replay/freshlogin theo khoảng trống M5; source-first/reuse positive R5, không lặp full codec/SDK.
-   Wrongchannel/graceful before17 vẫn giữ CP220blocker: chỉ nhận nativefailclosed có đúng quan sát, không gọi graceful recovery.
-   Sau đó tích hợp account ownership vào room/game/queued recipient/UDP cleanup theo M5/M7; không tự đóng M5 từ nativepositive.
-   Python/diagnostic rollback giữ; M4Free startup chỉ mở lại khi có observable mới. Audit kếCP256.
+   [CP255](PROTOCOL.md#rust-account-native-lifecycle) đã có **ba native account negative/lifecycle** trên sameCP254Rust/4b:
+   controlled AID1/nameA+pendingB echo→no17/no291/nochannelgrant; B6hold≤6s→release→nativeown291/render/8shold.
+   Counter chỉ4byte setterargument/index0/callerđãđoCP216, A send1gate trướcauth giữhandoff10s; không forceauthstate/functioncall.
+   ActiveA revoke→currentchannelFIN và naturalbackendabsoluteTTL60s→FIN, B giữ8s/DBsessioncurrent; measured0,718s/0,485s,
+   chỉ quietTMPFS/LANrun, khôngSLO. 78+79+123raw/49exactTCP/nativeoracles/CAargv/SQLite-audit/6UIảnh kiểm, cleanup0.
+   NativeA chỉ noticeerror10/boundednoterminal, **chưa modalclose/retry/recovery**; CP220/224 blockers không bị rút.
+   PR326/CP254 đã merge5dcb9af; không Rustsourcechange. Native counter semantics là declared input fault/compoundguard,
+   không originalclientnormalbehavior, independentbranchcoverage hoặc alreadyactiveBmatch proof. Backend/C2S6echo32khácstrong64.
+   **NEXT: chốt freshlogin/native-byte replay và projector account tổng quát trong phạm vi wire đã biết**, gộp các phép kiểm
+   liên quan, không mởSDK/VM graph. Reuse error1/nativeconsumer CP231/225 và TCP16 trước quyết định cần nativeunknownfrontend.
+   Freshprocess/newbackendSession/newfrontend khác sameprocessretry/accountresume/matchrestore. Profile beyond1/2/rename/version
+   hiện reject, cần typed projection cho knownname5/7 + nativeDB-ownedIDs mới trước xemM5. Không chờ M4Free.
+   Ghép account owner vào room/game/queuedrecipient/UDP cleanup theo M5/M7 sau seam này; chưa công bố service chơi account hoàn chỉnh.
+   Periodic auditCP256 bắt buộc đối chiếu CP253–256; ownerWine/LAN/WAN giảlập giữ, Internet thật là backlog riêng.
    M4 vẫn mở do Free1v7haioutcomes/selector0nativepersist; native9 criterion có bằng chứng scope riêng, không tự đóng cả M4.
    Không nâng baseline8 thành fullM4/terrain-items8/auth. Shared8EOF chỉmodel/TCPfence/no175180, chưa7nativeRoomreturn.
    Queue8inbox16 giữlocalpending16/2-4inbox8; unique7life/8bomballwrites. CP209sealedraw142/167 khácfour đã đối chiếu,
