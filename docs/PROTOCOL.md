@@ -24,6 +24,8 @@ Wine/LANgiảlập/K6cWANgiảlập giữ quyết địnhowner; Internet thật 
 <a id="eight-team-variants"></a>
 ### Tám actualclient: Free 1–7 và Manner 4–4 qua hai kết quả/reset — CP213
 
+Bổ sung delivery11/11: [source Python byte-identical/kiểm](evidence/eight-player/team-code-delivery.json) được giao riêng; không đổi kết quả/copy/hash CP213 và không chứng minh Rust variants.
+
 [Raw/recipe/hash](evidence/eight-player/README.md#cp213), [câu hỏi/phép thử](RESEARCH.md#gap-lobby-identity-followup),
 [thứ tự duy nhất](PLAN.md#current-order). `kr_runtime/confirmed` trong profile/copy dưới; team/rank/fuse policy `design`.
 

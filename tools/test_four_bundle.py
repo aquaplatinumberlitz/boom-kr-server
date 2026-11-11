@@ -101,7 +101,7 @@ class FourBundleTests(unittest.TestCase):
         self.assertEqual(self.call(moved,'--verify-only').returncode,0)
         self.assertIn('--battle-outcome',self.call(moved,'--help').stdout)
         runtime=self.root/'not-created'
-        for option in [['--bomb-profile','outside.json'],['--bomb-profile=outside.json'],['--battle-outcome']]:
+        for option in [['--bomb-profile','outside.json'],['--bomb-profile=outside.json'],['--battle-outcome'],['--team-layout','1v7'],['--allow-manner']]:
             result=self.call(moved,*option,'--out',str(runtime),'--port','0')
             self.assertNotEqual(result.returncode,0);self.assertFalse(runtime.exists())
         p=moved/'bundle.json';j=json.loads(p.read_text())

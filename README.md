@@ -38,6 +38,8 @@ Cùng8/Wine/Manner1/32TCP: loading8,56chiều movement,stat/bom8owner,7peerlife/
 M4 còn fixedFree1v7/selector và Mannernegative cùng native9admissionbridge; M5nativebridge riêng, không fullgame/auth.
 CP249 merge [PR320](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/320)/`9fdb57b`; AUD071qua248/kế252. Internet thật chưa kiểm.
 
+Python reference cho fixed4v4/1v7 và selector được giao riêng từ WIP CP213, giữ nguyên source đã đo: [provenance/giới hạn](docs/evidence/eight-player/team-code-delivery.json). Không phải nghiệm thu Rust variants.
+
 ### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP249: Rust đã đưa ba survivor về phòng sau guest/host EOF khi bom còn chờ.**

@@ -75,6 +75,7 @@ from server.four_identity_store import pin_identities
 class FourPlayerService(ProbeService):
     PLAYER_PROFILE = fp
     RANK_BODY = staticmethod(rank_body)
+    ROOM_SELECTORS = (0,)
     def __init__(self, profile, out, source_ips, *, bind_ip='127.0.0.1',
                  channel_ip=None, channel_port=None, bomb_profile=None, battle_outcome=False, abort_room=False, identity_store=None):
         self.player_profile = self.PLAYER_PROFILE
@@ -365,7 +366,7 @@ class FourPlayerService(ProbeService):
                 return
             if role == 'A' and opcode == 81:
                 title, selector = create_title(body), create_selector(body)
-                if selector != 0:
+                if selector not in self.ROOM_SELECTORS:
                     self.reject(event, opcode, sequence, 'four_session_requires_free0')
                     return
                 self.room_title_bytes, self.room_team_selector = title, selector

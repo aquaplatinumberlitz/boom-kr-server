@@ -1,0 +1,65 @@
+{
+  "schema": "kre-python-team-delivery-v1",
+  "recorded_utc": "2026-11-11T02:34:07.068597+00:00",
+  "baseline": "de84217dd29034b080e4627639df451b34f3f3e0",
+  "canonical": "docs/PROTOCOL.md#eight-team-variants",
+  "source_files": [
+    {
+      "path": "server/eight_battle_policy.py",
+      "sha256": "a1f40cb0243f4368aff157723e4e39dee9417e03b046421e2a35ef22204b75fc"
+    },
+    {
+      "path": "server/eight_player_profile.py",
+      "sha256": "46a4ab61538eb97e30919eb9dec8fae53764411dd8c2c6d6848775c74ea5994b"
+    },
+    {
+      "path": "server/eight_player_service.py",
+      "sha256": "6bb708674ad1aaac97df5315d9aeefa02d76b50d11bac1acb37ffca13e5dc4c5"
+    },
+    {
+      "path": "server/four_observability.py",
+      "sha256": "b42c44b01d22eddfa6e93a32efbf618c681823717972c8e56df4ccb26623f18c"
+    },
+    {
+      "path": "server/four_player_service.py",
+      "sha256": "33679549b0e19902632abb94a4569921dcd2e749e08bce36fd002b12630795bc"
+    },
+    {
+      "path": "tools/probe_bundle.py",
+      "sha256": "74fbd44de0f20f611a11c4b57345f1b065cb6c96f94b4ac9e64bdee2bff91315"
+    },
+    {
+      "path": "tools/test_four_bundle.py",
+      "sha256": "0299169300e9f64e46071339dc3eb3267085acf1beb834683c10a2b80ec93eec"
+    },
+    {
+      "path": "server/test_eight_team_variants.py",
+      "sha256": "4e7d7c0f3ea8b4624eb3014cd3d21ecfc78f6b4c88d40bdf09525e5829ee31b1"
+    }
+  ],
+  "provenance": "CP213 frozen Python team implementation delivered byte-identically after planning-only scope; native/runtime results stay at CP213 with their original hashes and limits.",
+  "verification": {
+    "server": "366 tests pass",
+    "bundles": "13 tests pass",
+    "presets": "5 tests pass"
+  },
+  "runtime": "No new runtime or Rust compatibility claim; CP213 Free1v7/Manner4v4 two outcomes and selector persistence; unbalanced negative on alternate8d copy only.",
+  "limits": "Fixed operator layouts only, no interactive team packet/general admission; no gate closure. Internet thật chưa kiểm.",
+  "test_evidence": [
+    {
+      "path": "local/research/codex/cp251-server-tests.txt",
+      "bytes": 466,
+      "sha256": "94197f42a28c40da245077b81f6715689cab1051c1c05c69ec6f75ba7fd57e98"
+    },
+    {
+      "path": "local/research/codex/cp251-python-bundle-tests.txt",
+      "bytes": 112,
+      "sha256": "c282d3871fc2a193bfdff8a0a0ffbfe755b367033c119e2e3b44ac604f5188c1"
+    },
+    {
+      "path": "local/research/codex/cp251-python-preset-tests.txt",
+      "bytes": 20637,
+      "sha256": "51c679a9e083e4b953498449e41ba95fc50a1abbc5569bcfca6deb631d8d1f37"
+    }
+  ]
+}
