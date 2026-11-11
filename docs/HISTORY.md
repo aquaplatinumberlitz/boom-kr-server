@@ -5,6 +5,16 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP267: đã chốt thiết kế endpoint/relay sau N1b; tiếp R1f session binding.**
+[Thiết kế/module/lifecycle](RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design),
+[phạm vi](PROTOCOL.md#rust-relay-endpoint-scope), [evidence/reuse](evidence/rust-service/relay-endpoint-design.json).
+Giữ direct legacy; relay opt-in dùng socket từng hướng, forward nguyên payload từ reverse socket là phương án cần đo.
+R1f và relay implementation là hai lát cắt riêng theo [dashboard](PLAN.md#dashboard).
+Chưa triển khai relay hoặc có native proof mới. N1b âm đã giao [PR345](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/345);
+N1 một phía tới được/K6c/K7 giữ scope. M5 tổng quát và shared-NAT còn mở. Thông tin VPS chỉ local.
+Mốc cũ ở [HISTORY](HISTORY.md).
+
+
 **CP266: N1b đã đo đủ hai lượt; UDP trực tiếp thất bại khi cả hai phía đổi cổng.**
 [Đối chiếu native/capture và giới hạn](PROTOCOL.md#rust-n1b-dual-nat), [raw/hash](evidence/rust-service/n1b-dual-nat.json).
 Hai KR/Wine vẫn đi qua account/phòng, hai kết quả/reset và Start3 qua TCP, nhưng không có ingress/helper movement UDP

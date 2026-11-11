@@ -8,7 +8,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 **Mỗi phiên chỉ cần đọc mục này.** Phần còn lại của file là tham chiếu (acceptance, lịch sử), tra theo anchor khi cần.
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP267 / AUD084**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP268 / AUD085**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Dài hạn: gameplay đầy đủ.
@@ -39,7 +39,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 
 **Blocker và việc tồn:**
 
-- Direct UDP âm ở hai NAT đổi cổng; thiết kế CP267 đã tách việc R1f khỏi relay opt-in. Chưa có relay implementation/native proof; N1b không retry. PR345 đã merge.
+- Direct UDP âm ở hai NAT đổi cổng; thiết kế CP267 đã tách việc R1f khỏi relay opt-in. Chưa có relay implementation/native proof; N1b không retry. PR345 đã merge. CP268 sửa schema danh tính checkpoint docs, record CP267 giữ nguyên; PR thiết kế còn chờ exact-head/history/CI.
 - R1e serving vẫn fixed-room cũ; cấu hình/tạo/chọn nhiều phòng tổng quát và occupancy thuộc M7, không suy đã có từ container/unit.
 - `local/` (bằng chứng thô và fixture) chưa có backup ngoài máy này.
 

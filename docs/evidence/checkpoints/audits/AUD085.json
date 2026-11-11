@@ -1,0 +1,49 @@
+{
+  "id": "AUD085",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "documentation-checkpoint-identity-correction"
+  ],
+  "completed_through": "CP268",
+  "recorded_utc": "2026-11-11T22:22:01.301969+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/documentation-identity.json",
+    "tools/check_checkpoints.py",
+    "tools/test_checkpoints.py",
+    "docs/evidence/checkpoints/records/CP267.json",
+    "local/research/codex/cp267-exact-head-history.txt",
+    "local/research/codex/cp268-checkpoint-tests-r1.txt"
+  ],
+  "method": "Manualschemafailure→immutablecompleteCP267→declaredcanonical-docidentity→commonhash/history/runtimeguardreview→positive/negativeunit/source/docs audit. No nativecontractchange.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Oldschemaalwaysrequiresexecutable/artifactidentity evenpuredesigncheckpointalreadyidentifiescanonicaldocswithpins.",
+      "correction": "Emptyartifactsacceptedonlyall-design/documentation/nonconfirmedfindings withrepositorycanonicaldocpin andperfindingdocref; locator/hash/history/continuity/audit remain.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "tools/test_checkpoints.py",
+        "docs/PROTOCOL.md",
+        "docs/evidence/checkpoints/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "FixingCP267artifactfieldaftercomplete wouldrewritehistory.",
+      "correction": "Record/evidence/auditCP267unchanged; CP268recordsfailure+toolcorrectionandtests. No fakebinary or nativeclaim inserted.",
+      "fixed_in": [
+        "docs/evidence/rust-service/documentation-identity.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Schema/provenancevalidation only, notsemantic/nativecertification.",
+    "FullhistoryandCI mustpassonnewexactheadbeforemerge; initialfailurekept.",
+    "No actualVPSidentifiers/config/access intrackeddata."
+  ]
+}

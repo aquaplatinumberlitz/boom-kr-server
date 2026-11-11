@@ -196,3 +196,9 @@ record v2 complete tương ứng**. Blob trùng ở commit về sau hoặc check
 Checker báo `HISTORICAL METADATA DOC VERIFIED`; không đổi record/evidence manifest cũ hoặc dùng nội dung
 hiện tại thay nội dung đã pin. Các JSON runtime/evidence, checkpoint/audit và file local/binary không thuộc
 ngoại lệ này, vẫn kiểm nghiêm như trước. Đây là xác minh phiên bản tài liệu, không chứng nhận runtime/gate.
+
+Từ CP268, checkpoint **thuần tài liệu** có thể khai `artifacts=[]` khi mọi finding là design/documentation và
+status design/candidate/unknown; canonical docs/*.md phải có kind repository/size/SHA trong evidence, mỗi finding
+tham chiếu tài liệu đã pin. Checker cảnh báo `DOCUMENTATION identity`, vẫn kiểm locator/hash/history/continuity/
+audit/docs_sync. Claim runtime/static/emulation/test/confirmed không dùng đường này. CP267 record cũ bất biến;
+lượt schema failure và correction giữ riêng ở [nguồn](../../PROTOCOL.md#documentation-checkpoint-identity).

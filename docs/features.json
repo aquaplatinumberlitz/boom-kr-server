@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP267",
+  "as_of": "CP268",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -5510,7 +5510,9 @@
           "docs/evidence/rust-service/n1b-dual-nat.json",
           "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
           "docs/PROTOCOL.md#rust-relay-endpoint-scope",
-          "docs/evidence/rust-service/relay-endpoint-design.json"
+          "docs/evidence/rust-service/relay-endpoint-design.json",
+          "docs/PROTOCOL.md#documentation-checkpoint-identity",
+          "docs/evidence/rust-service/documentation-identity.json"
         ]
       },
       "coverage": {

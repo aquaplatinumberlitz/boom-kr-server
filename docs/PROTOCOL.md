@@ -9826,3 +9826,20 @@ R1f tách PlayerId/session lease khỏi sourceIP và để endpoint ở plan ri�
 Rust `Room::begin` và `wire_key` tại baseline CP266 chỉ checked counter/overflow, **chưa có guard256 như Python
 UdpRoundKeys**; không thừa kế giới hạn Python qua mô tả. Giới hạn vòng/portreuse phải xử lý riêng trước relay acceptance.
 Các gate/record/raw cũ giữ nguyên; design hoàn tất không đồng nghĩa relay/R1f/fullM5 đã nghiệm thu.
+
+<a id="documentation-checkpoint-identity"></a>
+## Danh tính checkpoint thuần tài liệu — correction CP268
+
+Nguồn **design/design**, kiểm tool/schema; [metadata](evidence/rust-service/documentation-identity.json),
+[workflow](evidence/checkpoints/README.md). CP267 khai `artifacts=[]` vì không có binary/runtime mới; kiểm lịch sử đầu
+xác minh424095 pin nhưng lỗi schema "artifact identity and locators/run IDs required". Không sửa complete record,
+audit hoặc evidence CP267 để vượt checker, không gọi lượt lỗi là đạt.
+
+Checker nhận danh tính từ tài liệu chuẩn có pin khi artifacts đúng mảng rỗng và **mọi** finding có source design,
+method documentation, status design/candidate/unknown. Mỗi canonical phải là docs/*.md có kind repository/size/SHA
+trong evidence; mỗi finding phải dẫn ít nhất một tài liệu đã pin. Locator và các kiểm hash/history/continuity/audit/
+docs_sync/evidence-reference giữ nguyên. In warning riêng không chứng nhận implementation/runtime.
+Kr_runtime/kr_static, method runtime/static/emulation/test, status confirmed hoặc thiếu canonical pin vẫn không được
+miễn artifact. Sourcepin tài liệu không chứng minh nội dung đúng; audit thủ công/acceptance vẫn giữ vai trò cũ.
+57 test checkpoint gồm positive/docs-pinned và negative hash/source/method/status/canonical/locator đạt.
+Đây là correction công cụ, không có contract KR hoặc runtime/acceptance mới; thiết kế CP267 và gate cũ giữ phạm vi.

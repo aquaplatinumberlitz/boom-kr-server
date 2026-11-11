@@ -729,3 +729,11 @@ Chỉ design/docs; nativeN1b2runs CP266 không chạy lại. LegacyDirect giữ 
 CP045/138/193/261/266, chưa implementation. Route/session/membership/round, reservation/queue/resource/rebind/cleanup/
 portreuse và sameIPspoof limits đã tách rõ. Guard256 có ở Python, chưa ở Rust; không nhận là runtime đã bảo vệ.
 AUD084 audit nhóm thiết kế; PR345 đã merge. Tiếp R1f, R1g, relay implementation/native riêng; không nâng gate/M5/R1.
+
+<a id="cp268"></a>
+### CP268 — correction checker danh tính checkpoint docs
+
+[Scope/giới hạn](../../PROTOCOL.md#documentation-checkpoint-identity), [metadata](documentation-identity.json).
+57 checkpoint tests đạt. CP267 pin/record/audit bất biến, run checker lỗi giữ local. Chỉ design/documentation với
+canonical docs pin đầy đủ dùng artifacts rỗng; runtime/static/test/confirmed không được miễn artifact/hash/history.
+AUD085 audit nhóm schema-tool; không runtime/implementation/gate mới. Thứ tự R1f/relay giữ PLAN.
