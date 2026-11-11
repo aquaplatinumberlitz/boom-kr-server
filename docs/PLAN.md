@@ -38,7 +38,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 
 **Blocker và việc tồn:**
 
-- Bàn giao R1d [PR343](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/343) đang chờ CI:
+- Bàn giao R1d PR343 đang chờ CI:
   [GitHub Status](https://www.githubstatus.com/) báo Actions `major_outage` tại lần kiểm 12/11;
   hai workflow còn `queued`, chưa có job/runner. Local 96 Rust/306 TCP/83 Python và421748 pin/lịch sử đã đạt.
   Không merge khi CI chưa đạt. Khi Actions phục hồi: kiểm đúng head và `gh pr checks 343`, rồi merge và tiếp R1e.
