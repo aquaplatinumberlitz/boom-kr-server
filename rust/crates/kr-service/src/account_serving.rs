@@ -285,7 +285,12 @@ pub(crate) async fn connection(
             let (owned, lease, echo) = if packet.opcode == 1
                 && (port == endpoints.login_port || endpoints.login_candidate_ports.contains(&port))
             {
-                let result = tokio::select! {_=stop.changed()=>return Ok(()),v=active.bridge.login(&packet.payload,peer,id)=>v};
+                let reported = bound
+                    .actors
+                    .get(&peer)
+                    .and_then(|actor| actor.reported_login_ipv4)
+                    .unwrap_or(peer);
+                let result = tokio::select! {_=stop.changed()=>return Ok(()),v=active.bridge.login_with_reported_address(&packet.payload,peer,reported,id)=>v};
                 let login = match result {
                     Ok(login) => login,
                     Err(_) => {

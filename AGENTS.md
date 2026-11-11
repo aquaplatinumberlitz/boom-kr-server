@@ -101,6 +101,10 @@ Code trên nhánh/worktree riêng của repo này; giữ thay đổi người kh
 repo. Commit task của mình và kiểm diff. Tích hợp main qua PR sau kiểm tra phù hợp; theo miễn review
 28/10, Codex được tự merge trong phạm vi đã cấp quyền. Không gọi việc này là review độc lập.
 Không push binary/decompile/credential. Không đổi cấu hình cá nhân/IDA/MCP trong repo.
+Theo [chỉ đạo chủ dự án 11/11](docs/evidence/owner-directives/private-infrastructure.json), thông tin định danh và cấu hình VPS/OCI (IP/endpoint, OCID,
+hostname, tài khoản/đường dẫn truy cập, policy, ACL và topology thực) chỉ giữ trong `local/`.
+Không đưa các chi tiết này vào file tracked, commit, PR, issue hoặc comment GitHub; kiểm cả
+diff và nội dung bàn giao trước khi gửi. Báo kết quả/nghiệm thu không kèm chi tiết hạ tầng riêng.
 
 ## Kiểm và bàn giao
 

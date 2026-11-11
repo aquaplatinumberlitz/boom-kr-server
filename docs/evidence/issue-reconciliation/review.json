@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP259",
-  "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
+  "as_of": "CP260",
+  "baseline": "ef106731887dc800d09b82c01ae6a8480d6015de",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "PR330/CP258 merged1b8d6f2; PR329/RoomRules synchronized;86Rust59accountTCP143roomframes unchanged; privateARMbuild86tests pass. ProjectorWIP preserved/notmerged.",
-      "remaining": "N1 nativeInternet/NAT unknown; GetVnic404 afterDG+policycreated/currentlocatorsverified; M5 genericprofile/nativeDBqueuefault/recoverylimits remain.",
-      "next_test": "PLAN N1 with savedIAMconfiguration diagnosis first; then R1b-g, R1f uses N1. No blind IAM polling or M4Free retries.",
+      "known": "CP260explicitcontrollednetwork/loginmetadata;90Rust/two59TCP/9network5metadataguards;nativeauth0twoKR. R7modal2/globalclosebeforeHTTPemptythrow, notinitialcausefix; failedraw/seals/cleanup retained.",
+      "remaining": "N1OPEN nativeown291/99/153/UDP/outcomes/reset/sharedNAT missing; no a/b/cdecision. M5generalprofile/nativeDBfault/recovery and R1/multiroom/fullservice remain separate.",
+      "next_test": "PLAN targetedCP015postwait elapsed/threshold/recv/17timing before1113AA0modal2; no contentstub/broadSDK. R1b-g after N1; source/privateinfra directive observed.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "OwnerPR329 priority supersedes old projector-first order; no N1/R1 groupcomplete or newnativeclaim; K6cK7emulatedWANunchanged.",
+      "reason": "AUD077attributioncorrection/independentreviewwaived, not completedN1featuregroup or periodic4CP. CP259PR331merged; CP260deliverypendingexactheadchecks.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",

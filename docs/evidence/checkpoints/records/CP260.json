@@ -1,0 +1,270 @@
+{
+  "id": "CP260",
+  "previous": "CP259",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T15:20:29.002254+00:00",
+  "context_commit": "ef106731887dc800d09b82c01ae6a8480d6015de",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 N1: enable bounded controlledInternet measurements while preserving account/session ownership; determine actualnative channel blocker from sealed runtime, notnetworkreadiness orHTTPstack assumptions.",
+  "scope": "Rustexplicitnetworkscope/loginmetadata; source/syntheticverification and sevennativeKR/Wine partialruns withraw/hash/cleanup. No N1acceptance or gameplay claim.",
+  "artifacts": [
+    {
+      "name": "copy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "existing_emptyguard_copy8d",
+      "sha256": "8d7194fd4f9a5a798282fc995f2d880ff0a702ffc1e61ca06aba221632f7e16a"
+    },
+    {
+      "name": "arm_service",
+      "sha256": "3f36acafef5cd7a467cfcda9d9a11cad9fb9e81451e4ed6bb484f7d737f3fdda"
+    },
+    {
+      "name": "arm_admin",
+      "sha256": "74d7079cd445903fa87db8474781e9d1033373265cb6ef027f777f112ee0b241"
+    },
+    {
+      "name": "rust_source_archive",
+      "sha256": "61dd051c90329bdaccddd3a067f827d7899b3e618455ae6e48ec4606ce5b215f"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md#rust-controlled-network",
+    "local/research/codex/n1-native-http-r7/native/ordering-correction.json",
+    "CP015cachedpostwait1113A7B..1113AA0; actualthreshold/elapsed/recvstillunknown",
+    "Sourcearchive61dd051c/ARMservice3f36acaf; copies4b vs8d distinct; no clientsource mutation"
+  ],
+  "findings": [
+    {
+      "summary": "Explicitcontrolledscope with finiteunicastpeerallowlist/privatebind; optionalcapturedloginIPv4metadata onlyaccountcontrolledmode. Actualpeer/token/player/session/connection/generation ownership preserved; defaultBridgeAPIstrict.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-controlled-network",
+      "evidence": [
+        "N1CP260-00059",
+        "N1CP260-00012"
+      ],
+      "limits": "N1 OPEN: no native own291/room/99/153/UDP gameplay, outcomes/reset/Start3 or sameNAT acceptance; no direct/learning/relay decision.; Successfulbackend/channelbinding and native authresult0 are distinct fromnativechannelconsumer; no fullM5/sharedNAT/R1f/generalprofile/authscopeupgrade.; R7 original failure occurs before HTTP; exact channel timer/recv state still unknown. Next targeted measurement uses cachedCP015waitblock; no contentstub or broadSDK.; Existingguard8d not promoted; original4b/client/source/raw preserved. Prefixes reused after cleanup, notfreshprefix reliability.; IAM/routing/bareUDPnonce readiness is infrastructureproof only; earlier failures retained. Raw/hash/cleanup evidence private local, no public infrastructure details.; K6c WAN giả lập/K7 accepted scopes unchanged; Internet thật chưa kiểm ở mức game KR."
+    },
+    {
+      "summary": "90Rust/fmt/clippy/lockedbuild/two59accountTCP/network9/metadataguards5 pass; ARMbuild/test/binarySHAverified. Synthetictests independentofnativeacceptance.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-controlled-network",
+      "evidence": [
+        "N1CP260-00061",
+        "N1CP260-00060",
+        "N1CP260-00056",
+        "N1CP260-01677",
+        "N1CP260-00062"
+      ],
+      "limits": "N1 OPEN: no native own291/room/99/153/UDP gameplay, outcomes/reset/Start3 or sameNAT acceptance; no direct/learning/relay decision.; Successfulbackend/channelbinding and native authresult0 are distinct fromnativechannelconsumer; no fullM5/sharedNAT/R1f/generalprofile/authscopeupgrade.; R7 original failure occurs before HTTP; exact channel timer/recv state still unknown. Next targeted measurement uses cachedCP015waitblock; no contentstub or broadSDK.; Existingguard8d not promoted; original4b/client/source/raw preserved. Prefixes reused after cleanup, notfreshprefix reliability.; IAM/routing/bareUDPnonce readiness is infrastructureproof only; earlier failures retained. Raw/hash/cleanup evidence private local, no public infrastructure details.; K6c WAN giả lập/K7 accepted scopes unchanged; Internet thật chưa kiểm ở mức game KR."
+    },
+    {
+      "summary": "ActualKRfrontend32/body61 shapesmatch butreportedIP!=transportpeer inR3. MappingR4–7 yieldsnativeauthresult0both; noown291/room/99. R5emptyinputthrow andR6guardoutput0thenSIGILL are partialnegativeevidence, notfix.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-controlled-network",
+      "evidence": [
+        "N1CP260-00249",
+        "N1CP260-01075",
+        "N1CP260-01354"
+      ],
+      "limits": "N1 OPEN: no native own291/room/99/153/UDP gameplay, outcomes/reset/Start3 or sameNAT acceptance; no direct/learning/relay decision.; Successfulbackend/channelbinding and native authresult0 are distinct fromnativechannelconsumer; no fullM5/sharedNAT/R1f/generalprofile/authscopeupgrade.; R7 original failure occurs before HTTP; exact channel timer/recv state still unknown. Next targeted measurement uses cachedCP015waitblock; no contentstub or broadSDK.; Existingguard8d not promoted; original4b/client/source/raw preserved. Prefixes reused after cleanup, notfreshprefix reliability.; IAM/routing/bareUDPnonce readiness is infrastructureproof only; earlier failures retained. Raw/hash/cleanup evidence private local, no public infrastructure details.; K6c WAN giả lập/K7 accepted scopes unchanged; Internet thật chưa kiểm ở mức game KR."
+    },
+    {
+      "summary": "R7sameoriginal4b actualURL/OpenUrlNULL→emptyinputthrow; bothmodal2/globalclose occurredbeforeHTTP. CorrectworkingHTTPinitialcauseinterpretation; timer/recv/packet17firstfailure remainsunknown. No upstreamrequestor response success.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-controlled-network",
+      "evidence": [
+        "N1CP260-01604",
+        "N1CP260-01606"
+      ],
+      "limits": "N1 OPEN: no native own291/room/99/153/UDP gameplay, outcomes/reset/Start3 or sameNAT acceptance; no direct/learning/relay decision.; Successfulbackend/channelbinding and native authresult0 are distinct fromnativechannelconsumer; no fullM5/sharedNAT/R1f/generalprofile/authscopeupgrade.; R7 original failure occurs before HTTP; exact channel timer/recv state still unknown. Next targeted measurement uses cachedCP015waitblock; no contentstub or broadSDK.; Existingguard8d not promoted; original4b/client/source/raw preserved. Prefixes reused after cleanup, notfreshprefix reliability.; IAM/routing/bareUDPnonce readiness is infrastructureproof only; earlier failures retained. Raw/hash/cleanup evidence private local, no public infrastructure details.; K6c WAN giả lập/K7 accepted scopes unchanged; Internet thật chưa kiểm ở mức game KR."
+    },
+    {
+      "summary": "Privateinfra readiness/realUDPnonce/routing and perrunexactcleanup are not nativeKRgameacceptance. Noactualinfra published; N1OPEN and oldK6cK7scopeunchanged.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-controlled-network",
+      "evidence": [
+        "N1CP260-01636",
+        "N1CP260-00015"
+      ],
+      "limits": "N1 OPEN: no native own291/room/99/153/UDP gameplay, outcomes/reset/Start3 or sameNAT acceptance; no direct/learning/relay decision.; Successfulbackend/channelbinding and native authresult0 are distinct fromnativechannelconsumer; no fullM5/sharedNAT/R1f/generalprofile/authscopeupgrade.; R7 original failure occurs before HTTP; exact channel timer/recv state still unknown. Next targeted measurement uses cachedCP015waitblock; no contentstub or broadSDK.; Existingguard8d not promoted; original4b/client/source/raw preserved. Prefixes reused after cleanup, notfreshprefix reliability.; IAM/routing/bareUDPnonce readiness is infrastructureproof only; earlier failures retained. Raw/hash/cleanup evidence private local, no public infrastructure details.; K6c WAN giả lập/K7 accepted scopes unchanged; Internet thật chưa kiểm ở mức game KR."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rustsourceandboundedaccountregression",
+      "result": "pass",
+      "evidence": [
+        "N1CP260-00061",
+        "N1CP260-00060",
+        "N1CP260-00056"
+      ],
+      "limits": "Source/synthetic only, no UDP/generalsharedNATclaim."
+    },
+    {
+      "check": "NativeR7ordering_and_cleanup",
+      "result": "pass",
+      "evidence": [
+        "N1CP260-01606",
+        "N1CP260-01636"
+      ],
+      "limits": "Partialfailuremeasurement; notchannel/gameplayacceptance."
+    },
+    {
+      "check": "N1nativegameacceptance",
+      "result": "fail",
+      "evidence": [
+        "N1CP260-01609"
+      ],
+      "limits": "Channelwaitfailure beforeown291/99/UDPgameplay; nochosen(a)/(b)/(c)."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP260-controlled-network.json",
+      "bytes": 477532,
+      "sha256": "1698facf66bb239c6bdcc10e8f80b7e547fb762c06ed4bdcf80fa44e55805c03",
+      "count": 1823
+    }
+  ],
+  "delta": {
+    "added": [
+      "Boundedcontrollednetwork andexplicitmetadataAPI withownershiptests/nativeauthpartial evidence; privateinfrastructuredirective.",
+      "Sevenrelatedpartialruns/frozeninputs/raw/seals/cleanup, provenance and defaults preserved."
+    ],
+    "corrected": [
+      "R7modal2/globalclosebeforeHTTP: laterHTTPthrow is notproveninitialchannelcause. No repeatedguard/contentstubfixclaims."
+    ],
+    "superseded": [
+      "CP259effectiveIAMblocker resolved bynewprivatereadiness evidence, notN1gameacceptance."
+    ]
+  },
+  "blockers": [
+    "N1 OPEN: no native own291/room/99/153/UDP gameplay, outcomes/reset/Start3 or sameNAT acceptance; no direct/learning/relay decision.",
+    "Successfulbackend/channelbinding and native authresult0 are distinct fromnativechannelconsumer; no fullM5/sharedNAT/R1f/generalprofile/authscopeupgrade.",
+    "R7 original failure occurs before HTTP; exact channel timer/recv state still unknown. Next targeted measurement uses cachedCP015waitblock; no contentstub or broadSDK.",
+    "Existingguard8d not promoted; original4b/client/source/raw preserved. Prefixes reused after cleanup, notfreshprefix reliability.",
+    "IAM/routing/bareUDPnonce readiness is infrastructureproof only; earlier failures retained. Raw/hash/cleanup evidence private local, no public infrastructure details.",
+    "K6c WAN giả lập/K7 accepted scopes unchanged; Internet thật chưa kiểm ở mức game KR."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLAN N1: reuseCP015postwait1113A7B..AA0, measuredelapsed/threshold/nativeTCP receive/packet17 timing beforemodal2. HTTPisafterclose; no contentstub/broadSDK/bypass. Thenactual99/153/UDP/outcomes/reset/sameNAT for a/b/cdecision, R1b-gafterN1; WIPpreserved.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T15:20:29.002254+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex source/native/document selfverification; independentreviewwaived; agentauthorizedonlyVPSnetworksetup/read-onlycleanup.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "docs/evidence/rust-service/controlled-network.json",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "docs/evidence/owner-directives/private-infrastructure.json",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    }
+  ]
+}

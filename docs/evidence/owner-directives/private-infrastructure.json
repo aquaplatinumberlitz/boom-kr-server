@@ -1,0 +1,9 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "source": "project_owner_direct_message",
+  "decision": "VPS/OCI định danh và cấu hình hạ tầng chỉ lưu ignored local; không đưa GitHub.",
+  "scope": "IP/endpoint/OCID/hostname/account/accesspath/policy/ACL/actualtopology và raw cấu hình. Báo kết quả/hash/giới hạn tổng quát, không public chi tiết thực.",
+  "recorded_utc": "2026-11-11T15:13:25.126187+00:00",
+  "canonical": "AGENTS.md",
+  "limits": "Không đổi gate/acceptance hoặc lịch sử checkpoint/raw."
+}

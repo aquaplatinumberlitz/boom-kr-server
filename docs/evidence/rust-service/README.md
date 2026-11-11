@@ -641,3 +641,17 @@ Projectorown5file snapshot/stashaa4800a.../88Rust17TCP/PIDgone/no native giữ �
 không bỏWIP/kéo nó trước N1/R1. PR329ClaudeTCPraw/MANIFEST.sha256 giữ nguồn riêng, không đổi provenance thànhnative.
 Policy và dynamic group OCI đã tạo; fresh signer 11/11 12:22 UTC vẫn `GetVnic404 NotAuthorizedOrNotFound`; cần đối chiếu cấu hình đã lưu. ARM64 locked build/86 test từ main1b8d6f2 đạt, chưa game listener/native. N1(a)/(b)/(c)/99-NATtuple/sharedNAT chưa đủ proof.
 Khôngauditcốđịnh4CP, nhómN1/R1 chưacomplete. K6cK7scopegiữ; Internet thật chưa kiểm ởmứcnativegame.
+
+<a id="cp260"></a>
+### CP260 — controlled network/login metadata và native channel chưa đạt
+
+[Contract/giới hạn](../../PROTOCOL.md#rust-controlled-network), [metadata](controlled-network.json), [PLAN](../../PLAN.md#current-order).
+90Rust/fmt/clippy/lockedbuild, hai59TCP/9networkguards/5metadataguards; sourcearchive vàARMbinary hash đãpin.
+Raw/seal của bảy lượt ở `controlled-network.json`; nativeauth0 không tự chứng minh own291/phòng/UDP.
+R3 frontend32/body61 hợp lệ, IPmetadata khácpeer nên từchối; mapping tườngminh giữ actualtransport/sessionowner
+choR4–7nativeauth0. R5input0→throw; R6guardemptyoutput0 rồiSIGILLcleanup, khôngstartupfix.
+R7actualURL/openNULL/emptythrow nhưng modal2/globalclose xảyra trước; sửa workinginterpretation HTTP là initialcause.
+LastErrorunknown/no successfulHTTPresponse. NEXTtimer/recv/17 timingtrướcmodal2 theoRESEARCH; khôngcontentstub/bypass.
+Từnglượt raw/hash/frozeninputs/cleanup kiểm riêng; details/ACL/topology/access chỉignoredlocal theoowner.
+AUD077 kiểm ngay sửa attribution, khôngauditđịnhkỳ4CP/không hoàn tất nhómN1/R1. N1OPEN; K6c/K7scopegiữ.
+Internet thật chưa kiểm ở mức game KR.

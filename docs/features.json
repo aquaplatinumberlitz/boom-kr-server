@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP259",
+  "as_of": "CP260",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -5241,7 +5241,9 @@
             "docs/evidence/rust-service/README.md#cp249",
             "docs/PROTOCOL.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
-            "docs/evidence/rust-service/README.md#cp250"
+            "docs/evidence/rust-service/README.md#cp250",
+            "docs/PROTOCOL.md#rust-controlled-network",
+            "rust/crates/kr-service/src/network.rs"
           ]
         },
         "integration": {
@@ -5351,7 +5353,8 @@
             "docs/evidence/rust-service/README.md#cp249",
             "docs/PROTOCOL.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
-            "docs/evidence/rust-service/README.md#cp250"
+            "docs/evidence/rust-service/README.md#cp250",
+            "docs/evidence/rust-service/controlled-network.json"
           ]
         },
         "gate": {

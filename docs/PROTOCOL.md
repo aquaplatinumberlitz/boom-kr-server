@@ -9474,3 +9474,72 @@ Chưa đọc được ACL, chưa sửa cloud ACL hoặc chạy native N1. Rust A
 Đích giai đoạn 1 là dịch vụ nội bộ 50 người/8 phòng và Internet thật; dài hạn giữ đầy đủ gameplay.
 N1 là dependency của đích mới; scope K6c/K7 bằng WAN giả lập giữ nguyên.
 Map/item G1, M4 Free 1v7 và thưởng ngoài mức 0 chờ chủ dự án. **Internet thật chưa kiểm** ở mức native game.
+
+<a id="rust-controlled-network"></a>
+## Môi trường thử Internet có allowlist tường minh — đang đo N1
+
+Nguồn **design/design**, không phải khôi phục authority hoặc nghiệm thu gameplay. Cấu hình Rust thêm
+`network_scope`: mặc định `private_lab` giữ điều kiện loopback/private cũ. `controlled_internet` chỉ dùng
+với profile sảnh có roster hữu hạn, private/loopback bind và allowlist từng IPv4 unicast; không cho bind
+wildcard, peer unspecified/multicast/broadcast, hoặc bỏ allowlist. Listener vẫn kiểm đúng allowlist trước
+admission. Không thêm học endpoint, session-based transport identity hoặc thay wire/packet 153 trong bước này.
+
+Tiền kiểm mạng có nonce/capture và cleanup riêng đã thông; không dùng nó làm native game proof. Lượt native
+đầu có lỗi đọc JSON điều phối trước đăng nhập. Lượt kế đã quan sát native auth result0 trên hai KR; A
+chủ động FIN channel sau frame17 đã tới transport (đối chiếu full SHA/sequence ở capture các đầu),
+chưa có native17 consumer, own291/phòng hoặc99. Không có contract/gameplay/NAT/relay conclusion.
+Phép tiếp dùng đối chứng đường frontend/account đã nghiệm thu và điểm native đóng channel; không
+quét SDK hoặc retry input cũ khi không có observable mới. Recipe phải giữ source/config/input cố định,
+ghi cổng native99 so post-NAT source thực, UDP từng chiều và native
+receive/helper/apply; giữ acceptance [N1](PLAN.md#rust-n1), không tự chọn nhánh direct/learning/relay.
+
+Kiểm source: fmt/clippy/89 test Rust/locked build; 9 ca config/admission gồm private-default/public-negative,
+explicit opt-in, unlisted socket, wildcard/empty/invalid peer/scope và cleanup; 59 ca account TCP mặc định
+đạt. Đây là kiểm tổng hợp. Hồi quy R1b được chuẩn bị riêng rồi giữ WIP để tiếp N1, chưa merge/nghiệm thu R1.
+Thông tin định danh/cấu hình truy cập, policy, topology và raw hạ tầng chỉ lưu `local/`, không đưa GitHub.
+
+### Metadata IPv4 của login qua NAT — policy tường minh, native auth đã đo
+
+Hai request native của đường account có frontend32 khớp token launcher vừa cấp và đúng hình dạng body61;
+IP tự báo khác IP nguồn TCP mà server quan sát. Kiểm hẹp cũ `login_token(body, peer)` vì vậy từ chối trước
+khi cấp identity. Đây là quan sát **kr_runtime/confirmed** của các request đã capture; không là authentication
+hoặc NAT law của server gốc. Địa chỉ thực và raw giữ riêng trong `local/`.
+
+Policy thử **design/design**: actor có thể khai báo `reported_login_ipv4` chỉ trong `controlled_internet`
+với account adapter. Giá trị này kiểm field metadata của request; source TCP thật vẫn chọn peer/lease và
+frontend vẫn dùng một lần, gắn account/player, connection/generation và channel handoff hiện hành. API
+bridge mặc định giữ so sánh cũ; field mới không tự bật theo request hoặc suy identity từ IP tự báo. Config
+private scope/không account/unspecified/multicast/broadcast bị từ chối trước listen. Chưa giải shared-NAT
+transport binding, general session identity hoặc endpoint learning của R1f.
+
+Kiểm source: fmt/clippy/90 Rust tests/locked build đạt; hai bộ59ca accountTCP (mặc định và metadata
+khác transport) và5guardconfig đạt. Test bridge thêm wrong actualpeer/wrongmetadata/forged và replay frontend,
+channel owner và revoke; bộTCP metadata dùng biến đổi input tổng hợp đã khai, không giả native traffic.
+Native cùng backend/launcher CP258 và mapping đo từ request nhận authresult0 ở cảhaiKR/Wine; account/lease/channel
+bindings từ backend là đối chiếu riêng, không suy native own291 từ logserver. Chưa có native own291/phòng.
+Không quy mọi lỗi đóng sau17 của đường diagnostic cũ cho guard account này.
+
+### Lỗi chờ channel và HTTP trong đường đóng — bằng chứng hẹp
+
+Reuse CP073 [phân biệt launcher/main](#launcher-error-attribution) và CP201/213 empty-guard cùng recipe CP258;
+không RE lại NMCO/provider hoặc parser toàn bộ. Copy4b SHA `4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed`:
+native hai role đi `96A15A → 96A4EB → 96E300 → abort`. Lượt passive kế xác nhận input tại `96A480`
+size0/capacity15, cùng thread hit throw96E2D0 rồi SIGABRT (**kr_runtime/confirmed** trong hai lượt đo).
+Chưa gán nguyên nhân HTTP upstream/DNS/network/timing từ stack hoặc JSON rỗng.
+
+Đối chứng bản copy8d SHA `8d7194fd4f9a5a798282fc995f2d880ff0a702ffc1e61ca06aba221632f7e16a` dùng guard cũ:
+input0→native emptyoutput0 đã quan sát, sau đó cảhai SIGILL tại2260DF8 trong cleanup. Không claim guard sửa
+startup, không sửa trap/force success. Sourceclient/bảncopy4b/raw cũ giữ nguyên; prefixes được dùng lại sau cleanup,
+không nhận fresh-prefix reliability. Runtime/raw/hash/cleanup nằm trong [metadata](evidence/rust-service/controlled-network.json).
+
+R7 trên original4b đã quan sát URL actual của đường CEMcontent, `InternetOpenUrlA` trả0 ở hai role,
+không đi send/readHTTP rồi input0→throw. Không fetchURL/Nexon; LastError từ register-only TEB lookup chưa lấy được,
+mã lỗi cụ thể vẫnunknown. **Đối chiếu thứ tự native log sửa hướng điều tra:** cảhai có modalresult2 với return1113AA0,
+modalclose110747A/11074A0 và globalclose1254CED **trước** HTTP. Vì thế HTTPthrow là lỗi phát sinh sau khi đường
+đóng đã bắt đầu, chưa là nguyên nhân channel đầu tiên. Không dựng contentstub hoặc tiếp bypassparser để giải N1.
+Reuse cached CP015postwait `1113A7B..1113AA0`: compareelapsed/threshold rồi đặtresult2 là staticlocator,
+chưa xác nhận elapsed/threshold thực tại runtimeN1. Phép tiếp ở [RESEARCH](RESEARCH.md#gap-rust-service) đo
+timer/recv/packet17 tại cửa sổ trướcmodal, giữ server/client/input ổn định; không broadSDK hoặc truy cập Nexon. Các importIAT được parser PE đối chiếu exactcopy: InternetOpenA16EA708,
+InternetOpenUrlA16EA704, HttpSendRequestA16EA6F8, InternetReadFile16EA700, GetLastError16EA48C.
+Import mapping là locator tĩnh; R7 URL/openreturn là native, không có response thành công. Native auth thành công chưa là nghiệm thu N1;
+actual99/153/nativeUDP/helper/apply/hai outcomes/reset/Start3/sharedNAT vẫn thiếu. Không công bố topology/IP/OCI thật.

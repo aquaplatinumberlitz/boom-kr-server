@@ -9,8 +9,9 @@ fn field(bytes: &[u8], width: Width) -> Result<u64> {
     read_uint(bytes, width).map_err(|_| Error::UnsupportedWire)
 }
 
-/// Narrow network profile: token32/body61, opaque16, zero, peer IPv4, zero.
-/// The peer check constrains this profile; it does not identify an account.
+/// Narrow network profile: token32/body61, opaque16, zero, reported IPv4, zero.
+/// The expected address constrains client metadata; it does not identify an
+/// account or establish the transport address observed beyond NAT.
 pub fn login_token(body: &[u8], peer: Ipv4Addr) -> Result<FrontendToken> {
     if body.len() != 61
         || field(&body[..1], Width::U8)? != 4
