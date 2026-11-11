@@ -631,3 +631,13 @@ R1normalfailure27raw vàR2preparationfailure/source preserved; freshcheckerSynta
 Sourcefirst ở `rust-account-basic-source-r1/reuse.json`, scripts/inputhash/raw giữlocal.84Rust/59accountbasicTCP/16lobbyregression.
 AUD076 audit nhómfixed2 theo policy mới; M5OPEN/generalprofile/nativeDBqueuefault/recoverylimits; M6/M7/M8 riêng.
 Wine/sharedhostvirtualLAN/privateTMPFS/exporthash, khôngdurability/strongUDPauth/Internetclaim. Internet thật chưa kiểm.
+
+<a id="cp259"></a>
+### CP259 — mainPR329/PR330 sync, ưu tiên N1/R1 theo owner
+
+[Chỉ đạo](../owner-directives/pr329-integration-order.json), [metadata](pr329-integration.json), [contractlimits](../../PROTOCOL.md#rust-pr329-integration).
+`pr329-sync-{fmt,clippy,test,build}-r1.txt` ởlocal/research/codex;86Rust làsource/buildproof, khôngnativebinaryacceptance.
+Projectorown5file snapshot/stashaa4800a.../88Rust17TCP/PIDgone/no native giữ ở `rust-account-projector-source-r1`;
+không bỏWIP/kéo nó trước N1/R1. PR329ClaudeTCPraw/MANIFEST.sha256 giữ nguồn riêng, không đổi provenance thànhnative.
+Policy và dynamic group OCI đã tạo; fresh signer 11/11 12:22 UTC vẫn `GetVnic404 NotAuthorizedOrNotFound`; cần đối chiếu cấu hình đã lưu. ARM64 locked build/86 test từ main1b8d6f2 đạt, chưa game listener/native. N1(a)/(b)/(c)/99-NATtuple/sharedNAT chưa đủ proof.
+Khôngauditcốđịnh4CP, nhómN1/R1 chưacomplete. K6cK7scopegiữ; Internet thật chưa kiểm ởmứcnativegame.

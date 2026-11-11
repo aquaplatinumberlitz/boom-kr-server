@@ -1,0 +1,266 @@
+{
+  "id": "CP259",
+  "previous": "CP258",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T12:29:03.800877+00:00",
+  "context_commit": "1b8d6f268f172b808673bc763413720fc91813e3",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074: synchronize main PR329/RoomRules after accepted accountbasic PR330, preserve projector WIP, follow owner N1/R1 priority and record actual VPS ARM/IAM readiness without native Internet claim.",
+  "scope": "Integration/documentation and synthetic regression; private VPS ARM build/86tests and bounded OCI IAM diagnostics. No runtime source/config change/nativeKR/game listener/gate closure.",
+  "artifacts": [
+    {
+      "name": "Linuxx86postR1a",
+      "sha256": "443ddd1e84fe50b3d1671da69dec3dce52c4460a09b8fcf0c3e7400fc1242173"
+    },
+    {
+      "name": "VPSLinuxAArch64sameHEAD",
+      "sha256": "6b125abc79f4f719dcce1a3517f3a82ae10eaf79545408ab5e98465361c5517e"
+    }
+  ],
+  "locators": [
+    "rust/m5-account-basic fastforward main1b8d6f2 includes PR329073700e/R1a and PR330 CP258 accountbasic",
+    "Stashaa4800a30ec87932ce425bae5969bc45c2dd2411 plus rust-account-projector-source-r1 own5file snapshots; no reset/pop over other changes",
+    "pr329-sync-account-tcp-r1 59syntheticcases/143roomframes comparedCP258; notnativebinaryacceptance",
+    "real-internet-n1-arm-build-r1 privateRust1.99.0/lockedHEAD1b8d6f2/aarch64/86tests/2binaryhashes/19explicitnonsecretfiles",
+    "real-internet-vps-iam-effective-r4 freshsignerGetVnic404/currentIMDSlocatorsmatch; no cloud ACL read/mutation; ownerconfigneeded"
+  ],
+  "findings": [
+    {
+      "summary": "Main synchronized and RoomRules imported; current PLAN order replaces projector-first. WIP is preserved incomplete, not silently delivered; maps/items/Free1v7/reward decisions remain owner-owned.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-pr329-integration",
+      "evidence": [
+        "RUST259-00008",
+        "RUST259-00020",
+        "RUST259-00119",
+        "RUST259-00120"
+      ],
+      "limits": "Postmergebuild/unit/TCP is not a new nativecertification; CP258binaryf268 remains exactoldnativeevidence, no rewriting record/audit/raw. FinalR1 native2/4/8/account regression perPLAN.; ProjectorWIP has88Rust17syntheticTCP/PIDgone but no native/delivery; preservedincompletenotmerged. NeworderN1→R1b-g overrides oldprojectorpriority.; N1 raw UDP0of12/0NIC/unknowncause; SSH-TCPnonce12payload preflightonly. Ownercreatedpolicy+dynamicgroup; freshsigner11Nov12:22UTC stillGetVnic404NotAuthorizedOrNotFound. Need saveddomain/matchingrule/policy/rootcompartment; no ACLread/mutation/nativeN1/a-b-cdecision.; Phase1 internal50users8rooms/realInternet/N1 required separately, oldK6cK7emulatedWANscopeunchanged. Longtermfullgameplay; G1map-itemlist/M4Free1v7/rewardbeyondzero remainownerdecisions."
+    },
+    {
+      "summary": "Postmerge86Rusttests/lockedbuild/59accountTCP pass;143roomframes exactSHA equalCP258 peridentity. Newbinary does not inherit native certification; native2/4/8/account regression at finalR1.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-pr329-integration",
+      "evidence": [
+        "RUST259-00041",
+        "RUST259-00037",
+        "RUST259-00042"
+      ],
+      "limits": "Postmergebuild/unit/TCP is not a new nativecertification; CP258binaryf268 remains exactoldnativeevidence, no rewriting record/audit/raw. FinalR1 native2/4/8/account regression perPLAN.; ProjectorWIP has88Rust17syntheticTCP/PIDgone but no native/delivery; preservedincompletenotmerged. NeworderN1→R1b-g overrides oldprojectorpriority.; N1 raw UDP0of12/0NIC/unknowncause; SSH-TCPnonce12payload preflightonly. Ownercreatedpolicy+dynamicgroup; freshsigner11Nov12:22UTC stillGetVnic404NotAuthorizedOrNotFound. Need saveddomain/matchingrule/policy/rootcompartment; no ACLread/mutation/nativeN1/a-b-cdecision.; Phase1 internal50users8rooms/realInternet/N1 required separately, oldK6cK7emulatedWANscopeunchanged. Longtermfullgameplay; G1map-itemlist/M4Free1v7/rewardbeyondzero remainownerdecisions."
+    },
+    {
+      "summary": "ExacttrackedRustarchive builds on ARM VPS in private dirs,86tests pass,2AArch64ELF binaries downloaded/hashverified. No game listener/KRnative; ARMpreparation completed notN1.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-pr329-integration",
+      "evidence": [
+        "RUST259-00062",
+        "RUST259-00050",
+        "RUST259-00058"
+      ],
+      "limits": "Postmergebuild/unit/TCP is not a new nativecertification; CP258binaryf268 remains exactoldnativeevidence, no rewriting record/audit/raw. FinalR1 native2/4/8/account regression perPLAN.; ProjectorWIP has88Rust17syntheticTCP/PIDgone but no native/delivery; preservedincompletenotmerged. NeworderN1→R1b-g overrides oldprojectorpriority.; N1 raw UDP0of12/0NIC/unknowncause; SSH-TCPnonce12payload preflightonly. Ownercreatedpolicy+dynamicgroup; freshsigner11Nov12:22UTC stillGetVnic404NotAuthorizedOrNotFound. Need saveddomain/matchingrule/policy/rootcompartment; no ACLread/mutation/nativeN1/a-b-cdecision.; Phase1 internal50users8rooms/realInternet/N1 required separately, oldK6cK7emulatedWANscopeunchanged. Longtermfullgameplay; G1map-itemlist/M4Free1v7/rewardbeyondzero remainownerdecisions."
+    },
+    {
+      "summary": "Policy+dynamicgroup ownercreated but freshinstanceprincipal GetVnic404 persists. Currentinstance/VNIC/region/root/signertenancy match saved locators, excludes stale locator; effectiveDG/policyconfiguration unknown. No ACLread/edit; bareUDP prior0of12/0NIC and TCPencapsulatednonce cannot determine N1direct/learning/relay.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-pr329-integration",
+      "evidence": [
+        "RUST259-00089",
+        "RUST259-00087",
+        "RUST259-00085",
+        "RUST259-00063"
+      ],
+      "limits": "Postmergebuild/unit/TCP is not a new nativecertification; CP258binaryf268 remains exactoldnativeevidence, no rewriting record/audit/raw. FinalR1 native2/4/8/account regression perPLAN.; ProjectorWIP has88Rust17syntheticTCP/PIDgone but no native/delivery; preservedincompletenotmerged. NeworderN1→R1b-g overrides oldprojectorpriority.; N1 raw UDP0of12/0NIC/unknowncause; SSH-TCPnonce12payload preflightonly. Ownercreatedpolicy+dynamicgroup; freshsigner11Nov12:22UTC stillGetVnic404NotAuthorizedOrNotFound. Need saveddomain/matchingrule/policy/rootcompartment; no ACLread/mutation/nativeN1/a-b-cdecision.; Phase1 internal50users8rooms/realInternet/N1 required separately, oldK6cK7emulatedWANscopeunchanged. Longtermfullgameplay; G1map-itemlist/M4Free1v7/rewardbeyondzero remainownerdecisions."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Mainintegration86Rust59syntheticTCP143exactroomframes",
+      "result": "pass",
+      "evidence": [
+        "RUST259-00041",
+        "RUST259-00037",
+        "RUST259-00042"
+      ],
+      "limits": "Syntheticloopback/build only; CP258nativebinary retained separately."
+    },
+    {
+      "check": "ProjectorWIPpreservation",
+      "result": "pass",
+      "evidence": [
+        "RUST259-00119",
+        "RUST259-00120"
+      ],
+      "limits": "No native/delivery; source5files saved, not prioritized over N1/R1."
+    },
+    {
+      "check": "VPSAArch64lockedbuild86testsandbinarySHA",
+      "result": "pass",
+      "evidence": [
+        "RUST259-00062",
+        "RUST259-00050"
+      ],
+      "limits": "Private Linux ARM only; no game listener/nativeKR/Internetacceptance."
+    },
+    {
+      "check": "OCIeffectivereadpermissionaftergroupcreation",
+      "result": "fail",
+      "evidence": [
+        "RUST259-00089",
+        "RUST259-00087"
+      ],
+      "limits": "GetVnic404; need saveddomain/matchingrule/policy/compartment. Not relay evidence."
+    },
+    {
+      "check": "NativeN1/NATtuples/directions/replytarget/sharedNAT",
+      "result": "not_run",
+      "evidence": [
+        "RUST259-00063",
+        "RUST259-00020"
+      ],
+      "limits": "N1OPEN, K6cK7WANemulated unchanged; Internet thật chưa kiểm."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP259-pr329-integration.json",
+      "bytes": 31477,
+      "sha256": "e031a77963c9a6ccef6297be87c43a7ebfbc253f8b1caaa52b1fcac0e17d32ef",
+      "count": 123
+    }
+  ],
+  "delta": {
+    "added": [
+      "Postmainmerge86Rust59TCP143framecomparison and privateARMsameHEAD86tests/binarypins.",
+      "OwnerPR329directive/order/sourcepin; explicitnonsecretIAMbootstrap/r4diagnostics and N1 gaps."
+    ],
+    "corrected": [
+      "Current groupcreation acknowledged but does not imply effectiveauthorization; r4still404 and validlocators; no blind propagation claim."
+    ],
+    "superseded": [
+      "CP258projector-first nextaction replacedbyownerN1→R1b-gpriority; WIP retainednotmerged."
+    ]
+  },
+  "blockers": [
+    "Postmergebuild/unit/TCP is not a new nativecertification; CP258binaryf268 remains exactoldnativeevidence, no rewriting record/audit/raw. FinalR1 native2/4/8/account regression perPLAN.",
+    "ProjectorWIP has88Rust17syntheticTCP/PIDgone but no native/delivery; preservedincompletenotmerged. NeworderN1→R1b-g overrides oldprojectorpriority.",
+    "N1 raw UDP0of12/0NIC/unknowncause; SSH-TCPnonce12payload preflightonly. Ownercreatedpolicy+dynamicgroup; freshsigner11Nov12:22UTC stillGetVnic404NotAuthorizedOrNotFound. Need saveddomain/matchingrule/policy/rootcompartment; no ACLread/mutation/nativeN1/a-b-cdecision.",
+    "Phase1 internal50users8rooms/realInternet/N1 required separately, oldK6cK7emulatedWANscopeunchanged. Longtermfullgameplay; G1map-itemlist/M4Free1v7/rewardbeyondzero remainownerdecisions."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLAN N1 first: diagnose savedOCI DG/domain/matchingrule/policy/root configuration, then actualtwoNAT KR99-vs-postNATtuples/directions/observed-vs153/sharedNAT measurements. No conclusion from IAM/ACLfailures; R1b-g after N1, R1f uses outcome. PreserveprojectorWIP/generalM5gaps.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T12:29:03.800877+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex source/docs/synthetic comparison and parent verification of nonsecret VPS ARM/IAM evidence; independent review waived; VPS setup delegation authorized separately.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/evidence/rust-service/pr329-integration.json",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/evidence/owner-directives/pr329-integration-order.json",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "OwnerPR329integration/order/limits, boundedVPSreadiness; no historicalraw orcomplete rewrite."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "unchanged",
+      "reason": "Generated catalog view unchanged: no newfeature/runtime/gate state; generator checked."
+    }
+  ]
+}

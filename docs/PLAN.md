@@ -1,6 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
+CP259: đồng bộ mainPR329/PR330→rust/m5-account-basic/RoomRules;fmt-clippy86Rust-build đạt, projectorWIP giữ nguyên. Ưu tiênN1→R1b-g theo owner mới; OCIpolicyđãtạo/effectiveAPIđangkiểm. Không nativeN1 hoặc đổi scopeCP258/K6cK7.
 CP258: account-owned fixed2/basic end-to-end + revoke/expiry/disconnect + manualfresh rejoin/oldUDPdrop-currentpositive đã đạt scope;5run280raw375exactTCP/cleanup0. M5OPEN/generalprofile/nativeDBqueuefault/recoverylimits; AUD076auditnhóm, không lịch4CP. Internet thật chưa kiểm.
 
 
@@ -72,7 +73,7 @@ trên client KR chưa có; rủi ro cao nghĩa là cỡ việc có thể tăng.
 
 | Thứ tự | Mốc | Còn lại để đạt đích | Cỡ | Rủi ro RE |
 |---|---|---|---|---|
-| 1 | RUST-M5 (đang làm) | Account → phòng cố định → trận → kết quả → trận tiếp; sau đó hồ sơ tổng quát cho mọi account thay hai profile cố định | M | Vừa: phép chiếu hồ sơ 291 |
+| 1 | RUST-M5 (lát cắt fixed2 đã merge CP258) | Account→fixedroom/basic→results/reset/Start3 và lifecycle đã có; hồ sơ tổng quát còn thiếu, giữ WIP và gắn R1c/R1f theo thứ tự mới | M | Vừa: phép chiếu hồ sơ 291 |
 | 2 | [RUST-N1](#rust-n1) Internet thật (đang đo) | UDP trực tiếp giữa hai NAT thật khác nhau. Kết quả quyết định có cần học cổng sau NAT, hole punching hoặc relay | S nếu thông, L nếu cần relay | Cao nếu cần relay |
 | 3 | [RUST-R1](#rust-r1) tái cấu trúc lõi phòng | Gỡ giả định phòng cố định trước khi xây M7/G1/M6; không thêm tính năng | M | Không |
 | 4 | RUST-M7 phòng tổng quát | Danh sách phòng động, tạo/vào/rời, lỗi phòng đầy, chọn nhân vật, chọn đội bằng thao tác trong phòng | L | Cao |
@@ -234,13 +235,25 @@ Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã
    exactoldBUDP12346/nativekeydrop/noapply, freshBcurrentmovementapply/progress.68raw172,400s/89exactreply/cleanup0.
    Tổng5run280raw375exactTCP;84Rust/59account-basicTCP/16lobbyregression. Oldchannel6roguereplay/newmembership/nextkey
    kiểmTCP riêng, khôngsuy thành nativehostilepeer/strongUDPauth. Group auditAUD076, không lịchcheckpointcốđịnh.
-   **NEXT-M5: typed DB-owned profile projection beyondIDs1/2 trongwireknownname5/7**, cùng ownership/versionnegative;
-   backend Store/worker/KDF không làm lại. NativeDB/queue failclosed là gap cần ca integration nhỏ, recoveryCP220/224 chỉ mở
-   khiobservable mới/milestonechặn. Profile tổngquát làM5gap; khôngép fullservice/restore/multiroom trướcnhómfixed2đãđạt.
-   M5tổngthể vẫnOPEN; inventory/reward M6, nhiều phòng/generalregistry M7, durableops/restore M8 riêng.
-   Theo owner mới có VPSInternetbổsung: tiềnkiểmsetup doagentriêng, khôngđổinativeM5runinput/source/sharedWine;
-   không nhậnnetworknoncepreflight lànativeInternetgame. NếucloudUDPchưađủquyền vẫntiếpcôngviệcM5độclập;
-   K6cWANgiảlập/K7scopeđãđạt, Internet thật chưa kiểm và khôngdependencyngầm.
+   **Ưu tiên theo [chỉ đạo PR329 của chủ dự án](evidence/owner-directives/pr329-integration-order.json):**
+   nhóm account/basic hai người đã merge PR330 tại `1b8d6f2`; nhánh `rust/m5-account-basic` đã đồng bộ main,
+   gồm PR329/R1a. WIP projector gồm 5 file, 88 test Rust và 17 ca TCP được giữ trong snapshot và stash riêng;
+   chưa chạy native hoặc merge. Không tiếp tục projector trước N1/R1.
+
+   **NEXT: [RUST-N1](#rust-n1).** Phải đối chiếu cổng tự báo trong 99 với nguồn UDP sau NAT, đo từng chiều,
+   đích native trả lời (nguồn quan sát hay 153), hai NAT khác nhau và trường hợp chung NAT. Chỉ chọn (a)/(b)/(c)
+   khi có bằng chứng. VPS hiện có 12 payload nonce qua WG đóng gói trong SSH/TCP; UDP trực tiếp nhận 0/12,
+   NIC VPS không thấy gói, nguyên nhân chưa rõ. Policy và dynamic group OCI đã tạo; fresh signer 11/11 12:22 UTC vẫn bị
+   `GetVnic 404 NotAuthorizedOrNotFound`. Cần đối chiếu domain/matching rule/policy/root compartment đã lưu,
+   không mặc định lỗi chỉ do propagation. Rust ARM64 đã locked build/test (86 test) trên VPS từ main `1b8d6f2`,
+   chưa mở game listener. Chưa có native N1.
+   Không suy cần relay từ lỗi ACL/IAM hoặc coi tunnel TCP là UDP Internet trực tiếp.
+
+   Sau N1, làm R1b→R1g theo bảng. R1a đã merge PR329/`073700e`; không thêm tính năng hoặc đổi byte wire.
+   R1f dùng kết quả N1. Cuối R1 mới chạy native hồi quy 2/4/8 người và đường account theo acceptance.
+   M5 tổng thể còn projection hồ sơ tổng quát, native DB/queue-fault và giới hạn recovery; giữ WIP để dùng
+   ở R1c/R1f hoặc phần M5 sau N1/R1. Tiếp theo là M7 → G1 song song M6 thu hẹp → M8.
+   Danh sách map/item cho G1, M4 Free 1v7 và thưởng M6 ngoài mức 0 chờ chủ dự án quyết định.
    M4 vẫn mở do Free1v7haioutcomes/selector0nativepersist; native9 criterion có bằng chứng scope riêng, không tự đóng cả M4.
    Không nâng baseline8 thành fullM4/terrain-items8/auth. Shared8EOF chỉmodel/TCPfence/no175180, chưa7nativeRoomreturn.
    Queue8inbox16 giữlocalpending16/2-4inbox8; unique7life/8bomballwrites. CP209sealedraw142/167 khácfour đã đối chiếu,
@@ -518,7 +531,7 @@ Acceptance cuối R1: toàn bộ bộ TCP hiện có đạt, cộng **một lư�
 account**, không thêm claim mới. R1b trở đi bắt đầu sau khi lát cắt account → phòng → trận merge, vì cùng sửa `room_io.rs`
 và `lib.rs`.
 
-**R1a đã làm 11/11** trên nhánh `plan/delivery-target-room-refactor` (chưa merge, chưa có checkpoint): `rules.rs` giữ
+**R1a đã làm 11/11**, đã merge [PR329](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/329)/`073700e`; lần PR329 không tạo checkpoint. Bản đồng bộ thật sau accountPR330 được ghi ở CP259, không sửa evidence cũ: `rules.rs` giữ
 sáu cờ, ba luật dẫn xuất, bảng bom mặc định, cỡ hàng đợi và kiểm chéo cấu hình; `room.rs`/`room_io.rs` chỉ đổi chỗ gọi.
 Kiểm: fmt và clippy đạt; 86 test Rust đạt (84 cũ, 2 mới). Các bộ TCP tổng hợp đạt trên binary sau refactor: hai người
 room 43 ca và life 51 ca; bốn người normal 32 ca, abort A và D mỗi bộ 20 ca; tám người Manner và đội cố định mỗi bộ

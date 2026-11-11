@@ -1,0 +1,25 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-11T09:16:38.312906+00:00",
+  "authority": "project_owner",
+  "source": "Userexplicitlyinstructedread-and-followcomplete local/research/claude/codex-prompt-pr329.md incurrentconversation.",
+  "source_file": {
+    "path": "local/research/claude/codex-prompt-pr329.md",
+    "bytes": 5014,
+    "sha256": "3485d6a16aaf90dc18e91c0a62e397bc494140c549ff2c70d549abe698beaaeb"
+  },
+  "canonical_plan": "docs/PLAN.md#current-order",
+  "decision": "Synchronize PR329main into active accountbasicbranch, preserveWIP andhistoricalevidence; follow phase1 deliverytarget/currentPLAN N1→R1b-g→M7→G1parallelM6narrow→M8 afterfixed2accountbasicmerge. No newcapacityflags/identityaliases/capacitybranches inroomcore; rules belongRoomRules.",
+  "integration": {
+    "pr329_merge": "073700e",
+    "account_pr330_merge": "1b8d6f268f172b808673bc763413720fc91813e3",
+    "branch": "rust/m5-account-basic",
+    "method": "gitfetchorigin then gitmerge--ff-onlyorigin/main; no reset, fiveownprojectorWIPfiles stashedandsnapshotretained; no otherWIPchanged."
+  },
+  "limits": [
+    "CP258 native evidence pins pre-R1a binaryf268…; currentmain includesR1arefactor and needs declaredpostmergechecks; no rewriteCP258/raw/nativeclaim.",
+    "N1 requires99vsrealpostNATport/bidirectionality/153vsobservedresponse/twoNATsandsharedNAT evidence; SSH-TCPnoncepreflightcannotclose(a)/(b)/(c).",
+    "Longtermfullgameplay, stage1internal50users8rooms; oldK6c/K7WANemulatedscopeunchanged.",
+    "Map-itemG1list/M4Free1v7decision/M6rewardbeyondzero remainownerdecisions; notselfselected."
+  ]
+}

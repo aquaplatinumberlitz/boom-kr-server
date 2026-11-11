@@ -92,7 +92,7 @@ KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma tr
 
 ## Module và dòng dữ liệu
 
-Trạng thái cấu trúc dưới đây đối chiếu với code tại `78daa71` (11/11). Bản "đề xuất" ban đầu của tài liệu này chưa
+Trạng thái cấu trúc dưới đây bắt đầu đối chiếu tại `78daa71` (11/11); PR329/R1a đã merge073700e và đồng bộ sau CP258 tại1b8d6f2 (CP259). Sáucờ nay nằm Runtime.rules/RoomRules, các khoảng lệch R1b–g vẫn còn. Bản "đề xuất" ban đầu của tài liệu này chưa
 được hiện thực nguyên dạng; phần lệch được ghi rõ để [RUST-R1](PLAN.md#rust-r1) xử lý, không coi là đã đạt.
 
 **Cấu trúc thực tế:**
