@@ -34,8 +34,10 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, s
 4. R1f identity theo session thay IP, sửa ca hai người chung NAT; endpoint theo kết quả N1b.
 5. R1g trần kết nối theo tải đích.
 6. Native hồi quy cuối R1: mỗi profile 2, 4, 8 người và đường account một lượt.
-7. Phép thử đổi map sang Village10 (`local/research/claude/codex-prompt-map-probe.md`), tối đa hai lượt.
-8. M7, rồi G1 song song M6, rồi M8.
+7. Dọn tài liệu đợt 2: tách PROTOCOL theo chủ đề, rút `#current-order`, thêm ngưỡng kích thước vào checker
+   (`local/research/claude/codex-prompt-docs-refactor.md`). Một PR riêng, không chạy song song checkpoint code.
+8. Phép thử đổi map sang Village10 (`local/research/claude/codex-prompt-map-probe.md`), tối đa hai lượt.
+9. M7, rồi G1 song song M6, rồi M8.
 
 **Blocker và việc tồn:**
 
