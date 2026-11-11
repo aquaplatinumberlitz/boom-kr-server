@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP260",
+  "as_of": "CP261",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -462,7 +462,9 @@
           "docs/evidence/rust-service/account-native-lifecycle.json",
           "docs/evidence/rust-service/account-fresh-login.json",
           "docs/evidence/rust-service/account-basic.json",
-          "docs/PROTOCOL.md#rust-account-basic"
+          "docs/PROTOCOL.md#rust-account-basic",
+          "docs/PROTOCOL.md#rust-internet-observation",
+          "docs/evidence/rust-service/internet-observation.json"
         ]
       },
       "coverage": {
@@ -1051,7 +1053,9 @@
           "docs/evidence/rust-service/argv-provenance.json",
           "docs/evidence/rust-service/README.md#cp252",
           "docs/evidence/rust-service/account-basic.json",
-          "docs/PROTOCOL.md#rust-account-basic"
+          "docs/PROTOCOL.md#rust-account-basic",
+          "docs/PROTOCOL.md#rust-internet-observation",
+          "docs/evidence/rust-service/internet-observation.json"
         ]
       },
       "coverage": {
@@ -1800,7 +1804,9 @@
           "docs/PROTOCOL.md#rust-ninth-admission",
           "docs/evidence/rust-service/ninth-admission.json",
           "docs/evidence/rust-service/argv-provenance.json",
-          "docs/evidence/rust-service/README.md#cp252"
+          "docs/evidence/rust-service/README.md#cp252",
+          "docs/PROTOCOL.md#rust-internet-observation",
+          "docs/evidence/rust-service/internet-observation.json"
         ]
       },
       "coverage": {
@@ -4249,7 +4255,9 @@
           "docs/PROTOCOL.md#rust-ninth-admission",
           "docs/evidence/rust-service/ninth-admission.json",
           "docs/evidence/rust-service/argv-provenance.json",
-          "docs/evidence/rust-service/README.md#cp252"
+          "docs/evidence/rust-service/README.md#cp252",
+          "docs/PROTOCOL.md#rust-internet-observation",
+          "docs/evidence/rust-service/internet-observation.json"
         ]
       },
       "coverage": {
@@ -4935,7 +4943,9 @@
           "docs/PROTOCOL.md#rust-ninth-admission",
           "docs/evidence/rust-service/ninth-admission.json",
           "docs/evidence/rust-service/argv-provenance.json",
-          "docs/evidence/rust-service/README.md#cp252"
+          "docs/evidence/rust-service/README.md#cp252",
+          "docs/PROTOCOL.md#rust-internet-observation",
+          "docs/evidence/rust-service/internet-observation.json"
         ]
       },
       "coverage": {

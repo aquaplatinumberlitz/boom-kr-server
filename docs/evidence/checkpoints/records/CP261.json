@@ -1,0 +1,269 @@
+{
+  "id": "CP261",
+  "previous": "CP260",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T16:35:23.249035+00:00",
+  "context_commit": "f95e4cfa579d5363840f7e32336ae3595b2f9148",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 N1: recovermeasuredchannelwaitfield/control, verifyactualtwo-accountKRbasicInternetpath/NAT/source-reply/nativeUDP/outcomes-reset andrecordsharedNATlimit withoutunsupportedmobileCGNATgateclosure.",
+  "scope": "FourboundednativeKR/Wine runsR8-R11, serverfixture/configcontrols only; noRustsourcebinarychange. Actualtwo-wayInternetgameplay/sharedNATnegative observations, physicaluplink requirement unresolved/N1OPEN.",
+  "artifacts": [
+    {
+      "name": "copy4b",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "arm_service",
+      "sha256": "3f36acafef5cd7a467cfcda9d9a11cad9fb9e81451e4ed6bb484f7d737f3fdda"
+    },
+    {
+      "name": "arm_admin",
+      "sha256": "74d7079cd445903fa87db8474781e9d1033373265cb6ef027f777f112ee0b241"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md#rust-internet-observation",
+    "CP058logicalfield51u16/body121forname7/reader10FEA64→13B4010cache194→13B4030→1113813dialog460",
+    "R8actual0threshold/17arrivesaftertimeout; R10inputfield30000/frontendTTL120/copy4bunchanged",
+    "R10nativeactual99/153/UDPsendcaptureingress/currenthelperapply/twocycles; R11sameNATnegative/actualfrontendowner"
+  ],
+  "findings": [
+    {
+      "summary": "Nativefield51replycontrol yieldsactualcache/getter/directAX/dialogwait30000; zero oldfixture causedmeasuredtimeoutbefore17. 30000explicitdesignvalue/originaldefaultunknown; sourceclientunchanged.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-internet-observation",
+      "evidence": [
+        "N1CP261-01065",
+        "N1CP261-01069",
+        "N1CP261-00612",
+        "N1CP261-00568"
+      ],
+      "limits": "N1 remainsOPEN pendingexactrequiredmobile/ISP-CGNATprovenance ormeasurement; no acceptance change or inference from IPprefix/agentlabels.; SharedNATtwo-accountsupport is absent; R11negative records currentbindinglimit, inputtoR1f, notan acceptedplaymode.; Actualinfrastructuretopology/access/configuration/raw private local; public metadata containsgenericcontracts/counts/hashlocators only.; 30000isexplicitserverdesigncontrol, notoriginaldefault/timermax; genericprofile/namevariants/otherauthfields remain separate. Sourceintegration requiresitsownacceptance.; Knownfixed2accountprofile/Winecopies only; noInternetexpiry/revoke/stale/disconnect/fullM5, production/50users/8rooms/otherNATclasses/IPv6 claim.; PartialfailureR8/R9, REA450stimeout andprobe/reportmistakes retained. Originalsource/raw/checkpoints unchanged; no liveinferiorgamefunctioncalls.; Independent review waived; gate decisions manual; K6cWANemulated/K7 acceptedscopes unchanged."
+    },
+    {
+      "summary": "R10actualtwoaccount/player/frontend/channel/own291/slot/basic2oppositeoutcomes/reset/Start3 acceptedwithinknownfixed2profile/path. TCP752/106exactreply/91raw;2286copiedgetterchecks separatemodel.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-internet-observation",
+      "evidence": [
+        "N1CP261-00475",
+        "N1CP261-00568",
+        "N1CP261-00569",
+        "N1CP261-00575"
+      ],
+      "limits": "N1 remainsOPEN pendingexactrequiredmobile/ISP-CGNATprovenance ormeasurement; no acceptance change or inference from IPprefix/agentlabels.; SharedNATtwo-accountsupport is absent; R11negative records currentbindinglimit, inputtoR1f, notan acceptedplaymode.; Actualinfrastructuretopology/access/configuration/raw private local; public metadata containsgenericcontracts/counts/hashlocators only.; 30000isexplicitserverdesigncontrol, notoriginaldefault/timermax; genericprofile/namevariants/otherauthfields remain separate. Sourceintegration requiresitsownacceptance.; Knownfixed2accountprofile/Winecopies only; noInternetexpiry/revoke/stale/disconnect/fullM5, production/50users/8rooms/otherNATclasses/IPv6 claim.; PartialfailureR8/R9, REA450stimeout andprobe/reportmistakes retained. Originalsource/raw/checkpoints unchanged; no liveinferiorgamefunctioncalls.; Independent review waived; gate decisions manual; K6cWANemulated/K7 acceptedscopes unchanged."
+    },
+    {
+      "summary": "Actual99/153selfport vsApostNATmismatch; Bnativeusesobservedsourceport;78nativeUDPsend/capture/ingressjoins/77completehelperapply/bothdirections2rounds/currentremotechanges. Directworksboundedpath, notuniversalNAT/ISP.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-internet-observation",
+      "evidence": [
+        "N1CP261-00574",
+        "N1CP261-00570"
+      ],
+      "limits": "N1 remainsOPEN pendingexactrequiredmobile/ISP-CGNATprovenance ormeasurement; no acceptance change or inference from IPprefix/agentlabels.; SharedNATtwo-accountsupport is absent; R11negative records currentbindinglimit, inputtoR1f, notan acceptedplaymode.; Actualinfrastructuretopology/access/configuration/raw private local; public metadata containsgenericcontracts/counts/hashlocators only.; 30000isexplicitserverdesigncontrol, notoriginaldefault/timermax; genericprofile/namevariants/otherauthfields remain separate. Sourceintegration requiresitsownacceptance.; Knownfixed2accountprofile/Winecopies only; noInternetexpiry/revoke/stale/disconnect/fullM5, production/50users/8rooms/otherNATclasses/IPv6 claim.; PartialfailureR8/R9, REA450stimeout andprobe/reportmistakes retained. Originalsource/raw/checkpoints unchanged; no liveinferiorgamefunctioncalls.; Independent review waived; gate decisions manual; K6cWANemulated/K7 acceptedscopes unchanged."
+    },
+    {
+      "summary": "SharedNATactualnativecase:2correctfrontend/playerleases boundsharedactualpeer; Ahealthyown291/render8s, Bauth1nogrant fromIP-actormetadata collision. KnownR1fgap, notsharedNATsupport.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-internet-observation",
+      "evidence": [
+        "N1CP261-00264"
+      ],
+      "limits": "N1 remainsOPEN pendingexactrequiredmobile/ISP-CGNATprovenance ormeasurement; no acceptance change or inference from IPprefix/agentlabels.; SharedNATtwo-accountsupport is absent; R11negative records currentbindinglimit, inputtoR1f, notan acceptedplaymode.; Actualinfrastructuretopology/access/configuration/raw private local; public metadata containsgenericcontracts/counts/hashlocators only.; 30000isexplicitserverdesigncontrol, notoriginaldefault/timermax; genericprofile/namevariants/otherauthfields remain separate. Sourceintegration requiresitsownacceptance.; Knownfixed2accountprofile/Winecopies only; noInternetexpiry/revoke/stale/disconnect/fullM5, production/50users/8rooms/otherNATclasses/IPv6 claim.; PartialfailureR8/R9, REA450stimeout andprobe/reportmistakes retained. Originalsource/raw/checkpoints unchanged; no liveinferiorgamefunctioncalls.; Independent review waived; gate decisions manual; K6cWANemulated/K7 acceptedscopes unchanged."
+    },
+    {
+      "summary": "Physicalmobile/ISP-CGNATrequirement isunattested inretainedsources; unsupportedagentlabels excluded. N1OPEN/noacceptancechange despiteboundedInternetgameobservations. AUD078checksprovenance/Finishmarkers.",
+      "source": "design",
+      "status": "unknown",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-internet-observation",
+      "evidence": [
+        "N1CP261-01097",
+        "N1CP261-00017"
+      ],
+      "limits": "N1 remainsOPEN pendingexactrequiredmobile/ISP-CGNATprovenance ormeasurement; no acceptance change or inference from IPprefix/agentlabels.; SharedNATtwo-accountsupport is absent; R11negative records currentbindinglimit, inputtoR1f, notan acceptedplaymode.; Actualinfrastructuretopology/access/configuration/raw private local; public metadata containsgenericcontracts/counts/hashlocators only.; 30000isexplicitserverdesigncontrol, notoriginaldefault/timermax; genericprofile/namevariants/otherauthfields remain separate. Sourceintegration requiresitsownacceptance.; Knownfixed2accountprofile/Winecopies only; noInternetexpiry/revoke/stale/disconnect/fullM5, production/50users/8rooms/otherNATclasses/IPv6 claim.; PartialfailureR8/R9, REA450stimeout andprobe/reportmistakes retained. Originalsource/raw/checkpoints unchanged; no liveinferiorgamefunctioncalls.; Independent review waived; gate decisions manual; K6cWANemulated/K7 acceptedscopes unchanged."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Nativeaccountfixed2Internetobservedpathlifeownership",
+      "result": "pass",
+      "evidence": [
+        "N1CP261-00475",
+        "N1CP261-00568"
+      ],
+      "limits": "Boundedcurrentpath; no sharedNAT/fullM5/newnativeInternetlifecycle."
+    },
+    {
+      "check": "ActualUDP_NAT99_153_observedsource_nativehelperapply",
+      "result": "pass",
+      "evidence": [
+        "N1CP261-00574"
+      ],
+      "limits": "Singlecontrolledpath/window/captures/privateinfrastructure; noallISP/NATclaim."
+    },
+    {
+      "check": "SameNATcase_records_existinglimit",
+      "result": "pass",
+      "evidence": [
+        "N1CP261-00264"
+      ],
+      "limits": "Pass meansnegativecaseobserved, not2accountsharedNATgameaccepted."
+    },
+    {
+      "check": "N1requiredphysicalmobile_ISP_CGNATenvironment",
+      "result": "not_run",
+      "evidence": [
+        "N1CP261-01097"
+      ],
+      "limits": "Unattestedrequirement; no inferencefromIPprefix/agentlabels. N1OPEN."
+    },
+    {
+      "check": "R10_R11exactcleanup_rawhash",
+      "result": "pass",
+      "evidence": [
+        "N1CP261-00605",
+        "N1CP261-00290",
+        "N1CP261-00029"
+      ],
+      "limits": "Cleanupdoesnotcertifygate; separatefromnativeobservations."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP261-internet-observation.json",
+      "bytes": 297723,
+      "sha256": "633aecaae9315454ad38be902bcb7a174d9de3794e3663219c535fee305d0223",
+      "count": 1124
+    }
+  ],
+  "delta": {
+    "added": [
+      "Measuredfield51waitsource/control andnative2accountInternetbasic/UDP/NAT/outcomes-reset-Start3.",
+      "SharedNATnegative/R1flimit; exactrunseals/cleanup/ownership/nativeoracles."
+    ],
+    "corrected": [
+      "Unsupportedmobile/CGNATagentlabels excluded; physicaluplinkunattested, keepN1OPEN.",
+      "FinishBreakpointexactreturnmarkersexcluded; directpostcall/nativeframes+UDPapplyindependent. Crosshostclockdelta notnetworkdelayproof."
+    ],
+    "superseded": [
+      "CP260noown291/99/gamepathobservation replacedbynewR10positiveboundedrun, notrewritingpartialoldraw."
+    ]
+  },
+  "blockers": [
+    "N1 remainsOPEN pendingexactrequiredmobile/ISP-CGNATprovenance ormeasurement; no acceptance change or inference from IPprefix/agentlabels.",
+    "SharedNATtwo-accountsupport is absent; R11negative records currentbindinglimit, inputtoR1f, notan acceptedplaymode.",
+    "Actualinfrastructuretopology/access/configuration/raw private local; public metadata containsgenericcontracts/counts/hashlocators only.",
+    "30000isexplicitserverdesigncontrol, notoriginaldefault/timermax; genericprofile/namevariants/otherauthfields remain separate. Sourceintegration requiresitsownacceptance.",
+    "Knownfixed2accountprofile/Winecopies only; noInternetexpiry/revoke/stale/disconnect/fullM5, production/50users/8rooms/otherNATclasses/IPv6 claim.",
+    "PartialfailureR8/R9, REA450stimeout andprobe/reportmistakes retained. Originalsource/raw/checkpoints unchanged; no liveinferiorgamefunctioncalls.",
+    "Independent review waived; gate decisions manual; K6cWANemulated/K7 acceptedscopes unchanged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLAN exactrequiredphysicaluplinkprovenance/measureonlygapifneeded, N1OPEN; explicitfield51serverpolicyintegrationneedsitsownacceptance. R1b-eindependentrefactorallowedafteraccountmerge; preserveR1f/M8N1/sharedNATsessionbindingrequirements. NoJSONguard/broadSDK/reportrerun.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T16:35:23.249035+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualsource/native/PCAP/DB/state/UIselfverification; independentreviewwaived; agentauthorizedonlynetworkstage/read-onlycleanup/provenanceaudit.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    },
+    {
+      "path": "docs/evidence/rust-service/internet-observation.json",
+      "state": "updated",
+      "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    }
+  ]
+}

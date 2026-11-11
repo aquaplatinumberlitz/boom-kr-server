@@ -655,3 +655,18 @@ LastErrorunknown/no successfulHTTPresponse. NEXTtimer/recv/17 timingtrướcmoda
 Từnglượt raw/hash/frozeninputs/cleanup kiểm riêng; details/ACL/topology/access chỉignoredlocal theoowner.
 AUD077 kiểm ngay sửa attribution, khôngauditđịnhkỳ4CP/không hoàn tất nhómN1/R1. N1OPEN; K6c/K7scopegiữ.
 Internet thật chưa kiểm ở mức game KR.
+
+<a id="cp261"></a>
+### CP261 — native Internet fixed2/gameplay, field51wait và sharedNATnegative
+
+[Contract/limits](../../PROTOCOL.md#rust-internet-observation), [metadata/hash/locators](internet-observation.json),
+[acceptance cònmở](../../PLAN.md#rust-n1). R8–11từngrecipe/frozeninputs/rawseal+cleanup riêng; R10chạy xongnormal,
+R11negative tựhoàntất; R9parentstopnhưđãkhai, R8tựfault (oldagentlabelparentstop đượcaddendumngoàiseal).
+R10life/ownership/UDP/getters/UIreport đốichiếu độc lập:752TCP/106reply/2286copiedgetters/78ingress77helper/
+78send-capture-ingressjoins;91raw,178inputsunmodified. Haioppositeoutcomes/reset/Start3,known2profile only.
+R11sharedNAT45raw/180frozen/2frontends/sessionboundactualsharedpeer;Aown2918s/Bauth1, chưasharedNATgame.
+Field51/u16 nguồnwaitđãđo;30000/TTL120explicitdesignconfiginput, khôngnewRustbehavior hoặcoriginaldefaultclaim.
+REA450timeout/ownedcleanup vàordinaryPE/capstonefallback ghiđúngloạinguồn, R9Finishwrongmarkerexcluded/R10exactpostcall.
+NativeInternetpathđãđo nhưngmobile/ISP-CGNATminrequirement chưaxácnhận; agentlabelsunsupportedbịloại.
+N1OPEN, khôngrewritescope/đónggate; R1b-e cóthểtiếpđộclậptheoconditionaccountmerged, R1f giữsessionbindinggap.
+Actualinfrastructure/secrets/captureonlylocal; K6c/K7scopegiữ. AUD078kiểmmâu thuẫnprovenance, khônglịch4CP.

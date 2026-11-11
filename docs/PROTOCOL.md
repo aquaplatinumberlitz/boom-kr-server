@@ -9543,3 +9543,77 @@ timer/recv/packet17 tại cửa sổ trướcmodal, giữ server/client/input �
 InternetOpenUrlA16EA704, HttpSendRequestA16EA6F8, InternetReadFile16EA700, GetLastError16EA48C.
 Import mapping là locator tĩnh; R7 URL/openreturn là native, không có response thành công. Native auth thành công chưa là nghiệm thu N1;
 actual99/153/nativeUDP/helper/apply/hai outcomes/reset/Start3/sharedNAT vẫn thiếu. Không công bố topology/IP/OCI thật.
+
+<a id="rust-internet-observation"></a>
+## Native account/basic trên đường Internet đã đo — CP261, N1 còn mở môi trường
+
+[Metadata/hash/recipe](evidence/rust-service/internet-observation.json), [acceptance](PLAN.md#rust-n1),
+[gap/phép tiếp](RESEARCH.md#gap-rust-service). Source **kr_runtime/confirmed** chỉ trong phạm vi native dưới đây;
+policy/config và topology operator chọn là **design/design**. Source ARM `3f36acaf...`/admin `74d7079c...` giữ CP260;
+source Rust không đổi trong bốn lượt CP261. Copy4b/Wine giữ nguyên, prefixes tái sử dụng sau exact cleanup.
+Không gọi hai client modifiedcopy là vanilla, freshprefix hoặc toàn bộ client/gameplay.
+
+### Field51 của login là nguồn ngưỡng chờ đã đo
+
+Reuse CP058 [53directfield/56logicalfield](#auth-profile), CP015postwait cache và CP260rawchronology;
+không đi lại authcrypto/JSON/provider. CP058 field51 `u16`, native reader return10FEA64, cursor121 khi tên7byte.
+Static4b exactbytes: setter13B4010 ghi `cache+194h`; getter13B4030 đọc trường này; call111380B rồi
+1113813 ghi AX vào `dialog+460h`. NativeR8 tại1113A7B/1113A98 đo threshold0, elapsed160/174 vàtakenbranch
+elapsed>threshold. CaptureA fullframe17 tới veth khoảng5,887ms sau nhánh timeout (cùnghost timestamps).
+Không đổi threshold trong bộ nhớ; oldCP015 timeout.gdb cóghi30000 chỉ là control lịch sử, không reuse như passiveprobe.
+
+R9/R10 chỉ đổi **replyauth logicalfield51/body121..122 từ0→30000**, giữ header/length/otherfields,
+CRC/codec theo fixture. R10 actualsetterarg30000/oldcache10000→cache194=30000→nativepostcallAX30000→
+dialog460=30000→firsttick168/181<30000→native17→own291/render ởcảhai. Đây là **field→consumer contract** đãđo;
+30000 là policy thửserver, **chưa biết default/giới hạn gốc**, không đổi ý nghĩa53fieldunknown khác hoặc authauthority.
+Chỉ tên7byte/count1 hiệncó; vị trí field phụthuộc layout/name, không dùng offset121 cho genericprofile.
+
+R9 mộtBpositive/Adelayeddenial giữriêng: exactfrontend đúng nhưng servercùngPCAP SYN→request84,744s>TTL60.
+Không lấy143s lệchtimestamp haihost làm latencyproof. R10 chỉ tăng configfront-endTTL60→120 trong rangeđãhỗtrợ,
+không tắt expiry/replay/ownercheck. R9 GDBFinish getterreturn cho marker sai đãloại; R10 dùng exactpostcall1113810.
+REAlookupchờ450s không trảthânhàm; privateanalysisworker đãcleanup. ExactPE/capstone boundedfallback/cache
+được ghiđúngnguồnordinarytools, không nhận làREA Evidence hoặc toànfunctiongraph.
+
+### Đường account và trận đã chạy
+
+R10: hai backendaccount/session/frontend riêng→nativeauth137/ID-name-echo→hai channel→own291/render,
+fixedroom/create-join/hostback-rejoin/Ready/loading→haioutcomesđối nghịch/175302/1803→reset→Ready/Start3.
+ServerNIC PCAP reassembly752records,106reply exactopcode/sequence/length/SHA đốichiếulog chỉ làm index;
+native actualrequest/reader/state vàSQLite snapshot quiescent làm đốichứng quyền. Hai tênKRLocal/KRGuest,
+IDs1/2/slots0/1/profileversion1 giữ suốt đường; không genericprofile/multiroom hoặc fullM5.
+Nativepre175state `[1,0]` rồi`[0,1]` ởcảhai view, ranks`[2,1]` rồi`[1,2]`; cleanread302/292/3 và3clock/reset/mapseed.
+91raw đãseal/178inputkhôngđổi/cleanupđúng;2.286copied4b52A350getterchecks là kiểm model sau run, khônginferiorcalls.
+Ảnh đãxem haioutcomes vàthirdclock01:53; UI cùngnativeproof, không suy từprocess/logserver.
+NativeInternetexpiry/revoke/disconnect/stale khôngmớiđo ởrun này; CP258LANlifecycle vẫn là nguồnriêng theo binarycũ.
+
+### 99/153, nguồn sau NAT và native UDP
+
+Ba actual99/153 mỗiidentity đãdecode từserverNIC và giữhash, nativeportgetter khớpwire99. Aselfport khác
+nguồnUDP sauNAT tại captuređầuxa; Bnativeingress thấynguồnđó,40native sendto gọi đúngcổngquan sát,
+**khác cổngA trong153**. Không sửa99/153/payload; Bđã có cậpnhậtendpoint từnguồnnhận trong đường đãđo.
+Ba actualnativeframer153/payload97/return0 mỗirole khớp actualwire; nativeUDPkey/endpoint/apply
+đượckiểm riêng. Marker`peer_end` dùngGDBFinishBreakpoint trảpayload10/21/cursor0 bịloại, khôngclaimexact
+153handler-endcursor/errors. Không nhận TCPđếntransport làconsumerproof hoặc chạy lạiKRchỉđểsửareport.
+
+78nativeingress/77complete packethelper→keycompare/currentremoteactor→apply/cursor13;78native-send/rawhash
+join quaApreNAT/Buplink/publicNIC, cảhai chiều vàhai vòng cóthayđổi state/fields trên actorpeer.
+Captuređầuxa cócloud1:1privatevantage nên không tìmpublicdestination ởNIC; join bằngfullUDPpayloadSHA/sourceport,
+không đoán packet từcount. Captureduplicate/dropped/window coverage đượcghi; đây không tấtcảgameUDP.
+Môitrường thật/giới hạn/route/NAT/mapping/filter/MTU1280 vàtunnelcarrierđượcpin riêngtronglocal theo chỉđạoprivacy.
+Không chènnetemlatency/jitter/loss/reordering/bandwidth artificial ởlượt này; khôngclaim linkkhôngmấtgói hoặcNATclassphổquát.
+Nhánh(a) trực tiếp **trong đường đãđo** cóproof; không cầnserverhọcport/relay ởđườngnày. Không nâng thànhmọiNAT/ISP.
+
+### Ca chung NAT và điều kiện gate còn thiếu
+
+R11: hai KR/privateNIC đi cùnguplink, serverNIC thấy cùngpublicsource/khácTCPports; cảhai frontend đượcbackend
+cấpđúngaccount/player vàbindđúngactualsharedpeer. Aauth0/own291/rendergiữ8s; B61byte đúngtoken nhưngmetadataIP
+khácactorA bịlookup`actors[peer]` từchối, nativeauth1/nogrant. SQLite/actualargv/request/response/UI đãkiểm.
+Đây là giới hạn hiệncó của fixedIPactorprofile; **chưa có sharedNATtwo-accountgame support**, R1f phải lấyidentity/
+transport/membership từsession/lease, metadata khôngđược chọn principal bằngpublicIP. Khôngtắt metadata/tokencheck
+để tựcoi caâm tínhlàhỗtrợ. R11raw45files/180frozen/cleanupđạt; khôngUDP/gamemeasurement ca này.
+
+**N1 vẫn OPEN:** PLAN yêu cầu mộtuplink diđộng/CGNAT củaISP. Bằngchứnghiệncó xácnhậnInternet/publictuple/
+portremap, chưa cóowner/operatorrecord chứngnhậnloạiuplink. Nhãnagentcũ “mobile/CGNAT” khôngcóprovenance
+đượcloại, oldraw/sealskhôngsửa. Khôngsuy từIPprefix, khônggiảđịnhISP/CGNAT hoặc tựrelaxacceptance.
+Chờ thôngtinmôitrường rồi đo đúngkhoảngtrống nếu cần; đừng chạy lại JSONguard/broadSDK hoặc coi cổngremap làCGNATproof.
+K6cWANgiảlập/K7scopegiữ; Internetthật đãđo đườngnày, **ISP/CGNATthựctế chưađượcxácnhận**; chưanghiệmthuN1hoànchỉnh.
