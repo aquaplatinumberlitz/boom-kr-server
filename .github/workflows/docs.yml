@@ -1,0 +1,44 @@
+name: Docs and Python tools
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/check_docs.py
+      - run: python3 tools/content_census.py --check
+      - name: Test Python tools
+        env:
+          PYTHONPATH: tools
+        run: >-
+          python3 -m unittest
+          tools.test_feature_catalog.CatalogTests.test_baseline_and_reproducible_generation
+          tools.test_feature_catalog.CatalogTests.test_cycles_and_missing_dependency
+          tools.test_feature_catalog.CatalogTests.test_duplicate_and_removed_ids
+          tools.test_feature_catalog.CatalogTests.test_missing_file_and_anchor
+          tools.test_feature_catalog.CatalogTests.test_repurposed_id
+          tools.test_feature_catalog.CatalogTests.test_state_evidence_and_environment
+          tools.test_checkpoint_absolute_local
+          tools.test_checkpoint_audit_order
+          tools.test_checkpoint_source_history
+          tools.test_checkpoint_store
+          tools.test_checkpoints
+          tools.test_export_preset
+          tools.test_four_bundle
+          tools.test_issue_links
+          tools.test_probe_channel_identity
+          tools.test_terrain_shadow
