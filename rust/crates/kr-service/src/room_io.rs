@@ -34,6 +34,9 @@ pub struct Config {
     pub four_results: bool,
     #[serde(default)]
     pub four_abort_room: bool,
+    /// CP208–210 explicit fixed8 baseline; not four abort/items/terrain.
+    #[serde(default)]
+    pub eight_battle: bool,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -95,6 +98,7 @@ pub struct Runtime {
     four_life_reports: bool,
     four_results: bool,
     four_abort_room: bool,
+    eight_battle: bool,
     abort: Option<FourAbort>,
 }
 /// Single-loss CP205 diagnostic lifecycle; preserved through final cleanup.
@@ -138,6 +142,10 @@ fn player_alias(id: u32) -> io::Result<&'static str> {
         2 => Ok("player_B"),
         3 => Ok("player_C"),
         4 => Ok("player_D"),
+        5 => Ok("player_E"),
+        6 => Ok("player_F"),
+        7 => Ok("player_G"),
+        8 => Ok("player_H"),
         _ => Err(err("unsupported diagnostic player identity")),
     }
 }
@@ -149,6 +157,9 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         return Err(err("fixed room title must be bounded ASCII"));
     }
     let count = actors.len();
+    if cfg.eight_battle && count != 8 {
+        return Err(err("eight battle requires eight diagnostic actors"));
+    }
     if cfg.four_abort_room && (count != 4 || !cfg.four_results) {
         return Err(err("four abort-room requires opt-in four results"));
     }
@@ -161,7 +172,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
     if cfg.four_owner_bombs && count != 4 {
         return Err(err("four-owner bombs require the four diagnostic profile"));
     }
-    if !matches!(count, 2 | 4)
+    if !matches!(count, 2 | 4 | 8)
         || actors
             .values()
             .any(|a| a.identity == 0 || a.identity as usize > count)
@@ -170,7 +181,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
     }
     // Four profile first covers startup/room/loading. Reject unported terrain and
     // result policies before binding rather than silently selecting two-player ranks.
-    if count == 4 && (cfg.battle.is_some() || cfg.terrain.is_some()) {
+    if matches!(count, 4 | 8) && (cfg.battle.is_some() || cfg.terrain.is_some()) {
         return Err(err("four-player Battle/terrain policy not ported"));
     }
     let mut expected = vec![
@@ -315,10 +326,21 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         four_life_reports: cfg.four_life_reports,
         four_results: cfg.four_results,
         four_abort_room: cfg.four_abort_room,
+        eight_battle: cfg.eight_battle,
         abort: None,
     })))
 }
 impl Runtime {
+    fn life_enabled(&self) -> bool {
+        self.four_life_reports || self.eight_battle
+    }
+    fn team_results(&self) -> bool {
+        self.four_results || self.eight_battle
+    }
+    fn owner_bombs(&self) -> bool {
+        self.four_owner_bombs || self.eight_battle
+    }
+
     fn member(&self, id: u32, connection: u64) -> io::Result<Member> {
         self.model
             .members
@@ -606,6 +628,27 @@ impl Runtime {
                 self.channels.remove(&id);
                 return;
             }
+            if next.capacity() == 8
+                && matches!(next.phase, Phase::Loading { .. } | Phase::Armed { .. })
+            {
+                if next.fence_eight(m.key).is_ok() {
+                    let result = self
+                        .departure(m.key, &next)
+                        .and_then(|effects| self.publish(next.clone(), effects));
+                    if result.is_err() {
+                        self.model = next;
+                        self.channels.clear();
+                    }
+                } else {
+                    self.channels.clear();
+                }
+                self.requested.remove(&m.key);
+                self.rostered
+                    .retain(|(recipient, subject)| *recipient != m.key && *subject != m.key);
+                self.ports.remove(&m.key);
+                self.channels.remove(&id);
+                return;
+            }
             let closing_active =
                 self.packets.contains_key("rank") && matches!(next.phase, Phase::Armed { .. });
             let transition = if closing_active {
@@ -641,7 +684,9 @@ impl Session {
         if runtime.channels.contains_key(&identity) {
             return Err(err("duplicate room channel"));
         }
-        let (sender, inbox) = mpsc::channel(8);
+        // Eight setup can hold own106/110 + seven peer106 + map = ten batches.
+        // Keep two/four queues unchanged and the local pending bound16.
+        let (sender, inbox) = mpsc::channel(if runtime.model.capacity() == 8 { 16 } else { 8 });
         runtime
             .channels
             .insert(identity, Channel { connection, sender });
@@ -670,7 +715,7 @@ impl Session {
         if r.abort.is_some() {
             return r.abort_refresh();
         }
-        if !r.packets.contains_key("rank") && !r.four_results {
+        if !r.packets.contains_key("rank") && !r.team_results() {
             return Ok(());
         }
         let Phase::Armed { round } = r.model.phase else {
@@ -680,14 +725,14 @@ impl Session {
             return Ok(());
         }
         let now = Instant::now();
-        let rank = if r.four_results {
+        let rank = if r.team_results() {
             let Some(team) = crate::four_results::winner(&r.model, now) else {
                 return Ok(());
             };
             r.reply(
                 "start",
                 Some(175),
-                Some(crate::four_results::rank_body(team)?),
+                Some(crate::four_results::rank_body(r.model.capacity(), team)?),
             )
         } else {
             let members: Vec<_> = r.model.members.values().collect();
@@ -724,7 +769,7 @@ impl Session {
         let mut next = r.model.clone();
         next.end(round)?;
         let mut effects = Vec::new();
-        let returning = if r.four_results {
+        let returning = if r.team_results() {
             r.reply(
                 "start",
                 Some(180),
@@ -1315,9 +1360,13 @@ impl Session {
             }
             167 => {
                 let member = r.member(self.identity, self.connection)?;
-                if ![4, 16, 32].contains(&body.len())
-                    && !(next.capacity() == 4 && r.four_owner_bombs && body.len() == 22)
-                {
+                let measured = if next.capacity() == 8 {
+                    r.eight_battle && [4, 22, 42].contains(&body.len())
+                } else {
+                    [4, 16, 32].contains(&body.len())
+                        || (next.capacity() == 4 && r.four_owner_bombs && body.len() == 22)
+                };
+                if !measured {
                     return Err(err("opaque167 measured sizes"));
                 }
                 if matches!(next.phase, Phase::Ending { .. }) {
@@ -1346,12 +1395,15 @@ impl Session {
                 }
             }
             118 => {
-                if next.capacity() == 4 && !r.four_owner_bombs {
+                if matches!(next.capacity(), 4 | 8) && !r.owner_bombs() {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
                 let request = bombs::Request::parse(body)?;
-                let result = if next.capacity() == 4 && request.power() != 1 {
+                let result = if (next.capacity() == 4 && request.power() != 1)
+                    || (next.capacity() == 8
+                        && request.power() != [1, 1, 1, 1, 1, 1, 2, 2][usize::from(member.slot)])
+                {
                     Err("unsupported_four_power")
                 } else if matches!(next.phase, Phase::Armed { .. })
                     && next.members[&self.identity].life.death.is_some()
@@ -1427,7 +1479,7 @@ impl Session {
                 }
             }
             142 => {
-                if next.capacity() == 4 && !r.four_owner_bombs {
+                if matches!(next.capacity(), 4 | 8) && !r.owner_bombs() {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
@@ -1436,15 +1488,19 @@ impl Session {
                 }
                 let slot = read_uint(&body[2..3], Width::U8).map_err(io::Error::other)?;
                 let aux = read_uint(&body[3..], Width::U32).map_err(io::Error::other)?;
-                terrain_notice = Some(if next.capacity() == 4 {
-                    // CP201 actual142 follows explosions, including aux37 and -1.
+                terrain_notice = Some(if matches!(next.capacity(), 4 | 8) {
+                    // CP201/209 actual142 follows explosions, including aux37 and -1.
                     // Observe the measured shape only. No reveal/eligibility/item effect.
                     let row = read_uint(&body[..1], Width::U8).map_err(io::Error::other)?;
                     let col = read_uint(&body[1..2], Width::U8).map_err(io::Error::other)?;
                     if slot != u64::from(member.slot)
                         || row >= 13
                         || col >= 15
-                        || ![37, u64::from(u32::MAX)].contains(&aux)
+                        || !(if next.capacity() == 8 {
+                            [33, 37, 39, 47, u64::from(u32::MAX)].contains(&aux)
+                        } else {
+                            [37, u64::from(u32::MAX)].contains(&aux)
+                        })
                     {
                         return Err(err("unsupported four bomb-only142 report"));
                     }
@@ -1522,14 +1578,14 @@ impl Session {
                     next.observe_closed(m.key)?;
                     dropped_after_abort = true;
                 } else if let Phase::Armed { round } = next.phase {
-                    if r.packets.contains_key("rank") || r.four_life_reports {
+                    if r.packets.contains_key("rank") || r.life_enabled() {
                         let report = crate::life::Report::parse(body)?;
                         let now = Instant::now();
                         let last_blast = next.last_blast;
                         let decision =
-                            if r.four_life_reports && !matches!(report.subtype, 17 | 19 | 21) {
+                            if r.life_enabled() && !matches!(report.subtype, 17 | 19 | 21) {
                                 report.decision("unsupported_four_report_subtype", false)
-                            } else if r.four_life_reports
+                            } else if r.life_enabled()
                                 && next.members[&self.identity].life.death.is_some()
                             {
                                 report.decision("report_after_accepted_death", false)
@@ -1741,6 +1797,7 @@ mod tests {
             four_life_reports: false,
             four_results: false,
             four_abort_room: false,
+            eight_battle: false,
             abort: None,
         }));
         let mut session = Session {
@@ -1852,6 +1909,7 @@ mod tests {
             four_life_reports: false,
             four_results: false,
             four_abort_room: false,
+            eight_battle: false,
             abort: None,
         };
         let mut next = runtime.model.clone();
@@ -2091,6 +2149,7 @@ mod four_abort_tests {
             four_life_reports: true,
             four_results: true,
             four_abort_room: true,
+            eight_battle: false,
             abort: None,
         }));
         let sessions = inboxes
@@ -2214,5 +2273,136 @@ mod four_abort_tests {
         assert!(r.channels.is_empty());
         assert_eq!(r.abort.as_ref().unwrap().departed.key, keys[3]);
         assert!(!r.abort.as_ref().unwrap().completed);
+    }
+}
+
+#[cfg(test)]
+mod eight_baseline_tests {
+    use super::*;
+    use crate::life::Report;
+    fn armed() -> (Room, [Membership; 8], u64) {
+        let mut room = Room::with_capacity(8).unwrap();
+        let keys = std::array::from_fn(|i| {
+            let k = room.enter(i as u32 + 1, i as u64 + 31, i == 0).unwrap();
+            room.setup(k).unwrap();
+            if i > 0 {
+                room.ready(k).unwrap();
+            }
+            k
+        });
+        let round = room.begin(keys[0]).unwrap();
+        for k in keys {
+            room.ack(k, round).unwrap();
+        }
+        (room, keys, round)
+    }
+    fn report(slot: u8, subtype: u8, tick: u32) -> Report {
+        Report {
+            slot,
+            subtype,
+            tick,
+            digest: format!("{slot}:{subtype}:{tick}"),
+            forward: None,
+        }
+    }
+    #[test]
+    fn eight_native_accepted_cp210_rank_hashes_are_wire_regression_only() {
+        for (team, hash) in [
+            (
+                0,
+                "3ce601dd5323d5a0f5fae33c932da1f92f4129c2d33b3a681260eb961f1a33a5",
+            ),
+            (
+                1,
+                "5efff3e6576d7241a58b889e27b1f085e66c9313ecfd6a74ade4c630469551bf",
+            ),
+        ] {
+            let body = crate::four_results::rank_body(8, team).unwrap();
+            assert_eq!(body.len(), 1082);
+            assert_eq!(crate::sha256_hex(&body), hash);
+        }
+        assert!(crate::four_results::rank_body(7, 0).is_err());
+    }
+    #[test]
+    fn eight_waits_all_seven_distinct_life_writes_then_current_witness_and_fences_loss() {
+        let (mut room, keys, round) = armed();
+        let at = Instant::now();
+        for slot in [0, 2, 4, 6] {
+            let life = &mut room.members.get_mut(&(slot as u32 + 1)).unwrap().life;
+            assert!(life.apply(slot, &report(slot, 17, 1), at, None).accepted);
+            assert!(life.apply(slot, &report(slot, 19, 2), at, None).accepted);
+        }
+        let witness = &mut room.members.get_mut(&2).unwrap().life;
+        assert!(
+            witness
+                .apply(1, &report(1, 21, 1), at + Duration::from_secs(1), None)
+                .accepted
+        );
+        let targets = keys[1..].to_vec();
+        room.members
+            .get_mut(&1)
+            .unwrap()
+            .life
+            .forward_report_targets("death", &targets)
+            .unwrap();
+        for target in &targets[..6] {
+            room.members
+                .get_mut(&1)
+                .unwrap()
+                .life
+                .report_delivered("death", *target);
+            assert_eq!(
+                crate::four_results::winner(&room, at + Duration::from_secs(8)),
+                None
+            );
+        }
+        room.members
+            .get_mut(&1)
+            .unwrap()
+            .life
+            .report_delivered("death", targets[5]);
+        assert_eq!(
+            crate::four_results::winner(&room, at + Duration::from_secs(8)),
+            None
+        );
+        room.members
+            .get_mut(&1)
+            .unwrap()
+            .life
+            .report_delivered("death", targets[6]);
+        assert_eq!(
+            crate::four_results::winner(&room, at + Duration::from_secs(8)),
+            Some(1)
+        );
+        room.fence_eight(keys[7]).unwrap();
+        assert!(!room.deliverable(keys[0], Some(round)));
+        assert!(room.enter(8, 999, false).is_err());
+        assert_eq!(room.host, Some(1));
+    }
+    #[test]
+    fn eight_barrier_needs_eighth_ack_and_measured_bomb_capacities() {
+        let mut room = Room::with_capacity(8).unwrap();
+        let keys: [Membership; 8] = std::array::from_fn(|i| {
+            let k = room.enter(i as u32 + 1, i as u64 + 41, i == 0).unwrap();
+            room.setup(k).unwrap();
+            if i > 0 {
+                room.ready(k).unwrap();
+            }
+            k
+        });
+        assert!(room.enter(9, 77, false).is_err());
+        let round = room.begin(keys[0]).unwrap();
+        for k in &keys[..7] {
+            assert!(!room.ack(*k, round).unwrap());
+        }
+        assert!(room.ack(keys[7], round).unwrap());
+        assert_eq!(room.bomb_capacity, [1, 2, 1, 1, 2, 1, 1, 1]);
+        let endpoints: Vec<_> = (0..8).map(|i| (0x0a4d0002 + i, 32001 + i as u16)).collect();
+        assert_eq!(
+            room_wire::peer(&[0; 61], 12346, 7, &endpoints)
+                .unwrap()
+                .len(),
+            205
+        );
     }
 }

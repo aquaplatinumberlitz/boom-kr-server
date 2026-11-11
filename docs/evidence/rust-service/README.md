@@ -463,3 +463,34 @@ independentlifecases sửa harness. R2logflush timeout event292 và R3event208/e
 R2PID-thread snapshot có reserve_bytes.cold; chưa đủ causaldiagnosis hoặc Btrfsfix. Storage controls/nativetmpfs
 không chứng minh durablelog/production. CP247shutdownunknown/history/AUD071next252 giữ. M4 tiếp8/M5bridge riêng;
 không AUIrankcapture/newnormalcycles/reconnect/fullgame/auth/gateclosure. Internet thật chưa kiểm.
+
+
+<a id="cp250"></a>
+## CP250 — Rust8baseline Manner4v4/mesh-statbom-life/opposite-rankreset-Start3
+
+[Contract](../../PROTOCOL.md#rust-eight-baseline), [metadata](eight-baseline.json), [PLAN](../../PLAN.md#current-order).
+CP249mergePR320/9fdb57b. `local/research/codex/rust-eight-source-r1/` giữreuse/opaque-reuse/rank-oracles/seams,
+committedPython dc71e33 snapshots/CP208–210; không currenteightWIPimport/VNwire/newfunctionRE.
+`rust-eight-native-r5/` giữ eight-verification/eight-getter-verification/ui-review/collateral-review/verifier-corrections,
+native-eight/{runtime-preflight,recipe,raw-seal,storage-export,cycles}, frozen-inputs/input-retention.
+RunSHAd3ace521…/binary9105bc65…/4b/Wine10.0-20260425/Manner1/private8netns+root/32TCP/newprocesseswarmcopies,
+156raw/384,236496429s/exit0/frozen-cleanup0/5019TCP912reply/fulltuple-C2Sseq-CRC-SHAjoins/53616copiedgetters riêng.
+8actual99/heldH3s/8native121285-153205;56remoteprogress/knownstats/all8owner118/64native159-158;
+R1actualdead1-3-4-5-7/Dcollateral70peer170, R2dead2-4-6-8/56peer170. All8pre175states/rankmemory/full1082-1072/1803,
+64refresh/7Ready2–3/Start3key12348/freshall8state0hold6s. UI24images3contact sheets all8boards/twooppositevectors/Start3;
+Aboard proof ở8run, không backfill oldfourimages. No fullM4/teamvariants/admission9/native8EOF/generalrooms/auth.
+
+69Rusttests/fmt-clippy-lockedbuild; `rust-eight-kernel-tmpfs-r4/`16synthetic8cases/export93files/PIDgone,
+config-guards-r1/5prebind. TCPR1missingloginredirect,R2inbox8vs10startup,R3ledgerroster2/4missed8 giữ failures/source,
+ sửa scopedknown8guards/newdirectories; no deadlineincrease. Hồi quy2/4/pins/raw giữ riêngtheometa.
+NativeR1prearg540>480exit2/no namespace/pre-namespace-seal;R2wrongephemeralports/capture4IP/baseline4,
+controlledstop67raw125,840s/exit130/cleanup0 giữ. R3Hpost17EOF67raw63,358s vàR4Gpost17EOF67raw81,339s,
+Hcopycontrolinconclusive;37byte17 bằngCP210nativeaccepted. R5roles dùng exactprior8argv/newprocesses/original8copies,
+không causalSDKfix/authclaim. Verifier initialonlylosersdead/oldtag/slotshadow lỗi giữ cảsources/logs/retainedpre-runhash;
+R4 đúngactualdeathset/7recipient/nativeall8state/rankbyteam/mesh56, raw/preflight không sửa/nativekhôngrerun.
+`eight-controls-verification.json` kiểm8auth/own291-render/roster/nativeownslots/3round8ACK-beforeGO.
+UDPcapturer cònfourIPassert/threadfail khiE, sealedPCAP/index chỉ3frameA→B/C/D; `udp-capture-limit.json` giữ rõ.
+Không14/56UDPwirecapture/nativeAPI-keyapplyclaim;56nativecurrentprogress/fullTCPcapture độc lập. Sửa trong plannedvariantcontrol.
+Allnativepositive/private256MiBtmpfs evidence sink/export-sizeSHA/unmount/renameaftercleanup. Btrfsflushfaults còn
+unknown, TMPFS không durabilityfix/load/production. AUD071qua248/next252/#14-285OPEN/8WIPexact.
+Internet thật chưa kiểm.

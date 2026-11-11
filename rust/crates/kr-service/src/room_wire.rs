@@ -106,7 +106,7 @@ pub fn peer(
     endpoints: &[(u32, u16)],
 ) -> io::Result<Vec<u8>> {
     if template.len() < 35
-        || !matches!(endpoints.len(), 2 | 4)
+        || !matches!(endpoints.len(), 2 | 4 | 8)
         || usize::from(recipient) >= endpoints.len()
     {
         return Err(io::Error::other("unsupported diagnostic peer153"));

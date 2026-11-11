@@ -1,0 +1,187 @@
+{
+  "schema": "kre-rust-eight-baseline-v1",
+  "checkpoint": "CP250",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/PROTOCOL.md#rust-eight-baseline",
+  "plan": "docs/PLAN.md#current-order",
+  "baseline": "9fdb57be30b94531cc001e4585441d165b9a8426",
+  "native": {
+    "run_sha256": "d3ace52186816e3a969e9efea2f821378288e92c417edc2d652a5a9b16d05649",
+    "binary_sha256": "9105bc6557c21c37c6af86bb9ac77f2bf71c25619623426fefa0d33f393175d8",
+    "raw_count": 156,
+    "duration_s": 384.236496429,
+    "cleanup": {
+      "net_namespace": "net:[4026533944]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "mode": {
+      "selector": 1,
+      "label": "Manner"
+    },
+    "cycles": [
+      {
+        "round": 1,
+        "key": 12346,
+        "dead": [
+          1,
+          3,
+          4,
+          5,
+          7
+        ],
+        "intended_selfbomb_owners": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "collateral": [
+          4
+        ],
+        "winner": 1,
+        "latest_death_ns": 230304246837,
+        "latest_blast_ns": 223877894203,
+        "first_rank_ns": 238304994872,
+        "witnesses": [
+          2,
+          6,
+          8
+        ],
+        "native_states": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "round": 2,
+        "key": 12347,
+        "dead": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "intended_selfbomb_owners": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "collateral": [],
+        "winner": 0,
+        "latest_death_ns": 333840630047,
+        "latest_blast_ns": 327450040260,
+        "first_rank_ns": 341842789743,
+        "witnesses": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "native_states": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ]
+      }
+    ],
+    "storage": {
+      "kind": "private256MiBtmpfs",
+      "mount": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rust-eight-native-r5/native-eight/cycles",
+      "filesystem": {
+        "filesystems": [
+          {
+            "target": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rust-eight-native-r5/native-eight/cycles",
+            "source": "kr-evidence-tmpfs",
+            "fstype": "tmpfs",
+            "options": "rw,relatime,size=262144k,mode=700,uid=1000,gid=1000,inode64,huge=advise"
+          }
+        ]
+      },
+      "export": "Afterownedprocesscleanup/captureclose,copy-hashverify/unmount/renameintooriginalnewlocaldirectory",
+      "limits": "ExplicitstoragecontrolafterBtrfslogflushfailures;unchanged2sflush/IOdeadlines;notBtrfsfix/durablelog-productionacceptance"
+    },
+    "path": "local/research/codex/rust-eight-native-r5",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "10.0-20260425",
+    "tcp_records": 5019,
+    "exact_replies": 912,
+    "transports": 32,
+    "directed_remote_progress": 56,
+    "owner_bombs": 8,
+    "total_budget_seconds": 480,
+    "UDP_capture": {
+      "records": 3,
+      "directed_edges": [
+        [
+          "10.77.0.2",
+          "10.77.0.3"
+        ],
+        [
+          "10.77.0.2",
+          "10.77.0.4"
+        ],
+        [
+          "10.77.0.2",
+          "10.77.0.5"
+        ]
+      ],
+      "complete": false,
+      "reason": "Retainedcapture_udp.pyassertfourIP2..5,threadstoppedatEendpoint;raw3frames/index3rows/no full14or56wireproof"
+    }
+  },
+  "tests": {
+    "workspace": 69,
+    "service": 64,
+    "wire": 5,
+    "eightTCP": 16,
+    "eight_prebind": 5,
+    "copied_getters": 53616,
+    "four_regression": "local/research/codex/rust-eight-four-regression-r1/verification.json",
+    "two_regression": "local/research/codex/rust-eight-two-regression-r1/input/verification.json",
+    "four_guestTCP": 20,
+    "four_hostTCP": 20,
+    "four_normalTCP": 32,
+    "twoTCP": 51,
+    "native_controls": "local/research/codex/rust-eight-native-r5/eight-controls-verification.json"
+  },
+  "reuse": {
+    "survey": "local/research/codex/rust-eight-source-r1/reuse.json",
+    "opaque": "local/research/codex/rust-eight-source-r1/opaque-reuse.json",
+    "rank_oracles": "local/research/codex/rust-eight-source-r1/rank-oracles.json",
+    "direct": "CP208/2098native32TCP/56mesh/stats/owners;CP210known1751072inner1082outer/1803/reset;CP249sharedRustguards. No currenteightWIPimport/newnativefunctions/VNwire.",
+    "avoided": "No rediscoverycodec/peer/rank/life, no repeatfourpositiveRE/accountDBredo. CP213teamcodeunmerged separatedelivery."
+  },
+  "policy": {
+    "config": "Explicit eight_battle requires8 diagnosticactors; legacyfourflags/terrain-twoBattlecfg reject. Fixedalternatingteam baseline; defaultpreview separate.",
+    "bounds": "2/4inbox8 unchanged;8inbox16 because10startupbatches,localpending16;lifeunique1/3/7/bombunique2/4/8/allwritecompletion/currentmembership-roundfences",
+    "stats": "capacity1,2,1,1,2,1,1,1/power1,1,1,1,1,1,2,2/speed5,4,5,4,4,5,5,4;currentnativeprofile-only/fuse6design",
+    "outcome": "exactlyonealiveTeam/currentwitness-afterlatestdeathblast/settle8/drain/allrecipient17-19-21complete;rank16header+8x131+8empty=1072inner1082outer/winningteam1loser2/economy0;reset64slots-cursorpersistent",
+    "opaque": "CP209sealedCRCseqreread142aux33/37/39/47/-1 and167sizes4/22/42 boundedobserve-noeffect;notsemantics/grant/terrain",
+    "EOF": "fence8loading-Armedjobs/sealroom/107110only/noinfer175180;notnative7survivorreturn"
+  },
+  "limits": [
+    "KR00967/Wine10.0-20260425/copy4b/currentManner1/fixedalternating4v4/ExVillage01/private8virtualhosts/sharedkernel. No fullM4/generalroom/everycharacter/mode/auth/originalauthority.",
+    "R1actualdead[1,3,4,5,7] includesDcollateral, R2dead[2,4,6,8]; all8nativeprestates matchreports/ranks byteam. Not exactCP210deathvectors or deterministicmovement.",
+    "Private256MiBtmpfs evidence sink/export-sizeSHA aftercleanup; priorBtrfsflushfaults unresolved/no durability/load/productionfix.",
+    "Free1v7/selectorpersist/unbalancedManner1v7/native ninth-admission bridge still Rustgaps; unknownIP/socketreject notnative9fullroom. No interactiveC2Steamchange.",
+    "EightEOF unit/TCPfencespending/no175180; no native seven-survivorRoomreturn/3memberStart/replacement/reconnect/accountresume/matchrestore.",
+    "No terrain/items/needle/rescue8/nativeclear21/fullauth. M5backendpresent/nativeownershipbridge independent. Internet thật chưa kiểm.",
+    "R1budgetargreject andR2wrongports-fourIPcaptureguard/baselinepredicate;R3H/R4Gpost17nativeEOF/rootunknown retained. R5restores priorCP210perrole32charargv, all8nativepositive; no claimcausalSDKfix/authentication.",
+    "Pre-runverifierretained, latercorrections actualcollateraldeadset/EIGHT_SLOTmarker/meshloopslotvariable. Originalfailures/raw/preflight immutable;checkerdoesnotclosegates.",
+    "UDPcapturepartial3A→B/C/Dframes only: inheritedfourIPassertstopsonE. TCPcapturefull/56nativecurrentprogressindependent;noUDPAPI-keyapply/full14-56wirecaptureclaim. Fixcaptureinplannedteamvariantcontrol, notrerunsolved2cycles."
+  ]
+}

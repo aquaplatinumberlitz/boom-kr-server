@@ -233,7 +233,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             || two.wcp_ports.iter().copied().collect::<HashSet<_>>().len() != two.wcp_ports.len()
             || two.wcp_ports.iter().any(|p| !config.ports.contains(p))
             || ports.iter().any(|p| !config.ports.contains(p))
-            || !matches!(two.actors.len(), 2 | 4)
+            || !matches!(two.actors.len(), 2 | 4 | 8)
             || config.allowed_peers.len() != two.actors.len()
         {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
@@ -244,8 +244,12 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             let expected = match actor.identity {
                 1 => "KRLocal",
                 2 => "KRGuest",
-                3 if two.actors.len() == 4 => "KRNew",
-                4 if two.actors.len() == 4 => "KRPeer4",
+                3 if matches!(two.actors.len(), 4 | 8) => "KRNew",
+                4 if matches!(two.actors.len(), 4 | 8) => "KRPeer4",
+                5 if two.actors.len() == 8 => "KRPeer5",
+                6 if two.actors.len() == 8 => "KRPeer6",
+                7 if two.actors.len() == 8 => "KRPeer7",
+                8 if two.actors.len() == 8 => "KRPeer8",
                 _ => return Err(io::Error::other("unsupported diagnostic identity")),
             };
             if actor.name != expected

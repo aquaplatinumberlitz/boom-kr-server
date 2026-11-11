@@ -79,15 +79,15 @@ impl Default for Room {
 impl Room {
     /// Explicit diagnostic profiles measured at CP235/200. Not general admission.
     pub(crate) fn with_capacity(capacity: usize) -> io::Result<Self> {
-        if !matches!(capacity, 2 | 4) {
+        if !matches!(capacity, 2 | 4 | 8) {
             return Err(io::Error::other("unsupported diagnostic room capacity"));
         }
         Ok(Self {
             capacity,
-            bomb_capacity: if capacity == 4 {
-                vec![1, 2, 1, 1]
-            } else {
-                vec![1, 2]
+            bomb_capacity: match capacity {
+                8 => vec![1, 2, 1, 1, 2, 1, 1, 1], // CP209 actual baseline
+                4 => vec![1, 2, 1, 1],
+                _ => vec![1, 2],
             },
             ..Self::default()
         })
@@ -257,10 +257,10 @@ impl Room {
         if let Some(terrain) = &mut self.terrain {
             terrain.begin(round);
         }
-        self.bomb_capacity = if self.capacity == 4 {
-            vec![1, 2, 1, 1]
-        } else {
-            vec![1, 2]
+        self.bomb_capacity = match self.capacity {
+            8 => vec![1, 2, 1, 1, 2, 1, 1, 1],
+            4 => vec![1, 2, 1, 1],
+            _ => vec![1, 2],
         };
         self.phase = Phase::Loading {
             round,
@@ -297,6 +297,19 @@ impl Room {
         let round = self.abort_play(key)?;
         self.sealed_abort = true;
         Ok(round)
+    }
+    /// Eight current-member loss fences the room; no native seven-survivor
+    /// return contract is claimed or cloned from the four-player abort path.
+    pub(crate) fn fence_eight(&mut self, key: Membership) -> io::Result<()> {
+        if self.capacity != 8 || !matches!(self.phase, Phase::Armed { .. } | Phase::Loading { .. })
+        {
+            return Err(io::Error::other(
+                "eight fence requires current loading/Battle",
+            ));
+        }
+        self.leave(key)?;
+        self.sealed_abort = true;
+        Ok(())
     }
     pub fn outcome_deliverable(&self, key: Membership, round: u64) -> bool {
         self.current(key)
@@ -446,7 +459,10 @@ mod tests {
     #[test]
     fn four_members_require_all_ready_and_current_ack_and_keep_two_path_separate() {
         assert!(Room::with_capacity(3).is_err());
-        assert!(Room::with_capacity(8).is_err()); // eight needs its own port/evidence
+        assert_eq!(
+            Room::with_capacity(8).unwrap().bomb_capacity,
+            [1, 2, 1, 1, 2, 1, 1, 1]
+        );
         let mut r = Room::with_capacity(4).unwrap();
         let a = r.enter(1, 11, true).unwrap();
         let b = r.enter(2, 22, false).unwrap();

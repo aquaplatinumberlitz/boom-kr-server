@@ -1,0 +1,372 @@
+{
+  "id": "CP250",
+  "previous": "CP249",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T02:13:21.753976+00:00",
+  "context_commit": "9fdb57be30b94531cc001e4585441d165b9a8426",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M4/KRE-074: portknownCP208–210eightbaselinewithoutunmergedWIP/rediscovery;native8loading-mesh56-statbom8/life7peer-oppositerank8-resetStart3 preserving2/4regression andtruthfulUDPcapture/failurelimits.",
+  "scope": "Sharedbounded2-4-8/eight_battleoptin/queue8=16/unique7life-8bomb/currentfences/rank1072inner1082outer/reset64;nativeR5same8Manner4v4/32TCP/56nativeprogress/8owners/twooppositeoutcomes-Dcollateral/Start3/156raw/5019TCP912reply/53616copiedgetters/24UI;69tests16eightTCP5guards123two-fourregression/M4partial.",
+  "artifacts": [
+    {
+      "name": "Rustkr-serviceLinux-nativeeightbaseline",
+      "sha256": "9105bc6557c21c37c6af86bb9ac77f2bf71c25619623426fefa0d33f393175d8"
+    },
+    {
+      "name": "CA-r2-stage-social-cmp.exe-ABIcopy-nonewpatch",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "CP208native8startup-CP209mesh56statsowner8-CP2101751072inner1082outer/actualsealedrankhashes source-first",
+    "rust/crates/kr-service/src/room_io.rs/eight_battle-distinct8profile-queue16/life_enabled-team_results-owner_bombs-fence_eight",
+    "rust/crates/kr-service/src/bombs.rs/unique2-4-8allrecipientcompletion;life.rs/unique1-3-7allwrites",
+    "rust/crates/kr-service/src/four_results.rs/shared4-8winner-rank_body/typed16slots;room_wire.rs/peer2-4-8",
+    "tools/export_rust_profile.py/expand_eight_startup/noeightWIPimport;tools/test_rust_eight_room.py/16cases",
+    "NativeR5private8netns/32TCP/all8profiles-clocks/actual4v4teamoutcomes/R1Dcollateral/UDPcapture3partial",
+    "CP249PR320merged9fdb57b/AUD071through248-next252/historyimmutable/noM4closure"
+  ],
+  "findings": [
+    {
+      "summary": "Same8actualKR/Wine4b/Manner1/private8netns+root/32TCP/currentownprofiles-slots/native8ACK(Hheld3snoGO7)/121285-peer153205full;8freshOSwindows→56nativecurrentremoteprogress/currentstats64viewmatches. All8actual118owners/measuredpowers→64native159entity/full39→64native158/full13/lookupkind0-cleanup.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-eight-baseline",
+      "evidence": [
+        "RUST250-02042",
+        "RUST250-02040",
+        "RUST250-02444"
+      ],
+      "limits": "Same8KR00967Wine4b/private8LAN/sharedkernel/Manner1fixedalternating4v4/oneVillage01/32TCP/56nativeprogress/statbom8/life7peer/opposite-rankresetStart3 only. R1Dcollateraltruthful. UDPcapturepartial3frames/fourIPharnessguard/no14-56wire/nativeAPIkeyapplyclaim. TMPFSevidence/exporthash notBtrfsfix/durablelog/production. NoFree1v7-selector-unbalancedRustnegative/native9admission/native8EOF/generalrooms/fullM4/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Twoopposite4v4outcomes/same32transports: R1dead1-3-4-5-7(Dcollateral)/70peer170/prestates[1,0,1,1,1,0,1,0];R2dead2-4-6-8/56peer170/[0,1,0,1,0,1,0,1]. Nativeall8pre175states andfull1751082outer1072inner16rows/rankmemory/1803 errors0. Rankbyteam(includingdeadDwinrank1)/64refresh-7ReadyStart2–3/keys12346–48/freshall8state0hold6s.156raw384.236496429s/frozen-cleanup0/5019TCP912reply;53616copiedgettersseparate/24screensall8boards-andStart3reviewed.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-eight-baseline",
+      "evidence": [
+        "RUST250-02042",
+        "RUST250-02041",
+        "RUST250-02459",
+        "RUST250-02038"
+      ],
+      "limits": "Same8KR00967Wine4b/private8LAN/sharedkernel/Manner1fixedalternating4v4/oneVillage01/32TCP/56nativeprogress/statbom8/life7peer/opposite-rankresetStart3 only. R1Dcollateraltruthful. UDPcapturepartial3frames/fourIPharnessguard/no14-56wire/nativeAPIkeyapplyclaim. TMPFSevidence/exporthash notBtrfsfix/durablelog/production. NoFree1v7-selector-unbalancedRustnegative/native9admission/native8EOF/generalrooms/fullM4/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Sharedbounded2/4/8/eight_battleexplicit/legacyfourflags-terrain8reject. Eightinbox16fortenstartupbatches/2-4inbox8/localpending16;unique7life+8bomdistinctcurrentmemberships/allwritecompletion/wrongvisit-duplicate/oldroundguards/ranktyped8/drainedcurrentwitness-settle8. NativeacceptedCP210twoframehashes wireregressiononly/notselfgeneratedoracle. CP209sealedCRCseqreread142aux33-37-39-47/-1 and1674-22-42 boundednoeffect/semanticsunknown.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-eight-baseline",
+      "evidence": [
+        "RUST250-00129",
+        "RUST250-00124",
+        "RUST250-00127",
+        "RUST250-02467",
+        "RUST250-02466",
+        "RUST250-00762"
+      ],
+      "limits": "Same8KR00967Wine4b/private8LAN/sharedkernel/Manner1fixedalternating4v4/oneVillage01/32TCP/56nativeprogress/statbom8/life7peer/opposite-rankresetStart3 only. R1Dcollateraltruthful. UDPcapturepartial3frames/fourIPharnessguard/no14-56wire/nativeAPIkeyapplyclaim. TMPFSevidence/exporthash notBtrfsfix/durablelog/production. NoFree1v7-selector-unbalancedRustnegative/native9admission/native8EOF/generalrooms/fullM4/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "69Rusttests/fmt-clippylockedbuild/16eightTCP/5prebind;20fourguest20fourhost32fournormal51two/PIDgone/samebinary/TMPFSexportallhash. TCPR1missingredirectcorrectlyrejected;R2queue8startupgap;R3ledgerroster2-4missed8 allfailedraw/source/exportkept/scopedfixes. EightEOFfencespending/no175180 onlyunit-TCP, no7nativeRoomreturnclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-eight-baseline",
+      "evidence": [
+        "RUST250-00093",
+        "RUST250-00762",
+        "RUST250-00379",
+        "RUST250-02553",
+        "RUST250-00111",
+        "RUST250-00383",
+        "RUST250-00479",
+        "RUST250-00574"
+      ],
+      "limits": "Same8KR00967Wine4b/private8LAN/sharedkernel/Manner1fixedalternating4v4/oneVillage01/32TCP/56nativeprogress/statbom8/life7peer/opposite-rankresetStart3 only. R1Dcollateraltruthful. UDPcapturepartial3frames/fourIPharnessguard/no14-56wire/nativeAPIkeyapplyclaim. TMPFSevidence/exporthash notBtrfsfix/durablelog/production. NoFree1v7-selector-unbalancedRustnegative/native9admission/native8EOF/generalrooms/fullM4/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "NativeR1arg540>480hardcapexit2/noNamespace;R2wrongephemeralports+fourIPcapture/baseline4controlledSIGINTexistingfinally/67raw125.839s/exit130/frozen-cleanup0. R3Hpost17EOF67raw63.358s/R4Gpost17EOF67raw81.339s/native0auth/CALaunchersymptom/37byte17sameCP210/rootunknown. HprivatecopyfromDdidnotresolvecause. R5restoreexactCP210perrole32argv(original8copies/newprocesses)/positive, no causalSDKfix/authclaim.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-eight-baseline",
+      "evidence": [
+        "RUST250-01017",
+        "RUST250-01037",
+        "RUST250-01038",
+        "RUST250-01369",
+        "RUST250-01700",
+        "RUST250-02283"
+      ],
+      "limits": "Same8KR00967Wine4b/private8LAN/sharedkernel/Manner1fixedalternating4v4/oneVillage01/32TCP/56nativeprogress/statbom8/life7peer/opposite-rankresetStart3 only. R1Dcollateraltruthful. UDPcapturepartial3frames/fourIPharnessguard/no14-56wire/nativeAPIkeyapplyclaim. TMPFSevidence/exporthash notBtrfsfix/durablelog/production. NoFree1v7-selector-unbalancedRustnegative/native9admission/native8EOF/generalrooms/fullM4/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Postsealverifierfailures kept: onlyintendedlosersdead assumption→actualDcollateral;FOUR_SLOT→EIGHT_SLOTtag;meshslotshadow→captured_slot. R4requiresallactualaccepteddeadpairsets/7forwards/currentwitness/all8nativeprestates/rankbyteam/56nativeprogress. Pre-runverifierhash/retainedinput/raw/preflightunchanged, no native rerun toerasefacts. Additionalcontrolsidentity/ACKpass;UDPcapturerfourIPguardstoppedatE, only3A→B-C-DPCAPframes/index3/launchAssertionError. Explicitpartial/not14-56UDPwire/nativeAPIkeyapply;56nativecoords/fullTCPindependent. FixUDPcaptureandsupervisionwithinmeaningfulplannedteamvariantcontrol.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-eight-baseline",
+      "evidence": [
+        "RUST250-02460",
+        "RUST250-02458",
+        "RUST250-02040",
+        "RUST250-02028",
+        "RUST250-02029",
+        "RUST250-02030",
+        "RUST250-02026"
+      ],
+      "limits": "Same8KR00967Wine4b/private8LAN/sharedkernel/Manner1fixedalternating4v4/oneVillage01/32TCP/56nativeprogress/statbom8/life7peer/opposite-rankresetStart3 only. R1Dcollateraltruthful. UDPcapturepartial3frames/fourIPharnessguard/no14-56wire/nativeAPIkeyapplyclaim. TMPFSevidence/exporthash notBtrfsfix/durablelog/production. NoFree1v7-selector-unbalancedRustnegative/native9admission/native8EOF/generalrooms/fullM4/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ManualREADME→PLAN→PROTOCOL→RESEARCH→source/raw/UI/scope selfcheck: baseline8donebutM4partial/fixedFree1v7-selector-unbalancednegative/native9admissionbridge next. UnknownIP/socketreject notnative9fullroom;separatedeliveryfrom8WIP/no import. M5backendpresent/nativebridgeindependent/no DBredo. TMPFSexportnotBtrfsfix/durablelog;AUD071through248next252/8WIPbyteexact/CP249PR320merged/#14-285OPEN/historyimmutable.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-eight-baseline",
+      "evidence": [
+        "RUST250-00112",
+        "RUST250-00115",
+        "RUST250-00022"
+      ],
+      "limits": "Same8KR00967Wine4b/private8LAN/sharedkernel/Manner1fixedalternating4v4/oneVillage01/32TCP/56nativeprogress/statbom8/life7peer/opposite-rankresetStart3 only. R1Dcollateraltruthful. UDPcapturepartial3frames/fourIPharnessguard/no14-56wire/nativeAPIkeyapplyclaim. TMPFSevidence/exporthash notBtrfsfix/durablelog/production. NoFree1v7-selector-unbalancedRustnegative/native9admission/native8EOF/generalrooms/fullM4/fullauth. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native8baseline/currentManner4v4/mesh-stat-bom-life-opposite-rankresetStart3",
+      "result": "pass",
+      "evidence": [
+        "RUST250-02042",
+        "RUST250-02040",
+        "RUST250-02459",
+        "RUST250-02444"
+      ],
+      "limits": "Same8KR00967Wine4b/private8LAN/sharedkernel/Manner1fixedalternating4v4/oneVillage01/32TCP/56nativeprogress/statbom8/life7peer/opposite-rankresetStart3 only. R1Dcollateraltruthful. UDPcapturepartial3frames/fourIPharnessguard/no14-56wire/nativeAPIkeyapplyclaim. TMPFSevidence/exporthash notBtrfsfix/durablelog/production. NoFree1v7-selector-unbalancedRustnegative/native9admission/native8EOF/generalrooms/fullM4/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "check": "53616copied52A350getters",
+      "result": "pass",
+      "evidence": [
+        "RUST250-02041"
+      ],
+      "limits": "Unicorncopiedfunction/readonlyruntimewrappers/counterreset/separatefromWine/notwholebinaryoracle."
+    },
+    {
+      "check": "69Rust/fmt-clippy-lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST250-00008",
+        "RUST250-00055",
+        "RUST250-00093",
+        "RUST250-00050"
+      ],
+      "limits": "64service5wire/samebinarynative;sourcecodeunchangedafterrun."
+    },
+    {
+      "check": "16eightTCP5guards/20+20+32four51two regression",
+      "result": "pass",
+      "evidence": [
+        "RUST250-00762",
+        "RUST250-00111",
+        "RUST250-00379",
+        "RUST250-02553"
+      ],
+      "limits": "SyntheticTCPonly/TMPFSstoragecontrolexport;no native9/fullM4proof."
+    },
+    {
+      "check": "InitialTCPmissingredirect/queue8/ledgerroster4",
+      "result": "fail",
+      "evidence": [
+        "RUST250-00476",
+        "RUST250-00572",
+        "RUST250-00667"
+      ],
+      "limits": "Allrawsourceexportretained/PIDgone;scopedproducer-queue-rosterfixesbeforeR4pass/nativeR5."
+    },
+    {
+      "check": "NativepreparationR1argument/R2ports/R3H-R4Gpost17EOF",
+      "result": "fail",
+      "evidence": [
+        "RUST250-01017",
+        "RUST250-01348",
+        "RUST250-01679",
+        "RUST250-02011",
+        "RUST250-01700"
+      ],
+      "limits": "Prelaunch/controlledstop/startupexitsnot8gameplaypass;rootcauseunknown/R5priorargvpositiveisnotcausalSDKfix."
+    },
+    {
+      "check": "Initialnativeverifiercollateral-tag-slotshadow/UDPcapturefourIPthread",
+      "result": "fail",
+      "evidence": [
+        "RUST250-02460",
+        "RUST250-02458",
+        "RUST250-02026"
+      ],
+      "limits": "Retainedcheckerfailures/pre-runinputversion/raw;UDP3framespartial/no full14-56UDPwireproof/no native rerun."
+    },
+    {
+      "check": "Manualdocs-catalog-issues-WIP-seals-storageexports",
+      "result": "pass",
+      "evidence": [
+        "RUST250-00112",
+        "RUST250-00007"
+      ],
+      "limits": "Codexselfcheck/reviewwaived/AUD071next252/checkernotgateclosure."
+    },
+    {
+      "check": "RustFree1v7-selector-unbalancednegative/native9admission/native8EOF/fullM4-M5auth-production",
+      "result": "not_run",
+      "evidence": [
+        "RUST250-00115"
+      ],
+      "limits": "Same8KR00967Wine4b/private8LAN/sharedkernel/Manner1fixedalternating4v4/oneVillage01/32TCP/56nativeprogress/statbom8/life7peer/opposite-rankresetStart3 only. R1Dcollateraltruthful. UDPcapturepartial3frames/fourIPharnessguard/no14-56wire/nativeAPIkeyapplyclaim. TMPFSevidence/exporthash notBtrfsfix/durablelog/production. NoFree1v7-selector-unbalancedRustnegative/native9admission/native8EOF/generalrooms/fullM4/fullauth. Internet thật chưa kiểm."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP250-rust-eight-baseline.json",
+      "bytes": 677880,
+      "sha256": "70b8b6bf2c1ae3235078858386cae7eabd574de444bfbaf85931c4dbb3a71bf2",
+      "count": 2571
+    }
+  ],
+  "delta": {
+    "added": [
+      "SharedRustbounded8baseline/eight_battle/7life-8bomballwrites/typedrank8/reset64;native32TCP/56coords/statbom8/twooutcomes-Start3/156raw/69tests/16eightTCP/5guards/2-4regression123.",
+      "Source-backedCP209opaque142167/CP210actualrankhashreuse/no current8WIPimport/newfunctions."
+    ],
+    "corrected": [
+      "Eightstartupqueue8insufficientfortenbatches→bounded16/eightledgerroster4→8;missingredirectharnesscorrected/no guardremoval.",
+      "Nativepreparerbudget-ports-fourIPTCP-baselinepredicate/perroleargv correctionspreservefailedruns;no causalSDKfixclaim.",
+      "VerifieractualDcollateral/tag/slotshadow correctedwitholdsource/rawkept;UDPcapturepartialexplicit/fullTCP-native56independent."
+    ],
+    "superseded": [
+      "Rust8baselineentirelymissing;now scopedManner4v4native done, variants-admission9/M4stillpending."
+    ]
+  },
+  "blockers": [
+    "KR00967/Wine10.0-20260425/copy4b/currentManner1/fixedalternating4v4/ExVillage01/private8virtualhosts/sharedkernel. No fullM4/generalroom/everycharacter/mode/auth/originalauthority.",
+    "R1actualdead[1,3,4,5,7] includesDcollateral, R2dead[2,4,6,8]; all8nativeprestates matchreports/ranks byteam. Not exactCP210deathvectors or deterministicmovement.",
+    "Private256MiBtmpfs evidence sink/export-sizeSHA aftercleanup; priorBtrfsflushfaults unresolved/no durability/load/productionfix.",
+    "Free1v7/selectorpersist/unbalancedManner1v7/native ninth-admission bridge still Rustgaps; unknownIP/socketreject notnative9fullroom. No interactiveC2Steamchange.",
+    "EightEOF unit/TCPfencespending/no175180; no native seven-survivorRoomreturn/3memberStart/replacement/reconnect/accountresume/matchrestore.",
+    "No terrain/items/needle/rescue8/nativeclear21/fullauth. M5backendpresent/nativeownershipbridge independent. Internet thật chưa kiểm.",
+    "R1budgetargreject andR2wrongports-fourIPcaptureguard/baselinepredicate;R3H/R4Gpost17nativeEOF/rootunknown retained. R5restores priorCP210perrole32charargv, all8nativepositive; no claimcausalSDKfix/authentication.",
+    "Pre-runverifierretained, latercorrections actualcollateraldeadset/EIGHT_SLOTmarker/meshloopslotvariable. Originalfailures/raw/preflight immutable;checkerdoesnotclosegates.",
+    "UDPcapturepartial3A→B/C/Dframes only: inheritedfourIPassertstopsonE. TCPcapturefull/56nativecurrentprogressindependent;noUDPAPI-keyapply/full14-56wirecaptureclaim. Fixcaptureinplannedteamvariantcontrol, notrerunsolved2cycles."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANfixedFree1v7-selector/MannerunbalancednegativeCP213port-deliveryseparatefromWIP,then native9admissionbridge/consumer/M4acceptance;fixUDPcaptureIP2..9-supervisioninmeaningfulvariantnative. No repeatsolvedManner2cycles/fourpositive/codecRE;M5bridgeindependent/AUD071next252.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T02:13:21.753976+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualnative8/rawTCP-nativeprofiles-ACK-mesh-stats-bom-life-rankreset-UI/partialUDP/failureprovenance/source selfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/eight-baseline.json",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP250Rust8baseline native/twooppositeoutcomes-Dcollateral/UDPcapturepartial/TMPFS-failurelimits/nextvariants-admission9/M5bridgeindependent/AUD071next252/historykept."
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP249",
+  "as_of": "CP250",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1013,7 +1013,10 @@
           "docs/evidence/rust-service/four-startup.json",
           "docs/evidence/rust-service/README.md#cp245",
           "docs/evidence/rust-service/four-results.json",
-          "docs/evidence/rust-service/README.md#cp248"
+          "docs/evidence/rust-service/README.md#cp248",
+          "docs/PROTOCOL.md#rust-eight-baseline",
+          "docs/evidence/rust-service/eight-baseline.json",
+          "docs/evidence/rust-service/README.md#cp250"
         ]
       },
       "coverage": {
@@ -1068,7 +1071,10 @@
               "docs/PROTOCOL.md#rust-fixed-room",
               "docs/PROTOCOL.md#rust-m2-acceptance",
               "docs/PROTOCOL.md#rust-four-startup",
-              "docs/PROTOCOL.md#rust-four-results"
+              "docs/PROTOCOL.md#rust-four-results",
+              "docs/PROTOCOL.md#rust-eight-baseline",
+              "docs/evidence/rust-service/eight-baseline.json",
+              "docs/evidence/rust-service/README.md#cp250"
             ]
           },
           "windows_original": {
@@ -1100,7 +1106,10 @@
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#eight-portable-battle",
             "docs/PROTOCOL.md#rust-four-startup",
-            "docs/PROTOCOL.md#rust-four-results"
+            "docs/PROTOCOL.md#rust-four-results",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ],
           "delivery": "via_pr"
         },
@@ -1112,7 +1121,10 @@
             "docs/PROTOCOL.md#current-291-room-integration",
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#eight-portable-battle",
-            "docs/PROTOCOL.md#eight-team-variants"
+            "docs/PROTOCOL.md#eight-team-variants",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ]
         },
         "gate": {
@@ -1169,7 +1181,10 @@
           "docs/evidence/rust-service/four-startup.json",
           "docs/evidence/rust-service/README.md#cp245",
           "docs/evidence/rust-service/four-results.json",
-          "docs/evidence/rust-service/README.md#cp248"
+          "docs/evidence/rust-service/README.md#cp248",
+          "docs/PROTOCOL.md#rust-eight-baseline",
+          "docs/evidence/rust-service/eight-baseline.json",
+          "docs/evidence/rust-service/README.md#cp250"
         ]
       },
       "coverage": {
@@ -1228,7 +1243,10 @@
               "docs/PROTOCOL.md#eight-session-preview",
               "docs/PROTOCOL.md#eight-two-team-cycles",
               "docs/PROTOCOL.md#rust-four-startup",
-              "docs/PROTOCOL.md#rust-four-results"
+              "docs/PROTOCOL.md#rust-four-results",
+              "docs/PROTOCOL.md#rust-eight-baseline",
+              "docs/evidence/rust-service/eight-baseline.json",
+              "docs/evidence/rust-service/README.md#cp250"
             ]
           },
           "windows_original": {
@@ -1258,7 +1276,10 @@
             "docs/PROTOCOL.md#eight-session-preview",
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#rust-four-startup",
-            "docs/PROTOCOL.md#rust-four-results"
+            "docs/PROTOCOL.md#rust-four-results",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ]
         },
         "integration": {
@@ -1272,7 +1293,10 @@
             "docs/PROTOCOL.md#loading-timeout",
             "docs/PROTOCOL.md#loading-timeout-positive",
             "docs/PROTOCOL.md#current-291-room-integration",
-            "docs/PROTOCOL.md#eight-two-team-cycles"
+            "docs/PROTOCOL.md#eight-two-team-cycles",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ]
         },
         "gate": {
@@ -1721,7 +1745,10 @@
           "docs/evidence/rust-service/four-life.json",
           "docs/evidence/rust-service/README.md#cp247",
           "docs/evidence/rust-service/four-results.json",
-          "docs/evidence/rust-service/README.md#cp248"
+          "docs/evidence/rust-service/README.md#cp248",
+          "docs/PROTOCOL.md#rust-eight-baseline",
+          "docs/evidence/rust-service/eight-baseline.json",
+          "docs/evidence/rust-service/README.md#cp250"
         ]
       },
       "coverage": {
@@ -1794,7 +1821,10 @@
               "docs/PROTOCOL.md#rust-four-startup",
               "docs/PROTOCOL.md#rust-four-owner-bombs",
               "docs/PROTOCOL.md#rust-four-life",
-              "docs/PROTOCOL.md#rust-four-results"
+              "docs/PROTOCOL.md#rust-four-results",
+              "docs/PROTOCOL.md#rust-eight-baseline",
+              "docs/evidence/rust-service/eight-baseline.json",
+              "docs/evidence/rust-service/README.md#cp250"
             ]
           },
           "windows_original": {
@@ -1825,7 +1855,10 @@
             "docs/PROTOCOL.md#rust-four-startup",
             "docs/PROTOCOL.md#rust-four-owner-bombs",
             "docs/PROTOCOL.md#rust-four-life",
-            "docs/PROTOCOL.md#rust-four-results"
+            "docs/PROTOCOL.md#rust-four-results",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ],
           "delivery": "via_pr"
         },
@@ -1853,7 +1886,10 @@
             "docs/PROTOCOL.md#eight-team-variants",
             "docs/PROTOCOL.md#rust-movement-floor",
             "rust/crates/kr-service/src/pickups.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ]
         },
         "gate": {
@@ -1900,7 +1936,10 @@
           "docs/evidence/rust-service/README.md#cp238",
           "docs/evidence/rust-service/bombs.json",
           "docs/evidence/rust-service/README.md#cp242",
-          "docs/evidence/rust-service/m3-acceptance.json"
+          "docs/evidence/rust-service/m3-acceptance.json",
+          "docs/PROTOCOL.md#rust-eight-baseline",
+          "docs/evidence/rust-service/eight-baseline.json",
+          "docs/evidence/rust-service/README.md#cp250"
         ]
       },
       "coverage": {
@@ -1939,7 +1978,10 @@
               "docs/PROTOCOL.md#current-basic-contest-reset",
               "docs/PROTOCOL.md#emulated-lan-acceptance",
               "docs/PROTOCOL.md#routed-Wine-network",
-              "docs/PROTOCOL.md#rust-bombs"
+              "docs/PROTOCOL.md#rust-bombs",
+              "docs/PROTOCOL.md#rust-eight-baseline",
+              "docs/evidence/rust-service/eight-baseline.json",
+              "docs/evidence/rust-service/README.md#cp250"
             ]
           },
           "windows_original": {
@@ -1964,7 +2006,10 @@
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
             "rust/crates/kr-service/src/room_io.rs",
-            "docs/PROTOCOL.md#rust-m3-acceptance"
+            "docs/PROTOCOL.md#rust-m3-acceptance",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ],
           "delivery": "via_pr"
         },
@@ -1979,7 +2024,10 @@
             "docs/PROTOCOL.md#routed-Wine-network",
             "docs/PROTOCOL.md#rust-bombs",
             "rust/crates/kr-service/src/bombs.rs",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ]
         },
         "gate": {
@@ -3031,7 +3079,10 @@
           "docs/PROTOCOL.md#eight-two-team-cycles",
           "docs/evidence/rust-service/life-results.json",
           "docs/evidence/rust-service/README.md#cp242",
-          "docs/evidence/rust-service/m3-acceptance.json"
+          "docs/evidence/rust-service/m3-acceptance.json",
+          "docs/PROTOCOL.md#rust-eight-baseline",
+          "docs/evidence/rust-service/eight-baseline.json",
+          "docs/evidence/rust-service/README.md#cp250"
         ]
       },
       "coverage": {
@@ -3105,7 +3156,10 @@
               "docs/PROTOCOL.md#current-basic-cycles-291",
               "docs/PROTOCOL.md#current-basic-contest-reset",
               "docs/PROTOCOL.md#four-two-team-cycles",
-              "docs/PROTOCOL.md#eight-two-team-cycles"
+              "docs/PROTOCOL.md#eight-two-team-cycles",
+              "docs/PROTOCOL.md#rust-eight-baseline",
+              "docs/evidence/rust-service/eight-baseline.json",
+              "docs/evidence/rust-service/README.md#cp250"
             ]
           },
           "windows_original": {
@@ -3146,7 +3200,10 @@
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#rust-life-results",
             "rust/crates/kr-service/src/life.rs",
-            "docs/PROTOCOL.md#rust-m3-acceptance"
+            "docs/PROTOCOL.md#rust-m3-acceptance",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ],
           "delivery": "via_pr"
         },
@@ -3180,7 +3237,10 @@
             "docs/PROTOCOL.md#current-basic-contest-reset",
             "docs/PROTOCOL.md#eight-two-team-cycles",
             "docs/PROTOCOL.md#rust-life-results",
-            "rust/crates/kr-service/src/life.rs"
+            "rust/crates/kr-service/src/life.rs",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ]
         },
         "gate": {
@@ -3787,7 +3847,10 @@
           "docs/evidence/rust-service/README.md#cp248",
           "docs/PROTOCOL.md#rust-four-abort",
           "docs/evidence/rust-service/four-abort.json",
-          "docs/evidence/rust-service/README.md#cp249"
+          "docs/evidence/rust-service/README.md#cp249",
+          "docs/PROTOCOL.md#rust-eight-baseline",
+          "docs/evidence/rust-service/eight-baseline.json",
+          "docs/evidence/rust-service/README.md#cp250"
         ]
       },
       "coverage": {
@@ -3877,7 +3940,10 @@
               "docs/PROTOCOL.md#rust-four-results",
               "docs/PROTOCOL.md#rust-four-abort",
               "docs/evidence/rust-service/four-abort.json",
-              "docs/evidence/rust-service/README.md#cp249"
+              "docs/evidence/rust-service/README.md#cp249",
+              "docs/PROTOCOL.md#rust-eight-baseline",
+              "docs/evidence/rust-service/eight-baseline.json",
+              "docs/evidence/rust-service/README.md#cp250"
             ]
           },
           "windows_original": {
@@ -3919,7 +3985,10 @@
             "docs/PROTOCOL.md#rust-four-results",
             "docs/PROTOCOL.md#rust-four-abort",
             "docs/evidence/rust-service/four-abort.json",
-            "docs/evidence/rust-service/README.md#cp249"
+            "docs/evidence/rust-service/README.md#cp249",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ],
           "delivery": "via_pr"
         },
@@ -3962,7 +4031,10 @@
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-four-abort",
             "docs/evidence/rust-service/four-abort.json",
-            "docs/evidence/rust-service/README.md#cp249"
+            "docs/evidence/rust-service/README.md#cp249",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ]
         },
         "gate": {
@@ -4088,7 +4160,10 @@
           "docs/evidence/rust-service/README.md#cp248",
           "docs/PROTOCOL.md#rust-four-abort",
           "docs/evidence/rust-service/four-abort.json",
-          "docs/evidence/rust-service/README.md#cp249"
+          "docs/evidence/rust-service/README.md#cp249",
+          "docs/PROTOCOL.md#rust-eight-baseline",
+          "docs/evidence/rust-service/eight-baseline.json",
+          "docs/evidence/rust-service/README.md#cp250"
         ]
       },
       "coverage": {
@@ -4205,7 +4280,10 @@
               "docs/PROTOCOL.md#rust-four-results",
               "docs/PROTOCOL.md#rust-four-abort",
               "docs/evidence/rust-service/four-abort.json",
-              "docs/evidence/rust-service/README.md#cp249"
+              "docs/evidence/rust-service/README.md#cp249",
+              "docs/PROTOCOL.md#rust-eight-baseline",
+              "docs/evidence/rust-service/eight-baseline.json",
+              "docs/evidence/rust-service/README.md#cp250"
             ]
           },
           "windows_original": {
@@ -4256,7 +4334,10 @@
             "docs/PROTOCOL.md#rust-four-results",
             "docs/PROTOCOL.md#rust-four-abort",
             "docs/evidence/rust-service/four-abort.json",
-            "docs/evidence/rust-service/README.md#cp249"
+            "docs/evidence/rust-service/README.md#cp249",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ],
           "delivery": "via_pr"
         },
@@ -4321,7 +4402,10 @@
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-four-abort",
             "docs/evidence/rust-service/four-abort.json",
-            "docs/evidence/rust-service/README.md#cp249"
+            "docs/evidence/rust-service/README.md#cp249",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ]
         },
         "gate": {
@@ -4754,7 +4838,10 @@
           "docs/evidence/rust-service/README.md#cp248",
           "docs/PROTOCOL.md#rust-four-abort",
           "docs/evidence/rust-service/four-abort.json",
-          "docs/evidence/rust-service/README.md#cp249"
+          "docs/evidence/rust-service/README.md#cp249",
+          "docs/PROTOCOL.md#rust-eight-baseline",
+          "docs/evidence/rust-service/eight-baseline.json",
+          "docs/evidence/rust-service/README.md#cp250"
         ]
       },
       "coverage": {
@@ -4926,7 +5013,10 @@
               "docs/PROTOCOL.md#rust-four-results",
               "docs/PROTOCOL.md#rust-four-abort",
               "docs/evidence/rust-service/four-abort.json",
-              "docs/evidence/rust-service/README.md#cp249"
+              "docs/evidence/rust-service/README.md#cp249",
+              "docs/PROTOCOL.md#rust-eight-baseline",
+              "docs/evidence/rust-service/eight-baseline.json",
+              "docs/evidence/rust-service/README.md#cp250"
             ]
           },
           "windows_original": {
@@ -5054,7 +5144,10 @@
             "docs/PROTOCOL.md#rust-four-results",
             "docs/PROTOCOL.md#rust-four-abort",
             "docs/evidence/rust-service/four-abort.json",
-            "docs/evidence/rust-service/README.md#cp249"
+            "docs/evidence/rust-service/README.md#cp249",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ]
         },
         "integration": {
@@ -5161,7 +5254,10 @@
             "docs/PROTOCOL.md#rust-return-cleanup",
             "docs/PROTOCOL.md#rust-four-abort",
             "docs/evidence/rust-service/four-abort.json",
-            "docs/evidence/rust-service/README.md#cp249"
+            "docs/evidence/rust-service/README.md#cp249",
+            "docs/PROTOCOL.md#rust-eight-baseline",
+            "docs/evidence/rust-service/eight-baseline.json",
+            "docs/evidence/rust-service/README.md#cp250"
           ]
         },
         "gate": {

@@ -214,6 +214,95 @@ def expand_four_startup(config, derived_dir, peers):
     return config
 
 
+
+def expand_eight_startup(config, derived_dir, peers):
+    """CP208/209 fixed eight inputs from known two-profile fields.
+
+    Uses unchanged four profile primitives, never imports current eight WIP.
+    Producer output is not a native compatibility oracle.
+    """
+    import copy
+    import ipaddress
+    import struct
+    from server import four_player_profile as four, probe_codec as codec
+    from server.room_title import _decode_bytes, _encode_bytes
+    config = copy.deepcopy(config)
+    two = config.get('diagnostic_two_lobby', {})
+    if len(two.get('actors', [])) != 2 or 'fixed_room' not in two:
+        raise ValueError('eight startup requires two-role fixed-room input')
+    if len(peers) != 8 or len(set(peers)) != 8:
+        raise ValueError('eight distinct diagnostic peers required')
+    for address in [config['bind'], *peers]:
+        ip = ipaddress.IPv4Address(address)
+        if not (ip.is_loopback or any(ip in ipaddress.IPv4Network(net) for net in
+                ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16'])):
+            raise ValueError('eight startup endpoints must be loopback or RFC1918')
+    derived_dir = Path(derived_dir).resolve()
+    if not derived_dir.is_relative_to(Path(__file__).resolve().parents[1] / 'local'):
+        raise ValueError('derived inputs must stay under repository local/')
+    roles = 'ABCDEFGH'
+    members = {role: dict(four.MEMBERS[role]) if role in four.MEMBERS else
+               dict(identity=i+1, slot=i, team=i%2, name='KRPeer'+str(i+1))
+               for i, role in enumerate(roles)}
+    room = two['fixed_room'];common = two['actors'][0]['profile']
+    def pinned(row):
+        path = Path(row['fixture']['path']);raw = path.read_bytes()
+        if len(raw) != row['fixture']['bytes'] or hashlib.sha256(raw).hexdigest() != row['fixture']['sha256']:
+            raise ValueError('eight startup source fixture pin mismatch')
+        return raw
+    player_template = room['packets']['player_B'];player = codec.frame_body(pinned(player_template), player_template['sequence'])
+    auth_template = common['packets']['auth_A'];auth = codec.frame_body(pinned(auth_template), auth_template['sequence'])
+    derived_dir.mkdir(parents=True, exist_ok=False)
+    def pin(name, raw):
+        path = derived_dir / (name+'.bin');path.write_bytes(raw)
+        return dict(path=str(path), bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest())
+    def packet(name, template, body, sequence=None):
+        seq = template['sequence'] if sequence is None else sequence
+        return dict(fixture=pin(name, codec.encode(pinned(template)[:37], template['opcode'], body, seq)), sequence=seq, opcode=template['opcode'])
+    actors = []
+    for role, ip in zip(roles, peers):
+        member = members[role];profile = copy.deepcopy(common);body = four.player_body(player, member, chief=role=='A')
+        header = packet(role+'-player106', player_template, body, 58);profile['own_header'] = header['fixture']
+        profile['packets']['auth_A'] = packet(role+'-auth', auth_template, four.auth_body(auth, member))
+        profile['packets']['own291'] = dict(fixture=pin(role+'-own291', four.own_body(body)), sequence=None, opcode=291)
+        room['packets']['player_'+role] = header
+        actors.append(dict(peer=ip, identity=member['identity'], name=member['name'], profile=profile))
+    start = room['packets']['start'];body = codec.frame_body(pinned(start), start['sequence'])
+    if len(body) != 129 or codec.read_fields(body[:1], [1]) != [0]:
+        raise ValueError('eight startup requires known two-row121')
+    size = codec.read_fields(body[1:5], [4])[0];raw = _decode_bytes(body[5:5+size])
+    if size != 106 or raw[:6] != b'\x18'+struct.pack('<I',101)+b'\0':
+        raise ValueError('unsupported eight121 envelope')
+    inner = raw[6:]
+    if len(inner) != 100 or inner[43] != 2 or inner[48] != 0 or inner[74] != 1:
+        raise ValueError('unsupported eight121 rows')
+    rows = [inner[48:74], inner[74:100]]
+    for role in roles[2:]:
+        m = members[role];row = bytearray(rows[1]);row[0]=row[2]=m['slot'];struct.pack_into('<H',row,3,m['slot']);row[5]=m['team'];rows.append(bytes(row))
+    prefix = bytearray(inner[:48]);prefix[43]=8;inner = prefix+b''.join(rows)
+    stream = b'\x18'+struct.pack('<I',len(inner)+1)+b'\0'+inner
+    body = body[:1]+codec.pack_fields([len(stream)],[4])+_encode_bytes(stream)+body[5+size:]
+    if len(body) != 285:
+        raise ValueError('eight121 bounded size')
+    room['packets']['start'] = packet('start8', start, body)
+    peer = room['packets']['peer'];prefix = codec.frame_body(pinned(peer),peer['sequence'])[:35]
+    if len(prefix) != 35:
+        raise ValueError('eight peer prefix truncated')
+    body = bytearray(prefix);body[15:19]=codec.pack_fields([12346],[4])
+    for slot in range(26):
+        body += codec.pack_fields([int(slot<8)],[1])
+        if slot < 8:
+            endpoint = [0]*6 if slot == 0 else [int(ipaddress.IPv4Address(peers[slot])),32001+slot,0,0,0,0]
+            body += codec.pack_fields(endpoint,[4,2]*3)
+    room['packets']['peer'] = packet('peer8',peer,bytes(body))
+    room.pop('battle',None);room.pop('terrain',None)
+    for flag in ['four_owner_bombs','four_life_reports','four_results','four_abort_room']:
+        room.pop(flag,None)
+    two['actors']=actors;config['allowed_peers']=list(peers);config['max_connections']=max(48,config['max_connections'])
+    source = Path(four.__file__)
+    (derived_dir/'provenance.json').write_text(json.dumps(dict(scope='Eight fixed diagnostic startup input producer; eightBattle separately opt-in, not nativeacceptance.',builder_path=str(source),builder_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),contract='docs/PROTOCOL.md#eight-session-preview',limits='CP208knownfields/zero profiles/fixedalternatingteams. No currenteightWIP import, auth/fullitems/admission9/nativecompatibility inferred.'),indent=2)+'\n')
+    return config
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--python-profile', type=Path, required=True)
@@ -238,6 +327,9 @@ def main():
     p.add_argument('--four-life-reports', action='store_true', help='Opt-in four 17/19/21 reports and three-recipient170 only; requires four-owner-bombs, no results')
     p.add_argument('--four-results', action='store_true', help='Opt-in fixed four 2v2 drained results/reset; requires four-life-reports')
     p.add_argument('--four-abort-room', action='store_true', help='Opt-in scoped active four-member EOF unranked return; requires four-results')
+    p.add_argument('--eight-startup-derived-dir', type=Path, help='Known fixed8 producer, separate from four startup inputs')
+    p.add_argument('--eight-startup-peer', action='append', default=[])
+    p.add_argument('--eight-battle', action='store_true', help='Opt-in CP209/210 fixed8 bombs/life/results; no items/terrain/unrankedabort')
     a = p.parse_args()
     if not 1 <= len(a.port) <= 32 or len(set(a.port)) != len(a.port) or any(not 1 <= n <= 65535 for n in a.port):
         p.error('one to32 distinct nonzero ports required')
@@ -263,6 +355,14 @@ def main():
             p.error('four startup requires two-lobby/fixed-room inputs plus derived directory and C/D peers')
         config = expand_four_startup(config, a.four_startup_derived_dir,
             [a.diagnostic_peer_a, a.diagnostic_peer_b, a.four_startup_peer_c, a.four_startup_peer_d])
+    if a.eight_startup_derived_dir or a.eight_startup_peer:
+        if not a.eight_startup_derived_dir or len(a.eight_startup_peer) != 8 or any(four) or not all(two) or not all(room):
+            p.error('eight startup requires two/fixed-room and eight distinct peers, separate from four expansion')
+        config = expand_eight_startup(config, a.eight_startup_derived_dir, a.eight_startup_peer)
+    if a.eight_battle:
+        if not a.eight_startup_derived_dir:
+            p.error('eight battle requires eight-startup profile')
+        config['diagnostic_two_lobby']['fixed_room']['eight_battle'] = True
     if a.four_owner_bombs:
         if not all(four):
             p.error('four-owner bombs requires the explicit four-startup profile')

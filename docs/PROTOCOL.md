@@ -9051,3 +9051,73 @@ Chưa three-memberStart/replacement/reconnect/accountresume/matchrestore/general
 loadingEOF/selectedEndingEOF/terrain4/rescue/needle/eight/fullM4. Không có normaloutcome trong hai EOFcontrols,
 Aresultpanel screenshot gap CP248 giữ nguyên. M5backend có sẵn/nativebridge riêng; Internet thật chưa kiểm.
 AUD071 qua248/audit kế252; Codex selfcheck, independentreviewwaived; checker không tự đóng gate.
+
+<a id="rust-eight-baseline"></a>
+## Rust tám người: baseline Manner4v4, mesh/bom/life/kết quả/reset — CP250 / M4 partial
+
+[Metadata](evidence/rust-service/eight-baseline.json), [raw/hash](evidence/rust-service/README.md#cp250),
+[thứ tự tiếp](PLAN.md#current-order). Reuse [CP208](#eight-session-preview)/[CP209](#eight-mesh-owner-bombs)/
+[CP210](#eight-two-team-cycles), sharedRustCP245–249; không RE thêm hàm/VNwire/currenteightWIP import.
+
+Config tám diagnosticactors ID1–8/names/slots0–7 cố định; `eight_battle=true` bật known8bom/life/result,
+startup producer `expand_eight_startup` giữ baseline hai/four độc lập và không import moduleeight đangWIP.
+Exporter `--eight-startup-derived-dir` +8`--eight-startup-peer`; `--eight-battle` riêng. Fourflags/legacyBattle2/terrain8reject.
+Known121285/rowinner256,153205/26slots/8active/selfzero/current99IP-port; đủ8Ready-ACK mới GO.
+Queue mỗi8connection16 đủ10startupbatches, localpending16; hai/fourqueue8 giữ. Kernelburst585 phát hiện guard8cũ,
+đã sửa cóđối chứng. Bombledger unique2/4/8recipient, life unique1/3/7membership; duplicate/wrongvisitcompletion
+không nhả peer khác. Reserve toàn queues trước publish và đủ mọi170writes trước Ending; không TCPwrite=clientACK.
+
+Stats current8profile theo CP209: capacities1,2,1,1,2,1,1,1; powers1,1,1,1,1,1,2,2; speeds5,4,5,4,4,5,5,4.
+Native maxstats cũng được lưu trong clockwrappers; đây không mọi character/mode/maxcap. Fuse6/placement/reportauthority
+là design. Reread sealedCP209C2S/CRC/seq cho142aux33/37/39/47/-1 và167sizes4/22/42, chỉ boundedobserve/noeffect,
+không reveal/inventory/ACK. Terrain/item/kim/rescue8 không tự bật.
+
+Outcome exactlyonealiveTeam/current21witness sau latestdeath-blast/settle8/bombdrain/all17-19-21recipientwrites.
+Rank16header+8×131active+8empty=1072inner/1082outer; hai actualsealedCP210bodySHA là wire regression,
+không encoder tự làm nativeoracle. Winningteamrank1/loser2/economy0, kể cả teammate đã chết; không all-dead/tie8.
+175→5s1803→3s64slot110/Readyreset/cursorretained; đủ7Ready mới và8native99 mới Start2/3/key mới.
+Eightloading/ArmedEOF fencejobs/sealroom/107110 không tạo175180; **chưa native bảy survivor về phòng**.
+Không clone fourabort-room hoặc twoforfeit thành8.
+
+**Native cùng8client** KR00967/Wine10.0-20260425/copy4b/private8netns+rootbridge/no default route/sharedkernel,
+currentManner1/fixedalternating4v4/ExVillage01: ID/name/slots thật, 8actual99 (giữ H3s khi đủ7khôngGO),
+121285/153205 đầy đủ/errors0;8OS.25s movementwindows có56remoteprogress/freshbaselines theo nativeprotectedcoords.
+Mỗiowner actual118 đúngslot/key/power→64native159entity/full39→64native158/full13/lookupkind0-cleanup; stats khớp8views.
+Hai outcome trong cùng32TCP/process/channels:
+
+| Vòng/key | Actual accepteddeath/nativeall8pre175 | Rank theo team và reset |
+|---|---|---|
+|1/12346|A/C/E/G tự đặt bom; D chết thêm do bom lan: `[1,0,1,1,1,0,1,0]`;70peer170|Team1 thắng `[2,1,2,1,2,1,2,1]`; Dđãchết vẫn rank1 theo design team; full1751082/1072/16slots/1803/reset64|
+|2/12347|B/D/F/H: `[0,1,0,1,0,1,0,1]`;56peer170|Team0 thắng `[1,2,1,2,1,2,1,2]`; full175/180/reset64/7Ready-Start3|
+
+Không ép R1 thành vector CP210 cũ hoặc bỏ D khỏi proof. Mỗi accepted17/19 tới đúng7peer/native56→1;
+cả8nativepre175state khớp actualdeadset và đúng một aliveTeam. Native175/180 fullincallback/rankmemory riêng;
+Finish170cursor0afterreturn không fullparseproof. Key12348/Start3:8clocklần3, sau6s freshreadonlyall8state0.
+5.019TCP/912exactreply/fulltuple-C2Sseq-CRC-SHA/156raw/384,236496429s/sourcefrozen/cleanup0.
+53.616copied52A350checks riêngUnicorn/counterreset; không wholebinaryoracle.
+Additionalcontrols xác nhận8nativeauth/291-render/roster-ownslots và3actual8ACK-beforeGO. UDPcapturer còn assertIP2..5,
+threaddừng ởE: chỉ3frame A→B/C/D đã lưu/index3rows/launchAssertionError. **UDPcapture partial**, không14hoặc56wireedges
+hay nativeUDPAPI-key/applyproof;56currentnativecoordinateprogress vàfullTCPcapture là proof độc lập. Không suy
+exit0/sourcefrozen thànhcapturecomplete. Sửa UDPcapture trong plannedteamvariantnativecontrol, không lặp2cycles chỉcapture. Đã xem24ảnh qua3contact sheets:
+all8boards đủ8tên/twooppositevectors/zeroeconomy vàStart3clock01:53/8actors/ownarrows; Aboard hiệnởrun8này,
+không backfill ảnhfourCP248 hoặc pixelidentity/worldauthority.
+
+**Failures/provenance:**69Rusttests/16eightTCP/5prebind. TCPR1 thiếu loginredirect đúngguard;R2queue8startupfull;
+R3bombledgerroster2/4còn sót; giữsource/raw/export/PIDgone, sửa cónguồn trước runtime, R4synthetic16pass.
+NativeR1total540 vượt inheritedhardcap480, argparseexit2 chưanamespace; R2nativeconfig lấy nhầmTCPephemeralports,
+controlledSIGINT vào existingfinally/67raw-seal-cleanup0/captureguardfourIPs vàbaselinepredicate4 chưamở8.
+R3H vàR4G đóng channel sau17/trước544/CALauncher, raw67/run/frozen/cleanup0;37byte17 khớp CP210H.
+R4privateHcopyfromfourD không giải nguyên nhân. R5 khôi phục đúng per-role32charargv CP210 (trước đó
+configroles dùngoffline-probe khác toplevelargv), original8game/prefixes/newprocesses đạt; **không kết luận causalSDKfix**.
+Không patch client mới/đụngbinary-assetsnguồn hoặc mở SDKVMgraph.
+
+VerifierR1 giả onlyintendedlosersdead, R2 dùng markerFOUR_SLOT thayEIGHT_SLOT, R3 shadoworigin-slot trong
+snapshotloop; giữoldversions/failurelogs/retainedpre-run verifierhash/raw. R4 sửa kiểm dựa actualaccepteddeathset,
+đủ intendedowners/everycurrentrecipient/nativeall8states/rankbyteam và56remoteprogress, không rerun native.
+Private256MiBtmpfs evidence sink/exportallsizeSHA sau ownedWine/service/capturecleanup; total480s,
+I/O/2sflush/cleanupdeadlines giữ. Btrfsflush faults CP249 vẫnunknown; không durability/load/productionacceptance.
+
+M4 còn RustfixedFree1v7/selectorpersistence/Mannerunbalancednegative vànative9admissionbridge/consumer trước
+đối chiếu acceptance; unknownIP/socketreject không đủ9thnativefullroom. Không interactiveC2Steamchange,
+generalrooms/native8EOF/fullitems/rescue/needle/auth/resume/fullM4. M5backend có sẵn/nativebridge riêng;
+AUD071through248/next252/reviewwaived/checker không đóng gate. Internet thật chưa kiểm.
