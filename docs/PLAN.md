@@ -23,7 +23,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, s
 | M7 phòng tổng quát | Chưa bắt đầu | Toàn bộ; cần R1 |
 | [G1](#rust-g1) sáu map ladder và item | Chưa bắt đầu; có [kiểm kê](CONTENT.md) | Phép thử đổi map, rồi từng map và nhóm item |
 | M6 lưu kết quả, thưởng 0 | Chưa bắt đầu | Toàn bộ; cần R1 |
-| M8 vận hành | CI đã có (PR #334) | Nâng trần kết nối, giám sát, backup/restore, kiểm tải 50 người |
+| M8 vận hành | CI đã có (PR #334, #340) | Nâng trần kết nối, giám sát, backup/restore, kiểm tải 50 người |
 
 **Thứ tự việc:**
 
@@ -39,8 +39,6 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, s
 **Blocker và việc tồn:**
 
 - Chưa có blocker chặn thứ tự trên.
-- `tools/test_feature_catalog.py::test_no_auto_gate_closure_and_question_required` fail trên clone sạch nên đang nằm
-  ngoài CI; cần tìm nguyên nhân rồi đưa lại vào `docs.yml`.
 - `local/` (bằng chứng thô và fixture) chưa có backup ngoài máy này.
 
 **Quy ước:**
