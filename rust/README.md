@@ -451,3 +451,8 @@ R1d/CP264: `kr-wire::kr00967` giữ header chuẩn và pure room/player/battle b
 normalize ở config admission; runtime phòng dùng enum template/opcode, không mượn header fixture khác.
 96 Rust/306 TCP,3169 frame cũ +24 first-vacant khớp; [contract/limits](../docs/PROTOCOL.md#rust-r1d-wire-builders).
 Native candidate chưa kiểm; N1 được chấp nhận từ CP261 theo owner4G/phạm vi riêng, N1b vẫn chưa kiểm.
+
+
+R1e/CP265: fixed-room serving đi qua Registry<Shared>, listing91 từ entry/title hiện hành; batch origin/recipient fence
+được đặt tại atomicpublish. API container/tworoom unit không là multi-room operator config/M7.
+101 Rust/306 TCP và3169+24 frame khớp; [contract/limits](../docs/PROTOCOL.md#rust-r1e-registry).

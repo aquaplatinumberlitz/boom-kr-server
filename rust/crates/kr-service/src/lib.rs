@@ -17,6 +17,7 @@ mod player_template;
 pub mod room;
 mod room_io;
 mod room_packets;
+pub mod room_registry;
 mod room_wire;
 mod rules;
 mod terrain;
@@ -156,7 +157,7 @@ struct ActorProfile {
 struct BoundProfiles {
     actors: HashMap<Ipv4Addr, ActorProfile>,
     registry: binding::Shared,
-    room: Option<room_io::Shared>,
+    rooms: Option<Arc<std::sync::Mutex<room_registry::Registry<room_io::Shared>>>>,
 }
 pub struct Validated {
     config: Config,
@@ -319,10 +320,17 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             .as_ref()
             .map(|cfg| room_io::load(cfg, &actors))
             .transpose()?;
+        let rooms = room
+            .map(|shared| -> io::Result<_> {
+                let mut registry = room_registry::Registry::default();
+                registry.insert(1, room_registry::RoomId(1), shared)?;
+                Ok(Arc::new(std::sync::Mutex::new(registry)))
+            })
+            .transpose()?;
         Some(BoundProfiles {
             actors,
             registry: binding::Shared::default(),
-            room,
+            rooms,
         })
     } else {
         None
@@ -646,8 +654,15 @@ async fn local_lobby_connection(
             }
             if packet.opcode == 67
                 && flow.stage == lobby::Stage::Lobby
-                && let Some(shared) = profile.bound.as_ref().and_then(|b| b.room.as_ref())
+                && let Some(registry) = profile.bound.as_ref().and_then(|b| b.rooms.as_ref())
             {
+                // Keep registry selection and channel admission synchronous under
+                // registry -> room lock order; no await while either lock is held.
+                let registry = registry
+                    .lock()
+                    .map_err(|_| io::Error::other("room registry unavailable"))?;
+                let key = registry.selection(1, room_registry::RoomId(1))?;
+                let shared = registry.get(key)?;
                 room_session = Some(room_io::Session::open(shared, flow.identity(), id)?);
             }
         }
@@ -683,9 +698,24 @@ async fn local_lobby_connection(
                 if !session.valid(&batch) {
                     return Err(io::Error::other("room membership changed during batch"));
                 }
-                let Some(reply) = session.project(reply)? else {
+                let Some(mut reply) = session.project(reply)? else {
                     continue;
                 };
+                if reply.opcode == 91 {
+                    let rooms = profile
+                        .bound
+                        .as_ref()
+                        .and_then(|bound| bound.rooms.as_ref())
+                        .ok_or_else(|| io::Error::other("missing room registry"))?;
+                    // Build the list from current room entries under synchronous
+                    // registry -> room lock order; release before socket await.
+                    reply.payload = {
+                        let registry = rooms
+                            .lock()
+                            .map_err(|_| io::Error::other("room registry unavailable"))?;
+                        registry.listing91()?
+                    };
+                }
                 let frame = kr_wire::kr00967::encode(reply.opcode, &reply.payload, send_sequence)
                     .map_err(io::Error::other)?;
                 timeout(

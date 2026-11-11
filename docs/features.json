@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP264",
+  "as_of": "CP265",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -885,7 +885,9 @@
           "docs/evidence/rust-service/four-startup.json",
           "docs/evidence/rust-service/README.md#cp245",
           "docs/evidence/rust-service/account-basic.json",
-          "docs/PROTOCOL.md#rust-account-basic"
+          "docs/PROTOCOL.md#rust-account-basic",
+          "docs/PROTOCOL.md#rust-r1e-registry",
+          "docs/evidence/rust-service/r1e-registry.json"
         ]
       },
       "coverage": {
@@ -1413,7 +1415,9 @@
           "docs/evidence/rust-service/README.md#cp235",
           "docs/PROTOCOL.md#rust-four-abort",
           "docs/evidence/rust-service/four-abort.json",
-          "docs/evidence/rust-service/README.md#cp249"
+          "docs/evidence/rust-service/README.md#cp249",
+          "docs/PROTOCOL.md#rust-r1e-registry",
+          "docs/evidence/rust-service/r1e-registry.json"
         ]
       },
       "coverage": {
@@ -4955,7 +4959,9 @@
           "docs/PROTOCOL.md#rust-r1d-wire-builders",
           "docs/evidence/rust-service/r1d-wire-builders.json",
           "docs/PROTOCOL.md#rust-n1-acceptance",
-          "docs/evidence/rust-service/n1-acceptance.json"
+          "docs/evidence/rust-service/n1-acceptance.json",
+          "docs/PROTOCOL.md#rust-r1e-registry",
+          "docs/evidence/rust-service/r1e-registry.json"
         ]
       },
       "coverage": {
@@ -5269,7 +5275,9 @@
             "rust/crates/kr-service/src/player_template.rs",
             "docs/PROTOCOL.md#rust-r1c-player-slots",
             "rust/crates/kr-wire/src/kr00967.rs",
-            "rust/crates/kr-service/src/room_packets.rs"
+            "rust/crates/kr-service/src/room_packets.rs",
+            "rust/crates/kr-service/src/room_registry.rs",
+            "docs/PROTOCOL.md#rust-r1e-registry"
           ]
         },
         "integration": {

@@ -9743,3 +9743,43 @@ record/audit/raw và metadata `internet-observation.json` của mốc cũ bất 
 Không chứng nhận cả hai phía NAT đổi cổng: N1b mở riêng, tối đa hai native runs sau R1e/trước R1f theo PLAN.
 Không chứng nhận shared-NAT gameplay, mọi NAT/ISP/CGNAT/IPv6/fullM5/production; shared-NAT cần R1f.
 K6c/K7 WAN giả lập giữ scope đã đạt, không đưa Internet thành dependency gate cũ. Hạ tầng/topology thực chỉ local.
+
+<a id="rust-r1e-registry"></a>
+## R1e — registry phòng, listing và batch origin — CP265
+
+Nguồn **design/design**, source/unit/TCP; [metadata/hash](evidence/rust-service/r1e-registry.json), [dashboard](PLAN.md#dashboard).
+Reuse [CP226 listing](#room-list-lifecycle), [CP229 registry](#room-membership-registry), CP230 cleanup và R1d builders;
+Python prototype chỉ mẫu policy/session-room-generation/visit/tombstone, không port nguyên service hoặc wire VN.
+Không RE lại native91/87/106/107/110 đã có; ba input91 CP226 (2/1/0row) tái tạo đúng bằng builder Rust mới.
+Đây là fixture equivalence, không native mới. R1d/PR343 đã merge sau CI phục hồi; record/raw CP264 giữ nguyên.
+
+`BoundProfiles.rooms` là registry đồng bộ `RoomId→Entry<Shared>`; mỗi `Shared` giữ model/RoomRules/member/queue riêng.
+Key gồm session, ID và generation tăng; trùng ID/session, zero ID/session hoặc publictuple đã dùng bị chặn trước mutation.
+Không reuse cùng publictuple trong process vì request82 chưa có epoch đã đo; tombstone không phải durable restart fence.
+Chọn entry rồi mở channel dưới lock registry→room, không await trong đoạn đó. Listing91 tạo từ các entry hiện hành,
+đọc title trong từng room dưới cùng thứ tự lock rồi bỏ lock trước socket await. Snapshot từng room không được coi
+là transaction nhất quán toàn registry khi gameplay thay đổi. Giữ22byte opaque từ template, không tự đổi occupancy/quota.
+
+Serving hiện vẫn đăng ký một entry1/1 từ `fixed_room` và chọn đúng entry đó sau lobby67. Đây là compatibility route
+để giữ bytes profile2/4/8/account; **chưa** thêm operator multi-room config hay request81/82 tổng quát. M7 sẽ sử dụng
+registry/API này để tạo/chọn/chuyển phòng; kết quả unit hai entry không là native hai phòng/gameplay đã giao.
+Unit kiểm hai Session/inbox thực qua registry: table238 đúng recipient, đầy queueA không chiếm/chặn queueB,
+đóngA không xóaB. Unit listing kiểm2entry đúng session/ID/title/opaque, đổiB không đổiA, gỡB/A→count1/0.
+Native91count0 không tự clear-all; đường delete90/dynamic occupancy khi M7 cần acceptance riêng.
+
+Phép thử cố ý truyền batch cache cũ sang Session phòng mới cho thấy guard Channel cũ tin inbox riêng;
+**không phải** packet leak qua mạng đã quan sát. R1e gắn `(roomscope,recipientID,connection)` khi reserve/publish,
+`valid` kiểm origin trước các guard membership/round cũ. Roomscope là token nội bộ riêng mỗi Runtime, không wirefield.
+Batch từ room đã gỡ hoặc Session khác bị chặn kể cả các scalar tình cờ giống; policy auth/session vẫn ở service.
+Retirement guard được thử tuần tự với live channel/queued batch; container generic không tự quyết authority, caller phải
+kiểm channel/member/jobs và lock order. Không claim concurrent select/remove hoặc raw585/99 stale phân biệt được.
+
+Giữ failed copied-source r4 (forced oldbatch accepted), r5 (fence đạt nhưng fixture unranked cũ tạo batch chưa publish),
+r6 dùng cùng fence và cho fixture đi qua publish/inbox thật:91 unit của bản sao đạt. Không nới guard để qua test.
+Source tích hợp thêm listing:101 workspace tests/fmt/clippy/locked build và14suite306 TCP đạt;3169 frame cũ +24
+first-vacant khớp CP264 theo boundary receiver, unread cleanup tail giữ raw. Code/binary/input frozen, owned PID đã dọn.
+Cache extern rlibs của probe được hash lúc compile; executable/copy source giữ riêng, không coi target cache mutable
+là archive dependency bất biến. Build/lockfile/source của run serving đã snapshot riêng để tái lập.
+
+R1e chỉ refactor nền theo acceptance của PLAN; không đóng fullR1/M7/M5 hoặc chứng nhận binary native.
+Tiếp N1b tối đa hai native runs trước R1f, rồi R1g và native cuối R1 2/4/8/account. N1 one-side scope giữ; VPS chỉ local.

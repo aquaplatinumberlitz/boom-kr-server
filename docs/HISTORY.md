@@ -5,6 +5,18 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP264: R1d header chuẩn và builder theo opcode đã kiểm; N1 được ghi nhận đạt phạm vi đã chốt.**
+[Contract R1d](PROTOCOL.md#rust-r1d-wire-builders), [bằng chứng](evidence/rust-service/r1d-wire-builders.json).
+96 test Rust/fmt/clippy/locked build;306 ca TCP đạt,3169 frame phòng cũ và24 frame first-vacant khớp baseline CP263.
+Alias JSON chỉ còn adapter nạp cấu hình; runtime dùng template có kiểu/opcode và header chuẩn. Chưa native binary mới.
+[N1](PROTOCOL.md#rust-n1-acceptance) đạt **ít nhất một phía tới được theo địa chỉ server báo**, dựa CP261 và xác nhận4G
+của chủ dự án. N1b hai phía NAT đổi cổng còn mở; shared-NAT gameplay và full M5 vẫn chưa đạt.
+R1c đã merge [PR338](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/338). Audit nhóm AUD081; R1d đang bàn giao PR.
+Việc kế tiếp theo [Bảng điều hành](PLAN.md#dashboard): R1e → N1b → R1f/R1g → native cuối R1.
+Mốc cũ ở [HISTORY](HISTORY.md). Thông tin hạ tầng giữ local.
+
+
+
 **CP263: R1c đã tách player identity khỏi luật cấp slot và dùng chung template 106.**
 [Contract/giới hạn](PROTOCOL.md#rust-r1c-player-slots), [bằng chứng](evidence/rust-service/r1c-player-slots.json).
 Mặc định legacy giữ byte; `first_vacant` cấp slot độc lập, người tạo là host. Runtime không chọn fixture theo alias identity.

@@ -33,15 +33,14 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP264: R1d header chuẩn và builder theo opcode đã kiểm; N1 được ghi nhận đạt phạm vi đã chốt.**
-[Contract R1d](docs/PROTOCOL.md#rust-r1d-wire-builders), [bằng chứng](docs/evidence/rust-service/r1d-wire-builders.json).
-96 test Rust/fmt/clippy/locked build;306 ca TCP đạt,3169 frame phòng cũ và24 frame first-vacant khớp baseline CP263.
-Alias JSON chỉ còn adapter nạp cấu hình; runtime dùng template có kiểu/opcode và header chuẩn. Chưa native binary mới.
-[N1](docs/PROTOCOL.md#rust-n1-acceptance) đạt **ít nhất một phía tới được theo địa chỉ server báo**, dựa CP261 và xác nhận4G
-của chủ dự án. N1b hai phía NAT đổi cổng còn mở; shared-NAT gameplay và full M5 vẫn chưa đạt.
-R1c đã merge [PR338](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/338). Audit nhóm AUD081; R1d đang bàn giao PR.
-Việc kế tiếp theo [Bảng điều hành](docs/PLAN.md#dashboard): R1e → N1b → R1f/R1g → native cuối R1.
-Mốc cũ ở [HISTORY](docs/HISTORY.md). Thông tin hạ tầng giữ local.
+**CP265: R1e nền registry và listing đã kiểm, profile cũ giữ bytes.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-r1e-registry), [evidence](docs/evidence/rust-service/r1e-registry.json).
+Registry giữ các room runtime riêng; listing91 dựng từ entry/title hiện hành, batch có origin/recipient fence.
+101 test Rust/fmt/clippy/locked build và306 ca TCP đạt;3169 frame cũ +24 first-vacant khớp CP264.
+Hai room/queue/listing được kiểm unit; serving vẫn phòng fixed cũ, chưa tạo/chọn nhiều phòng tổng quát M7.
+R1d đã merge PR343. CP265/AUD082 đang bàn giao; [dashboard](docs/PLAN.md#dashboard) tiếp N1b trước R1f.
+N1 vẫn đạt đúng scope một phía tới được; N1b/shared-NAT/native cuối R1/fullM5 chưa đạt. Hạ tầng chỉ local.
+Mốc cũ ở [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
 

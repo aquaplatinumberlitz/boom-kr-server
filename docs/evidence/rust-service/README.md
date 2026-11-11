@@ -701,3 +701,11 @@ AuditnhómAUD079; R1c-g/N1environment/sharedNAT/M5generalprofile vàphase1milest
 50 retainedframes header khớp;96 Rust tests gồm các seam/opaque/ownership tests hiện có.
 N1 ghi nhận từ CP261+owner4G, không native mới;1124 pinCP261 kiểm lại đạt. N1b/sharedNAT/nativecuốiR1/fullM5 giữ giới hạn.
 AUD081 audit hai nhóm wire-refactor/N1 acceptance; record/raw mốc cũ không sửa. Hạ tầng chỉ local.
+
+<a id="cp265"></a>
+### CP265 — R1e registry/listing và batch origin
+
+[Contract](../../PROTOCOL.md#rust-r1e-registry), [metadata/hash](r1e-registry.json), [dashboard](../../PLAN.md#dashboard).
+101Rust/306TCP,3169+24frame khớpCP264; unit haiRoomSessionqueues/listing/removal và3CP226listing inputs.
+Source/binary/frozen inputs/cleanup ở `r1e-regression-r1`; copied-source r3–r6/failed controls giữ riêng.
+AUD082 cho nhóm refactor R1e; chưa nativecandidate/M7generalrooms/fullR1. Tiếp N1b theo PLAN.
