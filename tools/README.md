@@ -265,3 +265,9 @@ CP246: exporter `--four-owner-bombs` chỉ đi cùng đủfour-startupflags; `te
 kiểm14syntheticcases/capacityB2-D1/all4writes/known142-167/noeffect. [Contract/nativegiới hạn](../docs/PROTOCOL.md#rust-four-owner-bombs).
 Hồi quy rank-enabled hai người dùng `test_rust_life.py` với pinned `--battle-profile` và `--pickup-checks`;
 old `test_rust_room.py` immediateEOF107 không là acceptance đúng khi profile đã chọn delayedforfeit.
+
+
+CP247: exporter `--four-life-reports` yêu cầu `--four-owner-bombs`/four-startup profile;
+`test_rust_four_room.py --life-reports` kiểm17syntheticcases/fanout3/clear21once/currentdeath/no2rank.
+Harness lưu `pid-observations.json` trướcSIGTERM và khi5s/3sdeadline, không nângtimeout.
+[Native/giới hạn](../docs/PROTOCOL.md#rust-four-life); TCPclear21không thay nativeclear/rescueproof.

@@ -235,6 +235,7 @@ def main():
     p.add_argument('--four-startup-peer-c')
     p.add_argument('--four-startup-peer-d')
     p.add_argument('--four-owner-bombs', action='store_true', help='Opt-in measured four-owner capacity1/2/1/1, power1, fuse6; no terrain/life/results')
+    p.add_argument('--four-life-reports', action='store_true', help='Opt-in four 17/19/21 reports and three-recipient170 only; requires four-owner-bombs, no results')
     a = p.parse_args()
     if not 1 <= len(a.port) <= 32 or len(set(a.port)) != len(a.port) or any(not 1 <= n <= 65535 for n in a.port):
         p.error('one to32 distinct nonzero ports required')
@@ -264,6 +265,10 @@ def main():
         if not all(four):
             p.error('four-owner bombs requires the explicit four-startup profile')
         config['diagnostic_two_lobby']['fixed_room']['four_owner_bombs'] = True
+    if a.four_life_reports:
+        if not a.four_owner_bombs:
+            p.error('four-life reports requires four-owner-bombs')
+        config['diagnostic_two_lobby']['fixed_room']['four_life_reports'] = True
     with a.out.open('x') as f:
         f.write(json.dumps(config, indent=2) + '\n')
 

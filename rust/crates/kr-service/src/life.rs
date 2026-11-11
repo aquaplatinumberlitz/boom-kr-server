@@ -89,7 +89,7 @@ pub(crate) struct Player {
     pub death: Option<Instant>,
     pub survivor: Option<Instant>,
     forwarded21: Option<String>,
-    pending21: Option<String>,
+    pending21: Option<(String, Option<BTreeSet<crate::room::Membership>>)>,
     reports: u32,
 }
 #[derive(Clone, Debug, serde::Serialize)]
@@ -190,7 +190,7 @@ impl Player {
                         .is_some_and(|t| self.forwarded21.as_ref() != Some(&t.digest))
                     && self.pending21.is_none()
                 {
-                    self.pending21 = Some(report.digest.clone());
+                    self.pending21 = Some((report.digest.clone(), None));
                     true
                 } else {
                     false
@@ -209,10 +209,40 @@ impl Player {
             && last_blast.is_none_or(|b| at > b)
     }
     pub fn forward21_valid(&self, digest: &str, at: Instant, last_blast: Option<Instant>) -> bool {
-        self.pending21.as_deref() == Some(digest) && self.current_survivor(at, last_blast)
+        self.pending21.as_ref().is_some_and(|p| p.0 == digest)
+            && self.current_survivor(at, last_blast)
+    }
+    /// Bind completion to every distinct current recipient, not merely one send.
+    pub fn forward21_targets(
+        &mut self,
+        digest: &str,
+        targets: &[crate::room::Membership],
+    ) -> io::Result<()> {
+        let unique: BTreeSet<_> = targets.iter().copied().collect();
+        if !matches!(targets.len(), 1 | 3) || unique.len() != targets.len() {
+            return Err(io::Error::other("unsupported life clear recipient roster"));
+        }
+        let pending = self
+            .pending21
+            .as_mut()
+            .filter(|p| p.0 == digest && p.1.is_none())
+            .ok_or_else(|| io::Error::other("missing current life clear"))?;
+        pending.1 = Some(unique);
+        Ok(())
+    }
+    pub fn forward21_delivered(&mut self, digest: &str, recipient: crate::room::Membership) {
+        let complete = self
+            .pending21
+            .as_mut()
+            .filter(|p| p.0 == digest)
+            .and_then(|p| p.1.as_mut())
+            .is_some_and(|targets| targets.remove(&recipient) && targets.is_empty());
+        if complete {
+            self.forward21_complete(digest);
+        }
     }
     pub fn forward21_complete(&mut self, digest: &str) {
-        if self.pending21.as_deref() == Some(digest) {
+        if self.pending21.as_ref().is_some_and(|p| p.0 == digest) {
             self.forwarded21 = self.trap.as_ref().map(|t| t.digest.clone());
             self.pending21 = None;
         }
@@ -356,5 +386,54 @@ mod tests {
         );
         p.apply(0, &report(19, 7), later, None);
         assert!(!p.forward21_valid("21:6", later + Duration::from_secs(2), None));
+    }
+    #[test]
+    fn clear21_waits_for_all_three_memberships_and_old_completion_cannot_finish_new_clear() {
+        let now = Instant::now();
+        let later = now + Duration::from_secs(1);
+        let targets = [2, 3, 4].map(|id| crate::room::Membership {
+            identity: id,
+            connection: id as u64 * 10,
+            visit: 1,
+        });
+        let mut p = Player::default();
+        p.apply(0, &report(17, 1), now, None);
+        assert!(p.apply(0, &report(21, 2), later, None).forward);
+        assert!(p.forward21_targets("21:2", &targets[..2]).is_err());
+        assert!(p.forward21_targets("21:2", &[targets[0]; 3]).is_err());
+        p.forward21_targets("21:2", &targets).unwrap();
+        assert!(p.forward21_targets("21:2", &targets).is_err());
+        for target in &targets[..2] {
+            p.forward21_delivered("21:2", *target);
+            p.forward21_delivered("21:2", *target); // duplicate cannot consume another peer
+            assert!(p.forward21_valid("21:2", later, None));
+        }
+        let reused = crate::room::Membership {
+            connection: 99,
+            visit: 2,
+            ..targets[2]
+        };
+        p.forward21_delivered("21:2", reused);
+        assert!(p.forward21_valid("21:2", later, None));
+        assert!(!p.apply(0, &report(21, 3), later, None).forward);
+        p.forward21_delivered("21:2", targets[2]);
+        assert!(!p.forward21_valid("21:2", later, None));
+        assert!(!p.apply(0, &report(21, 4), later, None).forward);
+        p.apply(0, &report(17, 5), later, None);
+        let fresh = later + Duration::from_secs(1);
+        assert!(p.apply(0, &report(21, 6), fresh, None).forward);
+        p.forward21_targets("21:6", &targets).unwrap();
+        p.forward21_delivered("21:2", targets[2]);
+        assert!(p.forward21_valid("21:6", fresh, None));
+        p.blast_committed();
+        assert!(!p.forward21_valid("21:6", fresh, None));
+        p.forward21_delivered("21:6", targets[0]);
+        assert!(p.apply(0, &report(21, 7), fresh, None).forward);
+        p.forward21_targets("21:7", &targets).unwrap();
+        p.begin();
+        for target in targets {
+            p.forward21_delivered("21:7", target);
+        }
+        assert!(!p.forward21_valid("21:7", fresh, None));
     }
 }

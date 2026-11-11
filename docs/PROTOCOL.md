@@ -8926,3 +8926,44 @@ timeout6s/PIDgone/sourcefrozen; giữfailure, dùng existinglifeharnessR2/51pass
 [PLAN](PLAN.md#current-order) tiếp170đủ3recipient/clear21fanout→rank4/opposite2v2/reset/Start3→scopedabort/EOF→8.
 Rollback giữ cặp binary+config startup CP245; oldbinary không hiểu newflag. M5backend đã có/KRbridge riêng,
 AUD070 qua244 không đổi/audit kế248. Internet thật chưa kiểm.
+
+<a id="rust-four-life"></a>
+## Rust life bốn người: 17/19 tới ba peer, completion clear21 — CP247 / M4 partial
+
+[Life](../rust/crates/kr-service/src/life.rs), [adapter](../rust/crates/kr-service/src/room_io.rs),
+[metadata](evidence/rust-service/four-life.json), [raw/hash](evidence/rust-service/README.md#cp247).
+Tái dùng CP202 native report/170/state56→1, CP240 typed Rustlife và CP246 currentfourbom/Manner1;
+committed Python reference, không WIPservice/VNwire hoặc RE thêm thân hàm.
+
+`fixed_room.four_life_reports=true` cần diagnostic4 + four_owner_bombs; không tự bật rank/result/terrain.
+Chỉ17/19/21 được admit theo boundslot/currentround/connectioncursor/reportbudget. Unsupportedsubtypes và report
+sau accepted19 không đổi cursor/life/forward; death19 cần current17. Current accepteddeath chặn118 mới,
+không lấy serial/ID. Ticks là freshness policy, không authenticated life/wireepoch/originalauthority.
+Mỗi forward dùng **ba peer membership hiện hành**, không echo origin; reserve cả3 queue trước publish model.
+Guard source/recipient/visit/round giữ; không dùng `.find` chỉ chọn một peer.
+
+21 giữ prefix14→170prefix6. Pendingclear bind tập unique1 hoặc3recipientmemberships; chỉ đủ successful TCPwrites
+mới đánh dấu once-per-trap. Duplicatecompletion/wrongvisit không tiêu thụ recipient khác; blast/newtrap/roundreset
+vô hiệu clear cũ. Không coi writes là nativeexecutionACK; clear21 không hồi sinh accepteddeath hoặc mở inventory.
+Unit test dừng sau2/3write vẫnvalid, duplicate/wrongvisit/stalecompletion/clear mới/blast/roundreset riêng;
+TCP kiểm ba170clear đến đủ3peer, once/newtrap và2clientregression. **Chưa nativeclear21/rescue/needle bốn người**.
+
+Native current Manner1/fixed2v2, Wine10.0-20260425/copy4b/private root+A–Dnetns/bridge/no default route, cachedprefixes/newprocesses.
+A/C normalSpace tự tạo bom rồi actual12717→19; mỗi report có đúng3recipient170/prefix10 hoặc21/noorigin.
+Remote native protectedstates56→1 ở mọi peer; freshreadonlysamples cả4view `[1,0,1,0]`, B/Dalive.
+Không force19/actorwrite hoặc dùng serverlog làm proof. Rare CP202 FinishBreakpoint có cursor0 saureturn,
+**không là full170parseproof**; native state transition và fullwirejoins là bằng chứng riêng.
+874TCPrecords/140exactreplies/16transports/C2Sseq-CRC-SHA/fulltuple;76raw/134,675276088s/sourcefrozen/cleanup0.
+7.240copied52A350getterchecks riêngUnicorn/counterreset, không wholebinaryoracle. Ảnh cả4 đã xem/clock01:06;
+corpseanimation khác do chụp tuần tự, không pixelidentity/fullworldconsistency claim. Không175/180/result/reset.
+
+60Rusttests (55service+5wire),17fourTCP/51twoTCP chạy tuần tự sau xác nhậnPIDgone,3actualprebindnegativeprofiles.
+KernelR1 đủ17hànhvi nhưng cleanup5s+3s chưa reap PID885548; kiểm sau PIDgone, không có at-timewchan nên chưa rõcause.
+TwoTCPR1 mở trước kiểm PIDcleanup4, giữ timinglimit; kernelR2 thêm PID/thread/wchan observations khi deadline,
+17pass/exit0/PIDgone rồi twoR2/51pass. Không tăngdeadline hoặc nhận đã fix shutdown/Btrfs.
+VerifierR1 nhầm mọi127 đều typedlife; một D127 sau ownedchannelEOF đi boundedabortdrop/noeffect. Giữ log/oldverifier,
+chỉ sửa phân loại cleanup-tail, không sửa raw/run hoặc gọi healthyfourEOF/return đã nghiệm thu.
+
+[PLAN](PLAN.md#current-order) tiếp rank4/haiopposite2v2/reset/Start3/scopedabortEOF rồi8. Outcome phải xét
+currentwitness/drain/settle8 và allrecipient life delivery; không clone rank2/forfeitpolicy hoặc để Ending làm mất170.
+M4partial, M5backend đã có/nativebridge riêng. AUD070qua244/audit kế248; Internet thật chưa kiểm.

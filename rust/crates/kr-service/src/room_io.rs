@@ -28,6 +28,8 @@ pub struct Config {
     /// Opt-in measured CP201 capacity1/2/1/1, power1, design fuse6 seconds.
     #[serde(default)]
     pub four_owner_bombs: bool,
+    #[serde(default)]
+    pub four_life_reports: bool,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -68,7 +70,7 @@ pub struct Batch {
     pub setup: Option<Membership>,
     pub subject: Option<Membership>,
     pub bomb_complete: Option<(bombs::Ticket, Membership)>,
-    pub life_complete: Option<(Membership, u64, String)>,
+    pub life_complete: Option<(Membership, u64, String, Membership)>,
     pub outcome_complete: Option<(Membership, u64)>,
 }
 pub struct Runtime {
@@ -85,6 +87,7 @@ pub struct Runtime {
     ports: HashMap<Membership, u16>,
     floor_catalog: pickups::Catalog,
     four_owner_bombs: bool,
+    four_life_reports: bool,
 }
 #[derive(serde::Serialize)]
 pub struct BombObservation {
@@ -126,6 +129,9 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         return Err(err("fixed room title must be bounded ASCII"));
     }
     let count = actors.len();
+    if cfg.four_life_reports && (count != 4 || !cfg.four_owner_bombs) {
+        return Err(err("four life reports require opt-in four-owner bombs"));
+    }
     if cfg.four_owner_bombs && count != 4 {
         return Err(err("four-owner bombs require the four diagnostic profile"));
     }
@@ -280,6 +286,7 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         ports: HashMap::new(),
         floor_catalog: pickups::Catalog::from_floor(&packets_floor_body)?,
         four_owner_bombs: cfg.four_owner_bombs,
+        four_life_reports: cfg.four_life_reports,
     })))
 }
 impl Runtime {
@@ -716,9 +723,10 @@ impl Session {
         }
     }
     pub fn finish(&self, batch: &Batch) -> io::Result<()> {
-        if let Some((source, round, digest)) = &batch.life_complete {
+        if let Some((source, round, digest, recipient)) = &batch.life_complete {
             let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
             if runtime.model.current(*source)
+                && runtime.model.current(*recipient)
                 && runtime.model.phase == (Phase::Armed { round: *round })
             {
                 runtime
@@ -727,7 +735,7 @@ impl Session {
                     .get_mut(&source.identity)
                     .expect("current source")
                     .life
-                    .forward21_complete(digest);
+                    .forward21_delivered(digest, *recipient);
             }
         }
         if let Some((recipient, round)) = batch.outcome_complete {
@@ -1344,42 +1352,65 @@ impl Session {
                     next.observe_closed(m.key)?;
                     dropped_after_abort = true;
                 } else if let Phase::Armed { round } = next.phase {
-                    if r.packets.contains_key("rank") {
+                    if r.packets.contains_key("rank") || r.four_life_reports {
                         let report = crate::life::Report::parse(body)?;
                         let now = Instant::now();
                         let last_blast = next.last_blast;
-                        let decision = next
-                            .members
-                            .get_mut(&self.identity)
-                            .expect("current member")
-                            .life
-                            .apply(m.slot, &report, now, last_blast);
+                        let decision =
+                            if r.four_life_reports && !matches!(report.subtype, 17 | 19 | 21) {
+                                report.decision("unsupported_four_report_subtype", false)
+                            } else if r.four_life_reports
+                                && next.members[&self.identity].life.death.is_some()
+                            {
+                                report.decision("report_after_accepted_death", false)
+                            } else {
+                                next.members
+                                    .get_mut(&self.identity)
+                                    .expect("current member")
+                                    .life
+                                    .apply(m.slot, &report, now, last_blast)
+                            };
                         if decision.forward {
-                            let peer = next
+                            let recipients: Vec<_> = next
                                 .members
                                 .values()
-                                .find(|p| p.key != m.key)
-                                .ok_or_else(|| err("missing life recipient"))?;
-                            let mut batch = Runtime::member_batch(
-                                peer.key,
-                                Some(round),
-                                0,
-                                vec![(
-                                    format!("life170-{}", report.subtype),
-                                    r.reply("start", Some(170), report.forward.clone()),
-                                )],
-                            );
-                            batch.guard = Guard::Life {
-                                recipient: peer.key,
-                                source: m.key,
-                                round,
-                                clear21: (report.subtype == 21)
-                                    .then(|| (report.digest.clone(), now)),
-                            };
-                            if report.subtype == 21 {
-                                batch.life_complete = Some((m.key, round, report.digest.clone()));
+                                .filter(|p| p.key != m.key)
+                                .map(|p| p.key)
+                                .collect();
+                            if recipients.len() + 1 != next.capacity() {
+                                return Err(err("incomplete life recipient roster"));
                             }
-                            effects.push((peer.key.identity, batch));
+                            if report.subtype == 21 {
+                                next.members
+                                    .get_mut(&self.identity)
+                                    .expect("current source")
+                                    .life
+                                    .forward21_targets(&report.digest, &recipients)?;
+                            }
+                            for recipient in recipients {
+                                let mut batch = Runtime::member_batch(
+                                    recipient,
+                                    Some(round),
+                                    0,
+                                    vec![(
+                                        format!("life170-{}", report.subtype),
+                                        r.reply("start", Some(170), report.forward.clone()),
+                                    )],
+                                );
+                                batch.subject = Some(m.key);
+                                batch.guard = Guard::Life {
+                                    recipient,
+                                    source: m.key,
+                                    round,
+                                    clear21: (report.subtype == 21)
+                                        .then(|| (report.digest.clone(), now)),
+                                };
+                                if report.subtype == 21 {
+                                    batch.life_complete =
+                                        Some((m.key, round, report.digest.clone(), recipient));
+                                }
+                                effects.push((recipient.identity, batch));
+                            }
                         }
                         life = Some(decision);
                     }
@@ -1533,6 +1564,7 @@ mod tests {
             ports: HashMap::new(),
             floor_catalog: pickups::Catalog::default(),
             four_owner_bombs: false,
+            four_life_reports: false,
         }));
         let mut session = Session {
             shared: shared.clone(),
@@ -1640,6 +1672,7 @@ mod tests {
             ports: HashMap::new(),
             floor_catalog: pickups::Catalog::default(),
             four_owner_bombs: false,
+            four_life_reports: false,
         };
         let mut next = runtime.model.clone();
         let key = next.enter(1, 11, true).unwrap();

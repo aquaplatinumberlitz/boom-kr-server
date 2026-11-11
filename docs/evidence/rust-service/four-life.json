@@ -1,0 +1,70 @@
+{
+  "schema": "kre-rust-four-life-v1",
+  "checkpoint": "CP247",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/PROTOCOL.md#rust-four-life",
+  "plan": "docs/PLAN.md#current-order",
+  "baseline": "1b3bddf3372f59f165df535a07471fe531e334c2",
+  "native": {
+    "path": "local/research/codex/rust-four-life-native-r1",
+    "run_sha256": "f6910b4a7454189754a91227500eb7f7ea3c04936d4fc0ddfb420557fbbbd3d5",
+    "binary_sha256": "9fb52288cc8a48c24f2ca8766e098a2a6f307e5af52d4b907753f6330cf9d5d3",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "10.0-20260425",
+    "mode": "Manner1/fixedalternating2v2",
+    "raw_count": 76,
+    "duration_s": 134.675276088,
+    "tcp_records": 874,
+    "exact_replies": 140,
+    "transports": 16,
+    "accepted17": 2,
+    "accepted19": 2,
+    "recipient170": 12,
+    "all4_final_states": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "copied_getters": 7240,
+    "cleanup": {
+      "net_namespace": "net:[4026533612]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "cleanup_drop_count": 1
+  },
+  "policy": {
+    "config": "fixed_room.four_life_reports=true requires four_owner_bombs and diagnostic4; no fourrank/outcome",
+    "fanout": "17/19/21 currentboundslot/freshness/reportbudget; each acceptedforward→3currentpeer queues atomically, no origin echo; four rejects unsupportedsubtypes/afteraccepteddeath",
+    "clear21": "pending recipient-membership set; all3successfulTCPwrites before once-per-trap marker, duplicate/wrongvisit cannot consume another; round/blast/newtrap invalidates oldclear",
+    "limits": "Clear21doesnotresurrect accepteddeath/unblockinventory; ticks not authenticatedepoch; fourBattle/terrain/rank2config/124 stillreject"
+  },
+  "tests": {
+    "workspace": 60,
+    "service": 55,
+    "wire": 5,
+    "fourTCP": 17,
+    "twoTCP": 51,
+    "prebind": 3,
+    "four_path": "local/research/codex/rust-four-life-kernel-r2/verification.json",
+    "two_path": "local/research/codex/rust-four-life-two-regression-r2/verification.json",
+    "prebind_path": "local/research/codex/rust-four-life-config-negatives-r1/verification.json"
+  },
+  "reuse": {
+    "path": "local/research/codex/rust-four-life-source-r1/reuse.json",
+    "direct": "CP202knownreport17-19-21/170/native56→1 and rare170sites;CP246four-ownerbombs/currentManner1;CP240Rusttypedlife/freshness/queuepolicies",
+    "avoided": "No newbinaryfunctiondiscovery/VNwireimport/generalRE; no nativeclear21/rankclaim from source or synthetic agreement"
+  },
+  "limits": [
+    "KR00967Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1/fixed2v2/oneepoch only; no newpatch/freshprefix claim.",
+    "Actual17/19→three170 and nativeprotectedstates56→1/allsame[1,0,1,0] proof; FinishBreakpoint cursor0afterreturn is not full170parser proof.",
+    "Ownedteardown tail127 afterchannelEOF is explicitboundedno-effect drop, not healthyfourEOF/return acceptance. Clear21all3completion tested synthetically; no nativeclear21claim unless independent naturalcurrent21+effect is identified. No fourrank/results-reset/Start2/EOF/8/fullM4/nativeaccountbridge.",
+    "Report-derivedfuse/admission/freshness/life areemulatorpolicy, not authenticated originalauthority. Internet thật chưa kiểm.",
+    "KernelR1:17ca hành vi đạt nhưng quá cleanup5s+3s/PID885548 chưa reap; kiểm sau PIDgone, không có at-timewchan/rootcause. HaiTCPR1 mở trước xác nhận cleanup4; giữ limitation, không dùng làm acceptance cuối.",
+    "KernelR2 bổ sung PID/thread/wchan khi timeout,17pass/exit0/PIDgone; tiếp twoTCPR2 tuần tự51pass/cleanup. Không tăngdeadline/không gọi đã fix shutdown hay Btrfs.",
+    "VerifierR1 tưởng mọi127 đều typed life; một D127muộn sau ownedEOF là boundedabortdrop. Giữ loglỗi/oldverifier, chỉ sửa phép kiểm phân biệt cleanupdrop sau currentchannelEOF; không sửa raw/run."
+  ],
+  "audit": "AUD070through244 unchanged/nextCP248/M4partial/no gateclosure"
+}

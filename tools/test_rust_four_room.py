@@ -5,13 +5,14 @@ sys.path.insert(0,str(Path.cwd()));from tools.test_rust_room import Client
 from tools.test_rust_foundation import free_port
 from server import probe_codec as c
 from server.room_title import _encode_bytes
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--binary',type=Path,required=True);parser.add_argument('--config',type=Path,required=True);parser.add_argument('--out',type=Path,required=True);parser.add_argument('--owner-bombs',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--binary',type=Path,required=True);parser.add_argument('--config',type=Path,required=True);parser.add_argument('--out',type=Path,required=True);parser.add_argument('--owner-bombs',action='store_true');parser.add_argument('--life-reports',action='store_true');args=parser.parse_args()
 root=args.out;root.mkdir(parents=True,exist_ok=False);cfg=json.loads(args.config.read_text());two=cfg['diagnostic_two_lobby'];assert len(two['actors'])==4
 ports=set()
 while len(ports)<3:ports.add(free_port())
 login,wcp,channel=sorted(ports);cfg.update(bind='127.0.0.1',allowed_peers=['127.0.0.'+str(i+2)for i in range(4)],ports=sorted(ports));two.update(login_port=login,login_candidate_ports=[login,wcp],wcp_ports=sorted(ports),channel_port=channel)
 for i,actor in enumerate(two['actors']):actor['peer']=cfg['allowed_peers'][i]
-if args.owner_bombs:two['fixed_room']['four_owner_bombs']=True
+if args.owner_bombs or args.life_reports:two['fixed_room']['four_owner_bombs']=True
+if args.life_reports:two['fixed_room']['four_life_reports']=True
 config=root/'config.json';config.write_text(json.dumps(cfg,indent=2)+'\n');binary=args.binary;sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 files=[binary,Path(__file__),args.config,config,Path('tools/test_rust_room.py'),Path('tools/test_rust_foundation.py'),Path('server/probe_codec.py'),Path('server/room_title.py'),Path('tools/export_rust_profile.py'),Path('server/four_player_profile.py')]+[p for p in Path('rust').rglob('*')if p.is_file()and'target'not in p.parts]
 def fixtures(value):
@@ -28,6 +29,18 @@ for i,p in enumerate(files):
  pins.append(dict(path=str(p),retained_path=str(dest),bytes=p.stat().st_size,sha256=sha(p)))
 (root/'preflight.json').write_text(json.dumps(dict(files=pins,limits='Retainedstaticinputs/binarybeforePopen;no native client'),indent=2)+'\n');rawlog=(root/'process.log').open('w');proc=subprocess.Popen([str(binary.resolve()),'--config',str(config),'--out',str(root/'service')],stdout=rawlog,stderr=subprocess.STDOUT);clients=[];cases=[];error=None;hello=Path(cfg['bootstrap']['path']).read_bytes();header=Path(two['actors'][0]['profile']['own_header']['path']).read_bytes()[:37]
 def note(label):cases.append(label)
+def pid_snapshot(label):
+ item=dict(label=label,pid=proc.pid,returncode=proc.poll(),ns=time.monotonic_ns(),threads=[])
+ base=Path('/proc')/str(proc.pid)
+ for key in ['status','wchan','stat']:
+  try:item[key]=(base/key).read_text()
+  except OSError as exc:item[key]=repr(exc)
+ if (base/'task').exists():
+  for thread in (base/'task').iterdir():
+   try:item['threads'].append(dict(tid=thread.name,status=(thread/'status').read_text(),wchan=(thread/'wchan').read_text()))
+   except OSError:pass
+ observations.append(item);(root/'pid-observations.json').write_text(json.dumps(observations,indent=2)+'\n')
+observations=[]
 def quiet():
  for client in clients:client.quiet()
 try:
@@ -113,16 +126,54 @@ try:
   for target in clients:
    _,body=target.receive(159);assert c.read_fields(body,[1,1,2,4,4,4,1,1,1,4,1,2,2,1,8,1,1])[11]==6
   note('D_rejected_serial_can_retry_after_all_recipients_complete')
+ if args.life_reports:
+  def report(kind,tick,slot=0):
+   body=c.pack_fields([kind,slot,120,159,tick,0],[1,1,2,2,4,4])
+   if kind in [17,19]:
+    size=14 if kind==17 else 11
+    blob=bytes([24])+(size-5).to_bytes(4,'little')+bytes(1)+bytes(size-6)
+    if kind==17:blob=blob[:10]+(7).to_bytes(4,'little')
+    body+=c.pack_fields([size],[4]);offset=0
+    while offset<size:
+     n=4 if size-offset>=4 else 2 if size-offset>=2 else 1
+     body+=c.pack_fields([int.from_bytes(blob[offset:offset+n],'little')],[n]);offset+=n
+   return body
+  def forward(slot,kind,tick):
+   payload=report(kind,tick,slot);clients[slot].send(127,payload)
+   expected=payload[:6]+(c.pack_fields([7],[4])if kind==17 else payload[14:]if kind==19 else b'')
+   for peer,target in enumerate(clients):
+    if peer!=slot:
+     _,body=target.receive(170);assert body==expected
+   clients[slot].quiet();return payload
+  clients[0].send(127,report(19,0x7fffffff));quiet()
+  clients[0].send(127,report(17,0x7fffffff,slot=1));quiet()
+  clients[0].send(127,report(39,0x7fffffff));quiet()
+  note('four_life_death_without_trap_wrong_slot_unknown_subtype_no_cursor_poison')
+  trap=forward(0,17,10);note('current_A17_exact170_all_three_peers_no_selfecho')
+  clients[0].send(127,trap);quiet();note('four_duplicate17_no_second170')
+  forward(0,21,11);note('clear21_all_three_peers_complete_no_first_peer_invalidation')
+  clients[0].send(127,report(21,12));quiet();note('clear21_once_per_trap_after_all_three_complete')
+  forward(0,17,13);forward(0,21,14);note('newtrap_clear21_fanout_all_three_again')
+  forward(0,19,15);note('Adeath19_exact170_three_peers')
+  for kind,tick in [(17,16),(21,17),(19,18)]:clients[0].send(127,report(kind,tick))
+  clients[0].send(118,c.pack_fields([12346,0,0,1,3,2,1,0,0,0,1,1,0],[4,1,1,4,1,1,1,1,1,1,1,4,1]))
+  quiet();note('four_dead_owner_no_resurrection_forward_or_bomb_ID')
+  forward(2,17,1);forward(2,19,2);note('Cdeath19_all_three_peers_independent_cursor')
+  clients[1].send(127,report(21,1,slot=1));clients[3].send(127,report(21,1,slot=3))
+  time.sleep(8.1);quiet();note('life_only_profile_never_selects_two_player_rank_or_result')
 except BaseException as exc:
  error=repr(exc);raise
 finally:
  for client in clients:client.close()
+ pid_snapshot('before-SIGTERM')
  proc.send_signal(signal.SIGTERM)if proc.poll()is None else None
  try:proc.wait(timeout=5)
  except subprocess.TimeoutExpired:
+  pid_snapshot('SIGTERM-deadline')
   proc.kill()
   try:proc.wait(timeout=3)
-  except subprocess.TimeoutExpired:error=error or 'Owned PID still present after cleanup deadline'
+  except subprocess.TimeoutExpired:
+   pid_snapshot('SIGKILL-deadline');error=error or 'Owned PID still present after cleanup deadline'
  rawlog.close();unchanged=all(Path(x['path']).stat().st_size==x['bytes'] and sha(x['path'])==x['sha256']for x in pins)
  report=dict(result='pass'if error is None and proc.returncode==0 and unchanged else'fail',cases=cases,error=error,returncode=proc.returncode,binary_sha256=sha(binary),source_frozen=unchanged,remaining_pid=None if proc.poll()is not None else proc.pid,limits='SyntheticTCP/policy/fixture inputs only, not nativeKR4compatibility/life-results/8/accountauth. Inputgenerator is not oracle.')
  rows=[dict(path=str(p),bytes=p.stat().st_size,sha256=sha(p))for p in sorted(root.rglob('*'))if p.is_file()];report['raw_files']=rows

@@ -393,3 +393,23 @@ R1wrongoldroomharness/rankconfig:41cases rồi chờ immediate107 sai delayedfor
 failure-review giải thích sửa harness, không serverfix hoặc Btrfscausalclaim.59Rusttests/fmt/clippy/lockedbuild logs giữ. Baactualprocessprebindreject:fourflagontwo/fourrank/fourterrain, raw tại rust-four-bombs-config-negatives-r1/.
 M4 còn170ba recipient/clear21/rank4/outcomes-reset/EOF→8; M5backendnativebridge riêng, #14/#285OPEN.
 AUD070qua244/audit kế248/historyimmutable. Internet thật chưa kiểm.
+
+
+<a id="cp247"></a>
+## CP247 — life17/19 tới ba peer/native bốn state đồng thuận; M4 còn rank/reset
+
+[Contract](../../PROTOCOL.md#rust-four-life), [metadata](four-life.json), [PLAN](../../PLAN.md#current-order).
+BaselineCP246/PR317/merged1b3bddf. Source reuse tại `local/research/codex/rust-four-life-source-r1/reuse.json`.
+`rust-four-life-native-r1/`:life-verification/life-getter-verification/ui-review.json, native-four/preflight/recipe/raw-seal/cycles.
+76raw/134,675276088s/exit0/frozen/cleanup0/runSHAf6910b4a…/binary9fb52288…;874TCP/140reply/16transports/7.240copiedgetters.
+ActualA/C17-19→12recipient170/native56→1/freshall4states[1,0,1,0];Bốn ảnh đã xem/clock01:06. No175180/rank/reset/EOFacceptance.
+`four-verification.json` là scopedstartupsubcheck, `life-verification.json` là proof thêm; copiedgetters riêngUnicorn.
+VerifierR1 log rust-four-life-native-r1-verification.txt giữ failure vì một D127 sauEOF khôngtypedlife;
+oldverifier `verify_rust_four_life_before_cleanup_review.py` giữ. R2verifier phân biệt explicitboundedabortdrop saucurrentEOF,
+không sửa raw, không healthyfourEOFclaim; nativeR1 không cần chạy lại.
+KernelR1:17behaviorcases rồi cleanupdeadline/PID885548 chưa reap; post-cleanup-review xác nhậnPIDgone/chưarõcause.
+TwoTCPR1/51pass có timinglimit vì mở trước xác nhậncleanup4; giữreports, không acceptance cuối.
+KernelR2 thêm PID/thread/wchan/17pass/exit0/PIDgone; two-regressionR2 chạy sau đó51pass/fullsourcepins/samebinary/PIDgone.
+Ba prebindcases ở rust-four-life-config-negatives-r1.60Rusttests/fmt/clippy/lockedbuild; clear21all3completion chỉunit/TCP.
+Không tăngdeadline/fixclaim/shutdownrootcause hoặc nativeclear21/rescue/needle. Tám PythonWIP giữ nguyên;
+#14/#285OPEN/M4partial/M5bridge riêng; AUD070qua244/audit kế248. Internet thật chưa kiểm.

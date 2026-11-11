@@ -29,6 +29,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP247: Rust đã đồng bộ trap/death tới ba peer trên bốn KR thật; M4 còn kết quả/reset.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-four-life), [raw/hash](docs/evidence/rust-service/README.md#cp247).
+A/C tự đặt bom→17/19→12recipient170; native remote56→1 và cả4view cùng `[1,0,1,0]`.
+76raw/134,675s sealed/cleanup0,874TCP/140reply/16transports;7.240copiedgetters riêng.
+60Rusttests/17fourTCP/51twoTCP/3prebind đạt; clear21 đủ3recipient mới complete đã kiểm synthetic, chưa nativeclear21.
+KernelcleanupR1 giữ lỗi/PIDgone và verifiercleanup-tail correction giữ raw; không nhận đã fix nguyên nhân shutdown.
+CP246 merge [PR317](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/317)/`1b3bddf`.
+Tiếp rank4/hai outcome2v2/reset/Start3/abortEOF rồi8 trong PLAN; M5bridge riêng. Audit kếCP248. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP246: bốn owner đã đặt/nổ bom qua Rust trên client KR thật; M4 còn life/result/reset.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-four-owner-bombs), [raw/hash](docs/evidence/rust-service/README.md#cp246).
 Manner1/cố định2v2: actual118 từng slot→ID1–4→16native159entity/full39 và16native158/full13/lookup-kind0-cleanup.
@@ -37,8 +48,6 @@ Stat capacity1/2/1/1/power1 khớp bốn view, fuse6;7.196copiedgetters.84raw/13
 Ảnh own/peer trap-death còn lệch vì127 chưa forward: chưa sharedlife/outcome/reset/EOF hoặc fullM4/tám.
 CP245 đã merge [PR316](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/316)/`d0c2ba3`;
 M5backend đã có, nativebridge riêng. AUD070 qua244/audit kế248; Internet thật chưa kiểm.
-
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP245: bốn client KR thật đã qua phòng/loading và movement trên Rust; M4 còn battle.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-four-startup), [raw/hash](docs/evidence/rust-service/README.md#cp245).
