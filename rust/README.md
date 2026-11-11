@@ -333,3 +333,21 @@ python3 tools/test_rust_four_room.py --binary rust/target/debug/kr-service \
 Ảnh bảng điểm B/C/D đủ2vectors; Aảnh vẫnBattle, chỉ nativeAparser/rank/resetproof riêng. Chưa healthyfourEOF/eight/fullM4.
 Rollback matchedCP247binary+config khôngnewflag; không dùng two-rank fixture/config cho4. PLAN tiếp unrankedabort/EOF rồi8,
 M5bridge riêng; audit kế252. Internet thật chưa kiểm.
+
+
+## Abort không xếp hạng bốn người — CP249
+
+[Contract/giới hạn](../docs/PROTOCOL.md#rust-four-abort), [metadata](../docs/evidence/rust-service/four-abort.json).
+Exporter thêm `--four-abort-room`, cần `--four-results --four-life-reports --four-owner-bombs`/four-startup inputs.
+Đây là opt-in một active memberloss:180→đủ3postreturn585→107departed/3survivor110 mỗi view; không175 hoặc106 replay.
+Phòng sealed sau abort; không Start3người/replacement/resume. Default profile chưa tự bật flag này.
+
+```bash
+python3 tools/test_rust_four_room.py --binary rust/target/debug/kr-service \
+  --config local/four-config.json --abort-role D --out local/new-four-guest-abort-tcp
+```
+
+Đổi D thành A để kiểm hostloss.20guest/20hostTCP/65Rusttests/32normalfour/51two/6guards đạt; hai native run có
+native180107/IDclear/Room/chief. Evidence sink dùng tmpfs riêng/exporthash; Btrfsflush lỗi giữ nguyên/chưa sửa,
+không nghiệm thu vận hành bền vững. Rollback binary/config CP248 không flag mới, giữ Pythonreference; không hot-swap activeconnection.
+PLAN tiếp8, M5nativebridge riêng. Internet thật chưa kiểm.

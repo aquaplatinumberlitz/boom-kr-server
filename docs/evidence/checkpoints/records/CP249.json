@@ -1,0 +1,343 @@
+{
+  "id": "CP249",
+  "previous": "CP248",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T01:05:38.057028+00:00",
+  "context_commit": "b58abf801e51c1a1475e1f676e57ce6c53a506b2",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "RUST-M4/KRE-074: port knownCP205scoped activeguest-host pendingEOF unranked180/postreturn585/threeRoomcleanup-promotion without2forfeitclone; preserve normalfour/tworegression and fixedlogdeadlines with honeststoragecontrol.",
+  "scope": "Optinfour_abort_room/Armedsingleloss fence-seal-remove-promote/three180-returnwritebarrier/all3current585→atomic107+3survivor110Ready0each/allrefreshcomplete/no175106;nativeDguest-Ahost/sixRoomUI/128raw/762+744TCP/127+127reply;65Rust20guest20host32normal51two6prebind;Btrfsflushfailuresretained/TMPFSexportexplicit/M4eightnext.",
+  "artifacts": [
+    {
+      "name": "Rustkr-serviceLinux-nativefourscopedunrankedEOF",
+      "sha256": "7b1e2338bfd8ecb5270a1bfe094e8928a0acac87f63721fa59460bad67ecb03d"
+    },
+    {
+      "name": "CA-r2-stage-social-cmp.exe-ABIcopy-no-newpatch",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "rust/crates/kr-service/src/room.rs/abort_four-sealed_abort-enter-begin guards",
+    "rust/crates/kr-service/src/room_io.rs/four_abort_room-detach-FourAbort-abort_refresh-returncompletion-585/allcurrentsetups-beforecleanup",
+    "CP205known180E64950-E652C5/107DC62D0-D603F5-D60617-D6062C-DC6329-DC6637/12400D0-12401A9IDclear/1240D5Echief;no newdiscovery",
+    "Rustlogging.rs2sflush unchanged/BtrfsR2event292-R3event208/R2reserve_bytes.cold/storagecontrolexport-notfix",
+    "CP248PR319mergedb58abf8/AUD071through248-next252/8WIPpreserved"
+  ],
+  "findings": [
+    {
+      "summary": "Separate nativeDguest andAhost OS Space→actual118/4native159→exactownedkillprefuse/realEOF. Three180full3/errors0/post585/native107base6rewind0end1/ID4slot3orID1slot0→0/9wire110/Room. GuestretainsAhost;hostlosspromotesBgetter1/CD0/UIBStart. SixRoomimagesreviewed,128raw/exit0/frozen/cleanup0/762+744TCP127+127reply/16transports each/fulltuple-seq-CRC-SHA/no158175pastfuse/hold8sRoom11spostkill.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-four-abort",
+      "evidence": [
+        "RUST249-00159",
+        "RUST249-00522",
+        "RUST249-00434",
+        "RUST249-00797",
+        "RUST249-00424",
+        "RUST249-00787"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixed2v2/scoped single pendingguestD-hostAEOF→threeunranked180/post585/native107IDclear/Room/chief only. Nativeevidenceprivate256MiBtmpfs/exporthash, Btrfsflushfailures292-208remainunresolved/no durablelog-productionfix. No3memberStart/replacement/resume/secondlossnative/fullM4/eight/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Explicitfour_abort_room requiresfour_results/diagnostic4/lifebombs;singlecurrentArmedloss fencebomb-life-pickups/remove/promotelowestslot/sealroom. Threeunranked180, eachsuccessTCPwritebeforeits585;all3distinctcurrent585→reserveallqueues/107departed+three110Ready0each/allrefreshwritesbeforecomplete. No106/175/2forfeitclone. Duplicate585bounded/secondlossbeforerecoveryclearschannels-firstjobkept/unitonly.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-abort",
+      "evidence": [
+        "RUST249-00069",
+        "RUST249-00070",
+        "RUST249-00156",
+        "RUST249-00518",
+        "RUST249-01051"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixed2v2/scoped single pendingguestD-hostAEOF→threeunranked180/post585/native107IDclear/Room/chief only. Nativeevidenceprivate256MiBtmpfs/exporthash, Btrfsflushfailures292-208remainunresolved/no durablelog-productionfix. No3memberStart/replacement/resume/secondlossnative/fullM4/eight/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "65workspace(60service5wire)/20guest20hostTCP/32normalfour51twoTCP/6prebind;samebinary7b1e2338. NormalR1pendingD158 correctlyfiresinsideC17quiet;testexplicitdrainbeforeindependentlife/oldsource-rawkept. ClippyR1typecomplexity-collapsibleiffixedbeforebuild/runs;no policychange.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-abort",
+      "evidence": [
+        "RUST249-01051",
+        "RUST249-00804",
+        "RUST249-00034",
+        "RUST249-00056",
+        "RUST249-01134",
+        "RUST249-01220"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixed2v2/scoped single pendingguestD-hostAEOF→threeunranked180/post585/native107IDclear/Room/chief only. Nativeevidenceprivate256MiBtmpfs/exporthash, Btrfsflushfailures292-208remainunresolved/no durablelog-productionfix. No3memberStart/replacement/resume/secondlossnative/fullM4/eight/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "NormalR2logflush timeout event292/exit1 andR3event208/exit1, PIDgone/sourcefrozen/rawretained. R2threadreserve_bytes.cold observedwithoutcausalfilesystemproof;unchangedrerunsstopped/no2sflush-IOdeadlineincrease. Samebinary-policy tmpfsstoragecontrolsnormal32/two51pass/allrawcopyhashverifylocal-beforeownedtmpcleanup. Nativeprivate256MiBtmpfsrawmount/export-all-sizeSHA/unmount/renameafterprocesscapturecleanup. NotBtrfsfix/durablelog/productionacceptance.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-abort",
+      "evidence": [
+        "RUST249-00885",
+        "RUST249-00966",
+        "RUST249-00959",
+        "RUST249-01053",
+        "RUST249-01137",
+        "RUST249-00427",
+        "RUST249-00790"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixed2v2/scoped single pendingguestD-hostAEOF→threeunranked180/post585/native107IDclear/Room/chief only. Nativeevidenceprivate256MiBtmpfs/exporthash, Btrfsflushfailures292-208remainunresolved/no durablelog-productionfix. No3memberStart/replacement/resume/secondlossnative/fullM4/eight/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "CP248PR319mergedb58abf8/8WIPexact/historyimmutable/AUD071unchangednext252;currentcatalogas_ofCP241stale corrected249 withRustrefs/partialimplementation-integration separatefrommerge/gate. Nextknown8contractCP208–210/213fromcommittedPythonexcludeWIP/no duplicatefourpositive or Aimage-onlynormalcycles. M5backendpresent/nativeownershipbridge independent;no fullM4/auth/gateclosure.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-four-abort",
+      "evidence": [
+        "RUST249-00057",
+        "RUST249-00060",
+        "RUST249-00067",
+        "RUST249-00015"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixed2v2/scoped single pendingguestD-hostAEOF→threeunranked180/post585/native107IDclear/Room/chief only. Nativeevidenceprivate256MiBtmpfs/exporthash, Btrfsflushfailures292-208remainunresolved/no durablelog-productionfix. No3memberStart/replacement/resume/secondlossnative/fullM4/eight/fullauth. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "NativeguestDpendingEOF/threeRoom/Achief",
+      "result": "pass",
+      "evidence": [
+        "RUST249-00159",
+        "RUST249-00434",
+        "RUST249-00424"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixed2v2/scoped single pendingguestD-hostAEOF→threeunranked180/post585/native107IDclear/Room/chief only. Nativeevidenceprivate256MiBtmpfs/exporthash, Btrfsflushfailures292-208remainunresolved/no durablelog-productionfix. No3memberStart/replacement/resume/secondlossnative/fullM4/eight/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "check": "NativehostApendingEOF/threeRoom/Bchief",
+      "result": "pass",
+      "evidence": [
+        "RUST249-00522",
+        "RUST249-00797",
+        "RUST249-00787"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixed2v2/scoped single pendingguestD-hostAEOF→threeunranked180/post585/native107IDclear/Room/chief only. Nativeevidenceprivate256MiBtmpfs/exporthash, Btrfsflushfailures292-208remainunresolved/no durablelog-productionfix. No3memberStart/replacement/resume/secondlossnative/fullM4/eight/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "check": "65Rust/fmt-clippy-lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST249-00007",
+        "RUST249-00035",
+        "RUST249-01051",
+        "RUST249-00033"
+      ],
+      "limits": "60service+5wire/samebinaryasnative;noBtrfsdurabilityfix."
+    },
+    {
+      "check": "20guest20hostTCP/32normal51twoStorageControls/6guards",
+      "result": "pass",
+      "evidence": [
+        "RUST249-00156",
+        "RUST249-00518",
+        "RUST249-01134",
+        "RUST249-01220",
+        "RUST249-00056",
+        "RUST249-01053",
+        "RUST249-01137"
+      ],
+      "limits": "ScopedEOF20eachBtrfspass;normal32/two51explicitTMPFSexport, synthetic only/native proof separate."
+    },
+    {
+      "check": "NormalR1pendinglastbombharnessquietrace",
+      "result": "fail",
+      "evidence": [
+        "RUST249-00883",
+        "RUST249-00804",
+        "RUST249-01050"
+      ],
+      "limits": "Correcttimer158intersectsquiet;newtestdrainslastDall4/no service-timeoutchange/rawpreserved."
+    },
+    {
+      "check": "NormalBtrfsR2-R3logflushdeadlines",
+      "result": "fail",
+      "evidence": [
+        "RUST249-00964",
+        "RUST249-01045",
+        "RUST249-00959"
+      ],
+      "limits": "exit1 event292/208/sourcefrozen/PIDgone;reserve_bytes.cold notcausalproof/nofixclaim."
+    },
+    {
+      "check": "Manualdocs-catalog-issues-WIP-seals-storageexports",
+      "result": "pass",
+      "evidence": [
+        "RUST249-00057",
+        "RUST249-00006"
+      ],
+      "limits": "Codexselfcheck/independentreviewwaived/checkernotgateclosure/AUD071next252."
+    },
+    {
+      "check": "Native2ndloss/3memberStart/replacement/eight/accountbridge/durablelogging",
+      "result": "not_run",
+      "evidence": [
+        "RUST249-00060"
+      ],
+      "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixed2v2/scoped single pendingguestD-hostAEOF→threeunranked180/post585/native107IDclear/Room/chief only. Nativeevidenceprivate256MiBtmpfs/exporthash, Btrfsflushfailures292-208remainunresolved/no durablelog-productionfix. No3memberStart/replacement/resume/secondlossnative/fullM4/eight/fullauth. Internet thật chưa kiểm."
+    },
+    {
+      "check": "Initial unpublished checkpoint assembly",
+      "result": "fail",
+      "evidence": [
+        "RUST249REC-0002",
+        "RUST249REC-0001"
+      ],
+      "limits": "Missingnormalvariable before record/indexwrite; originalbatch/snapshots kept, resume onlyassembly, no runtime/raw/oldcomplete rewrite."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP249-rust-four-abort.json",
+      "bytes": 334301,
+      "sha256": "a75b27e3bad6a983bb1b589c79f7aa474b6e9a17812720c7f816543606010c8b",
+      "count": 1232
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP249-assembly-recovery.json",
+      "bytes": 567,
+      "sha256": "57378505d1589edbe2303f93c3b8092f51ed6a0f840f8fdcd48104bfce0ad744",
+      "count": 2
+    }
+  ],
+  "delta": {
+    "added": [
+      "Optinfour_abort_room/currentArmedsingleloss/unranked180-post585-threeRoomcleanup-chief/nativeguest-host/128raw/65tests20+20+32four51two6guards.",
+      "ExplicitTMPFSevidencestoragecontrols/export-sizeSHA/nativeprivate256MiBmount/fixeddeadlines."
+    ],
+    "corrected": [
+      "Normalcombinedbomb-lifeharnesslastD158race, explicitdrain;serviceunchanged.",
+      "Catalogas_ofCP241staleheader corrected249/currentfourEOFrefs;normalBtrfsflushfailuresnotfixedorhidden."
+    ],
+    "superseded": [
+      "ScopedRustfourguest-hostEOFentirelymissing;nowmeasured, M4eightremains."
+    ]
+  },
+  "blockers": [
+    "KR00967/Wine10.0-20260425/copy4b/privateLAN/sharedkernel/currentManner1/fixedalternating2v2; single owned pending guestD or hostA EOF only. No original KR abort/forfeit authority claim.",
+    "Private256MiBtmpfs runtime evidence sinks, allraw copied and hash-verified into local after process cleanup. Btrfs logflush failures remain unresolved; no durable logging/production/storagefix acceptance.",
+    "Room sealed after abort: no three-memberStart/replacement/reconnect/accountresume/matchrestore. Secondloss before recoverycomplete failcloses channels, unit only/native secondloss untested.",
+    "No nativequota/sendfailure-roomrecovery/loadingEOF/selectedEndingEOF/generalrooms/terrain4/rescue-needle/eight/fullM4/fullauth. M5backendpresent/nativebridgepartial. Internet thật chưa kiểm.",
+    "No normaloutcome in these EOFcontrols; CP248Aresultpanel screenshot gap remains, nativeA175180/rank/reset proof already separate. No duplicate two normalcycles only for images."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANknown8contractCP208–210/213port/fromcommittedPythonbaselineexclude8WIP;REonlydiscrepancy/no duplicatefourpositive/Aimage-only2cycles. M5nativebridgeindependent/M8causalI/Otrigger;AUD071through248next252.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T01:05:38.057028+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualscopednativeguest-hostEOF/PCAP-native180107-IDclear-chief-UI/TMPFSexport/failure-retention/source selfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/evidence/rust-service/four-abort.json",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    }
+  ]
+}

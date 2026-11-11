@@ -237,6 +237,7 @@ def main():
     p.add_argument('--four-owner-bombs', action='store_true', help='Opt-in measured four-owner capacity1/2/1/1, power1, fuse6; no terrain/life/results')
     p.add_argument('--four-life-reports', action='store_true', help='Opt-in four 17/19/21 reports and three-recipient170 only; requires four-owner-bombs, no results')
     p.add_argument('--four-results', action='store_true', help='Opt-in fixed four 2v2 drained results/reset; requires four-life-reports')
+    p.add_argument('--four-abort-room', action='store_true', help='Opt-in scoped active four-member EOF unranked return; requires four-results')
     a = p.parse_args()
     if not 1 <= len(a.port) <= 32 or len(set(a.port)) != len(a.port) or any(not 1 <= n <= 65535 for n in a.port):
         p.error('one to32 distinct nonzero ports required')
@@ -274,6 +275,10 @@ def main():
         if not a.four_life_reports:
             p.error('four-results requires four-life-reports')
         config['diagnostic_two_lobby']['fixed_room']['four_results'] = True
+    if a.four_abort_room:
+        if not a.four_results:
+            p.error('four-abort-room requires four-results')
+        config['diagnostic_two_lobby']['fixed_room']['four_abort_room'] = True
     with a.out.open('x') as f:
         f.write(json.dumps(config, indent=2) + '\n')
 

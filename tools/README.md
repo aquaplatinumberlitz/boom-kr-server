@@ -276,3 +276,9 @@ Harness lưu `pid-observations.json` trướcSIGTERM và khi5s/3sdeadline, khôn
 CP248: exporter `--four-results` cần `--four-life-reports --four-owner-bombs`/four-startup profile;
 `test_rust_four_room.py --results` kiểm24syntheticcases/opposite2v2/typedrank4/16refresh/Start3/oldreportnegative.
 [Nativefull175180/giới hạn](../docs/PROTOCOL.md#rust-four-results); bytehashCP202 không là nativeoracle hoặc fullauth/gateclosure.
+
+
+CP249: exporter `--four-abort-room` cần `--four-results`; `test_rust_four_room.py --abort-role A|D` kiểm
+scopedhost/guestEOF, đủ3postreturn585 mới cleanup, Ready0/chief/no175/nopending158. Native scope/giới hạn ở
+[contract](../docs/PROTOCOL.md#rust-four-abort). Normalcombinedbomb-life test nay drain đúng lastD158 trước quietlife;
+không đổi service/timeout. Run lỗi Btrfs giữ, explicittmpfs controls có export/hash; không là durabilityfix.

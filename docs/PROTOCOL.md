@@ -9006,7 +9006,48 @@ không chứng minh Aresultpanelrender hoặc nguyên nhân timing. NativeA175/1
 All4Start3ảnhclock01:53/correctnames/actorsalive; không pixelidentity/fullworldconsistency.
 
 **M4 còn scoped host/guestEOF/unrankedabort→180/roomcleanup rồi tám**; fourresultflag không chọn two-forfeit,
-nhưng hiện activeEOF4 chưa có unranked180/native survivorroom proof. AUIrankcapturegap để đo muộn hơn trong plannedlifecycle,
+tại CP248 activeEOF4 chưa có unranked180/native survivorroom proof; bổ sung scoped ở [CP249](#rust-four-abort). AUIrankcapturegap để đo muộn hơn trong plannedlifecycle,
 không lặp hai cycles chỉ lấy ảnh. Nativeclear21/rescue/needle/terrain-inventory4/fullauth/generalroom/fullM4/production chưa đạt.
 M5backend đã có, nativeownershipbridge riêng. AUD071 qua248/next252/Codexselfcheck/reviewwaived; checker không tự đóng gate.
 CP247shutdown/Btrfsrootcause vẫnunknown/deadlinesgiữ; Internet thật chưa kiểm.
+
+<a id="rust-four-abort"></a>
+## Rust bốn người: guest/host EOF về phòng không xếp hạng — CP249 / M4 partial
+
+[Metadata](evidence/rust-service/four-abort.json), [raw/hash](evidence/rust-service/README.md#cp249),
+[thứ tự tiếp](PLAN.md#current-order). Tái dùng [CP205](#four-member-abort-room) và CP248; không thêm hàm native,
+clientpatch hoặc wire VN. Contract consumer KR có nguồn; lựa chọn abort/fence là `design`, không luật server gốc.
+
+`fixed_room.four_abort_room=true` cần `four_results` và profile bốn người/life/bombs. Exporter có
+`--four-abort-room --four-results --four-life-reports --four-owner-bombs` cùng four-startup inputs.
+Một member hiện hành mất khi Armed: fence ngay bom/pickup/life jobs, bỏ membership đó, chọn chief slot nhỏ nhất,
+seal phòng không cho replacement hoặc Start ba người; gửi180 ba byte theo selector hiện hành tới ba survivor.
+Không tạo175, deathreport hoặc thắng2v2/forfeit hai người. Mỗi180 phải ghi TCP xong trước585 của recipient đó;
+585 chỉ setup quan sát được, không authenticatedACK/epoch. Đủ ba currentrecipient585 mới reserve toàn bộ queues,
+gửi107 đúng `[slot,ID,0]` và ba110/Ready0 mỗi recipient; không replay106. Chỉ đủ ba refreshwrites mới complete.
+Duplicate585 bị budget chặn và không thay recipient khác. Late work mang membership/round cũ không còn deliverable.
+Nếu mất thêm member trước complete, đóng các channel còn lại, giữ firstjob; chỉ unit, chưa native đa mất kết nối.
+
+Hai run riêng KR00967/Wine10.0-20260425/copy4b, currentManner1/fixed2v2, root+A–D netns/bridge/no default route:
+D guest hoặc A host dùng OS Space→actual118→159 đủ4 rồi kill đúng ownedPID đã kiểm namespace/prefix/startticks/exe.
+Cả ba survivor đọc1803/3/errors0, gửi585;107base6/6→rewind0→end1/errors0 và native ID4/slot3 hoặc ID1/slot0→0.
+Wire9slot110/run và ảnh Room đúng ba tên; guestloss giữ A chief, hostloss Bchiefgetter1/C-D0 và UI BStart.
+Hold ít nhất8s sau nativeRoom và11s sau kill, vượt fuse6; không158 hoặc175 trong trace. Giữ cùng16transports,
+fulltuple/C2Ssequence/CRC/SHA joins; raw/export/hash và cleanup kiểm riêng, không suy từ alive/TCPaccept/logserver.
+
+65Rusttests (60service+5wire),20guestTCP/20hostTCP,32normalfour và51twoTCP hồi quy,6prebind guards.
+NormalTCPR1 còn pendingD158 khi quietlifecase nên thất bại; giữ raw/source và sửa bài kiểm đợi đúng158 đủ4 trước
+lifeassertions. R2/R3 source/binary giữ nguyên nhưng exit1 vì logflush timeout events292/208; PIDgone/sourcefrozen,
+R2 có threadwchan `reserve_bytes.cold`. Đây chưa là chẩn đoán causal Btrfs hoặc lỗi wire/EOF đã được chứng minh.
+
+Đối chứng giữ nguyên Rustbinary/policy/2sflush/I/Ocleanupdeadlines, dùng tmpfs cho evidence sink:
+32normalfour/51twoTCP đạt; raw chép về local và kiểm từng hash trước xóa temporarydir thuộc run.
+Hai native run dùng **256MiB tmpfs mount riêng ở thư mục raw trong private mount namespace**; sau đóng mọi
+Wine/service/capture, copy toàn raw, so size/SHA, unmount rồi đặt lại cùng localpath. `storage-export.json` pin từng file.
+Storage là giới hạn môi trường được công khai; không đổi server logging, không che run lỗi hoặc chứng minh
+Btrfs được sửa/durable logging/backuprestore/production. Kernelguards/malformed/wire proof vẫn tách khỏi native.
+
+Chưa three-memberStart/replacement/reconnect/accountresume/matchrestore/generalrooms/nativequota-sendfailure,
+loadingEOF/selectedEndingEOF/terrain4/rescue/needle/eight/fullM4. Không có normaloutcome trong hai EOFcontrols,
+Aresultpanel screenshot gap CP248 giữ nguyên. M5backend có sẵn/nativebridge riêng; Internet thật chưa kiểm.
+AUD071 qua248/audit kế252; Codex selfcheck, independentreviewwaived; checker không tự đóng gate.

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP241",
+  "as_of": "CP249",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1339,7 +1339,10 @@
           "docs/evidence/room-list/README.md#cp229",
           "docs/evidence/room-list/README.md#cp230",
           "docs/evidence/rust-service/README.md#cp234",
-          "docs/evidence/rust-service/README.md#cp235"
+          "docs/evidence/rust-service/README.md#cp235",
+          "docs/PROTOCOL.md#rust-four-abort",
+          "docs/evidence/rust-service/four-abort.json",
+          "docs/evidence/rust-service/README.md#cp249"
         ]
       },
       "coverage": {
@@ -1408,7 +1411,10 @@
               "docs/PROTOCOL.md#room-membership-registry",
               "docs/PROTOCOL.md#room-shared-cleanup",
               "docs/PROTOCOL.md#rust-fixed-room",
-              "docs/PROTOCOL.md#rust-m2-acceptance"
+              "docs/PROTOCOL.md#rust-m2-acceptance",
+              "docs/PROTOCOL.md#rust-four-abort",
+              "docs/evidence/rust-service/four-abort.json",
+              "docs/evidence/rust-service/README.md#cp249"
             ]
           },
           "windows_original": {
@@ -1450,7 +1456,10 @@
             "server/test_host_battle_exit.py",
             "docs/PROTOCOL.md#current-mode-host-rejoin",
             "docs/PROTOCOL.md#a-survivor-admission",
-            "docs/evidence/peer-endpoints/README.md#cp175"
+            "docs/evidence/peer-endpoints/README.md#cp175",
+            "docs/PROTOCOL.md#rust-four-abort",
+            "docs/evidence/rust-service/four-abort.json",
+            "docs/evidence/rust-service/README.md#cp249"
           ]
         },
         "integration": {
@@ -1479,7 +1488,10 @@
             "docs/evidence/peer-endpoints/README.md#cp175",
             "docs/PROTOCOL.md#a-c-basic-cycles",
             "docs/evidence/peer-endpoints/README.md#cp176",
-            "docs/PROTOCOL.md#current-291-room-integration"
+            "docs/PROTOCOL.md#current-291-room-integration",
+            "docs/PROTOCOL.md#rust-four-abort",
+            "docs/evidence/rust-service/four-abort.json",
+            "docs/evidence/rust-service/README.md#cp249"
           ]
         },
         "gate": {
@@ -3772,7 +3784,10 @@
           "docs/evidence/rust-service/four-life.json",
           "docs/evidence/rust-service/README.md#cp247",
           "docs/evidence/rust-service/four-results.json",
-          "docs/evidence/rust-service/README.md#cp248"
+          "docs/evidence/rust-service/README.md#cp248",
+          "docs/PROTOCOL.md#rust-four-abort",
+          "docs/evidence/rust-service/four-abort.json",
+          "docs/evidence/rust-service/README.md#cp249"
         ]
       },
       "coverage": {
@@ -3859,7 +3874,10 @@
               "docs/PROTOCOL.md#eight-portable-battle",
               "docs/PROTOCOL.md#eight-team-variants",
               "docs/PROTOCOL.md#rust-four-life",
-              "docs/PROTOCOL.md#rust-four-results"
+              "docs/PROTOCOL.md#rust-four-results",
+              "docs/PROTOCOL.md#rust-four-abort",
+              "docs/evidence/rust-service/four-abort.json",
+              "docs/evidence/rust-service/README.md#cp249"
             ]
           },
           "windows_original": {
@@ -3898,7 +3916,10 @@
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-m3-acceptance",
             "docs/PROTOCOL.md#rust-four-life",
-            "docs/PROTOCOL.md#rust-four-results"
+            "docs/PROTOCOL.md#rust-four-results",
+            "docs/PROTOCOL.md#rust-four-abort",
+            "docs/evidence/rust-service/four-abort.json",
+            "docs/evidence/rust-service/README.md#cp249"
           ],
           "delivery": "via_pr"
         },
@@ -3938,7 +3959,10 @@
             "docs/PROTOCOL.md#rust-life-results",
             "rust/crates/kr-service/src/life.rs",
             "docs/PROTOCOL.md#rust-return-cleanup",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-four-abort",
+            "docs/evidence/rust-service/four-abort.json",
+            "docs/evidence/rust-service/README.md#cp249"
           ]
         },
         "gate": {
@@ -4061,7 +4085,10 @@
           "docs/evidence/rust-service/four-life.json",
           "docs/evidence/rust-service/README.md#cp247",
           "docs/evidence/rust-service/four-results.json",
-          "docs/evidence/rust-service/README.md#cp248"
+          "docs/evidence/rust-service/README.md#cp248",
+          "docs/PROTOCOL.md#rust-four-abort",
+          "docs/evidence/rust-service/four-abort.json",
+          "docs/evidence/rust-service/README.md#cp249"
         ]
       },
       "coverage": {
@@ -4175,7 +4202,10 @@
               "docs/PROTOCOL.md#eight-portable-battle",
               "docs/PROTOCOL.md#eight-team-variants",
               "docs/PROTOCOL.md#rust-four-life",
-              "docs/PROTOCOL.md#rust-four-results"
+              "docs/PROTOCOL.md#rust-four-results",
+              "docs/PROTOCOL.md#rust-four-abort",
+              "docs/evidence/rust-service/four-abort.json",
+              "docs/evidence/rust-service/README.md#cp249"
             ]
           },
           "windows_original": {
@@ -4223,7 +4253,10 @@
             "rust/crates/kr-service/src/room_io.rs",
             "docs/PROTOCOL.md#rust-m3-acceptance",
             "docs/PROTOCOL.md#rust-four-life",
-            "docs/PROTOCOL.md#rust-four-results"
+            "docs/PROTOCOL.md#rust-four-results",
+            "docs/PROTOCOL.md#rust-four-abort",
+            "docs/evidence/rust-service/four-abort.json",
+            "docs/evidence/rust-service/README.md#cp249"
           ],
           "delivery": "via_pr"
         },
@@ -4285,7 +4318,10 @@
             "docs/PROTOCOL.md#rust-life-results",
             "rust/crates/kr-service/src/life.rs",
             "docs/PROTOCOL.md#rust-return-cleanup",
-            "rust/crates/kr-service/src/room_io.rs"
+            "rust/crates/kr-service/src/room_io.rs",
+            "docs/PROTOCOL.md#rust-four-abort",
+            "docs/evidence/rust-service/four-abort.json",
+            "docs/evidence/rust-service/README.md#cp249"
           ]
         },
         "gate": {
@@ -4715,7 +4751,10 @@
           "docs/evidence/rust-service/four-life.json",
           "docs/evidence/rust-service/README.md#cp247",
           "docs/evidence/rust-service/four-results.json",
-          "docs/evidence/rust-service/README.md#cp248"
+          "docs/evidence/rust-service/README.md#cp248",
+          "docs/PROTOCOL.md#rust-four-abort",
+          "docs/evidence/rust-service/four-abort.json",
+          "docs/evidence/rust-service/README.md#cp249"
         ]
       },
       "coverage": {
@@ -4884,7 +4923,10 @@
               "docs/PROTOCOL.md#rust-four-startup",
               "docs/PROTOCOL.md#rust-four-owner-bombs",
               "docs/PROTOCOL.md#rust-four-life",
-              "docs/PROTOCOL.md#rust-four-results"
+              "docs/PROTOCOL.md#rust-four-results",
+              "docs/PROTOCOL.md#rust-four-abort",
+              "docs/evidence/rust-service/four-abort.json",
+              "docs/evidence/rust-service/README.md#cp249"
             ]
           },
           "windows_original": {
@@ -5009,7 +5051,10 @@
             "docs/PROTOCOL.md#rust-four-startup",
             "docs/PROTOCOL.md#rust-four-owner-bombs",
             "docs/PROTOCOL.md#rust-four-life",
-            "docs/PROTOCOL.md#rust-four-results"
+            "docs/PROTOCOL.md#rust-four-results",
+            "docs/PROTOCOL.md#rust-four-abort",
+            "docs/evidence/rust-service/four-abort.json",
+            "docs/evidence/rust-service/README.md#cp249"
           ]
         },
         "integration": {
@@ -5113,7 +5158,10 @@
             "rust/crates/kr-service/src/terrain.rs",
             "docs/PROTOCOL.md#rust-life-results",
             "rust/crates/kr-service/src/life.rs",
-            "docs/PROTOCOL.md#rust-return-cleanup"
+            "docs/PROTOCOL.md#rust-return-cleanup",
+            "docs/PROTOCOL.md#rust-four-abort",
+            "docs/evidence/rust-service/four-abort.json",
+            "docs/evidence/rust-service/README.md#cp249"
           ]
         },
         "gate": {
