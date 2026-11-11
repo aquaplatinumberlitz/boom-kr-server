@@ -581,3 +581,15 @@ Không tăng queue/timeout, không đổi source/input trong frozen run. Full ch
 Next: listener/profilewriter/launcher integration và native ownership/expiry/revoke/lifecycle theo PLAN;
 M5 vẫn partial. Backend64 không là native32, echo32 không strongcredential, tokenAPI chưa exposed.
 K6c WAN giả lập; **Internet thật chưa kiểm**.
+
+<a id="cp254"></a>
+## CP254 — native account lobby hai profile cố định
+
+[Contract/limits](../../PROTOCOL.md#rust-account-serving), [metadata](account-serving.json), [PLAN](../../PLAN.md#current-order).
+Rust `account_admission` dùng DB/private Unix socket và hai known zero-profile, session64→frontend32 riêng, không password trênTCP.
+82Rust/9library8DB3retainednativebody/16TCP/11startupguards; nativeR5 có haiKR/Wine/copy4b/137-291-render/argv/18exactTCP.
+Raw ở `local/research/codex/rust-account-native-r5/native-pair`, 100file/41,852s/cleanup0 và native-verification/UIreview ởparent.
+PrivateTMPFS DB/log/raw/exporthash, khôngBtrfsdurabilityfix. NativeR2/R3/R4fail và preparationfail giữ nguồn/raw.
+`tools/test_rust_account_serving.py --binary <kr-service> --admin <kr-admin> --config <two-profile> --out <new-private-dir>`
+kiểm synthetic TCP, khôngnativeoracle. Accountmode reject room/battle/unknownprofile; native negative/lifecycle/fullM5 còn thiếu.
+Python/diagnostic rollback giữ. Internet thật chưa kiểm.

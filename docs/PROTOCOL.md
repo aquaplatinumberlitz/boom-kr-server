@@ -9269,3 +9269,48 @@ Chưa launcher API, backend password network flow, profile writer account, socke
 Theo [PLAN](PLAN.md#current-order), nối adapter nhỏ và đo native hai account trước tuyên bố tương thích account.
 M4 Free startup vẫn blocked, không retry từ bằng chứng thư viện này. Python RE/reference/rollback giữ.
 Wine/LAN/WAN giả lập được chấp nhận; **Internet thật chưa kiểm**.
+
+<a id="rust-account-serving"></a>
+## Account lobby opt-in — CP254, native positive hai account cố định
+
+[Source](../rust/crates/kr-service/src/account_serving.rs), [metadata/limits](evidence/rust-service/account-serving.json),
+[raw](evidence/rust-service/README.md#cp254), [thứ tự](PLAN.md#current-order).
+Policy backend **design/design**, wire reuse CP214–217/225, native positive **kr_runtime/confirmed** trong scope dưới.
+
+`diagnostic_two_lobby.account_admission` chọn DB/private Unix socket/launchTTL; chỉ hai known zero-profile KRLocal/ID1,
+KRGuest/ID2/version1. Projection lấy DB-owned wireID/name; sourceIP chỉ allowlist/profile fence. Own291 blob/name/98zero/
+zero tail kiểm trước bind, profile khác/rename/version đổi/room/battle bị reject. Không successful unauthenticated fallback.
+Backend session64 khác frontend CSPRNG128bit→32hex và field36 echo32. Echo/IP không strongcredential hoặc luật server gốc;
+opaque16 và các field channel chưa rõ không được gọi sessionkey. Không thêm password/signup UI vào KR.
+
+Unix launcher parent0700/socket0600/pathabsent; JSONline≤4096/session/player/peer,4concurrent/3sdeadline, workerqueue4/3s.
+Only successful private write transfers launch retention; cancel/drop/writefail xóa đúng issued generation, không revoke phiên
+backend của caller. Log không password/session/frontend/raw auth body. Launch30..120s/chọn60, handoff10s sau authorizedlogin;
+CP252 WCP→login12,852s lowerbound làm10s trướclaunch không đủ, không suy TTLgốc. Register/process-local echo budget1024,
+không durable restart/multi-process fence. C2S1/6 parser/count1/32/name7 và seq40 giữ contract đã đo.
+
+Known login candidate3848 reuseCP234, channel3858 exact. Dynamic field36 tại86+nameLen, typedwriter/CRC/seq mới; native
+C2S6 echo/name/ID được check trước claim, redirect chỉ publish sau write. Periodic1s `inspect_session` kiểm revoke/expiry/profile
+mà không renew idle; current own67 mới là activity. Worker dùng UTC lúc command chạy; postawait phase/generation/deadline.
+Unknown/auth/DB/queue error failclosed. Room/battle/UDP không mở trong mode này, chưa có account-owned game cleanup.
+
+R4 bắt được actual87/body2 sau67 ở cảhai, hash21ddbbba… khớp encodedU16zero; **layout/semantics unknown**. CP254 chọn
+chỉ ownedChannel/Lobby/exactbody, budget16/noACK/noeffect/noactivityrenew; wrongcontext/body/budget failclosed.
+Python reference không87dispatch/noACK; không port semantic từ S2C87. NativeR5 tiếp tục render/lobbyhold8s với policy này,
+không suy originalauthority hoặc mở mọi unknown opcode. 16ca TCP riêng kiểm replay/swap/expiry/revoke/87context-budget.
+
+**Native R5:** 2SQLiteaccounts→privateAPI/backend64→frontend32→actual1→auth137/field36→actual6/67→own291128/render.
+HaiKR/Wine10.0-20260425/copy4b không patch mới; hai netns/veth +rootbridge/noexternalroute/directTCP.
+FullPCAP8connections/318TCP/18exactreplies/CRC-sequence-SHA, nativecursor137/128/errors0/render đúngKRLocal/KRGuest,
+actualPopen/per-role32 và independentCAprocargv cảhai. Hai ảnh UI đã xem; SQLite2account/player/session integrity/FK.
+100raw/41,852s/sourcefrozen/seal/cleanup0. DB/log/raw ở privateTMPFS/exporthash sau shutdown; không crashdurability/Btrfsfix.
+82Rusttests/9library8DB3retainednativebody/16syntheticTCP/11startupguards; model/TCP khác native acceptance.
+
+**Failures preserved:** baseexe e9 bị hashguard chặn trướccopy; dùng đúngCP252cmp4b. CLIcreate preparationBtrfs timeout10s,
+khôngWine/PIDgone, không kết luậncausalI/O; nativeRAMDB giữdeadline10s. ControllerR2socketmismatch trướcclient/6raw;
+R3capture thiếuIPB/A3848chưa configure/B87closure/100raw47,245s; R4known3848+captureB+denylog/105raw46,097s→87observable.
+R5boundedpolicy mới pass; initialpostrunchecker thiếuhashlib được giữ rồi sửachecker, không rerun native chỉ để checkerpass.
+
+M5 vẫn partial: native wrong-owner/channel swap/expiry/revoke/replay/fault/freshlogin/lifecycle và account room-game integration
+chưa nghiệm thu. Không accountresume/matchrestore/generalprofile/fullauth/production. Python/diagnostic rollback giữ.
+Wine/LAN/WAN giả lập chấp nhận; **Internet thật chưa kiểm**.

@@ -98,6 +98,7 @@ chưa đo và không suy từ probe. M4 còn Freehaioutcomes/selector0persist. [
 sửa scalar32unused/actualold13; control actual32 (independentCAargv A–G, Hkhôngobserved) vẫn Dpost17preRoom, không đủ
 sửa startup. Không retry khi chưa có observable mới. PLAN chuyển M5 worker-to-KR/ownershipbridge độc lập với Free;
 DB/KDF/session/worker/idleTTL/rate đã có; [CP253 admission library](PROTOCOL.md#rust-account-bridge) thêm owner/generation/oneuse32 và execution-time UTC. Còn listener/profilewriter/launcher API và native hai account; không làm lại backend hoặc quét SDKgraph. Accountresume/matchrestore khác freshlogin.
+CP254 account listener/Unix launcher ở [account serving](PROTOCOL.md#rust-account-serving) đã có16ca TCP/82Rust/11guard và native2account positive/18exactTCP; native negative/lifecycle/account room-game còn thiếu. Next perPLAN, không mở room/game hoặc SDK graph từ kết quả TCP này.
 
 Trạng thái lịch sử tại [CP251](PROTOCOL.md#rust-eight-teams): fixed1v7 code/TCP và native8Manner1v7negative trên8d; Freepositive2outcomes/selector0persist chưa có do copy4bD/8dGpost17preRoom. CùngCP250HGfamily/causalunknown, không retry hoặc SDKgraph khi chưa có observable mới; Tại mốc đó PLAN chuyển native9admissionbridge/consumer độc lập; CP252 phía trên đã đo gap này. Raw/hash/failedprebindchecker-harness được giữ, không nâng M4.
 

@@ -1,0 +1,301 @@
+{
+  "id": "CP254",
+  "previous": "CP253",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T05:44:32.321635+00:00",
+  "context_commit": "f09c59c749fed25604ae5b6cde23457321836227",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/M5: integrate backend-owned two-profile lobby/private launcher through actual KR00967 clients, keeping stronger backend session distinct from legacy wire and preserving failure/lifecycle gaps.",
+  "scope": "Opt-infixed2accountlobby/privateUnix/session64→frontend32→native1-6-67/137-291render/CAargv;82Rust9library8DB16TCP11guards/100raw41.852s/18exactreplies. No roomgame/native negatives/fullM5.",
+  "artifacts": [
+    {
+      "name": "Rustaccountlobby-nativeR5",
+      "sha256": "c8a5a52b5e35b7b55455da9812251e0c1a1003755b198cb5eda52bed2a4beee7"
+    },
+    {
+      "name": "KR00967copy4b-existingCMP/no-newpatch",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "account_serving::Config/Owner/control/connection/validate_projection; Unixmode600/private0700/companylauncher/requestbound4-4096-3s; ID1KRLocal-ID2KRGuest/version1zero",
+    "account_bridge::Launch::delivered/launchTTL60/handoff10/currentUTC/Channel::check_idle and Store::inspect_session nonrenewing; registrygeneration/no lockawait",
+    "lib::accountmodeguard/no-room/ownedProfileSelection/actualauthfield36offset86+nameLen/knownlogin3848/periodic1s/opaque87exactLobbybudget16noACKnoeffect",
+    "NativeR5twoKR/Winecopy4b/3namespaces/TMPFS DB-raw-log/sourcefrozen/CAargv32/137-291nativecursor-render/UI/318TCP18reply/raw10041.852s/cleanup0",
+    "Failedpreparation/BtrfsCLI10s; controllerR2beforeclient6raw; nativeR3captureIPB/portA/B87 andR4fullcapture87observable preserved; postrunverifierimport correction only; CP253PR325merged/AUD073next256"
+  ],
+  "findings": [
+    {
+      "summary": "Opt-inaccountlistener/privateUnixfrontend32 issuance, ownedfixedzero-profileprojection/knownID-name-version fromStore; separatebackend64/echo32/sourceIP notcredentials/no DB-authfallback. Room/battle/unsupportedprofile rejected.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-serving",
+      "evidence": [
+        "RUST254-00727",
+        "RUST254-00730",
+        "RUST254-01048"
+      ],
+      "limits": "Native positive two fixed zero-profile IDs1/2 namesKRLocal/KRGuest/version1 only; reject unsupported profile/rename/room/battle. Not full M5/authentication/general profile or fullservice.; Backend session64/private Unix API/frontend32/echo32 are distinct; sourceIP/legacy echo32 not strongcredential or original KR auth semantics. No new native password/signup UI.; Launch30..120s/chosen60; handoff10s afterlogin. Native CP252 WCP→login12.852s lowerbound, not original TTL. Registry process-local/echo budget1024/no durable restart fence.; Periodic1s inspect revocation/expiry/profile without idle renewal; only current own67 renews. Worker executes UTC at DB time, boundedqueues/RAII/failclosed. No account room/UDP/timer integration yet because room/battle rejected.; Native wrong-owner/channel swap/expiry/revoke/replay/fault/lifecycle not yet accepted; library/TCP controls are separate. Freshprocess/freshbackend sessions not accountresume/matchrestore.; NativeDB/raw/log privateTMPFS/exporthash; not crash durability/Btrfsfix/backuprestore/production. K6c WAN giả lập unchanged; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Nonrenewingbackgroundinspect1s plus own67activity, executionUTC/phase-generation-handoff fences; launch60 separatechannel10, CP252WCP→login12.852slowerbound. Startupschema/config/permissions/occupiedsocket/failedbind cleanup tested; no restart/multiprocess/crashdurability claim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-serving",
+      "evidence": [
+        "RUST254-00729",
+        "RUST254-00728",
+        "RUST254-00859",
+        "RUST254-00784"
+      ],
+      "limits": "Native positive two fixed zero-profile IDs1/2 namesKRLocal/KRGuest/version1 only; reject unsupported profile/rename/room/battle. Not full M5/authentication/general profile or fullservice.; Backend session64/private Unix API/frontend32/echo32 are distinct; sourceIP/legacy echo32 not strongcredential or original KR auth semantics. No new native password/signup UI.; Launch30..120s/chosen60; handoff10s afterlogin. Native CP252 WCP→login12.852s lowerbound, not original TTL. Registry process-local/echo budget1024/no durable restart fence.; Periodic1s inspect revocation/expiry/profile without idle renewal; only current own67 renews. Worker executes UTC at DB time, boundedqueues/RAII/failclosed. No account room/UDP/timer integration yet because room/battle rejected.; Native wrong-owner/channel swap/expiry/revoke/replay/fault/lifecycle not yet accepted; library/TCP controls are separate. Freshprocess/freshbackend sessions not accountresume/matchrestore.; NativeDB/raw/log privateTMPFS/exporthash; not crash durability/Btrfsfix/backuprestore/production. K6c WAN giả lập unchanged; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "TwoactualKR00967Winecopy4b account-backedlobbies:privatebackendCLI2accounts2sessions/launchfrontend32→actual1/auth137/field36→actual6-67/own291128/nativecursor0errors/render/independentCAargv32; PCAP8connections318records18exactreplies/fullCRC-seq-SHA; bothUIownnamesvisuallyread, SQLiteintegrity/FK/IDs.100raw41.852174857s/seal/cleanup0/privateTMPFSexporthash.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-account-serving",
+      "evidence": [
+        "RUST254-00693",
+        "RUST254-00695",
+        "RUST254-00689"
+      ],
+      "limits": "Native positive two fixed zero-profile IDs1/2 namesKRLocal/KRGuest/version1 only; reject unsupported profile/rename/room/battle. Not full M5/authentication/general profile or fullservice.; Backend session64/private Unix API/frontend32/echo32 are distinct; sourceIP/legacy echo32 not strongcredential or original KR auth semantics. No new native password/signup UI.; Launch30..120s/chosen60; handoff10s afterlogin. Native CP252 WCP→login12.852s lowerbound, not original TTL. Registry process-local/echo budget1024/no durable restart fence.; Periodic1s inspect revocation/expiry/profile without idle renewal; only current own67 renews. Worker executes UTC at DB time, boundedqueues/RAII/failclosed. No account room/UDP/timer integration yet because room/battle rejected.; Native wrong-owner/channel swap/expiry/revoke/replay/fault/lifecycle not yet accepted; library/TCP controls are separate. Freshprocess/freshbackend sessions not accountresume/matchrestore.; NativeDB/raw/log privateTMPFS/exporthash; not crash durability/Btrfsfix/backuprestore/production. K6c WAN giả lập unchanged; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Actualopaque87/body2 after67 atbothclients exacthash21dd…; meaningunknown. ChosenaccountLobbyexactprofilebudget16/noACK-noeffect/noactivity passesnativehold8s. Wrongcontext/budget TCPnegative; no interpretationasS2C87ororiginalserverlaw/blanketunknownopcode.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-serving",
+      "evidence": [
+        "RUST254-01057",
+        "RUST254-01048",
+        "RUST254-00693"
+      ],
+      "limits": "Native positive two fixed zero-profile IDs1/2 namesKRLocal/KRGuest/version1 only; reject unsupported profile/rename/room/battle. Not full M5/authentication/general profile or fullservice.; Backend session64/private Unix API/frontend32/echo32 are distinct; sourceIP/legacy echo32 not strongcredential or original KR auth semantics. No new native password/signup UI.; Launch30..120s/chosen60; handoff10s afterlogin. Native CP252 WCP→login12.852s lowerbound, not original TTL. Registry process-local/echo budget1024/no durable restart fence.; Periodic1s inspect revocation/expiry/profile without idle renewal; only current own67 renews. Worker executes UTC at DB time, boundedqueues/RAII/failclosed. No account room/UDP/timer integration yet because room/battle rejected.; Native wrong-owner/channel swap/expiry/revoke/replay/fault/lifecycle not yet accepted; library/TCP controls are separate. Freshprocess/freshbackend sessions not accountresume/matchrestore.; NativeDB/raw/log privateTMPFS/exporthash; not crash durability/Btrfsfix/backuprestore/production. K6c WAN giả lập unchanged; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Failuresretained:preflightwrongbaseexe; BtrfsCLIcreate10stimeoutbeforeWine; R2controllerFileExistsbeforeclient6raw; R3captureBIPomitted/A3848missing/B87closure100raw47.245s; R4known3848/captureB/denied87observable105raw46.097s. NativeR5singleboundednoACKpolicypositive, notcausalSDKfix. Checkerhashlibscopefailure correctedpostrunwithoutnative rerun.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-serving",
+      "evidence": [
+        "RUST254-00051",
+        "RUST254-00220",
+        "RUST254-00326",
+        "RUST254-00510",
+        "RUST254-00700",
+        "RUST254-00701"
+      ],
+      "limits": "Native positive two fixed zero-profile IDs1/2 namesKRLocal/KRGuest/version1 only; reject unsupported profile/rename/room/battle. Not full M5/authentication/general profile or fullservice.; Backend session64/private Unix API/frontend32/echo32 are distinct; sourceIP/legacy echo32 not strongcredential or original KR auth semantics. No new native password/signup UI.; Launch30..120s/chosen60; handoff10s afterlogin. Native CP252 WCP→login12.852s lowerbound, not original TTL. Registry process-local/echo budget1024/no durable restart fence.; Periodic1s inspect revocation/expiry/profile without idle renewal; only current own67 renews. Worker executes UTC at DB time, boundedqueues/RAII/failclosed. No account room/UDP/timer integration yet because room/battle rejected.; Native wrong-owner/channel swap/expiry/revoke/replay/fault/lifecycle not yet accepted; library/TCP controls are separate. Freshprocess/freshbackend sessions not accountresume/matchrestore.; NativeDB/raw/log privateTMPFS/exporthash; not crash durability/Btrfsfix/backuprestore/production. K6c WAN giả lập unchanged; Internet thật chưa kiểm."
+    },
+    {
+      "summary": "82workspace tests/9library8DB3retainednativebody/16TCP/11startupguards; nativepositive notnativewrongowner-expiry-revoke-lifecycle. M5partial/noaccountroomgame/generalprofile; nextperPLAN/M4Freeblocked/AUD073next256/Wineaccepted/Internetunverified separatebacklog.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-serving",
+      "evidence": [
+        "RUST254-00712",
+        "RUST254-00005",
+        "RUST254-00013"
+      ],
+      "limits": "Native positive two fixed zero-profile IDs1/2 namesKRLocal/KRGuest/version1 only; reject unsupported profile/rename/room/battle. Not full M5/authentication/general profile or fullservice.; Backend session64/private Unix API/frontend32/echo32 are distinct; sourceIP/legacy echo32 not strongcredential or original KR auth semantics. No new native password/signup UI.; Launch30..120s/chosen60; handoff10s afterlogin. Native CP252 WCP→login12.852s lowerbound, not original TTL. Registry process-local/echo budget1024/no durable restart fence.; Periodic1s inspect revocation/expiry/profile without idle renewal; only current own67 renews. Worker executes UTC at DB time, boundedqueues/RAII/failclosed. No account room/UDP/timer integration yet because room/battle rejected.; Native wrong-owner/channel swap/expiry/revoke/replay/fault/lifecycle not yet accepted; library/TCP controls are separate. Freshprocess/freshbackend sessions not accountresume/matchrestore.; NativeDB/raw/log privateTMPFS/exporthash; not crash durability/Btrfsfix/backuprestore/production. K6c WAN giả lập unchanged; Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native2ownedlobbies/fullPCAP137291render-argv-SQLite",
+      "result": "pass",
+      "evidence": [
+        "RUST254-00693",
+        "RUST254-00695"
+      ],
+      "limits": "Fixedzero2positive/privateTMPFS only, notfullM5."
+    },
+    {
+      "check": "82Rust9library8DB16TCP11guards",
+      "result": "pass",
+      "evidence": [
+        "RUST254-01049",
+        "RUST254-00859",
+        "RUST254-01048",
+        "RUST254-00784"
+      ],
+      "limits": "Synthetic/library negative notnativeacceptance."
+    },
+    {
+      "check": "FailedpreparationandnativeR2-R4",
+      "result": "fail",
+      "evidence": [
+        "RUST254-00051",
+        "RUST254-00220",
+        "RUST254-00326",
+        "RUST254-00510"
+      ],
+      "limits": "Sealedfailures retained; noBtrfs/SDKcausalfix claim."
+    },
+    {
+      "check": "Initialpostruncheckerhashlibscope",
+      "result": "fail",
+      "evidence": [
+        "RUST254-00700"
+      ],
+      "limits": "Analysis-tool bugfixedinnewversion; native notrerun."
+    },
+    {
+      "check": "Nativewrongowner-expiry-revoke-lifecycle/accountroomgame/M5closure",
+      "result": "not_run",
+      "evidence": [
+        "RUST254-00715"
+      ],
+      "limits": "NextperPLAN, no gateclosure from positive."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP254-rust-account-serving.json",
+      "bytes": 281725,
+      "sha256": "162b68819a9f34c55fac6932bd56ceb686dd8377b0bba5c8aeca0b4665b97b8d",
+      "count": 1067
+    }
+  ],
+  "delta": {
+    "added": [
+      "M5optinaccountlobby/privateUnix/native2positive/nonrenewinginspect/separateTTL/82Rust16TCP11guards."
+    ],
+    "corrected": [
+      "Known3848profile/captureIPB/explicitdeniedopcode observation/opaque87boundedpolicy/nativecheckerimport; allfailures retained."
+    ],
+    "superseded": [
+      "M5servingbridge entirelymissing; fixed2nativepositive nowpresent, native negatives/roomgame/generalprofile stillmissing."
+    ]
+  },
+  "blockers": [
+    "Native positive two fixed zero-profile IDs1/2 namesKRLocal/KRGuest/version1 only; reject unsupported profile/rename/room/battle. Not full M5/authentication/general profile or fullservice.",
+    "Backend session64/private Unix API/frontend32/echo32 are distinct; sourceIP/legacy echo32 not strongcredential or original KR auth semantics. No new native password/signup UI.",
+    "Launch30..120s/chosen60; handoff10s afterlogin. Native CP252 WCP→login12.852s lowerbound, not original TTL. Registry process-local/echo budget1024/no durable restart fence.",
+    "Periodic1s inspect revocation/expiry/profile without idle renewal; only current own67 renews. Worker executes UTC at DB time, boundedqueues/RAII/failclosed. No account room/UDP/timer integration yet because room/battle rejected.",
+    "Native wrong-owner/channel swap/expiry/revoke/replay/fault/lifecycle not yet accepted; library/TCP controls are separate. Freshprocess/freshbackend sessions not accountresume/matchrestore.",
+    "NativeDB/raw/log privateTMPFS/exporthash; not crash durability/Btrfsfix/backuprestore/production. K6c WAN giả lập unchanged; Internet thật chưa kiểm."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANnativeaccountwrongowner/channel-swapwithhealthyB,thenexpiry/revoke/replay/freshlogin/lifecycle; reusepositiveR5/nativeoracles, no broadSDK/fullcodec/M4Free retries. Room/gameownership and generalprofile next byactualgap. AUD073nextCP256.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T05:44:32.321635+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex manual native/backend/PCAP/UI/argv/source/failure/docs selfcheck; independent review waived not approved; exacthead PR checks required.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "docs/evidence/rust-service/account-serving.json",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP254nativefixed2accountpositive/serving/TMPFSlimits/remainingnative negatives-roomgame/M5partial; no historical raw/checkpoint edits."
+    }
+  ]
+}

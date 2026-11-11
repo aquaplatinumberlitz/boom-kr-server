@@ -403,3 +403,14 @@ Manifest oracle phải pin raw native đã đo, expected token SHA/name-ID-echo 
 example `check_account_bridge_wire` chỉ decode stdin hữu hạn, không listener hoặc log plaintext token.
 Test lưu DB/raw vào directory riêng0700 và kiểm source/hash/PIDgone; password/DB/token không commit.
 Python và diagnostic Rust serving giữ vai trò hiện tại. Native end-to-end M5 vẫn theo PLAN.
+
+## Account lobby opt-in CP254
+
+[Contract/limits](../docs/PROTOCOL.md#rust-account-serving), [metadata](../docs/evidence/rust-service/account-serving.json).
+Rust `account_admission` dùng DB/private Unix socket và hai known zero-profile, session64→frontend32 riêng, không password trênTCP.
+82Rust/9library8DB3retainednativebody/16TCP/11startupguards; nativeR5 có haiKR/Wine/copy4b/137-291-render/argv/18exactTCP.
+Raw ở `local/research/codex/rust-account-native-r5/native-pair`, 100file/41,852s/cleanup0 và native-verification/UIreview ởparent.
+PrivateTMPFS DB/log/raw/exporthash, khôngBtrfsdurabilityfix. NativeR2/R3/R4fail và preparationfail giữ nguồn/raw.
+`tools/test_rust_account_serving.py --binary <kr-service> --admin <kr-admin> --config <two-profile> --out <new-private-dir>`
+kiểm synthetic TCP, khôngnativeoracle. Accountmode reject room/battle/unknownprofile; native negative/lifecycle/fullM5 còn thiếu.
+Python/diagnostic rollback giữ. Internet thật chưa kiểm.

@@ -1,7 +1,8 @@
-//! Bounded diagnostic KR00967 transport; local account backend has no native adapter.
+//! Bounded KR00967 diagnostic transport and opt-in two-profile account lobby adapter.
 #![forbid(unsafe_code)]
 
 pub mod account_bridge;
+pub mod account_serving;
 pub mod account_worker;
 pub mod accounts;
 pub mod binding;
@@ -133,6 +134,8 @@ pub struct TwoLobbyConfig {
     pub actors: Vec<DiagnosticActorConfig>,
     #[serde(default)]
     pub fixed_room: Option<room_io::Config>,
+    #[serde(default)]
+    pub account_admission: Option<account_serving::Config>,
 }
 struct ActorProfile {
     identity: u32,
@@ -151,6 +154,7 @@ pub struct Validated {
     wcp_second: Vec<u8>,
     lobby: Option<HashMap<String, Reply>>,
     bound: Option<BoundProfiles>,
+    accounts: Option<account_serving::Active>,
 }
 pub fn load_config(path: &Path) -> io::Result<Validated> {
     if std::fs::metadata(path)?.len() > 65_536 {
@@ -243,6 +247,14 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
+        if let Some(account) = &two.account_admission {
+            if two.actors.len() != 2 || two.fixed_room.is_some() {
+                return Err(io::Error::other(
+                    "account lobby supports exactly two profiles, no room adapter",
+                ));
+            }
+            account.validate()?;
+        }
         let mut actors = HashMap::new();
         let mut identities = HashSet::new();
         for actor in &two.actors {
@@ -265,6 +277,9 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
                 return Err(io::Error::other("invalid diagnostic actor binding"));
             }
             let packets = load_lobby(&actor.profile, actor.identity, actor.name.as_bytes())?;
+            if two.account_admission.is_some() {
+                account_serving::validate_projection(&packets, actor.name.as_bytes())?;
+            }
             if actors
                 .insert(
                     actor.peer,
@@ -299,6 +314,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         wcp_second,
         lobby,
         bound,
+        accounts: None,
     })
 }
 
@@ -458,7 +474,7 @@ async fn connection(
             _ => return Err(io::Error::other("diagnostic local lobby transport limit")),
         };
         return local_lobby_connection(
-            socket, id, &profile, packets, flow, None, None, log, stop, start,
+            socket, id, &profile, packets, flow, None, None, None, log, stop, start,
         )
         .await;
     }
@@ -514,6 +530,7 @@ async fn local_lobby_connection(
     packets: &HashMap<String, Reply>,
     mut flow: lobby::Flow,
     lease: Option<binding::Lease>,
+    mut account: Option<account_serving::Lease>,
     initial: Option<(Receiver, kr_wire::Packet)>,
     log: Log,
     mut stop: watch::Receiver<bool>,
@@ -523,6 +540,8 @@ async fn local_lobby_connection(
         Some((rx, packet)) => (rx, Some(packet)),
         None => (Receiver::new(40), None),
     };
+    let mut account_opaque87 = 0usize;
+    let mut next_auth_check = Instant::now() + Duration::from_secs(1);
     let mut room_session: Option<room_io::Session> = None;
     let mut pending: Vec<room_io::Batch> = Vec::new();
     let mut send_sequence = 43u32;
@@ -535,6 +554,26 @@ async fn local_lobby_connection(
         } else {
             rx.next_packet().map_err(io::Error::other)?
         } {
+            // Native account-lobby trace: exact body matches typed u16 zero.
+            // Semantics unknown; bounded observation only, no ACK/activity/state effect.
+            if matches!(account, Some(account_serving::Lease::Channel(_)))
+                && flow.stage == lobby::Stage::Lobby
+                && packet.opcode == 87
+                && packet.payload
+                    == kr_wire::write_uint(0, kr_wire::Width::U16).map_err(io::Error::other)?
+            {
+                account_opaque87 += 1;
+                if account_opaque87 > 16 {
+                    return Err(io::Error::other("account opaque87 budget"));
+                }
+                emit(&log,stamp(start,json!({"event":"account_opaque87_observed","connection":id,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"policy":"exact_native_profile_no_ack_no_state_effect"}))).await?;
+                continue;
+            }
+            if packet.opcode == 67
+                && let Some(account) = &mut account
+            {
+                tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(true)=>value? };
+            }
             if let Some(session) = &room_session
                 && room_io::Session::handles(packet.opcode)
             {
@@ -542,7 +581,13 @@ async fn local_lobby_connection(
                 emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
                 continue;
             }
-            let aliases = flow.packet(packet.opcode, &packet.payload)?;
+            let aliases = match flow.packet(packet.opcode, &packet.payload) {
+                Ok(aliases) => aliases,
+                Err(error) => {
+                    emit(&log,stamp(start,json!({"event":"lobby_request_denied","connection":id,"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"stage":format!("{:?}",flow.stage)}))).await?;
+                    return Err(error);
+                }
+            };
             if packet.opcode == 6
                 && let Some(lease) = &lease
             {
@@ -565,6 +610,11 @@ async fn local_lobby_connection(
                 {
                     lease.redirected()?;
                 }
+                if alias == "redirect"
+                    && let Some(account) = &mut account
+                {
+                    account.redirected()?;
+                }
                 send_sequence = send_sequence.wrapping_add(3);
             }
             if packet.opcode == 67
@@ -573,6 +623,12 @@ async fn local_lobby_connection(
             {
                 room_session = Some(room_io::Session::open(shared, flow.identity(), id)?);
             }
+        }
+        if account.is_some() && Instant::now() >= next_auth_check {
+            if let Some(account) = &mut account {
+                tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(false)=>value? };
+            }
+            next_auth_check = Instant::now() + Duration::from_secs(1);
         }
         if let Some(session) = &room_session {
             session.tick()?;
@@ -628,6 +684,7 @@ async fn local_lobby_connection(
         };
         let n = tokio::select! {
             _=stop.changed()=>return Ok(()),
+            _=tokio::time::sleep_until(next_auth_check.into()),if account.is_some()=>continue,
             _=tokio::time::sleep_until(deadline.into()),if !pending.is_empty() || room_session.is_some()=>continue,
             batch=async {match &mut room_session {Some(session)=>session.inbox.recv().await,None=>std::future::pending().await}}=>{
                 let batch=batch.ok_or_else(||io::Error::other("room inbox closed"))?;
@@ -653,6 +710,9 @@ async fn bound_connection(
     mut stop: watch::Receiver<bool>,
     start: Instant,
 ) -> io::Result<()> {
+    if let Some(accounts) = &profile.accounts {
+        return account_serving::connection(socket, id, profile, accounts, log, stop, start).await;
+    }
     let bound = profile.bound.as_ref().expect("validated bound mode");
     let peer = match socket.peer_addr()?.ip() {
         IpAddr::V4(ip) => ip,
@@ -725,6 +785,7 @@ async fn bound_connection(
                 &actor.packets,
                 flow,
                 Some(lease),
+                None,
                 Some((rx, packet)),
                 log,
                 stop,
@@ -744,24 +805,52 @@ async fn bound_connection(
     }
 }
 
-pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
+pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
     tokio::fs::create_dir_all(out).await?;
-    // Bind the whole configured set before readiness; startup failure drops all.
-    let mut bound = Vec::new();
-    for &port in &profile.config.ports {
-        bound.push(TcpListener::bind((profile.config.bind, port)).await?);
+    let mut account_owner = if let Some(config) = profile
+        .config
+        .diagnostic_two_lobby
+        .as_ref()
+        .and_then(|c| c.account_admission.as_ref())
+    {
+        Some(account_serving::Owner::open(config).await?)
+    } else {
+        None
+    };
+    profile.accounts = account_owner.as_ref().map(|a| a.active.clone());
+    let startup: io::Result<_> = async {
+        // Bind the whole configured set before readiness; startup failure drops all.
+        let mut bound = Vec::new();
+        for &port in &profile.config.ports {
+            bound.push(TcpListener::bind((profile.config.bind, port)).await?);
+        }
+        let file = tokio::fs::OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .open(out.join("rust-events.jsonl"))
+            .await?;
+        let start = Instant::now();
+        let boot = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .map_err(io::Error::other)?
+            .as_nanos();
+        let term = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
+        Ok((bound, file, start, boot, term))
     }
-    let file = tokio::fs::OpenOptions::new()
-        .write(true)
-        .create_new(true)
-        .open(out.join("rust-events.jsonl"))
-        .await?;
-    let start = Instant::now();
-    let boot = SystemTime::now()
-        .duration_since(UNIX_EPOCH)
-        .map_err(io::Error::other)?
-        .as_nanos();
-    let mut term = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
+    .await;
+    let (bound, file, start, boot, mut term) = match startup {
+        Ok(resources) => resources,
+        Err(error) => {
+            if let Some(owner) = account_owner.take()
+                && let Err(cleanup) = owner.shutdown().await
+            {
+                return Err(io::Error::other(format!(
+                    "startup: {error}; account cleanup: {cleanup}"
+                )));
+            }
+            return Err(error);
+        }
+    };
     let (log, events) = mpsc::channel::<Value>(256);
     let mut writer = tokio::spawn(logging::write_events(file, events, Duration::from_secs(2)));
     let mut writer_result = None;
@@ -780,12 +869,22 @@ pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
         });
     }
     drop(accept_tx);
+    if let Some(owner) = &mut account_owner {
+        let listener = owner.listener.take().expect("owned launch listener");
+        listeners.spawn(account_serving::control(
+            listener,
+            owner.active.clone(),
+            profile.config.allowed_peers.clone(),
+            stop.clone(),
+        ));
+    }
+    let mut account_health = tokio::time::interval(Duration::from_secs(1));
     let quota = Arc::new(Semaphore::new(profile.config.max_connections));
     let mut workers = JoinSet::new();
     let mut next_id = 0u64;
     let mut failure = None;
     let outcome: io::Result<()> = async {
-    emit(&log,json!({"event":"boot","pid":std::process::id(),"boot":boot.to_string(),"package":env!("CARGO_PKG_VERSION"),"source":option_env!("KR_SOURCE_REV").unwrap_or("unpublished"),"profile":if profile.bound.is_some(){"diagnostic_two_lobby"}else if profile.lobby.is_some(){"diagnostic_local_lobby"}else{"diagnostic_login_error_only"},"bootstrap_sha256":profile.config.bootstrap.sha256,"error_sha256":profile.config.login_error.sha256})).await?;
+    emit(&log,json!({"event":"boot","pid":std::process::id(),"boot":boot.to_string(),"package":env!("CARGO_PKG_VERSION"),"source":option_env!("KR_SOURCE_REV").unwrap_or("unpublished"),"profile":if profile.accounts.is_some(){"account_two_profile_lobby"}else if profile.bound.is_some(){"diagnostic_two_lobby"}else if profile.lobby.is_some(){"diagnostic_local_lobby"}else{"diagnostic_login_error_only"},"bootstrap_sha256":profile.config.bootstrap.sha256,"error_sha256":profile.config.login_error.sha256})).await?;
     state(out, true, false).await?;
     emit(
         &log,
@@ -799,6 +898,11 @@ pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
                 break;
             },
             _=term.recv()=>break,
+            _=account_health.tick(),if profile.accounts.is_some()=>{
+                if profile.accounts.as_ref().is_some_and(|a|a.client.is_closed()) {
+                    failure=Some(io::Error::other("account worker unavailable"));break;
+                }
+            },
             value=tokio::signal::ctrl_c()=>{if let Err(e)=value {failure=Some(e);}break;},
             result=listeners.join_next(),if !listeners.is_empty()=>{failure=Some(io::Error::other(format!("listener stopped: {result:?}")));break;},
             result=workers.join_next(),if !workers.is_empty()=>if let Some(result)=result {match result {Ok(Ok(()))=>{},other=>{failure=Some(io::Error::other(format!("worker stopped: {other:?}")));break;}}},
@@ -834,6 +938,11 @@ pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
         workers.abort_all();
         while listeners.join_next().await.is_some() {}
         while workers.join_next().await.is_some() {}
+    }
+    if let Some(owner) = account_owner
+        && let Err(error) = owner.shutdown().await
+    {
+        failure.get_or_insert(error);
     }
     let state_result = state(out, false, true).await;
     let final_event = emit(&log,stamp(start,json!({"event":"stopped","connections":next_id,"error":failure.as_ref().map(ToString::to_string)}))).await;

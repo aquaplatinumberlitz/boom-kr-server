@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP253",
+  "as_of": "CP254",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP253 M5 library/backend seam 7cases6DB/3retained-nativebody replay/80tests; CP252PR324merged, M3scopedaccepted/M4nativeManner8+ninthlimited present.",
-      "remaining": "M5 listener/launcher/profile writer/native ownership/lifecycle; M4 Free startup blocked. M6 durability/M7 general rooms/M8 ops remain.",
-      "next_test": "PLAN opt-in account serving adapter/TCP failure controls then fresh native2 accounts/ownership/expiry/revoke/replay, no DB/KDF or broad SDK redo.",
+      "known": "CP254 native2 account-backed fixedprofile lobby/18exactTCP/82Rust/16TCP/11guards; CP253PR325merged.",
+      "remaining": "Native account negatives/lifecycle/room-game integration/M5closure; M4Free blocked; M6-8 service durability/rooms/ops.",
+      "next_test": "PLAN native wrong-owner/channel swap with healthy B then expiry/revoke/replay/lifecycle; no broadSDKRE.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Library policy and offline retained-native parser replay separately classified; no live native account bridge/M5 closure or production claim.",
+      "reason": "Native positive/backend/PCAP/oracles/UI joined separately from model/TCP negatives; M5partial.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -922,7 +922,8 @@
         "docs/PROTOCOL.md#rust-four-results",
         "docs/PROTOCOL.md#rust-four-abort",
         "docs/PROTOCOL.md#rust-eight-baseline",
-        "docs/PROTOCOL.md#rust-account-bridge"
+        "docs/PROTOCOL.md#rust-account-bridge",
+        "docs/PROTOCOL.md#rust-account-serving"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -966,7 +967,8 @@
         "docs/evidence/rust-service/four-results.json",
         "docs/evidence/rust-service/four-abort.json",
         "docs/evidence/rust-service/eight-baseline.json",
-        "docs/evidence/rust-service/account-bridge.json"
+        "docs/evidence/rust-service/account-bridge.json",
+        "docs/evidence/rust-service/account-serving.json"
       ],
       "prs": [
         286,
@@ -1004,7 +1006,8 @@
         318,
         319,
         320,
-        324
+        324,
+        325
       ],
       "successors": []
     }

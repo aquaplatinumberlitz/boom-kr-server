@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP253: M5 có account admission library/worker-time UTC, 7 ca/6 DB/3 native body replay; chưa listener/native M5. CP252 merge PR324/e17b78b. Tiếp adapter profile/launcher/transport theo current-order; M4 Free vẫn blocked. Audit kế CP256; Internet thật chưa kiểm.
+CP254: M5 account adapter có hai native lobby/SQLite/private launcher/18exactTCP; chưa native negatives/room-game/fullM5. Next theo current-order; M4Free blocked/audit kếCP256. Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -130,14 +130,20 @@ Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã
    session64 → frontend32 riêng → login một lần → actual redirect-delivery seam → channel owner/generation.
    Worker lấy UTC lúc thực thi, check expiry/revoke/profile ở issue/login/channel; không mutex qua await.
    7 ca/6 DB thật/3 body CP217 replay ngoại tuyến/80 workspace tests; cancellation/queue Busy/Closed/stale/drop/fault có kiểm.
-   Chưa có listener, writer profile account, launcher API hoặc native M5; không suy parser replay thành authentication.
-   **NEXT: nối lát cắt M5 vào listener opt-in và profile hai account đã biết.** Giữ diagnostic baseline/rollback và Python.
-   Chọn launcher backend API nội bộ riêng, không thêm màn hình password KR; frontend32 khác session64 và echo32 chỉ correlator.
-   Trước native: tách TTL launch khỏi handoff nếu thời gian startup vượt10s, chọn authorization boundaries, secret-safe logs,
-   cancellation/generation ở các socket, compensate delivery và close/room/UDP cleanup; kiểm TCP negative/DB queue trước.
-   Sau đó native fresh hai testaccounts trên Wine/LAN giả lập: own ID/name/channel, sai owner/channel swap, expiry/revoke/replay,
-   unknown principal và failclosed DB/queue; lưu native/raw/hash/cleanup. Fresh login khác resume; không mở SDK retry graph.
-   RE chỉ field/route/profile thực sự chặn adapter, không làm lại DB/KDF/idleTTL/rate hoặc chờ M4 Free.
+   Tại CP253 chưa có listener, writer profile account, launcher API hoặc native M5; không suy parser replay thành authentication.
+   **CP254: account listener opt-in và hai account native lobby đã có.** [Contract](PROTOCOL.md#rust-account-serving),
+   [metadata](evidence/rust-service/account-serving.json); CP253 merge PR325/f09c59c. SQLite2accounts/private Unix API/session64→
+   frontend32/actualC2S1→ownedID-name/field36→C2S6/67→native137/291/render và independentCAargv cảhai đã đối chiếu.
+   100raw41,852s/cleanup0/318TCP/18exactreplies; hai ảnh đã xem. DB/log/raw privateTMPFS/exporthash, khôngBtrfsdurabilityfix.
+   82workspace tests/9library8DB3retained-nativebody/16syntheticTCP/11startupguard đạt; native negatives khác TCP controls.
+   LaunchTTL60/handoff10/periodicinspect1s không renew idle; current67 activity mới renew. Exactopaque87/body2 chỉaccountLobby,
+   budget16/noACK-noeffect, semanticsunknown. Knownlogin3848 từCP234, không mở mọi port hoặc unknown opcode.
+   Fixed KRLocal/ID1 vàKRGuest/ID2/zero-profile/version1, reject profilekhác/rename/room/battle, không fallback theo IP.
+   **NEXT: native account negative/lifecycle**, chọn một ca accountA wrong-channel echo/ID swap khi B giữ nguyên,
+   rồi expiry/revoke/replay/freshlogin theo khoảng trống M5; source-first/reuse positive R5, không lặp full codec/SDK.
+   Wrongchannel/graceful before17 vẫn giữ CP220blocker: chỉ nhận nativefailclosed có đúng quan sát, không gọi graceful recovery.
+   Sau đó tích hợp account ownership vào room/game/queued recipient/UDP cleanup theo M5/M7; không tự đóng M5 từ nativepositive.
+   Python/diagnostic rollback giữ; M4Free startup chỉ mở lại khi có observable mới. Audit kếCP256.
    M4 vẫn mở do Free1v7haioutcomes/selector0nativepersist; native9 criterion có bằng chứng scope riêng, không tự đóng cả M4.
    Không nâng baseline8 thành fullM4/terrain-items8/auth. Shared8EOF chỉmodel/TCPfence/no175180, chưa7nativeRoomreturn.
    Queue8inbox16 giữlocalpending16/2-4inbox8; unique7life/8bomballwrites. CP209sealedraw142/167 khácfour đã đối chiếu,
@@ -209,7 +215,7 @@ Owner/selfcheck Codex, independentreviewwaived; PR/exacthead vẫn bắt buộc.
 | RUST-M2 Bootstrap→local login/identity→sảnh→fixedroom | CP235đạt scoped:2actualfixedroom/ownslots/hostBack-rejoin/Ready/barrier/clock-spawn+healthyBsessionEOF;negative/profileguard có phương pháp và giới hạn. Khôngaccountauth/generalroom/Battle. Diagnosticidentity không fullauth, tiếp contract đã biết |
 | RUST-M3 Hai client native→Battlebasic→result/reset/trận2 | CP242 scopedaccepted: CP237–241 movement/bom/terrain/life/oppositeoutcomes/activehostEOF + native itemreset/contest/exactoldUDP-currentpositive/Start3/queue controls. Không fullgame; M5backendworker/idleTTL/rate CP243–244 đã có; M4 tiếp. M2; account/DB backend không cần đợi M3. GiữUDP trực tiếp, không authoritativeengine rewrite |
 | RUST-M4 Bốn rồi tám/đội hình cố định theo contract | CP245 four startup/loading và CP246 four-ownerbom/knownstats/16native159158 đã có, M4partial; CP247fourlife/three170/clear21completion và CP248nativeopposite2v2/rank4-reset-Start3 đã có; CP249scopedguest-hostEOF/unrankedreturn-threeRoom đã có; CP250eightbaselineManner4v4/mesh-statbom8/life-rankreset đã có; CP252native9bridge1KR+8synthetic đã có; Free2nativeoutcomes/selector0persist vẫn startupblocked cảactual32control. M4OPEN/M5bridgeindependentnext. M3; baselinefourmain trước eight; dùng CP213teamdelta sau PR Python delivery riêng, không chờ mọi item/mission |
-| RUST-M5 Account/profile/DB và sessionownership | CP236 backend SQLite/Argon2id/identity-profile/session/auditCLI và CP243 boundedworker/handoff/compensation đã có; CP244 thêm idleTTL/rate/schema2; CP253 admission library/worker-time UTC/7ca6DB3bodyreplay đã có; listener/profilewriter/nativeKRserving còn thiếu, chưa fullM5. Backend có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
+| RUST-M5 Account/profile/DB và sessionownership | CP236 backend SQLite/Argon2id/identity-profile/session/auditCLI và CP243 boundedworker/handoff/compensation đã có; CP244 thêm idleTTL/rate/schema2; CP253 admission library/worker-time UTC/7ca6DB3bodyreplay đã có; CP254 có native2account positive trên fixedzero-profile/private launcher; native negatives/lifecycle/accountroom-game còn thiếu, chưa fullM5. Backend có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
 | RUST-M6 Inventory/progression/result-reward durability | Backend M5, actualmatchinput M3; KRwireprojection/effect cần từngconsumer. Không cần full8/mọiitem để làm ledger |
 | RUST-M7 General lobby/rooms/selection và userflows cần cho nội bộ | M2 + M5ownership, M3lifecycle; M4 chỉ cần nếu mở8capacity. RE roomlist/member/character/team/equip theo phép đo, không mọi mode |
 | RUST-M8 Hardening/admin/backup/restore/package và nghiệm thu service | M1–3/M5–7 cho internalservice; M4 nếu quảng bá4/8 theo scope. Ops/tests phát triển từM1, không chờ cuối mới thêm |
@@ -303,7 +309,7 @@ chuyển milestone khi từng capacity advertised đủ; không chờ modesphụ
 
 **RUST-M5 — account/profileDB và ownership; có thể tiến hành độc lập gameplay.**
 CP236 đã có [backend](PROTOCOL.md#rust-account-backend)/[CLI](../rust/README.md#account-admin-cli) dùng SQLite thật;
-[CP243](PROTOCOL.md#rust-account-worker) có boundedworker/handoff và [CP244](PROTOCOL.md#rust-account-idle-rate) có idleTTL/rate/schema2; chưa KRbridge/worker-to-serving/productionrestore nên **không đóng M5**. Không bắt M3/M4 đợi phần đó.
+[CP243](PROTOCOL.md#rust-account-worker) có boundedworker/handoff và [CP244](PROTOCOL.md#rust-account-idle-rate) có idleTTL/rate/schema2; CP254 thêm fixed2native account lobby/private launcher, còn native negatives/lifecycle/accountroom-game/productionrestore nên **không đóng M5**. Không bắt M3/M4 đợi phần đó.
 Module application/accounts/profiles/session/store/sqlite/migrations/adminCLI; architecture định schema/invariants.
 Backendimplementation: Argon2id/PHC/CSPRNG/hash-atrest/sessionTTL-revoke/oneactive; account→player→wireidentity,
 lease nhiềustage/sockets thay rolearrival/sourceIP, nameencoding/bounds, schema/version/conflict/startupvalidation.

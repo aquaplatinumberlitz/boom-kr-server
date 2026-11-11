@@ -521,11 +521,31 @@ impl Store {
         })
     }
     pub fn authorize(&mut self, token: &Token, expected_player: i64, now: i64) -> Result<Player> {
+        self.check_session(token, expected_player, now, true)
+    }
+    /// Check revocation/expiry without converting a server timer into player activity.
+    pub fn inspect_session(
+        &mut self,
+        token: &Token,
+        expected_player: i64,
+        now: i64,
+    ) -> Result<Player> {
+        self.check_session(token, expected_player, now, false)
+    }
+    fn check_session(
+        &mut self,
+        token: &Token,
+        expected_player: i64,
+        now: i64,
+        renew_idle: bool,
+    ) -> Result<Player> {
         let digest = token.digest();
         self.at(now, |tx| {
             let account: Option<i64> = tx.query_row("SELECT a.id FROM sessions s JOIN accounts a ON a.id=s.account_id JOIN runtime_state r ON r.id=1 JOIN players p ON p.account_id=a.id WHERE s.token_hash=?1 AND p.id=?2 AND s.revoked_at IS NULL AND s.expires_at>?3 AND s.issued_at<=?3 AND s.boot_epoch=r.epoch AND s.credential_version=a.credential_version AND a.disabled=0 AND (s.idle_timeout_seconds IS NULL OR s.last_seen_at>?3-s.idle_timeout_seconds)", params![digest,expected_player,now], |r| r.get(0)).optional()?;
             let account=account.ok_or(Error::InvalidSession)?;
-            tx.execute("UPDATE sessions SET last_seen_at=?1 WHERE token_hash=?2 AND account_id=?3 AND idle_timeout_seconds IS NOT NULL",params![now,digest,account])?;
+            if renew_idle {
+                tx.execute("UPDATE sessions SET last_seen_at=?1 WHERE token_hash=?2 AND account_id=?3 AND idle_timeout_seconds IS NOT NULL",params![now,digest,account])?;
+            }
             Self::player(tx,account)
         })
     }
