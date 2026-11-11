@@ -1,7 +1,7 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP265",
-  "baseline": "4195b00ea07646c41d64f4c7a01eb844be1aebdd",
+  "as_of": "CP266",
+  "baseline": "258abf8",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "R1d mergedPR343; R1eRegistry/currentlisting/batchoriginfence101Rust/306TCP/3169+24exactframes, unit2roomSessionqueues/listing and3CP226inputequivalences.",
-      "remaining": "N1bmax2native thenR1f/sharedNAT,R1g/finalnative2/4/8/account; M7generalroomconfig/create/join, occupancy/lifecycle; M5generalprofiles/nativeDBqueuefault.",
-      "next_test": "DashboardN1bafterR1ePRmerge; preserveexistingnativeproof, do not repeatknownconsumers.",
+      "known": "R1e mergedPR344; N1b exactly2nativeCP261baseline with directUDPnegative. Secondrunbothportmismatches/native82send/zeroingress-helper/serviceUDP0. StrictTCP/lifecycle/ownership/rawcleanup pass separately.",
+      "remaining": "Relay/endpointdesignbeforeR1f; sharedNATsessionbinding/R1g/finalR1native2/4/8/account; M5generalprofiles/nativeDBqueuefault; no relayimplementation or two-NATgameplay acceptance.",
+      "next_test": "Design scopedrelay/endpoint seam+minimalnativegap; no thirdN1b or broadRE. Follow dashboard.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "AUD082boundedR1erefactor, notnativegeneralroom/fullR1/M5certification. ExactheadPRpending, reviewwaived.",
+      "reason": "AUD083boundedN1bmeasurementnegative, notrelay/R1f/fullM5closure. ExactheadPRpending; reviewwaived.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",

@@ -709,3 +709,13 @@ AUD081 audit hai nhóm wire-refactor/N1 acceptance; record/raw mốc cũ không 
 101Rust/306TCP,3169+24frame khớpCP264; unit haiRoomSessionqueues/listing/removal và3CP226listing inputs.
 Source/binary/frozen inputs/cleanup ở `r1e-regression-r1`; copied-source r3–r6/failed controls giữ riêng.
 AUD082 cho nhóm refactor R1e; chưa nativecandidate/M7generalrooms/fullR1. Tiếp N1b theo PLAN.
+
+<a id="cp266"></a>
+### CP266 — N1b hai NAT đổi cổng, direct UDP âm
+
+[Contract/giới hạn](../../PROTOCOL.md#rust-n1b-dual-nat), [raw/hash](n1b-dual-nat.json), [việc tiếp](../../PLAN.md#dashboard).
+Hai lượt native CP261 baseline/copy4b/Wine, mỗi lượt frozen inputs/rawseal/cleanup/quiescence riêng. Lượt2 là đối chứng
+quan sát cloud, không thêm DNAT public. Đo đủ hai cổng sau NAT khác99/153; native send/capture nhưng không peer ingress/
+helper và không UDP tới service. Hai kết quả/reset/Start3 qua TCP không nâng thành UDP acceptance.
+AUD083 hoàn tất nhóm phép đo N1b, không hoàn tất relay/R1f/fullM5. Không native lượt3; thiết kế relay/endpoint trước R1f.
+Hạ tầng/định danh/config chỉ local. R1e PR344 đã merge; K6c/K7/N1 acceptance cũ và complete evidence giữ nguyên.

@@ -5,6 +5,16 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP265: R1e nền registry và listing đã kiểm, profile cũ giữ bytes.**
+[Contract/giới hạn](PROTOCOL.md#rust-r1e-registry), [evidence](evidence/rust-service/r1e-registry.json).
+Registry giữ các room runtime riêng; listing91 dựng từ entry/title hiện hành, batch có origin/recipient fence.
+101 test Rust/fmt/clippy/locked build và306 ca TCP đạt;3169 frame cũ +24 first-vacant khớp CP264.
+Hai room/queue/listing được kiểm unit; serving vẫn phòng fixed cũ, chưa tạo/chọn nhiều phòng tổng quát M7.
+R1d đã merge PR343. CP265/AUD082 đang bàn giao; [dashboard](PLAN.md#dashboard) tiếp N1b trước R1f.
+N1 vẫn đạt đúng scope một phía tới được; N1b/shared-NAT/native cuối R1/fullM5 chưa đạt. Hạ tầng chỉ local.
+Mốc cũ ở [HISTORY](HISTORY.md).
+
+
 **CP264: R1d header chuẩn và builder theo opcode đã kiểm; N1 được ghi nhận đạt phạm vi đã chốt.**
 [Contract R1d](PROTOCOL.md#rust-r1d-wire-builders), [bằng chứng](evidence/rust-service/r1d-wire-builders.json).
 96 test Rust/fmt/clippy/locked build;306 ca TCP đạt,3169 frame phòng cũ và24 frame first-vacant khớp baseline CP263.

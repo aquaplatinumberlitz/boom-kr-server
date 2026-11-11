@@ -456,3 +456,7 @@ Native candidate chưa kiểm; N1 được chấp nhận từ CP261 theo owner4G
 R1e/CP265: fixed-room serving đi qua Registry<Shared>, listing91 từ entry/title hiện hành; batch origin/recipient fence
 được đặt tại atomicpublish. API container/tworoom unit không là multi-room operator config/M7.
 101 Rust/306 TCP và3169+24 frame khớp; [contract/limits](../docs/PROTOCOL.md#rust-r1e-registry).
+
+CP266: [N1b hai NAT đổi cổng](../docs/PROTOCOL.md#rust-n1b-dual-nat) đã đo hai lượt trên binary baseline CP261:
+UDP trực tiếp âm; TCP account/kết quả/reset không là bằng chứng movement. R1e đã merge PR344, native cuối R1 vẫn còn.
+Tiếp thiết kế relay/endpoint trước R1f theo PLAN; không đổi runtime source trong đợt mạng hoặc coi relay đã có.
