@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP251",
+  "as_of": "CP252",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1020,7 +1020,12 @@
           "docs/evidence/eight-player/team-code-delivery.json",
           "docs/PROTOCOL.md#rust-eight-teams",
           "docs/evidence/rust-service/eight-teams.json",
-          "docs/evidence/rust-service/README.md#cp251"
+          "docs/evidence/rust-service/README.md#cp251",
+          "docs/PROTOCOL.md#rust-ninth-admission-wip",
+          "docs/PROTOCOL.md#rust-ninth-admission",
+          "docs/evidence/rust-service/ninth-admission.json",
+          "docs/evidence/rust-service/argv-provenance.json",
+          "docs/evidence/rust-service/README.md#cp252"
         ]
       },
       "coverage": {
@@ -1191,7 +1196,12 @@
           "docs/evidence/rust-service/README.md#cp250",
           "docs/PROTOCOL.md#rust-eight-teams",
           "docs/evidence/rust-service/eight-teams.json",
-          "docs/evidence/rust-service/README.md#cp251"
+          "docs/evidence/rust-service/README.md#cp251",
+          "docs/PROTOCOL.md#rust-ninth-admission-wip",
+          "docs/PROTOCOL.md#rust-ninth-admission",
+          "docs/evidence/rust-service/ninth-admission.json",
+          "docs/evidence/rust-service/argv-provenance.json",
+          "docs/evidence/rust-service/README.md#cp252"
         ]
       },
       "coverage": {
@@ -1759,7 +1769,12 @@
           "docs/evidence/eight-player/team-code-delivery.json",
           "docs/PROTOCOL.md#rust-eight-teams",
           "docs/evidence/rust-service/eight-teams.json",
-          "docs/evidence/rust-service/README.md#cp251"
+          "docs/evidence/rust-service/README.md#cp251",
+          "docs/PROTOCOL.md#rust-ninth-admission-wip",
+          "docs/PROTOCOL.md#rust-ninth-admission",
+          "docs/evidence/rust-service/ninth-admission.json",
+          "docs/evidence/rust-service/argv-provenance.json",
+          "docs/evidence/rust-service/README.md#cp252"
         ]
       },
       "coverage": {
@@ -1953,7 +1968,12 @@
           "docs/evidence/rust-service/README.md#cp250",
           "docs/PROTOCOL.md#rust-eight-teams",
           "docs/evidence/rust-service/eight-teams.json",
-          "docs/evidence/rust-service/README.md#cp251"
+          "docs/evidence/rust-service/README.md#cp251",
+          "docs/PROTOCOL.md#rust-ninth-admission-wip",
+          "docs/PROTOCOL.md#rust-ninth-admission",
+          "docs/evidence/rust-service/ninth-admission.json",
+          "docs/evidence/rust-service/argv-provenance.json",
+          "docs/evidence/rust-service/README.md#cp252"
         ]
       },
       "coverage": {
@@ -3099,7 +3119,12 @@
           "docs/evidence/rust-service/README.md#cp250",
           "docs/PROTOCOL.md#rust-eight-teams",
           "docs/evidence/rust-service/eight-teams.json",
-          "docs/evidence/rust-service/README.md#cp251"
+          "docs/evidence/rust-service/README.md#cp251",
+          "docs/PROTOCOL.md#rust-ninth-admission-wip",
+          "docs/PROTOCOL.md#rust-ninth-admission",
+          "docs/evidence/rust-service/ninth-admission.json",
+          "docs/evidence/rust-service/argv-provenance.json",
+          "docs/evidence/rust-service/README.md#cp252"
         ]
       },
       "coverage": {
@@ -3871,7 +3896,12 @@
           "docs/evidence/eight-player/team-code-delivery.json",
           "docs/PROTOCOL.md#rust-eight-teams",
           "docs/evidence/rust-service/eight-teams.json",
-          "docs/evidence/rust-service/README.md#cp251"
+          "docs/evidence/rust-service/README.md#cp251",
+          "docs/PROTOCOL.md#rust-ninth-admission-wip",
+          "docs/PROTOCOL.md#rust-ninth-admission",
+          "docs/evidence/rust-service/ninth-admission.json",
+          "docs/evidence/rust-service/argv-provenance.json",
+          "docs/evidence/rust-service/README.md#cp252"
         ]
       },
       "coverage": {
@@ -4188,7 +4218,12 @@
           "docs/evidence/eight-player/team-code-delivery.json",
           "docs/PROTOCOL.md#rust-eight-teams",
           "docs/evidence/rust-service/eight-teams.json",
-          "docs/evidence/rust-service/README.md#cp251"
+          "docs/evidence/rust-service/README.md#cp251",
+          "docs/PROTOCOL.md#rust-ninth-admission-wip",
+          "docs/PROTOCOL.md#rust-ninth-admission",
+          "docs/evidence/rust-service/ninth-admission.json",
+          "docs/evidence/rust-service/argv-provenance.json",
+          "docs/evidence/rust-service/README.md#cp252"
         ]
       },
       "coverage": {
@@ -4869,7 +4904,12 @@
           "docs/evidence/rust-service/README.md#cp250",
           "docs/PROTOCOL.md#rust-eight-teams",
           "docs/evidence/rust-service/eight-teams.json",
-          "docs/evidence/rust-service/README.md#cp251"
+          "docs/evidence/rust-service/README.md#cp251",
+          "docs/PROTOCOL.md#rust-ninth-admission-wip",
+          "docs/PROTOCOL.md#rust-ninth-admission",
+          "docs/evidence/rust-service/ninth-admission.json",
+          "docs/evidence/rust-service/argv-provenance.json",
+          "docs/evidence/rust-service/README.md#cp252"
         ]
       },
       "coverage": {

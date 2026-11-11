@@ -303,6 +303,50 @@ def expand_eight_startup(config, derived_dir, peers):
     (derived_dir/'provenance.json').write_text(json.dumps(dict(scope='Eight fixed diagnostic startup input producer; eightBattle separately opt-in, not nativeacceptance.',builder_path=str(source),builder_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),contract='docs/PROTOCOL.md#eight-session-preview',limits='CP208knownfields/zero profiles/fixedalternatingteams. No currenteightWIP import, auth/fullitems/admission9/nativecompatibility inferred.'),indent=2)+'\n')
     return config
 
+def add_ninth_admission_probe(config, derived_dir, peer):
+    """Bounded diagnostic visitor fixture, not a ninth room slot or native oracle."""
+    import copy
+    import ipaddress
+    from server import four_player_profile as four, probe_codec as codec
+    config = copy.deepcopy(config)
+    two = config.get('diagnostic_two_lobby', {})
+    room = two.get('fixed_room', {})
+    if len(two.get('actors', [])) != 8 or not room.get('eight_battle'):
+        raise ValueError('ninth probe requires explicit eight battle input')
+    ip = ipaddress.IPv4Address(peer)
+    if str(ip) in config['allowed_peers'] or not (ip.is_loopback or any(ip in ipaddress.IPv4Network(net) for net in ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16'])):
+        raise ValueError('ninth probe needs a distinct loopback or RFC1918 peer')
+    directory = Path(derived_dir).resolve()
+    if not directory.is_relative_to(Path(__file__).resolve().parents[1] / 'local'):
+        raise ValueError('derived probe input must stay under repository local/')
+    def pinned(row):
+        spec = row['fixture'];raw = Path(spec['path']).read_bytes()
+        if len(raw) != spec['bytes'] or hashlib.sha256(raw).hexdigest() != spec['sha256']:
+            raise ValueError('ninth probe source pin mismatch')
+        return raw
+    template = room['packets']['player_H']
+    common = two['actors'][7]['profile']
+    member = dict(identity=9, slot=0, team=0, name='KRPeer9')
+    body = four.player_body(codec.frame_body(pinned(template), template['sequence']), member)
+    auth_pin = common['packets']['auth_A'];auth = four.auth_body(codec.frame_body(pinned(auth_pin), auth_pin['sequence']), member)
+    directory.mkdir(parents=True, exist_ok=False)
+    def pin(name, raw):
+        path = directory / name;path.write_bytes(raw)
+        return dict(path=str(path), bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest())
+    profile = copy.deepcopy(common)
+    # The player106 carrier supplies only a pinned header and zero-profile291;
+    # it is never inserted into the room packet/slot table.
+    profile['own_header'] = pin('probe-header106.bin', codec.encode(pinned(template)[:37], 106, body, 58))
+    profile['packets']['own291'] = dict(fixture=pin('probe-own291.bin', four.own_body(body)), opcode=291, sequence=None)
+    profile['packets']['auth_A'] = dict(fixture=pin('probe-auth4.bin', codec.encode(pinned(auth_pin)[:37], 4, auth, auth_pin['sequence'])), opcode=4, sequence=auth_pin['sequence'])
+    two['actors'].append(dict(peer=str(ip), identity=9, name='KRPeer9', profile=profile))
+    room['ninth_admission_probe'] = True
+    config['allowed_peers'].append(str(ip))
+    config['max_connections'] = max(48, config['max_connections'])
+    (directory/'provenance.json').write_text(json.dumps(dict(source='design', contract='docs/PROTOCOL.md#rust-ninth-admission-wip', builder='server/four_player_profile.py', builder_sha256=hashlib.sha256(Path(four.__file__).read_bytes()).hexdigest(), limits='Identity9 is a diagnostic lobby identity, not an allocated room slot or authentication. Generated input is not a native oracle. Generic87/result2 comes from native CP227; capacity reason is emulator policy.'), indent=2) + '\n')
+    return config
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--python-profile', type=Path, required=True)
@@ -330,6 +374,8 @@ def main():
     p.add_argument('--eight-startup-derived-dir', type=Path, help='Known fixed8 producer, separate from four startup inputs')
     p.add_argument('--eight-startup-peer', action='append', default=[])
     p.add_argument('--eight-team-layout', choices=['4v4', '1v7'], help='Fixed CP213 operator layout; requires eight-battle, not interactive team selection')
+    p.add_argument('--ninth-admission-probe-peer', help='Distinct diagnostic lobby peer; eight room slots stay unchanged')
+    p.add_argument('--ninth-admission-derived-dir', type=Path)
     p.add_argument('--eight-battle', action='store_true', help='Opt-in CP209/210 fixed8 bombs/life/results; no items/terrain/unrankedabort')
     a = p.parse_args()
     if not 1 <= len(a.port) <= 32 or len(set(a.port)) != len(a.port) or any(not 1 <= n <= 65535 for n in a.port):
@@ -384,6 +430,10 @@ def main():
         if not a.four_results:
             p.error('four-abort-room requires four-results')
         config['diagnostic_two_lobby']['fixed_room']['four_abort_room'] = True
+    if a.ninth_admission_probe_peer or a.ninth_admission_derived_dir:
+        if not a.ninth_admission_probe_peer or not a.ninth_admission_derived_dir:
+            p.error('ninth probe needs both peer and derived directory')
+        config = add_ninth_admission_probe(config, a.ninth_admission_derived_dir, a.ninth_admission_probe_peer)
     with a.out.open('x') as f:
         f.write(json.dumps(config, indent=2) + '\n')
 

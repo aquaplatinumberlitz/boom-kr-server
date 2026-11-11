@@ -1,0 +1,297 @@
+{
+  "schema": "kre-argv-provenance-correction-v1",
+  "recorded_utc": "2026-11-11T03:28:38.083344+00:00",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/PROTOCOL.md#argv-provenance-correction",
+  "supersedes": "CP250 statement that R5 restored per-role32-character argv fromCP210; preserveoriginalcompleteCP250/CP251/audits/raw unchanged.",
+  "observation": "The scalar --client-arg token has32characters but processlaunch uses config.roles[role].args. All retainedperroleconfigs/run.role_args above use13-character token; CP210 actualsharedclient_args also13. Therefore no restored32-perrole input was executed, and R5pass doesnotprove anargvchange orstartupfix.",
+  "priorCP210": {
+    "path": "local/research/codex/eight-life-rank-r1/cycles/run.json",
+    "sha256": "7debf2ed4cd0eaff96c0fc847c6d19ab997e737aa04dda72186b77b5181ffc47",
+    "actual_shared_token_lengths": [
+      13
+    ]
+  },
+  "runs": [
+    {
+      "run": "rust-eight-native-r3",
+      "run_sha256": "b43571319e563c01be6f73039bfe78c9be294fe39d4de8c624ead24eed2066fe",
+      "config_retained_path": "local/research/codex/rust-eight-native-r3/frozen-inputs/173-config.json",
+      "config_sha256": "3238cefe245df780a15aef1a8fe7e454e347fd4690c74e560177058ac6708ed3",
+      "top_level_token_lengths": [
+        32
+      ],
+      "actual_per_role_token_lengths": {
+        "A": [
+          13
+        ],
+        "B": [
+          13
+        ],
+        "C": [
+          13
+        ],
+        "D": [
+          13
+        ],
+        "E": [
+          13
+        ],
+        "F": [
+          13
+        ],
+        "G": [
+          13
+        ],
+        "H": [
+          13
+        ]
+      },
+      "actual_per_role_argv_sha256": {
+        "A": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "B": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "C": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "D": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "E": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "F": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "G": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "H": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a"
+      }
+    },
+    {
+      "run": "rust-eight-native-r4",
+      "run_sha256": "614e4eb1ced49033bb4778800a036a4e68ce8d3339249dc148ce54e9b1383680",
+      "config_retained_path": "local/research/codex/rust-eight-native-r4/frozen-inputs/174-config.json",
+      "config_sha256": "43535755a7b8f3ea944441e2d943a6f259bc0445247073db915c654238f9dec2",
+      "top_level_token_lengths": [
+        32
+      ],
+      "actual_per_role_token_lengths": {
+        "A": [
+          13
+        ],
+        "B": [
+          13
+        ],
+        "C": [
+          13
+        ],
+        "D": [
+          13
+        ],
+        "E": [
+          13
+        ],
+        "F": [
+          13
+        ],
+        "G": [
+          13
+        ],
+        "H": [
+          13
+        ]
+      },
+      "actual_per_role_argv_sha256": {
+        "A": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "B": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "C": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "D": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "E": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "F": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "G": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "H": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a"
+      }
+    },
+    {
+      "run": "rust-eight-native-r5",
+      "run_sha256": "d3ace52186816e3a969e9efea2f821378288e92c417edc2d652a5a9b16d05649",
+      "config_retained_path": "local/research/codex/rust-eight-native-r5/frozen-inputs/173-config.json",
+      "config_sha256": "78584167afa22a838184cd2d84f732194ee74abe04012ec4ff5ef906be7b83e2",
+      "top_level_token_lengths": [
+        32
+      ],
+      "actual_per_role_token_lengths": {
+        "A": [
+          13
+        ],
+        "B": [
+          13
+        ],
+        "C": [
+          13
+        ],
+        "D": [
+          13
+        ],
+        "E": [
+          13
+        ],
+        "F": [
+          13
+        ],
+        "G": [
+          13
+        ],
+        "H": [
+          13
+        ]
+      },
+      "actual_per_role_argv_sha256": {
+        "A": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "B": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "C": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "D": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "E": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "F": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "G": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "H": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a"
+      }
+    },
+    {
+      "run": "rust-eight-teams-free-r1",
+      "run_sha256": "d21dba1b11d8f2a3fddba412cc15d376ba6647f6d01f8f24791bc38885ff4aff",
+      "config_retained_path": "local/research/codex/rust-eight-teams-free-r1/frozen-inputs/216-config.json",
+      "config_sha256": "e2471b169b8a77bce30ddb57df0020af456f5da771a46214c10e1ae6a0d9784e",
+      "top_level_token_lengths": [
+        32
+      ],
+      "actual_per_role_token_lengths": {
+        "A": [
+          13
+        ],
+        "B": [
+          13
+        ],
+        "C": [
+          13
+        ],
+        "D": [
+          13
+        ],
+        "E": [
+          13
+        ],
+        "F": [
+          13
+        ],
+        "G": [
+          13
+        ],
+        "H": [
+          13
+        ]
+      },
+      "actual_per_role_argv_sha256": {
+        "A": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "B": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "C": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "D": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "E": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "F": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "G": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "H": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a"
+      }
+    },
+    {
+      "run": "rust-eight-teams-manner-negative-r1",
+      "run_sha256": "33acefb4972b7a8773849f87b3da66a030627cd8505386b74ff99f23e8309d29",
+      "config_retained_path": "local/research/codex/rust-eight-teams-manner-negative-r1/frozen-inputs/224-config.json",
+      "config_sha256": "1e97147c66d4a6c43977b7a026d3601c0ba7f14b028cabb54bed6ff017b3e634",
+      "top_level_token_lengths": [
+        32
+      ],
+      "actual_per_role_token_lengths": {
+        "A": [
+          13
+        ],
+        "B": [
+          13
+        ],
+        "C": [
+          13
+        ],
+        "D": [
+          13
+        ],
+        "E": [
+          13
+        ],
+        "F": [
+          13
+        ],
+        "G": [
+          13
+        ],
+        "H": [
+          13
+        ]
+      },
+      "actual_per_role_argv_sha256": {
+        "A": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "B": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "C": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "D": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "E": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "F": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "G": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "H": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a"
+      }
+    },
+    {
+      "run": "rust-eight-teams-free-guard-r2",
+      "run_sha256": "e8d37eb8aefa8765d8472c73a322a9d03a9c84b3dedda6abccbd7539ab9dca42",
+      "config_retained_path": "local/research/codex/rust-eight-teams-free-guard-r2/frozen-inputs/224-config.json",
+      "config_sha256": "99b98e617ac9ad0242854b07ed375bab292287c716610148287c0768d41e2ad3",
+      "top_level_token_lengths": [
+        32
+      ],
+      "actual_per_role_token_lengths": {
+        "A": [
+          13
+        ],
+        "B": [
+          13
+        ],
+        "C": [
+          13
+        ],
+        "D": [
+          13
+        ],
+        "E": [
+          13
+        ],
+        "F": [
+          13
+        ],
+        "G": [
+          13
+        ],
+        "H": [
+          13
+        ]
+      },
+      "actual_per_role_argv_sha256": {
+        "A": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "B": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "C": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "D": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "E": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "F": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "G": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a",
+        "H": "03720b5bf9f6af3ca9d44fbc485f50869e79553aa533a15174ceba19914bd92a"
+      }
+    }
+  ],
+  "source_sites": [
+    {
+      "path": "local/research/codex/wine_probe_rust_eight_r5.py",
+      "sha256": "c43f7243f0bd889725bb9f0e64968bd51e1708a1e4678cdf4457431c13e9dfd1",
+      "locator": "record['client_args'] vs record['role_args']; winedbg launch uses *c['args'], scalar ignored for thatlaunch"
+    }
+  ],
+  "limits": "No nativegameplay/nativeMannernegative/raw integrity invalidation; correction isinputprovenance only. No causalSDK/JSON explanation. CP217 actual32 frontendinputpositives provide a separate knowninputcontrol, notproof every shorttoken run mustfail. No fullauth/entropysecurity claim. Internet thật chưa kiểm.",
+  "minimum": "Keepnative9 next; boundedFree1v7controlledactual-perrole32 input mayreopen because the claimedinputchange never reached processargv. Verifylaunch actualargv/hash againstexpectation beforeclient proof; no uncontrolledcopyretry/SDKgraph."
+}

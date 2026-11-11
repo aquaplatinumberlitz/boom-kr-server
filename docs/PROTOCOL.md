@@ -9109,8 +9109,9 @@ R3bombledgerroster2/4còn sót; giữsource/raw/export/PIDgone, sửa cónguồn
 NativeR1total540 vượt inheritedhardcap480, argparseexit2 chưanamespace; R2nativeconfig lấy nhầmTCPephemeralports,
 controlledSIGINT vào existingfinally/67raw-seal-cleanup0/captureguardfourIPs vàbaselinepredicate4 chưamở8.
 R3H vàR4G đóng channel sau17/trước544/CALauncher, raw67/run/frozen/cleanup0;37byte17 khớp CP210H.
-R4privateHcopyfromfourD không giải nguyên nhân. R5 khôi phục đúng per-role32charargv CP210 (trước đó
-configroles dùngoffline-probe khác toplevelargv), original8game/prefixes/newprocesses đạt; **không kết luận causalSDKfix**.
+R4privateHcopyfromfourD không giải nguyên nhân. **Correction AUD072:** R5 đạt với per-role token13 ký tự,
+giống actualCP210; scalar token32 trong recipe không được dùng khi launch. Claim “khôi phục per-role32” trước đây sai
+([đối chiếu frozenconfig/run/launch](#argv-provenance-correction)); không kết luận argvchange hoặc causalSDKfix.
 Không patch client mới/đụngbinary-assetsnguồn hoặc mở SDKVMgraph.
 
 VerifierR1 giả onlyintendedlosersdead, R2 dùng markerFOUR_SLOT thayEIGHT_SLOT, R3 shadoworigin-slot trong
@@ -9159,3 +9160,57 @@ harness failclosed trong loop/sau stop nhưng cleanup/export vẫn chạy; injec
 BattleUDP nên **chưa có14Aedges/full56wire/nativeAPI-keyapplyproof mới**; không hồi quy CP250partialcapture.
 TMPFS/exporthash không sửa Btrfs durability. Không native9fullroom/M4closure/M5ownership/fullgame/production;
 K6c WAN giả lập giữ đã đạt scoped, **Internet thật chưa kiểm**.
+
+
+<a id="rust-ninth-admission-wip"></a>
+<a id="rust-ninth-admission"></a>
+### Visitor thứ chín trên Rust — CP252, phạm vi một KR thật và tám member TCP tổng hợp
+
+[Metadata/SHA](evidence/rust-service/ninth-admission.json), [recipe/raw](evidence/rust-service/README.md#cp252),
+[thứ tự](PLAN.md#current-order). Source-first CP227 đã có native87/result2, nên không RE lại parser lỗi hoặc port VN opcode.
+
+**Policy design:** opt-in `ninth_admission_probe` nhận chín identity lobby chẩn đoán nhưng phòng vẫn tám slot.
+Visitor9 đã có identity tại lobby; khi idle room đủ tám member, request82 đúng context nhận87/result2 trước `enter`:
+không membership/slot/visit/round mới và không broadcast sang tám member. Generic2 là “không thể vào phòng” đã đo;
+chọn lý do capacity là design của server này, không xác nhận mã fullroom gốc. Probe chỉ hỗ trợ negative full idle,
+không vacancy/replacement/general admission. Roomlist vẫn fixed cached card, không proof cập nhật occupancy động.
+Fixture producer tạo auth4/own291/header cho KRPeer9 bằng các primitive đã đo, không thêm player_I hoặc slot9 vào phòng;
+output producer không phải native oracle. Cấu hình sai số actor/flag/name bị từ chối trước bind.
+
+**Native confirmed:** một KR00967/Wine10.0-20260425/copy4b trong host ảo riêng; root namespace giữ tám socket member
+TCP tổng hợp. Hai netns/root+veth/bridge và tám loopback source127.0.0.2..9, không route ngoài. Tám member đã setup/Ready
+trước native launch. Visitor9 đọc auth137/own291128/errors0, render KRPeer9, phát C2S6ID9 và actual82. Server trả87
+onebyte2; native816B2C/8177D1 đọc1/1/errors0. OrdinaryReturn đóng notice, hold3s ở lobby; không585/Room106/slot grant.
+Hai ảnh notice/lobby đã xem, raw/native/TCP tách nguồn. 19raw/35,407594284s/cleanup0/20TCPconnections/1.384records/
+249exactreplies/fulltuple-seq-CRC-SHA. Không suy chín client native đồng thời hoặc nghiệm thu gameplay mới.
+
+6 ca realTCP synthetic kiểm hai lần87 trên cùng channel, không member removal sau visitorEOF, Ready giữ nguyên,
+Start đầu vẫn key12346/eightACK/peer205 không ninth. Hai unit kiểm no membership/round mutation, queuefull/wrongcontext;
+73workspace tests/4prebind đạt. TCPR1 loader đòi nhầm roomplayeralias9 trước bind, giữ94raw/PIDgone, sửa để chỉ đòi tám
+roomplayerfixtures. Không thêm slot9 để né lỗi. Source/tool và lockfile/toolchain giữ provenance.
+
+**Failure/control:** nativeR1 đã tới error2branch1/1/errors0 nhưng controller chờ handler_end khi notice chưa đóng;
+tới120s syntheticidle thì fail,17raw/cleanup0 giữ. R2 chỉ thêm ordinaryReturn theo CP227, không đổi server. Verifier đầu
+đòi mọi close reason đềuEOF; R2 có7Brokenpipe khi đóng cùng lúc tám synthetic trong cleanup. Phân tích sau run giữ nguyên
+lỗi, chứng minh tất cả9channelFIN/RST trong PCAP sau completion; fullTCPtuple/replyjoin vẫn đạt. Không gọi đây là sửa
+shutdown, không rerun native chỉ để sửa checker.
+
+**Argv:** run9 có actualperrole32 Popenlist và independentCAproccommandline, không scalar-only. Control Free mới cũng có
+32Popenlist cả8, independentCAargv A–G gồmD, Hchưa được observer ghi trướccleanup. D vẫn post17/preRoom,66raw/48,888s;
+khôngFree2outcomes/selector0persist hoặc causalSDKfix. [AUD072](#argv-provenance-correction) giữ correction riêng.
+M4 vẫn mở; M5backend đã có/nativeownershipbridge kế tiếp độc lập. TMPFS/exporthash không sửa Btrfsdurability;
+K6c WAN giả lập giữ scope đã đạt. **Internet thật chưa kiểm**.
+
+<a id="argv-provenance-correction"></a>
+### Correction argv tại AUD072 — không sửa CP250/251 complete hoặc raw
+
+[Đối chiếu và SHA](evidence/rust-service/argv-provenance.json). Source harness ghi cả scalar `client_args` lẫn
+`role_args`, nhưng launch Wine dùng `config.roles[role].args`. Frozenconfig và `run.role_args` của CP250R3/R4/R5
+và ba run CP251 đều có token13 ký tự; scalar token32 chỉ là metadata/CLI không được chuyển vào lệnh launch.
+ActualCP210 dùng scalar13 trên harness cũ. Do đó claim R5 “khôi phục đúng per-role32 từ CP210” không đúng.
+Bằng chứng native gameplay/Mannernegative và raw/hash/cleanup giữ nguyên; chúng không chứng minh input32 hay causalfix.
+
+Đây là observable mới của harness/input, không giải thích SDK/JSON hoặc bắt buộc token phải dài32. CP217 có native
+frontendinput32 dương tính riêng, nên được thử boundedFree1v7 với **actualper-role32** cùng source/copy/profile khác
+không đổi, có preflight và kiểm actuallaunchargv. Không randomretry/copycycling hoặc RE SDKgraph. Native9 vẫn là bước
+độc lập trước trong PLAN. AUD072 seriouscontradiction không reset periodic auditCP252.

@@ -29,6 +29,19 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP252: Rust đã kiểm native visitor thứ chín bị từ chối vào phòng đầy; M4 vẫn mở.**
+[Contract và giới hạn](docs/PROTOCOL.md#rust-ninth-admission), [raw/hash](docs/evidence/rust-service/README.md#cp252).
+Một client KR thật làm visitor identity9, tám member TCP tổng hợp. Request82 nhận lỗi87 mã2, native đọc1/1/errors0;
+đóng notice bằng Return, vẫn ở sảnh, không nhận slot/phòng. 19raw/35,408s/cleanup0;1.384TCP/249reply được đối chiếu.
+73 test Rust, 6 ca TCP và4 guard trước bind đạt. Đây không phải chín client native cùng lúc hoặc general admission.
+
+AUD072 sửa claim argv CP250: scalar32 không được launch cho từng role; thực tế cũ là token13 ký tự.
+Control mới xác nhận argv32 thật nhưng Free vẫn dừng ở D sau17 trướcphòng (66raw/48,888s); không claim startupfix.
+M4 còn Freehaioutcomes/selector0nativepersist. Tiếp M5 worker-to-KR/ownership bridge độc lập theo PLAN;
+backend account/SQLite/worker/idleTTL/rate đã có. AUD073qua252/audit kếCP256. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP251: Rust có fixed1v7 và native negative Manner lệch đội; M4 vẫn mở.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-eight-teams), [raw/hash](docs/evidence/rust-service/README.md#cp251).
 Tám KR thật/Wine/copy8d: native8người/2đội/selector1→nhánh lệch đội→return7, không104/Battle;
@@ -38,8 +51,9 @@ Tám KR thật/Wine/copy8d: native8người/2đội/selector1→nhánh lệch đ
 CP250 merge [PR321](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/321)/`de84217`; Manner4v4 haioutcomes/Start3 giữscope đãđạt.
 Tiếp native9admissionbridge/consumer độc lập; Free startup chỉ mở lại khi có observable mới. M5backend đã có/bridge riêng;
 AUD071qua248/audit kếCP252. Internet thật chưa kiểm.
+CP251 đã merge [PR323](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/323)/`9b37b14`. Nhánh admission9 kế tiếp đã có WIP guard/model tests, chưa integratedTCP/native hoặc PR mới.
+AUD072 sửa provenance argv: token32 ở CLI chung chưa tới lệnh launch từng role; [correction](docs/PROTOCOL.md#argv-provenance-correction). Bằng chứng gameplay cũ giữ nguyên, không claim startupfix.
 
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP250: tám client KR thật đã chơi qua hai kết quả 4v4 và Start3 trên Rust.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-eight-baseline), [raw/hash](docs/evidence/rust-service/README.md#cp250).
