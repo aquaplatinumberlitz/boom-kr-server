@@ -104,7 +104,8 @@ hai cổng sau NAT khác99/153, native gửi tới endpoint153 nhưng không ing
 Hai kết quả/reset/Start3 qua TCP không đủ chứng nhận peer movement. CP267 đã chốt [thiết kế](RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design); NEXT R1f rồi relay opt-in theo
 [dashboard](PLAN.md#dashboard), không lượt N1b thứ ba, không broadRE. Cần đo tối thiểu đường gửi tới endpoint trung gian,
 key/consumer/apply và reply/rebinding/lifecycle nếu thiết kế chọn relay; chưa có proof cho server-source learning tự động.
-R1f shared-NAT session identity, R1g và native cuối R1 2/4/8/account giữ riêng. M5generalprofile/nativeDBqueuefault,
+R1f CP269 đã đạt source/TCP shared-IP knownprofiles/LegacyDirectPlan; [giới hạn](PROTOCOL.md#rust-r1f-session-binding).
+R1g và native cuối R1 2/4/8/account còn lại; chưa native shared-NATUDP/relay. M5generalprofile/nativeDBqueuefault,
 field51policy integration/projector WIP không bị coi đã xong. Không suy lớp CGNAT hoặc mọiISP từ ca này; hạ tầng local.
 
 

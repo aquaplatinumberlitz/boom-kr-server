@@ -9843,3 +9843,39 @@ Kr_runtime/kr_static, method runtime/static/emulation/test, status confirmed ho�
 miễn artifact. Sourcepin tài liệu không chứng minh nội dung đúng; audit thủ công/acceptance vẫn giữ vai trò cũ.
 57 test checkpoint gồm positive/docs-pinned và negative hash/source/method/status/canonical/locator đạt.
 Đây là correction công cụ, không có contract KR hoặc runtime/acceptance mới; thiết kế CP267 và gate cũ giữ phạm vi.
+
+<a id="rust-r1f-session-binding"></a>
+## R1f — identity/profile theo session và endpoint theo channel — CP269
+
+Nguồn **design/design**, kiểm source/unit/TCP, chưa native candidate; [metadata/hash](evidence/rust-service/r1f-session-binding.json),
+[thứ tự và native cuối R1](PLAN.md#rust-r1), [thiết kế relay tách riêng](RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design).
+Dùng lại frontend32/body61→issuedplayer/session DB→echo/channel/lease CP253–258, metadata address CP260 và99/153 builders
+CP264; không wire mới hoặc port VN. Không còn khoảng trống layout cần RE cho refactor này.
+
+`BoundProfiles.actors` keyed PlayerId, chỉ mục `legacy_peers` dùng đường diagnostic không auth. Account mode cho hai
+profile đã biết cùng peer IP; allowlist phải khớp tập IP của cấu hình, không dùng số actor để buộc IP duy nhất.
+Diagnostic legacy vẫn từ chối trùng endpoint và giữ binding cũ; không coi nó là xác thực tài khoản.
+
+`Bridge::login_for_profile` parse reportedIPv4 như metadata không tin cậy, kiểm body61/token32/opaque shape, tìm đúng
+issued frontend rồi mới lấy expectedaddress từ **player của lease đó**. So actualpeer với peer của token vẫn giữ;
+wrong metadata/unknown profile không chọn actor khác hoặc lấy reportedIP làm quyền. Frontend một lần, generation,
+DB authorize/version/expiry/revoke và channel identity/name/echo/connection kiểm như trước. Unknown name/ID/profileversion
+vẫn từ chối; chưa projection cho mọi account. Guard fixedroom IP→identity cũ đã bỏ vì ownership từ lease.
+
+Channel account giữ địa chỉ từ actual admitted transport, theo đúng connection; legacy giữ configuredpeer. Không sửa
+map IP của player toàn cục khi một socket mới đến. `LegacyDirectPlan` chụp round/membership/slot/endpoint tại loading99,
+chặn missing/duplicate/outside slot/address0/port0 và recipient khác visit/connection/round trước builder153. Slot độc lập
+PlayerId; selfentry vẫn zero bởi builder cũ. Plan chỉ là snapshot nội bộ dưới room lock, không relay hay wireepoch;
+publication/batch origin/recipient/currentmodel fences CP265 tiếp tục áp dụng sau đó.
+
+104Rust tests đạt, gồm token-selected metadata hai account chungIP, wrongmetadata/unknownprofile không ăn frontend,
+revokeA/Bhealthy và plan sharedIP/nonidentityslot/stale visit/connection/round/invalid rows. Fmt/clippy/lockedbuild đạt.
+14suite/306TCP legacy đạt,3169 consumedroomframes+24firstvacant khớp CP265 theo identity/normalizedvisit/opcode/sequence/
+length/fullSHA; unreadtail giữ riêng. Thêm59TCP cùng sourceIP với reportedmetadata khác nhau, xuyên account→phòng→
+hai kết quả/reset/Start3/revokeA/fresh rejoin; packet153 được decode kiểm IP chung và cổng đúng slot. 16accountserving
+negative/lifecycle cũ đạt. Source/tool/binary/input frozen, ownedPID cleanup, raw/hashes giữ; lỗi clippy ban đầu ở
+fixturetest gọi sai tên method/map-iteration lint được giữ rồi sửa trước các run cuối, không đổi input đang chạy.
+
+Các ca này là **TCP tổng hợp**, không hai KR native hoặc đồng bộ UDP sau NAT. Endpoint153 vẫn IP channel/cổng99 tự
+báo; không học cổng, holepunch, relay hoặc chữa N1bnegative. M5generalprofile/nativeDBqueuefault, key256/portreuse/
+restart và sameIPUDPspoof còn riêng. Chỉ nghiệm thu fullR1 sau native2/4/8/account; không nâng gate từ source/TCP.

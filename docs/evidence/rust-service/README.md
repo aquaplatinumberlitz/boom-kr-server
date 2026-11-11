@@ -737,3 +737,11 @@ AUD084 audit nhóm thiết kế; PR345 đã merge. Tiếp R1f, R1g, relay implem
 57 checkpoint tests đạt. CP267 pin/record/audit bất biến, run checker lỗi giữ local. Chỉ design/documentation với
 canonical docs pin đầy đủ dùng artifacts rỗng; runtime/static/test/confirmed không được miễn artifact/hash/history.
 AUD085 audit nhóm schema-tool; không runtime/implementation/gate mới. Thứ tự R1f/relay giữ PLAN.
+
+<a id="cp269"></a>
+### CP269 — R1f session/profile ownership và LegacyDirectPlan
+
+[Contract/giới hạn](../../PROTOCOL.md#rust-r1f-session-binding), [metadata/hash](r1f-session-binding.json), [PLAN](../../PLAN.md#dashboard).
+104Rust/fmt/clippy/lockedbuild;306TCPlegacy/3169+24frameCP265 khớp,59shared-IP fullaccountlife và16accountserving đạt.
+Source/body/tool/binary frozen, ownedPID gone; initialclippyfailures giữ. AUD086 audit nhóm source/TCPrefactor;
+chưa nativecandidate/shared-NATUDP/relay/fullM5. CP267–268 đã merge riêng, giữ record CP267 nguyên bytes.

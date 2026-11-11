@@ -1,0 +1,315 @@
+{
+  "id": "CP269",
+  "previous": "CP268",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T22:31:58.814105+00:00",
+  "context_commit": "f89504d561cf5aa6f619e94ed4c635a27b4f6250",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/R1f: accountidentity/profilefromtoken/sessioninsteadsourceIP; sharedNATTCP andcurrentchannelLegacyDirectendpointplan whilepreserving2/4/8/accountwire.",
+  "scope": "R1fsource/unit/TCPrefactor withsharedIPaccountmode. No newnativecandidate/relay/endpointlearning/generalprofile/fullM5/fullR1acceptance.",
+  "artifacts": [
+    {
+      "name": "kr-service",
+      "sha256": "3da88cdc30f8322d4cfd9a9fb32e4ae5cfc52c34bab08a73d06fe3f8d84b71dd"
+    },
+    {
+      "name": "kr-admin",
+      "sha256": "e4d4bb4a26e24ff8d0f780d87e87d4e92b49bf934b0ed7ed9d8a0b0be6c1c7f1"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md#rust-r1f-session-binding",
+    "BoundProfiles.actors:PlayerId/legacy_peersIPindex→Bridge.login_for_profile token-selectedmetadata→currentChannelendpoint",
+    "LegacyDirectPlan(round,members,slots,IPs,ports)→for_recipient→existingpeer153builder",
+    "104Rust/306legacyTCP/3169old+24firstvacantframeexactCP265/59sharedIP/16accountserving",
+    "Isolatedsource6ece974 exact9files/sealedraw/PIDgone; CP267-268PR346merged; nextR1g thenrelay+natives"
+  ],
+  "findings": [
+    {
+      "summary": "Token-selectedplayerprofile/expectedmetadata noIPidentity; sharedIP2accounts preserveowner/echo/channel/roomlifecycle, known2profilesonly.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1f-session-binding",
+      "evidence": [
+        "R1FCP269-00118",
+        "R1FCP269-00119",
+        "R1FCP269-01413",
+        "R1FCP269-00097"
+      ],
+      "limits": "Source/unit/TCP scope only, no newnativebinarycertification; finalR1native2/4/8/accountrequired.; Onlytwoexactknownzeroaccountprofiles/IDs/names/version1; no M5generalprofile or nativeDBqueuefaultclosure.; SharedIP59TCPpositive isnotNATUDP/gameplayproof; legacy153stillselfreportedport, no serverUDPlearning/relay/holepunch. N1bnegative remains.; AccountsourceIPstillrestrictsissuedfrontend/transport, but no longer choosesidentity. Endpointfollowscurrentchannelconnection. Unauthenticateddiagnosticmode remainsoperatorIPbound.; LegacyDirectPlanprocesslocal/round-membersnapshot notwireepoch/authentication; currentbatchroomorigin/recipientguardsremainseparate.; Key256/portreuse/restart/sameIPUDPspoof gapsCP267remain, no policychangehiddeninrefactor.; No actualVPS/OCIidentifiers/config/accessintrackeddata; originals/stashes/oldcheckpoint/rawunchanged."
+    },
+    {
+      "summary": "Currentconnectionownedendpoint+round/membership/slotLegacyDirectPlan withstale/invalidtupleguards; unchangedlegacy153bodybuilder/policies, no relay/NATlearning.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1f-session-binding",
+      "evidence": [
+        "R1FCP269-00121",
+        "R1FCP269-00122",
+        "R1FCP269-01415"
+      ],
+      "limits": "Source/unit/TCP scope only, no newnativebinarycertification; finalR1native2/4/8/accountrequired.; Onlytwoexactknownzeroaccountprofiles/IDs/names/version1; no M5generalprofile or nativeDBqueuefaultclosure.; SharedIP59TCPpositive isnotNATUDP/gameplayproof; legacy153stillselfreportedport, no serverUDPlearning/relay/holepunch. N1bnegative remains.; AccountsourceIPstillrestrictsissuedfrontend/transport, but no longer choosesidentity. Endpointfollowscurrentchannelconnection. Unauthenticateddiagnosticmode remainsoperatorIPbound.; LegacyDirectPlanprocesslocal/round-membersnapshot notwireepoch/authentication; currentbatchroomorigin/recipientguardsremainseparate.; Key256/portreuse/restart/sameIPUDPspoof gapsCP267remain, no policychangehiddeninrefactor.; No actualVPS/OCIidentifiers/config/accessintrackeddata; originals/stashes/oldcheckpoint/rawunchanged."
+    },
+    {
+      "summary": "104Rust/fmt/clippy/lockedbuild and306legacyTCP/3169+24exactCP265 pass;59sharedIP+16accountserving pass, inputsfrozen/raw/PIDcleanup.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1f-session-binding",
+      "evidence": [
+        "R1FCP269-01415",
+        "R1FCP269-00101",
+        "R1FCP269-00099",
+        "R1FCP269-01400",
+        "R1FCP269-01401",
+        "R1FCP269-01413"
+      ],
+      "limits": "Source/unit/TCP scope only, no newnativebinarycertification; finalR1native2/4/8/accountrequired.; Onlytwoexactknownzeroaccountprofiles/IDs/names/version1; no M5generalprofile or nativeDBqueuefaultclosure.; SharedIP59TCPpositive isnotNATUDP/gameplayproof; legacy153stillselfreportedport, no serverUDPlearning/relay/holepunch. N1bnegative remains.; AccountsourceIPstillrestrictsissuedfrontend/transport, but no longer choosesidentity. Endpointfollowscurrentchannelconnection. Unauthenticateddiagnosticmode remainsoperatorIPbound.; LegacyDirectPlanprocesslocal/round-membersnapshot notwireepoch/authentication; currentbatchroomorigin/recipientguardsremainseparate.; Key256/portreuse/restart/sameIPUDPspoof gapsCP267remain, no policychangehiddeninrefactor.; No actualVPS/OCIidentifiers/config/accessintrackeddata; originals/stashes/oldcheckpoint/rawunchanged."
+    },
+    {
+      "summary": "R1fboundedrefactoronly/AUD086; no nativecandidate/fullM5/R1/sharedNATUDP/relaypromotion. CP267-268merged, nextR1g/nativesperPLAN.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-r1f-session-binding",
+      "evidence": [
+        "R1FCP269-00102",
+        "R1FCP269-00004"
+      ],
+      "limits": "Source/unit/TCP scope only, no newnativebinarycertification; finalR1native2/4/8/accountrequired.; Onlytwoexactknownzeroaccountprofiles/IDs/names/version1; no M5generalprofile or nativeDBqueuefaultclosure.; SharedIP59TCPpositive isnotNATUDP/gameplayproof; legacy153stillselfreportedport, no serverUDPlearning/relay/holepunch. N1bnegative remains.; AccountsourceIPstillrestrictsissuedfrontend/transport, but no longer choosesidentity. Endpointfollowscurrentchannelconnection. Unauthenticateddiagnosticmode remainsoperatorIPbound.; LegacyDirectPlanprocesslocal/round-membersnapshot notwireepoch/authentication; currentbatchroomorigin/recipientguardsremainseparate.; Key256/portreuse/restart/sameIPUDPspoof gapsCP267remain, no policychangehiddeninrefactor.; No actualVPS/OCIidentifiers/config/accessintrackeddata; originals/stashes/oldcheckpoint/rawunchanged."
+    }
+  ],
+  "verification": [
+    {
+      "check": "104Rust_fmt_clippy_lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "R1FCP269-01415",
+        "R1FCP269-00101",
+        "R1FCP269-00099",
+        "R1FCP269-00125"
+      ],
+      "limits": "Source/unitonly."
+    },
+    {
+      "check": "306legacyTCP_3169old_24firstvacant_exact",
+      "result": "pass",
+      "evidence": [
+        "R1FCP269-01400",
+        "R1FCP269-01401"
+      ],
+      "limits": "SealedCP265consumedreceiverboundary;unreadtailsretained."
+    },
+    {
+      "check": "59sharedIP_accountfixedroom_lifecycle_16serving",
+      "result": "pass",
+      "evidence": [
+        "R1FCP269-01413",
+        "R1FCP269-00097"
+      ],
+      "limits": "SyntheticTCPnotnative/UDP/NATgameplay."
+    },
+    {
+      "check": "NativefinalR1_sharedNATUDP_relay_fullM5",
+      "result": "not_run",
+      "evidence": [
+        "R1FCP269-00102"
+      ],
+      "limits": "SeparateacceptanceperPLAN, no promotionfromrefactor."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP269-r1f-session-binding.json",
+      "bytes": 377130,
+      "sha256": "a2db49111ea2bec80edd5ed38ae0280c0f896488c4b98ea3deb8d03d000314c5",
+      "count": 1418
+    }
+  ],
+  "delta": {
+    "added": [
+      "ProfilesbytokenownedPlayerId/currentChannelendpoint andLegacyDirectPlan snapshots.",
+      "SharedIPwithdistinctreportedmetadatafull59TCP+newunitnegativeguards, alllegacywireexactCP265."
+    ],
+    "corrected": [
+      "IP-to-actor expectedmetadata lookup/fixedroomownerfence collision blockingsecondaccountbehindNAT.",
+      "Initialtestfixturemethodname/mapiterationclippylint errorsfixedbeforeservingregression, rawretained."
+    ],
+    "superseded": [
+      "R1fsessionbindingmissing→boundedsource/TCPverifiedpendingPR; no nativeR1/fullM5/relayacceptance."
+    ]
+  },
+  "blockers": [
+    "Source/unit/TCP scope only, no newnativebinarycertification; finalR1native2/4/8/accountrequired.",
+    "Onlytwoexactknownzeroaccountprofiles/IDs/names/version1; no M5generalprofile or nativeDBqueuefaultclosure.",
+    "SharedIP59TCPpositive isnotNATUDP/gameplayproof; legacy153stillselfreportedport, no serverUDPlearning/relay/holepunch. N1bnegative remains.",
+    "AccountsourceIPstillrestrictsissuedfrontend/transport, but no longer choosesidentity. Endpointfollowscurrentchannelconnection. Unauthenticateddiagnosticmode remainsoperatorIPbound.",
+    "LegacyDirectPlanprocesslocal/round-membersnapshot notwireepoch/authentication; currentbatchroomorigin/recipientguardsremainseparate.",
+    "Key256/portreuse/restart/sameIPUDPspoof gapsCP267remain, no policychangehiddeninrefactor.",
+    "No actualVPS/OCIidentifiers/config/accessintrackeddata; originals/stashes/oldcheckpoint/rawunchanged."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "AfterR1fPRmergecontinueR1gconnection/allowlistlimits, thenN1Rrelayimplementation/native andfinalR1native2/4/8/accountperdashboard. M5generalprofile/nativeDBfault andkeyportreuse remain; noN1b3/broadRE.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T22:31:58.814105+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualsource/ownership/lifecycle/unit/TCP/differential/raw/privacyaudit; independentreviewwaived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/evidence/rust-service/r1f-session-binding.json",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "rust/crates/kr-service/src/account_bridge.rs",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "rust/crates/kr-service/src/account_bridge/tests.rs",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "rust/crates/kr-service/src/account_bridge/wire.rs",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "rust/crates/kr-service/src/peer_routes.rs",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "tools/rust_account_fixture.py",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    },
+    {
+      "path": "tools/test_rust_life.py",
+      "state": "updated",
+      "reason": "R1fsource/TCP/sameIPownership andLegacyDirectlimits; native/generalprofile/relaykeptseparate."
+    }
+  ],
+  "completed_feature_groups": [
+    "r1f-account-session-profile-direct-endpoints"
+  ]
+}

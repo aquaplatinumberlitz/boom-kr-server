@@ -17,6 +17,9 @@ class AccountFixture:
         self.database = self.out / 'accounts.sqlite'
         self.control = Path(tempfile.mkdtemp(prefix='kr-basic-'))
         self.socket = self.control / 'launch.sock'
+        actors=config['diagnostic_two_lobby']['actors']
+        self.peers=[actor['peer']for actor in actors]
+        self.reported_peers=[actor.get('reported_login_ipv4',actor['peer'])for actor in actors]
         self.calls = []
         self.launches = []
         self.channel_requests = {}
@@ -46,7 +49,7 @@ class AccountFixture:
         return json.loads(result.stdout)
 
     def connect(self, role, login_port, channel_port, header, hello, client_type):
-        peer = '127.0.0.'+str(role+2)
+        peer = self.peers[role]
         player = self.players[role]
         request = dict(session=self.sessions[role], player_id=player['player_id'], peer=peer)
         with socket.socket(socket.AF_UNIX) as control:
@@ -66,7 +69,7 @@ class AccountFixture:
         try:
             body = (codec.pack_fields([4, 1, 32], [1, 1, 2])
                     +codec.crypt(launch['frontend'].encode(), 0x11223344)+bytes(16)
-                    +codec.pack_fields([0, int.from_bytes(socket.inet_aton(peer), 'little'), 0], [4, 4, 1]))
+                    +codec.pack_fields([0, int.from_bytes(socket.inet_aton(self.reported_peers[role]), 'little'), 0], [4, 4, 1]))
             login.send(1, body)
             _, auth = login.receive(4)
             assert len(auth) == 137 and codec.read_fields(auth[:1], [1]) == [0]

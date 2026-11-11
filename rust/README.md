@@ -464,3 +464,7 @@ Tiếp thiết kế relay/endpoint trước R1f theo PLAN; không đổi runtime
 CP267 chốt [seam endpoint/relay](../docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design) cho R1f và lát cắt relay riêng.
 Chưa có module/runtime relay; giữ direct legacy. Rust chưa có guard256 của helper Python; cần task key/port lifetime
 riêng trước nghiệm thu relay, không đưa thay đổi này vào refactor giữ bytes.
+
+CP269 [R1f](../docs/PROTOCOL.md#rust-r1f-session-binding): account profile theo frontend/session PlayerId, endpoint theo
+currentchannel, LegacyDirectPlan giữ bytes. 104Rust/306TCPlegacy/3169+24exactframes;59shared-IP và16accountserving đạt.
+Chưa native candidate/shared-NAT UDP/NATlearning hoặc relay; native cuối R1 và full M5 giữ PLAN.

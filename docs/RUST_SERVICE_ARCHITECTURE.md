@@ -320,6 +320,6 @@ chỉ tăng u64 và `wire_key` kiểm overflow u32. **Chưa có Rust guard256**;
 R1f refactor giữ behavior legacy; task riêng trước relay acceptance phải chốt giới hạn key/port và native stale cases.
 Không tuyên bố mọi loại UDP đều mang key hoặc chống replay/authentication nhờ rotation.
 
-Ranh giới chuyển đổi: trước mắt R1f chỉ session binding/profile lookup và seam endpoint, mặc định `LegacyDirect` giữ
+Ranh giới chuyển đổi: [CP269](PROTOCOL.md#rust-r1f-session-binding) đã giao source/TCP R1f cho session binding/profile lookup và seam endpoint, mặc định `LegacyDirect` giữ
 bytes. Relay implementation là lát cắt riêng sau R1f/R1g và trước đích nghiệm thu Internet bền vững theo PLAN.
 Client unknown tối thiểu và acceptance native ở RESEARCH/PLAN; không mở RE toàn peer graph hoặc mode khác để làm thiết kế.

@@ -1,0 +1,107 @@
+{
+  "schema": "kre-rust-r1f-session-binding-v1",
+  "checkpoint": "CP269",
+  "recorded_utc": "2026-11-11T22:31:34.894242+00:00",
+  "baseline": "f89504d561cf5aa6f619e94ed4c635a27b4f6250",
+  "source": "design",
+  "status": "design",
+  "canonical": "docs/PROTOCOL.md#rust-r1f-session-binding",
+  "plan": "docs/PLAN.md#rust-r1",
+  "source_commit": "6ece974fefb79e198cb0dab6b0aa031461d3bc24",
+  "source_files": [
+    {
+      "path": "rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 16159,
+      "sha256": "d568675cd023eef27abe86ccd5c64e57f823fb476d5fd1e774f383866e260112"
+    },
+    {
+      "path": "rust/crates/kr-service/src/account_bridge/tests.rs",
+      "bytes": 27894,
+      "sha256": "c06a8719c45bbfee4c071e467dcf58ab1c08c8faeff25f38016ad58466f32522"
+    },
+    {
+      "path": "rust/crates/kr-service/src/account_bridge/wire.rs",
+      "bytes": 2757,
+      "sha256": "19f1f1ef20a294a871e2314eb0b3c7a6ed8e174561706230462e1d5c68242411"
+    },
+    {
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 18570,
+      "sha256": "db677a280c0fcb24d39618d2be023342f3e63d255b4e967dcf3403397d3f9b79"
+    },
+    {
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 45435,
+      "sha256": "3e0215ae17f1722e9509ba396defc2db3d948516c5bb22ada585cbc477ea87f3"
+    },
+    {
+      "path": "rust/crates/kr-service/src/peer_routes.rs",
+      "bytes": 3464,
+      "sha256": "65f6230334ff8f08bbc90a6e174900cd050eb78a46310c5d969411cc6fa2ea97"
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 113146,
+      "sha256": "5a7b4f6d381ee135190d232fda80149181ac715b96e6e9eb890d2fedb367fa47"
+    },
+    {
+      "path": "tools/rust_account_fixture.py",
+      "bytes": 4833,
+      "sha256": "2a221c2b88f0b7b706ece4dae89c9b9ce254d0f38c7ad88a4c75bed988847570"
+    },
+    {
+      "path": "tools/test_rust_life.py",
+      "bytes": 20602,
+      "sha256": "2d234979938dcb6958436a1e477bd0c10827dd09b6ed32834cc5afbb98ceb489"
+    }
+  ],
+  "candidate_binaries": [
+    {
+      "name": "kr-service",
+      "path": "local/research/codex/r1f-regression-r1/kr-service",
+      "sha256": "3da88cdc30f8322d4cfd9a9fb32e4ae5cfc52c34bab08a73d06fe3f8d84b71dd"
+    },
+    {
+      "name": "kr-admin",
+      "path": "local/research/codex/r1f-regression-r1/kr-admin",
+      "sha256": "e4d4bb4a26e24ff8d0f780d87e87d4e92b49bf934b0ed7ed9d8a0b0be6c1c7f1"
+    }
+  ],
+  "verification": {
+    "Rust_total": 104,
+    "legacy_TCP": 306,
+    "shared_source_TCP": 59,
+    "account_serving_TCP": 16,
+    "exact_legacy_room_frames": 3169,
+    "first_vacant_exact_frames": 24
+  },
+  "runs": [
+    {
+      "path": "local/research/codex/r1f-regression-r1/verification.json",
+      "sha256": "e5a03ead9485b21eb4b8df794ca0c2d911550dfadcda1c5836334a05fe18441d"
+    },
+    {
+      "path": "local/research/codex/r1f-shared-nat-r1/verification.json",
+      "sha256": "85b076aaad0a9cc5af5ec0f49599fea89c2bab1c519393d297c2c3f8e00e9755"
+    },
+    {
+      "path": "local/research/codex/r1f-account-serving-r1/verification.json",
+      "sha256": "a40283b653e7520a2bd19a38249b13425b6b6a01443d7c99d5ac0a5e6a9eff60"
+    }
+  ],
+  "differential": {
+    "path": "local/research/codex/r1f-regression-r1/wire-comparison.json",
+    "sha256": "7e6b83f3ed8868810d7db38ebb84e8a61276f789e761779e990f1727818f0c5d",
+    "baseline": "CP265 r1e-regression-r1",
+    "receiver_boundary": "Onlyconsumedframeboundaries, oldunreadcleanupnotificationspreserved"
+  },
+  "limits": [
+    "Source/unit/TCP scope only, no newnativebinarycertification; finalR1native2/4/8/accountrequired.",
+    "Onlytwoexactknownzeroaccountprofiles/IDs/names/version1; no M5generalprofile or nativeDBqueuefaultclosure.",
+    "SharedIP59TCPpositive isnotNATUDP/gameplayproof; legacy153stillselfreportedport, no serverUDPlearning/relay/holepunch. N1bnegative remains.",
+    "AccountsourceIPstillrestrictsissuedfrontend/transport, but no longer choosesidentity. Endpointfollowscurrentchannelconnection. Unauthenticateddiagnosticmode remainsoperatorIPbound.",
+    "LegacyDirectPlanprocesslocal/round-membersnapshot notwireepoch/authentication; currentbatchroomorigin/recipientguardsremainseparate.",
+    "Key256/portreuse/restart/sameIPUDPspoof gapsCP267remain, no policychangehiddeninrefactor.",
+    "No actualVPS/OCIidentifiers/config/accessintrackeddata; originals/stashes/oldcheckpoint/rawunchanged."
+  ]
+}
