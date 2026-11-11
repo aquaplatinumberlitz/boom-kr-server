@@ -7,6 +7,7 @@ Các quy tắc/scope V1 của `boom-rs` không tự áp dụng lên project này
 
 Đọc [Bảng điều hành](docs/PLAN.md#dashboard) ở đầu `docs/PLAN.md` trước; đó là hiện trạng, thứ tự việc và blocker.
 Phần còn lại của PLAN, `docs/PROTOCOL.md` và `docs/RESEARCH.md` chỉ tra theo anchor đúng task, không đọc nguyên file.
+Nhánh RE và gate K0–K7 trước chỉ đạo Rust đã chuyển sang `docs/PLAN_ARCHIVE.md` (chỉ là lịch sử, không thêm mới).
 Xong một bước thì **ghi đè** bảng trạng thái và danh sách việc trong Bảng điều hành; không nối dòng trạng thái theo
 checkpoint vào PLAN. README chỉ giữ mốc mới nhất, mốc cũ chuyển sang `docs/HISTORY.md`.
 Chỉ `docs/PLAN.md` giữ lộ trình; không tạo plan theo phiên. Protocol/authority ở PROTOCOL, câu hỏi mở
@@ -74,6 +75,10 @@ Mỗi checkpoint phải đồng bộ docs bị ảnh hưởng trước khi compl
 hội thoại/report worker/checkpoint local. README current state,PLAN task/gate/thứ tự,PROTOCOL
 contract/limits,RESEARCH câu hỏi/phép kiểm tiếp,evidence metadata/recipe/hash; raw ở local.
 Tóm tắt delta và link nguồn chuẩn,không tạo plan/contract theo phiên.
+**Mỗi thông tin một chỗ, không nối theo checkpoint:** docs không đổi nội dung thì khai `unchanged` trong `docs_sync`,
+không thêm đoạn cho có. PLAN: ghi đè Bảng điều hành. README: thay dòng mốc mới nhất. PROTOCOL: chỉ sửa khi
+contract/giới hạn đổi, sửa tại mục theo chủ đề sẵn có thay vì thêm mục `— CPxxx` mới. RESEARCH: chỉ sửa khi mở/đóng
+câu hỏi. Diễn biến, số lượt chạy và số frame của từng checkpoint thuộc record checkpoint và evidence, không lặp vào docs.
 Theo [workflow](docs/evidence/checkpoints/README.md),lấy ID/counter tăng liên tục từ
 [manifest](docs/evidence/checkpoints/manifest.json),kể cả đổi phiên/compact/worker.
 Từ kho v2, dùng `python3 tools/checkpoints.py latest`, rồi `show CPxxx`/`evidence CPxxx`
