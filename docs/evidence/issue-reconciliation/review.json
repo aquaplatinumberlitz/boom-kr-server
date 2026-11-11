@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP252",
+  "as_of": "CP253",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -873,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "CP251PR3239b37b14 merged. CP252nativevisitor9/fullgeneric87/noRoomgrant inoneKR+8synthetic scope;73Rust/6TCP/4prebind,19raw35.408s/cleanup0/1384TCP249reply. AUD072correctsactualold13/scalar32unused; no causalSDKfix.",
-      "remaining": "M4Free2outcomes/selector0persist stillblocked afteractual32Dpost17control/66raw48.888s; no retrywithoutnewobservable. NEXTM5worker-to-KR/ownershipbridge independent/backendalreadyexists. PeriodicCP252 auditseparatefromAUD072; nofullauth/production. Internet thật chưa kiểm.",
-      "next_test": "PLANfixedteamvariantsCP213port/native/separatedeliveryfromWIP;then native9admissionbridge/consumer/M4acceptance. No duplicate8Mannerbaseline/fourpositive;M5bridgeindependent/AUD071next252.",
+      "known": "CP253 M5 library/backend seam 7cases6DB/3retained-nativebody replay/80tests; CP252PR324merged, M3scopedaccepted/M4nativeManner8+ninthlimited present.",
+      "remaining": "M5 listener/launcher/profile writer/native ownership/lifecycle; M4 Free startup blocked. M6 durability/M7 general rooms/M8 ops remain.",
+      "next_test": "PLAN opt-in account serving adapter/TCP failure controls then fresh native2 accounts/ownership/expiry/revoke/replay, no DB/KDF or broad SDK redo.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Same8twooppositeoutcomes/nativefullrankresetStart3/mesh-stats-bom8/24UIimagesverified, actualDcollateralhonest. TMPFS/failedruns/verifiercorrections retained;no M4-auth-epicgateclosure.",
+      "reason": "Library policy and offline retained-native parser replay separately classified; no live native account bridge/M5 closure or production claim.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -921,7 +921,8 @@
         "docs/PROTOCOL.md#rust-four-life",
         "docs/PROTOCOL.md#rust-four-results",
         "docs/PROTOCOL.md#rust-four-abort",
-        "docs/PROTOCOL.md#rust-eight-baseline"
+        "docs/PROTOCOL.md#rust-eight-baseline",
+        "docs/PROTOCOL.md#rust-account-bridge"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -964,7 +965,8 @@
         "docs/evidence/rust-service/four-life.json",
         "docs/evidence/rust-service/four-results.json",
         "docs/evidence/rust-service/four-abort.json",
-        "docs/evidence/rust-service/eight-baseline.json"
+        "docs/evidence/rust-service/eight-baseline.json",
+        "docs/evidence/rust-service/account-bridge.json"
       ],
       "prs": [
         286,
@@ -1001,7 +1003,8 @@
         317,
         318,
         319,
-        320
+        320,
+        324
       ],
       "successors": []
     }

@@ -298,3 +298,13 @@ CP252: `export_rust_profile.py --ninth-admission-probe-peer <private-IP> --ninth
 chỉ dùng sau eight-battle; tạo lobby identity9, không thêm slot phòng. `test_rust_ninth_admission.py --binary ...
 --config ... --out ...` kiểm sáu ca realTCP tổng hợp. `rust_ninth_probe.py` có `seed_eight` cho harness cô lập;
 tám connection đó là synthetic, phải ghi rõ khi kết hợp client KR thật. [Recipe và giới hạn](../docs/PROTOCOL.md#rust-ninth-admission).
+
+<a id="rust-account-bridge-check"></a>
+## Kiểm admission account Rust, CP253
+
+`test_rust_account_bridge.py --out <new-private-dir> --oracle-manifest <pinned-native-manifest>`
+đóng băng test binary/source/migrations/oracle, chạy7ca thư viện/6 SQLiteDB thật rồi replay3body native CP217
+qua example Rust. Kiểm integrity/FK/schema, absence plaintext password, source unchanged và PIDgone.
+Không tạo oracle từ encoder; oracle phải có pin raw và expected từ native evidence độc lập.
+[Contract](../docs/PROTOCOL.md#rust-account-bridge), [recipe/hash](../docs/evidence/rust-service/README.md#cp253).
+Đây là kiểm library/backend và replay ngoại tuyến, chưa chạy native KR với account backend hoặc đóng M5.

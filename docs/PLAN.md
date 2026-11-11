@@ -1,7 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
-CP252: nativevisitor9/full87generic2/noRoomgrant đã có (1KR+8synthetic), argvAUD072 correction và actual32Freecontrol vẫnpost17blocked. M4cònFree2outcomes; chuyển M5worker-to-KR/ownership bridge độc lập. AUD073qua252/audit kếCP256; Internet thật chưa kiểm.
+CP253: M5 có account admission library/worker-time UTC, 7 ca/6 DB/3 native body replay; chưa listener/native M5. CP252 merge PR324/e17b78b. Tiếp adapter profile/launcher/transport theo current-order; M4 Free vẫn blocked. Audit kế CP256; Internet thật chưa kiểm.
 
 
 ### Mục tiêu, baseline và phạm vi
@@ -126,9 +126,18 @@ Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã
    AUD072 sửa claimCP250restore32: actualper-role13 cũ, scalar32khônglaunch. Control actualperrole32 mới/cùngcopy4b/
    currentbinarydefault-offninth vẫn Dpost17 trướcRoom (66raw/48,888s/cleanup0). IndependentCAargv A–G gồmD, Hchưa quan sát;
    không nativeFreegameplay/causalSDKfix. **Dừng Free retry** tới khi có observable call/return/error mới; không SDKgraph/copycycling.
-   **NEXT: M5 worker-to-KR/ownership bridge độc lập.** Đối chiếu backend CP236/243/244 và wire CP214–217/220/225;
-   chọn lát cắt freshlogin → account-ownedplayer/session → measuredchannelhandoff, giữ accountresume/matchrestore riêng.
-   RE chỉ phần field/route thực sự chặn binding; không làm lại DB/KDF/idleTTL/rate, không chờ M4Free hoặc mở quét SDK.
+   [CP253](PROTOCOL.md#rust-account-bridge) đã giao **thư viện admission account**, tái dùng Store/worker hiện có:
+   session64 → frontend32 riêng → login một lần → actual redirect-delivery seam → channel owner/generation.
+   Worker lấy UTC lúc thực thi, check expiry/revoke/profile ở issue/login/channel; không mutex qua await.
+   7 ca/6 DB thật/3 body CP217 replay ngoại tuyến/80 workspace tests; cancellation/queue Busy/Closed/stale/drop/fault có kiểm.
+   Chưa có listener, writer profile account, launcher API hoặc native M5; không suy parser replay thành authentication.
+   **NEXT: nối lát cắt M5 vào listener opt-in và profile hai account đã biết.** Giữ diagnostic baseline/rollback và Python.
+   Chọn launcher backend API nội bộ riêng, không thêm màn hình password KR; frontend32 khác session64 và echo32 chỉ correlator.
+   Trước native: tách TTL launch khỏi handoff nếu thời gian startup vượt10s, chọn authorization boundaries, secret-safe logs,
+   cancellation/generation ở các socket, compensate delivery và close/room/UDP cleanup; kiểm TCP negative/DB queue trước.
+   Sau đó native fresh hai testaccounts trên Wine/LAN giả lập: own ID/name/channel, sai owner/channel swap, expiry/revoke/replay,
+   unknown principal và failclosed DB/queue; lưu native/raw/hash/cleanup. Fresh login khác resume; không mở SDK retry graph.
+   RE chỉ field/route/profile thực sự chặn adapter, không làm lại DB/KDF/idleTTL/rate hoặc chờ M4 Free.
    M4 vẫn mở do Free1v7haioutcomes/selector0nativepersist; native9 criterion có bằng chứng scope riêng, không tự đóng cả M4.
    Không nâng baseline8 thành fullM4/terrain-items8/auth. Shared8EOF chỉmodel/TCPfence/no175180, chưa7nativeRoomreturn.
    Queue8inbox16 giữlocalpending16/2-4inbox8; unique7life/8bomballwrites. CP209sealedraw142/167 khácfour đã đối chiếu,
@@ -200,7 +209,7 @@ Owner/selfcheck Codex, independentreviewwaived; PR/exacthead vẫn bắt buộc.
 | RUST-M2 Bootstrap→local login/identity→sảnh→fixedroom | CP235đạt scoped:2actualfixedroom/ownslots/hostBack-rejoin/Ready/barrier/clock-spawn+healthyBsessionEOF;negative/profileguard có phương pháp và giới hạn. Khôngaccountauth/generalroom/Battle. Diagnosticidentity không fullauth, tiếp contract đã biết |
 | RUST-M3 Hai client native→Battlebasic→result/reset/trận2 | CP242 scopedaccepted: CP237–241 movement/bom/terrain/life/oppositeoutcomes/activehostEOF + native itemreset/contest/exactoldUDP-currentpositive/Start3/queue controls. Không fullgame; M5backendworker/idleTTL/rate CP243–244 đã có; M4 tiếp. M2; account/DB backend không cần đợi M3. GiữUDP trực tiếp, không authoritativeengine rewrite |
 | RUST-M4 Bốn rồi tám/đội hình cố định theo contract | CP245 four startup/loading và CP246 four-ownerbom/knownstats/16native159158 đã có, M4partial; CP247fourlife/three170/clear21completion và CP248nativeopposite2v2/rank4-reset-Start3 đã có; CP249scopedguest-hostEOF/unrankedreturn-threeRoom đã có; CP250eightbaselineManner4v4/mesh-statbom8/life-rankreset đã có; CP252native9bridge1KR+8synthetic đã có; Free2nativeoutcomes/selector0persist vẫn startupblocked cảactual32control. M4OPEN/M5bridgeindependentnext. M3; baselinefourmain trước eight; dùng CP213teamdelta sau PR Python delivery riêng, không chờ mọi item/mission |
-| RUST-M5 Account/profile/DB và sessionownership | CP236 backend SQLite/Argon2id/identity-profile/session/auditCLI và CP243 boundedworker/handoff/compensation đã có; CP244 thêm idleTTL/rate/schema2; chưa KRserving/ownershipbridge/fullM5. Backend có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
+| RUST-M5 Account/profile/DB và sessionownership | CP236 backend SQLite/Argon2id/identity-profile/session/auditCLI và CP243 boundedworker/handoff/compensation đã có; CP244 thêm idleTTL/rate/schema2; CP253 admission library/worker-time UTC/7ca6DB3bodyreplay đã có; listener/profilewriter/nativeKRserving còn thiếu, chưa fullM5. Backend có thể đi trước M3/M4; binding client phụ thuộc M2 + measuredKRauthbridge. Không khôi phục phiên tài khoản/khôi phục trậnmặcđịnh |
 | RUST-M6 Inventory/progression/result-reward durability | Backend M5, actualmatchinput M3; KRwireprojection/effect cần từngconsumer. Không cần full8/mọiitem để làm ledger |
 | RUST-M7 General lobby/rooms/selection và userflows cần cho nội bộ | M2 + M5ownership, M3lifecycle; M4 chỉ cần nếu mở8capacity. RE roomlist/member/character/team/equip theo phép đo, không mọi mode |
 | RUST-M8 Hardening/admin/backup/restore/package và nghiệm thu service | M1–3/M5–7 cho internalservice; M4 nếu quảng bá4/8 theo scope. Ops/tests phát triển từM1, không chờ cuối mới thêm |

@@ -29,6 +29,18 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP253: M5 đã có thư viện nối session/account vào admission KR; chưa nối listener.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-account-bridge), [raw/hash](docs/evidence/rust-service/README.md#cp253).
+Session backend cấp token launcher riêng, dùng một lần; chuyển login → redirect → channel theo owner/generation,
+kiểm lại DB khi thực thi. 7 ca thư viện/6 DB thật và 3 body native CP217 phát lại ngoại tuyến đạt; 80 test Rust đạt.
+Chưa có native KR chạy qua cầu nối này, chưa full authentication hoặc đóng M5. Service diagnostic giữ hành vi cũ.
+
+CP252 đã merge [PR324](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/324)/`e17b78b`.
+PLAN tiếp adapter listener/profile/launcher nhỏ rồi native hai tài khoản, failure/ownership/lifecycle; không làm lại DB/KDF.
+M4 vẫn thiếu Free 1v7 native và dừng retry tới khi có observable mới. Audit kế CP256. **Internet thật chưa kiểm**.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP252: Rust đã kiểm native visitor thứ chín bị từ chối vào phòng đầy; M4 vẫn mở.**
 [Contract và giới hạn](docs/PROTOCOL.md#rust-ninth-admission), [raw/hash](docs/evidence/rust-service/README.md#cp252).
 Một client KR thật làm visitor identity9, tám member TCP tổng hợp. Request82 nhận lỗi87 mã2, native đọc1/1/errors0;
@@ -40,7 +52,6 @@ Control mới xác nhận argv32 thật nhưng Free vẫn dừng ở D sau17 tr�
 M4 còn Freehaioutcomes/selector0nativepersist. Tiếp M5 worker-to-KR/ownership bridge độc lập theo PLAN;
 backend account/SQLite/worker/idleTTL/rate đã có. AUD073qua252/audit kếCP256. Internet thật chưa kiểm.
 
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP251: Rust có fixed1v7 và native negative Manner lệch đội; M4 vẫn mở.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-eight-teams), [raw/hash](docs/evidence/rust-service/README.md#cp251).

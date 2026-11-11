@@ -9214,3 +9214,58 @@ Bằng chứng native gameplay/Mannernegative và raw/hash/cleanup giữ nguyên
 frontendinput32 dương tính riêng, nên được thử boundedFree1v7 với **actualper-role32** cùng source/copy/profile khác
 không đổi, có preflight và kiểm actuallaunchargv. Không randomretry/copycycling hoặc RE SDKgraph. Native9 vẫn là bước
 độc lập trước trong PLAN. AUD072 seriouscontradiction không reset periodic auditCP252.
+
+<a id="rust-account-bridge"></a>
+## Cầu nối account → admission KR ở mức thư viện — CP253 / M5 partial
+
+[Implementation](../rust/crates/kr-service/src/account_bridge.rs), [parser](../rust/crates/kr-service/src/account_bridge/wire.rs),
+[metadata](evidence/rust-service/account-bridge.json), [recipe/raw](evidence/rust-service/README.md#cp253).
+Nguồn **design/design** cho policy/backend; wire dùng contract KR đã đo CP214–217/225.
+Không RE binary mới hoặc nhập VN auth. Store/schema2/KDF/session/worker/idleTTL/rate CP236/243/244 giữ lại.
+
+`Bridge::issue` yêu cầu strong session64 và player ID do backend xác thực, không lấy peer IP làm principal.
+Sau authorize qua worker, chỉ Player có name ASCII5/7/wireID khác0 được cấp frontend token CSPRNG16byte→32hex riêng.
+Không cắt session64 xuống32 hoặc truyền password vào legacy TCP. FrontendToken không Debug/Clone/Serialize,
+zeroize khi drop; registry chỉ giữ SHA256 frontend cùng bản sao zeroized backend session cần cho reauthorization.
+Hai account cùng IP được kiểm riêng. Backend API/launcher là thiết kế công ty, không phải màn login/register mới trong KR.
+
+Parser login chỉ count1/token32/body61, crypt có sẵn/key11223344; suffix opaque16 không là credential, u32zero/
+peer IPv4 little-endian/u8zero là profile network CP225. Parser channel kiểm prefix1/255/count1/name5 hoặc7/ID/echo,
+body36+name và bool optional-string-off tại name+31; 23 byte còn lại giữ opaque. Unsupported branch bị từ chối,
+không đoán tail là sessionkey. Field36 echo32 chỉ correlator legacy, không đủ strong channel authentication.
+
+Frontend chỉ dùng một lần trước DB await. Login tạo echo32 không0, không reuse tối đa1024 trong process;
+`Login::redirected` chỉ được gọi sau write redirect thành công, trước đó drop hủy ownership. Channel phải khớp
+current redirect/peer/owned ID/name/echo/connection khác login; một channel được giữ bằng RAII generation.
+Capacity1..32, TTL launch/handoff hiện dùng chung1ms..10s từ issue; hết hạn không refresh khi chờ DB.
+Sweep pending ở admission mới, bound phải check/drop; đây là library policy, chưa nghiệm thu startup native với TTL đó.
+Không durable process/restart replay fence hoặc chống mọi topology/attacker đã biết echo.
+
+Không mutex registry qua await DB/KDF. Mỗi issue/login/channel và `Channel::check` dùng worker
+`try_authorize_current`: UTC được lấy **khi command chạy**, không lúc xếp hàng. Queue deadline/cancel kiểm trước
+execution; generation/phase/deadline được đối chiếu lại sau await. Phiên hết hạn lúc chờ bị từ chối, không dùng thời
+điểm enqueue để giữ quyền cũ. Revoke, profile/version đổi, DB/queue lỗi đều fail closed; failed channel check xóa đúng
+generation trước trả lỗi. Drop của launcher/login/channel cũ không xóa generation mới. Authorization là check tại
+transaction, không phải continuous revocation; listener tương lai phải chọn ranh giới authorize và fence queued work.
+Session backend được mượn từ caller, bridge không cấp login session mới: cancel không revoke phiên của caller.
+Own-player authorize đã chạy có thể renew idle dù caller hủy; không claim rollback hoặc cancel SQLite đang chạy.
+
+**Kiểm design/library:** 7 ca,6 SQLite DB schema2/12 account-player, current-thread Tokio và worker thật;
+same-IP hai owner, wrong player/unknown session/token, replay, wrong peer/name-ID/connection, redirect chưa delivered,
+expiry launch/queued session, revoke trước login/channel, profile rename, cancellation ở issue/login/channel,
+Busy/Closed, stale generation và real SQLite trigger write fault. TTL/generation điều khiển trong unit test tách với
+UTC session-expiry thật khi queue đang pause. Chưa native wrong-owner/expiry/revoke/DBfault.
+3 body native CP217 còn đúng complete pin được replay qua parser Rust: hai token-input SHA từ native writer và
+một name/ID/echo từ channel native chain. Đây là **offline replay**, không native client chạy qua account backend.
+Encoder synthetic trong unit test chỉ kiểm policy/negative; không là oracle độc lập.
+
+**Failure/control:** compile lỗi coercion/API trước run được giữ; test cancel ban đầu giả định queue đã drain ngay
+sau resume nên gặp Busy đúng thiết kế, sửa bằng barrier. R1 acceptance7ca/6DB pass nhưng source review phát hiện
+bool optional-string chưa được constrain; R2 thêm guard/negative, giữ R1 source/raw và 23 byte opaque. Hai frozen
+run đều hoàn tất/PIDgone trước đổi source. R2 source/hash freeze15,069s/65file kiểm; 80 workspace tests đạt.
+
+Service listener/config/profile renderer/room/UDP vẫn diagnostic như CP252; binary rebuilt không là chứng nhận native M5.
+Chưa launcher API, backend password network flow, profile writer account, socket/room/UDP invalidation hoặc full M5.
+Theo [PLAN](PLAN.md#current-order), nối adapter nhỏ và đo native hai account trước tuyên bố tương thích account.
+M4 Free startup vẫn blocked, không retry từ bằng chứng thư viện này. Python RE/reference/rollback giữ.
+Wine/LAN/WAN giả lập được chấp nhận; **Internet thật chưa kiểm**.
