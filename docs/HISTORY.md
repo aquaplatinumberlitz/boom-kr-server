@@ -733,3 +733,555 @@ CP200 đã merge [PR272](https://github.com/aquaplatinumberlitz/boom-kr-server/p
 
 Đích ban đầu hai client/hai trận đã đạt trong scope K5/K6a; bốn client và hardening tiếp theo PLAN.
 
+
+
+<a id="plan-order-before-topic-refactor"></a>
+## Các đoạn lịch sử chuyển khi tách contract theo chủ đề
+
+Các đoạn dưới giữ nguyên lời tại thời điểm ghi; thứ tự và câu hỏi hiện hành chỉ ở PLAN/RESEARCH.
+
+### Các dòng cũ sau Bảng điều hành
+
+
+CP263: R1c slot allocation và template106 chung đã kiểm 94 Rust/305 TCP/3189 frame cũ/30 fixture. Audit nhóm AUD080; NEXT R1d header chuẩn và opcode builders. R1b đã merge PR337. N1 uplink pending, R1f shared-NAT và native cuối R1 2/4/8/account giữ dependency/giới hạn.
+CP262: R1b typedpolicies đãkiểm90Rust/298TCPmỗibinary/3189exactroomframes, JSON/wirelegacy2/4/8giữ. AuditnhómAUD079; NEXT R1c identity/slot/template106. N1physicaluplinkfactpending/OPEN, khôngẩnR1f/M8dependency; nativefinalR1 2/4/8/account vẫnchưađo. ProjectorWIPgiữnguồnriêng.
+CP261: actualInternetpath2KR/account/profile/room/basic2oppositeoutcomes/reset/Start3 đođạt;99postNATmismatch/Bobserved-source reply/nativeUDP2chiều cóproof. SharedNATnegativeBdenied/Aheld8s xácnhậnR1f gap. N1OPEN: mobile/ISP-CGNAT môi trường tốithiểu chưaxácnhận; khôngsuytừIP/agentlabel. NEXT chốtprovenanceuplink vàfield51policyimplementation; R1brefactorWIP cóthểtiếpđộc lập theođiềukiện accountmerge củaowner, chưabỏN1dependencyR1f/M8.
+CP260: controlled network/mapping metadata account có90Rust/hai59TCP/9network+5metadata guards; native auth0 trên hai KR qua NAT. Lỗi chờ channel có trước HTTP JSON rỗng; N1OPEN, chưa direct/learning/relay. NEXT đo timer/recv trước modal2 tại1113AA0, đối chiếu packet17 trên PCAP; không dựng HTTPstub như causalfix. R1bWIP/projector giữ nguyên; không đóng nhóm/gate.
+CP258: account-owned fixed2/basic end-to-end + revoke/expiry/disconnect + manualfresh rejoin/oldUDPdrop-currentpositive đã đạt scope;5run280raw375exactTCP/cleanup0. M5OPEN/generalprofile/nativeDBqueuefault/recoverylimits; AUD076auditnhóm, không lịch4CP. Internet thật chưa kiểm.
+
+
+
+### Thứ tự và diễn biến trước khi rút current-order
+
+<a id="current-order"></a>
+### Thứ tự công việc hiện hành
+
+**Thứ tự theo [đích giai đoạn 1](PLAN.md#delivery-target), chốt 11/11:** (1) hoàn tất lát cắt account → phòng cố định → trận
+ở mục 1 dưới đây; (2) đo Internet thật [RUST-N1](PLAN.md#rust-n1); (3) tái cấu trúc lõi phòng [RUST-R1](PLAN.md#rust-r1);
+(4) RUST-M7; (5) [RUST-G1](PLAN.md#rust-g1) song song RUST-M6 thu hẹp; (6) RUST-M8. Từ nay lát cắt mới **không thêm** cờ
+`four_*`/`eight_*`, alias theo identity hay nhánh `capacity() == N` mới vào `room_io.rs`; luật mới đặt trong `RoomRules`.
+
+**Kế hoạch Rust đã giao CP213/PR286 `4f9a963`; owner đã mở implementation theo [chỉ đạo mới09/11](evidence/owner-directives/rust-implementation.json). M0/M1 đã giao, M2 đã nghiệm thu phạm vi hai identity/một phòng/loading; RE chỉ theo blocker của lát cắt.**
+[KRE-005b/#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14) giữ RE/reference backlog theo trigger; KR-L001 giữ blocker có nguồn;
+<!-- active-issue: 14 --> [KRE-074/#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285) giữ epic chuyển Rust. <!-- active-issue: 285 -->
+K0–K7 đạt đúng scope, K6c WAN giả lập; **Internet thật chưa kiểm** là backlog riêng.
+Theo [policy mới](evidence/owner-directives/feature-group-audits.json), không deadline audit theo sốCP. Nhóm công việc đang ưu tiên
+là các lát cắt M5 dưới đây; **account-owned fixedroom/basic end-to-end** hoàn tất scope CP258/AUD076. Audit khi nhóm kế hoàn tất, hoặc ngay khi có
+mâu thuẫn nghiêm trọng. Checkpoint trung gian không tự phát sinh audit. Counter/audit cũ giữ lịch sử.
+
+Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã đo; [provenance/kiểm](evidence/eight-player/team-code-delivery.json). Baseline Rust cũ không hồi quy theo delivery này.
+
+1. **NEXT-RUST-FIRST-SLICE / M5 worker-to-KR và ownership bridge / M4 Free startup bị chặn / KRE-074/#285**:
+   [CP236](PROTOCOL.md#rust-account-backend) đã giao lát cắt backend M5 bằng SQLite thật/CLI: account,
+   password/session, identity/profile/version và audited admin. Không cần chờ gameplay để viết backend;
+   cũng không lấy KR authbridge chưa giao làm dependency chặn M3. Codex solo luân phiên hai nhánh công việc,
+   không có subagent hoặc hai thí nghiệm runtime đồng thời; DBworker là thread trong backend. [CP243](PROTOCOL.md#rust-account-worker) đã có boundedworker/handoff/compensation; [CP244](PROTOCOL.md#rust-account-idle-rate) thêm idleTTL/rate; M5 còn authlease nhiều transport/worker-to-KR và native bridge;
+   inventory/progression/resultreward ở M6, restore đầy đủ ở M8. [CLI/giới hạn](../rust/README.md#account-admin-cli).
+   [CP235](PROTOCOL.md#rust-m2-acceptance)/[checklist](evidence/rust-service/m2-acceptance.json) chốt M2:
+   bootstrap→identity/sảnh→fixedroom/ownslots→hostBack/chief→rejoin/Ready→native2actualloadingbarrier/spawn;
+   survivor sau ownedpeerEOF giữ process/channel/clock và late report drop có giới hạn. Không làm lại M2 positive.
+   [CP237](PROTOCOL.md#rust-movement-floor) đã đo **UDP/movement hai chiều và floorRoller124→165**:
+   PCAP/nativeAPI-key/apply/currentprogress, native165/5→6 cảhai. Không làm lại hai cửa sổ đã đủ proof chỉ để tăngCP.
+   [CP238](PROTOCOL.md#rust-bombs) đã có **haiowner118→159→158**/serial-ID1-2/nativeentity-kind0-cleanup,
+   fuse6/reservation/ticket-round-recipientfences; không lặp positive chỉđể thêmCP.
+   [CP239](PROTOCOL.md#rust-terrain) đã đo **terrain195flags/reveal142/hidden27-28/ba165effects**
+   trênhaiKR/Wine: currentclearedcell/committed158fullroster→onewinneritem27/28, Roller5→6/Fire1→2/Bomb1→2.
+   Không lặp lại nativepositive chỉđể thêmCP; oneepoch này chưa native reset/chainvariants/generalphysics.
+   [CP240](PROTOCOL.md#rust-life-results) đã có report17/19→170, hai outcome đối nghịch/175-180/refresh/Ready2-Start3
+   trên hai KR/Wine; 44 kernelTCP gồm cursor qua vòng mới/closed202-585/idle deadline. Native peer21clear/all-dead chưa chạy.
+   [CP241](PROTOCOL.md#rust-return-cleanup) đã đo hostB EOF sau actual118/159 trước fuse: A nhận forfeit175/180,
+   native107ID2→0/110chief/UI phòng/4s hold và no158; dead-owner118/noID, drain/fresh21/EOF kiểm riêng trong50kernelTCP.
+   [CP242](PROTOCOL.md#rust-m3-acceptance)/[acceptance](evidence/rust-service/m3-acceptance.json) **chốt M3 đúng scope**:
+   consumed-item reset/ba effects ở hai epoch/OScontest, exact UDP cũ native key-drop/noapply + currentpositive,
+   Start3/hold6s và atomic outcome queues. Dùng CP237–241 cho movement hai chiều/oppositeoutcomes/hostEOF đã đủ;
+   không lặp lại hay broadRE. Native contest chỉ một actual124/index17/epoch, hai claimant kiểm kernel riêng.
+   [CP243](PROTOCOL.md#rust-account-worker) đã giao worker DB/hash/thread riêng/queue1–64+one active,
+   cancel/queueexpiry/handoff/compensate exact token/audit và rootfault/join, 5retainedDBs/49tests.
+   [CP244](PROTOCOL.md#rust-account-idle-rate) đã giao schema2/idleTTL opt-in và per-principal rate worker
+   (process-local),55tests/7workerDBs/5schema1copies-10CLIopens/33CLIregression; 0001 hash và mọi old rows giữ.
+   [CP245](PROTOCOL.md#rust-four-startup) đã có bốn native startup/room/loading/currentmovement:
+   Manner1/cố định2v2, ownID-slot1–4/0–3, đủ4ACK mớiGO,12remoteprogress;64raw/cleanup0/58tests/7fourTCP/51twoTCP.
+   [CP246](PROTOCOL.md#rust-four-owner-bombs) đã có four-owner118→16native159entity/full39→16native158/full13/
+   lookup-kind0-cleanup, currentManner1 knownstats/capacity1-2-1-1/power1/fuse6/7.196copiedgetters;84raw/cleanup0.
+   Opt-in four_owner_bombs giữ startup mặc định;142aux37/-1 và16722 chỉ boundedobserve/noeffect, không reveal/life.
+   [CP247](PROTOCOL.md#rust-four-life) đã có A/C actual17/19→12recipient170/native56→1/all4states[1,0,1,0],
+   76raw/cleanup0/7.240copiedgetters; clear21 đủ3currentrecipients mới complete kiểm17fourTCP, nativeclear21 chưa đo.
+   Gap own-peertrap/death CP246 được giải đúng path này; không lặp positive. Accepteddeath4 nay chặn118/afterdeathreports,
+   kiểm TCP; chưa native dead-ownernegative. [CP248](PROTOCOL.md#rust-four-results) đã có cùng4haiopposite2v2/
+   rank4native175562outer-552inner-16rows/1803/reset/actualReady-Start2-3/keys12346–48/all4alive sau6sStart3;
+   84raw/cleanup0/1691TCP280reply. Outcome đợi allrecipient17/19/21writes/currentwitness/bombdrain/latestdeath-blast/settle8;
+   ranktyped4/hashkhớpCP202không là nativeoracle. Không lặp hai normalcycles/codecRE.
+   [CP249](PROTOCOL.md#rust-four-abort) đã port CP205 scoped guestD/hostA EOF khi bom còn chờ:
+   ba native180/actual585/107 đúng IDclear/9slot110/Room; hostA mất thì B lên chủ, không175/158 muộn.
+   `four_abort_room` opt-in; roomsealed/no3memberStart-replacement-resume, secondlossfailclosed chỉunit.
+   [CP250](PROTOCOL.md#rust-eight-baseline) đã có Rust8currentManner1/fixed4v4/cùng32transports:
+   actual8ACKbarrier/56remoteprogress/current8capacity-power-speed/8owner118→64native159-158/life7peer/
+   native1751082outer1072inner16rows/1803/64refresh/7Ready2–3/Start3/freshall8state0hold6s.
+   R1actualdead[1,3,4,5,7] (Dcollateral), R2[2,4,6,8]; đúngteamrankđối nghịch, không tô thànhCP210exactvectors.
+   156raw/384,236s/5019TCP912reply/53616copiedgetters riêng;24ảnh tám bảng điểm2vòng/Start3đãxem.
+   [CP251](PROTOCOL.md#rust-eight-teams) đã port fixed1v7 cùng106/110/121/rank/outcome và guardManner trướcbegin;
+   71tests/Free1v7TCP16/Manner4v4TCP16/Mannerforged104negative3/8prebind/32fourregression đạt.
+   Native8Manner1v7/copy8d/count8-cap8-2teams/selector1/balancebranch/return7/no104,90raw/cleanup0 đã có.
+   **Free1v7 native haioutcomes/selector0persist vẫn bị chặn ở startup**: copy4bD52,509s/66raw và copy8dG60,841s/67raw
+   đều post17 trướcRoom, không phải policyteamfailure đã xác định. Cùng family CP250H/G; không repeat8startup/SDKgraph
+   hoặc đổi copy để retry khi chưa có observable mới. Hai lượt sourcefrozen/seal/cleanup giữ nguyên.
+   [CP252](PROTOCOL.md#rust-ninth-admission) đã có bridge visitor9: một KR thật/Wine/copy4b, tám member TCP tổng hợp,
+   validlobby/C2S6ID9/actual82/full87generic2/native1of1-errors0/ordinaryReturn/hold3s/no585-noRoomgrant.
+   19raw/35,408s/cleanup0/1.384TCP249reply,73Rusttests/6TCP/4prebind đạt; không gọi là9native hoặc generalroomadmission.
+   NativeR1thiếuReturn nên modalwait→120sidle/runfail giữ17raw; R2chỉ sửa controller. Verifiercleanup-tail correction giữ
+   7Brokenpipe trong syntheticteardown; PCAP chứng minh mọi channelFIN/RST sau completion, không xóa lỗi hay rerun native.
+   AUD072 sửa claimCP250restore32: actualper-role13 cũ, scalar32khônglaunch. Control actualperrole32 mới/cùngcopy4b/
+   currentbinarydefault-offninth vẫn Dpost17 trướcRoom (66raw/48,888s/cleanup0). IndependentCAargv A–G gồmD, Hchưa quan sát;
+   không nativeFreegameplay/causalSDKfix. **Dừng Free retry** tới khi có observable call/return/error mới; không SDKgraph/copycycling.
+   [CP253](PROTOCOL.md#rust-account-bridge) đã giao **thư viện admission account**, tái dùng Store/worker hiện có:
+   session64 → frontend32 riêng → login một lần → actual redirect-delivery seam → channel owner/generation.
+   Worker lấy UTC lúc thực thi, check expiry/revoke/profile ở issue/login/channel; không mutex qua await.
+   7 ca/6 DB thật/3 body CP217 replay ngoại tuyến/80 workspace tests; cancellation/queue Busy/Closed/stale/drop/fault có kiểm.
+   Tại CP253 chưa có listener, writer profile account, launcher API hoặc native M5; không suy parser replay thành authentication.
+   **CP254: account listener opt-in và hai account native lobby đã có.** [Contract](PROTOCOL.md#rust-account-serving),
+   [metadata](evidence/rust-service/account-serving.json); CP253 merge PR325/f09c59c. SQLite2accounts/private Unix API/session64→
+   frontend32/actualC2S1→ownedID-name/field36→C2S6/67→native137/291/render và independentCAargv cảhai đã đối chiếu.
+   100raw41,852s/cleanup0/318TCP/18exactreplies; hai ảnh đã xem. DB/log/raw privateTMPFS/exporthash, khôngBtrfsdurabilityfix.
+   82workspace tests/9library8DB3retained-nativebody/16syntheticTCP/11startupguard đạt; native negatives khác TCP controls.
+   LaunchTTL60/handoff10/periodicinspect1s không renew idle; current67 activity mới renew. Exactopaque87/body2 chỉaccountLobby,
+   budget16/noACK-noeffect, semanticsunknown. Knownlogin3848 từCP234, không mở mọi port hoặc unknown opcode.
+   Fixed KRLocal/ID1 vàKRGuest/ID2/zero-profile/version1, reject profilekhác/rename/room/battle, không fallback theo IP.
+   [CP255](PROTOCOL.md#rust-account-native-lifecycle) đã có **ba native account negative/lifecycle** trên sameCP254Rust/4b:
+   controlled AID1/nameA+pendingB echo→no17/no291/nochannelgrant; B6hold≤6s→release→nativeown291/render/8shold.
+   Counter chỉ4byte setterargument/index0/callerđãđoCP216, A send1gate trướcauth giữhandoff10s; không forceauthstate/functioncall.
+   ActiveA revoke→currentchannelFIN và naturalbackendabsoluteTTL60s→FIN, B giữ8s/DBsessioncurrent; measured0,718s/0,485s,
+   chỉ quietTMPFS/LANrun, khôngSLO. 78+79+123raw/49exactTCP/nativeoracles/CAargv/SQLite-audit/6UIảnh kiểm, cleanup0.
+   NativeA chỉ noticeerror10/boundednoterminal, **chưa modalclose/retry/recovery**; CP220/224 blockers không bị rút.
+   PR326/CP254 đã merge5dcb9af; không Rustsourcechange. Native counter semantics là declared input fault/compoundguard,
+   không originalclientnormalbehavior, independentbranchcoverage hoặc alreadyactiveBmatch proof. Backend/C2S6echo32khácstrong64.
+   **CP258 đã nghiệm thu nhóm account-owned fixed2/basic xuyên suốt**, theo [chỉ đạo](evidence/owner-directives/account-basic-end-to-end.json)
+   và [contract/limits](PROTOCOL.md#rust-account-basic): create→session→private launcher→native đúngprofile/channel/slot→fixedroom→
+   basic2oppositeoutcomes→175180/reset/Start3. Normal68raw203,751s/106exactreply; ba hostB revoke/expiry/disconnect
+   khiownbombpending→survivorA175180/107ID2clear/110chief/Room/no158pastdue, mỗi48raw/60reply. NativeB revoke/expiry
+   hiệngameSessionError2000/Winefatal; chỉserver/survivorfenceđạt, khônggracefulrecovery. Khôngsửa raw hoặcgọi fatal là logoutsuccess.
+   Manualfresh B process/backend/frontend mới saurevoke-stop→sameID/newchannel/rejoinslot/Ready/AStart/current12347;
+   exactoldBUDP12346/nativekeydrop/noapply, freshBcurrentmovementapply/progress.68raw172,400s/89exactreply/cleanup0.
+   Tổng5run280raw375exactTCP;84Rust/59account-basicTCP/16lobbyregression. Oldchannel6roguereplay/newmembership/nextkey
+   kiểmTCP riêng, khôngsuy thành nativehostilepeer/strongUDPauth. Group auditAUD076, không lịchcheckpointcốđịnh.
+   **Ưu tiên theo [chỉ đạo PR329 của chủ dự án](evidence/owner-directives/pr329-integration-order.json):**
+   nhóm account/basic hai người đã merge PR330 tại `1b8d6f2`; nhánh `rust/m5-account-basic` đã đồng bộ main,
+   gồm PR329/R1a. WIP projector gồm 5 file, 88 test Rust và 17 ca TCP được giữ trong snapshot và stash riêng;
+   chưa chạy native hoặc merge. Không tiếp tục projector trước N1/R1.
+
+   **[RUST-N1](PLAN.md#rust-n1): đã có native quan sát trên đường Internet, còn mở điều kiện môi trường.**
+   [CP261](PROTOCOL.md#rust-internet-observation) xác nhận field51/u16/body121 của auth137 đi qua setter/cache194/
+   getter13B4030→dialog460. Fixture0 gâyactualtimeout trước17; control30000 và frontendTTL120 (config hiện có)
+   cho hai native account/own291/room/basic/haioutcomes/reset/Start3, không patchthreshold/client.
+   Native99/153 soactualpostNAT: Aportremap, Btrả lời vềnguồnquan sát; UDP2chiều/nativehelper/apply và3clock cóproof.
+   Không cần relay hoặc serverhọcport trong đường đã đo; không suy thành mọiNAT/holepunch/supportInternetphổquát.
+   Ca cùngNAT actual2native/2correctfrontend/sharedpeer: Aown291rendergiữ8s, Bauth1/nogrant do lookupmetadata theoIP;
+   đưa vàoR1f session/lease transportidentity, không coi đây là sharedNATgameđạt.
+   **Còn thiếu trước đóngN1 đúng acceptance:** xácnhận uplinkA là diđộng/CGNAT thật hoặc đonative ởuplinkphùhợp.
+   Nguồn đã lưu chỉ xácnhận Internet/publictuple/NATđổicổng; nhãnagent cũ mobile/CGNAT khôngcóprovenance bịloại.
+   Ownerquestion đangchờ; không tự đổimôi trường hoặc mở thêmISP/topology. Chưa tuyênbốN1passed.
+   Phầnquan sátkiếntrúc đã đủ cho đườnghiệncó; R1b→R1e táicấutrúc khôngđổiwire độc lập cóthểtiếptục theoowner
+   choR1bắtđầusauaccountmerge; R1f/M8 vẫn giữN1/mạngchungNAT limits. Không làm lạiJSONguard/SDK/provider rộng.
+   Field51control chỉ ởfixturelocal; phép triểnkhai policytườngminh vàoadapter cần giữdefault/nativebinaryprovenance
+   và acceptance riêng, không tựđổi toànzeroauthprofile thànhoriginaldefault. Raw/địnhdanh/cấuhìnhVPS chỉlocal.
+
+   R1b đã merge PR337; R1c đã qua source/TCP/differential CP263. Tiếp R1d→R1g theo bảng, giữ byte các profile cũ.
+   R1a đã merge PR329/`073700e`; N1 vẫn mở điều kiện uplink, R1f/M8 giữ dependency đó.
+   R1f dùng kết quả N1. Cuối R1 mới chạy native hồi quy 2/4/8 người và đường account theo acceptance.
+   M5 tổng thể còn projection hồ sơ tổng quát, native DB/queue-fault và giới hạn recovery; giữ WIP để dùng
+   ở R1c/R1f hoặc phần M5 sau N1/R1. Tiếp theo là M7 → G1 song song M6 thu hẹp → M8.
+   Ba quyết định đã được chủ dự án chốt tại [phạm vi giai đoạn 1](evidence/owner-directives/phase1-scope-decisions.json):
+   G1 dùng sáu map LadderMapGroup và item tương ứng; Free 1v7 là giới hạn đã biết, không chặn đích;
+   M6 lưu lịch sử trận bền vững, thưởng 0, kim cố định theo policy mỗi vòng. Không hỏi lại các quyết định này.
+   M4 vẫn mở do Free1v7haioutcomes/selector0nativepersist; native9 criterion có bằng chứng scope riêng, không tự đóng cả M4.
+   Không nâng baseline8 thành fullM4/terrain-items8/auth. Shared8EOF chỉmodel/TCPfence/no175180, chưa7nativeRoomreturn.
+   Queue8inbox16 giữlocalpending16/2-4inbox8; unique7life/8bomballwrites. CP209sealedraw142/167 khácfour đã đối chiếu,
+   chỉ boundednoeffect/semanticsunknown. R1args540>hardcap480prelaunchrejected;R2wrongnativeports/controller4scope/captureIPs
+   controlledstop-seal;R3H/R4Gnativepost17EOF causeunknown. R5exactprior8argvpositive, không SDKcausalfix/authclaim.
+   Verifiercollateral/EIGHT_SLOT/meshvariablecorrections giữoldsource/log/inputhash/raw, không rerun native.
+   UDPcapturerR5 còn4IPguard/threadstop/3Aoutgoingframes, fullTCP+56nativeprogress độc lập; không nhận14/56UDPwireproof.
+   Trong plannedteamvariantnativecontrol mởcaptureIP2..9/supervisethreadfailure và đo14Aedges, không rerun2solvedcycles.
+   Ảnh A rank CP248 vẫnBattle/no panel; nativeA175/180/rank/reset đã đủ proof riêng. EOFcontrols không cần normaloutcome
+   nên không chạy thêm chỉ lấy ảnh; CP250meaningful8control đã có Aboardcảhai vòng, không backfill ảnhfourCP248 hoặc nhận fullUIclaim.
+   R1normalTCP race pendingD158/quiet được sửa bằng explicitdrain, không đổi service. R2/R3 samebinary logflush timeout
+   events292/208, raw/PIDgone/sourcefrozen giữ; R2threadreserve_bytes.cold chỉ observable, nguyên nhân chưa kết luận.
+   32normalfour+51two và hai native EOF dùng explicittmpfs evidence sinks/export-hashverify saucleanup;
+   giữ2sflush/I/Odeadlines/failclosed. Không coi đây là sửa Btrfs, durability/load/SLO hoặc nghiệm thu production.
+   Không tiếp tục rerun Btrfs vô hạn; điều tra causalI/O ở M8 theo trigger, không chặn portknown8contract.
+   KernelCP247R1 cleanupdeadline/PIDgone giữ, R2instrumentedpass/51twoTCP tuần tự; nguyên nhân shutdown chưa rõ/deadline giữ.
+   Rank4typed riêng đã có; legacy `battle` schema hai người vàterraincfg4 vẫn reject. Không dùng chosen-forfeit hai người cho abort bốn.
+   M5 native ownership bridge/worker-to-KR độc lập; chỉ RE route/token/multi-socket thật sự chặn binding.
+   Không làm lại startup positive, không chờ fullauth/SDK/generalroom.
+   Queue TTL/handoff khác idleTTL/sessionexpiry/rate; typed backend đã đạt không chứng minh KR authentication.
+   LoadingEOF/EOF khi Ending đã chọn có giới hạn riêng, không suy mọi disconnect. Logger supervision giữ lỗi gốc;
+   kernelR2 flush timeout khi inputcopy chạy đồng thời, repeatR3/R5pass, rootcause chưa rõ/deadline giữ nguyên.
+   Giữ report-derived/designauthority; M5backend độc lập, không chờ fullauth/SDKRE.
+   Opaque167/body4,16hoặc32 giữArmedmember/budget64/noACK-effect-forward/semanticsunknown; không mởmọiopcode.
+   Catalog lấy từcùng582 đã pin, hiddenlist2 chỉeligible saucurrentclearance+142đúngô; `123/10` là observedopaque có budget64/Armedmember,
+   noACK-effect-forward, semanticsunknown. Không lấy nativepositive để suy originalauthority/fullmovementlaw hoặc chức năng ngoài scope M3 đã nghiệm thu CP242.
+   Chọn backend/config trước run, freeze đến seal/cleanup; Python giữ reference/serving và rollback.
+   Sprite/scene sau active hostEOF đã có control CP241; không backfill CP235/240107-110 giữa Battle thành fullreturn.
+   Native wrong-version error UI chưa kiểm; guard unsupportedoperatorprofile trước bind đã đủ scope M2 được nêu rõ.
+   Shutdown timeout CP234 chưa rõ rootcause, tái hiện kernelCP237/SIGKILLwait rồiPIDgone;22caserepeatinstrumented đạt; giữ phép đo PID/thread
+   khi tái hiện ở M7, không tăng deadline hoặc gọi đã fix. Không mở fullauth/SDK/generalroom/broadRE làm dependency.
+   Pythonrollback giữ; team CP213 delivery riêng; AUD071 quaCP248 audit README→PLAN→PROTOCOL→RESEARCH→evidence/code/raw CP245–248, audit kếCP252.
+2. **NEXT-AUTH-SESSION-BINDING — blocked sameprocessrecovery**: [CP224](PROTOCOL.md#auth-retry-validation)
+   fullretryfatal sauhello/validation1; [CP225](PROTOCOL.md#auth-fresh-process) getter12562C0 trả11→storeEBP-28
+   trước setter12562F0(request1), errorlocal10. FreshprocessBnewlease/sessionpositive/invalidtokennegative đã đo;
+   không lặp getter/hello/codec/failedretry hoặc quét SDK/VM. Chỉ mở automaticresume khi có observable/input
+   mới có nguồn hoặc thực sự chặn milestone. Sessionexpiry/revoke/restartfence/DB qua CLIbackend đã có CP236; KRbridge/API phục vụ chưa đạt; freshlogin
+   không là accountresume/matchrestore. Phần backenddesign/port readiness không cần chờ mọiclientRE.
+3. **NEXT-AUTH-CHANNEL-EOF — blocked về observable receiver selection**:
+   [CP219](PROTOCOL.md#auth-eof-dispatch) đã đo native bad-dispatch; [CP220](PROTOCOL.md#auth-tcp-ownership)
+   getter13AEBE0 trả null ở caller khác, selected-store125783B không hit; hardwarewatch không snapshot,
+   không có proof nguồn chọn receiver. Hai followup đã seal; không lặp broad getter/watch/EOF controls.
+   Chỉ mở lại khi có cạnh native mới hoặc graceful error recipe có nguồn; không patch vtable/RTTI,
+   linear protected decode hoặc mở SDK/VM graph. Chuyển việc độc lập ở mục1 trong lúc blocker này còn mở.
+4. **NEXT-ROOM-REGISTRY — backlog theo implementation trigger**: [CP229](PROTOCOL.md#room-membership-registry)/
+   [CP230](PROTOCOL.md#room-shared-cleanup) đã đo private sharedjoin/move/guestBack/EOF/hostBack/IDclear/promotionUI.
+   Module Python/reference extraction hoặc typed session→membership→recipient seam chỉ làm khi port M2 cần;
+   không là dependency M1. Default ProbeService vẫn globalroom/round/jobs/host, chưa multiroom production.
+   Otherroom cleanup exclusion mới modelonly/no thirdnative, listoccupancy fixture, hostpostgetter unobservedbudget20;
+   known110/UIchief đã có nên không lặp để thêm cùng kết luận. Quota/restartfence/password/full/mode/round theo room
+   giữ trigger riêng. Internalqueuedfence không là raw585zero wire-replay protection. Audit kếCP244.
+
+
+[Owner design](evidence/owner-directives/rust-service.json), [kiến trúc/readiness](RUST_SERVICE_ARCHITECTURE.md),
+[unknown/phép đo](RESEARCH.md#rust-service-gaps). Codex solo/tự kiểm, review waived; CP235 M2scopedaccepted/CP242 M3scopedaccepted; M4four/eight tiếp và M5bridge riêng giữ ở mục1, M0/M1 giữ scope, không nâng K0–K7/fullservice; AUD071 qua248/audit kếCP252.
+
+
+### Diễn biến RE theo checkpoint
+
+## Diễn biến lịch sử theo checkpoint
+
+Các đoạn sau ghi trạng thái **tại checkpoint được nêu**, không phải bảng việc đang hoạt động.
+Câu hỏi/kiểm tiếp đã được gom ở bảng phía trên; raw/checkpoint/evidence cũ giữ nguyên.
+
+Cập nhật CP001: contract WCP ở [PROTOCOL](PROTOCOL.md#wcp),raw/review/integration ở
+[evidence WCP](evidence/wcp/README.md). Kết luận “socket hai chưa nhận reply” chỉ áp cho
+[ba run R2 silent](evidence/wine-r2/README.md),không còn là trạng thái mới nhất.
+KRE-004/issue6 đã đóng trong scope Wine r1;KRE-005a/issue9 còn mở cho bước sau.
+
+Q-023, CP006 (review theo [manifest](evidence/checkpoints/manifest.json)): `multiserveridx:0`
+trong run copy đã kích hoạt setter `+E78`, tránh nhánh launcher và cho request đầu C→S;
+`oneclickuser` liên hệ setter `+E9C` mới chỉ static, chưa đo runtime. Tám fixture S→C mode2/3
+đưa guard trả1; hai copy thử NMCO lần lượt tới import init, status và `NMCOGetMyIdCode`.
+Nguồn/giới hạn: [PROTOCOL](PROTOCOL.md#wcp), [evidence](evidence/wcp-sequence/README.md).
+
+CP007: copy thay identity EDX:EAX bằng `0:1`, screen name rỗng, sửa heap guard và thử các import
+cửa sổ; hai run debug dừng tại cùng thông báo Wine `mmdevapi` assertion. CP008: run plain với ALSA
+null chạy audio và sau các import thử dừng tại slot `16EA638`. Khác biệt run chưa chứng minh debugger
+gây assertion. Chi tiết/giới hạn tại [evidence](evidence/nmco-identity/README.md); review theo manifest.
+
+CP009: thử tiếp message loop và thread import, client vẽ màn phân loại tuổi; run plain-thread
+gặp lỗi ghi tại `45E920` tới địa chỉ `02677C9C`. Pointer/caller và nguyên nhân chưa xác định.
+Chi tiết tại [evidence](evidence/nmco-identity/README.md).
+
+CP010: guard của object chứa pointer cũ đã được thử reset; snapshot trực tiếp cho thấy pointer
+được khởi tạo lại. Pre-throw snapshot xác định nhánh yêu cầu `CAWH.sys`; thử bỏ hàm cài hook và
+các binding API tiếp theo đưa copy tới marker khởi tạo, rồi trap overlay ordinal9. Nguồn chuẩn
+cho run/recipe/giới hạn: [evidence object state](evidence/object-state/README.md).
+
+CP011: bỏ call overlay candidate ordinal9 trên copy cho UI login đầy đủ; hai phép click/type
+(thường và giữ nút lâu hơn) chưa quan sát ô nhập thay đổi hoặc C→S mới. Callback `CAWH.sys`
+trên host chỉ được đọc tĩnh, chưa xác nhận vai trò với hiện tượng input. Nguồn/giới hạn tại
+[evidence UI](evidence/login-ui/README.md); cùng CP011 bổ sung provenance theo review CP010.
+
+Áp dụng kiến thức VN trong CP011: GDB proxy bắt guard/IAT; run tắt audio trong prefix riêng
+đo192 message chuột/phím tại DispatchMessage, nhưng chưa thấy nội dung ô nhập đổi hoặc C→S mới.
+Nguồn và giới hạn tại [VN→KR](evidence/vn-reuse/README.md). Chưa chứng minh custom handler nhận
+đúng control; GetAsyncKeyState vẫn là candidate KR, so VN chưa đủ để đổi thành GetKeyState.
+
+CP012: đã nối mouse/key qua handler và click tới command1002. Hai tọa độ ID/password chưa
+cho edit control; phím được chuyển tới button, không suy toàn bộ input hỏng. Đã tìm hostname login
+riêng; run có ánh xạ local mở kết nối3 trước click, WCP poll/consumer trả1. Sau đó vào attempt
+`11049C0` từ return`11013FE`, modal `CWaitForLoginDlg` trả1, chưa vào nhánh result3; attempt EAX0.
+`modal-result` nối setter1 tới nhánh kiểm global1A966FC; bản dump có giá trị1. Reset riêng global
+trong bộ nhớ run mới giữ được dialog đếm chờ, không thấy return trong cửa sổ đo.
+Hai run reset thu276 byte mới=4 frame C→S15, nối guard→virtual→WinSock/capture; native parser
+replay với seq40+3n khớp CRC cho bốn mẫu, negatives từ chối. Chưa xác nhận semantics auth.
+Raw/recipe/timeline/giới hạn tại [evidence handler](evidence/ui-handler/README.md).
+
+CP013 đối chiếu VN: static dispatcher KR đã nối S→C4/result0 và S→C15 tới các routine wait0→2→1,
+rồi tick1→3; offset state KR+F4 khác VN+D8. Nguồn/call và giới hạn tại
+[evidence VN→KR](evidence/vn-reuse/README.md). Chưa quan sát runtime hai handler hoặc đủ payload;
+không dùng code VN `login_ok()` nguyên xi để đóng contract KR.
+
+CP014 đã tìm trigger auth từ token local, capture request và thực thi handler phản hồi lỗi;
+contract/chiều seq/prefix result0 tại [PROTOCOL](PROTOCOL.md#login-auth), control và các phép đo
+bị loại ở [evidence login](evidence/login-runtime/README.md). CP013 đã merge PR21.
+Nguồn count0 của auto-attempt đã giải; lifecycle kích hoạt stage tự động và global vẫn chưa đủ.
+
+CP015 đã qua helper và nối flags62 → request5 → redirect/request6 → stage11/CLobbyStage;
+S→C241 đóng notice, UI sảnh đã hiển thị trên copy. Contract/giới hạn ở
+[PROTOCOL](PROTOCOL.md#channel-lobby), raw/control ở [evidence](evidence/postwait/README.md).
+CP014 đã merge PR22. Không suy auth/profile đủ hoặc K3 từ UI này.
+
+CP016 đã nối click → command2011 → guard91/bảng kênh14 → CCreateDlgRenew → capture81/107byte.
+Contract và giới hạn ở [PROTOCOL](PROTOCOL.md#room-create), raw/control/correction tại
+[evidence](evidence/room-input/README.md). CP015 đã merge PR23. Profile còn thiếu và chưa có phòng.
+
+CP017 đã đo S→C86/result0 → strategy thật → CPrepareStage/stage12 và UI phòng chờ tám ô trống.
+S→C92 bị region guard trong run, không phải đường success dùng cho cấu hình này. Contract duy nhất tại
+[PROTOCOL](PROTOCOL.md#room-create), phép đo/correction tại [evidence](evidence/room-reply/README.md).
+CP016 đã merge PR24; CP017 là thí nghiệm trên copy, tự kiểm/miễn review, tích hợp theo PR.
+
+CP018 áp dụng VN đúng phạm vi: player/profile, own-ID match và unlock controls giúp chọn probe;
+KR106/110/schema được phục hồi riêng. [Contract](PROTOCOL.md#room-player),
+[raw/negative/correction](evidence/room-player/README.md). CP017 đã merge PR25.
+Player `KRLocal` đã hiện; ID1 không match local list0, ID0 match own_slot1;110/pending0 cho nút Bắt đầu.
+Hai import API candidate được bind thật trên copy mới. Full auth/identity vẫn thiếu, không coi ID0 là contract server.
+
+CP019 đã nối writer96, config241/checksum, table238 và ack117; map capacity4 và filter mode0
+đã qua bằng field+5D có control. Click thật tự gửi104/109byte, send1/pending3. Contract duy nhất ở
+[PROTOCOL](PROTOCOL.md#room-map), [raw/correction](evidence/room-map/README.md).
+CP018 đã merge PR26. Đây là mốc request start, chưa có loading/Battle hoặc gate mới.
+
+CP020 nối start104 tới receiver KR121, slot validation và init CGameStage/stage13.
+Auth prefix mở rộng có trường ID1, consumer tự cập nhật local-user list; player1 match own-slot.
+ID0 workaround cũ không đủ để tham gia start. Contract/layout/correction tại
+[PROTOCOL](PROTOCOL.md#start-reply), raw/native/control tại [evidence](evidence/start-reply/README.md).
+CP019 đã merge PR27; CP020 có scene map/HUD/hai nhân vật trên diagnostic copy, chưa gameplay hoặc gate mới.
+
+CP021 đã nối actual99 tới writer/init, đo197/196/mode0/198, clock/input và bom hiện sau118/159.
+Nguồn chuẩn [PROTOCOL](PROTOCOL.md#round-go), raw/control tại [evidence](evidence/round-go/README.md).
+CP020/PR28 đã merge. Đây là bước clock/di chuyển trên một client có guest tổng hợp, chưa vòng trận.
+
+CP022 đã phân biệt calcE9C520 với nhánh158/kind0→E9E660; burst có nước/HELP và local actor
+biến mất sau đó.180/full3 được đọc3/3/errors0 rồi stage12/UI phòng.
+[Contract](PROTOCOL.md#bomb-cycle), [raw/correction](evidence/bomb-calc/README.md).
+CP023 đã nối writer chungB53010 cho127/sub17/19 và giải full prefix14+blob8/5 bằng native;
+175/292rawbyte đọc đủ và UI có LOSE/PERFECT. Stub chuyển từ fixed15s sang checksum-checked
+reported19→rank chọn→180. Refresh110 host rồi guest-ready cho click thật phát104 lần hai;
+run cuối có hai vòng scene/input/bom/HELP/kết quả/phòng trên cùng channel.
+[Contract](PROTOCOL.md#round-result), [raw/control/correction](evidence/round-repeat/README.md).
+CP023/PR31 đến CP026/PR34 đã merge. CP027 bổ sung hai client movement/bom runtime dưới đây; review độc lập waived, gates giữ mở.
+
+CP024 đã echo owner/ba field từ actual118 sang159 cho bom đầu mỗi vòng; serial0 chưa phân biệt hai field.
+CP025 có control serial28 bác mapping aux16, sửa serial u32 và ba bom liên tiếp0/28/56;
+ID1..3, lặp/cũ hẹp và native getter được kiểm. [Contract](PROTOCOL.md#bomb-serial),
+[evidence](evidence/bomb-serial/README.md).
+Đã nối index spawn0/1→point từ map→actual actor.100/4039 có nguồn bảng Antarctic01;
+Village00 và ExVillage01 có profile/map/spawn/geometry riêng và hai vòng thử với guest tổng hợp.
+[Contract](PROTOCOL.md#bomb-position), [raw/control/correction](evidence/bomb-position/README.md).
+Không dùng điều này thay nghiệm thu collision/reset/authority hoặc hai client.
+
+CP030 đã có layout582/request124/confirm165, nhặt từ hai origin và một ca tranh cùng index;
+nguồn chuẩn ở [PROTOCOL](PROTOCOL.md#item-pickup), [raw/control/hash](evidence/item-pickup/README.md).
+Trap/death CP029 giữ [contract riêng](PROTOCOL.md#peer-events).
+CP030/PR38 đã merge `1f70d4f`. CP031 đo hiệu ứng Bomb/Fire, duplicate sau xóa, native clamp và
+sửa mapping power; [nguồn chuẩn/giới hạn](PROTOCOL.md#item-effects),
+[raw/control/hash](evidence/item-effects/README.md). CP031/PR39 đã merge `4de4e2e`.
+CP032 đo block/list2→reveal/124/165/stat và khởi tạo lại vòng; contract ở
+[PROTOCOL](PROTOCOL.md#hidden-items), raw/control ở [evidence](evidence/hidden-items/README.md).
+Phân biệt run chờ sai origin với run sửa policy; review độc lập waived.
+CP032/PR40 đã merge `fe46beb`. CP033 đo chain hai bom liền kề/cách hai ô và replay sau chain;
+[contract](PROTOCOL.md#bomb-chain), [raw/control](evidence/bomb-chain/README.md). Không nâng toàn gate.
+
+CP033/PR41 đã merge `fbf4dc5`. CP034 đo leave/107/host110/guestEOF và giải
+return loading bằng trường loại sảnh trong channel14; [contract duy nhất](PROTOCOL.md#room-leave),
+[control/recipe/hash](evidence/room-leave/README.md). Không ghép các ca này thành full match.
+
+CP034/PR42 đã merge `0779bc7`. CP035 đo B rejoin và A rejoin sau B promotion,
+Ready A→Start B→121/99/clock hai phía; [contract](PROTOCOL.md#room-rejoin),
+[evidence](evidence/room-rejoin/README.md). Chỉ mốc rejoin/start, chưa full match.
+
+CP035/PR43 đã merge `1e78035`. CP036 đo enemy touch/no-touch, rescue18→170/18/state56→26
+hai phía và movement tiếp; [contract](PROTOCOL.md#collision-rescue), [evidence](evidence/collision-rescue/README.md).
+Ca rescue có hai client thật + C tổng hợp; control một đội/report21 không dùng làm full match.
+
+CP036/[PR44](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/44) đã merge `7ab702f`.
+CP037 thêm [kim tự thoát/peer](PROTOCOL.md#needle-selfescape) và
+[cứu/diệt ba client thật + nhánh native](PROTOCOL.md#contact-precedence);
+[recipe/control/hash](evidence/needle-contact/README.md). Không ghép các ca thành full match.
+
+CP037/[PR45](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/45) đã merge `1e2ac9a`.
+CP038 trả lời hẹp [trap lần hai khi hết kim](PROTOCOL.md#needle-repeat), có đối chứng hoán đổi team;
+[raw/control/hash](evidence/needle-repeat/README.md). Kiểm exact-simultaneity runtime là backlog bổ sung,
+không điều kiện chặn mốc trận đầy đủ; đây là quyết định ưu tiên của Codex, không tự xác nhận unknown.
+
+CP038/[PR46](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/46) đã merge `1fb2c66`.
+CP039 có [hai vòng statepeer/result/return, report21 suppression và hostEOFcontrol/policy](PROTOCOL.md#round-finish),
+[recipe/hash](evidence/round-finish/README.md). Không còn coi các mốc hẹp này unknown;
+semantics21/sub34, toàn reset/authority và disconnectvariants vẫn mở.
+
+CP039/[PR47](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/47) đã merge `e19bc9e`.
+CP040 đo [Start với client mới sau host EOF](PROTOCOL.md#abort-rejoin),
+[recipe/control/hash](evidence/abort-rejoin/README.md). Đây là C identity mới3 vào slot0;
+không coi là A reconnect/session resume. Giữ lượt collector lỗi và lượt bấm Start chưa tạo104 như lịch sử.
+
+CP040/[PR48](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/48) đã merge `99d1835`.
+CP041 có [stale158/ID reuse qua vòng](PROTOCOL.md#round-generation),
+[controls/recipe/hash](evidence/round-generation/README.md). Không coi CRC/seq hợp lệ hoặc callback đầy đủ
+là chống stale semantic. Fence cho job local là design server, không field generation phục hồi từ wire.
+
+CP041/[PR49](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/49) đã merge `97320ca`.
+CP042 có [old165/index reuse và stat trước124 mới](PROTOCOL.md#item-generation),
+[control/hash](evidence/item-generation/README.md). Claim/ticket local là design; chưa giải được124 cũ
+có toàn field khớp catalog mới. Không tìm lại receiver165 hoặc coi duplicate cùng vòng là proof qua vòng.
+
+CP042/[PR50](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/50) đã merge `ed47c97`.
+CP043 đo [159 cũ khi serial local trùng](PROTOCOL.md#late-bomb-confirm),
+[recipe/control/hash](evidence/late-bomb-confirm/README.md). ID cấp tăng không đủ khi old159 khớp pending serial;
+ca chèn gói cũ mất đồng bộ, không có result vòng2, phải giữ như outcome riêng.
+
+CP043/[PR51](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/51) đã merge `f8569d8`.
+CP044 trả lời hẹp [timer còn chờ khi host EOF](PROTOCOL.md#abort-timer),
+[control/fence/vòng B/C mới](evidence/abort-timer/README.md). Job cũ bị loại ở deadline sau finish;
+vòng mới có actual Bbom/trap/death/statepeer/result/return. Không phải A reconnect hoặc toàn reset.
+
+CP044/[PR52](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/52) đã merge `b947a9d`.
+CP045 bổ sung [nhóm item/nguồn cũ/Roller và MaxPower KR](PROTOCOL.md#item-families),
+[recipe/hash](evidence/item-families/README.md). VN R169–185 đã có Rollerclamp/reset/movement;
+không còn gọi nó unknown vì chỉ đọc oc_e-game cũ. [UDP cũ](PROTOCOL.md#udp-generation) đã tới
+queue/drain và consumer game ở vòng2, slot1/gate0/return13; chưa chứng minh actorapply.
+CP045 hoàn tất record/tự kiểm, review độc lập waived; [recipe/các control chưa đạt](evidence/udp-generation/README.md).
+CP045/PR53 đã merge `6fe17b0`. CP046 đo tiếp [oldUDP tới actor](PROTOCOL.md#udp-generation):
+native getter xác nhận x120→200 qua exactold callback, gói hiện tại sửa về120; no-replaycontrol
+giữ x120/y159 ở8callback trước input, có hai result/return. Oldrun vòng2 có17 nhưng chưa19/result;
+không quy toàn outcome chỉ do replay. CP046 hoàn tất record/tự kiểm, review độc lập waived.
+E8E960 là false stub trong build này; không tiếp tìm input bật gate đã đo0.
+CP046/PR54 đã merge `f85cda4`. CP047 theo target thật E66680, tái dùng cache CP025:
+[byte khóa/tailfilter](PROTOCOL.md#udp-generation), [runtime key/endpoint](evidence/udp-freshness/README.md).
+Đổi153key chặn oldmovement đã đo; endpointrotation riêng lẻ không chặn cả oldsource/newsource.
+CP047 hoàn tất record/docs/tự kiểm, allocator unit-tested/pending runtime integration; review độc lập waived.
+
+
+### Mốc README trước khi tách contract theo chủ đề
+
+**CP271: sửa kỳ vọng test tranh chấp SQLite khi bàn giao R1g.**
+CI của PR348 đã phát hiện test chỉ chấp nhận `ActiveSession`, trong khi backend có đường trả `Busy` hữu hạn.
+Test giữ yêu cầu chỉ một grant, chấp nhận đúng hai lỗi đó, kiểm lại `ActiveSession` sau tranh chấp và ép khóa SQLite
+để kiểm `Busy`/phục hồi. Không đổi runtime; [correction và bằng chứng](evidence/rust-service/r1g-ci-correction.json).
+
+R1g CP270 đã kiểm trần admission và allowlist độc lập số profile.
+[Contract/giới hạn](PROTOCOL.md#rust-r1g-admission), [evidence](evidence/rust-service/r1g-admission.json).
+Cấu hình cho phép1–1024transport và1–256entry allowlist; vẫn kiểm source/lease/profile riêng. Giá trị cấu hình cũ giữ nguyên.
+105Rust/fmt/clippy/lockedbuild đạt;306TCPlegacy/3169+24frame khớp CP269;10ca admission đạt, gồm65socket giữ đồng thời,
+kết nối66 bị chặn và phục hồi permit. Đây chưa phải kiểm50người chơi KR hoặc native candidate.
+R1f đã merge PR347; R1g đang bàn giao PR. Tiếp relay opt-in và native cuối R1 theo [dashboard](PLAN.md#dashboard).
+Full M5/M7/M8 còn mở; hạ tầng chỉ local. Mốc cũ ở [HISTORY](HISTORY.md).
+
+
+
+### Mô tả R1 trước khi cập nhật trạng thái sau PR348
+
+<a id="rust-r1"></a>
+**RUST-R1 — tái cấu trúc lõi phòng trước khi xây tiếp.**
+Lý do, theo code tại `78daa71`: cả service chỉ có **một phòng toàn cục** (`BoundProfiles.room: Option<Shared>`,
+`lib.rs`); identity chính là slot (`Room::enter` yêu cầu identity 1..=capacity, slot = identity − 1, chỉ identity 1 được
+tạo phòng, `room.rs`); mỗi identity cần một fixture 106 riêng theo alias `player_A..H` (`room_io.rs`); mỗi sức chứa bật
+bằng cờ riêng (`four_owner_bombs`, `four_life_reports`, `four_results`, `four_abort_room`, `eight_battle`,
+`ninth_admission_probe`) và có ba đường rời phòng, hai đường tính kết quả khác nhau; một số nhánh chọn theo việc
+"có fixture `rank` hay không"; header khung được mượn từ fixture bất kỳ (ví dụ header của `start` cho packet 180);
+client được nhận diện theo IP nguồn. M7, G1 và M6 đều phải sửa đúng các chỗ này.
+
+Nguyên tắc: **không thêm tính năng, không đổi byte trên wire** của ba profile đã nghiệm thu (2, 4, 8 người). Mỗi bước
+một PR nhỏ. Không gộp R1 với RE mới.
+
+| Bước | Nội dung | Kiểm |
+|---|---|---|
+| R1a | Gom luật phòng vào một kiểu `RoomRules` (`rules.rs`): sức chứa, sáu cờ, bảng bom mặc định, cỡ hàng đợi, kiểm chéo cấu hình. Chỉ chuyển chỗ, không đổi logic | fmt, clippy, cargo test |
+| R1b | Đổi cờ thành chính sách có tên (`ResultPolicy`, `DeparturePolicy`, `BombPolicy`, `LifePolicy`); bỏ công tắc "có fixture `rank`". Ba profile chọn đúng tổ hợp chính sách cũ | Như R1a, thêm các bộ TCP `tools/test_rust_{room,four_room,eight_room,life}.py` khớp byte |
+| R1c | Tách identity khỏi slot: `PlayerId` lấy từ session, slot theo luật cấp phát, host là người tạo. Một template 106 chung, vá identity/tên/slot/đội. Profile cũ giữ luật "slot = identity − 1" | Như R1b; đối chiếu byte với tám fixture 106 hiện có, field lệch ngoài phần đã hiểu ghi unknown trong RESEARCH |
+| R1d | Một header chuẩn đã pin và builder body theo opcode trong `kr-wire` (module `kr00967`); packet không còn phụ thuộc alias fixture | Như R1b |
+| R1e | Registry phòng `RoomId → phòng`; listing 91 dựng từ registry; mỗi phòng một `RoomRules`. Giữ mutex đồng bộ, không giữ lock qua await | Như R1b, thêm unit test hai phòng không lẫn recipient |
+| R1f | Transport lấy identity từ session/lease thay cho IP nguồn; endpoint 153 theo kết quả N1 | Như R1b, thêm ca hai session cùng IP |
+| R1g | Trần kết nối và `allowed_peers` thành cấu hình theo tải đích (50 người, khoảng 200 transport) | Unit test giới hạn; kiểm tải thật thuộc M8 |
+
+**R1b — CP262:** các cờ nội bộ được chuyển thành Result/Departure/Bomb/Life/TeamPolicy trong `RoomRules`;
+JSON compatibility được normalize tại admission. Không chọn authority từ sự tồn tại của fixture `rank`.
+90Rust/fmt/clippy/lockedbuild; baseline vàcandidate đều239caTCP2/4/8 +59account;3189roomframes/13suite
+khớp identity/visit/alias/opcode/sequence/size/fullSHA. Các ca8team/ninth cóunreadfinallytail được đoriêng
+bằngreceiverboundary; rawkhácbanđầugiữ. N1nativeR10vẫngắnARMCP260/copy4b, khôngtựcertifyR1bbinary.
+AuditnhómAUD079; [contract/evidence](PROTOCOL.md#rust-r1b-policies). NEXT R1c, nativecuốiR1vẫntheoacceptancedưới.
+
+**R1c — CP263:** `SlotAllocation::LegacyIdentity` giữ mặc định; `FirstVacant` cấp slot trống độc lập với
+PlayerId, người tạo là host. Một template106 tái tạo đúng cả 30 fixture đã pin; runtime cache theo PlayerId,
+không lookup alias identity. 94 Rust/305 TCP đạt; 298 ca cũ và 3.189 frame phòng khớp baseline CP262.
+Bộ mới có B tạo phòng/A vào slot1, chuyển host/rejoin và năm guard hợp lệ pin nhưng sai body/header/identity/tên/policy.
+Chỉ kiểm source/TCP, chưa native candidate; profile account tổng quát và session cùng NAT không được suy là đã sửa.
+Audit nhóm AUD080; [contract/giới hạn](PROTOCOL.md#rust-r1c-player-slots). **Tiếp R1d**, cuối R1 vẫn giữ native bên dưới.
+
+**R1f — CP269:** account profiles keyed PlayerId, legacy IP index riêng; frontend token chọn expectedmetadata sau
+lookup issuedplayer, transport/sourceIP chỉ restriction. Channel lease chọn owner/profile, không có fixedroom IP→identity
+fence cũ. Shared-IPconfig chỉ accountmode; endpoint theo currentchannelconnection và LegacyDirectPlan(round/members/slot).
+104Rust/fmt/clippy/lockedbuild,306TCPlegacy và3169+24frameCP265 khớp;59sharedIPfullaccountlife/16accountserving đạt.
+Chỉ source/TCP; native cuối R1 vẫn bắt buộc. Relay/key256/portreuse/M5generalprofile giữ riêng; [scope/evidence](PROTOCOL.md#rust-r1f-session-binding).
+
+**R1g — CP270:** `max_connections` được validate1..1024 và allowlist1..256entry, độc lập số actor/profile.
+Mỗi actor cấu hình vẫn phải nằm trong allowlist; diagnostic không map được IP thì không có identity, account giữ lease.
+105Rust/fmt/clippy/lockedbuild,306TCPlegacy/3169+24frameCP269 khớp;10ca admission gồm65held/66thdenied/release recovery,
+invalidbounds prebind và extraallowedIP không cấp actor. Không nhận65socket là65KR hoặc tải50người.
+R2 giữ đúng actualcheckout/producer/sourcefreeze, R1wrongcwd giữ raw/excluded. [Scope/evidence](PROTOCOL.md#rust-r1g-admission).
+Native cuối R1 và relay opt-in/50playerM8 vẫn chưa đạt; không đóng fullR1 từ refactor.
+
+R1a–R1b và R1d không đổi hành vi. R1c, R1e, R1f và R1g chỉ thêm hành vi ở chế độ mới; profile cũ phải giữ nguyên byte.
+Acceptance cuối R1: toàn bộ bộ TCP hiện có đạt, cộng **một lượt native hồi quy cho mỗi profile 2, 4, 8 người và đường
+account**, không thêm claim mới. R1b trở đi bắt đầu sau khi lát cắt account → phòng → trận merge, vì cùng sửa `room_io.rs`
+và `lib.rs`.
+
+**R1a đã làm 11/11**, đã merge [PR329](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/329)/`073700e`; lần PR329 không tạo checkpoint. Bản đồng bộ thật sau accountPR330 được ghi ở CP259, không sửa evidence cũ: `rules.rs` giữ
+sáu cờ, ba luật dẫn xuất, bảng bom mặc định, cỡ hàng đợi và kiểm chéo cấu hình; `room.rs`/`room_io.rs` chỉ đổi chỗ gọi.
+Kiểm: fmt và clippy đạt; 86 test Rust đạt (84 cũ, 2 mới). Các bộ TCP tổng hợp đạt trên binary sau refactor: hai người
+room 43 ca và life 51 ca; bốn người normal 32 ca, abort A và D mỗi bộ 20 ca; tám người Manner và đội cố định mỗi bộ
+16 ca; visitor thứ chín 6 ca; guard cấu hình trước bind 6 ca. Đối chứng: binary dựng từ `78daa71` cho cùng kết quả ở
+bộ room và guard. Raw và hash ở `local/research/claude/r1a-tcp-regression-r1/`. Đây là TCP tổng hợp trên loopback,
+**không phải bằng chứng native**; lượt native hồi quy nằm ở acceptance cuối R1.
+Rollback: từng bước revert được độc lập; Python reference không đổi.
+
+
+
+### Ghi nhận N1 trước kết luận cuối
+
+**Lịch sử CP261 — lúc ghi chưa đóng gate (CP264 đã chốt theo phạm vi bên trên):** recipe hai account/basic đạt haioutcomes/reset/Start3 vàactualUDP2chiều;
+99 tựbáo≠postNAT ởA, Bnative trảvềnguồnquan sát. Ca chungNAT đãghi negative; session/lease binding R1f cònthiếu.
+Nhánh(a) **chỉ trên đường đã đo**, không cần relay/serverhọcport ởđườngnày. Chưa xácnhận điều kiện uplinkdiđộng/
+ISP-CGNAT ởtrên; không dùngnhãnagent/IPprefix làm bằngchứng, giữN1OPEN và acceptance nguyênvẹn.
+[Provenance/giới hạn/phép tiếp](PROTOCOL.md#rust-internet-observation).
+
+
+
+### Diễn biến Rust trước khi rút câu hỏi hiện hành
+
+Trạng thái lịch sử tại [CP251](PROTOCOL.md#rust-eight-teams): fixed1v7 code/TCP và native8Manner1v7negative trên8d; Freepositive2outcomes/selector0persist chưa có do copy4bD/8dGpost17preRoom. CùngCP250HGfamily/causalunknown, không retry hoặc SDKgraph khi chưa có observable mới; Tại mốc đó PLAN chuyển native9admissionbridge/consumer độc lập; CP252 phía trên đã đo gap này. Raw/hash/failedprebindchecker-harness được giữ, không nâng M4.
+
+[CP231](PROTOCOL.md#rust-foundation) đã có M0/M1; [CP235](PROTOCOL.md#rust-m2-acceptance) chốt M2 scoped theo checklist:2actualfixedroom/lifecycle/barrier và healthyBsession sau EOF. [CP237](PROTOCOL.md#rust-movement-floor) có nativeUDP/movement hai chiều+floorRoller; [CP238](PROTOCOL.md#rust-bombs) thêmhaiownerbasicbom118/159/158; [CP239](PROTOCOL.md#rust-terrain) thêmterrain195flags/revealhidden27-28/ba165effects; [CP240](PROTOCOL.md#rust-life-results) thêm hai native outcome/reset/Ready2-Start3; [CP241](PROTOCOL.md#rust-return-cleanup) có activehostEOF→nativeRoom/chief/fence và dead-owner/drain kernelcontrols; [CP242](PROTOCOL.md#rust-m3-acceptance) chốt M3 scoped qua nativeitemreset/OScontest/exactoldUDP-currentpositive và queue controls; [CP243](PROTOCOL.md#rust-account-worker) có boundedworker/handoff/compensation; [CP244](PROTOCOL.md#rust-account-idle-rate) có idleTTL/rate/schema2; [CP245](PROTOCOL.md#rust-four-startup) có native4startup/room/loading/12remoteprogress; [CP246](PROTOCOL.md#rust-four-owner-bombs) thêmfour-ownerbom/knownstats/16native159158; [CP247](PROTOCOL.md#rust-four-life) có17/19→3peer170/native56→1/all4states và syntheticclear21completion; [CP248](PROTOCOL.md#rust-four-results) đã có same4opposite2v2/rank4-native175180/reset-Start3; [CP249](PROTOCOL.md#rust-four-abort) thêm scopedguest-hostEOF/unrankedreturn/threeRoom/chief; [CP250](PROTOCOL.md#rust-eight-baseline) có8Manner4v4/loading-mesh56-statbom8/life-rankreset; CP251 đã portfixedteams/nativeMannernegative và CP252native9bridge scope1KR+8synthetic; M4cònFree2outcomes/selector0persist/bridgeM5 riêng; [PLAN](PLAN.md#current-order) giữ thứ tự, không broadRE. Hai-client dùngfirstCRCrequest/endpoint/stagelease; WCPport biếnđổi đã giải theoCP006/103, khônglặpportonly. DiagnosticIP/ancillary shape policy chưa accountauthentication; unknownmode/header giữ giới hạn.
+
+
+
+### Bảng RUST-Q trước khi rút diễn biến đã đo
+
+| Câu hỏi | Có thể chọn backend policy design ngay | Bắt buộc đo KR / phép thử nhỏ nhất |
+|---|---|---|
+| RUST-Q1 authbridge/ownership | Account→player schema, Argon2id/PHC, onegamesession, expiry/revoke/ban, CLI/HTTPS riêng; accountDB không chờ BattleRE | [CP225](PROTOCOL.md#auth-fresh-process): processB mới cùngaccount có native0/ID-name-echo6/67/newlease-session/Aowner8s; badfresh32token→native1/nochannel/noBsession/Aowner45s. Priorselector11fromgetter/storebound, setterrequest1notreadback. SameprocessfatalCP224/before17receiverCP220blocked; chỉ mở khi có input/observable mới hoặc milestonechặn. Freshlogin khôngresume. [CP236](PROTOCOL.md#rust-account-backend) đã có SQLite/Argon2id/account-player/profile/sessionexpiry-revoke-epoch/CLI backend, 11tests+33CLIprocess; CP243đãcóboundedworker/handoff/exacttokencompensation; CP244đãcóidleTTL/rate/schema2; CP253 đã có library oneuse frontend32/redirect/channel owner và worker executionUTC/7ca6DB/3nativebodyreplay. CP254 đã có listener/private launcher/fixed2 native profile; fullauth/generalprofile/accountroom-game chưa đủ. TCP negatives đã có, CP256 có native freshlogin và exactnative1-6 replay senderPython bị từ chối; CP258 fixed2accountroom-basic/lifecycle/manualfreshrejoin đã có; DBqueue-native failclosed/generalprofile còn thiếu; CP255nativewrongcorrelator/revoke/expiry đã có theo [scope](PROTOCOL.md#rust-account-native-lifecycle), chưa modalclose/recovery/generalprofile; CP258 đã nối fixed2room/basic+manualfreshB/newround nhưng affectedBfatal, khôngsameprocessrecovery; [PLAN](PLAN.md#current-order) tiếp M4native và M5bridge độc lập, không đợi fullauth/quétSDK/VM/lặphello |
+| RUST-Q2 dynamicroom/profileprojection | Registry/roomquota/sessionowner/maxslots/API kiểm quyền, DBprofile/name độc lập | [CP230](PROTOCOL.md#room-shared-cleanup): private nativeguestBack/EOF/hostBack/107IDclear/110UIchief; CP229join/move đã có. Đủ consumer đầu vào M2; M0→M1 không đợi module Python/reference hoặc roomintegration. Theo owner mới, chỉ RE discrepancy chặn lát cắt; typed seam/partialsend khi port phòng cần. Không broad RE/lặp solvedroom. Productionglobalroom/dynamicoccupancy/quota/thirdnativeotherroom/failure-send/restartfence cònthiếu; raw585zero không wireepoch; hostpostgetter unobservedbudget20 |
+| RUST-Q3 inventory/consumables | Definitions/revision/ownership/quantity/expiry/reservation/transaction; worlddrop khác persistentstack; disabled unknownkr_id | Native query/equip/use/request/confirm/count/effect/reset/freshlogin cùng1knownitem. Kim145fixturecredit không inventoryauth; 4/8integration đo khi mở |
+| RUST-Q4 progression/rewards | Explicit nonredeemableformula/version, result/grantunique/ledger/outbox/backendtransactions. WikiEXP chỉ tham chiếu product | Actual175profile/resultfield→XP/currency/count/UI/relogin consumption; đo 0 và1delta/control/bounds, không portVN173/layout hoặc coi bảngwiki làfieldmapping |
+| RUST-Q5 authority/freshness | Giữ fuse/drop/reportguard/fence policy đã đo; backendreward pending khi outcome chưa đủ tin cậy | CP242 exactoldUDP/currentpositive đã đo trên Rust; còn oldTCP/membership/IDreuse và phạm vi ngoài keywindow đã kiểm; full142distance/auth/low8wrap nếu validator/deployment cần. Không hứa server lọc mọiP2Ptraffic/fullworldauthority |
+| RUST-Q6 operation/capacity | SQLiteWAL/backup-restore/adminaudit/config/metrics/queue limits design không cần mọi gameplayRE | [CP231](PROTOCOL.md#rust-foundation) foundation/14TCP/SIGTERM/rebind và [CP235](PROTOCOL.md#rust-m2-acceptance) nghiệm thu M2 scoped/healthyBsessionEOF; guardprofile trướcbind khácnativewrongversionUI. CP241activehostEOF đã có nativeRoom, loading/selectedEndingEOF và fullrecovery giữ giới hạn riêng; shutdownTCPtimeoutchưarõrootcause/CP237táihiệnkernel/PIDgonepostinspection/repeat22casesđạt, targetload/SLO/generalbackpressure/DBfault. CP236SQLite realbusy/FULL/audit/entropy/clock/schemafault có backendtests; CP243boundedworker/rawSQLite-threadfaults đã có; OSdiskfull/worker-nativeintegration/nativeDBfault/restore/SLO chưa đủ. CP240 đã có native life17/19/170 và hai175/180/reset/Start3; M3scopedacceptedCP242; loggerR4maskederror được sửa supervision, kernelR2flush timeout event141 chưa rõrootcause/repeat51TCP+nativeR5pass; không tăngdeadline. CP243worker/handoff đã có; CP244idleTTL/rate đã có; tiếp M4 và M5bridge riêng trong PLAN; opaque123/10 chỉobservepolicy/semanticsunknown, 167/body4-16-32 cũngboundedopaque/noresponseunknown;CP239142currentclearance/fullroster158mới mởđúnghidden27/28;old142saucurrentclear vẫnkhôngwireepoch. REchỉnếucầnresponse/field. REonlyportdiscrepancy. Accountresume/matchrestore khác freshlogin/connection; workload/RPO/RTO riêng  CP245fourstartup đã đo Manner1/2v2/4ACKbarrier/12remoteprogress; không lặp positive. CP246fourbom đã có; CP247giải gap12717/19→3peer170/native56→1/all4states; clear21fanoutđãkiểmTCP/nativeclear21chưađo. Không đo lại startup/bom/life17-19positive để tăngCP. CP2508baseline69tests/16eightTCP/native56mesh-8ownerbom-7peerlife/opposite4v4-reset-Start3 đã có; R1Dcollateraldead giữđúngproof. NativeR3H/R4Gpost17EOF causalunknown/R5priorargvpositive không SDKfix; UDPcapturepartial3Aframes/fourIPthreadguard,56nativeprogress/fullTCP độc lập; sửa capture trongmeaningfulteamvariantcontrol/no repeat2cycles chỉcapture; chỉ mở lại khi chặnvariant vớiobservablemới. 142/16722 chỉ boundednoeffect, không reveal/lifeacceptance; CP247clear21đãđợiđủrecipient/currentvisit; CP248outcome đã đợi allrecipientlife delivery/currentwitness/drain/latestdeath-blast/settle8 và có nativefull175180/2outcomes-Start3; CP249scopedguestD-hostA EOF/unranked180-post585-107IDclear/threeRoom/chief đã có; CP250known8baseline đã có; nextfixedFree1v7/selector/Mannernegative/native9admissionbridge, không twoforfeit/fullM4. Aảnh lúcrank chưa thấypanel, nativeAparser-rank-reset cóproof; đo Aảnh muộn trong plannedlifecycle nếu cần, không repeat2cycles. KernelR1shutdowndeadline/PIDgone vẫnchưarõcause. CP249normalR2/R3logflush292/208 tái hiện/R2threadreserve_bytes.cold; nguyênnhâncausalchưarõ. Explicittmpfs32four/51two/haiEOFnative/exporthashpass không là Btrfsfix/durablelog; không tăngdeadline hoặc rerunvôhạn, đo causalI/O tạiM8 khi cótrigger. Phép port/đo tối thiểu: CP201fourowner/capacity-power-fuse →170đủ3recipient/currentclear21 →CP248rank4/opposite2v2/reset/Start3đãcó →CP249abort/EOFportđãcó→CP250known8baselineđãcó→fixedteamvariants/native9admissionbridge. Publicexporter chỉkernel-tested; nativeprivatepreparer/R3retainedinputs khácversion đúngprovenance. BtrfsD-state lúccleanup twoTCPR1 không chứng minh nguyên nhânEOF; nếu tái hiện giữPID/thread/wchan, không tăngdeadline.|
+| RUST-Q7 productpolicy còn mở | Chọn baseline mộtchannel/map/basic, diagnosticreward0 rồi internalnonredeemable, onegamesession/refusesecond, ephemeralrounds; khôngpayment/HA banđầu | Giai đoạn 1 đã chốt lưu kết quả và thưởng 0; XP/tiền tệ/inventory thuộc giai đoạn sau. Trust/abuse thresholds và reward khác chỉ mở khi product đổi phạm vi; client projection mới vẫn cần consumer proof |
+
+
+
+### Bảng gate lịch sử tại CP212
+
+### Tiến độ hiện hành theo bằng chứng
+
+| Task/mốc | Trạng thái theo nguồn dẫn, cập nhậtCP212 | Nguồn chuẩn |
+|---|---|---|
+| KRE-004/issue6 | Đã review/merge PR7 và đóng issue:recipe r1 đến local accept;không phải full K1 | [Wine r1](evidence/wine/README.md) |
+| Bootstrap reply | PR8 đã merge;debugger ProcessPatchreturn1,không ép success | [bootstrap evidence](evidence/bootstrap-wire/README.md) |
+| KRE-005a/issue9,R2 | PR10 đã merge:3 cold start cửa sổ/second accept;issue9 còn mở | [R2 evidence](evidence/wine-r2/README.md) |
+| WCP hai-reply | Run CP001 là lịch sử chưa C→S; CP006 đã đo request đầu trên copy tham số hóa | [PROTOCOL](PROTOCOL.md#wcp),[WCP evidence](evidence/wcp/README.md) |
+| KRE-005b/issue14 | CP202–207four2v2/bundle/bounds/EOF/health/freshserver/UDPimpairment đã merge; CP208adapter8/nativeclock đã merge; CP209mesh/stat/8ownerbom đã merge; CP210same8two4v4/reset đã merge; CP211native8relocatedbundle có runtime. K6c WAN giả lập/K7 đạt CP212; fullauth/authority/phần ngoài scope là backlog, task ở current-order | [Q-023](RESEARCH.md#q-023), [service](evidence/probe-service/README.md) |
+| K0 | Đã nghiệm thu identity/harness tại CP178: originalWindowsVM fullfixedcopy/PID/token/cwd/window/ETW/isolation/cleanup; không bootstrap/gameplay success | [Acceptance](PLAN.md#k0-k2a-acceptance) |
+| K1 | Đạt CP179 cho recipe offline R2: 3 coldstart/API đúng PID/contract/patch controls; không e9cold3 hoặc originalWindows bootstrap | [Acceptance](PLAN.md#k1-acceptance) |
+| K2a/K2 | K2a đạt CP178; K2 đạt profileoffline CP181 với native sameprocessretry/reset/cursor/stream và boundednativeoracles. Không toàncodec/accountauthority | [Acceptance](PLAN.md#k2-acceptance),[contract](PROTOCOL.md#login-retry-codec) |
+| K3 | Đạt CP186 trong scope A/local/Wine/một kênh normal; cold3cache/version/identity/stage và nguồn CP015/016/034/058/181–185 đã đối chiếu. Không fullauth/Windows/multichannel-caption hoặc hai-client291 | [Nghiệm thu](PLAN.md#k3-acceptance), [contract](PROTOCOL.md#k3-version-identity-controls) |
+| K4 | CP187 đạt riêng phòng/load/start local currentAB291/copyABIcorrected; oneoutcome/reset/Start2, không gameplay2outcomes | [Nghiệm thu](PLAN.md#k4-acceptance) |
+| K5 | Basic local đạt CP188; current2cycles/peer/Bowner/EOFcontrol riêng, designauthority được rà. Không fullinventory/mode/map | [Nghiệm thu](PLAN.md#k5-acceptance) |
+| K6a | Local hai actualAB/basic/cùnghost đạt CP189; nativecontestedindex/reset/life và CP188peer/Bowner/EOF cóscope riêng. Không physicalLAN/Internet | [Nghiệm thu](PLAN.md#k6a-acceptance) |
+| K6b | Đạt CP191 cho LANgiảlập hai netns/IP/NIC/actualKR theo owner; physicaltwohosts không required | [Nghiệm thu](PLAN.md#k6b-acceptance) |
+| K6c WAN giả lập | Đạt CP212 sau chỉ đạo môi trường mới và đối chiếu CP192–196 native/routing/NAT/UDP/two cycles/EOF. Internet thật chưa kiểm | [Acceptance](PLAN.md#k6c-acceptance), [topology/giới hạn](PROTOCOL.md#emulated-wan-acceptance) |
+| K7 | Đạt CP212 sau đối chiếu riêng từng tiêu chí với CP190/198/203–207; K6c dependency đạt scope WAN giả lập. Không full game/fullauth/tám client là điều kiện | [Đối chiếu K7](PLAN.md#k7-evidence-review) |
+

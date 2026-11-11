@@ -1,0 +1,83 @@
+{
+  "id": "AUD088",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "contract-topic-navigation-and-current-docs"
+  ],
+  "completed_through": "CP272",
+  "recorded_utc": "2026-11-11T23:31:18.781756+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/protocol/auth-session.md",
+    "docs/protocol/bombs.md",
+    "docs/protocol/bootstrap-codec.md",
+    "docs/protocol/items-stats.md",
+    "docs/protocol/life-results.md",
+    "docs/protocol/load-phase.md",
+    "docs/protocol/lobby-profile.md",
+    "docs/protocol/multiplayer-team.md",
+    "docs/protocol/networks.md",
+    "docs/protocol/room-membership.md",
+    "docs/protocol/rust-boundary.md",
+    "docs/protocol/terrain.md",
+    "docs/protocol/udp-peer.md",
+    "tools/check_docs.py",
+    "tools/feature_catalog.py",
+    "tools/verify_protocol_migration.py",
+    "local/research/codex/docs-refactor-r1/move-proof-final.json",
+    "local/research/codex/docs-refactor-r1/ci-exact-modules.txt",
+    "local/research/codex/docs-refactor-r1/content-census.txt",
+    "docs/evidence/rust-service/r1f-session-binding.json",
+    "docs/evidence/rust-service/r1g-admission.json",
+    "docs/evidence/rust-service/n1-acceptance.json",
+    "docs/evidence/rust-service/n1b-dual-nat.json"
+  ],
+  "method": "Manual README→PLAN→PROTOCOL→RESEARCH→topic/block mapping→main source modules→existing evidence/results and independent migration proof. No runtime run or contract change.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Monolithic protocol and chronological current docs hide mechanism contracts.",
+      "correction": "13 packet-flow topic files; 9909 content lines preserved with only relative-link normalization, 548 old anchors remain as stubs. Catalog states/IDs unchanged.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/protocol/",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "tools/verify_protocol_migration.py"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Current docs still describe R1b-g as missing, cap64/IP identity coupling and N1/N1b as undecided.",
+      "correction": "Current module/gap tables reflect merged R1a-g/source-TCP and accepted/negative N1 scopes; final R1 native, full M5 and relay remain open. History moved, no old evidence rewritten.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "docs/HISTORY.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Checker ignored Markdown fragments and allowed unbounded current-doc growth.",
+      "correction": "File/fragment checks, 800/150/600/300 line budgets and relocation hints; boundary/negative tests execute through existing CI module without changing pinned workflow.",
+      "fixed_in": [
+        "tools/check_docs.py",
+        "tools/test_check_docs.py",
+        "tools/test_feature_catalog.py"
+      ]
+    }
+  ],
+  "remaining": [
+    "N1R source experiment remains separate, not serving/native certified.",
+    "Final R1 native2/4/8/account, full M5 general profile/native DB-queue fault and M7/G1/M6/M8 unchanged.",
+    "Historical contract statements retain scope/time; index directs readers to current PLAN.",
+    "No runtime/CI workflow/CORE_DOCS change; no infrastructure identifiers published."
+  ]
+}
