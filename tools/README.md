@@ -48,6 +48,11 @@ PLAN giữ thứ tự. Check này cũng chạy trong `check_docs.py`; kiểm Mar
 External URL không fetch. Tool không suy nghĩa/kết luận, xác nhận runtime hoặc tự đóng gate.
 Negative tests: `python3 tools/test_feature_catalog.py`.
 
+`content_census.py --client <thư mục client KR gốc> --generate`: đọc 13 pack của client (chỉ đọc) và sinh
+[kiểm kê nội dung](../docs/CONTENT.md) cùng `docs/content/census.json`: map theo họ, bảng item của từng map, item,
+phương tiện, nhân vật, thẻ script. Chỉ ghi metadata tĩnh, không ghi asset hay nội dung script; nhóm nội dung và
+ghép wiki là suy từ tên. `--check` kiểm CONTENT khớp census mà không cần client.
+
 `export_probe_profile.py --source-root local/research/codex --out <local/profile.json>`: chỉ lập index path/size/SHA/sequence của
 fixture RE hiện hữu cho [service chẩn đoán](../server/README.md); không nhập binary/asset vào Git.
 Profile dùng chính xác bytes/seq đã đo, không là schema auth/cache tổng quát hoặc oracle tự sinh.

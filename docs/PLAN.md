@@ -82,7 +82,7 @@ trên client KR chưa có; rủi ro cao nghĩa là cỡ việc có thể tăng.
 | 6 | RUST-M8 vận hành | Nâng trần kết nối, cấu hình, giám sát, admin, backup/restore, kiểm tải 50 người/8 phòng, đóng gói | M–L | Thấp |
 
 RUST-M4 đã đủ cho đích ở phần đội hình cố định 2/4/8 và Manner; Free 1v7 còn kẹt ở lỗi khởi động client chưa rõ
-nguyên nhân. Thứ tự 5 có hai mốc chạy song song vì không phụ thuộc nhau.
+nguyên nhân và đã được chốt là giới hạn đã biết của giai đoạn 1. Thứ tự 5 có hai mốc chạy song song vì không phụ thuộc nhau.
 
 Vì sao thứ tự này: N1 đi sớm vì nếu cần relay thì cách trao đổi địa chỉ peer (packet 153) và kiến trúc mạng đổi theo.
 R1 đi trước M7, G1 và M6 vì cả ba đều sửa lõi phòng; làm R1 sau thì phải viết lại phần đã xây trên giả định phòng cố định.
@@ -96,14 +96,19 @@ R1 đi trước M7, G1 và M6 vì cả ba đều sửa lõi phòng; làm R1 sau 
 - Địa chỉ peer gửi trong packet 153 ghép IP cấu hình với cổng UDP do client tự báo ở packet 99. Sau NAT đổi cổng,
   địa chỉ này có thể sai; N1 đo điều đó.
 
-#### Quyết định còn chờ chủ dự án
+#### Quyết định đã chốt 11/11
 
-1. **Danh sách map và nhóm item cho G1.** Cần một danh sách ngắn được duyệt trong issue trước khi mở G1; chưa có
-   danh sách thì G1 chỉ làm kim/cứu và terrain/item cho phòng 4 và 8 người.
-2. **RUST-M4 Free 1v7.** Đề xuất: ghi thành giới hạn đã biết của bản bàn giao và không để chặn đích; chỉ mở lại khi có
-   quan sát mới về lỗi khởi động. Chưa quyết thì M4 giữ trạng thái mở như hiện tại.
-3. **Chính sách kết quả.** Đề xuất: lưu lịch sử trận, thưởng bằng 0, kim dùng số lượt cố định mỗi vòng theo policy
-   hiện tại. Nếu công ty muốn điểm hoặc bảng xếp hạng thì M6 tăng cỡ.
+Nguồn: [chỉ đạo chủ dự án](evidence/owner-directives/phase1-scope-decisions.json). Ba quyết định này chỉ chốt phạm vi,
+không đóng gate hay milestone nào.
+
+1. **Map và item cho G1.** Sáu map trong `LadderMapGroup` của client: **Camp08, Factory07, Forest07, Village10,
+   Tomb12, Patrit14**. Cả sáu không có script. Nhóm item của G1 lấy từ bảng item của chính sáu map này trong
+   [kiểm kê](CONTENT.md): phần đã đo (Bomb, Fire, Roller, MaxPower, kim) cộng phần chưa đo (keo, phi tiêu, máy quét,
+   cú, bẫy, lò xo và các item còn lại trong bảng). Map và item khác thuộc giai đoạn sau.
+2. **RUST-M4 Free 1v7.** Là giới hạn đã biết của bản bàn giao giai đoạn 1, không chặn đích. Không retry; chỉ mở lại
+   khi có quan sát mới về lỗi khởi động client. Trạng thái M4 vẫn do checkpoint/audit ghi theo quy trình.
+3. **Kết quả trận (M6).** Lưu lịch sử trận bền vững, thưởng bằng 0; kim dùng số lượt cố định mỗi vòng theo policy
+   hiện tại. Điểm, bảng xếp hạng, tiền tệ và inventory thuộc giai đoạn sau.
 
 ### Tiến độ hiện hành theo bằng chứng
 
@@ -554,10 +559,12 @@ Rollback: từng bước revert được độc lập; Python reference không �
 <a id="rust-g1"></a>
 **RUST-G1 — gameplay mở rộng cho giai đoạn 1.**
 Phạm vi: (1) kim và cứu trên Rust theo contract đã đo ở Python; (2) terrain và item nền cho phòng 4 và 8 người, hiện
-bị từ chối ở cấu hình; (3) thêm map và nhóm item theo **danh sách ngắn chủ dự án duyệt**. Chưa có danh sách thì chỉ
-làm (1) và (2). Mỗi map cần đúng dữ liệu và consumer của nó; mỗi nhóm item cần consumer cùng một ca dùng, một ca
+bị từ chối ở cấu hình; (3) sáu map ladder đã chốt 11/11 (Camp08, Factory07, Forest07, Village10, Tomb12, Patrit14)
+và các item trong bảng item của chúng, xem [quyết định](#delivery-target). Mỗi map cần đúng dữ liệu và consumer của nó; mỗi nhóm item cần consumer cùng một ca dùng, một ca
 không đủ điều kiện, hết hạn/tiêu thụ, peer thấy đúng và reset — theo đúng yêu cầu đã ghi ở
 [kiến trúc](RUST_SERVICE_ARCHITECTURE.md). Luật đặt trong `RoomRules` và dữ liệu map/item, không thêm nhánh theo sức chứa.
+Đầu vào để chọn danh sách: [kiểm kê nội dung](CONTENT.md) sinh từ pack (map theo họ, item được map dùng, script).
+Kiểm kê là dữ liệu tĩnh; cột "server phải làm gì" điền dần bằng ca chạy thử, mỗi họ map hoặc nhóm item một ca.
 Acceptance: native trên Rust cho từng map/nhóm item được công bố, hai vòng liên tiếp, có ca âm tính. Phần chưa đo thì
 tắt, không gửi ACK giả. Toàn bộ map/item/mode còn lại thuộc giai đoạn sau theo định hướng dài hạn.
 
