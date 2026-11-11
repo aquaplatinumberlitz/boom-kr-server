@@ -37,6 +37,7 @@ def main(argv=None):
         if args.command == 'latest':
             result = {k: manifest[k] for k in ['schema', 'last_id', 'completed_count',
                                                'last_periodic_audit', 'last_manual_audit', 'next_periodic_audit']}
+            result['audit_policy'] = manifest.get('audit_policy', {'mode': 'legacy_periodic'})
             last = manifest['checkpoints'][-1]
             result['record'] = last.get('path') if manifest['schema'] == store.V2 else 'inline legacy; use show ' + last['id']
             result['plan'] = 'docs/PLAN.md#current-order'

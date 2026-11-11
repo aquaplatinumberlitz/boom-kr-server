@@ -1,0 +1,276 @@
+{
+  "id": "CP256",
+  "previous": "CP255",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T07:25:00.698269+00:00",
+  "context_commit": "b3a4cc728cc9c9100f558b4c7b577a6d2a20ad54",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/M5: prove fresh native account login and exact old native1-6 replay rejection with healthyB; fix observed CLIpostKDFtimestamp discrepancy without weakening rollback guards; auditCP253–256 and prioritize owneraccountfixedroom/basicchain.",
+  "scope": "FreshAnewprocess-backend-frontend/sameDB-server/healthyB/28exactTCP/122raw/84Rust/liveCLIclock; accountlobbyonly/no room-Battle or M5closure.",
+  "artifacts": [
+    {
+      "name": "Rustaccountfreshlogin-R2",
+      "sha256": "b5cf0c43a72252c960ae203fe65a9d8df7b9deda06de379a8342bf82a4182d88"
+    },
+    {
+      "name": "KR00967copy4b/no-newpatch",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "Store::login_current/issue_session_clock/at_clock; UTC afterwriterlock andpostKDF publication; CLIloginonly, suppliedtimeAPIsunchanged",
+    "NativeR2 same server-DB, revoke-stopoldA→newbackend-privatefrontend32-newCA→137291render; oldcurrentrun native1-6 Pythonreplay; healthyfreshA/B8s",
+    "NativeR1ClockRollback68raw42.544s/cleanup0; NativeR2PASS122raw70.794s/28exactreplies; AUD074through256-next260"
+  ],
+  "findings": [
+    {
+      "summary": "LiveCLIlogin nowresamplesUTCinside acquiredwritertransactions including publicationafterKDF; TTL/issued_at publicationtime, strictrollback/credential/oneactiveguards retained. Explicit-time APIs unchanged;2deterministic regressions/84Rust pass.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-fresh-login",
+      "evidence": [
+        "RUST256-00116",
+        "RUST256-00117",
+        "RUST256-00486"
+      ],
+      "limits": "Native fresh A process/new backend session/new frontend after explicit admin revocation and owned WineA shutdown, same server/DB. B initial session/process stays. Not sameprocessretry/accountresume/matchrestore/serverrestart.; Replay uses exact retained currentrun native first1/6 frames sent from Python in A namespace; no native errorUI/retry consumer claim. Rejected oldecho is not a strongcredential.; Fixedprofiles IDs1/2 only; generic projection/accountroomgame/M5closure pending. TMPFS evidence not Btrfs/crashdurability/restore/SLO. Internet thật chưa kiểm.; Fresh login after explicit admin revocation + owned WineA stop; B stays same process/session. Not graceful logout/modalclose/sameprocessretry/serverrestart or native replay error UI.; Fixed account lobby only; account-owned fixedroom/basic through results/reset/nextmatch is the owner priority and remains unimplemented/unaccepted. Generic profile, room/game ownership and native DB/queue-fault integration remain. M5 OPEN.; Only live CLI login has new transaction-time UTC. Other supplied-time admin/KDF/worker APIs retain behavior; concurrent create/reset/admin clock contention not accepted by this test. No general clock/concurrency/production SLO claim."
+    },
+    {
+      "summary": "NativefreshAnewprocess/newbackend-newfrontend reaches137/own291/render with independentCAargv/PIDstartticks;Bstayssameprocess-session. Exactcurrentrun oldnative1-6replayedbyPythoninsameAnamespace rejected/noownershipdamage;freshA/B>=8s.122raw/28exactTCP/sealedcleanup0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-account-fresh-login",
+      "evidence": [
+        "RUST256-00279",
+        "RUST256-00480"
+      ],
+      "limits": "Native fresh A process/new backend session/new frontend after explicit admin revocation and owned WineA shutdown, same server/DB. B initial session/process stays. Not sameprocessretry/accountresume/matchrestore/serverrestart.; Replay uses exact retained currentrun native first1/6 frames sent from Python in A namespace; no native errorUI/retry consumer claim. Rejected oldecho is not a strongcredential.; Fixedprofiles IDs1/2 only; generic projection/accountroomgame/M5closure pending. TMPFS evidence not Btrfs/crashdurability/restore/SLO. Internet thật chưa kiểm.; Fresh login after explicit admin revocation + owned WineA stop; B stays same process/session. Not graceful logout/modalclose/sameprocessretry/serverrestart or native replay error UI.; Fixed account lobby only; account-owned fixedroom/basic through results/reset/nextmatch is the owner priority and remains unimplemented/unaccepted. Generic profile, room/game ownership and native DB/queue-fault integration remain. M5 OPEN.; Only live CLI login has new transaction-time UTC. Other supplied-time admin/KDF/worker APIs retain behavior; concurrent create/reset/admin clock contention not accepted by this test. No general clock/concurrency/production SLO claim."
+    },
+    {
+      "summary": "R1CLIrelogin ClockRollback, sourcefrozenfailednative68raw/42.544s/cleanup0; preKDF suppliedUTC vs concurrentworkerDBadvance reproduced atposthashpublicationseam. PreparationSyntaxError/initialcompile mismatch retained; no native rerunsolelychecker.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-fresh-login",
+      "evidence": [
+        "RUST256-00272",
+        "RUST256-00487",
+        "RUST256-00127"
+      ],
+      "limits": "Native fresh A process/new backend session/new frontend after explicit admin revocation and owned WineA shutdown, same server/DB. B initial session/process stays. Not sameprocessretry/accountresume/matchrestore/serverrestart.; Replay uses exact retained currentrun native first1/6 frames sent from Python in A namespace; no native errorUI/retry consumer claim. Rejected oldecho is not a strongcredential.; Fixedprofiles IDs1/2 only; generic projection/accountroomgame/M5closure pending. TMPFS evidence not Btrfs/crashdurability/restore/SLO. Internet thật chưa kiểm.; Fresh login after explicit admin revocation + owned WineA stop; B stays same process/session. Not graceful logout/modalclose/sameprocessretry/serverrestart or native replay error UI.; Fixed account lobby only; account-owned fixedroom/basic through results/reset/nextmatch is the owner priority and remains unimplemented/unaccepted. Generic profile, room/game ownership and native DB/queue-fault integration remain. M5 OPEN.; Only live CLI login has new transaction-time UTC. Other supplied-time admin/KDF/worker APIs retain behavior; concurrent create/reset/admin clock contention not accepted by this test. No general clock/concurrency/production SLO claim."
+    },
+    {
+      "summary": "Newownerpriority account→fixedroom→basic→results-reset-nextmatch and fullidentity-transport-membership-lifecyclefences. Accountmode still rejectsroom/Battle; M5OPEN, genericprofile/M6inventory/M7multiroom/M8restore separated; manualAUD074through253–256.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-account-fresh-login",
+      "evidence": [
+        "RUST256-00001",
+        "RUST256-00102",
+        "RUST256-00105"
+      ],
+      "limits": "Native fresh A process/new backend session/new frontend after explicit admin revocation and owned WineA shutdown, same server/DB. B initial session/process stays. Not sameprocessretry/accountresume/matchrestore/serverrestart.; Replay uses exact retained currentrun native first1/6 frames sent from Python in A namespace; no native errorUI/retry consumer claim. Rejected oldecho is not a strongcredential.; Fixedprofiles IDs1/2 only; generic projection/accountroomgame/M5closure pending. TMPFS evidence not Btrfs/crashdurability/restore/SLO. Internet thật chưa kiểm.; Fresh login after explicit admin revocation + owned WineA stop; B stays same process/session. Not graceful logout/modalclose/sameprocessretry/serverrestart or native replay error UI.; Fixed account lobby only; account-owned fixedroom/basic through results/reset/nextmatch is the owner priority and remains unimplemented/unaccepted. Generic profile, room/game ownership and native DB/queue-fault integration remain. M5 OPEN.; Only live CLI login has new transaction-time UTC. Other supplied-time admin/KDF/worker APIs retain behavior; concurrent create/reset/admin clock contention not accepted by this test. No general clock/concurrency/production SLO claim."
+    }
+  ],
+  "verification": [
+    {
+      "check": "NativefreshA and exact oldnative1-6 replay withhealthyB",
+      "result": "pass",
+      "evidence": [
+        "RUST256-00279",
+        "RUST256-00480"
+      ],
+      "limits": "Same server/DB/newAprocess; Pythonreplaysender, not native recovery/resume."
+    },
+    {
+      "check": "84Rust/fmt-clippy-lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "RUST256-00486",
+        "RUST256-00121",
+        "RUST256-00101",
+        "RUST256-00019"
+      ],
+      "limits": "Backend/regression proof separatefromKRnative."
+    },
+    {
+      "check": "33CLIprocess-regression",
+      "result": "pass",
+      "evidence": [
+        "RUST256-00020"
+      ],
+      "limits": "BackendCLI/2persistentaccounts9audits, notnativeoracle."
+    },
+    {
+      "check": "NativeR1freshlogin",
+      "result": "fail",
+      "evidence": [
+        "RUST256-00272"
+      ],
+      "limits": "ClockRollback/68raw/cleanup0; no freshsuccess onoldbinary."
+    },
+    {
+      "check": "ManualAUD074periodic",
+      "result": "pass",
+      "evidence": [
+        "RUST256-00001",
+        "RUST256-00102"
+      ],
+      "limits": "Selfaudit/reviewwaived; no M5closure."
+    },
+    {
+      "check": "Account-owned fixedroom/Battle/results/reset/nextmatch and lifecycle",
+      "result": "not_run",
+      "evidence": [
+        "RUST256-00105"
+      ],
+      "limits": "Ownerprioritynext; accountmode rejectsroom/Battle, M5OPEN."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP256-rust-account-fresh-login.json",
+      "bytes": 129658,
+      "sha256": "e9edad6b0889e0eb2d84f3b8d06b713ba7ed53fda950e8f44ff912b86abbdf2a",
+      "count": 493
+    }
+  ],
+  "delta": {
+    "added": [
+      "Nativefreshlogin/currentrun exactoldnative1-6replaynegative/CLIloginpublicationclock/2regressions84Rust.",
+      "Owneraccountbasicendtoenddirective/AUD074next260."
+    ],
+    "corrected": [
+      "FalseClockRollback frompreKDF CLI timestamp whileworkeradvancesclock; no guard removal.",
+      "Productionrestore removed asimplicitM5dependency, remainsM8; fixed2accountgameprioritybeforegeneralprojection."
+    ],
+    "superseded": [
+      "Freshlogin/replay entirelymissing; now narrow nativefreshlogin/Pythonoldnative replay proof, accountgame stillmissing."
+    ]
+  },
+  "blockers": [
+    "Native fresh A process/new backend session/new frontend after explicit admin revocation and owned WineA shutdown, same server/DB. B initial session/process stays. Not sameprocessretry/accountresume/matchrestore/serverrestart.",
+    "Replay uses exact retained currentrun native first1/6 frames sent from Python in A namespace; no native errorUI/retry consumer claim. Rejected oldecho is not a strongcredential.",
+    "Fixedprofiles IDs1/2 only; generic projection/accountroomgame/M5closure pending. TMPFS evidence not Btrfs/crashdurability/restore/SLO. Internet thật chưa kiểm.",
+    "Fresh login after explicit admin revocation + owned WineA stop; B stays same process/session. Not graceful logout/modalclose/sameprocessretry/serverrestart or native replay error UI.",
+    "Fixed account lobby only; account-owned fixedroom/basic through results/reset/nextmatch is the owner priority and remains unimplemented/unaccepted. Generic profile, room/game ownership and native DB/queue-fault integration remain. M5 OPEN.",
+    "Only live CLI login has new transaction-time UTC. Other supplied-time admin/KDF/worker APIs retain behavior; concurrent create/reset/admin clock contention not accepted by this test. No general clock/concurrency/production SLO claim."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANowneraccount-ownedfixedroom/basic end-to-end throughresults-reset-nextmatch; exactidentity/transport/membership/disconnect-expiry-revoke/stalequeued-roundUDPfences. ReuseM3nativeoracles; genericprofile/multiroom/inventory notblockfirstfixed2slice. No broadRE/M4Freeretry; AUD074next260.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T07:25:00.698269+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexsource-clock-regressions/nativefreshlogin-PCAP-SQLite-UI-argv/periodicAUD074/docs selfcheck; independentreviewwaivednotapproved/exactheadPRrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/evidence/rust-service/account-fresh-login.json",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/evidence/owner-directives/account-basic-end-to-end.json",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP256nativefreshlogin/replay-clocklimits/ownerfixedroombasicpriority/M5OPEN/AUD074next260; no oldcomplete/raw edits."
+    }
+  ]
+}

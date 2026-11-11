@@ -336,6 +336,7 @@ impl Store {
         tx.execute("UPDATE runtime_state SET last_utc=?1 WHERE id=1", [now])?;
         Ok(())
     }
+    #[cfg(test)]
     fn observe(&mut self, now: i64) -> Result<()> {
         let tx = self
             .db
@@ -344,17 +345,33 @@ impl Store {
         tx.commit()?;
         Ok(())
     }
-    fn at<T>(&mut self, now: i64, op: impl FnOnce(&Transaction<'_>) -> Result<T>) -> Result<T> {
-        // Persist observation even if authentication/authorization is denied, so an
-        // expired token cannot revive after an observed forward-then-backward clock.
-        self.observe(now)?;
+    fn observe_clock(&mut self, clock: &mut impl FnMut() -> Result<i64>) -> Result<()> {
         let tx = self
             .db
             .transaction_with_behavior(TransactionBehavior::Immediate)?;
+        Self::clock(&tx, clock()?)?;
+        tx.commit()?;
+        Ok(())
+    }
+    fn at_clock<T>(
+        &mut self,
+        clock: &mut impl FnMut() -> Result<i64>,
+        op: impl FnOnce(&Transaction<'_>, i64) -> Result<T>,
+    ) -> Result<T> {
+        // Persist observation even on denial. Sample inside each acquired writer
+        // transaction: another connection may advance UTC during KDF or lock wait.
+        self.observe_clock(clock)?;
+        let tx = self
+            .db
+            .transaction_with_behavior(TransactionBehavior::Immediate)?;
+        let now = clock()?;
         Self::clock(&tx, now)?;
-        let out = op(&tx)?;
+        let out = op(&tx, now)?;
         tx.commit()?;
         Ok(out)
+    }
+    fn at<T>(&mut self, now: i64, op: impl FnOnce(&Transaction<'_>) -> Result<T>) -> Result<T> {
+        self.at_clock(&mut || Ok(now), |tx, _| op(tx))
     }
     fn random<const N: usize>(&self) -> Result<[u8; N]> {
         let mut bytes = [0; N];
@@ -449,6 +466,18 @@ impl Store {
     pub fn login(&mut self, login: &str, password: &[u8], ttl: i64, now: i64) -> Result<Grant> {
         self.issue_session(login, password, ttl, None, now)
     }
+    /// Trusted live login: sample UTC after acquiring each writer transaction,
+    /// including publication after password verification. Explicit-time APIs keep
+    /// their supplied-time semantics for deterministic callers and policy tests.
+    pub fn login_current(&mut self, login: &str, password: &[u8], ttl: i64) -> Result<Grant> {
+        self.issue_session_clock(login, password, ttl, None, &mut || {
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .ok()
+                .and_then(|time| i64::try_from(time.as_secs()).ok())
+                .ok_or(Error::ClockRollback)
+        })
+    }
     /// Company backend policy, opt-in for new sessions. Existing schema1 sessions
     /// retain absolute TTL after migration; only successful own-player auth renews.
     pub fn login_with_idle(
@@ -472,11 +501,21 @@ impl Store {
         idle: Option<i64>,
         now: i64,
     ) -> Result<Grant> {
+        self.issue_session_clock(login, password, ttl, idle, &mut || Ok(now))
+    }
+    fn issue_session_clock(
+        &mut self,
+        login: &str,
+        password: &[u8],
+        ttl: i64,
+        idle: Option<i64>,
+        clock: &mut impl FnMut() -> Result<i64>,
+    ) -> Result<Grant> {
         let login = login_name(login)?;
         if !(1..=TTL_MAX).contains(&ttl) {
             return Err(Error::InvalidInput);
         }
-        self.observe(now)?;
+        self.observe_clock(clock)?;
         let row: Option<(i64, String, i64, bool)> = self
             .db
             .query_row(
@@ -492,7 +531,7 @@ impl Store {
         if !valid || disabled {
             return Err(Error::InvalidCredentials);
         }
-        self.issue(account, phc, version, ttl, idle, now)
+        self.issue(account, phc, version, ttl, idle, clock)
     }
     fn issue(
         &mut self,
@@ -501,13 +540,13 @@ impl Store {
         version: i64,
         ttl: i64,
         idle: Option<i64>,
-        now: i64,
+        clock: &mut impl FnMut() -> Result<i64>,
     ) -> Result<Grant> {
         let raw = Zeroizing::new(self.random::<32>()?);
         let token = Token(Zeroizing::new(hex(raw.as_ref())));
         let digest = token.digest();
-        let expires = now.checked_add(ttl).ok_or(Error::InvalidInput)?;
-        self.at(now, |tx| {
+        self.at_clock(clock, |tx, now| {
+            let expires = now.checked_add(ttl).ok_or(Error::InvalidInput)?;
             let epoch: i64 = tx.query_row("SELECT epoch FROM runtime_state WHERE id=1", [], |r| r.get(0))?;
             if epoch==0 { return Err(Error::InstanceRequired); }
             // Verification happened outside the write transaction. Reset/ban must

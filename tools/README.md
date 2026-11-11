@@ -33,7 +33,7 @@ Raw output, bản copy client/DB và capture đặt trong `local/`, không commi
 [bootstrap wire](../docs/evidence/bootstrap-wire/README.md).
 
 check_checkpoints.py: kiểm manifest/counter append-only theo Git,required fields,docs-sync links,
-evidence hash,closed-task/active-next-step và cadence audit;dùng lại check_docs.py.
+evidence hash,closed-task/active-next-step và audit theo nhóm tính năng/policy chuyển tiếp;dùng lại check_docs.py.
 Trên host chạy --require-local --require-history;clone thiếu raw báo UNVERIFIED khi không flag.
 Pending review hiện WARNING,không thành semantic approval. [Quy trình/giới hạn](../docs/evidence/checkpoints/README.md).
 Tests: python3 tools/test_checkpoints.py.

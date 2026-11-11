@@ -1,0 +1,15 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-11T07:12:16.283942+00:00",
+  "authority": "project_owner",
+  "source": "User instruction in current conversation, 2026-11-11",
+  "decision": "Ưu tiên đưa account backend hiện có thành đường xuyên suốt trên KR thật: tạo account → xác thực/cấp session → launcher riêng → đúng player/profile → phòng cố định → basic battle → kết quả/reset → trận tiếp.",
+  "acceptance": [
+    "Account sở hữu đúng identity, transport và membership xuyên toàn bộ vòng đời.",
+    "Disconnect/expiry/revoke không để dữ liệu cũ tác động phiên hoặc vòng mới.",
+    "Luồng sảnh CP254/255 riêng và trận diagnostic M3 riêng không đủ chứng minh account end-to-end."
+  ],
+  "plan": "docs/PLAN.md#current-order",
+  "scope": "Lát cắt phòng cố định/basic đã có; không tự thêm nhiều phòng, inventory/reward hoặc production restore thành dependency. Wine/LAN/WAN giả lập vẫn được chấp nhận; Internet thật chưa kiểm.",
+  "owner": "Codex solo, independent review waived; no worker"
+}

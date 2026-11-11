@@ -1,0 +1,12 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-11T07:29:44.887857+00:00",
+  "authority": "project_owner",
+  "source": "User instruction in current conversation, 2026-11-11: bỏ audit bắt buộc mỗi4cp; khi xong1nhóm tính năng thì audit1lượt.",
+  "audit_mode": "feature_group",
+  "effective_after": "CP256",
+  "decision": "Bỏ lịch audit cố định mỗi4checkpoint. Audit thủ công khi hoàn tất một nhóm tính năng; mâu thuẫn nghiêm trọng vẫn audit ngay.",
+  "implementation": "Checkpoint hoàn tất nhóm khai completed_feature_groups; audit trigger feature_group ghi feature_groups tương ứng và completed_through cùng checkpoint. PLAN vẫn là nguồn duy nhất giữ scope/thứ tự; checker kiểm khai báo/links/hash, không tự suy nghiệm thu tính năng.",
+  "history": "Giữ nguyên mọi record/audit/raw cũ. Lịch4CP chỉ còn kiểm nghĩa vụ lịch sử đến CP256/AUD074; không tạo yêu cầu CP260 hoặc deadline checkpoint mới.",
+  "plan": "docs/PLAN.md#current-order"
+}

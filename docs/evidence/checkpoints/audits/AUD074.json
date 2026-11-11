@@ -1,0 +1,85 @@
+{
+  "id": "AUD074",
+  "trigger": "periodic",
+  "completed_through": "CP256",
+  "recorded_utc": "2026-11-11T07:25:00.698269+00:00",
+  "auditor": "Codex manual self-audit; independentreviewwaived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/evidence/rust-service/account-bridge.json",
+    "docs/evidence/rust-service/account-serving.json",
+    "docs/evidence/rust-service/account-native-lifecycle.json",
+    "docs/evidence/rust-service/account-fresh-login.json",
+    "docs/evidence/owner-directives/account-basic-end-to-end.json",
+    "rust/crates/kr-service/src/accounts.rs",
+    "rust/crates/kr-service/src/accounts/tests.rs",
+    "rust/crates/kr-service/src/bin/kr-admin.rs",
+    "local/research/codex/rust-account-native-r5/native-verification.json",
+    "local/research/codex/rust-account-swap-r1/negative-verification.json",
+    "local/research/codex/rust-account-revoke-native-r1/lifecycle-verification.json",
+    "local/research/codex/rust-account-expire-native-r1/lifecycle-verification.json",
+    "local/research/codex/rust-account-fresh-r1/native-pair/cycles/private-backend-seed.json",
+    "local/research/codex/rust-account-fresh-r2/fresh-verification.json",
+    "local/research/codex/rust-account-fresh-r2/ui-review.json"
+  ],
+  "method": "Manual ordered README→PLAN→PROTOCOL→RESEARCH→evidence/source reconciliation for CP253–256. Read native verification/control/SQLite/error/source and reviewed freshA/B UIimages, separate library/parser replay from realKR/native sender and Python replay. Checker is not semantic acceptance.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "HistoricalCP253 library TTL10/no listener text may be read as current serving contract.",
+      "correction": "CP254 split launch60/handoff10, listener/privateAPI/fixed2native; CP2553scopednative negatives; CP256freshlogin/native-byte replay explicitly linked at currentdocs. Historicalrecords/raw unchanged.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "rust/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "M5 milestone line put productionrestore alongside missing acceptance and could make it an implicit M5 blocker.",
+      "correction": "Restore belongs M8; newowner acceptance targets account-owned fixedroom/basic first. Generalprofile/multiroom/inventory not prerequisites to firstfixed2slice. M5stillOPEN/freshlobby+diagnosticBattle notaccountBattle.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/evidence/owner-directives/account-basic-end-to-end.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Freshlogin not yet exercised concurrently with activeB/periodicDB clock.",
+      "correction": "R1 actualClockRollback retained68raw/cleanup0. Source and deterministic postKDFinterleaving control identify stale CLI timestamp; liveCLIlogin nowresamples inside writertransactions. Strict actualrollback/credential/oneactive preserved; other supplied-time/admin paths and load not generalized.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/accounts.rs",
+        "rust/crates/kr-service/src/accounts/tests.rs",
+        "rust/crates/kr-service/src/bin/kr-admin.rs",
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/account-fresh-login.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Wrongecho negative or replay success could imply native individualbranchcoverage/graceful recovery/strong wire credentials.",
+      "correction": "CP255compoundguard/pendingB only; CP256oldnative1-6 replay sent by Python, no native denialUI claim. FreshA is newprocess/newbackend/newfrontend afterrevoke-stop, not sameprocess/accountresume/matchrestore. No fullM5 or productionclaim.",
+      "fixed_in": [
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/account-fresh-login.json",
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Account-ownedfixedroom/basic throughresults-reset-nextmatch and disconnect-expiry-revoke/transport-membership/oldround-UDP fences next perowner. M5OPEN.",
+    "Genericprofile/projector beyondknownfixed2, nativeDBqueuefault, concurrentadmincreate/reset/KDFclock contention stillunaccepted. M6inventory-reward/M7generalrooms/M8restore-ops separate.",
+    "M4Free1v7 startup blocked/no retry withoutnewobservable; CP220/224sameprocess recovery blockers retained.",
+    "TMPFS/nativeWine/sharedhostLAN scope preserved; K6c WAN giả lập/Internet thật chưa kiểm separatebacklog. NextperiodicCP260."
+  ]
+}

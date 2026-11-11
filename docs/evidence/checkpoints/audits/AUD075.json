@@ -1,0 +1,65 @@
+{
+  "id": "AUD075",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "checkpoint-feature-group-audits"
+  ],
+  "completed_through": "CP257",
+  "recorded_utc": "2026-11-11T07:31:54.876026+00:00",
+  "auditor": "Codex manual self-audit; independentreviewwaived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "AGENTS.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/owner-directives/feature-group-audits.json",
+    "docs/evidence/checkpoints/audits/AUD074.json",
+    "tools/check_checkpoints.py",
+    "tools/checkpoints.py",
+    "tools/test_checkpoints.py",
+    "tools/test_checkpoint_store.py",
+    "local/research/codex/audit-feature-group-tests-r1.txt",
+    "local/research/codex/audit-feature-group-tests-r2.txt"
+  ],
+  "method": "Manual semantic review of ownerinstruction→AGENTS/workflow→manifest transition→checker/tests. Compared legacy cutoff/history and feature completion audit matching; all34schema/storage cases read via results. This audit completes only workflow-policy feature, not M5/accountBattle.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "AGENTS/workflow/checker/CLI hardcode fixed4CP deadline.",
+      "correction": "Pinnedownertransition afterCP256, null audit_interval/next_periodic; nextaudit onfeaturegroup completion or seriouscontradiction. Legacy obligations through256 and oldrecord/audit/hash/history preserved.",
+      "fixed_in": [
+        "AGENTS.md",
+        "docs/evidence/checkpoints/README.md",
+        "docs/evidence/checkpoints/manifest.json",
+        "tools/check_checkpoints.py",
+        "tools/checkpoints.py"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Removingperiodic rule alone could remove audit requirement from completedfeaturegroups.",
+      "correction": "completed_feature_groups in completecheckpoint must match feature_group audit feature_groups at samecompleted_through; seriouscontradiction doesnot satisfy unreviewedgroup. Checker validates declaration not semanticcompletion.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "tools/test_checkpoints.py",
+        "docs/evidence/checkpoints/README.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Initial schema requirednonnullfields and rejected intended null interval/nextaudit.",
+      "correction": "Nullablekeys are required bypresence, featuregroup mode rejects reintroducedfixedinterval/deadline. Failed3tests retained then34pass. No runtime/serverbehavior changes inCP257.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "tools/test_checkpoints.py"
+      ]
+    }
+  ],
+  "remaining": [
+    "Account-owned fixedroom/basic end-to-end remains NEXT/M5OPEN per PLAN; no fake groupcompletion or nativegateclosure.",
+    "Futuregroup scope/acceptance remain onlyinPLAN; completedgroup mustdeclarematchingmanualaudit. Seriouscontradictionaudit remainsimmediate.",
+    "No change to native runtimes/builds/raw, ownerWine/LAN/WANscope or Internet thật chưa kiểm."
+  ]
+}

@@ -9346,3 +9346,35 @@ Delay là số đoquietLAN/TMPFS, không load/SLO/alltopology. PrivateRAMDB/expo
 M5 còn freshlogin/replay/projector tổngquát và accountroom-game integration; fixed2zero-profile không fullaccountservice.
 CP220/224 recovery blockers giữ nguyên; không mở SDK VM chỉ để đóng modal. Source/ID catalog giữscope cũ, không gateclosure.
 K6c WAN giả lập không đổi; **Internet thật chưa kiểm**.
+
+<a id="rust-account-fresh-login"></a>
+## Account fresh process và replay request native — CP256, M5 vẫn mở
+
+[Metadata/hash](evidence/rust-service/account-fresh-login.json), [raw](evidence/rust-service/README.md#cp256),
+[ưu tiên account xuyên suốt](evidence/owner-directives/account-basic-end-to-end.json), [PLAN](PLAN.md#current-order).
+Nguồn **kr_runtime/confirmed** cho quan sát hẹp; clock/backend policy **design/design**. Không binary RE mới/VN auth.
+
+Cùng server/DB, hai native account lobby trước. Explicit admin revoke A, dừng đúng WineA/đợi current channel đóng;
+CLI login cấp backend session mới, private launcher cấp frontend32 mới, process CA mới nhận auth137/own291128/render KRLocal.
+PID/startticks/CAargv mới và namespace đúng đối chiếu; B giữ process/backend session/current channel KRGuest.
+Sau fresh A claim, Python trong **cùng netns A** phát lại nguyên first1 và first6 đã bắt từ native A cũ ở chính run này.
+PCAP byte SHA giống request cũ: first1 nhận result1/no identity; first6 không17/291/grant; không consume/xóa owner A mới.
+A mới/B giữ≥8s sau replay, không FIN/RST trước completion. Replay sender không là native retry/errorUI.
+Full PCAP/CRC-seq/hash/3native auth137-291-render/independent argv/SQLite2accounts3sessions/oldA revoked/newA-B valid
+và hai ảnh cuối đã xem;122raw70,793556617s/28exactreply/seal/cleanup0/Wine10.0-20260425/copy4b/3netns/TMPFS/no externalroute.
+Không fresh server, sameprocessretry, accountresume hoặc matchrestore; revoke/stop là setup rõ ràng, không graceful logout.
+
+**Clock discrepancy và sửa:** Native R1/68raw42,544s sealed/cleanup0 dừng ở CLI re-login `ClockRollback`, không có fresh success.
+CLI từng giữ UTC trước KDF; worker inspect B có thể tiến DB high-water trong lúc hash, làm timestamp publication cũ bị reject.
+`Store::login_current` lấy UTC **sau khi giữ writer transaction**, cả initial observation và publication sau KDF/lock wait;
+TTL/issued_at tính từ publication. Vẫn durable high-water/clock rollback guard, credential-version/PHC/ban/one-active/entropy fences.
+Không clamp timestamp về max(last_utc,now), không sửa DB để test pass. API explicit supplied-time/worker login giữ semantics cũ.
+CLI chỉ command login chọn đường current; concurrent create/reset/admin clock contention chưa nghiệm thu từ ca này.
+Hai regression kiểm publication sau connection khác advance clock, TTL/identity/new token và actual backward/reset credential fences;
+84workspace tests/fmt/clippy/lockedbuild và33CLIprocess/2persistentaccounts/9auditedmutations/cleanup0 đạt. Initial compile mismatch/private test seam được giữ trước runtimeR2.
+
+**Giới hạn hiện hành:** account mode vẫn chỉ hai known zero profiles/sảnh, reject room/Battle. Theo owner mới, bước kế là nối
+account→phòng cố định→basic→kết quả/reset→trận tiếp, kiểm identity/transport/membership và disconnect/expiry/revoke/stale fences.
+Diagnostic Battle M3 và account lobby không tự hợp thành account Battle. Generic projection/M6inventory/M7multiroom/M8restore riêng;
+không đưa productionrestore thành dependency M5. CP220/224 sameprocess recovery blockers giữ nguyên; không SDK/copy retry.
+AUD074 quaCP256 là audit theo lịch cũ cuối cùng; [policy mới](evidence/owner-directives/feature-group-audits.json) từ sauCP256 audit theo nhóm tính năng, không deadline CP260. K6c WAN giả lập; **Internet thật chưa kiểm**.

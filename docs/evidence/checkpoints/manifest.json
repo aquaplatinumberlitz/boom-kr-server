@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP255",
-  "completed_count": 255,
-  "audit_interval": 4,
-  "last_periodic_audit": 252,
-  "next_periodic_audit": "CP256",
-  "last_manual_audit": "AUD073",
+  "last_id": "CP257",
+  "completed_count": 257,
+  "audit_interval": null,
+  "last_periodic_audit": 256,
+  "next_periodic_audit": null,
+  "last_manual_audit": "AUD075",
   "audits": [
     {
       "id": "AUD001",
@@ -383,6 +383,16 @@
       "id": "AUD073",
       "path": "docs/evidence/checkpoints/audits/AUD073.json",
       "sha256": "f505c717d957efe8e2ab67c4309234ebf4a734f751308d63392dd87132edf506"
+    },
+    {
+      "id": "AUD074",
+      "path": "docs/evidence/checkpoints/audits/AUD074.json",
+      "sha256": "5bbdfcf5a74d0cb1d7c784eee7cb867f863e718a036a6a2ff7719e218e77d6be"
+    },
+    {
+      "id": "AUD075",
+      "path": "docs/evidence/checkpoints/audits/AUD075.json",
+      "sha256": "2efeb63a014f8475e5763ddce3ab99ab083755ab4359523d3d5b38cebd4b041d"
     }
   ],
   "task_states": [
@@ -2854,6 +2864,31 @@
       "path": "docs/evidence/checkpoints/records/CP255.json",
       "bytes": 18331,
       "sha256": "43382b4c35910108ceeed2ca985ff142b2a9501002d2806341d19bef5b690eb4"
+    },
+    {
+      "id": "CP256",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-11T07:25:00.698269+00:00",
+      "path": "docs/evidence/checkpoints/records/CP256.json",
+      "bytes": 17058,
+      "sha256": "4daf5aa481f1903003eba1e672c8e60312e06d46480ccaefe2b3c7e9abff8188"
+    },
+    {
+      "id": "CP257",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-11T07:31:54.876026+00:00",
+      "path": "docs/evidence/checkpoints/records/CP257.json",
+      "bytes": 8399,
+      "sha256": "766ba753a055c2f445556ff7a15ba4166e82941f3fa6f82dfa03704a84ffe346"
     }
-  ]
+  ],
+  "audit_policy": {
+    "mode": "feature_group",
+    "effective_after": "CP256",
+    "authorization": {
+      "path": "docs/evidence/owner-directives/feature-group-audits.json",
+      "bytes": 1068,
+      "sha256": "3e18ec6ebc84c14cbc1d16686fed91e0405f3f1efe2a2d7b9f046ab1309ada6a"
+    }
+  }
 }

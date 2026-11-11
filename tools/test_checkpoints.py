@@ -165,6 +165,74 @@ class CheckpointsTest(unittest.TestCase):
         self.manifest["checkpoints"][-1]["next_steps"][0]["state"] = "closed"
         self.assertEqual(self.errors(), [])
 
+    def use_feature_group_audits(self, after="CP001"):
+        path = self.root / "docs/evidence/owner-directives/audit-policy.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps({"authority": "project_owner", "audit_mode": "feature_group",
+                                    "effective_after": after}))
+        self.manifest.update(audit_interval=None, next_periodic_audit=None,
+            audit_policy={"mode": "feature_group", "effective_after": after,
+                          "authorization": {"path": str(path.relative_to(self.root)),
+                                            "bytes": path.stat().st_size, "sha256": checker.digest(path)}})
+
+    def group_audit(self, through, groups):
+        self.audit("feature_group", through)
+        ref = self.manifest["audits"][-1]
+        path = self.root / ref["path"]
+        data = json.loads(path.read_text())
+        data["feature_groups"] = groups
+        path.write_text(json.dumps(data))
+        ref["sha256"] = checker.digest(path)
+
+    def test_feature_group_policy_has_no_four_or_eight_checkpoint_deadline(self):
+        self.use_feature_group_audits()
+        for _ in range(7):
+            self.append()
+        errors, _, stats = checker.validate(self.manifest, self.root, True)
+        self.assertEqual(errors, [])
+        self.assertIsNone(stats["next_audit"])
+        self.assertEqual(stats["audit_mode"], "feature_group")
+
+    def test_policy_transition_preserves_prior_periodic_obligations(self):
+        for _ in range(3):
+            self.append()
+        self.use_feature_group_audits("CP004")
+        self.assertTrue(any("CP004: MANUAL AUDIT DUE" in e for e in self.errors()))
+        self.audit("periodic", "CP004")
+        self.manifest["last_periodic_audit"] = 4
+        self.assertEqual(self.errors(), [])
+
+    def test_completed_feature_group_needs_matching_manual_audit(self):
+        self.use_feature_group_audits()
+        self.append()
+        self.manifest["checkpoints"][-1]["completed_feature_groups"] = ["account-basic"]
+        self.assertTrue(any("FEATURE GROUP AUDIT DUE" in e for e in self.errors()))
+        self.audit("serious_contradiction", "CP002")
+        self.assertTrue(any("FEATURE GROUP AUDIT DUE" in e for e in self.errors()))
+        self.group_audit("CP002", ["account-basic"])
+        self.assertEqual(self.errors(), [])
+
+    def test_feature_group_audit_cannot_claim_a_different_group_or_checkpoint(self):
+        self.use_feature_group_audits()
+        self.append()
+        self.manifest["checkpoints"][-1]["completed_feature_groups"] = ["account-basic"]
+        self.group_audit("CP001", ["account-basic"])
+        self.assertTrue(any("must match declared" in e for e in self.errors()))
+        self.assertTrue(any("FEATURE GROUP AUDIT DUE" in e for e in self.errors()))
+
+    def test_feature_group_policy_requires_valid_pinned_owner_transition(self):
+        self.use_feature_group_audits()
+        self.manifest["audit_policy"]["authorization"]["sha256"] = "f" * 64
+        self.assertTrue(any("authorization hash/size mismatch" in e for e in self.errors()))
+        self.use_feature_group_audits("CP999")
+        self.assertTrue(any("existing complete checkpoint" in e for e in self.errors()))
+
+    def test_feature_group_policy_rejects_reintroduced_fixed_deadline(self):
+        self.use_feature_group_audits()
+        self.manifest.update(audit_interval=4, next_periodic_audit="CP004")
+        self.assertTrue(any("audit_interval must be null" in e for e in self.errors()))
+        self.assertTrue(any("next_periodic_audit disagrees" in e for e in self.errors()))
+
     def test_fourth_checkpoint_requires_periodic_not_ad_hoc_audit(self):
         for _ in range(3):
             self.append()

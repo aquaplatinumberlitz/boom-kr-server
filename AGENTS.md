@@ -72,8 +72,12 @@ Từ kho v2, dùng `python3 tools/checkpoints.py latest`, rồi `show CPxxx`/`ev
 Record complete và run/batch evidence manifest đã pin giữ bất biến; [hướng dẫn](docs/evidence/checkpoints/README.md).
 Phân biệt source/status/loại kiểm với review/merge/gate;chưa review vẫn ghi pending/candidate.
 Không nâng gate từ alive,TCP accept,cửa sổ hoặc encoder tự sinh;không báo phần trăm thiếu bằng chứng.
-Mỗi 4 checkpoint complete audit thủ công README→PLAN→PROTOCOL→RESEARCH→evidence với raw mới,
-ghi audit/counter bền vững. Mâu thuẫn nghiêm trọng audit ngay,không reset lịch4 checkpoint.
+Theo [chỉ đạo audit theo nhóm tính năng11/11](docs/evidence/owner-directives/feature-group-audits.json),
+**không còn audit bắt buộc mỗi4checkpoint** từ sau CP256. Khi hoàn tất một nhóm tính năng, audit thủ công
+README→PLAN→PROTOCOL→RESEARCH→evidence/raw và ghi audit/counter bền vững. Checkpoint hoàn tất nhóm khai
+`completed_feature_groups`; audit `trigger=feature_group` ghi cùng `feature_groups`/`completed_through`.
+PLAN giữ phạm vi/thứ tự nhóm, không tạo lịch checkpoint thay thế. Mâu thuẫn nghiêm trọng vẫn audit ngay.
+Audit/record cũ bất biến; checker giữ kiểm nghĩa vụ lịch sử đến CP256, không ép CP260 hoặc chu kỳ mới.
 
 
 ## Làm việc nhóm

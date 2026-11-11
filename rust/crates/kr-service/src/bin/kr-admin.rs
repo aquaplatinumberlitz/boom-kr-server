@@ -101,7 +101,7 @@ fn run() -> Result<Value, Error> {
             password,
             ttl_seconds,
         } => {
-            let g = s.login(&login, password.0.as_bytes(), ttl_seconds, now)?;
+            let g = s.login_current(&login, password.0.as_bytes(), ttl_seconds)?;
             json!({"player":g.player,"expires_at":g.expires_at,"token":g.token.expose_secret()})
         }
         Command::Authorize { token, player_id } => {

@@ -412,5 +412,5 @@ Rust `account_admission` dùng DB/private Unix socket và hai known zero-profile
 Raw ở `local/research/codex/rust-account-native-r5/native-pair`, 100file/41,852s/cleanup0 và native-verification/UIreview ởparent.
 PrivateTMPFS DB/log/raw/exporthash, khôngBtrfsdurabilityfix. NativeR2/R3/R4fail và preparationfail giữ nguồn/raw.
 `tools/test_rust_account_serving.py --binary <kr-service> --admin <kr-admin> --config <two-profile> --out <new-private-dir>`
-kiểm synthetic TCP, khôngnativeoracle. Accountmode reject room/battle/unknownprofile. [CP255](../docs/PROTOCOL.md#rust-account-native-lifecycle) đã kiểm native wrong-pending-correlator/revoke/absolute expiry; freshlogin/replay/generalprofile/accountroom-game/fullM5 còn thiếu.
+kiểm synthetic TCP, khôngnativeoracle. Accountmode reject room/battle/unknownprofile. [CP255](../docs/PROTOCOL.md#rust-account-native-lifecycle) đã kiểm native wrong-pending-correlator/revoke/absolute expiry; [CP256](../docs/PROTOCOL.md#rust-account-fresh-login) thêm freshprocess/new backend-frontend và oldnative1-6 replay denied; generalprofile/accountroom-game/fullM5 còn thiếu. CLI login dùng transaction-time UTC, supplied-time APIs giữ guard; chưa general concurrent admin KDF acceptance.
 Python/diagnostic rollback giữ. Internet thật chưa kiểm.
