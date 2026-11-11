@@ -1,9 +1,7 @@
 //! CP202/210 measured fixed four/eight rank layout; outcome/zero economy/settle are design.
 use crate::room::{Phase, Room};
-use kr_wire::{Width, write_uint};
 use std::{
     collections::BTreeSet,
-    io,
     time::{Duration, Instant},
 };
 
@@ -44,61 +42,7 @@ pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
     alive.first().copied()
 }
 
-/// Header16 + count×131 active rows + (16-count) empty slots: inner552/1072.
-/// Constructor is an input producer, never a native compatibility oracle.
-pub(crate) fn rank_body(teams: &[u8], winner: u8) -> io::Result<Vec<u8>> {
-    let count = teams.len();
-    if !matches!(count, 4 | 8)
-        || winner > 1
-        || !(teams
-            .iter()
-            .copied()
-            .eq((0..count).map(|slot| (slot % 2) as u8))
-            || teams == [0, 1, 1, 1, 1, 1, 1, 1])
-    {
-        return Err(io::Error::other("unsupported fixed-four winning team"));
-    }
-    let mut inner = vec![0; 16];
-    inner[9] = 255;
-    for team in teams {
-        let mut row = vec![0; 131];
-        row[0] = 1;
-        row[5] = if *team == winner { 1 } else { 2 };
-        inner.extend(row);
-    }
-    inner.resize(inner.len() + 16 - count, 0);
-    let mut stream = vec![24];
-    stream.extend_from_slice(&((inner.len() + 1) as u32).to_le_bytes());
-    stream.push(0);
-    stream.extend(inner);
-    let mut body = write_uint(stream.len() as u64, Width::U32).map_err(io::Error::other)?;
-    let mut at = 0;
-    while at < stream.len() {
-        let (n, w) = if stream.len() - at >= 4 {
-            (4, Width::U32)
-        } else if stream.len() - at >= 2 {
-            (2, Width::U16)
-        } else {
-            (1, Width::U8)
-        };
-        let mut value = [0; 8];
-        value[..n].copy_from_slice(&stream[at..at + n]);
-        body.extend(write_uint(u64::from_le_bytes(value), w).map_err(io::Error::other)?);
-        at += n;
-    }
-    Ok(body)
-}
-
-pub(crate) fn return_body(selector: u8) -> io::Result<Vec<u8>> {
-    if selector > 1 {
-        return Err(io::Error::other("unsupported room selector"));
-    }
-    let mut body = Vec::new();
-    for value in [0, selector, 0] {
-        body.extend(write_uint(value as u64, Width::U8).map_err(io::Error::other)?);
-    }
-    Ok(body)
-}
+pub(crate) use kr_wire::kr00967::{rank175 as rank_body, return180 as return_body};
 
 #[cfg(test)]
 mod tests {

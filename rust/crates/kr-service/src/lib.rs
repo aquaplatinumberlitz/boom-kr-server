@@ -16,6 +16,7 @@ mod pickups;
 mod player_template;
 pub mod room;
 mod room_io;
+mod room_packets;
 mod room_wire;
 mod rules;
 mod terrain;
@@ -685,7 +686,7 @@ async fn local_lobby_connection(
                 let Some(reply) = session.project(reply)? else {
                     continue;
                 };
-                let frame = encode(&reply.header, reply.opcode, &reply.payload, send_sequence)
+                let frame = kr_wire::kr00967::encode(reply.opcode, &reply.payload, send_sequence)
                     .map_err(io::Error::other)?;
                 timeout(
                     Duration::from_millis(profile.config.write_timeout_ms),
