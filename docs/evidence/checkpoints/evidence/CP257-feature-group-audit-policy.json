@@ -1,0 +1,180 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "POLICY257-0001",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD075.json",
+      "bytes": 3041,
+      "sha256": "2efeb63a014f8475e5763ddce3ab99ab083755ab4359523d3d5b38cebd4b041d"
+    },
+    {
+      "id": "POLICY257-0002",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/feature-group-audits.json",
+      "bytes": 1068,
+      "sha256": "3e18ec6ebc84c14cbc1d16686fed91e0405f3f1efe2a2d7b9f046ab1309ada6a"
+    },
+    {
+      "id": "POLICY257-0003",
+      "kind": "local",
+      "path": "local/research/codex/append_cp257.py",
+      "bytes": 9066,
+      "sha256": "602c86f96245029996891deb9e6782ebfe472ea7cff95a6c3d6281343187c136"
+    },
+    {
+      "id": "POLICY257-0004",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/AGENTS.md",
+      "bytes": 10577,
+      "sha256": "d1fd0591084b0a369721bb81d480f5c9e34f84fb6757517a46082a6b6b0ed18f"
+    },
+    {
+      "id": "POLICY257-0005",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/README.md",
+      "bytes": 62522,
+      "sha256": "4a89d2359a315ff21d94c50045ddac735544652388a0d415f4fd69e2b5a57d9e"
+    },
+    {
+      "id": "POLICY257-0006",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 105333,
+      "sha256": "dcc32957339973a81d7ca2655cc7b48c0df45dc6abf63a244edd3e0a7dca0b87"
+    },
+    {
+      "id": "POLICY257-0007",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/docs/PROTOCOL.md",
+      "bytes": 822296,
+      "sha256": "12421dea4bc1f5d7d9b4b75814918376b7ae288badeff31be5a349cd2363d3f9"
+    },
+    {
+      "id": "POLICY257-0008",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 52917,
+      "sha256": "b99a4bf0519ede111b0a161d01259e10708f2bbcb1f446ac0c45334efd306618"
+    },
+    {
+      "id": "POLICY257-0009",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/docs/evidence/checkpoints/README.md",
+      "bytes": 13533,
+      "sha256": "dbb9d0e6b94135742975206c71abf2270cd783e97ffe72045bfdc3222549fa0e"
+    },
+    {
+      "id": "POLICY257-0010",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 286986,
+      "sha256": "5608b56bdfbffe216de920247b00188229ddd1694405e77a33684bff6fecde71"
+    },
+    {
+      "id": "POLICY257-0011",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42230,
+      "sha256": "1c3ca535b6abc00486a83e8b57372684f04604d2be54ff617a2d2b99a897778d"
+    },
+    {
+      "id": "POLICY257-0012",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/docs/evidence/owner-directives/feature-group-audits.json",
+      "bytes": 1068,
+      "sha256": "3e18ec6ebc84c14cbc1d16686fed91e0405f3f1efe2a2d7b9f046ab1309ada6a"
+    },
+    {
+      "id": "POLICY257-0013",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/tools/README.md",
+      "bytes": 24019,
+      "sha256": "d7c4c57d4a3c38875ec3cf330ff1a1d60daa409b9bd72516883fd6e3e22e1568"
+    },
+    {
+      "id": "POLICY257-0014",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/tools/check_checkpoints.py",
+      "bytes": 33862,
+      "sha256": "551067607e404a03a2c9f932bfc5e73556f776fd095117e76c38a407bb88198c"
+    },
+    {
+      "id": "POLICY257-0015",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/tools/checkpoints.py",
+      "bytes": 4784,
+      "sha256": "635de61b7982085fdbfc7a5c3639fcbe429796047c61908e6e5ada1dad599ecd"
+    },
+    {
+      "id": "POLICY257-0016",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/tools/test_checkpoints.py",
+      "bytes": 17954,
+      "sha256": "d069a945803f96fa70fae10246f123f019106418ebcc9d320f91991a5fef1c71"
+    },
+    {
+      "id": "POLICY257-0017",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-docs-r1.txt",
+      "bytes": 251,
+      "sha256": "f0fbc0fa69c530fba91dc4d557702faf867184bbff9c5e277d166852fc6e2a74"
+    },
+    {
+      "id": "POLICY257-0018",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-tests-r1.txt",
+      "bytes": 2770,
+      "sha256": "73005cab0428ffe9fae8855be9f86a3e258ded81f483a32cdd49d2148b9bf776"
+    },
+    {
+      "id": "POLICY257-0019",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-tests-r2.txt",
+      "bytes": 133,
+      "sha256": "ea20fc890102024f78c394ba57d9e509dccb4c1ed331aa4ae9acc94471c8a415"
+    },
+    {
+      "id": "POLICY257-0020",
+      "kind": "local",
+      "path": "local/research/codex/cp257-docs-preappend.txt",
+      "bytes": 251,
+      "sha256": "c19e536c8f29489ab8f08fc8c9583f9fdeb615ea5b9d364258e20a2229c64f61"
+    },
+    {
+      "id": "POLICY257-0021",
+      "kind": "local",
+      "path": "local/research/codex/cp257-issue-update.request",
+      "bytes": 7449,
+      "sha256": "90cbc9178ecf23f7df63f0fa1e8fe829377b301a78d685f95d35ed17321caf4a"
+    },
+    {
+      "id": "POLICY257-0022",
+      "kind": "local",
+      "path": "local/research/codex/cp257-issue-updated.json",
+      "bytes": 10435,
+      "sha256": "b660776d1a2ab4683f7798ddb7f5b54423ef61116d437f40f3655298580056e1"
+    },
+    {
+      "id": "POLICY257-0023",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 33862,
+      "sha256": "551067607e404a03a2c9f932bfc5e73556f776fd095117e76c38a407bb88198c"
+    },
+    {
+      "id": "POLICY257-0024",
+      "kind": "repository",
+      "path": "tools/checkpoints.py",
+      "bytes": 4784,
+      "sha256": "635de61b7982085fdbfc7a5c3639fcbe429796047c61908e6e5ada1dad599ecd"
+    },
+    {
+      "id": "POLICY257-0025",
+      "kind": "repository",
+      "path": "tools/test_checkpoints.py",
+      "bytes": 17954,
+      "sha256": "d069a945803f96fa70fae10246f123f019106418ebcc9d320f91991a5fef1c71"
+    }
+  ]
+}

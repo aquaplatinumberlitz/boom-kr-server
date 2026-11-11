@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP255",
+  "as_of": "CP256",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -459,7 +459,8 @@
           "docs/evidence/rust-service/account-bridge.json",
           "docs/evidence/rust-service/account-serving.json",
           "docs/PROTOCOL.md#rust-account-serving",
-          "docs/evidence/rust-service/account-native-lifecycle.json"
+          "docs/evidence/rust-service/account-native-lifecycle.json",
+          "docs/evidence/rust-service/account-fresh-login.json"
         ]
       },
       "coverage": {
@@ -537,7 +538,8 @@
               "docs/PROTOCOL.md#rust-m2-acceptance",
               "docs/PROTOCOL.md#rust-four-startup",
               "docs/PROTOCOL.md#rust-account-serving",
-              "docs/PROTOCOL.md#rust-account-native-lifecycle"
+              "docs/PROTOCOL.md#rust-account-native-lifecycle",
+              "docs/PROTOCOL.md#rust-account-fresh-login"
             ]
           },
           "windows_original": {
@@ -594,7 +596,8 @@
             "rust/crates/kr-service/src/bin/kr-admin.rs",
             "docs/PROTOCOL.md#rust-account-bridge",
             "docs/PROTOCOL.md#rust-account-serving",
-            "docs/PROTOCOL.md#rust-account-native-lifecycle"
+            "docs/PROTOCOL.md#rust-account-native-lifecycle",
+            "docs/PROTOCOL.md#rust-account-fresh-login"
           ]
         },
         "gate": {

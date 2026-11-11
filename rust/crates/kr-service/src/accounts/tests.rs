@@ -361,7 +361,7 @@ fn credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_che
         .reset_password(&admin(), p.account_id, OTHER, 101)
         .unwrap();
     assert!(matches!(
-        s.issue(p.account_id, phc, 1, 60, None, 101),
+        s.issue(p.account_id, phc, 1, 60, None, &mut || Ok(101)),
         Err(Error::InvalidCredentials)
     ));
     let count: i64 =
@@ -540,4 +540,106 @@ fn schema1_corruption_or_upgrade_full_rejects_without_partial_columns_or_version
         .unwrap();
     Store::migrate(&mut db).unwrap();
     assert_eq!(old_idle_data(&db), before);
+}
+
+#[test]
+fn live_login_resamples_publication_after_other_connection_advances_clock() {
+    let _serial = SERIAL.lock().unwrap();
+    let (temp, mut store, player) = fresh();
+    let mut other = temp.store();
+    let phc: String = store
+        .db
+        .query_row(
+            "SELECT password_phc FROM accounts WHERE id=?1",
+            [player.account_id],
+            |r| r.get(0),
+        )
+        .unwrap();
+    // Deterministic interleaving at the post-verification publication seam:
+    // caller observed 101 before KDF; another SQLite connection observes 102.
+    store.observe(101).unwrap();
+    other.observe(102).unwrap();
+    assert!(matches!(
+        store.issue(player.account_id, phc.clone(), 1, 60, None, &mut || Ok(101)),
+        Err(Error::ClockRollback)
+    ));
+    let mut ticks = [103, 104].into_iter();
+    let grant = store
+        .issue(player.account_id, phc, 1, 60, None, &mut || {
+            Ok(ticks.next().unwrap())
+        })
+        .unwrap();
+    assert!(ticks.next().is_none());
+    assert_eq!(grant.expires_at, 164);
+    assert_eq!(
+        store
+            .db
+            .query_row("SELECT issued_at FROM sessions", [], |r| r.get::<_, i64>(0))
+            .unwrap(),
+        104
+    );
+    other.revoke(&admin(), player.account_id, 105).unwrap();
+    let mut ticks = [106, 107, 108].into_iter();
+    let fresh = store
+        .issue_session_clock("alice", PASSWORD, 60, None, &mut || {
+            Ok(ticks.next().unwrap())
+        })
+        .unwrap();
+    assert!(ticks.next().is_none());
+    assert_eq!(fresh.expires_at, 168);
+    assert_ne!(fresh.token.expose_secret(), grant.token.expose_secret());
+    assert_eq!(
+        store
+            .authorize(&fresh.token, player.player_id, 108)
+            .unwrap(),
+        player
+    );
+}
+
+#[test]
+fn sampled_live_login_keeps_rollback_and_credential_reset_fences() {
+    let _serial = SERIAL.lock().unwrap();
+    let (temp, mut store, player) = fresh();
+    let mut other = temp.store();
+    let mut ticks = [101, 100].into_iter();
+    assert!(matches!(
+        store.issue_session_clock("alice", PASSWORD, 60, None, &mut || Ok(ticks
+            .next()
+            .unwrap())),
+        Err(Error::ClockRollback)
+    ));
+    assert_eq!(
+        store
+            .db
+            .query_row("SELECT last_utc FROM runtime_state", [], |r| r
+                .get::<_, i64>(0))
+            .unwrap(),
+        101
+    );
+    let phc: String = store
+        .db
+        .query_row(
+            "SELECT password_phc FROM accounts WHERE id=?1",
+            [player.account_id],
+            |r| r.get(0),
+        )
+        .unwrap();
+    other
+        .reset_password(&admin(), player.account_id, OTHER, 102)
+        .unwrap();
+    assert!(matches!(
+        store.issue(player.account_id, phc, 1, 60, None, &mut || Ok(103)),
+        Err(Error::InvalidCredentials)
+    ));
+    assert_eq!(
+        store
+            .db
+            .query_row("SELECT count(*) FROM sessions", [], |r| r.get::<_, i64>(0))
+            .unwrap(),
+        0
+    );
+    assert!(matches!(
+        store.issue_session_clock("alice", PASSWORD, 60, None, &mut || Ok(104)),
+        Err(Error::InvalidCredentials)
+    ));
 }

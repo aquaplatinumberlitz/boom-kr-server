@@ -605,3 +605,13 @@ và frozen-inputs từngrun. Swap78raw41,686s/13reply; revoke79raw44,268s/18repl
 Sourcehashbinary/knownABI reused, không mở thêmbinarybody/SDK; REAsessionavailabilitymetadata retained, không là nativeEvidence.
 A notice10/boundednoterminal, chưa ordinaryReturn/modalclose/retry/freshlogin; Bpending→ownclaim hoặc activeB giữ≥8s đúng từngcase.
 TMPFSDB-log-raw/exporthash khôngdurability/SLO/Btrfsfix; M5partial/nextperPLAN, auditCP256. Internet thật chưa kiểm.
+
+<a id="cp256"></a>
+### CP256 — fresh login/new backend-frontend và old native replay denied
+
+[Contract/giới hạn](../../PROTOCOL.md#rust-account-fresh-login), [metadata](account-fresh-login.json), [PLAN](../../PLAN.md#current-order).
+`local/research/codex/rust-account-fresh-r2/fresh-verification.json` và `ui-review.json`; raw tại `native-pair/cycles`,
+preflight/seal/storage-export riêng.122raw70,794s/28exactTCP/cleanup0;A mới/B lobby sau oldnative1-6 replay đã xem.
+R1ClockRollback/68raw42,544s/cleanup0 và preparation syntaxfailure giữ lại. Clock fix/84Rust/fmt/clippy/lockedbuild,
+source-first/REA session metadata ở `rust-account-fresh-source-r1`; không gọi shell-native proof là REA Evidence ID.
+AUD074 qua256/audit kế260; M5 OPEN, tiếp account-owned fixedroom/basic theo chỉ đạo mới. Internet thật chưa kiểm.

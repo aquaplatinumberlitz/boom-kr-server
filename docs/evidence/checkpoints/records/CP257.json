@@ -1,0 +1,210 @@
+{
+  "id": "CP257",
+  "previous": "CP256",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T07:31:54.876026+00:00",
+  "context_commit": "b3a4cc728cc9c9100f558b4c7b577a6d2a20ad54",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Ownerdirective: replace fixed4checkpoint audit with manualaudit when featuregroup completes, retaining historicalimmutable audits/counters and seriouscontradictionaudit.",
+  "scope": "Checkpointworkflow/toolingonly; featuregroup completed withAUD075/34schema-storagetests; no Rust/nativebehaviorchange.",
+  "artifacts": [
+    {
+      "name": "Pinnedowner-audit-policy",
+      "sha256": "3e18ec6ebc84c14cbc1d16686fed91e0405f3f1efe2a2d7b9f046ab1309ada6a"
+    }
+  ],
+  "locators": [
+    "AGENTS auditsection/docs/evidence/checkpoints/README; manifest audit_policy modefeature_group/effective_afterCP256/ownerpin/nullinterval-next",
+    "check_checkpoints.validate legacycutoff/complete_feature_groups→matchingfeature_groupaudit; CLIlatestpolicysummary",
+    "34schema-storagetests including six newtransition/group-negativecases; AUD075featuregroup notperiodic"
+  ],
+  "findings": [
+    {
+      "summary": "Ownerauthorizes featuregroup audit fromafterCP256; no fixedCP260deadline. Historicalobligations through256 and AUD001-074 immutable; last_periodic256 retainedashistory, currentnextnull.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "evidence": [
+        "POLICY257-0002",
+        "POLICY257-0004"
+      ],
+      "limits": "Workflow declaration/schema only; notnativeacceptance/M5closure. Oldrecords/audits/raw immutable."
+    },
+    {
+      "summary": "Completecheckpoint declares groups, matchingmanualfeature_groupaudit samecheckpoint required; seriouscontradictionstillimmediate. 34schema/storagetests pass includinglegacy4-8, future4-8no deadline, missing/wronggroup audit, badpin/cutoff and reintroduceddeadline.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "evidence": [
+        "POLICY257-0023",
+        "POLICY257-0025",
+        "POLICY257-0019"
+      ],
+      "limits": "Workflow declaration/schema only; notnativeacceptance/M5closure. Oldrecords/audits/raw immutable."
+    },
+    {
+      "summary": "AUD075completes workflowpolicygroup only; M5accountfixedroombasicchain stillOPEN/NEXT. CP256freshloginsource/evidence remain unchanged; currentpolicy supersedes oldnext260 snapshot prospectively.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "evidence": [
+        "POLICY257-0001",
+        "POLICY257-0006"
+      ],
+      "limits": "Workflow declaration/schema only; notnativeacceptance/M5closure. Oldrecords/audits/raw immutable."
+    }
+  ],
+  "verification": [
+    {
+      "check": "34schema-storage/regression cases",
+      "result": "pass",
+      "evidence": [
+        "POLICY257-0019"
+      ],
+      "limits": "Syntheticfixtures verifyworkflowtool, notnativegame."
+    },
+    {
+      "check": "Initialnullablefieldtests",
+      "result": "fail",
+      "evidence": [
+        "POLICY257-0018"
+      ],
+      "limits": "Threefailures retained, keys nowrequired bypresence allowingpolicy-nullvalues."
+    },
+    {
+      "check": "ManualfeaturegroupAUD075",
+      "result": "pass",
+      "evidence": [
+        "POLICY257-0001"
+      ],
+      "limits": "Workflowgroup only, notM5orclientacceptance."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP257-feature-group-audit-policy.json",
+      "bytes": 6450,
+      "sha256": "07efd260b143bda2b873848b64e2caa77b2a4f1a6fae0ea4d810c59d04b7aff3",
+      "count": 25
+    }
+  ],
+  "delta": {
+    "added": [
+      "Ownerpinnedfeaturegroupauditpolicy/checker-negatives/CLIstate/AUD075workflowgroup."
+    ],
+    "corrected": [
+      "Fixed4CPdeadline removedafterCP256; pastcadence notrewritten. Nullablecounterkeyscheckedbypresence."
+    ],
+    "superseded": [
+      "FutureCP260/everysubsequent4CPaudit requirement; nowfeaturegroupcompletion/seriouscontradictiononly."
+    ]
+  },
+  "blockers": [
+    "M5account-owned fixedroom/basic result-reset-nextmatch and lifecycle stillnotimplemented/unaccepted; NEXTperPLAN."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANaccount-ownedfixedroom/basic end-to-end throughresults-reset-nextmatch; identity-transport-membership/disconnect-expiry-revoke/stalequeued-roundUDPfences; audit when thisfeaturegroup completes. No fixedcheckpointdeadline.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T07:31:54.876026+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexpolicy/toolsource/schema-negative/historytransition/manualAUD075 selfcheck; independentreviewwaivednotapproved.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "Ownerfeature-groupauditpolicyafterCP256/no fixeddeadline/historypreserved; no nativecontractchange."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Ownerfeature-groupauditpolicyafterCP256/no fixeddeadline/historypreserved; no nativecontractchange."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Ownerfeature-groupauditpolicyafterCP256/no fixeddeadline/historypreserved; no nativecontractchange."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Ownerfeature-groupauditpolicyafterCP256/no fixeddeadline/historypreserved; no nativecontractchange."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Ownerfeature-groupauditpolicyafterCP256/no fixeddeadline/historypreserved; no nativecontractchange."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Ownerfeature-groupauditpolicyafterCP256/no fixeddeadline/historypreserved; no nativecontractchange."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "Ownerfeature-groupauditpolicyafterCP256/no fixeddeadline/historypreserved; no nativecontractchange."
+    },
+    {
+      "path": "docs/evidence/owner-directives/feature-group-audits.json",
+      "state": "updated",
+      "reason": "Ownerfeature-groupauditpolicyafterCP256/no fixeddeadline/historypreserved; no nativecontractchange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Ownerfeature-groupauditpolicyafterCP256/no fixeddeadline/historypreserved; no nativecontractchange."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Ownerfeature-groupauditpolicyafterCP256/no fixeddeadline/historypreserved; no nativecontractchange."
+    }
+  ],
+  "completed_feature_groups": [
+    "checkpoint-feature-group-audits"
+  ]
+}

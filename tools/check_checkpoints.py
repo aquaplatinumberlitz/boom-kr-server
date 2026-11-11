@@ -197,10 +197,13 @@ def validate(manifest, root=ROOT, require_local=False):
     checked, unavailable = 0, 0
     root = Path(root).resolve()
     if not require_fields(manifest, (
-        "schema", "last_id", "completed_count", "audit_interval", "next_periodic_audit",
+        "schema", "last_id", "completed_count",
         "checkpoints", "audits", "task_states",
     ), "manifest", errors):
         return errors, warnings, {}
+    for name in ("audit_interval", "next_periodic_audit"):
+        if name not in manifest:
+            errors.append(f"manifest: missing {name}")
     if manifest.get("schema") not in {store.V1, store.V2}:
         errors.append("manifest: unsupported schema")
     try:
@@ -218,8 +221,6 @@ def validate(manifest, root=ROOT, require_local=False):
     if not isinstance(tasks, list):
         errors.append("manifest: task_states must be a list")
         tasks = []
-    if manifest.get("audit_interval") != 4:
-        errors.append("manifest: audit_interval must be 4")
 
     def file_link(value, where):
         try:
@@ -350,6 +351,53 @@ def validate(manifest, root=ROOT, require_local=False):
         errors.append("manifest: last_id disagrees with sequence")
     if manifest.get("completed_count") != completed:
         errors.append("manifest: completed_count disagrees with lifecycle")
+    policy = manifest.get("audit_policy")
+    grouped = policy is not None
+    cutoff = completed
+    if grouped:
+        if not isinstance(policy, dict) or policy.get("mode") != "feature_group":
+            errors.append("manifest: invalid audit_policy")
+            policy = {}
+        effective = policy.get("effective_after")
+        if effective not in ids[:completed]:
+            errors.append("manifest: audit policy must follow an existing complete checkpoint")
+        else:
+            cutoff = ids.index(effective) + 1
+        authorization = policy.get("authorization", {})
+        if not isinstance(authorization, dict):
+            authorization = {}
+        name = authorization.get("path")
+        if not isinstance(name, str) or not name.startswith("docs/evidence/owner-directives/"):
+            errors.append("manifest: audit policy needs a pinned owner directive")
+        else:
+            path = file_link(name, "audit policy")
+            if path and path.is_file():
+                if (digest(path) != authorization.get("sha256")
+                        or path.stat().st_size != authorization.get("bytes")):
+                    errors.append("manifest: audit policy authorization hash/size mismatch")
+                try:
+                    decision = read_json(path)
+                    if (decision.get("authority") != "project_owner"
+                            or decision.get("audit_mode") != "feature_group"
+                            or decision.get("effective_after") != effective):
+                        errors.append("manifest: audit policy authorization disagrees with transition")
+                except (ValueError, OSError, AttributeError):
+                    errors.append("manifest: invalid audit policy authorization JSON")
+        if manifest.get("audit_interval") is not None:
+            errors.append("manifest: feature-group audit_interval must be null")
+    elif manifest.get("audit_interval") != 4:
+        errors.append("manifest: legacy audit_interval must be 4")
+
+    completed_groups = set()
+    for record in records:
+        groups = record.get("completed_feature_groups", [])
+        if (not isinstance(groups, list)
+                or any(not isinstance(g, str) or not g.strip() for g in groups)
+                or len(set(groups)) != len(groups)):
+            errors.append(f"{record.get('id')}: invalid completed_feature_groups")
+        elif record.get("lifecycle") == "complete":
+            completed_groups.update((record.get("id"), group) for group in groups)
+    audited_groups = set()
     periodic = []
     for index, reference in enumerate(audits, 1):
         where = f"AUD{index:03d}"
@@ -381,16 +429,32 @@ def validate(manifest, root=ROOT, require_local=False):
             if not number or number % 4:
                 errors.append(f"{where}: periodic audit must cover CP004/008/...")
             periodic.append(number)
+            if grouped and number > cutoff:
+                errors.append(f"{where}: periodic cadence ended at {cp_id(cutoff)}")
+        elif audit.get("trigger") == "feature_group":
+            groups = audit.get("feature_groups")
+            if (not grouped or not isinstance(groups, list) or not groups
+                    or any(not isinstance(g, str) or not g.strip() for g in groups)
+                    or len(set(groups)) != len(groups)):
+                errors.append(f"{where}: feature-group audit needs explicit feature_groups")
+            else:
+                pairs = {(audit.get("completed_through"), group) for group in groups}
+                if not pairs.issubset(completed_groups):
+                    errors.append(f"{where}: feature-group audit must match declared checkpoint group completion")
+                audited_groups.update(pairs)
         elif audit.get("trigger") not in {"initial_reconciliation", "serious_contradiction", "ad_hoc"}:
             errors.append(f"{where}: invalid trigger")
-    due = [n for n in range(4, completed + 1, 4) if n not in periodic]
+    for checkpoint, group in sorted(completed_groups - audited_groups):
+        errors.append(f"{checkpoint}: FEATURE GROUP AUDIT DUE: {group}")
+    due = [n for n in range(4, cutoff + 1, 4) if n not in periodic]
     for number in due:
         errors.append(f"{cp_id(number)}: MANUAL AUDIT DUE; ad-hoc audits do not reset cadence")
     last_periodic = max(periodic, default=0)
     if manifest.get("last_periodic_audit") != last_periodic:
         errors.append("manifest: last_periodic_audit disagrees with audit records")
-    if manifest.get("next_periodic_audit") != cp_id(last_periodic + 4):
-        errors.append("manifest: next_periodic_audit disagrees with cadence")
+    next_audit = None if grouped else cp_id(last_periodic + 4)
+    if manifest.get("next_periodic_audit") != next_audit:
+        errors.append("manifest: next_periodic_audit disagrees with audit policy")
     expected_last_audit = audits[-1].get("id") if audits else None
     if manifest.get("last_manual_audit") != expected_last_audit:
         errors.append("manifest: last_manual_audit disagrees with audit sequence")
@@ -413,7 +477,8 @@ def validate(manifest, root=ROOT, require_local=False):
         if step.get("task") not in seen_tasks:
             errors.append(f"{step.get('id')}: task has no explicit state")
     return errors, warnings, {"completed": completed, "evidence_verified": checked, "evidence_unavailable": unavailable,
-                              "next_audit": cp_id(last_periodic + 4)}
+                              "next_audit": next_audit,
+                              "audit_mode": "feature_group" if grouped else "legacy_periodic"}
 
 
 def continuity(previous, current):

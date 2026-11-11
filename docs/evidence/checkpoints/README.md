@@ -47,13 +47,18 @@ Task_states là snapshot khai báo rõ các task liên quan,link PLAN/issue. Nex
 
 ## Audit thủ công
 
-Mỗi 4 checkpoint complete: đọc README→PLAN→PROTOCOL→RESEARCH→evidence rồi đối chiếu raw/report/runtime.
-Ghi AUD ID liên tục, trigger,completed_through,auditor,read_files theo thứ tự,findings/sửa ở đâu,
-remaining. Record audits/ được hash trong manifest. Không dùng chạy script thay cho audit.
+Theo [chỉ đạo chủ dự án11/11](../owner-directives/feature-group-audits.json), từ sauCP256 **bỏ lịch audit mỗi4checkpoint**.
+Audit khi hoàn tất một nhóm tính năng: đọc README→PLAN→PROTOCOL→RESEARCH→evidence rồi đối chiếu raw/report/runtime.
+Ghi AUD ID liên tục, `trigger=feature_group`, `feature_groups`, `completed_through`, auditor, read_files theo thứ tự,
+findings/sửa ở đâu và remaining. Checkpoint hoàn tất nhóm khai `completed_feature_groups` tương ứng; checker yêu cầu
+một audit cùng checkpoint cho nhóm đã khai hoàn tất. PLAN vẫn là nguồn scope/thứ tự, không nhân bản thành plan nhóm riêng.
+Không dùng chạy script thay audit thủ công; checker không tự biết nhóm đã hoàn tất về mặt ngữ nghĩa.
 
-Mâu thuẫn nghiêm trọng audit ngay. AUD001 là initial_reconciliation tại CP001;ad-hoc audit không
-reset lịch CP004,CP008,CP012… . Lấy counter/next_periodic_audit từ manifest,không đếm lại theo phiên.
-Complete CP004 thiếu periodic auditCP004 gây lỗi MANUAL AUDIT DUE;phải audit và sửa docs bị ảnh hưởng.
+Mâu thuẫn nghiêm trọng vẫn audit ngay bằng `serious_contradiction`, không tự coi đó là audit hoàn tất nhóm chưa kiểm.
+AUD001 initial và mọi audit/record/raw lịch sử giữ nguyên. `audit_policy` pin chỉ đạo/chuyển tiếp sauCP256;
+`audit_interval`/`next_periodic_audit` hiện là null, `last_periodic_audit=256` chỉ là counter lịch sử.
+Checker giữ nghĩa vụ lịch4CP trước chuyển tiếp, không ép CP260 hoặc số checkpoint cố định mới.
+
 Phần mềm không chứng minh người ghi đã đọc/thấu hiểu;reviewer phải kiểm report.
 
 ## Kiểm và giới hạn
@@ -62,7 +67,7 @@ Trên host có raw: python3 tools/check_checkpoints.py --require-local --require
 cùng python3 tools/check_docs.py và git diff --check. Checker dùng lại check_docs để kiểm Markdown.
 
 Kiểm ID/previous/counter,field/source/status,owner khác reviewer,docs_sync links,
-file/size/SHA,taskclosed/nextactive,cadence và append-only qua mọi revision manifest trên
+file/size/SHA,taskclosed/nextactive,audit theo policy chuyển tiếp và append-only qua mọi revision manifest trên
 first-parent Git history rồi working tree. Xóa checkpoint đã commit rồi commit reset vẫn lỗi.
 Không bảo vệ được cố ý rewrite/xóa toàn Git history;archive/shallow thiếu lịch sử phải nêu rõ.
 Không đọc GitHub để tự đoán task;người ghi cập nhật snapshot có reference.

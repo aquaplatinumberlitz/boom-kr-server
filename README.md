@@ -29,6 +29,15 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP256: fresh login account trên KR thật và chặn replay request cũ đã đạt; M5 vẫn mở.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-account-fresh-login), [raw/hash](docs/evidence/rust-service/README.md#cp256).
+A mới/process-session-frontend mới vào đúng KRLocal, B giữ phiên; hai request native cũ phát lại bị từ chối, giữ sảnh8s.
+122raw/70,794s/28exactTCP/cleanup0;84Rusttests. Sửa false ClockRollback ở CLI login khi worker tiếp tục kiểm phiên.
+**Chưa account → phòng → Battle → kết quả/reset → trận tiếp**; đây là ưu tiên kế theo [chỉ đạo](docs/evidence/owner-directives/account-basic-end-to-end.json).
+AUD074 quaCP256; [chỉ đạo mới](docs/evidence/owner-directives/feature-group-audits.json) bỏ lịch4CP, audit khi xong nhóm tính năng. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP255: ba ca account native âm tính/lifecycle đã đạt, M5 vẫn mở.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-account-native-lifecycle), [raw/hash](docs/evidence/rust-service/README.md#cp255).
 A dùng correlator đang chờ của B bị từ chối, B vẫn claim đúng; revoke A khi đang ở lobby và phiên A tự hết hạn60s
@@ -36,7 +45,6 @@ A dùng correlator đang chờ của B bị từ chối, B vẫn claim đúng; r
 Không đổi server đã nghiệm thu CP254/PR326; chưa generic profile, freshlogin/replay/room-game hoặc fullM5.
 Next theo PLAN, audit kếCP256. Internet thật chưa kiểm.
 
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP254: hai KR thật đã đăng nhập vào sảnh bằng hai account SQLite trên adapter Rust.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-account-serving), [raw/hash](docs/evidence/rust-service/README.md#cp254).
