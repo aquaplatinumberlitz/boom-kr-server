@@ -5,7 +5,7 @@ use crate::{
     pickups,
     room::{Member, Membership, Phase, Room},
     room_wire,
-    rules::{self, RoomRules},
+    rules::{self, DeparturePolicy, ResultPolicy, RoomRules, TeamPolicy},
 };
 use kr_wire::{Width, decode, read_uint};
 use serde::Deserialize;
@@ -569,7 +569,9 @@ impl Runtime {
                 self.channels.clear();
                 return;
             }
-            if self.rules.four_abort_room && matches!(next.phase, Phase::Armed { .. }) {
+            if self.rules.departure == DeparturePolicy::UnrankedReturn
+                && matches!(next.phase, Phase::Armed { .. })
+            {
                 let result = (|| -> io::Result<AbortTransition> {
                     let round = next.abort_four(m.key)?;
                     let returning = self.reply(
@@ -618,7 +620,7 @@ impl Runtime {
                 self.channels.remove(&id);
                 return;
             }
-            if next.capacity() == 8
+            if self.rules.departure == DeparturePolicy::FenceActive
                 && matches!(next.phase, Phase::Loading { .. } | Phase::Armed { .. })
             {
                 if next.fence_eight(m.key).is_ok() {
@@ -639,8 +641,8 @@ impl Runtime {
                 self.channels.remove(&id);
                 return;
             }
-            let closing_active =
-                self.packets.contains_key("rank") && matches!(next.phase, Phase::Armed { .. });
+            let closing_active = self.rules.departure == DeparturePolicy::Forfeit
+                && matches!(next.phase, Phase::Armed { .. });
             let transition = if closing_active {
                 next.abort_play(m.key).map(Some)
             } else {
@@ -713,7 +715,7 @@ impl Session {
         if r.abort.is_some() {
             return r.abort_refresh();
         }
-        if !r.packets.contains_key("rank") && !r.rules.team_results() {
+        if r.rules.result == ResultPolicy::Disabled {
             return Ok(());
         }
         let Phase::Armed { round } = r.model.phase else {
@@ -1244,7 +1246,10 @@ impl Session {
                 if !(20..=8192).contains(&body.len()) {
                     return Err(err("unsupported Start104 envelope"));
                 }
-                if r.rules.eight_battle && r.selector == 1 && !next.balanced_teams() {
+                if r.rules.teams == TeamPolicy::BalancedManner
+                    && r.selector == 1
+                    && !next.balanced_teams()
+                {
                     return Ok(Observation {
                         start_rejection: Some("manner_fixed_teams_unbalanced"),
                         ..Observation::default()
@@ -1385,10 +1390,10 @@ impl Session {
             167 => {
                 let member = r.member(self.identity, self.connection)?;
                 let measured = if next.capacity() == 8 {
-                    r.rules.eight_battle && [4, 22, 42].contains(&body.len())
+                    r.rules.owner_bombs() && [4, 22, 42].contains(&body.len())
                 } else {
                     [4, 16, 32].contains(&body.len())
-                        || (next.capacity() == 4 && r.rules.four_owner_bombs && body.len() == 22)
+                        || (next.capacity() == 4 && r.rules.owner_bombs() && body.len() == 22)
                 };
                 if !measured {
                     return Err(err("opaque167 measured sizes"));
@@ -1602,7 +1607,7 @@ impl Session {
                     next.observe_closed(m.key)?;
                     dropped_after_abort = true;
                 } else if let Phase::Armed { round } = next.phase {
-                    if r.packets.contains_key("rank") || r.rules.life_enabled() {
+                    if r.rules.life.reports_enabled() {
                         let report = crate::life::Report::parse(body)?;
                         let now = Instant::now();
                         let last_blast = next.last_blast;
@@ -1827,6 +1832,18 @@ mod tests {
             inbox: ra,
             identity: 1,
             connection: 11,
+        };
+        // Fixtures provide bytes, not authority to enable outcomes. Even with
+        // a mature result and rank packets loaded, Disabled must stay Armed.
+        session.tick().unwrap();
+        assert_eq!(shared.lock().unwrap().model.phase, Phase::Armed { round });
+        assert!(session.inbox.try_recv().is_err());
+        assert!(rb.try_recv().is_err());
+        shared.lock().unwrap().rules = RoomRules {
+            result: ResultPolicy::Duel,
+            departure: DeparturePolicy::Forfeit,
+            life: rules::LifePolicy::DuelReports,
+            ..RoomRules::default()
         };
         assert!(session.tick().is_err());
         assert_eq!(shared.lock().unwrap().model.phase, Phase::Armed { round });
@@ -2164,10 +2181,10 @@ mod four_abort_tests {
             ports: HashMap::new(),
             floor_catalog: pickups::Catalog::default(),
             rules: RoomRules {
-                four_owner_bombs: true,
-                four_life_reports: true,
-                four_results: true,
-                four_abort_room: true,
+                bomb: rules::BombPolicy::OwnerReports,
+                life: rules::LifePolicy::TeamReports,
+                result: ResultPolicy::Teams,
+                departure: DeparturePolicy::UnrankedReturn,
                 ..RoomRules::default()
             },
             abort: None,
@@ -2471,9 +2488,12 @@ mod ninth_probe_tests {
             ports: HashMap::new(),
             floor_catalog: pickups::Catalog::default(),
             rules: RoomRules {
-                eight_battle: true,
+                bomb: rules::BombPolicy::OwnerReports,
+                life: rules::LifePolicy::TeamReports,
+                result: ResultPolicy::Teams,
+                departure: DeparturePolicy::FenceActive,
+                teams: TeamPolicy::BalancedManner,
                 ninth_admission_probe: true,
-                ..RoomRules::default()
             },
             abort: None,
         }));

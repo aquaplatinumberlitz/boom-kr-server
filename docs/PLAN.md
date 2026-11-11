@@ -1,6 +1,7 @@
 # Kế hoạch server giả lập KR 00967
 
 Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã được dsh1/dsh2 review tại `1eee46d`.
+CP262: R1b typedpolicies đãkiểm90Rust/298TCPmỗibinary/3189exactroomframes, JSON/wirelegacy2/4/8giữ. AuditnhómAUD079; NEXT R1c identity/slot/template106. N1physicaluplinkfactpending/OPEN, khôngẩnR1f/M8dependency; nativefinalR1 2/4/8/account vẫnchưađo. ProjectorWIPgiữnguồnriêng.
 CP261: actualInternetpath2KR/account/profile/room/basic2oppositeoutcomes/reset/Start3 đođạt;99postNATmismatch/Bobserved-source reply/nativeUDP2chiều cóproof. SharedNATnegativeBdenied/Aheld8s xácnhậnR1f gap. N1OPEN: mobile/ISP-CGNAT môi trường tốithiểu chưaxácnhận; khôngsuytừIP/agentlabel. NEXT chốtprovenanceuplink vàfield51policyimplementation; R1brefactorWIP cóthểtiếpđộc lập theođiềukiện accountmerge củaowner, chưabỏN1dependencyR1f/M8.
 CP260: controlled network/mapping metadata account có90Rust/hai59TCP/9network+5metadata guards; native auth0 trên hai KR qua NAT. Lỗi chờ channel có trước HTTP JSON rỗng; N1OPEN, chưa direct/learning/relay. NEXT đo timer/recv trước modal2 tại1113AA0, đối chiếu packet17 trên PCAP; không dựng HTTPstub như causalfix. R1bWIP/projector giữ nguyên; không đóng nhóm/gate.
 CP258: account-owned fixed2/basic end-to-end + revoke/expiry/disconnect + manualfresh rejoin/oldUDPdrop-currentpositive đã đạt scope;5run280raw375exactTCP/cleanup0. M5OPEN/generalprofile/nativeDBqueuefault/recoverylimits; AUD076auditnhóm, không lịch4CP. Internet thật chưa kiểm.
@@ -262,7 +263,8 @@ Team source CP213 đã giao riêng qua PR322/`83abe4b`, giữ nguyên bytes đã
    Field51control chỉ ởfixturelocal; phép triểnkhai policytườngminh vàoadapter cần giữdefault/nativebinaryprovenance
    và acceptance riêng, không tựđổi toànzeroauthprofile thànhoriginaldefault. Raw/địnhdanh/cấuhìnhVPS chỉlocal.
 
-   Sau N1, làm R1b→R1g theo bảng. R1a đã merge PR329/`073700e`; không thêm tính năng hoặc đổi byte wire.
+   R1b đã qua kiểm source/TCP/differential CP262; tiếp R1c→R1g theo bảng, không thêm tính năng vào profile cũ.
+   R1a đã merge PR329/`073700e`; N1 vẫn mở điều kiện uplink, R1f/M8 giữ dependency đó.
    R1f dùng kết quả N1. Cuối R1 mới chạy native hồi quy 2/4/8 người và đường account theo acceptance.
    M5 tổng thể còn projection hồ sơ tổng quát, native DB/queue-fault và giới hạn recovery; giữ WIP để dùng
    ở R1c/R1f hoặc phần M5 sau N1/R1. Tiếp theo là M7 → G1 song song M6 thu hẹp → M8.
@@ -544,6 +546,13 @@ một PR nhỏ. Không gộp R1 với RE mới.
 | R1e | Registry phòng `RoomId → phòng`; listing 91 dựng từ registry; mỗi phòng một `RoomRules`. Giữ mutex đồng bộ, không giữ lock qua await | Như R1b, thêm unit test hai phòng không lẫn recipient |
 | R1f | Transport lấy identity từ session/lease thay cho IP nguồn; endpoint 153 theo kết quả N1 | Như R1b, thêm ca hai session cùng IP |
 | R1g | Trần kết nối và `allowed_peers` thành cấu hình theo tải đích (50 người, khoảng 200 transport) | Unit test giới hạn; kiểm tải thật thuộc M8 |
+
+**R1b — CP262:** các cờ nội bộ được chuyển thành Result/Departure/Bomb/Life/TeamPolicy trong `RoomRules`;
+JSON compatibility được normalize tại admission. Không chọn authority từ sự tồn tại của fixture `rank`.
+90Rust/fmt/clippy/lockedbuild; baseline vàcandidate đều239caTCP2/4/8 +59account;3189roomframes/13suite
+khớp identity/visit/alias/opcode/sequence/size/fullSHA. Các ca8team/ninth cóunreadfinallytail được đoriêng
+bằngreceiverboundary; rawkhácbanđầugiữ. N1nativeR10vẫngắnARMCP260/copy4b, khôngtựcertifyR1bbinary.
+AuditnhómAUD079; [contract/evidence](PROTOCOL.md#rust-r1b-policies). NEXT R1c, nativecuốiR1vẫntheoacceptancedưới.
 
 R1a–R1b và R1d không đổi hành vi. R1c, R1e, R1f và R1g chỉ thêm hành vi ở chế độ mới; profile cũ phải giữ nguyên byte.
 Acceptance cuối R1: toàn bộ bộ TCP hiện có đạt, cộng **một lượt native hồi quy cho mỗi profile 2, 4, 8 người và đường

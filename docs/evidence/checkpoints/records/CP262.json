@@ -1,0 +1,273 @@
+{
+  "id": "CP262",
+  "previous": "CP261",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T17:18:14.642661+00:00",
+  "context_commit": "1b4bfeb49870f33dfb5b6e4629ce49485a5f084c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/R1b: replaceimplicitflags/fixturepresence withnamedroompolicies while preservinglegacy2/4/8wire; verifyunit/TCP/differential andmeasuredreceiverboundarieswithoutnativepromotion.",
+  "scope": "OwnRust2filerefactor andmeasurementonlythreeTCPtools; knownprofilecompatibility/source-synthetic evidence. No newruntimeclient/nativecertification orcodec/profile/identity/slot/registry/authtransport behavior.",
+  "artifacts": [
+    {
+      "name": "candidate-kr-service",
+      "sha256": "26bb7be6a6322842d5199da31226ec606e7dcf33b2d8f90a8af0895ada614dd3"
+    },
+    {
+      "name": "candidate-kr-admin",
+      "sha256": "510ac8c3c0e2eb4caa0526eabab70d268f80ce758052088d001c2e90e1c8795a"
+    }
+  ],
+  "locators": [
+    "docs/PROTOCOL.md#rust-r1b-policies",
+    "SourceownWIPstashba7572b3restoredonCP261main; projector aa4800a3 preserved",
+    "rules.rsadmission→Result/Departure/Bomb/Life/TeamPolicy; source_room_io dispatch no rankfixtureauthority",
+    "Currentbaseline/candidate239TCP +59account each;13suites3189exactdecodedroomframes",
+    "R5eight-team/R6ninthreceiverboundaries; initialmismatchrawretained"
+  ],
+  "findings": [
+    {
+      "summary": "Namedpoliciesreplaceinternalflags/rankfixturepresence; legacyJSON/profile2/4/8 selectionpreserved; negativeDisabledrankfixtureunitchecksactualArmed/quiet.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-r1b-policies",
+      "evidence": [
+        "R1BCP262-00464",
+        "R1BCP262-00463",
+        "R1BCP262-02384"
+      ],
+      "limits": "SyntheticTCP/differential only; no newnativeKR/Internet/fullR1 orM5/gameauthorityclaim. Existingnativeevidence remains tiedtoactualoldbinary/env.; Allfour/eight/ninthreceiverboundaries preserveassertedexplicitEOF/negativecases; unreadfinalcleanupnotifications retainedraw/notclaimedidentical. No manualdropbyopcode/alias tohide discrepancy.; No codec/packetheader/template/identity-slot/registry/sessiontransport changes; R1c-gremain, sameNATidentityrequiresR1f.; No newcapacityflags/identityaliases or newcapacitybranch incorehandlers; existinglegacyprofiles normalizedinsideRoomRules. JSONflagsleftcompatible.; N1OPEN mobile/ISP-CGNATfactunattested; boundedInternetpathworksCP261/sourceARMCP260, no nativeacceptanceofR1bcandidate.; FeaturegroupauditAUD079, nofixed4CPcadence. Oldcomplete/raw/audits unchanged; privateVPSinformationstayslocal."
+    },
+    {
+      "summary": "Currentbaseline/candidate298TCPcaseseach pass;3189roomframesmatchidentity/normalizedvisit/alias/opcode/sequence/length/fullSHA. 90Rust/fmt/clippy/lockedbuild pass. Differential/sourceonly, notnativecertification.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1b-policies",
+      "evidence": [
+        "R1BCP262-02374",
+        "R1BCP262-02394",
+        "R1BCP262-00449"
+      ],
+      "limits": "SyntheticTCP/differential only; no newnativeKR/Internet/fullR1 orM5/gameauthorityclaim. Existingnativeevidence remains tiedtoactualoldbinary/env.; Allfour/eight/ninthreceiverboundaries preserveassertedexplicitEOF/negativecases; unreadfinalcleanupnotifications retainedraw/notclaimedidentical. No manualdropbyopcode/alias tohide discrepancy.; No codec/packetheader/template/identity-slot/registry/sessiontransport changes; R1c-gremain, sameNATidentityrequiresR1f.; No newcapacityflags/identityaliases or newcapacitybranch incorehandlers; existinglegacyprofiles normalizedinsideRoomRules. JSONflagsleftcompatible.; N1OPEN mobile/ISP-CGNATfactunattested; boundedInternetpathworksCP261/sourceARMCP260, no nativeacceptanceofR1bcandidate.; FeaturegroupauditAUD079, nofixed4CPcadence. Oldcomplete/raw/audits unchanged; privateVPSinformationstayslocal."
+    },
+    {
+      "summary": "Eight-team/ninthwholelogmismatches wereunreadfinallycleanupnotifications; newactualreceiverboundariesonunchangedbinaries proveassertedframesidentical. Rawtailsretained, explicitEOF/negativeassertionspreserved.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PROTOCOL.md#rust-r1b-policies",
+      "evidence": [
+        "R1BCP262-02372",
+        "R1BCP262-02373",
+        "R1BCP262-02374"
+      ],
+      "limits": "SyntheticTCP/differential only; no newnativeKR/Internet/fullR1 orM5/gameauthorityclaim. Existingnativeevidence remains tiedtoactualoldbinary/env.; Allfour/eight/ninthreceiverboundaries preserveassertedexplicitEOF/negativecases; unreadfinalcleanupnotifications retainedraw/notclaimedidentical. No manualdropbyopcode/alias tohide discrepancy.; No codec/packetheader/template/identity-slot/registry/sessiontransport changes; R1c-gremain, sameNATidentityrequiresR1f.; No newcapacityflags/identityaliases or newcapacitybranch incorehandlers; existinglegacyprofiles normalizedinsideRoomRules. JSONflagsleftcompatible.; N1OPEN mobile/ISP-CGNATfactunattested; boundedInternetpathworksCP261/sourceARMCP260, no nativeacceptanceofR1bcandidate.; FeaturegroupauditAUD079, nofixed4CPcadence. Oldcomplete/raw/audits unchanged; privateVPSinformationstayslocal."
+    },
+    {
+      "summary": "R1bfeaturegroupacceptedonlyrefactorscope/AUD079; R1c-g/finalnative andN1physicaluplink/sharedNATremainopen. Stashes/history/raw/privateinfrastructurepreserved.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-r1b-policies",
+      "evidence": [
+        "R1BCP262-00451",
+        "R1BCP262-00010"
+      ],
+      "limits": "SyntheticTCP/differential only; no newnativeKR/Internet/fullR1 orM5/gameauthorityclaim. Existingnativeevidence remains tiedtoactualoldbinary/env.; Allfour/eight/ninthreceiverboundaries preserveassertedexplicitEOF/negativecases; unreadfinalcleanupnotifications retainedraw/notclaimedidentical. No manualdropbyopcode/alias tohide discrepancy.; No codec/packetheader/template/identity-slot/registry/sessiontransport changes; R1c-gremain, sameNATidentityrequiresR1f.; No newcapacityflags/identityaliases or newcapacitybranch incorehandlers; existinglegacyprofiles normalizedinsideRoomRules. JSONflagsleftcompatible.; N1OPEN mobile/ISP-CGNATfactunattested; boundedInternetpathworksCP261/sourceARMCP260, no nativeacceptanceofR1bcandidate.; FeaturegroupauditAUD079, nofixed4CPcadence. Oldcomplete/raw/audits unchanged; privateVPSinformationstayslocal."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rust90_fmt_clippy_lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "R1BCP262-02394",
+        "R1BCP262-02392",
+        "R1BCP262-02391"
+      ],
+      "limits": "Source/unit notnativeKRproof."
+    },
+    {
+      "check": "298TCPeach_3189exactroomframes_13suites",
+      "result": "pass",
+      "evidence": [
+        "R1BCP262-02374"
+      ],
+      "limits": "Consumedframescope/rawunreadfinallytailsretained; notallserverlogidentity."
+    },
+    {
+      "check": "R1bcandidate_nativeKR_finalR1regression",
+      "result": "not_run",
+      "evidence": [
+        "R1BCP262-00451"
+      ],
+      "limits": "FinalR1native2/4/8/account afterremainingR1steps; no inheritednativegate."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP262-r1b-policies.json",
+      "bytes": 679049,
+      "sha256": "6e1fc57bd3e0e153506100dc6b4c2c3517d5dc5843e73d65adc38be961209323",
+      "count": 2400
+    }
+  ],
+  "delta": {
+    "added": [
+      "Typedroompolicyselection/refactor +negativefixture-authorityunit.",
+      "Measuredreceiversequenceboundaries/finaldifferentialcontrols; source/binary/239+59TCPevidence."
+    ],
+    "corrected": [
+      "Wholefinallycloselognotawireequivalenceoracle; unreadtailsretainedandseparatelymeasured, no arbitraryopcodedrop."
+    ],
+    "superseded": [
+      "R1bpreservedWIPonly now implemented/integratedcandidatependingPR; projectorWIPunchanged."
+    ]
+  },
+  "blockers": [
+    "SyntheticTCP/differential only; no newnativeKR/Internet/fullR1 orM5/gameauthorityclaim. Existingnativeevidence remains tiedtoactualoldbinary/env.",
+    "Allfour/eight/ninthreceiverboundaries preserveassertedexplicitEOF/negativecases; unreadfinalcleanupnotifications retainedraw/notclaimedidentical. No manualdropbyopcode/alias tohide discrepancy.",
+    "No codec/packetheader/template/identity-slot/registry/sessiontransport changes; R1c-gremain, sameNATidentityrequiresR1f.",
+    "No newcapacityflags/identityaliases or newcapacitybranch incorehandlers; existinglegacyprofiles normalizedinsideRoomRules. JSONflagsleftcompatible.",
+    "N1OPEN mobile/ISP-CGNATfactunattested; boundedInternetpathworksCP261/sourceARMCP260, no nativeacceptanceofR1bcandidate.",
+    "FeaturegroupauditAUD079, nofixed4CPcadence. Oldcomplete/raw/audits unchanged; privateVPSinformationstayslocal."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANR1c identity-vs-slot/common106template, currenteightfixturebytecomparison; REonlyunknownfieldmismatch. R1f/M8retainN1physicaluplink/sharedNATdependency. FinalR1native2/4/8/account stillrequired; no broadRE/contentstub/R1bnativererunwithoutneed.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T17:18:14.642661+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualsource/policyselection/unit/syntheticTCP/differentialselfverification; independentreviewwaived, no workerRE/code/native.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "docs/evidence/rust-service/r1b-policies.json",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "tools/test_rust_four_room.py",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "tools/test_rust_eight_room.py",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    },
+    {
+      "path": "tools/test_rust_ninth_admission.py",
+      "state": "updated",
+      "reason": "R1bsource/syntheticproof/limits andnextR1c; no oldcomplete/raw/nativecertificationrewrite."
+    }
+  ],
+  "completed_feature_groups": [
+    "r1b-typed-room-policies"
+  ]
+}

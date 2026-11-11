@@ -329,3 +329,9 @@ Python/diagnostic rollback giữ. Internet thật chưa kiểm.
 [rust_account_fixture.py](../tools/rust_account_fixture.py) giữ credentials trongprivate raw, khôngpublicpasswordAPI.
 59ca gồm freshowner/free-slot/newchannel/rejoin/currentnextkey và oldchannelcorrelatornegative;16accountlobbyregression riêng.
 NativeKRacceptance xem [accountbasic](../docs/PROTOCOL.md#rust-account-basic), không suy từ syntheticencoder/serverlog.
+
+
+Các harness `test_rust_four_room.py`, `test_rust_eight_room.py` và `test_rust_ninth_admission.py` ghi
+`wire-boundary.json` khi scenario đạt: next_sequence thực của receiver trước finally-close. So differential
+chỉ claim frame đã được driver đọc; raw vẫn giữ notification đóng cuối không đọc. Explicit EOF và negative
+assertions vẫn giữ. Đây là phép đo synthetic TCP, không native KR oracle; [giới hạn R1b](../docs/PROTOCOL.md#rust-r1b-policies).

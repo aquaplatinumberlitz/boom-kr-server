@@ -670,3 +670,15 @@ REA450timeout/ownedcleanup vàordinaryPE/capstonefallback ghiđúngloạinguồn
 NativeInternetpathđãđo nhưngmobile/ISP-CGNATminrequirement chưaxácnhận; agentlabelsunsupportedbịloại.
 N1OPEN, khôngrewritescope/đónggate; R1b-e cóthểtiếpđộclậptheoconditionaccountmerged, R1f giữsessionbindinggap.
 Actualinfrastructure/secrets/captureonlylocal; K6c/K7scopegiữ. AUD078kiểmmâu thuẫnprovenance, khônglịch4CP.
+
+<a id="cp262"></a>
+### CP262 — R1b typedpolicies và byte equivalence trong profile2/4/8
+
+[Contract](../../PROTOCOL.md#rust-r1b-policies), [metadata/hash](r1b-policies.json), [PLAN](../../PLAN.md#rust-r1).
+Own3fileWIP khôi phục từ stash, thêm measurementonly boundaries cho8/ninth khi rawtail so sánh ban đầu khác;
+không bỏ bằngchứng sai khác cũ hoặc giảm input/assertion. 90Rust/fmt/clippy/lockedbuild;298TCPmỗibinary/
+3189framephòng identity-visit/alias/opcode/seq/size/SHA khớp. Baseline/Candidateconfigs vàfixtures giữ nguồncũ.
+Bốnrootbatch cóevidence-indexseal: r4regression/account vàr5eight-boundary/r6ninth-boundary; sourcefreeze/binaryhash/
+PIDgone đều kiểm. R4tailmismatch/initialcomparers giữriêng; R5/R6 chỉ chạy lại đúng hai ca thiếu boundary.
+Source/binaryarchive ở `r1b-recovery-r2`; chưa nativecandidate, khôngthừa kế ARM3f36/CP261Internetproof.
+AuditnhómAUD079; R1c-g/N1environment/sharedNAT/M5generalprofile vàphase1milestonesgiữ riêng.

@@ -60,7 +60,7 @@ def main():
     (root/'preflight.json').write_text(json.dumps(dict(files=pins, scope='Synthetic nine lobby identities/eight room members; not native KR proof'), indent=2) + '\n')
     output = (root/'process.log').open('x')
     proc = subprocess.Popen([str(args.binary.resolve()), '--config', str(spec), '--out', str(root/'service')], stdout=output, stderr=subprocess.STDOUT)
-    clients, probe, error, cases = [], None, None, []
+    clients, probe, visitor, error, cases = [], None, None, None, []
     try:
         deadline = time.monotonic() + 5
         while time.monotonic() < deadline:
@@ -74,6 +74,7 @@ def main():
         clients = seed_eight(config)
         cases.append('eight setup-complete ready members/64roster fields')
         probe = connect_actor(config, 9)
+        visitor = probe
         probe.receive(91)  # Current listing queued at channel open after room exists.
         cases.append('ninth diagnostic identity login/channel/profile, no room slot')
         for attempt in range(2):
@@ -106,6 +107,14 @@ def main():
         error = repr(exc)
         raise
     finally:
+        if error is None:
+            receivers = [dict(identity=i+1, next_sequence=client.rx) for i, client in enumerate(clients)]
+            if visitor is not None:
+                receivers.append(dict(identity=9, next_sequence=visitor.rx))
+            (root/'wire-boundary.json').write_text(json.dumps(dict(
+                receivers=receivers,
+                limits='Decoded TCP frame boundaries before final member closes; visitor EOF and rejection assertions remain covered. Unread final cleanup notifications stay in raw logs. Not native KR evidence.'
+            ), indent=2) + '\n')
         if probe:
             probe.close()
         for target in clients:

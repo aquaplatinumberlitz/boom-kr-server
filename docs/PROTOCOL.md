@@ -9617,3 +9617,41 @@ portremap, chưa cóowner/operatorrecord chứngnhậnloạiuplink. Nhãnagentc�
 đượcloại, oldraw/sealskhôngsửa. Khôngsuy từIPprefix, khônggiảđịnhISP/CGNAT hoặc tựrelaxacceptance.
 Chờ thôngtinmôitrường rồi đo đúngkhoảngtrống nếu cần; đừng chạy lại JSONguard/broadSDK hoặc coi cổngremap làCGNATproof.
 K6cWANgiảlập/K7scopegiữ; Internetthật đãđo đườngnày, **ISP/CGNATthựctế chưađượcxácnhận**; chưanghiệmthuN1hoànchỉnh.
+
+<a id="rust-r1b-policies"></a>
+## R1b — chính sách phòng có tên, profile cũ giữ wire — CP262
+
+Nguồn **design/design** cho cách tổ chức source; không RE hoặc đổi authority KR gốc.
+[Metadata/hash/kiểm](evidence/rust-service/r1b-policies.json), [thứ tự/acceptance](PLAN.md#rust-r1).
+Reuse R1a/PR329, CP259–260 source và ownWIP ba file đã giữ trong stash; source của các đường phòng khớp
+baseline đó trước khi khôi phục. Projector stash riêng không được pop hoặc ghép vào refactor.
+
+`RoomRules::admit` chuyển JSON cũ thành `ResultPolicy` (Disabled/Duel/Teams), `DeparturePolicy`
+(Leave/Forfeit/UnrankedReturn/FenceActive), `BombPolicy` (Basic/Disabled/OwnerReports), `LifePolicy`
+(Observe/DuelReports/TeamReports) và `TeamPolicy` (Any/BalancedManner). Các lựa chọn compatibility của
+profile2/4/8 giữ ý nghĩa cũ; không thêm trường `four_*`/`eight_*`, alias identity hoặc nhánh sức chứa mới
+trong packet handler. Các điều kiện legacy theo profile được normalize ở admission trong `rules.rs`.
+Cờ diagnostic `ninth_admission_probe` đã có vẫn giữ; chưa phải general admission/registry.
+
+Fixture `rank` tiếp tục cung cấp bytes, **không bật luật tính kết quả/rời trận**. `tick` chọn `ResultPolicy`,
+lifecycle chọn `DeparturePolicy`, báo life chọn `LifePolicy`; điều kiện Manner cân đội chọn `TeamPolicy`.
+Query `life_enabled()` giữ ý nghĩa legacy TeamReports cho phần model chung; `reports_enabled()` gồm
+cả DuelReports. Test negative có fixture rank/mature result nhưng ResultPolicy::Disabled giữ Armed/không output,
+sau đó policy Duel mới đi đường queue error cũ. Không gán design này là authority của server gốc.
+
+Kiểm cùng hai binary trước/sau:90Rust/fmt/clippy/lockedbuild,12suite239TCP và59account TCP mỗibinary.
+13suite/298ca/3189roomframes khớp identity/normalized visit/alias/opcode/sequence/size/fullSHA; không so thứ tự
+phát toàn cục giữa các recipient độc lập. Các guard lỗi, pending-bomb EOF, stale/duplicate/reset và ownership
+trong bộ hiện có vẫn được assert; đây là syntheticTCP/differential, không native KR mới.
+
+Hai lần so ban đầu phát hiện khác ở **unread finally-close notifications**: eight-team có2remove107 thêm;
+ninth khác7vs1remove107 trong đợt đóng cuối. Không loại tùy ý theo alias hoặc nhận nguyên log là giống.
+Thêm phép ghi receiver.next_sequence ngay trước finally, giữ reference cả H đã EOF và visitor9, rồi chỉ chạy lại
+hai ca đó trên hai binary không đổi. Tất cả frame đã được driver đọc khớp; explicit H EOF/visitor-denial/fences
+vẫn trong acceptance. Raw cuối giữ cả tail không đọc; phần tail không được claim byte-identical.
+Bốn người cũng ghi boundary tương ứng. Các tool chỉ bổ sung phép đo, không đổi input/response/assertion của service.
+
+Không đổi codec/header/packet/field51 policy, room identity/slot/host/team assignment, số phòng hoặc binding theo IP;
+R1c–g còn lại theo PLAN. N1 native2account/gameplay đã đo tạiCP261 vẫn gắn source/binary ARMCP260;
+R1b candidate chưa chạy native và không thừa kế certification đó. Cuối R1 vẫn phải chạy native2/4/8/account.
+N1 mobile/ISP-CGNAT còn chưa xác nhận; sharedNAT fixedIP limit cần R1f. Không đóng N1/fullR1/M5/M4 hoặc production.

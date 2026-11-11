@@ -1,0 +1,75 @@
+{
+  "id": "AUD079",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "r1b-typed-room-policies"
+  ],
+  "completed_through": "CP262",
+  "recorded_utc": "2026-11-11T17:18:14.642661+00:00",
+  "auditor": "Codex manual self-audit; independentreviewwaived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "rust/crates/kr-service/src/rules.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "tools/test_rust_four_room.py",
+    "tools/test_rust_eight_room.py",
+    "tools/test_rust_ninth_admission.py",
+    "docs/evidence/rust-service/r1b-policies.json",
+    "local/research/codex/r1b-recovery-r2/applied.json",
+    "local/research/codex/r1b-policies-regression-r4/wire-comparison-r6.json",
+    "local/research/codex/r1b-policies-regression-r4/initial-wire-comparison-failure.json",
+    "local/research/codex/r1b-policies-regression-r4/ninth-initial-tail-mismatch.json",
+    "local/research/codex/r1b-eight-boundary-r5/baseline/wire-boundary.json",
+    "local/research/codex/r1b-eight-boundary-r5/candidate/wire-boundary.json",
+    "local/research/codex/r1b-ninth-boundary-r6/baseline/wire-boundary.json",
+    "local/research/codex/r1b-ninth-boundary-r6/candidate/wire-boundary.json"
+  ],
+  "method": "Manualorderedcore-doc→typedrules/configmapping→runtimecallsite→unitnegative/source→baseline/candidateTCP/evidence audit. VerifiedlegacyJSONflags interpretedinadmission, no newcorecapacitybranches/aliases/flags, no rankfixtureauthority, unchangedwireframe tuple/fullhash3189. Initialunreadcleanupdifferences investigatedagainstrawEOF/sequenceandnewboundaries, notdiscardedbyalias. ExplicitH EOF/visitornegative/lifecycleassertions remaininsideconsumedboundaries. No source/nativecertification conflation orN1gatepromotion.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Fixturepresence/rank aliases canimplicitlyselectresult/departure/lifepolicy.",
+      "correction": "NamedResult/Departure/Bomb/Life/TeamPolicy selectedoncefromlegacyconfig; fixturebytesnolongercontrolauthority. DisabledpolicynegativeunitkeepsArmed/quietdespitemature rankfixture.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/rules.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "docs/PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Bytecomparisonofwholefinallycleanupserverlog canappear mismatched fromschedulerdependentunreadremove107notifications.",
+      "correction": "Four/eight/ninthharnessesrecordactualreceiverboundariesbeforefinally; sourceinputs/assertionsunchanged, oldtails/mismatchreportsretained. R5/R6rerunonlytwocases: allassertedframesexact, rawunreadtailnotclaimedidentical.",
+      "fixed_in": [
+        "tools/test_rust_four_room.py",
+        "tools/test_rust_eight_room.py",
+        "tools/test_rust_ninth_admission.py",
+        "docs/PROTOCOL.md",
+        "docs/evidence/rust-service/r1b-policies.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "PassingR1bTCPcouldbe mistaken forfinalR1/nativeN1ornewauth/gameplayacceptance.",
+      "correction": "No newnativecandidate; actualCP261ARMInternetproof remainsoldsource/hash. FinalR1native2/4/8/account andN1physicaluplink/R1fsharedNATgap retained.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "rust/README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "SyntheticTCP/differential only; no newnativeKR/Internet/fullR1 orM5/gameauthorityclaim. Existingnativeevidence remains tiedtoactualoldbinary/env.",
+    "Allfour/eight/ninthreceiverboundaries preserveassertedexplicitEOF/negativecases; unreadfinalcleanupnotifications retainedraw/notclaimedidentical. No manualdropbyopcode/alias tohide discrepancy.",
+    "No codec/packetheader/template/identity-slot/registry/sessiontransport changes; R1c-gremain, sameNATidentityrequiresR1f.",
+    "No newcapacityflags/identityaliases or newcapacitybranch incorehandlers; existinglegacyprofiles normalizedinsideRoomRules. JSONflagsleftcompatible.",
+    "N1OPEN mobile/ISP-CGNATfactunattested; boundedInternetpathworksCP261/sourceARMCP260, no nativeacceptanceofR1bcandidate.",
+    "FeaturegroupauditAUD079, nofixed4CPcadence. Oldcomplete/raw/audits unchanged; privateVPSinformationstayslocal."
+  ]
+}
