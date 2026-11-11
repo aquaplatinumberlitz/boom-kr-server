@@ -1,0 +1,15 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-11T14:47:09+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án trả lời trong phiên Claude Code ngày 2026-11-11: \"đồng ý cả 3 đề xuất, ghi vào plan\"",
+  "decision": "Chốt ba quyết định còn chờ của đích giai đoạn 1: danh sách map cho RUST-G1, cách xử lý RUST-M4 Free 1v7, và chính sách kết quả của RUST-M6.",
+  "decisions": {
+    "g1_maps": "Map giai đoạn 1 của RUST-G1 là sáu map trong LadderMapGroup của client: Camp08, Factory07, Forest07, Village10, Tomb12, Patrit14. Nhóm item của G1 lấy từ bảng item của chính sáu map này (docs/content/census.json).",
+    "m4_free_1v7": "Free 1v7 là giới hạn đã biết của bản bàn giao giai đoạn 1 và không chặn đích. Chỉ mở lại khi có quan sát mới về lỗi khởi động client; không retry.",
+    "m6_results": "Lưu lịch sử trận bền vững, thưởng bằng 0. Kim dùng số lượt cố định mỗi vòng theo policy hiện tại. Điểm, bảng xếp hạng, tiền tệ và inventory thuộc giai đoạn sau."
+  },
+  "plan": "docs/PLAN.md#delivery-target",
+  "scope": "Chỉ chốt phạm vi. Không đóng gate, milestone hay checkpoint nào: trạng thái RUST-M4 vẫn do checkpoint/audit theo quy trình ghi. Danh sách map là phạm vi giai đoạn 1; định hướng dài hạn vẫn là gameplay đầy đủ theo delivery-target.json.",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}
