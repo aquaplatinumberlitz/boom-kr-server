@@ -29,6 +29,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP250: tám client KR thật đã chơi qua hai kết quả 4v4 và Start3 trên Rust.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-eight-baseline), [raw/hash](docs/evidence/rust-service/README.md#cp250).
+Cùng8/Wine/Manner1/32TCP: loading8,56chiều movement,stat/bom8owner,7peerlife/native1751082-inner1072/1803,
+64slotreset/7Ready/Start2–3.156raw/384,236s sealed/cleanup0;5.019TCP/912reply/53.616copiedgetters riêng.
+Đã xem24ảnh: cả8bảng điểm hai đội thắng đối nghịch vàStart3clock01:53. Vòng1 Dchết thêm do bom lan, giữ đúng nativevector.
+69Rusttests/16eightTCP/5guards; hồi quy2/4 ghi riêng. TMPFSevidence/exporthash, Btrfsflushchưa sửa.
+M4 còn fixedFree1v7/selector và Mannernegative cùng native9admissionbridge; M5nativebridge riêng, không fullgame/auth.
+CP249 merge [PR320](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/320)/`9fdb57b`; AUD071qua248/kế252. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP249: Rust đã đưa ba survivor về phòng sau guest/host EOF khi bom còn chờ.**
 [Contract và giới hạn](docs/PROTOCOL.md#rust-four-abort), [raw/hash](docs/evidence/rust-service/README.md#cp249).
 Hai run KR thật/Wine/Manner1: guestD mất→A/B/C về phòng; hostA mất→B/C/D về phòng và B lên chủ.
@@ -37,8 +48,6 @@ Native180 đủ3byte, actual585, 107 xóa đúng ID và9slot110/run; không175 h
 riêng rồi xuất raw/hash vềlocal; hai lỗi flushBtrfs được giữ, **chưa sửa/đạt vận hành bền vững**.
 M4 còn tám client; M5backend đã có/nativebridge riêng. CP248 merge [PR319](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/319)/`b58abf8`.
 AUD071 qua248/audit kế252. Internet thật chưa kiểm.
-
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP248: cùng bốn KR thật đã qua hai kết quả 2v2 đối nghịch, reset và Start3 trên Rust.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-four-results), [raw/hash](docs/evidence/rust-service/README.md#cp248).

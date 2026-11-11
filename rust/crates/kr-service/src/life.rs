@@ -224,7 +224,7 @@ impl Player {
         targets: &[crate::room::Membership],
     ) -> io::Result<()> {
         let unique: BTreeSet<_> = targets.iter().copied().collect();
-        if !matches!(targets.len(), 1 | 3) || unique.len() != targets.len() {
+        if !matches!(targets.len(), 1 | 3 | 7) || unique.len() != targets.len() {
             return Err(io::Error::other("unsupported life clear recipient roster"));
         }
         let pending = self
@@ -241,7 +241,7 @@ impl Player {
         targets: &[crate::room::Membership],
     ) -> io::Result<()> {
         let unique: BTreeSet<_> = targets.iter().copied().collect();
-        if !matches!(targets.len(), 1 | 3)
+        if !matches!(targets.len(), 1 | 3 | 7)
             || unique.len() != targets.len()
             || self.deliveries.contains_key(digest)
         {

@@ -203,7 +203,7 @@ impl Ledger {
             owner,
         };
         let recipients: BTreeSet<_> = roster.iter().copied().collect();
-        if !matches!(recipients.len(), 2 | 4) || recipients.len() != roster.len() {
+        if !matches!(recipients.len(), 2 | 4 | 8) || recipients.len() != roster.len() {
             return Ok(Err("unsupported_roster"));
         }
         self.next_wire += 1;
@@ -286,6 +286,30 @@ mod tests {
             column: 3,
             power: 1,
         }
+    }
+    #[test]
+    fn eight_completion_requires_all_distinct_current_recipients_and_fences_old_ticket() {
+        let roster: [Membership; 8] = std::array::from_fn(|i| member(i as u32 + 1, i as u64 + 11));
+        let mut ledger = Ledger::default();
+        ledger.begin(1);
+        let t = ledger
+            .place(1, roster[0], 0, &request(1), &roster, 1)
+            .unwrap()
+            .unwrap();
+        for recipient in &roster[..7] {
+            assert!(ledger.delivered(&t, *recipient));
+            assert!(!ledger.delivered(&t, *recipient));
+            assert!(ledger.pending());
+        }
+        let mut wrong = roster[7];
+        wrong.visit += 1;
+        assert!(!ledger.delivered(&t, wrong));
+        assert!(ledger.pending());
+        assert!(ledger.delivered(&t, roster[7]));
+        assert!(!ledger.pending());
+        ledger.finish();
+        ledger.begin(2);
+        assert!(!ledger.delivered(&t, roster[7]));
     }
     #[test]
     fn duplicate_conflict_owner_key_capacity_and_two_recipient_completion() {

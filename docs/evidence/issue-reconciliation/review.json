@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP249",
+  "as_of": "CP250",
   "baseline": "bc5535604b3c85e67ad9319b2fe5498900681ac9",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -155,11 +155,11 @@
         "KR-F001",
         "KR-F015"
       ],
-      "known": "M3CP242scoped/M5backendmerged;CP248normalfourrank-resetPR319merged;CP249guest-hostpendingEOF/nativeunranked180-post585-IDclear-threeRoom/chief/128raw/65tests/20+20+32four/51two/6guards.",
-      "remaining": "M4known8port;M5nativeKRbridge/multitransportownership;M6durability/M7rooms/M8ops. Btrfsflush292/208rootcause unknown;tmpfscontrols notdurabilityfix. AUIrankcapturegap remains.",
-      "next_test": "PLANknown8contractCP208–210/213port/native, no duplicatefourpositive;M5bridge independent. AUD071through248-next252.",
+      "known": "M3CP242scoped/M5backendmerged;CP249fourEOFPR320merged;CP250native8Manner4v4/mesh56/statbom8/life7peer/opposite-rankresetStart3/156raw/69tests/16eightTCP/2-4regression123cases.",
+      "remaining": "M4fixedFree1v7/selector-Mannernegative/native9admissionbridge;M5nativeKRbridge/transportownership;M6durability/M7rooms/M8ops. Btrfsflushunknown/tmpfsnotdurabilityfix. Nativepost17EOFcausalunknown/priorargvpositive. CP250UDPcapturepartial3frames/fourIPthreadguard;native56progress/fullTCPindependent,fixinmeaningfulvariantcontrol.",
+      "next_test": "PLANfixedteamvariantsCP213port/native/separatedeliveryfromWIP;then native9admissionbridge/consumer/M4acceptance. No duplicate8Mannerbaseline/fourpositive;M5bridgeindependent/AUD071next252.",
       "acceptance": "Epic checklist: linkedscopedtask/evidence+authoritymatrix vàacceptancegate ởPLAN; từngtaskđóng khôngđóngepic/K5/K6a.",
-      "reason": "Native guestD/hostA scoped recovery and UIverified; privateTMPFS evidence storage/exporthash explicit, failedBtrfsruns retained/deadlines unchanged. No fullM4/auth/epicgateclosure.",
+      "reason": "Same8twooppositeoutcomes/nativefullrankresetStart3/mesh-stats-bom8/24UIimagesverified, actualDcollateralhonest. TMPFS/failedruns/verifiercorrections retained;no M4-auth-epicgateclosure.",
       "sources": [
         "docs/PROTOCOL.md#authority",
         "docs/RESEARCH.md#feature-gaps",
@@ -287,7 +287,8 @@
         "docs/PROTOCOL.md#rust-four-owner-bombs",
         "docs/PROTOCOL.md#rust-four-life",
         "docs/PROTOCOL.md#rust-four-results",
-        "docs/PROTOCOL.md#rust-four-abort"
+        "docs/PROTOCOL.md#rust-four-abort",
+        "docs/PROTOCOL.md#rust-eight-baseline"
       ],
       "evidence": [
         "docs/evidence/current-movement-cycles/README.md",
@@ -409,7 +410,8 @@
         "docs/evidence/rust-service/four-owner-bombs.json",
         "docs/evidence/rust-service/four-life.json",
         "docs/evidence/rust-service/four-results.json",
-        "docs/evidence/rust-service/four-abort.json"
+        "docs/evidence/rust-service/four-abort.json",
+        "docs/evidence/rust-service/eight-baseline.json"
       ],
       "prs": [
         173,
@@ -531,7 +533,8 @@
         316,
         317,
         318,
-        319
+        319,
+        320
       ],
       "successors": []
     },
@@ -870,11 +873,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "M3CP242scoped/M5backendmerged;CP248normalfourrank-resetPR319merged;CP249guest-hostpendingEOF/nativeunranked180-post585-IDclear-threeRoom/chief/128raw/65tests/20+20+32four/51two/6guards.",
-      "remaining": "M4known8port;M5nativeKRbridge/multitransportownership;M6durability/M7rooms/M8ops. Btrfsflush292/208rootcause unknown;tmpfscontrols notdurabilityfix. AUIrankcapturegap remains.",
-      "next_test": "PLANknown8contractCP208–210/213port/native, no duplicatefourpositive;M5bridge independent. AUD071through248-next252.",
+      "known": "M3CP242scoped/M5backendmerged;CP249fourEOFPR320merged;CP250native8Manner4v4/mesh56/statbom8/life7peer/opposite-rankresetStart3/156raw/69tests/16eightTCP/2-4regression123cases.",
+      "remaining": "M4fixedFree1v7/selector-Mannernegative/native9admissionbridge;M5nativeKRbridge/transportownership;M6durability/M7rooms/M8ops. Btrfsflushunknown/tmpfsnotdurabilityfix. Nativepost17EOFcausalunknown/priorargvpositive. CP250UDPcapturepartial3frames/fourIPthreadguard;native56progress/fullTCPindependent,fixinmeaningfulvariantcontrol.",
+      "next_test": "PLANfixedteamvariantsCP213port/native/separatedeliveryfromWIP;then native9admissionbridge/consumer/M4acceptance. No duplicate8Mannerbaseline/fourpositive;M5bridgeindependent/AUD071next252.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Native guestD/hostA scoped recovery and UIverified; privateTMPFS evidence storage/exporthash explicit, failedBtrfsruns retained/deadlines unchanged. No fullM4/auth/epicgateclosure.",
+      "reason": "Same8twooppositeoutcomes/nativefullrankresetStart3/mesh-stats-bom8/24UIimagesverified, actualDcollateralhonest. TMPFS/failedruns/verifiercorrections retained;no M4-auth-epicgateclosure.",
       "sources": [
         "docs/PLAN.md#rust-service-milestones",
         "docs/RUST_SERVICE_ARCHITECTURE.md",
@@ -917,7 +920,8 @@
         "docs/PROTOCOL.md#rust-four-owner-bombs",
         "docs/PROTOCOL.md#rust-four-life",
         "docs/PROTOCOL.md#rust-four-results",
-        "docs/PROTOCOL.md#rust-four-abort"
+        "docs/PROTOCOL.md#rust-four-abort",
+        "docs/PROTOCOL.md#rust-eight-baseline"
       ],
       "evidence": [
         "docs/evidence/rust-service/README.md",
@@ -959,7 +963,8 @@
         "docs/evidence/rust-service/four-owner-bombs.json",
         "docs/evidence/rust-service/four-life.json",
         "docs/evidence/rust-service/four-results.json",
-        "docs/evidence/rust-service/four-abort.json"
+        "docs/evidence/rust-service/four-abort.json",
+        "docs/evidence/rust-service/eight-baseline.json"
       ],
       "prs": [
         286,
@@ -995,7 +1000,8 @@
         316,
         317,
         318,
-        319
+        319,
+        320
       ],
       "successors": []
     }

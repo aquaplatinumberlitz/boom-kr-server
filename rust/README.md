@@ -351,3 +351,21 @@ python3 tools/test_rust_four_room.py --binary rust/target/debug/kr-service \
 native180107/IDclear/Room/chief. Evidence sink dùng tmpfs riêng/exporthash; Btrfsflush lỗi giữ nguyên/chưa sửa,
 không nghiệm thu vận hành bền vững. Rollback binary/config CP248 không flag mới, giữ Pythonreference; không hot-swap activeconnection.
 PLAN tiếp8, M5nativebridge riêng. Internet thật chưa kiểm.
+
+
+## Baseline tám người — CP250
+
+[Contract/giới hạn](../docs/PROTOCOL.md#rust-eight-baseline), [evidence](../docs/evidence/rust-service/eight-baseline.json).
+Exporter `--eight-startup-derived-dir` với8`--eight-startup-peer` (hai/fixed-room input), `--eight-battle` opt-in;
+không trộn fourexpansion/flags/terrain. Không import currenteightWIP; fixedalternatingteams/knownzero profiles.
+
+```bash
+python3 tools/test_rust_eight_room.py --binary rust/target/debug/kr-service \
+  --config local/eight-config.json --out local/new-eight-tcp
+```
+
+69Rusttests/16eightTCP/5guards; native cùng8Manner4v4/32TCP/56mesh/statbom8/life7peer/rankresetStart3.
+R1Dcollateraldead được giữ, winningteamrank1; không deterministicmovement/exactCP210vectorclaim.
+Native/tmpfsrawexporthash, Btrfsloggingdurabilityunknown. M4cònfixedFree1v7/selector/unbalancednegative/native9admission;
+không fullM4/8EOFreturn/fullauth. Rollback matchedCP249binary+profilekhôngeightflag; không hot-swap activeconnections.
+Internet thật chưa kiểm.

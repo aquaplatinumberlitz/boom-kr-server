@@ -282,3 +282,8 @@ CP249: exporter `--four-abort-room` cần `--four-results`; `test_rust_four_room
 scopedhost/guestEOF, đủ3postreturn585 mới cleanup, Ready0/chief/no175/nopending158. Native scope/giới hạn ở
 [contract](../docs/PROTOCOL.md#rust-four-abort). Normalcombinedbomb-life test nay drain đúng lastD158 trước quietlife;
 không đổi service/timeout. Run lỗi Btrfs giữ, explicittmpfs controls có export/hash; không là durabilityfix.
+
+
+CP250: `export_rust_profile.py` có fixed8producer riêng và `--eight-battle`; `test_rust_eight_room.py` kiểm16ca TCP
+startup8/ACK8/peer205/bom8-statpowers/allrecipientlife7/rank8-reset-Start3/EOFfences. Inputs tự sinh khôngnativeoracle.
+[Nativecontract/giới hạn](../docs/PROTOCOL.md#rust-eight-baseline); notnative9admission/fullM4/auth/production.

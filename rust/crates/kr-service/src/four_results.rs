@@ -1,4 +1,4 @@
-//! CP202 measured fixed-four rank layout; outcome/zero economy/settle are design.
+//! CP202/210 measured fixed four/eight rank layout; outcome/zero economy/settle are design.
 use crate::room::{Phase, Room};
 use kr_wire::{Width, write_uint};
 use std::{
@@ -8,8 +8,8 @@ use std::{
 };
 
 pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
-    if room.capacity() != 4
-        || room.members.len() != 4
+    if !matches!(room.capacity(), 4 | 8)
+        || room.members.len() != room.capacity()
         || !matches!(room.phase, Phase::Armed { .. })
         || room.bombs.pending()
         || room
@@ -46,21 +46,25 @@ pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
     alive.first().copied()
 }
 
-/// 16-byte header + four131-byte rows + twelve empty slots = 552-byte inner.
+/// Header16 + count×131 active rows + (16-count) empty slots: inner552/1072.
 /// Constructor is an input producer, never a native compatibility oracle.
-pub(crate) fn rank_body(winner: u8) -> io::Result<Vec<u8>> {
-    if winner > 1 {
+pub(crate) fn rank_body(count: usize, winner: u8) -> io::Result<Vec<u8>> {
+    if !matches!(count, 4 | 8) || winner > 1 {
         return Err(io::Error::other("unsupported fixed-four winning team"));
     }
     let mut inner = vec![0; 16];
     inner[9] = 255;
-    for slot in 0..4 {
+    for slot in 0..count {
         let mut row = vec![0; 131];
         row[0] = 1;
-        row[5] = if slot % 2 == winner { 1 } else { 2 };
+        row[5] = if slot % 2 == usize::from(winner) {
+            1
+        } else {
+            2
+        };
         inner.extend(row);
     }
-    inner.extend([0; 12]);
+    inner.resize(inner.len() + 16 - count, 0);
     let mut stream = vec![24];
     stream.extend_from_slice(&((inner.len() + 1) as u32).to_le_bytes());
     stream.push(0);
@@ -142,11 +146,11 @@ mod tests {
                 "794354ab76dda5547052ba3b31a3418a2055a1d664a05883a852d75633d00d66",
             ),
         ] {
-            let body = rank_body(team).unwrap();
+            let body = rank_body(4, team).unwrap();
             assert_eq!(body.len(), 562);
             assert_eq!(crate::sha256_hex(&body), expected);
         }
-        assert!(rank_body(2).is_err());
+        assert!(rank_body(4, 2).is_err());
         assert!(return_body(2).is_err());
     }
     #[test]
