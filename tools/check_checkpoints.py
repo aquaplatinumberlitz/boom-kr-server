@@ -291,8 +291,10 @@ def validate(manifest, root=ROOT, require_local=False):
                 continue
             if item.get("source") not in SOURCES or item.get("status") not in STATES:
                 errors.append(f"{where}: invalid finding source/status")
-            if item.get("method") not in {"static", "emulation", "runtime", "design", "documentation"}:
+            if item.get("method") not in {"static", "emulation", "runtime", "design", "documentation", "test"}:
                 errors.append(f"{where}: invalid evidence method")
+            if item.get("method") == "test":
+                warnings.append(f"{where}: automated TEST evidence; not native client/runtime certification")
             file_link(item.get("canonical"), where)
             if not item.get("evidence") or any(e not in evidence_ids for e in item["evidence"]):
                 errors.append(f"{where}: finding references unknown/no evidence")

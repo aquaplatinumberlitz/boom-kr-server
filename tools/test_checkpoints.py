@@ -94,6 +94,19 @@ class CheckpointsTest(unittest.TestCase):
         self.assertTrue(any("REVIEW pending" in w for w in warnings))
         self.assertEqual(stats["evidence_verified"], 1)
 
+    def test_automated_method_keeps_provenance_hash_and_method_validation(self):
+        self.record["findings"][0]["method"] = "test"
+        errors, warnings, stats = checker.validate(self.manifest, self.root, True)
+        self.assertEqual(errors, [])
+        self.assertTrue(any("not native client/runtime certification" in w for w in warnings))
+        self.assertEqual(self.record["findings"][0]["source"], "design")
+        self.assertEqual(self.record["findings"][0]["status"], "design")
+        self.assertEqual(stats["evidence_verified"], 1)
+        self.record["evidence"][0]["sha256"] = "f" * 64
+        self.assertTrue(any("hash mismatch" in e for e in self.errors()))
+        self.record["findings"][0]["method"] = "arbitrary"
+        self.assertTrue(any("invalid evidence method" in e for e in self.errors()))
+
     def test_id_counter_gap_and_missing_fields(self):
         self.record["id"] = "CP002"
         del self.record["question"]

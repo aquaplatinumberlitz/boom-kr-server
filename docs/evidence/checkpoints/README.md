@@ -81,6 +81,12 @@ Complete có blocked docs,lệchhash hoặc audit tới hạn đều exit1.
 Checker không đọc hiểu disassembly,suy diễn kiến thức,xác nhận ngữ nghĩa,đo runtime hoặc đóng gate.
 Fragment link chỉ kiểm file,không kiểm anchor;semantic sync do audit/reviewer.
 Tests tools/test_checkpoints.py là schema/negative cases,không phải protocol oracle.
+
+`findings.method=test` ghi phép kiểm tự động của source/backend/codec hoặc so sánh tổng hợp
+(CP259 dùng nhãn này cho hồi quy TCP và build/test ARM). Checker hỗ trợ thêm nhãn này và cảnh báo
+rõ không phải chứng nhận native client; không suy thành `kr_runtime` hoặc `confirmed`, không đổi
+`source`/`status`, kiểm hash, continuity, audit hay acceptance. Các method cũ giữ nguyên nghĩa.
+Đây là mở rộng schema trước khi giao PR331; record CP259 đã commit giữ nguyên.
 Bàn giao ghi ID/counter,audit kế,pending,kết quả kiểm,commit/PR,blocker.
 
 
