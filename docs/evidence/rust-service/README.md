@@ -436,3 +436,30 @@ AUD071 periodicqua248 đối chiếu README→PLAN→PROTOCOL→RESEARCH→evide
 Sửa currentrankpending/legacyBattlecfgambiguity, táchnativeall4parserproof vớiAUIcapturegap; giữoldcomplete/audits/raw/failures.
 M4 cònunrankedhostguestabortEOF→roomcleanup/promotion rồi8;nativeclear21/rescue/needle/terrain-inventory4 chưa đủ.
 M5backendpresent/nativebridge riêng/#14/#285OPEN/8WIPbyteexact;shutdownrootcausechưa rõ; Internet thật chưa kiểm.
+
+
+<a id="cp249"></a>
+## CP249 — scoped bốn người guest/host EOF, abort không xếp hạng và storage control
+
+[Contract](../../PROTOCOL.md#rust-four-abort), [metadata](four-abort.json), [PLAN](../../PLAN.md#current-order).
+CP248 merge PR319/b58abf8; `rust-four-abort-source-r1/reuse.json` và integration-baseline.json giữ đối chiếu CP205,
+committedPython/known180107110/chief; không import WIP/VNwire hoặc tìm thêm hàm native. Newbinary7b1e2338…,
+copy4b/Wine10.0-20260425/currentManner1/private4virtualhosts/sharedkernel/no default route.
+
+`local/research/codex/rust-four-abort-{guest,host}-native-r1/` giữ abort-verification/ui-review/input-retention,
+native-four/{runtime-preflight,recipe,raw-seal,storage-export,cycles}. Mỗi run đúng ownedpendingPIDloss,
+3native180full3/3setup585/3native107IDclear/9wire110/3Roomscreens/chief/pastfuse/no158175. Metadata pin riêng
+runSHA/binary/rawcount/duration/TCP/cleanup; verifiers dùng fulltuple-C2Sseq-CRC-SHA PCAP joins, không logserver-only.
+Native evidence sink explicitprivate256MiBtmpfs; sau ownedcleanup/captureclose copy-size-SHAverify/unmount/rename
+về cùng localpath, storage-export.json pin toàn raw. Không sửa raw/preflight cũ hoặc tăngdeadline.
+
+65workspace/20guestTCP/20hostTCP/6prebind; `rust-four-abort-tmpfs-control-r1/` giữ32normalfour/82exportedfiles,
+`rust-four-abort-two-tmpfs-control-r1/` giữ51two/85exportedfiles. Chỉ temporarytree thuộc run bị xóa sau export/hash,
+lexicallocalpaths còn nguyên/real directory, không mất evidence qua symlink. Đây là storage control, không nativeoracle.
+Giữ clippyR1 typecomplexity/nestedif lỗi và before-source; R2 sửa cấu trúc trước mọi run/65tests/lockedbuild.
+
+NormalkernelR1 pendingD158 đúngfuse cắt vàoC17quiet; failure-review/source trướcdrain/raw giữ, explicitdrain trước
+independentlifecases sửa harness. R2logflush timeout event292 và R3event208/exit1/PIDgone/sourcefrozen giữ nguyên.
+R2PID-thread snapshot có reserve_bytes.cold; chưa đủ causaldiagnosis hoặc Btrfsfix. Storage controls/nativetmpfs
+không chứng minh durablelog/production. CP247shutdownunknown/history/AUD071next252 giữ. M4 tiếp8/M5bridge riêng;
+không AUIrankcapture/newnormalcycles/reconnect/fullgame/auth/gateclosure. Internet thật chưa kiểm.

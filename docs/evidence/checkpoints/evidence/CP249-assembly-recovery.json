@@ -1,0 +1,19 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "RUST249REC-0001",
+      "kind": "local",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/append_cp249_resume.py",
+      "bytes": 3911,
+      "sha256": "f8ce10f5c12846186e3af658c7d983125d6789f8967694c3c2a984813c27332b"
+    },
+    {
+      "id": "RUST249REC-0002",
+      "kind": "local",
+      "path": "local/research/codex/cp249-append-failure.json",
+      "bytes": 492,
+      "sha256": "ebf835a5f0c043ed0e72c815c3c76fb648a7a76ce934f460c7cf6826cd7f4a6d"
+    }
+  ]
+}

@@ -32,6 +32,8 @@ pub struct Config {
     pub four_life_reports: bool,
     #[serde(default)]
     pub four_results: bool,
+    #[serde(default)]
+    pub four_abort_room: bool,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -74,6 +76,7 @@ pub struct Batch {
     pub bomb_complete: Option<(bombs::Ticket, Membership)>,
     pub life_complete: Option<(Membership, u64, String, Membership)>,
     pub outcome_complete: Option<(Membership, u64)>,
+    pub abort_return_complete: Option<(Membership, u64)>,
 }
 pub struct Runtime {
     model: Room,
@@ -91,6 +94,20 @@ pub struct Runtime {
     four_owner_bombs: bool,
     four_life_reports: bool,
     four_results: bool,
+    four_abort_room: bool,
+    abort: Option<FourAbort>,
+}
+/// Single-loss CP205 diagnostic lifecycle; preserved through final cleanup.
+/// A second loss during recovery fails closed, rather than claiming recovery.
+type AbortTransition = (Room, FourAbort, Vec<(u32, Batch)>);
+
+struct FourAbort {
+    round: u64,
+    departed: Member,
+    returned: HashSet<Membership>,
+    setups: HashSet<Membership>,
+    refresh_queued: bool,
+    completed: bool,
 }
 #[derive(serde::Serialize)]
 pub struct BombObservation {
@@ -132,6 +149,9 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         return Err(err("fixed room title must be bounded ASCII"));
     }
     let count = actors.len();
+    if cfg.four_abort_room && (count != 4 || !cfg.four_results) {
+        return Err(err("four abort-room requires opt-in four results"));
+    }
     if cfg.four_results && (count != 4 || !cfg.four_life_reports || !cfg.four_owner_bombs) {
         return Err(err("four results require opt-in four life and owner bombs"));
     }
@@ -294,6 +314,8 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         four_owner_bombs: cfg.four_owner_bombs,
         four_life_reports: cfg.four_life_reports,
         four_results: cfg.four_results,
+        four_abort_room: cfg.four_abort_room,
+        abort: None,
     })))
 }
 impl Runtime {
@@ -354,6 +376,7 @@ impl Runtime {
             bomb_complete: None,
             life_complete: None,
             outcome_complete: None,
+            abort_return_complete: None,
         }
     }
     fn lobby_batch(
@@ -376,6 +399,7 @@ impl Runtime {
             bomb_complete: None,
             life_complete: None,
             outcome_complete: None,
+            abort_return_complete: None,
         }
     }
     // Reserve every recipient queue entry before publishing any state or batch.
@@ -480,6 +504,41 @@ impl Runtime {
         }
         Ok(effects)
     }
+    fn abort_refresh(&mut self) -> io::Result<()> {
+        let Some(job) = self.abort.as_ref() else {
+            return Ok(());
+        };
+        if job.completed
+            || job.refresh_queued
+            || self.model.members.len() != 3
+            || !self
+                .model
+                .members
+                .values()
+                .all(|m| job.returned.contains(&m.key) && job.setups.contains(&m.key))
+        {
+            return Ok(());
+        }
+        let round = job.round;
+        let remove = self.reply("start", Some(107), Some(room_wire::removal(&job.departed)?));
+        let mut packets = vec![("abort107".into(), remove)];
+        for peer in self.model.members.values() {
+            packets.push((
+                format!("abort110-{}", peer.slot),
+                self.slot(peer, self.model.host)?,
+            ));
+        }
+        let mut effects = Vec::new();
+        for peer in self.model.members.values() {
+            let mut batch = Self::member_batch(peer.key, Some(round), 0, packets.clone());
+            batch.guard = Guard::Outcome(peer.key, round);
+            batch.outcome_complete = Some((peer.key, round));
+            effects.push((peer.key.identity, batch));
+        }
+        self.publish(self.model.clone(), effects)?;
+        self.abort.as_mut().expect("abort job").refresh_queued = true;
+        Ok(())
+    }
     fn detach(&mut self, id: u32, connection: u64) {
         if self
             .channels
@@ -490,6 +549,63 @@ impl Runtime {
         }
         if let Ok(m) = self.member(id, connection) {
             let mut next = self.model.clone();
+            if self.abort.as_ref().is_some_and(|job| !job.completed) {
+                // Invalidate all queued recovery on a second loss. Preserve the
+                // first job for provenance; do not claim multi-loss room recovery.
+                let _ = next.leave(m.key);
+                self.model = next;
+                self.channels.clear();
+                return;
+            }
+            if self.four_abort_room && matches!(next.phase, Phase::Armed { .. }) {
+                let result = (|| -> io::Result<AbortTransition> {
+                    let round = next.abort_four(m.key)?;
+                    let returning = self.reply(
+                        "start",
+                        Some(180),
+                        Some(crate::four_results::return_body(self.selector)?),
+                    );
+                    let mut effects = Vec::new();
+                    for peer in next.members.values() {
+                        let mut batch = Self::member_batch(
+                            peer.key,
+                            Some(round),
+                            0,
+                            vec![("abort180".into(), returning.clone())],
+                        );
+                        batch.guard = Guard::Outcome(peer.key, round);
+                        batch.abort_return_complete = Some((peer.key, round));
+                        effects.push((peer.key.identity, batch));
+                    }
+                    let job = FourAbort {
+                        round,
+                        departed: m.clone(),
+                        returned: HashSet::new(),
+                        setups: HashSet::new(),
+                        refresh_queued: false,
+                        completed: false,
+                    };
+                    Ok((next.clone(), job, effects))
+                })();
+                match result {
+                    Ok((next, job, effects)) => {
+                        if self.publish(next.clone(), effects).is_err() {
+                            self.model = next;
+                            self.channels.clear();
+                        }
+                        self.abort = Some(job);
+                    }
+                    Err(_) => {
+                        self.channels.clear();
+                    }
+                }
+                self.requested.remove(&m.key);
+                self.rostered
+                    .retain(|(recipient, subject)| *recipient != m.key && *subject != m.key);
+                self.ports.remove(&m.key);
+                self.channels.remove(&id);
+                return;
+            }
             let closing_active =
                 self.packets.contains_key("rank") && matches!(next.phase, Phase::Armed { .. });
             let transition = if closing_active {
@@ -551,6 +667,9 @@ impl Session {
     }
     pub fn tick(&self) -> io::Result<()> {
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        if r.abort.is_some() {
+            return r.abort_refresh();
+        }
         if !r.packets.contains_key("rank") && !r.four_results {
             return Ok(());
         }
@@ -761,12 +880,28 @@ impl Session {
                     .report_delivered(digest, *recipient);
             }
         }
+        if let Some((recipient, round)) = batch.abort_return_complete {
+            let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            if !runtime.model.outcome_deliverable(recipient, round) {
+                return Err(err("stale abort return completion"));
+            }
+            let job = runtime
+                .abort
+                .as_mut()
+                .filter(|j| j.round == round && !j.completed)
+                .ok_or_else(|| err("missing abort return job"))?;
+            if !job.returned.insert(recipient) {
+                return Err(err("duplicate abort return completion"));
+            }
+        }
         if let Some((recipient, round)) = batch.outcome_complete {
-            self.shared
-                .lock()
-                .map_err(|_| err("room unavailable"))?
-                .model
-                .refreshed(recipient, round)?;
+            let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            runtime.model.refreshed(recipient, round)?;
+            if runtime.model.phase == Phase::Idle
+                && let Some(job) = runtime.abort.as_mut()
+            {
+                job.completed = true;
+            }
         }
         if let Some((ticket, recipient)) = &batch.bomb_complete {
             let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
@@ -903,6 +1038,18 @@ impl Session {
                     return Err(err("unsupported setup585"));
                 }
                 let m = r.member(self.identity, self.connection)?;
+                if let Some(job) = r.abort.as_ref().filter(|j| !j.completed) {
+                    if !job.returned.contains(&m.key) {
+                        return Err(err("abort setup585 before completed return180"));
+                    }
+                    next.observe_closed(m.key)?; // bounded duplicate/tail budget
+                    r.publish(next, vec![])?;
+                    r.abort.as_mut().expect("abort job").setups.insert(m.key);
+                    return Ok(Observation {
+                        dropped_after_abort: true,
+                        ..Observation::default()
+                    });
+                }
                 if r.requested.contains(&m.key) {
                     // Native180 sends585 again. The retained Python profile ignores
                     // this tail;110 refresh owns the return. Raw585 has no epoch.
@@ -1593,6 +1740,8 @@ mod tests {
             four_owner_bombs: false,
             four_life_reports: false,
             four_results: false,
+            four_abort_room: false,
+            abort: None,
         }));
         let mut session = Session {
             shared: shared.clone(),
@@ -1702,6 +1851,8 @@ mod tests {
             four_owner_bombs: false,
             four_life_reports: false,
             four_results: false,
+            four_abort_room: false,
+            abort: None,
         };
         let mut next = runtime.model.clone();
         let key = next.enter(1, 11, true).unwrap();
@@ -1875,5 +2026,193 @@ mod tests {
         assert!(!session.valid(&old_due));
         // This queue-only fixture has no native departure templates.
         shared.lock().unwrap().channels.clear();
+    }
+}
+
+#[cfg(test)]
+mod four_abort_tests {
+    use super::*;
+    fn runtime() -> (Shared, Vec<Session>, [Membership; 4], u64) {
+        let mut model = Room::with_capacity(4).unwrap();
+        let keys = std::array::from_fn(|i| {
+            let k = model.enter(i as u32 + 1, i as u64 + 11, i == 0).unwrap();
+            model.setup(k).unwrap();
+            if i > 0 {
+                model.ready(k).unwrap();
+            }
+            k
+        });
+        let round = model.begin(keys[0]).unwrap();
+        for key in keys {
+            model.ack(key, round).unwrap();
+        }
+        let mut channels = HashMap::new();
+        let mut inboxes = Vec::new();
+        let mut packets = HashMap::new();
+        let packet = |opcode, payload| Reply {
+            header: [0; 37],
+            opcode,
+            payload,
+        };
+        packets.insert("start".into(), packet(121, vec![]));
+        for (i, key) in keys.iter().enumerate() {
+            let mut body = vec![0; 204];
+            body[1..5]
+                .copy_from_slice(&kr_wire::write_uint(key.identity as u64, Width::U32).unwrap());
+            body[12..16].copy_from_slice(&kr_wire::write_uint(0, Width::U32).unwrap());
+            packets.insert(
+                player_alias(key.identity).unwrap().into(),
+                packet(106, body),
+            );
+            let (sender, inbox) = mpsc::channel(8);
+            channels.insert(
+                key.identity,
+                Channel {
+                    connection: key.connection,
+                    sender,
+                },
+            );
+            inboxes.push((i, inbox));
+        }
+        let shared = Arc::new(Mutex::new(Runtime {
+            model,
+            packets,
+            channels,
+            last_visits: HashMap::new(),
+            requested: keys.into_iter().collect(),
+            rostered: HashSet::new(),
+            title: b"AbortRoom".to_vec(),
+            selector: 1,
+            ready: packet(241, vec![]),
+            ips: HashMap::new(),
+            ports: HashMap::new(),
+            floor_catalog: pickups::Catalog::default(),
+            four_owner_bombs: true,
+            four_life_reports: true,
+            four_results: true,
+            four_abort_room: true,
+            abort: None,
+        }));
+        let sessions = inboxes
+            .into_iter()
+            .map(|(i, inbox)| Session {
+                shared: shared.clone(),
+                inbox,
+                identity: keys[i].identity,
+                connection: keys[i].connection,
+            })
+            .collect();
+        (shared, sessions, keys, round)
+    }
+    fn zero() -> Vec<u8> {
+        kr_wire::write_uint(0, Width::U32).unwrap()
+    }
+    #[test]
+    fn unranked_recovery_requires_three_post_write_setups_then_all_refresh_completions() {
+        let (shared, mut sessions, keys, round) = runtime();
+        let old = Runtime::member_batch(keys[1], Some(round), 6000, vec![]);
+        assert!(sessions[1].valid(&old));
+        shared.lock().unwrap().detach(1, keys[0].connection);
+        assert!(!sessions[1].valid(&old));
+        let mut returns = Vec::new();
+        for s in &mut sessions[1..] {
+            let b = s.inbox.try_recv().unwrap();
+            assert_eq!(
+                b.packets.iter().map(|p| p.1.opcode).collect::<Vec<_>>(),
+                vec![180]
+            );
+            assert!(s.valid(&b));
+            assert!(s.packet(585, &zero()).is_err()); // cannot set up before actual write
+            s.finish(&b).unwrap();
+            assert!(s.finish(&b).is_err());
+            returns.push(b);
+        }
+        for s in &sessions[1..3] {
+            s.packet(585, &zero()).unwrap();
+        }
+        sessions[1].packet(585, &zero()).unwrap();
+        sessions[1].tick().unwrap();
+        for s in &mut sessions[1..] {
+            assert!(s.inbox.try_recv().is_err());
+        }
+        sessions[3].packet(585, &zero()).unwrap();
+        sessions[1].tick().unwrap();
+        let mut refresh = Vec::new();
+        for s in &mut sessions[1..] {
+            let b = s.inbox.try_recv().unwrap();
+            assert_eq!(
+                b.packets.iter().map(|p| p.1.opcode).collect::<Vec<_>>(),
+                vec![107, 110, 110, 110]
+            );
+            assert!(s.valid(&b));
+            refresh.push(b);
+        }
+        sessions[1].tick().unwrap();
+        for s in &mut sessions[1..] {
+            assert!(s.inbox.try_recv().is_err());
+        }
+        for (s, b) in sessions[1..3].iter().zip(&refresh[..2]) {
+            s.finish(b).unwrap();
+        }
+        assert!(matches!(
+            shared.lock().unwrap().model.phase,
+            Phase::Ending { .. }
+        ));
+        sessions[3].finish(&refresh[2]).unwrap();
+        let mut r = shared.lock().unwrap();
+        assert_eq!(r.model.phase, Phase::Idle);
+        assert_eq!(r.model.host, Some(2));
+        assert!(r.abort.as_ref().unwrap().completed);
+        assert!(r.model.enter(1, 900, false).is_err()); // sealed, no replacement/restart
+        assert!(r.model.begin(keys[1]).is_err());
+        assert!(!r.model.deliverable(keys[1], Some(round)));
+        r.channels.clear();
+        drop(r);
+        assert!(!sessions[1].valid(&returns[0]));
+    }
+    #[test]
+    fn abort_refresh_queue_failure_does_not_partially_publish_or_consume_barrier() {
+        let (shared, mut sessions, keys, _) = runtime();
+        shared.lock().unwrap().detach(4, keys[3].connection);
+        for s in &mut sessions[..3] {
+            let b = s.inbox.try_recv().unwrap();
+            s.finish(&b).unwrap();
+            s.packet(585, &zero()).unwrap();
+        }
+        // Fill exactly one recipient; other two must receive no partial cleanup.
+        let mut r = shared.lock().unwrap();
+        for _ in 0..8 {
+            let b = Runtime::member_batch(keys[2], None, 0, vec![]);
+            r.channels[&3]
+                .sender
+                .try_send(b)
+                .unwrap_or_else(|_| panic!("fill queue"));
+        }
+        assert!(r.abort_refresh().is_err());
+        assert!(!r.abort.as_ref().unwrap().refresh_queued);
+        drop(r);
+        assert!(sessions[0].inbox.try_recv().is_err());
+        assert!(sessions[1].inbox.try_recv().is_err());
+        for _ in 0..8 {
+            sessions[2].inbox.try_recv().unwrap();
+        }
+        sessions[0].tick().unwrap();
+        for s in &mut sessions[..3] {
+            assert_eq!(s.inbox.try_recv().unwrap().packets.len(), 4);
+        }
+        shared.lock().unwrap().channels.clear();
+    }
+    #[test]
+    fn second_loss_during_unranked_recovery_invalidates_all_pending_work() {
+        let (shared, mut sessions, keys, _) = runtime();
+        shared.lock().unwrap().detach(4, keys[3].connection);
+        let pending = sessions[0].inbox.try_recv().unwrap();
+        assert!(sessions[0].valid(&pending));
+        shared.lock().unwrap().detach(2, keys[1].connection);
+        assert!(!sessions[0].valid(&pending));
+        let r = shared.lock().unwrap();
+        assert!(r.channels.is_empty());
+        assert_eq!(r.abort.as_ref().unwrap().departed.key, keys[3]);
+        assert!(!r.abort.as_ref().unwrap().completed);
     }
 }

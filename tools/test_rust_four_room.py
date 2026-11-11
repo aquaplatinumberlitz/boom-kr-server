@@ -5,8 +5,9 @@ sys.path.insert(0,str(Path.cwd()));from tools.test_rust_room import Client
 from tools.test_rust_foundation import free_port
 from server import probe_codec as c
 from server.room_title import _encode_bytes
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--binary',type=Path,required=True);parser.add_argument('--config',type=Path,required=True);parser.add_argument('--out',type=Path,required=True);parser.add_argument('--owner-bombs',action='store_true');parser.add_argument('--life-reports',action='store_true');parser.add_argument('--results',action='store_true');args=parser.parse_args()
-if args.results:args.life_reports=True
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--binary',type=Path,required=True);parser.add_argument('--config',type=Path,required=True);parser.add_argument('--out',type=Path,required=True);parser.add_argument('--owner-bombs',action='store_true');parser.add_argument('--life-reports',action='store_true');parser.add_argument('--results',action='store_true');parser.add_argument('--abort-role',choices=['A','D']);args=parser.parse_args()
+if args.results or args.abort_role:args.life_reports=True
+if args.abort_role:args.owner_bombs=True
 root=args.out;root.mkdir(parents=True,exist_ok=False);cfg=json.loads(args.config.read_text());two=cfg['diagnostic_two_lobby'];assert len(two['actors'])==4
 ports=set()
 while len(ports)<3:ports.add(free_port())
@@ -14,7 +15,8 @@ login,wcp,channel=sorted(ports);cfg.update(bind='127.0.0.1',allowed_peers=['127.
 for i,actor in enumerate(two['actors']):actor['peer']=cfg['allowed_peers'][i]
 if args.owner_bombs or args.life_reports:two['fixed_room']['four_owner_bombs']=True
 if args.life_reports:two['fixed_room']['four_life_reports']=True
-if args.results:two['fixed_room']['four_results']=True
+if args.results or args.abort_role:two['fixed_room']['four_results']=True
+if args.abort_role:two['fixed_room']['four_abort_room']=True
 config=root/'config.json';config.write_text(json.dumps(cfg,indent=2)+'\n');binary=args.binary;sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 files=[binary,Path(__file__),args.config,config,Path('tools/test_rust_room.py'),Path('tools/test_rust_foundation.py'),Path('server/probe_codec.py'),Path('server/room_title.py'),Path('tools/export_rust_profile.py'),Path('server/four_player_profile.py')]+[p for p in Path('rust').rglob('*')if p.is_file()and'target'not in p.parts]
 def fixtures(value):
@@ -128,7 +130,14 @@ try:
   for target in clients:
    _,body=target.receive(159);assert c.read_fields(body,[1,1,2,4,4,4,1,1,1,4,1,2,2,1,8,1,1])[11]==6
   note('D_rejected_serial_can_retry_after_all_recipients_complete')
- if args.life_reports:
+  if args.life_reports and not args.abort_role:
+   # Explicitly finish the independent bomb case before quiet life assertions.
+   # Otherwise the correct six-second timer may fire inside their .2s window.
+   for target in clients:
+    target.sock.settimeout(8);_,body=target.receive(158);target.sock.settimeout(6)
+    assert c.read_fields(body,[1,2,1,4,4,1])[1]==6
+   note('last_D_blast_drained_all_four_before_independent_life_cases')
+ if args.life_reports and not args.abort_role:
   def report(kind,tick,slot=0):
    body=c.pack_fields([kind,slot,120,159,tick,0],[1,1,2,2,4,4])
    if kind in [17,19]:
@@ -195,6 +204,34 @@ try:
    clients[0].send(127,report(21,20,slot=0));clients[2].send(127,report(21,3,slot=2))
    outcome(0);restart(12348)
    forward(0,17,21);forward(0,21,22);quiet();note('four_Start3_current_positive_clear_after_two_outcomes')
+ if args.abort_role:
+  lost=0 if args.abort_role=='A' else 3
+  if lost==0:
+   bomb(clients[0],0,8,4,2)
+   for target in clients:target.receive(159)
+  departed=clients[lost];survivors=[client for i,client in enumerate(clients)if i!=lost]
+  departed.close();clients=survivors
+  for target in clients:
+   _,body=target.receive(180);assert c.read_fields(body,[1,1,1])==[0,0,0]
+  note('active_'+args.abort_role+'_EOF_unranked180_only_to_three_survivors')
+  # Missing recipient setup must hold all107/110, without blocking channels.
+  for target in clients[:2]:target.send(585,c.pack_fields([0],[4]))
+  quiet();note('two_postreturn585_do_not_release_three_recipient_cleanup')
+  clients[0].send(585,c.pack_fields([0],[4]));quiet()
+  note('duplicate_postreturn585_not_third_recipient')
+  clients[2].send(585,c.pack_fields([0],[4]))
+  live_slots=[i for i in range(4)if i!=lost];chief=min(live_slots)
+  for target in clients:
+   _,body=target.receive(107);assert c.read_fields(body,[1,4,1])==[lost,lost+1,0]
+   rows={}
+   for _ in range(3):
+    _,body=target.receive(110);slot,flags,last=c.read_fields(body,[1,4,1]);rows[slot]=(flags,last)
+   assert sorted(rows)==live_slots
+   for slot,(flags,last)in rows.items():assert flags&0xffff==(2 if slot==chief else 0)|((slot%2)<<5) and last==0
+  note('correct_departed107_three_survivor110_ready0_lowestslot_chief_no106_175')
+  time.sleep(6.5);quiet();note('pending_bombs_fenced_past_original_fuse_no158_or175')
+  for target in clients:target.send(585,c.pack_fields([0],[4]))
+  quiet();note('completed_abort_tail585_bounded_no_replay_or_restart')
 except BaseException as exc:
  error=repr(exc);raise
 finally:

@@ -52,6 +52,7 @@ pub struct Room {
     pub(crate) pickups: crate::pickups::Round,
     pub(crate) bombs: crate::bombs::Ledger,
     capacity: usize,
+    sealed_abort: bool,
     pub(crate) bomb_capacity: Vec<usize>,
     pub(crate) terrain: Option<crate::terrain::Terrain>,
     pub(crate) last_blast: Option<std::time::Instant>,
@@ -68,6 +69,7 @@ impl Default for Room {
             pickups: crate::pickups::Round::default(),
             bombs: crate::bombs::Ledger::default(),
             capacity: 2,
+            sealed_abort: false,
             bomb_capacity: vec![1, 2],
             terrain: None,
             last_blast: None,
@@ -105,7 +107,8 @@ impl Room {
         connection: u64,
         create: bool,
     ) -> io::Result<Membership> {
-        if !(1..=self.capacity as u32).contains(&identity)
+        if self.sealed_abort
+            || !(1..=self.capacity as u32).contains(&identity)
             || self.phase != Phase::Idle
             || self.members.contains_key(&identity)
             || self
@@ -221,7 +224,8 @@ impl Room {
         Ok(self.members.values().cloned().collect())
     }
     pub fn begin(&mut self, key: Membership) -> io::Result<u64> {
-        if !self.current(key)
+        if self.sealed_abort
+            || !self.current(key)
             || self.host != Some(key.identity)
             || self.phase != Phase::Idle
             || self.members.len() != self.capacity
@@ -281,6 +285,17 @@ impl Room {
                 refreshed: BTreeSet::new(),
             };
         }
+        Ok(round)
+    }
+    /// CP205 chosen unranked single-loss policy. No three-player restart/replacement.
+    pub(crate) fn abort_four(&mut self, key: Membership) -> io::Result<u64> {
+        if self.capacity != 4 || self.members.len() != 4 {
+            return Err(io::Error::other(
+                "unranked abort requires complete fixed-four room",
+            ));
+        }
+        let round = self.abort_play(key)?;
+        self.sealed_abort = true;
         Ok(round)
     }
     pub fn outcome_deliverable(&self, key: Membership, round: u64) -> bool {

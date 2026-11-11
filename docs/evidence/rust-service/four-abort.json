@@ -1,0 +1,136 @@
+{
+  "schema": "kre-rust-four-abort-v1",
+  "checkpoint": "CP249",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/PROTOCOL.md#rust-four-abort",
+  "plan": "docs/PLAN.md#current-order",
+  "baseline": "b58abf801e51c1a1475e1f676e57ce6c53a506b2",
+  "native": [
+    {
+      "path": "local/research/codex/rust-four-abort-guest-native-r1",
+      "scope": "RustM4partial/scopedDpendingEOF-unrankedreturn-threeRoomcleanup/Manner1",
+      "run_sha256": "d91fb3854786cb4514afcaa1586a6bb61cd9038d5521cabc34ce021b98469768",
+      "binary_sha256": "7b1e2338bfd8ecb5270a1bfe094e8928a0acac87f63721fa59460bad67ecb03d",
+      "raw_count": 64,
+      "duration_s": 106.503625125,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+      },
+      "mode": {
+        "selector": 1,
+        "label": "Manner"
+      },
+      "storage": {
+        "runtime": {
+          "kind": "private256MiBtmpfs",
+          "mount": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rust-four-abort-guest-native-r1/native-four/cycles",
+          "filesystem": {
+            "filesystems": [
+              {
+                "target": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rust-four-abort-guest-native-r1/native-four/cycles",
+                "source": "kr-evidence-tmpfs",
+                "fstype": "tmpfs",
+                "options": "rw,relatime,size=262144k,mode=700,uid=1000,gid=1000,inode64,huge=advise"
+              }
+            ]
+          },
+          "export": "Afterownedprocesscleanup/captureclose,copy-hashverify/unmount/renameintooriginalnewlocaldirectory",
+          "limits": "ExplicitstoragecontrolafterBtrfslogflushfailures;unchanged2sflush/IOdeadlines;notBtrfsfix/durablelog-productionacceptance"
+        },
+        "export_sha256": "18b775789af21c0b2f28f26418eebe7be1c232e522db097be01d126f8909ccfb"
+      },
+      "tcp_records": 762,
+      "exact_replies": 127,
+      "transports": 16,
+      "departed": "D"
+    },
+    {
+      "path": "local/research/codex/rust-four-abort-host-native-r1",
+      "scope": "RustM4partial/scopedApendingEOF-unrankedreturn-threeRoomcleanup/Manner1",
+      "run_sha256": "e7c7ddc6c10dcbdd71780a17620782c7108e4a2695f63977608a155ce568164b",
+      "binary_sha256": "7b1e2338bfd8ecb5270a1bfe094e8928a0acac87f63721fa59460bad67ecb03d",
+      "raw_count": 64,
+      "duration_s": 104.384174174,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+      },
+      "mode": {
+        "selector": 1,
+        "label": "Manner"
+      },
+      "storage": {
+        "runtime": {
+          "kind": "private256MiBtmpfs",
+          "mount": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rust-four-abort-host-native-r1/native-four/cycles",
+          "filesystem": {
+            "filesystems": [
+              {
+                "target": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rust-four-abort-host-native-r1/native-four/cycles",
+                "source": "kr-evidence-tmpfs",
+                "fstype": "tmpfs",
+                "options": "rw,relatime,size=262144k,mode=700,uid=1000,gid=1000,inode64,huge=advise"
+              }
+            ]
+          },
+          "export": "Afterownedprocesscleanup/captureclose,copy-hashverify/unmount/renameintooriginalnewlocaldirectory",
+          "limits": "ExplicitstoragecontrolafterBtrfslogflushfailures;unchanged2sflush/IOdeadlines;notBtrfsfix/durablelog-productionacceptance"
+        },
+        "export_sha256": "98b5c256ddb20d19bbfb3c36f291a32eee21f21bdc023f1414b6f9c142b7c8bd"
+      },
+      "tcp_records": 744,
+      "exact_replies": 127,
+      "transports": 16,
+      "departed": "A"
+    }
+  ],
+  "policy": {
+    "config": "four_abort_room requires four_results/diagnostic4/life-bombs; explicitoptin, no two-playerforfeit175",
+    "abort": "singleArmedloss→invalidate jobs/remove member/promote lowestslot/seal room→three180; each successfulwrite before its585; all3current585 before atomic107departed+three110Ready0/recipient; completeafterallrefreshwrites",
+    "guards": "currentconnection/membership/round; distinctreturned/setupsets/bounded585duplicates; oldbomb/lifeworkinvalid; secondlossbeforecompleteclearschannels preservingfirstjob; no106replay/175winner"
+  },
+  "tests": {
+    "workspace": 65,
+    "service": 60,
+    "wire": 5,
+    "guestTCP": 20,
+    "hostTCP": 20,
+    "normalTCP": 32,
+    "twoTCP": 51,
+    "prebind": 6,
+    "normal_storage_control": "local/research/codex/rust-four-abort-tmpfs-control-r1/export-verification.json",
+    "two_storage_control": "local/research/codex/rust-four-abort-two-tmpfs-control-r1/export-verification.json"
+  },
+  "reuse": {
+    "path": "local/research/codex/rust-four-abort-source-r1/reuse.json",
+    "integration_baseline": "local/research/codex/rust-four-abort-source-r1/integration-baseline.json",
+    "direct": "CP205known180/585/107IDclear/110/chief/nativeprobes;CP248fourresultprofile. No new nativefunctions/clientpatch/VNwire/WIPimport.",
+    "avoided": "No repeat parser/room/nativeopcode RE, no two-rankforfeit clone, no solvednormalnative2cycles solelyscreenshots"
+  },
+  "failed_runs": [
+    {
+      "path": "local/research/codex/rust-four-abort-normal-kernel-r1",
+      "cause": "Harness pendinglastD158 intersects independentlifequietwindow;preserved/correct explicitdrain/newruns."
+    },
+    {
+      "path": "local/research/codex/rust-four-abort-normal-kernel-r2",
+      "cause": "exit1/logflush timeout event292;PIDgone/sourcefrozen/threadreserve_bytes.cold observed/no filesystemcausalproof."
+    },
+    {
+      "path": "local/research/codex/rust-four-abort-normal-kernel-r3",
+      "cause": "samebinary/isolatedrepeat exit1/logflush timeout event208;PIDgone/sourcefrozen. No further unchanged reruns/deadlineincrease."
+    }
+  ],
+  "limits": [
+    "KR00967/Wine10.0-20260425/copy4b/privateLAN/sharedkernel/currentManner1/fixedalternating2v2; single owned pending guestD or hostA EOF only. No original KR abort/forfeit authority claim.",
+    "Private256MiBtmpfs runtime evidence sinks, allraw copied and hash-verified into local after process cleanup. Btrfs logflush failures remain unresolved; no durable logging/production/storagefix acceptance.",
+    "Room sealed after abort: no three-memberStart/replacement/reconnect/accountresume/matchrestore. Secondloss before recoverycomplete failcloses channels, unit only/native secondloss untested.",
+    "No nativequota/sendfailure-roomrecovery/loadingEOF/selectedEndingEOF/generalrooms/terrain4/rescue-needle/eight/fullM4/fullauth. M5backendpresent/nativebridgepartial. Internet thật chưa kiểm.",
+    "No normaloutcome in these EOFcontrols; CP248Aresultpanel screenshot gap remains, nativeA175180/rank/reset proof already separate. No duplicate two normalcycles only for images."
+  ],
+  "audit": "AUD071through248/nextCP252 unchanged; no gate closure from checker/environmentcontrol"
+}
