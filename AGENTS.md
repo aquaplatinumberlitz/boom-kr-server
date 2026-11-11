@@ -5,7 +5,10 @@ Các quy tắc/scope V1 của `boom-rs` không tự áp dụng lên project này
 
 ## Nguồn chuẩn và cách bắt đầu
 
-Đọc `README.md` → `docs/PLAN.md`, rồi `docs/PROTOCOL.md`/`docs/RESEARCH.md` đúng task.
+Đọc [Bảng điều hành](docs/PLAN.md#dashboard) ở đầu `docs/PLAN.md` trước; đó là hiện trạng, thứ tự việc và blocker.
+Phần còn lại của PLAN, `docs/PROTOCOL.md` và `docs/RESEARCH.md` chỉ tra theo anchor đúng task, không đọc nguyên file.
+Xong một bước thì **ghi đè** bảng trạng thái và danh sách việc trong Bảng điều hành; không nối dòng trạng thái theo
+checkpoint vào PLAN. README chỉ giữ mốc mới nhất, mốc cũ chuyển sang `docs/HISTORY.md`.
 Chỉ `docs/PLAN.md` giữ lộ trình; không tạo plan theo phiên. Protocol/authority ở PROTOCOL, câu hỏi mở
 ở RESEARCH. `docs/features.json` chỉ mục ID/cây/dependency/mức bằng chứng, không là plan hoặc contract;
 `docs/COVERAGE.md` sinh bằng `python3 tools/feature_catalog.py --generate`, trích khoảng trống/phép đo từ RESEARCH.
@@ -108,6 +111,8 @@ diff và nội dung bàn giao trước khi gửi. Báo kết quả/nghiệm thu 
 
 ## Kiểm và bàn giao
 
+CI GitHub Actions (`.github/workflows/docs.yml`, `rust.yml`) chạy trên mọi PR; trước khi merge, `gh pr checks <số>`
+phải đạt. CI đỏ thì sửa, không merge. CI không thay các kiểm cần `local/` dưới đây.
 Docs/checkpoint: chạy python3 tools/check_docs.py,python3 tools/check_checkpoints.py --require-local
 --require-history và git diff --check. Thiếu raw/pending/unsynced phải báo rõ;checker không tự xác nhận
 ngữ nghĩa hoặc đóng gate.
