@@ -251,6 +251,102 @@ pub fn join87(template: &[u8], slot: u8) -> io::Result<Vec<u8>> {
     Ok(out)
 }
 
+/// CP226 measured list rows, retaining22 opaque bytes without interpretation.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ListingRow {
+    pub session: u16,
+    pub room_id: u32,
+    pub title: Vec<u8>,
+    pub opaque: [u8; 22],
+}
+fn row_read(data: &[u8], width: Width) -> io::Result<u64> {
+    read_uint(data, width).map_err(io::Error::other)
+}
+fn row_put(value: u64, width: Width) -> io::Result<Vec<u8>> {
+    crate::write_uint(value, width).map_err(io::Error::other)
+}
+pub fn listing91_from_rows(rows: &[ListingRow]) -> io::Result<Vec<u8>> {
+    let count = u16::try_from(rows.len()).map_err(io::Error::other)?;
+    let mut out = row_put(u64::from(count), Width::U16)?;
+    if rows.is_empty() {
+        return Ok(out);
+    }
+    let mut inner = Vec::new();
+    for row in rows {
+        if row.session == 0
+            || row.room_id == 0
+            || !(1..=32).contains(&row.title.len())
+            || row.title.iter().any(|c| *c < 32 || *c == 127)
+        {
+            return Err(io::Error::other("unsupported measured listing row"));
+        }
+        inner.extend_from_slice(&row.session.to_le_bytes());
+        inner.extend_from_slice(&row.room_id.to_le_bytes());
+        inner.extend_from_slice(&(row.title.len() as u32).to_le_bytes());
+        inner.extend_from_slice(&row.title);
+        inner.extend_from_slice(&row.opaque);
+    }
+    let mut stream = vec![0x18];
+    stream.extend_from_slice(&((inner.len() + 1) as u32).to_le_bytes());
+    stream.push(0);
+    stream.extend(inner);
+    out.extend(row_put(stream.len() as u64, Width::U32)?);
+    out.extend(encode_bytes(&stream)?);
+    Ok(out)
+}
+pub fn listing91_parse_rows(body: &[u8]) -> io::Result<Vec<ListingRow>> {
+    if body.len() < 2 {
+        return Err(io::Error::other("count"));
+    }
+    let count = row_read(&body[..2], Width::U16)? as usize;
+    if count == 0 {
+        if body.len() != 2 {
+            return Err(io::Error::other("empty tail"));
+        }
+        return Ok(Vec::new());
+    }
+    if body.len() < 6 {
+        return Err(io::Error::other("blob size"));
+    }
+    let size = row_read(&body[2..6], Width::U32)? as usize;
+    if body.len() != 6 + size {
+        return Err(io::Error::other("blob length"));
+    }
+    let stream = decode_bytes(&body[6..])?;
+    if size < 6
+        || stream[0] != 0x18
+        || stream[5] != 0
+        || u32::from_le_bytes(stream[1..5].try_into().unwrap()) as usize != size - 5
+    {
+        return Err(io::Error::other("envelope"));
+    }
+    let mut cursor = 6;
+    let mut rows = Vec::new();
+    for _ in 0..count {
+        if stream.len() - cursor < 32 {
+            return Err(io::Error::other("row prefix"));
+        }
+        let b = &stream[cursor..];
+        let session = u16::from_le_bytes(b[..2].try_into().unwrap());
+        let room_id = u32::from_le_bytes(b[2..6].try_into().unwrap());
+        let len = u32::from_le_bytes(b[6..10].try_into().unwrap()) as usize;
+        if !(1..=32).contains(&len) || b.len() < 32 + len {
+            return Err(io::Error::other("row title"));
+        }
+        rows.push(ListingRow {
+            session,
+            room_id,
+            title: b[10..10 + len].to_vec(),
+            opaque: b[10 + len..32 + len].try_into().unwrap(),
+        });
+        cursor += 32 + len;
+    }
+    if cursor != stream.len() {
+        return Err(io::Error::other("unparsed row bytes"));
+    }
+    Ok(rows)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
