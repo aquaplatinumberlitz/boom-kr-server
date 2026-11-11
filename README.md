@@ -29,6 +29,17 @@ boom-kr-server/
 
 ## Tra nhanh và trạng thái hiện tại
 
+**CP248: cùng bốn KR thật đã qua hai kết quả 2v2 đối nghịch, reset và Start3 trên Rust.**
+[Contract/giới hạn](docs/PROTOCOL.md#rust-four-results), [raw/hash](docs/evidence/rust-service/README.md#cp248).
+Manner1: nativepre175states đảo `[1,0,1,0]`→`[0,1,0,1]`; cả4 đọc đủ562outer/552inner/16rankrows và1803.
+ActualReady/Start2–3/cùng16transports/keys12346–48; sauStart3hold6s/freshall4state0.84raw/236,896s sealed/cleanup0,
+1.691TCP/280reply/48copiedgetters riêng.62Rusttests/24fourTCP/51twoTCP/4prebind đạt.
+Ảnh B/C/D có bảng điểm hai vòng; Aảnh vẫnBattle, nativeAparser/rank/reset có proof riêng, chưa nhận AUIpanelcapture.
+M4 còn scopedhost/guestEOF rồi tám, không fullgame/auth. CP247 merge [PR318](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/318)/`d6cbf9e`.
+AUD071 qua248/audit kế252; M5backend đã có/nativebridge riêng. Internet thật chưa kiểm.
+
+### Các mốc trước — trạng thái tại thời điểm ghi
+
 **CP247: Rust đã đồng bộ trap/death tới ba peer trên bốn KR thật; M4 còn kết quả/reset.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-four-life), [raw/hash](docs/evidence/rust-service/README.md#cp247).
 A/C tự đặt bom→17/19→12recipient170; native remote56→1 và cả4view cùng `[1,0,1,0]`.
@@ -37,8 +48,6 @@ A/C tự đặt bom→17/19→12recipient170; native remote56→1 và cả4view 
 KernelcleanupR1 giữ lỗi/PIDgone và verifiercleanup-tail correction giữ raw; không nhận đã fix nguyên nhân shutdown.
 CP246 merge [PR317](https://github.com/aquaplatinumberlitz/boom-kr-server/pull/317)/`1b3bddf`.
 Tiếp rank4/hai outcome2v2/reset/Start3/abortEOF rồi8 trong PLAN; M5bridge riêng. Audit kếCP248. Internet thật chưa kiểm.
-
-### Các mốc trước — trạng thái tại thời điểm ghi
 
 **CP246: bốn owner đã đặt/nổ bom qua Rust trên client KR thật; M4 còn life/result/reset.**
 [Contract/giới hạn](docs/PROTOCOL.md#rust-four-owner-bombs), [raw/hash](docs/evidence/rust-service/README.md#cp246).

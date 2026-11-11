@@ -5,7 +5,8 @@ sys.path.insert(0,str(Path.cwd()));from tools.test_rust_room import Client
 from tools.test_rust_foundation import free_port
 from server import probe_codec as c
 from server.room_title import _encode_bytes
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--binary',type=Path,required=True);parser.add_argument('--config',type=Path,required=True);parser.add_argument('--out',type=Path,required=True);parser.add_argument('--owner-bombs',action='store_true');parser.add_argument('--life-reports',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--binary',type=Path,required=True);parser.add_argument('--config',type=Path,required=True);parser.add_argument('--out',type=Path,required=True);parser.add_argument('--owner-bombs',action='store_true');parser.add_argument('--life-reports',action='store_true');parser.add_argument('--results',action='store_true');args=parser.parse_args()
+if args.results:args.life_reports=True
 root=args.out;root.mkdir(parents=True,exist_ok=False);cfg=json.loads(args.config.read_text());two=cfg['diagnostic_two_lobby'];assert len(two['actors'])==4
 ports=set()
 while len(ports)<3:ports.add(free_port())
@@ -13,6 +14,7 @@ login,wcp,channel=sorted(ports);cfg.update(bind='127.0.0.1',allowed_peers=['127.
 for i,actor in enumerate(two['actors']):actor['peer']=cfg['allowed_peers'][i]
 if args.owner_bombs or args.life_reports:two['fixed_room']['four_owner_bombs']=True
 if args.life_reports:two['fixed_room']['four_life_reports']=True
+if args.results:two['fixed_room']['four_results']=True
 config=root/'config.json';config.write_text(json.dumps(cfg,indent=2)+'\n');binary=args.binary;sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 files=[binary,Path(__file__),args.config,config,Path('tools/test_rust_room.py'),Path('tools/test_rust_foundation.py'),Path('server/probe_codec.py'),Path('server/room_title.py'),Path('tools/export_rust_profile.py'),Path('server/four_player_profile.py')]+[p for p in Path('rust').rglob('*')if p.is_file()and'target'not in p.parts]
 def fixtures(value):
@@ -160,7 +162,39 @@ try:
   quiet();note('four_dead_owner_no_resurrection_forward_or_bomb_ID')
   forward(2,17,1);forward(2,19,2);note('Cdeath19_all_three_peers_independent_cursor')
   clients[1].send(127,report(21,1,slot=1));clients[3].send(127,report(21,1,slot=3))
-  time.sleep(8.1);quiet();note('life_only_profile_never_selects_two_player_rank_or_result')
+  if not args.results:
+   time.sleep(8.1);quiet();note('life_only_profile_never_selects_two_player_rank_or_result')
+  else:
+   def outcome(winner):
+    from server.room_title import _decode_bytes
+    for target in clients:
+     target.sock.settimeout(10);_,body=target.receive(175);target.sock.settimeout(6)
+     assert len(body)==562;inner=_decode_bytes(body[4:])[6:];assert len(inner)==552 and inner[9]==255
+     assert [inner[16+131*i+5]for i in range(4)]==[1 if i%2==winner else 2 for i in range(4)]
+    note('four_rank16slots_teamvector_'+str(winner))
+    for target in clients:
+     _,body=target.receive(180);assert c.read_fields(body,[1,1,1])==[0,0,0]
+     slots=[]
+     for _ in range(4):
+      _,body=target.receive(110);slots.append(c.read_fields(body[:1],[1])[0])
+     assert sorted(slots)==[0,1,2,3]
+    time.sleep(.1);note('four_return180_and_all16_refresh110_complete')
+   def restart(key):
+    for target in clients[1:]:
+     target.send(95,c.pack_fields([6],[4])+bytes(6)+c.pack_fields([1,0],[1,4]))
+     for peer in clients:peer.receive(110)
+    clients[0].send(104,bytes(20))
+    for target in clients:target.receive(582);target.receive(121)
+    for slot,target in enumerate(clients):target.send(99,c.pack_fields([0,0,32001+slot,0,0,0,0,0,0],[4,4,2,4,2,1,1,1,4]))
+    for target in clients:
+     target.receive(197);target.receive(196);_,body=target.receive(153);assert c.read_fields(body[15:19],[4])==[key]
+    note('four_current_ready_start_key_'+str(key))
+   outcome(1);restart(12347)
+   clients[0].send(127,trap);quiet();note('old_report_cannot_reenter_after_four_round_reset')
+   for slot in [1,3]:forward(slot,17,2);forward(slot,19,3)
+   clients[0].send(127,report(21,20,slot=0));clients[2].send(127,report(21,3,slot=2))
+   outcome(0);restart(12348)
+   forward(0,17,21);forward(0,21,22);quiet();note('four_Start3_current_positive_clear_after_two_outcomes')
 except BaseException as exc:
  error=repr(exc);raise
 finally:

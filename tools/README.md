@@ -271,3 +271,8 @@ CP247: exporter `--four-life-reports` yêu cầu `--four-owner-bombs`/four-start
 `test_rust_four_room.py --life-reports` kiểm17syntheticcases/fanout3/clear21once/currentdeath/no2rank.
 Harness lưu `pid-observations.json` trướcSIGTERM và khi5s/3sdeadline, không nângtimeout.
 [Native/giới hạn](../docs/PROTOCOL.md#rust-four-life); TCPclear21không thay nativeclear/rescueproof.
+
+
+CP248: exporter `--four-results` cần `--four-life-reports --four-owner-bombs`/four-startup profile;
+`test_rust_four_room.py --results` kiểm24syntheticcases/opposite2v2/typedrank4/16refresh/Start3/oldreportnegative.
+[Nativefull175180/giới hạn](../docs/PROTOCOL.md#rust-four-results); bytehashCP202 không là nativeoracle hoặc fullauth/gateclosure.

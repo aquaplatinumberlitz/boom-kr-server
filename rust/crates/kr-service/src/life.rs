@@ -1,7 +1,11 @@
 //! Report-derived Battle compatibility policy from CP023/102/103/188/189.
 //! A forward client tick is not authenticated life, location, or a wire epoch.
 use kr_wire::{Width, read_uint, write_uint};
-use std::{collections::BTreeSet, io, time::Instant};
+use std::{
+    collections::{BTreeMap, BTreeSet},
+    io,
+    time::Instant,
+};
 #[derive(Clone, Debug)]
 pub(crate) struct Report {
     pub subtype: u8,
@@ -91,6 +95,7 @@ pub(crate) struct Player {
     forwarded21: Option<String>,
     pending21: Option<(String, Option<BTreeSet<crate::room::Membership>>)>,
     reports: u32,
+    deliveries: BTreeMap<String, BTreeSet<crate::room::Membership>>,
 }
 #[derive(Clone, Debug, serde::Serialize)]
 pub struct Decision {
@@ -229,6 +234,35 @@ impl Player {
             .ok_or_else(|| io::Error::other("missing current life clear"))?;
         pending.1 = Some(unique);
         Ok(())
+    }
+    pub fn forward_report_targets(
+        &mut self,
+        digest: &str,
+        targets: &[crate::room::Membership],
+    ) -> io::Result<()> {
+        let unique: BTreeSet<_> = targets.iter().copied().collect();
+        if !matches!(targets.len(), 1 | 3)
+            || unique.len() != targets.len()
+            || self.deliveries.contains_key(digest)
+        {
+            return Err(io::Error::other(
+                "unsupported or duplicate life recipient roster",
+            ));
+        }
+        self.deliveries.insert(digest.to_owned(), unique);
+        Ok(())
+    }
+    pub fn report_delivered(&mut self, digest: &str, recipient: crate::room::Membership) {
+        if let Some(targets) = self.deliveries.get_mut(digest) {
+            if targets.remove(&recipient) && targets.is_empty() {
+                self.deliveries.remove(digest);
+            }
+        } else {
+            self.forward21_delivered(digest, recipient);
+        }
+    }
+    pub fn delivery_pending(&self) -> bool {
+        !self.deliveries.is_empty() || self.pending21.is_some()
     }
     pub fn forward21_delivered(&mut self, digest: &str, recipient: crate::room::Membership) {
         let complete = self
