@@ -37,6 +37,9 @@ pub struct Config {
     /// CP208–210 explicit fixed8 baseline; not four abort/items/terrain.
     #[serde(default)]
     pub eight_battle: bool,
+    /// Explicit CP213 fixed operator teams, only with eight_battle.
+    #[serde(default)]
+    pub eight_team_layout: Option<crate::room::EightTeamLayout>,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -122,6 +125,7 @@ pub struct BombObservation {
 #[derive(Default)]
 pub struct Observation {
     pub dropped_after_abort: bool,
+    pub start_rejection: Option<&'static str>,
     pub pickup: Option<pickups::Decision>,
     pub bomb: Option<BombObservation>,
     pub terrain_notice: Option<&'static str>,
@@ -157,6 +161,9 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         return Err(err("fixed room title must be bounded ASCII"));
     }
     let count = actors.len();
+    if cfg.eight_team_layout.is_some() && (!cfg.eight_battle || count != 8) {
+        return Err(err("eight team layout requires opt-in eight battle"));
+    }
     if cfg.eight_battle && count != 8 {
         return Err(err("eight battle requires eight diagnostic actors"));
     }
@@ -305,6 +312,13 @@ pub fn load(cfg: &Config, actors: &HashMap<Ipv4Addr, ActorProfile>) -> io::Resul
         }
     }
     let mut model = Room::with_capacity(count)?;
+    if let Some(layout) = cfg.eight_team_layout {
+        model.set_eight_layout(layout)?;
+    }
+    if cfg.eight_battle {
+        let start = packets.get_mut("start").expect("validated start");
+        start.payload = room_wire::start_teams(&start.payload, model.fixed_teams())?;
+    }
     model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
         model,
@@ -732,7 +746,7 @@ impl Session {
             r.reply(
                 "start",
                 Some(175),
-                Some(crate::four_results::rank_body(r.model.capacity(), team)?),
+                Some(crate::four_results::rank_body(r.model.fixed_teams(), team)?),
             )
         } else {
             let members: Vec<_> = r.model.members.values().collect();
@@ -1226,6 +1240,12 @@ impl Session {
                 if !(20..=8192).contains(&body.len()) {
                     return Err(err("unsupported Start104 envelope"));
                 }
+                if r.eight_battle && r.selector == 1 && !next.balanced_teams() {
+                    return Ok(Observation {
+                        start_rejection: Some("manner_fixed_teams_unbalanced"),
+                        ..Observation::default()
+                    });
+                }
                 let round = next.begin(m.key)?;
                 next.pickups = pickups::Round::begin(round, &r.floor_catalog)?;
                 for peer in next.members.values() {
@@ -1681,6 +1701,7 @@ impl Session {
             r.ports.insert(key, port);
         }
         Ok(Observation {
+            start_rejection: None,
             dropped_after_abort,
             pickup,
             bomb,
@@ -2317,11 +2338,11 @@ mod eight_baseline_tests {
                 "5efff3e6576d7241a58b889e27b1f085e66c9313ecfd6a74ade4c630469551bf",
             ),
         ] {
-            let body = crate::four_results::rank_body(8, team).unwrap();
+            let body = crate::four_results::rank_body(&[0, 1, 0, 1, 0, 1, 0, 1], team).unwrap();
             assert_eq!(body.len(), 1082);
             assert_eq!(crate::sha256_hex(&body), hash);
         }
-        assert!(crate::four_results::rank_body(7, 0).is_err());
+        assert!(crate::four_results::rank_body(&[0; 7], 0).is_err());
     }
     #[test]
     fn eight_waits_all_seven_distinct_life_writes_then_current_witness_and_fences_loss() {

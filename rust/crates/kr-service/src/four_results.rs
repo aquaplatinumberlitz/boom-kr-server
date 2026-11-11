@@ -12,10 +12,8 @@ pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
         || room.members.len() != room.capacity()
         || !matches!(room.phase, Phase::Armed { .. })
         || room.bombs.pending()
-        || room
-            .members
-            .values()
-            .any(|m| m.life.delivery_pending() || m.team != m.slot % 2)
+        || room.members.values().any(|m| m.life.delivery_pending())
+        || !room.fixed_teams_match()
     {
         return None;
     }
@@ -48,20 +46,24 @@ pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
 
 /// Header16 + count×131 active rows + (16-count) empty slots: inner552/1072.
 /// Constructor is an input producer, never a native compatibility oracle.
-pub(crate) fn rank_body(count: usize, winner: u8) -> io::Result<Vec<u8>> {
-    if !matches!(count, 4 | 8) || winner > 1 {
+pub(crate) fn rank_body(teams: &[u8], winner: u8) -> io::Result<Vec<u8>> {
+    let count = teams.len();
+    if !matches!(count, 4 | 8)
+        || winner > 1
+        || !(teams
+            .iter()
+            .copied()
+            .eq((0..count).map(|slot| (slot % 2) as u8))
+            || teams == [0, 1, 1, 1, 1, 1, 1, 1])
+    {
         return Err(io::Error::other("unsupported fixed-four winning team"));
     }
     let mut inner = vec![0; 16];
     inner[9] = 255;
-    for slot in 0..count {
+    for team in teams {
         let mut row = vec![0; 131];
         row[0] = 1;
-        row[5] = if slot % 2 == usize::from(winner) {
-            1
-        } else {
-            2
-        };
+        row[5] = if *team == winner { 1 } else { 2 };
         inner.extend(row);
     }
     inner.resize(inner.len() + 16 - count, 0);
@@ -146,11 +148,11 @@ mod tests {
                 "794354ab76dda5547052ba3b31a3418a2055a1d664a05883a852d75633d00d66",
             ),
         ] {
-            let body = rank_body(4, team).unwrap();
+            let body = rank_body(&[0, 1, 0, 1], team).unwrap();
             assert_eq!(body.len(), 562);
             assert_eq!(crate::sha256_hex(&body), expected);
         }
-        assert!(rank_body(4, 2).is_err());
+        assert!(rank_body(&[0, 1, 0, 1], 2).is_err());
         assert!(return_body(2).is_err());
     }
     #[test]
@@ -205,5 +207,91 @@ mod tests {
         kill(&mut room, 1, at + Duration::from_secs(16));
         kill(&mut room, 3, at + Duration::from_secs(16));
         assert_eq!(winner(&room, at + Duration::from_secs(30)), None); // unsupported all-dead
+    }
+}
+
+#[cfg(test)]
+mod fixed_team_tests {
+    use super::*;
+    use crate::room::{EightTeamLayout, Room};
+    #[test]
+    fn fixed_free_one_seven_uses_cp213_native_accepted_rank_vectors() {
+        let teams = [0, 1, 1, 1, 1, 1, 1, 1];
+        for (winner, expected) in [
+            (
+                0,
+                "238487c646446d32a2b61a5a4e0800e2f164ad7e0ce3c3cc11e19a507281465b",
+            ),
+            (
+                1,
+                "d91afbcfe3d01f6b97448e116c196001d39e4a0e4fd2ab1ca6fce97377a68205",
+            ),
+        ] {
+            // Historical accepted frame body hashes, not encoder-generated goldens.
+            assert_eq!(
+                crate::sha256_hex(&rank_body(&teams, winner).unwrap()),
+                expected
+            );
+        }
+        assert!(rank_body(&[0; 8], 0).is_err());
+        assert!(rank_body(&[0, 1, 1, 1], 0).is_err());
+    }
+    #[test]
+    fn one_seven_requires_all_seven_deaths_and_rejects_roster_drift() {
+        let mut room = Room::with_capacity(8).unwrap();
+        room.set_eight_layout(EightTeamLayout::OneSeven).unwrap();
+        let keys: [_; 8] = std::array::from_fn(|i| {
+            let k = room.enter(i as u32 + 1, i as u64 + 20, i == 0).unwrap();
+            room.setup(k).unwrap();
+            if i > 0 {
+                room.ready(k).unwrap();
+            }
+            k
+        });
+        assert!(!room.balanced_teams());
+        assert!(room.fixed_teams_match());
+        assert!(room.set_eight_layout(EightTeamLayout::Balanced).is_err());
+        let round = room.begin(keys[0]).unwrap(); // Free permits unbalanced teams.
+        for k in keys {
+            room.ack(k, round).unwrap();
+        }
+        let at = Instant::now();
+        for slot in 1..8 {
+            let player = &mut room.members.get_mut(&(slot as u32 + 1)).unwrap().life;
+            for (kind, tick) in [(17, 1), (19, 2)] {
+                let report = crate::life::Report {
+                    subtype: kind,
+                    slot,
+                    tick,
+                    digest: format!("{slot}:{kind}"),
+                    forward: None,
+                };
+                assert!(player.apply(slot, &report, at, None).accepted);
+            }
+            assert_eq!(winner(&room, at + Duration::from_secs(20)), None);
+        }
+        let witness = crate::life::Report {
+            subtype: 21,
+            slot: 0,
+            tick: 1,
+            digest: "current-A".into(),
+            forward: None,
+        };
+        room.members.get_mut(&1).unwrap().life.apply(
+            0,
+            &witness,
+            at + Duration::from_secs(1),
+            None,
+        );
+        assert_eq!(winner(&room, at + Duration::from_secs(8)), Some(0));
+        // A roster change must never be accepted as the same configured team family.
+        room.members.get_mut(&8).unwrap().team = 0;
+        assert_eq!(winner(&room, at + Duration::from_secs(20)), None);
+        assert!(
+            Room::with_capacity(4)
+                .unwrap()
+                .set_eight_layout(EightTeamLayout::OneSeven)
+                .is_err()
+        );
     }
 }

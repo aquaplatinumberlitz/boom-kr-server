@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP250",
+  "as_of": "CP251",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1017,7 +1017,10 @@
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
           "docs/evidence/rust-service/README.md#cp250",
-          "docs/evidence/eight-player/team-code-delivery.json"
+          "docs/evidence/eight-player/team-code-delivery.json",
+          "docs/PROTOCOL.md#rust-eight-teams",
+          "docs/evidence/rust-service/eight-teams.json",
+          "docs/evidence/rust-service/README.md#cp251"
         ]
       },
       "coverage": {
@@ -1185,7 +1188,10 @@
           "docs/evidence/rust-service/README.md#cp248",
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
-          "docs/evidence/rust-service/README.md#cp250"
+          "docs/evidence/rust-service/README.md#cp250",
+          "docs/PROTOCOL.md#rust-eight-teams",
+          "docs/evidence/rust-service/eight-teams.json",
+          "docs/evidence/rust-service/README.md#cp251"
         ]
       },
       "coverage": {
@@ -1750,7 +1756,10 @@
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
           "docs/evidence/rust-service/README.md#cp250",
-          "docs/evidence/eight-player/team-code-delivery.json"
+          "docs/evidence/eight-player/team-code-delivery.json",
+          "docs/PROTOCOL.md#rust-eight-teams",
+          "docs/evidence/rust-service/eight-teams.json",
+          "docs/evidence/rust-service/README.md#cp251"
         ]
       },
       "coverage": {
@@ -1941,7 +1950,10 @@
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
-          "docs/evidence/rust-service/README.md#cp250"
+          "docs/evidence/rust-service/README.md#cp250",
+          "docs/PROTOCOL.md#rust-eight-teams",
+          "docs/evidence/rust-service/eight-teams.json",
+          "docs/evidence/rust-service/README.md#cp251"
         ]
       },
       "coverage": {
@@ -3084,7 +3096,10 @@
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
-          "docs/evidence/rust-service/README.md#cp250"
+          "docs/evidence/rust-service/README.md#cp250",
+          "docs/PROTOCOL.md#rust-eight-teams",
+          "docs/evidence/rust-service/eight-teams.json",
+          "docs/evidence/rust-service/README.md#cp251"
         ]
       },
       "coverage": {
@@ -3853,7 +3868,10 @@
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
           "docs/evidence/rust-service/README.md#cp250",
-          "docs/evidence/eight-player/team-code-delivery.json"
+          "docs/evidence/eight-player/team-code-delivery.json",
+          "docs/PROTOCOL.md#rust-eight-teams",
+          "docs/evidence/rust-service/eight-teams.json",
+          "docs/evidence/rust-service/README.md#cp251"
         ]
       },
       "coverage": {
@@ -4167,7 +4185,10 @@
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
           "docs/evidence/rust-service/README.md#cp250",
-          "docs/evidence/eight-player/team-code-delivery.json"
+          "docs/evidence/eight-player/team-code-delivery.json",
+          "docs/PROTOCOL.md#rust-eight-teams",
+          "docs/evidence/rust-service/eight-teams.json",
+          "docs/evidence/rust-service/README.md#cp251"
         ]
       },
       "coverage": {
@@ -4845,7 +4866,10 @@
           "docs/evidence/rust-service/README.md#cp249",
           "docs/PROTOCOL.md#rust-eight-baseline",
           "docs/evidence/rust-service/eight-baseline.json",
-          "docs/evidence/rust-service/README.md#cp250"
+          "docs/evidence/rust-service/README.md#cp250",
+          "docs/PROTOCOL.md#rust-eight-teams",
+          "docs/evidence/rust-service/eight-teams.json",
+          "docs/evidence/rust-service/README.md#cp251"
         ]
       },
       "coverage": {

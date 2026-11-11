@@ -1,0 +1,69 @@
+{
+  "schema": "kre-rust-eight-teams-v1",
+  "checkpoint": "CP251",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/PROTOCOL.md#rust-eight-teams",
+  "plan": "docs/PLAN.md#current-order",
+  "baseline": "83abe4b6d3b823ac76884b1563f5eb4879d22f96",
+  "python_reference": {
+    "pr": 322,
+    "merge": "83abe4b6d3b823ac76884b1563f5eb4879d22f96",
+    "source": "docs/evidence/eight-player/team-code-delivery.json"
+  },
+  "binary_sha256": "521012fadc41cd9d97330399fd028267e245d90edd337d077a4b891712862c15",
+  "implementation": "Explicit eight_team_layout 4v4(default)/1v7 only with eight_battle; same per-room teams in106/110/121/rank/outcome, immutable while occupied. EightMannerunequalStart104 is bounded no-op rejection beforebegin, preservingconnection/round/key/queues; report-deriveddrain/currentwitness/fuse6/settle8/zeroeconomy unchanged.",
+  "native_negative": {
+    "path": "local/research/codex/rust-eight-teams-manner-negative-r1",
+    "copy_sha256": "8d7194fd4f9a5a798282fc995f2d880ff0a702ffc1e61ca06aba221632f7e16a",
+    "wine": "10.0-20260425",
+    "run_sha256": "33acefb4972b7a8773849f87b3da66a030627cd8505386b74ff99f23e8309d29",
+    "raw_count": 90,
+    "duration_s": 127.113194352,
+    "cleanup": {
+      "net_namespace": "net:[4026533182]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "tcp_records": 1513,
+    "exact_replies": 266,
+    "proof": "Same8actual/32TCP/64native106/ownslots-profiles;Manner1/1v7/count8-cap8-twoTeams/balancebranch/Startreturn7/no104/no99/noBattlewire/clocks;hold3s. 8auth-profile-render/64wireteam controls separate."
+  },
+  "tests": {
+    "workspace": 71,
+    "service": 66,
+    "wire": 5,
+    "eightTCP": {
+      "free1v7": 16,
+      "manner4v4": 16,
+      "manner1v7forged104": 3
+    },
+    "prebind": 8,
+    "fourTCP": 32,
+    "rank_oracles": "local/research/codex/rust-team-rank-oracles.json"
+  },
+  "failed_free": [
+    {
+      "path": "local/research/codex/rust-eight-teams-free-r1",
+      "copy": "4b781f",
+      "role": "D",
+      "raw_count": 66,
+      "duration_s": 52.509084929
+    },
+    {
+      "path": "local/research/codex/rust-eight-teams-free-guard-r2",
+      "copy": "8d7194",
+      "role": "G",
+      "raw_count": 67,
+      "duration_s": 60.841184141
+    }
+  ],
+  "limits": [
+    "RustFree1v7 implementation/TCP only; both nativeattempts stoppedafter17 beforeRoom, no twoFreeoutcomes/selector0nativepersist. SamepreRoomfamilyasCP250HG; causalSDK/emptyJSON/sourceunknown. Do notrerunwithoutnewobservable.",
+    "NativeManner1v7negative uses previouslymeasuredalternate8dcopy, notcopy4bnegative orcausalstartupfix/guardbranchcoverage. CP250nativeManner4v4twooutcomes/reset-Start3 reused, notrerun.",
+    "Currentcode8teamselectionisoperatorfixedpreset, no interactiveC2Steamchangepacket/generalroomauthority. No native9fullroomadmission/M4closure/M5authbridge/fullgame.",
+    "UDPcapturer acceptsIP2..9 andretainsworkerfailure; injectedexceptioncontrol+noUDPerrornegative pass. Negative hasnoBattleUDP; no new14or56wire/nativeAPI-keyapplyproof.",
+    "Private8virtualhosts/sharedkernel/noexternalroute/Wineaccepted/TMPFSrawexporthash aftercleanup; notBtrfsdurabilityfix/production. Internet thật chưa kiểm."
+  ],
+  "reuse": "local/research/codex/rust-teams-source-r1/reuse.json"
+}

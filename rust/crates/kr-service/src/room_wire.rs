@@ -99,6 +99,36 @@ pub fn join_context(body: &[u8]) -> io::Result<()> {
 pub fn is_zero_setup(body: &[u8]) -> io::Result<bool> {
     Ok(body.len() == 4 && uint(body, Width::U32)? == 0)
 }
+/// Rewrite only the measured team byte in each KR121 row; opaque suffix retained.
+/// A producer adapter, never a native oracle.
+pub(crate) fn start_teams(body: &[u8], teams: &[u8]) -> io::Result<Vec<u8>> {
+    if teams.len() != 8 || body.len() != 285 || uint(&body[..1], Width::U8)? != 0 {
+        return Err(io::Error::other("expected measured eight start121"));
+    }
+    let size = uint(&body[1..5], Width::U32)? as usize;
+    if size != 262 || teams.iter().any(|team| *team > 1) {
+        return Err(io::Error::other("eight start121 envelope/teams"));
+    }
+    let mut stream = crate::lobby::decode_bytes(&body[5..5 + size])?;
+    if stream[..6] != [24, 1, 1, 0, 0, 0] || stream[6 + 43] != 8 {
+        return Err(io::Error::other("eight start121 stream/count"));
+    }
+    for (slot, team) in teams.iter().enumerate() {
+        let at = 6 + 48 + 26 * slot;
+        if stream[at] != slot as u8
+            || stream[at + 2] != slot as u8
+            || u16::from_le_bytes([stream[at + 3], stream[at + 4]]) != slot as u16
+        {
+            return Err(io::Error::other("eight start121 row slot"));
+        }
+        stream[at + 5] = *team;
+    }
+    let mut out = body[..5].to_vec();
+    out.extend(encode_bytes(&stream)?);
+    out.extend_from_slice(&body[5 + size..]);
+    Ok(out)
+}
+
 pub fn peer(
     template: &[u8],
     key: u32,

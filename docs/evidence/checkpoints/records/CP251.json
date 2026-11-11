@@ -1,0 +1,305 @@
+{
+  "id": "CP251",
+  "previous": "CP250",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-11T03:03:58.516621+00:00",
+  "context_commit": "83abe4b6d3b823ac76884b1563f5eb4879d22f96",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/M4: portCP213knownfixed1v7/selector-Mannernegative after separatePython delivery; keepnativeFreepreRoomblockers truthful andswitchtonative9admissiongap withoutbroadRE.",
+  "scope": "Fixed8layoutcode/35TCP/8prebind/71Rust/32fourregression;native8Manner1v7negative8d/90raw;Free4bD8dGpost17preRoomfailuresretain133raw/noFreegameplay/M4OPEN.",
+  "artifacts": [
+    {
+      "name": "Rust-kr-service-fixed8teams",
+      "sha256": "521012fadc41cd9d97330399fd028267e245d90edd337d077a4b891712862c15"
+    },
+    {
+      "name": "KR00967-currentcopy4b-failedFreepreRoom",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "KR00967-alternateemptyonlycopy8d-nativeMannernegative",
+      "sha256": "8d7194fd4f9a5a798282fc995f2d880ff0a702ffc1e61ca06aba221632f7e16a"
+    }
+  ],
+  "locators": [
+    "Rustroom::EightTeamLayout/privatefixedteams/room_wire::start_teams/four_results::rank_body/winner",
+    "room_io::Config::eight_team_layout/eight_battle-only/packet104prebeginStartrejection;libstructuredstart_rejection",
+    "CachedCP147162163: DCB0DD/counts-DCB138/rule-DCB185/balance-DE03F3/Startreturn-123F9C0/mode_set; no newnativebodyRE",
+    "CP213knownFree1v7rankbodyhashes/PythonPR32283abe4b;CP250nativeManner4v4PR321de84217",
+    "Native8dMannernegative32TCP/90raw127.113s;Free4bD66raw52.509s and8dG67raw60.841s preRoom/post17causeunknown"
+  ],
+  "findings": [
+    {
+      "summary": "Knownfixed1v7port sharesimmutableperRoomteams across106/110/121/rank/outcome; eight-onlyflagguard. Mannerunequalforged104 no-opreject beforebegin/round/key/queue, two104andBack86keeptransportalive. CP213historicalrankhashes separateproducerregression, PythonWIPdeliveredbyteexactPR322 notimportedunmerged.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-eight-teams",
+      "evidence": [
+        "RUST251-01621",
+        "RUST251-01622",
+        "RUST251-01623",
+        "RUST251-01619",
+        "RUST251-01604",
+        "RUST251-01713"
+      ],
+      "limits": "RustFree1v7 implementation/TCP only; both nativeattempts stoppedafter17 beforeRoom, no twoFreeoutcomes/selector0nativepersist. SamepreRoomfamilyasCP250HG; causalSDK/emptyJSON/sourceunknown. Do notrerunwithoutnewobservable.; NativeManner1v7negative uses previouslymeasuredalternate8dcopy, notcopy4bnegative orcausalstartupfix/guardbranchcoverage. CP250nativeManner4v4twooutcomes/reset-Start3 reused, notrerun.; Currentcode8teamselectionisoperatorfixedpreset, no interactiveC2Steamchangepacket/generalroomauthority. No native9fullroomadmission/M4closure/M5authbridge/fullgame.; UDPcapturer acceptsIP2..9 andretainsworkerfailure; injectedexceptioncontrol+noUDPerrornegative pass. Negative hasnoBattleUDP; no new14or56wire/nativeAPI-keyapplyproof.; Private8virtualhosts/sharedkernel/noexternalroute/Wineaccepted/TMPFSrawexporthash aftercleanup; notBtrfsdurabilityfix/production. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Same8actualKR00967Winealternate8d/32TCP/64native106/8auth-ownprofile-render-ownslots/64wire1v7teams. NativeManner1/full8-cap8-2teams/balancebranch/Startreturn7/3shold/no104-no99-noBattlewire. 90raw127.113194352s/cleanup0/1513TCP266reply/fulltuple-seqCRC-SHA; not4bnegative orcausalstartupfix.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-eight-teams",
+      "evidence": [
+        "RUST251-01580",
+        "RUST251-01579",
+        "RUST251-01575"
+      ],
+      "limits": "RustFree1v7 implementation/TCP only; both nativeattempts stoppedafter17 beforeRoom, no twoFreeoutcomes/selector0nativepersist. SamepreRoomfamilyasCP250HG; causalSDK/emptyJSON/sourceunknown. Do notrerunwithoutnewobservable.; NativeManner1v7negative uses previouslymeasuredalternate8dcopy, notcopy4bnegative orcausalstartupfix/guardbranchcoverage. CP250nativeManner4v4twooutcomes/reset-Start3 reused, notrerun.; Currentcode8teamselectionisoperatorfixedpreset, no interactiveC2Steamchangepacket/generalroomauthority. No native9fullroomadmission/M4closure/M5authbridge/fullgame.; UDPcapturer acceptsIP2..9 andretainsworkerfailure; injectedexceptioncontrol+noUDPerrornegative pass. Negative hasnoBattleUDP; no new14or56wire/nativeAPI-keyapplyproof.; Private8virtualhosts/sharedkernel/noexternalroute/Wineaccepted/TMPFSrawexporthash aftercleanup; notBtrfsdurabilityfix/production. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "Freecopy4bD and8dG bothactualpost17EOFbeforeRoom, no causalobservable/signal/Freegameplay/selector0persist. 66+67raw/52.509+60.841s/sourcefrozen/cleanup0; sameCP250HGfamilyunknown. Stopboundedbranchaftertwoattempts/no retrywithoutnewobservable; native9admission independentnext/M4OPEN.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PROTOCOL.md#rust-eight-teams",
+      "evidence": [
+        "RUST251-01712",
+        "RUST251-01711",
+        "RUST251-00799",
+        "RUST251-00431"
+      ],
+      "limits": "RustFree1v7 implementation/TCP only; both nativeattempts stoppedafter17 beforeRoom, no twoFreeoutcomes/selector0nativepersist. SamepreRoomfamilyasCP250HG; causalSDK/emptyJSON/sourceunknown. Do notrerunwithoutnewobservable.; NativeManner1v7negative uses previouslymeasuredalternate8dcopy, notcopy4bnegative orcausalstartupfix/guardbranchcoverage. CP250nativeManner4v4twooutcomes/reset-Start3 reused, notrerun.; Currentcode8teamselectionisoperatorfixedpreset, no interactiveC2Steamchangepacket/generalroomauthority. No native9fullroomadmission/M4closure/M5authbridge/fullgame.; UDPcapturer acceptsIP2..9 andretainsworkerfailure; injectedexceptioncontrol+noUDPerrornegative pass. Negative hasnoBattleUDP; no new14or56wire/nativeAPI-keyapplyproof.; Private8virtualhosts/sharedkernel/noexternalroute/Wineaccepted/TMPFSrawexporthash aftercleanup; notBtrfsdurabilityfix/production. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "71Rusttests/fmt-clippy-lockedbuild/35eightTCP/8prebind/32fourTCP pass/samebinary. TestscenarioR1clientslocalrebindbeforeRoom andguardcheckerwrongexpectedreason retained; correctedharness/checkeronly. UDPIP2..9/supervisionfakefault/nativecapturehealthpass, nonewBattleUDP14-56wire/nativeAPIkeyapplyclaim.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-eight-teams",
+      "evidence": [
+        "RUST251-01715",
+        "RUST251-01606",
+        "RUST251-01605",
+        "RUST251-01000",
+        "RUST251-01094",
+        "RUST251-01188",
+        "RUST251-00067",
+        "RUST251-01709",
+        "RUST251-01710",
+        "RUST251-01714"
+      ],
+      "limits": "RustFree1v7 implementation/TCP only; both nativeattempts stoppedafter17 beforeRoom, no twoFreeoutcomes/selector0nativepersist. SamepreRoomfamilyasCP250HG; causalSDK/emptyJSON/sourceunknown. Do notrerunwithoutnewobservable.; NativeManner1v7negative uses previouslymeasuredalternate8dcopy, notcopy4bnegative orcausalstartupfix/guardbranchcoverage. CP250nativeManner4v4twooutcomes/reset-Start3 reused, notrerun.; Currentcode8teamselectionisoperatorfixedpreset, no interactiveC2Steamchangepacket/generalroomauthority. No native9fullroomadmission/M4closure/M5authbridge/fullgame.; UDPcapturer acceptsIP2..9 andretainsworkerfailure; injectedexceptioncontrol+noUDPerrornegative pass. Negative hasnoBattleUDP; no new14or56wire/nativeAPI-keyapplyproof.; Private8virtualhosts/sharedkernel/noexternalroute/Wineaccepted/TMPFSrawexporthash aftercleanup; notBtrfsdurabilityfix/production. Internet thật chưa kiểm."
+    },
+    {
+      "summary": "ManualREADME→PLAN→PROTOCOL→RESEARCH→source/raw/metadata scopedselfcheck; M4notclosed/Freeblocker/native9next/M5bridgeindependent/AUD071next252/oldhistoryimmutable/TMPFSnotBtrfsfix.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PROTOCOL.md#rust-eight-teams",
+      "evidence": [
+        "RUST251-01607",
+        "RUST251-01610",
+        "RUST251-00005"
+      ],
+      "limits": "RustFree1v7 implementation/TCP only; both nativeattempts stoppedafter17 beforeRoom, no twoFreeoutcomes/selector0nativepersist. SamepreRoomfamilyasCP250HG; causalSDK/emptyJSON/sourceunknown. Do notrerunwithoutnewobservable.; NativeManner1v7negative uses previouslymeasuredalternate8dcopy, notcopy4bnegative orcausalstartupfix/guardbranchcoverage. CP250nativeManner4v4twooutcomes/reset-Start3 reused, notrerun.; Currentcode8teamselectionisoperatorfixedpreset, no interactiveC2Steamchangepacket/generalroomauthority. No native9fullroomadmission/M4closure/M5authbridge/fullgame.; UDPcapturer acceptsIP2..9 andretainsworkerfailure; injectedexceptioncontrol+noUDPerrornegative pass. Negative hasnoBattleUDP; no new14or56wire/nativeAPI-keyapplyproof.; Private8virtualhosts/sharedkernel/noexternalroute/Wineaccepted/TMPFSrawexporthash aftercleanup; notBtrfsdurabilityfix/production. Internet thật chưa kiểm."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native8Manner1v7negative/full8-count-selector-balance-return7-no104",
+      "result": "pass",
+      "evidence": [
+        "RUST251-01580",
+        "RUST251-01579"
+      ],
+      "limits": "Alternatecopy8d/Wine/private8LAN only; no4bnegative/auth/gameplayproof."
+    },
+    {
+      "check": "NativeFree1v7twooutcomes/selector0persist",
+      "result": "fail",
+      "evidence": [
+        "RUST251-00799",
+        "RUST251-00431"
+      ],
+      "limits": "Two preRoompost17startupfailures, notshownpolicybug; do notretrywithoutnewobservable."
+    },
+    {
+      "check": "71Rust35eightTCP8prebind32fourTCP",
+      "result": "pass",
+      "evidence": [
+        "RUST251-01715",
+        "RUST251-01000",
+        "RUST251-01094",
+        "RUST251-01188",
+        "RUST251-00067",
+        "RUST251-01709"
+      ],
+      "limits": "Syntheticpolicy/producer regression, notnativeFreegameplay orM4gate."
+    },
+    {
+      "check": "HarnessR1/guardreasonR1",
+      "result": "fail",
+      "evidence": [
+        "RUST251-01593",
+        "RUST251-01602"
+      ],
+      "limits": "Retainedfailedraw/PIDgone; correctedtestonly/newrunsourceversion."
+    },
+    {
+      "check": "Manualdocs-catalog-evidence-source-selfcheck",
+      "result": "pass",
+      "evidence": [
+        "RUST251-01607",
+        "RUST251-00005"
+      ],
+      "limits": "Reviewwaived/selfcheck, notindependentapproval/gateclosure."
+    },
+    {
+      "check": "Native9admission/Freegameplay/M4closure/M5bridge",
+      "result": "not_run",
+      "evidence": [
+        "RUST251-01610"
+      ],
+      "limits": "PLANindependentnative9next; FreepreRoomblocked; M5backendexists/nativebridge separate."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP251-rust-eight-teams.json",
+      "bytes": 468389,
+      "sha256": "f6fbbfc6facb1ed170687a4ad0f9fd0c418057cf94d1b9a32632139a98a20f63",
+      "count": 1725
+    }
+  ],
+  "delta": {
+    "added": [
+      "Fixed8layout1v7/Rustsharedteamfields-rank/currentguard/71tests35TCP8prebind32fourTCP.",
+      "Native8Manner1v7negative8d/full8-cap8-2teams/return7-no104/90raw. PythonCP213reference deliveredseparatelyPR322."
+    ],
+    "corrected": [
+      "TestscenarioR1localclientsrebind/guardcheckerexpectedreason fixedwithallfailedrawretained; no serverprotocolchange.",
+      "UDPcapturer8IPworkerfaultsupervision implemented but no new14-56BattleUDPproof."
+    ],
+    "superseded": [
+      "RustMannerunbalancednegativeentirelymissing; now native8d+synthetic104guardscope done. Freepositive stillstartupblocked/M4notclosed."
+    ]
+  },
+  "blockers": [
+    "RustFree1v7 implementation/TCP only; both nativeattempts stoppedafter17 beforeRoom, no twoFreeoutcomes/selector0nativepersist. SamepreRoomfamilyasCP250HG; causalSDK/emptyJSON/sourceunknown. Do notrerunwithoutnewobservable.",
+    "NativeManner1v7negative uses previouslymeasuredalternate8dcopy, notcopy4bnegative orcausalstartupfix/guardbranchcoverage. CP250nativeManner4v4twooutcomes/reset-Start3 reused, notrerun.",
+    "Currentcode8teamselectionisoperatorfixedpreset, no interactiveC2Steamchangepacket/generalroomauthority. No native9fullroomadmission/M4closure/M5authbridge/fullgame.",
+    "UDPcapturer acceptsIP2..9 andretainsworkerfailure; injectedexceptioncontrol+noUDPerrornegative pass. Negative hasnoBattleUDP; no new14or56wire/nativeAPI-keyapplyproof.",
+    "Private8virtualhosts/sharedkernel/noexternalroute/Wineaccepted/TMPFSrawexporthash aftercleanup; notBtrfsdurabilityfix/production. Internet thật chưa kiểm."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "PLANnative9admissionbridge/consumer independentnext; minimalcachedKRerror87/admissionroute REonlyifblocks. Free1v7twooutcomes-selector0persist stillpost17preRoomblocked aftertwofailedcases, reopenonlynewobservable/noSDKgraph-randomretry. M5backendpresent/nativebridgeindependent/AUD071next252.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "BacklogM2integrationtriggeronly: reusablepolicy/typedaccount→membership→recipient seam/partialsendfailure/dynamicoccupancy/quota. Native2actualcleanupdone, no broadRE/repeatknownconsumer; notdependencyM1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automaticresume/nativefatalblockedCP224;freshprocesspositive-negativeCP225done. Reopenonlynewobservable/inputormilestonedependency,noSDK-VMgraph/repeatedcontrols.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Before17receiverselectionblockedCP220distinct;no broadgetter/watch/RTTIpatchwithoutnewedge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-11T03:03:58.516621+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codexmanualsource/raw/nativeMannernegative/Freefailedscope/docs/selfcheck;independentreviewwaivednotapproved/exactheadrequired.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "docs/evidence/rust-service/README.md",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "docs/evidence/rust-service/eight-teams.json",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    }
+  ]
+}

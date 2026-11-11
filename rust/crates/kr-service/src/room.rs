@@ -6,6 +6,15 @@ use std::{
     collections::{BTreeMap, BTreeSet},
     io,
 };
+/// CP213 fixed operator layouts; not a client team-selection protocol.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Deserialize)]
+pub enum EightTeamLayout {
+    #[default]
+    #[serde(rename = "4v4")]
+    Balanced,
+    #[serde(rename = "1v7")]
+    OneSeven,
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Membership {
     pub identity: u32,
@@ -52,6 +61,7 @@ pub struct Room {
     pub(crate) pickups: crate::pickups::Round,
     pub(crate) bombs: crate::bombs::Ledger,
     capacity: usize,
+    fixed_teams: Vec<u8>,
     sealed_abort: bool,
     pub(crate) bomb_capacity: Vec<usize>,
     pub(crate) terrain: Option<crate::terrain::Terrain>,
@@ -69,6 +79,7 @@ impl Default for Room {
             pickups: crate::pickups::Round::default(),
             bombs: crate::bombs::Ledger::default(),
             capacity: 2,
+            fixed_teams: vec![0, 1],
             sealed_abort: false,
             bomb_capacity: vec![1, 2],
             terrain: None,
@@ -84,6 +95,7 @@ impl Room {
         }
         Ok(Self {
             capacity,
+            fixed_teams: (0..capacity).map(|slot| (slot % 2) as u8).collect(),
             bomb_capacity: match capacity {
                 8 => vec![1, 2, 1, 1, 2, 1, 1, 1], // CP209 actual baseline
                 4 => vec![1, 2, 1, 1],
@@ -94,6 +106,32 @@ impl Room {
     }
     pub(crate) fn capacity(&self) -> usize {
         self.capacity
+    }
+
+    pub(crate) fn set_eight_layout(&mut self, layout: EightTeamLayout) -> io::Result<()> {
+        if self.capacity != 8 || !self.members.is_empty() || self.phase != Phase::Idle {
+            return Err(io::Error::other(
+                "eight layout requires empty idle eight-room",
+            ));
+        }
+        self.fixed_teams = match layout {
+            EightTeamLayout::Balanced => (0..8).map(|slot| slot % 2).collect(),
+            EightTeamLayout::OneSeven => vec![0, 1, 1, 1, 1, 1, 1, 1],
+        };
+        Ok(())
+    }
+    pub(crate) fn fixed_teams(&self) -> &[u8] {
+        &self.fixed_teams
+    }
+    pub(crate) fn fixed_teams_match(&self) -> bool {
+        self.members
+            .values()
+            .all(|m| self.fixed_teams.get(usize::from(m.slot)) == Some(&m.team))
+    }
+    pub(crate) fn balanced_teams(&self) -> bool {
+        let zero = self.members.values().filter(|m| m.team == 0).count();
+        let one = self.members.values().filter(|m| m.team == 1).count();
+        zero > 0 && zero == one && zero + one == self.capacity
     }
 
     pub fn current(&self, key: Membership) -> bool {
@@ -142,7 +180,7 @@ impl Room {
             Member {
                 key,
                 slot: (identity - 1) as u8,
-                team: ((identity - 1) % 2) as u8,
+                team: self.fixed_teams[(identity - 1) as usize],
                 ready: false,
                 setup: false,
                 late_after_abort: 0,
