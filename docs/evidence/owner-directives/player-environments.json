@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-12T00:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án nói trong phiên Claude Code ngày 2026-11-12: \"người chơi thật sẽ chạy client trên Wine\", sau đó: \"thử trên Windows giả lập lẫn wine luôn\".",
+  "fact": "Mọi nghiệm thu native tới nay chạy client KR 00967 trên Wine; chưa có lượt nào trên Windows. Wine đã được chấp nhận làm môi trường nghiệm thu (wine-accepted.json).",
+  "decision": "Người chơi của dịch vụ giai đoạn 1 chạy client trên Wine. Gói cho người chơi ở M8 phải được thử trên cả Wine và Windows chạy trong máy ảo.",
+  "limits": "Lượt Windows trong máy ảo chỉ áp dụng cho gói người chơi ở M8: cài, đăng nhập, vào phòng và chơi hết một trận. Không chạy lại các gate và milestone cũ trên Windows; wine-accepted.json giữ hiệu lực cho mọi nghiệm thu khác. Không cần máy Windows vật lý. Kết quả trên máy ảo không được ghi thành kết quả trên Windows máy thật.",
+  "plan": "docs/PLAN.md#phase1-acceptance",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}

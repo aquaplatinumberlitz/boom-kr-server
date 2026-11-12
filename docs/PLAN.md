@@ -50,9 +50,10 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **M7e đan
    client thật, mỗi cỡ một lượt; dùng lại cổng và key khi hết pool và sau restart; chặn giả mạo gói đầu giữa hai
    người chung IP. Làm sau M7 để không phải nghiệm thu hai lần trên hai kiểu phòng. Đây là điều kiện của đích
    giai đoạn 1, không phải việc tuỳ chọn.
-4. G1 song song M6. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1; G1 cần adapter dữ liệu map nhất quán
-   trước native gameplay mới. Không chạy lại baseline N1b.
+4. G1 song song M6. G1 cần adapter dữ liệu map nhất quán trước native gameplay mới. Không chạy lại baseline N1b.
 5. M8, gồm kiểm tải 50 người và 8 phòng có relay.
+
+Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
 **Blocker và việc tồn:**
 
@@ -64,6 +65,11 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **M7e đan
   Terrain cũ cũng khóa với fixture map cũ; cần dữ liệu nhất quán, không nới guard hoặc coi đổi ID đã đủ chơi.
 - `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
   Fixture mà server cần để chạy không được phụ thuộc `local/` khi bàn giao: đóng gói kèm manifest hash ở M8.
+- Dọn issue khi đóng M7, trong cùng PR giao M7e (cần cập nhật catalog và bản đối chiếu issue nên không dọn lẻ):
+  đóng issue của lát đã giao (#369); đóng #14 vì #285 đã thay vai trò issue gốc, chuyển link catalog sang #285;
+  rút mô tả #285 về trạng thái hiện tại và trỏ tới bảng này. #2, #3 và #9 giữ mở làm backlog ngoài giai đoạn 1.
+  Riêng #9 (client thỉnh thoảng abort lúc khởi động trên Wine, chưa rõ nguyên nhân) phải xem lại ở M8 vì người chơi
+  thật có thể gặp.
 
 **Quy ước:**
 
@@ -547,6 +553,102 @@ Thứ tự thử map đề xuất theo số ô quy tắc chưa phân loại đư
 Camp08 (50), Tomb12 (104). Các loại ô chưa đo hành vi (bụi cỏ, thùng cứng, đường kẻ, giếng, cầu…) phải đo riêng trước khi
 công bố map chứa chúng; profile tĩnh chưa thay được adapter cho các packet vào trận.
 
+<a id="phase1-acceptance"></a>
+### Nghiệm thu giai đoạn 1 cho các mốc sau M7
+
+Mục này là tiêu chí nghiệm thu hiện hành của M5b, N1R-b, G1, M6 và M8. Định nghĩa M5, M6 và M8 ở
+[mục milestone](#rust-service-milestones) viết cho phạm vi rộng hơn (inventory, ledger, thưởng) và chỉ còn là đầu vào
+cho các đợt sau. Một mốc đạt khi mọi dòng "phải có" đạt trên client thật, trừ dòng ghi rõ cách kiểm khác. Việc ở dòng
+"không thuộc mốc" không được kéo vào. Chi tiết wire phải đo, không tự đặt luật rồi ACK giả.
+
+**M5b — account bất kỳ.** Phải có:
+
+- Account do admin tạo bằng CLI, không sửa config và không restart service, đăng nhập được, vào sảnh, tạo hoặc vào
+  phòng, chơi hết một trận và ván kế.
+- Tên hiển thị và hồ sơ gửi cho client sinh từ DB, không từ fixture theo account.
+- Hai account mới đăng nhập từ cùng một IP công khai không lẫn danh tính của nhau.
+- Khi DB bận hoặc hàng đợi đầy lúc đang có trận: người đang chơi không bị ảnh hưởng, người đăng nhập mới nhận lỗi rõ
+  ràng, DB hồi lại thì đăng nhập được. Đây là ca còn nợ của M5.
+- Sai mật khẩu, account bị khóa và đăng nhập trùng chỉ cần chạy lại bộ TCP đã có.
+
+Không thuộc mốc: người chơi tự đăng ký trong client, cấp độ, EXP, tiền, inventory.
+
+**N1R-b — relay cho phòng nhiều người.** Relay là policy mặc định của dịch vụ giai đoạn 1; `LegacyDirect` giữ lại cho
+chẩn đoán và hồi quy. Phải có:
+
+- Một trận 4 người và một trận 8 người qua relay, mỗi trận tới kết quả, reset và ván kế.
+- Một ván kế sau khi có người rời, để kiểm cấp lại đường cho roster không còn đủ 4 hoặc 8.
+- Một người rớt mạng giữa trận: đường của người đó được thu hồi, những người còn lại chơi tiếp.
+- Cổng và key dùng lại được: đặt pool nhỏ, chạy số ván vượt kích thước pool trong một instance; gói của ván cũ không
+  lọt sang ván mới.
+- Sau restart service, phòng mới chơi được và gói client cũ gửi tới cổng cũ bị bỏ.
+- Hai người chung IP công khai trong cùng phòng: gói đầu của người này không chiếm được đường của người kia.
+- Ghi số cổng cần cho 8 phòng 8 người và luật firewall tương ứng vào tài liệu vận hành.
+
+Không thuộc mốc: tự dò NAT để đi thẳng, relay trên nhiều instance, kiểm tải (thuộc M8).
+
+**G1 — sáu map ladder, item và nhân vật.** Phạm vi và dữ liệu tĩnh ở [RUST-G1](#rust-g1). Làm theo lát, mỗi lát một
+checkpoint:
+
+1. **Adapter dữ liệu map.** Tên map, dữ liệu Start và các packet vào trận sinh từ profile xuất từ pack. ExVillage01
+   qua adapter phải cho đúng byte của fixture hiện hành; sau đó Factory07 chạy một trận.
+2. **Chọn map trong phòng chờ.** Chủ phòng đổi map, người khác thấy map mới, Start dùng đúng map đó. Thao tác này chưa
+   từng được đo.
+3. **Kim và cứu** trên Rust theo contract đã đo ở Python.
+4. **Terrain và item nền cho mọi cỡ phòng**; hiện phòng 4 và 8 người bị từ chối ở cấu hình.
+5. **Các map còn lại** theo thứ tự Forest07, Patrit14, Village10, Camp08, Tomb12. Mỗi map một trận hai vòng: spawn
+   đúng, thùng vỡ đúng, item rơi và nhặt được. Loại ô chưa đo phải đo trước; chưa đo thì map đó chưa được mở.
+6. **Nhóm item của sáu map.** Mỗi nhóm một ca dùng, một ca không đủ điều kiện, peer thấy đúng, reset đúng. Nhóm chưa
+   đo bị tắt khỏi bảng rơi.
+7. **Nhân vật.** M7e chỉ có chỉ số cho hai nhân vật đã đo. Mọi nhân vật mà account mới chọn được trong phòng chờ phải
+   có chỉ số lấy từ `BomberAttr`; nhân vật chưa hỗ trợ bị từ chối rõ ràng.
+
+Map được mở từng cái. G1 đạt khi cả sáu map chơi được trong phòng 2 tới 8 người, hoặc chủ dự án chấp nhận danh sách
+rút gọn có lý do. Không thuộc mốc: map và item ngoài sáu map này, mode khác chế độ thường, monster, script.
+
+**M6 — lưu kết quả, thưởng 0.** Phải có:
+
+- Mỗi trận ghi đúng một bản ghi bền vững: phòng, map, thời điểm, lý do kết thúc, và với từng người: account, nhân
+  vật, đội, slot, thắng/thua/hòa, có rời hoặc rớt giữa trận hay không.
+- Ghi đúng một lần khi report lặp, khi DB bận và khi service bị kill ngay sau kết quả: không mất, không trùng.
+- Trận bị hủy ghi là hủy, không ghi thắng thua.
+- Nhân vật chọn gần nhất được lưu theo account và hiện lại sau khi đăng nhập lại.
+- Client nhận kết quả với thưởng bằng 0; server không cấp gì.
+- CLI admin xem được lịch sử trận theo account và theo phòng.
+
+Kiểm bằng DB thật cho các ca lỗi, cộng một trận trên client thật rồi đăng nhập lại. Không thuộc mốc: EXP, cấp độ,
+tiền, bảng xếp hạng, inventory. Schema chỉ giữ chỗ cho ledger và inventory.
+
+**M8 — vận hành.** Phải có:
+
+- **Gói server:** binary, config, fixture runtime và dữ liệu map, nhân vật sinh từ pack, có manifest hash. Chạy được
+  trên một máy Linux sạch, không có repo và không có `local/`. Dữ liệu trích từ client không commit; gói được dựng
+  tại chỗ từ pack bằng một lệnh có tài liệu.
+- **Gói cho người chơi:** người chơi chạy client trên Wine; gói được thử trên cả Wine và Windows trong máy ảo theo
+  [quyết định 12/11](evidence/owner-directives/player-environments.json). Gói gồm hướng dẫn, phiên bản Wine đã nghiệm
+  thu, cách dựng prefix và cấu hình trỏ client tới server. Trên mỗi môi trường, từ một máy sạch không phải máy phát
+  triển: cài, đăng nhập, vào phòng và chơi hết một trận. Client chưa từng chạy trên Windows với server này, nên lượt
+  Windows làm sớm trong M8 để còn thời gian xử lý nếu hỏng.
+- **Kiểm tải:** 50 người đồng thời và 8 phòng cùng chơi qua relay. Trước khi đo phải có tần suất gói UDP của một
+  client thật và ngưỡng CPU, RAM, độ trễ chuyển tiếp, tỉ lệ rơi gói. Tải tổng hợp phát lại traffic đã thu; cùng
+  lúc có ít nhất hai phòng client thật để xác nhận client thật không bị ảnh hưởng.
+- **Chạy dài:** 24 giờ có tải nền, không rò bộ nhớ, cổng relay hay phòng ma.
+- **Giám sát:** log có ID phiên, phòng và trận, không lộ mật khẩu hay token; số người online, số phòng, số trận, số
+  cổng relay đang dùng, lỗi DB; có điểm kiểm tra sức khỏe.
+- **Admin:** tạo, khóa, mở khóa, đặt lại mật khẩu, ngắt một người chơi, đóng một phòng; mọi thao tác có audit.
+- **Backup và restore:** backup khi service đang chạy, restore vào máy sạch, đăng nhập và chơi trận mới được; ghi thời
+  gian khôi phục và lượng dữ liệu mất đo thực.
+- **Dừng và khởi động lại:** dừng có trật tự không để trận dở mà không ghi; khởi động sau khi bị kill không còn phòng
+  ma và DB nhất quán. Diễn tập một lần nâng cấp binary rồi quay lại bản cũ.
+- **Lỗi khởi động client** ([#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9)): đếm tỉ lệ trong các
+  lượt client thật của kiểm tải và chạy dài; tỉ lệ đáng kể thì mở lại.
+- Tài liệu vận hành một trang.
+
+Không thuộc mốc: nhiều instance, nhiều kênh, HA, trực sự cố, chống gian lận ngoài phần đã có.
+
+**Đích giai đoạn 1 đạt khi** M7, M5b, N1R-b, G1, M6 và M8 đều đạt theo mục này. Theo [quyết định 12/11](evidence/owner-directives/no-playtest.json),
+không cần buổi chơi thử với người chơi thật; nghiệm thu dùng client thật do nhóm tự chạy và tải tổng hợp.
+
 <a id="rust-service-exit-criteria"></a>
 ### Khi nào đủ demo, dịch vụ nội bộ và phát hành rộng hơn?
 
@@ -577,9 +679,24 @@ thời gian và chưa mở việc nào trước khi giai đoạn 1 bàn giao (tr
 | F4 Hồ sơ, túi đồ, cửa hàng | Cấp và kinh nghiệm, chọn nhân vật, túi đồ, các nhóm trang trí, cảm xúc, bộ sưu tập, cửa hàng | Trang trí và cảm xúc: khoảng 19.800 mục tài nguyên | Dựa trên M6. Giá cửa hàng không có trong client: chủ dự án phải chọn chính sách |
 | F5 Xã hội | Chat và thì thầm, bạn bè, bang hội, cặp đôi, xếp hạng | Các nhóm Guild, Chatting, Messenger, Ranking | Dựa trên F4 và M8 (lưu bền, chống lạm dụng) |
 | F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa, ưu đãi phòng máy | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
+| L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 25.321 chuỗi; 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Chưa biết client 00967 hiển thị được chữ Việt hay không; xem đoạn dưới bảng |
 
 Thứ tự đặt gameplay (F1–F3) trước hệ thống ngoài trận (F4–F6) vì yêu cầu dài hạn nêu item, map và mode; chủ dự án có
 thể đổi thứ tự. F4 có thể kéo lên trước F3 nếu cần phần thưởng và tiến trình sớm.
+
+**Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
+`boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
+nghi có chữ, trong đó 8 ảnh đã xử lý và 681 ảnh có bản khác ở client VN. Bản dịch đó làm cho engine viết lại, chưa từng
+nạp vào client 00967. Chưa có bản tiếng Anh. Ba việc phải đo trước khi định cỡ, mỗi việc tối đa hai lượt native:
+
+1. Client 00967 có hiển thị được chữ ngoài bảng mã Hàn (CP949) không. Khoảng 23.200 chuỗi tiếng Việt có ký tự ngoài
+   CP949; tiếng Anh thì nằm trọn trong CP949 nên không vướng bước này.
+2. Chuỗi nào client đọc từ file cục bộ, chuỗi nào nhận từ server. Hai bảng lớn nhất (khoảng 16.300 chuỗi) ở client
+   là file cache của bảng do server gửi, nên có thể server gửi theo ngôn ngữ của từng account; chưa đo trên 00967.
+3. Client có nhận file chữ và ảnh đã thay trong bản copy mà không bị kiểm toàn vẹn chặn không.
+
+Người chơi chọn ngôn ngữ ở bước mở game (mỗi ngôn ngữ một bộ file thay thế), không phải trong menu của client: client
+không có menu đó. Tiếng Hàn là bản gốc, không tốn việc. Mọi thay đổi làm trên bản copy; client và pack gốc giữ nguyên.
 
 Cách vào mỗi đợt, giống nhau cho mọi đợt:
 
