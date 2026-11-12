@@ -644,15 +644,38 @@ tốc độ và giá trị tối đa); ánh xạ từng cột cho KR vẫn theo 
 
 ## Mode
 
-Pack không có một bảng liệt kê mode; dưới đây là hai danh sách đặt cạnh nhau, **chưa ghép từng dòng**.
-Mã mode trên wire (trường mode khi tạo phòng) và luật thắng của từng mode phải lấy từ RE client.
+Pack không có bảng mode. Ghép wiki với tài nguyên/map chỉ theo tên rõ, không chứng minh luật hay khả năng chạy.
+`chưa ghép` nghĩa là chưa xác lập đối ứng; `?` ở đợt là xếp tạm theo tên, chưa được lộ trình xác định.
+Tên trang wiki chỉ file `.txt` dưới `/home/admin/boom/kr-namu-wiki/text`; số map theo họ ở trên,
+`Attr/MapGroup` là số mục khai báo (có thể là mẫu tên), không cộng vào số map theo họ.
+Các nhóm giao diện không rõ là mode hoặc thuộc F4–F6 vẫn ở bảng Hệ thống bên dưới.
 
-- **Theo wiki (trang 게임 모드):** 일반모드 (thường), 몬스터모드 (monster), 협공배틀 (đánh phối hợp), bốn kiểu
-  게임타입: 부활대전 (hồi sinh), 고슴도치 (nhím), 대장잡기 (bắt thủ lĩnh), 시한폭탄 (bom hẹn giờ); 팝케이드,
-  혼자놀기 (chơi một mình); hai mode sự kiện cũ 눈싸움 và 슈퍼파이터.
-- **Nhóm giao diện theo mode trong `FxContents`:** AIBattle (10), Antarctic (15), CAHero (69), CAPass (9), CharacterSelect (34), CharacterSelectAll (33), ConfusedFight (50), DIYBomb (9), DailyMission (22), HoneyButterChip (18), IamBoss (4), IamWriggle (7), ItemCollection (27), Ladder (9), LuckyCard (5), MagicMarket (57), MineExplore (8), RPG (134), RPGMyInfo (29), SandBox (79), SnowyChamp (6), UXCAJJangRatingMark (61), UXMatching (163), WeeklyLadder (12).
-- **Pack riêng:** FxHiddenCatch (Hidden Catch), FxMonster (quái mùa 1 và mùa 2, tàu).
-- **Theo số map ở trên:** map đấu thường theo theme 169, biến thể của map đấu 144, nhiệm vụ và mode riêng 122, monster mode 368, rpg và ca hero 124, hidden catch 37, màn thưởng 43, sảnh, cửa hàng, tutorial, map tuỳ biến 36, chưa phân nhóm 108.
+| Mode | Trang wiki | Bằng chứng pack / hệ thống | Họ map liên quan | Đợt | Mã mode trên wire |
+|---|---|---|---|---|---|
+| 일반모드 (thường) | 크레이지_아케이드게임_모드 §2.1 | Trận đấu: `FxStage/Game` (538) | Map đấu thường theo theme: 24 họ / 169 map, Biến thể của map đấu: 88 họ / 144 map | F1 | chưa đo |
+| 몬스터모드 (monster) | 크레이지_아케이드게임_모드 §2.2; 크레이지_아케이드몬스터_모드 | Monster: `FxMonster/Monster` (1022), Monster: `FxMonster/MonsterSeason2` (236) | Monster mode: 61 họ / 368 map | F3 | chưa đo |
+| 협공배틀 (đánh phối hợp) | 크레이지_아케이드게임_모드 §2.3 | chưa ghép | — | F2 | chưa đo |
+| 부활대전 (hồi sinh) | 크레이지_아케이드게임_모드 §2.4.1 | Map: `FxContents/Attr:MapGroup` (1 mục tổng; tên khớp ở cột map) | `Attr/MapGroup/ReBirthMapGroup` (2 mục) | F2 | chưa đo |
+| 고슴도치 (nhím) | 크레이지_아케이드게임_모드 §2.4.2 | chưa ghép | — | F2 | chưa đo |
+| 대장잡기 (bắt thủ lĩnh) | 크레이지_아케이드게임_모드 §2.4.3 | chưa ghép | — | F2 | chưa đo |
+| 시한폭탄 (bom hẹn giờ) | 크레이지_아케이드게임_모드 §2.4.4 | chưa ghép | — | F2 | chưa đo |
+| 팝케이드 (Popcade) | 크레이지_아케이드게임_모드 §2.5 | Map: `FxMap/Map` (1151 mục tổng; tên khớp ở cột map) | `PopcadeA` (5), `PopcadeB` (5), `PopcadeC` (5) | F3 | chưa đo |
+| 혼자놀기 (chơi một mình) | 크레이지_아케이드게임_모드 §2.6 | chưa ghép | — | F3 | chưa đo |
+| 눈싸움 (đấu ném tuyết; sự kiện cũ) | 크레이지_아케이드게임_모드 §3.1 | không thấy tài nguyên khớp chắc trong build; chưa ghép | — | F2 | chưa đo |
+| 슈퍼파이터 (Super Fighter; sự kiện cũ) | 크레이지_아케이드게임_모드 §3.2 | Map: `FxMap/Map` (1151 mục tổng; tên khớp ở cột map) | `SuperFighter` (2) | F2 | chưa đo |
+| 래더 (Ladder) | 크레이지_아케이드래더 | Ladder: `FxContents/Ladder` (9), Ladder: `FxContents/WeeklyLadder` (12), Ladder: `CharTE/LadderDeco` (89) | `Attr/MapGroup/LadderMapGroup` (6 mục) | F2 | chưa đo |
+| 크아 히어로 (CA Hero) | 크아_히어로 | CAHero: `FxContents/CAHero` (69) | `CAhero` (53) | F3 | chưa đo |
+| 히든 캐치 (Hidden Catch) | 크레이지_아케이드게임_모드 (mục dịch vụ trò chơi) | Hidden Catch: `FxHiddenCatch/HiddenCatch` (291), Hidden Catch: `FxHiddenCatch/Prepare_HC` (12) | Hidden Catch: 30 họ / 37 map | F3 | chưa đo |
+| AIBattle | — | AIBattle: `FxContents/AIBattle` (10), chưa ghép wiki | `Fm_AIBtlDesert` (1), `Fm_AIBtlForest` (1), `Fm_AIBtlPatrit` (1), `Fm_AIBtlTomb` (1) | F3 | chưa đo |
+| ConfusedFight | — | ConfusedFight: `FxContents/ConfusedFight` (50), chưa ghép wiki | `ConfusedFight` (3) | F2 | chưa đo |
+| RPG | — | RPG: `FxContents/RPG` (134), RPG: `FxContents/RPGMyInfo` (29), chưa ghép wiki | `RPG*`: 52 họ / 71 map | F3 | chưa đo |
+| SandBox | — | SandBox: `FxContents/SandBox` (79), chưa ghép wiki | — | F3? | chưa đo |
+| Antarctic | — | Antarctic: `FxContents/Antarctic` (15), chưa ghép wiki | — | F2? | chưa đo |
+| IamWriggle | — | IamWriggle: `FxContents/IamWriggle` (7), chưa ghép wiki | — | F3? | chưa đo |
+| IamBoss | — | IamBoss: `FxContents/IamBoss` (4), chưa ghép wiki | — | F3? | chưa đo |
+| SnowyFields | — | Map: `FxMap/Map` (1151), chưa ghép wiki | `SnowyFields` (18) | F2? | chưa đo |
+| SnowyChamp | — | SnowyChamp: `FxContents/SnowyChamp` (6), chưa ghép wiki | — | F2? | chưa đo |
+| Ghép trận UXMatching | — | Ghép trận UXMatching: `FxContents/UXMatching` (163), chưa ghép wiki | — | F2 | chưa đo |
 
 ## Hệ thống của client
 

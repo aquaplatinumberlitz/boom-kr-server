@@ -244,6 +244,92 @@ CATEGORIES = [
 ]
 
 
+# Ghép thủ công theo tên hiển thị/nội bộ; map và số mục vẫn lấy từ census.
+# groups là pack/nhóm trong bảng Hệ thống; categories và families chọn map ở bảng phía trên.
+MODE_ROWS = [
+    dict(name="일반모드 (thường)", wiki="게임 모드 §2.1", groups=["FxStage/Game"], categories=["battle_theme", "battle_variant"], wave="F1"),
+    dict(name="몬스터모드 (monster)", wiki="게임 모드 §2.2; 몬스터 모드", groups=["FxMonster/Monster", "FxMonster/MonsterSeason2"], categories=["monster"], wave="F3"),
+    dict(name="협공배틀 (đánh phối hợp)", wiki="게임 모드 §2.3", wave="F2"),
+    dict(name="부활대전 (hồi sinh)", wiki="게임 모드 §2.4.1", map_groups=["ReBirthMapGroup"], wave="F2"),
+    dict(name="고슴도치 (nhím)", wiki="게임 모드 §2.4.2", wave="F2"),
+    dict(name="대장잡기 (bắt thủ lĩnh)", wiki="게임 모드 §2.4.3", wave="F2"),
+    dict(name="시한폭탄 (bom hẹn giờ)", wiki="게임 모드 §2.4.4", wave="F2"),
+    dict(name="팝케이드 (Popcade)", wiki="게임 모드 §2.5", families=["PopcadeA", "PopcadeB", "PopcadeC"], wave="F3"),
+    dict(name="혼자놀기 (chơi một mình)", wiki="게임 모드 §2.6", wave="F3"),
+    dict(name="눈싸움 (đấu ném tuyết; sự kiện cũ)", wiki="게임 모드 §3.1", absent=True, wave="F2"),
+    dict(name="슈퍼파이터 (Super Fighter; sự kiện cũ)", wiki="게임 모드 §3.2", families=["SuperFighter"], wave="F2"),
+    dict(name="래더 (Ladder)", wiki="래더", groups=["FxContents/Ladder", "FxContents/WeeklyLadder", "CharTE/LadderDeco"], map_groups=["LadderMapGroup"], wave="F2"),
+    dict(name="크아 히어로 (CA Hero)", wiki="크아 히어로", groups=["FxContents/CAHero"], families=["CAhero"], wave="F3"),
+    dict(name="히든 캐치 (Hidden Catch)", wiki="게임 모드 (mục dịch vụ trò chơi)", groups=["FxHiddenCatch/HiddenCatch", "FxHiddenCatch/Prepare_HC"], categories=["hidden"], wave="F3"),
+    dict(name="AIBattle", groups=["FxContents/AIBattle"], families=["Fm_AIBtlDesert", "Fm_AIBtlForest", "Fm_AIBtlPatrit", "Fm_AIBtlTomb"], wave="F3"),
+    dict(name="ConfusedFight", groups=["FxContents/ConfusedFight"], families=["ConfusedFight"], wave="F2"),
+    dict(name="RPG", groups=["FxContents/RPG", "FxContents/RPGMyInfo"], family_prefixes=["RPG"], wave="F3"),
+    dict(name="SandBox", groups=["FxContents/SandBox"], wave="F3?"),
+    dict(name="Antarctic", groups=["FxContents/Antarctic"], wave="F2?"),
+    dict(name="IamWriggle", groups=["FxContents/IamWriggle"], wave="F3?"),
+    dict(name="IamBoss", groups=["FxContents/IamBoss"], wave="F3?"),
+    dict(name="SnowyFields", groups=["FxMap/Map"], families=["SnowyFields"], wave="F2?"),
+    dict(name="SnowyChamp", groups=["FxContents/SnowyChamp"], wave="F2?"),
+    dict(name="Ghép trận UXMatching", groups=["FxContents/UXMatching"], wave="F2"),
+]
+
+
+def render_modes(census, families, by_category):
+    groups = {f"{g['pack']}/{g['name']}": g for g in census["resource_groups"]}
+    map_groups = {g["name"]: g for g in census["map_groups"]}
+    lines = [
+        "Pack không có bảng mode. Ghép wiki với tài nguyên/map chỉ theo tên rõ, không chứng minh luật hay khả năng chạy.",
+        "`chưa ghép` nghĩa là chưa xác lập đối ứng; `?` ở đợt là xếp tạm theo tên, chưa được lộ trình xác định.",
+        "Tên trang wiki chỉ file `.txt` dưới `/home/admin/boom/kr-namu-wiki/text`; số map theo họ ở trên,",
+        "`Attr/MapGroup` là số mục khai báo (có thể là mẫu tên), không cộng vào số map theo họ.",
+        "Các nhóm giao diện không rõ là mode hoặc thuộc F4–F6 vẫn ở bảng Hệ thống bên dưới.",
+        "",
+        "| Mode | Trang wiki | Bằng chứng pack / hệ thống | Họ map liên quan | Đợt | Mã mode trên wire |",
+        "|---|---|---|---|---|---|",
+    ]
+    for row in MODE_ROWS:
+        evidence = []
+        for key in row.get("groups", []):
+            group = groups[key]
+            evidence.append(f"{group['system'] or 'chưa phân loại'}: `{key}` ({group['entries']})")
+        matched = set(row.get("families", []))
+        for category in row.get("categories", []):
+            matched.update(family for family, _ in by_category.get(category, []))
+        for prefix in row.get("family_prefixes", []):
+            matched.update(family for family in families if family.startswith(prefix))
+        map_parts = []
+        for category in row.get("categories", []):
+            entries = by_category.get(category, [])
+            title = dict(CATEGORIES)[category].split(" (")[0]
+            map_parts.append(f"{title}: {len(entries)} họ / {sum(len(e) for _, e in entries)} map")
+            matched.difference_update(family for family, _ in entries)
+        if row.get("family_prefixes"):
+            for prefix in row["family_prefixes"]:
+                selected = {family for family in matched if family.startswith(prefix)}
+                map_parts.append(f"`{prefix}*`: {len(selected)} họ / {sum(len(families[f]) for f in selected)} map")
+                matched.difference_update(selected)
+        map_parts.extend(f"`{family}` ({len(families[family])})" for family in sorted(matched))
+        for name in row.get("map_groups", []):
+            map_parts.append(f"`Attr/MapGroup/{name}` ({len(map_groups[name]['maps'])} mục)")
+        if not evidence and (row.get("families") or row.get("map_groups")):
+            key = "FxMap/Map" if row.get("families") else "FxContents/Attr:MapGroup"
+            group = groups[key]
+            evidence.append(f"{group['system']}: `{key}` ({group['entries']} mục tổng; tên khớp ở cột map)")
+        if not evidence:
+            evidence.append("không thấy tài nguyên khớp chắc trong build; chưa ghép" if row.get("absent") else "chưa ghép")
+        if not row.get("wiki"):
+            evidence.append("chưa ghép wiki")
+        wiki = row.get("wiki", "—")
+        wiki = wiki.replace("게임 모드", "크레이지_아케이드게임_모드").replace("몬스터 모드", "크레이지_아케이드몬스터_모드")
+        if wiki == "래더":
+            wiki = "크레이지_아케이드래더"
+        elif wiki == "크아 히어로":
+            wiki = "크아_히어로"
+        lines.append(f"| {row['name']} | {wiki} | {', '.join(evidence)} | {', '.join(map_parts) or '—'} | "
+                     f"{row['wave']} | chưa đo |")
+    return lines
+
+
 def family_of(name):
     return re.sub(r"_?\d+$", "", name)
 
@@ -641,20 +727,8 @@ def render(census):
         "",
         "## Mode",
         "",
-        "Pack không có một bảng liệt kê mode; dưới đây là hai danh sách đặt cạnh nhau, **chưa ghép từng dòng**.",
-        "Mã mode trên wire (trường mode khi tạo phòng) và luật thắng của từng mode phải lấy từ RE client.",
-        "",
-        "- **Theo wiki (trang 게임 모드):** 일반모드 (thường), 몬스터모드 (monster), 협공배틀 (đánh phối hợp), bốn kiểu",
-        "  게임타입: 부활대전 (hồi sinh), 고슴도치 (nhím), 대장잡기 (bắt thủ lĩnh), 시한폭탄 (bom hẹn giờ); 팝케이드,",
-        "  혼자놀기 (chơi một mình); hai mode sự kiện cũ 눈싸움 và 슈퍼파이터.",
-        "- **Nhóm giao diện theo mode trong `FxContents`:** "
-        + ", ".join(f"{name} ({count})" for name, count in sorted(census["packs"]["FxContents"]["groups"].items())
-                    if name != "Attr") + ".",
-        "- **Pack riêng:** FxHiddenCatch (Hidden Catch), FxMonster (quái mùa 1 và mùa 2, tàu).",
-        "- **Theo số map ở trên:** " + ", ".join(
-            f"{title.split(' (')[0].lower()} {sum(len(e) for _, e in by_category.get(key, []))}"
-            for key, title in CATEGORIES if by_category.get(key)) + ".",
     ]
+    lines += render_modes(census, families, by_category)
     systems = census["systems"]
     groups = census["resource_groups"]
     with_ids = sum(bool(system["ids"]) for system in systems)
