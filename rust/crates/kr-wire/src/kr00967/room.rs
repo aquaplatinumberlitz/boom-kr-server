@@ -99,6 +99,47 @@ pub fn zero585_setup(body: &[u8]) -> io::Result<bool> {
     Ok(body.len() == 4 && uint(body, Width::U32)? == 0)
 }
 
+/// Select the independently retained two-row branch from a measured expanded
+/// Start. Identity is absent from these rows; only contiguous slots0/1 qualify.
+pub fn start121_duel(body: &[u8]) -> io::Result<Vec<u8>> {
+    if body.len() < 129 || uint(&body[..1], Width::U8)? != 0 {
+        return Err(io::Error::other("unsupported duel Start envelope"));
+    }
+    let size = uint(&body[1..5], Width::U32)? as usize;
+    if size < 106 || size.checked_add(23) != Some(body.len()) {
+        return Err(io::Error::other("unsupported duel Start length"));
+    }
+    let stream = decode_bytes(&body[5..5 + size])?;
+    if stream[0] != 24
+        || stream[5] != 0
+        || u32::from_le_bytes(stream[1..5].try_into().expect("bounded header")) as usize != size - 5
+    {
+        return Err(io::Error::other("unsupported duel Start stream"));
+    }
+    let count = usize::from(stream[49]);
+    if !matches!(count, 2 | 4 | 8) || size != 54 + count * 26 {
+        return Err(io::Error::other("unsupported duel Start roster"));
+    }
+    for slot in 0..2 {
+        let row = &stream[54 + slot * 26..80 + slot * 26];
+        if row[0] != slot as u8
+            || row[2] != slot as u8
+            || u16::from_le_bytes([row[3], row[4]]) != slot as u16
+            || row[5] != slot as u8
+        {
+            return Err(io::Error::other("unsupported duel Start slot/team"));
+        }
+    }
+    let mut out_stream = stream[..106].to_vec();
+    out_stream[1..5].copy_from_slice(&101u32.to_le_bytes());
+    out_stream[49] = 2;
+    let mut out = body[..1].to_vec();
+    out.extend(put(106, Width::U32)?);
+    out.extend(encode_bytes(&out_stream)?);
+    out.extend_from_slice(&body[5 + size..]);
+    Ok(out)
+}
+
 pub fn start121_teams(body: &[u8], teams: &[u8]) -> io::Result<Vec<u8>> {
     if teams.len() != 8 || body.len() != 285 || uint(&body[..1], Width::U8)? != 0 {
         return Err(io::Error::other("expected measured eight start121"));

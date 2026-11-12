@@ -61,10 +61,12 @@ pub struct Room {
     pub phase: Phase,
     visit: u64,
     round: u64,
+    epochs: Option<std::sync::Arc<crate::round_epochs::RoundEpochs>>,
     aborted: Option<(u64, Vec<Membership>)>,
     pub(crate) pickups: crate::pickups::Round,
     pub(crate) bombs: crate::bombs::Ledger,
     capacity: usize,
+    pub(crate) round_roster: crate::rules::RoundRoster,
     allocation: SlotAllocation,
     fixed_teams: Vec<u8>,
     sealed_abort: bool,
@@ -80,10 +82,12 @@ impl Default for Room {
             phase: Phase::Idle,
             visit: 0,
             round: 0,
+            epochs: None,
             aborted: None,
             pickups: crate::pickups::Round::default(),
             bombs: crate::bombs::Ledger::default(),
             capacity: 2,
+            round_roster: crate::rules::RoundRoster::Full,
             allocation: SlotAllocation::LegacyIdentity,
             fixed_teams: vec![0, 1],
             sealed_abort: false,
@@ -120,6 +124,30 @@ impl Room {
     }
     pub(crate) fn capacity(&self) -> usize {
         self.capacity
+    }
+
+    pub(crate) fn round_size(&self) -> usize {
+        self.round_roster.size(self.capacity)
+    }
+    pub(crate) fn valid_round_roster(&self) -> bool {
+        self.members.len() == self.round_size()
+            && (self.round_roster != crate::rules::RoundRoster::ContiguousDuel
+                || (0..self.round_size()).all(|slot| {
+                    self.members
+                        .values()
+                        .any(|m| usize::from(m.slot) == slot && usize::from(m.team) == slot)
+                }))
+    }
+
+    pub(crate) fn set_round_epochs(
+        &mut self,
+        epochs: std::sync::Arc<crate::round_epochs::RoundEpochs>,
+    ) -> io::Result<()> {
+        if !self.members.is_empty() || self.phase != Phase::Idle || self.round != 0 {
+            return Err(io::Error::other("round allocator requires pristine room"));
+        }
+        self.epochs = Some(epochs);
+        Ok(())
     }
 
     pub(crate) fn set_eight_layout(&mut self, layout: EightTeamLayout) -> io::Result<()> {
@@ -301,7 +329,7 @@ impl Room {
             || !self.current(key)
             || self.host != Some(key.identity)
             || self.phase != Phase::Idle
-            || self.members.len() != self.capacity
+            || !self.valid_round_roster()
             || !self
                 .members
                 .values()
@@ -311,10 +339,13 @@ impl Room {
                 "Start requires current host and all configured loaded-room ready members",
             ));
         }
-        let round = self
-            .round
-            .checked_add(1)
-            .ok_or_else(|| io::Error::other("round counter exhausted"))?;
+        let round = match &self.epochs {
+            Some(epochs) => epochs.next()?,
+            None => self
+                .round
+                .checked_add(1)
+                .ok_or_else(|| io::Error::other("round counter exhausted"))?,
+        };
         let roster = self.members.values().map(|m| m.key).collect();
         for member in self.members.values_mut() {
             member.opaque123 = 0;
@@ -516,6 +547,78 @@ impl Room {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn duel_roster_admits_nonfull_room_but_rejects_sparse_extra_and_wrong_team() {
+        let mut room = Room::with_allocation(4, SlotAllocation::FirstVacant).unwrap();
+        room.round_roster = crate::rules::RoundRoster::ContiguousDuel;
+        let host = room.enter(90, 11, true).unwrap();
+        room.setup(host).unwrap();
+        assert!(room.begin(host).is_err());
+        let guest = room.enter(70000, 22, false).unwrap();
+        room.setup(guest).unwrap();
+        room.ready(guest).unwrap();
+        let mut wrong_team = room.clone();
+        wrong_team.members.get_mut(&70000).unwrap().team = 0;
+        assert!(wrong_team.begin(host).is_err());
+        let mut sparse = room.clone();
+        sparse.members.get_mut(&70000).unwrap().slot = 3;
+        assert!(sparse.begin(host).is_err());
+        let mut extra = room.clone();
+        let third = extra.enter(8, 33, false).unwrap();
+        extra.setup(third).unwrap();
+        extra.ready(third).unwrap();
+        assert!(extra.begin(host).is_err());
+        let round = room.begin(host).unwrap();
+        assert_eq!(room.members.len(), 2);
+        assert_eq!(room.capacity(), 4);
+        assert!(!room.ack(host, round).unwrap());
+        assert!(room.ack(guest, round).unwrap());
+    }
+
+    #[test]
+    fn shared_epochs_keep_two_room_barriers_results_and_abandoned_candidates_apart() {
+        fn pair(
+            ids: [u32; 2],
+            epochs: std::sync::Arc<crate::round_epochs::RoundEpochs>,
+        ) -> (Room, [Membership; 2]) {
+            let mut room = Room::with_allocation(2, SlotAllocation::FirstVacant).unwrap();
+            room.set_round_epochs(epochs).unwrap();
+            let host = room.enter(ids[0], u64::from(ids[0]), true).unwrap();
+            let guest = room.enter(ids[1], u64::from(ids[1]), false).unwrap();
+            room.setup(host).unwrap();
+            room.setup(guest).unwrap();
+            (room, [host, guest])
+        }
+        let epochs = std::sync::Arc::new(crate::round_epochs::RoundEpochs::default());
+        let (mut a, am) = pair([70000, 42], epochs.clone());
+        let (mut b, bm) = pair([3, 4], epochs);
+        assert!(a.begin(am[0]).is_err()); // Not ready: no lease consumed.
+        a.ready(am[1]).unwrap();
+        b.ready(bm[1]).unwrap();
+        let ar = a.begin(am[0]).unwrap();
+        let burned = b.clone().begin(bm[0]).unwrap(); // Failed publish cannot reuse a key.
+        let br = b.begin(bm[0]).unwrap();
+        assert_eq!((ar, burned, br), (1, 2, 3));
+        assert_ne!(wire_key(ar).unwrap() as u8, wire_key(br).unwrap() as u8);
+        assert!(a.ack(am[0], br).is_err());
+        assert!(b.ack(bm[0], ar).is_err());
+        assert!(!a.ack(am[0], ar).unwrap());
+        assert!(a.ack(am[1], ar).unwrap());
+        assert!(!b.ack(bm[0], br).unwrap());
+        assert!(matches!(b.phase, Phase::Loading { round, .. } if round == br));
+        a.end(ar).unwrap();
+        a.refreshed(am[0], ar).unwrap();
+        a.refreshed(am[1], ar).unwrap();
+        a.ready(am[1]).unwrap();
+        let next = a.begin(am[0]).unwrap();
+        assert_eq!(next, 4);
+        assert!(!a.deliverable(am[0], Some(ar)));
+        assert!(a.refreshed(am[0], ar).is_err());
+        assert!(b.ack(bm[1], br).unwrap());
+        assert_eq!(b.phase, Phase::Armed { round: br });
+        assert!(a.ack(am[0], br).is_err());
+    }
+
     #[test]
     fn unrelated_player_ids_allocate_slots_and_fence_reused_memberships() {
         let mut room = Room::with_allocation(2, SlotAllocation::FirstVacant).unwrap();

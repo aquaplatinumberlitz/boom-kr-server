@@ -1176,7 +1176,7 @@ hai raw585 giống nhau trên cùng transport sau rejoin.
 
 86 có return241 trễ theo recipe đã đo. Chỉ khi batch return hoàn tất mới hủy Session cũ, xóa pending và cho chọn
 phòng khác. Phòng nghỉ khi không còn channel/member hoặc work hợp lệ trong phạm vi setup; các phase gameplay
-chưa mở. Watch coalesce catalog, chụp state khi gửi và đánh dấu version đã thấy trước snapshot. Client đang trong
+chỉ mở khi có [profile duel riêng](#rust-managed-duel-lifecycle). Watch coalesce catalog, chụp state khi gửi và đánh dấu version đã thấy trước snapshot. Client đang trong
 Prepare không nhận catalog của sảnh; khi về sảnh, gửi matching90 cho tuple đã mất rồi 91 hiện hành. Sau return241,
 client có thể đã dựng lại list nên 90 không có object để xóa; parser đủ và 91 đúng vẫn phải kiểm. Với client đang
 ở sảnh, native matching90 và card biến mất đã được đo. Count0 của 91 không được coi là clear-all.
@@ -1184,7 +1184,7 @@ client có thể đã dựng lại list nên 90 không có object để xóa; pa
 86 thành công chỉ project session u16 đã đo; u32 sau nó vẫn opaque, không gọi là roomID echo. 87 project session và
 slot; client lấy roomID/tên từ hàng 91 đã chọn. 91 dùng title thực từ 81. Occupancy/capacity của managed room
 đã có [contract riêng](#rust-room-population); các byte khác vẫn giữ fixture. Setup96/266 vẫn là exact-shape observation có membership, không ACK và không
-đổi state. Ready, Start/loading, gameplay/result/UDP và thay nhân vật/đội chưa được phục vụ ở mode opt-in M7a.
+đổi state. Khi không cấu hình profile trận, mode M7a vẫn chỉ phục vụ selection/setup; [duel opt-in](#rust-managed-duel-lifecycle) mở Ready/loading/trận riêng. Thay nhân vật/đội chưa được phục vụ.
 
 Native bốn account/profiles cấu hình đã tạo hai phòng với hai tiêu đề CP949 mặc định khác nhau; mỗi cặp chỉ thấy
 roster của phòng mình. Identity3 làm chủ ở slot0; identity1 rời phòng đầu, vào phòng thứ hai ở slot2. Client thật
@@ -1223,3 +1223,52 @@ Alpha **1/8 → 2/8 → 1/8**, Beta giữ **1/8**, khi B vào/rời Alpha. Reade
 20 byte khác giữ nguyên. A/C rời cuối làm đúng thẻ phòng biến mất qua matching90. Synthetic riêng kiểm 1/4 → 2/4 → 1/4,
 wrong tuple không tạo ghost hoặc đổi watch, EOF/Back cuối gửi 90 rồi 91 rỗng. Hai implementation đồng ý không thay
 native oracle. Không có Start104/loading99/gameplay trong phép đo này; **chỉ hoàn tất phần occupancy, M7b còn mở**.
+
+
+<a id="rust-managed-duel-lifecycle"></a>
+## Hai phòng duel theo roster thực và epoch của service
+
+Nguồn **kr_runtime/confirmed** cho client KR00967 trên Wine/LAN giả lập, **design/design** cho policy server;
+[metadata, recipe và hash](../evidence/rust-service/m7b-duel-lifecycle.json). Chỉ nghiệm thu lát cắt hai người trong
+mỗi phòng, với bốn known zero profiles. M7b tổng thể, gameplay phòng động bốn/tám người, lựa chọn và ownership
+failure tích hợp chưa được nhận từ lát này. Các profile fixed cũ giữ policy và numbering cũ.
+
+`managed_rooms.round_profile` là opt-in gồm `battle` với bốn fixture175/180 đã pin và
+`initial_bomb_capacity: [1,2]`. Nạp và kiểm mọi fixture trước serving, ngoài lock tạo phòng. `RoomRules.roster`
+chọn `ContiguousDuel`: cần đúng hai membership hiện hành ở slot0/1, hai team0/1, current host, setup và Ready.
+Sức chứa admission của phòng có thể lớn hơn hai; không yêu cầu phòng đầy. Identity vẫn độc lập slot. Roster thiếu,
+thừa, sparse hoặc team chưa hỗ trợ bị từ chối trước Start; không ACK giả hoặc suy Start ba/bốn/tám người đã hỗ trợ.
+Start121 chọn hai hàng đã biết của blob không nén và phải bằng fixture hai hàng giữ độc lập; peer153 và recipient
+127 dùng số người của round, không dùng capacity. Mỗi room giữ barrier, queue, timer, model và kết quả riêng.
+
+Epoch managed lấy từ allocator dùng chung trong một Hub. Một epoch đã cấp không trả lại kể cả publish thất bại;
+model/queued work vẫn có room scope, connection, membership/visit và round guard. Base wire key vẫn là
+`12345 + epoch`; hiện tối đa **255 lần cấp cho cả instance**, hết thì từ chối, không wrap/reuse ngầm. Đây là giới hạn
+prototype cần xử lý ở vận hành. Native so **low8(base) XOR low8(profileID của slot)**; hai base khác nhau không
+chứng minh mọi mixed byte khác nhau hoặc chống giả mạo. Không có durable epoch qua restart, match restore, account
+resume, phân biệt mọi raw99/585 giống nhau hoặc full authentication từ key. Relay chưa mở cho profile duel này.
+
+Stat phải theo đúng round input đã đo. Khi identity3/4 chuyển từ slot2/3 sang slot0/1 và dùng Start hai hàng hiện
+hành, native đo slot0 capacity1/max10, power1/max7, speed5/max7; slot1 capacity2/max7, power1/max9, speed4/max8.
+Vì vậy giới hạn bom của profile duel là dữ liệu theo slot, không là thuộc tính của account hoặc bảng alias identity.
+Không suy character selection, progression hoặc stat mọi nhân vật đã phục hồi; phần đó ở M7c/M5. Không có terrain/
+item extension trong profile này; pickup chưa hỗ trợ bị từ chối. Sau native discrepancy, các body167 dài12/22/42
+được thêm vào tập observation có budget của profile: không ACK, không tạo hiệu ứng/world/result hoặc gán semantics.
+
+Native bốn account/client thật tạo hai phòng capacity4, mỗi phòng chỉ hai người. Alpha nhận identity1/2, Beta nhận
+identity3/4 ở slot0/1. B99 bị giữ thì Alpha không mở clock; Beta vẫn qua barrier và mở clock riêng. Hai kết quả đầu
+đối nghịch, native protected state/175 rows/180 cursor và UI chỉ có đúng roster từng phòng. Hai phòng reset, Ready/
+Start lần hai và dùng bốn base key riêng. D thực đặt hai bom đồng thời theo slot1 capacity2. EOF chủ Alpha khi có
+bom chờ làm mất hiệu lực158 của phòng đó; B nhận forfeit/return và còn đúng membership, trong khi Beta vẫn có
+current movement, bom/nổ và kết quả vòng hai. Không lấy TCP accept, log server hoặc process alive thay proof này.
+
+PCAP trên toàn interface của mạng ảo cô lập, native key/slot/actor apply, target và current-position được ghép
+độc lập. Trong lượt lifecycle, input Left/Down của B không làm B di chuyển; không dùng stationary apply làm proof
+progress. Lượt bổ sung **cùng source/binary/managed rules** chỉ đo B Right700ms: ba target changes và X trên A
+120→200 sau keyup; không chạy lại hoặc ghép giả kết quả/reset của lượt trước. Hai lượt có raw/hash/source freeze
+và cleanup riêng. Các lượt thất bại, probe quá hạn scene, guard167 và abort sau disconnect vẫn giữ provenance.
+
+Unit và TCP kiểm incomplete/sparse/extra roster, barrier/epoch/result của hai phòng, key sai phòng, data vòng cũ,
+EOF/pending blast và queue guard. Chúng là kiểm policy; không tự chứng minh mọi stale wire hoặc mọi topology.
+Tập cấu hình khác cần contract và native riêng trước mở phục vụ; [khoảng trống còn lại](../RESEARCH.md#gap-room-occupancy)
+và thứ tự chỉ ở PLAN. Không suy full M7b, M7, M5 hoặc dịch vụ nội bộ hoàn chỉnh từ lát cắt duel.

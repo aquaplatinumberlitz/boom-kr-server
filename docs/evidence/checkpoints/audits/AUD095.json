@@ -1,0 +1,93 @@
+{
+  "id": "AUD095",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-managed-duel-lifecycle"
+  ],
+  "completed_through": "CP279",
+  "recorded_utc": "2026-11-12T07:09:30.568826+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/room-membership.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/rust-service/m7b-duel-lifecycle.json",
+    "rust/crates/kr-service/src/round_epochs.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "local/research/codex/m7b-duel-acceptance.json",
+    "local/research/codex/m7b-duel-native-r7/partial-verification.json",
+    "local/research/codex/m7b-duel-native-r8/verification.json",
+    "local/research/codex/m7b-duel-native-r7/native/raw-seal.json",
+    "local/research/codex/m7b-duel-native-r8/native/raw-seal.json",
+    "local/research/codex/m7b-duel-native-r5/failure-verification.json",
+    "local/research/codex/m7b-duel-native-r6/failure-verification.json",
+    "local/research/codex/m7b-duel-synthetic-r6/export-seal.json",
+    "local/research/codex/m7b-duel-tests-r6.txt"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence/raw, rà typed policy/actual roster/lock/body preload/recipient and epoch guards. Đối chiếu PCAP bằng Python decoder độc lập với native Start/stat/175/180 và current-position wrappers; xem trực tiếp hai UI kết quả đối nghịch, B return/chief, Beta round2 và A thấy B dịch chuyển. Không dùng log server/process alive/stationary apply hoặc encoder tự sinh làm oracle. Giữ đúng hai lượt proof riêng cùng source/binary/rules; không ghép thành một run.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Managed guard chỉ mở selection; Begin/tick/report recipients/peer dùng capacity và round local có thể trùng base key giữa phòng.",
+      "correction": "Opt-in round_profile preloads measured two-row Start/duel results, ContiguousDuel policy và actual round_size. Shared Hub epochs cấp một lần kể cả publish fail, exhaust255 không wrap; legacy Full/local numbering giữ nguyên.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/room.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/room_service.rs",
+        "rust/crates/kr-service/src/round_epochs.rs",
+        "docs/protocol/room-membership.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Bốn-profile D có capacity1 ở slot3, nhưng copy sang duel slot1 được giả định vẫn1.",
+      "correction": "Native remapped current two-row profile đo slot1 capacity2; bỏ limit keyed by PlayerId, dùng measured per-slot1/2. Native D đặt hai bom; không suy character/account-owned stat hoặc generalprofile.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/room_io.rs",
+        "docs/evidence/rust-service/m7b-duel-lifecycle.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "167/body12/42 trong burst và22 sau reset bị chặn, đóng channel rồi native abort; probe UDP cũ quá hạn actor khi về phòng.",
+      "correction": "Giữ failure/raw/hash và first-error PCAP. Thêm đúng measured shapes vào bounded observation, không ACK/effect/world; unit64budget + malformed/no-queue. Đóng read-only windows trước scene teardown; final proof không pump error.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/room_io.rs",
+        "docs/evidence/rust-service/m7b-duel-lifecycle.json",
+        "local/research/codex/m7b-duel-native-r5/failure-verification.json",
+        "local/research/codex/m7b-duel-native-r6/failure-verification.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "R7 B Left/Down không đổi vị trí; stationary packets có thể bị đếm nhầm progress. Capture kv-a chỉ có một phía mạng.",
+      "correction": "R7 chỉ nhận các positive thực có; all-private-interface UDP capture ghép current native bytes cả hai phòng. R8 cùng binary/rules chỉ đo gap B Right700ms, native3target changes/currentX120→200. Không lặp hoặc bịa continuous lifecycle B motion.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7b-duel-lifecycle.json",
+        "docs/protocol/room-membership.md",
+        "local/research/codex/m7b-duel-acceptance.json"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Có thể nâng groupduel thành fullM7b/M7/M5 hoặc mất owner README changes mới.",
+      "correction": "PLAN/catalog giữ partial và next roster/layout; acceptance/limits tách rõ. Đã merge main README mới, giữ exporter G1 nguyên và hạ tầng riêng chỉ local.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Chỉ hai contiguous rosters trong room chưa đầy/bốn known profiles được nghiệm thu. M7b còn roster/layout khác theo PLAN; toàn M7 chưa đạt.",
+    "M7c lựa chọn nhân vật/đội/full-error và M7d account ownership/failure tích hợp còn riêng; M5 generalprofile/native DB-queue fault chưa đóng. Stat theo exact two-row Start/seed/slot, không là thuộc tính account hoặc mọi nhân vật.",
+    "Epoch managed trần255 lần cấp/instance, không durable restart/reuse hoặc mixed-key auth. Relay profile mới chưa mở; N1R-b/M8 còn theo PLAN.",
+    "Không có terrain/item mở rộng, new Internet/NAT/relay, current-key forgery/cross-room injection, raw-identical99/585 distinction, resume hoặc match restore proof."
+  ]
+}

@@ -56,6 +56,74 @@ pub struct BattleConfig {
     pub mode: String,
     pub packets: HashMap<String, LobbyPacketPin>,
 }
+/// Explicit measured-profile duel slice. No arbitrary profile or item policy.
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct ManagedDuelConfig {
+    pub battle: BattleConfig,
+    pub initial_bomb_capacity: [usize; 2],
+}
+pub(crate) struct ManagedDuel {
+    bodies: HashMap<Template, Vec<u8>>,
+    initial_bomb_capacity: [usize; 2],
+}
+pub(crate) fn load_managed_duel(
+    cfg: &ManagedDuelConfig,
+    prototype: &Shared,
+) -> io::Result<Arc<ManagedDuel>> {
+    let source = prototype
+        .lock()
+        .map_err(|_| err("room prototype unavailable"))?;
+    if source.rules.endpoint != rules::EndpointPolicy::LegacyDirect
+        || source.model.terrain.is_some()
+        || cfg.battle.mode != "post_blast_untrapped_drained"
+        || cfg.battle.packets.len() != 4
+        || cfg.initial_bomb_capacity != [1, 2]
+    {
+        return Err(err(
+            "unsupported managed duel profile/limits; direct UDP and measured profiles only",
+        ));
+    }
+    let mut bodies = HashMap::from([(
+        Template::Start121,
+        wire::start121_duel(source.body(Template::Start121))?,
+    )]);
+    for (alias, key, size) in [
+        ("rank", Template::SlotOneWins175, 302),
+        ("rank_Awin", Template::SlotZeroWins175, 302),
+        ("rank_all_dead", Template::AllDead175, 302),
+        ("return", Template::Return180, 3),
+    ] {
+        let pin = cfg
+            .battle
+            .packets
+            .get(alias)
+            .ok_or_else(|| err("missing managed duel fixture"))?;
+        let raw = pin.fixture.load()?;
+        let decoded = decode(
+            &raw,
+            pin.sequence
+                .ok_or_else(|| err("missing managed fixture sequence"))?,
+        )
+        .map_err(io::Error::other)?;
+        if pin.opcode != key.opcode()
+            || decoded.opcode != key.opcode()
+            || decoded.payload.len() != size
+            || !wire::header_matches(&raw[..37])
+        {
+            return Err(err("unsupported managed duel fixture opcode/shape/header"));
+        }
+        if key == Template::Return180 {
+            wire::selector_reply(&decoded.payload, 180, 0)?;
+        }
+        bodies.insert(key, decoded.payload);
+    }
+    Ok(Arc::new(ManagedDuel {
+        bodies,
+        initial_bomb_capacity: cfg.initial_bomb_capacity,
+    }))
+}
+
 pub type Shared = Arc<Mutex<Runtime>>;
 pub(crate) fn install_relay(shared: &Shared, owner: crate::room_relay::Owner) -> io::Result<()> {
     let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
@@ -109,6 +177,7 @@ pub struct Batch {
 }
 pub struct Runtime {
     public_key: Option<crate::room_registry::RoomKey>,
+    managed_duel: Option<Arc<ManagedDuel>>,
     relay: Option<crate::room_relay::Owner>,
     scope: Arc<()>,
     model: Room,
@@ -367,6 +436,7 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
     model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
         public_key: None,
+        managed_duel: None,
         relay: None,
         scope: Arc::new(()),
         model,
@@ -391,7 +461,12 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
 }
 /// Clone immutable, prevalidated inputs only. The prototype never serves a channel.
 /// Managed selection currently exposes room setup, not dynamic Battle acceptance.
-pub(crate) fn fork(prototype: &Shared, key: crate::room_registry::RoomKey) -> io::Result<Shared> {
+pub(crate) fn fork(
+    prototype: &Shared,
+    key: crate::room_registry::RoomKey,
+    epochs: Arc<crate::round_epochs::RoundEpochs>,
+    managed_duel: Option<Arc<ManagedDuel>>,
+) -> io::Result<Shared> {
     let source = prototype
         .lock()
         .map_err(|_| err("room prototype unavailable"))?;
@@ -400,10 +475,21 @@ pub(crate) fn fork(prototype: &Shared, key: crate::room_registry::RoomKey) -> io
     }
     let mut model = source.model.clone();
     model.set_allocation(rules::SlotAllocation::FirstVacant)?;
+    model.set_round_epochs(epochs)?;
     let mut rules = source.rules;
     rules.slot_allocation = rules::SlotAllocation::FirstVacant;
+    if managed_duel.is_some() {
+        rules.roster = rules::RoundRoster::ContiguousDuel;
+        rules.result = ResultPolicy::Duel;
+        rules.departure = DeparturePolicy::Forfeit;
+        rules.bomb = rules::BombPolicy::Basic;
+        rules.life = rules::LifePolicy::DuelReports;
+        rules.teams = TeamPolicy::Any;
+        model.round_roster = rules.roster;
+    }
     Ok(Arc::new(Mutex::new(Runtime {
         public_key: Some(key),
+        managed_duel,
         relay: None,
         scope: Arc::new(()),
         model,
@@ -461,7 +547,10 @@ impl Runtime {
             .ok_or_else(|| err("missing/current room membership"))
     }
     fn body(&self, key: Template) -> &[u8] {
-        &self.bodies[&key]
+        self.managed_duel
+            .as_ref()
+            .and_then(|profile| profile.bodies.get(&key))
+            .unwrap_or_else(|| &self.bodies[&key])
     }
     fn reply(&self, key: Template, body: Option<Vec<u8>>) -> Reply {
         packet(
@@ -906,7 +995,7 @@ impl Session {
         let Phase::Armed { round } = r.model.phase else {
             return Ok(());
         };
-        if r.model.members.len() != r.model.capacity() {
+        if !r.model.valid_round_roster() {
             return Ok(());
         }
         let now = Instant::now();
@@ -1175,7 +1264,10 @@ impl Session {
         {
             return Err(err("stale room channel"));
         }
-        if r.public_key.is_some() && !matches!(opcode, 81 | 82 | 585 | 86 | 528 | 96 | 266) {
+        if r.public_key.is_some()
+            && r.managed_duel.is_none()
+            && !matches!(opcode, 81 | 82 | 585 | 86 | 528 | 96 | 266)
+        {
             return Err(err("managed room selection does not yet serve gameplay"));
         }
         let mut next = r.model.clone();
@@ -1468,6 +1560,12 @@ impl Session {
                 }
                 let round = next.begin(m.key)?;
                 next.pickups = pickups::Round::begin(round, &r.floor_catalog)?;
+                if let Some(profile) = &r.managed_duel {
+                    for member in next.members.values() {
+                        next.bomb_capacity[usize::from(member.slot)] =
+                            profile.initial_bomb_capacity[usize::from(member.slot)];
+                    }
+                }
                 if r.rules.endpoint == rules::EndpointPolicy::Relay {
                     let rows = next
                         .members
@@ -1546,7 +1644,7 @@ impl Session {
                         }
                         let plan = crate::peer_routes::LegacyDirectPlan::new(
                             round,
-                            next.capacity(),
+                            next.round_size(),
                             endpoint_rows,
                         )?;
                         let key = crate::room::wire_key(round)?;
@@ -1645,7 +1743,10 @@ impl Session {
             }
             167 => {
                 let member = r.member(self.identity, self.connection)?;
-                let measured = if next.capacity() == 8 {
+                let measured = if r.rules.roster == rules::RoundRoster::ContiguousDuel {
+                    // Native managed duel burst:12/22/42-byte observations, no ACK or semantics.
+                    [4, 12, 16, 22, 32, 42].contains(&body.len())
+                } else if next.capacity() == 8 {
                     r.rules.owner_bombs() && [4, 22, 42].contains(&body.len())
                 } else {
                     [4, 16, 32].contains(&body.len())
@@ -1680,7 +1781,7 @@ impl Session {
                 }
             }
             118 => {
-                if matches!(next.capacity(), 4 | 8) && !r.rules.owner_bombs() {
+                if r.rules.bomb == rules::BombPolicy::Disabled {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
@@ -1763,7 +1864,7 @@ impl Session {
                 }
             }
             142 => {
-                if matches!(next.capacity(), 4 | 8) && !r.rules.owner_bombs() {
+                if r.rules.bomb == rules::BombPolicy::Disabled {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
@@ -1814,7 +1915,7 @@ impl Session {
                 });
             }
             124 => {
-                if next.capacity() != 2 {
+                if r.managed_duel.is_some() || next.capacity() != 2 {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
@@ -1887,7 +1988,7 @@ impl Session {
                                 .filter(|p| p.key != m.key)
                                 .map(|p| p.key)
                                 .collect();
-                            if recipients.len() + 1 != next.capacity() {
+                            if recipients.len() + 1 != next.round_size() {
                                 return Err(err("incomplete life recipient roster"));
                             }
                             if report.subtype == 21 {
@@ -2069,6 +2170,7 @@ mod tests {
         let (tb, mut rb) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
             public_key: None,
+            managed_duel: None,
             relay: None,
             scope: Arc::new(()),
             model,
@@ -2199,6 +2301,7 @@ mod tests {
         let (tb, mut rb) = mpsc::channel(2);
         let mut runtime = Runtime {
             public_key: None,
+            managed_duel: None,
             relay: None,
             scope: Arc::new(()),
             model: Room::default(),
@@ -2462,6 +2565,7 @@ mod four_abort_tests {
         }
         let shared = Arc::new(Mutex::new(Runtime {
             public_key: None,
+            managed_duel: None,
             relay: None,
             scope: Arc::new(()),
             model,
@@ -2762,6 +2866,7 @@ mod ninth_probe_tests {
         let (sender, inbox) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
             public_key: None,
+            managed_duel: None,
             relay: None,
             scope: Arc::new(()),
             model,
@@ -2795,6 +2900,7 @@ mod ninth_probe_tests {
                 result: ResultPolicy::Teams,
                 departure: DeparturePolicy::FenceActive,
                 teams: TeamPolicy::BalancedManner,
+                roster: rules::RoundRoster::Full,
                 ninth_admission_probe: true,
                 slot_allocation: rules::SlotAllocation::LegacyIdentity,
                 endpoint: rules::EndpointPolicy::LegacyDirect,
@@ -2888,6 +2994,7 @@ mod registry_foundation_tests {
     fn empty(marker: u8) -> Shared {
         Arc::new(Mutex::new(Runtime {
             public_key: None,
+            managed_duel: None,
             relay: None,
             scope: Arc::new(()),
             model: Room::default(),
@@ -2949,6 +3056,48 @@ mod registry_foundation_tests {
         assert_eq!(rooms.get(beta).unwrap().lock().unwrap().channels.len(), 1);
         b.packet(528, &[]).unwrap();
         assert_eq!(b.inbox.try_recv().unwrap().packets[0].1.payload, vec![0xb2]);
+    }
+    #[test]
+    fn native_duel_burst167_is_bounded_observation_without_ack_or_world_effect() {
+        let shared = empty(0x71);
+        let mut session = Session::open(&shared, 70000, 11).unwrap();
+        let peer = Session::open(&shared, 42, 22).unwrap();
+        let round = {
+            let mut runtime = shared.lock().unwrap();
+            runtime.public_key = Some(RoomKey {
+                session: 1,
+                id: RoomId(7),
+                generation: 1,
+            });
+            runtime.managed_duel = Some(Arc::new(ManagedDuel {
+                bodies: HashMap::new(),
+                initial_bomb_capacity: [1, 2],
+            }));
+            runtime.rules.roster = rules::RoundRoster::ContiguousDuel;
+            runtime.model = Room::with_allocation(4, rules::SlotAllocation::FirstVacant).unwrap();
+            runtime.model.round_roster = rules::RoundRoster::ContiguousDuel;
+            let a = runtime.model.enter(70000, 11, true).unwrap();
+            let b = runtime.model.enter(42, 22, false).unwrap();
+            runtime.model.setup(a).unwrap();
+            runtime.model.setup(b).unwrap();
+            runtime.model.ready(b).unwrap();
+            let round = runtime.model.begin(a).unwrap();
+            runtime.model.ack(a, round).unwrap();
+            runtime.model.ack(b, round).unwrap();
+            round
+        };
+        assert!(session.packet(167, &[0; 21]).is_err());
+        for index in 0..64 {
+            let body = vec![0; [12, 22, 42][index % 3]];
+            session.packet(167, &body).unwrap();
+        }
+        assert!(session.packet(167, &[0; 42]).is_err());
+        assert_eq!(shared.lock().unwrap().model.phase, Phase::Armed { round });
+        assert!(!shared.lock().unwrap().model.bombs.pending());
+        assert!(session.inbox.try_recv().is_err());
+        assert!(peer.inbox.is_empty());
+        // Avoid exercising unrelated departure fixture construction on drop.
+        shared.lock().unwrap().channels.clear();
     }
     #[test]
     fn full_actual_recipient_queue_in_one_room_does_not_charge_other_room_queue() {
@@ -3082,14 +3231,15 @@ mod registry_foundation_tests {
             id: RoomId(2),
             generation: 2,
         };
-        let a = fork(&prototype, a_key).unwrap();
-        let b = fork(&prototype, b_key).unwrap();
+        let epochs = Arc::new(crate::round_epochs::RoundEpochs::default());
+        let a = fork(&prototype, a_key, epochs.clone(), None).unwrap();
+        let b = fork(&prototype, b_key, epochs.clone(), None).unwrap();
         let mut old = Session::open(&a, 3, 33).unwrap();
         old.packet(528, &[]).unwrap();
         let batch = old.inbox.try_recv().unwrap();
         assert!(old.valid(&batch));
         assert!(!removable(&a));
-        assert!(fork(&a, b_key).is_err());
+        assert!(fork(&a, b_key, epochs, None).is_err());
         let new = Session::open(&b, 3, 33).unwrap();
         assert!(!new.valid(&batch));
         assert!(new.packet(104, &[0; 20]).is_err());
