@@ -1,0 +1,186 @@
+{
+  "schema": "kre-rust-service-evidence-v1",
+  "checkpoint": "CP274",
+  "task": "KRE-074 / RUST-R1",
+  "status": "accepted_refactor_regression_only",
+  "source": "kr_runtime",
+  "canonical": {
+    "acceptance": "docs/PLAN.md#rust-r1",
+    "work_order": "docs/PLAN.md#dashboard",
+    "contract": "docs/PROTOCOL.md",
+    "unknown": "docs/RESEARCH.md#rust-service-gaps"
+  },
+  "baseline": {
+    "merge_commit": "6b60d86af1eafc18d8355697303378afab74c3f3",
+    "PR": 355,
+    "source_equivalence": "Production rust/server tree equals dcb6077 native relay source, per CP273. This checkpoint does not change production source/config/policy.",
+    "build_sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf",
+    "build": "CP273 delivery locked build/test, frozen copied binary in local/research/codex/r1-final-native-r1/binary/"
+  },
+  "reuse": {
+    "metadata": "local/research/codex/r1-final-native-r1/source-reuse.json",
+    "sources": [
+      "docs/evidence/rust-service/life-results.json",
+      "docs/evidence/rust-service/four-results.json",
+      "docs/evidence/rust-service/eight-baseline.json",
+      "docs/evidence/rust-service/account-basic.json",
+      "docs/evidence/rust-service/n1r-fixed2.json"
+    ],
+    "used": "Accepted fixtures, native consumer probes, known cached prefixes and OS input recipes reused in private copies; new source/binary/hash/raw for all profiles.",
+    "avoided": "No codec, gameplay or binary RE repeated; no N1b baseline retry or broad RE. Python/reference and harness remain.",
+    "remaining": "No full M5 general profile/native DB fault, relay4/8, fresh install, account resume/match restore or production authority claim."
+  },
+  "runs": [
+    {
+      "profile": "two",
+      "path": "local/research/codex/r1-final-native-r1/two",
+      "source_commit": "f8b02d22f469604e0148adf8da4ce30866b84cff",
+      "binary_sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf",
+      "raw_seal_sha256": "9f8925b9ae7ccf0d62e57bbee225a52ecd0b6684f5847600d55b1cefa3760701",
+      "raw_files": 66,
+      "duration_s": 204.162021012,
+      "harness_returncode": 0,
+      "native_report": {
+        "path": "local/research/codex/r1-final-native-r1/two/life-verification.json",
+        "sha256": "c41cfc7f8e5443f7990cb164581d902d1d854d93b4679cbfc80479f6b66a2b51",
+        "result": "pass"
+      },
+      "TCP": {
+        "records": 742,
+        "replies": 106
+      },
+      "source_frozen": true,
+      "remaining_pids": []
+    },
+    {
+      "profile": "four-export-followup",
+      "path": "local/research/codex/r1-final-native-r1/four-export-followup",
+      "source_commit": "6b60d86af1eafc18d8355697303378afab74c3f3",
+      "binary_sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf",
+      "raw_seal_sha256": "9d3b2a21a3cf9d140af12ce7a5f0a1af59651ca6b5c62919ede9513d1cbbdf3e",
+      "raw_files": 84,
+      "duration_s": 252.479791342,
+      "harness_returncode": 0,
+      "native_report": {
+        "path": "local/research/codex/r1-final-native-r1/four-export-followup/results-verification.json",
+        "sha256": "87c86a19a9bf61d61bef8a0c29aa322b4d0b2c91f5f3a1bca04844d0dacaceb7",
+        "result": "pass"
+      },
+      "TCP": {
+        "records": 1706,
+        "replies": 281
+      },
+      "source_frozen": true,
+      "remaining_pids": []
+    },
+    {
+      "profile": "eight",
+      "path": "local/research/codex/r1-final-native-r1/eight",
+      "source_commit": "6b60d86af1eafc18d8355697303378afab74c3f3",
+      "binary_sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf",
+      "raw_seal_sha256": "a028a78415747d142d80a16d0213ee9e5d456e080416a47d40a60d9f0e96af6b",
+      "raw_files": 155,
+      "duration_s": 389.738061122,
+      "harness_returncode": 1,
+      "native_report": {
+        "path": "local/research/codex/r1-final-native-r1/eight/eight-verification.json",
+        "sha256": "ba11773e83f63d0078f0fc2f2cfb4402191281d38f88d0664653f16623f3aa17",
+        "result": "pass_bounded_native_harness_failed"
+      },
+      "TCP": {
+        "records": 5050,
+        "replies": 912
+      },
+      "source_frozen": true,
+      "remaining_pids": []
+    },
+    {
+      "profile": "account",
+      "path": "local/research/codex/r1-final-native-r1/account",
+      "source_commit": "6b60d86af1eafc18d8355697303378afab74c3f3",
+      "binary_sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf",
+      "raw_seal_sha256": "47696c39f519774d22f00c660fc40a52c674c8652c3750ecb26ff65e254f2e64",
+      "raw_files": 68,
+      "duration_s": 207.980490533,
+      "harness_returncode": 0,
+      "native_report": {
+        "path": "local/research/codex/r1-final-native-r1/account/life-verification.json",
+        "sha256": "4f8b4adebe8e61506320b65103a04c84dcb4d5e9ee1744b82276633ecec4a3f7",
+        "result": "pass"
+      },
+      "TCP": {
+        "records": 1490,
+        "replies": 106
+      },
+      "source_frozen": true,
+      "remaining_pids": []
+    }
+  ],
+  "acceptance": [
+    {
+      "criterion": "R1a-g implementation/merge and legacy byte preservation",
+      "result": "pass",
+      "evidence": "CP269/270/271 and CP273:117 Rust tests,306 TCP cases,3169 legacy+24 FirstVacant frames exact baseline. PR355 production merge.",
+      "limits": "Not proof of newly unmeasured client behavior or all policies."
+    },
+    {
+      "criterion": "One native final regression for each profile2/4/8/account",
+      "result": "pass_bounded",
+      "evidence": "New native result/reset/Start3 for all four profiles; four has one scoped export-error follow-up. Eight uses recovered exported bytes and retains overall harness failure.",
+      "limits": "Scope is refactor regression; no new gameplay/system milestone closure."
+    },
+    {
+      "criterion": "Eight native movement mesh",
+      "result": "pass_bounded",
+      "evidence": "56 directed per-view actor deltas and copied native getters, independent of partial UDP capture.",
+      "limits": "Inherited capture thread asserted on fifth-through-eighth role addresses. No full UDP packet capture claim; not a new all-UDP or relay8 acceptance."
+    },
+    {
+      "criterion": "Account identity and ownership path",
+      "result": "pass_known_profiles",
+      "evidence": "Actual account token/CA argv/frontend, login ID/name/echo/channel/own291/roster/SQLite ownership verified, two results/reset/Start3.",
+      "limits": "Known two profiles, fresh processes with cached prefixes. Not general profile/auth-recovery/native DB-queue fault or full M5."
+    }
+  ],
+  "getter_checks": {
+    "two": 1266,
+    "four": 48,
+    "eight": 54048,
+    "account": 1266,
+    "limits": "Copied native secure getter in Unicorn against read-only runtime wrappers; distinct from native execution and raw transport evidence."
+  },
+  "failures": [
+    {
+      "run": "four",
+      "result": "failed_raw_export_unavailable",
+      "report": "local/research/codex/r1-final-native-r1/four/failed-export-preservation.json",
+      "cause": "New harness missing shutil import at export; private tmpfs disappeared. No sealed native raw, no acceptance from this run.",
+      "followup": "four-export-followup only: import corrected, AST equivalence except relocated owned paths, exact tmpfs export control passed, new preflight/one native run/raw seal. Old failure retained."
+    },
+    {
+      "run": "eight",
+      "result": "failed_harness_with_recovered_native_raw",
+      "report": "local/research/codex/r1-final-native-r1/eight/export-recovery.json",
+      "cause": "Copy and hash assertions completed before umount returned32 busy;155 exported files retained. Inherited UDP worker only allowed four-role IPs and stopped on H→A.",
+      "recovery": "Export intact; copied unchanged to original empty lexical cycles path and checked both copies. Original exit1 and native run.json unchanged. No new source-side tmpfs hash after namespace exit. Independent native result/mesh checks and getter checks passed.",
+      "limits": "Busy-unmount cause unproven; no production storage fix/durability claim. No full UDP capture claim. No rerun only to obtain exit0."
+    },
+    {
+      "run": "verifiers",
+      "result": "initial_tool_failures_retained",
+      "cause": "Recovery verifier initially expected storage-export.json and its path schema; explicit recovery report schema used after failures, raw unchanged."
+    }
+  ],
+  "lifecycle": {
+    "environment": "KR00967 diagnostic copies on Wine10.0-20260425, private virtual LAN namespaces, outbound isolated, cloned cached prefixes/fresh processes; no physical Windows/host requirement.",
+    "cleanup": "Every usable run sealed source/hash and no owned namespace PIDs. Lost four-export run separately checked all532 input pins unchanged and no owned processes.",
+    "raw": "local/research/codex/r1-final-native-r1/; exact preflight/retained source and raw hash per run. Actual infrastructure identifiers remain local only."
+  },
+  "scope_after": {
+    "R1": "accepted_refactor_regression_only",
+    "N1R": "CP273 fixed2 prototype only; unchanged",
+    "M5": "General profiles and native DB-queue fault remain open",
+    "next": "PLAN dashboard only: map probe then M7/G1/M6/M8 with narrowed acceptance before each milestone",
+    "old_gates": "K6c/K7/N1 scopes unchanged; no claim all Internet/ISP/CGNAT or runtime relay4/8."
+  }
+}

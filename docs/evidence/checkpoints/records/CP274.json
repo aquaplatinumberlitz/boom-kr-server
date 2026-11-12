@@ -1,0 +1,279 @@
+{
+  "id": "CP274",
+  "previous": "CP273",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T02:01:59.808972+00:00",
+  "context_commit": "6b60d86af1eafc18d8355697303378afab74c3f3",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / RUST-R1: verify final post-refactor direct legacy native profiles2/4/8/account and decide bounded refactor acceptance without changing wire, policy or production source.",
+  "scope": "Final R1 regression only, using accepted native recipes in isolated copies. No new gameplay RE, N1b retry, capacity flags, identity aliases or production source change.",
+  "artifacts": [
+    {
+      "name": "kr-service-x86-native-regression",
+      "sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf"
+    }
+  ],
+  "locators": [
+    "docs/PLAN.md#rust-r1",
+    "docs/evidence/rust-service/r1-native-final.json",
+    "local/research/codex/r1-final-native-r1/",
+    "PR355 source baseline6b60d86; same production tree as CP273"
+  ],
+  "findings": [
+    {
+      "summary": "Final R1 two profile: actual native opposite results, full rank/return consumers, reset/Start3 and current state checked against captured TCP on the post-refactor binary.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PLAN.md#rust-r1",
+      "evidence": [
+        "R1FINAL274-03238",
+        "R1FINAL274-03308",
+        "R1FINAL274-03318"
+      ],
+      "limits": "Refactor regression only. Eight harness exit1/partial UDP capture retained, raw recovered unchanged; native56-direction actor/getter evidence is independent. Four original failed-export run excluded; one scoped follow-up. No full M5, relay4/8, fresh install, account resume, match restore or production claim."
+    },
+    {
+      "summary": "Final R1 four-export-followup profile: actual native opposite results, full rank/return consumers, reset/Start3 and current state checked against captured TCP on the post-refactor binary.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PLAN.md#rust-r1",
+      "evidence": [
+        "R1FINAL274-02916",
+        "R1FINAL274-02911",
+        "R1FINAL274-02924"
+      ],
+      "limits": "Refactor regression only. Eight harness exit1/partial UDP capture retained, raw recovered unchanged; native56-direction actor/getter evidence is independent. Four original failed-export run excluded; one scoped follow-up. No full M5, relay4/8, fresh install, account resume, match restore or production claim."
+    },
+    {
+      "summary": "Final R1 eight profile: actual native opposite results, full rank/return consumers, reset/Start3 and current state checked against captured TCP on the post-refactor binary.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PLAN.md#rust-r1",
+      "evidence": [
+        "R1FINAL274-00456",
+        "R1FINAL274-01684",
+        "R1FINAL274-01698"
+      ],
+      "limits": "Refactor regression only. Eight harness exit1/partial UDP capture retained, raw recovered unchanged; native56-direction actor/getter evidence is independent. Four original failed-export run excluded; one scoped follow-up. No full M5, relay4/8, fresh install, account resume, match restore or production claim."
+    },
+    {
+      "summary": "Final R1 account profile: actual native opposite results, full rank/return consumers, reset/Start3 and current state checked against captured TCP on the post-refactor binary.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PLAN.md#rust-r1",
+      "evidence": [
+        "R1FINAL274-00363",
+        "R1FINAL274-00434",
+        "R1FINAL274-00446"
+      ],
+      "limits": "Refactor regression only. Eight harness exit1/partial UDP capture retained, raw recovered unchanged; native56-direction actor/getter evidence is independent. Four original failed-export run excluded; one scoped follow-up. No full M5, relay4/8, fresh install, account resume, match restore or production claim."
+    },
+    {
+      "summary": "Account token/CA argv/frontend, ID/name/echo, account-owned login/channel, own291/roster and SQLite profile ownership independently verified for two known players.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/PLAN.md#rust-r1",
+      "evidence": [
+        "R1FINAL274-00439"
+      ],
+      "limits": "Known profiles/fresh processes with cached prefixes; native expiry/revoke/fault not repeated in this regression. Full M5 still open."
+    },
+    {
+      "summary": "Runtime errors preserved: four raw export lost, one import-only follow-up; eight export recovered unchanged after busy unmount, original failed exit and partial capture retained. R1 acceptance compared without changing production source or historical records.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PLAN.md#rust-r1",
+      "evidence": [
+        "R1FINAL274-00009",
+        "R1FINAL274-01720",
+        "R1FINAL274-02821",
+        "R1FINAL274-00457",
+        "R1FINAL274-00008"
+      ],
+      "limits": "No complete raw seal for lost four original. No invented native state or all-eight UDP PCAP claim; partial native proof explicitly bounded."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native direct profiles2/4/8/account opposite results/reset/Start3 and account ownership",
+      "result": "pass",
+      "evidence": [
+        "R1FINAL274-00009",
+        "R1FINAL274-03238",
+        "R1FINAL274-02916",
+        "R1FINAL274-00456",
+        "R1FINAL274-00363",
+        "R1FINAL274-00439"
+      ],
+      "limits": "Bounded native regression. Overall eight harness still failed; independent evidence preserved and parsed. Not generic all-UDP or new game-system acceptance."
+    },
+    {
+      "check": "Copied native secure getter comparisons1266/48/54048/1266",
+      "result": "pass",
+      "evidence": [
+        "R1FINAL274-03312",
+        "R1FINAL274-02915",
+        "R1FINAL274-00455",
+        "R1FINAL274-00440"
+      ],
+      "limits": "Unicorn copied-function checks against read-only runtime wrapper bytes, separate from Wine execution."
+    },
+    {
+      "check": "Lost four-export original and eight unmount failure handling",
+      "result": "pass",
+      "evidence": [
+        "R1FINAL274-01720",
+        "R1FINAL274-00457"
+      ],
+      "limits": "Pass means truthful failure preservation/cleanup/recovery verification, not overall successful runtime runs. Four original raw unavailable; eight exit1/partial PCAP explicit."
+    },
+    {
+      "check": "90 Python CI-module tests, docs/fragments/budgets, content census and diff check",
+      "result": "pass",
+      "evidence": [
+        "R1FINAL274-03319",
+        "R1FINAL274-00034",
+        "R1FINAL274-00030"
+      ],
+      "limits": "No production code changed; CP273 source Rust117 and legacy TCP306/wire regression reused, not rerun without a source change."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP274-r1-native-final.json",
+      "bytes": 923625,
+      "sha256": "d28b5e0511fa1345da4719c9137e7340c669d703f746a54ce00ae342b3e958e1",
+      "count": 3351
+    }
+  ],
+  "delta": {
+    "added": [
+      "Final direct legacy native R1 regression and explicit acceptance comparison."
+    ],
+    "corrected": [
+      "New four harness missing import after loss of raw, with exactly one scoped follow-up. Eight export recovery and capture limits explicit; original failed exit/log unchanged."
+    ],
+    "superseded": [
+      "Current final-R1-native-missing status only. Historical records/scopes/relay/M5 limits unchanged."
+    ]
+  },
+  "blockers": [
+    "Full M5 general profiles and native DB-queue fault remain open. Known account profile regression is narrower.",
+    "N1R fixed2 prototype remains separate from direct R1 regression; same-IP spoof, relay4/8, port reuse/restart and load remain open.",
+    "Eight UDP capture is partial and harness failed at unmount; native regression uses recovered unchanged raw and independent mesh/result/reset/getter evidence, not a full UDP capture claim.",
+    "Map probe next, then M7/G1/M6/M8 with phase1 acceptance rewritten before starting each milestone."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Deliver final R1 regression PR after exact-head local/history and CI. Then bounded Village10 map probe, max2 native runs, before M7; no N1b retry.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "R1 dependency achieved. Before M7, rewrite phase1 acceptance then integrate multiroom wire/occupancy/identity ownership with native evidence.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automatic resume remains blocked under prior scope. Reopen only with a new observable input or milestone dependency; fresh-process acceptance does not imply account resume.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Earlier receiver-selection question stays distinct; no broad getter/watch/RTTI patch without a new edge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T02:01:59.808972+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo native/source/raw/limits audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Current R1 acceptance, remaining scope and next work synchronized in place; raw counts/failures belong in evidence."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Current R1 acceptance, remaining scope and next work synchronized in place; raw counts/failures belong in evidence."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Current R1 acceptance, remaining scope and next work synchronized in place; raw counts/failures belong in evidence."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "Current R1 acceptance, remaining scope and next work synchronized in place; raw counts/failures belong in evidence."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Current R1 acceptance, remaining scope and next work synchronized in place; raw counts/failures belong in evidence."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Current R1 acceptance, remaining scope and next work synchronized in place; raw counts/failures belong in evidence."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Current R1 acceptance, remaining scope and next work synchronized in place; raw counts/failures belong in evidence."
+    },
+    {
+      "path": "docs/evidence/rust-service/r1-native-final.json",
+      "state": "updated",
+      "reason": "Current R1 acceptance, remaining scope and next work synchronized in place; raw counts/failures belong in evidence."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "No wire, authority or consumer contract changed; existing topic links remain correct."
+    },
+    {
+      "path": "docs/protocol/udp-peer.md",
+      "state": "unchanged",
+      "reason": "N1R contract/limits unchanged; direct legacy regression does not expand relay acceptance."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Latest main plain-language/dashboard rules applied; no rule edits."
+    }
+  ],
+  "completed_feature_groups": [
+    "r1-final-native-regression-existing-profiles"
+  ]
+}

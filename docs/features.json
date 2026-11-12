@@ -1828,7 +1828,8 @@
           "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
           "docs/evidence/rust-service/relay-endpoint-design.json",
           "docs/protocol/room-membership.md#rust-r1f-session-binding",
-          "docs/evidence/rust-service/r1f-session-binding.json"
+          "docs/evidence/rust-service/r1f-session-binding.json",
+          "docs/evidence/rust-service/r1-native-final.json"
         ]
       },
       "coverage": {
@@ -3799,7 +3800,8 @@
           "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
           "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
           "docs/evidence/rust-service/relay-endpoint-design.json",
-          "docs/evidence/rust-service/n1r-fixed2.json"
+          "docs/evidence/rust-service/n1r-fixed2.json",
+          "docs/evidence/rust-service/r1-native-final.json"
         ]
       },
       "coverage": {
@@ -3859,7 +3861,7 @@
             "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
             "docs/evidence/rust-service/n1r-fixed2.json"
           ],
-          "delivery": "branch_pending"
+          "delivery": "baseline_merged"
         },
         "integration": {
           "state": "partial",

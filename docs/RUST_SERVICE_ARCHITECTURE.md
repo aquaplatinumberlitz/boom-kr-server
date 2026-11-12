@@ -12,9 +12,9 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 
 | Câu hỏi | Kết luận của đợt nghiên cứu |
 |---|---|
-| Tiếp Rust ở đâu? | M0–M4 scoped và account fixed2/basic đã có native; R1a–g đã merge source/TCP. N1R đã tích hợp và đạt prototype hai người; tiếp native hồi quy cuối R1 theo PLAN |
+| Tiếp Rust ở đâu? | M0–M4 scoped và account fixed2/basic đã có native; R1a–g đã merge source/TCP. N1R prototype hai người và native hồi quy cuối R1 đã đạt; tiếp phép thử map theo PLAN |
 | Chuyển được gì ngay? | Profile codec đã đo, các packet tối thiểu của đường offline, cơ chế phòng/trận cơ bản, ticket/epoch, endpoint exchange và kết quả/reset. Chuyển đúng phạm vi bằng chứng, giữ policy hiện tại |
-| Chưa đủ phần nào? | Hồ sơ account tổng quát và native DB-queue fault; relay hai NAT/native cuối R1; phòng tổng quát, terrain/item 4/8; inventory/progression và vận hành đích |
+| Chưa đủ phần nào? | Hồ sơ account tổng quát và native DB-queue fault; relay mesh và restart; phòng tổng quát, terrain/item 4/8; inventory/progression và vận hành đích |
 | Python còn làm gì? | Giữ bản tham chiếu phục vụ được, công cụ RE và đối chứng. Chỉ rút khỏi đường phục vụ từng lát cắt khi Rust đã qua native acceptance tương ứng |
 | Cần xây gì để vận hành? | Account/DB/session đã có backend và bridge fixed2; còn hồ sơ tổng quát, lưu kết quả/thưởng 0, admin vận hành, giám sát, backup đã thử restore, deploy/rollback và kiểm tải. Inventory là giai đoạn sau |
 | Kiến trúc chọn gì? | Cùng repo, hai crate, một process Linux; Tokio và queue hữu hạn; owner phòng xử lý tuần tự; SQLite ở giai đoạn nội bộ. Các lựa chọn này là design, không phải luật server gốc |
@@ -79,7 +79,7 @@ KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma tr
 | KR-L002/L003 → [sảnh/cache](PROTOCOL.md#channel-lobby), [cold route](PROTOCOL.md#channel-cold-route) | present; V/S/E/N; một channel, cold/missing/warm/version negative. Impl=partial; integration=partial; main; K3 scoped | Chuyển redirect và cache profile đã đo. Multi-channel, caption, toàn bộ cache và room list động còn thiếu | Rust chạy cold/missing/warm và lỗi version/stage trên native. Chỉ RE row/list/update/page khi làm lobby động |
 | KR-R001/R002/R004 → [room](PROTOCOL.md#room-player), [mode/host](PROTOCOL.md#current-team-mode) | present; V/S/E/N/T; fixed roster 2/4/8, Ready, host Back/rejoin. Impl=partial; integration=partial; main; K4 scoped. Delta team CP213 là WIP chưa merge | Chuyển owner phòng, membership, slot, host, Ready và các reply đã đo; roster cố định trước. Password/full/kick/chọn đội tương tác chưa đủ | Rust hai native thấy cùng phòng/slot/host, rejoin/Ready/start lặp đúng. Team UI phải có KR OS-click→C2S→consumer; VN89 chỉ là đầu mối |
 | KR-R003/F001 → [start/clock](PROTOCOL.md#start-reply), [hot gate](PROTOCOL.md#loading-hot-gate-contest) | present; S/E/N; map278/ExVillage01, 99, wait-all, clock/input recipe. Impl=partial; integration=partial; main; K4/K5 scoped | Chuyển loading barrier, deadline, membership snapshot và round epoch. Không ép state/clock mới vào client | Rust 99 của cả hai→GO/native clock; thiếu/trễ ACK, EOF khi load, timeout/reset. Map khác chỉ mở khi có đúng consumer/dữ liệu |
-| KR-F002/F015 → [peer](PROTOCOL.md#peer-duo), [WAN](PROTOCOL.md#emulated-wan-acceptance) | present; V/S/E/N; 99→153, direct UDP; CP209 có mesh8/56 chiều. Impl=partial; integration=partial; K6a/b/c scoped; N1 một phía tới được, relay hai người có native | Endpoint exchange và relay opt-in đã chuyển. Direct legacy giữ nguyên; không thay movement bằng snapshot server. Full UDP/discovery/auth chưa đủ | Native cuối R1 còn riêng. Relay mesh, dùng lại cổng qua restart và tải vận hành cần acceptance; chỉ RE khoảng trống đang chặn |
+| KR-F002/F015 → [peer](PROTOCOL.md#peer-duo), [WAN](PROTOCOL.md#emulated-wan-acceptance) | present; V/S/E/N; 99→153, direct UDP; CP209 có mesh8/56 chiều. Impl=partial; integration=partial; K6a/b/c scoped; N1 một phía tới được, relay hai người có native | Endpoint exchange và relay opt-in đã chuyển. Direct legacy giữ nguyên; không thay movement bằng snapshot server. Full UDP/discovery/auth chưa đủ | Native hồi quy cuối R1 đã đạt. Relay mesh, dùng lại cổng qua restart và tải vận hành cần acceptance; chỉ RE khoảng trống đang chặn |
 | KR-F003/X002 → [key/fence](PROTOCOL.md#udp-generation), [old UDP](PROTOCOL.md#direct-oldudp-contest-eof) | present; S/E/N/T+D; exact old frame bị loại ở vòng mới, có current positive. Impl=partial; integration=partial; main; K6 scoped | Chuyển ticket/epoch do server sở hữu và giữ giới hạn 256 byte-key trước khi fail closed. Không suy queue cũ tự sạch | Rust old callback/timer/ID reuse, UDP cũ/current positive, TCP queue của membership cũ. Phải đo trước khi nới low8 wrap hoặc grammar |
 | KR-F004 → [bom](PROTOCOL.md#bomb-serial), [four owners](PROTOCOL.md#four-owner-bombs) | present; V/S/E/N/T; 2/4/8 owner, cap/power riêng, 159/158/fence. Impl=partial; integration=partial; main; K5 scoped | Chuyển validation118, reservation/ID, confirm/explode/timer. Fuse6 và admission cap giữ design hiện tại; vị trí actor/full pool/races còn thiếu | Rust hai native đặt bom cả hai owner, ID/entity trùng khớp, cap1 khác cap2, nổ/reset/EOF khi bom chờ. Không clone stat B sang mọi slot hoặc đổi fuse trong port |
 | KR-F005/F006/F007 → [terrain/basic](PROTOCOL.md#hidden-cell-admission-current), [families](PROTOCOL.md#item-families) | present; V/S/E/N hẹp, hai người/3 basic effects/reset. Impl=partial; integration=partial; main; K5 scoped. Chưa tích hợp đầy đủ terrain/item4/8 | Chuyển pinned Box/list2, reveal142, claim124/165, generation và stat cap đã biết. Không tự xác nhận drop weights, geometry tổng quát, distance/auth/fairness/freshness142 | Rust basic hai vòng: effect thật, tranh item một kết quả, reset. Map/vật cản/validator mới phải đo delta trước enforce; không lấy winner synthetic làm proof |
@@ -92,8 +92,7 @@ KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma tr
 
 ## Module và dòng dữ liệu
 
-Cấu trúc đối chiếu sau PR348: R1a–R1g đã merge source/TCP. Native cuối R1 vẫn ở
-[acceptance](PLAN.md#rust-r1); cấu trúc source không tự đóng gate.
+Cấu trúc sau R1a–R1g và relay prototype; native hồi quy profile hiện hành đã đạt. Tính năng mới có acceptance riêng.
 
 **Cấu trúc thực tế:**
 
@@ -137,11 +136,11 @@ registry; M6 thêm lưu kết quả; M8 bổ sung telemetry/admin/deploy. PLAN g
 | Body packet còn template opaque | R1d header chuẩn và `kr00967` builders; player_template chung | Chỉ mở field/consumer đang chặn M7/G1, không suy đã có schema mọi packet |
 | Hai NAT đổi cổng | R1f current-channel LegacyDirectPlan; N1/N1b đã có kết luận | N1R đã có native hai người; còn mesh, dùng lại cổng qua restart và tải vận hành |
 | Tải 50 người/8 phòng | R1g cho cấu hình transport/allowlist độc lập profile | M8 workload, queues/FD/backpressure/restart/backup-restore; budget không là benchmark |
-| Tự động hóa nghiệm thu | Unit trong crate; harness TCP/native tại tools/ và evidence | Native cuối R1 và recipe/load/restore M8; CI không thay raw/native proof |
+| Tự động hóa nghiệm thu | Unit trong crate; harness TCP/native tại tools/ và evidence | Native R1 đã đạt phạm vi hồi quy; recipe/load/restore M8 còn mở. CI không thay raw/native proof |
 
 Mutex đồng bộ quanh phòng (`Arc<Mutex<Runtime>>`, không giữ qua await) giữ owner xử lý tuần tự.
-Không chuyển sang actor/microservice khi chưa có số đo cần thiết. Relay hiện ở nhánh bàn giao, đã nối serving và có
-native prototype riêng; trạng thái merge là bước riêng, không suy đã nghiệm thu mesh hoặc tải đích.
+Không chuyển sang actor/microservice khi chưa có số đo cần thiết. Relay đã merge và có native prototype riêng; hồi quy R1 đã đạt phạm vi profile hiện hành. Không suy đã nghiệm thu
+mesh relay hoặc tải đích.
 
 kr-wire không Tokio/DB/domain; parse trả lỗi+bounds, không tự authorizecommand. kr-service có library
 cho deterministiclifecycle và binaryLinux. Chưa cần kr-game/kr-storecrate, engine/render/clientRustmới

@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP273 / AUD089**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP274 / AUD090**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -21,18 +21,17 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 | M4 bốn và tám người | Đạt phần đội cố định và Manner | Free 1v7 là giới hạn đã biết, không retry |
 | M5 tài khoản | Account → phòng → trận → kết quả đã chạy native (CP258) | Hồ sơ tổng quát cho mọi account; lỗi hàng đợi DB khi đang native |
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; relay opt-in đạt prototype hai người, còn mở rộng và vận hành |
-| [R1](#rust-r1) lõi phòng | R1a–R1g đã merge; source/TCP refactor đạt | Native hồi quy cuối cho 2/4/8 người và account; relay có acceptance riêng |
-| M7 phòng tổng quát | Chưa bắt đầu | Toàn bộ; cần R1 |
+| [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; relay ngoài prototype hai người và vận hành còn riêng |
+| M7 phòng tổng quát | Chưa bắt đầu; dependency R1 đã đạt | Sửa acceptance giai đoạn 1 rồi triển khai theo thứ tự |
 | [G1](#rust-g1) sáu map ladder và item | Chưa bắt đầu; có [kiểm kê](CONTENT.md) | Phép thử đổi map, rồi từng map và nhóm item |
-| M6 lưu kết quả, thưởng 0 | Chưa bắt đầu | Toàn bộ; cần R1 |
+| M6 lưu kết quả, thưởng 0 | Chưa bắt đầu; dependency R1 đã đạt | Sửa acceptance giai đoạn 1; thực hiện song song G1 |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
 
-1. Bàn giao [N1R prototype hai người](#rust-relay) qua PR và kiểm đúng HEAD. Không chạy lại baseline N1b.
-2. Native hồi quy cuối R1: mỗi profile 2, 4, 8 người và account một lượt. Không suy từ native relay sang direct legacy.
-3. Phép thử đổi map sang Village10 (`local/research/claude/codex-prompt-map-probe.md`), tối đa hai lượt.
-4. M7, rồi G1 song song M6, rồi M8. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1.
+1. Bàn giao hồi quy cuối R1 qua PR và kiểm đúng HEAD. N1R prototype hai người đã merge; không chạy lại N1b.
+2. Phép thử đổi map sang Village10 (`local/research/claude/codex-prompt-map-probe.md`), tối đa hai lượt.
+3. M7, rồi G1 song song M6, rồi M8. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1.
    Relay bốn/tám người, dùng lại cổng qua restart và tải đích cần acceptance riêng trước vận hành lâu dài.
 
 **Blocker và việc tồn:**
@@ -128,7 +127,7 @@ trên client KR chưa có; rủi ro cao nghĩa là cỡ việc có thể tăng.
 |---|---|---|---|---|
 | Theo dashboard | RUST-M5 | Fixed2 account/basic đã đạt; còn hồ sơ tổng quát và native DB-queue fault. R1c/R1f đã merge source/TCP | M | Vừa: phép chiếu hồ sơ 291 |
 | Theo dashboard | [N1/N1R](#rust-n1-result) | N1 đạt một phía tới được; N1b âm và hết hai lượt. Relay hai người đã đạt prototype; còn mesh, restart và tải vận hành | L | Cao: mở rộng relay |
-| Theo dashboard | [RUST-R1](#rust-r1) | R1a–g đã merge; còn native hồi quy cuối 2/4/8/account | M | Thấp: hồi quy; relay có acceptance riêng |
+| Theo dashboard | [RUST-R1](#rust-r1) | R1a–g và native hồi quy profile 2/4/8/account đã đạt | — | Không còn RE cho refactor; tính năng mới có acceptance riêng |
 | 4 | RUST-M7 phòng tổng quát | Danh sách phòng động, tạo/vào/rời, lỗi phòng đầy, chọn nhân vật, chọn đội bằng thao tác trong phòng | L | Cao |
 | 5 | [RUST-G1](#rust-g1) gameplay mở rộng | Kim/cứu trên Rust, thêm map, thêm nhóm item phổ biến; terrain/item cho phòng 4 và 8 người | L | Cao: mỗi nhóm item cần consumer và ca runtime riêng |
 | 5 | RUST-M6 thu hẹp | Lưu kết quả trận và hồ sơ (nhân vật đã chọn) bền vững, thưởng bằng 0. Ledger tiền tệ và inventory để giai đoạn sau, giữ chỗ trong schema | S–M | Thấp |
@@ -431,8 +430,8 @@ Rollback bằng policy `LegacyDirect` và binary/config baseline trước Start;
 harness và fixture làm đối chứng. Chỉ mở rộng prototype khi có acceptance cho mesh, tài nguyên và lifecycle tương ứng.
 
 <a id="rust-r1"></a>
-**RUST-R1 — tái cấu trúc lõi phòng: R1a–R1g đã merge, nghiệm thu native cuối còn mở.**
-Không đổi byte trên wire của profile legacy 2/4/8/account. Nguồn/test đã giao không tự chứng minh native của binary mới.
+**RUST-R1 — đạt tái cấu trúc lõi phòng và hồi quy native trong phạm vi profile hiện hành.**
+Không đổi byte trên wire của profile legacy 2/4/8/account. Native của binary sau refactor đã được đo riêng; [đối chiếu acceptance](evidence/rust-service/r1-native-final.json).
 
 | Bước đã merge | Cơ chế hiện có | Giới hạn / nguồn chuẩn |
 |---|---|---|
@@ -440,13 +439,26 @@ Không đổi byte trên wire của profile legacy 2/4/8/account. Nguồn/test �
 | R1c | `PlayerId` độc lập slot; `FirstVacant` opt-in, template106 chung | [Slot/profile](protocol/room-membership.md#rust-r1c-player-slots); chưa hồ sơ account tổng quát |
 | R1d | Header KR chuẩn, parser/builder theo opcode trong `kr-wire::kr00967` | [Wire](protocol/rust-boundary.md#rust-r1d-wire-builders); một số body vẫn cần template đã pin |
 | R1e | Registry có typed RoomKey, listing và recipient queues độc lập | [Registry](protocol/room-membership.md#rust-r1e-registry); serving vẫn chọn phòng cố định, nhiều phòng thuộc M7 |
-| R1f | Account profile theo session-owned PlayerId, endpoint theo channel hiện hành; IP chỉ restriction | [Binding](protocol/room-membership.md#rust-r1f-session-binding); native shared-NAT và relay còn thiếu |
+| R1f | Account profile theo session-owned PlayerId, endpoint theo channel hiện hành; IP chỉ restriction | [Binding](protocol/room-membership.md#rust-r1f-session-binding); native chung NAT còn thiếu; relay prototype hai người có acceptance riêng |
 | R1g | Budget transport/allowlist cấu hình độc lập profile; PR348 đã merge | [Admission](protocol/rust-boundary.md#rust-r1g-admission); 65 socket không phải tải 50 người KR |
 
 Acceptance cuối R1: toàn bộ bộ TCP hiện có đạt và **một lượt native hồi quy cho mỗi profile 2, 4, 8 người và đường
 account**, không thêm claim mới. Relay có acceptance riêng ở [N1R](#rust-relay), không suy từ hồi quy direct legacy.
 R1a/R1b/R1d giữ hành vi; các policy opt-in mới của R1c/e/f/g giữ byte profile cũ. Không thêm cờ theo sức chứa,
 alias theo identity hoặc nhánh `capacity() == N`. Rollback từng lát cắt; Python RE/reference giữ nguyên.
+
+Đối chiếu cuối: bộ TCP giữ byte baseline; trên Wine, các profile 2, 4, 8 người và account đều có native hai kết quả
+đối nhau, reset và Start3 trên cùng binary. Đường account còn kiểm token, ID/name/echo, transport và profile thuộc
+đúng chủ sở hữu. Đây là hồi quy refactor, không đóng full M5 hoặc tính năng phòng tổng quát.
+
+Lượt bốn người đầu mất raw do harness export thiếu import, nên không dùng để nghiệm thu; lượt bổ sung có đủ raw
+và kiểm độc lập. Lượt tám người thất bại ở unmount sau khi raw đã copy, được phục hồi nguyên byte và seal với exit 1.
+Native kết quả, reset và chuyển động ở từng hướng peer đã kiểm riêng; PCAP UDP kế thừa chỉ nhận bốn IP nên bị thiếu,
+không dùng để khẳng định đã capture đủ mọi hướng hoặc mọi loại UDP. Không chạy lại tám người chỉ để đổi exit code.
+Các lỗi, phép phục hồi và giới hạn nằm ở evidence; raw và kết quả cũ giữ nguyên.
+
+Điều kiện chuyển việc đã đủ cho refactor R1; tiếp phép thử map theo dashboard. Scope M7/G1/M6/M8, relay mesh và
+restart không được suy đạt từ hồi quy này. Không đổi source hoặc policy runtime trong đợt nghiệm thu cuối.
 
 <a id="rust-g1"></a>
 **RUST-G1 — gameplay mở rộng cho giai đoạn 1.**

@@ -33,11 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP273: relay opt-in đã tích hợp và đạt prototype hai người trên client KR thật qua Wine.**
-[Contract và giới hạn](docs/protocol/udp-peer.md#rust-relay-endpoint-scope) phân biệt relay mới với direct legacy.
-Chưa đủ vận hành lâu dài, relay bốn/tám người hoặc tải đích. Hạ tầng thực chỉ lưu local.
-R1 còn native hồi quy 2/4/8/account; M5 còn hồ sơ tổng quát và lỗi hàng đợi DB khi đang native.
-Thứ tự và acceptance tiếp theo giữ tại [Bảng điều hành](docs/PLAN.md#dashboard); lịch sử tại [HISTORY](docs/HISTORY.md).
+**CP274: R1 đã đạt hồi quy native cho các profile 2/4/8 người và account trên Wine.**
+[Acceptance và giới hạn](docs/PLAN.md#rust-r1) giữ rõ lỗi harness, raw phục hồi và phạm vi capture tám người.
+Relay opt-in đạt prototype hai người; chưa đủ relay bốn/tám người hoặc vận hành lâu dài. M5 còn hồ sơ tổng quát
+và lỗi hàng đợi DB khi đang native. Hạ tầng thực chỉ lưu local.
+Bước tiếp là phép thử map theo [Bảng điều hành](docs/PLAN.md#dashboard); lịch sử tại [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
 

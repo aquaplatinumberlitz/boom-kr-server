@@ -1291,3 +1291,9 @@ Trạng thái lịch sử tại [CP251](PROTOCOL.md#rust-eight-teams): fixed1v7 
 
 Contract đã chia thành 13 chủ đề, giữ các anchor lịch sử; R1g đã merge tại thời điểm đó. Đợt này chỉ sửa tài liệu
 và công cụ kiểm, không thay runtime hoặc phạm vi nghiệm thu. [Record](evidence/checkpoints/records/CP272.json).
+
+
+## CP273 — relay opt-in prototype hai người
+
+Relay đã nối account channel và room/round ownership; native xác nhận hai chiều, hai vòng, reset, gói cũ tới cổng đã
+nghỉ và EOF. Chưa đủ relay mesh hoặc vận hành lâu dài. [Record](evidence/checkpoints/records/CP273.json).
