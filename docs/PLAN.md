@@ -30,10 +30,15 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 **Thứ tự việc:**
 
 1. Bàn giao kết quả phép thử Village10 qua PR và kiểm đúng HEAD. Phép thử ID đã kết thúc; không chạy lại để đổi tên rồi mở rộng scope.
-2. Sửa acceptance M7 theo đích giai đoạn 1, rồi triển khai phòng tổng quát. R1 và relay prototype hai người đã merge.
-3. G1 song song M6, rồi M8. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1.
-   G1 cần adapter dữ liệu map nhất quán trước native gameplay mới; relay bốn/tám người, dùng lại cổng qua restart
-   và tải đích có acceptance riêng. Không chạy lại baseline N1b.
+2. M7 phòng tổng quát. Trước khi mở, sửa acceptance theo phạm vi giai đoạn 1. Trong M7, đường relay không được
+   gắn với số người trong phòng; chưa cần nghiệm thu relay nhiều người ở bước này.
+3. **N1R-b relay cho phòng nhiều người**, sau M7 và trước G1: phòng bốn và phòng tám người chơi qua relay trên
+   client thật, mỗi cỡ một lượt; dùng lại cổng và key khi hết pool và sau restart; chặn giả mạo gói đầu giữa hai
+   người chung IP. Làm sau M7 để không phải nghiệm thu hai lần trên hai kiểu phòng. Đây là điều kiện của đích
+   giai đoạn 1, không phải việc tuỳ chọn.
+4. G1 song song M6. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1; G1 cần adapter dữ liệu map nhất quán
+   trước native gameplay mới. Không chạy lại baseline N1b.
+5. M8, gồm kiểm tải 50 người và 8 phòng có relay.
 
 **Blocker và việc tồn:**
 
