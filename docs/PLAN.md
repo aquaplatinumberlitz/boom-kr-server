@@ -34,13 +34,20 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
    cho tập contiguous2/4/8 cấu hình; không lặp lifecycle hoặc reader/list đã nghiệm thu.
 2. M7d: tích hợp ownership và failure với account/session/transport hiện hành. Trong M7, relay resource ownership
    theo phòng; nghiệm thu mesh/reuse/restart riêng ở N1R-b, không thêm dependency đó vào M7a.
-3. **N1R-b relay cho phòng nhiều người**, sau M7 và trước G1: phòng bốn và phòng tám người chơi qua relay trên
+3. **M7e roster tự do**, sau M7d: phòng bắt đầu được với số người bất kỳ từ 2 tới 8, slot không cần liên tục, đội theo
+   lựa chọn của người chơi ở M7c. Hàng Start và chỉ số của từng người sinh từ nhân vật đã chọn
+   ([chỉ số đã giải sẵn](CONTENT.md#dữ-liệu-đã-giải-sẵn)), không lấy từ hàng fixture theo slot. Native tối thiểu: một trận
+   3 người, một trận 5 tới 7 người, một trận sau khi có người rời khỏi slot ở giữa. M7b hiện chỉ cho đúng 2, 4 hoặc 8
+   người theo profile cấu hình sẵn của phòng; người dùng thật không chơi được nếu thiếu bước này.
+4. **M5b hồ sơ cho account bất kỳ**: account mới tạo đăng nhập, vào phòng và chơi được mà không cần thêm fixture theo
+   từng account. Native với ít nhất một account chưa từng có profile cấu hình sẵn, cùng ca lỗi hàng đợi DB còn nợ của M5.
+5. **N1R-b relay cho phòng nhiều người**, sau M7e và trước G1: phòng bốn và phòng tám người chơi qua relay trên
    client thật, mỗi cỡ một lượt; dùng lại cổng và key khi hết pool và sau restart; chặn giả mạo gói đầu giữa hai
    người chung IP. Làm sau M7 để không phải nghiệm thu hai lần trên hai kiểu phòng. Đây là điều kiện của đích
    giai đoạn 1, không phải việc tuỳ chọn.
-4. G1 song song M6. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1; G1 cần adapter dữ liệu map nhất quán
+6. G1 song song M6. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1; G1 cần adapter dữ liệu map nhất quán
    trước native gameplay mới. Không chạy lại baseline N1b.
-5. M8, gồm kiểm tải 50 người và 8 phòng có relay.
+7. M8, gồm kiểm tải 50 người và 8 phòng có relay.
 
 **Blocker và việc tồn:**
 
