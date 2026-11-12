@@ -1,0 +1,3575 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "M5B285-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3934,
+      "sha256": "7b19f4efbb018a2b0982c4b243306b81116a5d6ad66f5011ffcfb510a66ed5e8"
+    },
+    {
+      "id": "M5B285-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 250422,
+      "sha256": "fc900484509a804c9ccb63ad6d4849887ed058210ff366a83b0576bcf39a4a75"
+    },
+    {
+      "id": "M5B285-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 143709,
+      "sha256": "33b772694e1ec703d5688dc66038f968fe6d743d57ddd4720498d4a43a9955aa"
+    },
+    {
+      "id": "M5B285-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 77228,
+      "sha256": "949ae467aaa9def61cfa5a2fb78189c2ac4ba0145a322ed3e5309f736adc1683"
+    },
+    {
+      "id": "M5B285-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66021,
+      "sha256": "1c6ee141bac71a4597f88804255a41ad5676841abc4022e4ec6d90a90249380e"
+    },
+    {
+      "id": "M5B285-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 32244,
+      "sha256": "68a6c3609279d1660393a5e802e18d8c22ed13243bca35ea85b271fd30575f94"
+    },
+    {
+      "id": "M5B285-00007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD101.json",
+      "bytes": 3544,
+      "sha256": "fc4268cf6d87cf018859c0a4dcdb4778b490db928f310af2d3af99e6b5903b96"
+    },
+    {
+      "id": "M5B285-00008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 29378,
+      "sha256": "a16f405232269d2fbd507232a86afee4f212a34415112c39b9378ba5036a2e06"
+    },
+    {
+      "id": "M5B285-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+      "bytes": 6415,
+      "sha256": "05e3e7c4a8a44b87d3fe2203866867e4d2938060ed8085b6730d7b77df85c2c6"
+    },
+    {
+      "id": "M5B285-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m5b-native-recovery.json",
+      "bytes": 3559,
+      "sha256": "5340652283132d892c3973ccd2eaeceb5afd76378377ab1b63bb7748793712ee"
+    },
+    {
+      "id": "M5B285-00011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 262803,
+      "sha256": "46f7333f6266ced7ab987282bcdaeb802d5caa2878ade5efb3f3cb89263b7b63"
+    },
+    {
+      "id": "M5B285-00012",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 78712,
+      "sha256": "46f0cb1775e7b8aa3827e641d605a7d2a44e4e247d4265edc4ef20c3b0478c5d"
+    },
+    {
+      "id": "M5B285-00013",
+      "kind": "local",
+      "path": "local/research/codex/append_cp285.py",
+      "bytes": 9276,
+      "sha256": "ba7133ac8dbce08d48e1620c2640937a8ccddee57f0ddf7f359f72976aa42c33"
+    },
+    {
+      "id": "M5B285-00014",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/binary/kr-admin",
+      "bytes": 52359480,
+      "sha256": "fb44f247bc3149006326c1a8ea3aed2fe3fedbb23e782237b4c99914a960eb55"
+    },
+    {
+      "id": "M5B285-00015",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/binary/kr-service",
+      "bytes": 62404816,
+      "sha256": "8fdae7689bcd2d5c23678a98002331d7dd48545db910cd70f6ac9c252f3643b8"
+    },
+    {
+      "id": "M5B285-00016",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/bomb-probe.py",
+      "bytes": 2223,
+      "sha256": "fc89f04b8c77f6c4237f5d13daa2cfca3a96ef4194fa4fa2a6a7ef16f1550a4b"
+    },
+    {
+      "id": "M5B285-00017",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/capture_tcp.py",
+      "bytes": 1736,
+      "sha256": "5f7dd71b3a26f6bf1490e8e0eeb8de9dcb3b0e86da9c16ea1108f842bdcec805"
+    },
+    {
+      "id": "M5B285-00018",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/capture_udp.py",
+      "bytes": 3317,
+      "sha256": "4306618605c6670a719f8b1ec3c67a14651fa5384e6a4bf2764b73145a7cc71a"
+    },
+    {
+      "id": "M5B285-00019",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/config.json",
+      "bytes": 2694,
+      "sha256": "c7825cbe1c0d19d2a67db5ecf4e7e28517ccf1fdfbf18f8d1618b8c3e7dec835"
+    },
+    {
+      "id": "M5B285-00020",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/decoded-channels.json",
+      "bytes": 146874,
+      "sha256": "b7d115719bb71290f48d3fc10d770f2b9f5b722d04831aeb88bc913a7e2d22e7"
+    },
+    {
+      "id": "M5B285-00021",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/000-config.json",
+      "bytes": 2694,
+      "sha256": "c7825cbe1c0d19d2a67db5ecf4e7e28517ccf1fdfbf18f8d1618b8c3e7dec835"
+    },
+    {
+      "id": "M5B285-00022",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/001-native-config.json",
+      "bytes": 23073,
+      "sha256": "7368f3741f0f5d8abd1e24066a8195f73c5b57f3b618d1f447652d86d1992c6d"
+    },
+    {
+      "id": "M5B285-00023",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/002-recipe.json",
+      "bytes": 1192,
+      "sha256": "801ebb0a358eb369628983b82fd1230b5cd87594e1734f0d4bad54d88f195350"
+    },
+    {
+      "id": "M5B285-00024",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/003-kr-service",
+      "bytes": 62404816,
+      "sha256": "8fdae7689bcd2d5c23678a98002331d7dd48545db910cd70f6ac9c252f3643b8"
+    },
+    {
+      "id": "M5B285-00025",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/004-kr-admin",
+      "bytes": 52359480,
+      "sha256": "fb44f247bc3149006326c1a8ea3aed2fe3fedbb23e782237b4c99914a960eb55"
+    },
+    {
+      "id": "M5B285-00026",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/005-wine_probe_m7_rooms_r5.py",
+      "bytes": 28237,
+      "sha256": "b1726845b00057128d4c045c7c9a44e54b13ad68ef2806c5e0724fe00b39d53e"
+    },
+    {
+      "id": "M5B285-00027",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/006-prepare_m7_native_r1.py",
+      "bytes": 9980,
+      "sha256": "46fdf89eafbaf77542588c4f9a0ddb19a94cbb569da9b39ac117f734ab5d5d44"
+    },
+    {
+      "id": "M5B285-00028",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/007-freeze_m7_native_r1.py",
+      "bytes": 3482,
+      "sha256": "e18311dcaaf2759290141e644eea3995d360b6dda7cea2e97ab8cd88929cab0b"
+    },
+    {
+      "id": "M5B285-00029",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/008-run_m7_native_r5.py",
+      "bytes": 905,
+      "sha256": "d41615b38224dfadf9207a778cd2aeb993bad11ef15809effccfdeafc44d6e98"
+    },
+    {
+      "id": "M5B285-00030",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/009-seal_rust_m1_r3.py",
+      "bytes": 1410,
+      "sha256": "4135f7b0f8eeabdeeaf9c8f830c21a25e41028ccc7209b2f598d1de134561beb"
+    },
+    {
+      "id": "M5B285-00031",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/010-alsa-null.conf",
+      "bytes": 27,
+      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+    },
+    {
+      "id": "M5B285-00032",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/011-kr00967.rs",
+      "bytes": 3977,
+      "sha256": "5682898a8e32ae588c99dcf7dde6089aeec198a1234a0ed5c527c107b6dbe5de"
+    },
+    {
+      "id": "M5B285-00033",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/012-lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "M5B285-00034",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/013-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "M5B285-00035",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/014-battle.rs",
+      "bytes": 7760,
+      "sha256": "618e28ec71912edb834d2f5ffd9c151a7c550c8bdb2f6be8812dcff3bf5f5a17"
+    },
+    {
+      "id": "M5B285-00036",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/015-player.rs",
+      "bytes": 7967,
+      "sha256": "5dca3e46e0a9735208175ac500df7f8854b12e369c2dd000d407ca7229722a16"
+    },
+    {
+      "id": "M5B285-00037",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/016-room.rs",
+      "bytes": 22770,
+      "sha256": "72a8cc9a6ff9e973e3647b14df7c22aac9d6a999791762a3234b4d36ca7a6133"
+    },
+    {
+      "id": "M5B285-00038",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/017-room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "M5B285-00039",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/018-check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "M5B285-00040",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/019-account_bridge.rs",
+      "bytes": 19720,
+      "sha256": "a9989312c096db02c243669531801bbba7bcf12d62743656c91a6bb56066e2cb"
+    },
+    {
+      "id": "M5B285-00041",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/020-account_serving.rs",
+      "bytes": 23336,
+      "sha256": "96c3f491a2b6cadd0be92ae930e06421b267cee1777a5d26dcb721237047d9f1"
+    },
+    {
+      "id": "M5B285-00042",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/021-account_worker.rs",
+      "bytes": 17674,
+      "sha256": "22ef92f0766e3dd7da2594eba26d6b7402c2972b3e134463db737cedd9cd7f11"
+    },
+    {
+      "id": "M5B285-00043",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/022-accounts.rs",
+      "bytes": 29915,
+      "sha256": "724a6647fa47fdf83027013f01cef99ca129324ccc4bc223f6dfde983af02e12"
+    },
+    {
+      "id": "M5B285-00044",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/023-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "M5B285-00045",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/024-bombs.rs",
+      "bytes": 15072,
+      "sha256": "4496bd8e1be4928f5264552516ac9104581f3433bda2e015e9fe2365b82bc169"
+    },
+    {
+      "id": "M5B285-00046",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/025-four_results.rs",
+      "bytes": 10769,
+      "sha256": "26c1c50fc8791534c965dfa39f6d61c0cf712c085ff09d3081688a4763886af6"
+    },
+    {
+      "id": "M5B285-00047",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/026-lib.rs",
+      "bytes": 55690,
+      "sha256": "09e391f47207c2e3c7ec7359b66907c1b64eab02cf22ac49c8873c4e1c370d79"
+    },
+    {
+      "id": "M5B285-00048",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/027-life.rs",
+      "bytes": 17096,
+      "sha256": "f64cfdc4403bd58d8820a434bb23e35a5f46e11330cd5fbbcbbd65954de7a86a"
+    },
+    {
+      "id": "M5B285-00049",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/028-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "M5B285-00050",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/029-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "M5B285-00051",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/030-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "M5B285-00052",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/031-network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "M5B285-00053",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/032-peer_routes.rs",
+      "bytes": 4631,
+      "sha256": "221075ff3e89110f636020c43a4e98099a8ffc3b02d204e12f03acd77ebb950b"
+    },
+    {
+      "id": "M5B285-00054",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/033-pickups.rs",
+      "bytes": 14368,
+      "sha256": "4ed0d33f79c4689b6cbccc44fddc53f8fb07e297e8da4c202acaf2f6f4f3e2ca"
+    },
+    {
+      "id": "M5B285-00055",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/034-player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "M5B285-00056",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/035-room.rs",
+      "bytes": 51543,
+      "sha256": "2418d267769f94c2262b4123c0f3ce526bb7de0e080441e8194086b00220e5a3"
+    },
+    {
+      "id": "M5B285-00057",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/036-room_io.rs",
+      "bytes": 150839,
+      "sha256": "41ec6863ee41d76e92193469aef787ed731ab9b9ac2d8e19faa74e6344b006ed"
+    },
+    {
+      "id": "M5B285-00058",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/037-room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "M5B285-00059",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/038-room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "M5B285-00060",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/039-room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "M5B285-00061",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/040-room_wire.rs",
+      "bytes": 2201,
+      "sha256": "4bd8473f94393106cdaf976425f91b1e0183eb0e12535b5795878250af73129c"
+    },
+    {
+      "id": "M5B285-00062",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/041-rules.rs",
+      "bytes": 9247,
+      "sha256": "444722b8912063712487cc1fb03d1f09704a0d2cf41ca04b58ab225ec6f95e9a"
+    },
+    {
+      "id": "M5B285-00063",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/042-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "M5B285-00064",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/043-udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "M5B285-00065",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/044-room_service.rs",
+      "bytes": 9518,
+      "sha256": "c3354547cc04fd8edd22eeaab0622a6c0d9f86d09c674c0acd4e85d58bc272c7"
+    },
+    {
+      "id": "M5B285-00066",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/045-tests.rs",
+      "bytes": 37428,
+      "sha256": "f6bcb293789e25da97d41518ea3a552e468d02c9f72b31b5d168917fe3c16c14"
+    },
+    {
+      "id": "M5B285-00067",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/046-wire.rs",
+      "bytes": 2758,
+      "sha256": "63adab044276a3ca481d4a96da84eef1c9ce00bce2caff189360f0f601c0d512"
+    },
+    {
+      "id": "M5B285-00068",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/047-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "M5B285-00069",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/048-tests.rs",
+      "bytes": 17779,
+      "sha256": "1c72dbea6bd2f57a33125ee65768d1059466e471fe23b3b32d4a92fc0e2ac354"
+    },
+    {
+      "id": "M5B285-00070",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/049-tests.rs",
+      "bytes": 27768,
+      "sha256": "f6f216e70f429f81ef533ee722cdb12f484564fe884f46c06b56b629906e7953"
+    },
+    {
+      "id": "M5B285-00071",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/050-kr-admin.rs",
+      "bytes": 4429,
+      "sha256": "206aa5b2ecace9d9ac54f074d93e039d4a88f893635e0b9dc5d000d5660c890c"
+    },
+    {
+      "id": "M5B285-00072",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/051-sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "M5B285-00073",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/052-tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "M5B285-00074",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/053-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "M5B285-00075",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/054-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "M5B285-00076",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/056-Cargo.toml",
+      "bytes": 625,
+      "sha256": "c5c9e195c001a9d133374a2fcaafa1606488501409e3ae18a3e35d1a1a7330bb"
+    },
+    {
+      "id": "M5B285-00077",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/057-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "M5B285-00078",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/058-topology.py",
+      "bytes": 4084,
+      "sha256": "c5152f7c57c785bbf78a3a0bcf7197d6b02481d0b9bc031f29e47c8a3f7bc44d"
+    },
+    {
+      "id": "M5B285-00079",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/059-capture_tcp.py",
+      "bytes": 1736,
+      "sha256": "5f7dd71b3a26f6bf1490e8e0eeb8de9dcb3b0e86da9c16ea1108f842bdcec805"
+    },
+    {
+      "id": "M5B285-00080",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/060-capture_udp.py",
+      "bytes": 3317,
+      "sha256": "4306618605c6670a719f8b1ec3c67a14651fa5384e6a4bf2764b73145a7cc71a"
+    },
+    {
+      "id": "M5B285-00081",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/061-room-A.gdb",
+      "bytes": 3370,
+      "sha256": "e67020f3d57cc14bc086a83fde763ae2d70d135806603ca3fc60b184af845533"
+    },
+    {
+      "id": "M5B285-00082",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/062-room-B.gdb",
+      "bytes": 3370,
+      "sha256": "68df44db182982a3a4c482fe029d2f7df38eaf05e857bcdc00a29a06e6471acf"
+    },
+    {
+      "id": "M5B285-00083",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/063-room-C.gdb",
+      "bytes": 3370,
+      "sha256": "7450e1d449a42d59c7f04b2f3c6191d1182cba4d963d982305ef5e80aade67f0"
+    },
+    {
+      "id": "M5B285-00084",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/064-native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "M5B285-00085",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/065-gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "M5B285-00086",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/066-list-probe.py",
+      "bytes": 1252,
+      "sha256": "8297f9cb0de08b6a990c5c9aa8ec308dce14f96f7240c47ed79ea97def7fa17d"
+    },
+    {
+      "id": "M5B285-00087",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/067-join-probe.py",
+      "bytes": 1517,
+      "sha256": "aecbf6a671e6de80f93fb4151ac55e9df401c3beb57763a2575a73d7705e98af"
+    },
+    {
+      "id": "M5B285-00088",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/068-roster-probe.py",
+      "bytes": 1959,
+      "sha256": "deb0bba757d575159a0359d6e4adbc198356deeb37d88d7e841063f25828c4ff"
+    },
+    {
+      "id": "M5B285-00089",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/069-cleanup-probe.py",
+      "bytes": 1993,
+      "sha256": "b22a778dd03d0f3b708a8ea0fc018c71df7faf052af41951b6b961a5dc05c639"
+    },
+    {
+      "id": "M5B285-00090",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/070-delete-probe.py",
+      "bytes": 1236,
+      "sha256": "f211b50ef813c7590ec0a54aa9073d12fb8fbdb87a65197798293585181dfa9d"
+    },
+    {
+      "id": "M5B285-00091",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/071-probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "M5B285-00092",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/072-room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "M5B285-00093",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/073-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "M5B285-00094",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/074-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "M5B285-00095",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/075-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "M5B285-00096",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/076-A-auth.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "M5B285-00097",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/077-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "M5B285-00098",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/078-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "M5B285-00099",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/079-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "M5B285-00100",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/080-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "M5B285-00101",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/081-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "M5B285-00102",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/082-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "M5B285-00103",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/083-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "M5B285-00104",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/084-A-own291.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "M5B285-00105",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/085-A-106.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "M5B285-00106",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/086-B-auth.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "M5B285-00107",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/087-B-own291.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "M5B285-00108",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/088-B-106.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "M5B285-00109",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/089-C-auth.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "M5B285-00110",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/090-C-own291.bin",
+      "bytes": 126,
+      "sha256": "5e4a20ae5827c99ab75343eb4cac0b8e1d3fe02085635ef7e15cb6ea1abdbd04"
+    },
+    {
+      "id": "M5B285-00111",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/091-C-106.bin",
+      "bytes": 238,
+      "sha256": "2dce013518feef6f752c8d232f394729253f17f09c60509296b4e59e57afc72a"
+    },
+    {
+      "id": "M5B285-00112",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/092-D-auth.bin",
+      "bytes": 175,
+      "sha256": "b120da778082fdff90fde5e947c2c26ff002449dcf126bc2fd7285512ca75724"
+    },
+    {
+      "id": "M5B285-00113",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/093-D-own291.bin",
+      "bytes": 128,
+      "sha256": "218a0b0880d106ae38ddd4e056e6acb602cf1e3e79705a7672b3374b012f422c"
+    },
+    {
+      "id": "M5B285-00114",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/094-D-106.bin",
+      "bytes": 242,
+      "sha256": "50be046ea690d70f654816db6e89a458c16985a38e254877a168f93472168183"
+    },
+    {
+      "id": "M5B285-00115",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/095-reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "M5B285-00116",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/096-reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "M5B285-00117",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/097-compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "M5B285-00118",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/098-exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "M5B285-00119",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/099-basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "M5B285-00120",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/100-start4.bin",
+      "bytes": 219,
+      "sha256": "bf395aea2bed32aaff8dd590887849bf400598a60e7427652a05cc5610df862d"
+    },
+    {
+      "id": "M5B285-00121",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/101-go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "M5B285-00122",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/102-exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "M5B285-00123",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/103-peer4.bin",
+      "bytes": 171,
+      "sha256": "9fbfcd39b202be6be1913d2d9c52f6d598e067982813cb374c71f9a2340aa239"
+    },
+    {
+      "id": "M5B285-00124",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/104-listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "M5B285-00125",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/686-prepare_m7_native_r2.py",
+      "bytes": 7783,
+      "sha256": "78fc8f522d7ec1bda80eac203d70179d0169e8161347ed383be77e11979f1e3d"
+    },
+    {
+      "id": "M5B285-00126",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/687-prepare_m7_native_r3.py",
+      "bytes": 3169,
+      "sha256": "55a738259081ee7163b330a196d33d905c2fd41d7a19c9f43f0d99c956a10ffa"
+    },
+    {
+      "id": "M5B285-00127",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/688-prepare_m7_native_r4.py",
+      "bytes": 3942,
+      "sha256": "44fed9f0932e28cd79d04f9b0568b300c95c78c65aecf6ca71351537bbb3e3a4"
+    },
+    {
+      "id": "M5B285-00128",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/689-controller-correction.json",
+      "bytes": 579,
+      "sha256": "71745008d639b2f4c5ac744e2cfaa6a024e1302e6169582d978d71b17f0eb90b"
+    },
+    {
+      "id": "M5B285-00129",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/690-prepare_m7_native_r5.py",
+      "bytes": 3696,
+      "sha256": "aecdd14c7c9830bdb941cf58d3b0d86e25c5353f96f8c99d3acb3de9e06113e5"
+    },
+    {
+      "id": "M5B285-00130",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/691-startup-failure-followup.json",
+      "bytes": 579,
+      "sha256": "37529b0d0e14275e7d51e577a9f9c6c07d5e5b6cbae16d452e78a9a3a4384623"
+    },
+    {
+      "id": "M5B285-00131",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/692-gdb_life_rank.py",
+      "bytes": 2266,
+      "sha256": "26e5206fc0077d91ff666e63a28a815cdc3d105219819d5fdf34df038abf76c2"
+    },
+    {
+      "id": "M5B285-00132",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/693-gdb_live_positions.py",
+      "bytes": 1500,
+      "sha256": "50d2ad859928bac02c83b342da0076e424800d5314191c45a34a5ef142a2d561"
+    },
+    {
+      "id": "M5B285-00133",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/694-gdb_map_flags.py",
+      "bytes": 2835,
+      "sha256": "7f8bdeedd0df16e79c4f640bcec24f0aa78e7311caf15a3ebdf1dfa70463d41c"
+    },
+    {
+      "id": "M5B285-00134",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/695-gdb_peer_apply.py",
+      "bytes": 4560,
+      "sha256": "d4edf9eeb3e874ec38c5d84a749e0432fb8ca684fdf06bafff332fb899e285f4"
+    },
+    {
+      "id": "M5B285-00135",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/696-prepare_rust_account_basic_r3.py",
+      "bytes": 8154,
+      "sha256": "f0f133586166bde554b35f3522ddb6f6e900a93f26e0e7a174148408df4f3bb3"
+    },
+    {
+      "id": "M5B285-00136",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/697-prepare_rust_life_native_r5.py",
+      "bytes": 13213,
+      "sha256": "08a6875de72841ea2a4310fe2b297d04a703d29437343918a5134fe16a2ac17f"
+    },
+    {
+      "id": "M5B285-00137",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/698-prepare_rust_return_native_r3.py",
+      "bytes": 11011,
+      "sha256": "9b8a4ce0ad382569cd6c10a3ac8859e986eee80a544212f5c2a6ed138d5b3efe"
+    },
+    {
+      "id": "M5B285-00138",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/699-prepare_rust_room_eof_native.py",
+      "bytes": 14976,
+      "sha256": "1d3e6f398a49b5b247f04ff37748bede4476dd415d04d09a9e6ea8be4b094151"
+    },
+    {
+      "id": "M5B285-00139",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/700-prepare_rust_terrain_native.py",
+      "bytes": 12847,
+      "sha256": "8f1897ad76c0e2983fff653d100924e3f14043bc7a63e5e0ad26efb7a72d419f"
+    },
+    {
+      "id": "M5B285-00140",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/701-capture_tcp.py",
+      "bytes": 1887,
+      "sha256": "98e4ef92a4a198b84b48a7a3cad82aecebf4d220115826ab03d8e28ae828a6a0"
+    },
+    {
+      "id": "M5B285-00141",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/702-capture_udp.py",
+      "bytes": 3205,
+      "sha256": "e4c09fea1921767eab1c401e2e0d5f44ec244ef1e48fbdd1c6ff0a46503b9a34"
+    },
+    {
+      "id": "M5B285-00142",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/703-room-observer.py",
+      "bytes": 11904,
+      "sha256": "e7c1bfc35474e7c77c624a03288a3a3e31a9581b6be59fed3a711a72039c01a2"
+    },
+    {
+      "id": "M5B285-00143",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/704-topology.py",
+      "bytes": 4068,
+      "sha256": "fa2a5ea45611c166c10c91e9368ba82b1b3bed3717e047d79ea921ca3ad0e461"
+    },
+    {
+      "id": "M5B285-00144",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/705-run_rust_room_eof.py",
+      "bytes": 839,
+      "sha256": "584a5235c74b0f4560f07a71acdf406cf2eaba65fbc733a001cc59ac7cc33f3b"
+    },
+    {
+      "id": "M5B285-00145",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/706-rust_m3_item_probe.py",
+      "bytes": 1968,
+      "sha256": "c93d128bdad3067ec581b0695d35fbe06c2ba3fc3feee80fd1ff49545e59bbce"
+    },
+    {
+      "id": "M5B285-00146",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/707-rust_native_bomb_probe.py",
+      "bytes": 2142,
+      "sha256": "5621badf8ecc591cf860dae9c7074a1a3b2dcc76dce9d388fb19c06aef90fde1"
+    },
+    {
+      "id": "M5B285-00147",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/708-rust_terrain_native_probe.py",
+      "bytes": 982,
+      "sha256": "37e502d12b7f10c7b49e07fcaf4a6ff43e1ba834efd627de2bfa2559edb8bdae"
+    },
+    {
+      "id": "M5B285-00148",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/709-stage_r1_final_native_r1.py",
+      "bytes": 7060,
+      "sha256": "1f5b09394cb30caebb136b3245ebf9e6f2811aadda39d92f3600bd25ada9713d"
+    },
+    {
+      "id": "M5B285-00149",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/710-wine_probe_r1_final_account_r1.py",
+      "bytes": 31002,
+      "sha256": "670292539ef408d7f26306239b4f5338050098979dd3317826f45fb12a516ba2"
+    },
+    {
+      "id": "M5B285-00150",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/711-wine_probe_rust_life_r5.py",
+      "bytes": 26883,
+      "sha256": "838e4b0363df2f5d74f4ae1f97a248a04ba6f255e143835c2b8aa27f1e8f4191"
+    },
+    {
+      "id": "M5B285-00151",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/712-wine_probe_rust_return_r3.py",
+      "bytes": 27906,
+      "sha256": "b37257a48f07ad76133dd678844a8bcbd4f1b55ea235209123a7e043a49d380e"
+    },
+    {
+      "id": "M5B285-00152",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/713-wine_probe_rust_room_eof.py",
+      "bytes": 23522,
+      "sha256": "8350b093d4b07513f89f9d9823d5194d6ee34796d2ce251d4f107fc0cbcacc68"
+    },
+    {
+      "id": "M5B285-00153",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/714-wine_probe_rust_terrain.py",
+      "bytes": 27495,
+      "sha256": "f09396382d58f940bccc1d2cfe2e71b92bb12f3ad69a7327d29c9bc9466f1f76"
+    },
+    {
+      "id": "M5B285-00154",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/715-export_rust_profile.py",
+      "bytes": 28199,
+      "sha256": "12ab2a24e577d1f77a050f1092e0523f42ca3ed59a4671bee084a272ec451f9b"
+    },
+    {
+      "id": "M5B285-00155",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/716-patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "M5B285-00156",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/717-test_rust_life.py",
+      "bytes": 20602,
+      "sha256": "2d234979938dcb6958436a1e477bd0c10827dd09b6ed32834cc5afbb98ceb489"
+    },
+    {
+      "id": "M5B285-00157",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/718-test_rust_room.py",
+      "bytes": 13739,
+      "sha256": "98be417a43d45cc612e6ea89163f6cf0b57ab821bde290ef137df752305910b4"
+    },
+    {
+      "id": "M5B285-00158",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/719-run_r1_final_native_r1.py",
+      "bytes": 1171,
+      "sha256": "c32189cd3b925d8e45c8d32f7cdbc2391f31a730b3e9ec769044f3ea9577ad11"
+    },
+    {
+      "id": "M5B285-00159",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/720-prepare_r1_final_verifiers_r1.py",
+      "bytes": 1876,
+      "sha256": "b31adae5cb26edbbbcdea9600b2f5e2f55230e81eca46ad2dcf0e17d6e2e3baf"
+    },
+    {
+      "id": "M5B285-00160",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/721-finalize_r1_native_inputs_r1.py",
+      "bytes": 1655,
+      "sha256": "a55786776d4f17963991b412b1fafe6800ddf2b0ecce5cc5807354b2825e7323"
+    },
+    {
+      "id": "M5B285-00161",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/722-verify_r1_final_startup_r1.py",
+      "bytes": 12883,
+      "sha256": "c25c98a4e826d8f729624767ceab88e7def5c3596a4e66a2059338f2c95b611c"
+    },
+    {
+      "id": "M5B285-00162",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/723-verify_r1_final_two_r1.py",
+      "bytes": 11204,
+      "sha256": "6c7955470f22dc51f6b6b77f9c1e5b2328fcd520aa8902aeb0c469dfb84d0e6b"
+    },
+    {
+      "id": "M5B285-00163",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/724-verify_r1_final_four_r1.py",
+      "bytes": 8624,
+      "sha256": "c81a0aa29a363077be3425d5d64198a225a64dcd708e6baf1203b1ad149a1519"
+    },
+    {
+      "id": "M5B285-00164",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/725-verify_r1_final_eight_r1.py",
+      "bytes": 12375,
+      "sha256": "aab782af2b43dc398fde3f45c029950b8bc84f255311d0821b4ce043a09671ed"
+    },
+    {
+      "id": "M5B285-00165",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/726-verify_r1_final_account_r1.py",
+      "bytes": 11931,
+      "sha256": "0f4957c0c9aa6ee8673c4794e3ee2f02f04909eab4717a08677955610111fe1c"
+    },
+    {
+      "id": "M5B285-00166",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/727-verify_r1_final_account_ownership_r1.py",
+      "bytes": 6131,
+      "sha256": "5dd5cfddb6ecf0fe94eeb2f6ea0b113a99cb2812229ba889e9d432806b448f4c"
+    },
+    {
+      "id": "M5B285-00167",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/728-verify_rust_life_getters.py",
+      "bytes": 1211,
+      "sha256": "627e000ef2831761234ac8cfc78dd9d3ce325013d70ebf4a0d08901ef2110eb0"
+    },
+    {
+      "id": "M5B285-00168",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/729-verify_rust_four_results_getters.py",
+      "bytes": 1240,
+      "sha256": "7a9c7ac6e0765c60f1e5e4566e90b9d2bd5ad823b8c8404db1f349809690cbe5"
+    },
+    {
+      "id": "M5B285-00169",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/730-verify_rust_eight_getters.py",
+      "bytes": 1234,
+      "sha256": "b18f862775c74ae0c74d500d9db2b663299e86c40bbfa7e995e5934ed9c2cb5a"
+    },
+    {
+      "id": "M5B285-00170",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/731-bootstrap-recv-oracle.py",
+      "bytes": 2104,
+      "sha256": "1e86c06540e8fe654564c5bd403f859070f77c9af0d5d11c70c9351198e00ae2"
+    },
+    {
+      "id": "M5B285-00171",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/732-rank175-v2.bin",
+      "bytes": 340,
+      "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd"
+    },
+    {
+      "id": "M5B285-00172",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/733-rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "M5B285-00173",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/734-rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "M5B285-00174",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/735-result180-full.bin",
+      "bytes": 41,
+      "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0"
+    },
+    {
+      "id": "M5B285-00175",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/736-wine_probe_m7d_ownership_r1.py",
+      "bytes": 32590,
+      "sha256": "c4b1bf1c1102e00f06fb6efbebe448d16e3d52495a7dd108457a35986cd734a2"
+    },
+    {
+      "id": "M5B285-00176",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/737-run_m7d_ownership_r1.py",
+      "bytes": 910,
+      "sha256": "b0c2a3a5e3d9ba9821530a0770fe76d5eb39aaa645d6fc6d2422b1a3dfb30dfb"
+    },
+    {
+      "id": "M5B285-00177",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/738-prepare_m7d_ownership_native_r1.py",
+      "bytes": 16223,
+      "sha256": "6f1123a453ad6bf9aad5a6cfdf974b2109d39e93fbd8ecaeabddd8aad6290cea"
+    },
+    {
+      "id": "M5B285-00178",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/739-room-observer.py",
+      "bytes": 3068,
+      "sha256": "b84696a20841dfb73126a52d62281132a324181981e01b27712c2fa09cee356e"
+    },
+    {
+      "id": "M5B285-00179",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/740-native_room_choices.rs",
+      "bytes": 1722,
+      "sha256": "d527c228dcc86ec11057e1c8c5037ced0e44d2ae03f27da5e8884ad49f41e80d"
+    },
+    {
+      "id": "M5B285-00180",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/741-native_start_vectors.rs",
+      "bytes": 2882,
+      "sha256": "3bfff9199f2fd8abd1acdbc82e6a0484b80c5a9d0865404c64c0b64b53404021"
+    },
+    {
+      "id": "M5B285-00181",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/742-round_epochs.rs",
+      "bytes": 1756,
+      "sha256": "a11896aff793db28e4aaa7da6c96a8a60a0b031ffa8d116e83c0f0bc3403ccde"
+    },
+    {
+      "id": "M5B285-00182",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/744-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "M5B285-00183",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/745-topology.py",
+      "bytes": 4092,
+      "sha256": "e0bc628416dfdd4ae8756b0427d2794986264658f8c93fd4c0c339c6faa4be27"
+    },
+    {
+      "id": "M5B285-00184",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/746-capture_tcp.py",
+      "bytes": 1602,
+      "sha256": "6450583334c4228865c93400b70633a5d92bb27b842084773fea4621bc39be23"
+    },
+    {
+      "id": "M5B285-00185",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/747-capture_udp.py",
+      "bytes": 3320,
+      "sha256": "c34de825a818591e7acbcd98570e8e2e4fbdd338fd6702756291920a5c65c627"
+    },
+    {
+      "id": "M5B285-00186",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/748-wine_probe_m7b_duel_r7.py",
+      "bytes": 31238,
+      "sha256": "3648c0efeb4fed5feb7b3aafb0c0397b77c7a26faece4cb031586022570a25ee"
+    },
+    {
+      "id": "M5B285-00187",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/749-run_m7b_duel_r7.py",
+      "bytes": 905,
+      "sha256": "838d5441ce2974543b2b5b05292c4ae0fd96a3a237a20483da316849daf02230"
+    },
+    {
+      "id": "M5B285-00188",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/750-prepare_m7b_duel_native_r7.py",
+      "bytes": 15093,
+      "sha256": "10faba619d03e26709ac8379cae86be69187b5466dc1ade5e2e502abd7323ba7"
+    },
+    {
+      "id": "M5B285-00189",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/751-room-observer.py",
+      "bytes": 11860,
+      "sha256": "7a38b7ee1a475a0f03b53b76aaa61f0b326f9a8a11415e2c021735873cc2c71f"
+    },
+    {
+      "id": "M5B285-00190",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/752-wine_probe_m7b_teams4_r10.py",
+      "bytes": 31313,
+      "sha256": "d2a86689f2571fb454cc8e9ee345f88d6cb2ea90fa47d46d175059e50102120b"
+    },
+    {
+      "id": "M5B285-00191",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/753-run_m7b_teams4_r10.py",
+      "bytes": 908,
+      "sha256": "1be6ac80d5efe7431bf50f60db4f3c0b5c707e9a33d259326a3508d367df2d4a"
+    },
+    {
+      "id": "M5B285-00192",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/754-prepare_m7b_team_native_v11.py",
+      "bytes": 19864,
+      "sha256": "4ecc1d061da2a7308de808bb2d86c1815dcde379abd47fff0580f95fddb89a9a"
+    },
+    {
+      "id": "M5B285-00193",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/755-gdb_map_flags.py",
+      "bytes": 2835,
+      "sha256": "7f8bdeedd0df16e79c4f640bcec24f0aa78e7311caf15a3ebdf1dfa70463d41c"
+    },
+    {
+      "id": "M5B285-00194",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/756-gdb_live_positions.py",
+      "bytes": 1504,
+      "sha256": "231a5440bc5c1d4308446d44c4887dfb1a5cdced9896ffab7e81fe81195b04eb"
+    },
+    {
+      "id": "M5B285-00195",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/757-gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "M5B285-00196",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/758-gdb_four_slot.py",
+      "bytes": 2568,
+      "sha256": "660f19021b561c53dd8aa8bd75b7b3a5458f12e2cf02055a395c958490a396bc"
+    },
+    {
+      "id": "M5B285-00197",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/759-gdb_lite_sync.py",
+      "bytes": 616,
+      "sha256": "e64a145980ee81d460410bb92764dbb00168217967d2aeae5f5f2c3f8b0f10ed"
+    },
+    {
+      "id": "M5B285-00198",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/760-auth-probe.py",
+      "bytes": 2450,
+      "sha256": "72b8c04b481b39f02ddaaf83edb73666fbf44903f6939c9c84872a5c2dd3bd4a"
+    },
+    {
+      "id": "M5B285-00199",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/761-roster-probe.py",
+      "bytes": 1959,
+      "sha256": "deb0bba757d575159a0359d6e4adbc198356deeb37d88d7e841063f25828c4ff"
+    },
+    {
+      "id": "M5B285-00200",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/762-ack-probe.py",
+      "bytes": 768,
+      "sha256": "3bebe384da12cddbeabdaf8b9d615eb09fedb27a54fb9f1570b2c528f090fe3f"
+    },
+    {
+      "id": "M5B285-00201",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/763-bomb-probe.py",
+      "bytes": 2223,
+      "sha256": "fc89f04b8c77f6c4237f5d13daa2cfca3a96ef4194fa4fa2a6a7ef16f1550a4b"
+    },
+    {
+      "id": "M5B285-00202",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/764-life-probe.py",
+      "bytes": 2266,
+      "sha256": "26e5206fc0077d91ff666e63a28a815cdc3d105219819d5fdf34df038abf76c2"
+    },
+    {
+      "id": "M5B285-00203",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/765-peer-observer.py",
+      "bytes": 4560,
+      "sha256": "d4edf9eeb3e874ec38c5d84a749e0432fb8ca684fdf06bafff332fb899e285f4"
+    },
+    {
+      "id": "M5B285-00204",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/766-deferred-team-observer.py",
+      "bytes": 3279,
+      "sha256": "900cbaa53cccb0ebd606c19171c05fe248ad3f057937f5ed0e4fe651602d4a36"
+    },
+    {
+      "id": "M5B285-00205",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/767-prepare_m7e_three_native_r2.py",
+      "bytes": 15013,
+      "sha256": "553810efabdfbb6b319bbe60170bba93d852e852ceadd51bfcc853c0306de902"
+    },
+    {
+      "id": "M5B285-00206",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/768-wine_probe_m7e_three_r2.py",
+      "bytes": 30008,
+      "sha256": "191792d42196b8c186ad2eb427aaa2a88d7eca47e66ecf84789837fd06caf132"
+    },
+    {
+      "id": "M5B285-00207",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/769-run_m7e_three_r2.py",
+      "bytes": 906,
+      "sha256": "5b1f634a661122b3743754ffe43ffd719758fe26e8da7d12d94be42ef0444347"
+    },
+    {
+      "id": "M5B285-00208",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/770-gdb_map_flags.py",
+      "bytes": 2835,
+      "sha256": "7f8bdeedd0df16e79c4f640bcec24f0aa78e7311caf15a3ebdf1dfa70463d41c"
+    },
+    {
+      "id": "M5B285-00209",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/771-gdb_live_positions.py",
+      "bytes": 1540,
+      "sha256": "d5f643a37847795bf2bd4f61fad33602212f9d3a40eb6ddbf7a8236d2d301ebb"
+    },
+    {
+      "id": "M5B285-00210",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/772-gdb_four_slot.py",
+      "bytes": 2630,
+      "sha256": "9cec0d23d3a45ebb827baf079c7dc3fbdf6b11bfe03eb3409a5bd564612b1562"
+    },
+    {
+      "id": "M5B285-00211",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/773-life-probe.py",
+      "bytes": 2314,
+      "sha256": "a1dbb4bbcdecc2591e9c3112d8868945aa9b2139726a6abf1867f571a5e23fb8"
+    },
+    {
+      "id": "M5B285-00212",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/774-bomb-probe.py",
+      "bytes": 2223,
+      "sha256": "fc89f04b8c77f6c4237f5d13daa2cfca3a96ef4194fa4fa2a6a7ef16f1550a4b"
+    },
+    {
+      "id": "M5B285-00213",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/775-peer-observer.py",
+      "bytes": 4591,
+      "sha256": "f42f2463360d55f2a31e1d73dc456ca476e0975b99941c6a0192d3e7c071cefe"
+    },
+    {
+      "id": "M5B285-00214",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/776-native_selected_start.rs",
+      "bytes": 3067,
+      "sha256": "c09cd6f51c35e32b029d21cff7a1e3ae9c3ee65f8075ecd9ed60852b15a00b09"
+    },
+    {
+      "id": "M5B285-00215",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/777-native_selected_roster.rs",
+      "bytes": 1121,
+      "sha256": "62501ed78735f409edac88f0828fbbb89451734dc17a706bf622b4e2085c8859"
+    },
+    {
+      "id": "M5B285-00216",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/778-characters.rs",
+      "bytes": 2441,
+      "sha256": "a9a872ae38adf39d2132fcd676482a5ee54048b40ab8685ba067674f7245dfcb"
+    },
+    {
+      "id": "M5B285-00217",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/779-prepare_m5b_recovery_generated.py",
+      "bytes": 11742,
+      "sha256": "772e5fa19e66d91d084520abfca5cc8566a94e3385024b33d5f6250c5ac855e7"
+    },
+    {
+      "id": "M5B285-00218",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/780-wine_probe_m5b_recovery_r1.py",
+      "bytes": 34620,
+      "sha256": "2b9190ae04734cc6ce8e3a6ef2a6c09b0517ea0a9d8993d08038ad9dbcd34044"
+    },
+    {
+      "id": "M5B285-00219",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/781-run_m5b_recovery_r1.py",
+      "bytes": 909,
+      "sha256": "80d8e60332fb24a036cdb66980cd378543d1087eb69185da4a99593f9356f945"
+    },
+    {
+      "id": "M5B285-00220",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/782-room-D.gdb",
+      "bytes": 3370,
+      "sha256": "fa55de2746e716254490588582c134ac453cbaf8be52b778cf101369cdfe1a4f"
+    },
+    {
+      "id": "M5B285-00221",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/783-kr00967.rs",
+      "bytes": 3977,
+      "sha256": "5682898a8e32ae588c99dcf7dde6089aeec198a1234a0ed5c527c107b6dbe5de"
+    },
+    {
+      "id": "M5B285-00222",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/784-lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "M5B285-00223",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/785-native_room_choices.rs",
+      "bytes": 1722,
+      "sha256": "d527c228dcc86ec11057e1c8c5037ced0e44d2ae03f27da5e8884ad49f41e80d"
+    },
+    {
+      "id": "M5B285-00224",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/786-native_selected_roster.rs",
+      "bytes": 1121,
+      "sha256": "62501ed78735f409edac88f0828fbbb89451734dc17a706bf622b4e2085c8859"
+    },
+    {
+      "id": "M5B285-00225",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/787-native_selected_start.rs",
+      "bytes": 3067,
+      "sha256": "c09cd6f51c35e32b029d21cff7a1e3ae9c3ee65f8075ecd9ed60852b15a00b09"
+    },
+    {
+      "id": "M5B285-00226",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/788-native_start_vectors.rs",
+      "bytes": 2882,
+      "sha256": "3bfff9199f2fd8abd1acdbc82e6a0484b80c5a9d0865404c64c0b64b53404021"
+    },
+    {
+      "id": "M5B285-00227",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/789-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "M5B285-00228",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/790-native_account_profiles.rs",
+      "bytes": 3073,
+      "sha256": "4054a9d8affab3eebe8c77a30e76f0947a1d60843bda15a71e6fa991c2696023"
+    },
+    {
+      "id": "M5B285-00229",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/791-battle.rs",
+      "bytes": 7760,
+      "sha256": "618e28ec71912edb834d2f5ffd9c151a7c550c8bdb2f6be8812dcff3bf5f5a17"
+    },
+    {
+      "id": "M5B285-00230",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/792-player.rs",
+      "bytes": 7967,
+      "sha256": "5dca3e46e0a9735208175ac500df7f8854b12e369c2dd000d407ca7229722a16"
+    },
+    {
+      "id": "M5B285-00231",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/793-room.rs",
+      "bytes": 22770,
+      "sha256": "72a8cc9a6ff9e973e3647b14df7c22aac9d6a999791762a3234b4d36ca7a6133"
+    },
+    {
+      "id": "M5B285-00232",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/794-room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "M5B285-00233",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/795-account.rs",
+      "bytes": 3477,
+      "sha256": "1b76836d680abbae1ffd16e1d618f4a2e9a8ab3057ed743a4eeaa617fbb717c8"
+    },
+    {
+      "id": "M5B285-00234",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/796-check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "M5B285-00235",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/797-account_bridge.rs",
+      "bytes": 19720,
+      "sha256": "a9989312c096db02c243669531801bbba7bcf12d62743656c91a6bb56066e2cb"
+    },
+    {
+      "id": "M5B285-00236",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/798-account_serving.rs",
+      "bytes": 23336,
+      "sha256": "96c3f491a2b6cadd0be92ae930e06421b267cee1777a5d26dcb721237047d9f1"
+    },
+    {
+      "id": "M5B285-00237",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/799-account_worker.rs",
+      "bytes": 17674,
+      "sha256": "22ef92f0766e3dd7da2594eba26d6b7402c2972b3e134463db737cedd9cd7f11"
+    },
+    {
+      "id": "M5B285-00238",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/800-accounts.rs",
+      "bytes": 29915,
+      "sha256": "724a6647fa47fdf83027013f01cef99ca129324ccc4bc223f6dfde983af02e12"
+    },
+    {
+      "id": "M5B285-00239",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/801-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "M5B285-00240",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/802-bombs.rs",
+      "bytes": 15072,
+      "sha256": "4496bd8e1be4928f5264552516ac9104581f3433bda2e015e9fe2365b82bc169"
+    },
+    {
+      "id": "M5B285-00241",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/803-characters.rs",
+      "bytes": 2441,
+      "sha256": "a9a872ae38adf39d2132fcd676482a5ee54048b40ab8685ba067674f7245dfcb"
+    },
+    {
+      "id": "M5B285-00242",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/804-four_results.rs",
+      "bytes": 10769,
+      "sha256": "26c1c50fc8791534c965dfa39f6d61c0cf712c085ff09d3081688a4763886af6"
+    },
+    {
+      "id": "M5B285-00243",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/805-lib.rs",
+      "bytes": 55690,
+      "sha256": "09e391f47207c2e3c7ec7359b66907c1b64eab02cf22ac49c8873c4e1c370d79"
+    },
+    {
+      "id": "M5B285-00244",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/806-life.rs",
+      "bytes": 17096,
+      "sha256": "f64cfdc4403bd58d8820a434bb23e35a5f46e11330cd5fbbcbbd65954de7a86a"
+    },
+    {
+      "id": "M5B285-00245",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/807-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "M5B285-00246",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/808-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "M5B285-00247",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/809-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "M5B285-00248",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/810-network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "M5B285-00249",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/811-peer_routes.rs",
+      "bytes": 4631,
+      "sha256": "221075ff3e89110f636020c43a4e98099a8ffc3b02d204e12f03acd77ebb950b"
+    },
+    {
+      "id": "M5B285-00250",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/812-pickups.rs",
+      "bytes": 14368,
+      "sha256": "4ed0d33f79c4689b6cbccc44fddc53f8fb07e297e8da4c202acaf2f6f4f3e2ca"
+    },
+    {
+      "id": "M5B285-00251",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/813-player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "M5B285-00252",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/814-room.rs",
+      "bytes": 51543,
+      "sha256": "2418d267769f94c2262b4123c0f3ce526bb7de0e080441e8194086b00220e5a3"
+    },
+    {
+      "id": "M5B285-00253",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/815-room_io.rs",
+      "bytes": 150839,
+      "sha256": "41ec6863ee41d76e92193469aef787ed731ab9b9ac2d8e19faa74e6344b006ed"
+    },
+    {
+      "id": "M5B285-00254",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/816-room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "M5B285-00255",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/817-room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "M5B285-00256",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/818-room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "M5B285-00257",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/819-room_service.rs",
+      "bytes": 9518,
+      "sha256": "c3354547cc04fd8edd22eeaab0622a6c0d9f86d09c674c0acd4e85d58bc272c7"
+    },
+    {
+      "id": "M5B285-00258",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/820-room_wire.rs",
+      "bytes": 2201,
+      "sha256": "4bd8473f94393106cdaf976425f91b1e0183eb0e12535b5795878250af73129c"
+    },
+    {
+      "id": "M5B285-00259",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/821-round_epochs.rs",
+      "bytes": 1756,
+      "sha256": "a11896aff793db28e4aaa7da6c96a8a60a0b031ffa8d116e83c0f0bc3403ccde"
+    },
+    {
+      "id": "M5B285-00260",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/822-rules.rs",
+      "bytes": 9247,
+      "sha256": "444722b8912063712487cc1fb03d1f09704a0d2cf41ca04b58ab225ec6f95e9a"
+    },
+    {
+      "id": "M5B285-00261",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/823-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "M5B285-00262",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/824-udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "M5B285-00263",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/825-tests.rs",
+      "bytes": 37428,
+      "sha256": "f6bcb293789e25da97d41518ea3a552e468d02c9f72b31b5d168917fe3c16c14"
+    },
+    {
+      "id": "M5B285-00264",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/826-wire.rs",
+      "bytes": 2758,
+      "sha256": "63adab044276a3ca481d4a96da84eef1c9ce00bce2caff189360f0f601c0d512"
+    },
+    {
+      "id": "M5B285-00265",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/827-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "M5B285-00266",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/828-tests.rs",
+      "bytes": 17779,
+      "sha256": "1c72dbea6bd2f57a33125ee65768d1059466e471fe23b3b32d4a92fc0e2ac354"
+    },
+    {
+      "id": "M5B285-00267",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/829-tests.rs",
+      "bytes": 27768,
+      "sha256": "f6f216e70f429f81ef533ee722cdb12f484564fe884f46c06b56b629906e7953"
+    },
+    {
+      "id": "M5B285-00268",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/830-kr-admin.rs",
+      "bytes": 4429,
+      "sha256": "206aa5b2ecace9d9ac54f074d93e039d4a88f893635e0b9dc5d000d5660c890c"
+    },
+    {
+      "id": "M5B285-00269",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/831-sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "M5B285-00270",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/832-tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "M5B285-00271",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/833-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "M5B285-00272",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/frozen-inputs/834-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "M5B285-00273",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/gdb_four_slot.py",
+      "bytes": 2630,
+      "sha256": "9cec0d23d3a45ebb827baf079c7dc3fbdf6b11bfe03eb3409a5bd564612b1562"
+    },
+    {
+      "id": "M5B285-00274",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/gdb_live_positions.py",
+      "bytes": 1540,
+      "sha256": "d5f643a37847795bf2bd4f61fad33602212f9d3a40eb6ddbf7a8236d2d301ebb"
+    },
+    {
+      "id": "M5B285-00275",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/gdb_map_flags.py",
+      "bytes": 2835,
+      "sha256": "7f8bdeedd0df16e79c4f640bcec24f0aa78e7311caf15a3ebdf1dfa70463d41c"
+    },
+    {
+      "id": "M5B285-00276",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/life-probe.py",
+      "bytes": 2314,
+      "sha256": "a1dbb4bbcdecc2591e9c3112d8868945aa9b2139726a6abf1867f571a5e23fb8"
+    },
+    {
+      "id": "M5B285-00277",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/lifecycle-addendum.json",
+      "bytes": 916,
+      "sha256": "657d51e560d6a504a5816a8d31133af3763607770cf1104aee0a0b6962f2bb39"
+    },
+    {
+      "id": "M5B285-00278",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/A-choice.png",
+      "bytes": 175967,
+      "sha256": "027de2d9a3aa80e0cd954fafab1c75a473f4e2770e63d313b3358a982773b066"
+    },
+    {
+      "id": "M5B285-00279",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/B-joined.png",
+      "bytes": 178476,
+      "sha256": "e1debc15022dee548b6d90a7b194f74decee9345aff304aab05391b979de7db3"
+    },
+    {
+      "id": "M5B285-00280",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/C-choice.png",
+      "bytes": 176147,
+      "sha256": "d2bd5105bc1af723a04889426686fb78481d9649c5b891f3b3fb957a55591232"
+    },
+    {
+      "id": "M5B285-00281",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/C-team.png",
+      "bytes": 177117,
+      "sha256": "a1682ade271a1a473bcb8b0d4628dcfadbb6eb291997834152416e223d729b18"
+    },
+    {
+      "id": "M5B285-00282",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/CALog-before.txt",
+      "bytes": 4918,
+      "sha256": "7835e04619787acd72e1b5c2d78ce4592503e269b536f3ada7d6db66be8a1040"
+    },
+    {
+      "id": "M5B285-00283",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/CALog-run.txt",
+      "bytes": 5631,
+      "sha256": "edde36b85b8f4ba8718484d10365e649a8b73b1ba8dc83b36513a16803db3516"
+    },
+    {
+      "id": "M5B285-00284",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/Free-selected.png",
+      "bytes": 218082,
+      "sha256": "8438077882163a75d5c544f67909e2d7237a7b44670254612ecc017602277c45"
+    },
+    {
+      "id": "M5B285-00285",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/Start-three.png",
+      "bytes": 178533,
+      "sha256": "c6174f2b8197b1f79b74214f07ad963292c43e051d97ee37f8a7ccf91da56595"
+    },
+    {
+      "id": "M5B285-00286",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/Start2.png",
+      "bytes": 178026,
+      "sha256": "76002533625adfdfbdb10c4d9b4a1596f4bf00ac664964aa2466eb7f5112fd93"
+    },
+    {
+      "id": "M5B285-00287",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "934ed7827bdae54d7429ba9d85033dc7f3c5d71a950dea77f79e63f3d52b79fd"
+    },
+    {
+      "id": "M5B285-00288",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/client.log",
+      "bytes": 231781,
+      "sha256": "1aa6287239ffdadcd27bd7927a4db2d3e0729ca07b0d5ab9ba9a8aac55879e59"
+    },
+    {
+      "id": "M5B285-00289",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/created.png",
+      "bytes": 145988,
+      "sha256": "17bc2757e3cc0bcccadfda93a41065695e14c676ad02bc90b17a303deef2b90d"
+    },
+    {
+      "id": "M5B285-00290",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/debug-commands.txt",
+      "bytes": 3370,
+      "sha256": "e67020f3d57cc14bc086a83fde763ae2d70d135806603ca3fc60b184af845533"
+    },
+    {
+      "id": "M5B285-00291",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/dialog.png",
+      "bytes": 225716,
+      "sha256": "8805b3fc215c5081039b7f517c4cd12e71fbc033cbdff5f5421619fdcab1fdbc"
+    },
+    {
+      "id": "M5B285-00292",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/fresh-native-login-after-pressure.png",
+      "bytes": 177567,
+      "sha256": "9b2fec6dccbe654b2bdf8e6996223dfeaf82091bc103708c70360289026673f4"
+    },
+    {
+      "id": "M5B285-00293",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/ready.png",
+      "bytes": 177447,
+      "sha256": "04a19e0da3759938d4c276568bd673997600b9fbd412b6086a4163667bfd1af8"
+    },
+    {
+      "id": "M5B285-00294",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/ready2.png",
+      "bytes": 180595,
+      "sha256": "b9c898c395c49e003a1ecc671f96eb088bd4409767aa9856dc24f855ebe7ef1f"
+    },
+    {
+      "id": "M5B285-00295",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/second-rank.png",
+      "bytes": 158507,
+      "sha256": "e96f29c2a61205018e05bea92e292ca9cb61d9bfeadb7883b393df6a002e64db"
+    },
+    {
+      "id": "M5B285-00296",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/three-rank.png",
+      "bytes": 160780,
+      "sha256": "643e921697e77bc19847470fa9722f270aa7f610e4e01c5bd19dcce91459bb79"
+    },
+    {
+      "id": "M5B285-00297",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/three-return.png",
+      "bytes": 180103,
+      "sha256": "45544d7d28e35744da2ccca21261dff1743f5b68b337162dd6be4b36d78c4cf5"
+    },
+    {
+      "id": "M5B285-00298",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/A/three-setup.png",
+      "bytes": 179690,
+      "sha256": "e4467d1c6e5dd872180af8f083a1ac03742b94c52b207f32a4fc21ff72aa8cbf"
+    },
+    {
+      "id": "M5B285-00299",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/A-choice.png",
+      "bytes": 179945,
+      "sha256": "74e4f092141def1f90dd00a25912ca150137a3a4109dac8c82e3694b41a9fc0d"
+    },
+    {
+      "id": "M5B285-00300",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/B-joined.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M5B285-00301",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/C-choice.png",
+      "bytes": 180179,
+      "sha256": "32768ec27762d1e01f32e7d1461dbc02c74a0ec3737d9a1f2b1f23ca9ad8fcfd"
+    },
+    {
+      "id": "M5B285-00302",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/C-team.png",
+      "bytes": 180563,
+      "sha256": "6a68aa1657c690c52056b1e56ad6aa6e3707bab48d73f37fc6245937a21c686b"
+    },
+    {
+      "id": "M5B285-00303",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/CALog-before.txt",
+      "bytes": 4855,
+      "sha256": "aeeaf6c5a6350dcd94e593d830db713ff320a33b448fac6d2ac61ecddb4adc48"
+    },
+    {
+      "id": "M5B285-00304",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/CALog-run.txt",
+      "bytes": 5435,
+      "sha256": "e030aeb2ff349a17672abcbeeb9c001d49721e38ee22f960808dea234b1ecf45"
+    },
+    {
+      "id": "M5B285-00305",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/Free-selected.png",
+      "bytes": 145169,
+      "sha256": "35fd551d801d025c9bf15d0ffa88eceeed303b789b37c2bbc1dde2cf3827c37d"
+    },
+    {
+      "id": "M5B285-00306",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/Start-three.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M5B285-00307",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/Start2.png",
+      "bytes": 178557,
+      "sha256": "e29b43b4ad9abd9fdad1fc1466cd48affddaa89631deef1c0c2f8e0047390c8e"
+    },
+    {
+      "id": "M5B285-00308",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "37ff37c1441800d6187e7b465594fb5cc35ad0d0269d8eff602a7480aa941430"
+    },
+    {
+      "id": "M5B285-00309",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/client.log",
+      "bytes": 222580,
+      "sha256": "e1ab602b19abdce34cfacb350f3ae2f77d6910a9834764e51ab8e6ddde3d99c7"
+    },
+    {
+      "id": "M5B285-00310",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/created.png",
+      "bytes": 154184,
+      "sha256": "2e5816597b6c57c8998d6bf7ee6b149fbaaf969daf4d54d597c4cd087539752b"
+    },
+    {
+      "id": "M5B285-00311",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/debug-commands.txt",
+      "bytes": 3370,
+      "sha256": "68df44db182982a3a4c482fe029d2f7df38eaf05e857bcdc00a29a06e6471acf"
+    },
+    {
+      "id": "M5B285-00312",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/dialog.png",
+      "bytes": 144966,
+      "sha256": "d51a301ccee60a3e556a4f69e522dd83f26146dfa3c682d035d56dd81c8263c1"
+    },
+    {
+      "id": "M5B285-00313",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/fresh-native-login-after-pressure.png",
+      "bytes": 177727,
+      "sha256": "09e593c68ab1dd638fb238b493989a24d9aec2f15584a5f04ecd8faa71d13b74"
+    },
+    {
+      "id": "M5B285-00314",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/ready.png",
+      "bytes": 179712,
+      "sha256": "53e0d804e8ba37cba3388cb5287bfba21c103d62a5bfb22e48843b0ba9ac2fd3"
+    },
+    {
+      "id": "M5B285-00315",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/ready2.png",
+      "bytes": 180960,
+      "sha256": "2c441581a7e0b7b8f02f849d7a68794974372558362d19e70ff38b961d01d1fc"
+    },
+    {
+      "id": "M5B285-00316",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/second-rank.png",
+      "bytes": 156895,
+      "sha256": "f18e7eb49ab967c45bf78002d7a9b16c5629efcc8eba8df1c1180a078f2fe0f5"
+    },
+    {
+      "id": "M5B285-00317",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/three-rank.png",
+      "bytes": 158936,
+      "sha256": "ab1bf32a0f4c8261f419b11c8244d2816e1ab5aae280dc87ba0410e761359494"
+    },
+    {
+      "id": "M5B285-00318",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/three-return.png",
+      "bytes": 180365,
+      "sha256": "1d9a85861f8d10837f22cd48100e6f599456ffc7483b5f713fd9d5dea024a264"
+    },
+    {
+      "id": "M5B285-00319",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/B/three-setup.png",
+      "bytes": 178064,
+      "sha256": "695393c730c9da036dc48693b704eac0caef490ec74c4f91edc7719e93bfe31a"
+    },
+    {
+      "id": "M5B285-00320",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/A-choice.png",
+      "bytes": 179202,
+      "sha256": "d38963c81ed8cd5c7b34f04d69f503ebbdbb2e6d337b1a9c852da90e1290b298"
+    },
+    {
+      "id": "M5B285-00321",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/B-joined.png",
+      "bytes": 154489,
+      "sha256": "38fdb077677989cc8b960756077b5fe509ecebc9f26c806010e3935cb9dc3677"
+    },
+    {
+      "id": "M5B285-00322",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/C-choice.png",
+      "bytes": 177122,
+      "sha256": "b341996a54d3ccb6332f7413c5ec4343e8390f36537d4a0ce0d8af814b14ad2b"
+    },
+    {
+      "id": "M5B285-00323",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/C-team.png",
+      "bytes": 180830,
+      "sha256": "8710e49a5a79f1c4172653a68c1f5404d3a024d42862e92a1ba1f8d44fde2510"
+    },
+    {
+      "id": "M5B285-00324",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/CALog-before.txt",
+      "bytes": 4655,
+      "sha256": "fc7c8c94f11b77d1352dea01aac8f5aaf03d589d6ccfa630981dfcd7afb66511"
+    },
+    {
+      "id": "M5B285-00325",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/CALog-run.txt",
+      "bytes": 5235,
+      "sha256": "8094c988b2600c07db6b762a76e0ec823c1eaf8f24718ae8e606565f9a6d020f"
+    },
+    {
+      "id": "M5B285-00326",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/Free-selected.png",
+      "bytes": 150205,
+      "sha256": "72e79171e80fbfdb04897d8d065c47478ae8bacf84e18c0246ba376cde2c1b18"
+    },
+    {
+      "id": "M5B285-00327",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/Start-three.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M5B285-00328",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/Start2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M5B285-00329",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/audio-config.json",
+      "bytes": 437,
+      "sha256": "d9c0b6bdd27bcd71063b4a8aa94dce5351511ecf929289a3540735b65d54fab1"
+    },
+    {
+      "id": "M5B285-00330",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/client.log",
+      "bytes": 236380,
+      "sha256": "4a204a29d958797493b09acb813082d4450f4172662414236167d11e70a84a9d"
+    },
+    {
+      "id": "M5B285-00331",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/created.png",
+      "bytes": 160025,
+      "sha256": "aa5d83afa002c5fdbc6845c595d7042cf53a34727c57f02009ebce2faa6a110a"
+    },
+    {
+      "id": "M5B285-00332",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/debug-commands.txt",
+      "bytes": 3370,
+      "sha256": "7450e1d449a42d59c7f04b2f3c6191d1182cba4d963d982305ef5e80aade67f0"
+    },
+    {
+      "id": "M5B285-00333",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/dialog.png",
+      "bytes": 149305,
+      "sha256": "eeba7072859267ed43d911111c8d5a4470eb6c895ed8683694f58ab0e4f07ee5"
+    },
+    {
+      "id": "M5B285-00334",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/fresh-native-login-after-pressure.png",
+      "bytes": 177070,
+      "sha256": "6a2902f293fa234e4d952fea05d9837dacdb261219d320f0132b5201ce66f4ff"
+    },
+    {
+      "id": "M5B285-00335",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/ready.png",
+      "bytes": 180406,
+      "sha256": "c12dd3ceeca5691c9d5692c3b2ba170011be771d803ab534599c716f8a57c378"
+    },
+    {
+      "id": "M5B285-00336",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/ready2.png",
+      "bytes": 179669,
+      "sha256": "3b59bf5d420171a0b6b9d40494f034116a07217ebe215b5a09690185a02881f2"
+    },
+    {
+      "id": "M5B285-00337",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/second-rank.png",
+      "bytes": 156965,
+      "sha256": "e71cab85cd6d9bf6638418f96e694ed3e4c80b324980ff514d33e1aa0670e0e9"
+    },
+    {
+      "id": "M5B285-00338",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/three-rank.png",
+      "bytes": 159020,
+      "sha256": "351bbc31c59c42694911f5dae5298bbad865ef036d3ed001b0fd24daaf49fccf"
+    },
+    {
+      "id": "M5B285-00339",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/three-return.png",
+      "bytes": 179626,
+      "sha256": "32abfb93d1cc65681f228447edeba435485c1696d4a4a5b737a511e9711dbde1"
+    },
+    {
+      "id": "M5B285-00340",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/C/three-setup.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M5B285-00341",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/D/CALog-before.txt",
+      "bytes": 4650,
+      "sha256": "d99574d0b308c22b16c3b4377d92c132e8d67f2e55d1435680a7493fdc2c8a63"
+    },
+    {
+      "id": "M5B285-00342",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/D/CALog-run.txt",
+      "bytes": 1010,
+      "sha256": "03b3df2e5e14c9cdf328f2d784b870161c26fefefeb19e97c3c31604b8945dcf"
+    },
+    {
+      "id": "M5B285-00343",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/D/audio-config.json",
+      "bytes": 437,
+      "sha256": "358b9f83b3516063ec4c91b975240b25f6a960b7eb0720a959bddef25ff6581e"
+    },
+    {
+      "id": "M5B285-00344",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/D/client.log",
+      "bytes": 128029,
+      "sha256": "feb1df08d778d32ac2b9c45da7101891d7bf7451472104c581e6137edbb232ad"
+    },
+    {
+      "id": "M5B285-00345",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/D/debug-commands.txt",
+      "bytes": 3370,
+      "sha256": "fa55de2746e716254490588582c134ac453cbaf8be52b778cf101369cdfe1a4f"
+    },
+    {
+      "id": "M5B285-00346",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/D/fresh-native-login-after-pressure.png",
+      "bytes": 153376,
+      "sha256": "99ce2d4216959f780ff941d489a2e0304a91d5d783aa0d9359d4e5db9de88320"
+    },
+    {
+      "id": "M5B285-00347",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/account-db/accounts.sqlite",
+      "bytes": 65536,
+      "sha256": "70ebfe9bb75e041adaf1d058aeb409dbc8b79ad6e6f0608d6580507a19bcc224"
+    },
+    {
+      "id": "M5B285-00348",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/ack-A.json",
+      "bytes": 3483,
+      "sha256": "e435e4d8318006b0ea11ddf0b8e105377b1f099989c483d4a0333bee9ef283e0"
+    },
+    {
+      "id": "M5B285-00349",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/ack-B.json",
+      "bytes": 3483,
+      "sha256": "3588191e3f26898c09c6e8165863524fc2ca33b8480672ebe0d0c4ac0f5ba12a"
+    },
+    {
+      "id": "M5B285-00350",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/ack-C.json",
+      "bytes": 3483,
+      "sha256": "0c25b440309fb29a48a8304c7edc11044a281664222186ab482cd7b0d84c9197"
+    },
+    {
+      "id": "M5B285-00351",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/db-pressure.json",
+      "bytes": 4738,
+      "sha256": "c34a75024650e0fc5a241c508244a451eef57c05b8bbded30188f270ba7a6a00"
+    },
+    {
+      "id": "M5B285-00352",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "M5B285-00353",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/live-A.json",
+      "bytes": 1868,
+      "sha256": "aebe9f167b1b85fa616a44f8ff43608a5028527123e6a06f2ca4b7f9320a3ca5"
+    },
+    {
+      "id": "M5B285-00354",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/live-A.jsonl",
+      "bytes": 74790,
+      "sha256": "fba78902f6d4e9c985018de20dcf32296594fa7d61db8fb915cff328fb70b9da"
+    },
+    {
+      "id": "M5B285-00355",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/live-B.json",
+      "bytes": 1868,
+      "sha256": "fcb7c2062c898e216cfc59dc22c9211713c5d07804d0835042e3a7a0ed7c9d0a"
+    },
+    {
+      "id": "M5B285-00356",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/live-B.jsonl",
+      "bytes": 74788,
+      "sha256": "131a24363c45c983b86137a664685eadb26d94b1c5d2318c259059c3aadc3726"
+    },
+    {
+      "id": "M5B285-00357",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/live-C.json",
+      "bytes": 1868,
+      "sha256": "25043ea617113493c9b696edf5c7d54148b870ee54a6e3342b32fc6240082a4d"
+    },
+    {
+      "id": "M5B285-00358",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/live-C.jsonl",
+      "bytes": 72920,
+      "sha256": "e03d8dc2af1314bc5432c232c5ac442d8e684a374aa3b78c357da6d46a793853"
+    },
+    {
+      "id": "M5B285-00359",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "M5B285-00360",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/peer-A.jsonl",
+      "bytes": 157383,
+      "sha256": "ac024f01cc3b4d3f8fb3f8b49fde4b326938cd4727f97800e33225ee1c655f22"
+    },
+    {
+      "id": "M5B285-00361",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/peer-B.jsonl",
+      "bytes": 157374,
+      "sha256": "da7c6570c870459e180fa4df81db5fa8b242f7ccf5a13f841dc9c2a1340f0cd8"
+    },
+    {
+      "id": "M5B285-00362",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/peer-C.jsonl",
+      "bytes": 157374,
+      "sha256": "0c8bcc102fdf5c53c7fcb47c62074d31897aa46c387044eec207b74966e75a27"
+    },
+    {
+      "id": "M5B285-00363",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/private-backend-seed.json",
+      "bytes": 15264,
+      "sha256": "6301716eb3b6eab8d6debfe8984f9e4bfcea2a164131f6182139b5d20cfb89b3"
+    },
+    {
+      "id": "M5B285-00364",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/run.json",
+      "bytes": 104327,
+      "sha256": "839ac891a011a82cffb06db86404c677540fa5b17c8a453c48a780f0f8792d10"
+    },
+    {
+      "id": "M5B285-00365",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/rust-events.jsonl",
+      "bytes": 119785,
+      "sha256": "4aa764870bd701b6ad910723dead98eb1ef9845fa01765e38be19f2b7943e4f6"
+    },
+    {
+      "id": "M5B285-00366",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "M5B285-00367",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M5B285-00368",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/tcp-auth-pair.pcap",
+      "bytes": 140016,
+      "sha256": "28566f192d7747edf26d93e2bc066197622a5f6ee84d2c0adaec03b7872f931d"
+    },
+    {
+      "id": "M5B285-00369",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/tcp-capture-index.json",
+      "bytes": 360300,
+      "sha256": "32717e70d58a45651350bd9b38ab5d05b0588366a8f1f4182ebb43f9cc57ab31"
+    },
+    {
+      "id": "M5B285-00370",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/udp-capture-index.json",
+      "bytes": 825672,
+      "sha256": "63103f07dd4cd851f453cece239a4f1b2bcd6c3448db93ccf8b10ea79804afbc"
+    },
+    {
+      "id": "M5B285-00371",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/udp-virtual.pcap",
+      "bytes": 236820,
+      "sha256": "247af662a947e43ef754a008e53d732f6e1ce7de2d2d9a08efcf0e0361c7e959"
+    },
+    {
+      "id": "M5B285-00372",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/virtual-network.json",
+      "bytes": 44677,
+      "sha256": "5f1426ef41c615e93b8e7331d3eaeac6f6f5fdaa9f06dc38242a87250593bb12"
+    },
+    {
+      "id": "M5B285-00373",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "bab6b26b2bf9f2cba388bba58e9f20a3ee0184eaced7318a2e24794e0bf04f27"
+    },
+    {
+      "id": "M5B285-00374",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "ad2e832e5ed4e7ad2482ba8909697b0cad0550dd89b2cd228afcdebcf5fdd03e"
+    },
+    {
+      "id": "M5B285-00375",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/wineboot-C.log",
+      "bytes": 64262,
+      "sha256": "575c09f83ba80a5f04a3e978a0e513aa9616c039f3661aef109920ed501f2ae8"
+    },
+    {
+      "id": "M5B285-00376",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/wineboot-D.log",
+      "bytes": 63854,
+      "sha256": "0f790bb6416b7ef2077697c96577d12b2cac4fb07c54da4217d5238ec4d290f8"
+    },
+    {
+      "id": "M5B285-00377",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M5B285-00378",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "M5B285-00379",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/xvfb-C.log",
+      "bytes": 264,
+      "sha256": "18b994563c61904f959cb44346126933ebd488bf232ed5ab5e7f9fab0cd38b2c"
+    },
+    {
+      "id": "M5B285-00380",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/xvfb-D.log",
+      "bytes": 396,
+      "sha256": "23dbac212d0ee37e6c72af4571c6fe45c23e07517d20e5a9f2336c39c747b00b"
+    },
+    {
+      "id": "M5B285-00381",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/A-choice.png",
+      "bytes": 175967,
+      "sha256": "027de2d9a3aa80e0cd954fafab1c75a473f4e2770e63d313b3358a982773b066"
+    },
+    {
+      "id": "M5B285-00382",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/B-joined.png",
+      "bytes": 178476,
+      "sha256": "e1debc15022dee548b6d90a7b194f74decee9345aff304aab05391b979de7db3"
+    },
+    {
+      "id": "M5B285-00383",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/C-choice.png",
+      "bytes": 176147,
+      "sha256": "d2bd5105bc1af723a04889426686fb78481d9649c5b891f3b3fb957a55591232"
+    },
+    {
+      "id": "M5B285-00384",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/C-team.png",
+      "bytes": 177117,
+      "sha256": "a1682ade271a1a473bcb8b0d4628dcfadbb6eb291997834152416e223d729b18"
+    },
+    {
+      "id": "M5B285-00385",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/CALog-before.txt",
+      "bytes": 4918,
+      "sha256": "7835e04619787acd72e1b5c2d78ce4592503e269b536f3ada7d6db66be8a1040"
+    },
+    {
+      "id": "M5B285-00386",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/CALog-run.txt",
+      "bytes": 5631,
+      "sha256": "edde36b85b8f4ba8718484d10365e649a8b73b1ba8dc83b36513a16803db3516"
+    },
+    {
+      "id": "M5B285-00387",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/Free-selected.png",
+      "bytes": 218082,
+      "sha256": "8438077882163a75d5c544f67909e2d7237a7b44670254612ecc017602277c45"
+    },
+    {
+      "id": "M5B285-00388",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/Start-three.png",
+      "bytes": 178533,
+      "sha256": "c6174f2b8197b1f79b74214f07ad963292c43e051d97ee37f8a7ccf91da56595"
+    },
+    {
+      "id": "M5B285-00389",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/Start2.png",
+      "bytes": 178026,
+      "sha256": "76002533625adfdfbdb10c4d9b4a1596f4bf00ac664964aa2466eb7f5112fd93"
+    },
+    {
+      "id": "M5B285-00390",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "934ed7827bdae54d7429ba9d85033dc7f3c5d71a950dea77f79e63f3d52b79fd"
+    },
+    {
+      "id": "M5B285-00391",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/client.log",
+      "bytes": 231781,
+      "sha256": "1aa6287239ffdadcd27bd7927a4db2d3e0729ca07b0d5ab9ba9a8aac55879e59"
+    },
+    {
+      "id": "M5B285-00392",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/created.png",
+      "bytes": 145988,
+      "sha256": "17bc2757e3cc0bcccadfda93a41065695e14c676ad02bc90b17a303deef2b90d"
+    },
+    {
+      "id": "M5B285-00393",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/debug-commands.txt",
+      "bytes": 3370,
+      "sha256": "e67020f3d57cc14bc086a83fde763ae2d70d135806603ca3fc60b184af845533"
+    },
+    {
+      "id": "M5B285-00394",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/dialog.png",
+      "bytes": 225716,
+      "sha256": "8805b3fc215c5081039b7f517c4cd12e71fbc033cbdff5f5421619fdcab1fdbc"
+    },
+    {
+      "id": "M5B285-00395",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/fresh-native-login-after-pressure.png",
+      "bytes": 177567,
+      "sha256": "9b2fec6dccbe654b2bdf8e6996223dfeaf82091bc103708c70360289026673f4"
+    },
+    {
+      "id": "M5B285-00396",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/ready.png",
+      "bytes": 177447,
+      "sha256": "04a19e0da3759938d4c276568bd673997600b9fbd412b6086a4163667bfd1af8"
+    },
+    {
+      "id": "M5B285-00397",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/ready2.png",
+      "bytes": 180595,
+      "sha256": "b9c898c395c49e003a1ecc671f96eb088bd4409767aa9856dc24f855ebe7ef1f"
+    },
+    {
+      "id": "M5B285-00398",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/second-rank.png",
+      "bytes": 158507,
+      "sha256": "e96f29c2a61205018e05bea92e292ca9cb61d9bfeadb7883b393df6a002e64db"
+    },
+    {
+      "id": "M5B285-00399",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/three-rank.png",
+      "bytes": 160780,
+      "sha256": "643e921697e77bc19847470fa9722f270aa7f610e4e01c5bd19dcce91459bb79"
+    },
+    {
+      "id": "M5B285-00400",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/three-return.png",
+      "bytes": 180103,
+      "sha256": "45544d7d28e35744da2ccca21261dff1743f5b68b337162dd6be4b36d78c4cf5"
+    },
+    {
+      "id": "M5B285-00401",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/A/three-setup.png",
+      "bytes": 179690,
+      "sha256": "e4467d1c6e5dd872180af8f083a1ac03742b94c52b207f32a4fc21ff72aa8cbf"
+    },
+    {
+      "id": "M5B285-00402",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/A-choice.png",
+      "bytes": 179945,
+      "sha256": "74e4f092141def1f90dd00a25912ca150137a3a4109dac8c82e3694b41a9fc0d"
+    },
+    {
+      "id": "M5B285-00403",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/B-joined.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M5B285-00404",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/C-choice.png",
+      "bytes": 180179,
+      "sha256": "32768ec27762d1e01f32e7d1461dbc02c74a0ec3737d9a1f2b1f23ca9ad8fcfd"
+    },
+    {
+      "id": "M5B285-00405",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/C-team.png",
+      "bytes": 180563,
+      "sha256": "6a68aa1657c690c52056b1e56ad6aa6e3707bab48d73f37fc6245937a21c686b"
+    },
+    {
+      "id": "M5B285-00406",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/CALog-before.txt",
+      "bytes": 4855,
+      "sha256": "aeeaf6c5a6350dcd94e593d830db713ff320a33b448fac6d2ac61ecddb4adc48"
+    },
+    {
+      "id": "M5B285-00407",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/CALog-run.txt",
+      "bytes": 5435,
+      "sha256": "e030aeb2ff349a17672abcbeeb9c001d49721e38ee22f960808dea234b1ecf45"
+    },
+    {
+      "id": "M5B285-00408",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/Free-selected.png",
+      "bytes": 145169,
+      "sha256": "35fd551d801d025c9bf15d0ffa88eceeed303b789b37c2bbc1dde2cf3827c37d"
+    },
+    {
+      "id": "M5B285-00409",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/Start-three.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M5B285-00410",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/Start2.png",
+      "bytes": 178557,
+      "sha256": "e29b43b4ad9abd9fdad1fc1466cd48affddaa89631deef1c0c2f8e0047390c8e"
+    },
+    {
+      "id": "M5B285-00411",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "37ff37c1441800d6187e7b465594fb5cc35ad0d0269d8eff602a7480aa941430"
+    },
+    {
+      "id": "M5B285-00412",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/client.log",
+      "bytes": 222580,
+      "sha256": "e1ab602b19abdce34cfacb350f3ae2f77d6910a9834764e51ab8e6ddde3d99c7"
+    },
+    {
+      "id": "M5B285-00413",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/created.png",
+      "bytes": 154184,
+      "sha256": "2e5816597b6c57c8998d6bf7ee6b149fbaaf969daf4d54d597c4cd087539752b"
+    },
+    {
+      "id": "M5B285-00414",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/debug-commands.txt",
+      "bytes": 3370,
+      "sha256": "68df44db182982a3a4c482fe029d2f7df38eaf05e857bcdc00a29a06e6471acf"
+    },
+    {
+      "id": "M5B285-00415",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/dialog.png",
+      "bytes": 144966,
+      "sha256": "d51a301ccee60a3e556a4f69e522dd83f26146dfa3c682d035d56dd81c8263c1"
+    },
+    {
+      "id": "M5B285-00416",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/fresh-native-login-after-pressure.png",
+      "bytes": 177727,
+      "sha256": "09e593c68ab1dd638fb238b493989a24d9aec2f15584a5f04ecd8faa71d13b74"
+    },
+    {
+      "id": "M5B285-00417",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/ready.png",
+      "bytes": 179712,
+      "sha256": "53e0d804e8ba37cba3388cb5287bfba21c103d62a5bfb22e48843b0ba9ac2fd3"
+    },
+    {
+      "id": "M5B285-00418",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/ready2.png",
+      "bytes": 180960,
+      "sha256": "2c441581a7e0b7b8f02f849d7a68794974372558362d19e70ff38b961d01d1fc"
+    },
+    {
+      "id": "M5B285-00419",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/second-rank.png",
+      "bytes": 156895,
+      "sha256": "f18e7eb49ab967c45bf78002d7a9b16c5629efcc8eba8df1c1180a078f2fe0f5"
+    },
+    {
+      "id": "M5B285-00420",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/three-rank.png",
+      "bytes": 158936,
+      "sha256": "ab1bf32a0f4c8261f419b11c8244d2816e1ab5aae280dc87ba0410e761359494"
+    },
+    {
+      "id": "M5B285-00421",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/three-return.png",
+      "bytes": 180365,
+      "sha256": "1d9a85861f8d10837f22cd48100e6f599456ffc7483b5f713fd9d5dea024a264"
+    },
+    {
+      "id": "M5B285-00422",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/B/three-setup.png",
+      "bytes": 178064,
+      "sha256": "695393c730c9da036dc48693b704eac0caef490ec74c4f91edc7719e93bfe31a"
+    },
+    {
+      "id": "M5B285-00423",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/A-choice.png",
+      "bytes": 179202,
+      "sha256": "d38963c81ed8cd5c7b34f04d69f503ebbdbb2e6d337b1a9c852da90e1290b298"
+    },
+    {
+      "id": "M5B285-00424",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/B-joined.png",
+      "bytes": 154489,
+      "sha256": "38fdb077677989cc8b960756077b5fe509ecebc9f26c806010e3935cb9dc3677"
+    },
+    {
+      "id": "M5B285-00425",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/C-choice.png",
+      "bytes": 177122,
+      "sha256": "b341996a54d3ccb6332f7413c5ec4343e8390f36537d4a0ce0d8af814b14ad2b"
+    },
+    {
+      "id": "M5B285-00426",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/C-team.png",
+      "bytes": 180830,
+      "sha256": "8710e49a5a79f1c4172653a68c1f5404d3a024d42862e92a1ba1f8d44fde2510"
+    },
+    {
+      "id": "M5B285-00427",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/CALog-before.txt",
+      "bytes": 4655,
+      "sha256": "fc7c8c94f11b77d1352dea01aac8f5aaf03d589d6ccfa630981dfcd7afb66511"
+    },
+    {
+      "id": "M5B285-00428",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/CALog-run.txt",
+      "bytes": 5235,
+      "sha256": "8094c988b2600c07db6b762a76e0ec823c1eaf8f24718ae8e606565f9a6d020f"
+    },
+    {
+      "id": "M5B285-00429",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/Free-selected.png",
+      "bytes": 150205,
+      "sha256": "72e79171e80fbfdb04897d8d065c47478ae8bacf84e18c0246ba376cde2c1b18"
+    },
+    {
+      "id": "M5B285-00430",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/Start-three.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M5B285-00431",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/Start2.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M5B285-00432",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/audio-config.json",
+      "bytes": 437,
+      "sha256": "d9c0b6bdd27bcd71063b4a8aa94dce5351511ecf929289a3540735b65d54fab1"
+    },
+    {
+      "id": "M5B285-00433",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/client.log",
+      "bytes": 236380,
+      "sha256": "4a204a29d958797493b09acb813082d4450f4172662414236167d11e70a84a9d"
+    },
+    {
+      "id": "M5B285-00434",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/created.png",
+      "bytes": 160025,
+      "sha256": "aa5d83afa002c5fdbc6845c595d7042cf53a34727c57f02009ebce2faa6a110a"
+    },
+    {
+      "id": "M5B285-00435",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/debug-commands.txt",
+      "bytes": 3370,
+      "sha256": "7450e1d449a42d59c7f04b2f3c6191d1182cba4d963d982305ef5e80aade67f0"
+    },
+    {
+      "id": "M5B285-00436",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/dialog.png",
+      "bytes": 149305,
+      "sha256": "eeba7072859267ed43d911111c8d5a4470eb6c895ed8683694f58ab0e4f07ee5"
+    },
+    {
+      "id": "M5B285-00437",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/fresh-native-login-after-pressure.png",
+      "bytes": 177070,
+      "sha256": "6a2902f293fa234e4d952fea05d9837dacdb261219d320f0132b5201ce66f4ff"
+    },
+    {
+      "id": "M5B285-00438",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/ready.png",
+      "bytes": 180406,
+      "sha256": "c12dd3ceeca5691c9d5692c3b2ba170011be771d803ab534599c716f8a57c378"
+    },
+    {
+      "id": "M5B285-00439",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/ready2.png",
+      "bytes": 179669,
+      "sha256": "3b59bf5d420171a0b6b9d40494f034116a07217ebe215b5a09690185a02881f2"
+    },
+    {
+      "id": "M5B285-00440",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/second-rank.png",
+      "bytes": 156965,
+      "sha256": "e71cab85cd6d9bf6638418f96e694ed3e4c80b324980ff514d33e1aa0670e0e9"
+    },
+    {
+      "id": "M5B285-00441",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/three-rank.png",
+      "bytes": 159020,
+      "sha256": "351bbc31c59c42694911f5dae5298bbad865ef036d3ed001b0fd24daaf49fccf"
+    },
+    {
+      "id": "M5B285-00442",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/three-return.png",
+      "bytes": 179626,
+      "sha256": "32abfb93d1cc65681f228447edeba435485c1696d4a4a5b737a511e9711dbde1"
+    },
+    {
+      "id": "M5B285-00443",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/C/three-setup.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M5B285-00444",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/D/CALog-before.txt",
+      "bytes": 4650,
+      "sha256": "d99574d0b308c22b16c3b4377d92c132e8d67f2e55d1435680a7493fdc2c8a63"
+    },
+    {
+      "id": "M5B285-00445",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/D/CALog-run.txt",
+      "bytes": 1010,
+      "sha256": "03b3df2e5e14c9cdf328f2d784b870161c26fefefeb19e97c3c31604b8945dcf"
+    },
+    {
+      "id": "M5B285-00446",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/D/audio-config.json",
+      "bytes": 437,
+      "sha256": "358b9f83b3516063ec4c91b975240b25f6a960b7eb0720a959bddef25ff6581e"
+    },
+    {
+      "id": "M5B285-00447",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/D/client.log",
+      "bytes": 128029,
+      "sha256": "feb1df08d778d32ac2b9c45da7101891d7bf7451472104c581e6137edbb232ad"
+    },
+    {
+      "id": "M5B285-00448",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/D/debug-commands.txt",
+      "bytes": 3370,
+      "sha256": "fa55de2746e716254490588582c134ac453cbaf8be52b778cf101369cdfe1a4f"
+    },
+    {
+      "id": "M5B285-00449",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/D/fresh-native-login-after-pressure.png",
+      "bytes": 153376,
+      "sha256": "99ce2d4216959f780ff941d489a2e0304a91d5d783aa0d9359d4e5db9de88320"
+    },
+    {
+      "id": "M5B285-00450",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/account-db/accounts.sqlite",
+      "bytes": 65536,
+      "sha256": "70ebfe9bb75e041adaf1d058aeb409dbc8b79ad6e6f0608d6580507a19bcc224"
+    },
+    {
+      "id": "M5B285-00451",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/ack-A.json",
+      "bytes": 3483,
+      "sha256": "e435e4d8318006b0ea11ddf0b8e105377b1f099989c483d4a0333bee9ef283e0"
+    },
+    {
+      "id": "M5B285-00452",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/ack-B.json",
+      "bytes": 3483,
+      "sha256": "3588191e3f26898c09c6e8165863524fc2ca33b8480672ebe0d0c4ac0f5ba12a"
+    },
+    {
+      "id": "M5B285-00453",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/ack-C.json",
+      "bytes": 3483,
+      "sha256": "0c25b440309fb29a48a8304c7edc11044a281664222186ab482cd7b0d84c9197"
+    },
+    {
+      "id": "M5B285-00454",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/db-pressure.json",
+      "bytes": 4738,
+      "sha256": "c34a75024650e0fc5a241c508244a451eef57c05b8bbded30188f270ba7a6a00"
+    },
+    {
+      "id": "M5B285-00455",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "M5B285-00456",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/live-A.json",
+      "bytes": 1868,
+      "sha256": "aebe9f167b1b85fa616a44f8ff43608a5028527123e6a06f2ca4b7f9320a3ca5"
+    },
+    {
+      "id": "M5B285-00457",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/live-A.jsonl",
+      "bytes": 74790,
+      "sha256": "fba78902f6d4e9c985018de20dcf32296594fa7d61db8fb915cff328fb70b9da"
+    },
+    {
+      "id": "M5B285-00458",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/live-B.json",
+      "bytes": 1868,
+      "sha256": "fcb7c2062c898e216cfc59dc22c9211713c5d07804d0835042e3a7a0ed7c9d0a"
+    },
+    {
+      "id": "M5B285-00459",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/live-B.jsonl",
+      "bytes": 74788,
+      "sha256": "131a24363c45c983b86137a664685eadb26d94b1c5d2318c259059c3aadc3726"
+    },
+    {
+      "id": "M5B285-00460",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/live-C.json",
+      "bytes": 1868,
+      "sha256": "25043ea617113493c9b696edf5c7d54148b870ee54a6e3342b32fc6240082a4d"
+    },
+    {
+      "id": "M5B285-00461",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/live-C.jsonl",
+      "bytes": 72920,
+      "sha256": "e03d8dc2af1314bc5432c232c5ac442d8e684a374aa3b78c357da6d46a793853"
+    },
+    {
+      "id": "M5B285-00462",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "M5B285-00463",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/peer-A.jsonl",
+      "bytes": 157383,
+      "sha256": "ac024f01cc3b4d3f8fb3f8b49fde4b326938cd4727f97800e33225ee1c655f22"
+    },
+    {
+      "id": "M5B285-00464",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/peer-B.jsonl",
+      "bytes": 157374,
+      "sha256": "da7c6570c870459e180fa4df81db5fa8b242f7ccf5a13f841dc9c2a1340f0cd8"
+    },
+    {
+      "id": "M5B285-00465",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/peer-C.jsonl",
+      "bytes": 157374,
+      "sha256": "0c8bcc102fdf5c53c7fcb47c62074d31897aa46c387044eec207b74966e75a27"
+    },
+    {
+      "id": "M5B285-00466",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/private-backend-seed.json",
+      "bytes": 15264,
+      "sha256": "6301716eb3b6eab8d6debfe8984f9e4bfcea2a164131f6182139b5d20cfb89b3"
+    },
+    {
+      "id": "M5B285-00467",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/run.json",
+      "bytes": 104327,
+      "sha256": "839ac891a011a82cffb06db86404c677540fa5b17c8a453c48a780f0f8792d10"
+    },
+    {
+      "id": "M5B285-00468",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/rust-events.jsonl",
+      "bytes": 119785,
+      "sha256": "4aa764870bd701b6ad910723dead98eb1ef9845fa01765e38be19f2b7943e4f6"
+    },
+    {
+      "id": "M5B285-00469",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "M5B285-00470",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M5B285-00471",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/tcp-auth-pair.pcap",
+      "bytes": 140016,
+      "sha256": "28566f192d7747edf26d93e2bc066197622a5f6ee84d2c0adaec03b7872f931d"
+    },
+    {
+      "id": "M5B285-00472",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/tcp-capture-index.json",
+      "bytes": 360300,
+      "sha256": "32717e70d58a45651350bd9b38ab5d05b0588366a8f1f4182ebb43f9cc57ab31"
+    },
+    {
+      "id": "M5B285-00473",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/udp-capture-index.json",
+      "bytes": 825672,
+      "sha256": "63103f07dd4cd851f453cece239a4f1b2bcd6c3448db93ccf8b10ea79804afbc"
+    },
+    {
+      "id": "M5B285-00474",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/udp-virtual.pcap",
+      "bytes": 236820,
+      "sha256": "247af662a947e43ef754a008e53d732f6e1ce7de2d2d9a08efcf0e0361c7e959"
+    },
+    {
+      "id": "M5B285-00475",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/virtual-network.json",
+      "bytes": 44677,
+      "sha256": "5f1426ef41c615e93b8e7331d3eaeac6f6f5fdaa9f06dc38242a87250593bb12"
+    },
+    {
+      "id": "M5B285-00476",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "bab6b26b2bf9f2cba388bba58e9f20a3ee0184eaced7318a2e24794e0bf04f27"
+    },
+    {
+      "id": "M5B285-00477",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "ad2e832e5ed4e7ad2482ba8909697b0cad0550dd89b2cd228afcdebcf5fdd03e"
+    },
+    {
+      "id": "M5B285-00478",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/wineboot-C.log",
+      "bytes": 64262,
+      "sha256": "575c09f83ba80a5f04a3e978a0e513aa9616c039f3661aef109920ed501f2ae8"
+    },
+    {
+      "id": "M5B285-00479",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/wineboot-D.log",
+      "bytes": 63854,
+      "sha256": "0f790bb6416b7ef2077697c96577d12b2cac4fb07c54da4217d5238ec4d290f8"
+    },
+    {
+      "id": "M5B285-00480",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M5B285-00481",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "M5B285-00482",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/xvfb-C.log",
+      "bytes": 264,
+      "sha256": "18b994563c61904f959cb44346126933ebd488bf232ed5ab5e7f9fab0cd38b2c"
+    },
+    {
+      "id": "M5B285-00483",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles-raw-export/xvfb-D.log",
+      "bytes": 396,
+      "sha256": "23dbac212d0ee37e6c72af4571c6fe45c23e07517d20e5a9f2336c39c747b00b"
+    },
+    {
+      "id": "M5B285-00484",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/launch-exit.json",
+      "bytes": 73,
+      "sha256": "5b5f9a5469662f9229cb5e1af6fea1b161967df5be598393336486d827afd698"
+    },
+    {
+      "id": "M5B285-00485",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/launch.txt",
+      "bytes": 688,
+      "sha256": "7f06fa9e4d671a6799b0c8b3c668a32644aecfc3e52528a315423ee3076e11bf"
+    },
+    {
+      "id": "M5B285-00486",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/raw-seal.json",
+      "bytes": 22130,
+      "sha256": "5c7309848679c21ea933ffd7b64e1f62258ce1ec7376762b4b1cee961520ec8a"
+    },
+    {
+      "id": "M5B285-00487",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/recipe.json",
+      "bytes": 1192,
+      "sha256": "801ebb0a358eb369628983b82fd1230b5cd87594e1734f0d4bad54d88f195350"
+    },
+    {
+      "id": "M5B285-00488",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/runtime-preflight.json",
+      "bytes": 232347,
+      "sha256": "099beea150dff014ba5b80f3f1c29ce56ffc0e16d50695e82f94dd2e7c96c5a8"
+    },
+    {
+      "id": "M5B285-00489",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/storage-export-before-unmount.json",
+      "bytes": 25771,
+      "sha256": "e58a73eb7a7cf4e1b0e80420672c5fb21c0900bdc51bf17864d6e857c6b44a1b"
+    },
+    {
+      "id": "M5B285-00490",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/storage-recovery.json",
+      "bytes": 860,
+      "sha256": "d1db62ee5b1a7d12e5870822b8616b219c7a5324aed5ad584f3ce95f78990b87"
+    },
+    {
+      "id": "M5B285-00491",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native-config.json",
+      "bytes": 23073,
+      "sha256": "7368f3741f0f5d8abd1e24066a8195f73c5b57f3b618d1f447652d86d1992c6d"
+    },
+    {
+      "id": "M5B285-00492",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native-observations.json",
+      "bytes": 143430,
+      "sha256": "e5bcd301f30ceb2946c2db66531d9d901c9521e96d32d8292fc397695da030e7"
+    },
+    {
+      "id": "M5B285-00493",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/peer-observer.py",
+      "bytes": 4591,
+      "sha256": "f42f2463360d55f2a31e1d73dc456ca476e0975b99941c6a0192d3e7c071cefe"
+    },
+    {
+      "id": "M5B285-00494",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/recovery-verification.json",
+      "bytes": 2074,
+      "sha256": "8edb1a65046846cb3487d14f2a6544be24210387ec3d9ad3bfb2874bd834a292"
+    },
+    {
+      "id": "M5B285-00495",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/results-verification.json",
+      "bytes": 3373,
+      "sha256": "f1c8366d871770c0e107da87a6a9d218f8917d5bf3e5f4be6f684abc39f2de3a"
+    },
+    {
+      "id": "M5B285-00496",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/room-A.gdb",
+      "bytes": 3370,
+      "sha256": "e67020f3d57cc14bc086a83fde763ae2d70d135806603ca3fc60b184af845533"
+    },
+    {
+      "id": "M5B285-00497",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/room-B.gdb",
+      "bytes": 3370,
+      "sha256": "68df44db182982a3a4c482fe029d2f7df38eaf05e857bcdc00a29a06e6471acf"
+    },
+    {
+      "id": "M5B285-00498",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/room-C.gdb",
+      "bytes": 3370,
+      "sha256": "7450e1d449a42d59c7f04b2f3c6191d1182cba4d963d982305ef5e80aade67f0"
+    },
+    {
+      "id": "M5B285-00499",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/room-D.gdb",
+      "bytes": 3370,
+      "sha256": "fa55de2746e716254490588582c134ac453cbaf8be52b778cf101369cdfe1a4f"
+    },
+    {
+      "id": "M5B285-00500",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/room-observer.py",
+      "bytes": 3068,
+      "sha256": "b84696a20841dfb73126a52d62281132a324181981e01b27712c2fa09cee356e"
+    },
+    {
+      "id": "M5B285-00501",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/topology.py",
+      "bytes": 4084,
+      "sha256": "c5152f7c57c785bbf78a3a0bcf7197d6b02481d0b9bc031f29e47c8a3f7bc44d"
+    },
+    {
+      "id": "M5B285-00502",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/udp-getter-verification.json",
+      "bytes": 716,
+      "sha256": "194ca0c5758b8a648a38d1d22e4364f01aa60dbad60df4f47fb1dd38beaebd76"
+    },
+    {
+      "id": "M5B285-00503",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-udp-getters-r1.txt",
+      "bytes": 64,
+      "sha256": "faa47fe003bf73ddaa732a569c25816b5e474814faf06996436c0c68f5d08d43"
+    },
+    {
+      "id": "M5B285-00504",
+      "kind": "local",
+      "path": "local/research/codex/prepare_m5b_recovery_generated.py",
+      "bytes": 11742,
+      "sha256": "772e5fa19e66d91d084520abfca5cc8566a94e3385024b33d5f6250c5ac855e7"
+    },
+    {
+      "id": "M5B285-00505",
+      "kind": "local",
+      "path": "local/research/codex/prepare_m5b_recovery_r1.py",
+      "bytes": 2868,
+      "sha256": "a4e91c7de3bc81cb5671006f3dfde89428b29a5a28f606576305e19e45875a86"
+    },
+    {
+      "id": "M5B285-00506",
+      "kind": "local",
+      "path": "local/research/codex/recover_m5b_recovery_export.py",
+      "bytes": 1893,
+      "sha256": "8ee1b277e6f11dbf6d40d607c0b9c68df8d166a3eb9027ffa642336437bfe4c2"
+    },
+    {
+      "id": "M5B285-00507",
+      "kind": "local",
+      "path": "local/research/codex/run_m5b_recovery_r1.py",
+      "bytes": 909,
+      "sha256": "80d8e60332fb24a036cdb66980cd378543d1087eb69185da4a99593f9356f945"
+    },
+    {
+      "id": "M5B285-00508",
+      "kind": "local",
+      "path": "local/research/codex/verify_m5b_recovery.py",
+      "bytes": 5298,
+      "sha256": "4a48361dc75d937e6d8398a197246f7be3dab1c21d38e8d8d999d384fb1a9a25"
+    },
+    {
+      "id": "M5B285-00509",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_m5b_recovery_r1.py",
+      "bytes": 34620,
+      "sha256": "2b9190ae04734cc6ce8e3a6ef2a6c09b0517ea0a9d8993d08038ad9dbcd34044"
+    },
+    {
+      "id": "M5B285-00510",
+      "kind": "local",
+      "path": "local/research/codex/write_m5b_recovery_docs.py",
+      "bytes": 6300,
+      "sha256": "9407f8f53a25337edd94a4d6ee98c06b4e2e3ee9aaf1e8c98680d1ce5e4433a3"
+    }
+  ]
+}

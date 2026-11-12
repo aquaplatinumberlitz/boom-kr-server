@@ -65,7 +65,8 @@ K6c WAN giả lập/K7 không nhận thêm dependency Internet thật hoặc thi
 [PLAN](PLAN.md#dashboard) giữ thứ tự; [kiến trúc](RUST_SERVICE_ARCHITECTURE.md) giữ design/readiness.
 R1a–R1g và native hồi quy các profile 2/4/8/account đã đạt phạm vi refactor. [Bằng chứng và giới hạn](evidence/rust-service/r1-native-final.json). Không suy thêm tính năng từ unit/differential hoặc native hồi quy.
 [M5b profile DB](protocol/auth-session.md#rust-db-account-profiles) đã có account tạo sau readiness, native hai ván,
-chung nguồn TCP và gameplay khi DB/queue bận. Recovery còn giới hạn; profile khác zero/ASCII và progression chưa đo.
+chung nguồn TCP, gameplay khi DB/queue bận và process KR mới đăng nhập sau phục hồi. Graceful retry/resume còn
+giới hạn; profile khác zero/ASCII và progression chưa đo.
 Không lặp khoảng trống đã đóng hoặc suy native shared-NAT gameplay từ TCP source mapping.
 [M7a](protocol/room-membership.md#rust-managed-room-selection) đã có native tạo/chọn/rời hai phòng bằng bốn profile.
 Occupancy đã có [native contract](protocol/room-membership.md#rust-room-population); [lifecycle managed 2/4/8](protocol/room-membership.md#rust-managed-team-rosters) đã đạt trong tập cấu hình đã đo. [M7c room-only](protocol/room-membership.md#rust-managed-player-choices) đã có proof; [ownership tích hợp](protocol/room-membership.md#rust-managed-account-ownership) đã đạt trong tập profile hiện hành; M5b bổ sung profile DB. N1R cần proof riêng bên dưới;

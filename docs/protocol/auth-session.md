@@ -788,7 +788,8 @@ K6cWANgiảlập giữscope. VPS networkpreflight là việc riêng, khôngnativ
 <a id="rust-db-account-profiles"></a>
 ## Hồ sơ account từ DB và kiểm quyền khi DB bận
 
-Nguồn: [M5b](../evidence/rust-service/m5b-dynamic-accounts.json); acceptance ở
+Nguồn: [M5b](../evidence/rust-service/m5b-dynamic-accounts.json) và
+[bổ sung native recovery](../evidence/rust-service/m5b-native-recovery.json); acceptance ở
 [PLAN](../PLAN.md#phase1-acceptance). Đây là lớp mở rộng của đường account/basic và phòng managed hiện có.
 
 **Contract và policy được giữ.** `account_admission.profile_mode=database_zero` lấy player ID, wire ID và tên từ DB
@@ -821,11 +822,15 @@ chung nguồn TCP, vẫn phân biệt đúng name/ID và membership trong native
 không chứng minh Internet hoặc gameplay sau NAT. Trong ca writer lock 25 giây và queue account đầy, cả ba native
 consumer tạo entity159 rồi nổ158; UDP thật tiếp tục apply. Rank diễn ra sau khi nhả khóa theo delay của recipe,
 rồi reset/ván kế; không tuyên bố rank được đo trong lúc giữ khóa. Login mới lỗi rõ và login fresh thành công sau khi
-DB hồi phục. TCP wrong-password/ban/duplicate và source tests kiểm fence riêng, không thay oracle KR.
+DB hồi phục. Lượt bổ sung mở process KR thứ tư sau lỗi, nhận đúng tên/profile của account vừa cấp session
+trong sảnh. CP284 chỉ có recovery ở CLI/session; quyết định đóng M5b phải đọc cùng bằng chứng native bổ sung này.
+TCP wrong-password/ban/duplicate và source tests kiểm fence riêng, không thay oracle KR.
 
 **Giới hạn còn lại.** M5b đạt acceptance giai đoạn 1, không đóng toàn bộ thiết kế M5 rộng. Hồ sơ nhân vật bền vững và
 kết quả/thưởng 0 thuộc M6; EXP/tiền/inventory thuộc giai đoạn sau. M8 còn đóng gói, tải, restore và vận hành. Những
-lượt recipe lỗi và GDB remote-disconnect lúc teardown giữ nguyên trong evidence; raw/hash/namespace cleanup đã seal.
+lượt recipe lỗi và GDB remote-disconnect lúc teardown giữ nguyên trong evidence. Lượt recovery gặp bounded unmount
+busy sau export: 103 file raw được phục hồi nguyên byte chỉ sau khi namespace kết thúc, rồi seal; exit1 và lỗi
+helper được giữ nguyên. C đóng debugger sau frame107 đã capture hơn 118ms sau completion. Không gọi teardown sạch.
 Shared-NAT relay, reuse/restart và mọi topology Internet không suy từ ca chung nguồn TCP. Python vẫn giữ RE/reference.
 
 <!-- protocol-topic-content-end -->

@@ -5,6 +5,14 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP284: M5b đã đạt hồ sơ account từ DB và đường chơi cơ bản cho account tạo khi service đang chạy.**
+Ba account mới đã qua sảnh/phòng và hai trận liên tiếp; một lượt riêng kiểm chung nguồn TCP mà không lẫn danh tính.
+Trong ca DB bận và hàng đợi account đầy, cả ba client vẫn tạo bom/nổ; đăng nhập mới bị từ chối rõ ràng và phục hồi
+sau lỗi. [Contract và giới hạn](protocol/auth-session.md#rust-db-account-profiles),
+[bằng chứng](evidence/rust-service/m5b-dynamic-accounts.json). M5b đạt phạm vi giai đoạn 1; relay nhiều người,
+G1, M6 và M8 còn mở. Tiếp N1R-b theo [Bảng điều hành](PLAN.md#dashboard).
+Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](HISTORY.md).
+
 **CP283: M7e đã có roster hiện hành và người còn lại tiếp tục sau rớt mạng giữa trận trên client KR thật.**
 Start/stat dùng nhân vật đã chọn; đã kiểm ba người, sáu người, slot thưa và hai lần mất endpoint với roster4→3→2,
 kết quả/reset và ván kế. [Contract và giới hạn](protocol/room-membership.md#rust-selected-player-rounds),

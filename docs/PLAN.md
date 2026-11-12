@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, CP284 / AUD100**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, CP285 / AUD101**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -19,7 +19,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, C
 |---|---|---|
 | M0–M3 nền tảng, phòng cố định, trận hai người | Đạt trong phạm vi đã ghi | Không |
 | M4 bốn và tám người | Đạt phần đội cố định và Manner | Free 1v7 là giới hạn đã biết, không retry |
-| M5 tài khoản | [M5b đạt giai đoạn 1](protocol/auth-session.md#rust-db-account-profiles): hồ sơ DB cho account mới, hai ván và native DB/hàng đợi | Hồ sơ ban đầu bằng 0; persistence nhân vật/kết quả thuộc M6, recovery/vận hành còn giới hạn |
+| M5 tài khoản | [M5b đạt giai đoạn 1](protocol/auth-session.md#rust-db-account-profiles): hồ sơ DB cho account mới, hai ván, native DB/hàng đợi và login KR sau phục hồi | Hồ sơ ban đầu bằng 0; persistence nhân vật/kết quả thuộc M6, recovery/vận hành còn giới hạn |
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; relay opt-in đạt prototype hai người, còn mở rộng và vận hành |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; relay ngoài prototype hai người và vận hành còn riêng |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |

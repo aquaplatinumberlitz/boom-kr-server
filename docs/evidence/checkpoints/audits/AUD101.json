@@ -1,0 +1,63 @@
+{
+  "id": "AUD101",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-db-account-profiles"
+  ],
+  "completed_through": "CP285",
+  "recorded_utc": "2026-11-12T16:42:10.150829+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/m5b-native-recovery.json",
+    "docs/protocol/auth-session.md",
+    "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+    "local/research/codex/m5b-recovery-native-r1/recovery-verification.json",
+    "local/research/codex/m5b-recovery-native-r1/udp-getter-verification.json",
+    "local/research/codex/m5b-recovery-native-r1/native/storage-recovery.json",
+    "local/research/codex/m5b-recovery-native-r1/lifecycle-addendum.json",
+    "local/research/codex/m5b-recovery-native-r1/native/cycles/run.json",
+    "docs/features.json",
+    "docs/COVERAGE.md"
+  ],
+  "method": "Rà README→PLAN→PROTOCOL→RESEARCH→evidence/raw, đối chiếu đúng dòng recovery của M5b. CP284 fresh CLI/session không thay native new login; bổ sung native D sau fault và hai matches A/B/C. TCP reassembly/hash/seq, DB lock/queue reasons, causal timestamps và native own291 D kiểm riêng. Rà103-file export recovery/source freeze/namespace extinction và debugger C107 capture sau completion; lỗi không viết lại.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP284 đóng M5b nhưng recovery chỉ có CLI/session, chưa có process KR mới sau lỗi.",
+      "correction": "Lượt bổ sung cùng binary: DB/queue fault, A/B/C hai matches; fresh reserved account session sau release, process D mới có own291/name/profile đúng DB. Closure phải đọc CP284 cùng CP285.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m5b-native-recovery.json",
+        "docs/protocol/auth-session.md#rust-db-account-profiles",
+        "README.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Supplemental launcher exit1 có thể bị coi là gameplay thất bại hoặc được giấu thành exit0.",
+      "correction": "Run không application error, native completion đủ; unmount busy sau same-byte export.103files khôi phục đúng bytes sau namespace extinction. C debugger107 sau completion118ms; keep exit1/raw/lifecycle limits.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m5b-native-recovery.json",
+        "local/research/codex/m5b-recovery-native-r1/native/storage-recovery.json",
+        "local/research/codex/m5b-recovery-native-r1/lifecycle-addendum.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Local-history checker trên worktree symlink local là pass hoặc dữ liệu bị mất.",
+      "correction": "Strict guard từ chối path ngoài checkout. Không nới checker; exact head sẽ được kiểm trên primary checkout có physical local, giữ source/history/raw.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m5b-native-recovery.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "N1R-b native4/8, sparse/departure, port/key reuse, restart and common-IP spoof theo PLAN. G1/M6/M8 còn mở.",
+    "M5b zero-profile ASCII/private launcher/fresh process; graceful logout/resume, profile khác, persistence/production không suy từ native recovery.",
+    "Helper unmount busy và C debugger closure lúc teardown giữ nguyên. Same-byte recovery103raw và namespace extinction không là pristine helper exit0."
+  ]
+}
