@@ -262,6 +262,9 @@ MODE_ROWS = [
     dict(name="크아 히어로 (CA Hero)", wiki="크아 히어로", groups=["FxContents/CAHero"], families=["CAhero"], wave="F3"),
     dict(name="히든 캐치 (Hidden Catch)", wiki="게임 모드 (mục dịch vụ trò chơi)", groups=["FxHiddenCatch/HiddenCatch", "FxHiddenCatch/Prepare_HC"], categories=["hidden"], wave="F3"),
     dict(name="AIBattle", groups=["FxContents/AIBattle"], families=["Fm_AIBtlDesert", "Fm_AIBtlForest", "Fm_AIBtlPatrit", "Fm_AIBtlTomb"], wave="F3"),
+    dict(name="Baseball", groups=["FxStage/Game"], families=["Baseball"], detail="`Game/Baseball_Image`, `Game/BaseballTip`", wave="F2?"),
+    dict(name="Airplane", groups=["FxStage/Game"], detail="`Game/AirplaneBigWave`, `Game/AirplaneRetro`", wave="F2?"),
+    dict(name="BigBattle", groups=["FxStage/Game"], family_prefixes=["Fm_BigBattle"], detail="`Game/BigBattle_*`", wave="F2?"),
     dict(name="ConfusedFight", groups=["FxContents/ConfusedFight"], families=["ConfusedFight"], wave="F2"),
     dict(name="RPG", groups=["FxContents/RPG", "FxContents/RPGMyInfo"], family_prefixes=["RPG"], wave="F3"),
     dict(name="SandBox", groups=["FxContents/SandBox"], wave="F3?"),
@@ -292,6 +295,8 @@ def render_modes(census, families, by_category):
         for key in row.get("groups", []):
             group = groups[key]
             evidence.append(f"{group['system'] or 'chưa phân loại'}: `{key}` ({group['entries']})")
+        if row.get("detail"):
+            evidence.append(row["detail"])
         matched = set(row.get("families", []))
         for category in row.get("categories", []):
             matched.update(family for family, _ in by_category.get(category, []))
@@ -496,6 +501,47 @@ def resource_inventory(packs):
     return groups, systems, sorted(unread_attr, key=lambda row: (row["pack"], row["name"]))
 
 
+def data_tables(packs):
+    """Kiểm kê XML có tiền tố độ dài và các ObjectTable nhị phân đã nhận diện."""
+    result = []
+    for stem, pack in sorted(packs.items()):
+        with pack.idd.open("rb") as handle:
+            for name, offset, size, key in pack.order:
+                if name.lower().startswith("attr/"):
+                    continue
+                handle.seek(offset)
+                prefix = handle.read(min(size, 128))
+                prefix = decrypt_entry(prefix, key) if key else prefix
+                xml = (len(prefix) >= 5 and struct.unpack_from("<I", prefix)[0] == size - 4
+                       and re.match(rb"\s*<(?:\?xml|[A-Za-z_][\w:-]*[\s>/])", prefix[4:]))
+                binary = name in ("ObjectTable/ObjectTable", "ObjectTable/CharTEObjectTable",
+                                  "ObjectTable/EmoTEObjectTable", "ObjectTable/FxAssetObjectTable")
+                if not xml and not binary:
+                    continue
+                count, unit = None, ""
+                source = "chưa giải"
+                if binary:
+                    count, unit = struct.unpack_from("<I", prefix)[0], "mục index"
+                    source = "boomkr-re/docs/kr-data.md §1 (cấu trúc ObjectTable)"
+                elif (stem, name) == ("fx", "TileInfo/TileInfoList"):
+                    count, unit = len(re.findall(rb"<Tile\s", pack.read(name))), "thẻ Tile"
+                    source = "boomkr-re/docs/kr-data.md §1 (cấu trúc ngoài)"
+                elif (stem, name) == ("FxDesktop", "ClientData/ClientString"):
+                    count, unit = len(re.findall(rb"<Elem(?:\s|>)", pack.read(name))), "thẻ Elem"
+                    source = "boomkr-re/docs/kr-data.md §1"
+                elif stem == "FxMap" and name.startswith("MapScriptTemplate/MonInfo_"):
+                    count, unit = len(re.findall(rb"<RewardItem\b", pack.read(name))), "thẻ RewardItem"
+                    source = "boomkr-re/docs/kr-data.md §6 (reward và InitInfo)"
+                elif stem == "fx" and name in ("Pet/PetTable", "Pet/PetRandomTable", "MotionBlur/MotionBlurTable", "ObjectTable/SpeakerTable"):
+                    count, unit = len(re.findall(rb"<Row(?:\s|>)", pack.read(name))), "hàng XML"
+                    source = "boomkr-re/docs/kr-data.md §1 (định dạng; chưa giải toàn bộ)"
+                elif (stem, name) == ("fx", "ObjectTable/NameTable"):
+                    count, unit = len(re.findall(rb"<Desc\b", pack.read(name))), "thẻ Desc"
+                    source = "boomkr-re/docs/kr-data.md §1 (kiểm kê)"
+                result.append(dict(pack=stem, name=name, bytes=size, count=count, unit=unit, source=source))
+    return result
+
+
 # --- dựng census ----------------------------------------------------------
 def build(client):
     packs, sources = {}, {}
@@ -552,7 +598,7 @@ def build(client):
     themes = sorted(name.split("/", 1)[1] for name, *_ in fx_map.order if name.startswith("Theme/"))
     resource_groups, systems, unread_attr = resource_inventory(packs)
     return dict(
-        resource_groups=resource_groups, systems=systems, unread_attr=unread_attr,
+        resource_groups=resource_groups, systems=systems, unread_attr=unread_attr, data_tables=data_tables(packs),
         schema="kre-content-census-v1", build="KR00967", client_exe_sha256=sha256(client / "CA.exe"),
         limits="Metadata tĩnh từ pack. category/wiki suy từ tên; không phải bằng chứng runtime hay wire.",
         packs=sources, maps=maps, maps_failed=failed, map_groups=map_groups, themes=themes,
@@ -737,6 +783,19 @@ def render(census):
         "",
     ]
     lines += render_modes(census, families, by_category)
+    lines += [
+        "", "Magic Market (Alchemist) là hệ chế tạo từ lobby, không phải mode đấu; tài nguyên được liệt kê trong bảng Hệ thống (F6).",
+        "Theo `boomkr-re/docs/kr-data.md` §2 và §7, nguồn cũ không tìm thấy công thức chế tạo trong client; đây là kết luận tìm kiếm tĩnh, không chứng minh luật server.",
+        "Baseball, Airplane và BigBattle được xếp tạm vào F2 theo tên; lộ trình chưa nêu riêng các mode này.",
+        "", "## Dữ liệu đã giải sẵn", "",
+        "Đây là mức kiểm chứng mà nguồn cũ mô tả, không tự xác nhận luật server hay cho phép dùng trực tiếp trong code.",
+        "", "| Dataset | Nguồn | Mức kiểm chứng và giới hạn | Đợt liên quan |", "|---|---|---|---|",
+        "| Chỉ số nhân vật | `boomkr-re/data/kr/bomber_attr.json`; `docs/kr-data.md` §13, §23 | Layout đọc khớp tĩnh; nguồn đối chiếu 8 nhân vật với Wikipedia, chưa đo quy đổi cấp tốc độ sang ô/giây. | M7c, F1 |",
+        "| Trọng số item | `FxContents/Attr/ItemAttr`; `boomkr-re/docs/kr-data.md` §12; `boom-re/docs/items.md`, `map.md` | Nguồn mô tả bảng tĩnh và trọng số theo map; chưa xác nhận luật chọn của server KR. | F1 |",
+        "| Rơi và physics monster | `boomkr-re/data/kr/monster_drop.json`, `monster_physics.json`; `docs/kr-data.md` §6 | Trích tĩnh từ `FxMap/MapScriptTemplate/MonInfo_*`; nguồn ghi 760 reward và 45 file, chưa chứng minh server áp dụng. | F3 |",
+        "| Kinh nghiệm | `boomkr-re/data/kr/exp_table.json`; `docs/game-spec-web.md` §9.0; `docs/web/README.md` | Nguồn ghi parse 720 cấp từ trang Namu `크레이지 아케이드/경험치표`, không phải entry pack đã xác định; chưa xác nhận server KR. | F4 |",
+        "| Bảng Attr gốc | `boomkr-re/data/kr/KR_ItemAttr.bin`, `KR_BomberAttr.bin`, `KR_MapGroup.bin`; `docs/kr-data.md` §12–13 | Nguồn ghi trích tĩnh từ pack; ý nghĩa từng trường cần bằng chứng riêng. | M7c, F1 |",
+    ]
     systems = census["systems"]
     groups = census["resource_groups"]
     with_ids = sum(bool(system["ids"]) for system in systems)
@@ -777,7 +836,28 @@ def render(census):
         for attr in census["unread_attr"]:
             lines.append(f"| `{attr['pack']}` | `{attr['name']}` | {attr['bytes']:,} |")
     else:
-        lines.append("Không có: ba bảng `FxContents/Attr` đều đã được tool đọc.")
+        lines.append("Không có: trong thư mục `FxContents/Attr`, cả ba bảng đều đã được tool đọc.")
+    lines += ["", "### Bảng dữ liệu ngoài `Attr/`", "",
+              "Quét index 13 pack, nhận diện entry có tiền tố độ dài và nội dung mở đầu bằng thẻ XML, "
+              "cùng các ObjectTable nhị phân đã biết. Các entry XML gồm cả template script và map tuỳ biến; "
+              "cách nhận diện này có thể bỏ sót bảng nhị phân chưa biết. Số thẻ là phép đếm tĩnh, không phải kiểm chứng ngữ nghĩa.", "",
+              "| Pack | Tên entry | Byte | Số bản ghi đếm được | Đã giải ở đâu |", "|---|---|---|---|---|"]
+    # Thư mục có nhiều entry cùng kiểu (template script, map tuỳ biến) gộp theo tiền tố tên để bảng đọc được.
+    per_dir = collections.Counter((t["pack"], t["name"].rsplit("/", 1)[0]) for t in census["data_tables"])
+    grouped = collections.OrderedDict()
+    for table in census["data_tables"]:
+        directory, _, leaf = table["name"].rpartition("/")
+        if per_dir[(table["pack"], directory)] > 8:
+            prefix = re.split(r"[_0-9]", leaf, maxsplit=1)[0] or leaf
+            key = (table["pack"], f"{directory}/{prefix}*", table["source"], table["unit"])
+            grouped.setdefault(key, []).append(table)
+        else:
+            grouped[(table["pack"], table["name"], table["source"], table["unit"], id(table))] = [table]
+    for key, members in grouped.items():
+        counted = [t["count"] for t in members if t["count"] is not None]
+        count = f"{sum(counted):,} {key[3]}" if counted else "chưa đếm"
+        name = f"`{key[1]}`" + (f" ({len(members)} entry)" if len(members) > 1 or key[1].endswith("*") else "")
+        lines.append(f"| `{key[0]}` | {name} | {sum(t['bytes'] for t in members):,} | {count} | {key[2]} |")
     lines.append("")
     tags, funcs, triggers = collections.Counter(), collections.Counter(), collections.Counter()
     for entry in scripted:
