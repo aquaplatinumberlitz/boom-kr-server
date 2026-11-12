@@ -27,7 +27,9 @@ class AccountFixture:
         self.command(dict(op='begin-instance'))
         self.players = []
         self.sessions = []
-        for login, name in [('alice', 'KRLocal'), ('bob', 'KRGuest')]:
+        for index, actor in enumerate(actors):
+            login = ['alice', 'bob'][index] if index < 2 else f'account_{index}'
+            name = actor['name']
             player = self.command(dict(op='create', login=login, name=name,
                                        password='account-basic-test-password'))['player']
             grant = self.command(dict(op='login', login=login, password='account-basic-test-password',
@@ -72,9 +74,10 @@ class AccountFixture:
                     +codec.pack_fields([0, int.from_bytes(socket.inet_aton(self.reported_peers[role]), 'little'), 0], [4, 4, 1]))
             login.send(1, body)
             _, auth = login.receive(4)
-            assert len(auth) == 137 and codec.read_fields(auth[:1], [1]) == [0]
+            assert len(auth) == 130 + len(player['display_name'].encode()) and codec.read_fields(auth[:1], [1]) == [0]
             assert codec.read_fields(auth[25:29], [4]) == [player['wire_id']]
-            echo = codec.read_fields(auth[93:97], [4])[0]
+            echo_offset = 86 + len(player['display_name'].encode())
+            echo = codec.read_fields(auth[echo_offset:echo_offset+4], [4])[0]
             login.send(9, bytes(8))
             login.receive(15)
             login.receive(62)

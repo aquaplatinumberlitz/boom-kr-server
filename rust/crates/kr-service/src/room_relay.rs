@@ -6,14 +6,59 @@ use crate::{
     room_registry::RoomKey,
     udp_relay::{self, Limits, Participant, PumpStats, RoundSockets, Scope, SocketPool},
 };
-use std::{io, net::Ipv4Addr, time::Instant};
+use std::{
+    io,
+    net::Ipv4Addr,
+    sync::{Arc, Mutex},
+    time::Instant,
+};
 
 pub(crate) struct Owner {
-    pool: SocketPool,
+    pool: Arc<Mutex<SocketPool>>,
     base: Scope,
     limits: Limits,
     receive_budget: usize,
     lease: Option<Lease>,
+}
+/// One service pool is bound before serving. Rooms reserve disjoint leases;
+/// no bind or network await takes place under registry/room/pool locks.
+#[derive(Clone)]
+pub(crate) struct Factory {
+    pool: Arc<Mutex<SocketPool>>,
+    generation: u64,
+    limits: Limits,
+    receive_budget: usize,
+}
+impl Factory {
+    pub(crate) fn bind(cfg: &udp_relay::Config) -> io::Result<Self> {
+        let limits = cfg.limits()?;
+        let pool = SocketPool::bind(cfg.bind, cfg.advertise, &cfg.ports)?;
+        let mut bytes = [0; 8];
+        getrandom::fill(&mut bytes).map_err(io::Error::other)?;
+        let generation = u64::from_le_bytes(bytes);
+        if generation == 0 {
+            return Err(io::Error::other("relay service generation entropy"));
+        }
+        Ok(Self {
+            pool: Arc::new(Mutex::new(pool)),
+            generation,
+            limits,
+            receive_budget: cfg.receive_budget,
+        })
+    }
+    pub(crate) fn owner(&self, key: RoomKey) -> Owner {
+        Owner {
+            pool: self.pool.clone(),
+            base: Scope {
+                service_generation: self.generation,
+                room: key,
+                round: 0,
+            },
+            limits: self.limits,
+            receive_budget: self.receive_budget,
+            lease: None,
+        }
+    }
 }
 pub(crate) struct Lease {
     scope: Scope,
@@ -45,25 +90,7 @@ impl Lease {
 }
 impl Owner {
     pub(crate) fn new(cfg: &udp_relay::Config, key: RoomKey) -> io::Result<Self> {
-        let limits = cfg.limits()?;
-        let pool = SocketPool::bind(cfg.bind, cfg.advertise, &cfg.ports)?;
-        let mut bytes = [0; 8];
-        getrandom::fill(&mut bytes).map_err(io::Error::other)?;
-        let generation = u64::from_le_bytes(bytes);
-        if generation == 0 {
-            return Err(io::Error::other("relay service generation entropy"));
-        }
-        Ok(Self {
-            pool,
-            base: Scope {
-                service_generation: generation,
-                room: key,
-                round: 0,
-            },
-            limits,
-            receive_budget: cfg.receive_budget,
-            lease: None,
-        })
+        Ok(Factory::bind(cfg)?.owner(key))
     }
     pub(crate) fn prepare(
         &mut self,
@@ -101,13 +128,17 @@ impl Owner {
             .ok_or_else(|| io::Error::other("incomplete relay roster"))?;
         let (participants, authorities): (Vec<_>, Vec<_>) = slots.into_iter().unzip();
         let scope = Scope { round, ..self.base };
-        let sockets = self.pool.reserve(
-            scope,
-            &participants,
-            self.limits,
-            self.receive_budget,
-            Instant::now(),
-        )?;
+        let sockets = self
+            .pool
+            .lock()
+            .map_err(|_| io::Error::other("relay pool unavailable"))?
+            .reserve(
+                scope,
+                &participants,
+                self.limits,
+                self.receive_budget,
+                Instant::now(),
+            )?;
         Ok(Lease {
             scope,
             participants,

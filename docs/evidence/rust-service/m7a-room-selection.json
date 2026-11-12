@@ -1,0 +1,115 @@
+{
+  "schema": "kre-rust-m7a-room-selection-v1",
+  "checkpoint": "CP276",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
+  "baseline": "52d030e978d1526679c991c8644cdaf778a53989",
+  "source_commit": "3f8c55f1589f70891062a09878e378d9b38d55b4",
+  "canonical": "docs/protocol/room-membership.md#rust-managed-room-selection",
+  "plan": "docs/PLAN.md#dashboard",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "acceptance": "Chỉ M7a: bốn profile account đã đo, hai phòng độc lập, tạo/list/chọn phòng, slot/chủ phòng, leave/rejoin, EOF/revoke và xóa phòng rỗng. Chưa có gameplay phòng động hoặc toàn M7.",
+  "implementation": "Opt-in managed account lobby ownership without fixed room attachment; Registry/RoomKey allocation, FirstVacant and private Runtime/queues/visit scopes; return241 fence and coalesced catalog90/91; common prebound relay Factory.",
+  "integration": "Đã tích hợp serving và đạt native acceptance; bước PR/CI/kiểm đúng HEAD còn pending tại lúc tạo metadata.",
+  "reuse": [
+    {
+      "source": "CP226/227/228/229/230",
+      "locator": "docs/protocol/room-membership.md",
+      "use": "Measured91/90/82/86/87 carriers and native list/join/roster/cleanup consumers; private policy only a design reference.",
+      "avoids": "No new binary function RE or VN wire port."
+    },
+    {
+      "source": "CP265/269/270/274",
+      "locator": "docs/evidence/rust-service/r1e-registry.json",
+      "use": "Registry, batch origin, ownership and accepted fixed-profile recipes/fixtures.",
+      "avoids": "No rerun of general codec, old gameplay or map selection RE."
+    }
+  ],
+  "checks": {
+    "rust_tests": 122,
+    "fmt": "pass",
+    "clippy": "pass",
+    "locked_build": "pass",
+    "synthetic_managed_groups": 8,
+    "legacy_synthetic_cases": {
+      "account_serving": 16,
+      "four_startup": 7,
+      "account_relay": 13
+    },
+    "native": {
+      "result": "pass_m7a",
+      "raw_files": 105,
+      "duration_s": 93.216073809,
+      "pcap_records": 606,
+      "checked_reply_frames": 93
+    }
+  },
+  "native": {
+    "root": "local/research/codex/m7-rooms-native-r5",
+    "recipe": "local/research/codex/m7-rooms-native-r5/native/recipe.json",
+    "preflight": "local/research/codex/m7-rooms-native-r5/native/runtime-preflight.json",
+    "raw_seal": "local/research/codex/m7-rooms-native-r5/native/raw-seal.json",
+    "verification": "local/research/codex/m7-rooms-native-r5/verification.json",
+    "ui_review": "local/research/codex/m7-rooms-native-r5/ui-review.json",
+    "run_sha256": "a8d20bef254e0bf3d9834dda1e086419ac95cc77927fb0075ec173431fcd377b",
+    "cleanup": {
+      "net_namespace": "net:[4026533555]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "environment": "Wine diagnostic copy, four fresh client processes and separate network namespaces on isolated virtual LAN; accepted cached prefixes, no external route.",
+    "titles": {
+      "1": {
+        "session": 1,
+        "title_hex": "c0fab6fb20b0d4c0d3c7cfbdc7bad07e",
+        "native_title": "저랑 게임하실분~"
+      },
+      "3": {
+        "session": 2,
+        "title_hex": "bec6b9abb3aa20bfc0bcbcbfe4",
+        "native_title": "아무나 오세요"
+      }
+    }
+  },
+  "binary": {
+    "path": "local/research/codex/m7-rooms-native-r5/binary/kr-service",
+    "bytes": 58359160,
+    "sha256": "fd86a0a6680938381483fbabe451d13801abc1c64242d5c9865f277c1a7fe7a0"
+  },
+  "failed_or_partial_attempts": [
+    {
+      "run": "r1",
+      "retained": "local/research/codex/m7-rooms-native-r1/native/failure-seal.json",
+      "outcome": "UI title edit permission modal before81; interrupted. Capture cleanup API mismatch lost private tmpfs raw; only launch/preflight/traceback retained. No accepted native evidence."
+    },
+    {
+      "run": "r2",
+      "retained": "local/research/codex/m7-rooms-native-r2/native/raw-seal.json",
+      "outcome": "Native own106 parsed; managed guard incorrectly rejected existing setup96/266. Fixed before next source freeze."
+    },
+    {
+      "run": "r3",
+      "retained": "local/research/codex/m7-rooms-native-r3/native/raw-seal.json",
+      "outcome": "Four profiles/two rooms/cross-room slot2/chief/first disappearance observed, partial verification retained. Controller wrongly required matching90 after scene rebuild; interrupted, no complete acceptance."
+    },
+    {
+      "run": "r4",
+      "retained": "local/research/codex/m7-rooms-native-r4/native/raw-seal.json",
+      "outcome": "C faulted inside jypc.dll before auth. Restored accepted cached prefixes for follow-up; no AC patch or claimed fault fix."
+    },
+    {
+      "run": "r5",
+      "retained": "local/research/codex/m7-rooms-native-r5/native/raw-seal.json",
+      "outcome": "Pass after same-source/binary follow-up; independent native/TCP/UI and cleanup verified."
+    }
+  ],
+  "limits": [
+    "Four configured known zero profiles, default native CP949 titles; UI title editing is denied by the current native profile. Arbitrary title carriers checked separately, not full profile/title-edit entitlement support.",
+    "Two rooms with setup/slots/chief/Back/rejoin/EOF/revoke/removal only. No dynamic occupancy/Ready/loading/Battle/results/UDP/general M5/full M7 acceptance.",
+    "Wine diagnostic copy on isolated virtual LAN; no new Internet/NAT/relay or untouched Windows claim. No raw-old585 distinction, durable tuple reuse/restart, resume or match restore.",
+    "Generic room91 occupancy/capacity tail, arbitrary account profiles, character/team/full-error UI and dynamic Ready/loading/Battle/results/UDP remain M7b/c/d/M5.",
+    "M7 relay resource seam only: no new native relay mesh/reuse/key/restart/spoof or load claim; N1R-b/M8 remain per PLAN.",
+    "Public tuples are not reused in-process; no durable restart epoch or raw-identical585/reconnect/resume/match-restore claim.",
+    "Legacy relay regression used the prior managed candidate; retained binary and frozen source remain local. Setup96/266 correction changes only managed admission, fixed compatibility unchanged."
+  ]
+}

@@ -6,9 +6,11 @@ use std::io;
 mod battle;
 mod player;
 mod room;
+mod room_selection;
 pub use battle::*;
 pub use player::PlayerTemplate;
 pub use room::*;
+pub use room_selection::*;
 
 /// Captured header with opcode/length fields zeroed; encode recomputes both.
 pub const HEADER: [u8; HEADER_LEN] = [

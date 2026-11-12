@@ -1090,9 +1090,9 @@ Chọn entry rồi mở channel dưới lock registry→room, không await trong
 đọc title trong từng room dưới cùng thứ tự lock rồi bỏ lock trước socket await. Snapshot từng room không được coi
 là transaction nhất quán toàn registry khi gameplay thay đổi. Giữ22byte opaque từ template, không tự đổi occupancy/quota.
 
-Serving hiện vẫn đăng ký một entry1/1 từ `fixed_room` và chọn đúng entry đó sau lobby67. Đây là compatibility route
-để giữ bytes profile2/4/8/account; **chưa** thêm operator multi-room config hay request81/82 tổng quát. M7 sẽ sử dụng
-registry/API này để tạo/chọn/chuyển phòng; kết quả unit hai entry không là native hai phòng/gameplay đã giao.
+Tại R1e, serving chỉ đăng ký một entry1/1 từ `fixed_room` và chọn entry đó sau lobby67 để giữ profile cũ.
+Đường compatibility này vẫn có; [M7a opt-in](#rust-managed-room-selection) đã nối registry vào tạo/chọn/chuyển
+phòng. Kết quả unit R1e tự nó không là native nhiều phòng hoặc gameplay đã giao.
 Unit kiểm hai Session/inbox thực qua registry: table238 đúng recipient, đầy queueA không chiếm/chặn queueB,
 đóngA không xóaB. Unit listing kiểm2entry đúng session/ID/title/opaque, đổiB không đổiA, gỡB/A→count1/0.
 Native91count0 không tự clear-all; đường delete90/dynamic occupancy khi M7 cần acceptance riêng.
@@ -1151,3 +1151,55 @@ báo; không học cổng, holepunch, relay hoặc chữa N1bnegative. M5general
 restart và sameIPUDPspoof còn riêng. Chỉ nghiệm thu fullR1 sau native2/4/8/account; không nâng gate từ source/TCP.
 
 <!-- protocol-topic-content-end -->
+
+
+<a id="rust-managed-room-selection"></a>
+## Tạo, chọn và rời nhiều phòng bằng account Rust
+
+Nguồn **kr_runtime/confirmed** cho hành vi client và **design/design** cho policy server;
+[metadata, recipe và hash](../evidence/rust-service/m7a-room-selection.json). Tái sử dụng các carrier và consumer
+[91/90](#room-list-lifecycle), [87](#room-join-projection), [roster](#room-local-roster),
+[ownership](#room-membership-registry) và [cleanup](#room-shared-cleanup); không phục hồi lại các hàm đã có.
+
+`diagnostic_two_lobby.managed_rooms = {"max_rooms": 8}` là opt-in bên cạnh đường fixed cũ. Đường này cần
+`account_admission` và `fixed_room` làm prototype đã kiểm fixture; prototype không có channel hay membership.
+`room_service::Hub` đăng ký owner `(PlayerId, connection)` khi vào sảnh, chưa chọn phòng. 81 tạo Runtime/RoomKey mới;
+82 phải mang đúng `(session u16, roomID u32)` đang sống, cùng opaque tail 0/1/5 đã đo. 86 rời membership hiện hành;
+EOF, revoke hoặc lỗi authorization dọn đúng connection. Channel đã chọn phòng hoặc đang chờ return241 không được
+chọn tiếp; malformed, tuple lạ/đã nghỉ và thao tác chưa phục vụ bị đóng connection, chưa có general error UI.
+
+Registry → room → pool là thứ tự lock đồng bộ; DB và socket await ở connection, không giữ các lock này.
+Mỗi phòng có scope, model, visit, queue và inbox riêng; slot dùng FirstVacant, độc lập identity. Key/session tăng,
+không tái dùng public tuple trong process; hết không gian cấp phát thì từ chối. Mỗi batch vẫn kiểm room scope,
+recipient, connection và membership/visit trước send. Đây không là durable epoch qua restart hay khả năng phân biệt
+hai raw585 giống nhau trên cùng transport sau rejoin.
+
+86 có return241 trễ theo recipe đã đo. Chỉ khi batch return hoàn tất mới hủy Session cũ, xóa pending và cho chọn
+phòng khác. Phòng nghỉ khi không còn channel/member hoặc work hợp lệ trong phạm vi setup; các phase gameplay
+chưa mở. Watch coalesce catalog, chụp state khi gửi và đánh dấu version đã thấy trước snapshot. Client đang trong
+Prepare không nhận catalog của sảnh; khi về sảnh, gửi matching90 cho tuple đã mất rồi 91 hiện hành. Sau return241,
+client có thể đã dựng lại list nên 90 không có object để xóa; parser đủ và 91 đúng vẫn phải kiểm. Với client đang
+ở sảnh, native matching90 và card biến mất đã được đo. Count0 của 91 không được coi là clear-all.
+
+86 thành công chỉ project session u16 đã đo; u32 sau nó vẫn opaque, không gọi là roomID echo. 87 project session và
+slot; client lấy roomID/tên từ hàng 91 đã chọn. 91 dùng title thực từ 81; 22 byte tail vẫn giữ nguyên fixture,
+**chưa** có occupancy/capacity động. Setup96/266 vẫn là exact-shape observation có membership, không ACK và không
+đổi state. Ready, Start/loading, gameplay/result/UDP và thay nhân vật/đội chưa được phục vụ ở mode opt-in M7a.
+
+Native bốn account/profiles cấu hình đã tạo hai phòng với hai tiêu đề CP949 mặc định khác nhau; mỗi cặp chỉ thấy
+roster của phòng mình. Identity3 làm chủ ở slot0; identity1 rời phòng đầu, vào phòng thứ hai ở slot2. Client thật
+đọc hết 87/91/106/110; 107 xóa đúng ID, chuyển chủ và UI khớp. EOF người cuối làm phòng đầu mất; revoke chủ phòng
+thứ hai xóa đúng membership, peer lên chủ; người cuối rời thì client đã ở sảnh đi qua matching90 và list rỗng.
+D getter chief sau revoke không được lấy vì probe hết budget; UI chief/Start, parser110 và ID-clear là bằng chứng
+thay thế, không bịa giá trị getter. Việc sửa tiêu đề trong UI bị profile hiện tại từ chối; native dùng title mặc định,
+carrier ASCII tùy chọn chỉ có source/TCP và evidence carrier cũ.
+
+Account adapter chỉ cấp launcher cho đúng profile/version có trong cấu hình đã kiểm, không gắn account bất kỳ vào
+profile của người khác. Native hiện chứng minh bốn profile đó; trần cấu hình không là tải 50 người hoặc profile tổng
+quát. Relay Factory bind một pool trước serving, mỗi room nhận Owner/lease theo RoomKey; không bind lại theo số
+người, không fallback direct. Regression relay cũ đạt ở mức TCP/UDP synthetic; native relay nhiều phòng, reuse/key/
+restart/spoof vẫn thuộc N1R-b. Native M7a dùng Wine diagnostic copy/LAN giả lập, không nâng scope Internet đã có.
+
+M7a đạt [acceptance](../PLAN.md#rust-service-milestones) trong các giới hạn trên. M7b/c/d, M5 tổng quát, gameplay
+phòng động, occupancy, entitlement sửa title, DB-queue fault native và vận hành vẫn chưa đạt. Không suy thành công
+trận hoặc full service từ setup/slot, unit, TCP hay log server.

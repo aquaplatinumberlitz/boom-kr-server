@@ -1,5 +1,10 @@
 # Rust foundation KR00967
 
+Cấu hình nhiều phòng opt-in dùng `diagnostic_two_lobby.managed_rooms`, cùng account admission và prototype
+`fixed_room`; [contract, thao tác đã hỗ trợ và giới hạn](../docs/protocol/room-membership.md#rust-managed-room-selection).
+Đường fixed cũ vẫn là compatibility recipe. Các mục CP bên dưới giữ provenance của từng lát cắt.
+
+
 CP236 thêm backend account/DB qua [CLI](#account-admin-cli), chưa gắn vào native login adapter.
 [Contract/giới hạn](../docs/PROTOCOL.md#rust-account-backend); accountDB độc lập gameplay và không đóng toàn M5.
 

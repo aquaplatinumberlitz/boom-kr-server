@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP275: Village10 lookup đúng mã 1104, nhưng profile cũ chưa đủ để load map.**
+[Contract và giới hạn](protocol/load-phase.md#village10-map-selection): cần đồng bộ metadata; chưa có trận Village10.
+R1 đã đạt hồi quy native, relay đạt prototype hai người. M5 tổng quát, relay bốn/tám người và vận hành còn mở.
+Bước tiếp là acceptance M7 theo [Bảng điều hành](PLAN.md#dashboard); lịch sử tại [HISTORY](HISTORY.md).
+Hạ tầng thực và raw chỉ giữ local.
+
 **CP270: R1g đã kiểm trần admission và allowlist độc lập số profile.**
 [Contract/giới hạn](PROTOCOL.md#rust-r1g-admission), [evidence](evidence/rust-service/r1g-admission.json).
 Cấu hình cho phép1–1024transport và1–256entry allowlist; vẫn kiểm source/lease/profile riêng. Giá trị cấu hình cũ giữ nguyên.

@@ -116,6 +116,7 @@ impl Drop for SocketOwner {
 pub(crate) struct Active {
     pub bridge: Bridge,
     pub client: Client,
+    projections: Arc<std::collections::HashMap<u32, Vec<u8>>>,
 }
 pub(crate) struct Owner {
     worker: Worker,
@@ -124,7 +125,10 @@ pub(crate) struct Owner {
     _socket: SocketOwner,
 }
 impl Owner {
-    pub async fn open(config: &Config) -> io::Result<Self> {
+    pub async fn open(
+        config: &Config,
+        projections: std::collections::HashMap<u32, Vec<u8>>,
+    ) -> io::Result<Self> {
         config.validate()?;
         let listener = UnixListener::bind(&config.launch_socket)?;
         let meta = fs::symlink_metadata(&config.launch_socket)?;
@@ -139,7 +143,7 @@ impl Owner {
             .map_err(|e| io::Error::other(format!("account worker startup: {e:?}")))?;
         let bridge = match Bridge::new(
             worker.client(),
-            2,
+            projections.len(),
             Duration::from_secs(config.launch_ttl_seconds),
         ) {
             Ok(bridge) => bridge,
@@ -154,6 +158,7 @@ impl Owner {
             active: Active {
                 bridge,
                 client: worker.client(),
+                projections: Arc::new(projections),
             },
             worker,
             listener: Some(listener),
@@ -213,14 +218,14 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
         .issue(&session, request.player_id, request.peer)
         .await
         .map_err(|e| io::Error::other(format!("private launch denied: {e:?}")))?;
-    // First vertical slice reuses two exact native-tested zero profiles. No fake
-    // default profile for unknown IDs, changed versions or arbitrary accounts.
-    let expected = match launch.player.wire_id {
-        1 => "KRLocal",
-        2 => "KRGuest",
-        _ => "",
-    };
-    if launch.player.profile_version != 1 || launch.player.display_name != expected {
+    // Only configured, fixture-validated projections. This does not enable an
+    // arbitrary account/profile or substitute another player's identity.
+    if launch.player.profile_version != 1
+        || active
+            .projections
+            .get(&launch.player.wire_id)
+            .is_none_or(|name| name.as_slice() != launch.player.display_name.as_bytes())
+    {
         return Err(io::Error::other("unsupported account profile projection"));
     }
     let player = serde_json::to_string(&launch.player)

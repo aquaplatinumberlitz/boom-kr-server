@@ -108,6 +108,7 @@ pub struct Batch {
     pub abort_return_complete: Option<(Membership, u64)>,
 }
 pub struct Runtime {
+    public_key: Option<crate::room_registry::RoomKey>,
     relay: Option<crate::room_relay::Owner>,
     scope: Arc<()>,
     model: Room,
@@ -365,6 +366,7 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
     }
     model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
+        public_key: None,
         relay: None,
         scope: Arc::new(()),
         model,
@@ -386,6 +388,55 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
         rules,
         abort: None,
     })))
+}
+/// Clone immutable, prevalidated inputs only. The prototype never serves a channel.
+/// Managed selection currently exposes room setup, not dynamic Battle acceptance.
+pub(crate) fn fork(prototype: &Shared, key: crate::room_registry::RoomKey) -> io::Result<Shared> {
+    let source = prototype
+        .lock()
+        .map_err(|_| err("room prototype unavailable"))?;
+    if !source.channels.is_empty() || !source.model.members.is_empty() || source.relay.is_some() {
+        return Err(err("room prototype is not pristine"));
+    }
+    let mut model = source.model.clone();
+    model.set_allocation(rules::SlotAllocation::FirstVacant)?;
+    let mut rules = source.rules;
+    rules.slot_allocation = rules::SlotAllocation::FirstVacant;
+    Ok(Arc::new(Mutex::new(Runtime {
+        public_key: Some(key),
+        relay: None,
+        scope: Arc::new(()),
+        model,
+        players: source.players.clone(),
+        bodies: source.bodies.clone(),
+        channels: HashMap::new(),
+        last_visits: HashMap::new(),
+        requested: HashSet::new(),
+        rostered: HashSet::new(),
+        title: source.title.clone(),
+        selector: source.selector,
+        ready: source.ready.clone(),
+        ips: source.ips.clone(),
+        ports: HashMap::new(),
+        floor_catalog: source.floor_catalog.clone(),
+        rules,
+        abort: None,
+    })))
+}
+pub(crate) fn detach(shared: &Shared, identity: u32, connection: u64) -> io::Result<()> {
+    shared
+        .lock()
+        .map_err(|_| err("room unavailable"))?
+        .detach(identity, connection);
+    Ok(())
+}
+pub(crate) fn removable(shared: &Shared) -> bool {
+    shared.lock().is_ok_and(|r| {
+        r.channels.is_empty()
+            && r.model.members.is_empty()
+            && r.model.phase == Phase::Idle
+            && r.abort.is_none()
+    })
 }
 pub(crate) fn listing_row(shared: &Shared) -> io::Result<wire::ListingRow> {
     let runtime = shared.lock().map_err(|_| err("room unavailable"))?;
@@ -811,7 +862,7 @@ impl Session {
                 relay_authority,
             },
         );
-        if runtime.model.host.is_some() {
+        if runtime.public_key.is_none() && runtime.model.host.is_some() {
             let batch = runtime.lobby_batch(
                 identity,
                 connection,
@@ -1121,6 +1172,9 @@ impl Session {
         {
             return Err(err("stale room channel"));
         }
+        if r.public_key.is_some() && !matches!(opcode, 81 | 82 | 585 | 86 | 528 | 96 | 266) {
+            return Err(err("managed room selection does not yet serve gameplay"));
+        }
         let mut next = r.model.clone();
         let mut effects = Vec::new();
         let mut new_key = None;
@@ -1152,7 +1206,14 @@ impl Session {
                 let (title, selector) = if opcode == 81 {
                     (wire::create81_title(body)?, wire::create81_selector(body)?)
                 } else {
-                    wire::join82_context(body)?;
+                    if let Some(key) = r.public_key {
+                        let selection = wire::join82_selection(body)?;
+                        if selection.session != key.session || selection.room_id != key.id.0 {
+                            return Err(err("room selection context mismatch"));
+                        }
+                    } else {
+                        wire::join82_context(body)?;
+                    }
                     (r.title.clone(), r.selector)
                 };
                 if r.rules.ninth_admission_probe && self.identity == 9 {
@@ -1195,6 +1256,16 @@ impl Session {
                             selector,
                         )?),
                     )
+                };
+                let reply = if let Some(public) = r.public_key {
+                    let payload = if opcode == 81 {
+                        wire::create86_session(&reply.payload, public.session)?
+                    } else {
+                        wire::join87_session(&reply.payload, m.slot, public.session)?
+                    };
+                    Reply { payload, ..reply }
+                } else {
+                    reply
                 };
                 effects.push((
                     self.identity,
@@ -1994,6 +2065,7 @@ mod tests {
         let (ta, ra) = mpsc::channel(8);
         let (tb, mut rb) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            public_key: None,
             relay: None,
             scope: Arc::new(()),
             model,
@@ -2123,6 +2195,7 @@ mod tests {
         let (ta, mut ra) = mpsc::channel(2);
         let (tb, mut rb) = mpsc::channel(2);
         let mut runtime = Runtime {
+            public_key: None,
             relay: None,
             scope: Arc::new(()),
             model: Room::default(),
@@ -2385,6 +2458,7 @@ mod four_abort_tests {
             inboxes.push((i, inbox));
         }
         let shared = Arc::new(Mutex::new(Runtime {
+            public_key: None,
             relay: None,
             scope: Arc::new(()),
             model,
@@ -2684,6 +2758,7 @@ mod ninth_probe_tests {
         }
         let (sender, inbox) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            public_key: None,
             relay: None,
             scope: Arc::new(()),
             model,
@@ -2809,6 +2884,7 @@ mod registry_foundation_tests {
     use crate::room_registry::{Registry, RoomId, RoomKey};
     fn empty(marker: u8) -> Shared {
         Arc::new(Mutex::new(Runtime {
+            public_key: None,
             relay: None,
             scope: Arc::new(()),
             model: Room::default(),
@@ -2989,5 +3065,50 @@ mod registry_foundation_tests {
                 .unwrap()
                 .is_empty()
         );
+    }
+    #[test]
+    fn managed_forks_have_fresh_scopes_visits_and_vacant_slots() {
+        let prototype = empty(0x77);
+        let a_key = RoomKey {
+            session: 1,
+            id: RoomId(1),
+            generation: 1,
+        };
+        let b_key = RoomKey {
+            session: 2,
+            id: RoomId(2),
+            generation: 2,
+        };
+        let a = fork(&prototype, a_key).unwrap();
+        let b = fork(&prototype, b_key).unwrap();
+        let mut old = Session::open(&a, 3, 33).unwrap();
+        old.packet(528, &[]).unwrap();
+        let batch = old.inbox.try_recv().unwrap();
+        assert!(old.valid(&batch));
+        assert!(!removable(&a));
+        assert!(fork(&a, b_key).is_err());
+        let new = Session::open(&b, 3, 33).unwrap();
+        assert!(!new.valid(&batch));
+        assert!(new.packet(104, &[0; 20]).is_err());
+        {
+            let mut r = b.lock().unwrap();
+            let member = r.model.enter(3, 33, true).unwrap();
+            assert_eq!(r.model.members[&3].slot, 0);
+            assert!(r.model.current(member));
+        }
+        assert!(new.packet(96, &[0; 6]).is_ok());
+        assert!(new.packet(266, &[0; 12]).is_ok());
+        assert!(new.packet(96, &[0; 5]).is_err());
+        assert!(new.packet(266, &[0; 13]).is_err());
+        assert!(new.packet(104, &[0; 20]).is_err());
+        drop(new);
+        assert!(removable(&b));
+        drop(old);
+        assert!(removable(&a));
+        assert!(removable(&prototype));
+        assert!(!Arc::ptr_eq(
+            &a.lock().unwrap().scope,
+            &b.lock().unwrap().scope
+        ));
     }
 }

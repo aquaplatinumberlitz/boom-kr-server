@@ -1,0 +1,295 @@
+{
+  "id": "CP276",
+  "previous": "CP275",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T04:02:13.413532+00:00",
+  "context_commit": "34911c78b67aacf83a8d7c8f8c66e0fc5ff2c428",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / M7a: đưa registry vào serving account; nghiệm thu bốn client KR thật và hai phòng độc lập theo PLAN, giữ G1 exporter của chủ dự án.",
+  "scope": "Managed selection/setup/lobby lifecycle only. Native create/list/exact82/slots/chief/leave-cross-room rejoin/EOF/revoke/empty-room removal; no dynamic Battle/occupancy/full M7/general M5 or relay expansion.",
+  "artifacts": [
+    {
+      "name": "kr-service-native-m7a",
+      "sha256": "fd86a0a6680938381483fbabe451d13801abc1c64242d5c9865f277c1a7fe7a0"
+    }
+  ],
+  "locators": [
+    "docs/protocol/room-membership.md#rust-managed-room-selection",
+    "docs/evidence/rust-service/m7a-room-selection.json",
+    "docs/PLAN.md#rust-service-milestones",
+    "docs/RESEARCH.md#gap-room-occupancy",
+    "rust/crates/kr-service/src/room_service.rs",
+    "KR native91/90/87/106/107/110 consumers reused from CP226–230"
+  ],
+  "findings": [
+    {
+      "summary": "Bốn account/client KR thật dùng hai RoomKey khác nhau và hai title CP949; native list/join/roster/own slot xác nhận cách ly phòng. Identity3 làm host slot0; identity1 chuyển từ phòng1 sang phòng2 ở slot2.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-room-selection",
+      "evidence": [
+        "M7A276-02142",
+        "M7A276-02130",
+        "M7A276-02141"
+      ],
+      "limits": "Bốn profile cấu hình, title mặc định khác nhau. Chưa arbitrary profile hoặc title-edit entitlement; không suy gameplay từ setup."
+    },
+    {
+      "summary": "Native Back/EOF/revoke dọn đúng ID và membership; chủ phòng đổi, phòng rỗng nghỉ. A đang ở sảnh thực thi matching90 xóa phòng2 và list rỗng; return241 rebuild giải thích vì sao không cần clear branch cho object đã mất.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-room-selection",
+      "evidence": [
+        "M7A276-02142",
+        "M7A276-02130",
+        "M7A276-02141"
+      ],
+      "limits": "Chief B có getter; D sau revoke có UI chief/Start + parser110/ID-clear, getter hết budget. Không raw-identical585/epoch qua restart/resume."
+    },
+    {
+      "summary": "Hub/Registry/FirstVacant, connection/room/visit queues, return fence, monotonic tuples và relay Factory chung đã tích hợp. Guard setup96/266 sửa từ discrepancy native; stale tuple bị đóng, fresh channel sau lỗi vẫn tạo được phòng mới.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-room-selection",
+      "evidence": [
+        "M7A276-00411",
+        "M7A276-00322",
+        "M7A276-02161",
+        "M7A276-02155",
+        "M7A276-02157"
+      ],
+      "limits": "8 nhóm synthetic và122 Rust tests không tự chứng minh native. Relay mesh/reuse/restart và M7b/c/d riêng."
+    },
+    {
+      "summary": "Các lượt lỗi/partial giữ đúng provenance; lượt đầu mất raw do cleanup API mismatch không được tính nghiệm thu. Sau kiểm exact finally control, native final105raw/606PCAP/93reply đều join/hash/freeze/owned cleanup.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-room-selection",
+      "evidence": [
+        "M7A276-01304",
+        "M7A276-01487",
+        "M7A276-01717",
+        "M7A276-01889",
+        "M7A276-01909",
+        "M7A276-02130"
+      ],
+      "limits": "Controller failure hoặc jypc bootstrap fault không là successful native. Không tuyên bố sửa AC hay Windows/Internet mới."
+    }
+  ],
+  "verification": [
+    {
+      "check": "122 Rust tests/fmt/clippy/locked build và tám nhóm managed TCP/SQLite/launcher/ownership",
+      "result": "pass",
+      "evidence": [
+        "M7A276-02161",
+        "M7A276-02155",
+        "M7A276-00019",
+        "M7A276-02150",
+        "M7A276-00322"
+      ],
+      "limits": "Source/TCP/design; không native proof riêng."
+    },
+    {
+      "check": "Bốn native account profiles/hai phòng/cross-room lifecycle và matching90 được đối chiếu từ PCAP/native/UI",
+      "result": "pass",
+      "evidence": [
+        "M7A276-02142",
+        "M7A276-02130",
+        "M7A276-02141"
+      ],
+      "limits": "Chỉ acceptance M7a, Wine/LAN giả lập; source freeze và cleanup0."
+    },
+    {
+      "check": "Legacy account16/four7/relay13 và docs/catalog/fragments/budgets",
+      "result": "pass",
+      "evidence": [
+        "M7A276-00024",
+        "M7A276-00099",
+        "M7A276-00220",
+        "M7A276-00017",
+        "M7A276-00016"
+      ],
+      "limits": "Legacy candidate retained; later96/266 guard only managed branch. CI/exact-head riêng trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP276-m7a-room-selection.json",
+      "bytes": 558201,
+      "sha256": "988b0e582654865e1471dd75a81b62cad00e79597d9a560cb95016c1a78d7155",
+      "count": 2197
+    }
+  ],
+  "delta": {
+    "added": [
+      "Opt-in account-owned managed room service, measured selection wire adapters and scoped native M7a proof."
+    ],
+    "corrected": [
+      "Setup96/266 overblocking and duplicate91 watch version; controller scene predicate and cleanup capture API corrected before final proof."
+    ],
+    "superseded": [
+      "Current fixed-only registry serving status. Không sửa complete record/audit/raw cũ hoặc scope các gate."
+    ]
+  },
+  "blockers": [
+    "M7b occupancy và lifecycle trận theo roster hiện hành; M7c lựa chọn nhân vật/đội/lỗi đầy; M7d ownership tích hợp. Toàn M7 chưa đạt.",
+    "Bốn profile đã đo, chưa phải profile tổng quát cho mọi account hoặc native DB-queue fault M5. UI sửa title bị profile hiện tại từ chối; native dùng hai title mặc định khác nhau.",
+    "Relay Factory theo room đã nối; chưa native relay mesh/reuse/key/restart/spoof hoặc tải50/8. N1R-b/M8 giữ dependency trong PLAN.",
+    "Không có gameplay phòng động, durable tuple qua restart, phân biệt raw585 giống nhau, resume/match restore hoặc nghiệm thu Internet mới."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "M7b occupancy/lifecycle theo PLAN; M7c/d sau đó. RE tối thiểu field occupancy đang chặn adapter; không lặp solved room consumers.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "M7a đã đạt; tiếp M7b hai phòng có trận riêng và không lẫn queue/timer/round/UDP, cùng M7c/d. Không nâng M7a thành full M7/M5.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T04:02:13.413532+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo implementation/native/manual group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "docs/evidence/rust-service/m7a-room-selection.json",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "docs/protocol/room-membership.md",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room.rs",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_registry.rs",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_relay.rs",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967.rs",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967/room_selection.rs",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "tools/rust_account_fixture.py",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "tools/test_rust_managed_rooms.py",
+      "state": "updated",
+      "reason": "Nguồn chuẩn đồng bộ scoped M7a implementation/native/limits và next M7b; không full M7/M5/relay claim."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đã link topic room-membership; contract mới nằm đúng topic, không nhân bản."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Áp dụng dashboard/feature-group audit/solo/privacy và exact-head workflow hiện hành."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-m7a-room-selection"
+  ]
+}
