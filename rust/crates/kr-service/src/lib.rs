@@ -22,6 +22,7 @@ pub mod room_registry;
 mod room_relay;
 mod room_service;
 mod room_wire;
+mod round_epochs;
 mod rules;
 mod terrain;
 pub mod udp_relay;

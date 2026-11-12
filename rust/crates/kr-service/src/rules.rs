@@ -68,8 +68,25 @@ pub(crate) enum EndpointPolicy {
     Relay,
 }
 
+/// Active roster policy, independent of the room's admission capacity.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub(crate) enum RoundRoster {
+    #[default]
+    Full,
+    ContiguousDuel,
+}
+impl RoundRoster {
+    pub(crate) fn size(self, capacity: usize) -> usize {
+        match self {
+            Self::Full => capacity,
+            Self::ContiguousDuel => 2,
+        }
+    }
+}
+
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct RoomRules {
+    pub(crate) roster: RoundRoster,
     pub(crate) endpoint: EndpointPolicy,
     pub(crate) slot_allocation: SlotAllocation,
     pub(crate) result: ResultPolicy,
@@ -117,6 +134,7 @@ impl RoomRules {
         }
         Ok((
             Self {
+                roster: RoundRoster::Full,
                 endpoint: cfg.endpoint_policy,
                 slot_allocation: cfg.slot_allocation,
                 result: if cfg.four_results || cfg.eight_battle {

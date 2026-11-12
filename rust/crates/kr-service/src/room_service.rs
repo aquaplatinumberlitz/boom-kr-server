@@ -19,6 +19,8 @@ use tokio::sync::watch;
 #[serde(deny_unknown_fields)]
 pub struct Config {
     pub max_rooms: usize,
+    #[serde(default)]
+    pub round_profile: Option<room_io::ManagedDuelConfig>,
 }
 struct Owner {
     connection: u64,
@@ -35,6 +37,8 @@ pub(crate) struct Hub {
     max_rooms: usize,
     changes: watch::Sender<u64>,
     relay: Option<room_relay::Factory>,
+    epochs: Arc<crate::round_epochs::RoundEpochs>,
+    round_profile: Option<Arc<room_io::ManagedDuel>>,
 }
 pub(crate) struct Channel {
     hub: Arc<Hub>,
@@ -58,6 +62,11 @@ impl Hub {
         if !(2..=64).contains(&cfg.max_rooms) {
             return Err(err("managed room bound must be 2..64"));
         }
+        let round_profile = cfg
+            .round_profile
+            .as_ref()
+            .map(|cfg| room_io::load_managed_duel(cfg, &prototype))
+            .transpose()?;
         let (changes, _) = watch::channel(0);
         Ok(Arc::new(Self {
             state: Mutex::new(State {
@@ -69,6 +78,8 @@ impl Hub {
             max_rooms: cfg.max_rooms,
             changes,
             relay,
+            epochs: Arc::new(crate::round_epochs::RoundEpochs::default()),
+            round_profile,
         }))
     }
     pub(crate) fn register(
@@ -137,7 +148,12 @@ impl Channel {
             s.next = session.checked_add(1).unwrap_or(0);
             s.rooms
                 .insert_with(session, RoomId(u32::from(session)), |key| {
-                    let shared = room_io::fork(&self.hub.prototype, key)?;
+                    let shared = room_io::fork(
+                        &self.hub.prototype,
+                        key,
+                        self.hub.epochs.clone(),
+                        self.hub.round_profile.clone(),
+                    )?;
                     if let Some(factory) = &self.hub.relay {
                         room_io::install_relay(&shared, factory.owner(key))?;
                     }
