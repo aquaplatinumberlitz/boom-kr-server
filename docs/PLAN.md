@@ -326,17 +326,45 @@ sau freshlogin; dữliệuwireunknown disabled thay vìfakeACK. Persistedresult 
 Rollback disable awarding/spend và giữledger/pendingaudit, không rollbacknativeoutcome thànhreaward.
 Chuyển khi durabletruth/nativeprojection reconcile; không chờ toànitem/mode.
 
-**RUST-M7 — luồng service cho nhiều người dùng thực.**
-Module lobby/roomregistry/membership/sessionauthorization/character-equipprojection; phụ thuộc M2/M5, lifecycleM3.
-Implementation: tạo/vào/rời đúngroom, listupdate/removal, capacity/mapguard/hosttransfer/Ready/reset; fixedteam
-support trước interactive nếuchưaRE. Không mộtroomfixture cho mọiuser nhưVNhubdemo. Chọn ít nhất hai phòng
-độc lập/mộtchannel trước khi gọi dịchvụnhiềuphòng; IDs/domainstate khôngarrayA..H hardcode.
-RE: dynamicmultirowroomlist/create/join/error-full/ownership/kick/selectedcharacter/teamclick đúngKR00967;
-khôngdùngVN89layout. Hidden/password/private/spectator giữoutscope cho tới producttask.
-Acceptance: native trên Rusthairoom độc lập/roomAlist-Bupdates, cùng accountkhôngsameplayer2slots, wrongroomcommand/
-outsiderhost/reset-oldmembership rejected và observednativecleanup. Sessionrevoke/DBfailure không phóng
-slotma/crosstalk/UDP cũkey hiện tạireuse; accountlogout/relogin làfreshsession trừresumeđãđo.
-Rollback cấulạisingle-roominternalprofile/disableunprovedactions, khôngxoapersistentprofile.
+**RUST-M7 — phòng tổng quát cho giai đoạn 1.**
+
+Đích của mốc này là một kênh với nhiều phòng độc lập, account sở hữu đúng player và membership, có thao tác tạo,
+vào, rời, chọn nhân vật và chọn đội trên client KR thật. R1 đã đạt; account fixed2 và profile 2/4/8 hiện hành là
+đầu vào tham chiếu, không tự chứng minh phòng động hoặc hồ sơ tổng quát của M5. M7 không nhận inventory, cửa hàng,
+EXP, thưởng hoặc mode phụ làm dependency. Sáu map và item của chúng thuộc G1; nghiệm thu M7 dùng map đã có proof.
+
+| Lát cắt chạy được | Đầu ra và điều kiện nghiệm thu |
+|---|---|
+| M7a: registry vào serving | Account channel ở sảnh không còn gắn sẵn phòng 1. Tạo phòng cấp RoomKey mới; danh sách 91 phản ánh đúng nhiều hàng; 82 chọn đúng tuple phòng, 86/EOF/revoke rời đúng membership. Native tối thiểu bốn client, hai phòng độc lập: tên/list, slot, chủ phòng, leave/rejoin và phòng biến mất khi hết người; không suy từ unit hoặc TCP. Chưa nhận gameplay phòng động ở lát này. |
+| M7b: occupancy và lifecycle trận | Ready/loading/Start, kết quả/reset/trận tiếp theo theo roster hiện hành và RoomRules, độc lập PlayerId với slot; không giả mọi phòng luôn đầy. Hai phòng có trận riêng và không lẫn queue, timer, result hoặc UDP khi reset/disconnect. Số người được hỗ trợ phải có contract và native tương ứng; cấu hình chưa đo phải từ chối rõ ràng. |
+| M7c: lựa chọn của người chơi | Đo đúng C2S và S2C cho đổi nhân vật, đổi đội và lỗi phòng đầy; client tự thao tác và peer thấy đúng, Ready phải được cập nhật theo policy công bố. Chỉ nhân vật trong phạm vi đã có stat/profile; không mở shop/equipment. Free 1v7 vẫn là giới hạn đã biết, không retry. |
+| M7d: tích hợp ownership | Hai session hoặc transport của cùng account không chiếm hai slot như hai player. Wrong-room/outsider-host/stale membership bị chặn; EOF, expiry, revoke và DB failure không để slot ma hoặc dữ liệu cũ tác động phòng khác. Native tối thiểu một đường account → chọn phòng → trận → reset, cùng các ca âm tính cần cho phần mới. |
+
+Thứ tự triển khai bắt đầu M7a, sau đó nối lifecycle và lựa chọn theo khoảng trống thực. M5 có thể làm profile
+account tổng quát và native DB-queue fault song song về mặt dependency; phần nào thật sự chặn projection/ownership
+phải được đo và nối trước khi nhận M7 tích hợp, không gắn account bất kỳ vào profile của người khác. Lát cắt đầu
+có thể dùng các profile đã đo để tách lỗi routing khỏi lỗi projection; không được dùng giới hạn đó để đóng toàn M7
+hoặc đích dịch vụ nội bộ cho mọi account.
+
+Module giữ một process: lobby, room registry, room owner/recipient queues và account session. Một connection có
+owner chọn phòng rõ ràng; registry → room có thứ tự lock cố định, không giữ lock qua DB await hoặc I/O. Mỗi room,
+visit, round và callback mang generation; public tuple chưa có epoch trên wire không được tái dùng khi chưa có
+chính sách stale kiểm được. Danh sách, occupancy và quyền host phải lấy từ state hiện hành, không từ fixture đếm sẵn.
+
+Trong M7, relay route/resource ownership phải theo room và membership tổng quát, không theo profile hoặc số người.
+Không thêm cờ four_*/eight_*, alias theo identity hoặc nhánh `capacity() == N`. Không tự fallback từ relay sang direct.
+Nghiệm thu relay nhiều người, reuse/restart và spoof chung IP thuộc **N1R-b sau M7, trước G1** theo dashboard;
+M7 không tự tuyên bố đã đạt các ca đó. Tải 50 người/8 phòng có relay thuộc M8, không suy từ trần cấu hình.
+
+RE chỉ mở cho multirow list/create/join/full-error/character/team hoặc lifecycle mới đang chặn lát cắt. Dùng lại
+builder và consumer KR đã có; không copy wire VN hoặc mở toàn bộ mode. Hidden/password/private/spectator, chat,
+bạn bè, guild và nhiều kênh ngoài scope mốc này. Hành vi chưa được hỗ trợ phải bị vô hiệu hoặc từ chối, không ACK giả.
+
+Acceptance toàn M7 cần đủ các lát cắt trên, source/TCP negative và native Rust trên Wine/LAN giả lập theo recipe
+đã chốt, raw/hash/source freeze/cleanup và đối chứng current-positive cho stale/failure. Phân biệt fresh process,
+fresh login, reconnect và account resume; không nhận resume/match restore từ leave/rejoin. R1 baseline giữ để
+rollback. Khi có lỗi, dừng nhận phòng mới và dùng binary/config baseline tương thích trước khi mở trận mới; không
+đổi route giữa vòng, xóa account/DB hoặc bỏ bằng chứng. Không đóng M7 từ registry unit, TCP accept hoặc log server.
 
 **RUST-M8 — vận hành nội bộ, admin và readiness phát hành.**
 Module telemetry/config/health/admin/storebackup/deployrunbook; làm xuyên từM1. Scope một Linuxinstance,
