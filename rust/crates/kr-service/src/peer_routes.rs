@@ -7,6 +7,7 @@ pub(crate) struct LegacyDirectPlan {
     round: u64,
     members: Vec<Membership>,
     endpoints: Vec<(u32, u16)>,
+    slots: Vec<u8>,
 }
 impl LegacyDirectPlan {
     pub(crate) fn new(
@@ -14,6 +15,24 @@ impl LegacyDirectPlan {
         capacity: usize,
         rows: impl IntoIterator<Item = (Membership, u8, u32, u16)>,
     ) -> io::Result<Self> {
+        Self::build(round, capacity, rows, false)
+    }
+    pub(crate) fn from_players(
+        round: u64,
+        capacity: usize,
+        rows: impl IntoIterator<Item = (Membership, u8, u32, u16)>,
+    ) -> io::Result<Self> {
+        Self::build(round, capacity, rows, true)
+    }
+    fn build(
+        round: u64,
+        capacity: usize,
+        rows: impl IntoIterator<Item = (Membership, u8, u32, u16)>,
+        sparse: bool,
+    ) -> io::Result<Self> {
+        if !(2..=8).contains(&capacity) {
+            return Err(io::Error::other("endpoint capacity outside bound"));
+        }
         let mut slots = vec![None; capacity];
         let mut members = Vec::with_capacity(capacity);
         for (member, slot, ip, port) in rows {
@@ -26,14 +45,32 @@ impl LegacyDirectPlan {
             *row = Some((ip, port));
             members.push(member);
         }
-        if round == 0 || capacity == 0 || slots.iter().any(Option::is_none) {
+        if round == 0 || members.len() < 2 || (!sparse && slots.iter().any(Option::is_none)) {
             return Err(io::Error::other("incomplete legacy endpoint plan"));
         }
         Ok(Self {
             round,
             members,
-            endpoints: slots.into_iter().map(Option::unwrap).collect(),
+            slots: slots
+                .iter()
+                .enumerate()
+                .filter_map(|(slot, row)| row.as_ref().map(|_| slot as u8))
+                .collect(),
+            endpoints: slots.into_iter().flatten().collect(),
         })
+    }
+    pub(crate) fn for_player(
+        &self,
+        round: u64,
+        member: Membership,
+    ) -> io::Result<Vec<(u8, u32, u16)>> {
+        let endpoints = self.for_recipient(round, member)?;
+        Ok(self
+            .slots
+            .iter()
+            .zip(endpoints)
+            .map(|(slot, (ip, port))| (*slot, *ip, *port))
+            .collect())
     }
     pub(crate) fn for_recipient(
         &self,

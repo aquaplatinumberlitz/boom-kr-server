@@ -186,6 +186,67 @@ pub fn start121_roster(body: &[u8], teams: &[u8]) -> io::Result<Vec<u8>> {
     Ok(out)
 }
 
+/// One current player in a Start. Character Attr key is independent of slot
+/// and spawn: native M7e control reverses keys0/1 while retaining both others.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct StartPlayer {
+    pub slot: u8,
+    pub spawn: u8,
+    pub character: u16,
+    pub team: u8,
+}
+
+/// Build current player rows from explicit fields, retaining the measured map
+/// prefix and outer tail. Service admission owns supported characters/rosters;
+/// accepting a wire shape here does not establish native compatibility.
+pub fn start121_players(template: &[u8], players: &[StartPlayer]) -> io::Result<Vec<u8>> {
+    if !(2..=8).contains(&players.len()) {
+        return Err(io::Error::other("Start player count outside bound"));
+    }
+    // Validate the retained source profile, not newly supplied player values.
+    let base = start121_duel(template)?;
+    let size = uint(&base[1..5], Width::U32)? as usize;
+    let stream = decode_bytes(&base[5..5 + size])?;
+    const ROW_TAIL: [u8; 20] = [
+        0, 0, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    ];
+    // Opaque flags/partner/u32s remain exactly the measured row branch. Do not
+    // silently transplant an unmeasured profile into this serializer.
+    for row in stream[54..].as_chunks::<26>().0 {
+        if row[1] != 0 || row[6..] != ROW_TAIL {
+            return Err(io::Error::other("unsupported Start player row branch"));
+        }
+    }
+    let mut ordered = players.to_vec();
+    ordered.sort_by_key(|player| player.slot);
+    let mut slots = std::collections::BTreeSet::new();
+    let mut spawns = std::collections::BTreeSet::new();
+    let mut selected = stream[..54].to_vec();
+    selected[49] = ordered.len() as u8;
+    for player in ordered {
+        if player.slot >= 8
+            || player.spawn >= 8
+            || player.character > 0x1fff
+            || player.team > 31
+            || !slots.insert(player.slot)
+            || !spawns.insert(player.spawn)
+        {
+            return Err(io::Error::other("invalid or duplicate Start player fields"));
+        }
+        selected.extend([player.slot, 0, player.spawn]);
+        selected.extend(player.character.to_le_bytes());
+        selected.push(player.team);
+        selected.extend(ROW_TAIL);
+    }
+    let selected_size = selected.len();
+    selected[1..5].copy_from_slice(&((selected_size - 5) as u32).to_le_bytes());
+    let mut out = base[..1].to_vec();
+    out.extend(put(selected_size as u64, Width::U32)?);
+    out.extend(encode_bytes(&selected)?);
+    out.extend_from_slice(&base[5 + size..]);
+    Ok(out)
+}
+
 pub fn start121_teams(body: &[u8], teams: &[u8]) -> io::Result<Vec<u8>> {
     if teams.len() != 8 || body.len() != 285 || uint(&body[..1], Width::U8)? != 0 {
         return Err(io::Error::other("expected measured eight start121"));
@@ -248,6 +309,45 @@ pub fn peer153(
     }
     for _ in endpoints.len()..26 {
         out.extend(put(0, Width::U8)?);
+    }
+    Ok(out)
+}
+
+/// Explicit slot table: absent slots get only the inactive byte. The first35
+/// bytes are the measured branch; self endpoints remain zero.
+pub fn peer153_players(
+    template: &[u8],
+    key: u32,
+    recipient: u8,
+    players: &[(u8, u32, u16)],
+) -> io::Result<Vec<u8>> {
+    if template.len() < 35 || !(2..=8).contains(&players.len()) {
+        return Err(io::Error::other("unsupported player peer roster"));
+    }
+    let mut slots = std::collections::BTreeMap::new();
+    for &(slot, ip, port) in players {
+        if slot >= 8 || ip == 0 || port == 0 || slots.insert(slot, (ip, port)).is_some() {
+            return Err(io::Error::other("invalid player peer slot/endpoint"));
+        }
+    }
+    if !slots.contains_key(&recipient) {
+        return Err(io::Error::other("peer recipient outside roster"));
+    }
+    let mut out = template[..35].to_vec();
+    out[15..19].copy_from_slice(&put(u64::from(key), Width::U32)?);
+    for slot in 0..26 {
+        out.extend(put(u64::from(slots.contains_key(&slot)), Width::U8)?);
+        if let Some(&(ip, port)) = slots.get(&slot) {
+            let (ip, port) = if slot == recipient {
+                (0, 0)
+            } else {
+                (ip, port)
+            };
+            for (ip, port) in [(ip, port), (0, 0), (0, 0)] {
+                out.extend(put(u64::from(ip), Width::U32)?);
+                out.extend(put(u64::from(port), Width::U16)?);
+            }
+        }
     }
     Ok(out)
 }

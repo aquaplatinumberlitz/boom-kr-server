@@ -6,12 +6,12 @@ use std::{
 };
 
 pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
-    if !matches!(room.round_size(), 4 | 8)
+    if (!room.player_round() && !matches!(room.round_size(), 4 | 8))
         || !room.valid_round_roster()
         || !matches!(room.phase, Phase::Armed { .. })
         || room.bombs.pending()
         || room.members.values().any(|m| m.life.delivery_pending())
-        || !room.fixed_teams_match()
+        || (!room.player_round() && !room.fixed_teams_match())
     {
         return None;
     }

@@ -177,7 +177,7 @@ impl Player {
         targets: &[crate::room::Membership],
     ) -> io::Result<()> {
         let unique: BTreeSet<_> = targets.iter().copied().collect();
-        if !matches!(targets.len(), 1 | 3 | 7) || unique.len() != targets.len() {
+        if !(1..=7).contains(&targets.len()) || unique.len() != targets.len() {
             return Err(io::Error::other("unsupported life clear recipient roster"));
         }
         let pending = self
@@ -194,7 +194,7 @@ impl Player {
         targets: &[crate::room::Membership],
     ) -> io::Result<()> {
         let unique: BTreeSet<_> = targets.iter().copied().collect();
-        if !matches!(targets.len(), 1 | 3 | 7)
+        if !(1..=7).contains(&targets.len())
             || unique.len() != targets.len()
             || self.deliveries.contains_key(digest)
         {
@@ -386,7 +386,7 @@ mod tests {
         let mut p = Player::default();
         p.apply(0, &report(17, 1), now, None);
         assert!(p.apply(0, &report(21, 2), later, None).forward);
-        assert!(p.forward21_targets("21:2", &targets[..2]).is_err());
+        assert!(p.forward21_targets("21:2", &[]).is_err());
         assert!(p.forward21_targets("21:2", &[targets[0]; 3]).is_err());
         p.forward21_targets("21:2", &targets).unwrap();
         assert!(p.forward21_targets("21:2", &targets).is_err());
@@ -422,5 +422,35 @@ mod tests {
             p.forward21_delivered("21:7", target);
         }
         assert!(!p.forward21_valid("21:7", fresh, None));
+    }
+}
+
+#[cfg(test)]
+mod variable_recipient_tests {
+    use super::*;
+    use crate::room::Membership;
+    #[test]
+    fn three_player_delivery_waits_for_both_distinct_current_recipients() {
+        let mut player = Player::default();
+        let a = Membership {
+            identity: 42,
+            connection: 11,
+            visit: 1,
+        };
+        let b = Membership {
+            identity: 900,
+            connection: 22,
+            visit: 2,
+        };
+        assert!(player.forward_report_targets("duplicate", &[a, a]).is_err());
+        player.forward_report_targets("death", &[a, b]).unwrap();
+        assert!(player.delivery_pending());
+        player.report_delivered("death", a);
+        player.report_delivered("death", a);
+        assert!(player.delivery_pending());
+        player.report_delivered("death", Membership { visit: 3, ..b });
+        assert!(player.delivery_pending());
+        player.report_delivered("death", b);
+        assert!(!player.delivery_pending());
     }
 }

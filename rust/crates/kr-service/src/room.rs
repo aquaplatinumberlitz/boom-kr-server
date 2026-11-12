@@ -142,12 +142,26 @@ impl Room {
     }
 
     pub(crate) fn round_size(&self) -> usize {
-        self.round_roster.size(self.capacity)
+        if self.round_roster == crate::rules::RoundRoster::Players {
+            self.members.len()
+        } else {
+            self.round_roster.size(self.capacity)
+        }
     }
     pub(crate) fn valid_round_roster(&self) -> bool {
         self.members.len() == self.round_size()
             && match self.round_roster {
                 crate::rules::RoundRoster::Full => true,
+                crate::rules::RoundRoster::Players => {
+                    (2..=self.capacity).contains(&self.members.len())
+                        && self
+                            .members
+                            .values()
+                            .map(|member| member.team)
+                            .collect::<BTreeSet<_>>()
+                            .len()
+                            >= 2
+                }
                 crate::rules::RoundRoster::Contiguous(count) => {
                     matches!(count, 2 | 4 | 8)
                         && count <= self.capacity
@@ -159,6 +173,9 @@ impl Room {
                         })
                 }
             }
+    }
+    pub(crate) fn player_round(&self) -> bool {
+        self.round_roster == crate::rules::RoundRoster::Players
     }
     pub(crate) fn round_teams(&self) -> &[u8] {
         &self.fixed_teams[..self.round_size()]
@@ -197,7 +214,11 @@ impl Room {
     }
     pub(crate) fn balanced_teams(&self) -> bool {
         let zero = self.members.values().filter(|m| m.team == 0).count();
-        let one = self.members.values().filter(|m| m.team == 1).count();
+        let one = self
+            .members
+            .values()
+            .filter(|m| m.team == if self.player_round() { 3 } else { 1 })
+            .count();
         zero > 0 && zero == one && zero + one == self.round_size()
     }
 
@@ -268,8 +289,12 @@ impl Room {
             Member {
                 key,
                 slot,
-                team: self.fixed_teams[usize::from(slot)],
-                character: None,
+                team: if self.player_round() {
+                    0
+                } else {
+                    self.fixed_teams[usize::from(slot)]
+                },
+                character: self.player_round().then_some(0),
                 ready: false,
                 setup: false,
                 late_after_abort: 0,
@@ -1003,4 +1028,46 @@ pub(crate) fn wire_key(round: u64) -> io::Result<u32> {
     12345u32
         .checked_add(u32::try_from(round).map_err(|_| io::Error::other("round key exhausted"))?)
         .ok_or_else(|| io::Error::other("round key exhausted"))
+}
+
+#[cfg(test)]
+mod player_round_tests {
+    use super::*;
+
+    #[test]
+    fn current_roster_allows_three_then_sparse_two_without_reusing_old_membership_or_round() {
+        let mut room = Room::with_allocation(8, SlotAllocation::FirstVacant).unwrap();
+        room.round_roster = crate::rules::RoundRoster::Players;
+        let mut keys = Vec::new();
+        for (id, conn) in [(70000, 11), (42, 22), (900, 33)] {
+            let key = room.enter(id, conn, keys.is_empty()).unwrap();
+            room.setup(key).unwrap();
+            keys.push(key);
+        }
+        assert!(!room.valid_round_roster()); // One team cannot start a match.
+        room.choose(keys[2], None, Some(3)).unwrap();
+        room.choose(keys[0], Some(1), None).unwrap();
+        assert!(room.valid_round_roster());
+        room.ready(keys[1]).unwrap();
+        room.ready(keys[2]).unwrap();
+        let first = room.begin(keys[0]).unwrap();
+        for key in &keys[..2] {
+            assert!(!room.ack(*key, first).unwrap());
+        }
+        assert!(room.ack(keys[2], first).unwrap());
+        room.end(first).unwrap();
+        for key in &keys {
+            room.refreshed(*key, first).unwrap();
+        }
+        room.leave(keys[1]).unwrap();
+        assert!(room.ready(keys[1]).is_err());
+        assert_eq!(room.members[&900].slot, 2);
+        assert_eq!(room.members[&70000].character, Some(1));
+        room.ready(keys[2]).unwrap();
+        let second = room.begin(keys[0]).unwrap();
+        assert_ne!(first, second);
+        assert!(room.ack(keys[0], first).is_err());
+        assert!(!room.ack(keys[0], second).unwrap());
+        assert!(room.ack(keys[2], second).unwrap());
+    }
 }

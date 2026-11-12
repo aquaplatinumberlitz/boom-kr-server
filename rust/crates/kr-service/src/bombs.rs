@@ -187,7 +187,7 @@ impl Ledger {
             owner,
         };
         let recipients: BTreeSet<_> = roster.iter().copied().collect();
-        if !matches!(recipients.len(), 2 | 4 | 8) || recipients.len() != roster.len() {
+        if !(2..=8).contains(&recipients.len()) || recipients.len() != roster.len() {
             return Ok(Err("unsupported_roster"));
         }
         self.next_wire += 1;

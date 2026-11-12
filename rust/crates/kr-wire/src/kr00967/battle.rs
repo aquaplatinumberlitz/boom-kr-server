@@ -14,15 +14,47 @@ pub fn rank175(teams: &[u8], winner: u8) -> io::Result<Vec<u8>> {
     {
         return Err(io::Error::other("unsupported fixed-four winning team"));
     }
+    rank175_players(
+        &teams
+            .iter()
+            .enumerate()
+            .map(|(slot, team)| (slot as u8, *team))
+            .collect::<Vec<_>>(),
+        winner,
+    )
+}
+
+/// Slot-indexed rank rows for an explicit current roster. Service decides the
+/// outcome. Sparse/variable native acceptance is independent of serialization.
+pub fn rank175_players(players: &[(u8, u8)], winner: u8) -> io::Result<Vec<u8>> {
+    if !(2..=8).contains(&players.len()) || winner > 31 {
+        return Err(io::Error::other("invalid player rank roster"));
+    }
+    let mut slots = std::collections::BTreeMap::new();
+    let mut teams = std::collections::BTreeSet::new();
+    for &(slot, team) in players {
+        if slot >= 8 || team > 31 || slots.insert(slot, team).is_some() {
+            return Err(io::Error::other("invalid or duplicate player rank slot"));
+        }
+        teams.insert(team);
+    }
+    if teams.len() < 2 || !teams.contains(&winner) {
+        return Err(io::Error::other(
+            "rank requires two teams and a current winner",
+        ));
+    }
     let mut inner = vec![0; 16];
     inner[9] = 255;
-    for team in teams {
-        let mut row = vec![0; 131];
-        row[0] = 1;
-        row[5] = if *team == winner { 1 } else { 2 };
-        inner.extend(row);
+    for slot in 0..16 {
+        if let Some(team) = slots.get(&slot) {
+            let mut row = vec![0; 131];
+            row[0] = 1;
+            row[5] = if *team == winner { 1 } else { 2 };
+            inner.extend(row);
+        } else {
+            inner.push(0);
+        }
     }
-    inner.resize(inner.len() + 16 - count, 0);
     let mut stream = vec![24];
     stream.extend_from_slice(&((inner.len() + 1) as u32).to_le_bytes());
     stream.push(0);

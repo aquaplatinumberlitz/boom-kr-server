@@ -78,7 +78,13 @@ pub struct ManagedRoundConfig {
 fn duel_teams() -> Vec<u8> {
     vec![0, 1]
 }
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct PlayerRoundConfig {
+    pub characters: Vec<u16>,
+}
 pub(crate) struct ManagedRound {
+    characters: Option<crate::characters::Catalog>,
     bodies: HashMap<Template, Vec<u8>>,
     initial_bomb_capacity: Vec<usize>,
     rules: RoomRules,
@@ -183,10 +189,55 @@ pub(crate) fn load_managed_round(
         }
     }
     Ok(Arc::new(ManagedRound {
+        characters: None,
         bodies,
         initial_bomb_capacity: cfg.initial_bomb_capacity.clone(),
         rules,
         limits,
+    }))
+}
+
+/// Experimental player round: all characters must have independent stat proof.
+/// Native arbitrary roster and active-departure acceptance remains separate.
+pub(crate) fn load_player_round(
+    cfg: &PlayerRoundConfig,
+    prototype: &Shared,
+) -> io::Result<Arc<ManagedRound>> {
+    let characters = crate::characters::Catalog::measured(&cfg.characters)?;
+    let source = prototype
+        .lock()
+        .map_err(|_| err("room prototype unavailable"))?;
+    if source.rules.endpoint != rules::EndpointPolicy::LegacyDirect
+        || source.model.terrain.is_some()
+    {
+        return Err(err(
+            "player rounds require direct UDP and no terrain profile",
+        ));
+    }
+    // Keep the measured source map/outer branch. Rows will be generated from
+    // current choices rather than selected by slot in the retained fixture.
+    let start = wire::start121_duel(source.body(Template::Start121))?;
+    Ok(Arc::new(ManagedRound {
+        characters: Some(characters),
+        bodies: HashMap::from([(Template::Start121, start)]),
+        initial_bomb_capacity: Vec::new(),
+        rules: RoomRules {
+            roster: rules::RoundRoster::Players,
+            result: ResultPolicy::Players,
+            // Survivor continuation is a later measured transition in M7e.
+            departure: DeparturePolicy::FenceActive,
+            bomb: rules::BombPolicy::OwnerReports,
+            life: rules::LifePolicy::TeamReports,
+            teams: TeamPolicy::BalancedManner,
+            slot_allocation: rules::SlotAllocation::FirstVacant,
+            endpoint: rules::EndpointPolicy::LegacyDirect,
+            player_choices: true,
+            ninth_admission_probe: false,
+        },
+        limits: rules::ReportLimits {
+            power: Vec::new(),
+            opaque167: &[4, 12, 16, 22, 32, 42],
+        },
     }))
 }
 
@@ -1100,7 +1151,18 @@ impl Session {
             };
             packet(
                 175,
-                crate::four_results::rank_body(r.model.round_teams(), team)?,
+                if r.rules.result == ResultPolicy::Players {
+                    wire::rank175_players(
+                        &r.model
+                            .members
+                            .values()
+                            .map(|m| (m.slot, m.team))
+                            .collect::<Vec<_>>(),
+                        team,
+                    )?
+                } else {
+                    crate::four_results::rank_body(r.model.round_teams(), team)?
+                },
             )
         } else {
             let members: Vec<_> = r.model.members.values().collect();
@@ -1622,6 +1684,12 @@ impl Session {
                 } else {
                     (None, Some(wire::team97(body)?))
                 };
+                if let Some(character) = character
+                    && let Some(catalog) =
+                        r.managed_round.as_ref().and_then(|p| p.characters.as_ref())
+                {
+                    catalog.get(character)?;
+                }
                 next.choose(member.key, character, team)?;
                 // Reserve all recipient queues before publishing any choice or
                 // Ready clear. Each batch carries the current subject fence.
@@ -1686,12 +1754,48 @@ impl Session {
                         ..Observation::default()
                     });
                 }
+                let player_start = if let Some(catalog) =
+                    r.managed_round.as_ref().and_then(|p| p.characters.as_ref())
+                {
+                    let players = next
+                        .members
+                        .values()
+                        .map(|member| {
+                            let character = member
+                                .character
+                                .ok_or_else(|| err("missing chosen character"))?;
+                            catalog.get(character)?;
+                            Ok(wire::StartPlayer {
+                                slot: member.slot,
+                                spawn: member.slot,
+                                character,
+                                team: member.team,
+                            })
+                        })
+                        .collect::<io::Result<Vec<_>>>()?;
+                    Some(wire::start121_players(
+                        r.body(Template::Start121),
+                        &players,
+                    )?)
+                } else {
+                    None
+                };
                 let round = next.begin(m.key)?;
                 next.pickups = pickups::Round::begin(round, &r.floor_catalog)?;
                 if let Some(profile) = &r.managed_round {
                     for member in next.members.values() {
                         next.bomb_capacity[usize::from(member.slot)] =
-                            profile.initial_bomb_capacity[usize::from(member.slot)];
+                            if let Some(catalog) = &profile.characters {
+                                catalog
+                                    .get(
+                                        member
+                                            .character
+                                            .ok_or_else(|| err("missing chosen character"))?,
+                                    )?
+                                    .capacity
+                            } else {
+                                profile.initial_bomb_capacity[usize::from(member.slot)]
+                            };
                     }
                 }
                 if r.rules.endpoint == rules::EndpointPolicy::Relay {
@@ -1729,7 +1833,10 @@ impl Session {
                             0,
                             vec![
                                 ("floor582".into(), r.reply(Template::Floor582, None)),
-                                ("start121".into(), r.reply(Template::Start121, None)),
+                                (
+                                    "start121".into(),
+                                    r.reply(Template::Start121, player_start.clone()),
+                                ),
                             ],
                         ),
                     ));
@@ -1770,11 +1877,19 @@ impl Session {
                                 .ok_or_else(|| err("missing current endpoint channel"))?;
                             endpoint_rows.push((peer.key, peer.slot, channel.endpoint, p));
                         }
-                        let plan = crate::peer_routes::LegacyDirectPlan::new(
-                            round,
-                            next.round_size(),
-                            endpoint_rows,
-                        )?;
+                        let plan = if next.player_round() {
+                            crate::peer_routes::LegacyDirectPlan::from_players(
+                                round,
+                                next.capacity(),
+                                endpoint_rows,
+                            )?
+                        } else {
+                            crate::peer_routes::LegacyDirectPlan::new(
+                                round,
+                                next.round_size(),
+                                endpoint_rows,
+                            )?
+                        };
                         let key = crate::room::wire_key(round)?;
                         for peer in next.members.values() {
                             effects.push((
@@ -1805,22 +1920,33 @@ impl Session {
                                         "peer153".into(),
                                         r.reply(
                                             Template::Peer153,
-                                            Some(wire::peer153(
-                                                r.body(Template::Peer153),
-                                                key,
-                                                peer.slot,
-                                                &if r.rules.endpoint == rules::EndpointPolicy::Relay
-                                                {
-                                                    r.relay
-                                                        .as_ref()
-                                                        .ok_or_else(|| {
-                                                            err("missing relay reservation")
-                                                        })?
-                                                        .endpoints(peer.key)?
-                                                } else {
-                                                    plan.for_recipient(round, peer.key)?.to_vec()
-                                                },
-                                            )?),
+                                            Some(if next.player_round() {
+                                                wire::peer153_players(
+                                                    r.body(Template::Peer153),
+                                                    key,
+                                                    peer.slot,
+                                                    &plan.for_player(round, peer.key)?,
+                                                )?
+                                            } else {
+                                                wire::peer153(
+                                                    r.body(Template::Peer153),
+                                                    key,
+                                                    peer.slot,
+                                                    &if r.rules.endpoint
+                                                        == rules::EndpointPolicy::Relay
+                                                    {
+                                                        r.relay
+                                                            .as_ref()
+                                                            .ok_or_else(|| {
+                                                                err("missing relay reservation")
+                                                            })?
+                                                            .endpoints(peer.key)?
+                                                    } else {
+                                                        plan.for_recipient(round, peer.key)?
+                                                            .to_vec()
+                                                    },
+                                                )?
+                                            }),
                                         ),
                                     )],
                                 ),
@@ -1913,9 +2039,23 @@ impl Session {
                 }
                 let member = r.member(self.identity, self.connection)?;
                 let request = bombs::Request::parse(body)?;
-                let result = if r.managed_round.as_ref().is_some_and(|profile| {
-                    profile.limits.power.get(usize::from(member.slot)) != Some(&request.power())
-                }) {
+                let wrong_profile_power = if let Some(profile) = &r.managed_round {
+                    if let Some(catalog) = &profile.characters {
+                        catalog
+                            .get(
+                                member
+                                    .character
+                                    .ok_or_else(|| err("missing chosen character"))?,
+                            )?
+                            .power
+                            != request.power()
+                    } else {
+                        profile.limits.power.get(usize::from(member.slot)) != Some(&request.power())
+                    }
+                } else {
+                    false
+                };
+                let result = if wrong_profile_power {
                     Err("unsupported_profile_power")
                 } else if r.managed_round.is_none()
                     && ((next.capacity() == 4 && request.power() != 1)
@@ -3279,6 +3419,7 @@ mod registry_foundation_tests {
                 generation: 1,
             });
             runtime.managed_round = Some(Arc::new(ManagedRound {
+                characters: None,
                 bodies: HashMap::new(),
                 initial_bomb_capacity: vec![1, 2],
                 rules: RoomRules::default(),
