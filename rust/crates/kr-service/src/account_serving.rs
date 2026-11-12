@@ -60,10 +60,18 @@ pub struct Config {
     pub database: PathBuf,
     pub launch_socket: PathBuf,
     pub launch_ttl_seconds: u64,
+    #[serde(default = "default_worker_queue_capacity")]
+    pub worker_queue_capacity: usize,
+}
+fn default_worker_queue_capacity() -> usize {
+    4
 }
 impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
-        if !(30..=120).contains(&self.launch_ttl_seconds) || self.database == self.launch_socket {
+        if !(30..=120).contains(&self.launch_ttl_seconds)
+            || self.database == self.launch_socket
+            || !(1..=64).contains(&self.worker_queue_capacity)
+        {
             return Err(io::Error::other("invalid account serving bounds"));
         }
         for path in [&self.database, &self.launch_socket] {
@@ -138,9 +146,13 @@ impl Owner {
             inode: meta.ino(),
         };
         fs::set_permissions(&config.launch_socket, fs::Permissions::from_mode(0o600))?;
-        let worker = Worker::open(config.database.clone(), 4, Duration::from_secs(3))
-            .await
-            .map_err(|e| io::Error::other(format!("account worker startup: {e:?}")))?;
+        let worker = Worker::open(
+            config.database.clone(),
+            config.worker_queue_capacity,
+            Duration::from_secs(3),
+        )
+        .await
+        .map_err(|e| io::Error::other(format!("account worker startup: {e:?}")))?;
         let bridge = match Bridge::new(
             worker.client(),
             projections.len(),

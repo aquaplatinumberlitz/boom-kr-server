@@ -131,12 +131,22 @@ impl Room {
     }
     pub(crate) fn valid_round_roster(&self) -> bool {
         self.members.len() == self.round_size()
-            && (self.round_roster != crate::rules::RoundRoster::ContiguousDuel
-                || (0..self.round_size()).all(|slot| {
-                    self.members
-                        .values()
-                        .any(|m| usize::from(m.slot) == slot && usize::from(m.team) == slot)
-                }))
+            && match self.round_roster {
+                crate::rules::RoundRoster::Full => true,
+                crate::rules::RoundRoster::Contiguous(count) => {
+                    matches!(count, 2 | 4 | 8)
+                        && count <= self.capacity
+                        && (0..count).all(|slot| {
+                            self.members.values().any(|member| {
+                                usize::from(member.slot) == slot
+                                    && self.fixed_teams.get(slot) == Some(&member.team)
+                            })
+                        })
+                }
+            }
+    }
+    pub(crate) fn round_teams(&self) -> &[u8] {
+        &self.fixed_teams[..self.round_size()]
     }
 
     pub(crate) fn set_round_epochs(
@@ -173,7 +183,7 @@ impl Room {
     pub(crate) fn balanced_teams(&self) -> bool {
         let zero = self.members.values().filter(|m| m.team == 0).count();
         let one = self.members.values().filter(|m| m.team == 1).count();
-        zero > 0 && zero == one && zero + one == self.capacity
+        zero > 0 && zero == one && zero + one == self.round_size()
     }
 
     pub fn current(&self, key: Membership) -> bool {
@@ -407,6 +417,14 @@ impl Room {
                 "eight fence requires current loading/Battle",
             ));
         }
+        self.fence_active(key)
+    }
+    /// Fail closed after loss in a measured team round. No survivor restart,
+    /// result or recovery packet is invented for an unsupported roster.
+    pub(crate) fn fence_active(&mut self, key: Membership) -> io::Result<()> {
+        if !matches!(self.phase, Phase::Armed { .. } | Phase::Loading { .. }) {
+            return Err(io::Error::other("fence requires current loading/Battle"));
+        }
         self.leave(key)?;
         self.sealed_abort = true;
         Ok(())
@@ -550,7 +568,7 @@ mod tests {
     #[test]
     fn duel_roster_admits_nonfull_room_but_rejects_sparse_extra_and_wrong_team() {
         let mut room = Room::with_allocation(4, SlotAllocation::FirstVacant).unwrap();
-        room.round_roster = crate::rules::RoundRoster::ContiguousDuel;
+        room.round_roster = crate::rules::RoundRoster::Contiguous(2);
         let host = room.enter(90, 11, true).unwrap();
         room.setup(host).unwrap();
         assert!(room.begin(host).is_err());

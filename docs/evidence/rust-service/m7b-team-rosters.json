@@ -1,0 +1,127 @@
+{
+  "schema": "kre-rust-managed-team-rosters-v1",
+  "checkpoint": "CP280",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/room-membership.md#rust-managed-team-rosters",
+  "acceptance": "M7b accepted only for configured contiguous2/4/8 known profiles, using CP279 duel plus CP280 team integration. No full M7/M5/general profiles or service delivery claim.",
+  "native": [
+    {
+      "root": "local/research/codex/m7b-teams4-native-r9",
+      "verification": "local/research/codex/m7b-teams4-native-r9/verification.json",
+      "kind": "lifecycle",
+      "roster_size": 4,
+      "source_commit": "17d137e9481aa062e5f737a738d7af244a67b85d",
+      "binary_sha256": "1e7cf5cba332adcdfeba6fbc42888df51c154e6a17ba55546712e78748a431c9",
+      "run_sha256": "841c53f8cee0d2c360c501cc79a3879a19ec13193690f18ae4e51f7de09c1dfb",
+      "raw_files": 214,
+      "cleanup": {
+        "net_namespace": "net:[4026533553]",
+        "remaining_pids": [],
+        "method": "Completed owned cleanup before export; namespace extinct after wrapper failure"
+      }
+    },
+    {
+      "root": "local/research/codex/m7b-teams8-native-r4",
+      "verification": "local/research/codex/m7b-teams8-native-r4/verification.json",
+      "kind": "lifecycle",
+      "roster_size": 8,
+      "source_commit": "c2946ce8728d9704ef6f9097eb1eb4bc6fa12d46",
+      "binary_sha256": "8248f8213c19f040d2006384b390d5d1504873a452ba8522a2cdaf0d0f64f144",
+      "run_sha256": "34efe4ac5ce58de6a01662fd9cee38818abf18d282fd09c2e3d52c63f0afd479",
+      "raw_files": 190,
+      "cleanup": {
+        "net_namespace": "net:[4026533553]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+      }
+    },
+    {
+      "root": "local/research/codex/m7b-teams4-native-r10",
+      "verification": "local/research/codex/m7b-teams4-native-r10/verification.json",
+      "kind": "EOF_fence",
+      "roster_size": 4,
+      "source_commit": "c2946ce8728d9704ef6f9097eb1eb4bc6fa12d46",
+      "binary_sha256": "8248f8213c19f040d2006384b390d5d1504873a452ba8522a2cdaf0d0f64f144",
+      "run_sha256": "809687d028ca7bbca92ae04c23c742f4b8d5eb7077b012c4349746b1275a2b4a",
+      "raw_files": 166,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+      }
+    }
+  ],
+  "client": {
+    "build": "KR00967 diagnostic offline copy",
+    "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "environment": "Eight virtual hosts/isolated virtual LAN/direct UDP; no external route."
+  },
+  "reuse": {
+    "locator": "local/research/codex/m7b-roster-source-r1/reuse.json",
+    "sources": "CP201/202/209/210/274 fixed4/8 native Start/stat/peer/life/rank; CP279 managed duel/epoch/ownership.",
+    "direct": "Exact retained2/4/8 Start vectors and native sites/fixture layouts; Python reference retained.",
+    "avoids": "No new binary function RE, VN opcode port or repeated bootstrap/codec baseline.",
+    "source_equivalence": "local/research/codex/m7b-team-source-equivalence.json"
+  },
+  "checks": {
+    "rust_tests": 130,
+    "synthetic4": 8,
+    "synthetic8": 7,
+    "synthetic_duel": 7
+  },
+  "synthetic": [
+    {
+      "root": "local/research/codex/m7b-teams4-tmpfs-r4",
+      "verification": "local/research/codex/m7b-teams4-tmpfs-r4/tcp/verification.json",
+      "export": "local/research/codex/m7b-teams4-tmpfs-r4/export-seal.json"
+    },
+    {
+      "root": "local/research/codex/m7b-teams8-tmpfs-r4",
+      "verification": "local/research/codex/m7b-teams8-tmpfs-r4/tcp/verification.json",
+      "export": "local/research/codex/m7b-teams8-tmpfs-r4/export-seal.json"
+    },
+    {
+      "root": "local/research/codex/m7b-teams-duel-tmpfs-r4",
+      "verification": "local/research/codex/m7b-teams-duel-tmpfs-r4/tcp/verification.json",
+      "export": "local/research/codex/m7b-teams-duel-tmpfs-r4/export-seal.json"
+    }
+  ],
+  "failure_and_recovery": [
+    {
+      "root": "local/research/codex/m7b-teams4-native-r2",
+      "result": "failure_raw_loss_no_runtime_acceptance",
+      "cause": "Pinned preparer edited during active run; SIGINT escaped finally before tmpfs export. No retained runtime/raw or acceptance; owned PID scan empty does not reconstruct missing cleanup evidence.",
+      "evidence": "local/research/codex/m7b-teams4-native-r2/native/failure-seal.json"
+    },
+    {
+      "root": "local/research/codex/m7b-teams4-native-r9",
+      "result": "complete_runtime_recovered_export_wrapper_exit1",
+      "cause": "umount busy after verified same-byte export. Export kept, source pins verified, namespace extinct; original run/launch-exit1 untouched.",
+      "evidence": "local/research/codex/m7b-teams4-native-r9/native/export-recovery-seal.json"
+    },
+    {
+      "root": "local/research/codex/m7b-teams4-native-r10",
+      "result": "runtime_pass_with_terminal_debugger_failure_during_shutdown",
+      "evidence": "local/research/codex/m7b-teams4-native-r10/cleanup-observer-review.json"
+    }
+  ],
+  "other_failures": [
+    "4/r1 topology namespace prerequisite;4/r3 prepared only;4/r4 early probes;4/r5 missing observer import;4/r6 unsupported pickup124;4/r7 aux46;4/r8 aux33. No acceptance from failed runs.",
+    "8/r1 preparation SyntaxError only;8/r2 Wineboot timeout;8/r3 actual167/body32 overblocked, later abort retained."
+  ],
+  "policy": {
+    "opaque142": "Design: body7/own slot/map row-col/current armed membership/budget64; opaque u32 aux, no ACK/reveal/item/world authority. Native actual aux varies, not an enumerated semantic contract.",
+    "opaque167": "Known body sizes, bounded observation only. Actual8/body32 added from independent PCAP; semantics unknown.",
+    "account_queue": "1–64/default4, native config64, worker deadline3s/ownership/failclosed unchanged; not load/DB-fault certification."
+  },
+  "limits": [
+    "M7c: lựa chọn nhân vật/đội và lỗi phòng đầy bằng client thật; M7d: ownership, duplicate transport, expiry/revoke/DB failure tích hợp. Toàn M7/M5 chưa đóng.",
+    "Chỉ known zero profiles, contiguous2/4/8 và đội/config đã đo; sparse/roster khác bị từ chối. Không có pickup/terrain/item extension trên managed serving.",
+    "Teams mất thành viên thì seal round, không tự tạo kết quả/recovery hoặc Start roster thiếu. Native EOF mới đo4 người; policy8 được kiểm synthetic cùng cơ chế.",
+    "Epoch tối đa255 lần cấp/instance; mixed key không là auth hoặc durable restart/reuse. N1R-b và M8 còn theo PLAN; không thêm dependency Internet thật vào M7 LAN.",
+    "Wine diagnostic copy/isolated virtual LAN/direct UDP; separate declared runs/binaries and targeted EOF proof, not one fabricated continuous run. Opaque142/167 are bounded no-effect design observations. R9 wrapper recovery and R10 terminal debugger teardown error explicitly retained."
+  ]
+}

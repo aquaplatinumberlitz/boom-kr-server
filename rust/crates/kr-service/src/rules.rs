@@ -73,13 +73,13 @@ pub(crate) enum EndpointPolicy {
 pub(crate) enum RoundRoster {
     #[default]
     Full,
-    ContiguousDuel,
+    Contiguous(usize),
 }
 impl RoundRoster {
     pub(crate) fn size(self, capacity: usize) -> usize {
         match self {
             Self::Full => capacity,
-            Self::ContiguousDuel => 2,
+            Self::Contiguous(count) => count,
         }
     }
 }
@@ -202,6 +202,32 @@ pub(crate) fn recipient_queue(capacity: usize) -> usize {
 
 fn err(s: &str) -> io::Error {
     io::Error::other(s.to_owned())
+}
+
+/// Measured report shapes and initial power by round profile. Observation-only
+/// messages carry no authority or effect merely because their length is known.
+pub(crate) struct ReportLimits {
+    pub power: Vec<u8>,
+    pub opaque167: &'static [usize],
+}
+impl ReportLimits {
+    pub(crate) fn measured(count: usize) -> io::Result<Self> {
+        match count {
+            2 => Ok(Self {
+                power: vec![1, 1],
+                opaque167: &[4, 12, 16, 22, 32, 42],
+            }),
+            4 => Ok(Self {
+                power: vec![1, 1, 1, 1],
+                opaque167: &[4, 16, 22, 32],
+            }),
+            8 => Ok(Self {
+                power: vec![1, 1, 1, 1, 1, 1, 2, 2],
+                opaque167: &[4, 22, 32, 42],
+            }),
+            _ => Err(err("unmeasured report profile")),
+        }
+    }
 }
 
 #[cfg(test)]

@@ -20,7 +20,7 @@ use tokio::sync::watch;
 pub struct Config {
     pub max_rooms: usize,
     #[serde(default)]
-    pub round_profile: Option<room_io::ManagedDuelConfig>,
+    pub round_profile: Option<room_io::ManagedRoundConfig>,
 }
 struct Owner {
     connection: u64,
@@ -38,7 +38,7 @@ pub(crate) struct Hub {
     changes: watch::Sender<u64>,
     relay: Option<room_relay::Factory>,
     epochs: Arc<crate::round_epochs::RoundEpochs>,
-    round_profile: Option<Arc<room_io::ManagedDuel>>,
+    round_profile: Option<Arc<room_io::ManagedRound>>,
 }
 pub(crate) struct Channel {
     hub: Arc<Hub>,
@@ -65,7 +65,7 @@ impl Hub {
         let round_profile = cfg
             .round_profile
             .as_ref()
-            .map(|cfg| room_io::load_managed_duel(cfg, &prototype))
+            .map(|cfg| room_io::load_managed_round(cfg, &prototype))
             .transpose()?;
         let (changes, _) = watch::channel(0);
         Ok(Arc::new(Self {

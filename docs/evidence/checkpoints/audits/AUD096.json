@@ -1,0 +1,98 @@
+{
+  "id": "AUD096",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-managed-team-rosters"
+  ],
+  "completed_through": "CP280",
+  "recorded_utc": "2026-11-12T11:03:26.414928+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/room-membership.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/rust-service/m7b-team-rosters.json",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_service.rs",
+    "rust/crates/kr-service/src/rules.rs",
+    "rust/crates/kr-service/src/four_results.rs",
+    "rust/crates/kr-service/src/account_serving.rs",
+    "tools/test_rust_managed_team_rosters.py",
+    "local/research/codex/m7b-team-acceptance.json",
+    "local/research/codex/m7b-teams4-native-r9/verification.json",
+    "local/research/codex/m7b-teams4-native-r9/ui-review.json",
+    "local/research/codex/m7b-teams4-native-r9/native/export-recovery-seal.json",
+    "local/research/codex/m7b-teams4-native-r2/native/failure-seal.json",
+    "local/research/codex/m7b-teams4-native-r7/142-analysis.json",
+    "local/research/codex/m7b-teams4-native-r8/142-analysis.json",
+    "local/research/codex/m7b-teams8-native-r3/167-analysis.json",
+    "local/research/codex/m7b-teams8-native-r4/verification.json",
+    "local/research/codex/m7b-teams4-native-r10/verification.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence/raw và rà source theo actual roster, identity/slot, preload/lock, queue/deadline, epoch/recipient fences. Đối chiếu native Start/stat/peer/life/rank/return với PCAP giải mã độc lập và retained fixed-profile vectors; xem trực tiếp UI. Tách proof runtime, policy synthetic và giới hạn chưa đo. Đối chiếu cả thất bại mất raw lẫn export phục hồi, không sửa record/raw cũ.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Các projection/budgets và barrier phụ thuộc đầy phòng hoặc chỉ contiguous duel.",
+      "correction": "Contiguous(n) và typed configured profiles chiếu đúng known2/4/8 input; đội/stat theo slot, admission capacity độc lập. Bốn người trong capacity8 được đo native; profile chưa đo bị chặn.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/room.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/rules.rs",
+        "docs/protocol/room-membership.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Queue4 không đủ burst8 authorize; test storage có QueueExpired.",
+      "correction": "Queue capacity cấu hình1–64/default4, giữ deadline3s và fail closed. Source/TCP/native có evidence riêng; tmpfs control không chứng minh nguyên nhân filesystem hoặc tải đích.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/account_serving.rs",
+        "docs/evidence/rust-service/m7b-team-rosters.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Whitelist aux142 và thiếu167/body32 làm đóng channel rồi native abort.",
+      "correction": "Giữ raw thất bại. Managed142 chỉ quan sát u32 opaque với shape/current-member/budget; không ACK/item/world. Managed8 thêm đúng actual16732 không hiệu ứng; legacy allowlists giữ nguyên.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/rules.rs",
+        "tools/test_rust_managed_team_rosters.py",
+        "docs/evidence/rust-service/m7b-team-rosters.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "R2 sửa pinned preparer khi active; SIGINT trong finally làm mất tmpfs raw. R9 hoàn tất runtime nhưng umount busy sau same-byte export.",
+      "correction": "R2 không nghiệm thu và không phục hồi giả raw. Dùng preparer version riêng, signal ignored trong finally, exact signal/export control. R9 giữ nguyên wrapper exit1, seal riêng export còn đủ bytes và namespace extinct; native verifier dùng locator phục hồi rõ ràng. Recipe mới ghi export proof trước bounded unmount retry.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7b-team-rosters.json",
+        "local/research/codex/m7b-teams4-native-r2/native/failure-seal.json",
+        "local/research/codex/m7b-teams4-native-r9/native/export-recovery-seal.json"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Có thể đồng nhất fixed/profile native, managed serving, merge và toàn M7/full service.",
+      "correction": "Mỗi lượt/source/binary/acceptance ghi riêng, giữ giới hạn ownership/profile/relay/restart và feature catalog partial. Không nhận mọi topology hoặc production từ LAN.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/evidence/rust-service/m7b-team-rosters.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "M7c: lựa chọn nhân vật/đội và lỗi phòng đầy bằng client thật; M7d: ownership, duplicate transport, expiry/revoke/DB failure tích hợp. Toàn M7/M5 chưa đóng.",
+    "Chỉ known zero profiles, contiguous2/4/8 và đội/config đã đo; sparse/roster khác bị từ chối. Không có pickup/terrain/item extension trên managed serving.",
+    "Teams mất thành viên thì seal round, không tự tạo kết quả/recovery hoặc Start roster thiếu. Native EOF mới đo4 người; policy8 được kiểm synthetic cùng cơ chế.",
+    "Epoch tối đa255 lần cấp/instance; mixed key không là auth hoặc durable restart/reuse. N1R-b và M8 còn theo PLAN; không thêm dependency Internet thật vào M7 LAN."
+  ]
+}
