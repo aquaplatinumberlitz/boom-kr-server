@@ -166,6 +166,7 @@ struct ActorProfile {
     configured_peer: Ipv4Addr,
 }
 struct BoundProfiles {
+    account_template: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
     managed: Option<Arc<room_service::Hub>>,
     actors: HashMap<room::PlayerId, ActorProfile>,
     legacy_peers: HashMap<Ipv4Addr, room::PlayerId>,
@@ -372,6 +373,35 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         } else {
             None
         };
+        let account_template = if two
+            .account_admission
+            .as_ref()
+            .is_some_and(|cfg| cfg.profile_mode == account_serving::ProfileMode::DatabaseZero)
+        {
+            if managed.is_none()
+                || two
+                    .managed_rooms
+                    .as_ref()
+                    .is_none_or(|cfg| cfg.player_round.is_none())
+            {
+                return Err(io::Error::other(
+                    "database account profiles require managed player rounds",
+                ));
+            }
+            let actor = actors
+                .values()
+                .min_by_key(|actor| actor.identity)
+                .expect("validated actors");
+            let player =
+                room_io::account_template_source(room.as_ref().expect("validated room prototype"))?;
+            Some(Arc::new(kr_wire::kr00967::AccountTemplate::parse(
+                &actor.packets["auth_A"].payload,
+                &actor.packets["own291"].payload,
+                &player,
+            )?))
+        } else {
+            None
+        };
         let rooms = if managed.is_some() {
             None
         } else {
@@ -387,6 +417,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             .transpose()?
         };
         Some(BoundProfiles {
+            account_template,
             managed,
             actors,
             legacy_peers,
@@ -1118,7 +1149,19 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
             .values()
             .map(|a| (a.identity, a.name.clone()))
             .collect();
-        Some(account_serving::Owner::open(config, profiles).await?)
+        Some(
+            account_serving::Owner::open(
+                config,
+                profiles,
+                profile
+                    .bound
+                    .as_ref()
+                    .expect("validated profiles")
+                    .account_template
+                    .clone(),
+            )
+            .await?,
+        )
     } else {
         None
     };

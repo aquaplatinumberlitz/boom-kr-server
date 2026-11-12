@@ -70,6 +70,7 @@ struct Entry {
     frontend: Option<[u8; 32]>,
     echo: Option<u32>,
     peer: Ipv4Addr,
+    reported: Option<Ipv4Addr>,
     connection: Option<u64>,
     deadline: Instant,
 }
@@ -307,7 +308,7 @@ pub struct Bridge {
 impl Bridge {
     /// Small process-local launch registry. No persistence or multi-process fence.
     pub fn new(client: Client, capacity: usize, ttl: Duration) -> Result<Self> {
-        if !(1..=32).contains(&capacity)
+        if !(1..=128).contains(&capacity)
             || !(Duration::from_millis(1)..=Duration::from_secs(120)).contains(&ttl)
         {
             return Err(Error::InvalidInput);
@@ -327,7 +328,21 @@ impl Bridge {
     /// Called by a trusted backend/launcher seam using a strong session token.
     /// The caller cannot turn an arbitrary player ID/source IP into ownership.
     pub async fn issue(&self, token: &Token, player: i64, peer: Ipv4Addr) -> Result<Launch> {
+        self.issue_metadata(token, player, peer, None).await
+    }
+    /// Private authenticated launcher metadata. It never selects backend identity.
+    pub(crate) async fn issue_metadata(
+        &self,
+        token: &Token,
+        player: i64,
+        peer: Ipv4Addr,
+        reported: Option<Ipv4Addr>,
+    ) -> Result<Launch> {
         if player < 1 || peer.is_unspecified() || peer.is_multicast() || peer.is_broadcast() {
+            return Err(Error::InvalidInput);
+        }
+        if reported.is_some_and(|ip| ip.is_unspecified() || ip.is_multicast() || ip.is_broadcast())
+        {
             return Err(Error::InvalidInput);
         }
         let token = copy_token(token)?;
@@ -352,6 +367,7 @@ impl Bridge {
                     frontend: None,
                     echo: None,
                     peer,
+                    reported,
                     connection: None,
                     deadline: Instant::now() + self.ttl,
                 },
@@ -465,7 +481,8 @@ impl Bridge {
             if entry.phase != Phase::Issued || entry.peer != peer {
                 return Err(Error::Denied);
             }
-            let expected = expected_address(entry.player.as_ref().ok_or(Error::Denied)?);
+            let owner = entry.player.as_ref().ok_or(Error::Denied)?;
+            let expected = entry.reported.or_else(|| expected_address(owner));
             if expected != Some(reported) {
                 return Err(Error::Denied);
             }

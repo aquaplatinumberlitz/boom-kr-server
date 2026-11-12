@@ -3,6 +3,12 @@ use super::{decode_bytes, encode_bytes, put, uint};
 use crate::{Width, read_uint};
 use std::io;
 
+fn supported_player_body(body: &[u8]) -> bool {
+    // Preserve the original measured fixed-size carriers, including opaque
+    // fields. Other name sizes must use the explicit zero-account schema.
+    [200, 204].contains(&body.len()) || super::PlayerTemplate::parse_account(body).is_ok()
+}
+
 /// Actual KR room UI producers:92/u8+u16 and97/u8. One local player
 /// only; this does not establish multi-local-player or entitlement support.
 pub fn character92(body: &[u8]) -> io::Result<u16> {
@@ -26,7 +32,7 @@ pub fn team97(body: &[u8]) -> io::Result<u8> {
 /// Native DC6700 reads character from bits16..28 of the slot state.
 /// Preserve every other bit; choice entitlement belongs to the service.
 pub fn player106_character(body: &[u8], character: u16) -> io::Result<Vec<u8>> {
-    if super::PlayerTemplate::parse_account(body).is_err() || character > 0x1fff {
+    if !supported_player_body(body) || character > 0x1fff {
         return Err(io::Error::other("unsupported player character projection"));
     }
     let mut out = body.to_vec();
@@ -46,8 +52,7 @@ pub fn player106(
     ready: bool,
     chief: bool,
 ) -> io::Result<Vec<u8>> {
-    if super::PlayerTemplate::parse_account(template).is_err()
-        || uint(&template[1..5], Width::U32)? != u64::from(identity)
+    if !supported_player_body(template) || uint(&template[1..5], Width::U32)? != u64::from(identity)
     {
         return Err(io::Error::other("wrong pinned player106 identity"));
     }
@@ -61,10 +66,7 @@ pub fn player106_state(
     ready: bool,
     chief: bool,
 ) -> io::Result<Vec<u8>> {
-    if super::PlayerTemplate::parse_account(template).is_err()
-        || slot >= 26
-        || !matches!(team, 0 | 1 | 3)
-    {
+    if !supported_player_body(template) || slot >= 26 || !matches!(team, 0 | 1 | 3) {
         return Err(io::Error::other("unsupported player106 slot/team"));
     }
     let mut body = template.to_vec();

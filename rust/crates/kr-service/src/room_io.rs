@@ -655,6 +655,20 @@ pub(crate) fn full_idle(shared: &Shared) -> io::Result<bool> {
     Ok(runtime.model.phase == Phase::Idle
         && runtime.model.members.len() >= runtime.model.capacity())
 }
+pub(crate) fn account_template_source(shared: &Shared) -> io::Result<Vec<u8>> {
+    let runtime = shared
+        .lock()
+        .map_err(|_| err("room prototype unavailable"))?;
+    if !runtime.channels.is_empty() || !runtime.model.members.is_empty() {
+        return Err(err("account template needs pristine prototype"));
+    }
+    runtime
+        .players
+        .iter()
+        .min_by_key(|(id, _)| *id)
+        .map(|(_, reply)| reply.payload.clone())
+        .ok_or_else(|| err("missing player template"))
+}
 pub(crate) fn detach(shared: &Shared, identity: u32, connection: u64) -> io::Result<()> {
     shared
         .lock()
