@@ -244,14 +244,14 @@ def main():
         for client in clients:load(client,32101+clients.index(client))
         fresh=[go(group)for group in groups];assert len(set(keys+fresh))==len(keys+fresh)
         cases.append('next_matches_receive_fresh_keys_and_current_member_peer_tables')
-        if count == 4:
-            # Independently reassembled native142, managed Beta/slot0:
-            # row9,col6,slot0,aux46. This must not ACK or grant item effects.
-            for group in groups:
-                group[0].send(142, bytes.fromhex('535c5a96ca53bb'))
-            for client in clients:
-                client.quiet()
-            cases.append('retained_native142_aux46_observed_without_reply_or_item_grant')
+        # Retained native142 aux46, then an intentionally unmeasured u32:
+        # opaque observation is design policy, never recovered item authority.
+        for group in groups:
+            group[0].send(142, bytes.fromhex('535c5a96ca53bb'))
+            group[0].send(142, codec.pack_fields([6, 6, 0, 0x12345678], [1, 1, 1, 4]))
+        for client in clients:
+            client.quiet()
+        cases.append('opaque142_native_and_unmeasured_aux_have_no_reply_or_item_grant')
         def bomb(slot,key):return codec.pack_fields([key,0,slot,1,3,3,1,0,0,0,1,1,0],[4,1,1,4,1,1,1,1,1,1,1,4,1])
         if len(groups)>1:
             groups[0][0].send(118,bomb(0,fresh[1]));groups[1][0].send(118,bomb(0,keys[1]))

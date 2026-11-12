@@ -209,7 +209,6 @@ fn err(s: &str) -> io::Error {
 pub(crate) struct ReportLimits {
     pub power: Vec<u8>,
     pub opaque167: &'static [usize],
-    pub terrain_aux: &'static [u64],
 }
 impl ReportLimits {
     pub(crate) fn measured(count: usize) -> io::Result<Self> {
@@ -217,19 +216,14 @@ impl ReportLimits {
             2 => Ok(Self {
                 power: vec![1, 1],
                 opaque167: &[4, 12, 16, 22, 32, 42],
-                terrain_aux: &[37, u32::MAX as u64],
             }),
             4 => Ok(Self {
                 power: vec![1, 1, 1, 1],
                 opaque167: &[4, 16, 22, 32],
-                // Actual managed-room native142 also reports aux46. This is
-                // bounded observation only, without reveal/item authority.
-                terrain_aux: &[37, 46, u32::MAX as u64],
             }),
             8 => Ok(Self {
                 power: vec![1, 1, 1, 1, 1, 1, 2, 2],
                 opaque167: &[4, 22, 42],
-                terrain_aux: &[33, 37, 39, 47, u32::MAX as u64],
             }),
             _ => Err(err("unmeasured report profile")),
         }

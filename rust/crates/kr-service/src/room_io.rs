@@ -1953,13 +1953,16 @@ impl Session {
                     if slot != u64::from(member.slot)
                         || row >= 13
                         || col >= 15
-                        || !(if let Some(profile) = &r.managed_round {
-                            profile.limits.terrain_aux.contains(&aux)
-                        } else if next.capacity() == 8 {
-                            [33, 37, 39, 47, u64::from(u32::MAX)].contains(&aux)
-                        } else {
-                            [37, u64::from(u32::MAX)].contains(&aux)
-                        })
+                        // Managed profiles treat aux as an opaque u32. Native
+                        // values vary between identical round inputs; accepting
+                        // the shape grants no reveal, item, world or ACK effect.
+                        // Legacy profiles retain their original allowlists.
+                        || (r.managed_round.is_none()
+                            && !(if next.capacity() == 8 {
+                                [33, 37, 39, 47, u64::from(u32::MAX)].contains(&aux)
+                            } else {
+                                [37, u64::from(u32::MAX)].contains(&aux)
+                            }))
                     {
                         return Err(err("unsupported four bomb-only142 report"));
                     }
