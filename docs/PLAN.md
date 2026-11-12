@@ -480,6 +480,13 @@ Kiểm kê là dữ liệu tĩnh; cột "server phải làm gì" điền dần b
 Acceptance: native trên Rust cho từng map/nhóm item được công bố, hai vòng liên tiếp, có ca âm tính. Phần chưa đo thì
 tắt, không gửi ACK giả. Toàn bộ map/item/mode còn lại thuộc giai đoạn sau theo định hướng dài hạn.
 
+Dữ liệu tĩnh đã chuẩn bị cho G1: `tools/export_map_profile.py` xuất profile từng map từ pack, và
+[ngữ nghĩa tile](content/tile-semantics.md) nêu quy tắc ứng viên suy loại ô (trống, chặn, thùng) từ bảng tile của client.
+Quy tắc mới chỉ được kiểm trên ExVillage01 (195/195 ô), nên với map khác nó là ứng viên cho tới khi có trận native.
+Thứ tự thử map đề xuất theo số ô quy tắc chưa phân loại được: Factory07 (0), Forest07 (1), Patrit14 (1), Village10 (18),
+Camp08 (50), Tomb12 (104). Các loại ô chưa đo hành vi (bụi cỏ, thùng cứng, đường kẻ, giếng, cầu…) phải đo riêng trước khi
+công bố map chứa chúng; profile tĩnh chưa thay được adapter cho các packet vào trận.
+
 <a id="rust-service-exit-criteria"></a>
 ### Khi nào đủ demo, dịch vụ nội bộ và phát hành rộng hơn?
 
