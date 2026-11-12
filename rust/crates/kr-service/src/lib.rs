@@ -720,10 +720,10 @@ async fn local_lobby_connection(
                 && room_io::Session::handles(packet.opcode)
             {
                 if let Some(account) = &mut account {
-                    // Admission of a current owned room command is activity.
-                    // No runtime lock is held across the bounded DB worker await;
-                    // Session::packet rechecks connection/membership afterwards.
-                    tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(true)=>value? };
+                    // Current room commands are activity. Literal opaque79 is
+                    // observation-only and must not extend account idle expiry.
+                    // No lock crosses DB await; Session rechecks membership.
+                    tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(packet.opcode != 79)=>value? };
                 }
                 let observation = session.packet(packet.opcode, &packet.payload)?;
                 emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;

@@ -37,6 +37,7 @@ pub struct Member {
     opaque123: u16,
     opaque167: u16,
     opaque142: u16,
+    loading79: bool,
     pub(crate) life: crate::life::Player,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -301,6 +302,7 @@ impl Room {
                 opaque123: 0,
                 opaque167: 0,
                 opaque142: 0,
+                loading79: false,
                 life: crate::life::Player::default(),
             },
         );
@@ -432,6 +434,7 @@ impl Room {
             member.opaque123 = 0;
             member.opaque167 = 0;
             member.opaque142 = 0;
+            member.loading79 = false;
             member.life.begin();
             member.late_after_abort = 0;
         }
@@ -544,6 +547,23 @@ impl Room {
     }
     /// Opaque actual123/body10 while Armed: bounded reference no-response policy,
     /// not recovered message semantics. No queue, world, inventory or ACK effect.
+    /// Exact observed packet79 is budget-only. Its semantics remain unknown;
+    /// it cannot authorize activity, mutate gameplay, or complete loading.
+    pub(crate) fn observe_loading79(&mut self, key: Membership) -> io::Result<()> {
+        if !self.current(key) || !matches!(self.phase, Phase::Loading { .. }) {
+            return Err(io::Error::other(
+                "opaque79 needs current loading membership",
+            ));
+        }
+        let member = self.members.get_mut(&key.identity).expect("current member");
+        if member.character != Some(1) || member.loading79 {
+            return Err(io::Error::other(
+                "opaque79 outside measured choice or budget",
+            ));
+        }
+        member.loading79 = true;
+        Ok(())
+    }
     pub fn observe_opaque123(&mut self, key: Membership) -> io::Result<()> {
         if !self.current(key) || !matches!(self.phase, Phase::Armed { .. }) {
             return Err(io::Error::other("opaque123 current armed member required"));
@@ -1069,5 +1089,30 @@ mod player_round_tests {
         assert!(room.ack(keys[0], first).is_err());
         assert!(!room.ack(keys[0], second).unwrap());
         assert!(room.ack(keys[2], second).unwrap());
+    }
+}
+
+#[cfg(test)]
+mod loading_observation_tests {
+    use super::*;
+    #[test]
+    fn opaque79_never_completes_barrier_and_rejects_wrong_choice_phase_or_duplicate() {
+        let mut room = Room::with_allocation(4, SlotAllocation::FirstVacant).unwrap();
+        room.round_roster = crate::rules::RoundRoster::Players;
+        let a = room.enter(70000, 11, true).unwrap();
+        let b = room.enter(42, 22, false).unwrap();
+        room.setup(a).unwrap();
+        room.setup(b).unwrap();
+        room.choose(a, Some(1), None).unwrap();
+        room.choose(b, None, Some(3)).unwrap();
+        assert!(room.observe_loading79(a).is_err());
+        room.ready(b).unwrap();
+        let round = room.begin(a).unwrap();
+        assert!(room.observe_loading79(b).is_err());
+        room.observe_loading79(a).unwrap();
+        assert!(room.observe_loading79(a).is_err());
+        assert!(!room.ack(a, round).unwrap());
+        assert!(room.ack(b, round).unwrap());
+        assert!(room.observe_loading79(a).is_err());
     }
 }
