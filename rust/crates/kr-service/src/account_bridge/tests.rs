@@ -231,16 +231,191 @@ fn two_accounts_same_ip_one_use_and_channel_owner_are_independent() {
         assert!(bridge.channel(&ca, PEER, 1).await.is_err()); // Login socket cannot become channel.
         let mut ch_b = bridge.channel(&cb, PEER, 4).await.unwrap();
         let mut ch_a = bridge.channel(&ca, PEER, 3).await.unwrap();
+        let relay_a = ch_a.relay_authority();
+        let relay_b = ch_b.relay_authority();
+        assert!(relay_a.owns(a.wire_id, 3));
+        assert!(!relay_a.owns(b.wire_id, 3));
+        assert!(!relay_a.owns(a.wire_id, 4));
+        relay_a.check_idle().await.unwrap();
         assert!(bridge.channel(&ca, PEER, 5).await.is_err());
         assert!(bridge.channel(&cb, PEER, 5).await.is_err());
         ch_a.check().await.unwrap();
         ch_b.check().await.unwrap();
         temp.store().revoke(&admin(), a.account_id, now()).unwrap();
         assert!(ch_a.check().await.is_err());
+        assert!(!relay_a.current());
+        assert!(relay_a.check_idle().await.is_err());
+        relay_b.check_idle().await.unwrap();
         ch_b.check().await.unwrap();
         drop(ch_a);
         drop(ch_b);
+        assert!(!relay_b.current());
         assert!(lock(&bridge.shared).unwrap().entries.is_empty());
+        w.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn account_owned_relay_reserves_before_publish_forwards_original_bytes_and_revoke_fences_both_sides()
+ {
+    use crate::{
+        room::Room,
+        room_registry::{RoomId, RoomKey},
+        room_relay::Owner,
+        udp_relay,
+    };
+    use std::net::{SocketAddr, UdpSocket};
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, a, b) = Temp::new();
+    rt().block_on(async {
+        let w = worker(&temp).await;
+        let bridge = Bridge::new(w.client(), 2, Duration::from_secs(10)).unwrap();
+        let mut channels = Vec::new();
+        for (player, login, connection) in [(&a, "Alice", 3), (&b, "Bob", 4)] {
+            let grant = grant(&w, login).await;
+            let launch = bridge
+                .issue(&grant.token, player.player_id, PEER)
+                .await
+                .unwrap();
+            let body = login_body(launch.token().expose_secret(), PEER);
+            let login = bridge.login(&body, PEER, connection + 10).await.unwrap();
+            let body = channel_body(player, login.echo);
+            login.redirected().unwrap();
+            channels.push(bridge.channel(&body, PEER, connection).await.unwrap());
+        }
+        let authorities: Vec<_> = channels.iter().map(Channel::relay_authority).collect();
+        let mut model = Room::default();
+        let ma = model.enter(a.wire_id, 3, true).unwrap();
+        let mb = model.enter(b.wire_id, 4, false).unwrap();
+        model.setup(ma).unwrap();
+        model.setup(mb).unwrap();
+        model.ready(mb).unwrap();
+        let round = model.begin(ma).unwrap();
+        // Obtain an unused local test port list; production config forbids zero.
+        let held: Vec<_> = (0..6)
+            .map(|_| UdpSocket::bind((Ipv4Addr::LOCALHOST, 0)).unwrap())
+            .collect();
+        let ports = held
+            .iter()
+            .map(|s| s.local_addr().unwrap().port())
+            .collect();
+        drop(held);
+        let cfg = udp_relay::Config {
+            bind: Ipv4Addr::LOCALHOST,
+            advertise: Ipv4Addr::LOCALHOST,
+            ports,
+            receive_budget: 32,
+            send_budget: 32,
+            queue_messages: 8,
+            queue_bytes: 2048,
+            rate_per_second: 100,
+            pending_ms: 500,
+            lease_seconds: 60,
+        };
+        let mut owner = Owner::new(
+            &cfg,
+            RoomKey {
+                id: RoomId(1),
+                session: 1,
+                generation: 1,
+            },
+        )
+        .unwrap();
+        let make_rows = || {
+            vec![
+                (1, mb, PEER, authorities[1].clone()),
+                (0, ma, PEER, authorities[0].clone()),
+            ]
+        };
+        let mut wrong = make_rows();
+        wrong[0].3 = authorities[0].clone();
+        assert!(owner.prepare(&model, wrong).is_err());
+        let reservation = owner.prepare(&model, make_rows()).unwrap();
+        owner.install(reservation);
+        owner.transition(&model).unwrap();
+        assert!(owner.authorization(&model).is_none());
+        let rows = [owner.endpoints(ma).unwrap(), owner.endpoints(mb).unwrap()];
+        assert_eq!(rows[0][0], (0, 0));
+        assert_eq!(rows[1][1], (0, 0));
+        let mut endpoints = [
+            std::net::SocketAddrV4::new(rows[0][1].0.into(), rows[0][1].1),
+            std::net::SocketAddrV4::new(rows[1][0].0.into(), rows[1][0].1),
+        ];
+        model.ack(ma, round).unwrap();
+        model.ack(mb, round).unwrap();
+        owner.transition(&model).unwrap();
+        let (mut scope, witnesses) = owner.authorization(&model).unwrap();
+        for witness in witnesses {
+            witness.check_idle().await.unwrap();
+        }
+        let clients = [
+            UdpSocket::bind((PEER, 0)).unwrap(),
+            UdpSocket::bind((PEER, 0)).unwrap(),
+        ];
+        let payloads: [&[u8]; 2] = [b"A\0\xff-original", b"B\xff\0-original"];
+        for (i, client) in clients.iter().enumerate() {
+            client
+                .set_read_timeout(Some(Duration::from_millis(100)))
+                .unwrap();
+            client.send_to(payloads[i], endpoints[i]).unwrap();
+        }
+        let stats = owner.pump(scope, &model).unwrap();
+        assert_eq!(stats.accepted, 2);
+        assert_eq!(stats.sent, 2);
+        let mut bytes = [0; 256];
+        for (i, client) in clients.iter().enumerate() {
+            let (n, from) = client.recv_from(&mut bytes).unwrap();
+            assert_eq!(&bytes[..n], payloads[1 - i]);
+            assert_eq!(from, SocketAddr::V4(endpoints[i]));
+        }
+        let old_scope = scope;
+        let old_endpoint = endpoints[0];
+        model.end(round).unwrap();
+        owner.transition(&model).unwrap();
+        assert!(owner.endpoints(ma).is_err());
+        model.refreshed(ma, round).unwrap();
+        model.refreshed(mb, round).unwrap();
+        model.ready(mb).unwrap();
+        let next_round = model.begin(ma).unwrap();
+        let reservation = owner.prepare(&model, make_rows()).unwrap();
+        owner.install(reservation);
+        model.ack(ma, next_round).unwrap();
+        model.ack(mb, next_round).unwrap();
+        owner.transition(&model).unwrap();
+        scope = owner.authorization(&model).unwrap().0;
+        let rows = [owner.endpoints(ma).unwrap(), owner.endpoints(mb).unwrap()];
+        endpoints = [
+            std::net::SocketAddrV4::new(rows[0][1].0.into(), rows[0][1].1),
+            std::net::SocketAddrV4::new(rows[1][0].0.into(), rows[1][0].1),
+        ];
+        assert_ne!(endpoints[0], old_endpoint);
+        // A callback which waited across reset cannot retire or send on the new lease.
+        owner.invalidate_scope(old_scope);
+        assert_eq!(owner.pump(old_scope, &model).unwrap().sent, 0);
+        clients[0].send_to(payloads[0], old_endpoint).unwrap();
+        assert_eq!(owner.pump(scope, &model).unwrap().received, 0);
+        for (i, client) in clients.iter().enumerate() {
+            client.send_to(payloads[i], endpoints[i]).unwrap();
+        }
+        assert_eq!(owner.pump(scope, &model).unwrap().sent, 2);
+        for (i, client) in clients.iter().enumerate() {
+            let (n, from) = client.recv_from(&mut bytes).unwrap();
+            assert_eq!(&bytes[..n], payloads[1 - i]);
+            assert_eq!(from, SocketAddr::V4(endpoints[i]));
+        }
+        // Queue input, revoke B, and observe denial before any forwarding.
+        clients[0]
+            .send_to(b"must-not-forward", endpoints[0])
+            .unwrap();
+        temp.store().revoke(&admin(), b.account_id, now()).unwrap();
+        assert!(authorities[1].check_idle().await.is_err());
+        assert_eq!(owner.pump(scope, &model).unwrap().sent, 0);
+        assert!(clients[1].recv_from(&mut bytes).is_err());
+        assert!(owner.endpoints(ma).is_err());
+        // Late callbacks for retired scopes and bound handles never transfer ownership.
+        owner.invalidate_scope(scope);
+        drop(channels);
+        assert!(authorities.iter().all(|w| !w.current()));
         w.shutdown().await.unwrap();
     });
 }

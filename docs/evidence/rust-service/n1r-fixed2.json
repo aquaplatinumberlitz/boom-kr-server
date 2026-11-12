@@ -1,0 +1,233 @@
+{
+  "schema": "kre-rust-service-evidence-v1",
+  "checkpoint": "CP273",
+  "task": "KRE-074 / KR-F015 / RUST-N1R",
+  "recorded_utc": "2026-11-12T00:51:15.260951+00:00",
+  "owner": "Codex",
+  "review": "waived: docs/evidence/checkpoints/review-waiver.json",
+  "source_commit": "dcb6077cfd832a9426e9d3fb3099042fcc840a68",
+  "source_equivalence": "local/research/codex/n1r-delivery-r1/source-equivalence.json",
+  "status": "accepted_fixed2_prototype_only",
+  "source": "kr_runtime",
+  "limits_source": "design",
+  "canonical": {
+    "contract": "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
+    "plan": "docs/PLAN.md#rust-relay",
+    "unknown": "docs/RESEARCH.md#gap-relay-endpoint",
+    "architecture": "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design"
+  },
+  "reuse": [
+    {
+      "locator": "docs/evidence/rust-service/relay-endpoint-design.json",
+      "sha256": "fd1fce048c2ae9e8c53c2730fd53e71223e39e3ef888d86f16d3a8ade3bfd9d2",
+      "use": "Source survey CP045/138/193/261/266 and R1f seams reused. No new binary decompilation or baseline N1b run; original relay authority remains unknown."
+    },
+    {
+      "locator": "local/research/codex/n1r-legacy-regression-r1/source/",
+      "use": "Python/reference, TCP fixtures and CP270 receiver-boundary traces retained. Avoided rebuilding codecs and repeating earlier gameplay RE."
+    }
+  ],
+  "build": {
+    "native_arm_sha256": "d041a77024c00cd0f03380233110e9511ff5b6b76280e1ed457917b5f000901b",
+    "synthetic_x86_sha256": "ea8be599e6dee8f354989638639986cc18c0f800153324c3f99c87d83429e1f8",
+    "arm_build": "local/research/codex/n1r-arm-build-r1/remote-build-result.json",
+    "toolchain": "rust/rust-toolchain.toml and Cargo.lock pinned in frozen source",
+    "limits": "Linux build. Native clients are diagnostic copies on Wine, not original Windows execution."
+  },
+  "implementation": {
+    "policy": "LegacyDirect default; Relay requires explicit room policy, account admission and operator network pool.",
+    "modules": [
+      "udp_relay.rs",
+      "udp_relay/sockets.rs",
+      "room_relay.rs",
+      "room_io.rs",
+      "account_bridge.rs"
+    ],
+    "algorithm": "One directed socket per ordered membership pair per round. Receive pins authorized channel source IP and observed tuple; payload forwarded unchanged from reverse-edge socket. Account authority checked before bounded nonblocking pump.",
+    "resource_policy": "Prebind complete pool outside room lock; no in-instance port reuse, cancelled reservations consumed, repeated room low-byte key rejected, fail closed before partial publication.",
+    "authentication_limit": "Source IP, CRC and low-byte key do not authenticate UDP. Same-IP first-datagram spoof unresolved."
+  },
+  "verification": {
+    "rust_tests": 117,
+    "synthetic_account_TCP_UDP_cases": 13,
+    "legacy_TCP_cases": 306,
+    "exact_legacy_room_frames": 3169,
+    "exact_FirstVacant_frames": 24,
+    "native_runs": [
+      {
+        "id": "n1r-native-r1",
+        "raw_seal": {
+          "path": "local/research/codex/n1r-native-r1/native/raw-seal.json",
+          "sha256": "540eccd90370f785ce3d90e4e26a27d9d3e4662d4ab8f8ebbff0299b5f80d6e0"
+        },
+        "raw_files": 87,
+        "duration_s": 231.298510172,
+        "returncode": 0,
+        "source_frozen": true,
+        "remaining_pids": [],
+        "reports": [
+          {
+            "path": "local/research/codex/n1r-native-r1/life-verification.json",
+            "sha256": "4ee8d7dafc4a538ad834ad66af7d14c7279567b3bd5ed1da8e5762d428f04180",
+            "result": "pass"
+          },
+          {
+            "path": "local/research/codex/n1r-native-r1/ownership-verification.json",
+            "sha256": "f99de2717b92234f2722d977d47dd5e6078be9e754510ae1e4235f7bb780e812",
+            "result": "pass_bounded_fixed2"
+          },
+          {
+            "path": "local/research/codex/n1r-native-r1/udp-verification.json",
+            "sha256": "1325f1cd7ebbf205f4498d4698069f2c6e8f54b3f464476e54d66192610beb8f",
+            "result": "pass_bounded_relay_positive"
+          }
+        ],
+        "cleanup_reports": [
+          {
+            "path": "local/research/codex/n1r-native-r1-cleanup-audit/verification.json",
+            "sha256": "112b10172d71da39b707a8131cfc13d6f69c708ff725f483f746de1020c0a792"
+          },
+          {
+            "path": "local/research/codex/n1r-native-r1-cleanup-audit/quiescence-verification.json",
+            "sha256": "4bd22d95b588e8aca5a026f360a1ffc81b0b3f86022729dcbb3ec9b9560b29ea"
+          }
+        ],
+        "binary_sha256": "d041a77024c00cd0f03380233110e9511ff5b6b76280e1ed457917b5f000901b",
+        "source_commit": "dcb6077cfd832a9426e9d3fb3099042fcc840a68"
+      },
+      {
+        "id": "n1r-native-r2",
+        "raw_seal": {
+          "path": "local/research/codex/n1r-native-r2/native/raw-seal.json",
+          "sha256": "652312455eaddb2a25c2425e056ec96aebec853c9555037877c50326c9d00113"
+        },
+        "raw_files": 78,
+        "duration_s": 164.845808235,
+        "returncode": 1,
+        "source_frozen": true,
+        "remaining_pids": [],
+        "reports": [
+          {
+            "path": "local/research/codex/n1r-native-r2/stale-verification.json",
+            "sha256": "8cb51cf6098d3e04df288d02485d4153df1d2f6643782134f075d344edce8d03",
+            "result": "pass_bounded_stale_current_control"
+          }
+        ],
+        "cleanup_reports": [
+          {
+            "path": "local/research/codex/n1r-native-r2-cleanup-audit/verification.json",
+            "sha256": "21375a7efba006ef9444659d132f228e603ca5e6f1823f30f98d5f500ae53e17"
+          },
+          {
+            "path": "local/research/codex/n1r-native-r2-cleanup-audit/quiescence-verification.json",
+            "sha256": "21042766a64d698df240ee557c738e40cb9b0248178bdb57579a3bd7a51bcbba"
+          }
+        ],
+        "binary_sha256": "d041a77024c00cd0f03380233110e9511ff5b6b76280e1ed457917b5f000901b",
+        "source_commit": "dcb6077cfd832a9426e9d3fb3099042fcc840a68"
+      },
+      {
+        "id": "n1r-native-r3",
+        "raw_seal": {
+          "path": "local/research/codex/n1r-native-r3/native/raw-seal.json",
+          "sha256": "6fb742e8fd94ef6176716cc27579d3c2b41080cae8ac28b418e37eedae8962cd"
+        },
+        "raw_files": 69,
+        "duration_s": 112.383636618,
+        "returncode": 0,
+        "source_frozen": true,
+        "remaining_pids": [],
+        "reports": [
+          {
+            "path": "local/research/codex/n1r-native-r3/eof-verification.json",
+            "sha256": "160fd048e33fad6dd33a66d176deeb7600a8b2eb1ac2a19f2510fee69f92b7ec",
+            "result": "pass_bounded_EOF_pastdue"
+          }
+        ],
+        "cleanup_reports": [
+          {
+            "path": "local/research/codex/n1r-native-r3-cleanup-audit/verification.json",
+            "sha256": "51df8fcb4067d57300f0711bea932c17fe4a43493cb713d0f9b042eeb417f291"
+          },
+          {
+            "path": "local/research/codex/n1r-native-r3-cleanup-audit/quiescence-verification.json",
+            "sha256": "a060289ba6b0d2e3f9ba9cd506674d5c1965135cd2deca480698c5ce75844b28"
+          }
+        ],
+        "binary_sha256": "d041a77024c00cd0f03380233110e9511ff5b6b76280e1ed457917b5f000901b",
+        "source_commit": "dcb6077cfd832a9426e9d3fb3099042fcc840a68"
+      }
+    ],
+    "native_direction_joins": [
+      {
+        "origin": "B",
+        "receiver": "A",
+        "joins": 40,
+        "changing_apply_by_round": {
+          "1": 6,
+          "2": 6
+        }
+      },
+      {
+        "origin": "A",
+        "receiver": "B",
+        "joins": 40,
+        "changing_apply_by_round": {
+          "1": 5,
+          "2": 6
+        }
+      }
+    ],
+    "stale": {
+      "postreset_old_ingress": 1,
+      "postreset_old_egress": 0,
+      "same_postNAT_tuple": true,
+      "current_changing_applies": 5,
+      "scope": "Exact old native payload to original retired port after reset; does not prove content filtering at a current or reused port."
+    },
+    "EOF": {
+      "rank": [
+        1,
+        2
+      ],
+      "native_current_before_EOF": [
+        2,
+        6
+      ],
+      "postEOF_offered": 80,
+      "postEOF_forwarded": 0,
+      "pastdue_native_hold_ns": 4060158366,
+      "postreturn_chief_getter_observed": false,
+      "limits": "Native 110 parser/UI and ID removal observed. Postreturn getter exhausted its20-hit budget; no getter1 claim.",
+      "postEOF_same_authorized_tuple": 80
+    }
+  },
+  "recipe": {
+    "native": "Frozen launcher/account helpers, PID-qualified copies and Wine run recipes named in each runtime preflight. No source/config/input edits before seal.",
+    "verifiers": [
+      "local/research/codex/n1r-delivery-r1/verify_n1r_life_r1.py",
+      "local/research/codex/n1r-delivery-r1/verify_n1r_ownership_r1.py",
+      "local/research/codex/n1r-delivery-r1/verify_n1r_udp_r1.py",
+      "local/research/codex/n1r-delivery-r1/verify_n1r_stale_r2.py",
+      "local/research/codex/n1r-delivery-r1/verify_n1r_eof_r3.py",
+      "local/research/codex/n1r-delivery-r1/verify_n1_udp_r10.py",
+      "local/research/codex/n1r-delivery-r1/verify_rust_return.py"
+    ],
+    "capture": "Native send/ingress/helper joins and independently captured TCP/UDP frames; existing audited project parser. REA provider unavailable; no REA Evidence claim.",
+    "cleanup": "Local PID/source freeze and remote cloud/rules/routes/quiescence audited for every run.",
+    "network_scope": "Controlled dual port-changing NAT roles. One bare Internet UDP leg; the other role uses tunnel over SSH/TCP and controlled SNAT. Full actual topology, mapping/filtering, MTU, impairment and endpoint configuration kept ignored local only."
+  },
+  "retained_failures": [
+    "Native run2 failed after intentional B host EOF because inherited guard classified expected B exit as a fault. Partial stale/current proof independently verified; whole-run failure retained.",
+    "One targeted run3 repaired only expected-exit guard and completed missing EOF control. No additional N1b baseline or normal/reset campaign.",
+    "Synthetic run2 no-account negative hit earlier metadata validation; corrected run3 isolates relay account guard and asserts exact error. Earlier raw retained.",
+    "Initial ownership/UDP verifier invocation lacked PYTHONPATH; initial EOF verifier had config locator errors. Failed invocations retained separately, no native rerun."
+  ],
+  "remaining": [
+    "No relay4/8 mesh or shared-NAT native isolation acceptance; same-IP synthetic ownership is narrower.",
+    "No port reuse/restart safety, NAT rebinding support, all UDP types, all ISP/CGNAT topology or production load claim.",
+    "Final direct legacy R1 native2/4/8/account, general M5 profiles and native DB-queue fault remain open.",
+    "M7/G1/M6/M8 and50-player/eight-room internal-service target remain open. K6c/K7/N1 historical scopes unchanged."
+  ],
+  "privacy": "No actual VPS/OCI identifiers, access paths, endpoints, ACL or deployment configuration in tracked metadata. Raw local only."
+}

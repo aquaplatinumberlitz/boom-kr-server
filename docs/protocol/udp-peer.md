@@ -824,16 +824,36 @@ Python giữ serving/RE/reference, không hot-swap backend giữa run. Internet 
 
 
 <a id="rust-relay-endpoint-scope"></a>
-## Ranh giới endpoint/relay — thiết kế CP267
+## Ranh giới endpoint và relay opt-in
 
-Nguồn **design/design**; [quyết định/module](../RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design),
-[metadata/reuse](../evidence/rust-service/relay-endpoint-design.json), [phép kiểm](../PLAN.md#rust-relay).
-Đây là quyết định chuẩn bị implementation sau N1b, không có wire hoặc runtime mới. Legacy153/99/UDP giữ contract
-đã đo. Policy mới chỉ thay endpoint153 trong opt-in; payloadUDP forward nguyên bản, không thêm token/field/movement
-snapshot hoặc áp authority VN. KR có nhận reverse-edge socket hay không vẫn candidate, phải native proof.
-R1f tách PlayerId/session lease khỏi sourceIP và để endpoint ở plan riêng; không lấy IPmetadata/CRC/low8key làm auth.
-Rust `Room::begin` và `wire_key` tại baseline CP266 chỉ checked counter/overflow, **chưa có guard256 như Python
-UdpRoundKeys**; không thừa kế giới hạn Python qua mô tả. Giới hạn vòng/portreuse phải xử lý riêng trước relay acceptance.
-Các gate/record/raw cũ giữ nguyên; design hoàn tất không đồng nghĩa relay/R1f/fullM5 đã nghiệm thu.
+Nguồn **design/design** cho policy mới; **kr_runtime/confirmed** cho prototype hai người theo
+[evidence](../evidence/rust-service/n1r-fixed2.json). [Module và ownership](../RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design),
+[acceptance](../PLAN.md#rust-relay), [unknown](../RESEARCH.md#gap-relay-endpoint).
+Không phục hồi hoặc tuyên bố đây là relay gốc. Default `LegacyDirect` giữ byte và policy đã nghiệm thu.
+
+`EndpointPolicy::Relay` cần account admission và cấu hình `udp_relay` rõ ràng. Packet 153 gửi riêng từng recipient:
+entry peer chứa socket relay dành cho hướng recipient → peer; self entry vẫn rỗng. Payload UDP được chuyển nguyên
+byte từ socket hướng ngược tới tuple peer đã chủ động gửi vào socket đó. Không thêm token, field, snapshot hoặc
+movement authority vào wire KR. Native đã đo source socket, key/helper và actor thay đổi ở hai chiều qua hai vòng.
+
+Route gắn service generation, room key, round và hai membership/session generation/connection. Pool bind hoàn toàn
+trước serving. Reservation và mọi queue recipient phải đủ trước publish; không publish một phần khi thiếu tài nguyên.
+Pump kiểm account lease không gia hạn idle, rồi kiểm lại room/member/scope trước I/O không blocking. Reset, Ending,
+leave, EOF, expiry hoặc revoke vô hiệu lease; không chuyển tuple sang phiên mới. Native EOF và stale/reset có đối
+chứng; revoke và nhiều account chung IP mới được kiểm tổng hợp, không tự thành native acceptance cho các ca đó.
+
+Giới hạn policy prototype: datagram tối đa 255 byte; queue, rate, TTL và số recv/send mỗi pump đều hữu hạn theo config.
+Tuple đầu phải có IP nguồn của channel account và được pin, không tự rebind. Duplicate được chuyển nguyên nếu còn
+budget; relay không deduplicate gameplay. Cổng dùng một lần trong instance, kể cả reservation đã hủy; low-byte key
+cùng room key không được lặp. Hết pool hoặc key thì từ chối trước publish. Direct legacy không nhận guard này.
+
+Native stale proof chỉ cho exact gói cũ tới cổng gốc đã nghỉ, cùng tuple sau NAT, có current positive sau đó; không
+chứng minh gói cũ gửi vào cổng hiện hành hoặc cổng tái dùng bị lọc theo nội dung. Restart và port reuse chưa giải.
+IP, CRC và low-byte key **không xác thực UDP**; spoof first datagram giữa người chung IP còn mở. Relay không sửa
+identity, profile hoặc DB. Không suy native hai người thành relay bốn/tám người, mọi loại UDP hay tải vận hành.
+
+Đường đo có một chặng Internet UDP và một phía tunnel qua SSH/TCP với SNAT kiểm soát; không đại diện mọi ISP/CGNAT.
+Topology, kiểu NAT, tham số thực, raw/hash/build/copy và cleanup giữ local theo quy tắc hạ tầng riêng.
+K6c/K7/N1 cũ và kết quả từng lượt giữ nguyên. Full M5, native hồi quy cuối R1 và đích dịch vụ nội bộ còn mở.
 
 <!-- protocol-topic-content-end -->

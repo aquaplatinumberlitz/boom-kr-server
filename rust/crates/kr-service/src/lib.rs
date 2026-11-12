@@ -19,9 +19,11 @@ pub mod room;
 mod room_io;
 mod room_packets;
 pub mod room_registry;
+mod room_relay;
 mod room_wire;
 mod rules;
 mod terrain;
+pub mod udp_relay;
 
 use kr_wire::{HEADER_LEN, Receiver, decode, encode};
 use serde::Deserialize;
@@ -104,6 +106,8 @@ struct Reply {
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
+    #[serde(default)]
+    pub udp_relay: Option<udp_relay::Config>,
     pub schema: String,
     pub diagnostic_login_error_only: bool,
     pub bind: Ipv4Addr,
@@ -333,10 +337,26 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             .as_ref()
             .map(|cfg| room_io::load(cfg, &actors))
             .transpose()?;
+        let relay_requested = two
+            .fixed_room
+            .as_ref()
+            .is_some_and(|r| r.endpoint_policy == rules::EndpointPolicy::Relay);
+        if relay_requested != config.udp_relay.is_some()
+            || (relay_requested && two.account_admission.is_none())
+        {
+            return Err(io::Error::other(
+                "relay requires explicit room policy, network pool and account admission",
+            ));
+        }
         let rooms = room
             .map(|shared| -> io::Result<_> {
                 let mut registry = room_registry::Registry::default();
-                registry.insert(1, room_registry::RoomId(1), shared)?;
+                let key = registry.insert(1, room_registry::RoomId(1), shared.clone())?;
+                if let Some(cfg) = &config.udp_relay {
+                    // Bind the complete pool before installation, outside room locks.
+                    let owner = room_relay::Owner::new(cfg, key)?;
+                    room_io::install_relay(&shared, owner)?;
+                }
                 Ok(Arc::new(std::sync::Mutex::new(registry)))
             })
             .transpose()?;
@@ -347,6 +367,9 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             rooms,
         })
     } else {
+        if config.udp_relay.is_some() {
+            return Err(io::Error::other("relay requires account room mode"));
+        }
         None
     };
     Ok(Validated {
@@ -682,7 +705,19 @@ async fn local_lobby_connection(
                         IpAddr::V4(peer) => peer,
                         _ => return Err(io::Error::other("account endpoint requires IPv4")),
                     };
-                    room_io::Session::open_with_peer(shared, flow.identity(), id, Some(peer))?
+                    let authority = match &account {
+                        Some(account_serving::Lease::Channel(channel)) => {
+                            Some(channel.relay_authority())
+                        }
+                        _ => None,
+                    };
+                    room_io::Session::open_with_authority(
+                        shared,
+                        flow.identity(),
+                        id,
+                        Some(peer),
+                        authority,
+                    )?
                 } else {
                     room_io::Session::open(shared, flow.identity(), id)?
                 });
@@ -699,6 +734,13 @@ async fn local_lobby_connection(
                 tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(false)=>value? };
             }
             session.tick()?;
+            let stats =
+                tokio::select! {_=stop.changed()=>return Ok(()),value=session.pump_relay()=>value?};
+            if stats.received > 0 || stats.sent > 0 {
+                emit(&log,stamp(start,json!({"event":"relay_pump","connection":id,
+                    "received":stats.received,"accepted":stats.accepted,"dropped":stats.dropped,"sent":stats.sent,
+                    "policy":"opt_in_candidate_not_native_evidence"}))).await?;
+            }
         }
         pending.sort_by_key(|batch| batch.due);
         while pending

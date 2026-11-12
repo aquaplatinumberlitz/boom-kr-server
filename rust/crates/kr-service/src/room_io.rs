@@ -21,6 +21,8 @@ use tokio::sync::mpsc;
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
+    #[serde(default)]
+    pub(crate) endpoint_policy: rules::EndpointPolicy,
     pub title: String,
     pub packets: HashMap<String, LobbyPacketPin>,
     #[serde(default)]
@@ -55,10 +57,22 @@ pub struct BattleConfig {
     pub packets: HashMap<String, LobbyPacketPin>,
 }
 pub type Shared = Arc<Mutex<Runtime>>;
+pub(crate) fn install_relay(shared: &Shared, owner: crate::room_relay::Owner) -> io::Result<()> {
+    let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
+    if runtime.rules.endpoint != rules::EndpointPolicy::Relay
+        || !runtime.channels.is_empty()
+        || runtime.relay.is_some()
+    {
+        return Err(err("relay install requires an empty opt-in room"));
+    }
+    runtime.relay = Some(owner);
+    Ok(())
+}
 struct Channel {
     connection: u64,
     sender: mpsc::Sender<Batch>,
     endpoint: u32,
+    relay_authority: Option<crate::account_bridge::RelayAuthority>,
 }
 #[derive(Clone)]
 pub enum Guard {
@@ -94,6 +108,7 @@ pub struct Batch {
     pub abort_return_complete: Option<(Membership, u64)>,
 }
 pub struct Runtime {
+    relay: Option<crate::room_relay::Owner>,
     scope: Arc<()>,
     model: Room,
     players: HashMap<PlayerId, Reply>,
@@ -350,6 +365,7 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
     }
     model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
+        relay: None,
         scope: Arc::new(()),
         model,
         players,
@@ -475,6 +491,9 @@ impl Runtime {
                 .map_err(|_| err("room recipient queue unavailable"))?;
             batch.origin = Some((self.scope.clone(), id, channel.connection));
             reserved.push((permit, batch));
+        }
+        if let Some(relay) = &mut self.relay {
+            relay.transition(&next)?;
         }
         self.model = next;
         for (permit, batch) in reserved {
@@ -604,6 +623,9 @@ impl Runtime {
         {
             return;
         }
+        if let Some(relay) = &mut self.relay {
+            relay.invalidate();
+        }
         if let Ok(m) = self.member(id, connection) {
             let mut next = self.model.clone();
             if self.abort.as_ref().is_some_and(|job| !job.completed) {
@@ -712,6 +734,47 @@ impl Runtime {
     }
 }
 impl Session {
+    /// Inspect every account without a room lock or idle renewal. A late DB
+    /// completion cannot authorize a different room/round/channel generation.
+    pub(crate) async fn pump_relay(&self) -> io::Result<crate::udp_relay::PumpStats> {
+        let authorization = {
+            let r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            if r.channels
+                .get(&self.identity)
+                .is_none_or(|c| c.connection != self.connection)
+            {
+                return Err(err("stale relay channel"));
+            }
+            r.relay
+                .as_ref()
+                .and_then(|relay| relay.authorization(&r.model))
+        };
+        let Some((scope, authorities)) = authorization else {
+            return Ok(crate::udp_relay::PumpStats::default());
+        };
+        for authority in authorities {
+            if authority.check_idle().await.is_err() {
+                let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+                if let Some(relay) = &mut r.relay {
+                    relay.invalidate_scope(scope);
+                }
+                return Ok(crate::udp_relay::PumpStats::default());
+            }
+        }
+        let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        if r.channels
+            .get(&self.identity)
+            .is_none_or(|c| c.connection != self.connection)
+        {
+            return Ok(crate::udp_relay::PumpStats::default());
+        }
+        let model = r.model.clone();
+        r.relay
+            .as_mut()
+            .map_or(Ok(crate::udp_relay::PumpStats::default()), |relay| {
+                relay.pump(scope, &model)
+            })
+    }
     pub fn open(shared: &Shared, identity: u32, connection: u64) -> io::Result<Self> {
         Self::open_with_peer(shared, identity, connection, None)
     }
@@ -720,6 +783,15 @@ impl Session {
         identity: u32,
         connection: u64,
         peer: Option<std::net::Ipv4Addr>,
+    ) -> io::Result<Self> {
+        Self::open_with_authority(shared, identity, connection, peer, None)
+    }
+    pub(crate) fn open_with_authority(
+        shared: &Shared,
+        identity: u32,
+        connection: u64,
+        peer: Option<std::net::Ipv4Addr>,
+        relay_authority: Option<crate::account_bridge::RelayAuthority>,
     ) -> io::Result<Self> {
         let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
         if runtime.channels.contains_key(&identity) {
@@ -736,6 +808,7 @@ impl Session {
                 connection,
                 sender,
                 endpoint,
+                relay_authority,
             },
         );
         if runtime.model.host.is_some() {
@@ -1321,6 +1394,32 @@ impl Session {
                 }
                 let round = next.begin(m.key)?;
                 next.pickups = pickups::Round::begin(round, &r.floor_catalog)?;
+                if r.rules.endpoint == rules::EndpointPolicy::Relay {
+                    let rows = next
+                        .members
+                        .values()
+                        .map(|member| {
+                            let channel = r
+                                .channels
+                                .get(&member.key.identity)
+                                .filter(|c| c.connection == member.key.connection)
+                                .ok_or_else(|| err("missing relay channel owner"))?;
+                            let authority = channel
+                                .relay_authority
+                                .clone()
+                                .ok_or_else(|| err("relay requires account-owned channels"))?;
+                            Ok((
+                                member.slot,
+                                member.key,
+                                std::net::Ipv4Addr::from(channel.endpoint),
+                                authority,
+                            ))
+                        })
+                        .collect::<io::Result<Vec<_>>>()?;
+                    let relay = r.relay.as_mut().ok_or_else(|| err("missing relay pool"))?;
+                    let reservation = relay.prepare(&next, rows)?;
+                    relay.install(reservation);
+                }
                 for peer in next.members.values() {
                     effects.push((
                         peer.key.identity,
@@ -1410,7 +1509,17 @@ impl Session {
                                                 r.body(Template::Peer153),
                                                 key,
                                                 peer.slot,
-                                                plan.for_recipient(round, peer.key)?,
+                                                &if r.rules.endpoint == rules::EndpointPolicy::Relay
+                                                {
+                                                    r.relay
+                                                        .as_ref()
+                                                        .ok_or_else(|| {
+                                                            err("missing relay reservation")
+                                                        })?
+                                                        .endpoints(peer.key)?
+                                                } else {
+                                                    plan.for_recipient(round, peer.key)?.to_vec()
+                                                },
                                             )?),
                                         ),
                                     )],
@@ -1885,6 +1994,7 @@ mod tests {
         let (ta, ra) = mpsc::channel(8);
         let (tb, mut rb) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            relay: None,
             scope: Arc::new(()),
             model,
             players: synthetic_players(&packets),
@@ -1893,6 +2003,7 @@ mod tests {
                 (
                     1,
                     Channel {
+                        relay_authority: None,
                         endpoint: 0,
                         connection: 11,
                         sender: ta,
@@ -1901,6 +2012,7 @@ mod tests {
                 (
                     2,
                     Channel {
+                        relay_authority: None,
                         endpoint: 0,
                         connection: 22,
                         sender: tb,
@@ -1947,6 +2059,7 @@ mod tests {
         shared.lock().unwrap().channels.insert(
             2,
             Channel {
+                relay_authority: None,
                 endpoint: 0,
                 connection: 22,
                 sender: tb,
@@ -2010,6 +2123,7 @@ mod tests {
         let (ta, mut ra) = mpsc::channel(2);
         let (tb, mut rb) = mpsc::channel(2);
         let mut runtime = Runtime {
+            relay: None,
             scope: Arc::new(()),
             model: Room::default(),
             players: HashMap::new(),
@@ -2018,6 +2132,7 @@ mod tests {
                 (
                     1,
                     Channel {
+                        relay_authority: None,
                         endpoint: 0,
                         connection: 11,
                         sender: ta,
@@ -2026,6 +2141,7 @@ mod tests {
                 (
                     2,
                     Channel {
+                        relay_authority: None,
                         endpoint: 0,
                         connection: 22,
                         sender: tb.clone(),
@@ -2260,6 +2376,7 @@ mod four_abort_tests {
             channels.insert(
                 key.identity,
                 Channel {
+                    relay_authority: None,
                     endpoint: 0,
                     connection: key.connection,
                     sender,
@@ -2268,6 +2385,7 @@ mod four_abort_tests {
             inboxes.push((i, inbox));
         }
         let shared = Arc::new(Mutex::new(Runtime {
+            relay: None,
             scope: Arc::new(()),
             model,
             players: synthetic_players(&packets),
@@ -2566,6 +2684,7 @@ mod ninth_probe_tests {
         }
         let (sender, inbox) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            relay: None,
             scope: Arc::new(()),
             model,
             players: HashMap::new(),
@@ -2573,6 +2692,7 @@ mod ninth_probe_tests {
             channels: HashMap::from([(
                 9,
                 Channel {
+                    relay_authority: None,
                     endpoint: 0,
                     connection: 99,
                     sender,
@@ -2599,6 +2719,7 @@ mod ninth_probe_tests {
                 teams: TeamPolicy::BalancedManner,
                 ninth_admission_probe: true,
                 slot_allocation: rules::SlotAllocation::LegacyIdentity,
+                endpoint: rules::EndpointPolicy::LegacyDirect,
             },
             abort: None,
         }));
@@ -2688,6 +2809,7 @@ mod registry_foundation_tests {
     use crate::room_registry::{Registry, RoomId, RoomKey};
     fn empty(marker: u8) -> Shared {
         Arc::new(Mutex::new(Runtime {
+            relay: None,
             scope: Arc::new(()),
             model: Room::default(),
             players: HashMap::new(),

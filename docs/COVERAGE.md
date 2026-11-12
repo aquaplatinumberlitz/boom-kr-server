@@ -44,7 +44,7 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-F012 · Nhóm chủ động ngoài kim](#kr-f012) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F013 · Thời hạn và variant item](#kr-f013) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F014 · Item riêng mode/event](#kr-f014) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
-| [KR-F015 · Relay, NAT và type UDP khác](#kr-f015) | candidate | both | partial | unknown | observed | unknown | unknown | observed | unknown / unknown | unknown | K6: passed |
+| [KR-F015 · Relay, NAT và type UDP khác](#kr-f015) | candidate | both | partial | unknown | observed | unknown | unknown | observed | partial / branch_pending | partial | K6: passed |
 | [KR-X001 · Kết quả và trở về phòng](#kr-x001) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
 | [KR-X002 · Reset vòng và stale fences](#kr-x002) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K6: passed |
 | [KR-X003 · EOF, forfeit và peer thay thế](#kr-x003) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K6: passed |
@@ -56,8 +56,8 @@ Số lượng theo trạng thái khai báo (không phải tỷ lệ hoàn thành
 - presence: candidate=4, present=24, unknown=2.
 - kr_static: partial=28, unknown=2.
 - emulation: checked=22, unknown=8.
-- implementation: partial=24, unknown=6.
-- integration: partial=23, unknown=7.
+- implementation: partial=25, unknown=5.
+- integration: partial=24, unknown=6.
 - gate: passed=30.
 
 ## Cây cơ chế
@@ -916,15 +916,15 @@ Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.
 
 Dependency: [KR-F002](#kr-f002).
 
-[Contract và giới hạn](protocol/networks.md#emulated-wan-acceptance) · [Câu hỏi gốc](RESEARCH.md#gap-peer-relay) · [Thứ tự ở PLAN](PLAN.md#current-order).
+[Contract và giới hạn](protocol/udp-peer.md#rust-relay-endpoint-scope) · [Câu hỏi gốc](RESEARCH.md#gap-peer-relay) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [CP193](PROTOCOL.md#nat-endpoint-control) đã kiểm SNAT nhận thực tế/queue/drain và đối chứng153 riêng với mapped+DNAT/native helper/output/handler/current movement.
+Khoảng trống (trích bảng RESEARCH): Relay opt-in đã tích hợp và có native prototype hai người: hai chiều, reset, gói cũ tới cổng đã nghỉ và EOF. [Contract](protocol/udp-peer.md#rust-relay-endpoint-scope), [evidence](evidence/rust-service/n1r-fixed2.json).
 
-Phép kiểm tối thiểu (trích cùng nguồn): [CP194](PROTOCOL.md#nat-two-cycles) đã hai vòng NAT tĩnh/reset/Start3; [CP195](PROTOCOL.md#udp-netem-cycles) đã hai vòng dưới UDP delay/loss; [CP196](PROTOCOL.md#nat-netem-host-eof) bổ sung EOF/fence riêng; incomingadmission CP197198 đã đo; currentlifecycle/hardening theoPLAN. K6c WAN giả lập đạt CP212; [topology/giới hạn](PROTOCOL.md#emulated-wan-acceptance). NAT discovery/relay gốc/fullUDP chưa phục hồi. [N1b CP266](PROTOCOL.md#rust-n1b-dual-nat) âm ở hai NAT đổi cổng; thiết kế relay đã chốt, R1f đã merge; còn integration/native N1R theo PLAN. Không lặp N1b hoặc coi TCP result là UDP success; K6c/K7 scope không đổi.
+Phép kiểm tối thiểu (trích cùng nguồn): Còn spoof giữa người chung IP, rebinding, port reuse/restart, mọi loại UDP và mesh bốn/tám người; [phép đo](RESEARCH.md#gap-relay-endpoint). K6c/K7 và N1 cũ không đổi; không retry N1b.
 
 Issue/phạm vi công việc: [#14](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/14), [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285).
 
-Bằng chứng/build/hash/recipe: [peer153](evidence/peer153/README.md), [peer-endpoints](evidence/peer-endpoints/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp139), [peer-endpoints](evidence/peer-endpoints/README.md#cp140), [peer-endpoints](evidence/peer-endpoints/README.md#cp141), [peer-endpoints](evidence/peer-endpoints/README.md#cp142), [peer-endpoints](evidence/peer-endpoints/README.md#cp145), [peer-endpoints](evidence/peer-endpoints/README.md#cp146), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [peer-endpoints](evidence/peer-endpoints/README.md#cp150), [peer-endpoints](evidence/peer-endpoints/README.md#cp151), [peer-endpoints](evidence/peer-endpoints/README.md#cp158), [peer-endpoints](evidence/peer-endpoints/README.md#cp193), [protocol](protocol/networks.md#nat-two-cycles), [protocol](protocol/networks.md#udp-netem-cycles), [protocol](protocol/networks.md#nat-netem-host-eof), [protocol](protocol/networks.md#emulated-wan-acceptance), [peer-endpoints](evidence/peer-endpoints/README.md#cp212), [protocol](protocol/networks.md#rust-n1b-dual-nat), [rust-service](evidence/rust-service/n1b-dual-nat.json), [docs](RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design), [protocol](protocol/udp-peer.md#rust-relay-endpoint-scope), [rust-service](evidence/rust-service/relay-endpoint-design.json).
+Bằng chứng/build/hash/recipe: [peer153](evidence/peer153/README.md), [peer-endpoints](evidence/peer-endpoints/README.md), [peer-endpoints](evidence/peer-endpoints/README.md#cp139), [peer-endpoints](evidence/peer-endpoints/README.md#cp140), [peer-endpoints](evidence/peer-endpoints/README.md#cp141), [peer-endpoints](evidence/peer-endpoints/README.md#cp142), [peer-endpoints](evidence/peer-endpoints/README.md#cp145), [peer-endpoints](evidence/peer-endpoints/README.md#cp146), [peer-endpoints](evidence/peer-endpoints/README.md#cp148), [peer-endpoints](evidence/peer-endpoints/README.md#cp149), [peer-endpoints](evidence/peer-endpoints/README.md#cp150), [peer-endpoints](evidence/peer-endpoints/README.md#cp151), [peer-endpoints](evidence/peer-endpoints/README.md#cp158), [peer-endpoints](evidence/peer-endpoints/README.md#cp193), [protocol](protocol/networks.md#nat-two-cycles), [protocol](protocol/networks.md#udp-netem-cycles), [protocol](protocol/networks.md#nat-netem-host-eof), [protocol](protocol/networks.md#emulated-wan-acceptance), [peer-endpoints](evidence/peer-endpoints/README.md#cp212), [protocol](protocol/networks.md#rust-n1b-dual-nat), [rust-service](evidence/rust-service/n1b-dual-nat.json), [docs](RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design), [protocol](protocol/udp-peer.md#rust-relay-endpoint-scope), [rust-service](evidence/rust-service/relay-endpoint-design.json), [rust-service](evidence/rust-service/n1r-fixed2.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -932,12 +932,12 @@ Bằng chứng/build/hash/recipe: [peer153](evidence/peer153/README.md), [peer-e
 | vn_reference | both | [nguồn1](protocol/items-stats.md#item-families) |
 | kr_static | partial | [nguồn1](protocol/udp-peer.md#udp-generation) |
 | emulation | unknown | Chưa có bằng chứng trong phạm vi rà |
-| wine_diagnostic_copy | observed | [nguồn1](protocol/networks.md#nat-endpoint-control), [nguồn2](evidence/peer-endpoints/README.md#cp193), [nguồn3](protocol/networks.md#nat-two-cycles), [nguồn4](protocol/networks.md#rust-n1b-dual-nat) |
+| wine_diagnostic_copy | observed | [nguồn1](protocol/networks.md#nat-endpoint-control), [nguồn2](evidence/peer-endpoints/README.md#cp193), [nguồn3](protocol/networks.md#nat-two-cycles), [nguồn4](protocol/networks.md#rust-n1b-dual-nat), [nguồn5](protocol/udp-peer.md#rust-relay-endpoint-scope) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
-| internet | observed | [nguồn1](protocol/networks.md#rust-n1-acceptance), [nguồn2](protocol/networks.md#rust-n1b-dual-nat) |
-| implementation | unknown / unknown | Chưa có bằng chứng trong phạm vi rà |
-| integration | unknown | Chưa có bằng chứng trong phạm vi rà |
+| internet | observed | [nguồn1](protocol/networks.md#rust-n1-acceptance), [nguồn2](protocol/networks.md#rust-n1b-dual-nat), [nguồn3](protocol/udp-peer.md#rust-relay-endpoint-scope) |
+| implementation | partial / branch_pending | [nguồn1](protocol/udp-peer.md#rust-relay-endpoint-scope), [nguồn2](evidence/rust-service/n1r-fixed2.json) |
+| integration | partial | [nguồn1](protocol/udp-peer.md#rust-relay-endpoint-scope), [nguồn2](evidence/rust-service/n1r-fixed2.json) |
 | gate | K6: passed | [nguồn1](PLAN.md#gates), [nguồn2](PLAN.md#k6a-acceptance), [nguồn3](PLAN.md#k6b-acceptance), [nguồn4](PLAN.md#k6c-acceptance) |
 
 <a id="kr-x001"></a>

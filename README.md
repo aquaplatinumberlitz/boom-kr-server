@@ -33,12 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP272: contract đã chia theo chủ đề; R1g đã merge PR348.**
-Tra packet/cơ chế tại [mục lục contract](docs/PROTOCOL.md), câu hỏi còn mở tại [RESEARCH](docs/RESEARCH.md).
-PLAN giữ thứ tự công việc; diễn biến checkpoint chuyển sang [HISTORY](docs/HISTORY.md).
-Full R1 còn native hồi quy 2/4/8/account; N1R còn integration và native relay qua hai NAT.
-M5 còn hồ sơ tổng quát/native DB-queue fault; M7/G1/M6/M8 theo [Bảng điều hành](docs/PLAN.md#dashboard).
-Không đổi runtime hoặc phạm vi nghiệm thu trong đợt tài liệu này. Hạ tầng thực chỉ lưu local.
+**CP273: relay opt-in đã tích hợp và đạt prototype hai người trên client KR thật qua Wine.**
+[Contract và giới hạn](docs/protocol/udp-peer.md#rust-relay-endpoint-scope) phân biệt relay mới với direct legacy.
+Chưa đủ vận hành lâu dài, relay bốn/tám người hoặc tải đích. Hạ tầng thực chỉ lưu local.
+R1 còn native hồi quy 2/4/8/account; M5 còn hồ sơ tổng quát và lỗi hàng đợi DB khi đang native.
+Thứ tự và acceptance tiếp theo giữ tại [Bảng điều hành](docs/PLAN.md#dashboard); lịch sử tại [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
 
