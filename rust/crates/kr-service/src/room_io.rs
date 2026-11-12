@@ -1172,7 +1172,7 @@ impl Session {
         {
             return Err(err("stale room channel"));
         }
-        if r.public_key.is_some() && !matches!(opcode, 81 | 82 | 585 | 86 | 528) {
+        if r.public_key.is_some() && !matches!(opcode, 81 | 82 | 585 | 86 | 528 | 96 | 266) {
             return Err(err("managed room selection does not yet serve gameplay"));
         }
         let mut next = r.model.clone();
@@ -3096,6 +3096,11 @@ mod registry_foundation_tests {
             assert_eq!(r.model.members[&3].slot, 0);
             assert!(r.model.current(member));
         }
+        assert!(new.packet(96, &[0; 6]).is_ok());
+        assert!(new.packet(266, &[0; 12]).is_ok());
+        assert!(new.packet(96, &[0; 5]).is_err());
+        assert!(new.packet(266, &[0; 13]).is_err());
+        assert!(new.packet(104, &[0; 20]).is_err());
         drop(new);
         assert!(removable(&b));
         drop(old);
