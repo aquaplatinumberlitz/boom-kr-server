@@ -1,0 +1,94 @@
+{
+  "id": "AUD098",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-managed-account-ownership"
+  ],
+  "completed_through": "CP282",
+  "recorded_utc": "2026-11-12T13:29:42.074065+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/m7d-account-ownership.json",
+    "docs/protocol/room-membership.md",
+    "docs/protocol/auth-session.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-service/src/account_bridge.rs",
+    "rust/crates/kr-service/src/room_service.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "tools/test_rust_managed_ownership.py",
+    "local/research/codex/m7d-source-r1/reuse.json",
+    "local/research/codex/m7d-ownership-native-r1/verification.json",
+    "local/research/codex/m7d-ownership-native-r1/lifecycle-addendum.json",
+    "local/research/codex/m7d-ownership-native-r1/ui-review.json",
+    "local/research/codex/m7d-ownership-synthetic-acceptance.json",
+    "local/research/codex/m7d-ownership-synthetic-r5/tcp/verification.json",
+    "local/research/codex/m7d-tests-r1.txt"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence/raw. Rà source lease/current generation, hub owner và room/visit/round guards; đối chiếu native reader, TCP/UDP PCAP, DB session, ảnh và timestamp revoke/FIN. Tách source/TCP khỏi native và không suy từ server log/controller. Đối chiếu acceptance M7d với proof mới cộng baseline CP258/276/279/280; không nhập M7e/M5b thành kết quả đã đạt.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "M7d còn thiếu active per-account revoke ở managed Battle và các ca ownership âm tính tích hợp.",
+      "correction": "Native bốn account/hai duel: revoke A sau native159 vòng2, FIN/abort, B forfeit/reset và không158 muộn; Beta vẫn UDP/bom/kết quả2. SQLite/TCP kiểm duplicate channel/launcher, guest/outsider host, wrong room, revoke/expiry/fresh channel/old echo-key và DB-busy recovery.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7d-account-ownership.json",
+        "tools/test_rust_managed_ownership.py",
+        "docs/protocol/room-membership.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Có thể coi khóa DB như native DB-queue fault hoặc hứa phòng khác tiếp tục khi DB dùng chung lỗi.",
+      "correction": "DB-busy chỉ source/TCP; mọi channel mất authorization đều đóng. Native DB-queue fault vẫn M5b; availability qua backend outage không được nhận.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7d-account-ownership.json",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Controller exit0 có thể che abort A và lỗi observer D lúc shutdown; có thể suy reset2 cho Beta.",
+      "correction": "Giữ nguyên raw: A SIGABRT sau revoke, D probe_error sau completion/native timestamp. C/D có rank2 nhưng chưa chờ reset2; mọi client có reset1/Start2. Không claim graceful logout hoặc pristine debugger teardown.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7d-account-ownership.json",
+        "local/research/codex/m7d-ownership-native-r1/lifecycle-addendum.json",
+        "local/research/codex/m7d-ownership-native-r1/ui-review.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Lượt synthetic đầu thiếu Battle fixture; lượt kế đầy tmpfs; TTL8 không đủ setup trước expiry.",
+      "correction": "Giữ từng export/kết quả lỗi, tăng riêng tmpfs cho nhiều frozen binary; TTL30 dùng thời gian thật, không backdate DB. Nhận riêng R3 ownership/revoke và R4 expiry/DB-lock; R5 kiểm cleanup preflight tool mới. Không sửa serving hoặc deadline worker.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7d-account-ownership.json",
+        "local/research/codex/m7d-ownership-synthetic-acceptance.json",
+        "tools/test_rust_managed_ownership.py"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Snapshot issue cũ chưa có task M7d mới; dễ coi M7d đã merge hoặc toàn M7 hoàn tất.",
+      "correction": "Thêm task #369 và manual disposition, refresh snapshot chỉ mục; source/implementation/gate/merge tách rõ. M7e rồi M5b là việc kế tiếp; exact head/CI vẫn bắt buộc trước merge.",
+      "fixed_in": [
+        "docs/features.json",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json",
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "M7e còn roster 2..8, slot sparse, Start/stat theo nhân vật chọn và survivor continuation; toàn M7 chưa đóng.",
+    "M5b còn hồ sơ account bất kỳ và native DB-queue fault. SQLite/TCP DB-busy không thay nghiệm thu native đó.",
+    "A abort sau revoke, không logout êm. Observer D lỗi khi owned shutdown sau completion; không claim debugger teardown không lỗi.",
+    "DB dùng chung mất khả năng xác thực có thể đóng mọi channel; không hứa availability xuyên DB outage.",
+    "Relay nhiều người/reuse/restart, G1/M6 và M8 giữ thứ tự trong PLAN; không claim Internet/load/restart mới."
+  ]
+}

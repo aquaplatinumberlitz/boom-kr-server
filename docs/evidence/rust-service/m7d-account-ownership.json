@@ -1,0 +1,113 @@
+{
+  "schema": "kre-rust-managed-ownership-v1",
+  "checkpoint": "CP282",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/room-membership.md#rust-managed-account-ownership",
+  "source_commit": "a7588ea4122e7912f5cc32e9479bbfc687e6a67e",
+  "binary_sha256": "b482d00e6958c0110a5d61132a441789121ffe971f8c0ab51eea5af4580cc216",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "wine": "wine-10.0-20260425 (CachyOS)",
+  "environment": "Wine diagnostic copy; four real account clients, isolated virtual LAN/direct TCP and UDP, no external route.",
+  "native": {
+    "root": "local/research/codex/m7d-ownership-native-r1",
+    "verification": "local/research/codex/m7d-ownership-native-r1/verification.json",
+    "addendum": "local/research/codex/m7d-ownership-native-r1/lifecycle-addendum.json",
+    "ui_review": "local/research/codex/m7d-ownership-native-r1/ui-review.json",
+    "run_sha256": "5194fdf76a9552a416e6dfb3a8c0051de825d9de2a877209c5d46f2d79d381f0",
+    "raw_files": 142,
+    "duration_s": 206.19227316,
+    "cleanup": {
+      "net_namespace": "net:[4026532862]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    "wire_keys": {
+      "1": [
+        12346,
+        12348
+      ],
+      "2": [
+        12346,
+        12348
+      ],
+      "3": [
+        12347,
+        12349
+      ],
+      "4": [
+        12347,
+        12349
+      ]
+    },
+    "udp_capture": {
+      "records": 2298,
+      "pairs": [
+        "A→B",
+        "B→A",
+        "C→D",
+        "D→C"
+      ],
+      "all_current_native_payloads_joined": true,
+      "duplicates_retained": true
+    },
+    "acceptance": "Hai phòng duel, kết quả/reset đầu và Start2; admin revoke A với bom chờ vòng2, A FIN/abort, B forfeit/reset và Alpha không có158 muộn; Beta UDP/bom/kết quả2 độc lập."
+  },
+  "synthetic": {
+    "acceptance": "local/research/codex/m7d-ownership-synthetic-acceptance.json",
+    "groups": 16,
+    "tool": "tools/test_rust_managed_ownership.py",
+    "limits": "SQLite thật, TCP tổng hợp. R3 ownership/revoke và R4 expiry/DB-lock là các phần được nhận; không gọi toàn R3 suite đạt. R5 kiểm lại ownership sau bổ sung cleanup trước preflight. Native DB-queue fault vẫn thuộc M5b."
+  },
+  "implementation": {
+    "serving_changed": false,
+    "test_tool": true,
+    "source": "rust/crates/kr-service/src/{account_bridge,room_service,room_io,lib}.rs",
+    "reason": "Cơ chế lease, current membership và generation hiện có vượt các phép kiểm tích hợp; không cần đổi policy hoặc wire."
+  },
+  "reuse": [
+    {
+      "locator": "docs/evidence/rust-service/account-basic.json",
+      "checkpoint": "CP258",
+      "level": "kr_runtime",
+      "use": "Account/basic xuyên suốt, native revoke/expiry/EOF, fresh owner và old UDP/current-positive. Giới hạn fatal của client bị revoke giữ nguyên."
+    },
+    {
+      "locator": "docs/evidence/rust-service/m7a-room-selection.json",
+      "checkpoint": "CP276",
+      "level": "kr_runtime",
+      "use": "Registry, tuple retirement, current membership/chief, leave/EOF/revoke ở setup."
+    },
+    {
+      "locator": "docs/evidence/rust-service/m7b-duel-lifecycle.json",
+      "checkpoint": "CP279",
+      "level": "kr_runtime",
+      "use": "Hai phòng duel độc lập, measured Start/stat/life/result và helper quan sát native/PCAP. M7d thay input EOF bằng admin revoke thật."
+    },
+    {
+      "locator": "docs/evidence/rust-service/m7b-team-rosters.json",
+      "checkpoint": "CP280",
+      "level": "kr_runtime",
+      "use": "Managed 2/4/8 và EOF/pending-blast fence; không lặp baseline roster đã có."
+    },
+    {
+      "locator": "local/research/codex/m7d-source-r1/reuse.json",
+      "level": "source and existing evidence",
+      "use": "Khảo sát khoảng trống; không có câu hỏi binary mới nên không mở decompile hoặc đo lại producer/slot/stat."
+    },
+    {
+      "locator": "tools/test_rust_accounts.py; rust/crates/kr-service/src/accounts/tests.rs",
+      "level": "test/design",
+      "use": "Một backend session hiện hành mỗi account và race hai Store; không cho tạo hai session rồi coi là hai player."
+    }
+  ],
+  "limits": [
+    "Chỉ M7d trong tập known profiles và policy hiện hành; toàn M7 còn M7e, M5 còn M5b.",
+    "Native mới kiểm revoke; expiry và DB-busy tích hợp mới ở SQLite/TCP, native expiry/EOF cũ giữ provenance CP258. Native DB-queue fault không được suy từ khóa DB.",
+    "DB dùng chung bị lỗi có thể đóng mọi channel: fail closed, không hứa phòng khác luôn tiếp tục qua mất DB.",
+    "A SIGABRT sau revoke; D observer lỗi khi owned shutdown sau completion. Raw và attribution giữ nguyên; không claim logout êm hoặc debugger teardown không lỗi.",
+    "C/D có kết quả2, chưa đợi reset2. Tất cả có reset1/Start2; B có forfeit/reset2.",
+    "Không arbitrary roster, chosen-character Battle, survivor continuation, account resume, match restore, restart hoặc UDP authentication claim. Không mở rộng relay/Internet/load."
+  ]
+}

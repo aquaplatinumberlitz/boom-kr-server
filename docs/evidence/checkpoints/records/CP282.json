@@ -1,0 +1,232 @@
+{
+  "id": "CP282",
+  "previous": "CP281",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T13:29:42.074065+00:00",
+  "context_commit": "a7588ea4122e7912f5cc32e9479bbfc687e6a67e",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / M7d: account, transport và membership trong managed rooms có cách ly active revoke và failure/stale không?",
+  "scope": "Nghiệm thu M7d trong tập known profiles và policy hiện hành; không đổi serving. Native revoke hai phòng và source/TCP ownership/failure mới; M7e/M5b còn riêng.",
+  "artifacts": [
+    {
+      "name": "kr-service-managed-account-ownership",
+      "sha256": "b482d00e6958c0110a5d61132a441789121ffe971f8c0ab51eea5af4580cc216"
+    },
+    {
+      "name": "KR00967-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/room-membership.md#rust-managed-account-ownership",
+    "docs/evidence/rust-service/m7d-account-ownership.json",
+    "docs/PLAN.md#dashboard",
+    "docs/RESEARCH.md#gap-room-occupancy"
+  ],
+  "findings": [
+    {
+      "summary": "Bốn client KR/account thật trong hai phòng qua kết quả/reset/Start2. Admin revoke A lúc bom chờ: native159 đủ/entity thật, FIN sau revoke, A abort, B forfeit/reset, không158 muộn; Beta vẫn có native UDP/bom/kết quả2.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-account-ownership",
+      "evidence": [
+        "M7D282-00416",
+        "M7D282-00255",
+        "M7D282-00415"
+      ],
+      "limits": "Wine/LAN giả lập; C/D chưa chờ reset2. Giữ A abort và observer D shutdown error sau completion; không graceful logout hoặc full M7."
+    },
+    {
+      "summary": "16 nhóm SQLite/TCP kiểm duplicate owner, guest/outsider host, wrong room, revoke/expiry trước fuse, fresh channel và stale echo/key; DB-busy fail closed, recovery không phòng ma. R5 thêm năm nhóm kiểm cleanup tool cuối.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-account-ownership",
+      "evidence": [
+        "M7D282-00424",
+        "M7D282-01290"
+      ],
+      "limits": "Tổng hợp TCP không chứng minh client KR; native DB-queue fault vẫn M5b. Backend lỗi dùng chung có thể đóng mọi channel."
+    },
+    {
+      "summary": "Serving không đổi: giữ lease/current generation, membership/room/visit/round guard. Tái sử dụng native EOF/expiry/fresh owner từ CP258, setup CP276 và lifecycle CP279/280; 133 Rust tests/fmt/clippy/locked build đạt.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-account-ownership",
+      "evidence": [
+        "M7D282-01293",
+        "M7D282-01294",
+        "M7D282-00021",
+        "M7D282-00025",
+        "M7D282-00016"
+      ],
+      "limits": "Không mở câu hỏi binary mới; không nhận arbitrary profile/chosen-character Battle/survivor continuation/relay/restart/load."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native độc lập PCAP/native reader/DB/ảnh, frozen input và cleanup",
+      "result": "pass",
+      "evidence": [
+        "M7D282-00416",
+        "M7D282-00402",
+        "M7D282-00255"
+      ],
+      "limits": "Phạm vi native và ngoại lệ shutdown theo contract."
+    },
+    {
+      "check": "SQLite/TCP 16 nhóm cộng cleanup tool cuối năm nhóm",
+      "result": "pass",
+      "evidence": [
+        "M7D282-00424",
+        "M7D282-01182"
+      ],
+      "limits": "R3/R4 nhận theo case, không gọi toàn R3 đạt; cùng serving binary. Không native DB-queue fault."
+    },
+    {
+      "check": "133 Rust tests/fmt/clippy/locked build",
+      "result": "pass",
+      "evidence": [
+        "M7D282-01294",
+        "M7D282-00025",
+        "M7D282-00021",
+        "M7D282-00016"
+      ],
+      "limits": "Source checks không thay native."
+    },
+    {
+      "check": "Docs/catalog/issue links và feature-group audit",
+      "result": "pass",
+      "evidence": [
+        "M7D282-00022",
+        "M7D282-00017",
+        "M7D282-00008"
+      ],
+      "limits": "Full local/history exact head và CI kiểm riêng trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP282-managed-account-ownership.json",
+      "bytes": 347024,
+      "sha256": "5ebde35c448f39be760438725d34afa8bc5bf70e4df722c3f37ec1372fe27cec",
+      "count": 1301
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native managed account revoke và bằng chứng ownership/failure tích hợp; không đổi serving."
+    ],
+    "corrected": [
+      "Tách lỗi DB chung, native fault debt và affected-client abort khỏi healthy room isolation."
+    ],
+    "superseded": [
+      "M7d còn thiếu integration trong tập profile hiện hành; không sửa record/raw cũ."
+    ]
+  },
+  "blockers": [
+    "M7e còn roster 2..8, slot sparse, Start/stat theo nhân vật chọn và survivor continuation; toàn M7 chưa đóng.",
+    "M5b còn hồ sơ account bất kỳ và native DB-queue fault. SQLite/TCP DB-busy không thay nghiệm thu native đó.",
+    "A abort sau revoke, không logout êm. Observer D lỗi khi owned shutdown sau completion; không claim debugger teardown không lỗi.",
+    "DB dùng chung mất khả năng xác thực có thể đóng mọi channel; không hứa availability xuyên DB outage.",
+    "Relay nhiều người/reuse/restart, G1/M6 và M8 giữ thứ tự trong PLAN; không claim Internet/load/restart mới."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp M7e theo PLAN: roster2..8/sparse, selected-character Start/stat và survivor continuation; sau đó M5b.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "M7d đạt scope hiện hành; toàn M7 còn M7e. Không lặp baseline đã nghiệm thu.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T13:29:42.074065+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo native/TCP verification và audit nhóm ownership; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ nghiệm thu M7d, mức bằng chứng và giới hạn; M7e/M5b còn riêng."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ nghiệm thu M7d, mức bằng chứng và giới hạn; M7e/M5b còn riêng."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ nghiệm thu M7d, mức bằng chứng và giới hạn; M7e/M5b còn riêng."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ nghiệm thu M7d, mức bằng chứng và giới hạn; M7e/M5b còn riêng."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ nghiệm thu M7d, mức bằng chứng và giới hạn; M7e/M5b còn riêng."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Đồng bộ nghiệm thu M7d, mức bằng chứng và giới hạn; M7e/M5b còn riêng."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Đồng bộ nghiệm thu M7d, mức bằng chứng và giới hạn; M7e/M5b còn riêng."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ nghiệm thu M7d, mức bằng chứng và giới hạn; M7e/M5b còn riêng."
+    },
+    {
+      "path": "docs/protocol/room-membership.md",
+      "state": "updated",
+      "reason": "Đồng bộ nghiệm thu M7d, mức bằng chứng và giới hạn; M7e/M5b còn riêng."
+    },
+    {
+      "path": "docs/evidence/rust-service/m7d-account-ownership.json",
+      "state": "updated",
+      "reason": "Metadata native/source/TCP/raw và phạm vi M7d."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đã trỏ topic room-membership, contract đặt tại topic."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Áp dụng solo, audit theo nhóm, frozen run, local privacy và PR/exact head."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-managed-account-ownership"
+  ]
+}

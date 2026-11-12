@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP281: M7c đã có lựa chọn nhân vật/đội, Ready và lỗi phòng đầy trên client KR thật.**
+Lát cắt phòng chờ hỗ trợ Dao0/Dizni1 và nút đội A0/B3; peer thấy đúng, đổi lựa chọn xóa Ready rồi có thể Ready lại.
+Ba client đã kiểm full-error/vacancy không slot ma. [Contract/giới hạn](protocol/room-membership.md#rust-managed-player-choices),
+[bằng chứng](evidence/rust-service/m7c-room-choices.json). Lựa chọn hiện chưa ghép battle profile; Start/stat theo
+nhân vật, roster tự do và rời giữa trận thuộc M7e. Tiếp M7d → M7e → M5b theo [Bảng điều hành](PLAN.md#dashboard).
+Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](HISTORY.md).
+
 **CP280: phòng managed Rust đã có lifecycle native cho roster 2/4/8 trong phạm vi cấu hình đã đo.**
 Hai phòng bốn người và một phòng tám người đã qua kết quả/reset/trận tiếp; EOF/bom chờ được cách ly với phòng còn chơi.
 [Contract và giới hạn](protocol/room-membership.md#rust-managed-team-rosters),

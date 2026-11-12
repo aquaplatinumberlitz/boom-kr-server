@@ -1371,5 +1371,40 @@ FIN sau completion và phân loại được giữ riêng, không gọi teardown
 
 Kiểm synthetic bốn account/hai phòng xác nhận cách ly lựa chọn, Ready clear/reReady, capacity bounds, từ chối
 config choice+Battle, full rejection không slot ma và chọn phòng khác ngay sau lỗi; malformed/local player khác0
-và nhân vật4 không publish lựa chọn. Synthetic không thay native. M7d còn failure ownership tích hợp; M7e còn
+và nhân vật4 không publish lựa chọn. Synthetic không thay native. [M7d ownership tích hợp](#rust-managed-account-ownership) có scope riêng; M7e còn
 roster tự do, chosen-character Start/stat và rời giữa trận; M5b còn hồ sơ account bất kỳ theo thứ tự PLAN.
+
+
+<a id="rust-managed-account-ownership"></a>
+### Account, transport và membership trong nhiều phòng managed
+
+[Metadata và raw/hash](../evidence/rust-service/m7d-account-ownership.json). M7d nhận cơ chế ownership hiện hành
+trong tập known profiles; serving Rust không đổi wire hoặc policy. Đây không phải nghiệm thu hồ sơ account bất kỳ,
+roster tự do, lựa chọn nhân vật trong Battle hoặc người còn lại tiếp tục trận sau khi mất một thành viên.
+
+Backend chỉ cho một session chưa hết hạn/chưa revoke trên mỗi account, kể cả race giữa hai kết nối SQLite.
+Private launcher, channel echo và lease cùng ràng buộc player, connection và generation. Managed hub chỉ đăng ký
+một owner theo player; IP là restriction, không là identity. Replay channel hoặc xin frontend trùng không cấp thêm
+membership và không xóa owner đang dùng. Chỉ current member/chief được phát lệnh phòng; lobby outsider, guest Start
+và chọn tuple khác khi vẫn là member bị từ chối. Session drop tháo đúng connection; tuple hết người bị retired.
+
+Room command, tick, batch đến hạn và publish catalog đều kiểm lease; lỗi xác thực làm mất generation hiện hành.
+Drop Session/Channel tháo membership và giữ guard theo room/visit/round trên queue cũ. Dữ liệu đã ghi ra socket
+trước revoke không thu hồi được; không có transaction nguyên tử giữa DB và socket hoặc cam kết thời gian revoke.
+Các ca SQLite/TCP xác nhận transport trùng, sai quyền host/sai phòng, revoke/absolute expiry khi bom còn chờ,
+channel mới vào slot trống, replay echo/key cũ bị chặn và current positive vẫn đi được. Khóa SQLite là lỗi backend
+dùng chung: các channel không còn được xác thực đều đóng; sau mở khóa, kết nối mới không thấy phòng ma. Không hứa
+phòng khác tiếp tục hoạt động khi toàn bộ backend mất khả năng xác thực.
+
+Native mới dùng bốn account/client KR thật trên Wine/LAN giả lập, hai phòng duel. Cả hai qua kết quả/reset vòng đầu
+và Start vòng hai. A đặt bom, cả A/B đọc159 đủ39 byte/entity thật, rồi admin revoke account A qua SQLite. FIN của
+channel A đến sau revoke; A abort với SIGABRT. B nhận forfeit175, return180 và ô A bị xóa, không nhận158 của bom cũ.
+Beta vẫn có UDP native/current-position, bom159/158 và kết quả vòng hai; key, roster và queue không lẫn Alpha.
+Bằng chứng gồm native reader, PCAP/sequence/hash, DB session và ảnh; không suy từ controller hoặc log server.
+C/D chưa được chờ reset lần hai. Observer D có lỗi ở owned shutdown sau completion, giữ raw và attribution riêng.
+
+[Account/basic cũ](auth-session.md#rust-account-basic) cung cấp native EOF/expiry, fresh owner và đối chứng old UDP;
+[managed lifecycle](#rust-managed-team-rosters) cung cấp roster2/4/8 và EOF cách ly. Không chạy lại các baseline này.
+Native DB-queue fault vẫn thuộc M5b; SQLite/TCP DB-busy mới không thay phép nghiệm thu đó. Fresh login là phiên mới,
+không là account resume hoặc match restore. Direct UDP và epoch hữu hạn giữ các giới hạn đã công bố; không gọi key
+là authentication. M7e còn Start/stat theo nhân vật chọn, roster2..8/sparse và survivor continuation theo PLAN.
