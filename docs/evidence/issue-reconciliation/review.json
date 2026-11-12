@@ -1031,6 +1031,38 @@
         330
       ],
       "successors": []
+    },
+    {
+      "number": 369,
+      "kre": "KRE-074",
+      "classification": "in_progress",
+      "features": [
+        "KR-L001",
+        "KR-R001",
+        "KR-R002",
+        "KR-R003",
+        "KR-R004",
+        "KR-F015",
+        "KR-S001",
+        "KR-S002",
+        "KR-X002"
+      ],
+      "known": "M7d đã có native revoke cách ly hai phòng và 16 nhóm SQLite/TCP; serving giữ nguyên.",
+      "remaining": "Chờ giao PR sau exact head/CI; toàn M7 còn M7e, M5b vẫn còn native DB-queue fault và hồ sơ account bất kỳ.",
+      "next_test": "Kiểm exact head M7d rồi tiếp M7e theo PLAN; không lặp baseline.",
+      "acceptance": "Theo hàng M7d trong PLAN: current account/transport/membership, fail closed và native account→phòng→trận→reset.",
+      "reason": "Rà thủ công ngày 12/11: native/PCAP/SQLite/ảnh tách khỏi synthetic, giữ giới hạn A abort và D observer shutdown.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/protocol/room-membership.md#rust-managed-account-ownership",
+        "docs/RESEARCH.md#gap-room-occupancy"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/m7d-account-ownership.json"
+      ],
+      "prs": [],
+      "successors": [],
+      "reviewed_utc": "2026-11-12T13:27:46.621970+00:00"
     }
   ],
   "as_of_utc": "2026-11-11T03:59:03.986916+00:00",

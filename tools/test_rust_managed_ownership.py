@@ -44,7 +44,7 @@ class TraceClient(Client):
         return op, body
 
 
-def run(args, mode):
+def _run(args, mode, owned):
     root = args.out.resolve()/mode
     root.mkdir(mode=0o700)
     cfg = json.loads(args.config.read_text())
@@ -62,6 +62,7 @@ def run(args, mode):
     for actor, peer in zip(two['actors'], cfg['allowed_peers']):
         actor['peer'] = peer
     account = AccountFixture(args.admin, root, cfg)
+    owned.append(account)
     expiry = None
     if mode == 'expiry':
         account.command(dict(op='revoke', account_id=account.players[0]['account_id']))
@@ -355,6 +356,17 @@ def run(args, mode):
             cleanup=dict(pid=None if proc is None else proc.pid, pid_gone=proc is None or not Path(f'/proc/{proc.pid}').exists()),
             limits='Real SQLite/private launcher and synthetic TCP. No native client, UDP, DB-queue native fault or arbitrary profile acceptance.'), indent=2)+'\n')
         assert all(Path(row['path']).stat().st_size == row['bytes'] and hashlib.sha256(Path(row['path']).read_bytes()).hexdigest() == row['sha256'] for row in pins)
+
+
+def run(args, mode):
+    owned = []
+    try:
+        return _run(args, mode, owned)
+    finally:
+        # Covers preflight failures before any service owns the private socket.
+        for account in owned:
+            if account.control.exists() and not account.socket.exists():
+                account.close()
 
 
 def main():
