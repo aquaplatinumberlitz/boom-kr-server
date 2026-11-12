@@ -12,7 +12,8 @@ Codex cập nhật bảng trạng thái và danh sách việc khi xong một bư
 theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP272 / AUD088**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
-đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Dài hạn: gameplay đầy đủ.
+đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
+[lộ trình sáu đợt F1–F6](#full-game-roadmap), chưa mở việc nào.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -38,7 +39,8 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 
 - Direct UDP âm ở hai NAT đổi cổng; thiết kế CP267 đã tách việc R1f khỏi relay opt-in. Chưa có relay trong serving/native proof; N1b không retry. PR345 đã merge. CP267–268 đã merge sau exact-head/history/CI; record CP267 giữ nguyên.
 - R1e serving vẫn fixed-room cũ; cấu hình/tạo/chọn nhiều phòng tổng quát và occupancy thuộc M7, không suy đã có từ container/unit.
-- `local/` (bằng chứng thô và fixture) chưa có backup ngoài máy này.
+- `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
+  Fixture mà server cần để chạy không được phụ thuộc `local/` khi bàn giao: đóng gói kèm manifest hash ở M8.
 
 **Quy ước:**
 
@@ -46,6 +48,10 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 - Không thêm dòng trạng thái theo checkpoint vào đầu file này hay vào mục thứ tự cũ; ghi đè bảng trên. README chỉ giữ
   mốc mới nhất, mốc cũ chuyển sang [HISTORY](HISTORY.md).
 - Lát cắt mới không thêm cờ theo sức chứa, alias theo identity hay nhánh `capacity() == N` vào lõi phòng.
+- Viết Bảng điều hành cho người chưa theo dõi đọc được: câu đầy đủ, có dấu cách giữa các từ, không dính chữ kiểu
+  `actualmatchinput`. Mỗi dòng nói trạng thái và việc còn lại; số lượt chạy, số frame, số PR và diễn biến checkpoint
+  để ở record checkpoint. Trước khi mở một mốc mới (M7, G1, M6, M8), viết lại tiêu chí nghiệm thu của mốc đó theo
+  đích giai đoạn 1 đã thu hẹp; định nghĩa cũ trong mục milestone viết cho phạm vi rộng hơn.
 
 <!-- dashboard-end -->
 
@@ -88,7 +94,7 @@ với client Rust không chứng minh có thể điều khiển client KR bằng
 Nguồn: [chỉ đạo chủ dự án](evidence/owner-directives/delivery-target.json). Mục này chỉ chốt **đích và đường cắt
 phạm vi**; không đóng gate hay milestone nào. Trạng thái từng milestone vẫn ở các mục bên dưới.
 
-**Định hướng dài hạn vẫn là gameplay đầy đủ của game gốc.** Phạm vi dưới đây là giai đoạn 1, được chọn vì giới hạn
+**Định hướng dài hạn vẫn là gameplay đầy đủ của game gốc.** Thứ tự các đợt sau giai đoạn 1 ở [lộ trình](#full-game-roadmap). Phạm vi dưới đây là giai đoạn 1, được chọn vì giới hạn
 thời gian và tài nguyên; các phần chưa làm thuộc giai đoạn sau chứ không bị loại bỏ.
 
 | Câu hỏi | Quyết định của chủ dự án |
@@ -456,6 +462,39 @@ Chat/social/friends/whisper ưu tiên sau basic/accountstability; roomchat cần
 Shop/economymởrộng sauledger/inventory vàproductpolicy; guild/mission/boss/revival/event/modesphụ sau đó
 theo nhu cầu, không làblocker bảnchơicơbản. Không hứa ngày/phầntrăm/sốcheckpointcòn lại: authbridge/roomdynamic/
 inventoryprojection/authorityvalidation làunknown effort; ước lượng chỉ sau số liệu lát cắt đầu, nêuassumptions.
+
+<a id="full-game-roadmap"></a>
+### Lộ trình sau giai đoạn 1: tới gameplay đầy đủ
+
+Chủ dự án muốn dài hạn có đủ item, map và mode của game gốc. Mục này xếp **thứ tự các đợt**; nó chưa phải cam kết
+thời gian và chưa mở việc nào trước khi giai đoạn 1 bàn giao (trừ các phép thử xếp loại rẻ). Số liệu lấy từ
+[kiểm kê](CONTENT.md) sinh từ pack; có tài nguyên trong pack không chứng minh tính năng còn chạy. Cỡ từng đợt
+**chưa ước lượng được** cho tới khi các nhóm trong đợt được xếp loại A/B/C.
+
+| Đợt | Nội dung | Số liệu kiểm kê | Phụ thuộc và điều chưa biết |
+|---|---|---|---|
+| F1 Trận thường đầy đủ | Mọi map đấu theo theme và biến thể; mọi item được map dùng; phương tiện; đủ nhân vật | 169 + 144 map; 105 item; 28 phương tiện; 63 nhân vật | Dựa trên G1 (map và item nạp từ dữ liệu). Giả thuyết phần lớn là loại A/B; map có script phải thử riêng |
+| F2 Mode đấu có luật riêng | Các kiểu đấu trên wiki (hồi sinh, nhím, bắt thủ lĩnh, bom hẹn giờ, đánh phối hợp), ConfusedFight, Ladder, ghép trận; xét lại Free 1v7 | 122 map nhiệm vụ và mode riêng | Chưa có mã mode trên wire và luật thắng từng mode; mỗi mode là một bộ `RoomRules` |
+| F3 Chơi với máy có script | Monster mode hai mùa, nhiệm vụ, RPG và CA Hero, Hidden Catch, màn thưởng, AIBattle, hướng dẫn | 368 + 124 + 37 + 43 map; 770 map có script | Ẩn số lớn nhất: chưa đo bên nào chạy trigger, quái và phần thưởng. Cần RE trước khi định cỡ |
+| F4 Hồ sơ, túi đồ, cửa hàng | Cấp và kinh nghiệm, chọn nhân vật, túi đồ, các nhóm trang trí, cảm xúc, bộ sưu tập, cửa hàng | Trang trí và cảm xúc: khoảng 19.800 mục tài nguyên | Dựa trên M6. Giá cửa hàng không có trong client: chủ dự án phải chọn chính sách |
+| F5 Xã hội | Chat và thì thầm, bạn bè, bang hội, cặp đôi, xếp hạng | Các nhóm Guild, Chatting, Messenger, Ranking | Dựa trên F4 và M8 (lưu bền, chống lạm dụng) |
+| F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa, ưu đãi phòng máy | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
+
+Thứ tự đặt gameplay (F1–F3) trước hệ thống ngoài trận (F4–F6) vì yêu cầu dài hạn nêu item, map và mode; chủ dự án có
+thể đổi thứ tự. F4 có thể kéo lên trước F3 nếu cần phần thưởng và tiến trình sớm.
+
+Cách vào mỗi đợt, giống nhau cho mọi đợt:
+
+1. **Xếp loại trước khi ước lượng.** Mỗi họ map, nhóm item hoặc hệ thống chạy một phép thử ngắn trên client thật (tối đa
+   hai lượt native) để xếp A (chỉ cần dữ liệu), B (dùng packet đã có) hay C (cần packet hoặc trạng thái mới). Kết quả
+   ghi vào cột "server phải làm gì" của kiểm kê qua tool sinh, không sửa tay.
+2. **Chỉ RE cho loại C**, theo từng hệ thống; client KR không có bảng handler tĩnh theo opcode nên không RE trước hàng loạt.
+3. **Code theo dữ liệu:** map, item, nhân vật nạp từ file sinh từ pack; mode là bộ luật trong `RoomRules`; không thêm
+   nhánh theo từng map hay từng item vào lõi phòng.
+4. **Nghiệm thu theo nhóm bằng client thật**, mỗi nhóm một checkpoint; tính năng chưa hỗ trợ phải tắt rõ ràng, không ACK giả.
+
+Phép thử đầu tiên của lộ trình này là đổi map sang Village10 (đã có trong Thứ tự việc); kết quả của nó cho biết giả
+thuyết của F1 đúng tới đâu.
 
 <a id="issue-order"></a>
 ### Issue hiện hành và backlog theo nguồn chuẩn
