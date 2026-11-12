@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-12T00:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án nói trong phiên Claude Code ngày 2026-11-12: \"thêm xử lý rớt mạng giữa trận vào M7e luôn\".",
+  "fact": "Sau M7b, mất một thành viên trong loading hoặc trong trận làm phòng huỷ hiệu lực ván đang chạy (policy FenceActive), không tạo kết quả và không cho những người còn lại chơi tiếp.",
+  "decision": "Xử lý rớt mạng hoặc rời giữa trận thuộc phạm vi M7e của giai đoạn 1: phòng từ 3 người thì những người còn lại chơi tiếp, trận kết thúc có kết quả, và phòng bắt đầu được ván kế với roster còn lại.",
+  "limits": "Không quy định sẵn luật thắng thua chi tiết; hành vi phải lấy từ phép đo trên client thật và RE khi cần. Không bao gồm vào lại trận đang chạy (reconnect/resume). Phòng hai người giữ policy forfeit đã nghiệm thu.",
+  "plan": "docs/PLAN.md#dashboard",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}

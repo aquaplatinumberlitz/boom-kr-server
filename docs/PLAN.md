@@ -39,6 +39,10 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
    ([chỉ số đã giải sẵn](CONTENT.md#dữ-liệu-đã-giải-sẵn)), không lấy từ hàng fixture theo slot. Native tối thiểu: một trận
    3 người, một trận 5 tới 7 người, một trận sau khi có người rời khỏi slot ở giữa. M7b hiện chỉ cho đúng 2, 4 hoặc 8
    người theo profile cấu hình sẵn của phòng; người dùng thật không chơi được nếu thiếu bước này.
+   Theo [quyết định 12/11](evidence/owner-directives/m7e-disconnect.json), M7e gồm cả **rớt mạng hoặc rời giữa trận**:
+   trong phòng từ 3 người, những người còn lại chơi tiếp và trận kết thúc có kết quả; mất hết một đội thì đội kia thắng;
+   sau đó phòng bắt đầu được ván kế với roster còn lại. Hành vi gửi cho client còn lại phải đo trên client thật, không
+   tự đặt luật rồi ACK giả. Native tối thiểu: một trận từ 4 người có một client bị ngắt giữa ván, tới kết quả và ván kế.
 4. **M5b hồ sơ cho account bất kỳ**: account mới tạo đăng nhập, vào phòng và chơi được mà không cần thêm fixture theo
    từng account. Native với ít nhất một account chưa từng có profile cấu hình sẵn, cùng ca lỗi hàng đợi DB còn nợ của M5.
 5. **N1R-b relay cho phòng nhiều người**, sau M7e và trước G1: phòng bốn và phòng tám người chơi qua relay trên
