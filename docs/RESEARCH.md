@@ -92,10 +92,14 @@ mới có producer, chưa được mở stat/entitlement; nhiều local player v
 
 [M7d ownership/failure tích hợp](protocol/room-membership.md#rust-managed-account-ownership) đã có native revoke cách ly
 hai phòng và ca âm tính SQLite/TCP; không lặp baseline. Native DB-queue fault vẫn ở M5b, không suy từ DB-busy.
-Lựa chọn hiện chỉ phục vụ phòng chờ, không kết hợp battle
-profile; M7e phải sinh Start/stat từ nhân vật chọn, hỗ trợ2..8 người/sparse slot và rớt mạng/rời giữa trận có người
-còn lại chơi tiếp. Không dùng fixture theo slot hoặc policy FenceActive hiện hành như nghiệm thu M7e. Sau đó M5b
-mở hồ sơ account bất kỳ và native DB-queue fault. Epoch hiện trần255 lần cấp/instance; mixed key không là auth hoặc
+[Roster theo lựa chọn](protocol/room-membership.md#rust-selected-player-rounds) đã có native3/6 người và slot0/2,
+Start/stat theo nhân vật0/1, UDP, bom, kết quả/reset. Không cần đo lại các profile này. M7e còn người còn lại tiếp tục
+sau active departure: cần native từ4 người, mất một khi bom còn chờ, tới kết quả và ván kế; đội mất hết người phải
+cho đối phương thắng. Candidate subtype11 chỉ ẩn peer, chưa tạo trạng thái chết/report21 nên không được nhận.
+Candidate tiếp dùng consumer death170/19 đã đo với vị trí từ own report trong vòng hiện hành; không tạo client
+report hoặc ACK. Snapshot participant phải tách khỏi membership để command của transport đã rời bị chặn, trong
+khi bom đã nhận và rank vẫn thuộc ván cũ. Cần đối chiếu native state, PCAP, cleanup, recipient completion và key
+vòng kế trước nghiệm thu. Sau đó M5b mở hồ sơ account bất kỳ và native DB-queue fault. Epoch hiện trần255 lần cấp/instance; mixed key không là auth hoặc
 durable restart/reuse proof. Relay nhiều người/reuse/restart giữ N1R-b, không gắn vào M7 LAN.
 
 <a id="gap-village10-map"></a>

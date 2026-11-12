@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP282 / AUD098**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **M7e đang triển khai sau CP282 / AUD098**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -22,7 +22,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 | M5 tài khoản | Account → phòng → trận → kết quả đã chạy native (CP258) | Hồ sơ tổng quát cho mọi account; lỗi hàng đợi DB khi đang native |
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; relay opt-in đạt prototype hai người, còn mở rộng và vận hành |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; relay ngoài prototype hai người và vận hành còn riêng |
-| M7 phòng tổng quát | M7a/b đạt tập profile đã đo; M7c đạt lựa chọn/full-error trong phòng chờ; M7d đạt ownership tích hợp | M7e roster tự do, chosen-character Start/stat và rời giữa trận |
+| M7 phòng tổng quát | M7a/b đạt tập profile đã đo; M7c đạt lựa chọn/full-error trong phòng chờ; M7d đạt ownership tích hợp | M7e đã đo roster3/6/sparse0/2 và chosen-character Start/stat; còn rời giữa trận |
 | [G1](#rust-g1) sáu map ladder và item | Đã đo điều kiện chọn Village10; chưa triển khai gameplay mới | Metadata map phải đồng bộ; spawn, terrain, floor và item chưa đo trên Village10 |
 | M6 lưu kết quả, thưởng 0 | Chưa bắt đầu; dependency R1 đã đạt | Sửa acceptance giai đoạn 1; thực hiện song song G1 |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
@@ -32,7 +32,9 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 1. **M7e roster tự do** là việc kế tiếp. [M7d ownership tích hợp đã đạt](protocol/room-membership.md#rust-managed-account-ownership)
    trong tập known profiles: native revoke giữa trận cách ly hai phòng; các ca âm tính SQLite/TCP và giới hạn DB/fatal
    được ghi riêng. [M7c room-only](protocol/room-membership.md#rust-managed-player-choices) giữ lựa chọn nhân vật0/1,
-   đội A0/B3 và Ready/full-error; chưa kết hợp battle profile. Không lặp producer/slot reader hoặc baseline đã đạt.
+   đội A0/B3 và Ready/full-error. [M7e roster](protocol/room-membership.md#rust-selected-player-rounds) đã có native3/6
+   người và slot0/2, Start/stat theo nhân vật0/1, UDP/bom/kết quả/reset. Tập trung phần ngắt giữa trận còn thiếu;
+   không lặp producer/slot reader hoặc baseline đã đạt.
    Phạm vi **M7e**: phòng bắt đầu được với số người bất kỳ từ 2 tới 8, slot không cần liên tục, đội theo
    lựa chọn của người chơi ở M7c. Hàng Start và chỉ số của từng người sinh từ nhân vật đã chọn
    ([chỉ số đã giải sẵn](CONTENT.md#dữ-liệu-đã-giải-sẵn)), không lấy từ hàng fixture theo slot. Native tối thiểu: một trận
