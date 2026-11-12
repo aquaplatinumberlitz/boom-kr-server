@@ -61,11 +61,11 @@ pub struct BattleConfig {
 #[serde(deny_unknown_fields)]
 pub struct ManagedDuelConfig {
     pub battle: BattleConfig,
-    pub bomb_capacity: HashMap<PlayerId, usize>,
+    pub initial_bomb_capacity: [usize; 2],
 }
 pub(crate) struct ManagedDuel {
     bodies: HashMap<Template, Vec<u8>>,
-    bomb_capacity: HashMap<PlayerId, usize>,
+    initial_bomb_capacity: [usize; 2],
 }
 pub(crate) fn load_managed_duel(
     cfg: &ManagedDuelConfig,
@@ -78,15 +78,7 @@ pub(crate) fn load_managed_duel(
         || source.model.terrain.is_some()
         || cfg.battle.mode != "post_blast_untrapped_drained"
         || cfg.battle.packets.len() != 4
-        || cfg.bomb_capacity.len() != source.players.len()
-        || source
-            .players
-            .keys()
-            .any(|id| !cfg.bomb_capacity.contains_key(id))
-        || cfg
-            .bomb_capacity
-            .values()
-            .any(|limit| !(1..=2).contains(limit))
+        || cfg.initial_bomb_capacity != [1, 2]
     {
         return Err(err(
             "unsupported managed duel profile/limits; direct UDP and measured profiles only",
@@ -128,7 +120,7 @@ pub(crate) fn load_managed_duel(
     }
     Ok(Arc::new(ManagedDuel {
         bodies,
-        bomb_capacity: cfg.bomb_capacity.clone(),
+        initial_bomb_capacity: cfg.initial_bomb_capacity,
     }))
 }
 
@@ -1571,7 +1563,7 @@ impl Session {
                 if let Some(profile) = &r.managed_duel {
                     for member in next.members.values() {
                         next.bomb_capacity[usize::from(member.slot)] =
-                            profile.bomb_capacity[&member.key.identity];
+                            profile.initial_bomb_capacity[usize::from(member.slot)];
                     }
                 }
                 if r.rules.endpoint == rules::EndpointPolicy::Relay {
@@ -1752,7 +1744,8 @@ impl Session {
             167 => {
                 let member = r.member(self.identity, self.connection)?;
                 let measured = if r.rules.roster == rules::RoundRoster::ContiguousDuel {
-                    [4, 16, 32].contains(&body.len())
+                    // Native managed duel burst:12/42-byte observations, no ACK or semantics.
+                    [4, 12, 16, 32, 42].contains(&body.len())
                 } else if next.capacity() == 8 {
                     r.rules.owner_bombs() && [4, 22, 42].contains(&body.len())
                 } else {
@@ -3063,6 +3056,48 @@ mod registry_foundation_tests {
         assert_eq!(rooms.get(beta).unwrap().lock().unwrap().channels.len(), 1);
         b.packet(528, &[]).unwrap();
         assert_eq!(b.inbox.try_recv().unwrap().packets[0].1.payload, vec![0xb2]);
+    }
+    #[test]
+    fn native_duel_burst167_is_bounded_observation_without_ack_or_world_effect() {
+        let shared = empty(0x71);
+        let mut session = Session::open(&shared, 70000, 11).unwrap();
+        let peer = Session::open(&shared, 42, 22).unwrap();
+        let round = {
+            let mut runtime = shared.lock().unwrap();
+            runtime.public_key = Some(RoomKey {
+                session: 1,
+                id: RoomId(7),
+                generation: 1,
+            });
+            runtime.managed_duel = Some(Arc::new(ManagedDuel {
+                bodies: HashMap::new(),
+                initial_bomb_capacity: [1, 2],
+            }));
+            runtime.rules.roster = rules::RoundRoster::ContiguousDuel;
+            runtime.model = Room::with_allocation(4, rules::SlotAllocation::FirstVacant).unwrap();
+            runtime.model.round_roster = rules::RoundRoster::ContiguousDuel;
+            let a = runtime.model.enter(70000, 11, true).unwrap();
+            let b = runtime.model.enter(42, 22, false).unwrap();
+            runtime.model.setup(a).unwrap();
+            runtime.model.setup(b).unwrap();
+            runtime.model.ready(b).unwrap();
+            let round = runtime.model.begin(a).unwrap();
+            runtime.model.ack(a, round).unwrap();
+            runtime.model.ack(b, round).unwrap();
+            round
+        };
+        assert!(session.packet(167, &[0; 21]).is_err());
+        for index in 0..64 {
+            let body = vec![0; if index % 2 == 0 { 12 } else { 42 }];
+            session.packet(167, &body).unwrap();
+        }
+        assert!(session.packet(167, &[0; 42]).is_err());
+        assert_eq!(shared.lock().unwrap().model.phase, Phase::Armed { round });
+        assert!(!shared.lock().unwrap().model.bombs.pending());
+        assert!(session.inbox.try_recv().is_err());
+        assert!(peer.inbox.is_empty());
+        // Avoid exercising unrelated departure fixture construction on drop.
+        shared.lock().unwrap().channels.clear();
     }
     #[test]
     fn full_actual_recipient_queue_in_one_room_does_not_charge_other_room_queue() {
