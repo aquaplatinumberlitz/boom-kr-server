@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP283: M7e đã có roster hiện hành và người còn lại tiếp tục sau rớt mạng giữa trận trên client KR thật.**
+Start/stat dùng nhân vật đã chọn; đã kiểm ba người, sáu người, slot thưa và hai lần mất endpoint với roster4→3→2,
+kết quả/reset và ván kế. [Contract và giới hạn](protocol/room-membership.md#rust-selected-player-rounds),
+[bằng chứng](evidence/rust-service/m7e-selected-rosters.json). M7 đạt phạm vi đã đo; hồ sơ account bất kỳ và
+native DB/hàng đợi là việc tiếp theo ở M5b theo [Bảng điều hành](PLAN.md#dashboard).
+Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](HISTORY.md).
+
 **CP282: M7d đã đạt ownership account/transport/membership trong nhiều phòng managed.**
 Native revoke giữa trận chỉ ảnh hưởng phòng của account đó; phòng kia tiếp tục tới kết quả. Các ca transport trùng,
 sai quyền/phòng, expiry và DB-busy đã kiểm riêng trên SQLite/TCP. [Contract và giới hạn](protocol/room-membership.md#rust-managed-account-ownership),

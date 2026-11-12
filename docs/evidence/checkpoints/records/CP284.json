@@ -1,0 +1,223 @@
+{
+  "id": "CP284",
+  "previous": "CP283",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T16:27:49.683283+00:00",
+  "context_commit": "12fb3b2c00b37fe03d538366dc1e5a7367693bf9",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / M5b: account tạo khi service chạy có profile DB và chơi hai trận, chung IP không lẫn identity, DB/queue bận không ngắt trận không?",
+  "scope": "Đóng M5b theo acceptance giai đoạn1: zero-profile ASCII, admin/private launcher, native hai trận và common-source room, WAL availability và real DB/queue fault. Không full M5 rộng, progression, persistence hoặc Internet/relay acceptance.",
+  "artifacts": [
+    {
+      "name": "kr-service-db-account-profiles",
+      "sha256": "8fdae7689bcd2d5c23678a98002331d7dd48545db910cd70f6ac9c252f3643b8"
+    },
+    {
+      "name": "KR00967-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/auth-session.md#rust-db-account-profiles",
+    "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Admin tạo account sau readiness, DB-derived names3/10/15/IDs6/7/8; ba native KR qua own291/room106/Start/Battle/result/reset/ván2. CùngIP transport native room giữ đúng identity.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-db-account-profiles",
+      "evidence": [
+        "M5B284-00012",
+        "M5B284-01101",
+        "M5B284-01894",
+        "M5B284-01107"
+      ],
+      "limits": "Wine isolated LAN/common-source TCP riêng; no new Internet/NAT gameplay. Zero-profile/ASCII, no progression."
+    },
+    {
+      "summary": "Trong writer25s và queue1/32launcher, native159/158 và UDPapply tiếp tục; queue_full/database_busy trả busy_retry, fresh login sau release và match2 đạt. WAL lane vẫn đọc committed revoke/expiry/credential/profile/epoch.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-db-account-profiles",
+      "evidence": [
+        "M5B284-00012",
+        "M5B284-01063",
+        "M5B284-01101"
+      ],
+      "limits": "Rank sau release theo delay. CLI/launcher rejection không nativeKRmodal; excess launcher admission có thể close. Hard DB failures failclosed; idle expiry không bị bỏ qua."
+    },
+    {
+      "summary": "145 Rust tests, fmt/Clippy/locked build,8 dynamic TCP và16 account negatives; source tests committed revoke/expiry/credential/epoch/clock/idle dưới writerlock. Synthetic không native oracle.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/auth-session.md#rust-db-account-profiles",
+      "evidence": [
+        "M5B284-01461",
+        "M5B284-01458",
+        "M5B284-01454",
+        "M5B284-01559"
+      ],
+      "limits": "No production capacity or durability inference. Runtime inputs frozen/sealed before source edits; recipe failures retained."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native DB-owned profile/two matches/common-source room and real SQLite queue fault",
+      "result": "pass",
+      "evidence": [
+        "M5B284-00012",
+        "M5B284-01101",
+        "M5B284-01894"
+      ],
+      "limits": "M5b scoped phase1 only; shared-IP debugger teardown limitation retained."
+    },
+    {
+      "check": "Independent TCP/UDP/native getter, source fences and Rust regression",
+      "result": "pass",
+      "evidence": [
+        "M5B284-01107",
+        "M5B284-01461",
+        "M5B284-01458",
+        "M5B284-01454",
+        "M5B284-01559"
+      ],
+      "limits": "Model/TCP distinct from native. Exact-head/local-history/CI checks separate before merge."
+    },
+    {
+      "check": "Manual feature-group audit and document/evidence scope sync",
+      "result": "pass",
+      "evidence": [
+        "M5B284-00009",
+        "M5B284-00012",
+        "M5B284-00005",
+        "M5B284-00007"
+      ],
+      "limits": "Independent review waived by owner; not independent approval."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP284-db-account-profiles.json",
+      "bytes": 504507,
+      "sha256": "990d49a2eb399c8ffd83f7b08fb4613846e5d8703e00be867e7f715833b73993",
+      "count": 1940
+    }
+  ],
+  "delta": {
+    "added": [
+      "DB-owned bounded zero-profile and source-owned launcher metadata.",
+      "Read-only WAL authorization lane isolates active games from writer/login queue pressure."
+    ],
+    "corrected": [
+      "M5b debt closed by native evidence, not DB-busy policy assumptions.",
+      "R1/R2 recipe failures retained; rank not claimed during lock."
+    ],
+    "superseded": [
+      "M5b arbitrary profile/native DBqueue gap for phase1; wide M5 scope not closed."
+    ]
+  },
+  "blockers": [
+    "N1R-b nhiều người, port/key reuse, restart và spoof chung IP theo PLAN; G1/M6/M8 còn mở.",
+    "Zero-profile ASCII3..15; nhánh profile khác, graceful logout/retry/resume và match restore chưa kiểm.",
+    "WAL đọc quyền đã commit; idle deadline vẫn hết nếu writer lock kéo dài. Hard storage error fail closed. TMPFS không chứng minh persistence/restore.",
+    "Common-IP native là TCP source mapping trong LAN cô lập; không gameplay NAT hoặc Internet. A debugger teardown exception giữ nguyên."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "N1R-b theo PLAN: relay4/8,current/sparse roster,departy survivor,port-keyreuse/restart và common-IP spoof; sau đó G1/M6/M8.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T16:27:49.683283+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo source/native/TCP verification and manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Đồng bộ M5b scoped acceptance, contract/unknown và N1R-b thứ tự tiếp."
+    },
+    {
+      "path": "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+      "state": "updated",
+      "reason": "Metadata native/source/fault/limits và retained failures."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, feature-group audit, privacy, Wine/LAN và commit/PR/CI/exact-head tiếp tục áp dụng."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-db-account-profiles"
+  ]
+}

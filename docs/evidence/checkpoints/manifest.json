@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP283",
-  "completed_count": 283,
+  "last_id": "CP284",
+  "completed_count": 284,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
-  "last_manual_audit": "AUD099",
+  "last_manual_audit": "AUD100",
   "audits": [
     {
       "id": "AUD001",
@@ -513,6 +513,11 @@
       "id": "AUD099",
       "path": "docs/evidence/checkpoints/audits/AUD099.json",
       "sha256": "20a210055ee12bdc2096f0ba5f5ff8bf2a689e51abc65ad1632b9bf50d41ac4f"
+    },
+    {
+      "id": "AUD100",
+      "path": "docs/evidence/checkpoints/audits/AUD100.json",
+      "sha256": "98b3053838e20e26bd7d4e88116cb025032076565316f4c2d70ad87e2c8b59b2"
     }
   ],
   "task_states": [
@@ -3208,6 +3213,14 @@
       "path": "docs/evidence/checkpoints/records/CP283.json",
       "bytes": 12994,
       "sha256": "aafe374b4bf116a4065428f067c37862517a02fb1dc9914e2674417336d9ee84"
+    },
+    {
+      "id": "CP284",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-12T16:27:49.683283+00:00",
+      "path": "docs/evidence/checkpoints/records/CP284.json",
+      "bytes": 8821,
+      "sha256": "08342cc8fbbbb69558b0ef8e6531c0d7dfdae5c4925da9843faf8c318f9b7618"
     }
   ],
   "audit_policy": {

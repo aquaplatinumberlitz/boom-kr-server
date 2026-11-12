@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP283",
+  "as_of": "CP284",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -471,7 +471,8 @@
           "docs/evidence/rust-service/r1f-session-binding.json",
           "docs/protocol/rust-boundary.md#rust-r1g-admission",
           "docs/evidence/rust-service/r1g-admission.json",
-          "docs/evidence/rust-service/m7d-account-ownership.json"
+          "docs/evidence/rust-service/m7d-account-ownership.json",
+          "docs/evidence/rust-service/m5b-dynamic-accounts.json"
         ]
       },
       "coverage": {
@@ -552,7 +553,8 @@
               "docs/protocol/auth-session.md#rust-account-native-lifecycle",
               "docs/protocol/auth-session.md#rust-account-fresh-login",
               "docs/protocol/auth-session.md#rust-account-basic",
-              "docs/protocol/room-membership.md#rust-managed-account-ownership"
+              "docs/protocol/room-membership.md#rust-managed-account-ownership",
+              "docs/protocol/auth-session.md#rust-db-account-profiles"
             ]
           },
           "windows_original": {
@@ -592,7 +594,8 @@
             "rust/crates/kr-service/src/account_bridge/wire.rs",
             "rust/crates/kr-service/src/account_serving.rs",
             "docs/protocol/auth-session.md#rust-account-serving",
-            "docs/protocol/room-membership.md#rust-managed-account-ownership"
+            "docs/protocol/room-membership.md#rust-managed-account-ownership",
+            "docs/protocol/auth-session.md#rust-db-account-profiles"
           ],
           "delivery": "via_pr"
         },
@@ -613,7 +616,8 @@
             "docs/protocol/auth-session.md#rust-account-native-lifecycle",
             "docs/protocol/auth-session.md#rust-account-fresh-login",
             "docs/protocol/auth-session.md#rust-account-basic",
-            "docs/protocol/room-membership.md#rust-managed-account-ownership"
+            "docs/protocol/room-membership.md#rust-managed-account-ownership",
+            "docs/protocol/auth-session.md#rust-db-account-profiles"
           ]
         },
         "gate": {
@@ -629,7 +633,8 @@
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/106",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/377"
       ]
     },
     {
@@ -905,7 +910,8 @@
           "docs/evidence/rust-service/m7b-team-rosters.json",
           "docs/evidence/rust-service/m7c-room-choices.json",
           "docs/evidence/rust-service/m7d-account-ownership.json",
-          "docs/evidence/rust-service/m7e-selected-rosters.json"
+          "docs/evidence/rust-service/m7e-selected-rosters.json",
+          "docs/evidence/rust-service/m5b-dynamic-accounts.json"
         ]
       },
       "coverage": {
@@ -971,7 +977,8 @@
               "docs/evidence/rust-service/m7b-team-rosters.json",
               "docs/evidence/rust-service/m7c-room-choices.json",
               "docs/protocol/room-membership.md#rust-managed-account-ownership",
-              "docs/protocol/room-membership.md#rust-selected-player-rounds"
+              "docs/protocol/room-membership.md#rust-selected-player-rounds",
+              "docs/protocol/auth-session.md#rust-db-account-profiles"
             ]
           },
           "windows_original": {
@@ -1013,7 +1020,8 @@
             "docs/protocol/room-membership.md#rust-managed-team-rosters",
             "docs/protocol/room-membership.md#rust-managed-player-choices",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
-            "docs/protocol/room-membership.md#rust-selected-player-rounds"
+            "docs/protocol/room-membership.md#rust-selected-player-rounds",
+            "docs/protocol/auth-session.md#rust-db-account-profiles"
           ],
           "delivery": "via_pr"
         },
@@ -1030,7 +1038,8 @@
             "docs/protocol/room-membership.md#rust-managed-team-rosters",
             "docs/protocol/room-membership.md#rust-managed-player-choices",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
-            "docs/protocol/room-membership.md#rust-selected-player-rounds"
+            "docs/protocol/room-membership.md#rust-selected-player-rounds",
+            "docs/protocol/auth-session.md#rust-db-account-profiles"
           ]
         },
         "gate": {
@@ -1045,7 +1054,8 @@
       "issues": [
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/377"
       ]
     },
     {

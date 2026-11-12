@@ -105,7 +105,7 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 | Chủ đề | Nguồn contract | Packet/opcode chính |
 |---|---|---|
 | Bootstrap, WCP và codec | [bootstrap-codec](protocol/bootstrap-codec.md) | bootstrap, hello, framing/CRC/sequence |
-| Đăng nhập, token, account và lease | [auth-session](protocol/auth-session.md) | 1/2/6/17, frontend32, session |
+| Đăng nhập, token, account và lease | [auth-session](protocol/auth-session.md), [hồ sơ DB](protocol/auth-session.md#rust-db-account-profiles) | 1/2/6/17, frontend32, session, zero-profile |
 | Sảnh, identity, cache và profile | [lobby-profile](protocol/lobby-profile.md) | 17/241/291/528 |
 | Phòng, roster và membership | [room-membership](protocol/room-membership.md) | 81/82/86/87/90/91/106/107/110 |
 | Map, Ready, loading và phase | [load-phase](protocol/load-phase.md) | 95/99/104/117/121/196/197/585 |

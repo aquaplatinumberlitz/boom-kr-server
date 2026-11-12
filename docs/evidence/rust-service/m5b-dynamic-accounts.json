@@ -1,0 +1,109 @@
+{
+  "schema": "kre-rust-db-account-profiles-v1",
+  "checkpoint": "CP284",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/377",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/auth-session.md#rust-db-account-profiles",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "wine": "wine-10.0-20260425 (CachyOS)",
+  "environment": "Wine/private virtual LAN/no outside route. Shared-source TCP INPUT mapping in a separate native room run; not an Internet test.",
+  "native": [
+    {
+      "root": "local/research/codex/m5b-dynamic-native-r3",
+      "verification": "local/research/codex/m5b-dynamic-native-r3/results-verification.json",
+      "run_sha256": "d2bfa9fb9b1f056a454d747de4d25a65057c412e6a352fab57e06ae584a9e857",
+      "raw_count": 92,
+      "binary_sha256": "8fdae7689bcd2d5c23678a98002331d7dd48545db910cd70f6ac9c252f3643b8",
+      "returncode": 0,
+      "source_frozen": true,
+      "cleanup": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    },
+    {
+      "root": "local/research/codex/m5b-shared-ip-native-r1",
+      "verification": "local/research/codex/m5b-shared-ip-native-r1/results-verification.json",
+      "run_sha256": "c6bd87f8f9e51cb4db5a5aa5c059434ce93a68ee99bebcfb621703e1e2fc4692",
+      "raw_count": 52,
+      "binary_sha256": "8fdae7689bcd2d5c23678a98002331d7dd48545db910cd70f6ac9c252f3643b8",
+      "returncode": 0,
+      "source_frozen": true,
+      "cleanup": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    }
+  ],
+  "udp_getters": {
+    "path": "local/research/codex/m5b-dynamic-native-r3/udp-getter-verification.json",
+    "getter_checks": 2094
+  },
+  "implementation": {
+    "profile_mode": "database_zero",
+    "default_mode": "fixed",
+    "session_bound": "DB account -> player/wire ID -> one-use frontend -> exact channel/room membership generation",
+    "profile": "Shared measured auth/291/106 zero-profile templates; DB wire ID and ASCII name3..15. No per-account fixture/config lookup.",
+    "availability": "Separate bounded WAL authorization lane. Reads latest committed session/account/profile/epoch on every check. Writer-busy optional clock/idle writes do not block absolute-valid sessions. No cached authority grant.",
+    "startup": "A fresh database-profile serving instance advances DB epoch before readiness; no account resume or match restore."
+  },
+  "fault": {
+    "path": "local/research/codex/m5b-dynamic-native-r3/native/cycles/db-pressure.json",
+    "writer_lock_seconds": 25,
+    "queue_capacity": 1,
+    "launcher_requests": 32,
+    "observed_errors": [
+      "busy_retry/account_queue_full",
+      "busy_retry/database_busy",
+      "denied for duplicate pending owner"
+    ],
+    "native_during_fault": "All three native clients consume real159 and158 during writer lock; UDP movement applies. Result follows the configured result delay after the lock, then reset and a complete second match.",
+    "recovery": "Fresh CLI login for an account without a preexisting session after release; no change to config or service process.",
+    "limits": "Login fault is explicit CLI/launcher rejection before starting KR; no native KR DB-busy modal is claimed. Saturated launcher admission can close excess sockets."
+  },
+  "acceptance": {
+    "milestone": "M5b",
+    "state": "passed_scoped_phase1",
+    "source": "docs/PLAN.md#phase1-acceptance",
+    "clauses": [
+      "Admin creates new accounts after readiness without config/restart; native three accounts into lobby/room and two full matches.",
+      "Names3/10/15 and wire IDs6/7/8 come from DB; all native consumers agree.",
+      "Separate native run with one common TCP source and distinct own profiles/room identities.",
+      "Native gameplay continues under real SQLite writer lock and measured account queue full; new login fails clearly, fresh login succeeds after release.",
+      "Existing wrong-password/ban/duplicate TCP regression rerun."
+    ],
+    "not_claimed": [
+      "Full broad-scope M5 or self-registration in KR",
+      "Same-process resume, graceful revoke/expiry or match restore",
+      "Shared-NAT gameplay, relay mesh/restart/reuse, Internet or load acceptance",
+      "EXP/currency/inventory or nonzero profile branches"
+    ]
+  },
+  "verification": {
+    "rust_tests": "local/research/codex/m5b-final-tests-r2.txt",
+    "clippy": "local/research/codex/m5b-final-clippy-r2.txt",
+    "fmt": "local/research/codex/m5b-final-fmt-r1.txt",
+    "build": "local/research/codex/m5b-native-build-r3.txt",
+    "synthetic": "local/research/codex/m5b-dynamic-synthetic-r3/tcp/verification.json",
+    "negative": "local/research/codex/m5b-negative-synthetic-r1/tcp/verification.json"
+  },
+  "retained_failures": [
+    {
+      "root": "local/research/codex/m5b-dynamic-native-r1",
+      "reason": "Recovery recipe attempted duplicate login while Pressure already had an active session; ActiveSession was correct. Native first-game interval is retained, not full acceptance."
+    },
+    {
+      "root": "local/research/codex/m5b-dynamic-native-r2",
+      "reason": "Controller waited for legacy identity2 after new player7 Back; explicitly stopped via declared signal handler, sealed/exported/cleaned. No client bug or second-game acceptance inferred."
+    },
+    {
+      "root": "local/research/codex/m5b-shared-ip-native-r1",
+      "reason": "A remote-debugger disconnection/internal error in final teardown retained; native functional interval verified, no pristine debugger-teardown claim."
+    }
+  ],
+  "reuse": {
+    "path": "local/research/codex/m5b-source-r1/reuse.json",
+    "use": "Current KR zero-profile/auth/channel and M7e player-round consumers and passive native/PCAP/getter oracles.",
+    "avoids": "No broad binary decompile, no new wire fields and no VN version/opcode port. Python remains RE/reference."
+  },
+  "limits": [
+    "ASCII alphanumeric/underscore names3..15 are backend policy, not a recovered universal KR character-set rule.",
+    "Live lane never accepts committed revoke/expiry/credential/profile/epoch mismatch or hard storage error. Idle renewal under a long writer lock can expire rather than resurrect authority.",
+    "Private tmpfs/native export proves serving availability, not crash durability/backup/restore. M6/M8 remain separate."
+  ]
+}
