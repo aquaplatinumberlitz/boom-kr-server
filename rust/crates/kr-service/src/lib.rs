@@ -20,6 +20,7 @@ mod room_io;
 mod room_packets;
 pub mod room_registry;
 mod room_relay;
+mod room_service;
 mod room_wire;
 mod rules;
 mod terrain;
@@ -151,6 +152,8 @@ pub struct TwoLobbyConfig {
     #[serde(default)]
     pub fixed_room: Option<room_io::Config>,
     #[serde(default)]
+    pub managed_rooms: Option<room_service::Config>,
+    #[serde(default)]
     pub account_admission: Option<account_serving::Config>,
 }
 struct ActorProfile {
@@ -161,6 +164,7 @@ struct ActorProfile {
     configured_peer: Ipv4Addr,
 }
 struct BoundProfiles {
+    managed: Option<Arc<room_service::Hub>>,
     actors: HashMap<room::PlayerId, ActorProfile>,
     legacy_peers: HashMap<Ipv4Addr, room::PlayerId>,
     registry: binding::Shared,
@@ -263,7 +267,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
         if let Some(account) = &two.account_admission {
-            if two.actors.len() != 2 {
+            if two.managed_rooms.is_none() && two.actors.len() != 2 {
                 return Err(io::Error::other(
                     "account adapter supports exactly two measured profiles",
                 ));
@@ -348,19 +352,40 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
                 "relay requires explicit room policy, network pool and account admission",
             ));
         }
-        let rooms = room
-            .map(|shared| -> io::Result<_> {
+        let managed = if let Some(cfg) = &two.managed_rooms {
+            if two.account_admission.is_none() || ninth_probe {
+                return Err(io::Error::other(
+                    "managed rooms require account-owned profiles",
+                ));
+            }
+            let prototype = room
+                .as_ref()
+                .ok_or_else(|| io::Error::other("managed rooms require room inputs"))?;
+            let relay = config
+                .udp_relay
+                .as_ref()
+                .map(room_relay::Factory::bind)
+                .transpose()?;
+            Some(room_service::Hub::new(cfg, prototype.clone(), relay)?)
+        } else {
+            None
+        };
+        let rooms = if managed.is_some() {
+            None
+        } else {
+            room.map(|shared| -> io::Result<_> {
                 let mut registry = room_registry::Registry::default();
                 let key = registry.insert(1, room_registry::RoomId(1), shared.clone())?;
                 if let Some(cfg) = &config.udp_relay {
-                    // Bind the complete pool before installation, outside room locks.
                     let owner = room_relay::Owner::new(cfg, key)?;
                     room_io::install_relay(&shared, owner)?;
                 }
                 Ok(Arc::new(std::sync::Mutex::new(registry)))
             })
-            .transpose()?;
+            .transpose()?
+        };
         Some(BoundProfiles {
+            managed,
             actors,
             legacy_peers,
             registry: binding::Shared::default(),
@@ -607,6 +632,9 @@ async fn local_lobby_connection(
     };
     let mut account_opaque87 = 0usize;
     let mut next_auth_check = Instant::now() + Duration::from_secs(1);
+    let mut managed_channel: Option<room_service::Channel> = None;
+    let mut known_rooms = std::collections::BTreeSet::new();
+    let mut catalog_dirty = false;
     let mut room_session: Option<room_io::Session> = None;
     let mut pending: Vec<room_io::Batch> = Vec::new();
     let mut send_sequence = 43u32;
@@ -640,6 +668,30 @@ async fn local_lobby_connection(
             {
                 tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(true)=>value? };
             }
+            if let Some(channel) = &managed_channel
+                && matches!(packet.opcode, 81 | 82)
+            {
+                if room_session.is_some() {
+                    return Err(io::Error::other("room selection before completed return"));
+                }
+                let Some(account_serving::Lease::Channel(lease)) = &mut account else {
+                    return Err(io::Error::other("managed room has no account owner"));
+                };
+                tokio::select! { _=stop.changed()=>return Ok(()), value=lease.check()=>value.map_err(|e|io::Error::other(format!("room selection denied: {e:?}")))? };
+                let peer = match socket.peer_addr()?.ip() {
+                    IpAddr::V4(peer) => peer,
+                    _ => return Err(io::Error::other("account IPv4 required")),
+                };
+                room_session = Some(channel.select(
+                    packet.opcode,
+                    &packet.payload,
+                    peer,
+                    lease.relay_authority(),
+                )?);
+                pending.clear();
+                emit(&log,stamp(start,json!({"event":"managed_room_selection","connection":id,"identity":flow.identity(),"opcode":packet.opcode}))).await?;
+                continue;
+            }
             if let Some(session) = &room_session
                 && room_io::Session::handles(packet.opcode)
             {
@@ -666,7 +718,29 @@ async fn local_lobby_connection(
                 lease.bind_channel()?;
             }
             emit(&log,stamp(start,json!({"event":"local_lobby_request","connection":id,"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"stage":format!("{:?}",flow.stage)}))).await?;
+            if packet.opcode == 67
+                && flow.stage == lobby::Stage::Lobby
+                && let Some(hub) = profile.bound.as_ref().and_then(|b| b.managed.as_ref())
+            {
+                managed_channel = Some(hub.register(flow.identity(), id)?);
+            }
             for alias in aliases {
+                if alias == "roomlist_A"
+                    && let Some(channel) = &mut managed_channel
+                {
+                    send_catalog(
+                        &mut socket,
+                        channel,
+                        &mut known_rooms,
+                        &mut send_sequence,
+                        profile,
+                        &log,
+                        id,
+                        start,
+                    )
+                    .await?;
+                    continue;
+                }
                 let reply = &packets[alias];
                 let frame = encode(&reply.header, reply.opcode, &reply.payload, send_sequence)
                     .map_err(io::Error::other)?;
@@ -765,6 +839,9 @@ async fn local_lobby_connection(
                 let Some(mut reply) = session.project(reply)? else {
                     continue;
                 };
+                if reply.opcode == 91 && managed_channel.is_some() {
+                    continue;
+                }
                 if reply.opcode == 91 {
                     let rooms = profile
                         .bound
@@ -795,6 +872,34 @@ async fn local_lobby_connection(
             if batch.setup.is_some() {
                 emit(&log,stamp(start,json!({"event":"room_setup_complete","connection":id,"identity":flow.identity()}))).await?;
             }
+            if let Some(channel) = &managed_channel
+                && batch.packets.iter().any(|(alias, _)| alias == "return241")
+            {
+                room_session.take();
+                pending.clear();
+                channel.returned()?;
+                catalog_dirty = true;
+            }
+        }
+        if catalog_dirty
+            && room_session.is_none()
+            && let Some(channel) = &mut managed_channel
+        {
+            if let Some(account) = &mut account {
+                tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(false)=>value? };
+            }
+            send_catalog(
+                &mut socket,
+                channel,
+                &mut known_rooms,
+                &mut send_sequence,
+                profile,
+                &log,
+                id,
+                start,
+            )
+            .await?;
+            catalog_dirty = false;
         }
         let cap = buf.len().min(rx.remaining_capacity());
         if cap == 0 {
@@ -811,6 +916,10 @@ async fn local_lobby_connection(
         };
         let n = tokio::select! {
             _=stop.changed()=>return Ok(()),
+            change=async { match &mut managed_channel { Some(channel)=>channel.changes.changed().await, None=>std::future::pending().await }}=>{
+                change.map_err(|_| io::Error::other("room catalog closed"))?;
+                catalog_dirty = true; continue;
+            },
             _=tokio::time::sleep_until(next_auth_check.into()),if account.is_some()=>continue,
             _=tokio::time::sleep_until(deadline.into()),if !pending.is_empty() || room_session.is_some()=>continue,
             batch=async {match &mut room_session {Some(session)=>session.inbox.recv().await,None=>std::future::pending().await}}=>{
@@ -826,6 +935,42 @@ async fn local_lobby_connection(
         read_deadline = Instant::now() + Duration::from_secs(profile.config.idle_timeout_seconds);
         rx.push(&buf[..n]).map_err(io::Error::other)?;
     }
+}
+
+#[allow(clippy::too_many_arguments)]
+async fn send_catalog(
+    socket: &mut TcpStream,
+    channel: &mut room_service::Channel,
+    known: &mut std::collections::BTreeSet<(u16, u32)>,
+    sequence: &mut u32,
+    profile: &Validated,
+    log: &Log,
+    id: u64,
+    start: Instant,
+) -> io::Result<()> {
+    let catalog = channel.catalog(known)?;
+    for (opcode, payload) in catalog.packets {
+        let frame =
+            kr_wire::kr00967::encode(opcode, &payload, *sequence).map_err(io::Error::other)?;
+        timeout(
+            Duration::from_millis(profile.config.write_timeout_ms),
+            socket.write_all(&frame),
+        )
+        .await
+        .map_err(|_| io::Error::other("catalog reply timeout"))??;
+        emit(
+            log,
+            stamp(
+                start,
+                json!({"event":"managed_catalog_reply","connection":id,"opcode":opcode,
+            "sequence":*sequence,"bytes":frame.len(),"sha256":sha256_hex(&frame)}),
+            ),
+        )
+        .await?;
+        *sequence = sequence.wrapping_add(3);
+    }
+    *known = catalog.tuples;
+    Ok(())
 }
 
 #[allow(clippy::too_many_arguments)]
@@ -941,7 +1086,15 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
         .as_ref()
         .and_then(|c| c.account_admission.as_ref())
     {
-        Some(account_serving::Owner::open(config).await?)
+        let profiles = profile
+            .bound
+            .as_ref()
+            .expect("validated account profiles")
+            .actors
+            .values()
+            .map(|a| (a.identity, a.name.clone()))
+            .collect();
+        Some(account_serving::Owner::open(config, profiles).await?)
     } else {
         None
     };

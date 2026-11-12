@@ -111,6 +111,13 @@ impl Room {
             ..Self::default()
         })
     }
+    pub(crate) fn set_allocation(&mut self, allocation: SlotAllocation) -> io::Result<()> {
+        if !self.members.is_empty() || self.phase != Phase::Idle {
+            return Err(io::Error::other("slot allocation requires pristine room"));
+        }
+        self.allocation = allocation;
+        Ok(())
+    }
     pub(crate) fn capacity(&self) -> usize {
         self.capacity
     }

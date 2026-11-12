@@ -32,6 +32,14 @@ impl<T> Default for Registry<T> {
 }
 impl<T> Registry<T> {
     pub fn insert(&mut self, session: u16, id: RoomId, value: T) -> io::Result<RoomKey> {
+        self.insert_with(session, id, |_| Ok(value))
+    }
+    pub fn insert_with(
+        &mut self,
+        session: u16,
+        id: RoomId,
+        build: impl FnOnce(RoomKey) -> io::Result<T>,
+    ) -> io::Result<RoomKey> {
         if session == 0
             || id.0 == 0
             || self.rooms.contains_key(&id)
@@ -52,6 +60,7 @@ impl<T> Registry<T> {
             session,
             generation,
         };
+        let value = build(key)?;
         self.rooms.insert(id, Entry { key, value });
         self.public_tuples.insert((session, id));
         self.generation = generation;
@@ -125,5 +134,20 @@ mod tests {
         assert!(gamma.generation > beta.generation);
         assert_eq!(*registry.get(alpha).unwrap(), "alpha");
         assert_eq!(*registry.get(gamma).unwrap(), "gamma");
+    }
+    #[test]
+    fn failed_factory_does_not_publish_a_room_or_consume_a_tuple() {
+        let mut rooms: Registry<u8> = Registry::default();
+        assert!(
+            rooms
+                .insert_with(1, RoomId(1), |_| Err(io::Error::other(
+                    "reservation failed"
+                )))
+                .is_err()
+        );
+        assert_eq!(rooms.entries().count(), 0);
+        let key = rooms.insert(1, RoomId(1), 7).unwrap();
+        assert_eq!(key.generation, 1);
+        assert_eq!(*rooms.get(key).unwrap(), 7);
     }
 }
