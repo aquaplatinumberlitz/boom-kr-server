@@ -217,6 +217,20 @@ impl Player {
     pub fn delivery_pending(&self) -> bool {
         !self.deliveries.is_empty() || self.pending21.is_some()
     }
+    pub(crate) fn forget_recipient(&mut self, key: crate::room::Membership) {
+        for targets in self.deliveries.values_mut() {
+            targets.remove(&key);
+        }
+        self.deliveries.retain(|_, targets| !targets.is_empty());
+        if let Some((digest, Some(targets))) = &mut self.pending21 {
+            targets.remove(&key);
+            if targets.is_empty() {
+                self.forwarded21 = self.trap.as_ref().map(|t| t.digest.clone());
+                let _ = digest;
+                self.pending21 = None;
+            }
+        }
+    }
     pub fn forward21_delivered(&mut self, digest: &str, recipient: crate::room::Membership) {
         let complete = self
             .pending21

@@ -162,6 +162,24 @@ pub struct LifeReport127 {
     pub tick: u32,
     pub forward: Option<Vec<u8>>,
 }
+/// Candidate departure notification from KR E85B60/sub11 -> E87AD0.
+/// This branch consumes the common header but ignores its x/y arguments.
+/// Native survivor/result/next-round acceptance is required separately.
+pub fn departure170(slot: u8) -> io::Result<Vec<u8>> {
+    if slot >= 8 {
+        return Err(io::Error::other("departure slot outside measured bound"));
+    }
+    let mut out = Vec::new();
+    for (v, w) in [
+        (11, Width::U8),
+        (u64::from(slot), Width::U8),
+        (0, Width::U16),
+        (0, Width::U16),
+    ] {
+        out.extend(write_uint(v, w).map_err(io::Error::other)?);
+    }
+    Ok(out)
+}
 pub fn report127(body: &[u8]) -> io::Result<LifeReport127> {
     if !(14..=4096).contains(&body.len()) {
         return Err(io::Error::other("report127 bounded prefix"));

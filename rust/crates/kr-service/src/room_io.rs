@@ -224,8 +224,8 @@ pub(crate) fn load_player_round(
         rules: RoomRules {
             roster: rules::RoundRoster::Players,
             result: ResultPolicy::Players,
-            // Survivor continuation is a later measured transition in M7e.
-            departure: DeparturePolicy::FenceActive,
+            // Experimental native consumer; enabled only by player_round.
+            departure: DeparturePolicy::ContinuePlayers,
             bomb: rules::BombPolicy::OwnerReports,
             life: rules::LifePolicy::TeamReports,
             teams: TeamPolicy::BalancedManner,
@@ -262,6 +262,11 @@ struct Channel {
 #[derive(Clone)]
 pub enum Guard {
     Channel,
+    Departure {
+        recipient: Membership,
+        source: Membership,
+        round: u64,
+    },
     Bomb {
         member: Membership,
         ticket: bombs::Ticket,
@@ -291,6 +296,7 @@ pub struct Batch {
     pub life_complete: Option<(Membership, u64, String, Membership)>,
     pub outcome_complete: Option<(Membership, u64)>,
     pub abort_return_complete: Option<(Membership, u64)>,
+    pub departure_complete: Option<(Membership, Membership, u64)>,
 }
 pub struct Runtime {
     public_key: Option<crate::room_registry::RoomKey>,
@@ -732,6 +738,7 @@ impl Runtime {
             life_complete: None,
             outcome_complete: None,
             abort_return_complete: None,
+            departure_complete: None,
         }
     }
     fn lobby_batch(
@@ -756,6 +763,7 @@ impl Runtime {
             life_complete: None,
             outcome_complete: None,
             abort_return_complete: None,
+            departure_complete: None,
         }
     }
     // Reserve every recipient queue entry before publishing any state or batch.
@@ -966,8 +974,28 @@ impl Runtime {
                 self.channels.remove(&id);
                 return;
             }
-            if self.rules.departure == DeparturePolicy::FenceActive
-                && matches!(next.phase, Phase::Loading { .. } | Phase::Armed { .. })
+            if self.rules.departure == DeparturePolicy::ContinuePlayers
+                && matches!(next.phase, Phase::Armed { .. })
+            {
+                let result = next
+                    .depart_player(m.key, Instant::now())
+                    .and_then(|round| self.continuing_departure(m.key, &next, round))
+                    .and_then(|effects| self.publish(next.clone(), effects));
+                if result.is_err() {
+                    self.model = next;
+                    self.channels.clear();
+                }
+                self.requested.remove(&m.key);
+                self.rostered
+                    .retain(|(recipient, subject)| *recipient != m.key && *subject != m.key);
+                self.ports.remove(&m.key);
+                self.channels.remove(&id);
+                return;
+            }
+            if matches!(
+                self.rules.departure,
+                DeparturePolicy::FenceActive | DeparturePolicy::ContinuePlayers
+            ) && matches!(next.phase, Phase::Loading { .. } | Phase::Armed { .. })
             {
                 if (if self.managed_round.is_some() {
                     next.fence_active(m.key)
@@ -1020,6 +1048,40 @@ impl Runtime {
             }
         }
         self.channels.remove(&id);
+    }
+    fn continuing_departure(
+        &self,
+        source: Membership,
+        next: &Room,
+        round: u64,
+    ) -> io::Result<Vec<(u32, Batch)>> {
+        if next.phase != (Phase::Armed { round }) {
+            return Ok(Vec::new());
+        }
+        let participant = next
+            .participants
+            .get(&source)
+            .ok_or_else(|| err("missing departed round row"))?;
+        let notice = packet(170, wire::departure170(participant.member.slot)?);
+        Ok(next
+            .members
+            .values()
+            .map(|member| {
+                let mut batch = Self::member_batch(
+                    member.key,
+                    Some(round),
+                    0,
+                    vec![("departure170-11".into(), notice.clone())],
+                );
+                batch.guard = Guard::Departure {
+                    recipient: member.key,
+                    source,
+                    round,
+                };
+                batch.departure_complete = Some((source, member.key, round));
+                (member.key.identity, batch)
+            })
+            .collect())
     }
 }
 impl Session {
@@ -1154,9 +1216,9 @@ impl Session {
                 if r.rules.result == ResultPolicy::Players {
                     wire::rank175_players(
                         &r.model
-                            .members
+                            .participants
                             .values()
-                            .map(|m| (m.slot, m.team))
+                            .map(|p| (p.member.slot, p.member.team))
                             .collect::<Vec<_>>(),
                         team,
                     )?
@@ -1220,19 +1282,26 @@ impl Session {
             .values()
             .map(|m| r.slot(m, next.host))
             .collect::<io::Result<Vec<_>>>()?;
+        let mut refresh = Vec::new();
+        if next.player_round() {
+            for participant in next.participants.values().filter(|p| p.departed.is_some()) {
+                refresh.push((
+                    "departure107".into(),
+                    packet(107, room_wire::removal(&participant.member)?),
+                ));
+            }
+        }
+        refresh.extend(
+            slots
+                .iter()
+                .enumerate()
+                .map(|(i, p)| (format!("refresh110-{i}"), p.clone())),
+        );
         for peer in next.members.values() {
             for (delay, packets, complete) in [
                 (0, vec![("rank175".into(), rank.clone())], false),
                 (5000, vec![("return180".into(), returning.clone())], false),
-                (
-                    8000,
-                    slots
-                        .iter()
-                        .enumerate()
-                        .map(|(i, p)| (format!("refresh110-{i}"), p.clone()))
-                        .collect(),
-                    true,
-                ),
+                (8000, refresh.clone(), true),
             ] {
                 let mut batch = Runtime::member_batch(peer.key, Some(round), delay, packets);
                 batch.guard = Guard::Outcome(peer.key, round);
@@ -1295,6 +1364,11 @@ impl Session {
         }
         match batch.guard {
             Guard::Channel => true,
+            Guard::Departure {
+                recipient,
+                source,
+                round,
+            } => r.model.departure_deliverable(source, recipient, round),
             Guard::Bomb { member, ref ticket } => {
                 r.model.deliverable(member, Some(ticket.round))
                     && r.model.bombs.deliverable(ticket, member)
@@ -1353,6 +1427,13 @@ impl Session {
         }
     }
     pub fn finish(&self, batch: &Batch) -> io::Result<()> {
+        if let Some((source, recipient, round)) = batch.departure_complete {
+            self.shared
+                .lock()
+                .map_err(|_| err("room unavailable"))?
+                .model
+                .departure_delivered(source, recipient, round)?;
+        }
         if let Some((source, round, digest, recipient)) = &batch.life_complete {
             let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
             if runtime.model.current(*source)
@@ -1676,8 +1757,15 @@ impl Session {
                     return Err(err("leave86 must be empty"));
                 }
                 let m = r.member(self.identity, self.connection)?;
-                next.leave(m.key)?;
-                effects.extend(r.departure(m.key, &next)?);
+                if r.rules.departure == DeparturePolicy::ContinuePlayers
+                    && matches!(next.phase, Phase::Armed { .. })
+                {
+                    let round = next.depart_player(m.key, Instant::now())?;
+                    effects.extend(r.continuing_departure(m.key, &next, round)?);
+                } else {
+                    next.leave(m.key)?;
+                    effects.extend(r.departure(m.key, &next)?);
+                }
                 effects.push((
                     self.identity,
                     r.lobby_batch(
@@ -2130,7 +2218,7 @@ impl Session {
                                 0,
                                 vec![("bomb159".into(), spawn.clone())],
                             );
-                            immediate.subject = Some(member.key);
+                            immediate.subject = (!next.player_round()).then_some(member.key);
                             effects.push((peer.key.identity, immediate));
                             let mut due = Runtime::member_batch(
                                 peer.key,
@@ -2142,7 +2230,7 @@ impl Session {
                                 member: peer.key,
                                 ticket: ticket.clone(),
                             };
-                            due.subject = Some(member.key);
+                            due.subject = (!next.player_round()).then_some(member.key);
                             due.bomb_complete = Some((ticket.clone(), peer.key));
                             effects.push((peer.key.identity, due));
                         }

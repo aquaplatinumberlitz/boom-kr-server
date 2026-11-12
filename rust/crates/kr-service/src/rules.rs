@@ -30,6 +30,7 @@ pub(crate) enum DeparturePolicy {
     Forfeit,
     UnrankedReturn,
     FenceActive,
+    ContinuePlayers,
 }
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]

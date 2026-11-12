@@ -125,6 +125,12 @@ impl Ledger {
         self.active.clear();
         self.serials.clear();
     }
+    pub(crate) fn forget_recipient(&mut self, key: Membership) {
+        for active in self.active.values_mut() {
+            active.pending.remove(&key);
+        }
+        self.active.retain(|_, active| !active.pending.is_empty());
+    }
     /// Operates on the candidate room clone; reserve ALL spawn+deadline queues
     /// before publishing this allocation/serial/reservation to the real owner.
     pub fn place(

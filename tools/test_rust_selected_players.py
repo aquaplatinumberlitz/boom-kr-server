@@ -45,6 +45,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ['binary', 'admin', 'config', 'baseline', 'out']:
         parser.add_argument('--'+name, type=Path, required=True)
+    parser.add_argument('--active-departure', action='store_true')
     args = parser.parse_args()
     root = args.out.resolve()
     root.mkdir(parents=True, exist_ok=False, mode=0o700)
@@ -187,6 +188,13 @@ def main():
                 for peer in clients:peer.receive(159)
             client.send(118,bomb(first,slot,capacity+1,7))
             for peer in clients:peer.quiet()
+        if args.active_departure:
+            b.close();clients.remove(b)
+            for peer in clients:
+                _,body=peer.receive(170)
+                assert codec.read_fields(body,[1,1,2,2])==[11,1,0,0]
+                peer.quiet()
+            cases.append('active_departure_removes_owner_but_retains_round_and_pending_bomb_recipients')
         for peer in clients:
             peer.sock.settimeout(10)
             for _ in range(5):peer.receive(158)
@@ -201,7 +209,8 @@ def main():
             return body
         for kind,tick in [(17,10),(19,11)]:
             c.send(127,report(kind,tick,2))
-            a.receive(170);b.receive(170)
+            a.receive(170)
+            if not args.active_departure:b.receive(170)
         time.sleep(.1);a.send(127,report(21,12,0))
         for client in clients:
             client.sock.settimeout(15);_,body=client.receive(175);client.sock.settimeout(6)
@@ -213,11 +222,14 @@ def main():
             assert at==len(stream) and ranks=={0:1,1:1,2:2}
         for client in clients:
             client.receive(180)
+            if args.active_departure:
+                _,body=client.receive(107);assert codec.read_fields(body,[1,4,1])==[1,2,0]
             for _ in clients:client.receive(110)
         cases.append('three_member_team_result_and_reset_current_rank_rows_only')
-        b.send(86,b'');b.receive(241);b.receive(91)
-        for peer in [a,c]:peer.receive(107);peer.receive(110)
-        b.close();clients.remove(b)
+        if not args.active_departure:
+            b.send(86,b'');b.receive(241);b.receive(91)
+            for peer in [a,c]:peer.receive(107);peer.receive(110)
+            b.close();clients.remove(b)
         choose(c,92,0,clients)
         second=ready_start(clients,[c],[(0,0,1,0),(2,2,0,3)])
         assert first!=second
