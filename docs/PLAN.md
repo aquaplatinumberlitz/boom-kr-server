@@ -622,8 +622,10 @@ tiền, bảng xếp hạng, inventory. Schema chỉ giữ chỗ cho ledger và 
 - **Gói server:** binary, config, fixture runtime và dữ liệu map, nhân vật sinh từ pack, có manifest hash. Chạy được
   trên một máy Linux sạch, không có repo và không có `local/`. Dữ liệu trích từ client không commit; gói được dựng
   tại chỗ từ pack bằng một lệnh có tài liệu.
-- **Gói cho người chơi:** hướng dẫn và cấu hình trỏ client tới server, cài thử được trên một máy sạch không phải máy
-  phát triển.
+- **Gói cho người chơi:** người chơi chạy client trên Wine theo
+  [quyết định 12/11](evidence/owner-directives/players-on-wine.json). Gói gồm hướng dẫn, phiên bản Wine đã nghiệm thu,
+  cách dựng prefix và cấu hình trỏ client tới server; cài thử được trên một máy Linux sạch không phải máy phát triển.
+  Không cần thử trên Windows.
 - **Kiểm tải:** 50 người đồng thời và 8 phòng cùng chơi qua relay. Trước khi đo phải có tần suất gói UDP của một
   client thật và ngưỡng CPU, RAM, độ trễ chuyển tiếp, tỉ lệ rơi gói. Tải tổng hợp phát lại traffic đã thu; cùng
   lúc có ít nhất hai phòng client thật để xác nhận client thật không bị ảnh hưởng.
