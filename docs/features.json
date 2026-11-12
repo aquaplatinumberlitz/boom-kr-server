@@ -3771,7 +3771,7 @@
       ],
       "lifecycle": "active",
       "refs": {
-        "contract": "docs/protocol/networks.md#emulated-wan-acceptance",
+        "contract": "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
         "question": "docs/RESEARCH.md#gap-peer-relay",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
@@ -3798,7 +3798,8 @@
           "docs/evidence/rust-service/n1b-dual-nat.json",
           "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
           "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
-          "docs/evidence/rust-service/relay-endpoint-design.json"
+          "docs/evidence/rust-service/relay-endpoint-design.json",
+          "docs/evidence/rust-service/n1r-fixed2.json"
         ]
       },
       "coverage": {
@@ -3831,7 +3832,8 @@
               "docs/protocol/networks.md#nat-endpoint-control",
               "docs/evidence/peer-endpoints/README.md#cp193",
               "docs/protocol/networks.md#nat-two-cycles",
-              "docs/protocol/networks.md#rust-n1b-dual-nat"
+              "docs/protocol/networks.md#rust-n1b-dual-nat",
+              "docs/protocol/udp-peer.md#rust-relay-endpoint-scope"
             ]
           },
           "windows_original": {
@@ -3846,18 +3848,25 @@
             "state": "observed",
             "refs": [
               "docs/protocol/networks.md#rust-n1-acceptance",
-              "docs/protocol/networks.md#rust-n1b-dual-nat"
+              "docs/protocol/networks.md#rust-n1b-dual-nat",
+              "docs/protocol/udp-peer.md#rust-relay-endpoint-scope"
             ]
           }
         },
         "implementation": {
-          "state": "unknown",
-          "refs": [],
-          "delivery": "unknown"
+          "state": "partial",
+          "refs": [
+            "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
+            "docs/evidence/rust-service/n1r-fixed2.json"
+          ],
+          "delivery": "branch_pending"
         },
         "integration": {
-          "state": "unknown",
-          "refs": []
+          "state": "partial",
+          "refs": [
+            "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
+            "docs/evidence/rust-service/n1r-fixed2.json"
+          ]
         },
         "gate": {
           "id": "K6",

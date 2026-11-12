@@ -1,0 +1,84 @@
+{
+  "id": "AUD089",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "n1r-account-owned-fixed2-relay-prototype"
+  ],
+  "completed_through": "CP273",
+  "recorded_utc": "2026-11-12T00:54:30.749733+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/udp-peer.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-service/src/udp_relay.rs",
+    "rust/crates/kr-service/src/udp_relay/sockets.rs",
+    "rust/crates/kr-service/src/room_relay.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/account_bridge.rs",
+    "tools/test_rust_relay.py",
+    "docs/evidence/rust-service/relay-endpoint-design.json",
+    "docs/evidence/rust-service/n1r-fixed2.json",
+    "local/research/codex/n1r-native-r1/life-verification.json",
+    "local/research/codex/n1r-native-r1/ownership-verification.json",
+    "local/research/codex/n1r-native-r1/udp-verification.json",
+    "local/research/codex/n1r-native-r2/stale-verification.json",
+    "local/research/codex/n1r-native-r3/eof-verification.json"
+  ],
+  "method": "Manual canonical-doc order, implementation ownership/queue/pool lifecycle review, actual source/binary equality, sealed native parser/capture joins and cleanup audit. Self-audit, not independent review or CI certification.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Relay existed only as a design; endpoint and session source/TCP evidence could not prove native relay.",
+      "correction": "Serving integration and fixed2 native reverse-edge movement, two results/reset/Start3, retired-port stale/current control and targeted EOF acceptance now exist. Catalog preserves original-relay presence uncertainty and historical gates.",
+      "fixed_in": [
+        "docs/protocol/udp-peer.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "docs/features.json",
+        "docs/evidence/rust-service/n1r-fixed2.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Native run2 misclassified the intentional B exit, so survivor/pastdue evidence was missing.",
+      "correction": "Retained run2 failure and partial stale proof. Exactly one scoped follow-up fixed the expected-exit guard and independently verified full native A return/ID clear/chief parser with pastdue hold and offered UDP/no egress. Postreturn local-chief getter remains unobserved.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1r-fixed2.json",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "A synthetic no-account negative hit earlier metadata validation, so it did not isolate the claimed guard.",
+      "correction": "Retained older raw; test run3 isolates account admission guard and asserts its actual error. Synthetic payload/routing/revoke proof remains separate from native KR.",
+      "fixed_in": [
+        "tools/test_rust_relay.py",
+        "docs/evidence/rust-service/n1r-fixed2.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Prototype success could be mistaken for production relay or final R1/M5 closure.",
+      "correction": "Explicit bounds: no in-instance port reuse, consumed key/port failures before publication, same-IP spoof unresolved, one controlled Internet leg, tunnel role, no relay4/8/load/restart claim. Main readability and local-backup decisions applied without changing old records.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Full R1 still needs native direct legacy2/4/8/account regression, distinct from relay native acceptance.",
+    "Full M5 general profiles and native DB-queue fault remain open.",
+    "Same-IP first-datagram spoof, NAT rebinding support, all UDP types, relay4/8, port reuse/restart and workload target are not accepted.",
+    "M7/G1/M6/M8 and50 players/eight rooms remain open. Local evidence backup is not a blocker under the new owner decision; runtime fixtures must be packaged for M8."
+  ]
+}

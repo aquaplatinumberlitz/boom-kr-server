@@ -12,7 +12,7 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 
 | Câu hỏi | Kết luận của đợt nghiên cứu |
 |---|---|
-| Tiếp Rust ở đâu? | M0–M4 scoped và account fixed2/basic đã có native; R1a–g đã merge source/TCP. Sau đợt docs, nối và nghiệm thu N1R relay rồi native hồi quy cuối R1 theo PLAN |
+| Tiếp Rust ở đâu? | M0–M4 scoped và account fixed2/basic đã có native; R1a–g đã merge source/TCP. N1R đã tích hợp và đạt prototype hai người; tiếp native hồi quy cuối R1 theo PLAN |
 | Chuyển được gì ngay? | Profile codec đã đo, các packet tối thiểu của đường offline, cơ chế phòng/trận cơ bản, ticket/epoch, endpoint exchange và kết quả/reset. Chuyển đúng phạm vi bằng chứng, giữ policy hiện tại |
 | Chưa đủ phần nào? | Hồ sơ account tổng quát và native DB-queue fault; relay hai NAT/native cuối R1; phòng tổng quát, terrain/item 4/8; inventory/progression và vận hành đích |
 | Python còn làm gì? | Giữ bản tham chiếu phục vụ được, công cụ RE và đối chứng. Chỉ rút khỏi đường phục vụ từng lát cắt khi Rust đã qua native acceptance tương ứng |
@@ -29,7 +29,7 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 | Cùng repo boom-kr-server, rust/Cargo.toml, rust/crates/kr-wire và kr-service | Contract/evidence/tool/issue cùng lịch sử; giữ server/ Python. Chỉ hai crate: wire thuần và service lib+binary. **Implementation đã mở theo owner09/11; dùng rust/ cùng repo** |
 | Một process Linux, nhiều listener/stage, mỗi room một owner serialize | Hiện một phòng/2–8 người; không cần microservices/IPC. Chỉ tách process khi có đo tải, ownership hoặc failure isolation cụ thể |
 | Tokio I/O, bounded queues theo byte và message, writer riêng mỗi socket | Nonreader không chặn phòng, stage/seq/order theo connection. Không spawn unsupervised task cho từng timer |
-| Giữ direct UDP legacy; tách seam endpoint để thiết kế relay theo N1b | Native tự tính movement/geometry. [CP266](PROTOCOL.md#rust-n1b-dual-nat) cho kết quả âm ở hai NAT đổi cổng; thiết kế relay đã chốt và R1f đã merge; integration/native relay theo PLAN. Không thay movement bằng TCP-only/snapshot hoặc coi discovery/relay đã phục hồi |
+| Giữ direct UDP legacy; tách seam endpoint để thiết kế relay theo N1b | Native tự tính movement/geometry. [CP266](PROTOCOL.md#rust-n1b-dual-nat) cho kết quả âm ở hai NAT đổi cổng; relay opt-in đã có prototype hai người; phần mở rộng và vận hành theo PLAN. Không thay movement bằng TCP-only/snapshot hoặc coi discovery/relay đã phục hồi |
 | SQLite WAL/local persistent volume, một service instance | Transaction/unique/index/backup đơn giản. DB worker blocking riêng, queue hữu hạn. PostgreSQL chỉ khi có multiwriter/HA/load; domain không khóa vào SQLite |
 | Backend account/session/inventory/reward là design; adapter KR riêng | Local identity/login-result không xác thực đầy đủ. Backend làm sớm, client binding chỉ bật sau khi đo ownership/token/multi-connection |
 | Giữ semantics/profile Python trong lần chuyển đầu | Fuse/drop/report-derivedlife/rank/terrain vẫn design; shadow discrepancy trước enforce validator mới |
@@ -79,7 +79,7 @@ KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma tr
 | KR-L002/L003 → [sảnh/cache](PROTOCOL.md#channel-lobby), [cold route](PROTOCOL.md#channel-cold-route) | present; V/S/E/N; một channel, cold/missing/warm/version negative. Impl=partial; integration=partial; main; K3 scoped | Chuyển redirect và cache profile đã đo. Multi-channel, caption, toàn bộ cache và room list động còn thiếu | Rust chạy cold/missing/warm và lỗi version/stage trên native. Chỉ RE row/list/update/page khi làm lobby động |
 | KR-R001/R002/R004 → [room](PROTOCOL.md#room-player), [mode/host](PROTOCOL.md#current-team-mode) | present; V/S/E/N/T; fixed roster 2/4/8, Ready, host Back/rejoin. Impl=partial; integration=partial; main; K4 scoped. Delta team CP213 là WIP chưa merge | Chuyển owner phòng, membership, slot, host, Ready và các reply đã đo; roster cố định trước. Password/full/kick/chọn đội tương tác chưa đủ | Rust hai native thấy cùng phòng/slot/host, rejoin/Ready/start lặp đúng. Team UI phải có KR OS-click→C2S→consumer; VN89 chỉ là đầu mối |
 | KR-R003/F001 → [start/clock](PROTOCOL.md#start-reply), [hot gate](PROTOCOL.md#loading-hot-gate-contest) | present; S/E/N; map278/ExVillage01, 99, wait-all, clock/input recipe. Impl=partial; integration=partial; main; K4/K5 scoped | Chuyển loading barrier, deadline, membership snapshot và round epoch. Không ép state/clock mới vào client | Rust 99 của cả hai→GO/native clock; thiếu/trễ ACK, EOF khi load, timeout/reset. Map khác chỉ mở khi có đúng consumer/dữ liệu |
-| KR-F002/F015 → [peer](PROTOCOL.md#peer-duo), [WAN](PROTOCOL.md#emulated-wan-acceptance) | present; V/S/E/N; 99→153, direct UDP; CP209 có mesh8/56 chiều. Impl=partial; integration=partial; main; K6a/b/c scoped; Internet unknown | Sẵn sàng chuyển endpoint exchange. Giữ UDP trực tiếp giữa client; không thay bằng snapshot server. NAT tĩnh là design; full UDP/discovery/relay/auth chưa đủ | Native Rust A↔B: capture→API/key/apply→tọa độ tiến. Thử subnet/NAT/UDP delay-loss/EOF theo recipe. Chỉ RE relay/discovery khi deployment cần |
+| KR-F002/F015 → [peer](PROTOCOL.md#peer-duo), [WAN](PROTOCOL.md#emulated-wan-acceptance) | present; V/S/E/N; 99→153, direct UDP; CP209 có mesh8/56 chiều. Impl=partial; integration=partial; K6a/b/c scoped; N1 một phía tới được, relay hai người có native | Endpoint exchange và relay opt-in đã chuyển. Direct legacy giữ nguyên; không thay movement bằng snapshot server. Full UDP/discovery/auth chưa đủ | Native cuối R1 còn riêng. Relay mesh, dùng lại cổng qua restart và tải vận hành cần acceptance; chỉ RE khoảng trống đang chặn |
 | KR-F003/X002 → [key/fence](PROTOCOL.md#udp-generation), [old UDP](PROTOCOL.md#direct-oldudp-contest-eof) | present; S/E/N/T+D; exact old frame bị loại ở vòng mới, có current positive. Impl=partial; integration=partial; main; K6 scoped | Chuyển ticket/epoch do server sở hữu và giữ giới hạn 256 byte-key trước khi fail closed. Không suy queue cũ tự sạch | Rust old callback/timer/ID reuse, UDP cũ/current positive, TCP queue của membership cũ. Phải đo trước khi nới low8 wrap hoặc grammar |
 | KR-F004 → [bom](PROTOCOL.md#bomb-serial), [four owners](PROTOCOL.md#four-owner-bombs) | present; V/S/E/N/T; 2/4/8 owner, cap/power riêng, 159/158/fence. Impl=partial; integration=partial; main; K5 scoped | Chuyển validation118, reservation/ID, confirm/explode/timer. Fuse6 và admission cap giữ design hiện tại; vị trí actor/full pool/races còn thiếu | Rust hai native đặt bom cả hai owner, ID/entity trùng khớp, cap1 khác cap2, nổ/reset/EOF khi bom chờ. Không clone stat B sang mọi slot hoặc đổi fuse trong port |
 | KR-F005/F006/F007 → [terrain/basic](PROTOCOL.md#hidden-cell-admission-current), [families](PROTOCOL.md#item-families) | present; V/S/E/N hẹp, hai người/3 basic effects/reset. Impl=partial; integration=partial; main; K5 scoped. Chưa tích hợp đầy đủ terrain/item4/8 | Chuyển pinned Box/list2, reveal142, claim124/165, generation và stat cap đã biết. Không tự xác nhận drop weights, geometry tổng quát, distance/auth/fairness/freshness142 | Rust basic hai vòng: effect thật, tranh item một kết quả, reset. Map/vật cản/validator mới phải đo delta trước enforce; không lấy winner synthetic làm proof |
@@ -114,7 +114,9 @@ Cấu trúc đối chiếu sau PR348: R1a–R1g đã merge source/TCP. Native cu
       room_io          owner + bounded recipient queues; serving vẫn chọn phòng cố định
       room_packets     template pins và packet normalization
       room_wire        bridge tới builder KR; một số body còn template opaque đã pin
-      peer_routes      LegacyDirectPlan theo round/member/slot; chưa relay/NAT discovery
+      peer_routes      LegacyDirectPlan theo round/member/slot; không NAT discovery
+      room_relay       lease account/room/round, activation và invalidation
+      udp_relay        directed-edge kernel, prebound socket pool, bounded pump và quarantine
       bombs, pickups, terrain, life, four_results     policy trận hiện hành
       accounts, account_worker, account_bridge, account_serving     DB/worker/launcher/session binding
       logging
@@ -124,8 +126,8 @@ Cấu trúc đối chiếu sau PR348: R1a–R1g đã merge source/TCP. Native cu
 
 **Ranh giới mở rộng:** một process/hai crate và mutex owner hiện đủ cho phạm vi đang đo.
 Không cần tạo trước các module `transport/session/policies/store` riêng chỉ để khớp sơ đồ cũ; chỉ tách khi
-implementation hoặc đo tải chỉ ra ranh giới hữu ích. M7 nối nhiều phòng vào registry; N1R nối policy endpoint
-opt-in; M6 thêm lưu kết quả; M8 bổ sung telemetry/admin/deploy. PLAN giữ dependency và thứ tự.
+implementation hoặc đo tải chỉ ra ranh giới hữu ích. N1R đã nối policy endpoint opt-in. M7 nối nhiều phòng vào
+registry; M6 thêm lưu kết quả; M8 bổ sung telemetry/admin/deploy. PLAN giữ dependency và thứ tự.
 
 | Khoảng trống thực tế | Ranh giới đã có | Phần còn phải nghiệm thu |
 |---|---|---|
@@ -133,13 +135,13 @@ opt-in; M6 thêm lưu kết quả; M8 bổ sung telemetry/admin/deploy. PLAN gi�
 | Profile account tổng quát | R1c template106; R1f account/session-owned PlayerId, legacy IP index riêng | Profile291/projection account bất kỳ và native DB-queue fault M5 |
 | Terrain/item 4/8, map và item mới | RoomRules typed policies; R1b không còn chọn luật từ fixture `rank` | G1 theo scope sáu map; JSON cờ cũ chỉ compatibility, không thêm cờ/nhánh theo sức chứa |
 | Body packet còn template opaque | R1d header chuẩn và `kr00967` builders; player_template chung | Chỉ mở field/consumer đang chặn M7/G1, không suy đã có schema mọi packet |
-| Hai NAT đổi cổng | R1f current-channel LegacyDirectPlan; N1/N1b đã có kết luận | N1R integration/native; không học port tự động hoặc relay native từ source/TCP |
+| Hai NAT đổi cổng | R1f current-channel LegacyDirectPlan; N1/N1b đã có kết luận | N1R đã có native hai người; còn mesh, dùng lại cổng qua restart và tải vận hành |
 | Tải 50 người/8 phòng | R1g cho cấu hình transport/allowlist độc lập profile | M8 workload, queues/FD/backpressure/restart/backup-restore; budget không là benchmark |
 | Tự động hóa nghiệm thu | Unit trong crate; harness TCP/native tại tools/ và evidence | Native cuối R1 và recipe/load/restore M8; CI không thay raw/native proof |
 
 Mutex đồng bộ quanh phòng (`Arc<Mutex<Runtime>>`, không giữ qua await) giữ owner xử lý tuần tự.
-Không chuyển sang actor/microservice khi chưa có số đo cần thiết. Source relay thử nghiệm ở nhánh riêng chưa
-nối serving hoặc nghiệm thu; đợt docs không thay runtime và không nhập phần đó vào cấu trúc main.
+Không chuyển sang actor/microservice khi chưa có số đo cần thiết. Relay hiện ở nhánh bàn giao, đã nối serving và có
+native prototype riêng; trạng thái merge là bước riêng, không suy đã nghiệm thu mesh hoặc tải đích.
 
 kr-wire không Tokio/DB/domain; parse trả lỗi+bounds, không tự authorizecommand. kr-service có library
 cho deterministiclifecycle và binaryLinux. Chưa cần kr-game/kr-storecrate, engine/render/clientRustmới
@@ -265,50 +267,53 @@ làmoracle. Policy/authoritythayđổi làtaskriêng saubaselineport.
 | Matchrestore | Durableworld/timer/RNG/epoch/peerrekey/nativejoin-loading; ngoài scopeđầu, khôngsuytừDBaccountpersist |
 
 Không hứa ngày/sốCP/phầntrăm. Ướclượng sau khi lát cắt đầu có đotải/reliability/REbridge, nêu assumptions.
-N1 đạt một phía tới được; N1b hai NAT đổi cổng âm. Topology/ISP/CGNAT khác và relay native còn thiếu theo PLAN, không là dependency ngầm K6c/K7.
+N1 đạt một phía tới được; N1b hai NAT đổi cổng âm. Topology/ISP/CGNAT khác và relay ngoài prototype hai người còn thiếu theo PLAN, không là dependency ngầm K6c/K7.
 
 <a id="relay-endpoint-design"></a>
-## Endpoint và relay sau N1b — quyết định thiết kế CP267
+## Endpoint và relay sau N1b
 
-Nguồn **design/design** cho module và ownership; thuật toán chuyển tiếp là **design/candidate** cần native proof.
-[Metadata/reuse](evidence/rust-service/relay-endpoint-design.json), [thứ tự và nghiệm thu](PLAN.md#rust-relay).
+Nguồn **design/design** cho policy và ownership; **kr_runtime/confirmed** trong phạm vi native prototype hai người.
+[Reuse thiết kế](evidence/rust-service/relay-endpoint-design.json), [implementation và bằng chứng](evidence/rust-service/n1r-fixed2.json),
+[acceptance và giới hạn](PLAN.md#rust-relay). Đây không là kiến trúc đã nghiệm thu tải vận hành.
 [CP266](PROTOCOL.md#rust-n1b-dual-nat) đã đo đủ hai lượt: cổng99/153 sai sau NAT ở cả hai phía, không UDP tới service
 để học endpoint. Thiết kế này không phục hồi relay gốc của Nexon, không đổi scope N1/K6c/K7 hoặc đóng R1f/M5.
 
 **Quyết định:** giữ một process Linux/hai crate. `kr-wire` chỉ builder/parser đã đo; `kr-service` giữ policy endpoint và
 socket UDP. `EndpointPolicy::LegacyDirect` giữ nguyên byte ba profile cũ, không tự fallback. Policy relay là opt-in,
-chưa bật trong cấu hình hiện hành. `RoomRules` chọn policy phòng; chi tiết bind/advertise/pool/budget thuộc config mạng,
+chỉ bật khi cấu hình account, policy phòng và pool mạng đủ điều kiện. `RoomRules` chọn policy phòng; chi tiết bind/advertise/pool/budget thuộc config mạng,
 không thêm cờ theo sức chứa, alias identity hoặc nhánh capacity cụ thể. Không đưa DB/authority movement vào relay.
 
-Phương án triển khai đầu tiên là **socket riêng cho từng hướng của cặp membership, theo từng vòng**. Ký hiệu `P(j,i)`:
-socket mà client j gửi tới để đến i. Trong153 gửi riêng cho j, entry slot i quảng bá endpoint `P(j,i)`.
+Implementation hiện có dùng **socket riêng cho từng hướng của cặp membership, theo từng vòng**. Ký hiệu `P(j,i)`:
+socket mà client j gửi tới để đến i. Trong packet 153 gửi riêng cho j, entry slot i quảng bá endpoint `P(j,i)`.
 Khi j gửi tới socket đó, ghi tuple j do `recv_from` quan sát. Khi cả hai tuple đã được ghi, chuyển nguyên datagram j
 **từ socket `P(i,j)`** tới tuple i đã gửi vào `P(i,j)`. Nguồn trả về vì vậy là endpoint i đã chủ động gửi tới.
-Không sửa payload, key, CRC, slot hoặc tự tạo gói game. Tính đúng của nguồn/socket và việc KR chấp nhận153 cần đo;
-CP138 proxy loopback/CP193 mapped endpoint/CP261 observed-source là căn cứ chọn phép thử, chưa chứng minh relay này.
+Không sửa payload, key, CRC, slot hoặc tự tạo gói game. Native đã chứng minh reverse socket được KR chấp nhận trong phạm vi hai người đã đo.
+CP138 proxy loopback, CP193 mapped endpoint và CP261 observed-source là nguồn chọn phép thử; bằng chứng relay mới giữ riêng.
 
-Với n người có n×(n−1) socket; 2/4/8 người tương ứng2/12/56 là phép tính tài nguyên, không logic riêng theo profile.
-Tải50 người, mỗi phòng tối đa8 cho cận trên350 socket **đang active**; chưa gồm socket nghỉ chờ tái dùng hoặc vòng
-chuẩn bị. Đây chưa là benchmark hay cam kết50 người. Phải có trần FD/port/route/queue/byte/rate/time; hết tài nguyên
-thì từ chối Start rõ ràng trước publish, không mở153 một phần rồi tiếp tục như đủ đường mạng.
+Với n người có n×(n−1) socket; 2/4/8 người tương ứng 2/12/56 là phép tính tài nguyên, không logic riêng theo profile.
+Tải 50 người, mỗi phòng tối đa 8 cho cận trên 350 socket **đang active**; chưa gồm socket nghỉ chờ tái dùng hoặc vòng
+chuẩn bị. Đây chưa là benchmark hay cam kết 50 người. Phải có trần FD/port/route/queue/byte/rate/time; hết tài nguyên
+thì từ chối Start rõ ràng trước publish, không mở packet 153 một phần rồi tiếp tục như đủ đường mạng.
 
-| Module/kiểu dự kiến | Trách nhiệm và ranh giới |
+| Module/kiểu hiện có | Trách nhiệm và ranh giới |
 |---|---|
-| `peer_routes.rs`: `RouteKey`, `EndpointPlan`, `EndpointPolicy` | Lease bất biến theo service generation, room key/generation, round, source/destination MembershipKey và connection; lập bảng153 từng recipient, kiểm current lease |
-| `udp_relay.rs`: socket owner, bounded pump | Bind/recv/send, tuple pinning, hàng đợi hữu hạn khi chờ peer, TTL/rate/budget, cleanup; không tự cấp account hoặc membership |
-| `room_io`/`RoomRules` | Chọn policy, chuẩn bị plan/socket reservation ở barrier99, commit hoặc hủy toàn bộ; kiểm round/member trước publication và send |
+| `peer_routes.rs`, `RoomRules` | `LegacyDirectPlan` và `EndpointPolicy`; direct dùng channel hiện hành, relay là policy riêng. |
+| `udp_relay.rs`, `udp_relay/sockets.rs` | `Scope`, `Participant`, `RouteKey`, kernel và socket pool; tuple pinning, bounded queue/rate/TTL/recv/send, quarantine. Không cấp account hoặc membership. |
+| `room_relay.rs` | Ràng buộc pool và lease vào room key, round, slot roster và account channel authority; tạo endpoint plan cho từng recipient và invalidation. |
+| `room_io`/`RoomRules` | Chọn policy, reserve ở Start104 và commit tại barrier99; kiểm round/member trước publish và send. |
 | `account_bridge`/`account_serving` | Account/session lease chọn PlayerId/profile; IP chỉ là restriction/observation. R1f tách profile lookup khỏi IP, giữ kiểm frontend32/echo/connection/revoke |
 | `network.rs`/config | Bind/advertise/pool/bounds đã validate; thông tin triển khai thật chỉ config local |
 | `kr00967::peer153` | Chỉ serialize fields đã đo; endpoint plan không mang policy vào wire crate |
 
-Reservation I/O làm ngoài mutex phòng. Sau bind, lấy lại lock kiểm room/round/members/lease chưa đổi rồi mới commit;
-đổi state trong lúc bind thì hủy reservation. Sockets phải sẵn sàng trước publish153; gói đến trước lease active bị bỏ.
+Toàn bộ pool bind trước serving, ngoài mutex phòng. Reservation từng vòng chỉ lấy socket đã bind, không I/O dưới lock.
+`Session::pump_relay` chụp scope dưới lock, kiểm backend session bất đồng bộ, rồi lấy lại lock kiểm owner trước pump.
+Kiểm lease không gia hạn idle. Pump không blocking và theo vòng poll hiện hành; nhịp khoảng 100 ms cần đo tải riêng. Sockets phải sẵn sàng trước publish packet 153; gói đến trước lease active bị bỏ.
 Không giữ lock qua await hoặc chỉ kiểm generation lúc enqueue. Mỗi callback/queue/send phải mang RouteKey và kiểm lại
 ngay trước gửi. Partial TCP send không rollback bytes: fence/abort đúng vòng và cleanup theo policy đã có.
 
 Tuples chỉ pin trong lease hiện hành; không học từ IP chung để cấp identity, không tự rebind bởi một datagram mới.
 CRC và low8 key **không xác thực account**. Socket riêng chỉ xác định candidate route; một peer cùng IP vẫn có thể giả
-first datagram nếu biết endpoint. Không nhận shared-IP UDP chống giả mạo là đã giải. Unknown này phải được nêu trong
+datagram đầu nếu biết endpoint. Không nhận UDP giữa người chung IP chống giả mạo là đã giải. Unknown này phải được nêu trong
 nghiệm thu nội bộ; nếu cần assurance mạnh hơn phải có phép đo wire/correlator hoặc kênh launcher hỗ trợ riêng, không
 nhét token mới vào byte KR chưa hiểu. UDP không được sửa account/profile/DB hoặc tự chuyển chủ sở hữu session.
 
@@ -318,11 +323,11 @@ không tái cấp trong cùng instance; hết pool từ chối Start. Chính sá
 dài**. Port reuse/restart và timeout NAT cần phép stale-old/current-positive và ràng buộc wire trước M8; generation
 trong RAM không chặn raw datagram đến port đã tái dùng. Không coi "queue đã clear" là bằng chứng chống gói cũ.
 
-Đối chiếu source tại baseline: Python `UdpRoundKeys` dừng sau256 lần cấp để không lặp lowbyte; Rust `Room::begin`
-chỉ tăng u64 và `wire_key` kiểm overflow u32. **Chưa có Rust guard256**; không suy helper Python đã bảo vệ Rust.
-R1f refactor giữ behavior legacy; task riêng trước relay acceptance phải chốt giới hạn key/port và native stale cases.
+Python `UdpRoundKeys` có giới hạn 256. Direct legacy Rust vẫn chỉ checked counter u64/u32, không nhận thêm guard
+trong refactor. Relay mới từ chối low-byte key đã dùng cho cùng room key trong instance, kể cả reservation đã hủy;
+đây là policy riêng của relay. Giữ socket đã nghỉ không tái dùng trong instance, không kéo dài bảo đảm qua restart.
 Không tuyên bố mọi loại UDP đều mang key hoặc chống replay/authentication nhờ rotation.
 
 Ranh giới chuyển đổi: [CP269](PROTOCOL.md#rust-r1f-session-binding) đã giao source/TCP R1f cho session binding/profile lookup và seam endpoint, mặc định `LegacyDirect` giữ
-bytes. Relay implementation là lát cắt riêng sau R1f/R1g và trước đích nghiệm thu Internet bền vững theo PLAN.
+bytes. Relay đã tích hợp sau R1f/R1g và có native prototype riêng; phần chưa đủ vận hành vẫn theo PLAN.
 Client unknown tối thiểu và acceptance native ở RESEARCH/PLAN; không mở RE toàn peer graph hoặc mode khác để làm thiết kế.

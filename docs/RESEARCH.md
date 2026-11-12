@@ -54,7 +54,7 @@ Chỉ đo consumer hoặc lifecycle đang chặn implementation; không lặp pa
 
 N1 một phía tới được đã kết luận đạt; N1b hai NAT đổi cổng đã kết luận âm sau hai lượt, không retry baseline.
 [Nguồn/phạm vi](PLAN.md#rust-n1-result). Câu hỏi kiến trúc trực tiếp hay relay cho recipe đó đã có kết quả;
-phần mở là [integration/native relay](#gap-relay-endpoint), PMTU, port reuse/restart, topology và NAT/ISP khác.
+phần mở là [mở rộng và vận hành relay](#gap-relay-endpoint), PMTU, port reuse/restart, topology và NAT/ISP khác.
 Không suy phân loại CGNAT từ hotspot, IP hoặc nhãn; chỉ mở phép đo môi trường khác khi PLAN yêu cầu.
 K6c WAN giả lập/K7 không nhận thêm dependency Internet thật hoặc thiết bị vật lý.
 
@@ -72,22 +72,23 @@ M4 Free 1v7 là giới hạn đã biết; M7/G1/M6/M8 và điều kiện bàn gi
 <a id="gap-relay-endpoint"></a>
 ### Relay endpoint sau N1b — KRE-074/KR-F015
 
-Owner/tự kiểm Codex; source **design/candidate** cho reverse-edge forwarding, chưa implementation/native.
-Nguồn cần dùng đủ đã có: CP045/138 proxy nguyênpayload, CP193 native endpoint negative/positive, CP261 observed-source,
-CP266 haiNATâm; [reuse/hash](evidence/rust-service/relay-endpoint-design.json). Không mở lại body peer/codec hoặc nhập
-wire VN. R1f giữ direct legacy; relay là task riêng [PLAN](PLAN.md#rust-relay).
+Owner và tự kiểm: Codex. Relay đã tích hợp; reverse-edge forwarding có **kr_runtime/confirmed** trong phạm vi
+prototype hai người. [Contract](protocol/udp-peer.md#rust-relay-endpoint-scope),
+[evidence và reuse](evidence/rust-service/n1r-fixed2.json), [acceptance](PLAN.md#rust-relay).
+Không mở lại N1b baseline hoặc RE toàn peer graph. Các câu hỏi bounded về KR chấp nhận reverse socket,
+hai chiều/hai vòng, stale tới cổng đã nghỉ và EOF/pastdue đã có kết quả; chỉ phần sau còn mở.
 
-| Unknown | Backend policy có thể chọn | Phép đo tối thiểu để đóng |
+| Unknown | Backend policy hiện có | Phép đo tối thiểu khi milestone cần |
 |---|---|---|
-| KR cùng public endpoint nhiều port và reverse socket source | Route theo MembershipKey+RoomId+round, mỗi hướng một socket; no fallback | Native153→send/recv→key/helper→remote actor, cả hai chiều; không chỉ echo/TCP |
-| Khởi động/học tuple trước khi có dữ liệu hai phía | Bind trước publish; pending queue/byte/TTL hữu hạn, thiếu budget fail closed | Hai KR chủ động send; giữ một peer muộn rồi đối chứng forward khi đủ; không tự tạo gameUDP |
-| Rebinding và hai session cùng IP | Session lease cấp route; ban đầu pin tuple và từ chối đổi tự động | IP chung không chọn nhầm actor/route; tuple lạ không đổi owner; không nhận CRC/key là MAC. Chống spoof giữa cùngIP còn giới hạn nếu wire thiếu auth |
-| Late old datagram qua reset/restart/portreuse | Route generation+quarantine/no in-process reuse cho prototype; hết pool từ chối | Exact old/current positive sau reset và stale callback trước send. Reuse/restart cần native riêng trước vận hành lâu dài; queueclear không đủ |
-| Key lowbyte lặp | Quyết định guard ở task riêng, không thay legacy trong refactor | Rust hiện chỉ checked u64/u32, Python có256guard; test và native stale đúng cơ chế trước khi nhận hết tuổi thọ an toàn |
-| Relay4/8 và tải50 | Thuật toán n(n−1), budget socket/FD/queue/port cho active+quarantine | Fixed2 positive trước; mesh/isolation/load riêng, không suy350socketbound là benchmark |
+| Spoof first datagram giữa session chung IP | Account cấp route, IP là restriction, pin tuple đầu; không nhận CRC/key là MAC | Cần quyết định mức assurance và phép đo correlator/wire hoặc kênh launcher riêng trước tuyên bố chống giả mạo. TCP chung IP không thay native UDP isolation. |
+| NAT rebinding hoặc lease hết hạn trong trận dài | Từ chối tuple mới, queue và lease có TTL hữu hạn | Đo migration/timeout với current positive nếu chọn hỗ trợ; hiện tại fail closed, không tự rebind. |
+| Port reuse/restart và gói cũ gửi vào cổng đang active | Giữ cổng đã nghỉ, không tái dùng trong instance; guard low-byte key chỉ trong instance | Trước vận hành lâu dài phải chọn lifetime/reuse policy rồi đo exact stale/current qua reuse và restart. Generation RAM không chặn raw UDP. |
+| Mọi loại UDP, PMTU và kích thước | Relay forward nguyên byte tối đa 255; không có authority gameplay | Chỉ đo type hoặc kích thước đang chặn G1/M7; không suy movement helper bao phủ toàn game. |
+| Relay bốn/tám người và nhiều phòng | Thuật toán n×(n−1), pool hữu hạn; fixed-room serving hiện hành | Native mesh và recipient isolation theo đội hình, rồi tải 50 người/8 phòng ở M8; số socket lý thuyết không là benchmark. |
+| Nhịp pump, DB lease checks và overload | Bounded recv/send, poll hiện hành; không gia hạn idle | Đo latency/queue/DB budgets và fairness dưới workload đích, kể cả nonreader và DB lỗi, trước M8. |
 
-Tiêu chí nghiệm thu đầy đủ ở PLAN, quyền/scope ở PROTOCOL; không có lịch RE toàn client. Không thêm Internet thật
-thành dependency ngầm của K6c/K7 đã nghiệm thu WAN giả lập hoặc yêu cầu Windows/máy vật lý khác.
+Không thêm Internet thật thành dependency ngầm của K6c/K7 đã nghiệm thu WAN giả lập hoặc yêu cầu Windows/hai máy vật lý.
+
 
 | Câu hỏi còn mở | Backend policy được chọn | Phép RE/đo tối thiểu khi milestone cần |
 |---|---|---|
@@ -137,7 +138,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-active-other"></a>KR-F012 | Dart/Oxygen/Potion/Spring/Drill/RemoteBomb mới là phân loại, chưa chứng minh cùng đường kim. | Chọn một group đang cần, tìm consumer Ctrl/report/confirm; đo điều kiện, tiêu hao, hiệu ứng và peer, không quét từng row. |
 | <a id="gap-timed-variants"></a>KR-F013 | Shield/Sensor/SJNeedle raw tail chưa chứng minh đơn vị/thời hạn/hành vi KR. | Trace consumer timer/group cần dùng, đo start/expiry/cancel/reset và peer với control; không suy ms từ tên hoặc raw số. |
 | <a id="gap-mode-items"></a>KR-F014 | ItemAttr cho thấy row/group; presence cơ chế/mode guard/reward runtime vẫn candidate, ngoài Battle tối thiểu. | Chỉ mở group mode khi PLAN mở mode đó; bắt guard/consumer trước thử runtime, HPNeedle17 không là Needle145. |
-| <a id="gap-peer-relay"></a>KR-F015 | [CP193](PROTOCOL.md#nat-endpoint-control) đã kiểm SNAT nhận thực tế/queue/drain và đối chứng153 riêng với mapped+DNAT/native helper/output/handler/current movement. | [CP194](PROTOCOL.md#nat-two-cycles) đã hai vòng NAT tĩnh/reset/Start3; [CP195](PROTOCOL.md#udp-netem-cycles) đã hai vòng dưới UDP delay/loss; [CP196](PROTOCOL.md#nat-netem-host-eof) bổ sung EOF/fence riêng; incomingadmission CP197198 đã đo; currentlifecycle/hardening theoPLAN. K6c WAN giả lập đạt CP212; [topology/giới hạn](PROTOCOL.md#emulated-wan-acceptance). NAT discovery/relay gốc/fullUDP chưa phục hồi. [N1b CP266](PROTOCOL.md#rust-n1b-dual-nat) âm ở hai NAT đổi cổng; thiết kế relay đã chốt, R1f đã merge; còn integration/native N1R theo PLAN. Không lặp N1b hoặc coi TCP result là UDP success; K6c/K7 scope không đổi. |
+| <a id="gap-peer-relay"></a>KR-F015 | Relay opt-in đã tích hợp và có native prototype hai người: hai chiều, reset, gói cũ tới cổng đã nghỉ và EOF. [Contract](protocol/udp-peer.md#rust-relay-endpoint-scope), [evidence](evidence/rust-service/n1r-fixed2.json). | Còn spoof giữa người chung IP, rebinding, port reuse/restart, mọi loại UDP và mesh bốn/tám người; [phép đo](RESEARCH.md#gap-relay-endpoint). K6c/K7 và N1 cũ không đổi; không retry N1b. |
 | <a id="gap-result-return"></a>KR-X001 | [CP176](PROTOCOL.md#a-c-basic-cycles) Ahost/Cguest2normalresults/180/room/actualCReady2/native110; CP174thirdforfeit giữ riêng. | [CP198](PROTOCOL.md#native-interleaved-startup) đã ABnormal2cycles/reset/Start3; CP176khôngStart3 chỉ là phạm vi ACcũ. [CP210](PROTOCOL.md#eight-two-team-cycles) thêm8actual/2normal4v4/resetStart3 và [CP211](PROTOCOL.md#eight-portable-battle) packagednativeproof; authority/fullvariants vẫn mở, không ghép khác run thànhfull4inventory. |
 | <a id="gap-round-reset"></a>KR-X002 | [CP176](PROTOCOL.md#a-c-basic-cycles) AC2keys/6entities/3Aeffects/195/stat/hiddeneligibility reset và Ready2 có nguồn. | ABStart3 đã có [CP198](PROTOCOL.md#native-interleaved-startup), ACscopeCP176giữ riêng; [CP202–204](PROTOCOL.md#four-transport-bounds) đãfourreset/Start2/3; wholeinventory/modes/low8wrap/generalreset còn thiếu, không lặp knownAB/ACcycles. |
 | <a id="gap-disconnect-replacement"></a>KR-X003 | [CP177](PROTOCOL.md#replacement-profile) optional exported preset/capacity theo vacancy và actual C0/C1 initial/118/159158 đã kiểm; CP176 giữ AC2normalcycles riêng. | Maximum/exhaustion/general membership/account resume chưa biết; C0 startup SIGSEGV giữ nguyên, đối chứng pass không là rootcause. Theo PLAN acceptance/control, không lặp known C0/C1 entry hoặc ACcycles. |

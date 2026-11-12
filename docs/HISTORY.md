@@ -1285,3 +1285,9 @@ Trạng thái lịch sử tại [CP251](PROTOCOL.md#rust-eight-teams): fixed1v7 
 | K6c WAN giả lập | Đạt CP212 sau chỉ đạo môi trường mới và đối chiếu CP192–196 native/routing/NAT/UDP/two cycles/EOF. Internet thật chưa kiểm | [Acceptance](PLAN.md#k6c-acceptance), [topology/giới hạn](PROTOCOL.md#emulated-wan-acceptance) |
 | K7 | Đạt CP212 sau đối chiếu riêng từng tiêu chí với CP190/198/203–207; K6c dependency đạt scope WAN giả lập. Không full game/fullauth/tám client là điều kiện | [Đối chiếu K7](PLAN.md#k7-evidence-review) |
 
+
+
+## CP272 — tài liệu contract theo chủ đề
+
+Contract đã chia thành 13 chủ đề, giữ các anchor lịch sử; R1g đã merge tại thời điểm đó. Đợt này chỉ sửa tài liệu
+và công cụ kiểm, không thay runtime hoặc phạm vi nghiệm thu. [Record](evidence/checkpoints/records/CP272.json).

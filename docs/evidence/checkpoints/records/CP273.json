@@ -1,0 +1,269 @@
+{
+  "id": "CP273",
+  "previous": "CP272",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T00:54:30.749733+00:00",
+  "context_commit": "9a592772cc2d353316c36cfb7de852b4c40b8821",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / KR-F015: implement opt-in account-owned reverse-edge relay and accept the fixed2 prototype using native KR movement, two life/result/reset cycles, stale/current and targeted EOF controls.",
+  "scope": "Relay prototype serving integration after docs refactor. Keep LegacyDirect and Python reference unchanged; no N1b baseline retry, capacity flags, identity aliases or full-service claim.",
+  "artifacts": [
+    {
+      "name": "kr-service-arm-native",
+      "sha256": "d041a77024c00cd0f03380233110e9511ff5b6b76280e1ed457917b5f000901b"
+    },
+    {
+      "name": "kr-service-x86-synthetic",
+      "sha256": "ea8be599e6dee8f354989638639986cc18c0f800153324c3f99c87d83429e1f8"
+    }
+  ],
+  "locators": [
+    "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
+    "docs/RUST_SERVICE_ARCHITECTURE.md#relay-endpoint-design",
+    "dcb6077 native source; frozen local/research/codex/n1r-delivery-r1/source/",
+    "udp_relay::Kernel / SocketPool / room_relay::Owner / Session::pump_relay"
+  ],
+  "findings": [
+    {
+      "summary": "Relay policy integrated with prebound directed sockets, account/room/round/member ownership, bounded queues and nonblocking pump; direct legacy wire preserved.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
+      "evidence": [
+        "N1R273-00009",
+        "N1R273-04009",
+        "N1R273-03013",
+        "N1R273-00268"
+      ],
+      "limits": "117 Rust tests,13 synthetic cases,306 legacy TCP cases and3169+24 exact frames do not prove a KR consumer or workload capacity."
+    },
+    {
+      "summary": "Native fixed2 account identities and profiles, reverse-edge UDP send/capture/ingress/key/helper/changing actor in both directions and two rounds, opposite results/reset/Start3 confirmed.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
+      "evidence": [
+        "N1R273-03206",
+        "N1R273-03301",
+        "N1R273-03305",
+        "N1R273-03297"
+      ],
+      "limits": "Fixed2 account-owned diagnostic copies/Wine on controlled dual port-changing NAT roles: one bare Internet UDP leg and one tunnel over SSH/TCP. Not all ISP/CGNAT or physical hosts. No native shared-IP/revoke, relay4/8, full UDP, port reuse/restart, load, full R1/M5 or internal-service closure."
+    },
+    {
+      "summary": "Exact native old datagram delivered after reset to original retired port, same post-NAT tuple, zero reverse egress; current native input subsequently changes new-round peer actor. Run2 whole-run failure retained.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
+      "evidence": [
+        "N1R273-03616",
+        "N1R273-03609"
+      ],
+      "limits": "Partial bounded stale proof only; run2 failed after planned B kill due harness guard. No content filtering claim at a current/reused port."
+    },
+    {
+      "summary": "Single targeted EOF follow-up: PID/image-qualified B host killed with pending native118/159; survivor A parses175/180/107/110, ranks[1,2], clears B ID and returns to room; no158 past due,80 offered post-EOF datagrams and zero reverse egress.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
+      "evidence": [
+        "N1R273-03647",
+        "N1R273-03909",
+        "N1R273-03942",
+        "N1R273-03919"
+      ],
+      "limits": "Actual native local-chief getter not observed after return because prior20-hit budget exhausted; native110 parser/UI only. No account resume/rejoin proof. Fixed2 account-owned diagnostic copies/Wine on controlled dual port-changing NAT roles: one bare Internet UDP leg and one tunnel over SSH/TCP. Not all ISP/CGNAT or physical hosts. No native shared-IP/revoke, relay4/8, full UDP, port reuse/restart, load, full R1/M5 or internal-service closure."
+    }
+  ],
+  "verification": [
+    {
+      "check": "117 Rust tests, fmt, clippy, locked x86 build and ARM build/tests",
+      "result": "pass",
+      "evidence": [
+        "N1R273-00064",
+        "N1R273-00060",
+        "N1R273-00268",
+        "N1R273-00058",
+        "N1R273-00051"
+      ],
+      "limits": "Build and source tests only; native ARM source equal to delivery production tree."
+    },
+    {
+      "check": "13 account TCP/UDP integration cases and306 legacy TCP cases with3169+24 exact baseline frames",
+      "result": "pass",
+      "evidence": [
+        "N1R273-04009",
+        "N1R273-03012",
+        "N1R273-03013"
+      ],
+      "limits": "Synthetic only, independent native proof recorded separately."
+    },
+    {
+      "check": "Native relay, lifecycle, stale/current and targeted EOF with raw/source freeze/cleanup",
+      "result": "pass",
+      "evidence": [
+        "N1R273-00009",
+        "N1R273-03305",
+        "N1R273-03616",
+        "N1R273-03647"
+      ],
+      "limits": "Bounded fixed2 prototype. Run2 overall harness failure retained and not promoted to pass; partial proof plus separate successful targeted follow-up."
+    },
+    {
+      "check": "90 Python CI-module tests, content census and docs/fragments/budgets",
+      "result": "pass",
+      "evidence": [
+        "N1R273-00065",
+        "N1R273-00059",
+        "N1R273-00062"
+      ],
+      "limits": "Initial tool tests ran before new metadata existed and failed two link assertions; raw first failure retained, corrected order passed."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP273-n1r-fixed2.json",
+      "bytes": 1139043,
+      "sha256": "cb9d7b3d8c792413d3e1cfd99b69d15fb04af891f0ad4f6ee5d06b2ed4758145",
+      "count": 4079
+    }
+  ],
+  "delta": {
+    "added": [
+      "Opt-in relay implementation and fixed2 native acceptance with source/raw/hash/cleanup."
+    ],
+    "corrected": [
+      "Harness expected B-exit guard in a new follow-up only; no-account synthetic guard isolation; no old raw or completed record rewrite."
+    ],
+    "superseded": [
+      "Current design-only/no-native relay status. Original relay authority remains unknown; historical N1/K6c/K7 scopes unchanged."
+    ]
+  },
+  "blockers": [
+    "Full R1 still needs native direct legacy2/4/8/account regression, distinct from relay native acceptance.",
+    "Full M5 general profiles and native DB-queue fault remain open.",
+    "Same-IP first-datagram spoof, NAT rebinding support, all UDP types, relay4/8, port reuse/restart and workload target are not accepted.",
+    "M7/G1/M6/M8 and50 players/eight rooms remain open. Local evidence backup is not a blocker under the new owner decision; runtime fixtures must be packaged for M8."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Deliver relay PR after exact-head checks and applicable CI, then final R1 direct native2/4/8/account once each; no N1b baseline retry.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "M7 only after R1: rewrite acceptance for phase1, integrate registry/multiroom wire and ownership with native tests.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automatic resume remains blocked under prior scope. Reopen only with a new observable input or milestone dependency; fresh-process acceptance does not imply account resume.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Earlier receiver-selection question stays distinct; no broad getter/watch/RTTI patch without a new edge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T00:54:30.749733+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo implementation/native/limits audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Current relay contract, bounded acceptance, unknowns and links synchronized in place; chronology and raw counts live in evidence."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Current relay contract, bounded acceptance, unknowns and links synchronized in place; chronology and raw counts live in evidence."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Current relay contract, bounded acceptance, unknowns and links synchronized in place; chronology and raw counts live in evidence."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "Current relay contract, bounded acceptance, unknowns and links synchronized in place; chronology and raw counts live in evidence."
+    },
+    {
+      "path": "docs/protocol/udp-peer.md",
+      "state": "updated",
+      "reason": "Current relay contract, bounded acceptance, unknowns and links synchronized in place; chronology and raw counts live in evidence."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Current relay contract, bounded acceptance, unknowns and links synchronized in place; chronology and raw counts live in evidence."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Current relay contract, bounded acceptance, unknowns and links synchronized in place; chronology and raw counts live in evidence."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Current relay contract, bounded acceptance, unknowns and links synchronized in place; chronology and raw counts live in evidence."
+    },
+    {
+      "path": "docs/evidence/rust-service/n1r-fixed2.json",
+      "state": "updated",
+      "reason": "Current relay contract, bounded acceptance, unknowns and links synchronized in place; chronology and raw counts live in evidence."
+    },
+    {
+      "path": "tools/test_rust_relay.py",
+      "state": "updated",
+      "reason": "Current relay contract, bounded acceptance, unknowns and links synchronized in place; chronology and raw counts live in evidence."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Topic index and compatibility anchor already lead to the updated UDP/peer contract; no new index entry needed."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Latest main readability and workflow rules read and applied; no rule change."
+    },
+    {
+      "path": "docs/evidence/rust-service/relay-endpoint-design.json",
+      "state": "unchanged",
+      "reason": "Historical design evidence remains immutable; current results in new metadata."
+    }
+  ],
+  "completed_feature_groups": [
+    "n1r-account-owned-fixed2-relay-prototype"
+  ]
+}
