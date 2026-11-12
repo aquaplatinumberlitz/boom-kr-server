@@ -17,7 +17,7 @@ pub fn team97(body: &[u8]) -> io::Result<u8> {
         return Err(io::Error::other("unsupported team97 envelope"));
     }
     let team = uint(body, Width::U8)? as u8;
-    if team > 1 {
+    if !matches!(team, 0 | 3) {
         return Err(io::Error::other("unsupported team97/local player"));
     }
     Ok(team)
@@ -61,7 +61,7 @@ pub fn player106_state(
     ready: bool,
     chief: bool,
 ) -> io::Result<Vec<u8>> {
-    if ![200, 204].contains(&template.len()) || slot >= 26 || team > 1 {
+    if ![200, 204].contains(&template.len()) || slot >= 26 || !matches!(team, 0 | 1 | 3) {
         return Err(io::Error::other("unsupported player106 slot/team"));
     }
     let mut body = template.to_vec();

@@ -314,7 +314,7 @@ impl Room {
             || !self.members[&key.identity].setup
             || self.sealed_abort
             || character.is_some_and(|value| !matches!(value, 0 | 1))
-            || team.is_some_and(|value| value > 1)
+            || team.is_some_and(|value| !matches!(value, 0 | 3))
             || character.is_some() == team.is_some()
         {
             return Err(io::Error::other("unsupported or stale room choice"));

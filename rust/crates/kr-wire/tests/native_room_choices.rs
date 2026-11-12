@@ -7,6 +7,7 @@ fn retained_kr_choices_have_exact_widths_and_no_vn_u8_character_alias() {
     assert_eq!(wire::character92(&[0x5a, 0xa5, 0x68]).unwrap(), 1); // Dizni
     assert_eq!(wire::character92(&[0x5a, 0xa5, 0x6d]).unwrap(), 4); // Marid producer only
     assert_eq!(wire::team97(&[0x5a]).unwrap(), 0);
+    assert_eq!(wire::team97(&[0x59]).unwrap(), 3); // actual UI team B
     for body in [&[][..], &[0x5a], &[0x5a, 0xa5], &[0x5a, 0xa5, 0x68, 0]] {
         assert!(wire::character92(body).is_err());
     }
