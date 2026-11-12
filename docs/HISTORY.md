@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP279: hai phòng duel Rust đã chạy độc lập trên bốn client KR thật.**
+Room chưa đầy vẫn Ready/loading, kết quả/reset và mở trận tiếp theo roster thực; EOF/bom chờ của phòng này được
+cách ly trong khi phòng kia tiếp tục. [Contract và giới hạn](protocol/room-membership.md#rust-managed-duel-lifecycle),
+[bằng chứng](evidence/rust-service/m7b-duel-lifecycle.json). Chỉ lát cắt duel được nhận; M7b còn roster/layout
+khác, M7c/d và M5 tổng quát còn mở. Thứ tự ở [Bảng điều hành](PLAN.md#dashboard).
+Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](HISTORY.md).
+
 **CP278: đã sửa kiểm provenance cho source Rust và census tại checkpoint công bố.**
 [Quy tắc và giới hạn](evidence/checkpoints/README.md#publication-bound-source-history): tìm đúng blob tại lần công bố,
 không sửa record hoặc raw cũ. Occupancy phòng đã có [native proof](protocol/room-membership.md#rust-room-population)

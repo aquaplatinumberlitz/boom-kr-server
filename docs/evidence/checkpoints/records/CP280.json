@@ -1,0 +1,227 @@
+{
+  "id": "CP280",
+  "previous": "CP279",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T11:03:26.414928+00:00",
+  "context_commit": "c2946ce8728d9704ef6f9097eb1eb4bc6fa12d46",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / M7b: chuyển các roster4/8 đã có contract sang managed serving, giữ identity/slot độc lập và chỉ đo integration/lifecycle còn thiếu.",
+  "scope": "M7b accepted only for configured contiguous2/4/8 known profiles, using CP279 duel plus CP280 team integration. No full M7/M5/general profiles or service delivery claim.",
+  "artifacts": [
+    {
+      "name": "kr-service-managed-team-rosters",
+      "sha256": "1e7cf5cba332adcdfeba6fbc42888df51c154e6a17ba55546712e78748a431c9"
+    },
+    {
+      "name": "kr-service-managed-team-rosters",
+      "sha256": "8248f8213c19f040d2006384b390d5d1504873a452ba8522a2cdaf0d0f64f144"
+    }
+  ],
+  "locators": [
+    "docs/protocol/room-membership.md#rust-managed-team-rosters",
+    "docs/evidence/rust-service/m7b-team-rosters.json",
+    "docs/PLAN.md#rust-service-milestones",
+    "docs/RESEARCH.md#gap-room-occupancy"
+  ],
+  "findings": [
+    {
+      "summary": "Managed rosters tái sử dụng exact native Start/stat/peer/life/rank; hai phòng capacity8 với4 người có barrier, opposite outcomes/reset/trận tiếp và native UDP riêng. Profile8 có bằng chứng integration được khai theo từng lượt riêng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-team-rosters",
+      "evidence": [
+        "M7T280-00099",
+        "M7T280-05141",
+        "M7T280-06858",
+        "M7T280-01911"
+      ],
+      "limits": "Wine diagnostic copy/isolated virtual LAN/direct UDP; separate declared runs/binaries and targeted EOF proof, not one fabricated continuous run. Opaque142/167 are bounded no-effect design observations. R9 wrapper recovery and R10 terminal debugger teardown error explicitly retained."
+    },
+    {
+      "summary": "Managed142 aux là u32 opaque theo design, giữ shape/slot/current-member/armed/budget64; actual aux46 rồi33 và native8/body16732 đã được ghép PCAP trước sửa guard. Không ACK/effect/authority mới.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-team-rosters",
+      "evidence": [
+        "M7T280-03691",
+        "M7T280-04162",
+        "M7T280-05925",
+        "M7T280-07443"
+      ],
+      "limits": "Semantics aux/167 unknown. Legacy policy giữ nguyên; no pickup/item extension."
+    },
+    {
+      "summary": "R2 input freeze violation và mất raw được khai failure; không runtime acceptance. R9 same-byte export còn đủ sau umount busy, wrapper exit1 giữ nguyên; recovery seal/source freeze/cleanup0 và native verification độc lập.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/rust-service/m7b-team-rosters.json",
+      "evidence": [
+        "M7T280-02191",
+        "M7T280-05122",
+        "M7T280-05141"
+      ],
+      "limits": "Không sửa raw/seal/launch-exit cũ hoặc suy R2 đã cleanup/runtime thành công."
+    },
+    {
+      "summary": "Queue mặc định4, cấu hình1–64 giữ worker deadline3s và ownership/fail-closed.130 Rust tests và hồi quy synthetic roster4/8/duel đạt theo log cuối; không thay native hoặc kiểm tải.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-team-rosters",
+      "evidence": [
+        "M7T280-00041",
+        "M7T280-05419",
+        "M7T280-07255",
+        "M7T280-00533"
+      ],
+      "limits": "Queue capacity không là50-user/load certification; tmpfs không là durability/DB fault proof."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rust fmt/clippy/locked build,130 tests and synthetic4/8/duel",
+      "result": "pass",
+      "evidence": [
+        "M7T280-00037",
+        "M7T280-00035",
+        "M7T280-00041",
+        "M7T280-00026",
+        "M7T280-05419",
+        "M7T280-07255",
+        "M7T280-00533"
+      ],
+      "limits": "Synthetic/source controls, not native certification."
+    },
+    {
+      "check": "Scoped native integration, independent PCAP/native wrappers/UI/raw hashes/cleanup",
+      "result": "pass",
+      "evidence": [
+        "M7T280-00099"
+      ],
+      "limits": "Wine diagnostic copy/isolated virtual LAN/direct UDP; separate declared runs/binaries and targeted EOF proof, not one fabricated continuous run. Opaque142/167 are bounded no-effect design observations. R9 wrapper recovery and R10 terminal debugger teardown error explicitly retained."
+    },
+    {
+      "check": "Docs/catalog/anchors/privacy/G1 exporter isolation",
+      "result": "pass",
+      "evidence": [
+        "M7T280-00017",
+        "M7T280-00015"
+      ],
+      "limits": "Exact-head full local/history checker and CI separately before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP280-managed-team-rosters.json",
+      "bytes": 1922122,
+      "sha256": "b11da43d5f7c99bb82ab33f5bba75ce0c4cb150d3ab0d26f9faaa0c869ab8284",
+      "count": 7443
+    }
+  ],
+  "delta": {
+    "added": [
+      "Typed managed measured team profiles, roster-size projection, native integration and bounded account queue policy."
+    ],
+    "corrected": [
+      "142 value whitelist overblocking, missing actual8/16732, observer/startup/export failures and raw-loss disclosure."
+    ],
+    "superseded": [
+      "Current roster integration status only; old checkpoints/audits/raw unchanged."
+    ]
+  },
+  "blockers": [
+    "M7c: lựa chọn nhân vật/đội và lỗi phòng đầy bằng client thật; M7d: ownership, duplicate transport, expiry/revoke/DB failure tích hợp. Toàn M7/M5 chưa đóng.",
+    "Chỉ known zero profiles, contiguous2/4/8 và đội/config đã đo; sparse/roster khác bị từ chối. Không có pickup/terrain/item extension trên managed serving.",
+    "Teams mất thành viên thì seal round, không tự tạo kết quả/recovery hoặc Start roster thiếu. Native EOF mới đo4 người; policy8 được kiểm synthetic cùng cơ chế.",
+    "Epoch tối đa255 lần cấp/instance; mixed key không là auth hoặc durable restart/reuse. N1R-b và M8 còn theo PLAN; không thêm dependency Internet thật vào M7 LAN."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp M7c theo PLAN: chỉ đo lựa chọn nhân vật/đội/full-room đang chặn implementation; sau đó M7d ownership tích hợp. Không lặp lifecycle2/4/8 đã nghiệm thu.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Tiếp M7c theo PLAN: chỉ đo lựa chọn nhân vật/đội/full-room đang chặn implementation; sau đó M7d ownership tích hợp. Không lặp lifecycle2/4/8 đã nghiệm thu.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T11:03:26.414928+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo implementation/native and manual managed-roster feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi managed roster, evidence level và giới hạn; không suy full M7/M5/service."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi managed roster, evidence level và giới hạn; không suy full M7/M5/service."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi managed roster, evidence level và giới hạn; không suy full M7/M5/service."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi managed roster, evidence level và giới hạn; không suy full M7/M5/service."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi managed roster, evidence level và giới hạn; không suy full M7/M5/service."
+    },
+    {
+      "path": "docs/evidence/rust-service/m7b-team-rosters.json",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi managed roster, evidence level và giới hạn; không suy full M7/M5/service."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi managed roster, evidence level và giới hạn; không suy full M7/M5/service."
+    },
+    {
+      "path": "docs/protocol/room-membership.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi managed roster, evidence level và giới hạn; không suy full M7/M5/service."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Mục lục đã trỏ topic room-membership; contract ở đúng chủ đề."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Áp dụng solo, feature-group audit, native/source separation, privacy và G1 file isolation."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-managed-team-rosters"
+  ]
+}

@@ -1176,7 +1176,7 @@ hai raw585 giống nhau trên cùng transport sau rejoin.
 
 86 có return241 trễ theo recipe đã đo. Chỉ khi batch return hoàn tất mới hủy Session cũ, xóa pending và cho chọn
 phòng khác. Phòng nghỉ khi không còn channel/member hoặc work hợp lệ trong phạm vi setup; các phase gameplay
-chỉ mở khi có [profile duel riêng](#rust-managed-duel-lifecycle). Watch coalesce catalog, chụp state khi gửi và đánh dấu version đã thấy trước snapshot. Client đang trong
+chỉ mở khi có [profile trận riêng](#rust-managed-team-rosters). Watch coalesce catalog, chụp state khi gửi và đánh dấu version đã thấy trước snapshot. Client đang trong
 Prepare không nhận catalog của sảnh; khi về sảnh, gửi matching90 cho tuple đã mất rồi 91 hiện hành. Sau return241,
 client có thể đã dựng lại list nên 90 không có object để xóa; parser đủ và 91 đúng vẫn phải kiểm. Với client đang
 ở sảnh, native matching90 và card biến mất đã được đo. Count0 của 91 không được coi là clear-all.
@@ -1184,7 +1184,7 @@ client có thể đã dựng lại list nên 90 không có object để xóa; pa
 86 thành công chỉ project session u16 đã đo; u32 sau nó vẫn opaque, không gọi là roomID echo. 87 project session và
 slot; client lấy roomID/tên từ hàng 91 đã chọn. 91 dùng title thực từ 81. Occupancy/capacity của managed room
 đã có [contract riêng](#rust-room-population); các byte khác vẫn giữ fixture. Setup96/266 vẫn là exact-shape observation có membership, không ACK và không
-đổi state. Khi không cấu hình profile trận, mode M7a vẫn chỉ phục vụ selection/setup; [duel opt-in](#rust-managed-duel-lifecycle) mở Ready/loading/trận riêng. Thay nhân vật/đội chưa được phục vụ.
+đổi state. Khi không cấu hình profile trận, mode M7a vẫn chỉ phục vụ selection/setup; [profile trận opt-in](#rust-managed-team-rosters) mở Ready/loading/trận riêng. Thay nhân vật/đội chưa được phục vụ.
 
 Native bốn account/profiles cấu hình đã tạo hai phòng với hai tiêu đề CP949 mặc định khác nhau; mỗi cặp chỉ thấy
 roster của phòng mình. Identity3 làm chủ ở slot0; identity1 rời phòng đầu, vào phòng thứ hai ở slot2. Client thật
@@ -1200,9 +1200,10 @@ quát. Relay Factory bind một pool trước serving, mỗi room nhận Owner/l
 người, không fallback direct. Regression relay cũ đạt ở mức TCP/UDP synthetic; native relay nhiều phòng, reuse/key/
 restart/spoof vẫn thuộc N1R-b. Native M7a dùng Wine diagnostic copy/LAN giả lập, không nâng scope Internet đã có.
 
-M7a đạt [acceptance](../PLAN.md#rust-service-milestones) trong các giới hạn trên. M7b/c/d, M5 tổng quát, gameplay
-phòng động, entitlement sửa title, DB-queue fault native và vận hành vẫn chưa đạt. Không suy thành công
-trận hoặc full service từ setup/slot, unit, TCP hay log server.
+M7a đạt [acceptance](../PLAN.md#rust-service-milestones) cho selection/setup trong các giới hạn trên; bằng chứng này
+không gồm trận. [Lifecycle managed](#rust-managed-team-rosters) có nghiệm thu riêng. Entitlement sửa title, hồ sơ
+tổng quát, DB-queue fault native và vận hành nằm ngoài lát cắt selection. Không suy trận hoặc full service từ
+setup/slot, unit, TCP hay log server.
 
 
 <a id="rust-room-population"></a>
@@ -1222,7 +1223,8 @@ Bốn client KR thật tạo hai phòng với prototype sức chứa 8, chỉ b�
 Alpha **1/8 → 2/8 → 1/8**, Beta giữ **1/8**, khi B vào/rời Alpha. Reader native, ảnh UI và PCAP được đối chiếu độc lập;
 20 byte khác giữ nguyên. A/C rời cuối làm đúng thẻ phòng biến mất qua matching90. Synthetic riêng kiểm 1/4 → 2/4 → 1/4,
 wrong tuple không tạo ghost hoặc đổi watch, EOF/Back cuối gửi 90 rồi 91 rỗng. Hai implementation đồng ý không thay
-native oracle. Không có Start104/loading99/gameplay trong phép đo này; **chỉ hoàn tất phần occupancy, M7b còn mở**.
+native oracle. Phép đo này chỉ xác nhận occupancy, không gồm Start104/loading99/gameplay; xem
+[lifecycle managed](#rust-managed-team-rosters) cho bằng chứng trận riêng.
 
 
 <a id="rust-managed-duel-lifecycle"></a>
@@ -1235,7 +1237,7 @@ failure tích hợp chưa được nhận từ lát này. Các profile fixed cũ
 
 `managed_rooms.round_profile` là opt-in gồm `battle` với bốn fixture175/180 đã pin và
 `initial_bomb_capacity: [1,2]`. Nạp và kiểm mọi fixture trước serving, ngoài lock tạo phòng. `RoomRules.roster`
-chọn `ContiguousDuel`: cần đúng hai membership hiện hành ở slot0/1, hai team0/1, current host, setup và Ready.
+chọn `Contiguous(2)`: cần đúng hai membership hiện hành ở slot0/1, hai team0/1, current host, setup và Ready.
 Sức chứa admission của phòng có thể lớn hơn hai; không yêu cầu phòng đầy. Identity vẫn độc lập slot. Roster thiếu,
 thừa, sparse hoặc team chưa hỗ trợ bị từ chối trước Start; không ACK giả hoặc suy Start ba/bốn/tám người đã hỗ trợ.
 Start121 chọn hai hàng đã biết của blob không nén và phải bằng fixture hai hàng giữ độc lập; peer153 và recipient
@@ -1272,3 +1274,57 @@ Unit và TCP kiểm incomplete/sparse/extra roster, barrier/epoch/result của h
 EOF/pending blast và queue guard. Chúng là kiểm policy; không tự chứng minh mọi stale wire hoặc mọi topology.
 Tập cấu hình khác cần contract và native riêng trước mở phục vụ; [khoảng trống còn lại](../RESEARCH.md#gap-room-occupancy)
 và thứ tự chỉ ở PLAN. Không suy full M7b, M7, M5 hoặc dịch vụ nội bộ hoàn chỉnh từ lát cắt duel.
+
+<a id="rust-managed-team-rosters"></a>
+## Profile trận managed theo roster 2/4/8 người
+
+Nguồn **design/design** cho adapter Rust và policy quan sát; contract Start, stat, peer, life và rank tái sử dụng
+các profile fixed đã đo. [Metadata và giới hạn](../evidence/rust-service/m7b-team-rosters.json) phân biệt kiểm source,
+synthetic và từng lượt client thật. Không suy nghiệm thu managed serving mới từ việc fixed profile trước đó đã đạt.
+
+`managed_rooms.round_profile` chọn một tập input đã đo, độc lập với sức chứa admission của phòng:
+
+```json
+{"mode":"teams","teams":[0,1,0,1],"initial_bomb_capacity":[1,2,1,1]}
+```
+
+Mode `teams` chỉ nhận contiguous roster 4 hoặc 8 người và đội xen kẽ đã biết. Với tám người, dùng đội
+`[0,1,0,1,0,1,0,1]` và giới hạn bom `[1,2,1,1,2,1,1,1]`. Mode `duel` giữ default để cấu hình CP279 còn dùng được,
+nhận đội `[0,1]`, giới hạn `[1,2]` và bộ `battle` fixture đã pin. Mode `teams` không nhận `battle` fixture duel.
+Không dùng PlayerId để chọn stat hoặc gắn account với slot cố định. Các giá trị này thuộc đúng profile/Start,
+không phải stat tổng quát cho mọi nhân vật.
+
+Nạp profile, giải mã fixture và chiếu Start trước serving. `RoomRules.roster = Contiguous(n)` kiểm đúng số người,
+slot liên tục, đội, chủ phòng, setup và Ready; sức chứa có thể lớn hơn roster. Thiếu/thừa/sparse hoặc đội không đúng
+không được Start. Start chọn đúng các hàng 2/4/8 đã biết, giữ byte phần còn lại; peer, barrier, recipient và rank
+dùng số người của round. Không mở roster 3/5/6/7 hoặc đội hình khác bằng cách tự thêm hàng.
+
+Teams dùng `BalancedManner`, `OwnerReports`, `TeamReports` và kết quả đội theo profile cũ. Mỗi phòng giữ queue,
+timer, membership/visit/round fences và kết quả riêng; allocator epoch dùng chung như ở lát cắt duel. Mất thành viên
+trong loading/trận dùng `FenceActive`: hủy hiệu lực round đang chạy và công việc chờ, không tự tạo kết quả, phục hồi
+trận hoặc Start tiếp với roster thiếu. Đây là policy fail closed, không là luật recovery của server gốc.
+
+Packet142 của managed profile giữ kiểm body7, slot của người gửi, tọa độ trong map, membership đang armed và budget
+64 quan sát mỗi thành viên mỗi round. Aux được đọc là **u32 opaque**, không gán nghĩa, không ACK, reveal, pickup,
+inventory hoặc thay đổi world. Cùng input đã phát sinh aux46 rồi aux33 ở hai lượt native khác nhau; whitelist từng
+giá trị là giới hạn không phù hợp cho quan sát không hiệu ứng. Chấp nhận mọi giá trị aux trong shape này là **policy
+design**, không phải xác nhận mọi giá trị hợp lệ theo server gốc. Profile fixed cũ giữ allowlist cũ. Pickup124 vẫn
+chưa hỗ trợ trên đường managed; không nới guard hoặc giả thành công để hoàn thành lifecycle.
+
+`account_admission.worker_queue_capacity` mặc định 4, nhận 1–64; cấu hình tám account dùng 64 để tránh từ chối burst
+authorize hợp lệ ở queue4. Deadline worker vẫn 3 giây, kiểm ownership và fail closed vẫn giữ. Đây không phải kiểm
+tải 50 người hoặc nghiệm thu lỗi DB khi native đang chạy. Kiểm synthetic dùng tmpfs riêng, có same-byte export
+sau cleanup; các lỗi QueueExpired trên storage trước đó không đủ để kết luận nguyên nhân filesystem.
+
+Lựa chọn nhân vật/đội qua UI, hồ sơ account bất kỳ, failure ownership tích hợp, relay nhiều người và vận hành
+vẫn có acceptance riêng trong PLAN. Không suy Internet/NAT, durable epoch/restart, session resume, match restore
+hoặc chống giả mạo từ profile roster hay mixed low-byte UDP key.
+
+Bằng chứng native hiện có trên Wine/LAN giả lập: tám account tạo hai phòng capacity8, mỗi phòng4 người; giữ ACK cuối
+của Alpha trong khi Beta mở clock riêng, hai kết quả đầu đối nghịch, reset và hai trận tiếp dùng key mới. Một lượt
+riêng trên một phòng8 kiểm cùng lifecycle và peer mesh/current-position. Lượt EOF riêng trên binary mới nhất kiểm
+Alpha mất chủ khi bom chờ, recipient không nhận158 và Beta vẫn có current UDP, native159/158/lookup/kind0/cleanup.
+Không ghép các lượt thành một runtime liên tục. Giữa binary lifecycle4 và binary8/EOF, Rust chỉ đổi đúng danh sách
+quan sát167 của profile8 để nhận body32; [source comparison và hash](../evidence/rust-service/m7b-team-rosters.json)
+ghi riêng. R9 giữ wrapper exit1 và seal export phục hồi; lỗi GDB cuối shutdown của C ở lượt EOF được phân loại riêng,
+không bỏ log hoặc gọi là teardown không lỗi. Không suy native EOF8 từ phép đo EOF4; policy8 còn có kiểm synthetic.
