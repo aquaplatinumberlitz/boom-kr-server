@@ -1,0 +1,59 @@
+{
+  "id": "AUD094",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "checkpoint-rust-source-census-publication-history"
+  ],
+  "completed_through": "CP278",
+  "recorded_utc": "2026-11-12T05:08:59.525344+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/history-source-correction.json",
+    "tools/check_checkpoints.py",
+    "tools/test_checkpoint_source_history.py",
+    "local/research/codex/m7b-cp277-exact-head-check.txt",
+    "local/research/codex/m7b-history-correction-publication.json",
+    "local/research/codex/m7b-history-correction-tests-r2.txt"
+  ],
+  "method": "Đọc nguồn chuẩn theo thứ tự và rà ba hash mismatch từ checker; xác minh riêng đúng declaration/manifest/blob tại lần công bố CP275/276. Rà allowlist path, traversal, negative test commit sau/CP sai/manifest sai/artifact/build tree; không dùng sửa pin hoặc raw làm pass.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Checker chỉ nhận source Python lịch sử; source Rust đã pin ở CP276 bị coi là raw bất biến.",
+      "correction": "Cho .rs đúng rust/crates/*/src/ dùng publication-bound recovery hiện có. Khai báo và blob phải cùng lần công bố, không nhận commit sau.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "tools/test_checkpoint_source_history.py",
+        "docs/evidence/checkpoints/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Generated census của CP275 chưa có trong explicit metadata allowlist.",
+      "correction": "Chỉ thêm docs/content/census.json; đúng blob tại aa056e3 và declaration CP275 đã xác minh. JSON evidence khác vẫn lỗi khi đổi.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "docs/evidence/checkpoints/history-source-correction.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Có thể coi full checker CP277 đã pass hoặc dùng fallback để cứu mọi hash mismatch.",
+      "correction": "Giữ log fail3errors; CP278 ghi correction và61tests. Exact-head full check phải chạy lại trước merge; không thay record/raw cũ hoặc native/gate.",
+      "fixed_in": [
+        "docs/evidence/checkpoints/history-source-correction.json",
+        "README.md",
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "M7b lifecycle trận/roster/RoomRules và cách ly round/UDP còn mở; occupancy native CP277 không đóng toàn M7b.",
+    "M5 profile tổng quát/native DB-queue fault, M7c/d và N1R-b/M8 vẫn theo PLAN. Không thay scope gate hoặc runtime."
+  ]
+}

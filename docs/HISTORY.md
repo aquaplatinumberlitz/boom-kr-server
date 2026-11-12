@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP277: danh sách phòng Rust đã hiển thị số người và sức chứa từ membership thật.**
+Client KR trên Wine/LAN giả lập đã thấy một phòng 1/8 → 2/8 → 1/8 và phòng kia giữ 1/8; người cuối rời xóa đúng phòng.
+[Contract và giới hạn](protocol/room-membership.md#rust-room-population),
+[bằng chứng](evidence/rust-service/m7b-room-population.json). Chỉ phần occupancy đã đạt; M7b còn lifecycle trận
+và cách ly round/UDP. M7a giữ nguyên phạm vi đã nghiệm thu; toàn M7 và profile account bất kỳ chưa đạt.
+Tiếp lifecycle M7b theo [Bảng điều hành](PLAN.md#dashboard).
+
 **CP276: M7a đã nghiệm thu tạo, chọn và rời nhiều phòng bằng account trên client KR thật.**
 Bốn client trên Wine/LAN giả lập đã dùng hai phòng riêng, đúng slot/chủ phòng, chuyển phòng, EOF/revoke và xóa phòng rỗng.
 [Contract và giới hạn](protocol/room-membership.md#rust-managed-room-selection),

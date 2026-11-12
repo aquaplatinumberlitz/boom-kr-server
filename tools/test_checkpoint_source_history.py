@@ -56,6 +56,46 @@ class SourceHistoryTests(unittest.TestCase):
         self.assertEqual((errors, checked, missing), ([], 1, 0))
         self.assertTrue(any('HISTORICAL SOURCE VERIFIED' in w for w in warnings))
 
+    def test_rust_source_requires_its_original_external_publication_and_exact_blob(self):
+        item, path = self.fixture('rust/crates/kr-service/src/room.rs', external=True)
+        later = b'later Rust source\n'
+        path.write_bytes(later)
+        self.commit()
+        path.write_text('current Rust source\n')
+        errors, warnings, checked, missing = self.verify(item)
+        self.assertEqual((errors, checked, missing), ([], 1, 0))
+        self.assertTrue(any('HISTORICAL SOURCE VERIFIED' in w for w in warnings))
+        later_pin = item | dict(bytes=len(later), sha256=hashlib.sha256(later).hexdigest())
+        self.assertTrue(self.verify(later_pin)[0])
+        self.assertTrue(checker.verify_evidence_item(item, self.root, True, 'CP002')[0])
+        self.assertTrue(self.verify(item | dict(kind='artifact'))[0])
+
+    def test_rust_source_with_broken_publication_manifest_stays_invalid(self):
+        item, path = self.fixture('rust/crates/kr-wire/src/kr00967/room.rs',
+                                  external=True, broken_reference=True)
+        path.write_text('new Rust source\n')
+        self.assertTrue(self.verify(item)[0])
+
+    def test_rust_fixture_and_build_tree_are_not_source_history(self):
+        item, path = self.fixture('rust/target/room.rs')
+        path.write_text('changed build artifact\n')
+        self.assertTrue(self.verify(item)[0])
+        self.assertIsNone(checker.historical_checkpoint_source(
+            self.root, 'rust/crates/kr-wire/fixtures/room.rs', item['sha256'], item['bytes'], 'CP001'))
+        self.assertIsNone(checker.historical_checkpoint_source(
+            self.root, 'rust/crates/kr-wire/src/../fixtures/room.rs', item['sha256'], item['bytes'], 'CP001'))
+
+    def test_generated_census_requires_exact_publication_not_later_matching_json(self):
+        item, path = self.fixture('docs/content/census.json', external=True)
+        later = b'{"later": true}\n'
+        path.write_bytes(later)
+        self.commit()
+        path.write_text('{"current": true}\n')
+        self.assertEqual(self.verify(item)[0], [])
+        later_pin = item | dict(bytes=len(later), sha256=hashlib.sha256(later).hexdigest())
+        self.assertTrue(self.verify(later_pin)[0])
+        self.assertTrue(self.verify(item | {'sha256': 'f' * 64})[0])
+
     def test_external_pin_requires_original_evidence_manifest_hash(self):
         item, path = self.fixture('tools/tool.py', external=True)
         path.write_text('new source\n')

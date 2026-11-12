@@ -1,0 +1,103 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "HIST278-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3745,
+      "sha256": "db3d54318bac139b35ad4a55e787395e1d3f01b91401c58665ec9671acfb8e4f"
+    },
+    {
+      "id": "HIST278-0002",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 138761,
+      "sha256": "52026c3435084bb407b933e7258c20a6cd77ff0ab87b3ca5a28a379abe259775"
+    },
+    {
+      "id": "HIST278-0003",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 64710,
+      "sha256": "af2a9965b0a088fb22603502ed3a161c78460187d5ce4bb8b94dbdf962f4c749"
+    },
+    {
+      "id": "HIST278-0004",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/README.md",
+      "bytes": 16905,
+      "sha256": "354d87daa88174cf0f83510684bc4c3cd59a57c5573fb18d24aa7c77e8d7c4f5"
+    },
+    {
+      "id": "HIST278-0005",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD094.json",
+      "bytes": 2785,
+      "sha256": "1ec756ee7907a6d0e91c65f58c077c7313b85ab59f3ff2117a908eca2828bfe4"
+    },
+    {
+      "id": "HIST278-0006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/history-source-correction.json",
+      "bytes": 2724,
+      "sha256": "e0dc1338c1fea5d1c004cd555794a02dcba63742c8b5f76beafcb591146877b8"
+    },
+    {
+      "id": "HIST278-0007",
+      "kind": "local",
+      "path": "local/research/codex/append_cp278.py",
+      "bytes": 7936,
+      "sha256": "983de16764cc2d1c54fdd00d9726c1536f6098280c0efe5fd7571d2eed1a8e7e"
+    },
+    {
+      "id": "HIST278-0008",
+      "kind": "local",
+      "path": "local/research/codex/m7b-cp277-exact-head-check.txt",
+      "bytes": 137039,
+      "sha256": "74841b85a5838868bdc9fca2c8fe35ceed38f1c656b867ce01e2db531247fdd1"
+    },
+    {
+      "id": "HIST278-0009",
+      "kind": "local",
+      "path": "local/research/codex/m7b-history-correction-publication.json",
+      "bytes": 1511,
+      "sha256": "dfe4d0cefd75a98a93eecfc0cdffffcb80e3272bf6b5e13a4cc94b1ef6739be5"
+    },
+    {
+      "id": "HIST278-0010",
+      "kind": "local",
+      "path": "local/research/codex/m7b-history-correction-tests-r1.txt",
+      "bytes": 160,
+      "sha256": "5717f190740982ff0c9eb4b18935fdb6884329fa9a619f199188089e8d1cca2f"
+    },
+    {
+      "id": "HIST278-0011",
+      "kind": "local",
+      "path": "local/research/codex/m7b-history-correction-tests-r2.txt",
+      "bytes": 160,
+      "sha256": "5f957f29674a2929c71b426f2078829c3d270dc4223e7d1e764d93bb0a29f19a"
+    },
+    {
+      "id": "HIST278-0012",
+      "kind": "local",
+      "path": "local/research/codex/m7b-history-docs-final.txt",
+      "bytes": 274,
+      "sha256": "408e4ec206311b722719b0820037e5fc6ce05edb263be02a1b7a559b4b863c93"
+    },
+    {
+      "id": "HIST278-0013",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 36914,
+      "sha256": "3f805ead37fbee790fd8ec07f81661e6f06a10c56b4d915cd36606a97760576c"
+    },
+    {
+      "id": "HIST278-0014",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 8507,
+      "sha256": "751a18522ee2949536b9cbd715e6e8ec57e496be072b453ce098150cae786984"
+    }
+  ]
+}

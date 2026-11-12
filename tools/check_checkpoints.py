@@ -23,6 +23,7 @@ SHA = re.compile(r"[0-9a-f]{64}")
 COMMIT = re.compile(r"[0-9a-f]{40}")
 MUTABLE_METADATA_DOCS = {
     'docs/features.json',
+    'docs/content/census.json',
     'docs/evidence/issue-reconciliation/github-snapshot.json',
     'docs/evidence/issue-reconciliation/review.json',
 }
@@ -101,9 +102,10 @@ def historical_checkpoint_source(root, relative, expected_sha, expected_bytes, c
     A source blob committed later cannot repair a missing publication-time pin.
     Older inline-only records without a matching v2 publication stay strict.
     """
-    if (not re.fullmatch(r'CP[0-9]{3,}', checkpoint)
-            or Path(relative).parts[0] not in {'server', 'tools'}
-            or Path(relative).suffix != '.py'):
+    python_source = Path(relative).parts[0] in {'server', 'tools'} and Path(relative).suffix == '.py'
+    rust_source = (re.fullmatch(r'rust/crates/[^/]+/src/(?:[^/]+/)*[^/]+\.rs', relative)
+                   and not any(part in {'.', '..'} for part in relative.split('/')))
+    if not re.fullmatch(r'CP[0-9]{3,}', checkpoint) or not (python_source or rust_source):
         return None
     return historical_checkpoint_publication(
         root, relative, expected_sha, expected_bytes, checkpoint)
@@ -188,7 +190,7 @@ def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence")
     checked += 1
     if path.stat().st_size != item.get("bytes") or digest(path) != item.get("sha256"):
         # Canonical docs can evolve while old checkpoint bytes remain immutable.
-        # Docs can use exact history; project Python source additionally needs
+        # Docs can use exact history; project Python/Rust source additionally needs
         # the same declaration and exact blob at the checkpoint's publication.
         # Binaries, raw captures and local evidence still require current pins.
         revision = None

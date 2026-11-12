@@ -1,0 +1,52 @@
+{
+  "schema": "kre-checkpoint-publication-history-correction-v1",
+  "checkpoint": "CP278",
+  "source": "design",
+  "status": "design",
+  "canonical": "docs/evidence/checkpoints/README.md#publication-bound-source-history",
+  "problem": "Exact-head CP277 checker rejected two previously pinned mutable Rust source files and generated census; three exact blobs already present at their record publication.",
+  "correction": "Narrow publication-bound source recovery for rust/crates/*/src/*.rs and explicit metadata path docs/content/census.json; require complete original record, same declarations, authenticated evidence manifests and exact same-commit bytes.",
+  "history": [
+    {
+      "checkpoint": "CP275",
+      "path": "docs/content/census.json",
+      "publication": "aa056e3f532588f0667977443bfafbea531a24a4",
+      "sha256": "884f506edf0b0d55685e4fdb0d035f849b1fb1f0119479010e715653e5cd8725",
+      "warnings": [
+        "CP275: HISTORICAL METADATA DOC VERIFIED docs/content/census.json at aa056e3f532588f0667977443bfafbea531a24a4; current file differs; checkpoint bytes unchanged"
+      ]
+    },
+    {
+      "checkpoint": "CP276",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "publication": "e3a99c75c0573e9a818476f4cb91171854240dbd",
+      "sha256": "c35bcb3e14cd29abd22c465073f1070febb2f7f4a3101f47c72b05f67d1fd676",
+      "warnings": [
+        "CP276: HISTORICAL SOURCE VERIFIED rust/crates/kr-service/src/room_io.rs at e3a99c75c0573e9a818476f4cb91171854240dbd; current file differs; checkpoint bytes unchanged"
+      ]
+    },
+    {
+      "checkpoint": "CP276",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "publication": "e3a99c75c0573e9a818476f4cb91171854240dbd",
+      "sha256": "89da35f4c5d423529ac7ca62aaa0a64ee349b24b08e163fc0d8466492b44a7ce",
+      "warnings": [
+        "CP276: HISTORICAL SOURCE VERIFIED rust/crates/kr-service/src/room_service.rs at e3a99c75c0573e9a818476f4cb91171854240dbd; current file differs; checkpoint bytes unchanged"
+      ]
+    }
+  ],
+  "tests": {
+    "suite": "tools/test_checkpoint_source_history.py",
+    "all_checkpoint_tests": 61
+  },
+  "local": {
+    "failed_full_check": "local/research/codex/m7b-cp277-exact-head-check.txt",
+    "targeted_proof": "local/research/codex/m7b-history-correction-publication.json",
+    "test_report": "local/research/codex/m7b-history-correction-tests-r2.txt"
+  },
+  "limits": [
+    "No old record/audit/evidence-manifest/raw rewritten.",
+    "No arbitrary later Git revision, missing publication blob, raw/local/binary/build fixture or other JSON fallback.",
+    "No runtime behavior, protocol contract or gate status changed. Exact-head full history/local and CI remain mandatory before merge."
+  ]
+}
