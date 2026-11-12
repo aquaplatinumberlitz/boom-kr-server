@@ -58,7 +58,7 @@ def main():
     login, wcp, channel = sorted(ports)
     cfg.update(bind='127.0.0.1', allowed_peers=[f'127.0.0.{n+2}' for n in range(4)], ports=sorted(ports))
     two.update(login_port=login, login_candidate_ports=[login, wcp], wcp_ports=sorted(ports),
-               channel_port=channel, managed_rooms=dict(max_rooms=2, round_profile=dict(battle=baseline['battle'], bomb_capacity={str(i): n for i,n in enumerate([1,2,1,1],1)})))
+               channel_port=channel, managed_rooms=dict(max_rooms=2, round_profile=dict(battle=baseline['battle'], bomb_capacity={str(i): n for i,n in enumerate([1,2,1,2],1)})))
     for actor, peer in zip(two['actors'], cfg['allowed_peers']):
         actor['peer'] = peer
     account = AccountFixture(args.admin, root, cfg)
