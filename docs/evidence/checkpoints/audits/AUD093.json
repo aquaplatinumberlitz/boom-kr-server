@@ -1,0 +1,64 @@
+{
+  "id": "AUD093",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-managed-room-population"
+  ],
+  "completed_through": "CP277",
+  "recorded_utc": "2026-11-12T04:54:46.929460+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/room-membership.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/rust-service/m7b-room-population.json",
+    "local/research/codex/m7b-occupancy-source-r1/source-survey.json",
+    "local/research/codex/m7b-occupancy-source-r1/reader-byte-match.json",
+    "local/research/codex/m7b-population-native-r1/verification.json",
+    "local/research/codex/m7b-population-native-r1/native/raw-seal.json",
+    "local/research/codex/m7b-population-synthetic-r1/verification.json",
+    "local/research/codex/m7b-managed-regression-r1/result.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence/raw; đối chiếu reader cache đã khớp635byte với PCAP giải mã độc lập, native EAX/cursor, ảnh UI đã xem và lifecycle membership. Không dùng encoder Rust/log server làm oracle. Rà diff giữ nguyên exporter G1 và riêng tư hạ tầng.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "22 byte tail đều chưa phân loại; listing giữ current1/max4 cố định.",
+      "correction": "Chỉ offsets5/7 có KR reader+native UI chứng minh current/capacity. Managed projection lấy membership/model và đánh thức watch khi join/leave; 20byte khác giữ nguyên.",
+      "fixed_in": [
+        "rust/crates/kr-wire/src/kr00967/room.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/room_service.rs",
+        "docs/protocol/room-membership.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Có thể suy max8 là tám client native hoặc12 observations là12 kịch bản.",
+      "correction": "Bốn client thực, tám profiles cấu hình; startup8 chỉ synthetic.12 quan sát có delivery lặp; không có Start104/loading99. Chỉ đóng nhóm occupancy.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7b-room-population.json",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Code lifecycle hiện còn yêu cầu phòng đầy, keyround cấp riêng từng phòng.",
+      "correction": "Ghi blocker thực cho phần M7b tiếp theo, chưa tuyên bố trận động hoặc full M7. Giữ acceptance và baseline cũ bất biến.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "M7b còn Ready/loading/Start/result/reset theo roster và RoomRules, cách ly queue/timer/round/UDP giữa hai phòng. Không đóng M7b từ occupancy.",
+    "20 byte tail còn lại opaque; profile account tổng quát, lựa chọn nhân vật/đội/full-error, ownership tích hợp và native DB-queue fault còn ở M5/M7c/d.",
+    "Không có gameplay phòng động hoặc native tám client trong phép đo này. Relay mesh/reuse/restart/spoof và tải50/8 vẫn ở N1R-b/M8."
+  ]
+}

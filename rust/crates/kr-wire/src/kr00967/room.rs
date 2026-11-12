@@ -260,9 +260,9 @@ pub struct ListingRow {
     pub opaque: [u8; 22],
 }
 impl ListingRow {
-    /// KR D9D720 reader sites D9D7E3/D9D817: candidate current/capacity
-    /// projection, cross-checked against retained1/4 and VN reference. Native
-    /// delta acceptance belongs to M7b; the other20 opaque bytes stay exact.
+    /// KR D9D720 reader sites D9D7E3/D9D817: measured current/capacity.
+    /// Native Wine proof: room-membership.md#rust-room-population.
+    /// The other20 opaque bytes stay exact.
     pub fn set_population(&mut self, current: usize, capacity: usize) -> io::Result<()> {
         if capacity == 0 || capacity > 26 || current > capacity {
             return Err(io::Error::other("invalid room list population"));

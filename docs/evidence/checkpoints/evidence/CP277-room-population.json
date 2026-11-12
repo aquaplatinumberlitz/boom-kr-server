@@ -1,0 +1,3344 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "M7B277-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13422,
+      "sha256": "80b42ea1ec9c7d34767572dfafbae0e97faea1d402a3cdbcfa22dd30781cd7a3"
+    },
+    {
+      "id": "M7B277-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3860,
+      "sha256": "076fb6a1a0f500e1472d39f8fb56e77d7ea1dd68767e7b2e6e9ae020ffd84335"
+    },
+    {
+      "id": "M7B277-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 240113,
+      "sha256": "6d88c41c0c16943a88a5c8d938b082f63762c9ae3229ae1aeef3e4291d2365d9"
+    },
+    {
+      "id": "M7B277-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 138102,
+      "sha256": "e057713ea87dc52439786f12f3e1a928a1a321c355bd76db488133dc247564e0"
+    },
+    {
+      "id": "M7B277-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 64710,
+      "sha256": "bd42e543881a5d794910dc949d06512d6522c50a4901ecf7de977067684d01d8"
+    },
+    {
+      "id": "M7B277-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "M7B277-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 29625,
+      "sha256": "6a9c573ee78492cbcab973e50b17ae6d28b7cc5c2ae3032ffa57ae434b60b771"
+    },
+    {
+      "id": "M7B277-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD093.json",
+      "bytes": 3233,
+      "sha256": "972b1a7ace165f380e887a1481bfe7f51cb3df51651cc7bb609c040cc033093c"
+    },
+    {
+      "id": "M7B277-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m7b-room-population.json",
+      "bytes": 2258,
+      "sha256": "1a2cac4b3eb4f8c3bd90a211ce483977f7bf536c10df53fc44fbc0befdf8b544"
+    },
+    {
+      "id": "M7B277-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 251797,
+      "sha256": "ae3754b57d34d8e34422f5811a5de18bed191f53c9b3d3f782f47429d8eb2b4f"
+    },
+    {
+      "id": "M7B277-00011",
+      "kind": "repository",
+      "path": "docs/protocol/room-membership.md",
+      "bytes": 106783,
+      "sha256": "5af7a95d259ecc30caa7b9f1bcf6a88d2b329e4e8c3fb16758796027359c2ce9"
+    },
+    {
+      "id": "M7B277-00012",
+      "kind": "local",
+      "path": "local/research/codex/append_cp277.py",
+      "bytes": 10539,
+      "sha256": "d4c4a6807aa1beb31bad3a7f639fbe4e49b864449ed569ccf8e9e8a8e977e830"
+    },
+    {
+      "id": "M7B277-00013",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/D9D720.asm",
+      "bytes": 23811,
+      "sha256": "b078ba7e28d9ddea18ea7c3544ee7561d7deb694768181c222347cf49b39069b"
+    },
+    {
+      "id": "M7B277-00014",
+      "kind": "local",
+      "path": "local/research/codex/m7b-eight-prototype-startup-r1/accounts.sqlite",
+      "bytes": 65536,
+      "sha256": "ee24187510d0b8beff74d11c6f80c33e9f9014e4cbd7a8879122ad37144f8d79"
+    },
+    {
+      "id": "M7B277-00015",
+      "kind": "local",
+      "path": "local/research/codex/m7b-eight-prototype-startup-r1/config.json",
+      "bytes": 39744,
+      "sha256": "9fa9fe625b462429ac94f9aa556014c74b4f3213cfaaafcb14b732da39c62c9e"
+    },
+    {
+      "id": "M7B277-00016",
+      "kind": "local",
+      "path": "local/research/codex/m7b-eight-prototype-startup-r1/export-seal.json",
+      "bytes": 1537,
+      "sha256": "1d4a08433386979e43b6bbae431055117631c5106b6199770be2a53bcdb2747c"
+    },
+    {
+      "id": "M7B277-00017",
+      "kind": "local",
+      "path": "local/research/codex/m7b-eight-prototype-startup-r1/private-backend.json",
+      "bytes": 8554,
+      "sha256": "438a2cd4ee49e5818c6c62e834b547f80a68eca5c87b14a954336a1a5eafa811"
+    },
+    {
+      "id": "M7B277-00018",
+      "kind": "local",
+      "path": "local/research/codex/m7b-eight-prototype-startup-r1/process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7B277-00019",
+      "kind": "local",
+      "path": "local/research/codex/m7b-eight-prototype-startup-r1/service/rust-events.jsonl",
+      "bytes": 444,
+      "sha256": "db593a63916d7a7064be0ff3800d2d8cf2780e5a9ffc6615badb785b178dc6cd"
+    },
+    {
+      "id": "M7B277-00020",
+      "kind": "local",
+      "path": "local/research/codex/m7b-eight-prototype-startup-r1/service/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "M7B277-00021",
+      "kind": "local",
+      "path": "local/research/codex/m7b-eight-prototype-startup-r1/verification.json",
+      "bytes": 147,
+      "sha256": "fb0cf627ee7fbfeb9a345116bed1f2c43c4d1847b4ddf8fee8cd12df6d05c11b"
+    },
+    {
+      "id": "M7B277-00022",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/accounts.sqlite",
+      "bytes": 65536,
+      "sha256": "509f8a4276a85fd9ec61782c1adf0de740e701b1c31b785c8551aa76ebe5298e"
+    },
+    {
+      "id": "M7B277-00023",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/config.json",
+      "bytes": 22211,
+      "sha256": "ec64a61c7e22c958c311d61ae583353d2da1294d36b0b776014c48803265a4e7"
+    },
+    {
+      "id": "M7B277-00024",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/export-seal.json",
+      "bytes": 19211,
+      "sha256": "b324225bdfe49e8b4ecc05945d67f6920bb001acd08f27211aedc38b90bb77a7"
+    },
+    {
+      "id": "M7B277-00025",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/000-kr-service",
+      "bytes": 58362528,
+      "sha256": "a526ddb39213329eaa3199debecec8546ea48acc92d0e61ae4177ed209d8b53f"
+    },
+    {
+      "id": "M7B277-00026",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/001-kr-admin",
+      "bytes": 49333288,
+      "sha256": "092cee80e479b01cc505cef27bc8aa3a30816311909e019c1dda5a82fe160012"
+    },
+    {
+      "id": "M7B277-00027",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/002-native-config.json",
+      "bytes": 22539,
+      "sha256": "c034419f3015353bdde7d47ec89060ab90bbfde5c05e88149484c6abc2e9d955"
+    },
+    {
+      "id": "M7B277-00028",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/003-config.json",
+      "bytes": 22211,
+      "sha256": "ec64a61c7e22c958c311d61ae583353d2da1294d36b0b776014c48803265a4e7"
+    },
+    {
+      "id": "M7B277-00029",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/004-test_rust_managed_rooms.py",
+      "bytes": 10266,
+      "sha256": "56e192a283fe7a0a2a8591e12d96fb8c2e1a32b3791df8782bc372e4648c898e"
+    },
+    {
+      "id": "M7B277-00030",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/005-rust_account_fixture.py",
+      "bytes": 5050,
+      "sha256": "43907becc554b8e756d2456ca8a0dd6c519548d6e4d138707b1cc68cb09e6e09"
+    },
+    {
+      "id": "M7B277-00031",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/006-test_rust_room.py",
+      "bytes": 13739,
+      "sha256": "98be417a43d45cc612e6ea89163f6cf0b57ab821bde290ef137df752305910b4"
+    },
+    {
+      "id": "M7B277-00032",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/007-kr00967.rs",
+      "bytes": 3904,
+      "sha256": "8b54d72bcb418316c467b989ecb99399ddb46d437a64431b2d396599e7e89f92"
+    },
+    {
+      "id": "M7B277-00033",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/008-lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "M7B277-00034",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/009-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "M7B277-00035",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/010-battle.rs",
+      "bytes": 5755,
+      "sha256": "dc6e4983d3cbb7b72d990fe2f763afd5d12933c5dabfbdc71d01ad5a6ac370e4"
+    },
+    {
+      "id": "M7B277-00036",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/011-player.rs",
+      "bytes": 6410,
+      "sha256": "9f729c32d4ecaef25439b37310836fb1a5bb47606a8e04906eab8c7abc2bca6d"
+    },
+    {
+      "id": "M7B277-00037",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/012-room.rs",
+      "bytes": 14930,
+      "sha256": "619cbc6418368917b0484422fe51fd485db992ade7a1ab2fb9cc45581fe74eee"
+    },
+    {
+      "id": "M7B277-00038",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/013-room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "M7B277-00039",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/014-check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "M7B277-00040",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/015-account_bridge.rs",
+      "bytes": 18811,
+      "sha256": "be3fd88528bc4221b25dc30a84e6f877bfdb023bf7b86e06bcdf0b606adb7e71"
+    },
+    {
+      "id": "M7B277-00041",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/016-account_serving.rs",
+      "bytes": 18783,
+      "sha256": "2d62814dac94092dd74863e0f54077e3b52500c5d65d13038a466b6fcbab56e3"
+    },
+    {
+      "id": "M7B277-00042",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/017-account_worker.rs",
+      "bytes": 15562,
+      "sha256": "c0a32397e0dbf281be3db0d927aac66408398a3d3735aac069cad11eb8003347"
+    },
+    {
+      "id": "M7B277-00043",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/018-accounts.rs",
+      "bytes": 27236,
+      "sha256": "7286a0abd5e48d3cc84e1a9d008d047ed7c496002a55a272efe47dae552e99da"
+    },
+    {
+      "id": "M7B277-00044",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/019-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "M7B277-00045",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/020-bombs.rs",
+      "bytes": 14835,
+      "sha256": "c51d8abfe828a43ca1c22b9d1645d6e9089ef76ad32f2fbbcec66a04cdf5b4af"
+    },
+    {
+      "id": "M7B277-00046",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/021-four_results.rs",
+      "bytes": 8869,
+      "sha256": "99164bc8c310cbc34cc1e4458f7b6d35d09f22bc1300d38c73a77a013e07cdd0"
+    },
+    {
+      "id": "M7B277-00047",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/022-lib.rs",
+      "bytes": 52796,
+      "sha256": "1b002cee98d5549c0ae15973d1453e4503733dfe9016d7e3ccafa62610c981c6"
+    },
+    {
+      "id": "M7B277-00048",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/023-life.rs",
+      "bytes": 15549,
+      "sha256": "de417936f9fa488448371e038fe7e9c3308c5bcde5214017c74449790b962646"
+    },
+    {
+      "id": "M7B277-00049",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/024-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "M7B277-00050",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/025-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "M7B277-00051",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/026-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "M7B277-00052",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/027-network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "M7B277-00053",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/028-peer_routes.rs",
+      "bytes": 3464,
+      "sha256": "65f6230334ff8f08bbc90a6e174900cd050eb78a46310c5d969411cc6fa2ea97"
+    },
+    {
+      "id": "M7B277-00054",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/029-pickups.rs",
+      "bytes": 14368,
+      "sha256": "4ed0d33f79c4689b6cbccc44fddc53f8fb07e297e8da4c202acaf2f6f4f3e2ca"
+    },
+    {
+      "id": "M7B277-00055",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/030-player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "M7B277-00056",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/031-room.rs",
+      "bytes": 30053,
+      "sha256": "42632ca4623734306f78ea16c28505dfd41c71b014630113d1188b1921bec6fc"
+    },
+    {
+      "id": "M7B277-00057",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/032-room_io.rs",
+      "bytes": 123435,
+      "sha256": "6af46efb939fa7a5b1c4e3bad0902babdac656dbca4f2adbad33f57d424573e8"
+    },
+    {
+      "id": "M7B277-00058",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/033-room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "M7B277-00059",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/034-room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "M7B277-00060",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/035-room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "M7B277-00061",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/036-room_service.rs",
+      "bytes": 7258,
+      "sha256": "b6be56673c3296a4490c7f26fa667746980cc72bb04908d43db0ad76d688eebf"
+    },
+    {
+      "id": "M7B277-00062",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/037-room_wire.rs",
+      "bytes": 2052,
+      "sha256": "a52ae399f0bc3e72e1de0e99f8ac6e053c59f262b20d9820650bec50ebb15ca9"
+    },
+    {
+      "id": "M7B277-00063",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/038-rules.rs",
+      "bytes": 7524,
+      "sha256": "3a34a1b502ce4d6ba188638ce50cd27ab4cba3c3be1fdc5d240fba8f0976755e"
+    },
+    {
+      "id": "M7B277-00064",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/039-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "M7B277-00065",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/040-udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "M7B277-00066",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/041-tests.rs",
+      "bytes": 35370,
+      "sha256": "41024618c27c9ec09a7c9b96112265f240c7ae0ac9beaad66a06311bc678adf1"
+    },
+    {
+      "id": "M7B277-00067",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/042-wire.rs",
+      "bytes": 2757,
+      "sha256": "19f1f1ef20a294a871e2314eb0b3c7a6ed8e174561706230462e1d5c68242411"
+    },
+    {
+      "id": "M7B277-00068",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/043-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "M7B277-00069",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/044-tests.rs",
+      "bytes": 17779,
+      "sha256": "1c72dbea6bd2f57a33125ee65768d1059466e471fe23b3b32d4a92fc0e2ac354"
+    },
+    {
+      "id": "M7B277-00070",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/045-tests.rs",
+      "bytes": 24425,
+      "sha256": "1efc122aba3061a85b23b33d4c47925bd06439cc0b5254665a437e56d84ce3c3"
+    },
+    {
+      "id": "M7B277-00071",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/046-kr-admin.rs",
+      "bytes": 4429,
+      "sha256": "206aa5b2ecace9d9ac54f074d93e039d4a88f893635e0b9dc5d000d5660c890c"
+    },
+    {
+      "id": "M7B277-00072",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/047-sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "M7B277-00073",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/048-tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "M7B277-00074",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/049-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "M7B277-00075",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/050-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "M7B277-00076",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/051-Cargo.lock",
+      "bytes": 15941,
+      "sha256": "8a6d22da092caf4d41137c74d1062bb0a1d7efb787895648985fc4fe7068c59a"
+    },
+    {
+      "id": "M7B277-00077",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/052-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "M7B277-00078",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/053-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "M7B277-00079",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/054-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "M7B277-00080",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/055-A-auth.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "M7B277-00081",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/056-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "M7B277-00082",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/057-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "M7B277-00083",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/058-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "M7B277-00084",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/059-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "M7B277-00085",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/060-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "M7B277-00086",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/061-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "M7B277-00087",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/062-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "M7B277-00088",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/063-A-own291.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "M7B277-00089",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/064-A-106.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "M7B277-00090",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/065-B-auth.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "M7B277-00091",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/066-B-own291.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "M7B277-00092",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/067-B-106.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "M7B277-00093",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/068-C-auth.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "M7B277-00094",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/069-C-own291.bin",
+      "bytes": 126,
+      "sha256": "5e4a20ae5827c99ab75343eb4cac0b8e1d3fe02085635ef7e15cb6ea1abdbd04"
+    },
+    {
+      "id": "M7B277-00095",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/070-C-106.bin",
+      "bytes": 238,
+      "sha256": "2dce013518feef6f752c8d232f394729253f17f09c60509296b4e59e57afc72a"
+    },
+    {
+      "id": "M7B277-00096",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/071-D-auth.bin",
+      "bytes": 175,
+      "sha256": "b120da778082fdff90fde5e947c2c26ff002449dcf126bc2fd7285512ca75724"
+    },
+    {
+      "id": "M7B277-00097",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/072-D-own291.bin",
+      "bytes": 128,
+      "sha256": "218a0b0880d106ae38ddd4e056e6acb602cf1e3e79705a7672b3374b012f422c"
+    },
+    {
+      "id": "M7B277-00098",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/073-D-106.bin",
+      "bytes": 242,
+      "sha256": "50be046ea690d70f654816db6e89a458c16985a38e254877a168f93472168183"
+    },
+    {
+      "id": "M7B277-00099",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/074-reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "M7B277-00100",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/075-reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "M7B277-00101",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/076-compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "M7B277-00102",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/077-exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "M7B277-00103",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/078-basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "M7B277-00104",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/079-start4.bin",
+      "bytes": 219,
+      "sha256": "bf395aea2bed32aaff8dd590887849bf400598a60e7427652a05cc5610df862d"
+    },
+    {
+      "id": "M7B277-00105",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/080-go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "M7B277-00106",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/081-exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "M7B277-00107",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/082-peer4.bin",
+      "bytes": 171,
+      "sha256": "9fbfcd39b202be6be1913d2d9c52f6d598e067982813cb374c71f9a2340aa239"
+    },
+    {
+      "id": "M7B277-00108",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/frozen/083-listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "M7B277-00109",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/preflight.json",
+      "bytes": 24097,
+      "sha256": "6a82e71bc5250b1efb31a6d4d4dd71ce5f67bbb93fbf22fb0a26ea7db9c2cc79"
+    },
+    {
+      "id": "M7B277-00110",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/private-backend.json",
+      "bytes": 4784,
+      "sha256": "f7e824c7ec43ae206202e3f336b2ddbbb3ecfeb7cde5344c0cd19f163606dde1"
+    },
+    {
+      "id": "M7B277-00111",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/private-launches.json",
+      "bytes": 1121,
+      "sha256": "f326be00e9433ba70d41e345fc57004f2f6c2e9c13f2cfe243777dae3add98b5"
+    },
+    {
+      "id": "M7B277-00112",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7B277-00113",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/result.json",
+      "bytes": 806,
+      "sha256": "4649174f4a4f120fc53011f36492151a92bd25b47b96560762b4c7ac1147ed67"
+    },
+    {
+      "id": "M7B277-00114",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/service/rust-events.jsonl",
+      "bytes": 36955,
+      "sha256": "29d8a03adafbea0dd8a7c0408d2dd17a1ca88f6402776517c490d971e54cca74"
+    },
+    {
+      "id": "M7B277-00115",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/service/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "M7B277-00116",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1-launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7B277-00117",
+      "kind": "local",
+      "path": "local/research/codex/m7b-occupancy-build-r1.txt",
+      "bytes": 172,
+      "sha256": "0c9284fb88b7953346bfc18389e6600e121d7ce0897fad70d91b679d827ef209"
+    },
+    {
+      "id": "M7B277-00118",
+      "kind": "local",
+      "path": "local/research/codex/m7b-occupancy-clippy-r1.txt",
+      "bytes": 1508,
+      "sha256": "0a11a57f455e127684ab9c4119d1d51cfd762efa5077186d8477a18816c9ae1e"
+    },
+    {
+      "id": "M7B277-00119",
+      "kind": "local",
+      "path": "local/research/codex/m7b-occupancy-source-r1/reader-byte-match.json",
+      "bytes": 461,
+      "sha256": "693a0d448ab34228fe20b609a05357896ba48c8976eb96f9887d8bd5e7882fd5"
+    },
+    {
+      "id": "M7B277-00120",
+      "kind": "local",
+      "path": "local/research/codex/m7b-occupancy-source-r1/source-survey.json",
+      "bytes": 2428,
+      "sha256": "04ad9806698b5abccc2b3af6401227525c07ac77dc189831f78dd4f50a75a02b"
+    },
+    {
+      "id": "M7B277-00121",
+      "kind": "local",
+      "path": "local/research/codex/m7b-occupancy-tests-r1.txt",
+      "bytes": 15186,
+      "sha256": "e0962f1ac022ee6e379914d4c80f83660da7c65164c36af22356f674e3e93107"
+    },
+    {
+      "id": "M7B277-00122",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-catalog-final.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "M7B277-00123",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-docs-final.txt",
+      "bytes": 274,
+      "sha256": "d719933d54c96b1aff1aed6aa53ce8916267a4af914aca964ef63feedf0ea931"
+    },
+    {
+      "id": "M7B277-00124",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7B277-00125",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/binary/kr-admin",
+      "bytes": 49333288,
+      "sha256": "092cee80e479b01cc505cef27bc8aa3a30816311909e019c1dda5a82fe160012"
+    },
+    {
+      "id": "M7B277-00126",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/binary/kr-service",
+      "bytes": 58362528,
+      "sha256": "a526ddb39213329eaa3199debecec8546ea48acc92d0e61ae4177ed209d8b53f"
+    },
+    {
+      "id": "M7B277-00127",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/capture_tcp.py",
+      "bytes": 1736,
+      "sha256": "5f7dd71b3a26f6bf1490e8e0eeb8de9dcb3b0e86da9c16ea1108f842bdcec805"
+    },
+    {
+      "id": "M7B277-00128",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/capture_udp.py",
+      "bytes": 3317,
+      "sha256": "d307b4c06f84fb1d26c89a341b5aa13834add75257dcda82258f0ed94c986163"
+    },
+    {
+      "id": "M7B277-00129",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/config.json",
+      "bytes": 2735,
+      "sha256": "499b734312dc9df95ebeabddd6b22b1d61df293c81f6ecdd53823572cea8cd50"
+    },
+    {
+      "id": "M7B277-00130",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/finally-control/cycles/control.raw",
+      "bytes": 256,
+      "sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880"
+    },
+    {
+      "id": "M7B277-00131",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/finally-control/cycles/run.json",
+      "bytes": 114,
+      "sha256": "3cfbcffcf4760601a4ce9e1f7b6fe12247c865ce9cb8389df36bc14eaf6704c1"
+    },
+    {
+      "id": "M7B277-00132",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/finally-control/simulated-unmounted-data/control.raw",
+      "bytes": 256,
+      "sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880"
+    },
+    {
+      "id": "M7B277-00133",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/finally-control/simulated-unmounted-data/run.json",
+      "bytes": 114,
+      "sha256": "3cfbcffcf4760601a4ce9e1f7b6fe12247c865ce9cb8389df36bc14eaf6704c1"
+    },
+    {
+      "id": "M7B277-00134",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/finally-control/storage-export.json",
+      "bytes": 523,
+      "sha256": "5fa399122aa73bfa7c6f0b6887b362a09bec523134c25187bdf26070eeb7f68b"
+    },
+    {
+      "id": "M7B277-00135",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/finally-control.json",
+      "bytes": 276,
+      "sha256": "d3aeb502e59b33ead2fbbea93b488722528b0d53d357ccfab22d2095b7b96c8b"
+    },
+    {
+      "id": "M7B277-00136",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/000-config.json",
+      "bytes": 2735,
+      "sha256": "499b734312dc9df95ebeabddd6b22b1d61df293c81f6ecdd53823572cea8cd50"
+    },
+    {
+      "id": "M7B277-00137",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/001-native-config.json",
+      "bytes": 40382,
+      "sha256": "689ce78efe67f320670cc5cb9dbc785de05c60c7249c3217db798c6bb02db4f0"
+    },
+    {
+      "id": "M7B277-00138",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/002-recipe.json",
+      "bytes": 1202,
+      "sha256": "dc825d3f5dfdaa8afc412fa3a5abc2a72a8b43337efe64f042c5324f7d6a7e0a"
+    },
+    {
+      "id": "M7B277-00139",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/003-kr-service",
+      "bytes": 58362528,
+      "sha256": "a526ddb39213329eaa3199debecec8546ea48acc92d0e61ae4177ed209d8b53f"
+    },
+    {
+      "id": "M7B277-00140",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/004-kr-admin",
+      "bytes": 49333288,
+      "sha256": "092cee80e479b01cc505cef27bc8aa3a30816311909e019c1dda5a82fe160012"
+    },
+    {
+      "id": "M7B277-00141",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/005-wine_probe_m7b_population_r1.py",
+      "bytes": 26958,
+      "sha256": "dc48b4fb7516bf4049616cdbcd6d5733f34b84feb79ff197dba1cc11168a7f22"
+    },
+    {
+      "id": "M7B277-00142",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/006-prepare_m7_native_r1.py",
+      "bytes": 9980,
+      "sha256": "46fdf89eafbaf77542588c4f9a0ddb19a94cbb569da9b39ac117f734ab5d5d44"
+    },
+    {
+      "id": "M7B277-00143",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/007-freeze_m7_native_r1.py",
+      "bytes": 3482,
+      "sha256": "e18311dcaaf2759290141e644eea3995d360b6dda7cea2e97ab8cd88929cab0b"
+    },
+    {
+      "id": "M7B277-00144",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/008-run_m7b_population_r1.py",
+      "bytes": 911,
+      "sha256": "cf670ae1675e3e8a61dc097d8e4d9dab78011e0306a3de3a3cd36f3f49987406"
+    },
+    {
+      "id": "M7B277-00145",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/009-seal_rust_m1_r3.py",
+      "bytes": 1410,
+      "sha256": "4135f7b0f8eeabdeeaf9c8f830c21a25e41028ccc7209b2f598d1de134561beb"
+    },
+    {
+      "id": "M7B277-00146",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/010-alsa-null.conf",
+      "bytes": 27,
+      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+    },
+    {
+      "id": "M7B277-00147",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/011-kr00967.rs",
+      "bytes": 3904,
+      "sha256": "8b54d72bcb418316c467b989ecb99399ddb46d437a64431b2d396599e7e89f92"
+    },
+    {
+      "id": "M7B277-00148",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/012-lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "M7B277-00149",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/013-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "M7B277-00150",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/014-battle.rs",
+      "bytes": 5755,
+      "sha256": "dc6e4983d3cbb7b72d990fe2f763afd5d12933c5dabfbdc71d01ad5a6ac370e4"
+    },
+    {
+      "id": "M7B277-00151",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/015-player.rs",
+      "bytes": 6410,
+      "sha256": "9f729c32d4ecaef25439b37310836fb1a5bb47606a8e04906eab8c7abc2bca6d"
+    },
+    {
+      "id": "M7B277-00152",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/016-room.rs",
+      "bytes": 14930,
+      "sha256": "619cbc6418368917b0484422fe51fd485db992ade7a1ab2fb9cc45581fe74eee"
+    },
+    {
+      "id": "M7B277-00153",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/017-room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "M7B277-00154",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/018-check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "M7B277-00155",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/019-account_bridge.rs",
+      "bytes": 18811,
+      "sha256": "be3fd88528bc4221b25dc30a84e6f877bfdb023bf7b86e06bcdf0b606adb7e71"
+    },
+    {
+      "id": "M7B277-00156",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/020-account_serving.rs",
+      "bytes": 18783,
+      "sha256": "2d62814dac94092dd74863e0f54077e3b52500c5d65d13038a466b6fcbab56e3"
+    },
+    {
+      "id": "M7B277-00157",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/021-account_worker.rs",
+      "bytes": 15562,
+      "sha256": "c0a32397e0dbf281be3db0d927aac66408398a3d3735aac069cad11eb8003347"
+    },
+    {
+      "id": "M7B277-00158",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/022-accounts.rs",
+      "bytes": 27236,
+      "sha256": "7286a0abd5e48d3cc84e1a9d008d047ed7c496002a55a272efe47dae552e99da"
+    },
+    {
+      "id": "M7B277-00159",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/023-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "M7B277-00160",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/024-bombs.rs",
+      "bytes": 14835,
+      "sha256": "c51d8abfe828a43ca1c22b9d1645d6e9089ef76ad32f2fbbcec66a04cdf5b4af"
+    },
+    {
+      "id": "M7B277-00161",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/025-four_results.rs",
+      "bytes": 8869,
+      "sha256": "99164bc8c310cbc34cc1e4458f7b6d35d09f22bc1300d38c73a77a013e07cdd0"
+    },
+    {
+      "id": "M7B277-00162",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/026-lib.rs",
+      "bytes": 52796,
+      "sha256": "1b002cee98d5549c0ae15973d1453e4503733dfe9016d7e3ccafa62610c981c6"
+    },
+    {
+      "id": "M7B277-00163",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/027-life.rs",
+      "bytes": 15549,
+      "sha256": "de417936f9fa488448371e038fe7e9c3308c5bcde5214017c74449790b962646"
+    },
+    {
+      "id": "M7B277-00164",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/028-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "M7B277-00165",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/029-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "M7B277-00166",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/030-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "M7B277-00167",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/031-network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "M7B277-00168",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/032-peer_routes.rs",
+      "bytes": 3464,
+      "sha256": "65f6230334ff8f08bbc90a6e174900cd050eb78a46310c5d969411cc6fa2ea97"
+    },
+    {
+      "id": "M7B277-00169",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/033-pickups.rs",
+      "bytes": 14368,
+      "sha256": "4ed0d33f79c4689b6cbccc44fddc53f8fb07e297e8da4c202acaf2f6f4f3e2ca"
+    },
+    {
+      "id": "M7B277-00170",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/034-player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "M7B277-00171",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/035-room.rs",
+      "bytes": 30053,
+      "sha256": "42632ca4623734306f78ea16c28505dfd41c71b014630113d1188b1921bec6fc"
+    },
+    {
+      "id": "M7B277-00172",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/036-room_io.rs",
+      "bytes": 123435,
+      "sha256": "6af46efb939fa7a5b1c4e3bad0902babdac656dbca4f2adbad33f57d424573e8"
+    },
+    {
+      "id": "M7B277-00173",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/037-room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "M7B277-00174",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/038-room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "M7B277-00175",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/039-room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "M7B277-00176",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/040-room_wire.rs",
+      "bytes": 2052,
+      "sha256": "a52ae399f0bc3e72e1de0e99f8ac6e053c59f262b20d9820650bec50ebb15ca9"
+    },
+    {
+      "id": "M7B277-00177",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/041-rules.rs",
+      "bytes": 7524,
+      "sha256": "3a34a1b502ce4d6ba188638ce50cd27ab4cba3c3be1fdc5d240fba8f0976755e"
+    },
+    {
+      "id": "M7B277-00178",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/042-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "M7B277-00179",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/043-udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "M7B277-00180",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/044-room_service.rs",
+      "bytes": 7258,
+      "sha256": "b6be56673c3296a4490c7f26fa667746980cc72bb04908d43db0ad76d688eebf"
+    },
+    {
+      "id": "M7B277-00181",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/045-tests.rs",
+      "bytes": 35370,
+      "sha256": "41024618c27c9ec09a7c9b96112265f240c7ae0ac9beaad66a06311bc678adf1"
+    },
+    {
+      "id": "M7B277-00182",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/046-wire.rs",
+      "bytes": 2757,
+      "sha256": "19f1f1ef20a294a871e2314eb0b3c7a6ed8e174561706230462e1d5c68242411"
+    },
+    {
+      "id": "M7B277-00183",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/047-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "M7B277-00184",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/048-tests.rs",
+      "bytes": 17779,
+      "sha256": "1c72dbea6bd2f57a33125ee65768d1059466e471fe23b3b32d4a92fc0e2ac354"
+    },
+    {
+      "id": "M7B277-00185",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/049-tests.rs",
+      "bytes": 24425,
+      "sha256": "1efc122aba3061a85b23b33d4c47925bd06439cc0b5254665a437e56d84ce3c3"
+    },
+    {
+      "id": "M7B277-00186",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/050-kr-admin.rs",
+      "bytes": 4429,
+      "sha256": "206aa5b2ecace9d9ac54f074d93e039d4a88f893635e0b9dc5d000d5660c890c"
+    },
+    {
+      "id": "M7B277-00187",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/051-sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "M7B277-00188",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/052-tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "M7B277-00189",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/053-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "M7B277-00190",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/054-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "M7B277-00191",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/055-Cargo.lock",
+      "bytes": 15941,
+      "sha256": "8a6d22da092caf4d41137c74d1062bb0a1d7efb787895648985fc4fe7068c59a"
+    },
+    {
+      "id": "M7B277-00192",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/056-Cargo.toml",
+      "bytes": 625,
+      "sha256": "c5c9e195c001a9d133374a2fcaafa1606488501409e3ae18a3e35d1a1a7330bb"
+    },
+    {
+      "id": "M7B277-00193",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/057-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "M7B277-00194",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/058-topology.py",
+      "bytes": 4081,
+      "sha256": "e379c3f1d6f6fd36a2fcb4bba2aeb08c4da0abd016ec0481f4a9d46ae4a7ce4f"
+    },
+    {
+      "id": "M7B277-00195",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/059-capture_tcp.py",
+      "bytes": 1736,
+      "sha256": "5f7dd71b3a26f6bf1490e8e0eeb8de9dcb3b0e86da9c16ea1108f842bdcec805"
+    },
+    {
+      "id": "M7B277-00196",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/060-capture_udp.py",
+      "bytes": 3317,
+      "sha256": "d307b4c06f84fb1d26c89a341b5aa13834add75257dcda82258f0ed94c986163"
+    },
+    {
+      "id": "M7B277-00197",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/061-room-A.gdb",
+      "bytes": 3366,
+      "sha256": "984fb44e07a73ba58adc0156551c9c4ff8d51b65134de3804af7c486e85375e3"
+    },
+    {
+      "id": "M7B277-00198",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/062-room-B.gdb",
+      "bytes": 3366,
+      "sha256": "28974911fe6a9529f35f415399e1c82f33626b0b4d9e7c01707f4f701ef861ab"
+    },
+    {
+      "id": "M7B277-00199",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/063-room-C.gdb",
+      "bytes": 3366,
+      "sha256": "720cfa9dfec10074fdc65de073b2f91f716721d84313809b6b63bde6f7f31df8"
+    },
+    {
+      "id": "M7B277-00200",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/064-room-D.gdb",
+      "bytes": 3366,
+      "sha256": "61a5cb0d29de7a458ff13685964099be489e13ae20fa60c51e87d5e1da61c632"
+    },
+    {
+      "id": "M7B277-00201",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/065-native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "M7B277-00202",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/066-gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "M7B277-00203",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/067-list-probe.py",
+      "bytes": 1252,
+      "sha256": "8297f9cb0de08b6a990c5c9aa8ec308dce14f96f7240c47ed79ea97def7fa17d"
+    },
+    {
+      "id": "M7B277-00204",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/068-join-probe.py",
+      "bytes": 1517,
+      "sha256": "aecbf6a671e6de80f93fb4151ac55e9df401c3beb57763a2575a73d7705e98af"
+    },
+    {
+      "id": "M7B277-00205",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/069-roster-probe.py",
+      "bytes": 1959,
+      "sha256": "deb0bba757d575159a0359d6e4adbc198356deeb37d88d7e841063f25828c4ff"
+    },
+    {
+      "id": "M7B277-00206",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/070-cleanup-probe.py",
+      "bytes": 1993,
+      "sha256": "b22a778dd03d0f3b708a8ea0fc018c71df7faf052af41951b6b961a5dc05c639"
+    },
+    {
+      "id": "M7B277-00207",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/071-delete-probe.py",
+      "bytes": 1236,
+      "sha256": "f211b50ef813c7590ec0a54aa9073d12fb8fbdb87a65197798293585181dfa9d"
+    },
+    {
+      "id": "M7B277-00208",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/072-probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "M7B277-00209",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/073-room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "M7B277-00210",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/074-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "M7B277-00211",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/075-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "M7B277-00212",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/076-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "M7B277-00213",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/077-A-auth.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "M7B277-00214",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/078-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "M7B277-00215",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/079-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "M7B277-00216",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/080-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "M7B277-00217",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/081-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "M7B277-00218",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/082-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "M7B277-00219",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/083-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "M7B277-00220",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/084-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "M7B277-00221",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/085-A-own291.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "M7B277-00222",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/086-A-106.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "M7B277-00223",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/087-B-auth.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "M7B277-00224",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/088-B-own291.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "M7B277-00225",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/089-B-106.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "M7B277-00226",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/090-C-auth.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "M7B277-00227",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/091-C-own291.bin",
+      "bytes": 126,
+      "sha256": "5e4a20ae5827c99ab75343eb4cac0b8e1d3fe02085635ef7e15cb6ea1abdbd04"
+    },
+    {
+      "id": "M7B277-00228",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/092-C-106.bin",
+      "bytes": 238,
+      "sha256": "2dce013518feef6f752c8d232f394729253f17f09c60509296b4e59e57afc72a"
+    },
+    {
+      "id": "M7B277-00229",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/093-D-auth.bin",
+      "bytes": 175,
+      "sha256": "b120da778082fdff90fde5e947c2c26ff002449dcf126bc2fd7285512ca75724"
+    },
+    {
+      "id": "M7B277-00230",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/094-D-own291.bin",
+      "bytes": 128,
+      "sha256": "218a0b0880d106ae38ddd4e056e6acb602cf1e3e79705a7672b3374b012f422c"
+    },
+    {
+      "id": "M7B277-00231",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/095-D-106.bin",
+      "bytes": 242,
+      "sha256": "50be046ea690d70f654816db6e89a458c16985a38e254877a168f93472168183"
+    },
+    {
+      "id": "M7B277-00232",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/096-reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "M7B277-00233",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/097-reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "M7B277-00234",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/098-compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "M7B277-00235",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/099-exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "M7B277-00236",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/100-basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "M7B277-00237",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/101-start4.bin",
+      "bytes": 219,
+      "sha256": "bf395aea2bed32aaff8dd590887849bf400598a60e7427652a05cc5610df862d"
+    },
+    {
+      "id": "M7B277-00238",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/102-go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "M7B277-00239",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/103-exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "M7B277-00240",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/104-peer4.bin",
+      "bytes": 171,
+      "sha256": "9fbfcd39b202be6be1913d2d9c52f6d598e067982813cb374c71f9a2340aa239"
+    },
+    {
+      "id": "M7B277-00241",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/105-listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "M7B277-00242",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/687-prepare_m7_native_r2.py",
+      "bytes": 7783,
+      "sha256": "78fc8f522d7ec1bda80eac203d70179d0169e8161347ed383be77e11979f1e3d"
+    },
+    {
+      "id": "M7B277-00243",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/688-finally-control.json",
+      "bytes": 276,
+      "sha256": "d3aeb502e59b33ead2fbbea93b488722528b0d53d357ccfab22d2095b7b96c8b"
+    },
+    {
+      "id": "M7B277-00244",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/689-prepare_m7_native_r3.py",
+      "bytes": 3169,
+      "sha256": "55a738259081ee7163b330a196d33d905c2fd41d7a19c9f43f0d99c956a10ffa"
+    },
+    {
+      "id": "M7B277-00245",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/690-prepare_m7_native_r4.py",
+      "bytes": 3942,
+      "sha256": "44fed9f0932e28cd79d04f9b0568b300c95c78c65aecf6ca71351537bbb3e3a4"
+    },
+    {
+      "id": "M7B277-00246",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/691-controller-correction.json",
+      "bytes": 579,
+      "sha256": "71745008d639b2f4c5ac744e2cfaa6a024e1302e6169582d978d71b17f0eb90b"
+    },
+    {
+      "id": "M7B277-00247",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/692-prepare_m7_native_r5.py",
+      "bytes": 3696,
+      "sha256": "aecdd14c7c9830bdb941cf58d3b0d86e25c5353f96f8c99d3acb3de9e06113e5"
+    },
+    {
+      "id": "M7B277-00248",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/693-startup-failure-followup.json",
+      "bytes": 579,
+      "sha256": "37529b0d0e14275e7d51e577a9f9c6c07d5e5b6cbae16d452e78a9a3a4384623"
+    },
+    {
+      "id": "M7B277-00249",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/694-A-auth.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "M7B277-00250",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/695-A-own291.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "M7B277-00251",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/696-A-player106.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "M7B277-00252",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/697-B-auth.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "M7B277-00253",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/698-B-own291.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "M7B277-00254",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/699-B-player106.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "M7B277-00255",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/700-C-auth.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "M7B277-00256",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/701-C-own291.bin",
+      "bytes": 126,
+      "sha256": "5e4a20ae5827c99ab75343eb4cac0b8e1d3fe02085635ef7e15cb6ea1abdbd04"
+    },
+    {
+      "id": "M7B277-00257",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/702-C-player106.bin",
+      "bytes": 238,
+      "sha256": "2dce013518feef6f752c8d232f394729253f17f09c60509296b4e59e57afc72a"
+    },
+    {
+      "id": "M7B277-00258",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/703-D-auth.bin",
+      "bytes": 175,
+      "sha256": "b120da778082fdff90fde5e947c2c26ff002449dcf126bc2fd7285512ca75724"
+    },
+    {
+      "id": "M7B277-00259",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/704-D-own291.bin",
+      "bytes": 128,
+      "sha256": "218a0b0880d106ae38ddd4e056e6acb602cf1e3e79705a7672b3374b012f422c"
+    },
+    {
+      "id": "M7B277-00260",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/705-D-player106.bin",
+      "bytes": 242,
+      "sha256": "50be046ea690d70f654816db6e89a458c16985a38e254877a168f93472168183"
+    },
+    {
+      "id": "M7B277-00261",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/706-E-auth.bin",
+      "bytes": 175,
+      "sha256": "3836e6fb9e32ebcc6437d4936fb2ed1472345e999b18b3997b1f0fa3d9c0482c"
+    },
+    {
+      "id": "M7B277-00262",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/707-E-own291.bin",
+      "bytes": 128,
+      "sha256": "8670951e114f2a8e706968fc6e36a7f835e2b27cc866e5334a228e9a16dd6251"
+    },
+    {
+      "id": "M7B277-00263",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/708-E-player106.bin",
+      "bytes": 242,
+      "sha256": "2608091c2818de86284ae97aa765486ec97f182f33b24ce30011bceab796f142"
+    },
+    {
+      "id": "M7B277-00264",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/709-F-auth.bin",
+      "bytes": 175,
+      "sha256": "534e13dad85b0c289733699898d698edca63e1020d07a53a80d85fe1b624fb54"
+    },
+    {
+      "id": "M7B277-00265",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/710-F-own291.bin",
+      "bytes": 128,
+      "sha256": "9a454c435dd99442ca63309c0c00f9b28a66d7cde8a81d301440bbbd67499f89"
+    },
+    {
+      "id": "M7B277-00266",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/711-F-player106.bin",
+      "bytes": 242,
+      "sha256": "17d5c11707911922207d64fbff6f5a9b9fa86e9c6fc770aa34ff263e700c71a4"
+    },
+    {
+      "id": "M7B277-00267",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/712-G-auth.bin",
+      "bytes": 175,
+      "sha256": "373333fa554bbb4be1b68de6f013a0b1db4b117f012db861b0e1a09c4599127a"
+    },
+    {
+      "id": "M7B277-00268",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/713-G-own291.bin",
+      "bytes": 128,
+      "sha256": "f68e1d6c1517b08476f285b41c049e6214256ba576b9b2e2759f5fb25ba94a82"
+    },
+    {
+      "id": "M7B277-00269",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/714-G-player106.bin",
+      "bytes": 242,
+      "sha256": "a3ca8f5ee72bbb6113596b3e5588fb00f993102b660f2bab6edb3c998502ab11"
+    },
+    {
+      "id": "M7B277-00270",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/715-H-auth.bin",
+      "bytes": 175,
+      "sha256": "2c8389959a1c1e8d08018dcf67b9f8c24eb9689f684f309a94adbc52b4f17078"
+    },
+    {
+      "id": "M7B277-00271",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/716-H-own291.bin",
+      "bytes": 128,
+      "sha256": "6733a6e906b678863f74a274bf37ce5ca233562490d023eff52e86c9ca5ae4a9"
+    },
+    {
+      "id": "M7B277-00272",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/717-H-player106.bin",
+      "bytes": 242,
+      "sha256": "91720c15ad2c5dc8119c890e6881074a8c85ba69b0f42d5ed08f7e3bb67da3c5"
+    },
+    {
+      "id": "M7B277-00273",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/718-start8.bin",
+      "bytes": 323,
+      "sha256": "37053484fcb8a12fe4066d21bd79691d9c757f3f652c7f706078ac7508dc527e"
+    },
+    {
+      "id": "M7B277-00274",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/719-peer8.bin",
+      "bytes": 243,
+      "sha256": "b26dddac55739690d83c4e081e71a90959bc2a04532910b0e829a61d9e6b014f"
+    },
+    {
+      "id": "M7B277-00275",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/720-prepare_m7b_population_r1.py",
+      "bytes": 9780,
+      "sha256": "fe827e5f7a74d34ccb978cdac7b60b8ae348d121533d19e678fad40a74ad9c48"
+    },
+    {
+      "id": "M7B277-00276",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/721-m7b_population_probe.py",
+      "bytes": 1190,
+      "sha256": "f1f498e2ce93fee8f68c57682d73ca33d3042692b4a74114f253a636af2eee88"
+    },
+    {
+      "id": "M7B277-00277",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/frozen-inputs/722-reader-byte-match.json",
+      "bytes": 461,
+      "sha256": "693a0d448ab34228fe20b609a05357896ba48c8976eb96f9887d8bd5e7882fd5"
+    },
+    {
+      "id": "M7B277-00278",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/A-default-title.png",
+      "bytes": 224768,
+      "sha256": "e7dff11035e628c681bee6c11124a2c7cede7eebbc437be0d778ba6a2c78f947"
+    },
+    {
+      "id": "M7B277-00279",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/Alpha-created.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M7B277-00280",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/Alpha-one-after-Back.png",
+      "bytes": 178826,
+      "sha256": "ba8caf32636b85f688ddc93549c6a52c9a29e0b2fd44cb3d631d267c4d529b0d"
+    },
+    {
+      "id": "M7B277-00281",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/Alpha-one-of-eight.png",
+      "bytes": 177871,
+      "sha256": "b3d948f1e962b0a7eb3cc3af458548c6735d01f8e4646655be4a5b2a80c90fc1"
+    },
+    {
+      "id": "M7B277-00282",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/Alpha-removed-Beta-one.png",
+      "bytes": 152496,
+      "sha256": "add44ed5d75128c1910834d98288b110fc896265d52eae70fc91005a46a0a08a"
+    },
+    {
+      "id": "M7B277-00283",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/Alpha-two-Beta-one.png",
+      "bytes": 181064,
+      "sha256": "427ebf274e0b170939cff5459325d22d267a51720d1f730cd5db3b4df9681087"
+    },
+    {
+      "id": "M7B277-00284",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/Beta-created.png",
+      "bytes": 178099,
+      "sha256": "0adddcec6b3138e90c48c150d0eff92fdbdd9942eef645bcd31d8d66e497f2af"
+    },
+    {
+      "id": "M7B277-00285",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/CALog-before.txt",
+      "bytes": 3169,
+      "sha256": "4872608520443b7c46855fefd7eb26a37d9b942d8a6a7bd8889e66d8922ef7e6"
+    },
+    {
+      "id": "M7B277-00286",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/CALog-run.txt",
+      "bytes": 2329,
+      "sha256": "b407c5de516c12b3723391e0e3139354abf1ca9f7774ad1452f740066a95f048"
+    },
+    {
+      "id": "M7B277-00287",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/all-rooms-removed.png",
+      "bytes": 144713,
+      "sha256": "3e3bc20b2e117e7079bb921ba58fff66a508493d515a92243ce7f3abee6cfb0e"
+    },
+    {
+      "id": "M7B277-00288",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/audio-config.json",
+      "bytes": 437,
+      "sha256": "7a452ef968e7322777d248de8c8758b5b35cb89b3c333322f0d3a873b07da131"
+    },
+    {
+      "id": "M7B277-00289",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/client.log",
+      "bytes": 155092,
+      "sha256": "8d4c65dd6d6c292f1928aae123bcd4094a5cc49ad16fd68f6efbb2317c20644e"
+    },
+    {
+      "id": "M7B277-00290",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/debug-commands.txt",
+      "bytes": 3366,
+      "sha256": "984fb44e07a73ba58adc0156551c9c4ff8d51b65134de3804af7c486e85375e3"
+    },
+    {
+      "id": "M7B277-00291",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/four-lobby.png",
+      "bytes": 145005,
+      "sha256": "4a47da149b64bb5240d6f2f3d0f9608ff5d93ab0c57e5822ef645adc3a7e456f"
+    },
+    {
+      "id": "M7B277-00292",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/A/two-independent-one-of-eight.png",
+      "bytes": 179361,
+      "sha256": "f68b4f34b0c7fdac5ca7ecd8d1c2d3093c57a8e2434b38da7d29b056e7f650b7"
+    },
+    {
+      "id": "M7B277-00293",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/A-default-title.png",
+      "bytes": 146326,
+      "sha256": "b082f18650e89995b554b626c34306945a5e2175ec38a922af81bc74d88d36fd"
+    },
+    {
+      "id": "M7B277-00294",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/Alpha-created.png",
+      "bytes": 155141,
+      "sha256": "3b993368676696a57251bc9c6bfdf19e044180c29c4c365807e6e50cc91ee060"
+    },
+    {
+      "id": "M7B277-00295",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/Alpha-one-after-Back.png",
+      "bytes": 152401,
+      "sha256": "83876c0acef85b5e6435b8f4d4d1ec2071bb21f4ea8a422c38747c0f203f8110"
+    },
+    {
+      "id": "M7B277-00296",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/Alpha-one-of-eight.png",
+      "bytes": 153478,
+      "sha256": "6dfbbeced8607ceb4d67d0fbeab0ce00c80263d5afebca813ac176acad63daf5"
+    },
+    {
+      "id": "M7B277-00297",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/Alpha-removed-Beta-one.png",
+      "bytes": 153440,
+      "sha256": "b15e564af8e2eaf35f614c478004647eda4c16b020cfc024e74454fd395bbb7c"
+    },
+    {
+      "id": "M7B277-00298",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/Alpha-two-Beta-one.png",
+      "bytes": 177037,
+      "sha256": "9e20906e6c207b725680824bfd8484415724483a174fc8c7b18a8f3ca99b072e"
+    },
+    {
+      "id": "M7B277-00299",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/Beta-created.png",
+      "bytes": 152728,
+      "sha256": "4dd931d2e53da0c76896d02c09f395a0bcbb2ec898c1a866d619722b45a2378e"
+    },
+    {
+      "id": "M7B277-00300",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/CALog-before.txt",
+      "bytes": 1833,
+      "sha256": "cfdda5de8a3ea54066cbfe479558e908c125bdcd654f305d4227870e34382834"
+    },
+    {
+      "id": "M7B277-00301",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/CALog-run.txt",
+      "bytes": 2289,
+      "sha256": "7b0dc28650aa6c4f2d97b559df07f97f3fc221993aa18843b5ac482432cae1b0"
+    },
+    {
+      "id": "M7B277-00302",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/all-rooms-removed.png",
+      "bytes": 143765,
+      "sha256": "0c788683317a63619c8be2997429c9c9a6729385a0a6961ebe2eac5c1116e9bc"
+    },
+    {
+      "id": "M7B277-00303",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/audio-config.json",
+      "bytes": 437,
+      "sha256": "e812bb002372071bd3bbe660d39d7e2ee7c91e2f6914ad967d7c3ffd55aaa9b9"
+    },
+    {
+      "id": "M7B277-00304",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/client.log",
+      "bytes": 158390,
+      "sha256": "ef2eed7b114dfcac4fcfe277ce223cb0bd24214d4119bf73fecd90bf9fbb40cf"
+    },
+    {
+      "id": "M7B277-00305",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/debug-commands.txt",
+      "bytes": 3366,
+      "sha256": "28974911fe6a9529f35f415399e1c82f33626b0b4d9e7c01707f4f701ef861ab"
+    },
+    {
+      "id": "M7B277-00306",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/four-lobby.png",
+      "bytes": 146565,
+      "sha256": "fe1fad6b0b1152645f2f9625abf9fe441bc6a639fb460b6f3a898bc3da35ba71"
+    },
+    {
+      "id": "M7B277-00307",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/B/two-independent-one-of-eight.png",
+      "bytes": 151848,
+      "sha256": "ff3074eaacdd0c6793a9ab29265cbc8a2f7dcc63f0f18c88d39f00f4d02d6495"
+    },
+    {
+      "id": "M7B277-00308",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/A-default-title.png",
+      "bytes": 145701,
+      "sha256": "a5ae2a0e9fa9a11aa0511951d2602d0e3e36a924511b25cf2b4d8753d4cafe7f"
+    },
+    {
+      "id": "M7B277-00309",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/Alpha-created.png",
+      "bytes": 154708,
+      "sha256": "916165aa376d060b11c70246380518f5488ccf33a06eac7916abfc974ebcec61"
+    },
+    {
+      "id": "M7B277-00310",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/Alpha-one-after-Back.png",
+      "bytes": 179046,
+      "sha256": "1cc52102c3f2d9ce58e095cba9e315bb9f349f1ab2cf1944c5cd178f5cec4fe5"
+    },
+    {
+      "id": "M7B277-00311",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/Alpha-one-of-eight.png",
+      "bytes": 154551,
+      "sha256": "9b9b441ac525fe61f52391974d7e7fa9122a4cb4494669df3fa7113e4f1ff685"
+    },
+    {
+      "id": "M7B277-00312",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/Alpha-removed-Beta-one.png",
+      "bytes": 177858,
+      "sha256": "cbf6a52bec4abf1f9a658514e306a17e426f68a83fdff35b2768c7794556ecdc"
+    },
+    {
+      "id": "M7B277-00313",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/Alpha-two-Beta-one.png",
+      "bytes": 179511,
+      "sha256": "58d651e9e198db32faee78488a967afd62e06152dbe43de2d2955f981d1ec964"
+    },
+    {
+      "id": "M7B277-00314",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/Beta-created.png",
+      "bytes": 233,
+      "sha256": "00d7d2037518ebad04c98c1f0a96d222ef48e98eceec63f571387c9a860e54d2"
+    },
+    {
+      "id": "M7B277-00315",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/CALog-before.txt",
+      "bytes": 1967,
+      "sha256": "b675faf97cc76ea7478a226527c6e876694feea8d02a6a62fc5b46a7583512fb"
+    },
+    {
+      "id": "M7B277-00316",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/CALog-run.txt",
+      "bytes": 2208,
+      "sha256": "14829d1ebb71c8d0df85eb3711d0173e8e8cac54e067cae4721580f46136ea84"
+    },
+    {
+      "id": "M7B277-00317",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/all-rooms-removed.png",
+      "bytes": 143440,
+      "sha256": "893cfc1c8885760e1dc04ab3de269e1db2362bde31dc32a877554a9d5d1da059"
+    },
+    {
+      "id": "M7B277-00318",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/audio-config.json",
+      "bytes": 437,
+      "sha256": "cc3463ea6e3dbb257c82857438061b6c66e91f6b273a5dd5ed3b52b7a307891c"
+    },
+    {
+      "id": "M7B277-00319",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/client.log",
+      "bytes": 150132,
+      "sha256": "61c3ea01c6ecee32543d58c150181109af1c768e6ed30b0c19a3fc4ceb44f8ed"
+    },
+    {
+      "id": "M7B277-00320",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/debug-commands.txt",
+      "bytes": 3366,
+      "sha256": "720cfa9dfec10074fdc65de073b2f91f716721d84313809b6b63bde6f7f31df8"
+    },
+    {
+      "id": "M7B277-00321",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/four-lobby.png",
+      "bytes": 145045,
+      "sha256": "2195f7a8a973b4e90e2040dd0c5a072f391ce765362c27b72307f79f83ba982e"
+    },
+    {
+      "id": "M7B277-00322",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/C/two-independent-one-of-eight.png",
+      "bytes": 178142,
+      "sha256": "d3717cab702f695c5c2155eb1e1b5188dc049b74a31cd0a62456ae2f2fec12dc"
+    },
+    {
+      "id": "M7B277-00323",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/A-default-title.png",
+      "bytes": 150074,
+      "sha256": "e6acc3981edc8754fa6132ace1223a199b654121536d45335c33d745b0ee6c4b"
+    },
+    {
+      "id": "M7B277-00324",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/Alpha-created.png",
+      "bytes": 159618,
+      "sha256": "2e71bc2f495682e30680b701ae13d9f7f950d8baad00a11d14da2ac79790d2bf"
+    },
+    {
+      "id": "M7B277-00325",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/Alpha-one-after-Back.png",
+      "bytes": 151850,
+      "sha256": "baf7205ab87a6cb57a55d14962c9df900ab33e5ce65f02307cfabbbc41827b3e"
+    },
+    {
+      "id": "M7B277-00326",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/Alpha-one-of-eight.png",
+      "bytes": 154263,
+      "sha256": "aa7d240127c56886aadc606604acf84ad015f0aecf827001e60f998af9f49f15"
+    },
+    {
+      "id": "M7B277-00327",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/Alpha-removed-Beta-one.png",
+      "bytes": 153349,
+      "sha256": "44fc6f83571efc30429124f54b5dc550d1c3160257eed8a662ddfb3f50b1e886"
+    },
+    {
+      "id": "M7B277-00328",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/Alpha-two-Beta-one.png",
+      "bytes": 151979,
+      "sha256": "1318832a4e5a1a39fa5c06dd5ff7d72bd3c4b24f87d1bfdda07606a35f5eb091"
+    },
+    {
+      "id": "M7B277-00329",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/Beta-created.png",
+      "bytes": 154100,
+      "sha256": "1eebf015e36b94d5f862f5f60ef4a652b958cf7a901daa599a8e4de58d111043"
+    },
+    {
+      "id": "M7B277-00330",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/CALog-before.txt",
+      "bytes": 2252,
+      "sha256": "1e139ca92a7d9cce26f0bd71d679c809ed33ff6d450343dac60841e08b7697bd"
+    },
+    {
+      "id": "M7B277-00331",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/CALog-run.txt",
+      "bytes": 1490,
+      "sha256": "be0bd42b8227886b1c19885bd68a9aef02ac65ff0330036f9353637f8ac92fdf"
+    },
+    {
+      "id": "M7B277-00332",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/all-rooms-removed.png",
+      "bytes": 145552,
+      "sha256": "c04e316136541325dbc2226c32477ffe4a2422dcd4fc1887587596fe6e2c0b29"
+    },
+    {
+      "id": "M7B277-00333",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/audio-config.json",
+      "bytes": 437,
+      "sha256": "e40c0b29fda2ef798059777caab8deabfd0ee2ef764423ff020922d122ee00b7"
+    },
+    {
+      "id": "M7B277-00334",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/client.log",
+      "bytes": 138038,
+      "sha256": "d9514782f28c0d54c96475c0ea5df301c3b4a27cc5e1ad566c6c64682d7bc668"
+    },
+    {
+      "id": "M7B277-00335",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/debug-commands.txt",
+      "bytes": 3366,
+      "sha256": "61a5cb0d29de7a458ff13685964099be489e13ae20fa60c51e87d5e1da61c632"
+    },
+    {
+      "id": "M7B277-00336",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/four-lobby.png",
+      "bytes": 149296,
+      "sha256": "46f2492c6d80ad9804188f9a5bcc5944e4233f69f9e384efc710429e0ad2eb53"
+    },
+    {
+      "id": "M7B277-00337",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/D/two-independent-one-of-eight.png",
+      "bytes": 152937,
+      "sha256": "f849fda63e3e0d2258e37a9ab057672e53cfb2b77568098c452f0d1948af867f"
+    },
+    {
+      "id": "M7B277-00338",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/account-db/accounts.sqlite",
+      "bytes": 65536,
+      "sha256": "1cedccb410c637cae4efbe45101712b2b0cf7f55e4637f29d8e67d26dcb262e6"
+    },
+    {
+      "id": "M7B277-00339",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/hosts",
+      "bytes": 131,
+      "sha256": "da919cefa691a6453ad2acd02ff0a639d60ddc8c540d211f55a5dedbe3ba1b63"
+    },
+    {
+      "id": "M7B277-00340",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/nsswitch.conf",
+      "bytes": 307,
+      "sha256": "c18e474cd61df8648ee02ac7a9c76b8d6c7782d8b212f925e6980f20af5cc838"
+    },
+    {
+      "id": "M7B277-00341",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/private-backend-seed.json",
+      "bytes": 4712,
+      "sha256": "5b82bf2ba34d5feb74bcbd6930a6d574c1116dd908ffcaa10841b6581f46fa78"
+    },
+    {
+      "id": "M7B277-00342",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/run.json",
+      "bytes": 60460,
+      "sha256": "53972996b5999074dd25667301bce4f24936a378ecfa3771303eebeef8d57ef1"
+    },
+    {
+      "id": "M7B277-00343",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/rust-events.jsonl",
+      "bytes": 48557,
+      "sha256": "fb63bdb243dc382e2d5debc6dc8442285cfde316112e56604b7cd878117df766"
+    },
+    {
+      "id": "M7B277-00344",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "M7B277-00345",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/service.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7B277-00346",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/tcp-auth-pair.pcap",
+      "bytes": 63668,
+      "sha256": "07437b4d6a2075e575a2f4b014b8ad4cb355d1d2facbde3c1d67595b239296d8"
+    },
+    {
+      "id": "M7B277-00347",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/tcp-capture-index.json",
+      "bytes": 168869,
+      "sha256": "4b134133006289d14e1e3faf3d6aab18a0cf7803af2162a4a6c01ae90bdd8774"
+    },
+    {
+      "id": "M7B277-00348",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/udp-capture-index.json",
+      "bytes": 155,
+      "sha256": "74fdb583038226ff27c7c72dbdfa2c805244d2c05aabe3704f71e793b6f88003"
+    },
+    {
+      "id": "M7B277-00349",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/udp-virtual.pcap",
+      "bytes": 24,
+      "sha256": "acc530668c8bc60b2d229281130b1899bfc81d70fdada5c34b3236c628f739c8"
+    },
+    {
+      "id": "M7B277-00350",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/virtual-network.json",
+      "bytes": 44695,
+      "sha256": "548427c8979609da6a89cfb80d39f743c6fa5e606bd575408d29db4f37a0cb01"
+    },
+    {
+      "id": "M7B277-00351",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/wineboot-A.log",
+      "bytes": 64262,
+      "sha256": "f7aea44658bffd9480d2a7de36f06d2832e2befcbb844e32e95b43660e547fd5"
+    },
+    {
+      "id": "M7B277-00352",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/wineboot-B.log",
+      "bytes": 64262,
+      "sha256": "eb19799ad7f9ef98d3760b4ff8d83241cae09e9758c446b684c71b58a72e7735"
+    },
+    {
+      "id": "M7B277-00353",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/wineboot-C.log",
+      "bytes": 64262,
+      "sha256": "f0e243bc3351d06986bd5debed3262ba4d71dc8e01db5093733a334bf8c23ec1"
+    },
+    {
+      "id": "M7B277-00354",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/wineboot-D.log",
+      "bytes": 63854,
+      "sha256": "e57bdbd461e3c9ba10b8e35d81c5791cb3dd5d7482b654ab235e11a976de267a"
+    },
+    {
+      "id": "M7B277-00355",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/xvfb-A.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7B277-00356",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/xvfb-B.log",
+      "bytes": 132,
+      "sha256": "09af44186174436345e3e1e8877555c5d6aaa892a7414425cd9c2d8bfea148e7"
+    },
+    {
+      "id": "M7B277-00357",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/xvfb-C.log",
+      "bytes": 264,
+      "sha256": "18b994563c61904f959cb44346126933ebd488bf232ed5ab5e7f9fab0cd38b2c"
+    },
+    {
+      "id": "M7B277-00358",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/cycles/xvfb-D.log",
+      "bytes": 396,
+      "sha256": "23dbac212d0ee37e6c72af4571c6fe45c23e07517d20e5a9f2336c39c747b00b"
+    },
+    {
+      "id": "M7B277-00359",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/launch-exit.json",
+      "bytes": 73,
+      "sha256": "d507c9db6f25c49c9fdffb571976483cfd99eac19fe48c06ba495b33501d27d1"
+    },
+    {
+      "id": "M7B277-00360",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7B277-00361",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/raw-seal.json",
+      "bytes": 17987,
+      "sha256": "2ed1056f8f0a3f1d02cd5572a08d0a72bf438b66dd79054473d39d81fc1f800b"
+    },
+    {
+      "id": "M7B277-00362",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/recipe.json",
+      "bytes": 1202,
+      "sha256": "dc825d3f5dfdaa8afc412fa3a5abc2a72a8b43337efe64f042c5324f7d6a7e0a"
+    },
+    {
+      "id": "M7B277-00363",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/runtime-preflight.json",
+      "bytes": 191083,
+      "sha256": "e172c44928c5a76ee74ac76f15eb30047d34c40aac508db7196a56db08cbdf68"
+    },
+    {
+      "id": "M7B277-00364",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/storage-export.json",
+      "bytes": 20683,
+      "sha256": "ecf7a237c86118442eda00471eebcc70a9569c02714c32dfe30ff40d5ec08e69"
+    },
+    {
+      "id": "M7B277-00365",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native-config.json",
+      "bytes": 40382,
+      "sha256": "689ce78efe67f320670cc5cb9dbc785de05c60c7249c3217db798c6bb02db4f0"
+    },
+    {
+      "id": "M7B277-00366",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/room-A.gdb",
+      "bytes": 3366,
+      "sha256": "984fb44e07a73ba58adc0156551c9c4ff8d51b65134de3804af7c486e85375e3"
+    },
+    {
+      "id": "M7B277-00367",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/room-B.gdb",
+      "bytes": 3366,
+      "sha256": "28974911fe6a9529f35f415399e1c82f33626b0b4d9e7c01707f4f701ef861ab"
+    },
+    {
+      "id": "M7B277-00368",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/room-C.gdb",
+      "bytes": 3366,
+      "sha256": "720cfa9dfec10074fdc65de073b2f91f716721d84313809b6b63bde6f7f31df8"
+    },
+    {
+      "id": "M7B277-00369",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/room-D.gdb",
+      "bytes": 3366,
+      "sha256": "61a5cb0d29de7a458ff13685964099be489e13ae20fa60c51e87d5e1da61c632"
+    },
+    {
+      "id": "M7B277-00370",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/topology.py",
+      "bytes": 4081,
+      "sha256": "e379c3f1d6f6fd36a2fcb4bba2aeb08c4da0abd016ec0481f4a9d46ae4a7ce4f"
+    },
+    {
+      "id": "M7B277-00371",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/verification.json",
+      "bytes": 7067,
+      "sha256": "25879e1ea38ec93cea5e98af05d4e528b8143ceba9cb3af31bd20b2df1b24c4e"
+    },
+    {
+      "id": "M7B277-00372",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1-preparation.txt",
+      "bytes": 46,
+      "sha256": "3fdebc13bae7da2443fda685723ec0388bdb1d09b0965d0c1036ff7babc01145"
+    },
+    {
+      "id": "M7B277-00373",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1-runner.txt",
+      "bytes": 234,
+      "sha256": "d9e66a7bbde5cb35d6d5928709b96141da3ae2497dbe53fb06b997b7f5644fff"
+    },
+    {
+      "id": "M7B277-00374",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1-verification.txt",
+      "bytes": 105,
+      "sha256": "8e975ee760e0bd6b6a75575575326be160858a2f9f293eb318985eaf40c7b7c9"
+    },
+    {
+      "id": "M7B277-00375",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-r1-launch.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7B277-00376",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/accounts.sqlite",
+      "bytes": 65536,
+      "sha256": "c0c1d9dddbbfbb02b11accd551b76f73f9c71e927c2addb161473bc4d10d3441"
+    },
+    {
+      "id": "M7B277-00377",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/config.json",
+      "bytes": 22203,
+      "sha256": "7d1d712d2056d4bbf71c660de41b5a59bbf8eb489fc87d1e7b1502c13bee25af"
+    },
+    {
+      "id": "M7B277-00378",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/export-seal.json",
+      "bytes": 19261,
+      "sha256": "b89780ccdab83a73f23a56df264b2662b80083c0100f7610f3d8bd4494028e83"
+    },
+    {
+      "id": "M7B277-00379",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/000-kr-service",
+      "bytes": 58362528,
+      "sha256": "a526ddb39213329eaa3199debecec8546ea48acc92d0e61ae4177ed209d8b53f"
+    },
+    {
+      "id": "M7B277-00380",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/001-kr-admin",
+      "bytes": 49333288,
+      "sha256": "092cee80e479b01cc505cef27bc8aa3a30816311909e019c1dda5a82fe160012"
+    },
+    {
+      "id": "M7B277-00381",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/002-config.json",
+      "bytes": 22203,
+      "sha256": "7d1d712d2056d4bbf71c660de41b5a59bbf8eb489fc87d1e7b1502c13bee25af"
+    },
+    {
+      "id": "M7B277-00382",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/003-native-config.json",
+      "bytes": 22539,
+      "sha256": "c034419f3015353bdde7d47ec89060ab90bbfde5c05e88149484c6abc2e9d955"
+    },
+    {
+      "id": "M7B277-00383",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/004-test_rust_room_population.py",
+      "bytes": 8319,
+      "sha256": "2515b91eae74fb249472e4538ec19c0bed25cf2cfed2b4a13fd04300abc43c80"
+    },
+    {
+      "id": "M7B277-00384",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/005-rust_account_fixture.py",
+      "bytes": 5050,
+      "sha256": "43907becc554b8e756d2456ca8a0dd6c519548d6e4d138707b1cc68cb09e6e09"
+    },
+    {
+      "id": "M7B277-00385",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/006-kr00967.rs",
+      "bytes": 3904,
+      "sha256": "8b54d72bcb418316c467b989ecb99399ddb46d437a64431b2d396599e7e89f92"
+    },
+    {
+      "id": "M7B277-00386",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/007-lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "M7B277-00387",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/008-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "M7B277-00388",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/009-battle.rs",
+      "bytes": 5755,
+      "sha256": "dc6e4983d3cbb7b72d990fe2f763afd5d12933c5dabfbdc71d01ad5a6ac370e4"
+    },
+    {
+      "id": "M7B277-00389",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/010-player.rs",
+      "bytes": 6410,
+      "sha256": "9f729c32d4ecaef25439b37310836fb1a5bb47606a8e04906eab8c7abc2bca6d"
+    },
+    {
+      "id": "M7B277-00390",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/011-room.rs",
+      "bytes": 14930,
+      "sha256": "619cbc6418368917b0484422fe51fd485db992ade7a1ab2fb9cc45581fe74eee"
+    },
+    {
+      "id": "M7B277-00391",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/012-room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "M7B277-00392",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/013-check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "M7B277-00393",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/014-account_bridge.rs",
+      "bytes": 18811,
+      "sha256": "be3fd88528bc4221b25dc30a84e6f877bfdb023bf7b86e06bcdf0b606adb7e71"
+    },
+    {
+      "id": "M7B277-00394",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/015-account_serving.rs",
+      "bytes": 18783,
+      "sha256": "2d62814dac94092dd74863e0f54077e3b52500c5d65d13038a466b6fcbab56e3"
+    },
+    {
+      "id": "M7B277-00395",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/016-account_worker.rs",
+      "bytes": 15562,
+      "sha256": "c0a32397e0dbf281be3db0d927aac66408398a3d3735aac069cad11eb8003347"
+    },
+    {
+      "id": "M7B277-00396",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/017-accounts.rs",
+      "bytes": 27236,
+      "sha256": "7286a0abd5e48d3cc84e1a9d008d047ed7c496002a55a272efe47dae552e99da"
+    },
+    {
+      "id": "M7B277-00397",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/018-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "M7B277-00398",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/019-bombs.rs",
+      "bytes": 14835,
+      "sha256": "c51d8abfe828a43ca1c22b9d1645d6e9089ef76ad32f2fbbcec66a04cdf5b4af"
+    },
+    {
+      "id": "M7B277-00399",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/020-four_results.rs",
+      "bytes": 8869,
+      "sha256": "99164bc8c310cbc34cc1e4458f7b6d35d09f22bc1300d38c73a77a013e07cdd0"
+    },
+    {
+      "id": "M7B277-00400",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/021-lib.rs",
+      "bytes": 52796,
+      "sha256": "1b002cee98d5549c0ae15973d1453e4503733dfe9016d7e3ccafa62610c981c6"
+    },
+    {
+      "id": "M7B277-00401",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/022-life.rs",
+      "bytes": 15549,
+      "sha256": "de417936f9fa488448371e038fe7e9c3308c5bcde5214017c74449790b962646"
+    },
+    {
+      "id": "M7B277-00402",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/023-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "M7B277-00403",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/024-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "M7B277-00404",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/025-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "M7B277-00405",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/026-network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "M7B277-00406",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/027-peer_routes.rs",
+      "bytes": 3464,
+      "sha256": "65f6230334ff8f08bbc90a6e174900cd050eb78a46310c5d969411cc6fa2ea97"
+    },
+    {
+      "id": "M7B277-00407",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/028-pickups.rs",
+      "bytes": 14368,
+      "sha256": "4ed0d33f79c4689b6cbccc44fddc53f8fb07e297e8da4c202acaf2f6f4f3e2ca"
+    },
+    {
+      "id": "M7B277-00408",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/029-player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "M7B277-00409",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/030-room.rs",
+      "bytes": 30053,
+      "sha256": "42632ca4623734306f78ea16c28505dfd41c71b014630113d1188b1921bec6fc"
+    },
+    {
+      "id": "M7B277-00410",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/031-room_io.rs",
+      "bytes": 123435,
+      "sha256": "6af46efb939fa7a5b1c4e3bad0902babdac656dbca4f2adbad33f57d424573e8"
+    },
+    {
+      "id": "M7B277-00411",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/032-room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "M7B277-00412",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/033-room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "M7B277-00413",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/034-room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "M7B277-00414",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/035-room_service.rs",
+      "bytes": 7258,
+      "sha256": "b6be56673c3296a4490c7f26fa667746980cc72bb04908d43db0ad76d688eebf"
+    },
+    {
+      "id": "M7B277-00415",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/036-room_wire.rs",
+      "bytes": 2052,
+      "sha256": "a52ae399f0bc3e72e1de0e99f8ac6e053c59f262b20d9820650bec50ebb15ca9"
+    },
+    {
+      "id": "M7B277-00416",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/037-rules.rs",
+      "bytes": 7524,
+      "sha256": "3a34a1b502ce4d6ba188638ce50cd27ab4cba3c3be1fdc5d240fba8f0976755e"
+    },
+    {
+      "id": "M7B277-00417",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/038-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "M7B277-00418",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/039-udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "M7B277-00419",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/040-tests.rs",
+      "bytes": 35370,
+      "sha256": "41024618c27c9ec09a7c9b96112265f240c7ae0ac9beaad66a06311bc678adf1"
+    },
+    {
+      "id": "M7B277-00420",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/041-wire.rs",
+      "bytes": 2757,
+      "sha256": "19f1f1ef20a294a871e2314eb0b3c7a6ed8e174561706230462e1d5c68242411"
+    },
+    {
+      "id": "M7B277-00421",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/042-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "M7B277-00422",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/043-tests.rs",
+      "bytes": 17779,
+      "sha256": "1c72dbea6bd2f57a33125ee65768d1059466e471fe23b3b32d4a92fc0e2ac354"
+    },
+    {
+      "id": "M7B277-00423",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/044-tests.rs",
+      "bytes": 24425,
+      "sha256": "1efc122aba3061a85b23b33d4c47925bd06439cc0b5254665a437e56d84ce3c3"
+    },
+    {
+      "id": "M7B277-00424",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/045-kr-admin.rs",
+      "bytes": 4429,
+      "sha256": "206aa5b2ecace9d9ac54f074d93e039d4a88f893635e0b9dc5d000d5660c890c"
+    },
+    {
+      "id": "M7B277-00425",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/046-sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "M7B277-00426",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/047-tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "M7B277-00427",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/048-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "M7B277-00428",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/049-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "M7B277-00429",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/050-Cargo.lock",
+      "bytes": 15941,
+      "sha256": "8a6d22da092caf4d41137c74d1062bb0a1d7efb787895648985fc4fe7068c59a"
+    },
+    {
+      "id": "M7B277-00430",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/051-bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "M7B277-00431",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/052-eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "M7B277-00432",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/053-login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "M7B277-00433",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/054-A-auth.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "M7B277-00434",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/055-login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "M7B277-00435",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/056-flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "M7B277-00436",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/057-redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "M7B277-00437",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/058-channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "M7B277-00438",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/059-compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "M7B277-00439",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/060-room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "M7B277-00440",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/061-channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "M7B277-00441",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/062-A-own291.bin",
+      "bytes": 128,
+      "sha256": "5c21eea35c39ad10969c521b59cfa17661a8b9ce0afb8af2bf958f201bfbadc8"
+    },
+    {
+      "id": "M7B277-00442",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/063-A-106.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "M7B277-00443",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/064-B-auth.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "M7B277-00444",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/065-B-own291.bin",
+      "bytes": 128,
+      "sha256": "8dddaacd341047cff7d00c5d2307d9634fdc72c6afc9e3b6268881b4ae1c034b"
+    },
+    {
+      "id": "M7B277-00445",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/066-B-106.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "M7B277-00446",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/067-C-auth.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "M7B277-00447",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/068-C-own291.bin",
+      "bytes": 126,
+      "sha256": "5e4a20ae5827c99ab75343eb4cac0b8e1d3fe02085635ef7e15cb6ea1abdbd04"
+    },
+    {
+      "id": "M7B277-00448",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/069-C-106.bin",
+      "bytes": 238,
+      "sha256": "2dce013518feef6f752c8d232f394729253f17f09c60509296b4e59e57afc72a"
+    },
+    {
+      "id": "M7B277-00449",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/070-D-auth.bin",
+      "bytes": 175,
+      "sha256": "b120da778082fdff90fde5e947c2c26ff002449dcf126bc2fd7285512ca75724"
+    },
+    {
+      "id": "M7B277-00450",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/071-D-own291.bin",
+      "bytes": 128,
+      "sha256": "218a0b0880d106ae38ddd4e056e6acb602cf1e3e79705a7672b3374b012f422c"
+    },
+    {
+      "id": "M7B277-00451",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/072-D-106.bin",
+      "bytes": 242,
+      "sha256": "50be046ea690d70f654816db6e89a458c16985a38e254877a168f93472168183"
+    },
+    {
+      "id": "M7B277-00452",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/073-reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "M7B277-00453",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/074-reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "M7B277-00454",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/075-compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "M7B277-00455",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/076-exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "M7B277-00456",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/077-basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "M7B277-00457",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/078-start4.bin",
+      "bytes": 219,
+      "sha256": "bf395aea2bed32aaff8dd590887849bf400598a60e7427652a05cc5610df862d"
+    },
+    {
+      "id": "M7B277-00458",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/079-go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "M7B277-00459",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/080-exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "M7B277-00460",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/081-peer4.bin",
+      "bytes": 171,
+      "sha256": "9fbfcd39b202be6be1913d2d9c52f6d598e067982813cb374c71f9a2340aa239"
+    },
+    {
+      "id": "M7B277-00461",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/frozen/082-listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "M7B277-00462",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/preflight.json",
+      "bytes": 23185,
+      "sha256": "f66c1b9aca824d0cbfb4728f1fbdba5370897de2ec1b1e6cb4cfdb3036a18c74"
+    },
+    {
+      "id": "M7B277-00463",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/private-backend.json",
+      "bytes": 4514,
+      "sha256": "a546477cd1fcb9449b58f154a5819fa670e1c7a075ebfc7f94940eadffc803f4"
+    },
+    {
+      "id": "M7B277-00464",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/private-launches.json",
+      "bytes": 897,
+      "sha256": "9db04f194315d7c914b6435659b934cf2d0ee1a7538adc26109b2802149916fc"
+    },
+    {
+      "id": "M7B277-00465",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/process.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7B277-00466",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/service/rust-events.jsonl",
+      "bytes": 19459,
+      "sha256": "cf0d8b26b980ede67e7e4730090136b589dada71cf21742e7d22be11f7a79f69"
+    },
+    {
+      "id": "M7B277-00467",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/service/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    {
+      "id": "M7B277-00468",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/verification.json",
+      "bytes": 5839,
+      "sha256": "2ca0a3bf09bb642748230820971026602f1f3776b3dafe116f5c79ddecb381a3"
+    },
+    {
+      "id": "M7B277-00469",
+      "kind": "local",
+      "path": "local/research/codex/m7b_population_probe.py",
+      "bytes": 1190,
+      "sha256": "f1f498e2ce93fee8f68c57682d73ca33d3042692b4a74114f253a636af2eee88"
+    },
+    {
+      "id": "M7B277-00470",
+      "kind": "local",
+      "path": "local/research/codex/prepare_m7b_population_r1.py",
+      "bytes": 9780,
+      "sha256": "fe827e5f7a74d34ccb978cdac7b60b8ae348d121533d19e678fad40a74ad9c48"
+    },
+    {
+      "id": "M7B277-00471",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/source-first.json",
+      "bytes": 2955,
+      "sha256": "29089af8f332300268ab5ffaac4444cbf9fbcc11b30ac40154f1b9ae45d3f852"
+    },
+    {
+      "id": "M7B277-00472",
+      "kind": "local",
+      "path": "local/research/codex/run_m7b_population_r1.py",
+      "bytes": 911,
+      "sha256": "cf670ae1675e3e8a61dc097d8e4d9dab78011e0306a3de3a3cd36f3f49987406"
+    },
+    {
+      "id": "M7B277-00473",
+      "kind": "local",
+      "path": "local/research/codex/update_m7b_population_docs.py",
+      "bytes": 7714,
+      "sha256": "a2a12fd3c6c9f88ae33d82c9d86baff5dd9d70039f4a6f31d39cd9e35f987c62"
+    },
+    {
+      "id": "M7B277-00474",
+      "kind": "local",
+      "path": "local/research/codex/verify_m7b_population_r1.py",
+      "bytes": 6705,
+      "sha256": "d3af6d78704b2cddbf4f76c00a466b8dce3e01551768aacd09a0768ea61780ef"
+    },
+    {
+      "id": "M7B277-00475",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_m7b_population_r1.py",
+      "bytes": 26958,
+      "sha256": "dc48b4fb7516bf4049616cdbcd6d5733f34b84feb79ff197dba1cc11168a7f22"
+    },
+    {
+      "id": "M7B277-00476",
+      "kind": "repository",
+      "path": "tools/test_rust_managed_rooms.py",
+      "bytes": 10266,
+      "sha256": "56e192a283fe7a0a2a8591e12d96fb8c2e1a32b3791df8782bc372e4648c898e"
+    },
+    {
+      "id": "M7B277-00477",
+      "kind": "repository",
+      "path": "tools/test_rust_room_population.py",
+      "bytes": 8319,
+      "sha256": "2515b91eae74fb249472e4538ec19c0bed25cf2cfed2b4a13fd04300abc43c80"
+    }
+  ]
+}

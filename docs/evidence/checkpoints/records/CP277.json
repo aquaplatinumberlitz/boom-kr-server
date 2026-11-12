@@ -1,0 +1,209 @@
+{
+  "id": "CP277",
+  "previous": "CP276",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T04:54:46.929460+00:00",
+  "context_commit": "770c052019e25b37640742fdc4e2b2a1adbcd775",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / M7b: phục hồi hai field current/capacity đang chặn listing và kiểm bằng membership thực, native reader/UI/PCAP; không mở rộng thành toàn lifecycle.",
+  "scope": "Occupancy only. Four actual KR/Wine account clients, two independent rooms, current1/8→2/8→1/8; no dynamic Battle, eight-client or full M7b claim.",
+  "artifacts": [
+    {
+      "name": "kr-service-native-population",
+      "sha256": "a526ddb39213329eaa3199debecec8546ea48acc92d0e61ae4177ed209d8b53f"
+    }
+  ],
+  "locators": [
+    "docs/protocol/room-membership.md#rust-room-population",
+    "docs/evidence/rust-service/m7b-room-population.json",
+    "KR00967 D9D720..D9D998 / D9D7E3 / D9D817",
+    "docs/RESEARCH.md#gap-room-occupancy",
+    "docs/PLAN.md#dashboard"
+  ],
+  "findings": [
+    {
+      "summary": "KR reader cache635byte khớp diagnostic copy; D9D7E3/D9D817 đọc u8 current/capacity ở tail5/7 vào secure+94/+AC.20byte khác chưa phân loại.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/protocol/room-membership.md#rust-room-population",
+      "evidence": [
+        "M7B277-00120",
+        "M7B277-00119",
+        "M7B277-00013"
+      ],
+      "limits": "Chỉ reader đã đối chiếu, VN làm reference; không toàn binary/layout/mode/status."
+    },
+    {
+      "summary": "D ở sảnh thực đọc/hiển thị Alpha1/8→2/8→1/8 trong khi Beta giữ1/8 khi B actual join/Back; A/C rời cuối xóa đúng card. PCAP/native/UI cùng đối chiếu,20byte khác exact.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-room-population",
+      "evidence": [
+        "M7B277-00371",
+        "M7B277-00361",
+        "M7B277-00363"
+      ],
+      "limits": "Wine diagnostic copy/LAN giả lập;4 actual clients,8 configured profiles, không Start/loading/gameplay hoặc full M7b."
+    },
+    {
+      "summary": "Managed listing project current membership/modelcapacity và watch join/leave. Synthetic realSQLite/launcher kiểm delta riêng từng phòng, wrong tuple không ghost/watch mutation và last EOF/Back; fixed path giữ byte cũ.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/room-membership.md#rust-room-population",
+      "evidence": [
+        "M7B277-00468",
+        "M7B277-00378",
+        "M7B277-00113",
+        "M7B277-00024"
+      ],
+      "limits": "12 recorded observations gồm repeated delivery;8 regression groups. Synthetic không nativeoracle."
+    }
+  ],
+  "verification": [
+    {
+      "check": "122 Rust tests/clippy/lockedbuild/fmt và docs/catalog",
+      "result": "pass",
+      "evidence": [
+        "M7B277-00121",
+        "M7B277-00118",
+        "M7B277-00117",
+        "M7B277-00124",
+        "M7B277-00123",
+        "M7B277-00122"
+      ],
+      "limits": "Chỉ comment/docs đổi sau native source770c052; exact-head/history và CI trước merge riêng."
+    },
+    {
+      "check": "Native field/UI/PCAP và rawfreeze/cleanup",
+      "result": "pass",
+      "evidence": [
+        "M7B277-00371",
+        "M7B277-00361"
+      ],
+      "limits": "81raw,79.67s,cleanup0; chỉ occupancy."
+    },
+    {
+      "check": "Population TCP và managed regression, eight-profile startup",
+      "result": "pass",
+      "evidence": [
+        "M7B277-00378",
+        "M7B277-00024",
+        "M7B277-00021"
+      ],
+      "limits": "Startup8 không támclientnative; không gameplay proof."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP277-room-population.json",
+      "bytes": 123331,
+      "sha256": "892074a7a497f0d4e021f92ea176eb6cf516c319ae9e90089b19aaad86c3b4db",
+      "count": 477
+    }
+  ],
+  "delta": {
+    "added": [
+      "Measured current/capacity projection and native occupancy delta proof."
+    ],
+    "corrected": [
+      "Current docs no longer treat all22tailbytes as opaque; immutable historical evidence still records former scope."
+    ],
+    "superseded": [
+      "Current occupancy unknown only; M7a/K-gate scopes not changed."
+    ]
+  },
+  "blockers": [
+    "M7b còn Ready/loading/Start/result/reset theo roster và RoomRules, cách ly queue/timer/round/UDP giữa hai phòng. Không đóng M7b từ occupancy.",
+    "20 byte tail còn lại opaque; profile account tổng quát, lựa chọn nhân vật/đội/full-error, ownership tích hợp và native DB-queue fault còn ở M5/M7c/d.",
+    "Không có gameplay phòng động hoặc native tám client trong phép đo này. Relay mesh/reuse/restart/spoof và tải50/8 vẫn ở N1R-b/M8."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp M7b lifecycle theo roster thực và RoomRules; cách ly round/UDP và native hai cặp/hai phòng trước full M7b. M7c/d sau đó.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Occupancy đã đạt; tiếp lifecycle M7b theo PLAN, không lặp reader/list đã giải.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T04:54:46.929460+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo field recovery/implementation/native/manual group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped occupancy và remaining lifecycle; không full M7b/M7 claim."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped occupancy và remaining lifecycle; không full M7b/M7 claim."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped occupancy và remaining lifecycle; không full M7b/M7 claim."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped occupancy và remaining lifecycle; không full M7b/M7 claim."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped occupancy và remaining lifecycle; không full M7b/M7 claim."
+    },
+    {
+      "path": "docs/evidence/rust-service/m7b-room-population.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped occupancy và remaining lifecycle; không full M7b/M7 claim."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped occupancy và remaining lifecycle; không full M7b/M7 claim."
+    },
+    {
+      "path": "docs/protocol/room-membership.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped occupancy và remaining lifecycle; không full M7b/M7 claim."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đã link topic room-membership; contract giữ tại topic."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Áp dụng solo/feature-group audit/exact-head/privacy và giữ G1 exporter."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-managed-room-population"
+  ]
+}

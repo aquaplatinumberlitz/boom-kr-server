@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP276: M7a đã nghiệm thu tạo, chọn và rời nhiều phòng bằng account trên client KR thật.**
+Bốn client trên Wine/LAN giả lập đã dùng hai phòng riêng, đúng slot/chủ phòng, chuyển phòng, EOF/revoke và xóa phòng rỗng.
+[Contract và giới hạn](protocol/room-membership.md#rust-managed-room-selection),
+[bằng chứng](evidence/rust-service/m7a-room-selection.json). Gameplay phòng động, occupancy và profile account
+bất kỳ còn mở; toàn M7 chưa đạt. Tiếp M7b theo [Bảng điều hành](PLAN.md#dashboard).
+
 **CP275: Village10 lookup đúng mã 1104, nhưng profile cũ chưa đủ để load map.**
 [Contract và giới hạn](protocol/load-phase.md#village10-map-selection): cần đồng bộ metadata; chưa có trận Village10.
 R1 đã đạt hồi quy native, relay đạt prototype hai người. M5 tổng quát, relay bốn/tám người và vận hành còn mở.
