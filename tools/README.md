@@ -53,6 +53,14 @@ Negative tests: `python3 tools/test_feature_catalog.py`.
 phương tiện, nhân vật, thẻ script. Chỉ ghi metadata tĩnh, không ghi asset hay nội dung script; nhóm nội dung và
 ghép wiki là suy từ tên. `--check` kiểm CONTENT khớp census mà không cần client.
 
+`export_map_profile.py`: đọc `FxMap` từ client và xuất JSON vào `local/`, gồm lưới đầy đủ,
+spawn, item và terrain. Bắt buộc truyền `--terrain-fixture <profile.json CP094>` để so từng ô
+ExVillage01 với seed đã pin trước khi ghi; dùng `--client <thư mục client> --map ExVillage01
+--map Village10 --out local/research/claude/map-profiles`. Giá trị ô chưa xuất hiện ở ExVillage01
+được ghi riêng và terrain của ô đó là `null` (chưa rõ nghĩa). Phân loại còn lại chỉ là policy CP094,
+không chứng minh gameplay map khác. Kiểm thử không cần client: `PYTHONPATH=tools python3 -m unittest
+tools.test_export_map_profile`. Không commit JSON trích từ client.
+
 `export_probe_profile.py --source-root local/research/codex --out <local/profile.json>`: chỉ lập index path/size/SHA/sequence của
 fixture RE hiện hữu cho [service chẩn đoán](../server/README.md); không nhập binary/asset vào Git.
 Profile dùng chính xác bytes/seq đã đo, không là schema auth/cache tổng quát hoặc oracle tự sinh.
