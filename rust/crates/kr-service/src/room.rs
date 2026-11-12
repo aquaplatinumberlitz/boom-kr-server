@@ -634,6 +634,10 @@ impl Room {
             .participants
             .get_mut(&member.key)
             .ok_or_else(|| io::Error::other("missing round participant"))?;
+        // Retain the current round's last report/life snapshot, while preserving
+        // the immutable key/slot/team/character selected at Start.
+        participant.member.report_position = member.report_position;
+        participant.member.life = member.life;
         participant.departed = Some(now);
         if armed {
             participant.pending = self.members.values().map(|m| m.key).collect();
