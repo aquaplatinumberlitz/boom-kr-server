@@ -55,15 +55,13 @@ def main():
     two = cfg['diagnostic_two_lobby']
     assert len(two['actors']) == 4
     count=args.roster_size
-    round_teams=[slot%2 for slot in range(count)]
-    limits=[1,2,1,1]if count==4 else[1,2,1,1,2,1,1,1]
     ports = set()
     while len(ports) < 3:
         ports.add(free_port())
     login, wcp, channel = sorted(ports)
     cfg.update(bind='127.0.0.1', allowed_peers=[f'127.0.0.{n+2}' for n in range(4)], ports=sorted(ports))
     two.update(login_port=login, login_candidate_ports=[login, wcp], wcp_ports=sorted(ports),
-               channel_port=channel, managed_rooms=dict(max_rooms=2, player_choices=True))
+               channel_port=channel, managed_rooms=dict(max_rooms=2, capacity=2, player_choices=True))
     for actor, peer in zip(two['actors'], cfg['allowed_peers']):
         actor['peer'] = peer
     account = AccountFixture(args.admin, root, cfg)
@@ -73,6 +71,9 @@ def main():
     # Concrete startup negatives preserve actual account/fixture inputs and must
     # fail before creating the serving output directory or binding game ports.
     rejections=[]
+    for capacity in [1, 5]:
+        bad=copy.deepcopy(cfg);bad['diagnostic_two_lobby']['managed_rooms']['capacity']=capacity
+        rejections.append(('invalid_capacity_'+str(capacity),bad))
     bad=copy.deepcopy(cfg);bad['diagnostic_two_lobby']['managed_rooms']['round_profile']=dict(mode='teams',teams=[0,1,0,1],initial_bomb_capacity=[1,2,1,1]);rejections.append(('choices_with_battle',bad))
     rejection_files=[]
     for label,bad in rejections:
@@ -189,10 +190,24 @@ def main():
         choice(b,97,bytes.fromhex('5a'),{0:2,1:0},groups[1])
         choice(b,97,bytes.fromhex('59'),{0:2,1:0x60},groups[1])
         cases.append('character_and_team_changes_clear_Ready_atomically_then_reReady_is_possible')
+        # A full rejection acquires no membership and leaves the account in its
+        # lobby, able to select a different existing room immediately afterward.
+        c.send(86,b'');d.receive(107);d.receive(110);c.receive(241)
+        catalog(c)
+        key=tuples[0]
+        c.send(82,codec.pack_fields([key,key,0,1,5],[2,4,2,1,2]))
+        assert codec.read_fields(c.receive(87)[1],[1])==[2]
+        for client in [a,b,d]:client.quiet()
+        key=tuples[1]
+        c.send(82,codec.pack_fields([key,key,0,1,5],[2,4,2,1,2]));c.receive(87)
+        c.send(585,codec.pack_fields([0],[4]))
+        while c.receive()[0]!=117:pass
+        d.receive(106)
+        cases.append('full87_rejects_without_ghost_slot_and_account_can_join_other_room')
         # Unmeasured character4 must fail closed; current other room still serves.
         a.send(92,bytes.fromhex('5aa56d'));assert a.sock.recv(1)==b'';a.close();clients.remove(a)
         b.receive(107);b.receive(110)
-        c.send(92,bytes.fromhex('5aa568'));selected(groups[1],{0:0x10002,1:0x20});b.quiet()
+        c.send(92,bytes.fromhex('5aa568'));selected(groups[1],{0:0x10000,1:0x22});b.quiet()
         cases.append('unmeasured_character_does_not_publish_choice_and_other_room_stays_usable')
         c.send(92,codec.pack_fields([1,0],[1,2]));assert c.sock.recv(1)==b'';c.close();clients.remove(c)
         d.receive(107);d.receive(110);b.quiet()
@@ -225,7 +240,7 @@ def main():
         log.close()
         (root/'verification.json').write_text(json.dumps(dict(result='pass' if error is None else 'fail',
             cases=cases, observations=observations, error=error, returncode=None if process is None else process.returncode,
-            limits='Synthetic TCP, actual SQLite/private launcher, measured Start/rank layout vectors; no native client/UDP proof.'), indent=2)+'\n')
+            limits='Synthetic TCP, actual SQLite/private launcher, retained choice92/team97 bodies; no native client/UDP proof.'), indent=2)+'\n')
         assert all(Path(p['path']).stat().st_size == p['bytes'] and hashlib.sha256(Path(p['path']).read_bytes()).hexdigest() == p['sha256'] for p in pins)
 
 

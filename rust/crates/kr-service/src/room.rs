@@ -126,6 +126,20 @@ impl Room {
     pub(crate) fn capacity(&self) -> usize {
         self.capacity
     }
+    pub(crate) fn set_admission_capacity(&mut self, capacity: usize) -> io::Result<()> {
+        if !(2..=self.capacity).contains(&capacity)
+            || !self.members.is_empty()
+            || self.phase != Phase::Idle
+        {
+            return Err(io::Error::other(
+                "capacity requires pristine room within prototype bound",
+            ));
+        }
+        self.capacity = capacity;
+        self.fixed_teams.truncate(capacity);
+        self.bomb_capacity.truncate(capacity);
+        Ok(())
+    }
 
     pub(crate) fn round_size(&self) -> usize {
         self.round_roster.size(self.capacity)

@@ -683,12 +683,34 @@ async fn local_lobby_connection(
                     IpAddr::V4(peer) => peer,
                     _ => return Err(io::Error::other("account IPv4 required")),
                 };
-                room_session = Some(channel.select(
+                let selected = channel.select(
                     packet.opcode,
                     &packet.payload,
                     peer,
                     lease.relay_authority(),
-                )?);
+                )?;
+                match selected {
+                    room_service::Selection::Joined(session) => room_session = Some(session),
+                    room_service::Selection::Full => {
+                        // CP227/252 generic87/result2. Capacity is our policy
+                        // reason; this is not an original full-room error code.
+                        let body =
+                            kr_wire::write_uint(2, kr_wire::Width::U8).map_err(io::Error::other)?;
+                        let frame = kr_wire::kr00967::encode(87, &body, send_sequence)
+                            .map_err(io::Error::other)?;
+                        timeout(
+                            Duration::from_millis(profile.config.write_timeout_ms),
+                            socket.write_all(&frame),
+                        )
+                        .await
+                        .map_err(|_| io::Error::other("full-room reply timeout"))??;
+                        emit(&log, stamp(start, json!({"event":"managed_join_rejected","connection":id,
+                            "identity":flow.identity(),"reason":"room_full","opcode":87,
+                            "sequence":send_sequence,"bytes":frame.len(),"sha256":sha256_hex(&frame)}))).await?;
+                        send_sequence = send_sequence.wrapping_add(3);
+                        continue;
+                    }
+                }
                 pending.clear();
                 emit(&log,stamp(start,json!({"event":"managed_room_selection","connection":id,"identity":flow.identity(),"opcode":packet.opcode}))).await?;
                 continue;

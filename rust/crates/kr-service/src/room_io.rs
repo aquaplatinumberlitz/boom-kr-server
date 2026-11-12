@@ -533,6 +533,7 @@ pub(crate) fn fork(
     epochs: Arc<crate::round_epochs::RoundEpochs>,
     managed_round: Option<Arc<ManagedRound>>,
     player_choices: bool,
+    capacity: Option<usize>,
 ) -> io::Result<Shared> {
     let source = prototype
         .lock()
@@ -542,6 +543,9 @@ pub(crate) fn fork(
     }
     let mut model = source.model.clone();
     model.set_allocation(rules::SlotAllocation::FirstVacant)?;
+    if let Some(capacity) = capacity {
+        model.set_admission_capacity(capacity)?;
+    }
     model.set_round_epochs(epochs)?;
     let mut rules = source.rules;
     rules.slot_allocation = rules::SlotAllocation::FirstVacant;
@@ -572,6 +576,27 @@ pub(crate) fn fork(
         rules,
         abort: None,
     })))
+}
+pub(crate) fn validate_admission_capacity(
+    prototype: &Shared,
+    capacity: Option<usize>,
+    round_size: Option<usize>,
+) -> io::Result<()> {
+    let source = prototype.lock().map_err(|_| err("room unavailable"))?;
+    let capacity = capacity.unwrap_or(source.model.capacity());
+    if !(2..=source.model.capacity()).contains(&capacity)
+        || round_size.is_some_and(|count| count > capacity)
+    {
+        return Err(err(
+            "managed admission capacity outside measured prototype/round bounds",
+        ));
+    }
+    Ok(())
+}
+pub(crate) fn full_idle(shared: &Shared) -> io::Result<bool> {
+    let runtime = shared.lock().map_err(|_| err("room unavailable"))?;
+    Ok(runtime.model.phase == Phase::Idle
+        && runtime.model.members.len() >= runtime.model.capacity())
 }
 pub(crate) fn detach(shared: &Shared, identity: u32, connection: u64) -> io::Result<()> {
     shared
@@ -3418,14 +3443,14 @@ mod registry_foundation_tests {
             generation: 2,
         };
         let epochs = Arc::new(crate::round_epochs::RoundEpochs::default());
-        let a = fork(&prototype, a_key, epochs.clone(), None, false).unwrap();
-        let b = fork(&prototype, b_key, epochs.clone(), None, false).unwrap();
+        let a = fork(&prototype, a_key, epochs.clone(), None, false, None).unwrap();
+        let b = fork(&prototype, b_key, epochs.clone(), None, false, None).unwrap();
         let mut old = Session::open(&a, 3, 33).unwrap();
         old.packet(528, &[]).unwrap();
         let batch = old.inbox.try_recv().unwrap();
         assert!(old.valid(&batch));
         assert!(!removable(&a));
-        assert!(fork(&a, b_key, epochs, None, false).is_err());
+        assert!(fork(&a, b_key, epochs, None, false, None).is_err());
         let new = Session::open(&b, 3, 33).unwrap();
         assert!(!new.valid(&batch));
         assert!(new.packet(104, &[0; 20]).is_err());
