@@ -1,0 +1,33 @@
+{
+  "schema": "kre-rust-m7c-choice-producer-wip-v1",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Producer only; M7c remains open and no Rust choice handler implemented.",
+  "canonical": "docs/protocol/room-membership.md#rust-managed-player-choices",
+  "verification": "local/research/codex/m7c-character-producer-native-r2/verification.json",
+  "run_sha256": "75797626530002079ed74427c26661ca9d8e85ea8f3ae0cc762d74e3bc85a6e8",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "opcode": 92,
+  "body_bytes": 3,
+  "body_hex": "5aa56d",
+  "action": "Guest character-grid hover/click labeled 마리드 (Marid); prior intended Bazzi label corrected.",
+  "typed_candidate": {
+    "status": "confirmed_scoped",
+    "widths": [
+      1,
+      2
+    ],
+    "values": [
+      0,
+      4
+    ],
+    "interpretation": "Single-local-player selector0 and characterID4; confirmed only producer for Marid, no serving entitlement/stat for4. Controls IDs0/1 and slot110 roundtrip measured separately."
+  },
+  "next_measurement": "Room roundtrip IDs0/1 and teams0/3 now measured in m7c-room-choices.json. ID4 remains producer-only/unsupported; chosen-character Start/stat follows M7e.",
+  "limits": [
+    "Only producer opcode/body and observed hover target confirmed; candidate field names/width semantics await control.",
+    "Current Rust lacks handler92 and closes guest channel with diagnostic lobby wrong stage/opcode/shape; no choice ACK/peer/Ready/stat/Battle acceptance.",
+    "Diagnostic Wine copy/private2-host virtual LAN, real KR/native account login/room path; no relay/Internet claim."
+  ],
+  "followup": "docs/evidence/rust-service/m7c-room-choices.json"
+}

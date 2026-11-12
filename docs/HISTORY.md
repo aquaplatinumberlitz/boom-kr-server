@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP280: phòng managed Rust đã có lifecycle native cho roster 2/4/8 trong phạm vi cấu hình đã đo.**
+Hai phòng bốn người và một phòng tám người đã qua kết quả/reset/trận tiếp; EOF/bom chờ được cách ly với phòng còn chơi.
+[Contract và giới hạn](protocol/room-membership.md#rust-managed-team-rosters),
+[bằng chứng](evidence/rust-service/m7b-team-rosters.json). M7b đạt tập profile này; M7c/d, hồ sơ account tổng quát,
+relay nhiều người và vận hành còn mở. Thứ tự ở [Bảng điều hành](PLAN.md#dashboard).
+Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](HISTORY.md).
+
 **CP279: hai phòng duel Rust đã chạy độc lập trên bốn client KR thật.**
 Room chưa đầy vẫn Ready/loading, kết quả/reset và mở trận tiếp theo roster thực; EOF/bom chờ của phòng này được
 cách ly trong khi phòng kia tiếp tục. [Contract và giới hạn](protocol/room-membership.md#rust-managed-duel-lifecycle),

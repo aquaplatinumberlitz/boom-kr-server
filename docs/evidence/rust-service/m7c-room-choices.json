@@ -1,0 +1,130 @@
+{
+  "schema": "kre-rust-room-choices-v1",
+  "checkpoint": "CP281",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/room-membership.md#rust-managed-player-choices",
+  "scope": "M7c room-only lựa chọn nhân vật/đội, Ready và full-room error trên known account profiles. Không nhận Start/stat/Battle theo nhân vật đã chọn; phần đó ở M7e theo PLAN mới.",
+  "native": [
+    {
+      "root": "local/research/codex/m7c-selection-native-r2",
+      "verification": "local/research/codex/m7c-selection-native-r2/verification.json",
+      "source_commit": "59f744c31d0b59e407b8cbcdabd4eee3e24ed0e5",
+      "binary_sha256": "8a1dfdc96b15ff203f110f8948ba954543bd412a434aef3bce43124d61a6f834",
+      "run_sha256": "3e567d4b3e88c39b6b557fad99b849efcafeeae3c720853cff97e369f0b21f67",
+      "raw_files": 51,
+      "cleanup": {
+        "net_namespace": "net:[4026532862]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+      }
+    },
+    {
+      "root": "local/research/codex/m7c-full-room-native-r1",
+      "verification": "local/research/codex/m7c-full-room-native-r1/verification.json",
+      "source_commit": "188634bb1cfea4d0df3475896de0c5dc6660f9e2",
+      "binary_sha256": "d223eaa8451f9b43b59403d2640c926c72cecad4c501beb7e845fc17c1cb5ebe",
+      "run_sha256": "f6a169e1dbba815fdb59c9f012f52791ad6ca474e9a417de6a742ce0d914f9e6",
+      "raw_files": 65,
+      "cleanup": {
+        "net_namespace": "net:[4026533497]",
+        "remaining_pids": [],
+        "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+      }
+    }
+  ],
+  "client": {
+    "build": "KR00967 diagnostic offline copy",
+    "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "environment": "Isolated virtual LAN, two then three actual account clients, no external route."
+  },
+  "wire": {
+    "character92": {
+      "body_bytes": 3,
+      "widths": [
+        1,
+        2
+      ],
+      "local_player": 0,
+      "accepted_ids": [
+        0,
+        1
+      ],
+      "producer_only_id": 4
+    },
+    "team97": {
+      "body_bytes": 1,
+      "observed_picker_codes": {
+        "A": 0,
+        "B": 3
+      },
+      "fixture_legacy_team": 1
+    },
+    "slot110": "u8 slot, encoded packed32, u8 zero; character bits16..28, team bits5..9, Ready/chief bits preserved by measured state adapter",
+    "full87": "one-byte result2 generic cannot-join. Capacity as reason is server design, not original full-room-specific code."
+  },
+  "policy": {
+    "opt_in": "managed_rooms.player_choices=true; defaultfalse; cannot combine with round_profile yet",
+    "capacity": "managed_rooms.capacity optional2..prototype capacity, independent actor identity count; prebind rejects invalid bounds or capacity below configured round.",
+    "ready": "Any accepted choice clears all guestReady and publishes current slot110 to each setup member via atomic queue reservation.",
+    "ownership": "Current connection/membership/setup/idle only; malformed/nonlocal/unknown character choices fail closed; no account/profile persistence.",
+    "full": "Full rejection allocates no roomSession/channel/membership/visit/round; same account can immediately select another available room."
+  },
+  "checks": {
+    "rust_tests": 133,
+    "fmt": "pass",
+    "clippy": "pass",
+    "locked_build": "pass",
+    "synthetic_choice_groups": 7,
+    "synthetic": "local/research/codex/m7c-choices-synthetic-r3/export-seal.json"
+  },
+  "reuse": [
+    {
+      "locator": "local/research/codex/m7c-source-r1/reuse.json",
+      "use": "VN only supplies UI/producer/slot/Ready method. KR opcodes/body widths/team codes measured independently.",
+      "avoids": "No whole VN server port or guessed opcode offsets."
+    },
+    {
+      "locator": "local/research/codex/m7c-source-r1/slot-reader-byte-equivalence.json",
+      "use": "CP018 D628E0/DC6700 cached instruction bytes all match exact current PE; reuse13bit character/5bit team reader and known slot/UI enable probes.",
+      "limits": "Cached static plus new runtime values; REA function attempt timed out, no new provider dossier or clean-close claim."
+    },
+    {
+      "locator": "docs/evidence/rust-service/ninth-admission.json",
+      "use": "Generic87/result2 consumer and ordinary Return control only; new native test uses3 actual accounts/capacity2 and gated genuine C82 race.",
+      "avoids": "No repeat ninth-client or eight-synthetic baseline."
+    }
+  ],
+  "controls": [
+    {
+      "root": "local/research/codex/m7c-character-producer-native-r2",
+      "result": "Marid hover → actual92/body5aa56d; layout candidate initially, ID4 not enabled."
+    },
+    {
+      "root": "local/research/codex/m7c-character-producer-native-r3",
+      "result": "Already checked Dao icon click emits no92; bounded current-picker no-op only."
+    },
+    {
+      "root": "local/research/codex/m7c-character-producer-native-r4",
+      "result": "Dizni hover → actual92/body5aa568, independent from Marid."
+    },
+    {
+      "root": "local/research/codex/m7c-team-producer-native-r1",
+      "result": "Actual UI A produces97/body5a =0."
+    },
+    {
+      "root": "local/research/codex/m7c-selection-native-r1",
+      "result": "Partial: incorrect team0/1 parser rejected actualB97/body59 =3. Raw/seal unchanged; fixed before nativeR2."
+    }
+  ],
+  "cleanup_limit": "Full-room run B has terminal debugger transport/GDB internal error after declared completion. Verifier joins preceding native91 end timestamp and actual B FIN after completion; all raw retained. No pristine debugger teardown claim.",
+  "source_versions": "Room-choice/Ready matrix measured on59f744c; full rejection/vacancy and chosen-character1 native measured on188634b. Different binaries/runs remain explicit; source delta adds default-preserving admission bound/full result, no change to character/team projection.",
+  "limits": [
+    "Room-only choices for IDs0/1 and picker teams0/3; no arbitrary-character entitlement, equipment, shop or general profile.",
+    "Choices cannot yet be used with battle profile. M7e must generate selected-character Start/stat and roster; no implicit fixed-slot fallback.",
+    "M7d ownership/failure integration, M5b arbitrary account/nativeDBfault, M6 persistence, relay and ops remain per owner order.",
+    "Wine/virtual LAN, no new Internet/ISP/CGNAT/relay/load acceptance."
+  ]
+}

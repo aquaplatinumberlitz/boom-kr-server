@@ -3,6 +3,41 @@ use super::{decode_bytes, encode_bytes, put, uint};
 use crate::{Width, read_uint};
 use std::io;
 
+/// Actual KR room UI producers:92/u8+u16 and97/u8. One local player
+/// only; this does not establish multi-local-player or entitlement support.
+pub fn character92(body: &[u8]) -> io::Result<u16> {
+    if body.len() != 3 || uint(&body[..1], Width::U8)? != 0 {
+        return Err(io::Error::other("unsupported character92 envelope"));
+    }
+    Ok(uint(&body[1..], Width::U16)? as u16)
+}
+
+pub fn team97(body: &[u8]) -> io::Result<u8> {
+    if body.len() != 1 {
+        return Err(io::Error::other("unsupported team97 envelope"));
+    }
+    let team = uint(body, Width::U8)? as u8;
+    if !matches!(team, 0 | 3) {
+        return Err(io::Error::other("unsupported team97/local player"));
+    }
+    Ok(team)
+}
+
+/// Native DC6700 reads character from bits16..28 of the slot state.
+/// Preserve every other bit; choice entitlement belongs to the service.
+pub fn player106_character(body: &[u8], character: u16) -> io::Result<Vec<u8>> {
+    if ![200, 204].contains(&body.len()) || character > 0x1fff {
+        return Err(io::Error::other("unsupported player character projection"));
+    }
+    let mut out = body.to_vec();
+    let prior = uint(&body[12..16], Width::U32)?;
+    out[12..16].copy_from_slice(&put(
+        (prior & !0x1fff0000) | (u64::from(character) << 16),
+        Width::U32,
+    )?);
+    Ok(out)
+}
+
 pub fn player106(
     template: &[u8],
     identity: u32,
@@ -26,7 +61,7 @@ pub fn player106_state(
     ready: bool,
     chief: bool,
 ) -> io::Result<Vec<u8>> {
-    if ![200, 204].contains(&template.len()) || slot >= 26 || team > 1 {
+    if ![200, 204].contains(&template.len()) || slot >= 26 || !matches!(team, 0 | 1 | 3) {
         return Err(io::Error::other("unsupported player106 slot/team"));
     }
     let mut body = template.to_vec();

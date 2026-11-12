@@ -30,6 +30,7 @@ pub struct Member {
     pub key: Membership,
     pub slot: u8,
     pub team: u8,
+    pub character: Option<u16>,
     pub ready: bool,
     pub setup: bool,
     late_after_abort: u16,
@@ -124,6 +125,20 @@ impl Room {
     }
     pub(crate) fn capacity(&self) -> usize {
         self.capacity
+    }
+    pub(crate) fn set_admission_capacity(&mut self, capacity: usize) -> io::Result<()> {
+        if !(2..=self.capacity).contains(&capacity)
+            || !self.members.is_empty()
+            || self.phase != Phase::Idle
+        {
+            return Err(io::Error::other(
+                "capacity requires pristine room within prototype bound",
+            ));
+        }
+        self.capacity = capacity;
+        self.fixed_teams.truncate(capacity);
+        self.bomb_capacity.truncate(capacity);
+        Ok(())
     }
 
     pub(crate) fn round_size(&self) -> usize {
@@ -254,6 +269,7 @@ impl Room {
                 key,
                 slot,
                 team: self.fixed_teams[usize::from(slot)],
+                character: None,
                 ready: false,
                 setup: false,
                 late_after_abort: 0,
@@ -297,6 +313,36 @@ impl Room {
             return Err(io::Error::other("missing setup or duplicate Ready"));
         }
         m.ready = true;
+        Ok(())
+    }
+    /// Design: any choice invalidates readiness of all guests. Never let a
+    /// stale/loading/non-setup membership mutate another player's selection.
+    pub(crate) fn choose(
+        &mut self,
+        key: Membership,
+        character: Option<u16>,
+        team: Option<u8>,
+    ) -> io::Result<()> {
+        if !self.current(key)
+            || self.phase != Phase::Idle
+            || !self.members[&key.identity].setup
+            || self.sealed_abort
+            || character.is_some_and(|value| !matches!(value, 0 | 1))
+            || team.is_some_and(|value| !matches!(value, 0 | 3))
+            || character.is_some() == team.is_some()
+        {
+            return Err(io::Error::other("unsupported or stale room choice"));
+        }
+        let member = self.members.get_mut(&key.identity).expect("current member");
+        if let Some(value) = character {
+            member.character = Some(value);
+        }
+        if let Some(value) = team {
+            member.team = value;
+        }
+        for member in self.members.values_mut() {
+            member.ready = false;
+        }
         Ok(())
     }
     pub fn leave(&mut self, key: Membership) -> io::Result<Vec<Member>> {
@@ -689,6 +735,42 @@ mod tests {
         r.setup(b).unwrap();
         r.ready(b).unwrap();
         (r, a, b)
+    }
+
+    #[test]
+    fn choices_follow_current_membership_clear_ready_and_reject_unknown_or_active_input() {
+        let (mut room, host, guest) = prepared();
+        assert!(room.members[&guest.identity].ready);
+        room.choose(host, Some(1), None).unwrap();
+        assert_eq!(room.members[&host.identity].character, Some(1));
+        assert!(!room.members[&guest.identity].ready);
+        room.choose(guest, None, Some(0)).unwrap();
+        assert_eq!(room.members[&guest.identity].team, 0);
+        let before = room.members[&guest.identity].clone();
+        for (character, team) in [
+            (Some(4), None),
+            (None, Some(2)),
+            (None, None),
+            (Some(0), Some(0)),
+        ] {
+            assert!(room.choose(guest, character, team).is_err());
+            assert_eq!(room.members[&guest.identity].character, before.character);
+            assert_eq!(room.members[&guest.identity].team, before.team);
+        }
+        room.leave(guest).unwrap();
+        let fresh = room
+            .enter(guest.identity, guest.connection + 1, false)
+            .unwrap();
+        assert!(room.choose(guest, Some(0), None).is_err());
+        assert!(room.choose(fresh, Some(0), None).is_err());
+        room.setup(fresh).unwrap();
+        room.choose(fresh, Some(0), None).unwrap();
+        room.ready(fresh).unwrap();
+        let round = room.begin(host).unwrap();
+        assert!(room.choose(fresh, None, Some(1)).is_err());
+        room.ack(host, round).unwrap();
+        room.ack(fresh, round).unwrap();
+        assert!(room.choose(host, Some(0), None).is_err());
     }
     #[test]
     fn four_members_require_all_ready_and_current_ack_and_keep_two_path_separate() {

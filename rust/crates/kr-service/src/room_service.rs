@@ -21,6 +21,10 @@ pub struct Config {
     pub max_rooms: usize,
     #[serde(default)]
     pub round_profile: Option<room_io::ManagedRoundConfig>,
+    #[serde(default)]
+    pub player_choices: bool,
+    #[serde(default)]
+    pub capacity: Option<usize>,
 }
 struct Owner {
     connection: u64,
@@ -39,6 +43,8 @@ pub(crate) struct Hub {
     relay: Option<room_relay::Factory>,
     epochs: Arc<crate::round_epochs::RoundEpochs>,
     round_profile: Option<Arc<room_io::ManagedRound>>,
+    player_choices: bool,
+    capacity: Option<usize>,
 }
 pub(crate) struct Channel {
     hub: Arc<Hub>,
@@ -49,6 +55,10 @@ pub(crate) struct Channel {
 pub(crate) struct Catalog {
     pub tuples: BTreeSet<(u16, u32)>,
     pub packets: Vec<(u32, Vec<u8>)>,
+}
+pub(crate) enum Selection {
+    Joined(room_io::Session),
+    Full,
 }
 fn err(s: &str) -> io::Error {
     io::Error::other(s.to_owned())
@@ -62,6 +72,18 @@ impl Hub {
         if !(2..=64).contains(&cfg.max_rooms) {
             return Err(err("managed room bound must be 2..64"));
         }
+        if cfg.player_choices && cfg.round_profile.is_some() {
+            return Err(err(
+                "room choices require selection-only profile until Start/stat acceptance",
+            ));
+        }
+        room_io::validate_admission_capacity(
+            &prototype,
+            cfg.capacity,
+            cfg.round_profile
+                .as_ref()
+                .map(|profile| profile.teams.len()),
+        )?;
         let round_profile = cfg
             .round_profile
             .as_ref()
@@ -80,6 +102,8 @@ impl Hub {
             relay,
             epochs: Arc::new(crate::round_epochs::RoundEpochs::default()),
             round_profile,
+            player_choices: cfg.player_choices,
+            capacity: cfg.capacity,
         }))
     }
     pub(crate) fn register(
@@ -125,7 +149,7 @@ impl Channel {
         body: &[u8],
         peer: Ipv4Addr,
         authority: RelayAuthority,
-    ) -> io::Result<room_io::Session> {
+    ) -> io::Result<Selection> {
         let mut s = self
             .hub
             .state
@@ -153,6 +177,8 @@ impl Channel {
                         key,
                         self.hub.epochs.clone(),
                         self.hub.round_profile.clone(),
+                        self.hub.player_choices,
+                        self.hub.capacity,
                     )?;
                     if let Some(factory) = &self.hub.relay {
                         room_io::install_relay(&shared, factory.owner(key))?;
@@ -165,6 +191,11 @@ impl Channel {
         } else {
             return Err(err("invalid selection opcode"));
         };
+        // Hub -> room lock order serializes this check with every selection.
+        // No channel, membership, visit, tuple or round is allocated on failure.
+        if !create && room_io::full_idle(s.rooms.get(key)?)? {
+            return Ok(Selection::Full);
+        }
         let attempt = (|| {
             let session = room_io::Session::open_with_authority(
                 s.rooms.get(key)?,
@@ -183,7 +214,7 @@ impl Channel {
                     .expect("current owner")
                     .selected = Some(key);
                 self.hub.changed();
-                Ok(session)
+                Ok(Selection::Joined(session))
             }
             Err(error) => {
                 if create {

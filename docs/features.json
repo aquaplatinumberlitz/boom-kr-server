@@ -899,7 +899,8 @@
           "docs/evidence/rust-service/m7a-room-selection.json",
           "docs/evidence/rust-service/m7b-room-population.json",
           "docs/evidence/rust-service/m7b-duel-lifecycle.json",
-          "docs/evidence/rust-service/m7b-team-rosters.json"
+          "docs/evidence/rust-service/m7b-team-rosters.json",
+          "docs/evidence/rust-service/m7c-room-choices.json"
         ]
       },
       "coverage": {
@@ -962,7 +963,8 @@
               "docs/evidence/rust-service/m7a-room-selection.json",
               "docs/evidence/rust-service/m7b-room-population.json",
               "docs/evidence/rust-service/m7b-duel-lifecycle.json",
-              "docs/evidence/rust-service/m7b-team-rosters.json"
+              "docs/evidence/rust-service/m7b-team-rosters.json",
+              "docs/evidence/rust-service/m7c-room-choices.json"
             ]
           },
           "windows_original": {
@@ -1001,7 +1003,8 @@
             "docs/protocol/room-membership.md#rust-managed-room-selection",
             "docs/protocol/room-membership.md#rust-room-population",
             "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
-            "docs/protocol/room-membership.md#rust-managed-team-rosters"
+            "docs/protocol/room-membership.md#rust-managed-team-rosters",
+            "docs/protocol/room-membership.md#rust-managed-player-choices"
           ],
           "delivery": "via_pr"
         },
@@ -1015,7 +1018,8 @@
             "docs/protocol/room-membership.md#rust-managed-room-selection",
             "docs/protocol/room-membership.md#rust-room-population",
             "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
-            "docs/protocol/room-membership.md#rust-managed-team-rosters"
+            "docs/protocol/room-membership.md#rust-managed-team-rosters",
+            "docs/protocol/room-membership.md#rust-managed-player-choices"
           ]
         },
         "gate": {
@@ -1093,7 +1097,9 @@
           "docs/protocol/room-membership.md#rust-managed-room-selection",
           "docs/evidence/rust-service/m7a-room-selection.json",
           "docs/evidence/rust-service/m7b-duel-lifecycle.json",
-          "docs/evidence/rust-service/m7b-team-rosters.json"
+          "docs/evidence/rust-service/m7b-team-rosters.json",
+          "docs/evidence/rust-service/m7c-choice-producer.json",
+          "docs/evidence/rust-service/m7c-room-choices.json"
         ]
       },
       "coverage": {
@@ -1154,7 +1160,9 @@
               "docs/evidence/rust-service/README.md#cp250",
               "docs/evidence/rust-service/m7a-room-selection.json",
               "docs/evidence/rust-service/m7b-duel-lifecycle.json",
-              "docs/evidence/rust-service/m7b-team-rosters.json"
+              "docs/evidence/rust-service/m7b-team-rosters.json",
+              "docs/evidence/rust-service/m7c-choice-producer.json",
+              "docs/evidence/rust-service/m7c-room-choices.json"
             ]
           },
           "windows_original": {
@@ -1196,7 +1204,8 @@
             "docs/evidence/rust-service/README.md#cp250",
             "docs/protocol/room-membership.md#rust-managed-room-selection",
             "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
-            "docs/protocol/room-membership.md#rust-managed-team-rosters"
+            "docs/protocol/room-membership.md#rust-managed-team-rosters",
+            "docs/protocol/room-membership.md#rust-managed-player-choices"
           ],
           "delivery": "via_pr"
         },
@@ -1214,7 +1223,8 @@
             "docs/evidence/rust-service/README.md#cp250",
             "docs/protocol/room-membership.md#rust-managed-room-selection",
             "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
-            "docs/protocol/room-membership.md#rust-managed-team-rosters"
+            "docs/protocol/room-membership.md#rust-managed-team-rosters",
+            "docs/protocol/room-membership.md#rust-managed-player-choices"
           ]
         },
         "gate": {

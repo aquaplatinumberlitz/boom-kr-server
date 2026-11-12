@@ -94,6 +94,9 @@ pub struct RoomRules {
     pub(crate) bomb: BombPolicy,
     pub(crate) life: LifePolicy,
     pub(crate) teams: TeamPolicy,
+    /// Staged room-only choices. Battle with chosen characters needs its own
+    /// measured Start/stat projection before this policy can serve a round.
+    pub(crate) player_choices: bool,
     /// Opt-in ninth diagnostic lobby actor for the full-room negative consumer.
     pub(crate) ninth_admission_probe: bool,
 }
@@ -170,6 +173,7 @@ impl RoomRules {
                     TeamPolicy::Any
                 },
                 ninth_admission_probe: cfg.ninth_admission_probe,
+                player_choices: false,
             },
             count,
         ))

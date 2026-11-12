@@ -137,6 +137,7 @@ pub(crate) fn load_managed_round(
             slot_allocation: rules::SlotAllocation::FirstVacant,
             endpoint: rules::EndpointPolicy::LegacyDirect,
             ninth_admission_probe: false,
+            player_choices: false,
         };
         (
             wire::start121_roster(source.body(Template::Start121), &cfg.teams)?,
@@ -531,6 +532,8 @@ pub(crate) fn fork(
     key: crate::room_registry::RoomKey,
     epochs: Arc<crate::round_epochs::RoundEpochs>,
     managed_round: Option<Arc<ManagedRound>>,
+    player_choices: bool,
+    capacity: Option<usize>,
 ) -> io::Result<Shared> {
     let source = prototype
         .lock()
@@ -540,6 +543,9 @@ pub(crate) fn fork(
     }
     let mut model = source.model.clone();
     model.set_allocation(rules::SlotAllocation::FirstVacant)?;
+    if let Some(capacity) = capacity {
+        model.set_admission_capacity(capacity)?;
+    }
     model.set_round_epochs(epochs)?;
     let mut rules = source.rules;
     rules.slot_allocation = rules::SlotAllocation::FirstVacant;
@@ -547,6 +553,7 @@ pub(crate) fn fork(
         rules = profile.rules;
         model.round_roster = rules.roster;
     }
+    rules.player_choices = player_choices;
 
     Ok(Arc::new(Mutex::new(Runtime {
         public_key: Some(key),
@@ -569,6 +576,27 @@ pub(crate) fn fork(
         rules,
         abort: None,
     })))
+}
+pub(crate) fn validate_admission_capacity(
+    prototype: &Shared,
+    capacity: Option<usize>,
+    round_size: Option<usize>,
+) -> io::Result<()> {
+    let source = prototype.lock().map_err(|_| err("room unavailable"))?;
+    let capacity = capacity.unwrap_or(source.model.capacity());
+    if !(2..=source.model.capacity()).contains(&capacity)
+        || round_size.is_some_and(|count| count > capacity)
+    {
+        return Err(err(
+            "managed admission capacity outside measured prototype/round bounds",
+        ));
+    }
+    Ok(())
+}
+pub(crate) fn full_idle(shared: &Shared) -> io::Result<bool> {
+    let runtime = shared.lock().map_err(|_| err("room unavailable"))?;
+    Ok(runtime.model.phase == Phase::Idle
+        && runtime.model.members.len() >= runtime.model.capacity())
 }
 pub(crate) fn detach(shared: &Shared, identity: u32, connection: u64) -> io::Result<()> {
     shared
@@ -1161,6 +1189,8 @@ impl Session {
                 | 585
                 | 86
                 | 95
+                | 92
+                | 97
                 | 104
                 | 99
                 | 528
@@ -1334,6 +1364,7 @@ impl Session {
         if r.public_key.is_some()
             && r.managed_round.is_none()
             && !matches!(opcode, 81 | 82 | 585 | 86 | 528 | 96 | 266)
+            && !(r.rules.player_choices && matches!(opcode, 92 | 95 | 97))
         {
             return Err(err("managed room selection does not yet serve gameplay"));
         }
@@ -1580,6 +1611,36 @@ impl Session {
                     ),
                 ));
                 remove_requested = Some(m.key);
+            }
+            92 | 97 => {
+                if !r.rules.player_choices {
+                    return Err(err("player choices disabled"));
+                }
+                let member = r.member(self.identity, self.connection)?;
+                let (character, team) = if opcode == 92 {
+                    (Some(wire::character92(body)?), None)
+                } else {
+                    (None, Some(wire::team97(body)?))
+                };
+                next.choose(member.key, character, team)?;
+                // Reserve all recipient queues before publishing any choice or
+                // Ready clear. Each batch carries the current subject fence.
+                for peer in next.members.values().filter(|peer| peer.setup) {
+                    let slots = next
+                        .members
+                        .values()
+                        .filter(|subject| subject.setup)
+                        .map(|subject| {
+                            Ok((
+                                format!("choice110-{}", subject.slot),
+                                r.slot(subject, next.host)?,
+                            ))
+                        })
+                        .collect::<io::Result<Vec<_>>>()?;
+                    let mut batch = Runtime::member_batch(peer.key, None, 0, slots);
+                    batch.subject = Some(member.key);
+                    effects.push((peer.key.identity, batch));
+                }
             }
             95 => {
                 let m = r.member(self.identity, self.connection)?;
@@ -2979,6 +3040,7 @@ mod ninth_probe_tests {
                 teams: TeamPolicy::BalancedManner,
                 roster: rules::RoundRoster::Full,
                 ninth_admission_probe: true,
+                player_choices: false,
                 slot_allocation: rules::SlotAllocation::LegacyIdentity,
                 endpoint: rules::EndpointPolicy::LegacyDirect,
             },
@@ -3381,14 +3443,14 @@ mod registry_foundation_tests {
             generation: 2,
         };
         let epochs = Arc::new(crate::round_epochs::RoundEpochs::default());
-        let a = fork(&prototype, a_key, epochs.clone(), None).unwrap();
-        let b = fork(&prototype, b_key, epochs.clone(), None).unwrap();
+        let a = fork(&prototype, a_key, epochs.clone(), None, false, None).unwrap();
+        let b = fork(&prototype, b_key, epochs.clone(), None, false, None).unwrap();
         let mut old = Session::open(&a, 3, 33).unwrap();
         old.packet(528, &[]).unwrap();
         let batch = old.inbox.try_recv().unwrap();
         assert!(old.valid(&batch));
         assert!(!removable(&a));
-        assert!(fork(&a, b_key, epochs, None).is_err());
+        assert!(fork(&a, b_key, epochs, None, false, None).is_err());
         let new = Session::open(&b, 3, 33).unwrap();
         assert!(!new.valid(&batch));
         assert!(new.packet(104, &[0; 20]).is_err());
