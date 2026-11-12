@@ -1,0 +1,249 @@
+{
+  "id": "CP275",
+  "previous": "CP274",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T02:45:44.150460+00:00",
+  "context_commit": "c83a2a0020fa61eaedb089728c63a02afd3ef745",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / KR-R003: test selected-map ordinal1104 for Village10 without changing core logic; identify the first map-specific data dependency and stop within the owner two-attempt budget.",
+  "scope": "Bounded selector/name experiment only. First candidate changed selected-code fields117/121/196 but retained all dynamic metadata and old terrain; failed before clients. Final attempt disables old terrain only and directly measures lookup/name rejection. No map loaded or playable G1 claim.",
+  "artifacts": [
+    {
+      "name": "kr-service-native-map-probe",
+      "sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf"
+    }
+  ],
+  "locators": [
+    "docs/protocol/load-phase.md#village10-map-selection",
+    "docs/RESEARCH.md#gap-village10-map",
+    "docs/evidence/rust-service/village10-map-probe.json",
+    "KR Start121 source-backed DC8441/DC8470/DC8496; EDC7D0 lookup",
+    "Village10 map ordinal1104, pack entry SHA62bb7b367159ca5724cccd57616d2e48cf678d5a5f45668a554a2d3ece2abfeb"
+  ],
+  "findings": [
+    {
+      "summary": "On both actual KR diagnostic clients, selected code1104 resolves to Village10. Retained Start name ExVillage01 compares nonzero and reaches reject branch before loading; captured117/121 frames and native locals joined.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/load-phase.md#village10-map-selection",
+      "evidence": [
+        "MAP275-00786",
+        "MAP275-00773",
+        "MAP275-00380"
+      ],
+      "limits": "Only selected map codes changed, dynamic238/241 and names/floor/spawn retained, old terrain disabled in follow-up. No99/clock/spawn/gameplay. Does not establish a fully consistent new map profile or universal ID mapping."
+    },
+    {
+      "summary": "First code-only candidate was rejected by existing Rust terrain fixture pins before clients; second/last attempt removes mismatched old terrain only after private startup and export controls. No production source or guard change.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/load-phase.md#village10-map-selection",
+      "evidence": [
+        "MAP275-00373",
+        "MAP275-00364",
+        "MAP275-00365",
+        "MAP275-00785",
+        "MAP275-00781",
+        "MAP275-00391"
+      ],
+      "limits": "First attempt raw9/exit1 and roles empty; it is not native client evidence. Second raw37/exit0 is only bounded native selector proof. No source/config/input changed during either attempt."
+    },
+    {
+      "summary": "Village receives bounded B prerequisite classification: consistent map metadata through known packet fields is necessary. Generated server-work column links contract scope; gameplay and whole-family sufficiency remain unknown.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/protocol/load-phase.md#village10-map-selection",
+      "evidence": [
+        "MAP275-00002",
+        "MAP275-00823",
+        "MAP275-00010",
+        "MAP275-00007",
+        "MAP275-00009"
+      ],
+      "limits": "B only at the measured name gate. No geometry/spawn/items/battle/result/reset or six-map G1 closure; no new packet/rule requirement observed at selector, downstream unknown."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Actual A/B lookup1104, native name mismatch and rejection joined to captured TCP frames",
+      "result": "pass",
+      "evidence": [
+        "MAP275-00786",
+        "MAP275-00773"
+      ],
+      "limits": "Negative selection outcome; not successful map loading. Native run count1 inside two attempts, first before clients."
+    },
+    {
+      "check": "First pre-client failure/raw freeze/cleanup and second startup/export controls",
+      "result": "pass",
+      "evidence": [
+        "MAP275-00373",
+        "MAP275-00773",
+        "MAP275-00781",
+        "MAP275-00391"
+      ],
+      "limits": "Truthful failure retention and scoped second attempt; no broad guard relaxation or inferred gameplay."
+    },
+    {
+      "check": "90 Python tests, docs/fragments/budgets, generated census/coverage and unchanged static census",
+      "result": "pass",
+      "evidence": [
+        "MAP275-00815",
+        "MAP275-00806",
+        "MAP275-00803",
+        "MAP275-00008"
+      ],
+      "limits": "Static metadata and generated navigation only; production Rust/server unchanged and prior source checks reused."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP275-village10-selector.json",
+      "bytes": 219386,
+      "sha256": "c3da392b9a5922e4d823a4675d00acc37356c5ab72cdec66d596efbafaca190a",
+      "count": 823
+    }
+  ],
+  "delta": {
+    "added": [
+      "Bounded native Village10 selected-code/name evidence, first terrain guard failure and scope-limited B navigation."
+    ],
+    "corrected": [
+      "Initial preparation treated238 as raw; actual baseline compressed. No native launch from preparation failures. First actual candidate blocked by valid terrain pins, not a broken client/map."
+    ],
+    "superseded": [
+      "Current pending ID-probe status only. No historical contract/gate/complete-record/raw rewrite."
+    ]
+  },
+  "blockers": [
+    "No Village10 geometry, spawn, floor, item, collision, battle or result/reset was observed. B is only a necessary metadata prerequisite, not a complete family classification or data-only sufficiency proof.",
+    "Known map-code/name fields and dynamic metadata must be consistent; old-map terrain fixture pins and fixed compressed fixture sizes constrain the current data adapter. No guard was relaxed.",
+    "Map experiment stops after two attempts: first before any client launched, second the sole actual client pair. No ID guessing or extra ID-only rerun.",
+    "M7 acceptance must be rewritten for phase1 before implementation; then G1 data adapters/new inputs and M6, then M8. Full M5 and relay beyond fixed2 remain open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Deliver bounded map-probe PR after exact-head checks/CI. Then rewrite M7 phase1 acceptance and implement general rooms; no extra ID-only map runs.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "R1 achieved and selector probe ended. Narrow M7 acceptance for phase1 before implementation; integrate create/list/join/leave/occupancy/ownership without capacity flags. G1 map adapters and M6 follow PLAN.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Automatic resume remains blocked under prior scope. Reopen only with a new observable input or milestone dependency; fresh-process acceptance does not imply account resume.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Earlier receiver-selection question stays distinct; no broad getter/watch/RTTI patch without a new edge.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T02:45:44.150460+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo bounded runtime/source/fixture/limits audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner explicitly requested solo, no workers/review."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Map selector result, bounded B prerequisite, generated navigation, open gaps and next work synchronized; no gameplay or gate promotion."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Map selector result, bounded B prerequisite, generated navigation, open gaps and next work synchronized; no gameplay or gate promotion."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Map selector result, bounded B prerequisite, generated navigation, open gaps and next work synchronized; no gameplay or gate promotion."
+    },
+    {
+      "path": "docs/protocol/load-phase.md",
+      "state": "updated",
+      "reason": "Map selector result, bounded B prerequisite, generated navigation, open gaps and next work synchronized; no gameplay or gate promotion."
+    },
+    {
+      "path": "docs/CONTENT.md",
+      "state": "updated",
+      "reason": "Map selector result, bounded B prerequisite, generated navigation, open gaps and next work synchronized; no gameplay or gate promotion."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Map selector result, bounded B prerequisite, generated navigation, open gaps and next work synchronized; no gameplay or gate promotion."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Map selector result, bounded B prerequisite, generated navigation, open gaps and next work synchronized; no gameplay or gate promotion."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Map selector result, bounded B prerequisite, generated navigation, open gaps and next work synchronized; no gameplay or gate promotion."
+    },
+    {
+      "path": "docs/evidence/rust-service/village10-map-probe.json",
+      "state": "updated",
+      "reason": "Map selector result, bounded B prerequisite, generated navigation, open gaps and next work synchronized; no gameplay or gate promotion."
+    },
+    {
+      "path": "tools/content_census.py",
+      "state": "updated",
+      "reason": "Map selector result, bounded B prerequisite, generated navigation, open gaps and next work synchronized; no gameplay or gate promotion."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Topic index already links load-phase; new direct topic anchor needs no historical compatibility stub."
+    },
+    {
+      "path": "docs/content/census.json",
+      "state": "unchanged",
+      "reason": "Regenerated static pack census remains byte-identical; runtime classification is a linked generated annotation."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "unchanged",
+      "reason": "No architecture/module/service boundary changed; opaque packet/data adapter limits already documented."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Latest plain-language/dashboard/audit rules applied; no rule changes."
+    }
+  ],
+  "completed_feature_groups": [
+    "bounded-village10-selection-probe"
+  ]
+}

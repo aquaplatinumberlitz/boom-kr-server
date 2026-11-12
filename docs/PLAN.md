@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP274 / AUD090**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP275 / AUD091**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -23,28 +23,30 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; relay opt-in đạt prototype hai người, còn mở rộng và vận hành |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; relay ngoài prototype hai người và vận hành còn riêng |
 | M7 phòng tổng quát | Chưa bắt đầu; dependency R1 đã đạt | Sửa acceptance giai đoạn 1 rồi triển khai theo thứ tự |
-| [G1](#rust-g1) sáu map ladder và item | Chưa bắt đầu; có [kiểm kê](CONTENT.md) | Phép thử đổi map, rồi từng map và nhóm item |
+| [G1](#rust-g1) sáu map ladder và item | Đã đo điều kiện chọn Village10; chưa triển khai gameplay mới | Metadata map phải đồng bộ; spawn, terrain, floor và item chưa đo trên Village10 |
 | M6 lưu kết quả, thưởng 0 | Chưa bắt đầu; dependency R1 đã đạt | Sửa acceptance giai đoạn 1; thực hiện song song G1 |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
 
-1. Bàn giao hồi quy cuối R1 qua PR và kiểm đúng HEAD. N1R prototype hai người đã merge; không chạy lại N1b.
-2. Phép thử đổi map sang Village10 (`local/research/claude/codex-prompt-map-probe.md`), tối đa hai lượt.
-3. M7 phòng tổng quát. Trước khi mở, sửa acceptance theo phạm vi giai đoạn 1. Trong M7, đường relay không được
+1. Bàn giao kết quả phép thử Village10 qua PR và kiểm đúng HEAD. Phép thử ID đã kết thúc; không chạy lại để đổi tên rồi mở rộng scope.
+2. M7 phòng tổng quát. Trước khi mở, sửa acceptance theo phạm vi giai đoạn 1. Trong M7, đường relay không được
    gắn với số người trong phòng; chưa cần nghiệm thu relay nhiều người ở bước này.
-4. **N1R-b relay cho phòng nhiều người**, sau M7 và trước G1: phòng bốn và phòng tám người chơi qua relay trên
+3. **N1R-b relay cho phòng nhiều người**, sau M7 và trước G1: phòng bốn và phòng tám người chơi qua relay trên
    client thật, mỗi cỡ một lượt; dùng lại cổng và key khi hết pool và sau restart; chặn giả mạo gói đầu giữa hai
    người chung IP. Làm sau M7 để không phải nghiệm thu hai lần trên hai kiểu phòng. Đây là điều kiện của đích
    giai đoạn 1, không phải việc tuỳ chọn.
-5. G1 song song M6. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1.
-6. M8, gồm kiểm tải 50 người và 8 phòng có relay.
+4. G1 song song M6. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1; G1 cần adapter dữ liệu map nhất quán
+   trước native gameplay mới. Không chạy lại baseline N1b.
+5. M8, gồm kiểm tải 50 người và 8 phòng có relay.
 
 **Blocker và việc tồn:**
 
 - Direct UDP âm ở hai NAT đổi cổng trong recipe đã đo; N1b không retry. Relay opt-in đã đạt prototype hai người.
   Cổng không tái dùng trong instance nên có giới hạn số vòng; spoof giữa người chung IP, restart và tải đích còn mở.
 - R1e serving vẫn fixed-room cũ; cấu hình/tạo/chọn nhiều phòng tổng quát và occupancy thuộc M7, không suy đã có từ container/unit.
+- Village10 được lookup đúng nhưng tên trong Start còn thuộc ExVillage01 nên client từ chối trước loading.
+  Terrain cũ cũng khóa với fixture map cũ; cần dữ liệu nhất quán, không nới guard hoặc coi đổi ID đã đủ chơi.
 - `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
   Fixture mà server cần để chạy không được phụ thuộc `local/` khi bàn giao: đóng gói kèm manifest hash ở M8.
 
@@ -522,8 +524,9 @@ Cách vào mỗi đợt, giống nhau cho mọi đợt:
    nhánh theo từng map hay từng item vào lõi phòng.
 4. **Nghiệm thu theo nhóm bằng client thật**, mỗi nhóm một checkpoint; tính năng chưa hỗ trợ phải tắt rõ ràng, không ACK giả.
 
-Phép thử đầu tiên của lộ trình này là đổi map sang Village10 (đã có trong Thứ tự việc); kết quả của nó cho biết giả
-thuyết của F1 đúng tới đâu.
+Phép thử Village10 đã xác nhận mã 1104 lookup đúng tên map trong build đang đo, đồng thời bác bỏ việc chỉ đổi mã
+đang chọn là đủ với profile cũ. [Contract và giới hạn](protocol/load-phase.md#village10-map-selection) giữ kết quả;
+chưa có geometry, spawn hoặc gameplay Village10. Kết luận này chỉ định hình adapter dữ liệu, không mở đợt F1.
 
 <a id="issue-order"></a>
 ### Issue hiện hành và backlog theo nguồn chuẩn

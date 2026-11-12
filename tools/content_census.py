@@ -583,6 +583,14 @@ def spans(values):
     return str(values[0]) if len(values) == 1 else f"{values[0]}–{values[-1]}"
 
 
+# Runtime classification is only an evidence navigation hint. The linked
+# contract owns scope; do not promote a selected-map check to gameplay support.
+MAP_SERVER_WORK = {
+    "Village": "B, mới đo điều kiện chọn Village10; chưa load/chơi. "
+               "[Phạm vi](protocol/load-phase.md#village10-map-selection)",
+}
+
+
 def render(census):
     maps, items = census["maps"], census["items"]
     families = collections.defaultdict(list)
@@ -599,7 +607,7 @@ def render(census):
         "",
         "Tài liệu này trả lời câu hỏi **\"full game gồm những gì\"** bằng dữ liệu tĩnh trong pack của client.",
         "Nó không chứng minh client hay server làm gì với từng mục. Cột nhóm nội dung và cột wiki là **suy từ tên**;",
-        "cột \"server phải làm gì\" để trống cho tới khi có ca chạy thử. Thứ tự công việc vẫn chỉ ở",
+        "cột \"server phải làm gì\" chỉ ghi kết quả có nguồn của ca chạy thử. Thứ tự công việc vẫn chỉ ở",
         "[PLAN](PLAN.md#delivery-target).",
         "",
         "## Tóm tắt",
@@ -646,7 +654,7 @@ def render(census):
             continue
         count = sum(len(entries) for _, entries in rows)
         lines += [f"### {title} — {count} map, {len(rows)} họ", "",
-                  "| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki |", "|---|---|---|---|---|---|---|---|"]
+                  "| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki | Server phải làm gì |", "|---|---|---|---|---|---|---|---|---|"]
         for family, entries in rows:
             sizes = sorted({f"{e['width']}×{e['height']}" for e in entries})
             size = sizes[0] if len(sizes) == 1 else f"{sizes[0]} +{len(sizes) - 1} cỡ"
@@ -654,7 +662,7 @@ def render(census):
             drops = {name for e in entries for name, weight in e["drops"] if weight > 0}
             lines.append(f"| {family} | {len(entries)} | {size} | {spans(e['spawns'] for e in entries)} | "
                          f"{sum(1 for e in entries if e['scripted'])} | {len(drops)} | {', '.join(dvals)} | "
-                         f"{entries[0]['wiki']} |")
+                         f"{entries[0]['wiki']} | {MAP_SERVER_WORK.get(family, '')} |")
         lines.append("")
     if census["maps_failed"]:
         lines += ["Map chưa đọc được header: " + ", ".join(row["name"] for row in census["maps_failed"]) + ".", ""]
@@ -792,10 +800,12 @@ def render(census):
         "Mỗi họ map và mỗi nhóm item cần một ca chạy thử trên client thật để xếp vào một trong ba loại:",
         "",
         "- **A — chỉ cần dữ liệu:** server gửi đúng ID và bảng item, client tự lo phần còn lại.",
-        "- **B — dùng packet đã có:** nhặt, tranh item, báo sống/chết như đã đo; kiểm một ca mỗi nhóm.",
+        "- **B — dùng packet đã có:** cần đồng bộ metadata map hoặc dữ liệu/hành vi qua packet đã đo; ghi rõ phần chưa chạy.",
         "- **C — cần packet hoặc trạng thái mới:** phải RE trước khi làm.",
         "",
-        "Chưa họ nào được xếp loại ngoài `ExVillage` (ExVillage01 đã chạy native theo PLAN). Thứ tự thử đề xuất:",
+        "`Village` có phân loại B ở điều kiện chọn Village10: mã lookup đúng nhưng tên và dữ liệu map phải đồng bộ.",
+        "Chưa load/chơi Village10; không suy toàn họ đã được hỗ trợ. `ExVillage01` có native trong phạm vi PLAN.",
+        "Phân loại chỉ là điều hướng tới contract có nguồn; thứ tự thử tiếp do PLAN quyết định:",
         "map đấu thường không script trước, sau đó các item được nhiều map dùng nhất mà chưa đo.",
         "",
     ]

@@ -64,6 +64,35 @@ Trạng thái tại CP019 dừng sau104. Receiver/scene đã được bổ sung 
 bước tiếp hiện hành chỉ giữ ở [RESEARCH](../RESEARCH.md#q-023). Không copy start501 của VN.
 K2/K3/K4 và full identity/auth/user/cache/vanilla/multiplayer vẫn mở.
 
+<a id="village10-map-selection"></a>
+### Village10: mã map và dữ liệu chọn map phải nhất quán
+
+Nguồn **kr_runtime/confirmed** cho lookup và nhánh so tên trên hai bản copy diagnostic KR chạy Wine;
+**design/design** cho guard terrain của Rust. [Evidence](../evidence/rust-service/village10-map-probe.json),
+[phần chưa biết](../RESEARCH.md#gap-village10-map), [thứ tự](../PLAN.md#dashboard).
+
+Thứ tự `Map/*` trong `FxMap` và census khớp ở mục đã đọc: Village10 ở vị trí 1104. Với mã đang chọn 1104,
+lookup native `EDC7D0` trong Start121 trả chuỗi **Village10** ở cả hai client. Đây là điểm đối chiếu theo build,
+không chứng minh toàn bộ ID map, mode hoặc biến thể đều dùng cùng cách đánh số.
+
+Lượt native giữ tên **ExVillage01** trong Start121 và metadata động 238/241 của profile cũ; chỉ mã chọn ở
+117/121/196 đổi. Client so tên tại `DC8470`, trả khác 0 rồi đi nhánh từ chối `DC8496` trước loading.
+Do đó mã và tên trong Start phải đồng bộ với bản ghi client. Chưa đo profile Village10 đã đồng bộ đầy đủ;
+không suy rằng sửa riêng tên là đủ. Không gửi 99, không tới clock/spawn và không có trận Village10 trong lượt này.
+
+Guard Rust còn khóa terrain vào hash fixture map/start cũ. Candidate chỉ đổi mã bị từ chối trước khi mở client;
+lượt đo selector sau đó **tắt terrain cũ**, không đổi guard hoặc gán lại terrain ExVillage01 cho Village10.
+Table238 đang nén và validator giữ kích thước fixture cố định; chuyển metadata cần adapter đúng representation,
+checksum và tên theo dữ liệu map. Đây là giới hạn implementation hiện hành, không phải luật server gốc.
+
+Phân loại **B ở điều kiện chọn Village10**: cần thêm dữ liệu map nhất quán qua các packet đã biết; loại A “đổi mã
+là đủ” không đúng với profile đã thử. Không nhận B là chứng nhận toàn họ Village chơi được hoặc mọi phần còn lại
+chỉ là dữ liệu. Geometry, spawn, danh sách ô, floor, item ẩn, collision, trận/kết quả/reset Village10 chưa đo.
+Không có bằng chứng buộc packet hay luật mới ở nhánh selector đã quan sát; các phần chưa chạy vẫn là unknown.
+
+Phép thử ID đã dùng hết ngân sách và dừng. Chỉ mở native gameplay mới khi milestone G1 có adapter/dữ liệu mới
+và acceptance tương ứng; không lặp ID-only hoặc dò số khác. Không đổi scope K6c/K7, R1, M5 hay relay.
+
 <a id="start-reply"></a>
 ### Phản hồi start và init CGameStage — CP020
 

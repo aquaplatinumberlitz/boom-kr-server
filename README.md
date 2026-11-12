@@ -33,11 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP274: R1 đã đạt hồi quy native cho các profile 2/4/8 người và account trên Wine.**
-[Acceptance và giới hạn](docs/PLAN.md#rust-r1) giữ rõ lỗi harness, raw phục hồi và phạm vi capture tám người.
-Relay opt-in đạt prototype hai người; chưa đủ relay bốn/tám người hoặc vận hành lâu dài. M5 còn hồ sơ tổng quát
-và lỗi hàng đợi DB khi đang native. Hạ tầng thực chỉ lưu local.
-Bước tiếp là phép thử map theo [Bảng điều hành](docs/PLAN.md#dashboard); lịch sử tại [HISTORY](docs/HISTORY.md).
+**CP275: Village10 lookup đúng mã 1104, nhưng profile cũ chưa đủ để load map.**
+[Contract và giới hạn](docs/protocol/load-phase.md#village10-map-selection): cần đồng bộ metadata; chưa có trận Village10.
+R1 đã đạt hồi quy native, relay đạt prototype hai người. M5 tổng quát, relay bốn/tám người và vận hành còn mở.
+Bước tiếp là acceptance M7 theo [Bảng điều hành](docs/PLAN.md#dashboard); lịch sử tại [HISTORY](docs/HISTORY.md).
+Hạ tầng thực và raw chỉ giữ local.
 
 ## Bắt đầu
 

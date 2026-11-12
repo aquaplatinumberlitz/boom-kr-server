@@ -69,6 +69,19 @@ native DB-queue fault và giới hạn recovery. Test khóa SQLite không thay b
 Registry source/queue isolation không chứng nhận serving nhiều phòng M7. N1R cần proof riêng bên dưới;
 M4 Free 1v7 là giới hạn đã biết; M7/G1/M6/M8 và điều kiện bàn giao giữ tại PLAN, không broad RE toàn client.
 
+<a id="gap-village10-map"></a>
+### Village10: còn thiếu profile map nhất quán trước gameplay
+
+[Selector đã đo](protocol/load-phase.md#village10-map-selection): mã 1104 lookup ra Village10 nhưng tên ExVillage01
+còn lại trong Start làm client từ chối trước loading. Phép thử ID đã dừng; không dò số hoặc chạy lại baseline.
+Guard terrain theo fixture cũ và kích thước metadata nén là giới hạn adapter Rust, không là bằng chứng map hỏng.
+
+G1 cần dựng dữ liệu nhất quán cho 238/241/117/121/196 theo map đã chọn; giữ đúng schema, representation và checksum.
+Chưa biết liệu chỉ dữ liệu có đủ đi qua toàn bộ loading, spawn, geometry, floor và item hay không. Phép đo tiếp chỉ
+mở khi có input mới từ adapter G1: kiểm lookup/tên, load đúng asset, tọa độ spawn theo pack, trạng thái ô và floor,
+rồi trận cơ bản/kết quả/reset với item trong scope. Chưa có bằng chứng bắt buộc packet hoặc luật mới ở selector.
+Không nhận phân loại B sơ bộ của Village10 là toàn họ Village hoặc sáu map ladder đã được nghiệm thu.
+
 <a id="gap-relay-endpoint"></a>
 ### Relay endpoint sau N1b — KRE-074/KR-F015
 
@@ -122,7 +135,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-profile-cache"></a>KR-L003 | [CP186](PROTOCOL.md#channel-cold-route) cold3cache/warm có nguồn, K3local đạt. Năm retainedSSI giống clientnguồn; stageCRC0, mọicache/corrupt/reconnect/profile rộng cònunknown. | Reuse [scope/CRC](PROTOCOL.md#dynamic-cache-representation) và [coldroute](PROTOCOL.md#channel-cold-route); chỉ mở cachevariant khác khi K4/integration có trigger. Không lặp3file/CRC hoặc gọi coldroute là toànasset. |
 | <a id="gap-create-join"></a>KR-R001 | [CP229](PROTOCOL.md#room-membership-registry) private nativejoin/move; [CP265](PROTOCOL.md#rust-r1e-registry) Rust registry/listing nền, unit hai room/recipient, profile fixed cũ giữ byte. | M7: operator config/create/join/chuyển phòng tổng quát, occupancy/quota/delete90/restart/password/mode. R1e chưa giao các flow này; không RE lại consumer đã có. |
 | <a id="gap-roster-ready-host"></a>KR-R002 | [CP163](PROTOCOL.md#battle-eight-roster) actual selector1/8synthetic slots:4–4 check0/104,1–7 check7/no104, Ready/parser/map/capacity/getter có nguồn. CP162 actual Free/Manner/ACK/reset đã nối. | Không lặp guard/roster/map/input RE. CP165 actualpreset2cycles/Start3 đãđo; CP166 currentmodepromotion/rejoin đãtới clock; CP167đãhai cycleBhost; CP168BStart3/AUD050đãđo; CP171/172basiccycles/Start3 đã đo; tiếp PLAN theo gap thật; [CP208](PROTOCOL.md#eight-session-preview) có native8consumer trên2actual và adapter32TCP; tám actualclock/mesh56/stat8/ownerbom đã kiểm CP208209; CP210 có report-life/rank/reset/two4v4cycles8; [CP213](PROTOCOL.md#eight-team-variants) actualFree1–7/Manner4–4twooutcomes đã có; native8Manner1–7negative copy4b partialdoemptyJSONstartup; alternatecopy8d đãreturn7/no104/1543checks, emptyguardkhônghit nên khôngcause/fixproof. Còn interactiveC2Steamchange/generalroom-full/admission/Random/generalpromotion/row91 metadata. Theo PLAN; không coi sáu actor tổng hợp là sáu client. |
-| <a id="gap-map-spawn-loading"></a>KR-R003 | [CP153](PROTOCOL.md#loading-hot-gate-contest): B32390 gate riêng khi load/restoreclock/0loadinghits; hai actual99/barrier5,94s/4,60s. CP151R2 historicalcause không bị tự sửa. | Scope loading recipe đã giải; không lặp writer/loader RE hoặc tăng30s. Generalcoldload/membership/timeout variants chỉ mở theo trigger; theo thứ tự hiện hành trong PLAN. |
+| <a id="gap-map-spawn-loading"></a>KR-R003 | Loading/barrier của profile cũ đã đo. [Village10](protocol/load-phase.md#village10-map-selection): mã 1104 lookup đúng, tên profile cũ làm Start từ chối trước loading. | Cần adapter metadata/terrain đúng map trước gameplay G1; [unknown và phép đo](RESEARCH.md#gap-village10-map). Chưa có spawn, geometry, floor, item hoặc trận Village10. Phép thử ID đã dừng, không dò số hoặc tăng timeout. |
 | <a id="gap-room-membership"></a>KR-R004 | [CP230](PROTOCOL.md#room-shared-cleanup): guest86/EOF→A107ID2→0/base6-rewind0-UI1 vàhost86→B107ID1→0/110full6/UIchief; private registry/native2actual/565positive+166failure raw. Hostpostgetter unobservedbudget20, otherroomC exclusion9policycases only. | [PLAN](PLAN.md#current-order): reusable policy/reference and typed integration seam, recipient-specific sendfailure/partialsend/owner-visit fences beforeproduction. Native only if newimplementation/discrepancy; không lặp solved107/110/UI hoặc fullmembership/accountresume claim |
 | <a id="gap-round-clock"></a>KR-F001 | CP155 baepoch actual99/nativeclock/barrier trước30s, B32390restore mỗi clock; same-run freshness/contest/EOF cónguồn. | Không RE lại99/load/clock; tiếp thứ tự hiện hành trong PLAN. Originalclock/timeoutauthority ngoài profile giữunknown. |
 | <a id="gap-peer-movement"></a>KR-F002 | [CP176](PROTOCOL.md#a-c-basic-cycles) current A/C4nativewindows/2keys/target/currentprogress cùng2normalcycles; CP173 giữ AB scope. | FullUDP/auth/reliability/generalphysics/NAT discovery còn unknown; [CP194–195](PROTOCOL.md#udp-netem-cycles) đã đo current AB trên NAT tĩnh/UDP impairment. [CP200](PROTOCOL.md#four-session-native) thêm4actualcurrentmovement12chiều; [CP209](PROTOCOL.md#eight-mesh-owner-bombs) thêm8actual/56remoteprogress, gameplay4 theo PLAN, không lặp consumer/AC peer/solvedcodec/K6b đã đạt. |
