@@ -102,39 +102,50 @@ pub fn zero585_setup(body: &[u8]) -> io::Result<bool> {
 /// Select the independently retained two-row branch from a measured expanded
 /// Start. Identity is absent from these rows; only contiguous slots0/1 qualify.
 pub fn start121_duel(body: &[u8]) -> io::Result<Vec<u8>> {
-    if body.len() < 129 || uint(&body[..1], Width::U8)? != 0 {
-        return Err(io::Error::other("unsupported duel Start envelope"));
+    start121_roster(body, &[0, 1])
+}
+
+/// Select measured contiguous rows without expanding or changing their teams.
+/// Admission decides which profiles have native acceptance; this is wire only.
+pub fn start121_roster(body: &[u8], teams: &[u8]) -> io::Result<Vec<u8>> {
+    if body.len() < 129
+        || uint(&body[..1], Width::U8)? != 0
+        || !matches!(teams.len(), 2 | 4 | 8)
+        || teams.iter().any(|team| *team > 1)
+    {
+        return Err(io::Error::other("unsupported roster Start envelope"));
     }
     let size = uint(&body[1..5], Width::U32)? as usize;
     if size < 106 || size.checked_add(23) != Some(body.len()) {
-        return Err(io::Error::other("unsupported duel Start length"));
+        return Err(io::Error::other("unsupported roster Start length"));
     }
     let stream = decode_bytes(&body[5..5 + size])?;
     if stream[0] != 24
         || stream[5] != 0
         || u32::from_le_bytes(stream[1..5].try_into().expect("bounded header")) as usize != size - 5
     {
-        return Err(io::Error::other("unsupported duel Start stream"));
+        return Err(io::Error::other("unsupported roster Start stream"));
     }
     let count = usize::from(stream[49]);
-    if !matches!(count, 2 | 4 | 8) || size != 54 + count * 26 {
-        return Err(io::Error::other("unsupported duel Start roster"));
+    if !matches!(count, 2 | 4 | 8) || size != 54 + count * 26 || teams.len() > count {
+        return Err(io::Error::other("unsupported roster Start count"));
     }
-    for slot in 0..2 {
+    for (slot, team) in teams.iter().enumerate() {
         let row = &stream[54 + slot * 26..80 + slot * 26];
         if row[0] != slot as u8
             || row[2] != slot as u8
             || u16::from_le_bytes([row[3], row[4]]) != slot as u16
-            || row[5] != slot as u8
+            || row[5] != *team
         {
-            return Err(io::Error::other("unsupported duel Start slot/team"));
+            return Err(io::Error::other("unsupported roster Start slot/team"));
         }
     }
-    let mut out_stream = stream[..106].to_vec();
-    out_stream[1..5].copy_from_slice(&101u32.to_le_bytes());
-    out_stream[49] = 2;
+    let selected_size = 54 + teams.len() * 26;
+    let mut out_stream = stream[..selected_size].to_vec();
+    out_stream[1..5].copy_from_slice(&((selected_size - 5) as u32).to_le_bytes());
+    out_stream[49] = teams.len() as u8;
     let mut out = body[..1].to_vec();
-    out.extend(put(106, Width::U32)?);
+    out.extend(put(selected_size as u64, Width::U32)?);
     out.extend(encode_bytes(&out_stream)?);
     out.extend_from_slice(&body[5 + size..]);
     Ok(out)

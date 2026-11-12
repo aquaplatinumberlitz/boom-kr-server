@@ -6,8 +6,8 @@ use std::{
 };
 
 pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
-    if !matches!(room.capacity(), 4 | 8)
-        || room.members.len() != room.capacity()
+    if !matches!(room.round_size(), 4 | 8)
+        || !room.valid_round_roster()
         || !matches!(room.phase, Phase::Armed { .. })
         || room.bombs.pending()
         || room.members.values().any(|m| m.life.delivery_pending())
@@ -98,6 +98,48 @@ mod tests {
         }
         assert!(rank_body(&[0, 1, 0, 1], 2).is_err());
         assert!(return_body(2).is_err());
+    }
+    #[test]
+    fn result_and_barriers_use_four_current_members_in_an_eight_slot_room() {
+        let mut room = Room::with_allocation(8, crate::rules::SlotAllocation::FirstVacant).unwrap();
+        room.round_roster = crate::rules::RoundRoster::Contiguous(4);
+        let mut keys = Vec::new();
+        for id in 1..=4 {
+            let key = room.enter(id, u64::from(id) + 100, id == 1).unwrap();
+            room.setup(key).unwrap();
+            if id != 1 {
+                room.ready(key).unwrap();
+            }
+            keys.push(key);
+        }
+        assert_eq!(room.round_teams(), &[0, 1, 0, 1]);
+        assert!(room.balanced_teams());
+        let round = room.begin(keys[0]).unwrap();
+        for key in &keys[..3] {
+            assert!(!room.ack(*key, round).unwrap());
+        }
+        assert!(room.ack(keys[3], round).unwrap());
+        let at = Instant::now();
+        kill(&mut room, 0, at);
+        kill(&mut room, 2, at);
+        room.members.get_mut(&2).unwrap().life.apply(
+            1,
+            &report(1, 21, 1),
+            at + Duration::from_secs(1),
+            None,
+        );
+        assert_eq!(winner(&room, at + Duration::from_secs(8)), Some(1));
+        assert_eq!(rank_body(room.round_teams(), 1).unwrap().len(), 562);
+        let mut sparse = room.clone();
+        sparse.members.get_mut(&4).unwrap().slot = 6;
+        assert_eq!(winner(&sparse, at + Duration::from_secs(8)), None);
+        room.end(round).unwrap();
+        for key in &keys[..3] {
+            room.refreshed(*key, round).unwrap();
+        }
+        assert!(matches!(room.phase, Phase::Ending { .. }));
+        room.refreshed(keys[3], round).unwrap();
+        assert_eq!(room.phase, Phase::Idle);
     }
     #[test]
     fn team_result_waits_for_settle_witness_all_life_writes_and_post_blast_freshness() {

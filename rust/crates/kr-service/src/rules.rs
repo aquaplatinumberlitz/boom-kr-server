@@ -73,13 +73,13 @@ pub(crate) enum EndpointPolicy {
 pub(crate) enum RoundRoster {
     #[default]
     Full,
-    ContiguousDuel,
+    Contiguous(usize),
 }
 impl RoundRoster {
     pub(crate) fn size(self, capacity: usize) -> usize {
         match self {
             Self::Full => capacity,
-            Self::ContiguousDuel => 2,
+            Self::Contiguous(count) => count,
         }
     }
 }

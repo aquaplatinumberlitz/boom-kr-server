@@ -32,6 +32,8 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 1. M7b: hoàn thiện lifecycle theo tập roster/layout được hỗ trợ và RoomRules. Occupancy và lát cắt hai phòng duel
    chưa đầy đã có [native proof](protocol/room-membership.md#rust-managed-duel-lifecycle). Tái sử dụng profile fixed4/8
    cho phần roster còn lại; chỉ đo integration mới. Không lặp reader/list hoặc chu kỳ duel đã nghiệm thu.
+   Nền chiếu Start/rank/barrier theo số người round đang được làm trên nhánh `rust/m7b-round-rosters`; hiện chỉ có
+   source/vector/unit checks, chưa mở gameplay managed4/8 hoặc nhận thêm native acceptance.
 2. Hoàn tất M7c lựa chọn nhân vật/đội và M7d ownership tích hợp. Trong M7, relay resource ownership theo phòng;
    nghiệm thu mesh/reuse/restart riêng ở N1R-b, không thêm dependency đó vào M7a.
 3. **N1R-b relay cho phòng nhiều người**, sau M7 và trước G1: phòng bốn và phòng tám người chơi qua relay trên

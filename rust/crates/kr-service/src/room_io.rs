@@ -479,7 +479,7 @@ pub(crate) fn fork(
     let mut rules = source.rules;
     rules.slot_allocation = rules::SlotAllocation::FirstVacant;
     if managed_duel.is_some() {
-        rules.roster = rules::RoundRoster::ContiguousDuel;
+        rules.roster = rules::RoundRoster::Contiguous(2);
         rules.result = ResultPolicy::Duel;
         rules.departure = DeparturePolicy::Forfeit;
         rules.bomb = rules::BombPolicy::Basic;
@@ -1005,7 +1005,7 @@ impl Session {
             };
             packet(
                 175,
-                crate::four_results::rank_body(r.model.fixed_teams(), team)?,
+                crate::four_results::rank_body(r.model.round_teams(), team)?,
             )
         } else {
             let members: Vec<_> = r.model.members.values().collect();
@@ -1626,7 +1626,7 @@ impl Session {
                     let complete = next.ack(m.key, round)?;
                     loaded_endpoint = Some((m.key, port));
                     if complete {
-                        let mut endpoint_rows = Vec::with_capacity(next.capacity());
+                        let mut endpoint_rows = Vec::with_capacity(next.round_size());
                         for peer in next.members.values() {
                             let p = if peer.key == m.key {
                                 port
@@ -1743,7 +1743,7 @@ impl Session {
             }
             167 => {
                 let member = r.member(self.identity, self.connection)?;
-                let measured = if r.rules.roster == rules::RoundRoster::ContiguousDuel {
+                let measured = if r.rules.roster == rules::RoundRoster::Contiguous(2) {
                     // Native managed duel burst:12/22/42-byte observations, no ACK or semantics.
                     [4, 12, 16, 22, 32, 42].contains(&body.len())
                 } else if next.capacity() == 8 {
@@ -3073,9 +3073,9 @@ mod registry_foundation_tests {
                 bodies: HashMap::new(),
                 initial_bomb_capacity: [1, 2],
             }));
-            runtime.rules.roster = rules::RoundRoster::ContiguousDuel;
+            runtime.rules.roster = rules::RoundRoster::Contiguous(2);
             runtime.model = Room::with_allocation(4, rules::SlotAllocation::FirstVacant).unwrap();
-            runtime.model.round_roster = rules::RoundRoster::ContiguousDuel;
+            runtime.model.round_roster = rules::RoundRoster::Contiguous(2);
             let a = runtime.model.enter(70000, 11, true).unwrap();
             let b = runtime.model.enter(42, 22, false).unwrap();
             runtime.model.setup(a).unwrap();
