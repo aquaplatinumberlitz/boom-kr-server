@@ -4,6 +4,7 @@ import collections
 import hashlib
 import json
 import struct
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from content_census import Pack, parse_map, text
@@ -78,7 +79,74 @@ def classify(cells, baseline):
     }
 
 
-def verify_seed(baseline, fixture):
+def load_tile_table(pack):
+    """Nối thứ tự ObjectTable với TileInfo theo tên; không coi XML là bảng chỉ số."""
+    data = pack.read("ObjectTable/ObjectTable")
+    count = struct.unpack_from("<I", data)[0]
+    off, names = 4, []
+    for _ in range(count):
+        length = struct.unpack_from("<I", data, off)[0]
+        off += 4
+        if not length or off + length + 4 > len(data):
+            raise ValueError("ObjectTable sai độ dài tên")
+        names.append(data[off:off + length].rstrip(b"\0").decode("cp949"))
+        off += length + 4
+    raw = pack.read("TileInfo/TileInfoList")
+    length = struct.unpack_from("<I", raw)[0]
+    if length != len(raw) - 4:
+        raise ValueError("TileInfoList sai độ dài")
+    root = ET.fromstring(raw[4:].rstrip(b"\0"))
+    tiles = {}
+    for element in root.iter("Tile"):
+        name = element.attrib["Name"]
+        data = bytes.fromhex(element.attrib["Data"])
+        if name in tiles or len(data) != 72:
+            raise ValueError("TileInfoList trùng tên hoặc sai Data")
+        tiles[name] = struct.unpack("<18i", data)
+    return names, tiles
+
+
+def classify_rules(cells, table):
+    """Các mẫu Data đầu chỉ là ứng viên theo seed, không phải luật vật lý đã xác nhận."""
+    names, tiles = table
+    unknown = collections.Counter()
+    kinds = []
+
+    def lookup(code):
+        if code < 0 or code >= len(names):
+            return None, None
+        name = names[code]
+        return name, tiles.get(name)
+
+    for cell in cells:
+        tile_name, tile = lookup(cell[0])
+        obj_name, obj = lookup(cell[1])
+        # Những giá trị bổ sung và địa hình đặc biệt chưa có oracle.
+        floor = (tile is not None and tile[:11] == (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1)
+                 and "pin" not in tile_name.lower())
+        kind = None
+        if floor and all(value == -1 for value in cell[2:]):
+            if cell[1] == -1:
+                kind = 0
+            elif obj is not None:
+                if (obj[:11] == (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1)
+                        and "pin" not in obj_name.lower()):
+                    kind = 0
+                elif obj[:11] == (1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0):
+                    kind = 1
+                elif (obj[:7] == (2, 0, 0, 0, 0, 0, 0) and obj[7] in (0, 1)
+                      and obj[8:11] == (0, 0, 0)):
+                    kind = 2
+        if kind is None:
+            def label(code):
+                name, _ = lookup(code)
+                return name if name is not None else str(code)
+            unknown[" | ".join(label(value) for value in cell)] += 1
+        kinds.append(kind)
+    return kinds, sum(unknown.values()), dict(sorted(unknown.items()))
+
+
+def verify_seed(baseline, fixture, classifier=None):
     spec = fixture["bomb_terrain"]
     expected = spec["kinds"]
     if (spec["width"], spec["height"]) != (baseline["width"], baseline["height"]):
@@ -86,7 +154,8 @@ def verify_seed(baseline, fixture):
     digest = hashlib.sha256(bytes(expected)).hexdigest()
     if digest != SEED_SHA or spec["seed_sha256"] != SEED_SHA or spec["map_sha256"] != MAP_SHA:
         raise ValueError("fixture không khớp hash seed/map CP094 đã pin")
-    actual, _, _ = classify(baseline["cells"], baseline["cells"])
+    actual, _, _ = (classifier(baseline["cells"]) if classifier else
+                    classify(baseline["cells"], baseline["cells"]))
     if len(actual) != len(expected):
         raise ValueError("fixture terrain sai số ô")
     differences = [(i % baseline["width"], i // baseline["width"], a, b)
@@ -98,6 +167,7 @@ def verify_seed(baseline, fixture):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--classification", choices=("legacy", "rules"), default="legacy")
     parser.add_argument("--client", type=Path, required=True)
     parser.add_argument("--map", action="append", required=True, dest="maps")
     parser.add_argument("--terrain-fixture", type=Path, required=True,
@@ -117,6 +187,10 @@ def main():
             raise ValueError("payload ExVillage01 không khớp SHA CP090")
         baseline = decode_map(raw)
         count = verify_seed(baseline, json.loads(args.terrain_fixture.read_text()))
+        table = load_tile_table(Pack(args.client, "fx")) if args.classification == "rules" else None
+        if table is not None:
+            verify_seed(baseline, json.loads(args.terrain_fixture.read_text()),
+                        lambda cells: classify_rules(cells, table))
         profiles = []
         for name in args.maps:
             entry = "Map/" + name
@@ -124,10 +198,11 @@ def main():
                 raise ValueError(f"không có map {name!r} trong pack")
             data = pack.read(entry)
             profile = decode_map(data)
-            kinds, unknown_cells, unknown = classify(profile["cells"], baseline["cells"])
+            kinds, unknown_cells, unknown = (classify_rules(profile["cells"], table) if table is not None
+                                             else classify(profile["cells"], baseline["cells"]))
             profile.update(name=name, map_code=names.index(entry),
                            payload_sha256=hashlib.sha256(data).hexdigest(),
-                           terrain=dict(kinds=kinds, unknown_cell_count=unknown_cells,
+                           terrain=dict(classification=args.classification, kinds=kinds, unknown_cell_count=unknown_cells,
                                         unknown_values=unknown, unknown_meaning="chưa rõ nghĩa",
                                         limits="CP094 design, runtime hẹp ExVillage01; null là chưa rõ nghĩa"))
             profiles.append(profile)
@@ -137,9 +212,10 @@ def main():
                 json.dumps(profile, ensure_ascii=False, indent=2) + "\n")
         print(f"ExVillage01: khớp {count}/{count} ô với seed CP094 {SEED_SHA}")
         for p in profiles:
+            print(f"{p['name']}: terrain={dict(collections.Counter(p['terrain']['kinds']))}")
             print(f'{p["name"]}: {p["width"]}x{p["height"]}, spawn={len(p["spawns"])}, '
                   f'chưa rõ={p["terrain"]["unknown_cell_count"]}, giá trị={p["terrain"]["unknown_values"]}')
-    except (KeyError, ValueError, OSError, struct.error) as exc:
+    except (KeyError, ValueError, OSError, struct.error, ET.ParseError) as exc:
         parser.exit(1, f"Lỗi: {exc}\n")
 
 

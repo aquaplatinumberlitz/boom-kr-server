@@ -3,7 +3,7 @@ import struct
 import unittest
 from unittest.mock import patch
 
-from export_map_profile import classify, decode_map, verify_seed
+from export_map_profile import classify, classify_rules, decode_map, load_tile_table, verify_seed
 
 
 def string(value):
@@ -51,6 +51,38 @@ class MapProfileTests(unittest.TestCase):
             fixture["bomb_terrain"]["kinds"] = [2, 0]
             with self.assertRaisesRegex(ValueError, "hash"):
                 verify_seed(baseline, fixture)
+
+    def test_table_uses_object_order_and_joins_names(self):
+        def record(name, offset):
+            encoded = name.encode() + b"\0"
+            return struct.pack("<I", len(encoded)) + encoded + struct.pack("<I", offset)
+
+        table = struct.pack("<I", 2) + record("theme/box", 100) + record("theme/floor", 120)
+        box = struct.pack("<18i", 2, *([0] * 17)).hex()
+        floor = struct.pack("<18i", 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, *([0] * 7)).hex()
+        xml = (f'<TileInfo><Tile Name="theme/floor" Data="{floor}"/>'
+               f'<Tile Name="theme/box" Data="{box}"/></TileInfo>').encode()
+
+        class FakePack:
+            def read(self, name):
+                return {"ObjectTable/ObjectTable": table,
+                        "TileInfo/TileInfoList": struct.pack("<I", len(xml)) + xml}[name]
+
+        names, tiles = load_tile_table(FakePack())
+        self.assertEqual(names, ["theme/box", "theme/floor"])
+        self.assertEqual(classify_rules([[1, -1], [1, 0]], (names, tiles))[0], [0, 2])
+
+    def test_rules_leave_special_and_invalid_cells_unknown(self):
+        ground = (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1) + (0,) * 7
+        static = (1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0) + (0,) * 7
+        special = (2, 0, 0, 0, 0, 0, 5, 1, 0, 0, 0) + (0,) * 7
+        names = ["floor", "house", "strong", "PinGround", "herb"]
+        tiles = dict(zip(names, [ground, static, special, ground, (3,) + (0,) * 17]))
+        kinds, count, _ = classify_rules([[0, -1], [0, 1], [0, 2], [3, -1], [0, 3],
+                                          [0, 4], [-1, -1], [0, -1, 1], [99, -1]],
+                                         (names, tiles))
+        self.assertEqual(kinds, [0, 1, None, None, None, None, None, None, None])
+        self.assertEqual(count, 7)
 
     def test_partial_map_rejected(self):
         with self.assertRaises(ValueError):
