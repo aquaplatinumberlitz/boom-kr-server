@@ -33,11 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP280: phòng managed Rust đã có lifecycle native cho roster 2/4/8 trong phạm vi cấu hình đã đo.**
-Hai phòng bốn người và một phòng tám người đã qua kết quả/reset/trận tiếp; EOF/bom chờ được cách ly với phòng còn chơi.
-[Contract và giới hạn](docs/protocol/room-membership.md#rust-managed-team-rosters),
-[bằng chứng](docs/evidence/rust-service/m7b-team-rosters.json). M7b đạt tập profile này; M7c/d, hồ sơ account tổng quát,
-relay nhiều người và vận hành còn mở. Thứ tự ở [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP281: M7c đã có lựa chọn nhân vật/đội, Ready và lỗi phòng đầy trên client KR thật.**
+Lát cắt phòng chờ hỗ trợ Dao0/Dizni1 và nút đội A0/B3; peer thấy đúng, đổi lựa chọn xóa Ready rồi có thể Ready lại.
+Ba client đã kiểm full-error/vacancy không slot ma. [Contract/giới hạn](docs/protocol/room-membership.md#rust-managed-player-choices),
+[bằng chứng](docs/evidence/rust-service/m7c-room-choices.json). Lựa chọn hiện chưa ghép battle profile; Start/stat theo
+nhân vật, roster tự do và rời giữa trận thuộc M7e. Tiếp M7d → M7e → M5b theo [Bảng điều hành](docs/PLAN.md#dashboard).
 Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu

@@ -1,0 +1,98 @@
+{
+  "id": "AUD097",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-managed-room-choices"
+  ],
+  "completed_through": "CP281",
+  "recorded_utc": "2026-11-12T12:42:54.949382+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/m7c-room-choices.json",
+    "docs/protocol/room-membership.md",
+    "docs/CONTENT.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/owner-directives/m7e-disconnect.json",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_service.rs",
+    "rust/crates/kr-service/src/room_wire.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-wire/src/kr00967/room.rs",
+    "tools/test_rust_room_choices.py",
+    "local/research/codex/m7c-source-r1/reuse.json",
+    "local/research/codex/m7c-source-r1/slot-reader-byte-equivalence.json",
+    "local/research/codex/m7c-selection-native-r2/verification.json",
+    "local/research/codex/m7c-selection-native-r2/ui-review.json",
+    "local/research/codex/m7c-full-room-native-r1/verification.json",
+    "local/research/codex/m7c-full-room-native-r1/ui-review.json",
+    "local/research/codex/m7c-choices-synthetic-r3/tcp/verification.json",
+    "local/research/codex/m7c-selection-tests-r3.txt"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence/raw; rà gate opt-in/defaults, actual membership/phase/setup, Ready clear và queue publication, packed bit preservation, full rejection trước cấp slot/session. Đối chiếu full TCP/sequence/hash độc lập với native slot/UI setters, pending/enable và ảnh cả hai peer; native full3 dùng genuine C82 gate, kiểm error/dismiss/vacancy/ID3slot1. Không suy từ controller/log server/process alive; giữ riêng terminal debugger teardown và các source/binary.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Producer92/body3 mới có1run Marid; giả định VN charu8 hoặc opcode offset có thể bị port nhầm.",
+      "correction": "Đối chứng Dao current-picker no-op và Dizni1; actual92 giữu8 local0/u16 ID, native packed13bit slot/peer update. ID4 chỉ producer chưa phục vụ; không gắn stat theo slot thành character contract.",
+      "fixed_in": [
+        "rust/crates/kr-wire/src/kr00967/room.rs",
+        "rust/crates/kr-wire/tests/native_room_choices.rs",
+        "docs/evidence/rust-service/m7c-room-choices.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Nút đội B bị giả định1; prototype đóng guest khi actual97/body59 là3.",
+      "correction": "Giữ runpartial; dùng đúng mã UI A0/B3. Native both views nhận team3/green và pending6→0; legacy fixture team1 giữ nguyên.",
+      "fixed_in": [
+        "rust/crates/kr-wire/src/kr00967/room.rs",
+        "rust/crates/kr-service/src/room.rs",
+        "docs/evidence/rust-service/m7c-room-choices.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Full-room selection error đóng transport; admission gắn số profile prototype.",
+      "correction": "Optionalcapacity giới hạnpristine room, validate trước serving; fullidle trả typed rejection, không cấpSession/channel/member/visit/round. Genuine native C82 race/full87/dismiss/BBack/Cslot1+character1; synthetic chọn phòng khác saufull.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/room_service.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/lib.rs",
+        "tools/test_rust_room_choices.py"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Có thể biến room-choice ACK thành đã chơi với chosen character, hoặc bỏ ownerM7e/M5b sau merge.",
+      "correction": "Merge main e05b6a8, giữWIP bằngstashreceipt. Cấu hình choice+round bị từ chối; contract/PLAN nêu rõ M7d→M7e→M5b, Start/stat/rời giữa trận ởM7e. Native matrix vàfull/vacancy là hai source/binary riêng.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "README.md",
+        "docs/evidence/rust-service/m7c-room-choices.json"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "GDB Bterminal disconnect/internal error trongfull run hoặc REA timeout có thể bị che hoặc quy thành gameplay failure.",
+      "correction": "Giữ raw; Bnative91end và channelFIN có timestamp sau declared completion, exact verifier ghi cleanup exception. REA không có functiondossier/clean-close; chỉ dùng cached byte-identical reader và native mới, không claim tool thành công.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7c-room-choices.json",
+        "local/research/codex/m7c-full-room-native-r1/verification.json",
+        "local/research/codex/m7c-source-r1/rea-provider-attempt.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "M7c chỉ nhận lựa chọn/phản hồi slot/Ready/full-error trong phòng chờ cho IDs0/1 và nút đội A0/B3. Config choices chưa ghép Battle; không suy selected-character Start/stat hoặc profile bất kỳ.",
+    "Theo main/owner: M7d ownership/failure → M7e roster2..8/sparse và chosen-character Start/stat, rời giữa trận để survivor chơi tiếp/kết quả/ván kế → M5b arbitrary account/native DB-queue fault. Không đổi M7e thành retry fixed profile.",
+    "M6 persistence, relay nhiều người/reuse/restart và M8 vận hành còn theo PLAN. Không Internet/ISP/CGNAT/load claim từ Wine/LAN native mới.",
+    "ID4 mới có producer; nhiều local player, đội/nhân vật khác, entitlement/shop/equipment, account-selected-character persistence chưa nhận."
+  ]
+}

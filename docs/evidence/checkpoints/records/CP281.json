@@ -1,0 +1,246 @@
+{
+  "id": "CP281",
+  "previous": "CP280",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T12:42:54.949382+00:00",
+  "context_commit": "188634bb1cfea4d0df3475896de0c5dc6660f9e2",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / M7c: KR-native character/team producer→current slot/peer/unlock/Ready, genericfull rejection/vacancy; merge owner M7e/M5b main order.",
+  "scope": "M7c room-only lựa chọn nhân vật/đội, Ready và full-room error trên known account profiles. Không nhận Start/stat/Battle theo nhân vật đã chọn; phần đó ở M7e theo PLAN mới.",
+  "artifacts": [
+    {
+      "name": "kr-service-room-choice-native",
+      "sha256": "8a1dfdc96b15ff203f110f8948ba954543bd412a434aef3bce43124d61a6f834"
+    },
+    {
+      "name": "kr-service-room-choice-native",
+      "sha256": "d223eaa8451f9b43b59403d2640c926c72cecad4c501beb7e845fc17c1cb5ebe"
+    }
+  ],
+  "locators": [
+    "docs/protocol/room-membership.md#rust-managed-player-choices",
+    "docs/evidence/rust-service/m7c-room-choices.json",
+    "docs/PLAN.md#dashboard",
+    "docs/RESEARCH.md#gap-room-occupancy"
+  ],
+  "findings": [
+    {
+      "summary": "Actual KR92/u8local0+u16 charID và97/u8 độiUI A0/B3; room roundtrip Dao0/Dizni1, both native1106/6/errors0/visual calls và peer UI đúng. Host lựa chọn làmguestReadyclear, guest reReady sauteam/char lạiđược.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-player-choices",
+      "evidence": [
+        "M7C281-02800",
+        "M7C281-02799",
+        "M7C281-02197"
+      ],
+      "limits": "Room-only; configchoices khôngghépBattle. ID4 producer-only; không original serverpolicy hoặc generalcharacterstat claim."
+    },
+    {
+      "summary": "Native3/capacity2: genuineC82 held whileB fills lastslot, Cgeneric87/result2/cursor1/error0, Return dismiss, BBack/vacancy then Csuccess87/setup/ID3slot1/selectedchar1/peerA. No membership allocated atfull; account/channel usable afterwards.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-player-choices",
+      "evidence": [
+        "M7C281-01789",
+        "M7C281-01788"
+      ],
+      "limits": "Capacityreason design, not originalfull-specificcode. Terminal debuggerB error aftercompletion/FIN separatelyretained; no clean debuggerteardown claim."
+    },
+    {
+      "summary": "Current owner/phase/setup guards, atomic queue reservation/Ready clear, preserved packed bits and exactbody parsers; optionalcapacity startup validation/full typed rejection.133Rust tests,7choicesynthetic groups and7/8/7legacyduel/team4/team8 pass.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-player-choices",
+      "evidence": [
+        "M7C281-02818",
+        "M7C281-01359",
+        "M7C281-01799",
+        "M7C281-01909",
+        "M7C281-02047"
+      ],
+      "limits": "Source/synthetic policy tests separate from native; no fullM7/M5/service or newload/Internet claim."
+    },
+    {
+      "summary": "Main ownerM7e roster2..8/sparse/chosen-character Start/stat and survivor continuation aftermidmatchdisconnect retained; M5b arbitraryaccount/nativeDBfault follows. Only cached D628E0/DC6700 byte-identical native readers reused after REA provider timeout.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/PLAN.md#dashboard",
+      "evidence": [
+        "M7C281-00010",
+        "M7C281-02837",
+        "M7C281-02840",
+        "M7C281-02838"
+      ],
+      "limits": "No new providerdecompilation or tool clean-close claim; no historicalscope fromboom-rs imported."
+    }
+  ],
+  "verification": [
+    {
+      "check": "133Rust/fmt/clippy/lockedbuild",
+      "result": "pass",
+      "evidence": [
+        "M7C281-02818",
+        "M7C281-02190",
+        "M7C281-00021",
+        "M7C281-02182"
+      ],
+      "limits": "Source tests, not native certification."
+    },
+    {
+      "check": "7choicesTCP and7/8/7legacyduel/team4/team8 groups, privateSQLite/tmpfsexport",
+      "result": "pass",
+      "evidence": [
+        "M7C281-01359",
+        "M7C281-01799",
+        "M7C281-01909",
+        "M7C281-02047"
+      ],
+      "limits": "Synthetic only; no durability/nativeDBfault/load acceptance."
+    },
+    {
+      "check": "Actualnative choice/Ready andfull-vacancy independentlyverified PCAP/native/UI/rawhash/cleanup",
+      "result": "pass",
+      "evidence": [
+        "M7C281-02179",
+        "M7C281-02800",
+        "M7C281-01789"
+      ],
+      "limits": "Two declared binaries/runs; room-only; terminaldebuggerB shutdown exception retained."
+    },
+    {
+      "check": "Docs/catalog/owner-order/privacy/exporter isolation",
+      "result": "pass",
+      "evidence": [
+        "M7C281-02188",
+        "M7C281-02183"
+      ],
+      "limits": "Exact-head full local/history andCI separately beforemerge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP281-managed-room-choices.json",
+      "bytes": 839459,
+      "sha256": "9e00325d378e5034dd052990b6643ae326e7d426f5eba419ce2500b5de913038",
+      "count": 3175
+    }
+  ],
+  "delta": {
+    "added": [
+      "Opt-in room-only actualKR choice92/team97/slot110, Readyclear andfullroom rejection/vacancy proof."
+    ],
+    "corrected": [
+      "VNwidth/teamBindex assumptions, fulljoin transportclosure, ownerM7e/M5b order and bounded scope."
+    ],
+    "superseded": [
+      "Producer-only status forIDs0/1/roomroundtrip only; no rewrite ofold records/raw or claimforID4stat."
+    ]
+  },
+  "blockers": [
+    "M7c chỉ nhận lựa chọn/phản hồi slot/Ready/full-error trong phòng chờ cho IDs0/1 và nút đội A0/B3. Config choices chưa ghép Battle; không suy selected-character Start/stat hoặc profile bất kỳ.",
+    "Theo main/owner: M7d ownership/failure → M7e roster2..8/sparse và chosen-character Start/stat, rời giữa trận để survivor chơi tiếp/kết quả/ván kế → M5b arbitrary account/native DB-queue fault. Không đổi M7e thành retry fixed profile.",
+    "M6 persistence, relay nhiều người/reuse/restart và M8 vận hành còn theo PLAN. Không Internet/ISP/CGNAT/load claim từ Wine/LAN native mới.",
+    "ID4 mới có producer; nhiều local player, đội/nhân vật khác, entitlement/shop/equipment, account-selected-character persistence chưa nhận."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp M7d ownership/failure theo PLAN, sau đó M7e roster/Startstat/rời giữa trận và M5b arbitraryaccount/nativeDBfault. Không lặpM7c roomproducers.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "M7c room-only accepted; integrateownership M7d, then ownerM7e with selected-character profiles/roster/survivors. FullM7 staysopen.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T12:42:54.949382+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo implementation/native and manual room-choice/full-error group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped room-choice/full-error implementation/native và thứ tự chủ dự án; không suy chosen-characterBattle/fullM7."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped room-choice/full-error implementation/native và thứ tự chủ dự án; không suy chosen-characterBattle/fullM7."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped room-choice/full-error implementation/native và thứ tự chủ dự án; không suy chosen-characterBattle/fullM7."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped room-choice/full-error implementation/native và thứ tự chủ dự án; không suy chosen-characterBattle/fullM7."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped room-choice/full-error implementation/native và thứ tự chủ dự án; không suy chosen-characterBattle/fullM7."
+    },
+    {
+      "path": "docs/evidence/rust-service/m7c-choice-producer.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped room-choice/full-error implementation/native và thứ tự chủ dự án; không suy chosen-characterBattle/fullM7."
+    },
+    {
+      "path": "docs/evidence/rust-service/m7c-room-choices.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped room-choice/full-error implementation/native và thứ tự chủ dự án; không suy chosen-characterBattle/fullM7."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped room-choice/full-error implementation/native và thứ tự chủ dự án; không suy chosen-characterBattle/fullM7."
+    },
+    {
+      "path": "docs/protocol/room-membership.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped room-choice/full-error implementation/native và thứ tự chủ dự án; không suy chosen-characterBattle/fullM7."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đã trỏ room-membership; contract ở topic, không nhân bản."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, exacthead/PR, freeze/seal, giữownerM7e/M5b/mainWIP và exporterG1 riêng."
+    },
+    {
+      "path": "docs/CONTENT.md",
+      "state": "unchanged",
+      "reason": "Dùng catalog character/Attr đã có làm nguồn; không sửa kiểm kê hoặc tự xác nhận field mới."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-managed-room-choices"
+  ]
+}

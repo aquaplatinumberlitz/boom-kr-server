@@ -1184,7 +1184,7 @@ client có thể đã dựng lại list nên 90 không có object để xóa; pa
 86 thành công chỉ project session u16 đã đo; u32 sau nó vẫn opaque, không gọi là roomID echo. 87 project session và
 slot; client lấy roomID/tên từ hàng 91 đã chọn. 91 dùng title thực từ 81. Occupancy/capacity của managed room
 đã có [contract riêng](#rust-room-population); các byte khác vẫn giữ fixture. Setup96/266 vẫn là exact-shape observation có membership, không ACK và không
-đổi state. Khi không cấu hình profile trận, mode M7a vẫn chỉ phục vụ selection/setup; [profile trận opt-in](#rust-managed-team-rosters) mở Ready/loading/trận riêng. Thay nhân vật/đội chưa được phục vụ.
+đổi state. Khi không cấu hình profile trận, mode M7a vẫn chỉ phục vụ selection/setup; [profile trận opt-in](#rust-managed-team-rosters) mở Ready/loading/trận riêng. [Lựa chọn nhân vật/đội](#rust-managed-player-choices) có opt-in và acceptance phòng chờ riêng.
 
 Native bốn account/profiles cấu hình đã tạo hai phòng với hai tiêu đề CP949 mặc định khác nhau; mỗi cặp chỉ thấy
 roster của phòng mình. Identity3 làm chủ ở slot0; identity1 rời phòng đầu, vào phòng thứ hai ở slot2. Client thật
@@ -1328,3 +1328,48 @@ Không ghép các lượt thành một runtime liên tục. Giữa binary lifecy
 quan sát167 của profile8 để nhận body32; [source comparison và hash](../evidence/rust-service/m7b-team-rosters.json)
 ghi riêng. R9 giữ wrapper exit1 và seal export phục hồi; lỗi GDB cuối shutdown của C ở lượt EOF được phân loại riêng,
 không bỏ log hoặc gọi là teardown không lỗi. Không suy native EOF8 từ phép đo EOF4; policy8 còn có kiểm synthetic.
+
+<a id="rust-managed-player-choices"></a>
+## Lựa chọn nhân vật, đội và lỗi phòng đầy trong managed room
+
+Nguồn **kr_runtime/confirmed** cho packet/native/UI trong phạm vi dưới; policy server là **design/design**.
+[Metadata, recipe, source/binary và hash](../evidence/rust-service/m7c-room-choices.json). Đây là lát cắt M7c trong
+phòng chờ, không nghiệm thu Start/stat/trận với lựa chọn mới. Theo PLAN hiện hành, tích hợp đó thuộc M7e.
+
+| Thao tác client thật | Wire đã đo | Giới hạn phục vụ |
+|---|---|---|
+| Chọn nhân vật | C2S92, body3: u8 local player0, u16 characterID | Đã có producer riêng Dizni1 và Marid4; roundtrip phục vụ Dao0/Dizni1. ID4 vẫn bị chặn, không suy stat hay entitlement. |
+| Chọn đội | C2S97, body1: mã đội của local player hiện hành | Nút A gửi0, nút B gửi3. Không coi nút B là index1; team1 từ fixture cũ vẫn giữ nguyên. Chưa mở đội2/4 hoặc nhiều local player. |
+| Cập nhật ô | S2C110, body6: u8 slot, packed32, u8 zero | Character ở bit16..28, team bit5..9; giữ các bit khác và chỉ đổi đúng current membership. Native reader/UI setter và peer cùng thấy giá trị mới. |
+| Vào phòng đầy | S2C87/body1/result2 | Consumer native hiện thông báo không thể vào phòng, Return đóng thông báo. Đây là generic2; gán nguyên nhân full là policy server. |
+
+`managed_rooms.player_choices=true` là opt-in, mặc định false. Hiện chỉ đi với selection/setup; cấu hình kết hợp
+`round_profile` bị từ chối trước serving để không đưa nhân vật đã chọn vào Start/stat theo slot cũ. Default profile
+trận 2/4/8 vẫn giữ hành vi trước đó. Không ghi lựa chọn vào account DB hoặc suy lựa chọn còn qua fresh login/rejoin.
+
+Khi nhận lựa chọn đúng shape, service kiểm connection, membership, setup và phase idle. Tất cả guest Ready được
+xóa theo policy công bố; trạng thái chủ phòng giữ đúng chief. Service dự trữ queue của mọi recipient trước khi
+publish state; slot110 mang guard của current recipient/subject, không phát sang phòng khác. Body sai, local player
+khác0, nhân vật/đội chưa hỗ trợ, membership cũ hoặc phase active không được áp dụng. Chưa phục hồi rejection UI
+riêng cho mọi trường hợp lựa chọn sai; hiện fail closed, không ACK giả.
+
+Native hai account đã đổi cả hai nhân vật, guest Ready, host đổi lựa chọn làm guest hết Ready, guest đổi đội0→3,
+đổi nhân vật về0 rồi Ready lại. Cả hai reader slot110 tiêu6/6/errors0, visual setter nhận character0/1 và team3;
+pending của guest khi đổi đội đi6→0, Ready đi4→0, controls mở lại. Ảnh peer và tên/slot giữ đúng người. Phép đo
+đầu đã bắt lỗi parser giả định đội0/1; raw thất bại giữ nguyên, không được tính là roundtrip hoàn chỉnh.
+
+`managed_rooms.capacity` tùy chọn thu nhỏ admission trong khoảng2..prototype capacity, độc lập số account cấu hình;
+không sinh profile trận mới. Nếu round profile đã cấu hình thì số người round không được vượt bound này. Phòng đầy
+ở phase idle bị trả generic87/result2 trước cấp Session/channel/membership/visit/round. Account vẫn ở sảnh, có thể
+chọn phòng khác hoặc thử lại khi có chỗ; capacity/error policy không là luật lỗi server KR gốc.
+
+Native ba client kiểm race thật trên room capacity2: C bấm hàng còn chỗ, giữ actual82 trước queue gửi, B chiếm slot
+cuối, rồi thả C82. C đọc error87 đúng1/1 và đóng modal bằng Return; không gửi585 hoặc nhận slot ở lần bị từ chối.
+B Back tạo vacancy, C bấm lại đúng tuple, nhận87 thành công7/7, setup và identity3 vào slot1; A thấy đúng peer mới
+và nhân vật1. Không giả row91 hoặc phát82 tổng hợp. Full-room run có lỗi debugger B sau completion/cleanup; raw,
+FIN sau completion và phân loại được giữ riêng, không gọi teardown debugger là không lỗi.
+
+Kiểm synthetic bốn account/hai phòng xác nhận cách ly lựa chọn, Ready clear/reReady, capacity bounds, từ chối
+config choice+Battle, full rejection không slot ma và chọn phòng khác ngay sau lỗi; malformed/local player khác0
+và nhân vật4 không publish lựa chọn. Synthetic không thay native. M7d còn failure ownership tích hợp; M7e còn
+roster tự do, chosen-character Start/stat và rời giữa trận; M5b còn hồ sơ account bất kỳ theo thứ tự PLAN.
