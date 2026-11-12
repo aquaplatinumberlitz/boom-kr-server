@@ -63,7 +63,7 @@ K6c WAN giả lập/K7 không nhận thêm dependency Internet thật hoặc thi
 ## Unknown chặn dịch vụ Rust — KRE-074
 
 [PLAN](PLAN.md#dashboard) giữ thứ tự; [kiến trúc](RUST_SERVICE_ARCHITECTURE.md) giữ design/readiness.
-R1a–R1g đã merge source/TCP; native cuối R1 2/4/8/account còn thiếu. Không dùng unit/differential làm native oracle.
+R1a–R1g và native hồi quy các profile 2/4/8/account đã đạt phạm vi refactor. [Bằng chứng và giới hạn](evidence/rust-service/r1-native-final.json). Không suy thêm tính năng từ unit/differential hoặc native hồi quy.
 Account fixed2/basic và lifecycle đã có [scope](protocol/auth-session.md#rust-account-basic); M5 còn profile tổng quát,
 native DB-queue fault và giới hạn recovery. Test khóa SQLite không thay bằng chứng native DB-queue fault.
 Registry source/queue isolation không chứng nhận serving nhiều phòng M7. N1R cần proof riêng bên dưới;

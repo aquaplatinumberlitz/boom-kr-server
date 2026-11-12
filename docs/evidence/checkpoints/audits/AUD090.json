@@ -1,0 +1,78 @@
+{
+  "id": "AUD090",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "r1-final-native-regression-existing-profiles"
+  ],
+  "completed_through": "CP274",
+  "recorded_utc": "2026-11-12T02:01:59.808972+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/rust-service/r1-native-final.json",
+    "docs/evidence/rust-service/n1r-fixed2.json",
+    "local/research/codex/r1-final-native-r1/two/life-verification.json",
+    "local/research/codex/r1-final-native-r1/four/failed-export-preservation.json",
+    "local/research/codex/r1-final-native-r1/four-export-followup/harness-equivalence.json",
+    "local/research/codex/r1-final-native-r1/four-export-followup/results-verification.json",
+    "local/research/codex/r1-final-native-r1/eight/export-recovery.json",
+    "local/research/codex/r1-final-native-r1/eight/eight-verification.json",
+    "local/research/codex/r1-final-native-r1/account/life-verification.json",
+    "local/research/codex/r1-final-native-r1/account/ownership-verification-r2.json"
+  ],
+  "method": "Manual canonical-doc order, current acceptance comparison, retained recipe/source/raw/cleanup, full TCP/native consumer and secure getter reports, manual screenshots. No production source change or new binary RE. Failures and partial captures audited separately.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Final R1 native regressions for2/4/8/account were still missing despite source/TCP refactor passing.",
+      "correction": "All four profiles now have new native opposite results/reset/Start3 on the same post-refactor binary; account ownership separately verified. R1 closed only as refactor regression.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/RUST_SERVICE_ARCHITECTURE.md",
+        "docs/evidence/rust-service/r1-native-final.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "New four harness lost tmpfs raw because shutil import was omitted.",
+      "correction": "Original failure retained, no native acceptance from missing raw. One scoped follow-up with import-only AST delta after path relocation and exact export control completed and sealed84 raw.",
+      "fixed_in": [
+        "docs/evidence/rust-service/r1-native-final.json",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Eight harness failed unmount after export and inherited four-IP UDP capture worker stopped on H→A.",
+      "correction": "155 existing exported raw files retained, copied unchanged back to original empty lexical path with hash verification. Seal keeps exit1 and failure logs. Native full TCP/result/reset/56 directed actor deltas and54048 getters independently passed; no full UDP capture assertion.",
+      "fixed_in": [
+        "docs/evidence/rust-service/r1-native-final.json",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Relay implementation catalog was still branch_pending and R1 dependency still shown missing.",
+      "correction": "Catalog recognizes merged PR355 baseline; R1 dependency achieved, M7/M6 unstarted. Contract index/topic unchanged: no new wire or authority contract in this regression.",
+      "fixed_in": [
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Full M5 general profiles and native DB-queue fault remain open. Known account profile regression is narrower.",
+    "N1R fixed2 prototype remains separate from direct R1 regression; same-IP spoof, relay4/8, port reuse/restart and load remain open.",
+    "Eight UDP capture is partial and harness failed at unmount; native regression uses recovered unchanged raw and independent mesh/result/reset/getter evidence, not a full UDP capture claim.",
+    "Map probe next, then M7/G1/M6/M8 with phase1 acceptance rewritten before starting each milestone."
+  ]
+}
