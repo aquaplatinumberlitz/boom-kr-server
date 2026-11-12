@@ -556,7 +556,7 @@ impl Room {
             ));
         }
         let member = self.members.get_mut(&key.identity).expect("current member");
-        if member.character != Some(1) || member.loading79 {
+        if !matches!(member.character, Some(0 | 1)) || member.loading79 {
             return Err(io::Error::other(
                 "opaque79 outside measured choice or budget",
             ));
@@ -1108,7 +1108,10 @@ mod loading_observation_tests {
         assert!(room.observe_loading79(a).is_err());
         room.ready(b).unwrap();
         let round = room.begin(a).unwrap();
+        room.members.get_mut(&b.identity).unwrap().character = Some(4);
         assert!(room.observe_loading79(b).is_err());
+        room.members.get_mut(&b.identity).unwrap().character = Some(0);
+        room.observe_loading79(b).unwrap();
         room.observe_loading79(a).unwrap();
         assert!(room.observe_loading79(a).is_err());
         assert!(!room.ack(a, round).unwrap());

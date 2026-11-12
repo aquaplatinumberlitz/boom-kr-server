@@ -159,8 +159,7 @@ def main():
                 got=[(x[0],x[2],int.from_bytes(x[3:5],'little'),x[5])for x in rows]
                 assert got==expected,(got,expected)
             for row,client in zip(expected,current):
-                if row[2]==1:
-                    client.send(79,bytes.fromhex('5b5b'));client.quiet()
+                client.send(79,bytes.fromhex('5b5b' if row[2]==1 else '5b5a'));client.quiet()
             for slot,client in zip([x[0]for x in expected],current):
                 client.send(99,codec.pack_fields([0,0,32101+slot,0,0,0,0,0,0],[4,4,2,4,2,1,1,1,4]))
             keys=[]

@@ -1446,16 +1446,20 @@ impl Session {
         let mut life = None;
         match opcode {
             79 => {
-                // Native A/C selected1 after121: literal payload5b5b. Unknown
-                // semantics; exact one-per-round loading observation, no ACK.
-                if body != [0x5b, 0x5b]
-                    || r.managed_round
-                        .as_ref()
-                        .is_none_or(|p| p.characters.is_none())
+                // Native selected1 emits5b5b after121; selected1→0 emits5b5a.
+                // Semantics unknown: one exact current-choice observation per
+                // Loading, without ACK, world mutation or idle renewal.
+                let member = r.member(self.identity, self.connection)?;
+                if !matches!(
+                    (member.character, body),
+                    (Some(0), [0x5b, 0x5a]) | (Some(1), [0x5b, 0x5b])
+                ) || r
+                    .managed_round
+                    .as_ref()
+                    .is_none_or(|p| p.characters.is_none())
                 {
                     return Err(err("unsupported observed79 profile/body"));
                 }
-                let member = r.member(self.identity, self.connection)?;
                 next.observe_loading79(member.key)?;
             }
             528 => {
