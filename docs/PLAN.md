@@ -31,8 +31,14 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 
 1. Bàn giao hồi quy cuối R1 qua PR và kiểm đúng HEAD. N1R prototype hai người đã merge; không chạy lại N1b.
 2. Phép thử đổi map sang Village10 (`local/research/claude/codex-prompt-map-probe.md`), tối đa hai lượt.
-3. M7, rồi G1 song song M6, rồi M8. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1.
-   Relay bốn/tám người, dùng lại cổng qua restart và tải đích cần acceptance riêng trước vận hành lâu dài.
+3. M7 phòng tổng quát. Trước khi mở, sửa acceptance theo phạm vi giai đoạn 1. Trong M7, đường relay không được
+   gắn với số người trong phòng; chưa cần nghiệm thu relay nhiều người ở bước này.
+4. **N1R-b relay cho phòng nhiều người**, sau M7 và trước G1: phòng bốn và phòng tám người chơi qua relay trên
+   client thật, mỗi cỡ một lượt; dùng lại cổng và key khi hết pool và sau restart; chặn giả mạo gói đầu giữa hai
+   người chung IP. Làm sau M7 để không phải nghiệm thu hai lần trên hai kiểu phòng. Đây là điều kiện của đích
+   giai đoạn 1, không phải việc tuỳ chọn.
+5. G1 song song M6. Trước mỗi mốc, sửa acceptance theo phạm vi giai đoạn 1.
+6. M8, gồm kiểm tải 50 người và 8 phòng có relay.
 
 **Blocker và việc tồn:**
 
