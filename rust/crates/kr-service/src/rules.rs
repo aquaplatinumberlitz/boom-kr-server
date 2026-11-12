@@ -223,7 +223,7 @@ impl ReportLimits {
             }),
             8 => Ok(Self {
                 power: vec![1, 1, 1, 1, 1, 1, 2, 2],
-                opaque167: &[4, 22, 42],
+                opaque167: &[4, 22, 32, 42],
             }),
             _ => Err(err("unmeasured report profile")),
         }

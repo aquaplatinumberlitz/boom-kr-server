@@ -249,9 +249,13 @@ def main():
         for group in groups:
             group[0].send(142, bytes.fromhex('535c5a96ca53bb'))
             group[0].send(142, codec.pack_fields([6, 6, 0, 0x12345678], [1, 1, 1, 4]))
+            # Actual eight-roster report from native TCP, interpreted only as
+            # a bounded opaque observation, without ACK or gameplay authority.
+            group[0].send(167, bytes.fromhex(
+                'a569a56c96ca63afa569a56b6935ac6aa56ca56b5a5b6935ac6aa56fa56a5b5b'))
         for client in clients:
             client.quiet()
-        cases.append('opaque142_native_and_unmeasured_aux_have_no_reply_or_item_grant')
+        cases.append('opaque142_aux_and_retained167_have_no_reply_or_item_grant')
         def bomb(slot,key):return codec.pack_fields([key,0,slot,1,3,3,1,0,0,0,1,1,0],[4,1,1,4,1,1,1,1,1,1,1,4,1])
         if len(groups)>1:
             groups[0][0].send(118,bomb(0,fresh[1]));groups[1][0].send(118,bomb(0,keys[1]))
