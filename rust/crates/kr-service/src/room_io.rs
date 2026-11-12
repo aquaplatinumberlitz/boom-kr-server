@@ -705,14 +705,27 @@ impl Runtime {
         )
     }
     fn player(&self, m: &Member, host: Option<PlayerId>) -> io::Result<Reply> {
+        let owner = self
+            .channels
+            .get(&m.key.identity)
+            .filter(|channel| channel.connection == m.key.connection)
+            .and_then(|channel| channel.relay_authority.as_ref())
+            .filter(|authority| authority.owns(m.key.identity, m.key.connection));
         let reply = self
             .players
             .get(&m.key.identity)
+            .or_else(|| owner.and_then(|_| self.players.values().next()))
             .ok_or_else(|| err("missing current player projection"))?
             .clone();
+        let body = if let Some(authority) = owner {
+            crate::player_template::PlayerTemplate::parse(&reply.payload)?
+                .project_account(m.key.identity, authority.player().display_name.as_bytes())?
+        } else {
+            reply.payload
+        };
         Ok(packet(
             106,
-            room_wire::player(&reply.payload, m, host == Some(m.key.identity))?,
+            room_wire::player(&body, m, host == Some(m.key.identity))?,
         ))
     }
     fn slot(&self, m: &Member, host: Option<PlayerId>) -> io::Result<Reply> {

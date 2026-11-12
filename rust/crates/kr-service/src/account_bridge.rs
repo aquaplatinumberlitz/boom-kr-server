@@ -181,6 +181,9 @@ pub(crate) struct RelayAuthority {
     client: Client,
 }
 impl RelayAuthority {
+    pub(crate) fn player(&self) -> &Player {
+        &self.player
+    }
     pub(crate) fn generation(&self) -> u64 {
         self.generation
     }
@@ -362,7 +365,7 @@ impl Bridge {
             }
         };
         let player = self.authorize(&guard).await?;
-        if !matches!(player.display_name.len(), 5 | 7)
+        if !(3..=15).contains(&player.display_name.len())
             || player.wire_id == 0
             || !player
                 .display_name

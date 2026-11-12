@@ -26,7 +26,7 @@ pub fn team97(body: &[u8]) -> io::Result<u8> {
 /// Native DC6700 reads character from bits16..28 of the slot state.
 /// Preserve every other bit; choice entitlement belongs to the service.
 pub fn player106_character(body: &[u8], character: u16) -> io::Result<Vec<u8>> {
-    if ![200, 204].contains(&body.len()) || character > 0x1fff {
+    if super::PlayerTemplate::parse_account(body).is_err() || character > 0x1fff {
         return Err(io::Error::other("unsupported player character projection"));
     }
     let mut out = body.to_vec();
@@ -46,7 +46,7 @@ pub fn player106(
     ready: bool,
     chief: bool,
 ) -> io::Result<Vec<u8>> {
-    if ![200, 204].contains(&template.len())
+    if super::PlayerTemplate::parse_account(template).is_err()
         || uint(&template[1..5], Width::U32)? != u64::from(identity)
     {
         return Err(io::Error::other("wrong pinned player106 identity"));
@@ -61,7 +61,10 @@ pub fn player106_state(
     ready: bool,
     chief: bool,
 ) -> io::Result<Vec<u8>> {
-    if ![200, 204].contains(&template.len()) || slot >= 26 || !matches!(team, 0 | 1 | 3) {
+    if super::PlayerTemplate::parse_account(template).is_err()
+        || slot >= 26
+        || !matches!(team, 0 | 1 | 3)
+    {
         return Err(io::Error::other("unsupported player106 slot/team"));
     }
     let mut body = template.to_vec();
