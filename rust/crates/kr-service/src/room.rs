@@ -33,8 +33,6 @@ pub struct Member {
     pub character: Option<u16>,
     pub ready: bool,
     pub setup: bool,
-    /// Observed own report prefix only; not authoritative position.
-    pub(crate) report_position: Option<[u8; 4]>,
     late_after_abort: u16,
     opaque123: u16,
     opaque167: u16,
@@ -403,7 +401,6 @@ impl Room {
                 character: self.player_round().then_some(0),
                 ready: false,
                 setup: false,
-                report_position: None,
                 late_after_abort: 0,
                 opaque123: 0,
                 opaque167: 0,
@@ -542,7 +539,6 @@ impl Room {
             member.opaque167 = 0;
             member.opaque142 = 0;
             member.loading79 = false;
-            member.report_position = None;
             member.life.begin();
             member.late_after_abort = 0;
         }
@@ -634,9 +630,7 @@ impl Room {
             .participants
             .get_mut(&member.key)
             .ok_or_else(|| io::Error::other("missing round participant"))?;
-        // Retain the current round's last report/life snapshot, while preserving
-        // the immutable key/slot/team/character selected at Start.
-        participant.member.report_position = member.report_position;
+        // Retain life evidence while preserving immutable Start identity/choices.
         participant.member.life = member.life;
         participant.departed = Some(now);
         if armed {

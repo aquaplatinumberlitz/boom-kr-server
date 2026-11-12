@@ -163,8 +163,8 @@ pub struct LifeReport127 {
     pub forward: Option<Vec<u8>>,
 }
 /// Candidate disconnect policy using the measured death19/empty serialized
-/// branch. Coordinate bytes come from this member's current-round report;
-/// this is a server-selected forfeit, not a fabricated client report or ACK.
+/// branch. Coordinates are an explicit forfeit policy input, not claimed as
+/// authoritative position or a fabricated client report/ACK.
 pub fn departure170(slot: u8, position: [u8; 4]) -> io::Result<Vec<u8>> {
     if slot >= 8 {
         return Err(io::Error::other("departure slot outside measured bound"));

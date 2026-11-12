@@ -919,6 +919,16 @@ impl Runtime {
         }
         if let Ok(m) = self.member(id, connection) {
             let mut next = self.model.clone();
+            if self.rules.departure == DeparturePolicy::ContinuePlayers
+                && matches!(next.phase, Phase::Ending { .. })
+            {
+                // No native partial-rank/return recovery contract yet. Revoke
+                // every queued owner instead of exposing an idle ghost roster.
+                let _ = next.leave(m.key);
+                self.model = next;
+                self.channels.clear();
+                return;
+            }
             if self.abort.as_ref().is_some_and(|job| !job.completed) {
                 // Invalidate all queued recovery on a second loss. Preserve the
                 // first job for provenance; do not claim multi-loss room recovery.
@@ -1062,11 +1072,9 @@ impl Runtime {
             .participants
             .get(&source)
             .ok_or_else(|| err("missing departed round row"))?;
-        let position = participant
-            .member
-            .report_position
-            .ok_or_else(|| err("departure has no current report position"))?;
-        let notice = packet(170, wire::departure170(participant.member.slot, position)?);
+        // Forfeit places only the dead departed actor at the neutral origin;
+        // it never depends on receiving a gameplay report before the loss.
+        let notice = packet(170, wire::departure170(participant.member.slot, [0; 4])?);
         Ok(next
             .members
             .values()
@@ -1762,6 +1770,11 @@ impl Session {
                 }
                 let m = r.member(self.identity, self.connection)?;
                 if r.rules.departure == DeparturePolicy::ContinuePlayers
+                    && matches!(next.phase, Phase::Loading { .. } | Phase::Ending { .. })
+                {
+                    return Err(err("player leave outside measured idle/playing phase"));
+                }
+                if r.rules.departure == DeparturePolicy::ContinuePlayers
                     && matches!(next.phase, Phase::Armed { .. })
                 {
                     let round = next.depart_player(m.key, Instant::now())?;
@@ -2353,13 +2366,6 @@ impl Session {
                 } else if let Phase::Armed { round } = next.phase {
                     if r.rules.life.reports_enabled() {
                         let report = crate::life::Report::parse(body)?;
-                        if report.slot == m.slot {
-                            next.members
-                                .get_mut(&self.identity)
-                                .expect("current member")
-                                .report_position =
-                                Some(body[2..6].try_into().expect("validated report prefix"));
-                        }
                         let now = Instant::now();
                         let last_blast = next.last_blast;
                         let decision =
