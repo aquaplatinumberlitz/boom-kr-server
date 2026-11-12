@@ -1297,3 +1297,9 @@ và công cụ kiểm, không thay runtime hoặc phạm vi nghiệm thu. [Recor
 
 Relay đã nối account channel và room/round ownership; native xác nhận hai chiều, hai vòng, reset, gói cũ tới cổng đã
 nghỉ và EOF. Chưa đủ relay mesh hoặc vận hành lâu dài. [Record](evidence/checkpoints/records/CP273.json).
+
+
+## CP274 — hồi quy native cuối R1
+
+Các profile direct legacy 2/4/8 người và account đạt hồi quy refactor trong phạm vi hiện hành. Lỗi export/capture và
+raw phục hồi được ghi riêng, không biến thành pass toàn harness. [Record](evidence/checkpoints/records/CP274.json).

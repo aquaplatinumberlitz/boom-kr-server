@@ -4,7 +4,7 @@ Sinh từ [census.json](content/census.json) bằng `python3 tools/content_censu
 
 Tài liệu này trả lời câu hỏi **"full game gồm những gì"** bằng dữ liệu tĩnh trong pack của client.
 Nó không chứng minh client hay server làm gì với từng mục. Cột nhóm nội dung và cột wiki là **suy từ tên**;
-cột "server phải làm gì" để trống cho tới khi có ca chạy thử. Thứ tự công việc vẫn chỉ ở
+cột "server phải làm gì" chỉ ghi kết quả có nguồn của ca chạy thử. Thứ tự công việc vẫn chỉ ở
 [PLAN](PLAN.md#delivery-target).
 
 ## Tóm tắt
@@ -40,381 +40,381 @@ trọng số lớn hơn 0 trong bảng rơi của họ, cặp `d1/d2` trong head
 
 ### Map đấu thường theo theme — 169 map, 24 họ
 
-| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki |
-|---|---|---|---|---|---|---|---|
-| Island | 15 | 15×13 | 8 | 0 | 22 | 8/1 | 보물섬 |
-| Xmas | 14 | 15×13 | 4–8 | 0 | 16 | 8/1 | 크리스마스 (đã ngừng) |
-| Camp | 13 | 15×13 | 4–8 | 0 | 19 | 2/2, 2/3, 2/4, 4/1, 4/2, 8/1 | 캠프 |
-| Forest | 12 | 15×13 | 4–8 | 0 | 25 | 2/4, 8/1 | 포레스트 |
-| LovelyRoom | 10 | 15×13 | 8 | 10 | 5 | 8/1 | 포키의러블리룸 |
-| PangLand | 10 | 15×13 | 8 | 10 | 14 | 4/2, 8/1 | 팡랜드 |
-| Aqua | 9 | 15×13 | 8 | 9 | 19 | 2/4, 8/1 | 아쿠아 |
-| Patrit | 8 | 15×13 | 4–8 | 0 | 18 | 2/4, 4/1, 8/1 | 해적 |
-| Space | 8 | 15×13 | 8 | 8 | 0 | 12/1, 8/1 | 우주맵 |
-| Cemetery | 7 | 15×13 | 4–8 | 0 | 30 | 2/4, 8/1 | 공동묘지 |
-| Cookie | 7 | 15×13 | 4–8 | 0 | 14 | 4/1, 8/1 | 쿠키 |
-| Desert | 7 | 15×13 | 4–8 | 0 | 10 | 8/1 | 데저트 |
-| Factory | 7 | 15×13 | 8 | 0 | 15 | 8/1 | 팩토리 |
-| Ice | 7 | 15×13 | 4–8 | 0 | 11 | 2/4, 8/1 | 아이스 |
-| Mine | 7 | 15×13 | 6–8 | 0 | 14 | 8/1 | 광산 |
-| Ocean | 7 | 15×13 | 8 | 0 | 15 | 8/1 | 바다 |
-| Village | 6 | 15×13 | 4–8 | 0 | 11 | 8/1 | 빌리지 |
-| Tomb | 5 | 15×13 | 6–8 | 0 | 28 | 8/1 | 무덤 |
-| kfg | 3 | 15×13 | 8 | 0 | 11 | 8/1 | 켄터키 |
-| Kfg | 3 | 15×13 | 6–8 | 0 | 15 | 8/1 | 켄터키 |
-| forest | 1 | 15×13 | 8 | 0 | 5 | 8/1 | 포레스트 |
-| mine | 1 | 15×13 | 2 | 0 | 0 | 2/1 | 광산 |
-| Pangland | 1 | 15×13 | 8 | 1 | 0 | 8/1 | 팡랜드 |
-| patrit | 1 | 15×13 | 8 | 0 | 7 | 8/1 | 해적 |
+| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki | Server phải làm gì |
+|---|---|---|---|---|---|---|---|---|
+| Island | 15 | 15×13 | 8 | 0 | 22 | 8/1 | 보물섬 |  |
+| Xmas | 14 | 15×13 | 4–8 | 0 | 16 | 8/1 | 크리스마스 (đã ngừng) |  |
+| Camp | 13 | 15×13 | 4–8 | 0 | 19 | 2/2, 2/3, 2/4, 4/1, 4/2, 8/1 | 캠프 |  |
+| Forest | 12 | 15×13 | 4–8 | 0 | 25 | 2/4, 8/1 | 포레스트 |  |
+| LovelyRoom | 10 | 15×13 | 8 | 10 | 5 | 8/1 | 포키의러블리룸 |  |
+| PangLand | 10 | 15×13 | 8 | 10 | 14 | 4/2, 8/1 | 팡랜드 |  |
+| Aqua | 9 | 15×13 | 8 | 9 | 19 | 2/4, 8/1 | 아쿠아 |  |
+| Patrit | 8 | 15×13 | 4–8 | 0 | 18 | 2/4, 4/1, 8/1 | 해적 |  |
+| Space | 8 | 15×13 | 8 | 8 | 0 | 12/1, 8/1 | 우주맵 |  |
+| Cemetery | 7 | 15×13 | 4–8 | 0 | 30 | 2/4, 8/1 | 공동묘지 |  |
+| Cookie | 7 | 15×13 | 4–8 | 0 | 14 | 4/1, 8/1 | 쿠키 |  |
+| Desert | 7 | 15×13 | 4–8 | 0 | 10 | 8/1 | 데저트 |  |
+| Factory | 7 | 15×13 | 8 | 0 | 15 | 8/1 | 팩토리 |  |
+| Ice | 7 | 15×13 | 4–8 | 0 | 11 | 2/4, 8/1 | 아이스 |  |
+| Mine | 7 | 15×13 | 6–8 | 0 | 14 | 8/1 | 광산 |  |
+| Ocean | 7 | 15×13 | 8 | 0 | 15 | 8/1 | 바다 |  |
+| Village | 6 | 15×13 | 4–8 | 0 | 11 | 8/1 | 빌리지 | B, mới đo điều kiện chọn Village10; chưa load/chơi. [Phạm vi](protocol/load-phase.md#village10-map-selection) |
+| Tomb | 5 | 15×13 | 6–8 | 0 | 28 | 8/1 | 무덤 |  |
+| kfg | 3 | 15×13 | 8 | 0 | 11 | 8/1 | 켄터키 |  |
+| Kfg | 3 | 15×13 | 6–8 | 0 | 15 | 8/1 | 켄터키 |  |
+| forest | 1 | 15×13 | 8 | 0 | 5 | 8/1 | 포레스트 |  |
+| mine | 1 | 15×13 | 2 | 0 | 0 | 2/1 | 광산 |  |
+| Pangland | 1 | 15×13 | 8 | 1 | 0 | 8/1 | 팡랜드 |  |
+| patrit | 1 | 15×13 | 8 | 0 | 7 | 8/1 | 해적 |  |
 
 ### Biến thể của map đấu (tiền tố Ex/Retro/Event/Novice/NXCL/ladder…) — 144 map, 88 họ
 
-| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki |
-|---|---|---|---|---|---|---|---|
-| CaJJ_Wriggle | 7 | 15×13 | 4 | 7 | 7 | 2/2 | biến thể của Wriggle |
-| RetroCampN | 6 | 15×13 | 8 | 6 | 8 | 12/1 | biến thể của Camp |
-| RetroFactoryN | 6 | 15×13 | 8 | 6 | 7 | 12/1 | biến thể của Factory |
-| RetroForestN | 6 | 15×13 | 8 | 6 | 7 | 12/1 | biến thể của Forest |
-| RetroPatritN | 6 | 15×13 | 8 | 6 | 8 | 12/1 | biến thể của Patrit |
-| RetroVillageN | 6 | 15×13 | 8 | 6 | 8 | 12/1 | biến thể của Village |
-| CaJJ_CAPong | 5 | 15×13 | 4 | 0 | 7 | 2/2 | biến thể của CAPong |
-| CaJJ_Clover | 5 | 15×13 | 8 | 0 | 0 | 2/4 | biến thể của Clover |
-| RetroWriggleN | 5 | 15×13 | 4 | 5 | 7 | 2/2 | biến thể của Wriggle |
-| Fm_CAPong | 3 | 15×13 | 4 | 0 | 7 | 2/2 | biến thể của CAPong |
-| Fm_RescueET | 3 | 15×13 | 4 | 3 | 5 | 2/2 | biến thể của RescueET |
-| CaJJ_Space | 2 | 15×13 | 8 | 2 | 0 | 12/1, 8/1 | biến thể của Space |
-| ExBula | 2 | 15×13 | 8 | 0 | 7 | 2/4, 4/2 | biến thể của Bula |
-| ExCamp | 2 | 15×13 | 8 | 0 | 9 | 2/4 | biến thể của Camp |
-| ExFactory | 2 | 15×13 | 8 | 0 | 11 | 4/2, 8/1 | biến thể của Factory |
-| ExPatrit | 2 | 15×13 | 8 | 0 | 13 | 8/1 | biến thể của Patrit |
-| ExTomb | 2 | 15×13 | 8 | 0 | 21 | 8/1 | biến thể của Tomb |
-| ExVillage | 2 | 15×13 | 8 | 0 | 7 | 2/4, 4/2 | biến thể của Village |
-| Fm_Space | 2 | 15×13 | 8 | 2 | 0 | 12/1 | biến thể của Space |
-| Fm_Wriggle | 2 | 15×13 | 4 | 2 | 7 | 2/2 | biến thể của Wriggle |
-| BSBigCamp | 1 | 19×17 | 8 | 0 | 17 | 2/4 | biến thể của Camp |
-| BSBigPatrit | 1 | 19×17 | 8 | 0 | 11 | 12/1 | biến thể của Patrit |
-| BSBigVillage | 1 | 19×17 | 8 | 0 | 11 | 8/1 | biến thể của Village |
-| BSSmallCamp | 1 | 15×13 | 4 | 0 | 14 | 2/2 | biến thể của Camp |
-| BSSmallPatrit | 1 | 15×13 | 4 | 0 | 11 | 12/1 | biến thể của Patrit |
-| BSSmallVillage | 1 | 15×13 | 4 | 0 | 11 | 12/1 | biến thể của Village |
-| CaJJ_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |
-| CaJJ_Factory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |
-| CaJJ_Forest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Forest |
-| CaJJ_Ocean | 1 | 15×13 | 8 | 0 | 14 | 8/1 | biến thể của Ocean |
-| CaJJ_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |
-| CaJJ_RetroCamp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |
-| CaJJ_RetroFactory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |
-| CaJJ_RetroForest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Forest |
-| CaJJ_RetroPatrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |
-| CaJJ_RetroVillage | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |
-| CaJJ_Tomb | 1 | 15×13 | 6 | 0 | 21 | 8/1 | biến thể của Tomb |
-| CaJJ_Village | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |
-| EventCamp | 1 | 15×13 | 8 | 0 | 0 | 8/1 | biến thể của Camp |
-| EventFactory | 1 | 15×13 | 8 | 0 | 0 | 8/1 | biến thể của Factory |
-| EventForest | 1 | 15×13 | 8 | 0 | 0 | 8/1 | biến thể của Forest |
-| EventOcean | 1 | 15×13 | 8 | 0 | 0 | 8/1 | biến thể của Ocean |
-| EventPatrit | 1 | 15×13 | 8 | 0 | 0 | 8/1 | biến thể của Patrit |
-| ExForest | 1 | 15×13 | 8 | 0 | 4 | 8/1 | biến thể của Forest |
-| Fm_AIBtlDesert | 1 | 15×13 | 4 | 0 | 0 | 8/1 | biến thể của Desert |
-| Fm_AIBtlForest | 1 | 15×13 | 8 | 0 | 18 | 2/4 | biến thể của Forest |
-| Fm_AIBtlPatrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |
-| Fm_AIBtlTomb | 1 | 15×13 | 8 | 0 | 5 | 8/1 | biến thể của Tomb |
-| Fm_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |
-| Fm_Coloring | 1 | 15×13 | 4 | 1 | 12 | 2/2 | biến thể của Coloring |
-| Fm_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |
-| Fm_Tomb | 1 | 15×13 | 8 | 0 | 5 | 8/1 | biến thể của Tomb |
-| Fm_Village | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |
-| LJ_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |
-| LJ_Factory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |
-| LJ_Forest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Forest |
-| LJ_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |
-| LJ_Tomb | 1 | 15×13 | 6 | 0 | 21 | 8/1 | biến thể của Tomb |
-| LJ_Village | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |
-| NL_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |
-| NL_Factory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |
-| NL_Forest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Forest |
-| NL_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |
-| NL_Tomb | 1 | 15×13 | 6 | 0 | 21 | 8/1 | biến thể của Tomb |
-| NL_Village | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |
-| NoviceFactory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |
-| NoviceForest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Forest |
-| NoviceMine | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Mine |
-| NovicePatrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |
-| NoviceVillage | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |
-| NXCL_Aqua | 1 | 15×13 | 8 | 1 | 10 | 8/1 | biến thể của Aqua |
-| NXCL_Camp | 1 | 15×13 | 8 | 0 | 15 | 2/4 | biến thể của Camp |
-| NXCL_Cookie | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Cookie |
-| NXCL_Desert | 1 | 15×13 | 8 | 0 | 8 | 8/1 | biến thể của Desert |
-| NXCL_Factory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |
-| NXCL_Forest | 1 | 15×13 | 8 | 0 | 12 | 8/1 | biến thể của Forest |
-| NXCL_Ice | 1 | 15×13 | 8 | 0 | 6 | 8/1 | biến thể của Ice |
-| NXCL_Mine | 1 | 15×13 | 6 | 0 | 13 | 8/1 | biến thể của Mine |
-| NXCL_Ocean | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Ocean |
-| NXCL_PangLand | 1 | 15×13 | 8 | 1 | 12 | 8/1 | biến thể của PangLand |
-| NXCL_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |
-| NXCL_Tomb | 1 | 15×13 | 6 | 0 | 22 | 8/1 | biến thể của Tomb |
-| NXCL_Village | 1 | 15×13 | 6 | 0 | 13 | 8/1 | biến thể của Village |
-| WinningStreak_Patrit | 1 | 15×13 | 8 | 0 | 4 | 8/1 | biến thể của Patrit |
-| WL_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |
-| WL_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |
-| WL_Space | 1 | 15×13 | 8 | 1 | 0 | 8/1 | biến thể của Space |
-| WL_Tomb | 1 | 15×13 | 6 | 0 | 21 | 8/1 | biến thể của Tomb |
+| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki | Server phải làm gì |
+|---|---|---|---|---|---|---|---|---|
+| CaJJ_Wriggle | 7 | 15×13 | 4 | 7 | 7 | 2/2 | biến thể của Wriggle |  |
+| RetroCampN | 6 | 15×13 | 8 | 6 | 8 | 12/1 | biến thể của Camp |  |
+| RetroFactoryN | 6 | 15×13 | 8 | 6 | 7 | 12/1 | biến thể của Factory |  |
+| RetroForestN | 6 | 15×13 | 8 | 6 | 7 | 12/1 | biến thể của Forest |  |
+| RetroPatritN | 6 | 15×13 | 8 | 6 | 8 | 12/1 | biến thể của Patrit |  |
+| RetroVillageN | 6 | 15×13 | 8 | 6 | 8 | 12/1 | biến thể của Village |  |
+| CaJJ_CAPong | 5 | 15×13 | 4 | 0 | 7 | 2/2 | biến thể của CAPong |  |
+| CaJJ_Clover | 5 | 15×13 | 8 | 0 | 0 | 2/4 | biến thể của Clover |  |
+| RetroWriggleN | 5 | 15×13 | 4 | 5 | 7 | 2/2 | biến thể của Wriggle |  |
+| Fm_CAPong | 3 | 15×13 | 4 | 0 | 7 | 2/2 | biến thể của CAPong |  |
+| Fm_RescueET | 3 | 15×13 | 4 | 3 | 5 | 2/2 | biến thể của RescueET |  |
+| CaJJ_Space | 2 | 15×13 | 8 | 2 | 0 | 12/1, 8/1 | biến thể của Space |  |
+| ExBula | 2 | 15×13 | 8 | 0 | 7 | 2/4, 4/2 | biến thể của Bula |  |
+| ExCamp | 2 | 15×13 | 8 | 0 | 9 | 2/4 | biến thể của Camp |  |
+| ExFactory | 2 | 15×13 | 8 | 0 | 11 | 4/2, 8/1 | biến thể của Factory |  |
+| ExPatrit | 2 | 15×13 | 8 | 0 | 13 | 8/1 | biến thể của Patrit |  |
+| ExTomb | 2 | 15×13 | 8 | 0 | 21 | 8/1 | biến thể của Tomb |  |
+| ExVillage | 2 | 15×13 | 8 | 0 | 7 | 2/4, 4/2 | biến thể của Village |  |
+| Fm_Space | 2 | 15×13 | 8 | 2 | 0 | 12/1 | biến thể của Space |  |
+| Fm_Wriggle | 2 | 15×13 | 4 | 2 | 7 | 2/2 | biến thể của Wriggle |  |
+| BSBigCamp | 1 | 19×17 | 8 | 0 | 17 | 2/4 | biến thể của Camp |  |
+| BSBigPatrit | 1 | 19×17 | 8 | 0 | 11 | 12/1 | biến thể của Patrit |  |
+| BSBigVillage | 1 | 19×17 | 8 | 0 | 11 | 8/1 | biến thể của Village |  |
+| BSSmallCamp | 1 | 15×13 | 4 | 0 | 14 | 2/2 | biến thể của Camp |  |
+| BSSmallPatrit | 1 | 15×13 | 4 | 0 | 11 | 12/1 | biến thể của Patrit |  |
+| BSSmallVillage | 1 | 15×13 | 4 | 0 | 11 | 12/1 | biến thể của Village |  |
+| CaJJ_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |  |
+| CaJJ_Factory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |  |
+| CaJJ_Forest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Forest |  |
+| CaJJ_Ocean | 1 | 15×13 | 8 | 0 | 14 | 8/1 | biến thể của Ocean |  |
+| CaJJ_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |  |
+| CaJJ_RetroCamp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |  |
+| CaJJ_RetroFactory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |  |
+| CaJJ_RetroForest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Forest |  |
+| CaJJ_RetroPatrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |  |
+| CaJJ_RetroVillage | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |  |
+| CaJJ_Tomb | 1 | 15×13 | 6 | 0 | 21 | 8/1 | biến thể của Tomb |  |
+| CaJJ_Village | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |  |
+| EventCamp | 1 | 15×13 | 8 | 0 | 0 | 8/1 | biến thể của Camp |  |
+| EventFactory | 1 | 15×13 | 8 | 0 | 0 | 8/1 | biến thể của Factory |  |
+| EventForest | 1 | 15×13 | 8 | 0 | 0 | 8/1 | biến thể của Forest |  |
+| EventOcean | 1 | 15×13 | 8 | 0 | 0 | 8/1 | biến thể của Ocean |  |
+| EventPatrit | 1 | 15×13 | 8 | 0 | 0 | 8/1 | biến thể của Patrit |  |
+| ExForest | 1 | 15×13 | 8 | 0 | 4 | 8/1 | biến thể của Forest |  |
+| Fm_AIBtlDesert | 1 | 15×13 | 4 | 0 | 0 | 8/1 | biến thể của Desert |  |
+| Fm_AIBtlForest | 1 | 15×13 | 8 | 0 | 18 | 2/4 | biến thể của Forest |  |
+| Fm_AIBtlPatrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |  |
+| Fm_AIBtlTomb | 1 | 15×13 | 8 | 0 | 5 | 8/1 | biến thể của Tomb |  |
+| Fm_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |  |
+| Fm_Coloring | 1 | 15×13 | 4 | 1 | 12 | 2/2 | biến thể của Coloring |  |
+| Fm_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |  |
+| Fm_Tomb | 1 | 15×13 | 8 | 0 | 5 | 8/1 | biến thể của Tomb |  |
+| Fm_Village | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |  |
+| LJ_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |  |
+| LJ_Factory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |  |
+| LJ_Forest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Forest |  |
+| LJ_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |  |
+| LJ_Tomb | 1 | 15×13 | 6 | 0 | 21 | 8/1 | biến thể của Tomb |  |
+| LJ_Village | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |  |
+| NL_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |  |
+| NL_Factory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |  |
+| NL_Forest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Forest |  |
+| NL_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |  |
+| NL_Tomb | 1 | 15×13 | 6 | 0 | 21 | 8/1 | biến thể của Tomb |  |
+| NL_Village | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |  |
+| NoviceFactory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |  |
+| NoviceForest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Forest |  |
+| NoviceMine | 1 | 15×13 | 8 | 0 | 10 | 8/1 | biến thể của Mine |  |
+| NovicePatrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |  |
+| NoviceVillage | 1 | 15×13 | 6 | 0 | 11 | 8/1 | biến thể của Village |  |
+| NXCL_Aqua | 1 | 15×13 | 8 | 1 | 10 | 8/1 | biến thể của Aqua |  |
+| NXCL_Camp | 1 | 15×13 | 8 | 0 | 15 | 2/4 | biến thể của Camp |  |
+| NXCL_Cookie | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Cookie |  |
+| NXCL_Desert | 1 | 15×13 | 8 | 0 | 8 | 8/1 | biến thể của Desert |  |
+| NXCL_Factory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Factory |  |
+| NXCL_Forest | 1 | 15×13 | 8 | 0 | 12 | 8/1 | biến thể của Forest |  |
+| NXCL_Ice | 1 | 15×13 | 8 | 0 | 6 | 8/1 | biến thể của Ice |  |
+| NXCL_Mine | 1 | 15×13 | 6 | 0 | 13 | 8/1 | biến thể của Mine |  |
+| NXCL_Ocean | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Ocean |  |
+| NXCL_PangLand | 1 | 15×13 | 8 | 1 | 12 | 8/1 | biến thể của PangLand |  |
+| NXCL_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |  |
+| NXCL_Tomb | 1 | 15×13 | 6 | 0 | 22 | 8/1 | biến thể của Tomb |  |
+| NXCL_Village | 1 | 15×13 | 6 | 0 | 13 | 8/1 | biến thể của Village |  |
+| WinningStreak_Patrit | 1 | 15×13 | 8 | 0 | 4 | 8/1 | biến thể của Patrit |  |
+| WL_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | biến thể của Camp |  |
+| WL_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | biến thể của Patrit |  |
+| WL_Space | 1 | 15×13 | 8 | 1 | 0 | 8/1 | biến thể của Space |  |
+| WL_Tomb | 1 | 15×13 | 6 | 0 | 21 | 8/1 | biến thể của Tomb |  |
 
 ### Nhiệm vụ và mode riêng — 122 map, 18 họ
 
-| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki |
-|---|---|---|---|---|---|---|---|
-| SnowyFields | 18 | 15×13 | 4–8 | 13 | 33 | 1/4, 2/2, 2/4, 8/1 | 눈싸움 (sự kiện, chưa chắc) |
-| Gumiho | 11 | 15×13 | 8 | 11 | 10 | 12/1, 8/1 | 구미호 |
-| Baseball | 10 | 15×13 | 8 | 10 | 0 | 2/4 | 프로야구 |
-| Hamster | 8 | 15×13 | 8 | 8 | 0 | 4/2 | 햄스터팜 |
-| Kart | 8 | 15×13 | 4–8 | 0 | 13 | 8/1 | 카트 |
-| Bula | 7 | 15×13 | 6–8 | 0 | 2 | 3/2, 4/2 | 불라 |
-| Wriggle | 7 | 15×13 | 4 | 7 | 7 | 2/2 | 꼬물이 |
-| Clover | 6 | 15×13 | 8 | 6 | 0 | 2/4 | 클로버 |
-| Rabbit | 6 | 15×13 | 8 | 6 | 3 | 4/2 | 바니팜 |
-| Zombie | 6 | 15×13 | 8 | 6 | 10 | 8/1 | 좀비 |
-| CAPong | 5 | 15×13 | 4 | 0 | 7 | 2/2 | 크아퐁 |
-| Coloring | 5 | 15×13 | 4 | 5 | 20 | 2/2 | 색칠하기 |
-| PopcadeA | 5 | 15×13 | 1 | 5 | 18 | 1/1 | 팝케이드 |
-| PopcadeB | 5 | 15×13 | 2 | 5 | 18 | 1/2 | 팝케이드 |
-| PopcadeC | 5 | 15×13 | 4 | 5 | 18 | 1/4 | 팝케이드 |
-| Zzolman | 5 | 15×13 | 4 | 5 | 18 | 1/4 | 쫄맨 (đã ngừng) |
-| RescueET | 3 | 15×13 | 4 | 3 | 5 | 2/2 | 외계인구출 (đã ngừng) |
-| SuperFighter | 2 | 15×13 | 8 | 0 | 11 | 2/4 | 슈퍼파이터 (sự kiện) |
+| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki | Server phải làm gì |
+|---|---|---|---|---|---|---|---|---|
+| SnowyFields | 18 | 15×13 | 4–8 | 13 | 33 | 1/4, 2/2, 2/4, 8/1 | 눈싸움 (sự kiện, chưa chắc) |  |
+| Gumiho | 11 | 15×13 | 8 | 11 | 10 | 12/1, 8/1 | 구미호 |  |
+| Baseball | 10 | 15×13 | 8 | 10 | 0 | 2/4 | 프로야구 |  |
+| Hamster | 8 | 15×13 | 8 | 8 | 0 | 4/2 | 햄스터팜 |  |
+| Kart | 8 | 15×13 | 4–8 | 0 | 13 | 8/1 | 카트 |  |
+| Bula | 7 | 15×13 | 6–8 | 0 | 2 | 3/2, 4/2 | 불라 |  |
+| Wriggle | 7 | 15×13 | 4 | 7 | 7 | 2/2 | 꼬물이 |  |
+| Clover | 6 | 15×13 | 8 | 6 | 0 | 2/4 | 클로버 |  |
+| Rabbit | 6 | 15×13 | 8 | 6 | 3 | 4/2 | 바니팜 |  |
+| Zombie | 6 | 15×13 | 8 | 6 | 10 | 8/1 | 좀비 |  |
+| CAPong | 5 | 15×13 | 4 | 0 | 7 | 2/2 | 크아퐁 |  |
+| Coloring | 5 | 15×13 | 4 | 5 | 20 | 2/2 | 색칠하기 |  |
+| PopcadeA | 5 | 15×13 | 1 | 5 | 18 | 1/1 | 팝케이드 |  |
+| PopcadeB | 5 | 15×13 | 2 | 5 | 18 | 1/2 | 팝케이드 |  |
+| PopcadeC | 5 | 15×13 | 4 | 5 | 18 | 1/4 | 팝케이드 |  |
+| Zzolman | 5 | 15×13 | 4 | 5 | 18 | 1/4 | 쫄맨 (đã ngừng) |  |
+| RescueET | 3 | 15×13 | 4 | 3 | 5 | 2/2 | 외계인구출 (đã ngừng) |  |
+| SuperFighter | 2 | 15×13 | 8 | 0 | 11 | 2/4 | 슈퍼파이터 (sự kiện) |  |
 
 ### Monster mode — 368 map, 61 họ
 
-| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki |
-|---|---|---|---|---|---|---|---|
-| Monster | 47 | 15×13 | 4 | 47 | 24 | 1/4 |  |
-| MonSeal | 37 | 15×13 | 4 | 37 | 17 | 1/4 | 물개의분노 |
-| MonPen | 34 | 15×13 | 4 | 34 | 13 | 1/4 | 황제의귀환 |
-| MonSnowBear | 30 | 15×13 | 4 | 30 | 4 | 1/4 |  |
-| MonGolem | 27 | 15×13 | 4 | 27 | 17 | 1/4 | 골렘대침공 |
-| MonRobot | 27 | 15×13 | 4 | 27 | 15 | 1/4 | 로봇대공습 |
-| MonTurtle | 27 | 15×13 | 4 | 27 | 11 | 1/4 | 거북대격돌 |
-| MonS2Fire | 15 | 100×10 +3 cỡ | 1–4 | 15 | 3 | 1/1, 1/4 |  |
-| MonUnlimited | 10 | 15×13 | 4 | 10 | 11 | 1/4 |  |
-| MonCity | 9 | 15×13 | 4 | 9 | 14 | 1/4 |  |
-| MonS2Sand | 5 | 100×10 | 4 | 5 | 0 | 1/4 |  |
-| MonWarsHP | 5 | 15×13 | 4 | 5 | 11 | 1/4 |  |
-| MonWarsHS | 5 | 15×13 | 4 | 5 | 11 | 1/4 |  |
-| MonWarsBG | 4 | 15×13 | 4 | 4 | 16 | 1/4 |  |
-| MonWarsBM | 4 | 15×13 | 4 | 4 | 14 | 1/4 |  |
-| MonWarsBR | 4 | 15×13 | 4 | 4 | 14 | 1/4 |  |
-| MonWarsBT | 4 | 15×13 | 4 | 4 | 11 | 1/4 |  |
-| Fm_MonGolem | 3 | 15×13 | 4 | 3 | 16 | 1/4 | 골렘대침공 |
-| Fm_MonSeal | 3 | 15×13 | 4 | 3 | 11 | 1/4 | 물개의분노 |
-| Fm_MonSnowBear | 3 | 15×13 | 4 | 3 | 4 | 1/4 |  |
-| Fm_Monster | 3 | 15×13 | 4 | 3 | 14 | 1/4 |  |
-| Fm_MonTurtle | 3 | 15×13 | 4 | 3 | 11 | 1/4 | 거북대격돌 |
-| MonWarsNG | 3 | 15×13 | 4 | 3 | 11 | 1/4 |  |
-| MonWarsNM | 3 | 15×13 | 4 | 3 | 12 | 1/4 |  |
-| MonWarsNP | 3 | 15×13 | 4 | 3 | 12 | 1/4 |  |
-| MonWarsNR | 3 | 15×13 | 4 | 3 | 13 | 1/4 |  |
-| MonWarsNS | 3 | 15×13 | 4 | 3 | 13 | 1/4 |  |
-| MonWarsNT | 3 | 15×13 | 4 | 3 | 11 | 1/4 |  |
-| MonNoviceGolem | 2 | 15×13 | 4 | 2 | 16 | 1/4 |  |
-| MonNoviceSnow | 2 | 15×13 | 4 | 2 | 4 | 1/4 |  |
-| MonNoviceTako | 2 | 15×13 | 4 | 2 | 13 | 1/4 |  |
-| MonNoviceTurtle | 2 | 15×13 | 4 | 2 | 0 | 1/4 |  |
-| MonWarsBS | 2 | 15×13 | 4 | 2 | 11 | 1/4 |  |
-| MonWarsHH | 2 | 15×13 | 4 | 2 | 12 | 1/4 |  |
-| MonWarsHM | 2 | 15×13 | 4 | 2 | 11 | 1/4 |  |
-| MonWarsHR | 2 | 15×13 | 4 | 2 | 13 | 1/4 |  |
-| MonS2Sand01Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |
-| MonS2Sand02Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |
-| MonS2Sand03Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |
-| MonS2Sand04Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |
-| MonS2Sand05Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |
-| MonS2Sand06Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |
-| MonWarsBBR | 1 | 15×13 | 8 | 1 | 0 | 8/1 |  |
-| MonWarsBGB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsBLB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsBOB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsBPB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsBSB | 1 | 15×13 | 4 | 1 | 10 | 1/4 |  |
-| MonWarsBTB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsHGB | 1 | 15×13 | 4 | 1 | 16 | 1/4 |  |
-| MonWarsHLB | 1 | 15×13 | 4 | 1 | 13 | 1/4 |  |
-| MonWarsHOB | 1 | 15×13 | 4 | 1 | 6 | 1/4 |  |
-| MonWarsHPB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsHSB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsHTB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsNGB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsNLB | 1 | 15×13 | 4 | 1 | 12 | 1/4 |  |
-| MonWarsNOB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsNPB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsNSB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
-| MonWarsNTB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |
+| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki | Server phải làm gì |
+|---|---|---|---|---|---|---|---|---|
+| Monster | 47 | 15×13 | 4 | 47 | 24 | 1/4 |  |  |
+| MonSeal | 37 | 15×13 | 4 | 37 | 17 | 1/4 | 물개의분노 |  |
+| MonPen | 34 | 15×13 | 4 | 34 | 13 | 1/4 | 황제의귀환 |  |
+| MonSnowBear | 30 | 15×13 | 4 | 30 | 4 | 1/4 |  |  |
+| MonGolem | 27 | 15×13 | 4 | 27 | 17 | 1/4 | 골렘대침공 |  |
+| MonRobot | 27 | 15×13 | 4 | 27 | 15 | 1/4 | 로봇대공습 |  |
+| MonTurtle | 27 | 15×13 | 4 | 27 | 11 | 1/4 | 거북대격돌 |  |
+| MonS2Fire | 15 | 100×10 +3 cỡ | 1–4 | 15 | 3 | 1/1, 1/4 |  |  |
+| MonUnlimited | 10 | 15×13 | 4 | 10 | 11 | 1/4 |  |  |
+| MonCity | 9 | 15×13 | 4 | 9 | 14 | 1/4 |  |  |
+| MonS2Sand | 5 | 100×10 | 4 | 5 | 0 | 1/4 |  |  |
+| MonWarsHP | 5 | 15×13 | 4 | 5 | 11 | 1/4 |  |  |
+| MonWarsHS | 5 | 15×13 | 4 | 5 | 11 | 1/4 |  |  |
+| MonWarsBG | 4 | 15×13 | 4 | 4 | 16 | 1/4 |  |  |
+| MonWarsBM | 4 | 15×13 | 4 | 4 | 14 | 1/4 |  |  |
+| MonWarsBR | 4 | 15×13 | 4 | 4 | 14 | 1/4 |  |  |
+| MonWarsBT | 4 | 15×13 | 4 | 4 | 11 | 1/4 |  |  |
+| Fm_MonGolem | 3 | 15×13 | 4 | 3 | 16 | 1/4 | 골렘대침공 |  |
+| Fm_MonSeal | 3 | 15×13 | 4 | 3 | 11 | 1/4 | 물개의분노 |  |
+| Fm_MonSnowBear | 3 | 15×13 | 4 | 3 | 4 | 1/4 |  |  |
+| Fm_Monster | 3 | 15×13 | 4 | 3 | 14 | 1/4 |  |  |
+| Fm_MonTurtle | 3 | 15×13 | 4 | 3 | 11 | 1/4 | 거북대격돌 |  |
+| MonWarsNG | 3 | 15×13 | 4 | 3 | 11 | 1/4 |  |  |
+| MonWarsNM | 3 | 15×13 | 4 | 3 | 12 | 1/4 |  |  |
+| MonWarsNP | 3 | 15×13 | 4 | 3 | 12 | 1/4 |  |  |
+| MonWarsNR | 3 | 15×13 | 4 | 3 | 13 | 1/4 |  |  |
+| MonWarsNS | 3 | 15×13 | 4 | 3 | 13 | 1/4 |  |  |
+| MonWarsNT | 3 | 15×13 | 4 | 3 | 11 | 1/4 |  |  |
+| MonNoviceGolem | 2 | 15×13 | 4 | 2 | 16 | 1/4 |  |  |
+| MonNoviceSnow | 2 | 15×13 | 4 | 2 | 4 | 1/4 |  |  |
+| MonNoviceTako | 2 | 15×13 | 4 | 2 | 13 | 1/4 |  |  |
+| MonNoviceTurtle | 2 | 15×13 | 4 | 2 | 0 | 1/4 |  |  |
+| MonWarsBS | 2 | 15×13 | 4 | 2 | 11 | 1/4 |  |  |
+| MonWarsHH | 2 | 15×13 | 4 | 2 | 12 | 1/4 |  |  |
+| MonWarsHM | 2 | 15×13 | 4 | 2 | 11 | 1/4 |  |  |
+| MonWarsHR | 2 | 15×13 | 4 | 2 | 13 | 1/4 |  |  |
+| MonS2Sand01Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |  |
+| MonS2Sand02Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |  |
+| MonS2Sand03Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |  |
+| MonS2Sand04Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |  |
+| MonS2Sand05Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |  |
+| MonS2Sand06Boss | 1 | 40×10 | 4 | 1 | 0 | 1/4 |  |  |
+| MonWarsBBR | 1 | 15×13 | 8 | 1 | 0 | 8/1 |  |  |
+| MonWarsBGB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsBLB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsBOB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsBPB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsBSB | 1 | 15×13 | 4 | 1 | 10 | 1/4 |  |  |
+| MonWarsBTB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsHGB | 1 | 15×13 | 4 | 1 | 16 | 1/4 |  |  |
+| MonWarsHLB | 1 | 15×13 | 4 | 1 | 13 | 1/4 |  |  |
+| MonWarsHOB | 1 | 15×13 | 4 | 1 | 6 | 1/4 |  |  |
+| MonWarsHPB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsHSB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsHTB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsNGB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsNLB | 1 | 15×13 | 4 | 1 | 12 | 1/4 |  |  |
+| MonWarsNOB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsNPB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsNSB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
+| MonWarsNTB | 1 | 15×13 | 4 | 1 | 11 | 1/4 |  |  |
 
 ### RPG và CA Hero — 124 map, 53 họ
 
-| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki |
-|---|---|---|---|---|---|---|---|
-| CAhero | 53 | 15×13 | 8 | 26 | 38 | 2/4, 8/4 | 크아 히어로 |
-| RPG0801_N | 3 | 21×16 +2 cỡ | 4 | 3 | 0 | 1/4 |  |
-| RPG08_N | 3 | 20×22 +2 cỡ | 4 | 3 | 0 | 1/4 |  |
-| RPG09_N | 3 | 23×17 +2 cỡ | 4 | 3 | 0 | 1/4 |  |
-| RPG10_N | 3 | 20×16 +2 cỡ | 4 | 3 | 0 | 1/4 |  |
-| RPG11_N | 3 | 25×25 | 4 | 3 | 0 | 1/4 |  |
-| RPG04_N | 2 | 20×25 +1 cỡ | 4 | 2 | 0 | 1/4 |  |
-| RPG0501_N | 2 | 25×12 +1 cỡ | 4 | 2 | 0 | 1/4 |  |
-| RPG05_N | 2 | 25×17 +1 cỡ | 4 | 2 | 0 | 1/4 |  |
-| RPG0601_N | 2 | 20×15 +1 cỡ | 4 | 2 | 0 | 1/4 |  |
-| RPG06_N | 2 | 20×20 +1 cỡ | 4 | 2 | 0 | 1/4 |  |
-| RPG0701_N | 2 | 20×25 +1 cỡ | 4 | 2 | 0 | 1/4 |  |
-| RPG07_N | 2 | 25×12 +1 cỡ | 4 | 2 | 0 | 1/4 |  |
-| RPG0901_N | 2 | 20×25 +1 cỡ | 4 | 2 | 0 | 1/4 |  |
-| RPG1001_N | 2 | 21×21 +1 cỡ | 4 | 2 | 0 | 1/4 |  |
-| RPG | 1 | 21×19 | 4 | 1 | 0 | 1/4 |  |
-| RPG01_B | 1 | 20×18 | 4 | 1 | 0 | 1/4 |  |
-| RPG01_N | 1 | 25×15 | 4 | 1 | 0 | 1/4 |  |
-| RPG01_S | 1 | 25×20 | 4 | 1 | 0 | 1/4 |  |
-| RPG02_B | 1 | 21×20 | 4 | 1 | 0 | 1/4 |  |
-| RPG02_N | 1 | 25×17 | 4 | 1 | 0 | 1/4 |  |
-| RPG02_S | 1 | 20×13 | 4 | 1 | 0 | 1/4 |  |
-| RPG03_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG03_N | 1 | 25×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG03_S | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG04_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG04_S | 1 | 25×20 | 4 | 1 | 0 | 1/4 |  |
-| RPG0501_B | 1 | 20×18 | 4 | 1 | 0 | 1/4 |  |
-| RPG0501_S | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG05_B | 1 | 25×20 | 4 | 1 | 0 | 1/4 |  |
-| RPG05_S | 1 | 25×22 | 4 | 1 | 0 | 1/4 |  |
-| RPG0601_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG0601_S | 1 | 20×25 | 4 | 1 | 0 | 1/4 |  |
-| RPG06_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG06_S | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG0701_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG0701_S | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG07_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG07_S | 1 | 21×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG0801_B | 1 | 21×17 | 4 | 1 | 0 | 1/4 |  |
-| RPG0801_S | 1 | 21×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG08_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG08_S | 1 | 20×20 | 4 | 1 | 0 | 1/4 |  |
-| RPG0901_B | 1 | 20×15 | 4 | 1 | 0 | 1/4 |  |
-| RPG0901_S | 1 | 25×15 | 4 | 1 | 0 | 1/4 |  |
-| RPG09_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |
-| RPG09_S | 1 | 25×20 | 4 | 1 | 0 | 1/4 |  |
-| RPG1001_B | 1 | 20×19 | 4 | 1 | 0 | 1/4 |  |
-| RPG1001_S | 1 | 20×20 | 4 | 1 | 0 | 1/4 |  |
-| RPG10_B | 1 | 20×15 | 4 | 1 | 0 | 1/4 |  |
-| RPG10_S | 1 | 20×19 | 4 | 1 | 0 | 1/4 |  |
-| RPG11_B | 1 | 21×20 | 4 | 1 | 0 | 1/4 |  |
-| RPG11_S | 1 | 25×20 | 4 | 1 | 0 | 1/4 |  |
+| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki | Server phải làm gì |
+|---|---|---|---|---|---|---|---|---|
+| CAhero | 53 | 15×13 | 8 | 26 | 38 | 2/4, 8/4 | 크아 히어로 |  |
+| RPG0801_N | 3 | 21×16 +2 cỡ | 4 | 3 | 0 | 1/4 |  |  |
+| RPG08_N | 3 | 20×22 +2 cỡ | 4 | 3 | 0 | 1/4 |  |  |
+| RPG09_N | 3 | 23×17 +2 cỡ | 4 | 3 | 0 | 1/4 |  |  |
+| RPG10_N | 3 | 20×16 +2 cỡ | 4 | 3 | 0 | 1/4 |  |  |
+| RPG11_N | 3 | 25×25 | 4 | 3 | 0 | 1/4 |  |  |
+| RPG04_N | 2 | 20×25 +1 cỡ | 4 | 2 | 0 | 1/4 |  |  |
+| RPG0501_N | 2 | 25×12 +1 cỡ | 4 | 2 | 0 | 1/4 |  |  |
+| RPG05_N | 2 | 25×17 +1 cỡ | 4 | 2 | 0 | 1/4 |  |  |
+| RPG0601_N | 2 | 20×15 +1 cỡ | 4 | 2 | 0 | 1/4 |  |  |
+| RPG06_N | 2 | 20×20 +1 cỡ | 4 | 2 | 0 | 1/4 |  |  |
+| RPG0701_N | 2 | 20×25 +1 cỡ | 4 | 2 | 0 | 1/4 |  |  |
+| RPG07_N | 2 | 25×12 +1 cỡ | 4 | 2 | 0 | 1/4 |  |  |
+| RPG0901_N | 2 | 20×25 +1 cỡ | 4 | 2 | 0 | 1/4 |  |  |
+| RPG1001_N | 2 | 21×21 +1 cỡ | 4 | 2 | 0 | 1/4 |  |  |
+| RPG | 1 | 21×19 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG01_B | 1 | 20×18 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG01_N | 1 | 25×15 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG01_S | 1 | 25×20 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG02_B | 1 | 21×20 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG02_N | 1 | 25×17 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG02_S | 1 | 20×13 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG03_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG03_N | 1 | 25×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG03_S | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG04_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG04_S | 1 | 25×20 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG0501_B | 1 | 20×18 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG0501_S | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG05_B | 1 | 25×20 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG05_S | 1 | 25×22 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG0601_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG0601_S | 1 | 20×25 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG06_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG06_S | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG0701_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG0701_S | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG07_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG07_S | 1 | 21×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG0801_B | 1 | 21×17 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG0801_S | 1 | 21×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG08_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG08_S | 1 | 20×20 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG0901_B | 1 | 20×15 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG0901_S | 1 | 25×15 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG09_B | 1 | 20×12 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG09_S | 1 | 25×20 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG1001_B | 1 | 20×19 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG1001_S | 1 | 20×20 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG10_B | 1 | 20×15 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG10_S | 1 | 20×19 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG11_B | 1 | 21×20 | 4 | 1 | 0 | 1/4 |  |  |
+| RPG11_S | 1 | 25×20 | 4 | 1 | 0 | 1/4 |  |  |
 
 ### Hidden Catch — 37 map, 30 họ
 
-| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki |
-|---|---|---|---|---|---|---|---|
-| Hidden | 6 | 15×13 | 4 | 6 | 12 | 1/4 | 히든캐치 |
-| Hdn_Mine | 2 | 15×13 | 6–8 | 0 | 11 | 8/1 | 히든캐치 |
-| Hdn_Patrit | 2 | 15×13 | 4–8 | 0 | 10 | 4/1, 8/1 | 히든캐치 |
-| Hdn_Alche_Aqua | 1 | 15×13 | 8 | 1 | 17 | 2/4 | 히든캐치 |
-| Hdn_Alche_Cam | 1 | 15×13 | 8 | 0 | 14 | 2/4 | 히든캐치 |
-| Hdn_Alche_Ceme | 1 | 15×13 | 8 | 0 | 12 | 8/1 | 히든캐치 |
-| Hdn_Alche_Fac | 1 | 15×13 | 8 | 0 | 5 | 2/4 | 히든캐치 |
-| Hdn_Alche_Kart | 1 | 15×13 | 8 | 0 | 1 | 8/1 | 히든캐치 |
-| Hdn_Alche_Rab | 1 | 15×13 | 8 | 1 | 0 | 2/4 | 히든캐치 |
-| Hdn_Alice | 1 | 15×13 | 8 | 0 | 6 | 12/1 | 히든캐치 |
-| Hdn_BlackLucy | 1 | 15×13 | 8 | 0 | 6 | 12/1 | 히든캐치 |
-| Hdn_Caffe | 1 | 15×13 | 8 | 0 | 0 | 8/1 | 히든캐치 |
-| Hdn_Camp | 1 | 15×13 | 4 | 0 | 2 | 4/1 | 히든캐치 |
-| Hdn_Clover | 1 | 15×13 | 8 | 1 | 1 | 2/4 | 히든캐치 |
-| Hdn_DarkCastle | 1 | 15×13 | 8 | 1 | 9 | 12/1 | 히든캐치 |
-| Hdn_Factory | 1 | 15×13 | 8 | 0 | 9 | 8/1 | 히든캐치 |
-| Hdn_Ice | 1 | 15×13 | 8 | 0 | 3 | 2/4 | 히든캐치 |
-| Hdn_Ocean | 1 | 15×13 | 8 | 0 | 11 | 8/1 | 히든캐치 |
-| Hdn_R_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | 히든캐치 |
-| Hdn_R_Factory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | 히든캐치 |
-| Hdn_R_Forest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | 히든캐치 |
-| Hdn_R_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | 히든캐치 |
-| Hdn_R_Village | 1 | 15×13 | 6 | 0 | 11 | 8/1 | 히든캐치 |
-| Hdn_Smash | 1 | 15×13 | 8 | 0 | 11 | 12/1 | 히든캐치 |
-| Hdn_Square | 1 | 15×13 | 8 | 0 | 0 | 8/1 | 히든캐치 |
-| Hdn_SuperFight | 1 | 15×13 | 8 | 0 | 11 | 2/4 | 히든캐치 |
-| Hdn_Tomb | 1 | 15×13 | 8 | 0 | 8 | 8/1 | 히든캐치 |
-| Hdn_Village | 1 | 15×13 | 6 | 0 | 6 | 8/1 | 히든캐치 |
-| Hdn_Wriggle | 1 | 15×13 | 4 | 1 | 7 | 2/2 | 히든캐치 |
-| HiddenCatchTest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | 히든캐치 |
+| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki | Server phải làm gì |
+|---|---|---|---|---|---|---|---|---|
+| Hidden | 6 | 15×13 | 4 | 6 | 12 | 1/4 | 히든캐치 |  |
+| Hdn_Mine | 2 | 15×13 | 6–8 | 0 | 11 | 8/1 | 히든캐치 |  |
+| Hdn_Patrit | 2 | 15×13 | 4–8 | 0 | 10 | 4/1, 8/1 | 히든캐치 |  |
+| Hdn_Alche_Aqua | 1 | 15×13 | 8 | 1 | 17 | 2/4 | 히든캐치 |  |
+| Hdn_Alche_Cam | 1 | 15×13 | 8 | 0 | 14 | 2/4 | 히든캐치 |  |
+| Hdn_Alche_Ceme | 1 | 15×13 | 8 | 0 | 12 | 8/1 | 히든캐치 |  |
+| Hdn_Alche_Fac | 1 | 15×13 | 8 | 0 | 5 | 2/4 | 히든캐치 |  |
+| Hdn_Alche_Kart | 1 | 15×13 | 8 | 0 | 1 | 8/1 | 히든캐치 |  |
+| Hdn_Alche_Rab | 1 | 15×13 | 8 | 1 | 0 | 2/4 | 히든캐치 |  |
+| Hdn_Alice | 1 | 15×13 | 8 | 0 | 6 | 12/1 | 히든캐치 |  |
+| Hdn_BlackLucy | 1 | 15×13 | 8 | 0 | 6 | 12/1 | 히든캐치 |  |
+| Hdn_Caffe | 1 | 15×13 | 8 | 0 | 0 | 8/1 | 히든캐치 |  |
+| Hdn_Camp | 1 | 15×13 | 4 | 0 | 2 | 4/1 | 히든캐치 |  |
+| Hdn_Clover | 1 | 15×13 | 8 | 1 | 1 | 2/4 | 히든캐치 |  |
+| Hdn_DarkCastle | 1 | 15×13 | 8 | 1 | 9 | 12/1 | 히든캐치 |  |
+| Hdn_Factory | 1 | 15×13 | 8 | 0 | 9 | 8/1 | 히든캐치 |  |
+| Hdn_Ice | 1 | 15×13 | 8 | 0 | 3 | 2/4 | 히든캐치 |  |
+| Hdn_Ocean | 1 | 15×13 | 8 | 0 | 11 | 8/1 | 히든캐치 |  |
+| Hdn_R_Camp | 1 | 15×13 | 8 | 0 | 14 | 2/4 | 히든캐치 |  |
+| Hdn_R_Factory | 1 | 15×13 | 8 | 0 | 11 | 8/1 | 히든캐치 |  |
+| Hdn_R_Forest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | 히든캐치 |  |
+| Hdn_R_Patrit | 1 | 15×13 | 8 | 0 | 11 | 8/1 | 히든캐치 |  |
+| Hdn_R_Village | 1 | 15×13 | 6 | 0 | 11 | 8/1 | 히든캐치 |  |
+| Hdn_Smash | 1 | 15×13 | 8 | 0 | 11 | 12/1 | 히든캐치 |  |
+| Hdn_Square | 1 | 15×13 | 8 | 0 | 0 | 8/1 | 히든캐치 |  |
+| Hdn_SuperFight | 1 | 15×13 | 8 | 0 | 11 | 2/4 | 히든캐치 |  |
+| Hdn_Tomb | 1 | 15×13 | 8 | 0 | 8 | 8/1 | 히든캐치 |  |
+| Hdn_Village | 1 | 15×13 | 6 | 0 | 6 | 8/1 | 히든캐치 |  |
+| Hdn_Wriggle | 1 | 15×13 | 4 | 1 | 7 | 2/2 | 히든캐치 |  |
+| HiddenCatchTest | 1 | 15×13 | 8 | 0 | 10 | 8/1 | 히든캐치 |  |
 
 ### Màn thưởng — 43 map, 13 họ
 
-| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki |
-|---|---|---|---|---|---|---|---|
-| BonusBigReward | 13 | 15×51 +4 cỡ | 4–8 | 13 | 0 | 12/1, 8/1 |  |
-| Bonus | 12 | 15×13 | 4–8 | 0 | 0 | 8/1 |  |
-| BonusCp | 3 | 15×13 | 8 | 0 | 0 | 8/1 |  |
-| BonusExp | 3 | 15×13 | 8 | 0 | 0 | 8/1 |  |
-| BonusBigRPG | 2 | 22×22 +1 cỡ | 4 | 2 | 0 | 1/4 |  |
-| BonusLargeGourd | 2 | 15×13 | 8 | 2 | 0 | 8/1 |  |
-| BonusMazeMap | 2 | 25×25 | 8 | 2 | 0 | 8/1 |  |
-| Bonus_16th | 1 | 15×13 | 8 | 0 | 0 | 8/1 |  |
-| Bonus_19th | 1 | 15×13 | 8 | 1 | 0 | 8/1 |  |
-| BonusBig | 1 | 24×24 | 8 | 0 | 0 | 8/1 |  |
-| BonusCP_18th | 1 | 15×13 | 8 | 0 | 0 | 12/1 |  |
-| BonusCP_LINE | 1 | 15×13 | 8 | 0 | 0 | 12/1 |  |
-| BonusPCRoom | 1 | 24×24 | 8 | 1 | 8 | 8/1 |  |
+| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki | Server phải làm gì |
+|---|---|---|---|---|---|---|---|---|
+| BonusBigReward | 13 | 15×51 +4 cỡ | 4–8 | 13 | 0 | 12/1, 8/1 |  |  |
+| Bonus | 12 | 15×13 | 4–8 | 0 | 0 | 8/1 |  |  |
+| BonusCp | 3 | 15×13 | 8 | 0 | 0 | 8/1 |  |  |
+| BonusExp | 3 | 15×13 | 8 | 0 | 0 | 8/1 |  |  |
+| BonusBigRPG | 2 | 22×22 +1 cỡ | 4 | 2 | 0 | 1/4 |  |  |
+| BonusLargeGourd | 2 | 15×13 | 8 | 2 | 0 | 8/1 |  |  |
+| BonusMazeMap | 2 | 25×25 | 8 | 2 | 0 | 8/1 |  |  |
+| Bonus_16th | 1 | 15×13 | 8 | 0 | 0 | 8/1 |  |  |
+| Bonus_19th | 1 | 15×13 | 8 | 1 | 0 | 8/1 |  |  |
+| BonusBig | 1 | 24×24 | 8 | 0 | 0 | 8/1 |  |  |
+| BonusCP_18th | 1 | 15×13 | 8 | 0 | 0 | 12/1 |  |  |
+| BonusCP_LINE | 1 | 15×13 | 8 | 0 | 0 | 12/1 |  |  |
+| BonusPCRoom | 1 | 24×24 | 8 | 1 | 8 | 8/1 |  |  |
 
 ### Sảnh, cửa hàng, tutorial, map tuỳ biến — 36 map, 17 họ
 
-| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki |
-|---|---|---|---|---|---|---|---|
-| LobbySquare | 9 | 49×37 | 6–8 | 9 | 0 | 8/1 |  |
-| LobbyCaffe | 5 | 49×37 | 6–7 | 5 | 0 | 8/1 |  |
-| CustomMap15x | 2 | 15×13 +1 cỡ | 12 | 2 | 0 | 12/1 |  |
-| CustomMap31x | 2 | 31×13 +1 cỡ | 12 | 2 | 0 | 12/1 |  |
-| LobbyClothing | 2 | 49×37 | 6 | 2 | 0 | 8/1 |  |
-| LobbyJewelry | 2 | 49×37 | 6–7 | 2 | 0 | 8/1 |  |
-| LobbyPet | 2 | 49×37 | 4–8 | 2 | 0 | 8/1 |  |
-| shopmap | 2 | 3×3 +1 cỡ | 1 | 0 | 0 | 8/1 |  |
-| Square | 2 | 49×37 | 1 | 2 | 0 | 8/1 |  |
-| CAPassShopMap | 1 | 4×2 | 1 | 0 | 0 | 8/1 |  |
-| CustomMap21x | 1 | 21×21 | 12 | 1 | 0 | 12/1 |  |
-| DailyMissionShop | 1 | 4×4 | 1 | 0 | 0 | 12/1 |  |
-| LobbySquareFishingTest | 1 | 49×37 | 1 | 1 | 0 | 8/1 |  |
-| MagicMarketmap | 1 | 3×2 | 1 | 0 | 0 | 8/1 |  |
-| SelectionBox | 1 | 3×2 | 1 | 0 | 0 | 12/1 |  |
-| tlshopmap | 1 | 3×2 | 1 | 0 | 0 | 8/1 |  |
-| Tutorial | 1 | 15×13 | 8 | 1 | 9 | 8/1 |  |
+| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki | Server phải làm gì |
+|---|---|---|---|---|---|---|---|---|
+| LobbySquare | 9 | 49×37 | 6–8 | 9 | 0 | 8/1 |  |  |
+| LobbyCaffe | 5 | 49×37 | 6–7 | 5 | 0 | 8/1 |  |  |
+| CustomMap15x | 2 | 15×13 +1 cỡ | 12 | 2 | 0 | 12/1 |  |  |
+| CustomMap31x | 2 | 31×13 +1 cỡ | 12 | 2 | 0 | 12/1 |  |  |
+| LobbyClothing | 2 | 49×37 | 6 | 2 | 0 | 8/1 |  |  |
+| LobbyJewelry | 2 | 49×37 | 6–7 | 2 | 0 | 8/1 |  |  |
+| LobbyPet | 2 | 49×37 | 4–8 | 2 | 0 | 8/1 |  |  |
+| shopmap | 2 | 3×3 +1 cỡ | 1 | 0 | 0 | 8/1 |  |  |
+| Square | 2 | 49×37 | 1 | 2 | 0 | 8/1 |  |  |
+| CAPassShopMap | 1 | 4×2 | 1 | 0 | 0 | 8/1 |  |  |
+| CustomMap21x | 1 | 21×21 | 12 | 1 | 0 | 12/1 |  |  |
+| DailyMissionShop | 1 | 4×4 | 1 | 0 | 0 | 12/1 |  |  |
+| LobbySquareFishingTest | 1 | 49×37 | 1 | 1 | 0 | 8/1 |  |  |
+| MagicMarketmap | 1 | 3×2 | 1 | 0 | 0 | 8/1 |  |  |
+| SelectionBox | 1 | 3×2 | 1 | 0 | 0 | 12/1 |  |  |
+| tlshopmap | 1 | 3×2 | 1 | 0 | 0 | 8/1 |  |  |
+| Tutorial | 1 | 15×13 | 8 | 1 | 9 | 8/1 |  |  |
 
 ### Chưa phân nhóm — 108 map, 29 họ
 
-| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki |
-|---|---|---|---|---|---|---|---|
-| UserContest | 17 | 15×13 | 2–8 | 0 | 32 | 2/4, 8/1 |  |
-| BlackLucy | 9 | 15×13 | 8 | 0 | 6 | 12/1 |  |
-| DarkCastle | 9 | 15×13 | 8 | 9 | 9 | 12/1, 8/1 |  |
-| DarkVampire | 8 | 15×28 +5 cỡ | 8 | 7 | 9 | 8/1 |  |
-| NewXmas | 6 | 15×13 | 8 | 6 | 6 | 8/1 |  |
-| Balansa | 5 | 15×13 | 8 | 0 | 1 | 12/1 |  |
-| Baram | 4 | 15×13 | 8 | 0 | 16 | 8/1 |  |
-| Fm_BigBattle | 4 | 15×13 +3 cỡ | 24 | 4 | 10 | 1/1, 12/1 |  |
-| Minibot | 4 | 15×13 | 4 | 4 | 8 | 2/2 |  |
-| Smash | 4 | 15×16 +2 cỡ | 12 | 0 | 19 | 12/1 |  |
-| Wriggletest | 4 | 15×13 | 4 | 4 | 7 | 2/2 |  |
-| Clovertest | 3 | 15×13 | 8 | 3 | 0 | 2/4 |  |
-| ConfusedFight | 3 | 15×13 | 12 | 1 | 18 | 12/1 |  |
-| EscapeMaze | 3 | 29×25 | 8 | 3 | 0 | 12/1 |  |
-| GoldButterfly | 3 | 15×13 | 8 | 0 | 11 | 12/1 |  |
-| IamWriggle | 3 | 15×13 | 8 | 3 | 10 | 12/1, 8/1 |  |
-| OkongOfLegend | 3 | 15×13 | 2 | 0 | 8 | 2/1 |  |
-| SavetheEarth | 3 | 15×13 | 4 | 3 | 5 | 2/2 |  |
-| Space_TW | 2 | 15×13 | 8 | 2 | 0 | 8/1 |  |
-| WhiteAngel | 2 | 15×13 | 8 | 2 | 10 | 2/4 |  |
-| Antarctic | 1 | 15×101 | 4 | 1 | 0 | 1/4 |  |
-| DragonPalace | 1 | 15×101 | 4 | 1 | 0 | 1/4 |  |
-| Fm_BigBattle_PreparePlay | 1 | 15×13 | 24 | 0 | 0 | 12/1 |  |
-| Fm_BigBattleH_PreparePlay | 1 | 15×13 | 24 | 0 | 0 | 12/1 |  |
-| GolemRun | 1 | 15×101 | 4 | 1 | 0 | 1/4 |  |
-| Hiphopclub | 1 | 15×13 | 8 | 0 | 10 | 12/1 |  |
-| MagNest | 1 | 15×13 | 8 | 1 | 9 | 2/4 |  |
-| MineExp | 1 | 15×101 | 4 | 1 | 0 | 1/4 |  |
-| WinningStreak_Colosseum | 1 | 15×13 | 4 | 0 | 18 | 2/2 |  |
+| Họ | Map | Lưới | Spawn | Có script | Item rơi | d1/d2 | Wiki | Server phải làm gì |
+|---|---|---|---|---|---|---|---|---|
+| UserContest | 17 | 15×13 | 2–8 | 0 | 32 | 2/4, 8/1 |  |  |
+| BlackLucy | 9 | 15×13 | 8 | 0 | 6 | 12/1 |  |  |
+| DarkCastle | 9 | 15×13 | 8 | 9 | 9 | 12/1, 8/1 |  |  |
+| DarkVampire | 8 | 15×28 +5 cỡ | 8 | 7 | 9 | 8/1 |  |  |
+| NewXmas | 6 | 15×13 | 8 | 6 | 6 | 8/1 |  |  |
+| Balansa | 5 | 15×13 | 8 | 0 | 1 | 12/1 |  |  |
+| Baram | 4 | 15×13 | 8 | 0 | 16 | 8/1 |  |  |
+| Fm_BigBattle | 4 | 15×13 +3 cỡ | 24 | 4 | 10 | 1/1, 12/1 |  |  |
+| Minibot | 4 | 15×13 | 4 | 4 | 8 | 2/2 |  |  |
+| Smash | 4 | 15×16 +2 cỡ | 12 | 0 | 19 | 12/1 |  |  |
+| Wriggletest | 4 | 15×13 | 4 | 4 | 7 | 2/2 |  |  |
+| Clovertest | 3 | 15×13 | 8 | 3 | 0 | 2/4 |  |  |
+| ConfusedFight | 3 | 15×13 | 12 | 1 | 18 | 12/1 |  |  |
+| EscapeMaze | 3 | 29×25 | 8 | 3 | 0 | 12/1 |  |  |
+| GoldButterfly | 3 | 15×13 | 8 | 0 | 11 | 12/1 |  |  |
+| IamWriggle | 3 | 15×13 | 8 | 3 | 10 | 12/1, 8/1 |  |  |
+| OkongOfLegend | 3 | 15×13 | 2 | 0 | 8 | 2/1 |  |  |
+| SavetheEarth | 3 | 15×13 | 4 | 3 | 5 | 2/2 |  |  |
+| Space_TW | 2 | 15×13 | 8 | 2 | 0 | 8/1 |  |  |
+| WhiteAngel | 2 | 15×13 | 8 | 2 | 10 | 2/4 |  |  |
+| Antarctic | 1 | 15×101 | 4 | 1 | 0 | 1/4 |  |  |
+| DragonPalace | 1 | 15×101 | 4 | 1 | 0 | 1/4 |  |  |
+| Fm_BigBattle_PreparePlay | 1 | 15×13 | 24 | 0 | 0 | 12/1 |  |  |
+| Fm_BigBattleH_PreparePlay | 1 | 15×13 | 24 | 0 | 0 | 12/1 |  |  |
+| GolemRun | 1 | 15×101 | 4 | 1 | 0 | 1/4 |  |  |
+| Hiphopclub | 1 | 15×13 | 8 | 0 | 10 | 12/1 |  |  |
+| MagNest | 1 | 15×13 | 8 | 1 | 9 | 2/4 |  |  |
+| MineExp | 1 | 15×101 | 4 | 1 | 0 | 1/4 |  |  |
+| WinningStreak_Colosseum | 1 | 15×13 | 4 | 0 | 18 | 2/2 |  |  |
 
 Map chỉ đọc tới hết lưới ô (đuôi file có cấu trúc riêng, bảng rơi và script chưa lấy được): Bula00, Bula01, Bula02, Bula03, Bula04, Bula15, Bula16, EventForest00, EventPatrit00, ExBula01, ExBula02.
 
@@ -992,8 +992,10 @@ tham gia (đồng bộ trigger, quái, phần thưởng) chưa được đo.
 Mỗi họ map và mỗi nhóm item cần một ca chạy thử trên client thật để xếp vào một trong ba loại:
 
 - **A — chỉ cần dữ liệu:** server gửi đúng ID và bảng item, client tự lo phần còn lại.
-- **B — dùng packet đã có:** nhặt, tranh item, báo sống/chết như đã đo; kiểm một ca mỗi nhóm.
+- **B — dùng packet đã có:** cần đồng bộ metadata map hoặc dữ liệu/hành vi qua packet đã đo; ghi rõ phần chưa chạy.
 - **C — cần packet hoặc trạng thái mới:** phải RE trước khi làm.
 
-Chưa họ nào được xếp loại ngoài `ExVillage` (ExVillage01 đã chạy native theo PLAN). Thứ tự thử đề xuất:
+`Village` có phân loại B ở điều kiện chọn Village10: mã lookup đúng nhưng tên và dữ liệu map phải đồng bộ.
+Chưa load/chơi Village10; không suy toàn họ đã được hỗ trợ. `ExVillage01` có native trong phạm vi PLAN.
+Phân loại chỉ là điều hướng tới contract có nguồn; thứ tự thử tiếp do PLAN quyết định:
 map đấu thường không script trước, sau đó các item được nhiều map dùng nhất mà chưa đo.

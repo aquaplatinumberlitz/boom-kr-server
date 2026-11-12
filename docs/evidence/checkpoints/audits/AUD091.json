@@ -1,0 +1,79 @@
+{
+  "id": "AUD091",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "bounded-village10-selection-probe"
+  ],
+  "completed_through": "CP275",
+  "recorded_utc": "2026-11-12T02:45:44.150460+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/load-phase.md",
+    "docs/CONTENT.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "tools/content_census.py",
+    "docs/evidence/rust-service/village10-map-probe.json",
+    "docs/evidence/bomb-position/README.md",
+    "local/research/codex/map-village10-id-only-r1/source-reuse.json",
+    "local/research/codex/map-village10-id-only-r1/native-map/raw-seal.json",
+    "local/research/codex/map-village10-selection-r2/scope-correction.json",
+    "local/research/codex/map-village10-selection-r2/selection-verification-r2.json",
+    "local/research/codex/map-village10-selection-r2/native-map/raw-seal.json",
+    "local/research/codex/map-village10-id-only-r1/source-byte-match.json",
+    "local/research/codex/village10-python-tests-r1.txt"
+  ],
+  "method": "Manual canonical-doc order, existing source/byte-match and fixture delta audit, independently reconstructed TCP versus native selector/name/rejection locals, failed pre-client raw/source freeze/cleanup and bounded classification review. No new function RE or production source/guard change.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Only pack ordinal278 had been linked to the accepted map profile in the current map hypothesis.",
+      "correction": "Current native A/B lookup1104 returns Village10; captured Start retains ExVillage01 and native name comparison rejects before loading. This is an additional build-specific lookup point, not proof every ID is ordinal.",
+      "fixed_in": [
+        "docs/protocol/load-phase.md",
+        "docs/evidence/rust-service/village10-map-probe.json",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Code-only candidate retained the old-map terrain policy and was expected to reach the client.",
+      "correction": "Existing terrain fixture guard stopped the first attempt before clients. Failure/raw retained; final attempt removes only mismatched old terrain, after private startup/export controls. No re-pinning of old terrain or guard change.",
+      "fixed_in": [
+        "docs/evidence/rust-service/village10-map-probe.json",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "The generated map table had no server-work column and could imply static metadata alone was support.",
+      "correction": "Generated column links a bounded B prerequisite for Village10 only, explicitly no load/gameplay. Static census unchanged; contract owns scope and unknowns remain in RESEARCH.",
+      "fixed_in": [
+        "tools/content_census.py",
+        "docs/CONTENT.md",
+        "docs/protocol/load-phase.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Dashboard still scheduled the map ID probe and described R1 handoff as pending.",
+      "correction": "R1/relay delivery recognized; bounded map probe ends after budget. M7 acceptance rewrite next; no full G1, general account or relay mesh/load promotion.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/HISTORY.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "No Village10 geometry, spawn, floor, item, collision, battle or result/reset was observed. B is only a necessary metadata prerequisite, not a complete family classification or data-only sufficiency proof.",
+    "Known map-code/name fields and dynamic metadata must be consistent; old-map terrain fixture pins and fixed compressed fixture sizes constrain the current data adapter. No guard was relaxed.",
+    "Map experiment stops after two attempts: first before any client launched, second the sole actual client pair. No ID guessing or extra ID-only rerun.",
+    "M7 acceptance must be rewritten for phase1 before implementation; then G1 data adapters/new inputs and M6, then M8. Full M5 and relay beyond fixed2 remain open."
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "schema": "kre-rust-service-evidence-v1",
+  "checkpoint": "CP275",
+  "task": "KRE-074 / KR-R003 / bounded Village10 map probe",
+  "baseline": {
+    "commit": "c83a2a0020fa61eaedb089728c63a02afd3ef745",
+    "accepted_PRs": [
+      355,
+      356
+    ],
+    "binary_sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf"
+  },
+  "source": "kr_runtime",
+  "status": "confirmed_bounded_selector_only",
+  "classification": "B_prerequisite_only",
+  "canonical": {
+    "contract": "docs/protocol/load-phase.md#village10-map-selection",
+    "unknown": "docs/RESEARCH.md#gap-village10-map",
+    "plan": "docs/PLAN.md#dashboard"
+  },
+  "question": "Does selecting code1104 reach Village10, and what old-profile data prevents using another map without new core logic?",
+  "reuse": {
+    "survey": "local/research/codex/map-village10-id-only-r1/source-reuse.json",
+    "sha256": "25371245a6bab54f2ac744f5df8ada62b712203069e42d91c312bd4a5ddefeb1",
+    "source_survey": "local/research/codex/map-village10-source-r1/survey.json",
+    "source_survey_sha256": "78066ae5fa26350439e66251b1157856e5ed8d65264135304a28bcd166711e11",
+    "direct": "Existing CP019/020/024 selector/name/spawn source, CP090/092 map format and current native two-client recipe. Actual selector-code region matched on the diagnostic copies.",
+    "avoided": "No new function RE or whole-map scan, no VN ID/layout import or N1b/R1 repeat. Cached legacy source survey reused for already answered mechanisms.",
+    "limits": "Old source scopes/builds remain historical. New native proof is only current selected-code lookup/name rejection."
+  },
+  "runs": [
+    {
+      "label": "first_preclient",
+      "path": "local/research/codex/map-village10-id-only-r1",
+      "duration_s": 0.439707309,
+      "raw_files": 9,
+      "returncode": 1,
+      "run_sha256": "6f635d13a1bfa9fb22fbef53ca9b4bd9d59c24a2df4789498948279d6b0d518b",
+      "raw_seal_sha256": "4d28c80a131bef4981ec6d586248db9fc9d088d8b597e898950293e71c36559e",
+      "native_roles_started": [],
+      "error": "RuntimeError('service exited before ready')",
+      "binary_sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf"
+    },
+    {
+      "label": "second_selector",
+      "path": "local/research/codex/map-village10-selection-r2",
+      "duration_s": 54.329241196,
+      "raw_files": 37,
+      "returncode": 0,
+      "run_sha256": "9687c6e6d79c3ff9a656c76de9123eb96ad90c24cf40ec4c46f4959cb4b5900c",
+      "raw_seal_sha256": "04642007d3a898effa17169d7140d955bd7e57d93d0a19419b4677481b7ac349",
+      "native_roles_started": [
+        "A",
+        "B"
+      ],
+      "error": null,
+      "binary_sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf"
+    }
+  ],
+  "verification": {
+    "report": "local/research/codex/map-village10-selection-r2/selection-verification-r2.json",
+    "sha256": "edab8e236dd0a4a7afef8f194e531900ba9bba061f960d4fe13680756fc4c9a2",
+    "result": "pass_bounded_selection_negative",
+    "native": [
+      {
+        "role": "A",
+        "selected_code": 1104,
+        "lookup_name": "Village10",
+        "incoming_name": "ExVillage01",
+        "name_compare_result": -1,
+        "rejected_before_loading": true
+      },
+      {
+        "role": "B",
+        "selected_code": 1104,
+        "lookup_name": "Village10",
+        "incoming_name": "ExVillage01",
+        "name_compare_result": -1,
+        "rejected_before_loading": true
+      }
+    ],
+    "TCP": {
+      "records": 283,
+      "replies": 50
+    },
+    "no_loading99": true,
+    "no_clock_spawn_or_battle": true
+  },
+  "static_map": {
+    "map": "Village10",
+    "map_entry_ordinal": 1104,
+    "source_entry_sha256": "62bb7b367159ca5724cccd57616d2e48cf678d5a5f45668a554a2d3ece2abfeb",
+    "size": [
+      15,
+      13
+    ],
+    "spawns": 6,
+    "script": false,
+    "limits": "Static pack data only; no actual Village10 geometry/spawn loaded."
+  },
+  "inputs": {
+    "first": "Only selected-code fields117/121/196 changed278→1104; all other fixture bodies, dynamic238/241, names, floor/spawn and old terrain preserved.",
+    "first_rejection": "Existing pinned terrain fixture guard refused map/start hashes before any client launched. Raw nine files retained; not a native negative.",
+    "second": "Same selected-code candidate, disable old-map terrain only. Private service startup and exact tmpfs export controls passed before launch. No production source/guard change.",
+    "native_observer": "Read-only source-backed GDB locals atDC8441/DC8470/DC8496; actual code-region equality pinned. Existing offline diagnostic global reset inherited and declared.",
+    "raw": "Source/config/copy inputs frozen until seal. Owned namespace/process cleanup verified. Actual raw stays local."
+  },
+  "decision": {
+    "A": "Rejected for this retained old profile: selected-code change alone cannot pass the native name check.",
+    "B": "Additional consistent map metadata needed using known packet fields; only necessary prerequisite confirmed. Not evidence all remaining tasks are data-only.",
+    "C": "No new packet/rule requirement observed in selector path; downstream gameplay unknown.",
+    "next": "Stop ID probe after two attempts. Continue PLAN: M7 acceptance and implementation, G1 data adapters later with new acceptance/input, no blind ID retries."
+  },
+  "remaining": [
+    "Consistent metadata238/241/117/121/196, representation/checksum and map names.",
+    "New-map terrain profile/data validation, spawn geometry, floor/hidden items and collision.",
+    "A full basic match, result/reset and subsequent round on Village10.",
+    "Other Village maps, other five ladder maps, items and service delivery remain outside this proof."
+  ],
+  "corrections": [
+    "Initial preparation assumed raw238, but the current fixture uses compressed representation; no client launch from that preparation error.",
+    "Current strict fixed-size238/start fixtures constrain a general map data adapter; no core change was made to evade those checks.",
+    "Initial launcher was called before preflight file existed and failed before execution; final preflight completed before actual attempt1. Preparation/launch errors retained, not counted as native success.",
+    "First actual map attempt was a pre-client terrain guard failure. Second was the sole native client pair and last allowed map attempt."
+  ],
+  "limits": [
+    "No map loaded or playable Village10 claim, no full family acceptance. B is only a measured metadata prerequisite.",
+    "Only selected-code fields changed, not a consistent replacement of every dynamic metadata map field; native lookup/name gate directly isolates that boundary.",
+    "No original server authority, Windows-original, Internet or relay change. Diagnostic client copies on accepted Wine with cloned cached prefixes.",
+    "No REA Evidence claim; existing project/GDB parser evidence and unavailable-provider history kept separate."
+  ]
+}
