@@ -1,0 +1,225 @@
+{
+  "id": "CP279",
+  "previous": "CP278",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T07:09:30.568826+00:00",
+  "context_commit": "6bc6acf1f3c2fc7cdf6754e4944e80f141b919c4",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / M7b: nối hai managed room duel theo roster thực/RoomRules, independent epochs/barriers/results/reset/UDP và EOF; chỉ đo native gaps đang chặn.",
+  "scope": "Two known native duel rosters in capacity4 rooms with four actual KR/Wine account clients. B motion gap measured in separate same-binary run. Only this feature group accepted; full M7b/M7 remains open.",
+  "artifacts": [
+    {
+      "name": "kr-service-native-managed-duel",
+      "sha256": "6ecdb4ab059b0e3be41a93b9133d3431146feceba14d8969f85ae657839be848"
+    }
+  ],
+  "locators": [
+    "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
+    "docs/evidence/rust-service/m7b-duel-lifecycle.json",
+    "docs/PLAN.md#rust-service-milestones",
+    "docs/RESEARCH.md#gap-room-occupancy",
+    "rust/crates/kr-service/src/round_epochs.rs",
+    "KR native121/DC7F30,175/180 and peer key XOR profileID consumers reused"
+  ],
+  "findings": [
+    {
+      "summary": "Hai room chưa đầy có actual contiguous duels independent identity/slot: B99 bị giữ không mở Alpha trong khi Beta clock riêng; hai first outcomes đối nghịch, exact native175 rows/180 cursor/reset và second clocks, bốn base keys riêng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
+      "evidence": [
+        "M7D279-00015",
+        "M7D279-02304",
+        "M7D279-02299"
+      ],
+      "limits": "Known4profiles, two duels only. R7 B motion stationary; separate R8 closes only that gap, not a fabricated continuous run. Không full M7b/4/8 dynamic or generalprofile."
+    },
+    {
+      "summary": "EOF chủ Alpha invalidates pending158 and gives B own forfeit/return/chief; Beta keeps current second-key native movement/bomb/blast/outcome. R7 all-interface PCAP joins native13; R8 current B Right700ms gives3target changes and later A.currentX120→200 under identical source/binary/rules.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
+      "evidence": [
+        "M7D279-00015",
+        "M7D279-02304",
+        "M7D279-02648",
+        "M7D279-02637"
+      ],
+      "limits": "No new forged/stale UDP injection, full auth or any Internet/NAT/relay claim. Actual native byte compare XORprofileID, not low8base alone."
+    },
+    {
+      "summary": "Native remapped two-row slot stats determine per-slot limits1/2, not identity-derived capacities. D has two simultaneous accepted native bombs; burst16712/42 and later22 are bounded no-ACK observations recovered from failed native raw, then corrected before final runs.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
+      "evidence": [
+        "M7D279-02304",
+        "M7D279-01223",
+        "M7D279-01568"
+      ],
+      "limits": "Only exact zero-profile/Start seed; character selection/generalstats unknown. No semantic meaning assigned167 or no-native abort claim for failed runs."
+    },
+    {
+      "summary": "Typed managed duel profile, source-freeze/projection against independent native two-row121/rank fixtures, shared epoch allocator/exhaustion, sparse/extra/wrong-team/old-completion and bounded opaque no-effect guards are tested.126 Rust tests,7duelTCP and7legacyfixed4 groups pass.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
+      "evidence": [
+        "M7D279-03175",
+        "M7D279-00030",
+        "M7D279-03069",
+        "M7D279-03179"
+      ],
+      "limits": "Internal generations are not raw-identical99/585 distinctions. Base epochs finite255/process, not durable or mixed-key uniqueness/auth. Synthetic/source tests not native certification."
+    }
+  ],
+  "verification": [
+    {
+      "check": "126 Rust tests, fmt/clippy/locked build and7duel/7legacyTCP groups",
+      "result": "pass",
+      "evidence": [
+        "M7D279-03175",
+        "M7D279-00030",
+        "M7D279-00021",
+        "M7D279-00032",
+        "M7D279-03069",
+        "M7D279-03179"
+      ],
+      "limits": "Source/policy/synthetic; native proof separate."
+    },
+    {
+      "check": "Native lifecycle and targeted motion gap, independent raw/UI/PCAP/wrappers and both cleanup0",
+      "result": "pass",
+      "evidence": [
+        "M7D279-00015",
+        "M7D279-02299",
+        "M7D279-02637"
+      ],
+      "limits": "Two declared runs;142+102raw. No full M7b/M7 claim."
+    },
+    {
+      "check": "Docs/catalog/anchors/budgets and G1 exporter unchanged",
+      "result": "pass",
+      "evidence": [
+        "M7D279-00031",
+        "M7D279-00022"
+      ],
+      "limits": "Full exact-head local/history/CI before merge separately."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP279-managed-duel.json",
+      "bytes": 854161,
+      "sha256": "91f4a4571131b96c45e176e47bf13d0fc022fcc524ce3b57022ae5b2beaa714b",
+      "count": 3321
+    }
+  ],
+  "delta": {
+    "added": [
+      "Opt-in managed current-roster duel lifecycle, shared Hub epochs and scoped native proof."
+    ],
+    "corrected": [
+      "Full-capacity assumptions, local key collision, identity-derived stat limit, native167 overblocking and stale observer window."
+    ],
+    "superseded": [
+      "Current managed selection-only/no dynamic battle status only; old scopes/records/raw unchanged."
+    ]
+  },
+  "blockers": [
+    "Chỉ hai contiguous rosters trong room chưa đầy/bốn known profiles được nghiệm thu. M7b còn roster/layout khác theo PLAN; toàn M7 chưa đạt.",
+    "M7c lựa chọn nhân vật/đội/full-error và M7d account ownership/failure tích hợp còn riêng; M5 generalprofile/native DB-queue fault chưa đóng. Stat theo exact two-row Start/seed/slot, không là thuộc tính account hoặc mọi nhân vật.",
+    "Epoch managed trần255 lần cấp/instance, không durable restart/reuse hoặc mixed-key auth. Relay profile mới chưa mở; N1R-b/M8 còn theo PLAN.",
+    "Không có terrain/item mở rộng, new Internet/NAT/relay, current-key forgery/cross-room injection, raw-identical99/585 distinction, resume hoặc match restore proof."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp phần roster/layout M7b theo PLAN, tái sử dụng fixed4/8 contracts và chỉ native integration mới. Sau đó M7c/d; không lặp solved duel baseline.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "Managed duel slice accepted; full M7b/M7 remain partial. Extend only measured roster/policy, then player choices and integrated ownership.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T07:09:30.568826+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo implementation/native and manual bounded-duel feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Current bounded duel implementation/native/limits and remaining scope; no full milestone/gate claim."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Current bounded duel implementation/native/limits and remaining scope; no full milestone/gate claim."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Current bounded duel implementation/native/limits and remaining scope; no full milestone/gate claim."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Current bounded duel implementation/native/limits and remaining scope; no full milestone/gate claim."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Current bounded duel implementation/native/limits and remaining scope; no full milestone/gate claim."
+    },
+    {
+      "path": "docs/evidence/rust-service/m7b-duel-lifecycle.json",
+      "state": "updated",
+      "reason": "Current bounded duel implementation/native/limits and remaining scope; no full milestone/gate claim."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Current bounded duel implementation/native/limits and remaining scope; no full milestone/gate claim."
+    },
+    {
+      "path": "docs/protocol/room-membership.md",
+      "state": "updated",
+      "reason": "Current bounded duel implementation/native/limits and remaining scope; no full milestone/gate claim."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index already routes room-membership topic; new contract stays at topic, not duplicated."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Applied solo, owner README preservation, G1 isolation, feature-group audits, privacy and exact-head delivery."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-managed-duel-lifecycle"
+  ]
+}

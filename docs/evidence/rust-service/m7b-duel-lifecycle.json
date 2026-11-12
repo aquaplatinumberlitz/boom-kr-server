@@ -38,7 +38,9 @@
     "clippy": "pass",
     "locked_build": "pass",
     "synthetic_duel_groups": 7,
-    "synthetic": "local/research/codex/m7b-duel-synthetic-r6/export-seal.json"
+    "synthetic": "local/research/codex/m7b-duel-synthetic-r6/export-seal.json",
+    "legacy_fixed_four_groups": 7,
+    "legacy_fixed_four": "local/research/codex/m7b-legacy-four-r1/export-seal.json"
   },
   "reuse": [
     {
