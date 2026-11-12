@@ -70,6 +70,7 @@ struct Entry {
     frontend: Option<[u8; 32]>,
     echo: Option<u32>,
     peer: Ipv4Addr,
+    reported: Option<Ipv4Addr>,
     connection: Option<u64>,
     deadline: Instant,
 }
@@ -181,6 +182,9 @@ pub(crate) struct RelayAuthority {
     client: Client,
 }
 impl RelayAuthority {
+    pub(crate) fn player(&self) -> &Player {
+        &self.player
+    }
     pub(crate) fn generation(&self) -> u64 {
         self.generation
     }
@@ -297,6 +301,7 @@ impl Channel {
 #[derive(Clone)]
 pub struct Bridge {
     client: Client,
+    live: Option<Client>,
     shared: Shared,
     ttl: Duration,
     random: fn(&mut [u8]) -> Result<()>,
@@ -304,13 +309,14 @@ pub struct Bridge {
 impl Bridge {
     /// Small process-local launch registry. No persistence or multi-process fence.
     pub fn new(client: Client, capacity: usize, ttl: Duration) -> Result<Self> {
-        if !(1..=32).contains(&capacity)
+        if !(1..=128).contains(&capacity)
             || !(Duration::from_millis(1)..=Duration::from_secs(120)).contains(&ttl)
         {
             return Err(Error::InvalidInput);
         }
         Ok(Self {
             client,
+            live: None,
             shared: Arc::new(Mutex::new(Registry {
                 entries: HashMap::new(),
                 generation: 0,
@@ -321,10 +327,28 @@ impl Bridge {
             random: entropy,
         })
     }
+    pub(crate) fn with_live_authorization(mut self, client: Client) -> Self {
+        self.live = Some(client);
+        self
+    }
     /// Called by a trusted backend/launcher seam using a strong session token.
     /// The caller cannot turn an arbitrary player ID/source IP into ownership.
     pub async fn issue(&self, token: &Token, player: i64, peer: Ipv4Addr) -> Result<Launch> {
+        self.issue_metadata(token, player, peer, None).await
+    }
+    /// Private authenticated launcher metadata. It never selects backend identity.
+    pub(crate) async fn issue_metadata(
+        &self,
+        token: &Token,
+        player: i64,
+        peer: Ipv4Addr,
+        reported: Option<Ipv4Addr>,
+    ) -> Result<Launch> {
         if player < 1 || peer.is_unspecified() || peer.is_multicast() || peer.is_broadcast() {
+            return Err(Error::InvalidInput);
+        }
+        if reported.is_some_and(|ip| ip.is_unspecified() || ip.is_multicast() || ip.is_broadcast())
+        {
             return Err(Error::InvalidInput);
         }
         let token = copy_token(token)?;
@@ -349,6 +373,7 @@ impl Bridge {
                     frontend: None,
                     echo: None,
                     peer,
+                    reported,
                     connection: None,
                     deadline: Instant::now() + self.ttl,
                 },
@@ -362,7 +387,7 @@ impl Bridge {
             }
         };
         let player = self.authorize(&guard).await?;
-        if !matches!(player.display_name.len(), 5 | 7)
+        if !(3..=15).contains(&player.display_name.len())
             || player.wire_id == 0
             || !player
                 .display_name
@@ -462,7 +487,8 @@ impl Bridge {
             if entry.phase != Phase::Issued || entry.peer != peer {
                 return Err(Error::Denied);
             }
-            let expected = expected_address(entry.player.as_ref().ok_or(Error::Denied)?);
+            let owner = entry.player.as_ref().ok_or(Error::Denied)?;
+            let expected = entry.reported.or_else(|| expected_address(owner));
             if expected != Some(reported) {
                 return Err(Error::Denied);
             }
@@ -549,7 +575,7 @@ impl Bridge {
         Ok(Channel {
             player,
             connection,
-            client: self.client.clone(),
+            client: self.live.as_ref().unwrap_or(&self.client).clone(),
             guard,
         })
     }

@@ -784,4 +784,53 @@ affectedclientrecovery cógiớihạn thực. Inventory/progression/reward M6, m
 PrivateTMPFS DB/raw/log/exporthash khôngBtrfs/crashdurability/backuprestore. Wine10.0-20260425/copy4b/3netns/virtualLAN/noexternalroute;
 K6cWANgiảlập giữscope. VPS networkpreflight là việc riêng, khôngnativeInternetgame; **Internet thật chưa kiểm**.
 
+
+<a id="rust-db-account-profiles"></a>
+## Hồ sơ account từ DB và kiểm quyền khi DB bận
+
+Nguồn: [M5b](../evidence/rust-service/m5b-dynamic-accounts.json) và
+[bổ sung native recovery](../evidence/rust-service/m5b-native-recovery.json); acceptance ở
+[PLAN](../PLAN.md#phase1-acceptance). Đây là lớp mở rộng của đường account/basic và phòng managed hiện có.
+
+**Contract và policy được giữ.** `account_admission.profile_mode=database_zero` lấy player ID, wire ID và tên từ DB
+sau xác thực session của chính account. Mỗi account mới không cần fixture, sửa config hoặc restart. Auth4, own291
+và card106 sinh từ một bộ template zero-profile đã đo; tên nằm ở cả hai vị trí card106, 98 byte hồ sơ ban đầu bằng 0.
+Tên ASCII chữ/số/gạch dưới dài 3–15 byte là policy backend; không suy nhánh Unicode, trang bị hoặc profile khác.
+Mode `fixed` mặc định giữ fence cũ. `max_sessions` hữu hạn độc lập số fixture. Không dùng IP để chọn identity.
+
+Launcher riêng cấp frontend một lần từ session và player đã kiểm. Địa chỉ nguồn transport và địa chỉ client báo
+được lưu riêng theo chính owner; metadata báo khác phải do launcher có session cấp, không lookup một account khác
+theo IP. Channel6 vẫn kiểm name/wire ID/echo trước claim. Room card, slot, host, Ready, Start, round và hàng đợi gửi
+giữ membership/connection/visit; không thêm alias theo identity hoặc luật theo sức chứa.
+
+**Làn kiểm quyền trong trận.** Khi dùng profile DB, service mở một worker WAL riêng, queue 64 và TTL hàng đợi 1 giây,
+tách khỏi queue đăng nhập/admin. Mỗi kiểm vẫn đọc session/account hiện đã commit: revoke, disabled, credential,
+profile, boot epoch, absolute expiry và idle deadline. Không dùng grant cache để bỏ qua lỗi DB. Không đợi khóa ghi
+để đọc WAL; cập nhật watermark/idle chỉ bỏ qua lỗi writer busy, còn lỗi lưu trữ khác vẫn fail closed. Nếu khóa kéo
+dài qua idle deadline thì session vẫn hết hạn, không hồi sinh. Instance profile DB tăng boot epoch trước readiness;
+restart là fresh server/fresh login, không account resume hoặc match restore.
+
+Khi queue đăng nhập đầy, queue hết TTL hoặc DB bận, API launcher trả `busy_retry` và reason tương ứng; CLI báo `Busy`.
+Đây là lỗi rõ trước khi tạo process KR, không là bằng chứng modal lỗi DB trong KR. Lượt vượt admission của launcher
+có thể bị đóng socket; duplicate pending owner vẫn bị từ chối. Client đã chơi tiếp tục kiểm quyền qua làn WAL.
+Revoke/expiry/credential/profile/epoch đã commit hoặc lỗi DB thật vẫn tháo owner/generation như trước; không nâng
+thành graceful logout/retry. Mật khẩu Argon2id và session hash/revocation tiếp tục thuộc backend công ty.
+
+**Mức chứng minh.** Client KR thật trên Wine đã nhận tên dài 3/10/15 và ID 6/7/8 tạo bằng CLI sau readiness; profile
+và roster native khớp DB, tạo/vào phòng rồi chơi hai trận tới kết quả, có reset ở giữa. Một lượt riêng có ba account
+chung nguồn TCP, vẫn phân biệt đúng name/ID và membership trong native reader/UI. Đây là source mapping ở LAN cô lập,
+không chứng minh Internet hoặc gameplay sau NAT. Trong ca writer lock 25 giây và queue account đầy, cả ba native
+consumer tạo entity159 rồi nổ158; UDP thật tiếp tục apply. Rank diễn ra sau khi nhả khóa theo delay của recipe,
+rồi reset/ván kế; không tuyên bố rank được đo trong lúc giữ khóa. Login mới lỗi rõ và login fresh thành công sau khi
+DB hồi phục. Lượt bổ sung mở process KR thứ tư sau lỗi, nhận đúng tên/profile của account vừa cấp session
+trong sảnh. CP284 chỉ có recovery ở CLI/session; quyết định đóng M5b phải đọc cùng bằng chứng native bổ sung này.
+TCP wrong-password/ban/duplicate và source tests kiểm fence riêng, không thay oracle KR.
+
+**Giới hạn còn lại.** M5b đạt acceptance giai đoạn 1, không đóng toàn bộ thiết kế M5 rộng. Hồ sơ nhân vật bền vững và
+kết quả/thưởng 0 thuộc M6; EXP/tiền/inventory thuộc giai đoạn sau. M8 còn đóng gói, tải, restore và vận hành. Những
+lượt recipe lỗi và GDB remote-disconnect lúc teardown giữ nguyên trong evidence. Lượt recovery gặp bounded unmount
+busy sau export: 103 file raw được phục hồi nguyên byte chỉ sau khi namespace kết thúc, rồi seal; exit1 và lỗi
+helper được giữ nguyên. C đóng debugger sau frame107 đã capture hơn 118ms sau completion. Không gọi teardown sạch.
+Shared-NAT relay, reuse/restart và mọi topology Internet không suy từ ca chung nguồn TCP. Python vẫn giữ RE/reference.
+
 <!-- protocol-topic-content-end -->

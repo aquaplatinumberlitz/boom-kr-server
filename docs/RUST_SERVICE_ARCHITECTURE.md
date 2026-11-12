@@ -14,11 +14,11 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 |---|---|
 | Tiếp Rust ở đâu? | M0–M4 scoped và account fixed2/basic đã có native; R1a–g đã merge source/TCP. N1R prototype hai người và native hồi quy cuối R1 đã đạt; tiếp phép thử map theo PLAN |
 | Chuyển được gì ngay? | Profile codec đã đo, các packet tối thiểu của đường offline, cơ chế phòng/trận cơ bản, ticket/epoch, endpoint exchange và kết quả/reset. Chuyển đúng phạm vi bằng chứng, giữ policy hiện tại |
-| Chưa đủ phần nào? | Hồ sơ account tổng quát và native DB-queue fault; relay mesh và restart; phòng tổng quát, terrain/item 4/8; inventory/progression và vận hành đích |
+| Chưa đủ phần nào? | Nhánh profile ngoài zero/ASCII; relay mesh và restart; terrain/item 4/8; inventory/progression và vận hành đích |
 | Python còn làm gì? | Giữ bản tham chiếu phục vụ được, công cụ RE và đối chứng. Chỉ rút khỏi đường phục vụ từng lát cắt khi Rust đã qua native acceptance tương ứng |
-| Cần xây gì để vận hành? | Account/DB/session đã có backend và bridge fixed2; còn hồ sơ tổng quát, lưu kết quả/thưởng 0, admin vận hành, giám sát, backup đã thử restore, deploy/rollback và kiểm tải. Inventory là giai đoạn sau |
+| Cần xây gì để vận hành? | Account/DB/session và [profile DB](protocol/auth-session.md#rust-db-account-profiles) đã có; còn lưu kết quả/thưởng 0, admin vận hành, giám sát, backup đã thử restore, deploy/rollback và kiểm tải. Inventory là giai đoạn sau |
 | Kiến trúc chọn gì? | Cùng repo, hai crate, một process Linux; Tokio và queue hữu hạn; owner phòng xử lý tuần tự; SQLite ở giai đoạn nội bộ. Các lựa chọn này là design, không phải luật server gốc |
-| RE tiếp theo để làm gì? | Chỉ đo khoảng trống chặn lát cắt. Account fixed2/basic đã có; chỉ đo profile/DB fault, relay hoặc consumer/lifecycle đang chặn mốc hiện hành, không nghiên cứu dàn trải |
+| RE tiếp theo để làm gì? | Chỉ đo khoảng trống chặn lát cắt. Account zero-profile DB và native DB/queue fault đã có M5b; chỉ đo nhánh profile mới, relay hoặc consumer/lifecycle đang chặn mốc hiện hành, không nghiên cứu dàn trải |
 | Khi nào đủ bàn giao? | Theo tiêu chí demo, dịch vụ nội bộ và phát hành rộng hơn trong PLAN. Không hứa ngày; N1 đạt một phía tới được, N1b hai NAT đổi cổng âm. Chưa đủ vận hành 50 người/8 phòng |
 
 ## Quyết định và căn cứ
@@ -132,7 +132,7 @@ registry; M6 thêm lưu kết quả; M8 bổ sung telemetry/admin/deploy. PLAN g
 | Khoảng trống thực tế | Ranh giới đã có | Phần còn phải nghiệm thu |
 |---|---|---|
 | Serving nhiều phòng/chọn đội/nhân vật | M7a Hub/RoomKey/FirstVacant và native hai phòng; [contract](protocol/room-membership.md#rust-managed-room-selection) | M7b occupancy/trận, M7c lựa chọn và M7d ownership tích hợp; không suy gameplay từ setup |
-| Profile account tổng quát | R1c template106; R1f account/session-owned PlayerId, legacy IP index riêng | Profile291/projection account bất kỳ và native DB-queue fault M5 |
+| Profile account tổng quát | R1c template106; R1f account/session-owned PlayerId, legacy IP index riêng | [M5b](protocol/auth-session.md#rust-db-account-profiles) đã có zero-profile DB và native DB/queue fault; nhánh hồ sơ khác chưa đo |
 | Terrain/item 4/8, map và item mới | RoomRules typed policies; R1b không còn chọn luật từ fixture `rank` | G1 theo scope sáu map; JSON cờ cũ chỉ compatibility, không thêm cờ/nhánh theo sức chứa |
 | Body packet còn template opaque | R1d header chuẩn và `kr00967` builders; player_template chung | Chỉ mở field/consumer đang chặn M7/G1, không suy đã có schema mọi packet |
 | Hai NAT đổi cổng | R1f current-channel LegacyDirectPlan; N1/N1b đã có kết luận | N1R đã có native hai người; còn mesh, dùng lại cổng qua restart và tải vận hành |

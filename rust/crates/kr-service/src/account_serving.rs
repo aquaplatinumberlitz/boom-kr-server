@@ -1,5 +1,5 @@
-//! Opt-in fixed two-profile account lobby/basic adapter, private launcher only.
-//! Not a general account projection, public password API or dynamic room service.
+//! Account lobby/basic adapter with explicit fixed or DB zero-profile mode.
+//! The launcher is private; this does not expose a public password API.
 use crate::{
     account_bridge::{self, Bridge},
     account_worker::{Client, Worker},
@@ -62,6 +62,17 @@ pub struct Config {
     pub launch_ttl_seconds: u64,
     #[serde(default = "default_worker_queue_capacity")]
     pub worker_queue_capacity: usize,
+    #[serde(default)]
+    pub profile_mode: ProfileMode,
+    #[serde(default)]
+    pub max_sessions: Option<usize>,
+}
+#[derive(Clone, Copy, Default, PartialEq, Eq, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum ProfileMode {
+    #[default]
+    Fixed,
+    DatabaseZero,
 }
 fn default_worker_queue_capacity() -> usize {
     4
@@ -71,6 +82,8 @@ impl Config {
         if !(30..=120).contains(&self.launch_ttl_seconds)
             || self.database == self.launch_socket
             || !(1..=64).contains(&self.worker_queue_capacity)
+            || self.max_sessions.is_some_and(|n| !(1..=128).contains(&n))
+            || (self.profile_mode == ProfileMode::Fixed && self.max_sessions.is_some())
         {
             return Err(io::Error::other("invalid account serving bounds"));
         }
@@ -125,9 +138,11 @@ pub(crate) struct Active {
     pub bridge: Bridge,
     pub client: Client,
     projections: Arc<std::collections::HashMap<u32, Vec<u8>>>,
+    projection: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
 }
 pub(crate) struct Owner {
     worker: Worker,
+    live_worker: Option<Worker>,
     pub active: Active,
     pub listener: Option<UnixListener>,
     _socket: SocketOwner,
@@ -136,8 +151,14 @@ impl Owner {
     pub async fn open(
         config: &Config,
         projections: std::collections::HashMap<u32, Vec<u8>>,
+        projection: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
     ) -> io::Result<Self> {
         config.validate()?;
+        if (config.profile_mode == ProfileMode::DatabaseZero) != projection.is_some() {
+            return Err(io::Error::other(
+                "account projection mode/template mismatch",
+            ));
+        }
         let listener = UnixListener::bind(&config.launch_socket)?;
         let meta = fs::symlink_metadata(&config.launch_socket)?;
         let socket = SocketOwner {
@@ -153,9 +174,22 @@ impl Owner {
         )
         .await
         .map_err(|e| io::Error::other(format!("account worker startup: {e:?}")))?;
-        let bridge = match Bridge::new(
+        if projection.is_some() {
+            worker
+                .client()
+                .try_begin_instance()
+                .map_err(|e| io::Error::other(format!("account instance startup: {e:?}")))?
+                .wait()
+                .await
+                .map_err(|e| io::Error::other(format!("account instance start: {e:?}")))?;
+        }
+        let mut bridge = match Bridge::new(
             worker.client(),
-            projections.len(),
+            if projection.is_some() {
+                config.max_sessions.unwrap_or(32)
+            } else {
+                projections.len()
+            },
             Duration::from_secs(config.launch_ttl_seconds),
         ) {
             Ok(bridge) => bridge,
@@ -166,18 +200,36 @@ impl Owner {
                 )));
             }
         };
+        let live_worker = if projection.is_some() {
+            let live = Worker::open_live(config.database.clone(), 64, Duration::from_secs(1))
+                .await
+                .map_err(|error| {
+                    io::Error::other(format!("live authorization startup: {error:?}"))
+                })?;
+            bridge = bridge.with_live_authorization(live.client());
+            Some(live)
+        } else {
+            None
+        };
         Ok(Self {
             active: Active {
                 bridge,
                 client: worker.client(),
                 projections: Arc::new(projections),
+                projection,
             },
             worker,
+            live_worker,
             listener: Some(listener),
             _socket: socket,
         })
     }
     pub async fn shutdown(self) -> io::Result<()> {
+        if let Some(live) = self.live_worker {
+            live.shutdown()
+                .await
+                .map_err(|e| io::Error::other(format!("live authorization shutdown: {e:?}")))?;
+        }
         self.worker
             .shutdown()
             .await
@@ -196,6 +248,8 @@ struct LaunchRequest {
     session: Secret,
     player_id: i64,
     peer: Ipv4Addr,
+    #[serde(default)]
+    reported_login_ipv4: Option<Ipv4Addr>,
 }
 async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> io::Result<()> {
     let mut input = Zeroizing::new(Vec::new());
@@ -225,18 +279,54 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
     }
     let session = Token::parse(&request.session.0)
         .map_err(|_| io::Error::other("invalid private launch session"))?;
-    let launch = active
+    if active.projection.is_none() && request.reported_login_ipv4.is_some() {
+        return Err(io::Error::other(
+            "fixed profile metadata must be configured",
+        ));
+    }
+    let issued = active
         .bridge
-        .issue(&session, request.player_id, request.peer)
-        .await
-        .map_err(|e| io::Error::other(format!("private launch denied: {e:?}")))?;
-    // Only configured, fixture-validated projections. This does not enable an
-    // arbitrary account/profile or substitute another player's identity.
-    if launch.player.profile_version != 1
-        || active
-            .projections
-            .get(&launch.player.wire_id)
-            .is_none_or(|name| name.as_slice() != launch.player.display_name.as_bytes())
+        .issue_metadata(
+            &session,
+            request.player_id,
+            request.peer,
+            request.reported_login_ipv4,
+        )
+        .await;
+    let launch = match issued {
+        Ok(launch) => launch,
+        Err(account_bridge::Error::Backend(
+            error @ (crate::account_worker::Error::Busy
+            | crate::account_worker::Error::QueueExpired
+            | crate::account_worker::Error::Backend(crate::accounts::Error::Busy)),
+        )) => {
+            let reason = match error {
+                crate::account_worker::Error::Busy => "account_queue_full",
+                crate::account_worker::Error::QueueExpired => "account_queue_expired",
+                _ => "database_busy",
+            };
+            stream
+                .write_all(
+                    format!("{{\"ok\":false,\"error\":\"busy_retry\",\"reason\":\"{reason}\"}}\n")
+                        .as_bytes(),
+                )
+                .await?;
+            return Ok(());
+        }
+        Err(error) => {
+            return Err(io::Error::other(format!(
+                "private launch denied: {error:?}"
+            )));
+        }
+    };
+    // Fixed mode keeps its fixture fence. Database mode uses the authenticated
+    // player's bounded zero-profile template, never an IP-selected identity.
+    if active.projection.is_none()
+        && (launch.player.profile_version != 1
+            || active
+                .projections
+                .get(&launch.player.wire_id)
+                .is_none_or(|name| name.as_slice() != launch.player.display_name.as_bytes()))
     {
         return Err(io::Error::other("unsupported account profile projection"));
     }
@@ -305,6 +395,7 @@ pub(crate) async fn connection(
                 let result = tokio::select! {
                     _=stop.changed()=>return Ok(()),
                     v=active.bridge.login_for_profile(&packet.payload, peer, id, |player| {
+                        if active.projection.is_some() { return Some(peer); }
                         bound.actors.get(&player.wire_id)
                             .filter(|actor| actor.name == player.display_name.as_bytes())
                             .map(|actor| actor.reported_login_ipv4.unwrap_or(peer))
@@ -353,20 +444,37 @@ pub(crate) async fn connection(
             } else {
                 return Err(io::Error::other("account first opcode/endpoint rejected"));
             };
-            let actor = bound
-                .actors
-                .values()
-                .find(|a| a.identity == owned.wire_id && a.name == owned.display_name.as_bytes())
-                .filter(|_| owned.profile_version == 1)
-                .ok_or_else(|| io::Error::other("unsupported owned account profile"))?;
+            let actor = if active.projection.is_some() {
+                bound.actors.values().min_by_key(|actor| actor.identity)
+            } else {
+                bound
+                    .actors
+                    .values()
+                    .find(|a| {
+                        a.identity == owned.wire_id && a.name == owned.display_name.as_bytes()
+                    })
+                    .filter(|_| owned.profile_version == 1)
+            }
+            .ok_or_else(|| io::Error::other("unsupported owned account profile"))?;
             // The issued frontend and channel lease own the identity. Source IPv4
             // remains a transport restriction, never a selector for room ownership.
             let mut packets = actor.packets.clone();
+            if let Some(template) = &active.projection {
+                let rendered = template.project(owned.wire_id, owned.display_name.as_bytes(), 0)?;
+                packets
+                    .get_mut("auth_A")
+                    .expect("validated auth template")
+                    .payload = rendered.auth;
+                packets
+                    .get_mut("own291")
+                    .expect("validated own template")
+                    .payload = rendered.own291;
+            }
             if echo {
                 let Lease::Login(Some(login)) = &lease else {
                     unreachable!()
                 };
-                let offset = 86 + actor.name.len();
+                let offset = 86 + owned.display_name.len();
                 packets
                     .get_mut("auth_A")
                     .expect("validated auth reply")
@@ -431,7 +539,8 @@ pub(crate) async fn control(
                         result=timeout(Duration::from_secs(3),issue(&mut stream,&active,&peers))=>result,
                     };
                     if !matches!(result,Ok(Ok(()))) {
-                        let _=timeout(Duration::from_millis(200),stream.write_all(b"{\"ok\":false,\"error\":\"denied\"}\n")).await;
+                        let response:&[u8]=if result.is_err(){b"{\"ok\":false,\"error\":\"busy_retry\"}\n"}else{b"{\"ok\":false,\"error\":\"denied\"}\n"};
+                        let _=timeout(Duration::from_millis(200),stream.write_all(response)).await;
                     }
                 });
             }

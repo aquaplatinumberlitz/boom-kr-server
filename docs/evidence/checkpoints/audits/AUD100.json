@@ -1,0 +1,81 @@
+{
+  "id": "AUD100",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-db-account-profiles"
+  ],
+  "completed_through": "CP284",
+  "recorded_utc": "2026-11-12T16:27:49.683283+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+    "docs/protocol/auth-session.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "local/research/codex/m5b-dynamic-native-r3/results-verification.json",
+    "local/research/codex/m5b-dynamic-native-r3/udp-getter-verification.json",
+    "local/research/codex/m5b-shared-ip-native-r1/results-verification.json",
+    "local/research/codex/m5b-dynamic-native-r3/native/cycles/db-pressure.json",
+    "local/research/codex/m5b-dynamic-native-r3/native/raw-seal.json",
+    "local/research/codex/m5b-shared-ip-native-r1/native/raw-seal.json",
+    "rust/crates/kr-service/src/accounts.rs",
+    "rust/crates/kr-service/src/account_worker.rs",
+    "rust/crates/kr-service/src/account_bridge.rs",
+    "rust/crates/kr-service/src/account_serving.rs",
+    "rust/crates/kr-wire/src/kr00967/account.rs",
+    "rust/crates/kr-wire/src/kr00967/player.rs"
+  ],
+  "method": "Đối chiếu README→PLAN→PROTOCOL→RESEARCH→evidence/raw theo M5b phase1. Native auth/291/106 names/IDs và roster/UI so với DB/admin sau readiness; reassembly TCP đối chiếu exact sequence/frame hash; UDP PCAP nối ingress/native apply và2094 copied-native getters. Fault writer25s/queue1/32launcher, fresh login sau lỗi, second match và raw/export/namespace cleanup kiểm riêng. Source tests kiểm committed revoke/expiry/credential/epoch/clock; synthetic negatives không tự là native contract.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "M5b còn fixture/name5/7/ID1/2; create cần config/restart.",
+      "correction": "Mode database_zero từ DB-owned Player, tên3/10/15 và IDs6/7/8 sau readiness qua native hai trận. Common-IP native room riêng giữ metadata do owner cấp, không chọn identity từ IP.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+        "docs/protocol/auth-session.md#rust-db-account-profiles",
+        "rust/crates/kr-service/src/account_serving.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Mọi DB/queue lỗi đều ngắt người chơi, không đạt M5b.",
+      "correction": "Worker WAL kiểm quyền độc lập với writer/login queue; committed fences vẫn effective. Native159/158 trong writer lock, queue_full/database_busy thực, fresh login và second match sau lỗi.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+        "rust/crates/kr-service/src/accounts.rs",
+        "rust/crates/kr-service/src/account_worker.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Recipe failed hoặc exit0 có thể bị coi là full acceptance; rank during lock chưa đúng.",
+      "correction": "R1 duplicate ActiveSession và R2 legacy controller stop giữ nguyên exit1/seal. R3 hai trận đạt;159/158 trong lock, rank0.325s sau release. Shared-IP A debugger shutdown exception công khai, không pristine teardown.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+        "docs/protocol/auth-session.md#rust-db-account-profiles",
+        "local/research/codex/m5b-dynamic-native-r3/results-verification.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Đạt M5b có thể bị đồng nhất full account service hoặc Internet/shared-NAT gameplay.",
+      "correction": "Chỉ đóng acceptance giai đoạn1; profile0/ASCII, private launcher và freshlogin. M6 persistence và N1R-b NAT/mesh/reuse/restart còn riêng, không close rộng.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/m5b-dynamic-accounts.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "N1R-b nhiều người, port/key reuse, restart và spoof chung IP theo PLAN; G1/M6/M8 còn mở.",
+    "Zero-profile ASCII3..15; nhánh profile khác, graceful logout/retry/resume và match restore chưa kiểm.",
+    "WAL đọc quyền đã commit; idle deadline vẫn hết nếu writer lock kéo dài. Hard storage error fail closed. TMPFS không chứng minh persistence/restore.",
+    "Common-IP native là TCP source mapping trong LAN cô lập; không gameplay NAT hoặc Internet. A debugger teardown exception giữ nguyên."
+  ]
+}

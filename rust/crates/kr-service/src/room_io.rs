@@ -655,6 +655,20 @@ pub(crate) fn full_idle(shared: &Shared) -> io::Result<bool> {
     Ok(runtime.model.phase == Phase::Idle
         && runtime.model.members.len() >= runtime.model.capacity())
 }
+pub(crate) fn account_template_source(shared: &Shared) -> io::Result<Vec<u8>> {
+    let runtime = shared
+        .lock()
+        .map_err(|_| err("room prototype unavailable"))?;
+    if !runtime.channels.is_empty() || !runtime.model.members.is_empty() {
+        return Err(err("account template needs pristine prototype"));
+    }
+    runtime
+        .players
+        .iter()
+        .min_by_key(|(id, _)| *id)
+        .map(|(_, reply)| reply.payload.clone())
+        .ok_or_else(|| err("missing player template"))
+}
 pub(crate) fn detach(shared: &Shared, identity: u32, connection: u64) -> io::Result<()> {
     shared
         .lock()
@@ -705,14 +719,27 @@ impl Runtime {
         )
     }
     fn player(&self, m: &Member, host: Option<PlayerId>) -> io::Result<Reply> {
+        let owner = self
+            .channels
+            .get(&m.key.identity)
+            .filter(|channel| channel.connection == m.key.connection)
+            .and_then(|channel| channel.relay_authority.as_ref())
+            .filter(|authority| authority.owns(m.key.identity, m.key.connection));
         let reply = self
             .players
             .get(&m.key.identity)
+            .or_else(|| owner.and_then(|_| self.players.values().next()))
             .ok_or_else(|| err("missing current player projection"))?
             .clone();
+        let body = if let Some(authority) = owner {
+            crate::player_template::PlayerTemplate::parse(&reply.payload)?
+                .project_account(m.key.identity, authority.player().display_name.as_bytes())?
+        } else {
+            reply.payload
+        };
         Ok(packet(
             106,
-            room_wire::player(&reply.payload, m, host == Some(m.key.identity))?,
+            room_wire::player(&body, m, host == Some(m.key.identity))?,
         ))
     }
     fn slot(&self, m: &Member, host: Option<PlayerId>) -> io::Result<Reply> {

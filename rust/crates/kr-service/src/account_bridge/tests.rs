@@ -183,8 +183,17 @@ fn wire_guards_reject_malformed_count_size_peer_and_unsupported_projection() {
     optional[31 + p.display_name.len()] = write_uint(1, Width::U8).unwrap()[0];
     assert!(wire::channel_identity(&optional).is_err());
     let mut bad_name = p;
-    bad_name.display_name = "four".into();
+    bad_name.display_name = "xx".into();
     assert!(wire::channel_identity(&channel_body(&bad_name, 123)).is_err());
+    for name in ["four", "Fifteen_chars99"] {
+        bad_name.display_name = name.into();
+        assert_eq!(
+            wire::channel_identity(&channel_body(&bad_name, 123))
+                .unwrap()
+                .name,
+            name.as_bytes()
+        );
+    }
 }
 
 #[test]
@@ -480,6 +489,51 @@ fn controlled_metadata_does_not_replace_transport_or_session_ownership() {
         drop(owned);
         assert!(lock(&bridge.shared).unwrap().entries.is_empty());
         w.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn private_launch_metadata_is_bound_to_the_frontend_owner_not_an_ip_lookup() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, player, _) = Temp::new();
+    rt().block_on(async {
+        let worker = Worker::open(temp.db(), 4, Duration::from_secs(2))
+            .await
+            .unwrap();
+        let session = grant(&worker, "Alice").await;
+        let bridge = Bridge::new(worker.client(), 128, Duration::from_secs(60)).unwrap();
+        assert!(Bridge::new(worker.client(), 129, Duration::from_secs(60)).is_err());
+        let transport = Ipv4Addr::new(192, 0, 2, 19);
+        let reported = Ipv4Addr::new(10, 71, 0, 8);
+        let launch = bridge
+            .issue_metadata(&session.token, player.player_id, transport, Some(reported))
+            .await
+            .unwrap();
+        let wrong = login_body(launch.token().expose_secret(), transport);
+        assert!(
+            bridge
+                .login_for_profile(&wrong, transport, 81, |_| Some(transport))
+                .await
+                .is_err()
+        );
+        let body = login_body(launch.token().expose_secret(), reported);
+        assert!(
+            bridge
+                .login_for_profile(&body, reported, 81, |_| Some(reported))
+                .await
+                .is_err()
+        );
+        let login = bridge
+            .login_for_profile(&body, transport, 81, |_| None)
+            .await
+            .unwrap();
+        assert_eq!(login.player, player);
+        let channel = channel_body(&player, login.echo);
+        login.redirected().unwrap();
+        let owned = bridge.channel(&channel, transport, 82).await.unwrap();
+        assert!(owned.relay_authority().owns(player.wire_id, 82));
+        drop(owned);
+        worker.shutdown().await.unwrap();
     });
 }
 

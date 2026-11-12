@@ -121,6 +121,9 @@ enum AuthorizationTime {
 }
 
 enum Command {
+    BeginInstance {
+        reply: oneshot::Sender<Result<i64>>,
+    },
     Login {
         login: String,
         password: Zeroizing<Vec<u8>>,
@@ -171,6 +174,22 @@ impl Worker {
         queue_ttl: Duration,
         rate: RatePolicy,
     ) -> Result<Self> {
+        Self::open_mode(path, capacity, queue_ttl, rate, false).await
+    }
+    pub(crate) async fn open_live(
+        path: PathBuf,
+        capacity: usize,
+        queue_ttl: Duration,
+    ) -> Result<Self> {
+        Self::open_mode(path, capacity, queue_ttl, RatePolicy::default(), true).await
+    }
+    async fn open_mode(
+        path: PathBuf,
+        capacity: usize,
+        queue_ttl: Duration,
+        rate: RatePolicy,
+        live: bool,
+    ) -> Result<Self> {
         if !(1..=64).contains(&capacity)
             || !(Duration::from_millis(1)..=Duration::from_secs(60)).contains(&queue_ttl)
         {
@@ -201,7 +220,7 @@ impl Worker {
                 if startup.send(Ok(())).is_err() {
                     return Ok(());
                 }
-                run(&mut store, rx)
+                run(&mut store, rx, live)
             })
             .map_err(|_| Error::WorkerFault)?;
         let owner = Self {
@@ -239,6 +258,14 @@ impl Drop for Worker {
     }
 }
 impl Client {
+    pub(crate) fn try_begin_instance(&self) -> Result<Pending<i64>> {
+        let (reply, rx) = oneshot::channel();
+        self.submit(Command::BeginInstance { reply })?;
+        Ok(Pending {
+            reply: Some(rx),
+            handoff: None,
+        })
+    }
     fn submit(&self, command: Command) -> Result<()> {
         let guard = self.gate.lock().map_err(|_| Error::Closed)?;
         guard
@@ -411,9 +438,32 @@ fn deliver_login(
     }
     accepted.map(|_| ())
 }
-fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>) -> Result<()> {
+fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> Result<()> {
     while let Some(command) = commands.blocking_recv() {
         match command {
+            Command::BeginInstance { reply } => {
+                let result = if live {
+                    Err(Error::InvalidInput)
+                } else {
+                    let now = std::time::SystemTime::now()
+                        .duration_since(std::time::UNIX_EPOCH)
+                        .ok()
+                        .and_then(|t| i64::try_from(t.as_secs()).ok())
+                        .ok_or(Error::Backend(accounts::Error::ClockRollback));
+                    now.and_then(|now| {
+                        store
+                            .begin_instance(
+                                &accounts::Admin {
+                                    actor: "kr-service",
+                                    reason: "fresh database-profile service instance",
+                                },
+                                now,
+                            )
+                            .map_err(Error::Backend)
+                    })
+                };
+                let _ = reply.send(result);
+            }
             Command::Login {
                 login,
                 password,
@@ -425,6 +475,10 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>) -> Result<()> {
                 handoff,
                 handoff_ttl,
             } => {
+                if live {
+                    let _ = reply.send(Err(Error::InvalidInput));
+                    continue;
+                }
                 if reply.is_closed() {
                     continue;
                 }
@@ -463,7 +517,9 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>) -> Result<()> {
                         .ok_or(Error::Backend(accounts::Error::ClockRollback)),
                 };
                 let result = now.and_then(|now| {
-                    if renew_idle {
+                    if live {
+                        store.inspect_live(&token, player, now, renew_idle)
+                    } else if renew_idle {
                         store.authorize(&token, player, now)
                     } else {
                         store.inspect_session(&token, player, now)

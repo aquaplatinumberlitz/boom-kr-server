@@ -1,0 +1,197 @@
+{
+  "id": "CP285",
+  "previous": "CP284",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T16:42:10.150829+00:00",
+  "context_commit": "ca43e5b9ac2bc0a310ec165f2c309a2813ade0e1",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / M5b correction: sau DB/queue fault, một process KR mới có đăng nhập và nhận profile DB thật không?",
+  "scope": "Bổ sung bắt buộc cho closure CP284: cùng source/binary, A/B/C hai trận và D fresh process/login sau fault. Phân biệt runtime interval đạt với lỗi unmount/debugger teardown; không mở scope M5 rộng.",
+  "artifacts": [
+    {
+      "name": "kr-service-db-account-profiles",
+      "sha256": "8fdae7689bcd2d5c23678a98002331d7dd48545db910cd70f6ac9c252f3643b8"
+    },
+    {
+      "name": "KR00967-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/auth-session.md#rust-db-account-profiles",
+    "docs/evidence/rust-service/m5b-native-recovery.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "D process mới sau writer/queue fault nhận name Reserved_0/ID1/own291131 native và sảnh, đúng DB/session vừa cấp. A/B/C runtime-created IDs6/7/8 giữ hai matches/result/reset; common-IP room dùng CP284 riêng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-db-account-profiles",
+      "evidence": [
+        "M5B285-00010",
+        "M5B285-00494",
+        "M5B285-00364",
+        "M5B285-00020"
+      ],
+      "limits": "Fresh process/login, không same-process resume hoặc match restore. Wine isolated LAN; no new Internet/shared-NAT gameplay."
+    },
+    {
+      "summary": "103raw sau same-byte export được phục hồi tại original paths sau namespace extinction, hash và source freeze khớp rồi seal. Exit1/unmountbusy giữ nguyên; C debugger closure sau107 capture118ms saucompletion.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-db-account-profiles",
+      "evidence": [
+        "M5B285-00010",
+        "M5B285-00486",
+        "M5B285-00490",
+        "M5B285-00277"
+      ],
+      "limits": "Không pristine helper/debugger teardown hoặc crash-durable evidence claim. Native interval/recovery checked separately, no record/raw rewrite."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native fresh-login recovery after DB/queue fault plus two-match regression",
+      "result": "pass",
+      "evidence": [
+        "M5B285-00494",
+        "M5B285-00495",
+        "M5B285-00010"
+      ],
+      "limits": "CP284 backend-only recovery closure corrected; original immutable record remains."
+    },
+    {
+      "check": "Native wrapper getters and independent UDP/PCAP joins; exact raw/source pins and namespace cleanup",
+      "result": "pass",
+      "evidence": [
+        "M5B285-00502",
+        "M5B285-00486",
+        "M5B285-00490",
+        "M5B285-00277"
+      ],
+      "limits": "Copied-native getter emulation separate from Wine; original launch exit1 retained."
+    },
+    {
+      "check": "Manual feature-group correction audit",
+      "result": "pass",
+      "evidence": [
+        "M5B285-00007",
+        "M5B285-00010",
+        "M5B285-00004",
+        "M5B285-00006"
+      ],
+      "limits": "Independent review waived; exact-head primary/local-history and CI remain required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP285-native-db-recovery.json",
+      "bytes": 134016,
+      "sha256": "0869994e14b9c82baa94d37d3105bbc655059d502c64125a3d7328b3bbcc54ea",
+      "count": 510
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native new-process login after DB/queue recovery.",
+      "Same-byte raw recovery and honest helper/debugger teardown classification."
+    ],
+    "corrected": [
+      "CP284 backend fresh-session success alone did not prove native recovery. M5b phase1 closure now depends on this supplement."
+    ],
+    "superseded": [
+      "CP284 closure read without native recovery supplement; no historical record or metadata changed."
+    ]
+  },
+  "blockers": [
+    "N1R-b native4/8, sparse/departure, port/key reuse, restart and common-IP spoof theo PLAN. G1/M6/M8 còn mở.",
+    "M5b zero-profile ASCII/private launcher/fresh process; graceful logout/resume, profile khác, persistence/production không suy từ native recovery.",
+    "Helper unmount busy và C debugger closure lúc teardown giữ nguyên. Same-byte recovery103raw và namespace extinction không là pristine helper exit0."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Giao PR379 sau exact-head primary checkout/local-history/CI rồi N1R-b theo PLAN; không lặp M5b đã đủ evidence.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T16:42:10.150829+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo native recovery correction and manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Bổ sung native recovery và correction closure CP284; giữ N1R-b việc kế."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Bổ sung native recovery và correction closure CP284; giữ N1R-b việc kế."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Bổ sung native recovery và correction closure CP284; giữ N1R-b việc kế."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Bổ sung native recovery và correction closure CP284; giữ N1R-b việc kế."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Bổ sung native recovery và correction closure CP284; giữ N1R-b việc kế."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Bổ sung native recovery và correction closure CP284; giữ N1R-b việc kế."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Bổ sung native recovery và correction closure CP284; giữ N1R-b việc kế."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Bổ sung native recovery và correction closure CP284; giữ N1R-b việc kế."
+    },
+    {
+      "path": "docs/evidence/rust-service/m5b-native-recovery.json",
+      "state": "updated",
+      "reason": "Metadata mới; metadata/record/raw complete CP284 không sửa."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đã trỏ chủ đề DB account; topic bổ sung native recovery."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Tiếp solo/frozen/raw/feature-group audit/privacy/PR và exact-head checks."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-db-account-profiles"
+  ]
+}

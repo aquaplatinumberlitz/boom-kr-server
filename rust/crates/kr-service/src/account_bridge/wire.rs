@@ -43,7 +43,7 @@ pub struct ChannelIdentity {
     pub echo: u32,
 }
 
-/// Only known name5/name7, count1/no-optional profile projection is enabled.
+/// Bounded backend ASCII name3..15, count1/no-optional profile projection.
 /// The optional-string flag must be off; the other 23 trailing bytes stay opaque.
 pub fn channel_identity(body: &[u8]) -> Result<ChannelIdentity> {
     if body.len() < 4 || field(&body[..1], Width::U8)? != 1 || field(&body[1..2], Width::U8)? != 255
@@ -51,7 +51,7 @@ pub fn channel_identity(body: &[u8]) -> Result<ChannelIdentity> {
         return Err(Error::UnsupportedWire);
     }
     let size = field(&body[2..4], Width::U16)? as usize;
-    if !matches!(size, 5 | 7) || body.len() != 36 + size {
+    if !(3..=15).contains(&size) || body.len() != 36 + size {
         return Err(Error::UnsupportedWire);
     }
     if field(&body[31 + size..32 + size], Width::U8)? != 0 {

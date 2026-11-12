@@ -46,6 +46,7 @@ def main():
     for name in ['binary', 'admin', 'config', 'baseline', 'out']:
         parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--active-departure', action='store_true')
+    parser.add_argument('--database-accounts', action='store_true', help='Create new DB accounts after readiness; use one transport IP and no per-account config')
     args = parser.parse_args()
     root = args.out.resolve()
     root.mkdir(parents=True, exist_ok=False, mode=0o700)
@@ -63,6 +64,8 @@ def main():
     for actor, peer in zip(two['actors'], cfg['allowed_peers']):
         actor['peer'] = peer
     account = AccountFixture(args.admin, root, cfg)
+    if args.database_accounts:
+        two['account_admission'].update(profile_mode='database_zero', max_sessions=16)
     config = root/'config.json'
     config.write_text(json.dumps(cfg, indent=2)+'\n')
     files = [args.binary, args.admin, config, args.config, args.baseline, Path(__file__), Path('tools/rust_account_fixture.py'), Path('tools/test_rust_managed_ownership.py'),
@@ -123,8 +126,23 @@ def main():
             time.sleep(.01)
         else:
             raise AssertionError('startup timeout')
+        if args.database_accounts:
+            account.players=[];account.sessions=[];account.peers=['127.0.0.2']*4;account.reported_peers=account.peers[:]
+            for i,name in enumerate(['FirstNew_1','B9x','ThirdAccount_55']):
+                login_name=f'new_runtime_{i}'
+                player=account.command(dict(op='create',login=login_name,name=name,password='account-basic-test-password'))['player']
+                grant=account.command(dict(op='login',login=login_name,password='account-basic-test-password',ttl_seconds=1200))
+                account.players.append(player);account.sessions.append(grant['token'])
+            assert all(p['wire_id']>len(two['actors'])for p in account.players)
+            cases.append('accounts_created_after_readiness_without_config_change_or_restart')
         for index in range(3):
-            clients.append(account.connect(index, login, channel, header, hello, Client))
+            factory=(lambda _role,*args: Client(0,*args))if args.database_accounts else Client
+            clients.append(account.connect(index, login, channel, header, hello, factory))
+            if args.database_accounts:
+                own=codec.frame_body(bytes.fromhex(trace[-1]['frame_hex']),trace[-1]['sequence'])
+                size=codec.read_fields(own[1:5],[4])[0];decoded=_decode_bytes(own[5:5+size]);n=int.from_bytes(decoded[6:10],'little')
+                assert decoded[10:10+n]==account.players[index]['display_name'].encode()and decoded[10+n:]==bytes(98)
+        if args.database_accounts:cases.append('three_new_names_and_wire_ids_projected_from_DB_on_one_transport_IP')
         a,b,c=clients
         room=create(a,b'Players')
         b.receive(91);c.receive(91)
@@ -138,7 +156,7 @@ def main():
                 op,body=client.receive()
                 if op==106:ids.append(codec.read_fields(body[1:5],[4])[0])
                 if op==117:break
-            assert sorted(ids)==[1,2,3]
+            assert sorted(ids)==sorted(p['wire_id']for p in account.players[:3])
         cases.append('three_current_members_in_capacity4_not_identity_aliases')
         def choose(client,op,value,current):
             body=codec.pack_fields([0,value],[1,2]) if op==92 else codec.pack_fields([value],[1])
@@ -173,7 +191,8 @@ def main():
                     flag=codec.read_fields(body[at:at+1],[1])[0];at+=1
                     if flag:
                         assert flag==1;values=codec.read_fields(body[at:at+18],[4,2,4,2,4,2]);at+=18
-                        assert values==([0]*6 if index==slot else [int.from_bytes(socket.inet_aton('127.0.0.'+str(index+2)),'big'),32101+index,0,0,0,0]),(index,values)
+                        address='127.0.0.2'if args.database_accounts else'127.0.0.'+str(index+2)
+                        assert values==([0]*6 if index==slot else [int.from_bytes(socket.inet_aton(address),'big'),32101+index,0,0,0,0]),(index,values)
                         active.append(index)
                 assert at==len(body) and active==[x[0]for x in expected]
             assert len(set(keys))==1
@@ -223,7 +242,7 @@ def main():
         for client in clients:
             client.receive(180)
             if args.active_departure:
-                _,body=client.receive(107);assert codec.read_fields(body,[1,4,1])==[1,2,0]
+                _,body=client.receive(107);assert codec.read_fields(body,[1,4,1])==[1,account.players[1]['wire_id'],0]
             for _ in clients:client.receive(110)
         cases.append('three_member_team_result_and_reset_current_rank_rows_only')
         if not args.active_departure:

@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP283",
+  "as_of": "CP285",
   "baseline": "39a401a2f114507c4669a373e7eded1fcea4f0fa",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -680,6 +680,32 @@
       ],
       "evidence": [
         "docs/evidence/rust-service/m7e-selected-rosters.json"
+      ],
+      "prs": [],
+      "successors": [],
+      "reviewed_utc": "2026-11-12T15:19:49.777737+00:00"
+    },
+    {
+      "number": 377,
+      "kre": "KRE-074",
+      "classification": "in_progress",
+      "features": [
+        "KR-L001",
+        "KR-R001"
+      ],
+      "known": "M5b đủ native account mới/profile DB, hai ván, chung nguồn TCP, DB/queue availability và process KR mới đăng nhập sau phục hồi. CP284 recovery chỉ backend; bổ sung CP285 bắt buộc khi đọc closure.",
+      "remaining": "Giao PR sau exact-head/local-history và CI. Profile ngoài zero/ASCII, graceful recovery và vận hành giữ scope riêng.",
+      "next_test": "Giao M5b rồi tiếp N1R-b theo dashboard.",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "reason": "Native readers/UI/TCP/UDP PCAP/copied getter và real SQLite fault; source/TCP negatives không thay oracle KR.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/protocol/auth-session.md#rust-db-account-profiles",
+        "docs/RESEARCH.md#rust-service-gaps"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+        "docs/evidence/rust-service/m5b-native-recovery.json"
       ],
       "prs": [],
       "successors": [],

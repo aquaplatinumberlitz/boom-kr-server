@@ -1,0 +1,61 @@
+{
+  "schema": "kre-rust-db-account-native-recovery-v1",
+  "checkpoint": "CP285",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/auth-session.md#rust-db-account-profiles",
+  "supplements": "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+  "corrects": {
+    "checkpoint": "CP284",
+    "claim": "M5b scoped acceptance closure",
+    "reason": "CP284 recovery had CLI/session success; native recovery was not yet measured. Closure is valid only with this additional native evidence; old complete record/raw/metadata remain unchanged."
+  },
+  "binary_sha256": "8fdae7689bcd2d5c23678a98002331d7dd48545db910cd70f6ac9c252f3643b8",
+  "run_sha256": "839ac891a011a82cffb06db86404c677540fa5b17c8a453c48a780f0f8792d10",
+  "raw_count": 103,
+  "verification": {
+    "path": "local/research/codex/m5b-recovery-native-r1/recovery-verification.json",
+    "bytes": 2074,
+    "sha256": "8edb1a65046846cb3487d14f2a6544be24210387ec3d9ad3bfb2874bd834a292"
+  },
+  "udp_getters": {
+    "path": "local/research/codex/m5b-recovery-native-r1/udp-getter-verification.json",
+    "bytes": 716,
+    "sha256": "194ca0c5758b8a648a38d1d22e4364f01aa60dbad60df4f47fb1dd38beaebd76"
+  },
+  "getters": 2082,
+  "raw_seal": {
+    "path": "local/research/codex/m5b-recovery-native-r1/native/raw-seal.json",
+    "bytes": 22130,
+    "sha256": "5c7309848679c21ea933ffd7b64e1f62258ce1ec7376762b4b1cee961520ec8a"
+  },
+  "storage_recovery": {
+    "path": "local/research/codex/m5b-recovery-native-r1/native/storage-recovery.json",
+    "bytes": 860,
+    "sha256": "d1db62ee5b1a7d12e5870822b8616b219c7a5324aed5ad584f3ce95f78990b87"
+  },
+  "lifecycle": {
+    "path": "local/research/codex/m5b-recovery-native-r1/lifecycle-addendum.json",
+    "bytes": 916,
+    "sha256": "657d51e560d6a504a5816a8d31133af3763607770cf1104aee0a0b6962f2bb39"
+  },
+  "acceptance": {
+    "state": "passed_scoped_phase1",
+    "milestone": "M5b",
+    "native": "Original three runtime-created accounts complete two matches. DB writer/queue fault returns busy for new login, then fresh CLI session for reserved account and a new fourth KR process loads that account profile in lobby after release.",
+    "preserved": "CP284 native common-source TCP room/identity and145 Rust tests/8dynamic/16negative TCP groups remain separate evidence. Same binary; no new source change."
+  },
+  "limits": [
+    "Wine isolated LAN, no new Internet/NAT/relay claim.",
+    "Fresh process/login after DB recovery; no same-process resume or match restore.",
+    "New account D stays in lobby; original accounts A/B/C provide two-match and fault evidence.",
+    "Helper bounded umount failed after same-byte export and bind unmounts; launcher exit1 is retained. All103 raw files restored to original paths with exact hashes only after namespace extinction, then sealed. No pristine helper teardown claim.",
+    "C remote-debugger closure/internal error follows independently captured107 more than118ms after completion. Raw unchanged; no pristine debugger teardown claim."
+  ],
+  "verification_environment": "Wine isolated virtual LAN, no outside route; no new Internet or shared-NAT gameplay claim.",
+  "failed_validation_context": {
+    "log": "local/research/codex/m5b-exact-head-checkpoint-check.txt",
+    "reason": "Checker was run in worktree with local symlink outside checkout; strict path guard rejected local pins. This is not a passing check. Run required checker on the exact head in primary checkout where local is physical, without changing guard/history/raw."
+  },
+  "plan": "docs/PLAN.md#dashboard"
+}

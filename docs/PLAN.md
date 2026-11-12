@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, CP283 / AUD099**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, CP285 / AUD101**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -19,28 +19,22 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, C
 |---|---|---|
 | M0–M3 nền tảng, phòng cố định, trận hai người | Đạt trong phạm vi đã ghi | Không |
 | M4 bốn và tám người | Đạt phần đội cố định và Manner | Free 1v7 là giới hạn đã biết, không retry |
-| M5 tài khoản | Account → phòng → trận → kết quả đã chạy native (CP258) | Hồ sơ tổng quát cho mọi account; lỗi hàng đợi DB khi đang native |
+| M5 tài khoản | [M5b đạt giai đoạn 1](protocol/auth-session.md#rust-db-account-profiles): hồ sơ DB cho account mới, hai ván, native DB/hàng đợi và login KR sau phục hồi | Hồ sơ ban đầu bằng 0; persistence nhân vật/kết quả thuộc M6, recovery/vận hành còn giới hạn |
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; relay opt-in đạt prototype hai người, còn mở rộng và vận hành |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; relay ngoài prototype hai người và vận hành còn riêng |
-| M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | Hồ sơ account bất kỳ thuộc M5b; relay nhiều người thuộc N1R-b |
+| M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
 | [G1](#rust-g1) sáu map ladder và item | Đã đo điều kiện chọn Village10; chưa triển khai gameplay mới | Metadata map phải đồng bộ; spawn, terrain, floor và item chưa đo trên Village10 |
 | M6 lưu kết quả, thưởng 0 | Chưa bắt đầu; dependency R1 đã đạt | Sửa acceptance giai đoạn 1; thực hiện song song G1 |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
 
-1. **M5b hồ sơ cho account bất kỳ** là việc kế tiếp, theo [acceptance giai đoạn 1](#phase1-acceptance).
-   [M7e đã đạt](protocol/room-membership.md#rust-selected-player-rounds): Start/stat theo lựa chọn, native3/6 người,
-   slot0/2 sau vacancy và bốn người mất endpoint giữa trận tới kết quả/ván kế, kể cả hết một đội.
-   Không lặp producer/reader hoặc roster đã đo. Account mới phải tạo bằng CLI khi service đang chạy, profile từ DB,
-   hai account chung IP không lẫn identity. DB bận/hàng đợi đầy phải được đo native và xử lý để người đang chơi
-   tiếp tục; policy DB-busy fail closed cũ không tự đáp ứng tiêu chí mới. Chưa cần EXP, tiền hoặc inventory.
-2. **N1R-b relay cho phòng nhiều người**, sau M7e và trước G1: phòng bốn và phòng tám người chơi qua relay trên
+1. **N1R-b relay cho phòng nhiều người** là việc kế tiếp: phòng bốn và phòng tám người chơi qua relay trên
    client thật, mỗi cỡ một lượt; dùng lại cổng và key khi hết pool và sau restart; chặn giả mạo gói đầu giữa hai
-   người chung IP. Làm sau M7 để không phải nghiệm thu hai lần trên hai kiểu phòng. Đây là điều kiện của đích
-   giai đoạn 1, không phải việc tuỳ chọn.
-3. G1 song song M6. G1 cần adapter dữ liệu map nhất quán trước native gameplay mới. Không chạy lại baseline N1b.
-4. M8, gồm kiểm tải 50 người và 8 phòng có relay.
+   người chung IP. M7e và M5b đã đạt trong phạm vi đã đo. Không lặp native roster, profile hoặc ca DB đã có.
+   Đây là điều kiện của đích giai đoạn 1.
+2. G1 song song M6. G1 cần adapter dữ liệu map nhất quán trước native gameplay mới. Không chạy lại baseline N1b.
+3. M8, gồm kiểm tải 50 người và 8 phòng có relay.
 
 Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
@@ -50,7 +44,7 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
   Cổng không tái dùng trong instance nên có giới hạn số vòng; spoof giữa người chung IP, restart và tải đích còn mở.
 - M7a selection đã đo bốn profile; M7b lifecycle đã đo tám profile cấu hình và contiguous2/4/8. Occupancy chỉ phục hồi
   current/capacity, 20 byte còn lại giữ opaque. Opt-in M7e đã đo roster3/6/sparse và chosen-character Battle; native
-  active EOF tới kết quả và roster kế đã đạt. Profile account bất kỳ vẫn thuộc M5b.
+  active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; chưa có progression hoặc inventory.
 - Village10 được lookup đúng nhưng tên trong Start còn thuộc ExVillage01 nên client từ chối trước loading.
   Terrain cũ cũng khóa với fixture map cũ; cần dữ liệu nhất quán, không nới guard hoặc coi đổi ID đã đủ chơi.
 - `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
@@ -142,7 +136,7 @@ trên client KR chưa có; rủi ro cao nghĩa là cỡ việc có thể tăng.
 
 | Thứ tự | Mốc | Còn lại để đạt đích | Cỡ | Rủi ro RE |
 |---|---|---|---|---|
-| Theo dashboard | RUST-M5 | Fixed2 account/basic đã đạt; còn hồ sơ tổng quát và native DB-queue fault. R1c/R1f đã merge source/TCP | M | Vừa: phép chiếu hồ sơ 291 |
+| Theo dashboard | RUST-M5 | M5b đạt profile DB và native DB/hàng đợi trong phạm vi giai đoạn 1; giới hạn tại contract account | — | Nhánh profile khác chỉ mở theo scope sau |
 | Theo dashboard | [N1/N1R](#rust-n1-result) | N1 đạt một phía tới được; N1b âm và hết hai lượt. Relay hai người đã đạt prototype; còn mesh, restart và tải vận hành | L | Cao: mở rộng relay |
 | Theo dashboard | [RUST-R1](#rust-r1) | R1a–g và native hồi quy profile 2/4/8/account đã đạt | — | Không còn RE cho refactor; tính năng mới có acceptance riêng |
 | 4 | RUST-M7 phòng tổng quát | Danh sách phòng động, tạo/vào/rời, lỗi phòng đầy, chọn nhân vật, chọn đội bằng thao tác trong phòng | L | Cao |
@@ -161,7 +155,7 @@ R1 đi trước M7, G1 và M6 vì cả ba đều sửa lõi phòng; làm R1 sau 
 - R1g cho cấu hình 1–1024 transport và 1–256 entry allowlist, độc lập số profile. Defaults cũ giữ nguyên;
   khoảng 200 transport cho 50 người vẫn cần headroom và kiểm tải M8, không được suy từ test admission.
 - Đường account dùng session-owned PlayerId; IP chỉ là restriction, diagnostic vẫn có legacy IP index.
-  Hồ sơ tổng quát và native shared-NAT chưa được suy từ source/TCP R1f.
+  M5b đã đo hồ sơ DB và chung nguồn TCP trên client thật; gameplay sau NAT qua relay vẫn cần N1R-b.
 - `LegacyDirectPlan` dùng endpoint channel hiện hành với cổng99. N1b đã chứng minh sai cổng sau NAT ở cả hai phía
   trong recipe đã đo; relay opt-in có acceptance riêng, chưa phục hồi tự động NAT discovery.
 

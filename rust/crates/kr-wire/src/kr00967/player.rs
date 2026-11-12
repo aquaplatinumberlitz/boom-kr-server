@@ -21,11 +21,28 @@ pub struct PlayerTemplate {
 }
 impl PlayerTemplate {
     pub fn parse(body: &[u8]) -> io::Result<Self> {
-        if ![200, 204].contains(&body.len()) {
+        Self::parse_name_branch(body, false)
+    }
+    /// Candidate general account projection. The zero-profile layout remains
+    /// fixed; variable names need their own native acceptance before serving.
+    pub fn parse_account(body: &[u8]) -> io::Result<Self> {
+        Self::parse_name_branch(body, true)
+    }
+    fn parse_name_branch(body: &[u8], account: bool) -> io::Result<Self> {
+        if !(if account {
+            (196..=220).contains(&body.len())
+        } else {
+            [200, 204].contains(&body.len())
+        }) {
             return Err(io::Error::other("unsupported player106 template size"));
         }
         let size = uint(&body[16..20], Width::U32)? as usize;
-        if !matches!(size, 113 | 115) || 25 + size > body.len() {
+        if !(if account {
+            (111..=123).contains(&size)
+        } else {
+            matches!(size, 113 | 115)
+        }) || 25 + size > body.len()
+        {
             return Err(io::Error::other("unsupported player106 profile size"));
         }
         let stream = decode_bytes(&body[20..20 + size])?;
@@ -38,7 +55,14 @@ impl PlayerTemplate {
         }
         let length =
             u32::from_le_bytes(stream[6..10].try_into().expect("bounded profile")) as usize;
-        if !matches!(length, 5 | 7) || size != 108 + length || stream[10 + length..] != [0; 98] {
+        if !(if account {
+            (3..=15).contains(&length)
+        } else {
+            matches!(length, 5 | 7)
+        }) || size != 108 + length
+            || stream[10 + length..] != [0; 98]
+            || body.len() != 190 + 2 * length
+        {
             return Err(io::Error::other("unsupported player106 zero-profile"));
         }
         let tail = &body[20 + size..];
@@ -48,6 +72,9 @@ impl PlayerTemplate {
             || decode_bytes(&tail[5..5 + outer])? != stream[10..10 + length]
         {
             return Err(io::Error::other("player106 names disagree"));
+        }
+        if account {
+            account_name(&stream[10..10 + length])?;
         }
         Ok(Self {
             prefix: body[..16].to_vec(),
@@ -63,6 +90,16 @@ impl PlayerTemplate {
         {
             return Err(io::Error::other("unsupported player106 identity/name"));
         }
+        self.project_name(identity, name)
+    }
+    pub fn project_account(&self, identity: u32, name: &[u8]) -> io::Result<Vec<u8>> {
+        account_name(name)?;
+        if identity == 0 {
+            return Err(io::Error::other("zero account wire identity"));
+        }
+        self.project_name(identity, name)
+    }
+    fn project_name(&self, identity: u32, name: &[u8]) -> io::Result<Vec<u8>> {
         let mut inner = (name.len() as u32).to_le_bytes().to_vec();
         inner.extend_from_slice(name);
         inner.extend_from_slice(&[0; 98]);
@@ -80,6 +117,17 @@ impl PlayerTemplate {
         body.extend_from_slice(&self.suffix);
         Ok(body)
     }
+}
+
+pub(super) fn account_name(name: &[u8]) -> io::Result<()> {
+    if !(3..=15).contains(&name.len())
+        || !name.iter().all(|b| b.is_ascii_alphanumeric() || *b == b'_')
+    {
+        return Err(io::Error::other(
+            "account name must be ASCII alphanumeric/underscore3..15",
+        ));
+    }
+    Ok(())
 }
 
 #[cfg(test)]

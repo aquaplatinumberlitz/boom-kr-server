@@ -33,11 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP283: M7e đã có roster hiện hành và người còn lại tiếp tục sau rớt mạng giữa trận trên client KR thật.**
-Start/stat dùng nhân vật đã chọn; đã kiểm ba người, sáu người, slot thưa và hai lần mất endpoint với roster4→3→2,
-kết quả/reset và ván kế. [Contract và giới hạn](docs/protocol/room-membership.md#rust-selected-player-rounds),
-[bằng chứng](docs/evidence/rust-service/m7e-selected-rosters.json). M7 đạt phạm vi đã đo; hồ sơ account bất kỳ và
-native DB/hàng đợi là việc tiếp theo ở M5b theo [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP285: M5b đã đủ đường account mới và đăng nhập KR sau khi DB/hàng đợi phục hồi.**
+Ba account tạo khi service đang chạy đã chơi hai trận; ca chung nguồn TCP giữ đúng danh tính. Lượt bổ sung xác nhận
+process KR thứ tư đăng nhập mới và nhận hồ sơ DB sau lỗi; CP284 trước đó mới kiểm phục hồi ở backend.
+[Contract/giới hạn](docs/protocol/auth-session.md#rust-db-account-profiles),
+[bằng chứng bổ sung](docs/evidence/rust-service/m5b-native-recovery.json). M5b đạt acceptance giai đoạn 1; relay nhiều
+người, G1, M6 và M8 còn mở. Tiếp N1R-b theo [Bảng điều hành](docs/PLAN.md#dashboard).
 Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
