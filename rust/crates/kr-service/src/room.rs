@@ -417,6 +417,14 @@ impl Room {
                 "eight fence requires current loading/Battle",
             ));
         }
+        self.fence_active(key)
+    }
+    /// Fail closed after loss in a measured team round. No survivor restart,
+    /// result or recovery packet is invented for an unsupported roster.
+    pub(crate) fn fence_active(&mut self, key: Membership) -> io::Result<()> {
+        if !matches!(self.phase, Phase::Armed { .. } | Phase::Loading { .. }) {
+            return Err(io::Error::other("fence requires current loading/Battle"));
+        }
         self.leave(key)?;
         self.sealed_abort = true;
         Ok(())

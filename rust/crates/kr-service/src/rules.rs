@@ -204,6 +204,36 @@ fn err(s: &str) -> io::Error {
     io::Error::other(s.to_owned())
 }
 
+/// Measured report shapes and initial power by round profile. Observation-only
+/// messages carry no authority or effect merely because their length is known.
+pub(crate) struct ReportLimits {
+    pub power: Vec<u8>,
+    pub opaque167: &'static [usize],
+    pub terrain_aux: &'static [u64],
+}
+impl ReportLimits {
+    pub(crate) fn measured(count: usize) -> io::Result<Self> {
+        match count {
+            2 => Ok(Self {
+                power: vec![1, 1],
+                opaque167: &[4, 12, 16, 22, 32, 42],
+                terrain_aux: &[37, u32::MAX as u64],
+            }),
+            4 => Ok(Self {
+                power: vec![1, 1, 1, 1],
+                opaque167: &[4, 16, 22, 32],
+                terrain_aux: &[37, u32::MAX as u64],
+            }),
+            8 => Ok(Self {
+                power: vec![1, 1, 1, 1, 1, 1, 2, 2],
+                opaque167: &[4, 22, 42],
+                terrain_aux: &[33, 37, 39, 47, u32::MAX as u64],
+            }),
+            _ => Err(err("unmeasured report profile")),
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
