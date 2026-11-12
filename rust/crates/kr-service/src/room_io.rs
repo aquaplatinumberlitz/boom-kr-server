@@ -446,6 +446,9 @@ pub(crate) fn listing_row(shared: &Shared) -> io::Result<wire::ListingRow> {
     }
     let mut row = rows.remove(0);
     row.title = runtime.title.clone();
+    if runtime.public_key.is_some() {
+        row.set_population(runtime.model.members.len(), runtime.model.capacity())?;
+    }
     Ok(row)
 }
 impl Runtime {

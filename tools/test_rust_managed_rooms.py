@@ -142,6 +142,7 @@ def main():
         for client in [b, d]:
             catalog(client)
         assert join(b, first) == 1
+        catalog(d)  # Membership changes now refresh observers still in lobby.
         assert join(d, second) == 1
         setup(a, 1, [1, 2])
         setup(b, 2, [1, 2])

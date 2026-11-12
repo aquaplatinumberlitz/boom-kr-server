@@ -259,6 +259,19 @@ pub struct ListingRow {
     pub title: Vec<u8>,
     pub opaque: [u8; 22],
 }
+impl ListingRow {
+    /// KR D9D720 reader sites D9D7E3/D9D817: candidate current/capacity
+    /// projection, cross-checked against retained1/4 and VN reference. Native
+    /// delta acceptance belongs to M7b; the other20 opaque bytes stay exact.
+    pub fn set_population(&mut self, current: usize, capacity: usize) -> io::Result<()> {
+        if capacity == 0 || capacity > 26 || current > capacity {
+            return Err(io::Error::other("invalid room list population"));
+        }
+        self.opaque[5] = u8::try_from(current).map_err(io::Error::other)?;
+        self.opaque[7] = u8::try_from(capacity).map_err(io::Error::other)?;
+        Ok(())
+    }
+}
 fn row_read(data: &[u8], width: Width) -> io::Result<u64> {
     read_uint(data, width).map_err(io::Error::other)
 }

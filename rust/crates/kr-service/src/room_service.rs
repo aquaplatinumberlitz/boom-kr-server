@@ -166,9 +166,7 @@ impl Channel {
                     .get_mut(&self.identity)
                     .expect("current owner")
                     .selected = Some(key);
-                if create {
-                    self.hub.changed();
-                }
+                self.hub.changed();
                 Ok(session)
             }
             Err(error) => {
@@ -220,8 +218,8 @@ impl Channel {
                 .selected = None;
             if s.rooms.get(key).is_ok_and(room_io::removable) {
                 s.rooms.remove(key)?;
-                self.hub.changed();
             }
+            self.hub.changed();
         }
         Ok(())
     }
