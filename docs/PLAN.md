@@ -677,9 +677,24 @@ thời gian và chưa mở việc nào trước khi giai đoạn 1 bàn giao (tr
 | F4 Hồ sơ, túi đồ, cửa hàng | Cấp và kinh nghiệm, chọn nhân vật, túi đồ, các nhóm trang trí, cảm xúc, bộ sưu tập, cửa hàng | Trang trí và cảm xúc: khoảng 19.800 mục tài nguyên | Dựa trên M6. Giá cửa hàng không có trong client: chủ dự án phải chọn chính sách |
 | F5 Xã hội | Chat và thì thầm, bạn bè, bang hội, cặp đôi, xếp hạng | Các nhóm Guild, Chatting, Messenger, Ranking | Dựa trên F4 và M8 (lưu bền, chống lạm dụng) |
 | F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa, ưu đãi phòng máy | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
+| L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 25.321 chuỗi; 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Chưa biết client 00967 hiển thị được chữ Việt hay không; xem đoạn dưới bảng |
 
 Thứ tự đặt gameplay (F1–F3) trước hệ thống ngoài trận (F4–F6) vì yêu cầu dài hạn nêu item, map và mode; chủ dự án có
 thể đổi thứ tự. F4 có thể kéo lên trước F3 nếu cần phần thưởng và tiến trình sớm.
+
+**Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
+`boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
+nghi có chữ, trong đó 8 ảnh đã xử lý và 681 ảnh có bản khác ở client VN. Bản dịch đó làm cho engine viết lại, chưa từng
+nạp vào client 00967. Chưa có bản tiếng Anh. Ba việc phải đo trước khi định cỡ, mỗi việc tối đa hai lượt native:
+
+1. Client 00967 có hiển thị được chữ ngoài bảng mã Hàn (CP949) không. Khoảng 23.200 chuỗi tiếng Việt có ký tự ngoài
+   CP949; tiếng Anh thì nằm trọn trong CP949 nên không vướng bước này.
+2. Chuỗi nào client đọc từ file cục bộ, chuỗi nào nhận từ server. Hai bảng lớn nhất (khoảng 16.300 chuỗi) ở client
+   là file cache của bảng do server gửi, nên có thể server gửi theo ngôn ngữ của từng account; chưa đo trên 00967.
+3. Client có nhận file chữ và ảnh đã thay trong bản copy mà không bị kiểm toàn vẹn chặn không.
+
+Người chơi chọn ngôn ngữ ở bước mở game (mỗi ngôn ngữ một bộ file thay thế), không phải trong menu của client: client
+không có menu đó. Tiếng Hàn là bản gốc, không tốn việc. Mọi thay đổi làm trên bản copy; client và pack gốc giữ nguyên.
 
 Cách vào mỗi đợt, giống nhau cho mọi đợt:
 
