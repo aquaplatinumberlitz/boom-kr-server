@@ -130,7 +130,8 @@ locked build/binary hash và native acceptance đúng lát cắt trước tuyên
 CI/build server hiện chỉ Linux. Theo yêu cầu26/10, ưu tiên Wine cho bản copy unpack/patch đã đo;
 Theo [chỉ đạo chủ dự án](docs/evidence/owner-directives/wine-accepted.json), Wine được chấp nhận làm môi trường
 nghiệm thu thay Windows thật cho project; không yêu cầu WindowsVM/máyWindows hoặc chạy lại các gate
-chỉ để có môi trường đó. Ghi đúng Wineversion/hash/copy/patch và nativeevidence để tái lập; không sửa
+chỉ để có môi trường đó. Ngoại lệ duy nhất: gói cho người chơi ở M8 được thử thêm trên Windows trong máy ảo theo
+[quyết định 12/11](docs/evidence/owner-directives/player-environments.json). Ghi đúng Wineversion/hash/copy/patch và nativeevidence để tái lập; không sửa
 lịch sử hoặc mô tả sai môi trường run chưa chạy. [LAN giả lập](docs/evidence/owner-directives/emulated-lan.json)
 cũng được chủ dự án chấp nhận thay hai máy vật lý; giữ rõ topology/interface/IP/capture/giới hạn.
 Theo [chỉ đạo WAN giả lập](docs/evidence/owner-directives/emulated-wan.json), K6c giữ ID và nghiệm thu bằng
