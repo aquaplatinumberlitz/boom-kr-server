@@ -1744,8 +1744,8 @@ impl Session {
             167 => {
                 let member = r.member(self.identity, self.connection)?;
                 let measured = if r.rules.roster == rules::RoundRoster::ContiguousDuel {
-                    // Native managed duel burst:12/42-byte observations, no ACK or semantics.
-                    [4, 12, 16, 32, 42].contains(&body.len())
+                    // Native managed duel burst:12/22/42-byte observations, no ACK or semantics.
+                    [4, 12, 16, 22, 32, 42].contains(&body.len())
                 } else if next.capacity() == 8 {
                     r.rules.owner_bombs() && [4, 22, 42].contains(&body.len())
                 } else {
@@ -3088,7 +3088,7 @@ mod registry_foundation_tests {
         };
         assert!(session.packet(167, &[0; 21]).is_err());
         for index in 0..64 {
-            let body = vec![0; if index % 2 == 0 { 12 } else { 42 }];
+            let body = vec![0; [12, 22, 42][index % 3]];
             session.packet(167, &body).unwrap();
         }
         assert!(session.packet(167, &[0; 42]).is_err());
