@@ -205,6 +205,7 @@ fn display_name(name: &str) -> Result<()> {
 pub struct Store {
     db: Connection,
     random: fn(&mut [u8]) -> Result<()>,
+    live_utc: i64,
 }
 impl Store {
     /// Parent must already be a private directory under a trusted administrator path.
@@ -245,6 +246,7 @@ impl Store {
             return Err(Error::Schema);
         }
         Ok(Self {
+            live_utc: 0,
             db,
             random: entropy,
         })
@@ -570,6 +572,55 @@ impl Store {
         now: i64,
     ) -> Result<Player> {
         self.check_session(token, expected_player, now, false)
+    }
+    /// Live service lane: read the current WAL snapshot without taking the
+    /// login/admin writer lock. Revocation, epoch, credentials, expiry, profile
+    /// and idle validity still come from SQLite on every check; no cached grant.
+    /// Optional idle/watermark writes are best effort only while a writer is busy.
+    pub(crate) fn inspect_live(
+        &mut self,
+        token: &Token,
+        expected_player: i64,
+        now: i64,
+        activity: bool,
+    ) -> Result<Player> {
+        self.db.busy_timeout(Duration::ZERO)?;
+        if now < 0 || now < self.live_utc {
+            return Err(Error::ClockRollback);
+        }
+        let digest = token.digest();
+        let tx = self
+            .db
+            .transaction_with_behavior(TransactionBehavior::Deferred)?;
+        let last: i64 = tx.query_row("SELECT last_utc FROM runtime_state WHERE id=1", [], |r| {
+            r.get(0)
+        })?;
+        if now < last {
+            return Err(Error::ClockRollback);
+        }
+        // Denials also advance the in-process watermark: a later clock rollback
+        // cannot make an already observed expired session valid in this lane.
+        self.live_utc = now;
+        let account:Option<i64>=tx.query_row("SELECT a.id FROM sessions s JOIN accounts a ON a.id=s.account_id JOIN runtime_state r ON r.id=1 JOIN players p ON p.account_id=a.id WHERE s.token_hash=?1 AND p.id=?2 AND s.revoked_at IS NULL AND s.expires_at>?3 AND s.issued_at<=?3 AND s.boot_epoch=r.epoch AND s.credential_version=a.credential_version AND a.disabled=0 AND (s.idle_timeout_seconds IS NULL OR s.last_seen_at>?3-s.idle_timeout_seconds)",params![digest,expected_player,now],|r|r.get(0)).optional()?;
+        let player = Self::player(&tx, account.ok_or(Error::InvalidSession)?)?;
+        tx.commit()?;
+        // Never wait behind an administrative/KDF writer. Session expiry remains
+        // effective if an enabled idle deadline elapses during a prolonged lock.
+        let update = (|| -> Result<()> {
+            let tx = self
+                .db
+                .transaction_with_behavior(TransactionBehavior::Immediate)?;
+            Self::clock(&tx, now)?;
+            if activity {
+                tx.execute("UPDATE sessions SET last_seen_at=?1 WHERE token_hash=?2 AND account_id=?3 AND idle_timeout_seconds IS NOT NULL AND revoked_at IS NULL AND expires_at>?1 AND last_seen_at<=?1",params![now,digest,player.account_id])?;
+            }
+            tx.commit()?;
+            Ok(())
+        })();
+        match update {
+            Ok(()) | Err(Error::Busy) => Ok(player),
+            Err(error) => Err(error),
+        }
     }
     fn check_session(
         &mut self,

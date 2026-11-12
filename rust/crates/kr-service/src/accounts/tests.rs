@@ -43,6 +43,109 @@ fn fresh() -> (Temp, Store, Player) {
         .unwrap();
     (temp, s, p)
 }
+
+#[test]
+fn live_authorization_survives_writer_pressure_but_observes_committed_fences() {
+    let _serial = SERIAL.lock().unwrap();
+    let (temp, mut store, player) = fresh();
+    let grant = store.login("alice", PASSWORD, 60, 101).unwrap();
+    let mut live = temp.store();
+    let mut writer = temp.store();
+    let lock = writer
+        .db
+        .transaction_with_behavior(TransactionBehavior::Immediate)
+        .unwrap();
+    lock.execute("UPDATE sessions SET revoked_at=102", [])
+        .unwrap();
+    // The uncommitted writer cannot revoke a session. A WAL reader sees the
+    // latest committed state and must not wait behind login/admin writes.
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 102, true)
+            .unwrap(),
+        player
+    );
+    lock.commit().unwrap();
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 103, false),
+        Err(Error::InvalidSession)
+    );
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 102, false),
+        Err(Error::ClockRollback)
+    );
+    let next = store.login("alice", PASSWORD, 60, 104).unwrap();
+    assert_eq!(
+        live.inspect_live(&next.token, player.player_id, 105, true)
+            .unwrap(),
+        player
+    );
+    writer
+        .reset_password(&admin(), player.account_id, OTHER, 106)
+        .unwrap();
+    assert_eq!(
+        live.inspect_live(&next.token, player.player_id, 107, false),
+        Err(Error::InvalidSession)
+    );
+    let next = store.login("alice", OTHER, 60, 108).unwrap();
+    writer.begin_instance(&admin(), 109).unwrap();
+    assert_eq!(
+        live.inspect_live(&next.token, player.player_id, 110, false),
+        Err(Error::InvalidSession)
+    );
+}
+
+#[test]
+fn live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock() {
+    let _serial = SERIAL.lock().unwrap();
+    let (temp, mut store, player) = fresh();
+    let grant = store.login("alice", PASSWORD, 10, 101).unwrap();
+    let mut live = temp.store();
+    let mut writer = temp.store();
+    let lock = writer
+        .db
+        .transaction_with_behavior(TransactionBehavior::Immediate)
+        .unwrap();
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id + 1, 102, false),
+        Err(Error::InvalidSession)
+    );
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 110, true)
+            .unwrap(),
+        player
+    );
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 111, true),
+        Err(Error::InvalidSession)
+    );
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 110, true),
+        Err(Error::ClockRollback)
+    );
+    drop(lock);
+    let grant = store
+        .login_with_idle("alice", PASSWORD, 60, 5, 112)
+        .unwrap();
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 115, true)
+            .unwrap(),
+        player
+    );
+    let lock = writer
+        .db
+        .transaction_with_behavior(TransactionBehavior::Immediate)
+        .unwrap();
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 119, true)
+            .unwrap(),
+        player
+    );
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 120, true),
+        Err(Error::InvalidSession)
+    );
+    drop(lock);
+}
 #[test]
 fn reopen_preserves_identity_and_session_until_explicit_instance_restart() {
     let _serial = SERIAL.lock().unwrap();
@@ -529,6 +632,7 @@ fn schema1_upgrade_preserves_all_old_account_session_profile_audit_data_and_old_
         .unwrap();
     assert_eq!(idle, (None, None));
     let mut store = Store {
+        live_utc: 0,
         db,
         random: entropy,
     };

@@ -1,5 +1,5 @@
-//! Opt-in fixed two-profile account lobby/basic adapter, private launcher only.
-//! Not a general account projection, public password API or dynamic room service.
+//! Account lobby/basic adapter with explicit fixed or DB zero-profile mode.
+//! The launcher is private; this does not expose a public password API.
 use crate::{
     account_bridge::{self, Bridge},
     account_worker::{Client, Worker},
@@ -142,6 +142,7 @@ pub(crate) struct Active {
 }
 pub(crate) struct Owner {
     worker: Worker,
+    live_worker: Option<Worker>,
     pub active: Active,
     pub listener: Option<UnixListener>,
     _socket: SocketOwner,
@@ -173,7 +174,16 @@ impl Owner {
         )
         .await
         .map_err(|e| io::Error::other(format!("account worker startup: {e:?}")))?;
-        let bridge = match Bridge::new(
+        if projection.is_some() {
+            worker
+                .client()
+                .try_begin_instance()
+                .map_err(|e| io::Error::other(format!("account instance startup: {e:?}")))?
+                .wait()
+                .await
+                .map_err(|e| io::Error::other(format!("account instance start: {e:?}")))?;
+        }
+        let mut bridge = match Bridge::new(
             worker.client(),
             if projection.is_some() {
                 config.max_sessions.unwrap_or(32)
@@ -190,6 +200,17 @@ impl Owner {
                 )));
             }
         };
+        let live_worker = if projection.is_some() {
+            let live = Worker::open_live(config.database.clone(), 64, Duration::from_secs(1))
+                .await
+                .map_err(|error| {
+                    io::Error::other(format!("live authorization startup: {error:?}"))
+                })?;
+            bridge = bridge.with_live_authorization(live.client());
+            Some(live)
+        } else {
+            None
+        };
         Ok(Self {
             active: Active {
                 bridge,
@@ -198,11 +219,17 @@ impl Owner {
                 projection,
             },
             worker,
+            live_worker,
             listener: Some(listener),
             _socket: socket,
         })
     }
     pub async fn shutdown(self) -> io::Result<()> {
+        if let Some(live) = self.live_worker {
+            live.shutdown()
+                .await
+                .map_err(|e| io::Error::other(format!("live authorization shutdown: {e:?}")))?;
+        }
         self.worker
             .shutdown()
             .await
@@ -257,7 +284,7 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
             "fixed profile metadata must be configured",
         ));
     }
-    let launch = active
+    let issued = active
         .bridge
         .issue_metadata(
             &session,
@@ -265,10 +292,35 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
             request.peer,
             request.reported_login_ipv4,
         )
-        .await
-        .map_err(|e| io::Error::other(format!("private launch denied: {e:?}")))?;
-    // Only configured, fixture-validated projections. This does not enable an
-    // arbitrary account/profile or substitute another player's identity.
+        .await;
+    let launch = match issued {
+        Ok(launch) => launch,
+        Err(account_bridge::Error::Backend(
+            error @ (crate::account_worker::Error::Busy
+            | crate::account_worker::Error::QueueExpired
+            | crate::account_worker::Error::Backend(crate::accounts::Error::Busy)),
+        )) => {
+            let reason = match error {
+                crate::account_worker::Error::Busy => "account_queue_full",
+                crate::account_worker::Error::QueueExpired => "account_queue_expired",
+                _ => "database_busy",
+            };
+            stream
+                .write_all(
+                    format!("{{\"ok\":false,\"error\":\"busy_retry\",\"reason\":\"{reason}\"}}\n")
+                        .as_bytes(),
+                )
+                .await?;
+            return Ok(());
+        }
+        Err(error) => {
+            return Err(io::Error::other(format!(
+                "private launch denied: {error:?}"
+            )));
+        }
+    };
+    // Fixed mode keeps its fixture fence. Database mode uses the authenticated
+    // player's bounded zero-profile template, never an IP-selected identity.
     if active.projection.is_none()
         && (launch.player.profile_version != 1
             || active
@@ -487,7 +539,8 @@ pub(crate) async fn control(
                         result=timeout(Duration::from_secs(3),issue(&mut stream,&active,&peers))=>result,
                     };
                     if !matches!(result,Ok(Ok(()))) {
-                        let _=timeout(Duration::from_millis(200),stream.write_all(b"{\"ok\":false,\"error\":\"denied\"}\n")).await;
+                        let response:&[u8]=if result.is_err(){b"{\"ok\":false,\"error\":\"busy_retry\"}\n"}else{b"{\"ok\":false,\"error\":\"denied\"}\n"};
+                        let _=timeout(Duration::from_millis(200),stream.write_all(response)).await;
                     }
                 });
             }

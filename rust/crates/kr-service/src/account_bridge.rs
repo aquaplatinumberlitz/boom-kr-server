@@ -301,6 +301,7 @@ impl Channel {
 #[derive(Clone)]
 pub struct Bridge {
     client: Client,
+    live: Option<Client>,
     shared: Shared,
     ttl: Duration,
     random: fn(&mut [u8]) -> Result<()>,
@@ -315,6 +316,7 @@ impl Bridge {
         }
         Ok(Self {
             client,
+            live: None,
             shared: Arc::new(Mutex::new(Registry {
                 entries: HashMap::new(),
                 generation: 0,
@@ -324,6 +326,10 @@ impl Bridge {
             ttl,
             random: entropy,
         })
+    }
+    pub(crate) fn with_live_authorization(mut self, client: Client) -> Self {
+        self.live = Some(client);
+        self
     }
     /// Called by a trusted backend/launcher seam using a strong session token.
     /// The caller cannot turn an arbitrary player ID/source IP into ownership.
@@ -569,7 +575,7 @@ impl Bridge {
         Ok(Channel {
             player,
             connection,
-            client: self.client.clone(),
+            client: self.live.as_ref().unwrap_or(&self.client).clone(),
             guard,
         })
     }
