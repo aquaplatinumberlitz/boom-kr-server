@@ -110,11 +110,12 @@ Cấu trúc sau R1a–R1g và relay prototype; native hồi quy profile hiện h
       rules            Result/Departure/Bomb/Life/TeamPolicy, normalize JSON compatibility
       player_template  template profile106 chung, projection identity/name/slot
       room_registry    typed RoomKey; container/listing/recipient isolation
-      room_io          owner + bounded recipient queues; serving vẫn chọn phòng cố định
+      room_service     account lobby owner, managed selection, retirement và catalog watch
+      room_io          room owner + bounded recipient queues; fixed compatibility và managed prototype
       room_packets     template pins và packet normalization
       room_wire        bridge tới builder KR; một số body còn template opaque đã pin
       peer_routes      LegacyDirectPlan theo round/member/slot; không NAT discovery
-      room_relay       lease account/room/round, activation và invalidation
+      room_relay       Factory/pool chung, lease account/room/round, activation và invalidation
       udp_relay        directed-edge kernel, prebound socket pool, bounded pump và quarantine
       bombs, pickups, terrain, life, four_results     policy trận hiện hành
       accounts, account_worker, account_bridge, account_serving     DB/worker/launcher/session binding
@@ -130,7 +131,7 @@ registry; M6 thêm lưu kết quả; M8 bổ sung telemetry/admin/deploy. PLAN g
 
 | Khoảng trống thực tế | Ranh giới đã có | Phần còn phải nghiệm thu |
 |---|---|---|
-| Serving nhiều phòng/chọn đội/nhân vật | R1e registry và queue isolation; R1c PlayerId độc lập slot | M7 nối wire/occupancy và native nhiều phòng, không suy từ container/unit |
+| Serving nhiều phòng/chọn đội/nhân vật | M7a Hub/RoomKey/FirstVacant và native hai phòng; [contract](protocol/room-membership.md#rust-managed-room-selection) | M7b occupancy/trận, M7c lựa chọn và M7d ownership tích hợp; không suy gameplay từ setup |
 | Profile account tổng quát | R1c template106; R1f account/session-owned PlayerId, legacy IP index riêng | Profile291/projection account bất kỳ và native DB-queue fault M5 |
 | Terrain/item 4/8, map và item mới | RoomRules typed policies; R1b không còn chọn luật từ fixture `rank` | G1 theo scope sáu map; JSON cờ cũ chỉ compatibility, không thêm cờ/nhánh theo sức chứa |
 | Body packet còn template opaque | R1d header chuẩn và `kr00967` builders; player_template chung | Chỉ mở field/consumer đang chặn M7/G1, không suy đã có schema mọi packet |

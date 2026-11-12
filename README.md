@@ -33,11 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP275: Village10 lookup đúng mã 1104, nhưng profile cũ chưa đủ để load map.**
-[Contract và giới hạn](docs/protocol/load-phase.md#village10-map-selection): cần đồng bộ metadata; chưa có trận Village10.
-R1 đã đạt hồi quy native, relay đạt prototype hai người. M5 tổng quát, relay bốn/tám người và vận hành còn mở.
-Bước tiếp là acceptance M7 theo [Bảng điều hành](docs/PLAN.md#dashboard); lịch sử tại [HISTORY](docs/HISTORY.md).
-Hạ tầng thực và raw chỉ giữ local.
+**CP276: M7a đã nghiệm thu tạo, chọn và rời nhiều phòng bằng account trên client KR thật.**
+Bốn client trên Wine/LAN giả lập đã dùng hai phòng riêng, đúng slot/chủ phòng, chuyển phòng, EOF/revoke và xóa phòng rỗng.
+[Contract và giới hạn](docs/protocol/room-membership.md#rust-managed-room-selection),
+[bằng chứng](docs/evidence/rust-service/m7a-room-selection.json). Gameplay phòng động, occupancy và profile account
+bất kỳ còn mở; toàn M7 chưa đạt. Tiếp M7b theo [Bảng điều hành](docs/PLAN.md#dashboard).
+Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
 

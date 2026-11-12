@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP270",
+  "as_of": "CP276",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -894,7 +894,9 @@
           "docs/evidence/rust-service/account-basic.json",
           "docs/protocol/auth-session.md#rust-account-basic",
           "docs/protocol/room-membership.md#rust-r1e-registry",
-          "docs/evidence/rust-service/r1e-registry.json"
+          "docs/evidence/rust-service/r1e-registry.json",
+          "docs/protocol/room-membership.md#rust-managed-room-selection",
+          "docs/evidence/rust-service/m7a-room-selection.json"
         ]
       },
       "coverage": {
@@ -952,7 +954,8 @@
               "docs/protocol/room-membership.md#room-shared-cleanup",
               "docs/protocol/rust-boundary.md#rust-fixed-room",
               "docs/protocol/rust-boundary.md#rust-m2-acceptance",
-              "docs/protocol/multiplayer-team.md#rust-four-startup"
+              "docs/protocol/multiplayer-team.md#rust-four-startup",
+              "docs/evidence/rust-service/m7a-room-selection.json"
             ]
           },
           "windows_original": {
@@ -960,8 +963,10 @@
             "refs": []
           },
           "lan": {
-            "state": "unknown",
-            "refs": []
+            "state": "observed",
+            "refs": [
+              "docs/evidence/rust-service/m7a-room-selection.json"
+            ]
           },
           "internet": {
             "state": "unknown",
@@ -982,7 +987,8 @@
             "docs/protocol/multiplayer-team.md#current-team-mode",
             "server/room_team_mode.py",
             "server/test_room_team_mode.py",
-            "docs/protocol/multiplayer-team.md#rust-four-startup"
+            "docs/protocol/multiplayer-team.md#rust-four-startup",
+            "docs/protocol/room-membership.md#rust-managed-room-selection"
           ],
           "delivery": "via_pr"
         },
@@ -992,7 +998,8 @@
             "docs/evidence/probe-service/README.md",
             "docs/evidence/host-normal-back/README.md",
             "docs/evidence/peer-endpoints/README.md#cp161",
-            "docs/protocol/room-membership.md#current-291-room-integration"
+            "docs/protocol/room-membership.md#current-291-room-integration",
+            "docs/protocol/room-membership.md#rust-managed-room-selection"
           ]
         },
         "gate": {
@@ -1066,7 +1073,9 @@
           "docs/protocol/networks.md#rust-internet-observation",
           "docs/evidence/rust-service/internet-observation.json",
           "docs/protocol/room-membership.md#rust-r1f-session-binding",
-          "docs/evidence/rust-service/r1f-session-binding.json"
+          "docs/evidence/rust-service/r1f-session-binding.json",
+          "docs/protocol/room-membership.md#rust-managed-room-selection",
+          "docs/evidence/rust-service/m7a-room-selection.json"
         ]
       },
       "coverage": {
@@ -1124,7 +1133,8 @@
               "docs/protocol/multiplayer-team.md#rust-four-results",
               "docs/protocol/multiplayer-team.md#rust-eight-baseline",
               "docs/evidence/rust-service/eight-baseline.json",
-              "docs/evidence/rust-service/README.md#cp250"
+              "docs/evidence/rust-service/README.md#cp250",
+              "docs/evidence/rust-service/m7a-room-selection.json"
             ]
           },
           "windows_original": {
@@ -1132,8 +1142,10 @@
             "refs": []
           },
           "lan": {
-            "state": "unknown",
-            "refs": []
+            "state": "observed",
+            "refs": [
+              "docs/evidence/rust-service/m7a-room-selection.json"
+            ]
           },
           "internet": {
             "state": "unknown",
@@ -1159,7 +1171,8 @@
             "docs/protocol/multiplayer-team.md#rust-four-results",
             "docs/protocol/multiplayer-team.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
-            "docs/evidence/rust-service/README.md#cp250"
+            "docs/evidence/rust-service/README.md#cp250",
+            "docs/protocol/room-membership.md#rust-managed-room-selection"
           ],
           "delivery": "via_pr"
         },
@@ -1174,7 +1187,8 @@
             "docs/protocol/multiplayer-team.md#eight-team-variants",
             "docs/protocol/multiplayer-team.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
-            "docs/evidence/rust-service/README.md#cp250"
+            "docs/evidence/rust-service/README.md#cp250",
+            "docs/protocol/room-membership.md#rust-managed-room-selection"
           ]
         },
         "gate": {
@@ -1428,7 +1442,9 @@
           "docs/evidence/rust-service/four-abort.json",
           "docs/evidence/rust-service/README.md#cp249",
           "docs/protocol/room-membership.md#rust-r1e-registry",
-          "docs/evidence/rust-service/r1e-registry.json"
+          "docs/evidence/rust-service/r1e-registry.json",
+          "docs/protocol/room-membership.md#rust-managed-room-selection",
+          "docs/evidence/rust-service/m7a-room-selection.json"
         ]
       },
       "coverage": {
@@ -1500,7 +1516,8 @@
               "docs/protocol/rust-boundary.md#rust-m2-acceptance",
               "docs/protocol/multiplayer-team.md#rust-four-abort",
               "docs/evidence/rust-service/four-abort.json",
-              "docs/evidence/rust-service/README.md#cp249"
+              "docs/evidence/rust-service/README.md#cp249",
+              "docs/evidence/rust-service/m7a-room-selection.json"
             ]
           },
           "windows_original": {
@@ -1508,8 +1525,10 @@
             "refs": []
           },
           "lan": {
-            "state": "unknown",
-            "refs": []
+            "state": "observed",
+            "refs": [
+              "docs/evidence/rust-service/m7a-room-selection.json"
+            ]
           },
           "internet": {
             "state": "unknown",
@@ -1545,7 +1564,8 @@
             "docs/evidence/peer-endpoints/README.md#cp175",
             "docs/protocol/multiplayer-team.md#rust-four-abort",
             "docs/evidence/rust-service/four-abort.json",
-            "docs/evidence/rust-service/README.md#cp249"
+            "docs/evidence/rust-service/README.md#cp249",
+            "docs/protocol/room-membership.md#rust-managed-room-selection"
           ]
         },
         "integration": {
@@ -1577,7 +1597,8 @@
             "docs/protocol/room-membership.md#current-291-room-integration",
             "docs/protocol/multiplayer-team.md#rust-four-abort",
             "docs/evidence/rust-service/four-abort.json",
-            "docs/evidence/rust-service/README.md#cp249"
+            "docs/evidence/rust-service/README.md#cp249",
+            "docs/protocol/room-membership.md#rust-managed-room-selection"
           ]
         },
         "gate": {
