@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP278: đã sửa kiểm provenance cho source Rust và census tại checkpoint công bố.**
+[Quy tắc và giới hạn](evidence/checkpoints/README.md#publication-bound-source-history): tìm đúng blob tại lần công bố,
+không sửa record hoặc raw cũ. Occupancy phòng đã có [native proof](protocol/room-membership.md#rust-room-population)
+ở CP277. M7b còn lifecycle trận và cách ly round/UDP; toàn M7 và profile account bất kỳ chưa đạt.
+Tiếp lifecycle M7b theo [Bảng điều hành](PLAN.md#dashboard).
+
 **CP277: danh sách phòng Rust đã hiển thị số người và sức chứa từ membership thật.**
 Client KR trên Wine/LAN giả lập đã thấy một phòng 1/8 → 2/8 → 1/8 và phòng kia giữ 1/8; người cuối rời xóa đúng phòng.
 [Contract và giới hạn](protocol/room-membership.md#rust-room-population),

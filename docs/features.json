@@ -897,7 +897,8 @@
           "docs/evidence/rust-service/r1e-registry.json",
           "docs/protocol/room-membership.md#rust-managed-room-selection",
           "docs/evidence/rust-service/m7a-room-selection.json",
-          "docs/evidence/rust-service/m7b-room-population.json"
+          "docs/evidence/rust-service/m7b-room-population.json",
+          "docs/evidence/rust-service/m7b-duel-lifecycle.json"
         ]
       },
       "coverage": {
@@ -958,7 +959,8 @@
               "docs/protocol/rust-boundary.md#rust-m2-acceptance",
               "docs/protocol/multiplayer-team.md#rust-four-startup",
               "docs/evidence/rust-service/m7a-room-selection.json",
-              "docs/evidence/rust-service/m7b-room-population.json"
+              "docs/evidence/rust-service/m7b-room-population.json",
+              "docs/evidence/rust-service/m7b-duel-lifecycle.json"
             ]
           },
           "windows_original": {
@@ -969,7 +971,8 @@
             "state": "observed",
             "refs": [
               "docs/evidence/rust-service/m7a-room-selection.json",
-              "docs/evidence/rust-service/m7b-room-population.json"
+              "docs/evidence/rust-service/m7b-room-population.json",
+              "docs/evidence/rust-service/m7b-duel-lifecycle.json"
             ]
           },
           "internet": {
@@ -993,7 +996,8 @@
             "server/test_room_team_mode.py",
             "docs/protocol/multiplayer-team.md#rust-four-startup",
             "docs/protocol/room-membership.md#rust-managed-room-selection",
-            "docs/protocol/room-membership.md#rust-room-population"
+            "docs/protocol/room-membership.md#rust-room-population",
+            "docs/protocol/room-membership.md#rust-managed-duel-lifecycle"
           ],
           "delivery": "via_pr"
         },
@@ -1005,7 +1009,8 @@
             "docs/evidence/peer-endpoints/README.md#cp161",
             "docs/protocol/room-membership.md#current-291-room-integration",
             "docs/protocol/room-membership.md#rust-managed-room-selection",
-            "docs/protocol/room-membership.md#rust-room-population"
+            "docs/protocol/room-membership.md#rust-room-population",
+            "docs/protocol/room-membership.md#rust-managed-duel-lifecycle"
           ]
         },
         "gate": {
@@ -1081,7 +1086,8 @@
           "docs/protocol/room-membership.md#rust-r1f-session-binding",
           "docs/evidence/rust-service/r1f-session-binding.json",
           "docs/protocol/room-membership.md#rust-managed-room-selection",
-          "docs/evidence/rust-service/m7a-room-selection.json"
+          "docs/evidence/rust-service/m7a-room-selection.json",
+          "docs/evidence/rust-service/m7b-duel-lifecycle.json"
         ]
       },
       "coverage": {
@@ -1140,7 +1146,8 @@
               "docs/protocol/multiplayer-team.md#rust-eight-baseline",
               "docs/evidence/rust-service/eight-baseline.json",
               "docs/evidence/rust-service/README.md#cp250",
-              "docs/evidence/rust-service/m7a-room-selection.json"
+              "docs/evidence/rust-service/m7a-room-selection.json",
+              "docs/evidence/rust-service/m7b-duel-lifecycle.json"
             ]
           },
           "windows_original": {
@@ -1150,7 +1157,8 @@
           "lan": {
             "state": "observed",
             "refs": [
-              "docs/evidence/rust-service/m7a-room-selection.json"
+              "docs/evidence/rust-service/m7a-room-selection.json",
+              "docs/evidence/rust-service/m7b-duel-lifecycle.json"
             ]
           },
           "internet": {
@@ -1178,7 +1186,8 @@
             "docs/protocol/multiplayer-team.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
             "docs/evidence/rust-service/README.md#cp250",
-            "docs/protocol/room-membership.md#rust-managed-room-selection"
+            "docs/protocol/room-membership.md#rust-managed-room-selection",
+            "docs/protocol/room-membership.md#rust-managed-duel-lifecycle"
           ],
           "delivery": "via_pr"
         },
@@ -1194,7 +1203,8 @@
             "docs/protocol/multiplayer-team.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
             "docs/evidence/rust-service/README.md#cp250",
-            "docs/protocol/room-membership.md#rust-managed-room-selection"
+            "docs/protocol/room-membership.md#rust-managed-room-selection",
+            "docs/protocol/room-membership.md#rust-managed-duel-lifecycle"
           ]
         },
         "gate": {
@@ -1658,7 +1668,8 @@
           "docs/evidence/rust-service/four-startup.json",
           "docs/evidence/rust-service/README.md#cp245",
           "docs/evidence/rust-service/four-owner-bombs.json",
-          "docs/evidence/rust-service/README.md#cp246"
+          "docs/evidence/rust-service/README.md#cp246",
+          "docs/evidence/rust-service/m7b-duel-lifecycle.json"
         ]
       },
       "coverage": {
@@ -1708,7 +1719,8 @@
               "docs/protocol/rust-boundary.md#rust-fixed-room",
               "docs/protocol/rust-boundary.md#rust-m2-acceptance",
               "docs/protocol/multiplayer-team.md#rust-four-startup",
-              "docs/protocol/multiplayer-team.md#rust-four-owner-bombs"
+              "docs/protocol/multiplayer-team.md#rust-four-owner-bombs",
+              "docs/evidence/rust-service/m7b-duel-lifecycle.json"
             ]
           },
           "windows_original": {
@@ -1717,7 +1729,9 @@
           },
           "lan": {
             "state": "unknown",
-            "refs": []
+            "refs": [
+              "docs/evidence/rust-service/m7b-duel-lifecycle.json"
+            ]
           },
           "internet": {
             "state": "unknown",
@@ -1734,7 +1748,8 @@
             "docs/protocol/load-phase.md#loading-timeout-positive",
             "docs/protocol/multiplayer-team.md#eight-two-team-cycles",
             "docs/protocol/multiplayer-team.md#rust-four-startup",
-            "docs/protocol/multiplayer-team.md#rust-four-owner-bombs"
+            "docs/protocol/multiplayer-team.md#rust-four-owner-bombs",
+            "docs/protocol/room-membership.md#rust-managed-duel-lifecycle"
           ],
           "delivery": "via_pr"
         },
@@ -1750,7 +1765,8 @@
             "docs/evidence/peer-endpoints/README.md#cp176",
             "docs/protocol/life-results.md#current-basic-cycles-291",
             "docs/protocol/rust-boundary.md#current-basic-contest-reset",
-            "docs/protocol/multiplayer-team.md#eight-two-team-cycles"
+            "docs/protocol/multiplayer-team.md#eight-two-team-cycles",
+            "docs/protocol/room-membership.md#rust-managed-duel-lifecycle"
           ]
         },
         "gate": {
@@ -1858,7 +1874,8 @@
           "docs/evidence/rust-service/relay-endpoint-design.json",
           "docs/protocol/room-membership.md#rust-r1f-session-binding",
           "docs/evidence/rust-service/r1f-session-binding.json",
-          "docs/evidence/rust-service/r1-native-final.json"
+          "docs/evidence/rust-service/r1-native-final.json",
+          "docs/evidence/rust-service/m7b-duel-lifecycle.json"
         ]
       },
       "coverage": {
@@ -1935,7 +1952,8 @@
               "docs/protocol/multiplayer-team.md#rust-eight-baseline",
               "docs/evidence/rust-service/eight-baseline.json",
               "docs/evidence/rust-service/README.md#cp250",
-              "docs/protocol/networks.md#rust-n1b-dual-nat"
+              "docs/protocol/networks.md#rust-n1b-dual-nat",
+              "docs/evidence/rust-service/m7b-duel-lifecycle.json"
             ]
           },
           "windows_original": {
@@ -1944,7 +1962,9 @@
           },
           "lan": {
             "state": "unknown",
-            "refs": []
+            "refs": [
+              "docs/evidence/rust-service/m7b-duel-lifecycle.json"
+            ]
           },
           "internet": {
             "state": "observed",
@@ -1972,7 +1992,8 @@
             "docs/protocol/multiplayer-team.md#rust-four-results",
             "docs/protocol/multiplayer-team.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
-            "docs/evidence/rust-service/README.md#cp250"
+            "docs/evidence/rust-service/README.md#cp250",
+            "docs/protocol/room-membership.md#rust-managed-duel-lifecycle"
           ],
           "delivery": "via_pr"
         },
@@ -2003,7 +2024,8 @@
             "rust/crates/kr-service/src/room_io.rs",
             "docs/protocol/multiplayer-team.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
-            "docs/evidence/rust-service/README.md#cp250"
+            "docs/evidence/rust-service/README.md#cp250",
+            "docs/protocol/room-membership.md#rust-managed-duel-lifecycle"
           ]
         },
         "gate": {
@@ -2061,7 +2083,8 @@
           "docs/protocol/multiplayer-team.md#rust-ninth-admission",
           "docs/evidence/rust-service/ninth-admission.json",
           "docs/evidence/rust-service/argv-provenance.json",
-          "docs/evidence/rust-service/README.md#cp252"
+          "docs/evidence/rust-service/README.md#cp252",
+          "docs/evidence/rust-service/m7b-duel-lifecycle.json"
         ]
       },
       "coverage": {
@@ -2103,7 +2126,8 @@
               "docs/protocol/bombs.md#rust-bombs",
               "docs/protocol/multiplayer-team.md#rust-eight-baseline",
               "docs/evidence/rust-service/eight-baseline.json",
-              "docs/evidence/rust-service/README.md#cp250"
+              "docs/evidence/rust-service/README.md#cp250",
+              "docs/evidence/rust-service/m7b-duel-lifecycle.json"
             ]
           },
           "windows_original": {
@@ -2112,7 +2136,9 @@
           },
           "lan": {
             "state": "unknown",
-            "refs": []
+            "refs": [
+              "docs/evidence/rust-service/m7b-duel-lifecycle.json"
+            ]
           },
           "internet": {
             "state": "unknown",
@@ -2131,7 +2157,8 @@
             "docs/protocol/rust-boundary.md#rust-m3-acceptance",
             "docs/protocol/multiplayer-team.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
-            "docs/evidence/rust-service/README.md#cp250"
+            "docs/evidence/rust-service/README.md#cp250",
+            "docs/protocol/room-membership.md#rust-managed-duel-lifecycle"
           ],
           "delivery": "via_pr"
         },
@@ -2149,7 +2176,8 @@
             "rust/crates/kr-service/src/room_io.rs",
             "docs/protocol/multiplayer-team.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
-            "docs/evidence/rust-service/README.md#cp250"
+            "docs/evidence/rust-service/README.md#cp250",
+            "docs/protocol/room-membership.md#rust-managed-duel-lifecycle"
           ]
         },
         "gate": {

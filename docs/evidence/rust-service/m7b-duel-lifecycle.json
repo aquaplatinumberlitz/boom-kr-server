@@ -1,0 +1,92 @@
+{
+  "schema": "kre-rust-managed-duel-lifecycle-v1",
+  "checkpoint": "CP279",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "source_commit": "ee204ed49d452f6d35b5b0a034add25ad48ac77f",
+  "binary_sha256": "6ecdb4ab059b0e3be41a93b9133d3431146feceba14d8969f85ae657839be848",
+  "canonical": "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
+  "acceptance": "Chỉ lát cắt hai phòng duel theo roster thực, bốn known account profiles; không đóng toàn M7b/M7.",
+  "local_acceptance": "local/research/codex/m7b-duel-acceptance.json",
+  "native": [
+    {
+      "root": "local/research/codex/m7b-duel-native-r7",
+      "verification": "local/research/codex/m7b-duel-native-r7/partial-verification.json",
+      "run_sha256": "d29d9697744fa7985b48a2c39aec677426bfb69d00962ff09455cc86abf783be",
+      "raw_files": 142,
+      "duration_s": 202.499568729,
+      "scope": "Two independent native duel lifecycles, measured slot budgets/D two-bomb burst, opposite first outcomes, reset/second clocks, Alpha EOF/pending-blast fence and Beta healthy native progress/outcome. B→A motion in this run was stationary and is not claimed."
+    },
+    {
+      "root": "local/research/codex/m7b-duel-native-r8",
+      "verification": "local/research/codex/m7b-duel-native-r8/verification.json",
+      "run_sha256": "e3f20d5fc3d9abb3abdeae455f0f6ad3a20d032565fdf62c2dab866a9d242be9",
+      "raw_files": 102,
+      "scope": "Only missing B→A motion under same binary/rules, retained Right700ms; no result/reset repeated.",
+      "native_target_changes": 3,
+      "native_current_x": {
+        "before": 120,
+        "after": 200,
+        "after_ns": 441243562765013
+      }
+    }
+  ],
+  "checks": {
+    "rust_tests": 126,
+    "fmt": "pass",
+    "clippy": "pass",
+    "locked_build": "pass",
+    "synthetic_duel_groups": 7,
+    "synthetic": "local/research/codex/m7b-duel-synthetic-r6/export-seal.json"
+  },
+  "reuse": [
+    {
+      "source": "CP020/031/047/199/201/202/209/234–258/276/277",
+      "locator": "docs/protocol/room-membership.md; docs/protocol/load-phase.md#start-reply; docs/protocol/udp-peer.md#udp-generation",
+      "use": "Independent retained two-row Start and duel175/180; measured readers, stat wrappers, native input/peer/current-position observers, account launcher and scoped room ownership.",
+      "avoids": "No new binary function RE, VN opcode port or rerun of bootstrap/codec/map-selection baselines."
+    }
+  ],
+  "failures": [
+    {
+      "run": "r1",
+      "reason": "Idle timeout420 exceeds startup bound120; pre-client failure.",
+      "seal": "local/research/codex/m7b-duel-native-r1/native/raw-seal.json"
+    },
+    {
+      "run": "r2",
+      "reason": "Launcher socket parent /tmp is not private; pre-client failure, protection retained.",
+      "seal": "local/research/codex/m7b-duel-native-r2/native/raw-seal.json"
+    },
+    {
+      "run": "r3",
+      "reason": "Controller compact-text predicate missed spaced JSON loading99_held; interrupted through existing finally/export, not acceptance.",
+      "seal": "local/research/codex/m7b-duel-native-r3/native/raw-seal.json"
+    },
+    {
+      "run": "r4",
+      "reason": "Partial lifecycle; D remapped stat/config mismatch and read-only peer pump outlived actors during reset. Not final acceptance.",
+      "verification": "local/research/codex/m7b-duel-native-r4/partial-verification.json"
+    },
+    {
+      "run": "r5",
+      "reason": "Native burst167/body12/42 overblocked; C/D disconnect/abort retained.",
+      "verification": "local/research/codex/m7b-duel-native-r5/failure-verification.json"
+    },
+    {
+      "run": "r6",
+      "reason": "Native single-bomb167/body22 overblocked after reset/EOF; closure/abort retained.",
+      "verification": "local/research/codex/m7b-duel-native-r6/failure-verification.json"
+    }
+  ],
+  "limits": [
+    "Four configured known zero profiles, two independent contiguous duel rosters in max4 rooms; no general character/profile selection or dynamic4/8 Battle acceptance.",
+    "Per-slot stat values are measured for this exact Start/seed/profile; do not attach those values to account identity or infer other characters. No terrain/item gameplay extension.",
+    "Unique process-local base epochs, finite255 budget, no low-byte base reuse; actual native compare is low8(base) XOR low8(profileID), not authentication or proof against forged/colliding mixed keys. No durable restart/resume/match restore.",
+    "Wine diagnostic copy/isolated virtual LAN/direct UDP. No new relay/NAT/Internet or load acceptance.",
+    "Native peer progress current-positive only; no new old-frame/cross-room injection claim. Cleanup observer failures after declared completion are retained and separated from accepted runtime.",
+    "Acceptance combines two declared runs under identical source/binary/managed rules; does not invent continuous B motion in the lifecycle run.",
+    "Only the managed two-player slice is accepted; full M7b/M7 remains open."
+  ]
+}

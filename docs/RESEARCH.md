@@ -67,7 +67,7 @@ R1a–R1g và native hồi quy các profile 2/4/8/account đã đạt phạm vi 
 Account fixed2/basic và lifecycle đã có [scope](protocol/auth-session.md#rust-account-basic); M5 còn profile tổng quát,
 native DB-queue fault và giới hạn recovery. Test khóa SQLite không thay bằng chứng native DB-queue fault.
 [M7a](protocol/room-membership.md#rust-managed-room-selection) đã có native tạo/chọn/rời hai phòng bằng bốn profile.
-Occupancy đã có [native contract](protocol/room-membership.md#rust-room-population); gameplay phòng động, lựa chọn và ownership tích hợp còn mở; N1R cần proof riêng bên dưới;
+Occupancy đã có [native contract](protocol/room-membership.md#rust-room-population); đã có [duel hai phòng](protocol/room-membership.md#rust-managed-duel-lifecycle); roster gameplay khác, lựa chọn và ownership tích hợp còn mở; N1R cần proof riêng bên dưới;
 M4 Free 1v7 là giới hạn đã biết; M7/G1/M6/M8 và điều kiện bàn giao giữ tại PLAN, không broad RE toàn client.
 
 <a id="gap-room-occupancy"></a>
@@ -75,13 +75,17 @@ M4 Free 1v7 là giới hạn đã biết; M7/G1/M6/M8 và điều kiện bàn gi
 
 M7a đã nối các consumer phòng cũ; không cần phục hồi lại 81/82/87/91/106/107/110 chỉ vì đổi implementation.
 [Hai field occupancy đã đo](protocol/room-membership.md#rust-room-population): offset 5/7 của tail là current/capacity;
-20 byte còn lại giữ opaque. Không lặp reader hoặc phép thử list đã giải. M7b còn Ready/loading/Start/result/reset
-cho roster hiện hành, độc lập identity/slot và hai phòng không lẫn queue/timer/round/UDP. Round key hiện cấp cục bộ
-mỗi phòng có thể trùng giữa hai phòng; cần cấp epoch trong phạm vi service trước native trận động. Projection Start,
-peer table, kết quả và budget bom phải theo roster đã đo; không lấy capacity của prototype làm số người thực, không
-cho identity chuyển slot kế thừa stat của người trước. Cỡ/layout chưa có contract và native phải từ chối rõ ràng.
-Phép nghiệm thu tiếp: hai cặp ở hai phòng, barrier riêng, kết quả/reset/trận tiếp và một phòng mất người trong khi
-phòng kia tiếp tục. Lựa chọn nhân vật/đội thuộc M7c, profile tổng quát thuộc M5. Scope và thứ tự ở PLAN.
+20 byte còn lại giữ opaque. Không lặp reader/list đã giải. [Lát cắt duel](protocol/room-membership.md#rust-managed-duel-lifecycle)
+đã có hai room chưa đầy với Ready/loading, kết quả/reset/trận tiếp, key/queue/timer riêng và EOF một phòng khi phòng
+kia tiếp tục. Stat của Start hai hàng được đo theo slot; không gắn stat vào identity. Thiếu B→A progress trong lượt
+lifecycle đã được giải bằng phép đo Right700ms riêng cùng binary; không cần lặp toàn chu kỳ để giải input bị chặn.
+
+M7b còn chốt và triển khai các roster/layout ngoài contiguous duel trước khi nhận toàn lát cắt; tập chưa đo vẫn
+từ chối ở Start. Tái sử dụng contract fixed4/8 và fixture/native cũ để kiểm projection theo roster, rank/return,
+budget và departure policy; chỉ native phần serving động mới, không RE lại codec/bom/reader đã biết. M7c cần
+C2S/S2C lựa chọn nhân vật/đội/full-error, M7d cần account ownership/failure tích hợp. Profile tổng quát và native
+DB-queue fault thuộc M5. Epoch managed hiện có trần255 lần cấp/instance; mixed low byte không là auth hoặc durable
+restart/reuse proof. Relay nhiều người/reuse/restart giữ ở N1R-b, không gắn vào nghiệm thu LAN hiện tại.
 
 <a id="gap-village10-map"></a>
 ### Village10: còn thiếu profile map nhất quán trước gameplay

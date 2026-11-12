@@ -2,9 +2,9 @@
 
 Server giả lập cho **the lastest client Crazy Arcade KR build00967 before end of service**, dựa trên kiến thức từ client
 VN VBNB_116. 
-Chú ý:
-1- dự án không cung cấp client game
-2- dự án chứa lượng lớn text và kiến thức RE được viết bằng agents, ko phải con người, nếu đọc không hiểu thì hãy hỏi AI giải thích. 
+**Chú ý:**<br>
+1- dự án không cung cấp client game<br>
+2- dự án chứa lượng lớn text và kiến thức RE được viết bằng agents (GPT sol-6.1, claude fable-5.2), không phải con người, nếu đọc không hiểu thì hãy hỏi AI giải thích. 
 <img width="1024" height="1230" alt="fixed-contact" src="https://github.com/user-attachments/assets/739b9237-b44a-47f0-87a3-97ccd3c9f669" />
 
 **Thư mục làm việc hiện tại trên host:** `/home/admin/boom/repos/boom-kr-server`.
@@ -33,11 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP278: đã sửa kiểm provenance cho source Rust và census tại checkpoint công bố.**
-[Quy tắc và giới hạn](docs/evidence/checkpoints/README.md#publication-bound-source-history): tìm đúng blob tại lần công bố,
-không sửa record hoặc raw cũ. Occupancy phòng đã có [native proof](docs/protocol/room-membership.md#rust-room-population)
-ở CP277. M7b còn lifecycle trận và cách ly round/UDP; toàn M7 và profile account bất kỳ chưa đạt.
-Tiếp lifecycle M7b theo [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP279: hai phòng duel Rust đã chạy độc lập trên bốn client KR thật.**
+Room chưa đầy vẫn Ready/loading, kết quả/reset và mở trận tiếp theo roster thực; EOF/bom chờ của phòng này được
+cách ly trong khi phòng kia tiếp tục. [Contract và giới hạn](docs/protocol/room-membership.md#rust-managed-duel-lifecycle),
+[bằng chứng](docs/evidence/rust-service/m7b-duel-lifecycle.json). Chỉ lát cắt duel được nhận; M7b còn roster/layout
+khác, M7c/d và M5 tổng quát còn mở. Thứ tự ở [Bảng điều hành](docs/PLAN.md#dashboard).
 Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu
