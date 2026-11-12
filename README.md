@@ -2,7 +2,7 @@
 
 Server giả lập cho **the lastest client Crazy Arcade KR build00967 before end of service**, dựa trên kiến thức từ client
 VN VBNB_116. 
-Chú ý:
+**Chú ý:**<br>
 1- dự án không cung cấp client game<br>
 2- dự án chứa lượng lớn text và kiến thức RE được viết bằng agents (GPT sol-6.1, claude fable-5.2), không phải con người, nếu đọc không hiểu thì hãy hỏi AI giải thích. 
 <img width="1024" height="1230" alt="fixed-contact" src="https://github.com/user-attachments/assets/739b9237-b44a-47f0-87a3-97ccd3c9f669" />
