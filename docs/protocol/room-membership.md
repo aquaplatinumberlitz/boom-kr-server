@@ -1334,7 +1334,7 @@ không bỏ log hoặc gọi là teardown không lỗi. Không suy native EOF8 t
 
 Nguồn **kr_runtime/confirmed** cho packet/native/UI trong phạm vi dưới; policy server là **design/design**.
 [Metadata, recipe, source/binary và hash](../evidence/rust-service/m7c-room-choices.json). Đây là lát cắt M7c trong
-phòng chờ, không nghiệm thu Start/stat/trận với lựa chọn mới. Theo PLAN hiện hành, tích hợp đó thuộc M7e.
+phòng chờ, không nghiệm thu Start/stat/trận với lựa chọn mới. [M7e](#rust-selected-player-rounds) có acceptance tích hợp riêng.
 
 | Thao tác client thật | Wire đã đo | Giới hạn phục vụ |
 |---|---|---|
@@ -1371,8 +1371,8 @@ FIN sau completion và phân loại được giữ riêng, không gọi teardown
 
 Kiểm synthetic bốn account/hai phòng xác nhận cách ly lựa chọn, Ready clear/reReady, capacity bounds, từ chối
 config choice+Battle, full rejection không slot ma và chọn phòng khác ngay sau lỗi; malformed/local player khác0
-và nhân vật4 không publish lựa chọn. Synthetic không thay native. [M7d ownership tích hợp](#rust-managed-account-ownership) có scope riêng; M7e còn
-roster tự do, chosen-character Start/stat và rời giữa trận; M5b còn hồ sơ account bất kỳ theo thứ tự PLAN.
+và nhân vật4 không publish lựa chọn. Synthetic không thay native. [M7d ownership tích hợp](#rust-managed-account-ownership) có scope riêng; [M7e](#rust-selected-player-rounds) đã có roster hiện hành, chosen-character Start/stat và active EOF.
+M5b còn hồ sơ account bất kỳ theo thứ tự PLAN.
 
 
 <a id="rust-managed-account-ownership"></a>
@@ -1407,4 +1407,65 @@ C/D chưa được chờ reset lần hai. Observer D có lỗi ở owned shutdow
 [managed lifecycle](#rust-managed-team-rosters) cung cấp roster2/4/8 và EOF cách ly. Không chạy lại các baseline này.
 Native DB-queue fault vẫn thuộc M5b; SQLite/TCP DB-busy mới không thay phép nghiệm thu đó. Fresh login là phiên mới,
 không là account resume hoặc match restore. Direct UDP và epoch hữu hạn giữ các giới hạn đã công bố; không gọi key
-là authentication. M7e còn Start/stat theo nhân vật chọn, roster2..8/sparse và survivor continuation theo PLAN.
+là authentication. [M7e](#rust-selected-player-rounds) có proof riêng cho Start/stat, roster hiện hành và active EOF.
+
+
+<a id="rust-selected-player-rounds"></a>
+### Start và trận theo lựa chọn của roster hiện hành
+
+[Metadata và raw/hash](../evidence/rust-service/m7e-selected-rosters.json) nhận phần roster của M7e trên client KR
+thật. M7e đạt các ca native tối thiểu cho roster và người còn lại tiếp tục sau active EOF trong phạm vi dưới đây.
+Không lấy source hoặc TCP làm bằng chứng native. Cấu hình opt-in `managed_rooms.player_round.characters=[0,1]` cần `player_choices=true`,
+không kết hợp `round_profile` cũ, relay hoặc terrain. Default và các profile fixed cũ giữ nguyên phạm vi đã đo.
+
+RoomRules dùng current membership từ 2 tới 8 người, slot có thể thưa và ít nhất hai đội. Free cho phép đội không
+cân bằng; Manner giữ hai đội A0/B3 cân bằng. Start sinh từng hàng từ slot, spawn, nhân vật và đội hiện hành, không
+lấy hàng nhân vật theo fixture slot. Phần map và outer branch giữ template đã đo. `u16` tại row+3 là khóa Attr:
+đối chứng chỉ đảo0/1 đã đảo đúng sáu chỉ số native ở cả hai client trong khi slot, spawn, team và binary không đổi.
+Dao0 có capacity/max 1/10, power/max 1/7, speed/max 5/7; Dizni1 có 2/7, 1/9, 4/8. Level speed không là đơn vị vật lý.
+Chỉ mở hai khóa có proof; suffix asset và thứ tự slot không tự là ID nhân vật.
+
+Native đã có ba account với lựa chọn1/0/1 và đội0/0/3, sáu account với1/0/1/0/0/1 và đội0/0/0/3/3/3, cùng roster
+slot0/2 sau khi B bấm Back. A/C đổi lựa chọn thật trong UI; C từ1 về0 trước sparse Start. Peer153 giữ đúng bảng
+slot hiện hành; các actor có pointer riêng và sáu stat đúng nhân vật. Native UDP đi qua ingress, kiểm key và apply
+trên peer, đối chiếu lại PCAP. Bom159/158 có entity và reader đầy đủ; rank175, reset180 và phòng chờ được kiểm
+riêng. Rank là kết quả theo đội: trong ca sáu người, C chết nhưng đội C vẫn thắng; không suy winner còn sống.
+
+Client chọn1 có thể gửi opcode79/body `5b5b` sau Start; đổi1 về0 đã gửi `5b5a`. Đây là quan sát opaque, một lần
+cho mỗi current member trong Loading, đúng body tương ứng lựa chọn0/1. Server không phản hồi, không đổi world,
+không hoàn thành loading barrier và không gia hạn idle vì79. Sai body, duplicate, sai phase hoặc profile vẫn đóng
+kết nối. Không suy semantics hoặc định dạng tổng quát từ hai literal này.
+
+Queue, key và membership tiếp tục có guard theo room/connection/visit/round. Synthetic TCP kiểm capacity bom
+theo nhân vật2/1/2, mọi recipient hoàn thành, kết quả/reset, slot thưa và key cũ; không thay native compatibility.
+Các run lỗi giữ nguyên: ba người có một interval đạt rồi sparse thất bại; raw được khôi phục đúng byte sau lỗi
+unmount. Ca sáu đầu thiếu capture, ca thay thế có native/PCAP đầy đủ nhưng debugger B lỗi ở shutdown sau completion.
+Không gọi các run này teardown không lỗi hoặc toàn bộ mục tiêu đạt. Hồ sơ account bất kỳ thuộc M5b; relay nhiều
+người thuộc N1R-b, gameplay map/item thuộc G1.
+
+
+**Rời một thành viên khi đang chơi.** Player round giữ snapshot participant theo key/slot/nhân vật/đội tại Start,
+tách khỏi current membership và quyền channel. Khi endpoint hiện hành EOF lúc Armed, account mất quyền phát
+lệnh ngay; slot không cấp lại trước khi hết ván. Snapshot của người rời giữ cho rank của ván đó. Các target bom/life
+đã rời được loại khỏi tập completion, nhưng bom đã nhận vẫn nổ cho người còn lại. Queue dùng guard theo scope,
+membership và round; việc chủ bom rời không biến bom đó thành dữ liệu của account hoặc ván mới.
+
+Policy forfeit gửi native death170/sub19, tọa độ 0/0 và serialized empty death branch đã đo. Đây là quyết định của
+server mới cho actor đã rời, không là client report hoặc ACK giả, không khẳng định đó là vị trí/luật server gốc.
+Không cần nhận report vị trí trước disconnect. Subtype11 chỉ ẩn peer nên đã bị loại sau ca âm: actor vẫn sống và
+không có survivor21/result. Consumer19 được kiểm bằng native actor state1, reader, PCAP và kết quả/ván kế.
+
+Ca native bốn client đã ngắt D khi bom còn chờ. A/B/C nhận death19 cho D, bom cũ158 vẫn nổ; C đặt bom mới sau EOF
+và client thực thi159/158 rồi báo17/19. A/B/C nhận rank bốn hàng, về phòng, D chỉ bị remove107 sau180 và roster ba
+người mở ván mới. C bị ngắt ở ván hai là người cuối của đội B: A/B nhận kết quả/reset, C bị remove sau180. B chọn
+đội B3 bằng UI và hai người còn lại mở ván ba với Start/stat/peer mới. Keys khác giữa các ván; actor của slot đã rời
+không xuất hiện trong clock mới. UDP sau loss có native apply; input Right ngay sau loss bị thùng chặn nên không
+được gọi là tiến tọa độ. Bom mới và ván sau là bằng chứng gameplay tiếp tục, không suy từ process alive.
+
+Điều kiện kết quả giữ chính sách report-derived: một đội còn sống, mọi target departure/life/bom hoàn thành,
+settle tám giây và survivor21 hiện hành. Mất hết một đội tính người đã rời như thua; không nhận hòa hoặc phục hồi
+trận sau restart. Người đã rời không có socket để nhận rank nhưng vẫn có hàng của ván cũ. Sau180 mới gửi remove107
+và refresh current slots; các ván tiếp dùng membership/participant snapshot mới. Loading loss vẫn fence phòng;
+Ending loss đóng channel để không tạo phòng idle giả trong khi UI còn ở rank/return. Những ca đó không được gọi
+là survivor recovery đã nghiệm thu. Guest/chief thay quyền vẫn dùng cơ chế membership đã có; native active loss
+mới là guest EOF, không thêm claim graceful UI exit, active host promotion, mọi loại mất mạng hoặc relay.

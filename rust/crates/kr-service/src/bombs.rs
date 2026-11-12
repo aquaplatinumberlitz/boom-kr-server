@@ -125,6 +125,12 @@ impl Ledger {
         self.active.clear();
         self.serials.clear();
     }
+    pub(crate) fn forget_recipient(&mut self, key: Membership) {
+        for active in self.active.values_mut() {
+            active.pending.remove(&key);
+        }
+        self.active.retain(|_, active| !active.pending.is_empty());
+    }
     /// Operates on the candidate room clone; reserve ALL spawn+deadline queues
     /// before publishing this allocation/serial/reservation to the real owner.
     pub fn place(
@@ -187,7 +193,7 @@ impl Ledger {
             owner,
         };
         let recipients: BTreeSet<_> = roster.iter().copied().collect();
-        if !matches!(recipients.len(), 2 | 4 | 8) || recipients.len() != roster.len() {
+        if !(2..=8).contains(&recipients.len()) || recipients.len() != roster.len() {
             return Ok(Err("unsupported_roster"));
         }
         self.next_wire += 1;

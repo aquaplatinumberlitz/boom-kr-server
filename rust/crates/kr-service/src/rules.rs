@@ -20,6 +20,7 @@ pub(crate) enum ResultPolicy {
     Disabled,
     Duel,
     Teams,
+    Players,
 }
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
@@ -29,6 +30,7 @@ pub(crate) enum DeparturePolicy {
     Forfeit,
     UnrankedReturn,
     FenceActive,
+    ContinuePlayers,
 }
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
@@ -74,11 +76,13 @@ pub(crate) enum RoundRoster {
     #[default]
     Full,
     Contiguous(usize),
+    /// Current members, including vacant middle slots. Opt-in player round.
+    Players,
 }
 impl RoundRoster {
     pub(crate) fn size(self, capacity: usize) -> usize {
         match self {
-            Self::Full => capacity,
+            Self::Full | Self::Players => capacity,
             Self::Contiguous(count) => count,
         }
     }
@@ -182,7 +186,7 @@ impl RoomRules {
         self.life == LifePolicy::TeamReports
     }
     pub(crate) fn team_results(&self) -> bool {
-        self.result == ResultPolicy::Teams
+        matches!(self.result, ResultPolicy::Teams | ResultPolicy::Players)
     }
     pub(crate) fn owner_bombs(&self) -> bool {
         self.bomb == BombPolicy::OwnerReports

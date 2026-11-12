@@ -83,7 +83,8 @@ lifecycle đã được giải bằng phép đo Right700ms riêng cùng binary; 
 M7b đã có [native managed team rosters](protocol/room-membership.md#rust-managed-team-rosters) bên cạnh duel:
 Start/stat/peer/life/rank/reset theo contiguous4/8 và EOF/bom chờ cách ly ở hai phòng4. Không cần đo lại profile fixed
 hoặc từng giá trị aux142: aux là quan sát opaque không hiệu ứng theo design, chưa có nghĩa hoặc item authority.
-Roster khác vẫn bị chặn. Teams EOF seal round; chưa tự phục hồi survivor hoặc Start roster thiếu.
+Profile team cũ giữ fence khi EOF. [M7e](protocol/room-membership.md#rust-selected-player-rounds) có opt-in riêng cho
+roster hiện hành và active EOF; không áp kết quả đó ngược lên profile cũ.
 
 [M7c room-only](protocol/room-membership.md#rust-managed-player-choices) đã đo C2S92/u8+u16, C2S97/u8,
 slot110/native visual/peer và Ready clear/reReady cho nhân vật0/1, nút đội A0/B3. Lỗi phòng đầy generic87/result2 và
@@ -92,10 +93,12 @@ mới có producer, chưa được mở stat/entitlement; nhiều local player v
 
 [M7d ownership/failure tích hợp](protocol/room-membership.md#rust-managed-account-ownership) đã có native revoke cách ly
 hai phòng và ca âm tính SQLite/TCP; không lặp baseline. Native DB-queue fault vẫn ở M5b, không suy từ DB-busy.
-Lựa chọn hiện chỉ phục vụ phòng chờ, không kết hợp battle
-profile; M7e phải sinh Start/stat từ nhân vật chọn, hỗ trợ2..8 người/sparse slot và rớt mạng/rời giữa trận có người
-còn lại chơi tiếp. Không dùng fixture theo slot hoặc policy FenceActive hiện hành như nghiệm thu M7e. Sau đó M5b
-mở hồ sơ account bất kỳ và native DB-queue fault. Epoch hiện trần255 lần cấp/instance; mixed key không là auth hoặc
+[Roster và active EOF](protocol/room-membership.md#rust-selected-player-rounds) đã có native3/6 người, slot0/2,
+Start/stat theo nhân vật0/1, UDP/bom/kết quả/reset và4→3→2 sau hai lần mất endpoint. Không lặp các baseline này.
+M7e đạt ca tối thiểu theo PLAN; phần hồ sơ account bất kỳ và native DB/hàng đợi thuộc M5b theo acceptance mới.
+Subtype11 chỉ ẩn peer nên không dùng cho forfeit; death19 tại0/0 là policy đã đo, không là luật authority gốc.
+Loading và Ending loss chưa có survivor recovery; interactive UI exit202 và active host loss chưa có native mới.
+Các giới hạn này giữ riêng, không suy từ guest EOF hoặc từ source/TCP. Epoch hiện trần255 lần cấp/instance; mixed key không là auth hoặc
 durable restart/reuse proof. Relay nhiều người/reuse/restart giữ N1R-b, không gắn vào M7 LAN.
 
 <a id="gap-village10-map"></a>

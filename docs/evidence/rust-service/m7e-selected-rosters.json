@@ -1,0 +1,129 @@
+{
+  "schema": "kre-rust-selected-player-rounds-v1",
+  "checkpoint": "CP283",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/room-membership.md#rust-selected-player-rounds",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "wine": "wine-10.0-20260425 (CachyOS)",
+  "environment": "Actual account clients under Wine, private isolated bridge/virtual LAN, direct TCP/UDP, no outside route.",
+  "native": [
+    {
+      "root": "local/research/codex/m7e-three-native-r2",
+      "verification": "local/research/codex/m7e-three-native-r2/results-verification.json",
+      "getters": "local/research/codex/m7e-three-native-r2/results-getter-verification.json",
+      "run_sha256": "7fb8518957e073ab08abaf893b87f6cb64d5b60d6d2e9d5b4cea41632b617ea3",
+      "raw_count": 94,
+      "native_getter_checks": 1950,
+      "binary_sha256": "5aaf9d8fbf6b39173b7b937927a1a57794026366c1ae8ce0447de3aac2736cf4"
+    },
+    {
+      "root": "local/research/codex/m7e-sparse-native-r1",
+      "verification": "local/research/codex/m7e-sparse-native-r1/results-verification.json",
+      "getters": "local/research/codex/m7e-sparse-native-r1/results-getter-verification.json",
+      "run_sha256": "6cffa5c634a9adeb88a7025d7a8832b69e2d7728067568da6ec082610d8a7da5",
+      "raw_count": 84,
+      "native_getter_checks": 600,
+      "binary_sha256": "b19c32fe9e48d618fca4bf56e41d0407cf836f1bdf006ef106cce4d7469be691"
+    },
+    {
+      "root": "local/research/codex/m7e-six-native-r2",
+      "verification": "local/research/codex/m7e-six-native-r2/results-verification.json",
+      "getters": "local/research/codex/m7e-six-native-r2/results-getter-verification.json",
+      "run_sha256": "eca76a98554dd0673ddbcbe573a8564eca4ec951d7e68a62a5258dcd30c18127",
+      "raw_count": 163,
+      "native_getter_checks": 5664,
+      "binary_sha256": "b19c32fe9e48d618fca4bf56e41d0407cf836f1bdf006ef106cce4d7469be691"
+    }
+  ],
+  "stat_control": {
+    "root": "local/research/codex/m7e-start-stat-probe-r2",
+    "verification": "local/research/codex/m7e-start-stat-probe-r2/verification.json",
+    "run_sha256": "82b7c9570bf1db3ca04746b5a88fdea9712d3a594fb77e1f7b8d690da8f2a4f0",
+    "delta": "Only inner Start bytes57/83 change keys0/1 to1/0; both clients swap six native stat fields. Slot/spawn/team and server binary retained."
+  },
+  "implementation": {
+    "config": "managed_rooms.player_choices=true; managed_rooms.player_round.characters=[0,1]",
+    "opt_in": true,
+    "mutually_exclusive": "legacy managed_rooms.round_profile",
+    "policy": "Current members2..8, sparse slots, at least2 teams, chosen0/1; Free permits unbalanced teams, Manner requires balanced0/3. Existing fixed profiles unchanged.",
+    "source": "rust/crates/kr-service/src/{characters,room,rules,room_io,room_service,peer_routes,bombs,life,four_results}.rs; rust/crates/kr-wire/src/kr00967/{room,battle}.rs",
+    "limits": "Player rounds require direct UDP and no terrain profile. Capacity is admission, not actor/identity/stat key."
+  },
+  "synthetic": {
+    "tool": "tools/test_rust_selected_players.py",
+    "baseline": "local/research/codex/m7e-selected-synthetic-r6/tcp/verification.json",
+    "survivors": "local/research/codex/m7e-survivors-synthetic-r5/tcp/verification.json",
+    "limits": "Seven real-SQLite/synthetic TCP groups include departure without prior position report, five outstanding bomb deliveries, retained participant ranks, reset107 and next sparse round/old key rejection. Separate six-group no-departure regression. No native claim from TCP."
+  },
+  "reuse": [
+    {
+      "source": "Current CP019/024/201/209/274–282",
+      "level": "kr_static/kr_runtime within measured limits",
+      "use": "Start26-byte rows, native consumer/stat wrappers, slot/spawn fields, two room lifecycle/choices/ownership.",
+      "avoids": "No remeasure opcode92/97/110, old fixed2/4/8 stat baseline or broad decompile."
+    },
+    {
+      "source": "boomkr-re@88e11ed30764c753a00f4f23a2f33dafadc4c890",
+      "locator": "data/kr/bomber_attr.json and docs/kr-data.md §13/23",
+      "level": "KR static dataset plus external comparison; not general runtime proof",
+      "use": "Character rows keyed by field0, C00 key0 [speed5/7,bombs1/10,power1/7], C01 key1 [4/8,2/7,1/9].",
+      "must_compare": "Current KR Start field to character-key mapping; chosen UI ID through Battle stat. Do not infer speed physical units or C03 suffix3 equals key2."
+    },
+    {
+      "source": "boom-re@9ac2075bbec0c16217741aaedea968cf685e39a9",
+      "locator": "docs/lobby.md §16; docs/oc_e-game.md §4",
+      "level": "VN reference only",
+      "use": "Separate choice state from Start wire and don’t put char into guessed spawn field; retained own/peer observer method.",
+      "must_compare": "KR Start has different schema, width and IDs. No opcode-offset or full VN port."
+    },
+    {
+      "source": "boom-rs planning/rules/router read; no code imported",
+      "level": "Historical design/reference only",
+      "use": "Speed scalar and units remain distinct; its new client/protocol/scope are not KR00967 requirements."
+    }
+  ],
+  "failures": [
+    {
+      "root": "local/research/codex/m7e-three-native-r1",
+      "reason": "Native Start155 parsed; selected1 emits79/5b5b, unsupported request closes channel."
+    },
+    {
+      "root": "local/research/codex/m7e-three-native-r2",
+      "reason": "Three-player interval accepted; later sparse emits79/5b5a and C aborts. Bounded unmount failed; exact byte export recovered after namespace extinction. Original raw/manifest/exit1 unchanged."
+    },
+    {
+      "root": "local/research/codex/m7e-six-native-r1",
+      "reason": "Native6 rank/reset observed, but inherited UDP capture thread stops at fifth endpoint. No full capture acceptance; R2 replaces it with failure-propagating bounded capture."
+    },
+    {
+      "root": "local/research/codex/m7e-survivors-native-r1",
+      "reason": "Candidate170/sub11 hides peer but does not yield death/survivor21/result. Declared stop/exit1 preserved. Not a compatible departure contract."
+    },
+    {
+      "root": "local/research/codex/m7e-survivors-native-r2",
+      "reason": "Prepared only, not started: synthetic test exposed missing current report snapshot; new R3 copies observed header at departure."
+    }
+  ],
+  "limits": [
+    "Known characters0/1 only, not arbitrary account/profile/character or entitlement. Stat levels are not physical speed units.",
+    "Three run cleanup recovery and six B debugger shutdown exception remain; not pristine teardown.",
+    "Generated wire and Python/Rust agreement are not oracle; native reader/state and PCAP evidence establish only declared rosters.",
+    "No terrain/item/needle extension, NAT/relay/Internet/restart/load acceptance. Historical K6c WAN giả lập keeps Internet thật chưa kiểm at its scope; N1 has separate evidence.",
+    "M7e meets its native minimums with3/6/sparse and4→3→2 active EOF. Full general account/profile remains M5b; relay, terrain/items, durability and production readiness remain later milestones."
+  ],
+  "survivors": {
+    "root": "local/research/codex/m7e-survivors-native-r5",
+    "verification": "local/research/codex/m7e-survivors-native-r5/results-verification.json",
+    "getters": "local/research/codex/m7e-survivors-native-r5/results-getter-verification.json",
+    "run_sha256": "27f6a6b461a280acebc205b8f79d7ae5f4948204b52c422fbb3f817a368fd0dc",
+    "raw_count": 129,
+    "duration_s": 231.329655447,
+    "binary_sha256": "1abcf25e15faf9303f123feccd83f7657b308540708882a331a569ea8be33a95",
+    "source_commit": "c43bd8544c67c0daa6d8dad8f14beb23aa0f57bb",
+    "policy": "Armed player round: remove account-owned live membership immediately; retain Start participant rows and accepted pending bombs. Encode170/19 at neutral0/0 with empty death branch. Survivor result needs all native-source reports/delivery fences and settle; it is a chosen forfeit policy, not recovered original authority.",
+    "acceptance": "Four native clients: D endpoint EOF after native159, remaining3 get native death19, pending158 and new C bomb, death/result/reset; next roster3. C endpoint EOF as final opponent gives result/reset; B actual team3 selection, next roster2 Start/stat/peer. No fake ACK/report.",
+    "limits": "Armed departure only; Loading stays fenced. Ending loss fails closed rather than pretending partial-return recovery. Interactive client exit UI202/graceful logout, loss during Loading/Ending and new relay paths have no survivor native acceptance."
+  }
+}

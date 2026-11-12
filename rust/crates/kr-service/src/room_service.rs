@@ -25,6 +25,8 @@ pub struct Config {
     pub player_choices: bool,
     #[serde(default)]
     pub capacity: Option<usize>,
+    #[serde(default)]
+    pub player_round: Option<room_io::PlayerRoundConfig>,
 }
 struct Owner {
     connection: u64,
@@ -77,6 +79,11 @@ impl Hub {
                 "room choices require selection-only profile until Start/stat acceptance",
             ));
         }
+        if cfg.player_round.is_some() && (cfg.round_profile.is_some() || !cfg.player_choices) {
+            return Err(err(
+                "player round requires choices and no legacy round profile",
+            ));
+        }
         room_io::validate_admission_capacity(
             &prototype,
             cfg.capacity,
@@ -89,6 +96,11 @@ impl Hub {
             .as_ref()
             .map(|cfg| room_io::load_managed_round(cfg, &prototype))
             .transpose()?;
+        let round_profile = if let Some(players) = &cfg.player_round {
+            Some(room_io::load_player_round(players, &prototype)?)
+        } else {
+            round_profile
+        };
         let (changes, _) = watch::channel(0);
         Ok(Arc::new(Self {
             state: Mutex::new(State {

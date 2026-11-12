@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP282: M7d đã đạt ownership account/transport/membership trong nhiều phòng managed.**
+Native revoke giữa trận chỉ ảnh hưởng phòng của account đó; phòng kia tiếp tục tới kết quả. Các ca transport trùng,
+sai quyền/phòng, expiry và DB-busy đã kiểm riêng trên SQLite/TCP. [Contract và giới hạn](protocol/room-membership.md#rust-managed-account-ownership),
+[bằng chứng](evidence/rust-service/m7d-account-ownership.json). Client bị revoke có thể abort; native DB-queue fault
+và hồ sơ account bất kỳ còn thuộc M5b. Tiếp M7e → M5b theo [Bảng điều hành](PLAN.md#dashboard); toàn M7 chưa đóng.
+Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](HISTORY.md).
+
 **CP281: M7c đã có lựa chọn nhân vật/đội, Ready và lỗi phòng đầy trên client KR thật.**
 Lát cắt phòng chờ hỗ trợ Dao0/Dizni1 và nút đội A0/B3; peer thấy đúng, đổi lựa chọn xóa Ready rồi có thể Ready lại.
 Ba client đã kiểm full-error/vacancy không slot ma. [Contract/giới hạn](protocol/room-membership.md#rust-managed-player-choices),

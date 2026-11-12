@@ -1,4 +1,4 @@
-//! Bounded two-player fixed-room model. Policy, not original KR authority.
+//! Bounded room model. Policy, not original KR authority.
 //! Wire adapters reference CP028/034/035/229/230; no gameplay is implemented here.
 //! Generation arguments fence internal work; raw585/99 lack a measured visit/round token.
 //! Passing a current generation cannot prove an old wire ACK was rejected.
@@ -37,7 +37,96 @@ pub struct Member {
     opaque123: u16,
     opaque167: u16,
     opaque142: u16,
+    loading79: bool,
     pub(crate) life: crate::life::Player,
+}
+/// Frozen admission/choice rows for one round, independent of live membership.
+/// A departed transport never remains a command owner merely to retain a rank row.
+#[derive(Clone, Debug)]
+pub(crate) struct Participant {
+    pub member: Member,
+    pub departed: Option<std::time::Instant>,
+    pending: BTreeSet<Membership>,
+}
+
+#[cfg(test)]
+mod participant_departure_tests {
+    use super::*;
+    use std::time::{Duration, Instant};
+    #[test]
+    fn departures_keep_original_rank_rows_prune_targets_and_fence_next_round() {
+        let mut room = Room::with_allocation(8, SlotAllocation::FirstVacant).unwrap();
+        room.round_roster = crate::rules::RoundRoster::Players;
+        let mut keys = Vec::new();
+        for id in [70000, 42, 503, 88] {
+            let key = room.enter(id, u64::from(id), keys.is_empty()).unwrap();
+            room.setup(key).unwrap();
+            room.choose(key, Some(0), None).unwrap();
+            room.choose(key, None, Some(if keys.len() < 2 { 0 } else { 3 }))
+                .unwrap();
+            keys.push(key);
+        }
+        for key in &keys[1..] {
+            room.ready(*key).unwrap();
+        }
+        let round = room.begin(keys[0]).unwrap();
+        for key in &keys {
+            room.ack(*key, round).unwrap();
+        }
+        let now = Instant::now();
+        room.depart_player(keys[3], now).unwrap();
+        assert!(!room.current(keys[3]));
+        assert_eq!(room.phase, Phase::Armed { round });
+        assert_eq!(room.participants.len(), 4);
+        assert!(room.valid_round_roster());
+        assert!(room.departure_deliverable(keys[3], keys[2], round));
+        room.depart_player(keys[2], now).unwrap();
+        assert!(!room.departure_deliverable(keys[3], keys[2], round));
+        assert!(room.depart_player(keys[2], now).is_err());
+        let report = crate::life::Report {
+            subtype: 21,
+            slot: 0,
+            tick: 100,
+            digest: "survivor-current".into(),
+            forward: None,
+        };
+        room.members.get_mut(&keys[0].identity).unwrap().life.apply(
+            0,
+            &report,
+            now + Duration::from_secs(1),
+            None,
+        );
+        assert_eq!(
+            crate::four_results::winner(&room, now + Duration::from_secs(8)),
+            None
+        );
+        for source in &keys[2..] {
+            for recipient in &keys[..2] {
+                room.departure_delivered(*source, *recipient, round)
+                    .unwrap();
+            }
+        }
+        assert!(!room.departure_pending());
+        assert!(room.departure_delivered(keys[3], keys[0], round).is_err());
+        assert_eq!(
+            crate::four_results::winner(&room, now + Duration::from_secs(8)),
+            Some(0)
+        );
+        room.end(round).unwrap();
+        for key in &keys[..2] {
+            room.refreshed(*key, round).unwrap();
+        }
+        assert_eq!(room.phase, Phase::Idle);
+        assert!(room.begin(keys[0]).is_err()); // One team cannot start a new round.
+        room.choose(keys[1], None, Some(3)).unwrap();
+        room.ready(keys[1]).unwrap();
+        let next = room.begin(keys[0]).unwrap();
+        assert!(next > round);
+        assert_eq!(room.participants.len(), 2);
+        assert!(!room.departure_deliverable(keys[3], keys[0], next));
+        assert!(room.departure_delivered(keys[3], keys[0], round).is_err());
+        assert!(!room.deliverable(keys[0], Some(round)));
+    }
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Phase {
@@ -74,6 +163,7 @@ pub struct Room {
     pub(crate) bomb_capacity: Vec<usize>,
     pub(crate) terrain: Option<crate::terrain::Terrain>,
     pub(crate) last_blast: Option<std::time::Instant>,
+    pub(crate) participants: BTreeMap<Membership, Participant>,
 }
 impl Default for Room {
     fn default() -> Self {
@@ -95,6 +185,7 @@ impl Default for Room {
             bomb_capacity: crate::rules::default_bomb_capacity(2),
             terrain: None,
             last_blast: None,
+            participants: BTreeMap::new(),
         }
     }
 }
@@ -142,12 +233,39 @@ impl Room {
     }
 
     pub(crate) fn round_size(&self) -> usize {
-        self.round_roster.size(self.capacity)
+        if self.round_roster == crate::rules::RoundRoster::Players {
+            self.members.len()
+        } else {
+            self.round_roster.size(self.capacity)
+        }
     }
     pub(crate) fn valid_round_roster(&self) -> bool {
         self.members.len() == self.round_size()
             && match self.round_roster {
                 crate::rules::RoundRoster::Full => true,
+                crate::rules::RoundRoster::Players => {
+                    if matches!(self.phase, Phase::Armed { .. } | Phase::Ending { .. }) {
+                        !self.members.is_empty()
+                            && !self.participants.is_empty()
+                            && self.members.values().all(|member| {
+                                self.participants.get(&member.key).is_some_and(|p| {
+                                    p.departed.is_none()
+                                        && p.member.slot == member.slot
+                                        && p.member.team == member.team
+                                        && p.member.character == member.character
+                                })
+                            })
+                    } else {
+                        (2..=self.capacity).contains(&self.members.len())
+                            && self
+                                .members
+                                .values()
+                                .map(|member| member.team)
+                                .collect::<BTreeSet<_>>()
+                                .len()
+                                >= 2
+                    }
+                }
                 crate::rules::RoundRoster::Contiguous(count) => {
                     matches!(count, 2 | 4 | 8)
                         && count <= self.capacity
@@ -159,6 +277,9 @@ impl Room {
                         })
                 }
             }
+    }
+    pub(crate) fn player_round(&self) -> bool {
+        self.round_roster == crate::rules::RoundRoster::Players
     }
     pub(crate) fn round_teams(&self) -> &[u8] {
         &self.fixed_teams[..self.round_size()]
@@ -197,7 +318,11 @@ impl Room {
     }
     pub(crate) fn balanced_teams(&self) -> bool {
         let zero = self.members.values().filter(|m| m.team == 0).count();
-        let one = self.members.values().filter(|m| m.team == 1).count();
+        let one = self
+            .members
+            .values()
+            .filter(|m| m.team == if self.player_round() { 3 } else { 1 })
+            .count();
         zero > 0 && zero == one && zero + one == self.round_size()
     }
 
@@ -268,14 +393,19 @@ impl Room {
             Member {
                 key,
                 slot,
-                team: self.fixed_teams[usize::from(slot)],
-                character: None,
+                team: if self.player_round() {
+                    0
+                } else {
+                    self.fixed_teams[usize::from(slot)]
+                },
+                character: self.player_round().then_some(0),
                 ready: false,
                 setup: false,
                 late_after_abort: 0,
                 opaque123: 0,
                 opaque167: 0,
                 opaque142: 0,
+                loading79: false,
                 life: crate::life::Player::default(),
             },
         );
@@ -370,6 +500,7 @@ impl Room {
                 .map(|m| m.key.identity);
         }
         self.bombs.finish();
+        self.participants.clear();
         if let Some(terrain) = &mut self.terrain {
             terrain.finish();
         }
@@ -407,12 +538,30 @@ impl Room {
             member.opaque123 = 0;
             member.opaque167 = 0;
             member.opaque142 = 0;
+            member.loading79 = false;
             member.life.begin();
             member.late_after_abort = 0;
         }
         self.aborted = None;
         self.round = round;
         self.last_blast = None;
+        self.participants = if self.player_round() {
+            self.members
+                .values()
+                .map(|member| {
+                    (
+                        member.key,
+                        Participant {
+                            member: member.clone(),
+                            departed: None,
+                            pending: BTreeSet::new(),
+                        },
+                    )
+                })
+                .collect()
+        } else {
+            BTreeMap::new()
+        };
         self.bombs.begin(round);
         if let Some(terrain) = &mut self.terrain {
             terrain.begin(round);
@@ -442,6 +591,93 @@ impl Room {
             };
         }
         Ok(round)
+    }
+    /// Experimental player-round departure. Removal fences commands immediately;
+    /// already accepted bomb work belongs to this round and its remaining targets.
+    pub(crate) fn depart_player(
+        &mut self,
+        key: Membership,
+        now: std::time::Instant,
+    ) -> io::Result<u64> {
+        if !self.player_round() || !self.current(key) {
+            return Err(io::Error::other("departure requires current player round"));
+        }
+        let round = match self.phase {
+            Phase::Armed { round } | Phase::Ending { round, .. } => round,
+            _ => {
+                return Err(io::Error::other(
+                    "departure requires playing or ending round",
+                ));
+            }
+        };
+        let armed = matches!(self.phase, Phase::Armed { .. });
+        let member = self.members.remove(&key.identity).expect("current member");
+        if self.host == Some(key.identity) {
+            self.host = self
+                .members
+                .values()
+                .min_by_key(|m| m.slot)
+                .map(|m| m.key.identity);
+        }
+        self.bombs.forget_recipient(key);
+        for member in self.members.values_mut() {
+            member.life.forget_recipient(key);
+        }
+        for participant in self.participants.values_mut() {
+            participant.pending.remove(&key);
+        }
+        let participant = self
+            .participants
+            .get_mut(&member.key)
+            .ok_or_else(|| io::Error::other("missing round participant"))?;
+        // Retain life evidence while preserving immutable Start identity/choices.
+        participant.member.life = member.life;
+        participant.departed = Some(now);
+        if armed {
+            participant.pending = self.members.values().map(|m| m.key).collect();
+        }
+        if self.members.is_empty() {
+            self.bombs.finish();
+            self.phase = Phase::Idle;
+        } else if let Phase::Ending { refreshed, .. } = &mut self.phase {
+            refreshed.remove(&key);
+            if refreshed.len() == self.members.len() {
+                self.phase = Phase::Idle;
+            }
+        }
+        Ok(round)
+    }
+    pub(crate) fn departure_pending(&self) -> bool {
+        self.participants.values().any(|p| !p.pending.is_empty())
+    }
+    pub(crate) fn departure_deliverable(
+        &self,
+        source: Membership,
+        recipient: Membership,
+        round: u64,
+    ) -> bool {
+        self.deliverable(recipient, Some(round))
+            && self.phase == (Phase::Armed { round })
+            && self
+                .participants
+                .get(&source)
+                .is_some_and(|p| p.departed.is_some() && p.pending.contains(&recipient))
+    }
+    pub(crate) fn departure_delivered(
+        &mut self,
+        source: Membership,
+        recipient: Membership,
+        round: u64,
+    ) -> io::Result<()> {
+        if !self.departure_deliverable(source, recipient, round) {
+            return Err(io::Error::other("stale departure completion"));
+        }
+        self.participants
+            .get_mut(&source)
+            .expect("validated participant")
+            .pending
+            .remove(&recipient);
+        Ok(())
     }
     /// CP205 chosen unranked single-loss policy. No three-player restart/replacement.
     pub(crate) fn abort_four(&mut self, key: Membership) -> io::Result<u64> {
@@ -519,6 +755,23 @@ impl Room {
     }
     /// Opaque actual123/body10 while Armed: bounded reference no-response policy,
     /// not recovered message semantics. No queue, world, inventory or ACK effect.
+    /// Exact observed packet79 is budget-only. Its semantics remain unknown;
+    /// it cannot authorize activity, mutate gameplay, or complete loading.
+    pub(crate) fn observe_loading79(&mut self, key: Membership) -> io::Result<()> {
+        if !self.current(key) || !matches!(self.phase, Phase::Loading { .. }) {
+            return Err(io::Error::other(
+                "opaque79 needs current loading membership",
+            ));
+        }
+        let member = self.members.get_mut(&key.identity).expect("current member");
+        if !matches!(member.character, Some(0 | 1)) || member.loading79 {
+            return Err(io::Error::other(
+                "opaque79 outside measured choice or budget",
+            ));
+        }
+        member.loading79 = true;
+        Ok(())
+    }
     pub fn observe_opaque123(&mut self, key: Membership) -> io::Result<()> {
         if !self.current(key) || !matches!(self.phase, Phase::Armed { .. }) {
             return Err(io::Error::other("opaque123 current armed member required"));
@@ -1003,4 +1256,74 @@ pub(crate) fn wire_key(round: u64) -> io::Result<u32> {
     12345u32
         .checked_add(u32::try_from(round).map_err(|_| io::Error::other("round key exhausted"))?)
         .ok_or_else(|| io::Error::other("round key exhausted"))
+}
+
+#[cfg(test)]
+mod player_round_tests {
+    use super::*;
+
+    #[test]
+    fn current_roster_allows_three_then_sparse_two_without_reusing_old_membership_or_round() {
+        let mut room = Room::with_allocation(8, SlotAllocation::FirstVacant).unwrap();
+        room.round_roster = crate::rules::RoundRoster::Players;
+        let mut keys = Vec::new();
+        for (id, conn) in [(70000, 11), (42, 22), (900, 33)] {
+            let key = room.enter(id, conn, keys.is_empty()).unwrap();
+            room.setup(key).unwrap();
+            keys.push(key);
+        }
+        assert!(!room.valid_round_roster()); // One team cannot start a match.
+        room.choose(keys[2], None, Some(3)).unwrap();
+        room.choose(keys[0], Some(1), None).unwrap();
+        assert!(room.valid_round_roster());
+        room.ready(keys[1]).unwrap();
+        room.ready(keys[2]).unwrap();
+        let first = room.begin(keys[0]).unwrap();
+        for key in &keys[..2] {
+            assert!(!room.ack(*key, first).unwrap());
+        }
+        assert!(room.ack(keys[2], first).unwrap());
+        room.end(first).unwrap();
+        for key in &keys {
+            room.refreshed(*key, first).unwrap();
+        }
+        room.leave(keys[1]).unwrap();
+        assert!(room.ready(keys[1]).is_err());
+        assert_eq!(room.members[&900].slot, 2);
+        assert_eq!(room.members[&70000].character, Some(1));
+        room.ready(keys[2]).unwrap();
+        let second = room.begin(keys[0]).unwrap();
+        assert_ne!(first, second);
+        assert!(room.ack(keys[0], first).is_err());
+        assert!(!room.ack(keys[0], second).unwrap());
+        assert!(room.ack(keys[2], second).unwrap());
+    }
+}
+
+#[cfg(test)]
+mod loading_observation_tests {
+    use super::*;
+    #[test]
+    fn opaque79_never_completes_barrier_and_rejects_wrong_choice_phase_or_duplicate() {
+        let mut room = Room::with_allocation(4, SlotAllocation::FirstVacant).unwrap();
+        room.round_roster = crate::rules::RoundRoster::Players;
+        let a = room.enter(70000, 11, true).unwrap();
+        let b = room.enter(42, 22, false).unwrap();
+        room.setup(a).unwrap();
+        room.setup(b).unwrap();
+        room.choose(a, Some(1), None).unwrap();
+        room.choose(b, None, Some(3)).unwrap();
+        assert!(room.observe_loading79(a).is_err());
+        room.ready(b).unwrap();
+        let round = room.begin(a).unwrap();
+        room.members.get_mut(&b.identity).unwrap().character = Some(4);
+        assert!(room.observe_loading79(b).is_err());
+        room.members.get_mut(&b.identity).unwrap().character = Some(0);
+        room.observe_loading79(b).unwrap();
+        room.observe_loading79(a).unwrap();
+        assert!(room.observe_loading79(a).is_err());
+        assert!(!room.ack(a, round).unwrap());
+        assert!(room.ack(b, round).unwrap());
+        assert!(room.observe_loading79(a).is_err());
+    }
 }

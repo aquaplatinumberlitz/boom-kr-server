@@ -78,7 +78,13 @@ pub struct ManagedRoundConfig {
 fn duel_teams() -> Vec<u8> {
     vec![0, 1]
 }
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct PlayerRoundConfig {
+    pub characters: Vec<u16>,
+}
 pub(crate) struct ManagedRound {
+    characters: Option<crate::characters::Catalog>,
     bodies: HashMap<Template, Vec<u8>>,
     initial_bomb_capacity: Vec<usize>,
     rules: RoomRules,
@@ -183,10 +189,55 @@ pub(crate) fn load_managed_round(
         }
     }
     Ok(Arc::new(ManagedRound {
+        characters: None,
         bodies,
         initial_bomb_capacity: cfg.initial_bomb_capacity.clone(),
         rules,
         limits,
+    }))
+}
+
+/// Experimental player round: all characters must have independent stat proof.
+/// Native arbitrary roster and active-departure acceptance remains separate.
+pub(crate) fn load_player_round(
+    cfg: &PlayerRoundConfig,
+    prototype: &Shared,
+) -> io::Result<Arc<ManagedRound>> {
+    let characters = crate::characters::Catalog::measured(&cfg.characters)?;
+    let source = prototype
+        .lock()
+        .map_err(|_| err("room prototype unavailable"))?;
+    if source.rules.endpoint != rules::EndpointPolicy::LegacyDirect
+        || source.model.terrain.is_some()
+    {
+        return Err(err(
+            "player rounds require direct UDP and no terrain profile",
+        ));
+    }
+    // Keep the measured source map/outer branch. Rows will be generated from
+    // current choices rather than selected by slot in the retained fixture.
+    let start = wire::start121_duel(source.body(Template::Start121))?;
+    Ok(Arc::new(ManagedRound {
+        characters: Some(characters),
+        bodies: HashMap::from([(Template::Start121, start)]),
+        initial_bomb_capacity: Vec::new(),
+        rules: RoomRules {
+            roster: rules::RoundRoster::Players,
+            result: ResultPolicy::Players,
+            // Experimental native consumer; enabled only by player_round.
+            departure: DeparturePolicy::ContinuePlayers,
+            bomb: rules::BombPolicy::OwnerReports,
+            life: rules::LifePolicy::TeamReports,
+            teams: TeamPolicy::BalancedManner,
+            slot_allocation: rules::SlotAllocation::FirstVacant,
+            endpoint: rules::EndpointPolicy::LegacyDirect,
+            player_choices: true,
+            ninth_admission_probe: false,
+        },
+        limits: rules::ReportLimits {
+            power: Vec::new(),
+            opaque167: &[4, 12, 16, 22, 32, 42],
+        },
     }))
 }
 
@@ -211,6 +262,11 @@ struct Channel {
 #[derive(Clone)]
 pub enum Guard {
     Channel,
+    Departure {
+        recipient: Membership,
+        source: Membership,
+        round: u64,
+    },
     Bomb {
         member: Membership,
         ticket: bombs::Ticket,
@@ -240,6 +296,7 @@ pub struct Batch {
     pub life_complete: Option<(Membership, u64, String, Membership)>,
     pub outcome_complete: Option<(Membership, u64)>,
     pub abort_return_complete: Option<(Membership, u64)>,
+    pub departure_complete: Option<(Membership, Membership, u64)>,
 }
 pub struct Runtime {
     public_key: Option<crate::room_registry::RoomKey>,
@@ -681,6 +738,7 @@ impl Runtime {
             life_complete: None,
             outcome_complete: None,
             abort_return_complete: None,
+            departure_complete: None,
         }
     }
     fn lobby_batch(
@@ -705,6 +763,7 @@ impl Runtime {
             life_complete: None,
             outcome_complete: None,
             abort_return_complete: None,
+            departure_complete: None,
         }
     }
     // Reserve every recipient queue entry before publishing any state or batch.
@@ -860,6 +919,16 @@ impl Runtime {
         }
         if let Ok(m) = self.member(id, connection) {
             let mut next = self.model.clone();
+            if self.rules.departure == DeparturePolicy::ContinuePlayers
+                && matches!(next.phase, Phase::Ending { .. })
+            {
+                // No native partial-rank/return recovery contract yet. Revoke
+                // every queued owner instead of exposing an idle ghost roster.
+                let _ = next.leave(m.key);
+                self.model = next;
+                self.channels.clear();
+                return;
+            }
             if self.abort.as_ref().is_some_and(|job| !job.completed) {
                 // Invalidate all queued recovery on a second loss. Preserve the
                 // first job for provenance; do not claim multi-loss room recovery.
@@ -915,8 +984,28 @@ impl Runtime {
                 self.channels.remove(&id);
                 return;
             }
-            if self.rules.departure == DeparturePolicy::FenceActive
-                && matches!(next.phase, Phase::Loading { .. } | Phase::Armed { .. })
+            if self.rules.departure == DeparturePolicy::ContinuePlayers
+                && matches!(next.phase, Phase::Armed { .. })
+            {
+                let result = next
+                    .depart_player(m.key, Instant::now())
+                    .and_then(|round| self.continuing_departure(m.key, &next, round))
+                    .and_then(|effects| self.publish(next.clone(), effects));
+                if result.is_err() {
+                    self.model = next;
+                    self.channels.clear();
+                }
+                self.requested.remove(&m.key);
+                self.rostered
+                    .retain(|(recipient, subject)| *recipient != m.key && *subject != m.key);
+                self.ports.remove(&m.key);
+                self.channels.remove(&id);
+                return;
+            }
+            if matches!(
+                self.rules.departure,
+                DeparturePolicy::FenceActive | DeparturePolicy::ContinuePlayers
+            ) && matches!(next.phase, Phase::Loading { .. } | Phase::Armed { .. })
             {
                 if (if self.managed_round.is_some() {
                     next.fence_active(m.key)
@@ -969,6 +1058,42 @@ impl Runtime {
             }
         }
         self.channels.remove(&id);
+    }
+    fn continuing_departure(
+        &self,
+        source: Membership,
+        next: &Room,
+        round: u64,
+    ) -> io::Result<Vec<(u32, Batch)>> {
+        if next.phase != (Phase::Armed { round }) {
+            return Ok(Vec::new());
+        }
+        let participant = next
+            .participants
+            .get(&source)
+            .ok_or_else(|| err("missing departed round row"))?;
+        // Forfeit places only the dead departed actor at the neutral origin;
+        // it never depends on receiving a gameplay report before the loss.
+        let notice = packet(170, wire::departure170(participant.member.slot)?);
+        Ok(next
+            .members
+            .values()
+            .map(|member| {
+                let mut batch = Self::member_batch(
+                    member.key,
+                    Some(round),
+                    0,
+                    vec![("departure170-19".into(), notice.clone())],
+                );
+                batch.guard = Guard::Departure {
+                    recipient: member.key,
+                    source,
+                    round,
+                };
+                batch.departure_complete = Some((source, member.key, round));
+                (member.key.identity, batch)
+            })
+            .collect())
     }
 }
 impl Session {
@@ -1100,7 +1225,18 @@ impl Session {
             };
             packet(
                 175,
-                crate::four_results::rank_body(r.model.round_teams(), team)?,
+                if r.rules.result == ResultPolicy::Players {
+                    wire::rank175_players(
+                        &r.model
+                            .participants
+                            .values()
+                            .map(|p| (p.member.slot, p.member.team))
+                            .collect::<Vec<_>>(),
+                        team,
+                    )?
+                } else {
+                    crate::four_results::rank_body(r.model.round_teams(), team)?
+                },
             )
         } else {
             let members: Vec<_> = r.model.members.values().collect();
@@ -1158,19 +1294,26 @@ impl Session {
             .values()
             .map(|m| r.slot(m, next.host))
             .collect::<io::Result<Vec<_>>>()?;
+        let mut refresh = Vec::new();
+        if next.player_round() {
+            for participant in next.participants.values().filter(|p| p.departed.is_some()) {
+                refresh.push((
+                    "departure107".into(),
+                    packet(107, room_wire::removal(&participant.member)?),
+                ));
+            }
+        }
+        refresh.extend(
+            slots
+                .iter()
+                .enumerate()
+                .map(|(i, p)| (format!("refresh110-{i}"), p.clone())),
+        );
         for peer in next.members.values() {
             for (delay, packets, complete) in [
                 (0, vec![("rank175".into(), rank.clone())], false),
                 (5000, vec![("return180".into(), returning.clone())], false),
-                (
-                    8000,
-                    slots
-                        .iter()
-                        .enumerate()
-                        .map(|(i, p)| (format!("refresh110-{i}"), p.clone()))
-                        .collect(),
-                    true,
-                ),
+                (8000, refresh.clone(), true),
             ] {
                 let mut batch = Runtime::member_batch(peer.key, Some(round), delay, packets);
                 batch.guard = Guard::Outcome(peer.key, round);
@@ -1185,7 +1328,8 @@ impl Session {
     pub fn handles(opcode: u32) -> bool {
         matches!(
             opcode,
-            81 | 82
+            79 | 81
+                | 82
                 | 585
                 | 86
                 | 95
@@ -1232,6 +1376,11 @@ impl Session {
         }
         match batch.guard {
             Guard::Channel => true,
+            Guard::Departure {
+                recipient,
+                source,
+                round,
+            } => r.model.departure_deliverable(source, recipient, round),
             Guard::Bomb { member, ref ticket } => {
                 r.model.deliverable(member, Some(ticket.round))
                     && r.model.bombs.deliverable(ticket, member)
@@ -1290,6 +1439,13 @@ impl Session {
         }
     }
     pub fn finish(&self, batch: &Batch) -> io::Result<()> {
+        if let Some((source, recipient, round)) = batch.departure_complete {
+            self.shared
+                .lock()
+                .map_err(|_| err("room unavailable"))?
+                .model
+                .departure_delivered(source, recipient, round)?;
+        }
         if let Some((source, round, digest, recipient)) = &batch.life_complete {
             let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
             if runtime.model.current(*source)
@@ -1382,6 +1538,23 @@ impl Session {
         let mut terrain_notice = None;
         let mut life = None;
         match opcode {
+            79 => {
+                // Native selected1 emits5b5b after121; selected1→0 emits5b5a.
+                // Semantics unknown: one exact current-choice observation per
+                // Loading, without ACK, world mutation or idle renewal.
+                let member = r.member(self.identity, self.connection)?;
+                if !matches!(
+                    (member.character, body),
+                    (Some(0), [0x5b, 0x5a]) | (Some(1), [0x5b, 0x5b])
+                ) || r
+                    .managed_round
+                    .as_ref()
+                    .is_none_or(|p| p.characters.is_none())
+                {
+                    return Err(err("unsupported observed79 profile/body"));
+                }
+                next.observe_loading79(member.key)?;
+            }
             528 => {
                 if !body.is_empty() {
                     return Err(err("cache528 must be empty"));
@@ -1596,8 +1769,20 @@ impl Session {
                     return Err(err("leave86 must be empty"));
                 }
                 let m = r.member(self.identity, self.connection)?;
-                next.leave(m.key)?;
-                effects.extend(r.departure(m.key, &next)?);
+                if r.rules.departure == DeparturePolicy::ContinuePlayers
+                    && matches!(next.phase, Phase::Loading { .. } | Phase::Ending { .. })
+                {
+                    return Err(err("player leave outside measured idle/playing phase"));
+                }
+                if r.rules.departure == DeparturePolicy::ContinuePlayers
+                    && matches!(next.phase, Phase::Armed { .. })
+                {
+                    let round = next.depart_player(m.key, Instant::now())?;
+                    effects.extend(r.continuing_departure(m.key, &next, round)?);
+                } else {
+                    next.leave(m.key)?;
+                    effects.extend(r.departure(m.key, &next)?);
+                }
                 effects.push((
                     self.identity,
                     r.lobby_batch(
@@ -1622,6 +1807,12 @@ impl Session {
                 } else {
                     (None, Some(wire::team97(body)?))
                 };
+                if let Some(character) = character
+                    && let Some(catalog) =
+                        r.managed_round.as_ref().and_then(|p| p.characters.as_ref())
+                {
+                    catalog.get(character)?;
+                }
                 next.choose(member.key, character, team)?;
                 // Reserve all recipient queues before publishing any choice or
                 // Ready clear. Each batch carries the current subject fence.
@@ -1686,12 +1877,48 @@ impl Session {
                         ..Observation::default()
                     });
                 }
+                let player_start = if let Some(catalog) =
+                    r.managed_round.as_ref().and_then(|p| p.characters.as_ref())
+                {
+                    let players = next
+                        .members
+                        .values()
+                        .map(|member| {
+                            let character = member
+                                .character
+                                .ok_or_else(|| err("missing chosen character"))?;
+                            catalog.get(character)?;
+                            Ok(wire::StartPlayer {
+                                slot: member.slot,
+                                spawn: member.slot,
+                                character,
+                                team: member.team,
+                            })
+                        })
+                        .collect::<io::Result<Vec<_>>>()?;
+                    Some(wire::start121_players(
+                        r.body(Template::Start121),
+                        &players,
+                    )?)
+                } else {
+                    None
+                };
                 let round = next.begin(m.key)?;
                 next.pickups = pickups::Round::begin(round, &r.floor_catalog)?;
                 if let Some(profile) = &r.managed_round {
                     for member in next.members.values() {
                         next.bomb_capacity[usize::from(member.slot)] =
-                            profile.initial_bomb_capacity[usize::from(member.slot)];
+                            if let Some(catalog) = &profile.characters {
+                                catalog
+                                    .get(
+                                        member
+                                            .character
+                                            .ok_or_else(|| err("missing chosen character"))?,
+                                    )?
+                                    .capacity
+                            } else {
+                                profile.initial_bomb_capacity[usize::from(member.slot)]
+                            };
                     }
                 }
                 if r.rules.endpoint == rules::EndpointPolicy::Relay {
@@ -1729,7 +1956,10 @@ impl Session {
                             0,
                             vec![
                                 ("floor582".into(), r.reply(Template::Floor582, None)),
-                                ("start121".into(), r.reply(Template::Start121, None)),
+                                (
+                                    "start121".into(),
+                                    r.reply(Template::Start121, player_start.clone()),
+                                ),
                             ],
                         ),
                     ));
@@ -1770,11 +2000,19 @@ impl Session {
                                 .ok_or_else(|| err("missing current endpoint channel"))?;
                             endpoint_rows.push((peer.key, peer.slot, channel.endpoint, p));
                         }
-                        let plan = crate::peer_routes::LegacyDirectPlan::new(
-                            round,
-                            next.round_size(),
-                            endpoint_rows,
-                        )?;
+                        let plan = if next.player_round() {
+                            crate::peer_routes::LegacyDirectPlan::from_players(
+                                round,
+                                next.capacity(),
+                                endpoint_rows,
+                            )?
+                        } else {
+                            crate::peer_routes::LegacyDirectPlan::new(
+                                round,
+                                next.round_size(),
+                                endpoint_rows,
+                            )?
+                        };
                         let key = crate::room::wire_key(round)?;
                         for peer in next.members.values() {
                             effects.push((
@@ -1805,22 +2043,33 @@ impl Session {
                                         "peer153".into(),
                                         r.reply(
                                             Template::Peer153,
-                                            Some(wire::peer153(
-                                                r.body(Template::Peer153),
-                                                key,
-                                                peer.slot,
-                                                &if r.rules.endpoint == rules::EndpointPolicy::Relay
-                                                {
-                                                    r.relay
-                                                        .as_ref()
-                                                        .ok_or_else(|| {
-                                                            err("missing relay reservation")
-                                                        })?
-                                                        .endpoints(peer.key)?
-                                                } else {
-                                                    plan.for_recipient(round, peer.key)?.to_vec()
-                                                },
-                                            )?),
+                                            Some(if next.player_round() {
+                                                wire::peer153_players(
+                                                    r.body(Template::Peer153),
+                                                    key,
+                                                    peer.slot,
+                                                    &plan.for_player(round, peer.key)?,
+                                                )?
+                                            } else {
+                                                wire::peer153(
+                                                    r.body(Template::Peer153),
+                                                    key,
+                                                    peer.slot,
+                                                    &if r.rules.endpoint
+                                                        == rules::EndpointPolicy::Relay
+                                                    {
+                                                        r.relay
+                                                            .as_ref()
+                                                            .ok_or_else(|| {
+                                                                err("missing relay reservation")
+                                                            })?
+                                                            .endpoints(peer.key)?
+                                                    } else {
+                                                        plan.for_recipient(round, peer.key)?
+                                                            .to_vec()
+                                                    },
+                                                )?
+                                            }),
                                         ),
                                     )],
                                 ),
@@ -1913,9 +2162,23 @@ impl Session {
                 }
                 let member = r.member(self.identity, self.connection)?;
                 let request = bombs::Request::parse(body)?;
-                let result = if r.managed_round.as_ref().is_some_and(|profile| {
-                    profile.limits.power.get(usize::from(member.slot)) != Some(&request.power())
-                }) {
+                let wrong_profile_power = if let Some(profile) = &r.managed_round {
+                    if let Some(catalog) = &profile.characters {
+                        catalog
+                            .get(
+                                member
+                                    .character
+                                    .ok_or_else(|| err("missing chosen character"))?,
+                            )?
+                            .power
+                            != request.power()
+                    } else {
+                        profile.limits.power.get(usize::from(member.slot)) != Some(&request.power())
+                    }
+                } else {
+                    false
+                };
+                let result = if wrong_profile_power {
                     Err("unsupported_profile_power")
                 } else if r.managed_round.is_none()
                     && ((next.capacity() == 4 && request.power() != 1)
@@ -1972,7 +2235,7 @@ impl Session {
                                 0,
                                 vec![("bomb159".into(), spawn.clone())],
                             );
-                            immediate.subject = Some(member.key);
+                            immediate.subject = (!next.player_round()).then_some(member.key);
                             effects.push((peer.key.identity, immediate));
                             let mut due = Runtime::member_batch(
                                 peer.key,
@@ -1984,7 +2247,7 @@ impl Session {
                                 member: peer.key,
                                 ticket: ticket.clone(),
                             };
-                            due.subject = Some(member.key);
+                            due.subject = (!next.player_round()).then_some(member.key);
                             due.bomb_complete = Some((ticket.clone(), peer.key));
                             effects.push((peer.key.identity, due));
                         }
@@ -3279,6 +3542,7 @@ mod registry_foundation_tests {
                 generation: 1,
             });
             runtime.managed_round = Some(Arc::new(ManagedRound {
+                characters: None,
                 bodies: HashMap::new(),
                 initial_bomb_capacity: vec![1, 2],
                 rules: RoomRules::default(),
