@@ -79,6 +79,8 @@ Tóm tắt delta và link nguồn chuẩn,không tạo plan/contract theo phiên
 không thêm đoạn cho có. PLAN: ghi đè Bảng điều hành. README: thay dòng mốc mới nhất. PROTOCOL: chỉ sửa khi
 contract/giới hạn đổi, sửa tại mục theo chủ đề sẵn có thay vì thêm mục `— CPxxx` mới. RESEARCH: chỉ sửa khi mở/đóng
 câu hỏi. Diễn biến, số lượt chạy và số frame của từng checkpoint thuộc record checkpoint và evidence, không lặp vào docs.
+Tài liệu mới hoặc đoạn sửa viết bằng câu đầy đủ, có dấu cách giữa các từ; không dính chữ để tiết kiệm dòng
+(ví dụ `actualmatchinput`, `từngconsumer`). Người đọc là chủ dự án và agent phiên mới, chưa có ngữ cảnh của phiên viết.
 Theo [workflow](docs/evidence/checkpoints/README.md),lấy ID/counter tăng liên tục từ
 [manifest](docs/evidence/checkpoints/manifest.json),kể cả đổi phiên/compact/worker.
 Từ kho v2, dùng `python3 tools/checkpoints.py latest`, rồi `show CPxxx`/`evidence CPxxx`

@@ -12,7 +12,8 @@ Codex cập nhật bảng trạng thái và danh sách việc khi xong một bư
 theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP272 / AUD088**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
-đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Dài hạn: gameplay đầy đủ.
+đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
+[lộ trình sáu đợt F1–F6](#full-game-roadmap), chưa mở việc nào.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -47,6 +48,10 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 - Không thêm dòng trạng thái theo checkpoint vào đầu file này hay vào mục thứ tự cũ; ghi đè bảng trên. README chỉ giữ
   mốc mới nhất, mốc cũ chuyển sang [HISTORY](HISTORY.md).
 - Lát cắt mới không thêm cờ theo sức chứa, alias theo identity hay nhánh `capacity() == N` vào lõi phòng.
+- Viết Bảng điều hành cho người chưa theo dõi đọc được: câu đầy đủ, có dấu cách giữa các từ, không dính chữ kiểu
+  `actualmatchinput`. Mỗi dòng nói trạng thái và việc còn lại; số lượt chạy, số frame, số PR và diễn biến checkpoint
+  để ở record checkpoint. Trước khi mở một mốc mới (M7, G1, M6, M8), viết lại tiêu chí nghiệm thu của mốc đó theo
+  đích giai đoạn 1 đã thu hẹp; định nghĩa cũ trong mục milestone viết cho phạm vi rộng hơn.
 
 <!-- dashboard-end -->
 
