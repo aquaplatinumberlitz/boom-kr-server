@@ -688,9 +688,14 @@ nghi có chữ, trong đó 8 ảnh đã xử lý và 681 ảnh có bản khác �
 nạp vào client 00967. Chưa có bản tiếng Anh. Ba việc phải đo trước khi định cỡ, mỗi việc tối đa hai lượt native:
 
 1. Client 00967 có hiển thị được chữ ngoài bảng mã Hàn (CP949) không. Khoảng 23.200 chuỗi tiếng Việt có ký tự ngoài
-   CP949; tiếng Anh thì nằm trọn trong CP949 nên không vướng bước này.
-2. Chuỗi nào client đọc từ file cục bộ, chuỗi nào nhận từ server. Hai bảng lớn nhất (khoảng 16.300 chuỗi) ở client
-   là file cache của bảng do server gửi, nên có thể server gửi theo ngôn ngữ của từng account; chưa đo trên 00967.
+   CP949; tiếng Anh thì nằm trọn trong CP949 nên không vướng bước này. Client VN (repo `boom-re`, cùng engine) là
+   mẫu đã chạy: nó hiện đúng chữ Việt mã Windows-1258, dấu thanh viết bằng byte dấu kết hợp, khi hệ thống đặt bảng
+   mã 1258. Việc đầu tiên là so tĩnh cách tạo font và chuyển mã giữa hai file exe, rồi mới chạy client 00967 với
+   bảng mã hệ thống 1258 và vài chuỗi thử.
+2. Chuỗi nào client đọc từ file cục bộ, chuỗi nào nhận từ server. Ở client VN, chữ giao diện do server gửi bằng
+   packet 2 sau khi đăng nhập, và server Rust của `boom-re` đã làm việc này. Hai bảng lớn nhất của 00967 (khoảng
+   16.300 chuỗi) là file cache của chính loại bảng đó, nên có thể server gửi theo ngôn ngữ của từng account; chưa đo
+   trên 00967.
 3. Client có nhận file chữ và ảnh đã thay trong bản copy mà không bị kiểm toàn vẹn chặn không.
 
 Người chơi chọn ngôn ngữ ở bước mở game (mỗi ngôn ngữ một bộ file thay thế), không phải trong menu của client: client
