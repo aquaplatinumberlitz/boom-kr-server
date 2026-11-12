@@ -667,6 +667,9 @@ Các nhóm giao diện không rõ là mode hoặc thuộc F4–F6 vẫn ở bả
 | 크아 히어로 (CA Hero) | 크아_히어로 | CAHero: `FxContents/CAHero` (69) | `CAhero` (53) | F3 | chưa đo |
 | 히든 캐치 (Hidden Catch) | 크레이지_아케이드게임_모드 (mục dịch vụ trò chơi) | Hidden Catch: `FxHiddenCatch/HiddenCatch` (291), Hidden Catch: `FxHiddenCatch/Prepare_HC` (12) | Hidden Catch: 30 họ / 37 map | F3 | chưa đo |
 | AIBattle | — | AIBattle: `FxContents/AIBattle` (10), chưa ghép wiki | `Fm_AIBtlDesert` (1), `Fm_AIBtlForest` (1), `Fm_AIBtlPatrit` (1), `Fm_AIBtlTomb` (1) | F3 | chưa đo |
+| Baseball | — | Trận đấu: `FxStage/Game` (538), `Game/Baseball_Image`, `Game/BaseballTip`, chưa ghép wiki | `Baseball` (10) | F2? | chưa đo |
+| Airplane | — | Trận đấu: `FxStage/Game` (538), `Game/AirplaneBigWave`, `Game/AirplaneRetro`, chưa ghép wiki | — | F2? | chưa đo |
+| BigBattle | — | Trận đấu: `FxStage/Game` (538), `Game/BigBattle_*`, chưa ghép wiki | `Fm_BigBattle*`: 3 họ / 6 map | F2? | chưa đo |
 | ConfusedFight | — | ConfusedFight: `FxContents/ConfusedFight` (50), chưa ghép wiki | `ConfusedFight` (3) | F2 | chưa đo |
 | RPG | — | RPG: `FxContents/RPG` (134), RPG: `FxContents/RPGMyInfo` (29), chưa ghép wiki | `RPG*`: 52 họ / 71 map | F3 | chưa đo |
 | SandBox | — | SandBox: `FxContents/SandBox` (79), chưa ghép wiki | — | F3? | chưa đo |
@@ -676,6 +679,22 @@ Các nhóm giao diện không rõ là mode hoặc thuộc F4–F6 vẫn ở bả
 | SnowyFields | — | Map: `FxMap/Map` (1151), chưa ghép wiki | `SnowyFields` (18) | F2? | chưa đo |
 | SnowyChamp | — | SnowyChamp: `FxContents/SnowyChamp` (6), chưa ghép wiki | — | F2? | chưa đo |
 | Ghép trận UXMatching | — | Ghép trận UXMatching: `FxContents/UXMatching` (163), chưa ghép wiki | — | F2 | chưa đo |
+
+Magic Market (Alchemist) là hệ chế tạo từ lobby, không phải mode đấu; tài nguyên được liệt kê trong bảng Hệ thống (F6).
+Theo `boomkr-re/docs/kr-data.md` §2 và §7, nguồn cũ không tìm thấy công thức chế tạo trong client; đây là kết luận tìm kiếm tĩnh, không chứng minh luật server.
+Baseball, Airplane và BigBattle được xếp tạm vào F2 theo tên; lộ trình chưa nêu riêng các mode này.
+
+## Dữ liệu đã giải sẵn
+
+Đây là mức kiểm chứng mà nguồn cũ mô tả, không tự xác nhận luật server hay cho phép dùng trực tiếp trong code.
+
+| Dataset | Nguồn | Mức kiểm chứng và giới hạn | Đợt liên quan |
+|---|---|---|---|
+| Chỉ số nhân vật | `boomkr-re/data/kr/bomber_attr.json`; `docs/kr-data.md` §13, §23 | Layout đọc khớp tĩnh; nguồn đối chiếu 8 nhân vật với Wikipedia, chưa đo quy đổi cấp tốc độ sang ô/giây. | M7c, F1 |
+| Trọng số item | `FxContents/Attr/ItemAttr`; `boomkr-re/docs/kr-data.md` §12; `boom-re/docs/items.md`, `map.md` | Nguồn mô tả bảng tĩnh và trọng số theo map; chưa xác nhận luật chọn của server KR. | F1 |
+| Rơi và physics monster | `boomkr-re/data/kr/monster_drop.json`, `monster_physics.json`; `docs/kr-data.md` §6 | Trích tĩnh từ `FxMap/MapScriptTemplate/MonInfo_*`; nguồn ghi 760 reward và 45 file, chưa chứng minh server áp dụng. | F3 |
+| Kinh nghiệm | `boomkr-re/data/kr/exp_table.json`; `docs/game-spec-web.md` §9.0; `docs/web/README.md` | Nguồn ghi parse 720 cấp từ trang Namu `크레이지 아케이드/경험치표`, không phải entry pack đã xác định; chưa xác nhận server KR. | F4 |
+| Bảng Attr gốc | `boomkr-re/data/kr/KR_ItemAttr.bin`, `KR_BomberAttr.bin`, `KR_MapGroup.bin`; `docs/kr-data.md` §12–13 | Nguồn ghi trích tĩnh từ pack; ý nghĩa từng trường cần bằng chứng riêng. | M7c, F1 |
 
 ## Hệ thống của client
 
@@ -975,7 +994,39 @@ Mỗi entry thuộc một nhóm theo thư mục đầu trong index; bảng Attr 
 
 Chỉ liệt kê tên và kích thước entry trong index; không giải layout.
 
-Không có: ba bảng `FxContents/Attr` đều đã được tool đọc.
+Không có: trong thư mục `FxContents/Attr`, cả ba bảng đều đã được tool đọc.
+
+### Bảng dữ liệu ngoài `Attr/`
+
+Quét index 13 pack, nhận diện entry có tiền tố độ dài và nội dung mở đầu bằng thẻ XML, cùng các ObjectTable nhị phân đã biết. Các entry XML gồm cả template script và map tuỳ biến; cách nhận diện này có thể bỏ sót bảng nhị phân chưa biết. Số thẻ là phép đếm tĩnh, không phải kiểm chứng ngữ nghĩa.
+
+| Pack | Tên entry | Byte | Số bản ghi đếm được | Đã giải ở đâu |
+|---|---|---|---|---|
+| `CharTE` | `ObjectTable/CharTEObjectTable` | 1,225,830 | 4,349 mục index | boomkr-re/docs/kr-data.md §1 (cấu trúc ObjectTable) |
+| `EmoTE` | `ObjectTable/EmoTEObjectTable` | 916,378 | 3,869 mục index | boomkr-re/docs/kr-data.md §1 (cấu trúc ObjectTable) |
+| `FxAsset` | `ObjectTable/FxAssetObjectTable` | 69,936 | 26 mục index | boomkr-re/docs/kr-data.md §1 (cấu trúc ObjectTable) |
+| `FxContents` | `RPG/EquipItemTable` | 2,444 | chưa đếm | chưa giải |
+| `FxContents` | `RPG/SkillTable` | 9,747 | chưa đếm | chưa giải |
+| `FxContents` | `RPG/SnowBallSkillTable` | 515 | chưa đếm | chưa giải |
+| `FxContents` | `RPG/ZzolmanSkillTable` | 3,929 | chưa đếm | chưa giải |
+| `FxContents` | `SandBox/GadgetTable` | 786 | chưa đếm | chưa giải |
+| `FxDesktop` | `ClientData/ClientString` | 892,599 | 6,993 thẻ Elem | boomkr-re/docs/kr-data.md §1 |
+| `FxDesktop` | `ClientData/StageClearEventNpc` | 7,136 | chưa đếm | chưa giải |
+| `FxDesktop` | `ClientData/StageClearEventNpcBoss` | 7,166 | chưa đếm | chưa giải |
+| `FxMap` | `MapScriptTemplate/MonAction*` (364 entry) | 568,455 | chưa đếm | chưa giải |
+| `FxMap` | `MapScriptTemplate/MonInfo*` (45 entry) | 717,490 | 760 thẻ RewardItem | boomkr-re/docs/kr-data.md §6 (reward và InitInfo) |
+| `FxMonster` | `MonsterSeason2/SkillTable` | 427 | chưa đếm | chưa giải |
+| `fx` | `CustomMap/CustomMap*` (15 entry) | 421,714 | chưa đếm | chưa giải |
+| `fx` | `CustomMap/CustomTileIndexList*` (1 entry) | 116,890 | chưa đếm | chưa giải |
+| `fx` | `CustomMap/CustomTileList*` (1 entry) | 230,865 | chưa đếm | chưa giải |
+| `fx` | `MotionBlur/MotionBlurTable` | 59,416 | 122 hàng XML | boomkr-re/docs/kr-data.md §1 (định dạng; chưa giải toàn bộ) |
+| `fx` | `ObjectTable/NameTable` | 3,249 | 85 thẻ Desc | boomkr-re/docs/kr-data.md §1 (kiểm kê) |
+| `fx` | `ObjectTable/ObjectTable` | 2,391,729 | 8,185 mục index | boomkr-re/docs/kr-data.md §1 (cấu trúc ObjectTable) |
+| `fx` | `ObjectTable/SpeakerTable` | 174,151 | 67 hàng XML | boomkr-re/docs/kr-data.md §1 (định dạng; chưa giải toàn bộ) |
+| `fx` | `Pet/PetRandomTable` | 184,454 | 280 hàng XML | boomkr-re/docs/kr-data.md §1 (định dạng; chưa giải toàn bộ) |
+| `fx` | `Pet/PetTable` | 104,517 | 98 hàng XML | boomkr-re/docs/kr-data.md §1 (định dạng; chưa giải toàn bộ) |
+| `fx` | `TileInfo/TileInfoList` | 1,184,206 | 5,929 thẻ Tile | boomkr-re/docs/kr-data.md §1 (cấu trúc ngoài) |
+| `fx` | `XML/init` | 116 | chưa đếm | chưa giải |
 
 
 ## Script map

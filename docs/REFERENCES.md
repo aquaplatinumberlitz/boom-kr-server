@@ -16,8 +16,8 @@ review đường dẫn/scope sau migration; việc import không xác nhận run
 |---|---|---|
 | Client KR gốc | `/home/admin/boom/clients/kr-00967/CA.exe`, SHA `a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e` | Target server tương thích; không sửa nguồn |
 | Client VN gốc | `/home/admin/boom/clients/vn-116/ca.exe`, SHA `bce8644d4e783d1354ab4fc880e1ab9a4ab3325327028f37d99e5439e25f4bbd` | Định danh VN; khác artifact patched dùng cho runtime |
-| RE/server VN | `/home/admin/boom/repos/boom-re`, commit `9ac2075bbec0c16217741aaedea968cf685e39a9` | `docs/protocol.md`, `oc_d-login.md`, `lobby.md`, `oc_e-game.md`; `tools/boomproto.py`, `verify_emu.py`, `fakeserver.py`; `server/src` làm reference |
-| RE KR cũ | `/home/admin/boom/repos/boomkr-re`, commit `88e11ed30764c753a00f4f23a2f33dafadc4c890` | `docs/kr.md` §18–33, dump/native consumer, `out/kr-full.exe` và sourceDB |
+| RE/server VN | `/home/admin/boom/repos/boom-re`, commit `9ac2075bbec0c16217741aaedea968cf685e39a9` | `docs/map.md`, `items.md`, `features.md`, `lobby.md` và các tài liệu khác để đối chiếu map, item, tính năng và sảnh; `docs/protocol.md`, `oc_d-login.md`, `oc_e-game.md`, các tool và `server/src` làm reference. |
+| RE KR cũ | `/home/admin/boom/repos/boomkr-re`, commit `88e11ed30764c753a00f4f23a2f33dafadc4c890` | `docs/kr.md` §18–33, dump/native consumer và sourceDB; `docs/kr-data.md` §1, 6, 12, 13, 23 về bảng và chỉ số; `docs/kr-content.md` về mode, hệ chế tạo và script; `data/kr/` chứa bảng đã trích, kể cả Attr, monster và EXP; `docs/game-spec-web.md` và `docs/web/README.md` ghi nguồn web của EXP. |
 | Nghiên cứu dùng chung | `/home/admin/boom/repos/boom-rs`, docs baseline `dae5e1c717ad31b9e8d32a9b20a76d65942807eb` | `docs/research/findings/{VN_LEGACY_SERVER_REFERENCE,VN_BATTLE_RUNTIME_REFERENCE,KR_RE_FLAME_CHAIN,KR_RE_TRAP_TIMER,KR_RE_TRAPPED_SPEED,KR_RE_BOMBERATTR}.md`; `docs/decisions/0009-wire-protocol-input-snapshot-codec.md` là protocol **rewrite**, không phải KR wire; ADR0002/0013 cho lịch sử nguồn |
 | Snapshot RE/Việt hóa | `/home/admin/boom/repos/boom-re-l10n` | `docs/README.md` chỉ migration sang boom-rs; `decomp/item_kinds.json` VN269 dùng đối chiếu dữ liệu, server snapshot cũ hơn boom-re; không tái tạo docs tại đây |
 | Archive | `/home/admin/boom/archive/2026-10-26` | RESUME/KNOWLEDGE/TOOLS/PROCESS là hồ sơ lịch sử; kết luận mới giữ trong repo này |
@@ -28,6 +28,8 @@ nghĩa đã quét dispatcher mạng. VN và KR chung engine không chứng minh 
 
 Các tham chiếu legacy protocol/ADR/RULES trong bản import dẫn về danh mục này; tra đúng tài liệu
 nguồn theo bảng. Giá trị/claim dùng trong code mới phải có record riêng gắn source+locator rõ.
+Các bảng và nhận định từ repo cũ là đầu vào RE tĩnh hoặc đối chiếu web theo mức kiểm chứng của từng nguồn;
+chúng không tự xác nhận hành vi runtime hay luật server KR. Giá trị đưa vào code vẫn cần record nguồn riêng.
 
 CP045 tra theo câu hỏi item/UDP: `boom-rs/docs/evidence/measurements/vn-item-effects-2026-10-24/README.md`
 (R169–181), `vn-player-movement-2026-10-25/README.md` (R182–185), `kr-static-item-2026-10-21/README.md`
