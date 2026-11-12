@@ -54,8 +54,8 @@
   "synthetic": {
     "tool": "tools/test_rust_selected_players.py",
     "baseline": "local/research/codex/m7e-selected-synthetic-r6/tcp/verification.json",
-    "survivors": "local/research/codex/m7e-survivors-synthetic-r3/tcp/verification.json",
-    "limits": "SQLite/TCP and model only; survivor code and consumer remain candidate until native proof."
+    "survivors": "local/research/codex/m7e-survivors-synthetic-r5/tcp/verification.json",
+    "limits": "Seven real-SQLite/synthetic TCP groups include departure without prior position report, five outstanding bomb deliveries, retained participant ranks, reset107 and next sparse round/old key rejection. Separate six-group no-departure regression. No native claim from TCP."
   },
   "reuse": [
     {
@@ -110,7 +110,20 @@
     "Known characters0/1 only, not arbitrary account/profile/character or entitlement. Stat levels are not physical speed units.",
     "Three run cleanup recovery and six B debugger shutdown exception remain; not pristine teardown.",
     "Generated wire and Python/Rust agreement are not oracle; native reader/state and PCAP evidence establish only declared rosters.",
-    "Active departure is under native experiment, not yet accepted; full M7e/M7 remain open. M5b and relay expansion remain separate.",
-    "No terrain/item/needle extension, NAT/relay/Internet/restart/load acceptance. Historical K6c WAN giả lập keeps Internet thật chưa kiểm at its scope; N1 has separate evidence."
-  ]
+    "No terrain/item/needle extension, NAT/relay/Internet/restart/load acceptance. Historical K6c WAN giả lập keeps Internet thật chưa kiểm at its scope; N1 has separate evidence.",
+    "M7e meets its native minimums with3/6/sparse and4→3→2 active EOF. Full general account/profile remains M5b; relay, terrain/items, durability and production readiness remain later milestones."
+  ],
+  "survivors": {
+    "root": "local/research/codex/m7e-survivors-native-r5",
+    "verification": "local/research/codex/m7e-survivors-native-r5/results-verification.json",
+    "getters": "local/research/codex/m7e-survivors-native-r5/results-getter-verification.json",
+    "run_sha256": "27f6a6b461a280acebc205b8f79d7ae5f4948204b52c422fbb3f817a368fd0dc",
+    "raw_count": 129,
+    "duration_s": 231.329655447,
+    "binary_sha256": "1abcf25e15faf9303f123feccd83f7657b308540708882a331a569ea8be33a95",
+    "source_commit": "c43bd8544c67c0daa6d8dad8f14beb23aa0f57bb",
+    "policy": "Armed player round: remove account-owned live membership immediately; retain Start participant rows and accepted pending bombs. Encode170/19 at neutral0/0 with empty death branch. Survivor result needs all native-source reports/delivery fences and settle; it is a chosen forfeit policy, not recovered original authority.",
+    "acceptance": "Four native clients: D endpoint EOF after native159, remaining3 get native death19, pending158 and new C bomb, death/result/reset; next roster3. C endpoint EOF as final opponent gives result/reset; B actual team3 selection, next roster2 Start/stat/peer. No fake ACK/report.",
+    "limits": "Armed departure only; Loading stays fenced. Ending loss fails closed rather than pretending partial-return recovery. Interactive client exit UI202/graceful logout, loss during Loading/Ending and new relay paths have no survivor native acceptance."
+  }
 }

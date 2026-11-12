@@ -1,0 +1,299 @@
+{
+  "id": "CP283",
+  "previous": "CP282",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T15:23:38.980833+00:00",
+  "context_commit": "75a07d48dc09ff4cc00c225238e5b46965f21566",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / M7e: roster hiện hành và nhân vật chọn có vào Battle đúng stat, qua active EOF tới kết quả và ván kế không?",
+  "scope": "Nhận M7e theo native minimums3/6/sparse và4→3→2 guest active EOF trong Wine/LAN giả lập; known characters0/1, direct UDP/no terrain. Không full game, profile account bất kỳ hoặc relay/Internet/load.",
+  "artifacts": [
+    {
+      "name": "kr-service-selected-player-rounds",
+      "sha256": "1abcf25e15faf9303f123feccd83f7657b308540708882a331a569ea8be33a95"
+    },
+    {
+      "name": "KR00967-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/room-membership.md#rust-selected-player-rounds",
+    "docs/evidence/rust-service/m7e-selected-rosters.json",
+    "docs/PLAN.md#dashboard",
+    "docs/RESEARCH.md#gap-room-occupancy"
+  ],
+  "findings": [
+    {
+      "summary": "Native causal control Start u16 selects Attr0/1; actual UI choices drive3/6/sparse0/2 Start/stat, peer UDP/native apply, bombs/ranks/reset. Sáu ca có winner cùng đội đã chết, không đồng nhất winning với alive.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-selected-player-rounds",
+      "evidence": [
+        "M7E283-00036",
+        "M7E283-05965",
+        "M7E283-02395",
+        "M7E283-02026"
+      ],
+      "limits": "Chỉ declared profiles0/1 và native minimums. ThreeR2 partial/cleanup recovery và six B shutdown exception giữ nguyên."
+    },
+    {
+      "summary": "Native4: D EOF sau159, ba người nhận19/state1, pending158 và C bomb mới; rank/reset rồi Start roster3. C last-team EOF gives rank/reset; B chọn đội3 và Start roster2. Consumer0/0 không phụ thuộc report, không ACK giả.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-selected-player-rounds",
+      "evidence": [
+        "M7E283-04578",
+        "M7E283-04577",
+        "M7E283-04569",
+        "M7E283-04586"
+      ],
+      "limits": "Guest Armed EOF và source-defined forfeit policy; Loading/Ending survivor recovery, graceful UI exit và active host loss chưa native."
+    },
+    {
+      "summary": "Current membership tháo quyền ngay; participant snapshots/rank tombstones và pending target completion độc lập.140 Rust tests,7 departure TCP groups và6 no-departure regression groups; malformed/stale/reset guards giữ nguyên.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/room-membership.md#rust-selected-player-rounds",
+      "evidence": [
+        "M7E283-00054",
+        "M7E283-00050",
+        "M7E283-05172",
+        "M7E283-01086"
+      ],
+      "limits": "TCP/model không tự xác nhận KR wire; forfeit/settle/economy0 là policy design. No broader authority/auth/restart."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native Start/stat/UDP/life/rank/reset và copied-native getters",
+      "result": "pass",
+      "evidence": [
+        "M7E283-00036",
+        "M7E283-04578",
+        "M7E283-04577"
+      ],
+      "limits": "M7e native minimums, honest failed-run boundaries."
+    },
+    {
+      "check": "140 Rust tests, fmt, Clippy, locked build và synthetic lifecycle/negative groups",
+      "result": "pass",
+      "evidence": [
+        "M7E283-00054",
+        "M7E283-00052",
+        "M7E283-00050",
+        "M7E283-00047",
+        "M7E283-05172"
+      ],
+      "limits": "Source/TCP không thay native. Exact-head/docs/local-history/CI kiểm riêng trước merge."
+    },
+    {
+      "check": "Manual feature-group audit and scope/evidence reconciliation",
+      "result": "pass",
+      "evidence": [
+        "M7E283-00008",
+        "M7E283-00011",
+        "M7E283-00005",
+        "M7E283-00007"
+      ],
+      "limits": "No independent review; owner waiver applies."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP283-selected-player-rounds.json",
+      "bytes": 1572635,
+      "sha256": "b696ab036d66a69c6819f4b6a3f9e91ca42466e2b9ba64a21ad12696784d7e95",
+      "count": 6051
+    }
+  ],
+  "delta": {
+    "added": [
+      "Selected-character player rounds/current sparse roster và native survivor continuation."
+    ],
+    "corrected": [
+      "Không coi170/11 hide là death; không nhận capture-thread failure/partial sparse run là pass. Wire neutral0/0 phải encode numeric fields."
+    ],
+    "superseded": [
+      "M7e còn thiếu native minimums; issue14 điều phối Rust được285 thay thế, không sửa source/history cũ."
+    ]
+  },
+  "blockers": [
+    "M5b theo acceptance mới: tạo account khi service đang chạy, profile từ DB, hai account chung IP và native DB/hàng đợi không ngắt người đang chơi. Policy DB-busy fail closed cũ không đạt tiêu chí mới.",
+    "Guest active EOF đã đo; Loading/Ending loss không có survivor recovery, UI exit/graceful logout và active host promotion chưa có native mới. Giữ fail closed và không suy từ guest EOF.",
+    "Known characters0/1 và direct UDP/no terrain; arbitrary profile, relay nhiều người/reuse/restart, G1/M6 và M8 theo PLAN. Không full game hoặc readiness vận hành.",
+    "Ba người R2 có interval đạt rồi sparse/cleanup thất bại; raw recovery đúng byte và exit1 giữ nguyên. Sáu người R1 capture thiếu; R2 thay thế và giữ B debugger shutdown exception sau completion.",
+    "Epoch hữu hạn, client report không là authoritative position hoặc wire epoch/auth; fresh login không là resume/match restore."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp M5b theo phase1 acceptance: account mới không config/restart, profile DB, shared-IP và native DB/queue availability; sau đó N1R-b.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-INTEGRATED-RETURN2-UI",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Issue14 đã được #285 thay vai trò điều phối theo PLAN. Nguồn/giới hạn lịch sử giữ nguyên; việc còn lại theo dashboard/#285, không giữ thứ tự riêng ở step cũ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K7-FOUR-BATTLE-OUTCOME",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Issue14 đã được #285 thay vai trò điều phối theo PLAN. Nguồn/giới hạn lịch sử giữ nguyên; việc còn lại theo dashboard/#285, không giữ thứ tự riêng ở step cũ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K7-FOUR-INPUT-GUARDS",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Issue14 đã được #285 thay vai trò điều phối theo PLAN. Nguồn/giới hạn lịch sử giữ nguyên; việc còn lại theo dashboard/#285, không giữ thứ tự riêng ở step cũ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K7-FOUR-TRANSPORT-HARDENING",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Issue14 đã được #285 thay vai trò điều phối theo PLAN. Nguồn/giới hạn lịch sử giữ nguyên; việc còn lại theo dashboard/#285, không giữ thứ tự riêng ở step cũ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K7-FOUR-EOF-ROOM-CLEANUP",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Issue14 đã được #285 thay vai trò điều phối theo PLAN. Nguồn/giới hạn lịch sử giữ nguyên; việc còn lại theo dashboard/#285, không giữ thứ tự riêng ở step cũ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K7-FOUR-HEALTH-IDENTITY",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Issue14 đã được #285 thay vai trò điều phối theo PLAN. Nguồn/giới hạn lịch sử giữ nguyên; việc còn lại theo dashboard/#285, không giữ thứ tự riêng ở step cũ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-K7-FOUR-NETEM-RESTART",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Issue14 đã được #285 thay vai trò điều phối theo PLAN. Nguồn/giới hạn lịch sử giữ nguyên; việc còn lại theo dashboard/#285, không giữ thứ tự riêng ở step cũ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-SESSION-BINDING",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Issue14 đã được #285 thay vai trò điều phối theo PLAN. Nguồn/giới hạn lịch sử giữ nguyên; việc còn lại theo dashboard/#285, không giữ thứ tự riêng ở step cũ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-AUTH-CHANNEL-EOF",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Issue14 đã được #285 thay vai trò điều phối theo PLAN. Nguồn/giới hạn lịch sử giữ nguyên; việc còn lại theo dashboard/#285, không giữ thứ tự riêng ở step cũ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "superseded",
+      "action": "Issue14 đã được #285 thay vai trò điều phối theo PLAN. Nguồn/giới hạn lịch sử giữ nguyên; việc còn lại theo dashboard/#285, không giữ thứ tự riêng ở step cũ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T15:23:38.980833+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo source/native/TCP verification và manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ M7e native acceptance, giới hạn, issue navigation và M5b kế tiếp."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ M7e native acceptance, giới hạn, issue navigation và M5b kế tiếp."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ M7e native acceptance, giới hạn, issue navigation và M5b kế tiếp."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ M7e native acceptance, giới hạn, issue navigation và M5b kế tiếp."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ M7e native acceptance, giới hạn, issue navigation và M5b kế tiếp."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Đồng bộ M7e native acceptance, giới hạn, issue navigation và M5b kế tiếp."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Đồng bộ M7e native acceptance, giới hạn, issue navigation và M5b kế tiếp."
+    },
+    {
+      "path": "docs/evidence/rust-service/m7e-selected-rosters.json",
+      "state": "updated",
+      "reason": "Đồng bộ M7e native acceptance, giới hạn, issue navigation và M5b kế tiếp."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ M7e native acceptance, giới hạn, issue navigation và M5b kế tiếp."
+    },
+    {
+      "path": "docs/protocol/room-membership.md",
+      "state": "updated",
+      "reason": "Đồng bộ M7e native acceptance, giới hạn, issue navigation và M5b kế tiếp."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đã trỏ room-membership và life-results; contract cập nhật tại topic."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Đã merge main, áp dụng scope M8 mới, solo/frozen/raw/privacy và audit theo nhóm."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-selected-player-rounds"
+  ]
+}

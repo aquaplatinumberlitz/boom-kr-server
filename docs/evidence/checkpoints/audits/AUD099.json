@@ -1,0 +1,98 @@
+{
+  "id": "AUD099",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-selected-player-rounds"
+  ],
+  "completed_through": "CP283",
+  "recorded_utc": "2026-11-12T15:23:38.980833+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/m7e-selected-rosters.json",
+    "docs/protocol/room-membership.md",
+    "docs/protocol/life-results.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "local/research/codex/m7e-current-roster-acceptance.json",
+    "local/research/codex/m7e-survivors-native-r5/results-verification.json",
+    "local/research/codex/m7e-survivors-native-r5/results-getter-verification.json",
+    "local/research/codex/m7e-six-native-r2/lifecycle-addendum.json",
+    "local/research/codex/m7e-three-native-r2/native/storage-recovery.json",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/rules.rs",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/life.rs",
+    "rust/crates/kr-service/src/four_results.rs",
+    "rust/crates/kr-service/src/characters.rs",
+    "rust/crates/kr-service/src/peer_routes.rs",
+    "rust/crates/kr-wire/src/kr00967/room.rs",
+    "rust/crates/kr-wire/src/kr00967/battle.rs",
+    "tools/test_rust_selected_players.py"
+  ],
+  "method": "Rà README→PLAN→PROTOCOL→RESEARCH→evidence/raw theo acceptance M7e. Đối chiếu current membership và participant snapshot, Start rows/stat key, TCP seq/hash, UDP PCAP/native apply, native life/rank/reset và getter snapshots. Đọc lại failure/recovery và nguồn KR/VN scoped reuse; không suy source/TCP/controller exit0 là client thành công. Merge main và giữ scope M5b/N1R/G1/M6/M8 riêng.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Fixture slot quyết định nhân vật/stat và roster chỉ contiguous2/4/8.",
+      "correction": "Attr keys0/1 có causal native control; UI chọn nhân vật/đội nối vào Start/current slots. Native3/6/sparse0/2 đủ ca tối thiểu; stat/bomb capacities đúng lựa chọn.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7e-selected-rosters.json",
+        "docs/protocol/room-membership.md",
+        "rust/crates/kr-service/src/characters.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "FenceActive là giới hạn cũ, không đáp ứng người còn lại chơi tiếp. Candidate170/11 chỉ ẩn peer, không làm chết actor.",
+      "correction": "Participant snapshot tách khỏi command ownership; forfeit170/19 neutral0/0 đã đo native4→3→2, bom chờ và bom mới, hai kết quả/reset và ván kế. Native getter và PCAP đối chiếu; không fake ACK/report.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7e-selected-rosters.json",
+        "rust/crates/kr-service/src/room.rs",
+        "rust/crates/kr-service/src/room_io.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Có thể nhận run exit0 có capture-thread failure hoặc xem teardown/recovery là pristine.",
+      "correction": "Giữ capture thiếu R1, sixR2 B shutdown error sau completion và threeR2 unmount/recovery. Native5 cuối sealed129/exit0/no client or cleanup error; archived negatives không viết lại.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7e-selected-rosters.json",
+        "local/research/codex/m7e-six-native-r2/lifecycle-addendum.json",
+        "local/research/codex/m7e-three-native-r2/native/storage-recovery.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Departure chưa nhận vị trí sẽ fail closed; raw zero bytes bị nhầm là encoded scalar zero.",
+      "correction": "Synthetic bắt lỗi snapshot và encoding trước native. Typed departure wire encode numeric0/0, không phụ thuộc report; native5 xác nhận reader21/state1/kết quả/ván kế. Ending loss fail closed thay phòng idle giả.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m7e-selected-rosters.json",
+        "rust/crates/kr-wire/src/kr00967/battle.rs",
+        "tools/test_rust_selected_players.py"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Issue14/369 và epic285 còn trạng thái lịch sử; có thể kéo tiêu chí cũ vào M5b hoặc suy full service.",
+      "correction": "Theo main PR372–374, #14 superseded sang #285, #369 đóng vì PR370 đã merge; catalog/snapshot/review đồng bộ. M5b giữ native DB/hàng đợi không ảnh hưởng người chơi, shared-IP/new profile. M7e PR còn exact head/CI trước merge.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/features.json",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "M5b theo acceptance mới: tạo account khi service đang chạy, profile từ DB, hai account chung IP và native DB/hàng đợi không ngắt người đang chơi. Policy DB-busy fail closed cũ không đạt tiêu chí mới.",
+    "Guest active EOF đã đo; Loading/Ending loss không có survivor recovery, UI exit/graceful logout và active host promotion chưa có native mới. Giữ fail closed và không suy từ guest EOF.",
+    "Known characters0/1 và direct UDP/no terrain; arbitrary profile, relay nhiều người/reuse/restart, G1/M6 và M8 theo PLAN. Không full game hoặc readiness vận hành.",
+    "Ba người R2 có interval đạt rồi sparse/cleanup thất bại; raw recovery đúng byte và exit1 giữ nguyên. Sáu người R1 capture thiếu; R2 thay thế và giữ B debugger shutdown exception sau completion.",
+    "Epoch hữu hạn, client report không là authoritative position hoặc wire epoch/auth; fresh login không là resume/match restore."
+  ]
+}
