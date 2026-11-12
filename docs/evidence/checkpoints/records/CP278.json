@@ -1,0 +1,172 @@
+{
+  "id": "CP278",
+  "previous": "CP277",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-12T05:08:59.525344+00:00",
+  "context_commit": "95d07eae2aa57dbb336b98437f1e91ad7e5674a0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Correct three historical-source/metadata false mismatches blocking exact-head delivery of CP277; no rewritten checkpoint or runtime change.",
+  "scope": "Publication-bound verifier support for project Rust source and explicit generated census path only.",
+  "artifacts": [
+    {
+      "name": "checkpoint-checker-source",
+      "sha256": "3f805ead37fbee790fd8ec07f81661e6f06a10c56b4d915cd36606a97760576c"
+    }
+  ],
+  "locators": [
+    "docs/evidence/checkpoints/README.md#publication-bound-source-history",
+    "docs/evidence/checkpoints/history-source-correction.json",
+    "tools/check_checkpoints.py#historical_checkpoint_publication",
+    "tools/test_checkpoint_source_history.py"
+  ],
+  "findings": [
+    {
+      "summary": "CP277 full checkerพบ3mismatch: CP275census/CP276room_io.rs/room_service.rs. Exact declaration, external manifest and same-commit source blob already exist at first record publication; narrow verifier recovery now admits them.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/checkpoints/README.md#publication-bound-source-history",
+      "evidence": [
+        "HIST278-0008",
+        "HIST278-0009"
+      ],
+      "limits": "Source provenance only; no native/runtime/gate certification and no changing complete records."
+    },
+    {
+      "summary": "61checkpoint tests pass, including Rust/census positive and later-only match, wrongCP, bad manifest hash, artifact/build/traversal negatives. OtherJSON/raw/local remain strict.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/checkpoints/README.md#publication-bound-source-history",
+      "evidence": [
+        "HIST278-0013",
+        "HIST278-0014",
+        "HIST278-0011"
+      ],
+      "limits": "Full exact-head local/history and CI still required; not restored/later synthesized evidence."
+    }
+  ],
+  "verification": [
+    {
+      "check": "61 checkpoint regression tests and targeted three publication blobs",
+      "result": "pass",
+      "evidence": [
+        "HIST278-0011",
+        "HIST278-0009"
+      ],
+      "limits": "Original record/manifest/blob conditions retained."
+    },
+    {
+      "check": "Docs links/anchors/budgets",
+      "result": "pass",
+      "evidence": [
+        "HIST278-0012"
+      ],
+      "limits": "No runtime validation."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP278-source-history.json",
+      "bytes": 3253,
+      "sha256": "0b2ebc80de5cf9f4c4cb4b73579e7e538dbcc7af7f823241449e2acdb206e191",
+      "count": 14
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rust .rs source recovery only under crate src and explicit census metadata path."
+    ],
+    "corrected": [
+      "Three CP277 historical hash mismatches caused by missing verifier type support; actual expected bytes remain in publication commits."
+    ],
+    "superseded": [
+      "Python-only source-history support; no old evidence, contracts or acceptance overwritten."
+    ]
+  },
+  "blockers": [
+    "M7b lifecycle trận/roster/RoomRules và cách ly round/UDP còn mở; occupancy native CP277 không đóng toàn M7b.",
+    "M5 profile tổng quát/native DB-queue fault, M7c/d và N1R-b/M8 vẫn theo PLAN. Không thay scope gate hoặc runtime."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "After exact-head/CI integration, continue M7b lifecycle and native independent matches; occupancy already measured. Preserve Python and G1 exporter.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    },
+    {
+      "id": "NEXT-ROOM-REGISTRY",
+      "task": "KRE-005b",
+      "state": "active",
+      "action": "M7b lifecycle/roster/round fences per PLAN, then M7c/d; no repeated solved room-list RE.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-12T05:08:59.525344+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo provenance correction and manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Narrow verifier correction and provenance/limits; no runtime or gate change."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Narrow verifier correction and provenance/limits; no runtime or gate change."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Narrow verifier correction and provenance/limits; no runtime or gate change."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Narrow verifier correction and provenance/limits; no runtime or gate change."
+    },
+    {
+      "path": "docs/evidence/checkpoints/history-source-correction.json",
+      "state": "updated",
+      "reason": "Narrow verifier correction and provenance/limits; no runtime or gate change."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "No protocol contract, research gap or feature state changed by history verifier correction."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "No protocol contract, research gap or feature state changed by history verifier correction."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "unchanged",
+      "reason": "No protocol contract, research gap or feature state changed by history verifier correction."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "unchanged",
+      "reason": "No protocol contract, research gap or feature state changed by history verifier correction."
+    }
+  ],
+  "completed_feature_groups": [
+    "checkpoint-rust-source-census-publication-history"
+  ]
+}

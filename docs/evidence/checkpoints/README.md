@@ -202,3 +202,20 @@ status design/candidate/unknown; canonical docs/*.md phải có kind repository/
 tham chiếu tài liệu đã pin. Checker cảnh báo `DOCUMENTATION identity`, vẫn kiểm locator/hash/history/continuity/
 audit/docs_sync. Claim runtime/static/emulation/test/confirmed không dùng đường này. CP267 record cũ bất biến;
 lượt schema failure và correction giữ riêng ở [nguồn](../../PROTOCOL.md#documentation-checkpoint-identity).
+
+
+<a id="publication-bound-source-history"></a>
+### Source Rust và census sau khi checkpoint đã công bố
+
+Từ CP278, quy tắc kiểm source tại lần công bố record v2 cũng áp dụng cho `.rs` trong
+`rust/crates/*/src/`. `docs/content/census.json` dùng cùng phép kiểm metadata tại lần công bố như catalog.
+Checker chỉ nhận khi record complete tại commit đầu tiên đã khai đúng path/size/SHA, evidence manifest ngoài
+khớp hash/count và blob Git tại chính commit đó khớp từng byte. Blob giống ở commit sau không cứu được pin sai
+lúc công bố. Đường dẫn có traversal, build tree, fixture Rust ngoài source, binary/raw/local và JSON evidence
+khác không được mở rộng theo quy tắc này; raw/local vẫn phải khớp file hiện tại.
+
+[Metadata correction](history-source-correction.json) giữ ba lỗi phát hiện khi kiểm CP277: census của CP275 và
+hai source Rust của CP276 đã thay đổi hợp lệ nhưng checker cũ chưa hỗ trợ loại file đó. Các blob đúng hash đều
+còn tại lần công bố; record complete, audit và evidence manifest cũ không sửa. Kiểm hồi quy gồm sai checkpoint,
+pin chỉ khớp ở commit sau, manifest ngoài sai hash, artifact và đường dẫn ngoài phạm vi. Đây là kiểm provenance,
+không xác nhận native hoặc tự đóng M7b.

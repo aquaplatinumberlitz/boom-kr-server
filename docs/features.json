@@ -896,7 +896,8 @@
           "docs/protocol/room-membership.md#rust-r1e-registry",
           "docs/evidence/rust-service/r1e-registry.json",
           "docs/protocol/room-membership.md#rust-managed-room-selection",
-          "docs/evidence/rust-service/m7a-room-selection.json"
+          "docs/evidence/rust-service/m7a-room-selection.json",
+          "docs/evidence/rust-service/m7b-room-population.json"
         ]
       },
       "coverage": {
@@ -922,7 +923,8 @@
             "docs/protocol/room-membership.md#duo-room-round",
             "docs/protocol/multiplayer-team.md#battle-eight-roster",
             "docs/protocol/room-membership.md#room-list-lifecycle",
-            "docs/protocol/room-membership.md#room-join-projection"
+            "docs/protocol/room-membership.md#room-join-projection",
+            "docs/protocol/room-membership.md#rust-room-population"
           ]
         },
         "emulation": {
@@ -955,7 +957,8 @@
               "docs/protocol/rust-boundary.md#rust-fixed-room",
               "docs/protocol/rust-boundary.md#rust-m2-acceptance",
               "docs/protocol/multiplayer-team.md#rust-four-startup",
-              "docs/evidence/rust-service/m7a-room-selection.json"
+              "docs/evidence/rust-service/m7a-room-selection.json",
+              "docs/evidence/rust-service/m7b-room-population.json"
             ]
           },
           "windows_original": {
@@ -965,7 +968,8 @@
           "lan": {
             "state": "observed",
             "refs": [
-              "docs/evidence/rust-service/m7a-room-selection.json"
+              "docs/evidence/rust-service/m7a-room-selection.json",
+              "docs/evidence/rust-service/m7b-room-population.json"
             ]
           },
           "internet": {
@@ -988,7 +992,8 @@
             "server/room_team_mode.py",
             "server/test_room_team_mode.py",
             "docs/protocol/multiplayer-team.md#rust-four-startup",
-            "docs/protocol/room-membership.md#rust-managed-room-selection"
+            "docs/protocol/room-membership.md#rust-managed-room-selection",
+            "docs/protocol/room-membership.md#rust-room-population"
           ],
           "delivery": "via_pr"
         },
@@ -999,7 +1004,8 @@
             "docs/evidence/host-normal-back/README.md",
             "docs/evidence/peer-endpoints/README.md#cp161",
             "docs/protocol/room-membership.md#current-291-room-integration",
-            "docs/protocol/room-membership.md#rust-managed-room-selection"
+            "docs/protocol/room-membership.md#rust-managed-room-selection",
+            "docs/protocol/room-membership.md#rust-room-population"
           ]
         },
         "gate": {

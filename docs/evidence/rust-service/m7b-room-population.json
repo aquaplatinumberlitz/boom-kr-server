@@ -1,0 +1,47 @@
+{
+  "schema": "kre-rust-room-population-v1",
+  "source_commit": "770c052019e25b37640742fdc4e2b2a1adbcd775",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/room-membership.md#rust-room-population",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
+  "acceptance": "Occupancy only; không đóng M7b hoặc M7.",
+  "reader": {
+    "result": "pass",
+    "va": "0xD9D720",
+    "bytes": 635,
+    "sha256": "f9507a79cac7cbf0c6ff0ba2fb25d138abbcda024cc1d191903f3dccee736c1c",
+    "cache_sha256": "b078ba7e28d9ddea18ea7c3544ee7561d7deb694768181c222347cf49b39069b",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "limits": "Exact cached body bytes match current diagnostic copy in measured reader range; other functions/whole-client equivalence not claimed."
+  },
+  "native": {
+    "result": "pass_population_fields_only",
+    "run_sha256": "53972996b5999074dd25667301bce4f24936a378ecfa3771303eebeef8d57ef1",
+    "binary_sha256": "a526ddb39213329eaa3199debecec8546ea48acc92d0e61ae4177ed209d8b53f",
+    "raw_files": 81,
+    "duration_s": 79.671869811,
+    "cleanup": {
+      "net_namespace": "net:[4026533832]",
+      "remaining_pids": [],
+      "method": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+    }
+  },
+  "local": {
+    "root": "local/research/codex/m7b-population-native-r1",
+    "verification": "local/research/codex/m7b-population-native-r1/verification.json",
+    "raw_seal": "local/research/codex/m7b-population-native-r1/native/raw-seal.json",
+    "source_survey": "local/research/codex/m7b-occupancy-source-r1/source-survey.json"
+  },
+  "checks": {
+    "rust_tests": 122,
+    "managed_regression_groups": 8,
+    "population_synthetic": "pass"
+  },
+  "limits": [
+    "Wine diagnostic copy/LAN giả lập, four actual clients, eight configured profiles; not eight native clients or gameplay.",
+    "Only tail offsets5/7; other20 bytes opaque. No status/mode/full-error/character/team/general profile proof.",
+    "Synthetic12 observations include repeated deliveries; not12 distinct scenarios.",
+    "No new Internet/NAT/relay acceptance, durable restart epoch or account resume."
+  ]
+}

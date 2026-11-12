@@ -1182,8 +1182,8 @@ client có thể đã dựng lại list nên 90 không có object để xóa; pa
 ở sảnh, native matching90 và card biến mất đã được đo. Count0 của 91 không được coi là clear-all.
 
 86 thành công chỉ project session u16 đã đo; u32 sau nó vẫn opaque, không gọi là roomID echo. 87 project session và
-slot; client lấy roomID/tên từ hàng 91 đã chọn. 91 dùng title thực từ 81; 22 byte tail vẫn giữ nguyên fixture,
-**chưa** có occupancy/capacity động. Setup96/266 vẫn là exact-shape observation có membership, không ACK và không
+slot; client lấy roomID/tên từ hàng 91 đã chọn. 91 dùng title thực từ 81. Occupancy/capacity của managed room
+đã có [contract riêng](#rust-room-population); các byte khác vẫn giữ fixture. Setup96/266 vẫn là exact-shape observation có membership, không ACK và không
 đổi state. Ready, Start/loading, gameplay/result/UDP và thay nhân vật/đội chưa được phục vụ ở mode opt-in M7a.
 
 Native bốn account/profiles cấu hình đã tạo hai phòng với hai tiêu đề CP949 mặc định khác nhau; mỗi cặp chỉ thấy
@@ -1201,5 +1201,25 @@ người, không fallback direct. Regression relay cũ đạt ở mức TCP/UDP 
 restart/spoof vẫn thuộc N1R-b. Native M7a dùng Wine diagnostic copy/LAN giả lập, không nâng scope Internet đã có.
 
 M7a đạt [acceptance](../PLAN.md#rust-service-milestones) trong các giới hạn trên. M7b/c/d, M5 tổng quát, gameplay
-phòng động, occupancy, entitlement sửa title, DB-queue fault native và vận hành vẫn chưa đạt. Không suy thành công
+phòng động, entitlement sửa title, DB-queue fault native và vận hành vẫn chưa đạt. Không suy thành công
 trận hoặc full service từ setup/slot, unit, TCP hay log server.
+
+
+<a id="rust-room-population"></a>
+## Số người và sức chứa trong danh sách phòng Rust
+
+Nguồn **kr_static/confirmed** cho reader KR00967 và **kr_runtime/confirmed** cho phép đo Wine/LAN giả lập;
+[nguồn, recipe và hash](../evidence/rust-service/m7b-room-population.json). Sau giải mã typed bytes, tail 22 byte của
+mỗi hàng 91 có byte offset **5 là số người hiện hành**, offset **7 là sức chứa**. Reader `D9D720` đọc hai u8 tại
+`D9D7E3` và `D9D817`, rồi ghi secure fields `+0x94` và `+0xAC`. 635 byte của reader cache khớp bản copy diagnostic
+được chạy; không suy toàn binary khớp hoặc gán nghĩa cho 20 byte còn lại. VN chỉ là nguồn đối chiếu phương pháp.
+
+Managed listing lấy số người từ membership sống, sức chứa từ model; chỉ thay hai byte này. Mỗi create/join/leave/EOF
+đánh thức catalog watch; snapshot của phòng khác giữ nguyên. Wire adapter chặn current > capacity và capacity ngoài
+1–26; đây là guard dữ liệu, không phải bằng chứng hỗ trợ gameplay hoặc sức chứa 26 người. Đường fixed cũ giữ byte cũ.
+
+Bốn client KR thật tạo hai phòng với prototype sức chứa 8, chỉ bốn client được chạy. Client D ở sảnh đọc và hiển thị
+Alpha **1/8 → 2/8 → 1/8**, Beta giữ **1/8**, khi B vào/rời Alpha. Reader native, ảnh UI và PCAP được đối chiếu độc lập;
+20 byte khác giữ nguyên. A/C rời cuối làm đúng thẻ phòng biến mất qua matching90. Synthetic riêng kiểm 1/4 → 2/4 → 1/4,
+wrong tuple không tạo ghost hoặc đổi watch, EOF/Back cuối gửi 90 rồi 91 rỗng. Hai implementation đồng ý không thay
+native oracle. Không có Start104/loading99/gameplay trong phép đo này; **chỉ hoàn tất phần occupancy, M7b còn mở**.

@@ -33,11 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP276: M7a đã nghiệm thu tạo, chọn và rời nhiều phòng bằng account trên client KR thật.**
-Bốn client trên Wine/LAN giả lập đã dùng hai phòng riêng, đúng slot/chủ phòng, chuyển phòng, EOF/revoke và xóa phòng rỗng.
-[Contract và giới hạn](docs/protocol/room-membership.md#rust-managed-room-selection),
-[bằng chứng](docs/evidence/rust-service/m7a-room-selection.json). Gameplay phòng động, occupancy và profile account
-bất kỳ còn mở; toàn M7 chưa đạt. Tiếp M7b theo [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP278: đã sửa kiểm provenance cho source Rust và census tại checkpoint công bố.**
+[Quy tắc và giới hạn](docs/evidence/checkpoints/README.md#publication-bound-source-history): tìm đúng blob tại lần công bố,
+không sửa record hoặc raw cũ. Occupancy phòng đã có [native proof](docs/protocol/room-membership.md#rust-room-population)
+ở CP277. M7b còn lifecycle trận và cách ly round/UDP; toàn M7 và profile account bất kỳ chưa đạt.
+Tiếp lifecycle M7b theo [Bảng điều hành](docs/PLAN.md#dashboard).
 Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu

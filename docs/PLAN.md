@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP276 / AUD092**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, CP278 / AUD094**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -22,7 +22,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 | M5 tài khoản | Account → phòng → trận → kết quả đã chạy native (CP258) | Hồ sơ tổng quát cho mọi account; lỗi hàng đợi DB khi đang native |
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; relay opt-in đạt prototype hai người, còn mở rộng và vận hành |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; relay ngoài prototype hai người và vận hành còn riêng |
-| M7 phòng tổng quát | M7a đã đạt: bốn account/client thật và hai phòng riêng | M7b occupancy/trận độc lập; M7c lựa chọn; M7d ownership tích hợp |
+| M7 phòng tổng quát | M7a đã đạt: bốn account/client thật và hai phòng riêng | Occupancy đã đo; M7b còn trận độc lập; M7c lựa chọn; M7d ownership tích hợp |
 | [G1](#rust-g1) sáu map ladder và item | Đã đo điều kiện chọn Village10; chưa triển khai gameplay mới | Metadata map phải đồng bộ; spawn, terrain, floor và item chưa đo trên Village10 |
 | M6 lưu kết quả, thưởng 0 | Chưa bắt đầu; dependency R1 đã đạt | Sửa acceptance giai đoạn 1; thực hiện song song G1 |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
@@ -31,7 +31,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 
 1. M7b: nối occupancy và lifecycle trận theo roster hiện hành. M7a đã có serving và native theo
    [acceptance](#rust-service-milestones), [contract/bằng chứng](protocol/room-membership.md#rust-managed-room-selection).
-   Đo trường occupancy đang chặn adapter; không mở lại phép thử ID Village10 hoặc RE phòng dàn trải.
+   Occupancy đã có native proof; tiếp lifecycle và key/roster theo [khoảng trống](RESEARCH.md#gap-room-occupancy), không mở lại reader/list hoặc ID Village10.
 2. Hoàn tất M7c lựa chọn nhân vật/đội và M7d ownership tích hợp. Trong M7, relay resource ownership theo phòng;
    nghiệm thu mesh/reuse/restart riêng ở N1R-b, không thêm dependency đó vào M7a.
 3. **N1R-b relay cho phòng nhiều người**, sau M7 và trước G1: phòng bốn và phòng tám người chơi qua relay trên
@@ -46,7 +46,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
 
 - Direct UDP âm ở hai NAT đổi cổng trong recipe đã đo; N1b không retry. Relay opt-in đã đạt prototype hai người.
   Cổng không tái dùng trong instance nên có giới hạn số vòng; spoof giữa người chung IP, restart và tải đích còn mở.
-- M7a đã có nhiều phòng trong serving, bằng chứng native giới hạn bốn profile cấu hình. Occupancy trong 22 byte tail vẫn chưa phân loại; gameplay phòng động và profile account bất kỳ chưa nghiệm thu.
+- M7a đã có nhiều phòng trong serving, bằng chứng native giới hạn bốn profile cấu hình. Occupancy đã đo hai field current/capacity; 20 byte còn lại giữ opaque. Gameplay phòng động và profile account bất kỳ chưa nghiệm thu.
 - Village10 được lookup đúng nhưng tên trong Start còn thuộc ExVillage01 nên client từ chối trước loading.
   Terrain cũ cũng khóa với fixture map cũ; cần dữ liệu nhất quán, không nới guard hoặc coi đổi ID đã đủ chơi.
 - `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
