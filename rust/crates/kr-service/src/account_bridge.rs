@@ -170,7 +170,82 @@ pub struct Channel {
     client: Client,
     guard: Guard,
 }
+/// Token-free handle to an existing bound channel; never issues a session.
+/// Relay must inspect all participants, then recheck their generations before I/O.
+#[derive(Clone)]
+pub(crate) struct RelayAuthority {
+    shared: Shared,
+    player: Player,
+    generation: u64,
+    connection: u64,
+    client: Client,
+}
+impl RelayAuthority {
+    pub(crate) fn generation(&self) -> u64 {
+        self.generation
+    }
+    pub(crate) fn owns(&self, identity: u32, connection: u64) -> bool {
+        self.player.wire_id == identity && self.connection == connection && self.current()
+    }
+    pub(crate) fn current(&self) -> bool {
+        lock(&self.shared).is_ok_and(|r| {
+            r.entries.get(&self.player.player_id).is_some_and(|e| {
+                e.generation == self.generation
+                    && e.phase == Phase::Bound
+                    && e.connection == Some(self.connection)
+                    && e.player.as_ref() == Some(&self.player)
+            })
+        })
+    }
+    pub(crate) async fn check_idle(&self) -> Result<()> {
+        let result = self.inspect().await;
+        if result.is_err() {
+            let mut r = self.shared.lock().unwrap_or_else(|e| e.into_inner());
+            if r.entries
+                .get(&self.player.player_id)
+                .is_some_and(|e| e.generation == self.generation)
+            {
+                r.entries.remove(&self.player.player_id);
+            }
+        }
+        result
+    }
+    async fn inspect(&self) -> Result<()> {
+        let token = {
+            let r = lock(&self.shared)?;
+            let entry = r.entries.get(&self.player.player_id).ok_or(Error::Stale)?;
+            if entry.generation != self.generation
+                || entry.phase != Phase::Bound
+                || entry.connection != Some(self.connection)
+                || entry.player.as_ref() != Some(&self.player)
+            {
+                return Err(Error::Stale);
+            }
+            copy_token(&entry.token)?
+        };
+        let player = self
+            .client
+            .try_inspect_current(&token, self.player.player_id)
+            .map_err(Error::Backend)?
+            .wait()
+            .await
+            .map_err(Error::Backend)?;
+        if player != self.player || !self.current() {
+            return Err(Error::Denied);
+        }
+        Ok(())
+    }
+}
 impl Channel {
+    pub(crate) fn relay_authority(&self) -> RelayAuthority {
+        RelayAuthority {
+            shared: self.guard.shared.clone(),
+            player: self.player.clone(),
+            generation: self.guard.generation,
+            connection: self.connection,
+            client: self.client.clone(),
+        }
+    }
     /// Must be called at serving authorization boundaries; alive is not authorization.
     /// Any failure invalidates this generation before returning to the caller.
     pub async fn check(&mut self) -> Result<()> {

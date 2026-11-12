@@ -60,8 +60,17 @@ pub(crate) enum TeamPolicy {
     BalancedManner,
 }
 
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub(crate) enum EndpointPolicy {
+    #[default]
+    LegacyDirect,
+    Relay,
+}
+
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct RoomRules {
+    pub(crate) endpoint: EndpointPolicy,
     pub(crate) slot_allocation: SlotAllocation,
     pub(crate) result: ResultPolicy,
     pub(crate) departure: DeparturePolicy,
@@ -108,6 +117,7 @@ impl RoomRules {
         }
         Ok((
             Self {
+                endpoint: cfg.endpoint_policy,
                 slot_allocation: cfg.slot_allocation,
                 result: if cfg.four_results || cfg.eight_battle {
                     ResultPolicy::Teams

@@ -180,8 +180,8 @@ impl RoundSockets {
         self.kernel.invalidate();
     }
     /// Caller serializes ownership validation, pump and invalidation under the
-    /// same owner mutex. No await or blocking I/O; at most one recv per socket,
-    /// bounded total receives and bounded drain attempts per call. A caller
+    /// same owner mutex. No await or blocking I/O; receive attempts are bounded
+    /// by message budget plus socket count, sends by drain budget. A caller
     /// cannot safely authorize using the supplied scope without checking owners.
     pub fn pump(&mut self, scope: Scope, now: Instant) -> io::Result<PumpStats> {
         if scope != self.kernel.scope {
@@ -193,14 +193,16 @@ impl RoundSockets {
             return Ok(stats);
         }
         let mut buffer = [0; 256]; // max_datagram <=255; truncation is rejected.
-        for _ in 0..self.sockets.len() {
-            if stats.received == self.receives_per_pump {
+        let mut empty = 0;
+        for _ in 0..self.receives_per_pump + self.sockets.len() {
+            if empty == self.sockets.len() || stats.received == self.receives_per_pump {
                 break;
             }
             let index = self.receive_cursor;
             self.receive_cursor = (index + 1) % self.sockets.len();
             match self.sockets[index].recv_from(&mut buffer) {
                 Ok((n, SocketAddr::V4(from))) => {
+                    empty = 0;
                     stats.received += 1;
                     let key = self.kernel.edges[index].key;
                     if self
@@ -214,10 +216,13 @@ impl RoundSockets {
                     }
                 }
                 Ok(_) => {
+                    empty = 0;
                     stats.received += 1;
                     stats.dropped += 1;
                 }
-                Err(e) if e.kind() == io::ErrorKind::WouldBlock => {}
+                Err(e) if e.kind() == io::ErrorKind::WouldBlock => {
+                    empty += 1;
+                }
                 Err(e) => {
                     self.invalidate();
                     return Err(e);

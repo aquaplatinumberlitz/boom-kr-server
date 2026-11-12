@@ -9,6 +9,42 @@ use std::{
     time::{Duration, Instant},
 };
 
+/// Operator-only opt-in network resources. These bounds are design choices,
+/// not measured production capacity or a recovered KR NAT protocol.
+#[derive(serde::Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Config {
+    pub bind: Ipv4Addr,
+    pub advertise: Ipv4Addr,
+    pub ports: Vec<u16>,
+    pub receive_budget: usize,
+    pub send_budget: usize,
+    pub queue_messages: usize,
+    pub queue_bytes: usize,
+    pub rate_per_second: usize,
+    pub pending_ms: u64,
+    pub lease_seconds: u64,
+}
+impl Config {
+    pub(crate) fn limits(&self) -> io::Result<Limits> {
+        let limits = Limits {
+            max_routes: self.ports.len(),
+            max_datagram: 255,
+            pending_messages: self.queue_messages,
+            pending_bytes: self.queue_bytes,
+            rate_messages: self.rate_per_second,
+            rate_window: Duration::from_secs(1),
+            pending_ttl: Duration::from_millis(self.pending_ms),
+            lease_ttl: Duration::from_secs(self.lease_seconds),
+            sends_per_drain: self.send_budget,
+        };
+        if !limits.valid() || !(1..=4096).contains(&self.receive_budget) {
+            return Err(invalid());
+        }
+        Ok(limits)
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Scope {
     pub service_generation: u64,
@@ -348,6 +384,7 @@ impl Kernel {
                         .bytes
                         .len();
                     sent += 1;
+                    scanned = 0;
                 }
                 Err(e) if e.kind() == io::ErrorKind::WouldBlock => {}
                 other => {
