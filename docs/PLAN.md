@@ -622,8 +622,8 @@ tiền, bảng xếp hạng, inventory. Schema chỉ giữ chỗ cho ledger và 
 - **Gói server:** binary, config, fixture runtime và dữ liệu map, nhân vật sinh từ pack, có manifest hash. Chạy được
   trên một máy Linux sạch, không có repo và không có `local/`. Dữ liệu trích từ client không commit; gói được dựng
   tại chỗ từ pack bằng một lệnh có tài liệu.
-- **Gói cho người chơi:** hướng dẫn và cấu hình trỏ client tới server. Ít nhất một người không dùng máy phát triển cài
-  và chơi được.
+- **Gói cho người chơi:** hướng dẫn và cấu hình trỏ client tới server, cài thử được trên một máy sạch không phải máy
+  phát triển.
 - **Kiểm tải:** 50 người đồng thời và 8 phòng cùng chơi qua relay. Trước khi đo phải có tần suất gói UDP của một
   người chơi thật và ngưỡng CPU, RAM, độ trễ chuyển tiếp, tỉ lệ rơi gói. Tải tổng hợp phát lại traffic đã thu; cùng
   lúc có ít nhất hai phòng client thật để xác nhận người chơi thật không bị ảnh hưởng.
@@ -635,14 +635,14 @@ tiền, bảng xếp hạng, inventory. Schema chỉ giữ chỗ cho ledger và 
   gian khôi phục và lượng dữ liệu mất đo thực.
 - **Dừng và khởi động lại:** dừng có trật tự không để trận dở mà không ghi; khởi động sau khi bị kill không còn phòng
   ma và DB nhất quán. Diễn tập một lần nâng cấp binary rồi quay lại bản cũ.
-- **Lỗi khởi động client** ([#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9)): đếm tỉ lệ trong buổi
-  chơi thử; người chơi thật gặp thì mở lại.
-- **Buổi chơi thử:** người chơi thật qua Internet, tối thiểu hai phòng cùng lúc, trước khi tuyên bố đạt đích.
+- **Lỗi khởi động client** ([#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9)): đếm tỉ lệ trong các
+  lượt client thật của kiểm tải và chạy dài; tỉ lệ đáng kể thì mở lại.
 - Tài liệu vận hành một trang.
 
 Không thuộc mốc: nhiều instance, nhiều kênh, HA, trực sự cố, chống gian lận ngoài phần đã có.
 
-**Đích giai đoạn 1 đạt khi** M7, M5b, N1R-b, G1, M6 và M8 đều đạt theo mục này.
+**Đích giai đoạn 1 đạt khi** M7, M5b, N1R-b, G1, M6 và M8 đều đạt theo mục này. Theo [quyết định 12/11](evidence/owner-directives/no-playtest.json),
+không cần buổi chơi thử với người chơi thật; nghiệm thu dùng client thật do nhóm tự chạy và tải tổng hợp.
 
 <a id="rust-service-exit-criteria"></a>
 ### Khi nào đủ demo, dịch vụ nội bộ và phát hành rộng hơn?
