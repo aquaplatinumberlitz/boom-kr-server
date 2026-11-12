@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-12T00:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án nói trong phiên Claude Code ngày 2026-11-12: \"một buổi chơi thử với người thật ko cần\".",
+  "fact": "Bản đề xuất tiêu chí M8 có một buổi chơi thử với người chơi thật qua Internet trước khi tuyên bố đạt đích giai đoạn 1.",
+  "decision": "Nghiệm thu giai đoạn 1 không cần buổi chơi thử với người chơi thật. M8 nghiệm thu bằng client thật do nhóm tự chạy, tải tổng hợp và các phép kiểm vận hành đã ghi trong PLAN.",
+  "limits": "Không đổi mục tiêu tải 50 người và 8 phòng, không đổi yêu cầu người chơi kết nối qua Internet thật. Hành vi với người chơi và đường mạng ngoài các lượt đã đo vẫn là chưa kiểm, không được ghi là đã đạt.",
+  "plan": "docs/PLAN.md#phase1-acceptance",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}
