@@ -21,6 +21,8 @@ pub struct Config {
     pub max_rooms: usize,
     #[serde(default)]
     pub round_profile: Option<room_io::ManagedRoundConfig>,
+    #[serde(default)]
+    pub player_choices: bool,
 }
 struct Owner {
     connection: u64,
@@ -39,6 +41,7 @@ pub(crate) struct Hub {
     relay: Option<room_relay::Factory>,
     epochs: Arc<crate::round_epochs::RoundEpochs>,
     round_profile: Option<Arc<room_io::ManagedRound>>,
+    player_choices: bool,
 }
 pub(crate) struct Channel {
     hub: Arc<Hub>,
@@ -62,6 +65,11 @@ impl Hub {
         if !(2..=64).contains(&cfg.max_rooms) {
             return Err(err("managed room bound must be 2..64"));
         }
+        if cfg.player_choices && cfg.round_profile.is_some() {
+            return Err(err(
+                "room choices require selection-only profile until Start/stat acceptance",
+            ));
+        }
         let round_profile = cfg
             .round_profile
             .as_ref()
@@ -80,6 +88,7 @@ impl Hub {
             relay,
             epochs: Arc::new(crate::round_epochs::RoundEpochs::default()),
             round_profile,
+            player_choices: cfg.player_choices,
         }))
     }
     pub(crate) fn register(
@@ -153,6 +162,7 @@ impl Channel {
                         key,
                         self.hub.epochs.clone(),
                         self.hub.round_profile.clone(),
+                        self.hub.player_choices,
                     )?;
                     if let Some(factory) = &self.hub.relay {
                         room_io::install_relay(&shared, factory.owner(key))?;

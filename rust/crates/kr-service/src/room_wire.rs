@@ -3,14 +3,19 @@ use crate::room::Member;
 use kr_wire::{Width, kr00967 as wire, read_uint};
 use std::io;
 pub fn player(template: &[u8], member: &Member, chief: bool) -> io::Result<Vec<u8>> {
-    wire::player106(
+    let body = wire::player106(
         template,
         member.key.identity,
         member.slot,
         member.team,
         member.ready,
         chief,
-    )
+    )?;
+    if let Some(character) = member.character {
+        wire::player106_character(&body, character)
+    } else {
+        Ok(body)
+    }
 }
 pub fn slot(template: &[u8], member: &Member, chief: bool) -> io::Result<Vec<u8>> {
     let p = player(template, member, chief)?;
