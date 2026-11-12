@@ -222,7 +222,9 @@ impl ReportLimits {
             4 => Ok(Self {
                 power: vec![1, 1, 1, 1],
                 opaque167: &[4, 16, 22, 32],
-                terrain_aux: &[37, u32::MAX as u64],
+                // Actual managed-room native142 also reports aux46. This is
+                // bounded observation only, without reveal/item authority.
+                terrain_aux: &[37, 46, u32::MAX as u64],
             }),
             8 => Ok(Self {
                 power: vec![1, 1, 1, 1, 1, 1, 2, 2],
