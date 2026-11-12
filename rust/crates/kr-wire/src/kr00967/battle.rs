@@ -162,22 +162,23 @@ pub struct LifeReport127 {
     pub tick: u32,
     pub forward: Option<Vec<u8>>,
 }
-/// Candidate departure notification from KR E85B60/sub11 -> E87AD0.
-/// This branch consumes the common header but ignores its x/y arguments.
-/// Native survivor/result/next-round acceptance is required separately.
-pub fn departure170(slot: u8) -> io::Result<Vec<u8>> {
+/// Candidate disconnect policy using the measured death19/empty serialized
+/// branch. Coordinate bytes come from this member's current-round report;
+/// this is a server-selected forfeit, not a fabricated client report or ACK.
+pub fn departure170(slot: u8, position: [u8; 4]) -> io::Result<Vec<u8>> {
     if slot >= 8 {
         return Err(io::Error::other("departure slot outside measured bound"));
     }
     let mut out = Vec::new();
-    for (v, w) in [
-        (11, Width::U8),
-        (u64::from(slot), Width::U8),
-        (0, Width::U16),
-        (0, Width::U16),
-    ] {
+    for (v, w) in [(19, Width::U8), (u64::from(slot), Width::U8)] {
         out.extend(write_uint(v, w).map_err(io::Error::other)?);
     }
+    out.extend(position);
+    let mut raw = vec![24, 6, 0, 0, 0, 0];
+    raw.extend(u32::MAX.to_le_bytes());
+    raw.push(0);
+    out.extend(write_uint(raw.len() as u64, Width::U32).map_err(io::Error::other)?);
+    out.extend(super::encode_bytes(&raw)?);
     Ok(out)
 }
 pub fn report127(body: &[u8]) -> io::Result<LifeReport127> {

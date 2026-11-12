@@ -1062,7 +1062,11 @@ impl Runtime {
             .participants
             .get(&source)
             .ok_or_else(|| err("missing departed round row"))?;
-        let notice = packet(170, wire::departure170(participant.member.slot)?);
+        let position = participant
+            .member
+            .report_position
+            .ok_or_else(|| err("departure has no current report position"))?;
+        let notice = packet(170, wire::departure170(participant.member.slot, position)?);
         Ok(next
             .members
             .values()
@@ -1071,7 +1075,7 @@ impl Runtime {
                     member.key,
                     Some(round),
                     0,
-                    vec![("departure170-11".into(), notice.clone())],
+                    vec![("departure170-19".into(), notice.clone())],
                 );
                 batch.guard = Guard::Departure {
                     recipient: member.key,
@@ -2349,6 +2353,13 @@ impl Session {
                 } else if let Phase::Armed { round } = next.phase {
                     if r.rules.life.reports_enabled() {
                         let report = crate::life::Report::parse(body)?;
+                        if report.slot == m.slot {
+                            next.members
+                                .get_mut(&self.identity)
+                                .expect("current member")
+                                .report_position =
+                                Some(body[2..6].try_into().expect("validated report prefix"));
+                        }
                         let now = Instant::now();
                         let last_blast = next.last_blast;
                         let decision =

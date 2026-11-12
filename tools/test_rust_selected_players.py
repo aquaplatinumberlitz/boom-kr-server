@@ -179,6 +179,9 @@ def main():
             assert len(set(keys))==1
             return keys[0]
         first=ready_start(clients,[b,c],[(0,0,1,0),(1,1,0,0),(2,2,1,3)])
+        if args.active_departure:
+            b.send(127,codec.pack_fields([39,1,120,399,1,0],[1,1,2,2,4,4]))
+            b.quiet()
         cases.append('three_row_Start_uses_chosen_keys_1_0_1_and_team3_current_peer_barrier')
         def bomb(key,slot,serial,column=3):
             return codec.pack_fields([key,0,slot,serial,3+3*slot,column,1,0,0,0,1,1,0],[4,1,1,4,1,1,1,1,1,1,1,4,1])
@@ -192,7 +195,7 @@ def main():
             b.close();clients.remove(b)
             for peer in clients:
                 _,body=peer.receive(170)
-                assert codec.read_fields(body,[1,1,2,2])==[11,1,0,0]
+                assert len(body)==21 and codec.read_fields(body[:6],[1,1,2,2])==[19,1,120,399]
                 peer.quiet()
             cases.append('active_departure_removes_owner_but_retains_round_and_pending_bomb_recipients')
         for peer in clients:
