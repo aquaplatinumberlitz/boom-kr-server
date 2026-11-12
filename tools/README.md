@@ -55,11 +55,13 @@ ghép wiki là suy từ tên. `--check` kiểm CONTENT khớp census mà không 
 
 `export_map_profile.py`: đọc `FxMap` từ client và xuất JSON vào `local/`, gồm lưới đầy đủ,
 spawn, item và terrain. Bắt buộc truyền `--terrain-fixture <profile.json CP094>` để so từng ô
-ExVillage01 với seed đã pin trước khi ghi; dùng `--client <thư mục client> --map ExVillage01
---map Village10 --out local/research/claude/map-profiles`. Giá trị ô chưa xuất hiện ở ExVillage01
-được ghi riêng và terrain của ô đó là `null` (chưa rõ nghĩa). Phân loại còn lại chỉ là policy CP094,
-không chứng minh gameplay map khác. Kiểm thử không cần client: `PYTHONPATH=tools python3 -m unittest
-tools.test_export_map_profile`. Không commit JSON trích từ client.
+ExVillage01 với seed đã pin trước khi ghi. Mặc định `--classification legacy` giữ phân loại cũ;
+`--classification rules` đọc thêm `fx`, nối ObjectTable với TileInfoList và kiểm cả hai phân loại.
+Ví dụ: `python3 tools/export_map_profile.py --client <thư mục client> --terrain-fixture
+<profile.json CP094> --classification rules --map Village10 --out local/research/map-profiles`.
+Quy tắc là ứng viên chỉ đối chiếu một map, các ô đặc biệt là `null`; chi tiết ở
+[tile semantics](../docs/content/tile-semantics.md). Kiểm thử không cần client:
+`PYTHONPATH=tools python3 -m unittest tools.test_export_map_profile`. Không commit JSON trích từ client.
 
 `export_probe_profile.py --source-root local/research/codex --out <local/profile.json>`: chỉ lập index path/size/SHA/sequence của
 fixture RE hiện hữu cho [service chẩn đoán](../server/README.md); không nhập binary/asset vào Git.
