@@ -680,17 +680,17 @@ thể đổi thứ tự. F4 có thể kéo lên trước F3 nếu cần phần t
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
-nghi có chữ, trong đó 8 ảnh đã xử lý và 681 ảnh có bản khác ở client VN. Bản dịch đó làm cho engine viết lại, chưa từng
-nạp vào client 00967. Chưa có bản tiếng Anh. Ba việc phải đo trước khi định cỡ, mỗi việc tối đa hai lượt native:
+nghi có chữ, trong đó 8 ảnh đã xử lý và 681 ảnh có bản khác ở client VN. Chưa có bản tiếng Anh.
 
-1. Client 00967 có hiển thị được chữ ngoài bảng mã Hàn (CP949) không. Khoảng 23.200 chuỗi tiếng Việt có ký tự ngoài
-   CP949; tiếng Anh thì nằm trọn trong CP949 nên không vướng bước này.
-2. Chuỗi nào client đọc từ file cục bộ, chuỗi nào nhận từ server. Hai bảng lớn nhất (khoảng 16.300 chuỗi) ở client
-   là file cache của bảng do server gửi, nên có thể server gửi theo ngôn ngữ của từng account; chưa đo trên 00967.
-3. Client có nhận file chữ và ảnh đã thay trong bản copy mà không bị kiểm toàn vẹn chặn không.
+[So tĩnh hai file exe](content/client-language.md) cho thấy client 00967 là build đa vùng: engine có sẵn bảng mã và mã
+ngôn ngữ cho Hàn, Việt và Anh, có sẵn bước ghép dấu tiếng Việt, và font của nó đã đủ chữ Việt. Vùng bị khóa cứng là
+Hàn lúc build, nên tiếng Việt cần một bản vá nhỏ trên bản copy của exe; tiếng Anh thì không. Đây là kết luận tĩnh,
+chưa chạy. Việc phải đo khi mở đợt, mỗi việc tối đa hai lượt native: vá ở mức nào để không đổi packet đã đo; client lọc
+bảng chuỗi theo mã ngôn ngữ ra sao; chuỗi nào do server gửi (ở client VN là packet 2 sau đăng nhập); chữ người chơi gõ
+đi giữa hai người khác ngôn ngữ; kiểm toàn vẹn với file đã thay.
 
-Người chơi chọn ngôn ngữ ở bước mở game (mỗi ngôn ngữ một bộ file thay thế), không phải trong menu của client: client
-không có menu đó. Tiếng Hàn là bản gốc, không tốn việc. Mọi thay đổi làm trên bản copy; client và pack gốc giữ nguyên.
+Người chơi chọn ngôn ngữ ở bước mở game (mỗi ngôn ngữ một bộ file thay thế), không phải trong menu của client.
+Tiếng Hàn là bản gốc, không tốn việc. Mọi thay đổi làm trên bản copy; client và pack gốc giữ nguyên.
 
 Cách vào mỗi đợt, giống nhau cho mọi đợt:
 
