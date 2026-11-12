@@ -1074,7 +1074,7 @@ impl Runtime {
             .ok_or_else(|| err("missing departed round row"))?;
         // Forfeit places only the dead departed actor at the neutral origin;
         // it never depends on receiving a gameplay report before the loss.
-        let notice = packet(170, wire::departure170(participant.member.slot, [0; 4])?);
+        let notice = packet(170, wire::departure170(participant.member.slot)?);
         Ok(next
             .members
             .values()

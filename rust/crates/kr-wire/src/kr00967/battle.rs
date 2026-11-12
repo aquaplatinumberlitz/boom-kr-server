@@ -163,17 +163,21 @@ pub struct LifeReport127 {
     pub forward: Option<Vec<u8>>,
 }
 /// Candidate disconnect policy using the measured death19/empty serialized
-/// branch. Coordinates are an explicit forfeit policy input, not claimed as
+/// branch. Zero coordinates are explicit forfeit policy, not claimed as
 /// authoritative position or a fabricated client report/ACK.
-pub fn departure170(slot: u8, position: [u8; 4]) -> io::Result<Vec<u8>> {
+pub fn departure170(slot: u8) -> io::Result<Vec<u8>> {
     if slot >= 8 {
         return Err(io::Error::other("departure slot outside measured bound"));
     }
     let mut out = Vec::new();
-    for (v, w) in [(19, Width::U8), (u64::from(slot), Width::U8)] {
+    for (v, w) in [
+        (19, Width::U8),
+        (u64::from(slot), Width::U8),
+        (0, Width::U16),
+        (0, Width::U16),
+    ] {
         out.extend(write_uint(v, w).map_err(io::Error::other)?);
     }
-    out.extend(position);
     let mut raw = vec![24, 6, 0, 0, 0, 0];
     raw.extend(u32::MAX.to_le_bytes());
     raw.push(0);
