@@ -62,6 +62,11 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **12/11, C
   Terrain cũ cũng khóa với fixture map cũ; cần dữ liệu nhất quán, không nới guard hoặc coi đổi ID đã đủ chơi.
 - `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
   Fixture mà server cần để chạy không được phụ thuộc `local/` khi bàn giao: đóng gói kèm manifest hash ở M8.
+- Dọn issue khi đóng M7, trong cùng PR giao M7e (cần cập nhật catalog và bản đối chiếu issue nên không dọn lẻ):
+  đóng issue của lát đã giao (#369); đóng #14 vì #285 đã thay vai trò issue gốc, chuyển link catalog sang #285;
+  rút mô tả #285 về trạng thái hiện tại và trỏ tới bảng này. #2, #3 và #9 giữ mở làm backlog ngoài giai đoạn 1.
+  Riêng #9 (client thỉnh thoảng abort lúc khởi động trên Wine, chưa rõ nguyên nhân) phải xem lại ở M8 vì người chơi
+  thật có thể gặp.
 
 **Quy ước:**
 
