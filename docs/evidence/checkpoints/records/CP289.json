@@ -1,0 +1,235 @@
+{
+  "id": "CP289",
+  "previous": "CP288",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T13:57:12.576782+00:00",
+  "context_commit": "8b533a9bf21e06010c8747c221c52583e8b95e18",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / N1R-b: reuse vượt pool, restart, chung IP và preset phục vụ đã đủ acceptance hành vi của relay nhiều người chưa?",
+  "scope": "Đóng N1R-b theo từng tiêu chí, nguồn native Wine/LAN và real QUIC design/test riêng biệt. Không claim Internet transport mới, full game hoặc M8.",
+  "artifacts": [
+    {
+      "name": "kr-service-owned-relay-unchanged",
+      "sha256": "f4220acbe04f2ed9398c8885c68383f355b411b0da3a3b444733ea1820ffbee8"
+    },
+    {
+      "name": "kr-companion-unchanged",
+      "sha256": "18edd92132b8324691c89438238f146c82cb939a6fd6dcc8f8c8345f1f8d9d97"
+    },
+    {
+      "name": "KR00967-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "kr-service-controls-test",
+      "sha256": "ef27c532d602319f72caa4c0c74ed4554ff457f70cc7ad966c4510590b3032ae"
+    }
+  ],
+  "locators": [
+    "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+    "docs/evidence/rust-service/n1rb-controls-acceptance.json",
+    "docs/PLAN.md#phase1-acceptance",
+    "docs/OPERATIONS.md"
+  ],
+  "findings": [
+    {
+      "summary": "N1R-b đạt hành vi hiện hành: CP287/288 native4/8/roster/EOF, bổ sung real QUIC negative controls và native restart/common-source positive theo ma trận. G1/M6 tiếp, Internet transport mới và tải/soak ở M8.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+      "evidence": [
+        "N1RB289-00010",
+        "N1RB289-00009"
+      ],
+      "limits": "Quyết định dựa bằng chứng từng hàng; không suy native forgery, mọi topology hoặc giai đoạn1 đã xong."
+    },
+    {
+      "summary": "Native existing accounts fresh login từ DB quiescent sau orderly stop, epoch2→3, cùng public listener với pin mới.48 ciphertext replay và2 malformed probes, shared TCP/UDP source; hai opposite result/reset/third clock,85 completed helpers và1204 copied-native getters.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+      "evidence": [
+        "N1RB289-00010",
+        "N1RB289-00898",
+        "N1RB289-00897",
+        "N1RB289-00885"
+      ],
+      "limits": "Wine/LAN; namespace tạo lại; không account resume, in-place crash, restore trận hoặc Internet. Raw report đếm tổng50 dưới tên ciphertext; metadata tách đúng48+2."
+    },
+    {
+      "summary": "Production Hub/Bridge/router/SQLite với actual QUIC: bốn vòng vượt pool hai route; old/current, foreign first route seq1/own seq1/replay, restart old pin/capability/scope/route denied với current payload reception.156 workspace tests, fmt/clippy pass.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+      "evidence": [
+        "N1RB289-00010",
+        "N1RB289-00102",
+        "N1RB289-00021",
+        "N1RB289-00020",
+        "N1RB289-00018"
+      ],
+      "limits": "Component/runtime transport controls trong loopback cô lập; không gọi native KR attack trace. Quinn port drain async bounded5s; không synchronous close claim."
+    },
+    {
+      "summary": "Preset local-only mode0600 chọn relay xác thực, giữ baseline map/budget/capacity, loại prototype. OPERATIONS giữ số listener/logical routes/firewall. PR387 guard failure được ghi riêng với actual merge-tree/full-check correction.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+      "evidence": [
+        "N1RB289-00010",
+        "N1RB289-00923",
+        "N1RB289-00005",
+        "N1RB289-00028",
+        "N1RB289-00908"
+      ],
+      "limits": "Không benchmark50 người, shipping deployment, hoặc sửa record runtime/audit cũ."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native restart/shared-IP/control/getters/raw/freeze/cleanup",
+      "result": "pass",
+      "evidence": [
+        "N1RB289-00898",
+        "N1RB289-00897",
+        "N1RB289-00885"
+      ],
+      "limits": "Declared native scope only."
+    },
+    {
+      "check": "Real QUIC isolated negatives and current positives;156 workspace tests/fmt/clippy",
+      "result": "pass",
+      "evidence": [
+        "N1RB289-00102",
+        "N1RB289-00021",
+        "N1RB289-00020",
+        "N1RB289-00018"
+      ],
+      "limits": "Test components not native oracle. Production binaries unchanged from CP287."
+    },
+    {
+      "check": "Private preset, manual acceptance/group audit and PR387 correction",
+      "result": "pass",
+      "evidence": [
+        "N1RB289-00009",
+        "N1RB289-00010",
+        "N1RB289-00028",
+        "N1RB289-00908"
+      ],
+      "limits": "Exact-head/local/history and green CI required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP289-relay-controls.json",
+      "bytes": 247807,
+      "sha256": "58ae856891f3fead17af319993af1e55906e6188068e51b8f2a16a12f8bad729",
+      "count": 923
+    }
+  ],
+  "delta": {
+    "added": [
+      "N1R-b scoped acceptance matrix, remaining native restart/shared-IP and real QUIC negatives.",
+      "Phase1 authenticated relay configuration builder and operation network budget."
+    ],
+    "corrected": [
+      "Raw attempt count interpreted explicitly as48 ciphertext+2 probes.",
+      "PR387 failed pre-merge guard/dependent shell continuation retained; actual merge tree and full merged checks passed. Future publication steps checked sequentially."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "G1 và M6 theo dashboard rồi M8; không đóng giai đoạn 1.",
+    "Companion xác thực mới chưa chạy Internet thật; M8 đo đường triển khai đó, không dùng N1/prototype cũ làm bằng chứng.",
+    "Các ca negative QUIC là design/test của production components, không phải native KR giả mạo; native positive chung nguồn IP kiểm riêng.",
+    "Native restart là fresh login sau orderly stopped-service DB snapshot reload, namespace tạo lại; không crash, in-place account resume, restore trận hoặc backup/restore.",
+    "Budget proxy session hữu hạn, local-process isolation và native59 unknown giữ nguyên; M8 đo tải/soak/vận hành."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "G1 map adapter ExVillage01 byte-equivalence then Factory07 native; M6 history/last-character/exactly-once/reward0 independently. Internet authenticated package/load/soak/recovery belongs M8. Do not touch export_map_profile.py.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T13:57:12.576782+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo acceptance/control self-check and manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ quyết định N1R-b theo từng hàng, giới hạn bằng chứng và việc tiếp theo."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ quyết định N1R-b theo từng hàng, giới hạn bằng chứng và việc tiếp theo."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ quyết định N1R-b theo từng hàng, giới hạn bằng chứng và việc tiếp theo."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ quyết định N1R-b theo từng hàng, giới hạn bằng chứng và việc tiếp theo."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ quyết định N1R-b theo từng hàng, giới hạn bằng chứng và việc tiếp theo."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ quyết định N1R-b theo từng hàng, giới hạn bằng chứng và việc tiếp theo."
+    },
+    {
+      "path": "docs/protocol/udp-peer.md",
+      "state": "updated",
+      "reason": "Đồng bộ quyết định N1R-b theo từng hàng, giới hạn bằng chứng và việc tiếp theo."
+    },
+    {
+      "path": "docs/evidence/rust-service/n1rb-controls-acceptance.json",
+      "state": "updated",
+      "reason": "Acceptance/native/test/preset/limits metadata."
+    },
+    {
+      "path": "docs/OPERATIONS.md",
+      "state": "updated",
+      "reason": "Một nguồn cho preset và ngân sách mạng; M8 phần khác chưa đạt."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index chủ đề giữ nguyên; nội dung sửa đúng docs/protocol/udp-peer.md."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo/feature-group audit/freeze/privacy/PR và exact-head giữ nguyên."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-authenticated-relay-acceptance"
+  ]
+}

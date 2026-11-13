@@ -1,0 +1,77 @@
+{
+  "id": "AUD105",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-authenticated-relay-acceptance"
+  ],
+  "completed_through": "CP289",
+  "recorded_utc": "2026-11-13T13:57:12.576782+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/n1rb-controls-acceptance.json",
+    "docs/protocol/udp-peer.md",
+    "docs/OPERATIONS.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-service/src/account_bridge/tests.rs",
+    "tools/rust_phase1_config.py",
+    "local/research/codex/n1rb-restart-shared-native-r2/restart-shared-verification.json",
+    "local/research/codex/n1rb-restart-shared-native-r2/restart-shared-getter-verification.json",
+    "local/research/codex/n1rb-restart-shared-native-r2/native/raw-seal.json",
+    "local/research/codex/n1rb-quic-controls-isolated-r1/seal.json",
+    "local/research/codex/n1rb-rosters-delivery-receipt.json"
+  ],
+  "method": "Đọc core docs đúng thứ tự, đối chiếu bảy hàng acceptance với CP287/288, source test thật Hub/Bridge/router/SQLite/QUIC, raw PCAP/seal của negative và native restart chung IP. Kiểm byte fixture/preset, source frozen, epoch DB, native getter/helper/actor, hai rank/reset/clock và cleanup. Không coi checker/log/exit0 hoặc hai implementation đồng ý là native oracle.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Reuse vượt pool, common-IP first packet và restart còn mở ở CP288.",
+      "correction": "Bốn vòng trên pool hai route cùng IP có old/current và foreign seq1/own seq1. Hub rebind cùng cổng với old pin/capability/scope/route denied. Native fresh-login từ DB stopped snapshot, shared TCP/UDP source, old ciphertext/probe và current hai outcome/reset/clock. Ma trận phân biệt native và design/test.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1rb-controls-acceptance.json",
+        "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "N1/prototype Internet cũ có thể bị hiểu là transport QUIC mới đã kiểm Internet.",
+      "correction": "Ghi rõ transport xác thực mới chỉ Wine/LAN; Internet thật còn M8 theo đích hiện hành, không trở lại dependency K6c/K7 hoặc giả đã đo ISP/CGNAT.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1rb-controls-acceptance.json",
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Relay mặc định phục vụ và ngân sách firewall chưa có điểm vận hành chuẩn.",
+      "correction": "Preset chọn authenticated_relay từ baseline có budgets tường minh, mode0600/no overwrite/local-only; OPERATIONS giữ duy nhất phép tính64 peer/448 logical routes/one public listener, benchmark chưa đạt.",
+      "fixed_in": [
+        "tools/rust_phase1_config.py",
+        "docs/OPERATIONS.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "PR387 merge xảy ra sau guard failed do shell tiếp tục; raw report đặt tên50 ciphertext nhưng bao gồm2 malformed probes.",
+      "correction": "Receipt giữ deviation và actual merge-tree/full merged checks đã pass. Phụ thuộc publish chạy checked subprocess. Không sửa CP288/raw report; metadata mới tách48 ciphertext và2 probes.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1rb-controls-acceptance.json",
+        "local/research/codex/n1rb-rosters-delivery-receipt.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "G1 và M6 theo dashboard rồi M8; không đóng giai đoạn 1.",
+    "Companion xác thực mới chưa chạy Internet thật; M8 đo đường triển khai đó, không dùng N1/prototype cũ làm bằng chứng.",
+    "Các ca negative QUIC là design/test của production components, không phải native KR giả mạo; native positive chung nguồn IP kiểm riêng.",
+    "Native restart là fresh login sau orderly stopped-service DB snapshot reload, namespace tạo lại; không crash, in-place account resume, restore trận hoặc backup/restore.",
+    "Budget proxy session hữu hạn, local-process isolation và native59 unknown giữ nguyên; M8 đo tải/soak/vận hành."
+  ]
+}

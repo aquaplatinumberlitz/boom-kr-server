@@ -1,0 +1,177 @@
+{
+  "schema": "kre-rust-relay-acceptance-v1",
+  "checkpoint": "CP289",
+  "source": "design",
+  "status": "design",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/380",
+  "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+  "acceptance": "docs/PLAN.md#phase1-acceptance",
+  "decision": "N1R-b đạt các tiêu chí hành vi hiện hành bằng native4/8/sparse/survivor và runtime controls của transport; giới hạn từng hàng giữ rõ. Không đóng giai đoạn1 hoặc mọi chức năng trong KR-F015.",
+  "criteria": [
+    {
+      "criterion": "Relay là policy mặc định giai đoạn 1; LegacyDirect chẩn đoán",
+      "result": "pass",
+      "source": "design",
+      "method": "test",
+      "evidence": [
+        "tools/rust_phase1_config.py",
+        "local/research/codex/n1rb-phase1-config-r2/verification.json",
+        "local/research/codex/n1rb-phase1-config-r3/verification.json",
+        "docs/OPERATIONS.md"
+      ],
+      "scope": "Preset tool chọn authenticated_relay, bỏ pool prototype, chỉ rõ state paths và giữ budgets/map/item/capacity của baseline. Không đổi default profile chẩn đoán của binary."
+    },
+    {
+      "criterion": "Một trận4 và một trận8 tới kết quả/reset/ván kế",
+      "result": "pass",
+      "source": "kr_runtime",
+      "method": "runtime",
+      "evidence": [
+        "docs/evidence/rust-service/n1rb-owned-serving-four.json",
+        "docs/evidence/rust-service/n1rb-native-rosters.json"
+      ],
+      "scope": "CP287/288 Wine và isolated LAN; không thêm Internet/topology claim."
+    },
+    {
+      "criterion": "Ván kế sau rời và active endpoint EOF/survivor tiếp tục",
+      "result": "pass",
+      "source": "kr_runtime",
+      "method": "runtime",
+      "evidence": [
+        "docs/evidence/rust-service/n1rb-native-rosters.json"
+      ],
+      "scope": "Native8→sparse7, actual G EOF, six current helpers/bom/nổ/result/reset/next six Start."
+    },
+    {
+      "criterion": "Pool nhỏ, số vòng vượt pool; old packet không vào vòng mới",
+      "result": "pass",
+      "source": "design",
+      "method": "test",
+      "evidence": [
+        "local/research/codex/n1rb-quic-controls-isolated-r1/seal.json",
+        "docs/evidence/rust-service/n1rb-owned-serving-four.json"
+      ],
+      "scope": "Actual authenticated Hub/Bridge/QUIC/DB, same-IP owners: four rounds over two route entries, explicit old logical packet and current reception. Native pair has three rounds over two-route pool on one unchanged public listener with repeating low key. Old local native endpoint quarantine tested in CP287. Negative is test transport evidence, not a KR attack trace."
+    },
+    {
+      "criterion": "Sau restart phòng mới chơi được; gói client cũ tới cổng cũ bị bỏ",
+      "result": "pass",
+      "source": "kr_runtime",
+      "method": "runtime",
+      "evidence": [
+        "local/research/codex/n1rb-restart-shared-native-r2/restart-shared-verification.json",
+        "local/research/codex/n1rb-restart-shared-native-r2/native/raw-seal.json",
+        "local/research/codex/n1rb-quic-controls-isolated-r1/seal.json"
+      ],
+      "scope": "Native fresh existing-account login after stopped-service quiescent DB snapshot reload, same public endpoint/new pin/epoch, old established QUIC ciphertext before/current serving; native two opposite outcomes/reset/third clock. Isolated Hub rebind/old pin/capability/scope/route denial with current payload tests supplement. Namespace recreated; not crash recovery, in-place account resume or match restore."
+    },
+    {
+      "criterion": "Gói đầu account này không chiếm route account kia chung IP",
+      "result": "pass",
+      "source": "design",
+      "method": "test",
+      "evidence": [
+        "local/research/codex/n1rb-quic-controls-isolated-r1/seal.json",
+        "local/research/codex/n1rb-restart-shared-native-r2/restart-shared-verification.json"
+      ],
+      "scope": "Real authenticated Hub/Bridge/SQLite/QUIC test: A first packet names B current route with seq1, no forwarding or consumption; B own seq1 works. Both source127.0.0.1. Native pair independently has TCP/UDP common-source SNAT, fresh account identity/current gameplay and no forwarding of raw unauthenticated first probe. Native client does not perform authenticated forgery; no claim original KR MAC/auth."
+    },
+    {
+      "criterion": "Ngân sách cho8 phòng8 người và firewall trong tài liệu vận hành",
+      "result": "pass",
+      "source": "design",
+      "method": "test",
+      "evidence": [
+        "docs/OPERATIONS.md"
+      ],
+      "scope": "One public UDP listener,64 companions,448 logical routes, explicit TCP/UDP allowlist and no public proxy range. Structural budget only; actual50-player/load/soak/deploy belongs M8."
+    }
+  ],
+  "scope_limits": [
+    "New authenticated companion native controls are Wine/private LAN, including controlled TCP+UDP INPUT source mapping. No new Internet/ISP/CGNAT/topology assurance from them. Prior N1/Internet prototype evidence retains its own scope.",
+    "New authenticated transport on actual Internet remains an explicit M8 deployment/packaging measurement under the existing phase1 Internet target; do not infer it from the old raw-relay prototype. No retroactive K6c/K7 dependency.",
+    "Real QUIC negatives run the production Hub/Bridge/router with real SQLite and sockets under isolated loopback. Native KR supplies positive compatibility/gameplay controls; it does not author forged authenticated packets.",
+    "Restart native run reloads exact quiescent DB bytes after an orderly stopped service; network/PID namespaces recreated. No account resume, match restore, kill-crash consistency, rollback or full backup/restore acceptance.",
+    "Loopback proxy does not authenticate another local process. Per-session endpoint quarantine has finite budget and fails closed; no automatic reconnect or unbounded session claim.",
+    "Native59 fault remains unresolved; native8 follow-up did not repeat it. M8 counts client faults and reopens bounded caller/input trace if repeated. No fix claim."
+  ],
+  "native": {
+    "root": "local/research/codex/n1rb-restart-shared-native-r2",
+    "report": "local/research/codex/n1rb-restart-shared-native-r2/restart-shared-verification.json",
+    "getters": "local/research/codex/n1rb-restart-shared-native-r2/restart-shared-getter-verification.json",
+    "run_sha256": "f33dcd6630f83e7090180bb9ac780eeb10cf112495da6380c073e6c34af4a69d",
+    "service_binary_sha256": "f4220acbe04f2ed9398c8885c68383f355b411b0da3a3b444733ea1820ffbee8",
+    "companion_binary_sha256": "18edd92132b8324691c89438238f146c82cb939a6fd6dcc8f8c8345f1f8d9d97",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "duration_s": 233.372967521,
+    "source_frozen": true,
+    "returncode": 0,
+    "raw_files": 77,
+    "previous_epoch": 2,
+    "current_epoch": 3,
+    "getters_checks": 1204,
+    "native_applies": 85,
+    "environment": "Isolated Wine pair, separate endpoint namespaces; shared TCP/UDP source via INPUT SNAT. No NAT filtering/mapping-type or PMTU claim; no configured delay/jitter/loss/reordering/bandwidth/MTU change.",
+    "cleanup": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct",
+    "old_ciphertext_attempts": 48,
+    "malformed_probe_attempts": 2,
+    "total_stale_and_probe_attempts": 50,
+    "attempt_count_note": "Raw verifier field old_ciphertext_attempts includes 48 ciphertext replays and 2 malformed probes; metadata separates the counts. Original derived report is retained unchanged."
+  },
+  "negative": {
+    "root": "local/research/codex/n1rb-quic-controls-isolated-r1",
+    "report": "local/research/codex/n1rb-quic-controls-isolated-r1/run.json",
+    "seal": "local/research/codex/n1rb-quic-controls-isolated-r1/seal.json",
+    "source_frozen": true,
+    "returncode": 0,
+    "source": "design",
+    "method": "test",
+    "test_binary_sha256": "ef27c532d602319f72caa4c0c74ed4554ff457f70cc7ad966c4510590b3032ae",
+    "capture_sha256": "b773977c0c50b00c657f61c382bab23601ef7fceae06f8848934ba73b5243aa0",
+    "limits": "Isolated loopback real QUIC owner/replay/reuse/restart/cert/capability controls with current payload reception assertions. Test evidence, not native KR or full-service-process restart acceptance."
+  },
+  "implementation": {
+    "changed_runtime_source": false,
+    "added": "Two real QUIC account controls in account_bridge/tests.rs; private phase1 configuration builder and operations page.",
+    "native_binary_baseline": "CP287/PR382 unchanged production service/companion binary. New Rust changes are cfg(test) only, not shipping runtime."
+  },
+  "verification": {
+    "tests": 156,
+    "workspace": "local/research/codex/n1rb-controls-tests-r1.txt",
+    "fmt": "local/research/codex/n1rb-controls-fmt-r1.txt",
+    "clippy": "local/research/codex/n1rb-controls-clippy-r1.txt",
+    "native": "local/research/codex/n1rb-restart-shared-native-r2/restart-shared-verification.json",
+    "getters": "local/research/codex/n1rb-restart-shared-native-r2/restart-shared-getter-verification.json",
+    "negative": "local/research/codex/n1rb-quic-controls-isolated-r1/seal.json",
+    "config": "local/research/codex/n1rb-phase1-config-r3/verification.json"
+  },
+  "retained_failures": [
+    {
+      "path": "local/research/codex/n1rb-service-controls-restart-test-r1.txt",
+      "result": "Initial test assumed immediate synchronous Quinn socket drop; AddrInUse. Read library async driver lifecycle, corrected to bounded5-second rebind readiness, no production change; isolated rerun passed."
+    },
+    {
+      "root": "local/research/codex/n1rb-restart-shared-native-r1",
+      "result": "exit1 before KR launch; copied DB lost required0600 mode, Store refused init. Source/raw/export/cleanup sealed; R2 preserves0600."
+    },
+    {
+      "path": "local/research/codex/n1rb-restart-shared-native-r2/decoded-channels.json",
+      "result": "First decoder used post-SNAT tuple against pre-SNAT capture and produced empty channels; not native failure. Wrong derived report kept; shared-source decoder maps declared peers and verifies exact wire/CRC/sequence/native identities in a separate output."
+    },
+    {
+      "path": "local/research/codex/n1rb-rosters-delivery-receipt.json",
+      "result": "PR387 pre-merge base-ancestor guard failed on concurrent language docs; multiline shell still invoked merge. Exact PR head checks/CI were green before merge; expected merged tree verified after. Actual merge adds only client-language.md, and full merged docs/raw/history passed. Deviation preserved; future dependent publication steps use checked subprocesses."
+    }
+  ],
+  "reuse": {
+    "current": "CP287 ownership/control and native4; CP288 native8/sparse/survivor. Native rerun only for restart/shared-source/old-ciphertext gap. Reuse independent TCP/UDP parsers and copied-native getters.",
+    "old": "Existing CP286/CP273 source survey and transport methodology, no new legacy/VN wire or authority imported.",
+    "avoids": "No N1b retry, repeated native4/8, account/profile RE or broad native59 trace."
+  },
+  "milestone": {
+    "N1Rb": "accepted_scoped",
+    "phase1": "open",
+    "remaining": "G1 and M6 then M8 per dashboard; authenticated transport actual Internet, load/soak/packaging and operation assurance remain M8."
+  }
+}

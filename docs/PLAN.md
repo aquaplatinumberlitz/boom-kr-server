@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, CP288 / AUD104**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, CP289 / AUD105**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -20,33 +20,31 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, C
 | M0–M3 nền tảng, phòng cố định, trận hai người | Đạt trong phạm vi đã ghi | Không |
 | M4 bốn và tám người | Đạt phần đội cố định và Manner | Free 1v7 là giới hạn đã biết, không retry |
 | M5 tài khoản | [M5b đạt giai đoạn 1](protocol/auth-session.md#rust-db-account-profiles): hồ sơ DB cho account mới, hai ván, native DB/hàng đợi và login KR sau phục hồi | Hồ sơ ban đầu bằng 0; persistence nhân vật/kết quả thuộc M6, recovery/vận hành còn giới hạn |
-| [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; relay xác thực đã đo bốn/tám người, roster thưa và active EOF; còn negative/restart bên dưới |
-| [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; relay ngoài prototype hai người và vận hành còn riêng |
+| [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; N1R-b đạt hành vi relay đã đo. Transport xác thực mới trên Internet thật và tải/vận hành còn M8 |
+| [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; N1R-b có bằng chứng riêng; vận hành còn M8 |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
 | [G1](#rust-g1) sáu map ladder và item | Đã đo điều kiện chọn Village10; chưa triển khai gameplay mới | Metadata map phải đồng bộ; spawn, terrain, floor và item chưa đo trên Village10 |
-| M6 lưu kết quả, thưởng 0 | Chưa bắt đầu; dependency R1 đã đạt | Sửa acceptance giai đoạn 1; thực hiện song song G1 |
+| M6 lưu kết quả, thưởng 0 | Chưa bắt đầu; dependency R1 và account DB đã đạt | Lịch sử trận, nhân vật đã chọn và exactly-once theo acceptance; song song G1 |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
 
-1. **N1R-b relay cho phòng nhiều người** đang làm. [Serving companion](protocol/udp-peer.md#rust-authenticated-serving-relay)
-   đã nối quyền account/session/channel/phòng và control từng vòng; native bốn/tám người, roster thưa sau rời,
-   active EOF với survivor chơi tiếp tới kết quả/reset và ván kế đã đạt trong LAN cô lập. Tiếp reuse vượt pool với
-   exact stale/current control, restart và giả mạo gói đầu giữa account chung IP. Không lặp native4/8, roster hoặc
-   ca DB đã có. Đây là điều kiện của đích giai đoạn 1. Packet 59 ở một lượt lỗi vẫn chưa rõ nguyên nhân;
-   chỉ mở trace thụ động đúng caller/input nếu tái hiện hoặc chặn vận hành, không suy sửa xong từ lượt positive.
-2. G1 song song M6. G1 cần adapter dữ liệu map nhất quán trước native gameplay mới. Không chạy lại baseline N1b.
-3. M8, gồm kiểm tải 50 người và 8 phòng có relay.
+1. **G1 song song M6.** N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
+   G1 bắt đầu adapter dữ liệu map nhất quán rồi Factory07 theo acceptance; không đụng `tools/export_map_profile.py`.
+   M6 triển khai lưu lịch sử trận, nhân vật đã chọn và thưởng 0; không đợi full gameplay RE. Không lặp native4/8,
+   roster, account/DB hoặc baseline N1b đã có.
+2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
+   N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. Packet59 ở một lượt
+   lỗi vẫn chưa rõ nguyên nhân; đếm lỗi trong M8, mở trace thụ động đúng caller/input nếu tái hiện/chặn vận hành.
 
 Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
 **Blocker và việc tồn:**
 
-- Direct UDP âm ở hai NAT đổi cổng trong recipe đã đo; N1b không retry. Relay opt-in đã đạt prototype hai người.
-  Cổng prototype không tái dùng trong instance nên có giới hạn số vòng. Companion xác thực đã nối account/room
-  và đo bốn người; snapshot route được trả lại, endpoint native cũ giữ riêng theo session có budget hữu hạn.
-  Native tám người và departure đã đo; spoof chung IP, reuse/restart đầy đủ và tải đích còn mở.
-  Một lượt native A phát packet59 dẫn tới nhánh từ chối chưa hỗ trợ; chưa rõ nguyên nhân, giữ lỗi và phép đo ở RESEARCH.
+- Direct UDP âm ở hai NAT đổi cổng; N1b không retry. Relay xác thực đã đạt hành vi N1R-b bằng native và runtime
+  controls theo ma trận, với [preset phục vụ và ngân sách cổng](OPERATIONS.md). Native mới dùng Wine/LAN cô lập;
+  Internet thật cho transport mới, tải, session budget và độ bền vận hành phải kiểm ở M8. Không mở lại K6c/K7.
+  Native59 ở một lượt lỗi chưa rõ nguyên nhân; chưa có contract để ACK/bỏ qua và không claim đã sửa.
 - M7a selection đã đo bốn profile; M7b lifecycle đã đo tám profile cấu hình và contiguous2/4/8. Occupancy chỉ phục hồi
   current/capacity, 20 byte còn lại giữ opaque. Opt-in M7e đã đo roster3/6/sparse và chosen-character Battle; native
   active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; chưa có progression hoặc inventory.
@@ -620,7 +618,9 @@ tiền, bảng xếp hạng, inventory. Schema chỉ giữ chỗ cho ledger và 
 - **Gói cho người chơi:** người chơi chạy client trên Wine; gói được thử trên cả Wine và Windows trong máy ảo theo
   [quyết định 12/11](evidence/owner-directives/player-environments.json). Gói gồm hướng dẫn, phiên bản Wine đã nghiệm
   thu, cách dựng prefix và cấu hình trỏ client tới server. Trên mỗi môi trường, từ một máy sạch không phải máy phát
-  triển: cài, đăng nhập, vào phòng và chơi hết một trận. Client chưa từng chạy trên Windows với server này, nên lượt
+  triển: cài, đăng nhập, vào phòng và chơi hết một trận qua đường server Internet thật của đích giai đoạn 1.
+  Transport companion xác thực mới chưa được đo Internet ở N1R-b; M8 phải kiểm trên gói triển khai đó.
+  Client chưa từng chạy trên Windows với server này, nên lượt
   Windows làm sớm trong M8 để còn thời gian xử lý nếu hỏng.
 - **Kiểm tải:** 50 người đồng thời và 8 phòng cùng chơi qua relay. Trước khi đo phải có tần suất gói UDP của một
   client thật và ngưỡng CPU, RAM, độ trễ chuyển tiếp, tỉ lệ rơi gói. Tải tổng hợp phát lại traffic đã thu; cùng
@@ -635,7 +635,7 @@ tiền, bảng xếp hạng, inventory. Schema chỉ giữ chỗ cho ledger và 
   ma và DB nhất quán. Diễn tập một lần nâng cấp binary rồi quay lại bản cũ.
 - **Lỗi khởi động client** ([#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9)): đếm tỉ lệ trong các
   lượt client thật của kiểm tải và chạy dài; tỉ lệ đáng kể thì mở lại.
-- Tài liệu vận hành một trang.
+- [Tài liệu vận hành](OPERATIONS.md) một trang: phần cấu hình relay đã có, bổ sung các luồng M8 còn thiếu.
 
 Không thuộc mốc: nhiều instance, nhiều kênh, HA, trực sự cố, chống gian lận ngoài phần đã có.
 
