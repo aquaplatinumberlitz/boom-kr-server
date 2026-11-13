@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, CP285 / AUD101**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, CP286 / AUD102**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -20,7 +20,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, C
 | M0–M3 nền tảng, phòng cố định, trận hai người | Đạt trong phạm vi đã ghi | Không |
 | M4 bốn và tám người | Đạt phần đội cố định và Manner | Free 1v7 là giới hạn đã biết, không retry |
 | M5 tài khoản | [M5b đạt giai đoạn 1](protocol/auth-session.md#rust-db-account-profiles): hồ sơ DB cho account mới, hai ván, native DB/hàng đợi và login KR sau phục hồi | Hồ sơ ban đầu bằng 0; persistence nhân vật/kết quả thuộc M6, recovery/vận hành còn giới hạn |
-| [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; relay opt-in đạt prototype hai người, còn mở rộng và vận hành |
+| [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; relay prototype hai người và nền companion có native control; N1R-b tích hợp còn mở |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; relay ngoài prototype hai người và vận hành còn riêng |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
 | [G1](#rust-g1) sáu map ladder và item | Đã đo điều kiện chọn Village10; chưa triển khai gameplay mới | Metadata map phải đồng bộ; spawn, terrain, floor và item chưa đo trên Village10 |
@@ -29,10 +29,12 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **13/11, C
 
 **Thứ tự việc:**
 
-1. **N1R-b relay cho phòng nhiều người** là việc kế tiếp: phòng bốn và phòng tám người chơi qua relay trên
+1. **N1R-b relay cho phòng nhiều người** đang làm: phòng bốn và phòng tám người chơi qua relay trên
    client thật, mỗi cỡ một lượt; dùng lại cổng và key khi hết pool và sau restart; chặn giả mạo gói đầu giữa hai
    người chung IP. M7e và M5b đã đạt trong phạm vi đã đo. Không lặp native roster, profile hoặc ca DB đã có.
-   Đây là điều kiện của đích giai đoạn 1.
+   [Nền companion](protocol/udp-peer.md#rust-authenticated-companion-foundation) đã có native control hai người
+   với route tĩnh. Tiếp nối capability vào account/channel/room, control cho từng vòng và roster bốn/tám người;
+   nền transport không tự đáp ứng các dòng nghiệm thu N1R-b. Đây là điều kiện của đích giai đoạn 1.
 2. G1 song song M6. G1 cần adapter dữ liệu map nhất quán trước native gameplay mới. Không chạy lại baseline N1b.
 3. M8, gồm kiểm tải 50 người và 8 phòng có relay.
 
@@ -41,7 +43,8 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
 **Blocker và việc tồn:**
 
 - Direct UDP âm ở hai NAT đổi cổng trong recipe đã đo; N1b không retry. Relay opt-in đã đạt prototype hai người.
-  Cổng không tái dùng trong instance nên có giới hạn số vòng; spoof giữa người chung IP, restart và tải đích còn mở.
+  Cổng prototype không tái dùng trong instance nên có giới hạn số vòng. Companion xác thực đã có control native
+  hai người, nhưng chưa nối account/room. Spoof, reuse/restart ở service và tải đích còn mở.
 - M7a selection đã đo bốn profile; M7b lifecycle đã đo tám profile cấu hình và contiguous2/4/8. Occupancy chỉ phục hồi
   current/capacity, 20 byte còn lại giữ opaque. Opt-in M7e đã đo roster3/6/sparse và chosen-character Battle; native
   active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; chưa có progression hoặc inventory.

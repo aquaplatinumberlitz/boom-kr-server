@@ -5,6 +5,14 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP285: M5b đã đủ đường account mới và đăng nhập KR sau khi DB/hàng đợi phục hồi.**
+Ba account tạo khi service đang chạy đã chơi hai trận; ca chung nguồn TCP giữ đúng danh tính. Lượt bổ sung xác nhận
+process KR thứ tư đăng nhập mới và nhận hồ sơ DB sau lỗi; CP284 trước đó mới kiểm phục hồi ở backend.
+[Contract/giới hạn](protocol/auth-session.md#rust-db-account-profiles),
+[bằng chứng bổ sung](evidence/rust-service/m5b-native-recovery.json). M5b đạt acceptance giai đoạn 1; relay nhiều
+người, G1, M6 và M8 còn mở. Tiếp N1R-b theo [Bảng điều hành](PLAN.md#dashboard).
+Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](HISTORY.md).
+
 **CP284: M5b đã đạt hồ sơ account từ DB và đường chơi cơ bản cho account tạo khi service đang chạy.**
 Ba account mới đã qua sảnh/phòng và hai trận liên tiếp; một lượt riêng kiểm chung nguồn TCP mà không lẫn danh tính.
 Trong ca DB bận và hàng đợi account đầy, cả ba client vẫn tạo bom/nổ; đăng nhập mới bị từ chối rõ ràng và phục hồi

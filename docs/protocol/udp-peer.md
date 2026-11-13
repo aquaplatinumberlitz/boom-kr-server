@@ -854,6 +854,39 @@ identity, profile hoặc DB. Không suy native hai người thành relay bốn/t
 
 Đường đo có một chặng Internet UDP và một phía tunnel qua SSH/TCP với SNAT kiểm soát; không đại diện mọi ISP/CGNAT.
 Topology, kiểu NAT, tham số thực, raw/hash/build/copy và cleanup giữ local theo quy tắc hạ tầng riêng.
-K6c/K7/N1 cũ và kết quả từng lượt giữ nguyên. Full M5, native hồi quy cuối R1 và đích dịch vụ nội bộ còn mở.
+K6c/K7/N1 cũ và kết quả từng lượt giữ nguyên. M5b và native hồi quy cuối R1 đã có bằng chứng riêng;
+N1R-b và đích dịch vụ nội bộ còn mở.
+
+
+<a id="rust-authenticated-companion-foundation"></a>
+### Companion xác thực: nền transport và phép kiểm client
+
+Nguồn: [metadata](../evidence/rust-service/n1rb-companion-foundation.json). Đây là **design** bên ngoài wire KR,
+với phép kiểm **kr_runtime/confirmed** chỉ cho endpoint và payload của hai client trong lab. Không gọi companion
+là cơ chế của server gốc. N1R-b vẫn theo [acceptance](../PLAN.md#phase1-acceptance), chưa đạt từ nền này.
+
+`kr-tunnel` là crate riêng chạy cạnh client: QUIC DATAGRAM qua Quinn/rustls/ring, certificate server được pin và
+capability kiểm trên control stream có deadline. Không chấp nhận đường bỏ kiểm certificate hoặc 0-RTT thay xác thực.
+Header route ID 128 bit và sequence 64 bit chỉ nằm trong companion, được tháo trước khi gửi UDP cho KR; không sửa
+packet153 hoặc thêm field giả vào native payload. Sequence window 64 cho reordering hữu hạn và chặn duplicate/old.
+ID route không đủ cấp quyền: adapter phục vụ còn phải đối chiếu authenticated owner, account/channel, room và round.
+
+Proxy bind loopback, chuyển tối đa 255 byte giữ nguyên nội dung và source socket hướng ngược mà native153 đã chỉ.
+Queue có giới hạn, dữ liệu chờ native tuple có TTL 500ms; tuple local đầu không tự rebind. Proxy không xác thực process
+cục bộ. Mỗi task/socket thuộc owner; stop có deadline và đợi child, không để task rời owner. Capability/endpoint/cert
+phải được phát qua launcher đã xác thực khi tích hợp; ví dụ lab chỉ có route/capability tĩnh và không được dùng làm
+dịch vụ game. Công cụ lab khác với contract account và không thay Python RE/reference.
+
+**Đã quan sát trên KR thật:** native153 nhận endpoint loopback; payload từ client A qua proxy A, QUIC hub và proxy B
+tới native B giữ đúng byte, và chiều ngược tương tự. Native ingress/current-key/helper và tọa độ actor thay đổi được
+đối chiếu với capture loopback hai đầu; capture mạng ngoài proxy ghi traffic QUIC. Hai kết quả trái nhau, reset và
+Start tiếp giữ stat/terrain baseline. Một ingress cuối cửa sổ đo có packet joins nhưng chưa có helper hoàn tất;
+không suy apply hoặc drop cho nó. Raw/hash, source freeze và cleanup đã seal trước mọi thay đổi tiếp.
+
+**Chưa chứng minh:** capability thuộc đúng session/channel/room trong serving; control cấp proxy route từng vòng;
+roster bốn/tám người, vacancy/departure và survivor; tái dùng cổng/key, restart và spoof giữa hai người chung IP công
+khai. Sai capability, certificate pin, route và replay mới có kiểm transport tổng hợp; không tự thành native attack
+acceptance. Chưa có nghiệm thu Internet, mọi loại UDP, tải hoặc đóng gói từ phép kiểm LAN cô lập này. Các run lỗi và
+capture thất bại được giữ riêng trong metadata, không sửa lịch sử prototype.
 
 <!-- protocol-topic-content-end -->

@@ -1,0 +1,225 @@
+{
+  "id": "CP286",
+  "previous": "CP285",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T11:19:16.062226+00:00",
+  "context_commit": "13b5568abc4f373608deca4d3ef3a46608b5d346",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / N1R-b foundation: client KR chấp nhận endpoint proxy loopback và UDP giữ nguyên qua companion xác thực không?",
+  "scope": "Nền kr-tunnel certificate-pinned QUIC/capability/replay/bounded proxy và native2 static private route control. Không serving ownership hoặc N1R-b closure; không đổi service runtime.",
+  "artifacts": [
+    {
+      "name": "kr-tunnel-native-proxy-lab",
+      "sha256": "8b3cb7d523aa5539f7be48329e9e20937f6b7e87c2b80d1960563eea2568a00a"
+    },
+    {
+      "name": "kr-service-existing-M5b",
+      "sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf"
+    },
+    {
+      "name": "KR00967-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation",
+    "docs/evidence/rust-service/n1rb-companion-foundation.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Hai native KR nhận loopback153, payload bytes nguyên qua companionQUIC và reverse source socket;98native applies,6changing/receiver qua2rounds,2opposite ranks/reset/Start3. PacketPCAP/seq/hash/native/getters độc lập.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation",
+      "evidence": [
+        "N1RB286-00012",
+        "N1RB286-00862",
+        "N1RB286-00861",
+        "N1RB286-01175"
+      ],
+      "limits": "Known fixed2/Wine/privateLAN/static lab routes only. One final ingress at observer boundary has no helper complete and no apply claim; no Internet or N1R-b closure."
+    },
+    {
+      "summary": "QUIC pin/capability, zeroized secret, bounded header/255payload/replay64 and loopback proxy child/queue cleanup implemented.149Rusttests incl4newtransport; wrongcap/cert/route/replay checks are synthetic, not native attacks.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation",
+      "evidence": [
+        "N1RB286-00012",
+        "N1RB286-00020",
+        "N1RB286-00018",
+        "N1RB286-00017",
+        "N1RB286-00016"
+      ],
+      "limits": "Capabilities not yet session/channel/room-bound. Local process not authenticated. Standard transport outside native wire; no original protocol/auth claim."
+    },
+    {
+      "summary": "R2/R3 prelaunch rejected;R4native interval lacks complete outercapture and exit1 retained. R5source frozen/raw/export/cleanup and exit0 verified; matching originalservicebinary, no runtime sourcechange.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation",
+      "evidence": [
+        "N1RB286-00012",
+        "N1RB286-01175",
+        "N1RB286-00844"
+      ],
+      "limits": "Failures are not accepted runs; counts/flow messages alone not native oracle."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native static-companion endpoint/payload/current-key/actor and life/reset control",
+      "result": "pass",
+      "evidence": [
+        "N1RB286-00862",
+        "N1RB286-00861",
+        "N1RB286-01175"
+      ],
+      "limits": "Bounded foundation only; no account integration,4/8/reuse/restart/spoof/load acceptance."
+    },
+    {
+      "check": "149 Rust workspace tests, fmt, Clippy all targets and locked lab build",
+      "result": "pass",
+      "evidence": [
+        "N1RB286-00020",
+        "N1RB286-00019",
+        "N1RB286-00018",
+        "N1RB286-00017"
+      ],
+      "limits": "Synthetic tests separate from native. Server dependencies retained; new pinned transport packages/buildinputs have provenance."
+    },
+    {
+      "check": "Manual foundation feature-group audit and scope reconciliation",
+      "result": "pass",
+      "evidence": [
+        "N1RB286-00009",
+        "N1RB286-00012",
+        "N1RB286-00005",
+        "N1RB286-00007"
+      ],
+      "limits": "Independent review waived; exact-head/local-history/CI before merge remain required."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP286-companion-foundation.json",
+      "bytes": 316391,
+      "sha256": "02086c16031213749025b90e7b6c5e3c6dfec343a5298e395a91c6d3773648ad",
+      "count": 1216
+    }
+  ],
+  "delta": {
+    "added": [
+      "kr-tunnel standard authenticated transport and loopback proxy foundation.",
+      "Native static2 control for unchanged payload/endpoints/life; new dependencies pinned with retainedbuildinputs."
+    ],
+    "corrected": [
+      "Capture topology from raw direct-only filter to full virtual bridge/hub in new run; priorfailure retained.",
+      "Issue snapshots M5b/M7e delivered; foundation does not close N1R-b."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "N1R-b vẫn mở: account/channel/room ownership, control cấp route và ACK từng vòng trước153, managed4/8/sparse/departure, reuse/restart và common-IP spoof.",
+    "Foundation/lab route tĩnh không production endpoint. QUIC capability không tự là account/session ownership; loopback proxy không xác thực process local.",
+    "Chỉ native2 Wine/LAN; không Internet/ISP/CGNAT/load/operational claims. G1/M6/M8 theo PLAN.",
+    "R1 preparation và R2/R3 prelaunch failure; R4 captureworker fail dù native interval có positive. R5 một ingress cuối window không helper complete, không claim apply cho nó."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "N1R-b ownership/control integration then native4/8/current-sparse/departure and reuse/restart/common-IP spoof perPLAN. No repeat of native static2 endpoint/payload control.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T11:19:16.062226+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo native/static transport tests and manual foundation feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/protocol/udp-peer.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền companion và giới hạn; N1R-b vẫn mở, M5b/M7e delivery snapshot thật."
+    },
+    {
+      "path": "docs/evidence/rust-service/n1rb-companion-foundation.json",
+      "state": "updated",
+      "reason": "Metadata native/source/test/reuse/failure boundaries."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, feature-group audit, source freeze, privacy và PR/exact-head/CI giữ nguyên."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-companion-transport-foundation"
+  ]
+}

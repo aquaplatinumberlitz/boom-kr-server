@@ -21,6 +21,12 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 | RE tiếp theo để làm gì? | Chỉ đo khoảng trống chặn lát cắt. Account zero-profile DB và native DB/queue fault đã có M5b; chỉ đo nhánh profile mới, relay hoặc consumer/lifecycle đang chặn mốc hiện hành, không nghiên cứu dàn trải |
 | Khi nào đủ bàn giao? | Theo tiêu chí demo, dịch vụ nội bộ và phát hành rộng hơn trong PLAN. Không hứa ngày; N1 đạt một phía tới được, N1b hai NAT đổi cổng âm. Chưa đủ vận hành 50 người/8 phòng |
 
+Nền transport mới cho N1R-b nằm ở `rust/crates/kr-tunnel`, tách khỏi `kr-wire` và `kr-service` vì phần companion
+chạy cạnh client người chơi. Đây là process phía người chơi để giữ nguyên UDP KR trong một transport có xác thực,
+không là microservice server mới. Quyết định và mức chứng minh ở
+[PROTOCOL](protocol/udp-peer.md#rust-authenticated-companion-foundation); quyền account/room, control từng vòng và
+đóng gói còn phải tích hợp theo PLAN. Service Python và đường `LegacyDirect` vẫn giữ vai trò hiện hành.
+
 ## Quyết định và căn cứ
 
 | Quyết định design | Lý do / điều kiện xem lại |

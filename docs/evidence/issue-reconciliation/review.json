@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP285",
+  "as_of": "CP286",
   "baseline": "39a401a2f114507c4669a373e7eded1fcea4f0fa",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -655,7 +655,7 @@
     {
       "number": 371,
       "kre": "KRE-074",
-      "classification": "in_progress",
+      "classification": "completed",
       "features": [
         "KR-R001",
         "KR-R002",
@@ -668,9 +668,9 @@
         "KR-X002",
         "KR-S001"
       ],
-      "known": "M7e đã đủ native tối thiểu: chosen0/1,3/6/sparse, active guest EOF4→3→2 với bom chờ, kết quả/reset/ván kế.",
-      "remaining": "PR giao cần exact-head/local-history và CI trước merge. Giữ Loading/Ending/interactive-exit/active-host/relay limits.",
-      "next_test": "Kiểm/giao M7e rồi tiếp M5b theo PLAN.",
+      "known": "M7e đã đủ native tối thiểu: chosen0/1,3/6/sparse, active guest EOF4→3→2 với bom chờ, kết quả/reset/ván kế. PR đã merge và exact-head/CI/tree đã đối chiếu.",
+      "remaining": "Giới hạn ngoài scope theo contract và PLAN; checkpoint/PR cũ giữ provenance.",
+      "next_test": "N1R-b theo dashboard.",
       "acceptance": "Hàng M7e trong PLAN:3 người,5–7 người,sparse và4 người mất endpoint tới kết quả/ván kế; mất hết đội thì thua.",
       "reason": "Native/PCAP/actor/getter độc lập; failures và cleanup addenda giữ nguyên, không dùng server logs hoặc fake ACK làm oracle.",
       "sources": [
@@ -681,21 +681,23 @@
       "evidence": [
         "docs/evidence/rust-service/m7e-selected-rosters.json"
       ],
-      "prs": [],
+      "prs": [
+        376
+      ],
       "successors": [],
       "reviewed_utc": "2026-11-12T15:19:49.777737+00:00"
     },
     {
       "number": 377,
       "kre": "KRE-074",
-      "classification": "in_progress",
+      "classification": "completed",
       "features": [
         "KR-L001",
         "KR-R001"
       ],
-      "known": "M5b đủ native account mới/profile DB, hai ván, chung nguồn TCP, DB/queue availability và process KR mới đăng nhập sau phục hồi. CP284 recovery chỉ backend; bổ sung CP285 bắt buộc khi đọc closure.",
-      "remaining": "Giao PR sau exact-head/local-history và CI. Profile ngoài zero/ASCII, graceful recovery và vận hành giữ scope riêng.",
-      "next_test": "Giao M5b rồi tiếp N1R-b theo dashboard.",
+      "known": "M5b đủ native account mới/profile DB, hai ván, chung nguồn TCP, DB/queue availability và process KR mới đăng nhập sau phục hồi. CP284 recovery chỉ backend; bổ sung CP285 bắt buộc khi đọc closure. PR đã merge và exact-head/CI/tree đã đối chiếu.",
+      "remaining": "Giới hạn ngoài scope theo contract và PLAN; checkpoint/PR cũ giữ provenance.",
+      "next_test": "N1R-b theo dashboard.",
       "acceptance": "docs/PLAN.md#phase1-acceptance",
       "reason": "Native readers/UI/TCP/UDP PCAP/copied getter và real SQLite fault; source/TCP negatives không thay oracle KR.",
       "sources": [
@@ -707,9 +709,35 @@
         "docs/evidence/rust-service/m5b-dynamic-accounts.json",
         "docs/evidence/rust-service/m5b-native-recovery.json"
       ],
-      "prs": [],
+      "prs": [
+        379
+      ],
       "successors": [],
       "reviewed_utc": "2026-11-12T15:19:49.777737+00:00"
+    },
+    {
+      "number": 380,
+      "kre": "KRE-074",
+      "classification": "in_progress",
+      "features": [
+        "KR-F015"
+      ],
+      "known": "Nền companion xác thực và native2 route tĩnh/unchanged payload/life đã có; source/TCP sai capability/cert/route/replay kiểm riêng.",
+      "remaining": "Serving account/channel/room, dynamic round controls, native4/8/sparse/departure, pool/keyreuse/restart và common-IP spoof.",
+      "next_test": "Nối ownership/control theo PLAN; không lặp endpoint/byte control đã đo.",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "reason": "Không suy native lab2 thành N1R-b; metadata giữ failures/boundary limits.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation",
+        "docs/RESEARCH.md#gap-relay-endpoint"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/n1rb-companion-foundation.json"
+      ],
+      "prs": [],
+      "successors": [],
+      "reviewed_utc": "2026-11-13T11:17:06.655328+00:00"
     }
   ],
   "as_of_utc": "2026-11-12T15:19:49.777737+00:00",

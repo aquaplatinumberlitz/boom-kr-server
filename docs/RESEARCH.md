@@ -122,12 +122,14 @@ Không nhận phân loại B sơ bộ của Village10 là toàn họ Village ho�
 Owner và tự kiểm: Codex. Relay đã tích hợp; reverse-edge forwarding có **kr_runtime/confirmed** trong phạm vi
 prototype hai người. [Contract](protocol/udp-peer.md#rust-relay-endpoint-scope),
 [evidence và reuse](evidence/rust-service/n1r-fixed2.json), [acceptance](PLAN.md#rust-relay).
-Không mở lại N1b baseline hoặc RE toàn peer graph. Các câu hỏi bounded về KR chấp nhận reverse socket,
+[Nền companion có xác thực](protocol/udp-peer.md#rust-authenticated-companion-foundation) đã có native control hai
+người/route tĩnh trong LAN; chỉ giải câu hỏi endpoint loopback và payload nguyên byte. Chưa có serving ownership
+hoặc native nhiều người. Không mở lại N1b baseline hoặc RE toàn peer graph. Các câu hỏi bounded về KR chấp nhận reverse socket,
 hai chiều/hai vòng, stale tới cổng đã nghỉ và EOF/pastdue đã có kết quả; chỉ phần sau còn mở.
 
 | Unknown | Backend policy hiện có | Phép đo tối thiểu khi milestone cần |
 |---|---|---|
-| Spoof first datagram giữa session chung IP | Account cấp route, IP là restriction, pin tuple đầu; không nhận CRC/key là MAC | Cần quyết định mức assurance và phép đo correlator/wire hoặc kênh launcher riêng trước tuyên bố chống giả mạo. TCP chung IP không thay native UDP isolation. |
+| Spoof first datagram giữa session chung IP | Account cấp route, IP là restriction, pin tuple đầu; không nhận CRC/key là MAC | Chọn companion QUIC có pin/capability ngoài native wire; sai capability/route/replay đã kiểm transport. Cần nối owner session/channel và đo spoof tại serving; TCP chung IP không thay native UDP isolation. |
 | NAT rebinding hoặc lease hết hạn trong trận dài | Từ chối tuple mới, queue và lease có TTL hữu hạn | Đo migration/timeout với current positive nếu chọn hỗ trợ; hiện tại fail closed, không tự rebind. |
 | Port reuse/restart và gói cũ gửi vào cổng đang active | Giữ cổng đã nghỉ, không tái dùng trong instance; guard low-byte key chỉ trong instance | Trước vận hành lâu dài phải chọn lifetime/reuse policy rồi đo exact stale/current qua reuse và restart. Generation RAM không chặn raw UDP. |
 | Mọi loại UDP, PMTU và kích thước | Relay forward nguyên byte tối đa 255; không có authority gameplay | Chỉ đo type hoặc kích thước đang chặn G1/M7; không suy movement helper bao phủ toàn game. |

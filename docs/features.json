@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP285",
+  "as_of": "CP286",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -2179,7 +2179,8 @@
           "docs/evidence/rust-service/README.md#cp252",
           "docs/evidence/rust-service/m7b-duel-lifecycle.json",
           "docs/evidence/rust-service/m7b-team-rosters.json",
-          "docs/evidence/rust-service/m7e-selected-rosters.json"
+          "docs/evidence/rust-service/m7e-selected-rosters.json",
+          "docs/evidence/rust-service/n1rb-companion-foundation.json"
         ]
       },
       "coverage": {
@@ -2224,7 +2225,8 @@
               "docs/evidence/rust-service/README.md#cp250",
               "docs/evidence/rust-service/m7b-duel-lifecycle.json",
               "docs/evidence/rust-service/m7b-team-rosters.json",
-              "docs/protocol/room-membership.md#rust-selected-player-rounds"
+              "docs/protocol/room-membership.md#rust-selected-player-rounds",
+              "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation"
             ]
           },
           "windows_original": {
@@ -2258,7 +2260,8 @@
             "docs/evidence/rust-service/README.md#cp250",
             "docs/protocol/room-membership.md#rust-managed-duel-lifecycle",
             "docs/protocol/room-membership.md#rust-managed-team-rosters",
-            "docs/protocol/room-membership.md#rust-selected-player-rounds"
+            "docs/protocol/room-membership.md#rust-selected-player-rounds",
+            "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation"
           ],
           "delivery": "via_pr"
         },
@@ -3961,7 +3964,8 @@
           "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
           "docs/evidence/rust-service/relay-endpoint-design.json",
           "docs/evidence/rust-service/n1r-fixed2.json",
-          "docs/evidence/rust-service/r1-native-final.json"
+          "docs/evidence/rust-service/r1-native-final.json",
+          "docs/evidence/rust-service/n1rb-companion-foundation.json"
         ]
       },
       "coverage": {
@@ -3995,7 +3999,8 @@
               "docs/evidence/peer-endpoints/README.md#cp193",
               "docs/protocol/networks.md#nat-two-cycles",
               "docs/protocol/networks.md#rust-n1b-dual-nat",
-              "docs/protocol/udp-peer.md#rust-relay-endpoint-scope"
+              "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
+              "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation"
             ]
           },
           "windows_original": {
@@ -4019,7 +4024,8 @@
           "state": "partial",
           "refs": [
             "docs/protocol/udp-peer.md#rust-relay-endpoint-scope",
-            "docs/evidence/rust-service/n1r-fixed2.json"
+            "docs/evidence/rust-service/n1r-fixed2.json",
+            "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation"
           ],
           "delivery": "baseline_merged"
         },
@@ -4044,7 +4050,8 @@
       },
       "issues": [
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/380"
       ]
     },
     {

@@ -1,26 +1,35 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-12T16:26:12.916279+00:00",
+  "captured_utc": "2026-11-13T11:17:06.651794+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
-      "body": "KRE-074 / RUST-M5b. Owner/self-check: Codex solo, independent review waived. Baseline: CP283/AUD099, PR #376 (delivery pending exact-head/CI), source b682e20. Feature IDs: KR-L001, KR-L002, KR-R001, KR-R002, KR-R004, KR-X002, KR-S001, KR-S002.\n\nTheo [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), phải có:\n- Admin tạo account bằng CLI khi service đang chạy, không sửa config/restart; account mới vào sảnh/phòng, hết trận và ván kế.\n- Tên/profile gửi client từ DB, không fixture theo account; hai account mới chung IP không lẫn identity.\n- Native DB bận hoặc login queue đầy không ảnh hưởng trận đang chơi; login mới nhận lỗi rõ, hồi DB thì đăng nhập được.\n- Sai mật khẩu, ban và duplicate login dùng bộ TCP hiện có.\n\nKhông tự thêm đăng ký trong client, EXP, tiền hay inventory. [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md) giữ wire/limits; [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#rust-service-gaps) giữ unknown; dashboard là thứ tự duy nhất.\n\nSource-first: own291 zero-profile/Player106 shape có nguồn nhưng adapter chỉ cho cấu hình profile trước; token đã gắn backend owner nên không dùng IP để chọn profile. M7d deliberately fails closed on any DB/queue error; phải đổi thiết kế availability có kiểm, không bỏ qua revoke/expiry hoặc coi cache là quyền vô hạn.\n\nFiles: rust kr-wire profile/kr00967, account_serving/account_bridge/account_worker/accounts, lib/room_service/room_io và harness/tests; docs theo cơ chế. Không đụng tools/export_map_profile.py, không đổi raw/history. Lát cắt projection và auth/queue failure tách commit/kiểm; native/shared-IP/fault control trước nghiệm thu. Wine/LAN giả lập hợp lệ, hạ tầng thực chỉ local.\n",
+      "body": "KRE-074 / N1R-b. Owner/self-check: Codex solo, independent review waived. Baseline: PR #379 exact head 83856c3, CP285/AUD101; merge/delivery tracked separately. Feature IDs: KR-F015, KR-F003, KR-R001, KR-X002, KR-S001.\n\nAcceptance/work order: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance). Native KR four and eight players each complete result/reset/next match through relay. Include sparse next roster, active departure with survivors continuing, reuse beyond a small pool, restart and stale negative/current positive, and first-datagram spoof rejection between accounts sharing a public IP. Document port budget for eight rooms of eight. Load remains M8; no N1b retry.\n\nReuse: measured fixed2 reverse-edge relay and M7e roster/participant snapshots, M5b DB-owned profiles/WAL authority checks. Raw UDP prototype learns a first tuple from source IP and consumes ports forever; it cannot establish authenticated first ownership or reuse/restart. Do not call CRC/low8 native key authentication.\n\nCandidate implementation starts with a small authenticated companion transport around unchanged native KR UDP, followed by native endpoint/unchanged-byte control before four/eight integration. Keep transport design distinct from recovered KR wire. Require full service/room/round/member generations and fresh transport authority, bounded queues, per-member retirement, replay/stale fences, and exact raw/hash/owned cleanup. Preserve diagnostic LegacyDirect and existing prototype until replacements meet acceptance.\n\nFiles: Rust transport companion module/crate and integration in relay/room/epoch/account serving as justified; tests/harness; existing PLAN/PROTOCOL/RESEARCH/catalog/evidence. Do not touch tools/export_map_profile.py or change completed checkpoints/raw. Infrastructure identifiers/configuration remain local only. No gate closure from source/TCP, process alive, logs or generated encoder. Deliver grouped checkpoint/audit, exact-head local/history checks and green CI before merge.\n\nNguồn chuẩn: [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md) giữ contract/limits; [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-relay-endpoint) giữ unknown/phép kiểm tiếp. PLAN giữ thứ tự duy nhất.\n",
       "closedAt": null,
-      "number": 377,
+      "number": 380,
       "state": "OPEN",
-      "title": "KRE-074: M5b DB-owned profiles for runtime-created accounts and active-game availability",
-      "updatedAt": "2026-11-12T15:37:50Z",
-      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/377"
+      "title": "KRE-074: N1R-b authenticated relay for managed rosters, reuse and restart",
+      "updatedAt": "2026-11-13T11:18:59Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/380"
     },
     {
       "body": "KRE-074 / RUST-M7e. Baseline: PR #370 merged at 88c2458; CP282/AUD098. Owner/self-check: Codex solo; independent review waived. Feature IDs: KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-X001, KR-X002, KR-S001.\n\nTheo [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard): roster tự do 2–8 và slot sparse; đội/lựa chọn từ M7c; Start/stat sinh từ nhân vật chọn, không fixture theo slot. Bao gồm rời/rớt mạng giữa trận: survivor tiếp tục, kết quả khi đội hết người và ván kế với roster còn lại. Native tối thiểu 3 người, 5–7 người, sparse sau vacancy và 4 người mất một giữa trận tới kết quả/ván kế. Free 1v7 giữ giới hạn đã biết, không retry.\n\nReuse: M7a–d room/choice/lifecycle/ownership; stat dataset KR00967 có nguồn. Native control mới đảo riêng Start row u16/keys0–1 đã đổi đúng hai bộ sáu stat trên cả hai client, không thay slot/spawn/team. Đây mới là căn cứ nối profile, chưa chứng minh UI→Battle hoặc toàn M7e. Phép thử trước bị terrain pin guard chặn đã seal; không nới guard.\n\nFiles: rust/crates/kr-wire/src/kr00967/{room,battle}.rs, room/rules/room_io/room_service/room_wire/peer_routes/life/result adapters và tests khi cần; docs/metadata theo cơ chế. Không đụng tools/export_map_profile.py hoặc G1 riêng.\n\n[PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md) giữ contract; [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-room-occupancy) giữ unknown; PLAN giữ thứ tự duy nhất. M5b theo sau; relay nhiều người/restart, G1/M6, M8 giữ scope riêng. Không thêm capacity flags, alias identity hoặc nhánh capacity()==N mới vào lõi phòng.\n\nTriển khai theo lát cắt có thể kiểm: wire/stat projection → tích hợp selection và Start → roster/peer/result → active departure. Candidate hoặc source/TCP không tự là KR-native contract. Chỉ nghiệm thu khi đủ native/raw/hash/cleanup và ca âm tính; giao PR sau audit nhóm, exact-head và CI.\n",
-      "closedAt": null,
+      "closedAt": "2026-11-12T15:47:46Z",
       "number": 371,
-      "state": "OPEN",
+      "state": "CLOSED",
       "title": "KRE-074: M7e selected-character profiles, flexible roster and survivors",
-      "updatedAt": "2026-11-12T13:43:23Z",
+      "updatedAt": "2026-11-12T15:47:46Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371"
+    },
+    {
+      "body": "KRE-074 / RUST-M5b. Owner/self-check: Codex solo, independent review waived. Baseline: CP283/AUD099, PR #376 (delivery pending exact-head/CI), source b682e20. Feature IDs: KR-L001, KR-L002, KR-R001, KR-R002, KR-R004, KR-X002, KR-S001, KR-S002.\n\nTheo [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), phải có:\n- Admin tạo account bằng CLI khi service đang chạy, không sửa config/restart; account mới vào sảnh/phòng, hết trận và ván kế.\n- Tên/profile gửi client từ DB, không fixture theo account; hai account mới chung IP không lẫn identity.\n- Native DB bận hoặc login queue đầy không ảnh hưởng trận đang chơi; login mới nhận lỗi rõ, hồi DB thì đăng nhập được.\n- Sai mật khẩu, ban và duplicate login dùng bộ TCP hiện có.\n\nKhông tự thêm đăng ký trong client, EXP, tiền hay inventory. [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md) giữ wire/limits; [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#rust-service-gaps) giữ unknown; dashboard là thứ tự duy nhất.\n\nSource-first: own291 zero-profile/Player106 shape có nguồn nhưng adapter chỉ cho cấu hình profile trước; token đã gắn backend owner nên không dùng IP để chọn profile. M7d deliberately fails closed on any DB/queue error; phải đổi thiết kế availability có kiểm, không bỏ qua revoke/expiry hoặc coi cache là quyền vô hạn.\n\nFiles: rust kr-wire profile/kr00967, account_serving/account_bridge/account_worker/accounts, lib/room_service/room_io và harness/tests; docs theo cơ chế. Không đụng tools/export_map_profile.py, không đổi raw/history. Lát cắt projection và auth/queue failure tách commit/kiểm; native/shared-IP/fault control trước nghiệm thu. Wine/LAN giả lập hợp lệ, hạ tầng thực chỉ local.\n",
+      "closedAt": "2026-11-12T16:55:18Z",
+      "number": 377,
+      "state": "CLOSED",
+      "title": "KRE-074: M5b DB-owned profiles for runtime-created accounts and active-game availability",
+      "updatedAt": "2026-11-12T16:55:18Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/377"
     },
     {
       "body": "KRE-074 / RUST-M7d. Baseline: PR #368 merged at ae5b5ec; CP281/AUD097. Owner/self-check: Codex solo; independent review waived by project owner. Feature IDs: KR-L001, KR-R001, KR-R002, KR-R003, KR-R004, KR-F015, KR-S001, KR-S002, KR-X002.\n\nAcceptance and work order: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard) and M7d row. Integrate account/session/transport ownership with managed rooms: no duplicate player slots, wrong-room/outsider-host/stale membership denied, EOF/expiry/revoke/DB failure leave no ghost membership or old work in another room.\n\nReuse CP258 account/basic and CP276/279/280/281 managed runtime. New evidence: real SQLite/TCP ownership and failure cases; native active account revoke in Alpha with pending blast while Beta remains current, results/reset, PCAP/native consumer/raw/hash and owned cleanup. Keep synthetic proof separate from native. M5b retains arbitrary profile and native DB-queue fault debt. M7e retains arbitrary roster, selected-character Start/stat and survivor continuation. No new capacity flags, aliasing, G1 or relay scope.\n\nFiles: tools/test_rust_managed_ownership.py; rust/crates/kr-service/src/{account_bridge,room_service,room_io,lib}.rs only if a concrete discrepancy requires a fix; current PLAN/contract/RESEARCH/catalog/evidence/checkpoint metadata. Runtime helpers/raw remain local and immutable after sealing. Do not touch tools/export_map_profile.py.\n\nDeliver via PR after relevant tests, manual feature-group audit, docs/catalog, full local/history and exact-head checks plus green CI. Full M7 stays open for M7e.\n\nNguồn chuẩn: [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md) và [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-room-occupancy). Native/TCP evidence đã đạt scope M7d; delivery đang chờ PR, exact head và CI.\n",
@@ -672,6 +681,32 @@
     }
   ],
   "pull_requests": [
+    {
+      "baseRefName": "main",
+      "headRefName": "rust/m7e-selected-roster",
+      "headRefOid": "b682e20d424d6e98fa09278cf0f1c87d5f93e3aa",
+      "mergeCommit": {
+        "oid": "0a5596e4e60c09bea5de88209627555c07cdbb00"
+      },
+      "mergedAt": "2026-11-12T15:47:44Z",
+      "number": 376,
+      "state": "MERGED",
+      "title": "feat: start rounds from player choices and continue after active EOF",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/376"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "rust/m5b-dynamic-accounts",
+      "headRefOid": "83856c3891461aa418c929255d501bdf90eb1e8c",
+      "mergeCommit": {
+        "oid": "13b5568abc4f373608deca4d3ef3a46608b5d346"
+      },
+      "mergedAt": "2026-11-12T16:55:16Z",
+      "number": 379,
+      "state": "MERGED",
+      "title": "M5b: hồ sơ account từ DB và gameplay tiếp tục khi DB/hàng đợi bận",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/379"
+    },
     {
       "headRefOid": "61958a58b7c2a2b0dad066e5308b68275b3e006c",
       "mergeCommit": {
