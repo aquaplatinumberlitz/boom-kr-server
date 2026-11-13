@@ -499,3 +499,247 @@ fn worker_idle_renews_only_correct_owner_and_external_revoke_still_wins() {
         assert_eq!(temp.active(), 0);
     });
 }
+
+#[test]
+fn persistence_jobs_are_bounded_cancel_queued_work_retry_committed_events_and_keep_live_lane_separate()
+ {
+    use accounts::{
+        MatchEndReason, MatchExit, MatchFinish, MatchKey, MatchOutcome, MatchParticipant,
+        MatchPlayerFinish, MatchStart,
+    };
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let now = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_secs() as i64;
+        let mut store = Store::open(&temp.db()).unwrap();
+        let a = store.lookup("alice").unwrap();
+        let b = store
+            .create_account(&admin(), "bob", "Bob", PASSWORD, now)
+            .unwrap();
+        let begun = MatchStart {
+            key: MatchKey {
+                boot_epoch: 1,
+                room_session: 1,
+                room_id: 1,
+                room_generation: 1,
+                round: 256,
+            },
+            map_code: 278,
+            map_name: "ExVillage01".into(),
+            started_at: now,
+            players: vec![
+                MatchParticipant {
+                    account_id: a.account_id,
+                    player_id: a.player_id,
+                    slot: 0,
+                    character_key: 0,
+                    team: 0,
+                },
+                MatchParticipant {
+                    account_id: b.account_id,
+                    player_id: b.player_id,
+                    slot: 1,
+                    character_key: 1,
+                    team: 3,
+                },
+            ],
+        };
+        let worker = Worker::open(temp.db(), 1, Duration::from_secs(2))
+            .await
+            .unwrap();
+        let c = worker.client();
+        let resume = pause(&c).await;
+        let pending = c
+            .try_persist(PersistenceJob::BeginMatch(begun.clone()))
+            .unwrap();
+        assert!(matches!(
+            c.try_persist(PersistenceJob::BeginMatch(begun.clone())),
+            Err(Error::Busy)
+        ));
+        drop(pending);
+        resume.send(()).unwrap();
+        let ready = pause(&c).await;
+        assert_eq!(
+            temp.sql()
+                .query_row("SELECT count(*) FROM matches", [], |r| r.get::<_, i64>(0))
+                .unwrap(),
+            0
+        );
+        ready.send(()).unwrap();
+        let pending = c
+            .try_persist(PersistenceJob::BeginMatch(begun.clone()))
+            .unwrap();
+        // Do not consume the successful result: the same durable key recovers it.
+        tokio::time::timeout(Duration::from_secs(3), async {
+            loop {
+                if temp
+                    .sql()
+                    .query_row("SELECT count(*) FROM matches", [], |r| r.get::<_, i64>(0))
+                    .unwrap()
+                    == 1
+                {
+                    break;
+                }
+                tokio::time::sleep(Duration::from_millis(5)).await;
+            }
+        })
+        .await
+        .unwrap();
+        drop(pending);
+        let PersistenceResult::Match(first) = c
+            .try_persist(PersistenceJob::BeginMatch(begun.clone()))
+            .unwrap()
+            .wait()
+            .await
+            .unwrap()
+        else {
+            panic!("wrong persistence result")
+        };
+        let finish = MatchFinish {
+            ended_at: now,
+            reason: MatchEndReason::Elimination,
+            players: vec![
+                MatchPlayerFinish {
+                    slot: 0,
+                    outcome: MatchOutcome::Win,
+                    exit: MatchExit::Present,
+                },
+                MatchPlayerFinish {
+                    slot: 1,
+                    outcome: MatchOutcome::Loss,
+                    exit: MatchExit::Present,
+                },
+            ],
+        };
+        let mut writer = temp.sql();
+        let lock = writer
+            .transaction_with_behavior(rusqlite::TransactionBehavior::Immediate)
+            .unwrap();
+        assert!(matches!(
+            c.try_persist(PersistenceJob::FinishMatch(
+                begun.key.clone(),
+                finish.clone()
+            ))
+            .unwrap()
+            .wait()
+            .await,
+            Err(Error::Backend(accounts::Error::Busy))
+        ));
+        lock.rollback().unwrap();
+        let PersistenceResult::Match(ended) = c
+            .try_persist(PersistenceJob::FinishMatch(
+                begun.key.clone(),
+                finish.clone(),
+            ))
+            .unwrap()
+            .wait()
+            .await
+            .unwrap()
+        else {
+            panic!("wrong persistence result")
+        };
+        assert_eq!(ended.id, first.id);
+        let PersistenceResult::Match(duplicate) = c
+            .try_persist(PersistenceJob::FinishMatch(begun.key.clone(), finish))
+            .unwrap()
+            .wait()
+            .await
+            .unwrap()
+        else {
+            panic!("wrong persistence result")
+        };
+        assert_eq!(ended, duplicate);
+        let live = Worker::open_live(temp.db(), 1, Duration::from_secs(1))
+            .await
+            .unwrap();
+        assert!(matches!(
+            live.client()
+                .try_persist(PersistenceJob::BeginMatch(begun.clone()))
+                .unwrap()
+                .wait()
+                .await,
+            Err(Error::InvalidInput)
+        ));
+        live.shutdown().await.unwrap();
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn persistence_preference_queue_expiry_and_revocation_cannot_publish_late_character() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let now = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_secs() as i64;
+        let mut store = Store::open(&temp.db()).unwrap();
+        let g = store.login("alice", PASSWORD, 60, now).unwrap();
+        let worker = Worker::open(temp.db(), 1, Duration::from_millis(30))
+            .await
+            .unwrap();
+        let c = worker.client();
+        let token = || Token::parse(g.token.expose_secret()).unwrap();
+        let resume = pause(&c).await;
+        let pending = c
+            .try_persist(PersistenceJob::SelectCharacter {
+                token: token(),
+                player: g.player.player_id,
+                character: 1,
+                expected_revision: 0,
+            })
+            .unwrap();
+        tokio::time::sleep(Duration::from_millis(50)).await;
+        resume.send(()).unwrap();
+        assert!(matches!(pending.wait().await, Err(Error::QueueExpired)));
+        let PersistenceResult::Character(initial) = c
+            .try_persist(PersistenceJob::Character {
+                token: token(),
+                player: g.player.player_id,
+            })
+            .unwrap()
+            .wait()
+            .await
+            .unwrap()
+        else {
+            panic!("wrong persistence result")
+        };
+        assert_eq!(initial.revision, 0);
+        let resume = pause(&c).await;
+        let pending = c
+            .try_persist(PersistenceJob::SelectCharacter {
+                token: token(),
+                player: g.player.player_id,
+                character: 1,
+                expected_revision: 0,
+            })
+            .unwrap();
+        store
+            .revoke(
+                &admin(),
+                g.player.account_id,
+                std::time::SystemTime::now()
+                    .duration_since(std::time::UNIX_EPOCH)
+                    .unwrap()
+                    .as_secs() as i64,
+            )
+            .unwrap();
+        resume.send(()).unwrap();
+        assert!(matches!(
+            pending.wait().await,
+            Err(Error::Backend(accounts::Error::InvalidSession))
+        ));
+        assert_eq!(
+            temp.sql()
+                .query_row("SELECT count(*) FROM player_preferences", [], |r| r
+                    .get::<_, i64>(0))
+                .unwrap(),
+            0
+        );
+        worker.shutdown().await.unwrap();
+    });
+}

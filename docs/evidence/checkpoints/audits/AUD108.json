@@ -1,0 +1,85 @@
+{
+  "id": "AUD108",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-m6-backend-worker"
+  ],
+  "completed_through": "CP292",
+  "recorded_utc": "2026-11-13T15:29:35.694761+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/m6-match-store.json",
+    "docs/protocol/life-results.md",
+    "docs/protocol/auth-session.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-service/migrations/0003_match_history.sql",
+    "rust/crates/kr-service/src/accounts.rs",
+    "rust/crates/kr-service/src/accounts/matches.rs",
+    "rust/crates/kr-service/src/accounts/preferences.rs",
+    "rust/crates/kr-service/src/account_worker.rs",
+    "rust/crates/kr-service/src/account_bridge.rs",
+    "rust/crates/kr-service/src/bin/kr-admin.rs",
+    "local/research/codex/m6-store-retained-r3/seal.json",
+    "local/research/codex/m6-store-retained-r3/tests.txt",
+    "local/research/codex/m6-store-bridge-retained-verification.json",
+    "local/research/codex/m6-native-db-upgrade-r3/verification.json",
+    "local/research/codex/g1-map-adapter-delivery-receipt.json"
+  ],
+  "method": "Đọc core docs, owner M6 reward0 acceptance, schema/migration/store transaction/worker/bridge API, actual raw SQLite và SIGKILL records.28 retained DB quick_check/FK/unique key/zero reward; hai kill controls before/after restart,2history CLI reads.31isolated account/worker/bridge tests và170workspace tests trên baseline đã merge G1, fmt/clippy/build. Schema1/2 preserve/invalid/corrupt/full rollback, existing quiescent native DB-copy upgrade giữ old tables. Manual distinction library/backend evidence from unimplemented native result/preference path. PR392 exact head/raw/CI/preverified merge tree retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Kết quả và nhân vật không có kho durable/idempotency độc lập gameplay RE.",
+      "correction": "Schema3 thêm match key/snapshot/per-player outcomes and zero reward transaction; preference revision/session fences và history CLI. Store/worker/bridge controls đạt nhưng không coi là M6 end-to-end.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-match-store.json",
+        "docs/protocol/life-results.md#rust-match-store-backend",
+        "docs/PLAN.md",
+        "rust/crates/kr-service/src/accounts/matches.rs",
+        "rust/crates/kr-service/src/accounts/preferences.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Restart có thể biến trận dở thành thắng/thua hoặc để running rows ma.",
+      "correction": "begin_instance cancellation cùng epoch/session/audit transaction; SIGKILL after start-only commit→cancelled/unknown và after outcome commit→exact unchanged result. Audit failure rollback toàn transaction.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-match-store.json",
+        "docs/protocol/life-results.md#rust-match-store-backend",
+        "rust/crates/kr-service/src/accounts.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Lost result/queued jobs hoặc stale preference có thể tạo duplicate/ghi đè sau phiên mới.",
+      "correction": "Exact event/revision retry; key/content conflict, drop/TTL/Busy normal worker, live lane reject. Channel API bound player/token và recheck frontend/DB after await; serving vẫn chưa gọi các seam này.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-match-store.json",
+        "rust/crates/kr-service/src/account_worker.rs",
+        "rust/crates/kr-service/src/account_bridge.rs"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Schema upgrade hoặc CLI history có thể bị gọi là native recovery/production restore.",
+      "correction": "Nâng đúng frozen quiescent schema2 DB copy và giữ old tables; source with WAL precondition refused unchanged. No native relogin or backup/restore claim. Old migration test target/version và stale test clock failures preserved.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-match-store.json",
+        "docs/protocol/life-results.md#rust-match-store-backend",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "M6 vẫn mở: nối snapshot/commit-before-Start và result wire, cancel/EOF/shutdown/retry với current room/round ownership.",
+    "Preference seam đã có DB/session/revision guard nhưng chưa nối vào lựa chọn phòng/room projection/fresh native login.",
+    "Native một trận rồi login lại, reward0 trên KR và DB-busy/kill theo đường serving còn bắt buộc; backend/component test không thay native.",
+    "G1 adapter đã giao PR392; UI map selection, kim/cứu, terrain/item/các map khác và nhân vật còn riêng.",
+    "M8 còn Internet companion mới, packaging/load/soak/recovery/operation; không rollback bằng downgrade schema3 hoặc xóa DB."
+  ]
+}

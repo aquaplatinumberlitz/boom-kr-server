@@ -1,6 +1,6 @@
 //! Local trusted-administrator interface. JSON credentials are stdin-only.
 #![forbid(unsafe_code)]
-use kr_service::accounts::{Admin, Error, SCHEMA_VERSION, Store, Token};
+use kr_service::accounts::{Admin, Error, HistoryFilter, SCHEMA_VERSION, Store, Token};
 use serde::Deserialize;
 use serde_json::{Value, json};
 use std::{
@@ -25,6 +25,10 @@ struct Request {
 #[derive(Deserialize)]
 #[serde(tag = "op", deny_unknown_fields)]
 enum Command {
+    #[serde(rename = "match-history-account")]
+    MatchHistoryAccount { account_id: i64, limit: u8 },
+    #[serde(rename = "match-history-room")]
+    MatchHistoryRoom { room_id: u32, limit: u8 },
     #[serde(rename = "init")]
     Init {},
     #[serde(rename = "begin-instance")]
@@ -88,6 +92,12 @@ fn run() -> Result<Value, Error> {
     .map_err(|_| Error::ClockRollback)?;
     let mut s = Store::open(Path::new(&args[1]))?;
     Ok(match r.command {
+        Command::MatchHistoryAccount { account_id, limit } => {
+            json!({"matches":s.match_history(&admin,HistoryFilter::Account(account_id),limit)?})
+        }
+        Command::MatchHistoryRoom { room_id, limit } => {
+            json!({"matches":s.match_history(&admin,HistoryFilter::Room(room_id),limit)?})
+        }
         Command::Init {} => json!({"schema":SCHEMA_VERSION}),
         Command::BeginInstance {} => json!({"epoch":s.begin_instance(&admin,now)?}),
         Command::Create {

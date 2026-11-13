@@ -33,12 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP291: sửa kiểm provenance source test tích hợp, giữ nguyên bằng chứng Factory07.**
-Checker nay kiểm source test Rust đã pin bằng đúng declaration và blob tại commit công bố checkpoint gốc;
-[giới hạn/correction](docs/evidence/checkpoints/integration-test-source-correction.json). Không sửa checkpoint/raw cũ.
-Lát adapter G1 đã có byte baseline và native Factory07; [contract](docs/protocol/load-phase.md#rust-map-profile-adapter)
-giữ giới hạn terrain/item, chọn map và các map còn lại. M6 backend đang ở nhánh riêng, chưa nối native persistence.
-Theo [Bảng điều hành](docs/PLAN.md#dashboard), tiếp G1 song song M6 rồi M8; transport mới chưa kiểm Internet thật.
+**CP292: M6 đã có backend và worker lưu lịch sử trận, preference nhân vật và thưởng 0.**
+SQLite có khóa trận ổn định, retry không trùng, cancellation sau restart và kiểm kill ngay sau commit; CLI đọc lịch sử
+account/phòng. [Contract/giới hạn](docs/protocol/life-results.md#rust-match-store-backend),
+[bằng chứng](docs/evidence/rust-service/m6-match-store.json). **M6 chưa đóng:** còn nối commit trước kết quả trên wire,
+lưu nhân vật từ phòng và native relogin/persistence. G1 adapter Factory07 đã giao; chọn map, terrain/item và các map khác
+vẫn mở theo [Bảng điều hành](docs/PLAN.md#dashboard). M8 còn triển khai Internet transport mới và vận hành.
 
 ## Bắt đầu
 

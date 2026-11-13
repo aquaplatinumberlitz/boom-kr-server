@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP290",
+  "as_of": "CP292",
   "baseline": "39a401a2f114507c4669a373e7eded1fcea4f0fa",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -746,13 +746,13 @@
     {
       "number": 390,
       "kre": "KRE-074",
-      "classification": "in_progress",
+      "classification": "completed",
       "features": [
         "KR-R003"
       ],
-      "known": "Lát adapter có byte baseline/native Factory07; source/cache negative controls và raw sealed. Chưa giao PR.",
-      "remaining": "G1 tổng thể còn UI chọn map, terrain/item, các map khác và nhân vật.",
-      "next_test": "Hoàn tất PR/checks của adapter rồi UI map selection theo PLAN.",
+      "known": "G1 lát adapter đạt: byte ExVillage01/native Factory07 theo CP290; source-history correction CP291; PR392 merged với exact-head/full history/CI và preverified merge tree.",
+      "remaining": "G1 tổng thể vẫn mở theo PLAN: UI map selection, kim/cứu, terrain/item, các map và nhân vật.",
+      "next_test": "G1 chọn map và M6 serving theo dashboard.",
       "acceptance": "docs/PLAN.md#phase1-acceptance",
       "reason": "Codex solo implementation và tự kiểm; checkpoint/gate không suy từ WIP hoặc tests backend.",
       "sources": [
@@ -763,9 +763,11 @@
       "evidence": [
         "docs/evidence/rust-service/g1-map-adapter.json"
       ],
-      "prs": [],
+      "prs": [
+        392
+      ],
       "successors": [],
-      "reviewed_utc": "2026-11-13T14:51:38.566344+00:00"
+      "reviewed_utc": "2026-11-13T15:27:57.499755+00:00"
     },
     {
       "number": 391,
@@ -776,9 +778,9 @@
         "KR-X001",
         "KR-L003"
       ],
-      "known": "Backend history/preference đang có WIP trên nhánh riêng với real SQLite tests; chưa tích hợp runtime hoặc giao PR.",
-      "remaining": "Bounded worker, commit-before-native-result, native relogin/character, lifecycle/DB fault acceptance M6 chưa đạt.",
-      "next_test": "Giao backend slice và nối serving theo PLAN; không chờ toàn bộ G1 RE.",
+      "known": "Backend schema3/history/preference, bounded persistence worker và owned-channel preference seam đã kiểm real SQLite, retry/kill/DB/CLI controls; chưa giao PR hoặc native serving.",
+      "remaining": "Commit-before-native-result, account-owned room preference khi chọn/relogin và native DB/revoke/kill acceptance M6 chưa đạt.",
+      "next_test": "Giao backend/worker slice rồi nối Start/result/cancel/EOF/shutdown và lựa chọn/relogin trên client thật.",
       "acceptance": "docs/PLAN.md#phase1-acceptance",
       "reason": "Codex solo implementation và tự kiểm; checkpoint/gate không suy từ WIP hoặc tests backend.",
       "sources": [
@@ -786,12 +788,14 @@
         "docs/PROTOCOL.md",
         "docs/RESEARCH.md"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/rust-service/m6-match-store.json"
+      ],
       "prs": [],
       "successors": [],
-      "reviewed_utc": "2026-11-13T14:51:38.566344+00:00"
+      "reviewed_utc": "2026-11-13T15:27:57.499755+00:00"
     }
   ],
-  "as_of_utc": "2026-11-13T14:51:38.566344+00:00",
+  "as_of_utc": "2026-11-13T15:27:57.499755+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

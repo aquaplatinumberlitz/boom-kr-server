@@ -1,0 +1,4128 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "M6STORE292-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "M6STORE292-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3893,
+      "sha256": "34c804321a44675abfdd46caf14a33623e5d82b5ba9e3c1cf35926887cfbb09b"
+    },
+    {
+      "id": "M6STORE292-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 253056,
+      "sha256": "a3202b3e412fc831b0b01ce7550a0be71643e09a711caa8eda5f3f39e1462c4f"
+    },
+    {
+      "id": "M6STORE292-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 148893,
+      "sha256": "c4e788f72f78913282911d79692ed8c5cf8a99d68bbff87fd4d889f81ff0bd28"
+    },
+    {
+      "id": "M6STORE292-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 79069,
+      "sha256": "5f0ea2a737447df676c839f860879c20240c979013a669e161897953d697ef2d"
+    },
+    {
+      "id": "M6STORE292-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66262,
+      "sha256": "57c7fbac2a763d2409f8a33be5ff7bc4e48529bd280181980a936b41762dc6c5"
+    },
+    {
+      "id": "M6STORE292-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 35566,
+      "sha256": "ef3832e7d8966560e683c87eafb60e93e08c4f5ef8506b297fbd2b2c83c31044"
+    },
+    {
+      "id": "M6STORE292-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD108.json",
+      "bytes": 5012,
+      "sha256": "b0458c9d8eded31983d480215c7592aadc3cbabdbed213a02516e9d84b1200de"
+    },
+    {
+      "id": "M6STORE292-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 310363,
+      "sha256": "725fb6437eba75cc8be80e836a4ec9c7a68926782caf8fdb5e8b132b5fc90de0"
+    },
+    {
+      "id": "M6STORE292-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 32761,
+      "sha256": "3b3d3e2c605dc8a2e0147226a6a9d96648b907abdf9c3eecb923e3c678c0cc27"
+    },
+    {
+      "id": "M6STORE292-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m6-match-store.json",
+      "bytes": 6129,
+      "sha256": "749aa9e870168f33f21726e6d193ecefb8b16d5d1d6145954e88239f9b00ec2f"
+    },
+    {
+      "id": "M6STORE292-00012",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 265586,
+      "sha256": "a556263b9a11785ccef090a6d54049e6ade82dd65159293db6b5d83faddbacca"
+    },
+    {
+      "id": "M6STORE292-00013",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 78912,
+      "sha256": "799fdfa726a744a221ab4ccf96123360758f65042ddc263800aca2ebb1f83465"
+    },
+    {
+      "id": "M6STORE292-00014",
+      "kind": "repository",
+      "path": "docs/protocol/life-results.md",
+      "bytes": 102028,
+      "sha256": "6ca7a53087c320b7633f2231486deb44ebcd009af16e55f173139b3fd35ca04b"
+    },
+    {
+      "id": "M6STORE292-00015",
+      "kind": "local",
+      "path": "local/research/codex/append_cp292.py",
+      "bytes": 12267,
+      "sha256": "9f35d94124fa502d436c6e6f2a036e0ac33dccb3c53d700d17902894796f74fc"
+    },
+    {
+      "id": "M6STORE292-00016",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-adapter-delivery-receipt.json",
+      "bytes": 1084,
+      "sha256": "a1c4cfc6930f35e0c928cfc478c8269e316161331b14c37e219de6c0a3359398"
+    },
+    {
+      "id": "M6STORE292-00017",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-corrected-exact-head-checkpoints.txt",
+      "bytes": 169224,
+      "sha256": "ea0532a5ca3bd244dfb31f2f9c4540d031bbcdd47abb99eb39feb022a8a0e734"
+    },
+    {
+      "id": "M6STORE292-00018",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-corrected-exact-head-docs.txt",
+      "bytes": 198,
+      "sha256": "7db0624c31975ac3efbda595bb3cab16f8f5943162f978f65446ba0aa92f5f40"
+    },
+    {
+      "id": "M6STORE292-00019",
+      "kind": "local",
+      "path": "local/research/codex/m6-bridge-build-r1.txt",
+      "bytes": 168,
+      "sha256": "56788ef3d8f5e8d4a6016597a58d23c09ff1f6a797677e8617bdd87f52cca108"
+    },
+    {
+      "id": "M6STORE292-00020",
+      "kind": "local",
+      "path": "local/research/codex/m6-bridge-clippy-r1.txt",
+      "bytes": 168,
+      "sha256": "fd010ce4085abe5d1e55ad1102ec40cb4c76606e578b49ec6fc6e4788f8daf99"
+    },
+    {
+      "id": "M6STORE292-00021",
+      "kind": "local",
+      "path": "local/research/codex/m6-bridge-fmt-r1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00022",
+      "kind": "local",
+      "path": "local/research/codex/m6-combined-build-r1.txt",
+      "bytes": 168,
+      "sha256": "89a714ce7ef4326e5f94e6c5bbff4d6d064f167612b37ec62bb9f4bf5e8023c3"
+    },
+    {
+      "id": "M6STORE292-00023",
+      "kind": "local",
+      "path": "local/research/codex/m6-combined-clippy-r1.txt",
+      "bytes": 258,
+      "sha256": "f731a30858d2f5004e0e5050ace622afd22ddc883da19cbe31386cd2a9db394d"
+    },
+    {
+      "id": "M6STORE292-00024",
+      "kind": "local",
+      "path": "local/research/codex/m6-combined-fmt-r1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00025",
+      "kind": "local",
+      "path": "local/research/codex/m6-combined-workspace-tests-r1.txt",
+      "bytes": 20244,
+      "sha256": "4c9962587d6b3bb7eed68846f2941ca973d4ee61093da637d47231d7f61570c7"
+    },
+    {
+      "id": "M6STORE292-00026",
+      "kind": "local",
+      "path": "local/research/codex/m6-match-preference-tests-r1.txt",
+      "bytes": 19765,
+      "sha256": "d21f3e145dc0e97533a08e60571a7f3f4ab2b126e4515124c6010d1ede4464c1"
+    },
+    {
+      "id": "M6STORE292-00027",
+      "kind": "local",
+      "path": "local/research/codex/m6-match-store-account-regression-r1.txt",
+      "bytes": 6339,
+      "sha256": "e13a735675beaa1b09519bb486aea92ef24485629c9f67f42d8eac8f57c507b1"
+    },
+    {
+      "id": "M6STORE292-00028",
+      "kind": "local",
+      "path": "local/research/codex/m6-match-store-build-r1.txt",
+      "bytes": 262,
+      "sha256": "70cf6ba387d3b1b7e3165d8e80c16acad7ca1a09c0a91a0f9d0fb4bfff07eeda"
+    },
+    {
+      "id": "M6STORE292-00029",
+      "kind": "local",
+      "path": "local/research/codex/m6-match-store-clippy-r1.txt",
+      "bytes": 2460,
+      "sha256": "98c394bfb3948ad651ddd869a54f6a6e7309caaa15fd1f2d5604bc20baa0e7ff"
+    },
+    {
+      "id": "M6STORE292-00030",
+      "kind": "local",
+      "path": "local/research/codex/m6-match-store-crash-tests-r1.txt",
+      "bytes": 960,
+      "sha256": "fc90370f450c3a03b41ae93954c9323fa27148f083d2c3d7e79a64ff27c2b3b5"
+    },
+    {
+      "id": "M6STORE292-00031",
+      "kind": "local",
+      "path": "local/research/codex/m6-match-store-crash-tests-r2.txt",
+      "bytes": 1120,
+      "sha256": "ce2b3723cd1b2de49391c4daa7051d105e4217e8e9c5fcffb6faf010280db6ae"
+    },
+    {
+      "id": "M6STORE292-00032",
+      "kind": "local",
+      "path": "local/research/codex/m6-match-store-issue-body-canonical.md",
+      "bytes": 1323,
+      "sha256": "27b04742a6f5034b3db538fb6226d9107acb68fe890ea36e20c833d0cc764e60"
+    },
+    {
+      "id": "M6STORE292-00033",
+      "kind": "local",
+      "path": "local/research/codex/m6-match-store-issue-body.md",
+      "bytes": 967,
+      "sha256": "aef22b84b001cf098652f278adad0e3410805e321aed4f05ca68c53f8d1a170c"
+    },
+    {
+      "id": "M6STORE292-00034",
+      "kind": "local",
+      "path": "local/research/codex/m6-match-store-tests-r1.txt",
+      "bytes": 2605,
+      "sha256": "2449d8d889e1a5db57be6ef6ab32cf4ccef1529af25e05b96c55ac1ffe24c544"
+    },
+    {
+      "id": "M6STORE292-00035",
+      "kind": "local",
+      "path": "local/research/codex/m6-native-db-upgrade-preconditions.json",
+      "bytes": 686,
+      "sha256": "ae9e5784ccf0d209becf34b82fcda43ac01fa3e1ac52c9e9b77bbefe9952d8bc"
+    },
+    {
+      "id": "M6STORE292-00036",
+      "kind": "local",
+      "path": "local/research/codex/m6-native-db-upgrade-r3/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "8f974dfaebd4072e17d88f4c5d6f65a589c9b00322ded78c276d501e0fe12f54"
+    },
+    {
+      "id": "M6STORE292-00037",
+      "kind": "local",
+      "path": "local/research/codex/m6-native-db-upgrade-r3/verification.json",
+      "bytes": 1021,
+      "sha256": "77651008be44bd63177f8c48323051f6631d49cf1c2d1f2ce8c1e010e9dca755"
+    },
+    {
+      "id": "M6STORE292-00038",
+      "kind": "local",
+      "path": "local/research/codex/m6-persistence-worker-tests-r1.txt",
+      "bytes": 1265,
+      "sha256": "a816854aa546e6ab3c5c971803c9e949e618c1a410be6ce5448c81a6c7efc4e4"
+    },
+    {
+      "id": "M6STORE292-00039",
+      "kind": "local",
+      "path": "local/research/codex/m6-persistence-worker-tests-r2.txt",
+      "bytes": 621,
+      "sha256": "1414d0f12b8e052b8b6166c9bc7a4ee3beacb07c379a250cf7ef76565168fb54"
+    },
+    {
+      "id": "M6STORE292-00040",
+      "kind": "local",
+      "path": "local/research/codex/m6-preference-bridge-tests-r1.txt",
+      "bytes": 501,
+      "sha256": "9977c30cae40007b97a657e3305239f9b9fe7267dcbb3d49656cf9c7d71298f8"
+    },
+    {
+      "id": "M6STORE292-00041",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-bridge-retained-build-r1.jsonl",
+      "bytes": 85949,
+      "sha256": "9c315ada08f864b8407ca3406409a17653fdf1bfa9f96f9e0552dae49e5b9d9a"
+    },
+    {
+      "id": "M6STORE292-00042",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-bridge-retained-build-r1.txt",
+      "bytes": 73,
+      "sha256": "3cdcc26dce290237397897dbec7cf666385f6a0ac426dbb14d6bf7b992e5a6cf"
+    },
+    {
+      "id": "M6STORE292-00043",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-bridge-retained-verification.json",
+      "bytes": 22367,
+      "sha256": "dde11a62d88c97682b587fa360f0ebeac0ad0d4e389c577e28af35e43e9e1e7d"
+    },
+    {
+      "id": "M6STORE292-00044",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-final-build-r1.txt",
+      "bytes": 72,
+      "sha256": "8c233a54790c4800d3dd585436af679aa838da259bfdb129412e2d51cdb75cdc"
+    },
+    {
+      "id": "M6STORE292-00045",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-final-clippy-r1.txt",
+      "bytes": 168,
+      "sha256": "136dccccc2dafbc290ca829503bff75f43a236565349c646e88f391492afbf9a"
+    },
+    {
+      "id": "M6STORE292-00046",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-final-tests-r1.txt",
+      "bytes": 19698,
+      "sha256": "bc91dce9ec4c9a3125fe5b2e1225069183ee990f5e5b8d25976a97c087fa7c61"
+    },
+    {
+      "id": "M6STORE292-00047",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-build-r1.jsonl",
+      "bytes": 87916,
+      "sha256": "9a4ebd354deea071ab418d59c47592952903f80cca485f6b5b593d2227bf6619"
+    },
+    {
+      "id": "M6STORE292-00048",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-build-r1.txt",
+      "bytes": 169,
+      "sha256": "b0e24fde2e53e8f4b06b5eda76b349a760b6f8cc6238bf82b479ae0521103ffa"
+    },
+    {
+      "id": "M6STORE292-00049",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-build-r2.jsonl",
+      "bytes": 85950,
+      "sha256": "78883f7d58b310829ae2ae20f621942e216a05858f76a1bed0434c7ec552d20a"
+    },
+    {
+      "id": "M6STORE292-00050",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-build-r2.txt",
+      "bytes": 169,
+      "sha256": "1ce25af0903f63be6cf218b5e28c16456c38ccbf95f21d70d40e4a4ebf00c1f3"
+    },
+    {
+      "id": "M6STORE292-00051",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-clippy-r1.txt",
+      "bytes": 168,
+      "sha256": "68e16986b5436a81f15587214534fe070e6bf3d009b27a0572b7a173082b3a6e"
+    },
+    {
+      "id": "M6STORE292-00052",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-fmt-r1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00053",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-launch-r1.txt",
+      "bytes": 44,
+      "sha256": "3d7fc821154fceadba77adfbe3c0ebbcb5de053ed233c6753ef1156e41478ad2"
+    },
+    {
+      "id": "M6STORE292-00054",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-launch-r2.txt",
+      "bytes": 44,
+      "sha256": "3d7fc821154fceadba77adfbe3c0ebbcb5de053ed233c6753ef1156e41478ad2"
+    },
+    {
+      "id": "M6STORE292-00055",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-launch-r3.txt",
+      "bytes": 44,
+      "sha256": "3d7fc821154fceadba77adfbe3c0ebbcb5de053ed233c6753ef1156e41478ad2"
+    },
+    {
+      "id": "M6STORE292-00056",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/exit.json",
+      "bytes": 18,
+      "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d"
+    },
+    {
+      "id": "M6STORE292-00057",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/000-kr00967.rs",
+      "bytes": 3977,
+      "sha256": "5682898a8e32ae588c99dcf7dde6089aeec198a1234a0ed5c527c107b6dbe5de"
+    },
+    {
+      "id": "M6STORE292-00058",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/001-lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "M6STORE292-00059",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/002-native_account_profiles.rs",
+      "bytes": 3073,
+      "sha256": "4054a9d8affab3eebe8c77a30e76f0947a1d60843bda15a71e6fa991c2696023"
+    },
+    {
+      "id": "M6STORE292-00060",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/003-native_room_choices.rs",
+      "bytes": 1722,
+      "sha256": "d527c228dcc86ec11057e1c8c5037ced0e44d2ae03f27da5e8884ad49f41e80d"
+    },
+    {
+      "id": "M6STORE292-00061",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/004-native_selected_roster.rs",
+      "bytes": 1121,
+      "sha256": "62501ed78735f409edac88f0828fbbb89451734dc17a706bf622b4e2085c8859"
+    },
+    {
+      "id": "M6STORE292-00062",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/005-native_selected_start.rs",
+      "bytes": 3067,
+      "sha256": "c09cd6f51c35e32b029d21cff7a1e3ae9c3ee65f8075ecd9ed60852b15a00b09"
+    },
+    {
+      "id": "M6STORE292-00063",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/006-native_start_vectors.rs",
+      "bytes": 2882,
+      "sha256": "3bfff9199f2fd8abd1acdbc82e6a0484b80c5a9d0865404c64c0b64b53404021"
+    },
+    {
+      "id": "M6STORE292-00064",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/007-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "M6STORE292-00065",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/008-account.rs",
+      "bytes": 3477,
+      "sha256": "1b76836d680abbae1ffd16e1d618f4a2e9a8ab3057ed743a4eeaa617fbb717c8"
+    },
+    {
+      "id": "M6STORE292-00066",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/009-battle.rs",
+      "bytes": 7760,
+      "sha256": "618e28ec71912edb834d2f5ffd9c151a7c550c8bdb2f6be8812dcff3bf5f5a17"
+    },
+    {
+      "id": "M6STORE292-00067",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/010-player.rs",
+      "bytes": 7967,
+      "sha256": "5dca3e46e0a9735208175ac500df7f8854b12e369c2dd000d407ca7229722a16"
+    },
+    {
+      "id": "M6STORE292-00068",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/011-room.rs",
+      "bytes": 22770,
+      "sha256": "72a8cc9a6ff9e973e3647b14df7c22aac9d6a999791762a3234b4d36ca7a6133"
+    },
+    {
+      "id": "M6STORE292-00069",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/012-room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "M6STORE292-00070",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/013-native_proxy_lab.rs",
+      "bytes": 8929,
+      "sha256": "2158ddad71c2098be428cabb272ae45869f3f2789554fc0ad329eb9008531528"
+    },
+    {
+      "id": "M6STORE292-00071",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/014-companion.rs",
+      "bytes": 5076,
+      "sha256": "3d17300083a41d4c17deafd3918467c033a821f4ff187048d93bc20530caee94"
+    },
+    {
+      "id": "M6STORE292-00072",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/015-companion_tests.rs",
+      "bytes": 4584,
+      "sha256": "fd34096e5a53ba8ede24eb0da5484482de55c69917fea6f9dfd8b1d15ca9533e"
+    },
+    {
+      "id": "M6STORE292-00073",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/016-control.rs",
+      "bytes": 1769,
+      "sha256": "d1af56c5d1ad870124ccc7ad1fb67100e930bbdbfdb1e9cb0520124c466749b6"
+    },
+    {
+      "id": "M6STORE292-00074",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/017-lib.rs",
+      "bytes": 11418,
+      "sha256": "c277af6de7501946f7376aa168dae10d2803cecc3d6f1b9531645bd7526ee77f"
+    },
+    {
+      "id": "M6STORE292-00075",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/018-proxy.rs",
+      "bytes": 7621,
+      "sha256": "dfc45ff6566f6f4917217b147f6f8e9b6fd82a729653164eb749ac01cf8ef500"
+    },
+    {
+      "id": "M6STORE292-00076",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/019-router.rs",
+      "bytes": 15276,
+      "sha256": "492134cc47c473f86534501defd80d6a4369658b87e147d1c89872b33b3d955c"
+    },
+    {
+      "id": "M6STORE292-00077",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/020-tests.rs",
+      "bytes": 6171,
+      "sha256": "b424a582ab60c99bbc17d2878b6aec232c2521c6a0f01f75cd587d29b4d40dec"
+    },
+    {
+      "id": "M6STORE292-00078",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/021-kr-companion.rs",
+      "bytes": 3882,
+      "sha256": "776b14648a15079fcf3c9434917300fb4e0cc955f007d3da7d8332062814976c"
+    },
+    {
+      "id": "M6STORE292-00079",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/022-tests.rs",
+      "bytes": 6217,
+      "sha256": "72940ed32c8e0b41c9abd97bd4bbe05c3b1ea1b12f45be3ecc35b07c4f8da1c7"
+    },
+    {
+      "id": "M6STORE292-00080",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/023-check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "M6STORE292-00081",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/024-account_bridge.rs",
+      "bytes": 21204,
+      "sha256": "e64b0bcec18bd93090e1ca982225acafadb6a5109d34b4830175c8c00f377e45"
+    },
+    {
+      "id": "M6STORE292-00082",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/025-account_serving.rs",
+      "bytes": 24189,
+      "sha256": "d29a4e77b36001821974eb770a69444b7d8c981e2b96b09626fa3c93a3a81160"
+    },
+    {
+      "id": "M6STORE292-00083",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/026-account_worker.rs",
+      "bytes": 17674,
+      "sha256": "22ef92f0766e3dd7da2594eba26d6b7402c2972b3e134463db737cedd9cd7f11"
+    },
+    {
+      "id": "M6STORE292-00084",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/027-accounts.rs",
+      "bytes": 30489,
+      "sha256": "846a9e45ac02c533fdb3252382e5ea624f57d609bef7f0f070977e1cd243e59e"
+    },
+    {
+      "id": "M6STORE292-00085",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/028-authenticated_peer.rs",
+      "bytes": 15838,
+      "sha256": "3663bce2a04987376caedeeb8d785805c6d4b10915d55ce9e4cd009740c558d2"
+    },
+    {
+      "id": "M6STORE292-00086",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/029-authenticated_room_relay.rs",
+      "bytes": 7030,
+      "sha256": "e1a618a5847153e4ee0ce2980f3d4cb695ea8398ff1ed31694954095b0a84f4f"
+    },
+    {
+      "id": "M6STORE292-00087",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/030-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "M6STORE292-00088",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/031-bombs.rs",
+      "bytes": 15072,
+      "sha256": "4496bd8e1be4928f5264552516ac9104581f3433bda2e015e9fe2365b82bc169"
+    },
+    {
+      "id": "M6STORE292-00089",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/032-characters.rs",
+      "bytes": 2441,
+      "sha256": "a9a872ae38adf39d2132fcd676482a5ee54048b40ab8685ba067674f7245dfcb"
+    },
+    {
+      "id": "M6STORE292-00090",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/033-four_results.rs",
+      "bytes": 10769,
+      "sha256": "26c1c50fc8791534c965dfa39f6d61c0cf712c085ff09d3081688a4763886af6"
+    },
+    {
+      "id": "M6STORE292-00091",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/034-lib.rs",
+      "bytes": 58091,
+      "sha256": "047443e62bc8d16772bcf5d48b84733a2b7634a86c93e581b285e9e2ddaab679"
+    },
+    {
+      "id": "M6STORE292-00092",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/035-life.rs",
+      "bytes": 17096,
+      "sha256": "f64cfdc4403bd58d8820a434bb23e35a5f46e11330cd5fbbcbbd65954de7a86a"
+    },
+    {
+      "id": "M6STORE292-00093",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/036-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "M6STORE292-00094",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/037-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "M6STORE292-00095",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/038-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "M6STORE292-00096",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/039-network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "M6STORE292-00097",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/040-peer_routes.rs",
+      "bytes": 4631,
+      "sha256": "221075ff3e89110f636020c43a4e98099a8ffc3b02d204e12f03acd77ebb950b"
+    },
+    {
+      "id": "M6STORE292-00098",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/041-pickups.rs",
+      "bytes": 14368,
+      "sha256": "4ed0d33f79c4689b6cbccc44fddc53f8fb07e297e8da4c202acaf2f6f4f3e2ca"
+    },
+    {
+      "id": "M6STORE292-00099",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/042-player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "M6STORE292-00100",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/043-room.rs",
+      "bytes": 51543,
+      "sha256": "2418d267769f94c2262b4123c0f3ce526bb7de0e080441e8194086b00220e5a3"
+    },
+    {
+      "id": "M6STORE292-00101",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/044-room_io.rs",
+      "bytes": 157125,
+      "sha256": "d71040dc2f69f54e84a5b36c2ce74d0b3a072a50c4fe38c20d2aaa9eeff8cf70"
+    },
+    {
+      "id": "M6STORE292-00102",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/045-room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "M6STORE292-00103",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/046-room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "M6STORE292-00104",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/047-room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "M6STORE292-00105",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/048-room_service.rs",
+      "bytes": 10127,
+      "sha256": "7803ad6f6ec9d0216a740c7813cda3097500263a40fb41d7a4ae74c47e9c44be"
+    },
+    {
+      "id": "M6STORE292-00106",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/049-room_wire.rs",
+      "bytes": 2201,
+      "sha256": "4bd8473f94393106cdaf976425f91b1e0183eb0e12535b5795878250af73129c"
+    },
+    {
+      "id": "M6STORE292-00107",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/050-round_epochs.rs",
+      "bytes": 2527,
+      "sha256": "18eb735293835939bbcc6da8e28a070f9e6ea54b5e1e0a99d95640e82cfea5ac"
+    },
+    {
+      "id": "M6STORE292-00108",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/051-rules.rs",
+      "bytes": 9271,
+      "sha256": "03fc20f0a0cae9ae29af7f2bea3f4b147fde001c5f12e62bb4e4b0e1f0ce99ec"
+    },
+    {
+      "id": "M6STORE292-00109",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/052-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "M6STORE292-00110",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/053-udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "M6STORE292-00111",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/054-tests.rs",
+      "bytes": 66824,
+      "sha256": "95f89a08a70a935b78a4d3aac10008c4da76df1ce008f64d03b9f13b624b18a3"
+    },
+    {
+      "id": "M6STORE292-00112",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/055-wire.rs",
+      "bytes": 2758,
+      "sha256": "63adab044276a3ca481d4a96da84eef1c9ce00bce2caff189360f0f601c0d512"
+    },
+    {
+      "id": "M6STORE292-00113",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/056-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "M6STORE292-00114",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/057-tests.rs",
+      "bytes": 17779,
+      "sha256": "1c72dbea6bd2f57a33125ee65768d1059466e471fe23b3b32d4a92fc0e2ac354"
+    },
+    {
+      "id": "M6STORE292-00115",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/058-tests.rs",
+      "bytes": 30740,
+      "sha256": "6e89d881d49ea0b55aaa508d1a7899590f45677fb10c8fb7491b406508db3490"
+    },
+    {
+      "id": "M6STORE292-00116",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/059-matches.rs",
+      "bytes": 26137,
+      "sha256": "2acc8e55b8860fe1a162a3614ddf84809c11822b0b6d27bd488a82fdcf1527e5"
+    },
+    {
+      "id": "M6STORE292-00117",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/060-preferences.rs",
+      "bytes": 6557,
+      "sha256": "683f80eedaf95b89497ab65a8b6c33a719b5ff06bda0ac23f02eb34cb889c95c"
+    },
+    {
+      "id": "M6STORE292-00118",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/061-kr-admin.rs",
+      "bytes": 4971,
+      "sha256": "0b061cc7333634492db151aacfc6cc800e12a3b25395c7661f1002925081197a"
+    },
+    {
+      "id": "M6STORE292-00119",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/062-sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "M6STORE292-00120",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/063-tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "M6STORE292-00121",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/064-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "M6STORE292-00122",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/065-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "M6STORE292-00123",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/066-0003_match_history.sql",
+      "bytes": 2234,
+      "sha256": "cb8305293b1c7577da9f739afb4d5d0fbac63ac93d57c4fc6fec8069863dcbbf"
+    },
+    {
+      "id": "M6STORE292-00124",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/067-Cargo.toml",
+      "bytes": 471,
+      "sha256": "9899ec1f4f27cca8766459e3b07352e91083452336f58468fb5ad8bf2a0ab1f8"
+    },
+    {
+      "id": "M6STORE292-00125",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/068-Cargo.toml",
+      "bytes": 368,
+      "sha256": "2a712a65b842e5e8335687427e386c31ff8e898428c54ff446bfda74e6827bb6"
+    },
+    {
+      "id": "M6STORE292-00126",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/069-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "M6STORE292-00127",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/071-Cargo.toml",
+      "bytes": 927,
+      "sha256": "45102ab5f4278ce4306b05db0c16f09df7840f11865dfc3d411855896c32a9ee"
+    },
+    {
+      "id": "M6STORE292-00128",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/072-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "M6STORE292-00129",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/073-run_m6_store_retained_r1.py",
+      "bytes": 3425,
+      "sha256": "1e1cdee2698f846d7dc103e5fd5cccfb55e2be7407a92a3202c709532d4775f0"
+    },
+    {
+      "id": "M6STORE292-00130",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/frozen/074-kr-service-tests",
+      "bytes": 127328176,
+      "sha256": "3e12d9e703182ba27c8c97b6f332621f62daf019ea35e511db82aa4435d612cf"
+    },
+    {
+      "id": "M6STORE292-00131",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/inside.py",
+      "bytes": 847,
+      "sha256": "c9a43cdbb09c6a6fbe78d7c690ffcad98fcf2972db60ebf7b0bada03d7c4af41"
+    },
+    {
+      "id": "M6STORE292-00132",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/kr-service-tests",
+      "bytes": 127328176,
+      "sha256": "3e12d9e703182ba27c8c97b6f332621f62daf019ea35e511db82aa4435d612cf"
+    },
+    {
+      "id": "M6STORE292-00133",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/launcher.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00134",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/network.json",
+      "bytes": 253,
+      "sha256": "129de271312d87d5b2e2343022ad07f8d92fc23fd70b5c04242c1a6b0ecbcd65"
+    },
+    {
+      "id": "M6STORE292-00135",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/preflight.json",
+      "bytes": 25859,
+      "sha256": "6458e0ce4e487465544b6d28b4607d6af98759eb8cf9387243318c59e386ef2e"
+    },
+    {
+      "id": "M6STORE292-00136",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-0-busy_and_insert_failure_leave_no_half_match_and_retry_same_event_succeeds/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "cd6f7d4f3964241fbdeaf10d390715ffc308a908f213a7ebf74f02002056bc5d"
+    },
+    {
+      "id": "M6STORE292-00137",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-1-cancellation_and_roster_validation_never_record_cancelled_players_as_winners/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "79ba51f757df9cd7e412d936ae5f7b979cfd151eaf57c8b81f58997f46cc4ea5"
+    },
+    {
+      "id": "M6STORE292-00138",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-1-cancellation_and_roster_validation_never_record_cancelled_players_as_winners/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00139",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-1-cancellation_and_roster_validation_never_record_cancelled_players_as_winners/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00140",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-10-credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_checked/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "531cac993e479dedc18779c9772ea1211a9388d143e36f52ecfe8f0d6314833c"
+    },
+    {
+      "id": "M6STORE292-00141",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-10-credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_checked/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00142",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-10-credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_checked/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00143",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-11-credentials_owner_and_input_bounds/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "6d0169d31fe47f66a2c7ec88951f8f213cd14ad3b1a1e821e0cbb1d3c6a409e1"
+    },
+    {
+      "id": "M6STORE292-00144",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-11-credentials_owner_and_input_bounds/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00145",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-11-credentials_owner_and_input_bounds/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00146",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-12-expiry_observation_is_durable_even_on_denial_clock_cannot_revive_token/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "9a7b2e01a84ef6aa89b44cdf30b33691ae148f2788432253c2ce0ab8a68f4135"
+    },
+    {
+      "id": "M6STORE292-00147",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-12-expiry_observation_is_durable_even_on_denial_clock_cannot_revive_token/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00148",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-12-expiry_observation_is_durable_even_on_denial_clock_cannot_revive_token/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00149",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-13-explicit_idle_authorization_renews_only_owner_never_extends_absolute_or_revives_after_clock_rollback/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "647279aff60f3c229597ce2bf82e9d8e77ef5a1efb9850fe5397bffc87481160"
+    },
+    {
+      "id": "M6STORE292-00150",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-13-explicit_idle_authorization_renews_only_owner_never_extends_absolute_or_revives_after_clock_rollback/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00151",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-13-explicit_idle_authorization_renews_only_owner_never_extends_absolute_or_revives_after_clock_rollback/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00152",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-14-hash_work_and_phc_are_bounded_instance_and_allocator_fail_closed/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "b48eb98a5db1aa0451d912d428d7bd1c36de50ac788e34b874cfeaebee4f48f2"
+    },
+    {
+      "id": "M6STORE292-00153",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-14-hash_work_and_phc_are_bounded_instance_and_allocator_fail_closed/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00154",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-14-hash_work_and_phc_are_bounded_instance_and_allocator_fail_closed/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00155",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-15-live_authorization_survives_writer_pressure_but_observes_committed_fences/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "7c6352fdbd0a71e9d768a5e476457b64e0653ca43701a753f2169f96786d1c3f"
+    },
+    {
+      "id": "M6STORE292-00156",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-15-live_authorization_survives_writer_pressure_but_observes_committed_fences/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00157",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-15-live_authorization_survives_writer_pressure_but_observes_committed_fences/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00158",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-16-live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "a56b4a708b02da0006654b9d67dfa3bff3cd8abbfb107e5258ba166d545dcbb4"
+    },
+    {
+      "id": "M6STORE292-00159",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-16-live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00160",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-16-live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00161",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-17-live_login_resamples_publication_after_other_connection_advances_clock/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "7a0a58cf6ee6890043eac7acf6c6b31ac34043a2c4badc9a7323aa22d80f9d4d"
+    },
+    {
+      "id": "M6STORE292-00162",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-17-live_login_resamples_publication_after_other_connection_advances_clock/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00163",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-17-live_login_resamples_publication_after_other_connection_advances_clock/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00164",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "03bdea6192b7f81088cdf51dd0a83988f7cdbb1603401b21dbac6e1d211464e4"
+    },
+    {
+      "id": "M6STORE292-00165",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00166",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00167",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/link.sqlite",
+      "bytes": 110592,
+      "sha256": "03bdea6192b7f81088cdf51dd0a83988f7cdbb1603401b21dbac6e1d211464e4"
+    },
+    {
+      "id": "M6STORE292-00168",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/other.sqlite",
+      "bytes": 8192,
+      "sha256": "2e27bb6ec7d69215bf8ebe86325016a613f5244193943f549a4963f453a3c105"
+    },
+    {
+      "id": "M6STORE292-00169",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-19-profile_edit_is_persistent_versioned_and_does_not_change_ownership/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "45f0f60bca153647bcce687c7f0da2abf1c7368ee5ded00dfe6f53fc714eecdd"
+    },
+    {
+      "id": "M6STORE292-00170",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-19-profile_edit_is_persistent_versioned_and_does_not_change_ownership/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00171",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-19-profile_edit_is_persistent_versioned_and_does_not_change_ownership/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00172",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-2-durable_duplicate_and_conflicting_events_preserve_snapshot_zero_reward_and_history/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "f686bbde443dccbe05e1a25421d47fe0e2921366fd23129bba9d37341460c487"
+    },
+    {
+      "id": "M6STORE292-00173",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-2-durable_duplicate_and_conflicting_events_preserve_snapshot_zero_reward_and_history/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00174",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-2-durable_duplicate_and_conflicting_events_preserve_snapshot_zero_reward_and_history/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00175",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-20-reopen_preserves_identity_and_session_until_explicit_instance_restart/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "105ed8c74ffad6a339cde5af78a710dc58c713edf834fbafb769572825701a86"
+    },
+    {
+      "id": "M6STORE292-00176",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-20-reopen_preserves_identity_and_session_until_explicit_instance_restart/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00177",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-20-reopen_preserves_identity_and_session_until_explicit_instance_restart/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00178",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-21-revoke_disable_enable_and_password_reset/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "bf8ecdb5c366bc6ceeaf0482f63457f7f596cac8be424ea875038e1b5ca9ee7d"
+    },
+    {
+      "id": "M6STORE292-00179",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-21-revoke_disable_enable_and_password_reset/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00180",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-21-revoke_disable_enable_and_password_reset/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00181",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-22-sampled_live_login_keeps_rollback_and_credential_reset_fences/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "5d975ebc2fe3a0ea4ed5a127343f396a01bd06828f59624667b873f0d3621661"
+    },
+    {
+      "id": "M6STORE292-00182",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-22-sampled_live_login_keeps_rollback_and_credential_reset_fences/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00183",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-22-sampled_live_login_keeps_rollback_and_credential_reset_fences/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00184",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-23-sqlite_full_during_audit_rolls_back_account_player_and_allocator/accounts.sqlite",
+      "bytes": 114688,
+      "sha256": "85b3d565b9cafcbfb90e47634e77254b02cb4950c5c97d9ac662c709cfc412a6"
+    },
+    {
+      "id": "M6STORE292-00185",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-23-sqlite_full_during_audit_rolls_back_account_player_and_allocator/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00186",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-23-sqlite_full_during_audit_rolls_back_account_player_and_allocator/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00187",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-24-two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "59a6c4415ec7d8e11ed5d41d5153948e16aae3a555a2bfa07ba4ddcccec96ea6"
+    },
+    {
+      "id": "M6STORE292-00188",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-24-two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00189",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-24-two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00190",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-3-instance_audit_failure_rolls_back_cancellation_epoch_and_session_invalidation/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "348af221467f82ccb45b3d27c7291a6909758e62f83ba0c3ea5ccec102611e43"
+    },
+    {
+      "id": "M6STORE292-00191",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-3-instance_audit_failure_rolls_back_cancellation_epoch_and_session_invalidation/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00192",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-3-instance_audit_failure_rolls_back_cancellation_epoch_and_session_invalidation/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00193",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "bcd6dfe0e490c7a9005258bfabf3156e6d0c8fc4caa762b8bd7440f2747e4aab"
+    },
+    {
+      "id": "M6STORE292-00194",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00195",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00196",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/committed",
+      "bytes": 9,
+      "sha256": "cc962289af2873dd6dad32931554372a7d2d2de5bd5859c8265eb58b5197a88e"
+    },
+    {
+      "id": "M6STORE292-00197",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/kill-control.json",
+      "bytes": 1848,
+      "sha256": "66393ecb503235bfc3b3ebcc1aa412f33e067c422a0b559649cdc293b8b8de42"
+    },
+    {
+      "id": "M6STORE292-00198",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/start.json",
+      "bytes": 288,
+      "sha256": "92601385217f5683ec577d8781fe86c6ab0f35730827d7a485777e559f9aec81"
+    },
+    {
+      "id": "M6STORE292-00199",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "7aff81d81ce33aa1f5cc3518351f39577ff86c5d5d201ca0b0885eb9adf92724"
+    },
+    {
+      "id": "M6STORE292-00200",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00201",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00202",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/committed",
+      "bytes": 9,
+      "sha256": "cc962289af2873dd6dad32931554372a7d2d2de5bd5859c8265eb58b5197a88e"
+    },
+    {
+      "id": "M6STORE292-00203",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/kill-control.json",
+      "bytes": 2153,
+      "sha256": "83570cf36b777ef8f873f6d10735f48931f04a837f0cc304a16fafd990200206"
+    },
+    {
+      "id": "M6STORE292-00204",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/start.json",
+      "bytes": 288,
+      "sha256": "92601385217f5683ec577d8781fe86c6ab0f35730827d7a485777e559f9aec81"
+    },
+    {
+      "id": "M6STORE292-00205",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-6-restart_cancels_open_match_once_and_rejects_cross_owner_and_old_epoch/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "1759bf361b6b09ce80d67337a2b733d4b7827cd0898030ad800ea3e60d95f847"
+    },
+    {
+      "id": "M6STORE292-00206",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-6-restart_cancels_open_match_once_and_rejects_cross_owner_and_old_epoch/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00207",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-6-restart_cancels_open_match_once_and_rejects_cross_owner_and_old_epoch/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00208",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-7-foreign_expired_revoked_and_busy_preferences_cannot_mutate_or_publish_success/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "7b2f04fcadb7e827a4ead48e0a19d8ddddb5fa954fb790cd58f931f8a3d9e048"
+    },
+    {
+      "id": "M6STORE292-00209",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-7-foreign_expired_revoked_and_busy_preferences_cannot_mutate_or_publish_success/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00210",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-7-foreign_expired_revoked_and_busy_preferences_cannot_mutate_or_publish_success/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00211",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-8-selected_character_persists_without_identity_version_change_and_stale_write_cannot_undo_new_choice/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "f00991317507c1a7cb285de3cae623c7cc027427134956bda230bc0eaf13299e"
+    },
+    {
+      "id": "M6STORE292-00212",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-8-selected_character_persists_without_identity_version_change_and_stale_write_cannot_undo_new_choice/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00213",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-8-selected_character_persists_without_identity_version_change_and_stale_write_cannot_undo_new_choice/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00214",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-9-audit_failure_is_atomic_busy_is_bounded_and_entropy_fails_closed/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "9f3a94ca2c99c23f3e62f8d9d10a8a4af474cf4ae19bb2819fa28bfbfedc898e"
+    },
+    {
+      "id": "M6STORE292-00215",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-9-audit_failure_is_atomic_busy_is_bounded_and_entropy_fails_closed/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00216",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/raw/kr-store-3-9-audit_failure_is_atomic_busy_is_bounded_and_entropy_fails_closed/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00217",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/seal.json",
+      "bytes": 30548,
+      "sha256": "d2c64054656787ea22048274b2e7ce7fd5c97540511a6e34a3dfa87afd13d142"
+    },
+    {
+      "id": "M6STORE292-00218",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r1/tests.txt",
+      "bytes": 3019,
+      "sha256": "69207e813db3b342a378e92af65b9531f9d27b85e04691d8abd1e0bc096a1b88"
+    },
+    {
+      "id": "M6STORE292-00219",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/exit.json",
+      "bytes": 18,
+      "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d"
+    },
+    {
+      "id": "M6STORE292-00220",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/000-kr00967.rs",
+      "bytes": 3977,
+      "sha256": "5682898a8e32ae588c99dcf7dde6089aeec198a1234a0ed5c527c107b6dbe5de"
+    },
+    {
+      "id": "M6STORE292-00221",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/001-lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "M6STORE292-00222",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/002-native_account_profiles.rs",
+      "bytes": 3073,
+      "sha256": "4054a9d8affab3eebe8c77a30e76f0947a1d60843bda15a71e6fa991c2696023"
+    },
+    {
+      "id": "M6STORE292-00223",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/003-native_room_choices.rs",
+      "bytes": 1722,
+      "sha256": "d527c228dcc86ec11057e1c8c5037ced0e44d2ae03f27da5e8884ad49f41e80d"
+    },
+    {
+      "id": "M6STORE292-00224",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/004-native_selected_roster.rs",
+      "bytes": 1121,
+      "sha256": "62501ed78735f409edac88f0828fbbb89451734dc17a706bf622b4e2085c8859"
+    },
+    {
+      "id": "M6STORE292-00225",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/005-native_selected_start.rs",
+      "bytes": 3067,
+      "sha256": "c09cd6f51c35e32b029d21cff7a1e3ae9c3ee65f8075ecd9ed60852b15a00b09"
+    },
+    {
+      "id": "M6STORE292-00226",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/006-native_start_vectors.rs",
+      "bytes": 2882,
+      "sha256": "3bfff9199f2fd8abd1acdbc82e6a0484b80c5a9d0865404c64c0b64b53404021"
+    },
+    {
+      "id": "M6STORE292-00227",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/007-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "M6STORE292-00228",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/008-account.rs",
+      "bytes": 3477,
+      "sha256": "1b76836d680abbae1ffd16e1d618f4a2e9a8ab3057ed743a4eeaa617fbb717c8"
+    },
+    {
+      "id": "M6STORE292-00229",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/009-battle.rs",
+      "bytes": 7760,
+      "sha256": "618e28ec71912edb834d2f5ffd9c151a7c550c8bdb2f6be8812dcff3bf5f5a17"
+    },
+    {
+      "id": "M6STORE292-00230",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/010-player.rs",
+      "bytes": 7967,
+      "sha256": "5dca3e46e0a9735208175ac500df7f8854b12e369c2dd000d407ca7229722a16"
+    },
+    {
+      "id": "M6STORE292-00231",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/011-room.rs",
+      "bytes": 22770,
+      "sha256": "72a8cc9a6ff9e973e3647b14df7c22aac9d6a999791762a3234b4d36ca7a6133"
+    },
+    {
+      "id": "M6STORE292-00232",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/012-room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "M6STORE292-00233",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/013-native_proxy_lab.rs",
+      "bytes": 8929,
+      "sha256": "2158ddad71c2098be428cabb272ae45869f3f2789554fc0ad329eb9008531528"
+    },
+    {
+      "id": "M6STORE292-00234",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/014-companion.rs",
+      "bytes": 5076,
+      "sha256": "3d17300083a41d4c17deafd3918467c033a821f4ff187048d93bc20530caee94"
+    },
+    {
+      "id": "M6STORE292-00235",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/015-companion_tests.rs",
+      "bytes": 4584,
+      "sha256": "fd34096e5a53ba8ede24eb0da5484482de55c69917fea6f9dfd8b1d15ca9533e"
+    },
+    {
+      "id": "M6STORE292-00236",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/016-control.rs",
+      "bytes": 1769,
+      "sha256": "d1af56c5d1ad870124ccc7ad1fb67100e930bbdbfdb1e9cb0520124c466749b6"
+    },
+    {
+      "id": "M6STORE292-00237",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/017-lib.rs",
+      "bytes": 11418,
+      "sha256": "c277af6de7501946f7376aa168dae10d2803cecc3d6f1b9531645bd7526ee77f"
+    },
+    {
+      "id": "M6STORE292-00238",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/018-proxy.rs",
+      "bytes": 7621,
+      "sha256": "dfc45ff6566f6f4917217b147f6f8e9b6fd82a729653164eb749ac01cf8ef500"
+    },
+    {
+      "id": "M6STORE292-00239",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/019-router.rs",
+      "bytes": 15276,
+      "sha256": "492134cc47c473f86534501defd80d6a4369658b87e147d1c89872b33b3d955c"
+    },
+    {
+      "id": "M6STORE292-00240",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/020-tests.rs",
+      "bytes": 6171,
+      "sha256": "b424a582ab60c99bbc17d2878b6aec232c2521c6a0f01f75cd587d29b4d40dec"
+    },
+    {
+      "id": "M6STORE292-00241",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/021-kr-companion.rs",
+      "bytes": 3882,
+      "sha256": "776b14648a15079fcf3c9434917300fb4e0cc955f007d3da7d8332062814976c"
+    },
+    {
+      "id": "M6STORE292-00242",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/022-tests.rs",
+      "bytes": 6217,
+      "sha256": "72940ed32c8e0b41c9abd97bd4bbe05c3b1ea1b12f45be3ecc35b07c4f8da1c7"
+    },
+    {
+      "id": "M6STORE292-00243",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/023-check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "M6STORE292-00244",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/024-account_bridge.rs",
+      "bytes": 21204,
+      "sha256": "e64b0bcec18bd93090e1ca982225acafadb6a5109d34b4830175c8c00f377e45"
+    },
+    {
+      "id": "M6STORE292-00245",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/025-account_serving.rs",
+      "bytes": 24189,
+      "sha256": "d29a4e77b36001821974eb770a69444b7d8c981e2b96b09626fa3c93a3a81160"
+    },
+    {
+      "id": "M6STORE292-00246",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/026-account_worker.rs",
+      "bytes": 21117,
+      "sha256": "1aaba49120b9dc8b44f1543cecc3c5b0c56b4bfa43ef2254728fd6236bd54d31"
+    },
+    {
+      "id": "M6STORE292-00247",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/027-accounts.rs",
+      "bytes": 30489,
+      "sha256": "846a9e45ac02c533fdb3252382e5ea624f57d609bef7f0f070977e1cd243e59e"
+    },
+    {
+      "id": "M6STORE292-00248",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/028-authenticated_peer.rs",
+      "bytes": 15838,
+      "sha256": "3663bce2a04987376caedeeb8d785805c6d4b10915d55ce9e4cd009740c558d2"
+    },
+    {
+      "id": "M6STORE292-00249",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/029-authenticated_room_relay.rs",
+      "bytes": 7030,
+      "sha256": "e1a618a5847153e4ee0ce2980f3d4cb695ea8398ff1ed31694954095b0a84f4f"
+    },
+    {
+      "id": "M6STORE292-00250",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/030-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "M6STORE292-00251",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/031-bombs.rs",
+      "bytes": 15072,
+      "sha256": "4496bd8e1be4928f5264552516ac9104581f3433bda2e015e9fe2365b82bc169"
+    },
+    {
+      "id": "M6STORE292-00252",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/032-characters.rs",
+      "bytes": 2441,
+      "sha256": "a9a872ae38adf39d2132fcd676482a5ee54048b40ab8685ba067674f7245dfcb"
+    },
+    {
+      "id": "M6STORE292-00253",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/033-four_results.rs",
+      "bytes": 10769,
+      "sha256": "26c1c50fc8791534c965dfa39f6d61c0cf712c085ff09d3081688a4763886af6"
+    },
+    {
+      "id": "M6STORE292-00254",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/034-lib.rs",
+      "bytes": 58091,
+      "sha256": "047443e62bc8d16772bcf5d48b84733a2b7634a86c93e581b285e9e2ddaab679"
+    },
+    {
+      "id": "M6STORE292-00255",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/035-life.rs",
+      "bytes": 17096,
+      "sha256": "f64cfdc4403bd58d8820a434bb23e35a5f46e11330cd5fbbcbbd65954de7a86a"
+    },
+    {
+      "id": "M6STORE292-00256",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/036-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "M6STORE292-00257",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/037-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "M6STORE292-00258",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/038-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "M6STORE292-00259",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/039-network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "M6STORE292-00260",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/040-peer_routes.rs",
+      "bytes": 4631,
+      "sha256": "221075ff3e89110f636020c43a4e98099a8ffc3b02d204e12f03acd77ebb950b"
+    },
+    {
+      "id": "M6STORE292-00261",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/041-pickups.rs",
+      "bytes": 14368,
+      "sha256": "4ed0d33f79c4689b6cbccc44fddc53f8fb07e297e8da4c202acaf2f6f4f3e2ca"
+    },
+    {
+      "id": "M6STORE292-00262",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/042-player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "M6STORE292-00263",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/043-room.rs",
+      "bytes": 51543,
+      "sha256": "2418d267769f94c2262b4123c0f3ce526bb7de0e080441e8194086b00220e5a3"
+    },
+    {
+      "id": "M6STORE292-00264",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/044-room_io.rs",
+      "bytes": 157125,
+      "sha256": "d71040dc2f69f54e84a5b36c2ce74d0b3a072a50c4fe38c20d2aaa9eeff8cf70"
+    },
+    {
+      "id": "M6STORE292-00265",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/045-room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "M6STORE292-00266",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/046-room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "M6STORE292-00267",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/047-room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "M6STORE292-00268",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/048-room_service.rs",
+      "bytes": 10127,
+      "sha256": "7803ad6f6ec9d0216a740c7813cda3097500263a40fb41d7a4ae74c47e9c44be"
+    },
+    {
+      "id": "M6STORE292-00269",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/049-room_wire.rs",
+      "bytes": 2201,
+      "sha256": "4bd8473f94393106cdaf976425f91b1e0183eb0e12535b5795878250af73129c"
+    },
+    {
+      "id": "M6STORE292-00270",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/050-round_epochs.rs",
+      "bytes": 2527,
+      "sha256": "18eb735293835939bbcc6da8e28a070f9e6ea54b5e1e0a99d95640e82cfea5ac"
+    },
+    {
+      "id": "M6STORE292-00271",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/051-rules.rs",
+      "bytes": 9271,
+      "sha256": "03fc20f0a0cae9ae29af7f2bea3f4b147fde001c5f12e62bb4e4b0e1f0ce99ec"
+    },
+    {
+      "id": "M6STORE292-00272",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/052-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "M6STORE292-00273",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/053-udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "M6STORE292-00274",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/054-tests.rs",
+      "bytes": 66824,
+      "sha256": "95f89a08a70a935b78a4d3aac10008c4da76df1ce008f64d03b9f13b624b18a3"
+    },
+    {
+      "id": "M6STORE292-00275",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/055-wire.rs",
+      "bytes": 2758,
+      "sha256": "63adab044276a3ca481d4a96da84eef1c9ce00bce2caff189360f0f601c0d512"
+    },
+    {
+      "id": "M6STORE292-00276",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/056-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "M6STORE292-00277",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/057-tests.rs",
+      "bytes": 25878,
+      "sha256": "395974632288e6eaf3d0f8388a4f970f2e4da8bd40c70f5921ff139156f409b1"
+    },
+    {
+      "id": "M6STORE292-00278",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/058-tests.rs",
+      "bytes": 30740,
+      "sha256": "6e89d881d49ea0b55aaa508d1a7899590f45677fb10c8fb7491b406508db3490"
+    },
+    {
+      "id": "M6STORE292-00279",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/059-matches.rs",
+      "bytes": 26137,
+      "sha256": "2acc8e55b8860fe1a162a3614ddf84809c11822b0b6d27bd488a82fdcf1527e5"
+    },
+    {
+      "id": "M6STORE292-00280",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/060-preferences.rs",
+      "bytes": 6557,
+      "sha256": "683f80eedaf95b89497ab65a8b6c33a719b5ff06bda0ac23f02eb34cb889c95c"
+    },
+    {
+      "id": "M6STORE292-00281",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/061-kr-admin.rs",
+      "bytes": 4971,
+      "sha256": "0b061cc7333634492db151aacfc6cc800e12a3b25395c7661f1002925081197a"
+    },
+    {
+      "id": "M6STORE292-00282",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/062-sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "M6STORE292-00283",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/063-tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "M6STORE292-00284",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/064-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "M6STORE292-00285",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/065-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "M6STORE292-00286",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/066-0003_match_history.sql",
+      "bytes": 2234,
+      "sha256": "cb8305293b1c7577da9f739afb4d5d0fbac63ac93d57c4fc6fec8069863dcbbf"
+    },
+    {
+      "id": "M6STORE292-00287",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/067-Cargo.toml",
+      "bytes": 471,
+      "sha256": "9899ec1f4f27cca8766459e3b07352e91083452336f58468fb5ad8bf2a0ab1f8"
+    },
+    {
+      "id": "M6STORE292-00288",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/068-Cargo.toml",
+      "bytes": 368,
+      "sha256": "2a712a65b842e5e8335687427e386c31ff8e898428c54ff446bfda74e6827bb6"
+    },
+    {
+      "id": "M6STORE292-00289",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/069-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "M6STORE292-00290",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/071-Cargo.toml",
+      "bytes": 927,
+      "sha256": "45102ab5f4278ce4306b05db0c16f09df7840f11865dfc3d411855896c32a9ee"
+    },
+    {
+      "id": "M6STORE292-00291",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/072-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "M6STORE292-00292",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/073-run_m6_store_retained_r2.py",
+      "bytes": 3534,
+      "sha256": "3ffa41d19bbc8be0c66c55d7646c1a6446a6044c88fe377dd25bec61aadd4696"
+    },
+    {
+      "id": "M6STORE292-00293",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/frozen/074-kr-service-tests",
+      "bytes": 128324800,
+      "sha256": "ac9617541286b9a8f656e0e1be689f529bd67ed1523a3cd719bbd620f1f1a3bb"
+    },
+    {
+      "id": "M6STORE292-00294",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/inside.py",
+      "bytes": 907,
+      "sha256": "0baf36e7c61ab1a90d79eb94590afb856895b2412dbbdcfdc127dc4d3308f486"
+    },
+    {
+      "id": "M6STORE292-00295",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/kr-service-tests",
+      "bytes": 128324800,
+      "sha256": "ac9617541286b9a8f656e0e1be689f529bd67ed1523a3cd719bbd620f1f1a3bb"
+    },
+    {
+      "id": "M6STORE292-00296",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/launcher.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00297",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/network.json",
+      "bytes": 253,
+      "sha256": "129de271312d87d5b2e2343022ad07f8d92fc23fd70b5c04242c1a6b0ecbcd65"
+    },
+    {
+      "id": "M6STORE292-00298",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/preflight.json",
+      "bytes": 25901,
+      "sha256": "4d191291a58d886bbf39358307528f6e1d0a22b07a5caa93f6b64a5877040ef2"
+    },
+    {
+      "id": "M6STORE292-00299",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-0-busy_and_insert_failure_leave_no_half_match_and_retry_same_event_succeeds/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "2788c5fd7861d25dd103dd2e19df8d2e6c09af162eef13aacf63cac1965bcac6"
+    },
+    {
+      "id": "M6STORE292-00300",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-1-cancellation_and_roster_validation_never_record_cancelled_players_as_winners/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "764b22d86b5d3f385339ab56b2a68f8ceccee79f1014016c6926a24f2b260393"
+    },
+    {
+      "id": "M6STORE292-00301",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-1-cancellation_and_roster_validation_never_record_cancelled_players_as_winners/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00302",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-1-cancellation_and_roster_validation_never_record_cancelled_players_as_winners/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00303",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-10-credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_checked/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "33562202c6a669906c36b4b6767d4a93751744b9f08b388e1d56c472ce48b8e1"
+    },
+    {
+      "id": "M6STORE292-00304",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-10-credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_checked/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00305",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-10-credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_checked/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00306",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-11-credentials_owner_and_input_bounds/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "bf6d5ea73610dbe2c728ebfcf125176e93161e9fa1ec3720722e28dfe3e93fd3"
+    },
+    {
+      "id": "M6STORE292-00307",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-11-credentials_owner_and_input_bounds/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00308",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-11-credentials_owner_and_input_bounds/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00309",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-12-expiry_observation_is_durable_even_on_denial_clock_cannot_revive_token/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "b5f46c9a8fade2f6a809de3bd170fec068078bac8e444f61710c3fe1135d7f34"
+    },
+    {
+      "id": "M6STORE292-00310",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-12-expiry_observation_is_durable_even_on_denial_clock_cannot_revive_token/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00311",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-12-expiry_observation_is_durable_even_on_denial_clock_cannot_revive_token/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00312",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-13-explicit_idle_authorization_renews_only_owner_never_extends_absolute_or_revives_after_clock_rollback/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "0df7af6b15fdc202683409923ea53b91bc7a977a9a08d7cffe0457ff41033b18"
+    },
+    {
+      "id": "M6STORE292-00313",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-13-explicit_idle_authorization_renews_only_owner_never_extends_absolute_or_revives_after_clock_rollback/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00314",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-13-explicit_idle_authorization_renews_only_owner_never_extends_absolute_or_revives_after_clock_rollback/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00315",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-14-hash_work_and_phc_are_bounded_instance_and_allocator_fail_closed/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "6108d9c3524455de20611bdb37868b75bc4ebd035c1cf7704148453803b8d7c4"
+    },
+    {
+      "id": "M6STORE292-00316",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-14-hash_work_and_phc_are_bounded_instance_and_allocator_fail_closed/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00317",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-14-hash_work_and_phc_are_bounded_instance_and_allocator_fail_closed/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00318",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-15-live_authorization_survives_writer_pressure_but_observes_committed_fences/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "bd2b9ae804b2a26c48302df7822146d078a896cbf08d093d481cd751093c5429"
+    },
+    {
+      "id": "M6STORE292-00319",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-15-live_authorization_survives_writer_pressure_but_observes_committed_fences/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00320",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-15-live_authorization_survives_writer_pressure_but_observes_committed_fences/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00321",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-16-live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "217d3a4e46328666ce8a662269915856a001f54fd9dfb5ac4857a114920dc183"
+    },
+    {
+      "id": "M6STORE292-00322",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-16-live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00323",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-16-live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00324",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-17-live_login_resamples_publication_after_other_connection_advances_clock/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "48d46f48c673ce10fb4e9f66ab8ffd5d2bd431b3df5e50291c874af9704a61fd"
+    },
+    {
+      "id": "M6STORE292-00325",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-17-live_login_resamples_publication_after_other_connection_advances_clock/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00326",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-17-live_login_resamples_publication_after_other_connection_advances_clock/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00327",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "03bdea6192b7f81088cdf51dd0a83988f7cdbb1603401b21dbac6e1d211464e4"
+    },
+    {
+      "id": "M6STORE292-00328",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00329",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00330",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/link.sqlite",
+      "bytes": 110592,
+      "sha256": "03bdea6192b7f81088cdf51dd0a83988f7cdbb1603401b21dbac6e1d211464e4"
+    },
+    {
+      "id": "M6STORE292-00331",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/other.sqlite",
+      "bytes": 8192,
+      "sha256": "2e27bb6ec7d69215bf8ebe86325016a613f5244193943f549a4963f453a3c105"
+    },
+    {
+      "id": "M6STORE292-00332",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-19-profile_edit_is_persistent_versioned_and_does_not_change_ownership/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "9d1aad974455661d015a634a26904d799fccb323add4f176bdd0f9e45514729a"
+    },
+    {
+      "id": "M6STORE292-00333",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-19-profile_edit_is_persistent_versioned_and_does_not_change_ownership/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00334",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-19-profile_edit_is_persistent_versioned_and_does_not_change_ownership/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00335",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-2-durable_duplicate_and_conflicting_events_preserve_snapshot_zero_reward_and_history/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "f8afe4dbb63a385dc6486ef4af2452f404adcb5e53c7c95843a50a9c38f885ec"
+    },
+    {
+      "id": "M6STORE292-00336",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-2-durable_duplicate_and_conflicting_events_preserve_snapshot_zero_reward_and_history/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00337",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-2-durable_duplicate_and_conflicting_events_preserve_snapshot_zero_reward_and_history/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00338",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-20-reopen_preserves_identity_and_session_until_explicit_instance_restart/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "c9a6eb16ec94e17a5663ff0373484cb94acc3f511358af11308370e59e5b5fab"
+    },
+    {
+      "id": "M6STORE292-00339",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-20-reopen_preserves_identity_and_session_until_explicit_instance_restart/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00340",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-20-reopen_preserves_identity_and_session_until_explicit_instance_restart/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00341",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-21-revoke_disable_enable_and_password_reset/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "d6ba92bda437d237284409a9612883e14600fe99958e1a45096c10ca54451188"
+    },
+    {
+      "id": "M6STORE292-00342",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-21-revoke_disable_enable_and_password_reset/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00343",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-21-revoke_disable_enable_and_password_reset/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00344",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-22-sampled_live_login_keeps_rollback_and_credential_reset_fences/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "7ac3f31c163834810146e418c4ff588752d6ef4fcf89c034c5b220af1e742eb5"
+    },
+    {
+      "id": "M6STORE292-00345",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-22-sampled_live_login_keeps_rollback_and_credential_reset_fences/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00346",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-22-sampled_live_login_keeps_rollback_and_credential_reset_fences/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00347",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-23-sqlite_full_during_audit_rolls_back_account_player_and_allocator/accounts.sqlite",
+      "bytes": 114688,
+      "sha256": "18e15eb5ebfbdb66ae50686a1b12c588f635247c882b4ba74e46ff0b87f039fa"
+    },
+    {
+      "id": "M6STORE292-00348",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-23-sqlite_full_during_audit_rolls_back_account_player_and_allocator/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00349",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-23-sqlite_full_during_audit_rolls_back_account_player_and_allocator/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00350",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-24-two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "3a6477ee048beeceb7a71f84a620f9aec113bb4f332c4f323ea32fd4b413a2c9"
+    },
+    {
+      "id": "M6STORE292-00351",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-24-two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00352",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-24-two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00353",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-3-instance_audit_failure_rolls_back_cancellation_epoch_and_session_invalidation/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "7749a3d63d5a201ef1cfc75623ab458052710c48c79d46c91829a4972db2f645"
+    },
+    {
+      "id": "M6STORE292-00354",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-3-instance_audit_failure_rolls_back_cancellation_epoch_and_session_invalidation/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00355",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-3-instance_audit_failure_rolls_back_cancellation_epoch_and_session_invalidation/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00356",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "f3790879de21233d3879b3980386cb20c0640793af6987b61000e46b25141ae0"
+    },
+    {
+      "id": "M6STORE292-00357",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00358",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00359",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/committed",
+      "bytes": 9,
+      "sha256": "cc962289af2873dd6dad32931554372a7d2d2de5bd5859c8265eb58b5197a88e"
+    },
+    {
+      "id": "M6STORE292-00360",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/kill-control.json",
+      "bytes": 1848,
+      "sha256": "66393ecb503235bfc3b3ebcc1aa412f33e067c422a0b559649cdc293b8b8de42"
+    },
+    {
+      "id": "M6STORE292-00361",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/start.json",
+      "bytes": 288,
+      "sha256": "92601385217f5683ec577d8781fe86c6ab0f35730827d7a485777e559f9aec81"
+    },
+    {
+      "id": "M6STORE292-00362",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "ac3982b6793de70ea3d7d35642d28c82f9810af5a9a16beaccfa1985b301201a"
+    },
+    {
+      "id": "M6STORE292-00363",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00364",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00365",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/committed",
+      "bytes": 9,
+      "sha256": "cc962289af2873dd6dad32931554372a7d2d2de5bd5859c8265eb58b5197a88e"
+    },
+    {
+      "id": "M6STORE292-00366",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/kill-control.json",
+      "bytes": 2153,
+      "sha256": "83570cf36b777ef8f873f6d10735f48931f04a837f0cc304a16fafd990200206"
+    },
+    {
+      "id": "M6STORE292-00367",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/start.json",
+      "bytes": 288,
+      "sha256": "92601385217f5683ec577d8781fe86c6ab0f35730827d7a485777e559f9aec81"
+    },
+    {
+      "id": "M6STORE292-00368",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-6-restart_cancels_open_match_once_and_rejects_cross_owner_and_old_epoch/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "501ae77541a286990f8d69fa392b801ffa766ded1a940d16bf377cbcfa8030a4"
+    },
+    {
+      "id": "M6STORE292-00369",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-6-restart_cancels_open_match_once_and_rejects_cross_owner_and_old_epoch/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00370",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-6-restart_cancels_open_match_once_and_rejects_cross_owner_and_old_epoch/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00371",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-7-foreign_expired_revoked_and_busy_preferences_cannot_mutate_or_publish_success/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "c6ee32bd225cbc18e5ad22975477ae4b297a437ae401db152eaedf255c553129"
+    },
+    {
+      "id": "M6STORE292-00372",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-7-foreign_expired_revoked_and_busy_preferences_cannot_mutate_or_publish_success/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00373",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-7-foreign_expired_revoked_and_busy_preferences_cannot_mutate_or_publish_success/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00374",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-8-selected_character_persists_without_identity_version_change_and_stale_write_cannot_undo_new_choice/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "5df0bf436961517543dc024f7561b123d0c9fbca3f742696459929c5ec36dd4c"
+    },
+    {
+      "id": "M6STORE292-00375",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-8-selected_character_persists_without_identity_version_change_and_stale_write_cannot_undo_new_choice/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00376",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-8-selected_character_persists_without_identity_version_change_and_stale_write_cannot_undo_new_choice/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00377",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-9-audit_failure_is_atomic_busy_is_bounded_and_entropy_fails_closed/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "964e54f10277ce0cb43f0c373210c45d9f195a0c47b154c7a06cb39a7c1dedab"
+    },
+    {
+      "id": "M6STORE292-00378",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-9-audit_failure_is_atomic_busy_is_bounded_and_entropy_fails_closed/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00379",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-store-3-9-audit_failure_is_atomic_busy_is_bounded_and_entropy_fails_closed/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00380",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-worker-3-0-persistence_jobs_are_bounded_cancel_queued_work_retry_committed_events_and_keep_live_lane_separate/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "340fa68ba217962c565db7bc09b8cdd2d877e4f55047899d9cc681fbbce98c1d"
+    },
+    {
+      "id": "M6STORE292-00381",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-worker-3-0-persistence_jobs_are_bounded_cancel_queued_work_retry_committed_events_and_keep_live_lane_separate/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00382",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-worker-3-0-persistence_jobs_are_bounded_cancel_queued_work_retry_committed_events_and_keep_live_lane_separate/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00383",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-worker-3-1-persistence_preference_queue_expiry_and_revocation_cannot_publish_late_character/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "3148df095e6f6ef7c5a6e3da825688953961e0273d19036ae9967befae0f36af"
+    },
+    {
+      "id": "M6STORE292-00384",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-worker-3-1-persistence_preference_queue_expiry_and_revocation_cannot_publish_late_character/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00385",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/raw/kr-worker-3-1-persistence_preference_queue_expiry_and_revocation_cannot_publish_late_character/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00386",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/seal.json",
+      "bytes": 31228,
+      "sha256": "062f96c64227a113536d14dcea57a4c040048044981830a22f0a62815a2d3215"
+    },
+    {
+      "id": "M6STORE292-00387",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r2/tests.txt",
+      "bytes": 3269,
+      "sha256": "cb7722fd5af21aa2e0b9157bc3b7a11b475aeb00eb6a16bcaf1fc67fb2a31dc5"
+    },
+    {
+      "id": "M6STORE292-00388",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/exit.json",
+      "bytes": 18,
+      "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d"
+    },
+    {
+      "id": "M6STORE292-00389",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/000-kr00967.rs",
+      "bytes": 3977,
+      "sha256": "5682898a8e32ae588c99dcf7dde6089aeec198a1234a0ed5c527c107b6dbe5de"
+    },
+    {
+      "id": "M6STORE292-00390",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/001-lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "M6STORE292-00391",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/002-native_account_profiles.rs",
+      "bytes": 3073,
+      "sha256": "4054a9d8affab3eebe8c77a30e76f0947a1d60843bda15a71e6fa991c2696023"
+    },
+    {
+      "id": "M6STORE292-00392",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/003-native_room_choices.rs",
+      "bytes": 1722,
+      "sha256": "d527c228dcc86ec11057e1c8c5037ced0e44d2ae03f27da5e8884ad49f41e80d"
+    },
+    {
+      "id": "M6STORE292-00393",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/004-native_selected_roster.rs",
+      "bytes": 1121,
+      "sha256": "62501ed78735f409edac88f0828fbbb89451734dc17a706bf622b4e2085c8859"
+    },
+    {
+      "id": "M6STORE292-00394",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/005-native_selected_start.rs",
+      "bytes": 3067,
+      "sha256": "c09cd6f51c35e32b029d21cff7a1e3ae9c3ee65f8075ecd9ed60852b15a00b09"
+    },
+    {
+      "id": "M6STORE292-00395",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/006-native_start_vectors.rs",
+      "bytes": 2882,
+      "sha256": "3bfff9199f2fd8abd1acdbc82e6a0484b80c5a9d0865404c64c0b64b53404021"
+    },
+    {
+      "id": "M6STORE292-00396",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/007-native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "M6STORE292-00397",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/008-account.rs",
+      "bytes": 3477,
+      "sha256": "1b76836d680abbae1ffd16e1d618f4a2e9a8ab3057ed743a4eeaa617fbb717c8"
+    },
+    {
+      "id": "M6STORE292-00398",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/009-battle.rs",
+      "bytes": 7760,
+      "sha256": "618e28ec71912edb834d2f5ffd9c151a7c550c8bdb2f6be8812dcff3bf5f5a17"
+    },
+    {
+      "id": "M6STORE292-00399",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/010-player.rs",
+      "bytes": 7967,
+      "sha256": "5dca3e46e0a9735208175ac500df7f8854b12e369c2dd000d407ca7229722a16"
+    },
+    {
+      "id": "M6STORE292-00400",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/011-room.rs",
+      "bytes": 22770,
+      "sha256": "72a8cc9a6ff9e973e3647b14df7c22aac9d6a999791762a3234b4d36ca7a6133"
+    },
+    {
+      "id": "M6STORE292-00401",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/012-room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "M6STORE292-00402",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/013-native_proxy_lab.rs",
+      "bytes": 8929,
+      "sha256": "2158ddad71c2098be428cabb272ae45869f3f2789554fc0ad329eb9008531528"
+    },
+    {
+      "id": "M6STORE292-00403",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/014-companion.rs",
+      "bytes": 5076,
+      "sha256": "3d17300083a41d4c17deafd3918467c033a821f4ff187048d93bc20530caee94"
+    },
+    {
+      "id": "M6STORE292-00404",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/015-companion_tests.rs",
+      "bytes": 4584,
+      "sha256": "fd34096e5a53ba8ede24eb0da5484482de55c69917fea6f9dfd8b1d15ca9533e"
+    },
+    {
+      "id": "M6STORE292-00405",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/016-control.rs",
+      "bytes": 1769,
+      "sha256": "d1af56c5d1ad870124ccc7ad1fb67100e930bbdbfdb1e9cb0520124c466749b6"
+    },
+    {
+      "id": "M6STORE292-00406",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/017-lib.rs",
+      "bytes": 11418,
+      "sha256": "c277af6de7501946f7376aa168dae10d2803cecc3d6f1b9531645bd7526ee77f"
+    },
+    {
+      "id": "M6STORE292-00407",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/018-proxy.rs",
+      "bytes": 7621,
+      "sha256": "dfc45ff6566f6f4917217b147f6f8e9b6fd82a729653164eb749ac01cf8ef500"
+    },
+    {
+      "id": "M6STORE292-00408",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/019-router.rs",
+      "bytes": 15276,
+      "sha256": "492134cc47c473f86534501defd80d6a4369658b87e147d1c89872b33b3d955c"
+    },
+    {
+      "id": "M6STORE292-00409",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/020-tests.rs",
+      "bytes": 6171,
+      "sha256": "b424a582ab60c99bbc17d2878b6aec232c2521c6a0f01f75cd587d29b4d40dec"
+    },
+    {
+      "id": "M6STORE292-00410",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/021-kr-companion.rs",
+      "bytes": 3882,
+      "sha256": "776b14648a15079fcf3c9434917300fb4e0cc955f007d3da7d8332062814976c"
+    },
+    {
+      "id": "M6STORE292-00411",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/022-tests.rs",
+      "bytes": 6217,
+      "sha256": "72940ed32c8e0b41c9abd97bd4bbe05c3b1ea1b12f45be3ecc35b07c4f8da1c7"
+    },
+    {
+      "id": "M6STORE292-00412",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/023-check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "M6STORE292-00413",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/024-account_bridge.rs",
+      "bytes": 23208,
+      "sha256": "2b3ec0077c44d641ab43e5ff94eff3ad90afee2984211291a0f36e5f5b872915"
+    },
+    {
+      "id": "M6STORE292-00414",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/025-account_serving.rs",
+      "bytes": 24189,
+      "sha256": "d29a4e77b36001821974eb770a69444b7d8c981e2b96b09626fa3c93a3a81160"
+    },
+    {
+      "id": "M6STORE292-00415",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/026-account_worker.rs",
+      "bytes": 21117,
+      "sha256": "1aaba49120b9dc8b44f1543cecc3c5b0c56b4bfa43ef2254728fd6236bd54d31"
+    },
+    {
+      "id": "M6STORE292-00416",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/027-accounts.rs",
+      "bytes": 30489,
+      "sha256": "846a9e45ac02c533fdb3252382e5ea624f57d609bef7f0f070977e1cd243e59e"
+    },
+    {
+      "id": "M6STORE292-00417",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/028-authenticated_peer.rs",
+      "bytes": 15838,
+      "sha256": "3663bce2a04987376caedeeb8d785805c6d4b10915d55ce9e4cd009740c558d2"
+    },
+    {
+      "id": "M6STORE292-00418",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/029-authenticated_room_relay.rs",
+      "bytes": 7030,
+      "sha256": "e1a618a5847153e4ee0ce2980f3d4cb695ea8398ff1ed31694954095b0a84f4f"
+    },
+    {
+      "id": "M6STORE292-00419",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/030-binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "M6STORE292-00420",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/031-bombs.rs",
+      "bytes": 15072,
+      "sha256": "4496bd8e1be4928f5264552516ac9104581f3433bda2e015e9fe2365b82bc169"
+    },
+    {
+      "id": "M6STORE292-00421",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/032-characters.rs",
+      "bytes": 2441,
+      "sha256": "a9a872ae38adf39d2132fcd676482a5ee54048b40ab8685ba067674f7245dfcb"
+    },
+    {
+      "id": "M6STORE292-00422",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/033-four_results.rs",
+      "bytes": 10769,
+      "sha256": "26c1c50fc8791534c965dfa39f6d61c0cf712c085ff09d3081688a4763886af6"
+    },
+    {
+      "id": "M6STORE292-00423",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/034-lib.rs",
+      "bytes": 58091,
+      "sha256": "047443e62bc8d16772bcf5d48b84733a2b7634a86c93e581b285e9e2ddaab679"
+    },
+    {
+      "id": "M6STORE292-00424",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/035-life.rs",
+      "bytes": 17096,
+      "sha256": "f64cfdc4403bd58d8820a434bb23e35a5f46e11330cd5fbbcbbd65954de7a86a"
+    },
+    {
+      "id": "M6STORE292-00425",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/036-lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "M6STORE292-00426",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/037-logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "M6STORE292-00427",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/038-main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "M6STORE292-00428",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/039-network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "M6STORE292-00429",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/040-peer_routes.rs",
+      "bytes": 4631,
+      "sha256": "221075ff3e89110f636020c43a4e98099a8ffc3b02d204e12f03acd77ebb950b"
+    },
+    {
+      "id": "M6STORE292-00430",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/041-pickups.rs",
+      "bytes": 14368,
+      "sha256": "4ed0d33f79c4689b6cbccc44fddc53f8fb07e297e8da4c202acaf2f6f4f3e2ca"
+    },
+    {
+      "id": "M6STORE292-00431",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/042-player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "M6STORE292-00432",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/043-room.rs",
+      "bytes": 51543,
+      "sha256": "2418d267769f94c2262b4123c0f3ce526bb7de0e080441e8194086b00220e5a3"
+    },
+    {
+      "id": "M6STORE292-00433",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/044-room_io.rs",
+      "bytes": 157125,
+      "sha256": "d71040dc2f69f54e84a5b36c2ce74d0b3a072a50c4fe38c20d2aaa9eeff8cf70"
+    },
+    {
+      "id": "M6STORE292-00434",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/045-room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "M6STORE292-00435",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/046-room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "M6STORE292-00436",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/047-room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "M6STORE292-00437",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/048-room_service.rs",
+      "bytes": 10127,
+      "sha256": "7803ad6f6ec9d0216a740c7813cda3097500263a40fb41d7a4ae74c47e9c44be"
+    },
+    {
+      "id": "M6STORE292-00438",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/049-room_wire.rs",
+      "bytes": 2201,
+      "sha256": "4bd8473f94393106cdaf976425f91b1e0183eb0e12535b5795878250af73129c"
+    },
+    {
+      "id": "M6STORE292-00439",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/050-round_epochs.rs",
+      "bytes": 2527,
+      "sha256": "18eb735293835939bbcc6da8e28a070f9e6ea54b5e1e0a99d95640e82cfea5ac"
+    },
+    {
+      "id": "M6STORE292-00440",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/051-rules.rs",
+      "bytes": 9271,
+      "sha256": "03fc20f0a0cae9ae29af7f2bea3f4b147fde001c5f12e62bb4e4b0e1f0ce99ec"
+    },
+    {
+      "id": "M6STORE292-00441",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/052-terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "M6STORE292-00442",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/053-udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "M6STORE292-00443",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/054-tests.rs",
+      "bytes": 69436,
+      "sha256": "38767406e765fbfb4c27a38dfe8500ba9c3e9309c5fbd7c6f23b55ebb987adac"
+    },
+    {
+      "id": "M6STORE292-00444",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/055-wire.rs",
+      "bytes": 2758,
+      "sha256": "63adab044276a3ca481d4a96da84eef1c9ce00bce2caff189360f0f601c0d512"
+    },
+    {
+      "id": "M6STORE292-00445",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/056-rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "M6STORE292-00446",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/057-tests.rs",
+      "bytes": 25878,
+      "sha256": "395974632288e6eaf3d0f8388a4f970f2e4da8bd40c70f5921ff139156f409b1"
+    },
+    {
+      "id": "M6STORE292-00447",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/058-tests.rs",
+      "bytes": 30740,
+      "sha256": "6e89d881d49ea0b55aaa508d1a7899590f45677fb10c8fb7491b406508db3490"
+    },
+    {
+      "id": "M6STORE292-00448",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/059-matches.rs",
+      "bytes": 26137,
+      "sha256": "2acc8e55b8860fe1a162a3614ddf84809c11822b0b6d27bd488a82fdcf1527e5"
+    },
+    {
+      "id": "M6STORE292-00449",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/060-preferences.rs",
+      "bytes": 6557,
+      "sha256": "683f80eedaf95b89497ab65a8b6c33a719b5ff06bda0ac23f02eb34cb889c95c"
+    },
+    {
+      "id": "M6STORE292-00450",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/061-kr-admin.rs",
+      "bytes": 4971,
+      "sha256": "0b061cc7333634492db151aacfc6cc800e12a3b25395c7661f1002925081197a"
+    },
+    {
+      "id": "M6STORE292-00451",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/062-sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "M6STORE292-00452",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/063-tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "M6STORE292-00453",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/064-0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "M6STORE292-00454",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/065-0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "M6STORE292-00455",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/066-0003_match_history.sql",
+      "bytes": 2234,
+      "sha256": "cb8305293b1c7577da9f739afb4d5d0fbac63ac93d57c4fc6fec8069863dcbbf"
+    },
+    {
+      "id": "M6STORE292-00456",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/067-Cargo.toml",
+      "bytes": 471,
+      "sha256": "9899ec1f4f27cca8766459e3b07352e91083452336f58468fb5ad8bf2a0ab1f8"
+    },
+    {
+      "id": "M6STORE292-00457",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/068-Cargo.toml",
+      "bytes": 368,
+      "sha256": "2a712a65b842e5e8335687427e386c31ff8e898428c54ff446bfda74e6827bb6"
+    },
+    {
+      "id": "M6STORE292-00458",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/069-Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "M6STORE292-00459",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/071-Cargo.toml",
+      "bytes": 927,
+      "sha256": "45102ab5f4278ce4306b05db0c16f09df7840f11865dfc3d411855896c32a9ee"
+    },
+    {
+      "id": "M6STORE292-00460",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/072-rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "M6STORE292-00461",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/073-run_m6_store_retained_r3.py",
+      "bytes": 3611,
+      "sha256": "66a12c221eeb02f38b0a73b9d09964d28354c1b85651efe5d442200450553db1"
+    },
+    {
+      "id": "M6STORE292-00462",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/frozen/074-kr-service-tests",
+      "bytes": 128703616,
+      "sha256": "3a2b6b2b0961392ec74d97085d0253d3d4d25ca6f0caace2f543342d894e42e1"
+    },
+    {
+      "id": "M6STORE292-00463",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/inside.py",
+      "bytes": 984,
+      "sha256": "d3fcd723f2aca2bfb7c127ebd6f42d6354c711197f514dc4ac2b6a0ee168c7e0"
+    },
+    {
+      "id": "M6STORE292-00464",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/kr-admin",
+      "bytes": 88712752,
+      "sha256": "af2ead62c6f78ba3037663b7e58f01dc31dc8dd91c978c791a7a9f3885f6dc6a"
+    },
+    {
+      "id": "M6STORE292-00465",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/kr-service-tests",
+      "bytes": 128703616,
+      "sha256": "3a2b6b2b0961392ec74d97085d0253d3d4d25ca6f0caace2f543342d894e42e1"
+    },
+    {
+      "id": "M6STORE292-00466",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/launcher.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00467",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/network.json",
+      "bytes": 253,
+      "sha256": "129de271312d87d5b2e2343022ad07f8d92fc23fd70b5c04242c1a6b0ecbcd65"
+    },
+    {
+      "id": "M6STORE292-00468",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/preflight.json",
+      "bytes": 25901,
+      "sha256": "0fc638574ce1e686601a6469a0a560cb4f88fccf1ccd4cee3a8725a6b16bba7b"
+    },
+    {
+      "id": "M6STORE292-00469",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-bridge-3-0-character_preference_is_bound_to_current_channel_owner_revision_and_normal_worker_not_live_lane/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "f90e94f25160e36415e47c30529c6a8eab95a53f0be732ad941f565bddf711cc"
+    },
+    {
+      "id": "M6STORE292-00470",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-bridge-3-0-character_preference_is_bound_to_current_channel_owner_revision_and_normal_worker_not_live_lane/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00471",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-bridge-3-0-character_preference_is_bound_to_current_channel_owner_revision_and_normal_worker_not_live_lane/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00472",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-0-busy_and_insert_failure_leave_no_half_match_and_retry_same_event_succeeds/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "87bbaad199aa84fdd0f9b3384721bd4562ddd75cdb8110ee5058b9f497e5ea33"
+    },
+    {
+      "id": "M6STORE292-00473",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-1-cancellation_and_roster_validation_never_record_cancelled_players_as_winners/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "11074308cd734629d318ec10facdc521b29f62b48c9acd228caf2938473059fa"
+    },
+    {
+      "id": "M6STORE292-00474",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-1-cancellation_and_roster_validation_never_record_cancelled_players_as_winners/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00475",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-1-cancellation_and_roster_validation_never_record_cancelled_players_as_winners/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00476",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-10-credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_checked/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "290cf5662f6bca47aba147aec6399d74afc3b96c6f35b980db72cb4ae8f2a14b"
+    },
+    {
+      "id": "M6STORE292-00477",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-10-credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_checked/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00478",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-10-credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_checked/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00479",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-11-credentials_owner_and_input_bounds/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "9298ec07180f15e9540c5ccc23520922f574dd6f9abe1cbedd8e34f03e2c6bd7"
+    },
+    {
+      "id": "M6STORE292-00480",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-11-credentials_owner_and_input_bounds/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00481",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-11-credentials_owner_and_input_bounds/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00482",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-12-expiry_observation_is_durable_even_on_denial_clock_cannot_revive_token/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "28cfd4a57f48ce21c7249865457bf65e7ea5688bd03a45418cd32a7e97598eab"
+    },
+    {
+      "id": "M6STORE292-00483",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-12-expiry_observation_is_durable_even_on_denial_clock_cannot_revive_token/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00484",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-12-expiry_observation_is_durable_even_on_denial_clock_cannot_revive_token/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00485",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-13-explicit_idle_authorization_renews_only_owner_never_extends_absolute_or_revives_after_clock_rollback/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "aec2102949e36350ef2c64577af7d323772013833937ecb114aae7ad79f3b4d8"
+    },
+    {
+      "id": "M6STORE292-00486",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-13-explicit_idle_authorization_renews_only_owner_never_extends_absolute_or_revives_after_clock_rollback/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00487",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-13-explicit_idle_authorization_renews_only_owner_never_extends_absolute_or_revives_after_clock_rollback/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00488",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-14-hash_work_and_phc_are_bounded_instance_and_allocator_fail_closed/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "6f1a182f4471d7d7dd01228479d4d84f739b5183b675e5e0acf70c4bfc4041ea"
+    },
+    {
+      "id": "M6STORE292-00489",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-14-hash_work_and_phc_are_bounded_instance_and_allocator_fail_closed/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00490",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-14-hash_work_and_phc_are_bounded_instance_and_allocator_fail_closed/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00491",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-15-live_authorization_survives_writer_pressure_but_observes_committed_fences/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "7a13915fd24f332b91c341956f9343e71f70323b025068febb0fe5c7dc89bf12"
+    },
+    {
+      "id": "M6STORE292-00492",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-15-live_authorization_survives_writer_pressure_but_observes_committed_fences/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00493",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-15-live_authorization_survives_writer_pressure_but_observes_committed_fences/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00494",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-16-live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "85625c376b0662e7770ae69f2497f381e1f0aa3d39fd26bb2c4a4e3879a02487"
+    },
+    {
+      "id": "M6STORE292-00495",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-16-live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00496",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-16-live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00497",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-17-live_login_resamples_publication_after_other_connection_advances_clock/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "f8c29b5f3a0bb179669a54f79282ed9e966ad8cc96284a675064776c314d820a"
+    },
+    {
+      "id": "M6STORE292-00498",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-17-live_login_resamples_publication_after_other_connection_advances_clock/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00499",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-17-live_login_resamples_publication_after_other_connection_advances_clock/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00500",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "03bdea6192b7f81088cdf51dd0a83988f7cdbb1603401b21dbac6e1d211464e4"
+    },
+    {
+      "id": "M6STORE292-00501",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00502",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00503",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/link.sqlite",
+      "bytes": 110592,
+      "sha256": "03bdea6192b7f81088cdf51dd0a83988f7cdbb1603401b21dbac6e1d211464e4"
+    },
+    {
+      "id": "M6STORE292-00504",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-18-migration_reopen_future_checksum_unknown_database_and_permissions/other.sqlite",
+      "bytes": 8192,
+      "sha256": "2e27bb6ec7d69215bf8ebe86325016a613f5244193943f549a4963f453a3c105"
+    },
+    {
+      "id": "M6STORE292-00505",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-19-profile_edit_is_persistent_versioned_and_does_not_change_ownership/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "8bbc721a676ba9b78b9f9cfffe3b63b021f79b0a37597dd96ec1c5768d5531c1"
+    },
+    {
+      "id": "M6STORE292-00506",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-19-profile_edit_is_persistent_versioned_and_does_not_change_ownership/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00507",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-19-profile_edit_is_persistent_versioned_and_does_not_change_ownership/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00508",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-2-durable_duplicate_and_conflicting_events_preserve_snapshot_zero_reward_and_history/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "e5dd341780300bce7130a50943378e6fb80782dca96ccebdea7bde73c991dcd8"
+    },
+    {
+      "id": "M6STORE292-00509",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-2-durable_duplicate_and_conflicting_events_preserve_snapshot_zero_reward_and_history/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00510",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-2-durable_duplicate_and_conflicting_events_preserve_snapshot_zero_reward_and_history/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00511",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-20-reopen_preserves_identity_and_session_until_explicit_instance_restart/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "87107d25061970c1b23a0d6a6da1d7f19074af8b3a72f0a8c5f496e08814adf5"
+    },
+    {
+      "id": "M6STORE292-00512",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-20-reopen_preserves_identity_and_session_until_explicit_instance_restart/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00513",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-20-reopen_preserves_identity_and_session_until_explicit_instance_restart/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00514",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-21-revoke_disable_enable_and_password_reset/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "4f314da7c15f17f3b1bb2308fc22aa05863357c0bb0e18969cddb1202dcce715"
+    },
+    {
+      "id": "M6STORE292-00515",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-21-revoke_disable_enable_and_password_reset/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00516",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-21-revoke_disable_enable_and_password_reset/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00517",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-22-sampled_live_login_keeps_rollback_and_credential_reset_fences/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "0b97da95fbd1fc841fcb7920a6c7a194454f012125dbda6ff8ddb5cd7dc4cafb"
+    },
+    {
+      "id": "M6STORE292-00518",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-22-sampled_live_login_keeps_rollback_and_credential_reset_fences/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00519",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-22-sampled_live_login_keeps_rollback_and_credential_reset_fences/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00520",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-23-sqlite_full_during_audit_rolls_back_account_player_and_allocator/accounts.sqlite",
+      "bytes": 114688,
+      "sha256": "495ae1262950b2baced072b41663308e87626fc3e38478a6fb7042053c64b8c1"
+    },
+    {
+      "id": "M6STORE292-00521",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-23-sqlite_full_during_audit_rolls_back_account_player_and_allocator/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00522",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-23-sqlite_full_during_audit_rolls_back_account_player_and_allocator/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00523",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-24-two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "ce5d84d8410c5260acb9f664edbb913596ba1275bd5ac2a0f56ca4e8304cee31"
+    },
+    {
+      "id": "M6STORE292-00524",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-24-two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00525",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-24-two_real_connections_race_login_only_one_active_and_no_plaintext_at_rest/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00526",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-3-instance_audit_failure_rolls_back_cancellation_epoch_and_session_invalidation/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "f3cb84a5770d0611dc8315e4ee21308ebfe10f004b90b107fa1fc4d8fd9a4b19"
+    },
+    {
+      "id": "M6STORE292-00527",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-3-instance_audit_failure_rolls_back_cancellation_epoch_and_session_invalidation/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00528",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-3-instance_audit_failure_rolls_back_cancellation_epoch_and_session_invalidation/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00529",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "c0fe20d69112ccd74e272457104add14dc5f322182b5705ebf5a3adc71003109"
+    },
+    {
+      "id": "M6STORE292-00530",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00531",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00532",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/committed",
+      "bytes": 9,
+      "sha256": "cc962289af2873dd6dad32931554372a7d2d2de5bd5859c8265eb58b5197a88e"
+    },
+    {
+      "id": "M6STORE292-00533",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/kill-control.json",
+      "bytes": 1848,
+      "sha256": "66393ecb503235bfc3b3ebcc1aa412f33e067c422a0b559649cdc293b8b8de42"
+    },
+    {
+      "id": "M6STORE292-00534",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-4-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/start.json",
+      "bytes": 288,
+      "sha256": "92601385217f5683ec577d8781fe86c6ab0f35730827d7a485777e559f9aec81"
+    },
+    {
+      "id": "M6STORE292-00535",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "6b1edc24f0a811853dc4205f75055c50382ff696cc0a80ab651a021abe47d035"
+    },
+    {
+      "id": "M6STORE292-00536",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00537",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00538",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/committed",
+      "bytes": 9,
+      "sha256": "cc962289af2873dd6dad32931554372a7d2d2de5bd5859c8265eb58b5197a88e"
+    },
+    {
+      "id": "M6STORE292-00539",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/kill-control.json",
+      "bytes": 2153,
+      "sha256": "83570cf36b777ef8f873f6d10735f48931f04a837f0cc304a16fafd990200206"
+    },
+    {
+      "id": "M6STORE292-00540",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-5-process_kill_after_commit_preserves_exact_result_or_cancels_unfinished_on_restart/start.json",
+      "bytes": 288,
+      "sha256": "92601385217f5683ec577d8781fe86c6ab0f35730827d7a485777e559f9aec81"
+    },
+    {
+      "id": "M6STORE292-00541",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-6-restart_cancels_open_match_once_and_rejects_cross_owner_and_old_epoch/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "c5130c04b8b8f0d6a81122a9ea88c849a489aec7ac3c28db97b2cd9ca176a67a"
+    },
+    {
+      "id": "M6STORE292-00542",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-6-restart_cancels_open_match_once_and_rejects_cross_owner_and_old_epoch/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00543",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-6-restart_cancels_open_match_once_and_rejects_cross_owner_and_old_epoch/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00544",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-7-foreign_expired_revoked_and_busy_preferences_cannot_mutate_or_publish_success/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "a58507e11c9a7f5d7e94ca58d35256ce61fcd243b7d3cf09f9f121887cda5cbf"
+    },
+    {
+      "id": "M6STORE292-00545",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-7-foreign_expired_revoked_and_busy_preferences_cannot_mutate_or_publish_success/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00546",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-7-foreign_expired_revoked_and_busy_preferences_cannot_mutate_or_publish_success/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00547",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-8-selected_character_persists_without_identity_version_change_and_stale_write_cannot_undo_new_choice/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "f284f9bf545062b49b731f8dbfa1de6daae34326d29076c3d7251301500f3932"
+    },
+    {
+      "id": "M6STORE292-00548",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-8-selected_character_persists_without_identity_version_change_and_stale_write_cannot_undo_new_choice/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00549",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-8-selected_character_persists_without_identity_version_change_and_stale_write_cannot_undo_new_choice/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00550",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-9-audit_failure_is_atomic_busy_is_bounded_and_entropy_fails_closed/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "6846513868bb2131a5a7e44b753c701f29834a5d64fd237f80153434b45daf21"
+    },
+    {
+      "id": "M6STORE292-00551",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-9-audit_failure_is_atomic_busy_is_bounded_and_entropy_fails_closed/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00552",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-store-3-9-audit_failure_is_atomic_busy_is_bounded_and_entropy_fails_closed/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00553",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-worker-3-0-persistence_jobs_are_bounded_cancel_queued_work_retry_committed_events_and_keep_live_lane_separate/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "f4c12094b6552ac4d9cb7b6d81e0099e0257d638488e7ba8ad40a03d80a5f9c3"
+    },
+    {
+      "id": "M6STORE292-00554",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-worker-3-0-persistence_jobs_are_bounded_cancel_queued_work_retry_committed_events_and_keep_live_lane_separate/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00555",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-worker-3-0-persistence_jobs_are_bounded_cancel_queued_work_retry_committed_events_and_keep_live_lane_separate/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00556",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-worker-3-1-persistence_preference_queue_expiry_and_revocation_cannot_publish_late_character/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "4e49f6ff4c1d13742f7520d97ad2e64d4322b8bc8e8027633783559c1976a446"
+    },
+    {
+      "id": "M6STORE292-00557",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-worker-3-1-persistence_preference_queue_expiry_and_revocation_cannot_publish_late_character/accounts.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "id": "M6STORE292-00558",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/raw/kr-worker-3-1-persistence_preference_queue_expiry_and_revocation_cannot_publish_late_character/accounts.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00559",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/seal.json",
+      "bytes": 31574,
+      "sha256": "d8b0b1585e30049813d4e8f4b3d90cbd0a9a7ce97815d3a933a0cead31525def"
+    },
+    {
+      "id": "M6STORE292-00560",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/tests.txt",
+      "bytes": 3400,
+      "sha256": "ec005e2d134685c37830b2b6991c205675167032fdd3a93973046ff2091afd80"
+    },
+    {
+      "id": "M6STORE292-00561",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-verification.json",
+      "bytes": 20605,
+      "sha256": "474504eef15451933d369398788ad0e52209aeddd25d0a368d019d1a0b8d4a36"
+    },
+    {
+      "id": "M6STORE292-00562",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-workspace-build-r1.txt",
+      "bytes": 168,
+      "sha256": "bcfe21a9f9e0b1531c715b7dd4ea929278abaf53e2454bfb40785d0dce1bfeec"
+    },
+    {
+      "id": "M6STORE292-00563",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-workspace-tests-r1.txt",
+      "bytes": 19697,
+      "sha256": "0f36e6d86807ab50ef521341bd7348cf4bbb389f1f8963a5000cb461f9615fd8"
+    },
+    {
+      "id": "M6STORE292-00564",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-worker-retained-build-r1.jsonl",
+      "bytes": 85949,
+      "sha256": "e6a5bcfecb06ce16d3e84e67d770409ac9d1467433a98bbba6649733c89688f3"
+    },
+    {
+      "id": "M6STORE292-00565",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-worker-retained-build-r1.txt",
+      "bytes": 73,
+      "sha256": "359aa7ca4260c768ab7690082161644585b9ff2f5abba33854302f70cbae31ea"
+    },
+    {
+      "id": "M6STORE292-00566",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-worker-retained-verification.json",
+      "bytes": 21834,
+      "sha256": "3d0210a91e13417813a82637a483abe8cc9b51a3a9a2f3b9e9feeb492cdaf5fb"
+    },
+    {
+      "id": "M6STORE292-00567",
+      "kind": "local",
+      "path": "local/research/codex/m6-worker-build-r1.txt",
+      "bytes": 168,
+      "sha256": "b1f3d7481f6d92aa6aa5fd484db5c9cc6c8415efa3ed3b5771a1626f77c98007"
+    },
+    {
+      "id": "M6STORE292-00568",
+      "kind": "local",
+      "path": "local/research/codex/m6-worker-clippy-r1.txt",
+      "bytes": 168,
+      "sha256": "f71cabf3f905009ffe40f68bcb019cddc694a68b2651b9b4a9aea69cc4859733"
+    },
+    {
+      "id": "M6STORE292-00569",
+      "kind": "local",
+      "path": "local/research/codex/m6-worker-fmt-r1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00570",
+      "kind": "local",
+      "path": "local/research/codex/m6-worker-workspace-tests-r1.txt",
+      "bytes": 19948,
+      "sha256": "dc3ce58c5e429ea9fc86ab374e4487b931b574af9feb0babd84b3f0e90b676e9"
+    },
+    {
+      "id": "M6STORE292-00571",
+      "kind": "local",
+      "path": "local/research/codex/run_m6_store_retained_r1.py",
+      "bytes": 3425,
+      "sha256": "1e1cdee2698f846d7dc103e5fd5cccfb55e2be7407a92a3202c709532d4775f0"
+    },
+    {
+      "id": "M6STORE292-00572",
+      "kind": "local",
+      "path": "local/research/codex/run_m6_store_retained_r2.py",
+      "bytes": 3534,
+      "sha256": "3ffa41d19bbc8be0c66c55d7646c1a6446a6044c88fe377dd25bec61aadd4696"
+    },
+    {
+      "id": "M6STORE292-00573",
+      "kind": "local",
+      "path": "local/research/codex/run_m6_store_retained_r3.py",
+      "bytes": 3611,
+      "sha256": "66a12c221eeb02f38b0a73b9d09964d28354c1b85651efe5d442200450553db1"
+    },
+    {
+      "id": "M6STORE292-00574",
+      "kind": "local",
+      "path": "local/research/codex/verify_m6_native_db_upgrade.py",
+      "bytes": 2323,
+      "sha256": "4d97a4b9f7057af865c0279ebc965936d32eb4920c8fae471a48e5b6bbda62ea"
+    },
+    {
+      "id": "M6STORE292-00575",
+      "kind": "local",
+      "path": "local/research/codex/verify_m6_store_bridge_retained.py",
+      "bytes": 3891,
+      "sha256": "166516d98fba6eaf4d6d4b0ea28bf19fbbb8fd5dd721c4305a90ad923212102e"
+    },
+    {
+      "id": "M6STORE292-00576",
+      "kind": "local",
+      "path": "local/research/codex/verify_m6_store_retained.py",
+      "bytes": 3824,
+      "sha256": "f212da85f47f844af7096fec6a7334642a240eb328c223f692a78cfc88b23a0f"
+    },
+    {
+      "id": "M6STORE292-00577",
+      "kind": "local",
+      "path": "local/research/codex/verify_m6_store_worker_retained.py",
+      "bytes": 3864,
+      "sha256": "a95cc5f2845be0242e28fdabd0142c9a598fdf764c5e065351c084b9ffc9dd4d"
+    },
+    {
+      "id": "M6STORE292-00578",
+      "kind": "local",
+      "path": "local/research/codex/write_m6_backend_docs.py",
+      "bytes": 14135,
+      "sha256": "62e2e98114eeb00e1b42f50e2352073c224af05a092fae17b654687aa301b816"
+    },
+    {
+      "id": "M6STORE292-00579",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 34477,
+      "sha256": "bb10613cc2694242ce60f9bc53cdfe26a002463af6a89324dea17edb8a64ecf4"
+    },
+    {
+      "id": "M6STORE292-00580",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0003_match_history.sql",
+      "bytes": 2234,
+      "sha256": "cb8305293b1c7577da9f739afb4d5d0fbac63ac93d57c4fc6fec8069863dcbbf"
+    },
+    {
+      "id": "M6STORE292-00581",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/tests.rs",
+      "bytes": 69436,
+      "sha256": "38767406e765fbfb4c27a38dfe8500ba9c3e9309c5fbd7c6f23b55ebb987adac"
+    },
+    {
+      "id": "M6STORE292-00582",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 23208,
+      "sha256": "2b3ec0077c44d641ab43e5ff94eff3ad90afee2984211291a0f36e5f5b872915"
+    },
+    {
+      "id": "M6STORE292-00583",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker/tests.rs",
+      "bytes": 25878,
+      "sha256": "395974632288e6eaf3d0f8388a4f970f2e4da8bd40c70f5921ff139156f409b1"
+    },
+    {
+      "id": "M6STORE292-00584",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker.rs",
+      "bytes": 21117,
+      "sha256": "1aaba49120b9dc8b44f1543cecc3c5b0c56b4bfa43ef2254728fd6236bd54d31"
+    },
+    {
+      "id": "M6STORE292-00585",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/matches.rs",
+      "bytes": 26137,
+      "sha256": "2acc8e55b8860fe1a162a3614ddf84809c11822b0b6d27bd488a82fdcf1527e5"
+    },
+    {
+      "id": "M6STORE292-00586",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/preferences.rs",
+      "bytes": 6557,
+      "sha256": "683f80eedaf95b89497ab65a8b6c33a719b5ff06bda0ac23f02eb34cb889c95c"
+    },
+    {
+      "id": "M6STORE292-00587",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/tests.rs",
+      "bytes": 30740,
+      "sha256": "6e89d881d49ea0b55aaa508d1a7899590f45677fb10c8fb7491b406508db3490"
+    },
+    {
+      "id": "M6STORE292-00588",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts.rs",
+      "bytes": 30489,
+      "sha256": "846a9e45ac02c533fdb3252382e5ea624f57d609bef7f0f070977e1cd243e59e"
+    },
+    {
+      "id": "M6STORE292-00589",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bin/kr-admin.rs",
+      "bytes": 4971,
+      "sha256": "0b061cc7333634492db151aacfc6cc800e12a3b25395c7661f1002925081197a"
+    }
+  ]
+}

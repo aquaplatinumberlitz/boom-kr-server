@@ -10,6 +10,12 @@ Map input opt-in dùng `fixed_room.map_profile` và [tool dựng fixture](../too
 Factory07; không coi đó là terrain/item hoặc toàn bộ G1 đã đạt.
 
 
+Schema hiện hành3 có [backend/worker lưu trận và preference](../docs/protocol/life-results.md#rust-match-store-backend).
+CLI stdin JSON thêm `match-history-account` (`account_id`, `limit`) và `match-history-room` (`room_id`, `limit`).
+Cả hai đọc DB thật qua trusted local admin; không là client wire hoặc chức năng đã tích hợp vào kết quả KR.
+Không chạy binary schema2 trên DB đã nâng3; rollback/restore theo acceptance M8, không downgrade dữ liệu.
+
+
 CP236 thêm backend account/DB qua [CLI](#account-admin-cli), chưa gắn vào native login adapter.
 [Contract/giới hạn](../docs/PROTOCOL.md#rust-account-backend); accountDB độc lập gameplay và không đóng toàn M5.
 

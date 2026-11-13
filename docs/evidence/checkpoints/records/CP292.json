@@ -1,0 +1,222 @@
+{
+  "id": "CP292",
+  "previous": "CP291",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T15:29:35.694761+00:00",
+  "context_commit": "b04896cc62e0a01df0cfafcdc5431c362b87f7d5",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/M6: account backend có thể lưu durable match snapshot/outcome/reward0 và preference đúng owner qua retry/kill/restart, với bounded worker và history CLI chưa?",
+  "scope": "Backend/worker/owned-channel preference seam only, method=test. Chưa native serving integration, không đóng M6.",
+  "artifacts": [
+    {
+      "name": "M6-retained-component-test-binary",
+      "sha256": "3a2b6b2b0961392ec74d97085d0253d3d4d25ca6f0caace2f543342d894e42e1"
+    },
+    {
+      "name": "M6-history-CLI-retained",
+      "sha256": "af2ead62c6f78ba3037663b7e58f01dc31dc8dd91c978c791a7a9f3885f6dc6a"
+    }
+  ],
+  "locators": [
+    "docs/protocol/life-results.md#rust-match-store-backend",
+    "docs/evidence/rust-service/m6-match-store.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Schema3/backend match snapshot với key instance/room/round, atomic outcomes/reason/exits và reward0; normalized duplicate retry returns old record, conflicting same key rejects. History CLI reads account/room; migration preserves old account/session/profile/audit.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/life-results.md#rust-match-store-backend",
+      "evidence": [
+        "M6STORE292-00011",
+        "M6STORE292-00043",
+        "M6STORE292-00037"
+      ],
+      "limits": "No client result persistence/native relogin or nonzero rewards. Trusted service must retain stable event/time/key; backend API is not a wire contract."
+    },
+    {
+      "summary": "Actual SIGKILL after start commit preserves one open row then startup cancels once; kill after result commit preserves same outcome. Same transaction cancellation/epoch/session/audit rollback, DB busy/failed writes and idempotent retry tested with real DB.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/life-results.md#rust-match-store-backend",
+      "evidence": [
+        "M6STORE292-00011",
+        "M6STORE292-00559",
+        "M6STORE292-00043"
+      ],
+      "limits": "Component/backend only; not yet commit-before-native-reply, serving kill/recovery, production backup/restore or match resume."
+    },
+    {
+      "summary": "Normal bounded Worker persistence jobs reject full/expired/dropped queue, report Busy, recover lost committed reply using same key, live-auth lane refuses writes. Session-owned preference revision and post-await current-channel recheck keep account identity distinct.31isolated tests/28DBs and170workspace tests pass.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/life-results.md#rust-match-store-backend",
+      "evidence": [
+        "M6STORE292-00011",
+        "M6STORE292-00560",
+        "M6STORE292-00559",
+        "M6STORE292-00025",
+        "M6STORE292-00023"
+      ],
+      "limits": "No room UI/character wire integration or full M6 closure from backend tests. Current supported0/1 stats/entitlement remain serving responsibility."
+    }
+  ],
+  "verification": [
+    {
+      "check": "170combined workspace tests/fmt/clippy/locked build after merged G1 baseline",
+      "result": "pass",
+      "evidence": [
+        "M6STORE292-00025",
+        "M6STORE292-00024",
+        "M6STORE292-00023",
+        "M6STORE292-00022"
+      ],
+      "limits": "Library/backend changes; native serving acceptance still separate."
+    },
+    {
+      "check": "31isolated real SQLite/worker/bridge tests,28retained DBs,2SIGKILL controls,2CLI queries and native stopped-DB-copy schema upgrade",
+      "result": "pass",
+      "evidence": [
+        "M6STORE292-00559",
+        "M6STORE292-00043",
+        "M6STORE292-00037"
+      ],
+      "limits": "Method=test, not new KR runtime/backup/restore proof."
+    },
+    {
+      "check": "Manual M6 backend-worker feature group audit; PR392 exact-head/raw/history/CI/preverified merge tree receipt",
+      "result": "pass",
+      "evidence": [
+        "M6STORE292-00008",
+        "M6STORE292-00011",
+        "M6STORE292-00016"
+      ],
+      "limits": "This checkpoint new head/full local-history and CI still required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP292-match-store.json",
+      "bytes": 170915,
+      "sha256": "7260a095b8895e52530a1fe6d8b618acaea38990c88f288ba55c1207c18d410f",
+      "count": 589
+    }
+  ],
+  "delta": {
+    "added": [
+      "Schema3 match history/outcomes/zero reward and account-owned character preference store.",
+      "Bounded normal persistence Worker and current-channel preference seam; history CLI by account/room.",
+      "Real DB/schema/fault/retry/process-kill/raw/cleanup evidence and narrow backend scope."
+    ],
+    "corrected": [
+      "Test old target schema literal updated to current constant, old versions still explicitly tested.",
+      "Test revoke timestamp sampled at execution to respect durable UTC watermark; original ClockRollback failure retained.",
+      "Upgrade source with sidecar precondition refused; use exact frozen quiescent DB bytes, no guessed WAL copy."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "M6 vẫn mở: nối snapshot/commit-before-Start và result wire, cancel/EOF/shutdown/retry với current room/round ownership.",
+    "Preference seam đã có DB/session/revision guard nhưng chưa nối vào lựa chọn phòng/room projection/fresh native login.",
+    "Native một trận rồi login lại, reward0 trên KR và DB-busy/kill theo đường serving còn bắt buộc; backend/component test không thay native.",
+    "G1 adapter đã giao PR392; UI map selection, kim/cứu, terrain/item/các map khác và nhân vật còn riêng.",
+    "M8 còn Internet companion mới, packaging/load/soak/recovery/operation; không rollback bằng downgrade schema3 hoặc xóa DB."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "M6 serving: stable room/round snapshots, DB commit before Start/result, cancellation/EOF/shutdown and account-owned choice/relogin; native KR result/profile with DB busy/kill/fences. G1 UI map selection independently per PLAN; no broad RE or repeat backend baseline.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T15:29:35.694761+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo M6 backend-worker/component self-check and manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/protocol/life-results.md",
+      "state": "updated",
+      "reason": "M6 backend/worker scope and remaining serving/native acceptance; G1 adapter delivery recorded."
+    },
+    {
+      "path": "docs/evidence/rust-service/m6-match-store.json",
+      "state": "updated",
+      "reason": "Backend method=test/recipe/build/hash/failure/limits metadata."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, feature-group audit, frozen raw, privacy/PR/exact-head rules unchanged."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-m6-backend-worker"
+  ]
+}

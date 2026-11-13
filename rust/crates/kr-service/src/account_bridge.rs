@@ -172,6 +172,7 @@ pub struct Channel {
     pub player: Player,
     pub connection: u64,
     client: Client,
+    persistence: Client,
     guard: Guard,
 }
 /// Token-free handle to an existing bound channel; never issues a session.
@@ -252,6 +253,56 @@ impl Channel {
             connection: self.connection,
             client: self.client.clone(),
         }
+    }
+    /// Load a DB preference only for this current frontend/channel generation.
+    /// This is an internal seam, not a KR profile field or character entitlement.
+    pub async fn character_preference(&self) -> Result<crate::accounts::CharacterPreference> {
+        self.preference(None).await
+    }
+    pub async fn select_character(
+        &self,
+        character: u16,
+        expected_revision: i64,
+    ) -> Result<crate::accounts::CharacterPreference> {
+        self.preference(Some((character, expected_revision))).await
+    }
+    async fn preference(
+        &self,
+        selection: Option<(u16, i64)>,
+    ) -> Result<crate::accounts::CharacterPreference> {
+        let token = {
+            let mut registry = lock(&self.guard.shared)?;
+            copy_token(&self.guard.entry(&mut registry)?.token)?
+        };
+        let player = self.player.player_id;
+        let job = match selection {
+            Some((character, expected_revision)) => {
+                account_worker::PersistenceJob::SelectCharacter {
+                    token,
+                    player,
+                    character,
+                    expected_revision,
+                }
+            }
+            None => account_worker::PersistenceJob::Character { token, player },
+        };
+        let result = self
+            .persistence
+            .try_persist(job)
+            .map_err(Error::Backend)?
+            .wait()
+            .await
+            .map_err(Error::Backend)?;
+        let account_worker::PersistenceResult::Character(preference) = result else {
+            return Err(Error::Unavailable);
+        };
+        // A committed preference may outlive a dropped result. Never project its
+        // response onto a newer frontend generation or a revoked DB session.
+        self.authorize(false).await?;
+        if preference.player_id != player {
+            return Err(Error::Denied);
+        }
+        Ok(preference)
     }
     /// Must be called at serving authorization boundaries; alive is not authorization.
     /// Any failure invalidates this generation before returning to the caller.
@@ -618,6 +669,7 @@ impl Bridge {
             player,
             connection,
             client: self.live.as_ref().unwrap_or(&self.client).clone(),
+            persistence: self.client.clone(),
             guard,
         })
     }

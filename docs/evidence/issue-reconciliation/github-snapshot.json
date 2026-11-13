@@ -1,7 +1,7 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-13T14:51:43.793632+00:00",
+  "captured_utc": "2026-11-13T15:28:02.447601+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
@@ -15,11 +15,11 @@
     },
     {
       "body": "KRE-074 / KR-R003 / G1: adapter map từ profile pack, giữ byte ExVillage01 rồi native Factory07 theo PLAN#phase1-acceptance.\n\nBaseline: main sau PR389 (N1R-b scoped). Owner/self-check Codex; independent review waived. Dependency: R1/M7/M5b/N1R-b hiện hành đã đạt. File: wire Start serializer, map profile validation, room input adapter và tool dựng fixture mới; không sửa tools/export_map_profile.py.\n\nAcceptance: tên/mã/checksum/metadata và các packet vào trận nhất quán; ExVillage01 byte-equivalent với fixture đã đo; Factory07 native lookup/load/spawn/trận/kết quả/reset với raw/hash/cleanup. Dữ liệu pack/raw không commit; terrain/item mới chỉ mở sau acceptance riêng. Giữ Python/recipe làm đối chứng. Truncated/inconsistent inputs từ chối trước bind.\n\nFeature catalog: KR-R003.\n\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md).\n",
-      "closedAt": null,
+      "closedAt": "2026-11-13T15:26:11Z",
       "number": 390,
-      "state": "OPEN",
+      "state": "CLOSED",
       "title": "KRE-074: G1 adapter dữ liệu map và native Factory07",
-      "updatedAt": "2026-11-13T14:51:59Z",
+      "updatedAt": "2026-11-13T15:26:12Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/390"
     },
     {
@@ -699,6 +699,17 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "a1d460c2141dcf3311b2e8c6b92e7866cfc61ce1",
+      "mergeCommit": {
+        "oid": "b04896cc62e0a01df0cfafcdc5431c362b87f7d5"
+      },
+      "mergedAt": "2026-11-13T15:26:10Z",
+      "number": 392,
+      "state": "MERGED",
+      "title": "feat(map): profile nhất quán và native Factory07",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/392"
+    },
     {
       "headRefOid": "15366497d791bdd067641075dd0aa76e3e22ef86",
       "mergeCommit": {
