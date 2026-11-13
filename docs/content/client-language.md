@@ -111,9 +111,10 @@ tiếp lượt hai theo kết quả rà):
 - Công cụ kiểm của catalog Việt (`l10n_validate.py`) hiện dừng vì cache nguồn cũ hơn catalog (25.257 so với 25.321
   dòng). Lỗi có từ trước lượt này; ba file Việt gốc không bị sửa.
 
-**Giới hạn.** Ghép theo ID không chứng minh hai bản cùng nghĩa: cùng ID có thể đổi nội dung sau mười sáu năm. Chưa tách
-được chữ nào của bản Bắc Mỹ gốc, chữ nào do nhóm sửa client viết; trước khi phát hành phải có ý kiến của công ty về
-quyền dùng.
+**Giới hạn.** Ghép theo ID không chứng minh hai bản cùng nghĩa: cùng ID có thể đổi nội dung sau mười sáu năm. Theo
+[thông báo ngày 13/11](../evidence/owner-directives/l10n-text-rights.json), công ty có thỏa thuận dùng toàn quyền chữ của
+bản Bắc Mỹ, bản KR và bản VN. Chưa tách được chữ nào của bản Bắc Mỹ gốc, chữ nào do nhóm sửa client PopTag tự viết; phần
+tự viết đó chưa được thông báo nói tới.
 
 <a id="utf8"></a>
 
