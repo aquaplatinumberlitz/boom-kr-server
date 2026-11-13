@@ -236,6 +236,7 @@ impl Catalog {
         count: usize,
         root: &HashMap<String, Reply>,
         actors: &HashMap<PlayerId, ActorProfile>,
+        needle: bool,
     ) -> io::Result<Self> {
         use crate::room_packets::Template;
         if !(2..=16).contains(&configs.len()) {
@@ -281,6 +282,7 @@ impl Catalog {
                 return Err(error());
             }
             let floor = crate::pickups::Catalog::from_floor(&packets["floor"].payload)?;
+            floor.validate_needle(needle)?;
             choices.push(Choice {
                 code: profile.map_code,
                 index: index as u32,

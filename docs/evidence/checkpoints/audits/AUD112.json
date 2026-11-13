@@ -1,0 +1,92 @@
+{
+  "id": "AUD112",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-g1-needle-rescue"
+  ],
+  "completed_through": "CP296",
+  "recorded_utc": "2026-11-13T18:14:42.748539+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/g1-life-actions.json",
+    "docs/protocol/life-results.md",
+    "docs/protocol/items-stats.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-service/src/life_actions.rs",
+    "rust/crates/kr-service/src/room_io_life_tests.rs",
+    "rust/crates/kr-service/src/life.rs",
+    "rust/crates/kr-service/src/pickups.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/rules.rs",
+    "rust/crates/kr-service/src/map_profile.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "local/research/codex/g1-life-actions-source-r1/reuse.json",
+    "local/research/codex/g1-life-actions-source-r1/opaque167-reuse.json",
+    "local/research/codex/g1-needle-native-r4/needle-native-verification.json",
+    "local/research/codex/g1-needle-native-r4/needle-getter-verification.json",
+    "local/research/codex/g1-needle-native-r4/manual-ui-review.json",
+    "local/research/codex/g1-rescue-native-r2/rescue-native-verification.json",
+    "local/research/codex/g1-rescue-native-r2/rescue-getter-verification.json",
+    "local/research/codex/g1-rescue-native-r2/manual-ui-review.json",
+    "local/research/codex/g1-rescue-native-r1/native/storage-recovery.json",
+    "local/research/codex/g1-selection-delivery-receipt.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence, so acceptance G1 lát3 với source/raw. Reuse CP037/038/113–121 KR wire/native và Python reference, không đổi packet/ID theo VN. Native hai account kiểm pickup/credit/17→1→0/cạn17→19/result/reset/fresh round; ba account thật kiểm friendly aux1 rescue fanout tới2peer, giữ kim rồi dùng, hai kết quả/reset. TCP độc lập reassemble/CRC/sequence đối chiếu actual report/forward, native reader6/7/fullpayload/errors0 và308+1326copied-native getters trên passive wrappers. Giữ preclear0 khác lịch sử, không gọi fix state0.185workspace tests/fmt/clippy/build đạt, ba room integration groups kiểm bounded167/noACK, queue atomic/all recipient3/8, friendly denial và old round completion. All source/runtime inputs frozen, raw/hash/sealed, namespace extinct. Lỗi Ready/checksum/input startup/1678/route pool và export recovery giữ nguyên. PR396 receipt exacthead/raw/history/CI/merge đã đọc. Scope G1/M8 vẫn mở, privacy hạ tầng local.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Rust chưa có kim/cứu theo current account roster; old Python fixedAB không chứng minh serving Rust.",
+      "correction": "Native Rust2client kim/cạn/reset và3client cứu aux1/peer/giữ credit/two results; policy current member/round và completion barrier tách source tests/native.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-life-actions.json",
+        "docs/protocol/life-results.md#rust-needle-rescue",
+        "docs/PLAN.md",
+        "rust/crates/kr-service/src/life_actions.rs",
+        "rust/crates/kr-service/src/room_io.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Body167 dài8 sau pickup có thể bị coi unsupported hoặc cần đoán ACK.",
+      "correction": "Exact old/native body trùng capture CP037/038; chỉ mở opaque8 với needle policy/current player round và budget64, không ACK/effect. Lỗi r3 giữ nguyên.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-life-actions.json",
+        "docs/protocol/life-results.md#rust-needle-rescue",
+        "rust/crates/kr-service/src/room_io.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Kiểm source3/8 hoặc getter emulation có thể bị suy thành native mọi roster/aux hoặc full G1.",
+      "correction": "Native scope2kim/3cứu aux1, one145/profile; wider/aux2/multi-charge chưa đo, getter emulation tách rõ. Raw127 không có epoch xác thực; no contact authority claim.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-life-actions.json",
+        "docs/protocol/life-results.md#rust-needle-rescue",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Issue điều phối giữ thứ tự M5b/N1R-b/M6 cũ và issue391 đang mở trong snapshot cũ.",
+      "correction": "Đối chiếu receipt/M6 acceptance:391 đã đóng, cập nhật dated review;285 chỉ trỏ PLAN nguồn duy nhất,397 task kim/cứu hiện hành. GitHub trước/sau và dated snapshot lưu.",
+      "fixed_in": [
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/evidence/issue-reconciliation/github-snapshot.json",
+        "docs/features.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "G1 còn terrain/item nền cho roster hiện hành, sáu map và nhân vật theo acceptance; không tự đóng G1 hoặc giai đoạn1.",
+    "Native Rust kim mới có2client, cứu aux1 có3client; aux0 chỉ có Python cũ, aux2 và roster khác còn đo theo trigger nội dung.",
+    "Một bản ghi145/profile và một credit/vòng; multi-charge, nhiều kim/drop/account inventory chưa được nghiệm thu.",
+    "Contact-distance/original authority và raw127 wire epoch chưa phục hồi; tick mới không xác thực mọi body thuộc vòng mới.",
+    "M8 còn triển khai companion Internet thật, cấu hình/đóng gói/tải50/8/phục hồi/soak. K6c/K7 giữ nguyên phạm vi lịch sử."
+  ]
+}

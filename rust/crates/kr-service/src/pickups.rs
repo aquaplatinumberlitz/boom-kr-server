@@ -22,6 +22,20 @@ pub(crate) struct Catalog {
     hidden: BTreeMap<u32, Item>,
 }
 impl Catalog {
+    pub(crate) fn validate_needle(&self, enabled: bool) -> io::Result<()> {
+        let count = self
+            .floor
+            .values()
+            .chain(self.hidden.values())
+            .filter(|i| i.kind == 145)
+            .count();
+        if count > 1 || (count > 0 && !enabled) {
+            return Err(io::Error::other(
+                "needle floor requires enabled one-per-round policy",
+            ));
+        }
+        Ok(())
+    }
     /// Decode only the already measured raw (tag0) serialized582 branch. Catalog
     /// and bytes sent to the clients have one source; no parallel config list.
     pub fn from_floor(body: &[u8]) -> io::Result<Self> {
@@ -60,7 +74,7 @@ impl Catalog {
                 // This fixed ExVillage01 slice only advertises Bomb/Fire/Roller.
                 if row[4] >= 13
                     || row[5] >= 15
-                    || kind > 2
+                    || !matches!(kind, 0..=2 | 145)
                     || !indices.insert(index)
                     || indices.len() > 64
                 {

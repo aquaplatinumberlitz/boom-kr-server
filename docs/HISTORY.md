@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP295: chủ phòng đã chọn map qua UI KR; peer và trận dùng đúng map mới.**
+Catalog Factory07/Village10 có metadata nhất quán; native đổi map giữa các ván, đọc đúng spawn và kết quả/reset,
+journal ghi đúng map. [Contract và giới hạn](protocol/load-phase.md#rust-room-map-selection),
+[bằng chứng](evidence/rust-service/g1-map-selection.json). **G1 vẫn mở:** còn kim/cứu, terrain/item, map và roster
+đầy đủ theo acceptance. M6 đã giao; M8 còn Internet transport mới và vận hành theo [Bảng điều hành](PLAN.md#dashboard).
+
 **CP294: M6 đạt phạm vi giai đoạn 1 — lưu lịch sử trận và nhân vật, thưởng 0.**
 Kết quả trên KR khớp DB; restart và đăng nhập mới giữ nguyên lịch sử và nhân vật. Writer-lock, retry, rớt giữa trận,
 kill sau Start/kết quả và CLI có đối chứng riêng. [Contract và giới hạn](protocol/life-results.md#rust-match-journal-serving),

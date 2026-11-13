@@ -1,0 +1,274 @@
+{
+  "schema": "kre-rust-life-actions-v1",
+  "checkpoint": "CP296",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/397",
+  "canonical": "docs/protocol/life-results.md#rust-needle-rescue",
+  "acceptance": "docs/PLAN.md#phase1-acceptance",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "decision": "G1 lát 3 kim/cứu đạt trong phạm vi dưới đây; toàn bộ G1 và giai đoạn 1 vẫn mở.",
+  "implementation": {
+    "source_files": [
+      "rust/crates/kr-service/src/life_actions.rs",
+      "rust/crates/kr-service/src/life.rs",
+      "rust/crates/kr-service/src/room_io.rs",
+      "rust/crates/kr-service/src/pickups.rs",
+      "rust/crates/kr-service/src/rules.rs"
+    ],
+    "contract": "docs/protocol/life-results.md#rust-needle-rescue",
+    "authority": "Policy công ty dựa vào report; không phải authority server gốc, xác thực khoảng cách hoặc inventory account.",
+    "default": "Mặc định tắt; chỉ mở cùng account và managed player round. Không thêm alias identity hoặc cờ theo sức chứa."
+  },
+  "reuse": {
+    "path": "local/research/codex/g1-life-actions-source-r1/reuse.json",
+    "bytes": 3356,
+    "sha256": "d5372e242291840cb024ba8e561ae51ab36bfb3568ee48023b469bbf15a2e43d",
+    "baseline": "01060ae56861e3d01e99687721a9f506261b19b4",
+    "sources": [
+      "docs/protocol/life-results.md#needle-selfescape",
+      "docs/protocol/items-stats.md#needle-service",
+      "docs/protocol/life-results.md#rescue-service",
+      "docs/protocol/life-results.md#rescue-two-results"
+    ],
+    "direct": "Tái dùng chính wire KR, native capture/consumer và policy Python đã đo; giữ ownership/hàng đợi/epoch của Rust hiện hành.",
+    "legacy": "Nguồn boomkr-re và boom-re theo commit trong ledger; VN chỉ dẫn phương pháp và luật chung, không chuyển opcode/ID/layout sang KR.",
+    "avoided": "Không RE lại primitive/reader/cặp dùng hoặc tạo alias fixed A/B; chỉ đo đường phục vụ Rust, roster thật, barrier, reset và sai lệch vừa gặp."
+  },
+  "opaque167": {
+    "reuse": {
+      "path": "local/research/codex/g1-life-actions-source-r1/opaque167-reuse.json",
+      "bytes": 1287,
+      "sha256": "e8a9c4cea2e15ecbee1478090cf5dd1ff2c7d922724588495c88c102a5f69730"
+    },
+    "old_runs": [
+      "local/research/codex/needle-r1/needle-forward/run.json",
+      "local/research/codex/needle-repeat-r1/repeat-ctrl/run.json"
+    ],
+    "new_run": "local/research/codex/g1-needle-native-r3/decoded-channels-shared.json",
+    "body_hex": "a569a569a5f8a568",
+    "decision": "Body8 trùng byte giữa capture cũ và Rust. Chỉ mở quan sát opaque có giới hạn khi bật kim; không ACK hoặc hiệu ứng. Semantics chưa phục hồi."
+  },
+  "native": [
+    {
+      "kind": "needle",
+      "root": "local/research/codex/g1-needle-native-r4",
+      "run_sha256": "95c8fdcf3dddc56c1df1f119a69d2f71052aa0044c7bb6761f4749c13e5e9270",
+      "duration_seconds": 180.986067971,
+      "raw_count": 77,
+      "service_sha256": "fafba524a44b3efdc0c4ae621f39624d932203df27319c85d6801dcebfb9e65c",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "verification": "local/research/codex/g1-needle-native-r4/needle-native-verification.json",
+      "getter_verification": "local/research/codex/g1-needle-native-r4/needle-getter-verification.json",
+      "getter_checks": 308,
+      "roles": {
+        "A": {
+          "identity": 1,
+          "clock_ns": [
+            566754646802333,
+            566849932789049
+          ],
+          "pickup_count": 2,
+          "relevant_reports": [
+            [
+              17,
+              0,
+              120,
+              203,
+              1727,
+              5
+            ],
+            [
+              1,
+              0,
+              120,
+              203,
+              1734,
+              5
+            ],
+            [
+              0,
+              0,
+              120,
+              203,
+              1734,
+              6
+            ],
+            [
+              17,
+              0,
+              120,
+              203,
+              2305,
+              5
+            ],
+            [
+              19,
+              0,
+              120,
+              203,
+              2517,
+              0
+            ],
+            [
+              17,
+              0,
+              120,
+              207,
+              4899,
+              5
+            ],
+            [
+              1,
+              0,
+              120,
+              207,
+              4906,
+              5
+            ],
+            [
+              0,
+              0,
+              120,
+              207,
+              4906,
+              6
+            ]
+          ],
+          "local_escapes": 2,
+          "peer_escapes": 0,
+          "resets": 1
+        },
+        "B": {
+          "identity": 2,
+          "clock_ns": [
+            566754649109854,
+            566849933060409
+          ],
+          "pickup_count": 2,
+          "relevant_reports": [],
+          "local_escapes": 0,
+          "peer_escapes": 2,
+          "resets": 1
+        }
+      },
+      "environment": "Mỗi client có network namespace riêng trên bridge cô lập, chung kernel host/Wine; companion QUIC theo account và INPUT mapping nguồn chung. Không default route ra ngoài; không cấu hình delay/jitter/loss/reordering/bandwidth cap hoặc đổi MTU.",
+      "limits": "Xem phạm vi và ma trận tại contract chuẩn; getter emulation tách khỏi native runtime. Các kết quả/raw/hash được giữ ở locator này."
+    },
+    {
+      "kind": "rescue",
+      "root": "local/research/codex/g1-rescue-native-r2",
+      "run_sha256": "ac1b9127df41675c33dd4e8accfbff2608edc649d97bebe996059683af42e73c",
+      "duration_seconds": 270.51149789,
+      "raw_count": 100,
+      "service_sha256": "fafba524a44b3efdc0c4ae621f39624d932203df27319c85d6801dcebfb9e65c",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "verification": "local/research/codex/g1-rescue-native-r2/rescue-native-verification.json",
+      "getter_verification": "local/research/codex/g1-rescue-native-r2/rescue-getter-verification.json",
+      "getter_checks": 1326,
+      "roles": {
+        "A": {
+          "identity": 1,
+          "clock_ns": [
+            567444774382871,
+            567569908181870
+          ],
+          "resets": 2,
+          "local_rescues": 2,
+          "peer_rescues": 0,
+          "needle_uses": 2
+        },
+        "B": {
+          "identity": 2,
+          "clock_ns": [
+            567444788086638,
+            567569926373038
+          ],
+          "resets": 2,
+          "local_rescues": 0,
+          "peer_rescues": 2,
+          "needle_uses": 0
+        },
+        "C": {
+          "identity": 3,
+          "clock_ns": [
+            567444791985540,
+            567569905675399
+          ],
+          "resets": 2,
+          "local_rescues": 0,
+          "peer_rescues": 2,
+          "needle_uses": 0
+        }
+      },
+      "environment": "Mỗi client có network namespace riêng trên bridge cô lập, chung kernel host/Wine; companion QUIC theo account và INPUT mapping nguồn chung. Không default route ra ngoài; không cấu hình delay/jitter/loss/reordering/bandwidth cap hoặc đổi MTU.",
+      "limits": "Xem phạm vi và ma trận tại contract chuẩn; getter emulation tách khỏi native runtime. Các kết quả/raw/hash được giữ ở locator này."
+    }
+  ],
+  "failed_runs": [
+    {
+      "root": "local/research/codex/g1-needle-native-r1",
+      "run_sha256": "04811c83e737ed318782626b3388804fae4fe1f110d3c3b50fd8f83fecd8fe2e",
+      "raw_count": 11,
+      "returncode": 1,
+      "reason": "Ready checksum không khớp catalog kế thừa; lỗi trước client.",
+      "limits": "Lượt lỗi toàn bộ; không đổi thành nghiệm thu thành công."
+    },
+    {
+      "root": "local/research/codex/g1-needle-native-r2",
+      "run_sha256": "b8af05a2e27fa192a17555a68af760455f691a5f0a2a1c65c76fcf8dda2084c0",
+      "raw_count": 53,
+      "returncode": 1,
+      "reason": "Chưa có actual124 sau input ở trạng thái mở đầu/tutorial; dừng có cleanup/seal, chưa xác định causal riêng cho modal.",
+      "limits": "Lượt lỗi toàn bộ; không đổi thành nghiệm thu thành công."
+    },
+    {
+      "root": "local/research/codex/g1-needle-native-r3",
+      "run_sha256": "438e85a44cd8fcee836aa73efadcf26659f80c83139b875fef19f2bf12a8f47c",
+      "raw_count": 55,
+      "returncode": 1,
+      "reason": "Sau pickup, body167/8 bị allowlist từ chối và đóng channel; chỉ sửa đường quan sát có giới hạn.",
+      "limits": "Lượt lỗi toàn bộ; không đổi thành nghiệm thu thành công."
+    },
+    {
+      "root": "local/research/codex/g1-rescue-native-r1",
+      "run_sha256": "293276e4a2199206f352a768d1027ebe83dafaf7f51934577957170d4f06a83b",
+      "raw_count": 70,
+      "returncode": 1,
+      "reason": "Pool hai route kế thừa không đủ ba client; lượt mới dùng sáu route. Lỗi unmount busy giữ nguyên, export được phục hồi cùng byte sau khi namespace hết; exit1 không đổi.",
+      "limits": "Lượt lỗi toàn bộ; không đổi thành nghiệm thu thành công."
+    }
+  ],
+  "build": {
+    "service_sha256": "fafba524a44b3efdc0c4ae621f39624d932203df27319c85d6801dcebfb9e65c",
+    "companion_sha256": "5f1ec7ee7ee3d905d87cb7958487be776d1da2cf577a127f72a3886c7324e64f",
+    "native_copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "workspace_tests": 185,
+    "checks": [
+      "cargo fmt --all --check",
+      "cargo clippy --workspace --all-targets --locked -- -D warnings",
+      "cargo test --workspace --locked",
+      "cargo build --workspace --locked"
+    ],
+    "reports": [
+      "local/research/codex/g1-life-actions-fmt-r4.txt",
+      "local/research/codex/g1-life-actions-clippy-r4.txt",
+      "local/research/codex/g1-life-actions-workspace-r4.txt",
+      "local/research/codex/g1-life-actions-build-r4.txt"
+    ]
+  },
+  "source_tests": {
+    "files": [
+      "rust/crates/kr-service/src/life_actions.rs",
+      "rust/crates/kr-service/src/room_io_life_tests.rs"
+    ],
+    "cases": "Năm kiểm component dùng vector capture và ba nhóm room integration: credit/barrier mọi peer; malformed/tick tương lai/thiếu credit/duplicate/new trap/reset; guard đồng đội và recipient rời; hàng đợi đầy với3/8 identity bất kỳ; clear cũ qua vòng; opaque167 không ACK/budget/default tắt.",
+    "limits": "Đây là kiểm source và room tổng hợp; không thay phép âm tính bằng client KR thật."
+  },
+  "limits": [
+    "Client KR diagnostic trên Wine và LAN ảo cô lập; kim đo hai client, cứu aux1 đo ba client.",
+    "Aux0 chỉ có native Python cũ; aux2 và native Rust cho roster khác chưa được nghiệm thu ở đây.",
+    "Chưa nghiệm thu toàn bộ terrain/drop/map2..8/nhân vật, multi-charge/inventory, Internet transport mới, tải hoặc giai đoạn 1.",
+    "Raw127 thiếu epoch xác thực; tick và guard nội bộ không chứng minh mọi gói wire cũ bị loại.",
+    "Trap peer end56, snapshot ngay trước clear là0, sau clear26; giữ quan sát, không chuẩn hóa theo profile cũ."
+  ]
+}

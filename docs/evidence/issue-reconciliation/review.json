@@ -507,11 +507,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "M0–M4/account basic/R1/M7a–e đạt trong từng scope. M7e native3/6/sparse và active EOF4→3→2; PR giao đang chuẩn bị.",
-      "remaining": "M5b account/profile bất kỳ và native DB/hàng đợi không gián đoạn trận; N1R-b relay, G1/M6, M8 theo phase1 acceptance.",
-      "next_test": "Tiếp M5b sau giao M7e; không broad RE, không lặp roster đã đạt.",
+      "known": "Các mốc đã nghiệm thu và phạm vi từng lát tra tại PLAN; nhóm kim/cứu có native và đang bàn giao.",
+      "remaining": "G1 và M8 còn theo acceptance giai đoạn 1; không giữ thứ tự việc thứ hai trong issue.",
+      "next_test": "Theo Bảng điều hành PLAN; tiếp terrain/item nền sau bàn giao kim/cứu.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Rà acceptance hiện hành sau merge main PR372–374; tách native, source/TCP, delivery và gate. #14 superseded sang epic này.",
+      "reason": "Rà lại nguồn chuẩn sau PR396; bỏ thứ tự M5b/N1R-b/M6 đã cũ khỏi mô tả điều phối.",
       "sources": [
         "docs/PLAN.md#dashboard",
         "docs/PLAN.md#phase1-acceptance",
@@ -569,7 +569,10 @@
         "docs/evidence/rust-service/account-basic.json",
         "docs/evidence/peer-endpoints/vps-internet-preflight.json",
         "docs/evidence/rust-service/pr329-integration.json",
-        "docs/evidence/owner-directives/pr329-integration-order.json"
+        "docs/evidence/owner-directives/pr329-integration-order.json",
+        "docs/evidence/rust-service/g1-life-actions.json",
+        "docs/evidence/rust-service/m6-journal-serving.json",
+        "docs/evidence/rust-service/n1rb-controls-acceptance.json"
       ],
       "prs": [
         286,
@@ -616,7 +619,7 @@
         330
       ],
       "successors": [],
-      "reviewed_utc": "2026-11-12T15:19:49.777737+00:00"
+      "reviewed_utc": "2026-11-13T18:12:18.467204+00:00"
     },
     {
       "number": 369,
@@ -772,17 +775,17 @@
     {
       "number": 391,
       "kre": "KRE-074",
-      "classification": "in_progress",
+      "classification": "completed",
       "features": [
         "KR-S001",
         "KR-X001",
         "KR-L003"
       ],
-      "known": "Backend schema3/history/preference, bounded persistence worker và owned-channel preference seam đã kiểm real SQLite, retry/kill/DB/CLI controls; chưa giao PR hoặc native serving.",
-      "remaining": "Commit-before-native-result, account-owned room preference khi chọn/relogin và native DB/revoke/kill acceptance M6 chưa đạt.",
-      "next_test": "Giao backend/worker slice rồi nối Start/result/cancel/EOF/shutdown và lựa chọn/relogin trên client thật.",
+      "known": "M6 đạt acceptance thu hẹp giai đoạn 1: journal và nhân vật, thưởng0, native/relogin cùng DB/kill/busy controls theo nguồn chuẩn.",
+      "remaining": "Vận hành/backup/tải thuộc M8; inventory/progression/economy ngoài giai đoạn1.",
+      "next_test": "Tiếp G1/M8 theo PLAN, không lặp M6 đã đạt.",
       "acceptance": "docs/PLAN.md#phase1-acceptance",
-      "reason": "Codex solo implementation và tự kiểm; checkpoint/gate không suy từ WIP hoặc tests backend.",
+      "reason": "Đối chiếu receipt PR394/395 đã merge, issue391 đã đóng và ma trận acceptance M6; scope hẹp không tự đóng giai đoạn1.",
       "sources": [
         "docs/PLAN.md#dashboard",
         "docs/PROTOCOL.md",
@@ -791,11 +794,39 @@
       "evidence": [
         "docs/evidence/rust-service/m6-match-store.json"
       ],
-      "prs": [],
+      "prs": [
+        394,
+        395
+      ],
       "successors": [],
-      "reviewed_utc": "2026-11-13T15:27:57.499755+00:00"
+      "reviewed_utc": "2026-11-13T18:13:11.781867+00:00"
+    },
+    {
+      "number": 397,
+      "kre": "KRE-074",
+      "classification": "in_progress",
+      "features": [
+        "KR-F006",
+        "KR-F008",
+        "KR-F009"
+      ],
+      "known": "G1 lát kim/cứu đã có code, kiểm source và native Wine trong phạm vi contract; checkpoint/PR đang được bàn giao.",
+      "remaining": "Còn kiểm exact head và CI trước tích hợp PR. Toàn bộ G1 theo acceptance riêng tại PLAN.",
+      "next_test": "Sau bàn giao nhóm này, tiếp terrain/item nền theo PLAN; không lặp consumer kim/cứu đã đủ.",
+      "acceptance": "docs/PLAN.md#phase1-acceptance, lát3 kim/cứu theo wire Python/KR đã đo; không tự đóng G1.",
+      "reason": "Đối chiếu thủ công native TCP/consumer, getter emulation và source; không suy từ process hoặc log server.",
+      "sources": [
+        "docs/PLAN.md#phase1-acceptance",
+        "docs/protocol/life-results.md#rust-needle-rescue",
+        "docs/RESEARCH.md#gap-rust-life-actions"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/g1-life-actions.json"
+      ],
+      "prs": [],
+      "reviewed_utc": "2026-11-13T18:12:18.467204+00:00"
     }
   ],
-  "as_of_utc": "2026-11-13T15:27:57.499755+00:00",
+  "as_of_utc": "2026-11-13T18:12:18.467204+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }

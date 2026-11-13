@@ -33,11 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP295: chủ phòng đã chọn map qua UI KR; peer và trận dùng đúng map mới.**
-Catalog Factory07/Village10 có metadata nhất quán; native đổi map giữa các ván, đọc đúng spawn và kết quả/reset,
-journal ghi đúng map. [Contract và giới hạn](docs/protocol/load-phase.md#rust-room-map-selection),
-[bằng chứng](docs/evidence/rust-service/g1-map-selection.json). **G1 vẫn mở:** còn kim/cứu, terrain/item, map và roster
-đầy đủ theo acceptance. M6 đã giao; M8 còn Internet transport mới và vận hành theo [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP296: kim và cứu đã chạy trên Rust với account và peer KR thật.**
+Hai client kiểm nhặt/tiêu kim, Ctrl khi cạn và kim mới sau reset. Ba client kiểm đồng đội cứu, cả hai peer nhận clear,
+kim không bị tiêu bởi cứu và hai vòng kết quả/reset. [Contract và giới hạn](docs/protocol/life-results.md#rust-needle-rescue),
+[bằng chứng](docs/evidence/rust-service/g1-life-actions.json). **G1 vẫn mở:** tiếp terrain/item nền, sáu map và roster,
+nhân vật theo acceptance; M8 còn Internet transport mới và vận hành theo [Bảng điều hành](docs/PLAN.md#dashboard).
 
 ## Bắt đầu
 

@@ -41,6 +41,7 @@ pub(crate) struct Trap {
 }
 #[derive(Clone, Debug, Default)]
 pub(crate) struct Player {
+    pub(crate) actions: crate::life_actions::State,
     cursor: Option<Cursor>,
     pub trap: Option<Trap>,
     pub death: Option<Instant>,
@@ -72,6 +73,42 @@ impl Report {
     }
 }
 impl Player {
+    pub(crate) fn check_report(&self, slot: u8, report: &Report) -> Option<&'static str> {
+        let mut reason = "accepted";
+        if report.slot != slot {
+            reason = "slot_mismatch";
+        } else if self.reports >= 4096 {
+            reason = "report_budget";
+        } else if let Some(c) = &self.cursor {
+            let delta = report.tick.wrapping_sub(c.tick);
+            if delta >= 0x8000_0000 {
+                reason = "report_tick_not_forward";
+            } else if delta == 0 && c.bodies.contains(&report.digest) {
+                reason = "duplicate_report_body";
+            } else if delta == 0 && c.bodies.len() >= 64 {
+                reason = "same_tick_report_budget";
+            }
+        }
+        (reason != "accepted").then_some(reason)
+    }
+    pub(crate) fn record_report(&mut self, report: &Report) {
+        if self.cursor.as_ref().is_none_or(|c| c.tick != report.tick) {
+            self.cursor = Some(Cursor {
+                tick: report.tick,
+                bodies: BTreeSet::new(),
+            });
+        }
+        self.cursor
+            .as_mut()
+            .expect("cursor")
+            .bodies
+            .insert(report.digest.clone());
+        self.reports += 1;
+    }
+    pub(crate) fn clear_result_witness(&mut self) {
+        self.pending21 = None;
+        self.forwarded21 = None;
+    }
     pub fn begin(&mut self) {
         let cursor = self.cursor.take();
         *self = Self {
@@ -89,20 +126,9 @@ impl Player {
         now: Instant,
         last_blast: Option<Instant>,
     ) -> Decision {
-        let mut reason = "accepted";
-        if report.slot != slot {
-            reason = "slot_mismatch";
-        } else if self.reports >= 4096 {
-            reason = "report_budget";
-        } else if let Some(c) = &self.cursor {
-            let delta = report.tick.wrapping_sub(c.tick);
-            if delta >= 0x8000_0000 {
-                reason = "report_tick_not_forward";
-            } else if delta == 0 && c.bodies.contains(&report.digest) {
-                reason = "duplicate_report_body";
-            } else if delta == 0 && c.bodies.len() >= 64 {
-                reason = "same_tick_report_budget";
-            }
+        let mut reason = self.check_report(slot, report).unwrap_or("accepted");
+        if self.actions.clear_pending() && !matches!(report.subtype, 17 | 19) {
+            reason = "life_action_delivery_pending";
         }
         if reason == "accepted" && report.subtype == 19 {
             if self.death.is_some() {
@@ -114,20 +140,10 @@ impl Player {
         if reason != "accepted" {
             return report.decision(reason, false);
         }
-        if self.cursor.as_ref().is_none_or(|c| c.tick != report.tick) {
-            self.cursor = Some(Cursor {
-                tick: report.tick,
-                bodies: BTreeSet::new(),
-            });
-        }
-        self.cursor
-            .as_mut()
-            .expect("set cursor")
-            .bodies
-            .insert(report.digest.clone());
-        self.reports += 1;
+        self.record_report(report);
         let forward = match report.subtype {
             17 | 19 => {
+                self.actions.interrupt();
                 self.trap = Some(Trap {
                     digest: report.digest.clone(),
                     at: now,
@@ -215,9 +231,10 @@ impl Player {
         }
     }
     pub fn delivery_pending(&self) -> bool {
-        !self.deliveries.is_empty() || self.pending21.is_some()
+        !self.deliveries.is_empty() || self.pending21.is_some() || self.actions.delivery_pending()
     }
     pub(crate) fn forget_recipient(&mut self, key: crate::room::Membership) {
+        self.action_forget_recipient(key);
         for targets in self.deliveries.values_mut() {
             targets.remove(&key);
         }
