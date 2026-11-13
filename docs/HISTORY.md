@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP297: terrain và ba item nền đã chạy trên Rust với roster account 2/4/8 người.**
+Bomb/Fire/Roller, hidden reveal, stat theo nhân vật và bom power mới đã được đối chiếu client KR/Wine qua hai vòng
+kết quả/reset. [Contract và giới hạn](protocol/terrain.md#rust-player-terrain),
+[bằng chứng](evidence/rust-service/g1-terrain-players.json). **G1 vẫn mở:** tiếp nội dung sáu map, nhóm item còn lại
+và nhân vật; M8 theo [Bảng điều hành](PLAN.md#dashboard).
+
 **CP296: kim và cứu đã chạy trên Rust với account và peer KR thật.**
 Hai client kiểm nhặt/tiêu kim, Ctrl khi cạn và kim mới sau reset. Ba client kiểm đồng đội cứu, cả hai peer nhận clear,
 kim không bị tiêu bởi cứu và hai vòng kết quả/reset. [Contract và giới hạn](protocol/life-results.md#rust-needle-rescue),

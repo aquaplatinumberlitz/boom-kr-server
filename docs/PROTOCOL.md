@@ -356,7 +356,7 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 <a id="rust-account-backend"></a><a id="backend-account-rust-độc-lập-client--cp236--rust-m5--kre-074"></a> [→ Đăng nhập, token, account và lease](protocol/auth-session.md#rust-account-backend)
 <a id="rust-movement-floor"></a><a id="rust-movement-và-floor-pickup--cp237--rust-m3-partial--kre-074"></a> [→ UDP, peer, movement và stale fences](protocol/udp-peer.md#rust-movement-floor)
 <a id="rust-bombs"></a><a id="rust-hai-owner-bom-và-deadline-ticket--cp238--rust-m3-partial"></a> [→ Bom, serial, nổ và capacity](protocol/bombs.md#rust-bombs)
-<a id="rust-terrain"></a><a id="rust-boundedterrainrevealba-basicitems--cp239--m3partial"></a> [→ Terrain, block và cascade](protocol/terrain.md#rust-terrain); [account/roster và item nền Rust](protocol/terrain.md#rust-player-terrain)
+<a id="rust-terrain"></a><a id="rust-boundedterrainrevealba-basicitems--cp239--m3partial"></a> [→ Terrain, block và cascade](protocol/terrain.md#rust-terrain); [account/roster và item nền Rust](protocol/terrain.md#rust-player-terrain); [terrain theo map](protocol/terrain.md#rust-selected-map-terrain)
 <a id="rust-persistent-character"></a> [→ Lưu nhân vật theo account và khôi phục vào phòng/Start](protocol/auth-session.md#rust-persistent-character)
 <a id="rust-room-map-selection"></a> [→ Chủ phòng chọn map theo catalog và current membership](protocol/load-phase.md#rust-room-map-selection)
 <a id="rust-match-journal-serving"></a> [→ Journal trận trong serving và acceptance M6 thu hẹp](protocol/life-results.md#rust-match-journal-serving)

@@ -2642,7 +2642,8 @@
           "docs/evidence/rust-service/terrain.json",
           "docs/evidence/rust-service/README.md#cp242",
           "docs/evidence/rust-service/m3-acceptance.json",
-          "docs/evidence/rust-service/g1-terrain-players.json"
+          "docs/evidence/rust-service/g1-terrain-players.json",
+          "docs/evidence/rust-service/g1-map-terrain.json"
         ]
       },
       "coverage": {
@@ -2717,7 +2718,8 @@
               "docs/protocol/life-results.md#current-basic-cycles-291",
               "docs/protocol/multiplayer-team.md#four-owner-bombs",
               "docs/protocol/terrain.md#rust-terrain",
-              "docs/protocol/terrain.md#rust-player-terrain"
+              "docs/protocol/terrain.md#rust-player-terrain",
+              "docs/protocol/terrain.md#rust-selected-map-terrain"
             ]
           },
           "windows_original": {
@@ -2753,7 +2755,8 @@
             "docs/protocol/terrain.md#rust-terrain",
             "rust/crates/kr-service/src/terrain.rs",
             "docs/protocol/rust-boundary.md#rust-m3-acceptance",
-            "docs/protocol/terrain.md#rust-player-terrain"
+            "docs/protocol/terrain.md#rust-player-terrain",
+            "docs/protocol/terrain.md#rust-selected-map-terrain"
           ],
           "delivery": "via_pr"
         },
@@ -2792,7 +2795,8 @@
             "rust/crates/kr-service/src/room_io.rs",
             "docs/protocol/terrain.md#rust-terrain",
             "rust/crates/kr-service/src/terrain.rs",
-            "docs/protocol/terrain.md#rust-player-terrain"
+            "docs/protocol/terrain.md#rust-player-terrain",
+            "docs/protocol/terrain.md#rust-selected-map-terrain"
           ]
         },
         "gate": {
@@ -2876,7 +2880,8 @@
           "docs/evidence/rust-service/README.md#cp242",
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/evidence/rust-service/g1-life-actions.json",
-          "docs/evidence/rust-service/g1-terrain-players.json"
+          "docs/evidence/rust-service/g1-terrain-players.json",
+          "docs/evidence/rust-service/g1-map-terrain.json"
         ]
       },
       "coverage": {
@@ -2956,7 +2961,8 @@
               "docs/protocol/udp-peer.md#rust-movement-floor",
               "docs/protocol/terrain.md#rust-terrain",
               "docs/protocol/life-results.md#rust-needle-rescue",
-              "docs/protocol/terrain.md#rust-player-terrain"
+              "docs/protocol/terrain.md#rust-player-terrain",
+              "docs/protocol/terrain.md#rust-selected-map-terrain"
             ]
           },
           "windows_original": {
@@ -2993,7 +2999,8 @@
             "docs/protocol/rust-boundary.md#rust-m3-acceptance",
             "docs/protocol/life-results.md#rust-needle-rescue",
             "rust/crates/kr-service/src/life_actions.rs",
-            "docs/protocol/terrain.md#rust-player-terrain"
+            "docs/protocol/terrain.md#rust-player-terrain",
+            "docs/protocol/terrain.md#rust-selected-map-terrain"
           ]
         },
         "integration": {
@@ -3028,7 +3035,8 @@
             "rust/crates/kr-service/src/terrain.rs",
             "docs/protocol/life-results.md#rust-needle-rescue",
             "rust/crates/kr-service/src/life_actions.rs",
-            "docs/protocol/terrain.md#rust-player-terrain"
+            "docs/protocol/terrain.md#rust-player-terrain",
+            "docs/protocol/terrain.md#rust-selected-map-terrain"
           ]
         },
         "gate": {
@@ -3094,7 +3102,8 @@
           "docs/evidence/rust-service/terrain.json",
           "docs/evidence/rust-service/README.md#cp242",
           "docs/evidence/rust-service/m3-acceptance.json",
-          "docs/evidence/rust-service/g1-terrain-players.json"
+          "docs/evidence/rust-service/g1-terrain-players.json",
+          "docs/evidence/rust-service/g1-map-terrain.json"
         ]
       },
       "coverage": {
@@ -3152,7 +3161,8 @@
               "docs/protocol/multiplayer-team.md#eight-mesh-owner-bombs",
               "docs/protocol/udp-peer.md#rust-movement-floor",
               "docs/protocol/terrain.md#rust-terrain",
-              "docs/protocol/terrain.md#rust-player-terrain"
+              "docs/protocol/terrain.md#rust-player-terrain",
+              "docs/protocol/terrain.md#rust-selected-map-terrain"
             ]
           },
           "windows_original": {
@@ -3187,7 +3197,8 @@
             "docs/protocol/terrain.md#rust-terrain",
             "rust/crates/kr-service/src/terrain.rs",
             "docs/protocol/rust-boundary.md#rust-m3-acceptance",
-            "docs/protocol/terrain.md#rust-player-terrain"
+            "docs/protocol/terrain.md#rust-player-terrain",
+            "docs/protocol/terrain.md#rust-selected-map-terrain"
           ],
           "delivery": "via_pr"
         },
@@ -3213,7 +3224,8 @@
             "rust/crates/kr-service/src/room_io.rs",
             "docs/protocol/terrain.md#rust-terrain",
             "rust/crates/kr-service/src/terrain.rs",
-            "docs/protocol/terrain.md#rust-player-terrain"
+            "docs/protocol/terrain.md#rust-player-terrain",
+            "docs/protocol/terrain.md#rust-selected-map-terrain"
           ]
         },
         "gate": {

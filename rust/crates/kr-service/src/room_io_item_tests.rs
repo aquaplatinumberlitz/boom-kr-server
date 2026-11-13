@@ -492,3 +492,142 @@ fn sibling_room_and_current_generation_controls_do_not_publish_foreign_or_malfor
         6
     );
 }
+
+#[test]
+fn map_selection_replaces_terrain_and_claims_atomically_and_fences_prior_map_batches() {
+    let mut c = case(4);
+    let sibling = case(4);
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.model.end(c.round).unwrap();
+        for key in &c.keys {
+            r.model.refreshed(*key, c.round).unwrap();
+        }
+        // Native initial96 can arrive before final setup; isolate map replies
+        // here from player projection fixtures tested by the existing harness.
+        for member in r.model.members.values_mut() {
+            member.setup = false;
+        }
+        r.requested.insert(c.keys[0]);
+        r.maps = Some(Arc::new(crate::map_profile::Catalog {
+            choices: vec![
+                crate::map_profile::Choice {
+                    code: 281,
+                    index: 0,
+                    bodies: HashMap::from([(
+                        Template::Map117,
+                        encoded(&[(0, Width::U16), (281, Width::U16), (0, Width::U32)]),
+                    )]),
+                    floor: r.floor_catalog.clone(),
+                    terrain: Some(crate::terrain::tests::basic_items_map()),
+                },
+                crate::map_profile::Choice {
+                    code: 1104,
+                    index: 1,
+                    bodies: HashMap::from([(
+                        Template::Map117,
+                        encoded(&[(0, Width::U16), (1104, Width::U16), (1, Width::U32)]),
+                    )]),
+                    floor: pickups::Catalog::default(),
+                    terrain: Some(crate::terrain::tests::map()),
+                },
+                crate::map_profile::Choice {
+                    code: 777,
+                    index: 2,
+                    bodies: HashMap::from([(
+                        Template::Map117,
+                        encoded(&[(0, Width::U16), (777, Width::U16), (2, Width::U32)]),
+                    )]),
+                    floor: pickups::Catalog::default(),
+                    terrain: None,
+                },
+            ],
+        }));
+        for _ in 0..8 {
+            r.channels[&c.keys[0].identity]
+                .sender
+                .try_send(Runtime::member_batch(c.keys[0], None, 0, vec![]))
+                .unwrap_or_else(|_| panic!("fill map queue"));
+        }
+    }
+    let choose = |code, index| encoded(&[(code, Width::U16), (index, Width::U32)]);
+    assert!(c.sessions[1].packet(96, &choose(1104, 1)).is_err());
+    assert!(c.sessions[0].packet(96, &choose(1104, 0)).is_err());
+    assert!(c.sessions[0].packet(96, &choose(1104, 1)).is_err());
+    {
+        let r = c.shared.lock().unwrap();
+        assert_eq!((r.selected_map, r.map_revision), (0, 0));
+        assert!(!r.model.pickups.hidden_cell(2, 3));
+        assert!(
+            pickups::Round::begin(42, &r.floor_catalog)
+                .unwrap()
+                .hidden_cell(2, 3)
+        );
+    }
+    for _ in 0..8 {
+        c.sessions[0].inbox.try_recv().unwrap();
+    }
+    c.sessions[0].packet(96, &choose(1104, 1)).unwrap();
+    let previous = c.sessions[0].inbox.try_recv().unwrap();
+    assert!(c.sessions[0].valid(&previous));
+    {
+        let r = c.shared.lock().unwrap();
+        assert_eq!((r.selected_map, r.map_revision), (1, 1));
+        assert!(!r.model.pickups.hidden_cell(2, 3));
+        let mut terrain = r.model.terrain.clone().unwrap();
+        terrain.begin(42);
+        assert!(
+            terrain
+                .place(crate::terrain::Bomb {
+                    id: 1,
+                    owner: 0,
+                    row: 3,
+                    column: 5,
+                    power: 1
+                })
+                .is_err()
+        );
+        let empty = pickups::Round::begin(42, &r.floor_catalog).unwrap();
+        assert!(!empty.hidden_cell(2, 3));
+    }
+    c.sessions[0].packet(96, &choose(777, 2)).unwrap();
+    assert!(!c.sessions[0].valid(&previous));
+    assert!(c.shared.lock().unwrap().model.terrain.is_none());
+    c.sessions[0].inbox.try_recv().unwrap();
+    c.sessions[0].packet(96, &choose(281, 0)).unwrap();
+    let r = c.shared.lock().unwrap();
+    assert_eq!((r.selected_map, r.map_revision), (0, 3));
+    let mut terrain = r.model.terrain.clone().unwrap();
+    terrain.begin(43);
+    assert!(
+        terrain
+            .place(crate::terrain::Bomb {
+                id: 1,
+                owner: 7,
+                row: 3,
+                column: 5,
+                power: 1
+            })
+            .is_ok()
+    );
+    assert!(
+        pickups::Round::begin(43, &r.floor_catalog)
+            .unwrap()
+            .hidden_cell(2, 3)
+    );
+    assert_eq!(
+        sibling.shared.lock().unwrap().model.phase,
+        Phase::Armed {
+            round: sibling.round
+        }
+    );
+    assert!(
+        sibling
+            .shared
+            .lock()
+            .unwrap()
+            .model
+            .pickups
+            .hidden_cell(2, 3)
+    );
+}

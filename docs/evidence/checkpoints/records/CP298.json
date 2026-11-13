@@ -1,0 +1,235 @@
+{
+  "id": "CP298",
+  "previous": "CP297",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T20:43:08.270199+00:00",
+  "context_commit": "a8b8fe163725531187d706f77cd63064b12318e4",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1: terrain có theo đúng map selection và Forest07 Well00/box/item/reset trên route native còn khác candidate ở đâu?",
+  "scope": "Selected-map terrain foundation và bounded Forest07/8 account/one designed hidden Roller/two cycles; separate2client seed observation. Không full Forest07 mọi sparse roster/drop/item hoặc G1/giai đoạn1.",
+  "artifacts": [
+    {
+      "name": "G1-Forest-native-service",
+      "sha256": "98654cf471c1e772238d734d92f8da7845dda96ffc503ddaeace3fde6478cccb"
+    },
+    {
+      "name": "G1-Forest-KR-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-selected-map-terrain",
+    "docs/evidence/rust-service/g1-map-terrain.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Mỗi map choice có terrain pin payload/map/start riêng; current Idle host/queue commit/floor/revision nhất quán.193workspace, source queue/None/reset/sibling, synthetic TCP/SQLite và5config negatives đạt.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-selected-map-terrain",
+      "evidence": [
+        "G1MAPTERRAIN298-00010",
+        "G1MAPTERRAIN298-06225",
+        "G1MAPTERRAIN298-06083",
+        "G1MAPTERRAIN298-06062",
+        "G1MAPTERRAIN298-06060",
+        "G1MAPTERRAIN298-06078",
+        "G1MAPTERRAIN298-06221"
+      ],
+      "limits": "Source/synthetic không native physics/wholemap acceptance. Hash là input agreement, không attestation trusted operator."
+    },
+    {
+      "summary": "Native2seed exact PR401: Well00 footprint3x2 làm năm candidate ground cells thực blocked, hai view cùng195flags và430copied-native getters riêng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-selected-map-terrain",
+      "evidence": [
+        "G1MAPTERRAIN298-01792",
+        "G1MAPTERRAIN298-01791",
+        "G1MAPTERRAIN298-02158"
+      ],
+      "limits": "Seed flags không phân biệt mọi solid/destructible/direction. Run2seed không chứng minh WIP per-map implementation."
+    },
+    {
+      "summary": "Native8 WIP per-map Forest07: slot6 đặt5root/vòng, hiddenRoller5→6 trên8view;18actual118/159/158 và toàn195flags trước/sau, hai rank/reset. Actual root11,11/power1 giữ sáu ô Well blocked, phá hai thùng cạnh, lặp vòng2.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-selected-map-terrain",
+      "evidence": [
+        "G1MAPTERRAIN298-04920",
+        "G1MAPTERRAIN298-04919",
+        "G1MAPTERRAIN298-06034"
+      ],
+      "limits": "Route cạnh Well chỉ một hướng/power1; designed single hidden Roller không original drop distribution. Native Forest gameplay có2/4/8 bằng chứng riêng, không mọi sparse roster2..8 hoặc toànG1. Python ownerprojection chỉgeometry, getter emulation tách runtime."
+    },
+    {
+      "summary": "Native Forest07 roster2/4 cùng binary với8: actor1 phá thùng11,2, nhặt designed hidden Roller, mọi view stat5→6, toàn195flags trên mọi actual blast, hai rank/reset và baseline vòng2.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-selected-map-terrain",
+      "evidence": [
+        "G1MAPTERRAIN298-00028",
+        "G1MAPTERRAIN298-00659",
+        "G1MAPTERRAIN298-00027",
+        "G1MAPTERRAIN298-00658"
+      ],
+      "limits": "Các route contiguous2/4 đã ghi, không mọi sparse roster hoặc phân phối drop gốc. Native8Well có tập bằng chứng riêng."
+    }
+  ],
+  "verification": [
+    {
+      "check": "193workspace/fmt/clippy/locked build, exact native binary và source/TCP/config controls",
+      "result": "pass",
+      "evidence": [
+        "G1MAPTERRAIN298-06225",
+        "G1MAPTERRAIN298-06083",
+        "G1MAPTERRAIN298-06062",
+        "G1MAPTERRAIN298-06060",
+        "G1MAPTERRAIN298-06078",
+        "G1MAPTERRAIN298-06221"
+      ],
+      "limits": "Source/synthetic separate from native."
+    },
+    {
+      "check": "Native2seed và gameplay2/4/8: independent capture/native flags/stat/readers/entity/rank/reset, copied-native snapshots và manual UI",
+      "result": "pass",
+      "evidence": [
+        "G1MAPTERRAIN298-00010",
+        "G1MAPTERRAIN298-01792",
+        "G1MAPTERRAIN298-04920",
+        "G1MAPTERRAIN298-04919",
+        "G1MAPTERRAIN298-05425",
+        "G1MAPTERRAIN298-00028",
+        "G1MAPTERRAIN298-00659",
+        "G1MAPTERRAIN298-00027",
+        "G1MAPTERRAIN298-00658"
+      ],
+      "limits": "Scope and drop policy retained explicitly; full G1/phase1 remain open."
+    },
+    {
+      "check": "Manual feature-group audit and PR401 exact-head raw/history/CI merge receipt",
+      "result": "pass",
+      "evidence": [
+        "G1MAPTERRAIN298-00009",
+        "G1MAPTERRAIN298-06227"
+      ],
+      "limits": "This PR exact-head raw/history/docs and CI still required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP298-selected-map-terrain.json",
+      "bytes": 1744006,
+      "sha256": "3009287805e2454fe9755354932bdbfe4cdb6a67eb9fa6fe7138d8193af81435",
+      "count": 6262
+    }
+  ],
+  "delta": {
+    "added": [
+      "Per-map terrain config/hash binding, atomic selection/reset/no inheritance,193source tests/TCP/config controls.",
+      "Forest07 native2seed discrepancy and8actor6 bounded well/item/two-round route."
+    ],
+    "corrected": [
+      "Forest07 candidate per-cell ground classification missed actual3x2 Well footprint; original exported profile/pack unchanged.",
+      "Initial seed run wrong team click rejected; new seed run fixed actual button. Argument780 rejected before runtime, actual recipe600 bound retained.",
+      "Test-only expectation after end corrected to existing cleared claim catalog; failed test/destructor log retained, production behavior not blamed."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "G1 còn sáu map đầy đủ2..8, drop/item và nhân vật. Forest07 có seed2client và bounded gameplay2/4/8 với một Roller cấu hình; không đóng G1/giai đoạn1.",
+    "Phân phối drop map kết hợp ItemAttr và các item chưa đo chưa được phục hồi; policy mới phải ghi design, unknown item giữ tắt.",
+    "Well00 mới đo footprint và một hướng/power1 bên cạnh; không mọi direction/loại tile/authority. Patrit/Village/Camp/Tomb còn unknown riêng; Factory07 còn terrain/drop mới.",
+    "Village10 và Tomb12 có6spawn; acceptance2..8 chưa được owner đổi. Không ép spawn/reuse tọa độ hoặc tự giảm scope.",
+    "Native59 đã tái hiện ở Forest8-r2; passive trace r3 không tái hiện, issue403 vẫn open và không có fix/ACK policy.",
+    "M8 còn Internet thật của transport xác thực mới, 50 người/8 phòng, vận hành/backup-restore/đóng gói và soak."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp khoảng trống Forest07/drop/roster rồi Patrit14 và map theo PLAN; chỉ RE consumer/variant còn chặn implementation/native. M8 giữ riêng.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T20:43:08.270199+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo source/native và scoped feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Terrain theo map, bounded Forest07 và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Terrain theo map, bounded Forest07 và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Terrain theo map, bounded Forest07 và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Terrain theo map, bounded Forest07 và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Terrain theo map, bounded Forest07 và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Terrain theo map, bounded Forest07 và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Terrain theo map, bounded Forest07 và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Terrain theo map, bounded Forest07 và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "Terrain theo map, bounded Forest07 và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-map-terrain.json",
+      "state": "updated",
+      "reason": "Ma trận reuse/static/native/source/TCP/failure/hash và limits."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo/frozen raw/privacy/audit nhóm tính năng và exact-head PR không đổi."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-g1-selected-map-terrain-forest-slice"
+  ]
+}

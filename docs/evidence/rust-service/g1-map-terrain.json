@@ -1,0 +1,205 @@
+{
+  "schema": "kre-rust-selected-map-terrain-v1",
+  "checkpoint": "CP298",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "canonical": "docs/protocol/terrain.md#rust-selected-map-terrain",
+  "acceptance": "docs/PLAN.md#phase1-acceptance",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "decision": "Đạt lát terrain riêng theo map và các route Forest07 roster2/4/8 account trong phạm vi dưới đây. G1 sáu map đầy đủ2..8, các nhóm item khác và giai đoạn1 vẫn mở.",
+  "implementation": {
+    "files": [
+      "rust/crates/kr-service/src/map_profile.rs",
+      "rust/crates/kr-service/src/room_io.rs",
+      "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "rust/crates/kr-service/src/terrain.rs"
+    ],
+    "policy": "map_choices[*].terrain optional, chỉ cùng item_policy report_derived_basic. Profile payload/map/start hash đồng bộ; seed ở choice và clone từng phòng. Root terrain nếu khai phải trùng choice0; không dùng seed map trước cho choice không terrain.",
+    "atomicity": "Current Idle host/96, all queue reservations trước publish. next terrain/claim/lastblast và selected_map/floor/revision cùng room owner. Chọn lại cùng index vẫn revision mới, stale queued117 bị fence; disabled/missing terrain không kế thừa old shadow.",
+    "limits": "Hash kiểm input agreement, không attestation operator/profile. Generic geometry/report-derived authority giữ giới hạn hiện hành. Không thêm cờ sức chứa/identity alias hoặc sửa exporter/client/pack."
+  },
+  "reuse": {
+    "path": "local/research/codex/g1-map-terrain-source-r1/reuse.json",
+    "bytes": 5105,
+    "sha256": "d48426f8f5ff47e655846e95fd1cc107281b67e1222b1f06e2dae2e2c24eb794",
+    "previous_delivery": "local/research/codex/g1-terrain-players-delivery-receipt.json",
+    "previous_merge": "a8b8fe163725531187d706f77cd63064b12318e4",
+    "direct": "Wire/adapter/selection/seed/hidden claim/getter được tái dùng; chỉ đo native footprint khác candidate và đường Rust theo map.",
+    "legacy": "Ledger nguồn KR/VN và REFERENCES được giữ; không chuyển opcode/layout hoặc scope của server VN/boom-rs.",
+    "avoided": "Không RE lại account, codec, reader/map ordinal, baseline kim/cứu hoặc item family. Không chép ngoại lệ vào tools/export_map_profile.py."
+  },
+  "static_profile": {
+    "export": "local/research/codex/g1-map-terrain-survey-r1",
+    "source": "kr_static",
+    "status": "candidate",
+    "reference": "docs/content/tile-semantics.md",
+    "limits": "Mẫu mỗi ô chưa xử lý footprint đa ô hoặc mọi cơ chế. Forest07 Well00 tạo năm mismatch ground→blocked; không suy các unknown tile/map khác đã giải."
+  },
+  "seed_observation": {
+    "root": "local/research/codex/g1-forest-seed-native-r2",
+    "run_sha256": "4a55b6dbcd500d2ab104e998edb80dd1874dcf35d9c51fbdcf69a44504c58c91",
+    "verification": "local/research/codex/g1-forest-seed-native-r2/forest-seed-native-verification.json",
+    "getter_verification": "local/research/codex/g1-forest-seed-native-r2/forest-seed-getter-verification.json",
+    "getter_checks": 430,
+    "clients": 2,
+    "binary": "Exact PR401, terrain disabled and floor empty; no proof for WIP implementation from this run.",
+    "well": {
+      "anchor": [
+        12,
+        12
+      ],
+      "blocked_cells": [
+        [
+          11,
+          12
+        ],
+        [
+          11,
+          13
+        ],
+        [
+          11,
+          14
+        ],
+        [
+          12,
+          12
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          12,
+          14
+        ]
+      ],
+      "coordinate_order": "row,column",
+      "candidate_discrepancies": 5
+    },
+    "limits": "Two actual KR account clients/Wine/private LAN, exact PR401 binary with terrain disabled/floor empty. Clock195flags and map name/code only. Static candidate discrepancies are observations; flag1 cannot distinguish solid/destructible or full Well00 footprint collision/direction/damage. No items/drop/full battle/map acceptance or new per-map Rust implementation proof."
+  },
+  "native": {
+    "root": "local/research/codex/g1-forest-terrain-native-r3",
+    "run_sha256": "f1b5e2f427f6e3ac652ed62343ebbeff20f1d58e155f49c5d8ac00fecf2e698b",
+    "duration_seconds": 415.756303818,
+    "raw_count": 605,
+    "service_sha256": "98654cf471c1e772238d734d92f8da7845dda96ffc503ddaeace3fde6478cccb",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "verification": "local/research/codex/g1-forest-terrain-native-r3/forest-terrain-native-verification.json",
+    "getter_verification": "local/research/codex/g1-forest-terrain-native-r3/forest-terrain-getter-verification.json",
+    "getter_checks": 65552,
+    "clients": 8,
+    "environment": "Tám network namespace riêng trên bridge LAN cô lập, chung kernel/Wine, account-owned QUIC companions và INPUT source mapping. Không có default route ngoài. Không cấu hình delay/jitter/loss/reordering/bandwidth cap/MTU riêng.",
+    "observed": "Hai clock có đúng map/spawn/account/character; slot6 đặt năm root mỗi vòng, nhận hidden Roller tại11,10 và tăng speed5→6 trên tám view. Bốn root khác kết thúc mỗi vòng, hai rank/reset. Tất cả195flags trước/sau18blast khớp kernel Python dẫn bằng actual118; seed vòng2 trở lại. Well3x2 giữ blocked khi actual root11,11/power1 tác động cạnh nó, thùng10,11 và12,11 được phá.",
+    "drop_policy": "Một Roller ẩn cố định tại ô kind2, do công ty cấu hình để kiểm consumer/reveal/stat. Không là thuật toán/phân bố/trọng số drop gốc Forest07 hoặc đầy đủ bảng item của map.",
+    "limits": "Forest07/8actual account clients/Wine/private LAN, WIP per-map terrain via initial current96. Bounded five roots near Well00 + four finishing roots each round, native all195 flags on all18blasts/two resets, single designed hidden Roller/slot6 stat. Static class1+unchanged six flags for adjacent actual blast supports bounded solid shadow; no every direction/wholemap/other power/whole drop distribution claim. Python kernel projects owner0 for geometry, actual owner/serial/location/power checked separately; matching Rust/Python alone is not native proof. Factory fallback catalog choice has no terrain and is not native gameplay accepted. No Internet/new item groups/full G1/phase1 closure."
+  },
+  "build": {
+    "workspace_tests": 193,
+    "service_sha256": "98654cf471c1e772238d734d92f8da7845dda96ffc503ddaeace3fde6478cccb",
+    "reports": [
+      "local/research/codex/g1-map-terrain-workspace-r1.txt",
+      "local/research/codex/g1-map-terrain-fmt-r2.txt",
+      "local/research/codex/g1-map-terrain-clippy-r2.txt",
+      "local/research/codex/g1-map-terrain-build-r2.txt"
+    ]
+  },
+  "controls": {
+    "source": "design",
+    "status": "design",
+    "method": "test",
+    "unit": "Terrain/start/map payload binding; selection queue rollback, no old terrain for missing choice, prior batch revision fence, sibling-room isolation.",
+    "tcp": {
+      "root": "local/research/codex/g1-map-terrain-tcp-r1",
+      "verification": "local/research/codex/g1-map-terrain-tcp-r1/result.json",
+      "result": "pass",
+      "limits": "Synthetic TCP/SQLite current map selection and ownership; không native oracle."
+    },
+    "config": {
+      "verification": "local/research/codex/g1-map-terrain-config-controls-r1/verification.json",
+      "result": "pass",
+      "cases": [
+        "missing-basic-policy",
+        "foreign-pack-map",
+        "foreign-map-frame",
+        "conflicting-root-terrain",
+        "unclassified-cell"
+      ]
+    }
+  },
+  "failed_runs": [
+    {
+      "root": "local/research/codex/g1-forest-seed-native-r1",
+      "run_sha256": "66a733a7f0cd58f0feaf1a014fbfc227b72f546e07fc74c05c91f9f160e8c800",
+      "returncode": 1,
+      "reason": "Tọa độ nút đội4 màu kế thừa gửi team không hỗ trợ ở UI8 màu; channel bị đóng, client lỗi sau đó. Chưa tới clock/terrain. Lượt2 chỉ sửa click về đúng nút đã dùng trên Factory07."
+    },
+    {
+      "root": "local/research/codex/g1-forest-terrain-native-r1",
+      "pre_runtime": "native/argument-rejected-launch.txt và argument-rejected-launch-exit.json",
+      "reason": "--seconds780 bị parser chặn trước namespace/client. Giữ rejection và old preflight/recipe; actual runtime dùng giới hạn600 đã có, không tăng budget.",
+      "limits": "Không có raw game của lần parser rejection; không relabel nó thành runtime pass."
+    },
+    {
+      "root": "local/research/codex/g1-forest-terrain-native-r1",
+      "run_sha256": "c0927fbf98887fedb2bea2c5edf31aa7b97d8786353e90cb2d1bfb1f3c6c0b42",
+      "returncode": 1,
+      "diagnosis": "local/research/codex/g1-forest-terrain-native-r1/probe-quota-diagnosis.json",
+      "recovery": "local/research/codex/g1-forest-terrain-native-r1/native/storage-recovery.json",
+      "reason": "Một vòng hoàn tất; vòng2 probe bom chạm quota96 trên mọi view, controller thiếu marker158_end và timeout. Snapshot độc lập đủ12blast đã gửi trên8view. Giữ raw/error/exit1; r2 chỉ nâng finite probe quota192 đủ18blast, không đổi production binary/runtime budget."
+    },
+    {
+      "root": "local/research/codex/g1-forest-terrain-native-r2",
+      "run_sha256": "9576d8e87632bf25b4bb4b7fb2de6202ea80ab54955d99f55892d03ae93bf3a3",
+      "returncode": 1,
+      "reason": "C/D actual59 leads unknown-opcode closure in round2 after13native blasts; all raw/seal retained. R3 same service/config/route with passive dual-wrapper trace reaches two full cycles without59, no fix inferred."
+    }
+  ],
+  "limits": [
+    "Native gameplay mới đo Forest07 roster2/4/8 contiguous và các route đã ghi; không mọi roster sparse2..8 hoặc toàn bộ ô/mọi item. Seed-only2client là run riêng.",
+    "Đo Well00 ở một tiếp cận/hướng/power1 và các ô trên route đã ghi; không mọi direction, moving tile hoặc world authority.",
+    "Python ray model project owner0 vì model cũ giới hạn0/1; ownership/serial/location/power đối chiếu actual118→159→native entity/158 riêng.",
+    "Factory07 là lựa chọn fallback trong catalog nhưng không có terrain/native gameplay mới ở run này.",
+    "Drop cố định một Roller không phục hồi phân phối pack/ItemAttr hoặc các item khác. Forest07 chưa được gọi mở đầy đủ G1.",
+    "Village10/Tomb12 có6spawn; scope2..8 chưa được chủ dự án đổi. Không ép spawn hoặc tự giảm acceptance.",
+    "M8 transport mới qua Internet thật, tải50/8room/soak/backup/restore/đóng gói còn riêng."
+  ],
+  "native_rosters": [
+    {
+      "clients": 2,
+      "root": "local/research/codex/g1-forest-2-native-r1",
+      "run_sha256": "d04422657163507bdf581fdc402634bb71a7e6a908de896a5cab3ce40173bbea",
+      "duration_seconds": 214.461097283,
+      "raw_count": 87,
+      "service_sha256": "98654cf471c1e772238d734d92f8da7845dda96ffc503ddaeace3fde6478cccb",
+      "verification": "local/research/codex/g1-forest-2-native-r1/forest-roster-native-verification.json",
+      "getter_verification": "local/research/codex/g1-forest-2-native-r1/forest-roster-getter-verification.json",
+      "getter_checks": 4196,
+      "route": "Pack spawn1 normal keys; hidden Roller at11,2, native stat5→6 and two results/reset, full195flags on every actual blast.",
+      "limits": "Forest07/2actual account clients/Wine/private LAN, same per-map service binary as8route. Actor1 normal input breaks box11,2, claims one designed hidden Roller, stat5→6 allviews and reset, two results. All195flags on all4actual blasts. No whole drop distribution/other items/map authority or Internet/full G1 claim. Well contact measured separately in8route, not repeated here. Python kernel owner0 projection only geometry; actual owner/serial/location/power verified separately."
+    },
+    {
+      "clients": 4,
+      "root": "local/research/codex/g1-forest-4-native-r1",
+      "run_sha256": "bffa808ca2adb3f1e14bf8acf777fd6774da37e3dc98e9a8049e0378a6338d42",
+      "duration_seconds": 254.275609098,
+      "raw_count": 185,
+      "service_sha256": "98654cf471c1e772238d734d92f8da7845dda96ffc503ddaeace3fde6478cccb",
+      "verification": "local/research/codex/g1-forest-4-native-r1/forest-roster-native-verification.json",
+      "getter_verification": "local/research/codex/g1-forest-4-native-r1/forest-roster-getter-verification.json",
+      "getter_checks": 12168,
+      "route": "Pack spawn1 normal keys; hidden Roller at11,2, native stat5→6 and two results/reset, full195flags on every actual blast.",
+      "limits": "Forest07/4actual account clients/Wine/private LAN, same per-map service binary as8route. Actor1 normal input breaks box11,2, claims one designed hidden Roller, stat5→6 allviews and reset, two results. All195flags on all6actual blasts. No whole drop distribution/other items/map authority or Internet/full G1 claim. Well contact measured separately in8route, not repeated here. Python kernel owner0 projection only geometry; actual owner/serial/location/power verified separately."
+    }
+  ],
+  "native59": {
+    "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403",
+    "failed_run": "local/research/codex/g1-forest-terrain-native-r2",
+    "failed_run_sha256": "9576d8e87632bf25b4bb4b7fb2de6202ea80ab54955d99f55892d03ae93bf3a3",
+    "failure": "Two native senders3/4 actual59/body47, prefix1/count5/blob40 and compressed inner50. Server closes wrong stage/opcode/shape. Meanings and caller unknown; no ACK/ignore policy added.",
+    "reuse": "local/research/codex/g1-native59-source-r1/reuse.json",
+    "current_positive": "local/research/codex/g1-forest-terrain-native-r3/native59-observation.json",
+    "decision": "Passive dual-wrapper trace in successful r3 did not reproduce59. Prior failure retained and issue remains open. This is not a59 fix, original contract or service-operational acceptance."
+  }
+}

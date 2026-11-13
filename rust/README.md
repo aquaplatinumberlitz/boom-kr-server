@@ -5,6 +5,11 @@ Cấu hình nhiều phòng opt-in dùng `diagnostic_two_lobby.managed_rooms`, c�
 Đường fixed cũ vẫn là compatibility recipe. Các mục CP bên dưới giữ provenance của từng lát cắt.
 
 
+`map_choices[*].terrain` pin seed và map/start của từng lựa chọn, cùng basic-item policy hiện hành.
+[Contract lựa chọn/giới hạn Forest07](../docs/protocol/terrain.md#rust-selected-map-terrain) và
+[ma trận](../docs/evidence/rust-service/g1-map-terrain.json) tách source/TCP khỏi native gameplay.
+
+
 Terrain và Bomb/Fire/Roller opt-in dùng `fixed_room.item_policy = "report_derived_basic"` cùng account/player round.
 [Contract/giới hạn roster và stat](../docs/protocol/terrain.md#rust-player-terrain) và
 [ma trận nghiệm thu](../docs/evidence/rust-service/g1-terrain-players.json) là nguồn chuẩn; mặc định tắt.

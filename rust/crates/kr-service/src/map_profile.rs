@@ -220,12 +220,15 @@ fn table_rows(inner: &[u8]) -> io::Result<Vec<TableRow<'_>>> {
 pub(crate) struct ChoiceConfig {
     pub map_profile: FixturePin,
     pub packets: HashMap<String, crate::LobbyPacketPin>,
+    #[serde(default)]
+    pub terrain: Option<crate::terrain::Config>,
 }
 pub(crate) struct Choice {
     pub code: u16,
     pub index: u32,
     pub bodies: HashMap<crate::room_packets::Template, Vec<u8>>,
     pub floor: crate::pickups::Catalog,
+    pub terrain: Option<crate::terrain::Terrain>,
 }
 pub(crate) struct Catalog {
     pub choices: Vec<Choice>,
@@ -237,6 +240,7 @@ impl Catalog {
         root: &HashMap<String, Reply>,
         actors: &HashMap<PlayerId, ActorProfile>,
         needle: bool,
+        basic_items: bool,
     ) -> io::Result<Self> {
         use crate::room_packets::Template;
         if !(2..=16).contains(&configs.len()) {
@@ -245,6 +249,9 @@ impl Catalog {
         let mut choices = Vec::new();
         let mut codes = std::collections::HashSet::new();
         for (index, cfg) in configs.iter().enumerate() {
+            if cfg.terrain.is_some() && !basic_items {
+                return Err(io::Error::other("map terrain requires basic-item policy"));
+            }
             if cfg.packets.len() != 4 {
                 return Err(error());
             }
@@ -283,11 +290,23 @@ impl Catalog {
             }
             let floor = crate::pickups::Catalog::from_floor(&packets["floor"].payload)?;
             floor.validate_needle(needle)?;
+            let terrain = cfg
+                .terrain
+                .as_ref()
+                .map(|terrain| {
+                    terrain.validate_for_map(
+                        &cfg.packets["map"].fixture.load()?,
+                        &cfg.packets["start"].fixture.load()?,
+                        &profile.payload_sha256,
+                    )
+                })
+                .transpose()?;
             choices.push(Choice {
                 code: profile.map_code,
                 index: index as u32,
                 bodies,
                 floor,
+                terrain,
             });
         }
         for (name, key) in [

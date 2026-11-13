@@ -5,7 +5,7 @@ use std::{
     collections::{BTreeMap, BTreeSet, VecDeque},
     io,
 };
-#[derive(Clone, Deserialize)]
+#[derive(Clone, PartialEq, Eq, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
     width: u8,
@@ -48,6 +48,17 @@ fn sha(data: &[u8]) -> String {
     crate::sha256_hex(data)
 }
 impl Config {
+    pub(crate) fn validate_for_map(
+        &self,
+        map_frame: &[u8],
+        start_frame: &[u8],
+        payload_sha256: &str,
+    ) -> io::Result<Terrain> {
+        if self.map_sha256 != payload_sha256 {
+            return Err(io::Error::other("terrain belongs to another pack map"));
+        }
+        self.validate_measured(map_frame, start_frame, 9)
+    }
     pub(crate) fn validate(&self, map_frame: &[u8], start_frame: &[u8]) -> io::Result<Terrain> {
         self.validate_limits(map_frame, start_frame, 2, 2)
     }
@@ -224,6 +235,21 @@ pub(crate) mod tests {
     }
     pub(crate) fn map() -> Terrain {
         config().validate(b"map", b"start").unwrap()
+    }
+    #[test]
+    fn selected_map_requires_its_pack_payload_and_exact_map_start_frames() {
+        let cfg = config();
+        assert!(
+            cfg.validate_for_map(b"map", b"start", &"0".repeat(64))
+                .is_ok()
+        );
+        for (map, start, payload) in [
+            (&b"other"[..], &b"start"[..], "0".repeat(64)),
+            (&b"map"[..], &b"other"[..], "0".repeat(64)),
+            (&b"map"[..], &b"start"[..], "1".repeat(64)),
+        ] {
+            assert!(cfg.validate_for_map(map, start, &payload).is_err());
+        }
     }
     pub(crate) fn basic_items_map() -> Terrain {
         let mut cfg = config();
