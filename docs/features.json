@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP292",
+  "as_of": "CP293",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -775,7 +775,8 @@
           "docs/evidence/cache-boundary/README.md",
           "docs/evidence/lobby-identity/README.md",
           "docs/evidence/lobby-identity/k3-acceptance.json",
-          "docs/evidence/rust-service/m6-match-store.json"
+          "docs/evidence/rust-service/m6-match-store.json",
+          "docs/evidence/rust-service/m6-character-serving.json"
         ]
       },
       "coverage": {
@@ -818,7 +819,8 @@
               "docs/protocol/lobby-profile.md#own-profile-291",
               "docs/protocol/lobby-profile.md#own-profile-integration",
               "docs/protocol/lobby-profile.md#lobby-cache-route",
-              "docs/evidence/lobby-identity/k3-acceptance.json"
+              "docs/evidence/lobby-identity/k3-acceptance.json",
+              "docs/protocol/auth-session.md#rust-persistent-character"
             ]
           },
           "windows_original": {
@@ -843,7 +845,8 @@
             "server/own_profile.py",
             "docs/protocol/lobby-profile.md#lobby-cache-route",
             "docs/protocol/lobby-profile.md#k3-version-identity-controls",
-            "docs/protocol/life-results.md#rust-match-store-backend"
+            "docs/protocol/life-results.md#rust-match-store-backend",
+            "docs/protocol/auth-session.md#rust-persistent-character"
           ],
           "delivery": "via_pr"
         },
@@ -851,7 +854,8 @@
           "state": "partial",
           "refs": [
             "docs/evidence/cache-boundary/README.md",
-            "docs/protocol/lobby-profile.md#lobby-cache-route"
+            "docs/protocol/lobby-profile.md#lobby-cache-route",
+            "docs/protocol/auth-session.md#rust-persistent-character"
           ]
         },
         "gate": {
@@ -1131,7 +1135,8 @@
           "docs/evidence/rust-service/m7c-choice-producer.json",
           "docs/evidence/rust-service/m7c-room-choices.json",
           "docs/evidence/rust-service/m7d-account-ownership.json",
-          "docs/evidence/rust-service/m7e-selected-rosters.json"
+          "docs/evidence/rust-service/m7e-selected-rosters.json",
+          "docs/evidence/rust-service/m6-character-serving.json"
         ]
       },
       "coverage": {
@@ -1196,7 +1201,8 @@
               "docs/evidence/rust-service/m7c-choice-producer.json",
               "docs/evidence/rust-service/m7c-room-choices.json",
               "docs/protocol/room-membership.md#rust-managed-account-ownership",
-              "docs/protocol/room-membership.md#rust-selected-player-rounds"
+              "docs/protocol/room-membership.md#rust-selected-player-rounds",
+              "docs/protocol/auth-session.md#rust-persistent-character"
             ]
           },
           "windows_original": {
@@ -1241,7 +1247,8 @@
             "docs/protocol/room-membership.md#rust-managed-team-rosters",
             "docs/protocol/room-membership.md#rust-managed-player-choices",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
-            "docs/protocol/room-membership.md#rust-selected-player-rounds"
+            "docs/protocol/room-membership.md#rust-selected-player-rounds",
+            "docs/protocol/auth-session.md#rust-persistent-character"
           ],
           "delivery": "via_pr"
         },
@@ -1262,7 +1269,8 @@
             "docs/protocol/room-membership.md#rust-managed-team-rosters",
             "docs/protocol/room-membership.md#rust-managed-player-choices",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
-            "docs/protocol/room-membership.md#rust-selected-player-rounds"
+            "docs/protocol/room-membership.md#rust-selected-player-rounds",
+            "docs/protocol/auth-session.md#rust-persistent-character"
           ]
         },
         "gate": {
@@ -5227,7 +5235,8 @@
           "docs/evidence/rust-service/m7d-account-ownership.json",
           "docs/evidence/rust-service/m7e-selected-rosters.json",
           "docs/evidence/rust-service/n1rb-controls-acceptance.json",
-          "docs/evidence/rust-service/m6-match-store.json"
+          "docs/evidence/rust-service/m6-match-store.json",
+          "docs/evidence/rust-service/m6-character-serving.json"
         ]
       },
       "coverage": {
@@ -5405,7 +5414,8 @@
               "docs/evidence/rust-service/README.md#cp250",
               "docs/protocol/networks.md#rust-n1b-dual-nat",
               "docs/protocol/room-membership.md#rust-managed-account-ownership",
-              "docs/protocol/room-membership.md#rust-selected-player-rounds"
+              "docs/protocol/room-membership.md#rust-selected-player-rounds",
+              "docs/protocol/auth-session.md#rust-persistent-character"
             ]
           },
           "windows_original": {
@@ -5550,7 +5560,8 @@
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
             "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
-            "docs/protocol/life-results.md#rust-match-store-backend"
+            "docs/protocol/life-results.md#rust-match-store-backend",
+            "docs/protocol/auth-session.md#rust-persistent-character"
           ]
         },
         "integration": {
@@ -5664,7 +5675,8 @@
             "docs/evidence/rust-service/controlled-network.json",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
-            "docs/protocol/udp-peer.md#rust-authenticated-serving-relay"
+            "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+            "docs/protocol/auth-session.md#rust-persistent-character"
           ]
         },
         "gate": {

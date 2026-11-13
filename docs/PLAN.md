@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, CP292 / AUD108**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, CP293 / AUD109**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -24,14 +24,14 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, C
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; N1R-b có bằng chứng riêng; vận hành còn M8 |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
 | [G1](#rust-g1) sáu map ladder và item | [Adapter đạt](protocol/load-phase.md#rust-map-profile-adapter): byte baseline và trận Factory07 | Chọn map qua UI, kim/cứu, terrain/item, năm map còn lại và nhân vật |
-| M6 lưu kết quả, thưởng 0 | [Backend/worker đã kiểm](protocol/life-results.md#rust-match-store-backend): schema3, lịch sử/preference, retry/kill và CLI | Chưa nối serving: commit trước reply, lưu nhân vật khi chọn/relogin và native acceptance |
+| M6 lưu kết quả, thưởng 0 | Backend/worker đã kiểm; [lưu/khôi phục nhân vật đã đạt native](protocol/auth-session.md#rust-persistent-character) | Còn nối lịch sử trận/kết quả vào serving, commit trước reply và native durability |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
 
 1. **G1 song song M6.** N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
    Adapter ExVillage01/Factory07 đã đạt lát1. Tiếp chọn map trong phòng theo acceptance, không đụng `tools/export_map_profile.py`.
-   M6 nối backend/worker vào lifecycle, commit trước reply và lựa chọn/relogin; không lặp kiểm DB đã đạt hoặc native4/8,
+   M6 ưu tiên nối match journal vào lifecycle và commit trước Start/kết quả; lựa chọn/relogin đã đạt, không lặp kiểm DB hoặc native4/8,
    roster, account/DB hoặc baseline N1b đã có.
 2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
    N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. Packet59 ở một lượt
@@ -52,10 +52,11 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
   chưa có native mới; không suy terrain hoặc item được nghiệm thu từ phân loại tile tĩnh. Chọn map qua UI còn RE.
 - Một phép TCP diagnostic rộng có cache positive nhưng timeout ở idle Back/return241 và cleanup wait. Raw/failure
   đã giữ, cause chưa xác định; test cache hẹp có negative/ownership/shutdown riêng đã đạt. Không gọi toàn bộ hồi quy
-  diagnostic rộng là pass; theo dõi nếu cản G1/M8. [Bằng chứng và giới hạn](evidence/rust-service/g1-map-adapter.json).
+  diagnostic rộng là pass; một lượt TCP setup cũng timeout trước peer106/117. Cause chưa rõ, theo dõi nếu cản G1/M6/M8. [Bằng chứng và giới hạn](evidence/rust-service/g1-map-adapter.json).
 - M6 ở [#391](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391) vẫn mở: backend/worker đã có schema3,
-  lịch sử/preference và test DB/kill nhưng chưa có commit-before-reply hoặc relogin native cho persistence. Không coi
-  bảng identity local, login thành công hoặc DB tests là M6 end-to-end. Ledger/economy vẫn ngoài giai đoạn 1.
+  lịch sử/preference và test DB/kill; lưu lựa chọn/relogin đã đạt native. Match journal chưa tích hợp, DB native hiện
+  chưa có bản ghi trận. Còn commit-before-Start/result, cancel/EOF/shutdown và native result durability; không đóng M6
+  từ phần nhân vật. Ledger/economy vẫn ngoài giai đoạn 1.
 
 - `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
   Fixture mà server cần để chạy không được phụ thuộc `local/` khi bàn giao: đóng gói kèm manifest hash ở M8.

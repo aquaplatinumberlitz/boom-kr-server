@@ -488,3 +488,7 @@ Chưa native candidate/shared-NAT UDP/NATlearning hoặc relay; native cuối R1
 CP270 [R1g](../docs/PROTOCOL.md#rust-r1g-admission): `max_connections`1..1024, `allowed_peers`1..256entry,
 độc lập số actor/profile. Field/default cũ giữ; operator chọn budget theo deployment, không suy hỗ trợ50người chơi.
 105Rust/306legacyTCP/3169+24frameCP269 và10admission đạt. Native cuối R1/relay/M5generalprofile/M8load còn riêng.
+
+Opt-in `account_admission.persist_character` nối preference schema3 vào room/Start cho catalog nhân vật đã đo.
+[Contract, ownership và native relogin](../docs/protocol/auth-session.md#rust-persistent-character).
+Không suy lịch sử trận đã được serving lưu từ opt-in này; M6 journal integration còn riêng.

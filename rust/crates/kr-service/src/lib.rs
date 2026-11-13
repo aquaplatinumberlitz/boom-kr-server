@@ -380,6 +380,19 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
                 "authenticated relay requires DB profiles and managed player rounds",
             ));
         }
+        if two
+            .account_admission
+            .as_ref()
+            .is_some_and(|a| a.persist_character)
+            && two
+                .managed_rooms
+                .as_ref()
+                .is_none_or(|rooms| rooms.player_round.is_none())
+        {
+            return Err(io::Error::other(
+                "character persistence requires owned DB player rounds",
+            ));
+        }
         let authenticated = config
             .authenticated_relay
             .as_ref()
@@ -699,6 +712,13 @@ async fn local_lobby_connection(
         Some((rx, packet)) => (rx, Some(packet)),
         None => (Receiver::new(40), None),
     };
+    let persist_character = profile
+        .config
+        .diagnostic_two_lobby
+        .as_ref()
+        .and_then(|c| c.account_admission.as_ref())
+        .is_some_and(|c| c.persist_character);
+    let mut preference = None;
     let mut account_opaque87 = 0usize;
     let mut lobby_map_requests = 0usize;
     let mut next_auth_check = Instant::now() + Duration::from_secs(1);
@@ -752,11 +772,19 @@ async fn local_lobby_connection(
                     IpAddr::V4(peer) => peer,
                     _ => return Err(io::Error::other("account IPv4 required")),
                 };
+                if persist_character {
+                    preference = Some(
+                        tokio::select! { _=stop.changed()=>return Ok(()), value=lease.character_preference()=>value.map_err(|e|io::Error::other(format!("character load denied: {e:?}")))? },
+                    );
+                }
                 let selected = channel.select(
                     packet.opcode,
                     &packet.payload,
                     peer,
                     lease.relay_authority(),
+                    preference
+                        .as_ref()
+                        .map(|p: &accounts::CharacterPreference| p.character_key),
                 )?;
                 match selected {
                     room_service::Selection::Joined(session) => room_session = Some(session),
@@ -799,7 +827,39 @@ async fn local_lobby_connection(
                         tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(false)=>value? };
                     }
                 }
-                let observation = session.packet(packet.opcode, &packet.payload)?;
+                let observation = if persist_character && packet.opcode == 92 {
+                    let (membership, character) = session.prepare_character(&packet.payload)?;
+                    let expected = preference
+                        .as_ref()
+                        .ok_or_else(|| io::Error::other("missing owned preference"))?
+                        .revision;
+                    let Some(account_serving::Lease::Channel(owner)) = &account else {
+                        return Err(io::Error::other("character has no owned session"));
+                    };
+                    let deadline = Instant::now() + Duration::from_secs(2);
+                    let stored = loop {
+                        let attempt = tokio::select! { _=stop.changed()=>return Ok(()), value=owner.select_character(character,expected)=>value };
+                        match attempt {
+                            Ok(stored) => break stored,
+                            Err(account_bridge::Error::Backend(
+                                account_worker::Error::Busy
+                                | account_worker::Error::QueueExpired
+                                | account_worker::Error::Backend(accounts::Error::Busy),
+                            )) if Instant::now() < deadline => {
+                                tokio::select! { _=stop.changed()=>return Ok(()), _=tokio::time::sleep(Duration::from_millis(20))=>{} }
+                            }
+                            Err(error) => {
+                                return Err(io::Error::other(format!(
+                                    "character persistence denied: {error:?}"
+                                )));
+                            }
+                        }
+                    };
+                    preference = Some(stored);
+                    session.persisted_character(membership, &packet.payload)?
+                } else {
+                    session.packet(packet.opcode, &packet.payload)?
+                };
                 emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
                 continue;
             }

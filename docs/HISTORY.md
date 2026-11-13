@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP292: M6 đã có backend và worker lưu lịch sử trận, preference nhân vật và thưởng 0.**
+SQLite có khóa trận ổn định, retry không trùng, cancellation sau restart và kiểm kill ngay sau commit; CLI đọc lịch sử
+account/phòng. [Contract/giới hạn](protocol/life-results.md#rust-match-store-backend),
+[bằng chứng](evidence/rust-service/m6-match-store.json). **M6 chưa đóng:** còn nối commit trước kết quả trên wire,
+lưu nhân vật từ phòng và native relogin/persistence. G1 adapter Factory07 đã giao; chọn map, terrain/item và các map khác
+vẫn mở theo [Bảng điều hành](PLAN.md#dashboard). M8 còn triển khai Internet transport mới và vận hành.
+
 **CP291: sửa kiểm provenance source test tích hợp, giữ nguyên bằng chứng Factory07.**
 Checker nay kiểm source test Rust đã pin bằng đúng declaration và blob tại commit công bố checkpoint gốc;
 [giới hạn/correction](evidence/checkpoints/integration-test-source-correction.json). Không sửa checkpoint/raw cũ.

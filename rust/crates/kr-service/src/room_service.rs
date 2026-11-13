@@ -169,6 +169,7 @@ impl Channel {
         body: &[u8],
         peer: Ipv4Addr,
         authority: RelayAuthority,
+        character: Option<u16>,
     ) -> io::Result<Selection> {
         let mut s = self
             .hub
@@ -231,6 +232,9 @@ impl Channel {
                 Some(authority),
             )?;
             session.packet(opcode, body)?;
+            if let Some(character) = character {
+                session.restore_character(character)?;
+            }
             Ok(session)
         })();
         match attempt {

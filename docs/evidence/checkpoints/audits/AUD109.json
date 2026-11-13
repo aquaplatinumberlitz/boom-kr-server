@@ -1,0 +1,82 @@
+{
+  "id": "AUD109",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-m6-character-serving"
+  ],
+  "completed_through": "CP293",
+  "recorded_utc": "2026-11-13T16:07:15.332228+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/m6-character-serving.json",
+    "docs/protocol/auth-session.md",
+    "docs/protocol/life-results.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-service/src/account_serving.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_service.rs",
+    "tools/test_rust_persistent_character.py",
+    "local/research/codex/m6-pref-native-r1/preference-native-verification.json",
+    "local/research/codex/m6-pref-native-r3/preference-native-verification.json",
+    "local/research/codex/m6-pref-native-r3/preference-getter-verification.json",
+    "local/research/codex/m6-pref-serving-tcp-r3/result.json",
+    "local/research/codex/m6-pref-serving-tcp-r2/failure-analysis.json",
+    "local/research/codex/m6-store-delivery-receipt.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence, đối chiếu source và raw native/seal. Hai Wine run cùng binary: actual92→DB choice1 và restart exact frozen DB→fresh login→room106/Start/stat1 không có92. Hai kết quả đối nhau/reset/Start3 mỗi run; independent TCP/CRC/seq và copied-native getters. Real TCP/SQLite writer-lock-before110, unsupported/relogin/revoke/current/shutdown có retained pass; một setup timeout và diagnostic fallback không chạy được giữ nguyên.171workspace tests/fmt/clippy/locked build. PR393 exact-head/raw/history/CI/preverified merge tree receipt được kiểm.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Preference backend chưa được gọi bởi lựa chọn phòng hoặc khôi phục vào client.",
+      "correction": "Opt-in DB-owned choice0/1, DB commit trước110, restore trước106 và native room/Start/stats sau restart/login không92. Own291 zero-profile giữ giới hạn riêng.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-character-serving.json",
+        "docs/protocol/auth-session.md#rust-persistent-character",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Delayed DB completion có thể nhầm player hoặc visit phòng mới.",
+      "correction": "Player/token bound Channel/revision CAS, prevalidate catalog/current/setup/Idle và postawait current DB/frontend/exact membership under room lock. Không giữ room lock qua await; real writer lock/revoke controls và model old visit reject.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-character-serving.json",
+        "rust/crates/kr-service/src/lib.rs",
+        "rust/crates/kr-service/src/room_io.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Native chọn nhân vật/chơi tiếp có thể bị coi là M6 lịch sử/kết quả đã xong.",
+      "correction": "Native DB count0 matches; lưu/khôi phục nhân vật chỉ là một nhóm tính năng. M6 còn journal serving/durability và không đóng gate.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-character-serving.json",
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Diagnostic hoặc lượt pass sau timeout có thể bị coi là cách sửa silent setup.",
+      "correction": "Retain failed raw/frozen/cleanup và cause unknown. Fallback15/31 chưa thực thi; không suy CPU/timer/wakeup cause/remedy hoặc gọi failure là pass.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-character-serving.json",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "M6 vẫn mở: native DB matches count0; còn stable snapshot/commit-before-Start và outcome-before175, cancellation/EOF/shutdown, serving busy/kill/reset negatives và native durability.",
+    "Lựa chọn0/1 có persistence/restore phòng/Start, own291 tại sảnh vẫn zero-profile; không thêm entitlement hoặc nhân vật khác.",
+    "Synthetic setup/Back silent-delivery timeout chưa rõ cause; giữ raw và bounded investigation khi chặn G1/M6/M8, không claim timer/CPU/wakeup fix.",
+    "G1 còn UI map selection, kim/cứu, terrain/item các cỡ phòng, năm map ladder còn lại và nhân vật; M8 còn transport Internet mới/packaging/load/soak/recovery/ops."
+  ]
+}

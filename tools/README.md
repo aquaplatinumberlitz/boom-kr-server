@@ -365,3 +365,7 @@ Lưu config/raw log/receiver boundary/binary hash và cleanup; đây là synthet
 `test_rust_player_slots.py` bổ sung ca `foreign-common-header`: mọi fixture phòng được đổi cùng byte opaque
 header và pin hash mới hợp lệ; phải từ chối trước bind vì ngoài header profile00967. Bộ hiện8 ca gồm6pre-bind
 negative và2slot lifecycle; [R1d contract/limits](../docs/PROTOCOL.md#rust-r1d-wire-builders).
+
+`test_rust_persistent_character.py --binary <kr-service> --admin <kr-admin> --config <baseline bốn actor> --out local/<mới>`
+kiểm serving account/SQLite/TCP thật: commit preference trước110 dưới writer lock, unsupported/relogin/revoke và
+survivor/shutdown. Đây là method=test, không là client KR. [Native và giới hạn](../docs/protocol/auth-session.md#rust-persistent-character).

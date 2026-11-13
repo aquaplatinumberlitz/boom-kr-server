@@ -57,6 +57,8 @@ pub(crate) fn validate_projection(
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
+    #[serde(default)]
+    pub persist_character: bool,
     pub database: PathBuf,
     pub launch_socket: PathBuf,
     pub launch_ttl_seconds: u64,
@@ -79,7 +81,8 @@ fn default_worker_queue_capacity() -> usize {
 }
 impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
-        if !(30..=120).contains(&self.launch_ttl_seconds)
+        if (self.persist_character && self.profile_mode != ProfileMode::DatabaseZero)
+            || !(30..=120).contains(&self.launch_ttl_seconds)
             || self.database == self.launch_socket
             || !(1..=64).contains(&self.worker_queue_capacity)
             || self.max_sessions.is_some_and(|n| !(1..=128).contains(&n))

@@ -3,7 +3,7 @@
 [Mục lục](../PROTOCOL.md) · [Câu hỏi đang mở](../RESEARCH.md) · [Thứ tự việc](../PLAN.md#dashboard).
 
 <a id="rust-match-store-backend"></a>
-### Rust: backend lưu trận và nhân vật đã chọn, M6 còn thiếu serving
+### Rust: backend lưu trận và nhân vật đã chọn
 
 Đây là **design/design, method=test** của backend công ty, không phải wire hoặc authority server gốc.
 [Evidence/build/raw/kill controls](../evidence/rust-service/m6-match-store.json), [acceptance M6](../PLAN.md#phase1-acceptance).
@@ -27,12 +27,12 @@ Không đổi identity/profile_version chỉ vì chọn nhân vật; không làm
 chối các job này. Job còn chờ bị drop/expire thì không thực thi. Commit đã xong nhưng response bị drop phải phục hồi
 bằng cùng match key/revision; không rollback giả một commit đã durable. Current positive, busy/full/cancel/expiry,
 revoke-before-execution và dropped-response retry có DB tests. API này chỉ dành cho trusted service, không public wire.
-Channel preference seam luôn dùng player/token đã bound, kiểm lại DB và frontend generation sau await; chưa tự nối
-vào UI hoặc packet lựa chọn của phòng.
+Channel preference seam luôn dùng player/token đã bound, kiểm lại DB và frontend generation sau await;
+[lựa chọn và khôi phục vào phòng](auth-session.md#rust-persistent-character) đã có serving/native riêng.
 
 CLI `match-history-account` và `match-history-room` đọc lịch sử theo filter với limit1–100, không cấp thưởng hoặc sửa
 kết quả bằng thao tác admin. Luôn thưởng0; EXP, level, tiền, inventory/shop và ledger tiền tệ thuộc giai đoạn sau.
-**Chưa nghiệm thu M6:** còn nối worker vào Start/result/cancel/EOF/shutdown và lưu/khôi phục lựa chọn trong phòng;
+**Chưa nghiệm thu M6:** còn nối worker vào Start/result/cancel/EOF/shutdown; phần nhân vật đã có bằng chứng riêng.
 native KR một trận rồi login lại, DB bận/kill theo chính luồng phục vụ, reward0 trên client phải kiểm trước đóng mốc.
 
 <a id="peer-events"></a>
