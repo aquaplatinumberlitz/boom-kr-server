@@ -93,6 +93,18 @@ nhánh `codex/poptag-english-catalog`, file `l10n/catalog_en.csv`. Mọi dòng l
 Trong 6.184 dòng có 102 dòng nhiều biến thể phải chọn tay và 34 dòng lệch tham số định dạng. Phần thiếu phải
 dịch mới.
 
+**Rà độ phủ ngày 13/11** (đọc lại toàn bộ 87 pack và các file lẻ của client, độc lập với công cụ trích):
+
+- Các nguồn đã trích (cache chuỗi, `ClientString`, tên map, 610 tên vật phẩm, 5 tên kênh) được lấy đủ.
+- Còn ghép thêm được 199 dòng nếu so ID không phân biệt hoa thường; phải duyệt tay.
+- 610 tên vật phẩm tiếng Anh chưa có chỗ ghép: catalog Hàn–Việt hiện không có tên vật phẩm của KR.
+- Chưa trích: 61 tên hiệu ứng trong `Swish/Catalog` và chữ giao diện viết cứng trong `PopTagDLL.dll` (cỡ vài trăm câu,
+  thuộc tính năng riêng của PopTag, không có ID).
+- Không có trong client: chữ nhiệm vụ (script chỉ gọi ID, chữ do server gửi), chữ tiếng Anh cho chuỗi trong exe (exe
+  của PopTag vẫn giữ tiếng Hàn), `Help` và mô tả ô map tự tạo (vẫn là tiếng Hàn).
+- Ảnh có chữ chưa ai đụng tới: 1.187 trong 3.038 ảnh nghi có chữ của KR có entry cùng tên trong pack PopTag; chưa so
+  nội dung ảnh.
+
 **Giới hạn.** Ghép theo ID không chứng minh hai bản cùng nghĩa: cùng ID có thể đổi nội dung sau mười sáu năm. Chưa tách
 được chữ nào của bản Bắc Mỹ gốc, chữ nào do nhóm sửa client viết; trước khi phát hành phải có ý kiến của công ty về
 quyền dùng.
