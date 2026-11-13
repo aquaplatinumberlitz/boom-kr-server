@@ -5,6 +5,11 @@ Cấu hình nhiều phòng opt-in dùng `diagnostic_two_lobby.managed_rooms`, c�
 Đường fixed cũ vẫn là compatibility recipe. Các mục CP bên dưới giữ provenance của từng lát cắt.
 
 
+Terrain và Bomb/Fire/Roller opt-in dùng `fixed_room.item_policy = "report_derived_basic"` cùng account/player round.
+[Contract/giới hạn roster và stat](../docs/protocol/terrain.md#rust-player-terrain) và
+[ma trận nghiệm thu](../docs/evidence/rust-service/g1-terrain-players.json) là nguồn chuẩn; mặc định tắt.
+
+
 Kim/cứu opt-in dùng `fixed_room.life_actions` cùng account và `managed_rooms.player_round`.
 [Contract, credit, delivery barrier và giới hạn native](../docs/protocol/life-results.md#rust-needle-rescue) là nguồn chuẩn;
 mode mặc định tắt, không là inventory account hoặc terrain/item đầy đủ. Kiểm room tích hợp ở `src/room_io_life_tests.rs`.

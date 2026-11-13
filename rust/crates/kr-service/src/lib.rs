@@ -400,17 +400,15 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             .as_ref()
             .map(authenticated_peer::Hub::new)
             .transpose()?;
-        if two
-            .fixed_room
+        if two.fixed_room.as_ref().is_some_and(|r| {
+            r.life_actions != life_actions::Policy::Disabled || r.item_policy.enabled()
+        }) && two
+            .managed_rooms
             .as_ref()
-            .is_some_and(|r| r.life_actions != life_actions::Policy::Disabled)
-            && two
-                .managed_rooms
-                .as_ref()
-                .is_none_or(|r| r.player_round.is_none())
+            .is_none_or(|r| r.player_round.is_none())
         {
             return Err(io::Error::other(
-                "life actions require owned managed player round",
+                "life actions and basic items require owned managed player round",
             ));
         }
         let managed = if let Some(cfg) = &two.managed_rooms {

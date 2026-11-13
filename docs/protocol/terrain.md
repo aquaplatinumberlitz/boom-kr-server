@@ -487,3 +487,44 @@ Opaque123/167 policy/semanticsunknown vàshutdownrootcauseunknown giữ. Pythons
 [PLAN](../PLAN.md#current-order) duy nhất giữ thứtự. CP240auditrequired; Internet thật chưa kiểm.
 
 <!-- protocol-topic-content-end -->
+
+
+<a id="rust-player-terrain"></a>
+## Terrain và ba item nền theo account/roster hiện hành trên Rust
+
+[Ma trận, recipe và hash](../evidence/rust-service/g1-terrain-players.json) ghi nghiệm thu G1 lát 4.
+Tái dùng [kernel/claim KR đã đo](#rust-terrain), [item effects](items-stats.md#item-effects) và catalog nhân vật hiện hành.
+Bật `fixed_room.item_policy = "report_derived_basic"` cùng account và `managed_rooms.player_round`; mặc định tắt.
+Policy nằm trong `RoomRules`, không chọn hành vi theo sức chứa hoặc identity. Python giữ công cụ RE/reference.
+
+Mỗi member có stat hiện hành từ nhân vật đã chọn. Bomb/Fire/Roller tăng capacity/power/speed một mức và kẹp
+max của catalog nhân vật; reset/bắt đầu vòng mới nạp lại baseline. Không đổi stat catalog dùng chung.
+Request118 phải có power đúng stat hiện hành; capacity và maximum lấy từ nhân vật, không từ slot hay tên account.
+Validator đo được cho phép owner0..7 và power tới9 khi terrain profile cho phép; profile cũ giữ giới hạn riêng.
+Native mới chỉ chứng minh power1→2; không gọi source bounds tới9 là native mọi tầm nổ đã đạt.
+
+Terrain vẫn là shadow policy 15×13, floor/solid/box và pending occupancy. Chỉ commit blast sau158 của toàn bộ
+recipient hiện hành đã hoàn tất. Nếu recipient cuối rời đi sau những người còn lại đã gửi xong, commit cho survivor;
+không để bom chờ vô hạn hoặc dùng completion cũ vào vòng mới. Khi không còn member, kết thúc ledger/terrain/claim.
+Report142 phải có bound slot, known hidden cell và clearance đúng vòng hiện hành trước khi mở item; aux khác
+FFFFFFFF chỉ quan sát opaque, không tạo effect. Raw142 không có epoch xác thực: body cũ sau current clearance
+hợp lệ vẫn không phân biệt được. Đây không phải xác thực vị trí hoặc authority server gốc.
+
+124 kiểm current membership/slot/key/catalog, một winner và phase; công bố claim/stat cùng reservation toàn bộ
+hàng đợi165. Hàng đợi đầy không tiêu item, cộng stat hoặc chiếm serial/ID dở. Duplicate không cộng lần hai.
+Guard/queue/timer dùng room/round scope và ownership hiện hành, không cho batch của phòng khác hoàn tất thay.
+
+**Native trên Wine/LAN ảo:** các roster2/4/8 có ba item Roller17, hidden Fire28 và Bomb27; cùng một binary Rust,
+account và companion xác thực. Mọi view đọc165 đủ12byte/errors0 và thấy actor0 nhân vật1 tăng Roller4→5,
+Fire1→2, capacity2→3. Mỗi vòng có118 power1 trước Fire và power2 sau đó,159 đọc đủ39byte/entity đúng tọa độ,
+158 đọc đủ13byte/lookup đúng ID; hai bảng kết quả và reset hoàn tất. Đầu vòng2 stat trở về baseline ở mọi view.
+Các report142 lặp không tạo thêm165/stat delta. Snapshot effect chỉ có slot0/1; clock kiểm mọi actor hiện diện.
+
+Native array195flags so với kernel Python độc lập được dẫn bằng actual118 và thứ tự158. Đã đo đủ các blast vòng1,
+và seed/root vòng2 theo quota đã khai; geometry cuối vòng2 chưa được chụp. Python model dùng owner0 cho ray math
+khi owner cao hơn1, không xác minh quyền owner; ownership/serial/power/tọa độ đã đối chiếu riêng qua capture và
+native consumer. Getter emulation trên snapshot tách khỏi runtime; log server chỉ nối ID/sequence.
+
+**Giới hạn:** ExVillage01 và ba item nền, không sáu map ladder hoàn chỉnh, mọi item hoặc mọi nhân vật.
+Native item trên sparse roster, maximum gameplay tới9, native EOF của lát mới và nội dung khác chưa có proof mới;
+source controls không thay thế native. M8 còn Internet transport mới, tải và vận hành. Không mở lại K6c/K7.

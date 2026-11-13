@@ -33,11 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP296: kim và cứu đã chạy trên Rust với account và peer KR thật.**
-Hai client kiểm nhặt/tiêu kim, Ctrl khi cạn và kim mới sau reset. Ba client kiểm đồng đội cứu, cả hai peer nhận clear,
-kim không bị tiêu bởi cứu và hai vòng kết quả/reset. [Contract và giới hạn](docs/protocol/life-results.md#rust-needle-rescue),
-[bằng chứng](docs/evidence/rust-service/g1-life-actions.json). **G1 vẫn mở:** tiếp terrain/item nền, sáu map và roster,
-nhân vật theo acceptance; M8 còn Internet transport mới và vận hành theo [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP297: terrain và ba item nền đã chạy trên Rust với roster account 2/4/8 người.**
+Bomb/Fire/Roller, hidden reveal, stat theo nhân vật và bom power mới đã được đối chiếu client KR/Wine qua hai vòng
+kết quả/reset. [Contract và giới hạn](docs/protocol/terrain.md#rust-player-terrain),
+[bằng chứng](docs/evidence/rust-service/g1-terrain-players.json). **G1 vẫn mở:** tiếp nội dung sáu map, nhóm item còn lại
+và nhân vật; M8 theo [Bảng điều hành](docs/PLAN.md#dashboard).
 
 ## Bắt đầu
 

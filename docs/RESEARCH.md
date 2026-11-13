@@ -114,6 +114,16 @@ với cùng profile, chỉ mở phần khác biệt. Khoảng cách/contact auth
 không xác thực được từ wire hiện có; không gọi guard nội bộ là token client đã phục hồi. Packet167/body8 sau pickup
 chỉ là envelope quan sát opaque; không suy semantics hoặc ACK. State0 ngắn trước peer clear không có causal fix mới.
 
+<a id="gap-rust-player-terrain"></a>
+### Terrain/item nền theo roster đã nối; chỉ đo dữ liệu và consumer khác biệt
+
+[Contract Rust](protocol/terrain.md#rust-player-terrain) đã có native roster2/4/8 trên ExVillage01, ba item nền,
+stat nhân vật0/1, power1→2, hidden reveal và hai kết quả/reset. Không lặp codec/claim/reader hay đường account.
+Terrain map khác còn phải phân loại ô và đối chiếu native seed→blast→drop; item ngoài Bomb/Fire/Roller cần consumer
+và ca không đủ điều kiện trước bật. Source max9 không là native mọi power. Effect snapshot chỉ có slot0/1 trên mọi
+view; geometry cuối vòng2 và native sparse-item/EOF của lát này chưa đo. Chỉ bổ sung nếu nội dung hoặc discrepancy
+cần đến; không suy chúng đã đạt từ test model. Raw142 thiếu epoch và authority theo report giữ nguyên giới hạn.
+
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster
 

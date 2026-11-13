@@ -1,0 +1,224 @@
+{
+  "id": "CP297",
+  "previous": "CP296",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T19:28:41.694755+00:00",
+  "context_commit": "faf30d9545f847a62ebacac9085c37abb6e47606",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1 lát4: terrain/ba item nền trên Rust có hoạt động với account/current roster2/4/8, stat nhân vật và lifecycle/queue/clearance đúng không?",
+  "scope": "ExVillage01, Bomb/Fire/Roller, power1→2, Wine/LAN giả lập, hai rank/reset; không allmaps/everypower/full G1/M8.",
+  "artifacts": [
+    {
+      "name": "G1-terrain-native-service",
+      "sha256": "9cd02639a863bd2da9e89606f9b29ccce625828dbb7dd55c9dbe8d0a1b971460"
+    },
+    {
+      "name": "G1-terrain-companion",
+      "sha256": "a30340e2412b64d55c59ac5e5f2530b37d67e553391483d55af15d5c08a6860d"
+    },
+    {
+      "name": "G1-terrain-KR-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-player-terrain",
+    "docs/evidence/rust-service/g1-terrain-players.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Native account roster2/4/8 trên cùng binary: ba item nền, hidden142/124165, stat nhân vật1, bomb power1→2,159/158/native entities và hai rank/reset. Native duplicate142 không thêm claim/stat; clock vòng2 trở baseline.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-player-terrain",
+      "evidence": [
+        "G1TERRAIN297-00010",
+        "G1TERRAIN297-03405",
+        "G1TERRAIN297-00663",
+        "G1TERRAIN297-02814",
+        "G1TERRAIN297-03406",
+        "G1TERRAIN297-00664",
+        "G1TERRAIN297-02815"
+      ],
+      "limits": "ExVillage01/Wine/private LAN; item snapshot0/1 trên mọi view. Không native mọi owner/item/map hoặc original authority."
+    },
+    {
+      "summary": "Native195flags so kernel Python độc lập từ actual118/158, toàn bộ blast vòng1 và seed/root vòng2. Getter copied-native emulation xác minh snapshot riêng; owner projection0 chỉ geometry.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-player-terrain",
+      "evidence": [
+        "G1TERRAIN297-00010",
+        "G1TERRAIN297-03404",
+        "G1TERRAIN297-00662",
+        "G1TERRAIN297-02813"
+      ],
+      "limits": "Geometry cuối vòng2 chưa chụp do quota khai trước run; Python owner2..7 không được kiểm bởi model, actual owner kiểm riêng qua wire/native reader."
+    },
+    {
+      "summary": "Opt-in RoomRules, mutable current-character stats/clamp và current power, full-recipient158 clearance, last pending EOF và empty room finish.191 workspace tests gồm malformed/slot/key/duplicate/queue/reset/sibling isolation; native controls tách source.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-player-terrain",
+      "evidence": [
+        "G1TERRAIN297-03460",
+        "G1TERRAIN297-03432",
+        "G1TERRAIN297-03422",
+        "G1TERRAIN297-03418",
+        "G1TERRAIN297-03411"
+      ],
+      "limits": "Synthetic/source controls không native attack/EOF/multiroom proof; bounds9 không native everypower. Raw142 không có authenticated epoch."
+    }
+  ],
+  "verification": [
+    {
+      "check": "191workspace tests/fmt/clippy/locked build, same production binary as native2/4/8 after test-only control addition",
+      "result": "pass",
+      "evidence": [
+        "G1TERRAIN297-03432",
+        "G1TERRAIN297-03422",
+        "G1TERRAIN297-03418",
+        "G1TERRAIN297-03411"
+      ],
+      "limits": "Source checks separate from native."
+    },
+    {
+      "check": "Native2/4/8 independent wire/consumer/stat/flags, getter emulation, raw seal/cleanup, manual UI",
+      "result": "pass",
+      "evidence": [
+        "G1TERRAIN297-00010",
+        "G1TERRAIN297-03393",
+        "G1TERRAIN297-00649",
+        "G1TERRAIN297-02795",
+        "G1TERRAIN297-03302",
+        "G1TERRAIN297-00472",
+        "G1TERRAIN297-02394"
+      ],
+      "limits": "Bounded slice; no allmaps/full G1/phase1 closure."
+    },
+    {
+      "check": "Manual feature-group audit and prior PR399 delivery receipt/post-CP296 CI test correction",
+      "result": "pass",
+      "evidence": [
+        "G1TERRAIN297-00008",
+        "G1TERRAIN297-00019",
+        "G1TERRAIN297-00009"
+      ],
+      "limits": "Exact-head raw/history/docs and CI required before this PR merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP297-player-terrain.json",
+      "bytes": 939653,
+      "sha256": "58c08aa494395f7193734bb77ab75e6cf8b893a9f38660eaacc994471d28100d",
+      "count": 3462
+    }
+  ],
+  "delta": {
+    "added": [
+      "RoomRules basic-item policy/current character round stats, roster terrain and native2/4/8 two cycles.",
+      "Independent actual wire/native flags/getter/duplicate142 controls, source lifecycle/queue/room/round negatives."
+    ],
+    "corrected": [
+      "Last pending recipient departure commits already-delivered blast to survivor terrain; empty room ends terrain/claims.",
+      "PR399 post-CP296 CI deadline controls and merge receipt recorded in new provenance; old records unchanged.",
+      "Harness4 inherited topology_scope two-client label disclosed; eight-r1 capture/unmount failure recovered/sealed, eight-r2 helper fixed before run. Raw unchanged."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "G1 còn terrain/drop/item và roster của sáu map ladder, nhóm item còn lại và nhân vật; không đóng G1 hoặc giai đoạn 1.",
+    "Village10 có6spawn/UI max6; acceptance map2..8 chưa được chủ dự án đổi, không ép spawn hoặc tự giảm scope.",
+    "Native power mới1→2, snapshot effect slots0/1, geometry toàn vòng1 và seed/root vòng2; max9, sparse-item/native EOF lát này chưa có proof mới.",
+    "Raw142 thiếu epoch và policy theo report không xác thực authority/vị trí hoặc account inventory.",
+    "M8 còn Internet thật cho companion xác thực mới, đóng gói, tải50/8room, backup/restore và soak."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp terrain/drop/item sáu map theo thứ tự PLAN, chỉ RE khác biệt chặn nội dung; M8 sau G1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T19:28:41.694755+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo source/native và scoped feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi native terrain/item nền và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi native terrain/item nền và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi native terrain/item nền và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi native terrain/item nền và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi native terrain/item nền và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi native terrain/item nền và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi native terrain/item nền và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi native terrain/item nền và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "Đồng bộ phạm vi native terrain/item nền và giới hạn; G1/M8 vẫn mở theo PLAN."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-terrain-players.json",
+      "state": "updated",
+      "reason": "Ma trận reuse/native/source controls/hash/limits."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo/frozen raw/privacy/feature-group audit và exact-head PR rules không đổi."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-g1-player-terrain-basic-items"
+  ]
+}

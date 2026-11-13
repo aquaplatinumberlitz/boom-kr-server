@@ -22,6 +22,8 @@ use tokio::sync::mpsc;
 #[serde(deny_unknown_fields)]
 pub struct Config {
     #[serde(default)]
+    pub(crate) item_policy: pickups::Policy,
+    #[serde(default)]
     pub(crate) life_actions: crate::life_actions::Policy,
     #[serde(default)]
     pub(crate) endpoint_policy: rules::EndpointPolicy,
@@ -150,6 +152,7 @@ pub(crate) fn load_managed_round(
             endpoint: rules::EndpointPolicy::LegacyDirect,
             ninth_admission_probe: false,
             life_actions: crate::life_actions::Policy::Disabled,
+            item_policy: pickups::Policy::Disabled,
             player_choices: false,
         };
         (
@@ -217,7 +220,7 @@ pub(crate) fn load_player_round(
     if !matches!(
         source.rules.endpoint,
         rules::EndpointPolicy::LegacyDirect | rules::EndpointPolicy::AuthenticatedRelay
-    ) || source.model.terrain.is_some()
+    ) || (source.model.terrain.is_some() && !source.rules.item_policy.enabled())
     {
         return Err(err(
             "player rounds require direct UDP and no terrain profile",
@@ -243,6 +246,7 @@ pub(crate) fn load_player_round(
             player_choices: true,
             ninth_admission_probe: false,
             life_actions: source.rules.life_actions,
+            item_policy: source.rules.item_policy,
         },
         limits: rules::ReportLimits {
             power: Vec::new(),
@@ -443,7 +447,9 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
     }
     // Four profile first covers startup/room/loading. Reject unported terrain and
     // result policies before binding rather than silently selecting two-player ranks.
-    if matches!(count, 4 | 8) && (cfg.battle.is_some() || cfg.terrain.is_some()) {
+    if matches!(count, 4 | 8)
+        && (cfg.battle.is_some() || (cfg.terrain.is_some() && !rules.item_policy.enabled()))
+    {
         return Err(err("four-player Battle/terrain policy not ported"));
     }
     let map_profile = cfg
@@ -589,10 +595,13 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
         .terrain
         .as_ref()
         .map(|spec| {
-            spec.validate(
-                &cfg.packets["map"].fixture.load()?,
-                &cfg.packets["start"].fixture.load()?,
-            )
+            let map = cfg.packets["map"].fixture.load()?;
+            let start = cfg.packets["start"].fixture.load()?;
+            if rules.item_policy.enabled() {
+                spec.validate_measured(&map, &start, 9)
+            } else {
+                spec.validate(&map, &start)
+            }
         })
         .transpose()?;
     if let Some(battle) = &cfg.battle {
@@ -1912,13 +1921,9 @@ impl Session {
                 return Err(err("stale bomb delivery completion"));
             }
             if !runtime.model.bombs.active(ticket) {
-                runtime.model.last_blast = Some(Instant::now());
-                for member in runtime.model.members.values_mut() {
-                    member.life.blast_committed();
-                }
-                if let Some(terrain) = &mut runtime.model.terrain {
-                    terrain.blast_committed(ticket.round, ticket.id);
-                }
+                runtime
+                    .model
+                    .commit_blast(ticket.round, ticket.id, Instant::now());
             }
         }
 
@@ -2396,6 +2401,22 @@ impl Session {
                             };
                     }
                 }
+                if r.rules.item_policy.enabled() {
+                    let catalog = r
+                        .managed_round
+                        .as_ref()
+                        .and_then(|profile| profile.characters.as_ref())
+                        .ok_or_else(|| err("basic items require measured player characters"))?;
+                    for member in next.members.values_mut() {
+                        member.item_stats = Some(
+                            catalog.get(
+                                member
+                                    .character
+                                    .ok_or_else(|| err("missing chosen character"))?,
+                            )?,
+                        );
+                    }
+                }
                 if matches!(
                     r.rules.endpoint,
                     rules::EndpointPolicy::Relay | rules::EndpointPolicy::AuthenticatedRelay
@@ -2694,7 +2715,11 @@ impl Session {
                 }
                 let member = r.member(self.identity, self.connection)?;
                 let request = bombs::Request::parse(body)?;
-                let wrong_profile_power = if let Some(profile) = &r.managed_round {
+                let wrong_profile_power = if r.rules.item_policy.enabled() {
+                    next.members[&self.identity]
+                        .item_stats
+                        .is_none_or(|stats| stats.power != request.power())
+                } else if let Some(profile) = &r.managed_round {
                     if let Some(catalog) = &profile.characters {
                         catalog
                             .get(
@@ -2725,14 +2750,32 @@ impl Session {
                     Err("dead_owner")
                 } else if let Phase::Armed { round } = next.phase {
                     let roster: Vec<_> = next.members.values().map(|m| m.key).collect();
-                    next.bombs.place(
-                        round,
-                        member.key,
-                        member.slot,
-                        &request,
-                        &roster,
-                        next.bomb_capacity[usize::from(member.slot)],
-                    )?
+                    let capacity = next.bomb_capacity[usize::from(member.slot)];
+                    if r.rules.item_policy.enabled() {
+                        let stats = member
+                            .item_stats
+                            .ok_or_else(|| err("missing current item stats"))?;
+                        next.bombs.place_measured(
+                            round,
+                            member.key,
+                            member.slot,
+                            &request,
+                            &roster,
+                            bombs::Limits {
+                                capacity,
+                                maximum_power: stats.maximum_power,
+                            },
+                        )?
+                    } else {
+                        next.bombs.place(
+                            round,
+                            member.key,
+                            member.slot,
+                            &request,
+                            &roster,
+                            capacity,
+                        )?
+                    }
                 } else {
                     Err("inactive_round")
                 };
@@ -2801,7 +2844,34 @@ impl Session {
                 }
                 let slot = read_uint(&body[2..3], Width::U8).map_err(io::Error::other)?;
                 let aux = read_uint(&body[3..], Width::U32).map_err(io::Error::other)?;
-                terrain_notice = Some(if matches!(next.capacity(), 4 | 8) {
+                terrain_notice = Some(if r.rules.item_policy.enabled() {
+                    let row = read_uint(&body[..1], Width::U8).map_err(io::Error::other)? as u8;
+                    let col = read_uint(&body[1..2], Width::U8).map_err(io::Error::other)? as u8;
+                    if slot != u64::from(member.slot) || row >= 13 || col >= 15 {
+                        return Err(err("unsupported current item142 report"));
+                    }
+                    if let Phase::Armed { round } = next.phase {
+                        if aux != u64::from(u32::MAX) {
+                            next.observe_opaque142(member.key)?;
+                            "opaque_observed_no_reveal"
+                        } else if !next.pickups.hidden_cell(row, col) {
+                            "unknown_hidden_cell"
+                        } else if next
+                            .terrain
+                            .as_ref()
+                            .and_then(|t| t.clearance(round, row, col))
+                            .is_none()
+                        {
+                            "no_current_committed_clearance"
+                        } else if next.pickups.reveal(round, row, col) {
+                            "revealed_current_hidden_cell"
+                        } else {
+                            "already_revealed"
+                        }
+                    } else {
+                        "inactive_round"
+                    }
+                } else if matches!(next.capacity(), 4 | 8) {
                     // CP201/209 actual142 follows explosions, including aux37 and -1.
                     // Observe the measured shape only. No reveal/eligibility/item effect.
                     let row = read_uint(&body[..1], Width::U8).map_err(io::Error::other)?;
@@ -2851,7 +2921,8 @@ impl Session {
                 let member = r.member(self.identity, self.connection)?;
                 let request = pickups::Request::parse(body)?;
                 let needle = r.rules.life_actions.needle() && request.kind() == 145;
-                if !needle && (r.managed_round.is_some() || next.capacity() != 2) {
+                let basic = r.rules.item_policy.enabled() && matches!(request.kind(), 0..=2);
+                if !needle && !basic && (r.managed_round.is_some() || next.capacity() != 2) {
                     return Err(err("pickup outside measured profile"));
                 }
                 let decision = if next.members[&self.identity].life.blocked_pickup() {
@@ -2862,7 +2933,18 @@ impl Session {
                     request.decision("inactive_round")
                 };
                 if decision.accepted {
-                    if request.kind() == 0 {
+                    if basic {
+                        let member = next
+                            .members
+                            .get_mut(&self.identity)
+                            .expect("current source");
+                        let stats = member
+                            .item_stats
+                            .as_mut()
+                            .ok_or_else(|| err("missing current item stats"))?;
+                        stats.basic_pickup(request.kind())?;
+                        next.bomb_capacity[usize::from(member.slot)] = stats.capacity;
+                    } else if request.kind() == 0 {
                         let slot = usize::from(member.slot);
                         let maximum = [10, 7][slot];
                         next.bomb_capacity[slot] = (next.bomb_capacity[slot] + 1).min(maximum);
@@ -3935,6 +4017,7 @@ mod ninth_probe_tests {
                 roster: rules::RoundRoster::Full,
                 ninth_admission_probe: true,
                 life_actions: crate::life_actions::Policy::Disabled,
+                item_policy: pickups::Policy::Disabled,
                 player_choices: false,
                 slot_allocation: rules::SlotAllocation::LegacyIdentity,
                 endpoint: rules::EndpointPolicy::LegacyDirect,
@@ -4430,3 +4513,7 @@ mod registry_foundation_tests {
 #[cfg(test)]
 #[path = "room_io_life_tests.rs"]
 mod life_action_integration_tests;
+
+#[cfg(test)]
+#[path = "room_io_item_tests.rs"]
+mod item_policy_integration_tests;

@@ -1,0 +1,136 @@
+{
+  "schema": "kre-rust-player-terrain-v1",
+  "checkpoint": "CP297",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/400",
+  "canonical": "docs/protocol/terrain.md#rust-player-terrain",
+  "acceptance": "docs/PLAN.md#phase1-acceptance",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "decision": "G1 lát 4 đạt bounded terrain và Bomb/Fire/Roller theo account/roster hiện hành trên ExVillage01; toàn bộ G1 và giai đoạn 1 còn mở.",
+  "implementation": {
+    "policy": "fixed_room.item_policy=report_derived_basic; mặc định disabled, chỉ managed player round cùng account. RoomRules và per-member round stats; không identity alias hoặc cờ sức chứa.",
+    "authority": "Policy công ty theo report và bounded shadow; không authoritative world engine/server gốc. Raw142 thiếu epoch được giữ là giới hạn.",
+    "sources": [
+      "rust/crates/kr-service/src/bombs.rs",
+      "rust/crates/kr-service/src/terrain.rs",
+      "rust/crates/kr-service/src/pickups.rs",
+      "rust/crates/kr-service/src/characters.rs",
+      "rust/crates/kr-service/src/room.rs",
+      "rust/crates/kr-service/src/room_io.rs",
+      "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "rust/crates/kr-service/src/rules.rs",
+      "rust/crates/kr-service/src/lib.rs"
+    ]
+  },
+  "reuse": {
+    "path": "local/research/codex/g1-terrain-players-source-r1/reuse.json",
+    "bytes": 3115,
+    "sha256": "d46dddd802f4dc1b8015ea18593da8b7f3ec5f69f5d80380d13bea094c09bd83",
+    "baseline_recorded": "af23bb80eb43bd45fb1f38f13e14de86139ea259",
+    "integration_baseline": "faf30d9545f847a62ebacac9085c37abb6e47606",
+    "direct": "Wire142/124/165/118/159/158, ExVillage01 catalog/kernel, recipient completion và character0/1 đã có KR proof; Python độc lập dùng cho geometry.",
+    "reference": "Nguồn KR/VN cũ theo ledger CP239 và REFERENCES; không lấy opcode hoặc scope từ VN/boom-rs.",
+    "avoided": "Không RE lại codec, account, phòng, effect family hay native getter; chỉ đo tích hợp Rust/current roster và khoảng trống lifecycle."
+  },
+  "native": [
+    {
+      "clients": 2,
+      "root": "local/research/codex/g1-terrain-native-r1",
+      "run_sha256": "907bd0f69d89d04c208a3c7ce089f87d845ceb05a70b91b8489ed28aa06cbd8b",
+      "raw_count": 87,
+      "duration_seconds": 223.160578011,
+      "service_sha256": "9cd02639a863bd2da9e89606f9b29ccce625828dbb7dd55c9dbe8d0a1b971460",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "verification": "local/research/codex/g1-terrain-native-r1/terrain-native-verification.json",
+      "getter_verification": "local/research/codex/g1-terrain-native-r1/terrain-getter-verification.json",
+      "wire_controls": "local/research/codex/g1-terrain-native-r1/terrain-wire-controls.json",
+      "getter_checks": 3696,
+      "environment": "Mỗi client KR có network namespace riêng và companion QUIC account; bridge LAN cô lập, chung kernel/Wine. Không có default route ngoài; không cấu hình delay/jitter/loss/reordering/bandwidth cap/MTU riêng.",
+      "limits": "Two actual KR account clients/Wine/private isolated LAN/current player round. Native0/1 character stats with saved A1, three basic items and hidden reveal, actual power1→2, two outcomes/reset. Native195flags on first3of4blasts due declared8snapshot quota, second-round seed/root proven. Not native4/8/full G1/all maps/maxpower9/authority/Internet/load acceptance."
+    },
+    {
+      "clients": 4,
+      "root": "local/research/codex/g1-terrain-4-native-r1",
+      "run_sha256": "5fc18dbaab44b1d823f5f1b7e8350d8ce297fd1f124fe5e7caf9e3509f512b3a",
+      "raw_count": 173,
+      "duration_seconds": 273.643535893,
+      "service_sha256": "9cd02639a863bd2da9e89606f9b29ccce625828dbb7dd55c9dbe8d0a1b971460",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "verification": "local/research/codex/g1-terrain-4-native-r1/terrain-native-verification.json",
+      "getter_verification": "local/research/codex/g1-terrain-4-native-r1/terrain-getter-verification.json",
+      "wire_controls": "local/research/codex/g1-terrain-4-native-r1/terrain-wire-controls.json",
+      "getter_checks": 9304,
+      "environment": "Mỗi client KR có network namespace riêng và companion QUIC account; bridge LAN cô lập, chung kernel/Wine. Không có default route ngoài; không cấu hình delay/jitter/loss/reordering/bandwidth cap/MTU riêng.",
+      "limits": "4 actual KR account clients/Wine/private isolated LAN, current roster. Three basic items, native character stats, powered bombs, two rank/reset cycles. Native195flags all first-round blasts and second-round seed/root only (declared quota). Python geometry projects owner to0: it does not validate owner2..7; actual owners checked from capture. Not all maps/maxpower9/full G1/Internet/load acceptance. Four-run inherited topology_scope label says two; actual role/interface/config/cleanup evidence establishes count, raw unchanged."
+    },
+    {
+      "clients": 8,
+      "root": "local/research/codex/g1-terrain-8-native-r2",
+      "run_sha256": "95d08b40336ff23190146bbf1cb7c3582d2cd901fc74cb3622476547cc377766",
+      "raw_count": 397,
+      "duration_seconds": 389.604666278,
+      "service_sha256": "9cd02639a863bd2da9e89606f9b29ccce625828dbb7dd55c9dbe8d0a1b971460",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "verification": "local/research/codex/g1-terrain-8-native-r2/terrain-native-verification.json",
+      "getter_verification": "local/research/codex/g1-terrain-8-native-r2/terrain-getter-verification.json",
+      "wire_controls": "local/research/codex/g1-terrain-8-native-r2/terrain-wire-controls.json",
+      "getter_checks": 27024,
+      "environment": "Mỗi client KR có network namespace riêng và companion QUIC account; bridge LAN cô lập, chung kernel/Wine. Không có default route ngoài; không cấu hình delay/jitter/loss/reordering/bandwidth cap/MTU riêng.",
+      "limits": "8 actual KR account clients/Wine/private isolated LAN, current roster. Three basic items, native character stats, powered bombs, two rank/reset cycles. Native195flags all first-round blasts and second-round seed/root only (declared quota). Python geometry projects owner to0: it does not validate owner2..7; actual owners checked from capture. Not all maps/maxpower9/full G1/Internet/load acceptance. Four-run inherited topology_scope label says two; actual role/interface/config/cleanup evidence establishes count, raw unchanged. Eight-r2 fixes the label before run."
+    }
+  ],
+  "build": {
+    "service_sha256": "9cd02639a863bd2da9e89606f9b29ccce625828dbb7dd55c9dbe8d0a1b971460",
+    "companion_sha256": "a30340e2412b64d55c59ac5e5f2530b37d67e553391483d55af15d5c08a6860d",
+    "native_copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "workspace_tests": 191,
+    "reports": [
+      "local/research/codex/g1-terrain-players-fmt-r4.txt",
+      "local/research/codex/g1-terrain-players-workspace-r4.txt",
+      "local/research/codex/g1-terrain-players-clippy-r4.txt",
+      "local/research/codex/g1-terrain-players-build-r4.txt"
+    ]
+  },
+  "source_controls": {
+    "file": "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "cases": "Current membership/slot/key, malformed124, duplicate, queue reservation rollback, full-recipient158 barrier, hidden claim before clearance, power after Fire, last pending recipient EOF, stale completion/reset, sibling room isolation; character clamps và owner/power/solid bounds ở component tests.",
+    "limits": "Synthetic/source tests tách native; không gọi thành native tấn công hoặc native EOF nhiều room mới."
+  },
+  "negative_native": "Actual duplicate142/unknown hidden cells không tạo thêm165 hoặc stat delta; mỗi view chỉ sáu165 cho ba claim mỗi vòng, source decision đối chiếu capture/native.",
+  "limits": [
+    "Chỉ ExVillage01, Bomb/Fire/Roller; native power1→2, không native power3..9 hoặc max/clamp gameplay mới.",
+    "Native roster2/4/8 contiguous; source identity arbitrary và owner7, không đo native mọi roster sparse cho item.",
+    "Native195flags đo toàn bộ blast vòng1 và clock/root vòng2 theo quota đã khai, không toàn bộ geometry cuối vòng2.",
+    "Item effect snapshots chụp slot0/1 trên mọi view; clock chụp mọi actor. Không suy mọi actor đã nhặt mọi item.",
+    "Python terrain model chỉ cho owner0/1; geometry projection owner0 được khai rõ cho comparison. Actual owner/serial/power/position đối chiếu C2S118→S2C159→native full reader/entity riêng.",
+    "topology_scope của harness4 kế thừa nhãn hai client; harness8-r2 sửa đúng nhãn trước run; lệnh topology, role/config, actual channels/native clocks và cleanup xác lập4/8. Không sửa raw/sealed inputs để đổi nhãn.",
+    "Old142bytes sau current legitimate clearance vẫn không phân biệt; không world/contact-distance authority hoặc inventory account.",
+    "Sáu map ladder/nhóm item khác/nhân vật/M8 Internet transport mới, tải và vận hành còn acceptance riêng."
+  ],
+  "provenance_previous_delivery": {
+    "receipt": "local/research/codex/g1-life-actions-delivery-receipt.json",
+    "merge": "faf30d9545f847a62ebacac9085c37abb6e47606",
+    "post_CP296_test_correction": "docs/evidence/rust-service/g1-life-ci-controls.json",
+    "note": "PR399 sửa deadline test expiry/revoke sau CP296; production binary kim/cứu giữ nguyên. Ghi ở mốc mới, không đổi CP296/AUD112."
+  },
+  "failed_runs": [
+    {
+      "root": "local/research/codex/g1-terrain-8-native-r1",
+      "run_sha256": "009c34c9de6382ae608ba8ce8c3ba8aaa8480328cc09a5f6ff5a17df8e3e9632",
+      "raw_count": 397,
+      "returncode": 1,
+      "recovery": "local/research/codex/g1-terrain-8-native-r1/native/storage-recovery.json",
+      "reason": "Hai native cycles đã hoàn tất nhưng helper UDP kế thừa chỉ cho IP1..5, worker assertion ở client thứ5 và unmount busy. Raw export khôi phục đúng byte sau namespace extinct; giữ run.error/exit1, không tính lượt này vào acceptance sạch."
+    }
+  ],
+  "config_controls": {
+    "verification": "local/research/codex/g1-terrain-config-controls-r4/verification.json",
+    "cases": [
+      "unknown-policy",
+      "missing-player-round",
+      "missing-account"
+    ],
+    "limits": "Guard chính xác trước readiness; r1 dùng điều kiện quá rộng và ca thiếu player-round dừng trước guard do path/TLS/persistence, r2/r3 failed expectations giữ nguyên. Chỉ r4 đủ điều kiện expected guard, không tính các lỗi setup thành pass của guard mới."
+  },
+  "test_correction": "Phép kiểm bổ sung ban đầu đòi ioerror cho wrong slot; contract hiện hành trả decision âm. Sửa test đòi denied và giữ malformed ioerror. Không đổi production code/binary; r3 failed log giữ nguyên, r4 là kiểm cuối."
+}
