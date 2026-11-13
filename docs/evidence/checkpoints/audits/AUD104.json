@@ -1,0 +1,75 @@
+{
+  "id": "AUD104",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-authenticated-native-rosters"
+  ],
+  "completed_through": "CP288",
+  "recorded_utc": "2026-11-13T13:16:21.419998+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/n1rb-native-rosters.json",
+    "docs/protocol/udp-peer.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "local/research/codex/n1rb-owned-eight-native-r3/owned-eight-verification.json",
+    "local/research/codex/n1rb-owned-eight-native-r3/owned-eight-getter-verification.json",
+    "local/research/codex/n1rb-owned-eight-native-r3/native/raw-seal.json",
+    "local/research/codex/n1rb-owned-eight-native-r3/native/cycles/run.json",
+    "local/research/codex/n1rb-owned-eight-native-r1/failure-analysis.json",
+    "local/research/codex/n1rb-eight-packet59-r2/failure-analysis.json",
+    "rust/crates/kr-service/src/authenticated_room_relay.rs",
+    "rust/crates/kr-tunnel/src/router.rs"
+  ],
+  "method": "Rà core docs đúng thứ tự, native8/sparse/survivor metadata, source quyền route và raw. Independent TCP reassembly và passive own291/Start/stat/peer/bomb/rank/reset đối chiếu wire/hash.1344 completed UDP helpers có counterpart bytes/tuple của snapshot hiện hành, đủ sender các phase; native170/19 đổi actor người mất và survivor tạo/nổ bom sau EOF trước result/reset/next Start.20085 copied-native getters kiểm thêm. Source/binary unchanged từ CP287, export/seal/namespace cleanup. Retain failed native59, observer freed-pointer và verifier assumptions; không dùng logs/exit0 hoặc clocks thay acceptance.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Native4 không chứng minh mesh8 hoặc survivor sau departure của transport mới.",
+      "correction": "Native8 first result/reset, ordinary Back→sparse7, actual endpoint EOF→six current applies/bombs/result/reset và next six Start đã đo. Reuse/restart/spoof acceptance còn riêng.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1rb-native-rosters.json",
+        "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "B đã về sảnh nhưng observer chung vẫn đọc actor bị giải phóng.",
+      "correction": "R2 exit1 giữ raw; R3 giới hạn phase bằng danh sách role hiện hành. Không sửa game state hoặc service policy để probe chạy.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1rb-native-rosters.json",
+        "local/research/codex/n1rb-owned-eight-native-r3/native/raw-seal.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Giả cursor170=21, mọi phase có tọa độ đổi, hoặc timestamp capture source luôn trước destination.",
+      "correction": "Không đổi raw. Native170 actor effect/errors và wire được so riêng; current UDP sau EOF là idle applies, bom/nổ/result chứng minh tiếp tục. Packet join theo exact bytes/disjoint per-round endpoint, không claim latency/loss/one-to-one/absolute chronology.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1rb-native-rosters.json",
+        "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+        "local/research/codex/n1rb-owned-eight-native-r3/owned-eight-verification.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Một lượt59/SIGABRT có thể bị giấu bởi các lượt positive hoặc suy packet59 là CRC/relay fault.",
+      "correction": "Run1/error/export failure giữ hash; source deny59 và native error order đã biết, nghĩa/cause unknown. Không ACK/ignore59 chưa có contract; RESEARCH giữ phép trace đúng caller/input nếu cần.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1rb-native-rosters.json",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "N1R-b vẫn mở: sustained reuse vượt pool với exact stale/current control, restart và giả mạo gói đầu giữa account chung IP.",
+    "Native59 ở lượt đầu chưa có nghĩa/caller/input được phục hồi; hai lượt sau không tái hiện, không gọi đã sửa. Chỉ mở trace bounded nếu tái hiện hoặc chặn vận hành.",
+    "Wine/LAN cô lập; không suy thêm Internet/ISP/CGNAT, PMTU/mọi UDP hoặc tải. G1/M6/M8 còn mở.",
+    "UDP sau EOF chỉ claim completed current helper/byte matching; cửa sổ không thấy tọa độ đổi. Native bom/nổ/kết quả sau EOF chứng minh chơi tiếp. Capture-read timestamps không là kernel packet time."
+  ]
+}

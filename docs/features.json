@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP287",
+  "as_of": "CP288",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -913,7 +913,8 @@
           "docs/evidence/rust-service/m7d-account-ownership.json",
           "docs/evidence/rust-service/m7e-selected-rosters.json",
           "docs/evidence/rust-service/m5b-dynamic-accounts.json",
-          "docs/evidence/rust-service/m5b-native-recovery.json"
+          "docs/evidence/rust-service/m5b-native-recovery.json",
+          "docs/evidence/rust-service/n1rb-native-rosters.json"
         ]
       },
       "coverage": {
@@ -980,7 +981,8 @@
               "docs/evidence/rust-service/m7c-room-choices.json",
               "docs/protocol/room-membership.md#rust-managed-account-ownership",
               "docs/protocol/room-membership.md#rust-selected-player-rounds",
-              "docs/protocol/auth-session.md#rust-db-account-profiles"
+              "docs/protocol/auth-session.md#rust-db-account-profiles",
+              "docs/protocol/udp-peer.md#rust-authenticated-serving-relay"
             ]
           },
           "windows_original": {
@@ -2181,7 +2183,8 @@
           "docs/evidence/rust-service/m7b-team-rosters.json",
           "docs/evidence/rust-service/m7e-selected-rosters.json",
           "docs/evidence/rust-service/n1rb-companion-foundation.json",
-          "docs/evidence/rust-service/n1rb-owned-serving-four.json"
+          "docs/evidence/rust-service/n1rb-owned-serving-four.json",
+          "docs/evidence/rust-service/n1rb-native-rosters.json"
         ]
       },
       "coverage": {
@@ -3969,7 +3972,8 @@
           "docs/evidence/rust-service/n1r-fixed2.json",
           "docs/evidence/rust-service/r1-native-final.json",
           "docs/evidence/rust-service/n1rb-companion-foundation.json",
-          "docs/evidence/rust-service/n1rb-owned-serving-four.json"
+          "docs/evidence/rust-service/n1rb-owned-serving-four.json",
+          "docs/evidence/rust-service/n1rb-native-rosters.json"
         ]
       },
       "coverage": {

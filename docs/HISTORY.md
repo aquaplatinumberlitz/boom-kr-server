@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP287: relay có xác thực đã nối vào account/phòng và chạy bốn client KR thật.**
+Hai ván có kết quả trái nhau, reset và clock ván thứ ba đã được đối chiếu bằng capture, native state và getter.
+[Contract/giới hạn](protocol/udp-peer.md#rust-authenticated-serving-relay),
+[bằng chứng](evidence/rust-service/n1rb-owned-serving-four.json). **N1R-b chưa đạt**: còn tám người,
+roster sau rời/rớt mạng, restart và đối chứng giả mạo chung IP theo [Bảng điều hành](PLAN.md#dashboard).
+G1/M6/M8 còn mở. Hạ tầng thực và raw chỉ giữ local; [lịch sử](HISTORY.md).
+
 **CP286: đường companion có xác thực đã có phép kiểm tương thích hai client KR thật.**
 UDP giữ nguyên byte qua QUIC tới native consumer; hai kết quả/reset và Start tiếp đã được đối chiếu bằng capture,
 native state và getter. [Phạm vi/giới hạn](protocol/udp-peer.md#rust-authenticated-companion-foundation),

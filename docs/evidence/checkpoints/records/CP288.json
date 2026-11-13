@@ -1,0 +1,203 @@
+{
+  "id": "CP288",
+  "previous": "CP287",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T13:16:21.419998+00:00",
+  "context_commit": "32957de06dd7066c2ce22283ba2e7f2cca08d672",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / N1R-b: native8 qua relay, roster sau Back và endpoint EOF có cho survivor chơi tiếp và vào trận kế không?",
+  "scope": "Native8→sparse7→six survivors và next six Start, source/binary phục vụ unchanged từ CP287. Không sustained negative/restart/spoof hoặc N1R-b closure.",
+  "artifacts": [
+    {
+      "name": "kr-service-owned-relay-unchanged",
+      "sha256": "f4220acbe04f2ed9398c8885c68383f355b411b0da3a3b444733ea1820ffbee8"
+    },
+    {
+      "name": "kr-companion-unchanged",
+      "sha256": "18edd92132b8324691c89438238f146c82cb939a6fd6dcc8f8c8345f1f8d9d97"
+    },
+    {
+      "name": "KR00967-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+    "docs/evidence/rust-service/n1rb-native-rosters.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Native8 first result/reset; ordinary B Back tạo sparse7 next Start. G actual endpoint EOF, sáu survivor nhận170/19 actor state và current UDP, dùng bom/nổ sau EOF, opposite team result/reset rồi next six clock.1344 completed helpers và20085 native getters.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+      "evidence": [
+        "N1RB288-00009",
+        "N1RB288-02170",
+        "N1RB288-02169",
+        "N1RB288-02162"
+      ],
+      "limits": "Wine/LAN only. Current helper after EOF sampled idle applies; no coordinate-change claim there. No full N1R-b."
+    },
+    {
+      "summary": "Initial native59/service-denial/abort và unmount failure giữ nguyên; same-byte export recovery sau namespace extinction. R2 observer đọc freed B actor sau Back; R3 giới hạn host observer theo active roles, không đổi service/game policy.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+      "evidence": [
+        "N1RB288-00009",
+        "N1RB288-01493",
+        "N1RB288-00637"
+      ],
+      "limits": "Native59 meaning/cause unknown. R2 partial positive not promoted to acceptance; old raw/seals unchanged."
+    },
+    {
+      "summary": "Verifier sửa giả định cursor170, movement sampling và timestamp capture. Exact byte/tuple joins tách khỏi chronology/loss; native bombs/result độc lập chứng minh survivor tiếp tục.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+      "evidence": [
+        "N1RB288-00009",
+        "N1RB288-02170"
+      ],
+      "limits": "Capture timestamps là socket-read time, not kernel wire time; duplicate/equal payload matches không là one-to-one packet identity."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native8, sparse7, active EOF/six survivor and next Start; independent TCP/UDP/native/getter/hash/cleanup",
+      "result": "pass",
+      "evidence": [
+        "N1RB288-02170",
+        "N1RB288-02169",
+        "N1RB288-02162"
+      ],
+      "limits": "Declared scope only; native negative/restart/spoof remain."
+    },
+    {
+      "check": "Serving binary/source unchanged from CP287; PR382 exact head/tree and raw/history delivered",
+      "result": "pass",
+      "evidence": [
+        "N1RB288-00009",
+        "N1RB288-00655"
+      ],
+      "limits": "CP287154-test/fmt/clippy build retained; no rerun needed for unchanged runtime source. New docs/checkpoint/CI still checked before merge."
+    },
+    {
+      "check": "Manual native-roster feature-group audit",
+      "result": "pass",
+      "evidence": [
+        "N1RB288-00008",
+        "N1RB288-00009"
+      ],
+      "limits": "Independent review waived; exact-head/local-history and green CI required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP288-native-rosters.json",
+      "bytes": 584912,
+      "sha256": "40e2bd3cf2d3f8bd794d01a2d784cf1bcebd7d5c45566bbc6005895617de5dff",
+      "count": 2205
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native8 relay result/reset/next sparse roster, active endpoint EOF with six survivors and next round.",
+      "Immutable raw/hash/failure/source evidence and20085 copied-native getter checks."
+    ],
+    "corrected": [
+      "Observer window excludes returned-to-lobby account.",
+      "Verifier distinguishes native actor effect/idle applies/read timestamps from unwarranted cursor/movement/chronology assumptions."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "N1R-b vẫn mở: sustained reuse vượt pool với exact stale/current control, restart và giả mạo gói đầu giữa account chung IP.",
+    "Native59 ở lượt đầu chưa có nghĩa/caller/input được phục hồi; hai lượt sau không tái hiện, không gọi đã sửa. Chỉ mở trace bounded nếu tái hiện hoặc chặn vận hành.",
+    "Wine/LAN cô lập; không suy thêm Internet/ISP/CGNAT, PMTU/mọi UDP hoặc tải. G1/M6/M8 còn mở.",
+    "UDP sau EOF chỉ claim completed current helper/byte matching; cửa sổ không thấy tọa độ đổi. Native bom/nổ/kết quả sau EOF chứng minh chơi tiếp. Capture-read timestamps không là kernel packet time."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "N1R-b sustained pool/key reuse with exact stale/current, service restart and common-IP first-packet spoof. Do not repeat native4/8/roster/DB baseline; native59 bounded trace only if blocking/repeated.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T13:16:21.419998+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo native-roster self-check and manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ native8/sparse/survivor và giới hạn; N1R-b vẫn mở."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ native8/sparse/survivor và giới hạn; N1R-b vẫn mở."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ native8/sparse/survivor và giới hạn; N1R-b vẫn mở."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ native8/sparse/survivor và giới hạn; N1R-b vẫn mở."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ native8/sparse/survivor và giới hạn; N1R-b vẫn mở."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ native8/sparse/survivor và giới hạn; N1R-b vẫn mở."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ native8/sparse/survivor và giới hạn; N1R-b vẫn mở."
+    },
+    {
+      "path": "docs/protocol/udp-peer.md",
+      "state": "updated",
+      "reason": "Đồng bộ native8/sparse/survivor và giới hạn; N1R-b vẫn mở."
+    },
+    {
+      "path": "docs/evidence/rust-service/n1rb-native-rosters.json",
+      "state": "updated",
+      "reason": "Native roster/source/hash/cleanup/failure acceptance metadata."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, feature-group audit, freeze, privacy và PR/exact-head/CI giữ nguyên."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-authenticated-native-rosters"
+  ]
+}
