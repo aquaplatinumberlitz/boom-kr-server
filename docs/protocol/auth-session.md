@@ -2,6 +2,9 @@
 
 [Mục lục](../PROTOCOL.md) · [Câu hỏi đang mở](../RESEARCH.md) · [Thứ tự việc](../PLAN.md#dashboard).
 
+Schema hiện hành và preference/lịch sử trận ở [backend M6](life-results.md#rust-match-store-backend).
+Các mục theo CP bên dưới giữ schema và phạm vi tại thời điểm đo.
+
 <a id="rust-account-backend"></a>
 ## Backend account Rust độc lập client — CP236 / RUST-M5 / KRE-074
 

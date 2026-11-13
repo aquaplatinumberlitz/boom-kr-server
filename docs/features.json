@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP291",
+  "as_of": "CP292",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -774,7 +774,8 @@
           "docs/evidence/start-reply/README.md",
           "docs/evidence/cache-boundary/README.md",
           "docs/evidence/lobby-identity/README.md",
-          "docs/evidence/lobby-identity/k3-acceptance.json"
+          "docs/evidence/lobby-identity/k3-acceptance.json",
+          "docs/evidence/rust-service/m6-match-store.json"
         ]
       },
       "coverage": {
@@ -841,7 +842,8 @@
             "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/79",
             "server/own_profile.py",
             "docs/protocol/lobby-profile.md#lobby-cache-route",
-            "docs/protocol/lobby-profile.md#k3-version-identity-controls"
+            "docs/protocol/lobby-profile.md#k3-version-identity-controls",
+            "docs/protocol/life-results.md#rust-match-store-backend"
           ],
           "delivery": "via_pr"
         },
@@ -4169,7 +4171,8 @@
           "docs/evidence/rust-service/ninth-admission.json",
           "docs/evidence/rust-service/argv-provenance.json",
           "docs/evidence/rust-service/README.md#cp252",
-          "docs/evidence/rust-service/m7e-selected-rosters.json"
+          "docs/evidence/rust-service/m7e-selected-rosters.json",
+          "docs/evidence/rust-service/m6-match-store.json"
         ]
       },
       "coverage": {
@@ -4309,7 +4312,8 @@
             "docs/protocol/multiplayer-team.md#rust-eight-baseline",
             "docs/evidence/rust-service/eight-baseline.json",
             "docs/evidence/rust-service/README.md#cp250",
-            "docs/protocol/room-membership.md#rust-selected-player-rounds"
+            "docs/protocol/room-membership.md#rust-selected-player-rounds",
+            "docs/protocol/life-results.md#rust-match-store-backend"
           ],
           "delivery": "via_pr"
         },
@@ -5222,7 +5226,8 @@
           "docs/evidence/rust-service/r1g-admission.json",
           "docs/evidence/rust-service/m7d-account-ownership.json",
           "docs/evidence/rust-service/m7e-selected-rosters.json",
-          "docs/evidence/rust-service/n1rb-controls-acceptance.json"
+          "docs/evidence/rust-service/n1rb-controls-acceptance.json",
+          "docs/evidence/rust-service/m6-match-store.json"
         ]
       },
       "coverage": {
@@ -5544,7 +5549,8 @@
             "docs/protocol/room-membership.md#rust-r1e-registry",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
-            "docs/protocol/udp-peer.md#rust-authenticated-serving-relay"
+            "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+            "docs/protocol/life-results.md#rust-match-store-backend"
           ]
         },
         "integration": {

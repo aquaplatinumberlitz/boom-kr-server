@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP291: sửa kiểm provenance source test tích hợp, giữ nguyên bằng chứng Factory07.**
+Checker nay kiểm source test Rust đã pin bằng đúng declaration và blob tại commit công bố checkpoint gốc;
+[giới hạn/correction](evidence/checkpoints/integration-test-source-correction.json). Không sửa checkpoint/raw cũ.
+Lát adapter G1 đã có byte baseline và native Factory07; [contract](protocol/load-phase.md#rust-map-profile-adapter)
+giữ giới hạn terrain/item, chọn map và các map còn lại. M6 backend đang ở nhánh riêng, chưa nối native persistence.
+Theo [Bảng điều hành](PLAN.md#dashboard), tiếp G1 song song M6 rồi M8; transport mới chưa kiểm Internet thật.
+
 **CP290: adapter map đã qua byte baseline và trận Factory07 trên client KR thật.**
 Profile pack giữ nguyên packet ExVillage01; Factory07 đã qua lookup tên, loading, spawn, hai kết quả/reset và vòng tiếp
 trên Wine. [Contract/giới hạn](protocol/load-phase.md#rust-map-profile-adapter),

@@ -15,9 +15,15 @@ use std::{
 };
 use zeroize::Zeroizing;
 
+mod matches;
+mod preferences;
+pub use matches::*;
+pub use preferences::CharacterPreference;
+
 const MIGRATION: &str = include_str!("../migrations/0001_accounts.sql");
 const MIGRATION_IDLE: &str = include_str!("../migrations/0002_session_idle.sql");
-pub const SCHEMA_VERSION: i32 = 2;
+const MIGRATION_MATCHES: &str = include_str!("../migrations/0003_match_history.sql");
+pub const SCHEMA_VERSION: i32 = 3;
 const APPLICATION_ID: i32 = 0x4b524143;
 const TTL_MAX: i64 = 86_400;
 static HASH_WORK: AtomicUsize = AtomicUsize::new(0);
@@ -255,10 +261,11 @@ impl Store {
         let tx = db.transaction_with_behavior(TransactionBehavior::Immediate)?;
         let app: i32 = tx.pragma_query_value(None, "application_id", |r| r.get(0))?;
         let mut version: i32 = tx.pragma_query_value(None, "user_version", |r| r.get(0))?;
-        let digests = [
-            hex(&Sha256::digest(MIGRATION.as_bytes())),
-            hex(&Sha256::digest(MIGRATION_IDLE.as_bytes())),
-        ];
+        let scripts = [MIGRATION, MIGRATION_IDLE, MIGRATION_MATCHES];
+        let digests: Vec<_> = scripts
+            .iter()
+            .map(|script| hex(&Sha256::digest(script.as_bytes())))
+            .collect();
         if app == 0 && version == 0 {
             let count: i64 = tx.query_row(
                 "SELECT count(*) FROM sqlite_master WHERE name NOT LIKE 'sqlite_%'",
@@ -292,9 +299,8 @@ impl Store {
         // Validate the old live schema BEFORE upgrading, so a migration cannot
         // conceal a pre-existing missing index/foreign trigger/altered constraint.
         let expected = Connection::open_in_memory()?;
-        expected.execute_batch(MIGRATION)?;
-        if version == SCHEMA_VERSION {
-            expected.execute_batch(MIGRATION_IDLE)?;
+        for script in scripts.iter().take(version as usize) {
+            expected.execute_batch(script)?;
         }
         if Self::schema(&tx)? != Self::schema(&expected)? {
             return Err(Error::Schema);
@@ -311,11 +317,15 @@ impl Store {
         if state.0 < 0 || state.1 < 0 || state.2 <= max_wire || state.2 > 4_294_967_296 {
             return Err(Error::Schema);
         }
-        if version == 1 {
-            tx.execute_batch(MIGRATION_IDLE)?;
-            tx.execute("INSERT INTO schema_migrations VALUES(2,?1)", [&digests[1]])?;
-            tx.pragma_update(None, "user_version", SCHEMA_VERSION)?;
-            expected.execute_batch(MIGRATION_IDLE)?;
+        while version < SCHEMA_VERSION {
+            tx.execute_batch(scripts[version as usize])?;
+            tx.execute(
+                "INSERT INTO schema_migrations VALUES(?1,?2)",
+                params![version + 1, &digests[version as usize]],
+            )?;
+            expected.execute_batch(scripts[version as usize])?;
+            version += 1;
+            tx.pragma_update(None, "user_version", version)?;
             if Self::schema(&tx)? != Self::schema(&expected)? {
                 return Err(Error::Schema);
             }
@@ -406,6 +416,7 @@ impl Store {
                 "UPDATE sessions SET revoked_at=?1 WHERE revoked_at IS NULL",
                 [now],
             )?;
+            matches::cancel_running(tx, now)?;
             Self::audit(tx, &request, admin, "begin_instance", None, now)?;
             Ok(next)
         })
@@ -622,6 +633,14 @@ impl Store {
             Err(error) => Err(error),
         }
     }
+    fn session_account(
+        db: &Connection,
+        digest: &[u8],
+        expected_player: i64,
+        now: i64,
+    ) -> Result<i64> {
+        db.query_row("SELECT a.id FROM sessions s JOIN accounts a ON a.id=s.account_id JOIN runtime_state r ON r.id=1 JOIN players p ON p.account_id=a.id WHERE s.token_hash=?1 AND p.id=?2 AND s.revoked_at IS NULL AND s.expires_at>?3 AND s.issued_at<=?3 AND s.boot_epoch=r.epoch AND s.credential_version=a.credential_version AND a.disabled=0 AND (s.idle_timeout_seconds IS NULL OR s.last_seen_at>?3-s.idle_timeout_seconds)", params![digest,expected_player,now], |row|row.get(0)).optional()?.ok_or(Error::InvalidSession)
+    }
     fn check_session(
         &mut self,
         token: &Token,
@@ -631,8 +650,7 @@ impl Store {
     ) -> Result<Player> {
         let digest = token.digest();
         self.at(now, |tx| {
-            let account: Option<i64> = tx.query_row("SELECT a.id FROM sessions s JOIN accounts a ON a.id=s.account_id JOIN runtime_state r ON r.id=1 JOIN players p ON p.account_id=a.id WHERE s.token_hash=?1 AND p.id=?2 AND s.revoked_at IS NULL AND s.expires_at>?3 AND s.issued_at<=?3 AND s.boot_epoch=r.epoch AND s.credential_version=a.credential_version AND a.disabled=0 AND (s.idle_timeout_seconds IS NULL OR s.last_seen_at>?3-s.idle_timeout_seconds)", params![digest,expected_player,now], |r| r.get(0)).optional()?;
-            let account=account.ok_or(Error::InvalidSession)?;
+            let account = Self::session_account(tx, &digest, expected_player, now)?;
             if renew_idle {
                 tx.execute("UPDATE sessions SET last_seen_at=?1 WHERE token_hash=?2 AND account_id=?3 AND idle_timeout_seconds IS NOT NULL",params![now,digest,account])?;
             }

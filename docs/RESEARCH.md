@@ -122,6 +122,18 @@ Một phép TCP diagnostic rộng sau bốn cache positives timeout ở idle hos
 cause chưa rõ. Native Factory07 và cache TCP hẹp có bằng chứng riêng, không làm phép rộng thành pass. Nếu cản
 G1/M8: đối chiếu queue/guard/deadline và cleanup trên exact profile, với current positive; không mở broad client RE.
 
+### M6: backend đã có, còn khe tích hợp serving và native
+
+[Backend/worker](protocol/life-results.md#rust-match-store-backend) đã kiểm schema3, idempotency/revision, DB bận,
+rollback, actual SIGKILL sau commit, cancellation khi mở instance và CLI trên DB thật. Không cần RE thêm để viết
+backend này. Đừng lặp các phép đã có hoặc gọi chúng là native persistence.
+
+Bước tiếp là snapshot theo current account/membership/room/round, commit Start trước công bố trận và commit outcome
+trước result wire; queue busy/retry dùng cùng event. Kiểm dữ liệu cũ sau disconnect/expiry/revoke/reset không ghi đè
+phiên/vòng mới. Nối lựa chọn0/1 đã đo vào preference và projected room state khi login lại; không thêm entitlement hoặc
+wire chưa có. Chỉ RE nếu consumer profile/choice/result đã biết xuất hiện discrepancy. Nghiệm thu DB lỗi/kill phải chạy
+trên chính đường phục vụ, rồi một trận client KR thật và fresh login kiểm nhân vật/kết quả/reward0.
+
 <a id="gap-relay-endpoint"></a>
 ### Relay endpoint sau N1b — KRE-074/KR-F015
 

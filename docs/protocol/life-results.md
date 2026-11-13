@@ -2,6 +2,39 @@
 
 [Mục lục](../PROTOCOL.md) · [Câu hỏi đang mở](../RESEARCH.md) · [Thứ tự việc](../PLAN.md#dashboard).
 
+<a id="rust-match-store-backend"></a>
+### Rust: backend lưu trận và nhân vật đã chọn, M6 còn thiếu serving
+
+Đây là **design/design, method=test** của backend công ty, không phải wire hoặc authority server gốc.
+[Evidence/build/raw/kill controls](../evidence/rust-service/m6-match-store.json), [acceptance M6](../PLAN.md#phase1-acceptance).
+Schema3 bổ sung `matches`, `match_players`, `player_preferences`; migration kiểm schema/hash bản cũ trước nâng,
+transaction giữ nguyên account/player/session/audit của schema1/2. Binary cũ từ chối schema3; không downgrade hoặc
+xóa dữ liệu để rollback. Phép nâng bản sao DB native đã dừng chỉ là kiểm schema, không native relogin/backup restore.
+
+Khóa trận là `(boot_epoch, room_session, room_id, room_generation, round)`. `begin_match` giữ snapshot account,
+player, slot, nhân vật, đội, map và thời gian. `finish_match` ghi cùng transaction toàn bộ kết quả, lý do, thời gian,
+left/disconnect và thưởng0. Cùng event normalized trả bản ghi cũ; nội dung khác với cùng khóa là conflict. Retry phải
+đem nguyên event/thời gian/khóa, không tự tạo khóa mới. Khi `begin_instance`, epoch/session invalidation và hủy mọi
+trận còn chạy cùng transaction; ghi cancelled/server_restart/unknown exit, không tự gán thắng thua khi crash.
+Ca SIGKILL sau commit thật kiểm durability; chúng chưa chứng minh serving đã commit trước gửi kết quả cho KR.
+
+Preference nhân vật thuộc player của session DB hiện hành, có revision CAS và retry transition giống hệt. Expiry,
+revoke, epoch, idle và credential fences kiểm trong transaction. Delayed write không ghi đè revision mới. Số nhân vật
+là dữ liệu nội bộ; không cấp entitlement, chỉ số hoặc hỗ trợ wire. Serving vẫn phải từ chối nhân vật chưa có contract.
+Không đổi identity/profile_version chỉ vì chọn nhân vật; không làm lease hiện hành mất hiệu lực do chỉnh preference.
+
+`PersistenceJob` đi qua normal worker có queue/deadline hữu hạn, không giữ room lock qua await; live-auth lane từ
+chối các job này. Job còn chờ bị drop/expire thì không thực thi. Commit đã xong nhưng response bị drop phải phục hồi
+bằng cùng match key/revision; không rollback giả một commit đã durable. Current positive, busy/full/cancel/expiry,
+revoke-before-execution và dropped-response retry có DB tests. API này chỉ dành cho trusted service, không public wire.
+Channel preference seam luôn dùng player/token đã bound, kiểm lại DB và frontend generation sau await; chưa tự nối
+vào UI hoặc packet lựa chọn của phòng.
+
+CLI `match-history-account` và `match-history-room` đọc lịch sử theo filter với limit1–100, không cấp thưởng hoặc sửa
+kết quả bằng thao tác admin. Luôn thưởng0; EXP, level, tiền, inventory/shop và ledger tiền tệ thuộc giai đoạn sau.
+**Chưa nghiệm thu M6:** còn nối worker vào Start/result/cancel/EOF/shutdown và lưu/khôi phục lựa chọn trong phòng;
+native KR một trận rồi login lại, DB bận/kill theo chính luồng phục vụ, reward0 trên client phải kiểm trước đóng mốc.
+
 <a id="peer-events"></a>
 ### Đồng bộ trap/death qua KR170 — CP029
 

@@ -357,6 +357,8 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 <a id="rust-movement-floor"></a><a id="rust-movement-và-floor-pickup--cp237--rust-m3-partial--kre-074"></a> [→ UDP, peer, movement và stale fences](protocol/udp-peer.md#rust-movement-floor)
 <a id="rust-bombs"></a><a id="rust-hai-owner-bom-và-deadline-ticket--cp238--rust-m3-partial"></a> [→ Bom, serial, nổ và capacity](protocol/bombs.md#rust-bombs)
 <a id="rust-terrain"></a><a id="rust-boundedterrainrevealba-basicitems--cp239--m3partial"></a> [→ Terrain, block và cascade](protocol/terrain.md#rust-terrain)
+<a id="rust-match-store-backend"></a> [→ Backend lịch sử trận, preference và giới hạn M6](protocol/life-results.md#rust-match-store-backend)
+
 <a id="rust-life-results"></a><a id="rust-report-derived-life-kết-quả-và-reset--cp240--m3-partial"></a> [→ Trap, death, cứu, kết quả và reset](protocol/life-results.md#rust-life-results)
 <a id="rust-return-cleanup"></a><a id="rust-active-host-eof-với-bom-chờ-forfeit-và-về-phòng--cp241--m3-partial"></a> [→ Trap, death, cứu, kết quả và reset](protocol/life-results.md#rust-return-cleanup)
 <a id="rust-m3-acceptance"></a><a id="rust-m3-battle-basic-hai-client-nghiệm-thu-có-giới-hạn--cp242"></a> [→ Authority, phạm vi service và ranh giới Rust](protocol/rust-boundary.md#rust-m3-acceptance)

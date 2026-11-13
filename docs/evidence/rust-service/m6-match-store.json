@@ -1,0 +1,82 @@
+{
+  "schema": "kre-rust-match-store-v1",
+  "checkpoint": "CP292",
+  "source": "design",
+  "status": "design",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391",
+  "canonical": "docs/protocol/life-results.md#rust-match-store-backend",
+  "acceptance": "docs/PLAN.md#phase1-acceptance",
+  "decision": "Backend/worker lát M6 đã kiểm bằng SQLite và process controls; M6 vẫn mở. Chưa nối commit-before-native-result, lựa chọn nhân vật vào room hoặc native relogin sau persistence.",
+  "implementation": {
+    "schema": 3,
+    "migration": "rust/crates/kr-service/migrations/0003_match_history.sql",
+    "match_key": "boot_epoch/room_session/room_id/room_generation/round",
+    "transaction": "begin_match snapshots account/player/slot/character/team/map/time before playable publication. finish_match atomically records all outcomes/exits/reason/time and zero reward; duplicate normalized snapshot exact equals, conflicting content rejects.",
+    "startup": "begin_instance atomically advances epoch/revokes sessions/cancels unfinished matches as server_restart+cancelled+unknown exit. Does not invent wins for unfinished rounds.",
+    "preference": "Session-owned player preference, revision CAS and exact transition retry. Schema does not grant character entitlement/stats; serving choices must authorize supported keys.",
+    "worker": "PersistenceJob on bounded normal worker; execution-UTC, queue expiry/cancellation/Busy, dropped committed reply recovered by same key. Live-auth lane refuses persistence jobs. Channel preference API uses owned player/token plus post-await DB/frontend-generation check, normal persistence lane separated from live auth.",
+    "cli": "match-history-account and match-history-room are trusted local read APIs; no manual grant or match-result mutation endpoint."
+  },
+  "checks": {
+    "workspace_tests": 170,
+    "workspace": "local/research/codex/m6-combined-workspace-tests-r1.txt",
+    "fmt": "local/research/codex/m6-combined-fmt-r1.txt",
+    "clippy": "local/research/codex/m6-combined-clippy-r1.txt",
+    "build": "local/research/codex/m6-combined-build-r1.txt",
+    "isolated_root": "local/research/codex/m6-store-retained-r3",
+    "isolated_tests": 31,
+    "test_binary_sha256": "3a2b6b2b0961392ec74d97085d0253d3d4d25ca6f0caace2f543342d894e42e1",
+    "source_frozen": true,
+    "raw_files": 118,
+    "duration_s": 56.909583847,
+    "remaining_pids": [],
+    "retained_databases": 28,
+    "process_controls": "Two actual SIGKILL controls after start-only commit and after outcome commit, retained DB/readback/control.json. Complete outcome survives; incomplete match cancels once at restart.",
+    "verification": "local/research/codex/m6-store-bridge-retained-verification.json",
+    "native_schema2_copy_upgrade": "local/research/codex/m6-native-db-upgrade-r3/verification.json",
+    "admin_binary_sha256": "af2ead62c6f78ba3037663b7e58f01dc31dc8dd91c978c791a7a9f3885f6dc6a"
+  },
+  "retained_failures": [
+    {
+      "path": "local/research/codex/m6-match-store-account-regression-r1.txt",
+      "result": "Old migration test hardcoded target version2; schema3 returned3. Updated to SCHEMA_VERSION, preserving explicit future/old2 corruption tests; mutex poison follow-ons are same failed test process, not independent backend defects."
+    },
+    {
+      "path": "local/research/codex/m6-match-store-crash-tests-r1.txt",
+      "result": "Test helper private Temp path visibility compilation failure; corrected test-only visibility, no runtime behavior change."
+    },
+    {
+      "path": "local/research/codex/m6-persistence-worker-tests-r1.txt",
+      "result": "Revocation test used stale UTC captured before worker advanced durable clock. Store correctly returned ClockRollback; changed test admin timestamp to execution UTC. Isolated worker retry/revoke test passed."
+    },
+    {
+      "path": "local/research/codex/m6-native-db-upgrade-r1",
+      "result": "Precondition refused source with SQLite sidecar present; no copy/mutation."
+    },
+    {
+      "path": "local/research/codex/m6-native-db-upgrade-r2",
+      "result": "Same refusal for source with zero-byte read-only-created WAL. Use exact already frozen quiescent source copy for R3; no WAL pair guessed/copied or old raw modified."
+    }
+  ],
+  "limits": [
+    "All new evidence is design/method=test, real SQLite/KDF/worker/sockets/process controls. No new native KR result/persistence/preference claim.",
+    "Caller must retain the same stable start/outcome event key/time/snapshot across retries. Storage idempotency does not itself prove serving has committed before a wire result.",
+    "Preference numbers are internal product data, not entitlement/stats/wire support. Current KR round catalog supports0/1 only; other keys must remain rejected by serving.",
+    "No balances,EXP,levels,inventory,shop or nonzero reward. Schema only zero reward records; broad economy remains outside phase1.",
+    "Schema3 requires new binary. No automatic downgrade/destructive rollback; operational backup/restore/upgrade rollback remains M8.",
+    "Restart backend cancels running rows; actual room/start/outcome/disconnect/shutdown integration and native relogin acceptance remain next work."
+  ],
+  "reuse": {
+    "current": [
+      "docs/PLAN.md#phase1-acceptance",
+      "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "docs/protocol/auth-session.md#rust-account-backend",
+      "docs/protocol/auth-session.md#rust-account-worker",
+      "docs/protocol/life-results.md",
+      "docs/evidence/owner-directives/phase1-scope-decisions.json"
+    ],
+    "direct": "Existing Store transactions/schema validation/clock/session fences/KDF, bounded Worker and real SQLite test infrastructure. Preserve existing native authority/result policy; backend decisions are company design.",
+    "old": "CP213 architecture/source reuse and existing KR runtime rank/reset contracts retained; no new legacy repo code, VN opcodes/authority, client modifications or broad RE.",
+    "avoids": "Backend/DB work proceeds independently of map/item RE. No new wire inferred or fake ACK introduced."
+  }
+}

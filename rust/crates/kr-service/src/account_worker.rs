@@ -120,7 +120,33 @@ enum AuthorizationTime {
     ExecutionUtc,
 }
 
+/// Trusted service persistence jobs. Callers retain the exact snapshot/revision
+/// when retrying Busy or a lost response; this is not a client-facing API.
+pub enum PersistenceJob {
+    BeginMatch(accounts::MatchStart),
+    FinishMatch(accounts::MatchKey, accounts::MatchFinish),
+    Character {
+        token: Token,
+        player: i64,
+    },
+    SelectCharacter {
+        token: Token,
+        player: i64,
+        character: u16,
+        expected_revision: i64,
+    },
+}
+pub enum PersistenceResult {
+    Match(accounts::MatchRecord),
+    Character(accounts::CharacterPreference),
+}
+
 enum Command {
+    Persist {
+        job: PersistenceJob,
+        deadline: Instant,
+        reply: oneshot::Sender<Result<PersistenceResult>>,
+    },
     BeginInstance {
         reply: oneshot::Sender<Result<i64>>,
     },
@@ -258,6 +284,22 @@ impl Drop for Worker {
     }
 }
 impl Client {
+    /// Bounded nonblocking admission. Blocking transactions run only on the
+    /// dedicated normal worker, never on the live-authorization lane or room lock.
+    /// Dropping queued work cancels it; an already committed event is durable and
+    /// must be recovered by the same match key/preference revision, not a new key.
+    pub fn try_persist(&self, job: PersistenceJob) -> Result<Pending<PersistenceResult>> {
+        let (reply, rx) = oneshot::channel();
+        self.submit(Command::Persist {
+            job,
+            deadline: Instant::now() + self.queue_ttl,
+            reply,
+        })?;
+        Ok(Pending {
+            reply: Some(rx),
+            handoff: None,
+        })
+    }
     pub(crate) fn try_begin_instance(&self) -> Result<Pending<i64>> {
         let (reply, rx) = oneshot::channel();
         self.submit(Command::BeginInstance { reply })?;
@@ -441,6 +483,51 @@ fn deliver_login(
 fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> Result<()> {
     while let Some(command) = commands.blocking_recv() {
         match command {
+            Command::Persist {
+                job,
+                deadline,
+                reply,
+            } => {
+                if live {
+                    let _ = reply.send(Err(Error::InvalidInput));
+                    continue;
+                }
+                if reply.is_closed() {
+                    continue;
+                }
+                if Instant::now() >= deadline {
+                    let _ = reply.send(Err(Error::QueueExpired));
+                    continue;
+                }
+                let now = std::time::SystemTime::now()
+                    .duration_since(std::time::UNIX_EPOCH)
+                    .ok()
+                    .and_then(|t| i64::try_from(t.as_secs()).ok())
+                    .ok_or(Error::Backend(accounts::Error::ClockRollback));
+                let result = now.and_then(|now| {
+                    match job {
+                        PersistenceJob::BeginMatch(start) => {
+                            store.begin_match(&start, now).map(PersistenceResult::Match)
+                        }
+                        PersistenceJob::FinishMatch(key, finish) => store
+                            .finish_match(&key, &finish, now)
+                            .map(PersistenceResult::Match),
+                        PersistenceJob::Character { token, player } => store
+                            .character_preference(&token, player, now)
+                            .map(PersistenceResult::Character),
+                        PersistenceJob::SelectCharacter {
+                            token,
+                            player,
+                            character,
+                            expected_revision,
+                        } => store
+                            .select_character(&token, player, character, expected_revision, now)
+                            .map(PersistenceResult::Character),
+                    }
+                    .map_err(Error::Backend)
+                });
+                let _ = reply.send(result);
+            }
             Command::BeginInstance { reply } => {
                 let result = if live {
                     Err(Error::InvalidInput)

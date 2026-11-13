@@ -10,31 +10,48 @@ fn admin() -> Admin<'static> {
         reason: "isolated backend acceptance",
     }
 }
-struct Temp(std::path::PathBuf);
+pub(super) struct Temp(pub(super) std::path::PathBuf, bool);
 impl Temp {
-    fn new() -> Self {
-        let path = std::env::temp_dir().join(format!(
-            "kr-store-{}-{}",
-            std::process::id(),
-            NEXT.fetch_add(1, Ordering::Relaxed)
-        ));
+    pub(super) fn new() -> Self {
+        let retained = std::env::var_os("KR_ACCOUNT_STORE_TEST_RAW").map(std::path::PathBuf::from);
+        if let Some(parent) = &retained {
+            let meta = std::fs::symlink_metadata(parent).unwrap();
+            assert!(meta.is_dir() && meta.permissions().mode() & 0o077 == 0);
+        }
+        let case = std::thread::current()
+            .name()
+            .unwrap_or("unnamed")
+            .rsplit("::")
+            .next()
+            .unwrap()
+            .to_owned();
+        let path = retained
+            .clone()
+            .unwrap_or_else(std::env::temp_dir)
+            .join(format!(
+                "kr-store-{}-{}-{case}",
+                std::process::id(),
+                NEXT.fetch_add(1, Ordering::Relaxed)
+            ));
         std::fs::create_dir(&path).unwrap();
         std::fs::set_permissions(&path, fs::Permissions::from_mode(0o700)).unwrap();
-        Self(path)
+        Self(path, retained.is_some())
     }
     fn db(&self) -> std::path::PathBuf {
         self.0.join("accounts.sqlite")
     }
-    fn store(&self) -> Store {
+    pub(super) fn store(&self) -> Store {
         Store::open(&self.db()).unwrap()
     }
 }
 impl Drop for Temp {
     fn drop(&mut self) {
-        let _ = std::fs::remove_dir_all(&self.0);
+        if !self.1 {
+            let _ = std::fs::remove_dir_all(&self.0);
+        }
     }
 }
-fn fresh() -> (Temp, Store, Player) {
+pub(super) fn fresh() -> (Temp, Store, Player) {
     let temp = Temp::new();
     let mut s = temp.store();
     s.begin_instance(&admin(), 100).unwrap();
@@ -371,9 +388,11 @@ fn migration_reopen_future_checksum_unknown_database_and_permissions() {
     drop(temp.store());
     drop(temp.store());
     let db = Connection::open(temp.db()).unwrap();
-    db.pragma_update(None, "user_version", 3).unwrap();
+    db.pragma_update(None, "user_version", SCHEMA_VERSION + 1)
+        .unwrap();
     assert!(matches!(Store::open(&temp.db()), Err(Error::Schema)));
-    db.pragma_update(None, "user_version", 2).unwrap();
+    db.pragma_update(None, "user_version", SCHEMA_VERSION)
+        .unwrap();
     db.execute("UPDATE schema_migrations SET sha256=?1", ["0".repeat(64)])
         .unwrap();
     assert!(matches!(Store::open(&temp.db()), Err(Error::Schema)));
@@ -622,7 +641,7 @@ fn schema1_upgrade_preserves_all_old_account_session_profile_audit_data_and_old_
     let version: i64 = db
         .pragma_query_value(None, "user_version", |r| r.get(0))
         .unwrap();
-    assert_eq!(version, 2);
+    assert_eq!(version, i64::from(SCHEMA_VERSION));
     let idle: (Option<i64>, Option<i64>) = db
         .query_row(
             "SELECT idle_timeout_seconds,last_seen_at FROM sessions WHERE id=6",
@@ -781,4 +800,68 @@ fn sampled_live_login_keeps_rollback_and_credential_reset_fences() {
         store.issue_session_clock("alice", PASSWORD, 60, None, &mut || Ok(104)),
         Err(Error::InvalidCredentials)
     ));
+}
+
+#[test]
+fn schema2_upgrade_preserves_idle_sessions_identity_and_rejects_old_corruption_atomically() {
+    let _serial = SERIAL.lock().unwrap();
+    fn schema2(db: &mut Connection) {
+        legacy_idle_fixture(db);
+        db.execute_batch(MIGRATION_IDLE).unwrap();
+        db.execute(
+            "INSERT INTO schema_migrations VALUES(2,?1)",
+            [hex(&Sha256::digest(MIGRATION_IDLE.as_bytes()))],
+        )
+        .unwrap();
+        db.pragma_update(None, "user_version", 2).unwrap();
+        db.execute(
+            "UPDATE sessions SET idle_timeout_seconds=60,last_seen_at=110",
+            [],
+        )
+        .unwrap();
+    }
+    let mut db = Connection::open_in_memory().unwrap();
+    schema2(&mut db);
+    let before = old_idle_data(&db);
+    Store::migrate(&mut db).unwrap();
+    assert_eq!(old_idle_data(&db), before);
+    assert_eq!(
+        db.query_row(
+            "SELECT idle_timeout_seconds,last_seen_at FROM sessions",
+            [],
+            |r| Ok((r.get::<_, i64>(0)?, r.get::<_, i64>(1)?))
+        )
+        .unwrap(),
+        (60, 110)
+    );
+    assert_eq!(
+        db.pragma_query_value::<i32, _>(None, "user_version", |r| r.get(0))
+            .unwrap(),
+        SCHEMA_VERSION
+    );
+    let mut db = Connection::open_in_memory().unwrap();
+    schema2(&mut db);
+    db.execute_batch("DROP INDEX session_idle_expiry").unwrap();
+    assert_eq!(Store::migrate(&mut db), Err(Error::Schema));
+    assert_eq!(
+        db.pragma_query_value::<i32, _>(None, "user_version", |r| r.get(0))
+            .unwrap(),
+        2
+    );
+    assert!(db.prepare("SELECT id FROM matches").is_err());
+    let mut db = Connection::open_in_memory().unwrap();
+    schema2(&mut db);
+    let before = old_idle_data(&db);
+    let pages: i64 = db
+        .pragma_query_value(None, "page_count", |r| r.get(0))
+        .unwrap();
+    db.pragma_update(None, "max_page_count", pages).unwrap();
+    assert_eq!(Store::migrate(&mut db), Err(Error::Storage));
+    assert_eq!(old_idle_data(&db), before);
+    assert_eq!(
+        db.pragma_query_value::<i32, _>(None, "user_version", |r| r.get(0))
+            .unwrap(),
+        2
+    );
+    assert!(db.prepare("SELECT id FROM matches").is_err());
 }

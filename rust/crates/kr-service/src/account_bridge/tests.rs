@@ -1670,3 +1670,75 @@ fn restart_rebinds_public_port_but_old_pin_capability_scope_and_route_cannot_aut
         w.shutdown().await.unwrap();
     });
 }
+
+#[test]
+fn character_preference_is_bound_to_current_channel_owner_revision_and_normal_worker_not_live_lane()
+{
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, a, b) = Temp::new();
+    rt().block_on(async {
+        let w = worker(&temp).await;
+        let live = Worker::open_live(temp.0.join("accounts.sqlite"), 4, Duration::from_secs(1))
+            .await
+            .unwrap();
+        let bridge = Bridge::new(w.client(), 2, Duration::from_secs(60))
+            .unwrap()
+            .with_live_authorization(live.client());
+        let mut channels = Vec::new();
+        for (player, name, connection) in [(&a, "Alice", 3), (&b, "Bob", 4)] {
+            let grant = grant(&w, name).await;
+            let launch = bridge
+                .issue(&grant.token, player.player_id, PEER)
+                .await
+                .unwrap();
+            let body = login_body(launch.token().expose_secret(), PEER);
+            launch.delivered();
+            let login = bridge.login(&body, PEER, connection + 10).await.unwrap();
+            let body = channel_body(player, login.echo);
+            login.redirected().unwrap();
+            channels.push(bridge.channel(&body, PEER, connection).await.unwrap());
+        }
+        assert_eq!(
+            channels[0].character_preference().await.unwrap().revision,
+            0
+        );
+        let selected = channels[0].select_character(1, 0).await.unwrap();
+        assert_eq!(
+            (
+                selected.player_id,
+                selected.character_key,
+                selected.revision
+            ),
+            (a.player_id, 1, 1)
+        );
+        assert_eq!(channels[0].select_character(1, 0).await.unwrap(), selected);
+        assert_eq!(
+            channels[1]
+                .character_preference()
+                .await
+                .unwrap()
+                .character_key,
+            0
+        );
+        channels[0].select_character(0, 1).await.unwrap();
+        assert!(matches!(
+            channels[0].select_character(1, 0).await,
+            Err(Error::Backend(account_worker::Error::Backend(
+                crate::accounts::Error::Conflict
+            )))
+        ));
+        temp.store().revoke(&admin(), a.account_id, now()).unwrap();
+        assert!(channels[0].select_character(1, 2).await.is_err());
+        assert_eq!(
+            channels[1]
+                .character_preference()
+                .await
+                .unwrap()
+                .character_key,
+            0
+        );
+        drop(channels);
+        live.shutdown().await.unwrap();
+        w.shutdown().await.unwrap();
+    });
+}
