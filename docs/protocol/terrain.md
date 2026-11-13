@@ -528,3 +528,36 @@ native consumer. Getter emulation trên snapshot tách khỏi runtime; log serve
 **Giới hạn:** ExVillage01 và ba item nền, không sáu map ladder hoàn chỉnh, mọi item hoặc mọi nhân vật.
 Native item trên sparse roster, maximum gameplay tới9, native EOF của lát mới và nội dung khác chưa có proof mới;
 source controls không thay thế native. M8 còn Internet transport mới, tải và vận hành. Không mở lại K6c/K7.
+
+
+<a id="rust-selected-map-terrain"></a>
+## Terrain riêng theo map được chọn và lát Forest07
+
+[Ma trận, raw/hash, recipe và giới hạn](../evidence/rust-service/g1-map-terrain.json) giữ bằng chứng của lát này.
+`fixed_room.map_choices[*].terrain` là tùy chọn cùng policy item nền đã có. Mỗi spec kiểm map payload SHA của
+profile pack và hash frame map/start của chính lựa chọn đó. Root `terrain`, nếu cùng được khai, phải trùng choice0;
+không bắt buộc lặp spec ở root. Những hash này kiểm input đồng bộ, không chứng nhận dữ liệu operator là server gốc.
+
+Phòng mới clone seed của choice0. Current Idle host chọn96 thì candidate room thay terrain, kết thúc claims cũ và
+xóa last blast; sau reservation đầy đủ mới công bố model cùng selected map, floor catalog và revision. Hàng đợi đầy
+không đổi nửa map. Choice không terrain xóa shadow cũ. Chọn lại cùng index vẫn có revision mới để chặn batch117 cũ.
+Từng phòng giữ state riêng; Start của vòng mới nạp seed/catalog/stat hiện hành, không tái dùng clearance map trước.
+Unknown tile không tự chuyển thành floor; spec có ô chưa phân loại bị từ chối trước bind.
+
+**Forest07 có footprint đa ô.** Profile tĩnh từng ô đã bỏ sót năm ô chặn quanh `Well00`: anchor ở row12/column12,
+vùng thực tế là row11..12/column12..14. Hai client native với binary đã nghiệm thu và terrain tắt xác nhận cùng
+195flags. Đây là sửa ngoại suy candidate, không sửa pack hoặc exporter; mẫu dữ liệu static class1 được đối chiếu
+với vùng chặn thực tế. Không áp footprint3×2 này cho mọi object có tên Static hoặc mọi map.
+
+Lát gameplay mới dùng tám account KR/Wine, từng spawn pack hiện hành và terrain riêng của Forest07. Slot6 gần giếng
+đi bằng phím thật, phá thùng, nhặt Roller ẩn đã cấu hình và tăng speed5→6 trên tám view. Sau actual root row11/column11,
+power1, cả sáu ô giếng vẫn chặn trong khi thùng ở10,11 và12,11 bị phá. Hai vòng có tất cả195flags trước/sau18blast,
+reader159/158 đầy đủ, hai rank/reset và baseline vòng2 đúng. So geometry bằng kernel Python độc lập từ actual118;
+không dùng log Rust hay encoder tự sinh làm oracle. Getter emulation trên snapshot tách khỏi native runtime.
+
+Roster2/4 có route riêng phá thùng và nhặt item ở11,2, hai kết quả/reset và baseline stat mới trên mọi view.
+
+**Phạm vi còn thiếu:** route cạnh giếng chỉ một hướng/power1 với roster8; không suy mọi sparse roster hoặc toàn bộ map đã đo.
+Một Roller ẩn cố định là policy thử nghiệm, không phục hồi phân phối drop,
+trọng số ItemAttr hoặc mọi item trong bảng Forest07. Catalog fallback Factory07 chưa có terrain/native mới ở run này.
+Sáu map/nhóm item/nhân vật và M8 giữ acceptance riêng; không tự đóng G1 hoặc giai đoạn1 từ lát này.

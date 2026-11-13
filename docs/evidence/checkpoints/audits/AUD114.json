@@ -1,0 +1,86 @@
+{
+  "id": "AUD114",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-g1-selected-map-terrain-forest-slice"
+  ],
+  "completed_through": "CP298",
+  "recorded_utc": "2026-11-13T20:43:08.270199+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/g1-map-terrain.json",
+    "docs/protocol/terrain.md",
+    "docs/protocol/load-phase.md",
+    "docs/content/tile-semantics.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-service/src/map_profile.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "rust/crates/kr-service/src/terrain.rs",
+    "local/research/codex/g1-map-terrain-source-r1/reuse.json",
+    "local/research/codex/g1-terrain-players-delivery-receipt.json",
+    "local/research/codex/g1-forest-seed-native-r2/forest-seed-native-verification.json",
+    "local/research/codex/g1-forest-seed-native-r2/forest-seed-getter-verification.json",
+    "local/research/codex/g1-forest-terrain-native-r3/forest-terrain-native-verification.json",
+    "local/research/codex/g1-forest-terrain-native-r3/forest-terrain-getter-verification.json",
+    "local/research/codex/g1-forest-terrain-native-r3/manual-ui-review.json",
+    "local/research/codex/g1-map-terrain-config-controls-r1/verification.json",
+    "local/research/codex/g1-map-terrain-tcp-r1/result.json",
+    "local/research/codex/g1-native59-source-r1/reuse.json",
+    "local/research/codex/g1-forest-terrain-native-r3/native59-observation.json",
+    "local/research/codex/g1-forest-2-native-r1/forest-roster-native-verification.json",
+    "local/research/codex/g1-forest-2-native-r1/forest-roster-getter-verification.json",
+    "local/research/codex/g1-forest-2-native-r1/manual-ui-review.json",
+    "local/research/codex/g1-forest-4-native-r1/forest-roster-native-verification.json",
+    "local/research/codex/g1-forest-4-native-r1/forest-roster-getter-verification.json",
+    "local/research/codex/g1-forest-4-native-r1/manual-ui-review.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence rồi so source/raw đã seal. Native2/4 có route B/hidden11,2/stat và hai kết quả/reset, cùng binary với8. Per-choice terrain kiểm payload/map/start pins, choice0/root agreement, no shadow inheritance, all-queue commit và map revision;193workspace/source tests và synthetic TCP/SQLite cùng5config controls tách native. Native2seed exact PR401 chỉ đo195flags/Well footprint, năm candidate ground cells thực bị chặn. Native8 WIP per-map source có initial96, hai clock/name/spawn/stat,10actual actor6 roots và8finishing roots; native165/full12/stat5→6/all8view,159/full39/entities và158/full13/IDs, hai rank/reset. Toàn195flags trước/sau18blast so Python kernel từ actual118, ownerprojection0 chỉ geometry. Well3x2 giữblocked ở actual adjacent power1 trong khi hai thùng cạnh clear; không suy everydirection/world engine. Getter emulation riêng, UI chỉ corroboration. Drop1Roller là design fixture, không original distribution/fullmap acceptance. Giữ failed team-coordinate/native seed run, argument-only rejection, probe96 exhaustion ở failed terrain r1 và source-test failed expectation; raw/hash/cleanup và PR401 receipt đã đối chiếu.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Map selection chỉ thay packet/floor và từ chối terrain, dễ giữ shadow map cũ nếu nối chưa đủ.",
+      "correction": "Mỗi choice có seed riêng/hash binding, no terrain choice xóa seed cũ, model/selection/floor/revision atomic; source queue/reset/sibling và native per-map route.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-terrain.json",
+        "docs/protocol/terrain.md#rust-selected-map-terrain",
+        "rust/crates/kr-service/src/map_profile.rs",
+        "rust/crates/kr-service/src/room_io.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Phân loại mỗi ô tĩnh Forest07 có thể coi năm ô quanh Well00 là floor.",
+      "correction": "Native hai view xác nhận vùng3x2 ở row11..12/col12..14; overlay thử nghiệm pin source/limits, không sửa exporter/pack. Native adjacent blast giữblocked trong bounded case.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-terrain.json",
+        "docs/protocol/terrain.md#rust-selected-map-terrain",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Một route/item cấu hình hoặc synthetic controls có thể bị gọi là Forest07/G1 mở hoàn chỉnh.",
+      "correction": "Native gameplay chỉ8, seed2 riêng; drop cố định một Roller design, mỗi nhóm nội dung/roster giữ acceptance riêng. Getter và Python không thay KR native.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-terrain.json",
+        "docs/protocol/terrain.md#rust-selected-map-terrain",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "G1 còn sáu map đầy đủ2..8, drop/item và nhân vật. Forest07 có seed2client và bounded gameplay2/4/8 với một Roller cấu hình; không đóng G1/giai đoạn1.",
+    "Phân phối drop map kết hợp ItemAttr và các item chưa đo chưa được phục hồi; policy mới phải ghi design, unknown item giữ tắt.",
+    "Well00 mới đo footprint và một hướng/power1 bên cạnh; không mọi direction/loại tile/authority. Patrit/Village/Camp/Tomb còn unknown riêng; Factory07 còn terrain/drop mới.",
+    "Village10 và Tomb12 có6spawn; acceptance2..8 chưa được owner đổi. Không ép spawn/reuse tọa độ hoặc tự giảm scope.",
+    "Native59 đã tái hiện ở Forest8-r2; passive trace r3 không tái hiện, issue403 vẫn open và không có fix/ACK policy.",
+    "M8 còn Internet thật của transport xác thực mới, 50 người/8 phòng, vận hành/backup-restore/đóng gói và soak."
+  ]
+}

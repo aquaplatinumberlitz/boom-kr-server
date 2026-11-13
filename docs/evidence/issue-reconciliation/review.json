@@ -507,11 +507,11 @@
         "KR-S001",
         "KR-S002"
       ],
-      "known": "Các mốc đã nghiệm thu và phạm vi từng lát tra tại PLAN; nhóm kim/cứu có native và đang bàn giao.",
+      "known": "Các mốc và phạm vi đã nghiệm thu tra tại PLAN; terrain riêng theo map và Forest07 có lát native mới.",
       "remaining": "G1 và M8 còn theo acceptance giai đoạn 1; không giữ thứ tự việc thứ hai trong issue.",
-      "next_test": "Theo Bảng điều hành PLAN; tiếp terrain/item nền sau bàn giao kim/cứu.",
+      "next_test": "Theo Bảng điều hành PLAN; không giữ lịch công việc thứ hai trong issue.",
       "acceptance": "CP213surveyaccepted; currentRustepicimplementationM0–M7 theoPLAN, từngmilestonecóscope/nativeacceptance/lifecycle/persistence theo nguồnchuẩn. Chỉ rútPythonservingphầntươngứngsauRustacceptance; khôngcoiplanning/raw/gatecũ làfullservice.",
-      "reason": "Rà lại nguồn chuẩn sau PR396; bỏ thứ tự M5b/N1R-b/M6 đã cũ khỏi mô tả điều phối.",
+      "reason": "Rà lại nguồn chuẩn sau PR399/401 và công bố CP298; G1/M8 còn mở.",
       "sources": [
         "docs/PLAN.md#dashboard",
         "docs/PLAN.md#phase1-acceptance",
@@ -619,7 +619,7 @@
         330
       ],
       "successors": [],
-      "reviewed_utc": "2026-11-13T18:12:18.467204+00:00"
+      "reviewed_utc": "2026-11-13T20:49:07.374349+00:00"
     },
     {
       "number": 369,
@@ -804,17 +804,17 @@
     {
       "number": 397,
       "kre": "KRE-074",
-      "classification": "in_progress",
+      "classification": "completed",
       "features": [
         "KR-F006",
         "KR-F008",
         "KR-F009"
       ],
-      "known": "G1 lát kim/cứu đã có code, kiểm source và native Wine trong phạm vi contract; checkpoint/PR đang được bàn giao.",
-      "remaining": "Còn kiểm exact head và CI trước tích hợp PR. Toàn bộ G1 theo acceptance riêng tại PLAN.",
-      "next_test": "Sau bàn giao nhóm này, tiếp terrain/item nền theo PLAN; không lặp consumer kim/cứu đã đủ.",
+      "known": "Kim/cứu Rust đạt lát acceptance đã ghi; PR399 đã merge sau exact-head, CI và sửa test thời gian có provenance riêng.",
+      "remaining": "G1 tổng thể còn theo acceptance PLAN; không suy mọi chức năng KR-F006/008/009 đã hoàn chỉnh.",
+      "next_test": "Theo Bảng điều hành PLAN; không lặp kim/cứu đã nghiệm thu.",
       "acceptance": "docs/PLAN.md#phase1-acceptance, lát3 kim/cứu theo wire Python/KR đã đo; không tự đóng G1.",
-      "reason": "Đối chiếu thủ công native TCP/consumer, getter emulation và source; không suy từ process hoặc log server.",
+      "reason": "Đối chiếu CP296/AUD112 và receipt PR399; lịch sử complete giữ nguyên.",
       "sources": [
         "docs/PLAN.md#phase1-acceptance",
         "docs/protocol/life-results.md#rust-needle-rescue",
@@ -823,10 +823,91 @@
       "evidence": [
         "docs/evidence/rust-service/g1-life-actions.json"
       ],
+      "prs": [
+        399
+      ],
+      "reviewed_utc": "2026-11-13T20:49:07.374349+00:00"
+    },
+    {
+      "number": 400,
+      "features": [
+        "KR-F004",
+        "KR-F005",
+        "KR-F006",
+        "KR-F007"
+      ],
+      "classification": "completed",
+      "known": "Terrain và Bomb/Fire/Roller theo account roster 2/4/8 trên ExVillage01 đã nghiệm thu trong phạm vi contract.",
+      "remaining": "Sáu map, item khác, nhân vật và vận hành theo acceptance riêng.",
+      "next_test": "Theo Bảng điều hành PLAN.",
+      "reason": "CP297/AUD113 và PR401 đã merge exact head, raw/history/CI.",
+      "sources": [
+        "docs/PLAN.md#phase1-acceptance",
+        "docs/protocol/terrain.md#rust-player-terrain",
+        "docs/RESEARCH.md#gap-rust-selected-map-terrain"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/g1-terrain-players.json"
+      ],
+      "prs": [
+        401
+      ],
+      "kre": "KRE-074",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "successors": [],
+      "reviewed_utc": "2026-11-13T20:49:07.374349+00:00"
+    },
+    {
+      "number": 402,
+      "features": [
+        "KR-F005",
+        "KR-F006",
+        "KR-F007"
+      ],
+      "classification": "in_progress",
+      "known": "Đã công bố CP298: per-choice terrain và route Forest07 roster 2/4/8, một Roller ẩn cấu hình và hai vòng. Chưa merge lát này.",
+      "remaining": "Nội dung/drop/item và các map/roster theo acceptance G1; lỗi 59 giữ issue403 riêng.",
+      "next_test": "Theo Bảng điều hành PLAN; chỉ đo gap còn chặn implementation hoặc acceptance.",
+      "reason": "Lát Forest07 giới hạn không hoàn tất issue terrain/drop cho mọi map.",
+      "sources": [
+        "docs/PLAN.md#phase1-acceptance",
+        "docs/protocol/terrain.md#rust-selected-map-terrain",
+        "docs/RESEARCH.md#gap-rust-selected-map-terrain"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/g1-map-terrain.json"
+      ],
       "prs": [],
-      "reviewed_utc": "2026-11-13T18:12:18.467204+00:00"
+      "kre": "KRE-074",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "successors": [],
+      "reviewed_utc": "2026-11-13T20:49:07.374349+00:00"
+    },
+    {
+      "number": 403,
+      "features": [
+        "KR-S001"
+      ],
+      "classification": "in_progress",
+      "known": "Hai client native gửi 59/body47 trong lượt Forest07 lỗi; caller và semantics chưa rõ. Lượt trace positive không tái hiện.",
+      "remaining": "Cần điều kiện/caller thực trước quyết định protocol; chưa có fix hoặc ACK/ignore policy.",
+      "next_test": "Phép trace có giới hạn tại RESEARCH; không suy đã sửa từ absence.",
+      "reason": "Raw lỗi và positive đã seal; packet 59 chưa được giải quyết.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md#rust-service-gaps"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/g1-map-terrain.json"
+      ],
+      "prs": [],
+      "kre": "KRE-074",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "successors": [],
+      "reviewed_utc": "2026-11-13T20:49:07.374349+00:00"
     }
   ],
-  "as_of_utc": "2026-11-13T18:12:18.467204+00:00",
-  "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
+  "as_of_utc": "2026-11-13T20:49:07.374349+00:00",
+  "limits": "Đối soát issue thủ công có ngày; snapshot là trạng thái lúc chụp, không chứng nhận acceptance hoặc đóng gate."
 }

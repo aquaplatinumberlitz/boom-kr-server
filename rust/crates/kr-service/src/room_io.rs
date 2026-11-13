@@ -523,13 +523,15 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
         None
     } else {
         if map_profile.is_none()
-            || cfg.terrain.is_some()
+            || (cfg.terrain.is_some() && cfg.terrain != cfg.map_choices[0].terrain)
             || cfg.map_profile.as_ref().is_none_or(|pin| {
                 pin.sha256 != cfg.map_choices[0].map_profile.sha256
                     || pin.bytes != cfg.map_choices[0].map_profile.bytes
             })
         {
-            return Err(err("map choices require pack profile and no terrain"));
+            return Err(err(
+                "map choices require matching pack profile and initial terrain",
+            ));
         }
         Some(Arc::new(crate::map_profile::Catalog::load(
             &cfg.map_choices,
@@ -537,6 +539,7 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
             &packets,
             actors,
             cfg.life_actions.needle(),
+            cfg.item_policy.enabled(),
         )?))
     };
     if packets["listing"].payload.len() < 16
@@ -654,7 +657,10 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
         let start = packets.get_mut("start").expect("validated start");
         start.payload = wire::start121_teams(&start.payload, model.fixed_teams())?;
     }
-    model.terrain = terrain;
+    model.terrain = match &maps {
+        Some(catalog) => catalog.choices[0].terrain.clone(),
+        None => terrain,
+    };
     Ok(Arc::new(Mutex::new(Runtime {
         maps,
         selected_map: 0,
@@ -2615,6 +2621,11 @@ impl Session {
                 let index = read_uint(&body[2..], Width::U32).map_err(io::Error::other)? as u32;
                 let chosen = r.maps.as_ref().expect("catalog").select(code, index)?;
                 next.choose_map(member.key)?;
+                next.terrain = r.maps.as_ref().expect("catalog").choices[chosen]
+                    .terrain
+                    .clone();
+                next.pickups.finish();
+                next.last_blast = None;
                 let map = packet(
                     117,
                     r.maps.as_ref().expect("catalog").choices[chosen].bodies[&Template::Map117]

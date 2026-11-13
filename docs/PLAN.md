@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, CP297 / AUD113**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, CP298 / AUD114**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -23,18 +23,17 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, C
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; N1R-b đạt hành vi relay đã đo. Transport xác thực mới trên Internet thật và tải/vận hành còn M8 |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; N1R-b có bằng chứng riêng; vận hành còn M8 |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
-| [G1](#rust-g1) sáu map ladder và item | Adapter, [UI chọn map](protocol/load-phase.md#rust-room-map-selection) và [kim/cứu Rust](protocol/life-results.md#rust-needle-rescue) đạt từng lát; [terrain/item nền roster2/4/8](protocol/terrain.md#rust-player-terrain) đạt ExVillage01; basic Factory07/Village10 | Sáu map đầy đủ2..8 và item/nhân vật theo acceptance |
+| [G1](#rust-g1) sáu map ladder và item | Adapter/UI, kim/cứu, item nền ExVillage01 và terrain theo map đã có từng lát; [Forest07 roster2/4/8](protocol/terrain.md#rust-selected-map-terrain) đạt các route đã đo | Sáu map/drop/item/nhân vật đầy đủ theo acceptance; không suy toàn bộ Forest07 từ một Roller cấu hình |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
 
 1. **G1.** M6 thu hẹp đã đạt acceptance tại [ma trận bằng chứng](evidence/rust-service/m6-journal-serving.json). N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
-   Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Tiếp terrain/drop/item từng map theo acceptance; không đụng `tools/export_map_profile.py`.
+   Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và các route Forest07 roster2/4/8 đã có lát native; tiếp khoảng trống Forest07 rồi Patrit14 và các map còn lại theo acceptance; không đụng `tools/export_map_profile.py`.
    Không lặp M6 đã nghiệm thu, native4/8, roster, account/DB hoặc baseline N1b đã có. M8 theo thứ tự bên dưới.
 2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
-   N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. Packet59 ở một lượt
-   lỗi vẫn chưa rõ nguyên nhân; đếm lỗi trong M8, mở trace thụ động đúng caller/input nếu tái hiện/chặn vận hành.
+   N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. Packet59 đã tái hiện ở một lượt Forest07; [issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ unknown caller/semantics và phép trace có giới hạn, không coi current positive là fix.
 
 Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
@@ -43,7 +42,7 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
 - Direct UDP âm ở hai NAT đổi cổng; N1b không retry. Relay xác thực đã đạt hành vi N1R-b bằng native và runtime
   controls theo ma trận, với [preset phục vụ và ngân sách cổng](OPERATIONS.md). Native mới dùng Wine/LAN cô lập;
   Internet thật cho transport mới, tải, session budget và độ bền vận hành phải kiểm ở M8. Không mở lại K6c/K7.
-  Native59 ở một lượt lỗi chưa rõ nguyên nhân; chưa có contract để ACK/bỏ qua và không claim đã sửa.
+  Native59 đã tái hiện rồi không lặp trong lượt trace/current positive; [gap và bằng chứng](RESEARCH.md#rust-service-gaps) giữ nguyên lỗi trước, chưa có contract để ACK/bỏ qua hoặc claim đã sửa.
 - M7a selection đã đo bốn profile; M7b lifecycle đã đo tám profile cấu hình và contiguous2/4/8. Occupancy chỉ phục hồi
   current/capacity, 20 byte còn lại giữ opaque. Opt-in M7e đã đo roster3/6/sparse và chosen-character Battle; native
   active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; chưa có progression hoặc inventory.

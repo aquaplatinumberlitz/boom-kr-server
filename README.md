@@ -33,11 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP297: terrain và ba item nền đã chạy trên Rust với roster account 2/4/8 người.**
-Bomb/Fire/Roller, hidden reveal, stat theo nhân vật và bom power mới đã được đối chiếu client KR/Wine qua hai vòng
-kết quả/reset. [Contract và giới hạn](docs/protocol/terrain.md#rust-player-terrain),
-[bằng chứng](docs/evidence/rust-service/g1-terrain-players.json). **G1 vẫn mở:** tiếp nội dung sáu map, nhóm item còn lại
-và nhân vật; M8 theo [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP298: Rust đã tách terrain theo lựa chọn map; Forest07 có lát native roster2/4/8.**
+Seed riêng, thùng, một Roller ẩn theo policy thử nghiệm và hai kết quả/reset đã được đối chiếu native.
+Phép đo cũng sửa ngoại suy footprint của giếng3×2. [Contract và giới hạn](docs/protocol/terrain.md#rust-selected-map-terrain),
+[bằng chứng](docs/evidence/rust-service/g1-map-terrain.json). Forest07 và G1 vẫn còn roster/nội dung/drop theo acceptance;
+M8 giữ phạm vi riêng tại [Bảng điều hành](docs/PLAN.md#dashboard).
 
 ## Bắt đầu
 

@@ -43,3 +43,6 @@ CP110 delivery/currentstate update: PR179 merged `8f3ea2f`; #178 đóng sau merg
 #1/#2/#3/#9/#14 cònopen; #178completed, khôngcònPLANactive. CP109snapshotpending/raw đượcpin
 local/cp109-snapshot, khôngsửa complete record. Checker live đãbáo3lệch sauclosure trước refresh;
 loggiữởlocal/return2-visual-r2/github-pending-refresh-check.txt, khôngsửa lời kết đểcheckerpass.
+
+[Đính chính sau CP298](cp298-correction.json) giữ lỗi snapshot cũ và commit công bố đầu tiên.
+Snapshot/review hiện hành đã đối soát PR399/401 và issue402/403; complete record, audit và raw cũ giữ nguyên.
