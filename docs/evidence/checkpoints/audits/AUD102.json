@@ -1,0 +1,78 @@
+{
+  "id": "AUD102",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-companion-transport-foundation"
+  ],
+  "completed_through": "CP286",
+  "recorded_utc": "2026-11-13T11:19:16.062226+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/n1rb-companion-foundation.json",
+    "docs/protocol/udp-peer.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "local/research/codex/n1rb-proxy-native-r5/companion-verification.json",
+    "local/research/codex/n1rb-proxy-native-r5/companion-getter-verification.json",
+    "local/research/codex/n1rb-proxy-native-r5/native/raw-seal.json",
+    "local/research/codex/n1rb-proxy-native-r5/native/cycles/run.json",
+    "local/research/codex/n1rb-source-r1/reuse.json",
+    "local/research/codex/n1rb-dependency-review.json",
+    "rust/crates/kr-tunnel/src/lib.rs",
+    "rust/crates/kr-tunnel/src/proxy.rs",
+    "rust/crates/kr-tunnel/src/tests.rs",
+    "rust/crates/kr-tunnel/examples/native_proxy_lab.rs"
+  ],
+  "method": "Rà README→PLAN→PROTOCOL→RESEARCH→evidence/raw theo nhóm nền companion, không theo toàn N1R-b. Source/149Rusttests chứng minh certificate pin/capability/queue/replay/cleanup transport; native2 static lab dùng existing service binary. Reassemble TCP1526/106reply và compare native Start/stat/terrain/2opposite ranks/reset/Start3; inner loopback packets ở hai đầu nối hub byte hash tới native key/helper/apply.2538copiednative getters bổ sung. Check source/binary/hash/export/namespace cleanup, giữ prelaunch/capture failure và boundary incompleteness; no gate inference.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Nền raw relay dùng IP tuple đầu và tiêu cổng vĩnh viễn; không thể coi là giải spoof/reuse.",
+      "correction": "Chọn standard QUIC DATAGRAM/pin/capability ngoài native wire; foundation và native loopback/payload đã đo. N1R-b ownership/control/reuse/spoof còn mở, không thay source policy prototype ngầm.",
+      "fixed_in": [
+        "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation",
+        "docs/evidence/rust-service/n1rb-companion-foundation.json",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Native exit0/log forwarded hoặc matching encoders có thể bị coi là proof.",
+      "correction": "Independent loopbackPCAP hai đầu/hub hash/native ingress/helper/currentkey/actor,2outcomes/reset/Start3,2538getter vàTCP exact hashes. Unitnegative tách khỏi native. One phase-boundary ingress không helper hoàn tất được giữ riêng.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1rb-companion-foundation.json",
+        "local/research/codex/n1rb-proxy-native-r5/companion-verification.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Inherited capture từ direct UDP không chấp nhận địa chỉ hub; positive client interval che capture fail.",
+      "correction": "R4 exit1 và captureworker failure giữ nguyên; R5 chỉ đổi capture topology đúng hub và đo lại. R2/R3 bị validation trước runtime; không gọi runtime failure hoặc dùng làm acceptance.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1rb-companion-foundation.json",
+        "local/research/codex/n1rb-proxy-native-r5/native/raw-seal.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "M5b/M7e issue snapshot vẫn in-progress dù PR376/379 đã merge; thêm crate có thể bị hiểu là microservice mới.",
+      "correction": "Snapshot/review đồng bộ giao thực; thứ tự vẫn N1R-b. kr-tunnel chạy cạnh client vì payload native không có strongauth; server vẫn một process và Python giữ RE/reference.",
+      "fixed_in": [
+        "docs/evidence/issue-reconciliation/github-snapshot.json",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/RUST_SERVICE_ARCHITECTURE.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "N1R-b vẫn mở: account/channel/room ownership, control cấp route và ACK từng vòng trước153, managed4/8/sparse/departure, reuse/restart và common-IP spoof.",
+    "Foundation/lab route tĩnh không production endpoint. QUIC capability không tự là account/session ownership; loopback proxy không xác thực process local.",
+    "Chỉ native2 Wine/LAN; không Internet/ISP/CGNAT/load/operational claims. G1/M6/M8 theo PLAN.",
+    "R1 preparation và R2/R3 prelaunch failure; R4 captureworker fail dù native interval có positive. R5 một ingress cuối window không helper complete, không claim apply cho nó."
+  ]
+}

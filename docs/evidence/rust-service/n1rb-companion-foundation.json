@@ -1,0 +1,134 @@
+{
+  "schema": "kre-rust-companion-foundation-v1",
+  "checkpoint": "CP286",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/380",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation",
+  "scope": "Bounded transport foundation and static private two-client compatibility control only; N1R-b remains open.",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "wine": "wine-10.0-20260425 (CachyOS)",
+  "environment": "Wine/private virtual LAN/no outside route; each client has a loopback companion and both QUIC links terminate at the isolated lab hub.",
+  "native": {
+    "root": "local/research/codex/n1rb-proxy-native-r5",
+    "verification": "local/research/codex/n1rb-proxy-native-r5/companion-verification.json",
+    "getters": "local/research/codex/n1rb-proxy-native-r5/companion-getter-verification.json",
+    "run_sha256": "8f9ebb5b2b2f764da5f2f2da3a8874cf73f4991249692e03aef535791e6e6d01",
+    "transport_binary_sha256": "8b3cb7d523aa5539f7be48329e9e20937f6b7e87c2b80d1960563eea2568a00a",
+    "service_binary_sha256": "ffe6b813498af73618f9282e6530569e563cab8bee543fd925871f52b81590bf",
+    "source_frozen": true,
+    "returncode": 0,
+    "raw_count": 86,
+    "duration_s": 222.59246314,
+    "TCP_records": 1526,
+    "TCP_replies": 106,
+    "outer_QUIC_packets": 2946,
+    "native_directions": [
+      {
+        "receiver": "A",
+        "ingress": 50,
+        "applies": 49,
+        "changing_by_round": {
+          "1": 3,
+          "2": 3
+        },
+        "uncorroborated_boundary": [
+          {
+            "wire_sha256": "4fbf8ea7e9cbc917bb28e351debf2500aea78a1388b743cb276986552e07a9ca",
+            "ns": 493675558077095,
+            "reason": "Final phase-boundary ingress has source/hub/destination packet joins but no completed native helper observation. No apply claim."
+          }
+        ]
+      },
+      {
+        "receiver": "B",
+        "ingress": 49,
+        "applies": 49,
+        "changing_by_round": {
+          "1": 3,
+          "2": 3
+        },
+        "uncorroborated_boundary": []
+      }
+    ],
+    "getter_checks": 2538,
+    "cleanup": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+  },
+  "implementation": {
+    "crate": "rust/crates/kr-tunnel",
+    "modules": [
+      "src/lib.rs",
+      "src/proxy.rs",
+      "src/tests.rs"
+    ],
+    "lab": "examples/native_proxy_lab.rs",
+    "status": "Implemented/tested experimental foundation, no serving integration.",
+    "transport": "Pinned Quinn QUIC DATAGRAM/rustls/ring; certificate-pinned server, possession capability in a bounded control handshake, zeroized secret, no0RTT auth bypass. Payload255 maximum and per-route64 sequence replay window.",
+    "proxy": "Loopback endpoints retain reverse source socket and unchanged native bytes. Distinct route IDs, bounded16-entry queues/500ms pending, immutable first local tuple; owned child cleanup. Does not authenticate a local process.",
+    "lab_limits": "Static private capabilities/routes with one-use lab admission, trace native payload hashes locally. Not a production endpoint or account/room adapter.",
+    "reason": "Native UDP has no recovered strong sender authentication. A companion can preserve client bytes while using a standard authenticated unreliable transport outside the client. Distinct crate belongs next to player client; kr-wire and original kr-service behavior remain unchanged."
+  },
+  "verification": {
+    "workspace_tests": "local/research/codex/n1rb-foundation-tests-r1.txt",
+    "tests": 149,
+    "fmt": "local/research/codex/n1rb-foundation-fmt-r1.txt",
+    "clippy": "local/research/codex/n1rb-foundation-clippy-r1.txt",
+    "locked_build": "local/research/codex/n1rb-foundation-build-r1.txt",
+    "native": "local/research/codex/n1rb-proxy-native-r5/companion-verification.json",
+    "getters": "local/research/codex/n1rb-proxy-native-r5/companion-getter-verification.json",
+    "dependency_review": "local/research/codex/n1rb-dependency-review.json"
+  },
+  "reuse": {
+    "path": "local/research/codex/n1rb-source-r1/reuse.json",
+    "build_inputs": "local/research/codex/n1rb-source-r1/build-inputs/provenance.json",
+    "direct": "Existing fixed2 native auth/room/life/reset oracle, packet153 endpoints/reverse-socket behavior and passive UDP/capture/getter methods. Service binary from M5b.",
+    "avoids": "No broad peer-grammar decompile, VN port or repeat of N1b. Existing M7e roster and M5b ownership are future integration inputs, not implicitly accepted here."
+  },
+  "retained_failures": [
+    {
+      "root": "local/research/codex/n1rb-proxy-native-r1",
+      "result": "preparation failure before runtime",
+      "reason": "Example binary did not compile yet; partial prepared binary directory retained, no native evidence."
+    },
+    {
+      "root": "local/research/codex/n1rb-proxy-native-r2",
+      "result": "prelaunch rejected",
+      "reason": "Inherited harness bound240 rejected360 before namespace/client/service startup."
+    },
+    {
+      "root": "local/research/codex/n1rb-proxy-native-r3",
+      "result": "prelaunch rejected",
+      "reason": "Recipe game-dir mistakenly followed new experiment root; original copy unchanged. Validation rejected before runtime."
+    },
+    {
+      "root": "local/research/codex/n1rb-proxy-native-r4",
+      "result": "runtime incomplete evidence, exit1 retained",
+      "reason": "Native interval completed two matches/Start3, but inherited UDP capture rejected new hub address and stopped. Not used as the full compatibility control; R5 fixes capture topology and repeats."
+    },
+    {
+      "root": "local/research/codex/n1rb-proxy-native-r5",
+      "result": "one incomplete observation at window boundary",
+      "reason": "A final ingress joins source/hub/destination bytes but has no completed helper observation. Not counted as native apply."
+    }
+  ],
+  "acceptance": {
+    "feature_group": "rust-companion-transport-foundation",
+    "state": "passed_bounded_foundation",
+    "milestone_N1Rb": "open",
+    "not_proven": [
+      "Account/session/channel/room binding of transport capabilities",
+      "Dynamic per-round assignment and acknowledgment before153",
+      "Native managed4/8, sparse/departure survivor and recipient isolation",
+      "Port/key reuse, restart and common-public-IP spoof at serving level",
+      "Internet/ISP/CGNAT, load, packaging and operational defaults"
+    ]
+  },
+  "limits": [
+    "Two known fixed2 account profiles on Wine isolated LAN; static lab capabilities/routes, no serving integration or N1R-b closure.",
+    "Loopback native UDP payload and source tuple causally join through QUIC lab forwarding to native ingress/current-key/actor apply. QUIC encryption is library transport, not recovered KR wire.",
+    "Both result/reset cycles and third Start/clock checked; no third result, no new item/authority or account-lifecycle proof.",
+    "A final ingress at observer phase boundary has no completed helper observation; exact packet joins remain, no apply claim for that ingress.",
+    "Source IP is no remote authentication: production still requires account/connection/member/round ownership, per-member retirement, dynamic proxy controls, reuse/restart/spoof and native4/8.",
+    "No Internet/ISP/CGNAT, load or deployment acceptance from this private LAN control."
+  ]
+}

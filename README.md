@@ -22,7 +22,7 @@ boom-kr-server/
     REFERENCES.md           nguồn RE cũ, provenance và bản đồ migration
     evidence/               metadata/hash; không chứa binary hoặc decompile
   tools/                    harness, probe và kiểm tra artifact/docs
-  rust/                     kr-wire + kr-service; lát cắt Rust từng bước
+  rust/                     kr-wire + kr-service; kr-tunnel companion thử nghiệm
   server/                   Python serving/RE/reference vẫn giữ
   local/                    raw/copy client/DB/capture; git-ignored
 ```
@@ -33,12 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP285: M5b đã đủ đường account mới và đăng nhập KR sau khi DB/hàng đợi phục hồi.**
-Ba account tạo khi service đang chạy đã chơi hai trận; ca chung nguồn TCP giữ đúng danh tính. Lượt bổ sung xác nhận
-process KR thứ tư đăng nhập mới và nhận hồ sơ DB sau lỗi; CP284 trước đó mới kiểm phục hồi ở backend.
-[Contract/giới hạn](docs/protocol/auth-session.md#rust-db-account-profiles),
-[bằng chứng bổ sung](docs/evidence/rust-service/m5b-native-recovery.json). M5b đạt acceptance giai đoạn 1; relay nhiều
-người, G1, M6 và M8 còn mở. Tiếp N1R-b theo [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP286: đường companion có xác thực đã có phép kiểm tương thích hai client KR thật.**
+UDP giữ nguyên byte qua QUIC tới native consumer; hai kết quả/reset và Start tiếp đã được đối chiếu bằng capture,
+native state và getter. [Phạm vi/giới hạn](docs/protocol/udp-peer.md#rust-authenticated-companion-foundation),
+[bằng chứng](docs/evidence/rust-service/n1rb-companion-foundation.json). Đây là nền transport với route tĩnh trong lab;
+**N1R-b chưa đạt**. Tiếp nối quyền account/phòng, roster bốn/tám người và các ca reuse/restart/spoof theo
+[Bảng điều hành](docs/PLAN.md#dashboard). M5b đã giao PR #379; G1/M6/M8 còn mở.
 Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](docs/HISTORY.md).
 
 ## Bắt đầu

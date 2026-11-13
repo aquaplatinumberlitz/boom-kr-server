@@ -1,0 +1,17 @@
+[package]
+name = "kr-tunnel"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+tokio.workspace = true
+quinn.workspace = true
+rustls.workspace = true
+rcgen.workspace = true
+getrandom.workspace = true
+zeroize.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
