@@ -102,8 +102,8 @@ dịch mới.
   thuộc tính năng riêng của PopTag, không có ID).
 - Không có trong client: chữ nhiệm vụ (script chỉ gọi ID, chữ do server gửi), chữ tiếng Anh cho chuỗi trong exe (exe
   của PopTag vẫn giữ tiếng Hàn), `Help` và mô tả ô map tự tạo (vẫn là tiếng Hàn).
-- Ảnh có chữ chưa ai đụng tới: 1.187 trong 3.038 ảnh nghi có chữ của KR có entry cùng tên trong pack PopTag; chưa so
-  nội dung ảnh.
+- Ảnh có chữ: 1.187 trong 3.038 ảnh nghi có chữ của KR có entry cùng tên trong pack PopTag. Phiên Terra báo 611 mục
+  giống nội dung giải mã và 576 mục khác; kết quả này chưa lưu thành file và chưa ai mở xem ảnh.
 
 **Giới hạn.** Ghép theo ID không chứng minh hai bản cùng nghĩa: cùng ID có thể đổi nội dung sau mười sáu năm. Chưa tách
 được chữ nào của bản Bắc Mỹ gốc, chữ nào do nhóm sửa client viết; trước khi phát hành phải có ý kiến của công ty về
