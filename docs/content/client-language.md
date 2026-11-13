@@ -77,8 +77,9 @@ ra mạng**.
 3. **Font 12×16 nạp được ở build không phải VN.** Bộ font Việt trong gói có ô 12×16; `CxUni.fft` và `CxUniBold.fft`
    của nó trùng từng byte với font client VN. Ba bộ còn lại ô 12×12 như 00967.
 
-**Bản dịch tiếng Anh.** Phiên Codex Terra đã trích chuỗi và ghép theo ID với catalog Hàn–Việt, kết quả ở repo `boom-re`,
-nhánh `codex/poptag-english-catalog`, file `l10n/catalog_en.csv`. Mọi dòng là ứng viên, chưa duyệt.
+**Bản dịch tiếng Anh.** Phiên Codex Terra đã trích chuỗi và ghép theo ID với catalog Hàn–Việt. Kết quả nằm ở checkout
+`boom-re-l10n` (repo `boom-re`, nhánh `claude/l10n-kr-vi`), thư mục `l10n/`, chưa commit lúc viết: `catalog_en.csv`,
+`english_sources.csv`, `images_en_candidates.csv`, `stock_names_en.csv`. Mọi dòng là ứng viên, chưa duyệt.
 
 | Nguồn chuỗi KR | Số chuỗi | Có tiếng Anh |
 |---|---|---|
@@ -90,20 +91,25 @@ nhánh `codex/poptag-english-catalog`, file `l10n/catalog_en.csv`. Mọi dòng l
 | Chuỗi trong exe và các nguồn nhỏ khác | 724 | 0 |
 | **Tổng** | **25.321** | **6.184 (24%)** |
 
-Trong 6.184 dòng có 102 dòng nhiều biến thể phải chọn tay và 34 dòng lệch tham số định dạng. Phần thiếu phải
-dịch mới.
+Trong 6.184 dòng có 102 dòng nhiều biến thể phải chọn tay và 34 dòng lệch tham số định dạng. Ngoài bảng trên có thêm
+199 dòng ghép được khi so ID không phân biệt hoa thường, mang trạng thái riêng `casefold_candidate`. Phần thiếu còn
+18.938 dòng, phải dịch mới.
 
-**Rà độ phủ ngày 13/11** (đọc lại toàn bộ 87 pack và các file lẻ của client, độc lập với công cụ trích):
+**Rà độ phủ ngày 13/11** (Claude đọc lại toàn bộ 87 pack và các file lẻ của client, độc lập với công cụ trích; Terra làm
+tiếp lượt hai theo kết quả rà):
 
-- Các nguồn đã trích (cache chuỗi, `ClientString`, tên map, 610 tên vật phẩm, 5 tên kênh) được lấy đủ.
-- Còn ghép thêm được 199 dòng nếu so ID không phân biệt hoa thường; phải duyệt tay.
-- 610 tên vật phẩm tiếng Anh chưa có chỗ ghép: catalog Hàn–Việt hiện không có tên vật phẩm của KR.
-- Chưa trích: 61 tên hiệu ứng trong `Swish/Catalog` và chữ giao diện viết cứng trong `PopTagDLL.dll` (cỡ vài trăm câu,
-  thuộc tính năng riêng của PopTag, không có ID).
+- Các nguồn đã trích (cache chuỗi, `ClientString`, tên map, 610 tên vật phẩm, 5 tên kênh, 61 tên hiệu ứng) được lấy đủ.
+- **Tên vật phẩm không ghép được theo ID.** Bốn file `fxstock0.ini`–`fxstock3.ini` của KR có 8.165 record kèm tên.
+  Trong 610 tên của PopTag chỉ 113 ID trùng số với KR, và cả 113 đều khác loại lẫn icon: hai bản dùng hai dải ID
+  khác nhau. Chưa thử ghép theo đường dẫn icon.
+- Chưa trích: chữ giao diện viết cứng trong `PopTagDLL.dll` (cỡ vài trăm câu, thuộc tính năng riêng của PopTag, không
+  có ID).
 - Không có trong client: chữ nhiệm vụ (script chỉ gọi ID, chữ do server gửi), chữ tiếng Anh cho chuỗi trong exe (exe
   của PopTag vẫn giữ tiếng Hàn), `Help` và mô tả ô map tự tạo (vẫn là tiếng Hàn).
-- Ảnh có chữ: 1.187 trong 3.038 ảnh nghi có chữ của KR có entry cùng tên trong pack PopTag. Phiên Terra báo 611 mục
-  giống nội dung giải mã và 576 mục khác; kết quả này chưa lưu thành file và chưa ai mở xem ảnh.
+- **Ảnh có chữ:** 1.187 trong 3.038 ảnh nghi có chữ của KR có entry cùng tên trong pack PopTag; 611 giống nội dung giải
+  mã, 576 khác. Danh sách 576 ảnh là ứng viên để mở xem; chưa ai xem ảnh nào.
+- Công cụ kiểm của catalog Việt (`l10n_validate.py`) hiện dừng vì cache nguồn cũ hơn catalog (25.257 so với 25.321
+  dòng). Lỗi có từ trước lượt này; ba file Việt gốc không bị sửa.
 
 **Giới hạn.** Ghép theo ID không chứng minh hai bản cùng nghĩa: cùng ID có thể đổi nội dung sau mười sáu năm. Chưa tách
 được chữ nào của bản Bắc Mỹ gốc, chữ nào do nhóm sửa client viết; trước khi phát hành phải có ý kiến của công ty về
