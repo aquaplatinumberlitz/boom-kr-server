@@ -1,0 +1,94 @@
+{
+  "id": "AUD113",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-g1-player-terrain-basic-items"
+  ],
+  "completed_through": "CP297",
+  "recorded_utc": "2026-11-13T19:28:41.694755+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/g1-terrain-players.json",
+    "docs/protocol/terrain.md",
+    "docs/protocol/items-stats.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/terrain.rs",
+    "rust/crates/kr-service/src/pickups.rs",
+    "rust/crates/kr-service/src/characters.rs",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "rust/crates/kr-service/src/rules.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "local/research/codex/g1-terrain-players-source-r1/reuse.json",
+    "local/research/codex/g1-life-actions-delivery-receipt.json",
+    "docs/evidence/rust-service/g1-life-ci-controls.json",
+    "local/research/codex/g1-terrain-config-controls-r4/verification.json",
+    "local/research/codex/g1-terrain-native-r1/terrain-native-verification.json",
+    "local/research/codex/g1-terrain-native-r1/terrain-getter-verification.json",
+    "local/research/codex/g1-terrain-native-r1/terrain-wire-controls.json",
+    "local/research/codex/g1-terrain-native-r1/manual-ui-review.json",
+    "local/research/codex/g1-terrain-4-native-r1/terrain-native-verification.json",
+    "local/research/codex/g1-terrain-4-native-r1/terrain-getter-verification.json",
+    "local/research/codex/g1-terrain-4-native-r1/terrain-wire-controls.json",
+    "local/research/codex/g1-terrain-4-native-r1/manual-ui-review.json",
+    "local/research/codex/g1-terrain-8-native-r2/terrain-native-verification.json",
+    "local/research/codex/g1-terrain-8-native-r2/terrain-getter-verification.json",
+    "local/research/codex/g1-terrain-8-native-r2/terrain-wire-controls.json",
+    "local/research/codex/g1-terrain-8-native-r2/manual-ui-review.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence, đối chiếu acceptance lát4/source/native/raw đã seal. Native2/4/8 account, cùng binary, ba item nền/hidden reveal/stat nhân vật0/1/power1→2 và hai rank/reset; actual TCP reassembly/CRC/sequence,159/full39/entity coordinates,158/full13/IDs,165/full12/effect snapshots. Python kernel độc lập từ actual118 đối chiếu195nativeflags; owner projection0 chỉ geometry, không ownership. Getter emulation tách runtime. Source controls kiểm malformed/current slot/key/queue atomicity, last-recipient barrier/EOF, wrong power, stale round và sibling room; native duplicate142 không thêm165/stat. Khai quota terrain và snapshot slots0/1, giữ nhãn topology_scope kế thừa sai trong raw4, topology/role/capture thực xác lập roster, eight-r2 sửa nhãn và UDP capture trước run. PR399 receipt và post-CP296 CI test correction ghi ở mốc mới; không đổi CP296/AUD112. Privacy/solo/PR/CI/exact-head vẫn áp dụng.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Player-round từ chối terrain/basic124, power chỉ so base và capacity legacy theo slot.",
+      "correction": "Policy opt-in trong RoomRules, current stat từ character và item, native roster2/4/8; defaults cũ giữ giới hạn riêng.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-terrain-players.json",
+        "docs/protocol/terrain.md#rust-player-terrain",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Last pending158 recipient EOF có thể giữ pending terrain bomb mặc dù survivors đã gửi xong.",
+      "correction": "Prune trả completed tickets, commit current Armed blast cho survivors, test old completion/reset và empty-room finish.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/room.rs",
+        "rust/crates/kr-service/src/bombs.rs",
+        "rust/crates/kr-service/src/room_io_item_tests.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Model owner projection/quota/item snapshot hoặc label topology cũ có thể bị suy thành proof rộng hơn.",
+      "correction": "Tách actual wire/native ownership và geometry; ghi số actor thực, native quota, item snapshot0/1. Không sửa sealed raw hoặc tuyên bố everypower/allmaps.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-terrain-players.json",
+        "docs/protocol/terrain.md#rust-player-terrain",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "CI correction của PR399 xảy ra sau complete CP296.",
+      "correction": "Ghi provenance/receipt và correction ở CP297, giữ CP296/AUD112 bất biến.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-terrain-players.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "G1 còn terrain/drop/item và roster của sáu map ladder, nhóm item còn lại và nhân vật; không đóng G1 hoặc giai đoạn 1.",
+    "Village10 có6spawn/UI max6; acceptance map2..8 chưa được chủ dự án đổi, không ép spawn hoặc tự giảm scope.",
+    "Native power mới1→2, snapshot effect slots0/1, geometry toàn vòng1 và seed/root vòng2; max9, sparse-item/native EOF lát này chưa có proof mới.",
+    "Raw142 thiếu epoch và policy theo report không xác thực authority/vị trí hoặc account inventory.",
+    "M8 còn Internet thật cho companion xác thực mới, đóng gói, tải50/8room, backup/restore và soak."
+  ]
+}

@@ -36,6 +36,7 @@ pub(crate) struct Terrain {
     width: u8,
     height: u8,
     max_power: u8,
+    owner_slots: u8,
     pending: BTreeMap<u16, Bomb>,
     seen: BTreeSet<u16>,
     /// Cell clearance becomes eligible only after the originating158 has
@@ -48,12 +49,30 @@ fn sha(data: &[u8]) -> String {
 }
 impl Config {
     pub(crate) fn validate(&self, map_frame: &[u8], start_frame: &[u8]) -> io::Result<Terrain> {
+        self.validate_limits(map_frame, start_frame, 2, 2)
+    }
+    pub(crate) fn validate_measured(
+        &self,
+        map_frame: &[u8],
+        start_frame: &[u8],
+        maximum_power: u8,
+    ) -> io::Result<Terrain> {
+        self.validate_limits(map_frame, start_frame, maximum_power, 8)
+    }
+    fn validate_limits(
+        &self,
+        map_frame: &[u8],
+        start_frame: &[u8],
+        maximum_power: u8,
+        owner_slots: u8,
+    ) -> io::Result<Terrain> {
         let error = || io::Error::other("unsupported pinned terrain profile");
         if self.width != 15
             || self.height != 13
             || self.kinds.len() != 195
             || self.kinds.iter().any(|k| *k > 2)
-            || !(1..=2).contains(&self.maximum_power)
+            || !(1..=9).contains(&maximum_power)
+            || !(1..=maximum_power).contains(&self.maximum_power)
             || sha(&self.kinds) != self.seed_sha256
             || self.map_sha256.len() != 64
             || !self
@@ -72,6 +91,7 @@ impl Config {
             width: self.width,
             height: self.height,
             max_power: self.maximum_power,
+            owner_slots,
             pending: BTreeMap::new(),
             seen: BTreeSet::new(),
             cleared: BTreeMap::new(),
@@ -96,7 +116,7 @@ impl Terrain {
         if self.generation == 0
             || bomb.id == 0
             || self.seen.contains(&bomb.id)
-            || bomb.owner > 1
+            || bomb.owner >= self.owner_slots
             || bomb.row >= self.height
             || bomb.column >= self.width
             || !(1..=self.max_power).contains(&bomb.power)
@@ -184,7 +204,7 @@ impl Terrain {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
-    pub(crate) fn map() -> Terrain {
+    fn config() -> Config {
         let mut kinds = vec![0; 195];
         kinds[3 * 15 + 5] = 2;
         kinds[4 * 15 + 4] = 2;
@@ -201,8 +221,63 @@ pub(crate) mod tests {
             ]),
             maximum_power: 2,
         }
-        .validate(b"map", b"start")
-        .unwrap()
+    }
+    pub(crate) fn map() -> Terrain {
+        config().validate(b"map", b"start").unwrap()
+    }
+    pub(crate) fn basic_items_map() -> Terrain {
+        let mut cfg = config();
+        cfg.kinds = vec![0; 195];
+        for (row, col, kind) in [(2, 3, 2), (3, 2, 2), (3, 8, 1), (3, 9, 2)] {
+            cfg.kinds[row * 15 + col] = kind;
+        }
+        cfg.seed_sha256 = sha(&cfg.kinds);
+        cfg.maximum_power = 9;
+        cfg.validate_measured(b"map", b"start", 9).unwrap()
+    }
+    #[test]
+    fn measured_owner_and_power_bounds_stop_at_solid_and_preserve_legacy_profile() {
+        let mut legacy = map();
+        legacy.begin(1);
+        assert!(
+            legacy
+                .place(Bomb {
+                    id: 1,
+                    owner: 2,
+                    row: 3,
+                    column: 3,
+                    power: 1
+                })
+                .is_err()
+        );
+        let mut t = basic_items_map();
+        t.begin(7);
+        for (owner, power) in [(8, 1), (7, 10), (7, 0)] {
+            assert!(
+                t.place(Bomb {
+                    id: 1,
+                    owner,
+                    row: 3,
+                    column: 3,
+                    power
+                })
+                .is_err()
+            );
+        }
+        t.place(Bomb {
+            id: 1,
+            owner: 7,
+            row: 3,
+            column: 3,
+            power: 9,
+        })
+        .unwrap();
+        assert_eq!(t.blast_committed(6, 1).cleared, BTreeSet::new());
+        assert_eq!(
+            t.blast_committed(7, 1).cleared,
+            BTreeSet::from([(2, 3), (3, 2)])
+        );
+        assert!(t.clearance(7, 3, 9).is_none());
     }
     #[test]
     fn no_clearance_before_commit_foreign_generation_reset_and_geometry_rejections() {

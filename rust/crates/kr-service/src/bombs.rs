@@ -87,6 +87,11 @@ pub(crate) struct Ticket {
     pub id: u16,
     pub owner: Membership,
 }
+#[derive(Clone, Copy)]
+pub(crate) struct Limits {
+    pub capacity: usize,
+    pub maximum_power: u8,
+}
 #[derive(Clone, Debug)]
 struct Active {
     ticket: Ticket,
@@ -125,11 +130,16 @@ impl Ledger {
         self.active.clear();
         self.serials.clear();
     }
-    pub(crate) fn forget_recipient(&mut self, key: Membership) {
+    pub(crate) fn forget_recipient(&mut self, key: Membership) -> Vec<Ticket> {
+        let mut completed = Vec::new();
         for active in self.active.values_mut() {
             active.pending.remove(&key);
+            if active.pending.is_empty() {
+                completed.push(active.ticket.clone());
+            }
         }
         self.active.retain(|_, active| !active.pending.is_empty());
+        completed
     }
     /// Operates on the candidate room clone; reserve ALL spawn+deadline queues
     /// before publishing this allocation/serial/reservation to the real owner.
@@ -142,13 +152,40 @@ impl Ledger {
         roster: &[Membership],
         capacity: usize,
     ) -> io::Result<std::result::Result<Ticket, &'static str>> {
+        self.place_measured(
+            round,
+            owner,
+            slot,
+            request,
+            roster,
+            Limits {
+                capacity,
+                maximum_power: 2,
+            },
+        )
+    }
+    pub(crate) fn place_measured(
+        &mut self,
+        round: u64,
+        owner: Membership,
+        slot: u8,
+        request: &Request,
+        roster: &[Membership],
+        limits: Limits,
+    ) -> io::Result<std::result::Result<Ticket, &'static str>> {
+        if !(1..=10).contains(&limits.capacity) || !(1..=9).contains(&limits.maximum_power) {
+            return Err(io::Error::other("unsupported measured bomb limits"));
+        }
         let reject = if self.generation != Some(round) {
             Some("inactive_round")
         } else if request.key != wire_key(round)? {
             Some("round_key_mismatch")
         } else if request.owner != slot || !roster.contains(&owner) {
             Some("owner_mismatch")
-        } else if request.row >= 13 || request.column >= 15 || !(1..=2).contains(&request.power) {
+        } else if request.row >= 13
+            || request.column >= 15
+            || !(1..=limits.maximum_power).contains(&request.power)
+        {
             Some("unsupported_cell_or_power")
         } else if self.serials.contains_key(&(owner, request.serial)) {
             Some(if self.serials[&(owner, request.serial)].0 == *request {
@@ -161,7 +198,7 @@ impl Ledger {
             .values()
             .filter(|a| a.ticket.owner == owner)
             .count()
-            >= capacity
+            >= limits.capacity
         {
             Some("owner_capacity_reserved")
         } else if self

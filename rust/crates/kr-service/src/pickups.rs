@@ -9,6 +9,20 @@ use std::{
     io,
 };
 
+/// Explicit report-derived basic-item policy for owned player rounds.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub(crate) enum Policy {
+    #[default]
+    Disabled,
+    ReportDerivedBasic,
+}
+impl Policy {
+    pub(crate) fn enabled(self) -> bool {
+        self == Self::ReportDerivedBasic
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub(crate) struct Item {
     pub index: u32,

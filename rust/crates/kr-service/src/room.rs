@@ -31,6 +31,7 @@ pub struct Member {
     pub slot: u8,
     pub team: u8,
     pub character: Option<u16>,
+    pub(crate) item_stats: Option<crate::characters::Stats>,
     pub ready: bool,
     pub setup: bool,
     late_after_abort: u16,
@@ -399,6 +400,7 @@ impl Room {
                     self.fixed_teams[usize::from(slot)]
                 },
                 character: self.player_round().then_some(0),
+                item_stats: None,
                 ready: false,
                 setup: false,
                 late_after_abort: 0,
@@ -572,6 +574,7 @@ impl Room {
             member.opaque142 = 0;
             member.loading79 = false;
             member.life.begin();
+            member.item_stats = None;
             member.late_after_abort = 0;
         }
         self.aborted = None;
@@ -651,7 +654,14 @@ impl Room {
                 .min_by_key(|m| m.slot)
                 .map(|m| m.key.identity);
         }
-        self.bombs.forget_recipient(key);
+        let completed_blasts = self.bombs.forget_recipient(key);
+        // Remaining recipients already completed their writes. A departed last
+        // recipient cannot strand a terrain bomb or block later occupancy.
+        if armed && self.terrain.is_some() {
+            for ticket in completed_blasts {
+                self.commit_blast(ticket.round, ticket.id, now);
+            }
+        }
         for member in self.members.values_mut() {
             member.life.forget_recipient(key);
         }
@@ -670,6 +680,10 @@ impl Room {
         }
         if self.members.is_empty() {
             self.bombs.finish();
+            self.pickups.finish();
+            if let Some(terrain) = &mut self.terrain {
+                terrain.finish();
+            }
             self.phase = Phase::Idle;
         } else if let Phase::Ending { refreshed, .. } = &mut self.phase {
             refreshed.remove(&key);
@@ -764,6 +778,18 @@ impl Room {
             member.ready = false;
         }
         Ok(())
+    }
+    pub(crate) fn commit_blast(&mut self, round: u64, id: u16, now: std::time::Instant) {
+        if self.phase != (Phase::Armed { round }) {
+            return;
+        }
+        self.last_blast = Some(now);
+        for member in self.members.values_mut() {
+            member.life.blast_committed();
+        }
+        if let Some(terrain) = &mut self.terrain {
+            terrain.blast_committed(round, id);
+        }
     }
     pub fn refreshed(&mut self, key: Membership, round: u64) -> io::Result<()> {
         if !self.current(key) {

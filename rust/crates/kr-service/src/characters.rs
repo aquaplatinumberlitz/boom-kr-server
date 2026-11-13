@@ -12,6 +12,18 @@ pub(crate) struct Stats {
     pub speed: u8,
     pub maximum_speed: u8,
 }
+impl Stats {
+    /// Measured Bomb/Fire/Roller levels; never physical movement authority.
+    pub(crate) fn basic_pickup(&mut self, kind: u16) -> io::Result<()> {
+        match kind {
+            0 => self.capacity = self.capacity.saturating_add(1).min(self.maximum_capacity),
+            1 => self.power = self.power.saturating_add(1).min(self.maximum_power),
+            2 => self.speed = self.speed.saturating_add(1).min(self.maximum_speed),
+            _ => return Err(io::Error::other("unmeasured basic item effect")),
+        }
+        Ok(())
+    }
+}
 #[derive(Clone)]
 pub(crate) struct Catalog(BTreeMap<u16, Stats>);
 impl Catalog {
@@ -65,5 +77,32 @@ impl Catalog {
             .get(&key)
             .copied()
             .ok_or_else(|| io::Error::other("character not in active catalog"))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn basic_levels_follow_measured_character_vectors_clamp_and_refuse_unknown_kind() {
+        let catalog = Catalog::measured(&[0, 1]).unwrap();
+        for (key, after, limits) in [(0, (2, 2, 6), (10, 7, 7)), (1, (3, 2, 5), (7, 9, 8))] {
+            let initial = catalog.get(key).unwrap();
+            let mut stats = initial;
+            for kind in [2, 1, 0] {
+                stats.basic_pickup(kind).unwrap();
+            }
+            assert_eq!((stats.capacity, stats.power, stats.speed), after);
+            for _ in 0..12 {
+                for kind in [0, 1, 2] {
+                    stats.basic_pickup(kind).unwrap();
+                }
+            }
+            assert_eq!((stats.capacity, stats.power, stats.speed), limits);
+            let prior = stats;
+            assert!(stats.basic_pickup(145).is_err());
+            assert_eq!(stats, prior);
+            assert_eq!(catalog.get(key).unwrap(), initial);
+        }
     }
 }
