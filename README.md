@@ -33,12 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP288: relay xác thực đã có nghiệm thu tám người, roster thưa và chơi tiếp sau rớt mạng.**
-Client KR thật trên Wine đã qua trận tám người, một người rời trước ván kế và một endpoint rớt giữa trận;
-sáu người còn lại dùng bom, tới kết quả/reset và vào trận tiếp. [Contract/giới hạn](docs/protocol/udp-peer.md#rust-authenticated-serving-relay),
-[bằng chứng](docs/evidence/rust-service/n1rb-native-rosters.json). **N1R-b vẫn mở** cho reuse với stale/current,
-restart và giả mạo chung IP theo [Bảng điều hành](docs/PLAN.md#dashboard). G1/M6/M8 còn mở;
-packet 59 ở lượt lỗi đầu vẫn chưa rõ nguyên nhân. Hạ tầng/raw giữ local; [lịch sử](docs/HISTORY.md).
+**CP289: N1R-b đạt các tiêu chí hành vi của relay nhiều người trong phạm vi đã đo.**
+Native bốn/tám người, roster thưa và survivor đã có bằng chứng; bổ sung đăng nhập mới từ DB sau restart,
+đối chứng gói cũ, chung nguồn IP và test QUIC mạo nhận route với gói hiện hành. [Ma trận acceptance/giới hạn](docs/evidence/rust-service/n1rb-controls-acceptance.json),
+[contract](docs/protocol/udp-peer.md#rust-authenticated-serving-relay), [cấu hình relay](docs/OPERATIONS.md).
+G1/M6/M8 còn mở theo [Bảng điều hành](docs/PLAN.md#dashboard). Transport xác thực mới chưa đo Internet thật;
+M8 phải kiểm đường triển khai đó theo đích giai đoạn 1. Hạ tầng và raw giữ local; [lịch sử](docs/HISTORY.md).
 
 ## Bắt đầu
 

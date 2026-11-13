@@ -904,15 +904,12 @@ Start đặt trước route và hàng đợi control có giới hạn. Companion
 báo ACK đúng tập route; service chờ ACK trước native153. Data chỉ forward sau loading barrier, qua route128/seq64
 và cửa sổ replay64 bên ngoài native bytes. Native key byte thấp được phép lặp trong policy này; full key/epoch
 vẫn tăng, random route và transport xác thực giữ fence. Khi kết quả/reset hoặc ownership đổi, route nghỉ được
-thu hồi; kernel hỗ trợ giữ subset survivor nhưng native departure của transport mới còn phải nghiệm thu.
+thu hồi; native departure và subset survivor của transport mới đã có bằng chứng trong mục dưới.
 
-Một UDP listener công khai phục vụ mọi companion; mỗi phòng n người cần n×(n−1) route logic. Tám phòng tám người
-cần 448 route, tối đa 64 QUIC peer; cổng public không tăng theo số cạnh. Firewall giai đoạn triển khai mở đúng UDP
-listener cấu hình và TCP game/launcher đã chọn, không mở dải native proxy ra ngoài. Đây là phép tính tài nguyên,
-chưa là benchmark M8; endpoint/firewall thực giữ local. Tại mỗi client, một vòng tám người cần bảy socket proxy
-loopback, ngoài UDP native và UDP QUIC. Endpoint proxy nghỉ giữ bound tới hết companion session để gói native cũ
-không được gắn thành route mới khi key lặp. Budget 26–32768 socket/session có giới hạn; cạn budget dừng đóng và
-cần launcher mới, không âm thầm reuse socket. Chưa có xác thực process khác trên cùng máy hoặc tự resume/match restore.
+[Cấu hình phục vụ và ngân sách cổng/firewall](../OPERATIONS.md) chọn `AuthenticatedRelay` cho giai đoạn 1,
+giữ chẩn đoán cũ riêng. Proxy endpoint nghỉ giữ bound tới hết companion session; budget hữu hạn 26–32768
+socket/session, cạn thì dừng đóng và cần launcher mới. Chưa có xác thực process khác trên cùng máy hoặc tự
+resume/match restore; không suy các đảm bảo đó từ NAT/QUIC.
 
 **Native đã kiểm:** bốn account qua private launcher, native own profile, phòng và lựa chọn hiện hành; mỗi receiver
 nhận/apply từ đủ ba slot khác ở cả hai vòng. Capture loopback hai đầu nối byte nguyên với native current-key/helper,
@@ -933,10 +930,24 @@ Cursor của FinishBreakpoint170 giữ opaque; actor effect, error flags và wir
 đóng timestamp lúc đọc socket, không là kernel wire time; không suy thứ tự tuyệt đối giữa hai capture hoặc latency,
 loss và ánh xạ một-một từ nhóm byte bằng nhau. Tuple proxy tách theo vòng giữ quan hệ snapshot trong phép so byte.
 
-**Giới hạn còn lại:** reuse vượt pool với stale/current control, restart và giả mạo chung IP ở serving còn mở.
-Synthetic account/QUIC/kernel tests không tự là native attack acceptance. Không thêm kết luận Internet/ISP/CGNAT,
-PMTU, mọi kiểu UDP, tải hoặc đóng gói từ LAN. Run lỗi đầu phát native59 rồi service từ chối/đóng TCP; nguyên nhân
-và nghĩa packet chưa khôi phục. Hai lượt sau không lặp59, không suy lỗi đã sửa. Lỗi probe sau Back được sửa bằng
-phạm vi observer theo roster, raw cũ giữ nguyên; metadata giữ các lỗi runtime/export/verifier và giới hạn.
+**Runtime controls và quyết định N1R-b:** [ma trận acceptance](../evidence/rust-service/n1rb-controls-acceptance.json)
+đối chiếu từng tiêu chí và phân biệt nguồn. Hai test cô lập dùng production Hub/Bridge/router, SQLite và QUIC thật,
+cùng IP loopback. A phát gói đầu đặt tên route của B với sequence1: không forward và không chiếm replay window;
+B phát sequence1 của chính nó vẫn được nhận. Bốn vòng vượt pool hai route, old logical packet/replay bị từ chối,
+current payload được nhận. Restart component bind lại cùng cổng trong deadline, old pin/capability/scope/route
+bị từ chối và account hiện hành vẫn gửi nhận. Đây là **design/method=test**, không native KR giả mạo.
+
+Phép kiểm KR bổ sung nạp đúng DB quiescent từ service đã dừng, giữ account/player/profile, tăng boot epoch rồi
+đăng nhập mới. Cùng public listener với pin mới, phát lại ciphertext QUIC cũ và raw first probes trước/current
+serving. Hai client có chung nguồn TCP/UDP do SNAT INPUT, vẫn qua native profile/phòng/UDP/bom, hai kết quả trái
+nhau/reset và clock trận thứ ba; raw probe không vào loopback native. Đây là fresh login sau nạp lại DB, namespace
+được tạo lại; không account resume, restore trận hoặc crash recovery. Ciphertext không được giải mã thành native
+body. Bằng chứng native và negative QUIC được ghép theo từng tiêu chí, không gọi test thành trace client giả mạo.
+
+N1R-b đạt **các hành vi hiện hành trong môi trường đã đo**, không đóng giai đoạn 1 hoặc mọi UDP/NAT. Transport
+xác thực mới trên Internet thật chưa đo; M8 kiểm đường triển khai theo đích, N1/prototype cũ giữ nguyên phạm vi.
+Tải/soak/PMTU/mọi loại UDP, packaging, session budget và operational recovery còn riêng. Run59 lỗi đầu và lỗi
+probe/export/verifier giữ nguyên; nguyên nhân59 unknown, hai lượt sau không lặp không là đã sửa. Source phục vụ
+không đổi trong các phép bổ sung; code mới chỉ là tests, preset cấu hình và tài liệu vận hành.
 
 <!-- protocol-topic-content-end -->

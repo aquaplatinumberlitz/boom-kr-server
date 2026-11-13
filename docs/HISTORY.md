@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP288: relay xác thực đã có nghiệm thu tám người, roster thưa và chơi tiếp sau rớt mạng.**
+Client KR thật trên Wine đã qua trận tám người, một người rời trước ván kế và một endpoint rớt giữa trận;
+sáu người còn lại dùng bom, tới kết quả/reset và vào trận tiếp. [Contract/giới hạn](protocol/udp-peer.md#rust-authenticated-serving-relay),
+[bằng chứng](evidence/rust-service/n1rb-native-rosters.json). **N1R-b vẫn mở** cho reuse với stale/current,
+restart và giả mạo chung IP theo [Bảng điều hành](PLAN.md#dashboard). G1/M6/M8 còn mở;
+packet 59 ở lượt lỗi đầu vẫn chưa rõ nguyên nhân. Hạ tầng/raw giữ local; [lịch sử](HISTORY.md).
+
 **CP287: relay có xác thực đã nối vào account/phòng và chạy bốn client KR thật.**
 Hai ván có kết quả trái nhau, reset và clock ván thứ ba đã được đối chiếu bằng capture, native state và getter.
 [Contract/giới hạn](protocol/udp-peer.md#rust-authenticated-serving-relay),
