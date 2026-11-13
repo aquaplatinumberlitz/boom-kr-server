@@ -400,4 +400,3 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 <a id="documentation-checkpoint-identity"></a><a id="danh-tính-checkpoint-thuần-tài-liệu--correction-cp268"></a> [→ Authority, phạm vi service và ranh giới Rust](protocol/rust-boundary.md#documentation-checkpoint-identity)
 <a id="rust-r1f-session-binding"></a><a id="r1f--identityprofile-theo-session-và-endpoint-theo-channel--cp269"></a> [→ Phòng, roster và membership](protocol/room-membership.md#rust-r1f-session-binding)
 <a id="rust-r1g-admission"></a><a id="r1g--ngân-sách-transport-và-allowlist--cp270"></a> [→ Authority, phạm vi service và ranh giới Rust](protocol/rust-boundary.md#rust-r1g-admission)
-
