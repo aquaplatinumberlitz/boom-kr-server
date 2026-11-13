@@ -1,16 +1,43 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-13T18:12:22.569990+00:00",
+  "captured_utc": "2026-11-13T20:49:15.211213+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
-      "body": "KRE-074 / KR-F008 / KR-F006 / KR-F009 / RUST-G1 lát 3 theo acceptance trong PLAN.\n\nBaseline: main b18beb7 (PR #396, CP295/AUD111). Owner và self-check: Codex solo; independent review waived theo chỉ đạo chủ dự án. Dependency: M5b/M7e và N1R-b đã đạt phạm vi đã ghi.\n\nPhạm vi: chuyển contract kim145 và cứu đã đo ở Python sang Rust cho account/current roster; giữ policy theo report, giới hạn một kim mỗi vòng. Không dùng alias identity hoặc nhánh theo sức chứa. File: life_actions, life, pickups, RoomRules, room_io, config và kiểm liên quan; docs chuẩn và metadata evidence. Không sửa tools/export_map_profile.py.\n\nAcceptance: client KR00967 trên Wine nhặt kim → mắc bóng → Ctrl → tiêu kim và peer thoát đồng bộ; Ctrl khi cạn; kết quả/reset/ván tiếp có kim mới. Cứu bằng actor đồng đội thực, peer nhận và reset theo contract đã đo. Kiểm malformed/duplicate/stale, membership, report cursor, delivery barrier và disconnect; raw/hash/cleanup và native consumer evidence. Unit/differential không thay native evidence. Không tự đóng toàn bộ G1; terrain/item/sáu map/nhân vật có acceptance riêng.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [contract kim/cứu](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/protocol/life-results.md#rust-needle-rescue), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#rust-service-gaps). Điều phối #285.\n",
+      "body": "KRE-074, blocker phát sinh của G1/#402. Owner/self-check Codex solo; independent review waived. Baseline main PR401 và WIP per-map terrain, raw đã seal.\n\nUnknown59 trước đây ở N1R-b đã tái hiện trong lượt Forest07 tám account: hai client thật gửi59/body47 rồi server đóng unknown stage/opcode/shape; lỗi client xảy ra sau đó. Chưa coi đây là lỗi terrain, chưa có contract cho ACK hoặc bỏ qua59.\n\nTái dùng probe game13ADCC0/general13ADD10 và cached codec/stream. Đo tối thiểu caller/stack/header và input trước actual59 trên bản copy Wine/LAN cô lập, cùng binary/config/route, finite probe budget. Chỉ mở tối đa bốn body mới theo caller đã quan sát nếu cần. Hai/bốn client và phần map độc lập tiếp tục khi có thể.\n\nAcceptance: raw/hash/cleanup và join actual native→capture→server close; xác định điều kiện/caller hoặc giữ unknown rõ. Chỉ thay policy nếu bằng chứng đủ, tách company design khỏi original contract; current positive và negative/limits tương ứng. Không ACK giả hoặc loại bỏ gói để làm gate xanh. Native59/mọi nguyên nhân không được tuyên bố đã sửa chỉ vì run sau không tái hiện.\n\nNguồn chuẩn: docs/RESEARCH.md#rust-service-gaps, docs/PLAN.md#dashboard; kết quả theo checkpoint mới, không sửa lịch sử N1R-b đã complete. Không đưa thông tin hạ tầng riêng lên GitHub.\n\nFeature: KR-S001 (service và xử lý protocol chưa biết; không gán semantics cho 59).\n\nLiên kết nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md).\n",
       "closedAt": null,
-      "number": 397,
+      "number": 403,
       "state": "OPEN",
+      "title": "KRE-074: trace native59 đang chặn nghiệm thu Forest07",
+      "updatedAt": "2026-11-13T20:50:14Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403"
+    },
+    {
+      "body": "KRE-074 / RUST-G1 lát5. Owner/self-check Codex solo; independent review waived. Baseline PR401/CP297, chưa suy dependency đã merge khi PR còn mở. Feature KR-F005/KR-F006/KR-F007 và map selection hiện hành.\n\nGiá trị bàn giao: mỗi map trong catalog mang terrain/floor tương ứng, chọn map không giữ shadow/claim của map cũ; đo nội dung theo thứ tự PLAN. Trước hết tái dùng adapter/profile và kernel đã có, đo gap Forest07 Well00 thay cho RE toàn client. Factory07 có phân loại tĩnh đầy đủ nhưng chưa native geometry; Forest/Patrit còn một ô đặc biệt, các map khác giữ unknown chưa bật. Không sửa tools/export_map_profile.py, client/pack gốc hoặc thêm capacity flags/identity aliases.\n\nFile dự kiến: map_profile, room_io, terrain và kiểm nguồn tương ứng; contract/limits tại PROTOCOL, unknown/phép đo tại RESEARCH, PLAN duy nhất giữ thứ tự; metadata/raw hash mới theo nhóm tính năng. Python giữ RE/reference.\n\nAcceptance: choice giữ đúng map/start seed/floor/hidden catalog và limits, queue rollback/current host/Idle/map revision; reset/new selection/multiroom không kế thừa terrain/claims/batch cũ. Chỉ mở tile/item sau native proof phù hợp; mỗi map được công bố có spawn/box/drop/pickup đúng, hai kết quả/reset, ca âm và raw/hash/cleanup. Source/differential không thay client KR thật. Không coi basic chọn map đã có là full gameplay, không tự giảm scope map2..8 hoặc ép spawn Village10.\n\nNguồn chuẩn: docs/PLAN.md#phase1-acceptance; docs/protocol/terrain.md#rust-player-terrain; docs/protocol/load-phase.md#rust-room-map-selection; docs/content/tile-semantics.md; docs/RESEARCH.md#gap-village10-map. Điều phối #285.\n\nLiên kết nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md).\n",
+      "closedAt": null,
+      "number": 402,
+      "state": "OPEN",
+      "title": "KRE-074: G1 terrain và drop theo map được chọn",
+      "updatedAt": "2026-11-13T20:50:13Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+    },
+    {
+      "body": "KRE-074 / RUST-G1 lát4; feature KR-F004, KR-F005, KR-F006, KR-F007. Owner/self-check: Codex solo; independent review waived. Baseline: PR399 kim/cứu, chờ tích hợp dependency trước nghiệm thu lát mới.\n\nGiá trị bàn giao: terrain và item nền theo roster/account hiện hành, thay các guard chỉ cho hai người bằng policy rõ trong RoomRules. Tái dùng kernel ExVillage01, schema142/124/165, full-roster158 completion, stat/character catalog và lifecycle đã đo. Không sửa tools/export_map_profile.py; không thêm cờ sức chứa, alias identity hoặc nhánh capacity()==N.\n\nFile dự kiến: terrain, pickups, characters/round stats, RoomRules, room_io và kiểm tương ứng; docs contract/gap/catalog/evidence. Không mở map/item chưa có consumer như thể đã tương thích.\n\nAcceptance: geometry/hidden reveal chỉ sau158 đã gửi đủ recipient hiện hành; đúng slot/key/catalog/current round; một winner, peer thấy stat đúng và reset; capacity/power dựa nhân vật và item đã nhận, không theo identity. Source/negative kiểm queue, stale, malformed, duplicate, disconnect và nhiều room; native Wine theo lát trước2 rồi4/8 khi mở cỡ đó, raw/hash/cleanup cùng đối chứng Python/native đã có. Hai implementation đồng ý không thay bằng chứng KR. Giới hạn authority và raw142 thiếu epoch giữ nguyên.\n\nNguồn chuẩn: [PLAN acceptance](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [terrain hiện có](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/protocol/terrain.md#rust-terrain), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#rust-service-gaps). Điều phối #285; thứ tự chỉ ở PLAN. G1 tổng thể và M8 còn acceptance riêng.\n",
+      "closedAt": "2026-11-13T19:44:05Z",
+      "number": 400,
+      "state": "CLOSED",
+      "title": "KRE-074: G1 terrain và item nền theo roster/account hiện hành",
+      "updatedAt": "2026-11-13T19:44:05Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/400"
+    },
+    {
+      "body": "KRE-074 / KR-F008 / KR-F006 / KR-F009 / RUST-G1 lát 3 theo acceptance trong PLAN.\n\nBaseline: main b18beb7 (PR #396, CP295/AUD111). Owner và self-check: Codex solo; independent review waived theo chỉ đạo chủ dự án. Dependency: M5b/M7e và N1R-b đã đạt phạm vi đã ghi.\n\nPhạm vi: chuyển contract kim145 và cứu đã đo ở Python sang Rust cho account/current roster; giữ policy theo report, giới hạn một kim mỗi vòng. Không dùng alias identity hoặc nhánh theo sức chứa. File: life_actions, life, pickups, RoomRules, room_io, config và kiểm liên quan; docs chuẩn và metadata evidence. Không sửa tools/export_map_profile.py.\n\nAcceptance: client KR00967 trên Wine nhặt kim → mắc bóng → Ctrl → tiêu kim và peer thoát đồng bộ; Ctrl khi cạn; kết quả/reset/ván tiếp có kim mới. Cứu bằng actor đồng đội thực, peer nhận và reset theo contract đã đo. Kiểm malformed/duplicate/stale, membership, report cursor, delivery barrier và disconnect; raw/hash/cleanup và native consumer evidence. Unit/differential không thay native evidence. Không tự đóng toàn bộ G1; terrain/item/sáu map/nhân vật có acceptance riêng.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [contract kim/cứu](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/protocol/life-results.md#rust-needle-rescue), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#rust-service-gaps). Điều phối #285.\n",
+      "closedAt": "2026-11-13T18:42:55Z",
+      "number": 397,
+      "state": "CLOSED",
       "title": "KRE-074: G1 kim/cứu Rust cho account và roster hiện hành",
-      "updatedAt": "2026-11-13T18:12:44Z",
+      "updatedAt": "2026-11-13T18:42:55Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/397"
     },
     {
@@ -708,6 +735,28 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "8df43a187058653f40b962377599102ffca7669a",
+      "mergeCommit": {
+        "oid": "a8b8fe163725531187d706f77cd63064b12318e4"
+      },
+      "mergedAt": "2026-11-13T19:44:03Z",
+      "number": 401,
+      "state": "MERGED",
+      "title": "G1: terrain và item nền cho roster account Rust",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/401"
+    },
+    {
+      "headRefOid": "bbdcde00b17db5fa48069c386a52616f3d77c330",
+      "mergeCommit": {
+        "oid": "faf30d9545f847a62ebacac9085c37abb6e47606"
+      },
+      "mergedAt": "2026-11-13T18:42:53Z",
+      "number": 399,
+      "state": "MERGED",
+      "title": "Kim/cứu Rust với account và roster hiện hành — native hai vòng",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/399"
+    },
     {
       "headRefOid": "22f3da56b255ac37492d2a5cb72fc9700dca21e8",
       "mergeCommit": {

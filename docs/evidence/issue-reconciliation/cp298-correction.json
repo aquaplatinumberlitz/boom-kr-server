@@ -1,0 +1,55 @@
+{
+  "schema": "kre-post-checkpoint-reconciliation-v1",
+  "checkpoint": "CP298",
+  "publication_commit": "ef04660fa75aa604b109922abfe7d3bd8374645f",
+  "recorded_utc": "2026-11-13T20:49:37.219096+00:00",
+  "problem": "Sau công bố complete, check_docs báo nonexistent issues/403 vì snapshot GitHub dừng ở397. Đây là lỗi đối soát tài liệu, không phải runtime pass.",
+  "failed_checks": [
+    {
+      "path": "local/research/codex/g1-map-terrain-docs-final.txt",
+      "bytes": 23,
+      "sha256": "e3318762cf3b90e9e1d1f4979e2065ef87741a3e9c029147d19cfd45e710e15e"
+    },
+    {
+      "path": "local/research/codex/g1-map-terrain-docs-precheckpoint.txt",
+      "bytes": 198,
+      "sha256": "3b2dacc729a8f6dd186385c68e74d7b6dbd1b1e47b93bc16dd96d90c505d03f6"
+    }
+  ],
+  "correction": "Refresh snapshot có ngày, đối chiếu397/400 đã hoàn tất qua PR399/401, giữ402/403 mở, cập nhật backlink và liên kết nguồn chuẩn. Không sửa complete record/audit/raw; catalog JSON CP298 được kiểm theo blob ở commit công bố đầu tiên.",
+  "immutable": [
+    {
+      "path": "docs/evidence/checkpoints/records/CP298.json",
+      "bytes": 10261,
+      "sha256": "ec70932b0abb27a3238cf2d85e7c17184ad77631ad7fa5d3408f84968472948b"
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD114.json",
+      "bytes": 6107,
+      "sha256": "bbbc4852e49b7a7801866bc4bbb686a787d59b8995a88f7a4238303f6a3097fc"
+    },
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP298-selected-map-terrain.json",
+      "bytes": 1744006,
+      "sha256": "3009287805e2454fe9755354932bdbfe4cdb6a67eb9fa6fe7138d8193af81435"
+    }
+  ],
+  "provenance": [
+    {
+      "path": "local/research/codex/g1-map-terrain-issues-snapshot-r1.json",
+      "bytes": 321000,
+      "sha256": "d4e4b3715ac48eb795ab0c1a335e67cdf1333ac849aac5955be869753e6ca90f"
+    },
+    {
+      "path": "local/research/codex/g1-map-terrain-issues-snapshot-r2.json",
+      "bytes": 321708,
+      "sha256": "8efe8b5cf43f63cf3f02a920cd0f830a93536af2e87fd839e5f2bdb8a2da991e"
+    },
+    {
+      "path": "local/research/codex/reconcile_g1_map_issues.py",
+      "bytes": 4880,
+      "sha256": "7424395bdb11eca95456217d457addc79dc3c40412d91f7bebb89016a4e33d99"
+    }
+  ],
+  "limits": "Không đóng G1/issue402/403 hoặc chứng nhận packet59 đã sửa. Ghi nhận correction này trong checkpoint nhóm tiếp theo; không tăng counter chỉ cho refresh issue."
+}
