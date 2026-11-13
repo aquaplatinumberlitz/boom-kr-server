@@ -679,7 +679,8 @@ thể đổi thứ tự. F4 có thể kéo lên trước F3 nếu cần phần t
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
-nghi có chữ, trong đó 8 ảnh đã xử lý và 681 ảnh có bản khác ở client VN. Chưa có bản tiếng Anh.
+nghi có chữ, trong đó 8 ảnh đã xử lý và 681 ảnh có bản khác ở client VN. Tiếng Anh có ứng viên cho 6.184 chuỗi (24%),
+lấy từ [client PopTag 0.7.8](content/client-language.md#poptag) công ty cấp ngày 13/11.
 
 [So tĩnh hai file exe](content/client-language.md) cho thấy client 00967 là build đa vùng: engine có sẵn bảng mã và mã
 ngôn ngữ cho Hàn, Việt và Anh, có sẵn bước ghép dấu tiếng Việt, và font của nó đã đủ chữ Việt. Vùng bị khóa cứng là
