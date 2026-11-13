@@ -1,0 +1,117 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "HIST291-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3891,
+      "sha256": "790d74c5fcd285721206c6e9fb351f223cfd48dd6a15e8cbcb5e9a16c40fce84"
+    },
+    {
+      "id": "HIST291-0002",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 148163,
+      "sha256": "7f0d70c02a6bfd3ee1fc10803d207b260860815deeebdca3993fb7ef7891658c"
+    },
+    {
+      "id": "HIST291-0003",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 78884,
+      "sha256": "d010de1ec8b19fc01bfe48d638b001e8d127f40bd1d6180c595600234370070d"
+    },
+    {
+      "id": "HIST291-0004",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66107,
+      "sha256": "35ec693f97dbc7476eea49d7ea83cede40ab252aff68232f69c498ea42659a7f"
+    },
+    {
+      "id": "HIST291-0005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 34482,
+      "sha256": "8b4b59f8015c9bfe1b707eb8b60e3eec71e0b2ce12d8ae3438f91a65a72c4391"
+    },
+    {
+      "id": "HIST291-0006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/README.md",
+      "bytes": 17679,
+      "sha256": "7e21f03a7ee7d48d65b906728e1416bc7aab20e10fb2538c9dc31c2a62b7299f"
+    },
+    {
+      "id": "HIST291-0007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD107.json",
+      "bytes": 2444,
+      "sha256": "ac9906b731df50d7c5a8f6edd75a7ae9b26951cf8f5fdc602ee0bc447b1c6d8c"
+    },
+    {
+      "id": "HIST291-0008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/integration-test-source-correction.json",
+      "bytes": 2069,
+      "sha256": "ca361f53d2e7673962aa0647ca03cae41c10dd61e468e4cdee960425e493396e"
+    },
+    {
+      "id": "HIST291-0009",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 265196,
+      "sha256": "8a72a17d39d3db5895c8aaac9640de3ff3fe9b4cf39a728f268302eb93b5e7a3"
+    },
+    {
+      "id": "HIST291-0010",
+      "kind": "local",
+      "path": "local/research/codex/append_cp291.py",
+      "bytes": 6514,
+      "sha256": "b2a12488b5e3d15388b647a5f0b70f3f82666ee5401e81604c362ce29857ebf2"
+    },
+    {
+      "id": "HIST291-0011",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-adapter-exact-head-checkpoints.txt",
+      "bytes": 167731,
+      "sha256": "27be67fd19a5ba140dd7b07f79414f92864bb765310b301c653759c6edb5e717"
+    },
+    {
+      "id": "HIST291-0012",
+      "kind": "local",
+      "path": "local/research/codex/g1-test-source-history-tests-r1.txt",
+      "bytes": 162,
+      "sha256": "178e0fc46a6e534ef09b6614df0d93844c50fc38a67cfe1bcafd6c9bcad9381a"
+    },
+    {
+      "id": "HIST291-0013",
+      "kind": "local",
+      "path": "local/research/codex/g1-test-source-publication-proof.json",
+      "bytes": 660,
+      "sha256": "3a8babbd28acecdee9e910cbdf2c765767f503edcea87fc29332b7db74bae1c4"
+    },
+    {
+      "id": "HIST291-0014",
+      "kind": "local",
+      "path": "local/research/codex/write_g1_test_history_correction.py",
+      "bytes": 3922,
+      "sha256": "8e4bbf4a001509c25d63f7a5e5120ac5d11917dfc8432766f2f7d641d1843dc9"
+    },
+    {
+      "id": "HIST291-0015",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 36925,
+      "sha256": "a94974531008f91f6ad991687cf202dee45556238859f24a3af6d76549bb2737"
+    },
+    {
+      "id": "HIST291-0016",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 10090,
+      "sha256": "4267a74f56a13b5cc90e0614feea78e71f14771ceafabbb3327fd762cedd1e7e"
+    }
+  ]
+}

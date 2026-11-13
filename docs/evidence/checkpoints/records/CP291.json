@@ -1,0 +1,135 @@
+{
+  "id": "CP291",
+  "previous": "CP290",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T15:12:42.756924+00:00",
+  "context_commit": "cded96c4bd72a82373b67d269629e482d1a47c2c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Sửa false mismatch source test tích hợp đã pin CP287 mà không đổi record/raw hoặc nới fallback fixture?",
+  "scope": "Narrow publication-bound source verification for root Rust integration tests only; runtime/acceptance unchanged.",
+  "artifacts": [
+    {
+      "name": "checkpoint-checker-source",
+      "sha256": "a94974531008f91f6ad991687cf202dee45556238859f24a3af6d76549bb2737"
+    }
+  ],
+  "locators": [
+    "docs/evidence/checkpoints/README.md#publication-bound-source-history",
+    "docs/evidence/checkpoints/integration-test-source-correction.json",
+    "tools/check_checkpoints.py"
+  ],
+  "findings": [
+    {
+      "summary": "CP287 pin source test có đúng declaration/external manifest và blob ngay lần công bố d5f9218. Checker mở rộng hẹp root integration tests/*.rs dùng cùng original-publication guard;63regressions pass, không hồi phục arbitrary later bytes.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/checkpoints/README.md#publication-bound-source-history",
+      "evidence": [
+        "HIST291-0008",
+        "HIST291-0013",
+        "HIST291-0012"
+      ],
+      "limits": "Không đổi record/evidence/audit/runtime cũ hoặc native/G1 acceptance; nested fixture/raw/build/local/binary vẫn strict."
+    }
+  ],
+  "verification": [
+    {
+      "check": "63checkpoint tests and exact original CP287 integration-test declaration/blob",
+      "result": "pass",
+      "evidence": [
+        "HIST291-0008",
+        "HIST291-0013",
+        "HIST291-0012"
+      ],
+      "limits": "Full new exact-head raw/history/CI still mandatory before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP291-integration-test-history.json",
+      "bytes": 3667,
+      "sha256": "6451a1e83e27bbd3cad83b72a8ac47eaad5801bd5dc2801868fabf7c6fa0ab0a",
+      "count": 16
+    }
+  ],
+  "delta": {
+    "added": [
+      "Narrow publication-bound root Rust integration-test source verification and negative tests."
+    ],
+    "corrected": [
+      "CP290 full-check source-test mismatch against CP287, with exact original blob provenance."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "Exact-head raw/history và CI trước merge PR392; không bỏ qua failed full check.",
+    "G1 adapter native giữ nguyên; G1 UI/terrain/item/map khác, M6 serving persistence và M8 còn theo dashboard."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Deliver G1 adapter PR392 after corrected exact-head local/history/CI; continue G1 UI map selection and M6 backend/serving independently per PLAN.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T15:12:42.756924+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo provenance correction and manual serious-contradiction audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Source-test provenance correction only; runtime/gate scopes unchanged."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Source-test provenance correction only; runtime/gate scopes unchanged."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Source-test provenance correction only; runtime/gate scopes unchanged."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Source-test provenance correction only; runtime/gate scopes unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Source-test provenance correction only; runtime/gate scopes unchanged."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "No wire/authority changes from checker correction."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "Gameplay unknowns and tests unchanged; checker defect is recorded in provenance metadata."
+    },
+    {
+      "path": "docs/evidence/checkpoints/integration-test-source-correction.json",
+      "state": "updated",
+      "reason": "Exact first-publication proof and failed full-check/negative test locator."
+    }
+  ],
+  "completed_feature_groups": []
+}

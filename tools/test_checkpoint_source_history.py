@@ -76,6 +76,31 @@ class SourceHistoryTests(unittest.TestCase):
         path.write_text('new Rust source\n')
         self.assertTrue(self.verify(item)[0])
 
+    def test_rust_integration_test_source_requires_exact_publication_not_fixture_or_later_blob(self):
+        item, path = self.fixture('rust/crates/kr-wire/tests/native_start_vectors.rs', external=True)
+        later = b'later integration test source\n'
+        path.write_bytes(later)
+        self.commit()
+        path.write_text('current integration test source\n')
+        errors, warnings, checked, missing = self.verify(item)
+        self.assertEqual((errors, checked, missing), ([], 1, 0))
+        self.assertTrue(any('HISTORICAL SOURCE VERIFIED' in w for w in warnings))
+        later_pin = item | dict(bytes=len(later), sha256=hashlib.sha256(later).hexdigest())
+        self.assertTrue(self.verify(later_pin)[0])
+        self.assertTrue(checker.verify_evidence_item(item, self.root, True, 'CP002')[0])
+        self.assertTrue(self.verify(item | dict(kind='artifact'))[0])
+        for relative in ['rust/crates/kr-wire/tests/fixtures/vector.rs',
+                         'rust/crates/kr-wire/tests/native.bin',
+                         'rust/crates/kr-wire/tests/../fixtures/vector.rs']:
+            self.assertIsNone(checker.historical_checkpoint_source(
+                self.root, relative, item['sha256'], item['bytes'], 'CP001'))
+
+    def test_rust_integration_test_broken_publication_manifest_cannot_be_rescued(self):
+        item, path = self.fixture('rust/crates/kr-wire/tests/native_start_vectors.rs',
+                                  external=True, broken_reference=True)
+        path.write_text('new test source\n')
+        self.assertTrue(self.verify(item)[0])
+
     def test_rust_fixture_and_build_tree_are_not_source_history(self):
         item, path = self.fixture('rust/target/room.rs')
         path.write_text('changed build artifact\n')

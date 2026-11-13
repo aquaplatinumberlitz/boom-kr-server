@@ -33,11 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP290: adapter map đã qua byte baseline và trận Factory07 trên client KR thật.**
-Profile pack giữ nguyên packet ExVillage01; Factory07 đã qua lookup tên, loading, spawn, hai kết quả/reset và vòng tiếp
-trên Wine. [Contract/giới hạn](docs/protocol/load-phase.md#rust-map-profile-adapter),
-[bằng chứng](docs/evidence/rust-service/g1-map-adapter.json). Đây là lát adapter của G1; terrain, item, chọn map trong phòng
-và các map còn lại vẫn mở. M6 đang làm backend trên nhánh riêng, chưa nghiệm thu đường kết quả/persistence.
+**CP291: sửa kiểm provenance source test tích hợp, giữ nguyên bằng chứng Factory07.**
+Checker nay kiểm source test Rust đã pin bằng đúng declaration và blob tại commit công bố checkpoint gốc;
+[giới hạn/correction](docs/evidence/checkpoints/integration-test-source-correction.json). Không sửa checkpoint/raw cũ.
+Lát adapter G1 đã có byte baseline và native Factory07; [contract](docs/protocol/load-phase.md#rust-map-profile-adapter)
+giữ giới hạn terrain/item, chọn map và các map còn lại. M6 backend đang ở nhánh riêng, chưa nối native persistence.
 Theo [Bảng điều hành](docs/PLAN.md#dashboard), tiếp G1 song song M6 rồi M8; transport mới chưa kiểm Internet thật.
 
 ## Bắt đầu

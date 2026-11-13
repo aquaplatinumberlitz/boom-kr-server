@@ -1,0 +1,46 @@
+{
+  "id": "AUD107",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP291",
+  "recorded_utc": "2026-11-13T15:12:42.756924+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/integration-test-source-correction.json",
+    "tools/check_checkpoints.py",
+    "tools/test_checkpoint_source_history.py",
+    "local/research/codex/g1-test-source-publication-proof.json",
+    "local/research/codex/g1-test-source-history-tests-r1.txt",
+    "local/research/codex/g1-map-adapter-exact-head-checkpoints.txt"
+  ],
+  "method": "Đọc core docs/source verification path, full-check failure và exact original CP287 publication pin. Đối chiếu complete-record external manifest và Git blob tại d5f9218; checker mới chỉ thêm root tests/*.rs, giữ strict nested fixture/raw/local/build/artifact.63positive/negative regressions pass. Không sửa complete CP287/CP290 hoặc old evidence/audit.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP290 exact-head checker từ chối native_start_vectors.rs đã đổi vì tests/ không thuộc source history hồi phục.",
+      "correction": "Exact CP287 publication blob đúng2882bytes/SHA3bfff9… còn nguyên; áp cùng original-publication verifier cho root Rust integration-test source. Không nhận byte từ commit sau.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "docs/evidence/checkpoints/integration-test-source-correction.json",
+        "docs/evidence/checkpoints/README.md#publication-bound-source-history"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Mở toàn tests/ có thể lẫn fixture/raw và tạo fallback quá rộng.",
+      "correction": "Chỉ rust/crates/*/tests/*.rs đúng cấp; nested fixtures, non-Rust data, traversal, artifact kind/bad manifest/wrongCP/later-only source từ chối bằng tests.",
+      "fixed_in": [
+        "tools/test_checkpoint_source_history.py",
+        "docs/evidence/checkpoints/integration-test-source-correction.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Exact-head raw/history và CI trước merge PR392; không bỏ qua failed full check.",
+    "G1 adapter native giữ nguyên; G1 UI/terrain/item/map khác, M6 serving persistence và M8 còn theo dashboard."
+  ]
+}
