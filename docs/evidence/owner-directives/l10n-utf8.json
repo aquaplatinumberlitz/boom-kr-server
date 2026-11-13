@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-13T00:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án nói trong phiên Claude Code ngày 2026-11-13: \"tao quyết định đưa mọi chữ về UTF-8 như PopTag\".",
+  "fact": "So tĩnh cho thấy client KR 00967 đổi chuỗi theo một biến bảng mã của engine và bị khóa ở bảng mã 949. Client PopTag 0.7.8 (build 2010 của cùng engine, do bên ngoài sửa) chuyển hướng 63 chỗ gọi sang đoạn mã dùng UTF-8 và phát kèm bốn bộ font. Chưa có lượt chạy nào; đoạn mã UTF-8 của PopTag chưa được đọc kỹ.",
+  "decision": "Đợt L (đa ngôn ngữ Hàn/Việt/Anh) đưa mọi chữ của client về UTF-8 theo cách của PopTag, không đổi bảng mã theo từng ngôn ngữ. Server lưu và chuyển tên, tiêu đề phòng và chat dưới dạng UTF-8 cho client đã vá.",
+  "limits": "Chỉ áp dụng cho đợt L, mở sau khi đạt đích giai đoạn 1. Giai đoạn 1 vẫn dùng client gốc với bảng mã 949 và không đổi packet đã đo. Bản vá làm trên bản copy hoặc áp lúc chạy; client, pack và database IDA gốc giữ nguyên. Mã và dữ liệu của PopTag chỉ dùng làm mẫu đọc tĩnh; không chạy client PopTag khi còn đường ra mạng và không chép binary của nó vào repo. Quyền dùng chữ tiếng Anh lấy từ PopTag chưa được công ty xác nhận.",
+  "plan": "docs/PLAN.md#full-game-roadmap",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}
