@@ -29,9 +29,8 @@ Phân tích chạy trên bản copy của exe và database; file gốc không b�
    146/146 chữ cái tiếng Việt dựng sẵn (thường và hoa) có hình, cùng đủ 11.172 chữ Hàn. Ô chữ của KR là 12×12 điểm,
    của VN là 12×16, nên chữ hoa có hai tầng dấu trên font KR sẽ chật.
 
-Hệ quả: tiếng Việt trên client 00967 **không cần viết thêm bộ vẽ chữ hay font**. Cần một bản vá nhỏ trên bản copy
-của exe để đổi bảng mã và mã ngôn ngữ, cộng dữ liệu chữ đã dịch. Tiếng Anh không cần vá exe: chữ ASCII hiển thị đúng
-ngay ở bảng mã 949.
+Hệ quả: tiếng Việt trên client 00967 **không cần viết thêm bộ vẽ chữ hay font**. Đường ngắn nhất là đổi bảng mã và mã
+ngôn ngữ; chủ dự án đã chọn đường khác, [đưa mọi chữ về UTF-8](#utf8), để người chơi khác ngôn ngữ đọc được chữ của nhau.
 
 ## Địa chỉ đã đọc
 
@@ -94,24 +93,58 @@ nhánh `codex/poptag-english-catalog`, file `l10n/catalog_en.csv`. Mọi dòng l
 Trong 6.184 dòng có 102 dòng nhiều biến thể phải chọn tay và 34 dòng lệch tham số định dạng. Phần thiếu phải
 dịch mới.
 
+**Rà độ phủ ngày 13/11** (đọc lại toàn bộ 87 pack và các file lẻ của client, độc lập với công cụ trích):
+
+- Các nguồn đã trích (cache chuỗi, `ClientString`, tên map, 610 tên vật phẩm, 5 tên kênh) được lấy đủ.
+- Còn ghép thêm được 199 dòng nếu so ID không phân biệt hoa thường; phải duyệt tay.
+- 610 tên vật phẩm tiếng Anh chưa có chỗ ghép: catalog Hàn–Việt hiện không có tên vật phẩm của KR.
+- Chưa trích: 61 tên hiệu ứng trong `Swish/Catalog` và chữ giao diện viết cứng trong `PopTagDLL.dll` (cỡ vài trăm câu,
+  thuộc tính năng riêng của PopTag, không có ID).
+- Không có trong client: chữ nhiệm vụ (script chỉ gọi ID, chữ do server gửi), chữ tiếng Anh cho chuỗi trong exe (exe
+  của PopTag vẫn giữ tiếng Hàn), `Help` và mô tả ô map tự tạo (vẫn là tiếng Hàn).
+- Ảnh có chữ chưa ai đụng tới: 1.187 trong 3.038 ảnh nghi có chữ của KR có entry cùng tên trong pack PopTag; chưa so
+  nội dung ảnh.
+
 **Giới hạn.** Ghép theo ID không chứng minh hai bản cùng nghĩa: cùng ID có thể đổi nội dung sau mười sáu năm. Chưa tách
 được chữ nào của bản Bắc Mỹ gốc, chữ nào do nhóm sửa client viết; trước khi phát hành phải có ý kiến của công ty về
 quyền dùng.
 
+<a id="utf8"></a>
+
+## Hướng đã chốt: mọi chữ về UTF-8
+
+Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), đợt L đưa mọi chữ của client về UTF-8 như
+[client PopTag](#poptag), không đổi bảng mã theo từng ngôn ngữ. Hệ quả:
+
+- **Một bản vá chung cho cả ba ngôn ngữ.** Khác nhau giữa Hàn, Việt, Anh chỉ còn là dữ liệu: bảng chuỗi, font và ảnh
+  có chữ. Người chơi khác ngôn ngữ đọc được tên, tiêu đề phòng và chat của nhau.
+- **Chỗ phải vá ở 00967** là các hàm đã định vị ở bảng trên: đổi byte sang Unicode `0x149A740`, đổi ngược `0x149A6D0`,
+  và hai hàm "ký tự hai byte" `0x149A420`, `0x149A480` (UTF-8 có ký tự hai và ba byte nên phép cắt chuỗi, đếm ký tự và
+  di chuyển con trỏ phải đổi theo). Nhánh 1258 và bước ghép dấu có sẵn không còn cần.
+- **Server đổi theo.** Tên, tiêu đề phòng và chat lưu và chuyển dưới dạng UTF-8; chuỗi server gửi cũng là UTF-8. Dữ
+  liệu đã lưu theo bảng mã 949 phải chuyển một lần.
+- **Tiếng Hàn không còn là "không tốn việc":** bảng chuỗi tiếng Hàn phải chuyển mã sang UTF-8, làm bằng máy.
+- **Chọn ngôn ngữ ở bước mở game.** Trình mở game chọn bộ dữ liệu và áp bản vá; không thêm mục chọn vào menu của
+  client. Lý do: client nạp bảng chuỗi, font và ảnh một lần lúc khởi động; exe gốc bị đóng gói nên bản vá nhiều khả năng
+  phải áp lúc chạy, tức là đằng nào cũng cần trình mở game; thêm màn hình mới vào giao diện client là việc dịch ngược
+  riêng. Đổi ngôn ngữ có hiệu lực ở lần mở game sau.
+
 ## Chưa biết, phải đo khi mở đợt L
 
-- **Đổi bảng mã theo ngôn ngữ hay đưa mọi chữ về UTF-8.** Đổi bảng mã (1258 cho tiếng Việt) là bản vá nhỏ nhưng hai
-  người khác ngôn ngữ không đọc được chữ của nhau. UTF-8 như [client PopTag](#poptag) giải quyết việc đó nhưng phải vá
-  nhiều chỗ hơn và server cũng phải đổi theo. Chọn sau khi đọc kỹ `.u8code`.
-- **Vá ở mức nào.** Chỉ đổi bảng mã và mã ngôn ngữ là hẹp nhất. Đổi cả vùng sang Việt sẽ bật 201 nhánh riêng của vùng
-  Việt, có thể đổi luồng đăng nhập, giao diện và packet đã đo; không làm nếu chưa có lý do.
-- **Client có lọc bảng chuỗi theo mã ngôn ngữ không.** Mỗi mục trong `ClientString` của pack mang mã 1042; nếu client
-  lọc thì bảng tiếng Việt phải mang 1066.
-- **134 chuỗi nằm trong exe** vẫn là byte tiếng Hàn và sẽ hiện sai ở bảng mã 1258.
-- **Chữ do người chơi gõ.** Tên, tiêu đề phòng và chat đi qua server dưới dạng byte theo bảng mã của người gửi. Hai
-  người dùng hai ngôn ngữ sẽ thấy chữ của nhau sai, trừ khi server chuyển mã theo từng người nhận hoặc giới hạn ký tự.
-- **Gõ tiếng Việt trong client** (ô chat, tên phòng) chưa xem đường nhập.
+- **Đoạn mã UTF-8 của PopTag làm gì ở từng chỗ.** Đọc kỹ `.u8code`, `.u8data`, `.vkinp` và 63 chỗ gọi trong build 2010,
+  rồi tìm chỗ tương ứng ở 00967. Đây là việc đầu tiên của đợt.
+- **Áp bản vá vào 00967 bằng cách nào.** Exe gốc bị đóng gói và image đã unpack không có bảng import, nên chưa có file
+  exe vá sẵn chạy được; phương án đang nghĩ tới là vá trong bộ nhớ lúc mở game.
+- **Giới hạn độ dài tính theo byte.** Chữ Hàn dài ba byte ở UTF-8 thay vì hai, chữ Việt có dấu dài hai hoặc ba byte. Tên,
+  tiêu đề phòng và chat có giới hạn trong client và trong packet; phải đo từng trường.
+- **Client có lọc bảng chuỗi theo mã ngôn ngữ không.** Mỗi mục trong `ClientString` của pack mang mã 1042.
+- **134 chuỗi nằm trong exe** là byte theo bảng mã 949 và sẽ hiện sai nếu đọc như UTF-8; phải vá hoặc cho đi đường riêng.
+- **Gõ tiếng Việt và tiếng Hàn trong client** (ô chat, tên phòng) sau khi vá: chưa xem đường nhập.
 - **Dùng font của client VN** (ô 12×16) trong client KR để chữ có dấu dễ đọc hơn: hàm nạp đọc kích thước từ header và
   [client PopTag](#poptag) phát kèm đúng bộ font đó cho build 2010, nhưng bố cục giao diện của 00967 có thể giả định
   dòng cao 12 điểm.
-- **Kiểm toàn vẹn** của client với exe và file chữ đã thay.
+- **Server biết ngôn ngữ của từng người bằng cách nào** để gửi đúng bảng chuỗi: lưu theo account hay trình mở game báo
+  lúc đăng nhập.
+- **Kiểm toàn vẹn** của client với mã đã vá và file chữ đã thay.
+- **Không đổi vùng.** Đổi vùng sang Việt sẽ bật 201 nhánh riêng của vùng Việt, có thể đổi luồng đăng nhập, giao diện và
+  packet đã đo; không làm nếu chưa có lý do.
