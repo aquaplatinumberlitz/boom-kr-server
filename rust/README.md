@@ -492,3 +492,8 @@ CP270 [R1g](../docs/PROTOCOL.md#rust-r1g-admission): `max_connections`1..1024, `
 Opt-in `account_admission.persist_character` nối preference schema3 vào room/Start cho catalog nhân vật đã đo.
 [Contract, ownership và native relogin](../docs/protocol/auth-session.md#rust-persistent-character).
 Không suy lịch sử trận đã được serving lưu từ opt-in này; M6 journal integration còn riêng.
+
+Opt-in `account_admission.persist_matches` dùng journal hữu hạn để commit trước Start/kết quả trong DB managed
+player round. Bật cùng `persist_character` cho persistence giai đoạn1; cả hai mặc định tắt ở config cũ.
+[Contract, lỗi và nghiệm thu](../docs/protocol/life-results.md#rust-match-journal-serving). Restart hủy vòng dở,
+không restore trận; schema3 cần backup/restore theo M8, không downgrade DB.

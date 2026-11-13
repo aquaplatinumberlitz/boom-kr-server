@@ -59,6 +59,8 @@ pub(crate) fn validate_projection(
 pub struct Config {
     #[serde(default)]
     pub persist_character: bool,
+    #[serde(default)]
+    pub persist_matches: bool,
     pub database: PathBuf,
     pub launch_socket: PathBuf,
     pub launch_ttl_seconds: u64,
@@ -81,7 +83,8 @@ fn default_worker_queue_capacity() -> usize {
 }
 impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
-        if (self.persist_character && self.profile_mode != ProfileMode::DatabaseZero)
+        if ((self.persist_character || self.persist_matches)
+            && self.profile_mode != ProfileMode::DatabaseZero)
             || !(30..=120).contains(&self.launch_ttl_seconds)
             || self.database == self.launch_socket
             || !(1..=64).contains(&self.worker_queue_capacity)
@@ -150,6 +153,7 @@ impl Active {
     }
 }
 pub(crate) struct Owner {
+    pub(crate) boot_epoch: Option<i64>,
     worker: Worker,
     live_worker: Option<Worker>,
     pub active: Active,
@@ -183,15 +187,19 @@ impl Owner {
         )
         .await
         .map_err(|e| io::Error::other(format!("account worker startup: {e:?}")))?;
-        if projection.is_some() {
-            worker
-                .client()
-                .try_begin_instance()
-                .map_err(|e| io::Error::other(format!("account instance startup: {e:?}")))?
-                .wait()
-                .await
-                .map_err(|e| io::Error::other(format!("account instance start: {e:?}")))?;
-        }
+        let boot_epoch = if projection.is_some() {
+            Some(
+                worker
+                    .client()
+                    .try_begin_instance()
+                    .map_err(|e| io::Error::other(format!("account instance startup: {e:?}")))?
+                    .wait()
+                    .await
+                    .map_err(|e| io::Error::other(format!("account instance start: {e:?}")))?,
+            )
+        } else {
+            None
+        };
         let mut bridge = match Bridge::new(
             worker.client(),
             if projection.is_some() {
@@ -221,6 +229,7 @@ impl Owner {
             None
         };
         Ok(Self {
+            boot_epoch,
             active: Active {
                 authenticated: None,
                 bridge,

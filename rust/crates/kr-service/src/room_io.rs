@@ -246,6 +246,28 @@ pub(crate) fn load_player_round(
 }
 
 pub type Shared = Arc<Mutex<Runtime>>;
+pub(crate) fn install_journal(
+    shared: &Shared,
+    owner: crate::match_journal::Owner,
+) -> io::Result<()> {
+    let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
+    if runtime.journal.is_some()
+        || !runtime.channels.is_empty()
+        || runtime.rules.result != ResultPolicy::Players
+        || runtime.public_key.is_none()
+    {
+        return Err(err("journal requires pristine managed player room"));
+    }
+    runtime.journal = Some(owner);
+    Ok(())
+}
+pub(crate) fn cancel_journal(shared: &Shared) -> io::Result<()> {
+    let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
+    if let Some(journal) = &mut runtime.journal {
+        journal.cancel(crate::accounts::MatchEndReason::ServerShutdown)?;
+    }
+    Ok(())
+}
 pub(crate) fn install_authenticated(
     shared: &Shared,
     owner: crate::authenticated_room_relay::Owner,
@@ -305,6 +327,7 @@ pub enum Guard {
     },
 }
 pub struct Batch {
+    pub(crate) journal: Option<crate::match_journal::Ticket>,
     origin: Option<(Arc<()>, u32, u64)>,
     pub guard: Guard,
     pub due: Instant,
@@ -318,6 +341,7 @@ pub struct Batch {
     pub departure_complete: Option<(Membership, Membership, u64)>,
 }
 pub struct Runtime {
+    journal: Option<crate::match_journal::Owner>,
     public_key: Option<crate::room_registry::RoomKey>,
     managed_round: Option<Arc<ManagedRound>>,
     relay: Option<crate::room_relay::Owner>,
@@ -587,6 +611,7 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
     }
     model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
+        journal: None,
         public_key: None,
         managed_round: None,
         relay: None,
@@ -647,6 +672,7 @@ pub(crate) fn fork(
     rules.player_choices = player_choices;
 
     Ok(Arc::new(Mutex::new(Runtime {
+        journal: None,
         public_key: Some(key),
         managed_round,
         relay: None,
@@ -799,6 +825,7 @@ impl Runtime {
         packets: Vec<(String, Reply)>,
     ) -> Batch {
         Batch {
+            journal: None,
             origin: None,
             guard: Guard::Member(key, round),
             due: Instant::now() + Duration::from_millis(delay),
@@ -820,6 +847,7 @@ impl Runtime {
         packets: Vec<(String, Reply)>,
     ) -> Batch {
         Batch {
+            journal: None,
             origin: None,
             guard: Guard::Lobby {
                 identity: id,
@@ -835,6 +863,62 @@ impl Runtime {
             outcome_complete: None,
             abort_return_complete: None,
             departure_complete: None,
+        }
+    }
+    fn journal_start(&self, next: &Room) -> io::Result<Option<crate::accounts::MatchStart>> {
+        if self.journal.is_none() || self.model.phase != Phase::Idle {
+            return Ok(None);
+        }
+        let Phase::Loading { round, .. } = next.phase else {
+            return Ok(None);
+        };
+        let room = self
+            .public_key
+            .ok_or_else(|| err("journal requires room key"))?;
+        let (map_code, name) = wire::start121_map(self.body(Template::Start121))?;
+        let players = next
+            .participants
+            .values()
+            .map(|p| {
+                let member = &p.member;
+                let authority = self
+                    .channels
+                    .get(&member.key.identity)
+                    .filter(|c| c.connection == member.key.connection)
+                    .and_then(|c| c.relay_authority.as_ref())
+                    .filter(|a| a.owns(member.key.identity, member.key.connection))
+                    .ok_or_else(|| err("journal participant is not current account owner"))?;
+                let player = authority.player();
+                Ok(crate::accounts::MatchParticipant {
+                    account_id: player.account_id,
+                    player_id: player.player_id,
+                    slot: member.slot,
+                    character_key: member
+                        .character
+                        .ok_or_else(|| err("journal missing chosen character"))?,
+                    team: member.team,
+                })
+            })
+            .collect::<io::Result<Vec<_>>>()?;
+        Ok(Some(crate::accounts::MatchStart {
+            key: crate::accounts::MatchKey {
+                boot_epoch: self.journal.as_ref().expect("journal").epoch(),
+                room_session: room.session,
+                room_id: room.id.0,
+                room_generation: room.generation.try_into().map_err(io::Error::other)?,
+                round: round.try_into().map_err(io::Error::other)?,
+            },
+            map_code,
+            map_name: String::from_utf8(name).map_err(io::Error::other)?,
+            started_at: crate::match_journal::utc()?,
+            players,
+        }))
+    }
+    fn journal_departed(&mut self, key: Membership, exit: crate::accounts::MatchExit) {
+        if let Some(slot) = self.model.participants.get(&key).map(|p| p.member.slot)
+            && let Some(journal) = &mut self.journal
+        {
+            journal.departed(slot, exit);
         }
     }
     // Reserve every recipient queue entry before publishing any state or batch.
@@ -860,8 +944,41 @@ impl Runtime {
         if let Some(authenticated) = &mut self.authenticated {
             authenticated.transition(&next)?;
         }
+        let begun = self.journal_start(&next)?;
+        let ending = self.journal.is_some()
+            && matches!(self.model.phase, Phase::Armed { .. })
+            && matches!(next.phase, Phase::Ending { .. });
+        let winner = if ending {
+            Some(
+                crate::four_results::winner(&self.model, Instant::now())
+                    .ok_or_else(|| err("journal missing current winner"))?,
+            )
+        } else {
+            None
+        };
+        let aborting = self.journal.is_some()
+            && (next.members.is_empty()
+                || (matches!(
+                    self.model.phase,
+                    Phase::Loading { .. } | Phase::Armed { .. }
+                ) && next.phase == Phase::Idle));
+        if let Some(journal) = &mut self.journal {
+            if let Some(start) = begun {
+                journal.begin(start)?;
+            }
+            if let Some(team) = winner {
+                journal.finish(team)?;
+            } else if aborting {
+                journal.cancel(if next.members.is_empty() {
+                    crate::accounts::MatchEndReason::NoPlayers
+                } else {
+                    crate::accounts::MatchEndReason::LoadingAborted
+                })?;
+            }
+        }
         self.model = next;
-        for (permit, batch) in reserved {
+        for (permit, mut batch) in reserved {
+            batch.journal = self.journal.as_ref().and_then(|j| j.ticket());
             permit.send(batch);
         }
         Ok(())
@@ -992,6 +1109,7 @@ impl Runtime {
             relay.invalidate();
         }
         if let Ok(m) = self.member(id, connection) {
+            self.journal_departed(m.key, crate::accounts::MatchExit::Disconnected);
             let mut next = self.model.clone();
             if self.rules.departure == DeparturePolicy::ContinuePlayers
                 && matches!(next.phase, Phase::Ending { .. })
@@ -1003,6 +1121,9 @@ impl Runtime {
                     authenticated.invalidate();
                 }
                 self.model = next;
+                if let Some(journal) = &mut self.journal {
+                    let _ = journal.cancel(crate::accounts::MatchEndReason::NoPlayers);
+                }
                 self.channels.clear();
                 return;
             }
@@ -1014,6 +1135,9 @@ impl Runtime {
                     authenticated.invalidate();
                 }
                 self.model = next;
+                if let Some(journal) = &mut self.journal {
+                    let _ = journal.cancel(crate::accounts::MatchEndReason::NoPlayers);
+                }
                 self.channels.clear();
                 return;
             }
@@ -1052,11 +1176,17 @@ impl Runtime {
                                 authenticated.invalidate();
                             }
                             self.model = next;
+                            if let Some(journal) = &mut self.journal {
+                                let _ = journal.cancel(crate::accounts::MatchEndReason::NoPlayers);
+                            }
                             self.channels.clear();
                         }
                         self.abort = Some(job);
                     }
                     Err(_) => {
+                        if let Some(journal) = &mut self.journal {
+                            let _ = journal.cancel(crate::accounts::MatchEndReason::NoPlayers);
+                        }
                         self.channels.clear();
                     }
                 }
@@ -1079,6 +1209,9 @@ impl Runtime {
                         authenticated.invalidate();
                     }
                     self.model = next;
+                    if let Some(journal) = &mut self.journal {
+                        let _ = journal.cancel(crate::accounts::MatchEndReason::NoPlayers);
+                    }
                     self.channels.clear();
                 }
                 self.requested.remove(&m.key);
@@ -1108,9 +1241,15 @@ impl Runtime {
                             authenticated.invalidate();
                         }
                         self.model = next;
+                        if let Some(journal) = &mut self.journal {
+                            let _ = journal.cancel(crate::accounts::MatchEndReason::NoPlayers);
+                        }
                         self.channels.clear();
                     }
                 } else {
+                    if let Some(journal) = &mut self.journal {
+                        let _ = journal.cancel(crate::accounts::MatchEndReason::NoPlayers);
+                    }
                     self.channels.clear();
                 }
                 self.requested.remove(&m.key);
@@ -1140,6 +1279,9 @@ impl Runtime {
                             authenticated.invalidate();
                         }
                         self.model = next;
+                        if let Some(journal) = &mut self.journal {
+                            let _ = journal.cancel(crate::accounts::MatchEndReason::NoPlayers);
+                        }
                         self.channels.clear();
                     }
                 }
@@ -1189,6 +1331,20 @@ impl Runtime {
     }
 }
 impl Session {
+    pub(crate) async fn wait_journal(&self) -> io::Result<()> {
+        let ticket = {
+            self.shared
+                .lock()
+                .map_err(|_| err("room unavailable"))?
+                .journal
+                .as_ref()
+                .and_then(|j| j.ticket())
+        };
+        if let Some(ticket) = ticket {
+            ticket.wait().await?;
+        }
+        Ok(())
+    }
     /// Companion control is independent of native loading. Do not publish 153
     /// before every authenticated peer has bound its current loopback snapshot.
     /// No room lock crosses the wait; packet() rechecks membership afterwards.
@@ -1373,6 +1529,14 @@ impl Session {
     }
     pub fn tick(&self) -> io::Result<()> {
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        if r.journal
+            .as_ref()
+            .map(|j| j.ready())
+            .transpose()?
+            .is_some_and(|ready| !ready)
+        {
+            return Ok(());
+        }
         if r.abort.is_some() {
             return r.abort_refresh();
         }
@@ -2677,6 +2841,9 @@ impl Session {
             }
             _ => return Err(err("unsupported room request")),
         }
+        if let Some(key) = remove_requested {
+            r.journal_departed(key, crate::accounts::MatchExit::Left);
+        }
         if let Err(error) = r.publish(next, effects) {
             if let Some(owner) = &mut r.authenticated {
                 owner.invalidate();
@@ -2811,6 +2978,7 @@ mod tests {
         let (ta, ra) = mpsc::channel(8);
         let (tb, mut rb) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            journal: None,
             public_key: None,
             managed_round: None,
             relay: None,
@@ -2943,6 +3111,7 @@ mod tests {
         let (ta, mut ra) = mpsc::channel(2);
         let (tb, mut rb) = mpsc::channel(2);
         let mut runtime = Runtime {
+            journal: None,
             public_key: None,
             managed_round: None,
             relay: None,
@@ -3208,6 +3377,7 @@ mod four_abort_tests {
             inboxes.push((i, inbox));
         }
         let shared = Arc::new(Mutex::new(Runtime {
+            journal: None,
             public_key: None,
             managed_round: None,
             relay: None,
@@ -3510,6 +3680,7 @@ mod ninth_probe_tests {
         }
         let (sender, inbox) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            journal: None,
             public_key: None,
             managed_round: None,
             relay: None,
@@ -3640,6 +3811,7 @@ mod registry_foundation_tests {
     use crate::room_registry::{Registry, RoomId, RoomKey};
     fn empty(marker: u8) -> Shared {
         Arc::new(Mutex::new(Runtime {
+            journal: None,
             public_key: None,
             managed_round: None,
             relay: None,

@@ -15,6 +15,7 @@ mod life;
 pub mod lobby;
 mod logging;
 mod map_profile;
+mod match_journal;
 pub mod network;
 mod peer_routes;
 mod pickups;
@@ -383,7 +384,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         if two
             .account_admission
             .as_ref()
-            .is_some_and(|a| a.persist_character)
+            .is_some_and(|a| a.persist_character || a.persist_matches)
             && two
                 .managed_rooms
                 .as_ref()
@@ -815,6 +816,7 @@ async fn local_lobby_connection(
             if let Some(session) = &room_session
                 && room_io::Session::handles(packet.opcode)
             {
+                tokio::select! {_=stop.changed()=>return Ok(()),value=session.wait_journal()=>value?};
                 if let Some(account) = &mut account {
                     // Current room commands are activity. Literal opaque79 is
                     // observation-only and must not extend account idle expiry.
@@ -1017,6 +1019,15 @@ async fn local_lobby_connection(
             if !session.valid(&batch) {
                 emit(&log,stamp(start,json!({"event":"room_queued_dropped","connection":id,"reason":"membership_phase_generation"}))).await?;
                 continue;
+            }
+            if let Some(ticket) = &batch.journal {
+                tokio::select! {_=stop.changed()=>return Ok(()),value=ticket.wait()=>value?};
+                if let Some(account) = &mut account {
+                    tokio::select! {_=stop.changed()=>return Ok(()),value=account.authorize(false)=>value?};
+                }
+                if !session.valid(&batch) {
+                    continue;
+                }
             }
             for (alias, reply) in &batch.packets {
                 if !session.valid(&batch) {
@@ -1342,6 +1353,28 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
             return Err(error);
         }
     };
+    let journal = if profile
+        .config
+        .diagnostic_two_lobby
+        .as_ref()
+        .and_then(|c| c.account_admission.as_ref())
+        .is_some_and(|c| c.persist_matches)
+    {
+        let owner = account_owner.as_ref().expect("validated account owner");
+        let manager = match_journal::Manager::open(
+            owner.active.client.clone(),
+            owner.boot_epoch.expect("validated DB epoch"),
+        );
+        profile
+            .bound
+            .as_ref()
+            .and_then(|b| b.managed.as_ref())
+            .expect("validated managed rooms")
+            .install_journal(manager.factory())?;
+        Some(manager)
+    } else {
+        None
+    };
     let (log, events) = mpsc::channel::<Value>(256);
     let mut writer = tokio::spawn(logging::write_events(file, events, Duration::from_secs(2)));
     let mut writer_result = None;
@@ -1396,7 +1429,7 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
             },
             _=term.recv()=>break,
             _=account_health.tick(),if profile.accounts.is_some()=>{
-                if profile.accounts.as_ref().is_some_and(|a|a.client.is_closed()) {
+                if profile.accounts.as_ref().is_some_and(|a|a.client.is_closed()) || journal.as_ref().is_some_and(|j|!j.healthy()) {
                     failure=Some(io::Error::other("account worker unavailable"));break;
                 }
             },
@@ -1419,6 +1452,9 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
     if let Err(error) = outcome {
         failure = Some(error);
     }
+    if let Some(journal) = &journal {
+        journal.stopping();
+    }
     let _ = shutdown.send(true);
     accepted.close();
     while let Ok(pair) = accepted.try_recv() {
@@ -1435,6 +1471,16 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
         workers.abort_all();
         while listeners.join_next().await.is_some() {}
         while workers.join_next().await.is_some() {}
+    }
+    if let Some(journal) = journal {
+        if let Some(hub) = profile.bound.as_ref().and_then(|b| b.managed.as_ref())
+            && let Err(error) = hub.cancel_journals()
+        {
+            failure.get_or_insert(error);
+        }
+        if let Err(error) = journal.shutdown().await {
+            failure.get_or_insert(error);
+        }
     }
     if let Some(owner) = account_owner
         && let Err(error) = owner.shutdown().await

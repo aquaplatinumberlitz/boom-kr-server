@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import shutil
 import signal
+import sqlite3
 import socket
 import subprocess
 import sys
@@ -47,7 +48,9 @@ def main():
         parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--active-departure', action='store_true')
     parser.add_argument('--database-accounts', action='store_true', help='Create new DB accounts after readiness; use one transport IP and no per-account config')
+    parser.add_argument("--persist-matches", action="store_true", help="DB-owned match journal serving, with writer barriers before Start and result")
     args = parser.parse_args()
+    assert not args.persist_matches or args.database_accounts, "journal requires DB account mode"
     root = args.out.resolve()
     root.mkdir(parents=True, exist_ok=False, mode=0o700)
     cfg = json.loads(args.config.read_text())
@@ -66,6 +69,8 @@ def main():
     account = AccountFixture(args.admin, root, cfg)
     if args.database_accounts:
         two['account_admission'].update(profile_mode='database_zero', max_sessions=16)
+    if args.persist_matches:
+        two['account_admission']['persist_matches']=True
     config = root/'config.json'
     config.write_text(json.dumps(cfg, indent=2)+'\n')
     files = [args.binary, args.admin, config, args.config, args.baseline, Path(__file__), Path('tools/rust_account_fixture.py'), Path('tools/test_rust_managed_ownership.py'),
@@ -165,11 +170,21 @@ def main():
                 for _ in current:recipient.receive(110)
         choose(a,92,1,clients);choose(c,92,1,clients);choose(c,97,3,clients)
         cases.append('actual92_97_shapes_update_current_choices_and_team3_without_fixed_slot_stats')
+        def match_rows():
+            with sqlite3.connect(account.database) as db:
+                return db.execute('SELECT start_json,finish_json FROM matches ORDER BY id').fetchall()
         def ready_start(current,guests,expected):
             for guest in guests:
                 guest.send(95,codec.pack_fields([6],[4])+bytes(6)+codec.pack_fields([1,0],[1,4]))
                 for client in current:client.receive(110)
+            if args.persist_matches:
+                before=match_rows();writer=sqlite3.connect(account.database,isolation_level=None);writer.execute('BEGIN IMMEDIATE')
             a.send(104,bytes(20))
+            if args.persist_matches:
+                for client in current:client.quiet()
+                assert match_rows()==before,'no durable start yet under writer lock'
+                writer.execute('COMMIT');writer.close()
+                cases.append('real writer lock: no582/121 and no new match before release')
             for client in current:
                 client.receive(582);_,body=client.receive(121)
                 size=codec.read_fields(body[1:5],[4])[0];stream=_decode_bytes(body[5:5+size])
@@ -177,6 +192,12 @@ def main():
                 rows=[stream[54+i*26:80+i*26]for i in range(len(current))]
                 got=[(x[0],x[2],int.from_bytes(x[3:5],'little'),x[5])for x in rows]
                 assert got==expected,(got,expected)
+            if args.persist_matches:
+                begun=match_rows();assert len(begun)==len(before)+1 and begun[-1][1] is None
+                start=json.loads(begun[-1][0]);assert [(p['slot'],p['character_key'],p['team'])for p in start['players']]==[(r[0],r[2],r[3])for r in expected]
+                expected_owners={p['player_id']:p['account_id']for p in account.players}
+                assert all(expected_owners[p['player_id']]==p['account_id']for p in start['players'])
+                cases.append('Start121 observed only after exact current owned participant snapshot is durable')
             for row,client in zip(expected,current):
                 client.send(79,bytes.fromhex('5b5b' if row[2]==1 else '5b5a'));client.quiet()
             for slot,client in zip([x[0]for x in expected],current):
@@ -230,7 +251,15 @@ def main():
             c.send(127,report(kind,tick,2))
             a.receive(170)
             if not args.active_departure:b.receive(170)
+        if args.persist_matches:
+            writer=sqlite3.connect(account.database,isolation_level=None);writer.execute('BEGIN IMMEDIATE')
         time.sleep(.1);a.send(127,report(21,12,0))
+        if args.persist_matches:
+            time.sleep(8.4)
+            for client in clients:client.quiet()
+            assert match_rows()[0][1] is None,'result must not commit behind real writer lock'
+            writer.execute('COMMIT');writer.close()
+            cases.append('settled native-facing result175 withheld until DB commit under real writer pressure')
         for client in clients:
             client.sock.settimeout(15);_,body=client.receive(175);client.sock.settimeout(6)
             size=codec.read_fields(body[:4],[4])[0];stream=_decode_bytes(body[4:]);assert len(stream)==size
@@ -245,6 +274,11 @@ def main():
                 _,body=client.receive(107);assert codec.read_fields(body,[1,4,1])==[1,account.players[1]['wire_id'],0]
             for _ in clients:client.receive(110)
         cases.append('three_member_team_result_and_reset_current_rank_rows_only')
+        if args.persist_matches:
+            finish=json.loads(match_rows()[0][1]);assert {p['slot']:p['outcome']for p in finish['players']}=={0:'win',1:'win',2:'loss'}
+            assert finish['reason']==('forfeit'if args.active_departure else'elimination')
+            assert finish['players'][1]['exit']==('disconnected'if args.active_departure else'present')
+            cases.append('rank175 matches one durable outcome for every original participant, including departed winner')
         if not args.active_departure:
             b.send(86,b'');b.receive(241);b.receive(91)
             for peer in [a,c]:peer.receive(107);peer.receive(110)
@@ -262,7 +296,15 @@ def main():
         for peer in clients:peer.quiet()
         cases.append('sparse_slots0_2_next_Start_peer_current_generation_and_updated_character_budget_no_old_key')
         for client in clients:client.close()
-        clients.clear();os.killpg(process.pid,signal.SIGTERM);assert process.wait(timeout=6)==0;account.close()
+        clients.clear();os.killpg(process.pid,signal.SIGTERM);assert process.wait(timeout=12)==0;account.close()
+        if args.persist_matches:
+            rows=match_rows();assert len(rows)==2
+            assert json.loads(rows[0][1])==finish
+            cancelled=json.loads(rows[1][1]);assert cancelled['reason'] in ['no_players','server_shutdown'] and all(p['outcome']=='cancelled'for p in cancelled['players'])
+            with sqlite3.connect(account.database)as db:
+                assert db.execute('SELECT sum(reward) FROM match_players').fetchone()==(0,)
+                assert db.execute('PRAGMA quick_check').fetchone()==('ok',)and db.execute('PRAGMA foreign_key_check').fetchall()==[]
+            cases.append('next round old key denied; shutdown cancels only unfinished round, zero rewards and DB integrity')
 
     except Exception as exc:
         error = repr(exc)

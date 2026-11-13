@@ -1,0 +1,85 @@
+{
+  "id": "AUD110",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-m6-match-journal-serving"
+  ],
+  "completed_through": "CP294",
+  "recorded_utc": "2026-11-13T16:35:36.663394+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/m6-journal-serving.json",
+    "docs/protocol/life-results.md",
+    "docs/protocol/auth-session.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-service/src/match_journal.rs",
+    "rust/crates/kr-service/src/account_serving.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_service.rs",
+    "tools/test_rust_selected_players.py",
+    "local/research/codex/m6-journal-native-r1/journal-native-verification.json",
+    "local/research/codex/m6-journal-native-r2/journal-native-verification.json",
+    "local/research/codex/m6-journal-serving-tcp-r1/tcp/verification.json",
+    "local/research/codex/m6-journal-serving-kill-result-r3/verification.json",
+    "local/research/codex/m6-journal-serving-kill-start-recovery-r1/verification.json",
+    "local/research/codex/m6-journal-history-cli-r1/verification.json",
+    "local/research/codex/m6-pref-delivery-receipt.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence và source/raw; đối chiếu từng acceptance M6 thu hẹp.175workspace tests/fmt/clippy/build,4retained actual DB journal tests,16TCP serving groups với3DB accounts/common source/sparse next round. Writer lock trước Start và settled result bảo đảm không wire success trước commit. Two native Wine runs each two opposite outcomes/reset/third Start, saved character1/no92; second fresh login from exact first sealed DB preserves3history and adds3. Independent CRC/seq/captured Start/rank and native rows/stat/getters match DB account/slot/choice/map/outcome/reward0. Actual SIGKILL serving after121/175, DB/WAL snapshot before cleanup, restart cancelled/open vs unchanged complete; failed import/path/derived verifier retained separately. Two CLI history reads on native DB copy. PR394 exact-head/local/history/CI/preverified merge receipt checked.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Backend lịch sử chưa nối vào gameplay; native DB vẫn0 trận.",
+      "correction": "Opt-in journal with stable DB epoch/room/round snapshot, immutable batch ticket/current ownership fences, DB commit/readback trước121/175 và actual native DB/result/reset/fresh login. M6 thu hẹp đạt, không đóng phase1.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-journal-serving.json",
+        "docs/protocol/life-results.md#rust-match-journal-serving",
+        "docs/PLAN.md",
+        "rust/crates/kr-service/src/match_journal.rs",
+        "rust/crates/kr-service/src/room_io.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Duplicate/busy/kill/EOF có thể mất, trùng hoặc làm vòng dở thành thắng.",
+      "correction": "Same exact event/key/time across retry; real writer barriers and actual serving kills demonstrate durable record or cancelled open row. Departure retained with original participant snapshot; old/current round controls; shutdown/restart cancel only unfinished, zero reward.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-journal-serving.json",
+        "docs/protocol/life-results.md#rust-match-journal-serving",
+        "rust/crates/kr-service/src/match_journal.rs",
+        "tools/test_rust_selected_players.py"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Hai implementation hoặc process alive/log có thể bị gọi là native/contract đúng.",
+      "correction": "Native raw/capture/CRC/sequence/independent Start/rank parsing and native readers/getters correlated with actual DB; synthetic TCP/component/kill explicitly method=test. No encoder self-oracle, authority rewrite, Internet/load or G1 expansion claim.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-journal-serving.json",
+        "docs/protocol/life-results.md#rust-match-journal-serving",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Một failed wrapper/restart/verifier có thể được che thành pass.",
+      "correction": "Preserved initial import refusal, too-long Unix socket startup refusal after successful kill snapshot, test KDF Busy/compile/style and derived verifier shadow failure. Recovery reuses same sealed DB/WAL snapshot with new short-socket config; old result remains failed. Older setup/Back unknown still open.",
+      "fixed_in": [
+        "docs/evidence/rust-service/m6-journal-serving.json",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "G1 còn chọn map UI, kim/cứu, terrain/item các cỡ phòng, năm map ladder và nhân vật; không suy full gameplay từ M6.",
+    "M8 còn deployment authenticated companion Internet thật, packaging không local, config/budgets/load50/8, admin/metrics/restore/24h soak.",
+    "Own291 vẫn zero-profile, nhân vật room/Start chỉ0/1; không có account resume/match restore/history client wire/economy/inventory.",
+    "Journal serial/bounded retry5s và fatal health stop cần đo tải/DB latency ở M8. Intermittent setup/Back timeout cũ vẫn chưa rõ cause; lượt pass mới không chứng minh fix."
+  ]
+}

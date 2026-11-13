@@ -1,0 +1,231 @@
+{
+  "id": "CP294",
+  "previous": "CP293",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T16:35:36.663394+00:00",
+  "context_commit": "85084a8a409d8dd04fb04b785fbfb38b97021826",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/M6 thu hẹp: journal snapshot/current ownership có commit trước native Start/result, giữ exactly-once/reward0 qua DB busy/kill/restart/fresh login và history CLI không?",
+  "scope": "M6 giai đoạn1 acceptance: durable match journal and account character, zero reward. Native two Wine clients/virtual LAN; DB/process controls separately method=test. G1/M8 and phase1 remain open.",
+  "artifacts": [
+    {
+      "name": "M6-journal-native-service",
+      "sha256": "dcfa8b7b66ba82324666d1acadfab0a83f44656f90bb9528be9e67ca9ff6f0a4"
+    },
+    {
+      "name": "M6-journal-companion",
+      "sha256": "3dd0534849819849b41f8c67cbb96ee3e598deacad9c77bd10c6ec77ea67ce3f"
+    },
+    {
+      "name": "M6-journal-KR-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/life-results.md#rust-match-journal-serving",
+    "docs/evidence/rust-service/m6-journal-serving.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Hai native Wine runs: mỗi run có hai opposite rank/reset/Start3, matched current account/player/slot/character/team/map/round snapshots and outcomes in actual SQLite, zero rewards. Second fresh instance/login on exact first sealed DB preserves all3prior history rows and saved1/no92 while adding3new records.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/life-results.md#rust-match-journal-serving",
+      "evidence": [
+        "M6JOURNAL294-00009",
+        "M6JOURNAL294-00419",
+        "M6JOURNAL294-00908",
+        "M6JOURNAL294-00498",
+        "M6JOURNAL294-00987"
+      ],
+      "limits": "KR diagnostic copies/Wine/private virtual LAN only; no Internet/load/full G1/authority rewrite. Own291 still zero-profile; match/account resume not implemented."
+    },
+    {
+      "summary": "16actual TCP/SQLite serving groups: writer lock blocks582/121 and settled175 until matching DB commit, three arbitrary DB accounts/common source with departed winner, sparse next round old/current key and cancellation.4retained DB actor tests: stable retry/duplicate readback/conflict, no-player/shutdown and old ticket fence.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/life-results.md#rust-match-journal-serving",
+      "evidence": [
+        "M6JOURNAL294-00009",
+        "M6JOURNAL294-01443",
+        "M6JOURNAL294-01314",
+        "M6JOURNAL294-01013"
+      ],
+      "limits": "Synthetic TCP/component evidence does not replace native consumer proof. Journal budgets/fatal DB behavior still need operational/load checks M8."
+    },
+    {
+      "summary": "Actual serving SIGKILL immediately after121 preserves open row then same sealed DB/WAL copy cancels once at fresh readiness; SIGKILL immediately after175 preserves exact complete result. CLI history reads actual native DB copy by account and room.175workspace tests/fmt/clippy/build pass.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/life-results.md#rust-match-journal-serving",
+      "evidence": [
+        "M6JOURNAL294-00009",
+        "M6JOURNAL294-01162",
+        "M6JOURNAL294-01309",
+        "M6JOURNAL294-01153",
+        "M6JOURNAL294-00024",
+        "M6JOURNAL294-01449"
+      ],
+      "limits": "Original interrupted broad fixture remains declared expected failure, not full-suite pass. Too-long first restart socket failure preserved. No power-loss/filesystem/backup restore or client reconnect UX claim."
+    }
+  ],
+  "verification": [
+    {
+      "check": "175workspace tests, fmt, clippy -D warnings and locked workspace build",
+      "result": "pass",
+      "evidence": [
+        "M6JOURNAL294-01449",
+        "M6JOURNAL294-00022",
+        "M6JOURNAL294-00020",
+        "M6JOURNAL294-00017"
+      ],
+      "limits": "Native wire acceptance separately tied to binary/raw."
+    },
+    {
+      "check": "Native result/DB/fresh login plus TCP writer barriers, kills, zero reward/CLI and scoped acceptance matrix",
+      "result": "pass",
+      "evidence": [
+        "M6JOURNAL294-00009",
+        "M6JOURNAL294-00419",
+        "M6JOURNAL294-00908",
+        "M6JOURNAL294-01153",
+        "M6JOURNAL294-01309"
+      ],
+      "limits": "M6 thu hẹp only; phase1 G1/M8 remains."
+    },
+    {
+      "check": "Manual feature-group audit and PR394 exact-head/raw/history/CI/preverified merge-tree receipt",
+      "result": "pass",
+      "evidence": [
+        "M6JOURNAL294-00008",
+        "M6JOURNAL294-01450",
+        "M6JOURNAL294-00009"
+      ],
+      "limits": "This new exact head/local/history/CI required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP294-match-journal-serving.json",
+      "bytes": 392887,
+      "sha256": "847989f90fcbcafeb4eb7e57059cb5eed4f7f54afbbbd810b96f985ac2b560f3",
+      "count": 1472
+    }
+  ],
+  "delta": {
+    "added": [
+      "Bounded stable-event match journal with commit/readback gates before121/175 and no room lock over await.",
+      "Exact instance/room/round and account participant history; departed rows/cancellation/zero reward/shutdown lifecycle.",
+      "Native DB results/fresh login/history and real serving busy/kill/duplicate/stale/current controls; M6 scoped acceptance achieved."
+    ],
+    "corrected": [
+      "Derived verifier choices shadow fixed only in new derived report, raw unchanged.",
+      "Test setup KDF budget serialised; API/Admin compile/style failures retained.",
+      "Kill-start first restart path too long: new recovery on same sealed snapshot, no repeat native/kill or historical result rewrite."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "G1 còn chọn map UI, kim/cứu, terrain/item các cỡ phòng, năm map ladder và nhân vật; không suy full gameplay từ M6.",
+    "M8 còn deployment authenticated companion Internet thật, packaging không local, config/budgets/load50/8, admin/metrics/restore/24h soak.",
+    "Own291 vẫn zero-profile, nhân vật room/Start chỉ0/1; không có account resume/match restore/history client wire/economy/inventory.",
+    "Journal serial/bounded retry5s và fatal health stop cần đo tải/DB latency ở M8. Intermittent setup/Back timeout cũ vẫn chưa rõ cause; lượt pass mới không chứng minh fix."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp G1 UI map selection theo PLAN; chỉ RE chặn consumer còn thiếu. M6 thu hẹp đủ acceptance; M8 deployment/package/load/ops theo thứ tự, không suy phase1 done.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T16:35:36.663394+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo M6 journal-serving/native/process-controls self-check and manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "docs/protocol/life-results.md",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "M6 scoped journal serving/native acceptance/limits and remaining G1/M8; no broad catalog/gate inflation."
+    },
+    {
+      "path": "docs/evidence/rust-service/m6-journal-serving.json",
+      "state": "updated",
+      "reason": "Native/busy/kill/CLI/failures/build/raw/acceptance matrix metadata."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, immutable evidence, feature-group audit, privacy and PR/exact-head rules unchanged."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-m6-match-journal-serving"
+  ]
+}
