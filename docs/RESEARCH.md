@@ -124,16 +124,17 @@ prototype hai người. [Contract](protocol/udp-peer.md#rust-relay-endpoint-scop
 [evidence và reuse](evidence/rust-service/n1r-fixed2.json), [acceptance](PLAN.md#rust-relay).
 [Nền companion có xác thực](protocol/udp-peer.md#rust-authenticated-companion-foundation) đã có native control hai
 người/route tĩnh trong LAN. [Serving relay](protocol/udp-peer.md#rust-authenticated-serving-relay) đã nối quyền
-account/phòng, control từng vòng và có native bốn người; các ca còn lại ở dưới. Không mở lại N1b baseline hoặc RE toàn peer graph. Các câu hỏi bounded về KR chấp nhận reverse socket,
+account/phòng và control từng vòng; đã có native bốn/tám người, roster thưa và survivor sau EOF. Các ca còn lại ở dưới. Không mở lại N1b baseline hoặc RE toàn peer graph. Các câu hỏi bounded về KR chấp nhận reverse socket,
 hai chiều/hai vòng, stale tới cổng đã nghỉ và EOF/pastdue đã có kết quả; chỉ phần sau còn mở.
 
 | Unknown | Backend policy hiện có | Phép đo tối thiểu khi milestone cần |
 |---|---|---|
-| Spoof first datagram giữa session chung IP | Account cấp route, IP là restriction, pin tuple đầu; không nhận CRC/key là MAC | Chọn companion QUIC có pin/capability ngoài native wire; sai capability/route/replay đã kiểm transport. Owner session/channel đã nối và có native4 positive; còn đo spoof tại serving; TCP chung IP không thay native UDP isolation. |
+| Spoof first datagram giữa session chung IP | Account cấp route, IP là restriction, pin tuple đầu; không nhận CRC/key là MAC | Chọn companion QUIC có pin/capability ngoài native wire; sai capability/route/replay đã kiểm transport. Owner session/channel đã nối và có native4/8 positive; còn đo spoof tại serving; TCP chung IP không thay native UDP isolation. |
 | NAT rebinding hoặc lease hết hạn trong trận dài | Từ chối tuple mới, queue và lease có TTL hữu hạn | Đo migration/timeout với current positive nếu chọn hỗ trợ; hiện tại fail closed, không tự rebind. |
 | Port reuse/restart và gói cũ gửi vào cổng đang active | Prototype giữ cổng đã nghỉ; companion tái dùng public listener/route pool, giữ riêng proxy local theo session | Policy companion đã chọn và đo native snapshot4 với low8 lặp; còn ca vượt pool, exact stale/current qua service restart và budget session. Generation RAM không chặn raw UDP. |
 | Mọi loại UDP, PMTU và kích thước | Relay forward nguyên byte tối đa 255; không có authority gameplay | Chỉ đo type hoặc kích thước đang chặn G1/M7; không suy movement helper bao phủ toàn game. |
-| Relay bốn/tám người và nhiều phòng | Thuật toán n×(n−1), pool route hữu hạn; managed native4 đã có | Tiếp native8, sparse/departure và recipient isolation, rồi tải 50 người/8 phòng ở M8; số socket lý thuyết không là benchmark. |
+| Relay bốn/tám người và nhiều phòng | Thuật toán n×(n−1), pool route hữu hạn; managed native4/8 và sparse/departure đã có | Không lặp native4/8 hoặc sparse/departure. Tiếp negative/restart, rồi tải 50 người/8 phòng ở M8; số socket lý thuyết không là benchmark. |
+| Native59 ở một lượt relay8 | Lượt đầu A phát59, service từ chối unknown opcode/shape rồi đóng TCP; hai lượt sau không lặp. Không có contract được phép bỏ qua hoặc ACK59 | Chỉ khi tái hiện/chặn vận hành: trace thụ động general13ADD10/game13ADCC0 và input trước59, đối chứng current positive. Không suy CRC, relay hoặc sửa xong từ tương quan; raw/failure ở metadata native roster |
 | Nhịp pump, DB lease checks và overload | Bounded recv/send, poll hiện hành; không gia hạn idle | Đo latency/queue/DB budgets và fairness dưới workload đích, kể cả nonreader và DB lỗi, trước M8. |
 
 Không thêm Internet thật thành dependency ngầm của K6c/K7 đã nghiệm thu WAN giả lập hoặc yêu cầu Windows/hai máy vật lý.

@@ -1,0 +1,391 @@
+{
+  "schema": "kre-rust-relay-native-rosters-v1",
+  "checkpoint": "CP288",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/380",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+  "scope": "Native eight-player relay, ordinary vacancy next roster, active endpoint EOF with survivor play and next roster. N1R-b remains open.",
+  "context_commit": "32957de06dd7066c2ce22283ba2e7f2cca08d672",
+  "serving_baseline": "PR382/head d5f9218ac06a824dad612c19797fe54ee1e4814b; merged f1f2b893956178a4c68f82bc1e4537b654f7ac09",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "wine": "wine-10.0-20260425 (CachyOS)",
+  "environment": {
+    "kind": "Eight Wine clients and companions in separate virtual hosts; isolated LAN",
+    "outbound": "No outside interfaces/default routes",
+    "NAT": "None in this run",
+    "impairments": "No configured latency/jitter/loss/reordering/bandwidth cap/MTU changes; raw interface/topology metadata local",
+    "limits": "Shared host kernel; no new Internet/ISP/CGNAT claim."
+  },
+  "native": {
+    "root": "local/research/codex/n1rb-owned-eight-native-r3",
+    "verification": "local/research/codex/n1rb-owned-eight-native-r3/owned-eight-verification.json",
+    "getters": "local/research/codex/n1rb-owned-eight-native-r3/owned-eight-getter-verification.json",
+    "run_sha256": "1387342c890766e81f414d7dcb898c29e5e21885eae076e66b34255bfe2cec22",
+    "service_binary_sha256": "f4220acbe04f2ed9398c8885c68383f355b411b0da3a3b444733ea1820ffbee8",
+    "companion_binary_sha256": "18edd92132b8324691c89438238f146c82cb939a6fd6dcc8f8c8345f1f8d9d97",
+    "duration_s": 438.445981147,
+    "source_frozen": true,
+    "returncode": 0,
+    "raw_files": 309,
+    "cleanup": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct",
+    "native_applies": 1344,
+    "getters_checks": 20085,
+    "outer_packets": 60000,
+    "roles": {
+      "A": {
+        "native_starts": 3,
+        "round_keys": [
+          12601,
+          12857,
+          13113
+        ],
+        "native_applies": 192,
+        "sender_slots_by_phase": {
+          "owned-eight-round1": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "owned-eight-round2": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "owned-eight-after-G": [
+            2,
+            3,
+            4,
+            5,
+            7
+          ]
+        },
+        "changing_by_phase": {
+          "owned-eight-round1": 4,
+          "owned-eight-round2": 3,
+          "owned-eight-after-G": 0
+        }
+      },
+      "B": {
+        "native_starts": 1,
+        "round_keys": [
+          12601
+        ],
+        "native_applies": 64,
+        "sender_slots_by_phase": {
+          "owned-eight-round1": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "changing_by_phase": {
+          "owned-eight-round1": 3
+        }
+      },
+      "C": {
+        "native_starts": 3,
+        "round_keys": [
+          12601,
+          12857,
+          13113
+        ],
+        "native_applies": 192,
+        "sender_slots_by_phase": {
+          "owned-eight-round1": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "owned-eight-round2": [
+            0,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "owned-eight-after-G": [
+            0,
+            3,
+            4,
+            5,
+            7
+          ]
+        },
+        "changing_by_phase": {
+          "owned-eight-round1": 3,
+          "owned-eight-round2": 3,
+          "owned-eight-after-G": 0
+        }
+      },
+      "D": {
+        "native_starts": 3,
+        "round_keys": [
+          12601,
+          12857,
+          13113
+        ],
+        "native_applies": 192,
+        "sender_slots_by_phase": {
+          "owned-eight-round1": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            6,
+            7
+          ],
+          "owned-eight-round2": [
+            0,
+            2,
+            4,
+            5,
+            6,
+            7
+          ],
+          "owned-eight-after-G": [
+            0,
+            2,
+            4,
+            5,
+            7
+          ]
+        },
+        "changing_by_phase": {
+          "owned-eight-round1": 4,
+          "owned-eight-round2": 6,
+          "owned-eight-after-G": 0
+        }
+      },
+      "E": {
+        "native_starts": 3,
+        "round_keys": [
+          12601,
+          12857,
+          13113
+        ],
+        "native_applies": 192,
+        "sender_slots_by_phase": {
+          "owned-eight-round1": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "owned-eight-round2": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "owned-eight-after-G": [
+            0,
+            2,
+            3,
+            5,
+            7
+          ]
+        },
+        "changing_by_phase": {
+          "owned-eight-round1": 5,
+          "owned-eight-round2": 6,
+          "owned-eight-after-G": 0
+        }
+      },
+      "F": {
+        "native_starts": 3,
+        "round_keys": [
+          12601,
+          12857,
+          13113
+        ],
+        "native_applies": 192,
+        "sender_slots_by_phase": {
+          "owned-eight-round1": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ],
+          "owned-eight-round2": [
+            0,
+            2,
+            3,
+            4,
+            6,
+            7
+          ],
+          "owned-eight-after-G": [
+            0,
+            2,
+            3,
+            4,
+            7
+          ]
+        },
+        "changing_by_phase": {
+          "owned-eight-round1": 5,
+          "owned-eight-round2": 6,
+          "owned-eight-after-G": 0
+        }
+      },
+      "G": {
+        "native_starts": 2,
+        "round_keys": [
+          12601,
+          12857
+        ],
+        "native_applies": 128,
+        "sender_slots_by_phase": {
+          "owned-eight-round1": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            7
+          ],
+          "owned-eight-round2": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            7
+          ]
+        },
+        "changing_by_phase": {
+          "owned-eight-round1": 5,
+          "owned-eight-round2": 6
+        }
+      },
+      "H": {
+        "native_starts": 3,
+        "round_keys": [
+          12601,
+          12857,
+          13113
+        ],
+        "native_applies": 192,
+        "sender_slots_by_phase": {
+          "owned-eight-round1": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "owned-eight-round2": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "owned-eight-after-G": [
+            0,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "changing_by_phase": {
+          "owned-eight-round1": 4,
+          "owned-eight-round2": 6,
+          "owned-eight-after-G": 0
+        }
+      }
+    },
+    "case": "Eight native first result/reset. B ordinary Back removes slot1; next Start has sparse slots0/2/3/4/5/6/7. G actual wineserver termination yields native TCP EOF in round2; six receivers apply native170/19 and current UDP, create/explode bombs after EOF, reach opposite team result/reset, then next Start has slots0/2/3/4/5/7."
+  },
+  "acceptance": {
+    "native_eight": "pass in declared scope",
+    "ordinary_vacancy_next_roster": "pass",
+    "active_endpoint_EOF_survivor_and_next_roster": "pass in declared scope",
+    "reuse_sustained_stale_current": "open",
+    "restart": "open",
+    "common_IP_first_packet_spoof": "open",
+    "N1Rb": "open",
+    "phase1": "open"
+  },
+  "verification_limits": [
+    "Wine/isolated virtual LAN only; no new Internet/ISP/CGNAT/load claim.",
+    "Native eight first match/result/reset; ordinary B Back creates sparse7 next round; G actual endpoint EOF leaves six with positive current-route applies, result/reset and third six clock.",
+    "G terminal disconnection after declared owned EOF is classified separately; no client fault may be hidden as cleanup.",
+    "Only completed helpers with source/destination captures and current-key/actor checks claimed. Post-EOF bounded window sampled idle applies before coordinate changes; no post-EOF movement-change claim. Native bom creation/explosion after EOF and result/reset independently prove continued play. FinishBreakpoint170 cursor is opaque; actor effect/errors and exact wire checked. No encrypted QUIC decoding or all-packet delivery guarantee.",
+    "Independent capture helpers timestamp socket reads, not kernel packet arrival. Cross-capture timestamp order is not asserted; equal-byte joins use disjoint per-round endpoint tuples and may have duplicate matches. No one-to-one packet or loss/latency claim.",
+    "No sustained pool/restart/common-IP attack acceptance from this run. Native first-datagram attack requires separate negative/current control; N1R-b remains open."
+  ],
+  "reuse": {
+    "direct": "CP287 serving ownership/companion and native4; CP283 passive roster/Start/stat/170/result/reset oracles; CP285 DB profiles; CP286 unchanged native bytes.",
+    "avoids": "No service Rust changes, no broad peer RE or repeat of account/profile/native4 acceptance. Exact same service/companion binary hashes as CP287.",
+    "must_compare": "N1R-b remaining negative controls/restart; unknown native59 remains a bounded fault question, no inferred original semantics."
+  },
+  "retained_failures": [
+    {
+      "root": "local/research/codex/n1rb-owned-eight-native-r1",
+      "result": "exit1, native A emits59 then server rejects unsupported opcode and closes TCP, followed by client abort. No native frame CRC failure observed before59; cause/meaning unknown.",
+      "raw_seal": "local/research/codex/n1rb-owned-eight-native-r1/native/raw-seal.json",
+      "recovery": "local/research/codex/n1rb-owned-eight-native-r1/native/storage-recovery.json",
+      "limits": "Original bounded unmount failure retained; same-byte export restored only after namespace extinction. Not an accepted native8 run."
+    },
+    {
+      "root": "local/research/codex/n1rb-eight-packet59-r2",
+      "result": "exit1 after eight result/reset and sparse7 Start. Shared observer still read freed B actor after B returned to lobby; SELECTED_PEER_ERROR. Raw retained, not native8 acceptance.",
+      "raw_seal": "local/research/codex/n1rb-eight-packet59-r2/native/raw-seal.json",
+      "correction": "R3 restricts observer windows to explicit active roles; no game state or service policy change."
+    },
+    {
+      "paths": [
+        "local/research/codex/n1rb-owned-eight-verification-r3.txt",
+        "local/research/codex/n1rb-owned-eight-verification-r3-v2.txt",
+        "local/research/codex/n1rb-owned-eight-verification-r3-v3.txt"
+      ],
+      "result": "Verifier assumptions corrected without raw changes: FinishBreakpoint170 cursor not full-consumption oracle; post-EOF window sampled idle applies before movements; capture read timestamps do not impose cross-host wire order.",
+      "correction": "Keep native actor effect/errors/exact wire; require post-EOF native bomb creation/explosion/results for continued play. Exact byte matches under disjoint per-round endpoint tuples; no latency/loss/one-to-one/chronology claim."
+    },
+    {
+      "path": "local/research/codex/n1rb-eight-static-provider-limit.json",
+      "result": "Bounded IDA follow-up cancelled during initialization; target closed, no retained static result. Native59 unresolved; no provider/config changes."
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "Why did native A send59 in first run?",
+      "source": "kr_runtime",
+      "status": "unknown",
+      "known": "Exact wire/subtype envelope retained; unsupported service path closes TCP. R2/R3 did not repeat59. No report59 or opcode semantics is guessed.",
+      "minimum": "If repeated or operationally blocking, passive general13ADD10/game13ADCC0 queue stack and exact input, current positive/native fault control. No broad retry or claim fixed by observation changes."
+    }
+  ]
+}

@@ -920,9 +920,23 @@ actor và outer QUIC; không có direct UDP peer trong capture ngoài. Hai kết
 ba giữ đúng Start/stat/roster. Route pool chỉ đủ một snapshot bốn người vẫn dùng lại qua các vòng có key byte thấp
 lặp; proxy port của từng snapshot tách biệt. Chi tiết số đo, getter, source freeze và cleanup ở metadata.
 
-**Giới hạn:** native tám người, roster sau rời/rớt mạng, reuse vượt pool với stale/current control, restart và giả mạo
-chung IP ở serving còn mở. Synthetic account/QUIC/kernel tests đã kiểm capability/owner/generation/replay, revoke
-và reuse nhỏ; chúng không là native attack acceptance. Lượt này là Wine/LAN cô lập, không cấu hình NAT hoặc netem;
-không thêm kết luận Internet/ISP/CGNAT, PMTU, mọi kiểu UDP, tải hoặc đóng gói. Run lỗi và lỗi verifier được giữ riêng.
+**Native roster và departure đã kiểm thêm:** [metadata/raw/hash](../evidence/rust-service/n1rb-native-rosters.json)
+dùng nguyên binary serving/companion đã đo bốn người. Tám client qua native Start/stat/peer và đủ các sender slot
+ở mỗi receiver, bom và kết quả/reset. Một người Back thông thường tạo slot thưa ở ván kế; một endpoint sau đó rớt
+trong trận. Sáu người còn lại nhận native170/19, actor của người mất đổi state, vẫn apply UDP từ đủ survivor, dùng bom
+và nổ sau EOF, nhận kết quả đội trái vòng trước/reset, rồi vào trận sáu người. Không giữ route cho endpoint đã mất
+hoặc nhận route cũ như thành viên mới. Phạm vi này là Wine/LAN cô lập, không có NAT/netem mới.
+
+Bằng chứng tiếp tục sau EOF dựa vào helper hiện hành cùng bom/nổ/kết quả, không từ process alive hoặc log server.
+Cửa sổ UDP sau EOF lấy được idle applies trước khi tọa độ đổi nên không claim movement-change tại cửa sổ đó.
+Cursor của FinishBreakpoint170 giữ opaque; actor effect, error flags và wire được đối chiếu riêng. Capture helper
+đóng timestamp lúc đọc socket, không là kernel wire time; không suy thứ tự tuyệt đối giữa hai capture hoặc latency,
+loss và ánh xạ một-một từ nhóm byte bằng nhau. Tuple proxy tách theo vòng giữ quan hệ snapshot trong phép so byte.
+
+**Giới hạn còn lại:** reuse vượt pool với stale/current control, restart và giả mạo chung IP ở serving còn mở.
+Synthetic account/QUIC/kernel tests không tự là native attack acceptance. Không thêm kết luận Internet/ISP/CGNAT,
+PMTU, mọi kiểu UDP, tải hoặc đóng gói từ LAN. Run lỗi đầu phát native59 rồi service từ chối/đóng TCP; nguyên nhân
+và nghĩa packet chưa khôi phục. Hai lượt sau không lặp59, không suy lỗi đã sửa. Lỗi probe sau Back được sửa bằng
+phạm vi observer theo roster, raw cũ giữ nguyên; metadata giữ các lỗi runtime/export/verifier và giới hạn.
 
 <!-- protocol-topic-content-end -->
