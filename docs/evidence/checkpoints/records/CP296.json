@@ -1,0 +1,234 @@
+{
+  "id": "CP296",
+  "previous": "CP295",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T18:15:02.967804+00:00",
+  "context_commit": "b18beb7ba754f00d6cd96f62626dffedf02e720f",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1 lát3: account/current roster Rust có kim/cứu theo contract KR đã đo, native peer/reset và completion/ownership guards không?",
+  "scope": "G1 kim2native/cứu3native aux1/virtualLAN/Wine diagnostic copies. One145 credit/profile/round; no full terrain/items/maps2..8/Internet/load/phase1 closure.",
+  "artifacts": [
+    {
+      "name": "G1-life-native-service",
+      "sha256": "fafba524a44b3efdc0c4ae621f39624d932203df27319c85d6801dcebfb9e65c"
+    },
+    {
+      "name": "G1-life-companion",
+      "sha256": "5f1ec7ee7ee3d905d87cb7958487be776d1da2cf577a127f72a3886c7324e64f"
+    },
+    {
+      "name": "G1-life-KR-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/life-results.md#rust-needle-rescue",
+    "docs/evidence/rust-service/g1-life-actions.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Native hai account có pickup145/165 và17→1→0, peer6/6/errors0; mắc lần hai khi cạn chỉ17→19 sauCtrl; result/reset và vòng2 fresh pickup/use. Native ba account có hai vòng rescue18/aux1, cả hai peer7/7/errors0, giữ kim sau cứu rồi dùng, hai results/reset.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/life-results.md#rust-needle-rescue",
+      "evidence": [
+        "G1LIFE296-00011",
+        "G1LIFE296-01984",
+        "G1LIFE296-03015",
+        "G1LIFE296-01977",
+        "G1LIFE296-03006"
+      ],
+      "limits": "Wine/private virtual LAN and diagnostic copies. Native2needle/3rescueaux1 only; no original authority/inventory/world engine/full G1. Peer intermediate0 retained, not normalized to old capture."
+    },
+    {
+      "summary": "Policy disabled mặc định; current membership/round, credit after165/all-peer delivery, exact pair/tick/prefix/tail, friendly current rescuer và clear-after-all completion. Malformed/no-credit/duplicate/newtrap/reset, queue failure3/8 and stale completion checked with captured-vector/source tests.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/life-results.md#rust-needle-rescue",
+      "evidence": [
+        "G1LIFE296-00011",
+        "G1LIFE296-03053",
+        "G1LIFE296-03057",
+        "G1LIFE296-00036",
+        "G1LIFE296-00042"
+      ],
+      "limits": "Synthetic/component checks not native negative controls or original contact authority; no raw127 epoch recovered."
+    },
+    {
+      "summary": "Packet167/body8 sau pickup trùng nguyên byte giữa capture CP037/038 và Rust; bổ sung bounded opaque observe/noACK only under needle player round. Failed checksum/setup/167/route pool và export recovery kept.308+1326 copied-native getter checks corroborate runtime wrappers.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/life-results.md#rust-needle-rescue",
+      "evidence": [
+        "G1LIFE296-00011",
+        "G1LIFE296-00037",
+        "G1LIFE296-01027",
+        "G1LIFE296-02518",
+        "G1LIFE296-01983",
+        "G1LIFE296-03014"
+      ],
+      "limits": "Body existence observed only;167 semantics unknown. Getter method=emulation separately, not runtime authority. Failed runs remain failed."
+    }
+  ],
+  "verification": [
+    {
+      "check": "185workspace tests/fmt/clippy/locked build and3room integration groups; exact binary matches two successful native runs",
+      "result": "pass",
+      "evidence": [
+        "G1LIFE296-00042",
+        "G1LIFE296-00031",
+        "G1LIFE296-00023",
+        "G1LIFE296-00019"
+      ],
+      "limits": "Source and synthetic tests separate from native; failed first test helper choice corrected and retained."
+    },
+    {
+      "check": "Independent actual TCP/CRC/seq and native consumer/pickup/peer/life/result/reset,1634copied-native getters, manual UI corroboration",
+      "result": "pass",
+      "evidence": [
+        "G1LIFE296-01984",
+        "G1LIFE296-03015",
+        "G1LIFE296-01983",
+        "G1LIFE296-03014",
+        "G1LIFE296-01896",
+        "G1LIFE296-02902"
+      ],
+      "limits": "Native2/3client scope only; no G1 full closure."
+    },
+    {
+      "check": "Manual feature-group audit, canonical docs and historical PR396 delivery receipt",
+      "result": "pass",
+      "evidence": [
+        "G1LIFE296-00008",
+        "G1LIFE296-03023",
+        "G1LIFE296-00026"
+      ],
+      "limits": "This PR exact-head/raw/history and CI still required before merge; worktree local symlink cannot satisfy checker, final verification runs from canonical checkout."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP296-life-actions.json",
+      "bytes": 802800,
+      "sha256": "d94c740a54380c57ea2bb142c472f0c6911799108be3549af9158a1d08096483",
+      "count": 3058
+    }
+  ],
+  "delta": {
+    "added": [
+      "RoomRules kim/cứu policy, current credit/pair/rescuer validation and all-recipient delivery barriers.",
+      "Native account2needle/depleted/reset and3rescue/preserved-credit/two-results-reset;185workspace/1634getter controls.",
+      "Current docs/catalog/issue397 and coordinator285 links;391 dated status reconciled."
+    ],
+    "corrected": [
+      "Consistent Ready/catalog fixture for native setup; startup input waits for native intro.",
+      "Exact167/body8 opaque observation avoids postpickup disconnect, no ACK guess.",
+      "Three-client recipe needs6directed routes instead of inherited2; failed export recovered same bytes, original exit1 retained."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "G1 còn terrain/item nền cho roster hiện hành, sáu map và nhân vật theo acceptance; không tự đóng G1 hoặc giai đoạn1.",
+    "Native Rust kim mới có2client, cứu aux1 có3client; aux0 chỉ có Python cũ, aux2 và roster khác còn đo theo trigger nội dung.",
+    "Một bản ghi145/profile và một credit/vòng; multi-charge, nhiều kim/drop/account inventory chưa được nghiệm thu.",
+    "Contact-distance/original authority và raw127 wire epoch chưa phục hồi; tick mới không xác thực mọi body thuộc vòng mới.",
+    "M8 còn triển khai companion Internet thật, cấu hình/đóng gói/tải50/8/phục hồi/soak. K6c/K7 giữ nguyên phạm vi lịch sử."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp terrain/item nền cho roster hiện hành rồi sáu map/nhân vật theo acceptance G1; M8 theo PLAN. Không lặp native kim/cứu đã đạt nếu không có discrepancy.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T18:15:02.967804+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo kim/cứu source/native self-check và scoped feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "docs/protocol/life-results.md",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "Kim/cứu Rust scoped native và giới hạn; G1/M8 tiếp theo PLAN; không sửa lịch sử complete."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-life-actions.json",
+      "state": "updated",
+      "reason": "Metadata reuse/raw/native/negative/build/failure và scope."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, frozen raw, feature-group audits/privacy/exact-head/PR rules giữ nguyên."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-g1-needle-rescue"
+  ]
+}

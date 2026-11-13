@@ -1,0 +1,58 @@
+{
+  "schema": "kre-ci-test-control-v1",
+  "context_commit": "af23bb80eb43bd45fb1f38f13e14de86139ea259",
+  "checkpoint_context": "CP296 giữ nguyên, correction kiểm test sau CI; không sửa record complete hoặc raw/native.",
+  "source": "design",
+  "status": "design",
+  "method": "test",
+  "failure": {
+    "run": "https://github.com/aquaplatinumberlitz/boom-kr-server/actions/runs/43481471606",
+    "observed": "Assert InvalidSession ở test preference/revoke không đạt; các lỗi sau là TEST_SERIAL poison. CI không in giá trị Error thực nên không gọi QueueExpired là quan sát trực tiếp.",
+    "analysis": "Test dùng chung worker deadline30ms cho expiry và revoke. Revoke ghi DB thật có thể lâu hơn deadline; khi đó job không đến authorization. Đây là race trong thiết kế test, không phải bằng chứng gameplay hỏng."
+  },
+  "correction": "Giữ riêng expiry30ms/hold50ms và khẳng định QueueExpired. Đóng worker đó, mở worker test5s cho revoke; cố ý hold50ms vượt budget cũ, revoke trong DB, rồi khẳng định chính InvalidSession và không có preference được ghi. Assertion mới in Error nếu thất bại. Không nới cấu hình runtime hoặc chấp nhận nhầm loại lỗi.",
+  "verification": {
+    "result": "pass_local",
+    "workspace_tests": 185,
+    "production_binary_unchanged": true,
+    "service_sha256": "fafba524a44b3efdc0c4ae621f39624d932203df27319c85d6801dcebfb9e65c",
+    "limits": "CI hiện hành vẫn phải đạt trước merge. Native kim/cứu CP296 giữ nguyên binary và phạm vi."
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-life-actions-ci-failure.txt",
+      "bytes": 61486,
+      "sha256": "fc892f16d99b900db332a45289887e011583d26b66253998f7b927e0d1acbf85"
+    },
+    {
+      "path": "local/research/codex/g1-life-ci-account-case-r2.txt",
+      "bytes": 895,
+      "sha256": "77ba6ad6e0d8f6457297461397dc4018782451aaa469ec78fa5bf09814a7bece"
+    },
+    {
+      "path": "local/research/codex/g1-life-ci-fmt-r2.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/research/codex/g1-life-ci-clippy-r2.txt",
+      "bytes": 169,
+      "sha256": "e8ff0ee0972e0a269db610832f353480c462ee0116a464b6150e45cb93ff64f9"
+    },
+    {
+      "path": "local/research/codex/g1-life-ci-build-r2.txt",
+      "bytes": 72,
+      "sha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc"
+    },
+    {
+      "path": "local/research/codex/g1-life-ci-workspace-r2.txt",
+      "bytes": 21775,
+      "sha256": "3c6c766ce5044c4bc3f4507ae3e0055a29f00492b607eb514a67e0a878f9a9e1"
+    },
+    {
+      "path": "rust/crates/kr-service/src/account_worker/tests.rs",
+      "bytes": 26717,
+      "sha256": "665c54e468fa7b4a0543a071f519b84ed9ea7f95d356110d027a9f3d2075456d"
+    }
+  ]
+}

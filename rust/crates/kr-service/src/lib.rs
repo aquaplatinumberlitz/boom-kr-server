@@ -12,6 +12,7 @@ mod bombs;
 mod characters;
 mod four_results;
 mod life;
+mod life_actions;
 pub mod lobby;
 mod logging;
 mod map_profile;
@@ -399,6 +400,19 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             .as_ref()
             .map(authenticated_peer::Hub::new)
             .transpose()?;
+        if two
+            .fixed_room
+            .as_ref()
+            .is_some_and(|r| r.life_actions != life_actions::Policy::Disabled)
+            && two
+                .managed_rooms
+                .as_ref()
+                .is_none_or(|r| r.player_round.is_none())
+        {
+            return Err(io::Error::other(
+                "life actions require owned managed player round",
+            ));
+        }
         let managed = if let Some(cfg) = &two.managed_rooms {
             if two.account_admission.is_none() || ninth_probe {
                 return Err(io::Error::other(

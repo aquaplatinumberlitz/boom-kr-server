@@ -113,7 +113,7 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 | Bom, serial, nổ và capacity | [bombs](protocol/bombs.md) | 118/159/158, chain/timer |
 | Terrain, block và cascade | [terrain](protocol/terrain.md) | 142/195, cell/box flags |
 | Item, stat, pickup và kim | [items-stats](protocol/items-stats.md) | 124/145/165/582 |
-| Trap, death, cứu, kết quả và reset | [life-results](protocol/life-results.md) | 127/170/175/180/202 |
+| Trap, death, cứu, kết quả và reset | [life-results](protocol/life-results.md), [kim/cứu Rust](protocol/life-results.md#rust-needle-rescue) | 127/170/175/180/202 |
 | Bốn/tám người, đội và admission | [multiplayer-team](protocol/multiplayer-team.md) | 106/110/121/153/175/180 |
 | LAN, WAN và Internet thật | [networks](protocol/networks.md) | endpoint/routing/NAT/netem/EOF |
 | Authority, phạm vi service và ranh giới Rust | [rust-boundary](protocol/rust-boundary.md) | M1/M2/M3, R1, package/guards |

@@ -22,6 +22,8 @@ use tokio::sync::mpsc;
 #[serde(deny_unknown_fields)]
 pub struct Config {
     #[serde(default)]
+    pub(crate) life_actions: crate::life_actions::Policy,
+    #[serde(default)]
     pub(crate) endpoint_policy: rules::EndpointPolicy,
     pub title: String,
     #[serde(default)]
@@ -147,6 +149,7 @@ pub(crate) fn load_managed_round(
             slot_allocation: rules::SlotAllocation::FirstVacant,
             endpoint: rules::EndpointPolicy::LegacyDirect,
             ninth_admission_probe: false,
+            life_actions: crate::life_actions::Policy::Disabled,
             player_choices: false,
         };
         (
@@ -239,6 +242,7 @@ pub(crate) fn load_player_round(
             endpoint: source.rules.endpoint,
             player_choices: true,
             ninth_admission_probe: false,
+            life_actions: source.rules.life_actions,
         },
         limits: rules::ReportLimits {
             power: Vec::new(),
@@ -329,6 +333,8 @@ pub enum Guard {
     },
 }
 pub struct Batch {
+    needle_credit_complete: Option<(Membership, u64, String, Membership)>,
+    action_complete: Option<(Membership, u64, String, Membership)>,
     map_revision: Option<u64>,
     pub(crate) journal: Option<crate::match_journal::Ticket>,
     origin: Option<(Arc<()>, u32, u64)>,
@@ -524,6 +530,7 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
             count,
             &packets,
             actors,
+            cfg.life_actions.needle(),
         )?))
     };
     if packets["listing"].payload.len() < 16
@@ -628,6 +635,8 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
             );
         }
     }
+    pickups::Catalog::from_floor(&packets_floor_body)?
+        .validate_needle(rules.life_actions.needle())?;
     let mut model = Room::with_allocation(count, rules.slot_allocation)?;
     if let Some(layout) = cfg.eight_team_layout {
         model.set_eight_layout(layout)?;
@@ -863,6 +872,8 @@ impl Runtime {
         packets: Vec<(String, Reply)>,
     ) -> Batch {
         Batch {
+            needle_credit_complete: None,
+            action_complete: None,
             map_revision: None,
             journal: None,
             origin: None,
@@ -886,6 +897,8 @@ impl Runtime {
         packets: Vec<(String, Reply)>,
     ) -> Batch {
         Batch {
+            needle_credit_complete: None,
+            action_complete: None,
             map_revision: None,
             journal: None,
             origin: None,
@@ -1725,6 +1738,15 @@ impl Session {
         let Ok(r) = self.shared.lock() else {
             return false;
         };
+        if let Some((source, round, ref digest, _)) = batch.action_complete
+            && (!r.model.current(source)
+                || r.model.phase != (Phase::Armed { round })
+                || !r.model.members[&source.identity]
+                    .life
+                    .clear_deliverable(digest))
+        {
+            return false;
+        }
         if batch
             .map_revision
             .is_some_and(|revision| revision != r.map_revision)
@@ -1816,6 +1838,29 @@ impl Session {
         }
     }
     pub fn finish(&self, batch: &Batch) -> io::Result<()> {
+        if let Some((source, round, ref digest, recipient)) = batch.needle_credit_complete {
+            let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            if r.model.current(source) && r.model.phase == (Phase::Armed { round }) {
+                r.model
+                    .members
+                    .get_mut(&source.identity)
+                    .expect("current source")
+                    .life
+                    .needle_credit_delivered(digest, recipient);
+            }
+        }
+        if let Some((source, round, ref digest, recipient)) = batch.action_complete {
+            let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            if r.model.current(source) && r.model.phase == (Phase::Armed { round }) {
+                r.model
+                    .members
+                    .get_mut(&source.identity)
+                    .expect("current source")
+                    .life
+                    .action_delivered(digest, recipient);
+            }
+        }
+
         if let Some((source, recipient, round)) = batch.departure_complete {
             self.shared
                 .lock()
@@ -2605,6 +2650,10 @@ impl Session {
                 let member = r.member(self.identity, self.connection)?;
                 let measured = if let Some(profile) = &r.managed_round {
                     profile.limits.opaque167.contains(&body.len())
+                        // Exact 8-byte envelope also occurs after needle165 in
+                        // both CP037 and the current native capture. Semantics
+                        // stay opaque: bounded observation, no ACK or mutation.
+                        || (r.rules.life_actions.needle() && body.len() == 8)
                 } else if next.capacity() == 8 {
                     r.rules.owner_bombs() && [4, 22, 42].contains(&body.len())
                 } else {
@@ -2799,11 +2848,12 @@ impl Session {
                 });
             }
             124 => {
-                if r.managed_round.is_some() || next.capacity() != 2 {
-                    return Err(err("four-player gameplay not ported"));
-                }
                 let member = r.member(self.identity, self.connection)?;
                 let request = pickups::Request::parse(body)?;
+                let needle = r.rules.life_actions.needle() && request.kind() == 145;
+                if !needle && (r.managed_round.is_some() || next.capacity() != 2) {
+                    return Err(err("pickup outside measured profile"));
+                }
                 let decision = if next.members[&self.identity].life.blocked_pickup() {
                     request.decision("report_ineligible")
                 } else if let Phase::Armed { round } = next.phase {
@@ -2820,6 +2870,15 @@ impl Session {
                     let Phase::Armed { round } = next.phase else {
                         unreachable!("accepted only in armed round")
                     };
+                    let credit_digest = crate::sha256_hex(body);
+                    if needle {
+                        let targets: Vec<_> = next.members.values().map(|m| m.key).collect();
+                        next.members
+                            .get_mut(&self.identity)
+                            .expect("current source")
+                            .life
+                            .stage_needle_credit(credit_digest.clone(), &targets)?;
+                    }
                     let reply = packet(165, request.confirmation()?);
                     for peer in next.members.values() {
                         let mut batch = Runtime::member_batch(
@@ -2829,6 +2888,11 @@ impl Session {
                             vec![("floor165".into(), reply.clone())],
                         );
                         batch.subject = Some(member.key);
+                        if needle {
+                            batch.needle_credit_complete =
+                                Some((member.key, round, credit_digest.clone(), peer.key));
+                        }
+
                         effects.push((peer.key.identity, batch));
                     }
                 }
@@ -2851,7 +2915,45 @@ impl Session {
                         let report = crate::life::Report::parse(body)?;
                         let now = Instant::now();
                         let last_blast = next.last_blast;
-                        let decision =
+                        let action_enabled = (matches!(report.subtype, 0 | 1)
+                            && r.rules.life_actions.needle())
+                            || (report.subtype == 18 && r.rules.life_actions.rescue());
+                        let mut action_forward = None;
+                        let decision = if action_enabled {
+                            let action = crate::life_actions::Action::parse(&report, body)?;
+                            let eligible =
+                                if let crate::life_actions::Action::Rescue(aux, _) = &action {
+                                    next.members.values().any(|peer| {
+                                        peer.key != m.key
+                                            && peer.slot == *aux
+                                            && peer.team == m.team
+                                            && !peer.life.blocked_pickup()
+                                    })
+                                } else {
+                                    false
+                                };
+                            let targets: Vec<_> = next
+                                .members
+                                .values()
+                                .filter(|p| p.key != m.key)
+                                .map(|p| p.key)
+                                .collect();
+                            let (decision, forward) = next
+                                .members
+                                .get_mut(&self.identity)
+                                .expect("current source")
+                                .life
+                                .action(
+                                    m.slot,
+                                    &report,
+                                    action,
+                                    r.rules.life_actions,
+                                    eligible,
+                                    &targets,
+                                );
+                            action_forward = forward;
+                            decision
+                        } else {
                             if r.rules.life_enabled() && !matches!(report.subtype, 17 | 19 | 21) {
                                 report.decision("unsupported_four_report_subtype", false)
                             } else if r.rules.life_enabled()
@@ -2864,7 +2966,8 @@ impl Session {
                                     .expect("current member")
                                     .life
                                     .apply(m.slot, &report, now, last_blast)
-                            };
+                            }
+                        };
                         if decision.forward {
                             let recipients: Vec<_> = next
                                 .members
@@ -2875,7 +2978,9 @@ impl Session {
                             if recipients.len() + 1 != next.round_size() {
                                 return Err(err("incomplete life recipient roster"));
                             }
-                            if report.subtype == 21 {
+                            if action_forward.is_some() {
+                                // Action owns its distinct completion barrier in Player.
+                            } else if report.subtype == 21 {
                                 next.members
                                     .get_mut(&self.identity)
                                     .expect("current source")
@@ -2897,9 +3002,12 @@ impl Session {
                                         format!("life170-{}", report.subtype),
                                         packet(
                                             170,
-                                            report.forward.clone().ok_or_else(|| {
-                                                err("missing validated life170 body")
-                                            })?,
+                                            action_forward
+                                                .clone()
+                                                .or_else(|| report.forward.clone())
+                                                .ok_or_else(|| {
+                                                    err("missing validated life170 body")
+                                                })?,
                                         ),
                                     )],
                                 );
@@ -2911,8 +3019,13 @@ impl Session {
                                     clear21: (report.subtype == 21)
                                         .then(|| (report.digest.clone(), now)),
                                 };
-                                batch.life_complete =
-                                    Some((m.key, round, report.digest.clone(), recipient));
+                                if action_forward.is_some() {
+                                    batch.action_complete =
+                                        Some((m.key, round, report.digest.clone(), recipient));
+                                } else {
+                                    batch.life_complete =
+                                        Some((m.key, round, report.digest.clone(), recipient));
+                                }
                                 effects.push((recipient.identity, batch));
                             }
                         }
@@ -3821,6 +3934,7 @@ mod ninth_probe_tests {
                 teams: TeamPolicy::BalancedManner,
                 roster: rules::RoundRoster::Full,
                 ninth_admission_probe: true,
+                life_actions: crate::life_actions::Policy::Disabled,
                 player_choices: false,
                 slot_allocation: rules::SlotAllocation::LegacyIdentity,
                 endpoint: rules::EndpointPolicy::LegacyDirect,
@@ -4312,3 +4426,7 @@ mod registry_foundation_tests {
         ));
     }
 }
+
+#[cfg(test)]
+#[path = "room_io_life_tests.rs"]
+mod life_action_integration_tests;

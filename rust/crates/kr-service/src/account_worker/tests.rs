@@ -709,6 +709,15 @@ fn persistence_preference_queue_expiry_and_revocation_cannot_publish_late_charac
             panic!("wrong persistence result")
         };
         assert_eq!(initial.revision, 0);
+        worker.shutdown().await.unwrap();
+        // The next case checks revocation, independently of queue expiry.
+        // A durable revoke may fsync for longer than the 30 ms expiry-case
+        // deadline on CI. Keep that short deadline above, but give this worker
+        // a separate test-only budget so the queued job reaches authorization.
+        let worker = Worker::open(temp.db(), 1, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let c = worker.client();
         let resume = pause(&c).await;
         let pending = c
             .try_persist(PersistenceJob::SelectCharacter {
@@ -718,6 +727,8 @@ fn persistence_preference_queue_expiry_and_revocation_cannot_publish_late_charac
                 expected_revision: 0,
             })
             .unwrap();
+        // Deliberately outlast the expiry-case budget before the durable revoke.
+        tokio::time::sleep(Duration::from_millis(50)).await;
         store
             .revoke(
                 &admin(),
@@ -729,10 +740,13 @@ fn persistence_preference_queue_expiry_and_revocation_cannot_publish_late_charac
             )
             .unwrap();
         resume.send(()).unwrap();
-        assert!(matches!(
-            pending.wait().await,
-            Err(Error::Backend(accounts::Error::InvalidSession))
-        ));
+        match pending.wait().await {
+            Err(error) => assert!(
+                matches!(error, Error::Backend(accounts::Error::InvalidSession)),
+                "expected authorization denial after revocation, got {error:?}"
+            ),
+            Ok(_) => panic!("revoked preference unexpectedly published"),
+        }
         assert_eq!(
             temp.sql()
                 .query_row("SELECT count(*) FROM player_preferences", [], |r| r

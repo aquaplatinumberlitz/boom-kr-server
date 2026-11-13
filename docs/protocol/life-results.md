@@ -1227,3 +1227,48 @@ control còn thiếu theo [PLAN](../PLAN.md#current-order). Optionalkim/cứu/ca
 K0–K7 scope cũ/K6c WAN giả lập giữ nguyên. Internet thật chưa kiểm. AUD069 qua240/audit kếCP244.
 
 <!-- protocol-topic-content-end -->
+
+
+<a id="rust-needle-rescue"></a>
+### Kim và cứu trên Rust với account và roster hiện hành
+
+[Ma trận nghiệm thu, recipe, hash và đối chứng](../evidence/rust-service/g1-life-actions.json) giữ metadata của G1 lát 3.
+Tái dùng wire KR của [kim](#needle-selfescape), [cặp dùng/credit](items-stats.md#needle-service),
+[cứu](#rescue-service) và [reset](#rescue-two-results). Source Python giữ vai trò RE/reference. Không nhập opcode,
+ID hoặc layout VN; không dùng encoder tự sinh hoặc log server thay bằng chứng client thực thi.
+
+**Cấu hình và policy:** `fixed_room.life_actions` nhận `disabled` (mặc định), `needle`, `rescue`, `needle_rescue`.
+Chỉ bật cùng account admission và `managed_rooms.player_round`; policy được đưa vào `RoomRules` và mỗi phòng.
+Không thêm alias theo identity hoặc luật theo sức chứa. Catalog floor/hidden hiện chỉ cho tối đa một bản ghi kind145
+trong mỗi profile; có kind145 mà chưa bật policy thì từ chối trước bind. Đây là lát một credit mỗi người nhặt/mỗi vòng,
+không phải inventory account, multi-charge hoặc mọi drop của sáu map.
+
+**Nhặt và kim:** giữ schema124, current membership/slot, key đầy đủ và claim đầu tiên của catalog. Credit chỉ được cấp
+sau khi mọi recipient165 hiện hành đã gửi thành công hoặc rời khỏi tập đích. Không cấp credit từ request đơn lẻ.
+Actor phải có current accepted17, còn sống và có credit; subtype1 đúng body14 được stage theo trap/tick/prefix.
+Subtype0 đúng body22 phải khớp cặp và tail `1/145/0/0`. Chỉ sau khi mọi peer nhận170/sub1 prefix6 thì commit cursor,
+xóa đúng trap và tiêu credit. Hàng đợi đầy không công bố claim/action dở; duplicate, sai slot, tick cũ, sai cặp và
+thiếu credit không được tiêu hoặc làm nhiễm cursor. Start/reset xóa credit và pending, giữ cursor theo connection.
+
+**Cứu:** subtype18 đúng body28, blob10/header `180500000000` và aux trong0..7. Aux phải là slot của một member
+khác hiện hành, cùng đội, không mắc bóng/chết. Gửi170/sub18 prefix6 cộng aux u8 tới mọi peer; chỉ clear sau barrier
+của mọi recipient. Cứu không tiêu kim. New trap/death, reset, room/round, membership/visit/connection và source
+scope làm vô hiệu công việc cũ. Đây là policy theo report của công ty; không xác thực khoảng cách hoặc quyền điều
+khiển tọa độ chỉ nhờ aux. Report127 không có token epoch mới đã phục hồi; tick tiến không chứng minh gói thuộc vòng mới.
+
+**Bằng chứng native trong phạm vi Wine:** hai client account có nhặt kim, `17→1→0`, peer clear đọc6/6/errors0;
+mắc lần hai khi cạn chỉ có17→19 dù đã nhấn Ctrl. Sau một kết quả/reset, vòng mới lại nhặt và dùng kim. Ba client
+account thật có hai vòng `17→18→17→1→0→17→19` ở actor được cứu; đồng đội slot1/aux1 cứu slot0, cả peer đồng đội
+và đối phương nhận clear đọc7/7/errors0. Kim vẫn dùng được sau cứu; hai kết quả/reset hoàn tất trên ba phía.
+Account sở hữu transport/membership hiện hành; lựa chọn nhân vật đã lưu trong DB vẫn chiếu vào Start.
+Native getter trên snapshot được đối chiếu bằng copied-native emulation riêng, không biến emulation thành runtime.
+
+Sau pickup, body167 dài8 đã có nguyên byte trong capture CP037/038 và run Rust. Policy kim chỉ bổ sung envelope8
+vào đường quan sát opaque giới hạn64/member/vòng, không ACK, không cấp inventory hoặc hiệu ứng. Lỗi đóng kết nối
+ở lượt trước giữ nguyên. Native trap peer có end56 rồi snapshot ngay trước clear là0 và end clear26 trong profile mới;
+không ép mọi trạng thái trung gian khớp profile Python cũ hoặc suy ra nguyên nhân của state0.
+
+**Giới hạn:** bản copy diagnostic KR00967 trên Wine, mạng LAN ảo cô lập và companion account; không thêm patch
+client cho kim/cứu. Native mới đo kim với hai người và cứu aux1 với ba người; aux0 có lịch sử Python, aux2 và các
+roster khác chưa có native Rust mới. Kiểm source bao phủ recipient đến8 và failure/negative; đó không là nghiệm thu
+native mọi sức chứa. Terrain, drop, map2..8, mọi nhân vật, inventory và Internet transport mới giữ acceptance riêng.

@@ -91,6 +91,7 @@ impl RoundRoster {
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct RoomRules {
+    pub(crate) life_actions: crate::life_actions::Policy,
     pub(crate) roster: RoundRoster,
     pub(crate) endpoint: EndpointPolicy,
     pub(crate) slot_allocation: SlotAllocation,
@@ -178,6 +179,7 @@ impl RoomRules {
                     TeamPolicy::Any
                 },
                 ninth_admission_probe: cfg.ninth_admission_probe,
+                life_actions: cfg.life_actions,
                 player_choices: false,
             },
             count,

@@ -103,6 +103,17 @@ Loading và Ending loss chưa có survivor recovery; interactive UI exit202 và 
 Các giới hạn này giữ riêng, không suy từ guest EOF hoặc từ source/TCP. Epoch hiện trần255 lần cấp/instance; mixed key không là auth hoặc
 durable restart/reuse proof. Relay nhiều người/reuse/restart giữ N1R-b, không gắn vào M7 LAN.
 
+<a id="gap-rust-life-actions"></a>
+### Kim/cứu Rust đã có lát native; chỉ đo khoảng trống của nội dung tiếp theo
+
+[Contract kim/cứu](protocol/life-results.md#rust-needle-rescue) đã có native hai client cho kim/cạn/reset và ba client
+cho cứu aux1, peer fanout, kim giữ lại và hai kết quả/reset. Không lặp lại consumer/cặp wire đã giải khi chưa có
+sai lệch mới. Credit/catalog hiện một bản ghi145/profile; multi-charge, nhiều kim trên map, aux2 và native Rust
+cho roster khác chưa được đo. Khi nội dung G1 cần biến thể đó, dùng một ca current positive và ca không đủ điều kiện
+với cùng profile, chỉ mở phần khác biệt. Khoảng cách/contact authority và tick mới nhưng body thuộc vòng cũ vẫn
+không xác thực được từ wire hiện có; không gọi guard nội bộ là token client đã phục hồi. Packet167/body8 sau pickup
+chỉ là envelope quan sát opaque; không suy semantics hoặc ACK. State0 ngắn trước peer clear không có causal fix mới.
+
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster
 
@@ -114,7 +125,7 @@ setup được đo; không áp lại guard setup=true gây lỗi. Queued selecti
 Còn terrain/drop/item, mọi roster theo acceptance G1 và bốn map chưa có native mới. Phân loại tile tĩnh ngoài
 ExVillage01 giữ candidate. Village10 có6spawn/UI giới hạn6; G1 vẫn yêu cầu map2..8. Khi mở higher roster, đối chiếu
 native filter/Start/spawn với dữ liệu pack trước chọn giải pháp; không tự ép tọa độ/reuse spawn hoặc giảm acceptance.
-Kim/cứu và nhóm item theo thứ tự PLAN, chỉ RE consumer còn chặn implementation/native. Unknown chưa đo bị tắt khỏi
+Nhóm item và biến thể kim/cứu chưa đo theo thứ tự PLAN, chỉ RE consumer còn chặn implementation/native. Unknown chưa đo bị tắt khỏi
 bảng rơi, không gọi map hoàn chỉnh từ floor rỗng/basic.
 
 Factory07 dùng bảng tám màu đội, khác bốn nút A/B/C/D của ExVillage01; click cũ phát đội2 bị guard0/3 từ chối.
@@ -201,7 +212,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 | <a id="gap-blast-block-chain"></a>KR-F005 | [CP172](PROTOCOL.md#hidden-cell-admission-current) basic Box/reveal27/28/142guard/3effects/reset/Start3 đã kiểm. | Generalmoving/order/allmaps/fullworldauthority unknown; không RE lại consumer. CP173 Bowner/native195 đã ghép; CP174BhostEOF đã kiểm; admission theoPLAN. |
 | <a id="gap-floor-pickup"></a>KR-F006 | [CP172](PROTOCOL.md#hidden-cell-admission-current) terrain currentclearedcell/generation/commit/roster guard và native basic2cycles/reset/Start3 có nguồn; no-terrain giữ weak report scope. | Full142key/auth/distance/freshness/fairness/two-nativecontenders unknown. Same old142 sau legitimatecurrentclear chưa phân biệt; không gọi policy guard là original authority. CP173B118/bidirectional đã kiểm; CP174BhostEOF đã kiểm; admission theoPLAN. |
 | <a id="gap-item-stats"></a>KR-F007 | [CP087](PROTOCOL.md#capacity-reservations) profileAinitial1max10/B2max7, acceptedBomb tăngtracked/native1→2 và resetthật hai vòng. Runtimeatmax/character/mode/pxs/TTL/fullreset khôngđủ. | [CP201](PROTOCOL.md#four-owner-bombs) đã đo C/Dstat/maxima trêncurrent4clock, không ápABdefaultquaD. Servertrackingdesign/nativepoollaw/runtimeatmax/othercharacters vẫnunknown; mởtheotrigger. |
-| <a id="gap-needle"></a>KR-F008 | CP113opt-inonecredit/pair/peerescape; [CP114](PROTOCOL.md#needle-round-reset) currentR1secondtrapcạn/no1,0/actual19→resultreturn/Start2fresh145credit/escape. R2active, không2results. | Multi-charge/inventoryauth/generalresetvariants cònmởtheotrigger; khônglặpcurrentonecredit/depleted/reset. Rescue18độc lậpởcontactgap/PLAN. |
+| <a id="gap-needle"></a>KR-F008 | [Rust account/roster](protocol/life-results.md#rust-needle-rescue) đã có native kim/cạn/reset; giới hạn tại [gap Rust](RESEARCH.md#gap-rust-life-actions). CP113opt-inonecredit/pair/peerescape; [CP114](PROTOCOL.md#needle-round-reset) currentR1secondtrapcạn/no1,0/actual19→resultreturn/Start2fresh145credit/escape. R2active, không2results. | Multi-charge/inventoryauth/generalresetvariants cònmởtheotrigger; khônglặpcurrentonecredit/depleted/reset. Rescue18độc lậpởcontactgap/PLAN. |
 | <a id="gap-contact-state"></a>KR-F009 | [CP158](PROTOCOL.md#current-trap-udp-counter): native smallgap4 drop/largegap17 accept/controlledremote56→0→56→1; two observational runs không tái hiện CP157. | Exact naturalCP157state0packet/apply vẫn candidate/unknown; controlledcapability không retrospectivecause. Không lặp counter/body RE; nếu trigger cần, đo actual non-replayed packet/queue trướctrap. Hiện theo PLAN production baseline, không tự sửa client/claimbugfixed. |
 | <a id="gap-ability-debuff"></a>KR-F010 | Shoe/Punch/debuff/TTL chỉ có bảng và một phần selector; không chuyển kết quả MaxPower sang mọi effect. | Chọn đúng ability cần cho Battle rồi trace1191840 selector/virtual tương ứng; đo consume/effect/peer/reset một case và control. |
 | <a id="gap-mount"></a>KR-F011 | Group2 có nhánh riêng; điều kiện/effect/giới hạn/reset runtime KR chưa kiểm. | Chỉ khi fixture Battle cần mount: trace11928A2 tới consumer rồi một pickup/peer/reset; hiện loại khỏi fixture theo policy. |

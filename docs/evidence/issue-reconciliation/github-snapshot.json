@@ -1,16 +1,25 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-13T15:28:02.447601+00:00",
+  "captured_utc": "2026-11-13T18:12:22.569990+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
-      "body": "KRE-074 / M6 theo PLAN#phase1-acceptance: lịch sử trận bền vững, phần thưởng0 và nhân vật đã chọn theo account. Baseline main sau PR389. Owner/tự kiểm Codex; independent review waived.\n\nDependency account DB/M5b và R1 đã đạt; backend tiến hành độc lập G1. Nhánh đầu: schema migration, snapshot phòng/vòng/người chơi, idempotency, busy/rollback/kill/restart cancellation và preference revision/session fences. Không coi backend test là native result integration.\n\nFile: accounts modules/migrations/tests/admin CLI, sau đó bounded worker/bridge và lifecycle room result. Acceptance toàn M6: durable commit trước kết quả client, không mất/trùng sau DB bận/kill, cancellation khác thắng/thua, lưu nhân vật và native relogin, CLI lịch sử theo account/phòng. Thưởng0, không ledger/economy/inventory. Rollback bằng baseline riêng; không downgrade DB schema hoặc xóa dữ liệu.\n\nFeature catalog: KR-S001, KR-X001, KR-L003.\n\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md).\n",
+      "body": "KRE-074 / KR-F008 / KR-F006 / KR-F009 / RUST-G1 lát 3 theo acceptance trong PLAN.\n\nBaseline: main b18beb7 (PR #396, CP295/AUD111). Owner và self-check: Codex solo; independent review waived theo chỉ đạo chủ dự án. Dependency: M5b/M7e và N1R-b đã đạt phạm vi đã ghi.\n\nPhạm vi: chuyển contract kim145 và cứu đã đo ở Python sang Rust cho account/current roster; giữ policy theo report, giới hạn một kim mỗi vòng. Không dùng alias identity hoặc nhánh theo sức chứa. File: life_actions, life, pickups, RoomRules, room_io, config và kiểm liên quan; docs chuẩn và metadata evidence. Không sửa tools/export_map_profile.py.\n\nAcceptance: client KR00967 trên Wine nhặt kim → mắc bóng → Ctrl → tiêu kim và peer thoát đồng bộ; Ctrl khi cạn; kết quả/reset/ván tiếp có kim mới. Cứu bằng actor đồng đội thực, peer nhận và reset theo contract đã đo. Kiểm malformed/duplicate/stale, membership, report cursor, delivery barrier và disconnect; raw/hash/cleanup và native consumer evidence. Unit/differential không thay native evidence. Không tự đóng toàn bộ G1; terrain/item/sáu map/nhân vật có acceptance riêng.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [contract kim/cứu](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/protocol/life-results.md#rust-needle-rescue), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#rust-service-gaps). Điều phối #285.\n",
       "closedAt": null,
-      "number": 391,
+      "number": 397,
       "state": "OPEN",
+      "title": "KRE-074: G1 kim/cứu Rust cho account và roster hiện hành",
+      "updatedAt": "2026-11-13T18:12:44Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/397"
+    },
+    {
+      "body": "KRE-074 / M6 theo PLAN#phase1-acceptance: lịch sử trận bền vững, phần thưởng0 và nhân vật đã chọn theo account. Baseline main sau PR389. Owner/tự kiểm Codex; independent review waived.\n\nDependency account DB/M5b và R1 đã đạt; backend tiến hành độc lập G1. Nhánh đầu: schema migration, snapshot phòng/vòng/người chơi, idempotency, busy/rollback/kill/restart cancellation và preference revision/session fences. Không coi backend test là native result integration.\n\nFile: accounts modules/migrations/tests/admin CLI, sau đó bounded worker/bridge và lifecycle room result. Acceptance toàn M6: durable commit trước kết quả client, không mất/trùng sau DB bận/kill, cancellation khác thắng/thua, lưu nhân vật và native relogin, CLI lịch sử theo account/phòng. Thưởng0, không ledger/economy/inventory. Rollback bằng baseline riêng; không downgrade DB schema hoặc xóa dữ liệu.\n\nFeature catalog: KR-S001, KR-X001, KR-L003.\n\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md).\n",
+      "closedAt": "2026-11-13T16:52:20Z",
+      "number": 391,
+      "state": "CLOSED",
       "title": "KRE-074: M6 lịch sử trận, preference account và thưởng0 bền vững",
-      "updatedAt": "2026-11-13T14:52:42Z",
+      "updatedAt": "2026-11-13T16:52:20Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391"
     },
     {
@@ -59,12 +68,12 @@
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369"
     },
     {
-      "body": "KRE-074 — Server Rust tương thích KR00967, đích dịch vụ nội bộ giai đoạn 1. Owner/self-check: Codex solo; independent review waived. Python giữ công cụ RE/reference và đối chứng.\n\nM0–M4, account/basic và R1 đã giao trong phạm vi từng acceptance. M7a–e đã có phòng managed, lựa chọn nhân vật/đội, roster hiện hành, Start/stat theo lựa chọn và active EOF với kết quả/reset/ván kế. M7e có native3/6/sparse và4→3→2; PR giao vẫn phải qua exact-head/CI. Đây không phải full game hoặc dịch vụ đã sẵn sàng vận hành.\n\nViệc tiếp theo: M5b account bất kỳ, profile từ DB, hai account chung IP và native DB/hàng đợi không ảnh hưởng người đang chơi. Sau đó N1R-b relay nhiều người/reuse/restart, G1 song song M6 thưởng0, rồi M8 theo acceptance giai đoạn 1. Không broad RE hoặc lặp baseline đã đạt.\n\nNguồn duy nhất giữ thứ tự là [Bảng điều hành](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard). [Acceptance](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#rust-service-gaps), [catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/COVERAGE.md). Issue này thay vai trò điều phối Rust của #14; bằng chứng và acceptance lịch sử giữ nguyên.\n\nFeature IDs: KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n",
+      "body": "KRE-074 — Điều phối server Rust tương thích KR00967. Owner/self-check: Codex solo; independent review waived. Python giữ công cụ RE/reference và đối chứng.\n\n[Bảng điều hành](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard) là nguồn duy nhất giữ hiện trạng, dependency và thứ tự. [Acceptance giai đoạn 1](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#rust-service-gaps) và [catalog](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/COVERAGE.md) giữ các nguồn chuẩn. Mỗi feature chỉ được nghiệm thu trong phạm vi evidence; không suy full game hoặc giai đoạn 1 hoàn tất từ một PR. Issue này thay vai trò điều phối Rust của #14; lịch sử giữ nguyên.\n\nFeature IDs: KR-B001, KR-B002, KR-B003, KR-L001, KR-L002, KR-L003, KR-R001, KR-R002, KR-R003, KR-R004, KR-F001, KR-F002, KR-F003, KR-F004, KR-F005, KR-F006, KR-F007, KR-F008, KR-F009, KR-F010, KR-F011, KR-F012, KR-F013, KR-F014, KR-F015, KR-X001, KR-X002, KR-X003, KR-S001, KR-S002.\n",
       "closedAt": null,
       "number": 285,
       "state": "OPEN",
       "title": "KRE-074: incremental Rust service for KR00967 — architecture and implementation milestones",
-      "updatedAt": "2026-11-12T15:19:50Z",
+      "updatedAt": "2026-11-13T18:12:45Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
     },
     {
@@ -699,6 +708,61 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "22f3da56b255ac37492d2a5cb72fc9700dca21e8",
+      "mergeCommit": {
+        "oid": "c62fcd7a69649ef0a303198db466ac82de8527c9"
+      },
+      "mergedAt": "2026-11-13T17:43:09Z",
+      "number": 398,
+      "state": "MERGED",
+      "title": "Đợt L: trạng thái dữ liệu chữ, định dạng ssi1 và công cụ dựng",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/398"
+    },
+    {
+      "headRefOid": "01060ae56861e3d01e99687721a9f506261b19b4",
+      "mergeCommit": {
+        "oid": "b18beb7ba754f00d6cd96f62626dffedf02e720f"
+      },
+      "mergedAt": "2026-11-13T17:25:53Z",
+      "number": 396,
+      "state": "MERGED",
+      "title": "feat(room): chọn map qua UI KR và giữ current map qua các ván",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/396"
+    },
+    {
+      "headRefOid": "d08cdbdce93f65d967f8cf0ad06ecf3123b4663f",
+      "mergeCommit": {
+        "oid": "ae8f30b6f7ca4644c71a64fbc6c4b4b20ecf23ac"
+      },
+      "mergedAt": "2026-11-13T16:51:39Z",
+      "number": 395,
+      "state": "MERGED",
+      "title": "feat(persistence): journal trận trong serving và nghiệm thu M6 thu hẹp",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/395"
+    },
+    {
+      "headRefOid": "d9a3382b922c50da9d4a71a65579541fe230fb2a",
+      "mergeCommit": {
+        "oid": "85084a8a409d8dd04fb04b785fbfb38b97021826"
+      },
+      "mergedAt": "2026-11-13T16:22:28Z",
+      "number": 394,
+      "state": "MERGED",
+      "title": "feat(account): lưu và khôi phục nhân vật qua account DB",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/394"
+    },
+    {
+      "headRefOid": "7b50fe8ffe53b0dd8bbd04f7e2be5cbaaa07199e",
+      "mergeCommit": {
+        "oid": "b33fb89a60491b57692e6daf8e83d7c43d0e9fd3"
+      },
+      "mergedAt": "2026-11-13T15:43:44Z",
+      "number": 393,
+      "state": "MERGED",
+      "title": "feat(persistence): M6 backend lưu trận và preference qua worker",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/393"
+    },
     {
       "headRefOid": "a1d460c2141dcf3311b2e8c6b92e7866cfc61ce1",
       "mergeCommit": {
