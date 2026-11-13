@@ -33,11 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP294: M6 đạt phạm vi giai đoạn 1 — lưu lịch sử trận và nhân vật, thưởng 0.**
-Kết quả trên KR khớp DB; restart và đăng nhập mới giữ nguyên lịch sử và nhân vật. Writer-lock, retry, rớt giữa trận,
-kill sau Start/kết quả và CLI có đối chứng riêng. [Contract và giới hạn](docs/protocol/life-results.md#rust-match-journal-serving),
-[bằng chứng](docs/evidence/rust-service/m6-journal-serving.json). Giai đoạn 1 còn G1 và M8 theo
-[Bảng điều hành](docs/PLAN.md#dashboard); inventory/EXP/tiền tệ thuộc giai đoạn sau.
+**CP295: chủ phòng đã chọn map qua UI KR; peer và trận dùng đúng map mới.**
+Catalog Factory07/Village10 có metadata nhất quán; native đổi map giữa các ván, đọc đúng spawn và kết quả/reset,
+journal ghi đúng map. [Contract và giới hạn](docs/protocol/load-phase.md#rust-room-map-selection),
+[bằng chứng](docs/evidence/rust-service/g1-map-selection.json). **G1 vẫn mở:** còn kim/cứu, terrain/item, map và roster
+đầy đủ theo acceptance. M6 đã giao; M8 còn Internet transport mới và vận hành theo [Bảng điều hành](docs/PLAN.md#dashboard).
 
 ## Bắt đầu
 

@@ -1,0 +1,89 @@
+{
+  "id": "AUD111",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-g1-ui-map-selection"
+  ],
+  "completed_through": "CP295",
+  "recorded_utc": "2026-11-13T17:11:23.948394+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/g1-map-selection.json",
+    "docs/protocol/load-phase.md",
+    "docs/protocol/life-results.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-service/src/map_profile.rs",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "tools/rust_map_catalog.py",
+    "tools/test_rust_map_selection.py",
+    "local/research/codex/g1-selection-source-r1/reuse.json",
+    "local/research/codex/g1-selection-survey-r1/failure-analysis.json",
+    "local/research/codex/g1-selection-survey-r2/native/raw-seal.json",
+    "local/research/codex/g1-selection-native-r1/selection-native-verification.json",
+    "local/research/codex/g1-selection-native-r2/selection-native-verification.json",
+    "local/research/codex/g1-selection-catalog-r3/native-rows-verification.json",
+    "local/research/codex/g1-selection-tcp-r6/tcp/result.json",
+    "local/research/codex/g1-selection-config-negatives-r2/verification.json",
+    "local/research/codex/m6-journal-delivery-receipt.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence, đối chiếu source/raw/current acceptance G1 lát2. Reuse exact CP019 KR96/117/238/checksum and exporter; original exporter unchanged, no VN transplant. Native survey of2row UI; first candidate setup guard failure retained then actual initial96 before final setup measured. Two Wine gameplay runs selected Village10 and final Village→Factory→Village, independent TCP/CRC/sequence/Start/map/name/spawn/stat/rank/getters and DB journal match; sources frozen/raw/cleanup.34copied-native row getters and2row132bytes,8prebind negatives and exact tracked TCP tool guest/malformed/rejoin/freshroom positive.177workspace tests/fmt/clippy/build. Final native same current production binary; earlier binary retained scope. Original failures KDF/helper/model/profile/AddrNotAvailable/pending-offer budget/setup timeout/REA timeout retained, no unknown fix claim. PR395 exact-head/local/history/CI/preverified merge receipt; M6 issue391 now closed only scoped.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Map selection96 only observed/no side effect; selected Start remains fixed.",
+      "correction": "Opt-in catalog pins and current Idle host exact pair96→117/Ready reset; selected Start/play/floor and journal snapshot. Native actual UI map changes between rounds, peer/capture/native/DB all agree.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-selection.json",
+        "docs/protocol/load-phase.md#rust-room-map-selection",
+        "docs/PLAN.md",
+        "rust/crates/kr-service/src/map_profile.rs",
+        "rust/crates/kr-service/src/room_io.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Requiring setup=true for all map requests could be assumed compatible.",
+      "correction": "Native initial host96 occurs after106 before final117. First denied run frozen/sealed; current Idle host init supported and measured later. Guest/stale/loading/active remains denied; queued selection revision independent of index.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-selection.json",
+        "docs/protocol/load-phase.md#rust-room-map-selection",
+        "rust/crates/kr-service/src/room.rs",
+        "rust/crates/kr-service/src/room_io.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Village10 name fix/basic play or native UI6 may be mistaken for complete G1/all capacities.",
+      "correction": "Native map selection/spawn/basic2players in admission4 only, empty floor/terrain off. Village has6spawn/UI6, source8row refused. G1 requirement2..8 unchanged; terrain/item/drop/higher-roster/map acceptance remains.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-selection.json",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/protocol/load-phase.md#rust-room-map-selection"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Successful rerun or larger test offer budget may hide a liveness/security failure.",
+      "correction": "Guest/malformed negative retains actual denial; fresh positive separately verified. Unconnected synthetic offers filled4budget, test-only8budget declares control. One setup timeout still unknown; no source fix guessed or failure relabeled. REA xref450s returned no evidence and source DB unchanged.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-selection.json",
+        "docs/RESEARCH.md",
+        "tools/test_rust_map_selection.py"
+      ]
+    }
+  ],
+  "remaining": [
+    "G1 tổng thể vẫn mở. Tiếp kim/cứu Rust rồi terrain/item, sáu map và roster2..8 cùng nhân vật theo acceptance; không suy map hoàn chỉnh từ floor rỗng/basic.",
+    "Village10 export/native UI chỉ6spawn/người. Eight-row fixture bị từ chối đúng; higher roster cần đối chiếu filter/Start/spawn, không giảm acceptance/ép spawn/pack hoặc báo8người đã đạt.",
+    "M8 deployment authenticated transport Internet thật/packaging/load50/8/24h soak/ops/restore còn riêng; historical N1/K6c không mở lại.",
+    "Synthetic silent setup/Back timeout chưa rõ cause; raw/cleanup/failure giữ nguyên. Native/TCP pass mới không chứng minh fix.",
+    "Metadata chỉ2row có new native proof;2..16 là design bound. Không generic compressed multirow hoặc raw96 epoch claim."
+  ]
+}

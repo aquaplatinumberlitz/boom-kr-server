@@ -358,6 +358,7 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 <a id="rust-bombs"></a><a id="rust-hai-owner-bom-và-deadline-ticket--cp238--rust-m3-partial"></a> [→ Bom, serial, nổ và capacity](protocol/bombs.md#rust-bombs)
 <a id="rust-terrain"></a><a id="rust-boundedterrainrevealba-basicitems--cp239--m3partial"></a> [→ Terrain, block và cascade](protocol/terrain.md#rust-terrain)
 <a id="rust-persistent-character"></a> [→ Lưu nhân vật theo account và khôi phục vào phòng/Start](protocol/auth-session.md#rust-persistent-character)
+<a id="rust-room-map-selection"></a> [→ Chủ phòng chọn map theo catalog và current membership](protocol/load-phase.md#rust-room-map-selection)
 <a id="rust-match-journal-serving"></a> [→ Journal trận trong serving và acceptance M6 thu hẹp](protocol/life-results.md#rust-match-journal-serving)
 <a id="rust-match-store-backend"></a> [→ Backend lịch sử trận, preference và giới hạn M6](protocol/life-results.md#rust-match-store-backend)
 

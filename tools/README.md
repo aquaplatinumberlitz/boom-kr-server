@@ -374,3 +374,10 @@ survivor/shutdown. Đây là method=test, không là client KR. [Native và gi�
 đối chiếu participant/outcome DB và hủy vòng dở khi cleanup vào suite roster hiện có. Yêu cầu các tham số binary,
 admin, config, baseline và out như trước; `--active-departure` kiểm người rớt vẫn có rank/history. Đây là kiểm
 TCP/SQLite, không thay native acceptance. [Journal serving](../docs/protocol/life-results.md#rust-match-journal-serving).
+
+`rust_map_catalog.py --base <baseline> --profile <map JSON> --profile <map JSON> --out local/<mới>` dựng metadata
+nhiều row, checksum và packet từng map. Profile/bodies đầu là mặc định. Đây là candidate generator, không oracle.
+`test_rust_map_selection.py --binary <kr-service> --admin <kr-admin> --config <catalog bốn actor> --out local/<mới>`
+kiểm current/reverse map, guest/malformed denial và fresh room, cùng account/DB isolation bằng TCP/SQLite. Relay bind
+của suite dùng loopback và budget8offer để các launcher tổng hợp chưa nối companion không cạn budget4 của native.
+[Contract, native và giới hạn](../docs/protocol/load-phase.md#rust-room-map-selection). Không chỉnh exporter pack.

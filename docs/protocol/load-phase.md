@@ -90,9 +90,41 @@ bị chặn ở528 chưa nối; lượt sau click cũ chọn màu2 trên bảng 
 OS sang màu3, không mở thêm mã đội. Phép so byte baseline, encoder và test component không thay bằng chứng native.
 
 **Giới hạn:** profile map mới có floor rỗng và tắt terrain ExVillage01; chưa có nghiệm thu terrain/drop/item hoặc
-mọi cỡ phòng của Factory07. Phân loại tile ngoài ExVillage01 vẫn candidate. Chưa đổi map bằng UI, chưa thử năm
-map ladder còn lại hoặc Internet cho transport mới. Phép TCP rộng lỗi ở idle Back giữ nguyên, test cache hẹp không
+mọi cỡ phòng của Factory07. Phân loại tile ngoài ExVillage01 vẫn candidate. [Chọn map UI](#rust-room-map-selection) và basic Village10 có bằng chứng mới; terrain/item,
+roster rộng hơn, các map khác và Internet transport mới vẫn riêng. Phép TCP rộng lỗi ở idle Back giữ nguyên, test cache hẹp không
 chứng minh toàn bộ lifecycle diagnostic; cause còn ở RESEARCH. Không đóng G1 tổng thể hoặc K gate lịch sử.
+
+<a id="rust-room-map-selection"></a>
+### Rust: chủ phòng chọn map theo catalog pack và current membership
+
+**kr_runtime/confirmed trong phạm vi copy Wine** cho catalog Factory07/Village10; guard/policy là thiết kế công ty.
+[Native, build, raw, nguồn và negative controls](../evidence/rust-service/g1-map-selection.json),
+[acceptance G1](../PLAN.md#phase1-acceptance). Đây là lát chọn map, không nghiệm thu toàn map/gameplay.
+
+Opt-in `fixed_room.map_choices` chứa2..16 profile pin và packet117/121/196/floor đã sinh nhất quán; chỉ2row có
+native proof mới. Root profile/bodies là lựa chọn0; toàn catalog dùng chung238/checksum241. Kiểm code/name/index,
+row ID, số spawn, packet header/body và checksum trước bind. [Tool](../../tools/rust_map_catalog.py) dùng exporter
+hiện có, không chỉnh pack. Floor map mới rỗng, không chuyển terrain ExVillage01 sang map mới.
+
+C2S96 là u16 local code/u32 dynamic index theo writer KR đã đo. Chỉ current Idle host được đổi; exact pair phải có
+trong catalog. Native tự gửi96 mặc định ngay sau106 trước final setup117, nên không đòi `setup=true` cho host.
+117 gửi cho membership đã request setup hoặc đã setup; Ready-cleared110 chỉ cho roster setup. Việc chọn/publish
+reserve toàn bộ queue trước khi đổi state; selected map dùng cho117, Start121, play196, floor và snapshot journal.
+Không thêm opcode/ACK giả hoặc suy success từ cửa sổ/process/log server.
+
+Queue có selection revision tăng liên tục bên cạnh membership/visit/connection/phase. Map đổi0→1→0 vẫn vô hiệu
+117 của revision cũ; không dùng index làm generation. Guest/stale/loading/armed/ending hoặc code/index không khớp bị
+từ chối. Raw96 không có room/round token đã đo, nên không gọi internal fence là chứng minh raw96 freshness.
+
+Native host chọn Village10 trên UI, cả hai client đọc117 và Start đúng1104/index1/name/spawn từ pack. Có hai kết
+quả đối nhau/reset/ván tiếp. Lượt final đổi Village10→Factory07→Village10 giữa các ván, kiểm cả peer, Start, native
+lookup/name/stat/spawn và DB journal; Ready phải bật lại. Native decoder đọc hết2row/34getter và checksum. TCP/DB
+controls kiểm reverse selection, guest denial/rejoin, malformed pair/fresh-room current positive và account isolation.
+
+Phạm vi là admission4 và2client native, Dao0/Dizni1/team0/3, empty floor/no terrain mới. Village10 có6spawn/UI
+hiện6người; fixture8row bị adapter từ chối đúng. G1 vẫn yêu cầu đầy đủ2..8 theo PLAN, chưa tự giảm scope hoặc ép lại
+spawn/pack. Terrain/drop/item, các map khác, mọi cỡ roster và Internet/load chưa được suy từ lát này. Lỗi synthetic
+setup/Back cũ còn unknown, giữ raw/failure và phép đo M8 riêng.
 
 <a id="village10-map-selection"></a>
 ### Village10: mã map và dữ liệu chọn map phải nhất quán
@@ -107,8 +139,8 @@ không chứng minh toàn bộ ID map, mode hoặc biến thể đều dùng cù
 
 Lượt native giữ tên **ExVillage01** trong Start121 và metadata động 238/241 của profile cũ; chỉ mã chọn ở
 117/121/196 đổi. Client so tên tại `DC8470`, trả khác 0 rồi đi nhánh từ chối `DC8496` trước loading.
-Do đó mã và tên trong Start phải đồng bộ với bản ghi client. Chưa đo profile Village10 đã đồng bộ đầy đủ;
-không suy rằng sửa riêng tên là đủ. Không gửi 99, không tới clock/spawn và không có trận Village10 trong lượt này.
+Do đó mã và tên trong Start phải đồng bộ với bản ghi client. Tại lượt lịch sử này chưa đo profile đồng bộ đầy đủ, không gửi99/clock/spawn.
+[Adapter và native UI mới](#rust-room-map-selection) đã có dữ liệu nhất quán và basic Village10; không viết lại kết quả cũ.
 
 Guard Rust còn khóa terrain vào hash fixture map/start cũ. Candidate chỉ đổi mã bị từ chối trước khi mở client;
 lượt đo selector sau đó **tắt terrain cũ**, không đổi guard hoặc gán lại terrain ExVillage01 cho Village10.
