@@ -6,16 +6,41 @@ use std::{
     sync::atomic::{AtomicU64, Ordering},
 };
 
-#[derive(Debug, Default)]
-pub(crate) struct RoundEpochs(AtomicU64);
+#[derive(Debug)]
+pub(crate) struct RoundEpochs {
+    last: AtomicU64,
+    step: u64,
+    maximum: u64,
+}
+impl Default for RoundEpochs {
+    fn default() -> Self {
+        Self {
+            last: AtomicU64::new(0),
+            step: 1,
+            maximum: 255,
+        }
+    }
+}
 
 impl RoundEpochs {
+    /// Protected companion routes carry independent random IDs and replay
+    /// windows, while local endpoints never cross their own session/round.
+    /// Repeating the low byte stresses that native UDP key is not authority;
+    /// the full TCP wire key remains unique and the internal epoch monotonic.
+    pub(crate) fn authenticated() -> Self {
+        Self {
+            last: AtomicU64::new(0),
+            step: 256,
+            maximum: u64::from(u32::MAX - 12345),
+        }
+    }
     pub(crate) fn next(&self) -> io::Result<u64> {
-        self.0
+        self.last
             .try_update(Ordering::Relaxed, Ordering::Relaxed, |last| {
-                (last < 255).then(|| last + 1)
+                last.checked_add(self.step)
+                    .filter(|next| *next <= self.maximum)
             })
-            .map(|last| last + 1)
+            .map(|last| last + self.step)
             .map_err(|_| io::Error::other("managed round key budget exhausted; no key reuse"))
     }
 }

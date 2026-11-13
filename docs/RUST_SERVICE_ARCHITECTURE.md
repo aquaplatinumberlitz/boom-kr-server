@@ -24,8 +24,8 @@ Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, k
 Nền transport mới cho N1R-b nằm ở `rust/crates/kr-tunnel`, tách khỏi `kr-wire` và `kr-service` vì phần companion
 chạy cạnh client người chơi. Đây là process phía người chơi để giữ nguyên UDP KR trong một transport có xác thực,
 không là microservice server mới. Quyết định và mức chứng minh ở
-[PROTOCOL](protocol/udp-peer.md#rust-authenticated-companion-foundation); quyền account/room, control từng vòng và
-đóng gói còn phải tích hợp theo PLAN. Service Python và đường `LegacyDirect` vẫn giữ vai trò hiện hành.
+[PROTOCOL](protocol/udp-peer.md#rust-authenticated-serving-relay); account/room và control từng vòng đã có
+native bốn người, còn các ca N1R-b và đóng gói theo PLAN. Service Python và đường `LegacyDirect` vẫn giữ vai trò hiện hành.
 
 ## Quyết định và căn cứ
 

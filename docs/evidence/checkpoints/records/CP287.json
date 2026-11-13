@@ -1,0 +1,211 @@
+{
+  "id": "CP287",
+  "previous": "CP286",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T12:19:11.531430+00:00",
+  "context_commit": "23364d5b78d747c46a3abbbb463084e840a9a232",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074 / N1R-b: serving-owned companion gắn account/phòng và control từng vòng có chạy đúng native bốn người không?",
+  "scope": "Account capability/QUIC admission, managed room routing/control và native4 hai kết quả/reset/Start3 trên Wine LAN. Không đóng N1R-b, không Internet hoặc production/load acceptance.",
+  "artifacts": [
+    {
+      "name": "kr-service-owned-relay",
+      "sha256": "f4220acbe04f2ed9398c8885c68383f355b411b0da3a3b444733ea1820ffbee8"
+    },
+    {
+      "name": "kr-companion",
+      "sha256": "18edd92132b8324691c89438238f146c82cb939a6fd6dcc8f8c8345f1f8d9d97"
+    },
+    {
+      "name": "KR00967-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+    "docs/evidence/rust-service/n1rb-owned-serving-four.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Private launcher cấp capability theo account/session; route giữ channel/visit/slot/room/round, ACK trước153 và DB/member checks trước pump. Transport, ACK/pool/replay và revoke có kiểm tổng hợp.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+      "evidence": [
+        "N1RB287-00010",
+        "N1RB287-00847",
+        "N1RB287-00020"
+      ],
+      "limits": "Company transport outside KR; synthetic agreement không chứng minh contract hoặc native attack. Opt-in policy; chưa đổi default phase1."
+    },
+    {
+      "summary": "Bốn native KR có profile DB, Start/stat/peer của roster hiện hành; 512 completed UDP applies nối byte capture hai đầu, đủ ba sender/receiver ở hai vòng. Hai kết quả đội trái nhau/reset và clock trận3; low8 key lặp nhưng full key/route snapshot mới.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+      "evidence": [
+        "N1RB287-00010",
+        "N1RB287-00833",
+        "N1RB287-00832",
+        "N1RB287-00825"
+      ],
+      "limits": "Wine/private LAN/no NAT or netem in this run. Bounded windows, only completed helpers claimed. No native8/sparse/departure/restart/common-IP attack or full N1R-b."
+    },
+    {
+      "summary": "Lượt1 bị invalid session đúng policy DatabaseZero trước client. Lượt2 source freeze, exit0, export/hash và namespace extinction; 7040 copied-native getters khớp. Retained test/verifier failures phân loại riêng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+      "evidence": [
+        "N1RB287-00010",
+        "N1RB287-00825",
+        "N1RB287-00357"
+      ],
+      "limits": "Không sửa raw cũ. REA TShark provider thiếu config; không gọi independent packet decoder là REA evidence."
+    }
+  ],
+  "verification": [
+    {
+      "check": "154 Rust workspace tests, locked binary build, fmt and Clippy",
+      "result": "pass",
+      "evidence": [
+        "N1RB287-00847",
+        "N1RB287-00021",
+        "N1RB287-00020",
+        "N1RB287-00853"
+      ],
+      "limits": "Tests cover design/backend/transport; native oracle separate."
+    },
+    {
+      "check": "Independent native4 TCP/UDP/consumers/getter, two results/reset/third clock and cleanup",
+      "result": "pass",
+      "evidence": [
+        "N1RB287-00833",
+        "N1RB287-00832",
+        "N1RB287-00825"
+      ],
+      "limits": "Declared scope only; N1R-b open."
+    },
+    {
+      "check": "Manual serving-native4 feature-group audit",
+      "result": "pass",
+      "evidence": [
+        "N1RB287-00009",
+        "N1RB287-00010"
+      ],
+      "limits": "Independent review waived. Exact-head/local-history checks and green CI required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP287-owned-serving-four.json",
+      "bytes": 243392,
+      "sha256": "7f2fd531326a37ebd84a54cbe0e0beb43532f65bcb1d2ad3104da15527046803",
+      "count": 928
+    }
+  ],
+  "delta": {
+    "added": [
+      "Serving account-bound companion capability/control and managed round relay.",
+      "Native four-client two-result/reset/third-clock proof and quarantined local endpoints."
+    ],
+    "corrected": [
+      "Fixed-profile recipe grant timing for DatabaseZero; initial run remains failed and sealed.",
+      "Companion shutdown race and native bomb timestamp classification; prior failures retained."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "N1R-b vẫn mở: native tám người, roster sau rời và rớt mạng với survivor tiếp tục trên transport mới.",
+    "Còn service reuse vượt pool với exact stale/current control, restart và spoof gói đầu giữa hai account chung IP. Kernel/QUIC tests không thay native attack acceptance.",
+    "Proxy local không xác thực process khác; quarantine socket theo session có budget hữu hạn, cạn thì fail closed. Chưa có automatic reconnect/session resume/match restore.",
+    "Native mới chỉ Wine/LAN cô lập. Không thêm Internet/ISP/CGNAT/load claim; G1, M6 và M8 chưa xong."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp N1R-b native8 và sparse/active departure, sustained pool/key reuse, restart old/current và common-IP spoof theo dashboard. Không lặp static2 hoặc baseline native4.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T12:19:11.531430+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo serving/native4/transport self-check and manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ serving/native4 và giới hạn; N1R-b mở."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ serving/native4 và giới hạn; N1R-b mở."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ serving/native4 và giới hạn; N1R-b mở."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ serving/native4 và giới hạn; N1R-b mở."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ serving/native4 và giới hạn; N1R-b mở."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ serving/native4 và giới hạn; N1R-b mở."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "Đồng bộ serving/native4 và giới hạn; N1R-b mở."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ serving/native4 và giới hạn; N1R-b mở."
+    },
+    {
+      "path": "docs/protocol/udp-peer.md",
+      "state": "updated",
+      "reason": "Đồng bộ serving/native4 và giới hạn; N1R-b mở."
+    },
+    {
+      "path": "docs/evidence/rust-service/n1rb-owned-serving-four.json",
+      "state": "updated",
+      "reason": "Serving/native4 metadata, reuse/source/failure/hash and acceptance boundary."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, audit theo nhóm và PR/exact-head/CI/privacy giữ nguyên."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-authenticated-serving-four"
+  ]
+}

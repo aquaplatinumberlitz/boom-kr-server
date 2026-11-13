@@ -376,7 +376,9 @@ version = "0.1.0"
 dependencies = [
  "argon2",
  "getrandom 0.4.3",
+ "kr-tunnel",
  "kr-wire",
+ "quinn",
  "rusqlite",
  "serde",
  "serde_json",

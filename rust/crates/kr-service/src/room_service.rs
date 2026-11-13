@@ -43,6 +43,7 @@ pub(crate) struct Hub {
     max_rooms: usize,
     changes: watch::Sender<u64>,
     relay: Option<room_relay::Factory>,
+    authenticated: Option<Arc<crate::authenticated_peer::Hub>>,
     epochs: Arc<crate::round_epochs::RoundEpochs>,
     round_profile: Option<Arc<room_io::ManagedRound>>,
     player_choices: bool,
@@ -70,6 +71,7 @@ impl Hub {
         cfg: &Config,
         prototype: room_io::Shared,
         relay: Option<room_relay::Factory>,
+        authenticated: Option<Arc<crate::authenticated_peer::Hub>>,
     ) -> io::Result<Arc<Self>> {
         if !(2..=64).contains(&cfg.max_rooms) {
             return Err(err("managed room bound must be 2..64"));
@@ -102,6 +104,11 @@ impl Hub {
             round_profile
         };
         let (changes, _) = watch::channel(0);
+        let epochs = Arc::new(if authenticated.is_some() {
+            crate::round_epochs::RoundEpochs::authenticated()
+        } else {
+            crate::round_epochs::RoundEpochs::default()
+        });
         Ok(Arc::new(Self {
             state: Mutex::new(State {
                 rooms: Registry::default(),
@@ -112,7 +119,8 @@ impl Hub {
             max_rooms: cfg.max_rooms,
             changes,
             relay,
-            epochs: Arc::new(crate::round_epochs::RoundEpochs::default()),
+            authenticated,
+            epochs,
             round_profile,
             player_choices: cfg.player_choices,
             capacity: cfg.capacity,
@@ -194,6 +202,12 @@ impl Channel {
                     )?;
                     if let Some(factory) = &self.hub.relay {
                         room_io::install_relay(&shared, factory.owner(key))?;
+                    }
+                    if let Some(hub) = &self.hub.authenticated {
+                        room_io::install_authenticated(
+                            &shared,
+                            crate::authenticated_room_relay::Owner::new(hub.clone(), key),
+                        )?;
                     }
                     Ok(shared)
                 })?

@@ -1,0 +1,193 @@
+{
+  "schema": "kre-rust-owned-relay-four-v1",
+  "checkpoint": "CP287",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/380",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+  "scope": "Serving-owned authenticated relay and native four-player integration only; N1R-b open.",
+  "baseline": "23364d5b78d747c46a3abbbb463084e840a9a232",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "wine": "wine-10.0-20260425 (CachyOS)",
+  "environment": {
+    "kind": "Wine and four separate virtual hosts on private isolated LAN",
+    "outbound": "No outside interface or default route",
+    "NAT": "None in this integration run; previous NAT/Internet evidence retains its own scope",
+    "impairments": "No configured latency/jitter/loss/reordering/bandwidth cap/MTU change; captured interface metadata remains local",
+    "limits": "Shared host kernel and virtual LAN; not new Internet/ISP/CGNAT evidence"
+  },
+  "native": {
+    "root": "local/research/codex/n1rb-owned-four-native-r2",
+    "verification": "local/research/codex/n1rb-owned-four-native-r2/owned-four-verification.json",
+    "getters": "local/research/codex/n1rb-owned-four-native-r2/owned-four-getter-verification.json",
+    "run_sha256": "ae124e0a5fe7262d1ac7804653d621a24a556879b498fa67aaa6fff2777cf308",
+    "service_binary_sha256": "f4220acbe04f2ed9398c8885c68383f355b411b0da3a3b444733ea1820ffbee8",
+    "companion_binary_sha256": "18edd92132b8324691c89438238f146c82cb939a6fd6dcc8f8c8345f1f8d9d97",
+    "source_frozen": true,
+    "returncode": 0,
+    "raw_count": 140,
+    "duration_s": 284.994849006,
+    "applies": 512,
+    "native": {
+      "A": {
+        "round_keys": [
+          12601,
+          12857,
+          13113
+        ],
+        "native_applies": 128,
+        "native_packet_joins": 128,
+        "sender_slots_by_round": {
+          "1": [
+            1,
+            2,
+            3
+          ],
+          "2": [
+            1,
+            2,
+            3
+          ]
+        },
+        "changing_by_round": {
+          "1": 6,
+          "2": 6
+        }
+      },
+      "B": {
+        "round_keys": [
+          12601,
+          12857,
+          13113
+        ],
+        "native_applies": 128,
+        "native_packet_joins": 128,
+        "sender_slots_by_round": {
+          "1": [
+            0,
+            2,
+            3
+          ],
+          "2": [
+            0,
+            2,
+            3
+          ]
+        },
+        "changing_by_round": {
+          "1": 6,
+          "2": 6
+        }
+      },
+      "C": {
+        "round_keys": [
+          12601,
+          12857,
+          13113
+        ],
+        "native_applies": 128,
+        "native_packet_joins": 128,
+        "sender_slots_by_round": {
+          "1": [
+            0,
+            1,
+            3
+          ],
+          "2": [
+            0,
+            1,
+            3
+          ]
+        },
+        "changing_by_round": {
+          "1": 6,
+          "2": 6
+        }
+      },
+      "D": {
+        "round_keys": [
+          12601,
+          12857,
+          13113
+        ],
+        "native_applies": 128,
+        "native_packet_joins": 128,
+        "sender_slots_by_round": {
+          "1": [
+            0,
+            1,
+            2
+          ],
+          "2": [
+            0,
+            1,
+            2
+          ]
+        },
+        "changing_by_round": {
+          "1": 9,
+          "2": 9
+        }
+      }
+    },
+    "getter_checks": 7040,
+    "outer_packets": 19720,
+    "cleanup": "Pythonfinally/privateuser-net-mount-PID/ownedWine-and-Rust/loopbackcaptureclose/netnamespaceextinct"
+  },
+  "implementation": {
+    "policy": "Opt-in authenticated_relay in RoomRules; keep LegacyDirect and old prototype unchanged. Phase1 default still awaits full N1R-b acceptance.",
+    "launcher": "Existing private Unix launcher returns pinned certificate and one-use capability scoped to player/session generation. New kr-companion accepts private stdin only; no secret in argv/logs.",
+    "authority": "Fresh account inspection before QUIC admission, channel generation/connection/visit/slot/room session+generation/round+random service identity and exact current membership before each pump. Expiry/revoke does not renew on UDP/control.",
+    "control": "Reserve bounded control queues and routes before Start; companion binds snapshot and acknowledges exact routes, service waits before native153. Native bytes unchanged. Independent route128 and seq64/replay64 outside KR.",
+    "resource": "One server QUIC UDP listener, bounded peers/routes/queues and per-round retirement. Client loopback endpoints quarantined until session ends with finite 26..32768 socket budget; exhaustion fails closed. Public port reused while native low-byte key repeats; internal epoch and full native key remain monotonic.",
+    "limits": "No authentication of another local process, automatic companion reconnect, session/match restore, multiserver relay or NAT-direct discovery. Native8/sparse/active departure/restart/common-IP attack and M8 budgets still required."
+  },
+  "verification": {
+    "workspace_tests": "local/research/codex/n1rb-owned-tests-final.txt",
+    "tests": 154,
+    "fmt": "local/research/codex/n1rb-owned-fmt-final.txt",
+    "clippy": "local/research/codex/n1rb-owned-clippy-final.txt",
+    "locked_build": "local/research/codex/n1rb-service-owned-build-r2.txt",
+    "account_transport_test": "account_bridge::tests::authenticated_companions_follow_account_room_round_and_revoke_without_ip_ownership",
+    "synthetic": "Four rounds over two-route pool; old native endpoint/data, generation/capability/replay/owner/revoke denial and current positive. No native attack or gate closure inferred.",
+    "native": "local/research/codex/n1rb-owned-four-native-r2/owned-four-verification.json",
+    "getters": "local/research/codex/n1rb-owned-four-native-r2/owned-four-getter-verification.json",
+    "optional_REA": "TShark provider unavailable because REA_TSHARK_COMMAND is unset. No configuration change or REA packet claim. Independent retained Ethernet/TCP/UDP decoder and passive native consumers used."
+  },
+  "reuse": {
+    "current": "boom-kr-server@23364d5; CP286 native loopback/unchanged UDP, CP285 account DB and CP283 current roster/consumer fixtures.",
+    "prior_source": "local/research/codex/n1rb-source-r1/reuse.json",
+    "direct": "Current account/room/round policies, Python independent decoder, passive KR consumers, Wine isolation/export/seal and copied-native getter.",
+    "method_only": "Static foundation lab example stays diagnostic; no static capabilities/routes in serving. No VN or legacy server port.",
+    "must_compare": "Native4 serving delta measured here; native8/sparse/departure and restart/spoof remain.",
+    "avoids": "No N1b retry, broad peer decompile, account/profile requalification or map/item RE."
+  },
+  "retained_failures": [
+    {
+      "root": "local/research/codex/n1rb-owned-four-native-r1",
+      "result": "exit1 before native launch; old fixed-profile recipe seeded sessions before DatabaseZero service begin_instance invalidated them. Expected fail-closed; no native acceptance.",
+      "seal": "local/research/codex/n1rb-owned-four-native-r1/native/raw-seal.json"
+    },
+    {
+      "path": "local/research/codex/n1rb-service-owned-workspace-tests-r3.txt",
+      "result": "Initial dynamic-companion shutdown test raced stop vs control EOF; explicit stop prioritized and full 154-test rerun passed."
+    },
+    {
+      "path": "local/research/codex/n1rb-owned-checker-root-diagnostic.json",
+      "result": "Wrong-root require-local checker cancelled; worktree local is external symlink. Canonical exact-head checks required before merge."
+    },
+    {
+      "path": "local/research/codex/n1rb-owned-four-verification-r2.txt",
+      "result": "Verifier initially assumed bomb probe had round field. Retained wire/native output unchanged; corrected classification uses independent clock time brackets."
+    }
+  ],
+  "acceptance": {
+    "native_four": "pass in declared scope: all directed sender slots apply at each receiver over two rounds, two opposite team results/reset and third Start/clock, snapshot route reuse with repeated native low key.",
+    "native_eight": "open",
+    "sparse_and_active_departure": "open for this transport",
+    "small_pool_sustained_key_reuse": "partial; synthetic four rounds beyond two-route pool plus native full snapshot reclamation. Sustained service/old-current control still required.",
+    "restart_and_common_IP_attack": "open",
+    "milestone_N1Rb": "open",
+    "phase1": "open"
+  }
+}

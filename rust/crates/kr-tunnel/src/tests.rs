@@ -118,7 +118,8 @@ async fn pinned_quic_roundtrip_preserves_bytes_and_denies_wrong_capability_same_
         assert_eq!(packet.native, (0..=254).collect::<Vec<_>>());
         link.send(&packet).unwrap();
         let mut finish = [0; 1];
-        link.control_recv.read_exact(&mut finish).await.unwrap();
+        let (_, mut recv) = link.take_control().unwrap();
+        recv.read_exact(&mut finish).await.unwrap();
         assert_eq!(finish, [1]);
         server.close(0_u8.into(), b"test end");
     });
@@ -143,7 +144,8 @@ async fn pinned_quic_roundtrip_preserves_bytes_and_denies_wrong_capability_same_
             .unwrap(),
         packet
     );
-    link.control_send.write_all(&[1]).await.unwrap();
+    let (mut send, _) = link.take_control().unwrap();
+    send.write_all(&[1]).await.unwrap();
     task.await.unwrap();
     endpoint.close(0_u8.into(), b"test end");
 }

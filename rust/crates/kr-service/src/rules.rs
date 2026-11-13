@@ -68,6 +68,7 @@ pub(crate) enum EndpointPolicy {
     #[default]
     LegacyDirect,
     Relay,
+    AuthenticatedRelay,
 }
 
 /// Active roster policy, independent of the room's admission capacity.

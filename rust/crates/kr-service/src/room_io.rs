@@ -207,8 +207,10 @@ pub(crate) fn load_player_round(
     let source = prototype
         .lock()
         .map_err(|_| err("room prototype unavailable"))?;
-    if source.rules.endpoint != rules::EndpointPolicy::LegacyDirect
-        || source.model.terrain.is_some()
+    if !matches!(
+        source.rules.endpoint,
+        rules::EndpointPolicy::LegacyDirect | rules::EndpointPolicy::AuthenticatedRelay
+    ) || source.model.terrain.is_some()
     {
         return Err(err(
             "player rounds require direct UDP and no terrain profile",
@@ -230,7 +232,7 @@ pub(crate) fn load_player_round(
             life: rules::LifePolicy::TeamReports,
             teams: TeamPolicy::BalancedManner,
             slot_allocation: rules::SlotAllocation::FirstVacant,
-            endpoint: rules::EndpointPolicy::LegacyDirect,
+            endpoint: source.rules.endpoint,
             player_choices: true,
             ninth_admission_probe: false,
         },
@@ -242,6 +244,21 @@ pub(crate) fn load_player_round(
 }
 
 pub type Shared = Arc<Mutex<Runtime>>;
+pub(crate) fn install_authenticated(
+    shared: &Shared,
+    owner: crate::authenticated_room_relay::Owner,
+) -> io::Result<()> {
+    let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
+    if runtime.rules.endpoint != rules::EndpointPolicy::AuthenticatedRelay
+        || !runtime.channels.is_empty()
+        || runtime.authenticated.is_some()
+        || runtime.relay.is_some()
+    {
+        return Err(err("authenticated relay requires an empty opt-in room"));
+    }
+    runtime.authenticated = Some(owner);
+    Ok(())
+}
 pub(crate) fn install_relay(shared: &Shared, owner: crate::room_relay::Owner) -> io::Result<()> {
     let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
     if runtime.rules.endpoint != rules::EndpointPolicy::Relay
@@ -302,6 +319,7 @@ pub struct Runtime {
     public_key: Option<crate::room_registry::RoomKey>,
     managed_round: Option<Arc<ManagedRound>>,
     relay: Option<crate::room_relay::Owner>,
+    authenticated: Option<crate::authenticated_room_relay::Owner>,
     scope: Arc<()>,
     model: Room,
     players: HashMap<PlayerId, Reply>,
@@ -561,6 +579,7 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
         public_key: None,
         managed_round: None,
         relay: None,
+        authenticated: None,
         scope: Arc::new(()),
         model,
         players,
@@ -595,7 +614,11 @@ pub(crate) fn fork(
     let source = prototype
         .lock()
         .map_err(|_| err("room prototype unavailable"))?;
-    if !source.channels.is_empty() || !source.model.members.is_empty() || source.relay.is_some() {
+    if !source.channels.is_empty()
+        || !source.model.members.is_empty()
+        || source.relay.is_some()
+        || source.authenticated.is_some()
+    {
         return Err(err("room prototype is not pristine"));
     }
     let mut model = source.model.clone();
@@ -616,6 +639,7 @@ pub(crate) fn fork(
         public_key: Some(key),
         managed_round,
         relay: None,
+        authenticated: None,
         scope: Arc::new(()),
         model,
         players: source.players.clone(),
@@ -813,6 +837,9 @@ impl Runtime {
         if let Some(relay) = &mut self.relay {
             relay.transition(&next)?;
         }
+        if let Some(authenticated) = &mut self.authenticated {
+            authenticated.transition(&next)?;
+        }
         self.model = next;
         for (permit, batch) in reserved {
             permit.send(batch);
@@ -952,6 +979,9 @@ impl Runtime {
                 // No native partial-rank/return recovery contract yet. Revoke
                 // every queued owner instead of exposing an idle ghost roster.
                 let _ = next.leave(m.key);
+                if let Some(authenticated) = &mut self.authenticated {
+                    authenticated.invalidate();
+                }
                 self.model = next;
                 self.channels.clear();
                 return;
@@ -960,6 +990,9 @@ impl Runtime {
                 // Invalidate all queued recovery on a second loss. Preserve the
                 // first job for provenance; do not claim multi-loss room recovery.
                 let _ = next.leave(m.key);
+                if let Some(authenticated) = &mut self.authenticated {
+                    authenticated.invalidate();
+                }
                 self.model = next;
                 self.channels.clear();
                 return;
@@ -995,6 +1028,9 @@ impl Runtime {
                 match result {
                     Ok((next, job, effects)) => {
                         if self.publish(next.clone(), effects).is_err() {
+                            if let Some(authenticated) = &mut self.authenticated {
+                                authenticated.invalidate();
+                            }
                             self.model = next;
                             self.channels.clear();
                         }
@@ -1019,6 +1055,9 @@ impl Runtime {
                     .and_then(|round| self.continuing_departure(m.key, &next, round))
                     .and_then(|effects| self.publish(next.clone(), effects));
                 if result.is_err() {
+                    if let Some(authenticated) = &mut self.authenticated {
+                        authenticated.invalidate();
+                    }
                     self.model = next;
                     self.channels.clear();
                 }
@@ -1045,6 +1084,9 @@ impl Runtime {
                         .departure(m.key, &next)
                         .and_then(|effects| self.publish(next.clone(), effects));
                     if result.is_err() {
+                        if let Some(authenticated) = &mut self.authenticated {
+                            authenticated.invalidate();
+                        }
                         self.model = next;
                         self.channels.clear();
                     }
@@ -1074,6 +1116,9 @@ impl Runtime {
                 match effects.and_then(|effects| self.publish(next.clone(), effects)) {
                     Ok(()) => {}
                     Err(_) => {
+                        if let Some(authenticated) = &mut self.authenticated {
+                            authenticated.invalidate();
+                        }
                         self.model = next;
                         self.channels.clear();
                     }
@@ -1124,9 +1169,49 @@ impl Runtime {
     }
 }
 impl Session {
+    /// Companion control is independent of native loading. Do not publish 153
+    /// before every authenticated peer has bound its current loopback snapshot.
+    /// No room lock crosses the wait; packet() rechecks membership afterwards.
+    pub(crate) async fn wait_peer_ready(&self) -> io::Result<()> {
+        let round = {
+            let r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            r.member(self.identity, self.connection)?;
+            if r.authenticated.is_none() {
+                return Ok(());
+            }
+            match r.model.phase {
+                Phase::Loading { round, .. } => round,
+                _ => return Ok(()),
+            }
+        };
+        tokio::time::timeout(Duration::from_secs(3), async {
+            loop {
+                {
+                    let r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+                    r.member(self.identity, self.connection)?;
+                    if !matches!(r.model.phase, Phase::Loading { round: current, .. } if current == round) {
+                        return Err(err("loading changed during peer readiness"));
+                    }
+                    if r.authenticated.as_ref().is_some_and(|owner| owner.ready()) {
+                        return Ok(());
+                    }
+                }
+                tokio::time::sleep(Duration::from_millis(10)).await;
+            }
+        }).await.map_err(|_| err("authenticated peer readiness deadline"))?
+    }
     /// Inspect every account without a room lock or idle renewal. A late DB
     /// completion cannot authorize a different room/round/channel generation.
     pub(crate) async fn pump_relay(&self) -> io::Result<crate::udp_relay::PumpStats> {
+        if self
+            .shared
+            .lock()
+            .map_err(|_| err("room unavailable"))?
+            .authenticated
+            .is_some()
+        {
+            return self.pump_authenticated().await;
+        }
         let authorization = {
             let r = self.shared.lock().map_err(|_| err("room unavailable"))?;
             if r.channels
@@ -1163,6 +1248,41 @@ impl Session {
             .as_mut()
             .map_or(Ok(crate::udp_relay::PumpStats::default()), |relay| {
                 relay.pump(scope, &model)
+            })
+    }
+    async fn pump_authenticated(&self) -> io::Result<crate::udp_relay::PumpStats> {
+        let authorization = {
+            let r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            if r.channels
+                .get(&self.identity)
+                .is_none_or(|c| c.connection != self.connection)
+            {
+                return Err(err("stale authenticated relay channel"));
+            }
+            r.authenticated
+                .as_ref()
+                .and_then(|owner| owner.authorization(&r.model))
+        };
+        let Some((scope, authorities)) = authorization else {
+            return Ok(crate::udp_relay::PumpStats::default());
+        };
+        for authority in authorities {
+            // check_idle invalidates only the denied generation. Survivors are
+            // retained after the await; a denied peer cannot authorize sends.
+            let _ = authority.check_idle().await;
+        }
+        let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        if r.channels
+            .get(&self.identity)
+            .is_none_or(|c| c.connection != self.connection)
+        {
+            return Ok(crate::udp_relay::PumpStats::default());
+        }
+        let model = r.model.clone();
+        r.authenticated
+            .as_mut()
+            .map_or(Ok(crate::udp_relay::PumpStats::default()), |owner| {
+                owner.pump(scope, &model)
             })
     }
     pub fn open(shared: &Shared, identity: u32, connection: u64) -> io::Result<Self> {
@@ -1948,7 +2068,10 @@ impl Session {
                             };
                     }
                 }
-                if r.rules.endpoint == rules::EndpointPolicy::Relay {
+                if matches!(
+                    r.rules.endpoint,
+                    rules::EndpointPolicy::Relay | rules::EndpointPolicy::AuthenticatedRelay
+                ) {
                     let rows = next
                         .members
                         .values()
@@ -1970,9 +2093,16 @@ impl Session {
                             ))
                         })
                         .collect::<io::Result<Vec<_>>>()?;
-                    let relay = r.relay.as_mut().ok_or_else(|| err("missing relay pool"))?;
-                    let reservation = relay.prepare(&next, rows)?;
-                    relay.install(reservation);
+                    if r.rules.endpoint == rules::EndpointPolicy::AuthenticatedRelay {
+                        r.authenticated
+                            .as_mut()
+                            .ok_or_else(|| err("missing authenticated relay"))?
+                            .prepare(&next, rows)?;
+                    } else {
+                        let relay = r.relay.as_mut().ok_or_else(|| err("missing relay pool"))?;
+                        let reservation = relay.prepare(&next, rows)?;
+                        relay.install(reservation);
+                    }
                 }
                 for peer in next.members.values() {
                     effects.push((
@@ -2075,7 +2205,14 @@ impl Session {
                                                     r.body(Template::Peer153),
                                                     key,
                                                     peer.slot,
-                                                    &plan.for_player(round, peer.key)?,
+                                                    &if let Some(owner) = &r.authenticated {
+                                                        owner.decorate(
+                                                            peer.key,
+                                                            plan.for_player(round, peer.key)?,
+                                                        )?
+                                                    } else {
+                                                        plan.for_player(round, peer.key)?
+                                                    },
                                                 )?
                                             } else {
                                                 wire::peer153(
@@ -2468,7 +2605,12 @@ impl Session {
             }
             _ => return Err(err("unsupported room request")),
         }
-        r.publish(next, effects)?;
+        if let Err(error) = r.publish(next, effects) {
+            if let Some(owner) = &mut r.authenticated {
+                owner.invalidate();
+            }
+            return Err(error);
+        }
         if let Some(key) = new_key {
             r.last_visits.insert(self.identity, key.visit);
         }
@@ -2600,6 +2742,7 @@ mod tests {
             public_key: None,
             managed_round: None,
             relay: None,
+            authenticated: None,
             scope: Arc::new(()),
             model,
             players: synthetic_players(&packets),
@@ -2731,6 +2874,7 @@ mod tests {
             public_key: None,
             managed_round: None,
             relay: None,
+            authenticated: None,
             scope: Arc::new(()),
             model: Room::default(),
             players: HashMap::new(),
@@ -2995,6 +3139,7 @@ mod four_abort_tests {
             public_key: None,
             managed_round: None,
             relay: None,
+            authenticated: None,
             scope: Arc::new(()),
             model,
             players: synthetic_players(&packets),
@@ -3296,6 +3441,7 @@ mod ninth_probe_tests {
             public_key: None,
             managed_round: None,
             relay: None,
+            authenticated: None,
             scope: Arc::new(()),
             model,
             players: HashMap::new(),
@@ -3425,6 +3571,7 @@ mod registry_foundation_tests {
             public_key: None,
             managed_round: None,
             relay: None,
+            authenticated: None,
             scope: Arc::new(()),
             model: Room::default(),
             players: HashMap::new(),

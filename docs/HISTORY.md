@@ -5,6 +5,14 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP286: đường companion có xác thực đã có phép kiểm tương thích hai client KR thật.**
+UDP giữ nguyên byte qua QUIC tới native consumer; hai kết quả/reset và Start tiếp đã được đối chiếu bằng capture,
+native state và getter. [Phạm vi/giới hạn](protocol/udp-peer.md#rust-authenticated-companion-foundation),
+[bằng chứng](evidence/rust-service/n1rb-companion-foundation.json). Đây là nền transport với route tĩnh trong lab;
+**N1R-b chưa đạt**. Tiếp nối quyền account/phòng, roster bốn/tám người và các ca reuse/restart/spoof theo
+[Bảng điều hành](PLAN.md#dashboard). M5b đã giao PR #379; G1/M6/M8 còn mở.
+Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](HISTORY.md).
+
 **CP285: M5b đã đủ đường account mới và đăng nhập KR sau khi DB/hàng đợi phục hồi.**
 Ba account tạo khi service đang chạy đã chơi hai trận; ca chung nguồn TCP giữ đúng danh tính. Lượt bổ sung xác nhận
 process KR thứ tư đăng nhập mới và nhận hồ sơ DB sau lỗi; CP284 trước đó mới kiểm phục hồi ở backend.

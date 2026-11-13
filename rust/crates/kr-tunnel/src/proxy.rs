@@ -27,6 +27,18 @@ pub struct Proxy {
     edges: Vec<Edge>,
     native_ip: IpAddr,
 }
+/// Retain retired local endpoints for the lifetime of this companion session.
+/// Old native packets cannot be relabeled as a new encrypted route when the
+/// native low-byte round key repeats. The caller enforces a finite port budget.
+pub struct Quarantine(Vec<Arc<UdpSocket>>);
+impl Quarantine {
+    pub fn len(&self) -> usize {
+        self.0.len()
+    }
+    pub fn is_empty(&self) -> bool {
+        self.0.is_empty()
+    }
+}
 #[derive(Default, Debug)]
 pub struct Stats {
     pub native_sent: usize,
@@ -47,6 +59,9 @@ impl Stats {
     }
 }
 impl Proxy {
+    pub fn quarantine(&self) -> Quarantine {
+        Quarantine(self.edges.iter().map(|edge| edge.socket.clone()).collect())
+    }
     /// Bind a complete pre-authorized snapshot before publishing endpoints.
     /// Only loopback listeners; native_ip is an explicit local source restriction.
     /// Zero ports ask the OS for bounded ephemeral local resources, never public
@@ -87,8 +102,12 @@ impl Proxy {
     }
     /// Own all child tasks, sockets and Link. No detached pumps or unbounded
     /// queues. Control-plane generation changes require replacing this owner.
-    pub async fn run(self, link: Link, mut stop: watch::Receiver<bool>) -> io::Result<Stats> {
-        let data = link.data();
+    pub async fn run(self, link: Link, stop: watch::Receiver<bool>) -> io::Result<Stats> {
+        let result = self.run_data(link.data(), stop).await;
+        link.close();
+        result
+    }
+    pub async fn run_data(self, data: Data, mut stop: watch::Receiver<bool>) -> io::Result<Stats> {
         let (children_stop, child_stop) = watch::channel(false);
         let mut routes = HashMap::new();
         let mut tasks = JoinSet::new();
@@ -138,7 +157,6 @@ impl Proxy {
         .is_ok();
         tasks.abort_all();
         while tasks.join_next().await.is_some() {}
-        link.close();
         result?;
         if !drained {
             return Err(io::Error::other("companion cleanup deadline"));
