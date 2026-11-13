@@ -136,6 +136,52 @@ Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), đợ
   phải áp lúc chạy, tức là đằng nào cũng cần trình mở game; thêm màn hình mới vào giao diện client là việc dịch ngược
   riêng. Đổi ngôn ngữ có hiệu lực ở lần mở game sau.
 
+<a id="data-files"></a>
+
+## Dữ liệu chữ và file dựng thử (trạng thái 14/11/2026)
+
+Dữ liệu nằm ở checkout `boom-re-l10n` (repo `boom-re`, nhánh `claude/l10n-kr-vi`, commit `a32da15`, chưa push).
+
+| | Tiếng Việt | Tiếng Anh |
+|---|---|---|
+| Tổng số dòng catalog | 33.486 | 33.486 |
+| Đã có bản dịch | 33.438 | 32.414 dịch được dùng, 246 chờ duyệt |
+| Trong đó lấy từ bản chính thức | 3.813 (client VN) | 6.281 (PopTag, theo ID) |
+| Trong đó dịch máy | 29.625 | 26.133 |
+| Chờ duyệt | 48 | 246 (97 dịch máy bị cờ, 106 nhiều biến thể, 43 ghép theo icon) |
+| Không cần dịch hoặc cố ý giữ tiếng Hàn | (tính trong dòng đã dịch) | 826 |
+
+Catalog gồm 25.321 dòng chuỗi cũ và 8.165 dòng tên vật phẩm đọc từ `fxstock0.ini`–`fxstock3.ini` (4.967 tên khác
+nhau). Bản dịch máy do model `gpt-6.1-terra` dịch theo lô, có kiểm máy tham số định dạng, thẻ, xuống dòng và chữ Hàn
+sót; chưa có người đọc soát toàn bộ. Tiếng Anh dùng tên nhân vật và thuật ngữ của bản Bắc Mỹ (Boz, Evie, Plunk, Posh,
+Town…). Một lượt đọc mẫu cho thấy khoảng một phần mười dòng lấy từ PopTag lệch nghĩa so với câu Hàn; 6.082 dòng đó
+chưa được soát.
+
+**Định dạng file `ssi1`** (`csysstr.ssd`, `csysqstr.ssd`, `fxdynmapinfo.ssd`, `fxstock*.ini` và các file `.ssd` khác):
+
+| Offset | Nội dung |
+|---|---|
+| 0 | `"ssi1"` |
+| 4 | u32 checksum: Adler-32 với giá trị khởi đầu 0, tính trên mọi byte từ offset 8 tới hết file |
+| 8 | u8 `0x18` |
+| 9 | u32 độ dài phần còn lại sau trường này (độ dài file trừ 13) |
+| 13 | u8 `1` |
+| 14 | u32 độ dài dữ liệu sau giải nén |
+| 18 | luồng zlib |
+
+Checksum đọc từ exe VN đã unpack: hàm đọc `0xA62D10` tính lại rồi so, lệch thì không nạp file; hàm ghi `0xA62C20`;
+hàm băm `0xA0E1E0`. Công thức khớp cả 13 file `ssi1` của client KR. Chưa đọc hàm tương ứng trong exe KR.
+
+**Công cụ dựng** `tools/l10n_build.py` ghi catalog thành bảy file `ssi1` và entry `ClientData/ClientString` của pack
+`FxDesktop` (ghi nối vào cuối `.idd`, sửa `.idx`), cho `ko`, `vi`, `en` với `cp949` hoặc `utf-8`. Phép kiểm đã đạt: dựng
+lại tiếng Hàn thì năm file nhỏ giống gốc từng byte, tám file lớn giải nén ra giống gốc; checksum và trường độ dài của
+mọi file dựng đều đúng; khoá giữ nguyên byte gốc. Bản dựng tiếng Việt UTF-8 thay được 32.035 chuỗi; bản dựng tiếng Anh
+theo `cp949` (chạy được trên client chưa vá) thay được 31.279 chuỗi. **Chưa file nào được nạp thử vào client.**
+
+Điểm cần quyết khi vá UTF-8: trong XML `ClientString` có 30 khoá chứa chữ Hàn. Bản dựng giữ nguyên byte `cp949` của
+khoá và ghi giá trị bằng UTF-8, nên một file XML mang hai bảng mã; phải xem client tra khoá theo byte hay theo chuỗi
+đã đổi mã.
+
 ## Chưa biết, phải đo khi mở đợt L
 
 - **Đoạn mã UTF-8 của PopTag làm gì ở từng chỗ.** Đọc kỹ `.u8code`, `.u8data`, `.vkinp` và 63 chỗ gọi trong build 2010,
@@ -152,6 +198,9 @@ Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), đợ
   dòng cao 12 điểm.
 - **Server biết ngôn ngữ của từng người bằng cách nào** để gửi đúng bảng chuỗi: lưu theo account hay trình mở game báo
   lúc đăng nhập.
-- **Kiểm toàn vẹn** của client với mã đã vá và file chữ đã thay.
+- **Kiểm toàn vẹn** của client với mã đã vá và file chữ đã thay. Riêng file `ssi1` đã biết: client kiểm checksum ở
+  offset 4 và công cụ dựng tính lại được; phần còn lại (pack, exe) chưa đo.
+- **Phép thử sớm không cần bản vá:** bộ tiếng Anh theo `cp949` nạp vào client gốc sẽ cho biết client có nhận file đã
+  thay không. Một lượt native, làm khi runtime rảnh giữa hai mốc.
 - **Không đổi vùng.** Đổi vùng sang Việt sẽ bật 201 nhánh riêng của vùng Việt, có thể đổi luồng đăng nhập, giao diện và
   packet đã đo; không làm nếu chưa có lý do.
