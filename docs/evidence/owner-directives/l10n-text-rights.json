@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-13T00:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án nói trong phiên Claude Code ngày 2026-11-13: \"công ty vừa thông báo có thỏa thuận sử dụng toàn quyền bản ngôn ngữ bắc mỹ lẫn kr lẫn vn, cứ yên tâm làm tiếp, hoàn toàn hợp pháp có bản quyền\".",
+  "fact": "Dữ liệu ngôn ngữ của đợt L lấy từ ba bản: client KR 00967 (tiếng Hàn), client VN (tiếng Việt) và client PopTag 0.7.8 dựng trên bản Bắc Mỹ năm 2010 (tiếng Anh). Trước thông báo này, l10n-utf8.json ghi quyền dùng chữ tiếng Anh là chưa được xác nhận.",
+  "decision": "Theo thông báo của công ty do chủ dự án chuyển lại, dự án được dùng toàn quyền chữ của bản Bắc Mỹ, bản KR và bản VN. Dữ liệu ngôn ngữ trích từ ba bản này được dùng, lưu và commit cho đợt L mà không cần chờ xác nhận thêm.",
+  "limits": "Claude không đọc văn bản thỏa thuận; file này ghi lại lời chủ dự án. Thông báo nêu ba bản ngôn ngữ, không nêu riêng phần chữ và nội dung do nhóm sửa client PopTag tự viết (tính năng riêng của họ, chưa tách được khỏi chữ gốc Bắc Mỹ) hay mã của PopTagDLL; phần đó chưa được nói tới. Quy tắc không push binary, pack và file trích nguyên từ client vẫn giữ. Client PopTag vẫn không được chạy khi còn đường ra mạng.",
+  "plan": "docs/PLAN.md#full-game-roadmap",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}
