@@ -1,0 +1,83 @@
+{
+  "id": "AUD103",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-authenticated-serving-four"
+  ],
+  "completed_through": "CP287",
+  "recorded_utc": "2026-11-13T12:19:11.531430+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/n1rb-owned-serving-four.json",
+    "docs/protocol/udp-peer.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "local/research/codex/n1rb-owned-four-native-r2/owned-four-verification.json",
+    "local/research/codex/n1rb-owned-four-native-r2/owned-four-getter-verification.json",
+    "local/research/codex/n1rb-owned-four-native-r2/native/raw-seal.json",
+    "local/research/codex/n1rb-owned-four-native-r2/native/cycles/run.json",
+    "local/research/codex/n1rb-owned-four-native-r2/native/cycles/virtual-network.json",
+    "local/research/codex/n1rb-source-r1/reuse.json",
+    "rust/crates/kr-service/src/authenticated_peer.rs",
+    "rust/crates/kr-service/src/authenticated_room_relay.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-tunnel/src/companion.rs",
+    "rust/crates/kr-tunnel/src/router.rs",
+    "rust/crates/kr-tunnel/src/router/tests.rs"
+  ],
+  "method": "Rà core docs đúng thứ tự rồi source/evidence/raw theo lát cắt serving và native4. Đối chiếu independent TCP reassembly/sequence/hash với passive native own291/Start/peer/stat/bomb/rank/reset; 512 completed UDP helpers nối captures loopback hai đầu, đủ ba sender tại mỗi receiver ở hai vòng. Kiểm 7040 copied-native getters, source freeze, export và namespace extinction. Rà policy ownership, ACK, bounded pools/replay và code/test khác native. Không suy source agreement/log/TCP thành gate; đọc failures và phạm vi đang mở.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Capability của nền tĩnh chưa phải account/session/channel/room ownership.",
+      "correction": "Private launcher cấp one-use capability theo player/session generation; DB admission và channel/visit/slot/room/round kiểm lại trước pump. Native4 chứng minh serving positive, unit test kiểm revoke/owner/wrong generation.",
+      "fixed_in": [
+        "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+        "docs/evidence/rust-service/n1rb-owned-serving-four.json",
+        "rust/crates/kr-service/src/authenticated_peer.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Native low8 không thể làm fence khi tái dùng cổng hoặc reset.",
+      "correction": "Authenticated route/replay bên ngoài native bytes; proxy endpoint cũ giữ bound theo session có budget hữu hạn. Native4 ba vòng có full key tăng nhưng low8 lặp; không suy đủ toàn bộ restart/sustained reuse.",
+      "fixed_in": [
+        "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
+        "docs/evidence/rust-service/n1rb-owned-serving-four.json",
+        "rust/crates/kr-tunnel/src/companion.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Recipe fixed-profile cấp session trước DatabaseZero begin_instance; verifier giả bomb probe có round field.",
+      "correction": "Lượt1 fail closed trước client và được seal. Lượt2 tạo grant sau readiness. Verifier chỉ sửa phân loại timestamp theo clock; raw/native không đổi. Stop/control EOF race có final154-test pass.",
+      "fixed_in": [
+        "docs/evidence/rust-service/n1rb-owned-serving-four.json",
+        "local/research/codex/n1rb-owned-four-native-r2/owned-four-verification.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Bốn người positive hoặc environment Wine/LAN có thể bị hiểu là đủ N1R-b/phase1.",
+      "correction": "Acceptance tách native4 khỏi native8/departure/restart/spoof/load. PLAN ghi đè việc còn lại, không mở lại N1b hoặc đổi gate cũ. Chi tiết hạ tầng thật không công bố.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/n1rb-owned-serving-four.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "N1R-b vẫn mở: native tám người, roster sau rời và rớt mạng với survivor tiếp tục trên transport mới.",
+    "Còn service reuse vượt pool với exact stale/current control, restart và spoof gói đầu giữa hai account chung IP. Kernel/QUIC tests không thay native attack acceptance.",
+    "Proxy local không xác thực process khác; quarantine socket theo session có budget hữu hạn, cạn thì fail closed. Chưa có automatic reconnect/session resume/match restore.",
+    "Native mới chỉ Wine/LAN cô lập. Không thêm Internet/ISP/CGNAT/load claim; G1, M6 và M8 chưa xong."
+  ]
+}

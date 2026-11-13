@@ -883,10 +883,46 @@ tới native B giữ đúng byte, và chiều ngược tương tự. Native ingr
 Start tiếp giữ stat/terrain baseline. Một ingress cuối cửa sổ đo có packet joins nhưng chưa có helper hoàn tất;
 không suy apply hoặc drop cho nó. Raw/hash, source freeze và cleanup đã seal trước mọi thay đổi tiếp.
 
-**Chưa chứng minh:** capability thuộc đúng session/channel/room trong serving; control cấp proxy route từng vòng;
-roster bốn/tám người, vacancy/departure và survivor; tái dùng cổng/key, restart và spoof giữa hai người chung IP công
-khai. Sai capability, certificate pin, route và replay mới có kiểm transport tổng hợp; không tự thành native attack
-acceptance. Chưa có nghiệm thu Internet, mọi loại UDP, tải hoặc đóng gói từ phép kiểm LAN cô lập này. Các run lỗi và
-capture thất bại được giữ riêng trong metadata, không sửa lịch sử prototype.
+Phép kiểm nền này giữ nguyên giới hạn hai người và route tĩnh. Phần serving account/room và snapshot động đã
+có bằng chứng riêng ở [mục dưới](#rust-authenticated-serving-relay); không suy ngược thành acceptance của run cũ.
+
+<a id="rust-authenticated-serving-relay"></a>
+### Relay xác thực gắn với account, phòng và vòng
+
+Nguồn: [metadata và raw/hash](../evidence/rust-service/n1rb-owned-serving-four.json). Đây là transport **design**
+của công ty bên ngoài wire KR; phần bốn client Wine/LAN có **kr_runtime/confirmed** trong phạm vi đã đo.
+`AuthenticatedRelay` là policy opt-in trong `RoomRules`, giữ đường chẩn đoán `LegacyDirect` và prototype cũ.
+Chưa đổi relay thành mặc định giai đoạn 1 trước khi đủ [N1R-b](../PLAN.md#phase1-acceptance).
+
+Launcher riêng phát certificate pin và capability một lần cho player/session generation. `kr-companion` nhận qua
+stdin riêng, không qua argv hoặc log. Server đối chiếu DB hiện hành trước admission; IP không chọn identity và
+không cấp quyền chiếm route. Room owner giữ service generation ngẫu nhiên, RoomKey, round, connection, visit và
+slot; kiểm lại mọi account và membership sau DB await rồi mới gửi. Control/UDP không gia hạn idle session.
+Không chờ DB dưới room mutex; stale, expiry hoặc revoke không được cấp lại quyền từ packet UDP.
+
+Start đặt trước route và hàng đợi control có giới hạn. Companion bind endpoint loopback cho snapshot hiện hành,
+báo ACK đúng tập route; service chờ ACK trước native153. Data chỉ forward sau loading barrier, qua route128/seq64
+và cửa sổ replay64 bên ngoài native bytes. Native key byte thấp được phép lặp trong policy này; full key/epoch
+vẫn tăng, random route và transport xác thực giữ fence. Khi kết quả/reset hoặc ownership đổi, route nghỉ được
+thu hồi; kernel hỗ trợ giữ subset survivor nhưng native departure của transport mới còn phải nghiệm thu.
+
+Một UDP listener công khai phục vụ mọi companion; mỗi phòng n người cần n×(n−1) route logic. Tám phòng tám người
+cần 448 route, tối đa 64 QUIC peer; cổng public không tăng theo số cạnh. Firewall giai đoạn triển khai mở đúng UDP
+listener cấu hình và TCP game/launcher đã chọn, không mở dải native proxy ra ngoài. Đây là phép tính tài nguyên,
+chưa là benchmark M8; endpoint/firewall thực giữ local. Tại mỗi client, một vòng tám người cần bảy socket proxy
+loopback, ngoài UDP native và UDP QUIC. Endpoint proxy nghỉ giữ bound tới hết companion session để gói native cũ
+không được gắn thành route mới khi key lặp. Budget 26–32768 socket/session có giới hạn; cạn budget dừng đóng và
+cần launcher mới, không âm thầm reuse socket. Chưa có xác thực process khác trên cùng máy hoặc tự resume/match restore.
+
+**Native đã kiểm:** bốn account qua private launcher, native own profile, phòng và lựa chọn hiện hành; mỗi receiver
+nhận/apply từ đủ ba slot khác ở cả hai vòng. Capture loopback hai đầu nối byte nguyên với native current-key/helper,
+actor và outer QUIC; không có direct UDP peer trong capture ngoài. Hai kết quả đội trái nhau, reset và clock trận thứ
+ba giữ đúng Start/stat/roster. Route pool chỉ đủ một snapshot bốn người vẫn dùng lại qua các vòng có key byte thấp
+lặp; proxy port của từng snapshot tách biệt. Chi tiết số đo, getter, source freeze và cleanup ở metadata.
+
+**Giới hạn:** native tám người, roster sau rời/rớt mạng, reuse vượt pool với stale/current control, restart và giả mạo
+chung IP ở serving còn mở. Synthetic account/QUIC/kernel tests đã kiểm capability/owner/generation/replay, revoke
+và reuse nhỏ; chúng không là native attack acceptance. Lượt này là Wine/LAN cô lập, không cấu hình NAT hoặc netem;
+không thêm kết luận Internet/ISP/CGNAT, PMTU, mọi kiểu UDP, tải hoặc đóng gói. Run lỗi và lỗi verifier được giữ riêng.
 
 <!-- protocol-topic-content-end -->

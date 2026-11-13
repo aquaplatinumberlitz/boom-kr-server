@@ -109,7 +109,7 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 | Sảnh, identity, cache và profile | [lobby-profile](protocol/lobby-profile.md) | 17/241/291/528 |
 | Phòng, roster và membership | [room-membership](protocol/room-membership.md) | 81/82/86/87/90/91/106/107/110 |
 | Map, Ready, loading và phase | [load-phase](protocol/load-phase.md) | 95/99/104/117/121/196/197/585 |
-| UDP, peer, movement và stale fences | [udp-peer](protocol/udp-peer.md), [companion thử nghiệm](protocol/udp-peer.md#rust-authenticated-companion-foundation) | 99/153, UDP movement, 127/170 |
+| UDP, peer, movement và stale fences | [udp-peer](protocol/udp-peer.md), [companion](protocol/udp-peer.md#rust-authenticated-serving-relay) | 99/153, UDP movement, 127/170 |
 | Bom, serial, nổ và capacity | [bombs](protocol/bombs.md) | 118/159/158, chain/timer |
 | Terrain, block và cascade | [terrain](protocol/terrain.md) | 142/195, cell/box flags |
 | Item, stat, pickup và kim | [items-stats](protocol/items-stats.md) | 124/145/165/582 |

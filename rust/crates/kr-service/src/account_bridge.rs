@@ -140,6 +140,9 @@ pub struct Launch {
     _guard: Guard,
 }
 impl Launch {
+    pub(crate) fn generation(&self) -> u64 {
+        self._guard.generation
+    }
     pub fn token(&self) -> &FrontendToken {
         &self.token
     }
@@ -307,6 +310,45 @@ pub struct Bridge {
     random: fn(&mut [u8]) -> Result<()>,
 }
 impl Bridge {
+    /// Companion capability possession is checked separately from current
+    /// account authority. Recheck after DB await before registering a peer.
+    pub(crate) async fn validate_transport(&self, player: u32, generation: u64) -> Result<()> {
+        let (token, expected) = {
+            let mut r = lock(&self.shared)?;
+            r.sweep();
+            let entry = r
+                .entries
+                .values()
+                .find(|e| {
+                    e.generation == generation
+                        && e.player.as_ref().is_some_and(|p| p.wire_id == player)
+                })
+                .ok_or(Error::Denied)?;
+            (
+                copy_token(&entry.token)?,
+                entry.player.clone().ok_or(Error::Denied)?,
+            )
+        };
+        let actual = self
+            .live
+            .as_ref()
+            .unwrap_or(&self.client)
+            .try_inspect_current(&token, expected.player_id)
+            .map_err(Error::Backend)?
+            .wait()
+            .await
+            .map_err(Error::Backend)?;
+        let mut r = lock(&self.shared)?;
+        r.sweep();
+        if actual != expected
+            || r.entries
+                .get(&expected.player_id)
+                .is_none_or(|e| e.generation != generation || e.player.as_ref() != Some(&expected))
+        {
+            return Err(Error::Denied);
+        }
+        Ok(())
+    }
     /// Small process-local launch registry. No persistence or multi-process fence.
     pub fn new(client: Client, capacity: usize, ttl: Duration) -> Result<Self> {
         if !(1..=128).contains(&capacity)

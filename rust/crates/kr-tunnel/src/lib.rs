@@ -12,7 +12,10 @@ const NAME: &str = "kr-peer.local";
 const AUTH_TAG: &[u8; 8] = b"KRPEER01";
 pub const MAX_NATIVE: usize = 255;
 pub const MAX_PACKET: usize = 16 + 8 + MAX_NATIVE;
+pub mod companion;
+pub mod control;
 pub mod proxy;
+pub mod router;
 
 fn invalid(message: &'static str) -> io::Error {
     io::Error::other(message)
@@ -93,8 +96,7 @@ pub fn client(address: SocketAddr, certificate: CertificateDer<'static>) -> io::
 /// until this type exists. No 0-RTT acceptance or unpinned certificate path.
 pub struct Link {
     connection: Connection,
-    pub control_send: SendStream,
-    pub control_recv: RecvStream,
+    control: Option<(SendStream, RecvStream)>,
 }
 impl Link {
     pub fn data(&self) -> Data {
@@ -126,8 +128,7 @@ impl Link {
             }
             Ok(Self {
                 connection,
-                control_send: send,
-                control_recv: recv,
+                control: Some((send, recv)),
             })
         })
         .await
@@ -150,6 +151,17 @@ impl Link {
         connection: Connection,
         authorize: impl FnOnce(&[u8; 32]) -> Option<T>,
     ) -> io::Result<(Self, T)> {
+        Self::accept_with_async(connection, |candidate| {
+            std::future::ready(authorize(candidate.expose()))
+        })
+        .await
+    }
+    /// Account adapters may await a bounded backend check before the positive
+    /// handshake reply. The secret stays zeroized in its owned request scope.
+    pub async fn accept_with_async<T, F: std::future::Future<Output = Option<T>>>(
+        connection: Connection,
+        authorize: impl FnOnce(Secret) -> F,
+    ) -> io::Result<(Self, T)> {
         let result = tokio::time::timeout(Duration::from_secs(3), async {
             let (mut send, mut recv) = connection.accept_bi().await.map_err(io::Error::other)?;
             let mut tag = [0; 8];
@@ -161,8 +173,9 @@ impl Link {
             if tag != *AUTH_TAG {
                 return Err(invalid("peer authorization denied"));
             }
-            let owner =
-                authorize(&candidate).ok_or_else(|| invalid("peer authorization denied"))?;
+            let owner = authorize(Secret(candidate))
+                .await
+                .ok_or_else(|| invalid("peer authorization denied"))?;
             send.write_all(&[1]).await.map_err(io::Error::other)?;
             Ok((send, recv, owner))
         })
@@ -173,8 +186,7 @@ impl Link {
             Ok((send, recv, owner)) => Ok((
                 Self {
                     connection,
-                    control_send: send,
-                    control_recv: recv,
+                    control: Some((send, recv)),
                 },
                 owner,
             )),
@@ -186,6 +198,11 @@ impl Link {
     }
     pub fn send(&self, packet: &Packet) -> io::Result<()> {
         self.data().send(packet)
+    }
+    pub fn take_control(&mut self) -> io::Result<(SendStream, RecvStream)> {
+        self.control
+            .take()
+            .ok_or_else(|| invalid("peer control stream already owned"))
     }
     pub async fn receive(&self) -> io::Result<Packet> {
         self.data().receive().await
@@ -220,7 +237,7 @@ impl Drop for Link {
 
 /// Random current route identifier is scoped by the account/room owner. A
 /// packet's identifier is never sufficient to authorize its authenticated sender.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
 pub struct RouteId(pub [u8; 16]);
 impl RouteId {
     pub fn random() -> io::Result<Self> {
@@ -292,5 +309,7 @@ impl ReplayWindow {
     }
 }
 
+#[cfg(test)]
+mod companion_tests;
 #[cfg(test)]
 mod tests;

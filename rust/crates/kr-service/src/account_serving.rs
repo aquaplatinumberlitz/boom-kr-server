@@ -135,10 +135,16 @@ impl Drop for SocketOwner {
 }
 #[derive(Clone)]
 pub(crate) struct Active {
+    pub(crate) authenticated: Option<Arc<crate::authenticated_peer::Hub>>,
     pub bridge: Bridge,
     pub client: Client,
     projections: Arc<std::collections::HashMap<u32, Vec<u8>>>,
     projection: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
+}
+impl Active {
+    pub(crate) fn bridge(&self) -> Bridge {
+        self.bridge.clone()
+    }
 }
 pub(crate) struct Owner {
     worker: Worker,
@@ -213,6 +219,7 @@ impl Owner {
         };
         Ok(Self {
             active: Active {
+                authenticated: None,
                 bridge,
                 client: worker.client(),
                 projections: Arc::new(projections),
@@ -332,9 +339,31 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
     }
     let player = serde_json::to_string(&launch.player)
         .map_err(|_| io::Error::other("player serialization failed"))?;
+    let companion = active
+        .authenticated
+        .as_ref()
+        .map(|hub| {
+            hub.offer(
+                kr_tunnel::router::Owner {
+                    player: launch.player.wire_id,
+                    session: launch.generation(),
+                },
+                Duration::from_secs(60),
+            )
+        })
+        .transpose()?;
+    let companion = if let Some(offer) = companion {
+        Zeroizing::new(format!(
+            ",\"peer_transport\":{}",
+            serde_json::to_string(&offer).map_err(io::Error::other)?
+        ))
+    } else {
+        Zeroizing::new(String::new())
+    };
     let response = Zeroizing::new(format!(
-        "{{\"ok\":true,\"player\":{player},\"frontend\":\"{}\"}}\n",
-        launch.token().expose_secret()
+        "{{\"ok\":true,\"player\":{player},\"frontend\":\"{}\"{}}}\n",
+        launch.token().expose_secret(),
+        *companion
     ));
     stream.write_all(response.as_bytes()).await?;
     launch.delivered();

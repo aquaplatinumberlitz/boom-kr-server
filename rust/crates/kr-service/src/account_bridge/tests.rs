@@ -933,3 +933,253 @@ fn frontend_selected_player_validates_distinct_metadata_behind_one_transport_ip(
         w.shutdown().await.unwrap();
     });
 }
+
+#[test]
+fn authenticated_companions_follow_account_room_round_and_revoke_without_ip_ownership() {
+    use crate::{
+        authenticated_peer, authenticated_room_relay,
+        room::Room,
+        room_registry::{RoomId, RoomKey},
+    };
+    use kr_tunnel::{Link, Secret, client, companion, router::Owner as PeerOwner};
+    use tokio::{net::UdpSocket, sync::watch};
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, a, b) = Temp::new();
+    rt().block_on(async {
+        let w = worker(&temp).await;
+        let bridge = Bridge::new(w.client(), 2, Duration::from_secs(60)).unwrap();
+        let held = std::net::UdpSocket::bind("127.0.0.1:0").unwrap();
+        let address = match held.local_addr().unwrap() {
+            std::net::SocketAddr::V4(a) => a,
+            _ => unreachable!(),
+        };
+        drop(held);
+        let hub = authenticated_peer::Hub::new(&authenticated_peer::Config {
+            bind: address,
+            advertise: address,
+            max_peers: 2,
+            route_capacity: 2,
+            queue_messages: 4,
+            send_budget: 4,
+            pending_ms: 500,
+            lease_seconds: 60,
+        })
+        .unwrap();
+        let listener = hub.bind().unwrap();
+        let (hub_stop, stopped) = watch::channel(false);
+        let server = tokio::spawn(hub.clone().run(listener, bridge.clone(), stopped));
+        let mut channels = Vec::new();
+        let mut endpoints = Vec::new();
+        let mut proxies = Vec::new();
+        let mut stops = Vec::new();
+        let mut owners = Vec::new();
+        for (player, name, connection) in [(&a, "Alice", 3), (&b, "Bob", 4)] {
+            let grant = grant(&w, name).await;
+            let launch = bridge
+                .issue(&grant.token, player.player_id, PEER)
+                .await
+                .unwrap();
+            let owner = PeerOwner {
+                player: player.wire_id,
+                session: launch.generation(),
+            };
+            bridge
+                .validate_transport(owner.player, owner.session)
+                .await
+                .unwrap();
+            assert!(
+                bridge
+                    .validate_transport(owner.player, owner.session + 100)
+                    .await
+                    .is_err()
+            );
+            let offer = hub.offer(owner, Duration::from_secs(60)).unwrap();
+            assert!(hub.offer(owner, Duration::from_secs(60)).is_err());
+            let endpoint =
+                client("127.0.0.1:0".parse().unwrap(), offer.certificate_der.into()).unwrap();
+            assert!(
+                Link::connect(
+                    &endpoint,
+                    offer.endpoint.into(),
+                    &Secret::from_bytes([9; 32])
+                )
+                .await
+                .is_err()
+            );
+            let link = Link::connect(&endpoint, offer.endpoint.into(), &offer.capability)
+                .await
+                .unwrap();
+            assert!(
+                Link::connect(&endpoint, offer.endpoint.into(), &offer.capability)
+                    .await
+                    .is_err()
+            );
+            let body = login_body(launch.token().expose_secret(), PEER);
+            launch.delivered();
+            let login = bridge.login(&body, PEER, connection + 10).await.unwrap();
+            let body = channel_body(player, login.echo);
+            login.redirected().unwrap();
+            channels.push(bridge.channel(&body, PEER, connection).await.unwrap());
+            let (stop, stopped) = watch::channel(false);
+            proxies.push(tokio::spawn(companion::run(
+                link,
+                "127.0.0.1".parse().unwrap(),
+                26,
+                stopped,
+            )));
+            stops.push(stop);
+            endpoints.push(endpoint);
+            owners.push(owner);
+        }
+        let authorities: Vec<_> = channels.iter().map(Channel::relay_authority).collect();
+        let epochs = Arc::new(crate::round_epochs::RoundEpochs::authenticated());
+        let mut relay = authenticated_room_relay::Owner::new(
+            hub.clone(),
+            RoomKey {
+                id: RoomId(1),
+                session: 1,
+                generation: 1,
+            },
+        );
+        let natives = [
+            UdpSocket::bind("127.0.0.1:0").await.unwrap(),
+            UdpSocket::bind("127.0.0.1:0").await.unwrap(),
+        ];
+        let mut old: Option<[std::net::SocketAddrV4; 2]> = None;
+        let mut held_ports = Vec::new();
+        let mut last = None;
+        let mut low_key = None;
+        // More rounds than the two-entry directed-route pool; native low byte
+        // repeats intentionally. This is a transport test, not a KR oracle.
+        for iteration in 0..4 {
+            let mut model = Room::default();
+            model.set_round_epochs(epochs.clone()).unwrap();
+            let ma = model.enter(a.wire_id, 3, true).unwrap();
+            let mb = model.enter(b.wire_id, 4, false).unwrap();
+            model.setup(ma).unwrap();
+            model.setup(mb).unwrap();
+            model.ready(mb).unwrap();
+            let round = model.begin(ma).unwrap();
+            let key = crate::room::wire_key(round).unwrap() as u8;
+            if let Some(old) = low_key {
+                assert_eq!(key, old);
+            }
+            low_key = Some(key);
+            let rows = vec![
+                (0, ma, PEER, authorities[0].clone()),
+                (1, mb, PEER, authorities[1].clone()),
+            ];
+            let mut wrong = rows.clone();
+            wrong[0].3 = authorities[1].clone();
+            assert!(relay.prepare(&model, wrong).is_err());
+            relay.prepare(&model, rows).unwrap();
+            assert!(relay.authorization(&model).is_none());
+            tokio::time::timeout(Duration::from_secs(2), async {
+                while !relay.ready() {
+                    tokio::time::sleep(Duration::from_millis(5)).await;
+                }
+            })
+            .await
+            .unwrap();
+            let native_rows = vec![
+                (0, u32::from(Ipv4Addr::LOCALHOST), 10001),
+                (1, u32::from(Ipv4Addr::LOCALHOST), 10002),
+            ];
+            let left = relay.decorate(ma, native_rows.clone()).unwrap();
+            let right = relay.decorate(mb, native_rows).unwrap();
+            assert_eq!(left[0].2, 10001);
+            assert_eq!(right[1].2, 10002);
+            let ports = [
+                std::net::SocketAddrV4::new(left[1].1.into(), left[1].2),
+                std::net::SocketAddrV4::new(right[0].1.into(), right[0].2),
+            ];
+            held_ports.extend(ports);
+            model.ack(ma, round).unwrap();
+            model.ack(mb, round).unwrap();
+            relay.transition(&model).unwrap();
+            let (scope, witnesses) = relay.authorization(&model).unwrap();
+            for witness in witnesses {
+                witness.check_idle().await.unwrap();
+            }
+            if let Some(old) = old {
+                assert_ne!(ports, old);
+                natives[0]
+                    .send_to(b"stale old native bytes", old[0])
+                    .await
+                    .unwrap();
+            }
+            let payloads = [
+                format!("A round {iteration}"),
+                format!("B round {iteration}"),
+            ];
+            for i in 0..2 {
+                natives[i]
+                    .send_to(payloads[i].as_bytes(), ports[i])
+                    .await
+                    .unwrap();
+            }
+            let mut seen = [false; 2];
+            tokio::time::timeout(Duration::from_secs(2), async {
+                while seen != [true; 2] {
+                    relay.pump(scope, &model).unwrap();
+                    for i in 0..2 {
+                        let mut buffer = [0; 256];
+                        match natives[i].try_recv_from(&mut buffer) {
+                            Ok((n, from)) => {
+                                assert!(!seen[i]);
+                                assert_eq!(from, std::net::SocketAddr::V4(ports[i]));
+                                assert_eq!(&buffer[..n], payloads[1 - i].as_bytes());
+                                seen[i] = true;
+                            }
+                            Err(e) if e.kind() == std::io::ErrorKind::WouldBlock => {}
+                            Err(e) => panic!("native test receive: {e}"),
+                        }
+                    }
+                    tokio::time::sleep(Duration::from_millis(5)).await;
+                }
+            })
+            .await
+            .unwrap();
+            old = Some(ports);
+            if iteration == 3 {
+                last = Some((scope, model));
+            } else {
+                relay.invalidate();
+            }
+        }
+        let (scope, model) = last.unwrap();
+        temp.store().revoke(&admin(), a.account_id, now()).unwrap();
+        assert!(authorities[0].check_idle().await.is_err());
+        authorities[1].check_idle().await.unwrap();
+        assert_eq!(relay.pump(scope, &model).unwrap().sent, 0);
+        assert!(
+            bridge
+                .validate_transport(owners[0].player, owners[0].session)
+                .await
+                .is_err()
+        );
+        relay.invalidate();
+        for stop in stops {
+            stop.send(true).unwrap();
+        }
+        for task in proxies {
+            let _ = tokio::time::timeout(Duration::from_secs(3), task)
+                .await
+                .unwrap()
+                .unwrap();
+        }
+        hub_stop.send(true).unwrap();
+        server.await.unwrap().unwrap();
+        for owner in owners {
+            assert!(!hub.connected(owner));
+        }
+        for port in held_ports {
+            assert!(std::net::UdpSocket::bind(port).is_ok());
+        }
+        for endpoint in endpoints {
+            endpoint.close(0_u8.into(), b"test end");
+        }
+        drop(channels);
+        w.shutdown().await.unwrap();
+    });
+}

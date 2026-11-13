@@ -5,6 +5,8 @@ pub mod account_bridge;
 pub mod account_serving;
 pub mod account_worker;
 pub mod accounts;
+mod authenticated_peer;
+mod authenticated_room_relay;
 pub mod binding;
 mod bombs;
 mod characters;
@@ -111,6 +113,8 @@ struct Reply {
 pub struct Config {
     #[serde(default)]
     pub udp_relay: Option<udp_relay::Config>,
+    #[serde(default)]
+    pub authenticated_relay: Option<authenticated_peer::Config>,
     pub schema: String,
     pub diagnostic_login_error_only: bool,
     pub bind: Ipv4Addr,
@@ -166,6 +170,7 @@ struct ActorProfile {
     configured_peer: Ipv4Addr,
 }
 struct BoundProfiles {
+    authenticated: Option<Arc<authenticated_peer::Hub>>,
     account_template: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
     managed: Option<Arc<room_service::Hub>>,
     actors: HashMap<room::PlayerId, ActorProfile>,
@@ -348,13 +353,37 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             .fixed_room
             .as_ref()
             .is_some_and(|r| r.endpoint_policy == rules::EndpointPolicy::Relay);
+        let authenticated_requested = two
+            .fixed_room
+            .as_ref()
+            .is_some_and(|room| room.endpoint_policy == rules::EndpointPolicy::AuthenticatedRelay);
         if relay_requested != config.udp_relay.is_some()
-            || (relay_requested && two.account_admission.is_none())
+            || authenticated_requested != config.authenticated_relay.is_some()
+            || ((relay_requested || authenticated_requested) && two.account_admission.is_none())
         {
             return Err(io::Error::other(
                 "relay requires explicit room policy, network pool and account admission",
             ));
         }
+        if authenticated_requested
+            && (two
+                .account_admission
+                .as_ref()
+                .is_none_or(|a| a.profile_mode != account_serving::ProfileMode::DatabaseZero)
+                || two
+                    .managed_rooms
+                    .as_ref()
+                    .is_none_or(|rooms| rooms.player_round.is_none()))
+        {
+            return Err(io::Error::other(
+                "authenticated relay requires DB profiles and managed player rounds",
+            ));
+        }
+        let authenticated = config
+            .authenticated_relay
+            .as_ref()
+            .map(authenticated_peer::Hub::new)
+            .transpose()?;
         let managed = if let Some(cfg) = &two.managed_rooms {
             if two.account_admission.is_none() || ninth_probe {
                 return Err(io::Error::other(
@@ -369,7 +398,12 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
                 .as_ref()
                 .map(room_relay::Factory::bind)
                 .transpose()?;
-            Some(room_service::Hub::new(cfg, prototype.clone(), relay)?)
+            Some(room_service::Hub::new(
+                cfg,
+                prototype.clone(),
+                relay,
+                authenticated.clone(),
+            )?)
         } else {
             None
         };
@@ -417,6 +451,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             .transpose()?
         };
         Some(BoundProfiles {
+            authenticated,
             account_template,
             managed,
             actors,
@@ -425,7 +460,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             rooms,
         })
     } else {
-        if config.udp_relay.is_some() {
+        if config.udp_relay.is_some() || config.authenticated_relay.is_some() {
             return Err(io::Error::other("relay requires account room mode"));
         }
         None
@@ -755,6 +790,12 @@ async fn local_lobby_connection(
                     // observation-only and must not extend account idle expiry.
                     // No lock crosses DB await; Session rechecks membership.
                     tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(packet.opcode != 79)=>value? };
+                }
+                if packet.opcode == 99 {
+                    tokio::select! { _=stop.changed()=>return Ok(()), value=session.wait_peer_ready()=>value? };
+                    if let Some(account) = &mut account {
+                        tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(false)=>value? };
+                    }
                 }
                 let observation = session.packet(packet.opcode, &packet.payload)?;
                 emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
@@ -1165,6 +1206,12 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
     } else {
         None
     };
+    if let Some(owner) = &mut account_owner {
+        owner.active.authenticated = profile
+            .bound
+            .as_ref()
+            .and_then(|bound| bound.authenticated.clone());
+    }
     profile.accounts = account_owner.as_ref().map(|a| a.active.clone());
     let startup: io::Result<_> = async {
         // Bind the whole configured set before readiness; startup failure drops all.
@@ -1183,10 +1230,16 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
             .map_err(io::Error::other)?
             .as_nanos();
         let term = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
-        Ok((bound, file, start, boot, term))
+        let peer_endpoint = profile
+            .bound
+            .as_ref()
+            .and_then(|bound| bound.authenticated.as_ref())
+            .map(|hub| hub.bind())
+            .transpose()?;
+        Ok((bound, file, start, boot, term, peer_endpoint))
     }
     .await;
-    let (bound, file, start, boot, mut term) = match startup {
+    let (bound, file, start, boot, mut term, peer_endpoint) = match startup {
         Ok(resources) => resources,
         Err(error) => {
             if let Some(owner) = account_owner.take()
@@ -1218,6 +1271,12 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
     }
     drop(accept_tx);
     if let Some(owner) = &mut account_owner {
+        if let (Some(hub), Some(endpoint)) = (&owner.active.authenticated, peer_endpoint) {
+            listeners.spawn(
+                hub.clone()
+                    .run(endpoint, owner.active.bridge(), stop.clone()),
+            );
+        }
         let listener = owner.listener.take().expect("owned launch listener");
         listeners.spawn(account_serving::control(
             listener,

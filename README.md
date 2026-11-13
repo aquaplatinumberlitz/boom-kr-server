@@ -33,13 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP286: đường companion có xác thực đã có phép kiểm tương thích hai client KR thật.**
-UDP giữ nguyên byte qua QUIC tới native consumer; hai kết quả/reset và Start tiếp đã được đối chiếu bằng capture,
-native state và getter. [Phạm vi/giới hạn](docs/protocol/udp-peer.md#rust-authenticated-companion-foundation),
-[bằng chứng](docs/evidence/rust-service/n1rb-companion-foundation.json). Đây là nền transport với route tĩnh trong lab;
-**N1R-b chưa đạt**. Tiếp nối quyền account/phòng, roster bốn/tám người và các ca reuse/restart/spoof theo
-[Bảng điều hành](docs/PLAN.md#dashboard). M5b đã giao PR #379; G1/M6/M8 còn mở.
-Hạ tầng thực và raw chỉ giữ local. Lịch sử tại [HISTORY](docs/HISTORY.md).
+**CP287: relay có xác thực đã nối vào account/phòng và chạy bốn client KR thật.**
+Hai ván có kết quả trái nhau, reset và clock ván thứ ba đã được đối chiếu bằng capture, native state và getter.
+[Contract/giới hạn](docs/protocol/udp-peer.md#rust-authenticated-serving-relay),
+[bằng chứng](docs/evidence/rust-service/n1rb-owned-serving-four.json). **N1R-b chưa đạt**: còn tám người,
+roster sau rời/rớt mạng, restart và đối chứng giả mạo chung IP theo [Bảng điều hành](docs/PLAN.md#dashboard).
+G1/M6/M8 còn mở. Hạ tầng thực và raw chỉ giữ local; [lịch sử](docs/HISTORY.md).
 
 ## Bắt đầu
 
