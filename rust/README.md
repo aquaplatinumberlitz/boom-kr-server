@@ -10,6 +10,11 @@ Kim/cứu opt-in dùng `fixed_room.life_actions` cùng account và `managed_room
 mode mặc định tắt, không là inventory account hoặc terrain/item đầy đủ. Kiểm room tích hợp ở `src/room_io_life_tests.rs`.
 
 
+[Đối chứng CI của worker account](../docs/evidence/rust-service/g1-life-ci-controls.json) tách deadline test expiry
+và test revoke, vẫn đòi đúng loại lỗi và không ghi preference muộn. Đây là sửa phép kiểm; binary phục vụ kim/cứu
+đã nghiệm thu giữ nguyên SHA. CI và kiểm exact head phải đạt trước merge.
+
+
 Map input opt-in dùng `fixed_room.map_profile` và [tool dựng fixture](../tools/rust_map_profile.py).
 [Contract/giới hạn adapter](../docs/protocol/load-phase.md#rust-map-profile-adapter) có byte baseline và native
 Factory07; không coi đó là terrain/item hoặc toàn bộ G1 đã đạt.
