@@ -5,6 +5,11 @@ Cấu hình nhiều phòng opt-in dùng `diagnostic_two_lobby.managed_rooms`, c�
 Đường fixed cũ vẫn là compatibility recipe. Các mục CP bên dưới giữ provenance của từng lát cắt.
 
 
+Map input opt-in dùng `fixed_room.map_profile` và [tool dựng fixture](../tools/rust_map_profile.py).
+[Contract/giới hạn adapter](../docs/protocol/load-phase.md#rust-map-profile-adapter) có byte baseline và native
+Factory07; không coi đó là terrain/item hoặc toàn bộ G1 đã đạt.
+
+
 CP236 thêm backend account/DB qua [CLI](#account-admin-cli), chưa gắn vào native login adapter.
 [Contract/giới hạn](../docs/PROTOCOL.md#rust-account-backend); accountDB độc lập gameplay và không đóng toàn M5.
 

@@ -24,6 +24,8 @@ pub struct Config {
     #[serde(default)]
     pub(crate) endpoint_policy: rules::EndpointPolicy,
     pub title: String,
+    #[serde(default)]
+    pub map_profile: Option<crate::FixturePin>,
     pub packets: HashMap<String, LobbyPacketPin>,
     #[serde(default)]
     pub(crate) slot_allocation: rules::SlotAllocation,
@@ -408,14 +410,20 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
     if matches!(count, 4 | 8) && (cfg.battle.is_some() || cfg.terrain.is_some()) {
         return Err(err("four-player Battle/terrain policy not ported"));
     }
+    let map_profile = cfg
+        .map_profile
+        .as_ref()
+        .map(crate::map_profile::Profile::load)
+        .transpose()?;
+    let legacy_size = |size| if map_profile.is_some() { 0 } else { size };
     let mut expected = vec![
         ("create", 86, 11),
         ("join", 87, 7),
         ("listing", 91, 0),
-        ("table", 238, 72),
+        ("table", 238, legacy_size(72)),
         ("map", 117, 8),
-        ("floor", 582, 46),
-        ("start", 121, 129 + 26 * (count - 2)),
+        ("floor", 582, legacy_size(46)),
+        ("start", 121, legacy_size(129 + 26 * (count - 2))),
         ("go", 197, 14),
         ("play", 196, 7),
         ("peer", 153, 61 + 18 * count),
@@ -463,6 +471,9 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
                 payload: packet.payload,
             },
         );
+    }
+    if let Some(profile) = &map_profile {
+        profile.validate(count, &packets, actors)?;
     }
     if packets["listing"].payload.len() < 16
         || read_uint(&packets["listing"].payload[..2], Width::U16).map_err(io::Error::other)? != 1
@@ -678,6 +689,15 @@ pub(crate) fn full_idle(shared: &Shared) -> io::Result<bool> {
     let runtime = shared.lock().map_err(|_| err("room unavailable"))?;
     Ok(runtime.model.phase == Phase::Idle
         && runtime.model.members.len() >= runtime.model.capacity())
+}
+pub(crate) fn map_table_source(shared: &Shared) -> io::Result<Reply> {
+    let runtime = shared
+        .lock()
+        .map_err(|_| err("room prototype unavailable"))?;
+    if !runtime.channels.is_empty() || !runtime.model.members.is_empty() {
+        return Err(err("map table needs pristine prototype"));
+    }
+    Ok(runtime.reply(Template::Table238, None))
 }
 pub(crate) fn account_template_source(shared: &Shared) -> io::Result<Vec<u8>> {
     let runtime = shared
@@ -3597,6 +3617,8 @@ mod registry_foundation_tests {
         stream[0] = 24;
         let size = stream.len();
         stream[1..5].copy_from_slice(&((size - 5) as u32).to_le_bytes());
+        stream[28..32].copy_from_slice(&11_u32.to_le_bytes());
+        stream[32..43].copy_from_slice(b"ExVillage01");
         stream[49] = 8;
         for slot in 0..8 {
             let at = 54 + 26 * slot;

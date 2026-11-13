@@ -1,0 +1,109 @@
+{
+  "schema": "kre-rust-map-adapter-v1",
+  "checkpoint": "CP290",
+  "source": "design",
+  "status": "design",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/390",
+  "canonical": "docs/protocol/load-phase.md#rust-map-profile-adapter",
+  "acceptance": "docs/PLAN.md#phase1-acceptance",
+  "decision": "G1 lát1 adapter đạt: ExVillage01 byte-equivalent; Factory07 native lookup/load/spawn, hai opposite result/reset và Start3. G1 tổng thể vẫn mở.",
+  "implementation": {
+    "baseline_commit": "ec5b337f512e48761bf13b20e7b5f04406ae4cc4",
+    "wire": "Name-length-derived Start layout; legacy native vectors unchanged; structured profile/packet checksum and identity checks before bind.",
+    "producer": "tools/rust_map_profile.py reads exporter profile and baseline fixtures; no change to tools/export_map_profile.py.",
+    "cache": "Authenticated managed lobby empty528 returns current238 with DB/channel fence, timeout and sixteen-request bound; no idle renewal. Room path retains its existing528 handler."
+  },
+  "native": {
+    "root": "local/research/codex/g1-factory-native-r3",
+    "report": "local/research/codex/g1-factory-native-r3/factory-verification.json",
+    "getters": "local/research/codex/g1-factory-native-r3/factory-getter-verification.json",
+    "run_sha256": "54b86a5868ce83931417f219d4b45557947b88f92f66f88b02845b9e75a22624",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "service_binary_sha256": "c238188531af28a9b3c798d295fc0a307ef01147b30481634b7ebfcae1a48947",
+    "companion_binary_sha256": "75eaa27d0462c37d469e2d65a0aa80486f6ecc03914f7f0ab277037fdff1f28d",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "map": "Factory07",
+    "map_code": 281,
+    "map_payload_sha256": "91b9e2de2af0107c7bc8b24a8dd262dc71cb22fbcbb4cd97ffb360fcca0a086c",
+    "duration_s": 198.762814828,
+    "returncode": 0,
+    "source_frozen": true,
+    "raw_files": 73,
+    "native_applies": 87,
+    "getter_checks": 1228,
+    "start_reader_bytes": 127,
+    "spawn_pixels": {
+      "slot0": [
+        0,
+        39
+      ],
+      "slot1": [
+        560,
+        39
+      ]
+    },
+    "environment": "Two diagnostic KR copies on Wine; isolated virtual LAN, separate endpoint namespaces and controlled common TCP/UDP source mapping; no Internet, NAT-type, configured impairment or load claim.",
+    "cleanup": "Owned processes/export/unmount/namespace extinction verified in raw-seal.",
+    "diagnostic_copy_reuse": "R3 uses the R2 game copies after R2 seal, with copied fresh prefixes; executable/pack sources unchanged, output/input sources frozen per preflight."
+  },
+  "checks": {
+    "baseline": "local/research/codex/g1-map-adapter-r1/input-checks-r1.json",
+    "semantic_negatives": "local/research/codex/g1-map-adapter-r1/negative-r1/verification.json",
+    "cache_tcp": "local/research/codex/g1-lobby-map-cache-tcp-r1/result.json",
+    "cache_seal": "local/research/codex/g1-lobby-map-cache-tcp-r1/raw-seal.json",
+    "tests": 157,
+    "workspace": "local/research/codex/g1-map-cache-tests-r1.txt",
+    "clippy": "local/research/codex/g1-map-cache-clippy-r1.txt",
+    "build": "local/research/codex/g1-map-cache-build-r1.txt"
+  },
+  "failures": [
+    {
+      "root": "local/research/codex/g1-factory-native-r1",
+      "result": "exit1/source frozen/raw sealed. Both native clients send528 in lobby, previously denied before loading. Existing528→238 contract connected to owned managed-lobby route; no map/terrain failure inferred."
+    },
+    {
+      "root": "local/research/codex/g1-factory-native-r2",
+      "result": "exit1/source frozen/raw sealed. Existing OS click590,300 selects color2 on Factory07 eight-color UI; captured97/body58 decodes2, correctly rejected by0/3 guard. R3 changes only input to fourth color3; no new team support."
+    },
+    {
+      "root": "local/research/codex/g1-map-cache-managed-tcp-r1",
+      "result": "Expanded broad legacy managed-room test passes four cache positives then times out on idle host Back/return241; shutdown wait also times out. Raw/frozen inputs/failure/owned-socket cleanup retained. Cause unestablished; no full broad-test pass. New narrow cache test independently covers positive, malformed, quota, revoke and shutdown."
+    },
+    {
+      "path": "local/research/codex/g1-map-adapter-tests-r1.txt",
+      "result": "Synthetic existing test had no valid length-prefixed map name. New structural reader rejects it; test seed now supplies an actual valid name. Full157-test rerun passes."
+    },
+    {
+      "path": "local/research/codex/g1-factory-verification-r3.txt",
+      "result": "Initial derived verifier required C2S104 from both players; only host emits104. Retained failed log; corrected host-only check and separate report pass. Raw unchanged."
+    },
+    {
+      "path": "local/research/codex/g1-factory-getters-r3.txt",
+      "result": "First copied verifier retained old report-label assertion; no getter executed before correction. Separate corrected1228-check run passes."
+    }
+  ],
+  "limits": [
+    "Two Wine clients, isolated virtual LAN/common source mapping. No Internet/ISP/CGNAT/load claim.",
+    "Factory07 map/code/name/raw metadata/checksum, native lookup/name comparison, three127-byte Start readers and native spawn coordinates match pack. Two opposite native results/reset and third Start.",
+    "Floor empty and old terrain disabled; no new item/drop/terrain/physics or full G1 claim. Coordinates can remain unchanged under directional input; current helper joins do not imply motion changed.",
+    "Known Dao0/Dizni1/team0/3 policies retained. Factory07 eight-color UI sends2 at old four-button coordinate; fourth-color3 click used, no new team support.",
+    "Independent TCP/CRC/sequence/hash, copied-native getters and exact datagram joins complement native observers. Capture times are read times, no chronology/loss/one-to-one claim.",
+    "Factory07 terrain, natural item drops/pickups and all room counts have not been accepted. Static tile classification remains candidate beyond ExVillage01; no room UI map-change roundtrip yet.",
+    "Native helper reception was current in both directions; no coordinate-change claim for the blocked sender. Recorded directional input does not alone prove collision behavior.",
+    "Narrow synthetic cache checks do not replace native Factory07 evidence; broader idle Back diagnostic failure remains unresolved and must be checked if it blocks G1/M8.",
+    "M6 backend exists only as separate WIP; no native result/preference persistence integration or M6 acceptance."
+  ],
+  "reuse": {
+    "current": [
+      "docs/evidence/rust-service/village10-map-probe.json",
+      "docs/content/tile-semantics.md",
+      "docs/evidence/current-map-chain/README.md",
+      "docs/evidence/terrain-policy/README.md",
+      "local/research/codex/map-village10-source-r1/survey.json",
+      "local/research/codex/map-village10-id-only-r1/source-reuse.json"
+    ],
+    "direct": "Current pack exporter/parser, native map name/loader/spawn sites, retained ExVillage01 packet/terrain fixtures, owned account/companion native recipe and independent TCP/getter decoders.",
+    "old": "CP275/CP094 retained source surveys link boomkr-re/boom-re/build/hash. No new legacy wire/authority import, new function RE or source-client changes.",
+    "avoids": "No repeated map ordinal guessing or broad RE. Existing opcode528/238, selector/name checks and data exporter reused; native only measures new consistent profile."
+  }
+}

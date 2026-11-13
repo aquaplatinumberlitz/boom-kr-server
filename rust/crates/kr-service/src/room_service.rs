@@ -250,6 +250,17 @@ impl Channel {
             }
         }
     }
+    pub(crate) fn map_table(&self) -> io::Result<crate::Reply> {
+        let state = self
+            .hub
+            .state
+            .lock()
+            .map_err(|_| err("room service unavailable"))?;
+        if self.owner(&state)?.selected.is_some() {
+            return Err(err("map cache request requires lobby owner"));
+        }
+        room_io::map_table_source(&self.hub.prototype)
+    }
     pub(crate) fn catalog(&mut self, known: &BTreeSet<(u16, u32)>) -> io::Result<Catalog> {
         self.changes.borrow_and_update();
         let s = self

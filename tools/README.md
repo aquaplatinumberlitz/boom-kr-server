@@ -63,6 +63,14 @@ Quy tắc là ứng viên chỉ đối chiếu một map, các ô đặc biệt 
 [tile semantics](../docs/content/tile-semantics.md). Kiểm thử không cần client:
 `PYTHONPATH=tools python3 -m unittest tools.test_export_map_profile`. Không commit JSON trích từ client.
 
+`rust_map_profile.py --base <baseline JSON> --profile <map JSON đã xuất> --out local/<thư mục mới>`:
+dựng fixture238/241/117/121/196 cùng tên/mã/checksum. ExVillage01 giữ byte baseline; map mới có floor rỗng và
+tắt terrain cũ. `fixed_room.map_profile` pin profile nguồn; dữ liệu pack và fixture chỉ ghi local, không commit.
+[Contract/nghiệm thu adapter](../docs/protocol/load-phase.md#rust-map-profile-adapter) phân biệt producer với native.
+`test_rust_lobby_map_cache.py --binary <kr-service> --admin <kr-admin> --config <baseline bốn actor> --out local/<mới>`
+kiểm cache528/238 qua TCP/account/SQLite thật, ca nonempty, quota, revoke và current positive. Đây là test tổng hợp,
+không oracle native. Chạy trong network namespace cô lập như recipe đã pin.
+
 `export_probe_profile.py --source-root local/research/codex --out <local/profile.json>`: chỉ lập index path/size/SHA/sequence của
 fixture RE hiện hữu cho [service chẩn đoán](../server/README.md); không nhập binary/asset vào Git.
 Profile dùng chính xác bytes/seq đã đo, không là schema auth/cache tổng quát hoặc oracle tự sinh.

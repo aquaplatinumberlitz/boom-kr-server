@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP289: N1R-b đạt các tiêu chí hành vi của relay nhiều người trong phạm vi đã đo.**
+Native bốn/tám người, roster thưa và survivor đã có bằng chứng; bổ sung đăng nhập mới từ DB sau restart,
+đối chứng gói cũ, chung nguồn IP và test QUIC mạo nhận route với gói hiện hành. [Ma trận acceptance/giới hạn](evidence/rust-service/n1rb-controls-acceptance.json),
+[contract](protocol/udp-peer.md#rust-authenticated-serving-relay), [cấu hình relay](OPERATIONS.md).
+G1/M6/M8 còn mở theo [Bảng điều hành](PLAN.md#dashboard). Transport xác thực mới chưa đo Internet thật;
+M8 phải kiểm đường triển khai đó theo đích giai đoạn 1. Hạ tầng và raw giữ local; [lịch sử](HISTORY.md).
+
 **CP288: relay xác thực đã có nghiệm thu tám người, roster thưa và chơi tiếp sau rớt mạng.**
 Client KR thật trên Wine đã qua trận tám người, một người rời trước ván kế và một endpoint rớt giữa trận;
 sáu người còn lại dùng bom, tới kết quả/reset và vào trận tiếp. [Contract/giới hạn](protocol/udp-peer.md#rust-authenticated-serving-relay),

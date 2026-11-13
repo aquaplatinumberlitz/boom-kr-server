@@ -33,12 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP289: N1R-b đạt các tiêu chí hành vi của relay nhiều người trong phạm vi đã đo.**
-Native bốn/tám người, roster thưa và survivor đã có bằng chứng; bổ sung đăng nhập mới từ DB sau restart,
-đối chứng gói cũ, chung nguồn IP và test QUIC mạo nhận route với gói hiện hành. [Ma trận acceptance/giới hạn](docs/evidence/rust-service/n1rb-controls-acceptance.json),
-[contract](docs/protocol/udp-peer.md#rust-authenticated-serving-relay), [cấu hình relay](docs/OPERATIONS.md).
-G1/M6/M8 còn mở theo [Bảng điều hành](docs/PLAN.md#dashboard). Transport xác thực mới chưa đo Internet thật;
-M8 phải kiểm đường triển khai đó theo đích giai đoạn 1. Hạ tầng và raw giữ local; [lịch sử](docs/HISTORY.md).
+**CP290: adapter map đã qua byte baseline và trận Factory07 trên client KR thật.**
+Profile pack giữ nguyên packet ExVillage01; Factory07 đã qua lookup tên, loading, spawn, hai kết quả/reset và vòng tiếp
+trên Wine. [Contract/giới hạn](docs/protocol/load-phase.md#rust-map-profile-adapter),
+[bằng chứng](docs/evidence/rust-service/g1-map-adapter.json). Đây là lát adapter của G1; terrain, item, chọn map trong phòng
+và các map còn lại vẫn mở. M6 đang làm backend trên nhánh riêng, chưa nghiệm thu đường kết quả/persistence.
+Theo [Bảng điều hành](docs/PLAN.md#dashboard), tiếp G1 song song M6 rồi M8; transport mới chưa kiểm Internet thật.
 
 ## Bắt đầu
 
