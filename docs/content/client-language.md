@@ -52,8 +52,57 @@ ngay ở bảng mã 949.
 rộng ở 12, cao ở 16, số byte bitmap mỗi hình ở 28); tiếp theo là `số hình × (1 byte bề rộng + bitmap)` cho nét thường
 và một khối thứ hai cùng số hình cho nét viền với ô rộng hơn 2 điểm mỗi chiều.
 
+<a id="poptag"></a>
+
+## Client PopTag 0.7.8 (bản tiếng Anh, nhận ngày 13/11/2026)
+
+Công ty cấp thêm bộ cài `PopTagSetup_v0.7.8.exe` (SHA-256
+`7a339e7b76cc51d00140a68a729dc0836119b2cbc6b9f7f0a1123e290ba65c01`). Bộ cài được bung ra trong một Wine prefix riêng;
+client chưa được chạy lần nào. Mọi điều dưới đây đọc từ file, mức `kr_static`.
+
+**Đây là gì.** `CA.exe` bên trong (SHA-256 `d1f9f9b080abe2557693e6c906c26e22674be5fca6abe13d8913fe1a7c1db5d7`) là build
+ngày 15/10/2010 của bản Bắc Mỹ, không bị đóng gói, bảng import đầy đủ. Một nhóm bên ngoài đã sửa nó: thêm mười hai
+section mã và dữ liệu, và bắt exe nạp `PopTagDLL.dll` (build 09/11/2026). Gói còn có trình cập nhật tự tải file từ
+một máy chủ bên ngoài. Vì vậy client này khác build với 00967, chưa so protocol, và **không được chạy khi còn đường
+ra mạng**.
+
+**Ba điều dùng được cho đợt L:**
+
+1. **Cùng engine đa vùng.** Build 2010 có cùng hàm chọn bảng mã theo vùng (quanh `0x6BEFAF`) và cùng hàm mã ngôn ngữ
+   1042/1033/1066 (quanh `0x4D7520`). `ClientString` trong pack của nó mang mã 1033. Đây là một exe không đóng gói của
+   cùng engine, đọc dễ hơn image unpack của 00967.
+2. **Một mẫu chạy nhiều ngôn ngữ trong cùng một client.** Section `.u8code` do nhóm sửa thêm vào được gọi từ 63 chỗ
+   trong mã gốc và dùng bảng mã 65001 (UTF-8); section `.vkinp` bọc `PeekMessageW`/`PostMessageW` của đường nhập phím.
+   Gói kèm bốn bộ font chọn bằng một file `.bat`: Anh-Hàn, Đài Loan, Việt, gốc. Tức là họ đưa chữ về UTF-8 thay vì đổi
+   bảng mã theo từng ngôn ngữ. Chưa đọc kỹ từng hàm trong `.u8code`.
+3. **Font 12×16 nạp được ở build không phải VN.** Bộ font Việt trong gói có ô 12×16; `CxUni.fft` và `CxUniBold.fft`
+   của nó trùng từng byte với font client VN. Ba bộ còn lại ô 12×12 như 00967.
+
+**Bản dịch tiếng Anh.** Phiên Codex Terra đã trích chuỗi và ghép theo ID với catalog Hàn–Việt, kết quả ở repo `boom-re`,
+nhánh `codex/poptag-english-catalog`, file `l10n/catalog_en.csv`. Mọi dòng là ứng viên, chưa duyệt.
+
+| Nguồn chuỗi KR | Số chuỗi | Có tiếng Anh |
+|---|---|---|
+| `ClientString` trong pack (giao diện) | 7.002 | 5.577 (80%) |
+| `csysstr.ssd` (chuỗi server gửi), phần không trùng `ClientString` | 6.803 | 392 (6%) |
+| Tên map (`fxdynmapinfo.ssd`) | 773 | 215 (28%) |
+| `csysqstr.ssd` (nhiệm vụ) | 7.845 | 0 |
+| Danh sách ô của map tự tạo | 2.174 | 0 |
+| Chuỗi trong exe và các nguồn nhỏ khác | 724 | 0 |
+| **Tổng** | **25.321** | **6.184 (24%)** |
+
+Trong 6.184 dòng có 102 dòng nhiều biến thể phải chọn tay và 34 dòng lệch tham số định dạng. Phần thiếu phải
+dịch mới.
+
+**Giới hạn.** Ghép theo ID không chứng minh hai bản cùng nghĩa: cùng ID có thể đổi nội dung sau mười sáu năm. Chưa tách
+được chữ nào của bản Bắc Mỹ gốc, chữ nào do nhóm sửa client viết; trước khi phát hành phải có ý kiến của công ty về
+quyền dùng.
+
 ## Chưa biết, phải đo khi mở đợt L
 
+- **Đổi bảng mã theo ngôn ngữ hay đưa mọi chữ về UTF-8.** Đổi bảng mã (1258 cho tiếng Việt) là bản vá nhỏ nhưng hai
+  người khác ngôn ngữ không đọc được chữ của nhau. UTF-8 như [client PopTag](#poptag) giải quyết việc đó nhưng phải vá
+  nhiều chỗ hơn và server cũng phải đổi theo. Chọn sau khi đọc kỹ `.u8code`.
 - **Vá ở mức nào.** Chỉ đổi bảng mã và mã ngôn ngữ là hẹp nhất. Đổi cả vùng sang Việt sẽ bật 201 nhánh riêng của vùng
   Việt, có thể đổi luồng đăng nhập, giao diện và packet đã đo; không làm nếu chưa có lý do.
 - **Client có lọc bảng chuỗi theo mã ngôn ngữ không.** Mỗi mục trong `ClientString` của pack mang mã 1042; nếu client
@@ -62,6 +111,7 @@ và một khối thứ hai cùng số hình cho nét viền với ô rộng hơn
 - **Chữ do người chơi gõ.** Tên, tiêu đề phòng và chat đi qua server dưới dạng byte theo bảng mã của người gửi. Hai
   người dùng hai ngôn ngữ sẽ thấy chữ của nhau sai, trừ khi server chuyển mã theo từng người nhận hoặc giới hạn ký tự.
 - **Gõ tiếng Việt trong client** (ô chat, tên phòng) chưa xem đường nhập.
-- **Dùng font của client VN** (ô 12×16) trong client KR để chữ có dấu dễ đọc hơn: hàm nạp đọc kích thước từ header nên
-  có thể được, nhưng bố cục giao diện có thể giả định dòng cao 12 điểm.
+- **Dùng font của client VN** (ô 12×16) trong client KR để chữ có dấu dễ đọc hơn: hàm nạp đọc kích thước từ header và
+  [client PopTag](#poptag) phát kèm đúng bộ font đó cho build 2010, nhưng bố cục giao diện của 00967 có thể giả định
+  dòng cao 12 điểm.
 - **Kiểm toàn vẹn** của client với exe và file chữ đã thay.
