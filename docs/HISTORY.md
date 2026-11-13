@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP294: M6 đạt phạm vi giai đoạn 1 — lưu lịch sử trận và nhân vật, thưởng 0.**
+Kết quả trên KR khớp DB; restart và đăng nhập mới giữ nguyên lịch sử và nhân vật. Writer-lock, retry, rớt giữa trận,
+kill sau Start/kết quả và CLI có đối chứng riêng. [Contract và giới hạn](protocol/life-results.md#rust-match-journal-serving),
+[bằng chứng](evidence/rust-service/m6-journal-serving.json). Giai đoạn 1 còn G1 và M8 theo
+[Bảng điều hành](PLAN.md#dashboard); inventory/EXP/tiền tệ thuộc giai đoạn sau.
+
 **CP293: lựa chọn nhân vật đã được lưu và khôi phục trên client KR thật qua account DB.**
 Client chọn Dizni, chơi hai ván; sau restart và đăng nhập mới, phòng/Start nhận lại nhân vật mà không cần chọn lại.
 [Contract và giới hạn](protocol/auth-session.md#rust-persistent-character),

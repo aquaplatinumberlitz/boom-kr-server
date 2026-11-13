@@ -1,0 +1,226 @@
+{
+  "id": "CP295",
+  "previous": "CP294",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T17:11:23.948394+00:00",
+  "context_commit": "ae8f30b6f7ca4644c71a64fbc6c4b4b20ecf23ac",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1 lát2: current host chọn map qua UI96, peer nhận117 và Start/native/journal dùng đúng profile hiện hành qua reset, với host/queued-generation guards chưa?",
+  "scope": "G1 map-selection slice only, Factory07/Village10, admission4/two native Wine clients/virtual LAN. Empty floor/no terrain/items/new capacity or full G1 claim.",
+  "artifacts": [
+    {
+      "name": "G1-map-selection-final-service",
+      "sha256": "5ccb0987689655bfbcdba1ef23e79ddbc958171bfca6074b7be80ec42319cecb"
+    },
+    {
+      "name": "G1-map-selection-companion",
+      "sha256": "a412ebeaf63e11a9452ce73674f6c25e8391432d969750c8aa5786c35d96239c"
+    },
+    {
+      "name": "G1-map-selection-KR-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/load-phase.md#rust-room-map-selection",
+    "docs/evidence/rust-service/g1-map-selection.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Native host UI selects Village10/index1, both clients receive117 and Start with correct pack name/code/spawn/stats, two opposite results/reset/third Start. Final native changes Village10→Factory07→Village10 between rounds; independent capture/native/DB journal matches each selection.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/load-phase.md#rust-room-map-selection",
+      "evidence": [
+        "G1SELECT295-00009",
+        "G1SELECT295-00658",
+        "G1SELECT295-01194",
+        "G1SELECT295-00645",
+        "G1SELECT295-01181"
+      ],
+      "limits": "Wine diagnostic copies/private virtual LAN, admission4 and2actual players, no terrain/drop/item or higher-capacity/full map/G1 acceptance. Native Village10 UI6 does not reduce G1 requirement2..8."
+    },
+    {
+      "summary": "Bounded raw-selector0 catalog cross-validates every code/name/index/profile/packet/header/checksum and default root pin before bind. Native row decoder reads2rows132bytes/34getters and checksum; Rust8negative/current config controls and tracked TCP guest/malformed/rejoin/fresh-room current positives.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/load-phase.md#rust-room-map-selection",
+      "evidence": [
+        "G1SELECT295-00009",
+        "G1SELECT295-00060",
+        "G1SELECT295-00105",
+        "G1SELECT295-02947",
+        "G1SELECT295-02987"
+      ],
+      "limits": "Generator not oracle. Copied-native decode method=emulation separately identified;2..16row bound design only2native rows. TCP tests not native negative acceptance or generic compression proof."
+    },
+    {
+      "summary": "Initial current-host96 before final setup supported from captured timing; guest/stale/loading/active denied, Ready invalidates and queued selection revision fences even returning to old index.177workspace tests/fmt/clippy/build, final native current binary. Failed initial guard, model setup, synthetic offer budget/timeout and REA timeout retained.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/load-phase.md#rust-room-map-selection",
+      "evidence": [
+        "G1SELECT295-00009",
+        "G1SELECT295-02953",
+        "G1SELECT295-00068",
+        "G1SELECT295-01217",
+        "G1SELECT295-02817"
+      ],
+      "limits": "No raw96 epoch token recovered. Silent setup/Back cause unknown, no fix claimed. KDF/test/helper/pending offer limits remain controls, not bypasses."
+    }
+  ],
+  "verification": [
+    {
+      "check": "177workspace tests/fmt/clippy/locked build; exact final production binary matches final native run",
+      "result": "pass",
+      "evidence": [
+        "G1SELECT295-02953",
+        "G1SELECT295-00124",
+        "G1SELECT295-00068",
+        "G1SELECT295-00017"
+      ],
+      "limits": "Scope excludes map terrain/item/all roster."
+    },
+    {
+      "check": "Native UI2row + map switch/Start/clock/battle/reset/DB, copied-native row/getters and8prebind/TCP controls",
+      "result": "pass",
+      "evidence": [
+        "G1SELECT295-00009",
+        "G1SELECT295-01194",
+        "G1SELECT295-01193",
+        "G1SELECT295-02947"
+      ],
+      "limits": "Failed runs kept unchanged; no G1 full gate closure."
+    },
+    {
+      "check": "Manual feature-group audit and PR395 exact-head/local/history/CI/preverified merge receipt",
+      "result": "pass",
+      "evidence": [
+        "G1SELECT295-00008",
+        "G1SELECT295-02954",
+        "G1SELECT295-00009"
+      ],
+      "limits": "This new exact-head/raw/history and CI still required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP295-map-selection.json",
+      "bytes": 789824,
+      "sha256": "1c69d75bf895ce0efed965494b4e42881e66950e1dd8a5f2c83d950ccce749f4",
+      "count": 2987
+    }
+  ],
+  "delta": {
+    "added": [
+      "Data-driven current host map catalog/96→117/Ready clear and selected Start/play/floor/journal.",
+      "Selection revision+membership/visit/phase fences, captured initial auto96 compatibility.",
+      "Native UI map switch Factory07/Village10, pack spawn/basic/result/reset/DB; negative/current config/TCP and177tests."
+    ],
+    "corrected": [
+      "Initial setup=true guard denied real host auto96; replaced from captured writer/current membership behavior after sealing failure.",
+      "Test model declares Contiguous2 instead of default Full8; source8row/6spawn refusal retained.",
+      "Test-only unconnected companion offer budget8 prevents unrelated4offer saturation; synthetic setup timeout remains unknown."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "G1 tổng thể vẫn mở. Tiếp kim/cứu Rust rồi terrain/item, sáu map và roster2..8 cùng nhân vật theo acceptance; không suy map hoàn chỉnh từ floor rỗng/basic.",
+    "Village10 export/native UI chỉ6spawn/người. Eight-row fixture bị từ chối đúng; higher roster cần đối chiếu filter/Start/spawn, không giảm acceptance/ép spawn/pack hoặc báo8người đã đạt.",
+    "M8 deployment authenticated transport Internet thật/packaging/load50/8/24h soak/ops/restore còn riêng; historical N1/K6c không mở lại.",
+    "Synthetic silent setup/Back timeout chưa rõ cause; raw/cleanup/failure giữ nguyên. Native/TCP pass mới không chứng minh fix.",
+    "Metadata chỉ2row có new native proof;2..16 là design bound. Không generic compressed multirow hoặc raw96 epoch claim."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp G1 kim/cứu Rust theo known Python/KR contracts, sau đó terrain/item/maps/higher roster và character acceptance. M8 operations/Internet/load riêng; không báo phase1 complete.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T17:11:23.948394+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo G1 map-selection/native self-check and manual scoped feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "G1 map-selection scoped native acceptance/limits and next kim/cứu; M6 delivered, G1/M8 open."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "G1 map-selection scoped native acceptance/limits and next kim/cứu; M6 delivered, G1/M8 open."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "G1 map-selection scoped native acceptance/limits and next kim/cứu; M6 delivered, G1/M8 open."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "G1 map-selection scoped native acceptance/limits and next kim/cứu; M6 delivered, G1/M8 open."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "G1 map-selection scoped native acceptance/limits and next kim/cứu; M6 delivered, G1/M8 open."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "G1 map-selection scoped native acceptance/limits and next kim/cứu; M6 delivered, G1/M8 open."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "G1 map-selection scoped native acceptance/limits and next kim/cứu; M6 delivered, G1/M8 open."
+    },
+    {
+      "path": "docs/protocol/load-phase.md",
+      "state": "updated",
+      "reason": "G1 map-selection scoped native acceptance/limits and next kim/cứu; M6 delivered, G1/M8 open."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "G1 map-selection scoped native acceptance/limits and next kim/cứu; M6 delivered, G1/M8 open."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "G1 map-selection scoped native acceptance/limits and next kim/cứu; M6 delivered, G1/M8 open."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-map-selection.json",
+      "state": "updated",
+      "reason": "Map UI/native/pack/DB/negative/failure/build/raw/reuse scope metadata."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, frozen raw, feature-group audit, privacy and PR/exact-head rules unchanged."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-g1-ui-map-selection"
+  ]
+}

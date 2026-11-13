@@ -26,6 +26,8 @@ pub struct Config {
     pub title: String,
     #[serde(default)]
     pub map_profile: Option<crate::FixturePin>,
+    #[serde(default)]
+    pub(crate) map_choices: Vec<crate::map_profile::ChoiceConfig>,
     pub packets: HashMap<String, LobbyPacketPin>,
     #[serde(default)]
     pub(crate) slot_allocation: rules::SlotAllocation,
@@ -327,6 +329,7 @@ pub enum Guard {
     },
 }
 pub struct Batch {
+    map_revision: Option<u64>,
     pub(crate) journal: Option<crate::match_journal::Ticket>,
     origin: Option<(Arc<()>, u32, u64)>,
     pub guard: Guard,
@@ -341,6 +344,9 @@ pub struct Batch {
     pub departure_complete: Option<(Membership, Membership, u64)>,
 }
 pub struct Runtime {
+    maps: Option<Arc<crate::map_profile::Catalog>>,
+    selected_map: usize,
+    map_revision: u64,
     journal: Option<crate::match_journal::Owner>,
     public_key: Option<crate::room_registry::RoomKey>,
     managed_round: Option<Arc<ManagedRound>>,
@@ -496,9 +502,30 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
             },
         );
     }
-    if let Some(profile) = &map_profile {
+    if let Some(profile) = &map_profile
+        && cfg.map_choices.is_empty()
+    {
         profile.validate(count, &packets, actors)?;
     }
+    let maps = if cfg.map_choices.is_empty() {
+        None
+    } else {
+        if map_profile.is_none()
+            || cfg.terrain.is_some()
+            || cfg.map_profile.as_ref().is_none_or(|pin| {
+                pin.sha256 != cfg.map_choices[0].map_profile.sha256
+                    || pin.bytes != cfg.map_choices[0].map_profile.bytes
+            })
+        {
+            return Err(err("map choices require pack profile and no terrain"));
+        }
+        Some(Arc::new(crate::map_profile::Catalog::load(
+            &cfg.map_choices,
+            count,
+            &packets,
+            actors,
+        )?))
+    };
     if packets["listing"].payload.len() < 16
         || read_uint(&packets["listing"].payload[..2], Width::U16).map_err(io::Error::other)? != 1
     {
@@ -611,6 +638,9 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
     }
     model.terrain = terrain;
     Ok(Arc::new(Mutex::new(Runtime {
+        maps,
+        selected_map: 0,
+        map_revision: 0,
         journal: None,
         public_key: None,
         managed_round: None,
@@ -672,6 +702,9 @@ pub(crate) fn fork(
     rules.player_choices = player_choices;
 
     Ok(Arc::new(Mutex::new(Runtime {
+        maps: source.maps.clone(),
+        selected_map: 0,
+        map_revision: 0,
         journal: None,
         public_key: Some(key),
         managed_round,
@@ -777,9 +810,14 @@ impl Runtime {
             .ok_or_else(|| err("missing/current room membership"))
     }
     fn body(&self, key: Template) -> &[u8] {
-        self.managed_round
+        self.maps
             .as_ref()
-            .and_then(|profile| profile.bodies.get(&key))
+            .and_then(|maps| maps.choices[self.selected_map].bodies.get(&key))
+            .or_else(|| {
+                self.managed_round
+                    .as_ref()
+                    .and_then(|profile| profile.bodies.get(&key))
+            })
             .unwrap_or_else(|| &self.bodies[&key])
     }
     fn reply(&self, key: Template, body: Option<Vec<u8>>) -> Reply {
@@ -825,6 +863,7 @@ impl Runtime {
         packets: Vec<(String, Reply)>,
     ) -> Batch {
         Batch {
+            map_revision: None,
             journal: None,
             origin: None,
             guard: Guard::Member(key, round),
@@ -847,6 +886,7 @@ impl Runtime {
         packets: Vec<(String, Reply)>,
     ) -> Batch {
         Batch {
+            map_revision: None,
             journal: None,
             origin: None,
             guard: Guard::Lobby {
@@ -1685,6 +1725,12 @@ impl Session {
         let Ok(r) = self.shared.lock() else {
             return false;
         };
+        if batch
+            .map_revision
+            .is_some_and(|revision| revision != r.map_revision)
+        {
+            return false;
+        }
         if !batch
             .origin
             .as_ref()
@@ -1910,6 +1956,7 @@ impl Session {
         let mut next = r.model.clone();
         let mut effects = Vec::new();
         let mut new_key = None;
+        let mut map_choice = None;
         let mut requested = None;
         let mut remove_requested = None;
         let mut loaded_endpoint = None;
@@ -2493,6 +2540,42 @@ impl Session {
                     return Err(err("known190 observation phase"));
                 }
             }
+            96 if r.maps.is_some() => {
+                let member = r.member(self.identity, self.connection)?;
+                if body.len() != 6 {
+                    return Err(err("map choice96 shape"));
+                }
+                let code = read_uint(&body[..2], Width::U16).map_err(io::Error::other)? as u16;
+                let index = read_uint(&body[2..], Width::U32).map_err(io::Error::other)? as u32;
+                let chosen = r.maps.as_ref().expect("catalog").select(code, index)?;
+                next.choose_map(member.key)?;
+                let map = packet(
+                    117,
+                    r.maps.as_ref().expect("catalog").choices[chosen].bodies[&Template::Map117]
+                        .clone(),
+                );
+                let revision = r
+                    .map_revision
+                    .checked_add(1)
+                    .ok_or_else(|| err("map revision exhausted"))?;
+                for peer in next
+                    .members
+                    .values()
+                    .filter(|m| m.setup || r.requested.contains(&m.key))
+                {
+                    let mut packets = vec![("selected117".into(), map.clone())];
+                    for subject in next.members.values().filter(|m| m.setup) {
+                        packets.push((
+                            format!("map-ready110-{}", subject.slot),
+                            r.slot(subject, next.host)?,
+                        ));
+                    }
+                    let mut batch = Runtime::member_batch(peer.key, None, 0, packets);
+                    batch.map_revision = Some(revision);
+                    effects.push((peer.key.identity, batch));
+                }
+                map_choice = Some((chosen, revision));
+            }
             96 | 266 => {
                 r.member(self.identity, self.connection)?;
                 if (opcode == 96 && body.len() != 6) || (opcode == 266 && body.len() != 12) {
@@ -2850,6 +2933,13 @@ impl Session {
             }
             return Err(error);
         }
+        if let Some((chosen, revision)) = map_choice {
+            r.selected_map = chosen;
+            r.map_revision = revision;
+            r.floor_catalog = r.maps.as_ref().expect("catalog").choices[chosen]
+                .floor
+                .clone();
+        }
         if let Some(key) = new_key {
             r.last_visits.insert(self.identity, key.visit);
         }
@@ -2978,6 +3068,9 @@ mod tests {
         let (ta, ra) = mpsc::channel(8);
         let (tb, mut rb) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            maps: None,
+            selected_map: 0,
+            map_revision: 0,
             journal: None,
             public_key: None,
             managed_round: None,
@@ -3111,6 +3204,9 @@ mod tests {
         let (ta, mut ra) = mpsc::channel(2);
         let (tb, mut rb) = mpsc::channel(2);
         let mut runtime = Runtime {
+            maps: None,
+            selected_map: 0,
+            map_revision: 0,
             journal: None,
             public_key: None,
             managed_round: None,
@@ -3377,6 +3473,9 @@ mod four_abort_tests {
             inboxes.push((i, inbox));
         }
         let shared = Arc::new(Mutex::new(Runtime {
+            maps: None,
+            selected_map: 0,
+            map_revision: 0,
             journal: None,
             public_key: None,
             managed_round: None,
@@ -3680,6 +3779,9 @@ mod ninth_probe_tests {
         }
         let (sender, inbox) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            maps: None,
+            selected_map: 0,
+            map_revision: 0,
             journal: None,
             public_key: None,
             managed_round: None,
@@ -3803,6 +3905,53 @@ mod ninth_probe_tests {
         assert!(!r.model.members.contains_key(&9));
         assert!(!r.last_visits.contains_key(&9));
     }
+    #[test]
+    fn selection_revision_fences_queued_map_even_when_selected_index_returns_to_old_value() {
+        let fixture = full();
+        let shared = fixture.shared.clone();
+        let (sender, inbox) = mpsc::channel(4);
+        let key = {
+            let mut r = shared.lock().unwrap();
+            let key = r.model.members[&1].key;
+            r.channels.insert(
+                1,
+                Channel {
+                    connection: key.connection,
+                    sender,
+                    endpoint: 0,
+                    relay_authority: None,
+                },
+            );
+            r.map_revision = 1;
+            key
+        };
+        let session = Session {
+            shared: shared.clone(),
+            inbox,
+            identity: 1,
+            connection: key.connection,
+        };
+        let mut old = Runtime::member_batch(key, None, 0, vec![]);
+        old.origin = Some((shared.lock().unwrap().scope.clone(), 1, key.connection));
+        old.map_revision = Some(1);
+        assert!(session.valid(&old));
+        {
+            let mut r = shared.lock().unwrap();
+            r.map_revision = 2;
+            r.selected_map = 1;
+        }
+        assert!(!session.valid(&old));
+        {
+            let mut r = shared.lock().unwrap();
+            r.map_revision = 3;
+            r.selected_map = 0;
+        }
+        assert!(!session.valid(&old)); // Equal map index is not equal selection generation.
+        old.map_revision = Some(3);
+        assert!(session.valid(&old));
+        shared.lock().unwrap().model.leave(key).unwrap();
+        assert!(!session.valid(&old));
+    }
 }
 
 #[cfg(test)]
@@ -3811,6 +3960,9 @@ mod registry_foundation_tests {
     use crate::room_registry::{Registry, RoomId, RoomKey};
     fn empty(marker: u8) -> Shared {
         Arc::new(Mutex::new(Runtime {
+            maps: None,
+            selected_map: 0,
+            map_revision: 0,
             journal: None,
             public_key: None,
             managed_round: None,

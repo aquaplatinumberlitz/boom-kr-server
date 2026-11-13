@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, CP294 / AUD110**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, CP295 / AUD111**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -23,14 +23,14 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, C
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; N1R-b đạt hành vi relay đã đo. Transport xác thực mới trên Internet thật và tải/vận hành còn M8 |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; N1R-b có bằng chứng riêng; vận hành còn M8 |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
-| [G1](#rust-g1) sáu map ladder và item | [Adapter đạt](protocol/load-phase.md#rust-map-profile-adapter): byte baseline và trận Factory07 | Chọn map qua UI, kim/cứu, terrain/item, năm map còn lại và nhân vật |
+| [G1](#rust-g1) sáu map ladder và item | Adapter và [UI chọn map đã đạt](protocol/load-phase.md#rust-room-map-selection); basic Factory07/Village10 | Kim/cứu, terrain/item và sáu map đầy đủ2..8, nhân vật theo acceptance |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
 
 1. **G1.** M6 thu hẹp đã đạt acceptance tại [ma trận bằng chứng](evidence/rust-service/m6-journal-serving.json). N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
-   Adapter ExVillage01/Factory07 đã đạt lát1. Tiếp chọn map trong phòng theo acceptance, không đụng `tools/export_map_profile.py`.
+   Adapter và UI chọn Factory07/Village10 đã đạt lát1–2. Tiếp kim/cứu Rust rồi terrain/item và map theo acceptance; không đụng `tools/export_map_profile.py`.
    Không lặp M6 đã nghiệm thu, native4/8, roster, account/DB hoặc baseline N1b đã có. M8 theo thứ tự bên dưới.
 2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
    N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. Packet59 ở một lượt
@@ -47,8 +47,9 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
 - M7a selection đã đo bốn profile; M7b lifecycle đã đo tám profile cấu hình và contiguous2/4/8. Occupancy chỉ phục hồi
   current/capacity, 20 byte còn lại giữ opaque. Opt-in M7e đã đo roster3/6/sparse và chosen-character Battle; native
   active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; chưa có progression hoặc inventory.
-- Adapter đã bỏ mâu thuẫn metadata/Start bằng profile pack, trước mắt đã đo Factory07. Village10 và các map khác
-  chưa có native mới; không suy terrain hoặc item được nghiệm thu từ phân loại tile tĩnh. Chọn map qua UI còn RE.
+- Factory07/Village10 đã có native chọn UI, basic hai ván/reset/ván tiếp và journal map. Chưa có terrain/drop/item
+  mới hoặc roster đầy đủ; không suy map đã mở hoàn chỉnh từ UI/basic. Village10 chỉ có6spawn và UI hiện giới hạn6;
+  yêu cầu G1 map2..8 còn phải kiểm, không tự rút acceptance hoặc ép spawn/pack. Các map còn lại theo thứ tự đã chốt.
 - Một phép TCP diagnostic rộng có cache positive nhưng timeout ở idle Back/return241 và cleanup wait. Raw/failure
   đã giữ, cause chưa xác định; test cache hẹp có negative/ownership/shutdown riêng đã đạt. Không gọi toàn bộ hồi quy
   diagnostic rộng là pass; một lượt TCP setup cũng timeout trước peer106/117. Cause chưa rõ, theo dõi nếu cản G1/M6/M8. [Bằng chứng và giới hạn](evidence/rust-service/g1-map-adapter.json).
@@ -590,8 +591,8 @@ checkpoint:
 
 1. **Adapter dữ liệu map.** Tên map, dữ liệu Start và các packet vào trận sinh từ profile xuất từ pack. ExVillage01
    qua adapter phải cho đúng byte của fixture hiện hành; sau đó Factory07 chạy một trận.
-2. **Chọn map trong phòng chờ.** Chủ phòng đổi map, người khác thấy map mới, Start dùng đúng map đó. Thao tác này chưa
-   từng được đo.
+2. **Chọn map trong phòng chờ.** Chủ phòng đổi map, người khác thấy map mới, Start dùng đúng map đó. Phạm vi
+   Factory07/Village10 đã có [contract/evidence](protocol/load-phase.md#rust-room-map-selection); không suy terrain/roster rộng hơn.
 3. **Kim và cứu** trên Rust theo contract đã đo ở Python.
 4. **Terrain và item nền cho mọi cỡ phòng**; hiện phòng 4 và 8 người bị từ chối ở cấu hình.
 5. **Các map còn lại** theo thứ tự Forest07, Patrit14, Village10, Camp08, Tomb12. Mỗi map một trận hai vòng: spawn

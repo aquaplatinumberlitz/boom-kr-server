@@ -71,6 +71,16 @@ impl Profile {
         packets: &HashMap<String, Reply>,
         actors: &HashMap<PlayerId, ActorProfile>,
     ) -> io::Result<()> {
+        self.validate_selected(expected_count, packets, actors, 0, 1)
+    }
+    pub(crate) fn validate_selected(
+        &self,
+        expected_count: usize,
+        packets: &HashMap<String, Reply>,
+        actors: &HashMap<PlayerId, ActorProfile>,
+        selected: usize,
+        count: usize,
+    ) -> io::Result<()> {
         let start = &packets["start"].payload;
         let (code, name) = wire::start121_map(start)?;
         if code != self.map_code
@@ -85,8 +95,8 @@ impl Profile {
         let (start_stream, _) = stream(&start[1..])?;
         let rows = 43 + name.len();
         if usize::from(start_stream[rows - 5]) != expected_count
-            || number(&packets["map"].payload[4..8], Width::U32)? != 0
-            || start_stream[32 + name.len()..36 + name.len()] != [0; 4]
+            || number(&packets["map"].payload[4..8], Width::U32)? != selected as u64
+            || start_stream[32 + name.len()..36 + name.len()] != (selected as u32).to_le_bytes()
         {
             return Err(error());
         }
@@ -104,34 +114,21 @@ impl Profile {
         }
         if table[5] == 0 {
             let inner = &table[6..];
-            if inner.get(..2) != Some(&[1, 0]) {
-                return Err(error());
-            }
-            let mut at = 7;
-            let mut names = Vec::new();
-            for _ in 0..2 {
-                for _ in 0..2 {
-                    let length = inner.get(at..at + 4).ok_or_else(error)?;
-                    let length = u32::from_le_bytes(length.try_into().expect("bounded")) as usize;
-                    if length > 64 {
-                        return Err(error());
-                    }
-                    let value = inner.get(at + 4..at + 4 + length).ok_or_else(error)?;
-                    names.push(value);
-                    at += 4 + length;
-                }
-                at += 2;
-            }
-            at += 7;
-            if at + 7 != inner.len()
-                || names[1] != self.name.as_bytes()
-                || u16::from_le_bytes(inner[at..at + 2].try_into().expect("bounded")) != code
+            let rows = table_rows(inner)?;
+            if rows.len() != count
+                || rows.get(selected).is_none_or(|row| {
+                    row.code != code
+                        || row.name != self.name.as_bytes()
+                        || row.id != selected as u32
+                })
             {
                 return Err(error());
             }
         } else if crate::sha256_hex(&table)
             != "9b30734b4feccf44fba7432f65137d7125f13e2580aea761749cca62543d98eb"
             || (code, self.name.as_str()) != (278, "ExVillage01")
+            || selected != 0
+            || count != 1
         {
             // Preserve the independently measured compressed baseline exactly.
             // New map tables use the already measured raw-selector0 schema;
@@ -149,5 +146,164 @@ impl Profile {
             }
         }
         Ok(())
+    }
+}
+
+struct TableRow<'a> {
+    id: u32,
+    code: u16,
+    name: &'a [u8],
+}
+fn table_rows(inner: &[u8]) -> io::Result<Vec<TableRow<'_>>> {
+    let count = u16::from_le_bytes(
+        inner
+            .get(..2)
+            .ok_or_else(error)?
+            .try_into()
+            .expect("bounded"),
+    ) as usize;
+    if !(1..=16).contains(&count) {
+        return Err(error());
+    }
+    let mut at = 2;
+    let mut rows = Vec::new();
+    for _ in 0..count {
+        let id = u32::from_le_bytes(
+            inner
+                .get(at..at + 4)
+                .ok_or_else(error)?
+                .try_into()
+                .expect("bounded"),
+        );
+        at += 5;
+        let mut names = Vec::new();
+        for _ in 0..2 {
+            for _ in 0..2 {
+                let n = u32::from_le_bytes(
+                    inner
+                        .get(at..at + 4)
+                        .ok_or_else(error)?
+                        .try_into()
+                        .expect("bounded"),
+                ) as usize;
+                if n > 64 {
+                    return Err(error());
+                }
+                let value = inner.get(at + 4..at + 4 + n).ok_or_else(error)?;
+                names.push(value);
+                at += 4 + n;
+            }
+            at += 2;
+        }
+        at += 7;
+        let code = u16::from_le_bytes(
+            inner
+                .get(at..at + 2)
+                .ok_or_else(error)?
+                .try_into()
+                .expect("bounded"),
+        );
+        at += 7;
+        rows.push(TableRow {
+            id,
+            code,
+            name: names[1],
+        });
+    }
+    if at != inner.len() {
+        return Err(error());
+    }
+    Ok(rows)
+}
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+pub(crate) struct ChoiceConfig {
+    pub map_profile: FixturePin,
+    pub packets: HashMap<String, crate::LobbyPacketPin>,
+}
+pub(crate) struct Choice {
+    pub code: u16,
+    pub index: u32,
+    pub bodies: HashMap<crate::room_packets::Template, Vec<u8>>,
+    pub floor: crate::pickups::Catalog,
+}
+pub(crate) struct Catalog {
+    pub choices: Vec<Choice>,
+}
+impl Catalog {
+    pub(crate) fn load(
+        configs: &[ChoiceConfig],
+        count: usize,
+        root: &HashMap<String, Reply>,
+        actors: &HashMap<PlayerId, ActorProfile>,
+    ) -> io::Result<Self> {
+        use crate::room_packets::Template;
+        if !(2..=16).contains(&configs.len()) {
+            return Err(error());
+        }
+        let mut choices = Vec::new();
+        let mut codes = std::collections::HashSet::new();
+        for (index, cfg) in configs.iter().enumerate() {
+            if cfg.packets.len() != 4 {
+                return Err(error());
+            }
+            let profile = Profile::load(&cfg.map_profile)?;
+            let mut packets = root.clone();
+            let mut bodies = HashMap::new();
+            for (name, key) in [
+                ("map", Template::Map117),
+                ("start", Template::Start121),
+                ("play", Template::Play196),
+                ("floor", Template::Floor582),
+            ] {
+                let pin = cfg.packets.get(name).ok_or_else(error)?;
+                let raw = pin.fixture.load()?;
+                let frame = kr_wire::decode(&raw, pin.sequence.ok_or_else(error)?)
+                    .map_err(io::Error::other)?;
+                if pin.opcode != key.opcode()
+                    || frame.opcode != key.opcode()
+                    || !wire::header_matches(&raw[..37])
+                {
+                    return Err(error());
+                }
+                bodies.insert(key, frame.payload.clone());
+                packets.insert(
+                    name.into(),
+                    Reply {
+                        header: raw[..37].try_into().expect("decoded"),
+                        opcode: frame.opcode,
+                        payload: frame.payload,
+                    },
+                );
+            }
+            profile.validate_selected(count, &packets, actors, index, configs.len())?;
+            if !codes.insert(profile.map_code) {
+                return Err(error());
+            }
+            let floor = crate::pickups::Catalog::from_floor(&packets["floor"].payload)?;
+            choices.push(Choice {
+                code: profile.map_code,
+                index: index as u32,
+                bodies,
+                floor,
+            });
+        }
+        for (name, key) in [
+            ("map", Template::Map117),
+            ("start", Template::Start121),
+            ("play", Template::Play196),
+            ("floor", Template::Floor582),
+        ] {
+            if root[name].payload != choices[0].bodies[&key] {
+                return Err(error());
+            }
+        }
+        Ok(Self { choices })
+    }
+    pub(crate) fn select(&self, code: u16, index: u32) -> io::Result<usize> {
+        self.choices
+            .iter()
+            .position(|c| c.code == code && c.index == index)
+            .ok_or_else(error)
     }
 }

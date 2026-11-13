@@ -497,3 +497,7 @@ Opt-in `account_admission.persist_matches` dùng journal hữu hạn để commi
 player round. Bật cùng `persist_character` cho persistence giai đoạn1; cả hai mặc định tắt ở config cũ.
 [Contract, lỗi và nghiệm thu](../docs/protocol/life-results.md#rust-match-journal-serving). Restart hủy vòng dở,
 không restore trận; schema3 cần backup/restore theo M8, không downgrade DB.
+
+Opt-in `fixed_room.map_choices` thêm catalog pack và lựa chọn map96/117 cho current Idle host.
+[Contract/data/native UI và giới hạn](../docs/protocol/load-phase.md#rust-room-map-selection). Phạm vi đã đo là
+Factory07/Village10, admission4 và2native; không terrain/drop/item hoặc mặc định mở map6spawn cho8người.

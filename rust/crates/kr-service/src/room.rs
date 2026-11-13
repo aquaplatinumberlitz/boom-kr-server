@@ -464,6 +464,21 @@ impl Room {
             .character = Some(character);
         Ok(())
     }
+    pub(crate) fn choose_map(&mut self, key: Membership) -> io::Result<()> {
+        if !self.current(key)
+            || self.host != Some(key.identity)
+            || self.phase != Phase::Idle
+            || self.sealed_abort
+        {
+            return Err(io::Error::other("map choice requires current idle host"));
+        }
+        for member in self.members.values_mut() {
+            if Some(member.key.identity) != self.host {
+                member.ready = false;
+            }
+        }
+        Ok(())
+    }
     pub(crate) fn choose(
         &mut self,
         key: Membership,
@@ -1364,5 +1379,33 @@ mod restored_character_tests {
         room.restore_character(new, 0).unwrap();
         assert_eq!(room.members[&70000].character, Some(0));
         assert_eq!(room.members[&70000].slot, 0);
+    }
+}
+
+#[cfg(test)]
+mod map_choice_policy_tests {
+    use super::*;
+    #[test]
+    fn initial_host_map_sync_and_ready_clear_never_authorize_guest_stale_or_active_choice() {
+        let mut room = Room::with_allocation(8, SlotAllocation::FirstVacant).unwrap();
+        room.round_roster = crate::rules::RoundRoster::Contiguous(2);
+        let host = room.enter(70000, 10, true).unwrap();
+        room.choose_map(host).unwrap(); // Native96 is sent before final setup117.
+        room.setup(host).unwrap();
+        let guest = room.enter(42, 11, false).unwrap();
+        room.setup(guest).unwrap();
+        room.ready(guest).unwrap();
+        assert!(room.choose_map(guest).is_err());
+        assert!(room.members[&42].ready);
+        room.choose_map(host).unwrap();
+        assert!(!room.members[&42].ready);
+        room.ready(guest).unwrap();
+        let round = room.begin(host).unwrap();
+        assert!(room.choose_map(host).is_err());
+        room.ack(host, round).unwrap();
+        room.ack(guest, round).unwrap();
+        assert!(room.choose_map(host).is_err());
+        room.leave(host).unwrap();
+        assert!(room.choose_map(host).is_err());
     }
 }

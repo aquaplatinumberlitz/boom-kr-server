@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP294",
+  "as_of": "CP295",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1347,7 +1347,8 @@
           "docs/evidence/rust-service/village10-map-probe.json",
           "docs/evidence/rust-service/m7d-account-ownership.json",
           "docs/evidence/rust-service/m7e-selected-rosters.json",
-          "docs/evidence/rust-service/g1-map-adapter.json"
+          "docs/evidence/rust-service/g1-map-adapter.json",
+          "docs/evidence/rust-service/g1-map-selection.json"
         ]
       },
       "coverage": {
@@ -1414,7 +1415,8 @@
               "docs/protocol/load-phase.md#village10-map-selection",
               "docs/protocol/room-membership.md#rust-managed-account-ownership",
               "docs/protocol/room-membership.md#rust-selected-player-rounds",
-              "docs/evidence/rust-service/g1-map-adapter.json"
+              "docs/evidence/rust-service/g1-map-adapter.json",
+              "docs/protocol/load-phase.md#rust-room-map-selection"
             ]
           },
           "windows_original": {
@@ -1450,7 +1452,8 @@
             "docs/evidence/rust-service/README.md#cp250",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
-            "docs/protocol/load-phase.md#rust-map-profile-adapter"
+            "docs/protocol/load-phase.md#rust-map-profile-adapter",
+            "docs/protocol/load-phase.md#rust-room-map-selection"
           ]
         },
         "integration": {
@@ -1470,7 +1473,8 @@
             "docs/evidence/rust-service/README.md#cp250",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
-            "docs/protocol/load-phase.md#rust-map-profile-adapter"
+            "docs/protocol/load-phase.md#rust-map-profile-adapter",
+            "docs/protocol/load-phase.md#rust-room-map-selection"
           ]
         },
         "gate": {
@@ -5245,7 +5249,8 @@
           "docs/evidence/rust-service/n1rb-controls-acceptance.json",
           "docs/evidence/rust-service/m6-match-store.json",
           "docs/evidence/rust-service/m6-character-serving.json",
-          "docs/evidence/rust-service/m6-journal-serving.json"
+          "docs/evidence/rust-service/m6-journal-serving.json",
+          "docs/evidence/rust-service/g1-map-selection.json"
         ]
       },
       "coverage": {
@@ -5425,7 +5430,8 @@
               "docs/protocol/room-membership.md#rust-managed-account-ownership",
               "docs/protocol/room-membership.md#rust-selected-player-rounds",
               "docs/protocol/auth-session.md#rust-persistent-character",
-              "docs/protocol/life-results.md#rust-match-journal-serving"
+              "docs/protocol/life-results.md#rust-match-journal-serving",
+              "docs/protocol/load-phase.md#rust-room-map-selection"
             ]
           },
           "windows_original": {
@@ -5572,7 +5578,8 @@
             "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
             "docs/protocol/life-results.md#rust-match-store-backend",
             "docs/protocol/auth-session.md#rust-persistent-character",
-            "docs/protocol/life-results.md#rust-match-journal-serving"
+            "docs/protocol/life-results.md#rust-match-journal-serving",
+            "docs/protocol/load-phase.md#rust-room-map-selection"
           ]
         },
         "integration": {
@@ -5688,7 +5695,8 @@
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
             "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
             "docs/protocol/auth-session.md#rust-persistent-character",
-            "docs/protocol/life-results.md#rust-match-journal-serving"
+            "docs/protocol/life-results.md#rust-match-journal-serving",
+            "docs/protocol/load-phase.md#rust-room-map-selection"
           ]
         },
         "gate": {
