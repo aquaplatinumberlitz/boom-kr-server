@@ -45,3 +45,60 @@ fn unsupported_count_expansion_team_change_and_truncation_never_produce_a_start(
         assert!(start121_roster(&eight[..n], &[0, 1]).is_err());
     }
 }
+
+// This changes only the name/code in retained native inputs to exercise variable
+// offsets. It is a synthetic codec regression, not native Factory07 evidence.
+fn changed_name(body: &[u8], name: &[u8]) -> Vec<u8> {
+    use kr_wire::kr00967::{decode_bytes, encode_bytes};
+    use kr_wire::{Width, read_uint, write_uint};
+    let size = read_uint(&body[1..5], Width::U32).unwrap() as usize;
+    let stream = decode_bytes(&body[5..5 + size]).unwrap();
+    let mut out_stream = stream[..26].to_vec();
+    out_stream.extend(281_u16.to_le_bytes());
+    out_stream.extend((name.len() as u32).to_le_bytes());
+    out_stream.extend(name);
+    out_stream.extend_from_slice(&stream[43..]);
+    let stream_size = out_stream.len();
+    out_stream[1..5].copy_from_slice(&((stream_size - 5) as u32).to_le_bytes());
+    let mut out = body[..1].to_vec();
+    out.extend(write_uint(stream_size as u64, Width::U32).unwrap());
+    out.extend(encode_bytes(&out_stream).unwrap());
+    out.extend_from_slice(&body[5 + size..]);
+    out
+}
+#[test]
+fn variable_map_name_preserves_independent_retained_rows_and_tail() {
+    use kr_wire::kr00967::{StartPlayer, start121_map, start121_players, start121_teams};
+    for name in [
+        b"F".as_slice(),
+        b"Factory07",
+        b"LongerMapNameThanExVillage01",
+    ] {
+        let two = changed_name(&hex(TWO), name);
+        let eight = changed_name(&hex(EIGHT), name);
+        assert_eq!(start121_map(&two).unwrap(), (281, name.to_vec()));
+        assert_eq!(start121_duel(&eight).unwrap(), two);
+        assert_eq!(
+            start121_teams(&eight, &[0, 1, 0, 1, 0, 1, 0, 1]).unwrap(),
+            eight
+        );
+        let players = [
+            StartPlayer {
+                slot: 0,
+                spawn: 0,
+                character: 0,
+                team: 0,
+            },
+            StartPlayer {
+                slot: 1,
+                spawn: 1,
+                character: 1,
+                team: 1,
+            },
+        ];
+        assert_eq!(start121_players(&eight, &players).unwrap(), two);
+        for n in 0..two.len() {
+            assert!(start121_map(&two[..n]).is_err());
+        }
+    }
+}

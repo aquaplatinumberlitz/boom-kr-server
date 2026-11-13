@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP289",
+  "as_of": "CP291",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -862,7 +862,8 @@
         }
       },
       "issues": [
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391"
       ]
     },
     {
@@ -1331,7 +1332,8 @@
           "docs/evidence/rust-service/README.md#cp252",
           "docs/evidence/rust-service/village10-map-probe.json",
           "docs/evidence/rust-service/m7d-account-ownership.json",
-          "docs/evidence/rust-service/m7e-selected-rosters.json"
+          "docs/evidence/rust-service/m7e-selected-rosters.json",
+          "docs/evidence/rust-service/g1-map-adapter.json"
         ]
       },
       "coverage": {
@@ -1353,7 +1355,8 @@
             "docs/protocol/load-phase.md#start-reply",
             "docs/protocol/terrain.md#current-map-chain-state",
             "docs/protocol/terrain.md#map-flags-snapshot",
-            "docs/protocol/load-phase.md#loading-observer-timing"
+            "docs/protocol/load-phase.md#loading-observer-timing",
+            "docs/protocol/load-phase.md#rust-map-profile-adapter"
           ]
         },
         "emulation": {
@@ -1396,7 +1399,8 @@
               "docs/evidence/rust-service/README.md#cp250",
               "docs/protocol/load-phase.md#village10-map-selection",
               "docs/protocol/room-membership.md#rust-managed-account-ownership",
-              "docs/protocol/room-membership.md#rust-selected-player-rounds"
+              "docs/protocol/room-membership.md#rust-selected-player-rounds",
+              "docs/evidence/rust-service/g1-map-adapter.json"
             ]
           },
           "windows_original": {
@@ -1431,7 +1435,8 @@
             "docs/evidence/rust-service/eight-baseline.json",
             "docs/evidence/rust-service/README.md#cp250",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
-            "docs/protocol/room-membership.md#rust-selected-player-rounds"
+            "docs/protocol/room-membership.md#rust-selected-player-rounds",
+            "docs/protocol/load-phase.md#rust-map-profile-adapter"
           ]
         },
         "integration": {
@@ -1450,7 +1455,8 @@
             "docs/evidence/rust-service/eight-baseline.json",
             "docs/evidence/rust-service/README.md#cp250",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
-            "docs/protocol/room-membership.md#rust-selected-player-rounds"
+            "docs/protocol/room-membership.md#rust-selected-player-rounds",
+            "docs/protocol/load-phase.md#rust-map-profile-adapter"
           ]
         },
         "gate": {
@@ -1466,7 +1472,8 @@
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/104",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/390"
       ]
     },
     {
@@ -4364,7 +4371,8 @@
       "issues": [
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391"
       ]
     },
     {
@@ -5673,7 +5681,8 @@
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/178",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/188",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391"
       ]
     },
     {

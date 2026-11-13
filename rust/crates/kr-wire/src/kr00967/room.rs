@@ -139,6 +139,65 @@ pub fn zero585_setup(body: &[u8]) -> io::Result<bool> {
     Ok(body.len() == 4 && uint(body, Width::U32)? == 0)
 }
 
+/// Parsed offsets of the measured raw Start profile-list branch. The map name
+/// is length-prefixed; offsets after it must not depend on ExVillage01's length.
+struct StartLayout {
+    stream: Vec<u8>,
+    size: usize,
+    rows: usize,
+    count: usize,
+}
+fn start_layout(body: &[u8]) -> io::Result<StartLayout> {
+    let error = || io::Error::other("unsupported Start map/profile layout");
+    if !(119..=2048).contains(&body.len()) || uint(&body[..1], Width::U8)? != 0 {
+        return Err(error());
+    }
+    let size = uint(&body[1..5], Width::U32)? as usize;
+    if size.checked_add(23) != Some(body.len()) {
+        return Err(error());
+    }
+    let stream = decode_bytes(&body[5..5 + size])?;
+    if stream.len() < 44
+        || stream[0] != 24
+        || stream[5] != 0
+        || u32::from_le_bytes(stream[1..5].try_into().expect("bounded")) as usize != size - 5
+    {
+        return Err(error());
+    }
+    let name_size = u32::from_le_bytes(stream[28..32].try_into().expect("bounded")) as usize;
+    if !(1..=64).contains(&name_size) {
+        return Err(error());
+    }
+    let rows = 43 + name_size;
+    if rows > size
+        || !stream[32..32 + name_size]
+            .iter()
+            .all(|b| b.is_ascii_alphanumeric() || *b == b'_')
+    {
+        return Err(error());
+    }
+    let count = usize::from(stream[rows - 5]);
+    if !matches!(count, 2 | 4 | 8) || size != rows + count * 26 {
+        return Err(error());
+    }
+    Ok(StartLayout {
+        stream,
+        size,
+        rows,
+        count,
+    })
+}
+
+/// Map identity carried by the measured Start branch. This parses wire data;
+/// the service must separately authorize the map and validate its pack profile.
+pub fn start121_map(body: &[u8]) -> io::Result<(u16, Vec<u8>)> {
+    let parsed = start_layout(body)?;
+    Ok((
+        u16::from_le_bytes(parsed.stream[26..28].try_into().expect("bounded")),
+        parsed.stream[32..parsed.rows - 11].to_vec(),
+    ))
+}
+
 /// Select the independently retained two-row branch from a measured expanded
 /// Start. Identity is absent from these rows; only contiguous slots0/1 qualify.
 pub fn start121_duel(body: &[u8]) -> io::Result<Vec<u8>> {
@@ -148,30 +207,21 @@ pub fn start121_duel(body: &[u8]) -> io::Result<Vec<u8>> {
 /// Select measured contiguous rows without expanding or changing their teams.
 /// Admission decides which profiles have native acceptance; this is wire only.
 pub fn start121_roster(body: &[u8], teams: &[u8]) -> io::Result<Vec<u8>> {
-    if body.len() < 129
-        || uint(&body[..1], Width::U8)? != 0
-        || !matches!(teams.len(), 2 | 4 | 8)
-        || teams.iter().any(|team| *team > 1)
-    {
-        return Err(io::Error::other("unsupported roster Start envelope"));
+    if !matches!(teams.len(), 2 | 4 | 8) || teams.iter().any(|team| *team > 1) {
+        return Err(io::Error::other("unsupported roster Start teams"));
     }
-    let size = uint(&body[1..5], Width::U32)? as usize;
-    if size < 106 || size.checked_add(23) != Some(body.len()) {
-        return Err(io::Error::other("unsupported roster Start length"));
-    }
-    let stream = decode_bytes(&body[5..5 + size])?;
-    if stream[0] != 24
-        || stream[5] != 0
-        || u32::from_le_bytes(stream[1..5].try_into().expect("bounded header")) as usize != size - 5
-    {
-        return Err(io::Error::other("unsupported roster Start stream"));
-    }
-    let count = usize::from(stream[49]);
-    if !matches!(count, 2 | 4 | 8) || size != 54 + count * 26 || teams.len() > count {
+    let parsed = start_layout(body)?;
+    let StartLayout {
+        stream,
+        size,
+        rows,
+        count,
+    } = parsed;
+    if teams.len() > count {
         return Err(io::Error::other("unsupported roster Start count"));
     }
     for (slot, team) in teams.iter().enumerate() {
-        let row = &stream[54 + slot * 26..80 + slot * 26];
+        let row = &stream[rows + slot * 26..rows + (slot + 1) * 26];
         if row[0] != slot as u8
             || row[2] != slot as u8
             || u16::from_le_bytes([row[3], row[4]]) != slot as u16
@@ -180,10 +230,10 @@ pub fn start121_roster(body: &[u8], teams: &[u8]) -> io::Result<Vec<u8>> {
             return Err(io::Error::other("unsupported roster Start slot/team"));
         }
     }
-    let selected_size = 54 + teams.len() * 26;
+    let selected_size = rows + teams.len() * 26;
     let mut out_stream = stream[..selected_size].to_vec();
     out_stream[1..5].copy_from_slice(&((selected_size - 5) as u32).to_le_bytes());
-    out_stream[49] = teams.len() as u8;
+    out_stream[rows - 5] = teams.len() as u8;
     let mut out = body[..1].to_vec();
     out.extend(put(selected_size as u64, Width::U32)?);
     out.extend(encode_bytes(&out_stream)?);
@@ -210,14 +260,15 @@ pub fn start121_players(template: &[u8], players: &[StartPlayer]) -> io::Result<
     }
     // Validate the retained source profile, not newly supplied player values.
     let base = start121_duel(template)?;
-    let size = uint(&base[1..5], Width::U32)? as usize;
-    let stream = decode_bytes(&base[5..5 + size])?;
+    let StartLayout {
+        stream, size, rows, ..
+    } = start_layout(&base)?;
     const ROW_TAIL: [u8; 20] = [
         0, 0, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     ];
     // Opaque flags/partner/u32s remain exactly the measured row branch. Do not
     // silently transplant an unmeasured profile into this serializer.
-    for row in stream[54..].as_chunks::<26>().0 {
+    for row in stream[rows..].as_chunks::<26>().0 {
         if row[1] != 0 || row[6..] != ROW_TAIL {
             return Err(io::Error::other("unsupported Start player row branch"));
         }
@@ -226,8 +277,8 @@ pub fn start121_players(template: &[u8], players: &[StartPlayer]) -> io::Result<
     ordered.sort_by_key(|player| player.slot);
     let mut slots = std::collections::BTreeSet::new();
     let mut spawns = std::collections::BTreeSet::new();
-    let mut selected = stream[..54].to_vec();
-    selected[49] = ordered.len() as u8;
+    let mut selected = stream[..rows].to_vec();
+    selected[rows - 5] = ordered.len() as u8;
     for player in ordered {
         if player.slot >= 8
             || player.spawn >= 8
@@ -253,19 +304,20 @@ pub fn start121_players(template: &[u8], players: &[StartPlayer]) -> io::Result<
 }
 
 pub fn start121_teams(body: &[u8], teams: &[u8]) -> io::Result<Vec<u8>> {
-    if teams.len() != 8 || body.len() != 285 || uint(&body[..1], Width::U8)? != 0 {
-        return Err(io::Error::other("expected measured eight start121"));
+    if teams.len() != 8 || teams.iter().any(|team| *team > 1) {
+        return Err(io::Error::other("expected measured eight start121 teams"));
     }
-    let size = uint(&body[1..5], Width::U32)? as usize;
-    if size != 262 || teams.iter().any(|team| *team > 1) {
-        return Err(io::Error::other("eight start121 envelope/teams"));
-    }
-    let mut stream = decode_bytes(&body[5..5 + size])?;
-    if stream[..6] != [24, 1, 1, 0, 0, 0] || stream[6 + 43] != 8 {
-        return Err(io::Error::other("eight start121 stream/count"));
+    let StartLayout {
+        mut stream,
+        size,
+        rows,
+        count,
+    } = start_layout(body)?;
+    if count != teams.len() {
+        return Err(io::Error::other("eight start121 count mismatch"));
     }
     for (slot, team) in teams.iter().enumerate() {
-        let at = 6 + 48 + 26 * slot;
+        let at = rows + 26 * slot;
         if stream[at] != slot as u8
             || stream[at + 2] != slot as u8
             || u16::from_le_bytes([stream[at + 3], stream[at + 4]]) != slot as u16

@@ -1,0 +1,98 @@
+{
+  "id": "AUD106",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-g1-map-adapter"
+  ],
+  "completed_through": "CP290",
+  "recorded_utc": "2026-11-13T14:55:31.564658+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/g1-map-adapter.json",
+    "docs/protocol/load-phase.md",
+    "docs/content/tile-semantics.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "rust/crates/kr-wire/src/kr00967/room.rs",
+    "rust/crates/kr-service/src/map_profile.rs",
+    "rust/crates/kr-service/src/room_service.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "tools/rust_map_profile.py",
+    "tools/test_rust_lobby_map_cache.py",
+    "local/research/codex/g1-factory-native-r3/factory-verification.json",
+    "local/research/codex/g1-factory-native-r3/factory-getter-verification.json",
+    "local/research/codex/g1-factory-native-r3/native/raw-seal.json",
+    "local/research/codex/g1-lobby-map-cache-tcp-r1/result.json",
+    "local/research/codex/g1-lobby-map-cache-tcp-r1/raw-seal.json",
+    "local/research/codex/g1-map-adapter-r1/input-checks-r1.json",
+    "local/research/codex/g1-map-adapter-r1/negative-r1/verification.json",
+    "local/research/codex/g1-factory-native-r2/failure-analysis.json",
+    "local/research/codex/g1-map-cache-managed-tcp-r1/failure-analysis.json",
+    "local/research/codex/n1rb-controls-delivery-receipt.json"
+  ],
+  "method": "Đọc core docs đúng thứ tự, source adapter/wire/cache, raw native/profiles/PCAP và báo cáo độc lập. ExVillage01 exact packet pins; tám semantic config negatives.157 tests/fmt/clippy/build. Native Factory07 actual name lookup/compare0,127-byte Start readers/errors0 và pack spawn ở cả hai view/ba Start; hai opposite rank/reset và ván tiếp.87 current helper byte joins,1228 copied-native getters, raw/freeze/export/unmount/namespace extinction. Bounded cache TCP malformed/quota/revoke/current positive/cleanup. Giữ hai native failures và broader TCP failure; không dùng source/log/exit0 làm native oracle.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Profile cũ khóa mọi offset sau tên map vào ExVillage01 và fixed table/floor/Start sizes.",
+      "correction": "Name-length-derived Start parser, pinned exported map identity và consistent raw238/checksum241/117/121/196; baseline exact bytes, Factory07 native127-byte readers/pack spawn/result/reset. Không mang floor/terrain cũ sang map mới.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-adapter.json",
+        "docs/protocol/load-phase.md#rust-map-profile-adapter",
+        "rust/crates/kr-wire/src/kr00967/room.rs",
+        "rust/crates/kr-service/src/map_profile.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Owned managed lobby không phục vụ cache528 khi checksum đổi, client dừng trước room/loading.",
+      "correction": "Nối contract rỗng528→current238 với DB/channel ownership, no idle renewal và budget/timeout. Native mới vượt cache và test TCP hẹp có nonempty/quota/revoke/current positives.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-adapter.json",
+        "rust/crates/kr-service/src/lib.rs",
+        "tools/test_rust_lobby_map_cache.py"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Tọa độ nút B trên UI ExVillage01 được tưởng là mã3 trên mọi map.",
+      "correction": "Factory07 có tám màu; captured97/body58 là2, guard0/3 từ chối đúng. R3 dùng OS click màu3, không đổi source/policy để nhận đội mới.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-adapter.json",
+        "docs/protocol/load-phase.md#rust-map-profile-adapter",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Expanded broad TCP check hoặc derived-verifier failures có thể bị bỏ qua khi native đạt.",
+      "correction": "Giữ raw failed Back/shutdown và cause unknown, không promote broad suite. Test cache hẹp độc lập đủ own acceptance. Derived host-only104/result-label assertions sửa trên output mới; raw unchanged.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-map-adapter.json",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Issue snapshot/review vẫn mô tả380 mở và chưa biết390/391.",
+      "correction": "Cập nhật canonical dated disposition và snapshot:380 completed theo CP289/PR389;390 adapter và391 M6 WIP open. Không dùng GitHub issue state đóng G1/M6.",
+      "fixed_in": [
+        "docs/evidence/issue-reconciliation/github-snapshot.json",
+        "docs/evidence/issue-reconciliation/review.json",
+        "docs/features.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "G1 tổng thể mở: UI chọn map, kim/cứu, terrain/item mọi cỡ phòng, năm map khác và BomberAttr theo PLAN.",
+    "Factory07 mới đạt adapter/lookup/load/spawn/bom/result/reset; floor rỗng, terrain cũ tắt. Phân loại tile ngoài ExVillage01 vẫn candidate.",
+    "Phép TCP diagnostic rộng timeout tại idle Back/return241 và cleanup wait; chưa rõ cause. Cache TCP hẹp đạt negative/ownership/shutdown riêng; không gọi toàn bộ hồi quy rộng là pass.",
+    "M6 backend/history/preference là WIP ở nhánh khác, chưa giao/integrated/native acceptance; G1 binary không chứa schema/backend M6.",
+    "Transport companion xác thực mới, tải/soak/packaging và vận hành còn M8; không thêm Internet/ISP/CGNAT claim từ lượt này."
+  ]
+}

@@ -219,3 +219,11 @@ hai source Rust của CP276 đã thay đổi hợp lệ nhưng checker cũ chưa
 còn tại lần công bố; record complete, audit và evidence manifest cũ không sửa. Kiểm hồi quy gồm sai checkpoint,
 pin chỉ khớp ở commit sau, manifest ngoài sai hash, artifact và đường dẫn ngoài phạm vi. Đây là kiểm provenance,
 không xác nhận native hoặc tự đóng M7b.
+
+
+Từ CP291, source **test tích hợp ở đúng cấp** `rust/crates/*/tests/*.rs` dùng cùng phép kiểm publication-bound
+ở trên. Đây là source thực thi của test, khác fixture/data dưới `tests/fixtures/`. Mở rộng hẹp này giải lỗi khi
+CP290 bổ sung test vào source đã pin CP287; [correction và locator](integration-test-source-correction.json) giữ
+full-check lỗi và commit gốc có đúng blob/hash. Phải có record complete và declaration/blob đúng ngay lần công bố,
+manifest ngoài khớp; commit sau có cùng byte không cứu được pin sai. Không mở cho thư mục test lồng, binary,
+raw/local, build tree hoặc fixture; không sửa record/evidence/audit cũ và không chứng nhận native từ checker.

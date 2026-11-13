@@ -64,6 +64,36 @@ Trạng thái tại CP019 dừng sau104. Receiver/scene đã được bổ sung 
 bước tiếp hiện hành chỉ giữ ở [RESEARCH](../RESEARCH.md#q-023). Không copy start501 của VN.
 K2/K3/K4 và full identity/auth/user/cache/vanilla/multiplayer vẫn mở.
 
+<a id="rust-map-profile-adapter"></a>
+### Rust: profile map từ pack và packet vào trận nhất quán
+
+Nguồn **kr_runtime/confirmed** cho Factory07 trên hai bản copy KR chạy Wine; producer, guard và chính sách là
+**design/design**. [Evidence/hash và các lượt lỗi](../evidence/rust-service/g1-map-adapter.json),
+[phần còn thiếu](../RESEARCH.md#gap-village10-map), [acceptance](../PLAN.md#phase1-acceptance).
+
+`fixed_room.map_profile` là pin path/size/SHA tới JSON do exporter pack tạo. Adapter input
+[`rust_map_profile.py`](../../tools/rust_map_profile.py) dựng metadata238, checksum241, chọn117, Start121 và play196
+cùng mã/tên; giữ seed, thời gian, row branch và policy hiện hành. ExVillage01 giữ đúng mọi byte/pin đã đo.
+Map mới dùng metadata raw-selector0 đã có contract; checksum tính trên storage representation trước inflate,
+không dùng checksum plaintext của representation nén cũ. Runtime kiểm profile, tên/mã, số spawn, dynamic index,
+row count và checksum241 trước bind. Tên trong Start có độ dài thực; các offset sau tên không còn khóa theo tên
+ExVillage01. Compressed baseline cũ giữ exact hash; không mở generic compression hoặc bảng nhiều map.
+
+Ở sảnh managed, C2S528 rỗng của account/channel hiện hành trả bảng238 từ prototype. Kiểm DB và current owner,
+không gia hạn idle, giới hạn 16 lần/channel và write timeout; payload khác rỗng hoặc vượt budget dừng đóng.
+Trong phòng vẫn dùng handler528 hiện có. Không lấy first request hoặc IP làm quyền sở hữu. Đây là contract cache
+đã biết được nối vào serving, không phải ACK giả. Test TCP có malformed, quota, revoke và current positive riêng.
+
+Native Factory07 dùng code281, tên lookup và incoming cùng Factory07, phép so tên trả0; Start đọc đủ127byte,
+spawn theo hai điểm đầu trong pack. Hai người dùng bom, hai kết quả trái nhau/reset và vòng tiếp đã đo. Lượt đầu
+bị chặn ở528 chưa nối; lượt sau click cũ chọn màu2 trên bảng tám màu, bị guard đội0/3 từ chối. Lượt đạt đổi input
+OS sang màu3, không mở thêm mã đội. Phép so byte baseline, encoder và test component không thay bằng chứng native.
+
+**Giới hạn:** profile map mới có floor rỗng và tắt terrain ExVillage01; chưa có nghiệm thu terrain/drop/item hoặc
+mọi cỡ phòng của Factory07. Phân loại tile ngoài ExVillage01 vẫn candidate. Chưa đổi map bằng UI, chưa thử năm
+map ladder còn lại hoặc Internet cho transport mới. Phép TCP rộng lỗi ở idle Back giữ nguyên, test cache hẹp không
+chứng minh toàn bộ lifecycle diagnostic; cause còn ở RESEARCH. Không đóng G1 tổng thể hoặc K gate lịch sử.
+
 <a id="village10-map-selection"></a>
 ### Village10: mã map và dữ liệu chọn map phải nhất quán
 

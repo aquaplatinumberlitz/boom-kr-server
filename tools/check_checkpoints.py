@@ -103,7 +103,7 @@ def historical_checkpoint_source(root, relative, expected_sha, expected_bytes, c
     Older inline-only records without a matching v2 publication stay strict.
     """
     python_source = Path(relative).parts[0] in {'server', 'tools'} and Path(relative).suffix == '.py'
-    rust_source = (re.fullmatch(r'rust/crates/[^/]+/src/(?:[^/]+/)*[^/]+\.rs', relative)
+    rust_source = (re.fullmatch(r'rust/crates/[^/]+/(?:src/(?:[^/]+/)*|tests/)[^/]+\.rs', relative)
                    and not any(part in {'.', '..'} for part in relative.split('/')))
     if not re.fullmatch(r'CP[0-9]{3,}', checkpoint) or not (python_source or rust_source):
         return None

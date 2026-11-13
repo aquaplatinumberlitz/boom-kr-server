@@ -14,6 +14,7 @@ mod four_results;
 mod life;
 pub mod lobby;
 mod logging;
+mod map_profile;
 pub mod network;
 mod peer_routes;
 mod pickups;
@@ -699,6 +700,7 @@ async fn local_lobby_connection(
         None => (Receiver::new(40), None),
     };
     let mut account_opaque87 = 0usize;
+    let mut lobby_map_requests = 0usize;
     let mut next_auth_check = Instant::now() + Duration::from_secs(1);
     let mut managed_channel: Option<room_service::Channel> = None;
     let mut known_rooms = std::collections::BTreeSet::new();
@@ -799,6 +801,34 @@ async fn local_lobby_connection(
                 }
                 let observation = session.packet(packet.opcode, &packet.payload)?;
                 emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
+                continue;
+            }
+            if packet.opcode == 528
+                && flow.stage == lobby::Stage::Lobby
+                && let Some(channel) = &managed_channel
+            {
+                lobby_map_requests += 1;
+                if !packet.payload.is_empty() || lobby_map_requests > 16 {
+                    return Err(io::Error::other("managed lobby map request shape/budget"));
+                }
+                let Some(owner) = &mut account else {
+                    return Err(io::Error::other("map cache request has no account owner"));
+                };
+                // Immutable cache fetch is not player activity. Revalidate DB
+                // and the current channel owner before reading the prototype.
+                tokio::select! { _=stop.changed()=>return Ok(()), value=owner.authorize(false)=>value? };
+                let reply = channel.map_table()?;
+                let frame = encode(&reply.header, reply.opcode, &reply.payload, send_sequence)
+                    .map_err(io::Error::other)?;
+                timeout(
+                    Duration::from_millis(profile.config.write_timeout_ms),
+                    socket.write_all(&frame),
+                )
+                .await
+                .map_err(|_| io::Error::other("map cache reply timeout"))??;
+                emit(&log,stamp(start,json!({"event":"managed_lobby_map_reply","connection":id,
+                    "opcode":reply.opcode,"sequence":send_sequence,"bytes":frame.len(),"sha256":sha256_hex(&frame)}))).await?;
+                send_sequence = send_sequence.wrapping_add(3);
                 continue;
             }
             let aliases = match flow.packet(packet.opcode, &packet.payload) {

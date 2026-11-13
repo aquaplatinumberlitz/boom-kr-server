@@ -1,0 +1,39 @@
+{
+  "schema": "kre-checkpoint-publication-history-correction-v1",
+  "checkpoint": "CP291",
+  "source": "design",
+  "status": "design",
+  "canonical": "docs/evidence/checkpoints/README.md#publication-bound-source-history",
+  "problem": "Exact CP290 head failed strict local/history check because CP287 pinned a Rust integration test source under tests/, while previous source history recovery only covered src/. Original same-commit CP287 blob still exists.",
+  "correction": "Only root integration test source rust/crates/*/tests/*.rs now uses the same exact publication-bound source verifier. Nested tests/fixtures, non-Rust data, build/local/raw/artifacts remain strict. No checkpoint/evidence/audit/runtime output rewritten.",
+  "history": [
+    {
+      "pin": {
+        "id": "N1RB287-00927",
+        "kind": "repository",
+        "path": "rust/crates/kr-wire/tests/native_start_vectors.rs",
+        "bytes": 2882,
+        "sha256": "3bfff9199f2fd8abd1acdbc82e6a0484b80c5a9d0865404c64c0b64b53404021"
+      },
+      "warnings": [
+        "CP287: HISTORICAL SOURCE VERIFIED rust/crates/kr-wire/tests/native_start_vectors.rs at d5f9218ac06a824dad612c19797fe54ee1e4814b; current file differs; checkpoint bytes unchanged"
+      ]
+    }
+  ],
+  "tests": {
+    "suite": "tools/test_checkpoint_source_history.py",
+    "all_checkpoint_tests": 63,
+    "positive": "Exact external source pin at original complete-record publication.",
+    "negative": "Wrong checkpoint, later matching source, broken manifest, artifact kind, nested tests/fixtures, non-Rust file and traversal all reject."
+  },
+  "local": {
+    "failed_full_check": "local/research/codex/g1-map-adapter-exact-head-checkpoints.txt",
+    "targeted_proof": "local/research/codex/g1-test-source-publication-proof.json",
+    "test_report": "local/research/codex/g1-test-source-history-tests-r1.txt"
+  },
+  "limits": [
+    "Scope of runtime/G1/M6 acceptance unchanged.",
+    "No general old-byte or arbitrary later revision recovery.",
+    "CI and new exact-head/full raw/history checks required before merge."
+  ]
+}

@@ -5,6 +5,20 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP290: adapter map đã qua byte baseline và trận Factory07 trên client KR thật.**
+Profile pack giữ nguyên packet ExVillage01; Factory07 đã qua lookup tên, loading, spawn, hai kết quả/reset và vòng tiếp
+trên Wine. [Contract/giới hạn](protocol/load-phase.md#rust-map-profile-adapter),
+[bằng chứng](evidence/rust-service/g1-map-adapter.json). Đây là lát adapter của G1; terrain, item, chọn map trong phòng
+và các map còn lại vẫn mở. M6 đang làm backend trên nhánh riêng, chưa nghiệm thu đường kết quả/persistence.
+Theo [Bảng điều hành](PLAN.md#dashboard), tiếp G1 song song M6 rồi M8; transport mới chưa kiểm Internet thật.
+
+**CP289: N1R-b đạt các tiêu chí hành vi của relay nhiều người trong phạm vi đã đo.**
+Native bốn/tám người, roster thưa và survivor đã có bằng chứng; bổ sung đăng nhập mới từ DB sau restart,
+đối chứng gói cũ, chung nguồn IP và test QUIC mạo nhận route với gói hiện hành. [Ma trận acceptance/giới hạn](evidence/rust-service/n1rb-controls-acceptance.json),
+[contract](protocol/udp-peer.md#rust-authenticated-serving-relay), [cấu hình relay](OPERATIONS.md).
+G1/M6/M8 còn mở theo [Bảng điều hành](PLAN.md#dashboard). Transport xác thực mới chưa đo Internet thật;
+M8 phải kiểm đường triển khai đó theo đích giai đoạn 1. Hạ tầng và raw giữ local; [lịch sử](HISTORY.md).
+
 **CP288: relay xác thực đã có nghiệm thu tám người, roster thưa và chơi tiếp sau rớt mạng.**
 Client KR thật trên Wine đã qua trận tám người, một người rời trước ván kế và một endpoint rớt giữa trận;
 sáu người còn lại dùng bom, tới kết quả/reset và vào trận tiếp. [Contract/giới hạn](protocol/udp-peer.md#rust-authenticated-serving-relay),

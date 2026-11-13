@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP286",
+  "as_of": "CP290",
   "baseline": "39a401a2f114507c4669a373e7eded1fcea4f0fa",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -718,28 +718,80 @@
     {
       "number": 380,
       "kre": "KRE-074",
-      "classification": "in_progress",
+      "classification": "completed",
       "features": [
         "KR-F015"
       ],
-      "known": "Nền companion xác thực và native2 route tĩnh/unchanged payload/life đã có; source/TCP sai capability/cert/route/replay kiểm riêng.",
-      "remaining": "Serving account/channel/room, dynamic round controls, native4/8/sparse/departure, pool/keyreuse/restart và common-IP spoof.",
-      "next_test": "Nối ownership/control theo PLAN; không lặp endpoint/byte control đã đo.",
+      "known": "N1R-b đạt scoped: serving ownership/dynamic controls, native4/8/sparse/EOF và runtime reuse/restart/common-IP controls theo ma trận CP289; PR389 exact-head/CI/tree đã đối chiếu.",
+      "remaining": "Internet companion xác thực mới, tải/soak và vận hành thuộc M8; không suy mọi NAT/UDP hoặc mọi chức năng KR-F015.",
+      "next_test": "G1/M6 rồi M8 theo dashboard.",
       "acceptance": "docs/PLAN.md#phase1-acceptance",
-      "reason": "Không suy native lab2 thành N1R-b; metadata giữ failures/boundary limits.",
+      "reason": "Từng tiêu chí phân biệt native Wine/LAN với actual QUIC design/test; raw/history và tree pre-merge đã kiểm.",
       "sources": [
         "docs/PLAN.md#dashboard",
-        "docs/protocol/udp-peer.md#rust-authenticated-companion-foundation",
+        "docs/protocol/udp-peer.md#rust-authenticated-serving-relay",
         "docs/RESEARCH.md#gap-relay-endpoint"
       ],
       "evidence": [
-        "docs/evidence/rust-service/n1rb-companion-foundation.json"
+        "docs/evidence/rust-service/n1rb-controls-acceptance.json"
+      ],
+      "prs": [
+        382,
+        387,
+        389
+      ],
+      "successors": [],
+      "reviewed_utc": "2026-11-13T14:51:38.566344+00:00"
+    },
+    {
+      "number": 390,
+      "kre": "KRE-074",
+      "classification": "in_progress",
+      "features": [
+        "KR-R003"
+      ],
+      "known": "Lát adapter có byte baseline/native Factory07; source/cache negative controls và raw sealed. Chưa giao PR.",
+      "remaining": "G1 tổng thể còn UI chọn map, terrain/item, các map khác và nhân vật.",
+      "next_test": "Hoàn tất PR/checks của adapter rồi UI map selection theo PLAN.",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "reason": "Codex solo implementation và tự kiểm; checkpoint/gate không suy từ WIP hoặc tests backend.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/g1-map-adapter.json"
       ],
       "prs": [],
       "successors": [],
-      "reviewed_utc": "2026-11-13T11:17:06.655328+00:00"
+      "reviewed_utc": "2026-11-13T14:51:38.566344+00:00"
+    },
+    {
+      "number": 391,
+      "kre": "KRE-074",
+      "classification": "in_progress",
+      "features": [
+        "KR-S001",
+        "KR-X001",
+        "KR-L003"
+      ],
+      "known": "Backend history/preference đang có WIP trên nhánh riêng với real SQLite tests; chưa tích hợp runtime hoặc giao PR.",
+      "remaining": "Bounded worker, commit-before-native-result, native relogin/character, lifecycle/DB fault acceptance M6 chưa đạt.",
+      "next_test": "Giao backend slice và nối serving theo PLAN; không chờ toàn bộ G1 RE.",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "reason": "Codex solo implementation và tự kiểm; checkpoint/gate không suy từ WIP hoặc tests backend.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ],
+      "evidence": [],
+      "prs": [],
+      "successors": [],
+      "reviewed_utc": "2026-11-13T14:51:38.566344+00:00"
     }
   ],
-  "as_of_utc": "2026-11-12T15:19:49.777737+00:00",
+  "as_of_utc": "2026-11-13T14:51:38.566344+00:00",
   "limits": "Dated manual dispositions through CP146; snapshotcaptureUTC only/no semantic or gate certification; immutable completehistory."
 }
