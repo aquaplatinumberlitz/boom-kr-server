@@ -38,6 +38,7 @@ struct State {
     next: u16,
 }
 pub(crate) struct Hub {
+    journal: Mutex<Option<crate::match_journal::Factory>>,
     state: Mutex<State>,
     prototype: room_io::Shared,
     max_rooms: usize,
@@ -110,6 +111,7 @@ impl Hub {
             crate::round_epochs::RoundEpochs::default()
         });
         Ok(Arc::new(Self {
+            journal: Mutex::new(None),
             state: Mutex::new(State {
                 rooms: Registry::default(),
                 owners: HashMap::new(),
@@ -125,6 +127,25 @@ impl Hub {
             player_choices: cfg.player_choices,
             capacity: cfg.capacity,
         }))
+    }
+    pub(crate) fn install_journal(&self, factory: crate::match_journal::Factory) -> io::Result<()> {
+        let state = self.state.lock().map_err(|_| err("room hub unavailable"))?;
+        let mut journal = self
+            .journal
+            .lock()
+            .map_err(|_| err("journal factory unavailable"))?;
+        if !state.owners.is_empty() || state.rooms.entries().next().is_some() || journal.is_some() {
+            return Err(err("journal install requires pristine hub"));
+        }
+        *journal = Some(factory);
+        Ok(())
+    }
+    pub(crate) fn cancel_journals(&self) -> io::Result<()> {
+        let state = self.state.lock().map_err(|_| err("room hub unavailable"))?;
+        for entry in state.rooms.entries() {
+            room_io::cancel_journal(&entry.value)?;
+        }
+        Ok(())
     }
     pub(crate) fn register(
         self: &Arc<Self>,
@@ -201,6 +222,14 @@ impl Channel {
                         self.hub.player_choices,
                         self.hub.capacity,
                     )?;
+                    if let Some(factory) = &*self
+                        .hub
+                        .journal
+                        .lock()
+                        .map_err(|_| err("journal factory unavailable"))?
+                    {
+                        room_io::install_journal(&shared, factory.owner())?;
+                    }
                     if let Some(factory) = &self.hub.relay {
                         room_io::install_relay(&shared, factory.owner(key))?;
                     }

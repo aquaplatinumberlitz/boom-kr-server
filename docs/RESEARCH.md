@@ -125,18 +125,14 @@ Một lượt TCP persistence cũng timeout setup trước peer106/map117; raw/f
 [evidence nhân vật](evidence/rust-service/m6-character-serving.json). Lượt diagnostic có fallback15/31 nhưng không
 chạy fallback, lượt tool gốc sau đó đạt; chưa xác lập nguyên nhân hoặc cách sửa, không suy CPU/timer là nguyên nhân.
 
-### M6: nhân vật đã nối, còn journal trận và nghiệm thu durability
+### M6: acceptance thu hẹp đã có; chỉ mở discrepancy chặn G1/M8
 
-[Backend/worker](protocol/life-results.md#rust-match-store-backend) đã kiểm schema3, idempotency/revision, DB bận,
-rollback, actual SIGKILL sau commit, cancellation khi mở instance và CLI trên DB thật. Không cần RE thêm để viết
-backend này. Đừng lặp các phép đã có hoặc gọi chúng là native persistence.
-
-Bước tiếp là snapshot theo current account/membership/room/round, commit Start trước công bố trận và commit outcome
-trước result wire; queue busy/retry dùng cùng event. Kiểm dữ liệu cũ sau disconnect/expiry/revoke/reset không ghi đè
-phiên/vòng mới. [Lựa chọn0/1 và fresh native relogin](protocol/auth-session.md#rust-persistent-character) đã có bằng chứng;
-không lặp phần này hoặc thêm entitlement/wire chưa có. Chỉ RE nếu consumer result/profile đã biết xuất hiện discrepancy.
-Nghiệm thu DB lỗi/kill phải chạy
-trên chính đường phục vụ, rồi một trận client KR thật và fresh login kiểm nhân vật/kết quả/reward0.
+[Journal serving và native relogin](protocol/life-results.md#rust-match-journal-serving) đã kiểm snapshot account/
+room/round, commit-before-Start/result, retry/DB bận, duplicate/conflict, active departure, kill sau121/175 và CLI.
+[Lựa chọn0/1](protocol/auth-session.md#rust-persistent-character) có persistence/relogin riêng. Không RE lại hoặc lặp
+baseline đã đủ chỉ vì schema/codec giống nhau. Chỉ mở phép đo nhỏ nếu G1/M8 làm lệch current ownership, projection,
+result hoặc rollback. Queue/journal latency dưới tải và vận hành/recovery theo acceptance M8; match restore và economy
+là scope sau. Native kết quả không tự giải timeout setup/Back cũ, nguyên nhân vẫn chưa xác định.
 
 <a id="gap-relay-endpoint"></a>
 ### Relay endpoint sau N1b — KRE-074/KR-F015
@@ -168,7 +164,7 @@ Không thêm Internet thật thành dependency ngầm của K6c/K7 đã nghiệm
 | RUST-Q1 account/profile/recovery | Giữ account→PlayerId, token một lần, expiry/revoke/worker budgets hiện hành | M5b đã đo zero-profile DB và native DB/queue fault. Nhánh profile khác, graceful retry và same-process resume/match restore vẫn chưa có; persistence nhân vật theo M6 |
 | RUST-Q2 phòng/đội/nhân vật | Dùng RoomKey/slot/membership generations và quota; source registry đã có | M7: tạo/vào/rời/phòng đầy, chọn đội/nhân vật trên KR thật; không RE lại consumer đã có |
 | RUST-Q3 inventory/consumables | G1 giữ world item/kim policy; inventory bền vững thuộc giai đoạn sau | Consumer request/equip/use/count/reset/relogin khi product mở inventory; kim145 không chứng minh inventory auth |
-| RUST-Q4 result/reward persistence | M6 đã chốt lịch sử trận bền vững, thưởng 0; unique result/idempotency | Native result/DB restart và exactly-once; XP/currency projection chỉ đo khi mở scope tương ứng |
+| RUST-Q4 result/reward persistence | M6 thu hẹp đã kiểm journal/native result/relogin, thưởng 0 và idempotency | Vận hành/tải/restore thuộc M8; XP/currency projection chỉ đo khi mở scope tương ứng |
 | RUST-Q5 authority/freshness | Giữ fuse/drop/report guards đã đo; raw ACK không có epoch đo được | Native stale-old/current-positive cho cơ chế đang đổi; low8 wrap/restart/portreuse, không suy queue clear ngăn mọi replay |
 | RUST-Q6 vận hành | Một instance, bounded queues, admin/log/health, backup/restore | M8: workload 50 người/8 phòng, nonreader/fault/restart/shutdown và restore đã thử; giữ raw nếu tái hiện I/O lỗi |
 | RUST-Q7 product policy | Sáu map ladder/item tương ứng, Free1v7 là giới hạn, lưu kết quả/thưởng0 đã chốt | Không còn chờ quyết định reward cho M6; policy XP/economy/mode ngoài scope chỉ mở khi owner quyết định |

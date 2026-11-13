@@ -1,0 +1,119 @@
+{
+  "schema": "kre-rust-match-journal-serving-v1",
+  "checkpoint": "CP294",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/life-results.md#rust-match-journal-serving",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391",
+  "acceptance": "docs/PLAN.md#phase1-acceptance",
+  "decision": "M6 đạt acceptance giai đoạn1 thu hẹp: lịch sử trận bền vững/thưởng0, lưu nhân vật theo account, native trận rồi fresh login và CLI. Inventory/progression/economy của thiết kế M6 rộng vẫn ngoài giai đoạn1.",
+  "implementation": {
+    "config": "account_admission.persist_matches=true requires database_zero+managed player_round; default false, independent of persist_character. Phase1 full recipe enables both.",
+    "key": "Actual DB begin_instance epoch + room session/id/generation + monotonic round. Snapshot freezes account/player/slot/character/team/map/start time.",
+    "gate": "Bounded instance journal actor (128 commands), normal DB worker, stable retry event/time/key. DB commit/readback before native-facing Start/result; per-batch immutable ticket plus post-await account/current membership/round checks. No room mutex over await.",
+    "lifecycle": "Current policy winner unchanged. Departed original participant preserved with left/disconnected. Loading abort/no players/shutdown cancelled, no invented wins. Startup backend cancels old running rows as server_restart/unknown exit. Complete outcomes never changed by restart.",
+    "failure": "Busy/queue expiry retry same exact event within5s. Fatal/conflicting/full journal rejects publication and health stops service; unresolved open row is cancelled next boot. No fake successful reply or automatic active-match resume.",
+    "limits": "One bounded serial journal actor is a deliberate current-scale design; load/latency/queue budgets and persistent filesystem/power-loss/operations remain M8."
+  },
+  "native": [
+    {
+      "root": "local/research/codex/m6-journal-native-r1",
+      "run_sha256": "8055f1012f91f81ef42abfaa5523a0b1d6809c13cc67dbfdc75877616310be29",
+      "mode": "relogin",
+      "previous_epoch": 3,
+      "current_epoch": 4,
+      "prior_history": 0,
+      "new_matches": 3,
+      "complete": 2,
+      "cancelled": 1,
+      "verification": "local/research/codex/m6-journal-native-r1/journal-native-verification.json",
+      "getters": "local/research/codex/m6-journal-native-r1/journal-getter-verification.json"
+    },
+    {
+      "root": "local/research/codex/m6-journal-native-r2",
+      "run_sha256": "43323fb21a49e83c20354745c0c7669bc9987ebecb37aa050f83c503ad3994d2",
+      "mode": "relogin",
+      "previous_epoch": 4,
+      "current_epoch": 5,
+      "prior_history": 3,
+      "new_matches": 3,
+      "complete": 2,
+      "cancelled": 1,
+      "verification": "local/research/codex/m6-journal-native-r2/journal-native-verification.json",
+      "getters": "local/research/codex/m6-journal-native-r2/journal-getter-verification.json"
+    }
+  ],
+  "build": {
+    "service_sha256": "dcfa8b7b66ba82324666d1acadfab0a83f44656f90bb9528be9e67ca9ff6f0a4",
+    "companion_sha256": "3dd0534849819849b41f8c67cbb96ee3e598deacad9c77bd10c6ec77ea67ce3f",
+    "native_copy_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "10.0-20260425",
+    "tests": 175,
+    "logs": {
+      "workspace": "local/research/codex/m6-journal-workspace-r2.txt",
+      "fmt": "local/research/codex/m6-journal-fmt-r2.txt",
+      "clippy": "local/research/codex/m6-journal-clippy-r2.txt",
+      "build": "local/research/codex/m6-journal-build-r2.txt"
+    }
+  },
+  "controls": {
+    "component": "local/research/codex/m6-journal-retained-r1/seal.json",
+    "component_tests": 4,
+    "retained_databases": 4,
+    "tcp": "local/research/codex/m6-journal-serving-tcp-r1/tcp/verification.json",
+    "tcp_groups": 16,
+    "tcp_scope": "Actual TCP/SQLite/private launcher, three accounts on common source and sparse next round. Writer lock withholds582/121 and settled175 until commit; active departed winner preserved; old round key rejected/current positive, pending next round cancelled.",
+    "kill_after_start": "local/research/codex/m6-journal-serving-kill-start-r2/kill-control.json",
+    "kill_start_recovery": "local/research/codex/m6-journal-serving-kill-start-recovery-r1/verification.json",
+    "kill_after_result": "local/research/codex/m6-journal-serving-kill-result-r3/verification.json",
+    "kill_scope": "Actual serving SIGKILL immediately after first121 or175, quiescent DB/WAL snapshot before cleanup. Fresh instance cancels open row once or preserves exactly committed outcome/zero reward. No power-loss claim. Existing broad fixture records expected interception failure, not relabeled broad-suite pass.",
+    "history_cli": "local/research/codex/m6-journal-history-cli-r1/verification.json",
+    "preference": "docs/evidence/rust-service/m6-character-serving.json",
+    "backend": "docs/evidence/rust-service/m6-match-store.json"
+  },
+  "retained_failures": [
+    {
+      "path": "local/research/codex/m6-journal-tests-r1.txt",
+      "cause": "Test history helper omitted trusted Admin argument; compile refusal, no runtime."
+    },
+    {
+      "path": "local/research/codex/m6-journal-tests-r2.txt",
+      "cause": "Concurrent test setup exceeded global KDF budget, correctly Busy. Serialise only synchronous account creation; real concurrent journal behavior still tested."
+    },
+    {
+      "path": "local/research/codex/m6-journal-clippy-r1.txt",
+      "cause": "collapsible_if style check; corrected before native runs."
+    },
+    {
+      "path": "local/research/codex/m6-journal-native-verification-r1.txt",
+      "cause": "Derived verifier reused choices variable after it was overwritten by incoming92 list; changed derived lookup to fixed measured keys. Raw/native/source unchanged."
+    },
+    {
+      "path": "local/research/codex/m6-journal-serving-kill-start-r1",
+      "cause": "Wrapper import path before service launch; preserved pre-control failure and seal."
+    },
+    {
+      "path": "local/research/codex/m6-journal-serving-kill-start-r2",
+      "cause": "SIGKILL after121 and snapshot succeeded, first restart refused too-long Unix socket before instance startup. New recovery control reuses exact sealed snapshot with short owned socket; old result stays failed."
+    }
+  ],
+  "limits": [
+    "Native evidence uses two Wine diagnostic KR copies, isolated virtual LAN/common source; no actual Internet/ISP/CGNAT/new transport deployment/load or physical Windows claim.",
+    "Native Factory07/current Dao0/Dizni1/team0/3 only. G1 remaining maps/terrain/items/rescue/needle/characters are separate; no authority rewrite.",
+    "Saved character appears in room/Start/stats; own291 remains existing zero-profile. No new client history wire/API/screens, entitlement or rank/economy system inferred.",
+    "Results contain zero non-rank payload fields; native rank rows show unchanged zero reward/stat fields. DB reward fixed0, no balance/EXP/inventory/ledger mutation API.",
+    "Fresh server/fresh login tested; account resume, same-process client reconnect UX and match restoration are not provided. Interrupted rounds cancel.",
+    "Intermittent older synthetic setup/Back timeout remains unknown; successful new suite/native does not prove root cause/fix.",
+    "M8 remains required for deployment/package, backup tested restore, journal/DB/load budgets, metrics/admin and24h soak. Phase1 not complete."
+  ],
+  "reuse": {
+    "baseline": "CP293 / PR394",
+    "direct": [
+      "docs/protocol/life-results.md#rust-match-store-backend",
+      "docs/protocol/auth-session.md#rust-persistent-character",
+      "docs/protocol/room-membership.md#rust-selected-player-rounds",
+      "docs/evidence/rust-service/g1-map-adapter.json"
+    ],
+    "avoids": "No new protocol/authority assumption: use frozen participants, existing winner/rank/reset policy, schema3/worker and native Factory07/companion probes. Only journal integration gap measured; no legacy server port or broad RE."
+  }
+}

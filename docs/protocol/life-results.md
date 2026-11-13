@@ -32,8 +32,38 @@ Channel preference seam luôn dùng player/token đã bound, kiểm lại DB và
 
 CLI `match-history-account` và `match-history-room` đọc lịch sử theo filter với limit1–100, không cấp thưởng hoặc sửa
 kết quả bằng thao tác admin. Luôn thưởng0; EXP, level, tiền, inventory/shop và ledger tiền tệ thuộc giai đoạn sau.
-**Chưa nghiệm thu M6:** còn nối worker vào Start/result/cancel/EOF/shutdown; phần nhân vật đã có bằng chứng riêng.
-native KR một trận rồi login lại, DB bận/kill theo chính luồng phục vụ, reward0 trên client phải kiểm trước đóng mốc.
+Serving và acceptance M6 thu hẹp có [bằng chứng riêng](#rust-match-journal-serving); không suy từ backend tests đơn lẻ.
+
+<a id="rust-match-journal-serving"></a>
+### Rust: journal trận trong đường phục vụ, M6 giai đoạn 1
+
+**kr_runtime/confirmed trong phạm vi copy Wine**, persistence/authority là policy công ty.
+[Ma trận acceptance, build, raw và đối chứng](../evidence/rust-service/m6-journal-serving.json),
+[acceptance hiện hành](../PLAN.md#phase1-acceptance). M6 thu hẹp đạt; không phải inventory/progression của thiết kế rộng.
+
+Opt-in `account_admission.persist_matches=true` yêu cầu `database_zero` và managed `player_round`; mặc định tắt để
+config cũ giữ hành vi. Bật cùng `persist_character` cho luồng giai đoạn 1. Instance lấy đúng epoch do DB cấp;
+khóa trận gồm epoch, room session/id/generation và round. Snapshot đóng băng account/player, slot, nhân vật, đội,
+map và thời gian, giữ cả người đã rời/rớt khi kết thúc. ID player không thay bằng slot hoặc source IP.
+
+Một actor journal hữu hạn giữ event/thời gian/khóa không đổi khi retry DB Busy/queue expiry, dùng normal worker.
+Không giữ room lock qua await. Batch mang ticket của đúng event; Start121 và kết quả175 chờ commit/readback DB,
+rồi kiểm lại account, membership, phase và round trước gửi. Lệnh trong vòng cũng chờ journal hiện hành. Winner/rank
+và reset giữ policy đã đo, không nâng authority. Kết quả và từng outcome được ghi atomic đúng một lần; client chỉ
+nhận payload thưởng/stat bằng0 ngoài presence/rank và backend không cấp balance, EXP hoặc inventory.
+
+Explicit leave/rớt được giữ là `left`/`disconnected` theo participant ban đầu. Loading hỏng, không còn người hoặc
+shutdown ghi cancelled; crash đang chạy được instance mới hủy với `server_restart`/`unknown` exit. Không tự gán thắng
+cho trận chưa hoàn tất. Kết quả đã commit không thay đổi sau kill/restart hoặc khi đăng nhập mới. Busy/queue timeout
+có budget5s cho cùng event; lỗi fatal/conflict hoặc journal queue đầy dừng phục vụ, không gửi success giả. Nếu chưa
+thể ghi hủy, instance tiếp hủy bản ghi chạy dở; không phục hồi trận đang chơi.
+
+Native Factory07 hai kết quả đối nhau/reset/ván tiếp khớp snapshot/rank DB; fresh instance/login trên chính DB đó
+vẫn giữ lịch sử và nhân vật, rồi chơi tiếp. Writer-lock-before-Start/result, active departure, stale round/current
+positive, duplicate/conflict và SIGKILL ngay sau121/175 có TCP/SQLite/process controls riêng. CLI trusted local đọc
+lịch sử theo account/phòng. Không có client history screen/wire mới. [Nhân vật](auth-session.md#rust-persistent-character)
+vẫn chỉ0/1 hiện lại trong phòng/Start; own291 tại sảnh giữ zero-profile. Tải/latency/queue budgets, Internet companion
+mới, backup/restore và vận hành thuộc M8; G1 gameplay/map/item còn acceptance riêng.
 
 <a id="peer-events"></a>
 ### Đồng bộ trap/death qua KR170 — CP029

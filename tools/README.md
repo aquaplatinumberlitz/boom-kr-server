@@ -369,3 +369,8 @@ negative và2slot lifecycle; [R1d contract/limits](../docs/PROTOCOL.md#rust-r1d-
 `test_rust_persistent_character.py --binary <kr-service> --admin <kr-admin> --config <baseline bốn actor> --out local/<mới>`
 kiểm serving account/SQLite/TCP thật: commit preference trước110 dưới writer lock, unsupported/relogin/revoke và
 survivor/shutdown. Đây là method=test, không là client KR. [Native và giới hạn](../docs/protocol/auth-session.md#rust-persistent-character).
+
+`test_rust_selected_players.py --database-accounts --persist-matches` thêm writer-lock-before-Start/result,
+đối chiếu participant/outcome DB và hủy vòng dở khi cleanup vào suite roster hiện có. Yêu cầu các tham số binary,
+admin, config, baseline và out như trước; `--active-departure` kiểm người rớt vẫn có rank/history. Đây là kiểm
+TCP/SQLite, không thay native acceptance. [Journal serving](../docs/protocol/life-results.md#rust-match-journal-serving).

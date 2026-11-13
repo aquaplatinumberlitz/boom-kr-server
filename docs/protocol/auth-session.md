@@ -24,8 +24,8 @@ login/launcher/client, không gửi92 vẫn nhận Dizni và chơi tiếp. Accou
 Own profile291 tại sảnh vẫn zero-profile hiện có; chưa phục hồi projection nhân vật trong291. Unsupported key bị từ chối
 trước DB. Writer-lock và revoke-while-waiting có kiểm TCP/SQLite riêng, không được gọi là native negatives.
 
-Đây là phần nhân vật của M6. Lịch sử trận/kết quả vẫn chưa nối vào serving; không suy native result persistence,
-account resume/match restore, inventory, progression hoặc M6 hoàn tất từ phần này. Các nhân vật khác theo G1.
+Đây là phần nhân vật của M6; [journal trận/kết quả](life-results.md#rust-match-journal-serving) có acceptance riêng.
+Không suy account resume/match restore, inventory hoặc progression từ persistence. Các nhân vật khác theo G1.
 
 <a id="rust-account-backend"></a>
 ## Backend account Rust độc lập client — CP236 / RUST-M5 / KRE-074

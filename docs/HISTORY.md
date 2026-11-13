@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP293: lựa chọn nhân vật đã được lưu và khôi phục trên client KR thật qua account DB.**
+Client chọn Dizni, chơi hai ván; sau restart và đăng nhập mới, phòng/Start nhận lại nhân vật mà không cần chọn lại.
+[Contract và giới hạn](protocol/auth-session.md#rust-persistent-character),
+[bằng chứng](evidence/rust-service/m6-character-serving.json). **M6 vẫn mở:** còn nối lưu trận/kết quả vào serving,
+commit trước reply và nghiệm thu durability trên đường chơi. G1 và M8 tiếp theo [Bảng điều hành](PLAN.md#dashboard).
+
 **CP292: M6 đã có backend và worker lưu lịch sử trận, preference nhân vật và thưởng 0.**
 SQLite có khóa trận ổn định, retry không trùng, cancellation sau restart và kiểm kill ngay sau commit; CLI đọc lịch sử
 account/phòng. [Contract/giới hạn](protocol/life-results.md#rust-match-store-backend),
