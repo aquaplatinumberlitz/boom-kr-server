@@ -120,9 +120,12 @@ Factory07 dùng bảng tám màu đội, khác bốn nút A/B/C/D của ExVillag
 Chỉ chọn màu3 đã hỗ trợ trong lượt đạt; chưa có contract phục vụ đội2/4 hoặc mọi màu, không mở scope từ ảnh UI.
 Một phép TCP diagnostic rộng sau bốn cache positives timeout ở idle host Back/return241, rồi shutdown wait;
 cause chưa rõ. Native Factory07 và cache TCP hẹp có bằng chứng riêng, không làm phép rộng thành pass. Nếu cản
-G1/M8: đối chiếu queue/guard/deadline và cleanup trên exact profile, với current positive; không mở broad client RE.
+G1/M6/M8: đối chiếu queue/guard/deadline và cleanup trên exact profile, với current positive; không mở broad client RE.
+Một lượt TCP persistence cũng timeout setup trước peer106/map117; raw/frozen/cleanup đã giữ tại
+[evidence nhân vật](evidence/rust-service/m6-character-serving.json). Lượt diagnostic có fallback15/31 nhưng không
+chạy fallback, lượt tool gốc sau đó đạt; chưa xác lập nguyên nhân hoặc cách sửa, không suy CPU/timer là nguyên nhân.
 
-### M6: backend đã có, còn khe tích hợp serving và native
+### M6: nhân vật đã nối, còn journal trận và nghiệm thu durability
 
 [Backend/worker](protocol/life-results.md#rust-match-store-backend) đã kiểm schema3, idempotency/revision, DB bận,
 rollback, actual SIGKILL sau commit, cancellation khi mở instance và CLI trên DB thật. Không cần RE thêm để viết
@@ -130,8 +133,9 @@ backend này. Đừng lặp các phép đã có hoặc gọi chúng là native p
 
 Bước tiếp là snapshot theo current account/membership/room/round, commit Start trước công bố trận và commit outcome
 trước result wire; queue busy/retry dùng cùng event. Kiểm dữ liệu cũ sau disconnect/expiry/revoke/reset không ghi đè
-phiên/vòng mới. Nối lựa chọn0/1 đã đo vào preference và projected room state khi login lại; không thêm entitlement hoặc
-wire chưa có. Chỉ RE nếu consumer profile/choice/result đã biết xuất hiện discrepancy. Nghiệm thu DB lỗi/kill phải chạy
+phiên/vòng mới. [Lựa chọn0/1 và fresh native relogin](protocol/auth-session.md#rust-persistent-character) đã có bằng chứng;
+không lặp phần này hoặc thêm entitlement/wire chưa có. Chỉ RE nếu consumer result/profile đã biết xuất hiện discrepancy.
+Nghiệm thu DB lỗi/kill phải chạy
 trên chính đường phục vụ, rồi một trận client KR thật và fresh login kiểm nhân vật/kết quả/reward0.
 
 <a id="gap-relay-endpoint"></a>

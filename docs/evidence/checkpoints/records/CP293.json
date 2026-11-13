@@ -1,0 +1,227 @@
+{
+  "id": "CP293",
+  "previous": "CP292",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-13T16:07:15.332228+00:00",
+  "context_commit": "b33fb89a60491b57692e6daf8e83d7c43d0e9fd3",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/M6: lựa chọn nhân vật có thể lưu đúng account, commit trước110 và khôi phục vào phòng/Start khi restart rồi fresh native login không?",
+  "scope": "Scoped character preference serving/native acceptance for measured0/1 only; M6 match history serving still open.",
+  "artifacts": [
+    {
+      "name": "M6-character-serving-native-service",
+      "sha256": "97d9190a8b5fa757cb0e7c31463565f35d5031f08cb3b5ee0c7c6dda8cbaa53f"
+    },
+    {
+      "name": "M6-character-serving-companion",
+      "sha256": "ce902f3cfcacd8430afd5ae1f0613f653631a11aa20aabac21baf626a0075ad4"
+    },
+    {
+      "name": "M6-character-native-diagnostic-copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/auth-session.md#rust-persistent-character",
+    "docs/evidence/rust-service/m6-character-serving.json",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {
+      "summary": "Actual KR choice92 saves character1 for owned player, second account0 unchanged. Restart from exact sealed DB, fresh account login/launcher/client with no92 restores character1 before room106/Start121 and native stats; two opposite results/reset/third Start per run.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-persistent-character",
+      "evidence": [
+        "M6CHAR293-00009",
+        "M6CHAR293-00480",
+        "M6CHAR293-00979",
+        "M6CHAR293-00471",
+        "M6CHAR293-00970"
+      ],
+      "limits": "Wine diagnostic copies/virtual isolated LAN only. Dao0/Dizni1/team0/3. Native DB has zero matches: no M6 full acceptance/result durability/Internet/load claim."
+    },
+    {
+      "summary": "Real SQLite writer lock prevents both preference commit and110 before release. Unsupported key4 no DB mutation; owned channel reload restores before106; revocation while worker waits prevents old mutation, surviving account current choice persists, orderly shutdown cleanup.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/auth-session.md#rust-persistent-character",
+      "evidence": [
+        "M6CHAR293-00009",
+        "M6CHAR293-01348",
+        "M6CHAR293-01347",
+        "M6CHAR293-01493"
+      ],
+      "limits": "Synthetic TCP/actual DB/serving integration, not native negatives. One setup timeout remains cause unknown; diagnostic fallback unused and successful rerun does not establish fix."
+    },
+    {
+      "summary": "171workspace tests/fmt/clippy/locked build; model pre-setup restore and old-visit/current-slot fences. Independent native getters1264/1276 complement TCP/CRC/sequence and captured helper joins.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/auth-session.md#rust-persistent-character",
+      "evidence": [
+        "M6CHAR293-01351",
+        "M6CHAR293-00992",
+        "M6CHAR293-00479",
+        "M6CHAR293-00978"
+      ],
+      "limits": "Copied-native emulation remains separate from native; no broader physics/authority/items/character or production claim."
+    }
+  ],
+  "verification": [
+    {
+      "check": "171workspace tests/fmt/clippy/locked build on delivered backend baseline",
+      "result": "pass",
+      "evidence": [
+        "M6CHAR293-01351",
+        "M6CHAR293-00994",
+        "M6CHAR293-00992",
+        "M6CHAR293-00990"
+      ],
+      "limits": "No new match journal runtime behavior."
+    },
+    {
+      "check": "Two native preference runs, source frozen/raw seal/cleanup; actual TCP DB-before110/revoke controls and retained timeout",
+      "result": "pass",
+      "evidence": [
+        "M6CHAR293-00009",
+        "M6CHAR293-01348",
+        "M6CHAR293-00480",
+        "M6CHAR293-00979"
+      ],
+      "limits": "Character slice only; failure recorded separately, not relabeled pass."
+    },
+    {
+      "check": "Manual feature-group audit and PR393 exact-head/local/history/CI/preverified merge tree receipt",
+      "result": "pass",
+      "evidence": [
+        "M6CHAR293-00008",
+        "M6CHAR293-01472",
+        "M6CHAR293-00009"
+      ],
+      "limits": "New head/docs/raw/history and CI still required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP293-character-serving.json",
+      "bytes": 385687,
+      "sha256": "abe37b51a298865274372983c5c38fd5b051f191d33fc67491fbcd13a76f72a2",
+      "count": 1493
+    }
+  ],
+  "delta": {
+    "added": [
+      "Opt-in owned preference serving with DB-before110 and current-membership fence.",
+      "Restore saved0/1 before room106/Start, two native battle cycles plus third Start after choice and restart/fresh login.",
+      "Real DB writer/revoke/unsupported/current controls; retained failed setup and preparation evidence."
+    ],
+    "corrected": [
+      "M6 current scope separates native character acceptance from unimplemented match journal serving.",
+      "No wakeup/timer/CPU fix inferred from successful diagnostic or rerun; silent-delivery cause still unknown."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "M6 vẫn mở: native DB matches count0; còn stable snapshot/commit-before-Start và outcome-before175, cancellation/EOF/shutdown, serving busy/kill/reset negatives và native durability.",
+    "Lựa chọn0/1 có persistence/restore phòng/Start, own291 tại sảnh vẫn zero-profile; không thêm entitlement hoặc nhân vật khác.",
+    "Synthetic setup/Back silent-delivery timeout chưa rõ cause; giữ raw và bounded investigation khi chặn G1/M6/M8, không claim timer/CPU/wakeup fix.",
+    "G1 còn UI map selection, kim/cứu, terrain/item các cỡ phòng, năm map ladder còn lại và nhân vật; M8 còn transport Internet mới/packaging/load/soak/recovery/ops."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "M6 match journal serving: snapshot account/room/round, commit before Start/result, cancel/EOF/shutdown, serving busy/kill/reset negatives and native result durability; G1 independently per PLAN.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-13T16:07:15.332228+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo M6 character-serving/native self-check and manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "docs/protocol/life-results.md",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "tools/README.md",
+      "state": "updated",
+      "reason": "Character serving scoped acceptance/ownership/native evidence and remaining M6 journal; no gate inflation."
+    },
+    {
+      "path": "docs/evidence/rust-service/m6-character-serving.json",
+      "state": "updated",
+      "reason": "Native choice/relogin/build/raw/negative/failure/limits metadata."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, feature-group audit, immutable evidence, privacy/PR/exact-head rules unchanged."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-m6-character-serving"
+  ]
+}

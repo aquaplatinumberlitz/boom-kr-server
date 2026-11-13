@@ -1676,7 +1676,52 @@ impl Session {
         }
         Ok(())
     }
+    fn validate_character(runtime: &Runtime, member: Membership, character: u16) -> io::Result<()> {
+        if !runtime.rules.player_choices {
+            return Err(err("character choice disabled"));
+        }
+        let catalog = runtime
+            .managed_round
+            .as_ref()
+            .and_then(|p| p.characters.as_ref())
+            .ok_or_else(|| err("character persistence needs measured catalog"))?;
+        catalog.get(character)?;
+        if !runtime.model.current(member) {
+            return Err(err("stale character membership"));
+        }
+        Ok(())
+    }
+    pub(crate) fn restore_character(&self, character: u16) -> io::Result<()> {
+        let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        let member = runtime.member(self.identity, self.connection)?;
+        Self::validate_character(&runtime, member.key, character)?;
+        runtime.model.restore_character(member.key, character)
+    }
+    pub(crate) fn prepare_character(&self, body: &[u8]) -> io::Result<(Membership, u16)> {
+        let runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        let member = runtime.member(self.identity, self.connection)?;
+        let character = wire::character92(body)?;
+        Self::validate_character(&runtime, member.key, character)?;
+        let mut preview = runtime.model.clone();
+        preview.choose(member.key, Some(character), None)?;
+        Ok((member.key, character))
+    }
+    pub(crate) fn persisted_character(
+        &self,
+        member: Membership,
+        body: &[u8],
+    ) -> io::Result<Observation> {
+        self.packet_owned(92, body, Some(member))
+    }
     pub fn packet(&self, opcode: u32, body: &[u8]) -> io::Result<Observation> {
+        self.packet_owned(opcode, body, None)
+    }
+    fn packet_owned(
+        &self,
+        opcode: u32,
+        body: &[u8],
+        expected: Option<Membership>,
+    ) -> io::Result<Observation> {
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
         if r.channels
             .get(&self.identity)
@@ -1690,6 +1735,13 @@ impl Session {
             && !(r.rules.player_choices && matches!(opcode, 92 | 95 | 97))
         {
             return Err(err("managed room selection does not yet serve gameplay"));
+        }
+        if expected.is_some_and(|key| {
+            !r.model.current(key)
+                || key.identity != self.identity
+                || key.connection != self.connection
+        }) {
+            return Err(err("stale persisted character completion"));
         }
         let mut next = r.model.clone();
         let mut effects = Vec::new();

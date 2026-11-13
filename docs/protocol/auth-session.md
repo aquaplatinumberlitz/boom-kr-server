@@ -5,6 +5,28 @@
 Schema hiện hành và preference/lịch sử trận ở [backend M6](life-results.md#rust-match-store-backend).
 Các mục theo CP bên dưới giữ schema và phạm vi tại thời điểm đo.
 
+<a id="rust-persistent-character"></a>
+### Rust: nhân vật đã chọn thuộc account và khôi phục vào phòng
+
+**kr_runtime/confirmed trong phạm vi copy Wine** cho nhân vật0/1; policy persistence là thiết kế của công ty.
+[Bằng chứng, build, run và negative controls](../evidence/rust-service/m6-character-serving.json).
+Opt-in `account_admission.persist_character=true` yêu cầu `database_zero` và managed `player_round` với catalog đã đo.
+Mặc định tắt. Dùng [preference schema3](life-results.md#rust-match-store-backend), không thêm wire hoặc cấp entitlement.
+
+C2S92 được kiểm catalog và current Idle/setup membership trước gọi worker. Player/token do Channel sở hữu, revision
+CAS giữ nguyên qua retry có hạn. DB commit trước110; sau await kiểm DB/frontend hiện hành và exact membership/visit/
+connection dưới room lock trước áp dụng. Không giữ room lock qua DB await; revoke/expiry hoặc lượt phòng cũ không
+được cập nhật phiên/phòng mới. Commit xong mà projection bị từ chối vẫn là preference durable, không rollback giả.
+
+Khi vào phòng, đọc preference của chính account và khôi phục trước setup106; nhân vật đi vào Start121 và stat hiện hành.
+Hai run native kiểm chọn Dizni, hai kết quả đối nhau/reset/trận tiếp; restart trên đúng DB đã seal rồi fresh account
+login/launcher/client, không gửi92 vẫn nhận Dizni và chơi tiếp. Account còn lại giữ Dao; identity/profile_version không đổi.
+Own profile291 tại sảnh vẫn zero-profile hiện có; chưa phục hồi projection nhân vật trong291. Unsupported key bị từ chối
+trước DB. Writer-lock và revoke-while-waiting có kiểm TCP/SQLite riêng, không được gọi là native negatives.
+
+Đây là phần nhân vật của M6. Lịch sử trận/kết quả vẫn chưa nối vào serving; không suy native result persistence,
+account resume/match restore, inventory, progression hoặc M6 hoàn tất từ phần này. Các nhân vật khác theo G1.
+
 <a id="rust-account-backend"></a>
 ## Backend account Rust độc lập client — CP236 / RUST-M5 / KRE-074
 

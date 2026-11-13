@@ -447,6 +447,23 @@ impl Room {
     }
     /// Design: any choice invalidates readiness of all guests. Never let a
     /// stale/loading/non-setup membership mutate another player's selection.
+    pub(crate) fn restore_character(&mut self, key: Membership, character: u16) -> io::Result<()> {
+        if !self.current(key)
+            || self.phase != Phase::Idle
+            || self.members[&key.identity].setup
+            || self.sealed_abort
+            || !matches!(character, 0 | 1)
+        {
+            return Err(io::Error::other(
+                "unsupported initial character restoration",
+            ));
+        }
+        self.members
+            .get_mut(&key.identity)
+            .expect("current owner")
+            .character = Some(character);
+        Ok(())
+    }
     pub(crate) fn choose(
         &mut self,
         key: Membership,
@@ -1325,5 +1342,27 @@ mod loading_observation_tests {
         assert!(!room.ack(a, round).unwrap());
         assert!(room.ack(b, round).unwrap());
         assert!(room.observe_loading79(a).is_err());
+    }
+}
+
+#[cfg(test)]
+mod restored_character_tests {
+    use super::*;
+    #[test]
+    fn account_character_restores_before_setup_and_old_visit_cannot_change_new_membership() {
+        let mut room = Room::with_allocation(8, SlotAllocation::FirstVacant).unwrap();
+        let old = room.enter(70000, 10, true).unwrap();
+        room.restore_character(old, 1).unwrap();
+        assert_eq!(room.members[&70000].character, Some(1));
+        room.setup(old).unwrap();
+        assert!(room.restore_character(old, 0).is_err());
+        room.leave(old).unwrap();
+        let new = room.enter(70000, 11, true).unwrap();
+        assert_ne!(new, old);
+        assert!(room.restore_character(old, 1).is_err());
+        assert!(room.restore_character(new, 4).is_err());
+        room.restore_character(new, 0).unwrap();
+        assert_eq!(room.members[&70000].character, Some(0));
+        assert_eq!(room.members[&70000].slot, 0);
     }
 }
