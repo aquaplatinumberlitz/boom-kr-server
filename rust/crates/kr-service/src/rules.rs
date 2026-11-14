@@ -198,13 +198,21 @@ impl RoomRules {
     }
 }
 
-/// Measured per-slot bomb capacity at round start; CP209 actual baseline for eight.
+/// Additional source rosters are for DB-owned managed player rounds only.
+/// Legacy diagnostic serving keeps its measured profiles and ninth probe.
+pub(crate) fn template_roster_supported(count: usize, managed_players: bool, ninth: bool) -> bool {
+    matches!(count, 2 | 4 | 8)
+        || (managed_players && (2..=8).contains(&count))
+        || (ninth && count == 9)
+}
+
+/// Retained diagnostic defaults, truncated to the prototype's bounded size.
+/// Managed player rounds replace these with the selected character's stats.
 pub(crate) fn default_bomb_capacity(capacity: usize) -> Vec<usize> {
-    match capacity {
-        8 => vec![1, 2, 1, 1, 2, 1, 1, 1],
-        4 => vec![1, 2, 1, 1],
-        _ => vec![1, 2],
-    }
+    [1, 2, 1, 1, 2, 1, 1, 1]
+        .into_iter()
+        .take(capacity)
+        .collect()
 }
 
 /// Eight setup can hold own106/110 + seven peer106 + map = ten batches.
@@ -282,5 +290,18 @@ mod tests {
             (recipient_queue(2), recipient_queue(4), recipient_queue(8)),
             (8, 8, 16)
         );
+    }
+
+    #[test]
+    fn additional_template_rosters_require_managed_players() {
+        for count in [3, 5, 6, 7] {
+            assert!(!template_roster_supported(count, false, false));
+            assert!(!template_roster_supported(count, false, true));
+            assert!(template_roster_supported(count, true, false));
+        }
+        for count in [0, 1, 9, 10] {
+            assert!(!template_roster_supported(count, true, false));
+        }
+        assert!(template_roster_supported(9, false, true));
     }
 }

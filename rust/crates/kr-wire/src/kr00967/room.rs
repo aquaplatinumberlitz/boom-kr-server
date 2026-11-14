@@ -177,7 +177,7 @@ fn start_layout(body: &[u8]) -> io::Result<StartLayout> {
         return Err(error());
     }
     let count = usize::from(stream[rows - 5]);
-    if !matches!(count, 2 | 4 | 8) || size != rows + count * 26 {
+    if !(2..=8).contains(&count) || size != rows + count * 26 {
         return Err(error());
     }
     Ok(StartLayout {
@@ -607,6 +607,31 @@ pub fn listing91_parse_rows(body: &[u8]) -> io::Result<Vec<ListingRow>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn native_six_player_start_retains_map_and_rejects_inconsistent_count() {
+        // CP283 native run eca76a98, not an encoder-generated oracle.
+        // docs/evidence/rust-service/m7e-selected-rosters.json.
+        let captured = "5a96ca534796ca9e8d96ca539596ca539596ca539596ca5395a6f3539597dc539596ca539eff9c2bd0f1ab3ff996fb63f096ca539596ca559596ca539596ca52959635539569ca53959635ac6a96ca539596ca539596cb539496ca539596ca536a6935ac9596ca536a96ca539596c8539596ca52979635539569ca53959635ac6a96ca539596ca539596c9539696ca509596ca536a6935ac9596ca536a96ca539596ce539595ca53919635539569ca53959635ac6a96ca539596ca539597cf539096ca509596ca536a6935ac9596ca536a96ca5395a5695a22a55aa56996ca539396ca528da5695a5a";
+        let body: Vec<u8> = captured
+            .as_bytes()
+            .as_chunks::<2>()
+            .0
+            .iter()
+            .map(|pair| u8::from_str_radix(std::str::from_utf8(pair).unwrap(), 16).unwrap())
+            .collect();
+        let parsed = start_layout(&body).unwrap();
+        assert_eq!(parsed.count, 6);
+        assert_eq!(start121_map(&body).unwrap(), (278, b"ExVillage01".to_vec()));
+        // Actual chosen characters/teams are not the retained diagnostic rows.
+        assert!(start121_duel(&body).is_err());
+        let mut stream = parsed.stream;
+        stream[parsed.rows - 5] = 7;
+        let mut malformed = body[..5].to_vec();
+        malformed.extend(encode_bytes(&stream).unwrap());
+        malformed.extend_from_slice(&body[5 + parsed.size..]);
+        assert!(start121_map(&malformed).is_err());
+    }
+
     #[test]
     fn four_peer_endpoints_are_distinct_self_zero_and_all_inactive_slots_explicit() {
         let endpoints = [

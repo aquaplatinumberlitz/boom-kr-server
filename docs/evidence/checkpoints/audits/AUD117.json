@@ -1,0 +1,100 @@
+{
+  "id": "AUD117",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-village10-template-and-herb-observation"
+  ],
+  "completed_through": "CP301",
+  "recorded_utc": "2026-11-14T14:45:10.904583+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/content/tile-semantics.md",
+    "docs/protocol/terrain.md",
+    "docs/protocol/load-phase.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/rust-service/g1-village10-herb.json",
+    "local/research/codex/g1-village10-source-r1/reuse.json",
+    "local/research/codex/g1-village10-source-r1/six-template-reuse.json",
+    "local/research/codex/g1-village10-seed-native-r3/village10-seed-native-verification.json",
+    "local/research/codex/g1-village10-seed-native-r3/village10-seed-getter-verification.json",
+    "local/research/codex/g1-village10-seed-native-r3/client-cache-mutation-verification.json",
+    "local/research/codex/g1-village10-seed-native-r3/native/raw-seal.json",
+    "local/research/codex/g1-village10-herb6-native-r2/herb-native-observation-verification.json",
+    "local/research/codex/g1-village10-herb6-native-r2/herb-native-getter-verification.json",
+    "local/research/codex/g1-village10-herb6-native-r2/cache-verification.json",
+    "local/research/codex/g1-village10-herb6-native-r2/manual-ui-review.json",
+    "local/research/codex/g1-village10-herb6-native-r2/native/raw-seal.json",
+    "local/research/codex/g1-village10-herb6-native-r2/native/storage-export.json",
+    "docs/evidence/owner-directives/l10n-delegation.json",
+    "docs/evidence/owner-directives/g1-map-roster-limits.json",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/rules.rs",
+    "rust/crates/kr-wire/src/kr00967/room.rs",
+    "tools/rust_map_profile.py",
+    "local/research/codex/g1-village10-template-workspace-r3.txt",
+    "local/research/codex/g1-village10-template-clippy-r3.txt",
+    "local/research/codex/g1-village10-template-build-r3.txt",
+    "local/research/codex/g1-village10-exporter-regression-r2.txt"
+  ],
+  "method": "Đọc core README→PLAN→PROTOCOL→RESEARCH, nguồn static/native cũ, code delta và raw. Đối chiếu binary mới061d89/source199tests với six-native actual Start/Fire/118/159/158, tất cả195flags trước/sau18callbacks, source-backed ray helper và độc lập Python geometry từ actual118. Xem ảnh actual E; getter emulation9282 riêng. Seed2 với430getters trước chỉ đủ flag0; route onHerb/oldHerb/freshHerb/solidcontrol mới trả lời flame. Source config6/negative admission và invalid spawn chỉ test/staticload, không native authority. Namespace extinct/same-byte export228 kiểm trước recovery; original launcherexit1 và unmountbusy giữ nguyên. Metadata cache tách output actual238, không che genericseal failure. Bàn giao chỉ nhóm source+observation, không đóng wholemap/G1 hoặc UTF8.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Village1018Herb unknown nên chưa được gán là floor từ tên Passable hoặc seedflag0.",
+      "correction": "Seed2 và ray6 đo cùngflag0, source object/query/current-to-next paths và solidcontrol; chỉ bounded route/point/power2 đủ cho thiết kế bước kế, chưa fullmap.",
+      "fixed_in": [
+        "docs/protocol/terrain.md#rust-village10-herb",
+        "docs/evidence/rust-service/g1-village10-herb.json",
+        "docs/RESEARCH.md#gap-village10-map"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Prototype source2/4/8 và một đoạn contract còn nói Village10 phải2–8 dù owner đã đổi phạm vi.",
+      "correction": "Gate thêm nguồn template2–8 chỉ cho DB-owned player rounds/FirstVacant; legacy giữguard. Sửa đoạn scope hiện hành dẫn owner2–6, không sửa record cũ.",
+      "fixed_in": [
+        "docs/protocol/load-phase.md#rust-room-map-selection",
+        "docs/protocol/terrain.md#rust-village10-herb",
+        "rust/crates/kr-service/src/lib.rs",
+        "rust/crates/kr-service/src/room.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/rules.rs",
+        "rust/crates/kr-wire/src/kr00967/room.rs",
+        "tools/rust_map_profile.py"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Genericseal hash mọi game input fail với cache, unmountbusy sau export có thể khiến mất/raw hoặc bị relabelpass.",
+      "correction": "Giữfailed scripts/raw/exit, kê đúng cache output soactual238. Runr2 returncode1, sourcefreeze và228rawexportverified, namespace extinct trước phục hồi locator; nativeboundedproof không biến original exit1 thành0.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-village10-herb.json",
+        "local/research/codex/g1-village10-seed-native-r3/client-cache-mutation-verification.json",
+        "local/research/codex/g1-village10-herb6-native-r2/native/storage-export.json",
+        "local/research/codex/g1-village10-herb6-native-r2/native/raw-seal.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Solo rule cũ không nêu ngoại lệ user vừa giao1Terrahigh cho UTF8.",
+      "correction": "Ghi quote quyết định và phân biệt cách hiểu ba látL1a/b/c, root giữcounter/lease; không bỏ reviewwaiver hoặc thêmworker khác.",
+      "fixed_in": [
+        "AGENTS.md",
+        "docs/evidence/owner-directives/l10n-delegation.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Village10 terrain/drop/pickup tích hợp hai kết quả/reset cho2–6, catalog chung sáu/tám spawn và sparse roster fencing chưa đạt; các map/item/nhân vật G1 khác và M8 còn theo PLAN.",
+    "Herb route chỉ0,5/0,9 theo các hướng đã đo/power2; không suy mọi variant, original drop hoặc server authority.",
+    "L1a/L1b/L1c mới được giao một worker theo owner; không có nghiệm thu UTF8 trong checkpoint này."
+  ]
+}

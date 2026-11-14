@@ -438,7 +438,7 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
     }
     let actor_count = actors.len();
     let (rules, count) = RoomRules::from_config(cfg, actor_count)?;
-    if !matches!(count, 2 | 4 | 8)
+    if !(2..=8).contains(&count)
         || actors
             .values()
             .any(|a| a.identity == 0 || a.identity as usize > actor_count)

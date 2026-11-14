@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-14T14:39:46.281246+00:00",
+  "source": "owner_explicit_user_message",
+  "quote": "vừa cập nhật bản điều hành, thêm vấn đề utf8, hãy đọc lại và giao cho 1 sub agent (terra high) thực hiện l1 l2 l3",
+  "decision": "Giao đúng một sub-agent với requested model gpt-6.1-terra và reasoning high cho phần UTF8 trên worktree riêng. Root giữ tích hợp, counter và runtime lease.",
+  "interpretation": "Theo đề bài hiện hành, ba lát được giao là L1a tĩnh, L1b patch/native và L1c nhập liệu; đây là cách hiểu công việc của Codex, không tự tạo phạm vi L2/L3 khác trong PLAN.",
+  "limits": "Ngoại lệ giới hạn solo cho task này; không gọi thêm worker hoặc đổi miễn review độc lập. Không chạy runtime G1/L1 đồng thời. Source/status/hash/raw và kiểm PR/exact-head giữ nguyên.",
+  "canonical": "docs/PLAN.md#dashboard",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414"
+}

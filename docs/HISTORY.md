@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP299: Patrit14 đã có route terrain/item với account roster 2/4/8 qua hai ván/reset.**
+[Bằng chứng và giới hạn](evidence/rust-service/g1-patrit-terrain.json) giữ đối chiếu spawn, thùng,
+Roller cấu hình và MastTileA. Chủ dự án đã chấp nhận [Village10/Tomb12 2–6 người, bốn map còn lại 2–8](evidence/owner-directives/g1-map-roster-limits.json).
+G1 và M8 còn theo [Bảng điều hành](PLAN.md#dashboard); phân phối drop và item chưa đo vẫn chưa được mở.
+
+
 **CP297: terrain và ba item nền đã chạy trên Rust với roster account 2/4/8 người.**
 Bomb/Fire/Roller, hidden reveal, stat theo nhân vật và bom power mới đã được đối chiếu client KR/Wine qua hai vòng
 kết quả/reset. [Contract và giới hạn](protocol/terrain.md#rust-player-terrain),

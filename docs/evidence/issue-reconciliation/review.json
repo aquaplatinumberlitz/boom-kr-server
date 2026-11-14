@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP300",
+  "as_of": "CP301",
   "baseline": "39a401a2f114507c4669a373e7eded1fcea4f0fa",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -865,10 +865,10 @@
         "KR-F007"
       ],
       "classification": "in_progress",
-      "known": "PR404/CP298 đã merge; lát Patrit14 mới có native 2/4/8 và bounded59 positive nhưng chưa bàn giao PR. Roster Village10/Tomb12 theo owner là 2–6, bốn map còn lại 2–8.",
-      "remaining": "Gameplay/drop/item và roster theo acceptance G1 hiện hành; lỗi 59 giữ ở issue403 riêng.",
-      "next_test": "Theo Bảng điều hành PLAN; chỉ đo gap còn chặn implementation hoặc acceptance.",
-      "reason": "Bàn giao terrain theo map không hoàn tất toàn bộ G1. Quyết định roster mới bỏ yêu cầu 8 người trên hai map có 6 spawn; không thay evidence lịch sử.",
+      "known": "Forest07/Patrit14 có route2/4/8 theo phạm vi riêng; Village10 seed2/Herb6 đã đo, prototype6 và source controls có bằng chứng. Không full map/G1.",
+      "remaining": "Village10 terrain/drop/two results/reset2–6; catalog sáu/tám spawn; Camp08/Tomb12/Factory và nhóm item/nhân vật; giới hạn theo PLAN.",
+      "next_test": "Theo PLAN tiếp Village10 từ bằng chứng Herb/seed đã đo, không lặp clock/parser; phối hợp runtime lease với L1.",
+      "reason": "Đủ nhóm quan sát hẹp và source hỗ trợ prototype; chưa đạt acceptance toàn map/G1.",
       "sources": [
         "docs/PLAN.md#phase1-acceptance",
         "docs/protocol/terrain.md#rust-selected-map-terrain",
@@ -876,7 +876,8 @@
       ],
       "evidence": [
         "docs/evidence/rust-service/g1-map-terrain.json",
-        "docs/evidence/owner-directives/g1-map-roster-limits.json"
+        "docs/evidence/owner-directives/g1-map-roster-limits.json",
+        "docs/evidence/rust-service/g1-village10-herb.json"
       ],
       "prs": [
         404
@@ -884,7 +885,7 @@
       "kre": "KRE-074",
       "acceptance": "docs/PLAN.md#phase1-acceptance",
       "successors": [],
-      "reviewed_utc": "2026-11-13T20:49:07.374349+00:00"
+      "reviewed_utc": "2026-11-14T14:43:14.236502+00:00"
     },
     {
       "number": 403,
@@ -918,12 +919,12 @@
       "features": [
         "KR-B001"
       ],
-      "classification": "in_progress",
-      "known": "Lượt chẩn đoán giới hạn đã thực hiện; kết quả và giới hạn duy nhất tại docs/content/client-language.md#data-files.",
-      "remaining": "Bàn giao CP300 qua PR; không coi probe hoàn tất là bằng chứng nạp bản dịch thành công.",
-      "next_test": "Sau bàn giao quay lại G1 theo PLAN; baseline gốc và consumer dữ liệu để đợt L.",
+      "classification": "completed",
+      "known": "Lượt L-probe giới hạn đã bàn giao qua PR408/CP300; kết quả duy nhất ở topic, không xác nhận nạp dữ liệu.",
+      "remaining": "Unknown nạp dữ liệu giữ tại đợt L, không dependency G1.",
+      "next_test": "Theo PLAN hiện hành L-probe-b/L1, không lặp CA gốc CP300.",
       "acceptance": "docs/content/client-language.md#data-files",
-      "reason": "Thực hiện năm biến thể theo chỉ đạo, publication đang chờ exact-head/CI; không đóng gate K1/G1.",
+      "reason": "Năm cấu hình đã đo và seal; PR408 merge; không đóng gate.",
       "sources": [
         "docs/PLAN.md#dashboard",
         "docs/content/client-language.md#data-files"
@@ -931,11 +932,36 @@
       "evidence": [
         "docs/evidence/checkpoints/records/CP300.json"
       ],
+      "prs": [
+        408
+      ],
+      "successors": [],
+      "reviewed_utc": "2026-11-14T14:43:14.236502+00:00"
+    },
+    {
+      "number": 414,
+      "kre": "KRE-074",
+      "features": [
+        "KR-B001"
+      ],
+      "classification": "in_progress",
+      "known": "Một sub-agent được giao theo chỉ đạo trực tiếp14/11; static/patch/native/input phải có bằng chứng từng lát.",
+      "remaining": "L1a/L1b/L1c theo đề bài và runtime acceptance; không suy việc giao là hoàn thành UTF8.",
+      "next_test": "Theo Bảng điều hành; worker thực hiện từng lát, root giữ counter/lease/CI/exact-head.",
+      "acceptance": "docs/content/client-language.md#utf8",
+      "reason": "Owner yêu cầu delegation riêng; task chưa nghiệm thu và không thay scope giai đoạn1.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/content/client-language.md#utf8"
+      ],
+      "evidence": [
+        "docs/evidence/owner-directives/l10n-delegation.json"
+      ],
       "prs": [],
       "successors": [],
-      "reviewed_utc": "2026-11-14T12:41:34.746987+00:00"
+      "reviewed_utc": "2026-11-14T14:43:14.236502+00:00"
     }
   ],
-  "as_of_utc": "2026-11-14T12:41:34.746987+00:00",
+  "as_of_utc": "2026-11-14T14:43:14.236502+00:00",
   "limits": "Đối soát issue thủ công có ngày; snapshot là trạng thái lúc chụp, không chứng nhận acceptance hoặc đóng gate."
 }

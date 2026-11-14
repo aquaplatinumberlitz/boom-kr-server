@@ -199,7 +199,9 @@ impl Room {
         Self::with_allocation(capacity, SlotAllocation::LegacyIdentity)
     }
     pub(crate) fn with_allocation(capacity: usize, allocation: SlotAllocation) -> io::Result<Self> {
-        if !matches!(capacity, 2 | 4 | 8) {
+        if !(2..=8).contains(&capacity)
+            || (allocation == SlotAllocation::LegacyIdentity && !matches!(capacity, 2 | 4 | 8))
+        {
             return Err(io::Error::other("unsupported diagnostic room capacity"));
         }
         Ok(Self {
@@ -1100,6 +1102,44 @@ mod tests {
         room.ack(fresh, round).unwrap();
         assert!(room.choose(host, Some(0), None).is_err());
     }
+    #[test]
+    fn six_vacant_slots_keep_arbitrary_identities_and_round_barrier_bounded() {
+        assert!(Room::with_allocation(6, SlotAllocation::LegacyIdentity).is_err());
+        let mut room = Room::with_allocation(6, SlotAllocation::FirstVacant).unwrap();
+        room.round_roster = crate::rules::RoundRoster::Players;
+        let keys: Vec<_> = (0..6)
+            .map(|index| {
+                let key = room
+                    .enter(70000 + 13 * index, 100 + u64::from(index), index == 0)
+                    .unwrap();
+                room.setup(key).unwrap();
+                room.choose(key, Some((index % 2) as u16), None).unwrap();
+                room.choose(key, None, Some(if index % 2 == 0 { 0 } else { 3 }))
+                    .unwrap();
+                key
+            })
+            .collect();
+        assert_eq!(
+            room.members
+                .values()
+                .map(|m| m.slot)
+                .collect::<std::collections::BTreeSet<_>>(),
+            (0..6).collect()
+        );
+        assert!(room.enter(90000, 900, false).is_err());
+        assert!(room.begin(keys[0]).is_err());
+        for key in &keys[1..] {
+            room.ready(*key).unwrap();
+        }
+        let round = room.begin(keys[0]).unwrap();
+        assert_eq!(room.bomb_capacity.len(), 6);
+        for key in &keys[..5] {
+            assert!(!room.ack(*key, round).unwrap());
+        }
+        assert!(room.ack(keys[5], round).unwrap());
+        assert!(room.ack(keys[0], round.wrapping_add(1)).is_err());
+    }
+
     #[test]
     fn four_members_require_all_ready_and_current_ack_and_keep_two_path_separate() {
         assert!(Room::with_capacity(3).is_err());

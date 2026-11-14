@@ -257,6 +257,17 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             .fixed_room
             .as_ref()
             .is_some_and(|room| room.ninth_admission_probe);
+        let managed_template = two
+            .account_admission
+            .as_ref()
+            .is_some_and(|a| a.profile_mode == account_serving::ProfileMode::DatabaseZero)
+            && two
+                .managed_rooms
+                .as_ref()
+                .is_some_and(|r| r.player_round.is_some())
+            && two.fixed_room.as_ref().is_some_and(|r| {
+                r.slot_allocation == rules::SlotAllocation::FirstVacant && r.battle.is_none()
+            });
         let ports = [two.login_port, two.channel_port];
         if ports.into_iter().collect::<HashSet<_>>().len() != 2
             || two
@@ -274,7 +285,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             || two.wcp_ports.iter().copied().collect::<HashSet<_>>().len() != two.wcp_ports.len()
             || two.wcp_ports.iter().any(|p| !config.ports.contains(p))
             || ports.iter().any(|p| !config.ports.contains(p))
-            || !(matches!(two.actors.len(), 2 | 4 | 8) || (ninth_probe && two.actors.len() == 9))
+            || !rules::template_roster_supported(two.actors.len(), managed_template, ninth_probe)
         {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
@@ -289,19 +300,20 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         let mut actors = HashMap::new();
         let mut identities = HashSet::new();
         let mut legacy_peers = HashMap::new();
+        // Retained names identify captured diagnostic fixtures only. Managed
+        // account identity and slot allocation remain session-owned.
+        let captured_names = [
+            "KRLocal", "KRGuest", "KRNew", "KRPeer4", "KRPeer5", "KRPeer6", "KRPeer7", "KRPeer8",
+            "KRPeer9",
+        ];
         for actor in &two.actors {
-            let expected = match actor.identity {
-                1 => "KRLocal",
-                2 => "KRGuest",
-                3 if matches!(two.actors.len(), 4 | 8 | 9) => "KRNew",
-                4 if matches!(two.actors.len(), 4 | 8 | 9) => "KRPeer4",
-                5 if matches!(two.actors.len(), 8 | 9) => "KRPeer5",
-                6 if matches!(two.actors.len(), 8 | 9) => "KRPeer6",
-                7 if matches!(two.actors.len(), 8 | 9) => "KRPeer7",
-                8 if matches!(two.actors.len(), 8 | 9) => "KRPeer8",
-                9 if ninth_probe && two.actors.len() == 9 => "KRPeer9",
-                _ => return Err(io::Error::other("unsupported diagnostic identity")),
-            };
+            let expected = actor
+                .identity
+                .checked_sub(1)
+                .filter(|id| (*id as usize) < two.actors.len())
+                .and_then(|id| captured_names.get(id as usize))
+                .copied()
+                .ok_or_else(|| io::Error::other("unsupported diagnostic identity"))?;
             if actor.name != expected
                 || !config.allowed_peers.contains(&actor.peer)
                 || !identities.insert(actor.identity)

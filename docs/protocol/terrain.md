@@ -584,3 +584,30 @@ snapshot tách khỏi runtime. Lượt source/TCP/config trước vẫn giữ gi
 **Giới hạn:** route từ phía trên/column8 và power1, roster contiguous đã ghi; chưa mọi sparse roster hoặc toàn bộ map.
 Một Roller cố định là policy thử nghiệm, không phục hồi phân phối drop hoặc các item còn lại. Factory07 fallback
 không có terrain trong lượt này. Sáu map/item/nhân vật và M8 tiếp tục theo acceptance PLAN, không đóng toàn bộ G1.
+
+
+<a id="rust-village10-herb"></a>
+## Village10: Herb và prototype theo số spawn của map
+
+[Bằng chứng, recipe và giới hạn](../evidence/rust-service/g1-village10-herb.json) tách seed hai client khỏi
+phép đo tia nổ trên sáu account KR/Wine. Mọi ô Herb có flag seed 0; các ô còn lại khớp phân loại ứng viên.
+Trong route đã đo, actor slot 4 nhặt Fire cấu hình rồi đặt ba bom power 2 tại row0/columns5,6,8. Native query
+trên Herb0,5 trả object với context dữ liệu lớp3 và flag0; lần nổ sau không còn object tại ô đó. Tia từ0,8 đi qua
+Herb mới0,9, rồi dừng ở nhà0,10 bằng cellstate2/result0. Nhà vẫn chặn; flags trước/sau mọi blast trên mọi view
+khớp kernel Python độc lập dẫn từ actual118. Không lấy flag0 riêng lẻ làm bằng chứng tia đi qua.
+
+Loader nhận thêm số dòng prototype trong khoảng2–8 chỉ cho DB-owned managed player rounds, cấp slot trống và
+không dùng legacy Battle. Template, packet set và ordinal spawn vẫn phải nhất quán với profile pack. Parser Start
+nhận shape hữu hạn2–8; profile legacy giữ guard riêng. Tên cố định ở fixture chẩn đoán không làm chủ identity người
+chơi. Native sáu người xác minh Start/spawn/Fire và ba blast của binary mới; bằng chứng roster3/6 cũ được dẫn riêng.
+Không thêm cờ hoặc nhánh runtime theo từng sức chứa. Công cụ xuất map giữ nguyên và ô chưa đo vẫn không được đoán.
+
+Đây là **quan sát chưa bật terrain shadow**, một Fire đặt sẵn là policy thử nghiệm. Chưa có terrain/drop/pickup
+Village10 tích hợp qua hai kết quả/reset, toàn khoảng2–6 hoặc catalog chung cho map sáu/tám spawn. Sparse slot,
+đổi map khi roster vượt spawn và cơ chế gán spawn còn cần acceptance riêng; không giảm bốn map kia xuống sáu.
+Phạm vi đo chỉ các hướng và power2 của route trên, chưa toàn bộ biến thể Herb hoặc luật server gốc.
+
+Run tia nổ trả exit1 do unmount busy sau khi đã export. Lỗi giữ nguyên; tất cả file export được so đúng hash,
+namespace đã hết process rồi mới phục hồi vị trí raw và seal. Không gọi exit1 là exit0. Lượt seed cũng ghi riêng
+hai output cache `fxdynmapinfo.ssd` thay đổi khớp bảng238 thực nhận; không sửa preflight để che thay đổi input.
+Getter emulation tách khỏi native; không có nghiệm thu Windows, Internet hoặc G1 đầy đủ từ lát này.

@@ -102,6 +102,10 @@ Task là issue trong chính repo này, có KRE ID, baseline, owner/reviewer, dep
 Một owner mỗi file/target/runtime. Theo chỉ đạo mới nhất28/10, Codex solo RE/code/runtime và tự kiểm;
 Claude đã hết token, không gọi worker/reviewer nữa. Chủ dự án nói “claude hết token rồi nên mày tự solo đi ko cần review”;
 nguồn quyết định ở [review waiver](docs/evidence/checkpoints/review-waiver.json).
+Theo [chỉ đạo trực tiếp14/11](docs/evidence/owner-directives/l10n-delegation.json), task UTF-8 có ngoại lệ:
+được giao đúng một sub-agent Terra high cho ba lát đề bài hiện hành. Root giữ counter/tích hợp và cấp runtime lease;
+không chạy runtime G1 và L1 đồng thời. Các phần khác tiếp tục solo, miễn review độc lập không đổi.
+
 Review/report cũ giữ nguyên provenance. Mốc mới ghi review `waived` kèm nguồn chủ dự án, không ghi
 `approved` hoặc giả người review. Các vấn đề chất lượng đã phát hiện vẫn cần sửa và ghi chép.
 Ca khó checkpoint theo mốc/blocker, không tự quét vô hạn.
