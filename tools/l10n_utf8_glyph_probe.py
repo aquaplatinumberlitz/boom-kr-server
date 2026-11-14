@@ -43,7 +43,6 @@ class Return(gdb.Breakpoint):
     def retire(self):
         if self.is_valid():
             self.enabled = False
-            self.delete()
 
     def stop(self):
         try:
