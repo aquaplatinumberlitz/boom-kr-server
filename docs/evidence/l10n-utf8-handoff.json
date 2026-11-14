@@ -1,0 +1,37 @@
+{
+  "schema": "kre-l10n-owner-handoff-v1",
+  "recorded_utc": "2026-11-14T21:26:08.757551+00:00",
+  "source": "owner_explicit_user_message",
+  "quote": "Dừng L1, commit phần đang dở trên nhánh research/l10n-utf8 rồi chuyển sang việc G1 tiếp theo. L1 đã giao cho Claude.",
+  "owner": "Claude do chủ dự án trực tiếp giao; Codex/Terra dừng L1, Codex tiếp G1",
+  "branch": "research/l10n-utf8",
+  "prior_commits": [
+    "dde074d6f129db4026eb81280d116d80ab8c45fd",
+    "e29dddd"
+  ],
+  "wip": "Probe draw trace chỉ đọc, ba site và finite stop budget; chỉ unit fake debugger, chưa chạy client hoặc chứng minh draw caller/glyph.",
+  "files": [
+    {
+      "path": "tools/l10n_utf8_draw_trace_probe.py",
+      "sha256": "0a58cbfe193104f34251a10afa7b4f938c6f7d3268bfa9ba8369be015884278f"
+    },
+    {
+      "path": "tools/test_l10n_utf8_draw_trace_probe.py",
+      "sha256": "d32e46b66e6d26f491ded990dd9995988a5fb32882f5488026a69b9de06defdc"
+    }
+  ],
+  "verification": "23 tests l10n pass; không thay runtime acceptance.",
+  "local_handoff": "local/research/l10n-utf8-codex/owner-handoff-to-claude.json",
+  "dialog11": {
+    "launched": false,
+    "copy_status": "Copy dừng có chủ ý trước launch; prefix-B không đầy đủ.",
+    "before_trees": "Sơ bộ18file localization, chưa baseline đầy đủ. Không dùng làm bằng chứng frozen toàn game/prefix.",
+    "recipe_sha256": "0fba55991a78cdae8697eeb8fe93cbb3d5a7b390745906eb6746447da4868e97",
+    "preflight_sha256": "c62917867abaaf8d1c2aee73dea59bae3035223660de620bbe231f004d1127b1"
+  },
+  "limits": [
+    "L1a partial; L1b/L1c chưa đạt.",
+    "Không có phiên Claude Opus nào được Codex khởi chạy; chủ dự án đã trực tiếp giao.",
+    "Giữ nguyên raw/hash/record complete. Runtime lease vẫn phải độc quyền với G1. Không thêm checkpoint hoặc audit chỉ để chuyển owner."
+  ]
+}
