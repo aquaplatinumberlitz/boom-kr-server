@@ -253,6 +253,9 @@ UI và các điều kiện khác. Phép đo tiếp phải có bằng chứng h�
 sau khi control pass-through tới được hộp và được chụp. Không dùng sleep hay tên stage làm bằng chứng UI.
 [Đối chứng không hook có gate ảnh](../evidence/l10n-utf8-dialog-05.json) đã chụp đúng hộp tạo phòng và sau đó
 vào phòng; ảnh đã được xem trực tiếp. Gate là heuristic giới hạn cho 1024×768, không thay kiểm ảnh ở lượt tiếp.
+[Đối chứng pass-through cùng gate](../evidence/l10n-utf8-dialog-06.json) khớp một conversion mà không ghi bộ nhớ,
+nhưng hết 20 giây không thấy hộp; ảnh cuối xác nhận đang ở sảnh. Chưa có điều kiện phân biệt nguyên nhân, nên chưa
+chạy thay chuỗi với controller này.
 
 <a id="cp1258"></a>
 
