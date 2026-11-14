@@ -32,6 +32,9 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, C
 1. **G1.** M6 thu hẹp đã đạt acceptance tại [ma trận bằng chứng](evidence/rust-service/m6-journal-serving.json). N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
    Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và route Forest07/Patrit14 roster2/4/8 đã có lát native; tiếp drop/nhóm item còn thiếu và Village10, Camp08, Tomb12 theo acceptance hiện hành; không đụng `tools/export_map_profile.py`.
    Không lặp M6 đã nghiệm thu, native4/8, roster, account/DB hoặc baseline N1b đã có. M8 theo thứ tự bên dưới.
+   **Xen một lượt ở ranh giới G1 kế tiếp: L-probe-b.** CP300 dùng `CA.exe` nguyên bản nên cả lượt mốc cũng page fault
+   trên Wine; chạy lại năm lượt bằng exe runtime của các lượt native G1 hiện hành (không thêm bản vá ngôn ngữ). Đề bài
+   cập nhật ở `local/research/claude/codex-prompt-l10n-probe.md`. Xong thì gỡ đoạn này.
 2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
    N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có actual native59 rồi hai vòng/reset. [Issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ; không gọi schema đã đo là toàn protocol59.
 
