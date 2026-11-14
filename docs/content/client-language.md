@@ -266,6 +266,20 @@ hữu hạn, chưa chứng minh thay chuỗi hoặc vẽ glyph Việt.
 [Lượt thay một kết quả UTF-16](../evidence/l10n-utf8-dialog-09.json) ghi marker thay thế, nhưng ảnh hộp tạo phòng
 và phòng vẫn hiện tiêu đề Hàn gốc ở cả hai phía. Buffer đã thay chưa được chứng minh là buffer tới UI; không suy
 font lỗi hoặc client đã hỗ trợ UTF-8. Bước tiếp theo là truy caller và vòng đời buffer, không lặp cùng phép thay.
+[Lượt quan sát chỉ đọc](../evidence/l10n-utf8-dialog-10.json) bắt `DefaultRoomTitle4` tại `0x149A740`, trả về
+`0x14BAE45` trong `0x14BADF0`: hàm này chuyển vào mảng UTF-16 trên stack rồi cộng độ rộng từng đơn vị, không trả
+buffer đó ra. Ảnh đã xem cho thấy dialog tiếng Hàn và phòng Factory07 hai người. Lượt 09 không ghi return site nên
+không thể khẳng định nó đã thay cùng caller; phép đo này chỉ đưa ra một cách giải thích có cơ sở cho kết quả âm.
+GDB báo mất kết nối và internal error trong hoặc sau cleanup, sau các marker UI/phòng; không coi đó là lần chạy sạch
+hoàn toàn. Chưa kiểm UTF-8, glyph hoặc nhập liệu.
+
+Kiểm tĩnh giới hạn bốn body mới: `0x14BAC80` có nhánh gọi hàm đo trên; trong một đường tĩnh riêng `0x81B180` lấy
+chuỗi từ cùng object qua `0x450370` để đo rồi gọi `0x14B89C0`, wrapper qua virtual `+0x44`. Các hàm `0x14BB5E0`
+và `0x14BB7B0` chuyển chuỗi sang UTF-16 cho đường vẽ ứng viên; `0x14BB6A0` chuyển tiếp tới virtual `+0x1c`.
+Chưa nối được các đường vẽ này với title đã bắt lúc chạy. Trace tĩnh riêng có SHA-256
+`35099354de1ae33f52cb447f612d090d908eec7460c0bc65bf56d471f4c6d444` và
+`2187e7d5ae6473de5ea1ec4ac85d76efc574ed479afaa7d4d2a179b7f73e12b3` trong
+`local/research/l10n-utf8-codex/kr-title-follow-01.json` và `kr-title-follow-02.json`.
 [Fixture i686 tự viết](../evidence/l10n-utf8-gdb-fixture.json) đã chạy Wine-GDB ở hai chế độ pass-through và thay
 thế với breakpoint mới; cả hai thoát bình thường và chương trình tự kiểm count, canary, NUL. Output code unit thay
 thế chưa được quan sát độc lập; kết quả fixture không chứng minh debugger ổn định trong game hoặc glyph được vẽ.

@@ -1,0 +1,40 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Two diagnostic copies with original Korean data; A uses a one-shot read-only title conversion observer, B is control.",
+  "observation": "A matched DefaultRoomTitle4 at conversion 0x149A740: source 0x629e3b60, destination 0x125bd4, capacity 1023, input length 12, return site 0x14BAE45, thread 1; seven UTF-16 units returned with SHA-256 dbb49bf9d071b824e5758981b6ef8a316ab68c6259344618113e3b92aca14683. Static inspection places this call in 0x14BADF0, which converts into a stack array and sums per-unit glyph widths. Reviewed images show the Korean create-dialog title and a Factory07 room with two identities. The inherited full-game assertion returned 1 after the intentional B-joined stop.",
+  "local_evidence": [
+    {
+      "path": "local/research/l10n-utf8-codex/dialog-10/recipe.json",
+      "sha256": "3208a1fd2d14af95d052590dc0af02d7684fa538fd0e94b9ec2362bb96354748"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/dialog-10/preflight.json",
+      "sha256": "751779b9930a7ecd05e9499fa54bd60d9dabb0806825e4fa96836be9bd891b99"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/dialog-10/native/run.json",
+      "sha256": "6190894a47667488706766ecfee5d61289b2ceb010c0b08b43d924fe79919ad8"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/dialog-10/native/A/dialog-candidate.png",
+      "sha256": "21fa790b9d57e490c14e091a4274c7b16c7cd82ae707aebaa37153e0730c48a5"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/dialog-10/native/A/control-room.png",
+      "sha256": "47136c0e3e21872c12fadcb349e00a37a1ba620d06029ca44301024f68ae635d"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/dialog-10/storage-export.json",
+      "sha256": "38798818ba80088226730f695903716220fe6d788c87ef9d168684ff707d565c"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/dialog-10/raw-seal.json",
+      "sha256": "c6733e03828fa608520a462b68eda6d8004f38f2ae6f91292db9167389a6a339"
+    }
+  ],
+  "cleanup": "Raw export passed; 47 files pinned, frozen inputs and executables unchanged, two copied map caches changed, no remaining recorded namespace process.",
+  "limits": "The observed stack buffer is used for width calculation; its delivery to the UI is not shown. Dialog-09 did not capture its own return site, so this run cannot establish that its substitution hit the same caller. GDB reported a remote connection closure and internal error during or after cleanup, after the UI and room markers. This is not UTF-8, glyph, input, or shared-text acceptance."
+}
