@@ -1,0 +1,112 @@
+{
+  "id": "AUD115",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-g1-patrit-terrain-native-routes"
+  ],
+  "completed_through": "CP299",
+  "recorded_utc": "2026-11-14T12:03:56.579958+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/rust-service/g1-patrit-terrain.json",
+    "docs/evidence/owner-directives/g1-map-roster-limits.json",
+    "docs/evidence/rust-service/g1-native59-pauses.json",
+    "docs/evidence/issue-reconciliation/cp298-correction.json",
+    "local/research/codex/g1-map-terrain-delivery-receipt.json",
+    "local/research/codex/g1-patrit-source-r1/reuse.json",
+    "local/research/codex/g1-patrit-source-r1/tile-comparison.json",
+    "local/research/codex/g1-patrit-seed-native-r1/patrit-seed-native-verification.json",
+    "local/research/codex/g1-patrit-seed-native-r1/patrit-seed-getter-verification.json",
+    "local/research/codex/g1-native59-pause-r1/verification.json",
+    "local/research/codex/g1-patrit-docs-precheckpoint.txt",
+    "rust/Cargo.toml",
+    "rust/Cargo.lock",
+    "rust/crates/kr-service/Cargo.toml",
+    "rust/crates/kr-service/src/rules.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/diagnostic59.rs",
+    "local/research/codex/g1-native59-workspace-r4.txt",
+    "local/research/codex/g1-native59-fmt-r4.txt",
+    "local/research/codex/g1-native59-clippy-r4.txt",
+    "local/research/codex/g1-native59-build-r4.txt",
+    "docs/evidence/rust-service/g1-native59-observation.json",
+    "docs/protocol/room-membership.md",
+    "local/research/codex/g1-native59-observation-source-r1/reuse.json",
+    "local/research/codex/g1-native59-source-policy-design.json",
+    "local/research/codex/g1-patrit-8-native-r5/diagnostic59-positive-verification.json",
+    "local/research/codex/g1-patrit-8-native-r5/opaque167-control-verification.json",
+    "local/research/codex/g1-patrit-8-native-r1/fault-diagnosis.json",
+    "local/research/codex/g1-patrit-opaque167-source-r1/reuse.json",
+    "local/research/codex/g1-patrit-2-native-r1/patrit-roster-native-verification.json",
+    "local/research/codex/g1-patrit-2-native-r1/patrit-roster-getter-verification.json",
+    "local/research/codex/g1-patrit-2-native-r1/native/raw-seal.json",
+    "local/research/codex/g1-patrit-2-native-r1/manual-ui-review.json",
+    "local/research/codex/g1-patrit-4-native-r1/patrit-roster-native-verification.json",
+    "local/research/codex/g1-patrit-4-native-r1/patrit-roster-getter-verification.json",
+    "local/research/codex/g1-patrit-4-native-r1/native/raw-seal.json",
+    "local/research/codex/g1-patrit-4-native-r1/manual-ui-review.json",
+    "local/research/codex/g1-patrit-8-native-r5/patrit-roster-native-verification.json",
+    "local/research/codex/g1-patrit-8-native-r5/patrit-roster-getter-verification.json",
+    "local/research/codex/g1-patrit-8-native-r5/native/raw-seal.json",
+    "local/research/codex/g1-patrit-8-native-r5/manual-ui-review.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→evidence và so raw đã seal. Source Rust thêm measured167/body52 cho managed player observation; kiểm captured body, current/budget/no effect; workspace/fmt/clippy/locked build và native8 binary mới tách khỏi2/4binary cũ. Patrit seed hai client có195flags chung, native getters riêng; hai ô ground candidate ở row6/col7..8 thực blocked. Static Data3/1 chỉ tương quan footprint, không recovery mọi field. Patrit native2/4/8 theo binary/provenance riêng đi bằng phím thật năm root từ trên xuống, hidden Roller4,8 và stat5→6 trên mọi view, hai rank/reset và baseline spawn/stat đúng vòng2. All195flags trước/sau mọi actual118→159→158 so Python geometry; project owner0 chỉ kernel, actual ownership/serial/location/power kiểm riêng. Root5,8/power1 giữ ba ô Mast trong khi clear hai thùng5,7/5,9 là đối chứng âm có hiệu ứng thật. Chỉ fixture/drop design, không original distribution/full G1. Native59 dừng sáu mức có native/TCP âm tính, không fix. Quyết định owner đổi roster được ghi ở mốc mới, không sửaCP298/AUD114 hoặc raw cũ. Đối soát lỗi snapshot sauCP298 có commit công bố ban đầu, correction và PR404 receipt; không che failed checks. Giữ lỗi chuẩn bị trước runtime khi base catalog nhiều row, không gọi là native fail/pass.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Tiêu chí cũ yêu cầu cả sáu map2–8 trong khi Village10/Tomb12 có6spawn.",
+      "correction": "Chủ dự án cho đổi tiêu chí: hai map này2–6, bốn map còn lại2–8; các hành vi và bằng chứng khác giữ nguyên.",
+      "fixed_in": [
+        "docs/evidence/owner-directives/g1-map-roster-limits.json",
+        "docs/PLAN.md#phase1-acceptance",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Patrit14 phân loại từng ô bỏ sót vùng chặn của MastTileA.",
+      "correction": "Native seed và adjacent blast/power1 ở cả hai vòng của2/4/8 xác nhận ba ô chặn theo giới hạn; không sửa exporter/pack hoặc nâng mọi static rule thànhconfirmed.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-patrit-terrain.json",
+        "docs/protocol/terrain.md#rust-patrit-terrain",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Scheduling pause âm tính có thể bị hiểu là đã giải native59 hoặc không liên quan timing.",
+      "correction": "Giữ issue403 và raw lỗi cũ; chỉ âm tính trên hai client/sáu mức khai báo, Chỉ mở hai body theo actual caller Patrit; không suy semantics hoặc lỗi59 đã sửa.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-native59-pauses.json",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "AUD114/F3 còn câu Native gameplay chỉ8, trong khi record và bằng chứng cuốiCP298 đã có2/4/8.",
+      "correction": "Đọc phạm viCP298 theo record/metadata/native reports2/4/8 đã công bố; câu auditF3 là wording cũ, không phủ định bằng chứng đó. AUD114 vàcomplete record giữ bất biến.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-patrit-terrain.json",
+        "docs/evidence/checkpoints/records/CP299.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "G1 còn terrain/nội dung Village10, Camp08, Tomb12 và phần Factory07 chưa có native terrain đầy đủ; bảng item, drop và nhân vật theo acceptance.",
+    "Forest07 và Patrit14 mới có các route giới hạn, một Roller cố định là design fixture, chưa mọi sparse roster/direction/power/drop hoặc authority gốc.",
+    "Village10/Tomb12 được chủ dự án đổi sang2–6người, bốn map còn lại2–8; vẫn phải có spawn đúng, native gameplay, item, hai ván/reset và ca âm, không dùng chung/ép spawn.",
+    "Native59 giữ issue403 cho purpose101/semantics/server gốc và schema ngoài measuredprofile; bounded observation design có nativepositive riêng. M8 còn đo budget16/visit; không gọi full59 đã phục hồi.",
+    "M8 còn transport xác thực mới qua Internet thật, tải50người/8phòng, backup đã thử restore, đóng gói/soak và vận hành."
+  ]
+}

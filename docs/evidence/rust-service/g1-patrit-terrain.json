@@ -7,7 +7,7 @@
   "source": "kr_runtime",
   "status": "confirmed",
   "decision": "Đạt các route Patrit14 với roster account 2/4/8 và hai ván/reset theo phạm vi dưới đây. G1 vẫn mở vì còn nội dung/drop/nhóm item và các map khác.",
-  "implementation": "Tái dùng source Rust của PR404/CP298. Lượt2/4 giữ binary cũ; lượt8-r3 dùng binary mới chỉ thêm body167/52 và schema59 type1/count5/records opaque vào observation có budget của managed player rounds, cùng kiểm nguồn tương ứng. Không ACK, đổi gameplay/stat, exporter/client/pack hoặc suy semantics167. Source test, fmt/clippy/locked build có report riêng.",
+  "implementation": "Tái dùng source Rust của PR404/CP298. Lượt2/4 giữ binary cũ; lượt8-r5 dùng binary mới chỉ thêm body167/52 và schema59 type1/count5/records opaque vào observation có budget của managed player rounds, cùng kiểm nguồn tương ứng. Không ACK, đổi gameplay/stat, exporter/client/pack hoặc suy semantics167. Source test, fmt/clippy/locked build có report riêng.",
   "baseline": {
     "merge": "d41179abd3c9397c36cd7c9f16811f4a08466ffa",
     "receipt": "local/research/codex/g1-map-terrain-delivery-receipt.json",
@@ -163,5 +163,6 @@
     "root": "local/research/codex/g1-patrit-8-native-r2",
     "diagnosis": "local/research/codex/g1-patrit-8-native-r2/fault-diagnosis.json",
     "reason": "Round1 completed after167 delta; earlyround2 actual59/type1/count5/code101 rejected by unknown handler on3channels. Preserve exit1/raw/cleanup. No eight-player acceptance from this run."
-  }
+  },
+  "native59_native_wire_join": "local/research/codex/g1-patrit-8-native-r5/diagnostic59-native-wire-join.json"
 }

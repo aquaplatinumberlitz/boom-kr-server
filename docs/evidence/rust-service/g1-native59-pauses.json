@@ -4,7 +4,7 @@
   "canonical": "docs/RESEARCH.md#rust-service-gaps",
   "source": "kr_runtime",
   "status": "confirmed",
-  "decision": "Sáu khoảng dừng có kiểm soát trên hai client không tái hiện packet 59. Lỗi Forest07 tám client chưa rõ semantics; không có fix/ACK/ignore policy mới. Lượt Patrit8 tiếp theo có trace queue và caller riêng, mô tả ở followup.",
+  "decision": "Sáu khoảng dừng có kiểm soát trên hai client không tái hiện packet59; phép dừng không đổi source/policy và không giải thích lỗi trước. Phần implementation xảy ra sau giữ ở metadata riêng, không biến âm tính thànhpositive.",
   "baseline": "PR404/CP298: phép dừng giữ nguyên binary Rust và các contract đã nghiệm thu. Không có caller mới trong chính phép dừng; trace/static về sau giữ provenance riêng.",
   "recipe": {
     "root": "local/research/codex/g1-native59-pause-r1",
@@ -40,5 +40,6 @@
     "static": "local/research/codex/g1-native59-static-r1/observed-callers-static.json",
     "alignment": "local/research/codex/g1-native59-static-r1/observed-callers-alignment.json",
     "limits": "Hai body mới theo caller quan sát, không quét thêm và không suy opcode59 là nguyên nhân đóng Patrit. Bằng chứng lỗi actual59 Forest giữ nguyên."
-  }
+  },
+  "subsequent_policy": "docs/evidence/rust-service/g1-native59-observation.json"
 }
