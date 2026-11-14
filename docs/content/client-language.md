@@ -95,6 +95,8 @@ Trong 6.184 dòng có 102 dòng nhiều biến thể phải chọn tay và 34 d�
 199 dòng ghép được khi so ID không phân biệt hoa thường, mang trạng thái riêng `casefold_candidate`. Phần thiếu còn
 18.938 dòng, phải dịch mới.
 
+Các số trên là lúc trích ngày 13/11; số hiện hành sau khi soát nghĩa và dịch bù ở [mục dữ liệu](#data-files).
+
 **Rà độ phủ ngày 13/11** (Claude đọc lại toàn bộ 87 pack và các file lẻ của client, độc lập với công cụ trích; Terra làm
 tiếp lượt hai theo kết quả rà):
 
@@ -107,9 +109,7 @@ tiếp lượt hai theo kết quả rà):
 - Không có trong client: chữ nhiệm vụ (script chỉ gọi ID, chữ do server gửi), chữ tiếng Anh cho chuỗi trong exe (exe
   của PopTag vẫn giữ tiếng Hàn), `Help` và mô tả ô map tự tạo (vẫn là tiếng Hàn).
 - **Ảnh có chữ:** 1.187 trong 3.038 ảnh nghi có chữ của KR có entry cùng tên trong pack PopTag; 611 giống nội dung giải
-  mã, 576 khác. Danh sách 576 ảnh là ứng viên để mở xem; chưa ai xem ảnh nào.
-- Công cụ kiểm của catalog Việt (`l10n_validate.py`) hiện dừng vì cache nguồn cũ hơn catalog (25.257 so với 25.321
-  dòng). Lỗi có từ trước lượt này; ba file Việt gốc không bị sửa.
+  mã, 576 khác. Danh sách 576 ảnh là ứng viên để mở xem. Kết quả đọc chữ trên từng ảnh ở [mục dữ liệu](#data-files).
 
 **Giới hạn.** Ghép theo ID không chứng minh hai bản cùng nghĩa: cùng ID có thể đổi nội dung sau mười sáu năm. Theo
 [thông báo ngày 13/11](../evidence/owner-directives/l10n-text-rights.json), công ty có thỏa thuận dùng toàn quyền chữ của
@@ -140,22 +140,44 @@ Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), đợ
 
 ## Dữ liệu chữ và file dựng thử (trạng thái 14/11/2026)
 
-Dữ liệu nằm ở checkout `boom-re-l10n` (repo `boom-re`, nhánh `claude/l10n-kr-vi`, commit `a32da15`, chưa push).
+Dữ liệu nằm ở checkout `boom-re-l10n` (repo `boom-re`, nhánh `claude/l10n-kr-vi`, commit `e5d1bac`, đã push).
 
 | | Tiếng Việt | Tiếng Anh |
 |---|---|---|
 | Tổng số dòng catalog | 33.486 | 33.486 |
-| Đã có bản dịch | 33.438 | 32.414 dịch được dùng, 246 chờ duyệt |
-| Trong đó lấy từ bản chính thức | 3.813 (client VN) | 6.281 (PopTag, theo ID) |
-| Trong đó dịch máy | 29.625 | 26.133 |
-| Chờ duyệt | 48 | 246 (97 dịch máy bị cờ, 106 nhiều biến thể, 43 ghép theo icon) |
-| Không cần dịch hoặc cố ý giữ tiếng Hàn | (tính trong dòng đã dịch) | 826 |
+| Đã có bản dịch dùng được | 33.484 | 32.942 |
+| Trong đó lấy từ bản chính thức | 3.813 (client VN) | 5.724 (PopTag, theo ID) |
+| Trong đó dịch máy | 29.671 | 27.218 |
+| Chờ duyệt | 2 (điều khoản pháp lý của Nexon, phải thay bằng điều khoản của dự án) | 0 |
+| Không cần dịch | (tính trong dòng đã dịch) | 544: 105 dòng không có câu Hàn, 358 dòng không có chữ Hàn, 81 tên cấm trong exe giữ tiếng Hàn |
 
 Catalog gồm 25.321 dòng chuỗi cũ và 8.165 dòng tên vật phẩm đọc từ `fxstock0.ini`–`fxstock3.ini` (4.967 tên khác
-nhau). Bản dịch máy do model `gpt-6.1-terra` dịch theo lô, có kiểm máy tham số định dạng, thẻ, xuống dòng và chữ Hàn
-sót; chưa có người đọc soát toàn bộ. Tiếng Anh dùng tên nhân vật và thuật ngữ của bản Bắc Mỹ (Boz, Evie, Plunk, Posh,
-Town…). Một lượt đọc mẫu cho thấy khoảng một phần mười dòng lấy từ PopTag lệch nghĩa so với câu Hàn; 6.082 dòng đó
-chưa được soát.
+nhau). Bản dịch máy do model `gpt-6.1-terra` dịch theo lô. Tiếng Anh dùng tên nhân vật và thuật ngữ của bản Bắc Mỹ
+(Boz, Evie, Plunk, Posh, Town…). Chưa có người đọc soát toàn bộ; các lượt kiểm đã làm đều bằng máy:
+
+- **Kiểm định dạng trên mọi dòng:** tham số `printf` đúng số lượng và thứ tự, thẻ `<font>` giữ nguyên, số lần xuống
+  dòng, chữ Hàn sót, từ miền Bắc trong bản Việt. Công cụ kiểm của repo báo 0 lỗi.
+- **Soát nghĩa chữ PopTag so với câu Hàn** (5.417 cặp khác nhau, phủ 6.281 dòng): 652 dòng lệch nghĩa đã thay bằng bản
+  dịch từ câu Hàn; 922 dòng giữ câu chữ PopTag nhưng lấy lại chỗ xuống dòng của câu Hàn, vì PopTag viết liền một dòng;
+  15 dòng không đủ ngữ cảnh nên giữ chữ PopTag; còn lại khớp nghĩa.
+- **Soát lần hai nhóm người chơi thấy nhiều nhất** (`csysstr.ssd` và `ClientString`, 8.964 câu): model đọc lại bản
+  dịch với vai người soát lỗi. Đã áp dụng 364 sửa nội dung và 259 chỉnh khoảng trắng cho tiếng Việt, 68 sửa cho tiếng
+  Anh. 162 đề xuất chạm vào dòng đã có quyết định duyệt trước đó thì không áp dụng. Người soát cùng model với người
+  dịch nên không phải kiểm độc lập. Câu nhiệm vụ (`csysqstr.ssd`) và tên vật phẩm chưa qua lượt này.
+- **Dòng chờ duyệt đã chốt:** 207 câu tiếng Anh từng treo (nhiều biến thể PopTag, tên tạm ghép theo icon, bản dịch bị
+  máy kiểm đánh dấu) và 46 dòng tiếng Việt. Quyết định tiếng Việt do Claude đưa ra theo uỷ quyền của chủ dự án
+  ngày 14/11/2026.
+
+**Dấu `%` nghĩa đen trong bản dịch.** Câu Hàn như `경험치 +50% 3일` an toàn vì sau `%` là byte chữ Hàn. Bản dịch
+`+50% for 3 Days` hay `giảm 20% nha` thì tạo ra `% f`, `% n`, là tham số `printf` hợp lệ; nếu client đưa chuỗi đó qua
+`printf` thì đọc sai tham số. Chưa biết chuỗi nào đi qua `printf`, nên công cụ kiểm coi mọi trường hợp như vậy là lỗi
+và các câu đã được viết lại để sau `%` là dấu câu hoặc hết câu.
+
+**Bề rộng chữ (ước lượng tĩnh).** `tools/l10n_width.py` cộng bề rộng bước của từng ký tự trong `CxUni.fft` rồi so
+dòng rộng nhất của bản dịch với câu Hàn. Trung vị của bản dịch máy rộng gấp 1,16–1,42 lần câu Hàn, và phân bố này
+trùng với bản chính thức (chữ PopTag cho tiếng Anh, chữ client VN cho tiếng Việt: trung vị 1,2–1,36 lần; mức 95% là
+1,7–2,4 lần ở cả hai nhóm). Tức bản dịch máy không dài hơn các bản từng phát hành. Phép đo không biết bề rộng khung
+thật của từng nhãn và không biết nhãn nào dùng font nào; chữ tràn ở đâu phải xem trên client.
 
 **Định dạng file `ssi1`** (`csysstr.ssd`, `csysqstr.ssd`, `fxdynmapinfo.ssd`, `fxstock*.ini` và các file `.ssd` khác):
 
@@ -173,14 +195,41 @@ Checksum đọc từ exe VN đã unpack: hàm đọc `0xA62D10` tính lại rồ
 hàm băm `0xA0E1E0`. Công thức khớp cả 13 file `ssi1` của client KR. Chưa đọc hàm tương ứng trong exe KR.
 
 **Công cụ dựng** `tools/l10n_build.py` ghi catalog thành bảy file `ssi1` và entry `ClientData/ClientString` của pack
-`FxDesktop` (ghi nối vào cuối `.idd`, sửa `.idx`), cho `ko`, `vi`, `en` với `cp949` hoặc `utf-8`. Phép kiểm đã đạt: dựng
-lại tiếng Hàn thì năm file nhỏ giống gốc từng byte, tám file lớn giải nén ra giống gốc; checksum và trường độ dài của
-mọi file dựng đều đúng; khoá giữ nguyên byte gốc. Bản dựng tiếng Việt UTF-8 thay được 32.035 chuỗi; bản dựng tiếng Anh
-theo `cp949` (chạy được trên client chưa vá) thay được 31.279 chuỗi. **Chưa file nào được nạp thử vào client.**
+`FxDesktop` (ghi nối vào cuối `.idd`, sửa `.idx`), cho `ko`, `vi`, `en` với `cp949` hoặc `utf-8`. Phép kiểm đã đạt:
 
-Điểm cần quyết khi vá UTF-8: trong XML `ClientString` có 30 khoá chứa chữ Hàn. Bản dựng giữ nguyên byte `cp949` của
-khoá và ghi giá trị bằng UTF-8, nên một file XML mang hai bảng mã; phải xem client tra khoá theo byte hay theo chuỗi
-đã đổi mã.
+- Dựng lại tiếng Hàn: cả bảy file giải nén ra giống gốc từng byte (luồng nén khác nên file nén khác byte); pack
+  không đổi mục nào.
+- Mọi file `ssi1` của ba bộ dựng có checksum, hai trường độ dài và độ dài giải nén đúng.
+- Pack của bộ Việt và bộ Anh: 2.076 trên 2.077 mục index không đổi, phần `.idd` gốc giữ nguyên, bảng chuỗi mới đọc
+  lại được trọn vẹn theo một bảng mã và đủ 6.993 mục.
+- Bản dựng tiếng Việt UTF-8 thay 32.098 chuỗi; bản dựng tiếng Anh theo `cp949` (chạy được trên client chưa vá) thay
+  32.102 chuỗi. Không còn chuỗi nào bị loại vì lệch định dạng hay không mã hoá được.
+
+**Chưa file nào được nạp thử vào client.** Lượt nạp thử đã có đề bài cho Codex chính (L-probe trong
+[Bảng điều hành](../PLAN.md#dashboard)): năm lượt chạy trên bản sao client gốc, gồm một lượt cố ý làm sai checksum
+để biết exe KR có kiểm như exe VN không.
+
+**Khoá có chữ Hàn.** 29 khoá trong `csysstr.ssd`, một khoá trong `csysqstr.ssd` và 30 khoá trong XML `ClientString`
+chứa chữ Hàn (ví dụ `럭마`, `슈방`: tên tắt của vật phẩm). Quét image exe đã unpack, 13 file `ssi1` và 51.467 mục của
+mọi pack KR không thấy nơi nào tham chiếu các khoá này bằng byte `cp949`, ngoài chính chỗ định nghĩa. Vì vậy bản dựng
+UTF-8 chuyển cả khoá sang UTF-8 để mỗi file chỉ mang một bảng mã; cờ `--keep-key-bytes` giữ byte gốc. Chưa biết client
+tra các khoá này từ đâu lúc chạy (chữ người chơi gõ hay chuỗi server gửi).
+
+**Ảnh có chữ.** Model `gpt-6-luna` đọc 3.038 mục ảnh nghi có chữ trên các tờ ảnh ghép đánh số (mỗi mục tối đa ba ảnh
+con: đầu, giữa, cuối), kết quả ở `l10n/images_text.csv`:
+
+| Nhãn | Số mục |
+|---|---|
+| Có chữ Hàn | 1.104 |
+| Chỉ có từ Latin (START, OK…) | 149 |
+| Chỉ có chữ số, ký hiệu | 165 |
+| Không có chữ | 1.598 (gồm 18 mục không có ảnh con để xem) |
+| Không đọc được | 22 |
+
+Trong 1.104 mục có chữ Hàn (746 cụm chữ khác nhau), 654 mục có ảnh cùng tên nhưng khác nội dung ở client VN (564 mục) hoặc ở
+PopTag (358 mục), là ứng viên lấy thẳng sau khi xem bằng mắt; 450 mục không có bản nào, phải vẽ lại. Đối chiếu
+tay 15 ô của một tờ thì model đọc đúng cả 15; chưa kiểm rộng hơn. 282 mục có nhiều hơn ba ảnh con, có thể sót chữ ở ảnh
+không được hiện. Cùng tên và khác byte không chứng minh ảnh kia đã được dịch.
 
 ## Chưa biết, phải đo khi mở đợt L
 
@@ -200,7 +249,9 @@ khoá và ghi giá trị bằng UTF-8, nên một file XML mang hai bảng mã; 
   lúc đăng nhập.
 - **Kiểm toàn vẹn** của client với mã đã vá và file chữ đã thay. Riêng file `ssi1` đã biết: client kiểm checksum ở
   offset 4 và công cụ dựng tính lại được; phần còn lại (pack, exe) chưa đo.
-- **Phép thử sớm không cần bản vá:** bộ tiếng Anh theo `cp949` nạp vào client gốc sẽ cho biết client có nhận file đã
-  thay không. Một lượt native, làm khi runtime rảnh giữa hai mốc.
+- **Client gốc có nhận file chữ đã thay không:** chờ kết quả lượt L-probe (xem [mục trên](#data-files)).
+- **Client tra 30 khoá có chữ Hàn từ đâu lúc chạy** và bản dựng UTF-8 đổi khoá sang UTF-8 có làm mất chức năng nào
+  không; quét tĩnh không thấy tham chiếu nào.
+- **Chuỗi nào đi qua `printf`** với chính nó làm chuỗi định dạng; hiện coi mọi dấu `%` nghĩa đen là có nguy cơ.
 - **Không đổi vùng.** Đổi vùng sang Việt sẽ bật 201 nhánh riêng của vùng Việt, có thể đổi luồng đăng nhập, giao diện và
   packet đã đo; không làm nếu chưa có lý do.
