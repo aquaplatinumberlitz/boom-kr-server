@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, CP302 / AUD118**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, CP303 / AUD118**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -25,6 +25,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, C
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
 | [G1](#rust-g1) sáu map ladder và item | Adapter/UI, kim/cứu, item nền ExVillage01 và terrain theo map đã có từng lát; [Forest07](protocol/terrain.md#rust-selected-map-terrain) và [Patrit14 roster2/4/8](protocol/terrain.md#rust-patrit-terrain) đạt các route đã đo | [Village10 terrain roster2/4/6](protocol/terrain.md#rust-village10-herb) đã có hai vòng/reset, Fire/Roller; còn catalog sáu/tám spawn, sparse và các item/nhân vật theo acceptance |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
+| L1 UTF-8 xen G1 | [L1a có khảo sát tĩnh và primitive/controls](content/client-language.md#utf8), chưa đạt acceptance | Chưa chốt xử lý đủ literal949, consumer/capacity và render/IME; L1b/L1c chưa đạt. Không đổi wire của client chưa vá |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
@@ -38,7 +39,9 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, C
    cập nhật ở `local/research/claude/codex-prompt-l10n-probe.md`. Xong thì gỡ đoạn này.
    **Xen giữa các lát G1: L1 vá UTF-8** cho client 00967 ([quyết định](evidence/owner-directives/l10n-utf8-now.json)): L1a đặc
    tả tĩnh bằng IDA theo mẫu PopTag, L1b vá lúc chạy và kiểm native ba ngôn ngữ, L1c nhập liệu. Mỗi lát một checkpoint,
-   không cùng runtime với lát G1. Đề bài ở `local/research/claude/codex-prompt-l10n-utf8.md`.
+   không cùng runtime với lát G1. [Mốc partial/blocker](evidence/l10n-utf8-l1a-review.json) giữ phần đã biết;
+   tiếp đối chứng pass-through tới được hộp trước candidate substitution, rồi giải literal/consumer tối thiểu còn chặn.
+   Đề bài ở `local/research/claude/codex-prompt-l10n-utf8.md`.
 2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
    N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có actual native59 rồi hai vòng/reset. [Issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ; không gọi schema đã đo là toàn protocol59.
 
@@ -701,10 +704,11 @@ lấy từ [client PopTag 0.7.8](content/client-language.md#poptag) công ty c�
 
 [So tĩnh hai file exe](content/client-language.md) cho thấy client 00967 là build đa vùng bị khóa ở tiếng Hàn: engine
 tự giữ bảng mã, có sẵn mã ngôn ngữ cho Hàn, Việt, Anh, và font đã đủ chữ Việt. Theo
-[quyết định 13/11](evidence/owner-directives/l10n-utf8.json), đợt L **đưa mọi chữ về UTF-8** như client PopTag: một bản
-vá chung cho cả ba ngôn ngữ, người chơi khác ngôn ngữ đọc được chữ của nhau, và server lưu, chuyển chữ dưới dạng UTF-8.
-Mọi kết luận còn là tĩnh, chưa chạy. Việc đầu tiên khi mở đợt là đọc kỹ đoạn mã UTF-8 của PopTag; danh sách phải đo nằm
-ở [tài liệu ngôn ngữ](content/client-language.md#utf8).
+[quyết định 13/11](evidence/owner-directives/l10n-utf8.json), đợt L **đưa mọi chữ về UTF-8**: một bản vá chung cho ba
+ngôn ngữ, người chơi khác ngôn ngữ đọc được chữ của nhau, server lưu và chuyển chữ UTF-8. Mẫu PopTag thực tế có lớp
+949/cache hai byte và wrapper J9 mang UTF-8, chưa là engine UTF-8 thuần. L1a đang đối chiếu boundary và literal949;
+controls diagnostic đã tới phòng với chữ gốc, nhưng chưa có nghiệm thu bản vá hoặc nhập liệu.
+Đặc tả ứng viên và giới hạn tại [tài liệu ngôn ngữ](content/client-language.md#utf8).
 
 Người chơi chọn ngôn ngữ ở trình mở game (mỗi ngôn ngữ một bộ chuỗi, font và ảnh), không phải trong menu của client.
 Giai đoạn 1 vẫn dùng client gốc với bảng mã 949. Mọi thay đổi làm trên bản copy; client và pack gốc giữ nguyên.

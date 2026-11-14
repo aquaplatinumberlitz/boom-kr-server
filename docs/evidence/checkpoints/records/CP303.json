@@ -1,0 +1,370 @@
+{
+  "id": "CP303",
+  "previous": "CP302",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-14T18:37:54.110635+00:00",
+  "context_commit": "6829a0704c52582333762551899cdc702c41f0bc",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KR-B001/L1a: Đã đủ thiết kế an toàn để vá UTF-8 cho 00967 chưa, và các controls hiện có chứng minh được gì?",
+  "scope": "Mốc partial/blocker cho static boundary, primitive, baseline diagnostic và instrument failures. Checkpoint complete không là L1a/L1b/L1c acceptance hoặc feature-group completion; không thay server wire/runtime.",
+  "artifacts": [
+    {
+      "name": "KR00967 unpacked static image",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    {
+      "name": "Diagnostic client offline copy",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "PopTag reference build, not KR00967",
+      "sha256": "d1f9f9b080abe2557693e6c906c26e22674be5fca6abe13d8913fe1a7c1db5d7"
+    }
+  ],
+  "locators": [
+    "docs/content/client-language.md#utf8",
+    "docs/evidence/l10n-utf8-l1a-review.json",
+    "docs/RESEARCH.md#gap-client-utf8",
+    "docs/PROTOCOL.md#utf8-client-boundary",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414"
+  ],
+  "findings": [
+    {
+      "summary": "IDA riêng ánh xạ một số boundary 949/UTF-16, traversal DBCS, width/vtable glyph và IME; kiểm kê literal có 134 seed/141 exact-start xref. Coverage/caller/capacity và provenance sau copy còn thiếu, chưa đủ patch hoặc acceptance L1a.",
+      "source": "kr_static",
+      "status": "candidate",
+      "method": "static",
+      "canonical": "docs/content/client-language.md#utf8",
+      "evidence": [
+        "L1A303-00021",
+        "L1A303-00019"
+      ],
+      "limits": "Chỉ các hàm/site đã khai; không full consumer, literal ngắn/indirect/interior reference hoặc native glyph. Bản nguồn/DB giữ nguyên, không đổi global IDA/MCP."
+    },
+    {
+      "summary": "Mẫu PopTag dùng 949 và cache mã hai byte, wrapper J9 mang UTF-8 và nhánh IME; không phải bằng chứng engine 00967 UTF-8 thuần.",
+      "source": "design",
+      "status": "candidate",
+      "method": "static",
+      "canonical": "docs/content/client-language.md#utf8",
+      "evidence": [
+        "L1A303-00020",
+        "L1A303-00019"
+      ],
+      "limits": "Static reference khác build, chưa native PopTag và không sao chép mã/địa chỉ sang 00967. Không dùng làm contract KR gốc."
+    },
+    {
+      "summary": "Primitive Python/C strict chuyển UTF-8/UTF-16, prefix/capacity/atomic-error có 19 tests; standalone i686 trên Wine đối chiếu Windows API một chuỗi và ca âm.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/content/client-language.md#utf8",
+      "evidence": [
+        "L1A303-00022",
+        "L1A303-00029",
+        "L1A303-04352",
+        "L1A303-04353"
+      ],
+      "limits": "Không patch/game/IME/wire proof. Screenshot gate có calibration riêng, thiếu private ảnh thì skip; CI chỉ chạy 17 tests không cần Pillow/raw."
+    },
+    {
+      "summary": "Controls diagnostic control03/dialog05 có ảnh hai người trong phòng bằng dữ liệu Hàn gốc; dialog05 có hộp tạo phòng nhìn trực tiếp trước input tiếp.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/content/client-language.md#utf8",
+      "evidence": [
+        "L1A303-00012",
+        "L1A303-00013",
+        "L1A303-04351"
+      ],
+      "limits": "Không client gốc/UTF-8/tiệm/input. Intentional stop sau B-joined vẫn exit1 do assert full game; giữ raw/error/cacheoutput/cleanup riêng, không đổi nhãn run."
+    },
+    {
+      "summary": "Glyph03/04/dialog06 có fatal SIGSEGV của GDB host ngay sau marker; không nhận replacement/pass-through làm native effect. Control không hook có gate tới hộp; chưa xác định nguyên nhân GDB crash.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/content/client-language.md#utf8",
+      "evidence": [
+        "L1A303-00014",
+        "L1A303-00017",
+        "L1A303-00018",
+        "L1A303-00019"
+      ],
+      "limits": "Không suy font hoặc client segfault/server reject. Xóa breakpoint trong callback chỉ là giả thuyết; helper disable thaydelete vẫn cần kiểm riêng trướcgame."
+    },
+    {
+      "summary": "Đối chiếu lại CP302 positive: hai/bốn người không có marker đã tìm; sáu người A/C/F có GDB internal-error sau remote disconnect và sau cả hai rank/reset. Ghi giới hạn terminal mới, không sửa raw/records cũ.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/content/client-language.md#utf8",
+      "evidence": [
+        "L1A303-04355",
+        "L1A303-00019"
+      ],
+      "limits": "Không tuyên bố debugger shutdown sạch hoặc toàn cause. Quan sát terminal sau measuredreset khác probe lỗi trước UI; không lặp positiveđãđủ."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Metadata/raw hashes và snapshot bàn giao",
+      "result": "pass",
+      "evidence": [
+        "L1A303-00010",
+        "L1A303-00011",
+        "L1A303-00012",
+        "L1A303-00013",
+        "L1A303-00014",
+        "L1A303-00015",
+        "L1A303-00016",
+        "L1A303-00017",
+        "L1A303-00018",
+        "L1A303-00019",
+        "L1A303-00020",
+        "L1A303-00021",
+        "L1A303-00022"
+      ],
+      "limits": "Hash/integrity tách khỏi semantics; failed probes không thành glyph proof."
+    },
+    {
+      "check": "19 local Python/C/glyph/gate tests, i686 standalone API và docs",
+      "result": "pass",
+      "evidence": [
+        "L1A303-00029",
+        "L1A303-00028",
+        "L1A303-00022"
+      ],
+      "limits": "Client native UTF-8 và IME chưa đạt. Full history/CI/exact head kiểm trước merge."
+    },
+    {
+      "check": "L1a/L1b/L1c acceptance",
+      "result": "not_run",
+      "evidence": [
+        "L1A303-00019",
+        "L1A303-00026"
+      ],
+      "limits": "L1a partial chưa đủ đặc tả; L1b/c chưa có patch/acceptance. Không audit nhóm hoàn tất khi nhóm còn mở."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP303-l10n-partial-r2.json",
+      "bytes": 1816976,
+      "sha256": "edff29b4b2c7f0fa9529374968a5fce3ae33e8b9e14359469a873a59b73bd16e",
+      "count": 6685
+    }
+  ],
+  "delta": {
+    "added": [
+      "Static boundaries và primitive có controls; baseline tạo phòng cùng dữ liệu Hàn gốc, raw/hash và lỗi instrument được phân biệt."
+    ],
+    "corrected": [
+      "Mẫu PopTag chưa là engine UTF-8 thuần; không bật 65001 từ giả định.",
+      "Marker glyph bị loại khi phát hiện fatal GDB host; phân biệt lỗi terminal của CP302 sau reset với glyph crash trước UI."
+    ],
+    "superseded": [
+      "Chỉ dẫn nhập topic còn nói chưa có runtime; nay ghi controls diagnostic và giữ acceptance UTF-8 chưa đạt."
+    ]
+  },
+  "blockers": [
+    "Chưa chọn xử lý literal 949/provenance và coverage consumer/capacity đủ cho patch toàn client.",
+    "Pass-through debugger phải ổn và tới UI trước substitution; glyph/font/IME/wire UTF-8 chưa có acceptance."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Theo PLAN tiếp G1 catalog/spawn trên worktree riêng; runtime đang chuẩn bị/đo không là evidence CP303. Worker L1 tiếp debugger ABI control rồi glyph/literal boundary theo gap, giữ lease riêng. M8 sau G1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-14T18:37:54.110635+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Root tích hợp và tự kiểm snapshot một worker Terra high đã được owner cấp ngoại lệ; worker không là reviewer độc lập. Checkpoint mốc blocker, không milestone passed.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": ".github/workflows/docs.yml",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/content/client-language.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-control-01.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-control-02.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-control-03.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-dialog-05.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-dialog-06.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-glyph-01.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-glyph-02.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-glyph-03.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-glyph-04.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-poptag-static.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-static.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-winprobe.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/l10n_utf8_codec.py",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/l10n_utf8_core.c",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/l10n_utf8_core.h",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/l10n_utf8_dialog_gate.py",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/l10n_utf8_glyph_probe.py",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/l10n_utf8_literal_plan.py",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/l10n_utf8_run_winprobe.py",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/l10n_utf8_winprobe.c",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/test_l10n_utf8_codec.py",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/test_l10n_utf8_core.py",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/test_l10n_utf8_dialog_gate.py",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "tools/test_l10n_utf8_glyph_probe.py",
+      "state": "updated",
+      "reason": "Đồng bộ L1a partial/spec/blocker và tách mứcsource/native/primitive; không đổi acceptance hoặc wire."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-l1a-review.json",
+      "state": "updated",
+      "reason": "Ma trận bàn giao L1a partial và correction GDBhost/terminal, sources/raw/limits."
+    }
+  ]
+}

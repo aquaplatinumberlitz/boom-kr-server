@@ -72,6 +72,20 @@ Không lặp khoảng trống đã đóng hoặc suy native shared-NAT gameplay 
 Occupancy đã có [native contract](protocol/room-membership.md#rust-room-population); [lifecycle managed 2/4/8](protocol/room-membership.md#rust-managed-team-rosters) đã đạt trong tập cấu hình đã đo. [M7c room-only](protocol/room-membership.md#rust-managed-player-choices) đã có proof; [ownership tích hợp](protocol/room-membership.md#rust-managed-account-ownership) đã đạt trong tập profile hiện hành; M5b bổ sung profile DB. N1R cần proof riêng bên dưới;
 M4 Free 1v7 là giới hạn đã biết; M7/G1/M6/M8 và điều kiện bàn giao giữ tại PLAN, không broad RE toàn client.
 
+<a id="gap-client-utf8"></a>
+### UTF-8: boundary và literal trước khi vá client
+
+[Khảo sát L1a và giới hạn](content/client-language.md#utf8) đã có IDA trên copy riêng, mẫu PopTag và primitive chuyển
+mã nghiêm ngặt; chưa đủ acceptance L1a. Cần chọn cách giữ encoding của literal949 sau copy, kiểm caller/capacity/NUL
+và các đường duyệt/cắt, đo/vẽ, font, IME còn thiếu. Không dùng thử UTF-8 rồi fallback949 hoặc bật65001 toàn cục để
+che provenance chưa rõ; không áp VA hay mã PopTag sang00967.
+
+[Baseline diagnostic](evidence/l10n-utf8-dialog-05.json) đã có ảnh hộp tạo phòng và hai người trong phòng bằng dữ liệu
+Hàn gốc. Các probe glyph trước chưa có bằng chứng chuỗi thử hiển thị; glyph03/04/dialog06 còn có fatal SIGSEGV của GDB host sau marker,
+nên không nhận conversion effect hoặc pass-through của chúng là proof. Chưa quy nguyên nhân cho client hoặc font. Phép tối thiểu tiếp là cùng controller có gate quan sát hộp: control không
+ghi phải tới đúng UI, rồi mới thay một conversion có kiểm return/capacity và xem ảnh. Shim Wine và test Python/C chỉ
+kiểm primitive, không là native client UTF-8. L1b ba bộ dữ liệu và L1c nhập liệu vẫn chưa đo, wire hiện hành giữ949.
+
 <a id="gap-room-occupancy"></a>
 ### Occupancy trong list và lifecycle phòng động
 
@@ -223,7 +237,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 
 | ID | Khoảng trống hiện hành | Phép kiểm tối thiểu |
 |---|---|---|
-| <a id="gap-process-patch"></a>KR-B001 | [CP179](PROTOCOL.md#bootstrap-recipe-scope): K1 đạt riêng offlineR2 từ3coldstart/API đúngPID/contract-controls; K0CP178 giữ. Không originalWindowsbootstrap hoặc3e9coldstart. | Cold3R2 đã giải, không đo lại. WiderWCP/launcher/config còn ở #2; currente9input/state bridge và livecodec theo PLAN/#3, chỉ mở bootstrapcause nếu có trigger mới. |
+| <a id="gap-process-patch"></a>KR-B001 | [CP179](PROTOCOL.md#bootstrap-recipe-scope): K1 đạt riêng offlineR2 từ3coldstart/API đúngPID/contract-controls; K0CP178 giữ. Không originalWindowsbootstrap hoặc3e9coldstart. | Cold3R2 đã giải, không đo lại. WiderWCP/launcher/config còn ở #2; currente9input/state bridge và livecodec theo PLAN/#3, chỉ mở bootstrapcause nếu có trigger mới. [L1 UTF-8](RESEARCH.md#gap-client-utf8) có boundary/spec partial và controls riêng; chưa có patch đạt acceptance, không suy từ gate K0/K1. |
 | <a id="gap-wcp-config"></a>KR-B002 | Fixture tổng hợp đã qua guard; oneclickuser/+E9C và dữ liệu/cache thật chưa đủ. | Chỉ mở consumer/config đang chặn runtime; so nhánh với và không tham số trên cùng copy, không đo lại +E78 đã giải. |
 | <a id="gap-socket-codec"></a>KR-B003 | [CP181](PROTOCOL.md#login-retry-codec) actualsameprocessretry/reset/authcursor + CP180stream/CRC + CP057boundednativeoracle đủ K2profile theo PLAN. Fullgrammar/prefixguardon/modes/headerauth/capenforcement/FFFFFFFF giữ unknown. | Codec backlog theo trigger K3; không lặp solvedretry/closeonly/HWwatchpoint/76modelsplit. Accountresume thuộc identity/lifecycle, không tự thêm gate. |
 | <a id="gap-auth-identity"></a>KR-L001 | [CP073](PROTOCOL.md#launcher-error-attribution): auxiliarylocale1,0 valid/init0→2000:0/noTCP; main currentA/Bactual67 positive. HistoricalmainSIGABRT/HTTPstartupcause vẫn unknown, không gánpopup là root. [CP217](PROTOCOL.md#auth-admission-prototype) valid/invalid32token cóproof; [CP223](PROTOCOL.md#auth-session-lifecycle) thêm endpoint-accountremap; [CP225](PROTOCOL.md#auth-fresh-process) freshprocesspositive/badtokennegative đã đo, sameprocessfatal/healthyEOFbefore17/fullidentityauthority vẫn mở. | Theo[PLAN](PLAN.md#current-order) tiếp RustM2haiidentity/phòng với bindings rõ; không mở lại authRE đã blocked hoặc tìm lại auth137/135/string/cache. Trace mainfail chỉ khi thực sự chặn. Providerinit sâu chỉ mở khi thực sự chặn main, chưa phải trọng tâm chơi. |
