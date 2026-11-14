@@ -138,14 +138,10 @@ Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), đợ
 
 <a id="cp1258"></a>
 
-**Đường thử nhanh cho riêng tiếng Việt: bảng mã 1258 có sẵn trong exe 00967** (đọc tĩnh 14/11 trên bản sao IDB của
-image đã unpack; chưa chạy). Công tắc vùng `0x138D380` gọi hàm đặt bảng mã `0x149AA90` với 949 cho vùng 1 (`push 3B5h`
-tại `0x138D3B1`) và 1258 cho vùng 64. Mọi hàm chữ đã định vị ở [bảng trên](#địa-chỉ-đã-đọc) đều có nhánh 1258 riêng:
-đổi byte sang Unicode `0x149A7B0` (ghép dấu thanh vào chữ đứng trước), đổi ngược `0x149AC90`, tìm ký tự kế `0x1499C20`.
-Vì vậy đổi đúng hằng số đó thành `4EAh` có thể đủ để client hiện chữ Việt, không cần vá UTF-8 và không đổi vùng. Công cụ
-dựng có `--encoding vn1258` ghi chữ theo đúng kiểu này. Giới hạn: một bảng mã cho cả client nên chữ Hàn (chat, tên
-người chơi, chuỗi chưa dịch) sẽ hiện sai; không thay hướng UTF-8 đã chốt cho nhiều ngôn ngữ. Lượt thử nằm trong
-L-probe-b ở [Bảng điều hành](../PLAN.md#dashboard).
+**Exe 00967 có nhánh bảng mã 1258, không dùng.** Đọc tĩnh 14/11: công tắc vùng `0x138D380` chọn 949 cho vùng 1
+(`push 3B5h` tại `0x138D3B1`) và 1258 cho vùng 64; các hàm chữ ở [bảng trên](#địa-chỉ-đã-đọc) đều có nhánh 1258 riêng
+(`0x149A7B0`, `0x149AC90`, `0x1499C20`). Một bảng mã cho cả client không hiện được Hàn, Việt và Anh cùng lúc, nên
+[hướng UTF-8 đã chốt](#utf8) giữ nguyên; các nhánh này chỉ là chỗ cần biết khi vá.
 
 <a id="data-files"></a>
 
