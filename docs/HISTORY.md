@@ -1489,3 +1489,11 @@ hoặc catalog chung sáu/tám spawn. G1 và M8 còn theo [Bảng điều hành]
 [Capture, native và geometry đối chứng](evidence/rust-service/g1-village10-terrain.json) xác nhận Fire, Roller ẩn,
 spawn/stat và reset trong route đã đo. Policy reveal giữ current-cell/ownership guards, không gán nghĩa cho aux142.
 Catalog chung sáu/tám spawn, sparse roster, các map/item còn lại và M8 tiếp theo [Bảng điều hành](PLAN.md#dashboard).
+
+
+### Mốc trước CP304
+
+**CP303: L1a UTF-8 có khảo sát tĩnh và đối chứng, chưa đạt acceptance bản vá.**
+[Phần đã biết và blocker](evidence/l10n-utf8-l1a-review.json) tách primitive, mẫu PopTag, client diagnostic và
+các probe chưa kết luận. Chưa có nghiệm thu hiển thị UTF-8 ba ngôn ngữ hoặc nhập liệu. G1 giữ lát Village10 cho roster2/4/6 đã giao;
+việc tiếp và phạm vi ở [Bảng điều hành](PLAN.md#dashboard).

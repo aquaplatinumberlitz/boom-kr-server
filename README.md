@@ -33,10 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP303: L1a UTF-8 có khảo sát tĩnh và đối chứng, chưa đạt acceptance bản vá.**
-[Phần đã biết và blocker](docs/evidence/l10n-utf8-l1a-review.json) tách primitive, mẫu PopTag, client diagnostic và
-các probe chưa kết luận. Chưa có nghiệm thu hiển thị UTF-8 ba ngôn ngữ hoặc nhập liệu. G1 giữ lát Village10 cho roster2/4/6 đã giao;
-việc tiếp và phạm vi ở [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP304: sửa kiểm chứng lịch sử workflow CI; phạm vi runtime giữ nguyên.**
+[Correction và bằng chứng công bố](docs/evidence/checkpoints/docs-workflow-source-correction.json) giữ pin cũ
+và mới, không sửa checkpoint đã complete. [L1a UTF-8](docs/evidence/l10n-utf8-l1a-review.json) vẫn partial,
+chưa nghiệm thu bản vá hoặc nhập liệu; G1 tiếp catalog sáu/tám spawn và nội dung còn thiếu theo
+[Bảng điều hành](docs/PLAN.md#dashboard).
 
 ## Bắt đầu
 

@@ -98,14 +98,16 @@ def historical_repository_blob(root, relative, expected_sha, expected_bytes):
 def historical_checkpoint_source(root, relative, expected_sha, expected_bytes, checkpoint):
     """Resolve a source pin at its v2 record's publication, not an arbitrary revision.
 
-    Local/raw/artifact files and non-source repository files never take this path.
+    Local/raw/artifact files and other non-source repository files never take this path.
+    The exact docs CI workflow is executable source, with the same publication guard.
     A source blob committed later cannot repair a missing publication-time pin.
     Older inline-only records without a matching v2 publication stay strict.
     """
     python_source = Path(relative).parts[0] in {'server', 'tools'} and Path(relative).suffix == '.py'
     rust_source = (re.fullmatch(r'rust/crates/[^/]+/(?:src/(?:[^/]+/)*|tests/)[^/]+\.rs', relative)
                    and not any(part in {'.', '..'} for part in relative.split('/')))
-    if not re.fullmatch(r'CP[0-9]{3,}', checkpoint) or not (python_source or rust_source):
+    docs_workflow = relative == '.github/workflows/docs.yml'
+    if not re.fullmatch(r'CP[0-9]{3,}', checkpoint) or not (python_source or rust_source or docs_workflow):
         return None
     return historical_checkpoint_publication(
         root, relative, expected_sha, expected_bytes, checkpoint)

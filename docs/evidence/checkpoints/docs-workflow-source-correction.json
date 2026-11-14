@@ -1,0 +1,52 @@
+{
+  "schema": "kre-checkpoint-publication-history-correction-v1",
+  "checkpoint": "CP304",
+  "source": "design",
+  "status": "design",
+  "canonical": "docs/evidence/checkpoints/README.md#publication-bound-source-history",
+  "problem": "CP303 exact-head full check phát hiện một lỗi: CP264 pin bản workflow CI cũ; checker chưa hỗ trợ source YAML đó dù declaration, manifest và blob tại commit công bố đều còn đúng.",
+  "correction": "Chỉ .github/workflows/docs.yml dùng original-publication guard giống source Python/Rust. Không mở fallback cho YAML khác, local/raw/artifact hoặc blob chỉ khớp ở commit sau. Giữ nguyên CP264, CP303, audit và kết quả runtime.",
+  "history": [
+    {
+      "checkpoint": "CP264",
+      "pin": {
+        "id": "R1DN1CP264-00001",
+        "kind": "repository",
+        "path": ".github/workflows/docs.yml",
+        "bytes": 993,
+        "sha256": "00ea5b1e31f397c2ce8d6f468e0738d98f88e56ef7ab69b735e9bcd1bcebac57"
+      },
+      "publication": "62fe4e213cb19c5c4ef793f24656eb411b7a3682",
+      "warnings": [
+        "CP264: HISTORICAL SOURCE VERIFIED .github/workflows/docs.yml at 62fe4e213cb19c5c4ef793f24656eb411b7a3682; current file differs; checkpoint bytes unchanged"
+      ]
+    },
+    {
+      "checkpoint": "CP303",
+      "pin": {
+        "id": "L1A303-00001",
+        "kind": "repository",
+        "path": ".github/workflows/docs.yml",
+        "bytes": 1109,
+        "sha256": "c2ceb8df24b7b8cc3dc608b6391cd876209f3fce395556540072904fae6be0f8"
+      },
+      "publication": "5e0e17f908f98360935d51e079cf013763969394",
+      "warnings": []
+    }
+  ],
+  "tests": {
+    "suite": "tools/test_checkpoint_source_history.py",
+    "all_checkpoint_tests": 67,
+    "positive": "Pin workflow đúng ở lần công bố với external manifest đã xác thực.",
+    "negative": "Later matching blob, wrong checkpoint/hash, undeclared workflow, broken external manifest, artifact và đường YAML khác đều bị từ chối."
+  },
+  "local": {
+    "failed_full_check": "local/research/codex/l10n-cp303-exact-head-full.txt",
+    "targeted_proof": "local/research/codex/cp304-workflow-publication-proof.json",
+    "test_report": "local/research/codex/cp304-workflow-history-tests.txt"
+  },
+  "limits": [
+    "Đây là sửa provenance checker, không nâng acceptance L1a/L1b/L1c hoặc G1.",
+    "Kiểm toàn raw/history tại exact head và CI vẫn bắt buộc trước merge."
+  ]
+}
