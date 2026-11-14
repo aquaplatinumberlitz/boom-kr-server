@@ -37,6 +37,8 @@ pub struct Member {
     late_after_abort: u16,
     opaque123: u16,
     opaque167: u16,
+    // Visit budget, deliberately not reset by Start or round completion.
+    diagnostic59: u8,
     opaque142: u16,
     loading79: bool,
     pub(crate) life: crate::life::Player,
@@ -406,6 +408,7 @@ impl Room {
                 late_after_abort: 0,
                 opaque123: 0,
                 opaque167: 0,
+                diagnostic59: 0,
                 opaque142: 0,
                 loading79: false,
                 life: crate::life::Player::default(),
@@ -851,6 +854,20 @@ impl Room {
             return Err(io::Error::other("opaque142 observation budget"));
         }
         member.opaque142 += 1;
+        Ok(())
+    }
+    /// Measured59 envelope with a visit-lifetime budget; no world effects.
+    pub(crate) fn observe_diagnostic59(&mut self, key: Membership) -> io::Result<()> {
+        if !self.player_round() || !self.current(key) {
+            return Err(io::Error::other(
+                "diagnostic59 current player member required",
+            ));
+        }
+        let member = self.members.get_mut(&key.identity).expect("current member");
+        if member.diagnostic59 >= 16 {
+            return Err(io::Error::other("diagnostic59 visit budget"));
+        }
+        member.diagnostic59 += 1;
         Ok(())
     }
     /// Known167 sizes, semantics unknown; isolated no-response budget.

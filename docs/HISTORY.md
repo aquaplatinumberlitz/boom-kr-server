@@ -1459,3 +1459,12 @@ nghỉ và EOF. Chưa đủ relay mesh hoặc vận hành lâu dài. [Record](ev
 
 Các profile direct legacy 2/4/8 người và account đạt hồi quy refactor trong phạm vi hiện hành. Lỗi export/capture và
 raw phục hồi được ghi riêng, không biến thành pass toàn harness. [Record](evidence/checkpoints/records/CP274.json).
+
+
+### Mốc trước CP299
+
+**CP298: Rust đã tách terrain theo lựa chọn map; Forest07 có lát native roster2/4/8.**
+Seed riêng, thùng, một Roller ẩn theo policy thử nghiệm và hai kết quả/reset đã được đối chiếu native.
+Phép đo cũng sửa ngoại suy footprint của giếng3×2. [Contract và giới hạn](protocol/terrain.md#rust-selected-map-terrain),
+[bằng chứng](evidence/rust-service/g1-map-terrain.json). Forest07 và G1 vẫn còn roster/nội dung/drop theo acceptance;
+M8 giữ phạm vi riêng tại [Bảng điều hành](PLAN.md#dashboard).

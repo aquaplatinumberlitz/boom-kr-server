@@ -10,6 +10,7 @@ mod authenticated_room_relay;
 pub mod binding;
 mod bombs;
 mod characters;
+mod diagnostic59;
 mod four_results;
 mod life;
 mod life_actions;
@@ -831,9 +832,9 @@ async fn local_lobby_connection(
                 tokio::select! {_=stop.changed()=>return Ok(()),value=session.wait_journal()=>value?};
                 if let Some(account) = &mut account {
                     // Current room commands are activity. Literal opaque79 is
-                    // observation-only and must not extend account idle expiry.
+                    // observations79/59 must not extend account idle expiry.
                     // No lock crosses DB await; Session rechecks membership.
-                    tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(packet.opcode != 79)=>value? };
+                    tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(!matches!(packet.opcode, 79 | 59))=>value? };
                 }
                 if packet.opcode == 99 {
                     tokio::select! { _=stop.changed()=>return Ok(()), value=session.wait_peer_ready()=>value? };

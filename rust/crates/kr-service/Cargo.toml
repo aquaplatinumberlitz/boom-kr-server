@@ -18,3 +18,4 @@ argon2.workspace = true
 rusqlite.workspace = true
 getrandom.workspace = true
 zeroize.workspace = true
+flate2.workspace = true

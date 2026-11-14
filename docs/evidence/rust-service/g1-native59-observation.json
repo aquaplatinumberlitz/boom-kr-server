@@ -1,0 +1,102 @@
+{
+  "schema": "kre-native59-bounded-observation-v1",
+  "checkpoint": "CP299",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403",
+  "canonical": "docs/protocol/room-membership.md#rust-bounded-diagnostic59",
+  "source": "design",
+  "status": "design",
+  "decision": "Policy quan sát có giới hạn cho schema native59 đã đo đã có positive trên tám client và source/parser controls. Không khẳng định đã phục hồi ý nghĩa101, chính sách server gốc hoặc mọi59; issue403 giữ phần unknown và vận hành.",
+  "input_evidence": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "previous": "docs/evidence/rust-service/g1-map-terrain.json",
+    "actual_59_failure": "local/research/codex/g1-patrit-8-native-r2/fault-diagnosis.json",
+    "decoded": "local/research/codex/g1-patrit-8-native-r2/native59-decoded.json",
+    "fields": "Typed u8=1, u16 count=5, serialized storage tag0x18/selector1 with zlib output50. Năm record10byte; actual batches có mã101 và cả55 với value khác0. Mọi nội dung record, meaning và units giữ opaque."
+  },
+  "source_reuse": {
+    "ledger": "local/research/codex/g1-native59-observation-source-r1/reuse.json",
+    "policy_design": "local/research/codex/g1-native59-source-policy-design.json",
+    "private_static": [
+      "local/research/codex/g1-native59-static-r1/observed-callers-static.json",
+      "local/research/codex/g1-native59-static-r1/observed-callers-static-r2.json",
+      "local/research/codex/g1-native59-static-r1/observed-callers-static-r3.json"
+    ],
+    "alignment": [
+      "local/research/codex/g1-native59-static-r1/observed-callers-alignment.json",
+      "local/research/codex/g1-native59-static-r1/observed-callers-alignment-r2-r3.json"
+    ],
+    "coverage": "Hai pass có4rồi1body mới theo actual stack. 1164D50→13ADD10,847010 dựng59/type/count/blob và xóa buffer;846D20 append dữ liệu và846E50 chọn flush theo counters. Outer1257EA0 có các nhánh monitor, không đủ gán101 hoặc tin toàn bộ unwinding/parameter types.",
+    "avoided": "Không quét thêm producer hoặc đổi IDA/MCP/source DB, không thêm force gameplay state hoặc sửa executable/pack; bootstrap copy giữ reset global theo recipe cũ đã đo."
+  },
+  "policy": {
+    "stage": "Current managed player-room membership, mọi phase của cùng visit;59 không áp lên login, lobby không có room hoặc legacy profile.",
+    "validation": "Body23..96bytes; prefix/type/count/storage header/declared size khớp; compressed selector1 và output50; giải nén vào buffer51 và đòi kết thúc đúng50, input tiêu hết/checksum đúng/no trailer; nội dung records không được diễn giải hoặc dùng làm quyền. Các schema type/count/storage chưa đo bị từ chối.",
+    "budget": "Tối đa16 accepted observations cho một membership visit, không reset khi đổi round hoặc về Idle. Sai connection/visit bị chặn; không suy raw59 có round token.",
+    "effects": "Không response/ACK, không đổi world/stat/room/round, không gia hạn account idle; account.authorize(false) vẫn kiểm expiry/revoke rồi room kiểm membership lại.",
+    "limits": "Lựa chọn của công ty, không original server authority. Replayed body trên current owned transport chỉ tốn observation budget, không tác động gameplay; không suy fresh packet từ body."
+  },
+  "implementation": {
+    "files": [
+      "rust/crates/kr-service/src/diagnostic59.rs",
+      "rust/crates/kr-service/src/lib.rs",
+      "rust/crates/kr-service/src/room.rs",
+      "rust/crates/kr-service/src/room_io.rs",
+      "rust/crates/kr-service/src/room_io_item_tests.rs"
+    ],
+    "dependency": "flate2=1.1.10/rust_backend; thêm dependency giải nén đã pin. Version/checksum mọi dependency cũ giữ nguyên.",
+    "dependency_verification": "local/research/codex/g1-native59-lock-verification.json",
+    "build_inputs": "local/research/codex/g1-native59-observation-source-r1/build-inputs.json",
+    "tests": 196,
+    "reports": [
+      "local/research/codex/g1-native59-workspace-r4.txt",
+      "local/research/codex/g1-native59-fmt-r4.txt",
+      "local/research/codex/g1-native59-clippy-r4.txt",
+      "local/research/codex/g1-native59-build-r4.txt"
+    ],
+    "controls": "Bốn payload TCP thật, gồm mixed-record55, làm positive parser. Header/count/length/partial/checksum/trailer/expansion negatives; record-content opacity positives; current connection, budget16 giữ qua reset, no replies/stat/world effects. Input do encoder test tạo chỉ kiểm parser, không native oracle.",
+    "current_cargo_preflight": "Lượt native8-r5 đã pin đúng Cargo.lock và hai Cargo.toml hiện hành trong runtime preflight; các snapshot build-inputs trước đó giữ nguyên provenance riêng."
+  },
+  "native": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "root": "local/research/codex/g1-patrit-8-native-r5",
+    "run_sha256": "ea379ebf4f43d15ce3d8bd3daa27b73730586397b3fb84e32c8d358e7f4f508f",
+    "service_sha256": "0ef5493ec5e28becc99e4cd692c0677d208f43d5540a7bd504ad5ad3cd3b281c",
+    "actual59_count": 6,
+    "queue59_count": 6,
+    "verification": "local/research/codex/g1-patrit-8-native-r5/diagnostic59-positive-verification.json",
+    "verification_sha256": "31b4fa85da14b5cb111e516462eb9beb3a9dd6456ca6dcce03d17d44a354640a",
+    "native_gameplay": "local/research/codex/g1-patrit-8-native-r5/patrit-roster-native-verification.json",
+    "opaque167_verification": "local/research/codex/g1-patrit-8-native-r5/opaque167-control-verification.json",
+    "limits": "Actual queue→TCP59→current server observation, rồi native hai ván/reset với195flags/readers/entity/stat/rank trên cả8view. Không chứng minh purpose101 hoặc original server response; source controls không thay native."
+  },
+  "failed_runs": [
+    {
+      "root": "local/research/codex/g1-patrit-8-native-r1",
+      "diagnosis": "local/research/codex/g1-patrit-8-native-r1/fault-diagnosis.json",
+      "fact": "Đóng do167/body52, queue59 ởA/D nhưng TCP không59."
+    },
+    {
+      "root": "local/research/codex/g1-patrit-8-native-r2",
+      "diagnosis": "local/research/codex/g1-patrit-8-native-r2/fault-diagnosis.json",
+      "fact": "Sau sửa167, vòng1 hoàn tất; đầu vòng2 actual59 ởC/D/E rồi unknown handler đóng. Exit1/raw/cleanup giữ nguyên."
+    },
+    {
+      "root": "local/research/codex/g1-patrit-8-native-r3",
+      "diagnosis": "local/research/codex/g1-patrit-8-native-r3/fault-diagnosis.json",
+      "fact": "C schema101 nhận được; H cùng schema có mixed record55/value1217 bị bộ lọc nội dung quá hẹp từ chối. Failed exit1 giữ nguyên; policy cuối giữ records opaque."
+    },
+    {
+      "root": "local/research/codex/g1-patrit-8-native-r4",
+      "diagnosis": "local/research/codex/g1-patrit-8-native-r4/fault-diagnosis.json",
+      "fact": "H lỗi startup Wine/CXX trước lobby, không có close lỗi server; không tới policy59/gameplay. Retry cùng binary/source ở label mới."
+    }
+  ],
+  "limits": [
+    "Schema khác/type/count/record khác, purpose của mọi record/units và server gốc vẫn unknown; không gọi toàn protocol59 đã phục hồi.",
+    "Budget16/visit và môi trường timing GDB/Wine chỉ phục vụ lát hiện hành; M8 cần đo long-session/load trước vận hành. Không test hay claim Internet mới.",
+    "Sáu khoảng dừng âm tính có metadata riêng, không bị đổi thànhpositive. Lượt lỗi actual59 Forest không sửa lại.",
+    "Không ACK giả, không dùng matching Rust/Python hoặc log server thay native continuation. G1/giai đoạn1 vẫn mở."
+  ]
+}

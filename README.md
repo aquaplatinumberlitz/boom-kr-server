@@ -33,11 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP298: Rust đã tách terrain theo lựa chọn map; Forest07 có lát native roster2/4/8.**
-Seed riêng, thùng, một Roller ẩn theo policy thử nghiệm và hai kết quả/reset đã được đối chiếu native.
-Phép đo cũng sửa ngoại suy footprint của giếng3×2. [Contract và giới hạn](docs/protocol/terrain.md#rust-selected-map-terrain),
-[bằng chứng](docs/evidence/rust-service/g1-map-terrain.json). Forest07 và G1 vẫn còn roster/nội dung/drop theo acceptance;
-M8 giữ phạm vi riêng tại [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP299: Patrit14 đã có route terrain/item với account roster 2/4/8 qua hai ván/reset.**
+[Bằng chứng và giới hạn](docs/evidence/rust-service/g1-patrit-terrain.json) giữ đối chiếu spawn, thùng,
+Roller cấu hình và MastTileA. Chủ dự án đã chấp nhận [Village10/Tomb12 2–6 người, bốn map còn lại 2–8](docs/evidence/owner-directives/g1-map-roster-limits.json).
+G1 và M8 còn theo [Bảng điều hành](docs/PLAN.md#dashboard); phân phối drop và item chưa đo vẫn chưa được mở.
 
 ## Bắt đầu
 

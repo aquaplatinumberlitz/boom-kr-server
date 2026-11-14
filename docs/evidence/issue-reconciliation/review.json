@@ -865,19 +865,22 @@
         "KR-F007"
       ],
       "classification": "in_progress",
-      "known": "Đã công bố CP298: per-choice terrain và route Forest07 roster 2/4/8, một Roller ẩn cấu hình và hai vòng. Chưa merge lát này.",
-      "remaining": "Nội dung/drop/item và các map/roster theo acceptance G1; lỗi 59 giữ issue403 riêng.",
+      "known": "PR404/CP298 đã merge; lát Patrit14 mới có native 2/4/8 và bounded59 positive nhưng chưa bàn giao PR. Roster Village10/Tomb12 theo owner là 2–6, bốn map còn lại 2–8.",
+      "remaining": "Gameplay/drop/item và roster theo acceptance G1 hiện hành; lỗi 59 giữ ở issue403 riêng.",
       "next_test": "Theo Bảng điều hành PLAN; chỉ đo gap còn chặn implementation hoặc acceptance.",
-      "reason": "Lát Forest07 giới hạn không hoàn tất issue terrain/drop cho mọi map.",
+      "reason": "Bàn giao terrain theo map không hoàn tất toàn bộ G1. Quyết định roster mới bỏ yêu cầu 8 người trên hai map có 6 spawn; không thay evidence lịch sử.",
       "sources": [
         "docs/PLAN.md#phase1-acceptance",
         "docs/protocol/terrain.md#rust-selected-map-terrain",
         "docs/RESEARCH.md#gap-rust-selected-map-terrain"
       ],
       "evidence": [
-        "docs/evidence/rust-service/g1-map-terrain.json"
+        "docs/evidence/rust-service/g1-map-terrain.json",
+        "docs/evidence/owner-directives/g1-map-roster-limits.json"
       ],
-      "prs": [],
+      "prs": [
+        404
+      ],
       "kre": "KRE-074",
       "acceptance": "docs/PLAN.md#phase1-acceptance",
       "successors": [],
@@ -889,9 +892,9 @@
         "KR-S001"
       ],
       "classification": "in_progress",
-      "known": "Hai client native gửi 59/body47 trong lượt Forest07 lỗi; caller và semantics chưa rõ. Lượt trace positive không tái hiện.",
-      "remaining": "Cần điều kiện/caller thực trước quyết định protocol; chưa có fix hoặc ACK/ignore policy.",
-      "next_test": "Phép trace có giới hạn tại RESEARCH; không suy đã sửa từ absence.",
+      "known": "Có actual native59 và caller trace; policy design giữ record opaque đã có positive tám client/hai vòng. Ba lỗi runtime và một startup failure giữ nguyên.",
+      "remaining": "Original semantics/purpose record, schema khác và budget16/visit dưới phiên dài/tải M8; không suy original59 đã phục hồi.",
+      "next_test": "Theo PLAN; chỉ mở variant khi actual input chưa hỗ trợ, đo budget tại M8, không lặp parser hoặc phép dừng âm tính.",
       "reason": "Raw lỗi và positive đã seal; packet 59 chưa được giải quyết.",
       "sources": [
         "docs/PLAN.md#dashboard",
@@ -899,15 +902,17 @@
         "docs/RESEARCH.md#rust-service-gaps"
       ],
       "evidence": [
-        "docs/evidence/rust-service/g1-map-terrain.json"
+        "docs/evidence/rust-service/g1-map-terrain.json",
+        "docs/evidence/rust-service/g1-native59-pauses.json",
+        "docs/evidence/rust-service/g1-native59-observation.json"
       ],
       "prs": [],
       "kre": "KRE-074",
       "acceptance": "docs/PLAN.md#phase1-acceptance",
       "successors": [],
-      "reviewed_utc": "2026-11-13T20:49:07.374349+00:00"
+      "reviewed_utc": "2026-11-14T11:14:12.505462+00:00"
     }
   ],
-  "as_of_utc": "2026-11-13T20:49:07.374349+00:00",
+  "as_of_utc": "2026-11-14T11:14:12.505462+00:00",
   "limits": "Đối soát issue thủ công có ngày; snapshot là trạng thái lúc chụp, không chứng nhận acceptance hoặc đóng gate."
 }

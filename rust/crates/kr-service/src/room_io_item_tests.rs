@@ -87,7 +87,7 @@ fn case(count: usize) -> Case {
             rules,
             limits: rules::ReportLimits {
                 power: Vec::new(),
-                opaque167: &[4, 12, 16, 22, 32, 42],
+                opaque167: rules::ReportLimits::PLAYER_OPAQUE167,
             },
         })),
         relay: None,
@@ -177,6 +177,44 @@ fn confirmations(c: &mut Case) {
         assert_eq!(b.packets[0].1.opcode, 165);
         s.finish(&b).unwrap();
     }
+}
+#[test]
+fn captured_patrit167_is_bounded_current_observation_without_item_or_reply_effects() {
+    // Actual Patrit8-r1 PCAP, identity1/channel167/body52/sequence352.
+    let body = bytes(
+        "a569a56c96ca62aca569a56d6935ac6aa563a56f5a5b6935ac6aa560a56e5a5b6935ac6aa562a56e5b5b6935ac6aa563a5615b5b",
+    );
+    let mut c = case(3);
+    let before = {
+        let r = c.shared.lock().unwrap();
+        (
+            r.model.phase.clone(),
+            r.model.members[&c.keys[0].identity].item_stats,
+        )
+    };
+    c.sessions[0].connection += 1;
+    assert!(c.sessions[0].packet(167, &body).is_err());
+    c.sessions[0].connection -= 1;
+    for invalid in [&body[..51], &[0; 53][..]] {
+        assert!(c.sessions[0].packet(167, invalid).is_err());
+    }
+    // Repeated opaque observations cannot produce world effects, extend the
+    // per-round budget, or publish acknowledgements to any recipient.
+    for _ in 0..64 {
+        c.sessions[0].packet(167, &body).unwrap();
+    }
+    assert!(c.sessions[0].packet(167, &body).is_err());
+    assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
+    let r = c.shared.lock().unwrap();
+    assert_eq!(
+        (
+            r.model.phase.clone(),
+            r.model.members[&c.keys[0].identity].item_stats
+        ),
+        before
+    );
+    assert!(r.model.pickups.hidden_cell(2, 3));
+    assert!(r.model.last_blast.is_none());
 }
 #[test]
 fn basic_pickup_queue_atomicity_current_owner_and_duplicate_are_independent_of_slot_identity() {
@@ -630,4 +668,42 @@ fn map_selection_replaces_terrain_and_claims_atomically_and_fences_prior_map_bat
             .pickups
             .hidden_cell(2, 3)
     );
+}
+
+#[test]
+fn captured59_is_current_no_reply_visit_budget_and_cannot_change_round_or_stats() {
+    let body = bytes(
+        "5ba56c96ca53bf96ca768d96f852954cb25395560a9cee94ca9905ce0865fe37d2abfaa6c81a39dae977039e0953835b6c",
+    );
+    let mut c = case(3);
+    assert!(Session::handles(59));
+    c.sessions[0].connection += 1;
+    assert!(c.sessions[0].packet(59, &body).is_err());
+    c.sessions[0].connection -= 1;
+    assert!(c.sessions[0].packet(59, &body[..body.len() - 1]).is_err());
+    for _ in 0..15 {
+        c.sessions[0].packet(59, &body).unwrap();
+    }
+    {
+        let mut r = c.shared.lock().unwrap();
+        assert_eq!(r.model.phase, Phase::Armed { round: c.round });
+        assert_eq!(
+            r.model.members[&c.keys[0].identity]
+                .item_stats
+                .unwrap()
+                .speed,
+            5
+        );
+        assert!(r.model.pickups.hidden_cell(2, 3));
+        assert!(r.model.last_blast.is_none());
+        r.model.end(c.round).unwrap();
+        for key in &c.keys {
+            r.model.refreshed(*key, c.round).unwrap();
+        }
+    }
+    // Idle after reset is still the same visit; the budget cannot be renewed.
+    c.sessions[0].packet(59, &body).unwrap();
+    assert!(c.sessions[0].packet(59, &body).is_err());
+    assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
+    assert_eq!(c.shared.lock().unwrap().model.phase, Phase::Idle);
 }

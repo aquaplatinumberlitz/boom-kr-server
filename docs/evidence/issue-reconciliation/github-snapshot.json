@@ -1,25 +1,25 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-13T20:49:15.211213+00:00",
+  "captured_utc": "2026-11-14T11:14:12.420418+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
-      "body": "KRE-074, blocker phát sinh của G1/#402. Owner/self-check Codex solo; independent review waived. Baseline main PR401 và WIP per-map terrain, raw đã seal.\n\nUnknown59 trước đây ở N1R-b đã tái hiện trong lượt Forest07 tám account: hai client thật gửi59/body47 rồi server đóng unknown stage/opcode/shape; lỗi client xảy ra sau đó. Chưa coi đây là lỗi terrain, chưa có contract cho ACK hoặc bỏ qua59.\n\nTái dùng probe game13ADCC0/general13ADD10 và cached codec/stream. Đo tối thiểu caller/stack/header và input trước actual59 trên bản copy Wine/LAN cô lập, cùng binary/config/route, finite probe budget. Chỉ mở tối đa bốn body mới theo caller đã quan sát nếu cần. Hai/bốn client và phần map độc lập tiếp tục khi có thể.\n\nAcceptance: raw/hash/cleanup và join actual native→capture→server close; xác định điều kiện/caller hoặc giữ unknown rõ. Chỉ thay policy nếu bằng chứng đủ, tách company design khỏi original contract; current positive và negative/limits tương ứng. Không ACK giả hoặc loại bỏ gói để làm gate xanh. Native59/mọi nguyên nhân không được tuyên bố đã sửa chỉ vì run sau không tái hiện.\n\nNguồn chuẩn: docs/RESEARCH.md#rust-service-gaps, docs/PLAN.md#dashboard; kết quả theo checkpoint mới, không sửa lịch sử N1R-b đã complete. Không đưa thông tin hạ tầng riêng lên GitHub.\n\nFeature: KR-S001 (service và xử lý protocol chưa biết; không gán semantics cho 59).\n\nLiên kết nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md).\n",
+      "body": "KRE-074, blocker phát sinh của G1/#402. Owner/self-check Codex solo; independent review waived. Baseline main PR401 và WIP per-map terrain, raw đã seal.\n\nUnknown59 trước đây ở N1R-b đã tái hiện trong lượt Forest07 tám account: hai client thật gửi59/body47 rồi server đóng unknown stage/opcode/shape; lỗi client xảy ra sau đó. Chưa coi đây là lỗi terrain, chưa có contract cho ACK hoặc bỏ qua59.\n\nTái dùng probe game13ADCC0/general13ADD10 và cached codec/stream. Đo tối thiểu caller/stack/header và input trước actual59 trên bản copy Wine/LAN cô lập, cùng binary/config/route, finite probe budget. Chỉ mở tối đa bốn body mới theo caller đã quan sát nếu cần. Hai/bốn client và phần map độc lập tiếp tục khi có thể.\n\nAcceptance: raw/hash/cleanup và join actual native→capture→server close; xác định điều kiện/caller hoặc giữ unknown rõ. Chỉ thay policy nếu bằng chứng đủ, tách company design khỏi original contract; current positive và negative/limits tương ứng. Không ACK giả hoặc loại bỏ gói để làm gate xanh. Native59/mọi nguyên nhân không được tuyên bố đã sửa chỉ vì run sau không tái hiện.\n\nNguồn chuẩn: docs/RESEARCH.md#rust-service-gaps, docs/PLAN.md#dashboard; kết quả theo checkpoint mới, không sửa lịch sử N1R-b đã complete. Không đưa thông tin hạ tầng riêng lên GitHub.\n\nFeature: KR-S001 (service và xử lý protocol chưa biết; không gán semantics cho 59).\n\nLiên kết nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md).\n\nBổ sung điều tra Patrit14: lượt tám client đã seal tái hiện queue59 ởA/D, caller stack1164D50/847010 đã có hai body static theo trace. Capture của chính lượt này không có TCP59; tám channel bị đóng trước do167/body52 ngoài tập observation đã đo. Không quy lỗi đóng Patrit cho59 và không coi bổ sung observation167 làfix59. Lỗi actual59 Forest vẫn giữ; semantics/reply chưa được phục hồi. Phép scheduling hai client/sáu khoảng dừng cũng âm tính, không chứng minh đã sửa.\n",
       "closedAt": null,
       "number": 403,
       "state": "OPEN",
       "title": "KRE-074: trace native59 đang chặn nghiệm thu Forest07",
-      "updatedAt": "2026-11-13T20:50:14Z",
+      "updatedAt": "2026-11-14T11:15:13Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403"
     },
     {
-      "body": "KRE-074 / RUST-G1 lát5. Owner/self-check Codex solo; independent review waived. Baseline PR401/CP297, chưa suy dependency đã merge khi PR còn mở. Feature KR-F005/KR-F006/KR-F007 và map selection hiện hành.\n\nGiá trị bàn giao: mỗi map trong catalog mang terrain/floor tương ứng, chọn map không giữ shadow/claim của map cũ; đo nội dung theo thứ tự PLAN. Trước hết tái dùng adapter/profile và kernel đã có, đo gap Forest07 Well00 thay cho RE toàn client. Factory07 có phân loại tĩnh đầy đủ nhưng chưa native geometry; Forest/Patrit còn một ô đặc biệt, các map khác giữ unknown chưa bật. Không sửa tools/export_map_profile.py, client/pack gốc hoặc thêm capacity flags/identity aliases.\n\nFile dự kiến: map_profile, room_io, terrain và kiểm nguồn tương ứng; contract/limits tại PROTOCOL, unknown/phép đo tại RESEARCH, PLAN duy nhất giữ thứ tự; metadata/raw hash mới theo nhóm tính năng. Python giữ RE/reference.\n\nAcceptance: choice giữ đúng map/start seed/floor/hidden catalog và limits, queue rollback/current host/Idle/map revision; reset/new selection/multiroom không kế thừa terrain/claims/batch cũ. Chỉ mở tile/item sau native proof phù hợp; mỗi map được công bố có spawn/box/drop/pickup đúng, hai kết quả/reset, ca âm và raw/hash/cleanup. Source/differential không thay client KR thật. Không coi basic chọn map đã có là full gameplay, không tự giảm scope map2..8 hoặc ép spawn Village10.\n\nNguồn chuẩn: docs/PLAN.md#phase1-acceptance; docs/protocol/terrain.md#rust-player-terrain; docs/protocol/load-phase.md#rust-room-map-selection; docs/content/tile-semantics.md; docs/RESEARCH.md#gap-village10-map. Điều phối #285.\n\nLiên kết nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md).\n",
+      "body": "KRE-074 / RUST-G1 lát5. Owner/self-check Codex solo; independent review waived. Baseline PR401/CP297, chưa suy dependency đã merge khi PR còn mở. Feature KR-F005/KR-F006/KR-F007 và map selection hiện hành.\n\nGiá trị bàn giao: mỗi map trong catalog mang terrain/floor tương ứng, chọn map không giữ shadow/claim của map cũ; đo nội dung theo thứ tự PLAN. Trước hết tái dùng adapter/profile và kernel đã có, đo gap Forest07 Well00 thay cho RE toàn client. Factory07 có phân loại tĩnh đầy đủ nhưng chưa native geometry; Forest/Patrit còn một ô đặc biệt, các map khác giữ unknown chưa bật. Không sửa tools/export_map_profile.py, client/pack gốc hoặc thêm capacity flags/identity aliases.\n\nFile dự kiến: map_profile, room_io, terrain và kiểm nguồn tương ứng; contract/limits tại PROTOCOL, unknown/phép đo tại RESEARCH, PLAN duy nhất giữ thứ tự; metadata/raw hash mới theo nhóm tính năng. Python giữ RE/reference.\n\nAcceptance: choice giữ đúng map/start seed/floor/hidden catalog và limits, queue rollback/current host/Idle/map revision; reset/new selection/multiroom không kế thừa terrain/claims/batch cũ. Chỉ mở tile/item sau native proof phù hợp; mỗi map được công bố có spawn/box/drop/pickup đúng, hai kết quả/reset, ca âm và raw/hash/cleanup. Source/differential không thay client KR thật. Không coi basic chọn map đã có là full gameplay, không tự giảm scope map2..8 hoặc ép spawn Village10.\n\nNguồn chuẩn: docs/PLAN.md#phase1-acceptance; docs/protocol/terrain.md#rust-player-terrain; docs/protocol/load-phase.md#rust-room-map-selection; docs/content/tile-semantics.md; docs/RESEARCH.md#gap-village10-map. Điều phối #285.\n\nLiên kết nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md).\n\nChủ dự án đã đổi tiêu chí roster ngày14/11: Village10/Tomb12 nghiệm thu2–6người theo6spawn gốc; Camp08/Factory07/Forest07/Patrit14 giữ2–8. Các tiêu chí gameplay/item/hai vòng/reset và ca âm giữ nguyên. Quyết định phạm vi không đóng G1 hoặc issue này. Nguồn quyết định: docs/evidence/owner-directives/g1-map-roster-limits.json, acceptance hiện hành chỉ ở PLAN.\n",
       "closedAt": null,
       "number": 402,
       "state": "OPEN",
       "title": "KRE-074: G1 terrain và drop theo map được chọn",
-      "updatedAt": "2026-11-13T20:50:13Z",
+      "updatedAt": "2026-11-13T21:11:38Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
     },
     {
@@ -735,6 +735,17 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "e3d1bd1eb8339a8335598295ce5faeef5eeb53ac",
+      "mergeCommit": {
+        "oid": "d41179abd3c9397c36cd7c9f16811f4a08466ffa"
+      },
+      "mergedAt": "2026-11-13T21:04:17Z",
+      "number": 404,
+      "state": "MERGED",
+      "title": "G1: terrain theo map và route Forest07 native 2/4/8",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/404"
+    },
     {
       "headRefOid": "8df43a187058653f40b962377599102ffca7669a",
       "mergeCommit": {

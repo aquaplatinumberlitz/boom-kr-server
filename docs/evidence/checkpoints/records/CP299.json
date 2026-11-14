@@ -1,0 +1,308 @@
+{
+  "id": "CP299",
+  "previous": "CP298",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-14T12:03:56.579958+00:00",
+  "context_commit": "bc01aaf2d1529e09a0382c175848b539008917f2",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1: Patrit14 MastTileA và route native2/4/8 có đủ bằng chứng cho lát terrain không; phạm vi roster mới và phép scheduling59 được giữ đúng giới hạn thế nào?",
+  "scope": "Patrit14 bounded seed/terrain/one designed hidden Roller/two cycles for2/4/8 accounts, plus measured167/52 observation delta; owner roster directive and native59 bounded negative. Không fullPatrit/G1/giai đoạn1.",
+  "artifacts": [
+    {
+      "name": "Patrit-native8-Rust-service-opaque167-52",
+      "sha256": "0ef5493ec5e28becc99e4cd692c0677d208f43d5540a7bd504ad5ad3cd3b281c"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-patrit-terrain",
+    "docs/evidence/rust-service/g1-patrit-terrain.json",
+    "docs/PLAN.md#phase1-acceptance",
+    "docs/evidence/owner-directives/g1-map-roster-limits.json",
+    "docs/evidence/rust-service/g1-native59-pauses.json"
+  ],
+  "findings": [
+    {
+      "summary": "Owner đổi acceptance: Village10/Tomb122–6, Camp08/Factory07/Forest07/Patrit142–8. Không đổi hành vi acceptance khác hoặc đóng gate từ quyết định scope.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PLAN.md#phase1-acceptance",
+      "evidence": [
+        "G1PATRIT299-00013",
+        "G1PATRIT299-00005"
+      ],
+      "limits": "Chỉ phạm vi mới; checkpoint/audit/raw cũ giữ nguyên."
+    },
+    {
+      "summary": "Patrit14 seed hai view và430getters chỉ ra hai ô ground candidate thực blocked cạnh MastTileA; static Data3/1 chỉ tương quan footprint.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-patrit-terrain",
+      "evidence": [
+        "G1PATRIT299-07830",
+        "G1PATRIT299-07829",
+        "G1PATRIT299-07840"
+      ],
+      "limits": "Seed không phân biệt solid/destructible hoặc mọi field loader."
+    },
+    {
+      "summary": "Native2/4/8 theo provenance riêng: pack spawn, năm root actor1, hidden Roller/stat5→6/allview, toàn195flags trước/sau mọi blast và hai rank/reset. Adjacent root5,8/power1 giữ ba ô Mast blocked, clear hai thùng cạnh, hai vòng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-patrit-terrain",
+      "evidence": [
+        "G1PATRIT299-01427",
+        "G1PATRIT299-02368",
+        "G1PATRIT299-07399",
+        "G1PATRIT299-01426",
+        "G1PATRIT299-02367",
+        "G1PATRIT299-07398"
+      ],
+      "limits": "Chỉ route/hướng/power/contiguous đã ghi; fixed Roller design không original drop/full map. Getter emulation riêng, Python ownerprojection chỉ geometry."
+    },
+    {
+      "summary": "Native59 không tái hiện ở hai client với sáu khoảng dừng có kiểm soát; actual TCP không59. Patrit có caller queue riêng sau lỗi167, semantics và lỗi actual59 Forest vẫn chưa rõ.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/RESEARCH.md#rust-service-gaps",
+      "evidence": [
+        "G1PATRIT299-00015",
+        "G1PATRIT299-00648"
+      ],
+      "limits": "Bounded negative không fix, không loại giả thuyết timing, không ACK/ignore policy."
+    },
+    {
+      "summary": "Patrit8-r1 actual167/body52 bị guard đóng trên8channel; chỉ thêm measured52 vào managed player observation có budget. Native8-r2 cùng route qua hai vòng, không có close lỗi; source tests kiểm actual52/current/shape/budget/no effect.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-patrit-terrain",
+      "evidence": [
+        "G1PATRIT299-07431",
+        "G1PATRIT299-02450",
+        "G1PATRIT299-00667",
+        "G1PATRIT299-00031",
+        "G1PATRIT299-00028",
+        "G1PATRIT299-00025",
+        "G1PATRIT299-07396"
+      ],
+      "limits": "Opaque size acceptance không grammar/authority; không ACK hoặc suy original59 đã giải. Hai/bốn client dùng binary trước delta, tám dùng binary sau delta167 và policy59; source/parser/native59 controls riêng."
+    },
+    {
+      "summary": "Policy design nhận59/type1/count5/opaque-records với giải nén giới hạn50bytes, current managed member và16observations/visit; không ACK/world/stat/activity. Actual59 trênNative8 tiếp tục qua hai vòng cóproof riêng.",
+      "source": "design",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/protocol/room-membership.md#rust-bounded-diagnostic59",
+      "evidence": [
+        "G1PATRIT299-00014",
+        "G1PATRIT299-06263"
+      ],
+      "limits": "Không recoveredoriginal semantics/reply hoặc mọi diagnostic; boundedpolicy vànative compatibility của measuredprofile, chưa operationalbudgetM8."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Patrit native2/4/8: independent capture/reader/entity/flags/stat/result/reset and copied-native getters, raw/hash/cleanup",
+      "result": "pass",
+      "evidence": [
+        "G1PATRIT299-01427",
+        "G1PATRIT299-02368",
+        "G1PATRIT299-07399",
+        "G1PATRIT299-01426",
+        "G1PATRIT299-02367",
+        "G1PATRIT299-07398",
+        "G1PATRIT299-01419",
+        "G1PATRIT299-02360",
+        "G1PATRIT299-07390"
+      ],
+      "limits": "Scope ở contract; không original distribution hoặc fullG1."
+    },
+    {
+      "check": "Docs/catalog/owner directive synced; prior PR404 exact-head full489210pins/history/CI and transparent postCP298 correction",
+      "result": "pass",
+      "evidence": [
+        "G1PATRIT299-07422",
+        "G1PATRIT299-00022",
+        "G1PATRIT299-00010"
+      ],
+      "limits": "CP299 exact-head full/history/docs và CI vẫn phải đạt trước merge."
+    },
+    {
+      "check": "Manual feature-group audit",
+      "result": "pass",
+      "evidence": [
+        "G1PATRIT299-00009"
+      ],
+      "limits": "Codex tự kiểm; independent review waived."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP299-patrit-terrain.json",
+      "bytes": 2120253,
+      "sha256": "3b3f10d3f48426b58a300740f257f499db185335b34e71f9e73d6257e1a0a1f8",
+      "count": 7881
+    }
+  ],
+  "delta": {
+    "added": [
+      "Patrit native seed vàbounded routes2/4/8/two cycles, measured167/52 source observation delta vàbounded59policy.",
+      "Owner roster acceptance mới vànative59 scheduling negative."
+    ],
+    "corrected": [
+      "MastTileA per-cell candidate thiếu hai ô chặn.",
+      "G1 Village10/Tomb12 roster2–8 cũ được owner đổi sang2–6 ở mốc mới.",
+      "PostCP298 issue snapshot correction/PR404 receipt được ghi lại, không sửa complete record."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "G1 còn terrain/nội dung Village10, Camp08, Tomb12 và phần Factory07 chưa có native terrain đầy đủ; bảng item, drop và nhân vật theo acceptance.",
+    "Forest07 và Patrit14 mới có các route giới hạn, một Roller cố định là design fixture, chưa mọi sparse roster/direction/power/drop hoặc authority gốc.",
+    "Village10/Tomb12 được chủ dự án đổi sang2–6người, bốn map còn lại2–8; vẫn phải có spawn đúng, native gameplay, item, hai ván/reset và ca âm, không dùng chung/ép spawn.",
+    "Native59 giữ issue403 cho purpose101/semantics/server gốc và schema ngoài measuredprofile; bounded observation design có nativepositive riêng. M8 còn đo budget16/visit; không gọi full59 đã phục hồi.",
+    "M8 còn transport xác thực mới qua Internet thật, tải50người/8phòng, backup đã thử restore, đóng gói/soak và vận hành."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Sau bàn giao lát Patrit14, làm L-probe theo main/PR405 ở ranh giới nhóm, không chạy song song checkpoint code; sau đó tiếp G1 theo dashboard. M8 và bounded diagnostic policy giữ scope riêng.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-14T12:03:56.579958+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo native/documents và manual feature-group audit; independent review waived.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/content/client-language.md",
+      "state": "updated",
+      "reason": "Đồng bộ main PR405; giữ thay đổi và thứ tự L-probe của chủ dự án, không sửa nội dung ngôn ngữ ở lát code này."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/evidence/owner-directives/g1-map-roster-limits.json",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-native59-observation.json",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-native59-pauses.json",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-patrit-terrain.json",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/protocol/room-membership.md",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ terrain Patrit, owner roster mới, bounded native59 negative và giới hạn; G1/M8 vẫn mở."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-patrit-terrain.json",
+      "state": "updated",
+      "reason": "Ma trận native/reuse/raw/hash/limits của lát Patrit."
+    },
+    {
+      "path": "docs/evidence/owner-directives/g1-map-roster-limits.json",
+      "state": "updated",
+      "reason": "Quyết định trực tiếp chủ dự án; không sửa acceptance cũ trong complete record."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-native59-pauses.json",
+      "state": "updated",
+      "reason": "Bounded scheduling experiment âm tính, không fix."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Quy trình solo/audit nhóm/evidence và điều kiện merge không đổi."
+    },
+    {
+      "path": "rust/README.md",
+      "state": "unchanged",
+      "reason": "Không đổi code/config interface Rust; source từ PR404 và fixture mới được mô tả ở contract/evidence."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-native59-observation.json",
+      "state": "updated",
+      "reason": "Phân biệt measured wire/caller/native continuation và bounded policy design, original semantics/budgetM8 unknown."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-g1-patrit-terrain-native-routes"
+  ]
+}

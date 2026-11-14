@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, CP298 / AUD114**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, CP299 / AUD115**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -23,21 +23,21 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, C
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; N1R-b đạt hành vi relay đã đo. Transport xác thực mới trên Internet thật và tải/vận hành còn M8 |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; N1R-b có bằng chứng riêng; vận hành còn M8 |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
-| [G1](#rust-g1) sáu map ladder và item | Adapter/UI, kim/cứu, item nền ExVillage01 và terrain theo map đã có từng lát; [Forest07 roster2/4/8](protocol/terrain.md#rust-selected-map-terrain) đạt các route đã đo | Sáu map/drop/item/nhân vật đầy đủ theo acceptance; không suy toàn bộ Forest07 từ một Roller cấu hình |
+| [G1](#rust-g1) sáu map ladder và item | Adapter/UI, kim/cứu, item nền ExVillage01 và terrain theo map đã có từng lát; [Forest07](protocol/terrain.md#rust-selected-map-terrain) và [Patrit14 roster2/4/8](protocol/terrain.md#rust-patrit-terrain) đạt các route đã đo | Sáu map/drop/item/nhân vật đầy đủ theo acceptance; không suy toàn bộ Forest07 từ một Roller cấu hình |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
 
 1. **G1.** M6 thu hẹp đã đạt acceptance tại [ma trận bằng chứng](evidence/rust-service/m6-journal-serving.json). N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
-   Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và các route Forest07 roster2/4/8 đã có lát native; tiếp khoảng trống Forest07 rồi Patrit14 và các map còn lại theo acceptance; không đụng `tools/export_map_profile.py`.
+   Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và route Forest07/Patrit14 roster2/4/8 đã có lát native; tiếp drop/nhóm item còn thiếu và Village10, Camp08, Tomb12 theo acceptance hiện hành; không đụng `tools/export_map_profile.py`.
    Không lặp M6 đã nghiệm thu, native4/8, roster, account/DB hoặc baseline N1b đã có. M8 theo thứ tự bên dưới.
    **Xen một lượt ở ranh giới giữa hai lát G1: L-probe.** Nạp thử bộ file chữ tiếng Anh (bảng mã Hàn, không vá exe) vào
    bản sao client gốc để biết client có nhận file dữ liệu đã thay không; năm lượt chạy, một checkpoint, không đổi code
    server. Đề bài ở `local/research/claude/codex-prompt-l10n-probe.md`, bối cảnh ở
    [content/client-language.md](content/client-language.md#data-files). Xong thì gỡ đoạn này.
 2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
-   N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. Packet59 đã tái hiện ở một lượt Forest07; [issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ unknown caller/semantics và phép trace có giới hạn, không coi current positive là fix.
+   N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có actual native59 rồi hai vòng/reset. [Issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ; không gọi schema đã đo là toàn protocol59.
 
 Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
@@ -46,13 +46,13 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
 - Direct UDP âm ở hai NAT đổi cổng; N1b không retry. Relay xác thực đã đạt hành vi N1R-b bằng native và runtime
   controls theo ma trận, với [preset phục vụ và ngân sách cổng](OPERATIONS.md). Native mới dùng Wine/LAN cô lập;
   Internet thật cho transport mới, tải, session budget và độ bền vận hành phải kiểm ở M8. Không mở lại K6c/K7.
-  Native59 đã tái hiện rồi không lặp trong lượt trace/current positive; [gap và bằng chứng](RESEARCH.md#rust-service-gaps) giữ nguyên lỗi trước, chưa có contract để ACK/bỏ qua hoặc claim đã sửa.
+  Native59 đã có [policy quan sát design và native positive](evidence/rust-service/g1-native59-observation.json) cho schema đã đo; không ACK hoặc đổi gameplay. Mã/giá trị record và server gốc vẫn unknown, M8 còn kiểm budget phiên dài; raw lỗi trước giữ nguyên.
 - M7a selection đã đo bốn profile; M7b lifecycle đã đo tám profile cấu hình và contiguous2/4/8. Occupancy chỉ phục hồi
   current/capacity, 20 byte còn lại giữ opaque. Opt-in M7e đã đo roster3/6/sparse và chosen-character Battle; native
   active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; chưa có progression hoặc inventory.
 - Factory07/Village10 đã có native chọn UI, basic hai ván/reset/ván tiếp và journal map. Chưa có terrain/drop/item
-  mới hoặc roster đầy đủ; không suy map đã mở hoàn chỉnh từ UI/basic. Village10 chỉ có6spawn và UI hiện giới hạn6;
-  yêu cầu G1 map2..8 còn phải kiểm, không tự rút acceptance hoặc ép spawn/pack. Các map còn lại theo thứ tự đã chốt.
+  mới hoặc roster đầy đủ; không suy map đã mở hoàn chỉnh từ UI/basic. Village10/Tomb12 có 6 spawn; theo [quyết định chủ dự án](evidence/owner-directives/g1-map-roster-limits.json),
+  nghiệm thu hai map này cho 2–6 người, bốn map còn lại cho 2–8 người. Gameplay và nội dung vẫn phải đo theo thứ tự đã chốt.
 - Một phép TCP diagnostic rộng có cache positive nhưng timeout ở idle Back/return241 và cleanup wait. Raw/failure
   đã giữ, cause chưa xác định; test cache hẹp có negative/ownership/shutdown riêng đã đạt. Không gọi toàn bộ hồi quy
   diagnostic rộng là pass; một lượt TCP setup cũng timeout trước peer106/117. Cause chưa rõ, theo dõi nếu cản G1/M6/M8. [Bằng chứng và giới hạn](evidence/rust-service/g1-map-adapter.json).
@@ -605,8 +605,11 @@ checkpoint:
 7. **Nhân vật.** M7e chỉ có chỉ số cho hai nhân vật đã đo. Mọi nhân vật mà account mới chọn được trong phòng chờ phải
    có chỉ số lấy từ `BomberAttr`; nhân vật chưa hỗ trợ bị từ chối rõ ràng.
 
-Map được mở từng cái. G1 đạt khi cả sáu map chơi được trong phòng 2 tới 8 người, hoặc chủ dự án chấp nhận danh sách
-rút gọn có lý do. Không thuộc mốc: map và item ngoài sáu map này, mode khác chế độ thường, monster, script.
+Map được mở từng cái. Theo [quyết định chủ dự án](evidence/owner-directives/g1-map-roster-limits.json), G1 đạt khi
+Village10 và Tomb12 chơi được trong phòng **2–6 người**, còn Camp08, Factory07, Forest07 và Patrit14 trong phòng
+**2–8 người**, cùng các tiêu chí gameplay, item, hai vòng/reset và ca âm ở trên. Dùng spawn gốc, không ép hoặc dùng
+chung tọa độ để nâng sức chứa. Quyết định chỉ đổi phạm vi nghiệm thu của hai map, chưa chứng nhận map nào đạt.
+Không thuộc mốc: map và item ngoài sáu map này, mode khác chế độ thường, monster, script.
 
 **M6 — lưu kết quả, thưởng 0.** Phải có:
 

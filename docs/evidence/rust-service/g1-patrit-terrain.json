@@ -1,0 +1,168 @@
+{
+  "schema": "kre-g1-patrit-native-terrain-v1",
+  "checkpoint": "CP299",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "canonical": "docs/protocol/terrain.md#rust-patrit-terrain",
+  "acceptance": "docs/PLAN.md#phase1-acceptance",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "decision": "Đạt các route Patrit14 với roster account 2/4/8 và hai ván/reset theo phạm vi dưới đây. G1 vẫn mở vì còn nội dung/drop/nhóm item và các map khác.",
+  "implementation": "Tái dùng source Rust của PR404/CP298. Lượt2/4 giữ binary cũ; lượt8-r5 dùng binary mới chỉ thêm body167/52 và schema59 type1/count5/records opaque vào observation có budget của managed player rounds, cùng kiểm nguồn tương ứng. Không ACK, đổi gameplay/stat, exporter/client/pack hoặc suy semantics167. Source test, fmt/clippy/locked build có report riêng.",
+  "baseline": {
+    "merge": "d41179abd3c9397c36cd7c9f16811f4a08466ffa",
+    "receipt": "local/research/codex/g1-map-terrain-delivery-receipt.json",
+    "service_sha256": "0ef5493ec5e28becc99e4cd692c0677d208f43d5540a7bd504ad5ad3cd3b281c",
+    "prior_service_sha256": "98654cf471c1e772238d734d92f8da7845dda96ffc503ddaeace3fde6478cccb"
+  },
+  "reuse": {
+    "ledger": "local/research/codex/g1-patrit-source-r1/reuse.json",
+    "tile_comparison": "local/research/codex/g1-patrit-source-r1/tile-comparison.json",
+    "direct": "Adapter, map choice, source queue/reset fences, account/roster, bomb/terrain/item and native reader/getter harness đã có. Không RE lại codec, auth, kim/cứu hoặc toàn bộ sender.",
+    "legacy": "Ledger CP298 giữ nguồn KR/VN/build/hash; không thêm function body hoặc nhập scope/wire của boom-rs/VN.",
+    "avoided": "Native seed và route được chọn theo unknown MastTileA; không lặp baseline tám client Forest07, bóc lại pack hoặc sửa tools/export_map_profile.py."
+  },
+  "seed_observation": {
+    "root": "local/research/codex/g1-patrit-seed-native-r1",
+    "run_sha256": "56389988147a07029e3c2821c69657b902b12d9e9d796f43148461e83f2f4762",
+    "verification": "local/research/codex/g1-patrit-seed-native-r1/patrit-seed-native-verification.json",
+    "getter_verification": "local/research/codex/g1-patrit-seed-native-r1/patrit-seed-getter-verification.json",
+    "getter_checks": 430,
+    "actual": "Hai view có cùng 195 flags. MastTileA anchor row6/column6; ô row6/column7 và8 bị chặn, trái phân loại ground từng ô. Seed chỉ cho blocked/unblocked.",
+    "static": "Data72 của MastTileA có dword6/7 là3/1, Well00 là3/2; tương quan footprint, không phục hồi ý nghĩa mọi trường hoặc hàm loader."
+  },
+  "native": [
+    {
+      "clients": 2,
+      "root": "local/research/codex/g1-patrit-2-native-r1",
+      "run_sha256": "ddcf81cd644177e90dd42c2c8828677a309901a1ade09ca937eadc744351e7de",
+      "duration_seconds": 266.849156094,
+      "raw_files": 125,
+      "service_sha256": "98654cf471c1e772238d734d92f8da7845dda96ffc503ddaeace3fde6478cccb",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+      "client_copy": "Bản diagnostic CA-r2-stage-social-cmp trên Wine, giữ reset global bootstrap theo recipe đã nghiệm thu. Không thêm patch, ghi gameplay state hoặc gọi hàm game để ép route; source client/pack giữ nguyên.",
+      "native_verification": "local/research/codex/g1-patrit-2-native-r1/patrit-roster-native-verification.json",
+      "getter_verification": "local/research/codex/g1-patrit-2-native-r1/patrit-roster-getter-verification.json",
+      "getter_checks": 10532,
+      "raw_seal": "local/research/codex/g1-patrit-2-native-r1/native/raw-seal.json",
+      "environment": "Các network namespace riêng trên LAN bridge cô lập, account-owned QUIC companion, Wine; không default route ngoài, không cấu hình delay/jitter/loss/reordering/bandwidth/MTU riêng.",
+      "limits": "Patrit14/2actual account clients/Wine/private LAN, PR404 binary matches failed8-r1; successful8-r5 has the measured167/52 source delta. Actor1 normal input follows five bounded roots to MastTileA, claims one designed hidden Roller4,8, stat5→6 allviews and reset, two results. Adjacent root5,8/power1 leaves allthree Mast flags blocked and clears two neighboring boxes each round. All195flags on all12actual blasts. No whole drop distribution/other items/map authority or Internet/full G1 claim. Mast contact measured from above/column8 at power1 only; other directions/powers remain untested. Python kernel owner0 projection only geometry; actual owner/serial/location/power verified separately."
+    },
+    {
+      "clients": 4,
+      "root": "local/research/codex/g1-patrit-4-native-r1",
+      "run_sha256": "c11b9c851b0c39ab89555e8fa784ad80257e6c6649d89c9d89e4b78b5531cd0c",
+      "duration_seconds": 317.992904411,
+      "raw_files": 261,
+      "service_sha256": "98654cf471c1e772238d734d92f8da7845dda96ffc503ddaeace3fde6478cccb",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+      "client_copy": "Bản diagnostic CA-r2-stage-social-cmp trên Wine, giữ reset global bootstrap theo recipe đã nghiệm thu. Không thêm patch, ghi gameplay state hoặc gọi hàm game để ép route; source client/pack giữ nguyên.",
+      "native_verification": "local/research/codex/g1-patrit-4-native-r1/patrit-roster-native-verification.json",
+      "getter_verification": "local/research/codex/g1-patrit-4-native-r1/patrit-roster-getter-verification.json",
+      "getter_checks": 24840,
+      "raw_seal": "local/research/codex/g1-patrit-4-native-r1/native/raw-seal.json",
+      "environment": "Các network namespace riêng trên LAN bridge cô lập, account-owned QUIC companion, Wine; không default route ngoài, không cấu hình delay/jitter/loss/reordering/bandwidth/MTU riêng.",
+      "limits": "Patrit14/4actual account clients/Wine/private LAN, PR404 binary matches failed8-r1; successful8-r5 has the measured167/52 source delta. Actor1 normal input follows five bounded roots to MastTileA, claims one designed hidden Roller4,8, stat5→6 allviews and reset, two results. Adjacent root5,8/power1 leaves allthree Mast flags blocked and clears two neighboring boxes each round. All195flags on all14actual blasts. No whole drop distribution/other items/map authority or Internet/full G1 claim. Mast contact measured from above/column8 at power1 only; other directions/powers remain untested. Python kernel owner0 projection only geometry; actual owner/serial/location/power verified separately."
+    },
+    {
+      "clients": 8,
+      "root": "local/research/codex/g1-patrit-8-native-r5",
+      "run_sha256": "ea379ebf4f43d15ce3d8bd3daa27b73730586397b3fb84e32c8d358e7f4f508f",
+      "duration_seconds": 426.976361978,
+      "raw_files": 605,
+      "service_sha256": "0ef5493ec5e28becc99e4cd692c0677d208f43d5540a7bd504ad5ad3cd3b281c",
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+      "client_copy": "Bản diagnostic CA-r2-stage-social-cmp trên Wine, giữ reset global bootstrap theo recipe đã nghiệm thu. Không thêm patch, ghi gameplay state hoặc gọi hàm game để ép route; source client/pack giữ nguyên.",
+      "native_verification": "local/research/codex/g1-patrit-8-native-r5/patrit-roster-native-verification.json",
+      "getter_verification": "local/research/codex/g1-patrit-8-native-r5/patrit-roster-getter-verification.json",
+      "getter_checks": 65552,
+      "raw_seal": "local/research/codex/g1-patrit-8-native-r5/native/raw-seal.json",
+      "environment": "Các network namespace riêng trên LAN bridge cô lập, account-owned QUIC companion, Wine; không default route ngoài, không cấu hình delay/jitter/loss/reordering/bandwidth/MTU riêng.",
+      "limits": "Patrit14/8actual account clients/Wine/private LAN, per-run binary hash retained separately; no same-binary inference across runs. Actor1 normal input follows five bounded roots to MastTileA, claims one designed hidden Roller4,8, stat5→6 allviews and reset, two results. Adjacent root5,8/power1 leaves allthree Mast flags blocked and clears two neighboring boxes each round. All195flags on all18actual blasts. No whole drop distribution/other items/map authority or Internet/full G1 claim. Mast contact measured from above/column8 at power1 only; other directions/powers remain untested. Python kernel owner0 projection only geometry; actual owner/serial/location/power verified separately."
+    }
+  ],
+  "source_change": {
+    "files": [
+      "rust/Cargo.toml",
+      "rust/Cargo.lock",
+      "rust/crates/kr-service/Cargo.toml",
+      "rust/crates/kr-service/src/rules.rs",
+      "rust/crates/kr-service/src/room_io.rs",
+      "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "rust/crates/kr-service/src/room.rs",
+      "rust/crates/kr-service/src/lib.rs",
+      "rust/crates/kr-service/src/diagnostic59.rs"
+    ],
+    "reuse": "local/research/codex/g1-patrit-opaque167-source-r1/reuse.json",
+    "reports": [
+      "local/research/codex/g1-native59-workspace-r4.txt",
+      "local/research/codex/g1-native59-fmt-r4.txt",
+      "local/research/codex/g1-native59-clippy-r4.txt",
+      "local/research/codex/g1-native59-build-r4.txt"
+    ],
+    "policy": "Measured167/body52 is observation-only. Diagnostic59 type1/count5/opaque-record profile uses strict bounded decompression, current member/connection,16observations per visit, no response or account activity; original semantics unknown.",
+    "diagnostic59": "docs/evidence/rust-service/g1-native59-observation.json"
+  },
+  "failed_native": {
+    "root": "local/research/codex/g1-patrit-8-native-r1",
+    "diagnosis": "local/research/codex/g1-patrit-8-native-r1/fault-diagnosis.json",
+    "reason": "Actual167/body52 bị đóng trên8channel; native queue59 ởA/D, actual TCP không59. Không coi59 là trigger đóng trong lượt này; raw/failure/cleanup giữ nguyên.",
+    "native59_static": "local/research/codex/g1-native59-static-r1/observed-callers-static.json",
+    "limits": "Caller847010 dựng59 qua1164D50→13ADD10 quan sát/static; chưa phục hồi semantics/reply hoặc fix59 củaForest."
+  },
+  "route": {
+    "actor_slot": 1,
+    "roots_row_column": [
+      [
+        0,
+        8
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ]
+    ],
+    "item": "Một Roller ẩn cố định ở4,8 là policy thử nghiệm. Sau thùng vỡ, native124/165 và stat của actor1 tăng5→6 trên mọi view; baseline vòng sau về5.",
+    "mast_control": "Actual root5,8/power1 từ phía trên/column8 giữ ba ô row6/columns6..8 blocked, đồng thời phá hai thùng5,7 và5,9, lặp cả hai vòng trên từng roster.",
+    "geometry": "Đối chiếu toàn195flags trước/sau mọi actual118→159→158. Kernel Python độc lập chỉ project owner0 cho geometry; actual ownership/serial/location/power kiểm riêng. Matching hai implementation không thay native evidence.",
+    "lifecycle": "Native rank/reset hai vòng và pack spawn/stat đúng ở mỗi clock; account names và roster join với capture."
+  },
+  "owner_directive": "docs/evidence/owner-directives/g1-map-roster-limits.json",
+  "native59": "docs/evidence/rust-service/g1-native59-observation.json",
+  "post_checkpoint_reconciliation": "docs/evidence/issue-reconciliation/cp298-correction.json",
+  "preparation_failures": [
+    {
+      "path": "local/research/codex/g1-patrit-2-preparation-r1.txt",
+      "stage": "pre-runtime",
+      "reason": "Catalog generator cần template một row, base đã có hai row nên bị từ chối. Bản input và lỗi giữ ở g1-patrit-2-preparation-rejected-r1; lượt tiếp dùng template một map đã có, không đổi source hoặc giả native pass."
+    }
+  ],
+  "limits": [
+    "Chỉ các route contiguous 2/4/8 đã ghi; không mọi sparse roster, ô trên map, hướng/power của MastTileA hoặc mọi authority gốc.",
+    "Roller cố định không phục hồi bảng rơi/trọng số/kết hợp ItemAttr hoặc các nhóm item khác; không gọi Patrit14 mở hoàn chỉnh.",
+    "Factory07 fallback không có terrain và không nhận native gameplay acceptance mới trong các lượt này.",
+    "Getter emulation riêng với runtime; log Rust hoặc source model không là oracle.",
+    "Village10/Tomb12 acceptance hiện hành2–6, bốn map còn lại2–8; quyết định phạm vi không đóng G1. CP298 và raw/kết quả cũ giữ nguyên.",
+    "M8 còn transport xác thực mới qua Internet thật, tải50/8phòng, backup/restore, đóng gói và soak."
+  ],
+  "failed_actual59": {
+    "root": "local/research/codex/g1-patrit-8-native-r2",
+    "diagnosis": "local/research/codex/g1-patrit-8-native-r2/fault-diagnosis.json",
+    "reason": "Round1 completed after167 delta; earlyround2 actual59/type1/count5/code101 rejected by unknown handler on3channels. Preserve exit1/raw/cleanup. No eight-player acceptance from this run."
+  },
+  "native59_native_wire_join": "local/research/codex/g1-patrit-8-native-r5/diagnostic59-native-wire-join.json"
+}
