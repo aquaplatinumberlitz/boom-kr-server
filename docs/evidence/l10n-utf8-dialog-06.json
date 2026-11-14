@@ -1,0 +1,18 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Two diagnostic copies and original Korean inputs; A uses one-shot read-only pass-through and B is uninstrumented. Same screenshot gate as dialog-05.",
+  "observation": "A matched DefaultRoomTitle5 and passed through the validated six-unit conversion without modifying memory or registers. The dialog screenshot gate timed out after 20 seconds without issuing further clicks. Manual inspection of the retained candidate image shows the lobby with no create dialog. The no-hook dialog-05 run showed the dialog and room; the reason for this difference remains unknown.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/dialog-06/recipe.json", "sha256": "971c5aedfcd2376e331af43116d14216ffc4f9a6d34c0819c8cf560876d5290a"},
+    {"path": "local/research/l10n-utf8-codex/dialog-06/preflight.json", "sha256": "4f2f290e9dbd10ef4219b763a7673d72e858e7b8731681f163de3d0d10916bd4"},
+    {"path": "local/research/l10n-utf8-codex/dialog-06/native/run.json", "sha256": "6244851406d1fe1e43985dc812d5374d1a71d07a6fac4d600e07de58069d006e"},
+    {"path": "local/research/l10n-utf8-codex/dialog-06/native/A/dialog-candidate.png", "sha256": "51c42d4fb3ecaaa5dfd450c8944947d4f80e9b99ca011f020ae03f3b113d37bc"},
+    {"path": "local/research/l10n-utf8-codex/dialog-06/storage-export.json", "sha256": "2a15a9e5dd3e45948175a40f67966a72e16bac7f9aaa6f55bb253535a07702b0"},
+    {"path": "local/research/l10n-utf8-codex/dialog-06/raw-seal.json", "sha256": "090700fa10c98518f103641ac4f843d7f722fd61cc3c4fa262c948c06593e838"}
+  ],
+  "cleanup": "Raw export passed; 38 files pinned, frozen inputs and executables unchanged, two copied map caches changed, no remaining recorded namespace process.",
+  "limits": "Pass-through did not reach the dialog; do not run substitution on this controller or attribute the difference to the hook without a distinguishing test. No glyph, UTF-8, IME, packet or original-client acceptance."
+}
