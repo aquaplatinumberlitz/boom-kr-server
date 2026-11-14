@@ -124,8 +124,30 @@ controls kiểm reverse selection, guest denial/rejoin, malformed pair/fresh-roo
 Phạm vi là admission4 và2client native, Dao0/Dizni1/team0/3, empty floor/no terrain mới. Village10 có6spawn/UI
 hiện6người; fixture8row bị adapter từ chối đúng. Theo [phạm vi hiện hành](../evidence/owner-directives/g1-map-roster-limits.json),
 Village10/Tomb12 nghiệm thu2–6, bốn map còn lại2–8; không ép hoặc dùng chung spawn.
-[Prototype theo giới hạn map và quan sát Herb](terrain.md#rust-village10-herb) có bằng chứng riêng, chưa là catalog chung đầy đủ. Terrain/drop/item, các map khác, mọi cỡ roster và Internet/load chưa được suy từ lát này. Lỗi synthetic
+[Prototype theo giới hạn map và quan sát Herb](terrain.md#rust-village10-herb) có bằng chứng riêng. [Catalog tám/sáu spawn và sparse6](#rust-map-spawn-capacity) đã có lát native mới; terrain/drop/item, các map khác, mọi cỡ roster và Internet/load chưa được suy từ lát chọn map này. Lỗi synthetic
 setup/Back cũ còn unknown, giữ raw/failure và phép đo M8 riêng.
+
+<a id="rust-map-spawn-capacity"></a>
+### Catalog có số spawn khác nhau và roster thưa
+
+[Source, native và giới hạn](../evidence/rust-service/g1-mixed-map-spawns.json) tách policy công ty khỏi hành vi
+client KR đã đo. `Choice.spawn_count` lấy từ profile pack. Sức chứa nhận người/listing dùng giá trị nhỏ hơn giữa
+sức chứa danh nghĩa của phòng và số spawn map hiện tại. Map selection vượt roster bị từ chối trước khi đổi map,
+revision, Ready hoặc queue; không bịa reply báo thành công. Start cũng kiểm lại giới hạn này.
+
+Chỉ DB-owned managed player rounds với `first_vacant`, không legacy Battle, được tạo prototype bằng số dòng nhỏ hơn
+giữa template nguồn và spawn map. Adapter chỉ cắt template slot/spawn liên tục đã kiểm; giữ tọa độ pack và các trường
+opaque. Config legacy giữ guard số dòng chính xác. Không thêm cờ hoặc nhánh runtime theo từng sức chứa.
+
+Khi slot cao nhất vượt số spawn, Start sắp slot hiện tại và gán ordinal spawn liên tục; identity, membership slot,
+connection và generation giữ nguyên. Nếu mọi slot còn trong giới hạn, ordinal vẫn bằng slot. Đổi lại map lớn hơn
+khôi phục cách gán thông thường; unit kiểm identity/slot, map revision, admission và queue không đổi khi bị từ chối.
+
+Native có tám account đăng nhập cùng service: chọn Village10 khi còn tám người bị từ chối; B và D thực hiện Back,
+sáu slot0/2/4/5/6/7 chọn map rồi dùng sáu ordinal0..5. Capture Start và tọa độ native ở mọi view khớp sáu spawn gốc,
+không trùng tọa độ hoặc đổi slot. Cả sáu có Fire/Roller và hai kết quả/reset; phần terrain cùng giới hạn snapshot
+được dẫn tại [Village10](terrain.md#rust-village10-herb). Đây là chứng minh sparse6 và catalog tám/sáu spawn,
+không tự chứng minh toàn khoảng roster, toàn nội dung G1 hoặc giới hạn tải M8.
 
 <a id="village10-map-selection"></a>
 ### Village10: mã map và dữ liệu chọn map phải nhất quán

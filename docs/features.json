@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP303",
+  "as_of": "CP305",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1356,7 +1356,8 @@
           "docs/evidence/rust-service/g1-map-selection.json",
           "docs/evidence/owner-directives/g1-map-roster-limits.json",
           "docs/evidence/rust-service/g1-patrit-terrain.json",
-          "docs/evidence/rust-service/g1-village10-terrain.json"
+          "docs/evidence/rust-service/g1-village10-terrain.json",
+          "docs/evidence/rust-service/g1-mixed-map-spawns.json"
         ]
       },
       "coverage": {
@@ -1426,7 +1427,8 @@
               "docs/evidence/rust-service/g1-map-adapter.json",
               "docs/protocol/load-phase.md#rust-room-map-selection",
               "docs/protocol/terrain.md#rust-patrit-terrain",
-              "docs/protocol/terrain.md#rust-village10-herb"
+              "docs/protocol/terrain.md#rust-village10-herb",
+              "docs/evidence/rust-service/g1-mixed-map-spawns.json"
             ]
           },
           "windows_original": {
@@ -1463,7 +1465,8 @@
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
             "docs/protocol/load-phase.md#rust-map-profile-adapter",
-            "docs/protocol/load-phase.md#rust-room-map-selection"
+            "docs/protocol/load-phase.md#rust-room-map-selection",
+            "docs/evidence/rust-service/g1-mixed-map-spawns.json"
           ]
         },
         "integration": {
@@ -1484,7 +1487,8 @@
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
             "docs/protocol/load-phase.md#rust-map-profile-adapter",
-            "docs/protocol/load-phase.md#rust-room-map-selection"
+            "docs/protocol/load-phase.md#rust-room-map-selection",
+            "docs/evidence/rust-service/g1-mixed-map-spawns.json"
           ]
         },
         "gate": {
@@ -2657,7 +2661,8 @@
           "docs/evidence/rust-service/g1-map-terrain.json",
           "docs/evidence/rust-service/g1-patrit-terrain.json",
           "docs/evidence/rust-service/g1-village10-herb.json",
-          "docs/evidence/rust-service/g1-village10-terrain.json"
+          "docs/evidence/rust-service/g1-village10-terrain.json",
+          "docs/evidence/rust-service/g1-mixed-map-spawns.json"
         ]
       },
       "coverage": {
@@ -2735,7 +2740,8 @@
               "docs/protocol/terrain.md#rust-player-terrain",
               "docs/protocol/terrain.md#rust-selected-map-terrain",
               "docs/protocol/terrain.md#rust-patrit-terrain",
-              "docs/protocol/terrain.md#rust-village10-herb"
+              "docs/protocol/terrain.md#rust-village10-herb",
+              "docs/evidence/rust-service/g1-mixed-map-spawns.json"
             ]
           },
           "windows_original": {
@@ -2902,7 +2908,8 @@
           "docs/evidence/rust-service/g1-map-terrain.json",
           "docs/evidence/rust-service/g1-patrit-terrain.json",
           "docs/evidence/rust-service/g1-village10-herb.json",
-          "docs/evidence/rust-service/g1-village10-terrain.json"
+          "docs/evidence/rust-service/g1-village10-terrain.json",
+          "docs/evidence/rust-service/g1-mixed-map-spawns.json"
         ]
       },
       "coverage": {
@@ -2985,7 +2992,8 @@
               "docs/protocol/terrain.md#rust-player-terrain",
               "docs/protocol/terrain.md#rust-selected-map-terrain",
               "docs/protocol/terrain.md#rust-patrit-terrain",
-              "docs/protocol/terrain.md#rust-village10-herb"
+              "docs/protocol/terrain.md#rust-village10-herb",
+              "docs/evidence/rust-service/g1-mixed-map-spawns.json"
             ]
           },
           "windows_original": {

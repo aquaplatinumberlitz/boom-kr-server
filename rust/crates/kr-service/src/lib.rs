@@ -363,7 +363,7 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
         let room = two
             .fixed_room
             .as_ref()
-            .map(|cfg| room_io::load(cfg, &actors))
+            .map(|cfg| room_io::load(cfg, &actors, managed_template))
             .transpose()?;
         let relay_requested = two
             .fixed_room
@@ -887,7 +887,7 @@ async fn local_lobby_connection(
                 } else {
                     session.packet(packet.opcode, &packet.payload)?
                 };
-                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
+                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"map_rejection":observation.map_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
                 continue;
             }
             if packet.opcode == 528

@@ -1,0 +1,268 @@
+{
+  "id": "CP305",
+  "previous": "CP304",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-14T21:00:26.936207+00:00",
+  "context_commit": "c8d67e35f5ce3a0fd3214baf622a5d5e779f1723",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1: catalog tám/sáu spawn có giữ membership slot và Start đúng tọa độ pack trên sparse6 qua hai vòng không?",
+  "scope": "Nhóm managed mixed-map admission và sparse Start; bounded native two-cycle terrain/item evidence với missing last flag pair được khai. Không đóng G1/M8/UTF8 hoặc nguyên nhân QueueExpired.",
+  "artifacts": [
+    {
+      "name": "Rust service native mixed-spawn run",
+      "sha256": "cbe310445ad0ae2e9675632b54eb44a9342eea5dba5aaf2ba9fcccabdadef4d1"
+    },
+    {
+      "name": "KR00967 diagnostic Wine client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/load-phase.md#rust-map-spawn-capacity",
+    "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+    "docs/PLAN.md#phase1-acceptance",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Policy data-driven giữ spawn_count, bound admission/listing/selection; managed prototype có kiểm và ordinal spawn độc lập membership slot. Unit kiểm từ chối8→6, sparse6 không đổi identity/slot, đổi lại8 khôi phục ordinal7; adapter/legacy negatives tách đúng parser.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/load-phase.md#rust-map-spawn-capacity",
+      "evidence": [
+        "SPAWN305-00010",
+        "SPAWN305-03207",
+        "SPAWN305-03208",
+        "SPAWN305-03209",
+        "SPAWN305-03210",
+        "SPAWN305-03211",
+        "SPAWN305-03172",
+        "SPAWN305-03178"
+      ],
+      "limits": "Policy công ty; source/fixture agreement không tự chứng minh wire contract hoặc native."
+    },
+    {
+      "summary": "Tám account KR đăng nhập, native chọn map6 khi roster8 bị từ chối; B/D Back tạo sparse0/2/4/5/6/7. Start ordinal0..5 và native tọa độ pack đúng ở sáu view; Fire/Roller và hai kết quả/reset, baseline spawn/stat vòng2 được kiểm độc lập capture/native.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/load-phase.md#rust-map-spawn-capacity",
+      "evidence": [
+        "SPAWN305-00010",
+        "SPAWN305-03086",
+        "SPAWN305-03059",
+        "SPAWN305-03066"
+      ],
+      "limits": "Sáu view hoạt động, không chứng minh mọi roster/route/item/map. 627raw/3294frozenpins, không process namespace còn lại; A GDB terminal error sau remote disconnect/hai reset được khai."
+    },
+    {
+      "summary": "Cả195flags trước/sau19blast khớp geometry độc lập từ actual118. Native entity/reader/ownership có đủ20blast nhưng observerbudget40 thiếu cặp flags cuối vòng2; không reconstruct hoặc gọi toàn trace đủ.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+      "evidence": [
+        "SPAWN305-00010",
+        "SPAWN305-03086",
+        "SPAWN305-03083",
+        "SPAWN305-03082"
+      ],
+      "limits": "Chỉ bounded terrain supporting sparse Start; CP302 contiguous terrain proof có phạm vi riêng. Original drop/authority unknown."
+    },
+    {
+      "summary": "51792 copied-native getter checks khớp snapshot; cacheoutput được giữ, một trong8 thay đổi. Emulation và integrity tách khỏi native.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/protocol/load-phase.md#rust-map-spawn-capacity",
+      "evidence": [
+        "SPAWN305-03085",
+        "SPAWN305-02382",
+        "SPAWN305-03059"
+      ],
+      "limits": "Không suy gameplay hoặc load capacity từ getter agreement/hash."
+    },
+    {
+      "summary": "RE bốn body cho timer/mainDisconnected; run3 đóng ba channel QueueExpired trước modal, HTTPabort xảy ra sau. Run4 preboot trước service/session không gặp QueueExpired, nguyên nhân resource/scheduling chưa xác định.",
+      "source": "kr_static",
+      "status": "candidate",
+      "method": "static",
+      "canonical": "docs/RESEARCH.md#gap-rust-selected-map-terrain",
+      "evidence": [
+        "SPAWN305-00010",
+        "SPAWN305-00045",
+        "SPAWN305-00034",
+        "SPAWN305-03068"
+      ],
+      "limits": "Static/cached chronology giới hạn, không kết luận parser cause hoặc nới accountfailclosed; không acceptance M8."
+    }
+  ],
+  "verification": [
+    {
+      "check": "fmt/clippy,201 workspace tests, locked build và exact native binary hash sau merge main",
+      "result": "pass",
+      "evidence": [
+        "SPAWN305-03172"
+      ],
+      "limits": "CI/exact committed head/full local-history bắt buộc trước merge."
+    },
+    {
+      "check": "Native Start/spawn/ownership/items/two-cycle, bounded19blast flags và51792getter emulation",
+      "result": "pass",
+      "evidence": [
+        "SPAWN305-00010",
+        "SPAWN305-03086",
+        "SPAWN305-03085"
+      ],
+      "limits": "Missing pair giữ explicit, không giảm acceptance của toàn G1 hoặc sửa raw."
+    },
+    {
+      "check": "Audit nhóm catalog/spawn và docs",
+      "result": "pass",
+      "evidence": [
+        "SPAWN305-00008",
+        "SPAWN305-03087"
+      ],
+      "limits": "Review độc lập được miễn; audit nhóm không đóng milestone G1."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP305-mixed-map-spawns.json",
+      "bytes": 899393,
+      "sha256": "299564d3d223f79d728d879d5e583c54005750a09abe13ba744b703cff8b62d7",
+      "count": 3211
+    }
+  ],
+  "delta": {
+    "added": [
+      "Mixed8/6spawn catalog/admission design và sparse6 native Start/two-cycle proof."
+    ],
+    "corrected": [
+      "Không dùng membership slot như ordinal khi slot vượt spawn map.",
+      "Verifier khai thiếu lastflagpair do probe budget40, không sửa raw hoặc reconstruct."
+    ],
+    "superseded": [
+      "Mixedcatalog/sparse6 hoàn toàn chưa đo; nay có lát native trong phạm vi nguồn."
+    ]
+  },
+  "blockers": [
+    "Camp08/Tomb12 và loại ô còn thiếu; nội dung/item và nhân vật theo acceptance G1.",
+    "Coverage các roster chưa đo và biến thể khi acceptance cần; không lặp sparse6 hoặc contiguous2/4/6 đã đủ.",
+    "QueueExpired/resource budgets và độ bền tải giữ việc vận hành M8; UTF-8 vẫn chưa có bản vá nghiệm thu."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Giao nhóm mixedspawn sau exact-head/CI; tiếp Camp08/Tomb12, coverage roster/item/characters theo PLAN. Xen UTF8 worker với lease riêng; M8 sau G1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-14T21:00:26.936207+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex self-check source/native/capture and narrow feature-group audit; UTF8 worker is not independent reviewer.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "docs/protocol/load-phase.md",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "rust/crates/kr-service/src/map_profile.rs",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "tools/rust_map_profile.py",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD119.json",
+      "state": "updated",
+      "reason": "Đồng bộ catalog/spawn, native scope và giới hạn với audit nhóm; không đóng toàn G1."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Mục lục đã dẫn load-phase/terrain; contract sửa tại topic hiện có."
+    },
+    {
+      "path": "docs/content/client-language.md",
+      "state": "unchanged",
+      "reason": "UTF8 worker sở hữu riêng; snapshot mới sẽ tích hợp checkpoint sau."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-mixed-map-spawn-admission-and-sparse-start"
+  ]
+}

@@ -614,9 +614,11 @@ bằng capture/native riêng, getter emulation tách khỏi runtime. Các chỉ 
 Report thật trên ô Roller có aux0, nên guard FFFFFFFF-only cũ từ chối claim dù client đã reveal. Policy item opt-in
 nay dùng known cell và current committed clearance cho mọi aux, vẫn kiểm ownership/budget. Đây là lựa chọn công ty;
 không gán nghĩa cho aux0/3/5 hoặc biến report thành world authority. Lượt thất bại trước giữ nguyên raw/exit1.
-Fire đặt sẵn và Roller ẩn là input thử nghiệm, chưa là phân phối drop gốc. Chưa nghiệm thu toàn khoảng2–6, sparse slot,
-đổi map khi roster vượt spawn hoặc catalog chung map sáu/tám spawn; không giảm bốn map kia xuống sáu. Phạm vi chỉ
-các route/hướng và power1–2 đã đo, chưa toàn bộ biến thể Herb, item hoặc luật server gốc.
+Fire đặt sẵn và Roller ẩn là input thử nghiệm, chưa là phân phối drop gốc. [Catalog tám/sáu spawn và sparse6](load-phase.md#rust-map-spawn-capacity)
+đã có hai vòng mới với slot0/2/4/5/6/7, Fire/Roller và spawn/stat ở mọi view. Native/capture kiểm cả20 vụ nổ, nhưng
+budget snapshot40 chỉ giữ195flags trước/sau19 vụ; cặp cuối vòng hai còn thiếu và không được suy từ mô hình. Lượt cũ
+contiguous2/4/6 có đầy đủ flags trong phạm vi riêng. Chưa nghiệm thu toàn khoảng2–6, toàn route/hướng/item hoặc luật
+server gốc; không giảm sức chứa bốn map tám spawn xuống sáu.
 
 Run tia nổ trả exit1 do unmount busy sau khi đã export. Lỗi giữ nguyên; tất cả file export được so đúng hash,
 namespace đã hết process rồi mới phục hồi vị trí raw và seal. Không gọi exit1 là exit0. Lượt seed cũng ghi riêng
