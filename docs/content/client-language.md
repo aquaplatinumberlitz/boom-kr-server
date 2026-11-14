@@ -202,12 +202,36 @@ hàm băm `0xA0E1E0`. Công thức khớp cả 13 file `ssi1` của client KR. C
 - Mọi file `ssi1` của ba bộ dựng có checksum, hai trường độ dài và độ dài giải nén đúng.
 - Pack của bộ Việt và bộ Anh: 2.076 trên 2.077 mục index không đổi, phần `.idd` gốc giữ nguyên, bảng chuỗi mới đọc
   lại được trọn vẹn theo một bảng mã và đủ 6.993 mục.
-- Bản dựng tiếng Việt UTF-8 thay 32.098 chuỗi; bản dựng tiếng Anh theo `cp949` (chạy được trên client chưa vá) thay
+- Bản dựng tiếng Việt UTF-8 thay 32.098 chuỗi; bản dựng tiếng Anh theo bảng mã gốc `cp949` thay
   32.102 chuỗi. Không còn chuỗi nào bị loại vì lệch định dạng hay không mã hoá được.
 
-**Chưa file nào được nạp thử vào client.** Lượt nạp thử đã có đề bài cho Codex chính (L-probe trong
-[Bảng điều hành](../PLAN.md#dashboard)): năm lượt chạy trên bản sao client gốc, gồm một lượt cố ý làm sai checksum
-để biết exe KR có kiểm như exe VN không.
+**L-probe đã chạy năm lượt, nhưng bị chặn ở khởi động exe gốc trên Wine.**
+[CP300 và chỉ mục raw/hash](../evidence/checkpoints/records/CP300.json) ghi nguồn, recipe, ảnh, trace file,
+exception và cleanup. Bộ dựng dùng `boom-re-l10n@0e35df10dfa527898ae4a7617d7654b87db403ba`, là hậu duệ của
+`e5d1bac`; không sửa công cụ hoặc bản dịch. Mỗi lượt dùng bản sao đầy đủ và `CA.exe` nguyên bản có SHA-256
+`a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e`, prefix riêng cùng mẫu, Wine
+`10.0-20260425 (CachyOS)` trên một máy và mạng namespace chỉ có loopback. Không vá exe, font hoặc region.
+
+| Lượt | File thay so với bản gốc | Quan sát native | Login → sảnh → shop → mission → phòng |
+|---|---|---|---|
+| 0 | Không | Hộp Wine `Program Error`, page fault | Không tới được |
+| 1 | Bảy `ssi1` tiếng Hàn ghi lại | Hộp Wine `Program Error`, page fault | Không tới được |
+| 2 | Bảy `ssi1` tiếng Anh CP949 | Hộp Wine `Program Error`, page fault | Không tới được |
+| 3 | Lượt 2 cộng `FxDesktop.idx/.idd` tiếng Anh | Hộp Wine `Program Error`, page fault | Không tới được |
+| 4 | Chỉ `csysstr.ssd` tiếng Anh đổi một byte nén tại offset 34, giữ checksum cũ | Hộp Wine `Program Error`, page fault | Không tới được |
+
+Cả năm lượt có ảnh khởi động/lỗi, window tree và trace `+file`; không thấy tên chín file mục tiêu trong trace.
+Đây là quan sát âm có giới hạn, chưa xác nhận consumer đọc dữ liệu hoặc nguyên nhân page fault. Không có kết nối
+TCP tới listener bootstrap, nên fixture 15 byte chưa được gửi; không có packet danh sách file/hash hoặc ghi đè từ
+server. Hash trước/sau của cả chín file mục tiêu không đổi trong từng lượt, kể cả file cố ý hỏng. Điều này chỉ cho
+biết chưa thấy phục hồi file trong cửa sổ đo. Client nguồn không đổi; mọi run đã cleanup và seal.
+
+Bộ Hàn giải nén khớp gốc; 14 file dựng có checksum/độ dài đúng bằng kiểm tĩnh. Đối chứng lượt 4 khác đúng một byte,
+checksum sai và zlib không giải nén được bằng kiểm tĩnh. **Chưa đo được KR chấp nhận file dựng hoặc từ chối checksum
+sai**; baseline chưa tới login nên không phân đôi file hay retry cùng cấu hình. Chưa đánh giá được chữ Anh/Hàn,
+clipping, tràn khung hoặc tham số định dạng trên UI game. Chữ Anh trong hộp lỗi thuộc Wine, không phải bản dịch game.
+Không suy kết quả trên Windows thật. Việc xác minh nạp dữ liệu còn mở cho đợt L, cần baseline exe gốc tới được
+consumer trước; không thay kết quả đó bằng bằng chứng từ exe chẩn đoán đã vá và không chặn G1.
 
 **Khoá có chữ Hàn.** 29 khoá trong `csysstr.ssd`, một khoá trong `csysqstr.ssd` và 30 khoá trong XML `ClientString`
 chứa chữ Hàn (ví dụ `럭마`, `슈방`: tên tắt của vật phẩm). Quét image exe đã unpack, 13 file `ssi1` và 51.467 mục của
@@ -247,9 +271,8 @@ không được hiện. Cùng tên và khác byte không chứng minh ảnh kia 
   dòng cao 12 điểm.
 - **Server biết ngôn ngữ của từng người bằng cách nào** để gửi đúng bảng chuỗi: lưu theo account hay trình mở game báo
   lúc đăng nhập.
-- **Kiểm toàn vẹn** của client với mã đã vá và file chữ đã thay. Riêng file `ssi1` đã biết: client kiểm checksum ở
-  offset 4 và công cụ dựng tính lại được; phần còn lại (pack, exe) chưa đo.
-- **Client gốc có nhận file chữ đã thay không:** chờ kết quả lượt L-probe (xem [mục trên](#data-files)).
+- **Kiểm toàn vẹn** của client với mã đã vá và file chữ đã thay. Nguồn checksum `ssi1` và giới hạn phép thử KR
+  nằm ở [mục dữ liệu chữ](#data-files); phần còn lại (pack, exe) chưa đo.
 - **Client tra 30 khoá có chữ Hàn từ đâu lúc chạy** và bản dựng UTF-8 đổi khoá sang UTF-8 có làm mất chức năng nào
   không; quét tĩnh không thấy tham chiếu nào.
 - **Chuỗi nào đi qua `printf`** với chính nó làm chuỗi định dạng; hiện coi mọi dấu `%` nghĩa đen là có nguy cơ.

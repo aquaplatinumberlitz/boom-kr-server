@@ -1,0 +1,67 @@
+{
+  "id": "AUD116",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "l10n-original-five-run-diagnostic"
+  ],
+  "completed_through": "CP300",
+  "recorded_utc": "2026-11-14T12:43:11.621362+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/content/client-language.md",
+    "AGENTS.md",
+    "docs/evidence/checkpoints/README.md",
+    "local/research/codex/l10n-probe-r1/reuse.json",
+    "local/research/codex/l10n-probe-r1/preparation.json",
+    "local/research/codex/l10n-probe-r1/results.json",
+    "local/research/codex/l10n-probe-r1/manual-ui-review.json",
+    "local/research/codex/l10n-probe-r1/source-provenance.json",
+    "local/research/codex/l10n-probe-r1/run-0/raw-seal.json",
+    "local/research/codex/l10n-probe-r1/run-0/native/run.json",
+    "local/research/codex/l10n-probe-r1/run-0/file-delta.json",
+    "local/research/codex/l10n-probe-r1/run-0/preflight.json",
+    "local/research/codex/l10n-probe-r1/run-1/raw-seal.json",
+    "local/research/codex/l10n-probe-r1/run-1/native/run.json",
+    "local/research/codex/l10n-probe-r1/run-1/file-delta.json",
+    "local/research/codex/l10n-probe-r1/run-1/preflight.json",
+    "local/research/codex/l10n-probe-r1/run-2/raw-seal.json",
+    "local/research/codex/l10n-probe-r1/run-2/native/run.json",
+    "local/research/codex/l10n-probe-r1/run-2/file-delta.json",
+    "local/research/codex/l10n-probe-r1/run-2/preflight.json",
+    "local/research/codex/l10n-probe-r1/run-3/raw-seal.json",
+    "local/research/codex/l10n-probe-r1/run-3/native/run.json",
+    "local/research/codex/l10n-probe-r1/run-3/file-delta.json",
+    "local/research/codex/l10n-probe-r1/run-3/preflight.json",
+    "local/research/codex/l10n-probe-r1/run-4/raw-seal.json",
+    "local/research/codex/l10n-probe-r1/run-4/native/run.json",
+    "local/research/codex/l10n-probe-r1/run-4/file-delta.json",
+    "local/research/codex/l10n-probe-r1/run-4/preflight.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH→topic và nguồn/hash/raw của năm run. So original exe SHA, isolation/no TCP, page faults/window trees/ảnh đại diện, target filename trace và trước/sau. Kiểm build Hàn/Anh độc lập theo checksum/length/decompression; kiểm đối chứng đúng một byte. Native verdict tách khỏi harness exit0 và static validity. Không đổi server hoặc công cụ/bản dịch nguồn.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Topic nói chưa có lượt nạp thử, đồng thời chú thích CP949 chạy được trên client chưa vá.",
+      "correction": "Đã thử năm biến thể nhưng original CA page fault trước login; bỏ chú thích có thể bị hiểu là native compatibility đã được chứng minh. Chấp nhận dữ liệu/checksum vẫn chưa đo.",
+      "fixed_in": [
+        "docs/content/client-language.md#data-files"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "L-probe là việc kế tiếp được chèn tại ranh giới G1.",
+      "correction": "Lượt chẩn đoán hữu hạn đã hoàn tất/seal; gỡ chỉ dẫn xen probe, giữ unknown ở topic đợt L và tiếp G1 theo PLAN.",
+      "fixed_in": [
+        "docs/PLAN.md#dashboard"
+      ]
+    }
+  ],
+  "remaining": [
+    "Nạp dữ liệu, KR checksum consumer, UI tiếng Anh và clipping vẫn chưa đo vì baseline gốc chặn; không kết luận bản dịch sai hoặc sửa tool.",
+    "G1/M8 và giai đoạn 1 chưa hoàn thành; không đổi acceptance, gate hoặc phụ thuộc mạng."
+  ]
+}

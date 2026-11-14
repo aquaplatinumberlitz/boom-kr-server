@@ -1,0 +1,175 @@
+{
+  "id": "CP300",
+  "previous": "CP299",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-14T12:43:11.621362+00:00",
+  "context_commit": "1ef3a9d3f875fe0675c2b69629b63faa70936e13",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/L-probe: exe KR00967 nguyên bản có nạp bộ dữ liệu chữ được ghi lại trong recipe Wine hiện hành không?",
+  "scope": "Một lượt chẩn đoán năm cấu hình original CA trên Wine, không đổi server/source translation tool; không chứng nhận data load hoặc đợt L/G1/giai đoạn 1.",
+  "artifacts": [
+    {
+      "name": "KR00967 original CA.exe",
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    }
+  ],
+  "locators": [
+    "docs/content/client-language.md#data-files",
+    "docs/PLAN.md#dashboard",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/407"
+  ],
+  "findings": [
+    {
+      "summary": "Năm lượt gốc/Hàn ghi lại/Anh/Anh+pack/corrupt đều page fault và hộp Wine Program Error trước login; chưa thấy tên file dữ liệu mục tiêu trong trace. Không có kết nối bootstrap; mọi target hash trước/sau giữ nguyên.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/content/client-language.md#data-files",
+      "evidence": [
+        "LPROBE300-00049",
+        "LPROBE300-00046",
+        "LPROBE300-00285",
+        "LPROBE300-00512",
+        "LPROBE300-00745",
+        "LPROBE300-00963",
+        "LPROBE300-01191"
+      ],
+      "limits": "Confirmed chỉ cho startup failure và bounded observations của original CA/Wine một máy. Không chứng minh file được đọc, rejected, restored, hay English UI; exit0 là harness cleanup."
+    },
+    {
+      "summary": "Công cụ source commit0e35df1 tạo14ssi1 có checksum/length/decompression đúng; Hàn bằng raw gốc. Đối chứng offset34 đổi một byte giữ checksum bị kiểm tĩnh là sai. Source tools/catalog giữ exact version bằng bản local từ Git.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/content/client-language.md#data-files",
+      "evidence": [
+        "LPROBE300-00049",
+        "LPROBE300-01193",
+        "LPROBE300-00048"
+      ],
+      "limits": "Static validity không là native compatibility; checksum KR consumer và kiểm UI còn unknown."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Năm raw seals/hash/source freeze/namespace cleanup và original executable identity",
+      "result": "pass",
+      "evidence": [
+        "LPROBE300-00049"
+      ],
+      "limits": "Kiểm integrity và quan sát startup, không acceptance nạp dữ liệu."
+    },
+    {
+      "check": "Manual audit nhóm chẩn đoán L-probe, docs và giữ nguyên server code",
+      "result": "pass",
+      "evidence": [
+        "LPROBE300-00009"
+      ],
+      "limits": "Independent review waived; exact-head docs/history và CI phải đạt trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP300-l10n-probe.json",
+      "bytes": 301572,
+      "sha256": "80c515e91f1f2c2eae985e8766281226a2c25d9f8212cd9f0b87294e3840efa9",
+      "count": 1197
+    }
+  ],
+  "delta": {
+    "added": [
+      "Năm native original startup observations và independent build/corrupt/hash verification."
+    ],
+    "corrected": [
+      "Bỏ hàm ý CP949 đã chạy được trên client chưa vá; data consumption chưa được chứng minh."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "Nạp dữ liệu, KR checksum consumer, UI tiếng Anh và clipping vẫn chưa đo vì baseline gốc chặn; không kết luận bản dịch sai hoặc sửa tool.",
+    "G1/M8 và giai đoạn 1 chưa hoàn thành; không đổi acceptance, gate hoặc phụ thuộc mạng."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp G1 theo dashboard sau L-probe; không mở rộng bootstrap/đợt L hoặc MaxPower trước thứ tự map đã chốt.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-14T12:43:11.621362+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo original-runtime và manual self-audit, không independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "unchanged",
+      "reason": "Không đổi trạng thái phục vụ Rust, wire/authority hoặc unknown server; kết quả nạp dữ liệu chỉ ghi tại topic client-language theo chỉ đạo L-probe."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Không đổi trạng thái phục vụ Rust, wire/authority hoặc unknown server; kết quả nạp dữ liệu chỉ ghi tại topic client-language theo chỉ đạo L-probe."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "Không đổi trạng thái phục vụ Rust, wire/authority hoặc unknown server; kết quả nạp dữ liệu chỉ ghi tại topic client-language theo chỉ đạo L-probe."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Không đổi trạng thái phục vụ Rust, wire/authority hoặc unknown server; kết quả nạp dữ liệu chỉ ghi tại topic client-language theo chỉ đạo L-probe."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Gỡ việc xen L-probe đã làm, giữ thứ tự G1→M8."
+    },
+    {
+      "path": "docs/content/client-language.md",
+      "state": "updated",
+      "reason": "Thay câu chưa thử bằng bảng năm lượt và giới hạn, không suy dữ liệu đã nhận hoặc từ chối."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Thêm liên kết task chẩn đoán vào startup feature, không nâng evidence/gate."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Sinh từ catalog."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Dated task disposition để bàn giao qua PR."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Snapshot chỉ là thời điểm lấy, không sửa record cũ."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD116.json",
+      "state": "updated",
+      "reason": "Audit nhóm chẩn đoán hoàn tất, mục tiêu dữ liệu vẫn unknown."
+    }
+  ],
+  "completed_feature_groups": [
+    "l10n-original-five-run-diagnostic"
+  ]
+}

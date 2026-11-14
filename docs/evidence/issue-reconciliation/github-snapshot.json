@@ -1,9 +1,18 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-14T11:14:12.420418+00:00",
+  "captured_utc": "2026-11-14T12:40:20.717135+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
+    {
+      "body": "KRE-074 / L-probe theo chỉ đạo ở PLAN sau PR405. Baseline main 1ef3a9d, owner và tự kiểm Codex solo; review độc lập waived theo AGENTS. Không đổi code server hoặc công cụ/bản dịch nguồn.\n\nPhạm vi: năm lượt Wine trên bản copy CA.exe KR00967 nguyên bản; baseline, bảy ssi1 Korean roundtrip, bảy ssi1 English CP949, English cộng FxDesktop, và một byte compressed bị đổi giữ checksum. Cùng recipe cô lập; không vá exe/font/region. Bisection chỉ khi có sai biệt do file, tối đa ba lượt thêm; không retry cùng cấu hình hơn một lần.\n\nAcceptance bàn giao: build/hash nguồn và trước/sau, ảnh/log từng bước thực sự tới được, native file/network observations, raw/hash/cleanup, ghi rõ giới hạn nếu original startup chặn trước login/data loading. Không coi failed baseline là bằng chứng dịch sai hoặc checksum rejected. Một checkpoint, cập nhật docs/content/client-language.md#data-files và gỡ chỉ dẫn L-probe ở PLAN khi xong. Không đóng G1 hoặc giai đoạn 1.\n\nFeature KR-B001 (startup/copy offline); không mở lại K1. Nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md); kết quả duy nhất ở [data-files](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/content/client-language.md#data-files).\n",
+      "closedAt": null,
+      "number": 407,
+      "state": "OPEN",
+      "title": "KRE-074: L-probe file chữ trên KR00967 nguyên bản",
+      "updatedAt": "2026-11-14T12:36:34Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/407"
+    },
     {
       "body": "KRE-074, blocker phát sinh của G1/#402. Owner/self-check Codex solo; independent review waived. Baseline main PR401 và WIP per-map terrain, raw đã seal.\n\nUnknown59 trước đây ở N1R-b đã tái hiện trong lượt Forest07 tám account: hai client thật gửi59/body47 rồi server đóng unknown stage/opcode/shape; lỗi client xảy ra sau đó. Chưa coi đây là lỗi terrain, chưa có contract cho ACK hoặc bỏ qua59.\n\nTái dùng probe game13ADCC0/general13ADD10 và cached codec/stream. Đo tối thiểu caller/stack/header và input trước actual59 trên bản copy Wine/LAN cô lập, cùng binary/config/route, finite probe budget. Chỉ mở tối đa bốn body mới theo caller đã quan sát nếu cần. Hai/bốn client và phần map độc lập tiếp tục khi có thể.\n\nAcceptance: raw/hash/cleanup và join actual native→capture→server close; xác định điều kiện/caller hoặc giữ unknown rõ. Chỉ thay policy nếu bằng chứng đủ, tách company design khỏi original contract; current positive và negative/limits tương ứng. Không ACK giả hoặc loại bỏ gói để làm gate xanh. Native59/mọi nguyên nhân không được tuyên bố đã sửa chỉ vì run sau không tái hiện.\n\nNguồn chuẩn: docs/RESEARCH.md#rust-service-gaps, docs/PLAN.md#dashboard; kết quả theo checkpoint mới, không sửa lịch sử N1R-b đã complete. Không đưa thông tin hạ tầng riêng lên GitHub.\n\nFeature: KR-S001 (service và xử lý protocol chưa biết; không gán semantics cho 59).\n\nLiên kết nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md).\n\nBổ sung điều tra Patrit14: lượt tám client đã seal tái hiện queue59 ởA/D, caller stack1164D50/847010 đã có hai body static theo trace. Capture của chính lượt này không có TCP59; tám channel bị đóng trước do167/body52 ngoài tập observation đã đo. Không quy lỗi đóng Patrit cho59 và không coi bổ sung observation167 làfix59. Lỗi actual59 Forest vẫn giữ; semantics/reply chưa được phục hồi. Phép scheduling hai client/sáu khoảng dừng cũng âm tính, không chứng minh đã sửa.\n",
       "closedAt": null,
@@ -735,6 +744,28 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "40fdcb4cb453ae55f0f35a5ea3f4bcafb4a3cbf6",
+      "mergeCommit": {
+        "oid": "1ef3a9d3f875fe0675c2b69629b63faa70936e13"
+      },
+      "mergedAt": "2026-11-14T12:23:22Z",
+      "number": 406,
+      "state": "MERGED",
+      "title": "G1: Patrit14 native 2/4/8 và quan sát diagnostic có giới hạn",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/406"
+    },
+    {
+      "headRefOid": "85bd41a4271a910b3f043454879cbd27be130594",
+      "mergeCommit": {
+        "oid": "1a6069494a3af49368a731e0e67a22daf7581958"
+      },
+      "mergedAt": "2026-11-14T11:22:51Z",
+      "number": 405,
+      "state": "MERGED",
+      "title": "docs: trạng thái bản dịch sau lượt soát và việc nạp thử L-probe",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/405"
+    },
     {
       "headRefOid": "e3d1bd1eb8339a8335598295ce5faeef5eeb53ac",
       "mergeCommit": {

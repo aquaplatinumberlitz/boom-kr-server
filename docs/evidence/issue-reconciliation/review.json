@@ -1,6 +1,6 @@
 {
   "schema": "kre-issue-review-v1",
-  "as_of": "CP292",
+  "as_of": "CP300",
   "baseline": "39a401a2f114507c4669a373e7eded1fcea4f0fa",
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
@@ -911,8 +911,31 @@
       "acceptance": "docs/PLAN.md#phase1-acceptance",
       "successors": [],
       "reviewed_utc": "2026-11-14T11:14:12.505462+00:00"
+    },
+    {
+      "number": 407,
+      "kre": "KRE-074",
+      "features": [
+        "KR-B001"
+      ],
+      "classification": "in_progress",
+      "known": "Lượt chẩn đoán giới hạn đã thực hiện; kết quả và giới hạn duy nhất tại docs/content/client-language.md#data-files.",
+      "remaining": "Bàn giao CP300 qua PR; không coi probe hoàn tất là bằng chứng nạp bản dịch thành công.",
+      "next_test": "Sau bàn giao quay lại G1 theo PLAN; baseline gốc và consumer dữ liệu để đợt L.",
+      "acceptance": "docs/content/client-language.md#data-files",
+      "reason": "Thực hiện năm biến thể theo chỉ đạo, publication đang chờ exact-head/CI; không đóng gate K1/G1.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/content/client-language.md#data-files"
+      ],
+      "evidence": [
+        "docs/evidence/checkpoints/records/CP300.json"
+      ],
+      "prs": [],
+      "successors": [],
+      "reviewed_utc": "2026-11-14T12:41:34.746987+00:00"
     }
   ],
-  "as_of_utc": "2026-11-14T11:14:12.505462+00:00",
+  "as_of_utc": "2026-11-14T12:41:34.746987+00:00",
   "limits": "Đối soát issue thủ công có ngày; snapshot là trạng thái lúc chụp, không chứng nhận acceptance hoặc đóng gate."
 }
