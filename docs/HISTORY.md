@@ -1497,3 +1497,12 @@ Catalog chung sáu/tám spawn, sparse roster, các map/item còn lại và M8 ti
 [Phần đã biết và blocker](evidence/l10n-utf8-l1a-review.json) tách primitive, mẫu PopTag, client diagnostic và
 các probe chưa kết luận. Chưa có nghiệm thu hiển thị UTF-8 ba ngôn ngữ hoặc nhập liệu. G1 giữ lát Village10 cho roster2/4/6 đã giao;
 việc tiếp và phạm vi ở [Bảng điều hành](PLAN.md#dashboard).
+
+
+### Mốc trước CP305
+
+**CP304: sửa kiểm chứng lịch sử workflow CI; phạm vi runtime giữ nguyên.**
+[Correction và bằng chứng công bố](evidence/checkpoints/docs-workflow-source-correction.json) giữ pin cũ
+và mới, không sửa checkpoint đã complete. [L1a UTF-8](evidence/l10n-utf8-l1a-review.json) vẫn partial,
+chưa nghiệm thu bản vá hoặc nhập liệu; G1 tiếp catalog sáu/tám spawn và nội dung còn thiếu theo
+[Bảng điều hành](PLAN.md#dashboard).

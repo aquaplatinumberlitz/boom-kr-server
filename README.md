@@ -33,11 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP304: sửa kiểm chứng lịch sử workflow CI; phạm vi runtime giữ nguyên.**
-[Correction và bằng chứng công bố](docs/evidence/checkpoints/docs-workflow-source-correction.json) giữ pin cũ
-và mới, không sửa checkpoint đã complete. [L1a UTF-8](docs/evidence/l10n-utf8-l1a-review.json) vẫn partial,
-chưa nghiệm thu bản vá hoặc nhập liệu; G1 tiếp catalog sáu/tám spawn và nội dung còn thiếu theo
-[Bảng điều hành](docs/PLAN.md#dashboard).
+**CP305: catalog map tám/sáu spawn và roster thưa đã có lát native hai vòng.**
+[Start/spawn, identity/slot và giới hạn](docs/evidence/rust-service/g1-mixed-map-spawns.json) ghi native sparse6,
+Fire/Roller, hai kết quả/reset và thiếu cặp flags cuối do budget probe. G1 còn nội dung/roster theo
+[Bảng điều hành](docs/PLAN.md#dashboard); UTF-8 vẫn partial, M8 chưa nghiệm thu.
 
 ## Bắt đầu
 

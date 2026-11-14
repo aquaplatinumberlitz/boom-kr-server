@@ -401,6 +401,7 @@ pub struct BombObservation {
 pub struct Observation {
     pub dropped_after_abort: bool,
     pub start_rejection: Option<&'static str>,
+    pub map_rejection: Option<&'static str>,
     pub admission_rejection: Option<&'static str>,
     pub pickup: Option<pickups::Decision>,
     pub bomb: Option<BombObservation>,
@@ -429,7 +430,11 @@ fn legacy_player_alias(id: u32) -> io::Result<&'static str> {
         _ => Err(err("unsupported diagnostic player identity")),
     }
 }
-pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Result<Shared> {
+pub fn load(
+    cfg: &Config,
+    actors: &HashMap<PlayerId, ActorProfile>,
+    managed_template: bool,
+) -> io::Result<Shared> {
     if cfg.title.is_empty()
         || cfg.title.len() > 32
         || !cfg.title.bytes().all(|b| (32..=126).contains(&b))
@@ -540,6 +545,7 @@ pub fn load(cfg: &Config, actors: &HashMap<PlayerId, ActorProfile>) -> io::Resul
             actors,
             cfg.life_actions.needle(),
             cfg.item_policy.enabled(),
+            managed_template,
         )?))
     };
     if packets["listing"].payload.len() < 16
@@ -771,7 +777,7 @@ pub(crate) fn validate_admission_capacity(
 pub(crate) fn full_idle(shared: &Shared) -> io::Result<bool> {
     let runtime = shared.lock().map_err(|_| err("room unavailable"))?;
     Ok(runtime.model.phase == Phase::Idle
-        && runtime.model.members.len() >= runtime.model.capacity())
+        && runtime.model.members.len() >= runtime.admission_capacity())
 }
 pub(crate) fn map_table_source(shared: &Shared) -> io::Result<Reply> {
     let runtime = shared
@@ -820,11 +826,34 @@ pub(crate) fn listing_row(shared: &Shared) -> io::Result<wire::ListingRow> {
     let mut row = rows.remove(0);
     row.title = runtime.title.clone();
     if runtime.public_key.is_some() {
-        row.set_population(runtime.model.members.len(), runtime.model.capacity())?;
+        row.set_population(runtime.model.members.len(), runtime.admission_capacity())?;
     }
     Ok(row)
 }
 impl Runtime {
+    fn admission_capacity(&self) -> usize {
+        self.maps.as_ref().map_or(self.model.capacity(), |maps| {
+            self.model
+                .capacity()
+                .min(maps.choices[self.selected_map].spawn_count)
+        })
+    }
+
+    fn player_spawns(&self, model: &Room) -> io::Result<HashMap<u8, u8>> {
+        let limit = self.admission_capacity();
+        if model.members.len() > limit {
+            return Err(err("current roster exceeds selected map spawn count"));
+        }
+        let mut slots: Vec<_> = model.members.values().map(|member| member.slot).collect();
+        slots.sort_unstable();
+        let compact = slots.iter().any(|slot| usize::from(*slot) >= limit);
+        Ok(slots
+            .into_iter()
+            .enumerate()
+            .map(|(ordinal, slot)| (slot, if compact { ordinal as u8 } else { slot }))
+            .collect())
+    }
+
     fn member(&self, id: u32, connection: u64) -> io::Result<Member> {
         self.model
             .members
@@ -2089,6 +2118,9 @@ impl Session {
                         ..Observation::default()
                     });
                 }
+                if next.members.len() >= r.admission_capacity() {
+                    return Err(err("selected map admission capacity exhausted"));
+                }
                 let key = next.enter(self.identity, self.connection, opcode == 81)?;
                 let m = next.members[&self.identity].clone();
                 let reply = if opcode == 81 {
@@ -2367,6 +2399,13 @@ impl Session {
                 let player_start = if let Some(catalog) =
                     r.managed_round.as_ref().and_then(|p| p.characters.as_ref())
                 {
+                    if next.members.len() > r.admission_capacity() {
+                        return Ok(Observation {
+                            start_rejection: Some("roster_exceeds_map_spawns"),
+                            ..Observation::default()
+                        });
+                    }
+                    let spawns = r.player_spawns(&next)?;
                     let players = next
                         .members
                         .values()
@@ -2377,7 +2416,7 @@ impl Session {
                             catalog.get(character)?;
                             Ok(wire::StartPlayer {
                                 slot: member.slot,
-                                spawn: member.slot,
+                                spawn: spawns[&member.slot],
                                 character,
                                 team: member.team,
                             })
@@ -2621,6 +2660,14 @@ impl Session {
                 let code = read_uint(&body[..2], Width::U16).map_err(io::Error::other)? as u16;
                 let index = read_uint(&body[2..], Width::U32).map_err(io::Error::other)? as u32;
                 let chosen = r.maps.as_ref().expect("catalog").select(code, index)?;
+                if next.members.len()
+                    > r.maps.as_ref().expect("catalog").choices[chosen].spawn_count
+                {
+                    return Ok(Observation {
+                        map_rejection: Some("roster_exceeds_map_spawns"),
+                        ..Observation::default()
+                    });
+                }
                 next.choose_map(member.key)?;
                 next.terrain = r.maps.as_ref().expect("catalog").choices[chosen]
                     .terrain
@@ -3187,6 +3234,7 @@ impl Session {
         }
         Ok(Observation {
             start_rejection: None,
+            map_rejection: None,
             admission_rejection: None,
             dropped_after_abort,
             pickup,

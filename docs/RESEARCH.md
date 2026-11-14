@@ -152,8 +152,12 @@ roster2/4/8, hai vòng/reset. Không lặp seed/route đã đủ; còn drop, nh�
 [Village10 seed/Herb](protocol/terrain.md#rust-village10-herb) đã có native hai/sáu client cho flags, ba root power2 và
 đối chứng nhà; [terrain tích hợp roster2/4/6](evidence/rust-service/g1-village10-terrain.json) đã có hai vòng/reset,
 Fire/Roller và toàn195flags mỗi blast. Aux report142 không là discriminator trong policy item opt-in, nghĩa gốc vẫn
-unknown; không RE dàn trải các giá trị khi đã có current-cell guard. Còn roster giữa/sparse và catalog chung sáu/tám
-spawn, mọi hướng/item/drop; Camp08/Tomb12 có loại ô khác. Giới hạn spawn hiện hành theo chỉ đạo bên dưới.
+unknown; không RE dàn trải các giá trị khi đã có current-cell guard. [Catalog tám/sáu spawn và sparse6](protocol/load-phase.md#rust-map-spawn-capacity)
+đã có Start/tọa độ và hai vòng/reset. Còn coverage roster khác, mọi hướng/item/drop; Camp08/Tomb12 có loại ô khác.
+Không lặp run sparse6 chỉ để lấy cặp flags cuối vòng hai bị budget probe bỏ qua: công bố đúng giới hạn19/20 blast.
+Nếu lát nội dung kế cần quan sát đủ, tính budget từ số clock/blast trước freeze; không sửa raw cũ. Ba channel ở run lỗi
+trước đóng QueueExpired trước mainDisconnected; run tách preboot không gặp lại, nhưng nguyên nhân resource/scheduling
+chưa xác định. Chỉ mở chẩn đoán tiếp nếu tái hiện hoặc cần budget M8; không patch JSON downstream.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster

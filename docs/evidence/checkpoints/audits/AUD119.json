@@ -1,0 +1,76 @@
+{
+  "id": "AUD119",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-mixed-map-spawn-admission-and-sparse-start"
+  ],
+  "completed_through": "CP305",
+  "recorded_utc": "2026-11-14T21:00:26.936207+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/load-phase.md",
+    "docs/protocol/terrain.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+    "docs/evidence/rust-service/g1-map-selection.json",
+    "docs/evidence/rust-service/g1-village10-terrain.json",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/map_profile.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "tools/rust_map_profile.py",
+    "local/research/codex/g1-mixed-map-sparse-native-r4/village10-terrain-native-verification.json",
+    "local/research/codex/g1-mixed-map-sparse-native-r4/village10-terrain-getter-verification.json",
+    "local/research/codex/g1-mixed-map-sparse-native-r4/postrun-telemetry-debugger-review.json",
+    "local/research/codex/g1-mixed-map-sparse-native-r4/cache-verification.json",
+    "local/research/codex/g1-mixed-map-sparse-native-r4/native/raw-seal.json",
+    "local/research/codex/g1-mixed-map-sparse-native-r4/native/storage-export.json",
+    "local/research/codex/g1-map-modal-attribution-r1/static-summary.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH rồi đối chiếu source adapter/catalog/admission, guard đổi map và Start, membership slot so ordinal spawn; xem ảnh UI và Battle hỗ trợ. Đối chiếu capture Start/tọa độ native ở sáu view, native reader/entity/ownership của20 bom và Fire/Roller, hai kết quả/reset; geometry Python chỉ dùng actual118 và không thay native. Kiểm riêng51792 getter emulation, hash/raw/sourcefreeze/cleanup và các failed runs. Budget40 thiếu cặp flags cuối vòng2 được công bố đúng; không sửa raw để có đủ42. A GDB terminal internal-error sau remote disconnect/hai reset không là shutdown sạch. QueueExpired ở run3 trước modal được phân biệt downstream HTTP abort; run4 tách preboot không nới account policy. Tự kiểm, không gọi worker là reviewer độc lập; không sửa exporter hoặc dữ liệu nguồn.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Catalog yêu cầu cùng prototype count và Start dùng membership slot làm ordinal, nên slot6/7 không dùng được trên map6spawn.",
+      "correction": "Giữ spawn_count từ profile, bound admission/listing và selection theo dữ liệu. Chỉ managed DB player-round adapter cắt prototype đã kiểm; sparse Start gán ordinal riêng mà không đổi slot/identity/generation.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/lib.rs",
+        "rust/crates/kr-service/src/map_profile.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/room_io_item_tests.rs",
+        "tools/rust_map_profile.py",
+        "docs/protocol/load-phase.md#rust-map-spawn-capacity"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Verifier kỳ vọng toàn42 snapshot flags dù observer frozen chỉ cho40.",
+      "correction": "Giữ failed verifier report. Chỉ xác nhận flags19/20 blast và khai missing pair vòng2; đủ native Start/spawn/item/lifecycle cho nhóm catalog/spawn, không tuyên bố toànterrain trace hoặc G1.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+        "docs/protocol/terrain.md#rust-village10-herb",
+        "local/research/codex/verify_g1_mixed_map_sparse_r4.py"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "HTTP abort cuối startup bị nghi là nguyên nhân đóng game.",
+      "correction": "R3 có ba QueueExpired channel closures trước mainDisconnected countdown; root resource/scheduling cause vẫn unknown. Run4 preboot trước service/session chỉ là thay orchestration với passive telemetry, không patch parser hoặc hạ guard.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+        "docs/RESEARCH.md#gap-rust-selected-map-terrain"
+      ]
+    }
+  ],
+  "remaining": [
+    "Camp08/Tomb12 và loại ô còn thiếu; nội dung/item và nhân vật theo acceptance G1.",
+    "Coverage các roster chưa đo và biến thể khi acceptance cần; không lặp sparse6 hoặc contiguous2/4/6 đã đủ.",
+    "QueueExpired/resource budgets và độ bền tải giữ việc vận hành M8; UTF-8 vẫn chưa có bản vá nghiệm thu."
+  ]
+}
