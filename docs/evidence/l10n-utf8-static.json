@@ -1,0 +1,37 @@
+{
+  "schema": "kre-static-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "a610ebc97b25d1d74c786023ddd08429a44bef42",
+  "source": "kr_static",
+  "status": "candidate",
+  "input": {
+    "description": "00967 unpacked image, private database copy",
+    "image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "database_copy_source_sha256": "368a56fd015f0920771a7febe81ffa1a160623c3bdb793f88dabb8c81bdb95c8"
+  },
+  "method": "IDA Pro 9.4 headless on a private database; pseudocode and xrefs are static analysis, not native behavior. Local raw output may contain decompiled code and is not tracked.",
+  "producer_sha256": "4aba5a919fcf0bfb01889c8f792668778fa2225157aa6d33107913554e3ab110",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/kr-pass1.json", "sha256": "00893d7f51e0605ca782d7432cf14f4a9d1c81c79ca74fa50026d283b2ad9ced"},
+    {"path": "local/research/l10n-utf8-codex/kr-pass2.json", "sha256": "654bdd3a9ca2393c012fa22ed6fb8d855ad7a5ea73f0347accd65347467527a9"},
+    {"path": "local/research/l10n-utf8-codex/kr-callers.json", "sha256": "a5c5da9756e20524a3e90e736362a15f1b20506135f9f65b9771c62590f89cb5"},
+    {"path": "local/research/l10n-utf8-codex/kr-codepages.json", "sha256": "1d2ee1cda076368fec17b2c2801aa22c521e9b3887a0648bf0696b73ad5b83e8"},
+    {"path": "local/research/l10n-utf8-codex/kr-input-slots.json", "sha256": "fa5c124e8806aebafe32e2c4042fc3da48e72fe240955b34f1fc3cc6f8c8812e"},
+    {"path": "local/research/l10n-utf8-codex/kr-ime-xrefs.json", "sha256": "835bfee3cb787bb836e63ec02201ee11d6643e9c10481a50b69696aad8cc5618"},
+    {"path": "local/research/l10n-utf8-codex/kr-ime-bodies.json", "sha256": "a0b007902937584bd7ebd9e496094548021d32b75b540919beb687444b73bb59"},
+    {"path": "local/research/l10n-utf8-codex/kr-ime-path.json", "sha256": "eca2a3132601e95553385a4439e2e06d0684dd2ef086bd9a3386c21759b0c11f"},
+    {"path": "local/research/l10n-utf8-codex/kr-width.json", "sha256": "e53c57add8051e8867e90ab0ff3e8fc91839d262b76cd9825394413a26b78bc4"},
+    {"path": "local/research/l10n-utf8-codex/kr-font.json", "sha256": "fa09cbcbb48814335e3fc3ab5e27bd61b390d3944247eb00082c5f777a74b75a"},
+    {"path": "local/research/l10n-utf8-codex/kr-render-input.json", "sha256": "f9175410ef54500c9661e5082c257d017ff0103cf89ff6b53d153eadc5b6c9a5"},
+    {"path": "local/research/l10n-utf8-codex/literal-seeds.json", "sha256": "845a671f7054fb7d64810c9cacc008da3eb549a3e1a18e57d6f073c167c9e295"},
+    {"path": "local/research/l10n-utf8-codex/literal-xrefs.json", "sha256": "75ac7e12ddb400a69649df736adf1cb86f46cdc3f8bc3d4ea90c2bde4e6ae2cf"},
+    {"path": "local/research/l10n-utf8-codex/kr-font-table.json", "sha256": "e9df20345c3899260b6eb8fd8a7f786afb7a187d251b48e920e40026bd1bdeb2"},
+    {"path": "local/research/l10n-utf8-codex/kr-glyph-vtable.json", "sha256": "57079b4f3e9b4bf674e4c9541193b6356a7a0cfd889b7eef88e1dab7b927bf77"}
+  ],
+  "ime_slot_mapping": {"path": "local/research/codex/rebuild-r2-verified.json", "sha256": "897cbab0c7e062b9ce2d93a324a665010c465b884be5e61750f6f90963a86f7e", "status": "candidate"},
+  "literal_seed_source": {"repository": "boom-re-l10n", "commit": "21275d31bf641897fa26a75e4ac0b63781548b7f", "path": "l10n/catalog.csv", "sha256": "c0b8b1c692ce88a6bf34fdbb417cd7af97075145d2b2619e7ca1f3bc07e63bd3", "limits": "Heuristic >=3 consecutive Hangul syllables, not an exhaustive literal inventory."},
+  "literal_xref_producer_sha256": "0d25a529cd340524c2268d6818b6a438e3144b4cc26b8a4c79a563813c8d9837",
+  "xref_producer_sha256": "b60242ad68b1801cd7ec97851b281339815a1fc431e660581b2ba096a2a794fd",
+  "limits": "Only the named functions and four selected callers were inspected; caller capacity, runtime API behavior, complete traversal, rendering, font, IME, protocol and the patch remain unverified. IDA MCP open failed because IDA Python lacked ida_nexus; REA IDA analysis did not return and was cancelled. No global configuration was changed.",
+  "interpretation": "docs/content/client-language.md#utf8"
+}

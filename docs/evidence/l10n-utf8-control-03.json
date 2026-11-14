@@ -1,0 +1,21 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "eff7d402597edef785d6a74c92862265cdfe9a81",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Two modified diagnostic 00967 client copies with original Korean localization data, private account service and isolated virtual LAN; baseline to room only.",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "observation": "Both client screenshots show the same Factory07 room with KRLocal and KRGuest and Korean UI. Both client-side 291 producer observations report cursor 128/128, zero errors and the respective names. The harness deliberately stopped after the room observation and subsequently returned 1 because its inherited full-game completion assertion still expected a later stage.",
+  "cache": "Nine files per role matched original input before launch. fxdynmapinfo.ssd changed on both copies during the run; all before/after hashes and raw export are in the seal. This is not evidence that the original exe accepts rewritten data.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/control-03/recipe.json", "sha256": "2f4df28955875f2d962406846b47eae1c06da6c1707b1b7f18f4bc87451dcea3"},
+    {"path": "local/research/l10n-utf8-codex/control-03/preflight.json", "sha256": "afadce3e1d1b2856b624334c71af860c22450f724e09228b3513504df995f665"},
+    {"path": "local/research/l10n-utf8-codex/control-03/native/run.json", "sha256": "b4b506629270e7ad91a45d12928b4006f21af0ada33284d93bb1948b009108ed"},
+    {"path": "local/research/l10n-utf8-codex/control-03/native/A/control-room.png", "sha256": "22e27538353439015a68dd8dc1ea49554ca4b989623436bed075a791b7e5038e"},
+    {"path": "local/research/l10n-utf8-codex/control-03/native/B/control-room.png", "sha256": "87b4bffc31d3507cf67ec24fcdb2dc64ec25d55769841818256051d85a2941d7"},
+    {"path": "local/research/l10n-utf8-codex/control-03/storage-export.json", "sha256": "08c0d94df823c5acc03bf305bcc73bd8dae6a929c6f453c6ebe274d3431a6390"},
+    {"path": "local/research/l10n-utf8-codex/control-03/raw-seal.json", "sha256": "4a64460ab603dfdb3da54b2b91a3112dbe038f39521db414ce4bb8319794488e"}
+  ],
+  "limits": "No translated or UTF-8 data or glyph hook was used. Screenshots do not prove shop, IME, shared text or all glyphs. Game and prefix copies derive from the post-run reference tree, so the whole environment is not asserted byte-identical to the earlier positive run; frozen service, database and 52 fixtures matched its preflight. No original-client, original-server, Windows or Internet acceptance."
+}

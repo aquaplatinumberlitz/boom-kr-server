@@ -1,0 +1,24 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "a610ebc97b25d1d74c786023ddd08429a44bef42",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "scope": "One private diagnostic control with original localization inputs and passive exception backtrace; not original-client or UTF-8 acceptance.",
+  "observation": "The diagnostic client stopped at SIGABRT in Wine kernelbase before lobby. Stack frames include 0x1526052, 0x96E300, 0x96E400, 0x9769B3, 0x97692E, 0x9770EA and 0x96DE74. On the private 00967 IDA copy these lie in a C++ exception and Boost property-tree JSON parser path that throws expected value. Six inspected return sites have matching 16-byte diagnostic and unpacked image sequences; this is limited alignment, not full-body runtime verification.",
+  "after_detach": "An illegal instruction at 0x2260DF8 was reported after debugger detach. The diagnostic PE has UD2 there in .repair; the earlier CP201 record associates this address with a cleanup trap for slot 0x16EA064. It is not the observed SIGABRT PC and its cause cannot be inferred from this run.",
+  "prior_evidence": "CP073 associates 0x96A155 to 0x96A480 with HTTP contentsUrl; CP201 observed empty JSON input and expected value on another run. This run did not capture JSON bytes or length, so it does not establish empty input or the same upstream cause.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/control-02/recipe.json", "sha256": "762805295d3be3126bdf057b5cf869d3b048d2b9a56e85e62090e0394708cefd"},
+    {"path": "local/research/l10n-utf8-codex/control-02/preflight.json", "sha256": "b2066d7d9e5cf15155336f4d00ae7f8c37aa2aa911a29e04b96f4b6dfb42d154"},
+    {"path": "local/research/l10n-utf8-codex/control-02/native/run.json", "sha256": "a2a4da402e91441a7544a7f7801bd4fec7169a706ffc1510e37a5eb8584b7f1e"},
+    {"path": "local/research/l10n-utf8-codex/control-02/storage-export.json", "sha256": "9491ba7a8570c0c36e291525e38507e26c4a0de13b37138e4282a67dc0b941c9"},
+    {"path": "local/research/l10n-utf8-codex/control-02/raw-seal.json", "sha256": "5babb8002048a65c963c648dd81b50555fd7652a6bee467f62c51cdf47935a22"},
+    {"path": "local/research/l10n-utf8-codex/diagnostic-stack-byte-compare.json", "sha256": "80bfea409a216c1eca4f01aa40232d342d054d69e7626623433f32cbd6724592"},
+    {"path": "local/research/l10n-utf8-codex/kr-abort-stack-pass1.json", "sha256": "73258ccd4f7c5c9f3d1e7fac06516038af452b8f35bf34e2d8e4045e0dae13e7"},
+    {"path": "local/research/l10n-utf8-codex/kr-abort-stack-pass2.json", "sha256": "73f578cd62cba632e55226ddb7e5ac37dc13afee7765c7180d0d558ecca07461"}
+  ],
+  "cleanup": "Private network namespaces removed, no recorded namespace process remains; raw export passed, 24 files pinned and executable plus nine localization inputs unchanged.",
+  "limits": "Two stopped diagnostic controls do not prove source of JSON, translation failure, client acceptance or startup root cause. No UTF-8 patch or translated dataset was loaded."
+}

@@ -1,7 +1,8 @@
 # Ngôn ngữ và bảng mã chữ trong client KR 00967
 
-Kết quả so tĩnh hai file exe ngày 13/11/2026, làm cho [đợt L của lộ trình](../PLAN.md#full-game-roadmap). Mức bằng
-chứng: `kr_static`. Chưa có lượt chạy nào; mọi câu về hành vi lúc chạy ở mục cuối là việc phải đo.
+Khảo sát cho [đợt L của lộ trình](../PLAN.md#full-game-roadmap) bắt đầu bằng so tĩnh hai exe ngày 13/11/2026;
+các kết luận đó mang nguồn `kr_static` hoặc nguồn tương ứng được ghi tại chỗ. Những đối chứng native về sau dùng
+client diagnostic bản copy và được ghi giới hạn riêng ở mục UTF-8. Chưa có nghiệm thu bản vá UTF-8.
 
 ## Nguồn
 
@@ -16,8 +17,8 @@ Phân tích chạy trên bản copy của exe và database; file gốc không b�
 
 ## Kết luận
 
-1. **Engine tự giữ bảng mã, không dùng bảng mã hệ thống để vẽ chữ.** Cả hai exe có một biến bảng mã toàn cục. Mọi
-   chuỗi trước khi vẽ được đổi sang Unicode theo biến đó, rồi tra hình chữ theo mã Unicode trong font bitmap.
+1. **Engine tự giữ bảng mã.** Cả hai exe có một biến bảng mã toàn cục; các đường chuyển mã và trình bày được đọc có
+   bước đổi sang Unicode. Chưa chứng minh mọi đường chữ đều đi qua biến này hoặc cùng một font.
 2. **Client KR 00967 đã có sẵn đường xử lý tiếng Việt.** Hàm đổi chuỗi của nó có nhánh riêng cho bảng mã 1258: tra
    bảng byte sang Unicode rồi ghép chữ gốc với dấu thanh thành một ký tự dựng sẵn. Cấu trúc này trùng với client VN.
 3. **Client KR 00967 là build đa vùng.** Một hàm chọn bảng mã theo vùng: Hàn 949, Nhật 932, Trung giản thể 936, Trung
@@ -29,8 +30,8 @@ Phân tích chạy trên bản copy của exe và database; file gốc không b�
    146/146 chữ cái tiếng Việt dựng sẵn (thường và hoa) có hình, cùng đủ 11.172 chữ Hàn. Ô chữ của KR là 12×12 điểm,
    của VN là 12×16, nên chữ hoa có hai tầng dấu trên font KR sẽ chật.
 
-Hệ quả: tiếng Việt trên client 00967 **không cần viết thêm bộ vẽ chữ hay font**. Đường ngắn nhất là đổi bảng mã và mã
-ngôn ngữ; chủ dự án đã chọn đường khác, [đưa mọi chữ về UTF-8](#utf8), để người chơi khác ngôn ngữ đọc được chữ của nhau.
+Font có sẵn là ứng viên hiển thị tiếng Việt; độ dễ đọc, cách đo và mọi đường vẽ còn phải kiểm trên client. Chủ dự án
+chọn [đưa chữ về UTF-8](#utf8) để người chơi khác ngôn ngữ đọc được chữ của nhau.
 
 ## Địa chỉ đã đọc
 
@@ -45,7 +46,7 @@ ngôn ngữ; chủ dự án đã chọn đường khác, [đưa mọi chữ về
 | Mã ngôn ngữ cho bảng chuỗi | `0x13A5770`, một nơi gọi tại `0x13A52D0` | — |
 | Hàm "vùng Hàn" / "vùng Việt" / "vùng Anh-Mỹ" | `0x48D8D0` (170 nơi gọi) / `0x48D900` (201) / `0x905740` (27) | — |
 | Nạp font `.fft` | chưa định vị | `0xA33320`, bảng tên file tại `0xE5CA2C` |
-| Đo và vẽ chuỗi | chưa định vị | `0xA34530`, `0xA34650`, `0xA335E0` |
+| Đo, cắt và chuyển tiếp chuỗi để trình bày | `0x14BAC80`, `0x14BADF0`, `0x14BA910`, `0x14BB5E0`, `0x14BB7B0`; đích vtable chưa định danh | `0xA34530`, `0xA34650`, `0xA335E0` |
 
 Định dạng `.fft` đọc từ hàm nạp của client VN và khớp kích thước cả tám file: header 32 byte (số hình chữ ở offset 8,
 rộng ở 12, cao ở 16, số byte bitmap mỗi hình ở 28); tiếp theo là `số hình × (1 byte bề rộng + bitmap)` cho nét thường
@@ -70,10 +71,10 @@ ra mạng**.
 1. **Cùng engine đa vùng.** Build 2010 có cùng hàm chọn bảng mã theo vùng (quanh `0x6BEFAF`) và cùng hàm mã ngôn ngữ
    1042/1033/1066 (quanh `0x4D7520`). `ClientString` trong pack của nó mang mã 1033. Đây là một exe không đóng gói của
    cùng engine, đọc dễ hơn image unpack của 00967.
-2. **Một mẫu chạy nhiều ngôn ngữ trong cùng một client.** Section `.u8code` do nhóm sửa thêm vào được gọi từ 63 chỗ
-   trong mã gốc và dùng bảng mã 65001 (UTF-8); section `.vkinp` bọc `PeekMessageW`/`PostMessageW` của đường nhập phím.
-   Gói kèm bốn bộ font chọn bằng một file `.bat`: Anh-Hàn, Đài Loan, Việt, gốc. Tức là họ đưa chữ về UTF-8 thay vì đổi
-   bảng mã theo từng ngôn ngữ. Chưa đọc kỹ từng hàm trong `.u8code`.
+2. **Một mẫu xử lý chữ nhiều ngôn ngữ.** Section `.u8code` bổ sung có đường dùng bảng mã 65001; section `.vkinp`
+   có đường gọi `PeekMessageW`/`PostMessageW`. Gói kèm bốn bộ font chọn bằng một file `.bat`: Anh-Hàn, Đài Loan,
+   Việt, gốc. Khảo sát tĩnh ban đầu cho thấy còn một lớp mã hai byte và đánh dấu riêng; chưa thể kết luận engine dùng
+   UTF-8 thuần hoặc mọi đường chữ đã được bao phủ. Chưa nghiệm thu hành vi chạy của mẫu này.
 3. **Font 12×16 nạp được ở build không phải VN.** Bộ font Việt trong gói có ô 12×16; `CxUni.fft` và `CxUniBold.fft`
    của nó trùng từng byte với font client VN. Ba bộ còn lại ô 12×12 như 00967.
 
@@ -120,8 +121,8 @@ tự viết đó chưa được thông báo nói tới.
 
 ## Hướng đã chốt: mọi chữ về UTF-8
 
-Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), đợt L đưa mọi chữ của client về UTF-8 như
-[client PopTag](#poptag), không đổi bảng mã theo từng ngôn ngữ. Hệ quả:
+Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), đợt L đưa dữ liệu chữ về UTF-8 cho cả ba ngôn ngữ.
+[Client PopTag](#poptag) là mẫu tham khảo; cơ chế nội bộ và khả năng áp dụng sang 00967 còn cần kiểm. Hệ quả dự kiến:
 
 - **Một bản vá chung cho cả ba ngôn ngữ.** Khác nhau giữa Hàn, Việt, Anh chỉ còn là dữ liệu: bảng chuỗi, font và ảnh
   có chữ. Người chơi khác ngôn ngữ đọc được tên, tiêu đề phòng và chat của nhau.
@@ -135,6 +136,123 @@ Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), đợ
   client. Lý do: client nạp bảng chuỗi, font và ảnh một lần lúc khởi động; exe gốc bị đóng gói nên bản vá nhiều khả năng
   phải áp lúc chạy, tức là đằng nào cũng cần trình mở game; thêm màn hình mới vào giao diện client là việc dịch ngược
   riêng. Đổi ngôn ngữ có hiệu lực ở lần mở game sau.
+
+**Đối chiếu IDA tĩnh, đang thực hiện.** Với PopTag SHA-256
+`d1f9f9b080abe2557693e6c906c26e22674be5fca6abe13d8913fe1a7c1db5d7`, mã tại `0xB9A400` thử chuyển từng
+đơn vị wide sang 949, rồi dùng bảng mã hai byte riêng khi ký tự không biểu diễn được; `0xB9A800` tra bảng đó hoặc
+giải mã 949. `0xBC0000` có đường chuyển wide sang UTF-8 và thêm tiền tố `J9:` sau một bước mã hóa; `0xBC0400`
+có đường tìm tiền tố, giải mã UTF-8 rồi chuyển về lớp byte riêng. `0xBBF000` xử lý một đường `VK_PACKET`, bỏ qua
+surrogate và chuyển qua `0xB9A400`. Đây là kết quả tĩnh của build PopTag, không phải hành vi 00967; tên và độ phủ
+các điểm vào còn chưa đầy đủ. [Metadata riêng](../evidence/l10n-utf8-poptag-static.json) ghi giới hạn IDA.
+`0xB9AC00` lấy composition qua API W cho index 8 và 0x800 rồi chuyển qua `0xB9A400`, các index khác đi API A.
+`0xB9B400`/`0xB9B600` thử giải lớp byte sang wide trước khi gọi vtable, có fallback; chưa định danh phép đo hay vẽ.
+
+Image unpack 00967 SHA-256
+`cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b`, database phân tích riêng;
+nguồn `kr_static`, chưa kiểm runtime. `0x138D380` chọn 949 ở vùng 1 và gọi setter `0x149AA90`, setter chỉ ghi
+`word_1A7E420`. `0x149A6D0` và `0x149A740` chuyển mã qua API Windows với biến đó, flags 0; ở đường không phải 1258,
+hai tham số default character của chiều wide sang byte đều NULL. Khi độ dài đầu vào dương, `0x149A6D0` ghi NUL tại
+`dst[result]` mà bản thân hàm không kiểm `result < capacity`; chưa biết caller có cấp thêm byte hay không.
+`0x1499C20` và `0x1499C70` gọi API duyệt ký tự theo codepage. `0x149A420` chỉ nhận bốn codepage DBCS
+932/936/949/950 là ký tự nhiều byte; `0x149A480` cũng phân biệt bốn codepage này. Vì vậy thay biến thành 65001
+chưa đủ chứng minh duyệt, cắt, đo hoặc vẽ đúng UTF-8. Chưa có đặc tả vá hoàn chỉnh hay nghiệm thu ba ngôn ngữ;
+cần kiểm từng caller, giới hạn buffer, font, nhập liệu và các đường mã cứng trước khi chọn thiết kế cuối.
+Trong bốn caller được đọc tiếp, `0x8DEE90` và `0xB6C600` dùng kết quả `0x149A420` để chọn nhánh độ rộng và
+ghép dòng; `0x14FE713` cộng độ rộng theo giá trị boolean cộng một và bước theo độ dài byte trả ra. `0x151E0E6`
+dùng `0x1499C20` khi sao chuỗi vào một control. Chưa định danh đầy đủ control, đường IME hay độ phủ các caller;
+đây là ứng viên cần xử lý, không phải danh sách điểm vá đã nghiệm thu.
+`0x14BAC80` tính chiều rộng theo từng UTF-16 unit, chọn một trong hai bước rộng theo ngưỡng 0x7F; nhánh
+`0x14BADF0` gọi vtable cho từng unit. `0x14BA910` cắt theo chiều rộng rồi chuyển wide về byte;
+`0x14BB5E0`/`0x14BB7B0` chuyển sang wide trước khi chuyển tiếp để xử lý trình bày. Các hàm này dùng buffer
+1024 wide unit; độ phủ glyph và hành vi surrogate vẫn chưa đo. Vtable ứng viên tại `0x17AF0CC` có entry `+0x18`
+trỏ `0x14BAB10`, đọc advance theo UTF-16 unit từ dữ liệu font; entry `+0x14` và `+0x1C` chuyển tiếp sang các
+backend trình bày. Chưa xác nhận object này được mọi control sử dụng.
+Ba body khác có codepage cố định: `0x1238150` và `0x12381F0` gọi chuyển byte sang wide với 949;
+`0x463A20` chuyển UTF-8 sang wide rồi sang 949. Chưa biết các đường này dùng cho nghiệp vụ nào, nên chưa thể
+đổi toàn bộ hằng 949. Metadata và hash của các phép đọc nằm ở [evidence tĩnh](../evidence/l10n-utf8-static.json).
+Ở đường nhập liệu, `0x152248F` dùng hai thunk tới slot ứng viên `ImmGetCompositionStringA/W`; hai nhánh W lấy
+composition rồi chuyển con trỏ wide và chiều dài qua `0x1522910` tới control bằng vtable. Ánh xạ slot lấy từ báo cáo
+khôi phục import và vẫn là candidate; đích vtable và chuyển chữ tới packet chưa được xác định. Kiểm tiếng Việt,
+tiếng Hàn, surrogate và giới hạn byte cần lượt runtime riêng.
+Các hàm control `0x15206B0` và `0x15206EE` lần lượt chuyển buffer byte sang wide và wide sang buffer byte 1023;
+chưa chứng minh control này là ô chat hoặc tên phòng. Độ dài ký tự của `0x149A420` đi qua `0x1499C50`, là hiệu
+giữa con trỏ kế và con trỏ đầu; sửa traversal ảnh hưởng trực tiếp cách các caller chia chuỗi.
+
+**Thiết kế ứng viên cho 00967.** Ưu tiên UTF-8 trực tiếp trong dữ liệu và các trường văn bản của client đã vá,
+với chuyển sang UTF-16 ở biên Windows và xử lý độ dài theo byte có kiểm tra. Cách này phù hợp mục tiêu dữ liệu chung
+và tránh phụ thuộc vào bảng mã tạm theo trạng thái và marker riêng của build PopTag. Đây là lựa chọn thiết kế, chưa
+chứng minh đủ điều kiện áp dụng: cần kiểm đường lookup khoá Hàn, 134 chuỗi 949 trong exe và các consumer 949 cố định;
+không đổi packet của client chưa vá. Nếu các consumer không thể phân biệt nguồn mã hóa thì phải khảo sát lại thiết kế,
+không coi chuyển biến codepage là bản vá hoàn chỉnh.
+
+Các điểm ứng viên gồm setter `0x149AA90` và chuyển mã `0x149A6D0`/`0x149A740` với capacity và NUL đúng; duyệt
+`0x1499C20`/`0x1499C70` và các caller cắt chuỗi theo ranh giới UTF-8 hợp lệ; nhánh độ rộng `0x149A420`/`0x149A480`
+cùng caller đo và xuống dòng; font, glyph và biên UTF-16 khi vẽ; message input, composition và giới hạn trường trước
+khi gửi. Các VA này là điểm điều tra, chưa có bản vá UTF-8 hay hợp đồng thay thế được nghiệm thu. Đặc biệt cần đo
+caller có cấp dư chỗ cho NUL, xử lý chuỗi sai mã và ký tự ngoài BMP, kiểm giới hạn chat/tên phòng ở client và server,
+cũng như xác định font và đường nhập thực tế. Chưa khẳng định nghiệm thu hiển thị hoặc nhập liệu.
+
+| Điểm ứng viên | Hành vi cần có | Phần còn phải kiểm trước khi vá |
+|---|---|---|
+| `0x138D380`, `0x149AA90`, `0x1A7E420` | Khởi tạo encoding UTF-8 của bản vá chung, giữ lựa chọn vùng và ngôn ngữ riêng. | Thời điểm ghi, các lần setter khác và chuỗi 949 còn tồn tại. |
+| `0x149A740`, `0x149A6D0` | Chuyển UTF-8 và UTF-16 với độ dài rõ, kiểm lỗi, chỗ trống và NUL. | Quy ước `-1`, số byte/unit và capacity của từng caller; hành vi lỗi không được âm thầm thành chuỗi khác. |
+| `0x1499C20`, `0x1499C70`, `0x1499C50` | Tiến/lùi đúng ranh giới mã UTF-8 và từ chối chuỗi không hợp lệ theo policy thống nhất. | Phạm vi bộ đệm và cách báo lỗi của caller; không tách chuỗi giữa các byte. |
+| `0x149A420`, `0x149A480`, `0x8DEE90`, `0x14FE713`, `0xB6C600` | Phân biệt độ dài byte với độ rộng và điểm cắt, kể cả ký tự ba hoặc bốn byte. | Boolean hiện tại chỉ phân loại DBCS; cần đối chiếu caller, không thay đơn giản thành `length > 1`. |
+| `0x14BAC80`, `0x14BADF0`, `0x14BA910`, `0x14BB5E0`, `0x14BB7B0` | Đo, cắt và chuyển tiếp cùng văn bản Unicode, không cắt giữa cặp surrogate. | Font/đích vtable, đơn vị width và giới hạn 1023 unit; quy tắc combining mark chưa đo. |
+| `0x152248F`, `0x1522910`, `0x15206B0`, `0x15206EE` | Giữ composition và ký tự nhập đến control; chỉ mã hóa UTF-8 tại biên byte đã xác định. | Ánh xạ slot API, vtable và control thật, hành vi IME, NUL và giới hạn chat/tên phòng. |
+| `0x1238150`, `0x12381F0`, `0x463A20` | Xác định từng nguồn trước khi quyết định giữ 949 hay chuyển UTF-8. | Nghiệp vụ, caller và tính đầy đủ của kiểm kê hằng codepage. |
+
+Các hành vi trên là yêu cầu thiết kế ứng viên; các hook quan sát hoặc thay thế thử có giới hạn được ghi riêng ở dưới,
+chưa có bản vá UTF-8 được nghiệm thu.
+
+**Ranh giới dữ liệu cần giải trước hook.** Bộ bảng chuỗi UTF-8 là đầu vào đã biết; ít nhất 134 chuỗi 949 ứng viên
+trong exe vẫn có thể đi qua cùng các consumer. Danh sách này trích theo heuristic ít nhất ba âm tiết Hàn liên tiếp,
+có thể sót literal ngắn. Cả 134 chuỗi đều khớp byte nguồn và cần nhiều byte hơn khi mã hóa UTF-8; IDA tìm được 141
+tham chiếu tới đúng đầu chuỗi, trong đó 84 site không thuộc hàm đã nhận diện. Chưa kiểm tham chiếu gián tiếp, con trỏ
+vào giữa chuỗi hoặc độ phủ toàn bộ literal. Con trỏ tới chuỗi gốc không bảo đảm nguồn còn nhận diện được sau khi sao chép,
+nên phân loại theo địa chỉ hoặc thử giải UTF-8 rồi fallback 949 chưa đủ an toàn: byte 949 có thể tình cờ là UTF-8
+hợp lệ. Bản vá dự kiến phải chuyển các literal 949 tại nguồn hoặc giữ nhãn encoding qua mọi lần sao chép, rồi kiểm
+đủ consumer trước khi đặt codepage chung. Chưa có bảng tham chiếu, capacity hay provenance đủ để chọn cách nào đã
+triển khai; không bật setter 65001 toàn cục làm bản thử ba ngôn ngữ. Bước implementation đầu là primitive chuyển mã
+và adapter có contract kiểm length, lỗi, NUL; sau đó kiểm bản copy với input control, malformed và đối chứng chuỗi
+949, rồi mới chạy bộ dữ liệu UTF-8. Chuyển hay mở rộng literal không được sửa image nguồn.
+`tools/l10n_utf8_literal_plan.py` chỉ tạo danh sách ứng viên cho image diagnostic đã pin hash: nó kiểm byte, NUL và
+141 vị trí pointer, nhưng không chỉnh image. Kết quả chưa đủ để áp relocation vì còn thiếu kiểm instruction, tham chiếu
+gián tiếp, literal bị bỏ sót, lifetime và consumer.
+
+`tools/l10n_utf8_codec.py` là bộ hàm tham khảo ngoài client: kiểm UTF-8 nghiêm ngặt, tìm ranh giới và cắt theo
+byte, chuyển UTF-16 và cộng độ rộng do caller cung cấp. Bộ kiểm riêng dùng ví dụ Hàn, Việt, Anh, surrogate và byte
+sai. Lõi C `tools/l10n_utf8_core.c` thực hiện giải mã và cắt với buffer có capacity; kiểm độc lập so với codec Python
+và biên dịch chéo thành object i686. [Probe riêng trên Wine](../evidence/l10n-utf8-winprobe.json) khớp API Windows
+ở một chuỗi hỗn hợp và các ca byte sai, ranh giới, buffer thiếu. Hai bộ này không áp hook, không cung cấp số đo font
+và không chứng minh client hay wire hoạt động. API dùng độ dài tường minh, không tự thêm NUL; caller phải xử lý
+terminator và không chồng buffer.
+
+Một [đối chứng diagnostic riêng](../evidence/l10n-utf8-control-01.json) dùng chín file chữ gốc đã quan sát được
+đường xử lý gói xác thực, nhưng client dừng trước bằng chứng sảnh với SIGABRT và sau đó illegal instruction; nguyên
+nhân chưa biết. Không có bản vá hay dữ liệu UTF-8 trong lượt đó và chưa có ảnh sảnh, nên chưa thể dùng nó để kết luận
+về chất lượng chữ hoặc nghiệm thu bản vá. [Đối chứng thứ hai](../evidence/l10n-utf8-control-02.json) thu stack
+SIGABRT trỏ vào đường parser JSON `expected value`, phù hợp nhánh HTTP content đã biết ở CP073/CP201; lượt này không
+thu được nội dung hay độ dài JSON nên chưa xác định nguyên nhân upstream. Illegal instruction xuất hiện sau khi
+debugger detach, không phải PC của SIGABRT. Phép thử tiếp cần một điều kiện phân biệt mới hoặc recipe đã tới được UI.
+Một [đối chứng hai client khác](../evidence/l10n-utf8-control-03.json) dùng recipe dịch vụ từng thành công và file
+chữ Hàn gốc: ảnh cả hai phía cho thấy phòng Factory07 và hai người chơi. Đây là baseline cho client diagnostic,
+không có bản vá UTF-8; cache map ở cả hai bản copy đã thay đổi trong lượt chạy. Client gốc, tiệm và nhập liệu vẫn chưa
+được kiểm từ đối chứng này.
+Một [phép thử glyph](../evidence/l10n-utf8-glyph-01.json) đã cài hook nhưng không khớp tiêu đề: client chọn một
+trong sáu tiêu đề mặc định khác với chuỗi duy nhất hook nhận. Kết quả chưa xác định được khả năng vẽ chữ Việt; không
+suy rằng đường chuyển mã không chạy hoặc font không hỗ trợ.
+[Phép thử kế tiếp](../evidence/l10n-utf8-glyph-02.json) khớp một tiêu đề nhưng điểm dừng trả về của GDB không đáng
+tin và phát lỗi; mọi quan sát thay thế trong lượt đó bị loại khỏi bằng chứng glyph. Chưa có kết luận font từ hai lượt.
+[Lượt thứ ba](../evidence/l10n-utf8-glyph-03.json) ghi nhận thay thế có kiểm return và capacity, nhưng ảnh sau
+thao tác mở hộp vẫn ở sảnh và không chứa chuỗi thử; log server không ghi create81. Chưa xác định nguyên nhân, cũng
+chưa chứng minh glyph được vẽ hay server từ chối tiêu đề.
+[Đối chứng pass-through](../evidence/l10n-utf8-glyph-04.json) chỉ quan sát một conversion, không ghi kết quả, cũng
+không thấy hộp tạo phòng sau click. Sự khác biệt với control03 chưa phân biệt được overhead instrumentation, thời điểm
+UI và các điều kiện khác. Phép đo tiếp phải có bằng chứng hộp đã sẵn sàng trước thao tác kế tiếp; chỉ thử thay chuỗi
+sau khi control pass-through tới được hộp và được chụp. Không dùng sleep hay tên stage làm bằng chứng UI.
+[Đối chứng không hook có gate ảnh](../evidence/l10n-utf8-dialog-05.json) đã chụp đúng hộp tạo phòng và sau đó
+vào phòng; ảnh đã được xem trực tiếp. Gate là heuristic giới hạn cho 1024×768, không thay kiểm ảnh ở lượt tiếp.
 
 <a id="cp1258"></a>
 
@@ -271,7 +389,8 @@ không được hiện. Cùng tên và khác byte không chứng minh ảnh kia 
 - **Giới hạn độ dài tính theo byte.** Chữ Hàn dài ba byte ở UTF-8 thay vì hai, chữ Việt có dấu dài hai hoặc ba byte. Tên,
   tiêu đề phòng và chat có giới hạn trong client và trong packet; phải đo từng trường.
 - **Client có lọc bảng chuỗi theo mã ngôn ngữ không.** Mỗi mục trong `ClientString` của pack mang mã 1042.
-- **134 chuỗi nằm trong exe** là byte theo bảng mã 949 và sẽ hiện sai nếu đọc như UTF-8; phải vá hoặc cho đi đường riêng.
+- **Ít nhất 134 chuỗi ứng viên nằm trong exe** là byte theo bảng mã 949; inventory heuristic có thể sót literal ngắn.
+  Cần xác định consumer và đường chuyển mã trước khi dùng UTF-8 chung.
 - **Gõ tiếng Việt và tiếng Hàn trong client** (ô chat, tên phòng) sau khi vá: chưa xem đường nhập.
 - **Dùng font của client VN** (ô 12×16) trong client KR để chữ có dấu dễ đọc hơn: hàm nạp đọc kích thước từ header và
   [client PopTag](#poptag) phát kèm đúng bộ font đó cho build 2010, nhưng bố cục giao diện của 00967 có thể giả định

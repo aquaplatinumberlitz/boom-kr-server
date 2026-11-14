@@ -1,0 +1,16 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "kr_runtime",
+  "status": "unknown",
+  "scope": "Two diagnostic client copies with original Korean inputs; a private GDB hook on A attempted an exact title conversion substitution, B was control.",
+  "observation": "A and B reached a room and the hook reported installation, but it did not report a match or replacement. A screenshot showed DefaultRoomTitle1 while the hook matched only DefaultRoomTitle2. Thus the result is inconclusive for glyph rendering and does not establish that the selected string used or bypassed the conversion hook.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/glyph-01/preflight.json", "sha256": "4078e63ef79639bf4bfd0daab7bf29ecd0a4e056b94b98eaf3691479c9d35bc3"},
+    {"path": "local/research/l10n-utf8-codex/glyph-01/recipe.json", "sha256": "36d0ac7222e4b969af33fcb7111efbd8d6b7ee5dc9fffe35ec872f37b6f6740a"},
+    {"path": "local/research/l10n-utf8-codex/glyph-01/native/run.json", "sha256": "be20a8853992ec6940709b5c7f9bf7b79402fc41de8c880d5a9f3d1070b40399"},
+    {"path": "local/research/l10n-utf8-codex/glyph-01/raw-seal.json", "sha256": "7d5a020161ea0e0519f46702cdab50e762122c9a2e849df31ba620637adebd45"}
+  ],
+  "cleanup": "Raw export passed, 45 raw files pinned and no namespace process remained. Two copied map cache files changed; executable and frozen inputs remained unchanged.",
+  "limits": "The launcher exited 1 due to the inherited full-game assertion after the deliberate room stop. No substitution was observed and no UTF-8 dataset, input method or shared text was tested."
+}

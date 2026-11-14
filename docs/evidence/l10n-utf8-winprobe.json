@@ -1,0 +1,15 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "design",
+  "status": "candidate",
+  "scope": "Standalone i686 program and Windows API on Wine 10.0-20260425; no game or client loaded.",
+  "probe_sha256": "83d87f812c1bccaa7ebd54b83a185ff0165917af1acd241dbb2cd38ade5db534",
+  "observation": "Exit 0: UTF-8 mixed Korean, Vietnamese, Latin and supplementary scalar matched MultiByteToWideChar CP_UTF8 on the supplied example; invalid surrogate encoding was rejected by both; prefix boundary and short-capacity checks passed.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/winprobe-01/run.json", "sha256": "0ea8c054d1799be5826641edcedb65db2e091c14ec8929a5745f8d3f9e4c4c05"},
+    {"path": "local/research/l10n-utf8-codex/winprobe-01/raw-seal.json", "sha256": "4b20dee2e2c737a3e4406a908e6048cc1f1c7a5c34104672797ce62e93e4d419"}
+  ],
+  "cleanup": "Private network namespace had loopback only, no IPv4 route or IPv6 default route, and no remaining process. Probe SHA matched before and after.",
+  "limits": "One finite standalone API comparison, not Windows hardware, client hook ABI, game behavior, input method, glyph rendering, protocol or native acceptance. Python/C differential tests cover separate cases."
+}
