@@ -32,6 +32,10 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, C
 1. **G1.** M6 thu hẹp đã đạt acceptance tại [ma trận bằng chứng](evidence/rust-service/m6-journal-serving.json). N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
    Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và các route Forest07 roster2/4/8 đã có lát native; tiếp khoảng trống Forest07 rồi Patrit14 và các map còn lại theo acceptance; không đụng `tools/export_map_profile.py`.
    Không lặp M6 đã nghiệm thu, native4/8, roster, account/DB hoặc baseline N1b đã có. M8 theo thứ tự bên dưới.
+   **Xen một lượt ở ranh giới giữa hai lát G1: L-probe.** Nạp thử bộ file chữ tiếng Anh (bảng mã Hàn, không vá exe) vào
+   bản sao client gốc để biết client có nhận file dữ liệu đã thay không; năm lượt chạy, một checkpoint, không đổi code
+   server. Đề bài ở `local/research/claude/codex-prompt-l10n-probe.md`, bối cảnh ở
+   [content/client-language.md](content/client-language.md#data-files). Xong thì gỡ đoạn này.
 2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
    N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. Packet59 đã tái hiện ở một lượt Forest07; [issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ unknown caller/semantics và phép trace có giới hạn, không coi current positive là fix.
 
