@@ -33,10 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP302: Village10 có lát terrain/item hai vòng trên roster2/4/6 account KR/Wine.**
-[Capture, native và geometry đối chứng](docs/evidence/rust-service/g1-village10-terrain.json) xác nhận Fire, Roller ẩn,
-spawn/stat và reset trong route đã đo. Policy reveal giữ current-cell/ownership guards, không gán nghĩa cho aux142.
-Catalog chung sáu/tám spawn, sparse roster, các map/item còn lại và M8 tiếp theo [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP304: sửa kiểm chứng lịch sử workflow CI; phạm vi runtime giữ nguyên.**
+[Correction và bằng chứng công bố](docs/evidence/checkpoints/docs-workflow-source-correction.json) giữ pin cũ
+và mới, không sửa checkpoint đã complete. [L1a UTF-8](docs/evidence/l10n-utf8-l1a-review.json) vẫn partial,
+chưa nghiệm thu bản vá hoặc nhập liệu; G1 tiếp catalog sáu/tám spawn và nội dung còn thiếu theo
+[Bảng điều hành](docs/PLAN.md#dashboard).
 
 ## Bắt đầu
 

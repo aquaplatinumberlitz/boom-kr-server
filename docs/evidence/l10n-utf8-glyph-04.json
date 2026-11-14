@@ -1,0 +1,18 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Two diagnostic clients, one-shot read-only GDB pass-through on A and no hook on B; original Korean data, no UTF-8 dataset.",
+  "observation": "A hook matched DefaultRoomTitle5 once, validated the original six UTF-16 units and returned without modifying memory or registers. The inspected A screenshot after the create-dialog click showed the lobby; the controller later timed out at created, and the server event log recorded no create opcode 81. In control-03 the corresponding screenshot showed the dialog and both clients later reached a room. The cause of this difference is unknown; instrumentation overhead, UI timing and other run differences are not isolated.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/glyph-04/recipe.json", "sha256": "f372eec406d8e0a0ceb2329e59d0299ffbbc6691f563b7664f7b6a3648952923"},
+    {"path": "local/research/l10n-utf8-codex/glyph-04/preflight.json", "sha256": "d90cee378bfeffd282d156e31d015f8ff038f588c8e9a59bebd8a6634439c658"},
+    {"path": "local/research/l10n-utf8-codex/glyph-04/native/run.json", "sha256": "5466cba158be45f97df19c2eb1822eb4dcc85be8d1b72c654b0e25e79cd8a438"},
+    {"path": "local/research/l10n-utf8-codex/glyph-04/native/A/dialog.png", "sha256": "c2712d69c845e8d7a8a3dd8fb27b1a314b4b87a7c3905568a4b2a47919b4da02"},
+    {"path": "local/research/l10n-utf8-codex/glyph-04/storage-export.json", "sha256": "a1dd9152b5b562ae4399634e9854a2d61a7f986e255ba0b9743073d1f0293603"},
+    {"path": "local/research/l10n-utf8-codex/glyph-04/raw-seal.json", "sha256": "40f52f934ec5cbf528434b19f56bc1c52f3ff24164e0ab19f590949d3d055e00"}
+  ],
+  "cleanup": "Raw export passed, 41 files pinned, frozen inputs and executables unchanged, map cache changed on both copies and no process remained in recorded namespaces.",
+  "limits": "One pass-through control, not proof that the hook caused the UI difference or that substitution and UTF-8 would work. Exit 1 is the inherited full-game assertion after timeout. No glyph, IME, packet or original-client acceptance."
+}

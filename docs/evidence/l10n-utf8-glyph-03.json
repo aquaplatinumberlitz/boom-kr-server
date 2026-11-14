@@ -1,0 +1,18 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Two diagnostic copies, private debugger substitution on A of one exact Korean title conversion to UTF-16 Korean/Vietnamese/English; B unmodified. No UTF-8 dataset or input method.",
+  "observation": "Hook reported a match for DefaultRoomTitle2 and a guarded replacement with capacity 1023 and previous/returned length 9 UTF-16 units. No probe_error was recorded. The inspected A dialog-stage and created-stage screenshots show the lobby, not the target string or room, and the harness timed out at created. Server event logs contain no create opcode 81, unlike control-03, and do not show a title rejection. This does not establish target glyph rendering or why the create dialog or room was not observed.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/glyph-03/recipe.json", "sha256": "e3f0c5f302c22f31b5c027339a1c8db9636ec3e555ebb9067d07ddda516dc10e"},
+    {"path": "local/research/l10n-utf8-codex/glyph-03/preflight.json", "sha256": "d99f89c786674e5b000f98a73c80770469178cfca1914c17031cf2457d019d8c"},
+    {"path": "local/research/l10n-utf8-codex/glyph-03/native/run.json", "sha256": "9f5ac4c49ddf06ffeb1c8f2825530a2b618b3853a9be33daf6041a8f631bf629"},
+    {"path": "local/research/l10n-utf8-codex/glyph-03/native/A/created.png", "sha256": "69410f1a270f83c2d4129401b02809288e370aaa321a8310bc08cd2779a03d04"},
+    {"path": "local/research/l10n-utf8-codex/glyph-03/storage-export.json", "sha256": "6ec511943bb66e524fbebbd7e0b9f70dae4c75e9cd8dac8fb4ea939936f65972"},
+    {"path": "local/research/l10n-utf8-codex/glyph-03/raw-seal.json", "sha256": "5bfa5df8bc387b43e469397d86768bb57242367b3fe9225164d6b7cca277d112"}
+  ],
+  "cleanup": "Raw export passed, 41 raw files pinned, no recorded namespace process remained. Frozen inputs and executables unchanged; two copied map caches changed.",
+  "limits": "A debugger mutation is not a UTF-8 patch. Return bookkeeping and capacity guards do not establish later object lifetime, rendering, shared text, input, packet or original-client compatibility. The missing room is unattributed."
+}

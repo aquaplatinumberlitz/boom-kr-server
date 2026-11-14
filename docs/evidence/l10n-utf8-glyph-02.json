@@ -1,0 +1,17 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "kr_runtime",
+  "status": "unknown",
+  "scope": "Two diagnostic copies, six exact title candidates on A, B unmodified. Private GDB output substitution was attempted; no UTF-8 dataset or input method was used.",
+  "observation": "The hook matched DefaultRoomTitle5 but GDB FinishBreakpoint reported outermost-frame errors. Some purported returns had implausible EAX values, so every replacement observation in this run is invalid as a glyph oracle. The harness stopped on probe_error at the room dialog. No font or game compatibility conclusion follows.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/glyph-02/recipe.json", "sha256": "d9e2a9ba3ab7c8d26617469e23dde20e6a854a57f08d65192024477d0d4bcc98"},
+    {"path": "local/research/l10n-utf8-codex/glyph-02/preflight.json", "sha256": "0f193abac5489dd8b7f8496bce02dcd507fb391debdb00184ab0b5cc67c54ed5"},
+    {"path": "local/research/l10n-utf8-codex/glyph-02/native-raw-export/run.json", "sha256": "c430f63be41121559607e750615817667dfebd18ea64c2c2179c36c6463fc258"},
+    {"path": "local/research/l10n-utf8-codex/glyph-02/storage-export-before-unmount.json", "sha256": "662d851e7bc0b79ff47d1cc2daf434d4b4fbdf1e1729f51f5701d32c7bf09d05"},
+    {"path": "local/research/l10n-utf8-codex/glyph-02/raw-seal-recovery.json", "sha256": "80464d3e74f7d2f57739bba635bdcb23316bc2e4d7bc794562adbb245bb6a402"}
+  ],
+  "cleanup": "Unmount was busy after same-byte export. All 37 exported files were reverified against the pre-unmount manifest; no process remained in recorded namespaces. Frozen inputs and executables were unchanged; two copied map caches changed.",
+  "limits": "Instrumentation failure; do not infer a glyph failure, a successful substitution, native UTF-8 compatibility or protocol behavior."
+}

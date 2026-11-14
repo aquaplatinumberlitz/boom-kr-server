@@ -35,5 +35,8 @@ jobs:
           tools.test_export_preset
           tools.test_four_bundle
           tools.test_issue_links
+          tools.test_l10n_utf8_codec
+          tools.test_l10n_utf8_core
+          tools.test_l10n_utf8_glyph_probe
           tools.test_probe_channel_identity
           tools.test_terrain_shadow

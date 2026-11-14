@@ -1,0 +1,19 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "a610ebc97b25d1d74c786023ddd08429a44bef42",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "client": {"kind": "diagnostic offline copy", "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed", "limits": "Inherited diagnostic changes and global reset; does not establish original-client behavior."},
+  "input": "Nine original localization files, private game and prefix, private account service, one role. No UTF-8 patch or translated data.",
+  "observation": "Native probe observed auth packet 4 cursor 137/137 with zero reported packet errors, then packets 15, 62 and 7 and a second bootstrap. The harness stopped on a client failure before recording the requested lobby candidate; log contains SIGABRT followed by illegal instruction at 0x02260DF8. Cause is unknown; no lobby screenshot was captured.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/control-01/recipe.json", "sha256": "1d66bd64f9e0d09d0eb2d8fe4c11247cd102699c2ad2560239fdde6c37f66745"},
+    {"path": "local/research/l10n-utf8-codex/control-01/preflight.json", "sha256": "2d5cac84f3ee4c5e623f76715118beb787daa1cc0f78919f299aeeba35a1ea72"},
+    {"path": "local/research/l10n-utf8-codex/control-01/native/run.json", "sha256": "80741d2f47fb6f32b800a3dac6a4c00ebadb95cd1a8426ea088d7e58b758ce34"},
+    {"path": "local/research/l10n-utf8-codex/control-01/storage-export.json", "sha256": "57d864af504843cd5246ed4fc095d038c2c212b7a3ac97125e03f8b78584eac2"},
+    {"path": "local/research/l10n-utf8-codex/control-01/raw-seal.json", "sha256": "a89e811620e55561c017dc9cd1e3ecc50306b568a06cecc644ca2317005c64a9"}
+  ],
+  "cleanup": "Raw export passed; 24 raw files pinned; outer namespace had loopback only and no IPv4 route; no process remained in the recorded namespaces. Executable and nine input files matched pre-run hashes.",
+  "limits": "One early diagnostic control. No consumer file trace or UI oracle established, no UTF-8 data was loaded, and neither alive processes nor server logs establish acceptance. Do not infer a translation failure or repeat unchanged configuration without a new discriminating condition."
+}

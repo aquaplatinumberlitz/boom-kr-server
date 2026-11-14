@@ -1,0 +1,45 @@
+{
+  "schema": "kre-l10n-l1a-review-v1",
+  "checkpoint": "CP303",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "canonical": "docs/content/client-language.md#utf8",
+  "source": "design",
+  "status": "candidate",
+  "worker_commit": "a026b7c",
+  "integration_base": "b1387cfb770b4cf0ad0a500d1ec1dfdf41ddec4a",
+  "acceptance": {
+    "L1a": "Chưa đạt: còn thiếu consumer/literal949 coverage, caller capacity và lựa chọn patch có thể triển khai đầy đủ.",
+    "L1b": "Chưa có bản vá chạy ba bộ ko/en/vi UTF-8 qua login/sảnh/tiệm/phòng.",
+    "L1c": "Chưa có nghiệm thu gõ Việt/Hàn ở chat/tên phòng hoặc byte server nhận."
+  },
+  "findings": {
+    "static": "IDA riêng xác nhận một số VA boundary949/UTF16, traversal DBCS, width và vtable glyph/IME; PopTag dùng949/cache mã hai byte và wrapper J9/UTF8, chưa có native PopTag. Không sao chép mã hoặc áp địa chỉ giữa build.",
+    "primitive": "Python và C strict UTF8↔UTF16/cắt prefix có capacity, malformed và no-partial-write tests; i686 crosscompile và standalone Wine API đã đo. Đây là công cụ RE, không patch client.",
+    "literal": "134 literal từ heuristic và141 exact-start xref đã đối chiếu byte. Mọi chuỗi UTF8 dài hơn chỗ cũ; inventory có thể thiếu literal ngắn/indirect/interior reference. Byte949 có thể là UTF8 hợp lệ, không dùng decode-fallback tự nhận encoding.",
+    "native_controls": "Control03/dialog05 dùng dữ liệu Hàn gốc và recipe positive đã có, ảnh thấy phòng hai client; dialog05 có ảnh hộp trước click tiếp. Không UTF8 hoặc nhập liệu.",
+    "glyph": "Glyph01 no-match; glyph02 instrument-invalid. Glyph03/04/dialog06 có fatal SIGSEGV của GDB host ngay sau marker, nên không nhận marker làm native effect hoặc pass-through hợp lệ; không quy lỗi cho client/font. Dialog05 không hook vẫn tới hộp/phòng. Xóa breakpoint trong callback là giả thuyết nguyên nhân, chưa chứng minh."
+  },
+  "reuse": {
+    "sources": [
+      "docs/evidence/l10n-utf8-static.json",
+      "docs/evidence/l10n-utf8-poptag-static.json",
+      "docs/evidence/l10n-utf8-dialog-05.json"
+    ],
+    "translation_commit": "21275d31bf641897fa26a75e4ac0b63781548b7f",
+    "later_translation_note": "Checkout dịch đã có commit mới; không thay input đã pin hoặc sửa repo dịch.",
+    "direct": "Tái dùng primitive và bản copy diagnostic đã tới phòng; ảnh/control hợp lệ làm baseline, không lặp lỗi startup JSON đã có CP073/201.",
+    "reference_only": "PopTag chỉ là mẫu kiến trúc khác build, chưa engine UTF8 thuần hoặc contract00967."
+  },
+  "decision": "Giữ đích UTF8 chung theo chủ dự án; adapter dự kiến dùng boundary Unicode và lỗi/length/NUL tường minh. Chưa chốt patch toàn engine trước khi biết provenance949 sau copy; không bật65001 toàn cục, không đổi wire cho client chưa vá. Helper tiếp theo chỉ disable breakpoint trong callback; cần regression debugger/ABI riêng trước probe game mới. Không dùng marker trước crash làm proof.",
+  "limits": "CP303 chỉ ghi tiến độ và blocker, không L1a/L1b/L1c passed hoặc nhóm tính năng hoàn tất. Một worker theo ngoại lệ; root giữ counter/PR/lease. Runtime G1 tách riêng, không đưa kết quả run đang hoạt động vào checkpoint này. Raw/games/IDA/binary chỉ local.",
+  "worker_commits": [
+    "a026b7c",
+    "e68442d",
+    "9a9176e"
+  ],
+  "prior_g1_recheck": {
+    "path": "local/research/l10n-utf8-codex/cp303-review/prior-g1-debugger-scan.json",
+    "result": "CP302 hai/bốn người không có marker đã tìm; sáu người A/C/F có internal-error của GDB sau remote disconnect và sau hai rank/reset. Bổ sung giới hạn terminal tại mốc này, không đổi record/raw cũ hoặc suy glyph proof.",
+    "limits": "Không tuyên bố debugger kết thúc sạch hoặc toàn shutdown cause."
+  }
+}

@@ -224,19 +224,19 @@ Dependency: —.
 
 Khoảng trống (trích bảng RESEARCH): [CP179](PROTOCOL.md#bootstrap-recipe-scope): K1 đạt riêng offlineR2 từ3coldstart/API đúngPID/contract-controls; K0CP178 giữ. Không originalWindowsbootstrap hoặc3e9coldstart.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Cold3R2 đã giải, không đo lại. WiderWCP/launcher/config còn ở #2; currente9input/state bridge và livecodec theo PLAN/#3, chỉ mở bootstrapcause nếu có trigger mới.
+Phép kiểm tối thiểu (trích cùng nguồn): Cold3R2 đã giải, không đo lại. WiderWCP/launcher/config còn ở #2; currente9input/state bridge và livecodec theo PLAN/#3, chỉ mở bootstrapcause nếu có trigger mới. [L1 UTF-8](RESEARCH.md#gap-client-utf8) có boundary/spec partial và controls riêng; chưa có patch đạt acceptance, không suy từ gate K0/K1.
 
 Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285), [#1](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2), [#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9), [#407](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/407), [#414](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414).
 
-Bằng chứng/build/hash/recipe: [bootstrap-wire](evidence/bootstrap-wire/README.md), [probe-service](evidence/probe-service/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [protocol](protocol/bootstrap-codec.md#original-windows-control), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PLAN.md#k0-k2a-acceptance), [wine-r2](evidence/wine-r2/README.md#cp179).
+Bằng chứng/build/hash/recipe: [bootstrap-wire](evidence/bootstrap-wire/README.md), [probe-service](evidence/probe-service/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [protocol](protocol/bootstrap-codec.md#original-windows-control), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PLAN.md#k0-k2a-acceptance), [wine-r2](evidence/wine-r2/README.md#cp179), [evidence](evidence/l10n-utf8-l1a-review.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](protocol/bootstrap-codec.md#wcp) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](protocol/bootstrap-codec.md#wcp) |
+| kr_static | partial | [nguồn1](protocol/bootstrap-codec.md#wcp), [nguồn2](content/client-language.md#utf8) |
 | emulation | checked | [nguồn1](evidence/bootstrap-wire/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/bootstrap-wire/README.md), [nguồn2](evidence/preclock-eof/README.md), [nguồn3](evidence/nmco-locale-stability/README.md), [nguồn4](evidence/wine-r2/README.md#cp179) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/bootstrap-wire/README.md), [nguồn2](evidence/preclock-eof/README.md), [nguồn3](evidence/nmco-locale-stability/README.md), [nguồn4](evidence/wine-r2/README.md#cp179), [nguồn5](evidence/l10n-utf8-dialog-05.json) |
 | windows_original | observed | [nguồn1](protocol/bootstrap-codec.md#original-windows-control), [nguồn2](evidence/peer-endpoints/README.md#cp178) |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |

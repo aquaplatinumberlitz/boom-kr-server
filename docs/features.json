@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP302",
+  "as_of": "CP303",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -95,7 +95,8 @@
           "docs/protocol/bootstrap-codec.md#original-windows-control",
           "docs/evidence/peer-endpoints/README.md#cp178",
           "docs/PLAN.md#k0-k2a-acceptance",
-          "docs/evidence/wine-r2/README.md#cp179"
+          "docs/evidence/wine-r2/README.md#cp179",
+          "docs/evidence/l10n-utf8-l1a-review.json"
         ]
       },
       "coverage": {
@@ -114,7 +115,8 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/protocol/bootstrap-codec.md#wcp"
+            "docs/protocol/bootstrap-codec.md#wcp",
+            "docs/content/client-language.md#utf8"
           ]
         },
         "emulation": {
@@ -130,7 +132,8 @@
               "docs/evidence/bootstrap-wire/README.md",
               "docs/evidence/preclock-eof/README.md",
               "docs/evidence/nmco-locale-stability/README.md",
-              "docs/evidence/wine-r2/README.md#cp179"
+              "docs/evidence/wine-r2/README.md#cp179",
+              "docs/evidence/l10n-utf8-dialog-05.json"
             ]
           },
           "windows_original": {
