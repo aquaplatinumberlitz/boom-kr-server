@@ -142,7 +142,7 @@ def adapt(config, profile, out):
         raise ValueError('Start nguồn khác map metadata')
     rows_at = 37 + size
     count = inner[rows_at - 5]
-    if count not in (2, 4, 8) or len(inner) != rows_at + count * 26:
+    if not 2 <= count <= 8 or len(inner) != rows_at + count * 26:
         raise ValueError('Start nguồn sai schema roster')
     for index in range(count):
         if inner[rows_at + index * 26 + 2] >= len(profile['spawns']):

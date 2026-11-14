@@ -180,7 +180,8 @@
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/407"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/407",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414"
       ]
     },
     {
@@ -2649,7 +2650,8 @@
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/evidence/rust-service/g1-terrain-players.json",
           "docs/evidence/rust-service/g1-map-terrain.json",
-          "docs/evidence/rust-service/g1-patrit-terrain.json"
+          "docs/evidence/rust-service/g1-patrit-terrain.json",
+          "docs/evidence/rust-service/g1-village10-herb.json"
         ]
       },
       "coverage": {
@@ -2891,7 +2893,8 @@
           "docs/evidence/rust-service/g1-life-actions.json",
           "docs/evidence/rust-service/g1-terrain-players.json",
           "docs/evidence/rust-service/g1-map-terrain.json",
-          "docs/evidence/rust-service/g1-patrit-terrain.json"
+          "docs/evidence/rust-service/g1-patrit-terrain.json",
+          "docs/evidence/rust-service/g1-village10-herb.json"
         ]
       },
       "coverage": {
@@ -3117,7 +3120,8 @@
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/evidence/rust-service/g1-terrain-players.json",
           "docs/evidence/rust-service/g1-map-terrain.json",
-          "docs/evidence/rust-service/g1-patrit-terrain.json"
+          "docs/evidence/rust-service/g1-patrit-terrain.json",
+          "docs/evidence/rust-service/g1-village10-herb.json"
         ]
       },
       "coverage": {

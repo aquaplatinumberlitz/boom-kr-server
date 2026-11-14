@@ -122,8 +122,9 @@ lookup/name/stat/spawn và DB journal; Ready phải bật lại. Native decoder 
 controls kiểm reverse selection, guest denial/rejoin, malformed pair/fresh-room current positive và account isolation.
 
 Phạm vi là admission4 và2client native, Dao0/Dizni1/team0/3, empty floor/no terrain mới. Village10 có6spawn/UI
-hiện6người; fixture8row bị adapter từ chối đúng. G1 vẫn yêu cầu đầy đủ2..8 theo PLAN, chưa tự giảm scope hoặc ép lại
-spawn/pack. Terrain/drop/item, các map khác, mọi cỡ roster và Internet/load chưa được suy từ lát này. Lỗi synthetic
+hiện6người; fixture8row bị adapter từ chối đúng. Theo [phạm vi hiện hành](../evidence/owner-directives/g1-map-roster-limits.json),
+Village10/Tomb12 nghiệm thu2–6, bốn map còn lại2–8; không ép hoặc dùng chung spawn.
+[Prototype theo giới hạn map và quan sát Herb](terrain.md#rust-village10-herb) có bằng chứng riêng, chưa là catalog chung đầy đủ. Terrain/drop/item, các map khác, mọi cỡ roster và Internet/load chưa được suy từ lát này. Lỗi synthetic
 setup/Back cũ còn unknown, giữ raw/failure và phép đo M8 riêng.
 
 <a id="village10-map-selection"></a>

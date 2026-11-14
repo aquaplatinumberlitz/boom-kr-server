@@ -1,0 +1,84 @@
+{
+  "schema": "kre-village10-herb-observation-v1",
+  "checkpoint": "CP301",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Village10 seed flags and three bounded actual roots on six authenticated KR/Wine clients, plus managed template input support. Not full map, results/reset/drop/G1.",
+  "seed": {
+    "root": "local/research/codex/g1-village10-seed-native-r3",
+    "run_sha256": "7f3dd1636ed794128a38c42e2ee62acf8d076a300626be7b8f8eacd45fa1fd5e",
+    "native_verification": "local/research/codex/g1-village10-seed-native-r3/village10-seed-native-verification.json",
+    "getter_verification": "local/research/codex/g1-village10-seed-native-r3/village10-seed-getter-verification.json",
+    "getter_checks": 430,
+    "cache_mutation": "local/research/codex/g1-village10-seed-native-r3/client-cache-mutation-verification.json",
+    "limits": "Two native views, all18Herb flags0, 177known candidate cells agree. Seed flags are not flame behavior. Initial strict seal failed on two client-written metadata cache files, explicitly verified against actual238 and retained before/after; source_frozen false in that seal."
+  },
+  "native": {
+    "root": "local/research/codex/g1-village10-herb6-native-r2",
+    "run_sha256": "5c50e0a25c2494caba7aebf14b9f78bba5cf28fb33339e51317e8829171a87c5",
+    "service_sha256": "061d89e619febb1a649558b87b789f6044c37a4881f2514672f6b31a044c7fd8",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "native_verification": "local/research/codex/g1-village10-herb6-native-r2/herb-native-observation-verification.json",
+    "getter_verification": "local/research/codex/g1-village10-herb6-native-r2/herb-native-getter-verification.json",
+    "getter_checks": 9282,
+    "raw_seal": "local/research/codex/g1-village10-herb6-native-r2/native/raw-seal.json",
+    "raw_files": 228,
+    "launcher_exit": 1,
+    "export_recovery": "local/research/codex/g1-village10-herb6-native-r2/native/storage-export.json",
+    "cache_verification": "local/research/codex/g1-village10-herb6-native-r2/cache-verification.json",
+    "topology": "Six actual copied clients/Wine, private isolated LAN with eight provisioned virtual client slots (two inactive), same shared source TCP via authenticated QUIC companions; no external route. No delay/jitter/loss/reordering/bandwidth/MTU override configured.",
+    "measured": "All six pack spawns; designed floor Fire at0,6 raises slot4 power1→2 on all views. Actual118 roots0,5 /0,6 /0,8 atpower2. Source1952/rawclass3 native context flag0; root1 onHerb0,5 sees object then subsequent root sees it absent. Root3 crosses freshHerb0,9, then static0,10 stops via cellstate2/result0. All195flags before/after3blasts×6views match independent Python geometry derived from actual118; separate captured159/158 reader/entity/owner/power checks. Six×142ray observations.",
+    "failure": "Runtime observations completed and exported; process exit1 at bounded unmount busy. Namespace extinct, no owned processes, all228export files exact match pre-unmount SHA list and no extras. Recovered same-byte export at original locator, preserved empty underlying directory, original raw/exit/failure unchanged.",
+    "limits": "Only route/directions/power2 shown, no results/reset, full drop distribution, all sparse rosters, every Herb direction, original physics/server authority or full Village10/G1. Native getters are separate emulation, server logs not oracle."
+  },
+  "implementation": {
+    "files": [
+      "rust/crates/kr-service/src/lib.rs",
+      "rust/crates/kr-service/src/room.rs",
+      "rust/crates/kr-service/src/room_io.rs",
+      "rust/crates/kr-service/src/rules.rs",
+      "rust/crates/kr-wire/src/kr00967/room.rs",
+      "tools/rust_map_profile.py"
+    ],
+    "behavior": "Additional prototype counts2..8 accepted only at DB-owned managed player-round admission with FirstVacant and no legacy Battle. Existing legacy2/4/8/ninth profiles retain their guards. Source Start shape bound2..8 matches measured native3/6; complete fixture set and pack spawn ordinal still validated. Runtime identity ownership independent of captured diagnostic fixture names. No new capacity flag/identity alias/runtime capacity branch.",
+    "reference": "docs/evidence/rust-service/m7e-selected-rosters.json",
+    "controls": "Current-source199workspace tests, fmt,clippy -Dwarnings/locked build; native6 in this record. Static load positive6 and negatives legacy allocation/no-player-round/fixed-profile/out-of-map spawn. Test negative malformed native6 Startcount. Exporter unchanged, six existing regression tests pass.",
+    "reports": [
+      "local/research/codex/g1-village10-template-workspace-r3.txt",
+      "local/research/codex/g1-village10-template-clippy-r3.txt",
+      "local/research/codex/g1-village10-template-build-r3.txt",
+      "local/research/codex/g1-village10-exporter-regression-r2.txt"
+    ],
+    "input_provenance": "local/research/codex/g1-village10-template6-r1/provenance.json",
+    "negative_controls": "local/research/codex/g1-village10-template6-r1/validation",
+    "limits": "Single-map prototype6 native observation only. Mixed catalog with maps of six/eight spawns, runtime rejection/selection and sparse spawn mapping still required; does not reduce four other maps to six."
+  },
+  "failed_preparation": [
+    {
+      "root": "local/research/codex/g1-village10-seed-native-r1",
+      "stage": "before native",
+      "cause": "Source Start8 contains spawn ordinals6/7 beyond Village10 six; adapter refused; not a client failure."
+    },
+    {
+      "root": "local/research/codex/g1-village10-seed-native-r2",
+      "stage": "server before ready, no Wine launched",
+      "cause": "Inherited eight_battle with four diagnostic source actors; raw sealed exit1."
+    },
+    {
+      "root": "local/research/codex/g1-village10-herb6-native-r1",
+      "stage": "private launch admission before all six clients/room",
+      "cause": "Inherited relay max_peers4/routes2; next offer denied. New recipe reuses known CP29910peers/56routes; same binary.",
+      "raw_seal": "local/research/codex/g1-village10-herb6-native-r1/native/raw-seal.json"
+    }
+  ],
+  "reuse": {
+    "ledger": "local/research/codex/g1-village10-source-r1/reuse.json",
+    "native6_ledger": "local/research/codex/g1-village10-source-r1/six-template-reuse.json",
+    "passive_sites": "local/research/codex/g1-village10-herb6-native-r1/observer-byte-control.json",
+    "avoided": "No new function body, codec/account/old map selection sweep; CP090 ray helpers byte-matched, native3/6 fromCP283 reused. tools/export_map_profile.py unchanged; original client/pack/IDA source untouched."
+  },
+  "remaining": "Village10 configured terrain/drop/pickup and two results/reset for2–6; mixed map capacity/spawn fencing; Camp08/Tomb12/Factory and remaining item/characters; G1/M8 open."
+}

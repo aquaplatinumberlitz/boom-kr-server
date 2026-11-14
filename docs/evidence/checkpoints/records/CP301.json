@@ -1,0 +1,289 @@
+{
+  "id": "CP301",
+  "previous": "CP300",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-14T14:45:10.904583+00:00",
+  "context_commit": "a610ebc97b25d1d74c786023ddd08429a44bef42",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1: Village10Herb có ngăn tia như block không và prototype theo sáu spawn có chạy current DB-owned round đúng giới hạn không?",
+  "scope": "Managed prototype2–8 admission source delta with measured source6, Village10 seed2 and actual three-root observations6; no configured terrain, two-cycle/fullmap/G1 or UTF8 acceptance.",
+  "artifacts": [
+    {
+      "name": "Village106-current-Rust-service",
+      "sha256": "061d89e619febb1a649558b87b789f6044c37a4881f2514672f6b31a044c7fd8"
+    },
+    {
+      "name": "KR00967 diagnostic Wine client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-village10-herb",
+    "docs/evidence/rust-service/g1-village10-herb.json",
+    "docs/PLAN.md#phase1-acceptance",
+    "docs/protocol/load-phase.md#rust-room-map-selection",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Village10 hai view seed195 khớp177knowncells và18Herbflag0; seed không đủ kết luận flame. Sourcecache mutations giữriêng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+      "evidence": [
+        "G1VILL301-00014",
+        "G1VILL301-02285",
+        "G1VILL301-02284",
+        "G1VILL301-01864"
+      ],
+      "limits": "Getter430 là emulation riêng. Seedflag0 không là original physics/drop/acceptance."
+    },
+    {
+      "summary": "Six actual accounts/native Start/spawn, Firepower1→2/allview, three actual owner4 roots0,5/0,6/0,8power2. Query actualHerb0,5 present then absent nextroot; fresh0,9 accepts ray and nextsolid0,10 stops via cellstate2. All195flags on3blasts×6views match independent geometry;9282copied-nativegetters riêng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+      "evidence": [
+        "G1VILL301-00014",
+        "G1VILL301-01164",
+        "G1VILL301-01163",
+        "G1VILL301-01199"
+      ],
+      "limits": "Only bounded directions/power2/route. No terrain shadow/newdrop/two rank/reset/fullVillage10/G1. Native runtime evidence independent of server logs, emulation separate."
+    },
+    {
+      "summary": "Source accepts additional bounded prototypes only DB-owned managed player rounds/FirstVacant/no legacy Battle; complete captured fixture names remain input validation, identities owned by session. ShapeStart2–8 matches earlier native3/6, source negative invalidspawn kept.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+      "evidence": [
+        "G1VILL301-00014",
+        "G1VILL301-02309",
+        "G1VILL301-02305",
+        "G1VILL301-02304",
+        "G1VILL301-00029",
+        "G1VILL301-02330"
+      ],
+      "limits": "Source199tests/staticload negatives not native compatibility on everycount/map. Native6 in this record; legacy guards kept; mixedmap/sparsefences missing."
+    },
+    {
+      "summary": "Launcherexit1/unmountbusy retained;228export files exact hashes/noextras, namespaceextinct, recovered same-byte locator beforeseal. All1329immutableinputs unchanged; six declared cacheoutputs match12actual238.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+      "evidence": [
+        "G1VILL301-01431",
+        "G1VILL301-01435",
+        "G1VILL301-00700",
+        "G1VILL301-01430"
+      ],
+      "limits": "No claim actual unmount succeeded or process exit0; recovery does not certify fullbattle. Failedpreparations/raw/scripts retained."
+    },
+    {
+      "summary": "Latest owner request delegates exactly one Terrahigh sub-agent for UTF8 in separate worktree; interpretation of three slices L1a/b/c explicit. Root keeps counters/runtime/integration.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PLAN.md#dashboard",
+      "evidence": [
+        "G1VILL301-00013",
+        "G1VILL301-00001"
+      ],
+      "limits": "Assignment is not L1 acceptance or independent review approval; scope/gates unchanged."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Source199workspace tests, fmt/clippy/locked build, staticconfig6/negativeadmission/invalidspawn and unchanged exporter6regressions",
+      "result": "pass",
+      "evidence": [
+        "G1VILL301-02309",
+        "G1VILL301-02305",
+        "G1VILL301-02304",
+        "G1VILL301-00029"
+      ],
+      "limits": "Runtime mapped to currentbinary separately; no repeat oldnative2/4/8 acceptance."
+    },
+    {
+      "check": "Native boundedseed/ray/capture/reader/geometry/getter and export recovery",
+      "result": "pass",
+      "evidence": [
+        "G1VILL301-00014",
+        "G1VILL301-01164",
+        "G1VILL301-01163",
+        "G1VILL301-01435"
+      ],
+      "limits": "Original launcherexit1 retained. Only evidence integrity/recovered observation checks pass, no fullmap/G1."
+    },
+    {
+      "check": "Manual feature-group audit and docs",
+      "result": "pass",
+      "evidence": [
+        "G1VILL301-00009",
+        "G1VILL301-00027"
+      ],
+      "limits": "Independent review waived; exact-head full/history/CI pending before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP301-village10-herb.json",
+      "bytes": 642911,
+      "sha256": "536ae7e442ca7de70e0431d993fdb1619fc0394f6e873c068b28b01e37f23b73",
+      "count": 2373
+    }
+  ],
+  "delta": {
+    "added": [
+      "Bounded Village10Herb six-native observations and managed prototype source input support.",
+      "Owner UTF8 delegation scoped and recorded; worker topic not modified by this checkpoint."
+    ],
+    "corrected": [
+      "Stale load-phase wording still required2–8 forVillage10; currentowner2–6 now linked.",
+      "Explicitly distinguish client-writable cache outputs and recovered export guard failure from source immutability."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "Village10 terrain/drop/pickup tích hợp hai kết quả/reset cho2–6, catalog chung sáu/tám spawn và sparse roster fencing chưa đạt; các map/item/nhân vật G1 khác và M8 còn theo PLAN.",
+    "Herb route chỉ0,5/0,9 theo các hướng đã đo/power2; không suy mọi variant, original drop hoặc server authority.",
+    "L1a/L1b/L1c mới được giao một worker theo owner; không có nghiệm thu UTF8 trong checkpoint này."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Theo PLAN tiếp Village10 configured terrain/drop/two-cycle2–6 vàmixedspawn catalog; phối hợp L-probe-b/L1a/b/c worker qua runtime lease, M8 sauG1. Không lặp Herb/seed đãđủ hoặc original L-probe.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-14T14:45:10.904583+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex source/native/manual self-audit forG1; separate UTF8 worker does not review or certify this change.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "docs/protocol/load-phase.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room.rs",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "tools/rust_map_profile.py",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm Village10 template/Herb giới hạn, owner delegation, currentissue và khoảng trống; không đóng G1/L1."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-village10-herb.json",
+      "state": "updated",
+      "reason": "Ma trận evidence/failedruns/recovery/source/native/limits."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Mục lục đã dẫn terrain/load-phase; contract được sửa tại topic, không lặp index."
+    },
+    {
+      "path": "docs/content/client-language.md",
+      "state": "unchanged",
+      "reason": "Topic UTF8 thuộc worker worktree riêng; không đưa partialdraft hoặc acceptance ngôn ngữ vào látG1."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD117.json",
+      "state": "updated",
+      "reason": "Audit nhóm hẹp source+native observation, G1/UTF8 vẫn mở."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-village10-template-and-herb-observation"
+  ]
+}

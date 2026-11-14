@@ -1,16 +1,25 @@
 {
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
-  "captured_utc": "2026-11-14T12:40:20.717135+00:00",
+  "captured_utc": "2026-11-14T14:41:00.456824+00:00",
   "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
   "issues": [
     {
-      "body": "KRE-074 / L-probe theo chỉ đạo ở PLAN sau PR405. Baseline main 1ef3a9d, owner và tự kiểm Codex solo; review độc lập waived theo AGENTS. Không đổi code server hoặc công cụ/bản dịch nguồn.\n\nPhạm vi: năm lượt Wine trên bản copy CA.exe KR00967 nguyên bản; baseline, bảy ssi1 Korean roundtrip, bảy ssi1 English CP949, English cộng FxDesktop, và một byte compressed bị đổi giữ checksum. Cùng recipe cô lập; không vá exe/font/region. Bisection chỉ khi có sai biệt do file, tối đa ba lượt thêm; không retry cùng cấu hình hơn một lần.\n\nAcceptance bàn giao: build/hash nguồn và trước/sau, ảnh/log từng bước thực sự tới được, native file/network observations, raw/hash/cleanup, ghi rõ giới hạn nếu original startup chặn trước login/data loading. Không coi failed baseline là bằng chứng dịch sai hoặc checksum rejected. Một checkpoint, cập nhật docs/content/client-language.md#data-files và gỡ chỉ dẫn L-probe ở PLAN khi xong. Không đóng G1 hoặc giai đoạn 1.\n\nFeature KR-B001 (startup/copy offline); không mở lại K1. Nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md); kết quả duy nhất ở [data-files](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/content/client-language.md#data-files).\n",
+      "body": "KRE-074 / L1 UTF-8. Baseline main a610ebc (PR413), chủ dự án ngày14/11 yêu cầu giao một sub-agent Terra high thực hiện ba lát UTF-8 hiện hành: L1a tĩnh, L1b patch/native, L1c nhập liệu. Parent Codex tích hợp/tự kiểm; independent review waived, không gọi worker khác. Chỉ đạo trực tiếp mới này thay giới hạn solo đối với task này.\n\nOwner source riêng: sub-agent l10n_utf8 tại worktree research/l10n-utf8. File: tools/l10n_utf8_* hoặc helper riêng, docs/content/client-language.md#utf8 hoặc file con, metadata/raw riêng. Không sửa gameplay Rust, exporter hoặc source translation repo. Parent giữ PLAN, catalog, checkpoint/audit counters, exact-head verification và merge/CI.\n\nAcceptance: L1a xác minh bằng IDA trên copy cơ chế chữ PopTag và mapping00967/codepage/cắt/duyệt/đo/vẽ/font/IME/hardcoded949, chọn thiết kế có evidence và giới hạn. L1b patch runtime/private copy, native ko/en/vi UTF8 qua login→sảnh→shop→phòng, ảnh và raw/hash/rollback. L1c nhập Việt/Hàn chat/title và đối chiếu byte; server UTF8 integration nếu chưa được phục hồi phải ghi gap, không đổi wire cho client chưa vá. Mỗi lát chỉ complete khi evidence/docs đủ; không suy static/model/encoder thành native.\n\nFeature KR-B001; không mở lại gate K1 hoặc tự nâng scope giai đoạn1. Không1258. Không sửa client/pack/IDA DB nguồn; PopTag chỉ copy trong namespace loopback/no routes, không updater/installer. Không commit binary/pack/decompile/mã PopTag hoặc dữ liệu hạ tầng riêng. Một runtime lease dùng chung, không Wine/PopTag/KR đồng thời G1. Hoàn tất/export/seal/cleanup trước đổi source/config/input. Raw chỉ local; source/status/build/hash/locator và unknown rõ ràng.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md), [UTF8](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/content/client-language.md#utf8). Đề bài local/research/claude/codex-prompt-l10n-utf8.md; Terra static WIP là candidate cần xác minh, không là contract.\n",
       "closedAt": null,
-      "number": 407,
+      "number": 414,
       "state": "OPEN",
+      "title": "KRE-074: L1 UTF-8, xác minh tĩnh → patch native → nhập liệu",
+      "updatedAt": "2026-11-14T14:16:26Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414"
+    },
+    {
+      "body": "KRE-074 / L-probe theo chỉ đạo ở PLAN sau PR405. Baseline main 1ef3a9d, owner và tự kiểm Codex solo; review độc lập waived theo AGENTS. Không đổi code server hoặc công cụ/bản dịch nguồn.\n\nPhạm vi: năm lượt Wine trên bản copy CA.exe KR00967 nguyên bản; baseline, bảy ssi1 Korean roundtrip, bảy ssi1 English CP949, English cộng FxDesktop, và một byte compressed bị đổi giữ checksum. Cùng recipe cô lập; không vá exe/font/region. Bisection chỉ khi có sai biệt do file, tối đa ba lượt thêm; không retry cùng cấu hình hơn một lần.\n\nAcceptance bàn giao: build/hash nguồn và trước/sau, ảnh/log từng bước thực sự tới được, native file/network observations, raw/hash/cleanup, ghi rõ giới hạn nếu original startup chặn trước login/data loading. Không coi failed baseline là bằng chứng dịch sai hoặc checksum rejected. Một checkpoint, cập nhật docs/content/client-language.md#data-files và gỡ chỉ dẫn L-probe ở PLAN khi xong. Không đóng G1 hoặc giai đoạn 1.\n\nFeature KR-B001 (startup/copy offline); không mở lại K1. Nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md); kết quả duy nhất ở [data-files](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/content/client-language.md#data-files).\n",
+      "closedAt": "2026-11-14T13:00:13Z",
+      "number": 407,
+      "state": "CLOSED",
       "title": "KRE-074: L-probe file chữ trên KR00967 nguyên bản",
-      "updatedAt": "2026-11-14T12:36:34Z",
+      "updatedAt": "2026-11-14T13:00:13Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/407"
     },
     {
@@ -744,6 +753,72 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "dc284812d2379b39e87637982f7ea83237e52919",
+      "mergeCommit": {
+        "oid": "a610ebc97b25d1d74c786023ddd08429a44bef42"
+      },
+      "mergedAt": "2026-11-14T14:06:09Z",
+      "number": 413,
+      "state": "MERGED",
+      "title": "docs: cho chạy client PopTag trong mạng cô lập để phục vụ L1",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/413"
+    },
+    {
+      "headRefOid": "fb2c1abc51a177a949ff824ba2ca9821886fbfda",
+      "mergeCommit": {
+        "oid": "2ae71b9e00dd70dbe8c57649be87d140fda171e0"
+      },
+      "mergedAt": "2026-11-14T13:59:35Z",
+      "number": 412,
+      "state": "MERGED",
+      "title": "docs: giao L1 vá UTF-8 cho Codex phiên chính",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/412"
+    },
+    {
+      "headRefOid": "dc639c546b94a7934db939400fd8e3dc7d82c055",
+      "mergeCommit": {
+        "oid": "9ce22b0e7a2b5bdc7ff5d57e17a88d6328e1c7ed"
+      },
+      "mergedAt": "2026-11-14T13:53:40Z",
+      "number": 411,
+      "state": "MERGED",
+      "title": "docs: gỡ lượt tiếng Việt 1258 khỏi L-probe-b, giữ hướng UTF-8",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/411"
+    },
+    {
+      "headRefOid": "6f3135acda479dfcee515822368667d6dcae6cec",
+      "mergeCommit": {
+        "oid": "fdb68db0b62205845f3a1283e30f68aed8286849"
+      },
+      "mergedAt": "2026-11-14T13:48:35Z",
+      "number": 410,
+      "state": "MERGED",
+      "title": "docs: đường bảng mã 1258 cho tiếng Việt và mở rộng L-probe-b",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/410"
+    },
+    {
+      "headRefOid": "27b421d5070a738b19bea25a2f25483212688de7",
+      "mergeCommit": {
+        "oid": "0142113f9b10651a0af50d1d2998e67784016cf4"
+      },
+      "mergedAt": "2026-11-14T13:09:17Z",
+      "number": 409,
+      "state": "MERGED",
+      "title": "docs: xếp lượt L-probe-b dùng exe runtime của native G1",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/409"
+    },
+    {
+      "headRefOid": "3f0c9fe36147d8fd9256803e9aa7c05ca486f8d8",
+      "mergeCommit": {
+        "oid": "b0938d057c93b741869d03c0293a3fe467565e57"
+      },
+      "mergedAt": "2026-11-14T13:00:11Z",
+      "number": 408,
+      "state": "MERGED",
+      "title": "L-probe: ghi giới hạn khởi động KR gốc sau năm cấu hình dữ liệu",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/408"
+    },
     {
       "headRefOid": "40fdcb4cb453ae55f0f35a5ea3f4bcafb4a3cbf6",
       "mergeCommit": {
