@@ -1,0 +1,16 @@
+{
+  "schema": "kre-static-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "external_client_static",
+  "status": "candidate",
+  "input": {"description": "PopTag 0.7.8 CA.exe, private copy", "sha256": "d1f9f9b080abe2557693e6c906c26e22674be5fca6abe13d8913fe1a7c1db5d7"},
+  "method": "IDA Pro 9.4, private database and bounded assembly with automatic analysis disabled. Assembly was used where pseudocode reported a stack warning or was unavailable.",
+  "producer_sha256": "e5f46e63cd9912758b05a681dbcd68addc0527e7ed79c921fe5ec58ea19cb9cd",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/poptag-focused.json", "sha256": "afb06b2e8173281515ccd602982353b0aef9a86e8114f54568cb02cbc16f6e26"},
+    {"path": "local/research/l10n-utf8-codex/poptag-input-render.json", "sha256": "0faf9aba13657a082fe0fb10ac445d08c529670cd8e839c400175a6132dde473", "usable_subset": ["0xBBF000"]},
+    {"path": "local/research/l10n-utf8-codex/poptag-input-focused.json", "sha256": "466168e771fa80db7e4132eac2c2e575904c22e3326fa25a1c313ca723002800"}
+  ],
+  "limits": "No PopTag execution. The initial automatic analysis was interrupted after more than seven minutes; IDA MCP lacked ida_nexus and REA IDA analysis did not return. With automatic analysis disabled, IDA incorrectly associated requests B9AC00, B9B400 and B9B600 with B9A800; exclude those results. Xrefs and function coverage are incomplete, the B9A800 decompilation has a stack warning, and the results do not establish 00967 behavior or a complete patch.",
+  "interpretation": "docs/content/client-language.md#utf8"
+}

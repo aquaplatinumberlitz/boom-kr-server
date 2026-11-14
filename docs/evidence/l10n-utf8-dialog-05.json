@@ -1,0 +1,19 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Two diagnostic client copies with original Korean data and no glyph hook. A bounded screenshot heuristic gates the next UI action.",
+  "observation": "The screenshot gate returned a candidate and manual inspection of the retained image showed the room-create dialog. A subsequent screenshot showed the Factory07 room with KRLocal and KRGuest. The harness deliberately stopped after B-joined and then returned 1 due to its inherited full-game completion assertion.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/dialog-05/recipe.json", "sha256": "f2686112137eca4562128c0bee6915454ea19d32b80ee083e5f3baf3b398cf2a"},
+    {"path": "local/research/l10n-utf8-codex/dialog-05/preflight.json", "sha256": "6e54f66a588e09afaac7ab709b3d82104998fff736d57244cf80835a43253699"},
+    {"path": "local/research/l10n-utf8-codex/dialog-05/native/run.json", "sha256": "bf1dea3ad36fd366835f67158d3ae5af171a95ccc5b4412239eb13bc3278569e"},
+    {"path": "local/research/l10n-utf8-codex/dialog-05/native/A/dialog-candidate.png", "sha256": "84e21b3cbd40fd789e9db676e9fc39562e51ef953925bd62f70f0c797b2aac48"},
+    {"path": "local/research/l10n-utf8-codex/dialog-05/native/A/control-room.png", "sha256": "bf9aaaa58a0addf4b5bf0cd00051c3177b7047d6b4834f63ad51282965ff65e2"},
+    {"path": "local/research/l10n-utf8-codex/dialog-05/storage-export.json", "sha256": "e15a789f8cdfa6ed6397a95109692e4c05b5e8a796e683e6bb6d9b808d697b42"},
+    {"path": "local/research/l10n-utf8-codex/dialog-05/raw-seal.json", "sha256": "01a44c7c4953801a3bbb26371a272b431fe2a2ab5dc03baf4efcc911ce38ad7f"}
+  ],
+  "cleanup": "Raw export passed; 47 files pinned, frozen inputs and executables unchanged, two copied map caches changed, no remaining recorded namespace process.",
+  "limits": "One no-hook control; screenshot gate is a calibrated image heuristic and requires retained image review. No glyph substitution, UTF-8, IME, original client or server acceptance."
+}
