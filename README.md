@@ -33,10 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP301: Village10 có bằng chứng seed và tia nổ qua Herb với sáu account KR/Wine.**
-[Phạm vi và lỗi export đã phục hồi](docs/evidence/rust-service/g1-village10-herb.json) tách native, emulation và kiểm source.
-Đường managed đã nhận prototype sáu người có kiểm giới hạn; chưa nghiệm thu terrain/drop/hai vòng/reset Village10
-hoặc catalog chung sáu/tám spawn. G1 và M8 còn theo [Bảng điều hành](docs/PLAN.md#dashboard).
+**CP302: Village10 có lát terrain/item hai vòng trên roster2/4/6 account KR/Wine.**
+[Capture, native và geometry đối chứng](docs/evidence/rust-service/g1-village10-terrain.json) xác nhận Fire, Roller ẩn,
+spawn/stat và reset trong route đã đo. Policy reveal giữ current-cell/ownership guards, không gán nghĩa cho aux142.
+Catalog chung sáu/tám spawn, sparse roster, các map/item còn lại và M8 tiếp theo [Bảng điều hành](docs/PLAN.md#dashboard).
 
 ## Bắt đầu
 

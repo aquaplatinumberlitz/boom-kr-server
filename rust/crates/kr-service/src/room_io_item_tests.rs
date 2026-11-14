@@ -146,12 +146,140 @@ fn pickup(slot: u8, row: u8, column: u8, index: u32, kind: u16, key: u32) -> Vec
     ])
 }
 fn reveal(slot: u8, row: u8, column: u8) -> Vec<u8> {
+    reveal_aux(slot, row, column, u32::MAX)
+}
+fn reveal_aux(slot: u8, row: u8, column: u8, aux: u32) -> Vec<u8> {
     encoded(&[
         (row.into(), Width::U8),
         (column.into(), Width::U8),
         (slot.into(), Width::U8),
-        (u32::MAX.into(), Width::U32),
+        (aux.into(), Width::U32),
     ])
+}
+#[test]
+fn opaque_hidden_report_requires_configured_current_cell_and_all_blast_completions() {
+    // Actual Village10 terrain6-r1, channel5/sequence259: row0,col8,
+    // selected slot4, aux0. The body is from the retained PCAP decoder,
+    // not produced by this implementation. Aux semantics are still unknown.
+    let actual = bytes("5a525e96ca5395");
+    let mut captured = case(6);
+    assert_eq!(
+        captured.sessions[4]
+            .packet(142, &actual)
+            .unwrap()
+            .terrain_notice,
+        Some("unknown_hidden_cell")
+    );
+    assert!(
+        captured
+            .sessions
+            .iter_mut()
+            .all(|s| s.inbox.try_recv().is_err())
+    );
+    for aux in [0, 3, 5, 37, 0x12345678, u32::MAX] {
+        let mut c = case(6);
+        let key = crate::room::wire_key(c.round).unwrap();
+        let report = reveal_aux(4, 2, 3, aux);
+        assert!(c.sessions[4].packet(142, &report[..6]).is_err());
+        assert!(c.sessions[3].packet(142, &report).is_err());
+        c.sessions[4].connection += 1;
+        assert!(c.sessions[4].packet(142, &report).is_err());
+        c.sessions[4].connection -= 1;
+        assert_eq!(
+            c.sessions[4].packet(142, &report).unwrap().terrain_notice,
+            Some("no_current_committed_clearance")
+        );
+        assert!(
+            c.sessions[4]
+                .packet(118, &bomb(4, 1, 1, key))
+                .unwrap()
+                .bomb
+                .unwrap()
+                .accepted
+        );
+        let mut blasts = Vec::new();
+        for s in &mut c.sessions {
+            s.inbox.try_recv().unwrap();
+            blasts.push(s.inbox.try_recv().unwrap());
+        }
+        for (s, batch) in c.sessions.iter().zip(&blasts).take(5) {
+            s.finish(batch).unwrap();
+        }
+        assert_eq!(
+            c.sessions[4].packet(142, &report).unwrap().terrain_notice,
+            Some("no_current_committed_clearance")
+        );
+        c.sessions[5].finish(&blasts[5]).unwrap();
+        assert_eq!(
+            c.sessions[4]
+                .packet(142, &reveal_aux(4, 0, 0, aux))
+                .unwrap()
+                .terrain_notice,
+            Some("unknown_hidden_cell")
+        );
+        assert_eq!(
+            c.sessions[4].packet(142, &report).unwrap().terrain_notice,
+            Some("revealed_current_hidden_cell")
+        );
+        assert_eq!(
+            c.sessions[4].packet(142, &report).unwrap().terrain_notice,
+            Some("already_revealed")
+        );
+        assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
+        let claim = pickup(4, 2, 3, 27, 0, key);
+        assert!(
+            c.sessions[4]
+                .packet(124, &claim)
+                .unwrap()
+                .pickup
+                .unwrap()
+                .accepted
+        );
+        confirmations(&mut c);
+        assert!(
+            !c.sessions[4]
+                .packet(124, &claim)
+                .unwrap()
+                .pickup
+                .unwrap()
+                .accepted
+        );
+        {
+            let mut r = c.shared.lock().unwrap();
+            r.model.end(c.round).unwrap();
+        }
+        assert_eq!(
+            c.sessions[4].packet(142, &report).unwrap().terrain_notice,
+            Some("inactive_round")
+        );
+        {
+            let mut r = c.shared.lock().unwrap();
+            for member in &c.keys {
+                r.model.refreshed(*member, c.round).unwrap();
+            }
+            for member in &c.keys[1..] {
+                r.model.ready(*member).unwrap();
+            }
+            let next = r.model.begin(c.keys[0]).unwrap();
+            r.model.pickups = pickups::Round::begin(next, &r.floor_catalog).unwrap();
+            for member in &c.keys {
+                r.model.ack(*member, next).unwrap();
+            }
+        }
+        // Identical retained body cannot reuse the preceding round's clearance.
+        assert_eq!(
+            c.sessions[4].packet(142, &report).unwrap().terrain_notice,
+            Some("no_current_committed_clearance")
+        );
+        assert!(
+            !c.sessions[4]
+                .packet(124, &claim)
+                .unwrap()
+                .pickup
+                .unwrap()
+                .accepted
+        );
+    }
 }
 fn bomb(slot: u8, serial: u32, power: u8, key: u32) -> Vec<u8> {
     encoded(&[

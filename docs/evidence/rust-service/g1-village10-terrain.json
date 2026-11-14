@@ -1,0 +1,123 @@
+{
+  "schema": "kre-village10-terrain-v1",
+  "checkpoint": "CP302",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Village10 với terrain cấu hình, roster account contiguous2/4/6, hai kết quả/reset và Fire/Roller ẩn. Chưa đầy đủ map/G1 hoặc catalog chung sáu/tám spawn.",
+  "runs": [
+    {
+      "clients": 2,
+      "root": "local/research/codex/g1-village10-terrain2-native-r1",
+      "run_sha256": "0c636307a3e3d0e38b9618fe16985cdd5d1d2999666b3f086535dfb6157ccd39",
+      "service_sha256": "e1090af11abc6be7b046c2530d29b35a969da8e49f1f4646fc86e614ac259d6e",
+      "native_verification": "local/research/codex/g1-village10-terrain2-native-r1/village10-terrain-native-verification.json",
+      "getter_verification": "local/research/codex/g1-village10-terrain2-native-r1/village10-terrain-getter-verification.json",
+      "getter_checks": 13844,
+      "raw_seal": "local/research/codex/g1-village10-terrain2-native-r1/native/raw-seal.json",
+      "raw_files": 147,
+      "source_pins": 1343,
+      "launcher_exit": 0,
+      "cache_verification": "local/research/codex/g1-village10-terrain2-native-r1/cache-verification.json",
+      "raw_storage": "private_tmpfs_with_verified_export",
+      "raw_storage_limit": "Raw TMPFS được export và đối chiếu cùng byte sau cleanup."
+    },
+    {
+      "clients": 4,
+      "root": "local/research/codex/g1-village10-terrain4-native-r4",
+      "run_sha256": "10df524fb5a5a8a65c996331e5aa5aa7de2004709f69b65f18ce4722d55fa82a",
+      "service_sha256": "e1090af11abc6be7b046c2530d29b35a969da8e49f1f4646fc86e614ac259d6e",
+      "native_verification": "local/research/codex/g1-village10-terrain4-native-r4/village10-terrain-native-verification.json",
+      "getter_verification": "local/research/codex/g1-village10-terrain4-native-r4/village10-terrain-getter-verification.json",
+      "getter_checks": 31752,
+      "raw_seal": "local/research/codex/g1-village10-terrain4-native-r4/native/raw-seal.json",
+      "raw_files": 306,
+      "source_pins": 1139,
+      "launcher_exit": 0,
+      "cache_verification": "local/research/codex/g1-village10-terrain4-native-r4/cache-verification.json",
+      "raw_storage": "direct_persistent_local",
+      "raw_storage_limit": "Raw trực tiếp trên local; không mount TMPFS tại output, không export/unmount raw và không chứng nhận fsync/crash durability."
+    },
+    {
+      "clients": 6,
+      "root": "local/research/codex/g1-village10-terrain6-native-r2",
+      "run_sha256": "088d5aef1c3b0ce00871ce23c532622e432b4b85884481d728d65987e89d771c",
+      "service_sha256": "e1090af11abc6be7b046c2530d29b35a969da8e49f1f4646fc86e614ac259d6e",
+      "native_verification": "local/research/codex/g1-village10-terrain6-native-r2/village10-terrain-native-verification.json",
+      "getter_verification": "local/research/codex/g1-village10-terrain6-native-r2/village10-terrain-getter-verification.json",
+      "getter_checks": 34908,
+      "raw_seal": "local/research/codex/g1-village10-terrain6-native-r2/native/raw-seal.json",
+      "raw_files": 367,
+      "source_pins": 1413,
+      "launcher_exit": 0,
+      "cache_verification": "local/research/codex/g1-village10-terrain6-native-r2/cache-verification.json",
+      "raw_storage": "private_tmpfs_with_verified_export",
+      "raw_storage_limit": "Raw TMPFS được export và đối chiếu cùng byte sau cleanup."
+    }
+  ],
+  "environment": {
+    "client_build": "KR00967 bản copy chẩn đoán offline trên Wine",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "topology": "LAN ảo cô lập, companion QUIC xác thực dùng chung nguồn TCP và quyền sở hữu member hiện hành. Không có route ra ngoài; không cấu hình delay/jitter/loss/reordering/bandwidth/MTU override. Prototype sáu slot; roster thực2/4/6."
+  },
+  "reuse": {
+    "ledger": "local/research/codex/g1-village10-hidden-policy-r1/reuse-and-policy.json",
+    "observation": "docs/evidence/rust-service/g1-village10-herb.json",
+    "wire_and_effect": "docs/evidence/rust-service/g1-terrain-players.json",
+    "direct": "CP301 seed và tia Herb thật; CP032 writer142; CP172 guard đúng ô current; CP297 commit toàn recipient, effect item nền và reset. Tái dùng kernel Python độc lập và getter native sao chép.",
+    "avoided": "Không thêm thân hàm RE, port opcode VN, sửa exporter hoặc lặp bootstrap/account RE. Client, pack và IDA nguồn giữ nguyên."
+  },
+  "implementation": {
+    "files": [
+      "rust/crates/kr-service/src/room_io.rs",
+      "rust/crates/kr-service/src/room_io_item_tests.rs"
+    ],
+    "policy_source": "design",
+    "behavior": "Chỉ trong ReportDerivedBasic opt-in, aux opaque của142 không còn phân biệt eligibility. Vẫn cần member/slot đúng chủ, tọa độ hợp lệ, Armed round hiện hành, ô item ẩn đã cấu hình và clearance đã commit tới toàn recipient hiện hành. Aux khác sentinel giữ budget64; không dùng aux sinh item/index/vị trí/clearance/ACK. Legacy và đường bomb-only giữ riêng.",
+    "controls": "Integration negatives mới: malformed, sai owner/slot, thiếu completion cuối, ô lạ, duplicate, inactive và body cũ sau reset. Fmt/clippy/tests/locked build đạt trước native; exact head kiểm lại trước merge.",
+    "raw_epoch_limit": "142 không có epoch xác thực; body cũ sau clearance mới hợp lệ vẫn không phân biệt được. Đây là policy theo report của công ty, chưa phục hồi authority server gốc."
+  },
+  "failed_run": {
+    "root": "local/research/codex/g1-village10-terrain6-native-r1",
+    "run_sha256": "40eecf028b2dc624803f42a033c34de67efa7eec7e4c59768291e415cf4df8dd",
+    "returncode": 1,
+    "raw_count": 224,
+    "reason": "Cả sáu view gửi aux0 tại ô ẩn0,8; guard FFFFFFFF-only cũ chặn eligibility,124 index18 thực bị từ chối hidden_unrevealed. Không có nghiệm thu kết quả/reset từ lượt này.",
+    "verification": "local/research/codex/g1-village10-hidden-policy-r1/failed-native-observation.json"
+  },
+  "additional_failures": [
+    {
+      "root": "local/research/codex/g1-village10-terrain4-native-r3",
+      "stage": "Bị ngắt trước export",
+      "observed_exec_exit_code": 143,
+      "reason": "Nguồn gửi SIGTERM chưa rõ; controller/namespace biến mất trước finally export. Raw TMPFS không còn, không nghiệm thu hoặc tái dựng từ quan sát tạm qua tool.",
+      "record": "local/research/codex/g1-village10-terrain4-native-r3/native/interruption-record.json"
+    },
+    {
+      "root": "local/research/codex/g1-village10-terrain4-native-r1",
+      "run_sha256": "8ca4c88fe656077dba2659b9ff2d5780444d5187a108d54c689e003694f17150",
+      "returncode": 1,
+      "raw_count": 154,
+      "reason": "Observer chỉ đọc không nhận đủ mẫu mới ổn định trong3s sau bốn blast hành lang; chưa có item/kết quả. Recipe sau tăng deadline có giới hạn lên8s, cùng binary."
+    },
+    {
+      "root": "local/research/codex/g1-village10-terrain4-native-r2",
+      "stage": "Chỉ chuẩn bị, chưa launch",
+      "reason": "Script chuẩn bị giả định có metadata provenance trong nguồn roster nhỏ nhưng file không tồn tại. Giữ thư mục/log lỗi; bản sau dùng provenance đo được từ sáu client."
+    }
+  ],
+  "test_correction": {
+    "failed_log": "local/research/codex/g1-village10-terrain6-r2-verify-r1.txt",
+    "corrected_verifier": "local/research/codex/verify_g1_village10_terrain6_r2.py",
+    "reason": "Verifier mới nhầm rank0/1; contract và native rows đã có dùng winner1/loser2. Sửa kỳ vọng, giữ nguyên server/runtime và source/log verifier lỗi."
+  },
+  "recipe_label_limit": "Nhãn early_completion của lượt hai người kế thừa chữ sáu account. Config, role launch, captured channels và native rows xác minh đúng hai người; giữ raw cũ, không dùng nhãn này làm bằng chứng roster.",
+  "measured": "Spawn pack và baseline stat ở mọi clock. Actor4 của roster6 hoặc actor0 của roster2/4 đi route bằng phím thật. Actor0 phá bốn thùng hành lang ở power1, rồi Fire0,6 tăng power1→2; roots0,5/0,6/0,8 phá thùng và mở Roller cấu hình tại0,8. Mỗi view đọc165 và tăng đúng stat; hai kết quả/reset phục hồi baseline. Tất cả195flags trước/sau mọi blast khớp kernel Python độc lập dẫn từ actual118; wire/native ownership kiểm riêng. Entity và reader159/158 được kiểm; getter emulation tách khỏi runtime.",
+  "remaining": [
+    "Chưa nghiệm thu mọi count2–6, sparse slot hoặc catalog map sáu/tám spawn. Đổi map khi roster vượt giới hạn, admission và gán ordinal spawn cần controls/native riêng.",
+    "Floor/drop là thiết kế thử, chưa là phân phối/trọng số gốc; chỉ Fire/Roller ở đây. Các item/nhân vật khác cùng Camp08/Tomb12/Factory tiếp theo PLAN.",
+    "Chỉ route/hướng và power1–2 đã đo, chưa toàn geometry hoặc server authority. G1/M8 và UTF8 vẫn mở."
+  ]
+}

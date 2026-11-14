@@ -1,0 +1,83 @@
+{
+  "id": "AUD118",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "rust-village10-bounded-terrain-basic-items"
+  ],
+  "completed_through": "CP302",
+  "recorded_utc": "2026-11-14T17:04:49.294570+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/protocol/items-stats.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "docs/evidence/rust-service/g1-village10-terrain.json",
+    "docs/evidence/rust-service/g1-village10-herb.json",
+    "docs/evidence/rust-service/g1-terrain-players.json",
+    "local/research/codex/g1-village10-hidden-policy-r1/reuse-and-policy.json",
+    "local/research/codex/g1-village10-hidden-policy-r1/failed-native-observation.json",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "local/research/codex/g1-village10-terrain2-native-r1/village10-terrain-native-verification.json",
+    "local/research/codex/g1-village10-terrain2-native-r1/village10-terrain-getter-verification.json",
+    "local/research/codex/g1-village10-terrain2-native-r1/cache-verification.json",
+    "local/research/codex/g1-village10-terrain2-native-r1/native/raw-seal.json",
+    "local/research/codex/g1-village10-terrain2-native-r1/native/storage-export.json",
+    "local/research/codex/g1-village10-terrain4-native-r4/village10-terrain-native-verification.json",
+    "local/research/codex/g1-village10-terrain4-native-r4/village10-terrain-getter-verification.json",
+    "local/research/codex/g1-village10-terrain4-native-r4/cache-verification.json",
+    "local/research/codex/g1-village10-terrain4-native-r4/native/raw-seal.json",
+    "local/research/codex/g1-village10-terrain4-native-r4/native/storage-export.json",
+    "local/research/codex/g1-village10-terrain6-native-r2/village10-terrain-native-verification.json",
+    "local/research/codex/g1-village10-terrain6-native-r2/village10-terrain-getter-verification.json",
+    "local/research/codex/g1-village10-terrain6-native-r2/cache-verification.json",
+    "local/research/codex/g1-village10-terrain6-native-r2/native/raw-seal.json",
+    "local/research/codex/g1-village10-terrain6-native-r2/native/storage-export.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH và đối chiếu policy/source, raw captures, native reader/entity/stat, geometry độc lập và kết quả/reset. Xác minh actual142 aux0 trên sáu view của lượt thất bại, không suy nghĩa của aux. Chọn design hẹp cho ReportDerivedBasic: known configured cell/current committed clearance và ownership vẫn bắt buộc; bom-only và legacy giữ nguyên. Đối chiếu cả ba roster2/4/6 trên cùng binary: spawn pack, Fire/Roller, owner/power/location/serial, toàn195flags trước/sau mỗi blast và hai native rank/reset. Snapshot getter emulation tách khỏi runtime; process alive/log không là oracle. Raw cũ, source frozen và cleanup mỗi lượt được kiểm; source tests và generic Python agreement không thay native. Đọc ảnh UI hỗ trợ và giữ giới hạn route/catalog/sparse/item. Không sửa tools/export_map_profile.py hoặc topic UTF8 của worker.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Guard auxFFFFFFFF từ một caller FixedBox bị dùng như discriminator chung và chặn hidden Roller native Village10.",
+      "correction": "Design cho item opt-in dùng known hidden cell cùng clearance current đã commit tới toàn recipient; aux opaque chỉ đếm budget, không sinh item/index hoặc authority. Legacy và bomb-only không đổi; raw failed run bất biến.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/room_io_item_tests.rs",
+        "docs/protocol/terrain.md#rust-village10-herb",
+        "docs/evidence/rust-service/g1-village10-terrain.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Village10 chưa có configured terrain/hai vòng; seed/ray trước chỉ quan sát.",
+      "correction": "Native roster2/4/6 mới có hai vòng/reset, stat và toàn flags mỗi blast; chỉ route đã đo, không suy toàn khoảng/sparse/mixed catalog hoặc drop gốc.",
+      "fixed_in": [
+        "docs/protocol/terrain.md#rust-village10-herb",
+        "docs/evidence/rust-service/g1-village10-terrain.json",
+        "docs/PLAN.md#dashboard",
+        "docs/RESEARCH.md#gap-rust-selected-map-terrain"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Verifier mới nhầm rank0/1; early-completion prose ở run2 kế thừa sáu người.",
+      "correction": "Sửa verifier theo contract winner1/loser2 đã có, giữ failed source/log. Roster thực lấy config/capture/native rows; không đổi raw label run2. Run4 sửa nhãn trước freeze.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-village10-terrain.json",
+        "local/research/codex/verify_g1_village10_terrain6_r2.py",
+        "local/research/codex/finalize_g1_village10_terrain4_r1.py"
+      ]
+    }
+  ],
+  "remaining": [
+    "Chưa nghiệm thu mọi count2–6, sparse slot hoặc catalog map sáu/tám spawn. Đổi map khi roster vượt giới hạn, admission và gán ordinal spawn cần controls/native riêng.",
+    "Floor/drop là thiết kế thử, chưa là phân phối/trọng số gốc; chỉ Fire/Roller ở đây. Các item/nhân vật khác cùng Camp08/Tomb12/Factory tiếp theo PLAN.",
+    "Chỉ route/hướng và power1–2 đã đo, chưa toàn geometry hoặc server authority. G1/M8 và UTF8 vẫn mở."
+  ]
+}

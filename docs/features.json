@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP295",
+  "as_of": "CP302",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1352,7 +1352,8 @@
           "docs/evidence/rust-service/g1-map-adapter.json",
           "docs/evidence/rust-service/g1-map-selection.json",
           "docs/evidence/owner-directives/g1-map-roster-limits.json",
-          "docs/evidence/rust-service/g1-patrit-terrain.json"
+          "docs/evidence/rust-service/g1-patrit-terrain.json",
+          "docs/evidence/rust-service/g1-village10-terrain.json"
         ]
       },
       "coverage": {
@@ -1421,7 +1422,8 @@
               "docs/protocol/room-membership.md#rust-selected-player-rounds",
               "docs/evidence/rust-service/g1-map-adapter.json",
               "docs/protocol/load-phase.md#rust-room-map-selection",
-              "docs/protocol/terrain.md#rust-patrit-terrain"
+              "docs/protocol/terrain.md#rust-patrit-terrain",
+              "docs/protocol/terrain.md#rust-village10-herb"
             ]
           },
           "windows_original": {
@@ -2651,7 +2653,8 @@
           "docs/evidence/rust-service/g1-terrain-players.json",
           "docs/evidence/rust-service/g1-map-terrain.json",
           "docs/evidence/rust-service/g1-patrit-terrain.json",
-          "docs/evidence/rust-service/g1-village10-herb.json"
+          "docs/evidence/rust-service/g1-village10-herb.json",
+          "docs/evidence/rust-service/g1-village10-terrain.json"
         ]
       },
       "coverage": {
@@ -2728,7 +2731,8 @@
               "docs/protocol/terrain.md#rust-terrain",
               "docs/protocol/terrain.md#rust-player-terrain",
               "docs/protocol/terrain.md#rust-selected-map-terrain",
-              "docs/protocol/terrain.md#rust-patrit-terrain"
+              "docs/protocol/terrain.md#rust-patrit-terrain",
+              "docs/protocol/terrain.md#rust-village10-herb"
             ]
           },
           "windows_original": {
@@ -2894,7 +2898,8 @@
           "docs/evidence/rust-service/g1-terrain-players.json",
           "docs/evidence/rust-service/g1-map-terrain.json",
           "docs/evidence/rust-service/g1-patrit-terrain.json",
-          "docs/evidence/rust-service/g1-village10-herb.json"
+          "docs/evidence/rust-service/g1-village10-herb.json",
+          "docs/evidence/rust-service/g1-village10-terrain.json"
         ]
       },
       "coverage": {
@@ -2976,7 +2981,8 @@
               "docs/protocol/life-results.md#rust-needle-rescue",
               "docs/protocol/terrain.md#rust-player-terrain",
               "docs/protocol/terrain.md#rust-selected-map-terrain",
-              "docs/protocol/terrain.md#rust-patrit-terrain"
+              "docs/protocol/terrain.md#rust-patrit-terrain",
+              "docs/protocol/terrain.md#rust-village10-herb"
             ]
           },
           "windows_original": {

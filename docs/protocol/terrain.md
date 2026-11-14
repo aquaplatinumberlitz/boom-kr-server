@@ -506,9 +506,11 @@ Native mới chỉ chứng minh power1→2; không gọi source bounds tới9 l�
 Terrain vẫn là shadow policy 15×13, floor/solid/box và pending occupancy. Chỉ commit blast sau158 của toàn bộ
 recipient hiện hành đã hoàn tất. Nếu recipient cuối rời đi sau những người còn lại đã gửi xong, commit cho survivor;
 không để bom chờ vô hạn hoặc dùng completion cũ vào vòng mới. Khi không còn member, kết thúc ledger/terrain/claim.
-Report142 phải có bound slot, known hidden cell và clearance đúng vòng hiện hành trước khi mở item; aux khác
-FFFFFFFF chỉ quan sát opaque, không tạo effect. Raw142 không có epoch xác thực: body cũ sau current clearance
-hợp lệ vẫn không phân biệt được. Đây không phải xác thực vị trí hoặc authority server gốc.
+Report142 phải có bound slot, known hidden cell và clearance đúng vòng hiện hành trước khi mở item. Trong policy
+item opt-in, aux là u32 opaque, không chọn item/index và không tự cấp clearance; giá trị khác FFFFFFFF có budget64.
+Guard chỉ nhận FFFFFFFF trước đây đã chặn report thật trên Village10; [bằng chứng và sửa policy hẹp](../evidence/rust-service/g1-village10-terrain.json)
+không phục hồi nghĩa aux hoặc authority server gốc. Đường bomb-only vẫn chỉ quan sát, không effect. Raw142 không có
+epoch xác thực: body cũ sau current clearance hợp lệ vẫn không phân biệt được. Đây không phải xác thực vị trí hoặc authority server gốc.
 
 124 kiểm current membership/slot/key/catalog, một winner và phase; công bố claim/stat cùng reservation toàn bộ
 hàng đợi165. Hàng đợi đầy không tiêu item, cộng stat hoặc chiếm serial/ID dở. Duplicate không cộng lần hai.
@@ -602,10 +604,19 @@ nhận shape hữu hạn2–8; profile legacy giữ guard riêng. Tên cố đ�
 chơi. Native sáu người xác minh Start/spawn/Fire và ba blast của binary mới; bằng chứng roster3/6 cũ được dẫn riêng.
 Không thêm cờ hoặc nhánh runtime theo từng sức chứa. Công cụ xuất map giữ nguyên và ô chưa đo vẫn không được đoán.
 
-Đây là **quan sát chưa bật terrain shadow**, một Fire đặt sẵn là policy thử nghiệm. Chưa có terrain/drop/pickup
-Village10 tích hợp qua hai kết quả/reset, toàn khoảng2–6 hoặc catalog chung cho map sáu/tám spawn. Sparse slot,
-đổi map khi roster vượt spawn và cơ chế gán spawn còn cần acceptance riêng; không giảm bốn map kia xuống sáu.
-Phạm vi đo chỉ các hướng và power2 của route trên, chưa toàn bộ biến thể Herb hoặc luật server gốc.
+Quan sát Herb ban đầu chưa bật terrain shadow. [Lát terrain tích hợp](../evidence/rust-service/g1-village10-terrain.json)
+đã bật seed đó cho roster contiguous2/4/6, cùng một binary mới, hai kết quả/reset. Actor0 ở roster2/4 đi từ spawn gốc,
+phá bốn thùng hành lang bằng power1, rồi nhặt Fire tại0,6. Actor4 ở roster6 đi từ spawn riêng tới cùng Fire; power tăng1→2
+và cả ba roster phá theo roots0,5/0,6/0,8, nhặt Roller ẩn cấu hình tại0,8, tăng speed và reset về baseline ở mọi view.
+Tất cả195flags trước/sau mỗi blast được so với kernel Python độc lập dẫn từ actual118; reader/entity/ownership kiểm
+bằng capture/native riêng, getter emulation tách khỏi runtime. Các chỉ số hoặc kết quả không suy từ log server.
+
+Report thật trên ô Roller có aux0, nên guard FFFFFFFF-only cũ từ chối claim dù client đã reveal. Policy item opt-in
+nay dùng known cell và current committed clearance cho mọi aux, vẫn kiểm ownership/budget. Đây là lựa chọn công ty;
+không gán nghĩa cho aux0/3/5 hoặc biến report thành world authority. Lượt thất bại trước giữ nguyên raw/exit1.
+Fire đặt sẵn và Roller ẩn là input thử nghiệm, chưa là phân phối drop gốc. Chưa nghiệm thu toàn khoảng2–6, sparse slot,
+đổi map khi roster vượt spawn hoặc catalog chung map sáu/tám spawn; không giảm bốn map kia xuống sáu. Phạm vi chỉ
+các route/hướng và power1–2 đã đo, chưa toàn bộ biến thể Herb, item hoặc luật server gốc.
 
 Run tia nổ trả exit1 do unmount busy sau khi đã export. Lỗi giữ nguyên; tất cả file export được so đúng hash,
 namespace đã hết process rồi mới phục hồi vị trí raw và seal. Không gọi exit1 là exit0. Lượt seed cũng ghi riêng
