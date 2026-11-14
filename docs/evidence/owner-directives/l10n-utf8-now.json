@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-14T00:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án nói trong phiên Claude Code ngày 2026-11-14: \"thôi giao vá utf8 cho codex phiên chính đi\" (sau khi đã chốt hướng UTF-8 thống nhất Hàn–Việt–Anh như client PopTag, và chọn gỡ đường bảng mã 1258).",
+  "fact": "l10n-utf8.json ghi việc vá UTF-8 thuộc đợt L, mở sau khi đạt đích giai đoạn 1. Dữ liệu chữ ba ngôn ngữ, ảnh và công cụ dựng UTF-8 đã có; chưa có bản vá exe. Một lượt đọc tĩnh của Terra (chưa có IDA) cho thấy PopTag có thể không đổi bảng mã engine sang 65001 mà thêm lớp tương thích trên 949; cần xác nhận.",
+  "decision": "Kéo việc vá UTF-8 của client 00967 (mốc L1) lên làm ngay, giao Codex phiên chính, xen giữa các lát G1. Đích giai đoạn 1 và thứ tự G1 rồi M8 không đổi.",
+  "limits": "Bản vá áp trên bản sao hoặc lúc chạy; client, pack và IDB gốc giữ nguyên. Không đổi packet giai đoạn 1 đã đo cho client chưa vá. PopTag chỉ đọc tĩnh, không chạy, không đưa binary hay mã của họ vào repo. Không dùng bảng mã 1258.",
+  "plan": "docs/PLAN.md#dashboard",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}

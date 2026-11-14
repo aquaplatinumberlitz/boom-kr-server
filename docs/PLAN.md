@@ -36,6 +36,9 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **14/11, C
    trên Wine; chạy lại năm lượt bằng exe runtime của các lượt native G1 hiện hành (không thêm bản vá ngôn ngữ), rồi thêm
    một lượt tiếng Anh kèm ảnh Bắc Mỹ. Tiếng Việt chờ bản vá UTF-8. Đề bài
    cập nhật ở `local/research/claude/codex-prompt-l10n-probe.md`. Xong thì gỡ đoạn này.
+   **Xen giữa các lát G1: L1 vá UTF-8** cho client 00967 ([quyết định](evidence/owner-directives/l10n-utf8-now.json)): L1a đặc
+   tả tĩnh bằng IDA theo mẫu PopTag, L1b vá lúc chạy và kiểm native ba ngôn ngữ, L1c nhập liệu. Mỗi lát một checkpoint,
+   không cùng runtime với lát G1. Đề bài ở `local/research/claude/codex-prompt-l10n-utf8.md`.
 2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
    N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có actual native59 rồi hai vòng/reset. [Issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ; không gọi schema đã đo là toàn protocol59.
 
