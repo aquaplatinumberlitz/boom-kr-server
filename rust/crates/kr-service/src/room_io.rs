@@ -2871,9 +2871,14 @@ impl Session {
                     }
                     if let Phase::Armed { round } = next.phase {
                         if aux != u64::from(u32::MAX) {
+                            // Village10 actual reports use aux=0 for a configured
+                            // hidden item. Its meaning remains opaque: do not
+                            // derive an item, index or eligibility from it.
+                            // Bound observations, then use the same current-cell
+                            // clearance policy as the sentinel reports below.
                             next.observe_opaque142(member.key)?;
-                            "opaque_observed_no_reveal"
-                        } else if !next.pickups.hidden_cell(row, col) {
+                        }
+                        if !next.pickups.hidden_cell(row, col) {
                             "unknown_hidden_cell"
                         } else if next
                             .terrain

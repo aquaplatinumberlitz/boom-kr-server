@@ -1,0 +1,242 @@
+{
+  "id": "CP302",
+  "previous": "CP301",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-14T17:04:49.294570+00:00",
+  "context_commit": "eff7d402597edef785d6a74c92862265cdfe9a81",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1: Village10 configured terrain/hidden item có chạy hai vòng trên roster2/4/6 với guard current-cell và ownership không?",
+  "scope": "ReportDerivedBasic hidden-cell eligibility design correction plus bounded contiguous native2/4/6 terrain/item/two-cycle. No full map/all roster/mixed catalog/G1/UTF8/M8 closure.",
+  "artifacts": [
+    {
+      "name": "Rust service for all three native rosters",
+      "sha256": "e1090af11abc6be7b046c2530d29b35a969da8e49f1f4646fc86e614ac259d6e"
+    },
+    {
+      "name": "KR00967 diagnostic Wine client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-village10-herb",
+    "docs/evidence/rust-service/g1-village10-terrain.json",
+    "docs/PLAN.md#phase1-acceptance",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Previous auxFFFFFFFF-only policy blocked actual Village10 aux0 hidden reveal; retained failed run has six capture reports and later denied124, no acceptance.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+      "evidence": [
+        "G1VILL302-00011",
+        "G1VILL302-00020"
+      ],
+      "limits": "Aux meaning and original server authority remain unknown. Failure is not a positive native effect."
+    },
+    {
+      "summary": "Opt-in item policy ignores opaque aux as discriminator while requiring current membership/slot, known hidden cell and committed current-round cell clearance. Non-sentinel budget64 and legacy no-effect guards kept.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+      "evidence": [
+        "G1VILL302-00011",
+        "G1VILL302-01770",
+        "G1VILL302-01771",
+        "G1VILL302-00022",
+        "G1VILL302-00023"
+      ],
+      "limits": "Company policy, not recovered authority; raw142 lacks epoch and old bytes after fresh legitimate clearance remain indistinguishable."
+    },
+    {
+      "summary": "Native contiguous rosters2/4/6, same Rust binary and real account launch: pack spawns, Fire power1→2, configured hidden Roller speed increment, two results/reset and baseline restored on every view. All195flags before/after every blast match independent Python from actual118; native readers/entities and ownership checked separately.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+      "evidence": [
+        "G1VILL302-00011",
+        "G1VILL302-00247",
+        "G1VILL302-00988",
+        "G1VILL302-01737",
+        "G1VILL302-00227",
+        "G1VILL302-00964",
+        "G1VILL302-01715"
+      ],
+      "limits": "Bounded routes and designed drop only; not all counts/sparse/mixed map catalog or original drop distribution. Native log server not oracle."
+    },
+    {
+      "summary": "Copied-native getter emulation matches passive snapshots from the three runs; raw export/cleanup/source freeze complete for each.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/protocol/terrain.md#rust-village10-herb",
+      "evidence": [
+        "G1VILL302-00011",
+        "G1VILL302-00246",
+        "G1VILL302-00987",
+        "G1VILL302-01736",
+        "G1VILL302-00033",
+        "G1VILL302-00609",
+        "G1VILL302-01301"
+      ],
+      "limits": "Emulation separate from native, not new gameplay or authentication proof."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Source fmt/clippy/tests/locked build, bounded hidden admission negative/lifecycle cases",
+      "result": "pass",
+      "evidence": [
+        "G1VILL302-00023",
+        "G1VILL302-01770",
+        "G1VILL302-01771"
+      ],
+      "limits": "WIP source verification before native; exact committed head/CI required before merge."
+    },
+    {
+      "check": "Native capture/reader/entity/stat/terrain/two-cycle and separate copied-native getter controls",
+      "result": "pass",
+      "evidence": [
+        "G1VILL302-00011",
+        "G1VILL302-00247",
+        "G1VILL302-00988",
+        "G1VILL302-01737",
+        "G1VILL302-00246",
+        "G1VILL302-00987",
+        "G1VILL302-01736"
+      ],
+      "limits": "Every run exit0 and all raw sealed; failed earlier run and verifier retained separately."
+    },
+    {
+      "check": "Manual group audit and synchronized docs",
+      "result": "pass",
+      "evidence": [
+        "G1VILL302-00008",
+        "G1VILL302-00024"
+      ],
+      "limits": "Independent review waived; full/history checker and CI pending before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP302-village10-terrain.json",
+      "bytes": 488610,
+      "sha256": "0e0139461b138a85efac0d529cd1563e1a521193bb5266acf8669861690d9ceb",
+      "count": 1771
+    }
+  ],
+  "delta": {
+    "added": [
+      "Village10 bounded terrain/item native contiguous2/4/6, two cycles and independent all-cell checks."
+    ],
+    "corrected": [
+      "Aux sentinel overconstraint corrected only in opt-in item policy; no aux semantic inferred.",
+      "New verifier rank expectation corrected using established contract, failure source/log retained; inherited two-client reason prose disclosed."
+    ],
+    "superseded": [
+      "Village10 configured terrain/two-cycle entirely unmeasured; now bounded routes measured, catalog/sparse/all items still open."
+    ]
+  },
+  "blockers": [
+    "Chưa nghiệm thu mọi count2–6, sparse slot hoặc catalog map sáu/tám spawn. Đổi map khi roster vượt giới hạn, admission và gán ordinal spawn cần controls/native riêng.",
+    "Floor/drop là thiết kế thử, chưa là phân phối/trọng số gốc; chỉ Fire/Roller ở đây. Các item/nhân vật khác cùng Camp08/Tomb12/Factory tiếp theo PLAN.",
+    "Chỉ route/hướng và power1–2 đã đo, chưa toàn geometry hoặc server authority. G1/M8 và UTF8 vẫn mở."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Theo PLAN tiếp mixed six/eight-spawn catalog và sparse/current spawn fencing cho Village10, sau đó Camp08/Tomb12/item/characters. L1a/b/c worker riêng dùng runtime lease; M8 sau G1. Không lặp native2/4/6 routes đã đủ.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-14T17:04:49.294570+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex self-check source/native/capture/manual group audit. Separate UTF8 worker is not independent reviewer.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ bounded Village10 terrain/item policy và native evidence, giới hạn cùng việc kế; không đóng toàn G1."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ bounded Village10 terrain/item policy và native evidence, giới hạn cùng việc kế; không đóng toàn G1."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ bounded Village10 terrain/item policy và native evidence, giới hạn cùng việc kế; không đóng toàn G1."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ bounded Village10 terrain/item policy và native evidence, giới hạn cùng việc kế; không đóng toàn G1."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ bounded Village10 terrain/item policy và native evidence, giới hạn cùng việc kế; không đóng toàn G1."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ bounded Village10 terrain/item policy và native evidence, giới hạn cùng việc kế; không đóng toàn G1."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ bounded Village10 terrain/item policy và native evidence, giới hạn cùng việc kế; không đóng toàn G1."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Đồng bộ bounded Village10 terrain/item policy và native evidence, giới hạn cùng việc kế; không đóng toàn G1."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "state": "updated",
+      "reason": "Đồng bộ bounded Village10 terrain/item policy và native evidence, giới hạn cùng việc kế; không đóng toàn G1."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-village10-terrain.json",
+      "state": "updated",
+      "reason": "Source/native/emulation/failure/limits separated with raw locators."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Topic index already links terrain; contract edited in existing topic."
+    },
+    {
+      "path": "docs/content/client-language.md",
+      "state": "unchanged",
+      "reason": "Owned by delegated UTF8 worker in separate worktree; not part of this checkpoint."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD118.json",
+      "state": "updated",
+      "reason": "Manual narrow feature-group audit; broad G1 open."
+    }
+  ],
+  "completed_feature_groups": [
+    "rust-village10-bounded-terrain-basic-items"
+  ]
+}

@@ -1474,3 +1474,11 @@ Seed riêng, thùng, một Roller ẩn theo policy thử nghiệm và hai kết 
 Phép đo cũng sửa ngoại suy footprint của giếng3×2. [Contract và giới hạn](protocol/terrain.md#rust-selected-map-terrain),
 [bằng chứng](evidence/rust-service/g1-map-terrain.json). Forest07 và G1 vẫn còn roster/nội dung/drop theo acceptance;
 M8 giữ phạm vi riêng tại [Bảng điều hành](PLAN.md#dashboard).
+
+
+### Mốc trước CP302
+
+**CP301: Village10 có bằng chứng seed và tia nổ qua Herb với sáu account KR/Wine.**
+[Phạm vi và lỗi export đã phục hồi](evidence/rust-service/g1-village10-herb.json) tách native, emulation và kiểm source.
+Đường managed đã nhận prototype sáu người có kiểm giới hạn; chưa nghiệm thu terrain/drop/hai vòng/reset Village10
+hoặc catalog chung sáu/tám spawn. G1 và M8 còn theo [Bảng điều hành](PLAN.md#dashboard).

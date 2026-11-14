@@ -136,8 +136,10 @@ Phân phối bảng map kết hợp ItemAttr và authority gốc chưa phục h�
 item tắt. [Patrit14](protocol/terrain.md#rust-patrit-terrain) đã đo ba ô chặn của MastTileA và route phía trên/power1 với
 roster2/4/8, hai vòng/reset. Không lặp seed/route đã đủ; còn drop, nhóm item và các biến thể chỉ mở khi cần.
 [Village10 seed/Herb](protocol/terrain.md#rust-village10-herb) đã có native hai/sáu client cho flags, ba root power2 và
-đối chứng nhà. Chưa có terrain shadow/drop/two-cycle, mọi hướng hoặc catalog chung sáu/tám spawn. Camp08/Tomb12
-vẫn có loại ô khác; giới hạn spawn hiện hành theo chỉ đạo chủ dự án ở mục bên dưới.
+đối chứng nhà; [terrain tích hợp roster2/4/6](evidence/rust-service/g1-village10-terrain.json) đã có hai vòng/reset,
+Fire/Roller và toàn195flags mỗi blast. Aux report142 không là discriminator trong policy item opt-in, nghĩa gốc vẫn
+unknown; không RE dàn trải các giá trị khi đã có current-cell guard. Còn roster giữa/sparse và catalog chung sáu/tám
+spawn, mọi hướng/item/drop; Camp08/Tomb12 có loại ô khác. Giới hạn spawn hiện hành theo chỉ đạo bên dưới.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster
