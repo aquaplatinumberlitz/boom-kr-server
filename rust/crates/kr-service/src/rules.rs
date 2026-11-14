@@ -224,6 +224,10 @@ pub(crate) struct ReportLimits {
     pub opaque167: &'static [usize],
 }
 impl ReportLimits {
+    // Managed player rounds: observed native envelopes only, no ACK/effects.
+    // Patrit14 capture adds body52; this does not assign semantics to167.
+    pub(crate) const PLAYER_OPAQUE167: &'static [usize] = &[4, 12, 16, 22, 32, 42, 52];
+
     pub(crate) fn measured(count: usize) -> io::Result<Self> {
         match count {
             2 => Ok(Self {

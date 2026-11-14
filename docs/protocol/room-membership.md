@@ -1469,3 +1469,26 @@ và refresh current slots; các ván tiếp dùng membership/participant snapsho
 Ending loss đóng channel để không tạo phòng idle giả trong khi UI còn ở rank/return. Những ca đó không được gọi
 là survivor recovery đã nghiệm thu. Guest/chief thay quyền vẫn dùng cơ chế membership đã có; native active loss
 mới là guest EOF, không thêm claim graceful UI exit, active host promotion, mọi loại mất mạng hoặc relay.
+
+
+<a id="rust-bounded-diagnostic59"></a>
+## Quan sát có giới hạn cho schema59 đã đo
+
+[Metadata, source, raw/hash và ca âm](../evidence/rust-service/g1-native59-observation.json) phân biệt input đã đo
+với policy mới. Native dựng59 từ buffer records, gửi type/count/blob rồi xóa buffer; mục đích mã101, đơn vị của
+các value và phản ứng của server gốc chưa được phục hồi. Không dùng tên diagnostic để suy đó là telemetry vô hại.
+
+**Policy design của server hiện hành:** chỉ current managed player-room member được gửi measured type1/count5,
+storage zlib có đúng50byte và năm record10byte giữ nội dung hoàn toàn opaque. Body tối đa96byte, giải nén vào buffer51;
+đòi input tiêu hết, checksum, length và kết thúc đúng50, không trailing stream hoặc expansion. Schema khác bị từ chối.
+Tối đa16 accepted observations cho cả membership visit, không reset ở Start, round mới hoặc Idle. Input có shape
+hợp lệ không chứng minh fresh round; nó chỉ tốn budget, không có quyền thay gameplay.
+
+Không có reply/ACK, đổi world/stat/membership/round hoặc account activity. Account authorize(false) vẫn kiểm
+expiry/revoke trước khi room kiểm current connection/membership lại; old transport không sở hữu visit mới.
+Policy không áp lên login hoặc lobby không có room. Semantics gốc vẫn unknown; đây không là blanket ignore59.
+
+**Bằng chứng tương thích giới hạn:** native tám account trên Wine/LAN cô lập thực sự phát59 qua TCP, server quan sát
+đúng schema, rồi client tiếp tục hai kết quả/reset với terrain/item/stat đã đo. Capture, native getters/readers/flags
+xác minh continuation riêng; log server không là oracle. Lượt167/52, unknown59 và bộ lọc quá hẹp chỉ nhận101 đều giữ nguyên raw/failure; không relabel thành acceptance.
+M8 còn long-session budget, load và Internet của transport mới; không suy mọi diagnostic hoặc full game đã đạt.

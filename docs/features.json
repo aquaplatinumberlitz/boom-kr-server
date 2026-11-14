@@ -1348,7 +1348,9 @@
           "docs/evidence/rust-service/m7d-account-ownership.json",
           "docs/evidence/rust-service/m7e-selected-rosters.json",
           "docs/evidence/rust-service/g1-map-adapter.json",
-          "docs/evidence/rust-service/g1-map-selection.json"
+          "docs/evidence/rust-service/g1-map-selection.json",
+          "docs/evidence/owner-directives/g1-map-roster-limits.json",
+          "docs/evidence/rust-service/g1-patrit-terrain.json"
         ]
       },
       "coverage": {
@@ -1416,7 +1418,8 @@
               "docs/protocol/room-membership.md#rust-managed-account-ownership",
               "docs/protocol/room-membership.md#rust-selected-player-rounds",
               "docs/evidence/rust-service/g1-map-adapter.json",
-              "docs/protocol/load-phase.md#rust-room-map-selection"
+              "docs/protocol/load-phase.md#rust-room-map-selection",
+              "docs/protocol/terrain.md#rust-patrit-terrain"
             ]
           },
           "windows_original": {
@@ -2644,7 +2647,8 @@
           "docs/evidence/rust-service/README.md#cp242",
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/evidence/rust-service/g1-terrain-players.json",
-          "docs/evidence/rust-service/g1-map-terrain.json"
+          "docs/evidence/rust-service/g1-map-terrain.json",
+          "docs/evidence/rust-service/g1-patrit-terrain.json"
         ]
       },
       "coverage": {
@@ -2720,7 +2724,8 @@
               "docs/protocol/multiplayer-team.md#four-owner-bombs",
               "docs/protocol/terrain.md#rust-terrain",
               "docs/protocol/terrain.md#rust-player-terrain",
-              "docs/protocol/terrain.md#rust-selected-map-terrain"
+              "docs/protocol/terrain.md#rust-selected-map-terrain",
+              "docs/protocol/terrain.md#rust-patrit-terrain"
             ]
           },
           "windows_original": {
@@ -2884,7 +2889,8 @@
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/evidence/rust-service/g1-life-actions.json",
           "docs/evidence/rust-service/g1-terrain-players.json",
-          "docs/evidence/rust-service/g1-map-terrain.json"
+          "docs/evidence/rust-service/g1-map-terrain.json",
+          "docs/evidence/rust-service/g1-patrit-terrain.json"
         ]
       },
       "coverage": {
@@ -2965,7 +2971,8 @@
               "docs/protocol/terrain.md#rust-terrain",
               "docs/protocol/life-results.md#rust-needle-rescue",
               "docs/protocol/terrain.md#rust-player-terrain",
-              "docs/protocol/terrain.md#rust-selected-map-terrain"
+              "docs/protocol/terrain.md#rust-selected-map-terrain",
+              "docs/protocol/terrain.md#rust-patrit-terrain"
             ]
           },
           "windows_original": {
@@ -3108,7 +3115,8 @@
           "docs/evidence/rust-service/README.md#cp242",
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/evidence/rust-service/g1-terrain-players.json",
-          "docs/evidence/rust-service/g1-map-terrain.json"
+          "docs/evidence/rust-service/g1-map-terrain.json",
+          "docs/evidence/rust-service/g1-patrit-terrain.json"
         ]
       },
       "coverage": {
@@ -3167,7 +3175,8 @@
               "docs/protocol/udp-peer.md#rust-movement-floor",
               "docs/protocol/terrain.md#rust-terrain",
               "docs/protocol/terrain.md#rust-player-terrain",
-              "docs/protocol/terrain.md#rust-selected-map-terrain"
+              "docs/protocol/terrain.md#rust-selected-map-terrain",
+              "docs/protocol/terrain.md#rust-patrit-terrain"
             ]
           },
           "windows_original": {
@@ -5306,7 +5315,9 @@
           "docs/evidence/rust-service/m6-match-store.json",
           "docs/evidence/rust-service/m6-character-serving.json",
           "docs/evidence/rust-service/m6-journal-serving.json",
-          "docs/evidence/rust-service/g1-map-selection.json"
+          "docs/evidence/rust-service/g1-map-selection.json",
+          "docs/evidence/rust-service/g1-native59-pauses.json",
+          "docs/evidence/rust-service/g1-native59-observation.json"
         ]
       },
       "coverage": {
@@ -5487,7 +5498,10 @@
               "docs/protocol/room-membership.md#rust-selected-player-rounds",
               "docs/protocol/auth-session.md#rust-persistent-character",
               "docs/protocol/life-results.md#rust-match-journal-serving",
-              "docs/protocol/load-phase.md#rust-room-map-selection"
+              "docs/protocol/load-phase.md#rust-room-map-selection",
+              "docs/evidence/rust-service/g1-native59-pauses.json",
+              "docs/evidence/rust-service/g1-native59-observation.json",
+              "docs/protocol/room-membership.md#rust-bounded-diagnostic59"
             ]
           },
           "windows_original": {

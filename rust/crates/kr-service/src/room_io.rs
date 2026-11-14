@@ -250,7 +250,7 @@ pub(crate) fn load_player_round(
         },
         limits: rules::ReportLimits {
             power: Vec::new(),
-            opaque167: &[4, 12, 16, 22, 32, 42],
+            opaque167: rules::ReportLimits::PLAYER_OPAQUE167,
         },
     }))
 }
@@ -1727,7 +1727,8 @@ impl Session {
     pub fn handles(opcode: u32) -> bool {
         matches!(
             opcode,
-            79 | 81
+            59 | 79
+                | 81
                 | 82
                 | 585
                 | 86
@@ -2677,6 +2678,13 @@ impl Session {
                     return Err(err("active battle exit202 not ported"));
                 }
                 dropped_after_abort = true;
+            }
+            59 if r.managed_round.is_some() => {
+                let member = r.member(self.identity, self.connection)?;
+                crate::diagnostic59::measured(body)?;
+                // Company observation policy only; no reply, authority, activity
+                // or transition follows from the client's buffered records.
+                next.observe_diagnostic59(member.key)?;
             }
             167 => {
                 let member = r.member(self.identity, self.connection)?;

@@ -1,0 +1,44 @@
+{
+  "schema": "kre-native59-bounded-scheduling-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403",
+  "canonical": "docs/RESEARCH.md#rust-service-gaps",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "decision": "Sáu khoảng dừng có kiểm soát trên hai client không tái hiện packet 59. Lỗi Forest07 tám client chưa rõ semantics; không có fix/ACK/ignore policy mới. Lượt Patrit8 tiếp theo có trace queue và caller riêng, mô tả ở followup.",
+  "baseline": "PR404/CP298: phép dừng giữ nguyên binary Rust và các contract đã nghiệm thu. Không có caller mới trong chính phép dừng; trace/static về sau giữ provenance riêng.",
+  "recipe": {
+    "root": "local/research/codex/g1-native59-pause-r1",
+    "preflight": "local/research/codex/g1-native59-pause-r1/native/runtime-preflight.json",
+    "reuse": "local/research/codex/g1-native59-pause-r1/reuse.json",
+    "treatment": "GDB dừng inferior B tại breakpoint peer pump đã đo, sleep hữu hạn rồi trả điều khiển. A không bị dừng có chủ đích. Sáu mức 0,25; 0,5; 1; 2; 4; 8 giây, mỗi mức một lần; hai account trong Wine/LAN ảo cô lập.",
+    "source_mutation": "Không ghi bộ nhớ, gọi function của client, sửa binary/pack hoặc thay source/config/input sau launch."
+  },
+  "evidence": {
+    "run_sha256": "7ba42f01743330fcf88fa62050b5d0dc1634e0ce327d81536312dc17be0a8b3a",
+    "service_sha256": "98654cf471c1e772238d734d92f8da7845dda96ffc503ddaeace3fde6478cccb",
+    "duration_seconds": 143.333367476,
+    "raw_files": 56,
+    "raw_seal": "local/research/codex/g1-native59-pause-r1/native/raw-seal.json",
+    "verification": "local/research/codex/g1-native59-pause-r1/verification.json",
+    "verification_sha256": "59ea3dac31e19c91e88bd01148304d00cdc98747d377fecfdfcffc8824537a38",
+    "native59_count": 0,
+    "tcp59_count": 0,
+    "completed_pauses": 6,
+    "cleanup_remaining_pids": []
+  },
+  "preparation": "Thiếu fixture clone bị preflight từ chối trước runtime; log và correction giữ local. Lượt thật chỉ bắt đầu sau đủ pin/hash.",
+  "limits": [
+    "Âm tính chỉ trong hai client và lịch dừng đã khai; không chứng minh giả thuyết timing sai hoặc giải thích lỗi tám client trước.",
+    "Native clock/map và TCP capture xác minh đường quan sát; không là nghiệm thu gameplay, mạng Internet, chịu tải hoặc vận hành.",
+    "Không đọc function mới từ phỏng đoán caller. Giữ lỗi và raw cũ; phép đo tiếp chỉ khi có actual59 hoặc điều kiện mới cụ thể."
+  ],
+  "followup": {
+    "root": "local/research/codex/g1-patrit-8-native-r1",
+    "diagnosis": "local/research/codex/g1-patrit-8-native-r1/fault-diagnosis.json",
+    "actual": "Server đóng tám channel do actual167/body52. A/D sau đó đi qua queue59/general13ADD10; capture không có TCP59 trong lượt này.",
+    "callers": "Actual stack-word return1164D6D và unwound84708E dẫn đến private IDA functions1164D50/847010. Static847010 dựng59/type1/count/blob và xóa buffer sau queue; semantics/reply vẫn chưa phục hồi.",
+    "static": "local/research/codex/g1-native59-static-r1/observed-callers-static.json",
+    "alignment": "local/research/codex/g1-native59-static-r1/observed-callers-alignment.json",
+    "limits": "Hai body mới theo caller quan sát, không quét thêm và không suy opcode59 là nguyên nhân đóng Patrit. Bằng chứng lỗi actual59 Forest giữ nguyên."
+  }
+}

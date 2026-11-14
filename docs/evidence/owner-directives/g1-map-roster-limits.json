@@ -1,0 +1,42 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-13T21:06:06.081570+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại hiện hành, chủ dự án trả lời “cho đổi tiêu chí” đối với giới hạn Village10/Tomb12 có 6 spawn và acceptance G1 trước đây yêu cầu 2–8 người trên mỗi map.",
+  "decision": "G1 nghiệm thu Village10 và Tomb12 cho 2–6 người theo số spawn gốc; Camp08, Factory07, Forest07 và Patrit14 giữ 2–8 người.",
+  "map_player_ranges": {
+    "Camp08": {
+      "minimum": 2,
+      "maximum": 8
+    },
+    "Factory07": {
+      "minimum": 2,
+      "maximum": 8
+    },
+    "Forest07": {
+      "minimum": 2,
+      "maximum": 8
+    },
+    "Village10": {
+      "minimum": 2,
+      "maximum": 6
+    },
+    "Tomb12": {
+      "minimum": 2,
+      "maximum": 6
+    },
+    "Patrit14": {
+      "minimum": 2,
+      "maximum": 8
+    }
+  },
+  "scope": "Chỉ đổi sức chứa nghiệm thu của hai map có 6 spawn. Giữ sáu map, nhóm item, spawn đúng, hai ván/reset, native Wine và các ca âm/lifecycle còn lại. Quyết định không chứng nhận gameplay, đóng G1 hoặc giai đoạn 1.",
+  "supersedes": "Yêu cầu mọi map G1 đều 2–8 người trong PLAN trước quyết định này; không sửa acceptance hoặc kết quả lịch sử CP298 trở về trước.",
+  "constraints": [
+    "Không ép, dùng chung hoặc tạo spawn không có trong dữ liệu gốc chỉ để đạt 8 người.",
+    "Không thêm cờ sức chứa, alias identity hoặc nhánh capacity()==N vào lõi phòng.",
+    "Không đổi K6c/K7 hay các nghiệm thu mạng đã có."
+  ],
+  "plan": "docs/PLAN.md#phase1-acceptance",
+  "owner": "Chủ dự án quyết định; Codex ghi lại"
+}

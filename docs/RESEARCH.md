@@ -133,7 +133,9 @@ thực tế bị chặn; cạnh giếng đã có actual blast và flags không c
 các unknown map khác đã giải. Forest07 còn drop/nội dung và sparse roster theo acceptance; một Roller cố định chỉ là
 policy thử nghiệm. Khi mở phần tiếp, kiểm đúng consumer/placement hoặc roster còn thiếu, không lặp clock/map lookup.
 Phân phối bảng map kết hợp ItemAttr và authority gốc chưa phục hồi; policy công ty phải khai design và giữ unknown
-item tắt. Patrit14 có MastTileA đa ô ứng viên; Village10/Camp08/Tomb12 có loại ô khác và ràng buộc spawn chưa đo.
+item tắt. [Patrit14](protocol/terrain.md#rust-patrit-terrain) đã đo ba ô chặn của MastTileA và route phía trên/power1 với
+roster2/4/8, hai vòng/reset. Không lặp seed/route đã đủ; còn drop, nhóm item và các biến thể chỉ mở khi cần.
+Village10/Camp08/Tomb12 có loại ô khác; giới hạn spawn hiện hành theo chỉ đạo chủ dự án ở mục bên dưới.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster
@@ -143,9 +145,10 @@ item tắt. Patrit14 có MastTileA đa ô ứng viên; Village10/Camp08/Tomb12 c
 journal đúng map. Không lặp ordinal-only, bảng2row hoặc chọn map khi không có discrepancy mới. Initial96 trước final
 setup được đo; không áp lại guard setup=true gây lỗi. Queued selection dùng revision, không dùng index làm epoch.
 
-Còn terrain/drop/item và mọi roster theo acceptance G1; Forest07 mới có route2/4/8 giới hạn, không suy map mở đầy đủ. Phân loại tile tĩnh ngoài
-ExVillage01 giữ candidate. Village10 có6spawn/UI giới hạn6; G1 vẫn yêu cầu map2..8. Khi mở higher roster, đối chiếu
-native filter/Start/spawn với dữ liệu pack trước chọn giải pháp; không tự ép tọa độ/reuse spawn hoặc giảm acceptance.
+Còn terrain/drop/item và mọi roster theo acceptance G1; Forest07/Patrit14 mới có route2/4/8 giới hạn, không suy map mở đầy đủ. Phân loại tile tĩnh ngoài
+ExVillage01 giữ candidate. Village10/Tomb12 có 6 spawn; [chủ dự án đã chấp nhận](evidence/owner-directives/g1-map-roster-limits.json) nghiệm thu
+hai map này cho 2–6 người. Đo native filter/Start/spawn và gameplay tới giới hạn đó; không còn blocker yêu cầu
+8 người trên hai map này và không ép tọa độ/dùng chung spawn. Bốn map còn lại giữ acceptance 2–8 người.
 Nhóm item và biến thể kim/cứu chưa đo theo thứ tự PLAN, chỉ RE consumer còn chặn implementation/native. Unknown chưa đo bị tắt khỏi
 bảng rơi, không gọi map hoàn chỉnh từ floor rỗng/basic.
 
@@ -186,7 +189,7 @@ hai chiều/hai vòng, stale tới cổng đã nghỉ và EOF/pastdue đã có k
 | Mọi loại UDP, PMTU và kích thước | Relay forward nguyên byte tối đa 255; không có authority gameplay | Chỉ đo type hoặc kích thước đang chặn G1/M7; không suy movement helper bao phủ toàn game. |
 | Relay bốn/tám người và nhiều phòng | Thuật toán n×(n−1), pool route hữu hạn; managed native4/8 và sparse/departure đã có | Không lặp native4/8/sparse/departure hoặc negative controls đã đạt. M8 đo 50 người/8 phòng; số socket lý thuyết không là benchmark. |
 | Companion xác thực trên Internet thật | Native mới chỉ Wine/LAN và source mapping; N1/relay prototype Internet giữ nguồn riêng | M8 đo gói triển khai qua Internet thật với pin/capability/QUIC hiện hành; không tuyên bố ISP/CGNAT/mọi topology từ phép LAN |
-| [Native59](evidence/rust-service/g1-map-terrain.json) / issue403 | Đã tái hiện ở C/D trong Forest8-r2: body47, outer1/count5/blob40, inner50; server đóng unknown stage/opcode/shape. Caller/semantics chưa rõ, chưa có ACK/ignore policy | Trace dual-wrapper ở current positive r3 không tái hiện; không coi là fix. Tiếp control scheduling có giới hạn để bắt actual caller nếu cần; không quét rộng hoặc suy từ tên/opcode. |
+| [Native59 / issue403](evidence/rust-service/g1-native59-observation.json) | Caller/buffer/schema đã có trace; [policy quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) có native actual59 rồi hai ván/reset. Purpose101/units/server gốc vẫn chưa rõ | Không lặp parser/schema hoặc suy policy là original contract. Chỉ mở variant khi actual input chưa hỗ trợ; M8 đo budget16/visit dưới phiên dài/tải. Phép dừng âm tính và hai lượt lỗi trước giữ nguyên. |
 | Nhịp pump, DB lease checks và overload | Bounded recv/send, poll hiện hành; không gia hạn idle | Đo latency/queue/DB budgets và fairness dưới workload đích, kể cả nonreader và DB lỗi, trước M8. |
 
 Không thêm Internet thật thành dependency ngầm của K6c/K7 đã nghiệm thu WAN giả lập hoặc yêu cầu Windows/hai máy vật lý.

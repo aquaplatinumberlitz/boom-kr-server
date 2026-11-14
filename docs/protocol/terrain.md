@@ -561,3 +561,26 @@ Roster2/4 có route riêng phá thùng và nhặt item ở11,2, hai kết quả/
 Một Roller ẩn cố định là policy thử nghiệm, không phục hồi phân phối drop,
 trọng số ItemAttr hoặc mọi item trong bảng Forest07. Catalog fallback Factory07 chưa có terrain/native mới ở run này.
 Sáu map/nhóm item/nhân vật và M8 giữ acceptance riêng; không tự đóng G1 hoặc giai đoạn1 từ lát này.
+[Phạm vi roster hiện hành](../evidence/owner-directives/g1-map-roster-limits.json) cho Village10/Tomb12 là 2–6 người;
+bốn map còn lại là 2–8 người. Đây là quyết định nghiệm thu, không phục hồi wire/giới hạn gốc hoặc sửa kết quả cũ.
+
+
+<a id="rust-patrit-terrain"></a>
+## Lát terrain Patrit14 theo map hiện hành
+
+[Bằng chứng và giới hạn](../evidence/rust-service/g1-patrit-terrain.json) tái dùng đúng implementation per-map
+đã có. Lượt tám người bổ sung measured167/body52 vào observation có budget của managed player rounds;
+không ACK, sửa world/stat hoặc gán semantics. Hai/bốn người dùng binary trước delta, tám người dùng binary sau delta.
+Seed riêng của Patrit14 giữ overlay cho MastTileA tại row6/columns6..8; hai view native xác nhận cùng vùng
+chặn, trong đó hai ô ground candidate trước đây thực tế bị chặn. Data tĩnh có mẫu3/1 tương quan với footprint,
+nhưng chưa là contract chung cho mọi object đa ô. Profile xuất và pack gốc giữ nguyên.
+
+Các roster account 2/4/8 đi bằng phím thật từ spawn pack, phá thùng theo năm root, nhận Roller ẩn cấu hình tại4,8,
+và thấy stat actor1 tăng5→6 trên mọi view. Actual root5,8/power1 giữ ba ô Mast chặn đồng thời phá hai thùng cạnh,
+lặp cả hai vòng. Toàn195flags trước/sau mỗi blast được so từ actual input với kernel độc lập; reader/entity,
+owner/serial/location/power, rank/reset và baseline spawn/stat vòng sau được kiểm riêng. Getter emulation trên
+snapshot tách khỏi runtime. Lượt source/TCP/config trước vẫn giữ giới hạn, không thay native evidence.
+
+**Giới hạn:** route từ phía trên/column8 và power1, roster contiguous đã ghi; chưa mọi sparse roster hoặc toàn bộ map.
+Một Roller cố định là policy thử nghiệm, không phục hồi phân phối drop hoặc các item còn lại. Factory07 fallback
+không có terrain trong lượt này. Sáu map/item/nhân vật và M8 tiếp tục theo acceptance PLAN, không đóng toàn bộ G1.
