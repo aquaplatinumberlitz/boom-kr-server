@@ -1,0 +1,11 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-14T00:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án trả lời \"đồng ý\" trong phiên Claude Code ngày 2026-11-14, cho đề xuất của Claude: cho Codex chạy client PopTag trong môi trường đã cắt mạng để quan sát lớp vá chữ, phục vụ mốc L1.",
+  "fact": "l10n-utf8.json và l10n-text-rights.json ghi client PopTag không được chạy khi còn đường ra mạng, vì gói có DLL của nhóm ngoài và trình tự cập nhật tải file từ máy chủ của họ. Đề bài L1 ban đầu ghi chặt hơn là không chạy.",
+  "decision": "Codex được chạy client PopTag để quan sát động cho L1, chỉ trong mạng namespace chỉ có loopback như các lượt native hiện hành, trên bản sao. Không chạy trình cập nhật hay bộ cài.",
+  "limits": "Phải xác nhận không có đường ra mạng trước khi chạy và ghi bằng chứng đó. Không đưa binary, pack hay mã của PopTag vào repo. Không dùng kết quả chạy PopTag làm bằng chứng cho hành vi của 00967.",
+  "plan": "docs/PLAN.md#dashboard",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}
