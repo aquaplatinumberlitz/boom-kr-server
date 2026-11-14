@@ -1,0 +1,20 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Two diagnostic copies, original Korean inputs; guarded one-shot UTF-16 substitution on A, B unmodified, screenshot-gated create dialog.",
+  "observation": "The A hook reported an exact Title1 match and replacement of seven wide units with nine. The retained A create-dialog screenshot and A/B room screenshots were inspected and still show the original Korean title; the target mixed string was not seen. Both clients reached the room. The harness returned 1 after the intentional B-joined stop because its inherited full-game assertion expected a later stage.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/dialog-09/recipe.json", "sha256": "c7c33a11ad242d393779935eb2ece61d7a9af907eb576d3f749bd3376e1e86bc"},
+    {"path": "local/research/l10n-utf8-codex/dialog-09/preflight.json", "sha256": "4022c8a80317504525719743e8d81df055c0f3031d5940e2e891cde9c2a7b782"},
+    {"path": "local/research/l10n-utf8-codex/dialog-09/native/run.json", "sha256": "a8aefcabe76b694eb5f67ed3f8d7fbcbc3d153efe01fb0cbc464f6f6737e593e"},
+    {"path": "local/research/l10n-utf8-codex/dialog-09/native/A/dialog-candidate.png", "sha256": "a8e0c3695276c4bf3f9ec016d76f620d63bc45fdc9e05eddf4aefd42ef85e103"},
+    {"path": "local/research/l10n-utf8-codex/dialog-09/native/A/control-room.png", "sha256": "5cba969ba162be3fce1aa5cdc09645e03cd99c57b4d093761acb19bf20574879"},
+    {"path": "local/research/l10n-utf8-codex/dialog-09/native/B/control-room.png", "sha256": "3230585641c049587b3906116771633e5c655684d0ead23cded2dd5e453b5663"},
+    {"path": "local/research/l10n-utf8-codex/dialog-09/storage-export.json", "sha256": "8cfd6a59610c35db118d5356286bdef41dbda72ba3ad15944b4a8942df07bcd1"},
+    {"path": "local/research/l10n-utf8-codex/dialog-09/raw-seal.json", "sha256": "13811bf4862fe7846bb1ad5d91787e6f337d9fbd8e575d9932e5b3cc2c932d23"}
+  ],
+  "cleanup": "Raw export passed; 47 files pinned, frozen inputs and executables unchanged, two copied map caches changed, no remaining recorded namespace process.",
+  "limits": "A debugger marker is not independent proof that the changed temporary buffer reached the UI. The original title in the screenshots is an observed negative for this proposed injection point, not a font failure. No UTF-8 data, IME, shared text or original-client compatibility was tested."
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "kr_runtime",
+  "status": "unknown",
+  "scope": "Two diagnostic copies, original Korean inputs; A one-shot read-only pass-through with disable-only return breakpoint, B uninstrumented, screenshot gate.",
+  "observation": "The A hook installed but had not reported a title match. Before the first UI click the controller's exact-title window lookup returned two visible window IDs and asserted, so the screenshot gate and dialog test were not reached. Raw output contains no retained window tree or PID attribution for those IDs; their roles are unknown.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/dialog-07/recipe.json", "sha256": "eeda520c2a169a6d08b6c78200373917bc535faf3429a2d5e45cc11a9aa14119"},
+    {"path": "local/research/l10n-utf8-codex/dialog-07/preflight.json", "sha256": "d0f8ca6b090e5b60eecd67420c79d7a86c9646097f9b35adfa9e71aa862853af"},
+    {"path": "local/research/l10n-utf8-codex/dialog-07/native/run.json", "sha256": "245d3f4e44a6e4e059f644ec6314a336fe1e8aeb89da3a3782d6e3f582216d93"},
+    {"path": "local/research/l10n-utf8-codex/dialog-07/storage-export.json", "sha256": "e00d4090784ed73bbc8999f26e9ccdd06b71a396eed03b8f41864e132033b683"},
+    {"path": "local/research/l10n-utf8-codex/dialog-07/raw-seal.json", "sha256": "6722de8488ae2928b867bf2d417973d7f449794acfe12dcbacb58b34a166e547"}
+  ],
+  "cleanup": "Raw export passed, 35 files pinned, frozen inputs and executables unchanged, two copied map caches changed, no remaining recorded namespace process.",
+  "limits": "Controller selection failure before the target observation. Does not establish pass-through behavior in game, window identity, glyphs, UTF-8, IME, packet or original-client compatibility. A later controller must retain window tree/PID and fail closed on ambiguous identity."
+}

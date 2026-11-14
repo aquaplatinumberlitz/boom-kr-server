@@ -257,6 +257,18 @@ vào phòng; ảnh đã được xem trực tiếp. Gate là heuristic giới h�
 nhưng debugger báo lỗi nội bộ GDB và kết thúc ngay sau marker; hết 20 giây không thấy hộp, ảnh cuối vẫn ở sảnh.
 Chưa biết cơ chế lỗi GDB hay ảnh hưởng của nó tới UI; không suy đây là SIGSEGV của game hoặc lỗi font. Chưa chạy
 thay chuỗi với controller này.
+[Lượt pass-through disable-only tiếp theo](../evidence/l10n-utf8-dialog-07.json) dừng trước click vì bộ chọn cửa sổ
+thấy hai ID cùng tên; không giữ được cây cửa sổ hoặc PID để phân biệt sau cleanup. Lượt này chưa đo được dialog hoặc
+glyph. Controller tiếp phải lưu cây cửa sổ và bằng chứng identity, dừng nếu còn mơ hồ.
+[Lượt pass-through có ghi nhận mơ hồ cửa sổ](../evidence/l10n-utf8-dialog-08.json) không gặp cửa sổ trùng tên,
+đã quan sát một conversion không ghi bộ nhớ và ảnh cho thấy hộp tạo phòng rồi phòng hai người. Đây là một control
+hữu hạn, chưa chứng minh thay chuỗi hoặc vẽ glyph Việt.
+[Lượt thay một kết quả UTF-16](../evidence/l10n-utf8-dialog-09.json) ghi marker thay thế, nhưng ảnh hộp tạo phòng
+và phòng vẫn hiện tiêu đề Hàn gốc ở cả hai phía. Buffer đã thay chưa được chứng minh là buffer tới UI; không suy
+font lỗi hoặc client đã hỗ trợ UTF-8. Bước tiếp theo là truy caller và vòng đời buffer, không lặp cùng phép thay.
+[Fixture i686 tự viết](../evidence/l10n-utf8-gdb-fixture.json) đã chạy Wine-GDB ở hai chế độ pass-through và thay
+thế với breakpoint mới; cả hai thoát bình thường và chương trình tự kiểm count, canary, NUL. Output code unit thay
+thế chưa được quan sát độc lập; kết quả fixture không chứng minh debugger ổn định trong game hoặc glyph được vẽ.
 
 <a id="cp1258"></a>
 

@@ -17,6 +17,8 @@ SOURCES = {bytes.fromhex(value): name for name, value in (
 )}
 WIDE = bytes.fromhex('5cd5200056006900c71e7400200045004e00')
 MODE = globals().get('L10N_GLYPH_MODE', 'pass')
+ENTRY_ADDRESS = globals().get('L10N_GLYPH_ENTRY', 0x149a740)
+RECORD_PREFIX = globals().get('L10N_GLYPH_PREFIX', 'L10N_GLYPH ')
 if MODE not in ('pass', 'replace'):
     raise ValueError('L10N_GLYPH_MODE must be pass or replace')
 
@@ -26,7 +28,7 @@ def value(expression):
 
 
 def record(kind, **fields):
-    print('L10N_GLYPH ' + json.dumps({'kind': kind, **fields}, sort_keys=True), flush=True)
+    print(RECORD_PREFIX + json.dumps({'kind': kind, **fields}, sort_keys=True), flush=True)
 
 
 class Return(gdb.Breakpoint):
@@ -101,7 +103,7 @@ class Entry(gdb.Breakpoint):
         return False
 
 
-Entry('*0x149a740', internal=True)
+Entry('*%#x' % ENTRY_ADDRESS, internal=True)
 def retire_on_exit(event):
     for bp in gdb.breakpoints() or ():
         if isinstance(bp, Return) and bp.is_valid():
