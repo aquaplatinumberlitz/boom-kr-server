@@ -156,6 +156,10 @@ __attribute__((stdcall)) int hook_peeka(msg_t *m, void *hwnd, unsigned fmin, uns
     if (!peekw) return orig_peeka(m, hwnd, fmin, fmax, flags);
     if (flags & 1) inj_active = 0;
     r = peekw(m, hwnd, fmin, fmax, flags);
+#ifdef L10N_TRACE
+    if (r && (flags & 1) && ((m->message >= 0x100 && m->message <= 0x10F) || (m->message >= 0x280 && m->message <= 0x291)))
+        trace('M', m->message, m->wParam, (unsigned)m->lParam);
+#endif
     if (r && m->message == 0x102 && m->wParam >= 0x80 && m->wParam <= 0xFFFF &&
         !(m->wParam >= 0xD800 && m->wParam <= 0xDFFF)) {
         l10n_stats[2]++;
