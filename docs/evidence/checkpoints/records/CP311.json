@@ -1,0 +1,232 @@
+{
+  "id": "CP311",
+  "previous": "CP310",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-15T19:50:45.973762+00:00",
+  "context_commit": "d066dc37819b5163b90e5a1ae4d2dbc20f9f0bc4",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1: đưa thùng nhiều hit vào Rust theo bằng chứng StrongBox thực tế; kiểm item ẩn, vòng đời và reset trước khi tiếp terrain còn thiếu.",
+  "scope": "Kernel Rust thùng nhiều hit, native StrongBox01/02 và route hai vòng với item ẩn/kết quả/reset. Chưa mở toàn Camp08 hoặc hoàn tất G1.",
+  "artifacts": [
+    {
+      "name": "service_sha256",
+      "sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192"
+    },
+    {
+      "name": "client_sha256",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "map_payload_sha256",
+      "sha256": "80dc0d8c655a83e7397fb9e0d7977788c42547b632c32edb85659bcbf2520144"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-camp08-boundary",
+    "docs/evidence/rust-service/g1-camp08-durable-boxes.json",
+    "docs/RESEARCH.md#gap-camp08-bomb-report",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "CGOTileMoveAbleBox nạp data+24 vào counter +0xD8; native khởi tạo, từng lần giảm và return 0/1 khớp 5/2 hit cùng flags hai view. Nhánh game-box/+0xC4 bị loại khỏi contract.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP311-0008",
+        "CAMP311-0031",
+        "CAMP311-0815"
+      ],
+      "limits": "Hai loại thùng, ô, power và route đã đo; guard 255 chỉ được kiểm tĩnh, chưa là authority server gốc."
+    },
+    {
+      "summary": "Rust thêm box_hits tùy chọn: box nhận 1–254, ô khác nhận 0; config cũ mặc định một hit. Clearance chờ đủ recipient sau hit cuối; ray dừng, chain không trừ lặp và reset khôi phục seed. 211 tests, fmt/clippy và build đạt.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP311-0008",
+        "CAMP311-2115"
+      ],
+      "limits": "Tests kiểm implementation; native và chính sách hữu hạn được ghi riêng, không chứng nhận server gốc."
+    },
+    {
+      "summary": "Rust mới chạy hai vòng: 18 bom hoàn tất 159/158 ở hai view; Bomb/Fire ẩn nhặt mỗi vòng, power 1→2 và reset, hai rank/return, ba clock. DB ghi hai trận hoàn tất và trận thứ ba hủy, thưởng 0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP311-0008",
+        "CAMP311-0807",
+        "CAMP311-0794"
+      ],
+      "limits": "Route Camp08 private; chưa toàn terrain, phân phối drop, roster, G1/M8 hoặc Internet."
+    },
+    {
+      "summary": "Probe game-box không bắt mẫu, lookup E9FCF0 trả null. Lượt dispatch đầu lỗi Wine trước clock, 55 raw và cleanup được giữ. Copy DB cờ map lỗi IDA 1228; copy DB tham chiếu khác đọc được.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP311-1283",
+        "CAMP311-2095"
+      ],
+      "limits": "Quan sát lỗi và probe âm chỉ thu hẹp nhánh; không quy nguyên nhân cho gameplay hoặc semantics StrongBox."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rust: 211 tests, fmt/clippy và locked build",
+      "result": "pass",
+      "evidence": [
+        "CAMP311-2115"
+      ],
+      "limits": "Kiểm hồi quy implementation; native có bằng chứng riêng."
+    },
+    {
+      "check": "Native counter 5/2, khởi tạo dữ liệu 72 byte và Rust mới hai vòng với item/kết quả/reset/Start kế/DB",
+      "result": "pass",
+      "evidence": [
+        "CAMP311-0031",
+        "CAMP311-0807"
+      ],
+      "limits": "Route hai account private; chưa nghiệm thu toàn Camp08/G1."
+    },
+    {
+      "check": "Docs/catalog/diff và audit nhóm thủ công",
+      "result": "pass",
+      "evidence": [
+        "CAMP311-0012",
+        "CAMP311-0007"
+      ],
+      "limits": "Cần CI xanh và full checker trên exact head trước merge."
+    },
+    {
+      "check": "Tích hợp với main chứa L1/account-auth",
+      "result": "pass",
+      "evidence": [
+        "CAMP311-2112",
+        "CAMP311-2115",
+        "CAMP311-0807"
+      ],
+      "limits": "211 tests và lượt native trên binary kết hợp; không thêm acceptance localization."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP311-camp08-durable.json",
+      "bytes": 597945,
+      "sha256": "ab81d17ca73524545f8e06f51013737ae3cd1b192a4cd7d8ae777b118029c3b8",
+      "count": 2160
+    }
+  ],
+  "delta": {
+    "added": [
+      "Kernel thùng nhiều hit với dữ liệu tùy chọn và native counter của lớp thực tế.",
+      "Route Rust StrongBox01/02 cùng Bomb/Fire ẩn qua hai vòng/reset."
+    ],
+    "corrected": [
+      "Loại nhánh game-box/+0xC4; consumer thực tế là moveable-box/+0xD8.",
+      "Offset 24 ở type 2 là counter, không là footprint chung.",
+      "CP310 bị trùng giữa hai nhánh: CP310 L1 đã merge được giữ nguyên; G1 0805fea/PR425 giữ lịch sử trên nhánh cũ, CP311 tích hợp sau main cd4f82a. Không sửa record đã merge."
+    ],
+    "superseded": [
+      "Blocker về số hit và kernel thùng nhiều hit trên route Camp08 đã đo."
+    ]
+  },
+  "blockers": [
+    "Lượt probe generic game-box +C4 không bắt StrongBox; lookup E9FCF0 trả null. Phân loại candidate cũ bị loại khỏi contract. Actual object là CGOTileMoveAbleBox qua E9FF80, counter+D8.",
+    "Offset24 của TileInfo là counter trong nhánh type2 đã đo; không gán footprint width cho mọi type.",
+    "Kernel và lựa chọn hiddenBomb/Fire là design, không original-server/drop distribution. Native route/roster/power cụ thể; chain/multiroom negatives là regression controls.",
+    "Herb/Line/MissileBase/PinPillar, các route và roster Camp08 còn thiếu. Không có fullCamp08/G1/M8/Internet/load acceptance.",
+    "Preflight source_commit là checkout điều phối; baseline của worktree build và source diff được kiểm riêng bằng source-identity/snapshots/receipts. Giữ nguyên preflight đã launch."
+  ],
+  "completed_feature_groups": [
+    "g1-camp08-durable-box-kernel"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp Herb/Line và MissileBase/PinPillar Camp08, coverage roster/item và Tomb12 theo PLAN; không lặp phần đã nghiệm thu hoặc tiếp L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-15T19:50:45.973762+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo kernel terrain, native counter và route Camp08 hai vòng; tự audit. Chưa toàn Camp08/G1/M8; cần CI và full checker exact head trước merge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ kernel thùng nhiều hit, native counter, phạm vi private đã nghiệm thu và phần G1 còn mở."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ kernel thùng nhiều hit, native counter, phạm vi private đã nghiệm thu và phần G1 còn mở."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ kernel thùng nhiều hit, native counter, phạm vi private đã nghiệm thu và phần G1 còn mở."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ kernel thùng nhiều hit, native counter, phạm vi private đã nghiệm thu và phần G1 còn mở."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ kernel thùng nhiều hit, native counter, phạm vi private đã nghiệm thu và phần G1 còn mở."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ kernel thùng nhiều hit, native counter, phạm vi private đã nghiệm thu và phần G1 còn mở."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ kernel thùng nhiều hit, native counter, phạm vi private đã nghiệm thu và phần G1 còn mở."
+    },
+    {
+      "path": "docs/content/tile-semantics.md",
+      "state": "updated",
+      "reason": "Đồng bộ kernel thùng nhiều hit, native counter, phạm vi private đã nghiệm thu và phần G1 còn mở."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-camp08-durable-boxes.json",
+      "state": "updated",
+      "reason": "Đồng bộ kernel thùng nhiều hit, native counter, phạm vi private đã nghiệm thu và phần G1 còn mở."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Nguồn này không đổi; contract sửa tại chủ đề terrain, giữ nguyên quy tắc và owner L1."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Nguồn này không đổi; contract sửa tại chủ đề terrain, giữ nguyên quy tắc và owner L1."
+    }
+  ]
+}

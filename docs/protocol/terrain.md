@@ -631,7 +631,8 @@ Getter emulation tách khỏi native; không có nghiệm thu Windows, Internet 
 
 [Bằng chứng seed và blocker ban đầu](../evidence/rust-service/g1-camp08-boundary.json) giữ Start/spawn/195 flags
 trên hai account KR/Wine, getter emulation và các run lỗi. Ô 12,11 có flag chặn dù candidate là ground, cạnh
-MissileBase; không suy footprint, durability hoặc đường nổ từ tên và phân loại từng ô. Terrain vẫn tắt, floor rỗng.
+MissileBase; không suy footprint hoặc đường nổ từ tên. Camp08 chỉ có các route private đã đo dưới đây; chưa mở
+preset gameplay tổng quát.
 
 [Đối chứng report122](../evidence/rust-service/g1-camp08-report122.json) đã so ô thường 6,0 với ô 6,2 từng được gắn
 nhãn tĩnh PinGround. Cả hai trả object `CGOTileGround` ở hai view; predicate lần lượt là `[0,FFFFFFFF]` và `[1,4]`.
@@ -671,5 +672,28 @@ Policy map-owned cancellation đã kiểm native hai account: mỗi vòng có m�
 không có 159/158 cho placement đó; bom thường trước và sau vẫn hoàn tất consumer ở cả hai view. Hai kết quả/reset
 và Start thứ ba đã chạy. Lượt đầu lỗi recipe do thử di chuyển B sau local effect gây nhốt/chết; raw giữ nguyên,
 lượt sau dùng A còn sống cho positive. Không suy toàn bộ tác động PinGround lên nhân vật hoặc response server gốc.
-StrongBox, terrain/floor/drop/item và đủ roster Camp08 còn mở;
+Các terrain/item và đủ roster Camp08 còn mở;
 [khoảng trống](../RESEARCH.md#gap-camp08-bomb-report) giữ phép nghiệm thu kế.
+
+[Thùng nhiều hit và route Rust](../evidence/rust-service/g1-camp08-durable-boxes.json) đã đo StrongBox01 tại `(7,2)`
+chặn sau bốn hit và hết chặn ở hit thứ năm; StrongBox02 tại `(8,3)` hết chặn ở hit thứ hai. Các hit dùng power 1 và
+ô đặt thường, cả hai view có đủ consumer 159/158. Actual object là `CGOTileMoveAbleBox` từ `E9FF80`;
+`B9F460` nạp dword TileInfo tại offset 24 vào protected counter `+0xD8`, 0 đổi thành 1. `B9FDD0(0)` giảm counter,
+chỉ xóa chặn khi về 0. Guard tĩnh `BA01C0` giữ giá trị từ 255 trở lên; variant này chưa kiểm runtime.
+Native initializer và từng counter trước/sau hit được đối chiếu riêng. Lớp game-box `B9C760/+0xC4` là ứng viên sai nhánh, không dùng để chứng nhận StrongBox.
+
+Terrain Rust thêm `box_hits` tùy chọn: vắng thì mỗi ô box có một hit như trước; có thì đủ 195 giá trị, box nhận
+1–254 và ô khác nhận 0. Đây là policy design hữu hạn. Mỗi callback hiện hành trừ một lần cho ô được ray đánh dấu,
+chỉ cấp clearance sau hit cuối đã gửi đủ mọi recipient; callback lặp hoặc timer của secondary đã xử lý không trừ
+thêm. Ray vẫn dừng tại thùng ở hit cuối, Start mới khôi phục seed/count và xóa clearance. Config vẫn ràng buộc map,
+seed và frame map/start. Ngân sách, queue, generation và membership guards giữ nguyên.
+
+Private route với binary mới đã qua hai vòng: hành vi 5/2 hit, hidden Bomb ở `(7,2)`, hidden Fire ở `(8,3)`,
+nhặt/165 ở hai view, power 1→2, bom thường, hai kết quả/reset và Start thứ ba. 18 bom thường hoàn tất consumer ở
+cả hai view; DB ghi hai trận hoàn tất và trận thứ ba hủy khi cleanup, thưởng 0. Hai item là dữ liệu test design,
+không phải xác suất drop server gốc. Seed của những ô khác chỉ đối chiếu cờ khởi tạo cho diagnostic này; không coi
+lượt đó là nghiệm thu Herb/Line/MissileBase/PinPillar hoặc toàn terrain/roster Camp08.
+
+Lượt tích hợp sau main chứa thay đổi L1/account-auth dùng binary mới, giữ cùng source kernel và client G1 949.
+Route hai vòng/item/kết quả/reset/Start kế được kiểm lại trên binary kết hợp; metadata giữ riêng hash hai service.
+211 tests trên source kết hợp đạt. Kết quả này không mở acceptance localization hoặc đổi wire client G1.
