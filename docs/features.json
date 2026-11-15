@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP306",
+  "as_of": "CP307",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1358,7 +1358,8 @@
           "docs/evidence/rust-service/g1-patrit-terrain.json",
           "docs/evidence/rust-service/g1-village10-terrain.json",
           "docs/evidence/rust-service/g1-mixed-map-spawns.json",
-          "docs/evidence/rust-service/g1-camp08-boundary.json"
+          "docs/evidence/rust-service/g1-camp08-boundary.json",
+          "docs/evidence/rust-service/g1-camp08-report122.json"
         ]
       },
       "coverage": {
@@ -1430,7 +1431,8 @@
               "docs/protocol/terrain.md#rust-patrit-terrain",
               "docs/protocol/terrain.md#rust-village10-herb",
               "docs/evidence/rust-service/g1-mixed-map-spawns.json",
-              "docs/evidence/rust-service/g1-camp08-boundary.json"
+              "docs/evidence/rust-service/g1-camp08-boundary.json",
+              "docs/evidence/rust-service/g1-camp08-report122.json"
             ]
           },
           "windows_original": {
@@ -2420,7 +2422,8 @@
           "docs/evidence/rust-service/README.md#cp242",
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/evidence/rust-service/g1-terrain-players.json",
-          "docs/evidence/rust-service/g1-camp08-boundary.json"
+          "docs/evidence/rust-service/g1-camp08-boundary.json",
+          "docs/evidence/rust-service/g1-camp08-report122.json"
         ]
       },
       "coverage": {
@@ -2501,7 +2504,8 @@
               "docs/protocol/multiplayer-team.md#eight-mesh-owner-bombs",
               "docs/protocol/bombs.md#rust-bombs",
               "docs/protocol/terrain.md#rust-player-terrain",
-              "docs/evidence/rust-service/g1-camp08-boundary.json"
+              "docs/evidence/rust-service/g1-camp08-boundary.json",
+              "docs/evidence/rust-service/g1-camp08-report122.json"
             ]
           },
           "windows_original": {
@@ -2543,7 +2547,9 @@
             "rust/crates/kr-service/src/room_io.rs",
             "docs/protocol/life-results.md#rust-return-cleanup",
             "docs/protocol/rust-boundary.md#rust-m3-acceptance",
-            "docs/protocol/terrain.md#rust-player-terrain"
+            "docs/protocol/terrain.md#rust-player-terrain",
+            "rust/crates/kr-wire/src/kr00967/battle.rs",
+            "rust/crates/kr-wire/tests/native_bomb_report122.rs"
           ],
           "delivery": "via_pr"
         },
@@ -2667,7 +2673,8 @@
           "docs/evidence/rust-service/g1-village10-herb.json",
           "docs/evidence/rust-service/g1-village10-terrain.json",
           "docs/evidence/rust-service/g1-mixed-map-spawns.json",
-          "docs/evidence/rust-service/g1-camp08-boundary.json"
+          "docs/evidence/rust-service/g1-camp08-boundary.json",
+          "docs/evidence/rust-service/g1-camp08-report122.json"
         ]
       },
       "coverage": {
@@ -2747,7 +2754,8 @@
               "docs/protocol/terrain.md#rust-patrit-terrain",
               "docs/protocol/terrain.md#rust-village10-herb",
               "docs/evidence/rust-service/g1-mixed-map-spawns.json",
-              "docs/evidence/rust-service/g1-camp08-boundary.json"
+              "docs/evidence/rust-service/g1-camp08-boundary.json",
+              "docs/evidence/rust-service/g1-camp08-report122.json"
             ]
           },
           "windows_original": {

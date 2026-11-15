@@ -160,18 +160,25 @@ trước đóng QueueExpired trước mainDisconnected; run tách preboot không
 chưa xác định. Chỉ mở chẩn đoán tiếp nếu tái hiện hoặc cần budget M8; không patch JSON downstream.
 
 <a id="gap-camp08-bomb-report"></a>
-### Camp08: report122 và local effect trước network identity
+### Camp08: report122 trước network identity và response theo vòng đời
 
-[Seed/native và boundary](protocol/terrain.md#rust-camp08-boundary) đã có Start/spawn/195flags trên hai view,
-nhưng chỉ là trạng thái ban đầu. Không lặp seed khi không có discrepancy mới. Blocker mới: actual122 sau placement
-trên PinGround khiến service đóng channel; writer có protected propertyFFFFFFFF, caller gửi report rồi local cleanup.
-Không sửa parser JSON xuất hiện sau disconnect hoặc bỏ qua122 để lấy run xanh.
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) đã có seed và đối chứng ô 6,0/6,2: cùng Ground RTTI
+nhưng predicate khác nhau, actual122 rồi167. Parser Rust có fixture native và kiểm size; chưa nối phục vụ. Không lặp
+seed, writer layout hoặc normal-cell control nếu không có discrepancy mới. Nhãn PinGround tĩnh chưa là nguyên nhân.
 
-Cần xác định association với bomb pending/current, thời điểm response và effect ở owner/peer. Kiểm ownership,
-current phase/round/cell, malformed/duplicate/stale/reconnect và kết quả/reset theo acceptance; report không mang
-đủ generation đã đo thì ghi rõ giới hạn, không gọi policy nội bộ là raw freshness. Tiếp StrongBox01/02 sau khi
-response path có native hai view, rồi Herb/Line/PinGround và static footprint còn thiếu. Seed/TileInfo không tự chứng
-minh durability hoặc hazard. Không mở broadRE ngoài đường đang chặn implementation/nghiệm thu này.
+Native đã tách nhánh cờ map: scalar/getter 0 ở ô thường và 1 ở ô 6,2. Writer167, serial 29 và cleanup đã có ở cả
+owner/peer; owner còn sentinel lúc gửi122, peer có ID server 2. Không RE lại nhánh này khi chưa có discrepancy mới.
+Phần chặn implementation là quyết định response/association và vòng đời ledger trên server. Chọn policy có thể
+bảo vệ bằng dữ liệu map và current ledger, rồi kiểm native hai view với current positive; không ACK/no-op122 hoặc
+ghép sentinel với ID đang active chỉ để lấy run xanh. Chưa suy field đầu167 là owner bom hoặc property local thành
+network ID. Kiểm malformed, duplicate, stale, current phase/round/cell, owner, reconnect, kết quả/reset trước chuyển
+phục vụ. Report không mang đủ generation thì phải ghi giới hạn và giữ authority bảo vệ độc lập; policy nội bộ không
+tự là raw freshness. Tiếp StrongBox01/02 và terrain sau response path, không suy durability từ seed hoặc TileInfo.
+
+Lỗi QueueExpired trước map đã tái hiện trong một lượt đo; raw được giữ, removal/missing membership xảy ra sau denial.
+Passive observer thấy DB thread ở `wait_current_trans`; nguyên nhân đầy đủ vẫn candidate. Một lượt tách khỏi full
+history/build tới được mục tiêu. Theo dõi storage/scheduling ở M8 hoặc khi cản lát kế, không sửa JSON downstream
+hay nới timeout từ suy đoán. Lỗi Wine/debugger trước login được tách khỏi lỗi report122; retry có giới hạn log ở harness.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster

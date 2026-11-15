@@ -627,21 +627,30 @@ Getter emulation tách khỏi native; không có nghiệm thu Windows, Internet 
 
 
 <a id="rust-camp08-boundary"></a>
-## Camp08: seed ban đầu và report bom còn chặn terrain
+## Camp08: seed, điều kiện report bom và giới hạn phục vụ
 
-[Bằng chứng và giới hạn](../evidence/rust-service/g1-camp08-boundary.json) giữ capture/native, getter emulation,
-source-first và failed runs riêng. Trên cùng Rust binary đã đo, hai account KR/Wine đọc Start và spawn gốc Camp08,
-lookup tên/mã đúng và cùng195flags ở clock. Ô12,11 có flag chặn dù candidate là ground, cạnh object MissileBase;
-không dùng phân loại từng ô hoặc tên để suy footprint, durability và đường nổ. Terrain server vẫn tắt, floor rỗng.
+[Bằng chứng seed và blocker ban đầu](../evidence/rust-service/g1-camp08-boundary.json) giữ Start/spawn/195 flags
+trên hai account KR/Wine, getter emulation và các run lỗi. Ô 12,11 có flag chặn dù candidate là ground, cạnh
+MissileBase; không suy footprint, durability hoặc đường nổ từ tên và phân loại từng ô. Terrain vẫn tắt, floor rỗng.
 
-Lượt bom trên PinGround6,2 phát sinh **C2S122**, service chưa hỗ trợ nên đóng channel. Request có layout đã đối chiếu
-writer/TCP `[u32,u16,u16,u32,u8,u32]`, mẫu `FFFFFFFF,6,2,4,255,0`. `B731D0` thuộc virtual+CC của CGOGameBomb;
-caller đã đo `B73120` gửi report rồi gọi local effect. Protected property+0xA8 và getter native đềuFFFFFFFF,
-không được tự ghép thành ID bom hiện tại của server. Static có map-cell predicate và nhiều reason branch, chỉ reason4
-được đo. Đây là boundary ứng viên, chưa đủ contract để ACK, bỏ qua hoặc triển khai behavior gốc.
+[Đối chứng report122](../evidence/rust-service/g1-camp08-report122.json) đã so ô thường 6,0 với ô 6,2 từng được gắn
+nhãn tĩnh PinGround. Cả hai trả object `CGOTileGround` ở hai view; predicate lần lượt là `[0,FFFFFFFF]` và `[1,4]`.
+Do đó tên PinGround chưa xác định loại object hoặc nguyên nhân report. Actual TCP của owner có 118, rồi 122/17 byte,
+rồi 167/12 byte; report122 khớp writer `B731D0`, layout `[u32,u16,u16,u32,u8,u32]` và giá trị
+`FFFFFFFF,6,2,4,255,0`. Getter/protected property vẫn FFFFFFFF trước local effect, không được ghép tùy ý với ID server.
 
-Một corridor blast có dữ liệu ở cả hai view; blast tiếp chỉ còn view A sau B bị đóng. Không dùng phần đó chứng minh
-StrongBox hoặc đồng bộ terrain. Diagnostic tiếp giữ fail-closed và dừng chủ ý sau khi bắt writer/caller/packet;
-exit0 của diagnostic không là gameplay success. Cần association/response, current owner/round/cell guards và negative
-controls cho122 trước khi tiếp StrongBox, footprint và các loại ô còn thiếu. [Khoảng trống](../RESEARCH.md#gap-camp08-bomb-report)
-giữ phép đo kế; [PLAN](../PLAN.md#dashboard) giữ thứ tự. Camp08 và toàn G1 chưa nghiệm thu.
+Rust có `BombReport122` và parser kiểm đúng 17 byte trong `kr-wire`; fixture lấy nguyên body native, giữ đủ u32
+sentinel và từ chối body thiếu/dư. Parser chưa nối vào dispatcher hoặc quyết định gameplay. Differential/fixture và
+Rust tests chỉ kiểm implementation; client thật trong các lượt đối chứng vẫn chạy binary cũ và gặp fail-closed122.
+Không gọi parser thành response/association hoặc nghiệm thu Camp08.
+
+Phân tích tĩnh có mục tiêu nối predicate qua `B3B5D0` tới `EA08E0`. Native đã phân biệt nhánh cờ map:
+ô 6,0 có scalar và getter trả 0, ô 6,2 trả 1 ở cả hai view. Virtual `+0xD0` của CGOGameBomb là `B73290`;
+actual167 có layout `[u16,u16,u32,u16,u16]`, giá trị `0,1,29,6,2` ở A và `1,1,29,6,2` ở B. Getter serial native
+trả 29 ở cả hai. Không gọi field đầu là owner bom: hai giá trị khác nhau cho cùng bom do B đặt.
+
+Cả owner và peer đi qua writer167 rồi `E9E660` với cùng serial/tọa độ. Owner còn property FFFFFFFF lúc vào writer,
+peer đã có ID server 2; property của owner còn đổi cục bộ trước cleanup, chưa gán semantics network ID.
+Đây là effect client tự thực hiện, không chứng minh response server gốc. Các lượt vẫn dừng sau denial122 hiện hành.
+Response/association an toàn, StrongBox, terrain, kết quả/reset và đủ roster Camp08 còn mở;
+[khoảng trống](../RESEARCH.md#gap-camp08-bomb-report) giữ phép nghiệm thu kế.
