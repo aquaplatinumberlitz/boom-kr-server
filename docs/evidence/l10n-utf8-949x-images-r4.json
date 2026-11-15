@@ -1,0 +1,77 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "69bb753",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Re-runs of vi-04 and en-05 (archived as r4): A Korean 949x data with the trace exe, B Vietnamese or English UTF-8 builds of boom-re-l10n 11bc77c made with --images --allow-shape-change (vi 549 images, 0 skipped; en 339, 4 skipped for missing North American entries) and converted to 949x; B exe also replaces 39 (vi) or 40 (en) exe literals. KR 12x12 fonts with the patched Gulim copies.",
+  "observation": "No crash with the reshaped images. B lobby/room show the previously skipped buttons translated: TẠO PHÒNG, ĐI TẮT, TÙY CHỌN, SIÊU THỊ (vi) and CREATE ROOM, QUICK PLAY (en), besides the earlier ones. Korean images remain for: lobby 레벨 (vi), 칭호 UPDATE bubble (en), room slot labels 방장/준비, character tabs 전체/일반/럭셔리/슈퍼, 팀선택, 맵, 크리에이터 맵/오리지널 맵 (vi), 자동준비, the 다오 banner, 시작 on the host side. The vi-04 chat repeat at 400 ms per character stopped again after 'Xin chào các bạn 안녕하' (26 bytes, same bytes as before); the trace shows all ten non-ASCII characters, including the dropped 세, 요, ạ, reaching the composition hook.",
+  "local_evidence": [
+    {
+      "path": "local/runs/vi-04/r4/preflight.json",
+      "sha256": "94366875fc768074b4ef8b06170a781ed51920d1b3849d7b64058c07c33d25b9"
+    },
+    {
+      "path": "local/runs/vi-04/r4/native/run.json",
+      "sha256": "4ff83d7e5fe0ae4657d3f9e3b766dc10532fa5ef5e9f00d3143c9f0d2da684ae"
+    },
+    {
+      "path": "local/runs/vi-04/r4/native/B/lobby.png",
+      "sha256": "221a9da78dbe6d200f4993c70489260eb06eceeca003b1066f043f43b37eb14f"
+    },
+    {
+      "path": "local/runs/vi-04/r4/native/B/room-late.png",
+      "sha256": "9928e77fa38bc636669d36ac1291c7c7f78a3ec82efa728628fda8e973047b6c"
+    },
+    {
+      "path": "local/runs/vi-04/r4/native/A/chat-typed.png",
+      "sha256": "df59f5edf60999836cb33a3508fb9af0e329ceb26cf9c87ca604a3acd5719567"
+    },
+    {
+      "path": "local/runs/vi-04/r4/storage-export.json",
+      "sha256": "f1ef53712be086c679d6ef85c80926885fe41c3bbb5bff3970b35959c220a449"
+    },
+    {
+      "path": "local/runs/en-05/r4/preflight.json",
+      "sha256": "7e27a9013588205567891fabd572ccf1430da0f2bc3d5037f45c547aa316544d"
+    },
+    {
+      "path": "local/runs/en-05/r4/native/run.json",
+      "sha256": "7ce89e45bd2ae3faf40c38b93e76ce4b888bc4c4bf1554ffc7ae28cc4e8a7af2"
+    },
+    {
+      "path": "local/runs/en-05/r4/native/B/lobby.png",
+      "sha256": "a0bdaf91a4ca93cc79cd6523443a4f5cf39e3d492d247818202860f7ca01f4c9"
+    },
+    {
+      "path": "local/runs/en-05/r4/native/B/room-late.png",
+      "sha256": "ba34acfd2a15ae1ab5d003ef567b8bf59e24d2a1f0916ffc03683291a9f5fed4"
+    },
+    {
+      "path": "local/runs/en-05/r4/storage-export.json",
+      "sha256": "6d61396e4546bcc427a78a1604f55abc1c8570482565cef7f1c4dae67f7f5551"
+    },
+    {
+      "path": "local/l10n-data4/vi-utf8/build-report.json",
+      "sha256": "76e16635d2e31898bf3428afd96b299903e52cf099eeb9af65644a8ca1cecceb"
+    },
+    {
+      "path": "local/l10n-data4/en-utf8/build-report.json",
+      "sha256": "102984fc427e187228c2d78f4a4293452c141795edf8adc347d89376f5f4af24"
+    },
+    {
+      "path": "local/patch-949x-lit/patch-vi-trace.json",
+      "sha256": "76d86e22deead247b33eae3a59ccad4db4974fd79e6b169e12f77f9a4cf45fb6"
+    },
+    {
+      "path": "local/patch-949x-lit/patch-en-trace.json",
+      "sha256": "adf70aa7fa3f5596de735951a88cc2c4230bfd8c50586f816c0ceed700fe9842"
+    },
+    {
+      "path": "local/runs/vi-04/r4/l10n-trace-A.log",
+      "sha256": "3c595ac79b2dfa92f0363fbd26b2877a7ece6444cbef636312d82c97c966a5bb"
+    }
+  ],
+  "cleanup": "Raw export and unmount passed for both runs.",
+  "limits": "Exe literals replaced in these screens are not visible; their effect is only checked by the build (operand bytes verified). Diagnostic exe and service; Wine."
+}

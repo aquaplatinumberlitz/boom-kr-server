@@ -186,19 +186,55 @@ recipe G1 Factory r3; dữ liệu là bản dựng UTF-8 của `boom-re-l10n@11b
 Bộ Hàn UTF-8 qua 949x hiện như dữ liệu gốc ở client A của vi-04 và en-05. Đọc tĩnh và fixture Wine của bản vá ở
 [evidence tĩnh 949x](../evidence/l10n-utf8-949x-static.json).
 
+### Bổ sung sau CP310 (16/11)
+
+**Font: dùng bộ VN làm mặc định.** Bộ font VN của PopTag (`CxUni`/`CxUniBold` 12×16, `CxUniGulim` 12×15,
+`CxUniGulimBold` 12×16) giữ đủ dấu chồng của chữ hoa (`Ệ`, `Ố`, `Ầ`), còn hình mượn từ `CxUni` KR 12×12 thì mất dấu mũ
+của `Ệ` và dính dấu ở `ế`. Engine 00967 đọc khổ cao từ header nên nạp được bộ này. Gulim VN để advance 6 cho chữ Hàn rộng
+12 điểm nên chữ Hàn ở ô Gulim (chạy chữ, ô chọn người nhận chat) đè lên nhau; `tools/l10n_949x.py vnfonts` lấy advance
+của font KR cho các ô Hàn/CJK. Sau sửa, chữ Hàn và dòng trộn Hàn–Việt đọc được ở cả hai client; tiêu đề phòng
+`ỆỐẦ Việt 한국 ếộ` hiện đủ dấu. Cách mượn hình vào Gulim KR (`fonts`) giữ làm phương án dự phòng khi không dùng được bộ VN.
+Chưa thấy dòng bị cắt hay đè trong các màn đã chụp; nhãn `Số người` vẫn đè giá trị như với font KR.
+
+**Ảnh khác shape.** Dựng với `--allow-shape-change` thay được 549/549 ảnh Việt và 339 ảnh Anh (4 ảnh Anh không có bản Bắc
+Mỹ). Client không lỗi; các nút trước đây bị bỏ như `TẠO PHÒNG`, `ĐI TẮT`, `TÙY CHỌN`, `SIÊU THỊ`, `CREATE ROOM`,
+`QUICK PLAY` đã hiện. Ảnh còn chữ Hàn trong các màn đã chụp, cần vẽ: `레벨` (vi), bong bóng `칭호 UPDATE` (en), nhãn ô
+người chơi `방 장`/`준 비`, tab nhân vật `전체`/`일반`/`럭셔리`/`슈퍼`, `팀선택`, `맵`, `크리에이터 맵`/`오리지널 맵` (vi),
+`자동준비`, banner `다오` và nút `시 작` của chủ phòng (en).
+
+**Chuỗi cứng trong exe.** Catalog có 134 dòng `exe:kr-full.exe`; 81 dòng là tên cấm giữ tiếng Hàn. Bảng
+[`tools/l10n_949x_exe_literals.json`](../../tools/l10n_949x_exe_literals.json) ghi 40 chuỗi và 45 operand trỏ tới chúng
+(xref IDA trên bản sao). `tools/l10n_949x_patch.py --lang vi|en` đặt bản dịch 949x vào section `.l10n` và sửa operand sau
+khi kiểm đúng địa chỉ cũ. Các tham chiếu đưa vào `0x409AD0` bị loại vì đó là danh sách tiêu đề cửa sổ của phần mềm tiệm
+net mà client so với chương trình khác, dịch sẽ làm hỏng phép so. Các consumer còn lại đã đọc tạo `std::string`, định dạng vào
+chuỗi động, cấp phát theo `strlen` hoặc vẽ trực tiếp, nên chuỗi dài hơn không chép vào bộ đệm cố định. Các màn đã chụp không chứa chuỗi nào
+trong 40 chuỗi này, nên chưa thấy chúng trên màn hình.
+
+**Gõ tên phòng.** Client chặn sửa tên khi chuỗi định danh của người chơi rỗng: handler đăng nhập `0x10FD540` đọc theo
+từng người chơi `u32 id`, tên, một `u8` rồi chuỗi định danh vào `CSelfInfo+0x21C`, và `0x13B2320` báo
+`CannotChangeTitleByNoNexonId` khi chuỗi này rỗng. Dịch vụ Rust thêm cấu hình chẩn đoán
+`account_admission.diagnostic_identity_strings` (mặc định rỗng, theo tên hiển thị) để điền chuỗi đó cho tài khoản thử;
+thứ tự và cách mã hóa trường không đổi. Với tài khoản thử, ô tên phòng nhận gõ; server nhận create81
+`Phòng Việt 한국` (17 byte) và `ỆỐẦ Việt 한국 ếộ` (22 byte) dạng 949x, client Hàn hiện đúng tên đó.
+
+**Chat bị cắt: chưa rõ nguyên nhân.** Bản trace ghi mọi ký tự tới dưới dạng `WM_CHAR` và mọi ký tự ngoài ASCII được tiêm
+thành composition, nhưng ô chat bỏ cả một đoạn liên tiếp, kể cả ký tự ASCII, ở vị trí khác nhau giữa các lượt (đầu, giữa
+hoặc cuối chuỗi). Lặp lại chậm hơn (400 ms mỗi ký tự) ở lượt vi-04 vẫn dừng ở cùng 26 byte. Vì ký tự ASCII cũng mất, nghi
+khóa nhập của hệ ô nhập `0x1514A29` (trường `+0x24`, bỏ cả `WM_CHAR` lẫn composition khi lớn hơn 0) bị giữ trong một
+khoảng; phép đo tiếp là đặt watchpoint lên trường đó trong lượt chat.
+
+Evidence: [ảnh và chuỗi exe](../evidence/l10n-utf8-949x-images-r4.json), [tên phòng, font và chat](../evidence/l10n-utf8-949x-title-font.json).
+
 ### Giới hạn và việc còn lại
 
 - **Tiệm chưa tới được.** Nút tiệm ở phòng chỉ hiện tooltip `Đến Siêu thị`; dịch vụ Rust chưa có tiệm.
 - **Chat chưa chuyển tiếp.** Dịch vụ Rust từ chối opcode chat 18 (`lobby_request_denied`) và đóng kết nối sảnh, nên chưa
-  thấy chat chéo giữa hai client; chữ trộn đã thấy ở tên phòng và ô nhập. Ở vi-04, ô chat chỉ nhận 26 byte đầu, chưa rõ
-  vì sao; en-05 nhận đủ 32 byte.
-- **Sửa tên phòng bị luật game chặn**: client báo `Không thể sửa Tên phòng khi chưa đăng ký ID email`. Tên phòng chỉ đổi
-  được khi tài khoản có cờ đó; chưa thử.
+  thấy chat chéo giữa hai client; chữ trộn đã thấy ở tên phòng và ô nhập. Ô chat còn bỏ từng đoạn nhập (mục trên).
+- **Sửa tên phòng** cần chuỗi định danh của tài khoản; mới có cho tài khoản thử qua cấu hình chẩn đoán (mục trên).
 - **Tên phòng tối đa 22 byte.** Hai trong sáu tên phòng mặc định tiếng Việt dài 26 và 27 byte trong 949x
   (`DefaultRoomTitle1`, `DefaultRoomTitle2`); khi client chọn ngẫu nhiên trúng hai tên này, nút xác nhận tắt (lượt vi-01).
   Dữ liệu cần câu ngắn hơn. Tương tự, nhãn `ChatToAll` tiếng Việt `<Gởi cho tất cả>` không hiện trong hộp chọn; bản Anh `<To All>` hiện được.
-- **Ảnh còn chữ Hàn** ở những ảnh chưa dịch (`needs_translation`): `방만들기`, `바로시작`, `메 뉴`, `상 점` (bản Việt), `레벨`,
-  nhãn ô người chơi `방 장`/`준 비`, các tab nhân vật, `팀선택`, `시 작`, `자동준비`.
+- **Ảnh còn chữ Hàn**: danh sách cần vẽ ở mục bổ sung phía trên.
 - **Chữ do server gửi và chữ cứng trong exe** (thông báo chạy chữ, nhắc trong ô chat phòng) vẫn tiếng Hàn. Tên map ở phòng
   lấy từ dữ liệu map server gửi (client ghi đè `fxdynmapinfo.ssd`), nên là `Factory07`.
 - **Nhãn tràn**: `Số người` đè lên giá trị ở khung map.
