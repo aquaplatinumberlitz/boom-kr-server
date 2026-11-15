@@ -1,0 +1,56 @@
+{
+  "schema": "kre-camp08-map-cancellation-v1",
+  "checkpoint": "CP309",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+  "scope": "Nguồn cờ khởi tạo native và policy Rust hủy placement theo map, bounded122 không có authority; hai vòng/reset và Start kế. Chưa nghiệm thu terrain hoặc full Camp08/G1.",
+  "environment": {
+    "service_sha256": "67a895ccc18448b52183fb1fc8d12748301bd2e63d6f0b9215aacd14c3ac2125",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "map_payload_sha256": "80dc0d8c655a83e7397fb9e0d7977788c42547b632c32edb85659bcbf2520144",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "network": "Wine với LAN/relay xác thực ảo cô lập; không Internet hoặc load acceptance."
+  },
+  "native_initial_flags": {
+    "path": "local/research/codex/g1-camp08-condition-native-r7/initial-flag-verification.json",
+    "bytes": 104323,
+    "sha256": "a115db4f61249d92036827f843c4d966ba5206728e873f89f4216c61f1a7b4eb"
+  },
+  "native_policy": {
+    "path": "local/research/codex/g1-camp08-cancellation-native-r2/policy-verification.json",
+    "bytes": 49234,
+    "sha256": "1b9814e4d758b02927cc51ad51443dde92a260d7899d3c907f267a7bc6ab47a6"
+  },
+  "native_recipe_failure": {
+    "path": "local/research/codex/g1-camp08-cancellation-native-r1/partial-verification.json",
+    "bytes": 1071,
+    "sha256": "fb1b5c80cb1a760c90dd9bd69bb6e79021645a36c35d68212dcf3c511455557b"
+  },
+  "implementation": {
+    "path": "local/research/codex/g1-map-bomb-rules-source-verification.json",
+    "bytes": 2598,
+    "sha256": "35d209e9c6f48b4ca4299daf30882b373388c2d16d6a71ccb265973543882def"
+  },
+  "static_source": {
+    "path": "local/research/codex/g1-camp08-map-flag-r1/reuse.json",
+    "bytes": 1547,
+    "sha256": "3715feee70e0fe4c45f966caa3ae39826b2c0b320be9c96d9296071038814dff"
+  },
+  "provenance": {
+    "client_flag_source": "kr_runtime confirmed",
+    "server_policy": "design; không recovered original-server response",
+    "test_scope": "207 tests Rust, fmt/clippy/locked build; không thay native acceptance"
+  },
+  "limits": [
+    "Design policy compatibility on two KR/Wine accounts, isolated LAN/authenticated relay, chosen map/cell/route only. Not recovered original-server response or full Camp08/G1/Internet acceptance.",
+    "R2 preflight remapper omitted game paths; inherited run1 preflight and sealed source pins independently reverified, actual runtime exe hashes match. This post-run inheritance verification does not rewrite or claim those were included in r2 preflight.",
+    "Native immediate local PinGround effect bubbles/kills B; normal-bomb positive uses live A. No 159/158 was allocated for cancelled requests; four ordinary allocations completed at both native consumers.",
+    "Malformed/stale/member/map/budget isolation are automated regression controls, not native raw freshness. Report122 lacks epoch/serial; never changes bomb/terrain/result authority.",
+    "Camp08 terrain remains disabled with empty floor. StrongBox/Herb/Line/MissileBase, item/drop and roster coverage remain open."
+  ],
+  "native_journal": {
+    "path": "local/research/codex/g1-camp08-cancellation-native-r2/journal-verification.json",
+    "bytes": 2088,
+    "sha256": "82d075793f1271c7688cdaae7fa704553ef13a2acbf093921ae307c4102c2ad8"
+  }
+}

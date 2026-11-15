@@ -75,7 +75,7 @@ M4 Free 1v7 là giới hạn đã biết; M7/G1/M6/M8 và điều kiện bàn gi
 <a id="gap-client-utf8"></a>
 ### UTF-8: phần còn mở sau bản vá 949x
 
-[Bản vá 949x](content/client-language.md#utf8) (CP307) đã hiện chữ ba ngôn ngữ và nhận chữ Việt/Hàn ở chat trên client
+[Bản vá 949x](content/client-language.md#utf8) (CP310) đã hiện chữ ba ngôn ngữ và nhận chữ Việt/Hàn ở chat trên client
 chẩn đoán. Câu hỏi còn mở và phép kiểm tối thiểu:
 
 - Chat chuyển tiếp: cần dịch vụ có opcode 18 rồi chạy lại lượt hai client, xem chữ trộn ở ô chat của client kia.
@@ -159,18 +159,27 @@ trước đóng QueueExpired trước mainDisconnected; run tách preboot không
 chưa xác định. Chỉ mở chẩn đoán tiếp nếu tái hiện hoặc cần budget M8; không patch JSON downstream.
 
 <a id="gap-camp08-bomb-report"></a>
-### Camp08: report122 và local effect trước network identity
+### Camp08: report122 trước network identity và response theo vòng đời
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ layout122/167, property sentinel, cờ map và
+policy Rust. Native khởi tạo đã đối chiếu cả 195 cờ ở hai view với dữ liệu TileInfo: bốn ô hủy bom đã xác định;
+không lặp seed, writer/getter, serial, RTTI hoặc nguồn cờ nếu không có discrepancy mới.
+Server tự quyết cancellation từ map đã ràng buộc hash, trước allocation; report122 không có quyền sửa ledger.
+Đây là policy design, chưa biết response server gốc. Packet không có serial/epoch nên raw freshness vẫn unknown;
+kiểm authority isolation thay vì ghép sentinel với ID active. Tests đã kiểm serial lặp/xung đột, ngân sách hữu hạn,
+owner/key/member, map đang chọn và hai vòng/reset. Native binary mới đã kiểm riêng cancellation không tạo
+ghost 159/158, bom thường trước/sau hoàn tất ở hai view,
+hai kết quả/reset và Start kế. Giữ rõ malformed/variant/budget/phase là kiểm implementation, không phải toàn
+protocol hoặc nguyên bản server. Raw freshness vẫn không xác định; report cũ không có quyền sửa ledger.
 
-[Seed/native và boundary](protocol/terrain.md#rust-camp08-boundary) đã có Start/spawn/195flags trên hai view,
-nhưng chỉ là trạng thái ban đầu. Không lặp seed khi không có discrepancy mới. Blocker mới: actual122 sau placement
-trên PinGround khiến service đóng channel; writer có protected propertyFFFFFFFF, caller gửi report rồi local cleanup.
-Không sửa parser JSON xuất hiện sau disconnect hoặc bỏ qua122 để lấy run xanh.
+Tiếp StrongBox01/02, Herb/Line và MissileBase của Camp08 theo đúng cạnh runtime;
+không suy durability, footprint hoặc ray termination từ tên, TileInfo hay ground flags. Terrain và floor Camp08
+vẫn tắt khi chưa đủ bằng chứng; Tomb12 và coverage roster/item còn theo PLAN. Codex sở hữu nhánh G1, L1 của Claude
+không bị thay đổi bởi các phép đo này.
 
-Cần xác định association với bomb pending/current, thời điểm response và effect ở owner/peer. Kiểm ownership,
-current phase/round/cell, malformed/duplicate/stale/reconnect và kết quả/reset theo acceptance; report không mang
-đủ generation đã đo thì ghi rõ giới hạn, không gọi policy nội bộ là raw freshness. Tiếp StrongBox01/02 sau khi
-response path có native hai view, rồi Herb/Line/PinGround và static footprint còn thiếu. Seed/TileInfo không tự chứng
-minh durability hoặc hazard. Không mở broadRE ngoài đường đang chặn implementation/nghiệm thu này.
+Lỗi QueueExpired trước map đã tái hiện trong một lượt đo; raw được giữ, removal/missing membership xảy ra sau denial.
+Passive observer thấy DB thread ở `wait_current_trans`; nguyên nhân đầy đủ vẫn candidate. Một lượt tách khỏi full
+history/build tới được mục tiêu. Theo dõi storage/scheduling ở M8 hoặc khi cản lát kế, không sửa JSON downstream
+hay nới timeout từ suy đoán. Lỗi Wine/debugger trước login được tách khỏi lỗi report122; retry có giới hạn log ở harness.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster
@@ -254,7 +263,7 @@ Bảng được [coverage](COVERAGE.md) trích tự động để tra theo chứ
 
 | ID | Khoảng trống hiện hành | Phép kiểm tối thiểu |
 |---|---|---|
-| <a id="gap-process-patch"></a>KR-B001 | [CP179](PROTOCOL.md#bootstrap-recipe-scope): K1 đạt riêng offlineR2 từ3coldstart/API đúngPID/contract-controls; K0CP178 giữ. Không originalWindowsbootstrap hoặc3e9coldstart. | Cold3R2 đã giải, không đo lại. WiderWCP/launcher/config còn ở #2; currente9input/state bridge và livecodec theo PLAN/#3, chỉ mở bootstrapcause nếu có trigger mới. [L1 UTF-8](RESEARCH.md#gap-client-utf8): bản vá 949x đạt một phần trên client chẩn đoán (CP307), không suy từ gate K0/K1. |
+| <a id="gap-process-patch"></a>KR-B001 | [CP179](PROTOCOL.md#bootstrap-recipe-scope): K1 đạt riêng offlineR2 từ3coldstart/API đúngPID/contract-controls; K0CP178 giữ. Không originalWindowsbootstrap hoặc3e9coldstart. | Cold3R2 đã giải, không đo lại. WiderWCP/launcher/config còn ở #2; currente9input/state bridge và livecodec theo PLAN/#3, chỉ mở bootstrapcause nếu có trigger mới. [L1 UTF-8](RESEARCH.md#gap-client-utf8): bản vá 949x đạt một phần trên client chẩn đoán (CP310), không suy từ gate K0/K1. |
 | <a id="gap-wcp-config"></a>KR-B002 | Fixture tổng hợp đã qua guard; oneclickuser/+E9C và dữ liệu/cache thật chưa đủ. | Chỉ mở consumer/config đang chặn runtime; so nhánh với và không tham số trên cùng copy, không đo lại +E78 đã giải. |
 | <a id="gap-socket-codec"></a>KR-B003 | [CP181](PROTOCOL.md#login-retry-codec) actualsameprocessretry/reset/authcursor + CP180stream/CRC + CP057boundednativeoracle đủ K2profile theo PLAN. Fullgrammar/prefixguardon/modes/headerauth/capenforcement/FFFFFFFF giữ unknown. | Codec backlog theo trigger K3; không lặp solvedretry/closeonly/HWwatchpoint/76modelsplit. Accountresume thuộc identity/lifecycle, không tự thêm gate. |
 | <a id="gap-auth-identity"></a>KR-L001 | [CP073](PROTOCOL.md#launcher-error-attribution): auxiliarylocale1,0 valid/init0→2000:0/noTCP; main currentA/Bactual67 positive. HistoricalmainSIGABRT/HTTPstartupcause vẫn unknown, không gánpopup là root. [CP217](PROTOCOL.md#auth-admission-prototype) valid/invalid32token cóproof; [CP223](PROTOCOL.md#auth-session-lifecycle) thêm endpoint-accountremap; [CP225](PROTOCOL.md#auth-fresh-process) freshprocesspositive/badtokennegative đã đo, sameprocessfatal/healthyEOFbefore17/fullidentityauthority vẫn mở. | Theo[PLAN](PLAN.md#current-order) tiếp RustM2haiidentity/phòng với bindings rõ; không mở lại authRE đã blocked hoặc tìm lại auth137/135/string/cache. Trace mainfail chỉ khi thực sự chặn. Providerinit sâu chỉ mở khi thực sự chặn main, chưa phải trọng tâm chơi. |

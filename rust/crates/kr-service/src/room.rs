@@ -37,6 +37,7 @@ pub struct Member {
     late_after_abort: u16,
     opaque123: u16,
     opaque167: u16,
+    bomb_reports122: u8,
     // Visit budget, deliberately not reset by Start or round completion.
     diagnostic59: u8,
     opaque142: u16,
@@ -410,6 +411,7 @@ impl Room {
                 late_after_abort: 0,
                 opaque123: 0,
                 opaque167: 0,
+                bomb_reports122: 0,
                 diagnostic59: 0,
                 opaque142: 0,
                 loading79: false,
@@ -576,6 +578,7 @@ impl Room {
         for member in self.members.values_mut() {
             member.opaque123 = 0;
             member.opaque167 = 0;
+            member.bomb_reports122 = 0;
             member.opaque142 = 0;
             member.loading79 = false;
             member.life.begin();
@@ -870,6 +873,19 @@ impl Room {
             return Err(io::Error::other("diagnostic59 visit budget"));
         }
         member.diagnostic59 += 1;
+        Ok(())
+    }
+    /// Bounded observation only: report122 has no serial or epoch and can
+    /// never identify, complete, or release a server bomb allocation.
+    pub(crate) fn observe_bomb122(&mut self, key: Membership) -> io::Result<()> {
+        if !self.current(key) || !matches!(self.phase, Phase::Armed { .. }) {
+            return Err(io::Error::other("bomb122 current armed member required"));
+        }
+        let member = self.members.get_mut(&key.identity).expect("current member");
+        if member.bomb_reports122 >= 64 {
+            return Err(io::Error::other("bomb122 observation budget"));
+        }
+        member.bomb_reports122 += 1;
         Ok(())
     }
     /// Known167 sizes, semantics unknown; isolated no-response budget.

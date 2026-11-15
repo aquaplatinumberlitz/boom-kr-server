@@ -627,21 +627,49 @@ Getter emulation tách khỏi native; không có nghiệm thu Windows, Internet 
 
 
 <a id="rust-camp08-boundary"></a>
-## Camp08: seed ban đầu và report bom còn chặn terrain
+## Camp08: seed, điều kiện report bom và giới hạn phục vụ
 
-[Bằng chứng và giới hạn](../evidence/rust-service/g1-camp08-boundary.json) giữ capture/native, getter emulation,
-source-first và failed runs riêng. Trên cùng Rust binary đã đo, hai account KR/Wine đọc Start và spawn gốc Camp08,
-lookup tên/mã đúng và cùng195flags ở clock. Ô12,11 có flag chặn dù candidate là ground, cạnh object MissileBase;
-không dùng phân loại từng ô hoặc tên để suy footprint, durability và đường nổ. Terrain server vẫn tắt, floor rỗng.
+[Bằng chứng seed và blocker ban đầu](../evidence/rust-service/g1-camp08-boundary.json) giữ Start/spawn/195 flags
+trên hai account KR/Wine, getter emulation và các run lỗi. Ô 12,11 có flag chặn dù candidate là ground, cạnh
+MissileBase; không suy footprint, durability hoặc đường nổ từ tên và phân loại từng ô. Terrain vẫn tắt, floor rỗng.
 
-Lượt bom trên PinGround6,2 phát sinh **C2S122**, service chưa hỗ trợ nên đóng channel. Request có layout đã đối chiếu
-writer/TCP `[u32,u16,u16,u32,u8,u32]`, mẫu `FFFFFFFF,6,2,4,255,0`. `B731D0` thuộc virtual+CC của CGOGameBomb;
-caller đã đo `B73120` gửi report rồi gọi local effect. Protected property+0xA8 và getter native đềuFFFFFFFF,
-không được tự ghép thành ID bom hiện tại của server. Static có map-cell predicate và nhiều reason branch, chỉ reason4
-được đo. Đây là boundary ứng viên, chưa đủ contract để ACK, bỏ qua hoặc triển khai behavior gốc.
+[Đối chứng report122](../evidence/rust-service/g1-camp08-report122.json) đã so ô thường 6,0 với ô 6,2 từng được gắn
+nhãn tĩnh PinGround. Cả hai trả object `CGOTileGround` ở hai view; predicate lần lượt là `[0,FFFFFFFF]` và `[1,4]`.
+Do đó tên PinGround chưa xác định loại object hoặc nguyên nhân report. Actual TCP của owner có 118, rồi 122/17 byte,
+rồi 167/12 byte; report122 khớp writer `B731D0`, layout `[u32,u16,u16,u32,u8,u32]` và giá trị
+`FFFFFFFF,6,2,4,255,0`. Getter/protected property vẫn FFFFFFFF trước local effect, không được ghép tùy ý với ID server.
 
-Một corridor blast có dữ liệu ở cả hai view; blast tiếp chỉ còn view A sau B bị đóng. Không dùng phần đó chứng minh
-StrongBox hoặc đồng bộ terrain. Diagnostic tiếp giữ fail-closed và dừng chủ ý sau khi bắt writer/caller/packet;
-exit0 của diagnostic không là gameplay success. Cần association/response, current owner/round/cell guards và negative
-controls cho122 trước khi tiếp StrongBox, footprint và các loại ô còn thiếu. [Khoảng trống](../RESEARCH.md#gap-camp08-bomb-report)
-giữ phép đo kế; [PLAN](../PLAN.md#dashboard) giữ thứ tự. Camp08 và toàn G1 chưa nghiệm thu.
+Rust có `BombReport122` và parser kiểm đúng 17 byte trong `kr-wire`; fixture lấy nguyên body native và giữ đủ u32
+sentinel. [Bằng chứng cờ khởi tạo và policy phục vụ](../evidence/rust-service/g1-camp08-cancellation.json) tách nguồn
+client khỏi lựa chọn server. Tại khởi tạo, `EA1EE0` gọi `1363D90` sao 72 byte TileInfo; `ED2350` kiểm type 0 và
+signed short tại offset 62 lớn hơn hoặc bằng 10000, rồi `EA5080` ghi cờ map. Native hai view xác nhận toàn bộ 195
+cờ khởi tạo: chỉ các ô `(2,5)`, `(6,2)`, `(6,12)`, `(10,9)` bật. TileInfo của chúng là `Tile16_Ground/PinGround01`,
+code 2820, footprint 1×1. Đây là bằng chứng từ dữ liệu và consumer khởi tạo, không suy luật từ tên tile.
+
+Policy Rust là **design**: mỗi map choice có `bomb_cancellation` tùy chọn, ràng buộc SHA-256 payload map, tọa độ
+không trùng và nằm trong 13×15. C2S118 vẫn phải qua current membership, round key, owner/slot, power, serial,
+capacity và cell guards. Ô bật policy chỉ tiêu thụ serial; không cấp wire ID, không chiếm quota, không phát 159
+hoặc hẹn 158. Tối đa 64 serial bị hủy cho mỗi membership trong một vòng; Start mới xóa tombstone.
+
+C2S122 chỉ được quan sát cho variant `FFFFFFFF,row,column,4,255,0`, tại ô được bật của map đang chọn và current
+member. Armed có ngân sách 64 report mỗi người mỗi vòng; Ending/Idle sau kết quả dùng ngân sách tail hiện hành.
+Report không tạo ACK, không sửa terrain, không hoàn tất hoặc giải phóng bất kỳ allocation nào. Vì packet không
+mang serial/epoch, không chứng minh được raw freshness; ngay cả report cũ cùng ô cũng không có quyền tác động bom
+mới. Chuyển map sang choice không có policy giữ fail-closed122. Tests tự động kiểm isolation, serial, map, member,
+ngân sách và reset; nghiệm thu native binary mới được ghi riêng trong evidence, không suy từ tests.
+
+Phân tích tĩnh có mục tiêu nối predicate qua `B3B5D0` tới `EA08E0`. Native đã phân biệt nhánh cờ map:
+ô 6,0 có scalar và getter trả 0, ô 6,2 trả 1 ở cả hai view. Virtual `+0xD0` của CGOGameBomb là `B73290`;
+actual167 có layout `[u16,u16,u32,u16,u16]`, giá trị `0,1,29,6,2` ở A và `1,1,29,6,2` ở B. Getter serial native
+trả 29 ở cả hai. Không gọi field đầu là owner bom: hai giá trị khác nhau cho cùng bom do B đặt.
+
+Cả owner và peer đi qua writer167 rồi `E9E660` với cùng serial/tọa độ. Owner còn property FFFFFFFF lúc vào writer,
+peer đã có ID server 2; property của owner còn đổi cục bộ trước cleanup, chưa gán semantics network ID.
+Đây là effect client tự thực hiện, không chứng minh response server gốc. Các lượt đối chứng trước policy Rust
+dừng có chủ đích sau denial122 của binary cũ.
+Policy map-owned cancellation đã kiểm native hai account: mỗi vòng có một placement bị hủy, actual122 được quan sát,
+không có 159/158 cho placement đó; bom thường trước và sau vẫn hoàn tất consumer ở cả hai view. Hai kết quả/reset
+và Start thứ ba đã chạy. Lượt đầu lỗi recipe do thử di chuyển B sau local effect gây nhốt/chết; raw giữ nguyên,
+lượt sau dùng A còn sống cho positive. Không suy toàn bộ tác động PinGround lên nhân vật hoặc response server gốc.
+StrongBox, terrain/floor/drop/item và đủ roster Camp08 còn mở;
+[khoảng trống](../RESEARCH.md#gap-camp08-bomb-report) giữ phép nghiệm thu kế.

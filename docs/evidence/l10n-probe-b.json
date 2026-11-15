@@ -1,0 +1,435 @@
+{
+  "schema": "kre-lprobe-b-v1",
+  "checkpoint": "CP308",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/421",
+  "canonical": "docs/content/client-language.md#data-files",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Native diagnostic L-probe-b variants0–5 plus bounded UI controls; text/image/data-load observations only. No UTF8/L1/G1 or production acceptance.",
+  "baseline": "dec0bcdee54cb6792423e18f790cc1be8a974193",
+  "environment": {
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "service_sha256": "cbe310445ad0ae2e9675632b54eb44a9342eea5dba5aaf2ba9fcccabdadef4d1",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "network": "Private Wine/LAN/relay namespaces, no external game endpoint; common Wine lease checked by harness. Fresh account sessions and copied Wine prefixes, no match/account resume."
+  },
+  "source_reuse": {
+    "path": "local/research/codex/l-probe-b-inputs-r1/reuse.json",
+    "bytes": 861,
+    "sha256": "e5d09636439d41e9377bbb9ef9d3069e910c5fd01738b4518c18cb37a5a9b746"
+  },
+  "build": {
+    "path": "local/research/codex/l-probe-b-inputs-r1/build-verification.json",
+    "bytes": 19647,
+    "sha256": "38157c2e3684df10a33058093f592794ea376545c567d5fd14a540190eef34ea"
+  },
+  "matrix": {
+    "path": "local/research/codex/l-probe-b-inputs-r1/matrix-verification.json",
+    "bytes": 17048,
+    "sha256": "b3edeb58ec827a8c2470ca598fcfd5a7ce61dfe1d185a9ab5234db605b2f4f5c"
+  },
+  "manual_ui": {
+    "path": "local/research/codex/l-probe-b-inputs-r1/manual-ui-review.json",
+    "bytes": 2703,
+    "sha256": "684882e24b4378c1a9b904c34f3e2250f73382120b506a6e560b00b2b1573e85"
+  },
+  "crc": {
+    "path": "local/research/codex/l-probe-b-native-4/crc-verification.json",
+    "bytes": 3346,
+    "sha256": "f19510d120e79cfb84f025bd448187c57c329b79991a4ac7bca7e71bd0093523"
+  },
+  "run_matrix": [
+    {
+      "label": "0",
+      "variant": 0,
+      "run_sha256": "dd5a039ad8212d46b127363804238bbd6c94808282ee37175d48b187d2eef8ae",
+      "raw_verified": 53,
+      "verification": {
+        "path": "local/research/codex/l-probe-b-native-0/verification.json",
+        "bytes": 3010,
+        "sha256": "8b6fb0ac786d192a30224c3ace7e11cacd3717ecb9357eb12e527eea9b580e0c"
+      },
+      "seal": {
+        "path": "local/research/codex/l-probe-b-native-0/native/raw-seal.json",
+        "bytes": 11428,
+        "sha256": "4886cdc1df11beb471975d924146dc44f43d906201554e7e5b39e9966012a4e2"
+      },
+      "native_lobby": true,
+      "native_room": false,
+      "cache_matches_actual238": [
+        {
+          "role": "A",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        },
+        {
+          "role": "B",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        }
+      ],
+      "target_changes": [],
+      "limits": "Stock/shop/mission not observed; route0c/3/4/5 validates room via native player parsing and screenshot. File events alone not consumer acceptance."
+    },
+    {
+      "label": "0b",
+      "variant": 0,
+      "run_sha256": "d6c2b968631efa776e94f6b1bd8b22f3f98365b4b4cdcb9d9055c3fdf4e62130",
+      "raw_verified": 59,
+      "verification": {
+        "path": "local/research/codex/l-probe-b-native-0b/verification.json",
+        "bytes": 3220,
+        "sha256": "8ec5f6cac802d7f315c62189dfe096eb4a5fdac5e0fdc7bc6270f4a68b8df43a"
+      },
+      "seal": {
+        "path": "local/research/codex/l-probe-b-native-0b/native/raw-seal.json",
+        "bytes": 12760,
+        "sha256": "10ba2e9c6e07a01beca26338ba1e9eb2150ac01ef58e8e031be44645428ae236"
+      },
+      "native_lobby": true,
+      "native_room": false,
+      "cache_matches_actual238": [
+        {
+          "role": "A",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        },
+        {
+          "role": "B",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        }
+      ],
+      "target_changes": [],
+      "limits": "Stock/shop/mission not observed; route0c/3/4/5 validates room via native player parsing and screenshot. File events alone not consumer acceptance."
+    },
+    {
+      "label": "0c",
+      "variant": 0,
+      "run_sha256": "7a045b3bb3ff3e632f567fc77ae10b742c6e7166a5ba716b5a292207532183af",
+      "raw_verified": 67,
+      "verification": {
+        "path": "local/research/codex/l-probe-b-native-0c/verification.json",
+        "bytes": 3065,
+        "sha256": "07d82daeafa4a07a54059861a38f7a0fcf549ca12d8eb00c085936c0683afc02"
+      },
+      "seal": {
+        "path": "local/research/codex/l-probe-b-native-0c/native/raw-seal.json",
+        "bytes": 14609,
+        "sha256": "bbc934baea9d4fc6ca6948009f5036dc8804f237dc3cbb48bdd748a9a0cf5a13"
+      },
+      "native_lobby": true,
+      "native_room": true,
+      "cache_matches_actual238": [
+        {
+          "role": "A",
+          "wire238_sha256": "4af0e20e6b8a926cb5194b09a4c30bfebd2701d3436227c292007686388844ac",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        },
+        {
+          "role": "B",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        }
+      ],
+      "target_changes": [],
+      "limits": "Stock/shop/mission not observed; route0c/3/4/5 validates room via native player parsing and screenshot. File events alone not consumer acceptance."
+    },
+    {
+      "label": "1b",
+      "variant": 1,
+      "run_sha256": "39360514344175ef598aa9e5f03dfe25d82951238982ebdff2e8263239454375",
+      "raw_verified": 59,
+      "verification": {
+        "path": "local/research/codex/l-probe-b-native-1b/verification.json",
+        "bytes": 3888,
+        "sha256": "9a819812b67bcd081d93cea3a0f5ff41bf6c887fba7a4a07c0c949c0fe81f508"
+      },
+      "seal": {
+        "path": "local/research/codex/l-probe-b-native-1b/native/raw-seal.json",
+        "bytes": 12760,
+        "sha256": "440cfed07215ffc0cb7709c41e567f586f19bc6a54f50172e281bb4d9d0ac461"
+      },
+      "native_lobby": true,
+      "native_room": false,
+      "cache_matches_actual238": [
+        {
+          "role": "A",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        },
+        {
+          "role": "B",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        }
+      ],
+      "target_changes": [
+        {
+          "role": "A",
+          "name": "fxdynmapinfo.ssd",
+          "before": {
+            "bytes": 14173,
+            "sha256": "28a06947955745ee8f2b78ff48558bcda131cbb1161a9947393945a7cbbbc701"
+          },
+          "after": {
+            "bytes": 71,
+            "sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+          }
+        },
+        {
+          "role": "B",
+          "name": "fxdynmapinfo.ssd",
+          "before": {
+            "bytes": 14173,
+            "sha256": "28a06947955745ee8f2b78ff48558bcda131cbb1161a9947393945a7cbbbc701"
+          },
+          "after": {
+            "bytes": 71,
+            "sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+          }
+        }
+      ],
+      "limits": "Stock/shop/mission not observed; route0c/3/4/5 validates room via native player parsing and screenshot. File events alone not consumer acceptance."
+    },
+    {
+      "label": "2",
+      "variant": 2,
+      "run_sha256": "6ecca7fabe3dc3459139ef32cb3eee23d8e47c6bee455b9499def437b1ebb0cf",
+      "raw_verified": 59,
+      "verification": {
+        "path": "local/research/codex/l-probe-b-native-2/verification.json",
+        "bytes": 3886,
+        "sha256": "7eab066a5309fa20c5d97b222dd9f44f73daedf150d9141b9cec3f3e4decaace"
+      },
+      "seal": {
+        "path": "local/research/codex/l-probe-b-native-2/native/raw-seal.json",
+        "bytes": 12880,
+        "sha256": "3eaf1c237ee7d70aef7a19f9578e725f71c693fff00e66364a384a263738b7cf"
+      },
+      "native_lobby": true,
+      "native_room": false,
+      "cache_matches_actual238": [
+        {
+          "role": "A",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        },
+        {
+          "role": "B",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        }
+      ],
+      "target_changes": [
+        {
+          "role": "A",
+          "name": "fxdynmapinfo.ssd",
+          "before": {
+            "bytes": 14288,
+            "sha256": "47a0e16ce7c9184ad691e0d4aac9deca94867c4a61e4c98511d350081179482a"
+          },
+          "after": {
+            "bytes": 71,
+            "sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+          }
+        },
+        {
+          "role": "B",
+          "name": "fxdynmapinfo.ssd",
+          "before": {
+            "bytes": 14288,
+            "sha256": "47a0e16ce7c9184ad691e0d4aac9deca94867c4a61e4c98511d350081179482a"
+          },
+          "after": {
+            "bytes": 71,
+            "sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+          }
+        }
+      ],
+      "limits": "Stock/shop/mission not observed; route0c/3/4/5 validates room via native player parsing and screenshot. File events alone not consumer acceptance."
+    },
+    {
+      "label": "3",
+      "variant": 3,
+      "run_sha256": "a4c3ef3f6c7b464941033bf259af8b7b07c6ff9cc258bc8cb9f54fbbb7e3d0ca",
+      "raw_verified": 67,
+      "verification": {
+        "path": "local/research/codex/l-probe-b-native-3/verification.json",
+        "bytes": 3731,
+        "sha256": "5e0db326ea7b841ee9e6c1aee6829ed5569cd14a1ce02896b8d5c0740f331880"
+      },
+      "seal": {
+        "path": "local/research/codex/l-probe-b-native-3/native/raw-seal.json",
+        "bytes": 14542,
+        "sha256": "20c1e90cc89b1ba8ccb10fbe165f8e8e8a29746b62ae274b084fb5d0c49c9941"
+      },
+      "native_lobby": true,
+      "native_room": true,
+      "cache_matches_actual238": [
+        {
+          "role": "A",
+          "wire238_sha256": "4af0e20e6b8a926cb5194b09a4c30bfebd2701d3436227c292007686388844ac",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        },
+        {
+          "role": "B",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        }
+      ],
+      "target_changes": [
+        {
+          "role": "A",
+          "name": "fxdynmapinfo.ssd",
+          "before": {
+            "bytes": 14288,
+            "sha256": "47a0e16ce7c9184ad691e0d4aac9deca94867c4a61e4c98511d350081179482a"
+          },
+          "after": {
+            "bytes": 71,
+            "sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+          }
+        },
+        {
+          "role": "B",
+          "name": "fxdynmapinfo.ssd",
+          "before": {
+            "bytes": 14288,
+            "sha256": "47a0e16ce7c9184ad691e0d4aac9deca94867c4a61e4c98511d350081179482a"
+          },
+          "after": {
+            "bytes": 71,
+            "sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+          }
+        }
+      ],
+      "limits": "Stock/shop/mission not observed; route0c/3/4/5 validates room via native player parsing and screenshot. File events alone not consumer acceptance."
+    },
+    {
+      "label": "4",
+      "variant": 4,
+      "run_sha256": "6e532fbf53744052271d240c00b5abbd10dd6c721016afa91518c9d238973af1",
+      "raw_verified": 67,
+      "verification": {
+        "path": "local/research/codex/l-probe-b-native-4/verification.json",
+        "bytes": 3063,
+        "sha256": "60673035e02561914b356afa89d303bdc1b4dea79a927d10a9977de2c291320f"
+      },
+      "seal": {
+        "path": "local/research/codex/l-probe-b-native-4/native/raw-seal.json",
+        "bytes": 14542,
+        "sha256": "ce55868b84127502f30b4d019625e9a091f28e28224b07863eedff924eefe1c4"
+      },
+      "native_lobby": true,
+      "native_room": true,
+      "cache_matches_actual238": [
+        {
+          "role": "A",
+          "wire238_sha256": "4af0e20e6b8a926cb5194b09a4c30bfebd2701d3436227c292007686388844ac",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        },
+        {
+          "role": "B",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        }
+      ],
+      "target_changes": [],
+      "limits": "Stock/shop/mission not observed; route0c/3/4/5 validates room via native player parsing and screenshot. File events alone not consumer acceptance."
+    },
+    {
+      "label": "5",
+      "variant": 5,
+      "run_sha256": "6af34661604f1c2832d585cd6b38af903d4dd516227a0895ea920360182e19bb",
+      "raw_verified": 67,
+      "verification": {
+        "path": "local/research/codex/l-probe-b-native-5/verification.json",
+        "bytes": 3731,
+        "sha256": "c971bc0a7b5b0e26a9b086fdd18e9a44256d52a6d8eaa6b310043ce380123dd2"
+      },
+      "seal": {
+        "path": "local/research/codex/l-probe-b-native-5/native/raw-seal.json",
+        "bytes": 14542,
+        "sha256": "43b5861dca258829d43eb6dc3b25545b661b9ed9fa966267e437dca9155139c2"
+      },
+      "native_lobby": true,
+      "native_room": true,
+      "cache_matches_actual238": [
+        {
+          "role": "A",
+          "wire238_sha256": "4af0e20e6b8a926cb5194b09a4c30bfebd2701d3436227c292007686388844ac",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        },
+        {
+          "role": "B",
+          "wire238_sha256": "70764f057230b31512fa27090afc89b513db9be0473b2548a251da5dd73f8011",
+          "inner_sha256": "a335ba6e33293693e6c8bcb5dc7f6d1d16c07a5d7d69fe11dc1f0efc3f946da2",
+          "cache_sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+        }
+      ],
+      "target_changes": [
+        {
+          "role": "A",
+          "name": "fxdynmapinfo.ssd",
+          "before": {
+            "bytes": 14288,
+            "sha256": "47a0e16ce7c9184ad691e0d4aac9deca94867c4a61e4c98511d350081179482a"
+          },
+          "after": {
+            "bytes": 71,
+            "sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+          }
+        },
+        {
+          "role": "B",
+          "name": "fxdynmapinfo.ssd",
+          "before": {
+            "bytes": 14288,
+            "sha256": "47a0e16ce7c9184ad691e0d4aac9deca94867c4a61e4c98511d350081179482a"
+          },
+          "after": {
+            "bytes": 71,
+            "sha256": "4d58d38e5ac2135520225f0627330ac3acb2215363bbe410ea7931220c43a8a6"
+          }
+        }
+      ],
+      "limits": "Stock/shop/mission not observed; route0c/3/4/5 validates room via native player parsing and screenshot. File events alone not consumer acceptance."
+    }
+  ],
+  "original_control": {
+    "checkpoint": "CP300",
+    "client_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+    "limits": "OriginalCA runs still failed beforelogin; diagnostic evidence does not change their outcome."
+  },
+  "implementation": {
+    "server_behavior_changed": false,
+    "translation_source_changed": false,
+    "added_language_patch": false,
+    "utf8_accepted": false
+  },
+  "limits": [
+    "Eight native runs include baseline/UI controls and requested variants0–5; initial attempt1 failed path pre-namespace, not native data failure.",
+    "Original CA baseline CP300 still failed on Wine; these runs use measured G1 diagnostic exe without any added language patch. No UTF8/IME or original Windows acceptance.",
+    "Shop and mission routes attempted but not displayed; four fxstock loaders/name rendering unproven. No new server behavior or shop protocol added.",
+    "Exact actual238 inner equals every observed final map cache. The map cache update is separate from language data repair.",
+    "English/image314 acceptance limited to visible captured screens; unseen image entries remain static builder output, no claim of all314 rendered.",
+    "L-probe-b diagnostic work complete; full localization and L1 acceptance remain open, G1/M8 still required."
+  ],
+  "next": "Resume report122/current-map/ledger Camp08 according to PLAN. Shop/mission loaders and unseen image/text consumers stay localization gaps, not unbounded work before G1."
+}

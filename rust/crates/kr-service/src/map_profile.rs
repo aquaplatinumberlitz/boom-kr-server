@@ -222,6 +222,8 @@ pub(crate) struct ChoiceConfig {
     pub packets: HashMap<String, crate::LobbyPacketPin>,
     #[serde(default)]
     pub terrain: Option<crate::terrain::Config>,
+    #[serde(default)]
+    pub bomb_cancellation: Option<crate::rules::BombCancellationConfig>,
 }
 pub(crate) struct Choice {
     pub code: u16,
@@ -230,6 +232,7 @@ pub(crate) struct Choice {
     pub bodies: HashMap<crate::room_packets::Template, Vec<u8>>,
     pub floor: crate::pickups::Catalog,
     pub terrain: Option<crate::terrain::Terrain>,
+    pub bomb_cancellation: Option<crate::rules::BombCancellationCells>,
 }
 pub(crate) struct Catalog {
     pub choices: Vec<Choice>,
@@ -315,6 +318,11 @@ impl Catalog {
                 bodies,
                 floor,
                 terrain,
+                bomb_cancellation: cfg
+                    .bomb_cancellation
+                    .as_ref()
+                    .map(|rule| rule.validate(&profile.payload_sha256))
+                    .transpose()?,
             });
         }
         for (name, key) in [

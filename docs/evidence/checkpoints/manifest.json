@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP307",
-  "completed_count": 307,
+  "last_id": "CP310",
+  "completed_count": 310,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
-  "last_manual_audit": "AUD119",
+  "last_manual_audit": "AUD121",
   "audits": [
     {
       "id": "AUD001",
@@ -613,6 +613,16 @@
       "id": "AUD119",
       "path": "docs/evidence/checkpoints/audits/AUD119.json",
       "sha256": "bd602069c1a1b103c94ae6317cd2c73c40a7e99c96beb884331581c9554bdb61"
+    },
+    {
+      "id": "AUD120",
+      "path": "docs/evidence/checkpoints/audits/AUD120.json",
+      "sha256": "2e4f40895353c7d6fb37b8aa64ce3c5dcc6cf2a2994618e5b71c5ba41813aff0"
+    },
+    {
+      "id": "AUD121",
+      "path": "docs/evidence/checkpoints/audits/AUD121.json",
+      "sha256": "3e380bceb90c6e7d231d642c3ddb6c3fbd030c3a332b52581bd7b95d416f726e"
     }
   ],
   "task_states": [
@@ -3502,10 +3512,34 @@
     {
       "id": "CP307",
       "lifecycle": "complete",
-      "recorded_utc": "2026-11-15T12:12:01.722826+00:00",
+      "recorded_utc": "2026-11-15T12:24:53.572501+00:00",
       "path": "docs/evidence/checkpoints/records/CP307.json",
-      "bytes": 9770,
-      "sha256": "bbc8690a62a60a7a6ed428761bebdac2deb67903febe28c720a2ba1aefabb5a7"
+      "bytes": 10708,
+      "sha256": "7606b1374a4cf27b09fc9832b31a040deeee9ea6c55a8ae91a1c2eb43e9640e9"
+    },
+    {
+      "id": "CP308",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-15T14:38:28.767715+00:00",
+      "path": "docs/evidence/checkpoints/records/CP308.json",
+      "bytes": 11045,
+      "sha256": "d7fe4450d0f7adc3abb378c2d090b7ae18d9beba8e9d545416719bf354f66b06"
+    },
+    {
+      "id": "CP309",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-15T15:22:12.238781+00:00",
+      "path": "docs/evidence/checkpoints/records/CP309.json",
+      "bytes": 8982,
+      "sha256": "c9e8549119434de4a3a9a62bf476b4d6f224d8da6826481e72cee0bb9d71dac7"
+    },
+    {
+      "id": "CP310",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-15T16:01:22.499871+00:00",
+      "path": "docs/evidence/checkpoints/records/CP310.json",
+      "bytes": 9779,
+      "sha256": "a256bcd112bbfe8275c09636ab76f35e8044899a1ccf1b4d0aa0e81714b4445f"
     }
   ],
   "audit_policy": {

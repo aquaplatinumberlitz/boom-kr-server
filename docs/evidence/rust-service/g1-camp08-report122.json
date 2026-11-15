@@ -1,0 +1,121 @@
+{
+  "schema": "kre-camp08-report122-v1",
+  "checkpoint": "CP307",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+  "environment": {
+    "service_sha256": "cbe310445ad0ae2e9675632b54eb44a9342eea5dba5aaf2ba9fcccabdadef4d1",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "static_image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "network": "Wine với LAN/router/relay ảo cô lập; không phải Internet/load acceptance."
+  },
+  "scope": "Parser Rust theo fixture native và RE điều kiện/serial/local effect122; không đổi serving policy, không nghiệm thu Camp08/StrongBox/G1.",
+  "reuse": {
+    "path": "local/research/codex/g1-camp08-report-association-r1/reuse.json",
+    "bytes": 1231,
+    "sha256": "5dcf235de4868c59ebb6569db98f3ece7639150c96b32722ad5f67210e65283c"
+  },
+  "native_condition": {
+    "path": "local/research/codex/g1-camp08-condition-native-r4/condition-verification.json",
+    "bytes": 6360,
+    "sha256": "0a31697f56a61b15dcc82176b63502c19eebdbff008893a39fe2bbb1f1f6fd24"
+  },
+  "native_effect": {
+    "path": "local/research/codex/g1-camp08-condition-native-r6/association-verification.json",
+    "bytes": 6596,
+    "sha256": "95a48ddc3e640b66ac0c0ffe6a9bd826000d423a29ba7b5463545d46f4326a6b"
+  },
+  "parser": {
+    "path": "local/research/codex/camp08-report122-parser-verification.json",
+    "bytes": 1531,
+    "sha256": "3f361d1b7605881d3d513701f1ed4e40bc78947acdd54bc9627afeb6b88e4a16"
+  },
+  "native_bodies": {
+    "request122_widths": [
+      4,
+      2,
+      2,
+      4,
+      1,
+      4
+    ],
+    "request122_fields": [
+      4294967295,
+      6,
+      2,
+      4,
+      255,
+      0
+    ],
+    "request122_body_sha256": "9094bdd30cf13d00cc1d65320af7fe631c23f4f6822cd337e3cce7856ee01e8a",
+    "report167_widths": [
+      2,
+      2,
+      4,
+      2,
+      2
+    ],
+    "report167_fields": {
+      "A": [
+        0,
+        1,
+        29,
+        6,
+        2
+      ],
+      "B": [
+        1,
+        1,
+        29,
+        6,
+        2
+      ]
+    },
+    "limits": "Measured instance only. First167 field is not called bomb owner; A0/B1 differs on same B bomb. Report122 lacks serial/round token in measured shape; sentinel is not a current server-ID grant."
+  },
+  "implementation": {
+    "commit": "2243244",
+    "module": "rust/crates/kr-wire/src/kr00967/battle.rs",
+    "fixture": "rust/crates/kr-wire/tests/native_bomb_report122.rs",
+    "serving_integration": false,
+    "merged": false,
+    "gate": "G1 vẫn mở; trạng thái PR là nguồn tích hợp hiện tại."
+  },
+  "static": {
+    "bodies": [
+      "B3B5D0",
+      "B3B7B0",
+      "B73290",
+      "EA08E0"
+    ],
+    "source": "kr_static",
+    "status": "candidate",
+    "limits": "Một batch bốn body từ cạnh native đã đo; IDA MCP không mở được vì thiếu plugin, dùng IDA batch trên DB riêng, không sửa cấu hình."
+  },
+  "limits": [
+    "Hai ô đều Ground RTTI nhưng cờ/predicate khác nhau; không suy hazard của mọi PinGround hoặc toàn map.",
+    "Owner effect_entry có propertyFFFFFFFF, peer có2; native serial getter29 khớp actual167 ở cả hai. Owner cleanup property đã đổi cục bộ, semantics chưa xác định.",
+    "Probe EA0A6C dừng trước mov EAX, không đo function return; loại khỏi kết luận. Native flag getter và outer predicate được kiểm riêng.",
+    "Report122 response, association server, malformed/duplicate/stale/reset/disconnect/reconnect chưa có acceptance; không bỏ fail-closed hiện hành.",
+    "Không terrain StrongBox, kết quả/reset, đủ roster Camp08, full G1 hoặc vận hành."
+  ],
+  "next": "Thiết kế response dựa trên dữ liệu map và ledger hiện hành, đối chiếu cả hai view với current positive và negative/lifecycle; không dùng sentinel hoặc report không có epoch làm authority cho bom vòng mới.",
+  "failed_controls": [
+    {
+      "path": "local/research/codex/g1-camp08-condition-native-r3/failed-condition-verification.json",
+      "bytes": 875,
+      "sha256": "ae68b53809fda236403712adc52f50cdeec35a964da129e964258cad873a1fe0"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-condition-native-r3/passive-wait-observation.json",
+      "bytes": 605,
+      "sha256": "64de856b12b3e3d50219ce95b4285691b8390b7553db0361e439562635727a6c"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-condition-native-r5/failed-condition-verification.json",
+      "bytes": 928,
+      "sha256": "0bf0c0aac50284f8cec9805677c10a281911112490dce86bcafb8c595054dd06"
+    }
+  ]
+}

@@ -33,11 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP307: L1 vá UTF-8 đạt một phần.** Bản vá [949x](docs/content/client-language.md#utf8) trên client chẩn đoán đã hiện
+**CP309: Camp08 đã có policy hủy bom theo map, kiểm native hai vòng/reset và trận kế.**
+[Contract và giới hạn](docs/protocol/terrain.md#rust-camp08-boundary) tách cờ client đã đo khỏi authority server design.
+Codex tiếp StrongBox/terrain Camp08 và G1 theo [Bảng điều hành](docs/PLAN.md#dashboard); L1 vẫn do Claude phụ trách.
+**CP310: L1 vá UTF-8 đạt một phần.** Bản vá [949x](docs/content/client-language.md#utf8) trên client chẩn đoán đã hiện
 Việt, Anh, Hàn, chữ trộn ở tên phòng và gõ được Việt/Hàn ở chat; tiệm, chat chuyển tiếp và sửa tên phòng còn chặn
-([L1 do Claude làm](docs/evidence/owner-directives/l10n-claude-owner.json)). CP306: Camp08 có
-[seed native và boundary C2S122](docs/evidence/rust-service/g1-camp08-boundary.json); Codex tiếp G1 theo
-[Bảng điều hành](docs/PLAN.md#dashboard).
+([L1 do Claude làm](docs/evidence/owner-directives/l10n-claude-owner.json)).
 
 ## Bắt đầu
 

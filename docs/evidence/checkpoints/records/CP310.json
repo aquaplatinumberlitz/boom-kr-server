@@ -1,0 +1,218 @@
+{
+  "id": "CP310",
+  "previous": "CP309",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-15T16:01:22.499871+00:00",
+  "context_commit": "a7ad3bab9e5a7079cb4b6188f2651922820cd6f0",
+  "owner": "Claude Opus (L1)",
+  "reviewer": "Claude (điều phối)",
+  "question": "L1/issue414: bản vá nào cho client 00967 hiện được Hàn, Việt, Anh từ dữ liệu UTF-8 cùng lúc và nhận gõ Việt/Hàn?",
+  "scope": "Thiết kế 949x, bản vá IAT trên bản sao exe runtime chẩn đoán, chuyển dữ liệu UTF-8 lúc mở game, ba lượt native hai client. Không nghiệm thu client/server gốc, tiệm, chat chuyển tiếp hay IME Hàn thật.",
+  "artifacts": [
+    {
+      "name": "KR00967 diagnostic runtime exe (nguồn bản vá)",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Bản sao vá 949x, hook IAT chuyển mã và nhập liệu",
+      "sha256": "9bcd23d7ea7fc0f9da7df51ad9a0bc03ed170c289115dc6b8a8766ab1c0e0c6e"
+    },
+    {
+      "name": "KR00967 unpacked static image",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    }
+  ],
+  "locators": [
+    "docs/content/client-language.md#utf8",
+    "docs/RESEARCH.md#gap-client-utf8",
+    "docs/PROTOCOL.md#utf8-client-boundary",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414"
+  ],
+  "findings": [
+    {
+      "summary": "Mọi lời gọi MultiByteToWideChar/WideCharToMultiByte đi qua slot IAT (38/30 chỗ gọi). Hai hệ ô nhập 0x15222C8 và 0x1514A29 chỉ nhận chữ ngoài ASCII qua composition IME; 0x1514A29 bỏ cặp DBCS đến bằng WM_CHAR. Tiêu đề phòng giới hạn 1..22 byte (0xC542C0). Font Gulim có hình hộp cho chữ Việt ngoài Latin-1.",
+      "source": "kr_static",
+      "status": "candidate",
+      "method": "static",
+      "canonical": "docs/content/client-language.md#utf8",
+      "evidence": [
+        "L1X310-0008",
+        "L1X310-0017"
+      ],
+      "limits": "Chỉ các hàm đã đọc; consumer bỏ qua hai slot (bộ giải riêng, GDI) chưa loại trừ."
+    },
+    {
+      "summary": "Thiết kế 949x: giữ 949, thêm bảng tĩnh 2.275 ký tự với mã hai byte ở vùng 949/UHC bỏ trống; dữ liệu UTF-8 đổi sang 949x lúc mở game, bộ Hàn cho đúng byte gốc; packet không đổi định dạng.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/content/client-language.md#utf8",
+      "evidence": [
+        "L1X310-0012",
+        "L1X310-0013",
+        "L1X310-0014"
+      ],
+      "limits": "Client chưa vá thấy sai ký tự mở rộng; server lưu UTF-8 chưa làm."
+    },
+    {
+      "summary": "Native hai client: sảnh, hộp tạo phòng, phòng hiện tiếng Việt (459 ảnh) và tiếng Anh (314 ảnh) đúng; client Hàn hiện tên phòng Việt và client Việt/Anh hiện tên phòng Hàn; gõ Việt/Hàn ở chat bằng SendInput Unicode, server nhận đúng byte 949x (32 byte ở en-05).",
+      "source": "kr_runtime",
+      "status": "candidate",
+      "method": "runtime",
+      "canonical": "docs/content/client-language.md#utf8",
+      "evidence": [
+        "L1X310-0009",
+        "L1X310-0010",
+        "L1X310-0011",
+        "L1X310-0038",
+        "L1X310-0054"
+      ],
+      "limits": "Exe runtime chẩn đoán và dịch vụ Rust riêng; Wine; không client/server gốc. Ô chat vi-04 dừng ở 26 byte chưa rõ."
+    },
+    {
+      "summary": "Lượt vi-01 không tạo được phòng vì tên mặc định tiếng Việt 26 byte vượt giới hạn 22; ChatToAll tiếng Việt không hiện trong hộp chọn. Lỗi dữ liệu, báo cho boom-re-l10n.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/content/client-language.md#utf8",
+      "evidence": [
+        "L1X310-0064",
+        "L1X310-0065"
+      ],
+      "limits": "Chỉ đo với tài khoản thử hiện có."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fixture Wine: codec 949x round trip, Wine từ chối mọi mã mở rộng, PeekMessage/composition hook",
+      "result": "pass",
+      "evidence": [
+        "L1X310-0019",
+        "L1X310-0020",
+        "L1X310-0021"
+      ],
+      "limits": "Fixture không phải game."
+    },
+    {
+      "check": "Native mix-02, vi-04, en-05: ảnh đã xem, raw export, byte chat từ pcap",
+      "result": "observed",
+      "evidence": [
+        "L1X310-0026",
+        "L1X310-0035",
+        "L1X310-0051"
+      ],
+      "limits": "en-05 báo unmount busy sau export cùng byte; raw giữ ở native-raw-export."
+    },
+    {
+      "check": "Tiệm, chat chuyển tiếp, sửa tên phòng, IME Hàn thật",
+      "result": "not_run",
+      "evidence": [
+        "L1X310-0010"
+      ],
+      "limits": "Chặn bởi dịch vụ chưa có tiệm/chat và luật cờ email của tài khoản."
+    },
+    {
+      "check": "check_docs, feature catalog, git diff --check",
+      "result": "pass",
+      "evidence": [
+        "L1X310-0007"
+      ],
+      "limits": "Không chứng nhận ngữ nghĩa hay gate."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP310-l10n-949x.json",
+      "bytes": 14403,
+      "sha256": "3640105bbfed1360e04716c0787d70a73a5a79c559ab689ccb653c028463179b",
+      "count": 65
+    }
+  ],
+  "delta": {
+    "added": [
+      "Bản vá 949x, công cụ chuyển dữ liệu/font, kết quả native ba ngôn ngữ, chữ trộn và nhập liệu."
+    ],
+    "corrected": [
+      "Bỏ thiết kế ứng viên UTF-8 thuần trong client; PopTag giữ 949 và 00967 cũng giữ 949 với bảng tĩnh."
+    ],
+    "superseded": [
+      "Danh sách điểm ứng viên vá UTF-8 trong client-language#utf8 (CP303) thay bằng bảng điểm vá 949x."
+    ]
+  },
+  "blockers": [
+    "Dịch vụ Rust chưa có tiệm và chat opcode 18 (từ chối, đóng kết nối sảnh).",
+    "Sửa tên phòng cần cờ tài khoản đã đăng ký ID email.",
+    "Dữ liệu: DefaultRoomTitle1/2 tiếng Việt quá 22 byte, ChatToAll tiếng Việt quá dài, ảnh needs_translation còn chữ Hàn.",
+    "IME Hàn thật và server lưu UTF-8 chưa làm; exe CA.exe gốc vẫn chưa chạy trên Wine.",
+    "Theo quyết định 15/11, chữ server gửi, chat chuyển tiếp, tiệm và IME Hàn thật để sau giai đoạn 1."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-L1-UTF8",
+      "task": "KRE-L1-UTF8",
+      "state": "active",
+      "action": "Làm ngay theo quyết định 15/11: ảnh khác shape, chuỗi cứng exe vi/en trong .l10n, chat cắt 26 byte, cờ email để gõ tên phòng. Chat chuyển tiếp, tiệm, chữ server gửi, IME Hàn thật để sau giai đoạn 1.",
+      "owner": "Claude",
+      "reviewer": "Claude (điều phối)"
+    }
+  ],
+  "review": {
+    "status": "pending",
+    "as_of_utc": "2026-11-15T16:01:22.499871+00:00",
+    "reference": "docs/content/client-language.md#utf8",
+    "scope": "Claude điều phối đã đọc báo cáo nhánh research/l10n-utf8-opus (5597e8d) và chấp nhận tích hợp qua PR; chưa ghi review exact head."
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1 949x đạt một phần: thiết kế, bản vá, ba lượt native và chặn còn lại; không đổi gate hay packet client chưa vá."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1 949x đạt một phần: thiết kế, bản vá, ba lượt native và chặn còn lại; không đổi gate hay packet client chưa vá."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1 949x đạt một phần: thiết kế, bản vá, ba lượt native và chặn còn lại; không đổi gate hay packet client chưa vá."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1 949x đạt một phần: thiết kế, bản vá, ba lượt native và chặn còn lại; không đổi gate hay packet client chưa vá."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1 949x đạt một phần: thiết kế, bản vá, ba lượt native và chặn còn lại; không đổi gate hay packet client chưa vá."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1 949x đạt một phần: thiết kế, bản vá, ba lượt native và chặn còn lại; không đổi gate hay packet client chưa vá."
+    },
+    {
+      "path": "docs/content/client-language.md",
+      "state": "updated",
+      "reason": "Đồng bộ L1 949x đạt một phần: thiết kế, bản vá, ba lượt native và chặn còn lại; không đổi gate hay packet client chưa vá."
+    },
+    {
+      "path": "docs/evidence/l10n-utf8-949x-vi-04.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1 949x đạt một phần: thiết kế, bản vá, ba lượt native và chặn còn lại; không đổi gate hay packet client chưa vá."
+    },
+    {
+      "path": "docs/evidence/owner-directives/l10n-utf8-followup.json",
+      "state": "updated",
+      "reason": "Đồng bộ L1 949x đạt một phần: thiết kế, bản vá, ba lượt native và chặn còn lại; không đổi gate hay packet client chưa vá."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "unchanged",
+      "reason": "README chỉ thay dòng mốc mới nhất; mốc CP309 của G1 vẫn nêu trong README."
+    }
+  ]
+}

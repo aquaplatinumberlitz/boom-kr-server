@@ -18,6 +18,9 @@ pub(crate) struct Request {
     power: u8,
 }
 impl Request {
+    pub(crate) fn cell(&self) -> (u16, u16) {
+        (u16::from(self.row), u16::from(self.column))
+    }
     pub fn power(&self) -> u8 {
         self.power
     }
@@ -105,7 +108,7 @@ pub(crate) struct Ledger {
     next_wire: u32,
     next_allocation: u64,
     active: BTreeMap<u16, Active>,
-    serials: BTreeMap<(Membership, u32), (Request, u16)>,
+    serials: BTreeMap<(Membership, u32), (Request, Option<u16>)>,
 }
 impl Default for Ledger {
     fn default() -> Self {
@@ -118,6 +121,14 @@ impl Default for Ledger {
             serials: BTreeMap::new(),
         }
     }
+}
+pub(crate) enum Placement {
+    Allocated(Ticket),
+    Cancelled,
+}
+pub(crate) struct Admission {
+    pub limits: Limits,
+    pub cancel_on_map: bool,
 }
 impl Ledger {
     pub fn begin(&mut self, round: u64) {
@@ -143,6 +154,7 @@ impl Ledger {
     }
     /// Operates on the candidate room clone; reserve ALL spawn+deadline queues
     /// before publishing this allocation/serial/reservation to the real owner.
+    #[cfg(test)]
     pub fn place(
         &mut self,
         round: u64,
@@ -164,6 +176,7 @@ impl Ledger {
             },
         )
     }
+    #[cfg(test)]
     pub(crate) fn place_measured(
         &mut self,
         round: u64,
@@ -173,6 +186,36 @@ impl Ledger {
         roster: &[Membership],
         limits: Limits,
     ) -> io::Result<std::result::Result<Ticket, &'static str>> {
+        match self.admit(
+            round,
+            owner,
+            slot,
+            request,
+            roster,
+            Admission {
+                limits,
+                cancel_on_map: false,
+            },
+        )? {
+            Ok(Placement::Allocated(ticket)) => Ok(Ok(ticket)),
+            Ok(Placement::Cancelled) => {
+                Err(io::Error::other("unexpected ordinary bomb cancellation"))
+            }
+            Err(reason) => Ok(Err(reason)),
+        }
+    }
+    /// Runs on the candidate room clone. Cancelled requests consume their
+    /// serial but allocate no wire ID, quota, recipient set, or deadline.
+    pub(crate) fn admit(
+        &mut self,
+        round: u64,
+        owner: Membership,
+        slot: u8,
+        request: &Request,
+        roster: &[Membership],
+        admission: Admission,
+    ) -> io::Result<std::result::Result<Placement, &'static str>> {
+        let limits = admission.limits;
         if !(1..=10).contains(&limits.capacity) || !(1..=9).contains(&limits.maximum_power) {
             return Err(io::Error::other("unsupported measured bomb limits"));
         }
@@ -193,6 +236,15 @@ impl Ledger {
             } else {
                 "conflicting_serial"
             })
+        } else if admission.cancel_on_map
+            && self
+                .serials
+                .iter()
+                .filter(|((member, _), (_, id))| *member == owner && id.is_none())
+                .count()
+                >= 64
+        {
+            Some("map_cancellation_budget")
         } else if self
             .active
             .values()
@@ -213,6 +265,15 @@ impl Ledger {
         if let Some(reason) = reject {
             return Ok(Err(reason));
         }
+        let recipients: BTreeSet<_> = roster.iter().copied().collect();
+        if !(2..=8).contains(&recipients.len()) || recipients.len() != roster.len() {
+            return Ok(Err("unsupported_roster"));
+        }
+        if admission.cancel_on_map {
+            self.serials
+                .insert((owner, request.serial), (request.clone(), None));
+            return Ok(Ok(Placement::Cancelled));
+        }
         let id = u16::try_from(self.next_wire)
             .map_err(|_| io::Error::other("diagnostic bomb ID space exhausted"))?;
         if id == 0 {
@@ -229,14 +290,10 @@ impl Ledger {
             id,
             owner,
         };
-        let recipients: BTreeSet<_> = roster.iter().copied().collect();
-        if !(2..=8).contains(&recipients.len()) || recipients.len() != roster.len() {
-            return Ok(Err("unsupported_roster"));
-        }
         self.next_wire += 1;
         self.next_allocation = allocation;
         self.serials
-            .insert((owner, request.serial), (request.clone(), id));
+            .insert((owner, request.serial), (request.clone(), Some(id)));
         self.active.insert(
             id,
             Active {
@@ -245,7 +302,7 @@ impl Ledger {
                 pending: recipients,
             },
         );
-        Ok(Ok(ticket))
+        Ok(Ok(Placement::Allocated(ticket)))
     }
     pub fn deliverable(&self, ticket: &Ticket, recipient: Membership) -> bool {
         Arc::ptr_eq(&self.scope, &ticket.scope)
@@ -301,6 +358,77 @@ mod tests {
             power: 1,
         }
     }
+    #[test]
+    fn cancelled_serial_is_bounded_without_wire_id_or_quota_and_fenced_by_round_and_visit() {
+        let a = member(1, 11);
+        let b = member(2, 22);
+        let roster = [a, b];
+        let mut ledger = Ledger::default();
+        ledger.begin(1);
+        let cancel = || Admission {
+            limits: Limits {
+                capacity: 1,
+                maximum_power: 2,
+            },
+            cancel_on_map: true,
+        };
+        for serial in 1..=64 {
+            let mut req = request(1);
+            req.serial = serial;
+            assert!(matches!(
+                ledger.admit(1, a, 0, &req, &roster, cancel()).unwrap(),
+                Ok(Placement::Cancelled)
+            ));
+        }
+        assert!(!ledger.pending());
+        assert_eq!(ledger.next_wire, 1);
+        let mut req = request(1);
+        req.serial = 65;
+        assert!(matches!(
+            ledger.admit(1, a, 0, &req, &roster, cancel()).unwrap(),
+            Err("map_cancellation_budget")
+        ));
+        req.serial = 1;
+        assert!(matches!(
+            ledger.admit(1, a, 0, &req, &roster, cancel()).unwrap(),
+            Err("duplicate_serial")
+        ));
+        req.column += 1;
+        assert!(matches!(
+            ledger.admit(1, a, 0, &req, &roster, cancel()).unwrap(),
+            Err("conflicting_serial")
+        ));
+        req.serial = 65;
+        let ticket = ledger.place(1, a, 0, &req, &roster, 1).unwrap().unwrap();
+        assert_eq!(ticket.id, 1);
+        assert!(ledger.deliverable(&ticket, b));
+        ledger.finish();
+        ledger.begin(2);
+        assert!(!ledger.deliverable(&ticket, b));
+        assert!(matches!(
+            ledger.admit(2, a, 0, &req, &roster, cancel()).unwrap(),
+            Err("round_key_mismatch")
+        ));
+        let new_visit = Membership {
+            visit: a.visit + 1,
+            ..a
+        };
+        let mut current = request(1);
+        current.key = wire_key(2).unwrap();
+        assert!(matches!(
+            ledger
+                .admit(2, a, 0, &current, &[new_visit, b], cancel())
+                .unwrap(),
+            Err("owner_mismatch")
+        ));
+        assert!(matches!(
+            ledger
+                .admit(2, new_visit, 0, &current, &[new_visit, b], cancel())
+                .unwrap(),
+            Ok(Placement::Cancelled)
+        ));
+    }
+
     #[test]
     fn eight_completion_requires_all_distinct_current_recipients_and_fences_old_ticket() {
         let roster: [Membership; 8] = std::array::from_fn(|i| member(i as u32 + 1, i as u64 + 11));

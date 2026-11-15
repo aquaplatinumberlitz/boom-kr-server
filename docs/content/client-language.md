@@ -427,33 +427,45 @@ hàm băm `0xA0E1E0`. Công thức khớp cả 13 file `ssi1` của client KR. C
 - Bản dựng tiếng Việt UTF-8 thay 32.098 chuỗi; bản dựng tiếng Anh theo bảng mã gốc `cp949` thay
   32.102 chuỗi. Không còn chuỗi nào bị loại vì lệch định dạng hay không mã hoá được.
 
-**L-probe đã chạy năm lượt, nhưng bị chặn ở khởi động exe gốc trên Wine.**
-[CP300 và chỉ mục raw/hash](../evidence/checkpoints/records/CP300.json) ghi nguồn, recipe, ảnh, trace file,
-exception và cleanup. Bộ dựng dùng `boom-re-l10n@0e35df10dfa527898ae4a7617d7654b87db403ba`, là hậu duệ của
-`e5d1bac`; không sửa công cụ hoặc bản dịch. Mỗi lượt dùng bản sao đầy đủ và `CA.exe` nguyên bản có SHA-256
-`a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e`, prefix riêng cùng mẫu, Wine
-`10.0-20260425 (CachyOS)` trên một máy và mạng namespace chỉ có loopback. Không vá exe, font hoặc region.
+**L-probe-b: dữ liệu chữ đã được dùng trên bản runtime G1; chưa phải nghiệm thu toàn bộ bản dịch.**
+[Metadata, recipe và raw/hash](../evidence/l10n-probe-b.json) giữ ma trận native, ảnh và đối chứng checksum.
+Bộ dựng lấy nguyên source/catalog `boom-re-l10n@11bc77c55c769e3b75ae87d27d80098f22c51ff2` qua bản Git archive riêng,
+không sửa công cụ hoặc bản dịch nguồn. Bộ Hàn giải nén khớp gốc; các file dựng có checksum/độ dài đúng.
+Lượt này dùng đúng exe diagnostic của native G1, SHA-256
+`4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed`, Wine
+`10.0-20260425 (CachyOS)`, hai account, prefix riêng và LAN/relay ảo cô lập trên một máy. Không thêm vá ngôn ngữ,
+UTF-8, font hoặc region. [CP300](../evidence/checkpoints/records/CP300.json) giữ nguyên năm lượt `CA.exe` gốc
+bị page fault trước login; bằng chứng diagnostic mới không biến các lượt gốc thành đạt.
 
-| Lượt | File thay so với bản gốc | Quan sát native | Login → sảnh → shop → mission → phòng |
-|---|---|---|---|
-| 0 | Không | Hộp Wine `Program Error`, page fault | Không tới được |
-| 1 | Bảy `ssi1` tiếng Hàn ghi lại | Hộp Wine `Program Error`, page fault | Không tới được |
-| 2 | Bảy `ssi1` tiếng Anh CP949 | Hộp Wine `Program Error`, page fault | Không tới được |
-| 3 | Lượt 2 cộng `FxDesktop.idx/.idd` tiếng Anh | Hộp Wine `Program Error`, page fault | Không tới được |
-| 4 | Chỉ `csysstr.ssd` tiếng Anh đổi một byte nén tại offset 34, giữ checksum cũ | Hộp Wine `Program Error`, page fault | Không tới được |
+| Lượt | File thay | Quan sát native và giới hạn |
+|---|---|---|
+| 0 | Không thêm dữ liệu ngôn ngữ | Hai client tới sảnh. Đối chứng thao tác menu sau đó có phòng Camp08, player106 đọc hết và đúng identity; shop/mission chưa mở được |
+| 1 | Bảy `ssi1` tiếng Hàn ghi lại | Hai client tới sảnh, chữ Hàn giữ đúng ở ảnh đã xem. Không có chứng minh riêng cho bốn loader stock hoặc toàn bộ câu nhiệm vụ |
+| 2 | Bảy `ssi1` tiếng Anh CP949 | Hai client tới sảnh; menu “Shop”, “My Items”, “Quests”, “Options”, các tab/chat hiện Anh. Nút dạng ảnh và dòng thông báo vẫn có Hàn |
+| 3 | Lượt 2 cộng `FxDesktop.idx/.idd` tiếng Anh | Tới sảnh/phòng; tên phòng mặc định, “Players: 8”, câu hướng dẫn và menu hiện Anh. Nút ảnh vẫn Hàn; không suy toàn bộ pack/chuỗi đã render |
+| 4 | Chỉ `csysstr.ssd` tiếng Anh đổi một byte nén tại offset 34, giữ checksum cũ | Loader tính checksum khác, trả 0; `csysqstr.ssd` hợp lệ cùng lượt trả 1. Client vẫn tới phòng, câu hướng dẫn hiện nguyên khóa `SuperChiefCanStartDetail`; không phục hồi file hỏng trong lượt đo |
+| 5 | Anh CP949 và 314 ảnh Bắc Mỹ trong năm pack | Tới sảnh/phòng; ảnh VIEW ALL/PRACTICE/MENU/POP SHOP/MY PAGE, ROOM SETTINGS, Creator Maps/Original Maps và GO! hiện Anh. Một số nút/ảnh vẫn Hàn; không chứng minh mọi entry đã render |
 
-Cả năm lượt có ảnh khởi động/lỗi, window tree và trace `+file`; không thấy tên chín file mục tiêu trong trace.
-Đây là quan sát âm có giới hạn, chưa xác nhận consumer đọc dữ liệu hoặc nguyên nhân page fault. Không có kết nối
-TCP tới listener bootstrap, nên fixture 15 byte chưa được gửi; không có packet danh sách file/hash hoặc ghi đè từ
-server. Hash trước/sau của cả chín file mục tiêu không đổi trong từng lượt, kể cả file cố ý hỏng. Điều này chỉ cho
-biết chưa thấy phục hồi file trong cửa sổ đo. Client nguồn không đổi; mọi run đã cleanup và seal.
+**Dữ liệu thực sự được dùng.** Chữ Anh nhìn thấy trong menu và phòng là bằng chứng native; sự kiện mở/đóng file
+chỉ là đối chứng I/O, không tự chứng minh consumer dùng hết dữ liệu. Tên phòng “Beginners welcome!” và câu hướng dẫn
+về Super Room Leader Item khớp key/catalog. Ở các hàng menu đã xem chưa thấy chữ tràn hoặc placeholder định dạng
+bị in nguyên; câu hướng dẫn trong phòng xuống dòng. Không có kiểm mọi câu hoặc mọi kích thước cửa sổ.
 
-Bộ Hàn giải nén khớp gốc; 14 file dựng có checksum/độ dài đúng bằng kiểm tĩnh. Đối chứng lượt 4 khác đúng một byte,
-checksum sai và zlib không giải nén được bằng kiểm tĩnh. **Chưa đo được KR chấp nhận file dựng hoặc từ chối checksum
-sai**; baseline chưa tới login nên không phân đôi file hay retry cùng cấu hình. Chưa đánh giá được chữ Anh/Hàn,
-clipping, tràn khung hoặc tham số định dạng trên UI game. Chữ Anh trong hộp lỗi thuộc Wine, không phải bản dịch game.
-Không suy kết quả trên Windows thật. Việc xác minh nạp dữ liệu còn mở cho đợt L, cần baseline exe gốc tới được
-consumer trước; không thay kết quả đó bằng bằng chứng từ exe chẩn đoán đã vá và không chặn G1.
+**Checksum được kiểm trên KR.** Tái dùng loader KR `14EA7C0` đã có ở
+[contract cache](../protocol/lobby-profile.md#dynamic-cache-representation), probe chỉ đọc tại `14EA885` trước so
+và `14EA8E8` sau lệnh trả EAX. File hỏng cho checksum tính khác checksum lưu, return 0 ở cả hai client; file hợp lệ
+đối chứng khớp và return 1. Đây là từ chối riêng file, không phải yêu cầu client phải crash hoặc thoát.
+
+**Cache map bị server cập nhật.** Các lượt thay `fxdynmapinfo.ssd` đầy đủ đều ghi lại cache 71 byte của profile
+Camp08. Inner giải nén của cache sau run giống từng byte với S→C238 thực sự đã capture; đây là đường cache đã biết,
+không là client khôi phục file dịch hay nhận patch từ Internet. Các file chữ/stock và pack còn lại giữ nguyên hash
+trước/sau, kể cả `csysstr.ssd` cố ý hỏng. Không suy toàn bộ map-display translation đã được dùng từ file dựng ban đầu.
+
+**Giới hạn còn lại.** Shop và mission đã thử bằng UI nhưng chưa hiện nội dung trong recipe này; không nghiệm thu
+bốn file stock, tên item hoặc câu nhiệm vụ từ việc chúng có mặt. Không thêm protocol shop hay đổi service để ép mở.
+Các lần điều chỉnh thao tác và lỗi đường dẫn trước namespace giữ riêng, không gọi chúng là client từ chối bộ chữ.
+Chỉ xác nhận Wine/copy diagnostic với các màn đã chụp, chưa Windows thật hoặc exe gốc. L1 UTF-8/IME vẫn do Claude
+phụ trách và chưa được nghiệm thu từ L-probe-b. Nhóm chẩn đoán dữ liệu đã kết thúc; Codex tiếp G1 theo PLAN.
 
 **Khoá có chữ Hàn.** 29 khoá trong `csysstr.ssd`, một khoá trong `csysqstr.ssd` và 30 khoá trong XML `ClientString`
 chứa chữ Hàn (ví dụ `럭마`, `슈방`: tên tắt của vật phẩm). Quét image exe đã unpack, 13 file `ssi1` và 51.467 mục của
