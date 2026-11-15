@@ -133,6 +133,35 @@ pub fn explode158(id: u16) -> io::Result<Vec<u8>> {
     }
     Ok(out)
 }
+
+/// Measured C2S122 writer shape, not an authorization or detonation decision.
+///
+/// Camp08 native evidence: B731D0 writes widths 4/2/2/4/1/4. The first
+/// property was FFFFFFFF before the observed local effect; it must not be
+/// narrowed to a server bomb ID. The auxiliary fields remain opaque.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct BombReport122 {
+    pub property: u32,
+    pub row: u16,
+    pub column: u16,
+    pub reason: u32,
+    pub auxiliary: u8,
+    pub trailing: u32,
+}
+
+pub fn bomb_report122(body: &[u8]) -> io::Result<BombReport122> {
+    if body.len() != 17 {
+        return Err(io::Error::other("bomb122 exact measured body size"));
+    }
+    Ok(BombReport122 {
+        property: uint(&body[..4], Width::U32)? as u32,
+        row: uint(&body[4..6], Width::U16)? as u16,
+        column: uint(&body[6..8], Width::U16)? as u16,
+        reason: uint(&body[8..12], Width::U32)? as u32,
+        auxiliary: uint(&body[12..13], Width::U8)? as u8,
+        trailing: uint(&body[13..17], Width::U32)? as u32,
+    })
+}
 pub fn pickup165(
     context: u8,
     slot: u8,
