@@ -1,0 +1,16 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-14T21:27:48.724376+00:00",
+  "source": "owner_explicit_user_message",
+  "quote": "Dừng L1, commit phần đang dở trên nhánh research/l10n-utf8 rồi chuyển sang việc G1 tiếp theo. L1 đã giao cho Claude.",
+  "decision": "Claude do chủ dự án trực tiếp giao tiếp tục L1. Codex dừng worker Terra và mọi RE/patch/runtime L1; giữ WIP bằng commit1f7463f trên research/l10n-utf8, rồi tiếp G1.",
+  "supersedes": "docs/evidence/owner-directives/l10n-delegation.json",
+  "limits": "Không đổi acceptance, raw hoặc complete records. L1a vẫn partial, L1b/L1c chưa đạt; dialog11 chưa chạy và bản sao prefix-B chưa hoàn tất. Wine G1/L1 không chạy đồng thời; checkpointer/PR và scope giữ theo AGENTS.",
+  "canonical": "docs/PLAN.md#dashboard",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "handoff": {
+    "commit": "1f7463f",
+    "branch": "research/l10n-utf8",
+    "local": "local/research/l10n-utf8-codex/owner-handoff-to-claude.json"
+  }
+}
