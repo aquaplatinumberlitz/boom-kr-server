@@ -1,0 +1,41 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "4341476",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "mix-02 r5 and r6: both clients on Korean 949x data and the 949x trace exe with keyboard/IME message logging; chat typed on A with SendInput Unicode at 300 ms (r5) and 200 ms (r6); r6 moves the mouse away from the chat row before typing.",
+  "observation": "r5 typed '하세요 abc 하세 def', the service received '하세 def' (c7cfbcbc20646566). r6 typed 'abc 하세요 def ỆỐẦ ghi 안녕하세요 xyz', the service received 'abc 하세요 xyz' (61626320c7cfbcbcbfe42078797a). Both traces show every character retrieved as WM_CHAR with PM_REMOVE and every non-ASCII one injected as a composition result; nothing else arrives in between. Static reading: 0x1514A29 drops WM_CHAR and composition text while its field +0x24 is non-zero or its focused control +0x20 is null; +0x24 is written by 0x15144BB, called only from CBnbNaviWnd::0x790940, which sets mode 1 when the mouse is over that window. Moving the mouse away (r6) did not stop the drops.",
+  "local_evidence": [
+    {
+      "path": "local/runs/mix-02/r6/preflight.json",
+      "sha256": "b892e20f8a3f82003479a18a2e6afff5c204c745e32b3244d71ed7f882cdad9b"
+    },
+    {
+      "path": "local/runs/mix-02/r6/native/run.json",
+      "sha256": "e270f35a413995d2295936f538d71d3e0c0a731c04a0fcfb254b17a8fee16299"
+    },
+    {
+      "path": "local/runs/mix-02/r6/native/tcp-auth-pair.pcap",
+      "sha256": "745d170bcb2e9305f1fec7a7c1c6fde234dea8d1fa3501d41c9a795108abe1fa"
+    },
+    {
+      "path": "local/runs/mix-02/r6/native/A/chat-typed.png",
+      "sha256": "b00a69a91e305d9511bb5b87e01ffe91c0c28dcb8228f9c69f945c205e7be1d7"
+    },
+    {
+      "path": "local/runs/mix-02/r6/l10n-trace-A.log",
+      "sha256": "0c67529d2b77d0a232dd5789a07032210faf7a21bf866f93f0d93955a4d68690"
+    },
+    {
+      "path": "local/runs/mix-02/r5/l10n-trace-A.log",
+      "sha256": "802398663688ce1c967954635d7aaa5c8789d7d3a0807f1e4c19a7293e993354"
+    },
+    {
+      "path": "local/runs/mix-02/r5/native/tcp-auth-pair.pcap",
+      "sha256": "bd90ecdf6a0c23a1e50979b96905fa6db7655fd1d20d748f5475cfa4980844d7"
+    }
+  ],
+  "cleanup": "Raw export passed for both runs.",
+  "limits": "Cause not identified; the mouse-hover lead is refuted only for the tested position. Next measurement: watch +0x20/+0x24 of the 0x1514A29 object during typing."
+}

@@ -1,0 +1,557 @@
+{
+ "schema": "kre-l10n-exe-literals-v1",
+ "source": "IDA xrefs on a private database copy of the 00967 unpacked image (sha256 cf72da11...), same VA layout as CA-r2-stage-social-cmp.exe; operands verified as the 4-byte VA inside each referencing item.",
+ "excluded": "13 references passed to sub_409AD0 (window-title list of PC-bang software, matched against other programs) and strings whose catalog text equals Korean.",
+ "literals": [
+  {
+   "id": "exe:kr-full.exe:0x1537f08",
+   "va": "0x16f2108",
+   "ko_cp949_len": 20,
+   "refs": [
+    {
+     "ref": "0x582dd8",
+     "operand": "0x582dd9",
+     "kind": "code",
+     "consumer": "sub_455630"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x153895c",
+   "va": "0x16f2b5c",
+   "ko_cp949_len": 17,
+   "refs": [
+    {
+     "ref": "0x59af93",
+     "operand": "0x59af94",
+     "kind": "code",
+     "consumer": "sub_59BAC0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x1538970",
+   "va": "0x16f2b70",
+   "ko_cp949_len": 17,
+   "refs": [
+    {
+     "ref": "0x59afb5",
+     "operand": "0x59afb6",
+     "kind": "code",
+     "consumer": "sub_59BAC0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15390a8",
+   "va": "0x16f32a8",
+   "ko_cp949_len": 62,
+   "refs": [
+    {
+     "ref": "0x5a3560",
+     "operand": "0x5a3561",
+     "kind": "code",
+     "consumer": "sub_14B89C0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15396a0",
+   "va": "0x16f38a0",
+   "ko_cp949_len": 8,
+   "refs": [
+    {
+     "ref": "0x5b38b4",
+     "operand": "0x5b38b5",
+     "kind": "code",
+     "consumer": "sub_5B4370"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15420e8",
+   "va": "0x16fc2e8",
+   "ko_cp949_len": 11,
+   "refs": [
+    {
+     "ref": "0x669f51",
+     "operand": "0x669f52",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x154a3bc",
+   "va": "0x17045bc",
+   "ko_cp949_len": 22,
+   "refs": [
+    {
+     "ref": "0x6e0a69",
+     "operand": "0x6e0a6a",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x1551758",
+   "va": "0x170b958",
+   "ko_cp949_len": 19,
+   "refs": [
+    {
+     "ref": "0x73fb1e",
+     "operand": "0x73fb1f",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x155176c",
+   "va": "0x170b96c",
+   "ko_cp949_len": 15,
+   "refs": [
+    {
+     "ref": "0x73fb80",
+     "operand": "0x73fb81",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x155178c",
+   "va": "0x170b98c",
+   "ko_cp949_len": 16,
+   "refs": [
+    {
+     "ref": "0x7403cc",
+     "operand": "0x7403cd",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15517a0",
+   "va": "0x170b9a0",
+   "ko_cp949_len": 16,
+   "refs": [
+    {
+     "ref": "0x73fc4e",
+     "operand": "0x73fc4f",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15517c4",
+   "va": "0x170b9c4",
+   "ko_cp949_len": 15,
+   "refs": [
+    {
+     "ref": "0x73fcaf",
+     "operand": "0x73fcb0",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15517d4",
+   "va": "0x170b9d4",
+   "ko_cp949_len": 21,
+   "refs": [
+    {
+     "ref": "0x73fd2e",
+     "operand": "0x73fd2f",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15517ec",
+   "va": "0x170b9ec",
+   "ko_cp949_len": 20,
+   "refs": [
+    {
+     "ref": "0x7410b4",
+     "operand": "0x7410b5",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15518dc",
+   "va": "0x170badc",
+   "ko_cp949_len": 20,
+   "refs": [
+    {
+     "ref": "0x7423f5",
+     "operand": "0x7423f6",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x155ceac",
+   "va": "0x17170ac",
+   "ko_cp949_len": 15,
+   "refs": [
+    {
+     "ref": "0x82e960",
+     "operand": "0x82e961",
+     "kind": "code",
+     "consumer": "sub_447420"
+    },
+    {
+     "ref": "0xda3f39",
+     "operand": "0xda3f3a",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x155cebc",
+   "va": "0x17170bc",
+   "ko_cp949_len": 15,
+   "refs": [
+    {
+     "ref": "0x82eb92",
+     "operand": "0x82eb93",
+     "kind": "code",
+     "consumer": "sub_447420"
+    },
+    {
+     "ref": "0xda416b",
+     "operand": "0xda416c",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x156ef90",
+   "va": "0x1729190",
+   "ko_cp949_len": 37,
+   "refs": [
+    {
+     "ref": "0x8b5b1e",
+     "operand": "0x8b5b1f",
+     "kind": "code",
+     "consumer": "sub_8B56C0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x156efb8",
+   "va": "0x17291b8",
+   "ko_cp949_len": 59,
+   "refs": [
+    {
+     "ref": "0x8b5b51",
+     "operand": "0x8b5b52",
+     "kind": "code",
+     "consumer": "sub_8B56C0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x156eff4",
+   "va": "0x17291f4",
+   "ko_cp949_len": 34,
+   "refs": [
+    {
+     "ref": "0x8b5b5e",
+     "operand": "0x8b5b5f",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x156f05c",
+   "va": "0x172925c",
+   "ko_cp949_len": 23,
+   "refs": [
+    {
+     "ref": "0x8b61f0",
+     "operand": "0x8b61f1",
+     "kind": "code",
+     "consumer": "sub_8B56C0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x1570f24",
+   "va": "0x172b124",
+   "ko_cp949_len": 16,
+   "refs": [
+    {
+     "ref": "0x8e8383",
+     "operand": "0x8e8384",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x157ce58",
+   "va": "0x1737058",
+   "ko_cp949_len": 74,
+   "refs": [
+    {
+     "ref": "0xa2351e",
+     "operand": "0xa2351f",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x1597498",
+   "va": "0x1751698",
+   "ko_cp949_len": 17,
+   "refs": [
+    {
+     "ref": "0xc45b69",
+     "operand": "0xc45b6a",
+     "kind": "code",
+     "consumer": "sub_14B89C0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15a8cd0",
+   "va": "0x1762ed0",
+   "ko_cp949_len": 11,
+   "refs": [
+    {
+     "ref": "0x4271b2",
+     "operand": "0x4271b3",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15a8cdc",
+   "va": "0x1762edc",
+   "ko_cp949_len": 7,
+   "refs": [
+    {
+     "ref": "0x4271d3",
+     "operand": "0x4271d4",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15a8e2c",
+   "va": "0x176302c",
+   "ko_cp949_len": 9,
+   "refs": [
+    {
+     "ref": "0x427824",
+     "operand": "0x427825",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15a9acc",
+   "va": "0x1763ccc",
+   "ko_cp949_len": 51,
+   "refs": [
+    {
+     "ref": "0xd44986",
+     "operand": "0xd44987",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15a9b00",
+   "va": "0x1763d00",
+   "ko_cp949_len": 22,
+   "refs": [
+    {
+     "ref": "0xd449b0",
+     "operand": "0xd449b1",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15ab9dc",
+   "va": "0x1765bdc",
+   "ko_cp949_len": 37,
+   "refs": [
+    {
+     "ref": "0xd73681",
+     "operand": "0xd73682",
+     "kind": "code",
+     "consumer": "sub_C1B8F0"
+    },
+    {
+     "ref": "0xd7617b",
+     "operand": "0xd7617c",
+     "kind": "code",
+     "consumer": "sub_C1B8F0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15c2cfc",
+   "va": "0x177cefc",
+   "ko_cp949_len": 16,
+   "refs": [
+    {
+     "ref": "0xfecb1a",
+     "operand": "0xfecb1b",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15c2d10",
+   "va": "0x177cf10",
+   "ko_cp949_len": 13,
+   "refs": [
+    {
+     "ref": "0xfecb7a",
+     "operand": "0xfecb7b",
+     "kind": "code",
+     "consumer": "sub_447420"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15c73a8",
+   "va": "0x17815a8",
+   "ko_cp949_len": 39,
+   "refs": [
+    {
+     "ref": "0x1018513",
+     "operand": "0x1018514",
+     "kind": "code",
+     "consumer": "sub_149C5D0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15c73f4",
+   "va": "0x17815f4",
+   "ko_cp949_len": 34,
+   "refs": [
+    {
+     "ref": "0x10187af",
+     "operand": "0x10187b0",
+     "kind": "code",
+     "consumer": "sub_149C3B0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15c9ce8",
+   "va": "0x1783ee8",
+   "ko_cp949_len": 29,
+   "refs": [
+    {
+     "ref": "0x108209e",
+     "operand": "0x108209f",
+     "kind": "code",
+     "consumer": "sub_149C3B0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15cd420",
+   "va": "0x1787620",
+   "ko_cp949_len": 47,
+   "refs": [
+    {
+     "ref": "0x10e0a03",
+     "operand": "0x10e0a04",
+     "kind": "code",
+     "consumer": "sub_D45010"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15cd760",
+   "va": "0x1787960",
+   "ko_cp949_len": 68,
+   "refs": [
+    {
+     "ref": "0x10e5d8f",
+     "operand": "0x10e5d90",
+     "kind": "code",
+     "consumer": "sub_C1B8F0"
+    },
+    {
+     "ref": "0x10e607f",
+     "operand": "0x10e6080",
+     "kind": "code",
+     "consumer": "sub_C1B8F0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15d72fc",
+   "va": "0x17914fc",
+   "ko_cp949_len": 39,
+   "refs": [
+    {
+     "ref": "0x12370f7",
+     "operand": "0x12370f8",
+     "kind": "code",
+     "consumer": "sub_455630"
+    },
+    {
+     "ref": "0x1237600",
+     "operand": "0x1237601",
+     "kind": "code",
+     "consumer": "sub_455630"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15e4808",
+   "va": "0x179ea08",
+   "ko_cp949_len": 78,
+   "refs": [
+    {
+     "ref": "0x137e110",
+     "operand": "0x137e111",
+     "kind": "code",
+     "consumer": "sub_149C3B0"
+    }
+   ]
+  },
+  {
+   "id": "exe:kr-full.exe:0x15e7088",
+   "va": "0x17a1288",
+   "ko_cp949_len": 8,
+   "refs": [
+    {
+     "ref": "0x19a7590",
+     "operand": "0x19a7590",
+     "kind": "data",
+     "consumer": null
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,460 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "L1X310-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3880,
+      "sha256": "07a5a60fb04c128e78d1b323405b42ff401d7f3a9a16fe25e1d22f5ee97205df"
+    },
+    {
+      "id": "L1X310-0002",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 82892,
+      "sha256": "a16c0e42aff88f4232ab6d603b9e2509afd32fb241ad9842def67f1ef69711d6"
+    },
+    {
+      "id": "L1X310-0003",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 67847,
+      "sha256": "ca012bdd9f717e3ce7517c36bd7247a8b29326a2364fe523aaf8263983ac5dc3"
+    },
+    {
+      "id": "L1X310-0004",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 44255,
+      "sha256": "04acc7c812959d43516766c1853f87ea3f32dabdf41a05a0d22a4b53926b9a65"
+    },
+    {
+      "id": "L1X310-0005",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 262629,
+      "sha256": "c5019bcd67ef06f8dc914bf66ed750288baf0ba14e93f70ddeabfa20b3abb298"
+    },
+    {
+      "id": "L1X310-0006",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 275463,
+      "sha256": "335bdf75ce263c1150bc5a6b2cbd4abff59c8602bd4ee59b187f40bd09bfc1b1"
+    },
+    {
+      "id": "L1X310-0007",
+      "kind": "repository",
+      "path": "docs/content/client-language.md",
+      "bytes": 51069,
+      "sha256": "34122ceaefa4de30d761cfffd7fb76d60fcd45ff170579eca3c170725e2c16d3"
+    },
+    {
+      "id": "L1X310-0008",
+      "kind": "repository",
+      "path": "docs/evidence/l10n-utf8-949x-static.json",
+      "bytes": 3530,
+      "sha256": "87192bc86f3515b370d7ccdf994f85ac4259465907db501bd0ee9e8eb590653a"
+    },
+    {
+      "id": "L1X310-0009",
+      "kind": "repository",
+      "path": "docs/evidence/l10n-utf8-949x-mix-02.json",
+      "bytes": 3036,
+      "sha256": "89f457ad75aca506258af4a5065609112136308029a87569ad875dca82093262"
+    },
+    {
+      "id": "L1X310-0010",
+      "kind": "repository",
+      "path": "docs/evidence/l10n-utf8-949x-vi-04.json",
+      "bytes": 4471,
+      "sha256": "4e43ec652d10cef654d1a1fa2e9e9ab88b3f6d555c327ce42a0534bebb8515b2"
+    },
+    {
+      "id": "L1X310-0011",
+      "kind": "repository",
+      "path": "docs/evidence/l10n-utf8-949x-en-05.json",
+      "bytes": 3111,
+      "sha256": "3a20edc2620369f85de12fe3f9ab0dd6aa8f5df28b7af78db558a7389eea2904"
+    },
+    {
+      "id": "L1X310-0012",
+      "kind": "repository",
+      "path": "tools/l10n_949x.py",
+      "bytes": 14367,
+      "sha256": "94e62cdc5850b9045ba3ce13777e291c553c462ff19bc8957c5a74eb1a995f72"
+    },
+    {
+      "id": "L1X310-0013",
+      "kind": "repository",
+      "path": "tools/l10n_949x_hook.c",
+      "bytes": 10181,
+      "sha256": "776bda9e1c408d984a8c09c4d4720b426ce49ca0a996b4ffb859aed62af19d6b"
+    },
+    {
+      "id": "L1X310-0014",
+      "kind": "repository",
+      "path": "tools/l10n_949x_patch.py",
+      "bytes": 7843,
+      "sha256": "c7c21fe94b8427d24d8845c4add3e63a7fbb7c66e9570e2d8e384dab271d1529"
+    },
+    {
+      "id": "L1X310-0015",
+      "kind": "repository",
+      "path": "tools/l10n_unicode_input.c",
+      "bytes": 1537,
+      "sha256": "fc1f430ca5b9f17ff779e44c2a18d9eff5166e1fc0c1814af9965bc50414ef8d"
+    },
+    {
+      "id": "L1X310-0016",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/l10n-utf8-followup.json",
+      "bytes": 1572,
+      "sha256": "391b4656d56fa4d7ae965d6ccd585970cd2a9757e689d28e87bd0309073d1090"
+    },
+    {
+      "id": "L1X310-0017",
+      "kind": "local",
+      "path": "local/ida/createdlg.c",
+      "bytes": 36806,
+      "sha256": "216ecdb6d7a65c35faabc34147c8a38606a9b5cdb64571a32b3ce756d8cd3006"
+    },
+    {
+      "id": "L1X310-0018",
+      "kind": "local",
+      "path": "local/ida/createroom.c",
+      "bytes": 85528,
+      "sha256": "58c31b9d96388b745a5b399ea1279b1106448e3a9890c4318e48bcb24def2815"
+    },
+    {
+      "id": "L1X310-0019",
+      "kind": "local",
+      "path": "local/probe/t.c",
+      "bytes": 6596,
+      "sha256": "3c0d927d4ef029e1066307b683a2481c6698971b2e398b4f77a0e1725e4b1d07"
+    },
+    {
+      "id": "L1X310-0020",
+      "kind": "local",
+      "path": "local/probe/tin3.c",
+      "bytes": 10385,
+      "sha256": "1bbca4623f8d78c504f02258a367ce654949639ee32722bc6bf92d5f6141e0b0"
+    },
+    {
+      "id": "L1X310-0021",
+      "kind": "local",
+      "path": "local/probe/input-log.txt",
+      "bytes": 205,
+      "sha256": "298b8878375e194a8a2b37c40171336a419b78b4543494e68027216c8988feaa"
+    },
+    {
+      "id": "L1X310-0022",
+      "kind": "local",
+      "path": "local/fonts-949x/CxUniGulim.fft",
+      "bytes": 2949107,
+      "sha256": "37c2e4cc7768c9877101422c3ee082821ea83d2bac285734cdeaf01c5d034f09"
+    },
+    {
+      "id": "L1X310-0023",
+      "kind": "local",
+      "path": "local/fonts-949x/CxUniGulimBold.fft",
+      "bytes": 2949107,
+      "sha256": "f4e6ef1f594ecf02c7c650d70d11852215e55397973a7951fa76daef7a2677b7"
+    },
+    {
+      "id": "L1X310-0024",
+      "kind": "local",
+      "path": "local/runs/mix-02/recipe.json",
+      "bytes": 1080,
+      "sha256": "1d19a6d9ca538292d48bea0e5b9b0f65e6626a827f9279bbba107fe4101e4968"
+    },
+    {
+      "id": "L1X310-0025",
+      "kind": "local",
+      "path": "local/runs/mix-02/preflight.json",
+      "bytes": 16843,
+      "sha256": "dad14b4c7c91a1779abe888d62e358e3e8b51b83c7115407b1e27e6ed882bd39"
+    },
+    {
+      "id": "L1X310-0026",
+      "kind": "local",
+      "path": "local/runs/mix-02/native/run.json",
+      "bytes": 54265,
+      "sha256": "ea0aad3282cdf80c30743b224d8f34eb48f8584c5fddc03747cfed9b0be4fc30"
+    },
+    {
+      "id": "L1X310-0027",
+      "kind": "local",
+      "path": "local/runs/mix-02/native/A/dialog-ready.png",
+      "bytes": 225697,
+      "sha256": "b46bd9fed31b1518a43bed5fb81a8e6afd458de1047ae52c38c2dec944820b15"
+    },
+    {
+      "id": "L1X310-0028",
+      "kind": "local",
+      "path": "local/runs/mix-02/native/A/room.png",
+      "bytes": 180201,
+      "sha256": "d7c82269fd9f06a96dfda6f3ad40c54fd93e2c6a76411258279a250e8a5e00cb"
+    },
+    {
+      "id": "L1X310-0029",
+      "kind": "local",
+      "path": "local/runs/mix-02/native/B/room.png",
+      "bytes": 178399,
+      "sha256": "0829cbcc56139a4e002bfc916e68022376687bce6abd18ed645cf984a6d90f35"
+    },
+    {
+      "id": "L1X310-0030",
+      "kind": "local",
+      "path": "local/runs/mix-02/native/A/chat-typed.png",
+      "bytes": 177728,
+      "sha256": "461238d34dac35bd0a5bf36e69ca98b33e72916a800c33117bed7681329767e8"
+    },
+    {
+      "id": "L1X310-0031",
+      "kind": "local",
+      "path": "local/runs/mix-02/storage-export.json",
+      "bytes": 13360,
+      "sha256": "9d7db20bbe12997380c231af7fdc505c6e147a2055f9e1d7c6af82e0a2af33c2"
+    },
+    {
+      "id": "L1X310-0032",
+      "kind": "local",
+      "path": "local/patch-949x.v2/patch.json",
+      "bytes": 1181,
+      "sha256": "50104242a5fde730598bfb4963b5d7003f82a0e688e0318b30f8cd3f6b90a9b2"
+    },
+    {
+      "id": "L1X310-0033",
+      "kind": "local",
+      "path": "local/runs/vi-04/recipe.json",
+      "bytes": 1072,
+      "sha256": "e7a409483301ad14d4b3a3ece84c5f75acc19511a04c41a6da7b0e275c0b9632"
+    },
+    {
+      "id": "L1X310-0034",
+      "kind": "local",
+      "path": "local/runs/vi-04/preflight.json",
+      "bytes": 19918,
+      "sha256": "34c317fddc6420d86f57bddcac1099a41b2353c334d10958cbb75fd9d9ae9c2f"
+    },
+    {
+      "id": "L1X310-0035",
+      "kind": "local",
+      "path": "local/runs/vi-04/native/run.json",
+      "bytes": 41035,
+      "sha256": "b0cfc51dd173d7da4c1334da8c6190dea897e6a8fcb1f31f1371ee55416d041d"
+    },
+    {
+      "id": "L1X310-0036",
+      "kind": "local",
+      "path": "local/runs/vi-04/native/B/lobby.png",
+      "bytes": 150483,
+      "sha256": "185c74b378d47f95503c64ae110bb68fff9d94c14cf0437d3f99faab4825cbfd"
+    },
+    {
+      "id": "L1X310-0037",
+      "kind": "local",
+      "path": "local/runs/vi-04/native/B/dialog-ready.png",
+      "bytes": 150840,
+      "sha256": "d76cd745516d7043c77e47e3b81a24a7af12c2acde2fe395f1b6744778545f19"
+    },
+    {
+      "id": "L1X310-0038",
+      "kind": "local",
+      "path": "local/runs/vi-04/native/B/room-late.png",
+      "bytes": 182770,
+      "sha256": "9a16697056cbd917c3d918fa1bbcc7e7a2618dbb4228a584f046a3743d17ab27"
+    },
+    {
+      "id": "L1X310-0039",
+      "kind": "local",
+      "path": "local/runs/vi-04/native/A/chat-typed.png",
+      "bytes": 181057,
+      "sha256": "41883071145c6b3de267dce3aae37e67dfe4ee43baa8139b450117e9c01f299b"
+    },
+    {
+      "id": "L1X310-0040",
+      "kind": "local",
+      "path": "local/runs/vi-04/native/tcp-auth-pair.pcap",
+      "bytes": 27225,
+      "sha256": "f0030313bcdfd5f4ff1a5191816a5065fdf314519eeb3a1dc6a3043f3bb4a3b5"
+    },
+    {
+      "id": "L1X310-0041",
+      "kind": "local",
+      "path": "local/runs/vi-04/native/rust-events.jsonl",
+      "bytes": 21215,
+      "sha256": "485b5aacd60adfc3a7f59e59dc74086fdd4f17464b8d161b48dcf1be5a4ee493"
+    },
+    {
+      "id": "L1X310-0042",
+      "kind": "local",
+      "path": "local/runs/vi-04/storage-export.json",
+      "bytes": 12853,
+      "sha256": "a92a5a3738d0f5fbacb50193a8c9addf5bce6713d35c81d9c992eafc6a083f8c"
+    },
+    {
+      "id": "L1X310-0043",
+      "kind": "local",
+      "path": "local/runs/vi-04/r1/native/B/lobby.png",
+      "bytes": 150415,
+      "sha256": "d9becfb3c55b9ac763be3d8d12e490a09cca9161722d2660a94f4b50cfe21928"
+    },
+    {
+      "id": "L1X310-0044",
+      "kind": "local",
+      "path": "local/runs/vi-04/r1/native/B/shop.png",
+      "bytes": 181252,
+      "sha256": "54c7c9a022016f2cd2945fb9503847ee27e79153e0a05d826c0ad5bf76e733ab"
+    },
+    {
+      "id": "L1X310-0045",
+      "kind": "local",
+      "path": "local/patch-949x/patch.json",
+      "bytes": 1399,
+      "sha256": "f39221ada74e669bd90274cf93369190809f7219a2fb742244628c26d9baf182"
+    },
+    {
+      "id": "L1X310-0046",
+      "kind": "local",
+      "path": "local/l10n-data3/vi-949x/convert-report.json",
+      "bytes": 896,
+      "sha256": "d380f3a7fb9fe2d9f6f20a71d7addbcabf8edd949423cabdb4e96d4e9cfc1260"
+    },
+    {
+      "id": "L1X310-0047",
+      "kind": "local",
+      "path": "local/l10n-data3/vi-utf8/build-report.json",
+      "bytes": 17878,
+      "sha256": "d67a646ce3176ca0ab67e82f89365effbd514e32c68b1ad77c8f5bc28006efd5"
+    },
+    {
+      "id": "L1X310-0048",
+      "kind": "local",
+      "path": "local/tools/c2s_frames.py",
+      "bytes": 2722,
+      "sha256": "ba5899b44d87dac0ae4b33ca00fe8117eaa1aa626aba9d918b546c4edfcf1298"
+    },
+    {
+      "id": "L1X310-0049",
+      "kind": "local",
+      "path": "local/runs/en-05/recipe.json",
+      "bytes": 1072,
+      "sha256": "c2efe7401983cafc9de1d0daea7ff95b97db3f26d0c841b405a01d19425936de"
+    },
+    {
+      "id": "L1X310-0050",
+      "kind": "local",
+      "path": "local/runs/en-05/preflight.json",
+      "bytes": 18920,
+      "sha256": "394770c56b8a5378a082b32c84f6543ad41062546cd6be9536cc7df089d153dd"
+    },
+    {
+      "id": "L1X310-0051",
+      "kind": "local",
+      "path": "local/runs/en-05/native-raw-export/run.json",
+      "bytes": 40856,
+      "sha256": "24fdd6cc514f2a5e54bd8a57ddceea7cfd99c41aeb012ba7ce02be4b6df0a1c7"
+    },
+    {
+      "id": "L1X310-0052",
+      "kind": "local",
+      "path": "local/runs/en-05/native-raw-export/B/lobby.png",
+      "bytes": 150397,
+      "sha256": "6897ab26c1b9e15cb98532eafe5ff54ecbad3c69a33c20a8372ba625e614f09f"
+    },
+    {
+      "id": "L1X310-0053",
+      "kind": "local",
+      "path": "local/runs/en-05/native-raw-export/B/room-late.png",
+      "bytes": 180602,
+      "sha256": "0e773204ec5f80680647122d1a02c387c50eb81bb5a6c44686c86c4f5ae66085"
+    },
+    {
+      "id": "L1X310-0054",
+      "kind": "local",
+      "path": "local/runs/en-05/native-raw-export/A/chat-typed.png",
+      "bytes": 178820,
+      "sha256": "d84db6a0dab0c1106129fe2d9a2623ab9aefe2c624fb7c4cc9f33b6a0d00c3b6"
+    },
+    {
+      "id": "L1X310-0055",
+      "kind": "local",
+      "path": "local/runs/en-05/native-raw-export/tcp-auth-pair.pcap",
+      "bytes": 26504,
+      "sha256": "d7807d453e2a22d9a9b3befa1933c39d85ab9f87c464d0f331ad530850f641bd"
+    },
+    {
+      "id": "L1X310-0056",
+      "kind": "local",
+      "path": "local/runs/en-05/native-raw-export/rust-events.jsonl",
+      "bytes": 20814,
+      "sha256": "e1fa1eb5cc7bf729bfc5599d321539783e20d30fce3196eb40dd848332d6ac89"
+    },
+    {
+      "id": "L1X310-0057",
+      "kind": "local",
+      "path": "local/runs/en-05/storage-export-before-unmount.json",
+      "bytes": 12935,
+      "sha256": "be3301150bc0d927ca4039d4e2dc3fc0b05d9f0ffdb18e2127075248df412a85"
+    },
+    {
+      "id": "L1X310-0058",
+      "kind": "local",
+      "path": "local/l10n-data3/en-949x/convert-report.json",
+      "bytes": 760,
+      "sha256": "f71604fc70589475f4f67721e29724a1acbd54ddcd0eb2581a9a515014942e11"
+    },
+    {
+      "id": "L1X310-0059",
+      "kind": "local",
+      "path": "local/l10n-data3/en-utf8/build-report.json",
+      "bytes": 6957,
+      "sha256": "d8b5508cfee6cca32604ea711bcb23fc75108944ccdb1793b86bbc0e2c7a5370"
+    },
+    {
+      "id": "L1X310-0060",
+      "kind": "local",
+      "path": "local/research/claude/append_cp310_l1.py",
+      "bytes": 10404,
+      "sha256": "30d3a27c919c4bd05d3306203cbe2e42445776b3c686a18e2ab5262dc7c575c3"
+    },
+    {
+      "id": "L1X310-0061",
+      "kind": "local",
+      "path": "local/runs/prepare_l10n.py",
+      "bytes": 8916,
+      "sha256": "fa721ea7958c37a27c87809beef4ff25c0e040510c8e8374390890e1978214f3"
+    },
+    {
+      "id": "L1X310-0062",
+      "kind": "local",
+      "path": "local/runs/controller_hooks_v3.py",
+      "bytes": 1356,
+      "sha256": "7578d23c296b6d66755be3a91604d5d7e61f992d3bf4482b233f866d4e4b7713"
+    },
+    {
+      "id": "L1X310-0063",
+      "kind": "local",
+      "path": "local/runs/dialog_gate_l10n.py",
+      "bytes": 845,
+      "sha256": "c19ed25762ed9d103456b1fb6e6f938a44b3ff197afd0dd9505d910745e62f9b"
+    },
+    {
+      "id": "L1X310-0064",
+      "kind": "local",
+      "path": "local/runs/vi-01/native/run.json",
+      "bytes": 268093,
+      "sha256": "5f0c892362f04f7ac0e4e272342dd259a1713e2fbec6aff9794b7ad790dea7b2"
+    },
+    {
+      "id": "L1X310-0065",
+      "kind": "local",
+      "path": "local/runs/vi-01/native/A/dialog-ready.png",
+      "bytes": 226576,
+      "sha256": "019b3eeb5e9944209392ce522a3dd6df69a910fc2a40de5fc83c81c072aacbcd"
+    }
+  ]
+}

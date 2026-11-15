@@ -1,0 +1,49 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "95fe4f5",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Two copies of the diagnostic runtime exe CA-r2-stage-social-cmp.exe patched with the 949x IAT hook (exe sha256 0b9c004c4b7fc59384a04f577cd763b8fa14776992df2db9c991e631193f0b1b); A uses the Vietnamese UTF-8 build of boom-re-l10n 11bc77c converted to 949x, B the Korean UTF-8 build converted to 949x; Rust diagnostic service and isolated virtual LAN from the G1 Factory r3 recipe.",
+  "observation": "Lobby and create-room dialog of A show Vietnamese labels with correct diacritics (CxUni font). A created Factory07 with its random default title 'Phải chơi Lịch sự' (21 bytes in 949x); both screenshots show that title in the room header, B with Korean UI text, i.e. Korean and Vietnamese on one client. Editing the title was refused by the client message 'Không thể sửa Tên phòng khi chưa đăng ký ID email' (account property). xdotool typing of chat kept only ASCII ('Xin cho cc bn'); the server logged chat opcode 18 as lobby_request_denied and closed the lobby connection, so both clients showed a disconnect dialog.",
+  "local_evidence": [
+    {
+      "path": "local/runs/mix-02/recipe.json",
+      "sha256": "1d19a6d9ca538292d48bea0e5b9b0f65e6626a827f9279bbba107fe4101e4968"
+    },
+    {
+      "path": "local/runs/mix-02/preflight.json",
+      "sha256": "dad14b4c7c91a1779abe888d62e358e3e8b51b83c7115407b1e27e6ed882bd39"
+    },
+    {
+      "path": "local/runs/mix-02/native/run.json",
+      "sha256": "ea0aad3282cdf80c30743b224d8f34eb48f8584c5fddc03747cfed9b0be4fc30"
+    },
+    {
+      "path": "local/runs/mix-02/native/A/dialog-ready.png",
+      "sha256": "b46bd9fed31b1518a43bed5fb81a8e6afd458de1047ae52c38c2dec944820b15"
+    },
+    {
+      "path": "local/runs/mix-02/native/A/room.png",
+      "sha256": "d7c82269fd9f06a96dfda6f3ad40c54fd93e2c6a76411258279a250e8a5e00cb"
+    },
+    {
+      "path": "local/runs/mix-02/native/B/room.png",
+      "sha256": "0829cbcc56139a4e002bfc916e68022376687bce6abd18ed645cf984a6d90f35"
+    },
+    {
+      "path": "local/runs/mix-02/native/A/chat-typed.png",
+      "sha256": "461238d34dac35bd0a5bf36e69ca98b33e72916a800c33117bed7681329767e8"
+    },
+    {
+      "path": "local/runs/mix-02/storage-export.json",
+      "sha256": "9d7db20bbe12997380c231af7fdc505c6e147a2055f9e1d7c6af82e0a2af33c2"
+    },
+    {
+      "path": "local/patch-949x.v2/patch.json",
+      "sha256": "50104242a5fde730598bfb4963b5d7003f82a0e688e0318b30f8cd3f6b90a9b2"
+    }
+  ],
+  "cleanup": "Harness raw export and unmount passed (storage-export.json result pass).",
+  "limits": "Diagnostic runtime exe and private service, not the original client or server. Shop not reached. Map name comes from the service map cache (Factory07), not the translated table. Input path was revised afterwards because xdotool characters and DBCS WM_CHAR did not reach the chat control; see the later input evidence."
+}

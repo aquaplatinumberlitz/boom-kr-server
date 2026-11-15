@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP309",
-  "completed_count": 309,
+  "last_id": "CP310",
+  "completed_count": 310,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1051,6 +1051,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
+    },
+    {
+      "id": "KRE-L1-UTF8",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414"
     }
   ],
   "version": 2,
@@ -3526,6 +3532,14 @@
       "path": "docs/evidence/checkpoints/records/CP309.json",
       "bytes": 8982,
       "sha256": "c9e8549119434de4a3a9a62bf476b4d6f224d8da6826481e72cee0bb9d71dac7"
+    },
+    {
+      "id": "CP310",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-15T16:01:22.499871+00:00",
+      "path": "docs/evidence/checkpoints/records/CP310.json",
+      "bytes": 9779,
+      "sha256": "a256bcd112bbfe8275c09636ab76f35e8044899a1ccf1b4d0aa0e81714b4445f"
     }
   ],
   "audit_policy": {

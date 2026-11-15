@@ -1,0 +1,19 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Two diagnostic client copies with original Korean data; one-shot read-only pass-through on A and uninstrumented B, screenshot gate before UI input.",
+  "observation": "A reported matching DefaultRoomTitle3 and passing through the validated seven-unit conversion without a write. The retained A dialog and room images were inspected: they show the create dialog and Factory07 room with KRLocal and KRGuest. No GDB fatal was seen. The intentional B-joined stop was followed by the inherited full-game assertion and exit 1.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/dialog-08/recipe.json", "sha256": "bf5bbad66271c298c93a2357819f488cae0a433d338aee897dfdbc31fb7f48f2"},
+    {"path": "local/research/l10n-utf8-codex/dialog-08/preflight.json", "sha256": "ba3fb8bcdfd9666b9a4d6ce49d19de85ce3ef631f319d92a942b3c43adecbe5e"},
+    {"path": "local/research/l10n-utf8-codex/dialog-08/native/run.json", "sha256": "e6111c78e35d45dd557c6b9bbeae89657d1ad2a40c856758d8f64483fc7bdfc3"},
+    {"path": "local/research/l10n-utf8-codex/dialog-08/native/A/dialog-candidate.png", "sha256": "6b21cd3ddce95f0a4528cee3aae66a55b2346f2171a0b9b54d5d05f384104dac"},
+    {"path": "local/research/l10n-utf8-codex/dialog-08/native/A/control-room.png", "sha256": "03a434b6674d78d8450c28b56a966b943aa35188028c6343c9939b3dc79fd030"},
+    {"path": "local/research/l10n-utf8-codex/dialog-08/storage-export.json", "sha256": "b18649531832a0acdf83e1035b39f899d7912f50b91ecf31672beff9d82d17a9"},
+    {"path": "local/research/l10n-utf8-codex/dialog-08/raw-seal.json", "sha256": "d08609f7393374e982c8414f4c053d85e7018255fbfc35f7f4cc475c6f1490ba"}
+  ],
+  "cleanup": "Raw export passed; 47 files pinned, frozen inputs and executables unchanged, two copied map caches changed, no remaining recorded namespace process.",
+  "limits": "One pass-through control; does not prove replacement, glyph rendering, UTF-8 data, IME, packets or original-client behavior. Window-ambiguity recording branch did not execute. Two prior CALog files differed from dialog-07 before launch and were separately pinned and removed by the private harness."
+}

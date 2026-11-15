@@ -409,7 +409,7 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 <a id="utf8-client-boundary"></a>
 ## Biên UTF-8 trên client đang nghiên cứu
 
-[Đặc tả ứng viên và đối chứng](content/client-language.md#utf8) tách khảo sát binary khỏi hành vi native. Chưa có
-bản vá UTF-8 hoặc wire UTF-8 được nghiệm thu cho00967. Đường phục vụ hiện hành giữ contract949/ASCII đã đo;
-shim chuyển mã và GDB substitution một chuỗi chưa thay contract tên, tiêu đề phòng hoặc chat. Mẫu PopTag có lớp949
-riêng, chưa chứng nhận cơ chế của00967. Phần chưa biết và phép đo tiếp ở [RESEARCH](RESEARCH.md#gap-client-utf8).
+[Bản vá 949x](content/client-language.md#utf8) cho client đã vá giữ contract wire hiện hành: chữ Hàn và ASCII là byte
+949 như client gốc, ký tự ngoài 949 là mã hai byte cố định của bảng 949x trong vùng 949/UHC bỏ trống. Tiêu đề phòng
+(create81, tối đa 22 byte ở client) và chat (opcode 18) mang byte 949x; định dạng packet không đổi, client chưa vá chỉ
+thấy sai ký tự mở rộng. Dịch vụ Rust hiện chưa xử lý chat 18 (từ chối và đóng kết nối sảnh). Phần chưa biết và phép đo tiếp ở [RESEARCH](RESEARCH.md#gap-client-utf8).

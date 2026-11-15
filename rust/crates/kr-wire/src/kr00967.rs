@@ -8,7 +8,7 @@ mod battle;
 mod player;
 mod room;
 mod room_selection;
-pub use account::{AccountPackets, AccountTemplate, own291};
+pub use account::{AccountPackets, AccountTemplate, own291, with_identity_string};
 pub use battle::*;
 pub use player::PlayerTemplate;
 pub use room::*;

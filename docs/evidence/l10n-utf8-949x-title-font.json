@@ -1,0 +1,113 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "69bb753",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "mix-02 re-runs r2..r5 on 949x trace exes (A vi with exe literals in r2..r4, ko in r5; B ko), Rust service built from research/l10n-utf8-opus with account_admission.diagnostic_identity_strings {KRLocal: krlocal.l10n@test.local}; r2 used the PopTag VN fonts as shipped, r3..r5 the VN fonts with Korean advances (tools/l10n_949x.py vnfonts). Isolated LAN, G1 Factory r3 recipe.",
+  "observation": "Room title editing: with the identity string set, the title field accepted typed text and no email warning appeared. The service received create81 titles 'Phòng Việt 한국' (17 bytes 5068c7826e67205669d2847420c7d1b1b9, r3) and 'ỆỐẦ Việt 한국 ếộ' (22 bytes d283d28dd257205669d2847420c7d1b1b920d276d296, r4); the Korean client B shows the Vietnamese+Korean title in its room header. Fonts: the PopTag VN set as shipped renders Vietnamese with stacked marks but the VN Gulim font gives Hangul advance 6 for 12-pixel glyphs, so Korean text in Gulim fields (marquee, chat selector) overlaps (r2 B lobby). With Korean advances restored (r3, r4) Korean in those fields is legible, and the zoomed title shows Ệ, Ố, Ầ with both marks. Chat: whole windows of input are dropped, ASCII included: r3 kept '세요 ' and ' xyz' of '세요 ạ abc 하세요 xyz'; r4 kept 'abc 하' of 'abc 하세요 def ỆỐẦ ghi'; r5 (both Korean data) kept '하세 def' of '하세요 abc 하세 def'. Traces show every character as WM_CHAR and every non-ASCII one injected as a composition result.",
+  "local_evidence": [
+    {
+      "path": "local/runs/mix-02/r3/preflight.json",
+      "sha256": "70d1ea5608f7b21aa917f075ed5add2d1ce1d230c1a9411c3145812876ab0c9c"
+    },
+    {
+      "path": "local/runs/mix-02/r3/native/run.json",
+      "sha256": "904a53705c3bdd39bcdd0d1e329f2a791f4e2b79098c99e0b9e6f8ee55c4376f"
+    },
+    {
+      "path": "local/runs/mix-02/r3/native/A/dialog-typed.png",
+      "sha256": "573809a14a335e5b41dbe90048fdd908fb0b879c3577b0b8b37f675473a5e4f0"
+    },
+    {
+      "path": "local/runs/mix-02/r3/native/A/chat-typed.png",
+      "sha256": "c5bfdaefddbb8b4409e8631cf2a32d85b5dcc7a8109599c33887f8e65eb95836"
+    },
+    {
+      "path": "local/runs/mix-02/r3/native/B/room-late.png",
+      "sha256": "34e9b435efb0c46211998a8bf6474b62f80cbe5e5bb847a6db01c86be0ff78de"
+    },
+    {
+      "path": "local/runs/mix-02/r3/native/B/lobby.png",
+      "sha256": "c897a18bf94a19b3456ff38d8b11b0f60d48150ab046228f231f74a4b21346cb"
+    },
+    {
+      "path": "local/runs/mix-02/r3/native/tcp-auth-pair.pcap",
+      "sha256": "5301b10b6da1cd76de3495b1f13fd83727c862cc0b9fe4241d2dac10ae8b0be0"
+    },
+    {
+      "path": "local/runs/mix-02/r3/native/rust-events.jsonl",
+      "sha256": "bac748849e8681a6011bd862dc38467aa80f23cccd01cd9e871995d1adb34fe8"
+    },
+    {
+      "path": "local/runs/mix-02/r3/l10n-trace-A.log",
+      "sha256": "4a4f71b8c84d38471f06b41d04c7c8882c289f353a5970042f3792041b24288d"
+    },
+    {
+      "path": "local/runs/mix-02/r3/storage-export.json",
+      "sha256": "8400de1ca4803f4b298e44ffa098b83b186e831ccf55d9480ea7303262e7f8ce"
+    },
+    {
+      "path": "local/runs/mix-02/r4/preflight.json",
+      "sha256": "4c338c7e7d9b402fb8580170878386330cbc261d575f024ca140d24646b9c0f3"
+    },
+    {
+      "path": "local/runs/mix-02/r4/native-raw-export/run.json",
+      "sha256": "4af20379b02b401dba11d374baceb4a3c4552f7d8c03bf5c8b4f908f3410d956"
+    },
+    {
+      "path": "local/runs/mix-02/r4/native-raw-export/A/dialog-typed.png",
+      "sha256": "8c5d061c43df50599c6e98ca339db3c5a3f74251dbf2e07531a112f241756d15"
+    },
+    {
+      "path": "local/runs/mix-02/r4/native-raw-export/A/room-late.png",
+      "sha256": "89599d061bab25657a2d2a14089fc9cbaa402e02ca829428d18cb79172a0942c"
+    },
+    {
+      "path": "local/runs/mix-02/r4/native-raw-export/tcp-auth-pair.pcap",
+      "sha256": "f60b4a0f05fee8368178f4a65d461d3fd534b44e3d6ef739ea83bef78c9a7dd6"
+    },
+    {
+      "path": "local/runs/mix-02/r4/l10n-trace-A.log",
+      "sha256": "331e2705c8ab00882dd8f37127d50a969d5f562da6df3da180a6a609ea2c8f1a"
+    },
+    {
+      "path": "local/runs/mix-02/r4/storage-export-before-unmount.json",
+      "sha256": "3d476bac8ece67253d0a626ea83f3359b7ded41d691b20a7eea44867c8e8686e"
+    },
+    {
+      "path": "local/runs/mix-02/r2/native/B/lobby.png",
+      "sha256": "73943a89530b1d5644a473680b00f944f4df50a2825cb9b046e3245206557d87"
+    },
+    {
+      "path": "local/runs/mix-02/r2/native/A/dialog-candidate.png",
+      "sha256": "b00157e290735aa1b5cae13a84f3b882ed9c2a6b66ef353a46997f3bb12e529f"
+    },
+    {
+      "path": "local/runs/mix-02/r5/preflight.json",
+      "sha256": "f617c461abf534d10dd3bcffed6dc7d729c5e0212b2f8ecf50860330d2e5e100"
+    },
+    {
+      "path": "local/runs/mix-02/r5/native/run.json",
+      "sha256": "a05ed24d2a7a1b4280aba83db27bddb4a021f2c767bc54781ff50227b9d2170b"
+    },
+    {
+      "path": "local/runs/mix-02/r5/native/tcp-auth-pair.pcap",
+      "sha256": "bd90ecdf6a0c23a1e50979b96905fa6db7655fd1d20d748f5475cfa4980844d7"
+    },
+    {
+      "path": "local/runs/mix-02/r5/l10n-trace-A.log",
+      "sha256": "802398663688ce1c967954635d7aaa5c8789d7d3a0807f1e4c19a7293e993354"
+    },
+    {
+      "path": "local/runs/mix-02/r4/title-zoom.png",
+      "sha256": "96b299229bfcb2c6e88fb13c2b1c95e48956c4a08963b1ee906766a7bbe44bcf"
+    },
+    {
+      "path": "local/runs/mix-02/r4/dialog-title-zoom.png",
+      "sha256": "904a5f6d1a1d40a2228d0c47119aaa71823dc3d251f387ae7907243f11362a7e"
+    }
+  ],
+  "cleanup": "r3, r5 raw export and unmount passed; r4 reported bounded unmount busy after same-byte export, retained as native-raw-export.",
+  "limits": "Diagnostic exe and service with a test-account-only identity string; not original server data. The chat drop cause is not identified; the dropped windows are not tied to a character or byte length. Visual font check covers the screens captured only."
+}

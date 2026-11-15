@@ -69,6 +69,26 @@ impl AccountTemplate {
         })
     }
 }
+/// Diagnostic test accounts only: fill the empty per-player identity string that
+/// follows the name and one u8 in the auth reply (client 0x10FD540 stores it at
+/// CSelfInfo+0x21C; an empty value blocks room-title editing). Only the string
+/// value changes; field order and encoding stay as measured.
+pub fn with_identity_string(auth: &[u8], name_len: usize, id: &[u8]) -> io::Result<Vec<u8>> {
+    let at = 31 + name_len + 1;
+    if id.is_empty()
+        || id.len() > 40
+        || !id.iter().all(|b| b.is_ascii_graphic())
+        || auth.len() < at + 2
+        || uint(&auth[at..at + 2], Width::U16)? != 0
+    {
+        return Err(io::Error::other("unsupported identity string patch"));
+    }
+    let mut out = auth[..at].to_vec();
+    out.extend(put(id.len() as u64, Width::U16)?);
+    out.extend(encode_bytes(id)?);
+    out.extend(&auth[at + 2..]);
+    Ok(out)
+}
 /// CP183/184 zero-profile branch: name plus98 zero bytes, zero trailing fields.
 pub fn own291(name: &[u8]) -> io::Result<Vec<u8>> {
     super::player::account_name(name)?;
@@ -87,4 +107,26 @@ pub fn own291(name: &[u8]) -> io::Result<Vec<u8>> {
         out.extend(put(0, Width::U8)?);
     }
     Ok(out)
+}
+
+#[cfg(test)]
+mod identity_string_tests {
+    use super::*;
+    #[test]
+    fn identity_string_replaces_only_the_empty_field() {
+        let name = b"KRLocal";
+        let mut auth = vec![0x5a; 31];
+        auth.extend(encode_bytes(name).unwrap());
+        auth.extend(put(0, Width::U8).unwrap());
+        auth.extend(put(0, Width::U16).unwrap());
+        auth.extend([1, 2, 3, 4]);
+        let out = with_identity_string(&auth, name.len(), b"id@test").unwrap();
+        let at = 31 + name.len() + 1;
+        assert_eq!(&out[..at], &auth[..at]);
+        assert_eq!(uint(&out[at..at + 2], Width::U16).unwrap(), 7);
+        assert_eq!(decode_bytes(&out[at + 2..at + 9]).unwrap(), b"id@test");
+        assert_eq!(&out[at + 9..], &[1, 2, 3, 4]);
+        assert!(with_identity_string(&out, name.len(), b"again").is_err());
+        assert!(with_identity_string(&auth, name.len(), b"bad id").is_err());
+    }
 }

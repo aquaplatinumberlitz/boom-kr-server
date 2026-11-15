@@ -2,7 +2,8 @@
 
 Khảo sát cho [đợt L của lộ trình](../PLAN.md#full-game-roadmap) bắt đầu bằng so tĩnh hai exe ngày 13/11/2026;
 các kết luận đó mang nguồn `kr_static` hoặc nguồn tương ứng được ghi tại chỗ. Những đối chứng native về sau dùng
-client diagnostic bản copy và được ghi giới hạn riêng ở mục UTF-8. Chưa có nghiệm thu bản vá UTF-8.
+client diagnostic bản copy và được ghi giới hạn riêng ở mục UTF-8. Bản vá 949x đã hiện chữ ba ngôn ngữ trên client
+chẩn đoán; giới hạn ở [mục UTF-8](#utf8).
 
 ## Nguồn
 
@@ -121,21 +122,151 @@ tự viết đó chưa được thông báo nói tới.
 
 ## Hướng đã chốt: mọi chữ về UTF-8
 
-Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), đợt L đưa dữ liệu chữ về UTF-8 cho cả ba ngôn ngữ.
-[Client PopTag](#poptag) là mẫu tham khảo; cơ chế nội bộ và khả năng áp dụng sang 00967 còn cần kiểm. Hệ quả dự kiến:
+Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), dữ liệu chữ của cả ba ngôn ngữ phát hành dưới dạng
+UTF-8 và một bản vá chung cho phép Hàn, Việt, Anh hiện cùng lúc. Khác nhau giữa ba ngôn ngữ chỉ còn là dữ liệu: bảng
+chuỗi, ảnh có chữ và font. Trình mở game chọn bộ dữ liệu và áp bản vá; đổi ngôn ngữ có hiệu lực ở lần mở game sau.
 
-- **Một bản vá chung cho cả ba ngôn ngữ.** Khác nhau giữa Hàn, Việt, Anh chỉ còn là dữ liệu: bảng chuỗi, font và ảnh
-  có chữ. Người chơi khác ngôn ngữ đọc được tên, tiêu đề phòng và chat của nhau.
-- **Chỗ phải vá ở 00967** là các hàm đã định vị ở bảng trên: đổi byte sang Unicode `0x149A740`, đổi ngược `0x149A6D0`,
-  và hai hàm "ký tự hai byte" `0x149A420`, `0x149A480` (UTF-8 có ký tự hai và ba byte nên phép cắt chuỗi, đếm ký tự và
-  di chuyển con trỏ phải đổi theo). Nhánh 1258 và bước ghép dấu có sẵn không còn cần.
-- **Server đổi theo.** Tên, tiêu đề phòng và chat lưu và chuyển dưới dạng UTF-8; chuỗi server gửi cũng là UTF-8. Dữ
-  liệu đã lưu theo bảng mã 949 phải chuyển một lần.
-- **Tiếng Hàn không còn là "không tốn việc":** bảng chuỗi tiếng Hàn phải chuyển mã sang UTF-8, làm bằng máy.
-- **Chọn ngôn ngữ ở bước mở game.** Trình mở game chọn bộ dữ liệu và áp bản vá; không thêm mục chọn vào menu của
-  client. Lý do: client nạp bảng chuỗi, font và ảnh một lần lúc khởi động; exe gốc bị đóng gói nên bản vá nhiều khả năng
-  phải áp lúc chạy, tức là đằng nào cũng cần trình mở game; thêm màn hình mới vào giao diện client là việc dịch ngược
-  riêng. Đổi ngôn ngữ có hiệu lực ở lần mở game sau.
+### Thiết kế đã chọn: mã nội bộ 949x (15/11)
+
+Client giữ bảng mã 949 bên trong, như cách client PopTag làm, và thêm một **bảng mở rộng tĩnh** cho ký tự ngoài 949.
+Ký tự có trong 949 giữ nguyên byte 949. Ký tự ngoài 949 thuộc các dải Latin mở rộng, dấu kết hợp, Hy Lạp, Kirin,
+Latin Extended Additional (chữ Việt dựng sẵn), dấu câu, ký hiệu tiền tệ (có `₫`) và vài dải ký hiệu nhận một mã hai byte
+cố định ở vùng mà 949/UHC không dùng: byte đầu `0xC7..0xFE`, byte sau `0x41..0x5A`, `0x61..0x7A`, `0x81..0xA0`. Bản 1
+có 2.275 ký tự; mã thứ `k` ứng với ký tự thứ `k` theo thứ tự dải trong [`tools/l10n_949x.py`](../../tools/l10n_949x.py),
+dải mới chỉ nối vào cuối nên mã cũ không đổi. Wine từ chối mọi mã này khi giải 949 gốc (kiểm cả 2.275 mã), nên không
+mã nào trùng ký tự 949 có sẵn.
+
+Lý do chọn, so với UTF-8 thuần trong client:
+
+- **Không phải đụng literal và consumer 949.** Exe có ít nhất 134 chuỗi 949 và nhiều lời gọi chuyển mã cứng 949. Mọi
+  lời gọi `MultiByteToWideChar`/`WideCharToMultiByte` trong exe đi qua hai slot IAT (38 và 30 chỗ gọi `call [IAT]`),
+  nên chỉ cần thay hai slot đó. Literal, phép cắt chuỗi theo `IsDBCSLeadByteEx`/`CharNextExA` và mọi đường chuyển mã
+  giữ nguyên, vì mã mở rộng vẫn là cặp byte đầu/byte sau hợp lệ của 949.
+- **Độ dài byte không tăng.** Chữ Việt có dấu chiếm hai byte như chữ Hàn; chữ Hàn và ASCII giữ nguyên byte. Giới hạn byte
+  của tên, tiêu đề phòng và chat trong client và packet vẫn đúng nghĩa; UTF-8 sẽ làm chữ Hàn dài gấp rưỡi.
+- **Bảng tĩnh thay cho bảng động của PopTag.** PopTag cấp mã hai byte động theo phiên nên phải bọc chuỗi `J9:` mang UTF-8
+  qua mạng. Với bảng tĩnh, mọi client vá dùng cùng mã, packet không đổi định dạng, server không cần biết bảng để chuyển
+  tiếp. Tiếng Hàn và ASCII trên dây giống hệt client chưa vá; client chưa vá chỉ thấy sai các ký tự mở rộng.
+- **Dữ liệu vẫn là UTF-8.** Bản dựng phát hành là UTF-8 (`boom-re-l10n`, `tools/l10n_build.py --encoding utf-8`); trình mở
+  game đổi sang 949x khi chuẩn bị thư mục game (`tools/l10n_949x.py convert`). Đổi bộ Hàn UTF-8 sang 949x cho ra đúng
+  từng byte dữ liệu giải nén của bảy file `ssi1` gốc.
+
+Server muốn lưu chữ người chơi dưới dạng UTF-8 thì đổi 949x sang UTF-8 bằng cùng bảng ở biên lưu trữ; việc này chưa làm.
+
+### Bản vá
+
+| Điểm | Cách vá | Nguồn |
+|---|---|---|
+| Section `.l10n` mới (VA `0x2266000`) và entry point mới trên bản sao `CA-r2-stage-social-cmp.exe` | Entry mới thay năm slot IAT rồi nhảy về OEP `0x1470E40`; địa chỉ chính lấy từ PE nguồn có hash cố định | [`tools/l10n_949x_patch.py`](../../tools/l10n_949x_patch.py), [`tools/l10n_949x_hook.c`](../../tools/l10n_949x_hook.c) |
+| IAT `MultiByteToWideChar` `0x16EA4B4` | Với codepage 949: giải thêm mã 949x, các đoạn khác chuyển nguyên cho API gốc; codepage khác đi thẳng API gốc | như trên |
+| IAT `WideCharToMultiByte` `0x16EA4AC` | Với codepage 949: ghi mã 949x cho ký tự trong bảng | như trên |
+| IAT `PeekMessageA` `0x16EA638` | Lấy message bằng `PeekMessageW`; `WM_CHAR` ngoài ASCII thành `WM_IME_COMPOSITION` với `GCS_RESULTSTR` | như trên |
+| IAT `ImmGetCompositionStringA` `0x16EA0D0`, `ImmGetCompositionStringW` `0x16EA0E8` | Khi có ký tự tiêm: trả ký tự đó (A: mã 949x, W: UTF-16); còn lại đi API gốc | như trên |
+| Font `CxUniGulim.fft`, `CxUniGulimBold.fft` (bản sao) | Ô nhập liệu dùng font Gulim, vốn có hình hộp cho chữ Việt ngoài Latin-1; chép 1.709 hình từ `CxUni.fft`/`CxUniBold.fft` | `tools/l10n_949x.py fonts` |
+
+Đường nhập liệu đã đọc tĩnh: message bàn phím tới một trong hai hệ ô nhập, `0x15222C8` hoặc `0x1514A29`. Hệ đầu ghép cặp
+DBCS đến bằng `WM_CHAR` (`0x152015D` qua `0x149A740`); hệ sau cố ý bỏ cặp đó. Cả hai nhận chữ ngoài ASCII qua composition
+IME: `0x152248F` đọc `ImmGetCompositionStringW`, `0x1514E11` đọc `ImmGetCompositionStringA`. Vì vậy hook đổi mọi
+`WM_CHAR` ngoài ASCII thành một kết quả composition. Composition thật của IME đi nguyên vẹn.
+Gõ tiếng Việt kiểu Unikey (`SendInput` với `KEYEVENTF_UNICODE`) được mô phỏng bằng
+[`tools/l10n_unicode_input.c`](../../tools/l10n_unicode_input.c).
+
+### Kết quả native
+
+Ba lượt hai client trên exe runtime `CA-r2-stage-social-cmp.exe` đã vá, dịch vụ Rust chẩn đoán và LAN ảo cô lập theo
+recipe G1 Factory r3; dữ liệu là bản dựng UTF-8 của `boom-re-l10n@11bc77c` đổi sang 949x lúc chuẩn bị thư mục game.
+Ảnh chụp và raw nằm dưới `local/runs/` của worktree; ảnh đã được xem trực tiếp.
+
+| Lượt | Client A / B | Thấy được | Evidence |
+|---|---|---|---|
+| mix-02 | Việt (chưa có ảnh) / Hàn | Sảnh và hộp tạo phòng của A hiện chữ Việt đúng dấu. A tạo phòng với tên ngẫu nhiên tiếng Việt `Phải chơi Lịch sự`; B giao diện Hàn hiện đúng tên đó | [mix-02](../evidence/l10n-utf8-949x-mix-02.json) |
+| vi-04 | Hàn / Việt có 459 ảnh | B: sảnh, hộp tạo phòng, phòng bằng tiếng Việt cùng nút ảnh đã dịch, tên phòng Hàn của A. A (giao diện Hàn) gõ chat `Xin chào các bạn 안녕하…`, server nhận đúng byte 949x | [vi-04](../evidence/l10n-utf8-949x-vi-04.json) |
+| en-05 | Hàn / Anh có 314 ảnh | B: sảnh, phòng bằng tiếng Anh cùng nút ảnh, tên phòng Hàn. A gõ `Hello xin chào 반가워요 ₫ ơư`, ô chat hiện đủ, server nhận đủ 32 byte 949x | [en-05](../evidence/l10n-utf8-949x-en-05.json) |
+
+Bộ Hàn UTF-8 qua 949x hiện như dữ liệu gốc ở client A của vi-04 và en-05. Đọc tĩnh và fixture Wine của bản vá ở
+[evidence tĩnh 949x](../evidence/l10n-utf8-949x-static.json).
+
+### Bổ sung sau CP310 (16/11)
+
+**Font: dùng bộ VN làm mặc định.** Bộ font VN của PopTag (`CxUni`/`CxUniBold` 12×16, `CxUniGulim` 12×15,
+`CxUniGulimBold` 12×16) giữ đủ dấu chồng của chữ hoa (`Ệ`, `Ố`, `Ầ`), còn hình mượn từ `CxUni` KR 12×12 thì mất dấu mũ
+của `Ệ` và dính dấu ở `ế`. Engine 00967 đọc khổ cao từ header nên nạp được bộ này. Gulim VN để advance 6 cho chữ Hàn rộng
+12 điểm nên chữ Hàn ở ô Gulim (chạy chữ, ô chọn người nhận chat) đè lên nhau; `tools/l10n_949x.py vnfonts` lấy advance
+của font KR cho các ô Hàn/CJK. Sau sửa, chữ Hàn và dòng trộn Hàn–Việt đọc được ở cả hai client; tiêu đề phòng
+`ỆỐẦ Việt 한국 ếộ` hiện đủ dấu. Cách mượn hình vào Gulim KR (`fonts`) giữ làm phương án dự phòng khi không dùng được bộ VN.
+Chưa thấy dòng bị cắt hay đè trong các màn đã chụp; nhãn `Số người` vẫn đè giá trị như với font KR.
+
+**Ảnh khác shape.** Dựng với `--allow-shape-change` thay được 549/549 ảnh Việt và 339 ảnh Anh (4 ảnh Anh không có bản Bắc
+Mỹ). Client không lỗi; các nút trước đây bị bỏ như `TẠO PHÒNG`, `ĐI TẮT`, `TÙY CHỌN`, `SIÊU THỊ`, `CREATE ROOM`,
+`QUICK PLAY` đã hiện. Ảnh còn chữ Hàn trong các màn đã chụp, cần vẽ: `레벨` (vi), bong bóng `칭호 UPDATE` (en), nhãn ô
+người chơi `방 장`/`준 비`, tab nhân vật `전체`/`일반`/`럭셔리`/`슈퍼`, `팀선택`, `맵`, `크리에이터 맵`/`오리지널 맵` (vi),
+`자동준비`, banner `다오` và nút `시 작` của chủ phòng (en).
+
+**Chuỗi cứng trong exe.** Catalog có 134 dòng `exe:kr-full.exe`; 81 dòng là tên cấm giữ tiếng Hàn. Bảng
+[`tools/l10n_949x_exe_literals.json`](../../tools/l10n_949x_exe_literals.json) ghi 40 chuỗi và 45 operand trỏ tới chúng
+(xref IDA trên bản sao). `tools/l10n_949x_patch.py --lang vi|en` đặt bản dịch 949x vào section `.l10n` và sửa operand sau
+khi kiểm đúng địa chỉ cũ. Các tham chiếu đưa vào `0x409AD0` bị loại vì đó là danh sách tiêu đề cửa sổ của phần mềm tiệm
+net mà client so với chương trình khác, dịch sẽ làm hỏng phép so. Các consumer còn lại đã đọc tạo `std::string`, định dạng vào
+chuỗi động, cấp phát theo `strlen` hoặc vẽ trực tiếp, nên chuỗi dài hơn không chép vào bộ đệm cố định. Các màn đã chụp không chứa chuỗi nào
+trong 40 chuỗi này, nên chưa thấy chúng trên màn hình.
+
+**Gõ tên phòng.** Client chặn sửa tên khi chuỗi định danh của người chơi rỗng: handler đăng nhập `0x10FD540` đọc theo
+từng người chơi `u32 id`, tên, một `u8` rồi chuỗi định danh vào `CSelfInfo+0x21C`, và `0x13B2320` báo
+`CannotChangeTitleByNoNexonId` khi chuỗi này rỗng. Dịch vụ Rust thêm cấu hình chẩn đoán
+`account_admission.diagnostic_identity_strings` (mặc định rỗng, theo tên hiển thị) để điền chuỗi đó cho tài khoản thử;
+thứ tự và cách mã hóa trường không đổi. Với tài khoản thử, ô tên phòng nhận gõ; server nhận create81
+`Phòng Việt 한국` (17 byte) và `ỆỐẦ Việt 한국 ếộ` (22 byte) dạng 949x, client Hàn hiện đúng tên đó.
+
+**Chat bị cắt: chưa rõ nguyên nhân.** Bản trace ghi mọi ký tự tới dưới dạng `WM_CHAR` và mọi ký tự ngoài ASCII được tiêm
+thành composition, nhưng ô chat bỏ cả một đoạn liên tiếp, kể cả ký tự ASCII, ở vị trí khác nhau giữa các lượt (đầu, giữa
+hoặc cuối chuỗi). Lặp lại chậm hơn (400 ms mỗi ký tự) ở lượt vi-04 vẫn dừng ở cùng 26 byte. Hệ ô nhập `0x1514A29` bỏ cả
+`WM_CHAR` lẫn composition khi trường `+0x24` khác 0 hoặc control đang focus `+0x20` rỗng. `+0x24` chỉ được đặt qua
+`0x15144BB` từ `CBnbNaviWnd` (`0x790940`) khi chuột nằm trên cửa sổ đó; dời chuột ra xa trước khi gõ vẫn mất một đoạn,
+nên giả thuyết này chưa giải thích được. Phép đo tiếp là theo dõi `+0x20`/`+0x24` trong lúc gõ
+([evidence](../evidence/l10n-utf8-949x-chat-drop.json)).
+
+Evidence: [ảnh và chuỗi exe](../evidence/l10n-utf8-949x-images-r4.json), [tên phòng, font và chat](../evidence/l10n-utf8-949x-title-font.json).
+
+### Giới hạn và việc còn lại
+
+- **Tiệm chưa tới được.** Nút tiệm ở phòng chỉ hiện tooltip `Đến Siêu thị`; dịch vụ Rust chưa có tiệm.
+- **Chat chưa chuyển tiếp.** Dịch vụ Rust từ chối opcode chat 18 (`lobby_request_denied`) và đóng kết nối sảnh, nên chưa
+  thấy chat chéo giữa hai client; chữ trộn đã thấy ở tên phòng và ô nhập. Ô chat còn bỏ từng đoạn nhập (mục trên).
+- **Sửa tên phòng** cần chuỗi định danh của tài khoản; mới có cho tài khoản thử qua cấu hình chẩn đoán (mục trên).
+- **Tên phòng tối đa 22 byte.** Hai trong sáu tên phòng mặc định tiếng Việt dài 26 và 27 byte trong 949x
+  (`DefaultRoomTitle1`, `DefaultRoomTitle2`); khi client chọn ngẫu nhiên trúng hai tên này, nút xác nhận tắt (lượt vi-01).
+  Dữ liệu cần câu ngắn hơn. Tương tự, nhãn `ChatToAll` tiếng Việt `<Gởi cho tất cả>` không hiện trong hộp chọn; bản Anh `<To All>` hiện được.
+- **Ảnh còn chữ Hàn**: danh sách cần vẽ ở mục bổ sung phía trên.
+- **Chữ do server gửi và chữ cứng trong exe** (thông báo chạy chữ, nhắc trong ô chat phòng) vẫn tiếng Hàn. Tên map ở phòng
+  lấy từ dữ liệu map server gửi (client ghi đè `fxdynmapinfo.ssd`), nên là `Factory07`.
+- **Nhãn tràn**: `Số người` đè lên giá trị ở khung map.
+- **IME tiếng Hàn thật** (composition từng âm tiết) chưa thử trên Wine; đường đó đi `ImmGetCompositionStringW/A` sẵn có
+  và qua hook khi không có ký tự tiêm.
+- **Server lưu UTF-8**: chưa làm; server nhận và chuyển byte 949x. Client chưa vá thấy sai các ký tự mở rộng.
+- **Màn đăng nhập** không có trong recipe (đăng nhập bằng token); chưa chụp.
+- **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
+
+**Để sau giai đoạn 1** theo [quyết định 15/11](../evidence/owner-directives/l10n-utf8-followup.json): chữ server gửi
+(thông báo chạy chữ: xác định nguồn, nếu do server gửi thì server giữ theo ba thứ tiếng), chat chuyển tiếp (chế độ thử
+nghiệm server chuyển nguyên byte chat 949x trong phòng), tiệm (server trả tiệm mẫu để mở màn hình) và gõ tiếng Hàn bằng
+IME thật. Làm ngay: ảnh bị bỏ vì khác shape, chuỗi cứng trong exe, chat bị cắt và gõ tên phòng.
+
+### Các lượt chẩn đoán trước (Codex, 14–15/11)
+
+Trước khi chọn 949x, Codex đi theo hướng UTF-8 thuần và chạy các lượt chẩn đoán trên client copy: đọc tĩnh các hàm
+chuyển mã, duyệt chuỗi, đo chữ và nhập liệu ([evidence tĩnh](../evidence/l10n-utf8-static.json),
+[PopTag tĩnh](../evidence/l10n-utf8-poptag-static.json)); bộ chuyển mã tham khảo `tools/l10n_utf8_codec.py`, lõi C
+`tools/l10n_utf8_core.c` và [probe Wine](../evidence/l10n-utf8-winprobe.json); các đối chứng
+[01](../evidence/l10n-utf8-control-01.json), [02](../evidence/l10n-utf8-control-02.json),
+[03](../evidence/l10n-utf8-control-03.json) (03 là baseline hai client tới phòng với dữ liệu Hàn gốc); các lượt glyph
+[01](../evidence/l10n-utf8-glyph-01.json)–[04](../evidence/l10n-utf8-glyph-04.json), dialog
+[05](../evidence/l10n-utf8-dialog-05.json), [06](../evidence/l10n-utf8-dialog-06.json),
+[07](../evidence/l10n-utf8-dialog-07.json), [08](../evidence/l10n-utf8-dialog-08.json),
+[09](../evidence/l10n-utf8-dialog-09.json), [10](../evidence/l10n-utf8-dialog-10.json) và
+[fixture GDB](../evidence/l10n-utf8-gdb-fixture.json). Các lượt đó thay hoặc quan sát từng chuỗi bằng GDB và không
+hiện được chữ mới; kết quả có giá trị còn dùng là: chuyển mã đi qua `0x149A740` ở bước đo chữ `0x14BADF0` (lượt 10),
+gate ảnh cho hộp tạo phòng, và recipe hai client của đối chứng 03 mà các lượt 949x tái dùng. Bộ chuyển mã UTF-8 và
+`tools/l10n_utf8_literal_plan.py` không dùng trong bản vá 949x.
 
 **Đối chiếu IDA tĩnh, đang thực hiện.** Với PopTag SHA-256
 `d1f9f9b080abe2557693e6c906c26e22674be5fca6abe13d8913fe1a7c1db5d7`, mã tại `0xB9A400` thử chuyển từng
@@ -398,23 +529,16 @@ không được hiện. Cùng tên và khác byte không chứng minh ảnh kia 
 
 ## Chưa biết, phải đo khi mở đợt L
 
-- **Đoạn mã UTF-8 của PopTag làm gì ở từng chỗ.** Đọc kỹ `.u8code`, `.u8data`, `.vkinp` và 63 chỗ gọi trong build 2010,
-  rồi tìm chỗ tương ứng ở 00967. Đây là việc đầu tiên của đợt.
-- **Áp bản vá vào 00967 bằng cách nào.** Exe gốc bị đóng gói và image đã unpack không có bảng import, nên chưa có file
-  exe vá sẵn chạy được; phương án đang nghĩ tới là vá trong bộ nhớ lúc mở game.
-- **Giới hạn độ dài tính theo byte.** Chữ Hàn dài ba byte ở UTF-8 thay vì hai, chữ Việt có dấu dài hai hoặc ba byte. Tên,
-  tiêu đề phòng và chat có giới hạn trong client và trong packet; phải đo từng trường.
+- **Giới hạn độ dài tính theo byte.** Với [949x](#utf8) chữ Việt có dấu chiếm hai byte. Tiêu đề phòng giới hạn 1..22 byte
+  ở client (`0xC542C0`); chat và tên nhân vật chưa đo giới hạn.
 - **Client có lọc bảng chuỗi theo mã ngôn ngữ không.** Mỗi mục trong `ClientString` của pack mang mã 1042.
-- **Ít nhất 134 chuỗi ứng viên nằm trong exe** là byte theo bảng mã 949; inventory heuristic có thể sót literal ngắn.
-  Cần xác định consumer và đường chuyển mã trước khi dùng UTF-8 chung.
-- **Gõ tiếng Việt và tiếng Hàn trong client** (ô chat, tên phòng) sau khi vá: chưa xem đường nhập.
 - **Dùng font của client VN** (ô 12×16) trong client KR để chữ có dấu dễ đọc hơn: hàm nạp đọc kích thước từ header và
   [client PopTag](#poptag) phát kèm đúng bộ font đó cho build 2010, nhưng bố cục giao diện của 00967 có thể giả định
   dòng cao 12 điểm.
 - **Server biết ngôn ngữ của từng người bằng cách nào** để gửi đúng bảng chuỗi: lưu theo account hay trình mở game báo
   lúc đăng nhập.
-- **Kiểm toàn vẹn** của client với mã đã vá và file chữ đã thay. Nguồn checksum `ssi1` và giới hạn phép thử KR
-  nằm ở [mục dữ liệu chữ](#data-files); phần còn lại (pack, exe) chưa đo.
+- **Kiểm toàn vẹn** của client với exe vá và pack/ssi1 dựng lại: các lượt 949x trên exe runtime `CA-r2-*` nạp được
+  bộ dựng mà không thấy phục hồi file; exe `CA.exe` nguyên bản vẫn chưa chạy được trên Wine (CP300).
 - **Client tra 30 khoá có chữ Hàn từ đâu lúc chạy** và bản dựng UTF-8 đổi khoá sang UTF-8 có làm mất chức năng nào
   không; quét tĩnh không thấy tham chiếu nào.
 - **Chuỗi nào đi qua `printf`** với chính nó làm chuỗi định dạng; hiện coi mọi dấu `%` nghĩa đen là có nguy cơ.

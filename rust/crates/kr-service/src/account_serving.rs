@@ -70,6 +70,10 @@ pub struct Config {
     pub profile_mode: ProfileMode,
     #[serde(default)]
     pub max_sessions: Option<usize>,
+    /// Diagnostic test accounts only, keyed by display name: value written into the
+    /// auth reply's empty identity string (L1 room-title editing). Empty by default.
+    #[serde(default)]
+    pub diagnostic_identity_strings: std::collections::BTreeMap<String, String>,
 }
 #[derive(Clone, Copy, Default, PartialEq, Eq, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -90,6 +94,7 @@ impl Config {
             || !(1..=64).contains(&self.worker_queue_capacity)
             || self.max_sessions.is_some_and(|n| !(1..=128).contains(&n))
             || (self.profile_mode == ProfileMode::Fixed && self.max_sessions.is_some())
+            || self.diagnostic_identity_strings.len() > 8
         {
             return Err(io::Error::other("invalid account serving bounds"));
         }
@@ -511,11 +516,24 @@ pub(crate) async fn connection(
                     .expect("validated own template")
                     .payload = rendered.own291;
             }
+            if let Some(id) = endpoints
+                .account_admission
+                .as_ref()
+                .and_then(|cfg| cfg.diagnostic_identity_strings.get(&owned.display_name))
+            {
+                let auth = packets.get_mut("auth_A").expect("validated auth reply");
+                auth.payload = kr_wire::kr00967::with_identity_string(
+                    &auth.payload,
+                    owned.display_name.len(),
+                    id.as_bytes(),
+                )?;
+            }
             if echo {
                 let Lease::Login(Some(login)) = &lease else {
                     unreachable!()
                 };
-                let offset = 86 + owned.display_name.len();
+                // Echo u32 sits 44 bytes before the end (86 + name for the base layout).
+                let offset = packets["auth_A"].payload.len() - 44;
                 packets
                     .get_mut("auth_A")
                     .expect("validated auth reply")

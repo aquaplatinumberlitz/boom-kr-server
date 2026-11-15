@@ -1,0 +1,18 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "source": "design",
+  "status": "candidate",
+  "scope": "Owned standalone i686 fixture with cdecl conversion, Wine-GDB on Wine 10.0-20260425; no game or client.",
+  "fixture_sha256": "6c64ef348c1f6b76c5ca58d05805bbbf90dad4afa3a4e672324ca58ae0718eda",
+  "hook_sha256": "d5783871de517997d8f2f8613b1116f50099bb988cd4a850a0090039468b08a8",
+  "observation": "Both pass-through and replacement modes reported an exact Title2 match and a validated return of nine UTF-16 units. Replacement mode reported a nine-unit substitution; both inferiors exited normally and Wine-GDB returned zero without an internal fatal error. The fixture source returns zero only if count, two canaries and terminator match; its stdout was not captured in the debugger log, so replacement code units were not independently observed.",
+  "local_evidence": [
+    {"path": "local/research/l10n-utf8-codex/gdb-fixture-pass/run.json", "sha256": "9e7b0557a511ee40acfe1778f45468a698ec8c037ad23f8b06dc8d14360e2ad9"},
+    {"path": "local/research/l10n-utf8-codex/gdb-fixture-pass/raw-seal.json", "sha256": "a2f84dbc7c5ead6e16755935c7662cec7e2166696e838bffa47d5ee08e40e057"},
+    {"path": "local/research/l10n-utf8-codex/gdb-fixture-replace/run.json", "sha256": "8b61c66f8047ab75ef24edfd898d4c764169638bc01498de1ebf961b54066f22"},
+    {"path": "local/research/l10n-utf8-codex/gdb-fixture-replace/raw-seal.json", "sha256": "3930ee6d6665e7ed2271d06d512de5373d04694410fecb8969477bdc9cc5f981"}
+  ],
+  "cleanup": "Separate private namespaces with loopback only and no IPv4 or IPv6 default route; no remaining namespace processes. Fixture and hook hashes were unchanged.",
+  "limits": "Two finite fixture runs, not a proof of game debugger stability, injected code units, glyph drawing, IME, packet handling or UTF-8 client compatibility."
+}
