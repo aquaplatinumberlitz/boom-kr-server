@@ -219,9 +219,11 @@ thứ tự và cách mã hóa trường không đổi. Với tài khoản thử,
 
 **Chat bị cắt: chưa rõ nguyên nhân.** Bản trace ghi mọi ký tự tới dưới dạng `WM_CHAR` và mọi ký tự ngoài ASCII được tiêm
 thành composition, nhưng ô chat bỏ cả một đoạn liên tiếp, kể cả ký tự ASCII, ở vị trí khác nhau giữa các lượt (đầu, giữa
-hoặc cuối chuỗi). Lặp lại chậm hơn (400 ms mỗi ký tự) ở lượt vi-04 vẫn dừng ở cùng 26 byte. Vì ký tự ASCII cũng mất, nghi
-khóa nhập của hệ ô nhập `0x1514A29` (trường `+0x24`, bỏ cả `WM_CHAR` lẫn composition khi lớn hơn 0) bị giữ trong một
-khoảng; phép đo tiếp là đặt watchpoint lên trường đó trong lượt chat.
+hoặc cuối chuỗi). Lặp lại chậm hơn (400 ms mỗi ký tự) ở lượt vi-04 vẫn dừng ở cùng 26 byte. Hệ ô nhập `0x1514A29` bỏ cả
+`WM_CHAR` lẫn composition khi trường `+0x24` khác 0 hoặc control đang focus `+0x20` rỗng. `+0x24` chỉ được đặt qua
+`0x15144BB` từ `CBnbNaviWnd` (`0x790940`) khi chuột nằm trên cửa sổ đó; dời chuột ra xa trước khi gõ vẫn mất một đoạn,
+nên giả thuyết này chưa giải thích được. Phép đo tiếp là theo dõi `+0x20`/`+0x24` trong lúc gõ
+([evidence](../evidence/l10n-utf8-949x-chat-drop.json)).
 
 Evidence: [ảnh và chuỗi exe](../evidence/l10n-utf8-949x-images-r4.json), [tên phòng, font và chat](../evidence/l10n-utf8-949x-title-font.json).
 
