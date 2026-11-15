@@ -5,6 +5,11 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP306: Camp08 đã có seed native; report bom mới đang chặn terrain.**
+[Spawn/flags và boundary C2S122](evidence/rust-service/g1-camp08-boundary.json) tách trạng thái ban đầu khỏi
+failed gameplay; Camp08 chưa mở hoàn chỉnh. Codex tiếp G1 theo [Bảng điều hành](PLAN.md#dashboard),
+[L1 đã bàn giao cho Claude](evidence/owner-directives/l10n-claude-owner.json).
+
 **CP299: Patrit14 đã có route terrain/item với account roster 2/4/8 qua hai ván/reset.**
 [Bằng chứng và giới hạn](evidence/rust-service/g1-patrit-terrain.json) giữ đối chiếu spawn, thùng,
 Roller cấu hình và MastTileA. Chủ dự án đã chấp nhận [Village10/Tomb12 2–6 người, bốn map còn lại 2–8](evidence/owner-directives/g1-map-roster-limits.json).
