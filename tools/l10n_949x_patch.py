@@ -19,7 +19,8 @@ sys.path.insert(0, str(HERE))
 import l10n_949x as X  # noqa: E402
 
 SOURCE_SHA256 = '4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed'  # CA-r2-stage-social-cmp.exe
-WANT = {'MultiByteToWideChar': 'IAT_MB2WC', 'WideCharToMultiByte': 'IAT_WC2MB'}
+WANT = {'MultiByteToWideChar': 'IAT_MB2WC', 'WideCharToMultiByte': 'IAT_WC2MB', 'PeekMessageA': 'IAT_PEEKMESSAGEA',
+        'GetProcAddress': 'IAT_GETPROCADDRESS', 'GetModuleHandleA': 'IAT_GETMODULEHANDLEA'}
 
 
 def build(src, out):
@@ -35,7 +36,7 @@ def build(src, out):
         for imp in entry.imports:
             if imp.name and imp.name.decode() in WANT:
                 slots[WANT[imp.name.decode()]] = imp.address
-    assert len(slots) == 2, slots
+    assert len(slots) == len(WANT), slots
     align = pe.OPTIONAL_HEADER.SectionAlignment
     falign = pe.OPTIONAL_HEADER.FileAlignment
     last = pe.sections[-1]
@@ -46,8 +47,7 @@ def build(src, out):
     header = work / 'l10n_949x_table.h'
     X.c_table(header)
     with header.open('a') as f:
-        f.write('#define IAT_MB2WC 0x%x\n#define IAT_WC2MB 0x%x\n#define OEP 0x%x\n'
-                % (slots['IAT_MB2WC'], slots['IAT_WC2MB'], oep))
+        f.write(''.join('#define %s 0x%x\n' % kv for kv in sorted(slots.items())) + '#define OEP 0x%x\n' % oep)
     obj = work / 'hook.o'
     elf = work / 'hook.elf'
     blob = work / 'hook.bin'

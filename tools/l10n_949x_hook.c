@@ -111,11 +111,48 @@ __attribute__((stdcall)) int hook_wc2mb(unsigned cp, unsigned flags, const u16 *
     return out;
 }
 
+/* Nhập liệu: cửa sổ game là ANSI và lấy message bằng PeekMessageA, nên WM_CHAR ngoài bảng mã
+ * ACP của Wine/Windows thành '?'. Hook lấy message bằng PeekMessageW rồi đổi ký tự sang 949x;
+ * mã hai byte được giao thành hai WM_CHAR (lead rồi trail), đúng cách control 0x152015D ghép DBCS. */
+typedef struct { void *hwnd; unsigned message, wParam; long lParam; unsigned time; long x, y; } msg_t;
+typedef int(__attribute__((stdcall)) * peek_t)(msg_t *, void *, unsigned, unsigned, unsigned);
+typedef void *(__attribute__((stdcall)) * gmh_t)(const char *);
+typedef void *(__attribute__((stdcall)) * gpa_t)(void *, const char *);
+peek_t orig_peeka, peekw;
+static msg_t pending;
+static int has_pending;
+
+__attribute__((stdcall)) int hook_peeka(msg_t *m, void *hwnd, unsigned fmin, unsigned fmax, unsigned flags) {
+    int r;
+    if (has_pending && (!hwnd || hwnd == pending.hwnd) && ((!fmin && !fmax) || (fmin <= 0x102 && 0x102 <= fmax))) {
+        *m = pending;
+        if (flags & 1) has_pending = 0;
+        return 1;
+    }
+    if (!peekw) return orig_peeka(m, hwnd, fmin, fmax, flags);
+    r = peekw(m, hwnd, fmin, fmax, flags);
+    if (r && (m->message == 0x102 || m->message == 0x106) && m->wParam >= 0x80 && m->wParam <= 0xFFFF) {
+        u16 w = (u16)m->wParam;
+        char b[4];
+        int n = hook_wc2mb(949, 0, &w, 1, b, 4, 0, 0);
+        l10n_stats[2]++;
+        if (n == 2) {
+            if (m->message == 0x102 && (flags & 1)) { pending = *m; pending.wParam = (u8)b[1]; has_pending = 1; }
+            m->wParam = (u8)b[0];
+        } else m->wParam = n == 1 ? (u8)b[0] : '?';
+    }
+    return r;
+}
+
 void l10n_init(void) {
+    void *user32 = ((gmh_t) * (void **)IAT_GETMODULEHANDLEA)("user32.dll");
     orig_mb2wc = (mb2wc_t)*SLOT_MB2WC;
     orig_wc2mb = (wc2mb_t)*SLOT_WC2MB;
+    orig_peeka = (peek_t) * (void **)IAT_PEEKMESSAGEA;
+    peekw = user32 ? (peek_t)((gpa_t) * (void **)IAT_GETPROCADDRESS)(user32, "PeekMessageW") : 0;
     *SLOT_MB2WC = (void *)hook_mb2wc;
     *SLOT_WC2MB = (void *)hook_wc2mb;
+    *(void **)IAT_PEEKMESSAGEA = (void *)hook_peeka;
     l10n_stats[3] = 0x39343978; /* "x949": dấu đã cài */
 }
 
