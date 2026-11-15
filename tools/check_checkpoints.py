@@ -120,7 +120,8 @@ def historical_checkpoint_publication(root, relative, expected_sha, expected_byt
     record_path = f'docs/evidence/checkpoints/records/{checkpoint}.json'
     try:
         births = subprocess.run(
-            ['git', 'log', '--reverse', '--diff-filter=A', '--format=%H', 'HEAD', '--', record_path],
+            ['git', 'log', '--reverse', '--topo-order', '--full-history', '-m', '--no-renames',
+             '--diff-filter=A', '--format=%H', 'HEAD', '--', record_path],
             cwd=root, capture_output=True, text=True, check=True).stdout.splitlines()
         if not births:
             return None

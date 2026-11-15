@@ -214,6 +214,49 @@ class SourceHistoryTests(unittest.TestCase):
         self.assertTrue(self.verify(requested)[0])
         self.assertTrue(checker.verify_evidence_item(item, self.root, True, 'CP002')[0])
 
+    def test_record_created_in_merge_retains_exact_publication_boundary(self):
+        (self.root / 'base.txt').write_text('base\n')
+        self.commit()
+        base_branch = subprocess.check_output(
+            self.git + ['branch', '--show-current'], text=True).strip()
+        subprocess.run(self.git + ['checkout', '-qb', 'side'], check=True)
+        (self.root / 'side.txt').write_text('side\n')
+        self.commit()
+        subprocess.run(self.git + ['checkout', '-q', base_branch], check=True)
+        (self.root / 'main.txt').write_text('main\n')
+        self.commit()
+        subprocess.run(self.git + ['merge', '--no-ff', '--no-commit', 'side'],
+                       check=True, capture_output=True)
+        # The fixture is first published by the merge, not by either parent.
+        item, path = self.fixture('docs/features.json', external=True)
+        publication = subprocess.check_output(self.git + ['rev-parse', 'HEAD'], text=True).strip()
+        self.assertEqual(len(subprocess.check_output(
+            self.git + ['show', '-s', '--format=%P'], text=True).split()), 2)
+        later = b'{"later": true}\n'
+        path.write_bytes(later)
+        self.commit()
+        path.write_text('{"current": true}\n')
+        errors, warnings, checked, missing = self.verify(item)
+        self.assertEqual((errors, checked, missing), ([], 1, 0))
+        self.assertTrue(any(publication in w for w in warnings))
+        later_pin = item | dict(bytes=len(later), sha256=hashlib.sha256(later).hexdigest())
+        self.assertTrue(self.verify(later_pin)[0])
+
+    def test_renamed_record_is_published_at_its_new_path(self):
+        item, path = self.fixture('docs/features.json', external=True)
+        old = self.root / 'docs/evidence/checkpoints/records/CP001.json'
+        new = old.with_name('CP002.json')
+        record = json.loads(old.read_text())
+        record['id'] = 'CP002'
+        old.unlink()
+        new.write_text(json.dumps(record))
+        self.commit()
+        path.write_text('{"current": true}\n')
+        errors, warnings, checked, missing = checker.verify_evidence_item(
+            item, self.root, True, 'CP002')
+        self.assertEqual((errors, checked, missing), ([], 1, 0))
+        self.assertTrue(any('HISTORICAL METADATA DOC VERIFIED' in w for w in warnings))
+
     def test_issue_snapshot_metadata_keeps_external_manifest_authentication(self):
         item, path = self.fixture(
             'docs/evidence/issue-reconciliation/github-snapshot.json', external=True)
