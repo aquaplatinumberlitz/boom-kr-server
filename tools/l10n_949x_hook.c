@@ -128,6 +128,29 @@ imm_t orig_imma, orig_immw;
 static u16 inj_char;
 static int inj_active;
 
+#ifdef L10N_TRACE
+/* Bản chẩn đoán: ghi sự kiện nhập liệu vào l10n-trace.log trong thư mục làm việc của game. */
+typedef void *(__attribute__((stdcall)) * cfa_t)(const char *, unsigned, unsigned, void *, unsigned, unsigned, void *);
+typedef int(__attribute__((stdcall)) * wf_t)(void *, const void *, unsigned, unsigned *, void *);
+static cfa_t tr_create;
+static wf_t tr_write;
+static void *tr_file;
+static void trace(char tag, unsigned a, unsigned b, unsigned c) {
+    char line[48];
+    unsigned v[3] = {a, b, c}, n = 0, w;
+    if (!tr_file) return;
+    line[n++] = tag;
+    for (int k = 0; k < 3; k++) {
+        line[n++] = ' ';
+        for (int sh = 28; sh >= 0; sh -= 4) line[n++] = "0123456789abcdef"[(v[k] >> sh) & 15];
+    }
+    line[n++] = '\n';
+    tr_write(tr_file, line, n, &w, 0);
+}
+#else
+#define trace(tag, a, b, c) ((void)0)
+#endif
+
 __attribute__((stdcall)) int hook_peeka(msg_t *m, void *hwnd, unsigned fmin, unsigned fmax, unsigned flags) {
     int r;
     if (!peekw) return orig_peeka(m, hwnd, fmin, fmax, flags);
@@ -136,6 +159,7 @@ __attribute__((stdcall)) int hook_peeka(msg_t *m, void *hwnd, unsigned fmin, uns
     if (r && m->message == 0x102 && m->wParam >= 0x80 && m->wParam <= 0xFFFF &&
         !(m->wParam >= 0xD800 && m->wParam <= 0xDFFF)) {
         l10n_stats[2]++;
+        trace('P', flags, m->wParam, (unsigned)m->hwnd);
         if (flags & 1) { inj_char = (u16)m->wParam; inj_active = 1; }
         m->message = 0x10F; /* WM_IME_COMPOSITION */
         m->lParam = 0x800;  /* GCS_RESULTSTR */
@@ -144,6 +168,7 @@ __attribute__((stdcall)) int hook_peeka(msg_t *m, void *hwnd, unsigned fmin, uns
 }
 
 __attribute__((stdcall)) long hook_immw(void *himc, unsigned index, void *buf, unsigned len) {
+    trace('W', index, len, inj_active ? inj_char : 0xFFFFFFFF);
     if (!inj_active) return orig_immw(himc, index, buf, len);
     if (index != 0x800) return 0;
     if (len == 0) return 2;
@@ -155,6 +180,7 @@ __attribute__((stdcall)) long hook_immw(void *himc, unsigned index, void *buf, u
 __attribute__((stdcall)) long hook_imma(void *himc, unsigned index, void *buf, unsigned len) {
     char b[4];
     int n;
+    trace('A', index, len, inj_active ? inj_char : 0xFFFFFFFF);
     if (!inj_active) return orig_imma(himc, index, buf, len);
     if (index != 0x800) return 0;
     n = hook_wc2mb(949, 0, &inj_char, 1, b, 4, 0, 0);
@@ -179,6 +205,17 @@ void l10n_init(void) {
     *(void **)IAT_IMMGETCOMPOSITIONSTRINGA = (void *)hook_imma;
     *(void **)IAT_IMMGETCOMPOSITIONSTRINGW = (void *)hook_immw;
     l10n_stats[3] = 0x39343978; /* "x949": dấu đã cài */
+#ifdef L10N_TRACE
+    {
+        void *k32 = ((gmh_t) * (void **)IAT_GETMODULEHANDLEA)("kernel32.dll");
+        gpa_t gpa = (gpa_t) * (void **)IAT_GETPROCADDRESS;
+        tr_create = (cfa_t)gpa(k32, "CreateFileA");
+        tr_write = (wf_t)gpa(k32, "WriteFile");
+        if (tr_create && tr_write) tr_file = tr_create("l10n-trace.log", 0x40000000, 1, 0, 2, 0x80, 0);
+        if (tr_file == (void *)-1) tr_file = 0;
+        trace('I', 0, 0, 0);
+    }
+#endif
 }
 
 __asm__(".globl l10n_entry\n"

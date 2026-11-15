@@ -24,7 +24,28 @@ WANT = {'MultiByteToWideChar': 'IAT_MB2WC', 'WideCharToMultiByte': 'IAT_WC2MB', 
         'ImmGetCompositionStringA': 'IAT_IMMGETCOMPOSITIONSTRINGA', 'ImmGetCompositionStringW': 'IAT_IMMGETCOMPOSITIONSTRINGW'}
 
 
-def build(src, out):
+def literal_blob(base_va, catalog, lang):
+    """Chuỗi cứng của exe theo ngôn ngữ dựng: trả (bytes, [(operand_va, old_va, new_va)], báo cáo)."""
+    import csv
+    table = json.loads((HERE / 'l10n_949x_exe_literals.json').read_text())
+    rows = {r['id']: r for r in csv.DictReader(catalog.open(encoding='utf-8', newline=''))}
+    blob, patches, report = bytearray(), [], []
+    for lit in table['literals']:
+        row = rows[lit['id']]
+        text = row[lang] if lang == 'vi' and row.get('vi_status') in ('translated', 'reused') else (
+            row['en'] if lang == 'en' and row.get('en_status') not in ('', 'missing') and row['en'] else '')
+        if not text or text == row['ko']:
+            continue
+        data = X.encode(text, 'replace') + b'\0'
+        new_va = base_va + len(blob)
+        blob += data + b'\0' * (-len(data) % 4)
+        for ref in lit['refs']:
+            patches.append((int(ref['operand'], 16), int(lit['va'], 16), new_va))
+        report.append({'id': lit['id'], 'bytes': len(data) - 1, 'ko_bytes': lit['ko_cp949_len'], 'refs': len(lit['refs'])})
+    return bytes(blob), patches, report
+
+
+def build(src, out, lang=None, catalog=None, trace=False):
     data = src.read_bytes()
     digest = hashlib.sha256(data).hexdigest()
     if digest != SOURCE_SHA256:
@@ -57,6 +78,7 @@ def build(src, out):
                       ' /DISCARD/ : { *(.comment) *(.note*) *(.eh_frame*) }\n}\n' % va)
     subprocess.run(['clang', '--target=i386-none-elf', '-O2', '-ffreestanding', '-fno-pic', '-fno-builtin',
                     '-fno-stack-protector', '-fno-asynchronous-unwind-tables', '-mno-sse', '-Wall', '-Werror',
+                    *(['-DL10N_TRACE'] if trace else []),
                     '-I', str(work), '-c', str(HERE / 'l10n_949x_hook.c'), '-o', str(obj)], check=True)
     subprocess.run(['ld.lld', '-m', 'elf_i386', '-T', str(script), '-o', str(elf), str(obj)], check=True)
     subprocess.run(['llvm-objcopy', '-O', 'binary', '-j', '.all', str(elf), str(blob)], check=True)
@@ -66,6 +88,11 @@ def build(src, out):
         if len(parts) == 3:
             syms[parts[2]] = int(parts[0], 16)
     code = blob.read_bytes()
+    code += b'\0' * (-len(code) % 16)
+    literal_report, patches = [], []
+    if lang:
+        lit, patches, literal_report = literal_blob(va + len(code), catalog, lang)
+        code += lit
     vsize = len(code)
     rsize = (vsize + falign - 1) // falign * falign
     # Thêm section header mới.
@@ -79,9 +106,15 @@ def build(src, out):
     pe.OPTIONAL_HEADER.SizeOfImage = (rva + vsize + align - 1) // align * align
     pe.OPTIONAL_HEADER.AddressOfEntryPoint = syms['l10n_entry'] - base
     image = bytearray(pe.write())
+    for operand, old, new in patches:
+        off = pe.get_offset_from_rva(operand - base)
+        if struct.unpack_from('<I', image, off)[0] != old:
+            raise SystemExit('operand %#x không trỏ chuỗi %#x' % (operand, old))
+        struct.pack_into('<I', image, off, new)
     image += b'\0' * (raw_ptr - len(image))
     image += code + b'\0' * (rsize - vsize)
-    exe = out / 'CA-r2-l10n-949x.exe'
+    tag = ('-' + lang if lang else '') + ('-trace' if trace else '')
+    exe = out / ('CA-r2-l10n-949x%s.exe' % tag)
     exe.write_bytes(image)
     check = pefile.PE(str(exe))
     assert check.sections[-1].Name.rstrip(b'\0') == b'.l10n'
@@ -90,8 +123,11 @@ def build(src, out):
             'oep': hex(oep), 'entry': hex(syms['l10n_entry']), 'iat': {k: hex(v) for k, v in slots.items()},
             'symbols': {k: hex(v) for k, v in syms.items() if k.startswith(('hook_', 'orig_', 'l10n_'))},
             'table': {'format': '949x', 'version': X.VERSION, 'ext_chars': len(X.EXT)},
-            'hook_c_sha256': hashlib.sha256((HERE / 'l10n_949x_hook.c').read_bytes()).hexdigest()}
-    (out / 'patch.json').write_text(json.dumps(meta, indent=2) + '\n')
+            'hook_c_sha256': hashlib.sha256((HERE / 'l10n_949x_hook.c').read_bytes()).hexdigest(),
+            'exe_literals': {'lang': lang, 'catalog': str(catalog) if catalog else None,
+                             'catalog_sha256': hashlib.sha256(catalog.read_bytes()).hexdigest() if catalog else None,
+                             'strings': literal_report, 'operands_patched': len(patches)}}
+    (out / ('patch%s.json' % tag)).write_text(json.dumps(meta, indent=2) + '\n')
     return meta
 
 
@@ -99,8 +135,14 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--src', type=Path, required=True)
     ap.add_argument('--out', type=Path, required=True)
+    ap.add_argument('--lang', choices=('vi', 'en'), help='thay chuỗi cứng của exe bằng bản dịch (949x)')
+    ap.add_argument('--trace', action='store_true', help='bản chẩn đoán ghi l10n-trace.log')
+    ap.add_argument('--catalog', type=Path, default=Path('/home/admin/boom/repos/boom-re-l10n/l10n/catalog_en.csv'))
     a = ap.parse_args()
-    print(json.dumps(build(a.src.resolve(), a.out.resolve()), indent=2))
+    meta = build(a.src.resolve(), a.out.resolve(), a.lang, a.catalog.resolve() if a.lang else None, a.trace)
+    print(json.dumps({k: v for k, v in meta.items() if k != 'exe_literals'}, indent=2))
+    if a.lang:
+        print('exe literals:', len(meta['exe_literals']['strings']), 'strings,', meta['exe_literals']['operands_patched'], 'operands')
 
 
 if __name__ == '__main__':
