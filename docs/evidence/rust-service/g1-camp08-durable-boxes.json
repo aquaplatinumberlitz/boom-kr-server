@@ -1,0 +1,50 @@
+{
+  "schema": "kre-camp08-durable-boxes-v1",
+  "checkpoint": "CP310",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+  "scope": "Kernel Rust thùng nhiều hit, native StrongBox01/02 và route hai vòng với item ẩn/kết quả/reset. Chưa mở toàn Camp08 hoặc hoàn tất G1.",
+  "environment": {
+    "service_sha256": "fc685963639426f5e4622966fe49e9889f1e7da00e9f8beff53658f3588e7161",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "map_payload_sha256": "80dc0d8c655a83e7397fb9e0d7977788c42547b632c32edb85659bcbf2520144",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "network": "Hai account KR trong Wine với LAN/relay xác thực ảo cô lập."
+  },
+  "native_behavior": {
+    "path": "local/research/codex/g1-camp08-strongbox-hits-native-r1/hit-verification.json",
+    "bytes": 6597,
+    "sha256": "53a65111050255378266e4d3693f22ff59648cc62dbd8d6ea742f16d291fd43c"
+  },
+  "native_variants": {
+    "path": "local/research/codex/g1-camp08-strongbox-counters-native-r1/variant-verification.json",
+    "bytes": 3402,
+    "sha256": "ab72ad61bfcc9edadb4ed0a9329c9fc54ba4e5a60ae2ebbe329f901e219e822c"
+  },
+  "native_actual_counter": {
+    "path": "local/research/codex/g1-camp08-actual-counters-native-r1/counter-verification.json",
+    "bytes": 33703,
+    "sha256": "e56925a7387dce4d137c432c6098a4293f047ac4a277ee73555a8aca45db1b5e"
+  },
+  "native_serving": {
+    "path": "local/research/codex/g1-camp08-durable-serving-native-r1/serving-verification.json",
+    "bytes": 108358,
+    "sha256": "eff93b54c7b00127c0b438c49fae90de3e93ed1bb5d2f0f66d61c0bc761cac18"
+  },
+  "implementation": {
+    "path": "local/research/codex/g1-durable-terrain-source-verification.json",
+    "bytes": 1439,
+    "sha256": "31ee3d8cd74ffb15e795df776bd23a1b0889a9f040ed31db8212f3a37b26a91c"
+  },
+  "failed_startup": {
+    "path": "local/research/codex/g1-camp08-strongbox-dispatch-native-r1/failure-verification.json",
+    "bytes": 786,
+    "sha256": "8f0d830551fac1c519b1485c32232406068c14ee892587d8ca635c334c8b8e40"
+  },
+  "limits": [
+    "Lượt probe generic game-box +C4 không bắt StrongBox; lookup E9FCF0 trả null. Phân loại candidate cũ bị loại khỏi contract. Actual object là CGOTileMoveAbleBox qua E9FF80, counter+D8.",
+    "Offset24 của TileInfo là counter trong nhánh type2 đã đo; không gán footprint width cho mọi type.",
+    "Kernel và lựa chọn hiddenBomb/Fire là design, không original-server/drop distribution. Native route/roster/power cụ thể; chain/multiroom negatives là regression controls.",
+    "Herb/Line/MissileBase/PinPillar, các route và roster Camp08 còn thiếu. Không có fullCamp08/G1/M8/Internet/load acceptance."
+  ]
+}

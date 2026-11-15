@@ -28,3 +28,7 @@ Các tên và số ô có hành vi chưa được phủ đầy đủ trong sáu 
 Trong Camp08, nguồn cờ khởi tạo của `PinGround01` đã được kiểm từ TileInfo đến native hai view;
 [contract Camp08](../protocol/terrain.md#rust-camp08-boundary) giữ phạm vi và policy Rust. Kết luận này không
 chứng nhận terrain, thùng hoặc toàn bộ tác động lên nhân vật của các loại ô còn lại.
+
+Type 2 trong nhánh `CGOTileMoveAbleBox` đã được đối chiếu riêng: dword offset 24 nạp bộ đếm hit; StrongBox01/02
+có 5/2, giá trị 0 đổi thành 1. Không dùng trường này làm chiều rộng footprint cho thùng. [Contract Camp08](../protocol/terrain.md#rust-camp08-boundary)
+giữ consumer, native counter và giới hạn; các số chưa rõ trong bảng trên vẫn là kiểm kê candidate ban đầu.

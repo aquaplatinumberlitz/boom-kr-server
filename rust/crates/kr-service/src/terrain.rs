@@ -11,6 +11,9 @@ pub struct Config {
     width: u8,
     height: u8,
     kinds: Vec<u8>,
+    /// Optional per-cell hit counts; zero on non-box cells, 1..=254 on boxes.
+    #[serde(default)]
+    box_hits: Vec<u8>,
     map_sha256: String,
     seed_sha256: String,
     fixtures: BTreeMap<String, String>,
@@ -33,6 +36,8 @@ pub(crate) struct Blast {
 pub(crate) struct Terrain {
     seed: Vec<u8>,
     kinds: Vec<u8>,
+    seed_hits: Vec<u8>,
+    remaining_hits: Vec<u8>,
     width: u8,
     height: u8,
     max_power: u8,
@@ -96,9 +101,27 @@ impl Config {
         {
             return Err(error());
         }
+        let hits = if self.box_hits.is_empty() {
+            self.kinds.iter().map(|kind| u8::from(*kind == 2)).collect()
+        } else {
+            if self.box_hits.len() != self.kinds.len()
+                || self.kinds.iter().zip(&self.box_hits).any(|(kind, hits)| {
+                    if *kind == 2 {
+                        !(1..=254).contains(hits)
+                    } else {
+                        *hits != 0
+                    }
+                })
+            {
+                return Err(error());
+            }
+            self.box_hits.clone()
+        };
         Ok(Terrain {
             seed: self.kinds.clone(),
             kinds: self.kinds.clone(),
+            seed_hits: hits.clone(),
+            remaining_hits: hits,
             width: self.width,
             height: self.height,
             max_power: self.maximum_power,
@@ -114,6 +137,7 @@ impl Terrain {
     pub fn begin(&mut self, generation: u64) {
         self.generation = generation;
         self.kinds = self.seed.clone();
+        self.remaining_hits = self.seed_hits.clone();
         self.pending.clear();
         self.seen.clear();
         self.cleared.clear();
@@ -163,7 +187,7 @@ impl Terrain {
         let mut queue = VecDeque::from([root]);
         let mut queued = BTreeSet::from([root]);
         let mut processed = Vec::new();
-        let mut cleared = BTreeSet::new();
+        let mut hit_boxes = BTreeSet::new();
         while let Some(id) = queue.pop_front() {
             let bomb = &self.pending[&id];
             processed.push(id);
@@ -182,7 +206,7 @@ impl Terrain {
                     let kind = self.kinds[row as usize * usize::from(self.width) + column as usize];
                     if kind != 0 {
                         if kind == 2 {
-                            cleared.insert(cell);
+                            hit_boxes.insert(cell);
                         }
                         break;
                     }
@@ -197,6 +221,17 @@ impl Terrain {
         }
         for id in &processed {
             self.pending.remove(id);
+        }
+        // The immutable ray snapshot stops at a box even on its final hit.
+        // Multiple chain rays mark one cell once in a callback, as the native
+        // shared cell state does; a later secondary timer cannot hit it again.
+        let mut cleared = BTreeSet::new();
+        for (row, column) in hit_boxes {
+            let index = usize::from(row) * usize::from(self.width) + usize::from(column);
+            self.remaining_hits[index] -= 1;
+            if self.remaining_hits[index] == 0 {
+                cleared.insert((row, column));
+            }
         }
         for &(row, column) in &cleared {
             self.kinds[usize::from(row) * usize::from(self.width) + usize::from(column)] = 0;
@@ -231,11 +266,120 @@ pub(crate) mod tests {
                 ("start".into(), sha(b"start")),
             ]),
             maximum_power: 2,
+            box_hits: Vec::new(),
         }
     }
     pub(crate) fn map() -> Terrain {
         config().validate(b"map", b"start").unwrap()
     }
+    pub(crate) fn durable_items_map() -> Terrain {
+        let mut terrain = basic_items_map();
+        terrain.seed_hits[2 * 15 + 3] = 5;
+        terrain.remaining_hits = terrain.seed_hits.clone();
+        terrain
+    }
+    #[test]
+    fn durable_boxes_validate_counts_keep_last_hit_ray_stop_and_reset_without_old_clearance() {
+        let mut cfg = config();
+        let normal = cfg.validate(b"map", b"start").unwrap();
+        cfg.box_hits = vec![0; 195];
+        assert!(cfg.validate(b"map", b"start").is_err());
+        cfg.box_hits[3 * 15 + 5] = 5;
+        cfg.box_hits[4 * 15 + 4] = 2;
+        let mut terrain = cfg.validate(b"map", b"start").unwrap();
+        for (index, hits) in [(0, 1), (3 * 15 + 5, 255)] {
+            let mut bad = cfg.clone();
+            bad.box_hits[index] = hits;
+            assert!(bad.validate(b"map", b"start").is_err());
+        }
+        let mut short = cfg.clone();
+        short.box_hits.pop();
+        assert!(short.validate(b"map", b"start").is_err());
+        assert_eq!(normal.seed_hits[3 * 15 + 5], 1);
+        terrain.begin(7);
+        for id in 1..=5 {
+            terrain
+                .place(Bomb {
+                    id,
+                    owner: 0,
+                    row: 3,
+                    column: 4,
+                    power: 2,
+                })
+                .unwrap();
+            assert!(terrain.clearance(7, 3, 5).is_none());
+            assert!(terrain.blast_committed(6, id).processed.is_empty());
+            let blast = terrain.blast_committed(7, id);
+            assert_eq!(blast.cleared.contains(&(3, 5)), id == 5);
+            assert_eq!(terrain.remaining_hits[3 * 15 + 5], 5 - id as u8);
+            assert!(terrain.blast_committed(7, id).processed.is_empty());
+        }
+        assert_eq!(terrain.clearance(7, 3, 5), Some(5));
+        terrain.finish();
+        terrain.begin(8);
+        assert_eq!(terrain.remaining_hits[3 * 15 + 5], 5);
+        assert!(terrain.clearance(7, 3, 5).is_none());
+        assert!(terrain.clearance(8, 3, 5).is_none());
+        assert!(
+            terrain
+                .place(Bomb {
+                    id: 6,
+                    owner: 0,
+                    row: 3,
+                    column: 5,
+                    power: 1
+                })
+                .is_err()
+        );
+    }
+    #[test]
+    fn one_chain_callback_decrements_shared_box_once_and_final_hit_does_not_pass_through() {
+        let mut cfg = config();
+        cfg.kinds = vec![0; 195];
+        for (r, c) in [(3, 5), (3, 6)] {
+            cfg.kinds[r * 15 + c] = 2;
+        }
+        cfg.seed_sha256 = sha(&cfg.kinds);
+        cfg.maximum_power = 9;
+        cfg.box_hits = cfg.kinds.iter().map(|kind| u8::from(*kind == 2)).collect();
+        cfg.box_hits[3 * 15 + 5] = 2;
+        let mut t = cfg.validate_measured(b"map", b"start", 9).unwrap();
+        t.begin(1);
+        // Root at3,3 chains both arms; both secondary rays meet the same box.
+        for (id, r, c, power) in [(1, 3, 3, 3), (2, 3, 4, 3), (3, 2, 3, 3), (4, 2, 5, 3)] {
+            t.place(Bomb {
+                id,
+                owner: 0,
+                row: r,
+                column: c,
+                power,
+            })
+            .unwrap();
+        }
+        assert_eq!(t.blast_committed(1, 1).processed.len(), 4);
+        assert_eq!(t.remaining_hits[3 * 15 + 5], 1);
+        assert!(t.blast_committed(1, 2).processed.is_empty());
+        t.place(Bomb {
+            id: 5,
+            owner: 0,
+            row: 3,
+            column: 4,
+            power: 9,
+        })
+        .unwrap();
+        assert_eq!(t.blast_committed(1, 5).cleared, BTreeSet::from([(3, 5)]));
+        assert_eq!(t.remaining_hits[3 * 15 + 6], 1);
+        t.place(Bomb {
+            id: 6,
+            owner: 0,
+            row: 3,
+            column: 4,
+            power: 9,
+        })
+        .unwrap();
+        assert_eq!(t.blast_committed(1, 6).cleared, BTreeSet::from([(3, 6)]));
+    }
+
     #[test]
     fn selected_map_requires_its_pack_payload_and_exact_map_start_frames() {
         let cfg = config();

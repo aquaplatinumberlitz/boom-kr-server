@@ -1083,3 +1083,93 @@ fn cancellation_and_report_policy_follow_selected_map_and_explicit_enable() {
     c.sessions[0].packet(122, &report).unwrap();
     assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
 }
+
+#[test]
+fn durable_box_claim_waits_for_fifth_full_delivery_and_reset_restores_hit_count() {
+    let mut c = case(2);
+    c.shared.lock().unwrap().model.terrain = Some(crate::terrain::tests::durable_items_map());
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.model.terrain.as_mut().unwrap().begin(c.round);
+    }
+    let key = crate::room::wire_key(c.round).unwrap();
+    for serial in 1..=5 {
+        assert!(
+            c.sessions[0]
+                .packet(118, &bomb(0, serial, 1, key))
+                .unwrap()
+                .bomb
+                .unwrap()
+                .accepted
+        );
+        let mut deadlines = Vec::new();
+        for s in &mut c.sessions {
+            s.inbox.try_recv().unwrap();
+            deadlines.push(s.inbox.try_recv().unwrap());
+        }
+        c.sessions[0].finish(&deadlines[0]).unwrap();
+        assert_eq!(
+            c.sessions[0]
+                .packet(142, &reveal(0, 2, 3))
+                .unwrap()
+                .terrain_notice,
+            Some("no_current_committed_clearance")
+        );
+        c.sessions[1].finish(&deadlines[1]).unwrap();
+        let expected = if serial == 5 {
+            "revealed_current_hidden_cell"
+        } else {
+            "no_current_committed_clearance"
+        };
+        assert_eq!(
+            c.sessions[0]
+                .packet(142, &reveal(0, 2, 3))
+                .unwrap()
+                .terrain_notice,
+            Some(expected)
+        );
+        let claim = c.sessions[0]
+            .packet(124, &pickup(0, 2, 3, 27, 0, key))
+            .unwrap()
+            .pickup
+            .unwrap();
+        assert_eq!(claim.accepted, serial == 5);
+    }
+    confirmations(&mut c);
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.model.end(c.round).unwrap();
+        for key in &c.keys {
+            r.model.refreshed(*key, c.round).unwrap();
+        }
+        r.model.ready(c.keys[1]).unwrap();
+        c.round = r.model.begin(c.keys[0]).unwrap();
+        for key in &c.keys {
+            r.model.ack(*key, c.round).unwrap();
+        }
+        assert!(
+            r.model
+                .terrain
+                .as_ref()
+                .unwrap()
+                .clearance(c.round, 2, 3)
+                .is_none()
+        );
+        assert!(
+            r.model
+                .terrain
+                .as_ref()
+                .unwrap()
+                .clearance(c.round - 1, 2, 3)
+                .is_none()
+        );
+    }
+    assert!(
+        !c.sessions[0]
+            .packet(124, &pickup(0, 2, 3, 27, 0, key))
+            .unwrap()
+            .pickup
+            .unwrap()
+            .accepted
+    );
+}

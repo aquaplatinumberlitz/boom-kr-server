@@ -33,9 +33,9 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP309: Camp08 đã có policy hủy bom theo map, kiểm native hai vòng/reset và trận kế.**
-[Contract và giới hạn](docs/protocol/terrain.md#rust-camp08-boundary) tách cờ client đã đo khỏi authority server design.
-Codex tiếp StrongBox/terrain Camp08 và G1 theo [Bảng điều hành](docs/PLAN.md#dashboard); L1 vẫn do Claude phụ trách.
+**CP310: Rust có thùng nhiều hit; route StrongBox/Bomb/Fire Camp08 đã qua hai vòng/reset.**
+[Contract và giới hạn](docs/protocol/terrain.md#rust-camp08-boundary) giữ actual counter và phạm vi private đã đo.
+Codex tiếp terrain Camp08 còn thiếu theo [Bảng điều hành](docs/PLAN.md#dashboard); G1/M8 vẫn mở, L1 do Claude phụ trách.
 
 ## Bắt đầu
 

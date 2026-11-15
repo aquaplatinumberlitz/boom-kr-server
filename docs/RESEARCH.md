@@ -160,22 +160,18 @@ trước đóng QueueExpired trước mainDisconnected; run tách preboot không
 chưa xác định. Chỉ mở chẩn đoán tiếp nếu tái hiện hoặc cần budget M8; không patch JSON downstream.
 
 <a id="gap-camp08-bomb-report"></a>
-### Camp08: report122 trước network identity và response theo vòng đời
-[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ layout122/167, property sentinel, cờ map và
-policy Rust. Native khởi tạo đã đối chiếu cả 195 cờ ở hai view với dữ liệu TileInfo: bốn ô hủy bom đã xác định;
-không lặp seed, writer/getter, serial, RTTI hoặc nguồn cờ nếu không có discrepancy mới.
-Server tự quyết cancellation từ map đã ràng buộc hash, trước allocation; report122 không có quyền sửa ledger.
-Đây là policy design, chưa biết response server gốc. Packet không có serial/epoch nên raw freshness vẫn unknown;
-kiểm authority isolation thay vì ghép sentinel với ID active. Tests đã kiểm serial lặp/xung đột, ngân sách hữu hạn,
-owner/key/member, map đang chọn và hai vòng/reset. Native binary mới đã kiểm riêng cancellation không tạo
-ghost 159/158, bom thường trước/sau hoàn tất ở hai view,
-hai kết quả/reset và Start kế. Giữ rõ malformed/variant/budget/phase là kiểm implementation, không phải toàn
-protocol hoặc nguyên bản server. Raw freshness vẫn không xác định; report cũ không có quyền sửa ledger.
+### Camp08: terrain đặc biệt và coverage sau thùng nhiều hit
 
-Tiếp StrongBox01/02, Herb/Line và MissileBase của Camp08 theo đúng cạnh runtime;
-không suy durability, footprint hoặc ray termination từ tên, TileInfo hay ground flags. Terrain và floor Camp08
-vẫn tắt khi chưa đủ bằng chứng; Tomb12 và coverage roster/item còn theo PLAN. Codex sở hữu nhánh G1, L1 của Claude
-không bị thay đổi bởi các phép đo này.
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ policy122/map-owned cancellation và kernel
+thùng nhiều hit. StrongBox01/02 đã có native 5/2 hit, actual class/counter/init, cùng route Rust hai vòng với hai
+item ẩn thiết kế và reset. Không lặp parser122, cờ khởi tạo, game-box candidate sai nhánh hoặc route đã đạt khi
+không có discrepancy mới. Report122 không có epoch/serial nên raw freshness vẫn unknown; nó không có authority
+trên ledger. Bộ đếm thùng là dữ liệu type2 đã đo, không phải footprint chung cho TileInfo.
+
+Codex tiếp Herb01/02, Line01/02 và footprint/ray của MissileBase/PinPillar theo cạnh native tối thiểu. Những ô này
+chưa được chứng nhận chỉ bằng seed khớp hoặc nằm ngoài route đã chạy. Tiếp floor/drop/item và coverage roster
+Camp08 theo PLAN rồi Tomb12; không mở map tổng quát khi còn thiếu. Policy thùng hữu hạn giữ rõ khác server gốc,
+chain/queue/multiroom và stale controls tự động không được báo thành native rộng hơn. L1 vẫn do Claude phụ trách.
 
 Lỗi QueueExpired trước map đã tái hiện trong một lượt đo; raw được giữ, removal/missing membership xảy ra sau denial.
 Passive observer thấy DB thread ở `wait_current_trans`; nguyên nhân đầy đủ vẫn candidate. Một lượt tách khỏi full

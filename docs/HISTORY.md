@@ -5,6 +5,10 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP309: Camp08 đã có policy hủy bom theo map, kiểm native hai vòng/reset và trận kế.**
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) tách cờ client đã đo khỏi authority server design.
+Codex tiếp StrongBox/terrain Camp08 và G1 theo [Bảng điều hành](PLAN.md#dashboard); L1 vẫn do Claude phụ trách.
+
 **CP308: bộ chữ Anh đã hiện trên client KR runtime G1; loader từ chối file checksum hỏng.**
 [Kết quả và giới hạn L-probe-b](content/client-language.md#data-files) tách dữ liệu chữ/ảnh khỏi nghiệm thu UTF-8.
 Codex tiếp report bom Camp08/G1 theo [Bảng điều hành](PLAN.md#dashboard); L1 vẫn do Claude phụ trách.

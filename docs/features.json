@@ -1363,7 +1363,8 @@
           "docs/evidence/rust-service/g1-mixed-map-spawns.json",
           "docs/evidence/rust-service/g1-camp08-boundary.json",
           "docs/evidence/rust-service/g1-camp08-report122.json",
-          "docs/evidence/rust-service/g1-camp08-cancellation.json"
+          "docs/evidence/rust-service/g1-camp08-cancellation.json",
+          "docs/evidence/rust-service/g1-camp08-durable-boxes.json"
         ]
       },
       "coverage": {
@@ -1437,7 +1438,8 @@
               "docs/evidence/rust-service/g1-mixed-map-spawns.json",
               "docs/evidence/rust-service/g1-camp08-boundary.json",
               "docs/evidence/rust-service/g1-camp08-report122.json",
-              "docs/evidence/rust-service/g1-camp08-cancellation.json"
+              "docs/evidence/rust-service/g1-camp08-cancellation.json",
+              "docs/evidence/rust-service/g1-camp08-durable-boxes.json"
             ]
           },
           "windows_original": {
@@ -2429,7 +2431,8 @@
           "docs/evidence/rust-service/g1-terrain-players.json",
           "docs/evidence/rust-service/g1-camp08-boundary.json",
           "docs/evidence/rust-service/g1-camp08-report122.json",
-          "docs/evidence/rust-service/g1-camp08-cancellation.json"
+          "docs/evidence/rust-service/g1-camp08-cancellation.json",
+          "docs/evidence/rust-service/g1-camp08-durable-boxes.json"
         ]
       },
       "coverage": {
@@ -2512,7 +2515,8 @@
               "docs/protocol/terrain.md#rust-player-terrain",
               "docs/evidence/rust-service/g1-camp08-boundary.json",
               "docs/evidence/rust-service/g1-camp08-report122.json",
-              "docs/evidence/rust-service/g1-camp08-cancellation.json"
+              "docs/evidence/rust-service/g1-camp08-cancellation.json",
+              "docs/evidence/rust-service/g1-camp08-durable-boxes.json"
             ]
           },
           "windows_original": {
@@ -2682,7 +2686,8 @@
           "docs/evidence/rust-service/g1-mixed-map-spawns.json",
           "docs/evidence/rust-service/g1-camp08-boundary.json",
           "docs/evidence/rust-service/g1-camp08-report122.json",
-          "docs/evidence/rust-service/g1-camp08-cancellation.json"
+          "docs/evidence/rust-service/g1-camp08-cancellation.json",
+          "docs/evidence/rust-service/g1-camp08-durable-boxes.json"
         ]
       },
       "coverage": {
@@ -2764,7 +2769,8 @@
               "docs/evidence/rust-service/g1-mixed-map-spawns.json",
               "docs/evidence/rust-service/g1-camp08-boundary.json",
               "docs/evidence/rust-service/g1-camp08-report122.json",
-              "docs/evidence/rust-service/g1-camp08-cancellation.json"
+              "docs/evidence/rust-service/g1-camp08-cancellation.json",
+              "docs/evidence/rust-service/g1-camp08-durable-boxes.json"
             ]
           },
           "windows_original": {
