@@ -1,0 +1,212 @@
+{
+  "id": "CP304",
+  "previous": "CP303",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-14T19:04:56.629647+00:00",
+  "context_commit": "5e0e17f908f98360935d51e079cf013763969394",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Kiểm đúng source workflow CI đã pin CP264 khi CP303 đổi test mà không sửa lịch sử hoặc nới raw validation?",
+  "scope": "Correction publication-history cho đúng .github/workflows/docs.yml; không đổi runtime/source game hoặc acceptance.",
+  "artifacts": [
+    {
+      "name": "checkpoint-checker-source",
+      "sha256": "3db9f775cb3713c281ce102bad90bd31fb0a311bc30c51ea3dbebe7f76a408e9"
+    }
+  ],
+  "locators": [
+    "docs/evidence/checkpoints/README.md#publication-bound-source-history",
+    "docs/evidence/checkpoints/docs-workflow-source-correction.json",
+    "tools/check_checkpoints.py"
+  ],
+  "findings": [
+    {
+      "summary": "Workflow CP264 và CP303 đều có declaration và blob đúng tại commit đầu tiên công bố. Checker nhận duy nhất path workflow docs với original-publication guard; 67 checkpoint tests đạt, gồm ca âm không cứu pin sai.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/checkpoints/README.md#publication-bound-source-history",
+      "evidence": [
+        "WF304-005",
+        "WF304-006",
+        "WF304-007",
+        "WF304-009",
+        "WF304-010"
+      ],
+      "limits": "Không đổi record/evidence/audit/raw đã công bố; không chứng nhận UTF-8, glyph, IME hoặc G1."
+    }
+  ],
+  "verification": [
+    {
+      "check": "67 checkpoint tests và pin workflow tại original publication CP264/CP303",
+      "result": "pass",
+      "evidence": [
+        "WF304-005",
+        "WF304-006",
+        "WF304-007",
+        "WF304-009",
+        "WF304-010"
+      ],
+      "limits": "Full local/history và CI kiểm lại tại exact head trước merge; không coi targeted proof thay toàn kiểm."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "WF304-001",
+      "kind": "repository",
+      "path": "README.md",
+      "sha256": "6167d411d9f203f07352c6b910acbfc0657b9c87290f4239f48c0cbd1b27e8ee",
+      "bytes": 3642
+    },
+    {
+      "id": "WF304-002",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "sha256": "a3452a61c3ec3396d24a224d0086198f3f4a3298b6a08aa1fc58b250c2192ea8",
+      "bytes": 155164
+    },
+    {
+      "id": "WF304-003",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "sha256": "0033e8addf0c36bf3a0222a5f45b4866427c7bbf51a7a9660b284e752d10b685",
+      "bytes": 82472
+    },
+    {
+      "id": "WF304-004",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/README.md",
+      "sha256": "a02ff696f992805d049960df16903a543c9ea9c6ce54388312635cb4b0cf914a",
+      "bytes": 18272
+    },
+    {
+      "id": "WF304-005",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/docs-workflow-source-correction.json",
+      "sha256": "293bb6195d55dcc64c2dcc59c9237838b21407ac8931c958c95b2038e770f278",
+      "bytes": 2474
+    },
+    {
+      "id": "WF304-006",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "sha256": "3db9f775cb3713c281ce102bad90bd31fb0a311bc30c51ea3dbebe7f76a408e9",
+      "bytes": 37095
+    },
+    {
+      "id": "WF304-007",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "sha256": "120c80d677904a92501fb09999879427b1c52f2afb3a715af84e45db18bf042f",
+      "bytes": 12264
+    },
+    {
+      "id": "WF304-008",
+      "kind": "local",
+      "path": "local/research/codex/l10n-cp303-exact-head-full.txt",
+      "sha256": "c3efdbf9552e533d5a5bf1acca0ac28bb442cdb8cca5d7149777babaeb6bbb9f",
+      "bytes": 204480
+    },
+    {
+      "id": "WF304-009",
+      "kind": "local",
+      "path": "local/research/codex/cp304-workflow-publication-proof.json",
+      "sha256": "98663f2ee98cd6396fb2ffb287cab32fffb4e79108fd6a5d8ec933064241093f",
+      "bytes": 858
+    },
+    {
+      "id": "WF304-010",
+      "kind": "local",
+      "path": "local/research/codex/cp304-workflow-history-tests.txt",
+      "sha256": "35dda7c94061e4e481df9ee09a0b650f544de1aad99ce2a366b3eee7dc5e9f3d",
+      "bytes": 11556
+    },
+    {
+      "id": "WF304-011",
+      "kind": "local",
+      "path": "local/research/codex/append_cp304_workflow_correction.py",
+      "sha256": "bf413c4d483532eed5f87e086e90e324150f5b88ff284384fc05876d4494f8cc",
+      "bytes": 7219
+    }
+  ],
+  "delta": {
+    "added": [
+      "Publication-bound workflow-source regression controls."
+    ],
+    "corrected": [
+      "False mismatch CP264 workflow khi full-check CP303."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "L1a vẫn partial; L1b/L1c và G1/M8 tiếp theo PLAN, không thay acceptance."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Giao PR417 sau exact-head full/history và CI; tiếp G1 catalog/spawn và worker UTF-8 theo lease, M8 theo dashboard.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-14T19:04:56.629647+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex tự kiểm correction provenance hẹp; không hoàn tất nhóm tính năng hoặc nâng gate.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Correction provenance workflow, không đổi runtime hoặc acceptance."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Correction provenance workflow, không đổi runtime hoặc acceptance."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Correction provenance workflow, không đổi runtime hoặc acceptance."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Correction provenance workflow, không đổi runtime hoặc acceptance."
+    },
+    {
+      "path": "docs/evidence/checkpoints/docs-workflow-source-correction.json",
+      "state": "updated",
+      "reason": "Correction provenance workflow, không đổi runtime hoặc acceptance."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Không thay contract, unknown gameplay hoặc mức chứng minh feature."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "Không thay contract, unknown gameplay hoặc mức chứng minh feature."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "unchanged",
+      "reason": "Không thay contract, unknown gameplay hoặc mức chứng minh feature."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "unchanged",
+      "reason": "Không thay contract, unknown gameplay hoặc mức chứng minh feature."
+    }
+  ]
+}

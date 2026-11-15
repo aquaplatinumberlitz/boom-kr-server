@@ -110,6 +110,45 @@ class SourceHistoryTests(unittest.TestCase):
         self.assertIsNone(checker.historical_checkpoint_source(
             self.root, 'rust/crates/kr-wire/src/../fixtures/room.rs', item['sha256'], item['bytes'], 'CP001'))
 
+    def test_docs_workflow_requires_exact_original_external_publication(self):
+        item, path = self.fixture('.github/workflows/docs.yml', external=True)
+        later = b'later workflow source\n'
+        path.write_bytes(later)
+        self.commit()
+        path.write_text('current workflow source\n')
+        errors, warnings, checked, missing = self.verify(item)
+        self.assertEqual((errors, checked, missing), ([], 1, 0))
+        self.assertTrue(any('HISTORICAL SOURCE VERIFIED' in w for w in warnings))
+        later_pin = item | dict(bytes=len(later), sha256=hashlib.sha256(later).hexdigest())
+        self.assertTrue(self.verify(later_pin)[0])
+        self.assertTrue(checker.verify_evidence_item(item, self.root, True, 'CP002')[0])
+        self.assertTrue(self.verify(item | dict(sha256='f' * 64))[0])
+        absolute_artifact = item | dict(kind='artifact', path=str(path))
+        self.assertTrue(self.verify(absolute_artifact)[0])
+
+    def test_docs_workflow_broken_external_manifest_cannot_be_rescued(self):
+        item, path = self.fixture('.github/workflows/docs.yml', external=True,
+                                  broken_reference=True)
+        path.write_text('changed workflow\n')
+        self.assertTrue(self.verify(item)[0])
+
+    def test_undeclared_docs_workflow_cannot_borrow_another_publication(self):
+        item, _ = self.fixture('server/service.py')
+        path = self.root / '.github/workflows/docs.yml'
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b'original fixture bytes\n')
+        self.commit()
+        path.write_text('changed workflow\n')
+        self.assertTrue(self.verify(item | dict(path='.github/workflows/docs.yml'))[0])
+
+    def test_other_yaml_paths_do_not_gain_workflow_source_recovery(self):
+        for relative in ['.github/workflows/rust.yml', '.github/workflows/docs.yaml',
+                         '.github/workflows/../workflows/docs.yml', 'tools/docs.yml',
+                         'local/docs.yml']:
+            with self.subTest(relative=relative):
+                self.assertIsNone(checker.historical_checkpoint_source(
+                    self.root, relative, 'f' * 64, 0, 'CP001'))
+
     def test_generated_census_requires_exact_publication_not_later_matching_json(self):
         item, path = self.fixture('docs/content/census.json', external=True)
         later = b'{"later": true}\n'

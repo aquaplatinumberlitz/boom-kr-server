@@ -1,0 +1,126 @@
+{
+  "schema": "kre-mixed-map-spawns-v1",
+  "checkpoint": "CP305",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "canonical": "docs/protocol/load-phase.md#rust-map-spawn-capacity",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Catalog Factory07 tám spawn và Village10 sáu spawn; tám account đăng nhập, từ chối map vượt roster rồi Back của B/D để chơi hai vòng trên sparse slots0/2/4/5/6/7. Không đóng toàn map/G1.",
+  "implementation": {
+    "source": "design",
+    "status": "design",
+    "files": [
+      "rust/crates/kr-service/src/lib.rs",
+      "rust/crates/kr-service/src/map_profile.rs",
+      "rust/crates/kr-service/src/room_io.rs",
+      "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "tools/rust_map_profile.py"
+    ],
+    "policy": "Sức chứa nhận người bằng min giới hạn phòng và spawn map đang chọn. Map nhỏ hơn roster hiện tại bị từ chối trước mutation; Start gán ordinal liên tục khi có slot vượt spawn, không đổi identity/membership slot. Chỉ managed DB-owned player rounds được tạo prototype map nhỏ hơn template nguồn."
+  },
+  "reuse": [
+    {
+      "source": "docs/evidence/rust-service/g1-village10-terrain.json",
+      "use": "Dùng trực tiếp contract và bằng chứng contiguous2/4/6, terrain/Fire/Roller/hai vòng theo route; không đo lại các route đã đạt để cộng checkpoint."
+    },
+    {
+      "source": "docs/evidence/rust-service/g1-map-selection.json",
+      "use": "Dùng wire96/117, selected-map revision và reservation. Kiểm thêm giới hạn spawn/map và sparse Start, không RE lại opcode."
+    },
+    {
+      "source": "local/research/codex/g1-mixed-map-spawn-source-r1/reuse.json",
+      "use": "Đối chiếu nguồn cũ theo locator trước implementation; không port VN hoặc dùng scope boom-rs làm yêu cầu."
+    }
+  ],
+  "environment": {
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "service_sha256": "cbe310445ad0ae2e9675632b54eb44a9342eea5dba5aaf2ba9fcccabdadef4d1",
+    "network": "Wine, LAN/router/relay ảo cô lập; không truy cập server Nexon hoặc endpoint Internet. Topology/interface/routing thực của run trong raw local.",
+    "wine": "wine-10.0-20260425 (CachyOS)"
+  },
+  "native": {
+    "run_sha256": "c31bcd5309c373056b87676ccfb0839bddcba76bd333092c69522208c211a821",
+    "active_roles": "ACEFGH",
+    "membership_slots": [
+      0,
+      2,
+      4,
+      5,
+      6,
+      7
+    ],
+    "spawn_ordinals": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "results_resets": 2,
+    "raw_files": 627,
+    "frozen_pins": 3294,
+    "launcher_exit": 0,
+    "verification": {
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/village10-terrain-native-verification.json",
+      "bytes": 12236570,
+      "sha256": "66f84a2944cba2dc06c6535d9638f09ce0c984d05c41393dc24c9d5f22a38514"
+    },
+    "getter_verification": {
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/village10-terrain-getter-verification.json",
+      "bytes": 609,
+      "sha256": "8e91ee8430f0e43cec955b44703aa3ea184a8db8231c58dfadc22a41ee56ebca"
+    },
+    "raw_seal": {
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/native/raw-seal.json",
+      "bytes": 143212,
+      "sha256": "fde991c597e9fe3d329fd92d1f97e79ea3a95e6ca710d6627f349f9353ae9f19"
+    },
+    "cache": {
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/cache-verification.json",
+      "bytes": 4387,
+      "sha256": "9a5d3eb06d8812c5a087c78a984692c01b960a6a4ae606c813209bdc7f8cc87e"
+    },
+    "telemetry": {
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/postrun-telemetry-debugger-review.json",
+      "bytes": 1327,
+      "sha256": "66e771b11772f075e988750148d4c7c2086c7b7b05dca6a968fe2aa4b627b204"
+    }
+  },
+  "negative_controls": [
+    "Native C2S96 chọn Village10 lúc còn8 người bị từ chối, không đổi selected map hoặc ngắt membership; sau B/D Back chọn được map đó.",
+    "Unit đổi8→6 khi roster8 không đổi revision, sparse6 giữ identity/slot và ordinal duy nhất, đổi về8 khôi phục ordinal slot7.",
+    "Adapter từ chối thu prototype nếu thiếu database_zero, player_round, first_vacant hoặc có legacy Battle; loader legacy đúng parser cũng bị từ chối ở guard map."
+  ],
+  "failures": [
+    {
+      "run": "g1-mixed-map-sparse-native-r1",
+      "result": "PermissionError trước Wine: copied binary thiếu execute bit, exit1/raw9; không native acceptance."
+    },
+    {
+      "run": "g1-mixed-map-sparse-native-r2",
+      "result": "F SIGABRT trước room, exit1/raw102. HTTP JSON signature không tự chứng minh upstream cause."
+    },
+    {
+      "run": "g1-mixed-map-sparse-native-r3",
+      "result": "A/B/C SIGABRT trước room, exit1/raw102. Ba channel đóng QueueExpired trước modal/mainDisconnected; source4 body và raw chronology giữ riêng. Root resource/scheduling cause chưa biết."
+    },
+    {
+      "run": "g1-mixed-map-sparse-native-r4",
+      "result": "Preboot mọi Wine prefix trước service/session admission; không nới account TTL/policy. Native hoàn tất, không QueueExpired; chưa chứng minh nguyên nhân đầy đủ của r3 hoặc khả năng tải."
+    }
+  ],
+  "limits": [
+    "Budget probe40 chỉ giữ195flags trước/sau10 blast vòng1 và9 blast vòng2, thiếu cặp cuối vòng2; không reconstruct. Native/capture entity/ownership/reader cho cả20blast, Start/spawn và hai rank/reset có đủ.",
+    "A GDB internal-error xuất hiện sau remote disconnect và sau cả hai reset; không claim debugger shutdown sạch. Sáu view đã có lifecycle trước terminal error.",
+    "Fire/floor và hidden Roller là input thiết kế, không phân phối drop gốc; route power1–2 có giới hạn.",
+    "Chỉ sparse6 đã đo mới, không tự suy mọi count/topology/map/item hoặc Internet. Các roster contiguous cũ có nguồn riêng.",
+    "51.792 getter emulation từ snapshot là mức emulation riêng, không thay native hoặc oracle font/gameplay.",
+    "Một trong8 cache client thay đổi, đã copy/hash và khai output mutable; không sửa pin preflight hoặc raw cũ."
+  ],
+  "remaining": [
+    "Camp08/Tomb12 và loại ô còn thiếu; nội dung/item và nhân vật theo acceptance G1.",
+    "Coverage các roster chưa đo và biến thể khi acceptance cần; không lặp sparse6 hoặc contiguous2/4/6 đã đủ.",
+    "QueueExpired/resource budgets và độ bền tải giữ việc vận hành M8; UTF-8 vẫn chưa có bản vá nghiệm thu."
+  ]
+}

@@ -126,6 +126,86 @@ fn case(count: usize) -> Case {
         round,
     }
 }
+fn spawn_choices(c: &mut Case, counts: &[usize]) {
+    let mut r = c.shared.lock().unwrap();
+    let choices = counts
+        .iter()
+        .enumerate()
+        .map(|(index, &spawn_count)| crate::map_profile::Choice {
+            code: 800 + index as u16,
+            index: index as u32,
+            spawn_count,
+            bodies: HashMap::from([(
+                Template::Map117,
+                encoded(&[
+                    (0, Width::U16),
+                    (800 + index as u64, Width::U16),
+                    (index as u64, Width::U32),
+                ]),
+            )]),
+            floor: pickups::Catalog::default(),
+            terrain: None,
+        })
+        .collect();
+    r.maps = Some(Arc::new(crate::map_profile::Catalog { choices }));
+}
+#[test]
+fn selected_map_bounds_admission_and_sparse_spawns_without_reassigning_member_slots() {
+    let mut c = case(8);
+    spawn_choices(&mut c, &[8, 6]);
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.model.end(c.round).unwrap();
+        for key in &c.keys {
+            r.model.refreshed(*key, c.round).unwrap();
+        }
+    }
+    let select = encoded(&[(801, Width::U16), (1, Width::U32)]);
+    assert_eq!(
+        c.sessions[0].packet(96, &select).unwrap().map_rejection,
+        Some("roster_exceeds_map_spawns")
+    );
+    {
+        let mut r = c.shared.lock().unwrap();
+        assert_eq!(r.selected_map, 0);
+        assert_eq!(r.map_revision, 0);
+        assert_eq!(r.admission_capacity(), 8);
+        assert_eq!(r.player_spawns(&r.model).unwrap()[&7], 7);
+        // Keep high membership slots in a six-player roster. Compaction affects
+        // only the explicit per-round spawn ordinals, never identities/slots.
+        for i in [1, 3] {
+            r.model.leave(c.keys[i]).unwrap();
+        }
+        for member in r.model.members.values_mut() {
+            member.setup = false;
+        }
+        r.requested.clear();
+    }
+    c.sessions[0].packet(96, &select).unwrap();
+    {
+        let r = c.shared.lock().unwrap();
+        assert_eq!(r.selected_map, 1);
+        assert_eq!(r.admission_capacity(), 6);
+        assert_eq!(r.model.capacity(), 8);
+        let assigned = r.player_spawns(&r.model).unwrap();
+        for (ordinal, slot) in [0, 2, 4, 5, 6, 7].into_iter().enumerate() {
+            assert_eq!(assigned[&slot], ordinal as u8);
+            let member = &r.model.members[&c.keys[usize::from(slot)].identity];
+            assert_eq!(member.slot, slot);
+            assert_eq!(member.key, c.keys[usize::from(slot)]);
+        }
+    }
+    assert!(full_idle(&c.shared).unwrap());
+    let back = encoded(&[(800, Width::U16), (0, Width::U32)]);
+    c.sessions[0].packet(96, &back).unwrap();
+    assert!(!full_idle(&c.shared).unwrap());
+    {
+        let r = c.shared.lock().unwrap();
+        assert_eq!(r.admission_capacity(), 8);
+        assert_eq!(r.player_spawns(&r.model).unwrap()[&7], 7);
+    }
+    assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
+}
 fn encoded(fields: &[(u64, Width)]) -> Vec<u8> {
     fields
         .iter()
@@ -678,6 +758,7 @@ fn map_selection_replaces_terrain_and_claims_atomically_and_fences_prior_map_bat
         r.maps = Some(Arc::new(crate::map_profile::Catalog {
             choices: vec![
                 crate::map_profile::Choice {
+                    spawn_count: 8,
                     code: 281,
                     index: 0,
                     bodies: HashMap::from([(
@@ -688,6 +769,7 @@ fn map_selection_replaces_terrain_and_claims_atomically_and_fences_prior_map_bat
                     terrain: Some(crate::terrain::tests::basic_items_map()),
                 },
                 crate::map_profile::Choice {
+                    spawn_count: 8,
                     code: 1104,
                     index: 1,
                     bodies: HashMap::from([(
@@ -698,6 +780,7 @@ fn map_selection_replaces_terrain_and_claims_atomically_and_fences_prior_map_bat
                     terrain: Some(crate::terrain::tests::map()),
                 },
                 crate::map_profile::Choice {
+                    spawn_count: 8,
                     code: 777,
                     index: 2,
                     bodies: HashMap::from([(

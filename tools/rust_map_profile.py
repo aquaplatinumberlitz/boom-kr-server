@@ -144,6 +144,27 @@ def adapt(config, profile, out):
     count = inner[rows_at - 5]
     if not 2 <= count <= 8 or len(inner) != rows_at + count * 26:
         raise ValueError('Start nguồn sai schema roster')
+    spawn_count = len(profile['spawns'])
+    if count > spawn_count:
+        two = value['diagnostic_two_lobby']
+        managed = two.get('managed_rooms') or {}
+        admission = two.get('account_admission') or {}
+        if (admission.get('profile_mode') != 'database_zero'
+                or managed.get('player_round') is None
+                or room.get('slot_allocation') != 'first_vacant'
+                or room.get('battle') is not None):
+            raise ValueError('Spawn Start vượt điểm spawn trong pack')
+        # Only truncate a validated contiguous source prototype. Runtime player
+        # slots remain account-owned; selected map admission and Start choose
+        # bounded unique ordinals independently. No pack coordinates are changed.
+        for index in range(count):
+            row = inner[rows_at + index * 26:rows_at + (index + 1) * 26]
+            if row[0] != index or row[2] != index:
+                raise ValueError('Prototype nguồn không có slot/spawn liên tục')
+        inner = bytearray(inner[:rows_at + spawn_count * 26])
+        inner[rows_at - 5] = spawn_count
+        inner = bytes(inner)
+        count = spawn_count
     for index in range(count):
         if inner[rows_at + index * 26 + 2] >= len(profile['spawns']):
             raise ValueError('Spawn Start vượt điểm spawn trong pack')

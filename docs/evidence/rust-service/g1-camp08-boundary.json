@@ -1,0 +1,137 @@
+{
+  "schema": "kre-camp08-boundary-v1",
+  "checkpoint": "CP306",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Camp08 initial Start/spawn/seed hai account và blocker report122; không terrain/gameplay/two-cycle/map/G1 acceptance.",
+  "environment": {
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "static_image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "service_sha256": "cbe310445ad0ae2e9675632b54eb44a9342eea5dba5aaf2ba9fcccabdadef4d1",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "network": "Wine với LAN/router/relay ảo cô lập. Không có endpoint Internet hoặc server Nexon. Runtime topology và namespace trong raw local."
+  },
+  "reuse": {
+    "source_first": {
+      "path": "local/research/codex/g1-camp08-source-r1/reuse.json",
+      "bytes": 3620,
+      "sha256": "49a0bb711b152aa5c0a57da0f1fe35d438974516101d7084715193ec37223d5e"
+    },
+    "request122_source_first": {
+      "path": "local/research/codex/g1-camp08-c2s122-r1/reuse.json",
+      "bytes": 1685,
+      "sha256": "44275b800610708c00b8164d9b5e8ce019e9f81dd82eaadcea2ee8d892c99f7d"
+    },
+    "direct": [
+      "Map profile pack, metadata/Start adapter và managed account contract.",
+      "Clock lấy actual map, flags/checksum và native getter; không RE lại codec/cipher."
+    ],
+    "legacy": "Locator/build và bounded searches boomkr-re/boom-re trong reuse.json. Chỉ dùng layout/method, không lấy VN opcode hoặc scope/gate boom-rs làm contract."
+  },
+  "seed": {
+    "run_sha256": "0766cd26c26b42e66c74eaf23ffd67e295554e78aadcb6f9f5a8f0eaf3ee7593",
+    "verification": {
+      "path": "local/research/codex/g1-camp08-seed-native-r1/camp08-seed-native-verification.json",
+      "bytes": 126399,
+      "sha256": "182f925920fc50dfbb8802ea467574ea37debed5aef31afbc2c25d93cfaf2a22"
+    },
+    "getter_verification": {
+      "path": "local/research/codex/g1-camp08-seed-native-r1/camp08-seed-getter-verification.json",
+      "bytes": 554,
+      "sha256": "8d64138e8cc29a2554b37357db751b6f39a843b455df3e0fa76f13022db9e9ba"
+    },
+    "unknown_flags": {
+      "path": "local/research/codex/g1-camp08-seed-native-r1/initial-unknown-flags.json",
+      "bytes": 5732,
+      "sha256": "c3b35603994a1370968aa24e7a79fe3ff7310be12a25e19ed04693762f7431af"
+    },
+    "raw_seal": {
+      "path": "local/research/codex/g1-camp08-seed-native-r1/native/raw-seal.json",
+      "bytes": 12625,
+      "sha256": "f30d8c13f1d0564a9e471750284bf68c0abec748368d274dbc072156a348949f"
+    },
+    "cache": {
+      "path": "local/research/codex/g1-camp08-seed-native-r1/cache-verification.json",
+      "bytes": 1035,
+      "sha256": "e3991e3c609d68582db214310d6d2c29ea44f7abc69afff943c8ff39ae26c8f5"
+    },
+    "observation": "Capture Start2 và tọa độ hai native views khớp spawn gốc. Cả195flags giống nhau; trong50ô unknown có39flag0/11flag1. Có một extra blocked cell12,11 cạnh MissileBase mà candidate nói ground. Flag không tự xác định damage/collision/drop."
+  },
+  "failed_dynamic": {
+    "run_sha256": "dbe36772c14a25023ad000e4d7029eb1c531156835e33faf1599f3fd52c9c7c4",
+    "verification": {
+      "path": "local/research/codex/g1-camp08-strongbox-native-r1/failed-native-observation.json",
+      "bytes": 1061,
+      "sha256": "00e2b96315c7509d3f93da3e48dce9746959239b5fe5491b8665e30275187daa"
+    },
+    "raw_seal": {
+      "path": "local/research/codex/g1-camp08-strongbox-native-r1/native/raw-seal.json",
+      "bytes": 15909,
+      "sha256": "80bde3a6885d5b019bbfaa589b732798885231a20a93c0e82ae4d9ee3be6c07a"
+    },
+    "observation": "Một corridor blast native ở cả hai view; placement tiếp trên PinGround6,2 gửi122 khiến channel đóng. A còn nhận delayed158 nhưng B đã mất kết nối; không matched StrongBox hit-count hoặc dynamic acceptance."
+  },
+  "native122": {
+    "run_sha256": "85f1f91a48befd53d5fee04533fb40b014c7b55a55dd4df025ec522483598b1b",
+    "verification": {
+      "path": "local/research/codex/g1-camp08-c2s122-native-r2/native122-verification.json",
+      "bytes": 3645,
+      "sha256": "7328e5e4049fd0ce5423cdddef81296e558a22a75b16e042399b2910a6bf2924"
+    },
+    "raw_seal": {
+      "path": "local/research/codex/g1-camp08-c2s122-native-r2/native/raw-seal.json",
+      "bytes": 15904,
+      "sha256": "898e2fbd6b07224b902efb4058d7de862142fe756481a0ca13a2998f737eaf89"
+    },
+    "cache": {
+      "path": "local/research/codex/g1-camp08-c2s122-native-r2/cache-verification.json",
+      "bytes": 722,
+      "sha256": "c8025ab3dd0c683de7af95d8e324dde60a081ed6bc8b40b628a159812bd91d73"
+    },
+    "wire_widths": [
+      4,
+      2,
+      2,
+      4,
+      1,
+      4
+    ],
+    "measured_values": [
+      4294967295,
+      6,
+      2,
+      4,
+      255,
+      0
+    ],
+    "writer": "B731D0, CGOGameBomb vtable16FC0CC+CC; callerB73173/B73120.",
+    "observation": "Actual writer args và TCP body cùng native getter/property checksum; property+0xA8 bằngFFFFFFFF. Diagnostic chủ động dừng sau current service denial, không ACK/drop hoặc đổi policy.",
+    "limits": "Chỉ measured shape và caller, không gọi FFFFFFFF là current server bomb ID. Chưa có đáp ứng/lifecycle122 native positive, malformed/duplicate/stale/reset controls."
+  },
+  "static": {
+    "summary": {
+      "path": "local/research/codex/g1-camp08-c2s122-r1/static-summary.json",
+      "bytes": 3235,
+      "sha256": "f3d03c5a932e3b9c6360f3a5d6f517ee1551347a759c527cd30be72a44955f0a"
+    },
+    "source": "kr_static",
+    "status": "candidate",
+    "body_budget": "Hai batch4body; batch sau chỉ mở từ native caller mới.",
+    "observation": "B73120 gọi writer rồi local effect. B3A790 có map-cell predicate và reason4/6/7 rồi local cleanup; chỉ reason4 đã đo. Không gán generic hazard/durability từ tên/flag."
+  },
+  "preparation_limits": [
+    "Config legacy sao lại có eight_battle và số template không nhất quán, current loader từ chối trước runtime. Input sau dùng template8 managed first_vacant với admission2 và empty floor/terrain off, source binary không đổi. Prep failures giữ local.",
+    "Run đầu57raw/401pins/exit0; run StrongBox70raw/379pins/exit1; diagnostic12271raw/389pins/exit0 chủ ý. Mọi run cleanup không còn process namespace, frozen inputs khớp.",
+    "Metadata caches được khai mutable, copied/hash sau từng lượt. Không gọi cache hoặc process alive là native proof."
+  ],
+  "limits": [
+    "Không mở Camp08 terrain từ flag ban đầu; StrongBox01/02 cần đúng behavior/durability và peer consensus. Herb/Line/PinGround/Pillar/MissileBase chưa đủ behavior toàn map.",
+    "Không ACK/no-op122 hoặc ghép sentinelFFFFFFFF với ID server một cách tùy ý; handler/lifecycle/freshness phải đo thêm.",
+    "Không có kết quả/reset/hai vòng hoặc đầy đủ roster2–8 Camp08. Tomb12 và các nhóm item/nhân vật còn theo PLAN.",
+    "430 getter emulation tách khỏi native; không production/load/Internet acceptance.",
+    "Chủ dự án chuyển L1 cho Claude; Codex đã commit WIP1f7463f và dừng L1. Không suy milestone UTF8 đạt."
+  ],
+  "next": "Chốt association và response/lifecycle report122 vừa đo, có current owner/round/cell guards cùng negative controls/native hai view trước khi tiếp StrongBox và bật Camp08 terrain."
+}

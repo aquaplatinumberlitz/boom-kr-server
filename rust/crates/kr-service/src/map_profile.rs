@@ -226,6 +226,7 @@ pub(crate) struct ChoiceConfig {
 pub(crate) struct Choice {
     pub code: u16,
     pub index: u32,
+    pub spawn_count: usize,
     pub bodies: HashMap<crate::room_packets::Template, Vec<u8>>,
     pub floor: crate::pickups::Catalog,
     pub terrain: Option<crate::terrain::Terrain>,
@@ -241,6 +242,7 @@ impl Catalog {
         actors: &HashMap<PlayerId, ActorProfile>,
         needle: bool,
         basic_items: bool,
+        managed_template: bool,
     ) -> io::Result<Self> {
         use crate::room_packets::Template;
         if !(2..=16).contains(&configs.len()) {
@@ -284,7 +286,12 @@ impl Catalog {
                     },
                 );
             }
-            profile.validate_selected(count, &packets, actors, index, configs.len())?;
+            let template_count = if managed_template {
+                count.min(profile.spawns.len())
+            } else {
+                count
+            };
+            profile.validate_selected(template_count, &packets, actors, index, configs.len())?;
             if !codes.insert(profile.map_code) {
                 return Err(error());
             }
@@ -304,6 +311,7 @@ impl Catalog {
             choices.push(Choice {
                 code: profile.map_code,
                 index: index as u32,
+                spawn_count: profile.spawns.len(),
                 bodies,
                 floor,
                 terrain,

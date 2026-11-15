@@ -1482,3 +1482,35 @@ M8 giữ phạm vi riêng tại [Bảng điều hành](PLAN.md#dashboard).
 [Phạm vi và lỗi export đã phục hồi](evidence/rust-service/g1-village10-herb.json) tách native, emulation và kiểm source.
 Đường managed đã nhận prototype sáu người có kiểm giới hạn; chưa nghiệm thu terrain/drop/hai vòng/reset Village10
 hoặc catalog chung sáu/tám spawn. G1 và M8 còn theo [Bảng điều hành](PLAN.md#dashboard).
+
+### Mốc trước CP303
+
+**CP302: Village10 có lát terrain/item hai vòng trên roster2/4/6 account KR/Wine.**
+[Capture, native và geometry đối chứng](evidence/rust-service/g1-village10-terrain.json) xác nhận Fire, Roller ẩn,
+spawn/stat và reset trong route đã đo. Policy reveal giữ current-cell/ownership guards, không gán nghĩa cho aux142.
+Catalog chung sáu/tám spawn, sparse roster, các map/item còn lại và M8 tiếp theo [Bảng điều hành](PLAN.md#dashboard).
+
+
+### Mốc trước CP304
+
+**CP303: L1a UTF-8 có khảo sát tĩnh và đối chứng, chưa đạt acceptance bản vá.**
+[Phần đã biết và blocker](evidence/l10n-utf8-l1a-review.json) tách primitive, mẫu PopTag, client diagnostic và
+các probe chưa kết luận. Chưa có nghiệm thu hiển thị UTF-8 ba ngôn ngữ hoặc nhập liệu. G1 giữ lát Village10 cho roster2/4/6 đã giao;
+việc tiếp và phạm vi ở [Bảng điều hành](PLAN.md#dashboard).
+
+
+### Mốc trước CP305
+
+**CP304: sửa kiểm chứng lịch sử workflow CI; phạm vi runtime giữ nguyên.**
+[Correction và bằng chứng công bố](evidence/checkpoints/docs-workflow-source-correction.json) giữ pin cũ
+và mới, không sửa checkpoint đã complete. [L1a UTF-8](evidence/l10n-utf8-l1a-review.json) vẫn partial,
+chưa nghiệm thu bản vá hoặc nhập liệu; G1 tiếp catalog sáu/tám spawn và nội dung còn thiếu theo
+[Bảng điều hành](PLAN.md#dashboard).
+
+
+### Mốc trước CP306
+
+**CP305: catalog map tám/sáu spawn và roster thưa đã có lát native hai vòng.**
+[Start/spawn, identity/slot và giới hạn](evidence/rust-service/g1-mixed-map-spawns.json) ghi native sparse6,
+Fire/Roller, hai kết quả/reset và thiếu cặp flags cuối do budget probe. G1 còn nội dung/roster theo
+[Bảng điều hành](PLAN.md#dashboard); UTF-8 vẫn partial, M8 chưa nghiệm thu.

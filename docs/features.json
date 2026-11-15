@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP302",
+  "as_of": "CP306",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -95,7 +95,8 @@
           "docs/protocol/bootstrap-codec.md#original-windows-control",
           "docs/evidence/peer-endpoints/README.md#cp178",
           "docs/PLAN.md#k0-k2a-acceptance",
-          "docs/evidence/wine-r2/README.md#cp179"
+          "docs/evidence/wine-r2/README.md#cp179",
+          "docs/evidence/l10n-utf8-l1a-review.json"
         ]
       },
       "coverage": {
@@ -114,7 +115,8 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/protocol/bootstrap-codec.md#wcp"
+            "docs/protocol/bootstrap-codec.md#wcp",
+            "docs/content/client-language.md#utf8"
           ]
         },
         "emulation": {
@@ -130,7 +132,8 @@
               "docs/evidence/bootstrap-wire/README.md",
               "docs/evidence/preclock-eof/README.md",
               "docs/evidence/nmco-locale-stability/README.md",
-              "docs/evidence/wine-r2/README.md#cp179"
+              "docs/evidence/wine-r2/README.md#cp179",
+              "docs/evidence/l10n-utf8-dialog-05.json"
             ]
           },
           "windows_original": {
@@ -1353,7 +1356,9 @@
           "docs/evidence/rust-service/g1-map-selection.json",
           "docs/evidence/owner-directives/g1-map-roster-limits.json",
           "docs/evidence/rust-service/g1-patrit-terrain.json",
-          "docs/evidence/rust-service/g1-village10-terrain.json"
+          "docs/evidence/rust-service/g1-village10-terrain.json",
+          "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+          "docs/evidence/rust-service/g1-camp08-boundary.json"
         ]
       },
       "coverage": {
@@ -1423,7 +1428,9 @@
               "docs/evidence/rust-service/g1-map-adapter.json",
               "docs/protocol/load-phase.md#rust-room-map-selection",
               "docs/protocol/terrain.md#rust-patrit-terrain",
-              "docs/protocol/terrain.md#rust-village10-herb"
+              "docs/protocol/terrain.md#rust-village10-herb",
+              "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+              "docs/evidence/rust-service/g1-camp08-boundary.json"
             ]
           },
           "windows_original": {
@@ -1460,7 +1467,8 @@
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
             "docs/protocol/load-phase.md#rust-map-profile-adapter",
-            "docs/protocol/load-phase.md#rust-room-map-selection"
+            "docs/protocol/load-phase.md#rust-room-map-selection",
+            "docs/evidence/rust-service/g1-mixed-map-spawns.json"
           ]
         },
         "integration": {
@@ -1481,7 +1489,8 @@
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
             "docs/protocol/load-phase.md#rust-map-profile-adapter",
-            "docs/protocol/load-phase.md#rust-room-map-selection"
+            "docs/protocol/load-phase.md#rust-room-map-selection",
+            "docs/evidence/rust-service/g1-mixed-map-spawns.json"
           ]
         },
         "gate": {
@@ -2410,7 +2419,8 @@
           "docs/evidence/rust-service/return-cleanup.json",
           "docs/evidence/rust-service/README.md#cp242",
           "docs/evidence/rust-service/m3-acceptance.json",
-          "docs/evidence/rust-service/g1-terrain-players.json"
+          "docs/evidence/rust-service/g1-terrain-players.json",
+          "docs/evidence/rust-service/g1-camp08-boundary.json"
         ]
       },
       "coverage": {
@@ -2490,7 +2500,8 @@
               "docs/protocol/multiplayer-team.md#four-transport-bounds",
               "docs/protocol/multiplayer-team.md#eight-mesh-owner-bombs",
               "docs/protocol/bombs.md#rust-bombs",
-              "docs/protocol/terrain.md#rust-player-terrain"
+              "docs/protocol/terrain.md#rust-player-terrain",
+              "docs/evidence/rust-service/g1-camp08-boundary.json"
             ]
           },
           "windows_original": {
@@ -2654,7 +2665,9 @@
           "docs/evidence/rust-service/g1-map-terrain.json",
           "docs/evidence/rust-service/g1-patrit-terrain.json",
           "docs/evidence/rust-service/g1-village10-herb.json",
-          "docs/evidence/rust-service/g1-village10-terrain.json"
+          "docs/evidence/rust-service/g1-village10-terrain.json",
+          "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+          "docs/evidence/rust-service/g1-camp08-boundary.json"
         ]
       },
       "coverage": {
@@ -2732,7 +2745,9 @@
               "docs/protocol/terrain.md#rust-player-terrain",
               "docs/protocol/terrain.md#rust-selected-map-terrain",
               "docs/protocol/terrain.md#rust-patrit-terrain",
-              "docs/protocol/terrain.md#rust-village10-herb"
+              "docs/protocol/terrain.md#rust-village10-herb",
+              "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+              "docs/evidence/rust-service/g1-camp08-boundary.json"
             ]
           },
           "windows_original": {
@@ -2899,7 +2914,8 @@
           "docs/evidence/rust-service/g1-map-terrain.json",
           "docs/evidence/rust-service/g1-patrit-terrain.json",
           "docs/evidence/rust-service/g1-village10-herb.json",
-          "docs/evidence/rust-service/g1-village10-terrain.json"
+          "docs/evidence/rust-service/g1-village10-terrain.json",
+          "docs/evidence/rust-service/g1-mixed-map-spawns.json"
         ]
       },
       "coverage": {
@@ -2982,7 +2998,8 @@
               "docs/protocol/terrain.md#rust-player-terrain",
               "docs/protocol/terrain.md#rust-selected-map-terrain",
               "docs/protocol/terrain.md#rust-patrit-terrain",
-              "docs/protocol/terrain.md#rust-village10-herb"
+              "docs/protocol/terrain.md#rust-village10-herb",
+              "docs/evidence/rust-service/g1-mixed-map-spawns.json"
             ]
           },
           "windows_original": {

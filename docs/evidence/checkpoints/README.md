@@ -227,3 +227,10 @@ CP290 bổ sung test vào source đã pin CP287; [correction và locator](integr
 full-check lỗi và commit gốc có đúng blob/hash. Phải có record complete và declaration/blob đúng ngay lần công bố,
 manifest ngoài khớp; commit sau có cùng byte không cứu được pin sai. Không mở cho thư mục test lồng, binary,
 raw/local, build tree hoặc fixture; không sửa record/evidence/audit cũ và không chứng nhận native từ checker.
+
+
+Từ CP304, **duy nhất `.github/workflows/docs.yml`** được xem là source thực thi và dùng cùng phép kiểm
+publication-bound trên. Workflow ở commit đầu tiên công bố record complete phải khớp declaration, manifest
+ngoài và blob từng byte. Đây là [correction](docs-workflow-source-correction.json) cho pin workflow CP264 sau
+khi CP303 bổ sung test CI; không sửa record cũ. YAML khác, raw/local/artifact và blob chỉ khớp ở commit sau
+không được cứu bằng quy tắc này. Kiểm provenance không thay nghiệm thu UTF-8 hoặc gameplay.

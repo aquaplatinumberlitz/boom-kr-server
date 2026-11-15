@@ -1,0 +1,254 @@
+{
+  "id": "CP306",
+  "previous": "CP305",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-15T11:36:57.952963+00:00",
+  "context_commit": "8672c9fc696b62defd9b5eec628d9c34300f2338",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1: Camp08 seed và loại ô nào còn chặn terrain; report nào khiến channel đóng khi đặt bom trên PinGround?",
+  "scope": "Camp08 initial native Start/spawn/flags và bounded C2S122 writer/caller blocker. Không nghiệm thu terrain/StrongBox/results-reset hoặc toàn G1. Đồng bộ chỉ đạo dừng L1/owner Claude.",
+  "artifacts": [
+    {
+      "name": "Rust service unchanged during all three Camp08 runs",
+      "sha256": "cbe310445ad0ae2e9675632b54eb44a9342eea5dba5aaf2ba9fcccabdadef4d1"
+    },
+    {
+      "name": "KR00967 diagnostic Wine client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "KR00967 unpacked static image",
+      "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-camp08-boundary",
+    "docs/evidence/rust-service/g1-camp08-boundary.json",
+    "docs/RESEARCH.md#gap-camp08-bomb-report",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Native hai account có Start2, lookup/name/code và spawn gốc Camp08; cả195flags hai view giống nhau. Một extra blocked cell12,11 cạnh MissileBase bác ngoại suy ground từng ô. Trong50unknown có39flag0/11flag1, không suy physics/damage từ seed.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP306-0008",
+        "CAMP306-0183",
+        "CAMP306-0192",
+        "CAMP306-0256"
+      ],
+      "limits": "Terrain off/floor empty; initialseed không chứng minh StrongBox, movement/blast/reset hoặc toàn map."
+    },
+    {
+      "summary": "430 copied-native getter checks khớp protected snapshots native seed; cacheoutput được khai mutable và copy/hash riêng.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "emulation",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP306-0182",
+        "CAMP306-0181"
+      ],
+      "limits": "Emulation và integrity riêng với native; không thay gameplay oracle."
+    },
+    {
+      "summary": "Run StrongBox thất bại có actual122/17byte ngay sau118 trên PinGround6,2, server từ chối unknown shape rồi đóng channel. B mất kết nối trước delayed158, nên không lấy A-only blast làm đồng bộ StrongBox.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP306-0008",
+        "CAMP306-0303",
+        "CAMP306-0383"
+      ],
+      "limits": "Runexit1/raw70 giữ nguyên. JSONabort sau disconnect và feedbacktimeout không tự là upstream cause."
+    },
+    {
+      "summary": "Targeted trace actual122 khớp writer B731D0/CGOGameBomb và args/checksummedproperty/getter. Widths4/2/2/4/1/4, measuredFFFFFFFF/6/2/4/255/0; native getter/propertyFFFFFFFF, callerB73173. Diagnostic dừng chủ ý sau denial, không policy bypass.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP306-0008",
+        "CAMP306-0115",
+        "CAMP306-0108",
+        "CAMP306-0123"
+      ],
+      "limits": "Không gán sentinel thành networkID hiện tại. Chưa response/association/negative/lifecycle122 hoặc StrongBox acceptance. Exit0 diagnostic không là gameplay success."
+    },
+    {
+      "summary": "Hai batch4body có cạnh runtime: writer và protected getter; caller gửi122 rồi local effect, map-cell predicate/reason4/6/7 và cleanup. Chỉ reason4 đã đo; cần association/response/freshness trước implementation.",
+      "source": "kr_static",
+      "status": "candidate",
+      "method": "static",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP306-0141",
+        "CAMP306-0142",
+        "CAMP306-0139"
+      ],
+      "limits": "Không suy generic PinGround/hazard/durability hoặc original server authority từ tên, flag hay static branch."
+    },
+    {
+      "summary": "Chủ dự án đã chuyển L1 cho Claude; Codex dừng Terra, commit/push WIP1f7463f trên research/l10n-utf8 và tiếp G1. Không có Opus process được Codex khởi chạy; owner đã trực tiếp giao.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/PLAN.md#dashboard",
+      "evidence": [
+        "CAMP306-0007",
+        "CAMP306-0001",
+        "CAMP306-0005"
+      ],
+      "limits": "Không thay mức nghiệm thu UTF8; legacy delegation record và complete checkpoints giữ nguyên."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native seed/capture/coords/195flags, protected wrappers và430copied-native getters",
+      "result": "pass",
+      "evidence": [
+        "CAMP306-0008",
+        "CAMP306-0183",
+        "CAMP306-0182"
+      ],
+      "limits": "Initialseed only; all gamephysics outside measuredscope remains unknown."
+    },
+    {
+      "check": "Retained failed run và targeted122 writer/TCP/raw/hash/cleanup",
+      "result": "pass",
+      "evidence": [
+        "CAMP306-0303",
+        "CAMP306-0115",
+        "CAMP306-0256",
+        "CAMP306-0383",
+        "CAMP306-0108"
+      ],
+      "limits": "Integrity/observations verified, not StrongBox/gameplay passed. Frozen401/379/389pins and no namespace process after each run."
+    },
+    {
+      "check": "Docs/catalog links và diff",
+      "result": "pass",
+      "evidence": [
+        "CAMP306-0149"
+      ],
+      "limits": "Exact committed head/full local-history/CI trước merge. Source service không đổi, không cần lặp nativebaseline hoặc cargo suite chỉ vì metadata."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP306-camp08-boundary.json",
+      "bytes": 106450,
+      "sha256": "6ecfe4adda05acefdd4e513b2ca1ed6ddac7d69ec9d02d953d7020c954663d6b",
+      "count": 412
+    }
+  ],
+  "delta": {
+    "added": [
+      "Camp08 initial seed/native và target122 evidence, failed runs/limits rõ."
+    ],
+    "corrected": [
+      "Bác ground extrapolation tại12,11; chưa gán toàn footprint.",
+      "Chuyển nguyên nhân chẩn đoán từ downstream JSON sang actual unsupported122 closure, không patchparser."
+    ],
+    "superseded": [
+      "L1 worker Terra tiếp tục; nay Claude do owner trực tiếp giao, Codex dừng L1."
+    ]
+  },
+  "blockers": [
+    "Không mở Camp08 terrain từ flag ban đầu; StrongBox01/02 cần đúng behavior/durability và peer consensus. Herb/Line/PinGround/Pillar/MissileBase chưa đủ behavior toàn map.",
+    "Không ACK/no-op122 hoặc ghép sentinelFFFFFFFF với ID server một cách tùy ý; handler/lifecycle/freshness phải đo thêm.",
+    "Không có kết quả/reset/hai vòng hoặc đầy đủ roster2–8 Camp08. Tomb12 và các nhóm item/nhân vật còn theo PLAN.",
+    "430 getter emulation tách khỏi native; không production/load/Internet acceptance."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp actual122 association/response/current owner/round/cell và negative/native controls để mở đường StrongBox/terrain Camp08; rồi Tomb12/nội dung theo PLAN. Không quay L1 hoặc lặp seed đã đo.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-15T11:36:57.952963+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo Camp08 RE/runtime và tự kiểm. Mốc blocker, không hoàn tất nhóm hoặc audit mới. L1 đã chuyển cho Claude theo chỉ đạo mới.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "AGENTS.md",
+      "state": "updated",
+      "reason": "Đồng bộ Camp08 initialseed/blocker và current owner L1; không tự đóng gate."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ Camp08 initialseed/blocker và current owner L1; không tự đóng gate."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ Camp08 initialseed/blocker và current owner L1; không tự đóng gate."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ Camp08 initialseed/blocker và current owner L1; không tự đóng gate."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ Camp08 initialseed/blocker và current owner L1; không tự đóng gate."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ Camp08 initialseed/blocker và current owner L1; không tự đóng gate."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ Camp08 initialseed/blocker và current owner L1; không tự đóng gate."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ Camp08 initialseed/blocker và current owner L1; không tự đóng gate."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-camp08-boundary.json",
+      "state": "updated",
+      "reason": "Đồng bộ Camp08 initialseed/blocker và current owner L1; không tự đóng gate."
+    },
+    {
+      "path": "docs/evidence/owner-directives/l10n-claude-owner.json",
+      "state": "updated",
+      "reason": "Đồng bộ Camp08 initialseed/blocker và current owner L1; không tự đóng gate."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Mục lục hiện có dẫn topic terrain; boundary ghi đúng topic."
+    },
+    {
+      "path": "docs/content/client-language.md",
+      "state": "unchanged",
+      "reason": "Chủ dự án giao Claude sở hữu L1; Codex không sửa hoặc tiếp RE L1."
+    }
+  ]
+}

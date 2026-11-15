@@ -404,3 +404,12 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 <a id="rust-r1g-admission"></a><a id="r1g--ngân-sách-transport-và-allowlist--cp270"></a> [→ Authority, phạm vi service và ranh giới Rust](protocol/rust-boundary.md#rust-r1g-admission)
 
 <a id="rust-bounded-diagnostic59"></a> [→ Quan sát schema59 có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59)
+
+
+<a id="utf8-client-boundary"></a>
+## Biên UTF-8 trên client đang nghiên cứu
+
+[Đặc tả ứng viên và đối chứng](content/client-language.md#utf8) tách khảo sát binary khỏi hành vi native. Chưa có
+bản vá UTF-8 hoặc wire UTF-8 được nghiệm thu cho00967. Đường phục vụ hiện hành giữ contract949/ASCII đã đo;
+shim chuyển mã và GDB substitution một chuỗi chưa thay contract tên, tiêu đề phòng hoặc chat. Mẫu PopTag có lớp949
+riêng, chưa chứng nhận cơ chế của00967. Phần chưa biết và phép đo tiếp ở [RESEARCH](RESEARCH.md#gap-client-utf8).
