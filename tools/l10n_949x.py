@@ -9,7 +9,8 @@ trail 0x41..0x5A, 0x61..0x7A, 0x81..0xA0. Mã thứ ``k`` ứng với ký tự t
 Lệnh:
   table --c OUT.h             sinh bảng C cho hook trong exe
   convert --src DIR --out DIR chuyển bộ dữ liệu UTF-8 (ssi1 + ClientString) sang 949x
-  fonts --src KR --out DIR    vá bản sao font Gulim: mượn hình chữ ngoài 949 từ CxUni
+  fonts --src KR --out DIR    vá bản sao font Gulim: mượn hình chữ ngoài 949 từ CxUni (phương án dự phòng)
+  vnfonts --vn VN --kr KR --out DIR  bộ font VN 12x16 có dấu chồng, sửa advance chữ Hàn theo font KR
   selftest                    kiểm round-trip
 """
 import argparse
@@ -286,6 +287,32 @@ def fonts(src, out):
     return report
 
 
+CJK_RANGES = [(0x1100, 0x1200), (0x3000, 0x3100), (0x3130, 0x3190), (0x3200, 0x3400), (0x4E00, 0xA000),
+              (0xAC00, 0xD7A4), (0xF900, 0xFB00), (0xFF00, 0xFFF0)]
+
+
+def vn_fonts(vn, kr, out):
+    """Bộ font VN (12x16/12x15, đủ dấu chồng) cho client KR: giữ hình VN, nhưng các ô Hàn/CJK có advance hẹp hơn
+    font KR cùng tên (Gulim VN để advance 6 cho chữ Hàn rộng 12 nên chữ đè nhau) lấy advance của font KR."""
+    out.mkdir(parents=True, exist_ok=True)
+    report = {}
+    for name in ('CxUni.fft', 'CxUniBold.fft', 'CxUniGulim.fft', 'CxUniGulimBold.fft'):
+        v, k = bytearray((vn / name).read_bytes()), (kr / name).read_bytes()
+        nv, bv = _fft_blocks(v)
+        nk, bk = _fft_blocks(k)
+        fixed = 0
+        for a, b in CJK_RANGES:
+            for c in range(a, min(b, nv, nk)):
+                for (ov, sv), (ok, sk) in zip(bv, bk):
+                    av, ak = v[ov + c * sv], k[ok + c * sk]
+                    if ak > av and any(k[ok + c * sk + 1:ok + (c + 1) * sk]):
+                        v[ov + c * sv] = ak
+                        fixed += 1
+        (out / name).write_bytes(bytes(v))
+        report[name] = {'advance_fixed': fixed}
+    return report
+
+
 def c_table(path):
     def rows(values):
         return ',\n'.join('  ' + ','.join('0x%04x' % v for v in values[i:i + 12]) for i in range(0, len(values), 12))
@@ -318,12 +345,15 @@ def main():
     t = sub.add_parser('table'); t.add_argument('--c', type=Path, required=True)
     c = sub.add_parser('convert'); c.add_argument('--src', type=Path, required=True); c.add_argument('--out', type=Path, required=True)
     fo = sub.add_parser('fonts'); fo.add_argument('--src', type=Path, required=True); fo.add_argument('--out', type=Path, required=True)
+    vf = sub.add_parser('vnfonts'); vf.add_argument('--vn', type=Path, required=True); vf.add_argument('--kr', type=Path, required=True); vf.add_argument('--out', type=Path, required=True)
     sub.add_parser('selftest')
     a = ap.parse_args()
     if a.cmd == 'table':
         c_table(a.c)
     elif a.cmd == 'fonts':
         print(json.dumps(fonts(a.src, a.out), ensure_ascii=False, indent=2))
+    elif a.cmd == 'vnfonts':
+        print(json.dumps(vn_fonts(a.vn, a.kr, a.out), ensure_ascii=False, indent=2))
     elif a.cmd == 'convert':
         print(json.dumps(convert(a.src, a.out), ensure_ascii=False, indent=2))
     else:
