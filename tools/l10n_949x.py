@@ -9,6 +9,7 @@ trail 0x41..0x5A, 0x61..0x7A, 0x81..0xA0. Mã thứ ``k`` ứng với ký tự t
 Lệnh:
   table --c OUT.h             sinh bảng C cho hook trong exe
   convert --src DIR --out DIR chuyển bộ dữ liệu UTF-8 (ssi1 + ClientString) sang 949x
+  fonts --src KR --out DIR    vá bản sao font Gulim: mượn hình chữ ngoài 949 từ CxUni
   selftest                    kiểm round-trip
 """
 import argparse
@@ -231,6 +232,52 @@ def convert(src, out):
     return report
 
 
+def _fft_blocks(data):
+    n, w, h = struct.unpack_from('<III', data, 8)
+    bpg = struct.unpack_from('<I', data, 28)[0]
+    obpg = ((w + 2) * (h + 2) + 7) // 8
+    if 32 + n * (1 + bpg) + n * (1 + obpg) != len(data):
+        raise ValueError('kích thước fft không khớp định dạng đã đọc')
+    return n, [(32, 1 + bpg), (32 + n * (1 + bpg), 1 + obpg)]
+
+
+def merge_font(target, donor, chars):
+    """Chép hình chữ của donor vào target ở các mã mà target chỉ có hình hộp thay thế."""
+    t, d = bytearray(target), bytes(donor)
+    n, blocks = _fft_blocks(t)
+    if _fft_blocks(d) != (n, blocks):
+        raise ValueError('hai font khác định dạng')
+    base, size = blocks[0]
+    glyph = lambda buf, c: bytes(buf[base + c * size + 1:base + (c + 1) * size])
+    counts = {}
+    for c in chars:
+        counts[glyph(t, c)] = counts.get(glyph(t, c), 0) + 1
+    box = max(counts, key=counts.get)
+    copied = []
+    for c in chars:
+        if c < n and glyph(t, c) == box and glyph(d, c) != box and any(glyph(d, c)):
+            for b, sz in blocks:
+                t[b + c * sz:b + (c + 1) * sz] = d[b + c * sz:b + (c + 1) * sz]
+            copied.append(c)
+    return bytes(t), copied
+
+
+FONT_PAIRS = [('CxUniGulim.fft', 'CxUni.fft'), ('CxUniGulimBold.fft', 'CxUniBold.fft')]
+
+
+def fonts(src, out):
+    """Font Gulim (ô nhập liệu) có hình hộp cho chữ Việt; mượn hình từ CxUni cùng kiểu."""
+    out.mkdir(parents=True, exist_ok=True)
+    chars = [ord(c) for c in EXT]
+    report = {}
+    for target, donor in FONT_PAIRS:
+        data, copied = merge_font((src / target).read_bytes(), (src / donor).read_bytes(), chars)
+        (out / target).write_bytes(data)
+        report[target] = {'donor': donor, 'copied': len(copied),
+                          'sample': ''.join(chr(c) for c in copied[:40])}
+    return report
+
+
 def c_table(path):
     def rows(values):
         return ',\n'.join('  ' + ','.join('0x%04x' % v for v in values[i:i + 12]) for i in range(0, len(values), 12))
@@ -262,10 +309,13 @@ def main():
     sub = ap.add_subparsers(dest='cmd', required=True)
     t = sub.add_parser('table'); t.add_argument('--c', type=Path, required=True)
     c = sub.add_parser('convert'); c.add_argument('--src', type=Path, required=True); c.add_argument('--out', type=Path, required=True)
+    fo = sub.add_parser('fonts'); fo.add_argument('--src', type=Path, required=True); fo.add_argument('--out', type=Path, required=True)
     sub.add_parser('selftest')
     a = ap.parse_args()
     if a.cmd == 'table':
         c_table(a.c)
+    elif a.cmd == 'fonts':
+        print(json.dumps(fonts(a.src, a.out), ensure_ascii=False, indent=2))
     elif a.cmd == 'convert':
         print(json.dumps(convert(a.src, a.out), ensure_ascii=False, indent=2))
     else:
