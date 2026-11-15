@@ -33,9 +33,9 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP307: Rust đã có parser C2S122 theo body native; Camp08 còn chặn ở đường xử lý report.**
-[Đối chứng và giới hạn](docs/evidence/rust-service/g1-camp08-report122.json) tách fixture/parser khỏi nghiệm thu phục vụ.
-Codex tiếp G1 theo [Bảng điều hành](docs/PLAN.md#dashboard); L1 do Claude phụ trách.
+**CP308: bộ chữ Anh đã hiện trên client KR runtime G1; loader từ chối file checksum hỏng.**
+[Kết quả và giới hạn L-probe-b](docs/content/client-language.md#data-files) tách dữ liệu chữ/ảnh khỏi nghiệm thu UTF-8.
+Codex tiếp report bom Camp08/G1 theo [Bảng điều hành](docs/PLAN.md#dashboard); L1 vẫn do Claude phụ trách.
 
 ## Bắt đầu
 
