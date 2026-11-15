@@ -1,0 +1,77 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "5290023",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Two copies of the 949x-patched diagnostic runtime exe (exe sha256 9bcd23d7ea7fc0f9da7df51ad9a0bc03ed170c289115dc6b8a8766ab1c0e0c6e, IME-composition input hook). A: Korean UTF-8 build of boom-re-l10n 11bc77c converted to 949x. B: Vietnamese UTF-8 build of 11bc77c with --images (459 images) converted to 949x, Gulim font copies patched. Rust diagnostic service, isolated LAN, G1 Factory r3 recipe.",
+  "observation": "B lobby, create-room dialog and room show Vietnamese text with correct diacritics and translated image buttons (TOÀN BỘ, LUYỆN TẬP, CÁ NHÂN, THÔNG TIN, SẴN SÀNG); B shows A's Korean room title 아무나 오세요 next to Vietnamese UI. A typed 'Xin chào các bạn 안녕하세요 ạ' through SendInput Unicode; A's chat field shows 'Xin chào các bạn 안녕하' and the service received chat opcode 18 whose decoded text bytes are 58696e206368c76c6f2063c76d632062d2526e20bec8b3e7c7cf, i.e. that 26-byte 949x string; the remaining characters did not reach the field. The service then denied opcode 18 and closed the lobby connection. The earlier attempt r1 with the previous exe (local/runs/vi-04/r1) clicked the shop button: only the tooltip 'Đến Siêu thị' appeared, the shop did not open.",
+  "local_evidence": [
+    {
+      "path": "local/runs/vi-04/recipe.json",
+      "sha256": "e7a409483301ad14d4b3a3ece84c5f75acc19511a04c41a6da7b0e275c0b9632"
+    },
+    {
+      "path": "local/runs/vi-04/preflight.json",
+      "sha256": "34c317fddc6420d86f57bddcac1099a41b2353c334d10958cbb75fd9d9ae9c2f"
+    },
+    {
+      "path": "local/runs/vi-04/native/run.json",
+      "sha256": "b0cfc51dd173d7da4c1334da8c6190dea897e6a8fcb1f31f1371ee55416d041d"
+    },
+    {
+      "path": "local/runs/vi-04/native/B/lobby.png",
+      "sha256": "185c74b378d47f95503c64ae110bb68fff9d94c14cf0437d3f99faab4825cbfd"
+    },
+    {
+      "path": "local/runs/vi-04/native/B/dialog-ready.png",
+      "sha256": "d76cd745516d7043c77e47e3b81a24a7af12c2acde2fe395f1b6744778545f19"
+    },
+    {
+      "path": "local/runs/vi-04/native/B/room-late.png",
+      "sha256": "9a16697056cbd917c3d918fa1bbcc7e7a2618dbb4228a584f046a3743d17ab27"
+    },
+    {
+      "path": "local/runs/vi-04/native/A/chat-typed.png",
+      "sha256": "41883071145c6b3de267dce3aae37e67dfe4ee43baa8139b450117e9c01f299b"
+    },
+    {
+      "path": "local/runs/vi-04/native/tcp-auth-pair.pcap",
+      "sha256": "f0030313bcdfd5f4ff1a5191816a5065fdf314519eeb3a1dc6a3043f3bb4a3b5"
+    },
+    {
+      "path": "local/runs/vi-04/native/rust-events.jsonl",
+      "sha256": "485b5aacd60adfc3a7f59e59dc74086fdd4f17464b8d161b48dcf1be5a4ee493"
+    },
+    {
+      "path": "local/runs/vi-04/storage-export.json",
+      "sha256": "a92a5a3738d0f5fbacb50193a8c9addf5bce6713d35c81d9c992eafc6a083f8c"
+    },
+    {
+      "path": "local/runs/vi-04/r1/native/B/lobby.png",
+      "sha256": "d9becfb3c55b9ac763be3d8d12e490a09cca9161722d2660a94f4b50cfe21928"
+    },
+    {
+      "path": "local/runs/vi-04/r1/native/B/shop.png",
+      "sha256": "54c7c9a022016f2cd2945fb9503847ee27e79153e0a05d826c0ad5bf76e733ab"
+    },
+    {
+      "path": "local/patch-949x/patch.json",
+      "sha256": "f39221ada74e669bd90274cf93369190809f7219a2fb742244628c26d9baf182"
+    },
+    {
+      "path": "local/l10n-data3/vi-949x/convert-report.json",
+      "sha256": "d380f3a7fb9fe2d9f6f20a71d7addbcabf8edd949423cabdb4e96d4e9cfc1260"
+    },
+    {
+      "path": "local/l10n-data3/vi-utf8/build-report.json",
+      "sha256": "d67a646ce3176ca0ab67e82f89365effbd514e32c68b1ad77c8f5bc28006efd5"
+    },
+    {
+      "path": "local/tools/c2s_frames.py",
+      "sha256": "ba5899b44d87dac0ae4b33ca00fe8117eaa1aa626aba9d918b546c4edfcf1298"
+    }
+  ],
+  "cleanup": "Raw export and unmount passed. After the run only fxdynmapinfo.ssd differed from the pinned inputs on both copies (map cache written from service data).",
+  "limits": "Diagnostic runtime exe and private service. Shop, room-title editing (needs a registered email ID) and chat relay are not available in this setup. Korean image buttons remain where the image is needs_translation (방만들기, 바로시작, 메뉴, 상점, 레벨, slot labels 방장/준비, room tabs, 시작). Server-sent and exe-literal Korean messages remain Korean. Truncation after 26 bytes is not explained."
+}

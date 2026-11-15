@@ -3,6 +3,7 @@
  * Mọi chuyển mã trong exe đi qua hai slot IAT MultiByteToWideChar/WideCharToMultiByte.
  * Với codepage 949, hook giải/ghi thêm các mã hai byte của bảng mở rộng tĩnh 949x
  * (tools/l10n_949x.py); mọi đoạn khác chuyển nguyên cho API gốc. Codepage khác đi thẳng API gốc.
+ * Thêm hook PeekMessageA và ImmGetCompositionStringA/W cho nhập liệu (xem dưới).
  * Biên dịch: tools/l10n_949x_patch.py (clang i386 freestanding, nhị phân phẳng).
  */
 #include "l10n_949x_table.h"

@@ -1,0 +1,61 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "5290023",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "As l10n-utf8-949x-vi-04 with B using the English UTF-8 build of 11bc77c with --images (314 images) converted to 949x.",
+  "observation": "B lobby and room show English text and image buttons (VIEW ALL, PRACTICE, MENU, POP SHOP, MY PAGE, ROOM SETTINGS, READY, Creator Maps) and A's Korean title 빨리 오세요~. A typed 'Hello xin chào 반가워요 ₫ ơư'; A's chat field shows the whole string and the service received 32 bytes 48656c6c6f2078696e206368c76c6f20b9ddb0a1bff6bfe420d48320c96ec983, which decode in 949x to exactly that string. The service denied opcode 18 and closed the connection.",
+  "local_evidence": [
+    {
+      "path": "local/runs/en-05/recipe.json",
+      "sha256": "c2efe7401983cafc9de1d0daea7ff95b97db3f26d0c841b405a01d19425936de"
+    },
+    {
+      "path": "local/runs/en-05/preflight.json",
+      "sha256": "394770c56b8a5378a082b32c84f6543ad41062546cd6be9536cc7df089d153dd"
+    },
+    {
+      "path": "local/runs/en-05/native-raw-export/run.json",
+      "sha256": "24fdd6cc514f2a5e54bd8a57ddceea7cfd99c41aeb012ba7ce02be4b6df0a1c7"
+    },
+    {
+      "path": "local/runs/en-05/native-raw-export/B/lobby.png",
+      "sha256": "6897ab26c1b9e15cb98532eafe5ff54ecbad3c69a33c20a8372ba625e614f09f"
+    },
+    {
+      "path": "local/runs/en-05/native-raw-export/B/room-late.png",
+      "sha256": "0e773204ec5f80680647122d1a02c387c50eb81bb5a6c44686c86c4f5ae66085"
+    },
+    {
+      "path": "local/runs/en-05/native-raw-export/A/chat-typed.png",
+      "sha256": "d84db6a0dab0c1106129fe2d9a2623ab9aefe2c624fb7c4cc9f33b6a0d00c3b6"
+    },
+    {
+      "path": "local/runs/en-05/native-raw-export/tcp-auth-pair.pcap",
+      "sha256": "d7807d453e2a22d9a9b3befa1933c39d85ab9f87c464d0f331ad530850f641bd"
+    },
+    {
+      "path": "local/runs/en-05/native-raw-export/rust-events.jsonl",
+      "sha256": "e1fa1eb5cc7bf729bfc5599d321539783e20d30fce3196eb40dd848332d6ac89"
+    },
+    {
+      "path": "local/runs/en-05/storage-export-before-unmount.json",
+      "sha256": "be3301150bc0d927ca4039d4e2dc3fc0b05d9f0ffdb18e2127075248df412a85"
+    },
+    {
+      "path": "local/patch-949x/patch.json",
+      "sha256": "f39221ada74e669bd90274cf93369190809f7219a2fb742244628c26d9baf182"
+    },
+    {
+      "path": "local/l10n-data3/en-949x/convert-report.json",
+      "sha256": "f71604fc70589475f4f67721e29724a1acbd54ddcd0eb2581a9a515014942e11"
+    },
+    {
+      "path": "local/l10n-data3/en-utf8/build-report.json",
+      "sha256": "d8b5508cfee6cca32604ea711bcb23fc75108944ccdb1793b86bbc0e2c7a5370"
+    }
+  ],
+  "cleanup": "Harness reported 'bounded unmount busy after same-byte export'; the same-byte export is retained as native-raw-export and storage-export-before-unmount.json pins it. Only fxdynmapinfo.ssd changed in the game copies.",
+  "limits": "Same as vi-04. Korean image buttons remain where the English image is missing (방만들기, 바로시작, slot labels, room tabs, 시작)."
+}

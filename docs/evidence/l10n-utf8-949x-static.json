@@ -1,0 +1,53 @@
+{
+  "schema": "kre-static-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "5290023",
+  "source": "kr_static",
+  "status": "candidate",
+  "input": {
+    "description": "00967 unpacked image and diagnostic runtime exe CA-r2-stage-social-cmp.exe; private IDA database copy",
+    "image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "runtime_exe_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "database_copy": "local/ida/kr-opus.i64 (copy of the Codex private database)"
+  },
+  "method": "IDA Pro headless (MCP) pseudocode and xrefs on the database copy; byte scan of the runtime exe for call/jmp through IAT slots; Wine fixtures built from the hook source (t.c codec round trip, tin3.c window with PeekMessage and composition hooks) driven by tools/l10n_unicode_input.c. Raw pseudocode stays under local/.",
+  "findings": {
+    "iat_call_sites": "call/jmp through MultiByteToWideChar 0x16EA4B4: 38 sites; WideCharToMultiByte 0x16EA4AC: 30 sites; conversion helpers 0x149A740/0x149A6D0 call the slot directly.",
+    "room_title_limit": "0xC542C0 accepts a create-room title of 1..22 bytes (password branch: <=22); edit created with max length 22 in 0xC53B10; CConfig LastRoomTitle truncates to 22 (18 in another region branch).",
+    "input_systems": "WM_CHAR reaches 0x15222C8 (control +300 = 0x152015D joins a DBCS pair via 0x149A740) or 0x1514A29, which discards a lead byte and its trail when they arrive as WM_CHAR. Both accept non-ASCII text through WM_IME_COMPOSITION/GCS_RESULTSTR: 0x152248F via ImmGetCompositionStringW, 0x1514E11 via ImmGetCompositionStringA.",
+    "fonts": "CxUniGulim.fft and CxUniGulimBold.fft hold one box bitmap for Vietnamese letters outside Latin-1 (for example U+1ECD, U+01A1, U+01B0); CxUni.fft and CxUniBold.fft hold real glyphs. The patched copies take 1,709 glyphs from the donor fonts.",
+    "codec_fixture": "Under Wine 949 decoding rejects all 2,275 949x codes; hook round trip of a mixed Vietnamese/Korean/symbol sample matched; SendInput Unicode characters arrive at a window with an IME context as composition results ạ U+1EA1/D252, 한 U+D55C/C7D1, ₫ U+20AB/D483."
+  },
+  "local_evidence": [
+    {
+      "path": "local/ida/createdlg.c",
+      "sha256": "216ecdb6d7a65c35faabc34147c8a38606a9b5cdb64571a32b3ce756d8cd3006"
+    },
+    {
+      "path": "local/ida/createroom.c",
+      "sha256": "58c31b9d96388b745a5b399ea1279b1106448e3a9890c4318e48bcb24def2815"
+    },
+    {
+      "path": "local/probe/t.c",
+      "sha256": "3c0d927d4ef029e1066307b683a2481c6698971b2e398b4f77a0e1725e4b1d07"
+    },
+    {
+      "path": "local/probe/tin3.c",
+      "sha256": "1bbca4623f8d78c504f02258a367ce654949639ee32722bc6bf92d5f6141e0b0"
+    },
+    {
+      "path": "local/probe/input-log.txt",
+      "sha256": "298b8878375e194a8a2b37c40171336a419b78b4543494e68027216c8988feaa"
+    },
+    {
+      "path": "local/fonts-949x/CxUniGulim.fft",
+      "sha256": "37c2e4cc7768c9877101422c3ee082821ea83d2bac285734cdeaf01c5d034f09"
+    },
+    {
+      "path": "local/fonts-949x/CxUniGulimBold.fft",
+      "sha256": "f4e6ef1f594ecf02c7c650d70d11852215e55397973a7951fa76daef7a2677b7"
+    }
+  ],
+  "limits": "Only the named functions were read. Other text consumers that bypass the two conversion slots (own decoders, GDI) are not excluded. The fixtures are not the game. The real Korean IME composition path was not exercised.",
+  "interpretation": "docs/content/client-language.md#utf8"
+}
