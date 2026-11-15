@@ -111,37 +111,57 @@ __attribute__((stdcall)) int hook_wc2mb(unsigned cp, unsigned flags, const u16 *
     return out;
 }
 
-/* Nhập liệu: cửa sổ game là ANSI và lấy message bằng PeekMessageA, nên WM_CHAR ngoài bảng mã
- * ACP của Wine/Windows thành '?'. Hook lấy message bằng PeekMessageW rồi đổi ký tự sang 949x;
- * mã hai byte được giao thành hai WM_CHAR (lead rồi trail), đúng cách control 0x152015D ghép DBCS. */
+/* Nhập liệu: cửa sổ game là ANSI và lấy message bằng PeekMessageA, nên WM_CHAR ngoài bảng mã ACP thành '?'.
+ * Hai hệ ô nhập của client (0x15222C8 và 0x1514A29) chỉ nhận chữ ngoài ASCII qua composition IME
+ * (WM_IME_COMPOSITION + GCS_RESULTSTR); hệ thứ hai cố ý bỏ cặp DBCS đến bằng WM_CHAR. Hook lấy message bằng
+ * PeekMessageW; WM_CHAR ngoài ASCII (Unikey/VK_PACKET hay xdotool) được đổi thành WM_IME_COMPOSITION với
+ * GCS_RESULTSTR, và hai hook ImmGetCompositionStringA/W trả đúng ký tự đó (A: mã 949x) cho lần xử lý message này.
+ * Composition thật của IME đi nguyên vẹn khi không có ký tự tiêm. */
 typedef struct { void *hwnd; unsigned message, wParam; long lParam; unsigned time; long x, y; } msg_t;
 typedef int(__attribute__((stdcall)) * peek_t)(msg_t *, void *, unsigned, unsigned, unsigned);
+typedef long(__attribute__((stdcall)) * imm_t)(void *, unsigned, void *, unsigned);
 typedef void *(__attribute__((stdcall)) * gmh_t)(const char *);
 typedef void *(__attribute__((stdcall)) * gpa_t)(void *, const char *);
 peek_t orig_peeka, peekw;
-static msg_t pending;
-static int has_pending;
+imm_t orig_imma, orig_immw;
+static u16 inj_char;
+static int inj_active;
 
 __attribute__((stdcall)) int hook_peeka(msg_t *m, void *hwnd, unsigned fmin, unsigned fmax, unsigned flags) {
     int r;
-    if (has_pending && (!hwnd || hwnd == pending.hwnd) && ((!fmin && !fmax) || (fmin <= 0x102 && 0x102 <= fmax))) {
-        *m = pending;
-        if (flags & 1) has_pending = 0;
-        return 1;
-    }
     if (!peekw) return orig_peeka(m, hwnd, fmin, fmax, flags);
+    if (flags & 1) inj_active = 0;
     r = peekw(m, hwnd, fmin, fmax, flags);
-    if (r && (m->message == 0x102 || m->message == 0x106) && m->wParam >= 0x80 && m->wParam <= 0xFFFF) {
-        u16 w = (u16)m->wParam;
-        char b[4];
-        int n = hook_wc2mb(949, 0, &w, 1, b, 4, 0, 0);
+    if (r && m->message == 0x102 && m->wParam >= 0x80 && m->wParam <= 0xFFFF &&
+        !(m->wParam >= 0xD800 && m->wParam <= 0xDFFF)) {
         l10n_stats[2]++;
-        if (n == 2) {
-            if (m->message == 0x102 && (flags & 1)) { pending = *m; pending.wParam = (u8)b[1]; has_pending = 1; }
-            m->wParam = (u8)b[0];
-        } else m->wParam = n == 1 ? (u8)b[0] : '?';
+        if (flags & 1) { inj_char = (u16)m->wParam; inj_active = 1; }
+        m->message = 0x10F; /* WM_IME_COMPOSITION */
+        m->lParam = 0x800;  /* GCS_RESULTSTR */
     }
     return r;
+}
+
+__attribute__((stdcall)) long hook_immw(void *himc, unsigned index, void *buf, unsigned len) {
+    if (!inj_active) return orig_immw(himc, index, buf, len);
+    if (index != 0x800) return 0;
+    if (len == 0) return 2;
+    if (len < 2) return -1;
+    *(u16 *)buf = inj_char;
+    return 2;
+}
+
+__attribute__((stdcall)) long hook_imma(void *himc, unsigned index, void *buf, unsigned len) {
+    char b[4];
+    int n;
+    if (!inj_active) return orig_imma(himc, index, buf, len);
+    if (index != 0x800) return 0;
+    n = hook_wc2mb(949, 0, &inj_char, 1, b, 4, 0, 0);
+    if (n <= 0) { b[0] = '?'; n = 1; }
+    if (len == 0) return n;
+    if (len < (unsigned)n) return -1;
+    for (int i = 0; i < n; i++) ((char *)buf)[i] = b[i];
+    return n;
 }
 
 void l10n_init(void) {
@@ -149,10 +169,14 @@ void l10n_init(void) {
     orig_mb2wc = (mb2wc_t)*SLOT_MB2WC;
     orig_wc2mb = (wc2mb_t)*SLOT_WC2MB;
     orig_peeka = (peek_t) * (void **)IAT_PEEKMESSAGEA;
+    orig_imma = (imm_t) * (void **)IAT_IMMGETCOMPOSITIONSTRINGA;
+    orig_immw = (imm_t) * (void **)IAT_IMMGETCOMPOSITIONSTRINGW;
     peekw = user32 ? (peek_t)((gpa_t) * (void **)IAT_GETPROCADDRESS)(user32, "PeekMessageW") : 0;
     *SLOT_MB2WC = (void *)hook_mb2wc;
     *SLOT_WC2MB = (void *)hook_wc2mb;
     *(void **)IAT_PEEKMESSAGEA = (void *)hook_peeka;
+    *(void **)IAT_IMMGETCOMPOSITIONSTRINGA = (void *)hook_imma;
+    *(void **)IAT_IMMGETCOMPOSITIONSTRINGW = (void *)hook_immw;
     l10n_stats[3] = 0x39343978; /* "x949": dấu đã cài */
 }
 
