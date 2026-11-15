@@ -42,7 +42,9 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, C
    [partial/blocker](evidence/l10n-utf8-l1a-review.json)). L1 **đạt một phần** (CP307): chọn
    [mã nội bộ 949x](content/client-language.md#utf8), dữ liệu UTF-8 đổi sang 949x lúc mở game, hook IAT chuyển mã và nhập
    liệu; native đã hiện Việt, Anh, Hàn, chữ trộn ở tên phòng và gõ được Việt/Hàn ở chat. Còn: tiệm và chat chuyển tiếp phía
-   server, sửa tên phòng cần cờ email, tên phòng tiếng Việt quá 22 byte, ảnh chưa dịch, IME Hàn thật. Runtime Wine luân phiên với G1.
+   server, sửa tên phòng cần cờ email, tên phòng tiếng Việt quá 22 byte, ảnh chưa dịch, IME Hàn thật. Chữ server gửi, chat
+   chuyển tiếp, tiệm và IME Hàn thật [để sau giai đoạn 1](evidence/owner-directives/l10n-utf8-followup.json); ảnh khác shape,
+   chuỗi cứng trong exe, chat bị cắt và gõ tên phòng làm tiếp ngay. Runtime Wine luân phiên với G1.
 2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
    N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có actual native59 rồi hai vòng/reset. [Issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ; không gọi schema đã đo là toàn protocol59.
 

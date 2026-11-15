@@ -96,7 +96,8 @@
           "docs/evidence/peer-endpoints/README.md#cp178",
           "docs/PLAN.md#k0-k2a-acceptance",
           "docs/evidence/wine-r2/README.md#cp179",
-          "docs/evidence/l10n-utf8-l1a-review.json"
+          "docs/evidence/l10n-utf8-l1a-review.json",
+          "docs/evidence/l10n-utf8-949x-vi-04.json"
         ]
       },
       "coverage": {
@@ -133,7 +134,8 @@
               "docs/evidence/preclock-eof/README.md",
               "docs/evidence/nmco-locale-stability/README.md",
               "docs/evidence/wine-r2/README.md#cp179",
-              "docs/evidence/l10n-utf8-dialog-05.json"
+              "docs/evidence/l10n-utf8-dialog-05.json",
+              "docs/evidence/l10n-utf8-949x-en-05.json"
             ]
           },
           "windows_original": {

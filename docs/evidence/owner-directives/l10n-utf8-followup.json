@@ -1,0 +1,13 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-15T15:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án quyết định ngày 15/11/2026 sau báo cáo L1 949x, chuyển qua Claude điều phối.",
+  "fact": "Bản vá 949x đã hiện chữ ba ngôn ngữ, chữ trộn ở tên phòng và nhận gõ Việt/Hàn ở chat trên client chẩn đoán. Còn chữ server gửi, chat chuyển tiếp, tiệm, IME Hàn thật, ảnh bị bỏ vì khác shape, chuỗi cứng trong exe, chat bị cắt và gõ tên phòng.",
+  "decision": "Để sau giai đoạn 1: (3) chữ server gửi, như dòng thông báo chạy chữ: xác định nguồn, nếu do server gửi thì server giữ theo ba thứ tiếng; (6) chat chuyển tiếp: chế độ thử nghiệm server chuyển nguyên byte chat 949x trong phòng; (7) tiệm: server trả tiệm mẫu để mở màn hình; (8) gõ tiếng Hàn bằng IME thật (giả lập composition trên Wine hoặc thử tay trên Windows). Làm ngay: (1) ảnh khác shape, (2) chuỗi cứng trong exe, (4) chat bị cắt ở 26 byte, (5) gõ tên phòng.",
+  "limits": "Không đổi đích giai đoạn 1 hoặc packet giai đoạn 1 của client chưa vá. Không sửa repo boom-re-l10n. Runtime Wine luân phiên với G1.",
+  "canonical": "docs/content/client-language.md#utf8",
+  "plan": "docs/PLAN.md#dashboard",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}

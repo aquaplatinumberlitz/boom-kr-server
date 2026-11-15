@@ -208,6 +208,11 @@ Bộ Hàn UTF-8 qua 949x hiện như dữ liệu gốc ở client A của vi-04 
 - **Màn đăng nhập** không có trong recipe (đăng nhập bằng token); chưa chụp.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 
+**Để sau giai đoạn 1** theo [quyết định 15/11](../evidence/owner-directives/l10n-utf8-followup.json): chữ server gửi
+(thông báo chạy chữ: xác định nguồn, nếu do server gửi thì server giữ theo ba thứ tiếng), chat chuyển tiếp (chế độ thử
+nghiệm server chuyển nguyên byte chat 949x trong phòng), tiệm (server trả tiệm mẫu để mở màn hình) và gõ tiếng Hàn bằng
+IME thật. Làm ngay: ảnh bị bỏ vì khác shape, chuỗi cứng trong exe, chat bị cắt và gõ tên phòng.
+
 ### Các lượt chẩn đoán trước (Codex, 14–15/11)
 
 Trước khi chọn 949x, Codex đi theo hướng UTF-8 thuần và chạy các lượt chẩn đoán trên client copy: đọc tĩnh các hàm
