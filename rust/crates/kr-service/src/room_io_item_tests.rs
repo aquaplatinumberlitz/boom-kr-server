@@ -145,6 +145,7 @@ fn spawn_choices(c: &mut Case, counts: &[usize]) {
             )]),
             floor: pickups::Catalog::default(),
             terrain: None,
+            bomb_cancellation: None,
         })
         .collect();
     r.maps = Some(Arc::new(crate::map_profile::Catalog { choices }));
@@ -767,6 +768,7 @@ fn map_selection_replaces_terrain_and_claims_atomically_and_fences_prior_map_bat
                     )]),
                     floor: r.floor_catalog.clone(),
                     terrain: Some(crate::terrain::tests::basic_items_map()),
+                    bomb_cancellation: None,
                 },
                 crate::map_profile::Choice {
                     spawn_count: 8,
@@ -778,6 +780,7 @@ fn map_selection_replaces_terrain_and_claims_atomically_and_fences_prior_map_bat
                     )]),
                     floor: pickups::Catalog::default(),
                     terrain: Some(crate::terrain::tests::map()),
+                    bomb_cancellation: None,
                 },
                 crate::map_profile::Choice {
                     spawn_count: 8,
@@ -789,6 +792,7 @@ fn map_selection_replaces_terrain_and_claims_atomically_and_fences_prior_map_bat
                     )]),
                     floor: pickups::Catalog::default(),
                     terrain: None,
+                    bomb_cancellation: None,
                 },
             ],
         }));
@@ -917,4 +921,165 @@ fn captured59_is_current_no_reply_visit_budget_and_cannot_change_round_or_stats(
     assert!(c.sessions[0].packet(59, &body).is_err());
     assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
     assert_eq!(c.shared.lock().unwrap().model.phase, Phase::Idle);
+}
+
+// Native CP307 report bytes. These synthetic scenarios check server authority;
+// they do not establish native acceptance of the new policy.
+fn cancellation_case() -> Case {
+    let mut c = case(2);
+    spawn_choices(&mut c, &[8, 8]);
+    let mut r = c.shared.lock().unwrap();
+    let mut choices = Arc::try_unwrap(r.maps.take().unwrap()).ok().unwrap();
+    let cfg: rules::BombCancellationConfig = serde_json::from_value(serde_json::json!({
+        "map_sha256": "a".repeat(64), "cells": [[6, 2]]
+    }))
+    .unwrap();
+    choices.choices[0].bomb_cancellation = Some(cfg.validate(&"a".repeat(64)).unwrap());
+    r.maps = Some(Arc::new(choices));
+    r.rules.map_bomb_cancellation = true;
+    r.model.terrain = None;
+    drop(r);
+    c
+}
+fn cancelled_bomb(serial: u32, key: u32) -> Vec<u8> {
+    let mut body = bomb(0, serial, 1, key);
+    body[10..12].copy_from_slice(&encoded(&[(6, Width::U8), (2, Width::U8)]));
+    body
+}
+fn report122() -> Vec<u8> {
+    bytes("6935ac6aa56fa56b96ca5391a596ca5395")
+}
+#[test]
+fn cancellation_consumes_serial_without_spawn_deadline_or_quota_and_reports_cannot_release_normal_bomb()
+ {
+    let mut c = cancellation_case();
+    let old_key = crate::room::wire_key(c.round).unwrap();
+    let report = report122();
+    let cancelled = cancelled_bomb(1, old_key);
+    let reason = |o: Observation| o.bomb.unwrap().reason;
+    assert_eq!(
+        reason(c.sessions[1].packet(118, &cancelled).unwrap()),
+        "owner_mismatch"
+    );
+    assert_eq!(
+        reason(
+            c.sessions[0]
+                .packet(118, &cancelled_bomb(1, old_key + 1))
+                .unwrap()
+        ),
+        "round_key_mismatch"
+    );
+    assert_eq!(
+        reason(c.sessions[0].packet(118, &cancelled).unwrap()),
+        "map_cell_cancelled"
+    );
+    assert!(!c.shared.lock().unwrap().model.bombs.pending());
+    assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
+    assert_eq!(
+        reason(c.sessions[0].packet(118, &cancelled).unwrap()),
+        "duplicate_serial"
+    );
+    assert_eq!(
+        reason(c.sessions[0].packet(118, &bomb(0, 1, 1, old_key)).unwrap()),
+        "conflicting_serial"
+    );
+    let stats = c.shared.lock().unwrap().model.members[&c.keys[0].identity].item_stats;
+    for cycle in 0..2 {
+        let key = crate::room::wire_key(c.round).unwrap();
+        if cycle != 0 {
+            assert_eq!(
+                reason(c.sessions[0].packet(118, &cancelled).unwrap()),
+                "round_key_mismatch"
+            );
+        }
+        let accepted = c.sessions[0]
+            .packet(118, &bomb(0, 2, 1, key))
+            .unwrap()
+            .bomb
+            .unwrap();
+        assert!(accepted.accepted);
+        if cycle == 0 {
+            assert_eq!(accepted.id, Some(1));
+        }
+        c.sessions[0].connection += 1;
+        assert!(c.sessions[0].packet(122, &report).is_err());
+        c.sessions[0].connection -= 1;
+        assert!(c.sessions[0].packet(122, &report[..16]).is_err());
+        for _ in 0..64 {
+            c.sessions[0].packet(122, &report).unwrap();
+        }
+        assert!(c.sessions[0].packet(122, &report).is_err());
+        assert!(c.shared.lock().unwrap().model.bombs.pending());
+        assert_eq!(
+            reason(c.sessions[0].packet(118, &bomb(0, 3, 1, key)).unwrap()),
+            "owner_capacity_reserved"
+        );
+        for s in &mut c.sessions {
+            let spawn = s.inbox.try_recv().unwrap();
+            assert_eq!(spawn.packets[0].1.opcode, 159);
+            let deadline = s.inbox.try_recv().unwrap();
+            assert_eq!(deadline.packets[0].1.opcode, 158);
+            assert!(s.valid(&deadline));
+            s.finish(&deadline).unwrap();
+            assert!(s.inbox.try_recv().is_err());
+        }
+        assert!(!c.shared.lock().unwrap().model.bombs.pending());
+        {
+            let mut r = c.shared.lock().unwrap();
+            r.model.end(c.round).unwrap();
+        }
+        // A tail can be observed during Ending, but never emits a reply.
+        c.sessions[1].packet(122, &report).unwrap();
+        {
+            let mut r = c.shared.lock().unwrap();
+            for key in &c.keys {
+                r.model.refreshed(*key, c.round).unwrap();
+            }
+        }
+        c.sessions[0].packet(122, &report).unwrap();
+        assert!(!c.shared.lock().unwrap().model.bombs.pending());
+        if cycle == 0 {
+            let mut r = c.shared.lock().unwrap();
+            r.model.ready(c.keys[1]).unwrap();
+            c.round = r.model.begin(c.keys[0]).unwrap();
+            for key in &c.keys {
+                r.model.ack(*key, c.round).unwrap();
+            }
+            for member in r.model.members.values_mut() {
+                member.item_stats = stats;
+            }
+        }
+    }
+}
+#[test]
+fn cancellation_and_report_policy_follow_selected_map_and_explicit_enable() {
+    let mut c = cancellation_case();
+    let report = report122();
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.selected_map = 1;
+    }
+    assert!(c.sessions[0].packet(122, &report).is_err());
+    let key = crate::room::wire_key(c.round).unwrap();
+    assert!(
+        c.sessions[0]
+            .packet(118, &cancelled_bomb(1, key))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    for s in &mut c.sessions {
+        s.inbox.try_recv().unwrap();
+        s.inbox.try_recv().unwrap();
+    }
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.selected_map = 0;
+        r.rules.map_bomb_cancellation = false;
+    }
+    assert!(c.sessions[0].packet(122, &report).is_err());
+    c.shared.lock().unwrap().rules.map_bomb_cancellation = true;
+    c.sessions[0].packet(122, &report).unwrap();
+    assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
 }

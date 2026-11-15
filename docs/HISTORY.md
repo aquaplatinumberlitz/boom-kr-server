@@ -5,6 +5,10 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP308: bộ chữ Anh đã hiện trên client KR runtime G1; loader từ chối file checksum hỏng.**
+[Kết quả và giới hạn L-probe-b](content/client-language.md#data-files) tách dữ liệu chữ/ảnh khỏi nghiệm thu UTF-8.
+Codex tiếp report bom Camp08/G1 theo [Bảng điều hành](PLAN.md#dashboard); L1 vẫn do Claude phụ trách.
+
 **CP307: Rust đã có parser C2S122 theo body native; Camp08 còn chặn ở đường xử lý report.**
 [Đối chứng và giới hạn](evidence/rust-service/g1-camp08-report122.json) tách fixture/parser khỏi nghiệm thu phục vụ.
 Codex tiếp G1 theo [Bảng điều hành](PLAN.md#dashboard); L1 do Claude phụ trách.

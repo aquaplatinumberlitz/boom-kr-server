@@ -154,6 +154,7 @@ pub(crate) fn load_managed_round(
             life_actions: crate::life_actions::Policy::Disabled,
             item_policy: pickups::Policy::Disabled,
             player_choices: false,
+            map_bomb_cancellation: false,
         };
         (
             wire::start121_roster(source.body(Template::Start121), &cfg.teams)?,
@@ -247,6 +248,7 @@ pub(crate) fn load_player_round(
             ninth_admission_probe: false,
             life_actions: source.rules.life_actions,
             item_policy: source.rules.item_policy,
+            map_bomb_cancellation: source.rules.map_bomb_cancellation,
         },
         limits: rules::ReportLimits {
             power: Vec::new(),
@@ -837,6 +839,15 @@ impl Runtime {
                 .capacity()
                 .min(maps.choices[self.selected_map].spawn_count)
         })
+    }
+
+    fn bomb_cancellation_cells(&self) -> Option<&rules::BombCancellationCells> {
+        if !self.rules.map_bomb_cancellation {
+            return None;
+        }
+        self.maps.as_ref()?.choices[self.selected_map]
+            .bomb_cancellation
+            .as_ref()
     }
 
     fn player_spawns(&self, model: &Room) -> io::Result<HashMap<u8, u8>> {
@@ -1774,6 +1785,7 @@ impl Session {
                 | 124
                 | 123
                 | 118
+                | 122
                 | 142
                 | 167
                 | 202
@@ -2775,6 +2787,23 @@ impl Session {
                     next.observe_opaque123(m.key)?;
                 }
             }
+            122 => {
+                let member = r.member(self.identity, self.connection)?;
+                r.bomb_cancellation_cells()
+                    .ok_or_else(|| err("map report122 disabled"))?
+                    .measured_report(body)?;
+                // No claimed bomb ID, serial or epoch is available in this
+                // measured variant. Observation cannot affect any allocation.
+                if matches!(next.phase, Phase::Ending { .. }) {
+                    next.observe_closed(member.key)?;
+                    dropped_after_abort = true;
+                } else if next.phase == Phase::Idle {
+                    next.observe_after_abort(member.key)?;
+                    dropped_after_abort = true;
+                } else {
+                    next.observe_bomb122(member.key)?;
+                }
+            }
             118 => {
                 if r.rules.bomb == rules::BombPolicy::Disabled {
                     return Err(err("four-player gameplay not ported"));
@@ -2817,29 +2846,42 @@ impl Session {
                 } else if let Phase::Armed { round } = next.phase {
                     let roster: Vec<_> = next.members.values().map(|m| m.key).collect();
                     let capacity = next.bomb_capacity[usize::from(member.slot)];
+                    let cancel_on_map = r.bomb_cancellation_cells().is_some_and(|cells| {
+                        let (row, column) = request.cell();
+                        cells.contains(row, column)
+                    });
                     if r.rules.item_policy.enabled() {
                         let stats = member
                             .item_stats
                             .ok_or_else(|| err("missing current item stats"))?;
-                        next.bombs.place_measured(
+                        next.bombs.admit(
                             round,
                             member.key,
                             member.slot,
                             &request,
                             &roster,
-                            bombs::Limits {
-                                capacity,
-                                maximum_power: stats.maximum_power,
+                            bombs::Admission {
+                                limits: bombs::Limits {
+                                    capacity,
+                                    maximum_power: stats.maximum_power,
+                                },
+                                cancel_on_map,
                             },
                         )?
                     } else {
-                        next.bombs.place(
+                        next.bombs.admit(
                             round,
                             member.key,
                             member.slot,
                             &request,
                             &roster,
-                            capacity,
+                            bombs::Admission {
+                                limits: bombs::Limits {
+                                    capacity,
+                                    maximum_power: 2,
+                                },
+                                cancel_on_map,
+                            },
                         )?
                     }
                 } else {
@@ -2853,7 +2895,14 @@ impl Session {
                             reason,
                         })
                     }
-                    Ok(ticket) => {
+                    Ok(bombs::Placement::Cancelled) => {
+                        bomb = Some(BombObservation {
+                            accepted: false,
+                            id: None,
+                            reason: "map_cell_cancelled",
+                        });
+                    }
+                    Ok(bombs::Placement::Allocated(ticket)) => {
                         if let Some(terrain) = &mut next.terrain
                             && terrain.place(request.terrain_bomb(ticket.id)).is_err()
                         {
@@ -4088,6 +4137,7 @@ mod ninth_probe_tests {
                 teams: TeamPolicy::BalancedManner,
                 roster: rules::RoundRoster::Full,
                 ninth_admission_probe: true,
+                map_bomb_cancellation: false,
                 life_actions: crate::life_actions::Policy::Disabled,
                 item_policy: pickups::Policy::Disabled,
                 player_choices: false,

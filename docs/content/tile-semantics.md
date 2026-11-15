@@ -23,4 +23,8 @@ Mỗi số là số ô; `chưa rõ` không được gán terrain. Mỗi map có 
 | Tomb12 | 26 | 6 | 59 | 104 |
 | Patrit14 | 52 | 4 | 138 | 1 |
 
-Các tên và số ô chưa đo hành vi trong sáu map: `Tile00_Passable/Herb00` 18; `Tile16_Passble/Herb01` 10, `Herb02` 12, `Line01` 6, `Line02` 7; `Tile16_Box/StrongBox01` 4, `StrongBox02` 4; `Tile16_Static/MissileBase02`, `PinPillar03`, `PinPillar04` mỗi tên 1; `Tile16_Ground/PinGround01` 4; `Tile05_Static/Well00` 1; `Tile04_Static/MastTileA` 1. Trong Tomb12, `Tile09_Ground/WaterwayH04` 3, `WaterwayH05` 4, `WaterwayH06` 31, `WaterwayH07` 8, `WaterwayH08` 2, `bridge00` 4 và 52 ô có cả hai mã -1 đều chưa rõ. Các tên rút gọn sau dấu phẩy dùng cùng thư mục ngay trước đó. Không thấy loại đẩy, băng chuyền hay cổng dịch chuyển trong các ô chưa rõ này; chưa suy hành vi của chúng ở map khác.
+Các tên và số ô có hành vi chưa được phủ đầy đủ trong sáu map: `Tile00_Passable/Herb00` 18; `Tile16_Passble/Herb01` 10, `Herb02` 12, `Line01` 6, `Line02` 7; `Tile16_Box/StrongBox01` 4, `StrongBox02` 4; `Tile16_Static/MissileBase02`, `PinPillar03`, `PinPillar04` mỗi tên 1; `Tile16_Ground/PinGround01` 4; `Tile05_Static/Well00` 1; `Tile04_Static/MastTileA` 1. Trong Tomb12, `Tile09_Ground/WaterwayH04` 3, `WaterwayH05` 4, `WaterwayH06` 31, `WaterwayH07` 8, `WaterwayH08` 2, `bridge00` 4 và 52 ô có cả hai mã -1 đều chưa rõ. Các tên rút gọn sau dấu phẩy dùng cùng thư mục ngay trước đó. Không thấy loại đẩy, băng chuyền hay cổng dịch chuyển trong các ô chưa rõ này; chưa suy hành vi của chúng ở map khác.
+
+Trong Camp08, nguồn cờ khởi tạo của `PinGround01` đã được kiểm từ TileInfo đến native hai view;
+[contract Camp08](../protocol/terrain.md#rust-camp08-boundary) giữ phạm vi và policy Rust. Kết luận này không
+chứng nhận terrain, thùng hoặc toàn bộ tác động lên nhân vật của các loại ô còn lại.
