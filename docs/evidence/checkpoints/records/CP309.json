@@ -1,0 +1,221 @@
+{
+  "id": "CP309",
+  "previous": "CP308",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-15T15:22:12.238781+00:00",
+  "context_commit": "3488e9f67d7d33cdea2dd87b6de3ad2b3b42f361",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/G1: nối cờ map đã đo vào Rust và xử lý122 không trao authority cho report thiếu epoch/serial.",
+  "scope": "Nguồn cờ khởi tạo native và policy Rust hủy placement theo map, bounded122 không có authority; hai vòng/reset và Start kế. Chưa nghiệm thu terrain hoặc full Camp08/G1.",
+  "artifacts": [
+    {
+      "name": "service_sha256",
+      "sha256": "67a895ccc18448b52183fb1fc8d12748301bd2e63d6f0b9215aacd14c3ac2125"
+    },
+    {
+      "name": "client_sha256",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "map_payload_sha256",
+      "sha256": "80dc0d8c655a83e7397fb9e0d7977788c42547b632c32edb85659bcbf2520144"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-camp08-boundary",
+    "docs/evidence/rust-service/g1-camp08-cancellation.json",
+    "docs/RESEARCH.md#gap-camp08-bomb-report",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Nguồn cờ khởi tạo đi từ TileInfo72 qua ED2350 đến EA5080; native hai view xác nhận cả195cờ, chỉ4ô bật.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP309-0008",
+        "CAMP309-0480",
+        "CAMP309-0594"
+      ],
+      "limits": "Không suy durability/terrain từ flag hoặc tên tile;4body static có provenance riêng."
+    },
+    {
+      "summary": "Rust ràng buộc map hash, hủy118 trước ID/quota/timer, tiêu thụ serial có budget;122 exact variant observation không sửa ledger.207tests/fmt/clippy/build đạt.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP309-0008",
+        "CAMP309-0957"
+      ],
+      "limits": "Regression implementation không là original-server policy hoặc native raw freshness."
+    },
+    {
+      "summary": "Native hai vòng: mỗi vòng corridor bomb, cancellation và live-owner normal positive;4ordinary allocations ở cả2view,2rank/return,3clock.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP309-0008",
+        "CAMP309-0421",
+        "CAMP309-0413"
+      ],
+      "limits": "Ô6,2/two accounts only, terrain/floor tắt.157preflight pins và inherited game controls ghi riêng; không full Camp08/G1."
+    },
+    {
+      "summary": "Lượt1 giữ native cancellation/no ghost và rank/return, lỗi recipe thử di chuyển B đã nhốt/chết; cleanup/seal đầy đủ.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "CAMP309-0228",
+        "CAMP309-0221"
+      ],
+      "limits": "Không đổi failed run thành pass, không đo đủ hai vòng ở lượt1."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Rust207tests/fmt/clippy/locked build",
+      "result": "pass",
+      "evidence": [
+        "CAMP309-0957"
+      ],
+      "limits": "Automated regression, not native acceptance."
+    },
+    {
+      "check": "Native initial flags, policy two cycles/current positive, raw/seal/cleanup",
+      "result": "pass",
+      "evidence": [
+        "CAMP309-0480",
+        "CAMP309-0421"
+      ],
+      "limits": "Exact scope and preflight inheritance limits in verification."
+    },
+    {
+      "check": "Docs/catalog/diff precheck và manual group audit",
+      "result": "pass",
+      "evidence": [
+        "CAMP309-0012",
+        "CAMP309-0007"
+      ],
+      "limits": "Full exact committed head and CI required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP309-camp08-cancellation.json",
+      "bytes": 263650,
+      "sha256": "17de9ee6e9290e38d2ab132a5470ff33683bc63a2610e3450f79f80651ba391b",
+      "count": 974
+    }
+  ],
+  "delta": {
+    "added": [
+      "Map-owned cancellation rule, bounded122 and native two-cycle policy evidence.",
+      "Native initial map flag origin and exact four cells."
+    ],
+    "corrected": [
+      "Recipe positive must use live owner after native PinGround local life effect.",
+      "R2 game-input pin inheritance separated from its157entry preflight."
+    ],
+    "superseded": [
+      "Parser-only response blocker; next work is StrongBox/terrain per PLAN."
+    ]
+  },
+  "blockers": [
+    "Design policy compatibility on two KR/Wine accounts, isolated LAN/authenticated relay, chosen map/cell/route only. Not recovered original-server response or full Camp08/G1/Internet acceptance.",
+    "R2 preflight remapper omitted game paths; inherited run1 preflight and sealed source pins independently reverified, actual runtime exe hashes match. This post-run inheritance verification does not rewrite or claim those were included in r2 preflight.",
+    "Native immediate local PinGround effect bubbles/kills B; normal-bomb positive uses live A. No 159/158 was allocated for cancelled requests; four ordinary allocations completed at both native consumers.",
+    "Malformed/stale/member/map/budget isolation are automated regression controls, not native raw freshness. Report122 lacks epoch/serial; never changes bomb/terrain/result authority.",
+    "Camp08 terrain remains disabled with empty floor. StrongBox/Herb/Line/MissileBase, item/drop and roster coverage remain open."
+  ],
+  "completed_feature_groups": [
+    "g1-camp08-map-cancellation-policy"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp StrongBox01/02 và terrain Camp08, Tomb12/roster/item theo PLAN. Không lặp source flag/parser đã đo hoặc tiếp L1 của Claude.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-15T15:22:12.238781+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo cờ map native và Rust map-owned cancellation/bounded122, tự kiểm và audit nhóm. Không hoàn tất terrain Camp08/G1/M8; full exact-head và CI trước merge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ cờ native, serving policy/limits và phần G1 còn mở; không nhân bản contract."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ cờ native, serving policy/limits và phần G1 còn mở; không nhân bản contract."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ cờ native, serving policy/limits và phần G1 còn mở; không nhân bản contract."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ cờ native, serving policy/limits và phần G1 còn mở; không nhân bản contract."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ cờ native, serving policy/limits và phần G1 còn mở; không nhân bản contract."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ cờ native, serving policy/limits và phần G1 còn mở; không nhân bản contract."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ cờ native, serving policy/limits và phần G1 còn mở; không nhân bản contract."
+    },
+    {
+      "path": "docs/content/tile-semantics.md",
+      "state": "updated",
+      "reason": "Đồng bộ cờ native, serving policy/limits và phần G1 còn mở; không nhân bản contract."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-camp08-cancellation.json",
+      "state": "updated",
+      "reason": "Đồng bộ cờ native, serving policy/limits và phần G1 còn mở; không nhân bản contract."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Mục lục terrain đã có; contract sửa đúng topic."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Không đổi quy trình/acceptance/owner L1."
+    }
+  ]
+}

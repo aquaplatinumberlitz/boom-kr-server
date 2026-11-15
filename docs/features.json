@@ -1362,7 +1362,8 @@
           "docs/evidence/rust-service/g1-village10-terrain.json",
           "docs/evidence/rust-service/g1-mixed-map-spawns.json",
           "docs/evidence/rust-service/g1-camp08-boundary.json",
-          "docs/evidence/rust-service/g1-camp08-report122.json"
+          "docs/evidence/rust-service/g1-camp08-report122.json",
+          "docs/evidence/rust-service/g1-camp08-cancellation.json"
         ]
       },
       "coverage": {
@@ -1435,7 +1436,8 @@
               "docs/protocol/terrain.md#rust-village10-herb",
               "docs/evidence/rust-service/g1-mixed-map-spawns.json",
               "docs/evidence/rust-service/g1-camp08-boundary.json",
-              "docs/evidence/rust-service/g1-camp08-report122.json"
+              "docs/evidence/rust-service/g1-camp08-report122.json",
+              "docs/evidence/rust-service/g1-camp08-cancellation.json"
             ]
           },
           "windows_original": {
@@ -2426,7 +2428,8 @@
           "docs/evidence/rust-service/m3-acceptance.json",
           "docs/evidence/rust-service/g1-terrain-players.json",
           "docs/evidence/rust-service/g1-camp08-boundary.json",
-          "docs/evidence/rust-service/g1-camp08-report122.json"
+          "docs/evidence/rust-service/g1-camp08-report122.json",
+          "docs/evidence/rust-service/g1-camp08-cancellation.json"
         ]
       },
       "coverage": {
@@ -2508,7 +2511,8 @@
               "docs/protocol/bombs.md#rust-bombs",
               "docs/protocol/terrain.md#rust-player-terrain",
               "docs/evidence/rust-service/g1-camp08-boundary.json",
-              "docs/evidence/rust-service/g1-camp08-report122.json"
+              "docs/evidence/rust-service/g1-camp08-report122.json",
+              "docs/evidence/rust-service/g1-camp08-cancellation.json"
             ]
           },
           "windows_original": {
@@ -2677,7 +2681,8 @@
           "docs/evidence/rust-service/g1-village10-terrain.json",
           "docs/evidence/rust-service/g1-mixed-map-spawns.json",
           "docs/evidence/rust-service/g1-camp08-boundary.json",
-          "docs/evidence/rust-service/g1-camp08-report122.json"
+          "docs/evidence/rust-service/g1-camp08-report122.json",
+          "docs/evidence/rust-service/g1-camp08-cancellation.json"
         ]
       },
       "coverage": {
@@ -2758,7 +2763,8 @@
               "docs/protocol/terrain.md#rust-village10-herb",
               "docs/evidence/rust-service/g1-mixed-map-spawns.json",
               "docs/evidence/rust-service/g1-camp08-boundary.json",
-              "docs/evidence/rust-service/g1-camp08-report122.json"
+              "docs/evidence/rust-service/g1-camp08-report122.json",
+              "docs/evidence/rust-service/g1-camp08-cancellation.json"
             ]
           },
           "windows_original": {

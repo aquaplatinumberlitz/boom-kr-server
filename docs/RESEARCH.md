@@ -161,19 +161,21 @@ chưa xác định. Chỉ mở chẩn đoán tiếp nếu tái hiện hoặc c�
 
 <a id="gap-camp08-bomb-report"></a>
 ### Camp08: report122 trước network identity và response theo vòng đời
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ layout122/167, property sentinel, cờ map và
+policy Rust. Native khởi tạo đã đối chiếu cả 195 cờ ở hai view với dữ liệu TileInfo: bốn ô hủy bom đã xác định;
+không lặp seed, writer/getter, serial, RTTI hoặc nguồn cờ nếu không có discrepancy mới.
+Server tự quyết cancellation từ map đã ràng buộc hash, trước allocation; report122 không có quyền sửa ledger.
+Đây là policy design, chưa biết response server gốc. Packet không có serial/epoch nên raw freshness vẫn unknown;
+kiểm authority isolation thay vì ghép sentinel với ID active. Tests đã kiểm serial lặp/xung đột, ngân sách hữu hạn,
+owner/key/member, map đang chọn và hai vòng/reset. Native binary mới đã kiểm riêng cancellation không tạo
+ghost 159/158, bom thường trước/sau hoàn tất ở hai view,
+hai kết quả/reset và Start kế. Giữ rõ malformed/variant/budget/phase là kiểm implementation, không phải toàn
+protocol hoặc nguyên bản server. Raw freshness vẫn không xác định; report cũ không có quyền sửa ledger.
 
-[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) đã có seed và đối chứng ô 6,0/6,2: cùng Ground RTTI
-nhưng predicate khác nhau, actual122 rồi167. Parser Rust có fixture native và kiểm size; chưa nối phục vụ. Không lặp
-seed, writer layout hoặc normal-cell control nếu không có discrepancy mới. Nhãn PinGround tĩnh chưa là nguyên nhân.
-
-Native đã tách nhánh cờ map: scalar/getter 0 ở ô thường và 1 ở ô 6,2. Writer167, serial 29 và cleanup đã có ở cả
-owner/peer; owner còn sentinel lúc gửi122, peer có ID server 2. Không RE lại nhánh này khi chưa có discrepancy mới.
-Phần chặn implementation là quyết định response/association và vòng đời ledger trên server. Chọn policy có thể
-bảo vệ bằng dữ liệu map và current ledger, rồi kiểm native hai view với current positive; không ACK/no-op122 hoặc
-ghép sentinel với ID đang active chỉ để lấy run xanh. Chưa suy field đầu167 là owner bom hoặc property local thành
-network ID. Kiểm malformed, duplicate, stale, current phase/round/cell, owner, reconnect, kết quả/reset trước chuyển
-phục vụ. Report không mang đủ generation thì phải ghi giới hạn và giữ authority bảo vệ độc lập; policy nội bộ không
-tự là raw freshness. Tiếp StrongBox01/02 và terrain sau response path, không suy durability từ seed hoặc TileInfo.
+Tiếp StrongBox01/02, Herb/Line và MissileBase của Camp08 theo đúng cạnh runtime;
+không suy durability, footprint hoặc ray termination từ tên, TileInfo hay ground flags. Terrain và floor Camp08
+vẫn tắt khi chưa đủ bằng chứng; Tomb12 và coverage roster/item còn theo PLAN. Codex sở hữu nhánh G1, L1 của Claude
+không bị thay đổi bởi các phép đo này.
 
 Lỗi QueueExpired trước map đã tái hiện trong một lượt đo; raw được giữ, removal/missing membership xảy ra sau denial.
 Passive observer thấy DB thread ở `wait_current_trans`; nguyên nhân đầy đủ vẫn candidate. Một lượt tách khỏi full

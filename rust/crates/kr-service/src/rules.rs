@@ -71,6 +71,54 @@ pub(crate) enum EndpointPolicy {
     AuthenticatedRelay,
 }
 
+/// Server-owned initial map cells where a basic bomb is cancelled locally.
+/// Data comes from a verified map profile, never from report122.
+#[derive(Clone, Debug, serde::Deserialize)]
+#[serde(deny_unknown_fields)]
+pub(crate) struct BombCancellationConfig {
+    map_sha256: String,
+    cells: Vec<[u8; 2]>,
+}
+#[derive(Clone, Debug)]
+pub(crate) struct BombCancellationCells(std::collections::BTreeSet<(u16, u16)>);
+impl BombCancellationConfig {
+    pub(crate) fn validate(&self, map_sha256: &str) -> io::Result<BombCancellationCells> {
+        let cells: std::collections::BTreeSet<_> = self
+            .cells
+            .iter()
+            .map(|[row, column]| (u16::from(*row), u16::from(*column)))
+            .collect();
+        if self.map_sha256 != map_sha256
+            || cells.is_empty()
+            || cells.len() > 195
+            || cells.len() != self.cells.len()
+            || cells
+                .iter()
+                .any(|(row, column)| *row >= 13 || *column >= 15)
+        {
+            return Err(err("invalid map-bound bomb cancellation cells"));
+        }
+        Ok(BombCancellationCells(cells))
+    }
+}
+impl BombCancellationCells {
+    pub(crate) fn contains(&self, row: u16, column: u16) -> bool {
+        self.0.contains(&(row, column))
+    }
+    pub(crate) fn measured_report(&self, body: &[u8]) -> io::Result<()> {
+        let report = kr_wire::kr00967::bomb_report122(body)?;
+        if report.property != u32::MAX
+            || report.reason != 4
+            || report.auxiliary != u8::MAX
+            || report.trailing != 0
+            || !self.contains(report.row, report.column)
+        {
+            return Err(err("unsupported map bomb report122 variant"));
+        }
+        Ok(())
+    }
+}
+
 /// Active roster policy, independent of the room's admission capacity.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub(crate) enum RoundRoster {
@@ -99,6 +147,7 @@ pub struct RoomRules {
     pub(crate) result: ResultPolicy,
     pub(crate) departure: DeparturePolicy,
     pub(crate) bomb: BombPolicy,
+    pub(crate) map_bomb_cancellation: bool,
     pub(crate) life: LifePolicy,
     pub(crate) teams: TeamPolicy,
     /// Staged room-only choices. Battle with chosen characters needs its own
@@ -183,6 +232,10 @@ impl RoomRules {
                 life_actions: cfg.life_actions,
                 item_policy: cfg.item_policy,
                 player_choices: false,
+                map_bomb_cancellation: cfg
+                    .map_choices
+                    .iter()
+                    .any(|c| c.bomb_cancellation.is_some()),
             },
             count,
         ))
@@ -258,6 +311,54 @@ impl ReportLimits {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn cancellation_data_requires_exact_map_hash_unique_cells_and_measured_report() {
+        let valid = serde_json::json!({"map_sha256": "a".repeat(64), "cells": [[6, 2]]});
+        let parse = |value| serde_json::from_value::<BombCancellationConfig>(value).unwrap();
+        let cfg = parse(valid.clone());
+        assert!(cfg.validate(&"b".repeat(64)).is_err());
+        let cells = cfg.validate(&"a".repeat(64)).unwrap();
+        for invalid in [
+            serde_json::json!([]),
+            serde_json::json!([[13, 2]]),
+            serde_json::json!([[6, 15]]),
+            serde_json::json!([[6, 2], [6, 2]]),
+        ] {
+            let mut value = valid.clone();
+            value["cells"] = invalid;
+            assert!(parse(value).validate(&"a".repeat(64)).is_err());
+        }
+        let report = |property, row, column, reason, auxiliary, trailing| {
+            use kr_wire::Width::*;
+            [
+                (property, U32),
+                (row, U16),
+                (column, U16),
+                (reason, U32),
+                (auxiliary, U8),
+                (trailing, U32),
+            ]
+            .into_iter()
+            .flat_map(|(v, w)| kr_wire::write_uint(v, w).unwrap())
+            .collect::<Vec<_>>()
+        };
+        let body = report(u32::MAX.into(), 6, 2, 4, 255, 0);
+        assert!(cells.measured_report(&body).is_ok());
+        assert!(cells.measured_report(&body[..16]).is_err());
+        let mut extra = body.clone();
+        extra.push(0);
+        assert!(cells.measured_report(&extra).is_err());
+        for unsupported in [
+            report(2, 6, 2, 4, 255, 0),
+            report(u32::MAX.into(), 6, 0, 4, 255, 0),
+            report(u32::MAX.into(), 6, 2, 3, 255, 0),
+            report(u32::MAX.into(), 6, 2, 4, 0, 0),
+            report(u32::MAX.into(), 6, 2, 4, 255, 1),
+        ] {
+            assert!(cells.measured_report(&unsupported).is_err());
+        }
+    }
 
     #[test]
     fn derived_rules_follow_the_measured_profiles() {

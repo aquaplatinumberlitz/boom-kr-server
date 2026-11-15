@@ -1,0 +1,61 @@
+{
+  "id": "AUD121",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-camp08-map-cancellation-policy"
+  ],
+  "completed_through": "CP309",
+  "recorded_utc": "2026-11-15T15:22:12.238781+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/evidence/rust-service/g1-camp08-cancellation.json",
+    "docs/content/tile-semantics.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "local/research/codex/g1-camp08-condition-native-r7/initial-flag-verification.json",
+    "local/research/codex/g1-camp08-cancellation-native-r1/partial-verification.json",
+    "local/research/codex/g1-camp08-cancellation-native-r2/policy-verification.json",
+    "local/research/codex/g1-map-bomb-rules-source-verification.json"
+  ],
+  "method": "Đọc nguồn chuẩn theo thứ tự, đối chiếu bốn body khởi tạo với native 195 cờ hai view; kiểm placement/serial/guard/no authority từ source, 207 regression tests và locked binary. Đọc actual TCP118/122/159/158, native consumer cursor/error, hai rank/return và ba clock; kiểm raw seal/cleanup và source hash. Lượt1 lỗi recipe sau native local effect làm B nhốt/chết giữ nguyên, lượt2 dùng A đang sống. Phân biệt source client confirmed và policy server design; không đóng Camp08 terrain/G1. Lượt2 remapper thiếu game pins: giữ preflight157 bất biến, đối chiếu294 inherited game pins từ lượt1 và actual exe runtime, không gọi kiểm sau run là preflight lượt2.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Parser chưa serving; nguồn cờ map và association còn chặn implementation.",
+      "correction": "Nguồn cờ khởi tạo đã đo; map-owned118 admission và bounded122 không ảnh hưởng allocation đã có native hai vòng/reset. Không gán sentinel vào server ID.",
+      "fixed_in": [
+        "docs/protocol/terrain.md#rust-camp08-boundary",
+        "docs/RESEARCH.md#gap-camp08-bomb-report"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "B có thể tiếp tục normal placement sau PinGround.",
+      "correction": "Native local effect nhốt/chết B. Giữ failed recipe1 và dùng A còn sống trong recipe2, không sửa source/game để ép pass.",
+      "fixed_in": [
+        "local/research/codex/g1-camp08-cancellation-native-r1/partial-verification.json",
+        "local/research/codex/g1-camp08-cancellation-native-r2/policy-verification.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Preflight r2 có thể bị hiểu bao phủ mọi client input.",
+      "correction": "R2 có157pins; game input giữ hash theo preflight r1, kiểm kế thừa riêng sau run cùng actual executable. Không sửa manifest đã launch.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-camp08-cancellation.json",
+        "local/research/codex/g1-camp08-cancellation-native-r2/policy-verification.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "StrongBox/Herb/Line/MissileBase, floor/drop/item và roster Camp08; Tomb12 và G1/M8 theo PLAN.",
+    "Original-server response và raw freshness122 chưa biết; không cần gán association để dùng policy design có authority độc lập.",
+    "Vận hành/budget phiên dài còn M8; không kiểm Internet hoặc tải trong Wine run này."
+  ]
+}
