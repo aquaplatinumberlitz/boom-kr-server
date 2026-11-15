@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, CP307 / AUD119**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, CP308 / AUD120**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -33,10 +33,6 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, C
 1. **G1.** M6 thu hẹp đã đạt acceptance tại [ma trận bằng chứng](evidence/rust-service/m6-journal-serving.json). N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
    Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và route Forest07/Patrit14 roster2/4/8 đã có lát native; catalog tám/sáu spawn và sparse6 đã có lát native; tiếp [report122 đang chặn Camp08](RESEARCH.md#gap-camp08-bomb-report), terrain Camp08/Tomb12, coverage roster và nhóm item còn thiếu theo acceptance hiện hành; không đụng `tools/export_map_profile.py`.
    Không lặp M6 đã nghiệm thu, native4/8, roster, account/DB hoặc baseline N1b đã có. M8 theo thứ tự bên dưới.
-   **Xen một lượt ở ranh giới G1 kế tiếp: L-probe-b.** CP300 dùng `CA.exe` nguyên bản nên cả lượt mốc cũng page fault
-   trên Wine; chạy lại năm lượt bằng exe runtime của các lượt native G1 hiện hành (không thêm bản vá ngôn ngữ), rồi thêm
-   một lượt tiếng Anh kèm ảnh Bắc Mỹ. Tiếng Việt chờ bản vá UTF-8. Đề bài
-   cập nhật ở `local/research/claude/codex-prompt-l10n-probe.md`. Xong thì gỡ đoạn này.
    **Xen giữa các lát G1: L1 vá UTF-8** cho client 00967 ([quyết định](evidence/owner-directives/l10n-utf8-now.json)): L1a đặc
    tả tĩnh bằng IDA theo mẫu PopTag, L1b vá lúc chạy và kiểm native ba ngôn ngữ, L1c nhập liệu. Mỗi lát một checkpoint,
    không cùng runtime với lát G1. [Mốc partial/blocker](evidence/l10n-utf8-l1a-review.json) giữ phần đã biết;

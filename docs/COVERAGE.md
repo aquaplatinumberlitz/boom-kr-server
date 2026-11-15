@@ -228,15 +228,15 @@ Phép kiểm tối thiểu (trích cùng nguồn): Cold3R2 đã giải, không �
 
 Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285), [#1](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2), [#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9), [#407](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/407), [#414](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414).
 
-Bằng chứng/build/hash/recipe: [bootstrap-wire](evidence/bootstrap-wire/README.md), [probe-service](evidence/probe-service/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [protocol](protocol/bootstrap-codec.md#original-windows-control), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PLAN.md#k0-k2a-acceptance), [wine-r2](evidence/wine-r2/README.md#cp179), [evidence](evidence/l10n-utf8-l1a-review.json).
+Bằng chứng/build/hash/recipe: [bootstrap-wire](evidence/bootstrap-wire/README.md), [probe-service](evidence/probe-service/README.md), [preclock-eof](evidence/preclock-eof/README.md), [nmco-locale-stability](evidence/nmco-locale-stability/README.md), [protocol](protocol/bootstrap-codec.md#original-windows-control), [peer-endpoints](evidence/peer-endpoints/README.md#cp178), [docs](PLAN.md#k0-k2a-acceptance), [wine-r2](evidence/wine-r2/README.md#cp179), [evidence](evidence/l10n-utf8-l1a-review.json), [evidence](evidence/l10n-probe-b.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](protocol/bootstrap-codec.md#wcp) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](protocol/bootstrap-codec.md#wcp), [nguồn2](content/client-language.md#utf8) |
+| kr_static | partial | [nguồn1](protocol/bootstrap-codec.md#wcp), [nguồn2](content/client-language.md#utf8), [nguồn3](evidence/l10n-probe-b.json) |
 | emulation | checked | [nguồn1](evidence/bootstrap-wire/README.md) |
-| wine_diagnostic_copy | observed | [nguồn1](evidence/bootstrap-wire/README.md), [nguồn2](evidence/preclock-eof/README.md), [nguồn3](evidence/nmco-locale-stability/README.md), [nguồn4](evidence/wine-r2/README.md#cp179), [nguồn5](evidence/l10n-utf8-dialog-05.json) |
+| wine_diagnostic_copy | observed | [nguồn1](evidence/bootstrap-wire/README.md), [nguồn2](evidence/preclock-eof/README.md), [nguồn3](evidence/nmco-locale-stability/README.md), [nguồn4](evidence/wine-r2/README.md#cp179), [nguồn5](evidence/l10n-utf8-dialog-05.json), [nguồn6](content/client-language.md#data-files) |
 | windows_original | observed | [nguồn1](protocol/bootstrap-codec.md#original-windows-control), [nguồn2](evidence/peer-endpoints/README.md#cp178) |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |

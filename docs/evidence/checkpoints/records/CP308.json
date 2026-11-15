@@ -1,0 +1,249 @@
+{
+  "id": "CP308",
+  "previous": "CP307",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-15T14:38:28.767715+00:00",
+  "context_commit": "dec0bcdee54cb6792423e18f790cc1be8a974193",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "KRE-074/L-probe-b: runtime G1 có dùng bộ chữ/ảnh dựng lại, phản ứng checksum hỏng và cache update như thế nào?",
+  "scope": "Native diagnostic L-probe-b variants0–5 plus bounded UI controls; text/image/data-load observations only. No UTF8/L1/G1 or production acceptance.",
+  "artifacts": [
+    {
+      "name": "KR00967 G1 diagnostic executable",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Rust service unchanged throughout matrix",
+      "sha256": "cbe310445ad0ae2e9675632b54eb44a9342eea5dba5aaf2ba9fcccabdadef4d1"
+    }
+  ],
+  "locators": [
+    "docs/content/client-language.md#data-files",
+    "docs/evidence/l10n-probe-b.json",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/421",
+    "docs/PLAN.md#dashboard"
+  ],
+  "findings": [
+    {
+      "summary": "Control đúng exe/service G1 tới sảnh trên hai account. Sau điều chỉnh thao tác UI, control0c có phòng Camp08; native own291/player106 đọc hết và đúng identity. Các lượt đầu không mở shop/phòng được giữ riêng, không data rejection.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/content/client-language.md#data-files",
+      "evidence": [
+        "LPROBE308-00007",
+        "LPROBE308-00402",
+        "LPROBE308-00806"
+      ],
+      "limits": "Original CA CP300 vẫn startup failure; native copy diagnostic/Wine không thay original/Windows acceptance."
+    },
+    {
+      "summary": "Bộ Hàn ghi lại tới sảnh; bộ Anh CP949 hiện menu/tab/chat tiếng Anh. Thêm FxDesktop có phòng với tên mặc định và câu hướng dẫn tiếng Anh. Bộ314ảnh có các nhãn ảnh English ở sảnh/phòng, vẫn còn nút/ảnh Hàn.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/content/client-language.md#data-files",
+      "evidence": [
+        "LPROBE308-00007",
+        "LPROBE308-00401",
+        "LPROBE308-00988",
+        "LPROBE308-01139",
+        "LPROBE308-01303",
+        "LPROBE308-01637"
+      ],
+      "limits": "Chỉ các màn thấy được. Stock/shop/mission content chưa mở; không chứng minh mọi314entry hoặc toàn câu/pack render. Không UTF8/IME."
+    },
+    {
+      "summary": "File csysstr hỏng có actual checksum mismatch tại14EA885 và return0 tại14EA8E8 ở cả hai; valid csysqstr cùng process khớp checksum và return1. Client vẫn tới phòng và hiện raw key SuperChiefCanStartDetail; không tự phục hồi file hỏng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/content/client-language.md#data-files",
+      "evidence": [
+        "LPROBE308-00007",
+        "LPROBE308-01314",
+        "LPROBE308-01453",
+        "LPROBE308-01457"
+      ],
+      "limits": "Tái dùng3site loaderCP059 đã byte-check; không từ file opens/silence. Không suy mọi loader/fallback hoặc bắt buộc toàn game dừng."
+    },
+    {
+      "summary": "Cache map đầy đủ bị thay bằng71byte profile Camp08; inner cache sau run khớp actual238 ở mọi run. Các file chữ/stock và pack khác giữ hash, không nhận patch Internet. I/O events không có readerPID và không tự chứng minh consumer.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/content/client-language.md#data-files",
+      "evidence": [
+        "LPROBE308-00402",
+        "LPROBE308-00843"
+      ],
+      "limits": "Từng run có snapshot trước/sau riêng; không suy nạp hết map-display translation hoặc account/match resume."
+    },
+    {
+      "summary": "Source builder/catalog lấy nguyên Git archive11bc77c;21file SSI checksum/length/raw đúng, Korean raw bằng nguồn. Builder ghi314ảnh,29skip có lý do; không sửa source tool/catalog.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/content/client-language.md#data-files",
+      "evidence": [
+        "LPROBE308-00403",
+        "LPROBE308-00391"
+      ],
+      "limits": "Static output/format khác native UI. Image count không là số ảnh đã render; nguồn ngoài chỉ read-only."
+    },
+    {
+      "summary": "Lỗi recipe1 trỏ game-dir chưa tồn tại bị reject trước namespace/client; giữ traceback/preflight/exit1, sửa path theo actual config ở1b. Không diễn giải như client từ chối Korean file. AUD120 kết thúc nhóm phép thử, không đóng L1/G1.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/content/client-language.md#data-files",
+      "evidence": [
+        "LPROBE308-00818",
+        "LPROBE308-00006",
+        "LPROBE308-00004"
+      ],
+      "limits": "Lượt lỗi không có run/raw-seal native; khai rõ input failure. Không sửa record/raw lịch sử."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native8run/raw498/source snapshots/hash/cleanup và matrix đối chiếu",
+      "result": "pass",
+      "evidence": [
+        "LPROBE308-00402"
+      ],
+      "limits": "Diagnostic/data observations only, not complete localized client or gameplay."
+    },
+    {
+      "check": "Native bad CRC và same-process valid control",
+      "result": "pass",
+      "evidence": [
+        "LPROBE308-01314"
+      ],
+      "limits": "Measured two file paths/copy/Wine only."
+    },
+    {
+      "check": "Manual UI review và audit nhóm",
+      "result": "pass",
+      "evidence": [
+        "LPROBE308-00401",
+        "LPROBE308-00006"
+      ],
+      "limits": "Scoped visible screens; shop/mission/unseen314 remain gaps. Review độc lập waived."
+    },
+    {
+      "check": "Docs/catalog/diff",
+      "result": "pass",
+      "evidence": [
+        "LPROBE308-00012"
+      ],
+      "limits": "Full local/history on committed exact head and CI before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP308-lprobe-b.json",
+      "bytes": 439319,
+      "sha256": "5d52d0d0e196562a225741077ac983bc30088a3a4a80938fab9d919938857a00",
+      "count": 1674
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native data/visible text and image acceptance for requested diagnostic matrix, measured CRC rejection and cache-wire equality."
+    ],
+    "corrected": [
+      "Không đổi hash chỉ đúng các file còn lại; mapcache thực sự đổi theo238.",
+      "Không gọi checksum rejected thành client crash; vẫn vào phòng và thấy missing key."
+    ],
+    "superseded": [
+      "L-probe-b còn chờ trong dashboard; nhóm phép thử đã kết thúc, giữ giới hạn localization."
+    ]
+  },
+  "blockers": [
+    "Eight native runs include baseline/UI controls and requested variants0–5; initial attempt1 failed path pre-namespace, not native data failure.",
+    "Original CA baseline CP300 still failed on Wine; these runs use measured G1 diagnostic exe without any added language patch. No UTF8/IME or original Windows acceptance.",
+    "Shop and mission routes attempted but not displayed; four fxstock loaders/name rendering unproven. No new server behavior or shop protocol added.",
+    "Exact actual238 inner equals every observed final map cache. The map cache update is separate from language data repair.",
+    "English/image314 acceptance limited to visible captured screens; unseen image entries remain static builder output, no claim of all314 rendered.",
+    "L-probe-b diagnostic work complete; full localization and L1 acceptance remain open, G1/M8 still required."
+  ],
+  "completed_feature_groups": [
+    "l-probe-b-native-data-diagnostic-matrix"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp G1 report122/current map/ledger Camp08 theo dashboard; không lặp matrix L-probe-b hoặc tiếp L1 của Claude.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-15T14:38:28.767715+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo L-probe-b data/visual diagnostic và tự kiểm. Không tiếp L1 của Claude. Audit nhóm diagnostic, không acceptance UTF-8/G1/giai đoạn 1. CI/exact-head trước merge.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ kết quả/giới hạn dữ liệu, gỡ task diagnostic đã chạy khỏi dashboard; giữ L1/G1 mở."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ kết quả/giới hạn dữ liệu, gỡ task diagnostic đã chạy khỏi dashboard; giữ L1/G1 mở."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ kết quả/giới hạn dữ liệu, gỡ task diagnostic đã chạy khỏi dashboard; giữ L1/G1 mở."
+    },
+    {
+      "path": "docs/content/client-language.md",
+      "state": "updated",
+      "reason": "Đồng bộ kết quả/giới hạn dữ liệu, gỡ task diagnostic đã chạy khỏi dashboard; giữ L1/G1 mở."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ kết quả/giới hạn dữ liệu, gỡ task diagnostic đã chạy khỏi dashboard; giữ L1/G1 mở."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ kết quả/giới hạn dữ liệu, gỡ task diagnostic đã chạy khỏi dashboard; giữ L1/G1 mở."
+    },
+    {
+      "path": "docs/evidence/l10n-probe-b.json",
+      "state": "updated",
+      "reason": "Đồng bộ kết quả/giới hạn dữ liệu, gỡ task diagnostic đã chạy khỏi dashboard; giữ L1/G1 mở."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Contract dữ liệu cập nhật tại content/client-language.md, cache topic đã có; không nhân bản."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "Câu hỏi UTF8/L1 do Claude sở hữu không thay đổi; giới hạn data diagnostic ở đúng chủ đề."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Không thay quy trình/acceptance/owner hoặc runtime policy."
+    }
+  ]
+}
