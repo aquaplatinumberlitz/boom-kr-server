@@ -1,0 +1,47 @@
+{
+  "schema": "kre-checkpoint-publication-correction-v1",
+  "canonical": "docs/evidence/checkpoints/README.md",
+  "source": "design",
+  "status": "design",
+  "baseline": "9916fe64ab24f5329bb5f9343413c589d3f7bb8f",
+  "correction_commit": "5c60ee041f33b2997cc41540dbdef93e6e7d41a7",
+  "problem": "Full checker của head CP311 xác minh 518011 pin nhưng báo 49 raw không sẵn ở canonical checkout và một pin features.json không khớp. Raw có nguyên bytes tại worktree L1; pin metadata khớp commit fae6adc nhưng query diff-filter=A thông thường bỏ qua lần tạo record ngay trong merge.",
+  "publication": "fae6adc2093a85f5b8befdf53a035735b2a2da3b",
+  "change": "Tra lịch sử HEAD theo topo từ cũ tới mới, full-history, diff merge theo từng parent và no-renames. Vẫn kiểm đúng declaration, external manifest và blob tại lần đầu thêm đường dẫn record; không dùng blob ở commit muộn để cứu pin sai.",
+  "preserved": [
+    "CP310/CP311 records, evidence manifests và AUD122 giữ nguyên.",
+    "Lần full checker exit1 được giữ; chưa gọi head đó đạt.",
+    "49 file local được copy đúng size/SHA từ worktree gốc; không sửa nguồn hoặc làm RE L1."
+  ],
+  "verification": [
+    {
+      "path": "local/research/codex/cp311-exact-head-exit.json",
+      "bytes": 121,
+      "sha256": "4cadbc167c27c30586720fe20946a16934e586a0e612c9ac6b574c5591619884"
+    },
+    {
+      "path": "local/research/codex/cp311-exact-head-full.txt",
+      "bytes": 223778,
+      "sha256": "fa1e544905bf4173f81d4912bd4d0001ef4572fb69954ae9eec1c6562f921fc7"
+    },
+    {
+      "path": "local/research/codex/cp310-local-pin-restoration.json",
+      "bytes": 13625,
+      "sha256": "6fe7664da7034495c96a34c7f98efa7299eb7aa0d869814c8f80e9bd140b6c25"
+    },
+    {
+      "path": "local/research/codex/cp312-cp310-restored-verification.json",
+      "bytes": 1227,
+      "sha256": "92fe56a3aa55b72de3d56e5f628b9b9b98688e3af123f68d22f3428768645c06"
+    },
+    {
+      "path": "local/research/codex/cp312-history-checker-tests.txt",
+      "bytes": 168,
+      "sha256": "09f2a6541f55690cbe0434f3105892bde66353252069f1d9fb570701de2a1a6e"
+    }
+  ],
+  "limits": [
+    "69 tests của nhóm checkpoint và kiểm riêng CP310 65/65 pin đạt. Full checker trên head cuối và CI vẫn là gate trước merge.",
+    "Không đổi wire, runtime Rust, acceptance G1 hoặc L1. Herb/Line chưa có native mới, G1/M8 vẫn mở."
+  ]
+}

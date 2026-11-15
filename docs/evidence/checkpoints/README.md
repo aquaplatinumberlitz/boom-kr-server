@@ -103,6 +103,12 @@ cùng size/SHA. External evidence manifest tại commit ấy phải khớp pin/h
 không lấy blob/khai báo thêm ở commit về sau để cứu một pin thiếu lúc công bố. CP166 là ca đầu:
 pin `server/probe_service.py` khớp nguyên bytes commit `09759d0`, record/evidence cũ không sửa.
 
+Record được tạo trong merge commit hoặc đổi tên sang ID mới vẫn có ranh giới công bố riêng.
+Tra lịch sử phải xét diff của merge với từng parent, tắt phát hiện rename và giữ thứ tự topo từ cũ tới mới;
+không chỉ dùng diff thường vốn có thể bỏ qua merge. Declaration, external manifest và blob vẫn phải
+khớp tại lần đầu thêm đúng đường dẫn record. [Đối chứng sửa checker](merge-publication-correction.json)
+giữ lỗi phát hiện khi tích hợp CP310 và kiểm âm; không sửa record hoặc bỏ qua hash.
+
 Đây là kiểm nguồn theo version, không chứng nhận runtime, semantics hoặc gate. Bằng chứng raw/local/
 artifact/binary và repository file khác vẫn cần bytes hiện tại khớp pin; mất file vẫn lỗi/unavailable.
 Source chỉ có ở schema v1 hoặc không khớp lúc thêm record v2 **chưa** được fallback tự động; giữ lỗi

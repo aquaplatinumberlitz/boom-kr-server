@@ -1,0 +1,171 @@
+{
+  "id": "CP312",
+  "previous": "CP311",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-15T20:35:47.675419+00:00",
+  "context_commit": "5c60ee041f33b2997cc41540dbdef93e6e7d41a7",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Sửa lỗi kiểm tích hợp CP310 mà không đổi record đã công bố hoặc nới kiểm evidence.",
+  "scope": "Tra record được tạo trong merge hoặc rename; phục hồi raw local đúng bytes. Không đổi runtime Rust hoặc client.",
+  "artifacts": [
+    {
+      "name": "checkpoint_checker_source",
+      "sha256": "28eee2f3e39d57e04dae4da5cb4d722eab38d3e0c4d4441a1d874a3131ffee56"
+    }
+  ],
+  "locators": [
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/merge-publication-correction.json",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "CP310 có pin metadata hợp lệ tại fae6adc; query diff-filter=A thông thường bỏ qua lần tạo record trong merge. Lookup mới giữ nguyên ranh giới công bố và kiểm exact blob.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "evidence": [
+        "MERGE312-005",
+        "MERGE312-008",
+        "MERGE312-014"
+      ],
+      "limits": "69 tests và kiểm âm không chứng nhận semantics/runtime KR."
+    },
+    {
+      "summary": "49 raw được copy đúng hash từ worktree L1; focused CP310 đạt 65/65 pin. Record/evidence CP310/CP311 và AUD122 giữ nguyên.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "evidence": [
+        "MERGE312-012",
+        "MERGE312-013",
+        "MERGE312-015"
+      ],
+      "limits": "Kiểm focused không thay full checker exact head; không làm RE hoặc nghiệm thu L1."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Full checker CP311 trên9916fe6",
+      "result": "fail",
+      "evidence": [
+        "MERGE312-011",
+        "MERGE312-010"
+      ],
+      "limits": "Lần lỗi được giữ; 518011 verified,49 unavailable,50 errors trước sửa. Không gọi head này đã đạt."
+    },
+    {
+      "check": "69 tests checkpoint,65 pin CP310 và immutability",
+      "result": "pass",
+      "evidence": [
+        "MERGE312-014",
+        "MERGE312-013",
+        "MERGE312-015"
+      ],
+      "limits": "Full checker trên committed head cuối và CI phải đạt trước merge."
+    },
+    {
+      "check": "Docs/catalog/diff và audit thủ công",
+      "result": "pass",
+      "evidence": [
+        "MERGE312-016",
+        "MERGE312-006"
+      ],
+      "limits": "Không nâng acceptance G1/L1 hoặc trạng thái merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP312-merge-publication.json",
+      "bytes": 3736,
+      "sha256": "068a8a5bda40ad84ea8206c956d811f067bd93ad58227ff95dcf07304a4b895b",
+      "count": 16
+    }
+  ],
+  "delta": {
+    "added": [
+      "Hai ca regression cho record tạo trong merge và rename."
+    ],
+    "corrected": [
+      "Lookup lịch sử bỏ sót merge; phục hồi49 raw local đúng hash."
+    ],
+    "superseded": [
+      "Lỗi availability và lookup metadata của lần full checker CP311; lần lỗi không bị xóa."
+    ]
+  },
+  "blockers": [
+    "G1 và M8 vẫn mở; giữ thứ tự và giới hạn tại PLAN."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Full checker exact head/CI/merge, rồi tiếp native Herb/Line và G1 theo PLAN.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-15T20:35:47.675419+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex tự kiểm sửa lookup lịch sử và phục hồi raw exact hash; không thêm nghiệm thu KR hoặc L1.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ sửa checker, audit và mốc hiện hành; không đổi acceptance gameplay."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ sửa checker, audit và mốc hiện hành; không đổi acceptance gameplay."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ sửa checker, audit và mốc hiện hành; không đổi acceptance gameplay."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Đồng bộ sửa checker, audit và mốc hiện hành; không đổi acceptance gameplay."
+    },
+    {
+      "path": "docs/evidence/checkpoints/merge-publication-correction.json",
+      "state": "updated",
+      "reason": "Đồng bộ sửa checker, audit và mốc hiện hành; không đổi acceptance gameplay."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Không đổi contract, câu hỏi RE hoặc feature gameplay; giữ owner và scope hiện hành."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "Không đổi contract, câu hỏi RE hoặc feature gameplay; giữ owner và scope hiện hành."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "unchanged",
+      "reason": "Không đổi contract, câu hỏi RE hoặc feature gameplay; giữ owner và scope hiện hành."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "unchanged",
+      "reason": "Không đổi contract, câu hỏi RE hoặc feature gameplay; giữ owner và scope hiện hành."
+    }
+  ]
+}

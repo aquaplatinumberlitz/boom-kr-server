@@ -5,6 +5,10 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP311: Rust có thùng nhiều hit; route StrongBox/Bomb/Fire Camp08 đã qua hai vòng/reset.**
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ counter thực tế và phạm vi private đã đo.
+G1 tiếp terrain Camp08 còn thiếu theo [Bảng điều hành](PLAN.md#dashboard); L1 giữ [kết quả một phần của Claude](content/client-language.md#utf8).
+
 **CP309: Camp08 đã có policy hủy bom theo map, kiểm native hai vòng/reset và trận kế.**
 [Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) tách cờ client đã đo khỏi authority server design.
 Codex tiếp StrongBox/terrain Camp08 và G1 theo [Bảng điều hành](PLAN.md#dashboard); L1 vẫn do Claude phụ trách.
