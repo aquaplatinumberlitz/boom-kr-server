@@ -21,7 +21,8 @@ import l10n_949x as X  # noqa: E402
 SOURCE_SHA256 = '4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed'  # CA-r2-stage-social-cmp.exe
 WANT = {'MultiByteToWideChar': 'IAT_MB2WC', 'WideCharToMultiByte': 'IAT_WC2MB', 'PeekMessageA': 'IAT_PEEKMESSAGEA',
         'GetProcAddress': 'IAT_GETPROCADDRESS', 'GetModuleHandleA': 'IAT_GETMODULEHANDLEA',
-        'ImmGetCompositionStringA': 'IAT_IMMGETCOMPOSITIONSTRINGA', 'ImmGetCompositionStringW': 'IAT_IMMGETCOMPOSITIONSTRINGW'}
+        'ImmGetCompositionStringA': 'IAT_IMMGETCOMPOSITIONSTRINGA', 'ImmGetCompositionStringW': 'IAT_IMMGETCOMPOSITIONSTRINGW',
+        'RegisterClassExA': 'IAT_REGISTERCLASSEXA'}
 
 
 def literal_blob(base_va, catalog, lang):

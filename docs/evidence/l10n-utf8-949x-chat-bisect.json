@@ -1,0 +1,61 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "cd4f82a",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Chat-cut bisect between en-05 (32 bytes received) and vi-04 (cut at 26 bytes). Typing client A is identical in both runs (Korean 949x data of boom-re-l10n 11bc77c, exe 9bcd23d7, KR fonts with patched Gulim copies, same account KRLocal, same SendInput helper and controller timing); the differences are B's data set and the typed string. x1 = vi-04 setup with the en string, y1 = en-05 setup with the vi string, y2 = y1 with the trace exe on A (wndproc wrapper logs sent WM_IME_* messages), y3 = en-05 setup with '안녕하세요 반갑습니다 하세요'.",
+  "observation": "x1 received the whole en string (32 bytes); y1 and y2 received 'Xin chào các bạn 안녕하' (26 bytes, same bytes as vi-04). The cut follows the typed string, not B's data, fonts, images, exe literals or typing speed. y3 received only '안녕하세요' (10 bytes), so pure Korean text is cut too. The y2 trace shows no WM_IME_STARTCOMPOSITION/ENDCOMPOSITION from Wine, every non-ASCII character delivered as a composition result and read once through ImmGetCompositionStringA; the game drops the rest of the input itself. Static reading of the room chat edit (CCtrlTempChatEditORG, insert +212/+228) shows a byte-length check against the control limit and a per-byte filter table, neither of which explains a drop that later recovers.",
+  "local_evidence": [
+    {
+      "path": "local/runs/vi-04/x1/preflight.json",
+      "sha256": "9ff336e537945ff67d0a5d93e6be308f9bbfac95352731c5805485660e824d2d"
+    },
+    {
+      "path": "local/runs/vi-04/x1/native/run.json",
+      "sha256": "7f347035c4d4be348653f921215ce413a4146af1de20dee56cf5ecb3337f9dc4"
+    },
+    {
+      "path": "local/runs/vi-04/x1/native/tcp-auth-pair.pcap",
+      "sha256": "6e98038a9d6ee5fe921e59c37b2d5a77b9ea818b4aa703b03cfbeba794f607c7"
+    },
+    {
+      "path": "local/runs/vi-04/x1/native/rust-events.jsonl",
+      "sha256": "ae79a4605536f058002085fbc859b28e1ad59fd5b3d87f850a1cc6350d781044"
+    },
+    {
+      "path": "local/runs/en-05/y1/preflight.json",
+      "sha256": "6ef3228ff98e24b2d3a460ef06a042bd5c18ddd67a73e28324b1d3ef4c818256"
+    },
+    {
+      "path": "local/runs/en-05/y1/native/run.json",
+      "sha256": "97be4f37f96c78ccbc22a0fa570d96c71393cdfa93c3b7479fe835acb8fdfbe1"
+    },
+    {
+      "path": "local/runs/en-05/y1/native/tcp-auth-pair.pcap",
+      "sha256": "618c698409c9e45ecb910b333e76ee184a9d4f697c07a00466124eedb3e4224a"
+    },
+    {
+      "path": "local/runs/en-05/y1/native/rust-events.jsonl",
+      "sha256": "798fdfedf9661ae8e3470ea80abb6f6140a2e4e56ee15b56fc29398f3c666102"
+    },
+    {
+      "path": "local/runs/en-05/y2/l10n-trace-A.log",
+      "sha256": "0bac579d626dd46f298a591bedb2aa7b95954c1f799aa784ceca80c876c0f45a"
+    },
+    {
+      "path": "local/runs/en-05/y3/l10n-trace-A.log",
+      "sha256": "47d699bfd6f0519c68845f4c00eae71d0ae8b154b36c653871f68d3928849a2b"
+    },
+    {
+      "path": "local/runs/en-05/y3/native/tcp-auth-pair.pcap",
+      "sha256": "df4b654bdd9cd033d745393c34ad4014469dc8605caac2bf07e7c9a01071f995"
+    },
+    {
+      "path": "local/runs/en-05/y3/native/rust-events.jsonl",
+      "sha256": "4c583cf19e50b1ae4147d7e3ca88feaed7bdb0a55dad21070536cf5b9ad60762"
+    }
+  ],
+  "cleanup": "Raw export passed for all runs.",
+  "limits": "Cause not found; no fix applied. Diagnostic exe and service on Wine."
+}

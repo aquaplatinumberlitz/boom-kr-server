@@ -195,6 +195,33 @@ __attribute__((stdcall)) long hook_imma(void *himc, unsigned index, void *buf, u
     return n;
 }
 
+#ifdef L10N_TRACE
+/* Bản chẩn đoán: bọc wndproc của lớp cửa sổ để ghi cả message gửi thẳng (SendMessage), như WM_IME_*. */
+typedef long(__attribute__((stdcall)) * wndproc_t)(void *, unsigned, unsigned, long);
+typedef unsigned short(__attribute__((stdcall)) * regcls_t)(void *);
+static regcls_t orig_regcls;
+static wndproc_t wp_orig[4];
+static int wp_count;
+static long wp_call(int k, void *h, unsigned m, unsigned w, long l) {
+    if ((m >= 0x10D && m <= 0x10F) || (m >= 0x281 && m <= 0x291) || m == 7 || m == 8 || m == 6)
+        trace('S', (unsigned)k << 16 | m, w, (unsigned)l);
+    return wp_orig[k](h, m, w, l);
+}
+#define WP(k) __attribute__((stdcall)) static long wp##k(void *h, unsigned m, unsigned w, long l) { return wp_call(k, h, m, w, l); }
+WP(0) WP(1) WP(2) WP(3)
+static const wndproc_t wp_wrap[4] = {wp0, wp1, wp2, wp3};
+__attribute__((stdcall)) unsigned short hook_regcls(void *wc) {
+    wndproc_t *slot = (wndproc_t *)((char *)wc + 8);
+    if (wp_count < 4 && *slot) {
+        wp_orig[wp_count] = *slot;
+        *slot = wp_wrap[wp_count];
+        trace('R', wp_count, (unsigned)wp_orig[wp_count], 0);
+        wp_count++;
+    }
+    return orig_regcls(wc);
+}
+#endif
+
 void l10n_init(void) {
     void *user32 = ((gmh_t) * (void **)IAT_GETMODULEHANDLEA)("user32.dll");
     orig_mb2wc = (mb2wc_t)*SLOT_MB2WC;
@@ -218,6 +245,8 @@ void l10n_init(void) {
         if (tr_create && tr_write) tr_file = tr_create("l10n-trace.log", 0x40000000, 1, 0, 2, 0x80, 0);
         if (tr_file == (void *)-1) tr_file = 0;
         trace('I', 0, 0, 0);
+        orig_regcls = (regcls_t) * (void **)IAT_REGISTERCLASSEXA;
+        *(void **)IAT_REGISTERCLASSEXA = (void *)hook_regcls;
     }
 #endif
 }

@@ -222,8 +222,22 @@ thành composition, nhưng ô chat bỏ cả một đoạn liên tiếp, kể c�
 hoặc cuối chuỗi). Lặp lại chậm hơn (400 ms mỗi ký tự) ở lượt vi-04 vẫn dừng ở cùng 26 byte. Hệ ô nhập `0x1514A29` bỏ cả
 `WM_CHAR` lẫn composition khi trường `+0x24` khác 0 hoặc control đang focus `+0x20` rỗng. `+0x24` chỉ được đặt qua
 `0x15144BB` từ `CBnbNaviWnd` (`0x790940`) khi chuột nằm trên cửa sổ đó; dời chuột ra xa trước khi gõ vẫn mất một đoạn,
-nên giả thuyết này chưa giải thích được. Phép đo tiếp là theo dõi `+0x20`/`+0x24` trong lúc gõ
-([evidence](../evidence/l10n-utf8-949x-chat-drop.json)).
+nên giả thuyết này chưa giải thích được ([evidence](../evidence/l10n-utf8-949x-chat-drop.json)).
+Bisect giữa lượt en (nhận đủ 32 byte) và vi (cắt ở 26 byte): client gõ của hai lượt giống nhau, chỉ khác dữ liệu của client
+kia và chuỗi gõ. Đổi chuỗi giữa hai cấu hình thì kết quả đi theo chuỗi: cấu hình vi với chuỗi en nhận đủ, cấu hình en với
+chuỗi vi bị cắt đúng 26 byte; chuỗi chỉ có tiếng Hàn `안녕하세요 반갑습니다 하세요` cũng chỉ còn `안녕하세요`. Vậy dữ liệu, font,
+ảnh, chuỗi exe và tốc độ gõ không phải nguyên nhân; Wine không gửi `WM_IME_STARTCOMPOSITION`/`ENDCOMPOSITION`. Ô chat phòng
+(`CCtrlTempChatEditORG`, chèn ở `+212`/`+228`) chỉ có kiểm độ dài byte và bảng lọc theo byte, chưa giải thích được đoạn bị bỏ
+rồi nhận lại. Nguyên nhân còn mở ([bisect](../evidence/l10n-utf8-949x-chat-bisect.json)).
+
+**Ô chọn người nhận chat giới hạn 14 byte.** `CChatStage` tạo ô người nhận với độ dài tối đa 14 (struct tạo control ở
+`0xD34400`, trường độ dài mà `0x151F795` chép vào `+0x13C`) và đặt chữ `ChatToAll`/`ChatToOurTeam` vào ô đó; chuỗi dài hơn
+thì không vào ô nên ô trống. `<To All>` 8 byte, `<모두에게>` 10, `<우리팀에게>` 12 vừa; `<Gởi cho tất cả>` 19 và
+`<Gởi cho đồng đội>` 23 byte thì không. Client VN không mang chữ cho hai khoá này (bảng chuỗi giao diện do server cũ gửi); server
+của dự án `boom-re` dùng `<Mọi người>` và `<Đồng đội>`, đều 14 byte ở 949x, vừa giới hạn.
+
+**Tên phòng mặc định.** Exe VN có khoá `DefaultRoomTitle0`–`5` nhưng không có chữ: giá trị do server VN gửi và không còn
+nguồn. Bản Việt cần tối đa 22 byte ở 949x; hai câu đang vượt cần thay.
 
 Evidence: [ảnh và chuỗi exe](../evidence/l10n-utf8-949x-images-r4.json), [tên phòng, font và chat](../evidence/l10n-utf8-949x-title-font.json).
 
@@ -235,7 +249,7 @@ Evidence: [ảnh và chuỗi exe](../evidence/l10n-utf8-949x-images-r4.json), [t
 - **Sửa tên phòng** cần chuỗi định danh của tài khoản; mới có cho tài khoản thử qua cấu hình chẩn đoán (mục trên).
 - **Tên phòng tối đa 22 byte.** Hai trong sáu tên phòng mặc định tiếng Việt dài 26 và 27 byte trong 949x
   (`DefaultRoomTitle1`, `DefaultRoomTitle2`); khi client chọn ngẫu nhiên trúng hai tên này, nút xác nhận tắt (lượt vi-01).
-  Dữ liệu cần câu ngắn hơn. Tương tự, nhãn `ChatToAll` tiếng Việt `<Gởi cho tất cả>` không hiện trong hộp chọn; bản Anh `<To All>` hiện được.
+  Dữ liệu cần câu ngắn hơn. Nhãn `ChatToAll`/`ChatToOurTeam` tiếng Việt vượt giới hạn 14 byte của ô người nhận (mục trên).
 - **Ảnh còn chữ Hàn**: danh sách cần vẽ ở mục bổ sung phía trên.
 - **Chữ do server gửi và chữ cứng trong exe** (thông báo chạy chữ, nhắc trong ô chat phòng) vẫn tiếng Hàn. Tên map ở phòng
   lấy từ dữ liệu map server gửi (client ghi đè `fxdynmapinfo.ssd`), nên là `Factory07`.
