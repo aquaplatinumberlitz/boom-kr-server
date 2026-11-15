@@ -1,0 +1,276 @@
+#!/usr/bin/env python3
+"""Mã nội bộ 949x cho client 00967 đã vá: cp949 cộng bảng mở rộng tĩnh.
+
+Ký tự có trong cp949 giữ nguyên byte cp949. Ký tự ngoài cp949 thuộc các dải trong
+``RANGES`` nhận một mã hai byte cố định ở vùng cp949/UHC không dùng: lead 0xC7..0xFE,
+trail 0x41..0x5A, 0x61..0x7A, 0x81..0xA0. Mã thứ ``k`` ứng với ký tự thứ ``k`` khi duyệt
+``RANGES`` theo thứ tự; dải mới chỉ được nối vào cuối để mã cũ không đổi.
+
+Lệnh:
+  table --c OUT.h             sinh bảng C cho hook trong exe
+  convert --src DIR --out DIR chuyển bộ dữ liệu UTF-8 (ssi1 + ClientString) sang 949x
+  selftest                    kiểm round-trip
+"""
+import argparse
+import json
+import re
+import struct
+import sys
+import zlib
+from pathlib import Path
+
+VERSION = 1
+RANGES = [(0x00A0, 0x0250), (0x0300, 0x0370), (0x0370, 0x0400), (0x0400, 0x0500), (0x1E00, 0x1F00),
+          (0x2000, 0x2070), (0x20A0, 0x20D0), (0x2100, 0x2150), (0x2150, 0x2190), (0x2190, 0x2200),
+          (0x2200, 0x2300), (0x2460, 0x2500), (0x2500, 0x2580), (0x2580, 0x25A0), (0x25A0, 0x2600),
+          (0x2600, 0x2700), (0x3000, 0x3040), (0xFF00, 0xFFF0)]
+TRAILS = list(range(0x41, 0x5B)) + list(range(0x61, 0x7B)) + list(range(0x81, 0xA1))
+LEAD0 = 0xC7
+
+
+def _in_cp949(ch):
+    try:
+        ch.encode('cp949')
+        return True
+    except UnicodeEncodeError:
+        return False
+
+
+EXT = [chr(c) for a, b in RANGES for c in range(a, b) if not _in_cp949(chr(c))]
+assert len(EXT) <= (0xFF - LEAD0) * len(TRAILS)
+EXT_INDEX = {ch: i for i, ch in enumerate(EXT)}
+
+
+def code(i):
+    return bytes([LEAD0 + i // len(TRAILS), TRAILS[i % len(TRAILS)]])
+
+
+TRAIL_POS = {t: i for i, t in enumerate(TRAILS)}
+
+
+def index_of(lead, trail):
+    if lead < LEAD0 or lead == 0xFF or trail not in TRAIL_POS:
+        return None
+    i = (lead - LEAD0) * len(TRAILS) + TRAIL_POS[trail]
+    return i if i < len(EXT) else None
+
+
+def encode(text, errors='strict'):
+    out = bytearray()
+    for ch in text:
+        if ch in EXT_INDEX:
+            out += code(EXT_INDEX[ch])
+        else:
+            try:
+                out += ch.encode('cp949')
+            except UnicodeEncodeError:
+                if errors == 'strict':
+                    raise
+                out += b'?'
+    return bytes(out)
+
+
+def decode(data):
+    out, i = [], 0
+    while i < len(data):
+        b = data[i]
+        if b < 0x80:
+            out.append(chr(b)); i += 1; continue
+        if i + 1 < len(data):
+            k = index_of(b, data[i + 1])
+            if k is not None:
+                out.append(EXT[k]); i += 2; continue
+            out.append(data[i:i + 2].decode('cp949')); i += 2; continue
+        raise ValueError('byte lẻ cuối chuỗi')
+    return ''.join(out)
+
+
+# ---- dữ liệu: ssi1 và ClientString ----
+
+def lstr(raw, pos):
+    n = struct.unpack_from('<I', raw, pos)[0]
+    return raw[pos + 4:pos + 4 + n], pos + 4 + n
+
+
+def packed(data):
+    return struct.pack('<I', len(data)) + data
+
+
+def u8(b, stats):
+    """UTF-8 nghiêm ngặt sang 949x; chuỗi không phải UTF-8 hợp lệ thì lỗi."""
+    text = b.decode('utf-8')
+    try:
+        return encode(text)
+    except UnicodeEncodeError as exc:
+        bad = stats.setdefault('unmapped', {})
+        bad[text[exc.start]] = bad.get(text[exc.start], 0) + 1
+        return encode(text, 'replace')
+
+
+def conv_pair(raw, stats):
+    n = struct.unpack_from('<H', raw)[0]
+    out, p = bytearray(raw[:2]), 2
+    for _ in range(n):
+        k, p = lstr(raw, p); v, p = lstr(raw, p)
+        out += packed(u8(k, stats)) + packed(u8(v, stats)); stats['strings'] = stats.get('strings', 0) + 2
+    if p != len(raw):
+        raise ValueError('pair: dư dữ liệu')
+    return bytes(out)
+
+
+def conv_maps(raw, stats):
+    n = struct.unpack_from('<H', raw)[0]
+    out, p = bytearray(raw[:2]), 2
+    for _ in range(n):
+        out += raw[p:p + 5]; p += 5
+        name, p = lstr(raw, p); out += packed(name)
+        disp, p = lstr(raw, p); out += packed(u8(disp, stats)); stats['strings'] = stats.get('strings', 0) + 1
+        out += raw[p:p + 2]; p += 2
+        for _ in range(2):
+            s, p = lstr(raw, p); out += packed(s)
+        out += raw[p:p + 16]; p += 16
+    if p != len(raw):
+        raise ValueError('maps: dư dữ liệu')
+    return bytes(out)
+
+
+def conv_stock(raw, stats):
+    n = struct.unpack_from('<I', raw)[0]
+    out, p = bytearray(raw[:4]), 4
+    for _ in range(n):
+        ln = struct.unpack_from('<I', raw, p + 5)[0]
+        name = raw[p + 9:p + 9 + ln]; q = p + 9 + ln
+        icon = struct.unpack_from('<I', raw, q + 12)[0]
+        end = p + 129 + ln + icon
+        out += raw[p:p + 5] + packed(u8(name, stats)) + raw[q:end]; stats['strings'] = stats.get('strings', 0) + 1
+        p = end
+    if p != len(raw):
+        raise ValueError('stock: dư dữ liệu')
+    return bytes(out)
+
+
+def ssi_read(data):
+    if data[:4] != b'ssi1' or data[8] != 0x18 or data[13] != 1:
+        raise ValueError('header ssi1 không hỗ trợ')
+    raw = zlib.decompress(data[18:])
+    if len(raw) != struct.unpack_from('<I', data, 14)[0]:
+        raise ValueError('độ dài giải nén sai')
+    return raw
+
+
+def ssi_write(original, raw):
+    comp = zlib.compress(raw, 9)
+    header = bytearray(original[:18])
+    header[9:13] = struct.pack('<I', len(comp) + 5)
+    header[14:18] = struct.pack('<I', len(raw))
+    body = bytes(header[8:]) + comp
+    return b'ssi1' + struct.pack('<I', zlib.adler32(body, 0) & 0xffffffff) + body
+
+
+def _idf():
+    sys.path.insert(0, '/home/admin/boom/repos/boom-re-l10n/tools')
+    import idf  # chỉ đọc/giải mã index; không sửa repo đó
+    return idf
+
+
+def encrypt_idx(plain, key):
+    count, tail = divmod(len(plain), 4)
+    words = struct.unpack_from('<%dI' % count, plain)
+    cipher = [words[0] ^ key] + [words[i] ^ words[i - 1] for i in range(1, count)] if count else []
+    out = bytearray(struct.pack('<%dI' % count, *cipher))
+    last = words[-1] if words else key
+    for i in range(tail):
+        out.append(plain[4 * count + i] ^ ((last >> (8 * i)) & 255))
+    return bytes(out)
+
+
+def conv_pack(src, out, stats):
+    """Đổi entry ClientData/ClientString (XML UTF-8, entry không mã hoá) sang 949x; ghi nối vào .idd."""
+    idf = _idf()
+    data = (src / 'FxDesktop.idx').read_bytes(); key = int.from_bytes(data[:4], 'little')
+    plain = bytearray(idf.decrypt_idx(data, key)); version, entries, end = idf.parse_idx(plain)
+    assert version is not None and end == len(plain)
+    p, pos = 12, None
+    for name, offset, size, ekey, crc in entries:
+        n = struct.unpack_from('<i', plain, p)[0]; p += 4 + n
+        if name == 'ClientData/ClientString':
+            assert ekey == 0 and pos is None
+            pos, off, sz = p, offset, size
+        p += 16
+    blob = (src / 'FxDesktop.idd').read_bytes()[off:off + sz]
+    assert int.from_bytes(blob[:4], 'little') == len(blob) - 4
+    text = blob[4:].decode('utf-8')
+    stats['chars'] = len(text)
+    new = packed(encode(text, 'replace'))
+    stats['unmapped'] = sorted({ch for ch in text if ch not in EXT_INDEX and not _in_cp949(ch)})
+    idd = bytearray((src / 'FxDesktop.idd').read_bytes())
+    struct.pack_into('<II', plain, pos, len(idd), len(new))
+    idd += new
+    (out / 'FxDesktop.idd').write_bytes(idd)
+    (out / 'FxDesktop.idx').write_bytes(encrypt_idx(plain, key))
+
+
+SSI = {'csysstr.ssd': conv_pair, 'csysqstr.ssd': conv_pair, 'fxdynmapinfo.ssd': conv_maps,
+       **{f'fxstock{i}.ini': conv_stock for i in range(4)}}
+
+
+def convert(src, out):
+    out.mkdir(parents=True, exist_ok=True)
+    report = {'format': '949x', 'version': VERSION, 'ext_chars': len(EXT), 'files': {}}
+    for name, fn in SSI.items():
+        stats = {}
+        original = (src / name).read_bytes()
+        raw = fn(ssi_read(original), stats)
+        (out / name).write_bytes(ssi_write(original, raw))
+        assert ssi_read((out / name).read_bytes()) == raw
+        report['files'][name] = stats
+    stats = {}
+    conv_pack(src, out, stats)
+    report['files']['FxDesktop'] = stats
+    (out / 'convert-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+    return report
+
+
+def c_table(path):
+    def rows(values):
+        return ',\n'.join('  ' + ','.join('0x%04x' % v for v in values[i:i + 12]) for i in range(0, len(values), 12))
+    order = sorted(range(len(EXT)), key=lambda i: EXT[i])
+    path.write_text('/* Sinh bởi tools/l10n_949x.py; 949x v%d. */\n#define EXT_COUNT %d\n'
+                    'static const unsigned short ext_uni[EXT_COUNT] = {\n%s\n};\n'
+                    'static const unsigned short ext_sorted[EXT_COUNT] = {\n%s\n};\n'
+                    'static const unsigned short ext_sorted_idx[EXT_COUNT] = {\n%s\n};\n'
+                    % (VERSION, len(EXT), rows([ord(c) for c in EXT]), rows([ord(EXT[i]) for i in order]), rows(order)))
+
+
+def selftest():
+    sample = 'Phòng chơi: Trần Đức Hùng ₫ — 방 제목 크레이지 아케이드 ABC ếộữ'
+    b = encode(sample)
+    assert decode(b) == sample, (decode(b), sample)
+    for i in range(len(EXT)):
+        c = code(i)
+        try:
+            c.decode('cp949')
+            raise AssertionError('mã trùng cp949 %s' % c.hex())
+        except UnicodeDecodeError:
+            pass
+        assert index_of(*c) == i
+    print('selftest ok, %d ký tự mở rộng, mã cuối %s' % (len(EXT), code(len(EXT) - 1).hex()))
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest='cmd', required=True)
+    t = sub.add_parser('table'); t.add_argument('--c', type=Path, required=True)
+    c = sub.add_parser('convert'); c.add_argument('--src', type=Path, required=True); c.add_argument('--out', type=Path, required=True)
+    sub.add_parser('selftest')
+    a = ap.parse_args()
+    if a.cmd == 'table':
+        c_table(a.c)
+    elif a.cmd == 'convert':
+        print(json.dumps(convert(a.src, a.out), ensure_ascii=False, indent=2))
+    else:
+        selftest()
+
+
+if __name__ == '__main__':
+    main()
