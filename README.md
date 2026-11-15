@@ -33,10 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP305: catalog map tám/sáu spawn và roster thưa đã có lát native hai vòng.**
-[Start/spawn, identity/slot và giới hạn](docs/evidence/rust-service/g1-mixed-map-spawns.json) ghi native sparse6,
-Fire/Roller, hai kết quả/reset và thiếu cặp flags cuối do budget probe. G1 còn nội dung/roster theo
-[Bảng điều hành](docs/PLAN.md#dashboard); UTF-8 vẫn partial, M8 chưa nghiệm thu.
+**CP306: Camp08 đã có seed native; report bom mới đang chặn terrain.**
+[Spawn/flags và boundary C2S122](docs/evidence/rust-service/g1-camp08-boundary.json) tách trạng thái ban đầu khỏi
+failed gameplay; Camp08 chưa mở hoàn chỉnh. Codex tiếp G1 theo [Bảng điều hành](docs/PLAN.md#dashboard),
+[L1 đã bàn giao cho Claude](docs/evidence/owner-directives/l10n-claude-owner.json).
 
 ## Bắt đầu
 

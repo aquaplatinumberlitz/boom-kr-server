@@ -159,6 +159,20 @@ Nếu lát nội dung kế cần quan sát đủ, tính budget từ số clock/b
 trước đóng QueueExpired trước mainDisconnected; run tách preboot không gặp lại, nhưng nguyên nhân resource/scheduling
 chưa xác định. Chỉ mở chẩn đoán tiếp nếu tái hiện hoặc cần budget M8; không patch JSON downstream.
 
+<a id="gap-camp08-bomb-report"></a>
+### Camp08: report122 và local effect trước network identity
+
+[Seed/native và boundary](protocol/terrain.md#rust-camp08-boundary) đã có Start/spawn/195flags trên hai view,
+nhưng chỉ là trạng thái ban đầu. Không lặp seed khi không có discrepancy mới. Blocker mới: actual122 sau placement
+trên PinGround khiến service đóng channel; writer có protected propertyFFFFFFFF, caller gửi report rồi local cleanup.
+Không sửa parser JSON xuất hiện sau disconnect hoặc bỏ qua122 để lấy run xanh.
+
+Cần xác định association với bomb pending/current, thời điểm response và effect ở owner/peer. Kiểm ownership,
+current phase/round/cell, malformed/duplicate/stale/reconnect và kết quả/reset theo acceptance; report không mang
+đủ generation đã đo thì ghi rõ giới hạn, không gọi policy nội bộ là raw freshness. Tiếp StrongBox01/02 sau khi
+response path có native hai view, rồi Herb/Line/PinGround và static footprint còn thiếu. Seed/TileInfo không tự chứng
+minh durability hoặc hazard. Không mở broadRE ngoài đường đang chặn implementation/nghiệm thu này.
+
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster
 

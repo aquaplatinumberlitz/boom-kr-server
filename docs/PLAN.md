@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, CP305 / AUD119**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, CP306 / AUD119**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -23,15 +23,15 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, C
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; N1R-b đạt hành vi relay đã đo. Transport xác thực mới trên Internet thật và tải/vận hành còn M8 |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; N1R-b có bằng chứng riêng; vận hành còn M8 |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
-| [G1](#rust-g1) sáu map ladder và item | Adapter/UI, kim/cứu, item nền ExVillage01 và terrain theo map đã có từng lát; [Forest07](protocol/terrain.md#rust-selected-map-terrain) và [Patrit14 roster2/4/8](protocol/terrain.md#rust-patrit-terrain) đạt các route đã đo | [Village10](protocol/terrain.md#rust-village10-herb) có contiguous2/4/6 và [catalog tám/sáu spawn, sparse6](protocol/load-phase.md#rust-map-spawn-capacity), hai vòng/reset và Fire/Roller; còn Camp08/Tomb12, coverage roster và item/nhân vật theo acceptance |
+| [G1](#rust-g1) sáu map ladder và item | Adapter/UI, kim/cứu, item nền ExVillage01 và terrain theo map đã có từng lát; [Forest07](protocol/terrain.md#rust-selected-map-terrain) và [Patrit14 roster2/4/8](protocol/terrain.md#rust-patrit-terrain) đạt các route đã đo | [Village10](protocol/terrain.md#rust-village10-herb) có contiguous2/4/6 và [catalog tám/sáu spawn, sparse6](protocol/load-phase.md#rust-map-spawn-capacity), hai vòng/reset và Fire/Roller; [Camp08 có seed và blocker122](protocol/terrain.md#rust-camp08-boundary); còn response/terrain Camp08, Tomb12, coverage roster và item/nhân vật theo acceptance |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
-| L1 UTF-8 xen G1 | [L1a có khảo sát tĩnh và primitive/controls](content/client-language.md#utf8), chưa đạt acceptance | Chưa chốt xử lý đủ literal949, consumer/capacity và render/IME; L1b/L1c chưa đạt. Không đổi wire của client chưa vá |
+| L1 UTF-8, Claude phụ trách | [L1a có khảo sát tĩnh và primitive/controls](content/client-language.md#utf8), chưa đạt acceptance; [Codex đã bàn giao WIP cho Claude](evidence/owner-directives/l10n-claude-owner.json) | Chưa chốt xử lý đủ literal949, consumer/capacity và render/IME; L1b/L1c chưa đạt. Không đổi wire của client chưa vá |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
 
 1. **G1.** M6 thu hẹp đã đạt acceptance tại [ma trận bằng chứng](evidence/rust-service/m6-journal-serving.json). N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
-   Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và route Forest07/Patrit14 roster2/4/8 đã có lát native; catalog tám/sáu spawn và sparse6 đã có lát native; tiếp Camp08/Tomb12, coverage roster và nhóm item còn thiếu theo acceptance hiện hành; không đụng `tools/export_map_profile.py`.
+   Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và route Forest07/Patrit14 roster2/4/8 đã có lát native; catalog tám/sáu spawn và sparse6 đã có lát native; tiếp [report122 đang chặn Camp08](RESEARCH.md#gap-camp08-bomb-report), terrain Camp08/Tomb12, coverage roster và nhóm item còn thiếu theo acceptance hiện hành; không đụng `tools/export_map_profile.py`.
    Không lặp M6 đã nghiệm thu, native4/8, roster, account/DB hoặc baseline N1b đã có. M8 theo thứ tự bên dưới.
    **Xen một lượt ở ranh giới G1 kế tiếp: L-probe-b.** CP300 dùng `CA.exe` nguyên bản nên cả lượt mốc cũng page fault
    trên Wine; chạy lại năm lượt bằng exe runtime của các lượt native G1 hiện hành (không thêm bản vá ngôn ngữ), rồi thêm
@@ -40,8 +40,9 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **15/11, C
    **Xen giữa các lát G1: L1 vá UTF-8** cho client 00967 ([quyết định](evidence/owner-directives/l10n-utf8-now.json)): L1a đặc
    tả tĩnh bằng IDA theo mẫu PopTag, L1b vá lúc chạy và kiểm native ba ngôn ngữ, L1c nhập liệu. Mỗi lát một checkpoint,
    không cùng runtime với lát G1. [Mốc partial/blocker](evidence/l10n-utf8-l1a-review.json) giữ phần đã biết;
-   tiếp đối chứng pass-through tới được hộp trước candidate substitution, rồi giải literal/consumer tối thiểu còn chặn.
-   Đề bài ở `local/research/claude/codex-prompt-l10n-utf8.md`.
+   [Claude do chủ dự án trực tiếp giao tiếp tục L1](evidence/owner-directives/l10n-claude-owner.json); Codex đã dừng
+   Terra và giữ WIP trên `research/l10n-utf8`, tiếp G1. Đề bài ở `local/research/claude/codex-prompt-l10n-utf8.md`.
+   Hai phần dùng runtime Wine luân phiên.
 2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
    N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có actual native59 rồi hai vòng/reset. [Issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ; không gọi schema đã đo là toàn protocol59.
 

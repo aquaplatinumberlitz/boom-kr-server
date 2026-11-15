@@ -624,3 +624,24 @@ Run tia nổ trả exit1 do unmount busy sau khi đã export. Lỗi giữ nguyê
 namespace đã hết process rồi mới phục hồi vị trí raw và seal. Không gọi exit1 là exit0. Lượt seed cũng ghi riêng
 hai output cache `fxdynmapinfo.ssd` thay đổi khớp bảng238 thực nhận; không sửa preflight để che thay đổi input.
 Getter emulation tách khỏi native; không có nghiệm thu Windows, Internet hoặc G1 đầy đủ từ lát này.
+
+
+<a id="rust-camp08-boundary"></a>
+## Camp08: seed ban đầu và report bom còn chặn terrain
+
+[Bằng chứng và giới hạn](../evidence/rust-service/g1-camp08-boundary.json) giữ capture/native, getter emulation,
+source-first và failed runs riêng. Trên cùng Rust binary đã đo, hai account KR/Wine đọc Start và spawn gốc Camp08,
+lookup tên/mã đúng và cùng195flags ở clock. Ô12,11 có flag chặn dù candidate là ground, cạnh object MissileBase;
+không dùng phân loại từng ô hoặc tên để suy footprint, durability và đường nổ. Terrain server vẫn tắt, floor rỗng.
+
+Lượt bom trên PinGround6,2 phát sinh **C2S122**, service chưa hỗ trợ nên đóng channel. Request có layout đã đối chiếu
+writer/TCP `[u32,u16,u16,u32,u8,u32]`, mẫu `FFFFFFFF,6,2,4,255,0`. `B731D0` thuộc virtual+CC của CGOGameBomb;
+caller đã đo `B73120` gửi report rồi gọi local effect. Protected property+0xA8 và getter native đềuFFFFFFFF,
+không được tự ghép thành ID bom hiện tại của server. Static có map-cell predicate và nhiều reason branch, chỉ reason4
+được đo. Đây là boundary ứng viên, chưa đủ contract để ACK, bỏ qua hoặc triển khai behavior gốc.
+
+Một corridor blast có dữ liệu ở cả hai view; blast tiếp chỉ còn view A sau B bị đóng. Không dùng phần đó chứng minh
+StrongBox hoặc đồng bộ terrain. Diagnostic tiếp giữ fail-closed và dừng chủ ý sau khi bắt writer/caller/packet;
+exit0 của diagnostic không là gameplay success. Cần association/response, current owner/round/cell guards và negative
+controls cho122 trước khi tiếp StrongBox, footprint và các loại ô còn thiếu. [Khoảng trống](../RESEARCH.md#gap-camp08-bomb-report)
+giữ phép đo kế; [PLAN](../PLAN.md#dashboard) giữ thứ tự. Camp08 và toàn G1 chưa nghiệm thu.
