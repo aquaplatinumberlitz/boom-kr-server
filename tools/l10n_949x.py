@@ -15,6 +15,7 @@ Lệnh:
 import argparse
 import json
 import re
+import shutil
 import struct
 import sys
 import zlib
@@ -228,6 +229,13 @@ def convert(src, out):
     stats = {}
     conv_pack(src, out, stats)
     report['files']['FxDesktop'] = stats
+    # Pack khác do bản dựng ảnh thay: chỉ có ảnh, chép nguyên.
+    for idx in sorted(src.glob('*.idx')):
+        if idx.stem == 'FxDesktop':
+            continue
+        for path in (idx, idx.with_suffix('.idd')):
+            shutil.copyfile(path, out / path.name)
+        report['files'][idx.stem] = {'copied': 'image pack, unchanged'}
     (out / 'convert-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     return report
 
