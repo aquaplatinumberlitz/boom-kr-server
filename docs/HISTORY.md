@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP317: Camp08 có route hai vòng/reset cho roster 2/4/8; Tomb12 đã đo khởi tạo.**
+[Contract Camp08](protocol/terrain.md#rust-camp08-boundary) giữ coverage route; [Tomb12](protocol/terrain.md#rust-tomb12-boundary)
+chưa có physics/gameplay. G1 tiếp Tomb12 và nội dung còn thiếu theo [Bảng điều hành](PLAN.md#dashboard);
+M8 và L1 của Claude giữ nguyên phạm vi.
+
+
 **CP316: Camp08 có Line01 ray và route StrongBox/Bomb/Fire tám account qua hai vòng/reset.**
 [Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ actual input, mọi cờ terrain và Start kế;
 coverage Camp08 còn lại, Tomb12, item/nhân vật và M8 vẫn mở theo [Bảng điều hành](PLAN.md#dashboard).

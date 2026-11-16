@@ -780,7 +780,7 @@ item/roster còn lại vẫn theo PLAN. Không coi bốn bom có tám recipient 
 
 
 <a id="rust-tomb12-boundary"></a>
-## Tomb12: khởi tạo đã đo, gameplay còn mở
+## Tomb12: hai lớp cờ và tia nổ, gameplay còn mở
 
 [Bằng chứng khởi tạo](../evidence/rust-service/g1-tomb12-initial.json) giữ hai account KR trên Wine, hai spawn
 đầu trong sáu spawn gốc và hai view có cùng 195 cờ: 65 ô bằng 1, 130 ô bằng 0. Source type 1/type 2 tạo mask
@@ -792,11 +792,37 @@ Hai sample có cả mã ground/object bằng -1 cũng tạo object `CGOTileGroun
 đó. Sáu GraveStone01/03 là `CGOTileStatic` với source data, footprint 1×1 và call ghi cờ đã quan sát.
 
 Probe ban đầu đọc `+AC` theo lớp type 1/3, nhưng trường này bằng 0 ở các Ground đã chọn. Không gọi nó là con trỏ
-TileInfo của Ground hoặc xác nhận dữ liệu đã được chép tới offset đó. Nguồn lưu dữ liệu và physics của Ground
-vẫn unknown; native di chuyển, ray qua anchor/ô phủ, thùng vỡ, drop/pickup và hai vòng/reset còn phải kiểm.
-Chưa bật terrain hoặc mở map tổng quát từ bằng chứng khởi tạo.
+TileInfo của Ground hoặc xác nhận dữ liệu đã được chép tới offset đó. Nơi lưu TileInfo của Ground
+vẫn unknown; không cần suy offset đó để dùng lớp chặn tia đã đo riêng bên dưới. Native di chuyển, drop/pickup
+và hai vòng/reset cho 2–6 người vẫn còn phải kiểm. Chưa mở map tổng quát từ bằng chứng khởi tạo.
 
 Run gốc trả exit 1 vì output tmpfs unmount busy sau khi export đã được so từng size/SHA; seal thường không tìm
 thấy `cycles/run.json`. Raw giữ tại locator export, đã được xác minh riêng cùng input frozen và không còn PID
 trong namespace gốc. DB và host bind đã unmount trong run; không chứng nhận output unmount thành công.
 Giữ nguyên lỗi wrapper, verifier frozen và giới hạn chẩn đoán; không suy độ bền hoặc M8 từ bản export này.
+
+
+[Bằng chứng tia và lớp chặn](../evidence/rust-service/g1-tomb12-ray-barriers.json) phân biệt **map+1D54** với
+**map+1D24**. Trong hai ca power 3, WaterwayH06 ở anchor `(11,1)` và H07 ở ô phủ `(0,13)` có cờ 1D54 bằng 0,
+nhưng `EA1230` trả 1; `E9F220` dừng ở nhánh `next_set1230` trước khi xử lý ô. Moss sau footprint còn nguyên.
+Giả thuyết tia đi xuyên chỉ từ mask 1D54 bị bác; verifier theo giả thuyết đó và raw được giữ nguyên.
+
+Nguồn tĩnh được đối chiếu bytes với client thực: `EA7B90` ghi wrapper secure trong container map+1D24 qua
+`DEA970` và `55FD30`; `529C60` đọc qua decoder đã biết. Ground type 0 có dword tại offset 44 khác 0 được
+initializer `EA1EE0` chọn qua `9B0640`, rồi ghi footprint từ `row-height+1..row`, `column..column+width-1`.
+Đây là bằng chứng tĩnh; bằng chứng thực thi riêng có đủ 96 call từ return site `EA31AD` và giá trị sau ghi bằng 1
+ở mỗi view. Toàn bộ 195 wrapper được đọc và kiểm checksum lúc clock và trước/sau hai callback nổ, khớp mask
+96 ô bật từ Waterway. Các ô bridge trong mask này bằng 0; điều đó chưa chứng minh di chuyển qua bridge.
+
+Đối chứng Stone có root `(8,0)`, power 3: tia xử lý Moss `(7,0)` và cờ 1D54 đổi 1→0; hướng qua Waterway
+`(8,1)` dừng trước ô. Root `(0,14)` có ca âm ở Waterway `(0,13)`. Cả hai view giữ nguyên mask 1D24 trong
+khi 1D54 chỉ mất cờ của đúng thùng Stone. Fire dùng để cấp power là input thiết kế có native pickup, không phải
+phân phối rơi gốc. Đây là hai ca chẩn đoán, chưa survival, kết quả/reset hoặc gameplay toàn map.
+
+Rust nhận `terrain.ray_barriers` tùy chọn, tách khỏi `kinds` và `box_hits`: thiếu hoặc rỗng tương đương 195 số 0;
+nếu có thì phải đủ 195 giá trị 0/1 và dùng cùng binding map/fixture hiện hành. Tia dừng trước ô có mask, không
+đánh thùng hoặc kích chain phía sau; origin có mask thì không phát tia. Mask giữ nguyên khi reset, còn kinds/hit
+count được khởi tạo lại. Đây là policy projection có giới hạn, không tự đổi movement hay guard đặt bom.
+Binary Rust mới đã chạy cùng hai ca Stone/Waterway với mask bật trong cấu hình riêng, hai view có đúng thay đổi
+1D54 và mask 1D24 bất biến. Đây là nghiệm thu tích hợp hữu hạn; chưa đọc trực tiếp shadow clearance từ service,
+chưa nghiệm thu chain/reset native trên Tomb12. Unit test chỉ kiểm hồi quy policy, không thay bằng chứng native.

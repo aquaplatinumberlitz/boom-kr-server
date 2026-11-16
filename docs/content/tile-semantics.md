@@ -23,7 +23,7 @@ Mỗi số là số ô; `chưa rõ` không được gán terrain. Mỗi map có 
 | Tomb12 | 26 | 6 | 59 | 104 |
 | Patrit14 | 52 | 4 | 138 | 1 |
 
-Các tên và số ô có hành vi chưa được phủ đầy đủ trong sáu map: `Tile00_Passable/Herb00` 18; `Tile16_Passble/Herb01` 10, `Herb02` 12, `Line01` 6, `Line02` 7; `Tile16_Box/StrongBox01` 4, `StrongBox02` 4; `Tile16_Static/MissileBase02`, `PinPillar03`, `PinPillar04` mỗi tên 1; `Tile16_Ground/PinGround01` 4; `Tile05_Static/Well00` 1; `Tile04_Static/MastTileA` 1. Trong Tomb12, `Tile09_Ground/WaterwayH04` 3, `WaterwayH05` 4, `WaterwayH06` 31, `WaterwayH07` 8, `WaterwayH08` 2, `bridge00` 4 và 52 ô có cả hai mã -1 đều chưa rõ. Các tên rút gọn sau dấu phẩy dùng cùng thư mục ngay trước đó. Không thấy loại đẩy, băng chuyền hay cổng dịch chuyển trong các ô chưa rõ này; chưa suy hành vi của chúng ở map khác.
+Các tên và số ô có hành vi chưa được phủ đầy đủ trong sáu map: `Tile00_Passable/Herb00` 18; `Tile16_Passble/Herb01` 10, `Herb02` 12, `Line01` 6, `Line02` 7; `Tile16_Box/StrongBox01` 4, `StrongBox02` 4; `Tile16_Static/MissileBase02`, `PinPillar03`, `PinPillar04` mỗi tên 1; `Tile16_Ground/PinGround01` 4; `Tile05_Static/Well00` 1; `Tile04_Static/MastTileA` 1. Trong Tomb12, `Tile09_Ground/WaterwayH04` 3, `WaterwayH05` 4, `WaterwayH06` 31, `WaterwayH07` 8, `WaterwayH08` 2, `bridge00` 4 và 52 ô có cả hai mã -1 còn thiếu coverage gameplay. Các tên rút gọn sau dấu phẩy dùng cùng thư mục ngay trước đó. Không thấy loại đẩy, băng chuyền hay cổng dịch chuyển trong các ô chưa rõ này; chưa suy hành vi của chúng ở map khác.
 
 Trong Camp08, nguồn cờ khởi tạo của `PinGround01` đã được kiểm từ TileInfo đến native hai view;
 [contract Camp08](../protocol/terrain.md#rust-camp08-boundary) giữ phạm vi và policy Rust. Kết luận này không
@@ -43,5 +43,7 @@ Native ba type 1 Camp08 đã đối chiếu object `CGOTileStatic`, dữ liệu 
 hai PinPillar 1×1. [Contract Camp08](../protocol/terrain.md#rust-camp08-boundary) giữ loop, tọa độ và giới hạn ray/reset.
 
 Tomb12 đã có [đối chứng khởi tạo](../protocol/terrain.md#rust-tomb12-boundary) cho ground Waterway/bridge 2×1,
-hai sample ground mã -1 và sáu static 1×1. Cờ ban đầu khớp mask ứng viên chưa chứng minh di chuyển hoặc ray.
+hai sample ground mã -1 và sáu static 1×1. Lớp 1D24 có 96 ô chặn tia đã đo riêng bằng initializer và snapshot
+195 ô; ca ray Waterway dừng trước ô dù 1D54 bằng 0, Stone có đối chứng thùng vỡ. Mask bridge bằng 0
+chưa chứng minh di chuyển; hai vòng/reset và gameplay vẫn mở.
 Ground không dùng pointer `+AC` như lớp type 1/3 đã đo; không nhập nghĩa offset giữa các lớp.
