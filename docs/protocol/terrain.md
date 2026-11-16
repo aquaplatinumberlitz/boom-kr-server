@@ -730,4 +730,18 @@ làm kích thước. Predicate `9B0640` bật cho type 1/2, hoặc type 0 có dw
 Loop khởi tạo mở rộng từ `row-height+1..row`, `column..column+width-1`, rồi gọi `EA4D90` và `EA7C20` với value 1
 cho type 1. Native ghi đúng các call này: hai PinPillar 1×1; MissileBase 2×1 phủ `(12,10)` và `(12,11)`.
 Cờ ban đầu tại các ô này bằng 1, các ô đối chứng cạnh chúng vẫn bằng 0. Đây là contract khởi tạo/footprint;
-không suy ray, vật lý nhân vật, phân phối item, reset hoặc map tổng quát từ initializer.
+không suy vật lý nhân vật, phân phối item, reset hoặc map tổng quát từ initializer.
+
+[Ray tĩnh và ô phủ](../evidence/rust-service/g1-camp08-static-rays.json) đã có hai route riêng. Từ trái, PinPillar04
+`(11,3)` và anchor MissileBase `(12,10)` trả cell state 2/result 0 ở hai view. Tia power 4 đi qua Line02 `(12,7)`
+và Herb `(12,9)` rồi dừng tại MissileBase. Từ phải/trên, tám account dùng spawn gốc: H kiểm PinPillar03 `(1,11)`,
+E nhặt Fire cấu hình rồi kiểm covered-cell MissileBase `(12,11)`. Cả tám view có đủ bốn consumer 159/158;
+cell state 2/result 0 chặn tại hai ô, không đi tiếp từ ô phủ sang anchor `(12,10)`. Cờ của cả bốn ô static giữ 1
+trước/sau mọi blast trong hai route. Đây là đối chứng cho hard-stop kind 1 hiện có, không phải loại ô mới của Rust.
+
+Một lượt đầu timeout ở Wine preboot; lượt khác có `log flush timeout at event 287` trước bom đầu dù DB đã trên
+tmpfs. Route đạt dùng output tmpfs theo phương pháp đã có: cleanup, export so từng size/SHA, unmount rồi seal.
+Lượt tám người đầu hoàn tất native nhưng UDP capture kế thừa allowlist hẹp bị lỗi, nên overall exit 1 và giữ riêng.
+Lượt sửa capture dùng nguyên bản tám người đã nghiệm thu đạt exit 0. Các đối chứng storage/capture không là
+durability, sửa production hoặc M8; không thay timeout. Line01, route serving hai vòng/reset và coverage item/roster
+vẫn còn theo PLAN. Không coi bốn bom có tám recipient là nghiệm thu toàn gameplay Camp08 tám người.

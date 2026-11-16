@@ -5,6 +5,11 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP314: Camp08 đã có native footprint MissileBase/PinPillar và direct getter chặn Line02.**
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) tách khởi tạo, di chuyển và ray;
+đối chứng DB tmpfs đạt chưa là nghiệm thu lưu bền hoặc vận hành.
+G1 và M8 vẫn mở theo [Bảng điều hành](PLAN.md#dashboard).
+
 **CP313: Camp08 đã tách Herb/Line di chuyển khỏi tia nổ; G1 vẫn mở.**
 [Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ positive Herb, negative Line02 và các lượt lỗi;
 getter di chuyển mới có nguồn tĩnh, chưa có native return trực tiếp đạt. [Checker lịch sử](evidence/checkpoints/README.md)

@@ -1,0 +1,41 @@
+{
+  "schema": "kre-g1-camp08-static-rays-v1",
+  "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Native hard-stop rays for both PinPillars, MissileBase anchor and coveredcell; two-account lowerroute and eight-account right/toproute, no new servingcode.",
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-camp08-static-rays-native-r1/failure-verification.json",
+      "bytes": 438,
+      "sha256": "16833c807a0500daf8f7cdad9c01ab1e099984d8a132b321a0b1ef37159237b1"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-static-rays-native-r2/failure-verification.json",
+      "bytes": 896,
+      "sha256": "7c04d25468b9a3a925037620a67e0984736ca7411dde6f0d84be5c8cf5f70793"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-static-rays-native-r3/ray-verification.json",
+      "bytes": 15234,
+      "sha256": "2097127732a159f5f3240fe53a9b218bf81ba9d9770f0401edd12eaba67b3c11"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-right-static-native-r1/failure-verification.json",
+      "bytes": 168022,
+      "sha256": "ddc1e6b672893eb99d79e8d9fb1d6d01820856b37a01b0db7c224ef4e87a2a67"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-right-static-native-r2/ray-verification.json",
+      "bytes": 167826,
+      "sha256": "8331456887692300229f4b4cbb3aee01b042b5a5c2ad5f95a1409d8a62ae38f3"
+    }
+  ],
+  "limits": [
+    "Lowerroute8bombs/power2→4: two views stop at PinPillar04 and MissileBaseanchor after lowerLine02/Herb. Right/toproute4bombs: all8views stop at PinPillar03 and coveredMissilecell12,11, original8spawns checked.",
+    "Four hardcells retain flag1 in all measured snapshots. No originalserver/drop, genericstatic directions beyondtestedroutes, two-round/reset/roster gameplay or fullCamp08/G1 acceptance.",
+    "r1preboot timeout, r2logflush timeout beforefirstbomb and observerjoin warning, first8captureallowlistfailure all retained. Successful runs use outputtmpfs+DBtmpfs afterconcreteIOfailure, byteverifiedexport/unmount; notdurability/productionfix/M8.",
+    "Line01, servingCamp08 terrain/item two-round/reset, broaderroster/items andTomb12 remain open."
+  ]
+}
