@@ -220,6 +220,59 @@ __attribute__((stdcall)) unsigned short hook_regcls(void *wc) {
     }
     return orig_regcls(wc);
 }
+/* Bọc +212 (chèn kết quả composition) và +228 (chèn byte) của ô nhập ORG để xem nhánh từ chối. */
+typedef void(__attribute__((thiscall)) * ins212_t)(unsigned *, unsigned *);
+typedef int(__attribute__((thiscall)) * ins228_t)(unsigned *, unsigned char *, int);
+static ins212_t orig212;
+static ins228_t orig228;
+__attribute__((thiscall)) static void w212(unsigned *t, unsigned *a2) {
+    trace('E', a2[4] | t[339] << 16, t[6] | t[79] << 16, t[598] | t[597] << 16);
+    orig212(t, a2);
+    trace('e', t[339], t[6] | t[79] << 16, t[598] | t[597] << 16);
+}
+__attribute__((stdcall)) static int dummy_unused(void) { return 0; }
+__attribute__((thiscall)) static int w228(unsigned *t, unsigned char *a2, int a3) {
+    int r;
+    trace('F', a2[0] | a2[1] << 8 | (unsigned)a3 << 16, t[6] | t[79] << 16, t[598] | t[597] << 16);
+    r = orig228(t, a2, a3);
+    trace('f', (unsigned)r, t[6] | t[79] << 16, t[598] | t[597] << 16);
+    return r;
+}
+typedef int(__attribute__((thiscall)) * ime48_t)(unsigned *, int, int, unsigned short *);
+typedef int(__attribute__((thiscall)) * ime300_t)(unsigned *, int, int);
+static ime48_t orig48;
+static ime300_t orig300;
+__attribute__((thiscall)) static int w48(unsigned *t, int kind, int len, unsigned short *w) {
+    int r;
+    trace('G', (unsigned)kind, (unsigned)len, (kind == 64 || kind == 1) && w && len > 0 ? w[0] : 0);
+    r = orig48(t, kind, len, w);
+    trace('g', (unsigned)r, t[346], t[345]);
+    return r;
+}
+__attribute__((thiscall)) static int w300(unsigned *t, int ch, int lp) {
+    int r = orig300(t, ch, lp);
+    trace('H', (unsigned)ch, (unsigned)r, t[346]);
+    return r;
+}
+static void wrap_edit_vtables(void) {
+    static const unsigned ime[] = {VT_EDITIME, VT_TEMPCHATEDITIME};
+    for (int i = 0; i < 2; i++) {
+        void **v = (void **)ime[i];
+        if (!orig48) orig48 = (ime48_t)v[48 / 4];
+        if (!orig300) orig300 = (ime300_t)v[300 / 4];
+        if (v[48 / 4] == (void *)orig48) v[48 / 4] = (void *)w48;
+        if (v[300 / 4] == (void *)orig300) v[300 / 4] = (void *)w300;
+    }
+    static const unsigned vts[] = {VT_EDITORG, VT_TEMPCHATEDITORG};
+    for (int i = 0; i < 2; i++) {
+        void **v = (void **)vts[i];
+        if (!orig212) orig212 = (ins212_t)v[212 / 4];
+        if (!orig228) orig228 = (ins228_t)v[228 / 4];
+        if (v[212 / 4] == (void *)orig212) v[212 / 4] = (void *)w212;
+        if (v[228 / 4] == (void *)orig228) v[228 / 4] = (void *)w228;
+    }
+    (void)dummy_unused;
+}
 #endif
 
 void l10n_init(void) {
@@ -245,6 +298,7 @@ void l10n_init(void) {
         if (tr_create && tr_write) tr_file = tr_create("l10n-trace.log", 0x40000000, 1, 0, 2, 0x80, 0);
         if (tr_file == (void *)-1) tr_file = 0;
         trace('I', 0, 0, 0);
+        wrap_edit_vtables();
         orig_regcls = (regcls_t) * (void **)IAT_REGISTERCLASSEXA;
         *(void **)IAT_REGISTERCLASSEXA = (void *)hook_regcls;
     }
