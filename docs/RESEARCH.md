@@ -172,14 +172,16 @@ nên không chốt nguyên nhân. Giữ QueueExpired, log-flush, preboot và cap
 production fix hoặc độ bền từ tmpfs. Xem lại khi cản G1 hoặc tại M8; L1 vẫn do Claude phụ trách.
 
 <a id="gap-tomb12-terrain"></a>
-### Tomb12: khởi tạo đã có, ngữ nghĩa ground và ray còn thiếu
+### Tomb12: lớp chặn tia đã đo, còn di chuyển và gameplay
 
-[Contract khởi tạo](protocol/terrain.md#rust-tomb12-boundary) có 195 cờ ở hai view, object/RTTI và kích thước
-Waterway/bridge 2×1 cùng sáu static 1×1. Mask ứng viên khớp cờ ban đầu chưa chứng minh physics. Tiếp hai bom native
-ở anchor và ô phủ Waterway, có thùng sau footprint; đối chiếu ray/flag và source object trước khi bật terrain.
-Di chuyển trên Waterway/bridge, drop/pickup và hai vòng/reset cho 2–6 người vẫn mở. Ground không có pointer TileInfo
-ở `+AC` như type 1/3; chỉ mở thêm consumer khi cần giải discrepancy. Raw export đã so đúng bytes nhưng output
-unmount busy, giữ overall exit 1; không chạy lại chỉ để lấy exit 0 hoặc suy graceful cleanup/M8 từ namespace đã hết.
+[Contract](protocol/terrain.md#rust-tomb12-boundary) tách 1D54 khỏi 1D24: hai tia Waterway anchor/ô phủ dừng
+trước ô dù 1D54 bằng 0. Native đã có đủ 96 call khởi tạo lớp 1D24 và toàn bộ 195 giá trị ở hai view; Stone/Moss
+có ca dương, Waterway có ca âm. Không lặp giả thuyết tia đi xuyên Waterway hoặc mở lại các body đã đủ bytes.
+Binary Rust đã qua cùng hai ca với mask bật trong cấu hình riêng. Tiếp di chuyển trên Waterway/bridge,
+drop/pickup và hai vòng/reset cho
+2–6 người. Bridge có mask 0 chưa chứng minh đi qua; Ground+AC vẫn opaque. Chỉ mở consumer di chuyển nếu
+phép đo cụ thể còn thiếu hoặc khác source. Không mở map phục vụ tổng quát trước acceptance.
+Run khởi tạo cũ vẫn giữ exit 1/output unmount busy và export đúng hash; các lượt ray có seal riêng không sửa lịch sử đó.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster

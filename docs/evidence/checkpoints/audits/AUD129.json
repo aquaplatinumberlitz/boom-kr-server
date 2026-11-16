@@ -1,0 +1,62 @@
+{
+  "id": "AUD129",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-tomb12-ray-barrier-projection"
+  ],
+  "completed_through": "CP318",
+  "recorded_utc": "2026-11-16T18:25:06.917315+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/content/tile-semantics.md",
+    "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
+    "local/research/codex/g1-tomb12-rays-native-r1/barrier-observation-verification.json",
+    "local/research/codex/g1-tomb12-ray-barrier-source-r1/byte-binding.json",
+    "local/research/codex/g1-tomb12-barriers-native-r1/barrier-verification.json",
+    "local/research/codex/g1-tomb12-barrier-serving-native-r1/barrier-verification.json",
+    "rust/crates/kr-service/src/terrain.rs"
+  ],
+  "method": "Đọc nguồn chuẩn và đối chiếu actual C2S118, native159/158, getter EA1230, nhánh dừng và hai lớp snapshot 195 ô. Kiểm setter 143 byte cùng ba body mới đã đóng batch. Hai view có 96 entry/return từ EA31AD khớp footprint, scalar sau ghi bằng 1 và CRC đúng; mask 195 ô giữ nguyên trước/sau nổ. Stone/Moss dương chỉ clear (7,0) trong 1D54; Waterway âm chặn trước ô dù 1D54 bằng 0. Rust có mask riêng, binary và nguồn được giữ; cùng hai ca native đã qua. Unit test chỉ hồi quy chain/reset/generation, chưa nghiệm thu các ca đó trên KR hoặc đọc trực tiếp shadow clearance. Kiểm lỗi freeze prelaunch và verifier giả thuyết bị bác còn nguyên. Diff không có thông tin hạ tầng riêng.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Giả thuyết mask 1D54 đủ cho tia trên Tomb12.",
+      "correction": "Ứng viên bị bác, chưa từng là contract confirmed. Dùng lớp 1D24 riêng có nguồn và runtime; giữ verifier dự đoán tia xuyên Waterway bị lỗi.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/g1-tomb12-ray-barriers.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Có thể suy bridge đi qua từ mask 0 hoặc gọi hai control là map acceptance.",
+      "correction": "Mask bridge bằng 0 chỉ là scalar đã đo. Di chuyển, drop/pickup, kết quả/reset và roster 2–6 vẫn mở; chưa mở map tổng quát.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/protocol/terrain.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Binary native mới có thể bị hiểu là đã xác minh shadow clearance hoặc native chain/reset.",
+      "correction": "Chỉ xác nhận config/binary và callback, cờ client trong hai ca. Shadow service chưa đọc trực tiếp, chain/reset mới có unit regression.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-tomb12-ray-barriers.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Tomb12 còn di chuyển trên Waterway/bridge, drop/pickup, hai vòng/reset và roster 2–6 theo PLAN.",
+    "G1 còn coverage item/nhân vật; M8 còn Internet cho transport mới, 50 người/8 phòng, đóng gói và backup/restore.",
+    "L1 thuộc Claude; không sửa tool xuất profile map hoặc client/pack/DB nguồn."
+  ]
+}

@@ -14,6 +14,9 @@ pub struct Config {
     /// Optional per-cell hit counts; zero on non-box cells, 1..=254 on boxes.
     #[serde(default)]
     box_hits: Vec<u8>,
+    /// Optional map-owned stop-before-cell layer, independent of box/solid flags.
+    #[serde(default)]
+    ray_barriers: Vec<u8>,
     map_sha256: String,
     seed_sha256: String,
     fixtures: BTreeMap<String, String>,
@@ -38,6 +41,7 @@ pub(crate) struct Terrain {
     kinds: Vec<u8>,
     seed_hits: Vec<u8>,
     remaining_hits: Vec<u8>,
+    ray_barriers: Vec<u8>,
     width: u8,
     height: u8,
     max_power: u8,
@@ -101,6 +105,15 @@ impl Config {
         {
             return Err(error());
         }
+        let ray_barriers = if self.ray_barriers.is_empty() {
+            vec![0; self.kinds.len()]
+        } else if self.ray_barriers.len() == self.kinds.len()
+            && self.ray_barriers.iter().all(|flag| *flag <= 1)
+        {
+            self.ray_barriers.clone()
+        } else {
+            return Err(error());
+        };
         let hits = if self.box_hits.is_empty() {
             self.kinds.iter().map(|kind| u8::from(*kind == 2)).collect()
         } else {
@@ -122,6 +135,7 @@ impl Config {
             kinds: self.kinds.clone(),
             seed_hits: hits.clone(),
             remaining_hits: hits,
+            ray_barriers,
             width: self.width,
             height: self.height,
             max_power: self.maximum_power,
@@ -191,6 +205,10 @@ impl Terrain {
         while let Some(id) = queue.pop_front() {
             let bomb = &self.pending[&id];
             processed.push(id);
+            let origin = usize::from(bomb.row) * usize::from(self.width) + usize::from(bomb.column);
+            if self.ray_barriers[origin] != 0 {
+                continue;
+            }
             for (dr, dc) in [(0, -1), (-1, 0), (0, 1), (1, 0)] {
                 for distance in 1..=i16::from(bomb.power) {
                     let row = i16::from(bomb.row) + dr * distance;
@@ -202,8 +220,14 @@ impl Terrain {
                     {
                         break;
                     }
+                    let index = row as usize * usize::from(self.width) + column as usize;
+                    // Native E9F220 checks map+1D24 before entering the cell.
+                    // A barrier therefore cannot hit a box or chain a bomb there.
+                    if self.ray_barriers[index] != 0 {
+                        break;
+                    }
                     let cell = (row as u8, column as u8);
-                    let kind = self.kinds[row as usize * usize::from(self.width) + column as usize];
+                    let kind = self.kinds[index];
                     if kind != 0 {
                         if kind == 2 {
                             hit_boxes.insert(cell);
@@ -267,6 +291,7 @@ pub(crate) mod tests {
             ]),
             maximum_power: 2,
             box_hits: Vec::new(),
+            ray_barriers: Vec::new(),
         }
     }
     pub(crate) fn map() -> Terrain {
@@ -278,6 +303,86 @@ pub(crate) mod tests {
         terrain.remaining_hits = terrain.seed_hits.clone();
         terrain
     }
+    #[test]
+    fn ray_barrier_keeps_floor_clear_but_shields_box_and_chain_until_independent_callback() {
+        let mut cfg = config();
+        cfg.kinds = vec![0; 195];
+        cfg.kinds[3 * 15 + 5] = 2;
+        cfg.kinds[3 * 15 + 8] = 2;
+        cfg.seed_sha256 = sha(&cfg.kinds);
+        cfg.maximum_power = 9;
+        cfg.ray_barriers = vec![0; 195];
+        cfg.ray_barriers[3 * 15 + 4] = 1;
+        cfg.ray_barriers[3 * 15 + 7] = 1;
+        let mut t = cfg.validate_measured(b"map", b"start", 9).unwrap();
+        t.begin(10);
+        for (id, column, power) in [(1, 3, 5), (2, 6, 2)] {
+            t.place(Bomb {
+                id,
+                owner: 0,
+                row: 3,
+                column,
+                power,
+            })
+            .unwrap();
+        }
+        let blocked = t.blast_committed(10, 1);
+        assert_eq!(blocked.processed, vec![1]);
+        assert!(blocked.cleared.is_empty());
+        assert!(t.pending.contains_key(&2));
+        assert_eq!(t.kinds[3 * 15 + 4], 0);
+        assert_eq!(t.remaining_hits[3 * 15 + 5], 1);
+        assert!(t.clearance(10, 3, 5).is_none());
+        let independent = t.blast_committed(10, 2);
+        assert_eq!(independent.processed, vec![2]);
+        assert_eq!(independent.cleared, BTreeSet::from([(3, 5)]));
+        assert_eq!(t.clearance(10, 3, 5), Some(2));
+        assert_eq!(t.remaining_hits[3 * 15 + 8], 1);
+        assert!(t.blast_committed(10, 2).processed.is_empty());
+        t.finish();
+        t.begin(11);
+        assert_eq!(t.kinds, t.seed);
+        assert_eq!(t.remaining_hits[3 * 15 + 5], 1);
+        assert_eq!(t.ray_barriers[3 * 15 + 4], 1);
+        assert!(t.clearance(10, 3, 5).is_none());
+        t.place(Bomb {
+            id: 3,
+            owner: 0,
+            row: 3,
+            column: 4,
+            power: 9,
+        })
+        .unwrap();
+        assert!(t.blast_committed(10, 3).processed.is_empty());
+        let origin_blocked = t.blast_committed(11, 3);
+        assert_eq!(origin_blocked.processed, vec![3]);
+        assert!(origin_blocked.cleared.is_empty());
+        assert_eq!(t.remaining_hits[3 * 15 + 5], 1);
+    }
+
+    #[test]
+    fn ray_mask_is_optional_bounded_boolean_data_with_existing_map_binding() {
+        let mut cfg = config();
+        let absent = cfg.validate(b"map", b"start").unwrap();
+        cfg.ray_barriers = vec![0; 195];
+        let zero = cfg.validate(b"map", b"start").unwrap();
+        assert_eq!(absent.ray_barriers, zero.ray_barriers);
+        cfg.ray_barriers[0] = 1;
+        assert!(
+            cfg.validate_for_map(b"map", b"start", &"0".repeat(64))
+                .is_ok()
+        );
+        assert!(
+            cfg.validate_for_map(b"map", b"start", &"1".repeat(64))
+                .is_err()
+        );
+        assert!(cfg.validate(b"changed map", b"start").is_err());
+        for mask in [vec![0; 194], vec![0; 196], vec![2; 195]] {
+            cfg.ray_barriers = mask;
+            assert!(cfg.validate(b"map", b"start").is_err());
+        }
+    }
+
     #[test]
     fn durable_boxes_validate_counts_keep_last_hit_ray_stop_and_reset_without_old_clearance() {
         let mut cfg = config();

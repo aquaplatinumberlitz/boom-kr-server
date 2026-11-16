@@ -1,0 +1,214 @@
+{
+  "id": "CP318",
+  "previous": "CP317",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-16T18:26:28.192407+00:00",
+  "context_commit": "0d1f5d925cd54681573392b2ce6094082602e2c0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Tách lớp chặn tia Waterway khỏi mask terrain và đưa projection có nguồn sang Rust.",
+  "scope": "Ba lượt hai account: bác giả thuyết tia xuyên Waterway, chứng minh source/195 mask, rồi binary Rust với mask riêng và đối chứng Stone/Moss. Không đóng gameplay Tomb12.",
+  "artifacts": [
+    {
+      "name": "client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "service",
+      "sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-tomb12-boundary",
+    "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
+    "rust/crates/kr-service/src/terrain.rs",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Waterway anchor và ô phủ chặn tia trước cell dù cờ 1D54 bằng 0; EA1230 trả 1, Moss sau footprint còn nguyên. Giả thuyết tia đi xuyên bị bác và verifier frozen được giữ.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "TOMB318-1174"
+      ],
+      "limits": "Hai ca power 3, không di chuyển hoặc toàn map."
+    },
+    {
+      "summary": "Setter EA7B90 ghi map+1D24; helper và cached getter khớp bytes client. Ground type 0 field44 khác 0 tạo footprint. Mỗi view có 96 entry/return, snapshot đủ 195 giá trị khớp mask.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "TOMB318-1043",
+        "TOMB318-0881"
+      ],
+      "limits": "Ba body mới đã đóng batch. Bridge mask 0 không chứng minh di chuyển; Ground+AC vẫn opaque."
+    },
+    {
+      "summary": "Binary Rust mới nhận optional ray_barriers có binding map/fixture. Hai ca native có mask bật giữ nguyên 1D24; 1D54 chỉ clear Moss7,0, tia Waterway dừng. Policy không đổi placement hoặc movement.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "TOMB318-0590",
+        "TOMB318-1055"
+      ],
+      "limits": "Không đọc trực tiếp shadow clearance; Fire hiện sẵn là design. Chưa drop/pickup, survival, kết quả/reset hoặc roster 2–6."
+    },
+    {
+      "summary": "Rust hồi quy mask optional, giá trị/chiều dài, binding, chain phía sau, origin có mask và reset/generation; workspace tests, fmt, clippy và locked build qua.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "TOMB318-1055"
+      ],
+      "limits": "Test backend không là native chain/reset acceptance; completion test tiếp từ session đang dở, không có full standalone log."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native giả thuyết âm và source/mask/Stone dương",
+      "result": "pass",
+      "evidence": [
+        "TOMB318-1174",
+        "TOMB318-0881"
+      ],
+      "limits": "Giữ nguyên giả thuyết bị bác, ba lượt exit 0 có phạm vi hữu hạn."
+    },
+    {
+      "check": "Binary Rust với terrain mask bật trên KR",
+      "result": "pass",
+      "evidence": [
+        "TOMB318-0590"
+      ],
+      "limits": "Hai placements, hai view, năm snapshot mỗi lớp/view; chưa mở gameplay map."
+    },
+    {
+      "check": "Bảo toàn raw/input, docs/catalog/diff và audit nhóm",
+      "result": "pass",
+      "evidence": [
+        "TOMB318-0016",
+        "TOMB318-0015",
+        "TOMB318-0008"
+      ],
+      "limits": "Full checker exact head và CI phải đạt trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP318-tomb12-rays.json",
+      "bytes": 390194,
+      "sha256": "bfb561de4024512b0483231e9107c6cbb571c293b23334584fd3d5b90150fffd",
+      "count": 1379
+    }
+  ],
+  "delta": {
+    "added": [
+      "Lớp ray_barriers optional và hồi quy Rust.",
+      "Nguồn setter/getter cùng full mask 1D24 và Stone/Moss dương trên hai binary."
+    ],
+    "corrected": [
+      "Bác mask 1D54 đơn lớp cho tia Waterway, giữ nguyên verifier ứng viên sai.",
+      "Freeze prelaunch chỉ áp terrain cho profile được chọn; catalog phụ giữ disabled."
+    ],
+    "superseded": [
+      "Thiếu bằng chứng ray tại Waterway anchor/ô phủ và mask 1D24."
+    ]
+  },
+  "blockers": [
+    "Chỉ các tia, hướng, ô và hai account đã đo. Chưa di chuyển trên Waterway/bridge, drop/pickup từ Moss, survival, kết quả/reset, roster 2–6 hoặc toàn map G1.",
+    "Fire hiện sẵn là input thiết kế; không phải phân phối rơi hay authority của server gốc. Báo unknown_hidden_cell cho packet 142 vì hai control chưa cấu hình item ẩn.",
+    "Hồi quy Rust kiểm chain, reset, generation và origin có mask; chưa nghiệm thu các ca đó trên KR Tomb12.",
+    "Client Wine chẩn đoán đã vá; output/DB tmpfs. Chưa Internet cho transport mới, đóng gói, độ bền, tải, backup hoặc M8.",
+    "Run khởi tạo CP317 vẫn giữ exit 1 do output unmount busy; các run tia exit 0 không sửa lịch sử ấy."
+  ],
+  "completed_feature_groups": [
+    "g1-tomb12-ray-barrier-projection"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp Tomb12 di chuyển Waterway/bridge, drop/pickup và hai vòng/reset cho 2–6 người; sau đó coverage item/nhân vật G1 và M8 theo PLAN. Không tiếp L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-16T18:26:28.192407+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo, nhóm projection lớp chặn tia Tomb12; không toàn G1 hoặc M8.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ hai lớp cờ, projection Rust, bằng chứng ray và phần gameplay còn mở."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ hai lớp cờ, projection Rust, bằng chứng ray và phần gameplay còn mở."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ hai lớp cờ, projection Rust, bằng chứng ray và phần gameplay còn mở."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ hai lớp cờ, projection Rust, bằng chứng ray và phần gameplay còn mở."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ hai lớp cờ, projection Rust, bằng chứng ray và phần gameplay còn mở."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ hai lớp cờ, projection Rust, bằng chứng ray và phần gameplay còn mở."
+    },
+    {
+      "path": "docs/content/tile-semantics.md",
+      "state": "updated",
+      "reason": "Đồng bộ hai lớp cờ, projection Rust, bằng chứng ray và phần gameplay còn mở."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ hai lớp cờ, projection Rust, bằng chứng ray và phần gameplay còn mở."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ hai lớp cờ, projection Rust, bằng chứng ray và phần gameplay còn mở."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
+      "state": "updated",
+      "reason": "Đồng bộ hai lớp cờ, projection Rust, bằng chứng ray và phần gameplay còn mở."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Quy trình, waiver và owner Claude của L1 giữ nguyên."
+    }
+  ]
+}

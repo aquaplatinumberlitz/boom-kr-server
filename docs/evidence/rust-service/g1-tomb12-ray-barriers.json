@@ -1,0 +1,156 @@
+{
+  "schema": "kre-g1-tomb12-ray-barriers-v1",
+  "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Hai lớp map+1D54 và map+1D24: ray Waterway âm, Stone/Moss dương, khởi tạo và 195 giá trị. Binary Rust với terrain opt-in được kiểm trong hai ca chẩn đoán.",
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-tomb12-rays-native-r1/barrier-observation-verification.json",
+      "bytes": 6509,
+      "sha256": "dac9a20b9cab90456ebdcf4ccf5708dc247cf271aef713146e2af22c6addcb89"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-rays-native-r1/native/raw-seal.json",
+      "bytes": 16490,
+      "sha256": "c98c04c78dfdfb09e6397c620e04235dd5df541465c55360fb49c82986f0d8a6"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-rays-native-r1/native/runtime-preflight.json",
+      "bytes": 244444,
+      "sha256": "e67a66f60de09362de90df4f6c9f2f9c3423838726dcb701ba77547d44f2ad61"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-rays-native-r1/native/recipe.json",
+      "bytes": 1223,
+      "sha256": "f4cc372349d8ba7a4b1c5bcc15ab21ab319b94b7ae50b6979426cf3c8b484e26"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-barriers-native-r1/barrier-verification.json",
+      "bytes": 7467,
+      "sha256": "aca1690e85c52c0f3ca80c8cccd45c0d6b5024211488e8ccb83e878a99652503"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-barriers-native-r1/native/raw-seal.json",
+      "bytes": 19244,
+      "sha256": "f28634bea9e523b98d988913e87f198e78e3f53fa2014ff2e2c971d623b9d5cd"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-barriers-native-r1/native/runtime-preflight.json",
+      "bytes": 247458,
+      "sha256": "6515445602a688d9fd10a85f554b230e50a4e9f9c8bf09815ba78a651d51472d"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-barriers-native-r1/native/recipe.json",
+      "bytes": 1239,
+      "sha256": "2a90e89bcfc7349f40dac9ee1f9ce612eb7844d389247ac2a17823583e140d17"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-barrier-serving-native-r1/barrier-verification.json",
+      "bytes": 7467,
+      "sha256": "188aedf0e2f778ee7b2488c6bd0ec19fcfcd6a3f0a3eb9e0a46e5135269011ff"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-barrier-serving-native-r1/native/raw-seal.json",
+      "bytes": 19832,
+      "sha256": "fb004c2465af9022d1fe9ecd1316537118c6285c5d1cb35e65fad3649d997d26"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-barrier-serving-native-r1/native/runtime-preflight.json",
+      "bytes": 288583,
+      "sha256": "861de93781ec883e2a1d40e8c951768cde9f3e48ae5f2eb98a62c6c0d5ecc33a"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-barrier-serving-native-r1/native/recipe.json",
+      "bytes": 1267,
+      "sha256": "ec36ddbb0fee11c715242d43b78a7aed5361699fc5f8073de4a4a3618e4daf36"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-ray-barrier-source-r1/reuse.json",
+      "bytes": 2847,
+      "sha256": "5cf96e887eb6bee8c262ddaec914b4d6190bc1aedab271892b4a5ec33ed4a183"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-ray-barrier-source-r1/setter.json",
+      "bytes": 3139,
+      "sha256": "6c742bc3fd35d07fa1f0e751c3cc38fca48800b68f4d87375b20c37b87d2e7ad"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-ray-barrier-source-r1/slot-helpers.json",
+      "bytes": 1710,
+      "sha256": "c7fb6b9b288bf07edf0278583db37a92900da9dc83ba6381e03af08751f04298"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-ray-barrier-source-r1/byte-binding.json",
+      "bytes": 1289,
+      "sha256": "d0845381b923550187b7c1172b28ed6c8039800dc72add06e616bb19474a8e63"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-ray-barriers-build-r1/source-identity.json",
+      "bytes": 27502,
+      "sha256": "8a8d9812264a66a43f1f2cec3a2be8d98c22b3b58a7e1dba5ad7e7f4ec46b780"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-ray-barriers-build-r1/toolchain-identity.json",
+      "bytes": 599,
+      "sha256": "e87730960564e6d9d2fad905fdaabea585f03cb46e453bfbeb35ffd720593d93"
+    },
+    {
+      "path": "local/research/codex/verify_g1_tomb12_barriers_r1.py",
+      "bytes": 6592,
+      "sha256": "ed9c41757f6fb5b786d25d4b72c40eb275a87a4597f5c40eb205f3611d949c19"
+    },
+    {
+      "path": "local/research/codex/verify_g1_tomb12_rays_r1.py",
+      "bytes": 6192,
+      "sha256": "2a2be9194b0a3bb72578c4b9a5970d55abb818686490c80fccedd1f2213ba2eb"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-barrier-serving-native-r1/freeze-input-correction.json",
+      "bytes": 677,
+      "sha256": "955c0209376665e2684588140d9397cb96c598533a85c6253d41899489a71111"
+    }
+  ],
+  "runs": [
+    {
+      "name": "g1-tomb12-rays-native-r1",
+      "run_sha256": "39b46080adf34a8d6662d3ac3fbf603f01fad4ac659778b74fcdb0de2d76aa43",
+      "returncode": 0,
+      "raw_files": 74,
+      "preflight_files": 590,
+      "service_sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192"
+    },
+    {
+      "name": "g1-tomb12-barriers-native-r1",
+      "run_sha256": "4bdb47e5b9b713aef4fd22b65adffb86bd7160b8e9f4958060cdd78b27b2b8c1",
+      "returncode": 0,
+      "raw_files": 84,
+      "preflight_files": 597,
+      "service_sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192"
+    },
+    {
+      "name": "g1-tomb12-barrier-serving-native-r1",
+      "run_sha256": "cbbdd9edc61967f80f8e09a5e1077c32e8abfd0e941b06a04ed5baaf311d1783",
+      "returncode": 0,
+      "raw_files": 84,
+      "preflight_files": 679,
+      "service_sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e"
+    }
+  ],
+  "measured": {
+    "ray_negative": "A (11,0) tới anchor WaterwayH06 (11,1) và B (0,14) tới ô phủ H07 (0,13): EA1230 trả 1, nhánh next_set1230 dừng trước cell; 1D54 vẫn bằng 0 và Moss sau footprint còn nguyên.",
+    "source": "Ba body mới EA7B90, DEA970, 529C60 khớp bytes client thực; tái dùng getter EA1230 và secure decoder. Ground type 0 có field44 khác 0 ghi footprint qua setter từ EA31AD.",
+    "mask": "Mỗi view có 96 entry/return ghi giá trị 1. Đủ 195 wrapper có checksum đúng, 96 ô bằng 1 và 99 ô bằng 0, tại năm snapshot cho mỗi binary. Bridge có mask 0 là quan sát scalar, chưa chứng minh di chuyển.",
+    "positive": "Hai placements power 3 mỗi lượt, bốn native Fire pickup: A (8,0) xử lý Moss (7,0), 1D54 chỉ đổi tại đó, hướng (8,1) bị Waterway chặn. B (0,14) có ca âm tại (0,13). Năm snapshot 1D54 mỗi view.",
+    "rust": "terrain.ray_barriers là 195 boolean tùy chọn, độc lập kinds và hits; chặn trước ô và tại origin, giữ qua reset. Workspace tests, fmt, clippy và locked build qua. Binary mới chạy hai ca native với mask bật; không đọc trực tiếp shadow clearance từ service.",
+    "preservation": "Giữ verifier giả thuyết tia đi xuyên bị bác và raw. Lần freeze đầu lỗi vì guard áp lên catalog phụ; chưa có preflight/runtime lúc lỗi. Sửa guard cho profile 0 và giữ script cũ. Không sửa run frozen."
+  },
+  "limits": [
+    "Chỉ các tia, hướng, ô và hai account đã đo. Chưa di chuyển trên Waterway/bridge, drop/pickup từ Moss, survival, kết quả/reset, roster 2–6 hoặc toàn map G1.",
+    "Fire hiện sẵn là input thiết kế; không phải phân phối rơi hay authority của server gốc. Báo unknown_hidden_cell cho packet 142 vì hai control chưa cấu hình item ẩn.",
+    "Hồi quy Rust kiểm chain, reset, generation và origin có mask; chưa nghiệm thu các ca đó trên KR Tomb12.",
+    "Client Wine chẩn đoán đã vá; output/DB tmpfs. Chưa Internet cho transport mới, đóng gói, độ bền, tải, backup hoặc M8.",
+    "Run khởi tạo CP317 vẫn giữ exit 1 do output unmount busy; các run tia exit 0 không sửa lịch sử ấy."
+  ]
+}
