@@ -104,10 +104,12 @@ def historical_checkpoint_source(root, relative, expected_sha, expected_bytes, c
     Older inline-only records without a matching v2 publication stay strict.
     """
     python_source = Path(relative).parts[0] in {'server', 'tools'} and Path(relative).suffix == '.py'
+    c_tool_source = (Path(relative).parts[0] == 'tools' and Path(relative).suffix in {'.c', '.h'}
+                     and not any(part in {'.', '..'} for part in relative.split('/')))
     rust_source = (re.fullmatch(r'rust/crates/[^/]+/(?:src/(?:[^/]+/)*|tests/)[^/]+\.rs', relative)
                    and not any(part in {'.', '..'} for part in relative.split('/')))
     docs_workflow = relative == '.github/workflows/docs.yml'
-    if not re.fullmatch(r'CP[0-9]{3,}', checkpoint) or not (python_source or rust_source or docs_workflow):
+    if not re.fullmatch(r'CP[0-9]{3,}', checkpoint) or not (python_source or c_tool_source or rust_source or docs_workflow):
         return None
     return historical_checkpoint_publication(
         root, relative, expected_sha, expected_bytes, checkpoint)

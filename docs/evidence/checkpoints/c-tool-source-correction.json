@@ -1,0 +1,31 @@
+{
+  "schema": "kre-c-tool-source-publication-correction-v1",
+  "source": "design",
+  "status": "design",
+  "canonical": "docs/evidence/checkpoints/README.md",
+  "baseline": "88c9c204a0815b6b80eda9500a86a7b153ee575d",
+  "correction_commit": "0dc9536971207134d431e2515728f73b58c23263",
+  "problem": "L1 PR433 changed tools/l10n_949x_hook.c on main. CP310 retained exact sourcepin, but historical source recovery previously covered Python/Rust/workflow only. Focused verification caught one Csource mismatch before starting fullhistory.",
+  "change": "Allow repository C/H source strictly under tools/, with no dot/dotdot path segments. Require exact declaration, authenticated external manifest and exactblob at original checkpoint publication, using existing selected ordinary/merge fallback rules. No local/artifact/binary recovery or L1source changes.",
+  "verification": [
+    {
+      "path": "local/research/codex/cp315-l1-source-pin-check.txt",
+      "bytes": 1610,
+      "sha256": "e5890b7f845412b87a87649e9e60dde6c65b60d4b950c1a93970726969aa52bd"
+    },
+    {
+      "path": "local/research/codex/cp315-c-source-history-tests.txt",
+      "bytes": 172,
+      "sha256": "646e562ab78fcdcae7f4c3ad9513d149e9e982b3a16b9e05af5e285eeee7a240"
+    },
+    {
+      "path": "local/research/codex/cp315-cp310-c-source-verification.json",
+      "bytes": 1531,
+      "sha256": "1e8c1e0afd9751f8cc433385ad1e25205c8cfac27fd9e65e0052790d795fc486"
+    }
+  ],
+  "limits": [
+    "73 checkpoint tests pass, including C/header positive, wronglaterblob, wrongcheckpoint, brokenexternalmanifest and local/DLL/EXE/objectfile negatives. Focused CP31065/65pins pass; final fullchecker/CI still required.",
+    "No L1 runtime/patcher edits or new acceptance. PublishedCP310 and all raw unchanged."
+  ]
+}

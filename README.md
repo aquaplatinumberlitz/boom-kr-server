@@ -33,9 +33,9 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP314: Camp08 đã có native footprint MissileBase/PinPillar và direct getter chặn Line02.**
-[Contract và giới hạn](docs/protocol/terrain.md#rust-camp08-boundary) tách khởi tạo, di chuyển và ray;
-đối chứng DB tmpfs đạt chưa là nghiệm thu lưu bền hoặc vận hành.
+**CP315: ray đã chặn tại cả hai PinPillar, anchor và ô phủ MissileBase trên client KR.**
+[Contract và giới hạn](docs/protocol/terrain.md#rust-camp08-boundary) giữ route hai/tám view, cờ static và các lượt lỗi;
+Camp08 serving hai vòng/reset, Line01 và nội dung còn lại vẫn mở.
 G1 tiếp terrain Camp08 còn thiếu theo [Bảng điều hành](docs/PLAN.md#dashboard); L1 giữ [kết quả một phần của Claude](docs/content/client-language.md#utf8).
 
 ## Bắt đầu

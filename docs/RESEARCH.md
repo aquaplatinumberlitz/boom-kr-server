@@ -172,16 +172,16 @@ seed để gán mọi ô đi qua tự do. Đối chứng DB tmpfs đã có fresh
 `BA0860` trả 0 ở hai view, khớp byte 24–27; wrapper return mâu thuẫn trước vẫn bị loại. Line01 và hướng khác còn mở.
 Không lặp route lỗi thiếu điều kiện mới; không suy durability hoặc sửa production từ một lượt tmpfs đạt.
 
-Footprint khởi tạo của ba `CGOTileStatic` đã đo: hai PinPillar 1×1 và MissileBase 2×1, kể cả ô 12,11.
-Codex tiếp ray/covered-cell của MissileBase/PinPillar và Line01 bằng route ngắn hoặc sparse roster; không lặp initializer đã đạt.
+Footprint khởi tạo ba `CGOTileStatic` đã đo: hai PinPillar 1×1 và MissileBase 2×1, kể cả ô 12,11. Ray/covered-cell MissileBase và hai PinPillar có hard-stop native, kể cả tám view/spawn gốc. Tiếp Line01 và serving
+Camp08 hai vòng/reset với terrain/item/roster; không lặp initializer hoặc bốn ô static đã đạt.
 Những ô chưa đo không được chứng nhận chỉ bằng seed hoặc route khác. Tiếp floor/drop/item, coverage roster Camp08 rồi
 Tomb12 theo PLAN; không mở map tổng quát khi còn thiếu. Policy thùng hữu hạn giữ rõ khác server gốc,
 chain/queue/multiroom và stale controls tự động không được báo thành native rộng hơn. L1 vẫn do Claude phụ trách.
 
 Log hai lượt lỗi có account `Backend(QueueExpired)` trước return/reset và lỗi observer đọc actor cũ; worker có mẫu
 `wait_current_trans` gần đó. Đối chứng cùng route trên DB tmpfs đạt; nguyên nhân sâu/storage budget vẫn candidate,
-thuộc M8 hoặc khi cản G1. Lượt tmpfs đầu lỗi `InvalidInput` trước admin init do thiếu mode riêng, lượt mode 0700 đạt.
-Không nới timeout hoặc sửa lifecycle từ suy đoán; source/raw cũ giữ nguyên, diagnostic tmpfs không là nghiệm thu lưu bền.
+thuộc M8 hoặc khi cản G1. DB tmpfs chưa tránh `log flush timeout`; output tmpfs/export đã đạt route. Giữ lỗi init,
+preboot, log-flush/capture riêng; không nới timeout hoặc suy nguyên nhân từ chronology. Diagnostic không là nghiệm thu lưu bền.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster

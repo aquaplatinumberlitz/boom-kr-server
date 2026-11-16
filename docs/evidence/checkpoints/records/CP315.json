@@ -1,0 +1,220 @@
+{
+  "id": "CP315",
+  "previous": "CP314",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-16T13:01:43.370610+00:00",
+  "context_commit": "0dc9536971207134d431e2515728f73b58c23263",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Camp08: xác minh ray chặn tại PinPillar03/04, MissileBase anchor/covered-cell bằng native; giữ source C lịch sử sau L1 merge.",
+  "scope": "Bốn ô static trong hai route giới hạn và source-pin checker correction; chưa serving Camp08/G1 hoàn chỉnh.",
+  "artifacts": [
+    {
+      "name": "client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "service",
+      "sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-camp08-boundary",
+    "docs/evidence/rust-service/g1-camp08-static-rays.json",
+    "docs/evidence/checkpoints/c-tool-source-correction.json",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Route hai account có8bom power2→4, consumer/ray/flags hai view: PinPillar04 và MissileBase anchor là hard-stop; tia trước đó đi xuyên lowerLine02/Herb.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "RAY315-1423"
+      ],
+      "limits": "Route diagnostic, không servingterrain/reset/roster hoặc originaldrop."
+    },
+    {
+      "summary": "Tám account/spawn gốc có4bom và Fire thiết kế: PinPillar03 cùng MissileBasecovered-cell12,11 trả state2/result0 ở cả8view, giữ flag1 và không đi tiếp sang anchor.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "RAY315-1000"
+      ],
+      "limits": "4bom/8recipient không thay nghiệm thu gameplay hai vòng/reset hoặc toàn Camp08."
+    },
+    {
+      "summary": "Preboot timeout, logflush timeout/event287 trướcfirstbomb và captureUDP allowlist hẹp được giữ. Outputtmpfs/export và capture8 đúng bản đã nghiệm thu đưa hai route tới exit0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "RAY315-0009",
+        "RAY315-1149",
+        "RAY315-0168"
+      ],
+      "limits": "Không chứng minh rootcause sâu, productionfix hoặc durability/M8; observerjoin warning có provenance riêng."
+    },
+    {
+      "summary": "Historicalsource C/H dưới tools dùng exactpublication/declaration/externalmanifest/blob.73tests và pinCP31065/65 đạt sauL1PR433; không sửa nguồnL1 hoặc record cũ.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "evidence": [
+        "RAY315-0008",
+        "RAY315-0015",
+        "RAY315-0016"
+      ],
+      "limits": "Local/artifact/binary, wronglaterblob/checkpoint và brokenmanifest vẫn lỗi; fullchecker/CIhead cuối bắt buộc."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Lower-route8bom và right-route4bom/eightviews, export/seal",
+      "result": "pass",
+      "evidence": [
+        "RAY315-1423",
+        "RAY315-1000"
+      ],
+      "limits": "128raw/526pins và360raw/1942pins; không servingreset/G1."
+    },
+    {
+      "check": "73checkpoint tests/source C pins65 và preservation",
+      "result": "pass",
+      "evidence": [
+        "RAY315-0015",
+        "RAY315-0016",
+        "RAY315-0019"
+      ],
+      "limits": "Fullchecker exacthead trướcmerge vẫn bắt buộc."
+    },
+    {
+      "check": "Docs/catalog/diff và audit nhóm",
+      "result": "pass",
+      "evidence": [
+        "RAY315-0017",
+        "RAY315-0007"
+      ],
+      "limits": "Không đóng gameplaymap/G1/M8 từ audit hoặc checker."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP315-camp08-static-rays.json",
+      "bytes": 868459,
+      "sha256": "150ea7304f79a6b2e99f7aa3306d04a7f7ae0d7af51c26410c9621d7a95b42f2",
+      "count": 3178
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native hard-stop rays cho bốn ô static, gồm covered-cell và tám view."
+    ],
+    "corrected": [
+      "Capture8 thay allowlist pair gây lỗi, outputtmpfs/export sau logflush timeout.",
+      "Checker nguồn C lịch sử dùng exactpublication tương tự Python/Rust, không sửa pin cũ."
+    ],
+    "superseded": [
+      "Khoảng trống ray static ba object trên các hướng đã đo."
+    ]
+  },
+  "blockers": [
+    "Lowerroute8bombs/power2→4: two views stop at PinPillar04 and MissileBaseanchor after lowerLine02/Herb. Right/toproute4bombs: all8views stop at PinPillar03 and coveredMissilecell12,11, original8spawns checked.",
+    "Four hardcells retain flag1 in all measured snapshots. No originalserver/drop, genericstatic directions beyondtestedroutes, two-round/reset/roster gameplay or fullCamp08/G1 acceptance.",
+    "r1preboot timeout, r2logflush timeout beforefirstbomb and observerjoin warning, first8captureallowlistfailure all retained. Successful runs use outputtmpfs+DBtmpfs afterconcreteIOfailure, byteverifiedexport/unmount; notdurability/productionfix/M8.",
+    "Line01, servingCamp08 terrain/item two-round/reset, broaderroster/items andTomb12 remain open."
+  ],
+  "completed_feature_groups": [
+    "g1-camp08-static-rays-and-covered-cell"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp Line01 và serving Camp08 terrain/item hai vòng/reset với roster; sau đó Tomb12 và G1/M8 theo PLAN. Không lặp static đã đo hoặc tiếp L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-16T13:01:43.370610+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo native ray/capture/storage controls và checker source; audit nhóm, chưa toàn Camp08/G1/M8.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ ray/covered-cell, giới hạn storage/capture hoặc source checker và trạng thái mới."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ ray/covered-cell, giới hạn storage/capture hoặc source checker và trạng thái mới."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ ray/covered-cell, giới hạn storage/capture hoặc source checker và trạng thái mới."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ ray/covered-cell, giới hạn storage/capture hoặc source checker và trạng thái mới."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ ray/covered-cell, giới hạn storage/capture hoặc source checker và trạng thái mới."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ ray/covered-cell, giới hạn storage/capture hoặc source checker và trạng thái mới."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ ray/covered-cell, giới hạn storage/capture hoặc source checker và trạng thái mới."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Đồng bộ ray/covered-cell, giới hạn storage/capture hoặc source checker và trạng thái mới."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-camp08-static-rays.json",
+      "state": "updated",
+      "reason": "Đồng bộ ray/covered-cell, giới hạn storage/capture hoặc source checker và trạng thái mới."
+    },
+    {
+      "path": "docs/evidence/checkpoints/c-tool-source-correction.json",
+      "state": "updated",
+      "reason": "Đồng bộ ray/covered-cell, giới hạn storage/capture hoặc source checker và trạng thái mới."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Mục lục terrain đã có, không wire mới."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Giữ quy trình và owner L1."
+    }
+  ]
+}

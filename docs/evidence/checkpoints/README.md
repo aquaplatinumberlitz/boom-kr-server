@@ -117,6 +117,11 @@ artifact/binary và repository file khác vẫn cần bytes hiện tại khớp 
 Source chỉ có ở schema v1 hoặc không khớp lúc thêm record v2 **chưa** được fallback tự động; giữ lỗi
 và cần locator/migration minh bạch nếu gặp. Append-only records/history qua schema v1/v2 giữ nguyên.
 
+Source C và header dưới `tools/` cũng dùng đúng ranh giới publication đó khi bytes đã thay đổi; loại đường dẫn
+có đoạn `.`/`..`, file local, artifact, DLL/EXE/object vẫn giữ kiểm strict hiện tại. Declaration, external manifest
+và blob phải khớp tại publication gốc, không nhận source ở commit muộn để cứu pin sai.
+[Đối chứng C source](c-tool-source-correction.json) giữ lỗi phát hiện sau L1 PR433, kiểm âm và giới hạn.
+
 ## Kho checkpoint v2 và cách đọc chọn lọc
 
 Từ CP118, `manifest.json` là **index nhỏ** (`kre-checkpoints-v2`, version2): counter, audit,
