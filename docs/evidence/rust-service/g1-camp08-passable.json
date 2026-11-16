@@ -1,0 +1,62 @@
+{
+  "schema": "kre-g1-camp08-passable-v1",
+  "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "scope": "Bounded Herb01/02 and Line02 observations, static directional fields, preserved failed controls. Not general Camp08 or G1 acceptance.",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "environment": {
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "service_sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192",
+    "map_payload_sha256": "80dc0d8c655a83e7397fb9e0d7977788c42547b632c32edb85659bcbf2520144",
+    "runtime": "Wine/private LAN, accepted original diagnostic949 copies and two DB accounts; outbound isolated"
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-camp08-passable-native-r1/observation-verification.json",
+      "bytes": 119457,
+      "sha256": "f1f21703a22644ba6f6ed19c0d33837c352877fe9f43c94d93ecdee6a5a8b186"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-native-r2/failure-verification.json",
+      "bytes": 786,
+      "sha256": "45654f965ce6de6a813b6f25a51958579cbc53e7f3cd5bd340b8546799f1da55"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-native-r3/failure-verification.json",
+      "bytes": 22289,
+      "sha256": "d8b415f872fe7a2bd827ee38d5eca61e1c071ce94fe9652b7511d1642a2a7d9e"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-native-r4/failure-verification.json",
+      "bytes": 14007,
+      "sha256": "120e08aa6eb518e6e905fdf718e7786f73067b4e1f2d426edcb716cfa6fdd2a6"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-predicate-r1/batch-boundary.json",
+      "bytes": 615,
+      "sha256": "520a8967471bc8711922cf26220fef0b6bca8606176831edbd2bee5d7de7e236"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-predicate-r2/batch-boundary.json",
+      "bytes": 695,
+      "sha256": "0ffd3e21f52b9ef7ecfc7b4039063e4f4b853aba47c1a9eaf3e9982f88fc1395"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-predicate-r3/batch-boundary.json",
+      "bytes": 471,
+      "sha256": "96e056f70667a4648af7733b9b384aabc9be0890944cfadf69ae9a2495bfaea2"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-predicate-r3/getter.json",
+      "bytes": 3830,
+      "sha256": "7cb41806e2ecaebfd24178fcb48456281229c743b49383de918e7f68cbcf4abe"
+    }
+  ],
+  "limits": [
+    "All four runs have exit1 and sealed raw/namespace cleanup. r1 has7complete bombs/view and Line02 ray/blocked movement observations; r3/r4 have intactHerb01 positive before first bomb.",
+    "Terrain prediction disabled and Fire700 is a designed power2 control; not original drop or server authority. No two-round/reset/native roster or serving terrain extension.",
+    "FinishBreakpoint wrapper returns inr3 contradict static boolean helper and are excluded from contract. Direct epilogue inr4 never installed before failure,so no direct getter runtime return claim.",
+    "Line01 and other directions, MissileBase/PinPillar, broader terrain/roster/item and G1/M8 remain open. Route crash root cause unknown; do not repeat without changed condition."
+  ]
+}

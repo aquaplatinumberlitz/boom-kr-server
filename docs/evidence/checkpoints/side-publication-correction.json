@@ -1,0 +1,40 @@
+{
+  "schema": "kre-checkpoint-side-publication-correction-v1",
+  "canonical": "docs/evidence/checkpoints/README.md",
+  "source": "design",
+  "status": "design",
+  "baseline": "44a679418aabd18b9c7528e896d02b7d02618f04",
+  "correction_commit": "cad2641bb01661195a40ee70d50666876c41303f",
+  "problem": "CP312 full checker verified518076 pins with0 unavailable but failed one CP307 metadata pin. Full-history selected an earlier competing CP307 from the L1 side branch; selected main record is the G1 publication atd2006a5. L1 was later renamed toCP310. The current record bytes remain unchanged.",
+  "change": "Preserve the first ordinary path-history publication when one exists. Only if no ordinary addition exists, use merge-parent full-history/no-renames/topological fallback. Never scan later candidates merely to find a matching blob. Both paths still authenticate declaration, external manifest and exact blob at the selected first publication.",
+  "checks": [
+    "70 checkpoint tests pass, including competing side-branch ID discarded by merge, merge-created record, rename, later wrong blob and broken external manifest negatives.",
+    "Focused verification CP307436pins,CP31065pins,CP3112160pins,CP31216pins all pass with0 unavailable. Full exact committed head and CI still required beforemerge."
+  ],
+  "verification": [
+    {
+      "path": "local/research/codex/cp312-exact-head-exit.json",
+      "bytes": 121,
+      "sha256": "8bebbac6b8c974620fa07a189d52da059e2909ce7dc147143fdb47c292109004"
+    },
+    {
+      "path": "local/research/codex/cp312-exact-head-full.txt",
+      "bytes": 220749,
+      "sha256": "c2545dc3cf3fe4fb34f6d582bec95df535214f41ae5fcbc3d02749a18d42e948"
+    },
+    {
+      "path": "local/research/codex/cp313-history-checker-tests.txt",
+      "bytes": 169,
+      "sha256": "abed77b2f7ccfcd387e768bbada3db4376bfc15f018891b3e5cd833cd659e02f"
+    },
+    {
+      "path": "local/research/codex/cp313-focused-verification.json",
+      "bytes": 2808,
+      "sha256": "2bb903a99c9906e3e38bbe809aa8a8ef6ee038922cb1c5538ec6d7d1cf6e4c43"
+    }
+  ],
+  "limits": [
+    "Keep CP310/CP311/CP312 records,evidence and audits immutable; both failed full checker receipts retained.",
+    "No Rust wire/runtime behavior or L1 acceptance changed; G1/M8 remain open."
+  ]
+}

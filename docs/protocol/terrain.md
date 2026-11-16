@@ -631,7 +631,8 @@ Getter emulation tách khỏi native; không có nghiệm thu Windows, Internet 
 
 [Bằng chứng seed và blocker ban đầu](../evidence/rust-service/g1-camp08-boundary.json) giữ Start/spawn/195 flags
 trên hai account KR/Wine, getter emulation và các run lỗi. Ô 12,11 có flag chặn dù candidate là ground, cạnh
-MissileBase; không suy footprint, durability hoặc đường nổ từ tên và phân loại từng ô. Terrain vẫn tắt, floor rỗng.
+MissileBase; không suy footprint hoặc đường nổ từ tên. Camp08 chỉ có các route private đã đo dưới đây; chưa mở
+preset gameplay tổng quát.
 
 [Đối chứng report122](../evidence/rust-service/g1-camp08-report122.json) đã so ô thường 6,0 với ô 6,2 từng được gắn
 nhãn tĩnh PinGround. Cả hai trả object `CGOTileGround` ở hai view; predicate lần lượt là `[0,FFFFFFFF]` và `[1,4]`.
@@ -671,5 +672,47 @@ Policy map-owned cancellation đã kiểm native hai account: mỗi vòng có m�
 không có 159/158 cho placement đó; bom thường trước và sau vẫn hoàn tất consumer ở cả hai view. Hai kết quả/reset
 và Start thứ ba đã chạy. Lượt đầu lỗi recipe do thử di chuyển B sau local effect gây nhốt/chết; raw giữ nguyên,
 lượt sau dùng A còn sống cho positive. Không suy toàn bộ tác động PinGround lên nhân vật hoặc response server gốc.
-StrongBox, terrain/floor/drop/item và đủ roster Camp08 còn mở;
+Các terrain/item và đủ roster Camp08 còn mở;
 [khoảng trống](../RESEARCH.md#gap-camp08-bomb-report) giữ phép nghiệm thu kế.
+
+[Thùng nhiều hit và route Rust](../evidence/rust-service/g1-camp08-durable-boxes.json) đã đo StrongBox01 tại `(7,2)`
+chặn sau bốn hit và hết chặn ở hit thứ năm; StrongBox02 tại `(8,3)` hết chặn ở hit thứ hai. Các hit dùng power 1 và
+ô đặt thường, cả hai view có đủ consumer 159/158. Actual object là `CGOTileMoveAbleBox` từ `E9FF80`;
+`B9F460` nạp dword TileInfo tại offset 24 vào protected counter `+0xD8`, 0 đổi thành 1. `B9FDD0(0)` giảm counter,
+chỉ xóa chặn khi về 0. Guard tĩnh `BA01C0` giữ giá trị từ 255 trở lên; variant này chưa kiểm runtime.
+Native initializer và từng counter trước/sau hit được đối chiếu riêng. Lớp game-box `B9C760/+0xC4` là ứng viên sai nhánh, không dùng để chứng nhận StrongBox.
+
+Terrain Rust thêm `box_hits` tùy chọn: vắng thì mỗi ô box có một hit như trước; có thì đủ 195 giá trị, box nhận
+1–254 và ô khác nhận 0. Đây là policy design hữu hạn. Mỗi callback hiện hành trừ một lần cho ô được ray đánh dấu,
+chỉ cấp clearance sau hit cuối đã gửi đủ mọi recipient; callback lặp hoặc timer của secondary đã xử lý không trừ
+thêm. Ray vẫn dừng tại thùng ở hit cuối, Start mới khôi phục seed/count và xóa clearance. Config vẫn ràng buộc map,
+seed và frame map/start. Ngân sách, queue, generation và membership guards giữ nguyên.
+
+Private route với binary mới đã qua hai vòng: hành vi 5/2 hit, hidden Bomb ở `(7,2)`, hidden Fire ở `(8,3)`,
+nhặt/165 ở hai view, power 1→2, bom thường, hai kết quả/reset và Start thứ ba. 18 bom thường hoàn tất consumer ở
+cả hai view; DB ghi hai trận hoàn tất và trận thứ ba hủy khi cleanup, thưởng 0. Hai item là dữ liệu test design,
+không phải xác suất drop server gốc. Seed của những ô khác chỉ đối chiếu cờ khởi tạo cho diagnostic này; không coi
+lượt đó là nghiệm thu Herb/Line/MissileBase/PinPillar hoặc toàn terrain/roster Camp08.
+
+Lượt tích hợp sau main chứa thay đổi L1/account-auth dùng binary mới, giữ cùng source kernel và client G1 949.
+Route hai vòng/item/kết quả/reset/Start kế được kiểm lại trên binary kết hợp; metadata giữ riêng hash hai service.
+211 tests trên source kết hợp đạt. Kết quả này không mở acceptance localization hoặc đổi wire client G1.
+
+[Đối chứng Herb và Line](../evidence/rust-service/g1-camp08-passable.json) đã tách khả năng đi qua của nhân vật
+khỏi tia nổ. Trên hai view, Herb01 `(0,2)`, Herb02 `(0,5)`/`(0,8)` và Line02 `(0,7)` đều trả
+`CGOTilePassable`. Tia power 2 từ `(0,6)` đi qua Line02 tới Herb02 `(0,8)`; Line vẫn tồn tại trong callback.
+Cờ seed và cờ sau nổ của Line02 bằng 0, nhưng A bị chặn khi đi từ `(0,6)` sang `(0,7)` sau lần nổ đó:
+35 mẫu cuối giữ tọa độ `(240,39)` dù có input Right. Vì vậy flag 0 hoặc type 3 không chứng minh đi qua tự do.
+Herb01 đã có ca đi vào khi còn nguyên; Herb02 `(0,5)` có ca đi vào trước lần nổ tại chính ô đó.
+
+Consumer tĩnh của lớp này phân biệt các nhóm byte trong TileInfo: `BA0860` đọc byte `24 + direction`;
+`BA0CE0` đọc `28 + direction`; `BA0E30` đọc `32 + direction`. `BA0D70` và `BA0EC0` đổi sang hướng đối diện
+trước khi gọi hai getter sau. Tia nổ đã biết đi qua `BA0F80`/`BA0FC0` tới nhóm 32–35; nhóm này đều bằng 1
+ở Herb và Line02 đã đo. Nhóm 24–27 bằng 1 ở Herb và 0 ở Line02; nhóm 28–31 của Line02 là `1,0,1,0`.
+Không dùng dword offset 24 làm footprint hoặc một scalar chung cho type 3. Ý nghĩa di chuyển của từng getter
+và đường thực thi tới quyết định chặn vẫn chưa có đối chứng native return đạt.
+
+Các lượt đối chứng tiếp bị lỗi trước khi tới negative Line hoặc trước khi cài probe direct. Giá trị wrapper dùng
+`FinishBreakpoint` lệch với body tĩnh không được dùng làm contract. Raw và nguyên nhân chưa rõ được giữ nguyên;
+không lặp route lỗi nếu chưa có điều kiện mới. Line01, hướng khác của Line02, footprint/ray MissileBase/PinPillar,
+route phục vụ hai vòng/reset và coverage roster/item vẫn mở; không mở preset Camp08 từ lát này.

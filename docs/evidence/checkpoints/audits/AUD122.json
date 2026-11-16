@@ -1,0 +1,93 @@
+{
+  "id": "AUD122",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-camp08-durable-box-kernel"
+  ],
+  "completed_through": "CP311",
+  "recorded_utc": "2026-11-15T19:50:45.973762+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/evidence/rust-service/g1-camp08-durable-boxes.json",
+    "docs/content/tile-semantics.md",
+    "docs/features.json",
+    "docs/COVERAGE.md",
+    "local/research/codex/g1-camp08-strongbox-hits-native-r1/hit-verification.json",
+    "local/research/codex/g1-camp08-actual-counters-native-r1/counter-verification.json",
+    "local/research/codex/g1-camp08-durable-serving-native-r2/serving-verification.json",
+    "local/research/codex/g1-durable-main-merge-source-verification.json",
+    "local/research/codex/g1-camp08-durable-serving-native-r2/build-source-identity-verification.json",
+    "docs/content/client-language.md",
+    "rust/crates/kr-service/src/account_serving.rs",
+    "rust/crates/kr-wire/src/kr00967/account.rs",
+    "local/research/codex/g1-durable-branch-reconciliation.json"
+  ],
+  "method": "Đọc README → PLAN → PROTOCOL → RESEARCH và đối chiếu evidence/raw. Kiểm tám record khởi tạo của lớp thực tế, dữ liệu TileInfo 72 byte và counter +0xD8 giảm từng hit ở hai view. Loại nhánh game-box/+0xC4 khỏi contract StrongBox vì probe không hit và lookup E9FCF0 trả null; object thực tế qua E9FF80 là CGOTileMoveAbleBox. Đối chiếu bốn body của batch đúng lớp và không gán offset 24 làm footprint chung. Đọc kernel Rust, kiểm 211 tests, clearance sau gửi đủ recipient, chain, reset và stale controls. TCP/native có 18 bom và bốn pickup/165 mỗi view, hai rank/return, ba clock; DB ghi hai trận hoàn tất và trận thứ ba hủy. Giữ nguyên lỗi startup và các probe không bắt được mẫu; không suy server gốc, xác suất drop, toàn map/roster hoặc G1/M8.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Initializer của game-box và counter +0xC4 có thể bị nhầm là contract StrongBox.",
+      "correction": "Native E9FCF0 trả null; object thực tế qua E9FF80 là CGOTileMoveAbleBox. B9F460 nạp data+24 vào counter +0xD8, B9FDD0 giảm counter. Các giá trị trước/sau đã đo trực tiếp; không dùng nhánh ứng viên sai.",
+      "fixed_in": [
+        "docs/protocol/terrain.md#rust-camp08-boundary",
+        "docs/evidence/rust-service/g1-camp08-durable-boxes.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Offset 24 của TileInfo có thể bị dùng làm chiều rộng mọi loại tile.",
+      "correction": "Ý nghĩa phụ thuộc type: type 2 ở consumer đã đo dùng counter 5/2. Không suy footprint hoặc MissileBase từ thùng.",
+      "fixed_in": [
+        "docs/content/tile-semantics.md",
+        "docs/RESEARCH.md#gap-camp08-bomb-report"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "195 flags và route thùng có thể bị hiểu là nghiệm thu toàn Camp08.",
+      "correction": "Chỉ route hai loại thùng, item ẩn thiết kế và hai vòng/reset được kiểm. Herb/Line/MissileBase/roster còn mở. Config cũ giữ một hit, config mới hữu hạn là design.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/evidence/rust-service/g1-camp08-durable-boxes.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Lỗi IDA 1228 và startup Wine có thể bị bỏ qua.",
+      "correction": "Giữ logs lỗi provider, dùng copy của DB tham chiếu khác. Lượt dispatch đầu lỗi trước clock có 55 raw đã seal; retry prefix riêng đạt. Không sửa DB/client nguồn hoặc cấu hình provider.",
+      "fixed_in": [
+        "local/research/codex/g1-camp08-strongbox-static-r1/db-load-failure.json",
+        "local/research/codex/g1-camp08-strongbox-dispatch-native-r1/failure-verification.json"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "source_commit trong preflight có thể bị hiểu là commit của worktree build.",
+      "correction": "Field này là HEAD checkout điều phối 0805fea. Baseline thực tế của binary kết hợp là cd4f82a cộng đúng source diff; source-identity, snapshots và build/test receipts đã pin và đối chiếu riêng. Không sửa field của run đã launch.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-camp08-durable-boxes.json",
+        "local/research/codex/g1-camp08-durable-serving-native-r2/build-source-identity-verification.json"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "CP310 được sử dụng đồng thời trên nhánh G1 và nhánh L1 đã merge.",
+      "correction": "Giữ nguyên CP310 L1 trên main và commit 0805fea/PR425 của G1. Nhánh tích hợp bắt đầu từ main cd4f82a, append CP311. Kernel byte-identical; account/auth từ main được giữ, 211 tests và một lượt native kết hợp đã kiểm.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-camp08-durable-boxes.json",
+        "local/research/codex/g1-durable-branch-reconciliation.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Herb/Line/MissileBase/PinPillar và coverage Camp08 về route/roster/item; Tomb12 và G1/M8 theo PLAN.",
+    "Guard bất tử từ 255 trở lên mới có bằng chứng tĩnh; server chỉ nhận 1–254 là design hữu hạn.",
+    "Không đổi chính sách thưởng hoặc xác suất drop. Native chỉ gồm hai account trong Wine/LAN, chưa kiểm Internet hoặc tải."
+  ]
+}

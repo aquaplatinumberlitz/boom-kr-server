@@ -1,0 +1,47 @@
+{
+  "id": "AUD123",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP312",
+  "recorded_utc": "2026-11-15T20:35:47.675419+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/merge-publication-correction.json",
+    "tools/check_checkpoints.py",
+    "tools/test_checkpoint_source_history.py",
+    "local/research/codex/cp311-exact-head-full.txt",
+    "local/research/codex/cp310-local-pin-restoration.json",
+    "local/research/codex/cp312-cp310-restored-verification.json",
+    "local/research/codex/cp312-immutability-verification.json"
+  ],
+  "method": "Đối chiếu lần full checker exit1 với 49 file gốc của L1 và pin metadata tại fae6adc. Đọc README → PLAN → PROTOCOL → RESEARCH, code tra lịch sử và hai ca merge/rename. Xác nhận record/evidence CP310/CP311 và AUD122 không đổi; không sửa L1 hoặc runtime. Phân biệt kiểm riêng 65 pin và 69 tests với full checker exact head còn phải chạy.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Checker không thấy lần tạo record ngay trong merge commit.",
+      "correction": "Xét full history/diff từng parent/no-renames theo topo; vẫn yêu cầu exact declaration, manifest và blob tại lần đầu thêm record.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "tools/test_checkpoint_source_history.py",
+        "docs/evidence/checkpoints/README.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "49 raw CP310 chưa có tại canonical local; không được miễn hoặc giả là đã xác minh.",
+      "correction": "Copy đúng size/SHA từ worktree gốc. Giữ nguồn và tất cả record/raw đã công bố; focused CP310 đạt 65 pin, không unavailable.",
+      "fixed_in": [
+        "local/research/codex/cp310-local-pin-restoration.json",
+        "docs/evidence/checkpoints/merge-publication-correction.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "CI và full checker trên head cuối trước merge PR426.",
+    "G1 tiếp Herb/Line, terrain/roster/item còn thiếu và Tomb12; M8 theo PLAN."
+  ]
+}

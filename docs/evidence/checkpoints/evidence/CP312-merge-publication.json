@@ -1,0 +1,117 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "MERGE312-001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3729,
+      "sha256": "36219d888a34b41bd90430285f3c06344b586c71cf88b5d057852166e233e878"
+    },
+    {
+      "id": "MERGE312-002",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 158304,
+      "sha256": "e9892afbfe7f5d2e5d639830dd8134ef1ee271f9ffc959ac8c6bfc586169f410"
+    },
+    {
+      "id": "MERGE312-003",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 82943,
+      "sha256": "df3534f7bba73516384de64f8ea1d0532811b739e47c838ea29df6aaa6cd1903"
+    },
+    {
+      "id": "MERGE312-004",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/README.md",
+      "bytes": 18881,
+      "sha256": "d77e74d97c69e418d5052c8c899281b16d625ce9c0e698add32df1a58821ffdb"
+    },
+    {
+      "id": "MERGE312-005",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/merge-publication-correction.json",
+      "bytes": 2495,
+      "sha256": "2a66cdc71e6c5453203bd0cf7e16706d3395561a72ee1c1e87122047d4959cec"
+    },
+    {
+      "id": "MERGE312-006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD123.json",
+      "bytes": 2291,
+      "sha256": "4b1782730d47c82d7a32bec5e7182447e19bc59c52251e8b463e9ecf2bae0f44"
+    },
+    {
+      "id": "MERGE312-007",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 37164,
+      "sha256": "28eee2f3e39d57e04dae4da5cb4d722eab38d3e0c4d4441a1d874a3131ffee56"
+    },
+    {
+      "id": "MERGE312-008",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 14565,
+      "sha256": "74aaf7a44dfda47c4d13377c2cde449c7628406c763d34441ac8579ea81d4498"
+    },
+    {
+      "id": "MERGE312-009",
+      "kind": "local",
+      "path": "local/research/codex/append_cp312_merge_publication.py",
+      "bytes": 7930,
+      "sha256": "488cca844ee9022aca932bc97c29cacc9e42d878edd0505754ec5b1039cf9330"
+    },
+    {
+      "id": "MERGE312-010",
+      "kind": "local",
+      "path": "local/research/codex/cp311-exact-head-full.txt",
+      "bytes": 223778,
+      "sha256": "fa1e544905bf4173f81d4912bd4d0001ef4572fb69954ae9eec1c6562f921fc7"
+    },
+    {
+      "id": "MERGE312-011",
+      "kind": "local",
+      "path": "local/research/codex/cp311-exact-head-exit.json",
+      "bytes": 121,
+      "sha256": "4cadbc167c27c30586720fe20946a16934e586a0e612c9ac6b574c5591619884"
+    },
+    {
+      "id": "MERGE312-012",
+      "kind": "local",
+      "path": "local/research/codex/cp310-local-pin-restoration.json",
+      "bytes": 13625,
+      "sha256": "6fe7664da7034495c96a34c7f98efa7299eb7aa0d869814c8f80e9bd140b6c25"
+    },
+    {
+      "id": "MERGE312-013",
+      "kind": "local",
+      "path": "local/research/codex/cp312-cp310-restored-verification.json",
+      "bytes": 1227,
+      "sha256": "92fe56a3aa55b72de3d56e5f628b9b9b98688e3af123f68d22f3428768645c06"
+    },
+    {
+      "id": "MERGE312-014",
+      "kind": "local",
+      "path": "local/research/codex/cp312-history-checker-tests.txt",
+      "bytes": 168,
+      "sha256": "09f2a6541f55690cbe0434f3105892bde66353252069f1d9fb570701de2a1a6e"
+    },
+    {
+      "id": "MERGE312-015",
+      "kind": "local",
+      "path": "local/research/codex/cp312-immutability-verification.json",
+      "bytes": 1273,
+      "sha256": "d6706fb345cff2e6bceccef3f6bab1eb26099697e8692f36337ec4d7aae30760"
+    },
+    {
+      "id": "MERGE312-016",
+      "kind": "local",
+      "path": "local/research/codex/cp312-docs-precheck.txt",
+      "bytes": 274,
+      "sha256": "8fa75da725bf4e0c1244f4f8b32c0481b0e072c0e2aceeb847758e990a62adc3"
+    }
+  ]
+}

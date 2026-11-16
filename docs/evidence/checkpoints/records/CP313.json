@@ -1,0 +1,236 @@
+{
+  "id": "CP313",
+  "previous": "CP312",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-16T11:30:59.869666+00:00",
+  "context_commit": "cad2641bb01661195a40ee70d50666876c41303f",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Camp08 Herb/Line: tách ray và movement bằng native tối thiểu; sửa selected publication khi có va chạm checkpoint ID mà không đổi lịch sử.",
+  "scope": "Quan sát Camp08 giới hạn, nguồn tĩnh các nhóm byte và sửa checker tích hợp; chưa hoàn tất Camp08/G1.",
+  "artifacts": [
+    {
+      "name": "client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "service",
+      "sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-camp08-boundary",
+    "docs/evidence/rust-service/g1-camp08-passable.json",
+    "docs/evidence/checkpoints/side-publication-correction.json",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Line02 tại0,7 là CGOTilePassable và flag 0, nhưng chặn A từ 0,6. Tia power 2 đi qua tới Herb02 tại0,8 ở hai view. r1 có 7 bom hoàn tất mỗi view rồi dừng có lỗi ở tiếp cận root8.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "PASS313-0302",
+        "PASS313-0010"
+      ],
+      "limits": "Quan sát giới hạn, overall run exit 1; không direct predicate hoặc map/reset/roster acceptance."
+    },
+    {
+      "summary": "Herb01 có positive đi vào khi còn nguyên ở r3/r4. Hai lượt không tới negative Line; wrapper FinishBreakpoint return mâu thuẫn và direct probe chưa cài không được dùng làm contract.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "PASS313-0437",
+        "PASS313-0575"
+      ],
+      "limits": "Giữ lỗi/ràng buộc từng phép đo; nguyên nhân crash chưa rõ, không retry cùng route thiếu điều kiện mới."
+    },
+    {
+      "summary": "CGOTilePassable có getter BA0860 đọc byte 24+direction, BA0CE0 đọc 28+direction và BA0E30 đọc 32+direction; ray dùng nhóm cuối. Không diễn giải type 3 thành footprint/scalar chung.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "PASS313-0738",
+        "PASS313-0723",
+        "PASS313-0711"
+      ],
+      "limits": "Nguồn tĩnh, native direct return chưa đạt; tên/seed/correlation không chứng minh mọi hướng/map."
+    },
+    {
+      "summary": "Checker giữ selected ordinary publication và fallback merge khi thiếu;70 tests và focused CP307/310/311/312 đạt. Không sửa record/evidence đã công bố hoặc nhận blob muộn để cứu pin.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "evidence": [
+        "PASS313-0009",
+        "PASS313-0016",
+        "PASS313-0018"
+      ],
+      "limits": "Full exact head và CI vẫn bắt buộc trước merge; không nâng gate KR."
+    }
+  ],
+  "verification": [
+    {
+      "check": "r1 bảy bom/Line ray và movement; freshHerb trongr3/r4, raw/cleanup",
+      "result": "observed",
+      "evidence": [
+        "PASS313-0010",
+        "PASS313-0020"
+      ],
+      "limits": "Mọi run exit 1; không toàn route hoặc direct getter return acceptance."
+    },
+    {
+      "check": "Full checker CP312 trên 44a6794",
+      "result": "fail",
+      "evidence": [
+        "PASS313-0015",
+        "PASS313-0014"
+      ],
+      "limits": "518076 verified, 0 unavailable, 1 error CP307 publication trước sửa; giữ nguyên lần lỗi."
+    },
+    {
+      "check": "70 tests checkpoint/focused 2677 pins và immutability",
+      "result": "pass",
+      "evidence": [
+        "PASS313-0016",
+        "PASS313-0018",
+        "PASS313-0020"
+      ],
+      "limits": "Cần full checker/CI trên committed head cuối."
+    },
+    {
+      "check": "Docs/catalog/diff/audit",
+      "result": "pass",
+      "evidence": [
+        "PASS313-0017",
+        "PASS313-0008"
+      ],
+      "limits": "Audit hoàn tất nhómchecker, không hoàn tất terrain G1."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP313-camp08-passable.json",
+      "bytes": 309256,
+      "sha256": "2b4141ba4f7ebfeb501fd7e1c756961bc071750c467afffcba996f535abdb948",
+      "count": 1135
+    }
+  ],
+  "delta": {
+    "added": [
+      "Herb positive và Line02 ray/movement observations và nguồn ba nhóm byte theo hướng."
+    ],
+    "corrected": [
+      "Không coi type 3/flag 0 là đi qua tự do.",
+      "Giữ selected publication CP307 thay vì ID cũ nhánh phụ;70 tests âm và focused pins đạt."
+    ],
+    "superseded": [
+      "Giả định route có thể đi vào Line02 từ 0,6; không mở preset map."
+    ]
+  },
+  "blockers": [
+    "All four runs have exit1 and sealed raw/namespace cleanup. r1 has7complete bombs/view and Line02 ray/blocked movement observations; r3/r4 have intactHerb01 positive before first bomb.",
+    "Terrain prediction disabled and Fire700 is a designed power2 control; not original drop or server authority. No two-round/reset/native roster or serving terrain extension.",
+    "FinishBreakpoint wrapper returns inr3 contradict static boolean helper and are excluded from contract. Direct epilogue inr4 never installed before failure,so no direct getter runtime return claim.",
+    "Line01 and other directions, MissileBase/PinPillar, broader terrain/roster/item and G1/M8 remain open. Route crash root cause unknown; do not repeat without changed condition."
+  ],
+  "completed_feature_groups": [
+    "checkpoint-merge-and-side-publication-integration"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Full checker trên exact head, CI và merge; tiếp MissileBase/PinPillar độc lập và G1 theo PLAN. Không retry Line thiếu điều kiện mới hoặc tiếp L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-16T11:30:59.869666+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo sửa checker/RE Camp08 và audit. Không toàn route, direct getter native, G1/M8 hoặc nghiệm thuL1.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/content/tile-semantics.md",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-camp08-passable.json",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/evidence/checkpoints/side-publication-correction.json",
+      "state": "updated",
+      "reason": "Đồng bộ quan sát/giới hạn Camp08 hoặc sửa checker và mốc hiện hành."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Mục lục đã có terrain; contract cập nhật đúng chủ đề, không đổi wire."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Giữ quy trình, phạm vi và owner L1."
+    }
+  ]
+}
