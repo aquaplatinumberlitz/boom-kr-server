@@ -124,6 +124,8 @@ typedef long(__attribute__((stdcall)) * imm_t)(void *, unsigned, void *, unsigne
 typedef void *(__attribute__((stdcall)) * gmh_t)(const char *);
 typedef void *(__attribute__((stdcall)) * gpa_t)(void *, const char *);
 peek_t orig_peeka, peekw;
+typedef int(__attribute__((stdcall)) * translate_t)(msg_t *);
+static translate_t translate;
 imm_t orig_imma, orig_immw;
 static u16 inj_char;
 static int inj_active;
@@ -169,6 +171,17 @@ __attribute__((stdcall)) int hook_peeka(msg_t *m, void *hwnd, unsigned fmin, uns
         }
     }
 #endif
+    if (r && (flags & 1) && (m->message == 0x100 || m->message == 0x101) && m->wParam == 0xE7) {
+        /* VK_PACKET mang ký tự Unicode ở HIWORD(lParam); client đọc phần đó như scan code nên một số ký tự
+         * (vd 하 -> 0x58) kích phím tắt trong phòng và khóa ô nhập (CInputMan+0x24 qua 0xB916D0). Tự dịch
+         * phím này ở đây để sinh WM_CHAR, rồi giao cho game WM_NULL thay cho phím. */
+        if (m->message == 0x100 && translate) translate(m);
+        trace('K', m->message, (unsigned)m->lParam, 0);
+        m->message = 0;
+        m->wParam = 0;
+        m->lParam = 0;
+        return r;
+    }
     if (r && m->message == 0x102 && m->wParam >= 0x80 && m->wParam <= 0xFFFF &&
         !(m->wParam >= 0xD800 && m->wParam <= 0xDFFF)) {
         l10n_stats[2]++;
@@ -309,6 +322,7 @@ void l10n_init(void) {
     orig_mb2wc = (mb2wc_t)*SLOT_MB2WC;
     orig_wc2mb = (wc2mb_t)*SLOT_WC2MB;
     orig_peeka = (peek_t) * (void **)IAT_PEEKMESSAGEA;
+    translate = (translate_t) * (void **)IAT_TRANSLATEMESSAGE;
     orig_imma = (imm_t) * (void **)IAT_IMMGETCOMPOSITIONSTRINGA;
     orig_immw = (imm_t) * (void **)IAT_IMMGETCOMPOSITIONSTRINGW;
     peekw = user32 ? (peek_t)((gpa_t) * (void **)IAT_GETPROCADDRESS)(user32, "PeekMessageW") : 0;
