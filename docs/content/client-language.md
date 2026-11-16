@@ -191,7 +191,7 @@ Bộ Hàn UTF-8 qua 949x hiện như dữ liệu gốc ở client A của vi-04 
 **Font: bộ VN cho nhãn, Gulim 12×12 gọn cho ô nhập.** Bộ font VN của PopTag (`CxUni`/`CxUniBold` 12×16) giữ đủ dấu chồng
 của chữ hoa (`Ệ`, `Ố`, `Ầ`), còn hình mượn từ `CxUni` KR 12×12 thì mất dấu mũ của `Ệ` và dính dấu ở `ế`. Engine 00967 đọc
 khổ cao từ header nên nạp được bộ này cho nhãn. Ô nhập và ô chọn người nhận của layout KR chỉ cao 12 điểm nên cắt hàng
-dưới của Gulim VN 15/16 hàng (mất dấu nặng, đuôi `g`); client VN không bị vì ô nhập của bản đó có font cao hơn (không phải do khổ 1024×768; xem [phóng to cửa sổ](#window-scale)). Vì
+dưới của Gulim VN 15/16 hàng (mất dấu nặng, đuôi `g`); ảnh client VN đã lưu không thấy cắt, chưa rõ vì sao (không phải do khổ 1024×768; xem [phóng to cửa sổ](#window-scale)). Vì
 vậy `tools/l10n_949x.py vnfonts` dựng `CxUniGulim`/`CxUniGulimBold` 12×12: chữ Hàn/CJK lấy từ Gulim KR, chữ Latin/Việt lấy
 từ Gulim VN, giữ 10 hàng thân và chân chữ, gộp vùng dấu phía trên vào 2 hàng, viền sinh lại bằng giãn 8 hướng (đúng cách
 file font KR lưu viền). Chữ Hàn ở `CxUni` VN lấy advance của font KR. Cách mượn hình vào Gulim KR (`fonts`) giữ làm dự phòng.
