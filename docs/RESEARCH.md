@@ -169,14 +169,14 @@ trên ledger. Bộ đếm thùng là dữ liệu type2 đã đo, không phải f
 Herb01/02 và Line02 đã có [đối chứng riêng](protocol/terrain.md#rust-camp08-boundary): tia đi xuyên Line02 nhưng
 nhân vật bị chặn, trong khi flag bằng 0. Getter tĩnh tách byte 24–27, 28–31 và 32–35; không dùng type 3 hoặc
 seed để gán mọi ô đi qua tự do. Đối chứng DB tmpfs đã có fresh Herb positive, intact Line negative và direct getter
-`BA0860` trả 0 ở hai view, khớp byte 24–27; wrapper return mâu thuẫn trước vẫn bị loại. Line01 và hướng khác còn mở.
-Không lặp route lỗi thiếu điều kiện mới; không suy durability hoặc sửa production từ một lượt tmpfs đạt.
+`BA0860` trả 0 ở hai view, khớp byte 24–27; wrapper return mâu thuẫn trước vẫn bị loại. Line01 đã có ray đi xuyên
+tới thùng kế bên ở hai view; chưa đo trực tiếp actor/getter đi vào Line01, các hướng khác còn mở. Không lặp route lỗi
+thiếu điều kiện mới hoặc suy durability từ tmpfs.
 
-Footprint khởi tạo ba `CGOTileStatic` đã đo: hai PinPillar 1×1 và MissileBase 2×1, kể cả ô 12,11. Ray/covered-cell MissileBase và hai PinPillar có hard-stop native, kể cả tám view/spawn gốc. Tiếp Line01 và serving
-Camp08 hai vòng/reset với terrain/item/roster; không lặp initializer hoặc bốn ô static đã đạt.
-Những ô chưa đo không được chứng nhận chỉ bằng seed hoặc route khác. Tiếp floor/drop/item, coverage roster Camp08 rồi
-Tomb12 theo PLAN; không mở map tổng quát khi còn thiếu. Policy thùng hữu hạn giữ rõ khác server gốc,
-chain/queue/multiroom và stale controls tự động không được báo thành native rộng hơn. L1 vẫn do Claude phụ trách.
+Footprint và ray của ba `CGOTileStatic`, gồm ô phủ MissileBase, đã có bằng chứng riêng trong contract. Route
+StrongBox/hidden Bomb/Fire tám account đã qua hai vòng/reset và Start kế; lượt sai căn vị trí được giữ riêng.
+Tiếp floor/drop/item và coverage roster Camp08, rồi Tomb12 theo PLAN; không lặp initializer, Line01 ray hoặc các
+route đã đạt. Những ô chưa đo không được chứng nhận bằng seed. Policy thùng hữu hạn khác server gốc; controls chain/queue/multiroom tự động không là native rộng hơn. L1 vẫn do Claude phụ trách.
 
 Log hai lượt lỗi có account `Backend(QueueExpired)` trước return/reset và lỗi observer đọc actor cũ; worker có mẫu
 `wait_current_trans` gần đó. Đối chứng cùng route trên DB tmpfs đạt; nguyên nhân sâu/storage budget vẫn candidate,

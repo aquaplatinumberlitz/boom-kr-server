@@ -1,0 +1,127 @@
+{
+  "schema": "kre-g1-camp08-serving-roster-v1",
+  "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Line01 ray-to-box control and eight-account Camp08 StrongBox/hidden Bomb/Fire serving route through two results/reset and third start.",
+  "service_sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192",
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-camp08-line01-native-r1/ray-verification.json",
+      "bytes": 12189,
+      "sha256": "8be7f2a07a19959fc854b73c9ffb4e0002960a261a422c55bc0900b1af571c28"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-line01-native-r1/verifier-correction.json",
+      "bytes": 1017,
+      "sha256": "d504e0fc099d26cd8b248c7df3aba42731f68f539bbb8943e21927dc1210037a"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving8-native-r2/serving-verification.json",
+      "bytes": 37494,
+      "sha256": "669e0194be64b613017e150a63fc386b49c3085fc0f6e097b487ba5fd774fd51"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving8-native-r1/failure-verification.json",
+      "bytes": 2533,
+      "sha256": "e4eba3e901e02737ef082f80844b804df3cf2ec10a221a2385f5796bc4a75061"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving-r1/reuse.json",
+      "bytes": 2677,
+      "sha256": "18e4936618cecd50832e72dd013f1509991409dbff49e468cf103bbf8116c389"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving-r1/line01-route-review.json",
+      "bytes": 4043,
+      "sha256": "891a6716c415490bea6fdf31d815cc6d1aefbbae5726fdc0d6bda6040974fd47"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving-r1/serving8-prelaunch-model-control.json",
+      "bytes": 293,
+      "sha256": "95ebae9be1a8b455f9debb3aab82793e4d1b2177c1b8ba8d57168b72390e1c6a"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-line01-native-r1/native/raw-seal.json",
+      "bytes": 29589,
+      "sha256": "a55d5e20472baf6ac0bd3520182337535b2d53fd3bf4dc9f6bec2569e8230df3"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-line01-native-r1/native/runtime-preflight.json",
+      "bytes": 219406,
+      "sha256": "e73855244804e29fc504e589af0b0ac266eac4ef8ccb85f36aab3ef38f4deea0"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-line01-native-r1/native/recipe.json",
+      "bytes": 1231,
+      "sha256": "595c17508a78738cad963d35f6cc84298274591ae8937864eadc2162d3677038"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving8-native-r2/native/raw-seal.json",
+      "bytes": 184788,
+      "sha256": "3d4f77c94bbdfb2d1a0fa12105815fac83105c3b774866a3748d59b73779f0dd"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving8-native-r2/native/runtime-preflight.json",
+      "bytes": 786224,
+      "sha256": "542393a74498733f7bca9a727068a26108caaa2f09a56ed0833351e663c05c66"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving8-native-r2/native/recipe.json",
+      "bytes": 1239,
+      "sha256": "ffafb3eef1034f109c96fbf02a3e8f4bb29f96b93c7a13d022108984aac1cf52"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving8-native-r1/native/raw-seal.json",
+      "bytes": 93513,
+      "sha256": "af1415170fc66210ead265d0eb220bd7ca6b41aebdc7a2fe103770d1af36db24"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving8-native-r1/native/runtime-preflight.json",
+      "bytes": 782122,
+      "sha256": "aa9026dec17d3712fafc9292512868cfc37d1ae2ace5807094e502ebeb41bbd9"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving8-native-r1/native/recipe.json",
+      "bytes": 1239,
+      "sha256": "af0aff949b9d822c3b3de5ec5421fb98a06188ab29e57a4e79740b72ae0457a9"
+    }
+  ],
+  "runs": [
+    {
+      "name": "g1-camp08-line01-native-r1",
+      "run_sha256": "e4c7174d5d1f4bcf93d6dcf0d529d271ec86f0b7dfcb74bab4281cbfe163a479",
+      "raw_files": 130,
+      "preflight_files": 534,
+      "returncode": 0
+    },
+    {
+      "name": "g1-camp08-serving8-native-r1",
+      "run_sha256": "257b7008c7a162eb9c423c1cb1a2ad4610bcde4f31870db7ce669f6fe3416bc8",
+      "raw_files": 417,
+      "preflight_files": 1951,
+      "returncode": 1
+    },
+    {
+      "name": "g1-camp08-serving8-native-r2",
+      "run_sha256": "1a8745cc60e21d21713e6f722d83c16569d168e1f856b5b6f27cd9059380c62c",
+      "raw_files": 800,
+      "preflight_files": 1959,
+      "returncode": 0
+    }
+  ],
+  "measured": {
+    "line01": "Eight power2 bombs in two native views; final root1,6 crosses CGOTilePassable at1,7 to box1,8. Line cell state1/result1, box state2/result0 and flag1to0. Actor entry/getter of Line01 not directly measured.",
+    "serving8": "24 actual118 placements from correct owners and original8spawns across two rounds. All8views complete159/158, rank/return/reset and thirdclock. Independent finite-hit ray model compares all195flags at51snapshots per view. Four pickup165 packets delivered per channel; owner power1to2 and reset checked; no new general165/peer-stat consumer claim.",
+    "failed8": "First run had six valid bombs, but two actual118 roots were8,1 instead of planned7,1. All eight-view flags match actual-root model; StrongBox01 has two hits remaining. Alignment tolerance8px permitted row324 then row339 after turning. New harness uses2px, smaller final pulses and center rechecks.",
+    "storage": "Output512MiB and copied DB32MiB mode0700 tmpfs, closed children then export size/SHA and unmount. Storage isolation only; service/network/DB timeouts unchanged. Controller900s/wrapper1200s are bounded experiment budgets based on measured8-client setup and route.",
+    "verifier": "Original frozen Line01 verifier expected result1 at box1,8; correction retained separately uses state2/result0 with accepted ray step and flag1to0. No raw/source rewrite."
+  },
+  "limits": [
+    "Only the measured Line01 ray direction and chosen StrongBox route. No direct Line01 actor-entry/getter proof or every Camp08 terrain interaction, roster or item.",
+    "Two designed hidden basic items and finite-hit policy; no original drop distribution, original server authority or wider item/character acceptance.",
+    "Output/DB tmpfs is diagnostic storage. Journal rows are behavior in this run, not crash durability, Internet deployment, load, backup/restore or M8.",
+    "Camp08 broader terrain/roster coverage, Tomb12, remaining G1 item groups and characters still follow PLAN; G1 and phase1 are not closed."
+  ]
+}

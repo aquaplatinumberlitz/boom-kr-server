@@ -33,10 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP315: ray đã chặn tại cả hai PinPillar, anchor và ô phủ MissileBase trên client KR.**
-[Contract và giới hạn](docs/protocol/terrain.md#rust-camp08-boundary) giữ route hai/tám view, cờ static và các lượt lỗi;
-Camp08 serving hai vòng/reset, Line01 và nội dung còn lại vẫn mở.
-G1 tiếp terrain Camp08 còn thiếu theo [Bảng điều hành](docs/PLAN.md#dashboard); L1 giữ [kết quả một phần của Claude](docs/content/client-language.md#utf8).
+**CP316: Camp08 có Line01 ray và route StrongBox/Bomb/Fire tám account qua hai vòng/reset.**
+[Contract và giới hạn](docs/protocol/terrain.md#rust-camp08-boundary) giữ actual input, mọi cờ terrain và Start kế;
+coverage Camp08 còn lại, Tomb12, item/nhân vật và M8 vẫn mở theo [Bảng điều hành](docs/PLAN.md#dashboard).
+L1 tiếp tục do Claude phụ trách.
 
 ## Bắt đầu
 

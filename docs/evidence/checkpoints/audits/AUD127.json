@@ -1,0 +1,63 @@
+{
+  "id": "AUD127",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-camp08-line01-and-eight-account-serving-route"
+  ],
+  "completed_through": "CP316",
+  "recorded_utc": "2026-11-16T16:26:24.876596+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/content/tile-semantics.md",
+    "docs/evidence/rust-service/g1-camp08-serving-roster.json",
+    "local/research/codex/g1-camp08-line01-native-r1/ray-verification.json",
+    "local/research/codex/g1-camp08-line01-native-r1/verifier-correction.json",
+    "local/research/codex/g1-camp08-serving8-native-r1/failure-verification.json",
+    "local/research/codex/g1-camp08-serving8-native-r2/serving-verification.json",
+    "local/research/codex/g1-camp08-serving8-native-r2/native/cycles/run.json",
+    "local/research/codex/g1-camp08-serving8-native-r2/manual-ui-review.json"
+  ],
+  "method": "Đọc README → PLAN → PROTOCOL → RESEARCH, đối chiếu actual C2S118, consumer159/158, ray/cell và flags từng view. Kiểm Line01 pass tới ô thùng có state2/result0 cùng cờ1→0; không lấy tên hoặc seed làm actor-entry proof. Route tám account có24 bom,4 pickup165 mỗi channel,2 rank/return và3 clock,51 snapshot × 195 cờ mỗi view so model độc lập. Đọc journal hai complete và trận thứ ba cancelled, reward 0 và export/unmount/namespace cleanup. Giữ run sai tọa độ và verifier frozen ban đầu; không suy toàn map hoặc M8. Ảnh kết quả A và third-clock H đã được xem trực tiếp: tám tên, bốn thua/bốn thắng, thưởng0, map và nhân vật/spawn hiện lại; overlay tutorial giữ nguyên, không suy từ ảnh thay native rows/flags.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Bộ kiểm Line01 ban đầu kỳ vọng ô thùng trả result1.",
+      "correction": "Giữ nguyên verifier frozen; bản kiểm hậu nghiệm yêu cầu state2/result0, bước ray và cờ1→0. Giới hạn phân biệt static/box được ghi contract.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-camp08-serving-roster.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Route tám account đầu có thể bị gọi sai là lỗi terrain hoặc thiếu hit không rõ nguyên nhân.",
+      "correction": "Actual118 có hai bom8,1; model khớp toàn cờ trên8 view, thùng7,2 còn 2 hit. Siết căn tâm và pulse harness trong run mới; không sửa core/timeouts.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-camp08-serving-roster.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Một số đoạn contract còn nói ray static chưa đo và route tám account/reset còn thiếu.",
+      "correction": "Đồng bộ tại chủ đề Camp08, dashboard và research. Không mở toàn map/roster/item hoặc suy độ bền từ tmpfs.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/protocol/terrain.md",
+        "docs/RESEARCH.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Coverage terrain/roster Camp08 ngoài các route đã đo, rồi Tomb12 và nhóm item/nhân vật theo PLAN.",
+    "M8 còn Internet mới, đóng gói,50 người/8 phòng,storage/log budgets,backup/restore; tmpfs diagnostic không là nghiệm thu lưu bền.",
+    "L1 do Claude sở hữu, không đổi wire hoặc source L1."
+  ]
+}
