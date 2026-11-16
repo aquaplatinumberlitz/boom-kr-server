@@ -21,6 +21,9 @@ impl Policy {
     pub(crate) fn enabled(self) -> bool {
         self == Self::ReportDerivedBasic
     }
+    pub(crate) fn allows(self, kind: u16) -> bool {
+        self.enabled() && matches!(kind, 0..=2 | 5)
+    }
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -36,6 +39,22 @@ pub(crate) struct Catalog {
     hidden: BTreeMap<u32, Item>,
 }
 impl Catalog {
+    /// MaxPower changes the server's current per-character power projection.
+    /// Refuse it before bind when that measured projection is not enabled.
+    pub(crate) fn validate_stat_policy(&self, policy: Policy) -> io::Result<()> {
+        if !policy.allows(5)
+            && self
+                .floor
+                .values()
+                .chain(self.hidden.values())
+                .any(|item| item.kind == 5)
+        {
+            return Err(io::Error::other(
+                "MaxPower floor requires measured character-item policy",
+            ));
+        }
+        Ok(())
+    }
     pub(crate) fn validate_needle(&self, enabled: bool) -> io::Result<()> {
         let count = self
             .floor
@@ -85,10 +104,10 @@ impl Catalog {
                 at += 10;
                 let index = u32::from_le_bytes(row[..4].try_into().expect("bounded"));
                 let kind = u32::from_le_bytes(row[6..10].try_into().expect("bounded"));
-                // This fixed ExVillage01 slice only advertises Bomb/Fire/Roller.
+                // Only measured stat items and the separate needle policy.
                 if row[4] >= 13
                     || row[5] >= 15
-                    || !matches!(kind, 0..=2 | 145)
+                    || !matches!(kind, 0..=2 | 5 | 145)
                     || !indices.insert(index)
                     || indices.len() > 64
                 {
@@ -440,10 +459,24 @@ pub(crate) mod tests {
         assert_eq!(cat.floor.len(), 1);
         assert_eq!(cat.hidden.len(), 1);
         assert!(!cat.floor.contains_key(&27));
+        for groups in [
+            [vec![(17, 4, 3, 5)], vec![], vec![]],
+            [vec![], vec![(17, 4, 3, 5)], vec![]],
+        ] {
+            let maxpower = Catalog::from_floor(&packet(groups)).unwrap();
+            assert!(maxpower.validate_stat_policy(Policy::Disabled).is_err());
+            assert!(
+                maxpower
+                    .validate_stat_policy(Policy::ReportDerivedBasic)
+                    .is_ok()
+            );
+        }
         for p in [
             packet([vec![(17, 4, 3, 2), (17, 4, 4, 2)], vec![], vec![]]),
             packet([vec![(17, 13, 3, 2)], vec![], vec![]]),
             packet([vec![(17, 4, 3, 999)], vec![], vec![]]),
+            packet([vec![(17, 4, 3, 3)], vec![], vec![]]),
+            packet([vec![(17, 4, 3, 6)], vec![], vec![]]),
             packet([vec![], vec![], vec![(17, 4, 3, 2)]]),
         ] {
             assert!(Catalog::from_floor(&p).is_err());

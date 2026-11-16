@@ -655,8 +655,9 @@ pub fn load(
             );
         }
     }
-    pickups::Catalog::from_floor(&packets_floor_body)?
-        .validate_needle(rules.life_actions.needle())?;
+    let floor_catalog = pickups::Catalog::from_floor(&packets_floor_body)?;
+    floor_catalog.validate_needle(rules.life_actions.needle())?;
+    floor_catalog.validate_stat_policy(rules.item_policy)?;
     let mut model = Room::with_allocation(count, rules.slot_allocation)?;
     if let Some(layout) = cfg.eight_team_layout {
         model.set_eight_layout(layout)?;
@@ -3041,7 +3042,7 @@ impl Session {
                 let member = r.member(self.identity, self.connection)?;
                 let request = pickups::Request::parse(body)?;
                 let needle = r.rules.life_actions.needle() && request.kind() == 145;
-                let basic = r.rules.item_policy.enabled() && matches!(request.kind(), 0..=2);
+                let basic = r.rules.item_policy.allows(request.kind());
                 if !needle && !basic && (r.managed_round.is_some() || next.capacity() != 2) {
                     return Err(err("pickup outside measured profile"));
                 }

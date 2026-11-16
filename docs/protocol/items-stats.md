@@ -54,6 +54,35 @@ catalog/fuse6s/rank/first-arrival là policy emulator, không luật server gố
   toàn túi/entity/UDP hoặc kiểm mọi item. Không có input Ctrl/127sub0 trong hai ca này; chưa đo TTL/
   expiration trong cùng vòng. Không gán “vĩnh viễn” từ việc giữ qua các mốc hoặc table tail0.
 
+<a id="rust-maxpower"></a>
+### Rust MaxPower: max theo nhân vật và vòng hiện hành
+
+[Bằng chứng Rust MaxPower](../evidence/rust-service/g1-maxpower.json) tái dùng contract CP045 của kind 5,
+effect 6 và endpoint `B472A0`; ba vùng dispatcher/endpoint đã đối chiếu byte với diagnostic copy hiện tại.
+Không cần mở lại body hoặc wire pickup đã đo. Rust nhận kind 5 trong catalog 582 và policy `ReportDerivedBasic`:
+claim hợp lệ đặt current power bằng `maximum_power` của nhân vật, giữ nguyên capacity, speed và mọi max.
+Không hardcode power 7 cho mọi nhân vật. Initial map và từng map choice từ chối floor/hidden MaxPower trước
+bind nếu policy stat này tắt. Kind chưa đo vẫn bị từ chối, các guard identity/membership/round và hàng đợi giữ nguyên.
+
+Native hai account trên Factory07 có A chọn C0, B chọn C1. Mỗi vòng cả hai nhặt MaxPower rồi Fire và MaxPower
+thứ hai khi đã đạt trần. Native 165 đọc đủ 12 byte, tìm đúng item và xác nhận trong hai view: power 1→7 ở C0,
+1→9 ở C1; Fire/MaxPower ở trần được tiêu thụ nhưng không tăng thêm. Capacity/speed và stat actor khác giữ nguyên.
+Actual C2S118 và broadcast 159 mang power 7/9; terrain phản ánh đúng cờ trước/sau sáu bom, có hai rank/return
+và Start thứ ba. Clock mới khôi phục power 1, sáu stat, spawn và thùng. Các root được chọn có static/thùng chặn gần,
+nên không suy đã nghiệm thu mọi ray dài 7/9 hoặc mọi hướng/map từ power trong packet.
+
+Index/vị trí item hiện là **design**; journal join đúng account/player từ launcher, nhân vật, đội và kết quả,
+thưởng 0. Tests kiểm dead actor không được claim, member/round cũ, duplicate, full peer queue không tiêu thụ
+item hoặc tăng stat, power guard và reset. Ca âm native là không tăng thêm power ở cap; chưa có ca native
+claim khi dead/trapped. Không suy TTL hoặc “vĩnh viễn” từ việc effect giữ qua các mốc của hai vòng.
+
+Run giữ exit 1 vì output tmpfs unmount busy sau khi export được so đủ size/SHA; DB/host bind đã cleanup và
+namespace hết PID. Xác minh từ locator export, không gọi output unmount thành công hoặc nghiệm thu M8.
+Frozen verifier giả định locator chuẩn và bản sửa dùng sai vị trí wire ID 159 đều giữ nguyên; bản kiểm tiếp
+dùng field 11 theo contract cũ, không đổi raw hoặc wire. Hai lần kiểm config âm dừng sớm vì DB path/quyền parent
+không hợp lệ được giữ riêng; ca với DB copy và parent private đúng mới tới guard MaxPower. Build Linux, locked
+tests, fmt, clippy và snapshot source/binary có nguồn riêng, không thay native acceptance.
+
 <a id="item-pickup"></a>
 ### Item trên nền và xác nhận nhặt — CP030
 

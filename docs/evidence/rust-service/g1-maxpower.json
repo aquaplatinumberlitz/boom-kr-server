@@ -1,0 +1,102 @@
+{
+  "schema": "kre-rust-maxpower-v1",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/items-stats.md#rust-maxpower",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/443",
+  "scope": "Rust kind 5 MaxPower trên hai nhân vật đã đo, cấp max hiện hành, cap no-op và hai vòng/reset; không mở các ability khác.",
+  "service_sha256": "d7d670a45e3b3c73d40f4c00de15f675f83b05c313d9dd9dd0d6abd5de0b0a59",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "run": {
+    "run_sha256": "79f44492ce4c689b32312b3c70ee3e66e1680e26fce05211bb9b3c8b734bc105",
+    "raw_files": 146,
+    "preflight_files": 893,
+    "overall_returncode": 1,
+    "raw_locator": "cycles-raw-export",
+    "observations_status": "confirmed",
+    "diagnostic_limit": "Output tmpfs unmount busy after verified same-byte export; original exit 1 preserved. No clean graceful output unmount or durability/M8 claim."
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-maxpower-native-r1/maxpower-verification.json",
+      "bytes": 294245,
+      "sha256": "a4bab844ff2ccec0d560743fa8566c45168b9a2be503370df9e5403e5c6b5c28"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-native-r1/native/raw-export-seal.json",
+      "bytes": 34907,
+      "sha256": "66c775db26d7189d6f2669096e5807b466f20c968b94550bd9d671b6ee113ee5"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-native-r1/native/runtime-preflight.json",
+      "bytes": 385656,
+      "sha256": "7996bed0aa6a79d02ab389ae222f8ccde79cb7e243692ab73a54aa763f917e79"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-native-r1/native/recipe.json",
+      "bytes": 1211,
+      "sha256": "16126fe710b71218a5434521f532c3134289560b3116e859a83fa96e3fafc1b9"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-native-r1/export-verifier-scope.json",
+      "bytes": 703,
+      "sha256": "e9ff4134a51b63e44ff06fbfd2dc84ed43e3cbd3f4b6c61cf96d08881f7a3ad3"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-native-r1/wire159-verifier-correction.json",
+      "bytes": 667,
+      "sha256": "2c594559e56a2ee8245e9c3c6ecae9881bc0d353a6d15c2ca7e1c9178a69d71e"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-native-r1/manual-image-review.json",
+      "bytes": 875,
+      "sha256": "06b6b5a1f85387eff4c55148200a135ea8d2f96b0b9845574780d94327a3339c"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-native-r1/journal-identity-verification.json",
+      "bytes": 2179,
+      "sha256": "508fa2931cdd9b3be1b4393d4294346c8db3e2fb0efd81a138fb541f2a09c1c0"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-reuse-r1/reuse.json",
+      "bytes": 3868,
+      "sha256": "ed4cfb94fd3fb3627fc4cd3ce49eaa3b49f9b90ceb04d4eaa302bbc1ba25fca8"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-reuse-r1/current-exe-byte-binding.json",
+      "bytes": 962,
+      "sha256": "486b966cce86e4e558eb7fae5b6f8628e9baa6a6bb30c3e8594e2d9da714517b"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-build-r1/source-identity.json",
+      "bytes": 29954,
+      "sha256": "b128e37d1f411e1f6dc93d6101f064206e69857be20f92ebde1bd1b27a8cc611"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-build-r1/prepublication-source-verification.json",
+      "bytes": 4591,
+      "sha256": "6ffcef8985fd2698e54743b442343893c9ca52acc0ff0b8399f5a10078c29292"
+    },
+    {
+      "path": "local/research/codex/g1-maxpower-prebind-negative-r3/verification.json",
+      "bytes": 738,
+      "sha256": "12d9ace3707e34e2ad9f5426c8917570ad5c192567a61b60f0094cfd6a25fe5b"
+    }
+  ],
+  "observations": [
+    "CP045 native effect 6 và B472A0 đã có power = max, peer và reset cho C0; ba vùng dispatcher/endpoint của cache khớp byte với diagnostic client hiện tại. Không mở body mới hoặc lặp pickup wire RE.",
+    "Rust giữ policy ReportDerivedBasic, thêm kind 5 vào catalog/claim và per-character stat projection. Kind5 đặt power = max của nhân vật, không đổi capacity/speed; initial map và map choices từ chối floor/hidden kind 5 trước bind nếu stat policy tắt.",
+    "Native C0/C1 lấy visible MaxPower ở mỗi vòng: current power 1→7 và 1→9 trong cả hai view. Fire và MaxPower tiếp ở cap được tiêu thụ nhưng power giữ 7/9; các stat khác và peer giữ nguyên.",
+    "Hai vòng có 12 pickup/confirm mỗi view, native reader đủ 12 byte, không lỗi và tìm thấy item, actual 118/159 power 7/9 và sáu consumer 159/158. Mỗi view có 15 snapshot mỗi lớp, 195 ô khớp actual input; hai rank/return và clock thứ ba reset stat/spawn/thùng.",
+    "Journal join đúng account/player từ launcher, C0/C1, đội, kết quả và thưởng 0. Start cuối cancelled khi cleanup; đây là hành vi DB tmpfs chẩn đoán.",
+    "Hai test mới và bộ workspace kiểm clamp/no-op/stat isolation/seed, current membership/round, dead actor, full peer queue atomicity, duplicate và reset; source build snapshot/published candidate khớp mọi 83 file. Binary từ chối policy stat tắt trước readiness với DB copy private hợp lệ.",
+    "Hai ca config âm trước giữ nguyên: DB namespace path không có trên host; sau đó parent không đủ private. Không gọi chúng là đã tới guard MaxPower. Ca thứ ba đã đạt guard.",
+    "Run có controller completion nhưng output unmount busy, giữ export/rawseal/exit 1 và frozen verifier sai locator. Bản export v2 còn dùng sai field2 cho159wire ID; sửa riêng theo contract cũ field 11, original/v2/raw không đổi."
+  ],
+  "limits": [
+    "Chỉ nhân vật0/1 và route hai account trên Factory07. Native cap no-op là ca không tăng thêm chỉ số; dead/trapped claim có test source, chưa native negative khi chết/trap.",
+    "Không TTL/vĩnh viễn/mode khác hoặc max stat của mọi nhân vật; chưa mọi roster cho item5. Map/visible drops là design, không phân phối server gốc.",
+    "Wrapper exit 1 vì output unmount busy giữ nguyên. Wine/LAN cô lập, export/DB tmpfs không Internet, load, restore hoặc M8.",
+    "Shoe/Punch/debuff/mount/active items khác và coverage G1 còn theo PLAN; không mở kind chưa đo."
+  ]
+}

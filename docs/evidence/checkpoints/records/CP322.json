@@ -1,0 +1,227 @@
+{
+  "id": "CP322",
+  "previous": "CP321",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-16T23:36:56.320029+00:00",
+  "context_commit": "3fdef9ec8aa3bfe3bfccd5118dc72214d9980ce5",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Port MaxPower đã đo từ CP045 vào Rust, theo max của nhân vật hiện hành và đúng ownership/reset.",
+  "scope": "Rust kind 5 trong policy stat đã đo, C0/C1, visible MaxPower/Fire cap no-op và hai vòng/reset trên Factory07. Run giữ exit 1/output unmount busy; chưa mọi roster hoặc ability khác.",
+  "artifacts": [
+    {
+      "name": "client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "service",
+      "sha256": "d7d670a45e3b3c73d40f4c00de15f675f83b05c313d9dd9dd0d6abd5de0b0a59"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-maxpower",
+    "docs/evidence/rust-service/g1-maxpower.json",
+    "docs/RESEARCH.md#gap-ability-debuff",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/443"
+  ],
+  "findings": [
+    {
+      "summary": "Tái dùng CP045 native effect 6/B472A0 và ba vùng byte khớp diagnostic copy hiện tại. Rust kind 5 đặt current power bằng max nhân vật; không đổi capacity/speed, không hardcode cap 7. Initial/map-choice catalog từ chối MaxPower trước bind nếu stat policy tắt; unsupported kinds vẫn fail.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-maxpower",
+      "evidence": [
+        "MAX322-0008",
+        "MAX322-1125",
+        "MAX322-0656",
+        "MAX322-1124"
+      ],
+      "limits": "Source projection đã có native riêng, không phục hồi authority server gốc hoặc ability khác."
+    },
+    {
+      "summary": "Native C0/C1 có power 1→7/1→9 ở cả hai view; Fire và MaxPower tiếp ở cap không tăng thêm, các stat khác giữ nguyên. Actual 118/159 power 7/9, hai rank/return/reset và Start thứ ba; đủ 195 cờ trước/sau mỗi callback. Journal join đúng account/player/character/team/result/thưởng 0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-maxpower",
+      "evidence": [
+        "MAX322-0939",
+        "MAX322-0934",
+        "MAX322-0937"
+      ],
+      "limits": "Chỉ hai nhân vật/route hai account, visible drops design. Native cap no-op không thay native dead/trapped negative; test source có dead/ownership/queue/reset controls."
+    },
+    {
+      "summary": "Giữ overall exit 1 vì output tmpfs unmount busy sau same-byte export; source frozen/raw/namespace hết PID được kiểm. Original verifier sai locator và v2 sai field wire ID159 giữ nguyên; v3 dùng contract field11. Hai config-negative setup lỗi được giữ, ca private DB đúng mới chứng minh guard.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-maxpower",
+      "evidence": [
+        "MAX322-1093",
+        "MAX322-0798",
+        "MAX322-1111",
+        "MAX322-1124"
+      ],
+      "limits": "Không graceful output unmount, crash durability, Internet hoặc M8. Lỗi verifier không sửa raw/wire hoặc frozen input."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native MaxPower two-character cap/reset, export observations verified",
+      "result": "pass",
+      "evidence": [
+        "MAX322-0939",
+        "MAX322-1093"
+      ],
+      "limits": "Overall exit 1 do output unmount busy vẫn giữ nguyên."
+    },
+    {
+      "check": "Workspace fmt/clippy/locked tests/build and exact built/publication source equality",
+      "result": "pass",
+      "evidence": [
+        "MAX322-0656",
+        "MAX322-0653"
+      ],
+      "limits": "Observed command outputs retained in tool session58531, source/binary snapshot hash retained; not native oracle or independent review."
+    },
+    {
+      "check": "Preservation, docs/catalog/diff and feature-group audit",
+      "result": "pass",
+      "evidence": [
+        "MAX322-0015",
+        "MAX322-0014",
+        "MAX322-0007"
+      ],
+      "limits": "CI/full checker exact head trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP322-maxpower.json",
+      "bytes": 375215,
+      "sha256": "ff0f93c524aebce9d90fb20da69797309b5d43d9db3f64e9cc67366a7cb8ad5b",
+      "count": 1289
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rust MaxPower stat projection, catalog/policy admission guard, ownership/queue/reset tests và native C0/C1 hai vòng."
+    ],
+    "corrected": [
+      "Giữ output unmount busy, export locator và wire159 verifier correction cùng setup-negative failures."
+    ],
+    "superseded": [
+      "Rust chỉ hỗ trợ kind 0/1/2 dù MaxPower kind5 đã có contract native."
+    ]
+  },
+  "blockers": [
+    "Chỉ nhân vật0/1 và route hai account trên Factory07. Native cap no-op là ca không tăng thêm chỉ số; dead/trapped claim có test source, chưa native negative khi chết/trap.",
+    "Không TTL/vĩnh viễn/mode khác hoặc max stat của mọi nhân vật; chưa mọi roster cho item5. Map/visible drops là design, không phân phối server gốc.",
+    "Wrapper exit 1 vì output unmount busy giữ nguyên. Wine/LAN cô lập, export/DB tmpfs không Internet, load, restore hoặc M8.",
+    "Shoe/Punch/debuff/mount/active items khác và coverage G1 còn theo PLAN; không mở kind chưa đo."
+  ],
+  "completed_feature_groups": [
+    "g1-maxpower-measured-character-policy"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp nhóm item của sáu map và coverage/nhân vật G1 rồi M8 theo PLAN, chỉ RE consumer thiếu; không lặp MaxPower wire/effect đã đo hoặc sửa exporter/L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-16T23:36:56.320029+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo, MaxPower C0/C1 và giới hạn runtime đã ghi; không toàn G1/M8.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-maxpower.json",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "rust/crates/kr-service/src/characters.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "rust/crates/kr-service/src/map_profile.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Rust MaxPower, contract cap/reset, nguồn code/native và limits export/verifier."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Quy trình audit theo nhóm, waiver và owner L1 không đổi."
+    }
+  ]
+}

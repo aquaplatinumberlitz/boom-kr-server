@@ -300,6 +300,11 @@ impl Catalog {
             }
             let floor = crate::pickups::Catalog::from_floor(&packets["floor"].payload)?;
             floor.validate_needle(needle)?;
+            floor.validate_stat_policy(if basic_items {
+                crate::pickups::Policy::ReportDerivedBasic
+            } else {
+                crate::pickups::Policy::Disabled
+            })?;
             let terrain = cfg
                 .terrain
                 .as_ref()
