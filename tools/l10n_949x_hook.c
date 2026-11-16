@@ -124,6 +124,8 @@ typedef long(__attribute__((stdcall)) * imm_t)(void *, unsigned, void *, unsigne
 typedef void *(__attribute__((stdcall)) * gmh_t)(const char *);
 typedef void *(__attribute__((stdcall)) * gpa_t)(void *, const char *);
 peek_t orig_peeka, peekw;
+typedef int(__attribute__((stdcall)) * translate_t)(msg_t *);
+static translate_t translate;
 imm_t orig_imma, orig_immw;
 static u16 inj_char;
 static int inj_active;
@@ -159,7 +161,27 @@ __attribute__((stdcall)) int hook_peeka(msg_t *m, void *hwnd, unsigned fmin, uns
 #ifdef L10N_TRACE
     if (r && (flags & 1) && ((m->message >= 0x100 && m->message <= 0x10F) || (m->message >= 0x280 && m->message <= 0x291)))
         trace('M', m->message, m->wParam, (unsigned)m->lParam);
+    {
+        /* Trạng thái bộ quản lý nhập 0x1514A29 (con trỏ toàn cục 0x19DB898): +0x20 control focus, +0x24 mode. */
+        static unsigned last_focus = 1, last_mode = 7;
+        unsigned *im = *(unsigned **)0x19DB898;
+        if (im && (im[8] != last_focus || im[9] != last_mode)) {
+            last_focus = im[8]; last_mode = im[9];
+            trace('Z', im[8], im[9], m ? m->time : 0);
+        }
+    }
 #endif
+    if (r && (flags & 1) && (m->message == 0x100 || m->message == 0x101) && m->wParam == 0xE7) {
+        /* VK_PACKET mang ký tự Unicode ở HIWORD(lParam); client đọc phần đó như scan code nên một số ký tự
+         * (vd 하 -> 0x58) kích phím tắt trong phòng và khóa ô nhập (CInputMan+0x24 qua 0xB916D0). Tự dịch
+         * phím này ở đây để sinh WM_CHAR, rồi giao cho game WM_NULL thay cho phím. */
+        if (m->message == 0x100 && translate) translate(m);
+        trace('K', m->message, (unsigned)m->lParam, 0);
+        m->message = 0;
+        m->wParam = 0;
+        m->lParam = 0;
+        return r;
+    }
     if (r && m->message == 0x102 && m->wParam >= 0x80 && m->wParam <= 0xFFFF &&
         !(m->wParam >= 0xD800 && m->wParam <= 0xDFFF)) {
         l10n_stats[2]++;
@@ -195,11 +217,112 @@ __attribute__((stdcall)) long hook_imma(void *himc, unsigned index, void *buf, u
     return n;
 }
 
+#ifdef L10N_TRACE
+/* Bản chẩn đoán: bọc wndproc của lớp cửa sổ để ghi cả message gửi thẳng (SendMessage), như WM_IME_*. */
+typedef long(__attribute__((stdcall)) * wndproc_t)(void *, unsigned, unsigned, long);
+typedef unsigned short(__attribute__((stdcall)) * regcls_t)(void *);
+static regcls_t orig_regcls;
+static wndproc_t wp_orig[4];
+static int wp_count;
+static long wp_call(int k, void *h, unsigned m, unsigned w, long l) {
+    if ((m >= 0x10D && m <= 0x10F) || (m >= 0x281 && m <= 0x291) || m == 7 || m == 8 || m == 6)
+        trace('S', (unsigned)k << 16 | m, w, (unsigned)l);
+    return wp_orig[k](h, m, w, l);
+}
+#define WP(k) __attribute__((stdcall)) static long wp##k(void *h, unsigned m, unsigned w, long l) { return wp_call(k, h, m, w, l); }
+WP(0) WP(1) WP(2) WP(3)
+static const wndproc_t wp_wrap[4] = {wp0, wp1, wp2, wp3};
+__attribute__((stdcall)) unsigned short hook_regcls(void *wc) {
+    wndproc_t *slot = (wndproc_t *)((char *)wc + 8);
+    if (wp_count < 4 && *slot) {
+        wp_orig[wp_count] = *slot;
+        *slot = wp_wrap[wp_count];
+        trace('R', wp_count, (unsigned)wp_orig[wp_count], 0);
+        wp_count++;
+    }
+    return orig_regcls(wc);
+}
+/* Bọc +212 (chèn kết quả composition) và +228 (chèn byte) của ô nhập ORG để xem nhánh từ chối. */
+typedef void(__attribute__((thiscall)) * ins212_t)(unsigned *, unsigned *);
+typedef int(__attribute__((thiscall)) * ins228_t)(unsigned *, unsigned char *, int);
+static ins212_t orig212;
+static ins228_t orig228;
+__attribute__((thiscall)) static void w212(unsigned *t, unsigned *a2) {
+    trace('E', a2[4] | t[339] << 16, t[6] | t[79] << 16, t[598] | t[597] << 16);
+    orig212(t, a2);
+    trace('e', t[339], t[6] | t[79] << 16, t[598] | t[597] << 16);
+}
+__attribute__((stdcall)) static int dummy_unused(void) { return 0; }
+__attribute__((thiscall)) static int w228(unsigned *t, unsigned char *a2, int a3) {
+    int r;
+    trace('F', a2[0] | a2[1] << 8 | (unsigned)a3 << 16, t[6] | t[79] << 16, t[598] | t[597] << 16);
+    r = orig228(t, a2, a3);
+    trace('f', (unsigned)r, t[6] | t[79] << 16, t[598] | t[597] << 16);
+    return r;
+}
+typedef int(__attribute__((thiscall)) * ime48_t)(unsigned *, int, int, unsigned short *);
+typedef int(__attribute__((thiscall)) * ime300_t)(unsigned *, int, int);
+static ime48_t orig48;
+static ime300_t orig300;
+__attribute__((thiscall)) static int w48(unsigned *t, int kind, int len, unsigned short *w) {
+    int r;
+    trace('G', (unsigned)kind, (unsigned)len, (kind == 64 || kind == 1) && w && len > 0 ? w[0] : 0);
+    r = orig48(t, kind, len, w);
+    trace('g', (unsigned)r, t[346], t[345]);
+    return r;
+}
+__attribute__((thiscall)) static int w300(unsigned *t, int ch, int lp) {
+    int r = orig300(t, ch, lp);
+    trace('H', (unsigned)ch, (unsigned)r, t[346]);
+    return r;
+}
+typedef int(__attribute__((thiscall)) * navi_t)(unsigned *);
+static navi_t orig_navi;
+__attribute__((thiscall)) static int wnavi(unsigned *t) {
+    static unsigned last[4];
+    unsigned *im = *(unsigned **)0x19DB898;
+    unsigned before = im ? im[9] : 9;
+    int r = orig_navi(t);
+    unsigned after = im ? im[9] : 9;
+    unsigned cur[4] = {t[0x48 / 4] | t[0x4C / 4] << 16, t[0x60 / 4] | t[0x64 / 4] << 16,
+                       ((unsigned char *)t)[272] | ((unsigned char *)t)[2188] << 8 | t[0x90 / 4] << 16, after};
+    if (before != after || cur[0] != last[0] || cur[1] != last[1] || cur[2] != last[2]) {
+        trace('N', cur[0], cur[1], cur[2] | after << 31);
+        for (int i = 0; i < 4; i++) last[i] = cur[i];
+    }
+    return r;
+}
+static void wrap_edit_vtables(void) {
+    {
+        void **v = (void **)VT_NAVI;
+        if ((unsigned)v[0x44 / 4] == 0x790940) { orig_navi = (navi_t)v[0x44 / 4]; v[0x44 / 4] = (void *)wnavi; }
+    }
+    static const unsigned ime[] = {VT_EDITIME, VT_TEMPCHATEDITIME};
+    for (int i = 0; i < 2; i++) {
+        void **v = (void **)ime[i];
+        if (!orig48) orig48 = (ime48_t)v[48 / 4];
+        if (!orig300) orig300 = (ime300_t)v[300 / 4];
+        if (v[48 / 4] == (void *)orig48) v[48 / 4] = (void *)w48;
+        if (v[300 / 4] == (void *)orig300) v[300 / 4] = (void *)w300;
+    }
+    static const unsigned vts[] = {VT_EDITORG, VT_TEMPCHATEDITORG};
+    for (int i = 0; i < 2; i++) {
+        void **v = (void **)vts[i];
+        if (!orig212) orig212 = (ins212_t)v[212 / 4];
+        if (!orig228) orig228 = (ins228_t)v[228 / 4];
+        if (v[212 / 4] == (void *)orig212) v[212 / 4] = (void *)w212;
+        if (v[228 / 4] == (void *)orig228) v[228 / 4] = (void *)w228;
+    }
+    (void)dummy_unused;
+}
+#endif
+
 void l10n_init(void) {
     void *user32 = ((gmh_t) * (void **)IAT_GETMODULEHANDLEA)("user32.dll");
     orig_mb2wc = (mb2wc_t)*SLOT_MB2WC;
     orig_wc2mb = (wc2mb_t)*SLOT_WC2MB;
     orig_peeka = (peek_t) * (void **)IAT_PEEKMESSAGEA;
+    translate = (translate_t) * (void **)IAT_TRANSLATEMESSAGE;
     orig_imma = (imm_t) * (void **)IAT_IMMGETCOMPOSITIONSTRINGA;
     orig_immw = (imm_t) * (void **)IAT_IMMGETCOMPOSITIONSTRINGW;
     peekw = user32 ? (peek_t)((gpa_t) * (void **)IAT_GETPROCADDRESS)(user32, "PeekMessageW") : 0;
@@ -218,6 +341,9 @@ void l10n_init(void) {
         if (tr_create && tr_write) tr_file = tr_create("l10n-trace.log", 0x40000000, 1, 0, 2, 0x80, 0);
         if (tr_file == (void *)-1) tr_file = 0;
         trace('I', 0, 0, 0);
+        wrap_edit_vtables();
+        orig_regcls = (regcls_t) * (void **)IAT_REGISTERCLASSEXA;
+        *(void **)IAT_REGISTERCLASSEXA = (void *)hook_regcls;
     }
 #endif
 }

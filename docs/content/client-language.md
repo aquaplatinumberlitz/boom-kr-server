@@ -217,13 +217,22 @@ từng người chơi `u32 id`, tên, một `u8` rồi chuỗi định danh vào
 thứ tự và cách mã hóa trường không đổi. Với tài khoản thử, ô tên phòng nhận gõ; server nhận create81
 `Phòng Việt 한국` (17 byte) và `ỆỐẦ Việt 한국 ếộ` (22 byte) dạng 949x, client Hàn hiện đúng tên đó.
 
-**Chat bị cắt: chưa rõ nguyên nhân.** Bản trace ghi mọi ký tự tới dưới dạng `WM_CHAR` và mọi ký tự ngoài ASCII được tiêm
-thành composition, nhưng ô chat bỏ cả một đoạn liên tiếp, kể cả ký tự ASCII, ở vị trí khác nhau giữa các lượt (đầu, giữa
-hoặc cuối chuỗi). Lặp lại chậm hơn (400 ms mỗi ký tự) ở lượt vi-04 vẫn dừng ở cùng 26 byte. Hệ ô nhập `0x1514A29` bỏ cả
-`WM_CHAR` lẫn composition khi trường `+0x24` khác 0 hoặc control đang focus `+0x20` rỗng. `+0x24` chỉ được đặt qua
-`0x15144BB` từ `CBnbNaviWnd` (`0x790940`) khi chuột nằm trên cửa sổ đó; dời chuột ra xa trước khi gõ vẫn mất một đoạn,
-nên giả thuyết này chưa giải thích được. Phép đo tiếp là theo dõi `+0x20`/`+0x24` trong lúc gõ
-([evidence](../evidence/l10n-utf8-949x-chat-drop.json)).
+**Chat bị cắt: đã sửa.** Ký tự gõ kiểu Unikey đến dưới dạng phím `VK_PACKET` mang mã Unicode ở `HIWORD(lParam)`. Bảng phím
+tắt trong phòng (`0x1229450`, gọi từ `0xD5AA60` và các hàm cùng kiểu) đọc phần đó như scan code, nên một số ký tự (ví dụ `하`)
+trùng lệnh mở hộp vật phẩm; lệnh này tăng bộ đếm khóa `CInputMan+0x24` (`0xB916D0`) và `0x1514A29` bỏ mọi chữ gõ trong
+khoảng 1,5 giây. Bisect trước đó cho thấy lỗi đi theo chuỗi gõ, không theo dữ liệu, font hay exe
+([bisect](../evidence/l10n-utf8-949x-chat-bisect.json), [lượt trước](../evidence/l10n-utf8-949x-chat-drop.json)).
+Hook giờ tự dịch phím `VK_PACKET` thành `WM_CHAR` và giao `WM_NULL` cho game; chuỗi Việt trước bị cắt ở 26 byte và chuỗi Hàn
+trước bị cắt ở 10 byte đều tới server đủ ([evidence](../evidence/l10n-utf8-949x-chat-fix.json)). IME tiếng Hàn thật chưa thử.
+
+**Ô chọn người nhận chat giới hạn 14 byte.** `CChatStage` tạo ô người nhận với độ dài tối đa 14 (struct tạo control ở
+`0xD34400`, trường độ dài mà `0x151F795` chép vào `+0x13C`) và đặt chữ `ChatToAll`/`ChatToOurTeam` vào ô đó; chuỗi dài hơn
+thì không vào ô nên ô trống. `<To All>` 8 byte, `<모두에게>` 10, `<우리팀에게>` 12 vừa; `<Gởi cho tất cả>` 19 và
+`<Gởi cho đồng đội>` 23 byte thì không. Client VN không mang chữ cho hai khoá này (bảng chuỗi giao diện do server cũ gửi); server
+của dự án `boom-re` dùng `<Mọi người>` và `<Đồng đội>`, đều 14 byte ở 949x, vừa giới hạn.
+
+**Tên phòng mặc định.** Exe VN có khoá `DefaultRoomTitle0`–`5` nhưng không có chữ: giá trị do server VN gửi và không còn
+nguồn. Bản Việt cần tối đa 22 byte ở 949x; hai câu đang vượt cần thay.
 
 Evidence: [ảnh và chuỗi exe](../evidence/l10n-utf8-949x-images-r4.json), [tên phòng, font và chat](../evidence/l10n-utf8-949x-title-font.json).
 
@@ -231,11 +240,11 @@ Evidence: [ảnh và chuỗi exe](../evidence/l10n-utf8-949x-images-r4.json), [t
 
 - **Tiệm chưa tới được.** Nút tiệm ở phòng chỉ hiện tooltip `Đến Siêu thị`; dịch vụ Rust chưa có tiệm.
 - **Chat chưa chuyển tiếp.** Dịch vụ Rust từ chối opcode chat 18 (`lobby_request_denied`) và đóng kết nối sảnh, nên chưa
-  thấy chat chéo giữa hai client; chữ trộn đã thấy ở tên phòng và ô nhập. Ô chat còn bỏ từng đoạn nhập (mục trên).
+  thấy chat chéo giữa hai client; chữ trộn đã thấy ở tên phòng và ô nhập.
 - **Sửa tên phòng** cần chuỗi định danh của tài khoản; mới có cho tài khoản thử qua cấu hình chẩn đoán (mục trên).
 - **Tên phòng tối đa 22 byte.** Hai trong sáu tên phòng mặc định tiếng Việt dài 26 và 27 byte trong 949x
   (`DefaultRoomTitle1`, `DefaultRoomTitle2`); khi client chọn ngẫu nhiên trúng hai tên này, nút xác nhận tắt (lượt vi-01).
-  Dữ liệu cần câu ngắn hơn. Tương tự, nhãn `ChatToAll` tiếng Việt `<Gởi cho tất cả>` không hiện trong hộp chọn; bản Anh `<To All>` hiện được.
+  Dữ liệu cần câu ngắn hơn. Nhãn `ChatToAll`/`ChatToOurTeam` tiếng Việt vượt giới hạn 14 byte của ô người nhận (mục trên).
 - **Ảnh còn chữ Hàn**: danh sách cần vẽ ở mục bổ sung phía trên.
 - **Chữ do server gửi và chữ cứng trong exe** (thông báo chạy chữ, nhắc trong ô chat phòng) vẫn tiếng Hàn. Tên map ở phòng
   lấy từ dữ liệu map server gửi (client ghi đè `fxdynmapinfo.ssd`), nên là `Factory07`.

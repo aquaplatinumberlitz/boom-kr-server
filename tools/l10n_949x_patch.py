@@ -21,7 +21,8 @@ import l10n_949x as X  # noqa: E402
 SOURCE_SHA256 = '4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed'  # CA-r2-stage-social-cmp.exe
 WANT = {'MultiByteToWideChar': 'IAT_MB2WC', 'WideCharToMultiByte': 'IAT_WC2MB', 'PeekMessageA': 'IAT_PEEKMESSAGEA',
         'GetProcAddress': 'IAT_GETPROCADDRESS', 'GetModuleHandleA': 'IAT_GETMODULEHANDLEA',
-        'ImmGetCompositionStringA': 'IAT_IMMGETCOMPOSITIONSTRINGA', 'ImmGetCompositionStringW': 'IAT_IMMGETCOMPOSITIONSTRINGW'}
+        'ImmGetCompositionStringA': 'IAT_IMMGETCOMPOSITIONSTRINGA', 'ImmGetCompositionStringW': 'IAT_IMMGETCOMPOSITIONSTRINGW',
+        'RegisterClassExA': 'IAT_REGISTERCLASSEXA', 'TranslateMessage': 'IAT_TRANSLATEMESSAGE'}
 
 
 def literal_blob(base_va, catalog, lang):
@@ -70,6 +71,9 @@ def build(src, out, lang=None, catalog=None, trace=False):
     X.c_table(header)
     with header.open('a') as f:
         f.write(''.join('#define %s 0x%x\n' % kv for kv in sorted(slots.items())) + '#define OEP 0x%x\n' % oep)
+        # Vtable CCtrlEditORG / CCtrlTempChatEditORG (RTTI, IDA trên bản sao), chỉ bản --trace dùng.
+        f.write('#define VT_EDITORG 0x17b3b20\n#define VT_TEMPCHATEDITORG 0x17b416c\n'
+                '#define VT_EDITIME 0x17b3ee4\n#define VT_TEMPCHATEDITIME 0x17b4294\n#define VT_NAVI 0x170f524\n')
     obj = work / 'hook.o'
     elf = work / 'hook.elf'
     blob = work / 'hook.bin'
