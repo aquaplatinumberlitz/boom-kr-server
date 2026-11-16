@@ -1,0 +1,53 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "0ed148a",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "en-05 setup (A Korean 949x data, B English); A exe with the VK_PACKET fix: trace build (y9) and release build sha256 1c47afe38fdfbb69d5cf1e2687482a3993ba4cf6fc9e341caf27cddef9c0c2e0 (y10). Chat typed with SendInput Unicode at 150 ms.",
+  "observation": "Cause: trace y5 shows CInputMan+0x24 becoming 1 for about 1.5 s right after 하 was typed; static reading shows that field is a lock counter changed only by 0xB916D0, called when the room item box opens (0xB912E0 from the key-binding handlers 0xD5AA60 and siblings, command 6 from 0x1229450(vk, lParam)). VK_PACKET keydowns carry the character in HIWORD(lParam), which the binding lookup reads as a scan code. With the hook translating VK_PACKET keydowns itself and passing WM_NULL to the game, the lock no longer appears (y9 trace) and the service received the whole strings: 'Xin chào các bạn 안녕하세요 ạ' (33 bytes, y9) and '안녕하세요 반갑습니다 하세요' (28 bytes, y10), both previously cut at 26 and 10 bytes.",
+  "local_evidence": [
+    {
+      "path": "local/runs/en-05/y5/l10n-trace-A.log",
+      "sha256": "67e70c5e72dc63da3d3aed215ccc5a49358d30a1aef46746e6d4ebbbd832b4cc"
+    },
+    {
+      "path": "local/runs/en-05/y9/preflight.json",
+      "sha256": "340bfa721eec0024a1ad405fdb9546e75f9e68cb6a483add9be40b3245969b2b"
+    },
+    {
+      "path": "local/runs/en-05/y9/native/run.json",
+      "sha256": "e7bb7fa57cd0069a3db918efad6c750bf1a2edb6ca54d61c8c677c53b4eded35"
+    },
+    {
+      "path": "local/runs/en-05/y9/native/tcp-auth-pair.pcap",
+      "sha256": "e3e8ed9d787383398e0f06ed0bb4b503e6191693b4647ffc412ee071169b0ec3"
+    },
+    {
+      "path": "local/runs/en-05/y9/native/rust-events.jsonl",
+      "sha256": "d02b3eae67a37119c2dae408b9cf7611edd1a734e3bdd618ac1719589c1b62e6"
+    },
+    {
+      "path": "local/runs/en-05/y9/l10n-trace-A.log",
+      "sha256": "dd79533932fb8b83c7c7dc0e1cb8cededccf761dd7900d00cda74053b1dd56e1"
+    },
+    {
+      "path": "local/runs/en-05/y10/preflight.json",
+      "sha256": "3f021ad3fc9272ba9cc971adb2a789687d94ce53bde358619f1ac99b3a3f4c36"
+    },
+    {
+      "path": "local/runs/en-05/y10/native/run.json",
+      "sha256": "dbfd05278e1ae4d8ec6f6d93542a9a7d2fd0affa0a7837c89fec7321d0ab4fbf"
+    },
+    {
+      "path": "local/runs/en-05/y10/native/tcp-auth-pair.pcap",
+      "sha256": "f9b542e85ef772d8d07df05dd44217b9b433aece94e0f2646c50be1454255d36"
+    },
+    {
+      "path": "local/runs/en-05/y10/native/rust-events.jsonl",
+      "sha256": "3bef363bf6beae881d59fd8ea3ff59511a23cafadde2d1e46cae16042b740f92"
+    }
+  ],
+  "cleanup": "Raw export passed for both runs.",
+  "limits": "Diagnostic exe and service on Wine; SendInput Unicode typing (as Unikey) only, real Korean IME composition not exercised. The game no longer sees VK_PACKET key events, which it does not need for text."
+}
