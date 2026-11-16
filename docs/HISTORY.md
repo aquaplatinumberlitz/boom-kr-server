@@ -5,6 +5,11 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP312: sửa tra lịch sử checkpoint được tạo trong merge và phục hồi raw local đúng hash.**
+[Đối chứng và giới hạn](evidence/checkpoints/merge-publication-correction.json) giữ lần kiểm lỗi, nguồn phục hồi và kiểm âm.
+Rust có [route StrongBox/Bomb/Fire hai vòng/reset](protocol/terrain.md#rust-camp08-boundary) trong phạm vi private đã đo.
+G1 tiếp terrain Camp08 còn thiếu theo [Bảng điều hành](PLAN.md#dashboard); L1 giữ [kết quả một phần của Claude](content/client-language.md#utf8).
+
 **CP311: Rust có thùng nhiều hit; route StrongBox/Bomb/Fire Camp08 đã qua hai vòng/reset.**
 [Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ counter thực tế và phạm vi private đã đo.
 G1 tiếp terrain Camp08 còn thiếu theo [Bảng điều hành](PLAN.md#dashboard); L1 giữ [kết quả một phần của Claude](content/client-language.md#utf8).

@@ -163,13 +163,19 @@ chưa xác định. Chỉ mở chẩn đoán tiếp nếu tái hiện hoặc c�
 
 [Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ policy122/map-owned cancellation và kernel
 thùng nhiều hit. StrongBox01/02 đã có native 5/2 hit, actual class/counter/init, cùng route Rust hai vòng với hai
-item ẩn thiết kế và reset. Không lặp parser122, cờ khởi tạo, game-box candidate sai nhánh hoặc route đã đạt khi
-không có discrepancy mới. Report122 không có epoch/serial nên raw freshness vẫn unknown; nó không có authority
+item ẩn thiết kế và reset. Không lặp parser122, cờ khởi tạo, game-box sai nhánh hoặc route đã đạt khi không có discrepancy mới. Report122 không có epoch/serial nên raw freshness vẫn unknown; nó không có authority
 trên ledger. Bộ đếm thùng là dữ liệu type2 đã đo, không phải footprint chung cho TileInfo.
 
-Codex tiếp Herb01/02, Line01/02 và footprint/ray của MissileBase/PinPillar theo cạnh native tối thiểu. Những ô này
-chưa được chứng nhận chỉ bằng seed khớp hoặc nằm ngoài route đã chạy. Tiếp floor/drop/item và coverage roster
-Camp08 theo PLAN rồi Tomb12; không mở map tổng quát khi còn thiếu. Policy thùng hữu hạn giữ rõ khác server gốc,
+Herb01/02 và Line02 đã có [đối chứng riêng](protocol/terrain.md#rust-camp08-boundary): tia đi xuyên Line02 nhưng
+nhân vật bị chặn, trong khi flag bằng 0. Getter tĩnh tách byte 24–27, 28–31 và 32–35; không dùng type 3 hoặc
+seed để gán mọi ô đi qua tự do. Ca đi vào Herb01 còn nguyên đạt; Line01, các hướng khác và native return trực tiếp
+của predicate di chuyển chưa đạt. Hai lượt lỗi trước negative và một lượt startup bị giữ; wrapper return có mâu thuẫn
+không được dùng. Không lặp đường bảy bom hoặc route biến thể đã lỗi khi chưa có điều kiện mới.
+
+Codex tiếp footprint/ray của MissileBase/PinPillar là nhánh độc lập; đối chứng Line sau cần route khác hoặc
+điều kiện mới rõ ràng, passive getter entry/epilogue và negative/positive không dùng `FinishBreakpoint` wrapper.
+Những ô chưa đo không được chứng nhận chỉ bằng seed hoặc route khác. Tiếp floor/drop/item, coverage roster Camp08 rồi
+Tomb12 theo PLAN; không mở map tổng quát khi còn thiếu. Policy thùng hữu hạn giữ rõ khác server gốc,
 chain/queue/multiroom và stale controls tự động không được báo thành native rộng hơn. L1 vẫn do Claude phụ trách.
 
 Lỗi QueueExpired trước map đã tái hiện trong một lượt đo; raw được giữ, removal/missing membership xảy ra sau denial.

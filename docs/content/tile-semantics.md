@@ -32,3 +32,8 @@ chứng nhận terrain, thùng hoặc toàn bộ tác động lên nhân vật c
 Type 2 trong nhánh `CGOTileMoveAbleBox` đã được đối chiếu riêng: dword offset 24 nạp bộ đếm hit; StrongBox01/02
 có 5/2, giá trị 0 đổi thành 1. Không dùng trường này làm chiều rộng footprint cho thùng. [Contract Camp08](../protocol/terrain.md#rust-camp08-boundary)
 giữ consumer, native counter và giới hạn; các số chưa rõ trong bảng trên vẫn là kiểm kê candidate ban đầu.
+
+Type 3 trong `CGOTilePassable` giữ các nhóm byte theo hướng: getter tĩnh đọc 24–27, 28–31 và 32–35 riêng.
+Herb có ba nhóm bằng 1; Line02 đã đo có nhóm đầu bằng 0, nhóm giữa `1,0,1,0`, nhóm cuối bằng 1.
+[Contract Camp08](../protocol/terrain.md#rust-camp08-boundary) giữ đối chứng nhân vật bị chặn nhưng tia nổ đi xuyên
+và giới hạn native. Không diễn giải các nhóm này thành kích thước, hoặc coi mọi type 3/flag 0 đều đi qua tự do.

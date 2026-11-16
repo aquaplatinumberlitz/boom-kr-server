@@ -697,3 +697,22 @@ lượt đó là nghiệm thu Herb/Line/MissileBase/PinPillar hoặc toàn terra
 Lượt tích hợp sau main chứa thay đổi L1/account-auth dùng binary mới, giữ cùng source kernel và client G1 949.
 Route hai vòng/item/kết quả/reset/Start kế được kiểm lại trên binary kết hợp; metadata giữ riêng hash hai service.
 211 tests trên source kết hợp đạt. Kết quả này không mở acceptance localization hoặc đổi wire client G1.
+
+[Đối chứng Herb và Line](../evidence/rust-service/g1-camp08-passable.json) đã tách khả năng đi qua của nhân vật
+khỏi tia nổ. Trên hai view, Herb01 `(0,2)`, Herb02 `(0,5)`/`(0,8)` và Line02 `(0,7)` đều trả
+`CGOTilePassable`. Tia power 2 từ `(0,6)` đi qua Line02 tới Herb02 `(0,8)`; Line vẫn tồn tại trong callback.
+Cờ seed và cờ sau nổ của Line02 bằng 0, nhưng A bị chặn khi đi từ `(0,6)` sang `(0,7)` sau lần nổ đó:
+35 mẫu cuối giữ tọa độ `(240,39)` dù có input Right. Vì vậy flag 0 hoặc type 3 không chứng minh đi qua tự do.
+Herb01 đã có ca đi vào khi còn nguyên; Herb02 `(0,5)` có ca đi vào trước lần nổ tại chính ô đó.
+
+Consumer tĩnh của lớp này phân biệt các nhóm byte trong TileInfo: `BA0860` đọc byte `24 + direction`;
+`BA0CE0` đọc `28 + direction`; `BA0E30` đọc `32 + direction`. `BA0D70` và `BA0EC0` đổi sang hướng đối diện
+trước khi gọi hai getter sau. Tia nổ đã biết đi qua `BA0F80`/`BA0FC0` tới nhóm 32–35; nhóm này đều bằng 1
+ở Herb và Line02 đã đo. Nhóm 24–27 bằng 1 ở Herb và 0 ở Line02; nhóm 28–31 của Line02 là `1,0,1,0`.
+Không dùng dword offset 24 làm footprint hoặc một scalar chung cho type 3. Ý nghĩa di chuyển của từng getter
+và đường thực thi tới quyết định chặn vẫn chưa có đối chứng native return đạt.
+
+Các lượt đối chứng tiếp bị lỗi trước khi tới negative Line hoặc trước khi cài probe direct. Giá trị wrapper dùng
+`FinishBreakpoint` lệch với body tĩnh không được dùng làm contract. Raw và nguyên nhân chưa rõ được giữ nguyên;
+không lặp route lỗi nếu chưa có điều kiện mới. Line01, hướng khác của Line02, footprint/ray MissileBase/PinPillar,
+route phục vụ hai vòng/reset và coverage roster/item vẫn mở; không mở preset Camp08 từ lát này.

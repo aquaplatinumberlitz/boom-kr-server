@@ -1,0 +1,66 @@
+{
+  "id": "AUD124",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "checkpoint-merge-and-side-publication-integration"
+  ],
+  "completed_through": "CP313",
+  "recorded_utc": "2026-11-16T11:30:59.869666+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/evidence/rust-service/g1-camp08-passable.json",
+    "docs/content/tile-semantics.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/side-publication-correction.json",
+    "tools/check_checkpoints.py",
+    "tools/test_checkpoint_source_history.py",
+    "local/research/codex/cp313-focused-verification.json",
+    "local/research/codex/g1-camp08-passable-native-r1/observation-verification.json",
+    "local/research/codex/g1-camp08-passable-native-r2/failure-verification.json",
+    "local/research/codex/g1-camp08-passable-native-r3/failure-verification.json",
+    "local/research/codex/g1-camp08-passable-native-r4/failure-verification.json"
+  ],
+  "method": "Đọc README → PLAN → PROTOCOL → RESEARCH, source checker và kiểm âm va chạm ID/merge/rename/later blob. Đối chiếu CP307/310/311/312 focused pins và giữ hai lần full checker lỗi. Đọc raw từng run Camp08: r1 có 7 bom/Line ray và chặn di chuyển; r3/r4 có fresh Herb positive nhưng không hoàn tất. Tách getter24/28/32 tĩnh khỏi native predicate return; bỏ wrapper FinishBreakpoint mâu thuẫn. Không nâng acceptance từ type 3/flag 0 hoặc từ exit1. Kernel Rust không đổi sau CP311; audit hoàn tất nhóm checker, không hoàn tất terrain/G1.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Full-history publication có thể lấy record CP307 cũ trên nhánh L1 bị thay.",
+      "correction": "Giữ publication đường dẫn thông thường của nhánh được chọn; chỉ fallback merge khi không có. Kiểm70ca và focused 2677 pins đạt, không sửa record cũ.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "docs/evidence/checkpoints/side-publication-correction.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Type3/seed0 có thể bị diễn giải thành đi xuyên tự do.",
+      "correction": "Line02 chặn A nhưng tia đi qua tới Herb02. Byte nhóm 24/28/32 khác nhau; không áp scalar/footprint chung.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/content/tile-semantics.md",
+        "docs/evidence/rust-service/g1-camp08-passable.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Wrapper native return hoặc run có positive từng phần có thể bị báo đạt toàn route.",
+      "correction": "Bốn run đều exit 1; direct getter chưa có mẫu, wrapper mâu thuẫn bị loại. Fresh Herb positive và r1 Line/ray giữ phạm vi riêng. Không retry route lỗi khi chưa có điều kiện mới.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-camp08-passable.json",
+        "docs/RESEARCH.md",
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Full checker exact head và CI trước merge PR426.",
+    "MissileBase/PinPillar là nhánh độc lập tiếp; Line predicate runtime, serving terrain/reset/roster, Tomb12 và nhómitem còn mở.",
+    "G1/M8 chưa hoàn tất; không tiếp L1 của Claude."
+  ]
+}
