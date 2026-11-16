@@ -188,13 +188,23 @@ Bộ Hàn UTF-8 qua 949x hiện như dữ liệu gốc ở client A của vi-04 
 
 ### Bổ sung sau CP310 (16/11)
 
-**Font: dùng bộ VN làm mặc định.** Bộ font VN của PopTag (`CxUni`/`CxUniBold` 12×16, `CxUniGulim` 12×15,
-`CxUniGulimBold` 12×16) giữ đủ dấu chồng của chữ hoa (`Ệ`, `Ố`, `Ầ`), còn hình mượn từ `CxUni` KR 12×12 thì mất dấu mũ
-của `Ệ` và dính dấu ở `ế`. Engine 00967 đọc khổ cao từ header nên nạp được bộ này. Gulim VN để advance 6 cho chữ Hàn rộng
-12 điểm nên chữ Hàn ở ô Gulim (chạy chữ, ô chọn người nhận chat) đè lên nhau; `tools/l10n_949x.py vnfonts` lấy advance
-của font KR cho các ô Hàn/CJK. Sau sửa, chữ Hàn và dòng trộn Hàn–Việt đọc được ở cả hai client; tiêu đề phòng
-`ỆỐẦ Việt 한국 ếộ` hiện đủ dấu. Cách mượn hình vào Gulim KR (`fonts`) giữ làm phương án dự phòng khi không dùng được bộ VN.
-Chưa thấy dòng bị cắt hay đè trong các màn đã chụp; nhãn `Số người` vẫn đè giá trị như với font KR.
+**Font: bộ VN cho nhãn, Gulim 12×12 gọn cho ô nhập.** Bộ font VN của PopTag (`CxUni`/`CxUniBold` 12×16) giữ đủ dấu chồng
+của chữ hoa (`Ệ`, `Ố`, `Ầ`), còn hình mượn từ `CxUni` KR 12×12 thì mất dấu mũ của `Ệ` và dính dấu ở `ế`. Engine 00967 đọc
+khổ cao từ header nên nạp được bộ này cho nhãn. Ô nhập và ô chọn người nhận của layout KR chỉ cao 12 điểm nên cắt hàng
+dưới của Gulim VN 15/16 hàng (mất dấu nặng, đuôi `g`); client VN không bị vì giao diện 1024×768 của nó có ô cao hơn. Vì
+vậy `tools/l10n_949x.py vnfonts` dựng `CxUniGulim`/`CxUniGulimBold` 12×12: chữ Hàn/CJK lấy từ Gulim KR, chữ Latin/Việt lấy
+từ Gulim VN, giữ 10 hàng thân và chân chữ, gộp vùng dấu phía trên vào 2 hàng, viền sinh lại bằng giãn 8 hướng (đúng cách
+file font KR lưu viền). Chữ Hàn ở `CxUni` VN lấy advance của font KR. Cách mượn hình vào Gulim KR (`fonts`) giữ làm dự phòng.
+
+**Layout của 00967 là hằng trong exe**, không có file layout trong pack; nhãn và giá trị đặt ở toạ độ cố định. Client VN
+cũng vẽ giá trị ở toạ độ cố định (ảnh VN cũ của `boom-re` cho thấy khoá `PREMAX` bị số đè, chữ dài chạy ra ngoài nút loại
+game). Vì vậy chữ tràn được sửa bằng câu ngắn hơn trong catalog. Đo bằng font: nhãn số người tối đa khoảng 41 điểm
+(`Số chỗ` 39 vừa, `Số  người` 55 đè số), nút loại game khoảng 71 điểm (`Bắt thủ lĩnh` 65 và `Leader Hunt` 69 vừa;
+`Bắt đội trưởng` 81 và `Catch the Leader` 97 tràn), nhãn chế độ khoảng 95 điểm (`Even Teams` 70 vừa, `Even Teams Only` 99
+bị ô kế che). Các khoá `PREMAX`, `CreateDlgGameTypeFlagHunt`, `CreateDlgModeManner` có ở cả `ClientString` và
+`csysstr.ssd` và client dùng bản `csysstr`, nên catalog phải sửa cả hai. Khung chat ngắt dòng theo bề rộng ký tự, không theo
+từ; chèn xuống dòng `\n` ở ranh giới từ trong chuỗi `csysstr` (ví dụ `SuperChiefCanStartDetail` tiếng Anh) cho dòng gãy
+đúng chỗ. Trước/sau ở `local/review-fix/` ([evidence](../evidence/l10n-utf8-949x-layout-fix.json)).
 
 **Ảnh khác shape.** Dựng với `--allow-shape-change` thay được 549/549 ảnh Việt và 339 ảnh Anh (4 ảnh Anh không có bản Bắc
 Mỹ). Client không lỗi; các nút trước đây bị bỏ như `TẠO PHÒNG`, `ĐI TẮT`, `TÙY CHỌN`, `SIÊU THỊ`, `CREATE ROOM`,
@@ -248,7 +258,7 @@ Evidence: [ảnh và chuỗi exe](../evidence/l10n-utf8-949x-images-r4.json), [t
 - **Ảnh còn chữ Hàn**: danh sách cần vẽ ở mục bổ sung phía trên.
 - **Chữ do server gửi và chữ cứng trong exe** (thông báo chạy chữ, nhắc trong ô chat phòng) vẫn tiếng Hàn. Tên map ở phòng
   lấy từ dữ liệu map server gửi (client ghi đè `fxdynmapinfo.ssd`), nên là `Factory07`.
-- **Nhãn tràn**: `Số người` đè lên giá trị ở khung map.
+- **Nhãn tràn**: sửa bằng câu ngắn trong catalog (mục layout phía trên); các câu đã đo chờ cập nhật trong boom-re-l10n.
 - **IME tiếng Hàn thật** (composition từng âm tiết) chưa thử trên Wine; đường đó đi `ImmGetCompositionStringW/A` sẵn có
   và qua hook khi không có ký tự tiêm.
 - **Server lưu UTF-8**: chưa làm; server nhận và chuyển byte 949x. Client chưa vá thấy sai các ký tự mở rộng.
