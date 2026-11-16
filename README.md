@@ -33,10 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP320: Factory07 có terrain và route hai account qua hai vòng/reset.**
-[Bốn loại thùng, Fire/Bomb ẩn và giới hạn](docs/protocol/terrain.md#rust-factory07-terrain) đã có bằng chứng KR
-và Rust, giữ verifier counter sai scope cùng lượt đầu dừng sau một vòng. G1 tiếp roster 4/8 của Factory07,
-coverage item/nhân vật theo [Bảng điều hành](docs/PLAN.md#dashboard); M8 và L1 của Claude vẫn mở.
+**CP321: Factory07 có route 2/4/8, native item stat và đối chứng Glass00.**
+[Contract và giới hạn](docs/protocol/terrain.md#rust-factory07-terrain) có thùng, Fire/Bomb ẩn, hai vòng/reset,
+static và Glass ray trên Rust; giữ lỗi debugger của control Glass và các bản sửa report riêng.
+G1 tiếp coverage còn thiếu, nhóm item/nhân vật theo [Bảng điều hành](docs/PLAN.md#dashboard); M8 và L1 của Claude vẫn mở.
 
 ## Bắt đầu
 

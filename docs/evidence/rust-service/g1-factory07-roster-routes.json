@@ -1,0 +1,251 @@
+{
+  "schema": "kre-g1-factory07-roster-routes-v1",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/terrain.md#rust-factory07-terrain",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "scope": "Route Factory07 bốn/tám account qua thùng, Fire/Bomb ẩn, native stat, hai vòng/reset và Start kế; route hai người có bằng chứng riêng. Glass00 có control terrain tắt và tích hợp Rust, gồm initializer của bốn loại static.",
+  "runs": [
+    {
+      "roster": 4,
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "d2a4ee48e3716c0e95755a78a8145fdc411419fa100538b620abf19702daa5b3",
+      "raw_files": 480,
+      "preflight_files": 2268,
+      "overall_returncode": 0,
+      "service_sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e",
+      "native_item_records_by_view": {
+        "A": 16,
+        "B": 16,
+        "C": 16,
+        "D": 16
+      },
+      "bombs": 18,
+      "snapshots_per_layer_per_view": 39
+    },
+    {
+      "roster": 8,
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "070dd1c6c9cada3ad9f17421a4542f0750892cf615d09437906329bce22a026f",
+      "raw_files": 1104,
+      "preflight_files": 2276,
+      "overall_returncode": 0,
+      "service_sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e",
+      "native_item_records_by_view": {
+        "A": 16,
+        "B": 16,
+        "C": 16,
+        "D": 16,
+        "E": 16,
+        "F": 16,
+        "G": 16,
+        "H": 16
+      },
+      "bombs": 22,
+      "snapshots_per_layer_per_view": 47
+    }
+  ],
+  "static_controls": [
+    {
+      "name": "g1-factory07-glass-native-r1",
+      "result": "verified_Factory07_Glass_movement_and_power2_ray_without_init_probe",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "07057a27d0cfa39589fae608a653942716f5cde44f56011b9f4f9225839bda04",
+      "raw_files": 144,
+      "preflight_files": 2284,
+      "overall_returncode": 0,
+      "diagnostic_limits": [
+        "One slot2 control with visible design Fire; terrain disabled, no Rust shadow/hidden drop/results/reset or fullmap acceptance.",
+        "Initializer samples unavailable because footprint probe was never installed; original frozen verifier fails at missing samples. Only one Glass anchor movement/ray direction observed. No push or original authority/distribution claim.",
+        "Wine/LAN diagnostic; no Internet/load/durability/M8 claim. Original malformed visible-floor candidate was corrected before freeze and is retained."
+      ]
+    },
+    {
+      "name": "g1-factory07-glass-serving-native-r1",
+      "result": "verified_Factory07_Glass_Rust_observations_before_debugger_tail_errors",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "run_sha256": "7666c9442a95bef5aca78886d57aae9aab69480b2166a3f212b2b1e05ab25ae9",
+      "raw_files": 144,
+      "preflight_files": 2296,
+      "overall_returncode": 0,
+      "diagnostic_limits": [
+        "Wrapper exit0 is retained; B K2/GDB and C fatal GDB errors emitted after timestamped postcompletion peer events exclude clean debugger shutdown. Original frozen verifier and incomplete v2 retained; this v3 checks preceding required native observations.",
+        "One slot2 Rust terrain control with visible design Fire. No hidden drop/results/reset/fullmap acceptance. Initializer observations collected separately from prior missing probe.",
+        "Four static initializer samples and one Glass anchor movement/ray direction. No push or original authority/distribution claim.",
+        "Wine/LAN diagnostic; no Internet/load/durability/M8 claim. Original malformed visible-floor candidate was corrected before freeze and is retained."
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-factory07-serving4-native-r1/serving-verification.json",
+      "bytes": 188388,
+      "sha256": "f3ba7b03a2e72915b6d75a63be68ebec996a8e46669d6d0f0a261ecd1989a4fb"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving4-native-r1/native-items-serialization-correction-verification.json",
+      "bytes": 363108,
+      "sha256": "861b31bd6e8a501ece26be36ca4bfcf12a8d339fb46195b9b495a8129c46f3ac"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving4-native-r1/native/raw-seal.json",
+      "bytes": 114690,
+      "sha256": "fc8a6a066148441a0848028d7ea0a198f21fdefae0676644b9a3697dfc115abf"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving4-native-r1/native/runtime-preflight.json",
+      "bytes": 926408,
+      "sha256": "74961d21a8c1cfa9ad749f676f77154248a640c935c7074409562fa2bb1e05db"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving4-native-r1/native/recipe.json",
+      "bytes": 1252,
+      "sha256": "68a1f84bbec0b88f86b286aee8cdde88dbe845316bda40e058c8f9f742e331b2"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving4-native-r1/prelaunch-static-review.json",
+      "bytes": 1410,
+      "sha256": "7e28b257e5b2c9c22694026e5b49d6276105dc9a5944ab092fe1ce538effa28a"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving4-native-r1/manual-image-review.json",
+      "bytes": 871,
+      "sha256": "ee8bc2825248c63a851f1e3f4e566dd641bb987cc50d698ebccb572ee3009903"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving8-native-r1/serving-verification.json",
+      "bytes": 371284,
+      "sha256": "77d9535b71f9f8b4db5f9e91ec4747c911732819601167179fe9331125a9e8c8"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving8-native-r1/native-items-serialization-correction-verification.json",
+      "bytes": 1411352,
+      "sha256": "9945ea6664e2eb1268766e30c258aaac3f27bf79882981ae3e04f647579322e6"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving8-native-r1/native/raw-seal.json",
+      "bytes": 264154,
+      "sha256": "1ef57e30d740aa8100ad444d70b70c9aa862e32d0283e445d0c56ef96e988134"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving8-native-r1/native/runtime-preflight.json",
+      "bytes": 931671,
+      "sha256": "7c9e074ada96657554c59fdd186d5e7a9897b75b0976abbfe46218716974188e"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving8-native-r1/native/recipe.json",
+      "bytes": 1252,
+      "sha256": "7cafc8bacdc2d0ceaee6e539f99d0605385748b720078edac5502883a9b55524"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving8-native-r1/prelaunch-static-review.json",
+      "bytes": 1596,
+      "sha256": "152ee79aa7e93fea97ced616ada3353a7700560c413242df8927618ac66d3188"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving8-native-r1/manual-image-review.json",
+      "bytes": 922,
+      "sha256": "31b73e3df7160177deb23f439875d59a762bc6c87d5135eb820438eadfd91af3"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-native-r1/glass-observations-verification.json",
+      "bytes": 102023,
+      "sha256": "9b7d33b86a675ffd2307551486dde539c2123a8edd4046f70f09c643ed2fa754"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-native-r1/native/raw-seal.json",
+      "bytes": 32317,
+      "sha256": "875a180980ccfb687944238a81c267008b522a2dd4fd29f8f7e6c496151c908b"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-native-r1/native/runtime-preflight.json",
+      "bytes": 933665,
+      "sha256": "b2c797f0b82a62b1361928234396fd26cae97c466abd94eb39043ba4131ff144"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-native-r1/native/recipe.json",
+      "bytes": 1239,
+      "sha256": "d22277abd52c32c9ed9d2e7529b748a34aa6dd1d887cfbc8d363468a2449af9e"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-serving-native-r1/glass-observations-verification.json",
+      "bytes": 123374,
+      "sha256": "fa56ea92b3d69a039f409f6d69c7716e051836833f2e067883917150dfbe91fc"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-serving-native-r1/native/raw-seal.json",
+      "bytes": 33467,
+      "sha256": "744381e79f18cd7aeb803d9abe8655115b8a90384417629cd8ec0531a939d71d"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-serving-native-r1/native/runtime-preflight.json",
+      "bytes": 940125,
+      "sha256": "ce603c235092465f54a18a537047d411ba81bca88ce4d7bda9c4e2fbc0400bac"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-serving-native-r1/native/recipe.json",
+      "bytes": 1271,
+      "sha256": "a9b1bd84b6d249fd3f564aeb3db6ea84a71839a4753f5d3b60d9385c4a93254d"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving8-native-r1/static-ray-observations-verification.json",
+      "bytes": 65391,
+      "sha256": "f8c09f81d9bb1516ef6968a884ce0c2ced4ddf48e9f4f2c34274745dbe49943d"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-native-r1/probe-installation-review.json",
+      "bytes": 1556,
+      "sha256": "e31b3e70dd814737e2ebb004a10d2e753ce28020ccd1f9bf4ff0203d9aef7c59"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-native-r1/visible-floor-layout-correction.json",
+      "bytes": 1261,
+      "sha256": "fcb95314daba61c624f5ca43bb6b1bd1492094d5281a215c5043b680bb09e774"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-serving-native-r1/manual-image-review.json",
+      "bytes": 696,
+      "sha256": "3a03616ae5727705e18ad68a19fa4f3cc62842a8fa9e656d557d905d5f396606"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-glass-serving-native-r1/debugger-tail-observation-diagnosis-v2.json",
+      "bytes": 1427,
+      "sha256": "995d3ae7b87430a0e6912fee0b087e27c4e8b8cfc27479758566a0ccf561ee4e"
+    },
+    {
+      "path": "local/research/codex/cp320-exact-head-exit.json",
+      "bytes": 381,
+      "sha256": "6dde68d979cb979d25519b4e2a7c8ed9fcd86167459e83545a66cdedde1686bd"
+    },
+    {
+      "path": "local/research/codex/cp320-supported-checks-verification.json",
+      "bytes": 1111,
+      "sha256": "9ad6921aa594d85cc72d8d3aac142ee6f70ace6a79176e5b112dcfbb4c41a95e"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-r1/roster-runtime-extension-reuse.json",
+      "bytes": 1688,
+      "sha256": "5cec63444ae7189eba1fbe6a3032978186a6758fa102a55eaf6b0a7b6094a171"
+    }
+  ],
+  "observations": [
+    "A lặp sáu root power 1 đã đo rồi root (1,0) power 2; nhóm thua tự đặt bom tại spawn gốc. Mọi recipient có full 195 flags trước/sau mỗi callback và mask 1D24 bằng 0.",
+    "Hidden Bomb701 tại (2,0), Fire700 tại (1,4) là design. Actual 124/165, native reader 12 byte/errors 0/item found và protected stat xác minh Bomb 2→3, Fire 1→2; mọi stat của actor khác giữ nguyên.",
+    "Ba clock khôi phục spawn, sáu stat và cờ; hai native rank/return, DB hai complete và một cancelled cuối đúng Factory07, đầy đủ player, thưởng 0.",
+    "Topology, capacity, allowlist capture và observer đều bao phủ roster trước freeze; không thêm cờ hoặc nhánh capacity vào production. Binary giữ nguyên từ CP318.",
+    "Block00/01/02 có native ray ở tám view qua hai vòng; Glass00 có movement âm, ray power 2 dừng trước Blue phía sau và Blue bên cạnh vỡ. Lượt đầu thiếu cài probe initializer được giữ; lượt tích hợp cài đúng probe và kiểm source/class/footprint.",
+    "Fixture visible Fire đầu tiên bị bố trí sai vị trí list2 count, sửa và parse ba list đúng trước freeze; file lỗi giữ nguyên, chưa runtime nào dùng.",
+    "Trường native_items trong report roster gốc bị ghi nhầm counter list do biến items được dùng lại sau các predicate item. Giữ report/verifier frozen; bản kiểm bổ sung từ sealed raw lưu đúng 16 native item records mỗi view và kiểm lại toàn bộ tuple/reader/stat.",
+    "Giữ bản precheck CP320 dùng cờ --check không hỗ trợ; check_docs đã kiểm catalog, lệnh standalone được sửa và đã qua. Bổ sung receipt, không sửa record/raw CP320."
+  ],
+  "limits": [
+    "Chỉ các route 2/4/8 đã đo; chưa mọi cỡ/roster sparse, mọi ô/hướng hoặc toàn map/gameplay G1.",
+    "Không nghiệm thu thao tác đẩy từ RTTI; Glass00 đã có một hướng di chuyển/ray và integration; coverage hướng khác vẫn theo RESEARCH. Item thử là design, không phân phối rơi gốc.",
+    "Lượt Glass Rust giữ wrapper exit 0 nhưng B/C có lỗi K2/GDB sau các peer event có timestamp lớn hơn controller completion. Hai frozen/post-run verifier thất bại giữ nguyên; bản v3 chỉ xác minh dữ liệu trước lỗi. Không chứng nhận debugger shutdown sạch hoặc root cause.",
+    "Wine/LAN cô lập và DB/output tmpfs chẩn đoán; không Internet transport mới, tải 50 người/8 phòng, backup/restore hoặc M8."
+  ]
+}

@@ -178,11 +178,11 @@ Còn hướng/roster khác và nhóm item theo PLAN. Ground+AC vẫn opaque như
 Lượt 6 giữ overall exit 1 và giới hạn capture/debugger/cleanup tại contract; chỉ quan sát native được xác minh riêng. Giữ lỗi setup/verifier/export cũ, không chứng nhận M8.
 
 <a id="gap-factory07-terrain"></a>
-### Factory07: route hai người đã có, còn roster và coverage gameplay
+### Factory07: route 2/4/8 và static đã có, còn coverage gameplay
 
-[Adapter](protocol/load-phase.md#rust-map-profile-adapter) đã có basic hai vòng. [Đối chứng terrain](protocol/terrain.md#rust-factory07-terrain) có đủ 195 ô của 1D54/1D24 khi terrain tắt, sáu power 1 phá chín thùng gồm bốn loại box.
-FixedBox tại probe trước default có counter 0 rồi 1 trước hit; Paper/Safety là MoveAbleBox, không dùng C4. Verifier sai scope counter giữ riêng; không lặp initial arrays hoặc body cache. Route Rust hai người có counter đúng lớp, thùng, Fire/Bomb ẩn, static âm, hai kết quả/reset và ván kế. Tiếp roster 4/8 với spawn gốc, đủ recipient và hai lớp cờ; kiểm capacity/topology/capture trước freeze rồi coverage theo PLAN.
-Không sửa exporter hoặc lặp basic lookup; không suy gameplay đẩy thùng từ RTTI hoặc dword 28.
+[Terrain và route](protocol/terrain.md#rust-factory07-terrain) có đủ hai lớp 195 cờ, bốn loại thùng, Fire/Bomb ẩn và hai vòng/reset/ván kế cho roster 2/4/8. Direct native item stat đã kiểm mọi recipient; report ghi nhầm field được sửa bằng chứng bổ sung, không đổi raw.
+Bốn tên static có initializer/source/footprint; Block00/01/02 có ray qua hai vòng, Glass00 có một hướng movement/ray power 2 và tích hợp Rust. Lượt Glass giữ lỗi debugger sau completion và verifier thiếu cài probe cũ.
+Tiếp các hướng/roster và nội dung còn thiếu theo acceptance G1; không lặp initial arrays, route trên hoặc body cache. Không sửa exporter hoặc suy gameplay đẩy thùng từ RTTI/dword 28; các ability còn theo nhóm item.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn coverage terrain/item và giới hạn roster
