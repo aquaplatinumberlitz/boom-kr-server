@@ -120,9 +120,17 @@ def historical_checkpoint_publication(root, relative, expected_sha, expected_byt
     record_path = f'docs/evidence/checkpoints/records/{checkpoint}.json'
     try:
         births = subprocess.run(
-            ['git', 'log', '--reverse', '--topo-order', '--full-history', '-m', '--no-renames',
-             '--diff-filter=A', '--format=%H', 'HEAD', '--', record_path],
+            ['git', 'log', '--reverse', '--diff-filter=A', '--format=%H', 'HEAD', '--', record_path],
             cwd=root, capture_output=True, text=True, check=True).stdout.splitlines()
+        if not births:
+            # Ordinary path history preserves the selected branch's publication
+            # when independent branches temporarily used the same checkpoint ID.
+            # Only recover merge-created/renamed records when that path has no
+            # ordinary birth; never let a side branch replace an existing one.
+            births = subprocess.run(
+                ['git', 'log', '--reverse', '--topo-order', '--full-history', '-m', '--no-renames',
+                 '--diff-filter=A', '--format=%H', 'HEAD', '--', record_path],
+                cwd=root, capture_output=True, text=True, check=True).stdout.splitlines()
         if not births:
             return None
         revision = births[0]
