@@ -820,6 +820,32 @@ hoàn tất hai vòng và giữ exit 0. Lượt kế thiếu file note review tr
 ghi rõ giới hạn quy trình, không được gọi là prelaunch review. Raw/input frozen và verifier thất bại giữ nguyên;
 không suy Internet, tải, độ bền lưu dữ liệu hoặc M8 từ output/DB tmpfs chẩn đoán.
 
+[Route bốn/tám account và các control static](../evidence/rust-service/g1-factory07-roster-routes.json)
+dùng cùng kernel, spawn gốc và hai đội. Mọi recipient có cờ terrain khớp actual placement ở mỗi callback,
+hai kết quả/reset và Start kế. Native 165 tìm thấy đúng item, đọc đủ payload và thay đổi stat của A:
+Bomb 2→3, Fire 1→2; sáu stat của actor khác giữ nguyên. Clock kế khôi phục stat và thùng; journal đầy đủ
+player, đúng Factory07 và thưởng 0. Report frozen ghi nhầm trường `native_items` thành danh sách counter
+do dùng lại biến sau các predicate item. Report/verifier cũ giữ nguyên; bản kiểm bổ sung từ sealed raw
+lưu đúng records item và kiểm lại toàn bộ tuple, reader, item lookup và secure stat, không chạy native lại.
+
+Ray tại các sample Block00/01/02 có getter 1D54 trả 1 và cell trả trạng thái 2/result 0 trong tám view qua
+hai vòng. Glass00 được kiểm riêng bằng slot 2 từ spawn `(12,1)`: actor tới `(12,2)`, thử đi lên Glass `(11,2)`
+rồi quay lại. Fire 702 hiện trên nền tại `(12,2)` là design, native 165 tăng power 1→2 ở slot 2 trong cả bốn view.
+Bom power 2 tại `(12,2)` dừng ở Glass; Blue `(10,2)` phía sau còn nguyên, Blue `(12,3)` bên cạnh vỡ.
+Đủ 195 cờ của hai lớp được kiểm trước/sau, terrain tắt ở đối chứng rồi bật trong lượt tích hợp Rust.
+Đây là một hướng/anchor Glass, không phải nghiệm thu thao tác đẩy hoặc mọi hướng trên map.
+
+Lượt tích hợp cài đúng probe initializer đã có nguồn trước load map. Bốn sample Glass00/Block00/01/02
+đều là `CGOTileStatic`, kích thước 1×1; 72 byte tại initializer và qua context AC sau init khớp nguồn pack.
+Không nhập offset AC này sang Ground hoặc MoveAbleBox. Lượt đối chứng trước đó thiếu lệnh cài probe nên
+không có initializer records; verifier frozen thất bại được giữ, bản quan sát chỉ xác minh movement/ray/stat.
+Fixture Fire hiện đầu tiên cũng được sửa đúng thứ tự list trước freeze; file ứng viên lỗi chưa được chạy và giữ nguyên.
+
+Lượt Glass Rust giữ wrapper exit 0 nhưng có lỗi K2/GDB ở B và lỗi fatal GDB ở C. Trong từng log, trước lỗi
+có peer event mang timestamp lớn hơn controller completion, nên xác minh riêng các quan sát đã hoàn tất
+trước đuôi lỗi. Verifier tổng và bản sửa chỉ bao phủ B đều được giữ; bản quan sát tiếp kiểm đủ hai role.
+Không suy root cause, debugger shutdown sạch, phục hồi hoặc M8 từ những quan sát này.
+
 <a id="rust-tomb12-boundary"></a>
 ## Tomb12: hai lớp cờ và route phục vụ
 

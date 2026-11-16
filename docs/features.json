@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP308",
+  "as_of": "CP321",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -1375,7 +1375,8 @@
           "docs/evidence/rust-service/g1-tomb12-initial.json",
           "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
           "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
-          "docs/evidence/rust-service/g1-factory07-terrain.json"
+          "docs/evidence/rust-service/g1-factory07-terrain.json",
+          "docs/evidence/rust-service/g1-factory07-roster-routes.json"
         ]
       },
       "coverage": {
@@ -2462,7 +2463,8 @@
           "docs/evidence/rust-service/g1-tomb12-initial.json",
           "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
           "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
-          "docs/evidence/rust-service/g1-factory07-terrain.json"
+          "docs/evidence/rust-service/g1-factory07-terrain.json",
+          "docs/evidence/rust-service/g1-factory07-roster-routes.json"
         ]
       },
       "coverage": {
@@ -2736,7 +2738,8 @@
           "docs/evidence/rust-service/g1-tomb12-initial.json",
           "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
           "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
-          "docs/evidence/rust-service/g1-factory07-terrain.json"
+          "docs/evidence/rust-service/g1-factory07-terrain.json",
+          "docs/evidence/rust-service/g1-factory07-roster-routes.json"
         ]
       },
       "coverage": {
@@ -2998,7 +3001,8 @@
           "docs/evidence/rust-service/g1-village10-herb.json",
           "docs/evidence/rust-service/g1-village10-terrain.json",
           "docs/evidence/rust-service/g1-mixed-map-spawns.json",
-          "docs/evidence/rust-service/g1-factory07-terrain.json"
+          "docs/evidence/rust-service/g1-factory07-terrain.json",
+          "docs/evidence/rust-service/g1-factory07-roster-routes.json"
         ]
       },
       "coverage": {
@@ -3229,7 +3233,8 @@
           "docs/evidence/rust-service/g1-terrain-players.json",
           "docs/evidence/rust-service/g1-map-terrain.json",
           "docs/evidence/rust-service/g1-patrit-terrain.json",
-          "docs/evidence/rust-service/g1-village10-herb.json"
+          "docs/evidence/rust-service/g1-village10-herb.json",
+          "docs/evidence/rust-service/g1-factory07-roster-routes.json"
         ]
       },
       "coverage": {
@@ -3289,7 +3294,8 @@
               "docs/protocol/terrain.md#rust-terrain",
               "docs/protocol/terrain.md#rust-player-terrain",
               "docs/protocol/terrain.md#rust-selected-map-terrain",
-              "docs/protocol/terrain.md#rust-patrit-terrain"
+              "docs/protocol/terrain.md#rust-patrit-terrain",
+              "docs/protocol/terrain.md#rust-factory07-terrain"
             ]
           },
           "windows_original": {

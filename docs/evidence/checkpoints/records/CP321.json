@@ -1,0 +1,225 @@
+{
+  "id": "CP321",
+  "previous": "CP320",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-16T22:50:10.749543+00:00",
+  "context_commit": "b9db44b5d512c6ca02372870ad2e9d11de14aa82",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Đưa route Factory07 đã đo sang bốn/tám account và đo trực tiếp native stat của item ẩn trên mọi view.",
+  "scope": "Cùng binary CP318, spawn gốc, hai đội và current account/transport. Route 4/8 và Glass00 control/integration có native độc lập; chưa toàn Factory07/G1/M8.",
+  "artifacts": [
+    {
+      "name": "client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "service",
+      "sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-factory07-terrain",
+    "docs/evidence/rust-service/g1-factory07-roster-routes.json",
+    "docs/RESEARCH.md#gap-factory07-terrain",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Route bốn/tám account có 18/22 bom, mỗi view đủ 39/47 snapshot của từng lớp, counter đúng lớp, hai rank/return/reset và Start thứ ba. Toàn bộ 195 cờ khớp actual C2S118; journal đúng map/player, thưởng 0 đúng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-factory07-terrain",
+      "evidence": [
+        "FACT321-1826",
+        "FACT321-3092",
+        "FACT321-1317",
+        "FACT321-1955",
+        "FACT321-1817",
+        "FACT321-3079",
+        "FACT321-0009"
+      ],
+      "limits": "Chỉ route đã đo, spawn gốc và design hidden drops; chưa mọi hướng hoặc roster sparse."
+    },
+    {
+      "summary": "Consumer 165 có tuple đúng, tìm thấy item, đọc đủ 12 byte và không lỗi; secure stat của A tăng Bomb 2→3 và Fire 1→2, mọi stat của các actor khác giữ nguyên trong mọi view. Clock kế reset sáu stat và thùng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-factory07-terrain",
+      "evidence": [
+        "FACT321-1815",
+        "FACT321-3077"
+      ],
+      "limits": "Report gốc ghi nhầm field native_items thành counter list; giữ nguyên, dùng correction từ sealed raw. Không suy drop distribution gốc hoặc item ngoài hai kind đã đo."
+    },
+    {
+      "summary": "Block00/01/02 có direct ray ở tám view/hai vòng. Glass00 chặn movement/ray power 2, Blue phía sau còn nguyên, Blue bên cạnh vỡ và Fire của slot 2 tăng 1→2. Lượt terrain tắt giữ lỗi thiếu cài initializer probe; lượt Rust tích hợp cài đúng probe và đo class/source/footprint của bốn static samples.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-factory07-terrain",
+      "evidence": [
+        "FACT321-3096",
+        "FACT321-0712",
+        "FACT321-0878",
+        "FACT321-0989",
+        "FACT321-0946"
+      ],
+      "limits": "Chỉ các anchor/hướng đã đo; source/type không thay bằng chứng native. Lượt Glass Rust giữ lỗi K2/GDB của B/C sau timestamped peer event lớn hơn completion, không debugger shutdown sạch; không original authority hoặc phân phối rơi gốc."
+    },
+    {
+      "summary": "CP320 có một invocation dùng --check không hỗ trợ; giữ original pin/record. check_docs đã kiểm catalog, supported standalone/default validator cùng diff kiểm lại thành công; full checker exact head CP320 và CI đã qua trước merge/runtime mới.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-factory07-terrain",
+      "evidence": [
+        "FACT321-0020",
+        "FACT321-0017"
+      ],
+      "limits": "Correction quy trình, không sửa evidence hoặc claim gameplay CP320."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native roster 4/8 và direct pickup stat verification",
+      "result": "pass",
+      "evidence": [
+        "FACT321-1826",
+        "FACT321-3092"
+      ],
+      "limits": "Wine/LAN cô lập; không M8."
+    },
+    {
+      "check": "Glass00 terrain tắt và Rust integration, bounded native observations",
+      "result": "pass",
+      "evidence": [
+        "FACT321-0712",
+        "FACT321-0989",
+        "FACT321-0946"
+      ],
+      "limits": "B/C debugger có lỗi sau timestamped postcompletion event; original verifier và v2 thất bại giữ nguyên, không clean shutdown."
+    },
+    {
+      "check": "Preservation, docs/catalog/diff và audit nhóm",
+      "result": "pass",
+      "evidence": [
+        "FACT321-0022",
+        "FACT321-0021",
+        "FACT321-0008"
+      ],
+      "limits": "Full exact-head/history và CI trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP321-factory07-rosters.json",
+      "bytes": 1345197,
+      "sha256": "e335b822cf1e7b6c5d2bd36e375a4824be22caa8058b2b7002289d6140d58235",
+      "count": 4733
+    }
+  ],
+  "delta": {
+    "added": [
+      "Factory07 roster 4/8 và native item stats mọi recipient qua hai vòng/reset.",
+      "Glass00 movement/ray và source/class/footprint của bốn tên static trong control và Rust integration."
+    ],
+    "corrected": [
+      "Giữ lỗi invocation catalog CP320 cùng bản kiểm lại đúng CLI; không đổi record/raw cũ.",
+      "Giữ thiếu cài initializer probe, ứng viên floor sai layout trước freeze, lỗi debugger B/C ở đuôi và report gốc ghi nhầm field; correction riêng từ sealed raw."
+    ],
+    "superseded": [
+      "Thiếu route Factory07 bốn/tám account và bằng chứng Glass00 ray/movement."
+    ]
+  },
+  "blockers": [
+    "Chỉ các route 2/4/8 đã đo; chưa mọi cỡ/roster sparse, mọi ô/hướng hoặc toàn map/gameplay G1.",
+    "Không nghiệm thu thao tác đẩy từ RTTI; Glass00 đã có một hướng di chuyển/ray và integration; coverage hướng khác vẫn theo RESEARCH. Item thử là design, không phân phối rơi gốc.",
+    "Lượt Glass Rust giữ wrapper exit 0 nhưng B/C có lỗi K2/GDB sau các peer event có timestamp lớn hơn controller completion. Hai frozen/post-run verifier thất bại giữ nguyên; bản v3 chỉ xác minh dữ liệu trước lỗi. Không chứng nhận debugger shutdown sạch hoặc root cause.",
+    "Wine/LAN cô lập và DB/output tmpfs chẩn đoán; không Internet transport mới, tải 50 người/8 phòng, backup/restore hoặc M8."
+  ],
+  "completed_feature_groups": [
+    "g1-factory07-roster-and-static-controls"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp coverage hướng/roster và các map còn thiếu, nhóm item/nhân vật G1 rồi M8 theo PLAN; L1 thuộc Claude, không sửa exporter.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-16T22:50:10.749543+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo, Factory07 route 4/8, native item stat và Glass/static control; chưa toàn G1/M8.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 route 4/8, native item stat, Glass và coverage còn thiếu."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 route 4/8, native item stat, Glass và coverage còn thiếu."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 route 4/8, native item stat, Glass và coverage còn thiếu."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đã trỏ đúng anchor Factory07; contract cập nhật tại topic."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 route 4/8, native item stat, Glass và coverage còn thiếu."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 route 4/8, native item stat, Glass và coverage còn thiếu."
+    },
+    {
+      "path": "docs/content/tile-semantics.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 route 4/8, native item stat, Glass và coverage còn thiếu."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 route 4/8, native item stat, Glass và coverage còn thiếu."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 route 4/8, native item stat, Glass và coverage còn thiếu."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-factory07-roster-routes.json",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 route 4/8, native item stat, Glass và coverage còn thiếu."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Quy trình audit theo nhóm, waiver và owner L1 không đổi."
+    }
+  ]
+}

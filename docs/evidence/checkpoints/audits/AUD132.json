@@ -1,0 +1,113 @@
+{
+  "id": "AUD132",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-factory07-roster-and-static-controls"
+  ],
+  "completed_through": "CP321",
+  "recorded_utc": "2026-11-16T22:45:26.833300+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/content/tile-semantics.md",
+    "docs/evidence/rust-service/g1-factory07-roster-routes.json",
+    "local/research/codex/g1-factory07-serving4-native-r1/serving-verification.json",
+    "local/research/codex/g1-factory07-serving8-native-r1/serving-verification.json",
+    "local/research/codex/g1-factory07-serving4-native-r1/native-items-serialization-correction-verification.json",
+    "local/research/codex/g1-factory07-serving8-native-r1/native-items-serialization-correction-verification.json",
+    "local/research/codex/g1-factory07-serving4-native-r1/peer-root-position-observations.json",
+    "local/research/codex/g1-factory07-serving8-native-r1/peer-root-position-observations.json",
+    "local/research/codex/g1-factory07-serving4-native-r1/journal-account-join-verification.json",
+    "local/research/codex/g1-factory07-serving8-native-r1/journal-account-join-verification.json",
+    "local/research/codex/g1-factory07-serving8-native-r1/static-ray-observations-verification.json",
+    "local/research/codex/g1-factory07-glass-native-r1/glass-observations-verification.json",
+    "local/research/codex/g1-factory07-glass-native-r1/probe-installation-review.json",
+    "local/research/codex/g1-factory07-glass-native-r1/visible-floor-layout-correction.json",
+    "local/research/codex/g1-factory07-glass-serving-native-r1/glass-observations-verification.json",
+    "local/research/codex/g1-factory07-glass-serving-native-r1/debugger-tail-observation-diagnosis-v2.json",
+    "local/research/codex/g1-factory07-serving4-native-r1/manual-image-review.json",
+    "local/research/codex/g1-factory07-serving8-native-r1/manual-image-review.json",
+    "local/research/codex/g1-factory07-glass-serving-native-r1/manual-image-review.json",
+    "local/research/codex/cp320-supported-checks-verification.json"
+  ],
+  "method": "Đọc nguồn chuẩn rồi đối chiếu sealed raw và input, TCP giải mã độc lập, actual C2S118/124, native 159/158/165, toàn bộ 195 cờ mỗi lớp/view ở mỗi callback và ba clock. Route 4/8 có 18/22 bom và 39/47 snapshot mỗi lớp/view; hai rank/return/reset, journal map/player/character/team/result/reward và Start kế. Kiểm lại native item records trực tiếp từ raw sau khi phát hiện field report bị ghi nhầm counter; đủ 16 records mỗi view, sáu stat mọi actor và hai delta của A được kiểm. Mẫu actor0 quanh input Space khớp native root ở mọi view trong cửa sổ [-1s,+0.2s], dung sai 2 px, không suy tốc độ hoặc SLA. Join DB read-only immutable với actual launch account/player IDs cho mọi slot của ba journal record, cả hai roster. Reuse trace tám người cho Block00/01/02, rồi control Glass terrain tắt và Rust bật với Fire visible/slot 2/power 2, behind-cell âm và Blue bên cạnh dương. Bốn sample static có init/72 byte nguồn, AC và kích thước 1×1. Xem ảnh rank/clock/Glass. Lỗi debugger B/C được chặn sau peer event có timestamp lớn hơn completion, chỉ xác minh quan sát trước lỗi; không root cause hoặc clean shutdown.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Factory07 mới có route hai người.",
+      "correction": "Bổ sung route bốn/tám account, native basic-item stat, hai vòng/reset/ván kế, nguồn spawn gốc và join identity journal. Chỉ route đã đo, không mọi cỡ hoặc toàn G1.",
+      "fixed_in": [
+        "README.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-factory07-roster-routes.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Trường native_items của report frozen chứa counter list vì biến items được dùng lại sau các predicate item.",
+      "correction": "Giữ report/verifier cũ; bản kiểm bổ sung từ raw sealed lưu đúng 16 native item records mỗi view và kiểm lại exact tuple/reader/item lookup/stat. Không gọi counter records là item proof, không chạy native lại.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-factory07-roster-routes.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Source type 1/cờ khởi tạo 1 hoặc tên Glass chưa chứng minh ray/movement; file probe tồn tại chưa chứng minh được cài.",
+      "correction": "Reuse Block00/01/02 rays trong tám view/hai vòng. Glass có negative movement và power 2 ray stop trước Blue phía sau, Blue bên cạnh vỡ, Fire của slot 2 tăng 1→2. Lượt terrain tắt thiếu lệnh exec initializer probe, giữ failure/unknown; lượt Rust cài đúng và có bốn source/class/footprint samples. Không mở body mới.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/content/tile-semantics.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/g1-factory07-roster-routes.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Lượt Glass Rust wrapper exit 0 có thể bị gọi là debugger sạch; diagnosis đầu chỉ bao phủ B.",
+      "correction": "Giữ B K2/GDB và C fatal GDB cùng failed frozen/v2 verifiers. Trong mỗi log có peer event trước lỗi và sau completion, v3 chỉ dùng records trước lỗi. Không suy cause, recovery hoặc M8.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-factory07-roster-routes.json"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Fixture visible Fire copy cách bố trí hidden list nhưng cùng length nên chưa đủ kiểm structural layout.",
+      "correction": "Sửa list1 count/record rồi hai count list rỗng trước freeze. Ứng viên lỗi và script cũ giữ nguyên, chưa runtime nào dùng; native 582/124/165 và stat sau đó kiểm độc lập.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-factory07-roster-routes.json"
+      ]
+    },
+    {
+      "id": "F6",
+      "stale": "CP320 precheck có invocation --check không được feature_catalog hỗ trợ.",
+      "correction": "Giữ original pinned file và record; check_docs đã kiểm catalog, supported standalone/default validator và diff kiểm lại thành công; full checker/CI exact head CP320 đã qua trước merge/runtime mới.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-factory07-roster-routes.json"
+      ]
+    },
+    {
+      "id": "F7",
+      "stale": "Catalog as_of vẫn ghi CP308 dù refs và bằng chứng đã được cập nhật.",
+      "correction": "Đồng bộ as_of CP321 và sinh lại COVERAGE; không đổi lifecycle/gate hoặc báo tỉ lệ hoàn thành.",
+      "fixed_in": [
+        "docs/features.json",
+        "docs/COVERAGE.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "G1 còn coverage hướng/roster/nội dung, nhóm item và nhân vật theo PLAN; không suy mọi thao tác đẩy từ RTTI hoặc dword 28.",
+    "Item thử là design, không phân phối rơi server gốc hoặc authority/fairness tổng quát.",
+    "M8 còn Internet transport mới, 50 người/8 phòng, packaging, budgets, giám sát, backup/restore; Glass control không nghiệm thu debugger shutdown sạch.",
+    "L1 thuộc Claude; không sửa tools/export_map_profile.py hoặc client/pack/IDA DB nguồn, không công khai hạ tầng VPS/OCI."
+  ]
+}

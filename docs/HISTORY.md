@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP320: Factory07 có terrain và route hai account qua hai vòng/reset.**
+[Bốn loại thùng, Fire/Bomb ẩn và giới hạn](protocol/terrain.md#rust-factory07-terrain) đã có bằng chứng KR
+và Rust, giữ verifier counter sai scope cùng lượt đầu dừng sau một vòng. G1 tiếp roster 4/8 của Factory07,
+coverage item/nhân vật theo [Bảng điều hành](PLAN.md#dashboard); M8 và L1 của Claude vẫn mở.
+
+
 **CP319: Tomb12 có route thùng/item và bridge qua hai vòng/reset cho roster 2/4/6.**
 [Contract và giới hạn](protocol/terrain.md#rust-tomb12-boundary) giữ lỗi capture/cleanup của lượt sáu người,
 tách khỏi quan sát native đã xác minh. G1 tiếp terrain Factory07 và coverage item/nhân vật theo
