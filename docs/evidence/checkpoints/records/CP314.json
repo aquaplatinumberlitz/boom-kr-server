@@ -1,0 +1,221 @@
+{
+  "id": "CP314",
+  "previous": "CP313",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-16T12:08:30.476826+00:00",
+  "context_commit": "612197a771ff171e782affa81990255e56f481f0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Camp08: xác minh footprint khởi tạo type1 và native getter chặn Line02 bằng control có điều kiện storage mới.",
+  "scope": "Ba initializer/expanded footprint và direct getter control, không production code, map hoàn chỉnh hoặc M8.",
+  "artifacts": [
+    {
+      "name": "client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "service",
+      "sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-camp08-boundary",
+    "docs/evidence/rust-service/g1-camp08-footprint-predicate.json",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Ba CGOTileStatic/BA1350 có dữ liệu72 và width/height đúng; hai PinPillar1×1, MissileBase2×1 phủ12,10 và12,11. Cả hai view có init/writes/flags và ô cạnh âm.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "FOOT314-0142",
+        "FOOT314-0008"
+      ],
+      "limits": "Init/footprint only, không ray, movement, reset hoặc roster."
+    },
+    {
+      "summary": "Getter kích thước xét type:0/1 đọc dword24/28;2/3/10 trả1;4 trả0. Type1 actual initializer gắn data72 vào object+AC.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "FOOT314-0577",
+        "FOOT314-0592"
+      ],
+      "limits": "Không dùng field24 của type2/3 làm footprint chung; source consumer không thay native ray."
+    },
+    {
+      "summary": "Đối chứng fresh Herb positive/intact Line negative đạt với6bom power2. Direct BA0860 epilogue trả0 khớp byte24+direction tại A/B; wrapper cũ bị loại.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "FOOT314-0504"
+      ],
+      "limits": "Một route, hai account, DBtmpfs; Line01/hướng khác/serving reset và map tổng quát chưa đạt."
+    },
+    {
+      "summary": "r3/r4 account QueueExpired xảy ra trước return/reset và stale actor observer. Cùng route với DB tmpfs0700 đạt và closed DB export khớp bytes; r5 mode sai lỗi trước admin init được giữ.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "FOOT314-0253",
+        "FOOT314-0517",
+        "FOOT314-0277"
+      ],
+      "limits": "Chronology/isolation, chưa rootcause hoặc production fix/durability/M8."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Type1 initializer/footprint native",
+      "result": "pass",
+      "evidence": [
+        "FOOT314-0142"
+      ],
+      "limits": "57 raw,519 preflight pin; không gameplay/ray/reset."
+    },
+    {
+      "check": "Fresh Herb, Line negative và direct getter native",
+      "result": "pass",
+      "evidence": [
+        "FOOT314-0504"
+      ],
+      "limits": "113 raw,510 preflight pin; copied diagnostic DB trên tmpfs, không lưu bền."
+    },
+    {
+      "check": "Preservation/raw/cleanup/docs/catalog/diff và audit",
+      "result": "pass",
+      "evidence": [
+        "FOOT314-0015",
+        "FOOT314-0014",
+        "FOOT314-0007"
+      ],
+      "limits": "CI và full checker exact head vẫn bắt buộc trước merge."
+    },
+    {
+      "check": "PR426 full checker tại cee4c8c",
+      "result": "pass",
+      "evidence": [
+        "FOOT314-0013",
+        "FOOT314-0012"
+      ],
+      "limits": "519211 verified,0 unavailable,history true,0 errors. Đây là parent đã merge, không thay kiểm head CP314."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP314-camp08-footprint.json",
+      "bytes": 255150,
+      "sha256": "9a65c8b6d624e5f1aef48240b36e2106824bcddac540492a4c207075b88b4f65",
+      "count": 927
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native type1 init/footprint và direct getter Line02 control."
+    ],
+    "corrected": [
+      "Lỗi r3/r4 có account QueueExpired trước observer; không quy thành physics/probe rootcause.",
+      "DBtmpfs kiểm phép cô lập, không persistence hoặc production fix."
+    ],
+    "superseded": [
+      "Khoảng trống footprint khởi tạo3objects và direct Line02 getter trên route đã đo."
+    ]
+  },
+  "blockers": [
+    "Footprint run exit0,57raw,519preflightpins. Three CGOTileStatic and exactsource72/dimensions/writes/initialflags in two views; no ray or gameplay/reset/roster.",
+    "Line control r6 exit0,113raw,510preflightpins. Six power2 bombs, intactHerb01 positive, intactLine02 negative, direct BA0860 byte24+direction return0 at A/B. Type1/2/3 offset meanings stay distinct.",
+    "r6 uses private32MiB tmpfs mode0700 for copied diagnostic DB, then closed-byte export and unmount. No QueueExpired inthisrun; not a causal rootcause proof, durability/M8 or production change. r5 badmode/init failure and earlier QueueExpired/observer chronology retained.",
+    "Line01/otherdirections, MissileBase/PinPillar ray/coveredcell, servingterrain two-roundreset, rosters/items and Tomb12 remain open. No hypothetical originalserver/drop claim."
+  ],
+  "completed_feature_groups": [
+    "g1-camp08-static-footprint-and-line-getter-controls"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp ray/covered-cell MissileBase/PinPillar và Line01 theo PLAN; giữ giới hạn G1 và storage control riêng, không tiếp L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-16T12:08:30.476826+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo RE/init/footprint/direct getter và audit nhóm giới hạn; không toàn Camp08/G1 hoặc M8.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ footprint/direct getter, chronology lỗi và giới hạn storage/G1."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ footprint/direct getter, chronology lỗi và giới hạn storage/G1."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ footprint/direct getter, chronology lỗi và giới hạn storage/G1."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ footprint/direct getter, chronology lỗi và giới hạn storage/G1."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ footprint/direct getter, chronology lỗi và giới hạn storage/G1."
+    },
+    {
+      "path": "docs/content/tile-semantics.md",
+      "state": "updated",
+      "reason": "Đồng bộ footprint/direct getter, chronology lỗi và giới hạn storage/G1."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ footprint/direct getter, chronology lỗi và giới hạn storage/G1."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ footprint/direct getter, chronology lỗi và giới hạn storage/G1."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-camp08-footprint-predicate.json",
+      "state": "updated",
+      "reason": "Đồng bộ footprint/direct getter, chronology lỗi và giới hạn storage/G1."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Mục lục terrain đã có; sửa đúng topic, không wire mới."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Giữ quy trình và owner L1."
+    }
+  ]
+}
