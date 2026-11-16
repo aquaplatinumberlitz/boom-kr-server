@@ -41,3 +41,7 @@ và giới hạn native. Không diễn giải các nhóm này thành kích thư�
 Hai getter kích thước `7E7350`/`7E72B0` trả dword 24/28 cho type 0/1, hằng 1 cho type 2/3/10 và 0 cho type 4.
 Native ba type 1 Camp08 đã đối chiếu object `CGOTileStatic`, dữ liệu 72 byte và footprint mở rộng: MissileBase 2×1,
 hai PinPillar 1×1. [Contract Camp08](../protocol/terrain.md#rust-camp08-boundary) giữ loop, tọa độ và giới hạn ray/reset.
+
+Tomb12 đã có [đối chứng khởi tạo](../protocol/terrain.md#rust-tomb12-boundary) cho ground Waterway/bridge 2×1,
+hai sample ground mã -1 và sáu static 1×1. Cờ ban đầu khớp mask ứng viên chưa chứng minh di chuyển hoặc ray.
+Ground không dùng pointer `+AC` như lớp type 1/3 đã đo; không nhập nghĩa offset giữa các lớp.

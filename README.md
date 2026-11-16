@@ -33,10 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP316: Camp08 có Line01 ray và route StrongBox/Bomb/Fire tám account qua hai vòng/reset.**
-[Contract và giới hạn](docs/protocol/terrain.md#rust-camp08-boundary) giữ actual input, mọi cờ terrain và Start kế;
-coverage Camp08 còn lại, Tomb12, item/nhân vật và M8 vẫn mở theo [Bảng điều hành](docs/PLAN.md#dashboard).
-L1 tiếp tục do Claude phụ trách.
+**CP317: Camp08 có route hai vòng/reset cho roster 2/4/8; Tomb12 đã đo khởi tạo.**
+[Contract Camp08](docs/protocol/terrain.md#rust-camp08-boundary) giữ coverage route; [Tomb12](docs/protocol/terrain.md#rust-tomb12-boundary)
+chưa có physics/gameplay. G1 tiếp Tomb12 và nội dung còn thiếu theo [Bảng điều hành](docs/PLAN.md#dashboard);
+M8 và L1 của Claude giữ nguyên phạm vi.
 
 ## Bắt đầu
 

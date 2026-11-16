@@ -1,0 +1,75 @@
+{
+  "id": "AUD128",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-camp08-contiguous-roster-route"
+  ],
+  "completed_through": "CP317",
+  "recorded_utc": "2026-11-16T17:27:47.369584+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/content/tile-semantics.md",
+    "docs/evidence/rust-service/g1-camp08-roster-routes.json",
+    "docs/evidence/rust-service/g1-tomb12-initial.json",
+    "local/research/codex/g1-camp08-serving4-native-r1/failure-verification.json",
+    "local/research/codex/g1-camp08-serving4-native-r2/serving-verification.json",
+    "local/research/codex/g1-camp08-serving4-native-r2/feedback-control-interpretation.json",
+    "local/research/codex/g1-tomb12-seed-native-r1/seed-verification.json",
+    "local/research/codex/g1-tomb12-seed-native-r1/verifier-corrections.json",
+    "local/research/codex/g1-tomb12-seed-native-r1/native/raw-export-seal.json",
+    "local/research/codex/cp317-manual-ui-review.json"
+  ],
+  "method": "Đọc README → PLAN → PROTOCOL → RESEARCH rồi đối chiếu actual C2S118, native159/158, rank/return/clock và cờ tại mọi callback. Roster bốn người có 20 bom, 43 snapshot × 195 cờ mỗi view, hai rank/return và ba clock; journal có hai complete, trận thứ ba cancelled và reward 0. Ghép với route 2/8 đã giữ, không suy mọi map, roster hoặc item. R2 không kích hoạt control focus nên nguyên nhân mất mẫu ở R1 vẫn unknown. Tomb12 có 195 cờ mỗi view, bảy ground có tên, hai placeholder và sáu static với callsite source trước/sau init. Không nhập nghĩa +AC từ type 1/3 sang Ground. Kiểm từng hash export sau lỗi unmount busy và namespace không còn PID, giữ overall exit 1. Đã xem ảnh rank bốn người và first clock Tomb12; không lấy ảnh thay physics.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Route Camp08 mới có roster2/8; roster4 còn thiếu.",
+      "correction": "Bổ sung bốn account thật, hai vòng, cờ native và DB rows vào ma trận roster 2/4/8. Chỉ hoàn tất nhóm route đã chọn, không đóng toàn G1.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-camp08-roster-routes.json",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Run4 mới đạt có thể bị hiểu là focus đã sửa lỗi mất mẫu.",
+      "correction": "Control không kích hoạt; giữ failure R1 và nguyên nhân unknown, không nới timeout hoặc tuyên bố root cause.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-camp08-roster-routes.json",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Ground+AC và data72copy có thể bị suy từ kiểu static/passable.",
+      "correction": "Actual Ground+AC bằng 0; chỉ xác nhận callsite source72, kích thước, RTTI và cờ. Offset lưu dữ liệu cùng movement/ray vẫn unknown.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/content/tile-semantics.md",
+        "docs/evidence/rust-service/g1-tomb12-initial.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Export có thể bị coi là run exit0 hoặc outputunmount thành công.",
+      "correction": "Giữ wrapper và standard seal bị lỗi; xác minh bytes của export cùng namespace cleanup riêng. Quan sát native chỉ có phạm vi khởi tạo, không đóng M8.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-tomb12-initial.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Tomb12 còn ray ở anchor/ô phủ, movement/bridge, thùng/item và hai vòng/reset cho 2–6 người; không mở terrain từ seed.",
+    "Coverage Camp08 còn lại và nhóm item/nhân vật theo PLAN; G1/M8 chưa đóng.",
+    "M8 còn storage/log/session budget, Internet thật của transport mới, 50 người/8 phòng, đóng gói, backup/restore.",
+    "L1 do Claude sở hữu; không tiếp RE/runtime hoặc sửa source L1."
+  ]
+}

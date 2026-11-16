@@ -5,6 +5,11 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP316: Camp08 có Line01 ray và route StrongBox/Bomb/Fire tám account qua hai vòng/reset.**
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ actual input, mọi cờ terrain và Start kế;
+coverage Camp08 còn lại, Tomb12, item/nhân vật và M8 vẫn mở theo [Bảng điều hành](PLAN.md#dashboard).
+L1 tiếp tục do Claude phụ trách.
+
 **CP315: ray đã chặn tại cả hai PinPillar, anchor và ô phủ MissileBase trên client KR.**
 [Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ route hai/tám view, cờ static và các lượt lỗi;
 Camp08 serving hai vòng/reset, Line01 và nội dung còn lại vẫn mở.
