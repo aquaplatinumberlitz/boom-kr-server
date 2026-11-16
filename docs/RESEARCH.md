@@ -178,13 +178,14 @@ Còn hướng/roster khác và nhóm item theo PLAN. Ground+AC vẫn opaque như
 Lượt 6 giữ overall exit 1 và giới hạn capture/debugger/cleanup tại contract; chỉ quan sát native được xác minh riêng. Giữ lỗi setup/verifier/export cũ, không chứng nhận M8.
 
 <a id="gap-factory07-terrain"></a>
-### Factory07: adapter/basic đã có, terrain và item chưa có native acceptance
+### Factory07: route hai người đã có, còn roster và coverage gameplay
 
-[Adapter](protocol/load-phase.md#rust-map-profile-adapter) đã có basic hai vòng; các catalog sau chỉ dùng fallback không terrain. Profile tĩnh không có ô chưa phân loại chưa chứng minh physics.
-Tiếp snapshot đủ 195 ô của 1D54 và 1D24 với terrain tắt, đối chiếu type/footprint/field44; sau đó chỉ đo khác biệt chặn thùng, drop/pickup và roster. Không sửa exporter hoặc lặp basic lookup.
+[Adapter](protocol/load-phase.md#rust-map-profile-adapter) đã có basic hai vòng. [Đối chứng terrain](protocol/terrain.md#rust-factory07-terrain) có đủ 195 ô của 1D54/1D24 khi terrain tắt, sáu power 1 phá chín thùng gồm bốn loại box.
+FixedBox tại probe trước default có counter 0 rồi 1 trước hit; Paper/Safety là MoveAbleBox, không dùng C4. Verifier sai scope counter giữ riêng; không lặp initial arrays hoặc body cache. Route Rust hai người có counter đúng lớp, thùng, Fire/Bomb ẩn, static âm, hai kết quả/reset và ván kế. Tiếp roster 4/8 với spawn gốc, đủ recipient và hai lớp cờ; kiểm capacity/topology/capture trước freeze rồi coverage theo PLAN.
+Không sửa exporter hoặc lặp basic lookup; không suy gameplay đẩy thùng từ RTTI hoặc dword 28.
 
 <a id="gap-village10-map"></a>
-### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster
+### Map mới: chọn map đã đo, còn coverage terrain/item và giới hạn roster
 
 [Adapter](protocol/load-phase.md#rust-map-profile-adapter) và [UI chọn map](protocol/load-phase.md#rust-room-map-selection)
 đã có Factory07/Village10: current96/117, metadata/checksum, lookup/name/spawn, basic hai kết quả/reset/ván tiếp và

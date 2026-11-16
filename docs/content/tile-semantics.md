@@ -33,6 +33,10 @@ Type 2 trong nhánh `CGOTileMoveAbleBox` đã được đối chiếu riêng: dw
 có 5/2, giá trị 0 đổi thành 1. Không dùng trường này làm chiều rộng footprint cho thùng. [Contract Camp08](../protocol/terrain.md#rust-camp08-boundary)
 giữ consumer, native counter và giới hạn; các số chưa rõ trong bảng trên vẫn là kiểm kê candidate ban đầu.
 
+[Factory07](../protocol/terrain.md#rust-factory07-terrain) đã có đủ 195 cờ khởi tạo của cả 1D54/1D24 và sáu
+placement power 1 phá đúng chín thùng, gồm bốn tên box của map. Blue/Sky ở sample là FixedBox, Paper/Safety
+là MoveAbleBox; không dùng chung offset C4 giữa hai lớp hoặc suy thao tác đẩy từ RTTI/dword 28.
+
 Type 3 trong `CGOTilePassable` giữ các nhóm byte theo hướng: getter tĩnh đọc 24–27, 28–31 và 32–35 riêng.
 Herb có ba nhóm bằng 1; Line01/Line02 đã đo có nhóm đầu bằng 0, nhóm giữa `1,0,1,0`, nhóm cuối bằng 1.
 [Contract Camp08](../protocol/terrain.md#rust-camp08-boundary) giữ đối chứng nhân vật bị chặn nhưng tia nổ đi xuyên

@@ -1,0 +1,197 @@
+{
+  "id": "CP320",
+  "previous": "CP319",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-16T21:15:26.401137+00:00",
+  "context_commit": "4afffc9a1a82f24a072a739c78b9328fb569793d",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Đưa Factory07 từ adapter/basic sang terrain có bốn loại thùng, item ẩn và hai vòng/reset trên Rust.",
+  "scope": "Ba run hai account: initial arrays, control terrain tắt, integration Rust. Binary không đổi CP318; chưa roster 2–8 hoặc đóng G1.",
+  "artifacts": [
+    {
+      "name": "client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "service",
+      "sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-factory07-terrain",
+    "docs/evidence/rust-service/g1-factory07-terrain.json",
+    "docs/RESEARCH.md#gap-factory07-terrain",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Native đủ 195 ô của hai lớp: 162 cờ 1D54 và 1D24 toàn 0. Sáu power1 controls phá đúng chín thùng, gồm Blue/Sky/Paper/Safety, trong cả hai view.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-factory07-terrain",
+      "evidence": [
+        "FACT320-1668",
+        "FACT320-0599"
+      ],
+      "limits": "Control không bật terrain, không drop/reset hoặc mọi hướng từ khởi tạo."
+    },
+    {
+      "summary": "Rust private terrain chạy hai vòng, hidden Bomb/Fire, actual power2, static âm, native rank/return/reset và clock thứ ba, journal đúng map/thưởng0; actual counter đúng lớp khởi tạo lại.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-factory07-terrain",
+      "evidence": [
+        "FACT320-1431",
+        "FACT320-0009"
+      ],
+      "limits": "Chỉ route hai account và design drops; chưa roster 2–8 hoặc toàn G1/M8."
+    },
+    {
+      "summary": "Giữ lượt tích hợp đầu exit1 sau một vòng vì quickclick Ready không tạo95, sửa input ở lượt riêng. Giữ verifier frozen thất bại: B9C849 trước default 0to1, Paper/Safety khác lớp nên C4 không áp dụng. Bản quan sát sau run giữ đầy đủ TCP/195flag predicates; integration đo đúng D8. Guard fallback bị bắt trước runtime và sửa theo identity map.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-factory07-terrain",
+      "evidence": [
+        "FACT320-0785",
+        "FACT320-1076",
+        "FACT320-1074",
+        "FACT320-1425"
+      ],
+      "limits": "Không đổi raw/input frozen hoặc suy thao tác đẩy từ RTTI; không suy counter gốc từ mô hình Rust."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Ba native run và một lượt một vòng dừng có khai báo, verifier độc lập",
+      "result": "pass",
+      "evidence": [
+        "FACT320-1668",
+        "FACT320-0599",
+        "FACT320-1431"
+      ],
+      "limits": "Ba lượt nghiệm thu exit0; lượt đầu integration exit1/declared stop sau một vòng giữ nguyên. Wine/LAN cô lập; không M8."
+    },
+    {
+      "check": "Preservation raw/input/cache, docs/catalog/diff và audit nhóm",
+      "result": "pass",
+      "evidence": [
+        "FACT320-0017",
+        "FACT320-0016",
+        "FACT320-0008"
+      ],
+      "limits": "Full exact-head checker/CI trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP320-factory07-terrain.json",
+      "bytes": 531582,
+      "sha256": "807a075c1b80f9894e07bad3b2310ac09b047f4353595a24c1a6b60c6e030bb0",
+      "count": 1852
+    }
+  ],
+  "delta": {
+    "added": [
+      "Factory07 initial arrays, four-variant one-hit controls và Rust route hai vòng/reset."
+    ],
+    "corrected": [
+      "Counter pre-default không phải counter trước hit; offset C4/D8 theo actual class.",
+      "Guard terrain chỉ kiểm choice cùng map, không bật nhầm fallback."
+    ],
+    "superseded": [
+      "Thiếu phép đo initial arrays và route terrain Factory07 hai account."
+    ]
+  },
+  "blockers": [
+    "Chỉ route hai account, hai spawn đầu và vùng trên trái đã đo; Factory07 còn roster 2–8 và coverage nội dung/hướng theo PLAN.",
+    "Vị trí và phân phối item thử là design, không phân phối rơi server gốc; RTTI không nghiệm thu thao tác đẩy thùng.",
+    "Binary Rust không đổi từ CP318; chỉ cấu hình private đưa map vào terrain kernel đã có. Chưa preset tổng quát hoặc đóng G1.",
+    "Wine/LAN cô lập, output/DB tmpfs chẩn đoán; không Internet của transport mới, tải, backup/restore hoặc M8."
+  ],
+  "completed_feature_groups": [
+    "g1-factory07-first-serving-route"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp Factory07 roster 4/8 và coverage còn thiếu; sau đó nhóm item/nhân vật G1 và M8 theo PLAN. L1 thuộc Claude, không sửa exporter.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-16T21:15:26.401137+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo, nhóm Factory07 first serving route hai account; chưa toàn Factory07/G1/M8.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 initial/box/route, phân biệt counter/lớp và phần roster còn thiếu."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 initial/box/route, phân biệt counter/lớp và phần roster còn thiếu."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 initial/box/route, phân biệt counter/lớp và phần roster còn thiếu."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 initial/box/route, phân biệt counter/lớp và phần roster còn thiếu."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 initial/box/route, phân biệt counter/lớp và phần roster còn thiếu."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 initial/box/route, phân biệt counter/lớp và phần roster còn thiếu."
+    },
+    {
+      "path": "docs/content/tile-semantics.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 initial/box/route, phân biệt counter/lớp và phần roster còn thiếu."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 initial/box/route, phân biệt counter/lớp và phần roster còn thiếu."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 initial/box/route, phân biệt counter/lớp và phần roster còn thiếu."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-factory07-terrain.json",
+      "state": "updated",
+      "reason": "Đồng bộ Factory07 initial/box/route, phân biệt counter/lớp và phần roster còn thiếu."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Quy trình, audit theo nhóm và owner L1 không đổi."
+    }
+  ]
+}

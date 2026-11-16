@@ -779,6 +779,47 @@ durability, sửa production hoặc M8; không thay timeout. Line01 và route se
 item/roster còn lại vẫn theo PLAN. Không coi bốn bom có tám recipient là nghiệm thu toàn gameplay Camp08 tám người.
 
 
+<a id="rust-factory07-terrain"></a>
+## Factory07: khởi tạo và bốn loại thùng
+
+[Bằng chứng Factory07](../evidence/rust-service/g1-factory07-terrain.json) tách adapter/basic khỏi terrain.
+Native hai account trên Wine với terrain Rust tắt đã đối chiếu đủ 195 ô: 1D54 có 162 ô bằng 1, gồm 53 static
+và 109 thùng theo profile; 1D24 có toàn số 0. Tên/code 281, hai spawn đầu trong tám spawn gốc và dữ liệu pack
+được kiểm riêng. Cờ khởi tạo không tự chứng minh khả năng đi qua, độ bền thùng hoặc phân phối item.
+
+Sáu placement power 1 tại `(1,0)`, `(2,0)`, `(2,1)`, `(2,2)`, `(2,3)`, `(2,4)` đã có actual C2S118 và
+consumer 159/158 hoàn tất trong cả hai view. Toàn bộ 195 ô trước/sau từng callback khớp chín thùng mất cờ,
+đưa tổng 1D54 từ 162 xuống 153; 1D24 không đổi. Các sample có BoxBlue, BoxSky, PaperBox00 và Safety00.
+Đây là bằng chứng phá ở hit đầu trong các ca đã đo, không phải suy từ tên hoặc dword 24 bằng 0.
+
+Blue/Sky ở sample là `CGOTileFixedBox`. Probe `B9C849` thấy dữ liệu nguồn và counter C4 bằng 0 trước nhánh
+default của initializer; trước hit counter bằng 1, sau hit bằng 0 và return bằng 1. Body `B9C760` đã cache
+giải thích nhánh đổi 0 thành 1 sau vị trí probe. Generic lookup ở nhánh box thứ hai trả null sau mutation;
+không coi null đó là thiếu bằng chứng về thùng đã bị phá.
+
+Paper/Safety ở sample là `CGOTileMoveAbleBox`, với virtual `+64/+68/+74` lần lượt là `B33250/B33270/B334C0`.
+Probe C4 của FixedBox không áp dụng cho lớp này; lượt control không đo được counter đó và không nhập giá trị 0
+thay unknown. Verifier frozen đã thất bại do đồng nhất thời điểm counter và lớp; bản kiểm quan sát riêng giữ
+nguyên mọi predicate TCP/195 ô, ghi rõ phần counter còn thiếu. RTTI chưa chứng minh thao tác đẩy thùng đã chạy.
+
+Route Rust hai account dùng kernel terrain đã có, cùng payload map/fixture binding và hit count mặc định 1;
+không sửa source hoặc binary để mở map. Bomb 701 ẩn tại `(2,0)`, Fire 700 tại `(1,4)` là vị trí **design**.
+Native 142 chỉ reveal sau current clearance đã commit, actual 124/165 tiêu thụ item, rồi A có bom power 2.
+Mỗi vòng chạy lại sáu root power 1 đã đo, thêm root `(1,0)` power 2 và B tự đặt bom ở spawn `(0,14)`.
+Cả hai view giữ static `(1,1)` chặn nhân vật và ray; không suy mọi hướng hoặc hành vi đẩy từ ca âm này.
+
+Probe actual MoveAbleBox đã dùng offset D8 và các site cache `B9F568/B9FDD0/BA004F`, không dùng C4 của
+FixedBox. Paper/Safety có raw source counter 0 trước default, counter 1 trước hit, sau hit 0/return 1 trong
+cả hai vòng. Toàn bộ 195 cờ của hai lớp khớp actual input ở mọi callback; hai rank/return/reset và clock thứ ba
+khôi phục thùng, counter, spawn và stat. DB journal có hai trận complete đúng map, thưởng 0; Start cuối được
+đóng cancelled khi cleanup. Đây là route hai người, chưa nghiệm thu Factory07 cho roster 2–8 hoặc mọi nội dung.
+
+Lượt integration đầu dừng có khai báo sau một vòng vì quickclick Ready không tạo request 95 mới. Ảnh vẫn ở phòng
+chờ; heartbeat mang stage Lobby không chứng minh client đã rời phòng. Lượt kế dùng helper settle/hold đã có,
+hoàn tất hai vòng và giữ exit 0. Lượt kế thiếu file note review trước freeze do lỗi chuẩn bị; note sau launch
+ghi rõ giới hạn quy trình, không được gọi là prelaunch review. Raw/input frozen và verifier thất bại giữ nguyên;
+không suy Internet, tải, độ bền lưu dữ liệu hoặc M8 từ output/DB tmpfs chẩn đoán.
+
 <a id="rust-tomb12-boundary"></a>
 ## Tomb12: hai lớp cờ và route phục vụ
 

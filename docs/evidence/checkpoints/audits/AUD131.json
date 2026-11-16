@@ -1,0 +1,75 @@
+{
+  "id": "AUD131",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-factory07-first-serving-route"
+  ],
+  "completed_through": "CP320",
+  "recorded_utc": "2026-11-16T21:15:02.234297+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/content/tile-semantics.md",
+    "docs/evidence/rust-service/g1-factory07-terrain.json",
+    "local/research/codex/g1-factory07-terrain-seed-native-r1/seed-verification.json",
+    "local/research/codex/g1-factory07-box-controls-native-r1/box-controls-observations-verification.json",
+    "local/research/codex/g1-factory07-box-controls-native-r1/postrun-verifier-scope.json",
+    "local/research/codex/g1-factory07-serving-native-r1/partial-cycle-verification.json",
+    "local/research/codex/g1-factory07-serving-native-r1/manual-image-review.json",
+    "local/research/codex/g1-factory07-serving-native-r2/serving-verification.json",
+    "local/research/codex/g1-factory07-serving-native-r2/manual-image-review.json",
+    "local/research/codex/g1-factory07-serving-native-r2/preparation-correction-observation.json"
+  ],
+  "method": "Đọc nguồn chuẩn, đối chiếu sealed raw/input, independent TCP actual 118/slot/root/power, native 159/158 consumers và toàn195 secure cells trước/sau mỗi nổ. Seed có162/0 flags; controls sáu power 1 phá9 box đúng ở hai view. Integration có16 bom,35 snapshot mỗi lớp/view, hai rank/return/reset và Start 3. FixedBox C4 và MoveAbleBox D8 dùng đúng actual class, source 0 trước default và hit 1→0; cached bodies/source không mở lại. DB hai complete cùng một cancelled cuối, map Factory07/thưởng0. Trực tiếp xem ảnh rank và Start 3, ảnh Ready lỗi của lượt đầu. So giới hạn với PLAN, không gọi một route hai người là toàn Factory07/G1.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Factory07 mới adapter/basic, initial arrays và bốn biến thể box chưa đo.",
+      "correction": "Bổ sung seed/one-hit controls và route Rust hai account qua hidden Bomb/Fire, static âm, hai vòng/reset/Start 3; roster 4/8 vẫn mở.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/g1-factory07-terrain.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Verifier frozen đồng nhất counter tại B9C849 với trước hit và dùng C4 cho Paper/Safety.",
+      "correction": "Giữ verifier fail, v2 quan sát không đổi TCP/195flag predicates; nguồn cache cho nhánh zero-to-one sau probe. Actual Paper/Safety khác lớp và D8 được đo ở integration, không suy push từ RTTI.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-factory07-terrain.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Lượt integration đầu có thể được gọi hai vòng hoặc Lobby heartbeat là native rời phòng.",
+      "correction": "Giữ declared stop/exit1 sau một vòng, screenshot vẫn phòng. Lượt sau dùng helper settle/hold đã có, gameplay/config policy không đổi; hai vòng verifier passed.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-factory07-terrain.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Guard terrain áp mọi inherited map choice; R2 thiếu review note có thể bị gọi là đã review trước launch.",
+      "correction": "Guard đầu bắt lỗi trước runtime, bản sửa chỉ yêu cầu terrain của Factory07 và fallback giữ tắt. Lỗi copy note R2 ghi riêng sau launch, không gọi prelaunch review. Không sửa input frozen/raw.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-factory07-terrain.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Factory07 cần roster 4/8 cùng coverage gameplay; nhóm item/nhân vật G1 và M8 còn mở.",
+    "Design hidden items không chứng minh phân phối rơi gốc hoặc thao tác đẩy thùng.",
+    "Wine/LAN và output/DB tmpfs không chứng nhận Internet transport mới,50 người/8 phòng,backup/restore hoặc M8.",
+    "L1 thuộc Claude, tools/export_map_profile.py và source client/pack/IDA DB không sửa."
+  ]
+}
