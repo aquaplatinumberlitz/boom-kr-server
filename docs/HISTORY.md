@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP315: ray đã chặn tại cả hai PinPillar, anchor và ô phủ MissileBase trên client KR.**
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ route hai/tám view, cờ static và các lượt lỗi;
+Camp08 serving hai vòng/reset, Line01 và nội dung còn lại vẫn mở.
+G1 tiếp terrain Camp08 còn thiếu theo [Bảng điều hành](PLAN.md#dashboard); L1 giữ [kết quả một phần của Claude](content/client-language.md#utf8).
+
+
 **CP314: Camp08 đã có native footprint MissileBase/PinPillar và direct getter chặn Line02.**
 [Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) tách khởi tạo, di chuyển và ray;
 đối chứng DB tmpfs đạt chưa là nghiệm thu lưu bền hoặc vận hành.

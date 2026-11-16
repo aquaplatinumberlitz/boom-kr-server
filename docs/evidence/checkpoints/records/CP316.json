@@ -1,0 +1,222 @@
+{
+  "id": "CP316",
+  "previous": "CP315",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-16T16:30:00.627412+00:00",
+  "context_commit": "6e132ada8fc1d1bf742870f032865aae8ea8f34c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Nối bằng chứng Line01 với route Camp08 có terrain và tám account qua hai kết quả/reset rồi Start kế.",
+  "scope": "Ray Line01 hai view và route StrongBox/hidden Bomb/Fire tám account, hai vòng/reset; chưa toàn terrain/item/roster G1 hoặc M8.",
+  "artifacts": [
+    {
+      "name": "client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "service",
+      "sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-camp08-boundary",
+    "docs/evidence/rust-service/g1-camp08-serving-roster.json",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Tia power2 từ1,6 đi qua Line01 còn nguyên1,7 tới thùng1,8 ở hai view; bước ray được chấp nhận, cờ thùng1→0, cờ Line giữ0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "SERVE316-0310"
+      ],
+      "limits": "Không đo trực tiếp actor/getter đi vào Line01. Fire là dữ liệu test design; không full map."
+    },
+    {
+      "summary": "Tám account/spawn gốc với terrain bật đã qua hai vòng StrongBox5/2 và nhặt Bomb/Fire, all8 consumer/kết quả/reset và Start3. Mọi cờ terrain được so độc lập từng callback.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "SERVE316-1771"
+      ],
+      "limits": "Route riêng, không mọi hướng/roster/item; DB và output tmpfs không chứng minh durability, Internet hoặc M8."
+    },
+    {
+      "summary": "Bộ kiểm trước run nhầm result1 cho ô thùng; giữ nguyên bản frozen và raw. Bản kiểm hậu nghiệm yêu cầu đúng state2/result0, ray step và cờ1→0 độc lập.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "SERVE316-0319"
+      ],
+      "limits": "State2/result0 chỉ nói ray dừng; không tự phân biệt thùng với static. Không chạy lại hoặc sửa raw để cứu assertion."
+    },
+    {
+      "summary": "Run tám account đầu có hai actual118 tại8,1 thay vì7,1; mọi cờ native khớp model theo actual roots, StrongBox01 còn hai hit. Harness mới siết căn tâm, không sửa core.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "SERVE316-0429"
+      ],
+      "limits": "Lượt đầu exit1, chưa pickup/kết quả/reset; giữ toàn bộ raw và input frozen."
+    },
+    {
+      "summary": "Bộ model độc lập được đối chiếu với15210 native flags của run hai account trước; run mới được kiểm riêng. Binary và các input/runtime source giữ hash trước/sau.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "SERVE316-0415",
+        "SERVE316-0016"
+      ],
+      "limits": "Model sanity không thay native mới; không serving code change."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Line01 ray và flags hai view",
+      "result": "pass",
+      "evidence": [
+        "SERVE316-0310",
+        "SERVE316-0319"
+      ],
+      "limits": "Diagnostic, không result/reset của route Line01."
+    },
+    {
+      "check": "Tám account,24bom,hai vòng/reset/Start3 và model195flags",
+      "result": "pass",
+      "evidence": [
+        "SERVE316-1771"
+      ],
+      "limits": "Tmpfs là control storage, không durability hoặc fullG1."
+    },
+    {
+      "check": "Docs/catalog/diff, preservation và audit nhóm",
+      "result": "pass",
+      "evidence": [
+        "SERVE316-0015",
+        "SERVE316-0016",
+        "SERVE316-0007"
+      ],
+      "limits": "Full checker exact head và CI phải đạt trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP316-camp08-serving.json",
+      "bytes": 975997,
+      "sha256": "7f82cb95341943204a6a3f6944eb8d166fe68977994ecf4d5913c9afc6f5d612",
+      "count": 3525
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native Line01 ray-to-box và Camp08 serving route tám account qua hai vòng/reset."
+    ],
+    "corrected": [
+      "Bộ kiểm ô thùng dùng state2/result0 cùng step/flag, không result1; giữ nguyên bản frozen và raw.",
+      "Run tám account đầu sai căn vị trí; native118/flags khớp model nhưng thiếu hit. Run mới siết center/pulse của harness, không sửa gameplay.",
+      "Xóa mô tả ray static còn unknown trong đoạn giới hạn cũ; giữ contract theo chủ đề."
+    ],
+    "superseded": [
+      "Khoảng trống Line01 ray ở route1,6 và serving tám recipient của route StrongBox5/2/hidden Bomb/Fire."
+    ]
+  },
+  "blockers": [
+    "Only the measured Line01 ray direction and chosen StrongBox route. No direct Line01 actor-entry/getter proof or every Camp08 terrain interaction, roster or item.",
+    "Two designed hidden basic items and finite-hit policy; no original drop distribution, original server authority or wider item/character acceptance.",
+    "Output/DB tmpfs is diagnostic storage. Journal rows are behavior in this run, not crash durability, Internet deployment, load, backup/restore or M8.",
+    "Camp08 broader terrain/roster coverage, Tomb12, remaining G1 item groups and characters still follow PLAN; G1 and phase1 are not closed."
+  ],
+  "completed_feature_groups": [
+    "g1-camp08-line01-and-eight-account-serving-route"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp coverage terrain/roster/item Camp08 còn thiếu, rồi Tomb12 và nhóm item/nhân vật G1; M8 theo PLAN. Không tiếp L1 hoặc lặp route đã đạt.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-16T16:30:00.627412+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo, native Line01 và route Camp08 tám account; audit nhóm, chưa toàn G1/M8.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ bằng chứng Line01/serving tám account và giới hạn theo đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ bằng chứng Line01/serving tám account và giới hạn theo đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ bằng chứng Line01/serving tám account và giới hạn theo đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ bằng chứng Line01/serving tám account và giới hạn theo đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ bằng chứng Line01/serving tám account và giới hạn theo đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/content/tile-semantics.md",
+      "state": "updated",
+      "reason": "Đồng bộ bằng chứng Line01/serving tám account và giới hạn theo đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ bằng chứng Line01/serving tám account và giới hạn theo đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ bằng chứng Line01/serving tám account và giới hạn theo đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-camp08-serving-roster.json",
+      "state": "updated",
+      "reason": "Đồng bộ bằng chứng Line01/serving tám account và giới hạn theo đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Mục lục terrain đã có, không wire mới."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Giữ quy trình, miễn review và owner Claude của L1."
+    }
+  ]
+}

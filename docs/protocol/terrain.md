@@ -631,7 +631,7 @@ Getter emulation tách khỏi native; không có nghiệm thu Windows, Internet 
 
 [Bằng chứng seed và blocker ban đầu](../evidence/rust-service/g1-camp08-boundary.json) giữ Start/spawn/195 flags
 trên hai account KR/Wine, getter emulation và các run lỗi. Ô 12,11 có flag chặn dù candidate là ground, cạnh
-MissileBase; nguồn footprint đã được đo riêng dưới đây, đường nổ vẫn chưa đo. Camp08 chỉ có các route private đã đo; chưa mở
+MissileBase; nguồn footprint và ray đã được đo riêng dưới đây. Camp08 chỉ có các route private đã đo; chưa mở
 preset gameplay tổng quát.
 
 [Đối chứng report122](../evidence/rust-service/g1-camp08-report122.json) đã so ô thường 6,0 với ô 6,2 từng được gắn
@@ -698,12 +698,32 @@ Lượt tích hợp sau main chứa thay đổi L1/account-auth dùng binary m�
 Route hai vòng/item/kết quả/reset/Start kế được kiểm lại trên binary kết hợp; metadata giữ riêng hash hai service.
 211 tests trên source kết hợp đạt. Kết quả này không mở acceptance localization hoặc đổi wire client G1.
 
+[Route phục vụ tám account](../evidence/rust-service/g1-camp08-serving-roster.json) đã dùng cùng binary kết hợp,
+terrain có hit 5/2 và tám spawn gốc. Hai vòng có 24 bom thường, hidden Bomb/Fire được nhặt bởi B, power 1→2;
+cả tám view hoàn tất consumer 159/158, bảng kết quả tám người, return/reset và Start thứ ba. Từng callback
+được so toàn bộ 195 cờ với model hữu hạn độc lập từ actual C2S118; các clock mới khôi phục cờ và chỉ số ban đầu.
+Journal của lượt chạy có hai trận hoàn tất, trận thứ ba hủy và thưởng 0. Đây là route riêng, không chứng nhận
+mọi ô, hướng, item hoặc các roster còn lại của Camp08. Output và DB trên tmpfs chỉ là đối chứng chẩn đoán,
+không thay nghiệm thu lưu bền/Internet/vận hành M8.
+
+Lượt tám account đầu dừng trước nhặt item: hai actual C2S118 phát từ `(8,1)` thay vì `(7,1)`, nên StrongBox01
+còn hai hit. Cờ native của cả tám view khớp model theo tọa độ thực tế. Harness đã chấp nhận lệch tâm khi rẽ;
+lượt đạt siết căn tâm và nhịp phím, không sửa luật terrain hoặc timeout service. Raw và input frozen của lượt lỗi
+được giữ nguyên.
+
 [Đối chứng Herb và Line](../evidence/rust-service/g1-camp08-passable.json) đã tách khả năng đi qua của nhân vật
 khỏi tia nổ. Trên hai view, Herb01 `(0,2)`, Herb02 `(0,5)`/`(0,8)` và Line02 `(0,7)` đều trả
 `CGOTilePassable`. Tia power 2 từ `(0,6)` đi qua Line02 tới Herb02 `(0,8)`; Line vẫn tồn tại trong callback.
 Cờ seed và cờ sau nổ của Line02 bằng 0, nhưng A bị chặn khi đi từ `(0,6)` sang `(0,7)` sau lần nổ đó:
 35 mẫu cuối giữ tọa độ `(240,39)` dù có input Right. Vì vậy flag 0 hoặc type 3 không chứng minh đi qua tự do.
 Herb01 đã có ca đi vào khi còn nguyên; Herb02 `(0,5)` có ca đi vào trước lần nổ tại chính ô đó.
+
+[Đối chứng Line01](../evidence/rust-service/g1-camp08-serving-roster.json) đã dùng tia power 2 từ `(1,6)`
+đi qua Line01 còn nguyên `(1,7)` tới thùng `(1,8)` ở cả hai view. Line01 là `CGOTilePassable`, nhóm byte
+24–27 bằng 0 và 32–35 bằng 1; ô Line trả cell state 1/result 1 và cờ vẫn bằng 0. Bước ray từ Line tới thùng
+được chấp nhận; thùng trả state 2/result 0, cờ đổi từ 1 xuống 0 sau callback. Vì thế state 2/result 0 chỉ nói
+tia dừng tại ô đó trong phép đo, không tự phân biệt thùng phá được với static. Run này không đo trực tiếp
+nhân vật đi vào Line01 hoặc getter di chuyển của nó. Fire cung cấp power 2 là dữ liệu test design.
 
 Consumer tĩnh của lớp này phân biệt các nhóm byte trong TileInfo: `BA0860` đọc byte `24 + direction`;
 `BA0CE0` đọc `28 + direction`; `BA0E30` đọc `32 + direction`. `BA0D70` và `BA0EC0` đổi sang hướng đối diện
@@ -719,8 +739,9 @@ Các lượt đối chứng tiếp bị lỗi trước khi tới negative Line h
 `FinishBreakpoint` lệch với body tĩnh không được dùng làm contract. Raw và nguyên nhân chưa rõ được giữ nguyên;
 không lặp route lỗi nếu chưa có điều kiện mới. Lượt đạt dùng DB thử nghiệm trên tmpfs sau khi log hai lượt trước ghi
 `Backend(QueueExpired)` trước return/reset và lỗi observer đọc actor cũ. DB đóng rồi export đúng bytes và unmount;
-đây là đối chứng cô lập storage, không chứng minh nguyên nhân sâu hoặc durability/M8. Line01, hướng khác của Line02, ray MissileBase/PinPillar,
-route phục vụ hai vòng/reset và coverage roster/item vẫn mở; không mở preset Camp08 từ lát này.
+đây là đối chứng cô lập storage, không chứng minh nguyên nhân sâu hoặc durability/M8. Ray MissileBase/PinPillar có bằng chứng riêng bên dưới;
+Line01 có đối chứng ray riêng bên trên; hướng khác của Line02, coverage roster và item còn lại vẫn mở.
+Không mở preset Camp08 từ lát này.
 
 Ba object type 1 đã có [đối chứng initializer/footprint](../evidence/rust-service/g1-camp08-footprint-predicate.json)
 ở hai view: PinPillar03 `(1,11)`, PinPillar04 `(11,3)` và MissileBase02 `(12,10)` đều là `CGOTileStatic`,
@@ -743,5 +764,5 @@ Một lượt đầu timeout ở Wine preboot; lượt khác có `log flush time
 tmpfs. Route đạt dùng output tmpfs theo phương pháp đã có: cleanup, export so từng size/SHA, unmount rồi seal.
 Lượt tám người đầu hoàn tất native nhưng UDP capture kế thừa allowlist hẹp bị lỗi, nên overall exit 1 và giữ riêng.
 Lượt sửa capture dùng nguyên bản tám người đã nghiệm thu đạt exit 0. Các đối chứng storage/capture không là
-durability, sửa production hoặc M8; không thay timeout. Line01, route serving hai vòng/reset và coverage item/roster
-vẫn còn theo PLAN. Không coi bốn bom có tám recipient là nghiệm thu toàn gameplay Camp08 tám người.
+durability, sửa production hoặc M8; không thay timeout. Line01 và route serving tám account có đối chứng riêng bên trên; coverage
+item/roster còn lại vẫn theo PLAN. Không coi bốn bom có tám recipient là nghiệm thu toàn gameplay Camp08 tám người.
