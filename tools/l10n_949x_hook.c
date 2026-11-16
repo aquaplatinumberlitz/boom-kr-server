@@ -159,6 +159,15 @@ __attribute__((stdcall)) int hook_peeka(msg_t *m, void *hwnd, unsigned fmin, uns
 #ifdef L10N_TRACE
     if (r && (flags & 1) && ((m->message >= 0x100 && m->message <= 0x10F) || (m->message >= 0x280 && m->message <= 0x291)))
         trace('M', m->message, m->wParam, (unsigned)m->lParam);
+    {
+        /* Trạng thái bộ quản lý nhập 0x1514A29 (con trỏ toàn cục 0x19DB898): +0x20 control focus, +0x24 mode. */
+        static unsigned last_focus = 1, last_mode = 7;
+        unsigned *im = *(unsigned **)0x19DB898;
+        if (im && (im[8] != last_focus || im[9] != last_mode)) {
+            last_focus = im[8]; last_mode = im[9];
+            trace('Z', im[8], im[9], m ? m->time : 0);
+        }
+    }
 #endif
     if (r && m->message == 0x102 && m->wParam >= 0x80 && m->wParam <= 0xFFFF &&
         !(m->wParam >= 0xD800 && m->wParam <= 0xDFFF)) {
@@ -254,7 +263,27 @@ __attribute__((thiscall)) static int w300(unsigned *t, int ch, int lp) {
     trace('H', (unsigned)ch, (unsigned)r, t[346]);
     return r;
 }
+typedef int(__attribute__((thiscall)) * navi_t)(unsigned *);
+static navi_t orig_navi;
+__attribute__((thiscall)) static int wnavi(unsigned *t) {
+    static unsigned last[4];
+    unsigned *im = *(unsigned **)0x19DB898;
+    unsigned before = im ? im[9] : 9;
+    int r = orig_navi(t);
+    unsigned after = im ? im[9] : 9;
+    unsigned cur[4] = {t[0x48 / 4] | t[0x4C / 4] << 16, t[0x60 / 4] | t[0x64 / 4] << 16,
+                       ((unsigned char *)t)[272] | ((unsigned char *)t)[2188] << 8 | t[0x90 / 4] << 16, after};
+    if (before != after || cur[0] != last[0] || cur[1] != last[1] || cur[2] != last[2]) {
+        trace('N', cur[0], cur[1], cur[2] | after << 31);
+        for (int i = 0; i < 4; i++) last[i] = cur[i];
+    }
+    return r;
+}
 static void wrap_edit_vtables(void) {
+    {
+        void **v = (void **)VT_NAVI;
+        if ((unsigned)v[0x44 / 4] == 0x790940) { orig_navi = (navi_t)v[0x44 / 4]; v[0x44 / 4] = (void *)wnavi; }
+    }
     static const unsigned ime[] = {VT_EDITIME, VT_TEMPCHATEDITIME};
     for (int i = 0; i < 2; i++) {
         void **v = (void **)ime[i];

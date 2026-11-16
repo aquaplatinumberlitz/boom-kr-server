@@ -73,7 +73,7 @@ def build(src, out, lang=None, catalog=None, trace=False):
         f.write(''.join('#define %s 0x%x\n' % kv for kv in sorted(slots.items())) + '#define OEP 0x%x\n' % oep)
         # Vtable CCtrlEditORG / CCtrlTempChatEditORG (RTTI, IDA trên bản sao), chỉ bản --trace dùng.
         f.write('#define VT_EDITORG 0x17b3b20\n#define VT_TEMPCHATEDITORG 0x17b416c\n'
-                '#define VT_EDITIME 0x17b3ee4\n#define VT_TEMPCHATEDITIME 0x17b4294\n')
+                '#define VT_EDITIME 0x17b3ee4\n#define VT_TEMPCHATEDITIME 0x17b4294\n#define VT_NAVI 0x170f524\n')
     obj = work / 'hook.o'
     elf = work / 'hook.elf'
     blob = work / 'hook.bin'
