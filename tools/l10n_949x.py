@@ -292,8 +292,8 @@ CJK_RANGES = [(0x1100, 0x1200), (0x3000, 0x3100), (0x3130, 0x3190), (0x3200, 0x3
 
 
 def vn_fonts(vn, kr, out):
-    """Bộ font VN (12x16/12x15, đủ dấu chồng) cho client KR: giữ hình VN, nhưng các ô Hàn/CJK có advance hẹp hơn
-    font KR cùng tên (Gulim VN để advance 6 cho chữ Hàn rộng 12 nên chữ đè nhau) lấy advance của font KR."""
+    """Bộ font VN (12x16, đủ dấu chồng) cho client KR. CxUni/CxUniBold: giữ hình VN, ô Hàn/CJK có advance hẹp hơn
+    font KR lấy advance KR. CxUniGulim/CxUniGulimBold (ô nhập, ô người nhận): Gulim 12x12 gọn (compact_gulim)."""
     out.mkdir(parents=True, exist_ok=True)
     report = {}
     for name in ('CxUni.fft', 'CxUniBold.fft', 'CxUniGulim.fft', 'CxUniGulimBold.fft'):
@@ -308,9 +308,77 @@ def vn_fonts(vn, kr, out):
                     if ak > av and any(k[ok + c * sk + 1:ok + (c + 1) * sk]):
                         v[ov + c * sv] = ak
                         fixed += 1
-        (out / name).write_bytes(bytes(v))
         report[name] = {'advance_fixed': fixed}
+        if 'Gulim' in name:
+            # Ô nhập của layout KR chỉ cao 12 điểm: dùng Gulim 12x12 gọn thay cho Gulim VN 15/16 hàng.
+            base, _ = merge_font(k, (kr / name.replace('Gulim', '')).read_bytes(), [ord(ch) for ch in EXT])
+            v, info = compact_gulim(v, base)
+            report[name].update(info)
+        (out / name).write_bytes(bytes(v))
     return report
+
+
+LATIN_RANGES = [(0x20, 0x250), (0x300, 0x370), (0x1E00, 0x1F00), (0x20AB, 0x20AC)]
+
+
+def _grid(b, w, h):
+    bits = int.from_bytes(b, 'big')
+    total = len(b) * 8
+    return [[(bits >> (total - 1 - (r * w + k))) & 1 for k in range(w)] for r in range(h)]
+
+
+def _pack(g, w, h, size):
+    v = 0
+    for r in range(h):
+        for k in range(w):
+            v = (v << 1) | g[r][k]
+    return (v << (size * 8 - w * h)).to_bytes(size, 'big')
+
+
+def compact_gulim(vn, base):
+    """Font Gulim 12x12 cho ô nhập của layout KR (ô cao 12 điểm): chữ Hàn/CJK lấy từ base (Gulim KR đã vá);
+    chữ Latin/Việt lấy từ Gulim VN (12x15/12x16), giữ 10 hàng thân+chân chữ và gộp vùng dấu phía trên vào 2 hàng,
+    nên dấu chồng (Ệ, Ố) vẫn thấy và dấu nặng, đuôi g không bị cắt. Viền (khối thứ hai) sinh lại bằng giãn 8 hướng."""
+    v, b = bytes(vn), bytearray(base)
+    nv, bv = _fft_blocks(v)
+    nb, bb = _fft_blocks(b)
+    wv, hv = struct.unpack_from('<II', v, 12)
+    wb, hb = struct.unpack_from('<II', b, 12)
+    assert (wb, hb) == (12, 12) and wv == 12
+    (ov, sv), _ = bv
+    (ob, sb), (oo, so) = bb
+    cps = [c for a, z in LATIN_RANGES for c in range(a, z) if c < nv]
+    # Hàng đáy theo chữ thường dùng (ASCII, Latin-1, chữ Việt); ký tự hiếm thấp hơn thì mất phần chân.
+    common = [ord(ch) for ch in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'] + \
+        list(range(0x1EA0, 0x1EFA)) + [0x110, 0x111, 0x1A0, 0x1A1, 0x1AF, 0x1B0]
+    bottom = max(r for c in common for r, row in enumerate(_grid(v[ov + c * sv + 1:ov + (c + 1) * sv], wv, hv)) if any(row))
+    top_rows = list(range(0, bottom - 9))
+    half = (len(top_rows) + 1) // 2
+    mapping = [top_rows[:half], top_rows[half:]] + [[r] for r in range(bottom - 9, bottom)] + [list(range(bottom, hv))]
+    copied = 0
+    for c in cps:
+        g = _grid(v[ov + c * sv + 1:ov + (c + 1) * sv], wv, hv)
+        if c != 0x20 and not any(any(row) for row in g):
+            continue
+        ng = [[max([g[r][k] for r in rows] or [0]) for k in range(12)] for rows in mapping]
+        adv = v[ov + c * sv]
+        b[ob + c * sb] = adv
+        b[ob + c * sb + 1:ob + (c + 1) * sb] = _pack(ng, 12, 12, sb - 1)
+        dil = [[0] * 14 for _ in range(14)]
+        for r in range(12):
+            for k in range(12):
+                if ng[r][k]:
+                    for dr in (-1, 0, 1):
+                        for dk in (-1, 0, 1):
+                            dil[r + 1 + dr][k + 1 + dk] = 1
+        for r in range(12):
+            for k in range(12):
+                if ng[r][k]:
+                    dil[r + 1][k + 1] = 0
+        b[oo + c * so] = adv + 2
+        b[oo + c * so + 1:oo + (c + 1) * so] = _pack(dil, 14, 14, so - 1)
+        copied += 1
+    return bytes(b), {'latin_glyphs': copied, 'source_bottom_row': bottom, 'mark_rows_merged': [top_rows[:half], top_rows[half:]]}
 
 
 def c_table(path):
