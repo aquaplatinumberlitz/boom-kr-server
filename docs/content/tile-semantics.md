@@ -45,5 +45,6 @@ hai PinPillar 1×1. [Contract Camp08](../protocol/terrain.md#rust-camp08-boundar
 Tomb12 đã có [đối chứng khởi tạo](../protocol/terrain.md#rust-tomb12-boundary) cho ground Waterway/bridge 2×1,
 hai sample ground mã -1 và sáu static 1×1. Lớp 1D24 có 96 ô chặn tia đã đo riêng bằng initializer và snapshot
 195 ô; ca ray Waterway dừng trước ô dù 1D54 bằng 0, Stone có đối chứng thùng vỡ. Mask bridge bằng 0
-chưa chứng minh di chuyển; hai vòng/reset và gameplay vẫn mở.
+chưa tự chứng minh di chuyển. Route 2/4/6 đã có native đi và nổ qua hai ô bridge, Fire/Bomb ẩn và hai vòng/reset;
+coverage nội dung còn lại vẫn theo PLAN.
 Ground không dùng pointer `+AC` như lớp type 1/3 đã đo; không nhập nghĩa offset giữa các lớp.

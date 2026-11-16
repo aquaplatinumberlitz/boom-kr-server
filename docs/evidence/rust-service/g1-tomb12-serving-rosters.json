@@ -1,0 +1,170 @@
+{
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "schema": "kre-g1-tomb12-serving-rosters-v1",
+  "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "scope": "Route thùng Stone, Fire/Bomb ẩn, Waterway âm, bridge di chuyển và ray, hai vòng/reset và Start kế trên Tomb12. Trạng thái từng roster ở ma trận; chưa đóng toàn G1.",
+  "runs": [
+    {
+      "roster": 2,
+      "status": "confirmed",
+      "source": "kr_runtime",
+      "run_sha256": "14677454c0ea7ca3b775124231cac39aebf747ef4fb3767654d3717ed19b418d",
+      "raw_files": 246,
+      "preflight_files": 690,
+      "service_sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e",
+      "overall_returncode": 0,
+      "raw_locator": "cycles",
+      "diagnostic_limits": []
+    },
+    {
+      "roster": 4,
+      "status": "confirmed",
+      "source": "kr_runtime",
+      "run_sha256": "adb83ab4e03d8705a88ff46500b5f2191b10fa596fa4f80193d9940bb7bf0640",
+      "raw_files": 516,
+      "preflight_files": 1172,
+      "service_sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e",
+      "overall_returncode": 0,
+      "raw_locator": "cycles",
+      "diagnostic_limits": []
+    },
+    {
+      "roster": 6,
+      "status": "confirmed",
+      "source": "kr_runtime",
+      "run_sha256": "361b48309583ea20b29830a4fa9bb74aa996928d1de8a481f43f27951868b697",
+      "raw_files": 826,
+      "preflight_files": 1638,
+      "service_sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e",
+      "overall_returncode": 1,
+      "raw_locator": "cycles-raw-export",
+      "diagnostic_limits": [
+        "Original UDP capture worker permits only four source hosts and failed at roleE; no complete UDP-capture claim. Native TCP/actor/flags/results evidence verified separately.",
+        "RoleB legacy K2 debugger error/internal assertion occurred after a timestamped round3 peer event later than controller completion. No clean debugger shutdown claim.",
+        "Output unmount busy and original failed success-only sealer retained; byte-verified export, not graceful output cleanup/M8."
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-tomb12-serving-native-r1/serving-verification.json",
+      "bytes": 73964,
+      "sha256": "3d6fecdb2653aa344193e9fdd0641805f542e29bf471abdd8b5ca632a12f6eb0"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving-native-r1/native/raw-seal.json",
+      "bytes": 57835,
+      "sha256": "50ddab1889d77a19909c04168f8ddad2c6835782666bde69798f876fcbb5c167"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving-native-r1/native/runtime-preflight.json",
+      "bytes": 292218,
+      "sha256": "8ff0a8d8abebac790979fed05bb43a20d73be133ba180e8b1c8800b97a62def6"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving-native-r1/native/recipe.json",
+      "bytes": 1235,
+      "sha256": "592e99157c378249c864ffc26183d57ba919c60e658e35023ce2d2dd0985526f"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving4-native-r3/serving-verification.json",
+      "bytes": 204670,
+      "sha256": "49a1036a924f9f3fe88ec0a57bd6a3492ade64216e03fa765faa5006423c271b"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving4-native-r3/native/raw-seal.json",
+      "bytes": 121713,
+      "sha256": "9032cf6a970e4b5bb29ca8688418fa8caa6b7b4cac6f4a8704597115aa53d13c"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving4-native-r3/native/runtime-preflight.json",
+      "bytes": 484112,
+      "sha256": "7def7855c7630001b0e3b4d4cc8e5a4a5a6417d4390d87757a340851067adb40"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving4-native-r3/native/recipe.json",
+      "bytes": 1239,
+      "sha256": "cc1085561aacca436285e0da530ea7d1b7b8cbc201889e0c7e4eeaaa9327b706"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving6-native-r1/serving-verification.json",
+      "bytes": 404678,
+      "sha256": "5b8c66b7dc1692f80a3262334690bc40e40bcb7212313a70a8a6044b26b03550"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving6-native-r1/native/raw-export-observations-seal.json",
+      "bytes": 204302,
+      "sha256": "160d9cb26bca3d994575ed2626f7df38011fa0b039e42d5f470c1f2c758d6a42"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving6-native-r1/native/runtime-preflight.json",
+      "bytes": 668406,
+      "sha256": "4d64bb2d53b90d1c9f7a857d3b82395b6a70c8914955dcb2aa1d6f9d53cd8dfd"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving6-native-r1/native/recipe.json",
+      "bytes": 1239,
+      "sha256": "c80c7ba65a07a7582c7cad7698f274ad364d764d5f44dbca3e4a81cdc9bd1d74"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving-native-r1/verifier-correction.json",
+      "bytes": 767,
+      "sha256": "61858457b3d05e89ed096ea0681b2b0f8ad92c20ed519ced4a92295da9b5c7c2"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving-native-r1/manual-image-review.json",
+      "bytes": 1522,
+      "sha256": "7b6d6976d960f4c11a4be05c073a987c42e78c9b4a6227cdfc6e48c539335879"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving4-native-r1/preboot-failure-verification.json",
+      "bytes": 781,
+      "sha256": "1563b26874d60e3fd7b5d9fc8648af3f3130b9fd5f9f330d87be75a83df99737"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving4-native-r2/setup-failure-verification.json",
+      "bytes": 1072,
+      "sha256": "3b5f3ea40e0cabec7ad703e7ce2cb6eae608915135af3fa1456e7abe7bf20d85"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving-r1/roster-copy-byte-binding.json",
+      "bytes": 2977,
+      "sha256": "10fba0b7bd11f5f6171e2b808b3cd79f233cf45a4b3fc65127991ce7457625e4"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving4-native-r3/postfreeze-verifier-scope-note.json",
+      "bytes": 741,
+      "sha256": "5d56f0b0028cbd8e1c8dfc6b2817d550ff7e487467737052e0930ecb70010cb5"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving6-native-r1/postrun-verifier-scope.json",
+      "bytes": 990,
+      "sha256": "bb8cb41bb75cb6703485c517d08ce9f7d51b766aa4fa6c0f6441beb644fa45cd"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving6-native-r1/manual-image-review.json",
+      "bytes": 655,
+      "sha256": "a7b02942814e4eac8b61be6e92ac9b0c41f3021ff8f30be240d91395d10fc863"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-serving6-native-r1/capture-observation-diagnosis.json",
+      "bytes": 711,
+      "sha256": "16d6f6e6512d7b1a1b0ebb31c8c21cf3f3aab89bf98cae2c8479947024f45447"
+    }
+  ],
+  "observations": [
+    "A đi bằng phím thường qua hành lang cột 0, mở bảy thùng liền rồi đi qua bridge (1,1)/(1,2), quay lại Stone và nổ power 2 qua cả hai ô bridge, vỡ thêm thùng (0,0).",
+    "Fire 700 ẩn tại (7,0), Bomb 701 tại (6,0) là vị trí thiết kế; native 142 có clearance đã commit mới reveal, actual 124/165 tiêu thụ và power tăng từ 1 lên 2. Hai vòng và clock kế khởi tạo lại mask, thùng và sáu stat.",
+    "Hai lần thử Waterway bằng phím thường ở A (11,0) hướng (11,1), B (0,14) hướng (0,13) giữ actor trong ô xuất phát. Không suy mọi hướng hoặc đơn vị tốc độ từ các mẫu này.",
+    "Kết quả, return và DB journal được kiểm riêng; mọi phần thưởng bằng 0. Native rank 1 là thắng, 2 là thua theo contract cũ; bản verifier đảo giá trị và bản sửa tách biệt, raw không đổi."
+  ],
+  "limits": [
+    "Chỉ route 2/4/6, các hướng và hai loại item ẩn đã đo; chưa mọi ô/hướng, sparse roster hoặc mọi item của Tomb12.",
+    "Vị trí và phân phối item thử là design; trọng số pack không phải tỉ lệ phần trăm đã phục hồi. Không chứng nhận authority server gốc.",
+    "Output/DB tmpfs và Wine chẩn đoán, không là Internet cho transport mới, crash durability, tải, backup/restore hoặc M8.",
+    "Lượt sáu người có native quan sát đã xác minh nhưng overall exit 1: UDP capture dừng trước clock đầu, không có trace UDP gameplay, GDB B lỗi sau controller completion, output unmount busy. Không full UDP capture hoặc graceful cleanup/M8.",
+    "Hai lượt bốn người lỗi setup được giữ: thiếu namespace C; kế đó capacity 2. Lượt sau còn output unmount busy sau export đúng hash và declared stop, giữ exit 1 cùng failure seal riêng."
+  ]
+}

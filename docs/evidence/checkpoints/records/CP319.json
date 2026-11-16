@@ -1,0 +1,213 @@
+{
+  "id": "CP319",
+  "previous": "CP318",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-16T19:54:20.897978+00:00",
+  "context_commit": "4ec516c6fbe6634341282dfabb2a4c1ddea5c766",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Đưa terrain Tomb12 đã có nguồn vào route tài khoản 2/4/6 qua thùng/item, bridge, kết quả/reset và ván kế.",
+  "scope": "Cùng binary CP318, actual original spawns và hai lớp cờ; ba route native đã xác minh riêng, giữ overall exit 1 cùng giới hạn capture/debugger/output của lượt sáu. Không toàn G1 hoặc M8.",
+  "artifacts": [
+    {
+      "name": "client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "service",
+      "sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-tomb12-boundary",
+    "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+    "docs/RESEARCH.md#gap-factory07-terrain",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Route hai/bốn/sáu account có 18/20/22 bom, Fire/Bomb ẩn, Waterway âm, đi và nổ qua hai ô bridge, hai rank/return/reset cùng Start thứ ba. Mỗi view có đủ 39/43/47 snapshot của từng lớp, mọi 195 ô khớp actual C2S118 và mask độc lập; DB journal đúng map và thưởng 0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "TOMB319-1981",
+        "TOMB319-3307",
+        "TOMB319-4382",
+        "TOMB319-0009"
+      ],
+      "limits": "Chỉ route contiguous 2/4/6 và các hướng đã đo; Fire/Bomb ẩn là thiết kế, không phân phối rơi gốc hay toàn bộ map/item."
+    },
+    {
+      "summary": "Lượt sáu hoàn tất các quan sát native nhưng giữ overall exit 1. UDP capture dừng trước clock đầu do allowlist bốn máy, không có UDP gameplay. B có lỗi K2/GDB sau controller completion; export so đúng bytes nhưng output unmount busy. Xác minh quan sát từ locator export riêng, không gọi run hoặc capture sạch.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "TOMB319-3363",
+        "TOMB319-4371",
+        "TOMB319-4363"
+      ],
+      "limits": "Không complete UDP trace, clean debugger/output shutdown, Internet hoặc M8. Không dùng log server thay native actor/flag/rank proof."
+    },
+    {
+      "summary": "Hai lượt bốn người trước chưa tới gameplay: r1 thiếu namespace C; r2 có capacity 2, chỉ A/B vào phòng. R2 được dừng có khai báo, giữ output busy/export và exit 1. Lượt r3 sửa đúng topology/capacity trong input riêng, source Rust không đổi.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "TOMB319-2229",
+        "TOMB319-2548"
+      ],
+      "limits": "Không coi đó là KR/server gameplay failure. C screenshot có room list trống, không chứng minh nhãn full2/2 hoặc toàn cơ chế visibility."
+    },
+    {
+      "summary": "Giữ verifier hai người đảo win/loss và bản sửa dựa trên contract cũ, DB cùng ảnh. Bản sửa verifier bốn người chỉ đổi prose scope; native predicates không đổi. Không sửa raw, wire hoặc frozen input.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "TOMB319-1987",
+        "TOMB319-3298"
+      ],
+      "limits": "Bản sửa post-run được khai riêng; không biến test model hoặc ảnh UI thành oracle vật lý."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native route 2/4 và sáu quan sát đã tách lỗi chẩn đoán",
+      "result": "pass",
+      "evidence": [
+        "TOMB319-1981",
+        "TOMB319-3307",
+        "TOMB319-4382"
+      ],
+      "limits": "Lượt sáu overall exit 1 giữ nguyên; không chứng nhận capture UDP gameplay hoặc clean output/debugger."
+    },
+    {
+      "check": "Hash raw/retained input/cache và docs/catalog/diff, audit nhóm",
+      "result": "pass",
+      "evidence": [
+        "TOMB319-0018",
+        "TOMB319-0017",
+        "TOMB319-0008"
+      ],
+      "limits": "Full checker exact head và CI phải đạt trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP319-tomb12-serving.json",
+      "bytes": 1275274,
+      "sha256": "17f0be9b4c718b776141dfc3e1d468a62fc739cbd97f6a4119370c1e82993061",
+      "count": 4429
+    }
+  ],
+  "delta": {
+    "added": [
+      "Route Tomb12 contiguous 2/4/6, bridge đi/ray, hai loại item ẩn, hai vòng/reset và ván kế.",
+      "Factory07 terrain được chỉ rõ là khoảng trống kế tiếp, không suy từ adapter/basic."
+    ],
+    "corrected": [
+      "Tách overall lỗi capture/debugger/unmount khỏi native quan sát đã kiểm; UDP không có gameplay, không chỉ thiếu E/F.",
+      "Sửa topology/capacity của input thử sau khi giữ hai lượt setup lỗi.",
+      "Giữ verifier win/loss sai và metadata sửa scope riêng, không đổi contract."
+    ],
+    "superseded": [
+      "Thiếu route Tomb12 hai vòng/reset cho roster 2/4/6 và bridge di chuyển/ray."
+    ]
+  },
+  "blockers": [
+    "Chỉ route 2/4/6, các hướng và hai loại item ẩn đã đo; chưa mọi ô/hướng, sparse roster hoặc mọi item của Tomb12.",
+    "Vị trí và phân phối item thử là design; trọng số pack không phải tỉ lệ phần trăm đã phục hồi. Không chứng nhận authority server gốc.",
+    "Output/DB tmpfs và Wine chẩn đoán, không là Internet cho transport mới, crash durability, tải, backup/restore hoặc M8.",
+    "Lượt sáu người có native quan sát đã xác minh nhưng overall exit 1: UDP capture dừng trước clock đầu, không có trace UDP gameplay, GDB B lỗi sau controller completion, output unmount busy. Không full UDP capture hoặc graceful cleanup/M8.",
+    "Hai lượt bốn người lỗi setup được giữ: thiếu namespace C; kế đó capacity 2. Lượt sau còn output unmount busy sau export đúng hash và declared stop, giữ exit 1 cùng failure seal riêng."
+  ],
+  "completed_feature_groups": [
+    "g1-tomb12-contiguous-roster-route"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp Factory07 snapshot 1D54/1D24 và terrain/drop/roster còn thiếu; sau đó coverage G1, nhóm item/nhân vật và M8 theo PLAN. Không tiếp L1 hoặc sửa exporter.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-16T19:54:20.897978+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo, nhóm route Tomb12 contiguous 2/4/6; không toàn G1/M8 hoặc complete capture sáu người.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ route Tomb12, lỗi setup/capture/debugger/export, giới hạn quan sát và khoảng trống Factory07."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ route Tomb12, lỗi setup/capture/debugger/export, giới hạn quan sát và khoảng trống Factory07."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ route Tomb12, lỗi setup/capture/debugger/export, giới hạn quan sát và khoảng trống Factory07."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ route Tomb12, lỗi setup/capture/debugger/export, giới hạn quan sát và khoảng trống Factory07."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ route Tomb12, lỗi setup/capture/debugger/export, giới hạn quan sát và khoảng trống Factory07."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ route Tomb12, lỗi setup/capture/debugger/export, giới hạn quan sát và khoảng trống Factory07."
+    },
+    {
+      "path": "docs/content/tile-semantics.md",
+      "state": "updated",
+      "reason": "Đồng bộ route Tomb12, lỗi setup/capture/debugger/export, giới hạn quan sát và khoảng trống Factory07."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ route Tomb12, lỗi setup/capture/debugger/export, giới hạn quan sát và khoảng trống Factory07."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ route Tomb12, lỗi setup/capture/debugger/export, giới hạn quan sát và khoảng trống Factory07."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+      "state": "updated",
+      "reason": "Đồng bộ route Tomb12, lỗi setup/capture/debugger/export, giới hạn quan sát và khoảng trống Factory07."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Quy trình, audit theo nhóm, waiver và owner Claude của L1 giữ nguyên."
+    }
+  ]
+}

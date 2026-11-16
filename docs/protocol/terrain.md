@@ -780,7 +780,7 @@ item/roster còn lại vẫn theo PLAN. Không coi bốn bom có tám recipient 
 
 
 <a id="rust-tomb12-boundary"></a>
-## Tomb12: hai lớp cờ và tia nổ, gameplay còn mở
+## Tomb12: hai lớp cờ và route phục vụ
 
 [Bằng chứng khởi tạo](../evidence/rust-service/g1-tomb12-initial.json) giữ hai account KR trên Wine, hai spawn
 đầu trong sáu spawn gốc và hai view có cùng 195 cờ: 65 ô bằng 1, 130 ô bằng 0. Source type 1/type 2 tạo mask
@@ -794,7 +794,7 @@ Hai sample có cả mã ground/object bằng -1 cũng tạo object `CGOTileGroun
 Probe ban đầu đọc `+AC` theo lớp type 1/3, nhưng trường này bằng 0 ở các Ground đã chọn. Không gọi nó là con trỏ
 TileInfo của Ground hoặc xác nhận dữ liệu đã được chép tới offset đó. Nơi lưu TileInfo của Ground
 vẫn unknown; không cần suy offset đó để dùng lớp chặn tia đã đo riêng bên dưới. Native di chuyển, drop/pickup
-và hai vòng/reset cho 2–6 người vẫn còn phải kiểm. Chưa mở map tổng quát từ bằng chứng khởi tạo.
+và hai vòng/reset cho toàn phạm vi 2–6 người vẫn cần acceptance theo ma trận route. Chưa mở map tổng quát từ bằng chứng khởi tạo.
 
 Run gốc trả exit 1 vì output tmpfs unmount busy sau khi export đã được so từng size/SHA; seal thường không tìm
 thấy `cycles/run.json`. Raw giữ tại locator export, đã được xác minh riêng cùng input frozen và không còn PID
@@ -825,4 +825,16 @@ nếu có thì phải đủ 195 giá trị 0/1 và dùng cùng binding map/fixtu
 count được khởi tạo lại. Đây là policy projection có giới hạn, không tự đổi movement hay guard đặt bom.
 Binary Rust mới đã chạy cùng hai ca Stone/Waterway với mask bật trong cấu hình riêng, hai view có đúng thay đổi
 1D54 và mask 1D24 bất biến. Đây là nghiệm thu tích hợp hữu hạn; chưa đọc trực tiếp shadow clearance từ service,
-chưa nghiệm thu chain/reset native trên Tomb12. Unit test chỉ kiểm hồi quy policy, không thay bằng chứng native.
+chưa nghiệm thu chain hoặc bom đặt tại origin có mask trên Tomb12. Reset có bằng chứng riêng trong route
+phục vụ bên dưới. Unit test chỉ kiểm hồi quy policy, không thay bằng chứng native.
+
+
+[Ma trận route phục vụ](../evidence/rust-service/g1-tomb12-serving-rosters.json) đã xác minh route roster 2/4/6 account thực qua
+hai vòng/reset và Start kế. A mở liên tục hành lang Stone cột 0, nhặt Fire/Bomb ẩn, đi qua anchor và ô phủ bridge
+`(1,1)/(1,2)` trong cả hai view, rồi nổ power 2 qua hai ô đó và làm vỡ thùng `(0,0)`. Các lần thử Waterway từ
+`(11,0)` và `(0,14)` bằng phím thường không đưa actor sang ô kề. Từng snapshot cả hai lớp cờ khớp input native;
+clock kế khôi phục thùng và sáu stat theo nhân vật. DB ghi hai trận hoàn tất, trận kế hủy khi đóng client, thưởng 0.
+Đây là route contiguous 2/4/6 đã đo; chưa mọi ô/hướng, sparse roster hoặc toàn bộ item/G1. Lượt sáu người giữ
+overall exit 1: UDP capture dừng trước clock đầu do allowlist bốn máy, không có trace UDP gameplay; GDB B lỗi sau controller completion, output
+unmount busy sau export đúng bytes. Các quan sát TCP/native, hai lớp cờ, bridge và DB được xác minh riêng; không
+coi đó là capture UDP đầy đủ hay debugger/output cleanup sạch. Không chạy lại chỉ để biến exit 1 thành 0.

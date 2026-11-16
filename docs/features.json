@@ -1373,7 +1373,8 @@
           "docs/evidence/rust-service/g1-camp08-serving-roster.json",
           "docs/evidence/rust-service/g1-camp08-roster-routes.json",
           "docs/evidence/rust-service/g1-tomb12-initial.json",
-          "docs/evidence/rust-service/g1-tomb12-ray-barriers.json"
+          "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
+          "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
         ]
       },
       "coverage": {
@@ -1455,7 +1456,8 @@
               "docs/evidence/rust-service/g1-camp08-serving-roster.json",
               "docs/evidence/rust-service/g1-camp08-roster-routes.json",
               "docs/evidence/rust-service/g1-tomb12-initial.json",
-              "docs/evidence/rust-service/g1-tomb12-ray-barriers.json"
+              "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
+              "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
             ]
           },
           "windows_original": {
@@ -2455,7 +2457,8 @@
           "docs/evidence/rust-service/g1-camp08-serving-roster.json",
           "docs/evidence/rust-service/g1-camp08-roster-routes.json",
           "docs/evidence/rust-service/g1-tomb12-initial.json",
-          "docs/evidence/rust-service/g1-tomb12-ray-barriers.json"
+          "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
+          "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
         ]
       },
       "coverage": {
@@ -2546,7 +2549,8 @@
               "docs/evidence/rust-service/g1-camp08-serving-roster.json",
               "docs/evidence/rust-service/g1-camp08-roster-routes.json",
               "docs/evidence/rust-service/g1-tomb12-initial.json",
-              "docs/evidence/rust-service/g1-tomb12-ray-barriers.json"
+              "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
+              "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
             ]
           },
           "windows_original": {
@@ -2724,7 +2728,8 @@
           "docs/evidence/rust-service/g1-camp08-serving-roster.json",
           "docs/evidence/rust-service/g1-camp08-roster-routes.json",
           "docs/evidence/rust-service/g1-tomb12-initial.json",
-          "docs/evidence/rust-service/g1-tomb12-ray-barriers.json"
+          "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
+          "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
         ]
       },
       "coverage": {
@@ -2814,7 +2819,8 @@
               "docs/evidence/rust-service/g1-camp08-serving-roster.json",
               "docs/evidence/rust-service/g1-camp08-roster-routes.json",
               "docs/evidence/rust-service/g1-tomb12-initial.json",
-              "docs/evidence/rust-service/g1-tomb12-ray-barriers.json"
+              "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
+              "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
             ]
           },
           "windows_original": {
