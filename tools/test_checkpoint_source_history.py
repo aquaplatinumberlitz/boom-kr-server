@@ -56,6 +56,35 @@ class SourceHistoryTests(unittest.TestCase):
         self.assertEqual((errors, checked, missing), ([], 1, 0))
         self.assertTrue(any('HISTORICAL SOURCE VERIFIED' in w for w in warnings))
 
+    def test_c_tool_source_requires_exact_external_publication(self):
+        item, path = self.fixture('tools/hook.c', external=True)
+        later = b'later C source\n'
+        path.write_bytes(later)
+        self.commit()
+        path.write_text('current C source\n')
+        errors, warnings, checked, missing = self.verify(item)
+        self.assertEqual((errors, checked, missing), ([], 1, 0))
+        self.assertTrue(any('HISTORICAL SOURCE VERIFIED' in w for w in warnings))
+        requested = item | dict(bytes=len(later), sha256=hashlib.sha256(later).hexdigest())
+        self.assertTrue(self.verify(requested)[0])
+        self.assertTrue(checker.verify_evidence_item(item, self.root, True, 'CP002')[0])
+
+    def test_c_tool_header_needs_exact_manifest_and_binary_stays_strict(self):
+        item, path = self.fixture('tools/hook.h', external=True, broken_reference=True)
+        path.write_text('current header\n')
+        self.assertTrue(self.verify(item)[0])
+        for relative in ['local/hook.c', 'tools/../hook.c', 'rust/target/hook.c',
+                         'tools/hook.dll', 'tools/hook.exe', 'tools/hook.o', 'server/hook.c']:
+            self.assertIsNone(checker.historical_checkpoint_source(
+                self.root, relative, item['sha256'], item['bytes'], 'CP001'))
+
+    def test_c_tool_header_recovers_only_its_publication_blob(self):
+        item, path = self.fixture('tools/hook.h', external=True)
+        path.write_text('current header\n')
+        errors, warnings, checked, missing = self.verify(item)
+        self.assertEqual((errors, checked, missing), ([], 1, 0))
+        self.assertTrue(any('HISTORICAL SOURCE VERIFIED' in w for w in warnings))
+
     def test_rust_source_requires_its_original_external_publication_and_exact_blob(self):
         item, path = self.fixture('rust/crates/kr-service/src/room.rs', external=True)
         later = b'later Rust source\n'
