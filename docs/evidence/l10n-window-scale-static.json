@@ -1,0 +1,34 @@
+{
+  "schema": "kre-static-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "6e132ad",
+  "source": "kr_static",
+  "status": "candidate",
+  "input": {
+    "description": "00967 unpacked image (same as l10n-utf8-949x-static.json) read through the private IDA database copy; string and xref checks also on the 949x-patched runtime copy; pack and VN client files read only",
+    "image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "runtime_exe_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "database_copy": "local/ida/kr-opus.i64 (private copy; a second scratch copy was opened read-only and not saved)",
+    "vn_exe_sha256": "13a0a33cccc8f5f5124cdd8dac863b68118e6dda83340649b897fc41faed364a (boom-re unpacked_ca.exe, VN 116)"
+  },
+  "method": "IDA Pro headless (MCP) pseudocode, disassembly and xrefs on the database copy; scan of IAT call sites for CreateWindowExA, AdjustWindowRect, GetSystemMetrics, SetWindowPos; scan of all code immediates for 800/600 and 1024/768 pairs; string and catalog.csv search for resolution/screen/window terms; per-entry image dimension survey (JPEG SOF and i16 header) over every .idx/.idd pack of the KR client and of the VN client (entries over 8 MB skipped). No native run. Raw pseudocode stays under local/.",
+  "findings": {
+    "verdict": "confirmed (static): 00967 has a window-mode scale of 1x/1.5x/2x. It renders a fixed 800x600 frame and stretches it. It has no larger UI layout and no 1024x768 mode.",
+    "option_dialog": "Option dialog builder at 0xBDC280..0xBDC470 shows the window-mode checkbox (option id 15, label OptionDlgWindowMode) and a three-button group (option id 22, labels OptionDlgResolution = 창모드 배율, OptionDlgResolution_0/1/2 = 1배/1.5배/2배). Both are gated by 0xBE0C60 (flag 239) and 0xBE0BD0 (flag 323), which call stub 0x456AD0 (xor al,al; ret), so the gate is always open in this build.",
+    "option_table": "Table at 0x19A6820 (12-byte entries: id, name pointer, default) holds WindowedScreen id 15 default 1 and Resolution id 22 default 0, among other user options; loaded by 0x12240E0 (xref 0x12243A1), which opens HKCU SOFTWARE\\MPlay\\Crazy Arcade and SOFTWARE\\Nexon\\BubbleFighter.",
+    "size_list": "0x125B580 (CMainWindow constructor) registers 800x600, 1200x900 and 1600x1200 in a vector at this+0x28 (immediates 0x320/0x258, 0x4B0/0x384, 0x640/0x4B0).",
+    "apply_scale": "0x125A330 reads option 22 through 0x122A3D0, maps the index to a size with 0x125B280 and calls 0x14B8920, which dispatches vtable +264 = 0x14E1790 (IDirect3DDevice9::Reset with the new back buffer). 0x125B600 falls back to the largest list entry that fits the desktop when the current size exceeds GetSystemMetrics.",
+    "render_path": "0x14DFFE0 creates an 800x600 render target (immediates at 0x14E01C0/0x14E01C5). 0x14DECD0 presents with EndScene then vtable +136 (StretchRect) from that target to the back buffer; filter point when the factor is integral, linear otherwise (flag at this+124). 0x14E2DC0 computes factor = back buffer width / 800.0f (constant at 0x1728B14) and centres the window with AdjustWindowRect and SetWindowPos.",
+    "window_creation": "0x1259F60 creates the main window with CreateWindowExA from hard-coded 800x600 (immediates 0x1259FA5/0x1259FAC), class name Crazy Arcade, then AdjustWindowRect. 0x14DFF40 (vtable +0xC of the device class) sets the logical rect 0,0,800,600. 0x14E1C90 toggles fullscreen and uses 800x600 when switching to fullscreen. Back buffer width and height come from variable qword 0x1A9012C.",
+    "hardcoded_layout": "About 100 functions contain 800 and 600 immediates side by side (for example 0x54E700, 0x5C4270, 0x8D7ED0, 0xCD8D10, 0x105FD20, 0x1283110): UI layout is hard-coded for 800x600. 1024 immediates found elsewhere are not resolutions (0x1231BD0 pool size, 0x409141 CPU flag routine, library code at 0x157xxxx/0x158xxxx).",
+    "not_found": "No strings ScreenMode, ScreenSize, WideMode, BigScreen or a resolution command-line switch; no branch that selects between 800x600 and 1024x768. catalog.csv rows with Korean resolution/screen-size words are only OptionDlgResolution, OptionDlgResolution_0/1/2, OptionDlgWindowMode, OptionDlgFullScreen, ToggleWindowFailedAskToSave and Win8Support_ToggleWindowFailed (the word 해상도 matches only item-dismantling rows). CAKR.ini and cavn.ini are encrypted and were not read.",
+    "pack_image_survey": "KR 00967: 49,205 images measured; none is at least 900 wide and 700 high; none is 1024x768, 1200x900 or 1600x1200; 92 are exactly 800x600 (full-screen backgrounds such as FxDesktop LoginStage/CAStage, LobbySquare/CAStage, UX/CAStage_Lobby). VN 116: 20,648 images measured; none is at least 900 wide and 700 high; 61 are 800x600. Names with _1024/_Wide/_Big/HD suffix for backgrounds: none (WideBG is a lobby chat frame, 1024 in item names is an item id).",
+    "vn_exe": "The VN unpacked exe has no OptionDlgResolution or WindowedScreen strings, no 1024x768 immediate pair and 11 800x600 push pairs; it has a FullScreen option string only. So no evidence was found that the VN client uses a 1024x768 interface; the statement should be treated as unsupported."
+  },
+  "verified_vs_inferred": {
+    "verified_static": "All VA roles above were read in the database copy; catalog rows and the image survey were read from files.",
+    "inferred": "That the registry is where Resolution is stored (the table loader opens HKCU keys, but the value read for id 22 and its format were not traced); that scaling is uniform for the whole frame (follows from the 800x600 render target plus StretchRect)."
+  },
+  "limits": "Not run natively, so the option dialog, the Reset and the stretched picture were not seen. Not checked: where the Resolution option is stored and in which format; whether mouse coordinates are divided by the scale factor at 1.5x/2x; behaviour on desktops smaller than the chosen size beyond the 0x125B600 fallback; the VN exe was scanned by bytes and strings only, without its database. Scaling a fixed 800x600 frame does not give the text more room, so it does not fix label overflow.",
+  "interpretation": "docs/content/client-language.md#window-scale"
+}

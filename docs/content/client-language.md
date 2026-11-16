@@ -191,7 +191,7 @@ Bộ Hàn UTF-8 qua 949x hiện như dữ liệu gốc ở client A của vi-04 
 **Font: bộ VN cho nhãn, Gulim 12×12 gọn cho ô nhập.** Bộ font VN của PopTag (`CxUni`/`CxUniBold` 12×16) giữ đủ dấu chồng
 của chữ hoa (`Ệ`, `Ố`, `Ầ`), còn hình mượn từ `CxUni` KR 12×12 thì mất dấu mũ của `Ệ` và dính dấu ở `ế`. Engine 00967 đọc
 khổ cao từ header nên nạp được bộ này cho nhãn. Ô nhập và ô chọn người nhận của layout KR chỉ cao 12 điểm nên cắt hàng
-dưới của Gulim VN 15/16 hàng (mất dấu nặng, đuôi `g`); client VN không bị vì giao diện 1024×768 của nó có ô cao hơn. Vì
+dưới của Gulim VN 15/16 hàng (mất dấu nặng, đuôi `g`); ảnh client VN đã lưu không thấy cắt, chưa rõ vì sao (không phải do khổ 1024×768; xem [phóng to cửa sổ](#window-scale)). Vì
 vậy `tools/l10n_949x.py vnfonts` dựng `CxUniGulim`/`CxUniGulimBold` 12×12: chữ Hàn/CJK lấy từ Gulim KR, chữ Latin/Việt lấy
 từ Gulim VN, giữ 10 hàng thân và chân chữ, gộp vùng dấu phía trên vào 2 hàng, viền sinh lại bằng giãn 8 hướng (đúng cách
 file font KR lưu viền). Chữ Hàn ở `CxUni` VN lấy advance của font KR. Cách mượn hình vào Gulim KR (`fonts`) giữ làm dự phòng.
@@ -245,6 +245,17 @@ của dự án `boom-re` dùng `<Mọi người>` và `<Đồng đội>`, đều
 nguồn. Bản Việt cần tối đa 22 byte ở 949x; hai câu đang vượt cần thay.
 
 Evidence: [ảnh và chuỗi exe](../evidence/l10n-utf8-949x-images-r4.json), [tên phòng, font và chat](../evidence/l10n-utf8-949x-title-font.json).
+
+<a id="window-scale"></a>
+### Phóng to cửa sổ không thêm chỗ cho chữ
+
+00967 luôn bố cục và vẽ ở 800×600 (render target cố định, rồi kéo giãn sang backbuffer). Client có sẵn tuỳ chọn
+`창모드 배율` (`OptionDlgResolution`: 1배/1.5배/2배 = 800×600, 1200×900, 1600×1200) cùng ô `창모드`; chỉ phóng ảnh, không
+đổi bố cục. Vì vậy phóng to không sửa được chữ tràn khung; vẫn phải rút ngắn câu hoặc đổi font. Không có chế độ giao diện
+1024×768, không có ảnh nền lớn hơn 800×600 ở cả KR 00967 (49.205 ảnh đã đo) lẫn VN 116 (20.648 ảnh), và exe VN không có
+cặp hằng 1024×768 hay tuỳ chọn tương tự. Câu "client VN dùng giao diện 1024×768" trước đây là không có bằng chứng. Chưa kiểm:
+nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy native. Chi tiết VA ở
+[evidence tĩnh phóng to cửa sổ](../evidence/l10n-window-scale-static.json).
 
 ### Giới hạn và việc còn lại
 
