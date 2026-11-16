@@ -1,0 +1,97 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "445421c",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Layout defects from the 16/11 review compared with the VN client and fixed on the 949x diagnostic client: vi and en review recipes (vi-04, en-05) with the compact 12x12 Gulim from tools/l10n_949x.py vnfonts and locally overridden strings (local/review-fix/override_cs.py on copies of the 11632f2 UTF-8 builds; boom-re-l10n not modified). VN comparison images are the VN client runtime screenshots kept in boom-re docs (commit aebbcc9 and earlier), copied under local/review-fix/vn.",
+  "observation": "KR 00967 UI is 800x600 with layouts as constants in the exe (no layout files in the packs); the VN client UI is 1024x768 with taller controls, so VN 16-row fonts fit there. Recipient field: VN shows '<Mọi người>' whole in a taller field; on 00967 the 12-row field clipped the 15-row VN Gulim, and the compact 12x12 Gulim shows the dot below and the g descender (vi-before-after.png). Players label: VN also draws the value at a fixed offset (raw key PREMAX overlapped by the value in vn-chat_room.png); 'Số chỗ' (39 px, like en 'Players' 41 px) no longer overlaps '8'. Game-type button: VN also lets long text run past the button (raw keys in vn-create_room_dialog.png); 'Bắt thủ lĩnh' (65 px) and 'Leader Hunt' (69 px) fit where 'Bắt đội trưởng' (81) and 'Catch the Leader' (97) overflowed. Mode label: 'Even Teams' (70 px) is no longer covered by the Any checkbox. Chat tip: the chat log wraps by character width without word breaks; an explicit newline in the csysstr string makes the en tip break between words. PREMAX, CreateDlgGameTypeFlagHunt and CreateDlgModeManner exist in both ClientString and csysstr.ssd and the client shows the csysstr value.",
+  "local_evidence": [
+    {
+      "path": "local/runs/vi-04/fixvi2/preflight.json",
+      "sha256": "87c31302c1293203bd708f962e2d88a009029c56873188ae80b6ef82adeee6de"
+    },
+    {
+      "path": "local/runs/vi-04/fixvi2/native/run.json",
+      "sha256": "b2ee8abe04dad057970df7c3c07de9bf06894978acebb34ab80ce68e6bb46efa"
+    },
+    {
+      "path": "local/runs/vi-04/fixvi2/native/B/01-sanh.png",
+      "sha256": "d28f6fb38da8e7704919696cb59ad8bf5661cb8c258df3da43c3c70473cad353"
+    },
+    {
+      "path": "local/runs/vi-04/fixvi2/native/A/20-phong.png",
+      "sha256": "7ed4f499ba9bb2159adcb8e86b7b4d72756169c3bfc4793c71039b727fa10d7a"
+    },
+    {
+      "path": "local/runs/vi-04/fixvi2/native/A/16-tao-phong.png",
+      "sha256": "ce1ee320e96176bd3f253c35765844c1d4cc710529f37f09e0ceaf0c1183f3bd"
+    },
+    {
+      "path": "local/runs/vi-04/fixvi2/native/A/21-phong-nguoi-nhan.png",
+      "sha256": "6d4698bf4642d8d23b5484c0866c2f5211733c046c3503d20633628258bffb09"
+    },
+    {
+      "path": "local/runs/en-05/fixen/preflight.json",
+      "sha256": "44e8384f4f47042f4c931e6ffe63940266a8f374892bbcf52aeaebe1831254a8"
+    },
+    {
+      "path": "local/runs/en-05/fixen/native/run.json",
+      "sha256": "397a4c04984fb7732c7d46df6856fd7280c869fa0ead890a1456adb64733951b"
+    },
+    {
+      "path": "local/runs/en-05/fixen/native/A/16-tao-phong.png",
+      "sha256": "cc17d5f0efe732f55e27d216add41adcbf067cff3401684d15b03af6ed4414c2"
+    },
+    {
+      "path": "local/runs/en-05/fixen/native/A/20-phong.png",
+      "sha256": "44ffa55d87caf7ba09de2ceb51fd0962a570d2534c783611c9baf54b416523c0"
+    },
+    {
+      "path": "local/review-fix/vi-before-after.png",
+      "sha256": "fbd436874274df8d38b027e2cc1cf99acd5128660d8be6ee88f5d8f4c67b1c8e"
+    },
+    {
+      "path": "local/review-fix/vi-before-after2.png",
+      "sha256": "21384b42a5ccca283dad4365323642546d9fe2f5c4466a56cdc494062261069c"
+    },
+    {
+      "path": "local/review-fix/en-before-after.png",
+      "sha256": "e22bd4fbb7255e093a6b4fbca50126b5c0265564c1c03b5229514fa39fd42c35"
+    },
+    {
+      "path": "local/review-fix/override_cs.py",
+      "sha256": "dda3bf69d7617a5bbdeaadbd185e539c122f9b47883d222e666b90b6f06b2485"
+    },
+    {
+      "path": "local/review-fix/vn/vn-lobby_strings_vi.png",
+      "sha256": "8003e3bac698ed0f21e1c35dfa5dc4c3b06d097a4d26e592a73735c95e0d9318"
+    },
+    {
+      "path": "local/review-fix/vn/vn-chat_room.png",
+      "sha256": "a4ac3540b1bcc38bfd9d7e2901dbcb094c8107379c87048e90ea7f30935e3e9f"
+    },
+    {
+      "path": "local/review-fix/vn/vn-create_room_dialog.png",
+      "sha256": "b87fa1831bccdad7eb8853e90dda653cd7536b422e64d9aa7a6ef0bf7a3c5d05"
+    },
+    {
+      "path": "local/review-fix/vn/vn-recipient-zoom.png",
+      "sha256": "8f50a9bf58c25ffa329060db91a1c7615eb2c46b66c2ab35ab409aa81fb2cfd0"
+    },
+    {
+      "path": "local/review-fix/vn/vn-premax-zoom.png",
+      "sha256": "afe94ced8b1095e96b143235a255e86b4276422c515364e90f08498934453cc5"
+    },
+    {
+      "path": "local/fonts-vn2/CxUniGulim.fft",
+      "sha256": "8a2388d085fe9654e6153d16a30998ae979806c91052aaf0925269423376d84f"
+    },
+    {
+      "path": "local/fonts-vn2/CxUniGulimBold.fft",
+      "sha256": "a52b5352b413bc41551e01451775911b707fcac0d170ed85b2ac5426bbed31b2"
+    }
+  ],
+  "cleanup": "Raw export passed for both runs.",
+  "limits": "VN screenshots come from earlier boom-re runtime captures, not a new VN run; they show raw keys where the server had not sent strings, so they compare layout mechanics, not VN wording. String fixes are local overrides; the catalog fix belongs to boom-re-l10n. Word wrap itself is not changed in the exe."
+}
