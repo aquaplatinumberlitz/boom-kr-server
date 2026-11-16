@@ -706,6 +706,17 @@ Journal của lượt chạy có hai trận hoàn tất, trận thứ ba hủy v
 mọi ô, hướng, item hoặc các roster còn lại của Camp08. Output và DB trên tmpfs chỉ là đối chứng chẩn đoán,
 không thay nghiệm thu lưu bền/Internet/vận hành M8.
 
+[Ma trận roster 2/4/8](../evidence/rust-service/g1-camp08-roster-routes.json) bổ sung route bốn account,
+hai đội AB/CD với slot và spawn gốc. Có 20 bom, hai vòng StrongBox 5/2 và hidden Bomb/Fire, bốn view hoàn tất
+consumer/kết quả/return, Start thứ ba và 43 snapshot × 195 cờ mỗi view khớp model độc lập từ actual C2S118.
+Journal có hai trận hoàn tất, trận thứ ba hủy và thưởng 0. Đây là coverage của route đã chọn, không mọi ô,
+hướng, sparse roster, item hoặc nhân vật của Camp08.
+
+Lượt bốn account đầu mất mẫu vị trí B sau ba bom đúng tọa độ, trong khi A còn phát mẫu. Không thấy fatal,
+probe error, QueueExpired hoặc lỗi service trong phạm vi log đã giữ; nguyên nhân vẫn unknown. Lượt tiếp có
+thu process/thread/focus khi stale và một đối chứng focus giới hạn, nhưng không kích hoạt các nhánh đó và route
+đạt. Không suy đây là lỗi đã được sửa hoặc một chẩn đoán focus; tmpfs vẫn chỉ là đối chứng chẩn đoán.
+
 Lượt tám account đầu dừng trước nhặt item: hai actual C2S118 phát từ `(8,1)` thay vì `(7,1)`, nên StrongBox01
 còn hai hit. Cờ native của cả tám view khớp model theo tọa độ thực tế. Harness đã chấp nhận lệch tâm khi rẽ;
 lượt đạt siết căn tâm và nhịp phím, không sửa luật terrain hoặc timeout service. Raw và input frozen của lượt lỗi
@@ -766,3 +777,26 @@ Lượt tám người đầu hoàn tất native nhưng UDP capture kế thừa a
 Lượt sửa capture dùng nguyên bản tám người đã nghiệm thu đạt exit 0. Các đối chứng storage/capture không là
 durability, sửa production hoặc M8; không thay timeout. Line01 và route serving tám account có đối chứng riêng bên trên; coverage
 item/roster còn lại vẫn theo PLAN. Không coi bốn bom có tám recipient là nghiệm thu toàn gameplay Camp08 tám người.
+
+
+<a id="rust-tomb12-boundary"></a>
+## Tomb12: khởi tạo đã đo, gameplay còn mở
+
+[Bằng chứng khởi tạo](../evidence/rust-service/g1-tomb12-initial.json) giữ hai account KR trên Wine, hai spawn
+đầu trong sáu spawn gốc và hai view có cùng 195 cờ: 65 ô bằng 1, 130 ô bằng 0. Source type 1/type 2 tạo mask
+ứng viên khớp toàn bộ cờ khởi tạo, nhưng cờ 1 chưa phân biệt static/thùng và cờ 0 không chứng minh đi qua tự do.
+
+Tại các sample đã chọn, Stone00, WaterwayH04–H08 và bridge00 đều là `CGOTileGround`, virtual initializer
+`B9D8E0`. TileInfo 72 byte tại callsite khớp pack, hai getter truyền kích thước Stone 1×1, Waterway/bridge 2×1.
+Hai sample có cả mã ground/object bằng -1 cũng tạo object `CGOTileGround`; chưa suy hành vi của toàn bộ 52 ô
+đó. Sáu GraveStone01/03 là `CGOTileStatic` với source data, footprint 1×1 và call ghi cờ đã quan sát.
+
+Probe ban đầu đọc `+AC` theo lớp type 1/3, nhưng trường này bằng 0 ở các Ground đã chọn. Không gọi nó là con trỏ
+TileInfo của Ground hoặc xác nhận dữ liệu đã được chép tới offset đó. Nguồn lưu dữ liệu và physics của Ground
+vẫn unknown; native di chuyển, ray qua anchor/ô phủ, thùng vỡ, drop/pickup và hai vòng/reset còn phải kiểm.
+Chưa bật terrain hoặc mở map tổng quát từ bằng chứng khởi tạo.
+
+Run gốc trả exit 1 vì output tmpfs unmount busy sau khi export đã được so từng size/SHA; seal thường không tìm
+thấy `cycles/run.json`. Raw giữ tại locator export, đã được xác minh riêng cùng input frozen và không còn PID
+trong namespace gốc. DB và host bind đã unmount trong run; không chứng nhận output unmount thành công.
+Giữ nguyên lỗi wrapper, verifier frozen và giới hạn chẩn đoán; không suy độ bền hoặc M8 từ bản export này.

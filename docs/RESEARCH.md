@@ -159,29 +159,27 @@ trước đóng QueueExpired trước mainDisconnected; run tách preboot không
 chưa xác định. Chỉ mở chẩn đoán tiếp nếu tái hiện hoặc cần budget M8; không patch JSON downstream.
 
 <a id="gap-camp08-bomb-report"></a>
-### Camp08: terrain đặc biệt và coverage sau thùng nhiều hit
+### Camp08: coverage sau route thùng nhiều hit
 
-[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ policy122/map-owned cancellation và kernel
-thùng nhiều hit. StrongBox01/02 đã có native 5/2 hit, actual class/counter/init, cùng route Rust hai vòng với hai
-item ẩn thiết kế và reset. Không lặp parser122, cờ khởi tạo, game-box sai nhánh hoặc route đã đạt khi không có discrepancy mới. Report122 không có epoch/serial nên raw freshness vẫn unknown; nó không có authority
-trên ledger. Bộ đếm thùng là dữ liệu type2 đã đo, không phải footprint chung cho TileInfo.
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ policy122 và route StrongBox/hidden Bomb/Fire
+hai vòng/reset cho roster 2/4/8. Herb/Line, footprint/ray static và Line01 ray đã có các đối chứng riêng; không lặp
+parser, initializer, game-box sai nhánh hoặc route đã đạt khi chưa có discrepancy mới. Report122 không mang epoch/
+serial nên raw freshness vẫn unknown, không có authority trên ledger. Chưa đo trực tiếp actor/getter đi vào Line01
+hoặc mọi hướng/sparse roster; không dùng cờ 0 hoặc type 3 để suy mọi khả năng đi qua. Tiếp nội dung còn thiếu theo PLAN.
 
-Herb01/02 và Line02 đã có [đối chứng riêng](protocol/terrain.md#rust-camp08-boundary): tia đi xuyên Line02 nhưng
-nhân vật bị chặn, trong khi flag bằng 0. Getter tĩnh tách byte 24–27, 28–31 và 32–35; không dùng type 3 hoặc
-seed để gán mọi ô đi qua tự do. Đối chứng DB tmpfs đã có fresh Herb positive, intact Line negative và direct getter
-`BA0860` trả 0 ở hai view, khớp byte 24–27; wrapper return mâu thuẫn trước vẫn bị loại. Line01 đã có ray đi xuyên
-tới thùng kế bên ở hai view; chưa đo trực tiếp actor/getter đi vào Line01, các hướng khác còn mở. Không lặp route lỗi
-thiếu điều kiện mới hoặc suy durability từ tmpfs.
+Storage/log budget và mất mẫu feedback B ở lượt bốn người đầu vẫn chưa rõ. Lượt đạt không kích hoạt control focus,
+nên không chốt nguyên nhân. Giữ QueueExpired, log-flush, preboot và capture failures trong evidence; không suy
+production fix hoặc độ bền từ tmpfs. Xem lại khi cản G1 hoặc tại M8; L1 vẫn do Claude phụ trách.
 
-Footprint và ray của ba `CGOTileStatic`, gồm ô phủ MissileBase, đã có bằng chứng riêng trong contract. Route
-StrongBox/hidden Bomb/Fire tám account đã qua hai vòng/reset và Start kế; lượt sai căn vị trí được giữ riêng.
-Tiếp floor/drop/item và coverage roster Camp08, rồi Tomb12 theo PLAN; không lặp initializer, Line01 ray hoặc các
-route đã đạt. Những ô chưa đo không được chứng nhận bằng seed. Policy thùng hữu hạn khác server gốc; controls chain/queue/multiroom tự động không là native rộng hơn. L1 vẫn do Claude phụ trách.
+<a id="gap-tomb12-terrain"></a>
+### Tomb12: khởi tạo đã có, ngữ nghĩa ground và ray còn thiếu
 
-Log hai lượt lỗi có account `Backend(QueueExpired)` trước return/reset và lỗi observer đọc actor cũ; worker có mẫu
-`wait_current_trans` gần đó. Đối chứng cùng route trên DB tmpfs đạt; nguyên nhân sâu/storage budget vẫn candidate,
-thuộc M8 hoặc khi cản G1. DB tmpfs chưa tránh `log flush timeout`; output tmpfs/export đã đạt route. Giữ lỗi init,
-preboot, log-flush/capture riêng; không nới timeout hoặc suy nguyên nhân từ chronology. Diagnostic không là nghiệm thu lưu bền.
+[Contract khởi tạo](protocol/terrain.md#rust-tomb12-boundary) có 195 cờ ở hai view, object/RTTI và kích thước
+Waterway/bridge 2×1 cùng sáu static 1×1. Mask ứng viên khớp cờ ban đầu chưa chứng minh physics. Tiếp hai bom native
+ở anchor và ô phủ Waterway, có thùng sau footprint; đối chiếu ray/flag và source object trước khi bật terrain.
+Di chuyển trên Waterway/bridge, drop/pickup và hai vòng/reset cho 2–6 người vẫn mở. Ground không có pointer TileInfo
+ở `+AC` như type 1/3; chỉ mở thêm consumer khi cần giải discrepancy. Raw export đã so đúng bytes nhưng output
+unmount busy, giữ overall exit 1; không chạy lại chỉ để lấy exit 0 hoặc suy graceful cleanup/M8 từ namespace đã hết.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster

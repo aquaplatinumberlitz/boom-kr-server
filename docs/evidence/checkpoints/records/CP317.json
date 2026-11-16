@@ -1,0 +1,239 @@
+{
+  "id": "CP317",
+  "previous": "CP316",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-16T17:31:05.830049+00:00",
+  "context_commit": "4148a297c751cd64174cd9bcc30cee814a34e11c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Bổ sung Camp08 roster bốn người vào route 2/4/8 và đo khởi tạo Tomb12 trước gameplay.",
+  "scope": "Camp08 StrongBox/hidden Bomb/Fire hai vòng/reset ở roster bốn người; Tomb12 chỉ initial flags/object/footprint từ export đã kiểm, giữ overall exit 1.",
+  "artifacts": [
+    {
+      "name": "client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "service",
+      "sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192"
+    }
+  ],
+  "locators": [
+    "docs/protocol/terrain.md#rust-camp08-boundary",
+    "docs/protocol/terrain.md#rust-tomb12-boundary",
+    "docs/evidence/rust-service/g1-camp08-roster-routes.json",
+    "docs/evidence/rust-service/g1-tomb12-initial.json",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402"
+  ],
+  "findings": [
+    {
+      "summary": "Bốn account Camp08 có 20 bom, hai vòng StrongBox 5/2/hidden Bomb/Fire, đủ rank/return/reset ở bốn view và Start thứ ba. Mọi cờ tại 43 snapshot mỗi view khớp model theo actual C2S118; ghép với route 2/8 đã có.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "ROSTER317-0885",
+        "ROSTER317-0009"
+      ],
+      "limits": "Route liên tục 2/4/8 đã đo, không mọi ô/hướng/sparse roster hoặc toàn item/nhân vật G1. Tmpfs không chứng minh lưu bền/M8."
+    },
+    {
+      "summary": "Lượt bốn người đầu mất mẫu vị trí B sau ba bom đúng tọa độ, A còn phát mẫu. Lượt sau đạt nhưng không kích hoạt diagnostic/control focus, nên nguyên nhân vẫn unknown.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+      "evidence": [
+        "ROSTER317-0249",
+        "ROSTER317-0471"
+      ],
+      "limits": "Không gọi focus là root cause hoặc một sửa lỗi đã chứng minh; giữ nguyên raw và frozen input."
+    },
+    {
+      "summary": "Tomb12 có hai view với cùng 195 cờ và 65 ô bật; Ground Waterway/bridge truyền kích thước 2×1, Stone 1×1. Actual RTTI, callsite source72, hai placeholder và sáu static 1×1 đã được đối chiếu.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "ROSTER317-2830",
+        "ROSTER317-0010"
+      ],
+      "limits": "Initial only, chưa movement/ray/destructibility/drop/result/reset hoặc gameplay 2–6 người. Source mask khớp flag chưa là physics."
+    },
+    {
+      "summary": "Tomb12 output unmount busy sau same-byte export, giữ overall exit 1 và standard seal thất bại. Alternate export seal kiểm từng hash/input cùng namespace không còn PID, không ghi unmount thành công.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "ROSTER317-2814",
+        "ROSTER317-2813",
+        "ROSTER317-0010"
+      ],
+      "limits": "Dữ liệu native dùng theo locator export; không graceful output cleanup, production fix hoặc M8."
+    },
+    {
+      "summary": "Verifier khởi tạo đã áp nhầm pointer +AC của type 1/3 sang Ground. Actual +AC bằng 0; giữ trường opaque, chỉ xác nhận callsite source72, kích thước, RTTI và flags. Bản frozen và các bản kiểm lỗi giữ nguyên.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+      "evidence": [
+        "ROSTER317-2836"
+      ],
+      "limits": "Nơi lưu dữ liệu Ground và ngữ nghĩa vật lý vẫn unknown; không nhập nghĩa offset giữa lớp."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native roster bốn người, hai vòng và mọi cờ callback",
+      "result": "pass",
+      "evidence": [
+        "ROSTER317-0885"
+      ],
+      "limits": "20 bom/4 pickup165 mỗi view, 2 rank/return và 3 clock. Chỉ route đã chọn."
+    },
+    {
+      "check": "Tomb12 initial observations từ export đã xác minh",
+      "result": "pass",
+      "evidence": [
+        "ROSTER317-2830",
+        "ROSTER317-2814"
+      ],
+      "limits": "Overall exit 1 giữ nguyên; không gameplay hoặc successful output unmount."
+    },
+    {
+      "check": "Bảo toàn input/raw, docs/catalog/diff và audit nhóm",
+      "result": "pass",
+      "evidence": [
+        "ROSTER317-0018",
+        "ROSTER317-0016",
+        "ROSTER317-0017",
+        "ROSTER317-0008"
+      ],
+      "limits": "Full checker exact head và CI phải đạt trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP317-roster-tomb.json",
+      "bytes": 795120,
+      "sha256": "c6a0c7291ed6230b9442babbd6063c9d9b6556ab0f79dcf4366f222ae41015e7",
+      "count": 2863
+    }
+  ],
+  "delta": {
+    "added": [
+      "Camp08 route roster bốn người, bổ sung ma trận 2/4/8.",
+      "Tomb12 initial flags và object/footprint trước gameplay."
+    ],
+    "corrected": [
+      "Không suy nguyên nhân focus từ một run đạt mà control không kích hoạt.",
+      "Loại nghĩa pointer type 1/3 ở Ground+AC; giữ verifier frozen và raw.",
+      "Tách overall exit 1/output unmount busy khỏi quan sát native trên export đã xác minh."
+    ],
+    "superseded": [
+      "Khoảng trống roster bốn người của route StrongBox/Bomb/Fire Camp08.",
+      "Thiếu native first clock/object cho các sample Tomb12 đã đo."
+    ]
+  },
+  "blockers": [
+    "Chỉ route StrongBox 5/2 và hidden Bomb/Fire ở roster liên tục 2/4/8; chưa mọi ô/hướng/sparse roster hoặc các item/nhân vật G1 còn lại.",
+    "Floor/drop và policy số hit hữu hạn là design; không phục hồi authority hoặc phân phối drop của server gốc.",
+    "Output/DB tmpfs với export/unmount đã kiểm bytes chỉ là chẩn đoán. Không chứng nhận lưu bền, Internet, phiên dài, 50 người/8 phòng hoặc M8.",
+    "Control không kích hoạt nên không chứng minh focus đã sửa nguyên nhân mất mẫu trước.",
+    "Chưa kiểm movement, bomb/ray, drop/item, kết quả/reset hoặc gameplay 2–6 người của Tomb12; cần input native để giải Waterway/bridge/ô có cả hai mã -1.",
+    "Mỗi ground có tên mới đo một sample và hai placeholder; chưa mọi ô/trường object. Chưa biết nơi lưu dữ liệu của Ground, không nhập nghĩa offset giữa các lớp.",
+    "Overall exit 1 và ranh giới storage không chứng minh sửa production, output unmount thành công, lưu bền, Internet, tải hoặc M8. Chưa bật terrain map từ lát này."
+  ],
+  "completed_feature_groups": [
+    "g1-camp08-contiguous-roster-route"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp Tomb12 Waterway/bridge: ray tại anchor/ô phủ và thùng sau footprint, rồi terrain/item/hai vòng/reset 2–6 người. Các item/nhân vật G1 và M8 theo PLAN; không tiếp L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-16T17:31:05.830049+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo, Camp08 roster route và Tomb12 initial; không toàn G1/M8.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/protocol/terrain.md",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/content/tile-semantics.md",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-camp08-roster-routes.json",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-tomb12-initial.json",
+      "state": "updated",
+      "reason": "Đồng bộ roster Camp08, khởi tạo Tomb12, nguyên nhân còn unknown và bước tiếp đúng nguồn chuẩn."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Giữ quy trình, waiver và owner Claude của L1."
+    }
+  ]
+}

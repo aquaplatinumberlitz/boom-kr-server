@@ -1,0 +1,173 @@
+{
+  "schema": "kre-g1-tomb12-initial-v1",
+  "canonical": "docs/protocol/terrain.md#rust-tomb12-boundary",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "First clock Tomb12 trên hai account: 195 cờ và quan sát hữu hạn initializer của ground/static/placeholder từ export đã xác minh. Giữ nguyên overall exit 1.",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "run_sha256": "f11123827d32abf6fe8397377b1eb9008db42c86e24ebe69b65b9d9e00364564",
+  "raw_files": 58,
+  "preflight_files": 576,
+  "service_sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192",
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-tomb12-seed-native-r1/seed-verification.json",
+      "bytes": 86454,
+      "sha256": "75ed5d8e4eb80199706a7c6a64feea4f8b1bf28cdc2d7c9afc9c9fc8673beb20"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-seed-native-r1/verifier-corrections.json",
+      "bytes": 1275,
+      "sha256": "26cb5777226da63af97086332f031dcf26fdd461f05fdfd8e607ff7153aa1cf5"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-seed-native-r1/native/raw-export-seal.json",
+      "bytes": 14066,
+      "sha256": "62e0b80f3dcf7e3a80e035db98d3beb680b6be0544085e5a01ce67daa741ee61"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-seed-native-r1/native/storage-export-before-unmount.json",
+      "bytes": 14807,
+      "sha256": "96ec836ace2ab9917ab7749f5c8bf656a0a3ddfcb26ccea6e1b8314aa839ada7"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-seed-native-r1/native/launch-exit.json",
+      "bytes": 73,
+      "sha256": "d745950c5355bf70693598bdbbd6580c618ca01b93784339a552397c60189bda"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-seed-native-r1/native/launch.txt",
+      "bytes": 692,
+      "sha256": "a003cc64f80a09e8336d64840c7a3ce1ff87b16bdae89e5df3224384911560e0"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-seed-native-r1/native/supervisor.log",
+      "bytes": 1851,
+      "sha256": "bc37cab0f4440083d2a9db7ee4d2355c7aa27151f2ef2cf7f6d0b556cdffe737"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-source-r1/reuse.json",
+      "bytes": 2167,
+      "sha256": "ba80a924e6bad4033ffd562da51df5c146b6f147f090518980572b92afdf4020"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-source-r1/data-candidates.json",
+      "bytes": 102057,
+      "sha256": "4ee29bc0c80869c142886d08a5e6e2737f8d536497733b64165f71aab0129109"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-source-r1/init-probe-review.json",
+      "bytes": 4730,
+      "sha256": "39dcf5cabf48abe39187e9eeb0586e936ead33befc36875d765fb9a4692017de"
+    },
+    {
+      "path": "local/research/codex/g1-tomb12-source-r1/initial-mask-candidate.json",
+      "bytes": 1951,
+      "sha256": "b42f8245b4cfea413b27e15860e0804ff4c4975ca5c7df57cb4041c3db532fb1"
+    }
+  ],
+  "observations": {
+    "actual_original_spawns": 2,
+    "pack_spawn_capacity": 6,
+    "flags_equal_both_views": true,
+    "flag_count": 195,
+    "flags1": 65,
+    "flags0": 130,
+    "ground_records_per_view": 16,
+    "static_records_per_view": 24,
+    "grounds": {
+      "Tile09_Ground/Stone00": {
+        "rtti": ".?AVCGOTileGround@@",
+        "initializer": "0xb9d8e0",
+        "width": 1,
+        "height": 1,
+        "sample": [
+          0,
+          0
+        ],
+        "opaque_field_ac": 0
+      },
+      "Tile09_Ground/WaterwayH05": {
+        "rtti": ".?AVCGOTileGround@@",
+        "initializer": "0xb9d8e0",
+        "width": 2,
+        "height": 1,
+        "sample": [
+          0,
+          1
+        ],
+        "opaque_field_ac": 0
+      },
+      "Tile09_Ground/WaterwayH06": {
+        "rtti": ".?AVCGOTileGround@@",
+        "initializer": "0xb9d8e0",
+        "width": 2,
+        "height": 1,
+        "sample": [
+          0,
+          4
+        ],
+        "opaque_field_ac": 0
+      },
+      "Tile09_Ground/WaterwayH07": {
+        "rtti": ".?AVCGOTileGround@@",
+        "initializer": "0xb9d8e0",
+        "width": 2,
+        "height": 1,
+        "sample": [
+          0,
+          12
+        ],
+        "opaque_field_ac": 0
+      },
+      "Tile09_Ground/bridge00": {
+        "rtti": ".?AVCGOTileGround@@",
+        "initializer": "0xb9d8e0",
+        "width": 2,
+        "height": 1,
+        "sample": [
+          1,
+          1
+        ],
+        "opaque_field_ac": 0
+      },
+      "Tile09_Ground/WaterwayH04": {
+        "rtti": ".?AVCGOTileGround@@",
+        "initializer": "0xb9d8e0",
+        "width": 2,
+        "height": 1,
+        "sample": [
+          2,
+          12
+        ],
+        "opaque_field_ac": 0
+      },
+      "Tile09_Ground/WaterwayH08": {
+        "rtti": ".?AVCGOTileGround@@",
+        "initializer": "0xb9d8e0",
+        "width": 2,
+        "height": 1,
+        "sample": [
+          9,
+          1
+        ],
+        "opaque_field_ac": 0
+      }
+    },
+    "static": "Six actual CGOTileStatic objects at GraveStone01/03 source anchors, data72 and1x1 dimensions plus block/type1 writes. Exact records retained in native verifier.",
+    "placeholder": "At0,2 and1,2 after -1 ground allocation/store, actual CGOTileGround RTTI observed. No initialized TileInfo or physics claim for all52bothminus1 cells.",
+    "initial_mask": "Source type1/type2 candidate mask matches all195native flags; does not prove destructibility, movement, ray or whole terrain."
+  },
+  "failure": {
+    "original_launch_exit": 1,
+    "reason": "Output tmpfs unmount busy after byte-verified export; standardseal cannot find canonical cycles/run.json.",
+    "recovery": "Verify every retained export size/hash and current frozen inputs, audit no remaining process in original net namespace. Keep original logs/empty cycles, never rewrite or call original launch pass.",
+    "cleanup": "Originalrun closed children/DB, unmounted DB and owned host binds. Successful outputunmount not established. Private namespace ended; alternate seal records this distinction."
+  },
+  "verifier_correction": "Initial verifier applied type1/type3 pointer+AC to CGOTileGround. Actual selectedGround+AC=0, so that field remains opaque; only source72 at cached initializer callsite, passed dimensions and actual RTTI are claimed. Frozen verifier and first failed postrun verifier retained.",
+  "limits": [
+    "Chưa kiểm movement, bomb/ray, drop/item, kết quả/reset hoặc gameplay 2–6 người của Tomb12; cần input native để giải Waterway/bridge/ô có cả hai mã -1.",
+    "Mỗi ground có tên mới đo một sample và hai placeholder; chưa mọi ô/trường object. Chưa biết nơi lưu dữ liệu của Ground, không nhập nghĩa offset giữa các lớp.",
+    "Overall exit 1 và ranh giới storage không chứng minh sửa production, output unmount thành công, lưu bền, Internet, tải hoặc M8. Chưa bật terrain map từ lát này."
+  ]
+}

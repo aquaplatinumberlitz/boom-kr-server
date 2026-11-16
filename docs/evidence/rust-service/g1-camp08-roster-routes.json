@@ -1,0 +1,91 @@
+{
+  "schema": "kre-g1-camp08-roster-route-v1",
+  "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "scope": "Route StrongBox/hidden Bomb/Fire Camp08 hai vòng đã đo ở roster liên tục 2/4/8. Mốc này bổ sung roster bốn người, giữ nguyên bằng chứng và giới hạn của roster 2/8.",
+  "rosters": [
+    {
+      "actual_accounts": 2,
+      "path": "local/research/codex/g1-camp08-durable-serving-native-r2/serving-verification.json",
+      "bytes": 108350,
+      "sha256": "a511994c75ca82578d9d28bf174813b77471898fbc2af1723e8e9b396585f4f8",
+      "run_sha256": "bd1f0689ba4ddb5f219013eca4a48452b00aba07204dd570f571ce010ce58fdc",
+      "raw_files": 177,
+      "preflight_files": 489,
+      "service_sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192",
+      "result": "pass_native_durable_kernel_two_cycles"
+    },
+    {
+      "actual_accounts": 4,
+      "path": "local/research/codex/g1-camp08-serving4-native-r2/serving-verification.json",
+      "bytes": 18580,
+      "sha256": "a122cd72960bd07fa24dabe139b9db5a8f6fc432ce45901d746aa23da166448d",
+      "run_sha256": "488423db457922b18a61de3aff15204d0e5375c6f7f711112e1bada8dd095841",
+      "raw_files": 360,
+      "preflight_files": 1974,
+      "service_sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192",
+      "result": "verified_Camp08_serving_terrain_four_two_cycles"
+    },
+    {
+      "actual_accounts": 8,
+      "path": "local/research/codex/g1-camp08-serving8-native-r2/serving-verification.json",
+      "bytes": 37494,
+      "sha256": "669e0194be64b613017e150a63fc386b49c3085fc0f6e097b487ba5fd774fd51",
+      "run_sha256": "1a8745cc60e21d21713e6f722d83c16569d168e1f856b5b6f27cd9059380c62c",
+      "raw_files": 800,
+      "preflight_files": 1959,
+      "service_sha256": "c05136181574c1e20d96d330de9e8aeda1861d0f1ca1f0b2b8fc7de1cc117192",
+      "result": "verified_Camp08_serving_terrain_eight_two_cycles"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-camp08-serving4-native-r1/failure-verification.json",
+      "bytes": 1868,
+      "sha256": "7ba60504452331188b71f980a469cfbf4f0499978edbddda1cc8b21aac3f2a4c"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving4-native-r2/feedback-control-interpretation.json",
+      "bytes": 533,
+      "sha256": "f02fa26158145327dbbe77a7169685c11eba9271b72c2804d0b78f545cb0d237"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving4-native-r2/native/raw-seal.json",
+      "bytes": 83144,
+      "sha256": "2bd0c74d30a9a7a11f662774a078fbd000a7f08c8c0babccfeec601bf43322cd"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-serving4-native-r2/native/runtime-preflight.json",
+      "bytes": 791034,
+      "sha256": "68e364b14b4c245ae8a4b34c24a2a4477fe22c4c4b7f1ef2d4ef0580cec8c738"
+    }
+  ],
+  "four": {
+    "actual_accounts": 4,
+    "teams": "AB0/CD3",
+    "bombs": 20,
+    "B_bombs": 18,
+    "A_bombs": 2,
+    "pickup165_per_view": 4,
+    "flag_snapshots_per_view": 43,
+    "cells_per_snapshot": 195,
+    "ranks_per_view": 2,
+    "returns_per_view": 2,
+    "clocks_per_view": 3,
+    "journal_states": [
+      "complete",
+      "complete",
+      "cancelled"
+    ],
+    "reward": 0
+  },
+  "failure": "Lượt bốn người đầu dừng sau ba bom đúng tọa độ vì B ngừng phát mẫu vị trí trong khi A còn phát mẫu. Không thấy fatal, probe error, QueueExpired hoặc lỗi service trong log. Lượt sau thêm diagnostic process/focus và control focus có giới hạn, nhưng các nhánh này không kích hoạt. Route đạt; nguyên nhân mất mẫu trước vẫn unknown.",
+  "limits": [
+    "Chỉ route StrongBox 5/2 và hidden Bomb/Fire ở roster liên tục 2/4/8; chưa mọi ô/hướng/sparse roster hoặc các item/nhân vật G1 còn lại.",
+    "Floor/drop và policy số hit hữu hạn là design; không phục hồi authority hoặc phân phối drop của server gốc.",
+    "Output/DB tmpfs với export/unmount đã kiểm bytes chỉ là chẩn đoán. Không chứng nhận lưu bền, Internet, phiên dài, 50 người/8 phòng hoặc M8.",
+    "Control không kích hoạt nên không chứng minh focus đã sửa nguyên nhân mất mẫu trước."
+  ]
+}
