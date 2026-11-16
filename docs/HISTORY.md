@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP318: Rust đã có lớp chặn tia riêng cho Waterway Tomb12 và ca Stone/thùng trên KR.**
+[Contract và giới hạn](protocol/terrain.md#rust-tomb12-boundary) tách khởi tạo, tia nổ và gameplay;
+Tomb12 còn di chuyển, drop/pickup, hai vòng/reset và roster 2–6. G1 tiếp theo [Bảng điều hành](PLAN.md#dashboard);
+M8 và L1 của Claude giữ nguyên phạm vi.
+
+
 **CP317: Camp08 có route hai vòng/reset cho roster 2/4/8; Tomb12 đã đo khởi tạo.**
 [Contract Camp08](protocol/terrain.md#rust-camp08-boundary) giữ coverage route; [Tomb12](protocol/terrain.md#rust-tomb12-boundary)
 chưa có physics/gameplay. G1 tiếp Tomb12 và nội dung còn thiếu theo [Bảng điều hành](PLAN.md#dashboard);

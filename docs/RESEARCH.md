@@ -2,7 +2,6 @@
 
 Đây là backlog riêng KRE. Các ID Q-022…Q-029 được giữ để truy nguồn; không thuộc gate V1 Rust.
 
-
 Mở theo yêu cầu trực tiếp 26/10/2026. Đây là câu hỏi của **`KR-00967-EMU-1`**, không đổi câu hỏi/gate
 V1 Rust. [Lộ trình KRE](PLAN.md) giữ thứ tự
 task và điểm dừng; [contract](PROTOCOL.md) giữ ma trận/nguồn.
@@ -172,16 +171,17 @@ nên không chốt nguyên nhân. Giữ QueueExpired, log-flush, preboot và cap
 production fix hoặc độ bền từ tmpfs. Xem lại khi cản G1 hoặc tại M8; L1 vẫn do Claude phụ trách.
 
 <a id="gap-tomb12-terrain"></a>
-### Tomb12: lớp chặn tia đã đo, còn di chuyển và gameplay
+### Tomb12: route 2/4/6 đã có, còn coverage nội dung
 
-[Contract](protocol/terrain.md#rust-tomb12-boundary) tách 1D54 khỏi 1D24: hai tia Waterway anchor/ô phủ dừng
-trước ô dù 1D54 bằng 0. Native đã có đủ 96 call khởi tạo lớp 1D24 và toàn bộ 195 giá trị ở hai view; Stone/Moss
-có ca dương, Waterway có ca âm. Không lặp giả thuyết tia đi xuyên Waterway hoặc mở lại các body đã đủ bytes.
-Binary Rust đã qua cùng hai ca với mask bật trong cấu hình riêng. Tiếp di chuyển trên Waterway/bridge,
-drop/pickup và hai vòng/reset cho
-2–6 người. Bridge có mask 0 chưa chứng minh đi qua; Ground+AC vẫn opaque. Chỉ mở consumer di chuyển nếu
-phép đo cụ thể còn thiếu hoặc khác source. Không mở map phục vụ tổng quát trước acceptance.
-Run khởi tạo cũ vẫn giữ exit 1/output unmount busy và export đúng hash; các lượt ray có seal riêng không sửa lịch sử đó.
+[Contract](protocol/terrain.md#rust-tomb12-boundary) và [ma trận](evidence/rust-service/g1-tomb12-serving-rosters.json) đã có route 2/4/6, hai vòng/reset; không lặp route hoặc body đã đủ nguồn.
+Còn hướng/roster khác và nhóm item theo PLAN. Ground+AC vẫn opaque nhưng không chặn route; chỉ mở thêm consumer khi có discrepancy cụ thể ở nội dung kế.
+Lượt 6 giữ overall exit 1 và giới hạn capture/debugger/cleanup tại contract; chỉ quan sát native được xác minh riêng. Giữ lỗi setup/verifier/export cũ, không chứng nhận M8.
+
+<a id="gap-factory07-terrain"></a>
+### Factory07: adapter/basic đã có, terrain và item chưa có native acceptance
+
+[Adapter](protocol/load-phase.md#rust-map-profile-adapter) đã có basic hai vòng; các catalog sau chỉ dùng fallback không terrain. Profile tĩnh không có ô chưa phân loại chưa chứng minh physics.
+Tiếp snapshot đủ 195 ô của 1D54 và 1D24 với terrain tắt, đối chiếu type/footprint/field44; sau đó chỉ đo khác biệt chặn thùng, drop/pickup và roster. Không sửa exporter hoặc lặp basic lookup.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster
@@ -239,7 +239,6 @@ hai chiều/hai vòng, stale tới cổng đã nghỉ và EOF/pastdue đã có k
 | Nhịp pump, DB lease checks và overload | Bounded recv/send, poll hiện hành; không gia hạn idle | Đo latency/queue/DB budgets và fairness dưới workload đích, kể cả nonreader và DB lỗi, trước M8. |
 
 Không thêm Internet thật thành dependency ngầm của K6c/K7 đã nghiệm thu WAN giả lập hoặc yêu cầu Windows/hai máy vật lý.
-
 
 | Câu hỏi còn mở | Backend policy được chọn | Phép RE/đo tối thiểu khi milestone cần |
 |---|---|---|

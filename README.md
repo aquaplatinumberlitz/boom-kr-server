@@ -33,10 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP318: Rust đã có lớp chặn tia riêng cho Waterway Tomb12 và ca Stone/thùng trên KR.**
-[Contract và giới hạn](docs/protocol/terrain.md#rust-tomb12-boundary) tách khởi tạo, tia nổ và gameplay;
-Tomb12 còn di chuyển, drop/pickup, hai vòng/reset và roster 2–6. G1 tiếp theo [Bảng điều hành](docs/PLAN.md#dashboard);
-M8 và L1 của Claude giữ nguyên phạm vi.
+**CP319: Tomb12 có route thùng/item và bridge qua hai vòng/reset cho roster 2/4/6.**
+[Contract và giới hạn](docs/protocol/terrain.md#rust-tomb12-boundary) giữ lỗi capture/cleanup của lượt sáu người,
+tách khỏi quan sát native đã xác minh. G1 tiếp terrain Factory07 và coverage item/nhân vật theo
+[Bảng điều hành](docs/PLAN.md#dashboard); M8 và L1 của Claude vẫn mở.
 
 ## Bắt đầu
 

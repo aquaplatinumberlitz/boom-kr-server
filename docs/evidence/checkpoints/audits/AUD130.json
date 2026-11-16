@@ -1,0 +1,83 @@
+{
+  "id": "AUD130",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-tomb12-contiguous-roster-route"
+  ],
+  "completed_through": "CP319",
+  "recorded_utc": "2026-11-16T19:51:47.701583+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/terrain.md",
+    "docs/content/tile-semantics.md",
+    "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+    "local/research/codex/g1-tomb12-serving-native-r1/serving-verification.json",
+    "local/research/codex/g1-tomb12-serving-native-r1/verifier-correction.json",
+    "local/research/codex/g1-tomb12-serving4-native-r1/preboot-failure-verification.json",
+    "local/research/codex/g1-tomb12-serving4-native-r2/setup-failure-verification.json",
+    "local/research/codex/g1-tomb12-serving4-native-r3/serving-verification.json",
+    "local/research/codex/g1-tomb12-serving6-native-r1/serving-verification.json",
+    "local/research/codex/g1-tomb12-serving6-native-r1/capture-observation-diagnosis.json",
+    "local/research/codex/g1-tomb12-serving-native-r1/manual-image-review.json",
+    "local/research/codex/g1-tomb12-serving6-native-r1/manual-image-review.json"
+  ],
+  "method": "Đọc nguồn chuẩn rồi đối chiếu actual C2S118 với broadcast/native 159/158, cả 195 ô của hai lớp cờ trước/sau mỗi nổ, bridge movement trong mọi view, getter/step/cell dương qua anchor/ô phủ, Fire/Bomb và current clearance, hai rank/return/reset cùng clock kế và DB journal. Các route 2/4/6 có lần lượt18/20/22 bom,39/43/47 snapshot mỗi lớp/view. Sáu stat và spawn gốc khôi phục ở ba clock. Xem ảnh bridge/rank/clock hai người và rank sáu người. Lượt sáu có đủ native quan sát nhưng exit 1; UDP capture kết thúc trước clock đầu, nên không có UDP gameplay cho bất kỳ role nào. B có một K2 error sau timestamped round3 peer event lớn hơn controller-completion; không chứng nhận debugger sạch hoặc root cause. Export so bytes, nguồn frozen và namespace hết PID được kiểm riêng, không biến output unmount busy thành thành công.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Tomb12 mới có initial/ray controls, chưa có route gameplay.",
+      "correction": "Bổ sung route thùng Stone, hidden Fire/Bomb, Waterway âm, bridge đi/ray và hai vòng/reset cho contiguous 2/4/6. Chỉ hoàn tất nhóm route đã chọn, không mọi nội dung G1.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Verifier hai người đảo raw win/loss do chép từ ca Camp08 có team 0 bị loại.",
+      "correction": "Contract cũ, DB và ảnh cho win 1/loss 2; giữ frozen verifier và dùng bản sửa riêng. Không đổi wire hoặc raw. Verifier bốn người chỉ sửa prose scope sau freeze, các predicate không đổi.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Hai lỗi setup bốn người có thể bị gọi là Wine/KR/server gameplay lỗi.",
+      "correction": "R1 thiếu namespace C trước client; R2 có capacity 2, chỉ A/B vào phòng và chưa Start. Giữ declared stop/exit 1/export busy. C ảnh room list trống; không khẳng định nó hiển thị nhãn full2/2.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Lượt sáu có thể bị gọi là run/capture sạch hoặc chỉ thiếu E/F trong UDP gameplay.",
+      "correction": "Native observation acceptance tách khỏi overall exit 1. Capture dừng trước clock đầu, không có UDP gameplay; B debugger lỗi sau completion và output unmount busy. Không sửa raw hoặc suy graceful cleanup/M8.",
+      "fixed_in": [
+        "docs/protocol/terrain.md",
+        "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+      ]
+    },
+    {
+      "id": "F5",
+      "stale": "Factory07 fallback/basic có thể bị hiểu là đã nghiệm thu terrain vì profile không có unknown.",
+      "correction": "Giữ Factory07 terrain/drop/roster là khoảng trống cụ thể tiếp theo; đo hai array ban đầu trước bật, không lặp basic lookup hoặc sửa exporter.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "G1 còn terrain/drop/roster Factory07, coverage hướng/roster khác của các route đã đo, nhóm item và nhân vật theo PLAN.",
+    "Chưa mọi ô/hướng/sparse roster hoặc phân phối rơi gốc; Ground+AC không cần mở lại nếu chưa có discrepancy chặn việc.",
+    "M8 còn Internet của transport mới, 50 người/8 phòng, log/session budgets, đóng gói, backup/restore; capture/debugger/output cleanup chưa chứng nhận từ lượt này.",
+    "L1 thuộc Claude; Codex không sửa client/pack/DB nguồn hoặc tools/export_map_profile.py."
+  ]
+}
