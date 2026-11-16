@@ -631,7 +631,7 @@ Getter emulation tách khỏi native; không có nghiệm thu Windows, Internet 
 
 [Bằng chứng seed và blocker ban đầu](../evidence/rust-service/g1-camp08-boundary.json) giữ Start/spawn/195 flags
 trên hai account KR/Wine, getter emulation và các run lỗi. Ô 12,11 có flag chặn dù candidate là ground, cạnh
-MissileBase; không suy footprint hoặc đường nổ từ tên. Camp08 chỉ có các route private đã đo dưới đây; chưa mở
+MissileBase; nguồn footprint đã được đo riêng dưới đây, đường nổ vẫn chưa đo. Camp08 chỉ có các route private đã đo; chưa mở
 preset gameplay tổng quát.
 
 [Đối chứng report122](../evidence/rust-service/g1-camp08-report122.json) đã so ô thường 6,0 với ô 6,2 từng được gắn
@@ -710,9 +710,24 @@ Consumer tĩnh của lớp này phân biệt các nhóm byte trong TileInfo: `BA
 trước khi gọi hai getter sau. Tia nổ đã biết đi qua `BA0F80`/`BA0FC0` tới nhóm 32–35; nhóm này đều bằng 1
 ở Herb và Line02 đã đo. Nhóm 24–27 bằng 1 ở Herb và 0 ở Line02; nhóm 28–31 của Line02 là `1,0,1,0`.
 Không dùng dword offset 24 làm footprint hoặc một scalar chung cho type 3. Ý nghĩa di chuyển của từng getter
-và đường thực thi tới quyết định chặn vẫn chưa có đối chứng native return đạt.
+đã có đối chứng native return giới hạn: khi A gửi Right về Line02 còn nguyên `(0,7)`, `BA0860` trả 0 ở epilogue
+cho direction 0/2 tại A và direction 0 tại B, khớp byte 24–27. Ba lần input không vượt khỏi ô `(0,6)`;
+Herb01 đi vào khi còn nguyên trước bom đầu. [Bằng chứng đối chứng](../evidence/rust-service/g1-camp08-footprint-predicate.json)
+giữ raw, sáu bom power 2 hoàn tất ở hai view và phạm vi riêng của từng phép đo.
 
 Các lượt đối chứng tiếp bị lỗi trước khi tới negative Line hoặc trước khi cài probe direct. Giá trị wrapper dùng
 `FinishBreakpoint` lệch với body tĩnh không được dùng làm contract. Raw và nguyên nhân chưa rõ được giữ nguyên;
-không lặp route lỗi nếu chưa có điều kiện mới. Line01, hướng khác của Line02, footprint/ray MissileBase/PinPillar,
+không lặp route lỗi nếu chưa có điều kiện mới. Lượt đạt dùng DB thử nghiệm trên tmpfs sau khi log hai lượt trước ghi
+`Backend(QueueExpired)` trước return/reset và lỗi observer đọc actor cũ. DB đóng rồi export đúng bytes và unmount;
+đây là đối chứng cô lập storage, không chứng minh nguyên nhân sâu hoặc durability/M8. Line01, hướng khác của Line02, ray MissileBase/PinPillar,
 route phục vụ hai vòng/reset và coverage roster/item vẫn mở; không mở preset Camp08 từ lát này.
+
+Ba object type 1 đã có [đối chứng initializer/footprint](../evidence/rust-service/g1-camp08-footprint-predicate.json)
+ở hai view: PinPillar03 `(1,11)`, PinPillar04 `(11,3)` và MissileBase02 `(12,10)` đều là `CGOTileStatic`,
+virtual initializer `BA1350`. Object giữ nguyên dữ liệu TileInfo 72 byte; hai getter `7E7350`/`7E72B0` trả width/height.
+Type 0/1 đọc dword offset 24/28; type 2/3/10 trả 1, type 4 trả 0. Không lấy counter type 2 hoặc nhóm byte type 3
+làm kích thước. Predicate `9B0640` bật cho type 1/2, hoặc type 0 có dword offset 44 khác 0.
+Loop khởi tạo mở rộng từ `row-height+1..row`, `column..column+width-1`, rồi gọi `EA4D90` và `EA7C20` với value 1
+cho type 1. Native ghi đúng các call này: hai PinPillar 1×1; MissileBase 2×1 phủ `(12,10)` và `(12,11)`.
+Cờ ban đầu tại các ô này bằng 1, các ô đối chứng cạnh chúng vẫn bằng 0. Đây là contract khởi tạo/footprint;
+không suy ray, vật lý nhân vật, phân phối item, reset hoặc map tổng quát từ initializer.

@@ -168,20 +168,20 @@ trên ledger. Bộ đếm thùng là dữ liệu type2 đã đo, không phải f
 
 Herb01/02 và Line02 đã có [đối chứng riêng](protocol/terrain.md#rust-camp08-boundary): tia đi xuyên Line02 nhưng
 nhân vật bị chặn, trong khi flag bằng 0. Getter tĩnh tách byte 24–27, 28–31 và 32–35; không dùng type 3 hoặc
-seed để gán mọi ô đi qua tự do. Ca đi vào Herb01 còn nguyên đạt; Line01, các hướng khác và native return trực tiếp
-của predicate di chuyển chưa đạt. Hai lượt lỗi trước negative và một lượt startup bị giữ; wrapper return có mâu thuẫn
-không được dùng. Không lặp đường bảy bom hoặc route biến thể đã lỗi khi chưa có điều kiện mới.
+seed để gán mọi ô đi qua tự do. Đối chứng DB tmpfs đã có fresh Herb positive, intact Line negative và direct getter
+`BA0860` trả 0 ở hai view, khớp byte 24–27; wrapper return mâu thuẫn trước vẫn bị loại. Line01 và hướng khác còn mở.
+Không lặp route lỗi thiếu điều kiện mới; không suy durability hoặc sửa production từ một lượt tmpfs đạt.
 
-Codex tiếp footprint/ray của MissileBase/PinPillar là nhánh độc lập; đối chứng Line sau cần route khác hoặc
-điều kiện mới rõ ràng, passive getter entry/epilogue và negative/positive không dùng `FinishBreakpoint` wrapper.
+Footprint khởi tạo của ba `CGOTileStatic` đã đo: hai PinPillar 1×1 và MissileBase 2×1, kể cả ô 12,11.
+Codex tiếp ray/covered-cell của MissileBase/PinPillar và Line01 bằng route ngắn hoặc sparse roster; không lặp initializer đã đạt.
 Những ô chưa đo không được chứng nhận chỉ bằng seed hoặc route khác. Tiếp floor/drop/item, coverage roster Camp08 rồi
 Tomb12 theo PLAN; không mở map tổng quát khi còn thiếu. Policy thùng hữu hạn giữ rõ khác server gốc,
 chain/queue/multiroom và stale controls tự động không được báo thành native rộng hơn. L1 vẫn do Claude phụ trách.
 
-Lỗi QueueExpired trước map đã tái hiện trong một lượt đo; raw được giữ, removal/missing membership xảy ra sau denial.
-Passive observer thấy DB thread ở `wait_current_trans`; nguyên nhân đầy đủ vẫn candidate. Một lượt tách khỏi full
-history/build tới được mục tiêu. Theo dõi storage/scheduling ở M8 hoặc khi cản lát kế, không sửa JSON downstream
-hay nới timeout từ suy đoán. Lỗi Wine/debugger trước login được tách khỏi lỗi report122; retry có giới hạn log ở harness.
+Log hai lượt lỗi có account `Backend(QueueExpired)` trước return/reset và lỗi observer đọc actor cũ; worker có mẫu
+`wait_current_trans` gần đó. Đối chứng cùng route trên DB tmpfs đạt; nguyên nhân sâu/storage budget vẫn candidate,
+thuộc M8 hoặc khi cản G1. Lượt tmpfs đầu lỗi `InvalidInput` trước admin init do thiếu mode riêng, lượt mode 0700 đạt.
+Không nới timeout hoặc sửa lifecycle từ suy đoán; source/raw cũ giữ nguyên, diagnostic tmpfs không là nghiệm thu lưu bền.
 
 <a id="gap-village10-map"></a>
 ### Map mới: chọn map đã đo, còn terrain/item và giới hạn roster

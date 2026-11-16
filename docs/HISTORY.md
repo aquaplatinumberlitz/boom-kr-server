@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP313: Camp08 đã tách Herb/Line di chuyển khỏi tia nổ; G1 vẫn mở.**
+[Contract và giới hạn](protocol/terrain.md#rust-camp08-boundary) giữ positive Herb, negative Line02 và các lượt lỗi;
+getter di chuyển mới có nguồn tĩnh, chưa có native return trực tiếp đạt. [Checker lịch sử](evidence/checkpoints/README.md)
+đã xử lý record tạo trong merge và va chạm ID nhánh phụ, giữ nguyên record cũ.
+G1 và M8 vẫn mở theo [Bảng điều hành](PLAN.md#dashboard); L1 giữ owner Claude.
+
 **CP312: sửa tra lịch sử checkpoint được tạo trong merge và phục hồi raw local đúng hash.**
 [Đối chứng và giới hạn](evidence/checkpoints/merge-publication-correction.json) giữ lần kiểm lỗi, nguồn phục hồi và kiểm âm.
 Rust có [route StrongBox/Bomb/Fire hai vòng/reset](protocol/terrain.md#rust-camp08-boundary) trong phạm vi private đã đo.

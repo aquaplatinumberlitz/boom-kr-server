@@ -1,0 +1,66 @@
+{
+  "schema": "kre-g1-camp08-footprint-predicate-v1",
+  "canonical": "docs/protocol/terrain.md#rust-camp08-boundary",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Three exact type1 initializer/expanded-footprint controls and intactHerb/Line02 direct getter diagnostic. No new serving code or complete Camp08/G1.",
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-camp08-footprint-native-r1/footprint-verification.json",
+      "bytes": 150286,
+      "sha256": "01791a1b2c673733b441a6bf904578b694380a61fbcf549ae3fd8840e6c4660b"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-native-r6/predicate-verification.json",
+      "bytes": 25847,
+      "sha256": "70e8725fa716d3c04e78c79dd120dc08502448ad16a98d24f83b83d7555f045f"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-tmpfs-control-verification.json",
+      "bytes": 2923,
+      "sha256": "efbf7d8a462df0037b59666c103bf48287b964a7a73b92ab35d570bdccc8869a"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-native-r5/failure-verification.json",
+      "bytes": 799,
+      "sha256": "7e43d8aec37d7da2ac485352b42daf3cc75f5f4dc8ed8573f51dd39bd09f085f"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-account-close-correlation.json",
+      "bytes": 2280,
+      "sha256": "69f1b50227b3acd9e14bbabd745c2d3d75c9dedc77f5fbdf0d9613e9b1fe12ce"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-passable-queue-wchan-control.json",
+      "bytes": 5966,
+      "sha256": "d8de0e5938eace7a03028dd8f9c25a24e8d24d446d3f24d332cce7ae0686a20a"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-static-footprint-r1/dimensions.json",
+      "bytes": 8174,
+      "sha256": "50907c4b93e1f3ba8c1a0c7c5728bf755e7d7368d873e26249814b47ea544939"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-static-footprint-r1/factory.json",
+      "bytes": 17999,
+      "sha256": "00af3f7c8aa60f61f639a4a407c8b18e71475e7fa472adf7b38d83bf5a751483"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-static-initializer-r1/initializer.json",
+      "bytes": 3530,
+      "sha256": "0eea18d7c8929efe2b7cf9002205364d1b1ed1fe8659eb4bc5ebb2496a60ca17"
+    },
+    {
+      "path": "local/research/codex/g1-camp08-static-initializer-r1/base-initializer.json",
+      "bytes": 1547,
+      "sha256": "d6e86c16ab946ca106598770ac3c33f353f9fd62375338ede4f3203bb41c04e3"
+    }
+  ],
+  "limits": [
+    "Footprint run exit0,57raw,519preflightpins. Three CGOTileStatic and exactsource72/dimensions/writes/initialflags in two views; no ray or gameplay/reset/roster.",
+    "Line control r6 exit0,113raw,510preflightpins. Six power2 bombs, intactHerb01 positive, intactLine02 negative, direct BA0860 byte24+direction return0 at A/B. Type1/2/3 offset meanings stay distinct.",
+    "r6 uses private32MiB tmpfs mode0700 for copied diagnostic DB, then closed-byte export and unmount. No QueueExpired inthisrun; not a causal rootcause proof, durability/M8 or production change. r5 badmode/init failure and earlier QueueExpired/observer chronology retained.",
+    "Line01/otherdirections, MissileBase/PinPillar ray/coveredcell, servingterrain two-roundreset, rosters/items and Tomb12 remain open. No hypothetical originalserver/drop claim."
+  ]
+}
