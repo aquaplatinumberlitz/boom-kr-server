@@ -1,0 +1,158 @@
+{
+  "schema": "kre-g1-factory07-terrain-v1",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/terrain.md#rust-factory07-terrain",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/402",
+  "scope": "Khởi tạo hai lớp cờ, bốn loại thùng và route Rust hai account qua hai vòng/reset; chưa roster 2–8 hoặc toàn map.",
+  "map_payload_sha256": "91b9e2de2af0107c7bc8b24a8dd262dc71cb22fbcbb4cd97ffb360fcca0a086c",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "runs": [
+    {
+      "scope": "initial_arrays",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "roster": 2,
+      "run_sha256": "51b3d002ce0ef6843528037807ade462d2f237ae035b4793131e87e14b18fc7b",
+      "raw_files": 60,
+      "preflight_files": 734,
+      "overall_returncode": 0,
+      "service_sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e"
+    },
+    {
+      "scope": "four_box_variants",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "roster": 2,
+      "run_sha256": "8676631f066f66892110f496a6f91db1fb6207436cfb77f72e941a52aa89fea0",
+      "raw_files": 124,
+      "preflight_files": 747,
+      "overall_returncode": 0,
+      "service_sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e"
+    },
+    {
+      "scope": "rust_two_account_route",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "roster": 2,
+      "run_sha256": "eb1abf0d8f904b3abe5c7029b30046eaee1a00985ad436ad05ac9cdeb4c9c3c3",
+      "raw_files": 228,
+      "preflight_files": 782,
+      "overall_returncode": 0,
+      "service_sha256": "2c92e97821b56d8a7f127441a3d16f96ed23b585c16f6541b7b27a54252ce15e"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-factory07-terrain-seed-native-r1/seed-verification.json",
+      "bytes": 24660,
+      "sha256": "270ed70c4879c5f692fd97f9fcc93ff36535f17017c2f158c47b80bf16daa238"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-terrain-seed-native-r1/native/raw-seal.json",
+      "bytes": 14022,
+      "sha256": "613719c4413aae14bbd92ae25a1726c4d6277558e1cc0f651a1855fb4057c444"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-terrain-seed-native-r1/native/runtime-preflight.json",
+      "bytes": 313846,
+      "sha256": "f0d532ddb3b790c2755c64bff4b3cc487b7ce125a36ded1cde7597e5e71929a5"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-terrain-seed-native-r1/native/recipe.json",
+      "bytes": 1267,
+      "sha256": "33eb491e8b9fab16cb9df0a08e4455388b8a15b5ecd1847302c8188b3c8891d0"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-box-controls-native-r1/box-controls-observations-verification.json",
+      "bytes": 27776,
+      "sha256": "472dd516a2da502fbce8fd501a4238020bf7f1b53ebe8e42c16e92e211f4b0f3"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-box-controls-native-r1/native/raw-seal.json",
+      "bytes": 29725,
+      "sha256": "22ff5d493bca50b91f78586866c43f86294c18c98b3e553d27cd41d137527fb5"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-box-controls-native-r1/native/runtime-preflight.json",
+      "bytes": 320122,
+      "sha256": "8ac1538378d805b3004194ee9318c17a9816b05df2dac4a2104d020ae4f79b27"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-box-controls-native-r1/native/recipe.json",
+      "bytes": 1267,
+      "sha256": "6c5c183aa52d847f5b08b2896501bccf432d615328083522a03806d4c18a2e9b"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-native-r2/serving-verification.json",
+      "bytes": 75930,
+      "sha256": "cf084ba729cf8d3a0e7788e982e6899c1f529106a40be7b94cdde69110f0995e"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-native-r2/native/raw-seal.json",
+      "bytes": 54319,
+      "sha256": "70cbe1851555619d43e8b41df67a40b7c4b32660de5f0c618b90e159e68a51ae"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-native-r2/native/runtime-preflight.json",
+      "bytes": 335661,
+      "sha256": "6745afaa61c15ecaf58bf908f1c35e7ac730286b14f3005e1ebd693b93b1c55a"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-native-r2/native/recipe.json",
+      "bytes": 1247,
+      "sha256": "19d85b0c07abb3279681bd6c92ac0e1a6619c6157fb0da940c4826fd7518434d"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-box-controls-native-r1/postrun-verifier-scope.json",
+      "bytes": 2790,
+      "sha256": "d3462e3c86eb5d2129b58221bef0fdf7f9471a0f5c26dbceb8728add38a9303a"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-native-r1/prelaunch-guard-correction.json",
+      "bytes": 574,
+      "sha256": "6d0c512610073bbaa33a370838c5e57ad8410c2b6b650798ff41d78becfdf9d5"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-native-r2/manual-image-review.json",
+      "bytes": 935,
+      "sha256": "d08d532e7f0e270504540383a1c791d7682c065c47ceddb74689261c1463b0f3"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-native-r1/partial-cycle-verification.json",
+      "bytes": 36311,
+      "sha256": "397124b87944797e6abfc3ee6bbc86ae64495b4f0ecc6b6581e349eac6fd88e4"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-native-r1/native/declared-stop.json",
+      "bytes": 277,
+      "sha256": "6819221c3982d81587081d49eaa6c9640c6c5fe7a28ad00748b250bf06f345b3"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-native-r1/native/raw-seal.json",
+      "bytes": 35216,
+      "sha256": "8d8c55f0560f87a4819f353fcd79729e3fcfbf23f8b393a72637d83153dfbfbd"
+    },
+    {
+      "path": "local/research/codex/g1-factory07-serving-native-r2/preparation-correction-observation.json",
+      "bytes": 973,
+      "sha256": "120451683cd852af0bc4c53fd065b795b5314481e7d51fc8232c6d1636704aa6"
+    }
+  ],
+  "observations": [
+    "Hai view có 195 cờ 1D54 với 162 ô bật và 1D24 toàn 0. Sáu placement power 1 phá đúng chín thùng, còn 153 cờ bật.",
+    "Blue/Sky là FixedBox: probe trước default thấy counter 0, trước hit 1, sau hit 0. Paper/Safety là MoveAbleBox; C4 của FixedBox không áp dụng.",
+    "Lượt Rust dùng probe D8 đúng lớp cho Paper/Safety, đối chiếu counter 0 tại nguồn trước default, 1 trước hit, 0 sau hit; reset khởi tạo lại.",
+    "Hidden Bomb701 tại (2,0), Fire700 tại (1,4) là design; native 142/reveal/124/165 và power 2 có kiểm. Hai rank/return/reset và clock thứ ba, journal đúng map, thưởng 0.",
+    "Phím thường thử ô static (1,1) và ray power 2 giữ ô đó chặn; không suy mọi hướng hoặc gameplay đẩy thùng.",
+    "Lượt tích hợp đầu giữ exit1/declared stop sau một rank/return vì quickclick Ready không tạo95. Ảnh vẫn phòng chờ; heartbeat Lobby không chứng minh rời phòng. Lượt kế dùng helper settle/hold đã có, input frozen không đổi khi chạy.",
+    "Lượt tích hợp kế thiếu file note review trước freeze do lỗi copy; freeze và launch vẫn chạy sau lệnh chuẩn bị lỗi. Thiếu note được ghi sau launch, không gọi là review trước chạy. Mọi input đã được hash và giữ nguyên.",
+    "Frozen verifier control thất bại ở giả định counter không đổi từ probe khởi tạo tới hit; giữ nguyên file, dùng verifier quan sát sau run với đầy đủ predicate TCP/195 ô. Guard integration đầu tiên từ chối fallback choice trước runtime; giữ script lỗi và bản sửa theo identity map."
+  ],
+  "limits": [
+    "Chỉ route hai account, hai spawn đầu và vùng trên trái đã đo; Factory07 còn roster 2–8 và coverage nội dung/hướng theo PLAN.",
+    "Vị trí và phân phối item thử là design, không phân phối rơi server gốc; RTTI không nghiệm thu thao tác đẩy thùng.",
+    "Binary Rust không đổi từ CP318; chỉ cấu hình private đưa map vào terrain kernel đã có. Chưa preset tổng quát hoặc đóng G1.",
+    "Wine/LAN cô lập, output/DB tmpfs chẩn đoán; không Internet của transport mới, tải, backup/restore hoặc M8."
+  ]
+}

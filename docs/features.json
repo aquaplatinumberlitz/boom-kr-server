@@ -1374,7 +1374,8 @@
           "docs/evidence/rust-service/g1-camp08-roster-routes.json",
           "docs/evidence/rust-service/g1-tomb12-initial.json",
           "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
-          "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+          "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+          "docs/evidence/rust-service/g1-factory07-terrain.json"
         ]
       },
       "coverage": {
@@ -1397,7 +1398,8 @@
             "docs/protocol/terrain.md#current-map-chain-state",
             "docs/protocol/terrain.md#map-flags-snapshot",
             "docs/protocol/load-phase.md#loading-observer-timing",
-            "docs/protocol/load-phase.md#rust-map-profile-adapter"
+            "docs/protocol/load-phase.md#rust-map-profile-adapter",
+            "docs/protocol/terrain.md#rust-factory07-terrain"
           ]
         },
         "emulation": {
@@ -1457,7 +1459,8 @@
               "docs/evidence/rust-service/g1-camp08-roster-routes.json",
               "docs/evidence/rust-service/g1-tomb12-initial.json",
               "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
-              "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+              "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+              "docs/protocol/terrain.md#rust-factory07-terrain"
             ]
           },
           "windows_original": {
@@ -2458,7 +2461,8 @@
           "docs/evidence/rust-service/g1-camp08-roster-routes.json",
           "docs/evidence/rust-service/g1-tomb12-initial.json",
           "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
-          "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+          "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+          "docs/evidence/rust-service/g1-factory07-terrain.json"
         ]
       },
       "coverage": {
@@ -2479,7 +2483,8 @@
           "refs": [
             "docs/protocol/bombs.md#bomb-serial",
             "docs/protocol/terrain.md#current-map-chain-state",
-            "docs/protocol/terrain.md#map-flags-snapshot"
+            "docs/protocol/terrain.md#map-flags-snapshot",
+            "docs/protocol/terrain.md#rust-factory07-terrain"
           ]
         },
         "emulation": {
@@ -2550,7 +2555,8 @@
               "docs/evidence/rust-service/g1-camp08-roster-routes.json",
               "docs/evidence/rust-service/g1-tomb12-initial.json",
               "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
-              "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+              "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+              "docs/protocol/terrain.md#rust-factory07-terrain"
             ]
           },
           "windows_original": {
@@ -2729,7 +2735,8 @@
           "docs/evidence/rust-service/g1-camp08-roster-routes.json",
           "docs/evidence/rust-service/g1-tomb12-initial.json",
           "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
-          "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+          "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+          "docs/evidence/rust-service/g1-factory07-terrain.json"
         ]
       },
       "coverage": {
@@ -2750,7 +2757,8 @@
           "refs": [
             "docs/protocol/bombs.md#bomb-chain",
             "docs/protocol/terrain.md#current-map-chain-state",
-            "docs/protocol/terrain.md#map-flags-snapshot"
+            "docs/protocol/terrain.md#map-flags-snapshot",
+            "docs/protocol/terrain.md#rust-factory07-terrain"
           ]
         },
         "emulation": {
@@ -2820,7 +2828,8 @@
               "docs/evidence/rust-service/g1-camp08-roster-routes.json",
               "docs/evidence/rust-service/g1-tomb12-initial.json",
               "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
-              "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+              "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+              "docs/protocol/terrain.md#rust-factory07-terrain"
             ]
           },
           "windows_original": {
@@ -2988,7 +2997,8 @@
           "docs/evidence/rust-service/g1-patrit-terrain.json",
           "docs/evidence/rust-service/g1-village10-herb.json",
           "docs/evidence/rust-service/g1-village10-terrain.json",
-          "docs/evidence/rust-service/g1-mixed-map-spawns.json"
+          "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+          "docs/evidence/rust-service/g1-factory07-terrain.json"
         ]
       },
       "coverage": {
@@ -3010,7 +3020,8 @@
           "refs": [
             "docs/protocol/items-stats.md#item-pickup",
             "docs/protocol/items-stats.md#pickup-tick",
-            "docs/protocol/items-stats.md#pickup-report-state"
+            "docs/protocol/items-stats.md#pickup-report-state",
+            "docs/protocol/terrain.md#rust-factory07-terrain"
           ]
         },
         "emulation": {
@@ -3072,7 +3083,8 @@
               "docs/protocol/terrain.md#rust-selected-map-terrain",
               "docs/protocol/terrain.md#rust-patrit-terrain",
               "docs/protocol/terrain.md#rust-village10-herb",
-              "docs/evidence/rust-service/g1-mixed-map-spawns.json"
+              "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+              "docs/protocol/terrain.md#rust-factory07-terrain"
             ]
           },
           "windows_original": {
