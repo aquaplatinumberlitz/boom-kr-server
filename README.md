@@ -33,12 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP334: Punch ngang selector 0 đã có hai vòng Rust account/peer/reset và journal thưởng 0.**
-[Contract và giới hạn](docs/protocol/items-stats.md#rust-bomb-motion-codec) giữ endpoint `(6,3)→(6,5)` đã đo,
-reservation cả hàng và ownership/round/delivery fences. Gameplay có native riêng; launcher exit 1 do unmount
-busy sau same-byte export, bằng chứng phục hồi đã kiểm và lỗi gốc giữ nguyên. Không suy toàn đường bay.
-Tiếp selector 2, các hướng/khoảng cách Shoe và coverage G1 rồi M8 theo [Bảng điều hành](docs/PLAN.md#dashboard).
-G1, giai đoạn 1 và L1 của Claude còn mở.
+**CP336: ma trận nhóm Punch đã có native Rust cho cả bốn hướng và endpoint biên/quét.**
+[Contract và bằng chứng](docs/protocol/items-stats.md#rust-bomb-motion-codec) giữ source/target thực,
+exact 119→162 và reservation toàn hàng/cột theo policy report-derived. Hai batch mới có bốn vòng mỗi batch,
+peer/landing/retirement/reset, journal đúng account/thưởng 0 và 864 getter checks; selector 2 trước đó gộp vào nhóm.
+Nhóm còn qua gate/PR trước tích hợp; Shoe và kiểm ghép client Việt còn làm tiếp. Bảng rơi đã cắt và từ chối nhân vật
+trên cùng socket đã tích hợp qua PR #466. [Bảng điều hành](docs/PLAN.md#dashboard) giữ việc còn lại và ước lượng native.
 
 ## Bắt đầu
 

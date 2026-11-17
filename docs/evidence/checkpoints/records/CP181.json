@@ -157,21 +157,6 @@
       "limits": "Modifiede9Wine/singleclient/inheritedcache/prefix/diagnosticglobalreset; labadapterretags4/5byobservedroute, notproductionaccountauth/resume. K2acceptedonlymeasuredofflineprofile; notfullgrammar/headerauth/allmodes/prefixon/FFFFFFFF/capoverflow orK3–K7/fullmatch/LANInternet8clients. NativeGDB/oneactualCApid/frameattribution, noWinSockAPIconnecttraceinharness. Mode0packetfieldsignored. FailedHWwatchpoint/cleanuptrap/controlstublimit keptseparate."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP180-live-codec-stream.json",
-      "bytes": 67036,
-      "sha256": "c8336b28a2ac75731a6dcc01b8933855e3422eb4b381db2e18965bfc306b362f",
-      "count": 277
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP181-codec-retry.json",
-      "bytes": 103205,
-      "sha256": "9a3fedd6ebeb6b4891b60bd55adebc57717039b50dbd0568649f4239a16132b1",
-      "count": 411
-    }
-  ],
   "delta": {
     "added": [
       "Sameprocess nonfatalresult1 actualUIretry/newloginTCP/codecreset/fullauthcursor/channelreset; manualK2measuredprofileacceptance."
@@ -279,6 +264,694 @@
       "path": "docs/evidence/checkpoints/README.md",
       "state": "unchanged",
       "reason": "Productionserver/codec/47fixtureprofile/storeworkflow andAUD054periodiccadence unchanged; auditnextCP184."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "LIVE-00186",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "LIVE-00187",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "LIVE-00188",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "LIVE-00189",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "LIVE-00190",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "LIVE-00191",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "LIVE-00192",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "LIVE-00193",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "LIVE-00194",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "LIVE-00195",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "LIVE-00196",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "LIVE-00197",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "LIVE-00198",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "LIVE-00199",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "LIVE-00200",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "LIVE-00201",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "LIVE-00202",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "LIVE-00203",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "LIVE-00204",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "LIVE-00205",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "LIVE-00206",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "LIVE-00207",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 106121,
+      "sha256": "96c1a56837b28ea25daeade2d048f96016805188d2c8d1e90ffa2afdc01a4690"
+    },
+    {
+      "id": "LIVE-00208",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "LIVE-00209",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "LIVE-00210",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "LIVE-00211",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "LIVE-00212",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "LIVE-00213",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "LIVE-00214",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "LIVE-00215",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "LIVE-00216",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "LIVE-00217",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "LIVE-00218",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "LIVE-00219",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "LIVE-00220",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "LIVE-00221",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "LIVE-00222",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "LIVE-00223",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "LIVE-00224",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "LIVE-00225",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "LIVE-00226",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "LIVE-00227",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "LIVE-00228",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "LIVE-00229",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "LIVE-00230",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "LIVE-00231",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "LIVE-00232",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "LIVE-00233",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "LIVE-00234",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "LIVE-00236",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "LIVE-00251",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "LIVE-00253",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "LIVE-00255",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "LIVE-00257",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "LIVE-00263",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "LIVE-00272",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "LIVE-00275",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "RETRY-00001",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/adapter-preparation.json",
+      "bytes": 9831,
+      "sha256": "fa3dbc30fbd4ddb5588f30299ff457cbf67146bddcb759eca2137d4d8b128bcb"
+    },
+    {
+      "id": "RETRY-00003",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/artifacts-final-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RETRY-00009",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/gate-criteria-equality.json",
+      "bytes": 182,
+      "sha256": "86ce17832597ac8d5a801183f581b1bca974fd41a671434d2e544cda61203338"
+    },
+    {
+      "id": "RETRY-00013",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/issue14-body.md",
+      "bytes": 3277,
+      "sha256": "ab32233047cae569ff35da7f15396728c826b4d59958278f2183060fe2206f18"
+    },
+    {
+      "id": "RETRY-00017",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/manual-k2-acceptance.json",
+      "bytes": 3455,
+      "sha256": "f832f1b6b43db449750c7818014bdaef014c247e3173a17d7207dc57fbd035f2"
+    },
+    {
+      "id": "RETRY-00022",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/source-first-reuse.json",
+      "bytes": 3455,
+      "sha256": "038fb2ee766c48eaf6e95f7ec09ffb488f8ad99c07fa7ca10e154d98a210e23a"
+    },
+    {
+      "id": "RETRY-00024",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/verification.json",
+      "bytes": 92133,
+      "sha256": "1d6e1ccaa4aa5f019186a750b1822c60e19bc744888d11a688111094db515f71"
+    },
+    {
+      "id": "RETRY-00028",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/client.log",
+      "bytes": 131358,
+      "sha256": "02fd1cba80e51233cc3c48077c8980577697e7165d2dd69a8ce152d86d7cf948"
+    },
+    {
+      "id": "RETRY-00060",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r1/run.json",
+      "bytes": 10843,
+      "sha256": "8f293c3294e3d23d812ceaaf79692c69870d083e1ba80d98ae6f4a5936b15ffa"
+    },
+    {
+      "id": "RETRY-00114",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/client.log",
+      "bytes": 137751,
+      "sha256": "d4fd43395b307506bb3e23f0965a475e4b34c431aa3b3d07afb103f897e19889"
+    },
+    {
+      "id": "RETRY-00145",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/raw-seal.json",
+      "bytes": 17396,
+      "sha256": "1d810215aa30732359df175de3a9604c4758de3114f41b5d35c31eee6d1157e6"
+    },
+    {
+      "id": "RETRY-00146",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/run.json",
+      "bytes": 15799,
+      "sha256": "bfa8243780d73802a086bb6de867d4d2a91c384787c142784d86d35376a2ed5c"
+    },
+    {
+      "id": "RETRY-00170",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/service-state.json",
+      "bytes": 31053,
+      "sha256": "c55086bd08e3a250a3a8a6b456627d2295d1ea9df2e48560c980129608f62eb9"
+    },
+    {
+      "id": "RETRY-00218",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2-findings.json",
+      "bytes": 1199,
+      "sha256": "6471cf711ade19f66005c479d0eb87861d131c197ac2cd513d5387b13c837546"
+    },
+    {
+      "id": "RETRY-00228",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/followup-watch-failure.json",
+      "bytes": 633,
+      "sha256": "cd623820ad5b5d4246de5654eb8a1d9b4e3d804413eb73a97548610b13268faa"
+    },
+    {
+      "id": "RETRY-00287",
+      "kind": "local",
+      "path": "local/research/codex/k2-retry-reset-r1/close-route-r2/client.log",
+      "bytes": 131277,
+      "sha256": "e7fdc6983dac8525650a23700f78855fc9f8fd478987d4dfaf284f72769b351d"
+    },
+    {
+      "id": "RETRY-00396",
+      "kind": "local",
+      "path": "local/research/codex/codec-boundaries-r1/verification.json",
+      "bytes": 1271,
+      "sha256": "5558b0d522f9845966b4b5ef3f8d1f077e02c0b8c63c4a4013242a9be8dcf2c1"
+    },
+    {
+      "id": "RETRY-00407",
+      "kind": "local",
+      "path": "local/research/codex/overlay-next-r1/static-provenance.json",
+      "bytes": 1383,
+      "sha256": "1308956d852d342ae2bedc7fc802e0483f4e5f30a10da79842894bbc77c2042a"
+    },
+    {
+      "id": "RETRY-00409",
+      "kind": "repository",
+      "path": "docs/evidence/live-codec-stream/retry-in-progress.json",
+      "bytes": 4262,
+      "sha256": "7e0fbef1321ccae085df9374ec8e2151f337b07fed074f2e30721ff462afc2de"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/k2-live-stream-r1",
+      "path": "local/evidence-manifests/0859f3c3919eb20fd197908c58947d81b5d567536ee69d8cd9691700e3865f8f.jsonl",
+      "sha256": "0859f3c3919eb20fd197908c58947d81b5d567536ee69d8cd9691700e3865f8f",
+      "bytes": 36168,
+      "count": 180,
+      "files_bytes": 41267405
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/e3991664d698f0e8b19610766f8d465b3f77750c771cd082031426023fed83c5.jsonl",
+      "sha256": "e3991664d698f0e8b19610766f8d465b3f77750c771cd082031426023fed83c5",
+      "bytes": 2608,
+      "count": 14,
+      "files_bytes": 284284
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/58b5b87446cea69abda8960fa8bcc6d7a989bf096c928af807930e76abfd2459.jsonl",
+      "sha256": "58b5b87446cea69abda8960fa8bcc6d7a989bf096c928af807930e76abfd2459",
+      "bytes": 636,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/550255cfb90fbd291dce9aef3a5fddb0fd84f33a791c2fa04e71800111c84cbf.jsonl",
+      "sha256": "550255cfb90fbd291dce9aef3a5fddb0fd84f33a791c2fa04e71800111c84cbf",
+      "bytes": 1006,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/617ed1eaacd185c31d90eb0afd542abb5543dc65e249dd96a8c137b5233361b3.jsonl",
+      "sha256": "617ed1eaacd185c31d90eb0afd542abb5543dc65e249dd96a8c137b5233361b3",
+      "bytes": 971,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/44efa6a2948cf7f8cf90819aaa5086d24607588ca25d96245a072e25f682d116.jsonl",
+      "sha256": "44efa6a2948cf7f8cf90819aaa5086d24607588ca25d96245a072e25f682d116",
+      "bytes": 459,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex/login-runtime-r1",
+      "path": "local/evidence-manifests/03d987ecd2499672cbe9ea6fde878ce86ed984d758ada4004092330ad0ec680f.jsonl",
+      "sha256": "03d987ecd2499672cbe9ea6fde878ce86ed984d758ada4004092330ad0ec680f",
+      "bytes": 1058,
+      "count": 5,
+      "files_bytes": 138730
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/5a2e3c00325af519f03dd97dbc06e49ea6141aa5c1562e302eb2aafafcf78fce.jsonl",
+      "sha256": "5a2e3c00325af519f03dd97dbc06e49ea6141aa5c1562e302eb2aafafcf78fce",
+      "bytes": 635,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/df40bf1e88b546cd20e9d2f565079ee6180a76f2e87f2bda1f76f4a75203f069.jsonl",
+      "sha256": "df40bf1e88b546cd20e9d2f565079ee6180a76f2e87f2bda1f76f4a75203f069",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/4bd5ff4a2bdbec8bb8dac8f781f56a7dd7f468e2915a7b04f45355b7c28f7a2a.jsonl",
+      "sha256": "4bd5ff4a2bdbec8bb8dac8f781f56a7dd7f468e2915a7b04f45355b7c28f7a2a",
+      "bytes": 430,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/e90cda26cf5103481608eb33cb4d23e440634c3fc0202464f78ca49d1ca638fd.jsonl",
+      "sha256": "e90cda26cf5103481608eb33cb4d23e440634c3fc0202464f78ca49d1ca638fd",
+      "bytes": 439,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/99f5210483630ea210e40eb0ceccae304e73052b945a393fd39c2e262013e43e.jsonl",
+      "sha256": "99f5210483630ea210e40eb0ceccae304e73052b945a393fd39c2e262013e43e",
+      "bytes": 638,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/c05a1ee214965884c332f94ea756443c1c3783a33072f1593782502ac5b98006.jsonl",
+      "sha256": "c05a1ee214965884c332f94ea756443c1c3783a33072f1593782502ac5b98006",
+      "bytes": 432,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/b9c38e4745cd3e3b3911254438455c00497e4409e52f89b250a992be30233b93.jsonl",
+      "sha256": "b9c38e4745cd3e3b3911254438455c00497e4409e52f89b250a992be30233b93",
+      "bytes": 449,
+      "count": 2,
+      "files_bytes": 384
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/8e96ff6f134d6d138c4ee5bda595a12a2c88ab71435ff7c355ed7ce9178920b8.jsonl",
+      "sha256": "8e96ff6f134d6d138c4ee5bda595a12a2c88ab71435ff7c355ed7ce9178920b8",
+      "bytes": 434,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/k2-auth-retry-r1",
+      "path": "local/evidence-manifests/7361ae4664ea186497038ebe6ace4045cfc6b9d739b9f58959bc578796b202db.jsonl",
+      "sha256": "7361ae4664ea186497038ebe6ace4045cfc6b9d739b9f58959bc578796b202db",
+      "bytes": 40929,
+      "count": 202,
+      "files_bytes": 49186557
+    },
+    {
+      "run": "local/research/codex/k2-retry-reset-r1",
+      "path": "local/evidence-manifests/3a6819c9d8026198c01f52a59a4e99496c47381af2fdc8a880390eaafbbbc844.jsonl",
+      "sha256": "3a6819c9d8026198c01f52a59a4e99496c47381af2fdc8a880390eaafbbbc844",
+      "bytes": 34659,
+      "count": 172,
+      "files_bytes": 40059701
+    },
+    {
+      "run": "local/research/codex/codec-boundaries-r1",
+      "path": "local/evidence-manifests/f114f00f78537493491f701f1a53cdff66024ac343a272423b88547f195c064b.jsonl",
+      "sha256": "f114f00f78537493491f701f1a53cdff66024ac343a272423b88547f195c064b",
+      "bytes": 865,
+      "count": 4,
+      "files_bytes": 147401
+    },
+    {
+      "run": "local/research/codex/object-state-r1",
+      "path": "local/evidence-manifests/a8a32da3320593c07b81ba6aee0e930984d8eae6d5833cce17c80058cf0f859d.jsonl",
+      "sha256": "a8a32da3320593c07b81ba6aee0e930984d8eae6d5833cce17c80058cf0f859d",
+      "bytes": 464,
+      "count": 2,
+      "files_bytes": 5996
     }
   ]
 }

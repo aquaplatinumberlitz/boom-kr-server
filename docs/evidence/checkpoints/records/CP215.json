@@ -133,15 +133,6 @@
       "limits": "Openacceptances, nofullauth/gatepromotion."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP215-auth-token-bounds.json",
-      "bytes": 110058,
-      "sha256": "f4497596e01874b820f45c5255e6da9a2b26c18a2f2ab6842cd4f2e0ac24b8ad",
-      "count": 406
-    }
-  ],
   "delta": {
     "added": [
       "ActualSSO15/heap16/count2→17/18byterecords/C2S1frame100/body62;token2-onlycount0boundednoauth.",
@@ -246,6 +237,124 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP215native15/16-token2control/scopedlimits/PLANbindingnext/catalog/issues and evidence syncedbeforecomplete;AUD062/nextCP216unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "AUTH215-00005",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-bounds-r1/capture-verification.json",
+      "bytes": 6148,
+      "sha256": "013bfd2e974f2b3a2261c281448eab856f30ca43a65b616828f4298f25456076"
+    },
+    {
+      "id": "AUTH215-00008",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-bounds-r1/cp215-snapshot/docs/PLAN.md",
+      "bytes": 85537,
+      "sha256": "0a8102dc5b61e8caa8897820f5a666f337ede8b57953c181d1b785edbec1343a"
+    },
+    {
+      "id": "AUTH215-00010",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-bounds-r1/cp215-snapshot/docs/RESEARCH.md",
+      "bytes": 43525,
+      "sha256": "9f1e80cb81ee40c38847599c2e5fa6237bb8476216c335c6297c2220665835be"
+    },
+    {
+      "id": "AUTH215-00016",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-bounds-r1/manual-review.json",
+      "bytes": 1921,
+      "sha256": "94b4118d80069cad77507f68937a4ce8eef8ad2d2425ea1818f2a2ad9e661ec2"
+    },
+    {
+      "id": "AUTH215-00018",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-bounds-r1/native-boundary-vectors.json",
+      "bytes": 5316,
+      "sha256": "4b989f79181bfbe81109e29e7c71e51ffb3aa9c995be4192f298a487e47b1b39"
+    },
+    {
+      "id": "AUTH215-00020",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-bounds-r1/native-frame-verification.json",
+      "bytes": 1107,
+      "sha256": "a3f9f14a5daca05531e30da59eb94b39c3ffee0c294b45fd52e0fdacc33f0045"
+    },
+    {
+      "id": "AUTH215-00021",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-bounds-r1/native-record-comparison.json",
+      "bytes": 1047,
+      "sha256": "2cca2b8a5493784c49c1c95b9935413d208fbf11e6132da079796c1036add5c6"
+    },
+    {
+      "id": "AUTH215-00023",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-bounds-r1/source-first.json",
+      "bytes": 4638,
+      "sha256": "99285696f7e3a20232383c0518e1e08badbebb9d72950409775263ec5ffa50cc"
+    },
+    {
+      "id": "AUTH215-00099",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-bounds-r1/sso-pair/raw-seal.json",
+      "bytes": 12579,
+      "sha256": "6d48d585f3481402cc13c102c7e58c42dc0cb8eeca1fd81f15eb97186e4ff004"
+    },
+    {
+      "id": "AUTH215-00269",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-bounds-r1/token2-only/raw-seal.json",
+      "bytes": 12120,
+      "sha256": "a4eaff860ca21a6242b9064368e16168eea21c33715e9a5d2bb410593d6fcf78"
+    },
+    {
+      "id": "AUTH215-00392",
+      "kind": "local",
+      "path": "local/research/codex/cp215-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH215-00393",
+      "kind": "local",
+      "path": "local/research/codex/cp215-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "3d67fe2d4f00cc06d7febb4dd9ea1bdc14de7038a5e8602361e3a110a57aeeba"
+    },
+    {
+      "id": "AUTH215-00399",
+      "kind": "local",
+      "path": "local/research/codex/cp215-issue14-updated.json",
+      "bytes": 36340,
+      "sha256": "c577c3084267cc8aa2cbec1110844585389bbf55729911a020423c2b99e06b37"
+    },
+    {
+      "id": "AUTH215-00402",
+      "kind": "local",
+      "path": "local/research/codex/cp215-issue285-updated.json",
+      "bytes": 9666,
+      "sha256": "2d28bf20667338e15ea22fe8e47adb00398dc73f6c9bad0a46f8d21295583f73"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/1f41cb96f85d60706439f28388580295257292dfc1770faa841c68c933fd7c3a.jsonl",
+      "sha256": "1f41cb96f85d60706439f28388580295257292dfc1770faa841c68c933fd7c3a",
+      "bytes": 3887,
+      "count": 21,
+      "files_bytes": 6669252
+    },
+    {
+      "run": "local/research/codex/auth-token-bounds-r1",
+      "path": "local/evidence-manifests/b3a197df9f858920eaa4da87df9df16b6c505c0be73b9e1454deec81668b5c61.jsonl",
+      "sha256": "b3a197df9f858920eaa4da87df9df16b6c505c0be73b9e1454deec81668b5c61",
+      "bytes": 83175,
+      "count": 371,
+      "files_bytes": 14313103
     }
   ]
 }

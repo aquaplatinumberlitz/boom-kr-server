@@ -98,15 +98,6 @@
       "limits": "Independent review waived; exact-head/local-history and green CI required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP288-native-rosters.json",
-      "bytes": 584912,
-      "sha256": "40e2bd3cf2d3f8bd794d01a2d784cf1bcebd7d5c45566bbc6005895617de5dff",
-      "count": 2205
-    }
-  ],
   "delta": {
     "added": [
       "Native8 relay result/reset/next sparse roster, active endpoint EOF with six survivors and next round.",
@@ -199,5 +190,174 @@
   ],
   "completed_feature_groups": [
     "rust-authenticated-native-rosters"
+  ],
+  "evidence": [
+    {
+      "id": "N1RB288-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "N1RB288-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3925,
+      "sha256": "c4d6a2431dc4f48a65fa708f334709d43a1acfbc232c9a73ce8beb9168376fdb"
+    },
+    {
+      "id": "N1RB288-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 251600,
+      "sha256": "5f8c05911abe2f80605b09aab5721716be9bb44f3e0fce2a8282594855069e80"
+    },
+    {
+      "id": "N1RB288-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 145916,
+      "sha256": "e54408b0464cda0ca49ce9b49927c2da98f2925136095dc41b99405ce097a0e4"
+    },
+    {
+      "id": "N1RB288-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 78090,
+      "sha256": "129071e771829b587972a638fb0ddf799583c7127ad988f17744b0547659d8d6"
+    },
+    {
+      "id": "N1RB288-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66107,
+      "sha256": "35ec693f97dbc7476eea49d7ea83cede40ab252aff68232f69c498ea42659a7f"
+    },
+    {
+      "id": "N1RB288-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 33252,
+      "sha256": "efb9d8b6f3ba96decb51672465d7d1a9a6f095146417a3438178960cb26bddb2"
+    },
+    {
+      "id": "N1RB288-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD104.json",
+      "bytes": 4758,
+      "sha256": "86fc7eba7d5b97ebc32609d61eeee1dd1f3c06e5d8a7efbfad8770b8a7fca545"
+    },
+    {
+      "id": "N1RB288-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/n1rb-native-rosters.json",
+      "bytes": 12752,
+      "sha256": "8a96990a4a52dae5c7d18f1c3469c4c64ec1052b9b1afdbf5803e52312724dbe"
+    },
+    {
+      "id": "N1RB288-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 264058,
+      "sha256": "c1a14cef198d901b4bc95a9a91d28ba0201cee410562e31c26d99e125e88e6a6"
+    },
+    {
+      "id": "N1RB288-00011",
+      "kind": "repository",
+      "path": "docs/protocol/udp-peer.md",
+      "bytes": 81533,
+      "sha256": "0f1160dc2bfc628aafe910334830bb6ce0325a2a646f558c4ab9595e24bee7aa"
+    },
+    {
+      "id": "N1RB288-00637",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-eight-packet59-r2/native/raw-seal.json",
+      "bytes": 58435,
+      "sha256": "83f2ae7cf0d8cbce68880209c7fc5e31b2ae7fbcab9f7e0e35d0122b110ffd8c"
+    },
+    {
+      "id": "N1RB288-00655",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-delivery-receipt.json",
+      "bytes": 486,
+      "sha256": "1438b91028a46038d4bd5c35c80d5caf7f9d6946124e093cb632fbca5fec5465"
+    },
+    {
+      "id": "N1RB288-01493",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-eight-native-r1/native/raw-seal.json",
+      "bytes": 52466,
+      "sha256": "3880f5210504473c0f80eb65f80f368a356096a26903de86224752b6146e8a42"
+    },
+    {
+      "id": "N1RB288-02162",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-eight-native-r3/native/raw-seal.json",
+      "bytes": 66272,
+      "sha256": "7e8de09c4533e27aefc2419e662221ef30ce7cbe4699a65b5ec4ec8e8282d952"
+    },
+    {
+      "id": "N1RB288-02169",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-eight-native-r3/owned-eight-getter-verification.json",
+      "bytes": 607,
+      "sha256": "62cf5384f97020d19207b78f8f0308d71e181d39db6d402a9250c1de5455226a"
+    },
+    {
+      "id": "N1RB288-02170",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-eight-native-r3/owned-eight-verification.json",
+      "bytes": 3773935,
+      "sha256": "8e220b6f07f8a61414e3e3d2009380610d21d304b43505408fbc9d2d2bfb3c3c"
+    },
+    {
+      "id": "N1RB288-02204",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/authenticated_room_relay.rs",
+      "bytes": 7030,
+      "sha256": "e1a618a5847153e4ee0ce2980f3d4cb695ea8398ff1ed31694954095b0a84f4f"
+    },
+    {
+      "id": "N1RB288-02205",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/router.rs",
+      "bytes": 15276,
+      "sha256": "492134cc47c473f86534501defd80d6a4369658b87e147d1c89872b33b3d955c"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/0c3138eba14857813584965af127d9d951efc7d37c09a48b9ede9341bb3a6aa4.jsonl",
+      "sha256": "0c3138eba14857813584965af127d9d951efc7d37c09a48b9ede9341bb3a6aa4",
+      "bytes": 6152,
+      "count": 32,
+      "files_bytes": 225047
+    },
+    {
+      "run": "local/research/codex/n1rb-eight-packet59-r2",
+      "path": "local/evidence-manifests/3b74c786eb389f1333992b692c276c8331dbb73a4e0728ecd710ee74af953563.jsonl",
+      "sha256": "3b74c786eb389f1333992b692c276c8331dbb73a4e0728ecd710ee74af953563",
+      "bytes": 135171,
+      "count": 637,
+      "files_bytes": 559831709
+    },
+    {
+      "run": "local/research/codex/n1rb-owned-eight-native-r1",
+      "path": "local/evidence-manifests/001e11bde477cea7f44c6e43384a9fb2c83b0ee59f01cd2d48185fb380fa9d7e.jsonl",
+      "sha256": "001e11bde477cea7f44c6e43384a9fb2c83b0ee59f01cd2d48185fb380fa9d7e",
+      "bytes": 185467,
+      "count": 848,
+      "files_bytes": 588520332
+    },
+    {
+      "run": "local/research/codex/n1rb-owned-eight-native-r3",
+      "path": "local/evidence-manifests/30793c9fb22f45712dc4a9e1ede9a39c1626cc269c149177b7698a3a20a1e064.jsonl",
+      "sha256": "30793c9fb22f45712dc4a9e1ede9a39c1626cc269c149177b7698a3a20a1e064",
+      "bytes": 144715,
+      "count": 669,
+      "files_bytes": 583219537
+    }
   ]
 }

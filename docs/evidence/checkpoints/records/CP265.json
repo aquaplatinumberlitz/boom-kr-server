@@ -118,15 +118,6 @@
       "limits": "NativefinalR1 andM7separateacceptance; N1bnext."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP265-r1e-registry.json",
-      "bytes": 415949,
-      "sha256": "5a182691383e2fc7db9066e2aeec87834c4f99185f25c514bcd830e24f0b36a8",
-      "count": 1567
-    }
-  ],
   "delta": {
     "added": [
       "Registry/currentlisting/perroomqueuefoundation andinternalbatchoriginfence.",
@@ -277,5 +268,287 @@
   ],
   "completed_feature_groups": [
     "r1e-room-registry-listing-origin"
+  ],
+  "evidence": [
+    {
+      "id": "R1ECP265-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3903,
+      "sha256": "2f1647557f61d991fcf8c0ba1733c986bcbd0cf3ca9a38d0b61593a10f961e81"
+    },
+    {
+      "id": "R1ECP265-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 219309,
+      "sha256": "547481b8c605e2f48d798ccd5650c306131ca5cb4f139be6c45ae4b02a659106"
+    },
+    {
+      "id": "R1ECP265-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 65803,
+      "sha256": "b654e2a3f082ddbee9c77ddf0cec8fcd48aebc78ade6d6ab6703f41f840ab208"
+    },
+    {
+      "id": "R1ECP265-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 133781,
+      "sha256": "1bea72ea479a029c407710c70a26d1176226f89407f338723198dcf0f1378810"
+    },
+    {
+      "id": "R1ECP265-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 861857,
+      "sha256": "812aa5dd8aae14e0c3d98dfe40da81f0251bd3dc20166eae15519200033fdf70"
+    },
+    {
+      "id": "R1ECP265-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 53548,
+      "sha256": "77646d85f021b035962d77f6e957d0500549bdb64a3875d91ebbab7e3aa3ca2f"
+    },
+    {
+      "id": "R1ECP265-00007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD082.json",
+      "bytes": 4484,
+      "sha256": "170ea082a5deb753d6dc8e0239cd6a505242c751bd7bac77ed5a290c1d1b9944"
+    },
+    {
+      "id": "R1ECP265-00008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 284008,
+      "sha256": "09c9b79494bd224724e7c503c74b72014698d4c75044c3865195ab6672cc913b"
+    },
+    {
+      "id": "R1ECP265-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42624,
+      "sha256": "f62edfe04db017e92157181f826d3365fc6dc2e85fc385d6dc90a7c6fcfbe8e9"
+    },
+    {
+      "id": "R1ECP265-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 61158,
+      "sha256": "9c4799a805127b495615d07641f8bc17579e9055f54b7a9deceb02c2037f6935"
+    },
+    {
+      "id": "R1ECP265-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/r1e-registry.json",
+      "bytes": 3124,
+      "sha256": "3010eefd968bdffa30bfaf7324e08327b780d52dde043289955983aeb23aa354"
+    },
+    {
+      "id": "R1ECP265-00012",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 231147,
+      "sha256": "d4a069e89e0c5d517c74c88d22ee9f494cf42d6088d161cf8e6a0d45b5919851"
+    },
+    {
+      "id": "R1ECP265-00020",
+      "kind": "local",
+      "path": "local/research/codex/cp264-merged.json",
+      "bytes": 123,
+      "sha256": "f51941180fdb0194402957f47a47b011ec8d820bfcecd7071ff2408203f36feb"
+    },
+    {
+      "id": "R1ECP265-00031",
+      "kind": "local",
+      "path": "local/research/codex/r1e-delivery-r1/selfcheck.json",
+      "bytes": 3112,
+      "sha256": "91969a15395ee0fd05e7d603fe8ae2f5f76524eb578e8ab6d1e92bb60be2fce5"
+    },
+    {
+      "id": "R1ECP265-00053",
+      "kind": "local",
+      "path": "local/research/codex/r1e-listing-wire-check-r1/verification.json",
+      "bytes": 905,
+      "sha256": "ff31c11e4d7df44a50f5cc028ef9dc43cd2f358c79a1cd249a62b8f4117ce44b"
+    },
+    {
+      "id": "R1ECP265-00202",
+      "kind": "local",
+      "path": "local/research/codex/r1e-recipient-probe-r4/verification.json",
+      "bytes": 862,
+      "sha256": "4c9274b04a3c03e3244175a19ab0f875aef18b8d9066b1c51d28048e72df54f6"
+    },
+    {
+      "id": "R1ECP265-00283",
+      "kind": "local",
+      "path": "local/research/codex/r1e-recipient-probe-r6/verification.json",
+      "bytes": 811,
+      "sha256": "8c37bc24b4e03237d0d392e713f26a88090d16dd304bad5802943a4e171f3532"
+    },
+    {
+      "id": "R1ECP265-01364",
+      "kind": "local",
+      "path": "local/research/codex/r1e-regression-r1/source/rust/crates/kr-service/src/lib.rs",
+      "bytes": 43980,
+      "sha256": "dfde03ebc2934a050ba371c241982cb7947251cbbc500adc0c508555b814d59d"
+    },
+    {
+      "id": "R1ECP265-01373",
+      "kind": "local",
+      "path": "local/research/codex/r1e-regression-r1/source/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 111841,
+      "sha256": "a8aff00f5a786f863ddbfa2026a8c80a83b581d6ad94f28a5370d94ab1b4c8e8"
+    },
+    {
+      "id": "R1ECP265-01375",
+      "kind": "local",
+      "path": "local/research/codex/r1e-regression-r1/source/rust/crates/kr-service/src/room_registry.rs",
+      "bytes": 4667,
+      "sha256": "a6fada1bb316bad02d965d4d186063a683d0cd714391bc34385541216fc6835b"
+    },
+    {
+      "id": "R1ECP265-01382",
+      "kind": "local",
+      "path": "local/research/codex/r1e-regression-r1/source/rust/crates/kr-wire/src/kr00967/room.rs",
+      "bytes": 14268,
+      "sha256": "63a2097b88d9cc2c337a34220253cb6b5ff0f06835eed7538699ba68d75f351d"
+    },
+    {
+      "id": "R1ECP265-01543",
+      "kind": "local",
+      "path": "local/research/codex/r1e-regression-r1/verification.json",
+      "bytes": 8786,
+      "sha256": "860ed441a285b10eabcc93c91e00209252fa82dcc07b5137a1dbe0cc76705987"
+    },
+    {
+      "id": "R1ECP265-01544",
+      "kind": "local",
+      "path": "local/research/codex/r1e-regression-r1/wire-comparison.json",
+      "bytes": 6021,
+      "sha256": "73869fd10524b861797aeeff5f566f1aa619a4b0abe42cd0ea17883ba45757d2"
+    },
+    {
+      "id": "R1ECP265-01546",
+      "kind": "local",
+      "path": "local/research/codex/r1e-source-check-r2.txt",
+      "bytes": 11772,
+      "sha256": "5b58bd14bf81ff43c9bfd38abdb6a49add0a009d2bffe2930d116192d0dd9f4e"
+    },
+    {
+      "id": "R1ECP265-01564",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/room91-two.bin",
+      "bytes": 131,
+      "sha256": "1604eaf0a982e683603ef26c3a56f4589aafa883782b6ddf0a712c1af125387e"
+    },
+    {
+      "id": "R1ECP265-01567",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 31830,
+      "sha256": "6ca1fdab7af8b4f1ea0f6e127d0c16a986d87d5de27092f4576a6eb93d927769"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/e62c06aa1534835aec4edf26bd2d43556309b1370be96d994f78122d18f0d7d9.jsonl",
+      "sha256": "e62c06aa1534835aec4edf26bd2d43556309b1370be96d994f78122d18f0d7d9",
+      "bytes": 5431,
+      "count": 29,
+      "files_bytes": 2269646
+    },
+    {
+      "run": "local/research/codex/r1e-delivery-r1",
+      "path": "local/evidence-manifests/e99d2b857f88a380bb58fe800351a783f78ad968b6cbecdaa2f1df9482a6bc07.jsonl",
+      "sha256": "e99d2b857f88a380bb58fe800351a783f78ad968b6cbecdaa2f1df9482a6bc07",
+      "bytes": 3490,
+      "count": 16,
+      "files_bytes": 2166848
+    },
+    {
+      "run": "local/research/codex/r1e-listing-wire-check-r1",
+      "path": "local/evidence-manifests/3251da8281a599d5c73aeca7b9239bbaa1a27601bf6c5409d19a507fb33c6b03.jsonl",
+      "sha256": "3251da8281a599d5c73aeca7b9239bbaa1a27601bf6c5409d19a507fb33c6b03",
+      "bytes": 1085,
+      "count": 5,
+      "files_bytes": 5042748
+    },
+    {
+      "run": "local/research/codex/r1e-recipient-probe-r1",
+      "path": "local/evidence-manifests/d43161044a7635ad5d04848a7120e89ccbc9cd97d65f2c7b062e82a995c86afe.jsonl",
+      "sha256": "d43161044a7635ad5d04848a7120e89ccbc9cd97d65f2c7b062e82a995c86afe",
+      "bytes": 7075,
+      "count": 33,
+      "files_bytes": 448129
+    },
+    {
+      "run": "local/research/codex/r1e-recipient-probe-r2",
+      "path": "local/evidence-manifests/3941c7a05981cfaf8f69760f02ec8c2f41e38d73666f37bc0ca8c3385c40d28b.jsonl",
+      "sha256": "3941c7a05981cfaf8f69760f02ec8c2f41e38d73666f37bc0ca8c3385c40d28b",
+      "bytes": 7075,
+      "count": 33,
+      "files_bytes": 448129
+    },
+    {
+      "run": "local/research/codex/r1e-recipient-probe-r3",
+      "path": "local/evidence-manifests/547d6cce554dd57ac08d6ddcb6351c4939362af2dc291c84b364eb987ea2af3a.jsonl",
+      "sha256": "547d6cce554dd57ac08d6ddcb6351c4939362af2dc291c84b364eb987ea2af3a",
+      "bytes": 8254,
+      "count": 39,
+      "files_bytes": 34324418
+    },
+    {
+      "run": "local/research/codex/r1e-recipient-probe-r4",
+      "path": "local/evidence-manifests/a8ef7e7ad759d8164e828a1cdcc2386ce8c19d140ef61d2d14aaa26c0f888c59.jsonl",
+      "sha256": "a8ef7e7ad759d8164e828a1cdcc2386ce8c19d140ef61d2d14aaa26c0f888c59",
+      "bytes": 8056,
+      "count": 38,
+      "files_bytes": 34375153
+    },
+    {
+      "run": "local/research/codex/r1e-recipient-probe-r5",
+      "path": "local/evidence-manifests/9c6beda926e8fc7b54ed05244e6ab96d7b8dcf3ebd51f92e54c24c442ab1f7bf.jsonl",
+      "sha256": "9c6beda926e8fc7b54ed05244e6ab96d7b8dcf3ebd51f92e54c24c442ab1f7bf",
+      "bytes": 8454,
+      "count": 40,
+      "files_bytes": 34388696
+    },
+    {
+      "run": "local/research/codex/r1e-recipient-probe-r6",
+      "path": "local/evidence-manifests/6d4b14c53a872e63076330b881ce4cc60477cf2fe83f243e8e26a3df47053e37.jsonl",
+      "sha256": "6d4b14c53a872e63076330b881ce4cc60477cf2fe83f243e8e26a3df47053e37",
+      "bytes": 8057,
+      "count": 38,
+      "files_bytes": 34388924
+    },
+    {
+      "run": "local/research/codex/r1e-regression-r1",
+      "path": "local/evidence-manifests/8c646dcb316b2e60b93d4c6770d7f95eb51b634981924fcebc472e16fe98d92b.jsonl",
+      "sha256": "8c646dcb316b2e60b93d4c6770d7f95eb51b634981924fcebc472e16fe98d92b",
+      "bytes": 273319,
+      "count": 1254,
+      "files_bytes": 655928619
+    },
+    {
+      "run": "local/research/codex/r1e-source-survey-r1",
+      "path": "local/evidence-manifests/b866560cc16eda6d419768410071f7e9226469ef39e8030c4987b6f6d2225fde.jsonl",
+      "sha256": "b866560cc16eda6d419768410071f7e9226469ef39e8030c4987b6f6d2225fde",
+      "bytes": 2859,
+      "count": 14,
+      "files_bytes": 12303503
+    },
+    {
+      "run": "local/research/codex/room-incremental-r2",
+      "path": "local/evidence-manifests/24af4863aa4ba3ef3a6cf2951b7d23ddc59f15565c20f816e43a9f4e7aee65bb.jsonl",
+      "sha256": "24af4863aa4ba3ef3a6cf2951b7d23ddc59f15565c20f816e43a9f4e7aee65bb",
+      "bytes": 533,
+      "count": 2,
+      "files_bytes": 131
+    }
   ]
 }

@@ -122,15 +122,6 @@
       "limits": "This PR exact-head raw/history/docs and CI still required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP298-selected-map-terrain.json",
-      "bytes": 1744006,
-      "sha256": "3009287805e2454fe9755354932bdbfe4cdb6a67eb9fa6fe7138d8193af81435",
-      "count": 6262
-    }
-  ],
   "delta": {
     "added": [
       "Per-map terrain config/hash binding, atomic selection/reset/no inheritance,193source tests/TCP/config controls.",
@@ -231,5 +222,371 @@
   ],
   "completed_feature_groups": [
     "rust-g1-selected-map-terrain-forest-slice"
+  ],
+  "evidence": [
+    {
+      "id": "G1MAPTERRAIN298-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3729,
+      "sha256": "35090e560b6604ee8f1df098a493c036e1f80f282782dbb08c206a62f25d799d"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 258214,
+      "sha256": "d289eb7a98418f12525217dccebab93fc00a952664f43752934175271bcab77a"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 152565,
+      "sha256": "9afa51f12e292aa25f4c020910863c62f409fff0c9f616512eb226f8fdd9a7da"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 80139,
+      "sha256": "7fce0ce1cc5a85306aab28d976ebad12dc38b5907ebad46372c647750d5650aa"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66940,
+      "sha256": "5828e88d72f450afe6690349a79f28ccf5b78e0b63b72bcf9de35e45c93cac9a"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 39160,
+      "sha256": "19ca3e04ef19db6f6c8af4b4d371a54d26d2ed83bb9a0df37cf4555e6bc9e422"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00008",
+      "kind": "repository",
+      "path": "docs/content/tile-semantics.md",
+      "bytes": 3767,
+      "sha256": "b4118d920e09cb79ce0c596aeb50807abf51d260bf62c276403ab7b4a24f8a88"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00009",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD114.json",
+      "bytes": 6107,
+      "sha256": "bbbc4852e49b7a7801866bc4bbb686a787d59b8995a88f7a4238303f6a3097fc"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-map-terrain.json",
+      "bytes": 14174,
+      "sha256": "d626e56528bced0d259d75090acb6209ecf592d27700a7c7b9803bb0f3cea31f"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 270910,
+      "sha256": "859f4126b159a430a4ea4d07f25ef8ca3f8aadeadc991b98309c499d78185ea0"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00012",
+      "kind": "repository",
+      "path": "docs/protocol/load-phase.md",
+      "bytes": 64586,
+      "sha256": "55e61c684c8e4360cdeeb3e39d17000b813a1daa65f9f02f3574a28977645dd0"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00013",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 47264,
+      "sha256": "05df2d6894d277b7abf0ad0a4daff050f09a78bc65aa1b5998862cd20f46dda4"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00027",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-2-native-r1/forest-roster-getter-verification.json",
+      "bytes": 608,
+      "sha256": "b48e171e033b7ff43ce063996841d5e3f56e03142fd0a8099924106ff430a589"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00028",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-2-native-r1/forest-roster-native-verification.json",
+      "bytes": 999043,
+      "sha256": "474fd7ac2803f4f06f8a8256f43eea206900bade1348f57afefbdbe3a5932ab1"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00658",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-4-native-r1/forest-roster-getter-verification.json",
+      "bytes": 609,
+      "sha256": "fa6a77f88be078da8b9e6887490a8dee4b58df7013e4ae015939201fcf9381fe"
+    },
+    {
+      "id": "G1MAPTERRAIN298-00659",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-4-native-r1/forest-roster-native-verification.json",
+      "bytes": 2872320,
+      "sha256": "f70606475ea8b41d368732cd94a0da8a93f6be98ae6ac257fac8254d2bed36dd"
+    },
+    {
+      "id": "G1MAPTERRAIN298-01791",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-seed-native-r2/forest-seed-getter-verification.json",
+      "bytes": 556,
+      "sha256": "45cc0b1bb7ee9eaef4edfb50d8500f8e77a0fbcf9360407344086b11062b523a"
+    },
+    {
+      "id": "G1MAPTERRAIN298-01792",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-seed-native-r2/forest-seed-native-verification.json",
+      "bytes": 108678,
+      "sha256": "39fb1196fbd1a81b5fb149b937ed76593ebf708ee7aff8b1505230f547f3ea48"
+    },
+    {
+      "id": "G1MAPTERRAIN298-02158",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-seed-native-r2/native/raw-seal.json",
+      "bytes": 12189,
+      "sha256": "f761a5c0a1c9c2c89d3bacb86535bd8274e56b19adc2f13df43054c03c8c1df4"
+    },
+    {
+      "id": "G1MAPTERRAIN298-04919",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-terrain-native-r3/forest-terrain-getter-verification.json",
+      "bytes": 571,
+      "sha256": "eae1488acc7d884f4732332585ae417c007750b31cb96ec1a86f192e55db0779"
+    },
+    {
+      "id": "G1MAPTERRAIN298-04920",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-terrain-native-r3/forest-terrain-native-verification.json",
+      "bytes": 15497881,
+      "sha256": "ee3f10d96cc1bab23ea3fb92b62887ffcd65153557ca5d046103214bc1fc2a94"
+    },
+    {
+      "id": "G1MAPTERRAIN298-05425",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-terrain-native-r3/manual-ui-review.json",
+      "bytes": 844,
+      "sha256": "26f85c91ff8c589f507b3d8ca6c86f6d5edabdee344293c234f3160f30818a28"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06034",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-terrain-native-r3/native/raw-seal.json",
+      "bytes": 138781,
+      "sha256": "6e3f42a149e9a1c0f8f83908fce46df365753aec3e2c16edd879adf5c3e44378"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06060",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-terrain-build-r2.txt",
+      "bytes": 262,
+      "sha256": "36ea7adf99670762980468a8517d4720b6a922acde05335b64f6bc10dc76a94f"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06062",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-terrain-clippy-r2.txt",
+      "bytes": 168,
+      "sha256": "fda9a2e00f7d9b21cfa78e248cb822aca8d56d2a5497c3359cc4a87bce6367de"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06078",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-terrain-config-controls-r1/verification.json",
+      "bytes": 1429,
+      "sha256": "d16ab429fde7d7983b22daf3c39daf294b5458b1b64499817a0ff0da4c105913"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06083",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-terrain-fmt-r2.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06087",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-terrain-source-r1/reuse.json",
+      "bytes": 5105,
+      "sha256": "d48426f8f5ff47e655846e95fd1cc107281b67e1222b1f06e2dae2e2c24eb794"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06221",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-terrain-tcp-r1/result.json",
+      "bytes": 1079,
+      "sha256": "6eb4d8f05ac456ac20d61468324a9ba57385effd9f832405ae7f57d52d2f2831"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06225",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-terrain-workspace-r1.txt",
+      "bytes": 23080,
+      "sha256": "ec317fa87821350aa68f1c27d9e6e3fb71ff6c7abc48c8aeb790ca40962f63e2"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06226",
+      "kind": "local",
+      "path": "local/research/codex/g1-native59-source-r1/reuse.json",
+      "bytes": 4533,
+      "sha256": "69859fdb47bc679fda732e0eeb2964f1a99ada5775acc5bd77e7ead78b10fe87"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06227",
+      "kind": "local",
+      "path": "local/research/codex/g1-terrain-players-delivery-receipt.json",
+      "bytes": 1256,
+      "sha256": "fda8fa8ed73bc7bad5738d7ace85eac0b8286365da2c06502c6c14166cc14139"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06258",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 37010,
+      "sha256": "6360808a8e6aac67333ece95af2b97600666d786ad1eb3444dea34582e3b4907"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06259",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/map_profile.rs",
+      "bytes": 11281,
+      "sha256": "ed3f7335165ab9c251483a80624ae08d638998b7382843fdb09be1d5d11e1f50"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06260",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 183592,
+      "sha256": "71643d4418d107b2837e1ec001794a6ad1247eb98ee9a4664b9a000d5946d732"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06261",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "bytes": 19941,
+      "sha256": "f2c3b9ec709d13e77d6ea42313e4621a221df2949f22e74d646b13d7317b0ad7"
+    },
+    {
+      "id": "G1MAPTERRAIN298-06262",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/terrain.rs",
+      "bytes": 13288,
+      "sha256": "346d48abe351b9477be77808ffbbcdb0be66dc01609fd7cfd1c3738c04e99ea5"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/9dac7108f584e5fcdffa7a18ee7772ff4a19f59a65cc8b053cdd408b9f92d9ca.jsonl",
+      "sha256": "9dac7108f584e5fcdffa7a18ee7772ff4a19f59a65cc8b053cdd408b9f92d9ca",
+      "bytes": 12159,
+      "count": 62,
+      "files_bytes": 1352271
+    },
+    {
+      "run": "local/research/codex/g1-forest-2-native-r1",
+      "path": "local/evidence-manifests/361685b021b5a290a08bc48d69960e1f99d991c56709ca1e22ffddddf5b309bb.jsonl",
+      "sha256": "361685b021b5a290a08bc48d69960e1f99d991c56709ca1e22ffddddf5b309bb",
+      "bytes": 138728,
+      "count": 626,
+      "files_bytes": 799998707
+    },
+    {
+      "run": "local/research/codex/g1-forest-4-native-r1",
+      "path": "local/evidence-manifests/7185cc76d627691b158aa4cbcab5ce50f8c47936679775c58a06ee9f5cf9887b.jsonl",
+      "sha256": "7185cc76d627691b158aa4cbcab5ce50f8c47936679775c58a06ee9f5cf9887b",
+      "bytes": 160875,
+      "count": 723,
+      "files_bytes": 823982127
+    },
+    {
+      "run": "local/research/codex/g1-forest-seed-native-r1",
+      "path": "local/evidence-manifests/7be8585fd7244bf7f493b4bfa026c42ca6ce33cf7d93c5145ed9e03ee7087727.jsonl",
+      "sha256": "7be8585fd7244bf7f493b4bfa026c42ca6ce33cf7d93c5145ed9e03ee7087727",
+      "bytes": 87031,
+      "count": 390,
+      "files_bytes": 527774086
+    },
+    {
+      "run": "local/research/codex/g1-forest-seed-native-r2",
+      "path": "local/evidence-manifests/8aa0a0480057acc806e16c9bf787df6db7bd5a76ec1351268731c93b129cd835.jsonl",
+      "sha256": "8aa0a0480057acc806e16c9bf787df6db7bd5a76ec1351268731c93b129cd835",
+      "bytes": 88869,
+      "count": 398,
+      "files_bytes": 528863988
+    },
+    {
+      "run": "local/research/codex/g1-forest-terrain-native-r1",
+      "path": "local/evidence-manifests/0c9646a775868c807db52de6c4ba03c26f4e0b244a3473708e78775767b1b39d.jsonl",
+      "sha256": "0c9646a775868c807db52de6c4ba03c26f4e0b244a3473708e78775767b1b39d",
+      "bytes": 375424,
+      "count": 1592,
+      "files_bytes": 784463627
+    },
+    {
+      "run": "local/research/codex/g1-forest-terrain-native-r2",
+      "path": "local/evidence-manifests/b8bdf27330dbf8a7a956d1069c9068b041c633b3b9755d474442d04cd0b3ee0b.jsonl",
+      "sha256": "b8bdf27330dbf8a7a956d1069c9068b041c633b3b9755d474442d04cd0b3ee0b",
+      "bytes": 252655,
+      "count": 1094,
+      "files_bytes": 657593313
+    },
+    {
+      "run": "local/research/codex/g1-forest-terrain-native-r3",
+      "path": "local/evidence-manifests/65f4de77868c64c26b333cce7037f11770fb404f1952788f3cc07f497f868122.jsonl",
+      "sha256": "65f4de77868c64c26b333cce7037f11770fb404f1952788f3cc07f497f868122",
+      "bytes": 276193,
+      "count": 1188,
+      "files_bytes": 661195140
+    },
+    {
+      "run": "local/research/codex/g1-map-terrain-config-controls-r1",
+      "path": "local/evidence-manifests/bd8776ac19df69de06180bccddcfb60a7342c0fc36507b8b2aa27d8e0883e8de.jsonl",
+      "sha256": "bd8776ac19df69de06180bccddcfb60a7342c0fc36507b8b2aa27d8e0883e8de",
+      "bytes": 3455,
+      "count": 15,
+      "files_bytes": 158217
+    },
+    {
+      "run": "local/research/codex/g1-map-terrain-configs-r1",
+      "path": "local/evidence-manifests/2fe9a1138e1fd1377e7d0841274631d4603426e1d5d402df0550e44796c53b50.jsonl",
+      "sha256": "2fe9a1138e1fd1377e7d0841274631d4603426e1d5d402df0550e44796c53b50",
+      "bytes": 493,
+      "count": 2,
+      "files_bytes": 31819
+    },
+    {
+      "run": "local/research/codex/g1-map-terrain-survey-r1",
+      "path": "local/evidence-manifests/dca3481e6a3f4cc5d5922194c0101378080ca7ec14f1e8651994fb9ad0a21d12.jsonl",
+      "sha256": "dca3481e6a3f4cc5d5922194c0101378080ca7ec14f1e8651994fb9ad0a21d12",
+      "bytes": 1315,
+      "count": 6,
+      "files_bytes": 66504
+    },
+    {
+      "run": "local/research/codex/g1-map-terrain-tcp-r1",
+      "path": "local/evidence-manifests/6e8bc7afaee96a57d32e308af8601ce877c923a16ebdb2202bfad4c0ce3d784a.jsonl",
+      "sha256": "6e8bc7afaee96a57d32e308af8601ce877c923a16ebdb2202bfad4c0ce3d784a",
+      "bytes": 27232,
+      "count": 128,
+      "files_bytes": 205545521
+    }
   ]
 }

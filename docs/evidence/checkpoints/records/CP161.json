@@ -152,15 +152,6 @@
       "limits": "Models not runtimeworldoracle/gate; fullcheckpointrequire-local/history beforecommit."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP161-room-title.json",
-      "bytes": 464058,
-      "sha256": "8eaef8daf4b607ee6453c6f8a42a9271d283de3ce6475f6e62bd5d1c40376ab1",
-      "count": 1834
-    }
-  ],
   "delta": {
     "added": [
       "CurrentactualA81→Binitial/dynamic91/nativeUI titleconsistency andguestBack/rejoin/twoproductioncycles measured.",
@@ -258,6 +249,301 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP161titlepolicy/nativeUI/twoproductioncycles/analysislimits/presetprovenance/PR231merge/nextMannerFreeinput syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/room-title-echo-r1/actual81-native-verification.json",
+      "bytes": 1713,
+      "sha256": "eeb0c3dfe4884173b8938e058048d399e5d8835581ad18413ad3aa07459b7753"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/room-title-echo-r1/analysis-corrections.json",
+      "bytes": 457,
+      "sha256": "f4c464cd75ae4fcb411ff66ec0ad89dc296308962896c92a4c111d5eb53d531f"
+    },
+    {
+      "id": "RUN-00441",
+      "kind": "local",
+      "path": "local/research/codex/room-title-echo-r1/title-runtime-verification.json",
+      "bytes": 1602,
+      "sha256": "acc77d6f5e51fa9e937119c2ef05dbe8c71df8b8c2baef24a0554c3b8c98c2f3"
+    },
+    {
+      "id": "RUN-00445",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/actor-fields.json",
+      "bytes": 1589824,
+      "sha256": "e5a39ae5f8e265c05eed4bfd65ce35a20d802fa854744275eb1ccceb28487b14"
+    },
+    {
+      "id": "RUN-00447",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/actual81-native-verification.json",
+      "bytes": 1745,
+      "sha256": "e30801c256d40d277b46d2752476dbd6625bc845719091b394fd8658824e2edb"
+    },
+    {
+      "id": "RUN-00448",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/actual91-native-verification.json",
+      "bytes": 3763,
+      "sha256": "c3bbfc05bda45030053ce4b919bf663f88eb0b61b17dc1e2fe328d3bbad077cc"
+    },
+    {
+      "id": "RUN-00449",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/analysis-corrections.json",
+      "bytes": 828,
+      "sha256": "c236fd77f6f445bbb2dbd7f0db4bde08bd8c802a5d5b4d0a164dde68e2b03561"
+    },
+    {
+      "id": "RUN-00454",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00455",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/capture-claim-verification.json",
+      "bytes": 1858,
+      "sha256": "8973111dea5f70ff05af6a54d699de8c0c020e84fc199c8b295a355fcfc14015"
+    },
+    {
+      "id": "RUN-00469",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/cycle-boundary-verification.json",
+      "bytes": 2519,
+      "sha256": "9de085075d194f55011db2d6f6c189bd675e608995c05056dae64b945c235eb6"
+    },
+    {
+      "id": "RUN-01664",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/docs-check.txt",
+      "bytes": 175,
+      "sha256": "5fb2f9eda8c95049b44877e99364783dc673ed1f24778205c97e20965fd64849"
+    },
+    {
+      "id": "RUN-01665",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/endpoint-peer-verification.json",
+      "bytes": 151022,
+      "sha256": "39d85aaed36e42c50d83651bbf4f2bd750a4d55552896990637e16b11eee1562"
+    },
+    {
+      "id": "RUN-01667",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/final-export-tests.txt",
+      "bytes": 102,
+      "sha256": "179c9c6d7bd7ff45f2bcd8bb35aadb896dc1ea1cf78d378ffd5731c56cb2cbfb"
+    },
+    {
+      "id": "RUN-01668",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/final-server-tests.txt",
+      "bytes": 347,
+      "sha256": "c630f5c0f8ed3124bb1aac089ab873331f7edf717c1a595d0fd3cf6888469cee"
+    },
+    {
+      "id": "RUN-01669",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/final-source/server/probe_service.py",
+      "bytes": 95357,
+      "sha256": "14b4f025712fea6ec22b268ba3736ff34fb37c1ccb9272b1b0046056f54af7f4"
+    },
+    {
+      "id": "RUN-01670",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/final-source/server/profiles/two-client-battle.json",
+      "bytes": 14237,
+      "sha256": "c4491d6292f7cfe6ced51b8b150c851e96ae0cccb6537cd164ebe1fd18fa0792"
+    },
+    {
+      "id": "RUN-01671",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/final-source/server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "RUN-01672",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/final-source/server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "RUN-01673",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/flag-reader-verification.json",
+      "bytes": 1442747,
+      "sha256": "9208084f49305f0dfd2154611739efd4f34ec22623d7dac1f8db6cc3fff10cef"
+    },
+    {
+      "id": "RUN-01674",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/frozen-preset-runtime.json",
+      "bytes": 14218,
+      "sha256": "cc5ffbcd7ebb585b7202a047b4b9cb14a791a869da3436b75b90ef708aeabc1d"
+    },
+    {
+      "id": "RUN-01684",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/hot-gate-verification.json",
+      "bytes": 5410,
+      "sha256": "b5ae2396585f66b2b33103d37f4ee97345ca92c965684d7258d2628cee8bf3db"
+    },
+    {
+      "id": "RUN-01687",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/issues-check.txt",
+      "bytes": 130,
+      "sha256": "dda943087f707a9d29532292143ff90c894edb52115f9483165411a7e76666fe"
+    },
+    {
+      "id": "RUN-01690",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/life-agreement-verification.json",
+      "bytes": 6824,
+      "sha256": "6d580182841665c26ac4328b93dcd11a5d384a244e76a037e2d566cec0758539"
+    },
+    {
+      "id": "RUN-01691",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "9acafc06809d69802898b04a61ca9895be1ba94be2b6cbb3bbe9b1de814d31ba"
+    },
+    {
+      "id": "RUN-01693",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/native-exit-packets.json",
+      "bytes": 128239,
+      "sha256": "d482c70872d161bf82330f2f0fbc486ded59b85bab775ccaad730071340ad894"
+    },
+    {
+      "id": "RUN-01704",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "9127d24cc28a018f2ee4dcf8646815cbedf12c8a01c26d27340f808446d7cfaa"
+    },
+    {
+      "id": "RUN-01705",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/preset-provenance-update.json",
+      "bytes": 577,
+      "sha256": "fe5829a3b60e4752bfe60e6c1e7db1822ee74cfb39f74cfb00457e8b3be63623"
+    },
+    {
+      "id": "RUN-01706",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/production-pickup-verification.json",
+      "bytes": 1037,
+      "sha256": "d9855b9fd8268e7077b174e2bd640cbfe11df3339e9f342004d6a548af28c688"
+    },
+    {
+      "id": "RUN-01708",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/raw-seal.json",
+      "bytes": 245972,
+      "sha256": "de50407bd673b6dc06613f9bfe97dcbc114bea63b14648bc102306f8d4525867"
+    },
+    {
+      "id": "RUN-01751",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/runtime-preflight.json",
+      "bytes": 20036,
+      "sha256": "9d5b465333e0423a6c68b2a51eaf35b3ba06877f8ba3d7cf876f60c8a7b9d961"
+    },
+    {
+      "id": "RUN-01795",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/title-runtime-verification.json",
+      "bytes": 1612,
+      "sha256": "19354cd609b86736e51bf74cfc6bd7c64ad697c1f22b3dc3a38800788a0d21da"
+    },
+    {
+      "id": "RUN-01811",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/verify_production_pickup-inherited.py",
+      "bytes": 3886,
+      "sha256": "df7efc59f1c49b18c5649541d5f7b494d7abb4c80951eb6bfa3115d81d495c85"
+    },
+    {
+      "id": "RUN-01816",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/visual-review.json",
+      "bytes": 1503,
+      "sha256": "5af785df10d8daa14e3daf484a6f1f8d6700699368de5fe34a27911357cdcfc1"
+    },
+    {
+      "id": "RUN-01817",
+      "kind": "local",
+      "path": "local/research/codex/room-title-integrated-r2/world-reset-verification.json",
+      "bytes": 943,
+      "sha256": "04501086d74784db94dce171af1a155c5405ba01c095e41cb0c35b9e7073642f"
+    },
+    {
+      "id": "RUN-01832",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/create81-native-fields.json",
+      "bytes": 622,
+      "sha256": "e34639d334725e73aeca3ac9ac29f3c7d77b2f3371b681515d6f585ed8648fa1"
+    },
+    {
+      "id": "RUN-01833",
+      "kind": "local",
+      "path": "local/research/codex/back86-membership-r1/native_packets.py",
+      "bytes": 5693,
+      "sha256": "955472a6fb577956122147435b4604f96c8ba61167b742e1d1824256c52115b3"
+    },
+    {
+      "id": "RUN-01834",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/native_fields.py",
+      "bytes": 4663,
+      "sha256": "b1b202aadfe4c502829d854f6ea16ae970facbf5dc3abf5009c14ded4fdb1206"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/room-title-echo-r1",
+      "path": "local/evidence-manifests/93f76a32ebe6711ceff253bbaaf24c820b5f473c4b9d54e9c270c18d9b95acdf.jsonl",
+      "sha256": "93f76a32ebe6711ceff253bbaaf24c820b5f473c4b9d54e9c270c18d9b95acdf",
+      "bytes": 87526,
+      "count": 441,
+      "files_bytes": 77488137
+    },
+    {
+      "run": "local/research/codex/room-title-integrated-r2",
+      "path": "local/evidence-manifests/e189b89a55ab10dcaf1edca14a7932a7e8442d054a68bc67336d898d91541193.jsonl",
+      "sha256": "e189b89a55ab10dcaf1edca14a7932a7e8442d054a68bc67336d898d91541193",
+      "bytes": 275167,
+      "count": 1344,
+      "files_bytes": 118705431
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/40b475ef68bc5893a6e976a7f5af4cf68f27dd8b9025a8b8e58bf4dac0100205.jsonl",
+      "sha256": "40b475ef68bc5893a6e976a7f5af4cf68f27dd8b9025a8b8e58bf4dac0100205",
+      "bytes": 1851,
+      "count": 10,
+      "files_bytes": 188997
+    },
+    {
+      "run": "local/research/codex/exported-preset-smoke-r1",
+      "path": "local/evidence-manifests/f557d2963fec4da09da60e1579182514a08e69cb29aadb312db2d57cf47d95fe.jsonl",
+      "sha256": "f557d2963fec4da09da60e1579182514a08e69cb29aadb312db2d57cf47d95fe",
+      "bytes": 475,
+      "count": 2,
+      "files_bytes": 510
     }
   ]
 }

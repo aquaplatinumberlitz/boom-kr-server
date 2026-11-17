@@ -162,15 +162,6 @@
       "limits": "KR00967Wine4b/privateLAN/sharedkernel/Manner1fixedalternating2v2/same4/oppositeoutcomes/rank4-reset-Start3 scoped only. Native all4 parsers/rankmemory independent from screenshot coverage: A rankshots still Battle. Copiedgetter/fixturehash separate not native oracle. No native clear21-rescue-needle/terrain4/hostguest healthyEOF/eight/fullM4/accountbridge/originalauthority/production. Internet thật chưa kiểm."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP248-rust-four-results.json",
-      "bytes": 139386,
-      "sha256": "5d15747132669dc52775c9d4aa5648e087208a37acccd53436874aaf86baf077",
-      "count": 520
-    }
-  ],
   "delta": {
     "added": [
       "Rustfour_results/typedrank4/all170deliverybarrier/nativeopposite2v2/resetStart3/62tests24four51two4prebind.",
@@ -304,6 +295,206 @@
       "path": "docs/evidence/checkpoints/audits/AUD071.json",
       "state": "updated",
       "reason": "CP248nativefourresults-resetStart3/M4EOF-eightnext/M5bridgeindependent/AUD071through248next252/historykept."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST248-00003",
+      "kind": "local",
+      "path": "local/research/codex/cp248-docs-final.txt",
+      "bytes": 251,
+      "sha256": "4430950223492d4af00fb889e9172e8b8bf6c8e4fed50f70471662bb5247aca2"
+    },
+    {
+      "id": "RUST248-00004",
+      "kind": "local",
+      "path": "local/research/codex/cp248-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST248-00020",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-build-r1.txt",
+      "bytes": 166,
+      "sha256": "60619ac171ca9a4afea13021d73034952270efe9d89f640b1fe03e2081810fec"
+    },
+    {
+      "id": "RUST248-00021",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-clippy-r1.txt",
+      "bytes": 166,
+      "sha256": "1df4a1948b795d2764e883d5966c84e7c57d240bd7674c844ee4cbb2c21e1d14"
+    },
+    {
+      "id": "RUST248-00030",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-config-negatives-r1/verification.json",
+      "bytes": 1077,
+      "sha256": "37bc5e6cbc9aa366972b7f3accdc19a42a25069c55d43cb7147ab67db88f714c"
+    },
+    {
+      "id": "RUST248-00031",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-delivery-r1/manual-acceptance.json",
+      "bytes": 3607,
+      "sha256": "cb50598103086c0f6be4803405dd788a528bea3ab2e508d7e9e11753114eadb0"
+    },
+    {
+      "id": "RUST248-00034",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 95638,
+      "sha256": "ced826cab43718ac9e7c60f42889d9aea77e7ddbb08c75099c3d8deaed52586c"
+    },
+    {
+      "id": "RUST248-00037",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-delivery-r1/snapshot/docs/evidence/checkpoints/audits/AUD071.json",
+      "bytes": 6492,
+      "sha256": "59fc79fc075b60d3c9c6370aef25929622d9e851058472500031b89324f85381"
+    },
+    {
+      "id": "RUST248-00044",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-delivery-r1/snapshot/rust/crates/kr-service/src/four_results.rs",
+      "bytes": 7285,
+      "sha256": "55a2103d3faa27e00d914423f65dec8e1221ea06a43879ed45e328bda5c8a4e9"
+    },
+    {
+      "id": "RUST248-00046",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-delivery-r1/snapshot/rust/crates/kr-service/src/life.rs",
+      "bytes": 17554,
+      "sha256": "bc39a5748734f8b8fa6cce8afc0d1d5e621c89f016dad2cca6b128d2f44e6ee3"
+    },
+    {
+      "id": "RUST248-00131",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-kernel-r1/verification.json",
+      "bytes": 18512,
+      "sha256": "7504e3b84d00cfd0305f130ea62966f6083834d8431de2004dd10e273a9f8906"
+    },
+    {
+      "id": "RUST248-00136",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-native-r1-verification.txt",
+      "bytes": 411,
+      "sha256": "e4386bb842f9a53efb187af25b96c8e9f0a7c85e31a8c28d7019dcffd228969c"
+    },
+    {
+      "id": "RUST248-00326",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-native-r1/input-retention.json",
+      "bytes": 61461,
+      "sha256": "c10b029164266abd391e3278a17be60b0e6f9e9d3cff369e580bfe2c5bbe0c87"
+    },
+    {
+      "id": "RUST248-00415",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-native-r1/native-four/raw-seal.json",
+      "bytes": 19187,
+      "sha256": "40a33e89a6afe0a8618806ffc7a49d7d436b772ce2e6d238aebb131bf35e1336"
+    },
+    {
+      "id": "RUST248-00418",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-native-r1/results-getter-verification.json",
+      "bytes": 433,
+      "sha256": "5575d3de6d8213faacc1af6150df1b546b3c8cd18ab97345c55c7a8a0ebda02e"
+    },
+    {
+      "id": "RUST248-00419",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-native-r1/results-verification.json",
+      "bytes": 117595,
+      "sha256": "6c01373e022f98872e5b524dafdf018a92aa04072e3c8bd93e62b667a1d831fe"
+    },
+    {
+      "id": "RUST248-00427",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-native-r1/ui-review.json",
+      "bytes": 1530,
+      "sha256": "b97874911df3ba63685fc6c62704fc97723c699f0423319dc8e5146ce5a68fe4"
+    },
+    {
+      "id": "RUST248-00430",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-tests-r1.txt",
+      "bytes": 7266,
+      "sha256": "72d7e4bc75462933ef05c6ebffcfa1c89536f6a92f4f44d7e7de091186b78e18"
+    },
+    {
+      "id": "RUST248-00514",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-results-two-regression-r1/verification.json",
+      "bytes": 23651,
+      "sha256": "baed55fe631ce2f65ab37b21c7a83d69f464ae97c85763b7b166b589e1289df6"
+    },
+    {
+      "id": "RUST248-00518",
+      "kind": "local",
+      "path": "local/research/codex/verify_rust_four_results_before_elapsed_fix.py",
+      "bytes": 8592,
+      "sha256": "5eaa585b8009a4568c136a15af9972c317cc8b970c540ff8023bae2cce1918fc"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/e73f107466cd4088177c6ff974d394db3dfd27e19fdd211b46024ec8341cf922.jsonl",
+      "sha256": "e73f107466cd4088177c6ff974d394db3dfd27e19fdd211b46024ec8341cf922",
+      "bytes": 5321,
+      "count": 28,
+      "files_bytes": 280281
+    },
+    {
+      "run": "local/research/codex/rust-four-results-config-negatives-r1",
+      "path": "local/evidence-manifests/1ca11251b6060178e078cdd21ed746bb7735b6a5e8d04a38fdc4922418b26448.jsonl",
+      "sha256": "1ca11251b6060178e078cdd21ed746bb7735b6a5e8d04a38fdc4922418b26448",
+      "bytes": 1830,
+      "count": 8,
+      "files_bytes": 90559
+    },
+    {
+      "run": "local/research/codex/rust-four-results-delivery-r1",
+      "path": "local/evidence-manifests/e9e24c30394d92501a526820efbaf7107b49ceaeafd7c8bd494608c5f9ba41f8.jsonl",
+      "sha256": "e9e24c30394d92501a526820efbaf7107b49ceaeafd7c8bd494608c5f9ba41f8",
+      "bytes": 3476,
+      "count": 15,
+      "files_bytes": 1853279
+    },
+    {
+      "run": "local/research/codex/rust-four-results-kernel-r1",
+      "path": "local/evidence-manifests/099a1a44b858b2d1c43b6d3c271edf78c3e704c24b0c659a82e87a3b5aba80c3.jsonl",
+      "sha256": "099a1a44b858b2d1c43b6d3c271edf78c3e704c24b0c659a82e87a3b5aba80c3",
+      "bytes": 17173,
+      "count": 79,
+      "files_bytes": 45387334
+    },
+    {
+      "run": "local/research/codex/rust-four-results-native-r1",
+      "path": "local/evidence-manifests/fa9a0a5abab3a67e2b6bf6e3285aec7ff858ca9f1983e90f450ed19cc6f08122.jsonl",
+      "sha256": "fa9a0a5abab3a67e2b6bf6e3285aec7ff858ca9f1983e90f450ed19cc6f08122",
+      "bytes": 63007,
+      "count": 286,
+      "files_bytes": 187788458
+    },
+    {
+      "run": "local/research/codex/rust-four-results-source-r1",
+      "path": "local/evidence-manifests/f82657ba70736d44a464321f0df698f4e5ed51ae14b3c02beb0a3777f1d94d95.jsonl",
+      "sha256": "f82657ba70736d44a464321f0df698f4e5ed51ae14b3c02beb0a3777f1d94d95",
+      "bytes": 495,
+      "count": 2,
+      "files_bytes": 4492
+    },
+    {
+      "run": "local/research/codex/rust-four-results-two-regression-r1",
+      "path": "local/evidence-manifests/85686f3107399c4afddb93e72efa822e3ae3f7467ba1fae1449db22402fca564.jsonl",
+      "sha256": "85686f3107399c4afddb93e72efa822e3ae3f7467ba1fae1449db22402fca564",
+      "bytes": 18514,
+      "count": 82,
+      "files_bytes": 45326222
     }
   ]
 }

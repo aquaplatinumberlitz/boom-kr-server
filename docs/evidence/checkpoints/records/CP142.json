@@ -165,15 +165,6 @@
       "limits": "Mechanicalconsistencyonly; notsemanticacceptance/gates."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP142-virtual-production-movement.json",
-      "bytes": 582757,
-      "sha256": "f41352b4d9bff8276198d72737ca77663dca2bf35165e460c56f2ffe8727737a",
-      "count": 2241
-    }
-  ],
   "delta": {
     "added": [
       "Same-runvirtualproduction4movementwindows/itemeffects/basic2endings/reset/Ready proof."
@@ -253,6 +244,203 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP142same-runproof/limits/observerpartial/analysiscorrections/currentTCPguardgap/issue14 syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00707",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r1/observer-attribution.json",
+      "bytes": 1063,
+      "sha256": "532565ea241715aa21d904ca8fb5b9c30920d42a7c6d8a67a39cf4490b57134e"
+    },
+    {
+      "id": "RUN-00711",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r1/raw-seal.json",
+      "bytes": 146083,
+      "sha256": "24c7fda4d601da7003ee5ffbf8d8dbbc9bf1df6477e7deec58ce5a8fa978872e"
+    },
+    {
+      "id": "RUN-00759",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "RUN-00762",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/address-ready-verification.json",
+      "bytes": 4408,
+      "sha256": "21d7151734ec272531f7e74dd5e1bedc869af343b05226cde8c780b23b8c42de"
+    },
+    {
+      "id": "RUN-00763",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/analysis-corrections.json",
+      "bytes": 1134,
+      "sha256": "1fe67521660854e4e251c7d85f92d29afe89876138c75cb5aa79bc0ebfaf3251"
+    },
+    {
+      "id": "RUN-00766",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00768",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/basic-verification.json",
+      "bytes": 188347,
+      "sha256": "a6213605c130cb3db0fdd44903d873e0254b1045944987f563a5e5a3ddb20917"
+    },
+    {
+      "id": "RUN-00781",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/crc-check.txt",
+      "bytes": 33,
+      "sha256": "bedffc1f36f23090199d432fb5a27f9f68df4ca8529643750d55c477bede6b63"
+    },
+    {
+      "id": "RUN-02104",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/docs-check.txt",
+      "bytes": 175,
+      "sha256": "366224cde944278849a982a01985d1e5df23d7ae4a18c2edb81fecaa65e94358"
+    },
+    {
+      "id": "RUN-02106",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/endpoint-peer-verification.json",
+      "bytes": 199099,
+      "sha256": "b8e1747b099796ff66db31a73717207447db3c026b562d34bbb889a0b2210ef2"
+    },
+    {
+      "id": "RUN-02107",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/fields-check.txt",
+      "bytes": 33,
+      "sha256": "9d652acecf129b5716845808d7c35d4a894008de437cf9fba3f6646653737be2"
+    },
+    {
+      "id": "RUN-02109",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/flags-check.txt",
+      "bytes": 54,
+      "sha256": "5b68529c65f7ed72126b0ff3ac5d3abad3848404f844e2330874da205e7c83b3"
+    },
+    {
+      "id": "RUN-02118",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/issues-check.txt",
+      "bytes": 130,
+      "sha256": "7d55c9962aafb322896f8bdc10679881a50a6f0296c0c8ac4e69f227a6b72707"
+    },
+    {
+      "id": "RUN-02124",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/movement-wire-draft-check.txt",
+      "bytes": 633,
+      "sha256": "7fec3ff307074022ffa72bca6277a262273409f9ac2849022210b75f990250f5"
+    },
+    {
+      "id": "RUN-02125",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/movement-wire-verification.json",
+      "bytes": 40740,
+      "sha256": "f03d842936e510a31b1ac7e0f452b4c941696eefbe3b1eea0f05da6fdc10433b"
+    },
+    {
+      "id": "RUN-02133",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/peer-getter-check.txt",
+      "bytes": 38,
+      "sha256": "f73d03d7d9b803978eda4cbd2d5a85be67b086ea64eaa2d4f4cdbdf1f63c7357"
+    },
+    {
+      "id": "RUN-02136",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/pickup-draft-check.txt",
+      "bytes": 976,
+      "sha256": "4004f3a7f211b85da69e127e84c63df331d336cc3ff3da89ae4565879347b46e"
+    },
+    {
+      "id": "RUN-02137",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/pickup-verification.json",
+      "bytes": 2988,
+      "sha256": "c443b05fd1084f2b9cd1233d862b5c27ff56ffdf032f6f304abc4e7cce9e7b43"
+    },
+    {
+      "id": "RUN-02138",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/prelaunch-B-commands.txt",
+      "bytes": 13040,
+      "sha256": "18ccb0ffcce91f36c2613f1bac180e4652e03728553e9b69d2912d1769d77f75"
+    },
+    {
+      "id": "RUN-02140",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/raw-seal.json",
+      "bytes": 279800,
+      "sha256": "6f5353d14cd9342fa7926eabb7fd3b463e7ca2a531cd9263cd506197597cbd84"
+    },
+    {
+      "id": "RUN-02142",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/reports-check.txt",
+      "bytes": 29,
+      "sha256": "bf862181f3f351c40858006e083f14afc89fe1721ccc5f3e2c299ff19e9ee281"
+    },
+    {
+      "id": "RUN-02234",
+      "kind": "local",
+      "path": "local/research/codex/virtual-production-movement-r2/visual-review.json",
+      "bytes": 1283,
+      "sha256": "705869bc479bf3b063e138b9d0ef91672461b199287fb241a52a0b763fbef908"
+    },
+    {
+      "id": "RUN-02241",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/server-tests.txt",
+      "bytes": 331,
+      "sha256": "f68f879ad1b4c2f0d7adb4e0654a2b23d9b55110f5c2b4631e4f84c77cadbbeb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/virtual-production-movement-r1",
+      "path": "local/evidence-manifests/a6f75eff5a332aa451626a2b98f25cb09a35ac0a00453d32d79176ddf89579bd.jsonl",
+      "sha256": "a6f75eff5a332aa451626a2b98f25cb09a35ac0a00453d32d79176ddf89579bd",
+      "bytes": 158607,
+      "count": 756,
+      "files_bytes": 26692076
+    },
+    {
+      "run": "local/research/codex/virtual-production-movement-r2",
+      "path": "local/evidence-manifests/33a7906e8016d8e2829e157a0694d5c1c79811f5e4b70ecc3e07c02dde29c4bc.jsonl",
+      "sha256": "33a7906e8016d8e2829e157a0694d5c1c79811f5e4b70ecc3e07c02dde29c4bc",
+      "bytes": 306346,
+      "count": 1456,
+      "files_bytes": 55747296
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/200ff6b4367e0f9d2e03042aa05a6edf3572e545826c5cb6653a4f99ca79a67a.jsonl",
+      "sha256": "200ff6b4367e0f9d2e03042aa05a6edf3572e545826c5cb6653a4f99ca79a67a",
+      "bytes": 844,
+      "count": 4,
+      "files_bytes": 138257
+    },
+    {
+      "run": "local/research/codex/service-peer-address-r1",
+      "path": "local/evidence-manifests/29e53178b28e65f4d1495e2071782c6d92d4e9382cbe580fb38836697e9d2a65.jsonl",
+      "sha256": "29e53178b28e65f4d1495e2071782c6d92d4e9382cbe580fb38836697e9d2a65",
+      "bytes": 472,
+      "count": 2,
+      "files_bytes": 418
     }
   ]
 }

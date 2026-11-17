@@ -1,0 +1,542 @@
+{
+  "id": "CP336",
+  "previous": "CP335",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T17:22:44.179478+00:00",
+  "context_commit": "adf506c24ed33f1bbce40f59b33cb864915f6822",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Hoàn tất nhóm Punch theo ma trận bốn hướng/khoảng cách/biên, giữ endpoint thực và account/transport/member/vòng qua retirement/reset.",
+  "scope": "Gộp selector2 hai vòng và hai batch Rust bốn vòng/bốn hướng; native KR diagnostic trên Wine/LAN, report-derived axial/full-axis reservation. Không nguyên server authority, mọi roster hoặc toàn G1.",
+  "artifacts": [
+    {
+      "name": "native-client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "native-service",
+      "sha256": "7f7664813f907d22427b7a19f1874b5cf19348638cbbf06c548a2d149e724052"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+    "docs/evidence/rust-service/g1-punch-matrix.json",
+    "docs/RESEARCH.md#gap-ability-debuff",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/462"
+  ],
+  "findings": [
+    {
+      "summary": "Bốn selector0–3 thực thi qua exact119→162, endpoint ngắn/dài và ba ca source=target sau quét. Cả hai view có landing/state4 trước rebind rồi cleanup; không suy delta endpoint là chiều dài bay. Hai batch bốn vòng và 864 getter checks, selector2 hai vòng trước gộp cùng nhóm.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "PUNCH336-00086",
+        "PUNCH336-00312",
+        "PUNCH336-00268"
+      ],
+      "limits": "Chỉ các ca đã đo trên Wine/private LAN; không gọi all-distance endpoint là vật lý hoặc authority server gốc."
+    },
+    {
+      "summary": "Policy Rust nhận endpoint axial trong map theo selector, giữ source/target/prefix thực và toàn hàng/cột đến mọi receipt; mọi cancellation cell trên trục chặn admission. Owner/transport/member/vòng, life/item, deadline, quota, clone/queue và retirement fences giữ nguyên.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "PUNCH336-00378",
+        "PUNCH336-00379",
+        "PUNCH336-00380",
+        "PUNCH336-00024"
+      ],
+      "limits": "Full-axis quarantine và short158 trước blast là design; tests không thay native fault injection duplicate/late/inflight/foreign bomb/queued EOF."
+    },
+    {
+      "summary": "Mỗi vòng trên cùng hai account/channel có ordinary118/no119 trước pickup, một Punch pickup, peer/reset đúng, rank/return và journal thưởng0 đúng identity. Hai batch mới exit0, storage export hash đúng và toàn owned namespace reaped.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "PUNCH336-00083",
+        "PUNCH336-00309",
+        "PUNCH336-00120",
+        "PUNCH336-00346"
+      ],
+      "limits": "Persisted C1/C0, hai account, không mọi roster/nhân vật hoặc Internet/tải/M8."
+    },
+    {
+      "summary": "Các batch lỗi do peer/route/facing/timing và unlaunched inputs giữ nguyên. Harness dùng since-step conditions, settled position và Start hold qua debugger pause; bộ kiểm lifecycle ghép clock không đánh số với rank/return theo timestamp, không làm lại native để sửa verifier.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "PUNCH336-00009",
+        "PUNCH336-00382",
+        "PUNCH336-00383",
+        "PUNCH336-00384"
+      ],
+      "limits": "Archived helper bytes giữ provenance trước tích hợp main. Không suy lỗi nguyên client hoặc sửa raw để pass."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fmt, clippy-Dwarnings, locked full workspace tests/build trên source tích hợp scoped serving/main",
+      "result": "pass",
+      "evidence": [
+        "PUNCH336-00024"
+      ],
+      "limits": "Build không là native hoặc original authority; source motion cùng candidate đã đo, main thêm scope drop/character riêng."
+    },
+    {
+      "check": "Native exact wire, consumer, secure getter, landing/rebind/cleanup, peer/reset và account/journal",
+      "result": "pass",
+      "evidence": [
+        "PUNCH336-00086",
+        "PUNCH336-00312",
+        "PUNCH336-00083",
+        "PUNCH336-00309"
+      ],
+      "limits": "Hai batch mới sạch; failed/partial và các giới hạn native khác giữ riêng."
+    },
+    {
+      "check": "Canonical docs/catalog/diff và audit một lần cho toàn nhóm",
+      "result": "pass",
+      "evidence": [
+        "PUNCH336-00019",
+        "PUNCH336-00006"
+      ],
+      "limits": "Exact-head local/history và CI còn bắt buộc trước merge."
+    }
+  ],
+  "delta": {
+    "added": [
+      "Nhóm Punch bốn hướng/endpoint, full-axis quarantine và native matrix thay lịch PR theo selector."
+    ],
+    "corrected": [
+      "Clock native không có round được ghép với rank/return theo timestamp; không sửa native raw."
+    ],
+    "superseded": [
+      "Giới hạn fixed delta của các lát Punch trước; giữ các record/raw lịch sử bất biến."
+    ]
+  },
+  "blockers": [
+    "Shoe và client vi smoke còn riêng; không đóng toàn G1/M8."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-G1-SHOE-MATRIX",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp ma trận Shoe và client vi smoke theo PLAN, gate/merge mỗi nhóm; không mở PR theo selector hoặc sửa L1/exporter.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T17:22:44.179478+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex self-audit AUD144 cho toàn nhóm Punch; independent review waived, chưa full G1.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner cho solo và miễn review độc lập."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-punch-matrix.json",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD144.json",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "tools/g1_native_harness.py",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "tools/g1_native_runtime.py",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "tools/g1_native_verify.py",
+      "state": "updated",
+      "reason": "Đồng bộ ma trận nhóm Punch, phạm vi đã đo và giới hạn."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index topic hiện hành không đổi; contract cập nhật tại items-stats."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Theo solo/audit nhóm/privacy và evidence packing mới."
+    }
+  ],
+  "completed_feature_groups": [
+    "g1-punch-direction-distance-matrix"
+  ],
+  "evidence": [
+    {
+      "id": "PUNCH336-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3915,
+      "sha256": "80e60af68858a187e32d128cafaee749482434f5fffdbfe0f17d5f6f1bf43475"
+    },
+    {
+      "id": "PUNCH336-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 270409,
+      "sha256": "5fcb653db3234dcf1dfc9aa87c599b023c6c4aab38e6c646150d758c9503610f"
+    },
+    {
+      "id": "PUNCH336-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 169926,
+      "sha256": "b5ce69eb06ac86f2d9d62903dea39f2d196e7d8b0be1900df9a24f4bea439c1b"
+    },
+    {
+      "id": "PUNCH336-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 87025,
+      "sha256": "6cba6df47a88437b29b5455f69fcfbc0fb642348010ebc35119f9001405f20e2"
+    },
+    {
+      "id": "PUNCH336-00005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45753,
+      "sha256": "071156f6cc8ae80852c3f49e641c995a356e8bea41869d3de762460655a891a8"
+    },
+    {
+      "id": "PUNCH336-00006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD144.json",
+      "bytes": 3303,
+      "sha256": "a7d87be94a7ecc06e6cf79356863d213c72ec34c8d04332b83092ee9fb905ade"
+    },
+    {
+      "id": "PUNCH336-00007",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 346516,
+      "sha256": "2713d71389191e2a0885db78a268db2244daccf178a1e262dca0c703ad586ee8"
+    },
+    {
+      "id": "PUNCH336-00008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 45215,
+      "sha256": "86619639dc4447ae0f73fd632959c8bb66fa38bdf0f9455f4015fd503befe127"
+    },
+    {
+      "id": "PUNCH336-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-punch-matrix.json",
+      "bytes": 11543,
+      "sha256": "2453fd8380ba43636fc4ad1501df531e01cc03232323e89e844cc9749c77aab5"
+    },
+    {
+      "id": "PUNCH336-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 282905,
+      "sha256": "2f8efcee8584d57428ed71bd4babd0834ba9f1fe9f406ced766cfc501ec01a46"
+    },
+    {
+      "id": "PUNCH336-00011",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 83227,
+      "sha256": "b231002925d63104edf7acc24f9717841f05e1945676de46b8d80ef04b000a47"
+    },
+    {
+      "id": "PUNCH336-00019",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-group-gate/docs-precheck-final.log",
+      "bytes": 274,
+      "sha256": "b39083c491f99a216d7dff9a6164e45874a34d25b43abc18e1c03e877a0c5a3c"
+    },
+    {
+      "id": "PUNCH336-00024",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-group-gate/rust-workspace-r1.json",
+      "bytes": 1654,
+      "sha256": "cb1514d93e96ed0e951758bd499ecf07c64952e1413eb4465efaaadd7ea0ad4e"
+    },
+    {
+      "id": "PUNCH336-00026",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-group-reuse/reuse.json",
+      "bytes": 1895,
+      "sha256": "0795437707f1e3da75bb4ca282a17097afde46510ec9690a7a595558a0f762d1"
+    },
+    {
+      "id": "PUNCH336-00083",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-native-matrix-r6/matrix-verification.json",
+      "bytes": 676,
+      "sha256": "1dc3a9c31c59baef4aca1332437305821d864703ea1782e007041a143d0389ac"
+    },
+    {
+      "id": "PUNCH336-00086",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-native-matrix-r6/motion-verification.json",
+      "bytes": 2271,
+      "sha256": "45a18feb6f19b8ae621c0ee62964c53f678cd2c0b54e0110adb64adb83b672c6"
+    },
+    {
+      "id": "PUNCH336-00120",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-native-matrix-r6/native/cycles/run.json",
+      "bytes": 471270,
+      "sha256": "166927d89822ac0a3ff9136a6571f42105c2ca7259385ed8fe166d52b50b0b5a"
+    },
+    {
+      "id": "PUNCH336-00268",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/punch-selector2-native-verification.json",
+      "bytes": 5473,
+      "sha256": "5ea436858afd327614ae58fa00239e0ff094f56cef8ac9baeefc864bee589b6b"
+    },
+    {
+      "id": "PUNCH336-00309",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/matrix-verification.json",
+      "bytes": 686,
+      "sha256": "db600aa0bbed0bcf69cd5776380c70128419af3d083f90204a52f3e51eee4a53"
+    },
+    {
+      "id": "PUNCH336-00312",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/motion-verification.json",
+      "bytes": 2284,
+      "sha256": "b353b85e36d79d44c231f12674008b516430d6b9bed779bc933e4326f2164ffc"
+    },
+    {
+      "id": "PUNCH336-00346",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/native/cycles/run.json",
+      "bytes": 272666,
+      "sha256": "8b4e22cd5d1543aa64dce3fb4b8bd3bcb2c531703d96488822c2c5d5df4f727e"
+    },
+    {
+      "id": "PUNCH336-00378",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "bytes": 46333,
+      "sha256": "e26ac037787360b3d9e34ad0ed3216a162c479ccda40b8684ced8090bd01b184"
+    },
+    {
+      "id": "PUNCH336-00379",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 198247,
+      "sha256": "a5444a07f802152594e3b07acc7bd40d68254076541a1f17884b3bb69726de13"
+    },
+    {
+      "id": "PUNCH336-00380",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "bytes": 84058,
+      "sha256": "c9be6b507207d7676af9d8f87bc07c8fda08e1272c6302b2eb315d206ee3f5b8"
+    },
+    {
+      "id": "PUNCH336-00381",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+      "bytes": 4687,
+      "sha256": "8046849509602a06aee15297e65f5f7857e0aa99583c67a3cf6ee83a84ee4636"
+    },
+    {
+      "id": "PUNCH336-00382",
+      "kind": "repository",
+      "path": "tools/g1_native_harness.py",
+      "bytes": 16264,
+      "sha256": "5e40da38f090985165c24d38acc888fbe0a1ef207983cf5b4bebee07b1c46323"
+    },
+    {
+      "id": "PUNCH336-00383",
+      "kind": "repository",
+      "path": "tools/g1_native_runtime.py",
+      "bytes": 32755,
+      "sha256": "b5148df5aeb6968c9ce020f19bd0cf3672af2da5874c86902cfa02caa3f97344"
+    },
+    {
+      "id": "PUNCH336-00384",
+      "kind": "repository",
+      "path": "tools/g1_native_verify.py",
+      "bytes": 17129,
+      "sha256": "ec09ec3cdbfe02c4cd105ca592b13b789b41fb539b9c5d201885bfe17cd71ce2"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/g1-punch-controller-sources",
+      "path": "local/evidence-manifests/1c650744d328821b03d718e5d0318aae97e7b9632132c94a4af052e76b5e9965.jsonl",
+      "sha256": "1c650744d328821b03d718e5d0318aae97e7b9632132c94a4af052e76b5e9965",
+      "bytes": 1998,
+      "count": 7,
+      "files_bytes": 133994
+    },
+    {
+      "run": "local/research/codex/g1-punch-group-gate",
+      "path": "local/evidence-manifests/5eb7924478606585c0ba20442d30e7f06f4aa796ff64acb57aa6edcb0f49d3c9.jsonl",
+      "sha256": "5eb7924478606585c0ba20442d30e7f06f4aa796ff64acb57aa6edcb0f49d3c9",
+      "bytes": 1083,
+      "count": 5,
+      "files_bytes": 38948
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r1",
+      "path": "local/evidence-manifests/65b3f420c6110ee505e3294e029793e14783c66b9567861d9f675618e7b2e346.jsonl",
+      "sha256": "65b3f420c6110ee505e3294e029793e14783c66b9567861d9f675618e7b2e346",
+      "bytes": 1326,
+      "count": 6,
+      "files_bytes": 445865
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r2",
+      "path": "local/evidence-manifests/3f7f80076f61563fb189c8ac28915e83cd339f2865b5e7bab94c27268d34c02a.jsonl",
+      "sha256": "3f7f80076f61563fb189c8ac28915e83cd339f2865b5e7bab94c27268d34c02a",
+      "bytes": 1326,
+      "count": 6,
+      "files_bytes": 475637
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r3",
+      "path": "local/evidence-manifests/a762a4176f9f69a52a9ad0461062c362cc417f3e428ab9324710e8cd416a85bf.jsonl",
+      "sha256": "a762a4176f9f69a52a9ad0461062c362cc417f3e428ab9324710e8cd416a85bf",
+      "bytes": 1326,
+      "count": 6,
+      "files_bytes": 674268
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r4",
+      "path": "local/evidence-manifests/137eb7e2207674c7cda6ecc02057424274c5ed0de0f3d12ab7bfbeebe07e690d.jsonl",
+      "sha256": "137eb7e2207674c7cda6ecc02057424274c5ed0de0f3d12ab7bfbeebe07e690d",
+      "bytes": 1326,
+      "count": 6,
+      "files_bytes": 405717
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r5",
+      "path": "local/evidence-manifests/7dd079c1d9f3048fb1bd6524a8c6daf224f97f98e4d3cfa36fee393f5ec14be4.jsonl",
+      "sha256": "7dd079c1d9f3048fb1bd6524a8c6daf224f97f98e4d3cfa36fee393f5ec14be4",
+      "bytes": 1325,
+      "count": 6,
+      "files_bytes": 244200
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r6",
+      "path": "local/evidence-manifests/d7d4758a18531898ee7b5b1b82b24bc9e80fb53d24841bac1691377e856bd22b.jsonl",
+      "sha256": "d7d4758a18531898ee7b5b1b82b24bc9e80fb53d24841bac1691377e856bd22b",
+      "bytes": 19416,
+      "count": 92,
+      "files_bytes": 22033631
+    },
+    {
+      "run": "local/research/codex/g1-punch-selector2-rust-native-r1",
+      "path": "local/evidence-manifests/76106c44a867a68c16e9c5207629fd030e622ca7bdd1e92afd4600a7718d8c76.jsonl",
+      "sha256": "76106c44a867a68c16e9c5207629fd030e622ca7bdd1e92afd4600a7718d8c76",
+      "bytes": 27091,
+      "count": 123,
+      "files_bytes": 19664216
+    },
+    {
+      "run": "local/research/codex/g1-punch-wrap-native-matrix-r1",
+      "path": "local/evidence-manifests/e12ce5acf3f90167f6057b6d33c7204c63eb6627f6d197387255856cf3825c7d.jsonl",
+      "sha256": "e12ce5acf3f90167f6057b6d33c7204c63eb6627f6d197387255856cf3825c7d",
+      "bytes": 1361,
+      "count": 6,
+      "files_bytes": 300073
+    },
+    {
+      "run": "local/research/codex/g1-punch-wrap-native-matrix-r2",
+      "path": "local/evidence-manifests/5cbba3a50ed73ab32782d64e7a0be01e8b8d987f78d37563872598f93a12a362.jsonl",
+      "sha256": "5cbba3a50ed73ab32782d64e7a0be01e8b8d987f78d37563872598f93a12a362",
+      "bytes": 20079,
+      "count": 93,
+      "files_bytes": 18339037
+    }
+  ]
+}

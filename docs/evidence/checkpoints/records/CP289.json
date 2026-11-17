@@ -124,15 +124,6 @@
       "limits": "Exact-head/local/history and green CI required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP289-relay-controls.json",
-      "bytes": 247807,
-      "sha256": "58ae856891f3fead17af319993af1e55906e6188068e51b8f2a16a12f8bad729",
-      "count": 923
-    }
-  ],
   "delta": {
     "added": [
       "N1R-b scoped acceptance matrix, remaining native restart/shared-IP and real QUIC negatives.",
@@ -231,5 +222,234 @@
   ],
   "completed_feature_groups": [
     "rust-authenticated-relay-acceptance"
+  ],
+  "evidence": [
+    {
+      "id": "N1RB289-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "N1RB289-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3954,
+      "sha256": "9d3f038e050be917ddf5ce85d4f7cd7d2dad9583f757c701d24018b2505a0bfb"
+    },
+    {
+      "id": "N1RB289-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 252080,
+      "sha256": "4156e3e2afa8d0996027e4741e6273c6f91640d1383988c967807f7486894e6d"
+    },
+    {
+      "id": "N1RB289-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 146675,
+      "sha256": "4aaa5f4f8f4a5fe08415b3712f7c96499deb9f9d31c2a8fe7beb201bdb8df398"
+    },
+    {
+      "id": "N1RB289-00005",
+      "kind": "repository",
+      "path": "docs/OPERATIONS.md",
+      "bytes": 4244,
+      "sha256": "bc0695b040479ec53c24d8b704483f5c920ccd633db452ba466ac52d4c26e597"
+    },
+    {
+      "id": "N1RB289-00006",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 78169,
+      "sha256": "3a96391914de62f2cc652a13858e84b55ec4b6199124da10140ae2cffa3106b6"
+    },
+    {
+      "id": "N1RB289-00007",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66107,
+      "sha256": "35ec693f97dbc7476eea49d7ea83cede40ab252aff68232f69c498ea42659a7f"
+    },
+    {
+      "id": "N1RB289-00008",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 33849,
+      "sha256": "676027e3ce1cddca7f04c7ecfa9f4247c50f771d0b2d5f521be86b60cb8cfd35"
+    },
+    {
+      "id": "N1RB289-00009",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD105.json",
+      "bytes": 4427,
+      "sha256": "176e5a1dec0a96837b31818f41a4a244e3e53e3d2bb4b4abd937d62fa85dd78e"
+    },
+    {
+      "id": "N1RB289-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/n1rb-controls-acceptance.json",
+      "bytes": 11544,
+      "sha256": "b1bcf674bc56c4bb1828c0457dad74acd5e5afb9e7929a77ddd9062fb2d052a5"
+    },
+    {
+      "id": "N1RB289-00011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 264564,
+      "sha256": "17edfa18cf0cfc9aa83abf17e9b9aafc1311623af61d758a82c3fb5ab63eeec6"
+    },
+    {
+      "id": "N1RB289-00012",
+      "kind": "repository",
+      "path": "docs/protocol/udp-peer.md",
+      "bytes": 82586,
+      "sha256": "93da3bb53060215f52e5cc837d9ff054512676ba6dad6a5788a8dad412b363ef"
+    },
+    {
+      "id": "N1RB289-00018",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-controls-clippy-r1.txt",
+      "bytes": 2481,
+      "sha256": "13d7af486f9d157a8cc5bcf4c9a5d4d12748c694eb4d9fcf54abdfda472d61d3"
+    },
+    {
+      "id": "N1RB289-00020",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-controls-fmt-r1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "N1RB289-00021",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-controls-tests-r1.txt",
+      "bytes": 18673,
+      "sha256": "ea5b7b0aaf08b7ae5d7d8d6fefdfc984063bc1cec34665ee35010b7f721b9a32"
+    },
+    {
+      "id": "N1RB289-00028",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-phase1-config-r3/verification.json",
+      "bytes": 459,
+      "sha256": "8ec9e2580934f5010207bd6738355b2693a53486ac6203c42d2e9f5b8a9e0d7b"
+    },
+    {
+      "id": "N1RB289-00102",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-quic-controls-isolated-r1/seal.json",
+      "bytes": 2739,
+      "sha256": "8ac6d7d9eb51e13b3977309135f1e8c2ca8421f1b277e3b2732b89adb70e96de"
+    },
+    {
+      "id": "N1RB289-00885",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-restart-shared-native-r2/native/raw-seal.json",
+      "bytes": 17211,
+      "sha256": "0c74a31e3e5e8d3fcf707b44bdc4a6c1610295684f1d53f0c43efccd84899074"
+    },
+    {
+      "id": "N1RB289-00897",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-restart-shared-native-r2/restart-shared-getter-verification.json",
+      "bytes": 606,
+      "sha256": "996fab9b511fddfffdeccaf4144d2454fcba09fc7e7d3131588eede3d1e77cd1"
+    },
+    {
+      "id": "N1RB289-00898",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-restart-shared-native-r2/restart-shared-verification.json",
+      "bytes": 229245,
+      "sha256": "d86777290ae613830ef084905b75102cb4e9ec432415cebdb470a2c53f0dffdd"
+    },
+    {
+      "id": "N1RB289-00908",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-rosters-delivery-receipt.json",
+      "bytes": 1829,
+      "sha256": "52a9dc568964ece20a24057ace4018b2bad8e1d42dc9ddc7969d1911fe567979"
+    },
+    {
+      "id": "N1RB289-00922",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/tests.rs",
+      "bytes": 66824,
+      "sha256": "95f89a08a70a935b78a4d3aac10008c4da76df1ce008f64d03b9f13b624b18a3"
+    },
+    {
+      "id": "N1RB289-00923",
+      "kind": "repository",
+      "path": "tools/rust_phase1_config.py",
+      "bytes": 3717,
+      "sha256": "61db06aee3307812ddcbcd2388d5fc83e45fd1535fd84a141ff59536b953bbff"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/6804e70c140298d78ec7e1346ce601e759c2daf6e24270ccba54816288842171.jsonl",
+      "sha256": "6804e70c140298d78ec7e1346ce601e759c2daf6e24270ccba54816288842171",
+      "bytes": 4441,
+      "count": 23,
+      "files_bytes": 256553
+    },
+    {
+      "run": "local/research/codex/n1rb-controls-build-r1",
+      "path": "local/evidence-manifests/dd190cdda86b629f3623d7b69a20434247d561af5138c125258d4228b63e77ff.jsonl",
+      "sha256": "dd190cdda86b629f3623d7b69a20434247d561af5138c125258d4228b63e77ff",
+      "bytes": 670,
+      "count": 3,
+      "files_bytes": 91001
+    },
+    {
+      "run": "local/research/codex/n1rb-phase1-config-r1",
+      "path": "local/evidence-manifests/383d2ab03c273a0b70c27d4bef086935694c472f95e99741cfc820ab70650b65.jsonl",
+      "sha256": "383d2ab03c273a0b70c27d4bef086935694c472f95e99741cfc820ab70650b65",
+      "bytes": 474,
+      "count": 2,
+      "files_bytes": 41598
+    },
+    {
+      "run": "local/research/codex/n1rb-phase1-config-r2",
+      "path": "local/evidence-manifests/10977e1055c150320c07632adb874efcb9da6bced4a954555262e07b699484c0.jsonl",
+      "sha256": "10977e1055c150320c07632adb874efcb9da6bced4a954555262e07b699484c0",
+      "bytes": 474,
+      "count": 2,
+      "files_bytes": 41505
+    },
+    {
+      "run": "local/research/codex/n1rb-phase1-config-r3",
+      "path": "local/evidence-manifests/e8ad5cbcafd4a8724f7584c5c6f60c71173890df13f605deab055daff910d734.jsonl",
+      "sha256": "e8ad5cbcafd4a8724f7584c5c6f60c71173890df13f605deab055daff910d734",
+      "bytes": 468,
+      "count": 2,
+      "files_bytes": 81930
+    },
+    {
+      "run": "local/research/codex/n1rb-quic-controls-isolated-r1",
+      "path": "local/evidence-manifests/0e6e99e4d97d0c79d59bd62bbe441994fac2cbc4a91e49009bdbee2723311fa5.jsonl",
+      "sha256": "0e6e99e4d97d0c79d59bd62bbe441994fac2cbc4a91e49009bdbee2723311fa5",
+      "bytes": 16024,
+      "count": 73,
+      "files_bytes": 126161758
+    },
+    {
+      "run": "local/research/codex/n1rb-restart-shared-native-r1",
+      "path": "local/evidence-manifests/376097c16ea97236f992ee7099b373e77989d7e5ab654cc2750196a8d70bf6dd.jsonl",
+      "sha256": "376097c16ea97236f992ee7099b373e77989d7e5ab654cc2750196a8d70bf6dd",
+      "bytes": 79814,
+      "count": 361,
+      "files_bytes": 504522710
+    },
+    {
+      "run": "local/research/codex/n1rb-restart-shared-native-r2",
+      "path": "local/evidence-manifests/46c97522bd7f75bb06873c7d3c183f337ae25c2fa8dc614acff9121ed7eb03cb.jsonl",
+      "sha256": "46c97522bd7f75bb06873c7d3c183f337ae25c2fa8dc614acff9121ed7eb03cb",
+      "bytes": 95781,
+      "count": 434,
+      "files_bytes": 513419204
+    }
   ]
 }

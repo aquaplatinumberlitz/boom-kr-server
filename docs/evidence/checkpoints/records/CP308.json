@@ -141,15 +141,6 @@
       "limits": "Full local/history on committed exact head and CI before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP308-lprobe-b.json",
-      "bytes": 439319,
-      "sha256": "5d52d0d0e196562a225741077ac983bc30088a3a4a80938fab9d919938857a00",
-      "count": 1674
-    }
-  ],
   "delta": {
     "added": [
       "Native data/visible text and image acceptance for requested diagnostic matrix, measured CRC rejection and cache-wire equality."
@@ -244,6 +235,298 @@
       "path": "AGENTS.md",
       "state": "unchanged",
       "reason": "Không thay quy trình/acceptance/owner hoặc runtime policy."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "LPROBE308-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3516,
+      "sha256": "3317bff4ffb46695409d8566b4a111d44f36bd7ad977db0f486e2df86092aa77"
+    },
+    {
+      "id": "LPROBE308-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 262150,
+      "sha256": "6e51d5d35416d3e830151b709fe68276b22a7e8512f260b66ee7797e589a3e1d"
+    },
+    {
+      "id": "LPROBE308-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 156833,
+      "sha256": "4240eae0bee8990a4be223f0493c42490399c2274307f9e59e50f3beb1dc4571"
+    },
+    {
+      "id": "LPROBE308-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 82463,
+      "sha256": "61c3322dae98e17352929b584deb698a506a8a34c52dd1ec7964499a08526c21"
+    },
+    {
+      "id": "LPROBE308-00005",
+      "kind": "repository",
+      "path": "docs/content/client-language.md",
+      "bytes": 42417,
+      "sha256": "826a048df90c29eb89f3e52334aaf93653a3be98a55650f5a882460269b76eaa"
+    },
+    {
+      "id": "LPROBE308-00006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD120.json",
+      "bytes": 4292,
+      "sha256": "2e4f40895353c7d6fb37b8aa64ce3c5dcc6cf2a2994618e5b71c5ba41813aff0"
+    },
+    {
+      "id": "LPROBE308-00007",
+      "kind": "repository",
+      "path": "docs/evidence/l10n-probe-b.json",
+      "bytes": 18848,
+      "sha256": "86be93090d900aa3b3c6bf64584842adb92b866b9851e13b822799c095e8e12f"
+    },
+    {
+      "id": "LPROBE308-00008",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 274933,
+      "sha256": "2f2f76f6b7f98c6856fb01f3262d9e26b1a9b10b30e628e40279351d86807043"
+    },
+    {
+      "id": "LPROBE308-00009",
+      "kind": "local",
+      "path": "local/research/claude/codex-prompt-l10n-probe.md",
+      "bytes": 6477,
+      "sha256": "7d082df2c53d9baadae010e838f8839321906d9e841a423c866b070dc58b1f91"
+    },
+    {
+      "id": "LPROBE308-00012",
+      "kind": "local",
+      "path": "local/research/codex/cp308-docs-precheck.txt",
+      "bytes": 198,
+      "sha256": "8c02353a706a69270afd84bf5784d3e1cd4752aa9a329e5d62030b065edbd01d"
+    },
+    {
+      "id": "LPROBE308-00391",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-inputs-r1/build-verification.json",
+      "bytes": 19647,
+      "sha256": "38157c2e3684df10a33058093f592794ea376545c567d5fd14a540190eef34ea"
+    },
+    {
+      "id": "LPROBE308-00401",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-inputs-r1/manual-ui-review.json",
+      "bytes": 2703,
+      "sha256": "684882e24b4378c1a9b904c34f3e2250f73382120b506a6e560b00b2b1573e85"
+    },
+    {
+      "id": "LPROBE308-00402",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-inputs-r1/matrix-verification.json",
+      "bytes": 17048,
+      "sha256": "b3edeb58ec827a8c2470ca598fcfd5a7ce61dfe1d185a9ab5234db605b2f4f5c"
+    },
+    {
+      "id": "LPROBE308-00403",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-inputs-r1/reuse.json",
+      "bytes": 861,
+      "sha256": "e5d09636439d41e9377bbb9ef9d3069e910c5fd01738b4518c18cb37a5a9b746"
+    },
+    {
+      "id": "LPROBE308-00806",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-native-0c/verification.json",
+      "bytes": 3065,
+      "sha256": "07d82daeafa4a07a54059861a38f7a0fcf549ca12d8eb00c085936c0683afc02"
+    },
+    {
+      "id": "LPROBE308-00818",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-native-1/input-failure-verification.json",
+      "bytes": 705,
+      "sha256": "5255084875c569696a0b9babf2868ac5a301642b3d5ea932cad8a297f2373608"
+    },
+    {
+      "id": "LPROBE308-00843",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-native-1b/cache-wire-verification.json",
+      "bytes": 1741,
+      "sha256": "f99a491404d95b9243112172b3a5cbd2c094bc96102117ae46af792d62a7e888"
+    },
+    {
+      "id": "LPROBE308-00988",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-native-1b/verification.json",
+      "bytes": 3888,
+      "sha256": "9a819812b67bcd081d93cea3a0f5ff41bf6c887fba7a4a07c0c949c0fe81f508"
+    },
+    {
+      "id": "LPROBE308-01139",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-native-2/verification.json",
+      "bytes": 3886,
+      "sha256": "7eab066a5309fa20c5d97b222dd9f44f73daedf150d9141b9cec3f3e4decaace"
+    },
+    {
+      "id": "LPROBE308-01303",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-native-3/verification.json",
+      "bytes": 3731,
+      "sha256": "5e0db326ea7b841ee9e6c1aee6829ed5569cd14a1ce02896b8d5c0740f331880"
+    },
+    {
+      "id": "LPROBE308-01314",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-native-4/crc-verification.json",
+      "bytes": 3346,
+      "sha256": "f19510d120e79cfb84f025bd448187c57c329b79991a4ac7bca7e71bd0093523"
+    },
+    {
+      "id": "LPROBE308-01453",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-native-4/ssi-crc-byte-control.json",
+      "bytes": 1309,
+      "sha256": "1e5f96abf2ef0136515b39787a6d8b9a88206a8c0e38593032f4224fc0a364bc"
+    },
+    {
+      "id": "LPROBE308-01457",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-native-4/verification.json",
+      "bytes": 3063,
+      "sha256": "60673035e02561914b356afa89d303bdc1b4dea79a927d10a9977de2c291320f"
+    },
+    {
+      "id": "LPROBE308-01637",
+      "kind": "local",
+      "path": "local/research/codex/l-probe-b-native-5/verification.json",
+      "bytes": 3731,
+      "sha256": "c971bc0a7b5b0e26a9b086fdd18e9a44256d52a6d8eaa6b310043ce380123dd2"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/34cd60830c537abe3fdd73e23e1cbdd9fb83d04f0fb24a015c638438c930e3a8.jsonl",
+      "sha256": "34cd60830c537abe3fdd73e23e1cbdd9fb83d04f0fb24a015c638438c930e3a8",
+      "bytes": 8222,
+      "count": 45,
+      "files_bytes": 354878
+    },
+    {
+      "run": "local/research/codex/g1-camp08-c2s122-native-r2",
+      "path": "local/evidence-manifests/86d99674619be770521f96ed7c346e97ae365bcde8d06afffd4e6637633aa186.jsonl",
+      "sha256": "86d99674619be770521f96ed7c346e97ae365bcde8d06afffd4e6637633aa186",
+      "bytes": 1762,
+      "count": 7,
+      "files_bytes": 57420
+    },
+    {
+      "run": "local/research/codex/g1-camp08-condition-native-r6",
+      "path": "local/evidence-manifests/5e793058f2577afd0a9b379dbfd2e487deca0b8828c566af092182f5feba56fd.jsonl",
+      "sha256": "5e793058f2577afd0a9b379dbfd2e487deca0b8828c566af092182f5feba56fd",
+      "bytes": 2023,
+      "count": 8,
+      "files_bytes": 61176
+    },
+    {
+      "run": "local/research/codex/g1-camp08-seed-native-r1",
+      "path": "local/evidence-manifests/2c94e2808f52b5811bf768e74e450859b59a8475cb206b31c288db8ef803d03a.jsonl",
+      "sha256": "2c94e2808f52b5811bf768e74e450859b59a8475cb206b31c288db8ef803d03a",
+      "bytes": 11999,
+      "count": 54,
+      "files_bytes": 91992445
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-native-r1",
+      "path": "local/evidence-manifests/12169045ea35022d495021056c1dd63f533ff65b1c38e14f414c33b0aa2bf19c.jsonl",
+      "sha256": "12169045ea35022d495021056c1dd63f533ff65b1c38e14f414c33b0aa2bf19c",
+      "bytes": 68786,
+      "count": 302,
+      "files_bytes": 6418762680
+    },
+    {
+      "run": "local/research/codex/l-probe-b-inputs-r1",
+      "path": "local/evidence-manifests/1cbabfd7847a0c22d35ebd2c42546ffd627b58b308be3e438fc684a4fafe6bbd.jsonl",
+      "sha256": "1cbabfd7847a0c22d35ebd2c42546ffd627b58b308be3e438fc684a4fafe6bbd",
+      "bytes": 1870,
+      "count": 9,
+      "files_bytes": 28759
+    },
+    {
+      "run": "local/research/codex/l-probe-b-native-0",
+      "path": "local/evidence-manifests/ce3c1789ac72631ac5e12ec20351521c9260116150e0941723abe250ff7ae552.jsonl",
+      "sha256": "ce3c1789ac72631ac5e12ec20351521c9260116150e0941723abe250ff7ae552",
+      "bytes": 25924,
+      "count": 124,
+      "files_bytes": 267701042
+    },
+    {
+      "run": "local/research/codex/l-probe-b-native-0b",
+      "path": "local/evidence-manifests/f7cc4b73c5ac92d5a9f367c6cd1dcab5aad37faf14e8ede859f8fcfd6b279e35.jsonl",
+      "sha256": "f7cc4b73c5ac92d5a9f367c6cd1dcab5aad37faf14e8ede859f8fcfd6b279e35",
+      "bytes": 28244,
+      "count": 134,
+      "files_bytes": 268714819
+    },
+    {
+      "run": "local/research/codex/l-probe-b-native-0c",
+      "path": "local/evidence-manifests/38f9b26ac1f540bd3ae28a04945daa8f4be04b6bb935a8627fe3171d6e721048.jsonl",
+      "sha256": "38f9b26ac1f540bd3ae28a04945daa8f4be04b6bb935a8627fe3171d6e721048",
+      "bytes": 30668,
+      "count": 145,
+      "files_bytes": 270194238
+    },
+    {
+      "run": "local/research/codex/l-probe-b-native-1",
+      "path": "local/evidence-manifests/52686df32fd67a40e1fcd2aeb47c704c8cd3bfb90359178c55ca23e251654d69.jsonl",
+      "sha256": "52686df32fd67a40e1fcd2aeb47c704c8cd3bfb90359178c55ca23e251654d69",
+      "bytes": 5950,
+      "count": 30,
+      "files_bytes": 331436
+    },
+    {
+      "run": "local/research/codex/l-probe-b-native-1b",
+      "path": "local/evidence-manifests/0da02c3d2fa291321158815ee2f239aca24089ac330034d5c619ad3b7d828ffe.jsonl",
+      "sha256": "0da02c3d2fa291321158815ee2f239aca24089ac330034d5c619ad3b7d828ffe",
+      "bytes": 31439,
+      "count": 149,
+      "files_bytes": 269679113
+    },
+    {
+      "run": "local/research/codex/l-probe-b-native-2",
+      "path": "local/evidence-manifests/52bac3c4e1566e05b28b61e1b87da204975819d801806050bc10b73d465af596.jsonl",
+      "sha256": "52bac3c4e1566e05b28b61e1b87da204975819d801806050bc10b73d465af596",
+      "bytes": 31554,
+      "count": 150,
+      "files_bytes": 269770307
+    },
+    {
+      "run": "local/research/codex/l-probe-b-native-3",
+      "path": "local/evidence-manifests/133b662501cd6c7daf6134cddb8e9c43772dc05cc9dd7bc747dba503f90db747.jsonl",
+      "sha256": "133b662501cd6c7daf6134cddb8e9c43772dc05cc9dd7bc747dba503f90db747",
+      "bytes": 34333,
+      "count": 163,
+      "files_bytes": 381200777
+    },
+    {
+      "run": "local/research/codex/l-probe-b-native-4",
+      "path": "local/evidence-manifests/1aea7ddd33798f059134717948b81031669aa6d2fac40d9afa2f7848b2ca44f6.jsonl",
+      "sha256": "1aea7ddd33798f059134717948b81031669aa6d2fac40d9afa2f7848b2ca44f6",
+      "bytes": 31809,
+      "count": 151,
+      "files_bytes": 270500748
+    },
+    {
+      "run": "local/research/codex/l-probe-b-native-5",
+      "path": "local/evidence-manifests/81bc36385ab80572779b6817e41c15ac29415d668ffc33bcadc79c07935e9793.jsonl",
+      "sha256": "81bc36385ab80572779b6817e41c15ac29415d668ffc33bcadc79c07935e9793",
+      "bytes": 37705,
+      "count": 179,
+      "files_bytes": 949931792
     }
   ]
 }

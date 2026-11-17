@@ -1,0 +1,68 @@
+{
+  "schema": "kre-g1-item-scope-data-v1",
+  "source": "design",
+  "status": "design",
+  "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
+  "canonical": "docs/protocol/items-stats.md#g1-scoped-drops",
+  "data": {
+    "path": "rust/data/g1-item-drops.json",
+    "bytes": 12091,
+    "sha256": "1801fffa8f873d851a81a64322eb6ca48d4906bcb5f1c750a569349cf40cf384"
+  },
+  "maps": [
+    {
+      "map": "Camp08",
+      "rows": 20,
+      "disabled_positive_rows": 11,
+      "retained_positive_rows": 3,
+      "payload_sha256": "80dc0d8c655a83e7397fb9e0d7977788c42547b632c32edb85659bcbf2520144",
+      "source_profile_sha256": "e04a8df312232ccd14cfe876f8151b6ec259475b5cb48044614fb2f5a5c032e5"
+    },
+    {
+      "map": "Factory07",
+      "rows": 11,
+      "disabled_positive_rows": 10,
+      "retained_positive_rows": 1,
+      "payload_sha256": "91b9e2de2af0107c7bc8b24a8dd262dc71cb22fbcbb4cd97ffb360fcca0a086c",
+      "source_profile_sha256": "e9958793b3ad9094de103922dd4e2ee70c82f370dc29b197147a7b7df2935a34"
+    },
+    {
+      "map": "Forest07",
+      "rows": 12,
+      "disabled_positive_rows": 9,
+      "retained_positive_rows": 1,
+      "payload_sha256": "0b27ef0d70ba7550e8de7aa8c3bc22ac97f0ba1e05142d17553d499f121ed5c5",
+      "source_profile_sha256": "9d349a4213fefb0b17f0c8986ac91fb52602338b020a29537663d79749b6747c"
+    },
+    {
+      "map": "Village10",
+      "rows": 12,
+      "disabled_positive_rows": 8,
+      "retained_positive_rows": 3,
+      "payload_sha256": "62bb7b367159ca5724cccd57616d2e48cf678d5a5f45668a554a2d3ece2abfeb",
+      "source_profile_sha256": "130c85e55a44cd7b0253fdc790cbf03a14681898d73cf09889631882a2b4e49e"
+    },
+    {
+      "map": "Tomb12",
+      "rows": 25,
+      "disabled_positive_rows": 15,
+      "retained_positive_rows": 6,
+      "payload_sha256": "85d1b2902b478ea641209a8ef17e15ee9babe3e79c62f92f3f20409897adca95",
+      "source_profile_sha256": "d655c1b451ddb44dd3a791404f14d8c062ff8a8d5b36b7d18d09835dce17e7f7"
+    },
+    {
+      "map": "Patrit14",
+      "rows": 12,
+      "disabled_positive_rows": 9,
+      "retained_positive_rows": 2,
+      "payload_sha256": "b76892c6c7bc83b8db60a05b26901ee0c54dbc8328acc4f606fd90a933b9a94f",
+      "source_profile_sha256": "71238713acdf44e3cff194c0410a22688794e8e82ed1ca81a71016e76e71fc66"
+    }
+  ],
+  "policy": "Rust Profile::load thay bảng rơi sáu map bằng dữ liệu đã cắt; row nguồn và row trùng giữ nguyên, weight ngoài tập giữ là 0. Floor/list2 từ fixture chỉ nhận kind0..5 hoặc145, trước bind; policy item/needle tiếp tục kiểm riêng.",
+  "limits": [
+    "Không sửa pack/exporter, dữ liệu nguồn hoặc code/evidence nhóm đã tắt.",
+    "Weights là trọng số, không là phần trăm; không khẳng định thuật toán RNG server gốc hoặc thêm cơ chế random drop mới.",
+    "Fixture floor có pin được kiểm độc lập với bảng rơi; không suy một native map route đã kiểm từng row hoặc từng ô."
+  ]
+}

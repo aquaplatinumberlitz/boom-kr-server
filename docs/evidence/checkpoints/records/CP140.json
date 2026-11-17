@@ -138,15 +138,6 @@
       "limits": "Mechanicalchecks do notcertifyacceptance/gates."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP140-virtual-basic-cycles.json",
-      "bytes": 608611,
-      "sha256": "617e0c14d6020ef4e7545b64b57e4bcdc1ee391d9512bdd3f17cd96766ce653b",
-      "count": 2428
-    }
-  ],
   "delta": {
     "added": [
       "Actualvirtualhosts two basic result/reset cycles and finalroom render same-run; AUD043manual audit."
@@ -226,6 +217,160 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP140basicvirtual2cycles/partialscope/renderlimits/addressconfiggap/AUD043/issue14 synced beforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/actor-fields.json",
+      "bytes": 123386,
+      "sha256": "a2f544e3bb15ee8d259ae6a9b8ba13f4d044c9498b82ac50a23c06f50e0acc0d"
+    },
+    {
+      "id": "RUN-00005",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00006",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/basic-check.txt",
+      "bytes": 1710,
+      "sha256": "27f0b46d4f417a4c9a49b75f98f2c8075271589aba6c5d4b9dcbc93864e174f0"
+    },
+    {
+      "id": "RUN-00007",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/basic-verification.json",
+      "bytes": 156307,
+      "sha256": "d2478d9493e203475ee5399c3c731bc3c2cc566b9bcca7da39e5cde1191987c6"
+    },
+    {
+      "id": "RUN-00016",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/cp140-snapshot/docs/evidence/checkpoints/audits/AUD043.json",
+      "bytes": 4017,
+      "sha256": "03bd571dbaf2e904d753205f5f988b23dcc7103856a99cfbaa1ab23b3cb3dfd0"
+    },
+    {
+      "id": "RUN-01157",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/cycles/run.json",
+      "bytes": 160921,
+      "sha256": "f24fb76318391a951b3d2b987409581dba2bd4d176850f337b2045e70daae043"
+    },
+    {
+      "id": "RUN-01165",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/cycles/virtual-network.json",
+      "bytes": 14886,
+      "sha256": "442c9822c36f2bfd944ee58bc4953c43d18a59923e6ae040b47454fe46510248"
+    },
+    {
+      "id": "RUN-01172",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "b3d35f9be9e9f209e00c723971740fe598cca96bfa4b799699501cd5dc8e6974"
+    },
+    {
+      "id": "RUN-01174",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/flag-reader-verification.json",
+      "bytes": 1438043,
+      "sha256": "8e5dc034e8b70f14c4c0d70ea79ec8955526ba9e056399eba10ad84a8d99f87e"
+    },
+    {
+      "id": "RUN-01181",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "e7700cd0f386a5f66b93667ae6c97bd41c0dbada3441b34f96210f6243fb1f25"
+    },
+    {
+      "id": "RUN-01184",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/native-153.json",
+      "bytes": 13723,
+      "sha256": "5f9d5574a89a33c124dc3a28ac879e105b35ee0c64b7e5387688962b6144a633"
+    },
+    {
+      "id": "RUN-01185",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/native-reports.json",
+      "bytes": 99688,
+      "sha256": "1ad2aa35856aec92b08db6b6c1275b9a8bc96ae6f54a0649fc353a1764aea620"
+    },
+    {
+      "id": "RUN-01191",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/raw-seal.json",
+      "bytes": 235608,
+      "sha256": "31d25adce86df31fde16b164b6bd2e62b9ef020eb68c64bf1bac7ab2b1ba1e44"
+    },
+    {
+      "id": "RUN-01225",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/reuse-question.json",
+      "bytes": 2953,
+      "sha256": "89cb153061fe2a07d0357e01eb7c527c67444dce391c3533d50c86f128e89804"
+    },
+    {
+      "id": "RUN-01273",
+      "kind": "local",
+      "path": "local/research/codex/virtual-basic-cycles-r1/visual-review.json",
+      "bytes": 2850,
+      "sha256": "449a61326380c8a9051de92f43c63e6bf3eb07ff5460f5ba4a5c5cd7a96c6f4d"
+    },
+    {
+      "id": "RUN-02347",
+      "kind": "local",
+      "path": "local/research/codex/virtual-cycles-r1/partial-verification.json",
+      "bytes": 87639,
+      "sha256": "08d1f0254ceda8471d3f876f43f9ef2c235b102c3293add99671b47fc8e1deb2"
+    },
+    {
+      "id": "RUN-02349",
+      "kind": "local",
+      "path": "local/research/codex/virtual-cycles-r1/raw-seal.json",
+      "bytes": 209452,
+      "sha256": "5d7c8c15e907521942a875fec3db4c91d9387e243f5f34fcf88dc7e77412f954"
+    },
+    {
+      "id": "RUN-02428",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/server-tests.txt",
+      "bytes": 326,
+      "sha256": "f28b95e479069101d2aec9e3c4074164e368ada7e65cef0671c89402aab651a0"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/virtual-basic-cycles-r1",
+      "path": "local/evidence-manifests/ea0a678eeb54e485daa39251f5552c51f39adcbfc9fcdf8375831c4e34e4428c.jsonl",
+      "sha256": "ea0a678eeb54e485daa39251f5552c51f39adcbfc9fcdf8375831c4e34e4428c",
+      "bytes": 256072,
+      "count": 1258,
+      "files_bytes": 50071924
+    },
+    {
+      "run": "local/research/codex/virtual-cycles-r1",
+      "path": "local/evidence-manifests/d7bc8c0a044a18a66edae17853c05f7850fef835708498284d696aca8894dbe3.jsonl",
+      "sha256": "d7bc8c0a044a18a66edae17853c05f7850fef835708498284d696aca8894dbe3",
+      "bytes": 227293,
+      "count": 1150,
+      "files_bytes": 54257490
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/3fc265a233759577626d0271e0494aa6d3f82284d7a62f9e8345c703e29e947f.jsonl",
+      "sha256": "3fc265a233759577626d0271e0494aa6d3f82284d7a62f9e8345c703e29e947f",
+      "bytes": 434,
+      "count": 2,
+      "files_bytes": 124792
     }
   ]
 }

@@ -137,15 +137,6 @@
       "limits": "CP220EOFreceiverselectionblocked;nextsourcefirstpairharness/per-roletokenwithoutrepeats/VMgraph."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP221-auth-two-account.json",
-      "bytes": 124156,
-      "sha256": "622c7388af3c85d733e16cad101cacac84a4de878ce8c66630bb1f9c29f14503",
-      "count": 462
-    }
-  ],
   "delta": {
     "added": [
       "NativeA/Bseparatecorrectidentitybindingsandindependenttwo-accountwrongID-name/sourcekernelTCPpreservationcontrols;139rawsealed.",
@@ -253,6 +244,147 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP221facts/limits/native-vs-TCPboundary/current2actualnexttest/canonicalbacklinks synced;CP220record/AUD064unchanged,next224."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "AUTH221-00003",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/driver-correction.json",
+      "bytes": 688,
+      "sha256": "f9a7422659622e1a5c768c7b373c0b9dc6dad34d374e107561cf417587737a95"
+    },
+    {
+      "id": "AUTH221-00012",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/verification.json",
+      "bytes": 26503,
+      "sha256": "ca2cb2fde9344499dbd3928d2b1de3a09a2e2dad9b9a53e816cecfea6ad52376"
+    },
+    {
+      "id": "AUTH221-00020",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-identity-r2/raw-seal.json",
+      "bytes": 1658,
+      "sha256": "446321f46f0125410ac5ec8925ea00e97501d2f54bc2772e7ad3e4b4f4c484de"
+    },
+    {
+      "id": "AUTH221-00040",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-controls-r1/wrong-source-r2/raw-seal.json",
+      "bytes": 1648,
+      "sha256": "fe0cecc17f991c12a225760e5ccf8db895a240c7a8d34dd236dfca5fde702855"
+    },
+    {
+      "id": "AUTH221-00057",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/cp221-snapshot/docs/RESEARCH.md",
+      "bytes": 43756,
+      "sha256": "d1a4df36a95868e70ed3433ac6b6f66a76ff0cf3091865ee59c106f6c817fab3"
+    },
+    {
+      "id": "AUTH221-00063",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-delivery-r1/manual-review.json",
+      "bytes": 2646,
+      "sha256": "66f57f17830d0751d652e0cae2b200f3068973dea60db392d28f20661af03731"
+    },
+    {
+      "id": "AUTH221-00129",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-A/raw-seal.json",
+      "bytes": 12689,
+      "sha256": "7902245e09c268cfbcf20151bee093eb408fae80fcf196c7797fe510ef3952bc"
+    },
+    {
+      "id": "AUTH221-00308",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/native-B/raw-seal.json",
+      "bytes": 12903,
+      "sha256": "2f203a2ec9c814c8e250a1713d5318026c84d1fa1cd41cf300d0664758107992"
+    },
+    {
+      "id": "AUTH221-00421",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/source-first.json",
+      "bytes": 5902,
+      "sha256": "1a34ac111f5ea71e4ff7d4391d88ccd18537f4e29b6c930391aec9a9090c0909"
+    },
+    {
+      "id": "AUTH221-00432",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/two_account_service.py",
+      "bytes": 3363,
+      "sha256": "e4649d04cafefd92a81165538af4a9b61bb3215f16046e046cdd5c5846c780de"
+    },
+    {
+      "id": "AUTH221-00433",
+      "kind": "local",
+      "path": "local/research/codex/auth-two-account-r1/verification.json",
+      "bytes": 17567,
+      "sha256": "77c06f0cb11baaf06c82be2fb888102a4ec9425bb61ff0684ab7c08cb18107c4"
+    },
+    {
+      "id": "AUTH221-00441",
+      "kind": "local",
+      "path": "local/research/codex/cp221-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH221-00442",
+      "kind": "local",
+      "path": "local/research/codex/cp221-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "36485f300334590b3731bca134740e210fcdceb984a140d08b1c41c565e51bd6"
+    },
+    {
+      "id": "AUTH221-00448",
+      "kind": "local",
+      "path": "local/research/codex/cp221-issue14-updated.json",
+      "bytes": 37026,
+      "sha256": "fd68d53179708a3d9f5df2af3b31db7b9bd0175a68e060759a7068894214381f"
+    },
+    {
+      "id": "AUTH221-00451",
+      "kind": "local",
+      "path": "local/research/codex/cp221-issue285-updated.json",
+      "bytes": 10352,
+      "sha256": "c0c3e7e2a9fb3e0e794a26c32fb109cbec322fd2bf471a46ffcab8589edbebf8"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/dd14ddcafa5ab822979a87951627cc990767a0a93484af50124fec7eabebf887.jsonl",
+      "sha256": "dd14ddcafa5ab822979a87951627cc990767a0a93484af50124fec7eabebf887",
+      "bytes": 4869,
+      "count": 26,
+      "files_bytes": 6863650
+    },
+    {
+      "run": "local/research/codex/auth-two-account-controls-r1",
+      "path": "local/evidence-manifests/5a98ba5491492871b8aac5824752815f4e1524dd91b5a535530da30b1794ad72.jsonl",
+      "sha256": "5a98ba5491492871b8aac5824752815f4e1524dd91b5a535530da30b1794ad72",
+      "bytes": 10386,
+      "count": 47,
+      "files_bytes": 544460
+    },
+    {
+      "run": "local/research/codex/auth-two-account-delivery-r1",
+      "path": "local/evidence-manifests/5b22af061131dd64afc8b5aefa837903a995c1044464a43bfb4cdc998d4b61fd.jsonl",
+      "sha256": "5b22af061131dd64afc8b5aefa837903a995c1044464a43bfb4cdc998d4b61fd",
+      "bytes": 2175,
+      "count": 9,
+      "files_bytes": 1548351
+    },
+    {
+      "run": "local/research/codex/auth-two-account-r1",
+      "path": "local/evidence-manifests/c2dcacdcd5113ee10b93f7e9dc6846c384305cd0bf3a838b12f4ec85acd24e83.jsonl",
+      "sha256": "c2dcacdcd5113ee10b93f7e9dc6846c384305cd0bf3a838b12f4ec85acd24e83",
+      "bytes": 80892,
+      "count": 365,
+      "files_bytes": 6679412
     }
   ]
 }

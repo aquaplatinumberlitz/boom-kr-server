@@ -115,15 +115,6 @@
       "limits": "SeparateacceptanceperPLAN, notclosedfromR1g."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP270-r1g-admission.json",
-      "bytes": 702444,
-      "sha256": "1c5e1b7b7b6bda56b017b12299070954438c3ea7a5054803bae0f50fcdc6c11d",
-      "count": 2631
-    }
-  ],
   "delta": {
     "added": [
       "Configurabletransport/allowlistbudgetsindependentprofiles, boundedsource/admission/resourceguards.",
@@ -274,5 +265,239 @@
   ],
   "completed_feature_groups": [
     "r1g-admission-budgets-and-allowlist"
+  ],
+  "evidence": [
+    {
+      "id": "R1GCP270-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3892,
+      "sha256": "12c1e758e3031e5ec8c2e2d4101973fa5fa0a689b25f5481537f473d28a325b9"
+    },
+    {
+      "id": "R1GCP270-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 222273,
+      "sha256": "8fd423b17a32b1f61f39a30ea6448e083381e799fe6be55d5e904aed54cd5178"
+    },
+    {
+      "id": "R1GCP270-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 70249,
+      "sha256": "edaddbd6e73c07b42ab9465b347b7477467674ddd93c2db23fd635c080cbca24"
+    },
+    {
+      "id": "R1GCP270-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 139458,
+      "sha256": "7ce8200ee3c4801aa090882d7a9fab869188f6976623d8c9cc9ff9b04476a7fa"
+    },
+    {
+      "id": "R1GCP270-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 874145,
+      "sha256": "fdf5a86795173579e944535995bdd41b64dd83b2f3ee60ef76e7e59b319307da"
+    },
+    {
+      "id": "R1GCP270-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 56431,
+      "sha256": "f73f33918ef14abc1b7ecfbaf9accd9f28549277dc97d2641d844ceea4594042"
+    },
+    {
+      "id": "R1GCP270-00007",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 43019,
+      "sha256": "2cd5778620f151270b9b287142d09bc65a58d8fa8421e08cac12dc26423d49eb"
+    },
+    {
+      "id": "R1GCP270-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD087.json",
+      "bytes": 3533,
+      "sha256": "e486633b3ea19fb431a4449a0c15206701628656b2f317b91834af41fb84c7dc"
+    },
+    {
+      "id": "R1GCP270-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 284349,
+      "sha256": "97eba0664c85a60fa9e7e57bb00f422c31e5fcf487d7795c07b0bbadaf51982c"
+    },
+    {
+      "id": "R1GCP270-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42603,
+      "sha256": "8ffda75bcfd5a0aa5f8e2ffe2ff006d277c27b84895af111947742ee314a996c"
+    },
+    {
+      "id": "R1GCP270-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 64548,
+      "sha256": "ea521f9af3bbbea0fbf0a8adcc8b9ba60db8ead3d1bc127efc8bbb0300063b12"
+    },
+    {
+      "id": "R1GCP270-00012",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/r1g-admission.json",
+      "bytes": 3280,
+      "sha256": "7a52a3184f2325a1ad83086a2fc786e27b749f89a78c04efbe5e011cbe766a0c"
+    },
+    {
+      "id": "R1GCP270-00013",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 234419,
+      "sha256": "b652e08eb56eb437ee1cfae228168a1d8f7b9d9ffdfe721a6ce352a3852b68db"
+    },
+    {
+      "id": "R1GCP270-00057",
+      "kind": "local",
+      "path": "local/research/codex/r1g-admission-r2/verification.json",
+      "bytes": 1227,
+      "sha256": "6270ed42c4d592c4499a8041fd0770e3e4d4efc7ec9c55d26123b7e554a4dd6e"
+    },
+    {
+      "id": "R1GCP270-00061",
+      "kind": "local",
+      "path": "local/research/codex/r1g-build-r1.txt",
+      "bytes": 1499,
+      "sha256": "34148fc9e6745b096c6f0c5c15cbb1f24fe14ffa13ac35643492281194089a2c"
+    },
+    {
+      "id": "R1GCP270-00062",
+      "kind": "local",
+      "path": "local/research/codex/r1g-clippy-r1.txt",
+      "bytes": 1832,
+      "sha256": "147ddb86e29e376f14a832fb40cf03f2484dc4ff0041ed3a5c4b27cbf8cafe8d"
+    },
+    {
+      "id": "R1GCP270-00063",
+      "kind": "local",
+      "path": "local/research/codex/r1g-delivery-r1/selfcheck.json",
+      "bytes": 2231,
+      "sha256": "96f5c8064ca914072766e33ccb02b74acd1a1596b6e32872c786f2f2072a76d6"
+    },
+    {
+      "id": "R1GCP270-00077",
+      "kind": "local",
+      "path": "local/research/codex/r1g-delivery-r1/snapshot/rust/crates/kr-service/src/lib.rs",
+      "bytes": 45088,
+      "sha256": "10ab5c35d5955eb8dfc4cb89dbdd4e6ea84e5d985c42a210eb944bbf347e23fc"
+    },
+    {
+      "id": "R1GCP270-00078",
+      "kind": "local",
+      "path": "local/research/codex/r1g-delivery-r1/snapshot/rust/crates/kr-service/src/network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "R1GCP270-00080",
+      "kind": "local",
+      "path": "local/research/codex/r1g-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R1GCP270-00081",
+      "kind": "local",
+      "path": "local/research/codex/r1g-preparation-r1/sealed-source.json",
+      "bytes": 1321,
+      "sha256": "249ef9970d5e00c18c0939803c0ea217c9c1c9286e497a23b9571814f2dc6ced"
+    },
+    {
+      "id": "R1GCP270-01352",
+      "kind": "local",
+      "path": "local/research/codex/r1g-regression-r1-cwd-addendum.json",
+      "bytes": 1223,
+      "sha256": "65bcebd11e64a91d2019600243d55c36487c061795c56b51402267f9563fb2f5"
+    },
+    {
+      "id": "R1GCP270-02624",
+      "kind": "local",
+      "path": "local/research/codex/r1g-regression-r2/verification.json",
+      "bytes": 10613,
+      "sha256": "8df7c51bed2ce9423828e36684ae36a24d63d3aa139cb387c0f8c8533231feec"
+    },
+    {
+      "id": "R1GCP270-02625",
+      "kind": "local",
+      "path": "local/research/codex/r1g-regression-r2/wire-comparison.json",
+      "bytes": 6021,
+      "sha256": "5d55ead58ebf5ff50f116985b9eb5691632b7698a7fc48bba77783ff55c47c9e"
+    },
+    {
+      "id": "R1GCP270-02627",
+      "kind": "local",
+      "path": "local/research/codex/r1g-tests-r1.txt",
+      "bytes": 12062,
+      "sha256": "cb5001872420d4b1d47428da0962b1df6a17360b28d5ef9615c28d022901d3e1"
+    },
+    {
+      "id": "R1GCP270-02631",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 33303,
+      "sha256": "decf00e5441a9dfabd656f517b4c7130b7923914f57d6c4d967a3857439fb123"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/89781a4c1d3f8562849bfed198c03c4a3d40d6e6c95685ec586769d11b7d1688.jsonl",
+      "sha256": "89781a4c1d3f8562849bfed198c03c4a3d40d6e6c95685ec586769d11b7d1688",
+      "bytes": 3314,
+      "count": 18,
+      "files_bytes": 175389
+    },
+    {
+      "run": "local/research/codex/r1g-admission-r1",
+      "path": "local/evidence-manifests/dd45c99fc20f663cefd1afd6d7394ff4390e7a7f38cb0993ab4a9b9023be5367.jsonl",
+      "sha256": "dd45c99fc20f663cefd1afd6d7394ff4390e7a7f38cb0993ab4a9b9023be5367",
+      "bytes": 2963,
+      "count": 15,
+      "files_bytes": 49139
+    },
+    {
+      "run": "local/research/codex/r1g-admission-r2",
+      "path": "local/evidence-manifests/5dd1709a29d3a97433f16dd423bf8bd8faf3f0307acd0bf4b4930fafb14d0cca.jsonl",
+      "sha256": "5dd1709a29d3a97433f16dd423bf8bd8faf3f0307acd0bf4b4930fafb14d0cca",
+      "bytes": 3568,
+      "count": 18,
+      "files_bytes": 66205
+    },
+    {
+      "run": "local/research/codex/r1g-delivery-r1",
+      "path": "local/evidence-manifests/e7b01dc6ef6429a046369ea5ef512cb36a20c84d0e5fc967684820d40a15ad34.jsonl",
+      "sha256": "e7b01dc6ef6429a046369ea5ef512cb36a20c84d0e5fc967684820d40a15ad34",
+      "bytes": 3036,
+      "count": 14,
+      "files_bytes": 2081301
+    },
+    {
+      "run": "local/research/codex/r1g-regression-r1",
+      "path": "local/evidence-manifests/e681260317e6fb89290126b014c254118e31ea1e59ef8d10ead8d726b9059792.jsonl",
+      "sha256": "e681260317e6fb89290126b014c254118e31ea1e59ef8d10ead8d726b9059792",
+      "bytes": 276844,
+      "count": 1270,
+      "files_bytes": 659032447
+    },
+    {
+      "run": "local/research/codex/r1g-regression-r2",
+      "path": "local/evidence-manifests/30bde20bd9c1fed8b6def0430a1364fca01fb4f0f182711c09f02fe85173a240.jsonl",
+      "sha256": "30bde20bd9c1fed8b6def0430a1364fca01fb4f0f182711c09f02fe85173a240",
+      "bytes": 276868,
+      "count": 1270,
+      "files_bytes": 659039605
+    }
   ]
 }

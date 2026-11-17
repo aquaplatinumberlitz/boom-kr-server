@@ -126,15 +126,6 @@
       "limits": "Reviewwaived/Codexselfcheck/no independentapproval/gateclosure;fullhistory/exactheadrequired."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP243-rust-account-worker.json",
-      "bytes": 24645,
-      "sha256": "e53011bbd5fbd2e2fe98a430b1145cd45b10e469e4ee030f76e686c2e58dd7e4",
-      "count": 89
-    }
-  ],
   "delta": {
     "added": [
       "M5typedboundedStore-KDFworker/resultacceptance/exacttokencompensation/faultclosed-joined/5retainedDBcases."
@@ -263,6 +254,139 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP243M5workerbackendacceptedsubset/limits/nextidleTTL-rate;M3PR313merged/AUD069next244/PythonWIPkept."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST243-00003",
+      "kind": "local",
+      "path": "local/research/codex/cp243-docs-final.txt",
+      "bytes": 175,
+      "sha256": "6acea41f4cf6b35005f835699ed9be4f51036b157b11cafecfb23558eedce63a"
+    },
+    {
+      "id": "RUST243-00059",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-acceptance-r1/retained-db-review.json",
+      "bytes": 2089,
+      "sha256": "ba27c15cd4580250bddc5ac54a2865caed0ef9fed642759ae4f13c7e33f204a3"
+    },
+    {
+      "id": "RUST243-00060",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-acceptance-r1/verification.json",
+      "bytes": 16000,
+      "sha256": "041b5f0f173ac1f40e2d813fa30b5fc5555b2256ec8804f118562841ed9467d7"
+    },
+    {
+      "id": "RUST243-00061",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-build-final.txt",
+      "bytes": 166,
+      "sha256": "edcdf4265d08473531e53e32a690c6225464b90d16f48a41628cda375fb7cbfb"
+    },
+    {
+      "id": "RUST243-00062",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-clippy-r1.txt",
+      "bytes": 1034,
+      "sha256": "3cb9353800dd194162203399bdecc6fd37062742907944c51f81b44898dad53d"
+    },
+    {
+      "id": "RUST243-00064",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-clippy-r3.txt",
+      "bytes": 166,
+      "sha256": "75cb6998d53ae549f1db683ffe20f9cbeb820460ab60113761048dc819474bef"
+    },
+    {
+      "id": "RUST243-00065",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-delivery-r1/manual-acceptance.json",
+      "bytes": 2372,
+      "sha256": "448718a134b6f7c1254b7fada26e6e64425222f778d1590e8b6036a380a11aaf"
+    },
+    {
+      "id": "RUST243-00068",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 92867,
+      "sha256": "91c43aa10c5c715a5e67af30f496498d97c48607d3bb5a9413715d7d353ea762"
+    },
+    {
+      "id": "RUST243-00069",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-delivery-r1/snapshot/docs/PROTOCOL.md",
+      "bytes": 767532,
+      "sha256": "48115c60c378dd1d49fc2fb8e2850b3c7bcdfd0532da0c2411e692b1bfcc5f0a"
+    },
+    {
+      "id": "RUST243-00070",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-delivery-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 47152,
+      "sha256": "8605cba46f16c3d039abfcc16da67ae3032e68f441b2ff75264193d4487388a3"
+    },
+    {
+      "id": "RUST243-00073",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-delivery-r1/snapshot/docs/evidence/issue-reconciliation/review.json",
+      "bytes": 39419,
+      "sha256": "443a729e73ea92b7d6d5d44c2e7aad7686511da3575372e86bb70319fcf52b43"
+    },
+    {
+      "id": "RUST243-00078",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-delivery-r1/snapshot/rust/crates/kr-service/src/account_worker.rs",
+      "bytes": 11655,
+      "sha256": "654b5b9c1742480d809feb8617087b02d97b863932d5a50185c9b55e46580039"
+    },
+    {
+      "id": "RUST243-00080",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-delivery-r1/snapshot/rust/crates/kr-service/src/accounts.rs",
+      "bytes": 22900,
+      "sha256": "02581a929d53e4868721d6d113d1d118a97989d32b3b351bef410d8eb56fc532"
+    },
+    {
+      "id": "RUST243-00085",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST243-00086",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-worker-tests-final.txt",
+      "bytes": 5783,
+      "sha256": "25c013dce2cb207fea47da6e3b319ce5215d9227373873d5c4e27e81731d1122"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/42ee11e54349fadce9f534b27fe7e068e7ff7ab28b566300bb994edcd410a6ba.jsonl",
+      "sha256": "42ee11e54349fadce9f534b27fe7e068e7ff7ab28b566300bb994edcd410a6ba",
+      "bytes": 2821,
+      "count": 15,
+      "files_bytes": 199023
+    },
+    {
+      "run": "local/research/codex/rust-account-worker-acceptance-r1",
+      "path": "local/evidence-manifests/928655f5ac8aa61b0ea5a775395d4093a3da5089767b0011321138e6145a33b9.jsonl",
+      "sha256": "928655f5ac8aa61b0ea5a775395d4093a3da5089767b0011321138e6145a33b9",
+      "bytes": 11325,
+      "count": 46,
+      "files_bytes": 51786568
+    },
+    {
+      "run": "local/research/codex/rust-account-worker-delivery-r1",
+      "path": "local/evidence-manifests/76d55b4159bb8faebf404eb4959cf566522653e5ab175a35215e1b339b8079a6.jsonl",
+      "sha256": "76d55b4159bb8faebf404eb4959cf566522653e5ab175a35215e1b339b8079a6",
+      "bytes": 3097,
+      "count": 13,
+      "files_bytes": 900343
     }
   ]
 }

@@ -112,15 +112,6 @@
       "limits": "Full exact-head local/history/CI before merge separately."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP279-managed-duel.json",
-      "bytes": 854161,
-      "sha256": "91f4a4571131b96c45e176e47bf13d0fc022fcc524ce3b57022ae5b2beaa714b",
-      "count": 3321
-    }
-  ],
   "delta": {
     "added": [
       "Opt-in managed current-roster duel lifecycle, shared Hub epochs and scoped native proof."
@@ -221,5 +212,367 @@
   ],
   "completed_feature_groups": [
     "rust-managed-duel-lifecycle"
+  ],
+  "evidence": [
+    {
+      "id": "M7D279-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13422,
+      "sha256": "80b42ea1ec9c7d34767572dfafbae0e97faea1d402a3cdbcfa22dd30781cd7a3"
+    },
+    {
+      "id": "M7D279-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3837,
+      "sha256": "fad4809fe37b1744e48c0be8f154fd5326e09bd39896d7946b3e25c60d9dbb3e"
+    },
+    {
+      "id": "M7D279-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 241583,
+      "sha256": "8e72082a9b5b71c7975bd73ba54d3ab550d99c14a181087abab4eac2886945db"
+    },
+    {
+      "id": "M7D279-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 139305,
+      "sha256": "fedb617447deba2d7efbb3e5c0a5c0465692f997969567a655db439e60fdeee4"
+    },
+    {
+      "id": "M7D279-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 65017,
+      "sha256": "2cbcdce475a46948e4f8496a3d70fd9467a3b8dcf1cf5571f051339f8ccb6890"
+    },
+    {
+      "id": "M7D279-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "M7D279-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 30093,
+      "sha256": "f4ba4683defdf7ce6728f28b31f2fcc6794eb55c23224674fbcb33b401589f8d"
+    },
+    {
+      "id": "M7D279-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD095.json",
+      "bytes": 5712,
+      "sha256": "b8a09f620897ecfca4111276ea8c47b781614564abed8c288d90207ae77cdcb3"
+    },
+    {
+      "id": "M7D279-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m7b-duel-lifecycle.json",
+      "bytes": 5187,
+      "sha256": "b28403d455df01ba76a155101a5c1d7c3203651d590af68a7288102fc6bbd8fe"
+    },
+    {
+      "id": "M7D279-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 253593,
+      "sha256": "71d79ec2f6043e48b7bb3c1e5501bcb672d8af7273ef9a8539c0721fe6442327"
+    },
+    {
+      "id": "M7D279-00011",
+      "kind": "repository",
+      "path": "docs/protocol/room-membership.md",
+      "bytes": 112000,
+      "sha256": "7e9a4b76f29f52aa883735df6f87a226c99914a458021112620b04e2d947784f"
+    },
+    {
+      "id": "M7D279-00015",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-acceptance.json",
+      "bytes": 4105,
+      "sha256": "ce8254a4335925d61005994f03d2a8a7d5bb66679bbea78e1a70d93b215feab0"
+    },
+    {
+      "id": "M7D279-00021",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-build-r7.txt",
+      "bytes": 170,
+      "sha256": "7d4902905ca384952dd0b92b7dd3ee89e4e70bef28c1578a939cd054e612feb2"
+    },
+    {
+      "id": "M7D279-00022",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-catalog-final.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "M7D279-00030",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-clippy-r8.txt",
+      "bytes": 170,
+      "sha256": "1744b94f1735acf5737418b6ac3cb95647430f767883c20b034763e9b0e3b4a9"
+    },
+    {
+      "id": "M7D279-00031",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-docs-final.txt",
+      "bytes": 274,
+      "sha256": "e83e78ed773904912f6f4aaf2fc7cfcbe6fa17422bb79753933daf2fa86c0ba8"
+    },
+    {
+      "id": "M7D279-00032",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7D279-01223",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-native-r5/failure-verification.json",
+      "bytes": 1962,
+      "sha256": "c1b32262c28f295551b00fafd05cc77d49446cb2478f47b66bd36834264de782"
+    },
+    {
+      "id": "M7D279-01568",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-native-r6/failure-verification.json",
+      "bytes": 1830,
+      "sha256": "d3e41e7cfb09142fb1c11b3c81c84ee6de95b3e0cb4cbebf2c5d14307b5011ac"
+    },
+    {
+      "id": "M7D279-02299",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-native-r7/native/raw-seal.json",
+      "bytes": 30557,
+      "sha256": "80e81d0e8c1c2d9c6330312402beb91f168f2b46a3c2e98d9891c78caf495c6f"
+    },
+    {
+      "id": "M7D279-02304",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-native-r7/partial-verification.json",
+      "bytes": 9588,
+      "sha256": "96175557a3e50e00368b75409bfd23e947f567541789f57e0612235dc5f7d643"
+    },
+    {
+      "id": "M7D279-02637",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-native-r8/native/raw-seal.json",
+      "bytes": 21676,
+      "sha256": "1e56f55dcc6d9918814ad91415ebb1f7eecce60c112f29f1cd6d5e717c8115a1"
+    },
+    {
+      "id": "M7D279-02648",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-native-r8/verification.json",
+      "bytes": 1400,
+      "sha256": "8aaf9d4055f5823153f89962cad993c53fd30b6f6c9ca54a21a8bb0958e5b5fd"
+    },
+    {
+      "id": "M7D279-03069",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-synthetic-r6/export-seal.json",
+      "bytes": 20785,
+      "sha256": "5b4188d296cfa3bd777ab07a3913ec65bcb12410ff2b4caeb45428fcbc110578"
+    },
+    {
+      "id": "M7D279-03175",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-tests-r6.txt",
+      "bytes": 13935,
+      "sha256": "314844d7ff306ba5e351b31e378e462850cb8d4a3152b66fd4515656ee8ef3b6"
+    },
+    {
+      "id": "M7D279-03179",
+      "kind": "local",
+      "path": "local/research/codex/m7b-legacy-four-r1/export-seal.json",
+      "bytes": 21251,
+      "sha256": "72cac5d9493d54773dd3bb6318a126522b9062e95d33c0de766aba1b9c75ff62"
+    },
+    {
+      "id": "M7D279-03314",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 52814,
+      "sha256": "311c5d86f4ba46c44af4476946d604493c6f512ce6e7233555af63d0d87ef552"
+    },
+    {
+      "id": "M7D279-03315",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room.rs",
+      "bytes": 34620,
+      "sha256": "4533bc62e549079badb8a6eb7a335e9d73abf612741fe66c120329509204c25e"
+    },
+    {
+      "id": "M7D279-03316",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 129409,
+      "sha256": "bd75857ce1018fe63beb31f4c958a3c954b1d7bc842dd5149c2ad3854e0e54bc"
+    },
+    {
+      "id": "M7D279-03317",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "bytes": 7898,
+      "sha256": "364f689940d5208873b66539b79f04d084316901dd973a37a895792c2618a5e1"
+    },
+    {
+      "id": "M7D279-03318",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/round_epochs.rs",
+      "bytes": 1756,
+      "sha256": "a11896aff793db28e4aaa7da6c96a8a60a0b031ffa8d116e83c0f0bc3403ccde"
+    },
+    {
+      "id": "M7D279-03319",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "bytes": 7997,
+      "sha256": "0dcd687399bf39abe78c6dbf87fe81d9c7d5ce98b965c84e918297cb24437d67"
+    },
+    {
+      "id": "M7D279-03320",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "bytes": 16583,
+      "sha256": "ab5cd10724345aee606d5b643bc08d4d8e0b0e38f30a0816df9f1fa8446e0ad0"
+    },
+    {
+      "id": "M7D279-03321",
+      "kind": "repository",
+      "path": "tools/test_rust_managed_duel.py",
+      "bytes": 11965,
+      "sha256": "fac65487253659456070a717af6363fa772be9f49d391decb54bc54cba1d8826"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/2cfe0a1162cbfb0ff7a69a4ae7d02f17df0d3bcb2e475be5a2c9aa90678a0a23.jsonl",
+      "sha256": "2cfe0a1162cbfb0ff7a69a4ae7d02f17df0d3bcb2e475be5a2c9aa90678a0a23",
+      "bytes": 14310,
+      "count": 78,
+      "files_bytes": 519312
+    },
+    {
+      "run": "local/research/codex/m7b-duel-native-r1",
+      "path": "local/evidence-manifests/165ba74a3221fa98a74e503eb9fca5afa604b603a4f8fd4dcc886a937d2cfe04.jsonl",
+      "sha256": "165ba74a3221fa98a74e503eb9fca5afa604b603a4f8fd4dcc886a937d2cfe04",
+      "bytes": 50956,
+      "count": 244,
+      "files_bytes": 219330548
+    },
+    {
+      "run": "local/research/codex/m7b-duel-native-r2",
+      "path": "local/evidence-manifests/17db548c7b2c65e569dadb2b46cd1f78cfb88f99c4e058fe277b7734d3bfb0d3.jsonl",
+      "sha256": "17db548c7b2c65e569dadb2b46cd1f78cfb88f99c4e058fe277b7734d3bfb0d3",
+      "bytes": 50734,
+      "count": 243,
+      "files_bytes": 219119043
+    },
+    {
+      "run": "local/research/codex/m7b-duel-native-r3",
+      "path": "local/evidence-manifests/82136f097654aef00457d120732d532cdc0045a5450fe4367ea41a7c275e4506.jsonl",
+      "sha256": "82136f097654aef00457d120732d532cdc0045a5450fe4367ea41a7c275e4506",
+      "bytes": 63444,
+      "count": 304,
+      "files_bytes": 224927160
+    },
+    {
+      "run": "local/research/codex/m7b-duel-native-r4",
+      "path": "local/evidence-manifests/07e11a016581fe1629a8b67bb7a33b35027453988819210d257259e5f595cbd5.jsonl",
+      "sha256": "07e11a016581fe1629a8b67bb7a33b35027453988819210d257259e5f595cbd5",
+      "bytes": 80873,
+      "count": 385,
+      "files_bytes": 233452793
+    },
+    {
+      "run": "local/research/codex/m7b-duel-native-r5",
+      "path": "local/evidence-manifests/86544c474f0d7ccc8c7fdc05e9bc585b85db4aaa79df47c6fd83ebe788a38e92.jsonl",
+      "sha256": "86544c474f0d7ccc8c7fdc05e9bc585b85db4aaa79df47c6fd83ebe788a38e92",
+      "bytes": 71592,
+      "count": 342,
+      "files_bytes": 226930995
+    },
+    {
+      "run": "local/research/codex/m7b-duel-native-r6",
+      "path": "local/evidence-manifests/22a55dd1fb5b182cc1840ae387f12be5cf5dea1215e49ac2dd8c370a064a7bad.jsonl",
+      "sha256": "22a55dd1fb5b182cc1840ae387f12be5cf5dea1215e49ac2dd8c370a064a7bad",
+      "bytes": 77754,
+      "count": 370,
+      "files_bytes": 230634028
+    },
+    {
+      "run": "local/research/codex/m7b-duel-native-r7",
+      "path": "local/evidence-manifests/2f3a4a39e720d355f2015643fc28a788bd2ed69e418821c76fe4c5c2c32faa71.jsonl",
+      "sha256": "2f3a4a39e720d355f2015643fc28a788bd2ed69e418821c76fe4c5c2c32faa71",
+      "bytes": 78435,
+      "count": 373,
+      "files_bytes": 231305324
+    },
+    {
+      "run": "local/research/codex/m7b-duel-native-r8",
+      "path": "local/evidence-manifests/5348c151e78560dff24823c32ccc210c2fe0039213b32235a7f99dd9bf0d8472.jsonl",
+      "sha256": "5348c151e78560dff24823c32ccc210c2fe0039213b32235a7f99dd9bf0d8472",
+      "bytes": 69515,
+      "count": 333,
+      "files_bytes": 225553030
+    },
+    {
+      "run": "local/research/codex/m7b-duel-synthetic-r2",
+      "path": "local/evidence-manifests/4f1722eb378f74fc80054d08e873d3d48d9c3c7bd437b3373d4a83e16a312ad2.jsonl",
+      "sha256": "4f1722eb378f74fc80054d08e873d3d48d9c3c7bd437b3373d4a83e16a312ad2",
+      "bytes": 20982,
+      "count": 103,
+      "files_bytes": 109333868
+    },
+    {
+      "run": "local/research/codex/m7b-duel-synthetic-r3",
+      "path": "local/evidence-manifests/ec3939cefd1e2345f04256ea505ef3080eb35d14430c546417b324908d5d054e.jsonl",
+      "sha256": "ec3939cefd1e2345f04256ea505ef3080eb35d14430c546417b324908d5d054e",
+      "bytes": 20973,
+      "count": 103,
+      "files_bytes": 109355006
+    },
+    {
+      "run": "local/research/codex/m7b-duel-synthetic-r4",
+      "path": "local/evidence-manifests/57d65a7221a476b585a0b374a2857115183f7c3884fef935fc6e8d424230a7ec.jsonl",
+      "sha256": "57d65a7221a476b585a0b374a2857115183f7c3884fef935fc6e8d424230a7ec",
+      "bytes": 20777,
+      "count": 102,
+      "files_bytes": 109334178
+    },
+    {
+      "run": "local/research/codex/m7b-duel-synthetic-r5",
+      "path": "local/evidence-manifests/c1f333991a9f6e17d6730c3657c99f2cc7d03d03c9a9f2ab0bb1499f7d554b2c.jsonl",
+      "sha256": "c1f333991a9f6e17d6730c3657c99f2cc7d03d03c9a9f2ab0bb1499f7d554b2c",
+      "bytes": 20777,
+      "count": 102,
+      "files_bytes": 109091801
+    },
+    {
+      "run": "local/research/codex/m7b-duel-synthetic-r6",
+      "path": "local/evidence-manifests/6e972377aac226e6bc6fb665b848df282e4f5758c7ec6e1c4fbf2b42dc854160.jsonl",
+      "sha256": "6e972377aac226e6bc6fb665b848df282e4f5758c7ec6e1c4fbf2b42dc854160",
+      "bytes": 20777,
+      "count": 102,
+      "files_bytes": 109120029
+    },
+    {
+      "run": "local/research/codex/m7b-legacy-four-r1",
+      "path": "local/evidence-manifests/2c9f9070e16485cefbce41ff2a089b2994968614b75d67750036a12328826cef.jsonl",
+      "sha256": "2c9f9070e16485cefbce41ff2a089b2994968614b75d67750036a12328826cef",
+      "bytes": 21302,
+      "count": 103,
+      "files_bytes": 59604428
+    }
   ]
 }

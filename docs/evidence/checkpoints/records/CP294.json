@@ -109,15 +109,6 @@
       "limits": "This new exact head/local/history/CI required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP294-match-journal-serving.json",
-      "bytes": 392887,
-      "sha256": "847989f90fcbcafeb4eb7e57059cb5eed4f7f54afbbbd810b96f985ac2b560f3",
-      "count": 1472
-    }
-  ],
   "delta": {
     "added": [
       "Bounded stable-event match journal with commit/readback gates before121/175 and no room lock over await.",
@@ -227,5 +218,340 @@
   ],
   "completed_feature_groups": [
     "rust-m6-match-journal-serving"
+  ],
+  "evidence": [
+    {
+      "id": "M6JOURNAL294-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "M6JOURNAL294-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3753,
+      "sha256": "33cd8d14c73e909742162b53f44be459a730f2f0d9b8e1596904970626758f69"
+    },
+    {
+      "id": "M6JOURNAL294-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 254619,
+      "sha256": "0545c1d2bd92f75e471b846fb85b786d832659dc6f3dbe759b91a25eed812aea"
+    },
+    {
+      "id": "M6JOURNAL294-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 150234,
+      "sha256": "bd248e291cd9700baef8d77802e6b909b97804d0029a845992267bf03700b254"
+    },
+    {
+      "id": "M6JOURNAL294-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 79270,
+      "sha256": "2574f6af158620636103661c47c420119ac08c448518a7955d6a009038732fc8"
+    },
+    {
+      "id": "M6JOURNAL294-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66580,
+      "sha256": "b20f33e12da3eb1769e94bed682cf7c9f775f3a79174c668c3504d71c3599e11"
+    },
+    {
+      "id": "M6JOURNAL294-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 35690,
+      "sha256": "209c99270c86729f4cef2b0a4080554b45d7e9e2db90cf0c761a82cb93a61fc8"
+    },
+    {
+      "id": "M6JOURNAL294-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD110.json",
+      "bytes": 5504,
+      "sha256": "3149c39187f5cdc9bfc4ada667a2be153baa865b4afb264ce7cde1af0450b511"
+    },
+    {
+      "id": "M6JOURNAL294-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m6-journal-serving.json",
+      "bytes": 8104,
+      "sha256": "cc63e725e59682aef41cbb7981ee13f2c4e385a98a4f4ebe06d370e132a803d6"
+    },
+    {
+      "id": "M6JOURNAL294-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 267275,
+      "sha256": "5e821a6542d4047df95eba4a22a6b44807f64ec081157456ec79164fdcc43156"
+    },
+    {
+      "id": "M6JOURNAL294-00011",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 81015,
+      "sha256": "d69de310e5f7d498d7b36689cdd0d5b7afc14a54cc22db2bc75d86e83cc0532f"
+    },
+    {
+      "id": "M6JOURNAL294-00012",
+      "kind": "repository",
+      "path": "docs/protocol/life-results.md",
+      "bytes": 104937,
+      "sha256": "e97a5007b36043c405e489e1294c2d962ef31b03af6cf9444a6823d841822cda"
+    },
+    {
+      "id": "M6JOURNAL294-00017",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-build-r2.txt",
+      "bytes": 171,
+      "sha256": "94a6bc3dc7540d5aaa14631e5f08ea2a2ea264cf0e6a33d6d720f45a5cd07e13"
+    },
+    {
+      "id": "M6JOURNAL294-00020",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-clippy-r2.txt",
+      "bytes": 170,
+      "sha256": "6bca9f9ceece9ea328fe8068202937b28e4ca4f4c1bcab8f32c6e570ede02deb"
+    },
+    {
+      "id": "M6JOURNAL294-00022",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-fmt-r2.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6JOURNAL294-00023",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-history-cli-r1/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "3efcc13c71899f4b8ecdf768df44f67c331c5deb05bc9948ca47d9b1f4886725"
+    },
+    {
+      "id": "M6JOURNAL294-00024",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-history-cli-r1/verification.json",
+      "bytes": 9049,
+      "sha256": "7859104fea7400444bd9ed5fc0b186c87f01e8fb7d105ebd34e71df5ed6f422d"
+    },
+    {
+      "id": "M6JOURNAL294-00419",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-native-r1/journal-native-verification.json",
+      "bytes": 243803,
+      "sha256": "9ba062ec928633d7630758f3eb736915666d1b68ab612503dd8ab0cad7f4b508"
+    },
+    {
+      "id": "M6JOURNAL294-00498",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-native-r1/native/raw-seal.json",
+      "bytes": 15677,
+      "sha256": "3548088ee89f5dbebecb1c25db625ddc9fa1a8dddedd9b19a2917dcf51ede8c8"
+    },
+    {
+      "id": "M6JOURNAL294-00908",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-native-r2/journal-native-verification.json",
+      "bytes": 243795,
+      "sha256": "7a719065d6c1c99ae0f17355a510813cfc625bff2a224832fdbbd6ff0df61a1f"
+    },
+    {
+      "id": "M6JOURNAL294-00987",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-native-r2/native/raw-seal.json",
+      "bytes": 15677,
+      "sha256": "ce8f29651753e1df2d6b1680befec88fbc2fb5deb88dc62cec745aaf69898eb2"
+    },
+    {
+      "id": "M6JOURNAL294-01013",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-retained-r1/seal.json",
+      "bytes": 2377,
+      "sha256": "4dd38007bdf28be6e2a48e584cc6edc9544188290234e6bba1437594ff02f54f"
+    },
+    {
+      "id": "M6JOURNAL294-01153",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-serving-kill-result-r3/verification.json",
+      "bytes": 1915,
+      "sha256": "c597a330b601973fffb104fb06478cb650e1e5dff6c1e68eab7f4361506f0eb3"
+    },
+    {
+      "id": "M6JOURNAL294-01162",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-serving-kill-start-r2/kill-control.json",
+      "bytes": 527,
+      "sha256": "8a133c83adb94ce3fce1843823b6e3bff5eef8c01f62b5d275cac6b659a624fc"
+    },
+    {
+      "id": "M6JOURNAL294-01309",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-serving-kill-start-recovery-r1/verification.json",
+      "bytes": 1741,
+      "sha256": "5daeea155ff7c71015922bfdb77537a079a4a40e054217df7e6d30f5be78da7e"
+    },
+    {
+      "id": "M6JOURNAL294-01314",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-serving-tcp-r1/raw-seal.json",
+      "bytes": 28135,
+      "sha256": "bef427366582bbc5a556b79b60da11c08e0403485575f11843faa01081b4238b"
+    },
+    {
+      "id": "M6JOURNAL294-01443",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-serving-tcp-r1/tcp/verification.json",
+      "bytes": 1573,
+      "sha256": "b75eeffbd2656c4b58dc35d260100b98ddb7493c52375dddebdcd35a80a6f247"
+    },
+    {
+      "id": "M6JOURNAL294-01449",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-workspace-r2.txt",
+      "bytes": 20888,
+      "sha256": "78501d0715950268fd8d46b439c715bd6fb666cd3bf36e79a2799e6932b4a961"
+    },
+    {
+      "id": "M6JOURNAL294-01450",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-delivery-receipt.json",
+      "bytes": 1084,
+      "sha256": "2ee8d9be178285fe4b23709a07cdced1a79940cb56e404cfa49a50fcafad275f"
+    },
+    {
+      "id": "M6JOURNAL294-01465",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 35265,
+      "sha256": "7a59852e1d836e92afff5eda1bd5c82a920fb48d1ff86d073f0911e2dd06d9e5"
+    },
+    {
+      "id": "M6JOURNAL294-01466",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 24601,
+      "sha256": "1a3521a3a59861b4b3ea5f92bf88957fa038b02480c1abca12a5ed25c588a3f9"
+    },
+    {
+      "id": "M6JOURNAL294-01467",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 64489,
+      "sha256": "0fdb908f81db37cae82d9ec5292928702cbfb02f06a249f83d8d3a8fb5d5756e"
+    },
+    {
+      "id": "M6JOURNAL294-01468",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/match_journal.rs",
+      "bytes": 20860,
+      "sha256": "88d6b2c58f3742cda01c87956148d85796e77a22464d8470f697137d3f5d938f"
+    },
+    {
+      "id": "M6JOURNAL294-01469",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 167362,
+      "sha256": "31c164bd3999623877e7aff5cd744fc2fa30b37edf52403979232b272441ccfc"
+    },
+    {
+      "id": "M6JOURNAL294-01470",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "bytes": 11937,
+      "sha256": "1fa5def859fc7ac0297c7b7a7b47fa060bad6edb3706ca448513e7a3135c999e"
+    },
+    {
+      "id": "M6JOURNAL294-01471",
+      "kind": "repository",
+      "path": "tools/README.md",
+      "bytes": 29096,
+      "sha256": "ceafd58161ca74028d02f629de210f6a5742f98e85f52fcaea9c3512bdff5892"
+    },
+    {
+      "id": "M6JOURNAL294-01472",
+      "kind": "repository",
+      "path": "tools/test_rust_selected_players.py",
+      "bytes": 18880,
+      "sha256": "f3e56070722b811cc302ce114a413e0988993b50c9ec6144c7cacc42e3c2f3d7"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/e36b18bcb289de38c4cac4659128baf50be2e0689b738f663b8fd57af0db53ca.jsonl",
+      "sha256": "e36b18bcb289de38c4cac4659128baf50be2e0689b738f663b8fd57af0db53ca",
+      "bytes": 7596,
+      "count": 39,
+      "files_bytes": 355688
+    },
+    {
+      "run": "local/research/codex/m6-journal-native-r1",
+      "path": "local/evidence-manifests/6faef2d7d4a41068d6290038d66ae2070d7c38ac515c026df9cd852952dc5ae3.jsonl",
+      "sha256": "6faef2d7d4a41068d6290038d66ae2070d7c38ac515c026df9cd852952dc5ae3",
+      "bytes": 103578,
+      "count": 478,
+      "files_bytes": 532369456
+    },
+    {
+      "run": "local/research/codex/m6-journal-native-r2",
+      "path": "local/evidence-manifests/a875390d21556d49aecabf2305c5fc9050872462ead7519b9090943e87aa35b9.jsonl",
+      "sha256": "a875390d21556d49aecabf2305c5fc9050872462ead7519b9090943e87aa35b9",
+      "bytes": 105551,
+      "count": 487,
+      "files_bytes": 532433359
+    },
+    {
+      "run": "local/research/codex/m6-journal-retained-r1",
+      "path": "local/evidence-manifests/5af4d4bc579db35523e7926cbd141c4325fde8c35d53e3eccdfceaddf228a6a1.jsonl",
+      "sha256": "5af4d4bc579db35523e7926cbd141c4325fde8c35d53e3eccdfceaddf228a6a1",
+      "bytes": 2357,
+      "count": 10,
+      "files_bytes": 521439
+    },
+    {
+      "run": "local/research/codex/m6-journal-serving-kill-result-r3",
+      "path": "local/evidence-manifests/13dedaf4b4f1476321b5b2825aa8aaf579219f1ed3a5787488c6cb6d51f5cbd7.jsonl",
+      "sha256": "13dedaf4b4f1476321b5b2825aa8aaf579219f1ed3a5787488c6cb6d51f5cbd7",
+      "bytes": 31389,
+      "count": 139,
+      "files_bytes": 204898070
+    },
+    {
+      "run": "local/research/codex/m6-journal-serving-kill-start-r1",
+      "path": "local/evidence-manifests/87c26d4c92d78aaedfd8ea58fcf8fcabd553dfa89742c003d9d60851a6d7ce0c.jsonl",
+      "sha256": "87c26d4c92d78aaedfd8ea58fcf8fcabd553dfa89742c003d9d60851a6d7ce0c",
+      "bytes": 940,
+      "count": 4,
+      "files_bytes": 7509
+    },
+    {
+      "run": "local/research/codex/m6-journal-serving-kill-start-r2",
+      "path": "local/evidence-manifests/a6a30c5aa003fbcc2e764b501286fec044ad016d5f94500c666b32d88f8ba2d5.jsonl",
+      "sha256": "a6a30c5aa003fbcc2e764b501286fec044ad016d5f94500c666b32d88f8ba2d5",
+      "bytes": 31034,
+      "count": 138,
+      "files_bytes": 205088647
+    },
+    {
+      "run": "local/research/codex/m6-journal-serving-kill-start-recovery-r1",
+      "path": "local/evidence-manifests/2c91e2315936a1218995e826f9d4a5a1fca77ac85627f2db21f328e0887cf7e8.jsonl",
+      "sha256": "2c91e2315936a1218995e826f9d4a5a1fca77ac85627f2db21f328e0887cf7e8",
+      "bytes": 2099,
+      "count": 9,
+      "files_bytes": 246518
+    },
+    {
+      "run": "local/research/codex/m6-journal-serving-tcp-r1",
+      "path": "local/evidence-manifests/245031d5fa2562c6b6df6300b10551109ef9d6bd5291f2a88484bd65e97b84e4.jsonl",
+      "sha256": "245031d5fa2562c6b6df6300b10551109ef9d6bd5291f2a88484bd65e97b84e4",
+      "bytes": 28533,
+      "count": 131,
+      "files_bytes": 204234083
+    }
   ]
 }

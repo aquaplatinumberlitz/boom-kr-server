@@ -136,15 +136,6 @@
       "limits": "Explicitunknowns; thismeasurementdoesnotfulfillfullauthacceptance."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP214-auth-token-request.json",
-      "bytes": 159356,
-      "sha256": "3970eabf17f93a616538686ef0d10d54e5b2bb11c710b5df86b0645985b42d78",
-      "count": 587
-    }
-  ],
   "delta": {
     "added": [
       "Exactlocaltoken13byte/count1–2 actualC2S1recordlayout andnativewriter/framercontrols.",
@@ -251,6 +242,138 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP214targetedtokenrecord/limits/REnexttest/PLANorder/catalog/backlinks beforecomplete;CP213planningdelivered/AUD062next216unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "AUTH214-00003",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/bounded-native-locators.json",
+      "bytes": 6222,
+      "sha256": "1b55bc6735f6fcaf274ce47f54d686756b48200378255e6b56b0a787bf627a01"
+    },
+    {
+      "id": "AUTH214-00004",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/capture-verification.json",
+      "bytes": 10802,
+      "sha256": "db69d42843cd0008ab197a982c103edb5009bd2220e01e6b967c229f82a067f9"
+    },
+    {
+      "id": "AUTH214-00009",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/code-range-equivalence.json",
+      "bytes": 2335,
+      "sha256": "96c2bcb5846df29d678cad78730a7d897d7a15ebc00bf23372d4d1cad3ca399c"
+    },
+    {
+      "id": "AUTH214-00012",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/cp214-snapshot/docs/PLAN.md",
+      "bytes": 85447,
+      "sha256": "f2dd713f2b4f622fbd1876c33c524c715df8cdaca6624b78b9a79d69348c90c7"
+    },
+    {
+      "id": "AUTH214-00014",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/cp214-snapshot/docs/RESEARCH.md",
+      "bytes": 43451,
+      "sha256": "4badbfcef45ec8e05adfa52c9e191f26d4ef642f7a7f24a9adee7b092f49a2c1"
+    },
+    {
+      "id": "AUTH214-00020",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/manual-review.json",
+      "bytes": 2081,
+      "sha256": "9702b2adcf3af95cf6068227e13d7510e84251e7609dc56bdc532f2da89c5a9c"
+    },
+    {
+      "id": "AUTH214-00022",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/native-frame-verification.json",
+      "bytes": 2643,
+      "sha256": "c7dba6a92901129fd7a305252064786d0daefc1535af4c91c99c2fe5267fe6bc"
+    },
+    {
+      "id": "AUTH214-00024",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/oracle-corrections.json",
+      "bytes": 539,
+      "sha256": "3a54b20d75a721b3fd47fe3fd2e8ce7c0389b828be2fe92141602243bf3f40ca"
+    },
+    {
+      "id": "AUTH214-00025",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/source-first.json",
+      "bytes": 5790,
+      "sha256": "6d60eeafd1d2aaabf17e423851bd079c8f17d9c99d648d8fecd91b717e290911"
+    },
+    {
+      "id": "AUTH214-00101",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/token-a/raw-seal.json",
+      "bytes": 11956,
+      "sha256": "31ca2ec41a73c7c39d68af77bbb82e91e440bc2d069d89a5bc5e0cbfffbb0999"
+    },
+    {
+      "id": "AUTH214-00273",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/token-b/raw-seal.json",
+      "bytes": 11955,
+      "sha256": "6c4851cf52fb0930db725a91999063fe81edf34563cfdca48c54fde07e89c5dd"
+    },
+    {
+      "id": "AUTH214-00446",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/two-token/raw-seal.json",
+      "bytes": 12061,
+      "sha256": "36d02580dcf3a32fc821b2d5a220edd151c91652f12d2674ddd13529ca855bee"
+    },
+    {
+      "id": "AUTH214-00566",
+      "kind": "local",
+      "path": "local/research/codex/auth-token-request-r1/writer-oracle.json",
+      "bytes": 4530,
+      "sha256": "2bf38e9ba296d09fe16d00b5d3a00ab28c79ff32200488690cfbbb9adc625733"
+    },
+    {
+      "id": "AUTH214-00575",
+      "kind": "local",
+      "path": "local/research/codex/cp214-docs-pre-record.txt",
+      "bytes": 175,
+      "sha256": "071b3411549cfc9195724588b4863de1424186300352568f19101b7299291ef8"
+    },
+    {
+      "id": "AUTH214-00579",
+      "kind": "local",
+      "path": "local/research/codex/cp214-issue14-updated.json",
+      "bytes": 36500,
+      "sha256": "8be149afcf7b9296bcbd1ba1c172c88c5531e0858c2afe83bef05808972d646a"
+    },
+    {
+      "id": "AUTH214-00582",
+      "kind": "local",
+      "path": "local/research/codex/cp214-issue285-updated.json",
+      "bytes": 9826,
+      "sha256": "b7b8e830854ecc42a33a753fa28087bfa429f46711359b10bd92a6e606e5a58a"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/91a4258c58484271bc825d697ba009f77f1665999d70a4f489fadc7f94357ec8.jsonl",
+      "sha256": "91a4258c58484271bc825d697ba009f77f1665999d70a4f489fadc7f94357ec8",
+      "bytes": 3710,
+      "count": 20,
+      "files_bytes": 6659760
+    },
+    {
+      "run": "local/research/codex/auth-token-request-r1",
+      "path": "local/evidence-manifests/5fe632a43a5ee585cedca258aaeb1c391c6b8c3021255f70413593194c9f174c.jsonl",
+      "sha256": "5fe632a43a5ee585cedca258aaeb1c391c6b8c3021255f70413593194c9f174c",
+      "bytes": 123173,
+      "count": 551,
+      "files_bytes": 20236112
     }
   ]
 }

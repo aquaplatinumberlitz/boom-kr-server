@@ -1299,7 +1299,8 @@
       "issues": [
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/457"
       ]
     },
     {
@@ -3772,7 +3773,8 @@
           "docs/evidence/rust-service/g1-punch-down.json",
           "docs/evidence/item-families/punch-horizontal-action.json",
           "docs/evidence/rust-service/g1-punch-horizontal.json",
-          "docs/evidence/item-families/punch-selector2-action.json"
+          "docs/evidence/item-families/punch-selector2-action.json",
+          "docs/evidence/rust-service/g1-punch-matrix.json"
         ]
       },
       "coverage": {

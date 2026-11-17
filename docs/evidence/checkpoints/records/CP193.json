@@ -182,15 +182,6 @@
       "limits": "NEXT-K6C-MAPPED-CYCLES active, noInternetgateclosure."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP193-NAT-endpoints.json",
-      "bytes": 1011593,
-      "sha256": "5588a099b0ffdf70d09fc8383dd6f2434f719325815b9b3d5faa31f486b25e9b",
-      "count": 3999
-    }
-  ],
   "delta": {
     "added": [
       "ControlledsymmetricSNATactualnativeAPIandexplicitmapped153/DNATnativepositivevsprivate153negative, boundedmovementbothdirections.",
@@ -285,6 +276,784 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP193NATendpointcontrol/limits/sourcefirst/nextNATcycles/delivery synchronizedbeforecomplete; no newgate/auditreset."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "NAT193-00764",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-downstream-r1/trace-verification.json",
+      "bytes": 15011,
+      "sha256": "c599f8d6adf4592ef0bada33940bcad3b8bbb690abcbab823151b6121b3a14a0"
+    },
+    {
+      "id": "NAT193-01419",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-endpoint-mapped-r1/cycles/virtual-network.json",
+      "bytes": 34487,
+      "sha256": "1860b10624ad4f1bc3d8e986ba76902058a60c0b77a604b0112b128b498fcb53"
+    },
+    {
+      "id": "NAT193-01492",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-endpoint-mapped-r1/trace-verification.json",
+      "bytes": 53154,
+      "sha256": "22930dca1b864604040b1cb3e4dd7dd830feb6b72c96958c97788081787ea6bd"
+    },
+    {
+      "id": "NAT193-02256",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-endpoint-private-r1/trace-verification.json",
+      "bytes": 24826,
+      "sha256": "ecdf868946f49078e71d929899f3ddad57bb82d30fd3d9ad9cdc05eb2ca236bd"
+    },
+    {
+      "id": "NAT193-02257",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-peer-r1/analysis.log",
+      "bytes": 597,
+      "sha256": "a869dcda7297b533690ff5bc5b9c677cb5065477f5e624d61cc24c3f19e68403"
+    },
+    {
+      "id": "NAT193-02968",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-peer-r1/mapping-not-observed.json",
+      "bytes": 690,
+      "sha256": "07e80e474d01c47620d1670b92201e441471c53ca5a54be8e60a9bd186a07960"
+    },
+    {
+      "id": "NAT193-03777",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-peer-r2/trace-verification.json",
+      "bytes": 8023,
+      "sha256": "cb96e7a0966335dc01dcccad1f7fbe72cdcdfe39abae5712804862eb86e2f6f7"
+    },
+    {
+      "id": "NAT193-03780",
+      "kind": "local",
+      "path": "local/research/codex/NAT-cp193/docs-snapshot/docs/PLAN.md",
+      "bytes": 52719,
+      "sha256": "8da5ed3423161626a4955f7c1ab180b57837bd01e4adfce31774438602e63f8a"
+    },
+    {
+      "id": "NAT193-03788",
+      "kind": "local",
+      "path": "local/research/codex/NAT-endpoint-comparison-r1.log",
+      "bytes": 716,
+      "sha256": "fefc4fd3ee86febfc6a6123f212ccf89721510eb24b936caa372f7aa9464d33e"
+    },
+    {
+      "id": "NAT193-03790",
+      "kind": "local",
+      "path": "local/research/codex/NAT-endpoint-controls-verification.json",
+      "bytes": 16544,
+      "sha256": "f815b9235342baaebabecbf03213362814aac7c4ce1a51310297c4cc0d496523"
+    },
+    {
+      "id": "NAT193-03801",
+      "kind": "local",
+      "path": "local/research/codex/NAT-transport-r1/raw-seal.json",
+      "bytes": 2533,
+      "sha256": "b14f70eecc9ddd0b1584c429c78f5d419db434f7d4c1547a17af25437e39a09b"
+    },
+    {
+      "id": "NAT193-03802",
+      "kind": "local",
+      "path": "local/research/codex/NAT-transport-r1/report.json",
+      "bytes": 21956,
+      "sha256": "f453ba1a87ff50f25e8b3431352f2caaf0f4e5e7d86c5cb097753412d4b80194"
+    },
+    {
+      "id": "NAT193-03813",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "NAT193-03822",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "NAT193-03826",
+      "kind": "local",
+      "path": "local/research/codex/compare_NAT_endpoint_controls.py",
+      "bytes": 3892,
+      "sha256": "975bfeb2703ec84899a018dd9d1d651567df1d2a0c06dbd02abed53155cfc7c5"
+    },
+    {
+      "id": "NAT193-03827",
+      "kind": "local",
+      "path": "local/research/codex/compare_NAT_endpoint_controls_r2.py",
+      "bytes": 4719,
+      "sha256": "1f7e83a2345f5b49f5ea7c00bb4b8d01102a6471520c4bb753cd20742042714f"
+    },
+    {
+      "id": "NAT193-03828",
+      "kind": "local",
+      "path": "local/research/codex/cp192-exact-head-history-r2.txt",
+      "bytes": 49564,
+      "sha256": "9ee7ef54c94ef3672e656929123f0fd7f54281a21efa4f076ec49477afbd2830"
+    },
+    {
+      "id": "NAT193-03829",
+      "kind": "local",
+      "path": "local/research/codex/cp192-exact-head-history.txt",
+      "bytes": 49634,
+      "sha256": "36f6dacd82124fdfaf71deee71899efc8d7054d750bd8a29c39669d830d67c71"
+    },
+    {
+      "id": "NAT193-03830",
+      "kind": "local",
+      "path": "local/research/codex/cp192-exact-head-results-r2.json",
+      "bytes": 648,
+      "sha256": "26ee18600ceb7cb7e695f87427fd365e7f42c3f2746dac682d5851667de6f04a"
+    },
+    {
+      "id": "NAT193-03832",
+      "kind": "local",
+      "path": "local/research/codex/cp192-pr-merged.json",
+      "bytes": 123,
+      "sha256": "ca91e5ef4df7c23a8fc0e28f97996a5d8bc94d8c43aeab3bd166b9cdcec2e630"
+    },
+    {
+      "id": "NAT193-03833",
+      "kind": "local",
+      "path": "local/research/codex/cp193-checkpoint-tests.txt",
+      "bytes": 142,
+      "sha256": "ae6be4c349d91c7ecd453d9eefd293317446b83ec573a30322d0f6ff6481db26"
+    },
+    {
+      "id": "NAT193-03834",
+      "kind": "local",
+      "path": "local/research/codex/cp193-docs-check.txt",
+      "bytes": 175,
+      "sha256": "1a1000e2580b5e272c9e2b3380ed110436ee20d5e7a168c0552a9eaf4fde89b6"
+    },
+    {
+      "id": "NAT193-03835",
+      "kind": "local",
+      "path": "local/research/codex/cp193-server-tests.txt",
+      "bytes": 394,
+      "sha256": "6e7558883fe8d7d328687d56c578079f072298119de13273ab82384392e75832"
+    },
+    {
+      "id": "NAT193-03845",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "NAT193-03848",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "NAT193-03920",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "NAT193-03921",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "NAT193-03922",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "NAT193-03933",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "NAT193-03940",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/reuse-question.json",
+      "bytes": 3535,
+      "sha256": "2eb72db9ab04c393b4cce96e8d3b7f3164dde9291c04a1bc7a9bb713be852c54"
+    },
+    {
+      "id": "NAT193-03943",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "NAT193-03949",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "NAT193-03950",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "NAT193-03951",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "NAT193-03952",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "NAT193-03953",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "NAT193-03954",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109744,
+      "sha256": "12362a460ade30fbd48f14dd8bada6a3126e330c8058b71dc7bee5d63e2d9584"
+    },
+    {
+      "id": "NAT193-03955",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "NAT193-03956",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "NAT193-03957",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "NAT193-03958",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "NAT193-03959",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "NAT193-03960",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "NAT193-03961",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "NAT193-03962",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "NAT193-03963",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "NAT193-03964",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "NAT193-03965",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "NAT193-03966",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "NAT193-03967",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "NAT193-03968",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "NAT193-03969",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "NAT193-03970",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "NAT193-03971",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "NAT193-03972",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "NAT193-03973",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "NAT193-03974",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "NAT193-03975",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "NAT193-03976",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "NAT193-03977",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "NAT193-03978",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "NAT193-03979",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "NAT193-03980",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "NAT193-03981",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "NAT193-03982",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "NAT193-03983",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "NAT193-03984",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "NAT193-03985",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "NAT193-03986",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "NAT193-03987",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "NAT193-03988",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "NAT193-03989",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "NAT193-03990",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "NAT193-03991",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "NAT193-03992",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "NAT193-03993",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "NAT193-03994",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "NAT193-03995",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "NAT193-03996",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "NAT193-03997",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "NAT193-03998",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "NAT193-03999",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/NAT-KR-downstream-r1",
+      "path": "local/evidence-manifests/fb76c69e838b4a3de4aca736a8e6d2f0e9f5476986df7eed37011d79271727d4.jsonl",
+      "sha256": "fb76c69e838b4a3de4aca736a8e6d2f0e9f5476986df7eed37011d79271727d4",
+      "bytes": 155210,
+      "count": 763,
+      "files_bytes": 27831848
+    },
+    {
+      "run": "local/research/codex/NAT-KR-endpoint-mapped-r1",
+      "path": "local/evidence-manifests/e83533c4f0e7cf6d69d656c24d69661a3c876f16e4fa52741057fa297e1ebe63.jsonl",
+      "sha256": "e83533c4f0e7cf6d69d656c24d69661a3c876f16e4fa52741057fa297e1ebe63",
+      "bytes": 151357,
+      "count": 726,
+      "files_bytes": 25623607
+    },
+    {
+      "run": "local/research/codex/NAT-KR-endpoint-private-r1",
+      "path": "local/evidence-manifests/cc543483f6107835b7e0f7503e4d22eb435a99e4ca9c5f6609cb2292bf09357f.jsonl",
+      "sha256": "cc543483f6107835b7e0f7503e4d22eb435a99e4ca9c5f6609cb2292bf09357f",
+      "bytes": 159791,
+      "count": 763,
+      "files_bytes": 27412910
+    },
+    {
+      "run": "local/research/codex/NAT-KR-peer-r1",
+      "path": "local/evidence-manifests/270b2581099d1e86622776cc3623dc1cfeab53347c350a451cfb457809738b85.jsonl",
+      "sha256": "270b2581099d1e86622776cc3623dc1cfeab53347c350a451cfb457809738b85",
+      "bytes": 151209,
+      "count": 766,
+      "files_bytes": 27779366
+    },
+    {
+      "run": "local/research/codex/NAT-KR-peer-r2",
+      "path": "local/evidence-manifests/3998f4e1265f4a9f3c86558cd95121b1d6cc0e62496da6950cf7b5b264da7570.jsonl",
+      "sha256": "3998f4e1265f4a9f3c86558cd95121b1d6cc0e62496da6950cf7b5b264da7570",
+      "bytes": 148448,
+      "count": 752,
+      "files_bytes": 25982270
+    },
+    {
+      "run": "local/research/codex/NAT-cp193",
+      "path": "local/evidence-manifests/892586541d5c5569c6f902c930bf23b4cdf5a12a00ead7856316c8bb82a28e80.jsonl",
+      "sha256": "892586541d5c5569c6f902c930bf23b4cdf5a12a00ead7856316c8bb82a28e80",
+      "bytes": 1948,
+      "count": 9,
+      "files_bytes": 2384779
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/7dc753f6a96e566d7c55325ba3cf7b047d6a83d35a81f506143dfa99f9625f70.jsonl",
+      "sha256": "7dc753f6a96e566d7c55325ba3cf7b047d6a83d35a81f506143dfa99f9625f70",
+      "bytes": 4752,
+      "count": 26,
+      "files_bytes": 382691
+    },
+    {
+      "run": "local/research/codex/NAT-transport-r1",
+      "path": "local/evidence-manifests/37b23587a33406fde21acb354776c6fb0813078ef5d7abed8d91ca0aef7f87b9.jsonl",
+      "sha256": "37b23587a33406fde21acb354776c6fb0813078ef5d7abed8d91ca0aef7f87b9",
+      "bytes": 1894,
+      "count": 10,
+      "files_bytes": 3800
+    },
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/5bbe52afd1933985699ed4266600efc059b2c75ffd7d9c09d8c4d4e6b6fc372b.jsonl",
+      "sha256": "5bbe52afd1933985699ed4266600efc059b2c75ffd7d9c09d8c4d4e6b6fc372b",
+      "bytes": 463,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/7bd8ac6dac238a32727db5aabb9c6f1adbd4e6bf40784e0aacd74c4dd98c0f83.jsonl",
+      "sha256": "7bd8ac6dac238a32727db5aabb9c6f1adbd4e6bf40784e0aacd74c4dd98c0f83",
+      "bytes": 642,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/6cae7447a766525f8ba8c469ef88465f5c1fc9b194c426630aa6c729a526b84b.jsonl",
+      "sha256": "6cae7447a766525f8ba8c469ef88465f5c1fc9b194c426630aa6c729a526b84b",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/3832039d6acead0fec87265d549103a8766aad6d77c8d77f669be257e482fbab.jsonl",
+      "sha256": "3832039d6acead0fec87265d549103a8766aad6d77c8d77f669be257e482fbab",
+      "bytes": 644,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/bomb-serial-r1",
+      "path": "local/evidence-manifests/ff27e23bb2abf0442a7d3e54fee0f5ac41d305a7a573a417cb280ef1d3241a71.jsonl",
+      "sha256": "ff27e23bb2abf0442a7d3e54fee0f5ac41d305a7a573a417cb280ef1d3241a71",
+      "bytes": 470,
+      "count": 2,
+      "files_bytes": 28443
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/cb7ac474929d5ea1af40a89f19ad78382b54a0e3877bcbcdec9e0c51cde3dacd.jsonl",
+      "sha256": "cb7ac474929d5ea1af40a89f19ad78382b54a0e3877bcbcdec9e0c51cde3dacd",
+      "bytes": 461,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/05adf7e65572b34c0c9298ab487d3e2df2b7715dcaf9a268c9309531189a65da.jsonl",
+      "sha256": "05adf7e65572b34c0c9298ab487d3e2df2b7715dcaf9a268c9309531189a65da",
+      "bytes": 1016,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/5a1636f2273ab31590e84059b9a88ab1845b001334ff7c2b300d66b540076678.jsonl",
+      "sha256": "5a1636f2273ab31590e84059b9a88ab1845b001334ff7c2b300d66b540076678",
+      "bytes": 504,
+      "count": 2,
+      "files_bytes": 63749120
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/161139a64aab1b250a4d67ed334cc102cc40e1f2d8571d0e19e00040ec6b2b86.jsonl",
+      "sha256": "161139a64aab1b250a4d67ed334cc102cc40e1f2d8571d0e19e00040ec6b2b86",
+      "bytes": 434,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/1b0294db5a23daaaa5782b6f420cd660e21d24f567e08b7709574288249e950b.jsonl",
+      "sha256": "1b0294db5a23daaaa5782b6f420cd660e21d24f567e08b7709574288249e950b",
+      "bytes": 443,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/portable-bundle-r1",
+      "path": "local/evidence-manifests/59c850b0774c4bef5b55a6ac908b1027e56216abda5f38cfcec5d069af979842.jsonl",
+      "sha256": "59c850b0774c4bef5b55a6ac908b1027e56216abda5f38cfcec5d069af979842",
+      "bytes": 15246,
+      "count": 60,
+      "files_bytes": 175668
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/830aedee0f36f66e89a43bb7dcfc53594f73a0e3deb0b51f0345b4f8af45e79b.jsonl",
+      "sha256": "830aedee0f36f66e89a43bb7dcfc53594f73a0e3deb0b51f0345b4f8af45e79b",
+      "bytes": 641,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/363dd8a223e0808025a107004bd3221c21fcd37d3c5c7a532ec8c20fa119638e.jsonl",
+      "sha256": "363dd8a223e0808025a107004bd3221c21fcd37d3c5c7a532ec8c20fa119638e",
+      "bytes": 981,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/09c68e64c217703eac32dbaa4fef5b1e97413a75724738487982c2207ffb6bfe.jsonl",
+      "sha256": "09c68e64c217703eac32dbaa4fef5b1e97413a75724738487982c2207ffb6bfe",
+      "bytes": 436,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/09bac956c51d027739765c2445b9049866a3c0efc3bd96a0f3c89a4df4b17ef0.jsonl",
+      "sha256": "09bac956c51d027739765c2445b9049866a3c0efc3bd96a0f3c89a4df4b17ef0",
+      "bytes": 453,
+      "count": 2,
+      "files_bytes": 384
+    },
+    {
+      "run": "local/research/codex/udp-actor-r1",
+      "path": "local/evidence-manifests/26cf707aac2987fd60012cd60bd746595fce39374a202720b5f96e91a790785d.jsonl",
+      "sha256": "26cf707aac2987fd60012cd60bd746595fce39374a202720b5f96e91a790785d",
+      "bytes": 447,
+      "count": 2,
+      "files_bytes": 26138
+    },
+    {
+      "run": "local/research/codex/udp-generation-r1",
+      "path": "local/evidence-manifests/14b0adb1a605d8b6d0087d96bc2636b6a5e467f3c60bb2cca26f7f8d810d9b95.jsonl",
+      "sha256": "14b0adb1a605d8b6d0087d96bc2636b6a5e467f3c60bb2cca26f7f8d810d9b95",
+      "bytes": 656,
+      "count": 3,
+      "files_bytes": 22924
     }
   ]
 }

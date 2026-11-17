@@ -140,15 +140,6 @@
       "limits": "Mechanicalconsistencyonly; fullrequiredlocal/historycheckedbeforecommit. Reviewwaived; nosemantic/gatecertification."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP151-direct-contested-pickup.json",
-      "bytes": 345591,
-      "sha256": "ef13b29c174b0452989be3a841d3102689c56a34c7f1ed20c6c9a6a881866f1a",
-      "count": 1350
-    }
-  ],
   "delta": {
     "added": [
       "R1actualcontest/singlewinner/nativeonlywinnerstatdelta/currentdistinctspawn/directroute andR1normalnativeoutcome/reset; scopedloadingblockerR2."
@@ -241,6 +232,223 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP151R1contestconfirmed/R2loadingpartial/emptyforfeitlimits/native99next/PR221merge/audit152 synchronizedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/actor-fields.json",
+      "bytes": 831249,
+      "sha256": "15e766a2cd0fece81d1861068f82ca274024cff8fba158489911d18bc43ee03c"
+    },
+    {
+      "id": "RUN-00005",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00008",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/contest-check-initial.txt",
+      "bytes": 629,
+      "sha256": "48ce605485444d2ea6b6ae2efe5727d50db868b5235d0d2993e1d55f93ab2144"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/contest-verification.json",
+      "bytes": 1856,
+      "sha256": "6289fd8a784d9a814a35f9d3fe226c6721f268ada49fddbc8ff9017f5bb0281d"
+    },
+    {
+      "id": "RUN-01193",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/cycles/client-B.log",
+      "bytes": 159745,
+      "sha256": "c6fd534779e8d0cb347ada2f3127d9764100e33136de2aab55c90224a5b11b3c"
+    },
+    {
+      "id": "RUN-01194",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/cycles/client.log",
+      "bytes": 165511,
+      "sha256": "73399c2d56d498743f1f0bc698d613d90829f2e60f14ddefe3be55ff82f862e5"
+    },
+    {
+      "id": "RUN-01212",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/cycles/run.json",
+      "bytes": 276124,
+      "sha256": "93664ce4a666d33da181959956ea18ef54c36436ad6cefb0c13182b8d8f06479"
+    },
+    {
+      "id": "RUN-01213",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/cycles/service-state.json",
+      "bytes": 157807,
+      "sha256": "495c3254d00dcaba97199e48681f467dff5d3cf24dc22dec8b04cdc011946805"
+    },
+    {
+      "id": "RUN-01215",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/cycles/udp-capture-index.json",
+      "bytes": 105953,
+      "sha256": "917df70a7242b0e528afa85bd1cc3edc0a4cdbabd9b39a4c937e848ee2c0acba"
+    },
+    {
+      "id": "RUN-01226",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "83ddf3301c4b019cb3379c7a9cb7eb04d712945a92da3ab746dfd2615b30bc40"
+    },
+    {
+      "id": "RUN-01227",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/endpoint-peer-verification.json",
+      "bytes": 95269,
+      "sha256": "685eb147b552d41406a3334a6da894c62cc3e64511969fa4fdda2e224aefdc9e"
+    },
+    {
+      "id": "RUN-01228",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/flag-reader-verification.json",
+      "bytes": 726380,
+      "sha256": "eff5c4ced3cb427c321593f6d05fb475af08511ba2f3884b11720db9bc9a6b2f"
+    },
+    {
+      "id": "RUN-01236",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "5f9da0c8b742ca7add084c74a92710b52c908a17b9e767cb9317b442cf0c85a7"
+    },
+    {
+      "id": "RUN-01239",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/native-153.json",
+      "bytes": 6981,
+      "sha256": "9a1f878cbd41deb31b5ce5b502ad34718e906cd8c3fa1b6a0fa7cfae32857944"
+    },
+    {
+      "id": "RUN-01240",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/native-packets.json",
+      "bytes": 71096,
+      "sha256": "7d825056f755181157be88b842a0e7a50795ffed6e403a84279d6c3587f1a885"
+    },
+    {
+      "id": "RUN-01241",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/native-reports.json",
+      "bytes": 72119,
+      "sha256": "821c2256d6619b65056996dd73393127f26654f7c81412b25c93702343b52536"
+    },
+    {
+      "id": "RUN-01252",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/partial-check-initial.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUN-01254",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/partial-verification.json",
+      "bytes": 4483,
+      "sha256": "e6512586b82844a45a6da1f8e01fd76aab91f2f25cf4e37d57a3d69713816822"
+    },
+    {
+      "id": "RUN-01255",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/peer-crc-verification.json",
+      "bytes": 4828,
+      "sha256": "38a57e6d55c4760e55dedef1d82902c0c7a4ee40b7d3800d91816327fca7c2a5"
+    },
+    {
+      "id": "RUN-01256",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "a20b630f1affbe38046fee84e03802a0ddf61b85f95bb76814717b3a977fa08f"
+    },
+    {
+      "id": "RUN-01258",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/raw-seal.json",
+      "bytes": 250089,
+      "sha256": "c65a51d0d50d482dae2592bb468372e4cbc2c8d56cd3c1e6af5ef33812e9269a"
+    },
+    {
+      "id": "RUN-01283",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/runtime-preflight.json",
+      "bytes": 18949,
+      "sha256": "ebff063d810812ab398321c1a9d19c8b79df1e17da7556722b149429660b6f4a"
+    },
+    {
+      "id": "RUN-01325",
+      "kind": "local",
+      "path": "local/research/codex/direct-contested-pickup-r1/runtime_hold.py",
+      "bytes": 2098,
+      "sha256": "6dfd804931be44a338cf9adae7fc629dd4fcaa580b77719abe23edc7592b3efd"
+    },
+    {
+      "id": "RUN-01345",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/server-tests.txt",
+      "bytes": 337,
+      "sha256": "279e571a9c544630e0633f5bc5d621da7503699017783630d834afc8545ada31"
+    },
+    {
+      "id": "RUN-01346",
+      "kind": "local",
+      "path": "local/research/codex/current-pickup-race-r1/reuse-question.json",
+      "bytes": 4625,
+      "sha256": "08678d152fdb6b921d607874b5bf37d38b98d9500e06f3233e37a13444bba2f6"
+    },
+    {
+      "id": "RUN-01347",
+      "kind": "local",
+      "path": "local/research/codex/current-pickup-race-r1/runtime_hold.py",
+      "bytes": 2098,
+      "sha256": "6dfd804931be44a338cf9adae7fc629dd4fcaa580b77719abe23edc7592b3efd"
+    },
+    {
+      "id": "RUN-01348",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/E7F2A0.asm",
+      "bytes": 4043,
+      "sha256": "0abe4ad771b670e7b23073b26dcaa3b1241a1b1e344fcacbd57fbf3437ebed8b"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/direct-contested-pickup-r1",
+      "path": "local/evidence-manifests/5cdbbab454f01a97ee03e752f5acffc1cffa8e0f9fbfe50d3c63eecda20aff10.jsonl",
+      "sha256": "5cdbbab454f01a97ee03e752f5acffc1cffa8e0f9fbfe50d3c63eecda20aff10",
+      "bytes": 271926,
+      "count": 1319,
+      "files_bytes": 107799303
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/9429130f54eb2320ac34109bfe7b19fedcabf7f6e7dba7d2c721aa3663b2edfa.jsonl",
+      "sha256": "9429130f54eb2320ac34109bfe7b19fedcabf7f6e7dba7d2c721aa3663b2edfa",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 74482
+    },
+    {
+      "run": "local/research/codex/direct-item-feedback-r2",
+      "path": "local/evidence-manifests/e9c49bdf983d8972aee2e726ace2c941a7a73db0dba1e48836ed8e614c4bb479.jsonl",
+      "sha256": "e9c49bdf983d8972aee2e726ace2c941a7a73db0dba1e48836ed8e614c4bb479",
+      "bytes": 472,
+      "count": 2,
+      "files_bytes": 486
     }
   ]
 }

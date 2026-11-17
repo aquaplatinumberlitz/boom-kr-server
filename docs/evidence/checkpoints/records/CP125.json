@@ -134,21 +134,6 @@
       "limits": "Scopedmanualobservation/mechanical consistency, no acceptance/gateautoclosure."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP125-Battle-exit-fixed.json",
-      "bytes": 222817,
-      "sha256": "413fc66aa18bc5e3d2a3846b17b688510e3593535a1fe039ffe25f00a80b9367",
-      "count": 891
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP125-Battle-exit-control.json",
-      "bytes": 218081,
-      "sha256": "542e45510d1b6a229666b9637cbbdb34052276ccaf1c7fc5f4731a8e84b02d4a",
-      "count": 890
-    }
-  ],
   "delta": {
     "added": [
       "NormalBattleB20286nativebranch/body/controlandboundedopt-inservicecompatibility/lobbyAreturn/noEOF with2newnativefunction ranges.",
@@ -240,6 +225,217 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP125native/control/fixed/optionalunbombedpair/202notexclusive/limits/nextrejoinStart2; nooldrecord/gatechange."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "FIX-00814",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-fixed-r1/cycles/run.json",
+      "bytes": 81075,
+      "sha256": "11a02435b108ed03584372a5a18abcb78b6a6778fe4430d2af17a51bf744e136"
+    },
+    {
+      "id": "FIX-00826",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-fixed-r1/exit-verification.json",
+      "bytes": 74325,
+      "sha256": "5a7cdd0f79d8952b1119f1641900e91863fc1aed9129e8075a2c85575a449baa"
+    },
+    {
+      "id": "FIX-00827",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-fixed-r1/fixed-check.txt",
+      "bytes": 75,
+      "sha256": "31df7b06f4cb1c3f63c3ac0f15d942779c843a71a3668e51c6e7cf12947f5c1a"
+    },
+    {
+      "id": "FIX-00830",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-fixed-r1/native-exit-check.txt",
+      "bytes": 28,
+      "sha256": "0b8ab892bdef0ae11c3998110aeb0490efc753fb444e70ae2924d19ced5e9146"
+    },
+    {
+      "id": "FIX-00839",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-fixed-r1/raw-seal.json",
+      "bytes": 165439,
+      "sha256": "9d7460e040e7a39f200c3fe7d7f8381412a4e47bf76ae77cccf558b6898c2b3e"
+    },
+    {
+      "id": "FIX-00856",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-fixed-r1/runtime-source/server/probe_service.py",
+      "bytes": 82389,
+      "sha256": "1c58e534dfa112e11065309547422b314f59e6e76c972c1b9eacfcfc9e7d40ad"
+    },
+    {
+      "id": "FIX-00861",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-fixed-r1/runtime-source/server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "FIX-00889",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-fixed-r1/visual-review.json",
+      "bytes": 1085,
+      "sha256": "51d8acb0440ed644b3842eb0f42a6c5af23f28ab9722361d4c688ae54ffac4b8"
+    },
+    {
+      "id": "CTRL-00003",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "CTRL-00005",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/code-match-exit.json",
+      "bytes": 1843,
+      "sha256": "a169ba5decfe90e71363d5aa64e2aed01b5167340e64ea717839f95c0b57c180"
+    },
+    {
+      "id": "CTRL-00006",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/control-check.txt",
+      "bytes": 104,
+      "sha256": "6f67907c8d8bd47f2051ad05017910b12ee480dd78f584c18ea43b2fc2b84ed5"
+    },
+    {
+      "id": "CTRL-00007",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/control-verification.json",
+      "bytes": 68549,
+      "sha256": "250bbaa2856b4a3e54bc844da9eb1bf3ff5d2cbdec3e469010858fadf8e2b34d"
+    },
+    {
+      "id": "CTRL-00799",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/cycles/run.json",
+      "bytes": 68653,
+      "sha256": "49c3fc4ba590933771cb4f0c29d1cfed27da8bfe43f835c7a53b9c844433f2e5"
+    },
+    {
+      "id": "CTRL-00809",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "68be0e0307a614bf82da3f2de99014de86cd2cc097ca27a6843811d265524cb4"
+    },
+    {
+      "id": "CTRL-00811",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/exit-observations.json",
+      "bytes": 16836,
+      "sha256": "15eba25e07e1270c830985537b6978ad9c4c4c1bcca602d366ee8838c316b1e0"
+    },
+    {
+      "id": "CTRL-00812",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/function-E72490.txt",
+      "bytes": 2677,
+      "sha256": "1af2201664b9a84647deb3ed1bf5ff2047e239e18b427fe824aa866e30aa7a2d"
+    },
+    {
+      "id": "CTRL-00813",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/function-E84FF0.txt",
+      "bytes": 4990,
+      "sha256": "0b5885988c32fcf994e3e68726fc2b8cd041f68c9ae4223d4886f5ad96bcdc05"
+    },
+    {
+      "id": "CTRL-00819",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "f50c02bc08827147c36d661dd8c298c13cb7c0d9ea98131141f88245ea2420d3"
+    },
+    {
+      "id": "CTRL-00821",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/native-exit-check.txt",
+      "bytes": 28,
+      "sha256": "d5ec0942e39e4162caf55993e9de16360d55d7463f6376d7c529a5e1356c8960"
+    },
+    {
+      "id": "CTRL-00822",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/native-exit-packets.json",
+      "bytes": 24669,
+      "sha256": "4a30e96065b0adefda148105bd4963bebd07b29e2403cbddb59711b5dcacf475"
+    },
+    {
+      "id": "CTRL-00826",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/new-tests.txt",
+      "bytes": 107,
+      "sha256": "eab4281419f49474c6773f172eab4705e82da9e9196e5418e92a366609bcb99e"
+    },
+    {
+      "id": "CTRL-00830",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/policy-decision.json",
+      "bytes": 1335,
+      "sha256": "7e7f3c45557dd463d6aa5246ae43fc1eff7388d986012b4b38da1b1de3088455"
+    },
+    {
+      "id": "CTRL-00832",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/raw-seal.json",
+      "bytes": 154572,
+      "sha256": "2d993b3ca1c05faa9dbae9137c03f3d528e59d8ef36c17b9b492811f76d53f04"
+    },
+    {
+      "id": "CTRL-00834",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/report202-reuse.json",
+      "bytes": 4082,
+      "sha256": "82d1fc5e7530eb97fa394cffe7d901ef4af13f6342cc7375774efd9ceee6f8d5"
+    },
+    {
+      "id": "CTRL-00881",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/server-tests.txt",
+      "bytes": 311,
+      "sha256": "549e90f5817041920a3fb0efd4555bb6adf91e120c479dd601b5f2e3a16b4ded"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/active-exit-fixed-r1",
+      "path": "local/evidence-manifests/a8c89a6f05e66ba68a80a4cabd512c421cfa42a325ebf5f0a46dda5cd6add15d.jsonl",
+      "sha256": "a8c89a6f05e66ba68a80a4cabd512c421cfa42a325ebf5f0a46dda5cd6add15d",
+      "bytes": 176335,
+      "count": 881,
+      "files_bytes": 40101282
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/968d8b8173c7c9e55d36c79bb957bde4816b7df0df1b1924acbf199a732d3818.jsonl",
+      "sha256": "968d8b8173c7c9e55d36c79bb957bde4816b7df0df1b1924acbf199a732d3818",
+      "bytes": 788,
+      "count": 4,
+      "files_bytes": 115246
+    },
+    {
+      "run": "local/research/codex/active-exit-r1",
+      "path": "local/evidence-manifests/47c590fa64cabfd942c11249dfcd01faa0a30023abe097cc02da22c1e2bfbeb7.jsonl",
+      "sha256": "47c590fa64cabfd942c11249dfcd01faa0a30023abe097cc02da22c1e2bfbeb7",
+      "bytes": 169640,
+      "count": 869,
+      "files_bytes": 37124633
+    },
+    {
+      "run": "local/research/codex/life-admission-corpus-r1",
+      "path": "local/evidence-manifests/6e1fb632d10051de9a1a3bf1243d8b6954dfedebfe0e0671c06b59bf6cf2b1e2.jsonl",
+      "sha256": "6e1fb632d10051de9a1a3bf1243d8b6954dfedebfe0e0671c06b59bf6cf2b1e2",
+      "bytes": 483,
+      "count": 2,
+      "files_bytes": 429
     }
   ]
 }

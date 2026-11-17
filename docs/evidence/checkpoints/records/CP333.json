@@ -119,15 +119,6 @@
       "limits": "Exact-head local/history và all CI còn bắt buộc trước merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP333-punch-down.json",
-      "bytes": 2058156,
-      "sha256": "79ec7d545862879bb69a320820ba6afb2e63b3ab695e24825c0d49e502c14fb7",
-      "count": 7860
-    }
-  ],
   "delta": {
     "added": [
       "Lát Punch selector 1/down-one, native reference và Rust2account/two cycles/reset/journal."
@@ -245,5 +236,617 @@
   ],
   "completed_feature_groups": [
     "g1-punch-selector1-down-one"
+  ],
+  "evidence": [
+    {
+      "id": "PUNCH333-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3715,
+      "sha256": "90db9406b2bafe6840965b53f7156191bbf53627061698fff3f8a747815025d4"
+    },
+    {
+      "id": "PUNCH333-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 270221,
+      "sha256": "e87a9adb10bba801edb024b8a55d293fdb7f8dd14e5554187e2ab96cef0d706a"
+    },
+    {
+      "id": "PUNCH333-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 167907,
+      "sha256": "94f236f2eb4b09f9f7bd496d13acc98ba9c05e1c4b5683693e0c4ff470a45c19"
+    },
+    {
+      "id": "PUNCH333-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 85701,
+      "sha256": "f10ed357648da50b89baba0b37dc02eddc2ed8c191b9b501b81c70ec623a680a"
+    },
+    {
+      "id": "PUNCH333-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 68543,
+      "sha256": "212477cbaddfb0f05f075c7ad64769e1d51f4f5b8456b14b77435a2b1b4f3552"
+    },
+    {
+      "id": "PUNCH333-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45898,
+      "sha256": "5d464fa4c126103b0c660774f08fcc673eec95573b6b27bf6de6a2989fa81442"
+    },
+    {
+      "id": "PUNCH333-00007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD141.json",
+      "bytes": 5269,
+      "sha256": "7314cbcf8f35c866c2d43ecf7ed0e60654293ecc6b74947e69dc7dc103826ba9"
+    },
+    {
+      "id": "PUNCH333-00008",
+      "kind": "repository",
+      "path": "docs/evidence/item-families/punch-down-action.json",
+      "bytes": 7545,
+      "sha256": "c9e728a141dff84b34a6231a2a9ef1ecf248de27745e514d411d6e8823d97125"
+    },
+    {
+      "id": "PUNCH333-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-punch-down.json",
+      "bytes": 9300,
+      "sha256": "c426878273998388b01ced8b3a22b933f31cb0b6a62648db5c4d2572db75a2e9"
+    },
+    {
+      "id": "PUNCH333-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 282412,
+      "sha256": "b5aa1296a3cb84dde8ea2572cfdf77cb0d552c64188a7ae23d27995e5c99709b"
+    },
+    {
+      "id": "PUNCH333-00011",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 76921,
+      "sha256": "03b349ae33f480a4f6a652f0c43ce9bb430e7fbe1d765147f885af0d1865d2d6"
+    },
+    {
+      "id": "PUNCH333-00024",
+      "kind": "local",
+      "path": "local/research/codex/collision-r1/overlap121.bin",
+      "bytes": 167,
+      "sha256": "2fd71d091341990f3becfbe240f9fef2dc7069d20228216c4e974bf30afdf851"
+    },
+    {
+      "id": "PUNCH333-00031",
+      "kind": "local",
+      "path": "local/research/codex/cp333-catalog-precheck.txt",
+      "bytes": 246,
+      "sha256": "3d19a2b9d9bdbfa07fef68c6f33b081ab05ee4508901dd53bee08e964a772a3c"
+    },
+    {
+      "id": "PUNCH333-00032",
+      "kind": "local",
+      "path": "local/research/codex/cp333-docs-precheck.txt",
+      "bytes": 274,
+      "sha256": "db1aacf6d27c94d1099e7c62c7d0967c1739b9b9e19b13abf2ad04f13fea49ad"
+    },
+    {
+      "id": "PUNCH333-00039",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "PUNCH333-00041",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-flags-native-r2/floor582-abilities.bin",
+      "bytes": 74,
+      "sha256": "a7cc0f351d3a3c016b441afff10778b42b364d15d65b388fbc4bcd55b93e046e"
+    },
+    {
+      "id": "PUNCH333-00042",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-adapter-r1/profiles/ExVillage01.json",
+      "bytes": 9939,
+      "sha256": "d1f604c04fc1ec24e8ab0617dc7e57bbd6df7c679df452ef53e15d434f2648ea"
+    },
+    {
+      "id": "PUNCH333-00249",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-build-r1/test-r2-with-exit.json",
+      "bytes": 657,
+      "sha256": "ef26755669fc21771cb265dd3723dc98651571b58c8174b24065085883181be9"
+    },
+    {
+      "id": "PUNCH333-00252",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-build-r1/verification.json",
+      "bytes": 2444,
+      "sha256": "93369031e962ff5208f6f9cf00d29a8549daaa58c28adf78af9d749c73e45d3d"
+    },
+    {
+      "id": "PUNCH333-00351",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-final-build-r2/verification.json",
+      "bytes": 18686,
+      "sha256": "2d8abb4af7fa7cd6eedd766e035a92c9b7d860b08c234f29864d100f79dcfae9"
+    },
+    {
+      "id": "PUNCH333-00826",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-reference-r2/partial-reference-verification.json",
+      "bytes": 1601,
+      "sha256": "27172624ae76245c59868980fcb68afdc7037881e72994ce8562b8464ec67d31"
+    },
+    {
+      "id": "PUNCH333-02242",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-reference-r3/failure-verification.json",
+      "bytes": 1584,
+      "sha256": "c670380cae073dd4e2f395ac25dea6ce420f2fb0e4196af0e2ad3e6e6816a1c2"
+    },
+    {
+      "id": "PUNCH333-03028",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-reference-r4/failure-verification.json",
+      "bytes": 1294,
+      "sha256": "84da3e4197c5e5a6e86dc9f32611e1206ea4f3254af4c542363f8b1777014b6b"
+    },
+    {
+      "id": "PUNCH333-04175",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-reference-r5/partial-reference-verification.json",
+      "bytes": 1684,
+      "sha256": "d69d3c17d717b844252649619e830ce5dfde0ba62d205ab601d4fcedf74431e3"
+    },
+    {
+      "id": "PUNCH333-04673",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-reference-r6/actor-fields-final.json",
+      "bytes": 477583,
+      "sha256": "40fe248063783cb57c7a44930b5c43e75f9aa6475ff8256b6676f5548a5878b8"
+    },
+    {
+      "id": "PUNCH333-05048",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-reference-r6/prelaunch-source-review.json",
+      "bytes": 880,
+      "sha256": "61135bfb3a35f35c3de9262849ccc9ac3c6390bfd77f935bdec655a3452b4894"
+    },
+    {
+      "id": "PUNCH333-06645",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-reference-r6/two-round-down-reference-verification.json",
+      "bytes": 4179,
+      "sha256": "d360461ccb3e78d0ccf85c7de2b8062c28e268b4ace9cf07a7dae93429ebafd1"
+    },
+    {
+      "id": "PUNCH333-06646",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-reference-r6/wire-reassembly-verification.json",
+      "bytes": 2532,
+      "sha256": "2f52a9fe0dccce07792baf0aad4d1e4db0f009fc17de32c99d863ae967abb386"
+    },
+    {
+      "id": "PUNCH333-06647",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-reuse-r1/reuse.json",
+      "bytes": 4785,
+      "sha256": "bff507180c27c2f5545d69cdc237b8267a767dd66ba63835aec8654772ca3b30"
+    },
+    {
+      "id": "PUNCH333-06660",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/decoded-channels-shared.json",
+      "bytes": 111247,
+      "sha256": "e84d7aa82b71d4e67a6c718fbc2dd1c3682192f4bc2b11baa9cb1519471e0440"
+    },
+    {
+      "id": "PUNCH333-07119",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "b8bc153e8b420db9fd4f7df298721b30caf2d675b9cb94e815c7a8d112f3d833"
+    },
+    {
+      "id": "PUNCH333-07129",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/native-actor-field-checks.json",
+      "bytes": 67609,
+      "sha256": "34b1100e844cfa208f2c06a81562b02923ef33872a71cef80616125100fa9695"
+    },
+    {
+      "id": "PUNCH333-07135",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/punch-down-native-verification.json",
+      "bytes": 5274,
+      "sha256": "96730e4b52d818803036f0b43af4217da9021ae641f0e0ce3cb8ea8d12623193"
+    },
+    {
+      "id": "PUNCH333-07767",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "PUNCH333-07768",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "PUNCH333-07771",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "PUNCH333-07772",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/alsa-null.conf",
+      "bytes": 27,
+      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+    },
+    {
+      "id": "PUNCH333-07776",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "PUNCH333-07791",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "PUNCH333-07794",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "PUNCH333-07823",
+      "kind": "local",
+      "path": "local/research/codex/rust-room-r1/listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "PUNCH333-07824",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "PUNCH333-07831",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "PUNCH333-07845",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "PUNCH333-07857",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "bytes": 36619,
+      "sha256": "95c547652adfb446826e315d74c59a9c10927a49dcf3d55d999025c9e791fecd"
+    },
+    {
+      "id": "PUNCH333-07858",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "bytes": 68788,
+      "sha256": "ffeeaf99f7316ed10e4460801b3bd50ccda9bb232ec06c726cb999f2d458742c"
+    },
+    {
+      "id": "PUNCH333-07859",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+      "bytes": 3310,
+      "sha256": "485e2c129a0a15c7bbd6f7e1b38820fc2009e878c6d5e288b8f2e8822fa968d7"
+    },
+    {
+      "id": "PUNCH333-07860",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/13faa25102b06038278440972f42c79fdc4545d2a325a19f2c3954d5fa3d052f.jsonl",
+      "sha256": "13faa25102b06038278440972f42c79fdc4545d2a325a19f2c3954d5fa3d052f",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/5065cda401e24d1f7bb6cf14f43e4c68de1f02e2a3ba26c2a0bfb64d8e6251de.jsonl",
+      "sha256": "5065cda401e24d1f7bb6cf14f43e4c68de1f02e2a3ba26c2a0bfb64d8e6251de",
+      "bytes": 840,
+      "count": 4,
+      "files_bytes": 277
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/e9318e2b3ae943261243cc788f21c6b2d98cd917b88650a333e1e2df2b21f886.jsonl",
+      "sha256": "e9318e2b3ae943261243cc788f21c6b2d98cd917b88650a333e1e2df2b21f886",
+      "bytes": 12470,
+      "count": 64,
+      "files_bytes": 850724
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/3d9d080f4728b67b1612b620a2af997cc9613c65d935be74ed10c0a3a0927369.jsonl",
+      "sha256": "3d9d080f4728b67b1612b620a2af997cc9613c65d935be74ed10c0a3a0927369",
+      "bytes": 465,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/94ba9d87f923796b294e4091857594d41027bdfb817f1b3c103ccc14e34bc8f6.jsonl",
+      "sha256": "94ba9d87f923796b294e4091857594d41027bdfb817f1b3c103ccc14e34bc8f6",
+      "bytes": 1026,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/g1-punch-build-r2",
+      "path": "local/evidence-manifests/9924e466144188642c12f15abf19ca0f88713a3795ae5a0c5734893237a7e7f2.jsonl",
+      "sha256": "9924e466144188642c12f15abf19ca0f88713a3795ae5a0c5734893237a7e7f2",
+      "bytes": 462,
+      "count": 2,
+      "files_bytes": 30631
+    },
+    {
+      "run": "local/research/codex/g1-punch-build-r3",
+      "path": "local/evidence-manifests/23bd46403a9a721bf8e693fe27122f523cf12525dd39d21ca204e4f8418d4bba.jsonl",
+      "sha256": "23bd46403a9a721bf8e693fe27122f523cf12525dd39d21ca204e4f8418d4bba",
+      "bytes": 23633,
+      "count": 91,
+      "files_bytes": 1247145
+    },
+    {
+      "run": "local/research/codex/g1-punch-build-r5",
+      "path": "local/evidence-manifests/ca1a47e0174564bc7641c3c1bea4d735374a7a81146be88a64f61096cad0c180.jsonl",
+      "sha256": "ca1a47e0174564bc7641c3c1bea4d735374a7a81146be88a64f61096cad0c180",
+      "bytes": 23633,
+      "count": 91,
+      "files_bytes": 1249495
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-build-r1",
+      "path": "local/evidence-manifests/54eb5291d294c268ba8791bd266efc05181a54b6a96b69fff547f4ad05ba0784.jsonl",
+      "sha256": "54eb5291d294c268ba8791bd266efc05181a54b6a96b69fff547f4ad05ba0784",
+      "bytes": 4449,
+      "count": 22,
+      "files_bytes": 265496500
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-external-inputs-r1",
+      "path": "local/evidence-manifests/f7b0c7f8f22dc83d3467a515e885841ea510846d1bf3f4ffbfc5d239dd18cd7c.jsonl",
+      "sha256": "f7b0c7f8f22dc83d3467a515e885841ea510846d1bf3f4ffbfc5d239dd18cd7c",
+      "bytes": 19163,
+      "count": 91,
+      "files_bytes": 1329917
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-final-build-r2",
+      "path": "local/evidence-manifests/9b19689ecc1bf6b985dcf2682741d85f5f75994087f2810eb027c2c20d441493.jsonl",
+      "sha256": "9b19689ecc1bf6b985dcf2682741d85f5f75994087f2810eb027c2c20d441493",
+      "bytes": 1501,
+      "count": 7,
+      "files_bytes": 265437690
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-reference-r1",
+      "path": "local/evidence-manifests/753f3b3fef470153b664dddb37ec4a31de1ab2552ec2cdadc5d1bca816062f00.jsonl",
+      "sha256": "753f3b3fef470153b664dddb37ec4a31de1ab2552ec2cdadc5d1bca816062f00",
+      "bytes": 99422,
+      "count": 467,
+      "files_bytes": 6574279152
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-reference-r2",
+      "path": "local/evidence-manifests/520aefed567b45bd00099bc30090a15816e74504cd8ba96eb2017bf099dae93b.jsonl",
+      "sha256": "520aefed567b45bd00099bc30090a15816e74504cd8ba96eb2017bf099dae93b",
+      "bytes": 300216,
+      "count": 1419,
+      "files_bytes": 72127170
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-reference-r3",
+      "path": "local/evidence-manifests/a9c0a405cdf95bdb80195a965a51766f4fda03cc1973bd357042cf98bff07424.jsonl",
+      "sha256": "a9c0a405cdf95bdb80195a965a51766f4fda03cc1973bd357042cf98bff07424",
+      "bytes": 165571,
+      "count": 785,
+      "files_bytes": 3694899827
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-reference-r4",
+      "path": "local/evidence-manifests/0e28941ff7f4ececdb3e6bd8db773c775ebed1a21f9287b5ea020c7f8d539ba1.jsonl",
+      "sha256": "0e28941ff7f4ececdb3e6bd8db773c775ebed1a21f9287b5ea020c7f8d539ba1",
+      "bytes": 163279,
+      "count": 774,
+      "files_bytes": 3694861634
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-reference-r5",
+      "path": "local/evidence-manifests/e70ecad6b976c8b4c1dbc7c1737942512e61e9244ae9cb3665f522dce79967f0.jsonl",
+      "sha256": "e70ecad6b976c8b4c1dbc7c1737942512e61e9244ae9cb3665f522dce79967f0",
+      "bytes": 183805,
+      "count": 871,
+      "files_bytes": 3699431458
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-reference-r6",
+      "path": "local/evidence-manifests/6537ede8568590f5afa85e75c453c82d2d526d1d62ab91f02ef7729f673dd6de.jsonl",
+      "sha256": "6537ede8568590f5afa85e75c453c82d2d526d1d62ab91f02ef7729f673dd6de",
+      "bytes": 417011,
+      "count": 1971,
+      "files_bytes": 3759810629
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-rust-native-r1",
+      "path": "local/evidence-manifests/6c5ea1d557e7678e0bec91947a01bc5bbf445b11e05ad8e245c5693419cc2fbb.jsonl",
+      "sha256": "6c5ea1d557e7678e0bec91947a01bc5bbf445b11e05ad8e245c5693419cc2fbb",
+      "bytes": 104954,
+      "count": 491,
+      "files_bytes": 3961426618
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-sequence-r1",
+      "path": "local/evidence-manifests/bf5b58b12cb958fde0b79100659dc800b71cbaf5823dac4f7ab32c3913b0daa2.jsonl",
+      "sha256": "bf5b58b12cb958fde0b79100659dc800b71cbaf5823dac4f7ab32c3913b0daa2",
+      "bytes": 2705,
+      "count": 13,
+      "files_bytes": 3308
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-sequence-r2",
+      "path": "local/evidence-manifests/eca44ceb90ad0baa222d79f03672f2e928ed85e102fb444650655f772498706e.jsonl",
+      "sha256": "eca44ceb90ad0baa222d79f03672f2e928ed85e102fb444650655f772498706e",
+      "bytes": 1090,
+      "count": 5,
+      "files_bytes": 1422
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-sequence-r3",
+      "path": "local/evidence-manifests/7592b9d2595c6d0ab1ad49162665392b03f3d9fb1ca91b69b7e8146f03dd0905.jsonl",
+      "sha256": "7592b9d2595c6d0ab1ad49162665392b03f3d9fb1ca91b69b7e8146f03dd0905",
+      "bytes": 1924,
+      "count": 9,
+      "files_bytes": 2905
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-sequence-r4",
+      "path": "local/evidence-manifests/aa95e5441f3c79d150b42c25f4d19ee33349ec6bded4d78c150cd16f68b29fab.jsonl",
+      "sha256": "aa95e5441f3c79d150b42c25f4d19ee33349ec6bded4d78c150cd16f68b29fab",
+      "bytes": 1090,
+      "count": 5,
+      "files_bytes": 1522
+    },
+    {
+      "run": "local/research/codex/g1-punch-down-sequence-r5",
+      "path": "local/evidence-manifests/3d8e4fdedc90e0d0f6db8cb651cfb850caabc25bb53274d685e928e3821024e9.jsonl",
+      "sha256": "3d8e4fdedc90e0d0f6db8cb651cfb850caabc25bb53274d685e928e3821024e9",
+      "bytes": 2947,
+      "count": 14,
+      "files_bytes": 3183
+    },
+    {
+      "run": "local/research/codex/g1-punch-rust-native-r1",
+      "path": "local/evidence-manifests/e9ca33f3272cca42de0bcb546843d37e17d83e67b985ec448026188fea69395b.jsonl",
+      "sha256": "e9ca33f3272cca42de0bcb546843d37e17d83e67b985ec448026188fea69395b",
+      "bytes": 103590,
+      "count": 495,
+      "files_bytes": 6956907487
+    },
+    {
+      "run": "local/research/codex/g1-punch-rust-native-r4",
+      "path": "local/evidence-manifests/551d3890d988e06f4553d74c4cae184594f1901503c7481e8e06e7fc3370df85.jsonl",
+      "sha256": "551d3890d988e06f4553d74c4cae184594f1901503c7481e8e06e7fc3370df85",
+      "bytes": 8289,
+      "count": 41,
+      "files_bytes": 265482729
+    },
+    {
+      "run": "local/research/codex/g1-punch-rust-native-r5",
+      "path": "local/evidence-manifests/291cea59622882dde8a8a305a838c414a0e4cd83c4faa0936a52e9db42de2ef4.jsonl",
+      "sha256": "291cea59622882dde8a8a305a838c414a0e4cd83c4faa0936a52e9db42de2ef4",
+      "bytes": 8289,
+      "count": 41,
+      "files_bytes": 265482895
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/fa1e8b14ab50270dd7c54e29275e25228d9db6e0e97090a7649732ca80d94e88.jsonl",
+      "sha256": "fa1e8b14ab50270dd7c54e29275e25228d9db6e0e97090a7649732ca80d94e88",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/ee90e81fd179bb9abd36cc6a42431aaf1872f124d1c225f1385ca07555133f22.jsonl",
+      "sha256": "ee90e81fd179bb9abd36cc6a42431aaf1872f124d1c225f1385ca07555133f22",
+      "bytes": 628,
+      "count": 3,
+      "files_bytes": 449
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/792c1bd7706ad6c2617110a168b3f5454c812b4dc89b35b29831bd09fca2e08b.jsonl",
+      "sha256": "792c1bd7706ad6c2617110a168b3f5454c812b4dc89b35b29831bd09fca2e08b",
+      "bytes": 647,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/room-player-r1",
+      "path": "local/evidence-manifests/1426d1fb471e78a5dcf2711b6df4cc35f7428fed544744b95407d773296a9fc8.jsonl",
+      "sha256": "1426d1fb471e78a5dcf2711b6df4cc35f7428fed544744b95407d773296a9fc8",
+      "bytes": 464,
+      "count": 2,
+      "files_bytes": 286
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/e68c1a3bbfcd937325e72a8c743db27e67b8d4c0adb71f230a13d56f3950fd80.jsonl",
+      "sha256": "e68c1a3bbfcd937325e72a8c743db27e67b8d4c0adb71f230a13d56f3950fd80",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/2e2bd80ceaf73699e2f2062328b0c96b393bd9dbc41be88f0cec94491b6f3f2c.jsonl",
+      "sha256": "2e2bd80ceaf73699e2f2062328b0c96b393bd9dbc41be88f0cec94491b6f3f2c",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 384
+    },
+    {
+      "run": "local/research/codex/rust-four-startup-inputs-r1",
+      "path": "local/evidence-manifests/750b6be79d75ae3d311cf18f045a413dd4453691019ffbe961f499870be4ce3a.jsonl",
+      "sha256": "750b6be79d75ae3d311cf18f045a413dd4453691019ffbe961f499870be4ce3a",
+      "bytes": 2837,
+      "count": 14,
+      "files_bytes": 2562
+    },
+    {
+      "run": "local/research/codex/start-reply-r1",
+      "path": "local/evidence-manifests/a5883106f1b440f06eede656c90054874ed216072ea36a851ac82465bb2ac247.jsonl",
+      "sha256": "a5883106f1b440f06eede656c90054874ed216072ea36a851ac82465bb2ac247",
+      "bytes": 464,
+      "count": 2,
+      "files_bytes": 314
+    }
   ]
 }

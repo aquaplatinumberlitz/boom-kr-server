@@ -104,15 +104,6 @@
       "limits": "4 comparisons over two already selected bodies, no general client fidelity claim."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP328-shoe-reference.json",
-      "bytes": 938844,
-      "sha256": "e26385860525adfe1e0e561b6416d315840859a34220c086f7e94e0debc737a8",
-      "count": 3494
-    }
-  ],
   "delta": {
     "added": [
       "Shoe selector5 có native reference hai vòng với finite destination, stop, retirement/quota và peer/reset; đủ định hình phép thử Rust tiếp."
@@ -208,6 +199,374 @@
       "path": "rust/crates/kr-service/src/room_io.rs",
       "state": "unchanged",
       "reason": "Shoe vẫn tắt; không thay behavior runtime từ kết quả reference."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SHOE328-00001",
+      "kind": "artifact",
+      "path": "/etc/nsswitch.conf",
+      "bytes": 359,
+      "sha256": "c8ee7a9faf798caab178ec51afae4146f1efd8a716b7acedf28345b6c75f9697"
+    },
+    {
+      "id": "SHOE328-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3655,
+      "sha256": "be6ff6562c1935c575b90e5cd1555b75fd118192dfb3f80c844aa798a3156d4d"
+    },
+    {
+      "id": "SHOE328-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 268916,
+      "sha256": "00a65a22e4ff9532117174052f53faa7445b85dea8696c0777b9146f231fdc65"
+    },
+    {
+      "id": "SHOE328-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 165250,
+      "sha256": "3c3694ef5917f882104b40f0021bd69a327d0f3a843504b962d6318378a91d92"
+    },
+    {
+      "id": "SHOE328-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 84970,
+      "sha256": "b8f6ed0abafbd8826829bd77a4b6a4153b9bccaa764c8c947dc4ef8d2a152410"
+    },
+    {
+      "id": "SHOE328-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45211,
+      "sha256": "c0e0b45878946de37cf50a309b8cecc256293aa0d495d0fbfc8ff4fa29adde78"
+    },
+    {
+      "id": "SHOE328-00007",
+      "kind": "repository",
+      "path": "docs/evidence/item-families/shoe-action.json",
+      "bytes": 11683,
+      "sha256": "1e6bc818485e6f876859e67982eaa34833e0968e0826b57933a64df79a74bad3"
+    },
+    {
+      "id": "SHOE328-00008",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 281768,
+      "sha256": "aa0cc831f04fcf1db79d855c0b8db303f3b8496d26046475fd1f8c52e5628ec3"
+    },
+    {
+      "id": "SHOE328-00009",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 71915,
+      "sha256": "b5845031561f05ab9530a459e34778fd126a756748d680f13e70dc723aa424cd"
+    },
+    {
+      "id": "SHOE328-00020",
+      "kind": "local",
+      "path": "local/research/codex/collision-r1/overlap121.bin",
+      "bytes": 167,
+      "sha256": "2fd71d091341990f3becfbe240f9fef2dc7069d20228216c4e974bf30afdf851"
+    },
+    {
+      "id": "SHOE328-00021",
+      "kind": "local",
+      "path": "local/research/codex/cp327-exact-head-exit.json",
+      "bytes": 381,
+      "sha256": "9ed23257de9ad8d9aa21e9073c78c5f0c2cf22399e15b040a1863bb9674ed46e"
+    },
+    {
+      "id": "SHOE328-00023",
+      "kind": "local",
+      "path": "local/research/codex/cp327-merge-result.json",
+      "bytes": 922,
+      "sha256": "6e18bce456cf822beddab1c4d455945d48f9e3d6acdec13df6387167ba43e89b"
+    },
+    {
+      "id": "SHOE328-00030",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/actor-fields-final.json",
+      "bytes": 270864,
+      "sha256": "8c28d5f3ee345b515ef98f94553c52c8ffefdaaad106a5333c5b3538bd98295f"
+    },
+    {
+      "id": "SHOE328-00033",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/frozen-input-postrun-verification.json",
+      "bytes": 60,
+      "sha256": "df37c02e89abb6ccdfcf09853085b4e2ce023d4a542b060f2ecbf1774be2ccbc"
+    },
+    {
+      "id": "SHOE328-01386",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/shoe-source-observations.json",
+      "bytes": 295707,
+      "sha256": "1a319269baa104be6678e3c6214d9de273a03a9a8414825dcafd5e76779c8b91"
+    },
+    {
+      "id": "SHOE328-01390",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/actor-fields-final.json",
+      "bytes": 352593,
+      "sha256": "b94d88f66d66986d4b5e5dec2b0148de35939f9856951cb31d7073a51eed545b"
+    },
+    {
+      "id": "SHOE328-01391",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/control-review.json",
+      "bytes": 1230,
+      "sha256": "0d97f5c5d64de09a9d48234b02b26f4bdfb748270ad12e51239823b0a1f665c8"
+    },
+    {
+      "id": "SHOE328-01394",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/frozen-input-postrun-verification.json",
+      "bytes": 61,
+      "sha256": "a5961a76ab9609176f9f28b332912c0bb377142c20d350a4439b1068eacd9ac1"
+    },
+    {
+      "id": "SHOE328-01763",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/independent-c2s-decoded.json",
+      "bytes": 89858,
+      "sha256": "07dc6324d6f99db49163c825b2285d355d3525fde524ae0c69c4854d50d8f9be"
+    },
+    {
+      "id": "SHOE328-01767",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/raw-seal.json",
+      "bytes": 268630,
+      "sha256": "3d394fbccc94242178d39a40a9ad103b6cfad49059803d8daf73225a847482e6"
+    },
+    {
+      "id": "SHOE328-03445",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/two-round-shoe-verification.json",
+      "bytes": 4892,
+      "sha256": "973f738117e7f8f7bb13992468d0f620f27475067dce8368d3605cf8689b4620"
+    },
+    {
+      "id": "SHOE328-03448",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reuse-r11/reuse.json",
+      "bytes": 3897,
+      "sha256": "8413c8d5115c0a49bedaa88bbf19d863585e092a4119555d247469bbf06a9e06"
+    },
+    {
+      "id": "SHOE328-03449",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reuse-r11/runtime-chunk-binding.json",
+      "bytes": 1095,
+      "sha256": "99138be4fa2dfe05514142b96661c25206f1af72f7baf0918af4da716cdc568f"
+    },
+    {
+      "id": "SHOE328-03450",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reuse-r11/shoe-edges-ida-cli.json",
+      "bytes": 26352,
+      "sha256": "03e79065e5daadbbfebda15678c272f93072b937c4a09add044ffe6b8d9ec25f"
+    },
+    {
+      "id": "SHOE328-03456",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "SHOE328-03457",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/alsa-null.conf",
+      "bytes": 27,
+      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+    },
+    {
+      "id": "SHOE328-03465",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "SHOE328-03471",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "SHOE328-03474",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "SHOE328-03484",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "SHOE328-03489",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "bytes": 25703,
+      "sha256": "fb11ec9693a610cfbf57cdc092f12b05ab6aa73f0dc806c2f3fe208764f0576a"
+    },
+    {
+      "id": "SHOE328-03490",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "bytes": 17984,
+      "sha256": "fac76f88f62ef5938b7732449127cd20e9fd0c9c094fa926f781ab1f92491b4c"
+    },
+    {
+      "id": "SHOE328-03491",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 194065,
+      "sha256": "7b25f0055c498ce88bf94288099b23ddf93a00a1091df9d89843c05db14086aa"
+    },
+    {
+      "id": "SHOE328-03492",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/terrain.rs",
+      "bytes": 24143,
+      "sha256": "c56ff72d93346f4ade84e9fdf65434ab26ea278ff325a8dd700b3e0df65961b9"
+    },
+    {
+      "id": "SHOE328-03493",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/bomb_motion.rs",
+      "bytes": 3504,
+      "sha256": "31671965131eb46b9fc2217394b6ef0d42f404f78ee1c864b327d083530ae907"
+    },
+    {
+      "id": "SHOE328-03494",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/17f28997ffeada21b6c10b52bac225d43d01075cfd0d0355df2cebed60112c16.jsonl",
+      "sha256": "17f28997ffeada21b6c10b52bac225d43d01075cfd0d0355df2cebed60112c16",
+      "bytes": 3440,
+      "count": 18,
+      "files_bytes": 453467
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/519fd51ab1885eae8d7f36935b494d2ae346ddd0640e6cc63aa3a8f70a1b9f9e.jsonl",
+      "sha256": "519fd51ab1885eae8d7f36935b494d2ae346ddd0640e6cc63aa3a8f70a1b9f9e",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/128d5af526423965ab649d530c4ee81340c98aa0b00aeedf387c3b7742d67b3d.jsonl",
+      "sha256": "128d5af526423965ab649d530c4ee81340c98aa0b00aeedf387c3b7742d67b3d",
+      "bytes": 836,
+      "count": 4,
+      "files_bytes": 277
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/4cd8d2913e54774e09d9bb39f4040636b4c8e0b7ee2d9f936f46fd7e4693c34e.jsonl",
+      "sha256": "4cd8d2913e54774e09d9bb39f4040636b4c8e0b7ee2d9f936f46fd7e4693c34e",
+      "bytes": 1021,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/g1-shoe-action-reference-native-r12",
+      "path": "local/evidence-manifests/92260d62b5fec6f4039a7ac44ec0c71531c744c00814b3ded3673e25b7cb4b45.jsonl",
+      "sha256": "92260d62b5fec6f4039a7ac44ec0c71531c744c00814b3ded3673e25b7cb4b45",
+      "bytes": 297586,
+      "count": 1357,
+      "files_bytes": 3723541534
+    },
+    {
+      "run": "local/research/codex/g1-shoe-action-reference-native-r13",
+      "path": "local/evidence-manifests/2e4ab4a6454f1428ec482ec7a6825457d9c5cf14feacd3a4127ad3e9c2b46bbe.jsonl",
+      "sha256": "2e4ab4a6454f1428ec482ec7a6825457d9c5cf14feacd3a4127ad3e9c2b46bbe",
+      "bytes": 450399,
+      "count": 2051,
+      "files_bytes": 3765586399
+    },
+    {
+      "run": "local/research/codex/g1-shoe-action-reuse-r11",
+      "path": "local/evidence-manifests/77ffe4365acba9f39733b1eb4541c8a338a831b062fa87d72f9ff0958a61f4bf.jsonl",
+      "sha256": "77ffe4365acba9f39733b1eb4541c8a338a831b062fa87d72f9ff0958a61f4bf",
+      "bytes": 1098,
+      "count": 5,
+      "files_bytes": 6137
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/0fe2b9584b1aa6aceaf5ecef633b31f81a33d4f57802124e5a18dbe455e2e3d7.jsonl",
+      "sha256": "0fe2b9584b1aa6aceaf5ecef633b31f81a33d4f57802124e5a18dbe455e2e3d7",
+      "bytes": 436,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/1153d56636181e11db12772c5b6d6c83ae6760c0d3ee94d7449c669588fc6ca0.jsonl",
+      "sha256": "1153d56636181e11db12772c5b6d6c83ae6760c0d3ee94d7449c669588fc6ca0",
+      "bytes": 625,
+      "count": 3,
+      "files_bytes": 449
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/2a5c40d11094312ceb59000d29d9f8347beb46b225a00366d87525b1fd4fbf30.jsonl",
+      "sha256": "2a5c40d11094312ceb59000d29d9f8347beb46b225a00366d87525b1fd4fbf30",
+      "bytes": 644,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/room-player-r1",
+      "path": "local/evidence-manifests/5cae7762d11f37210baefcf3b5a0b159b2e7426a85b69ff4d0fa079628abceea.jsonl",
+      "sha256": "5cae7762d11f37210baefcf3b5a0b159b2e7426a85b69ff4d0fa079628abceea",
+      "bytes": 462,
+      "count": 2,
+      "files_bytes": 286
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/9f75c53490021a3985eb85626e7af92f3be9f3e232b7a09d23c6a275bebfb594.jsonl",
+      "sha256": "9f75c53490021a3985eb85626e7af92f3be9f3e232b7a09d23c6a275bebfb594",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/0654c45bbdc6c575e3a706d4793858d910670a342c740429aa1971807fdfe2c9.jsonl",
+      "sha256": "0654c45bbdc6c575e3a706d4793858d910670a342c740429aa1971807fdfe2c9",
+      "bytes": 455,
+      "count": 2,
+      "files_bytes": 384
+    },
+    {
+      "run": "local/research/codex/start-reply-r1",
+      "path": "local/evidence-manifests/95914da025f390c7e6b671f4741b12c6ac08e031763e267413fe0f6252911788.jsonl",
+      "sha256": "95914da025f390c7e6b671f4741b12c6ac08e031763e267413fe0f6252911788",
+      "bytes": 462,
+      "count": 2,
+      "files_bytes": 314
     }
   ]
 }

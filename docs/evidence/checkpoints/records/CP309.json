@@ -108,15 +108,6 @@
       "limits": "Full exact committed head and CI required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP309-camp08-cancellation.json",
-      "bytes": 263650,
-      "sha256": "17de9ee6e9290e38d2ab132a5470ff33683bc63a2610e3450f79f80651ba391b",
-      "count": 974
-    }
-  ],
   "delta": {
     "added": [
       "Map-owned cancellation rule, bounded122 and native two-cycle policy evidence.",
@@ -216,6 +207,207 @@
       "path": "AGENTS.md",
       "state": "unchanged",
       "reason": "Không đổi quy trình/acceptance/owner L1."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "CAMP309-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3513,
+      "sha256": "f33e171512f2a137b595045ff4e6e7063475a553e1f0c749a8c0a3d0c3fc8945"
+    },
+    {
+      "id": "CAMP309-0002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 262543,
+      "sha256": "e5da824f33a74da128c4f828e01924e2ff24b627bd35789cbbb12a4918e2be3a"
+    },
+    {
+      "id": "CAMP309-0003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 157193,
+      "sha256": "427ed0ef2113fb310cd9ca0c63e83710fd5ff4755289c767720758580118e8d8"
+    },
+    {
+      "id": "CAMP309-0004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 82531,
+      "sha256": "87da4429cf600262f4661ad871d32172f5f9670a01bf2ba45f3fd8caf15fcd95"
+    },
+    {
+      "id": "CAMP309-0005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 44556,
+      "sha256": "00030880e9814529819c6da72fa338362d9c86153d8557b03869119e8eccfeac"
+    },
+    {
+      "id": "CAMP309-0006",
+      "kind": "repository",
+      "path": "docs/content/tile-semantics.md",
+      "bytes": 4148,
+      "sha256": "9c4fc4b01a5ba556e6e7845c4bc3d6f0fb8c4bb303e07ed7ab0e7ddbb5dd1d3f"
+    },
+    {
+      "id": "CAMP309-0007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD121.json",
+      "bytes": 3485,
+      "sha256": "3e380bceb90c6e7d231d642c3ddb6c3fbd030c3a332b52581bd7b95d416f726e"
+    },
+    {
+      "id": "CAMP309-0008",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-camp08-cancellation.json",
+      "bytes": 3416,
+      "sha256": "d26e3f3dc1ed6cd673b76d721a11950b0dc95f1746e61e05e569b19b661bafa5"
+    },
+    {
+      "id": "CAMP309-0009",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 275353,
+      "sha256": "be227b161733915a1999c921e615182f6bd57aa08a1f1a8f2a7c4238c5fad7e2"
+    },
+    {
+      "id": "CAMP309-0010",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 58633,
+      "sha256": "425dc5c878f0ed2b9f43e00b1b5d82d68aaa4b0d36ee6d169d116019a82a1df8"
+    },
+    {
+      "id": "CAMP309-0012",
+      "kind": "local",
+      "path": "local/research/codex/cp309-docs-precheck.txt",
+      "bytes": 274,
+      "sha256": "e6af79f126a9d52b4c14d00a4e60eb191008e206c425eb0918cfe8223cd581d3"
+    },
+    {
+      "id": "CAMP309-0221",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-cancellation-native-r1/native/raw-seal.json",
+      "bytes": 16071,
+      "sha256": "f41f59f51b291fe25d163bdfec8abfa35844ad6e3e082fa34aa15daa5a5e770f"
+    },
+    {
+      "id": "CAMP309-0228",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-cancellation-native-r1/partial-verification.json",
+      "bytes": 1071,
+      "sha256": "fb1b5c80cb1a760c90dd9bd69bb6e79021645a36c35d68212dcf3c511455557b"
+    },
+    {
+      "id": "CAMP309-0413",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-cancellation-native-r2/native/raw-seal.json",
+      "bytes": 24282,
+      "sha256": "af99631ddeb7028ca93a4103dd9212c0c15e062c6ec5d0d0235a6904289e9ee6"
+    },
+    {
+      "id": "CAMP309-0421",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-cancellation-native-r2/policy-verification.json",
+      "bytes": 49234,
+      "sha256": "1b9814e4d758b02927cc51ad51443dde92a260d7899d3c907f267a7bc6ab47a6"
+    },
+    {
+      "id": "CAMP309-0480",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-condition-native-r7/initial-flag-verification.json",
+      "bytes": 104323,
+      "sha256": "a115db4f61249d92036827f843c4d966ba5206728e873f89f4216c61f1a7b4eb"
+    },
+    {
+      "id": "CAMP309-0594",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-map-flag-r1/reuse.json",
+      "bytes": 1547,
+      "sha256": "3715feee70e0fe4c45f966caa3ae39826b2c0b320be9c96d9296071038814dff"
+    },
+    {
+      "id": "CAMP309-0957",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-bomb-rules-source-verification.json",
+      "bytes": 2598,
+      "sha256": "35d209e9c6f48b4ca4299daf30882b373388c2d16d6a71ccb265973543882def"
+    },
+    {
+      "id": "CAMP309-0974",
+      "kind": "repository",
+      "path": "rust/Cargo.lock",
+      "bytes": 32227,
+      "sha256": "c8d313f8974c53ca76402d50fd198a3a5fb4367b11ad78d62effa2dc3ee1c1ef"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/98c840ce2c7b5570f7cfe7f7d8f00263eff073cbd83cda21547cb986425c9329.jsonl",
+      "sha256": "98c840ce2c7b5570f7cfe7f7d8f00263eff073cbd83cda21547cb986425c9329",
+      "bytes": 4243,
+      "count": 22,
+      "files_bytes": 181418
+    },
+    {
+      "run": "local/research/codex/g1-camp08-c2s122-native-r2",
+      "path": "local/evidence-manifests/d2055bdde58cda8f03fa372fbb5df621ed702f3a82ab47e6b725c577841b3147.jsonl",
+      "sha256": "d2055bdde58cda8f03fa372fbb5df621ed702f3a82ab47e6b725c577841b3147",
+      "bytes": 1741,
+      "count": 7,
+      "files_bytes": 57420
+    },
+    {
+      "run": "local/research/codex/g1-camp08-cancellation-native-r1",
+      "path": "local/evidence-manifests/814b285eadfabc73b00a02d8a00cbeb9b9c4b362e2eec315467896345a5f77ba.jsonl",
+      "sha256": "814b285eadfabc73b00a02d8a00cbeb9b9c4b362e2eec315467896345a5f77ba",
+      "bytes": 48425,
+      "count": 217,
+      "files_bytes": 540022650
+    },
+    {
+      "run": "local/research/codex/g1-camp08-cancellation-native-r2",
+      "path": "local/evidence-manifests/8d487205a73b09b68fb91a368734c4a64b7c405aa84930303eb0e99abff6f4c0.jsonl",
+      "sha256": "8d487205a73b09b68fb91a368734c4a64b7c405aa84930303eb0e99abff6f4c0",
+      "bytes": 42138,
+      "count": 187,
+      "files_bytes": 549487979
+    },
+    {
+      "run": "local/research/codex/g1-camp08-condition-native-r7",
+      "path": "local/evidence-manifests/1642a2fadea9a42dd46c543bcc5e9ffd077981ec32e9f14c848639068d00ccd1.jsonl",
+      "sha256": "1642a2fadea9a42dd46c543bcc5e9ffd077981ec32e9f14c848639068d00ccd1",
+      "bytes": 30936,
+      "count": 141,
+      "files_bytes": 535560009
+    },
+    {
+      "run": "local/research/codex/g1-camp08-map-flag-r1",
+      "path": "local/evidence-manifests/2085ac649a7fbf57aabc9849a1f69d7fadb7006ff7ffca5b5e0a0e2fb4c62cb3.jsonl",
+      "sha256": "2085ac649a7fbf57aabc9849a1f69d7fadb7006ff7ffca5b5e0a0e2fb4c62cb3",
+      "bytes": 4931,
+      "count": 25,
+      "files_bytes": 211409
+    },
+    {
+      "run": "local/research/codex/g1-camp08-seed-native-r1",
+      "path": "local/evidence-manifests/bdbe07beb556f3ca07d4f0920ac4b727c6840f02363db7d0644ccf7ea0a41a35.jsonl",
+      "sha256": "bdbe07beb556f3ca07d4f0920ac4b727c6840f02363db7d0644ccf7ea0a41a35",
+      "bytes": 11837,
+      "count": 54,
+      "files_bytes": 91992445
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-native-r1",
+      "path": "local/evidence-manifests/92dd84fbd46b327da112de040a844acc390f36d5ff38aab9e8c8ed713c46adba.jsonl",
+      "sha256": "92dd84fbd46b327da112de040a844acc390f36d5ff38aab9e8c8ed713c46adba",
+      "bytes": 67880,
+      "count": 302,
+      "files_bytes": 6418762680
     }
   ]
 }

@@ -100,15 +100,6 @@
       "limits": "Static metadata and generated navigation only; production Rust/server unchanged and prior source checks reused."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP275-village10-selector.json",
-      "bytes": 219386,
-      "sha256": "c3da392b9a5922e4d823a4675d00acc37356c5ab72cdec66d596efbafaca190a",
-      "count": 823
-    }
-  ],
   "delta": {
     "added": [
       "Bounded native Village10 selected-code/name evidence, first terrain guard failure and scope-limited B navigation."
@@ -245,5 +236,216 @@
   ],
   "completed_feature_groups": [
     "bounded-village10-selection-probe"
+  ],
+  "evidence": [
+    {
+      "id": "MAP275-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3644,
+      "sha256": "6d5d878bf38b6fc5e99064e521c1c193eeda49af19bbe3ddece1d1d14144ea5a"
+    },
+    {
+      "id": "MAP275-00002",
+      "kind": "repository",
+      "path": "docs/CONTENT.md",
+      "bytes": 67718,
+      "sha256": "9db9a53dde2fd3e85647384111517b76b580ffb5d05b7946f21a17009982e744"
+    },
+    {
+      "id": "MAP275-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 238362,
+      "sha256": "3882d599357b06f385ba29dfbbad5ea92c7fc56b9280df648a0fba359b963f75"
+    },
+    {
+      "id": "MAP275-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 136997,
+      "sha256": "829932797502ba367e5fa0ade9d58db3567c4f18d6a8ac65aef6b157718c7769"
+    },
+    {
+      "id": "MAP275-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 58750,
+      "sha256": "fd4d38170d4a0b0838b01c7ca39573019e6ccc2acb848417831bc3f9384688b6"
+    },
+    {
+      "id": "MAP275-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "MAP275-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 27761,
+      "sha256": "2f4fc263e813c471c2e426d2e482ac40873d775cced78f403b19630ad84e7900"
+    },
+    {
+      "id": "MAP275-00008",
+      "kind": "repository",
+      "path": "docs/content/census.json",
+      "bytes": 1336679,
+      "sha256": "884f506edf0b0d55685e4fdb0d035f849b1fb1f0119479010e715653e5cd8725"
+    },
+    {
+      "id": "MAP275-00009",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD091.json",
+      "bytes": 4189,
+      "sha256": "6d3d67ec8dbee780185cc3a13b00790d415c573ec69a637aa5273978c92b6ba4"
+    },
+    {
+      "id": "MAP275-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/village10-map-probe.json",
+      "bytes": 6945,
+      "sha256": "7ef61b9bc7f3e471523e2f826b41706f43d7c28bd0185facb98f70a71db41425"
+    },
+    {
+      "id": "MAP275-00011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 250070,
+      "sha256": "cdb533522a11ee74c9f153227114e7c8a04837ade32cb8d742d01860ff1cf472"
+    },
+    {
+      "id": "MAP275-00012",
+      "kind": "repository",
+      "path": "docs/protocol/load-phase.md",
+      "bytes": 58671,
+      "sha256": "b63dde7de4bc4211d917a2039d6f9726b318cd48d4dcc6547d7147669972875a"
+    },
+    {
+      "id": "MAP275-00364",
+      "kind": "local",
+      "path": "local/research/codex/map-village10-id-only-r1/native-map/cycles/run.json",
+      "bytes": 3568,
+      "sha256": "6f635d13a1bfa9fb22fbef53ca9b4bd9d59c24a2df4789498948279d6b0d518b"
+    },
+    {
+      "id": "MAP275-00365",
+      "kind": "local",
+      "path": "local/research/codex/map-village10-id-only-r1/native-map/cycles/service.log",
+      "bytes": 75,
+      "sha256": "9aa03d6e95f12a1887564110983b11163e24da819af575c6e89d712d7f2c52f5"
+    },
+    {
+      "id": "MAP275-00373",
+      "kind": "local",
+      "path": "local/research/codex/map-village10-id-only-r1/native-map/raw-seal.json",
+      "bytes": 2450,
+      "sha256": "4d28c80a131bef4981ec6d586248db9fc9d088d8b597e898950293e71c36559e"
+    },
+    {
+      "id": "MAP275-00380",
+      "kind": "local",
+      "path": "local/research/codex/map-village10-id-only-r1/source-byte-match.json",
+      "bytes": 1471,
+      "sha256": "59a4d008419b0816a53add6c6e73109354fcbc01651ee1243420d8d99cca4a1e"
+    },
+    {
+      "id": "MAP275-00391",
+      "kind": "local",
+      "path": "local/research/codex/map-village10-selection-r2/export-control-r1/verification.json",
+      "bytes": 404,
+      "sha256": "fc24b4ade3e3b108cf6f38383ba06340c79cf8b696fa954581e2bbb18fdd733b"
+    },
+    {
+      "id": "MAP275-00773",
+      "kind": "local",
+      "path": "local/research/codex/map-village10-selection-r2/native-map/raw-seal.json",
+      "bytes": 8635,
+      "sha256": "04642007d3a898effa17169d7140d955bd7e57d93d0a19419b4677481b7ac349"
+    },
+    {
+      "id": "MAP275-00781",
+      "kind": "local",
+      "path": "local/research/codex/map-village10-selection-r2/prebind-control-r1/verification.json",
+      "bytes": 386,
+      "sha256": "7117da4e6f8bb3dad9eadc4c187a778fea3291a5d3718918fd827e7d62f7be6a"
+    },
+    {
+      "id": "MAP275-00785",
+      "kind": "local",
+      "path": "local/research/codex/map-village10-selection-r2/scope-correction.json",
+      "bytes": 982,
+      "sha256": "1be2b413ebbc9a40807d83a437c343f73372d731c66df16586518a137a823981"
+    },
+    {
+      "id": "MAP275-00786",
+      "kind": "local",
+      "path": "local/research/codex/map-village10-selection-r2/selection-verification-r2.json",
+      "bytes": 10259,
+      "sha256": "edab8e236dd0a4a7afef8f194e531900ba9bba061f960d4fe13680756fc4c9a2"
+    },
+    {
+      "id": "MAP275-00803",
+      "kind": "local",
+      "path": "local/research/codex/village10-census-check-final.txt",
+      "bytes": 63,
+      "sha256": "c60a8fc4ffbf20633ee4b4877257015b97428959899f6841fc026e9d125ec4d2"
+    },
+    {
+      "id": "MAP275-00806",
+      "kind": "local",
+      "path": "local/research/codex/village10-docs-final.txt",
+      "bytes": 274,
+      "sha256": "97a32f91199b99589e8d3b285a8996dac2c9a4de73197f64aaa82a6306a92313"
+    },
+    {
+      "id": "MAP275-00815",
+      "kind": "local",
+      "path": "local/research/codex/village10-python-tests-r1.txt",
+      "bytes": 190,
+      "sha256": "31e4ab27940e3d257e19c280da4ba59c51ba42c8214f121298e053fe04773490"
+    },
+    {
+      "id": "MAP275-00823",
+      "kind": "repository",
+      "path": "tools/content_census.py",
+      "bytes": 48195,
+      "sha256": "5c8b8229e4fa32895aaf6270bae77a8647419ea70b7aa71c157c7f9a103eb339"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/c9dc6c0f4114e74706ada778599c8a9ebfbc519678bb20a01c845988c4a7857c.jsonl",
+      "sha256": "c9dc6c0f4114e74706ada778599c8a9ebfbc519678bb20a01c845988c4a7857c",
+      "bytes": 5819,
+      "count": 31,
+      "files_bytes": 131744
+    },
+    {
+      "run": "local/research/codex/map-village10-id-only-r1",
+      "path": "local/evidence-manifests/d8aba523347520ddd02673707c1ed82878d88c560192c38c5a09cca7c271ea0c.jsonl",
+      "sha256": "d8aba523347520ddd02673707c1ed82878d88c560192c38c5a09cca7c271ea0c",
+      "bytes": 78921,
+      "count": 362,
+      "files_bytes": 3127267610
+    },
+    {
+      "run": "local/research/codex/map-village10-selection-r2",
+      "path": "local/evidence-manifests/d3485718f2faf90fed4f3a0ea84750a0110a3e0b7a7336e4cee09214d91a8913.jsonl",
+      "sha256": "d3485718f2faf90fed4f3a0ea84750a0110a3e0b7a7336e4cee09214d91a8913",
+      "bytes": 88115,
+      "count": 400,
+      "files_bytes": 3130030792
+    },
+    {
+      "run": "local/research/codex/map-village10-source-r1",
+      "path": "local/evidence-manifests/9fb8f406b58a0eee5ac93622bcddfb8bd90453a0866e4d69048c4acab047ff18.jsonl",
+      "sha256": "9fb8f406b58a0eee5ac93622bcddfb8bd90453a0866e4d69048c4acab047ff18",
+      "bytes": 1065,
+      "count": 5,
+      "files_bytes": 13159
+    }
   ]
 }

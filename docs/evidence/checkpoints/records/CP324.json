@@ -94,15 +94,6 @@
       "limits": "Full local/history exact head and CI required beforemerge; source/body/binary proof is not gameplaymilestone closure."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP324-motion-codec.json",
-      "bytes": 562044,
-      "sha256": "773551c00eaa3d71f8cf73530bb25a9296d7e63d842f3f87ffaca94f1cfc8412",
-      "count": 2140
-    }
-  ],
   "delta": {
     "added": [
       "Rust codec119/162, actualnative162rootproof và explicit partiallifecycle blocker."
@@ -220,6 +211,967 @@
       "path": "rust/crates/kr-service/src/room_io.rs",
       "state": "unchanged",
       "reason": "Chưa nối119handler hoặc thay authority/terrain/timer/queue trong service."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "MOT324-0001",
+      "kind": "artifact",
+      "path": "/etc/nsswitch.conf",
+      "bytes": 359,
+      "sha256": "c8ee7a9faf798caab178ec51afae4146f1efd8a716b7acedf28345b6c75f9697"
+    },
+    {
+      "id": "MOT324-0002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3552,
+      "sha256": "dd10e9b4291db9fe3cfe7717f6d1465b5ca2835be62169f37bee5089802233a2"
+    },
+    {
+      "id": "MOT324-0003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 268449,
+      "sha256": "359f64febf3f46abb0753933bd39229c5203b6a87a57df6cd6f2fade1c8a565e"
+    },
+    {
+      "id": "MOT324-0004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 163495,
+      "sha256": "8564e9bef11574cea4b3a486ae05251bdc84dd35805447339fde3f22e5cd2f6a"
+    },
+    {
+      "id": "MOT324-0005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 84699,
+      "sha256": "82862d65b65a38923d312473cecff3edc70b48475fec68199887115229e424cd"
+    },
+    {
+      "id": "MOT324-0006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 68405,
+      "sha256": "f07d82a2dedceec7acd657b475928dcb53456ae938309cae5309a848003b81e0"
+    },
+    {
+      "id": "MOT324-0007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45034,
+      "sha256": "f58dd6e8f48e82f3171a39a241adb9ce11b7237275afbeb6d113ebc0e09bf04d"
+    },
+    {
+      "id": "MOT324-0008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD134.json",
+      "bytes": 4560,
+      "sha256": "db71d4cc0c297e168a3fc5e8af4ec32f7c32568196119219f319f2c2a2b23e42"
+    },
+    {
+      "id": "MOT324-0009",
+      "kind": "repository",
+      "path": "docs/evidence/item-families/bomb-motion-codec.json",
+      "bytes": 11325,
+      "sha256": "fdde92074c75b1994e54bbd484c59652ebc761e03d5b972119f45ee675ea8b1b"
+    },
+    {
+      "id": "MOT324-0010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 281478,
+      "sha256": "02278b0ad6045b0f4dda84b9951be245e84c0786680327fca7113751daed46ba"
+    },
+    {
+      "id": "MOT324-0011",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 65411,
+      "sha256": "7ed04ce8bf4abf3da5772bb33f8349dd953f35ffbc44f8c19b6c55adf6be1217"
+    },
+    {
+      "id": "MOT324-0022",
+      "kind": "local",
+      "path": "local/research/codex/collision-r1/overlap121.bin",
+      "bytes": 167,
+      "sha256": "2fd71d091341990f3becfbe240f9fef2dc7069d20228216c4e974bf30afdf851"
+    },
+    {
+      "id": "MOT324-0025",
+      "kind": "local",
+      "path": "local/research/codex/cp324-docs-precheck.txt",
+      "bytes": 520,
+      "sha256": "08535ee3ea5837bab3a551b500dbb9e64748f5d56d69e21e23f209b28818b467"
+    },
+    {
+      "id": "MOT324-0026",
+      "kind": "local",
+      "path": "local/research/codex/cp324-preservation-verification.json",
+      "bytes": 383,
+      "sha256": "4640e9f5d7f803e80e0285aa5275da69de6861215995fa5cce309233aa2e89e4"
+    },
+    {
+      "id": "MOT324-0037",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r4/failure-verification.json",
+      "bytes": 411,
+      "sha256": "a3e7455105d320f0c0178cc4edbe8cee1706ca4ed65581812c3af9d9275dbe56"
+    },
+    {
+      "id": "MOT324-0061",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/motion-observations-verification.json",
+      "bytes": 2198,
+      "sha256": "8f9551fbbe2e0c5d537c4d75518159802d054602f1d5aee2fb4e1fcc50593099"
+    },
+    {
+      "id": "MOT324-0065",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/raw-seal.json",
+      "bytes": 217818,
+      "sha256": "4ea44b894ded7f5a79b70113d708f4fe47f5c79244bbfc8d5fd1a1e40752e743"
+    },
+    {
+      "id": "MOT324-1432",
+      "kind": "local",
+      "path": "local/research/codex/g1-motion-codec-build-r1/new-source-chunk-binding.json",
+      "bytes": 3273,
+      "sha256": "0e57ef2c9ce6396d9d4cfde2b76e36c49fd2fc263f82fe5d15d41d3938c5c9cf"
+    },
+    {
+      "id": "MOT324-1433",
+      "kind": "local",
+      "path": "local/research/codex/g1-motion-codec-build-r1/observed-build-polls.json",
+      "bytes": 31519,
+      "sha256": "bce95b1f3546d55da368c1d5db4e19e8dd3718ed4f46a993d9f1b9505c6c7c25"
+    },
+    {
+      "id": "MOT324-1442",
+      "kind": "local",
+      "path": "local/research/codex/g1-motion-codec-build-r1/verification.json",
+      "bytes": 1426,
+      "sha256": "0dad2acb2d5012d22b63a25727295802b30046e4cca892331f0b12e3695f7d75"
+    },
+    {
+      "id": "MOT324-1443",
+      "kind": "local",
+      "path": "local/research/codex/g1-motion-codec-build-r1/workspace-source-identity.json",
+      "bytes": 25987,
+      "sha256": "d9530d98458161e1aba37016270aeee41c07cdb91faf789a7f4e43fb08e6ae7e"
+    },
+    {
+      "id": "MOT324-1529",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-punch-reuse-r1/interface-offset-reconciliation.json",
+      "bytes": 497,
+      "sha256": "b6dccf998ff315c7770dec689066d7dd7a25d0a6165d8a3ecf96f6682ce6777f"
+    },
+    {
+      "id": "MOT324-1541",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-punch-reuse-r5/offset-reconciliation-correction.json",
+      "bytes": 1012,
+      "sha256": "f112e7e35e4297a935c1dc389aa80ce8553509df995b230b6935ee6f951a9577"
+    },
+    {
+      "id": "MOT324-2023",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "MOT324-2024",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/alsa-null.conf",
+      "bytes": 27,
+      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+    },
+    {
+      "id": "MOT324-2028",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "MOT324-2034",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "MOT324-2037",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "MOT324-2049",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "MOT324-2055",
+      "kind": "repository",
+      "path": "rust/.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "MOT324-2056",
+      "kind": "repository",
+      "path": "rust/Cargo.lock",
+      "bytes": 32227,
+      "sha256": "c8d313f8974c53ca76402d50fd198a3a5fb4367b11ad78d62effa2dc3ee1c1ef"
+    },
+    {
+      "id": "MOT324-2057",
+      "kind": "repository",
+      "path": "rust/Cargo.toml",
+      "bytes": 1015,
+      "sha256": "2cd782a9e37bed9289d0466bd6bb11eca396a986d14813d696db6c384c81999a"
+    },
+    {
+      "id": "MOT324-2058",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 37010,
+      "sha256": "6360808a8e6aac67333ece95af2b97600666d786ad1eb3444dea34582e3b4907"
+    },
+    {
+      "id": "MOT324-2059",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/Cargo.toml",
+      "bytes": 495,
+      "sha256": "2bcb5406c96ca745eb66242be31a77f30d152ab8766ea6f6fe5171b8048071f8"
+    },
+    {
+      "id": "MOT324-2060",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/examples/check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "MOT324-2061",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "MOT324-2062",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "MOT324-2063",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0003_match_history.sql",
+      "bytes": 2234,
+      "sha256": "cb8305293b1c7577da9f739afb4d5d0fbac63ac93d57c4fc6fec8069863dcbbf"
+    },
+    {
+      "id": "MOT324-2064",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/tests.rs",
+      "bytes": 69436,
+      "sha256": "38767406e765fbfb4c27a38dfe8500ba9c3e9309c5fbd7c6f23b55ebb987adac"
+    },
+    {
+      "id": "MOT324-2065",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/wire.rs",
+      "bytes": 2758,
+      "sha256": "63adab044276a3ca481d4a96da84eef1c9ce00bce2caff189360f0f601c0d512"
+    },
+    {
+      "id": "MOT324-2066",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 23208,
+      "sha256": "2b3ec0077c44d641ab43e5ff94eff3ad90afee2984211291a0f36e5f5b872915"
+    },
+    {
+      "id": "MOT324-2067",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 25541,
+      "sha256": "c80b68104d0be0d724809336ef9c84826b18734cb4239404507a3c0ad3ed8c34"
+    },
+    {
+      "id": "MOT324-2068",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker/rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "MOT324-2069",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker/tests.rs",
+      "bytes": 26717,
+      "sha256": "665c54e468fa7b4a0543a071f519b84ed9ea7f95d356110d027a9f3d2075456d"
+    },
+    {
+      "id": "MOT324-2070",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker.rs",
+      "bytes": 21117,
+      "sha256": "1aaba49120b9dc8b44f1543cecc3c5b0c56b4bfa43ef2254728fd6236bd54d31"
+    },
+    {
+      "id": "MOT324-2071",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/matches.rs",
+      "bytes": 26137,
+      "sha256": "2acc8e55b8860fe1a162a3614ddf84809c11822b0b6d27bd488a82fdcf1527e5"
+    },
+    {
+      "id": "MOT324-2072",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/preferences.rs",
+      "bytes": 6557,
+      "sha256": "683f80eedaf95b89497ab65a8b6c33a719b5ff06bda0ac23f02eb34cb889c95c"
+    },
+    {
+      "id": "MOT324-2073",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/tests.rs",
+      "bytes": 30740,
+      "sha256": "6e89d881d49ea0b55aaa508d1a7899590f45677fb10c8fb7491b406508db3490"
+    },
+    {
+      "id": "MOT324-2074",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts.rs",
+      "bytes": 30489,
+      "sha256": "846a9e45ac02c533fdb3252382e5ea624f57d609bef7f0f070977e1cd243e59e"
+    },
+    {
+      "id": "MOT324-2075",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/authenticated_peer.rs",
+      "bytes": 15838,
+      "sha256": "3663bce2a04987376caedeeb8d785805c6d4b10915d55ce9e4cd009740c558d2"
+    },
+    {
+      "id": "MOT324-2076",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/authenticated_room_relay.rs",
+      "bytes": 7030,
+      "sha256": "e1a618a5847153e4ee0ce2980f3d4cb695ea8398ff1ed31694954095b0a84f4f"
+    },
+    {
+      "id": "MOT324-2077",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bin/kr-admin.rs",
+      "bytes": 4971,
+      "sha256": "0b061cc7333634492db151aacfc6cc800e12a3b25395c7661f1002925081197a"
+    },
+    {
+      "id": "MOT324-2078",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "MOT324-2079",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "bytes": 20225,
+      "sha256": "f94e0b81ca68114c95f39fc1e212b5eb4d182ccdc548f61766de2cb3f665f504"
+    },
+    {
+      "id": "MOT324-2080",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/characters.rs",
+      "bytes": 5149,
+      "sha256": "537553e061d26053761af9893e727b4a0a5240dc76a05ca349df638cef98bd65"
+    },
+    {
+      "id": "MOT324-2081",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/diagnostic59.rs",
+      "bytes": 5656,
+      "sha256": "344211d25aada48b4b49f9017ed752f15a1f9f7ef06332922cc9af7a944991d9"
+    },
+    {
+      "id": "MOT324-2082",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/four_results.rs",
+      "bytes": 10769,
+      "sha256": "26c1c50fc8791534c965dfa39f6d61c0cf712c085ff09d3081688a4763886af6"
+    },
+    {
+      "id": "MOT324-2083",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 65434,
+      "sha256": "ea599c739509eb0e97ece3178a085dfebe92205aa5f6e107d72cd8d752636cbf"
+    },
+    {
+      "id": "MOT324-2084",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/life.rs",
+      "bytes": 17859,
+      "sha256": "36d9c7c43fea4ea4c307f28610e3483b22cc74ed408e3e6b76ec8f3cc89ea61d"
+    },
+    {
+      "id": "MOT324-2085",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/life_actions.rs",
+      "bytes": 16860,
+      "sha256": "95836e1322a74072ed8ce7e8a546382e61ba2041c760fa0ba62247f095e1ac23"
+    },
+    {
+      "id": "MOT324-2086",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "MOT324-2087",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "MOT324-2088",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "MOT324-2089",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/map_profile.rs",
+      "bytes": 12146,
+      "sha256": "bbd500926661f007994824ba22889e122d5449b2b9a6647a89cc570759a3ed54"
+    },
+    {
+      "id": "MOT324-2090",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/match_journal.rs",
+      "bytes": 20860,
+      "sha256": "88d6b2c58f3742cda01c87956148d85796e77a22464d8470f697137d3f5d938f"
+    },
+    {
+      "id": "MOT324-2091",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "MOT324-2092",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/peer_routes.rs",
+      "bytes": 4631,
+      "sha256": "221075ff3e89110f636020c43a4e98099a8ffc3b02d204e12f03acd77ebb950b"
+    },
+    {
+      "id": "MOT324-2093",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "bytes": 16489,
+      "sha256": "e02cb22baae5d48f662ac55f738dddcaa794fb91e2d08401704ce318f90f3b13"
+    },
+    {
+      "id": "MOT324-2094",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "MOT324-2095",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room.rs",
+      "bytes": 58921,
+      "sha256": "e8aee68033ccf6aefd1adc4bd442f45c009f0a44b0a1cb8dc900d3e747de05b8"
+    },
+    {
+      "id": "MOT324-2096",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 188655,
+      "sha256": "218a3ea09bfa7a6b94c9d2718bdc78c22fb538d6e6c7aae75f4f034256261006"
+    },
+    {
+      "id": "MOT324-2097",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "bytes": 44224,
+      "sha256": "72b6980cb684019286a0504d99e0cfcb564ef2caed50e669dc2b2586d3bb5137"
+    },
+    {
+      "id": "MOT324-2098",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_life_tests.rs",
+      "bytes": 8988,
+      "sha256": "12d8b94e551d2bd08569d639b0c87ef58fe887feccaff1539fd78868dd04a060"
+    },
+    {
+      "id": "MOT324-2099",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "MOT324-2100",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "MOT324-2101",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "MOT324-2102",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "bytes": 11937,
+      "sha256": "1fa5def859fc7ac0297c7b7a7b47fa060bad6edb3706ca448513e7a3135c999e"
+    },
+    {
+      "id": "MOT324-2103",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_wire.rs",
+      "bytes": 2201,
+      "sha256": "4bd8473f94393106cdaf976425f91b1e0183eb0e12535b5795878250af73129c"
+    },
+    {
+      "id": "MOT324-2104",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/round_epochs.rs",
+      "bytes": 2527,
+      "sha256": "18eb735293835939bbcc6da8e28a070f9e6ea54b5e1e0a99d95640e82cfea5ac"
+    },
+    {
+      "id": "MOT324-2105",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "bytes": 14527,
+      "sha256": "4342cfbbffffc58c1e8e34c8e2da561f061c7ef5166bc4a1f76c04a7f2275507"
+    },
+    {
+      "id": "MOT324-2106",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/terrain.rs",
+      "bytes": 22774,
+      "sha256": "77773d5525f2065e10f0b6a3de5a2b418f2cb1aef1e5620e6a09f9540198b05a"
+    },
+    {
+      "id": "MOT324-2107",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay/sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "MOT324-2108",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay/tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "MOT324-2109",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "MOT324-2110",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/Cargo.toml",
+      "bytes": 368,
+      "sha256": "2a712a65b842e5e8335687427e386c31ff8e898428c54ff446bfda74e6827bb6"
+    },
+    {
+      "id": "MOT324-2111",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/examples/native_proxy_lab.rs",
+      "bytes": 8929,
+      "sha256": "2158ddad71c2098be428cabb272ae45869f3f2789554fc0ad329eb9008531528"
+    },
+    {
+      "id": "MOT324-2112",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/bin/kr-companion.rs",
+      "bytes": 3882,
+      "sha256": "776b14648a15079fcf3c9434917300fb4e0cc955f007d3da7d8332062814976c"
+    },
+    {
+      "id": "MOT324-2113",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/companion.rs",
+      "bytes": 5076,
+      "sha256": "3d17300083a41d4c17deafd3918467c033a821f4ff187048d93bc20530caee94"
+    },
+    {
+      "id": "MOT324-2114",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/companion_tests.rs",
+      "bytes": 4584,
+      "sha256": "fd34096e5a53ba8ede24eb0da5484482de55c69917fea6f9dfd8b1d15ca9533e"
+    },
+    {
+      "id": "MOT324-2115",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/control.rs",
+      "bytes": 1769,
+      "sha256": "d1af56c5d1ad870124ccc7ad1fb67100e930bbdbfdb1e9cb0520124c466749b6"
+    },
+    {
+      "id": "MOT324-2116",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/lib.rs",
+      "bytes": 11418,
+      "sha256": "c277af6de7501946f7376aa168dae10d2803cecc3d6f1b9531645bd7526ee77f"
+    },
+    {
+      "id": "MOT324-2117",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/proxy.rs",
+      "bytes": 7621,
+      "sha256": "dfc45ff6566f6f4917217b147f6f8e9b6fd82a729653164eb749ac01cf8ef500"
+    },
+    {
+      "id": "MOT324-2118",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/router/tests.rs",
+      "bytes": 6217,
+      "sha256": "72940ed32c8e0b41c9abd97bd4bbe05c3b1ea1b12f45be3ecc35b07c4f8da1c7"
+    },
+    {
+      "id": "MOT324-2119",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/router.rs",
+      "bytes": 15276,
+      "sha256": "492134cc47c473f86534501defd80d6a4369658b87e147d1c89872b33b3d955c"
+    },
+    {
+      "id": "MOT324-2120",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/tests.rs",
+      "bytes": 6171,
+      "sha256": "b424a582ab60c99bbc17d2878b6aec232c2521c6a0f01f75cd587d29b4d40dec"
+    },
+    {
+      "id": "MOT324-2121",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "MOT324-2122",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/account.rs",
+      "bytes": 5253,
+      "sha256": "5ffe9e3a9a01a8b4cbb5ed951523201f56951170723532f7b8ee813869734859"
+    },
+    {
+      "id": "MOT324-2123",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/battle.rs",
+      "bytes": 8805,
+      "sha256": "997eeb698225b0f63692dcbc97555476bc05eb635f32cd41608c35a9c22171af"
+    },
+    {
+      "id": "MOT324-2124",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/bomb_motion.rs",
+      "bytes": 2958,
+      "sha256": "ca1432d6b778e4d723f2aa91c69492c0d533456b0f5297b4cd09890d515fa1ea"
+    },
+    {
+      "id": "MOT324-2125",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/player.rs",
+      "bytes": 7967,
+      "sha256": "5dca3e46e0a9735208175ac500df7f8854b12e369c2dd000d407ca7229722a16"
+    },
+    {
+      "id": "MOT324-2126",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "bytes": 25562,
+      "sha256": "89888fae749c82e9708ae2149cd2dc655f6fd3b64d5465baa1a220a69c371e6e"
+    },
+    {
+      "id": "MOT324-2127",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "MOT324-2128",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967.rs",
+      "bytes": 4069,
+      "sha256": "13cdafae1c24df6f8394b9348f8f5718c050f0acd9e0a889920cbd355cb7b27e"
+    },
+    {
+      "id": "MOT324-2129",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "MOT324-2130",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/README.md",
+      "bytes": 1454,
+      "sha256": "775ff1c406378240213ced8834202e242755e8c8a76a85a861894fb4e39b627d"
+    },
+    {
+      "id": "MOT324-2131",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_account_profiles.rs",
+      "bytes": 3073,
+      "sha256": "4054a9d8affab3eebe8c77a30e76f0947a1d60843bda15a71e6fa991c2696023"
+    },
+    {
+      "id": "MOT324-2132",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+      "bytes": 2172,
+      "sha256": "f80d98bccdcb09901ddccff54740d91840b5c21cfde6e03e49e4d31986dc6b6b"
+    },
+    {
+      "id": "MOT324-2133",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_bomb_report122.rs",
+      "bytes": 1218,
+      "sha256": "c1306a89e0f86d61341addbc1105484dc8de9c28b0b614ef38953cfefdbf7d6c"
+    },
+    {
+      "id": "MOT324-2134",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_room_choices.rs",
+      "bytes": 1722,
+      "sha256": "d527c228dcc86ec11057e1c8c5037ced0e44d2ae03f27da5e8884ad49f41e80d"
+    },
+    {
+      "id": "MOT324-2135",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_selected_roster.rs",
+      "bytes": 1121,
+      "sha256": "62501ed78735f409edac88f0828fbbb89451734dc17a706bf622b4e2085c8859"
+    },
+    {
+      "id": "MOT324-2136",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_selected_start.rs",
+      "bytes": 3067,
+      "sha256": "c09cd6f51c35e32b029d21cff7a1e3ae9c3ee65f8075ecd9ed60852b15a00b09"
+    },
+    {
+      "id": "MOT324-2137",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_start_vectors.rs",
+      "bytes": 5035,
+      "sha256": "aa73f205ddb467bf7eabac52ef442e449d40eefac8b1b2a608044759511c176d"
+    },
+    {
+      "id": "MOT324-2138",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "MOT324-2139",
+      "kind": "repository",
+      "path": "rust/rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "MOT324-2140",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/4d53d4149e1a5f579acef1e449e3e6b1088b82dee522a2f741fe19fb9b4be418.jsonl",
+      "sha256": "4d53d4149e1a5f579acef1e449e3e6b1088b82dee522a2f741fe19fb9b4be418",
+      "bytes": 2476,
+      "count": 13,
+      "files_bytes": 424331
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/449ea53002b293bb2b76e66a8f72377310425fe323c72ac1074ba964f5198e13.jsonl",
+      "sha256": "449ea53002b293bb2b76e66a8f72377310425fe323c72ac1074ba964f5198e13",
+      "bytes": 436,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/3799561fda3168bfa6aada829ff13f46aa06c9b7d3d6c22183051c00b628b809.jsonl",
+      "sha256": "3799561fda3168bfa6aada829ff13f46aa06c9b7d3d6c22183051c00b628b809",
+      "bytes": 828,
+      "count": 4,
+      "files_bytes": 277
+    },
+    {
+      "run": "local/research/codex/chain-r1",
+      "path": "local/evidence-manifests/5ce77cc2c4cd4d4764232d888aa823473dbf5d274461aff9604740611d65af11.jsonl",
+      "sha256": "5ce77cc2c4cd4d4764232d888aa823473dbf5d274461aff9604740611d65af11",
+      "bytes": 422,
+      "count": 2,
+      "files_bytes": 28617
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/43c9a4d181b1d16f9791d012deca636e062a742b567e04a4db1bacacf1d7186c.jsonl",
+      "sha256": "43c9a4d181b1d16f9791d012deca636e062a742b567e04a4db1bacacf1d7186c",
+      "bytes": 1011,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/g1-ability-flags-native-r2",
+      "path": "local/evidence-manifests/76354026aa887ce01cd2e99afda0fc7f00ad1800457d08f9ca355bd02a12d3fd.jsonl",
+      "sha256": "76354026aa887ce01cd2e99afda0fc7f00ad1800457d08f9ca355bd02a12d3fd",
+      "bytes": 709,
+      "count": 3,
+      "files_bytes": 21106
+    },
+    {
+      "run": "local/research/codex/g1-ability-lifecycle-source-native-r4",
+      "path": "local/evidence-manifests/fd822941bdd7f3a2e874ad608313a083ccfb0c949d889c67bd0187f653ac860e.jsonl",
+      "sha256": "fd822941bdd7f3a2e874ad608313a083ccfb0c949d889c67bd0187f653ac860e",
+      "bytes": 3672,
+      "count": 17,
+      "files_bytes": 167877
+    },
+    {
+      "run": "local/research/codex/g1-ability-motion-source-native-r3",
+      "path": "local/evidence-manifests/3b893a82b4953a4724c8258eae671ef728eb90c5e7efddef80d8d709aff26f2d.jsonl",
+      "sha256": "3b893a82b4953a4724c8258eae671ef728eb90c5e7efddef80d8d709aff26f2d",
+      "bytes": 297384,
+      "count": 1374,
+      "files_bytes": 61956855
+    },
+    {
+      "run": "local/research/codex/g1-motion-codec-build-r1",
+      "path": "local/evidence-manifests/873e938ae322911e81849c9df12d1df58e9ab8490dfe58b075d03a3c3f44a8c9.jsonl",
+      "sha256": "873e938ae322911e81849c9df12d1df58e9ab8490dfe58b075d03a3c3f44a8c9",
+      "bytes": 22787,
+      "count": 96,
+      "files_bytes": 266304155
+    },
+    {
+      "run": "local/research/codex/g1-shoe-punch-reuse-r5",
+      "path": "local/evidence-manifests/02e5498176527e3dc4959e6387e1b035d6ded22ab3216cbebc78260baff294e3.jsonl",
+      "sha256": "02e5498176527e3dc4959e6387e1b035d6ded22ab3216cbebc78260baff294e3",
+      "bytes": 3256,
+      "count": 16,
+      "files_bytes": 50140
+    },
+    {
+      "run": "local/research/codex/g1-shoe-punch-reuse-r6",
+      "path": "local/evidence-manifests/8a14012e556cdc129be073a51d6a9d1f615c96b524b6ee7bd5c54f5376840dfd.jsonl",
+      "sha256": "8a14012e556cdc129be073a51d6a9d1f615c96b524b6ee7bd5c54f5376840dfd",
+      "bytes": 2056,
+      "count": 10,
+      "files_bytes": 44305
+    },
+    {
+      "run": "local/research/codex/g1-shoe-source-native-r1",
+      "path": "local/evidence-manifests/8c729d9180c4fa601589ceb341daaedd44b324aa75458873b24d55250369a97c.jsonl",
+      "sha256": "8c729d9180c4fa601589ceb341daaedd44b324aa75458873b24d55250369a97c",
+      "bytes": 96495,
+      "count": 464,
+      "files_bytes": 6574126522
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/8caf198f94a36f4cfed62439bfb5864f89085cbb96ff7b634162e932d5eef032.jsonl",
+      "sha256": "8caf198f94a36f4cfed62439bfb5864f89085cbb96ff7b634162e932d5eef032",
+      "bytes": 432,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/41f698afa647106bad3c3e07b14b698d5e889f333e9dec873faeef59039ba096.jsonl",
+      "sha256": "41f698afa647106bad3c3e07b14b698d5e889f333e9dec873faeef59039ba096",
+      "bytes": 619,
+      "count": 3,
+      "files_bytes": 449
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/f51ce5a931b7db42fab48ef309f41162d69ee13d87e901ac7477b062e60d0f78.jsonl",
+      "sha256": "f51ce5a931b7db42fab48ef309f41162d69ee13d87e901ac7477b062e60d0f78",
+      "bytes": 638,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/room-player-r1",
+      "path": "local/evidence-manifests/4bd63e43e66ce49fe892efb99c5b373faf9f17913e8847f44a9194b7a1056d30.jsonl",
+      "sha256": "4bd63e43e66ce49fe892efb99c5b373faf9f17913e8847f44a9194b7a1056d30",
+      "bytes": 458,
+      "count": 2,
+      "files_bytes": 286
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/021a98fe288e55e6b562f7520b03fb7a2ca33d22190c3252480c578a761775d6.jsonl",
+      "sha256": "021a98fe288e55e6b562f7520b03fb7a2ca33d22190c3252480c578a761775d6",
+      "bytes": 971,
+      "count": 5,
+      "files_bytes": 61929
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/b983523585728cfb943c773f30edb851fa9d5068851100ccc46c3bdb55d96bdd.jsonl",
+      "sha256": "b983523585728cfb943c773f30edb851fa9d5068851100ccc46c3bdb55d96bdd",
+      "bytes": 451,
+      "count": 2,
+      "files_bytes": 384
+    },
+    {
+      "run": "local/research/codex/start-reply-r1",
+      "path": "local/evidence-manifests/2f58866f24fdde000eb7ac3d362ce65d22abca64b4f048322473160052b76ef4.jsonl",
+      "sha256": "2f58866f24fdde000eb7ac3d362ce65d22abca64b4f048322473160052b76ef4",
+      "bytes": 458,
+      "count": 2,
+      "files_bytes": 314
     }
   ]
 }

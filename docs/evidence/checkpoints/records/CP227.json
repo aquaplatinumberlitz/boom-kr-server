@@ -161,15 +161,6 @@
       "limits": "Nextsource-guided106/110/291/nativeownlookup/UIperPLAN."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP227-room-join-projection.json",
-      "bytes": 250381,
-      "sha256": "acc05adda071ddfd8ffa52855e3a533f768bfb99e853444eeb608a60db4014f1",
-      "count": 943
-    }
-  ],
   "delta": {
     "added": [
       "Native82→87sessionlookup/ID-titlecontext/full7byte/2actualUIheaders.",
@@ -285,6 +276,179 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP227native87session-ID-title/generic2retry/message-inputfailurescorrections/next585roomroster/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ROOM227-00009",
+      "kind": "local",
+      "path": "local/research/codex/cp227-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "ROOM227-00010",
+      "kind": "local",
+      "path": "local/research/codex/cp227-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "c0d5d0b964c55733b7b15040f9bf563f17f2a545cd2b9c4d827fe2f21860e629"
+    },
+    {
+      "id": "ROOM227-00015",
+      "kind": "local",
+      "path": "local/research/codex/cp227-issue14-updated.json",
+      "bytes": 37806,
+      "sha256": "3c15e126bffdfb6d0f6d4aab25e946fb17475f530834efa0cb598b573aebb0a1"
+    },
+    {
+      "id": "ROOM227-00018",
+      "kind": "local",
+      "path": "local/research/codex/cp227-issue285-updated.json",
+      "bytes": 11132,
+      "sha256": "efd67bb6a9ef285fae03ee019909820d096101bf2ffc11e7a1179446bf1f773f"
+    },
+    {
+      "id": "ROOM227-00026",
+      "kind": "local",
+      "path": "local/research/codex/room-join-delivery-r1/batch-verification.json",
+      "bytes": 31627,
+      "sha256": "45869e68580cda5c95e6525bf79335a8e3c0a3a2c67ef3b5b8a621eff821ba99"
+    },
+    {
+      "id": "ROOM227-00031",
+      "kind": "local",
+      "path": "local/research/codex/room-join-delivery-r1/cp227-snapshot/docs/RESEARCH.md",
+      "bytes": 44184,
+      "sha256": "25314f99802fbc8f006202e94f800f461745e37980cb0ef2e568a133c2cf26e2"
+    },
+    {
+      "id": "ROOM227-00037",
+      "kind": "local",
+      "path": "local/research/codex/room-join-delivery-r1/manual-review.json",
+      "bytes": 3046,
+      "sha256": "a27d85c249d2b62dc504129770456768642ab16f139c298cd2fcf50ff0de22c4"
+    },
+    {
+      "id": "ROOM227-00038",
+      "kind": "local",
+      "path": "local/research/codex/room-join-delivery-r1/message-input-corrections.json",
+      "bytes": 1905,
+      "sha256": "a88aa96e71838925fcca4908c0ac66c8ee76830de3fcf05376f943f94faa368a"
+    },
+    {
+      "id": "ROOM227-00039",
+      "kind": "local",
+      "path": "local/research/codex/room-join-error-r1/message-prefixes.json",
+      "bytes": 9009,
+      "sha256": "e16ae97d411047d0ef7c9b60d88e511ec7e6dfd389af4da4a3dddec620e0a51c"
+    },
+    {
+      "id": "ROOM227-00207",
+      "kind": "local",
+      "path": "local/research/codex/room-join-generic-error-r1/service-owner-verification.json",
+      "bytes": 733,
+      "sha256": "635dd55a18e42e233e34f6468f48389adc85899c1544be7e222385c30ffa7342"
+    },
+    {
+      "id": "ROOM227-00210",
+      "kind": "local",
+      "path": "local/research/codex/room-join-generic-error-r1/verification.json",
+      "bytes": 7394,
+      "sha256": "26b3b3de8b7d5d7c0396be3e5be69dd749ca5e037294abd1fd489b376c8dbb2a"
+    },
+    {
+      "id": "ROOM227-00343",
+      "kind": "local",
+      "path": "local/research/codex/room-join-projection-r1/verification.json",
+      "bytes": 5759,
+      "sha256": "78ca864acc8c74e197f51621e920c7e0eca54dce3119c3743bac776462b968da"
+    },
+    {
+      "id": "ROOM227-00510",
+      "kind": "local",
+      "path": "local/research/codex/room-stale-center-r1/verification.json",
+      "bytes": 7332,
+      "sha256": "93c35a38787125cbb734f5739d27e7458e82fc6c49208fe36c10ea099080860c"
+    },
+    {
+      "id": "ROOM227-00686",
+      "kind": "local",
+      "path": "local/research/codex/room-stale-input-r1/verification.json",
+      "bytes": 3675,
+      "sha256": "0b5107b48cd75d8e92f93155df6c3801ba6d3bdd82b4275a1b1a8e09c12f0310"
+    },
+    {
+      "id": "ROOM227-00927",
+      "kind": "local",
+      "path": "local/research/codex/room-stale-join-r1/verification.json",
+      "bytes": 3010,
+      "sha256": "1041b5057aac733704fd93b819029dd3ca6dd4bff91bf55970a1ed57d260f641"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/87c49549e59b8ac885dd7a0897fbd53fb994338701bb4422a467871a333fbe12.jsonl",
+      "sha256": "87c49549e59b8ac885dd7a0897fbd53fb994338701bb4422a467871a333fbe12",
+      "bytes": 6879,
+      "count": 37,
+      "files_bytes": 7131645
+    },
+    {
+      "run": "local/research/codex/room-join-delivery-r1",
+      "path": "local/evidence-manifests/d47ce9866f9cedd9037013f44e89765e2604c5c1f70db98dc1e2cc715c7fd6ca.jsonl",
+      "sha256": "d47ce9866f9cedd9037013f44e89765e2604c5c1f70db98dc1e2cc715c7fd6ca",
+      "bytes": 2100,
+      "count": 9,
+      "files_bytes": 1568762
+    },
+    {
+      "run": "local/research/codex/room-join-error-r1",
+      "path": "local/evidence-manifests/0e483e747f8393a378ee129beae4a16275fa44f4fb772d57beb6d3df71013dfb.jsonl",
+      "sha256": "0e483e747f8393a378ee129beae4a16275fa44f4fb772d57beb6d3df71013dfb",
+      "bytes": 464,
+      "count": 2,
+      "files_bytes": 8325
+    },
+    {
+      "run": "local/research/codex/room-join-generic-error-r1",
+      "path": "local/evidence-manifests/2447cdc47ed2eb613edddba75121a89a1451f109e2aa514a5b2ad0f33d1aefa9.jsonl",
+      "sha256": "2447cdc47ed2eb613edddba75121a89a1451f109e2aa514a5b2ad0f33d1aefa9",
+      "bytes": 37712,
+      "count": 167,
+      "files_bytes": 7260370
+    },
+    {
+      "run": "local/research/codex/room-join-projection-r1",
+      "path": "local/evidence-manifests/82ced1d218dcf0b092f67b4ec94a44e21de0516087970cb9629b39ad4c23f58d.jsonl",
+      "sha256": "82ced1d218dcf0b092f67b4ec94a44e21de0516087970cb9629b39ad4c23f58d",
+      "bytes": 28599,
+      "count": 132,
+      "files_bytes": 5468078
+    },
+    {
+      "run": "local/research/codex/room-stale-center-r1",
+      "path": "local/evidence-manifests/ded265ddbbd961fa9037213ea875fb7c8e164dc21f0387747a713e9172e035e5.jsonl",
+      "sha256": "ded265ddbbd961fa9037213ea875fb7c8e164dc21f0387747a713e9172e035e5",
+      "bytes": 35569,
+      "count": 166,
+      "files_bytes": 7260423
+    },
+    {
+      "run": "local/research/codex/room-stale-input-r1",
+      "path": "local/evidence-manifests/c5889656613e10de7f0b9ff5d26a49b6d8b3313c35d014385921e501a4c02a50.jsonl",
+      "sha256": "c5889656613e10de7f0b9ff5d26a49b6d8b3313c35d014385921e501a4c02a50",
+      "bytes": 37174,
+      "count": 175,
+      "files_bytes": 7539128
+    },
+    {
+      "run": "local/research/codex/room-stale-join-r1",
+      "path": "local/evidence-manifests/d62b09772ca28287200321dadb99e64d6ef0464d9db8fa0e4371280192bf4d7a.jsonl",
+      "sha256": "d62b09772ca28287200321dadb99e64d6ef0464d9db8fa0e4371280192bf4d7a",
+      "bytes": 52363,
+      "count": 240,
+      "files_bytes": 11979899
     }
   ]
 }

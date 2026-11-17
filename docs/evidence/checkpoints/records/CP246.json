@@ -170,15 +170,6 @@
       "limits": "Wine4b/privateLAN/sharedkernel/diagnosticIP/Manner1fixed2v2/oneepoch/four-ownerbombs only; no fourlife170/results-reset/EOF/8/accountauth/fullM4.142-167boundedobserve/noeffect/nosemantics;own-peertrapdeathdivergence unaccepted. Copiedgettersemulationseparate. Internet thật chưa kiểm."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP246-rust-four-owner-bombs.json",
-      "bytes": 250562,
-      "sha256": "0c51dc367ae0e1d022e5963ac87745b7bbce557957523184916f0096998b7bb3",
-      "count": 940
-    }
-  ],
   "delta": {
     "added": [
       "Rustoptinfour-ownerbom/native16entity159-16full158/knownstatsManner1/59tests14four51twoTCP/3prebind."
@@ -305,6 +296,236 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP246four-ownerbombnative/M4partial/life-rank4-reset-EOFnext/M5bridgeindependent/AUD070next248/historykept."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST246-00002",
+      "kind": "local",
+      "path": "local/research/codex/cp246-build-final.txt",
+      "bytes": 72,
+      "sha256": "a13905646e2aed93ec6ea9ed6ac91490a4e01f91af0215c3965279a910612149"
+    },
+    {
+      "id": "RUST246-00004",
+      "kind": "local",
+      "path": "local/research/codex/cp246-clippy-final.txt",
+      "bytes": 72,
+      "sha256": "22e0df986057b9ba5be07526ac5fb348862a3dedef42108383cc3e088acbb889"
+    },
+    {
+      "id": "RUST246-00005",
+      "kind": "local",
+      "path": "local/research/codex/cp246-docs-final2.txt",
+      "bytes": 251,
+      "sha256": "e86c12bc3d6f8c8a81718d5a42178d07d92d55c4342f922d9964927998ae6a87"
+    },
+    {
+      "id": "RUST246-00006",
+      "kind": "local",
+      "path": "local/research/codex/cp246-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST246-00015",
+      "kind": "local",
+      "path": "local/research/codex/cp246-test-final.txt",
+      "bytes": 6859,
+      "sha256": "23fe75d7d630b2203ab5cc7bb93d0524899295508e9020806153e0a43ab1a755"
+    },
+    {
+      "id": "RUST246-00032",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-config-negatives-r1/verification.json",
+      "bytes": 902,
+      "sha256": "a2978caee1dff38903a53eedb89992b210e1f9f748221858f8cdece9821c48d9"
+    },
+    {
+      "id": "RUST246-00033",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-delivery-r1/manual-acceptance.json",
+      "bytes": 2949,
+      "sha256": "84f8a5aefe5aa3e4dc89e4ce974ba440702a088b3992ab9264e6b03e6f64b1d2"
+    },
+    {
+      "id": "RUST246-00036",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 94490,
+      "sha256": "44a3b76b795602ae536bed9c6f3fb9ce592a3912dab187f844b0f12db63af7fe"
+    },
+    {
+      "id": "RUST246-00045",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-delivery-r1/snapshot/rust/crates/kr-service/src/bombs.rs",
+      "bytes": 14874,
+      "sha256": "8712c4c42cd1ceec044d2fe7866db30f6aa340fdb3ac52def408bc60c6bd8bfa"
+    },
+    {
+      "id": "RUST246-00047",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 69894,
+      "sha256": "3d4ccd8ab5ad2234b2fb204004af9d042cfd687f7108cdd9a13567b9f1918eb4"
+    },
+    {
+      "id": "RUST246-00208",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-kernel-r2/verification.json",
+      "bytes": 17497,
+      "sha256": "065ec2337ea3270f8768821b7c4a36bcbf25012455605044b57735abc5fca933"
+    },
+    {
+      "id": "RUST246-00217",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-native-r1/failure-review.json",
+      "bytes": 1845,
+      "sha256": "c1caad7e5442fef54994fe2d00ca7a8965cea7a70faa26c86a0526ede7f66f85"
+    },
+    {
+      "id": "RUST246-00468",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-native-r1/native-four/raw-seal.json",
+      "bytes": 16564,
+      "sha256": "f4093e3660e9c1135d01e2decbf5b3d6b7b18bfa1e3cff9e59ef63c2c9002149"
+    },
+    {
+      "id": "RUST246-00485",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-native-r2/bomb-getter-verification.json",
+      "bytes": 435,
+      "sha256": "d6257835e3bee2372e4ebf400c8d472398776f7b344ffd4fccd6b416353eb5e4"
+    },
+    {
+      "id": "RUST246-00487",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-native-r2/bomb-verification.json",
+      "bytes": 2057564,
+      "sha256": "4f76f3ab49323c25876bc9ca1bb69502de143aa857f1e132ba7537e76b238704"
+    },
+    {
+      "id": "RUST246-00755",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-native-r2/native-four/raw-seal.json",
+      "bytes": 19074,
+      "sha256": "88f8bdf38f670bdd417f8b20fd45a2664c9686e70a422728b025a590cbc9e8bd"
+    },
+    {
+      "id": "RUST246-00766",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-native-r2/ui-review.json",
+      "bytes": 1081,
+      "sha256": "79e404e285013a7fac091c1f2fff59c5b07407deab11b54be19caa1ef8911af0"
+    },
+    {
+      "id": "RUST246-00767",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-source-r1/cp201-142-reuse.json",
+      "bytes": 3147,
+      "sha256": "42597aa620e5013cb486e39774c3e196ce21869021068402b8929f977bb28390"
+    },
+    {
+      "id": "RUST246-00768",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-source-r1/cp201-167-reuse.json",
+      "bytes": 3233,
+      "sha256": "4b8abc23aee50dc1b05e0024909e4bb369bf1f2f744943210ac1cbf66bee7163"
+    },
+    {
+      "id": "RUST246-00769",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-source-r1/reuse.json",
+      "bytes": 2269,
+      "sha256": "f85a7872f1f9d53f54eb40b5c4afe675ec446d40dc692ffc1cbbb8abdeced1d0"
+    },
+    {
+      "id": "RUST246-00773",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-two-regression-r1/failure-review.json",
+      "bytes": 731,
+      "sha256": "1929b3aa8455f7f948c9cb050a3330216b9c588f3cac9e212513e9d03079b103"
+    },
+    {
+      "id": "RUST246-00934",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-bombs-two-regression-r2/verification.json",
+      "bytes": 23262,
+      "sha256": "a94761d3cb8bd3c9bddf8522945e35873aad6d9cfeb05175b0b511b6550b6ac0"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/fe7ba460074b7fd5c01127a6301a7ccdd83863b38ea3ef05af5da6ba322a9640.jsonl",
+      "sha256": "fe7ba460074b7fd5c01127a6301a7ccdd83863b38ea3ef05af5da6ba322a9640",
+      "bytes": 7405,
+      "count": 39,
+      "files_bytes": 293293
+    },
+    {
+      "run": "local/research/codex/rust-four-bombs-config-negatives-r1",
+      "path": "local/evidence-manifests/ff07cce27ee76a4972857b0fd86800cf78601ed56ea597558624854e0970c57e.jsonl",
+      "sha256": "ff07cce27ee76a4972857b0fd86800cf78601ed56ea597558624854e0970c57e",
+      "bytes": 1382,
+      "count": 6,
+      "files_bytes": 67741
+    },
+    {
+      "run": "local/research/codex/rust-four-bombs-delivery-r1",
+      "path": "local/evidence-manifests/1b693370788b09de633224a16597c42e085f6f9b3968bd7c0f9071f9fcedd97e.jsonl",
+      "sha256": "1b693370788b09de633224a16597c42e085f6f9b3968bd7c0f9071f9fcedd97e",
+      "bytes": 3215,
+      "count": 14,
+      "files_bytes": 1743801
+    },
+    {
+      "run": "local/research/codex/rust-four-bombs-kernel-r1",
+      "path": "local/evidence-manifests/2d31a9ed5b9c72fee7e037b386e2e31058b2bdad97c5848a1f3b1dad7d25bab2.jsonl",
+      "sha256": "2d31a9ed5b9c72fee7e037b386e2e31058b2bdad97c5848a1f3b1dad7d25bab2",
+      "bytes": 16791,
+      "count": 78,
+      "files_bytes": 44077753
+    },
+    {
+      "run": "local/research/codex/rust-four-bombs-kernel-r2",
+      "path": "local/evidence-manifests/bebf9b04719cf63d5b937a9d19d9e6738fa2dde12ba93a64bf4a60b70de8a964.jsonl",
+      "sha256": "bebf9b04719cf63d5b937a9d19d9e6738fa2dde12ba93a64bf4a60b70de8a964",
+      "bytes": 16589,
+      "count": 77,
+      "files_bytes": 44061513
+    },
+    {
+      "run": "local/research/codex/rust-four-bombs-native-r1",
+      "path": "local/evidence-manifests/7e3d55e40e900a41ae6bfea8c68ef5b187884387c5a4604b6ff0eedbd482a893.jsonl",
+      "sha256": "7e3d55e40e900a41ae6bfea8c68ef5b187884387c5a4604b6ff0eedbd482a893",
+      "bytes": 57753,
+      "count": 265,
+      "files_bytes": 183570938
+    },
+    {
+      "run": "local/research/codex/rust-four-bombs-native-r2",
+      "path": "local/evidence-manifests/9ce11234382c6d5800ef082da997fb65348a7a51770eed2a38a780e1d2fbcf77.jsonl",
+      "sha256": "9ce11234382c6d5800ef082da997fb65348a7a51770eed2a38a780e1d2fbcf77",
+      "bytes": 61149,
+      "count": 280,
+      "files_bytes": 186949251
+    },
+    {
+      "run": "local/research/codex/rust-four-bombs-two-regression-r1",
+      "path": "local/evidence-manifests/a078ee20bc93384c7d1d466fcb8c56ca286ba0d52d465b33a3f2e4e433cbe397.jsonl",
+      "sha256": "a078ee20bc93384c7d1d466fcb8c56ca286ba0d52d465b33a3f2e4e433cbe397",
+      "bytes": 17447,
+      "count": 78,
+      "files_bytes": 44016446
+    },
+    {
+      "run": "local/research/codex/rust-four-bombs-two-regression-r2",
+      "path": "local/evidence-manifests/59b7d2e13f3422cc9043cc206d9b6475180b93d597f96f6be76782305673df54.jsonl",
+      "sha256": "59b7d2e13f3422cc9043cc206d9b6475180b93d597f96f6be76782305673df54",
+      "bytes": 18121,
+      "count": 81,
+      "files_bytes": 44059787
     }
   ]
 }

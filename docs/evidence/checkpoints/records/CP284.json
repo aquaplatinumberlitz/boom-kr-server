@@ -101,15 +101,6 @@
       "limits": "Independent review waived by owner; not independent approval."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP284-db-account-profiles.json",
-      "bytes": 504507,
-      "sha256": "990d49a2eb399c8ffd83f7b08fb4613846e5d8703e00be867e7f715833b73993",
-      "count": 1940
-    }
-  ],
   "delta": {
     "added": [
       "DB-owned bounded zero-profile and source-owned launcher metadata.",
@@ -219,5 +210,348 @@
   ],
   "completed_feature_groups": [
     "rust-db-account-profiles"
+  ],
+  "evidence": [
+    {
+      "id": "M5B284-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "M5B284-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3977,
+      "sha256": "967dc114eb07c514b91ee37055e6a650421485a9f708d7953dfcb595376d5bb5"
+    },
+    {
+      "id": "M5B284-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 250294,
+      "sha256": "4d708fb6d19560a5a18feb38d2c279d012ef5b59122ae7d4ad34bd4fb76598a1"
+    },
+    {
+      "id": "M5B284-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 142894,
+      "sha256": "9d87ea309300760d0934d38e748e1c859a46d2994b5999d7337a7b59e44a575d"
+    },
+    {
+      "id": "M5B284-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 77201,
+      "sha256": "d0fa6a6245da7c49138f4daea3cdc41c42a78d8ae534c4482ca0e14dcef6defc"
+    },
+    {
+      "id": "M5B284-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66021,
+      "sha256": "1c6ee141bac71a4597f88804255a41ad5676841abc4022e4ec6d90a90249380e"
+    },
+    {
+      "id": "M5B284-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 32182,
+      "sha256": "9c39703e893983986c71cdd4e420e8dfbdffef66f8d92a9d5ace2acabbf6549a"
+    },
+    {
+      "id": "M5B284-00008",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 44561,
+      "sha256": "a7258fd7fec9785e0e7dac0e7423cf12334dc6a50c4c01441e4233cb821fe8a7"
+    },
+    {
+      "id": "M5B284-00009",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD100.json",
+      "bytes": 4602,
+      "sha256": "98b3053838e20e26bd7d4e88116cb025032076565316f4c2d70ad87e2c8b59b2"
+    },
+    {
+      "id": "M5B284-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 299080,
+      "sha256": "2143fe927c7b67c8e1e6d7be31c5779413f3188773ce928feedc7ab2121dedc0"
+    },
+    {
+      "id": "M5B284-00011",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 29218,
+      "sha256": "186c35572b09f408a62f855bc1730bc1d4de88698a618359fd87036eaf835d53"
+    },
+    {
+      "id": "M5B284-00012",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+      "bytes": 6415,
+      "sha256": "05e3e7c4a8a44b87d3fe2203866867e4d2938060ed8085b6730d7b77df85c2c6"
+    },
+    {
+      "id": "M5B284-00013",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 262673,
+      "sha256": "0e394a7321e9689eb444017dc9a39e6c49fbace546066a63461f938c44b5ffda"
+    },
+    {
+      "id": "M5B284-00014",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 78109,
+      "sha256": "97a971cb8b6485dbd1c468a505a9fe0e6b688f98d68cc8dc4e0632a803e79525"
+    },
+    {
+      "id": "M5B284-01063",
+      "kind": "local",
+      "path": "local/research/codex/m5b-dynamic-native-r3/native/cycles/db-pressure.json",
+      "bytes": 4644,
+      "sha256": "f5ef39d1a041155e24f24d3b0cc4cc366ef5903165e1a747cd4a59f9b98bde9f"
+    },
+    {
+      "id": "M5B284-01101",
+      "kind": "local",
+      "path": "local/research/codex/m5b-dynamic-native-r3/results-verification.json",
+      "bytes": 3117,
+      "sha256": "e8c98c25ffa0e785606b7f3554fb9ddf7875cbb39bcd10e698f41ddf97af33b3"
+    },
+    {
+      "id": "M5B284-01107",
+      "kind": "local",
+      "path": "local/research/codex/m5b-dynamic-native-r3/udp-getter-verification.json",
+      "bytes": 716,
+      "sha256": "a33132945b12c7aee359330ec4e9a4b9510d4c51f57081bbcab84b30491bf880"
+    },
+    {
+      "id": "M5B284-01454",
+      "kind": "local",
+      "path": "local/research/codex/m5b-dynamic-synthetic-r3/tcp/verification.json",
+      "bytes": 883,
+      "sha256": "9b88cd75524619e88838c6a4aa7e34efc8b7d2284e50d1350b8298ded765dd43"
+    },
+    {
+      "id": "M5B284-01458",
+      "kind": "local",
+      "path": "local/research/codex/m5b-final-clippy-r2.txt",
+      "bytes": 174,
+      "sha256": "e00117b24ca8d82765acaf675c14208df802c3ec4a8a063d8c78ea0f23668ece"
+    },
+    {
+      "id": "M5B284-01461",
+      "kind": "local",
+      "path": "local/research/codex/m5b-final-tests-r2.txt",
+      "bytes": 16909,
+      "sha256": "75d50c51c334e88ff5c92b9f36feb2d4f66d47c54add44955f02b14a63e95401"
+    },
+    {
+      "id": "M5B284-01559",
+      "kind": "local",
+      "path": "local/research/codex/m5b-negative-synthetic-r1/tcp/verification.json",
+      "bytes": 2244,
+      "sha256": "eb153d144aab08494ac710e0c100fe1c5e9b10117ac1286a713cb18750acb08c"
+    },
+    {
+      "id": "M5B284-01894",
+      "kind": "local",
+      "path": "local/research/codex/m5b-shared-ip-native-r1/results-verification.json",
+      "bytes": 2824,
+      "sha256": "a9fcf396cbcbf7de2efdd76de5f92413886a5d951b19e2f2bc86c8b45391d49d"
+    },
+    {
+      "id": "M5B284-01926",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/tests.rs",
+      "bytes": 37428,
+      "sha256": "f6bcb293789e25da97d41518ea3a552e468d02c9f72b31b5d168917fe3c16c14"
+    },
+    {
+      "id": "M5B284-01927",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/wire.rs",
+      "bytes": 2758,
+      "sha256": "63adab044276a3ca481d4a96da84eef1c9ce00bce2caff189360f0f601c0d512"
+    },
+    {
+      "id": "M5B284-01928",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 19720,
+      "sha256": "a9989312c096db02c243669531801bbba7bcf12d62743656c91a6bb56066e2cb"
+    },
+    {
+      "id": "M5B284-01929",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 23336,
+      "sha256": "96c3f491a2b6cadd0be92ae930e06421b267cee1777a5d26dcb721237047d9f1"
+    },
+    {
+      "id": "M5B284-01930",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker.rs",
+      "bytes": 17674,
+      "sha256": "22ef92f0766e3dd7da2594eba26d6b7402c2972b3e134463db737cedd9cd7f11"
+    },
+    {
+      "id": "M5B284-01931",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/tests.rs",
+      "bytes": 27768,
+      "sha256": "f6f216e70f429f81ef533ee722cdb12f484564fe884f46c06b56b629906e7953"
+    },
+    {
+      "id": "M5B284-01932",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts.rs",
+      "bytes": 29915,
+      "sha256": "724a6647fa47fdf83027013f01cef99ca129324ccc4bc223f6dfde983af02e12"
+    },
+    {
+      "id": "M5B284-01933",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 55690,
+      "sha256": "09e391f47207c2e3c7ec7359b66907c1b64eab02cf22ac49c8873c4e1c370d79"
+    },
+    {
+      "id": "M5B284-01934",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 150839,
+      "sha256": "41ec6863ee41d76e92193469aef787ed731ab9b9ac2d8e19faa74e6344b006ed"
+    },
+    {
+      "id": "M5B284-01935",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/account.rs",
+      "bytes": 3477,
+      "sha256": "1b76836d680abbae1ffd16e1d618f4a2e9a8ab3057ed743a4eeaa617fbb717c8"
+    },
+    {
+      "id": "M5B284-01936",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/player.rs",
+      "bytes": 7967,
+      "sha256": "5dca3e46e0a9735208175ac500df7f8854b12e369c2dd000d407ca7229722a16"
+    },
+    {
+      "id": "M5B284-01937",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "bytes": 22770,
+      "sha256": "72a8cc9a6ff9e973e3647b14df7c22aac9d6a999791762a3234b4d36ca7a6133"
+    },
+    {
+      "id": "M5B284-01938",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967.rs",
+      "bytes": 3977,
+      "sha256": "5682898a8e32ae588c99dcf7dde6089aeec198a1234a0ed5c527c107b6dbe5de"
+    },
+    {
+      "id": "M5B284-01939",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_account_profiles.rs",
+      "bytes": 3073,
+      "sha256": "4054a9d8affab3eebe8c77a30e76f0947a1d60843bda15a71e6fa991c2696023"
+    },
+    {
+      "id": "M5B284-01940",
+      "kind": "repository",
+      "path": "tools/test_rust_selected_players.py",
+      "bytes": 15549,
+      "sha256": "6939e7f3483eb1c7e49cb3ba4f8845992278ffe30cacd66bb56d2c182915ba3f"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/0438deb056505e93017ce4d09d0dd6d894cff7a1fcd6f09040dbb1e9d10b76db.jsonl",
+      "sha256": "0438deb056505e93017ce4d09d0dd6d894cff7a1fcd6f09040dbb1e9d10b76db",
+      "bytes": 9521,
+      "count": 52,
+      "files_bytes": 278935
+    },
+    {
+      "run": "local/research/codex/m5b-dynamic-native-r1",
+      "path": "local/evidence-manifests/f19ce5d76b320b249b36ab898c0cf357364f89ffeac03a2ddb5a5b582b0b3d65.jsonl",
+      "sha256": "f19ce5d76b320b249b36ab898c0cf357364f89ffeac03a2ddb5a5b582b0b3d65",
+      "bytes": 75505,
+      "count": 357,
+      "files_bytes": 239941040
+    },
+    {
+      "run": "local/research/codex/m5b-dynamic-native-r2",
+      "path": "local/evidence-manifests/21fb55beb407e8f2f5ea7bb255256b55a954ef6c7fdc88c9dd628d5fc0322459.jsonl",
+      "sha256": "21fb55beb407e8f2f5ea7bb255256b55a954ef6c7fdc88c9dd628d5fc0322459",
+      "bytes": 76761,
+      "count": 363,
+      "files_bytes": 240756014
+    },
+    {
+      "run": "local/research/codex/m5b-dynamic-native-r3",
+      "path": "local/evidence-manifests/6ade43a6f6145fa3f2110f6bd6c27f03b31e20ddff946c63920edfe804b0eb2d.jsonl",
+      "sha256": "6ade43a6f6145fa3f2110f6bd6c27f03b31e20ddff946c63920edfe804b0eb2d",
+      "bytes": 77826,
+      "count": 368,
+      "files_bytes": 242616184
+    },
+    {
+      "run": "local/research/codex/m5b-dynamic-synthetic-r1",
+      "path": "local/evidence-manifests/684956b179b0549539552b76f3472c859690a12f651ca00a2d9d5e17e6e13031.jsonl",
+      "sha256": "684956b179b0549539552b76f3472c859690a12f651ca00a2d9d5e17e6e13031",
+      "bytes": 24223,
+      "count": 115,
+      "files_bytes": 115496770
+    },
+    {
+      "run": "local/research/codex/m5b-dynamic-synthetic-r2",
+      "path": "local/evidence-manifests/8b378765f3896f39a6a33ebb883f2f25fec0bdbf9d169223200ab4827e577e0b.jsonl",
+      "sha256": "8b378765f3896f39a6a33ebb883f2f25fec0bdbf9d169223200ab4827e577e0b",
+      "bytes": 24223,
+      "count": 115,
+      "files_bytes": 115945047
+    },
+    {
+      "run": "local/research/codex/m5b-dynamic-synthetic-r3",
+      "path": "local/evidence-manifests/545797dec818d607b8d858f0a9b6685c1dcc7abe86448d82b29f6589f82c8425.jsonl",
+      "sha256": "545797dec818d607b8d858f0a9b6685c1dcc7abe86448d82b29f6589f82c8425",
+      "bytes": 24021,
+      "count": 114,
+      "files_bytes": 115856521
+    },
+    {
+      "run": "local/research/codex/m5b-negative-synthetic-r1",
+      "path": "local/evidence-manifests/d6d9f03982bf207aa83d00e757b34420b8dbc989ce2ac62fae08cd101603da40.jsonl",
+      "sha256": "d6d9f03982bf207aa83d00e757b34420b8dbc989ce2ac62fae08cd101603da40",
+      "bytes": 18421,
+      "count": 87,
+      "files_bytes": 115747408
+    },
+    {
+      "run": "local/research/codex/m5b-shared-ip-native-r1",
+      "path": "local/evidence-manifests/2e4e87c252fd45203989d443d71d4df3bc60f0625caa147ccfb7baa2bd20428b.jsonl",
+      "sha256": "2e4e87c252fd45203989d443d71d4df3bc60f0625caa147ccfb7baa2bd20428b",
+      "bytes": 70410,
+      "count": 329,
+      "files_bytes": 235764292
+    },
+    {
+      "run": "local/research/codex/m5b-source-r1",
+      "path": "local/evidence-manifests/b43ab18ccd965d7be9c7e817c8c24e69267e95dbe45fb1212722cc7370f497fb.jsonl",
+      "sha256": "b43ab18ccd965d7be9c7e817c8c24e69267e95dbe45fb1212722cc7370f497fb",
+      "bytes": 656,
+      "count": 3,
+      "files_bytes": 5476
+    }
   ]
 }

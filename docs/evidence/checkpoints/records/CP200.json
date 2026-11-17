@@ -167,15 +167,6 @@
       "limits": "NEXT-K7-FOUR-BATTLE-OUTCOMEactive; nofull4match/gate."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP200-four-session.json",
-      "bytes": 1139959,
-      "sha256": "9354869ad1ec2586cda7d78b015b36b9ae187a769e9790306b13c4eccce2a419",
-      "count": 4577
-    }
-  ],
   "delta": {
     "added": [
       "Newseparate4sessionservice/identity/roster/Ready/loading/153withmechanicalnegativecontrols andfouractualnativeWine room/clock/consumerproof.",
@@ -277,6 +268,1095 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP200actual4session/sourcelevels/partialfailures/12currentpositionlimits/nextfourBattle andAUD059counter synchronizedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "FOUR200-00001",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD059.json",
+      "bytes": 6623,
+      "sha256": "a6263dfdd78580cfa137fee209a3ab7bf67abbf1667e4a8cee9960d57a0245a9"
+    },
+    {
+      "id": "FOUR200-00008",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "FOUR200-00015",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "FOUR200-00027",
+      "kind": "local",
+      "path": "local/research/codex/cp200-artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "FOUR200-00028",
+      "kind": "local",
+      "path": "local/research/codex/cp200-docs-check.txt",
+      "bytes": 175,
+      "sha256": "0f429b3a0d070fdc94969a12fde13f0f8a2ca8422ffcf51bab8e34928925d0f3"
+    },
+    {
+      "id": "FOUR200-00420",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r1/raw-seal.json",
+      "bytes": 72056,
+      "sha256": "cf7f34812971c3255a5cfe59ee14e388d5461369014b04da6dc161f4d027a4b7"
+    },
+    {
+      "id": "FOUR200-01400",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r2/fullmesh-first-failure.log",
+      "bytes": 1453,
+      "sha256": "13390bed939ae4621f514e2379eb7b6ca5c1aab1b1ac4261845d3e38cd91d359"
+    },
+    {
+      "id": "FOUR200-01414",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r2/mesh-gap-analysis.json",
+      "bytes": 5648,
+      "sha256": "74ecc9030603d62bce2221120ebc5ba28065db723ae6f0eb7f7934ee5d9e5c02"
+    },
+    {
+      "id": "FOUR200-01505",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r2/session-verification.json",
+      "bytes": 21242,
+      "sha256": "6e07f1d2e63ec7939bd5ce1ee2e7e530a3cf26e79fb1c901514c5ac9361ebfb4"
+    },
+    {
+      "id": "FOUR200-02425",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r3/queue-gap-verification.json",
+      "bytes": 3680,
+      "sha256": "6fe3b4ba7b27083c2b6af46c258ed0009a6529f981e9806d235f35f8930eabcd"
+    },
+    {
+      "id": "FOUR200-02515",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r3/session-verification.json",
+      "bytes": 21241,
+      "sha256": "4d3b65b7798c0eae211f238f08d991c26238c98b184f0c500bdc42f2fe30fb3e"
+    },
+    {
+      "id": "FOUR200-02632",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r4/operator-stop.json",
+      "bytes": 2449,
+      "sha256": "11c3a705a0d813ccc7204d9d1a1701559102905385c56c5eb61483bd7fa9aa9f"
+    },
+    {
+      "id": "FOUR200-02634",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r4/raw-seal.json",
+      "bytes": 20466,
+      "sha256": "de01f055fbd198f967fb4a0612d7b29fe17f9093aa55227d0727a654af256897"
+    },
+    {
+      "id": "FOUR200-03326",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r5/launch.txt",
+      "bytes": 1015,
+      "sha256": "308f8a735b58f62c5dbfd79ac7f8d103304e398c794a361e6fa950f224d88c41"
+    },
+    {
+      "id": "FOUR200-03328",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r5/partial-raw-seal.json",
+      "bytes": 116436,
+      "sha256": "1374d922368d7ea661065522d15777025ee5056ad3a61b2e84286b25562fd4d9"
+    },
+    {
+      "id": "FOUR200-03449",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/cycles/A/four-slot-after-two-peer-windows.png",
+      "bytes": 142807,
+      "sha256": "2141527fcbca9cd24d2ee7661ccf78533c6692d4876b538243c86c465fba6c0e"
+    },
+    {
+      "id": "FOUR200-03886",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/cycles/D/four-slot-after-two-peer-windows.png",
+      "bytes": 143036,
+      "sha256": "2c31b3019fd218e5fcf3b389ffff7bef7eac9a50f41fa66db33da2a00930a267"
+    },
+    {
+      "id": "FOUR200-04002",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/cycles/run.json",
+      "bytes": 1038759,
+      "sha256": "8733741005a6e656d041486755f69077d03f99b06e8966349faf5cdc61a79b45"
+    },
+    {
+      "id": "FOUR200-04003",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/cycles/service-state.json",
+      "bytes": 130366,
+      "sha256": "8fd139ebd58dd620ade67f6170de2b5705e81cca8f8cf89349a30132ca91dbed"
+    },
+    {
+      "id": "FOUR200-04006",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/cycles/udp-virtual.pcap",
+      "bytes": 35724,
+      "sha256": "a1ca78bf26dbb13735a98f362c8e23fce9abecaeafb9679b043bbe1cacd9474f"
+    },
+    {
+      "id": "FOUR200-04024",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/metadata-serialization-control.json",
+      "bytes": 350,
+      "sha256": "411b5390c34dac622f914dda9e319fef6c2ff83253176b103609c898e4c761fe"
+    },
+    {
+      "id": "FOUR200-04027",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/raw-seal.json",
+      "bytes": 116143,
+      "sha256": "371c451b4a96f55c11b433621995dc2ce256ae87966cf73bccb430da5ee20ea7"
+    },
+    {
+      "id": "FOUR200-04118",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/verification.json",
+      "bytes": 672513,
+      "sha256": "2edca1bb0cb824a9e75195a026648e91008f6447ebac1472f7f54d79fb4c2e3b"
+    },
+    {
+      "id": "FOUR200-04120",
+      "kind": "local",
+      "path": "local/research/codex/four-player-scope-r1/source-reuse-and-gaps.json",
+      "bytes": 9730,
+      "sha256": "05b714d4122ca1a973043ad23a42ab1acd3de1e9215f8b357fe22c5183cff151"
+    },
+    {
+      "id": "FOUR200-04121",
+      "kind": "local",
+      "path": "local/research/codex/four-session-r1/audit-read-pins.json",
+      "bytes": 7581,
+      "sha256": "52f5c914fe6ee4954dd454f5888d4c349763beb3c38007bd2302558f1e3a4305"
+    },
+    {
+      "id": "FOUR200-04122",
+      "kind": "local",
+      "path": "local/research/codex/four-session-r1/auth-header-diagnosis.json",
+      "bytes": 957,
+      "sha256": "659bb70a25501104c9880eeb34313db7de470a55171d2547c45558874638173d"
+    },
+    {
+      "id": "FOUR200-04123",
+      "kind": "local",
+      "path": "local/research/codex/four-session-r1/base-source-unchanged.json",
+      "bytes": 12293,
+      "sha256": "07c9023b09d0b99b77fadafde953ba0d299eccf80fb9a17018d34e23927e3cec"
+    },
+    {
+      "id": "FOUR200-04124",
+      "kind": "local",
+      "path": "local/research/codex/four-session-r1/bundle-tests-r2.txt",
+      "bytes": 9511,
+      "sha256": "c92c5782594c0599657eed2393cc248e74b2eff03102f241548c777cb8029a98"
+    },
+    {
+      "id": "FOUR200-04127",
+      "kind": "local",
+      "path": "local/research/codex/four-session-r1/checkpoint-tests-full.txt",
+      "bytes": 142,
+      "sha256": "7c21e11d960229cecd9362d3f544ffb70fe8eddf9e033e54593d277f9f635763"
+    },
+    {
+      "id": "FOUR200-04131",
+      "kind": "local",
+      "path": "local/research/codex/four-session-r1/cp200-snapshot/docs/PLAN.md",
+      "bytes": 55923,
+      "sha256": "12858d32a63c2360ae31aa98a141534d168ab73e7271b2cb6522cc0d0049f3fa"
+    },
+    {
+      "id": "FOUR200-04142",
+      "kind": "local",
+      "path": "local/research/codex/four-session-r1/production-real-tcp-authfixed-verification.json",
+      "bytes": 922,
+      "sha256": "daeee48d9bf52ed053b9f22e7ad3136b83e52a69f736fe4b5ccf985ef259fdde"
+    },
+    {
+      "id": "FOUR200-04325",
+      "kind": "local",
+      "path": "local/research/codex/four-session-r1/server-tests-authfixed.txt",
+      "bytes": 409,
+      "sha256": "d19b71c10173f74665d653396dd1598b5ff94e22aa45937385b5a0a99f7a3f64"
+    },
+    {
+      "id": "FOUR200-04436",
+      "kind": "local",
+      "path": "local/research/codex/four-slot-r1/verification.json",
+      "bytes": 10203,
+      "sha256": "0a748b645777f47111bf7a6f9534dccfe4c196f964f6d59aa5a05fe0e26728e8"
+    },
+    {
+      "id": "FOUR200-04443",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "FOUR200-04444",
+      "kind": "local",
+      "path": "local/research/codex/native-interleave-r1/native-interleave-verification.json",
+      "bytes": 2250,
+      "sha256": "e2ab5bda75ba44e703eafca23865ea5a3beea0ecd69e9ece7f7219c03a4b0dc2"
+    },
+    {
+      "id": "FOUR200-04447",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "FOUR200-04462",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "FOUR200-04463",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "FOUR200-04464",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "FOUR200-04476",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "FOUR200-04478",
+      "kind": "local",
+      "path": "local/research/codex/udp-freshness-r1/E66680-prefix.asm",
+      "bytes": 14629,
+      "sha256": "881f2fbff332eaf3b863931dfcdee82f78b62b26a3cb542abb65d1f9bb86f633"
+    },
+    {
+      "id": "FOUR200-04479",
+      "kind": "local",
+      "path": "local/research/codex/udp-generation-r1/14E5710.asm",
+      "bytes": 3003,
+      "sha256": "3e63f296684141c472cac204b08b89b1575f950a4e71e49a6cd8362ea007acfc"
+    },
+    {
+      "id": "FOUR200-04480",
+      "kind": "local",
+      "path": "local/research/codex/udp-generation-r1/game-udp-consumer-prefix.asm",
+      "bytes": 7189,
+      "sha256": "270637ead0c18a4265698d464e5ddff3da2b5e2a057407b57c27edec6430c42e"
+    },
+    {
+      "id": "FOUR200-04484",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "FOUR200-04491",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "FOUR200-04492",
+      "kind": "repository",
+      "path": "server/four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "FOUR200-04493",
+      "kind": "repository",
+      "path": "server/four_player_service.py",
+      "bytes": 19385,
+      "sha256": "6f50dbab99f56d8288e581024e1f95c87cf871f0408055b16ea0cc22f654822f"
+    },
+    {
+      "id": "FOUR200-04494",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "FOUR200-04495",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "FOUR200-04496",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "FOUR200-04497",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "FOUR200-04498",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 112770,
+      "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c"
+    },
+    {
+      "id": "FOUR200-04499",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "FOUR200-04500",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "FOUR200-04501",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "FOUR200-04502",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "FOUR200-04503",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "FOUR200-04504",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "FOUR200-04505",
+      "kind": "repository",
+      "path": "server/test_admission_ip.py",
+      "bytes": 7753,
+      "sha256": "15c72110195d48bd4165684a098232f56be8e78f261f454911e796b90a192a76"
+    },
+    {
+      "id": "FOUR200-04506",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "FOUR200-04507",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "FOUR200-04508",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "FOUR200-04509",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "FOUR200-04510",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "FOUR200-04511",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "FOUR200-04512",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "FOUR200-04513",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "FOUR200-04514",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "FOUR200-04515",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "FOUR200-04516",
+      "kind": "repository",
+      "path": "server/test_four_player_service.py",
+      "bytes": 10154,
+      "sha256": "50faf857e110ad0a5b5b5f45d9d41429b8ccb73c6d880cfd766e7d8847126a6d"
+    },
+    {
+      "id": "FOUR200-04517",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "FOUR200-04518",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "FOUR200-04519",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "FOUR200-04520",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "FOUR200-04521",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "FOUR200-04522",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "FOUR200-04523",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "FOUR200-04524",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "FOUR200-04525",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "FOUR200-04526",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "FOUR200-04527",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "FOUR200-04528",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "FOUR200-04529",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "FOUR200-04530",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "FOUR200-04531",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "FOUR200-04532",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "FOUR200-04533",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "FOUR200-04534",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "FOUR200-04535",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "FOUR200-04536",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "FOUR200-04537",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "FOUR200-04538",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "FOUR200-04539",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "FOUR200-04540",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "FOUR200-04541",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "FOUR200-04542",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "FOUR200-04543",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "FOUR200-04544",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "FOUR200-04545",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "FOUR200-04546",
+      "kind": "repository",
+      "path": "tools/artifacts.py",
+      "bytes": 1089,
+      "sha256": "3806dc33d23db39ce591eb6fc3d2d9638c177a1a08862c474b4bb1d6614188d3"
+    },
+    {
+      "id": "FOUR200-04547",
+      "kind": "repository",
+      "path": "tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "FOUR200-04548",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 30165,
+      "sha256": "a91a1868b8da8870818fa11e6c38f81fb5c36a284610a60fb47f041b7891bd94"
+    },
+    {
+      "id": "FOUR200-04549",
+      "kind": "repository",
+      "path": "tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "FOUR200-04550",
+      "kind": "repository",
+      "path": "tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "FOUR200-04551",
+      "kind": "repository",
+      "path": "tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "FOUR200-04552",
+      "kind": "repository",
+      "path": "tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "FOUR200-04553",
+      "kind": "repository",
+      "path": "tools/export_probe_profile.py",
+      "bytes": 9863,
+      "sha256": "20d90106996dd866af4d3d0fe5824812bb63c6e4f376f6013eb55e9ea67adcb3"
+    },
+    {
+      "id": "FOUR200-04554",
+      "kind": "repository",
+      "path": "tools/feature_catalog.py",
+      "bytes": 15672,
+      "sha256": "765658526f6efccf218e7387d309cc263846ef72c0a1090b87f3d2cc5d3181c0"
+    },
+    {
+      "id": "FOUR200-04555",
+      "kind": "repository",
+      "path": "tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "FOUR200-04556",
+      "kind": "repository",
+      "path": "tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "FOUR200-04557",
+      "kind": "repository",
+      "path": "tools/probe_bundle.py",
+      "bytes": 5536,
+      "sha256": "a4b03a71afb418bc76b328486c32fa25a464996b0b991ac98b9e3c24487e56be"
+    },
+    {
+      "id": "FOUR200-04558",
+      "kind": "repository",
+      "path": "tools/probe_channel_identity.py",
+      "bytes": 981,
+      "sha256": "b4dbf4c9b827007fa9bcb441db26e0230fb4654e5480f5b242157d2d32c3f68b"
+    },
+    {
+      "id": "FOUR200-04559",
+      "kind": "repository",
+      "path": "tools/terrain_shadow.py",
+      "bytes": 334,
+      "sha256": "71856e537954ab963ce27a6d057913974b7bb8b1dea863764961ed9846d2addc"
+    },
+    {
+      "id": "FOUR200-04560",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_absolute_local.py",
+      "bytes": 3145,
+      "sha256": "b6c2b85fb4b315101435dfbc95ea41ffe4a5a8fa3c2eec2c7d4f3c769b86c737"
+    },
+    {
+      "id": "FOUR200-04561",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_audit_order.py",
+      "bytes": 1350,
+      "sha256": "157b9b99bf25383da498239b5627739962251b25f2c67925730663775e76f9e9"
+    },
+    {
+      "id": "FOUR200-04562",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    },
+    {
+      "id": "FOUR200-04563",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_store.py",
+      "bytes": 12900,
+      "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b"
+    },
+    {
+      "id": "FOUR200-04564",
+      "kind": "repository",
+      "path": "tools/test_checkpoints.py",
+      "bytes": 14329,
+      "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6"
+    },
+    {
+      "id": "FOUR200-04565",
+      "kind": "repository",
+      "path": "tools/test_export_all_dead.py",
+      "bytes": 2472,
+      "sha256": "9181544944d5e72d3d7137b763fbb42fcb554b6efd687e17b241c88cc0116c19"
+    },
+    {
+      "id": "FOUR200-04566",
+      "kind": "repository",
+      "path": "tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "FOUR200-04567",
+      "kind": "repository",
+      "path": "tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "FOUR200-04568",
+      "kind": "repository",
+      "path": "tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    },
+    {
+      "id": "FOUR200-04569",
+      "kind": "repository",
+      "path": "tools/test_feature_catalog.py",
+      "bytes": 3154,
+      "sha256": "124f62bc87c67e669751600dc2be4d2cd5e7f9e28ef16c7906fbc37ec6f63883"
+    },
+    {
+      "id": "FOUR200-04570",
+      "kind": "repository",
+      "path": "tools/test_issue_links.py",
+      "bytes": 4175,
+      "sha256": "b6025c8c6e11b2b179a4b58e20e73f48edf989a0749ef968c5409c1d3fd5d764"
+    },
+    {
+      "id": "FOUR200-04571",
+      "kind": "repository",
+      "path": "tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    },
+    {
+      "id": "FOUR200-04572",
+      "kind": "repository",
+      "path": "tools/test_probe_channel_identity.py",
+      "bytes": 1989,
+      "sha256": "a7c8c05a66c959ec521aa391f6bc5ea0b4d8444ced130e260281b48d40737cf5"
+    },
+    {
+      "id": "FOUR200-04573",
+      "kind": "repository",
+      "path": "tools/test_terrain_shadow.py",
+      "bytes": 2384,
+      "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+    },
+    {
+      "id": "FOUR200-04574",
+      "kind": "repository",
+      "path": "tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "id": "FOUR200-04575",
+      "kind": "repository",
+      "path": "tools/verify_primitives.py",
+      "bytes": 5272,
+      "sha256": "5cef1ce63e7895e89e3899252a78e958f59218247ac81a1b86f517ed5ddcf6dd"
+    },
+    {
+      "id": "FOUR200-04576",
+      "kind": "repository",
+      "path": "tools/windows_console.py",
+      "bytes": 1820,
+      "sha256": "3cc762507cceb37acee58d138e574834b5969630bf9c58430df9de738d328283"
+    },
+    {
+      "id": "FOUR200-04577",
+      "kind": "repository",
+      "path": "tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/4661761f1570ebb963bb06086e7a4a084bc7e6bc9001d14a70395a306cc069c2.jsonl",
+      "sha256": "4661761f1570ebb963bb06086e7a4a084bc7e6bc9001d14a70395a306cc069c2",
+      "bytes": 465,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/daad062f1b3fa1aac9556c5a9d0271063375df1613456b162742f9c1522980d7.jsonl",
+      "sha256": "daad062f1b3fa1aac9556c5a9d0271063375df1613456b162742f9c1522980d7",
+      "bytes": 6623,
+      "count": 36,
+      "files_bytes": 6519378
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/980bef4b237a540f0478021c6067ff398fc4614957a0872f8af0624f0005090f.jsonl",
+      "sha256": "980bef4b237a540f0478021c6067ff398fc4614957a0872f8af0624f0005090f",
+      "bytes": 645,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/b66cc65341bee12b072b551ae61417ce20b6755d3f7ebe81701ced5f415e9789.jsonl",
+      "sha256": "b66cc65341bee12b072b551ae61417ce20b6755d3f7ebe81701ced5f415e9789",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/68e20cf6b71e3f5d5f2afcc14223a6330b1da7c8a16010a8fc3e3fb16739e75c.jsonl",
+      "sha256": "68e20cf6b71e3f5d5f2afcc14223a6330b1da7c8a16010a8fc3e3fb16739e75c",
+      "bytes": 647,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/05a88930dbe8fe3e1878700883635cb38564e60f53dbb3798ca40e9d242a0397.jsonl",
+      "sha256": "05a88930dbe8fe3e1878700883635cb38564e60f53dbb3798ca40e9d242a0397",
+      "bytes": 463,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/65c7ae00c5af062097f2cb365110ab71ee0e3aab12fe5f16ef0f87a6df2016a7.jsonl",
+      "sha256": "65c7ae00c5af062097f2cb365110ab71ee0e3aab12fe5f16ef0f87a6df2016a7",
+      "bytes": 1021,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/four-native-r1",
+      "path": "local/evidence-manifests/ac31e77d9711ad1c754b430933eb182b6caf44b761882012837b8ca3db58a5aa.jsonl",
+      "sha256": "ac31e77d9711ad1c754b430933eb182b6caf44b761882012837b8ca3db58a5aa",
+      "bytes": 94888,
+      "count": 474,
+      "files_bytes": 43175350
+    },
+    {
+      "run": "local/research/codex/four-native-r2",
+      "path": "local/evidence-manifests/f2099ca6d6978eabe095ce49383e1a7092826ce305e894c0292a75ad09abd480.jsonl",
+      "sha256": "f2099ca6d6978eabe095ce49383e1a7092826ce305e894c0292a75ad09abd480",
+      "bytes": 197657,
+      "count": 996,
+      "files_bytes": 34240437
+    },
+    {
+      "run": "local/research/codex/four-native-r3",
+      "path": "local/evidence-manifests/aa3ed283aef39f835c7380040afb134717aa09e3c9f4d427943c168dd90325a6.jsonl",
+      "sha256": "aa3ed283aef39f835c7380040afb134717aa09e3c9f4d427943c168dd90325a6",
+      "bytes": 199777,
+      "count": 1007,
+      "files_bytes": 34214700
+    },
+    {
+      "run": "local/research/codex/four-native-r4",
+      "path": "local/evidence-manifests/e08533f943a96a7207cf5ab1f53ecd62c002c33dd46164442bff9a7eed54b7ff.jsonl",
+      "sha256": "e08533f943a96a7207cf5ab1f53ecd62c002c33dd46164442bff9a7eed54b7ff",
+      "bytes": 41623,
+      "count": 204,
+      "files_bytes": 3495450
+    },
+    {
+      "run": "local/research/codex/four-native-r5",
+      "path": "local/evidence-manifests/69a7f5b02a67683cad0862507394eb2e405d1c1fe0e24e210192eefb9cf18a1c.jsonl",
+      "sha256": "69a7f5b02a67683cad0862507394eb2e405d1c1fe0e24e210192eefb9cf18a1c",
+      "bytes": 138296,
+      "count": 694,
+      "files_bytes": 28666879
+    },
+    {
+      "run": "local/research/codex/four-native-r6",
+      "path": "local/evidence-manifests/9f8303d0d2bccb8246870f9a342f664b8cb0c91590c6949e549afb9c77567da6.jsonl",
+      "sha256": "9f8303d0d2bccb8246870f9a342f664b8cb0c91590c6949e549afb9c77567da6",
+      "bytes": 137644,
+      "count": 691,
+      "files_bytes": 29035090
+    },
+    {
+      "run": "local/research/codex/four-session-r1",
+      "path": "local/evidence-manifests/1de7adce081779813c3764e61d1ad569602871382705289425f6012cd082c480.jsonl",
+      "sha256": "1de7adce081779813c3764e61d1ad569602871382705289425f6012cd082c480",
+      "bytes": 64726,
+      "count": 307,
+      "files_bytes": 1788600
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/6d6575affd0ad0eac2cc820cc886a2be2ba41b64f3c4d579f9cf41000a73c6d6.jsonl",
+      "sha256": "6d6575affd0ad0eac2cc820cc886a2be2ba41b64f3c4d579f9cf41000a73c6d6",
+      "bytes": 932,
+      "count": 4,
+      "files_bytes": 127498240
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/8574c15140a83fc2fbc95054253fc58ff3e0f916eafa7d22b1af4f2090545be1.jsonl",
+      "sha256": "8574c15140a83fc2fbc95054253fc58ff3e0f916eafa7d22b1af4f2090545be1",
+      "bytes": 436,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/014df573f5c258e4a179beb5a3ad2b6de87935c32ec90a1799987d9f0e7ed73c.jsonl",
+      "sha256": "014df573f5c258e4a179beb5a3ad2b6de87935c32ec90a1799987d9f0e7ed73c",
+      "bytes": 445,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/44b39fabac571fa0f543e5261ae54cbb374775a26d9dd42f2d4336c4f36d947b.jsonl",
+      "sha256": "44b39fabac571fa0f543e5261ae54cbb374775a26d9dd42f2d4336c4f36d947b",
+      "bytes": 644,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/3acad4857e193e7911c51361efa24a84c62fda7928ab68cdf11986118d0bf7ab.jsonl",
+      "sha256": "3acad4857e193e7911c51361efa24a84c62fda7928ab68cdf11986118d0bf7ab",
+      "bytes": 986,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/05a0400c34a9332d93c6af87b69cbcde4b6fbf551c94fc6a8f199dbd5d08e5b6.jsonl",
+      "sha256": "05a0400c34a9332d93c6af87b69cbcde4b6fbf551c94fc6a8f199dbd5d08e5b6",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/89638a88aee6bc08d0294479d0b12357e3d4babcfa97114d5ed6d4b26f22ca5e.jsonl",
+      "sha256": "89638a88aee6bc08d0294479d0b12357e3d4babcfa97114d5ed6d4b26f22ca5e",
+      "bytes": 455,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

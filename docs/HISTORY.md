@@ -5,6 +5,21 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP335: bảng rơi G1 đã cắt và từ chối nhân vật chưa đo giữ phiên đã có native hai vòng.**
+[Dữ liệu item](protocol/items-stats.md#g1-scoped-drops) giữ mọi row nguồn sáu map, đặt 62 row dương ngoài tập giữ về 0.
+[Nhân vật #457](protocol/auth-session.md#rust-persistent-character): C4 bị từ chối, C0→C1 hợp lệ trên cùng socket,
+hai vòng/kết quả/reset và đúng journal/account; không tăng revision cho lựa chọn bị từ chối. Harness dùng chung theo ma trận,
+chờ trạng thái thật và cleanup sạch. Nhóm còn qua gate/PR trước tích hợp. Ma trận Punch/Shoe, đối chiếu map và M8 vẫn mở;
+không tiếp L1 của Claude. [Bảng điều hành](PLAN.md#dashboard) giữ việc còn lại và ước lượng native.
+
+**CP334: Punch ngang selector 0 đã có hai vòng Rust account/peer/reset và journal thưởng 0.**
+[Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) giữ endpoint `(6,3)→(6,5)` đã đo,
+reservation cả hàng và ownership/round/delivery fences. Gameplay có native riêng; launcher exit 1 do unmount
+busy sau same-byte export, bằng chứng phục hồi đã kiểm và lỗi gốc giữ nguyên. Không suy toàn đường bay.
+Tiếp selector 2, các hướng/khoảng cách Shoe và coverage G1 rồi M8 theo [Bảng điều hành](PLAN.md#dashboard).
+G1, giai đoạn 1 và L1 của Claude còn mở.
+
+
 **CP333: Punch hướng xuống một ô đã chạy hai vòng trên Rust với hai account.**
 [Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) có exact selector 1,
 landing/thu hồi, bom tiếp, peer/reset và journal thưởng 0 đúng identity/nhân vật; policy vẫn opt-in.

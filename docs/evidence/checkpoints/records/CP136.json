@@ -130,15 +130,6 @@
       "limits": "Mechanical consistency only; gates/acceptance not certified."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP136-loading-deadline-positive.json",
-      "bytes": 345570,
-      "sha256": "7de4e54b0a182a499731dfb8676c01f9e34cea884cdc78df1391102dc209f9eb",
-      "count": 1339
-    }
-  ],
   "delta": {
     "added": [
       "Normal loadingdeadline positive across2generations inonecompletecapturedrun; AUD042periodic136→140."
@@ -223,6 +214,181 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP136normaldeadline2/sourceboundlimits/profileoptions/combinednextstep/catalog/issue andperiodicAUD042 synced beforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/audit-inputs.json",
+      "bytes": 5356,
+      "sha256": "8201abe00ade3e9a75d0ac7ec024ee31dadd566cc378b4ff570fd2a232dcd154"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/cp136-snapshot/docs/PLAN.md",
+      "bytes": 32799,
+      "sha256": "4216cb84d01d68c02d4b084bbe2d14b43d75b647652f2ec945caa751132ce8bf"
+    },
+    {
+      "id": "RUN-01218",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/cycles/run.json",
+      "bytes": 840722,
+      "sha256": "1fb9db23bbfedcc8ef291f071f01189b21f97270872b1fb208c682711fad3a47"
+    },
+    {
+      "id": "RUN-01219",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/cycles/service-state.json",
+      "bytes": 437427,
+      "sha256": "68dbaf58ee88a33a622c7e4cd1449d6e6d273ec5346b7cd79f93a2ebda0e8d5e"
+    },
+    {
+      "id": "RUN-01226",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/cycles-check.txt",
+      "bytes": 55,
+      "sha256": "318ddd2d4e454b1c922b90c67c292adde2758c2063c27815a6d8ee98815c0815"
+    },
+    {
+      "id": "RUN-01228",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/cycles-verification.json",
+      "bytes": 121002,
+      "sha256": "e855bfe89b1ca593f4d9ab82c3c72934c778d52f6edcc18d181b68eec5fe5ebc"
+    },
+    {
+      "id": "RUN-01230",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "29091547ba93025038abaf80783cf8b9f74aad43fc090d045ee5536c0741afaa"
+    },
+    {
+      "id": "RUN-01231",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/fields-check.txt",
+      "bytes": 33,
+      "sha256": "63b0718148323b87a7e3061d169d341733f4f72759b3b5165826a4163f124e38"
+    },
+    {
+      "id": "RUN-01232",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/flag-check.txt",
+      "bytes": 54,
+      "sha256": "a106b241d6494a01ff31a35320e53f302a61c7b29b5998cf2bd427b7168d0f02"
+    },
+    {
+      "id": "RUN-01239",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "aba19f92355582910fcff571072d791cead480a33bf89cc3f8184fd609dc3a64"
+    },
+    {
+      "id": "RUN-01242",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/loading-check.txt",
+      "bytes": 870,
+      "sha256": "3ea99729759d3f2d6b5f86f7cd89ca14f5fb76b7204e7e569e961186cf1c3caf"
+    },
+    {
+      "id": "RUN-01243",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/loading-verification.json",
+      "bytes": 2071,
+      "sha256": "3e560e3a99d1e0d9e37fba1c02266030ad29f7e4ae96d0012b146c6f6a70a822"
+    },
+    {
+      "id": "RUN-01244",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/native-153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "RUN-01246",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/native-packet-check.txt",
+      "bytes": 29,
+      "sha256": "56637eb762a4c67e1902bfaac3569810f081ddbfd3090963d9ff10a87dfdb729"
+    },
+    {
+      "id": "RUN-01252",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/profile.json",
+      "bytes": 13663,
+      "sha256": "241c1848d4ee618dd8ba2cb785404418320e25aa54c10aa66fb149993020728b"
+    },
+    {
+      "id": "RUN-01253",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/raw-seal.json",
+      "bytes": 253584,
+      "sha256": "36859c1da401e2098ce6a3a4ba849e260b13f3b2f13098e9a8debfd505891a1f"
+    },
+    {
+      "id": "RUN-01329",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-positive-r1/visual-review.json",
+      "bytes": 847,
+      "sha256": "a300ccbd487fa9aada8acd48f0754cb12a956ebc21a5b7d695c1155918ba27ee"
+    },
+    {
+      "id": "RUN-01334",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/checkpoint-final-corrected.txt",
+      "bytes": 27758,
+      "sha256": "b9359698a2eb2daa4fc0cfdb333ac515c42d14e3d4812cbbeced76c7e28b8421"
+    },
+    {
+      "id": "RUN-01335",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/server-tests.txt",
+      "bytes": 326,
+      "sha256": "f28b95e479069101d2aec9e3c4074164e368ada7e65cef0671c89402aab651a0"
+    },
+    {
+      "id": "RUN-01339",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/schema-validation/correction.json",
+      "bytes": 725,
+      "sha256": "e1c5208b9faee8b8b45b347a6cf4496f45cde9bbe5d0709ec57bc99c7cbc3006"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/loading-timeout-positive-r1",
+      "path": "local/evidence-manifests/2e3884d79a909f6cac1db4ab26bac126c0347d54c80c8797671e27e76bdd1a78.jsonl",
+      "sha256": "2e3884d79a909f6cac1db4ab26bac126c0347d54c80c8797671e27e76bdd1a78",
+      "bytes": 273030,
+      "count": 1311,
+      "files_bytes": 64297101
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/a7dbb465fe6a003ae491574d90e7ffccf65aadbc1b6dd7609faaee8263f25230.jsonl",
+      "sha256": "a7dbb465fe6a003ae491574d90e7ffccf65aadbc1b6dd7609faaee8263f25230",
+      "bytes": 444,
+      "count": 2,
+      "files_bytes": 67313
+    },
+    {
+      "run": "local/research/codex/loading-timeout-r1",
+      "path": "local/evidence-manifests/ee301703dc11d5ad2d5de93ad996f39ba333c0b72f0f04340ac0a0c796922a49.jsonl",
+      "sha256": "ee301703dc11d5ad2d5de93ad996f39ba333c0b72f0f04340ac0a0c796922a49",
+      "bytes": 1112,
+      "count": 5,
+      "files_bytes": 99614
     }
   ]
 }

@@ -5,6 +5,7 @@ from collections import Counter
 import json
 from pathlib import Path
 
+import checkpoint_evidence as lean
 import checkpoint_store as store
 
 
@@ -48,33 +49,55 @@ def main(argv=None):
                     result = record
                 else:
                     result = {k: v for k, v in record.items() if k != 'evidence'}
+                    result.pop('evidence_runs', None)
                     result['evidence_summary'] = {
                         'inline_rows': len(record.get('evidence', [])),
                         'external_rows_declared': sum(q['count'] for q in record.get('evidence_manifests', [])),
+                        'run_rows_declared': sum(q['count'] for q in record.get('evidence_runs', [])),
+                        'runs': len(record.get('evidence_runs', [])),
                         'command': f'python3 tools/checkpoints.py evidence {args.id}'}
             else:
                 counts, page, total, errors, warnings, verified, unavailable = Counter(), [], 0, [], [], 0, 0
                 if args.verify:
                     from check_checkpoints import verify_evidence_item
-                for i, item in enumerate(store.evidence(record, args.root)):
+                    pruned = lean.load_pruned(args.root)
+
+                def rows():
+                    nonlocal unavailable
+                    yield from store.evidence(record, args.root)
+                    for pointer in lean.pointers(record):
+                        try:
+                            yield from lean.read_run(pointer, args.root)
+                        except FileNotFoundError:
+                            unavailable += pointer['count']
+                            message = (f"{args.id}: UNVERIFIED unavailable host evidence run manifest "
+                                       f"{pointer['path']} ({pointer['count']} files under {pointer['run']})")
+                            (errors if args.require_local else warnings).append(message)
+                        except ValueError as error:
+                            errors.append(f"{args.id}: evidence run manifest {pointer['path']}: {error}")
+                for i, item in enumerate(rows()):
                     total += 1
                     counts[item.get('kind', 'invalid')] += 1
                     if args.limit and args.offset <= i < args.offset + args.limit:
                         page.append(item)
                     if args.verify:
-                        e, w, good, missing = verify_evidence_item(item, args.root, args.require_local, args.id)
+                        e, w, good, missing = verify_evidence_item(item, args.root, args.require_local, args.id, pruned)
                         errors.extend(e)
                         warnings.extend(w)
                         verified += good
                         unavailable += missing
                 result = dict(id=args.id, total=total, kinds=dict(counts),
-                              evidence_manifests=record.get('evidence_manifests', []))
+                              evidence_manifests=record.get('evidence_manifests', []),
+                              evidence_runs=[f"{q['run']} ({q['count']} files)"
+                                             for q in record.get('evidence_runs', [])])
+                if record.get('evidence_runs') and not args.verify and (errors or warnings):
+                    result['missing'] = errors + warnings
                 if args.limit:
                     result.update(offset=args.offset, rows=page,
                                   next_offset=args.offset + len(page) if args.offset + len(page) < total else None)
                 if args.verify:
                     result.update(verification=dict(ok=not errors, verified=verified, unavailable=unavailable,
-                                                    errors=errors, warnings=warnings))
+                                                    pruned=pruned.hits, errors=errors, warnings=warnings))
                     if errors:
                         print(json.dumps(result, ensure_ascii=False, indent=2))
                         return 1

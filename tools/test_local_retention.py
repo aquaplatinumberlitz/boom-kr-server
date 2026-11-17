@@ -1,0 +1,101 @@
+"""Retention plan/apply and PRUNED gate status. Synthetic data, no RE meaning."""
+import contextlib
+import hashlib
+import io
+import json
+from pathlib import Path
+import unittest
+
+import check_checkpoints as checker
+import checkpoint_evidence as lean
+import checkpoint_store as store
+import local_retention as retention
+import test_checkpoint_evidence_lean as lean_fixture
+
+
+class RetentionTest(unittest.TestCase):
+    def setUp(self):
+        # Reuse the lean-evidence fixture without inheriting (and re-running) its tests.
+        fixture = lean_fixture.LeanEvidenceTest('setUp')
+        fixture.setUp()
+        self.addCleanup(fixture.doCleanups)
+        self.fixture, self.root = fixture, fixture.root
+        self.write, self.validate, self.migrated = fixture.write, fixture.validate, fixture.migrated
+        self.write('local/research/codex/run-a/game-A/client.exe', 'synthetic game copy\n')
+        self.write('local/research/codex/run-a/prefix-A/drive_c/x.reg', 'synthetic prefix\n')
+        self.write('local/research/codex/run-a/scratch.bin', 'intermediate\n')
+        self.write('local/research/codex/run-a/crash.dmp', 'dump\n')
+        self.write('local/research/codex/unused-r1/out.log', 'never referenced\n')
+        fixture = self.write('local/research/codex/fixture-r1/frame.bin', 'pinned frame\n')
+        data = fixture.read_bytes()
+        self.write('local/research/codex/fixture-r1/service.json', json.dumps({
+            'schema': 'kr-rust-diagnostic-v1', 'fixture': {
+                'path': 'local/research/codex/fixture-r1/frame.bin', 'bytes': len(data),
+                'sha256': hashlib.sha256(data).hexdigest()}}))
+        self.migrated()
+
+    def dry_run(self):
+        with contextlib.redirect_stdout(io.StringIO()):
+            path, digest, summary, report = retention.plan(self.root, False, True, 'local/retention')
+        return path, digest, report
+
+    def test_dry_run_classes_and_pins(self):
+        path, digest, report = self.dry_run()
+        actions = {a['path']: a['class'] for a in report['actions']}
+        self.assertEqual(actions['local/research/codex/run-a/game-A'], 'disposable_copy')
+        self.assertEqual(actions['local/research/codex/run-a/prefix-A'], 'disposable_copy')
+        self.assertEqual(actions['local/research/codex/run-a/crash.dmp'], 'disposable_dump')
+        self.assertEqual(actions['local/research/codex/run-a/scratch.bin'], 'disposable_intermediate')
+        self.assertEqual(actions['local/research/codex/unused-r1'], 'disposable_unreferenced_run')
+        self.assertNotIn('local/research/codex/fixture-r1', actions)
+        self.assertIn('local/research/codex/fixture-r1/frame.bin', report['pinned']['fixture_pins'])
+        self.assertIn('local/research/codex/fixture-r1/service.json', report['pinned']['configs'])
+        self.assertFalse(any(p.startswith('local/evidence-manifests') for p in actions))
+        self.assertTrue(all(p.startswith('local/') for p in actions))
+        self.assertTrue(summary_exists(path))
+        self.assertEqual(report['actions'][0]['action'], 'delete')
+        # Dry run deletes nothing.
+        self.assertTrue((self.root / 'local/research/codex/run-a/game-A/client.exe').exists())
+
+    def test_apply_requires_approved_hash_and_records_pruned_evidence(self):
+        path, digest, report = self.dry_run()
+        with self.assertRaisesRegex(ValueError, 'approved hash'):
+            retention.apply(self.root, path, 'f' * 64)
+        result = retention.apply(self.root, path, digest)
+        self.assertGreater(result['deleted'], 0)
+        self.assertFalse((self.root / 'local/research/codex/unused-r1').exists())
+        self.assertTrue((self.root / 'local/research/codex/fixture-r1/frame.bin').exists())
+        self.assertEqual(self.validate()[0], [])
+
+    def test_gate_pruned_is_reported_but_unregistered_missing_still_fails(self):
+        target = self.root / 'local/runs/b/y.txt'
+        target.unlink()
+        self.assertTrue(any('UNVERIFIED unavailable host evidence local/runs/b/y.txt' in e for e in self.validate()[0]))
+        registry = {'schema': lean.PRUNED_SCHEMA, 'authorization': 'test', 'entries': [{
+            'path': 'local/runs/b', 'class': 'disposable_intermediate', 'reason': 'synthetic',
+            'date': '2026-11-18', 'plan_sha256': 'a' * 64}]}
+        self.write(lean.PRUNED, json.dumps(registry))
+        errors, warnings, stats = self.validate()
+        self.assertEqual(errors, [])
+        self.assertEqual(stats['evidence_pruned'], 1)
+        self.assertTrue(any('PRUNED 1 host-local' in w for w in warnings))
+        # A pruned path that still exists is verified normally.
+        other = self.root / 'local/runs/b/x.txt'
+        other.write_text('tampered\n')
+        self.assertTrue(any('size/hash mismatch local/runs/b/x.txt' in e for e in self.validate()[0]))
+        other.unlink()
+        self.assertEqual(self.validate()[0], [])
+        # Other missing files are still errors.
+        (self.root / 'local/research/codex/run-a/four.txt').unlink()
+        self.assertTrue(any('run-a/four.txt' in e for e in self.validate()[0]))
+        registry['entries'][0]['path'] = 'local/evidence-manifests'
+        self.write(lean.PRUNED, json.dumps(registry))
+        self.assertTrue(any('local-pruned' in e for e in self.validate()[0]))
+
+
+def summary_exists(plan_path):
+    return Path(str(plan_path)[:-5] + '.md').exists()
+
+
+if __name__ == '__main__':
+    unittest.main()

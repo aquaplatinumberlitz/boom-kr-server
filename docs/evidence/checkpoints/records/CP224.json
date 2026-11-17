@@ -156,15 +156,6 @@
       "limits": "Notindependentapproval;fullrequire-local/historyandexactPRheadchecksrequired."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP224-auth-retry-validation.json",
-      "bytes": 146063,
-      "sha256": "e516e83e71fa7da3444e7bc8f311b8c0e8238865213013045ec8558d937a5a26",
-      "count": 549
-    }
-  ],
   "delta": {
     "added": [
       "Exactnativehello/poll/connect/profilevalidationall1phase2;3sealedobserverruns462raw.",
@@ -273,6 +264,152 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP224exactreturn/branch/failure/corrections/canonicalbacklinks/PLANorder/AUD065next228syncedbeforecomplete;oldcomplete/rawimmutable."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "AUTH224-00003",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/batch-verification.json",
+      "bytes": 11205,
+      "sha256": "1755903834e3b6a804d04f1c4b98cceeb80c2a4ed4b8cc5a058b9c86b7072d3a"
+    },
+    {
+      "id": "AUTH224-00165",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/consumer-path/raw-seal.json",
+      "bytes": 33740,
+      "sha256": "9b26370747f54646116b3b2f6c1b708f5665531ec82e24c52c89b5a0a92ca814"
+    },
+    {
+      "id": "AUTH224-00171",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-alternate.json",
+      "bytes": 828,
+      "sha256": "7abb340a4064d67ea7e1be27a58ee445920cbc6317f4f98cfe6f9e45a9fca8e0"
+    },
+    {
+      "id": "AUTH224-00328",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-path/raw-seal.json",
+      "bytes": 34351,
+      "sha256": "5ca6ef75260997185b2502660ee63e814fac5f5ad212fff27b8ff57850f0430d"
+    },
+    {
+      "id": "AUTH224-00333",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-success.json",
+      "bytes": 4658,
+      "sha256": "dabdf783c9b82fffb584b3b3bf50b89c01e490098dc55d504bd2b3fdc861a21a"
+    },
+    {
+      "id": "AUTH224-00334",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation-verification.json",
+      "bytes": 3806,
+      "sha256": "892770d9a95eccd09bc41376af84ee2959e66fdc5776500b9c47be7de519db2c"
+    },
+    {
+      "id": "AUTH224-00337",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/continuation.json",
+      "bytes": 4294,
+      "sha256": "da8759cbc8dfa865746ddf0b2af7ab8c1ec0ac1d759f03dec8cfd0499f34eddb"
+    },
+    {
+      "id": "AUTH224-00338",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/cp223-fatal-correction.json",
+      "bytes": 1365,
+      "sha256": "6a679d2c6e77f84c84e548eff3237de2a88c8a5532af64f0c621096f13c254b6"
+    },
+    {
+      "id": "AUTH224-00350",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns-verification.json",
+      "bytes": 3218,
+      "sha256": "093b6ab872ed272575713b3845c64a55eb84295e1c8e4210e5e978abcdd380db"
+    },
+    {
+      "id": "AUTH224-00508",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/fixed-returns/raw-seal.json",
+      "bytes": 33744,
+      "sha256": "9197c73912493edb07c5427f9f4b21b54ae71971a23330c97d2fbb967cc98deb"
+    },
+    {
+      "id": "AUTH224-00511",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/manual-review.json",
+      "bytes": 3001,
+      "sha256": "c69d1eccfd163ac95b94839edfb584338d0869746896ca03c26a63e86966ea63"
+    },
+    {
+      "id": "AUTH224-00514",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/r1-observer-review.json",
+      "bytes": 949,
+      "sha256": "63158873b6526fc291ef0f4d889b87ae7bb695da69c3d75d41b197734c297d65"
+    },
+    {
+      "id": "AUTH224-00515",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/rea-evidence.json",
+      "bytes": 105,
+      "sha256": "000bef2a45fbd4b17adc4e2ab0acd65b076ef5c25f0d8479244c8088730de9cd"
+    },
+    {
+      "id": "AUTH224-00517",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-consumer-r1/rea-provider-cleanup-result.json",
+      "bytes": 458,
+      "sha256": "28b23aadd3a52fc31a3bcbbf8456e4e6d7ff1c92f1e60151d389c99ffc5c5cc4"
+    },
+    {
+      "id": "AUTH224-00528",
+      "kind": "local",
+      "path": "local/research/codex/cp224-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH224-00529",
+      "kind": "local",
+      "path": "local/research/codex/cp224-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "2db4631f854e16adc6e98c8716293fe6301825c02b751c769e0b363759e96ee0"
+    },
+    {
+      "id": "AUTH224-00534",
+      "kind": "local",
+      "path": "local/research/codex/cp224-issue14-updated.json",
+      "bytes": 37065,
+      "sha256": "0106cbe56307c00d96e0169ecf82e57e66f5ae634a04243fcc0154d0d63ac87c"
+    },
+    {
+      "id": "AUTH224-00537",
+      "kind": "local",
+      "path": "local/research/codex/cp224-issue285-updated.json",
+      "bytes": 10391,
+      "sha256": "570c8393000eb6cf3e00571e200c5e2d2e558c7342576bc2ba38bc9a23b2b34b"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/8a5be3074ecde27681f8901654a1376b27882a3b3f25495c334548dd24630844.jsonl",
+      "sha256": "8a5be3074ecde27681f8901654a1376b27882a3b3f25495c334548dd24630844",
+      "bytes": 5042,
+      "count": 27,
+      "files_bytes": 6921647
+    },
+    {
+      "run": "local/research/codex/auth-retry-consumer-r1",
+      "path": "local/evidence-manifests/532b738a76aeaae06d56df1bc6ffec32b1d21f8ac98a35b79cf4dee5647d6194.jsonl",
+      "sha256": "532b738a76aeaae06d56df1bc6ffec32b1d21f8ac98a35b79cf4dee5647d6194",
+      "bytes": 110033,
+      "count": 504,
+      "files_bytes": 20237014
     }
   ]
 }

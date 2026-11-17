@@ -157,15 +157,6 @@
       "limits": "NEXT-K6C-NETEM-CONTROL active; noInternetgatefromprivateNATsimulation."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP194-NAT-cycles.json",
-      "bytes": 429894,
-      "sha256": "9049f3f1ae6e43767d6121abcefa2fa577fa6b6be9faec8c780880c410e35e65",
-      "count": 1695
-    }
-  ],
   "delta": {
     "added": [
       "NewsameactualNATrun2normalBwin/reset/Ready2/Start3/3clocks/currentflags/statkeys/4peerwindows/PCAPnativeendpoints.",
@@ -258,6 +249,691 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP194same-runstaticNATintegration/limits/nextlatencyloss/currentdelivery synchronizedbeforecomplete; PLANsoleorder, auditnext196 unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "NAT194-00001",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/B-winner-reset-verification.json",
+      "bytes": 3341,
+      "sha256": "fb198876b768e5f614cde53ac1032707462ea43e480cc44284b11015fd31e7fb"
+    },
+    {
+      "id": "NAT194-00002",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/NAT-cycles-endpoint-verification.json",
+      "bytes": 10577,
+      "sha256": "c05532d84aa0d5758ee5127aca00bc2eefebb9191067758431d4a1134e87b135"
+    },
+    {
+      "id": "NAT194-00008",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/contest-reset-verification.json",
+      "bytes": 1268,
+      "sha256": "55026c1b42dcb1e0507efc26ee68523b1e02699f6f458aa7c5ba528eaaa74fc3"
+    },
+    {
+      "id": "NAT194-00011",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/cp194-snapshot/docs/PLAN.md",
+      "bytes": 53077,
+      "sha256": "1fdf4e2ed08ca46490be2299bf6eabf33c8fca3737707c6d18a1b065c63dd823"
+    },
+    {
+      "id": "NAT194-00012",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/cp194-snapshot/docs/PROTOCOL.md",
+      "bytes": 595905,
+      "sha256": "a8811bb5541efc7844e86cc6cc802beee22da8106150e2b2f2b2667b3869826e"
+    },
+    {
+      "id": "NAT194-00014",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/cp194-snapshot/docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 214369,
+      "sha256": "f0a47caf3f869eedf54550d20adcb142b9d0159462ff58dcfc1f3fd6cb325b20"
+    },
+    {
+      "id": "NAT194-01409",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/cycles/virtual-network.json",
+      "bytes": 34493,
+      "sha256": "94174dbb47ff92d1b50a315d5c772ea9bda9dab7838b83984feac9f37d99ef70"
+    },
+    {
+      "id": "NAT194-01414",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/endpoint-peer-verification.json",
+      "bytes": 217706,
+      "sha256": "09575a11076cef156b4ea696377f981c0401750c3751fd22784dc8191c991962"
+    },
+    {
+      "id": "NAT194-01427",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/life-agreement-verification.json",
+      "bytes": 6784,
+      "sha256": "8d9548bcbb2ea2a5f6a2e36e4b9f2f106edf39657b96442fc5b75c5c007883fa"
+    },
+    {
+      "id": "NAT194-01436",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "92839d10c800d9713da4739be88b6de0f3b5a57e36d20e1f20cdf273fa5f27e7"
+    },
+    {
+      "id": "NAT194-01438",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/raw-seal.json",
+      "bytes": 282163,
+      "sha256": "7091f1662e674825dc494f6cef6ca3faaceb7c19476a4e1eb91d2ce50bbc03eb"
+    },
+    {
+      "id": "NAT194-01451",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/runtime-preflight.json",
+      "bytes": 48745,
+      "sha256": "4c1dbe1d8a64a83310377ff0502f32c7c9eb9375587abccdc79090abb4fbe7af"
+    },
+    {
+      "id": "NAT194-01503",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/source-first.json",
+      "bytes": 2784,
+      "sha256": "8ac97f6f5d943c7ffb32ea6863f8e9f967507cc2413ce93cabbe8c4589c23ef2"
+    },
+    {
+      "id": "NAT194-01504",
+      "kind": "local",
+      "path": "local/research/codex/NAT-KR-two-cycles-r1/test-reuse.json",
+      "bytes": 12237,
+      "sha256": "eb0f53e8a7cdc25a05969ff5284081a660f4b5fdb975ac5f3eac89d647581c6d"
+    },
+    {
+      "id": "NAT194-01524",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "NAT194-01531",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "NAT194-01535",
+      "kind": "local",
+      "path": "local/research/codex/cp193-checkpoint-tests.txt",
+      "bytes": 142,
+      "sha256": "ae6be4c349d91c7ecd453d9eefd293317446b83ec573a30322d0f6ff6481db26"
+    },
+    {
+      "id": "NAT194-01537",
+      "kind": "local",
+      "path": "local/research/codex/cp193-exact-head-results.json",
+      "bytes": 568,
+      "sha256": "fdb049ae28de5f891e29dc186f78e604d1bc1d44f7240e8aa6d62f257d822396"
+    },
+    {
+      "id": "NAT194-01538",
+      "kind": "local",
+      "path": "local/research/codex/cp193-pr-merged.json",
+      "bytes": 123,
+      "sha256": "21b06f15bda69b7dc872107230c60ff4983ea59d9a293090035d7324d7513aa0"
+    },
+    {
+      "id": "NAT194-01539",
+      "kind": "local",
+      "path": "local/research/codex/cp193-server-tests.txt",
+      "bytes": 394,
+      "sha256": "6e7558883fe8d7d328687d56c578079f072298119de13273ab82384392e75832"
+    },
+    {
+      "id": "NAT194-01546",
+      "kind": "local",
+      "path": "local/research/codex/cp194-docs-check.txt",
+      "bytes": 175,
+      "sha256": "b8c48405323437bd4f4ad0366d2874c55cdb846e29d6b4b0b16ce4099e7e3e70"
+    },
+    {
+      "id": "NAT194-01558",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "NAT194-01561",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "NAT194-01631",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "NAT194-01632",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "NAT194-01633",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "NAT194-01640",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "NAT194-01643",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "NAT194-01645",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "NAT194-01646",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "NAT194-01647",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "NAT194-01648",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "NAT194-01649",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "NAT194-01650",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109744,
+      "sha256": "12362a460ade30fbd48f14dd8bada6a3126e330c8058b71dc7bee5d63e2d9584"
+    },
+    {
+      "id": "NAT194-01651",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "NAT194-01652",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "NAT194-01653",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "NAT194-01654",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "NAT194-01655",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "NAT194-01656",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "NAT194-01657",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "NAT194-01658",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "NAT194-01659",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "NAT194-01660",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "NAT194-01661",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "NAT194-01662",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "NAT194-01663",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "NAT194-01664",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "NAT194-01665",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "NAT194-01666",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "NAT194-01667",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "NAT194-01668",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "NAT194-01669",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "NAT194-01670",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "NAT194-01671",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "NAT194-01672",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "NAT194-01673",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "NAT194-01674",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "NAT194-01675",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "NAT194-01676",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "NAT194-01677",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "NAT194-01678",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "NAT194-01679",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "NAT194-01680",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "NAT194-01681",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "NAT194-01682",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "NAT194-01683",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "NAT194-01684",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "NAT194-01685",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "NAT194-01686",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "NAT194-01687",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "NAT194-01688",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "NAT194-01689",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "NAT194-01690",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "NAT194-01691",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "NAT194-01692",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "NAT194-01693",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "NAT194-01694",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "NAT194-01695",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/NAT-KR-two-cycles-r1",
+      "path": "local/evidence-manifests/3ddb475d334b57cff6ee9c0750d41c37e42afb68fd9948fe3fe40de886c0c842.jsonl",
+      "sha256": "3ddb475d334b57cff6ee9c0750d41c37e42afb68fd9948fe3fe40de886c0c842",
+      "bytes": 305296,
+      "count": 1499,
+      "files_bytes": 67726134
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/07c45518ee24a610234a0cfd5d55c50e29fd28cdbc6b7f3eda0975543af426dd.jsonl",
+      "sha256": "07c45518ee24a610234a0cfd5d55c50e29fd28cdbc6b7f3eda0975543af426dd",
+      "bytes": 4060,
+      "count": 22,
+      "files_bytes": 6107998
+    },
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/38a744175c48678fe1bc5757077d0ad736efaf29fdc0a2c49330edda7ce4ba7c.jsonl",
+      "sha256": "38a744175c48678fe1bc5757077d0ad736efaf29fdc0a2c49330edda7ce4ba7c",
+      "bytes": 463,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/f2cf3f6e7dab153d008d80934dec561c0eac829a89973a3b834ff79c188c93fe.jsonl",
+      "sha256": "f2cf3f6e7dab153d008d80934dec561c0eac829a89973a3b834ff79c188c93fe",
+      "bytes": 642,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/9547acd4273baf5002a8b5b734ee607b5de705ad691bce6c6b12f130af18445e.jsonl",
+      "sha256": "9547acd4273baf5002a8b5b734ee607b5de705ad691bce6c6b12f130af18445e",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/d83b1e392a244f4697ddd12a08668ee32915b6957aabb008ca3591d2052447ad.jsonl",
+      "sha256": "d83b1e392a244f4697ddd12a08668ee32915b6957aabb008ca3591d2052447ad",
+      "bytes": 644,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/bc47faf8b9cbb8527a02660f0ac511c82d8d5aefe7b9e802a5056e5d030d1262.jsonl",
+      "sha256": "bc47faf8b9cbb8527a02660f0ac511c82d8d5aefe7b9e802a5056e5d030d1262",
+      "bytes": 461,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/515e2ed108eebac28cd394e4e6e39a40679d93be229d29a0169c56d73198b665.jsonl",
+      "sha256": "515e2ed108eebac28cd394e4e6e39a40679d93be229d29a0169c56d73198b665",
+      "bytes": 1016,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/23c6b4b40951da3289cadb9b96b6ae7b12aa5aa5b20e0c7e08511b87b0668109.jsonl",
+      "sha256": "23c6b4b40951da3289cadb9b96b6ae7b12aa5aa5b20e0c7e08511b87b0668109",
+      "bytes": 504,
+      "count": 2,
+      "files_bytes": 63749120
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/79e57461f88cdf2ea5f3ad475b1d61ea036741e4cd41ff1473283d3c10a9fbce.jsonl",
+      "sha256": "79e57461f88cdf2ea5f3ad475b1d61ea036741e4cd41ff1473283d3c10a9fbce",
+      "bytes": 434,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/e2f068eee74fef61c6dbb042a1423bf5680f53f04a6ceef9a9eae1042e0fa0b6.jsonl",
+      "sha256": "e2f068eee74fef61c6dbb042a1423bf5680f53f04a6ceef9a9eae1042e0fa0b6",
+      "bytes": 443,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/portable-bundle-r1",
+      "path": "local/evidence-manifests/a823c56a114e469c8f791783775197bb80742f399d536a078205a3934e357a27.jsonl",
+      "sha256": "a823c56a114e469c8f791783775197bb80742f399d536a078205a3934e357a27",
+      "bytes": 15246,
+      "count": 60,
+      "files_bytes": 175668
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/2163dd70f04b182d161487be099568e3ebad0ea1aaa97ac99bb697743c91b634.jsonl",
+      "sha256": "2163dd70f04b182d161487be099568e3ebad0ea1aaa97ac99bb697743c91b634",
+      "bytes": 641,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/28150e8b4adced5792a493d6ace968789ee07d8b2173600afd3166d2c577e405.jsonl",
+      "sha256": "28150e8b4adced5792a493d6ace968789ee07d8b2173600afd3166d2c577e405",
+      "bytes": 981,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/f3939f0a16e2b3d5848a1fe1e73abb425591b0aabb6fb81e3981c0833b68ff3d.jsonl",
+      "sha256": "f3939f0a16e2b3d5848a1fe1e73abb425591b0aabb6fb81e3981c0833b68ff3d",
+      "bytes": 436,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/844ab7e4665a1cb985a527b23a5b761c361a413c7e6583afd5fdd35d19893ca1.jsonl",
+      "sha256": "844ab7e4665a1cb985a527b23a5b761c361a413c7e6583afd5fdd35d19893ca1",
+      "bytes": 453,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

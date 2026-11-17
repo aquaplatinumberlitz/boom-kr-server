@@ -148,7 +148,7 @@ mặc định summary; page tối đa200 dòng. `--verify` kiểm **mọi eviden
 không in mọi dòng raw. `--root` đặt trước subcommand dùng cho fixture/checkout khác.
 Kiểm toàn repo/lịch sử vẫn là `python3 tools/check_checkpoints.py --require-local --require-history`.
 
-Checkpoint mới có thể dùng `evidence_manifests`:
+Checkpoint từ CP118 đến trước migration evidence tinh gọn dùng `evidence_manifests` (dạng lịch sử, loader vẫn đọc được):
 
 ```json
 {
@@ -169,7 +169,7 @@ list, CP chỉ giữ path/size/SHA/count; có thể tái dùng cùng file đã p
 **Không deduplicate/viết lại evidence trong record complete cũ.** Binary/log vẫn ở local; chỉ metadata
 được commit. Index dùng `checkpoint_store.record_reference` để pin file record sau khi docs đã sync.
 
-### Tái chạy và giới hạn migration
+### Tái chạy và giới hạn migration v2
 
 Script `tools/migrate_checkpoints.py` nhận baseline v1 đã pin. Nó kiểm bytes nguồn khớp manifest
 trong baseline Git, tách theo object (không chia dòng), so toàn bộ records/evidence, pin36audit,
@@ -192,6 +192,96 @@ review approved/waived bất biến. Chỉ giữ fingerprint nhỏ giữa revisi
 trong bộ nhớ cùng lúc. Dữ liệu inline cũ vẫn lớn và lặp, cố ý giữ để bảo toàn object; tổng dữ liệu không
 được hứa giảm theo tỷ lệ của index. Clone thiếu Git/local vẫn báo UNVERIFIED/error theo cờ cũ.
 
+
+<a id="lean-evidence"></a>
+### Evidence tinh gọn: run manifest ở local và tra cứu
+
+Theo [chỉ đạo chủ dự án 17/11](../owner-directives/checkpoint-evidence-lean.json), danh sách file host-local
+không còn nằm trong repo. Record giữ trong `evidence` các dòng repository/artifact, dòng có ID được nhắc ở
+findings, verification hoặc bất kỳ chữ nào khác của record, dòng trùng ID và nhóm chỉ có một file. Các dòng
+`kind=local` còn lại được gom theo run (thư mục cha, tối đa bốn cấp đầu như `local/research/codex/<run>`) và mỗi
+run có một con trỏ trong `evidence_runs`:
+
+```json
+{"run": "local/research/codex/<run>", "path": "local/evidence-manifests/<sha256>.jsonl",
+ "sha256": "<sha256 của manifest>", "bytes": 1234, "count": 42, "files_bytes": 987654}
+```
+
+Manifest là JSONL bất biến, đặt tên theo SHA-256 nội dung: dòng đầu `{"run","schema":"kre-evidence-run-v1"}`,
+sau đó mỗi dòng là nguyên một dòng evidence cũ (`id/kind/path/bytes/sha256`, JSON chuẩn hóa). Cách chia là hàm
+xác định của record và danh sách đầy đủ (`tools/checkpoint_evidence.py`), nên định danh logic của record
+(`logical_digest`) giống hệt trước và sau khi chia; kiểm append-only qua lịch sử Git dùng định danh này.
+Checker kiểm size/SHA của manifest theo con trỏ, rồi kiểm từng file như dòng evidence cũ và yêu cầu record
+đúng là cách chia chuẩn. Thiếu manifest báo `UNVERIFIED` kèm số file (lỗi khi có `--require-local`), không
+im lặng bỏ qua. File thêm vào thư mục run mà không có trong danh sách không phải evidence, giống dạng cũ.
+
+**Checkpoint mới:** dựng `evidence` đầy đủ như trước (không ghi file `docs/evidence/checkpoints/evidence/`),
+sau khi findings/verification đã chốt thì gọi helper ngay trước khi ghi record:
+
+```python
+import checkpoint_evidence as lean
+cp = lean.pack_evidence(cp)   # ghi local/evidence-manifests/*.jsonl, trả record đã chia
+raw = st.encoded(cp)
+```
+
+Record còn dòng host-local trong repo bị checker cảnh báo `LEGACY EVIDENCE STORAGE`. Chuyển dạng các record
+như vậy (kể cả record cũ) bằng script xác định và chạy lại được, với commit nguồn trên main chứa đúng record:
+
+```bash
+python3 tools/migrate_checkpoint_evidence.py --source-commit origin/main
+```
+
+Script so định danh logic và toàn bộ tập dòng evidence trước khi ghi, xóa file danh sách cũ trong
+`checkpoints/evidence/` không còn record nào dùng, và ghi report `migration-evidence-lean.json`
+(commit nguồn, SHA cũ/mới của record, file danh sách đã xóa). Lịch sử Git không bị viết lại. Hai record
+CP212 và CP264 từng pin chính file record/danh sách của checkpoint khác; checker kiểm các pin này bằng đúng
+blob tại lần công bố record pin (`HISTORICAL CHECKPOINT STORAGE VERIFIED`), không nhận blob muộn hơn.
+
+**Tra cứu** (in mỗi kết quả một dòng JSON: CP, ID, path, size, SHA, nơi lưu):
+
+```bash
+python3 tools/evidence_lookup.py path local/research/codex/<run>/<file>   # hoặc tiền tố thư mục, đường dẫn tuyệt đối
+python3 tools/evidence_lookup.py sha <sha256 hoặc ít nhất 8 ký tự đầu>
+python3 tools/evidence_lookup.py --cp CP334 id HORIZ334-00001
+python3 tools/evidence_lookup.py cp CP334                                  # tóm tắt run/manifest/migration
+python3 tools/evidence_lookup.py --verify path local/research/codex/<run>  # kiểm size/SHA khi cần
+python3 tools/evidence_lookup.py --from-history <commit> path ...          # đọc danh sách đầy đủ cũ trong Git
+python3 tools/evidence_lookup.py restore                                   # dựng lại manifest thiếu từ Git
+```
+
+`restore` chỉ dựng lại được manifest của record từng có danh sách đầy đủ trong Git (mọi record đến lúc
+migration); bytes phải khớp SHA của con trỏ. Manifest của checkpoint tạo sau migration chỉ có ở `local/`,
+cùng chỗ với raw, nên cần sao lưu `local/evidence-manifests/` cùng raw.
+
+
+<a id="local-retention"></a>
+### Lưu giữ và dọn local/
+
+Theo [chỉ đạo chủ dự án 18/11](../owner-directives/local-retention.json), `local/` chỉ giữ lâu dài phần cần để chạy
+và raw tối thiểu đỡ kết luận; bản sao và dữ liệu trung gian không dùng thì dọn. `tools/local_retention.py` mặc định
+chỉ chạy thử (dry run): đọc mọi evidence checkpoint (dòng repository và run manifest), đường dẫn local mà code/tools
+nhắc, config `kr-rust-*` cùng mọi fixture pin trong đó, rồi phân lớp từng file theo run:
+
+| Lớp | Hành động |
+|---|---|
+| `keep_pinned` | Config/fixture service và bộ kiểm TCP, đường dẫn do code/tools nhắc, run manifest, `local/tools`; không bao giờ dọn. |
+| `keep` | File được checkpoint tham chiếu dạng text/JSON/script nhỏ (tối đa 1 MiB), script sinh dữ liệu. |
+| `keep_compressed` | Raw khác được checkpoint tham chiếu và database IDA (chú thích là kiến thức); giữ nguyên đường dẫn và bytes, btrfs đã nén zstd trong suốt. |
+| `disposable_*` | Bản sao game/Wine prefix theo run, memory dump, file trung gian không tham chiếu trong run có tham chiếu, run không được checkpoint/docs/code nào nhắc. |
+
+```bash
+python3 tools/local_retention.py --btrfs     # ghi local/retention/plan-<UTC>.json và .md, in plan_sha256
+```
+
+Chỉ khi chủ dự án duyệt đúng plan và hash mới chạy
+`python3 tools/local_retention.py --apply --plan local/retention/plan-<UTC>.json --plan-sha256 <hash>`.
+Apply kiểm lại hash, bỏ qua mọi đường dẫn pinned, chỉ xóa mục `delete` của lớp disposable và ghi các mục từng là
+evidence checkpoint vào [local-pruned.json](local-pruned.json) (đường dẫn, lớp, lý do, ngày, hash plan). Checker báo
+`PRUNED` kèm số file cho file thiếu nằm dưới mục đó và thêm `evidence_pruned` vào số liệu; file thiếu không có mục
+vẫn là lỗi, file còn tồn tại vẫn được kiểm size/SHA. Size/SHA của file đã dọn giữ mãi trong record và run manifest,
+nên `tools/evidence_lookup.py` vẫn cho biết file đó từng là gì. Ảnh giữ lại nhưng trùng byte trong cùng run không bị xóa
+(chúng mang pin checkpoint); report đếm chúng như ứng viên dedupe reflink, cách giải phóng chỗ mà không đổi đường dẫn hoặc hash. Byte exclusive do `btrfs filesystem du` đo là cận dưới
+của dung lượng thu hồi vì extent chia sẻ giữa các bản sao reflink chỉ được giải phóng khi mọi bản sao bị xóa.
 
 ### Pin local tuyệt đối đã công bố ở CP187
 

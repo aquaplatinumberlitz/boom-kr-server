@@ -129,15 +129,6 @@
       "limits": "Not whole-clientcold, other cache/version field/error meanings remain unmeasured; do not invent version from WCPu16."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP185-lobby-cache-route.json",
-      "bytes": 105168,
-      "sha256": "42f015f58692107b6e10668f47e6648536d5a1b9966f62a6b4d224ac83d775d2",
-      "count": 395
-    }
-  ],
   "delta": {
     "added": [
       "Bounded loader route/matched two-file missing baseline and actual service528→238/nativewrite→warm integration.",
@@ -216,6 +207,123 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP185 route/limits/gap/reuse/delivery synchronized before complete; K3 open, AUD055 through184 and nextCP188 unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "CACHE185-00001",
+      "kind": "repository",
+      "path": "docs/evidence/namu-wiki/metadata.json",
+      "bytes": 4908,
+      "sha256": "4efbef982c995232f803f120c6af3adf9adb1ed0cb8fd80025f0ee3ce3b2107c"
+    },
+    {
+      "id": "CACHE185-00002",
+      "kind": "local",
+      "path": "local/research/codex/cache-boundary-r1/ida/file-load.json",
+      "bytes": 5771,
+      "sha256": "128ecd3e09548caa7d6b0ba761e34e0f116e431f7456c25d3b84497a90649da2"
+    },
+    {
+      "id": "CACHE185-00038",
+      "kind": "local",
+      "path": "local/research/codex/k3-gate-acceptance-r1/cache-inventory-r1/raw-seal.json",
+      "bytes": 18214,
+      "sha256": "c716d1c2e85e690559c1457d1161d6285384784beebd439f6d21470abc50073e"
+    },
+    {
+      "id": "CACHE185-00126",
+      "kind": "local",
+      "path": "local/research/codex/k3-gate-acceptance-r1/cache-missing-pair-r1/raw-seal.json",
+      "bytes": 18498,
+      "sha256": "b5460eff5fc06dd616fa3d3071cc7d5e04af1745d7f34a7be010b798e0450154"
+    },
+    {
+      "id": "CACHE185-00216",
+      "kind": "local",
+      "path": "local/research/codex/k3-gate-acceptance-r1/cache-recovery-cold-r1/raw-seal.json",
+      "bytes": 19051,
+      "sha256": "08d4501dc94a1c386b70b56a0aa15475dc2812b693e99b8a18869ffd3e73123b"
+    },
+    {
+      "id": "CACHE185-00267",
+      "kind": "local",
+      "path": "local/research/codex/k3-gate-acceptance-r1/cache-recovery-cold-r1-preparation.json",
+      "bytes": 10023,
+      "sha256": "39745da2387fbb337ac2806a9455340891eba96471f42a022de4f3e7ee1cc810"
+    },
+    {
+      "id": "CACHE185-00307",
+      "kind": "local",
+      "path": "local/research/codex/k3-gate-acceptance-r1/cache-recovery-warm-r1/raw-seal.json",
+      "bytes": 18827,
+      "sha256": "f1e61a373c2fd520a9d6451c0629a319aa0b17a2552ba5f5da69641a539d99c9"
+    },
+    {
+      "id": "CACHE185-00367",
+      "kind": "local",
+      "path": "local/research/codex/k3-gate-acceptance-r1/cp185-snapshot/docs/PLAN.md",
+      "bytes": 48370,
+      "sha256": "5e905d844db6c946be35c64a5fa7064fd64310007ec914700ff7ea5dd413b86b"
+    },
+    {
+      "id": "CACHE185-00368",
+      "kind": "local",
+      "path": "local/research/codex/k3-gate-acceptance-r1/cp185-snapshot/docs/PROTOCOL.md",
+      "bytes": 566364,
+      "sha256": "d195b56beb902c9675e6dd1ec11114735c7db8f5ed0a48f78d9303336964c3c8"
+    },
+    {
+      "id": "CACHE185-00384",
+      "kind": "local",
+      "path": "local/research/codex/k3-gate-acceptance-r1/server-tests.txt",
+      "bytes": 392,
+      "sha256": "21be6e37354b21b60ac5fc3245319eea2e3f9240e7559123a208fbdbe7999f98"
+    },
+    {
+      "id": "CACHE185-00390",
+      "kind": "local",
+      "path": "local/research/codex/k3-gate-acceptance-r1/verification.json",
+      "bytes": 93145,
+      "sha256": "b72871a4f707735d7cc285537ad0c7e7abb458e37e7471f1f81a4f3d1d1cc588"
+    },
+    {
+      "id": "CACHE185-00392",
+      "kind": "local",
+      "path": "local/research/codex/room-map-r1/DFEB10.asm",
+      "bytes": 15581,
+      "sha256": "7b63f19c2c3b817e20c69a26399c66f46c074ca9fdd613e3d7cdf1071ec1d8c7"
+    },
+    {
+      "id": "CACHE185-00393",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k3_cache_inventory.py",
+      "bytes": 19050,
+      "sha256": "98758414401af4e2fcc40dd2c31cad76d74fc7d5df373ba50af46f593d977427"
+    },
+    {
+      "id": "CACHE185-00394",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109319,
+      "sha256": "3b0ca60c72646af34ed02582f13b34e0253bb43d2704d04b2bae1de0373bbb79"
+    },
+    {
+      "id": "CACHE185-00395",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 10260,
+      "sha256": "3e247d504561a26caa3432c799470481c06ffbd2c750ee77b1a1397dcb3ebaa2"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/k3-gate-acceptance-r1",
+      "path": "local/evidence-manifests/dcf00aa793a2a1bc5be6b73085d50cbf71b85f92e890cf5ca50716e4cfd396bf.jsonl",
+      "sha256": "dcf00aa793a2a1bc5be6b73085d50cbf71b85f92e890cf5ca50716e4cfd396bf",
+      "bytes": 82446,
+      "count": 380,
+      "files_bytes": 12340695
     }
   ]
 }

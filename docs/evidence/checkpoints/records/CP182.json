@@ -146,15 +146,6 @@
       "limits": "Modifiede9Wine/samephysicalhost/inheritedcache/privatecopies/production47fixtures; knownbootstrapglobalreset retained, no nativegamecalls/storeguardwrites. OriginalWindows/fullauth/cachematrix/wrongstage/version/K3–K7/K6a/fullmatch/LANInternet/8clients notaccepted. R3preReadyfailure andR1ambiguousgetter retained; no causalfixclaim."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP182-lobby-panel.json",
-      "bytes": 150855,
-      "sha256": "7579c45eaed5eea9e260a8c11cad9fabdf7c01d7634aca1afec79b91bb8bdb1f",
-      "count": 607
-    }
-  ],
   "delta": {
     "added": [
       "Actualownpanelconsumer/data-source/guard linked byruntime; emptyseparaterecordconstrainsnextRE. Source-firstVNdistinguisheslist/ownpanellimits."
@@ -247,6 +238,501 @@
       "path": "docs/evidence/checkpoints/README.md",
       "state": "unchanged",
       "reason": "Storageworkflow/auditcounterunchanged; nextperiodicCP184, noreset."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "PANEL-00003",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "PANEL-00012",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/identity-verification.json",
+      "bytes": 36387,
+      "sha256": "2912f2e921e338bed37e7d38ddc017161679c82382d08d1e9b5f7fe49c6e88a5"
+    },
+    {
+      "id": "PANEL-00025",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-next-edge.json",
+      "bytes": 873,
+      "sha256": "a5b898b84f7f60accebce309ccc09d2a2b03bc4b1c253c9eec27396417e3276c"
+    },
+    {
+      "id": "PANEL-00039",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-source-first.json",
+      "bytes": 2944,
+      "sha256": "1c84b38ca1b9f5df05d86770df323566a8abadba0bb04ac5c50f391631349f24"
+    },
+    {
+      "id": "PANEL-00040",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-verification.json",
+      "bytes": 89218,
+      "sha256": "d9811d053fb8dfae7c7a93f2d7b34f7c5be82d56250a07ff97e8b9e55595919e"
+    },
+    {
+      "id": "PANEL-00046",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/reuse-and-pass-limits.json",
+      "bytes": 2672,
+      "sha256": "9476873f8e8a034859c9067a3043826a261aea2d5c8616dea1f15c1b02937da7"
+    },
+    {
+      "id": "PANEL-00047",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/source-first-reuse.json",
+      "bytes": 3695,
+      "sha256": "2ef7ca16734d5c0bbb2a46b37f629e45723e526f81c96d9a3784ae6e94bccd7a"
+    },
+    {
+      "id": "PANEL-00095",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-panel-recovery.json",
+      "bytes": 497,
+      "sha256": "a0cbd86cc8a56c15038d5d92c9ee192d983d89f571bb1edd5ea3c5eaa9f92a18"
+    },
+    {
+      "id": "PANEL-00096",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-store-writer.json",
+      "bytes": 12744,
+      "sha256": "23c3ec189072d90e7e87265a1f202961842cce9c64f300c2043474e8d39058df"
+    },
+    {
+      "id": "PANEL-00099",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/own-store.json",
+      "bytes": 14334,
+      "sha256": "2dbcc31d9fc9806e08e3ef2c4a923286a2babf88dd5edb23cc6242ad73498a6f"
+    },
+    {
+      "id": "PANEL-00129",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/ida/userlist-own-render.json",
+      "bytes": 27683,
+      "sha256": "4e1b182b4f27c53fd5d9cd445fdf816aed10dfb0d21f25226ceeeadf34eaff56"
+    },
+    {
+      "id": "PANEL-00311",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r1/raw-seal.json",
+      "bytes": 14465,
+      "sha256": "464e89d0815c26a96ba7eb520f53fefce0374e383626e6d6d953204f9d7b58f3"
+    },
+    {
+      "id": "PANEL-00410",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r2/ui-objects.json",
+      "bytes": 34264,
+      "sha256": "9ce5b99ca7d459dd601ad92fc068dd72cfea7bf2ac5b033252d7a40272abd57a"
+    },
+    {
+      "id": "PANEL-00450",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r3/raw-seal.json",
+      "bytes": 8538,
+      "sha256": "b99fdcc86879514e76097cd9b98b4773a848cd6664ba31c3c9f9ea9838daf7e9"
+    },
+    {
+      "id": "PANEL-00505",
+      "kind": "local",
+      "path": "local/research/codex/k3-identity-cache-r1/panel-r4/raw-seal.json",
+      "bytes": 15673,
+      "sha256": "a1d8415c60eedfcaecc669d3c1dcc9c5375a695fbaa92cd5f286c5b4b5da74fa"
+    },
+    {
+      "id": "PANEL-00553",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_k3_identity_r1.py",
+      "bytes": 19039,
+      "sha256": "c38659dc29d2b146fc8f2f0af9f5c11db0090c671d576a1820c524f6b44e6c96"
+    },
+    {
+      "id": "PANEL-00554",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/profile.json",
+      "bytes": 15535,
+      "sha256": "69ad6ba7eb0ab89f8cc49f23cd3ca3ad3003666c5379f55c5d28eee5dcc6822b"
+    },
+    {
+      "id": "PANEL-00556",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "PANEL-00557",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "PANEL-00558",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "PANEL-00559",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "PANEL-00560",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "PANEL-00561",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "PANEL-00562",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "PANEL-00563",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "PANEL-00564",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "PANEL-00565",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "PANEL-00566",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "PANEL-00567",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "PANEL-00568",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "PANEL-00569",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "PANEL-00570",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "PANEL-00571",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "PANEL-00572",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "PANEL-00573",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "PANEL-00574",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "PANEL-00575",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "PANEL-00576",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "PANEL-00577",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "PANEL-00578",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "PANEL-00579",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "PANEL-00580",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "PANEL-00581",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "PANEL-00582",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "PANEL-00583",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "PANEL-00584",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "PANEL-00585",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "PANEL-00586",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "PANEL-00587",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "PANEL-00588",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "PANEL-00589",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "PANEL-00590",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "PANEL-00591",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "PANEL-00592",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "PANEL-00593",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "PANEL-00594",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "PANEL-00595",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "PANEL-00596",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "PANEL-00597",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "PANEL-00598",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 106121,
+      "sha256": "96c1a56837b28ea25daeade2d048f96016805188d2c8d1e90ffa2afdc01a4690"
+    },
+    {
+      "id": "PANEL-00599",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "PANEL-00600",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "PANEL-00601",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "PANEL-00602",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "PANEL-00603",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "PANEL-00604",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "PANEL-00605",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry-r2/screen-22.png",
+      "bytes": 143507,
+      "sha256": "c0275a7fe199cebe608d495dd569335a4715084a5c562c86a19152c249ffae78"
+    },
+    {
+      "id": "PANEL-00606",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/ida/success.json",
+      "bytes": 90377,
+      "sha256": "4e6bfe83705c9c1ed07e0210bb2df1f522e8f7ce4f71e3cc98947276e1f7ccf4"
+    },
+    {
+      "id": "PANEL-00607",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/lobby-rtti.json",
+      "bytes": 126,
+      "sha256": "c483280453210ccc93fc88d9ef21d0f32c3595198c78d31cbe54020cd70ca445"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/k3-identity-cache-r1",
+      "path": "local/evidence-manifests/f565a5970503d94809bc5dd1db983e2a039608098f0819a82c05471325c66466.jsonl",
+      "sha256": "f565a5970503d94809bc5dd1db983e2a039608098f0819a82c05471325c66466",
+      "bytes": 108342,
+      "count": 538,
+      "files_bytes": 50112296
     }
   ]
 }

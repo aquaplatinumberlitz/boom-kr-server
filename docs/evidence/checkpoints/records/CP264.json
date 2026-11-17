@@ -132,15 +132,6 @@
       "limits": "FinalR1native2/4/8/account andN1b max2nativeafterR1e/beforeR1f remain."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP264-r1d-n1-acceptance.json",
-      "bytes": 403328,
-      "sha256": "36453c560393c79c6cc8010c9320e06b88093bc4ea78a576e8a2e2edab0cef6d",
-      "count": 1512
-    }
-  ],
   "delta": {
     "added": [
       "Canonicalheader/pureopcodebuilders andtypedroomtemplatenormalization, exactwireverification.",
@@ -364,5 +355,458 @@
   "completed_feature_groups": [
     "r1d-wire-builders",
     "n1-one-side-reachable-acceptance"
+  ],
+  "evidence": [
+    {
+      "id": "R1DN1CP264-00001",
+      "kind": "repository",
+      "path": ".github/workflows/docs.yml",
+      "bytes": 993,
+      "sha256": "00ea5b1e31f397c2ce8d6f468e0738d98f88e56ef7ab69b735e9bcd1bcebac57"
+    },
+    {
+      "id": "R1DN1CP264-00002",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 12408,
+      "sha256": "792a649d90cfafe0d7964c1da24d3129535b8e4ea88d3327a909b5e3e30d8756"
+    },
+    {
+      "id": "R1DN1CP264-00003",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 4163,
+      "sha256": "115f201dd14e52f7a216d89dceb6ad57ce9941ec0412bacfaed343c7013d1acb"
+    },
+    {
+      "id": "R1DN1CP264-00004",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 218983,
+      "sha256": "70d47646f3f06e3e2a78730f4ab41a2fac95f46c2ea40907b15c791b775beb96"
+    },
+    {
+      "id": "R1DN1CP264-00005",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 64720,
+      "sha256": "91e711ae1da15c2ffc0426f87000c20cd54f3a4abd5d3031276a630453adc848"
+    },
+    {
+      "id": "R1DN1CP264-00006",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 133460,
+      "sha256": "5dd73f4decb768b701f5b0c29a31f3d5eb77dac01b0cc5b1d11eb5b6d03f0d9b"
+    },
+    {
+      "id": "R1DN1CP264-00007",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 857751,
+      "sha256": "2930947c4fe9a1ea1729e2744d2677d518e9c648660c305b12637f786d0d4e2b"
+    },
+    {
+      "id": "R1DN1CP264-00008",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 53561,
+      "sha256": "fcf7b21de985346e054c3535fe0c26b151bcfe44650dde691d39dba12f332cac"
+    },
+    {
+      "id": "R1DN1CP264-00009",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD081.json",
+      "bytes": 6796,
+      "sha256": "832c577dfae10c87247bbe0860ebca5ae0663de1ad513cfb897b8fc62194450a"
+    },
+    {
+      "id": "R1DN1CP264-00010",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/records/CP261.json",
+      "bytes": 16008,
+      "sha256": "13b35257566455a305b8f3675b90dfb9c103d9e3efabd883c009b4e8b264ee33"
+    },
+    {
+      "id": "R1DN1CP264-00011",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 284062,
+      "sha256": "d94e458a22d693b6dcfac29bdbb4a135751e20484d7f395fafee27926aacd096"
+    },
+    {
+      "id": "R1DN1CP264-00012",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42776,
+      "sha256": "3a16c5e87e6abcb39494f51c540283e62f69f679a63d09aa83cec2a725f2e416"
+    },
+    {
+      "id": "R1DN1CP264-00013",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/n1-uplink-and-result.json",
+      "bytes": 1310,
+      "sha256": "a7cebc99189a7ebae61d5c44ebf22448de91a07897d191d35f3f4f28241cf4e3"
+    },
+    {
+      "id": "R1DN1CP264-00014",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 60643,
+      "sha256": "384e07c2c279ccd4076096f01af46a25359990e3c2e15e1d3f362272602ecc2a"
+    },
+    {
+      "id": "R1DN1CP264-00015",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/internet-observation.json",
+      "bytes": 4331,
+      "sha256": "b6d7662b116165935e21e560fd1e6c2e61fe80e1b3925adf5f49a6592c8bb705"
+    },
+    {
+      "id": "R1DN1CP264-00016",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/n1-acceptance.json",
+      "bytes": 3117,
+      "sha256": "ee98d5bd33465185f34d304e27e6a7180228bb363160e1c6d2b3cf21672e43a8"
+    },
+    {
+      "id": "R1DN1CP264-00017",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/r1d-wire-builders.json",
+      "bytes": 2947,
+      "sha256": "0edbe0fb281f51fcbd7549d647e62b00718fa89930077606d84345810584632a"
+    },
+    {
+      "id": "R1DN1CP264-00018",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 230720,
+      "sha256": "a00fb262f733924e07db508fef6c1106843dbdd30abac0cc9d3b757e24ed6a57"
+    },
+    {
+      "id": "R1DN1CP264-00025",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "R1DN1CP264-00036",
+      "kind": "local",
+      "path": "local/research/codex/cp264-n1-cp261-verify.txt",
+      "bytes": 1941,
+      "sha256": "03b569bcc827787484b7935a5548a2673a428cde73a21f6aed73755daa56a591"
+    },
+    {
+      "id": "R1DN1CP264-00042",
+      "kind": "local",
+      "path": "local/research/codex/leave-r1/channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "R1DN1CP264-00043",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "R1DN1CP264-00044",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-shared-r11/shared-verification.json",
+      "bytes": 1965,
+      "sha256": "8d07cbc5daddce2888f7acf570cd8ab1efd4707b94f7203f31f665393bfd3ab3"
+    },
+    {
+      "id": "R1DN1CP264-00045",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-control-r10/life-verification.json",
+      "bytes": 574820,
+      "sha256": "c3794267a69b0161382ccf36febb6211c0261eab6dd6b11b571e42bf85b812f9"
+    },
+    {
+      "id": "R1DN1CP264-00050",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-control-r10/udp-verification.json",
+      "bytes": 42806,
+      "sha256": "dcff364d339153fdc275827fe07eb404fa00cc95c9ee828ebc734334caace6be"
+    },
+    {
+      "id": "R1DN1CP264-00052",
+      "kind": "local",
+      "path": "local/research/codex/peer-duo-r1/peer153-replace.bin",
+      "bytes": 135,
+      "sha256": "e6eb2fe741c021ab2c1ac82c84a42a5e4d936e0a2e8a80cb0c4cfaac326589fa"
+    },
+    {
+      "id": "R1DN1CP264-00057",
+      "kind": "local",
+      "path": "local/research/codex/r1d-delivery-r1/selfcheck.json",
+      "bytes": 3909,
+      "sha256": "859196bc31f470aa5614d39b663c56f0c69d86e7754fe314d182ec54104c70df"
+    },
+    {
+      "id": "R1DN1CP264-00146",
+      "kind": "local",
+      "path": "local/research/codex/r1d-header-equivalence-r1/verification.json",
+      "bytes": 630,
+      "sha256": "35e59d35af84f3cbf3e94d3005f3b779c12c2e4f04a813c8120864ad3a22ed83"
+    },
+    {
+      "id": "R1DN1CP264-00152",
+      "kind": "local",
+      "path": "local/research/codex/r1d-postmerge-rust-r6.txt",
+      "bytes": 10720,
+      "sha256": "c89eaeeee12e5ab65032ae28cd704d7ca9dbcc2d6e8892a332a34bacbe586d26"
+    },
+    {
+      "id": "R1DN1CP264-01195",
+      "kind": "local",
+      "path": "local/research/codex/r1d-regression-r3/player-slots/verification.json",
+      "bytes": 1146,
+      "sha256": "2d627727de28b6b6f60c8a1b04f9f78423dd7fee6e5ae396c5bc728d8a4868c3"
+    },
+    {
+      "id": "R1DN1CP264-01231",
+      "kind": "local",
+      "path": "local/research/codex/r1d-regression-r3/source/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 102387,
+      "sha256": "7b658a060e0ad5e32e2501b0c5a302129ec385a66d1df9aaed3e8ccc10ea737d"
+    },
+    {
+      "id": "R1DN1CP264-01232",
+      "kind": "local",
+      "path": "local/research/codex/r1d-regression-r3/source/rust/crates/kr-service/src/room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "R1DN1CP264-01240",
+      "kind": "local",
+      "path": "local/research/codex/r1d-regression-r3/source/rust/crates/kr-wire/src/kr00967.rs",
+      "bytes": 3857,
+      "sha256": "2dccc4018badabdfb4d4d0ac8c94bc9c541ddb4dd6638886df37c88dfe2d8bd9"
+    },
+    {
+      "id": "R1DN1CP264-01400",
+      "kind": "local",
+      "path": "local/research/codex/r1d-regression-r3/verification.json",
+      "bytes": 8787,
+      "sha256": "0dc3fc86787b89291808e721b81d35fa52030c4d0bdc52817e099b8777070f33"
+    },
+    {
+      "id": "R1DN1CP264-01401",
+      "kind": "local",
+      "path": "local/research/codex/r1d-regression-r3/wire-comparison.json",
+      "bytes": 6056,
+      "sha256": "67d3532aedfdd9cb09c4adb704b0e9c74e10a9ef7b938dcdd0fef755a8045ca6"
+    },
+    {
+      "id": "R1DN1CP264-01406",
+      "kind": "local",
+      "path": "local/research/codex/r1d-two-room-r1/analysis.json",
+      "bytes": 455,
+      "sha256": "21fb7d16da4315c54ce6efb6631ff8bf449a10fd4425b98a386b027cccc85d93"
+    },
+    {
+      "id": "R1DN1CP264-01472",
+      "kind": "local",
+      "path": "local/research/codex/r1d-two-room-r2/wire-comparison.json",
+      "bytes": 382,
+      "sha256": "35e6d60866760201793ecf7f672c430378294bff4b6c81937957133e0309f5c6"
+    },
+    {
+      "id": "R1DN1CP264-01473",
+      "kind": "local",
+      "path": "local/research/codex/r1d-wire-refactor-r3/baseline-source.tar",
+      "bytes": 593920,
+      "sha256": "0365eb573cb0c19e4a3ebba50af3287221cd9ede4602921a09ca30bddb9ffcb6"
+    },
+    {
+      "id": "R1DN1CP264-01474",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "R1DN1CP264-01475",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "R1DN1CP264-01476",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "R1DN1CP264-01506",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-profile-r1/derived/probe-auth4.bin",
+      "bytes": 175,
+      "sha256": "e1bb8f350c25668d094815c0b9da97d9c2247a0e6d530222f550ca0a34780f42"
+    },
+    {
+      "id": "R1DN1CP264-01507",
+      "kind": "local",
+      "path": "local/research/codex/rust-room-r1/listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "R1DN1CP264-01508",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "R1DN1CP264-01509",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "R1DN1CP264-01511",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 31496,
+      "sha256": "3f276cf93b7f10b8fb52b4b3b86833611265e494a0c71f55e5bc14166b9e76b9"
+    },
+    {
+      "id": "R1DN1CP264-01512",
+      "kind": "repository",
+      "path": "tools/README.md",
+      "bytes": 26428,
+      "sha256": "4c6316ce04c303111223342c190f589f04b50a49155995fd98a365d5982a184b"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/e509ed7e2f45aab354595c1f1f08135d67b32cbd784b73b5937361cc765f3243.jsonl",
+      "sha256": "e509ed7e2f45aab354595c1f1f08135d67b32cbd784b73b5937361cc765f3243",
+      "bytes": 4294,
+      "count": 23,
+      "files_bytes": 2168687
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/0cbb9c8a30ff70bb681baa2d230dd949ed42b1ac5f0762ebdae35e2138e95244.jsonl",
+      "sha256": "0cbb9c8a30ff70bb681baa2d230dd949ed42b1ac5f0762ebdae35e2138e95244",
+      "bytes": 462,
+      "count": 2,
+      "files_bytes": 350
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/b52c77a9e91e276ce8adeb7e61dad87e2168b94b6c6d58041ba4e63dba62aae9.jsonl",
+      "sha256": "b52c77a9e91e276ce8adeb7e61dad87e2168b94b6c6d58041ba4e63dba62aae9",
+      "bytes": 656,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/225cb3c4495c5e585c80f39e2470b36291145bf832d18a6540e170a93ff4d1b0.jsonl",
+      "sha256": "225cb3c4495c5e585c80f39e2470b36291145bf832d18a6540e170a93ff4d1b0",
+      "bytes": 469,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/8d526e3320e4bd71f2370f9f7394874b60b7d8d57b623d6aef9df1cb94803774.jsonl",
+      "sha256": "8d526e3320e4bd71f2370f9f7394874b60b7d8d57b623d6aef9df1cb94803774",
+      "bytes": 462,
+      "count": 2,
+      "files_bytes": 287
+    },
+    {
+      "run": "local/research/codex/n1-native-wait-control-r10",
+      "path": "local/evidence-manifests/45a26833340bce79b90a71264050b533cdc25ce5536a5eaaad9d3a6f18d2eccf.jsonl",
+      "sha256": "45a26833340bce79b90a71264050b533cdc25ce5536a5eaaad9d3a6f18d2eccf",
+      "bytes": 1149,
+      "count": 5,
+      "files_bytes": 56501
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/4d41fa81c451d08863e2380eb2142707c7e4a61881bc7b01a3f0e4452bf62157.jsonl",
+      "sha256": "4d41fa81c451d08863e2380eb2142707c7e4a61881bc7b01a3f0e4452bf62157",
+      "bytes": 460,
+      "count": 2,
+      "files_bytes": 116
+    },
+    {
+      "run": "local/research/codex/r1d-delivery-r1",
+      "path": "local/evidence-manifests/5b0ced32b443e7f95f87e1bda81157024a810f52591448f37d9e7cfd4f2f6e44.jsonl",
+      "sha256": "5b0ced32b443e7f95f87e1bda81157024a810f52591448f37d9e7cfd4f2f6e44",
+      "bytes": 6417,
+      "count": 29,
+      "files_bytes": 2260217
+    },
+    {
+      "run": "local/research/codex/r1d-header-equivalence-r1",
+      "path": "local/evidence-manifests/61922a5fdc9c4a3fa18f8e852e5374541fe7039ea1fd9ce7427000edd271d9bb.jsonl",
+      "sha256": "61922a5fdc9c4a3fa18f8e852e5374541fe7039ea1fd9ce7427000edd271d9bb",
+      "bytes": 11166,
+      "count": 56,
+      "files_bytes": 4825609
+    },
+    {
+      "run": "local/research/codex/r1d-header-source-survey-r1",
+      "path": "local/evidence-manifests/5ac21385cfe788381312cfbbde0872b86a31a3e6c88a47d83915030d0913be6f.jsonl",
+      "sha256": "5ac21385cfe788381312cfbbde0872b86a31a3e6c88a47d83915030d0913be6f",
+      "bytes": 1132,
+      "count": 5,
+      "files_bytes": 74505
+    },
+    {
+      "run": "local/research/codex/r1d-regression-r3",
+      "path": "local/evidence-manifests/29586524a1478f7d00ceed154ebdc7eff07add285e0475d4531bd455b275a736.jsonl",
+      "sha256": "29586524a1478f7d00ceed154ebdc7eff07add285e0475d4531bd455b275a736",
+      "bytes": 273364,
+      "count": 1243,
+      "files_bytes": 641476361
+    },
+    {
+      "run": "local/research/codex/r1d-two-room-r1",
+      "path": "local/evidence-manifests/956ba6e056dc8d2ff014b21fb0b752a5a8d52a9a49713ea6aa96ae7ea9b647c3.jsonl",
+      "sha256": "956ba6e056dc8d2ff014b21fb0b752a5a8d52a9a49713ea6aa96ae7ea9b647c3",
+      "bytes": 2716,
+      "count": 13,
+      "files_bytes": 53122348
+    },
+    {
+      "run": "local/research/codex/r1d-two-room-r2",
+      "path": "local/evidence-manifests/76a166af4265dc69bb13a7bce203625d738aa713215930010507c7aab2c67b19.jsonl",
+      "sha256": "76a166af4265dc69bb13a7bce203625d738aa713215930010507c7aab2c67b19",
+      "bytes": 11300,
+      "count": 52,
+      "files_bytes": 53681544
+    },
+    {
+      "run": "local/research/codex/rust-eight-baseline-config-r1",
+      "path": "local/evidence-manifests/22c7af049a4badeda37d83e7c8952f94233912d5a7c45c51575d602fa504e4f4.jsonl",
+      "sha256": "22c7af049a4badeda37d83e7c8952f94233912d5a7c45c51575d602fa504e4f4",
+      "bytes": 3875,
+      "count": 18,
+      "files_bytes": 3896
+    },
+    {
+      "run": "local/research/codex/rust-four-startup-inputs-r1",
+      "path": "local/evidence-manifests/62661038f99e45d1160f01600060a4cade226308b6f6da715b89cfdaf1061d71.jsonl",
+      "sha256": "62661038f99e45d1160f01600060a4cade226308b6f6da715b89cfdaf1061d71",
+      "bytes": 2065,
+      "count": 10,
+      "files_bytes": 2052
+    }
   ]
 }

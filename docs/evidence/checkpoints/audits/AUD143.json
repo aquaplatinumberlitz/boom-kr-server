@@ -1,0 +1,70 @@
+{
+  "id": "AUD143",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-item-scope-harness-character-refusal"
+  ],
+  "completed_through": "CP335",
+  "recorded_utc": "2026-11-17T15:04:18.008508+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/auth-session.md",
+    "docs/protocol/items-stats.md",
+    "docs/evidence/owner-directives/g1-item-scope-cut.json",
+    "docs/evidence/rust-service/g1-character-rejection.json",
+    "docs/evidence/rust-service/g1-item-scope-data.json",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/item_scope.rs",
+    "rust/data/g1-item-drops.json",
+    "tools/g1_native_harness.py",
+    "tools/g1_native_runtime.py",
+    "tools/g1_native_verify.py",
+    "local/research/codex/g1-character-native-matrix-r4/character-verification.json",
+    "local/research/codex/g1-character-native-matrix-r4/decoded-channels-shared.json",
+    "local/research/codex/g1-character-native-matrix-r4/native/cycles/run.json",
+    "local/research/codex/g1-character-native-matrix-r4/native/cycles/A/client.log",
+    "local/research/codex/g1-character-native-matrix-r4/native/cycles/B/client.log"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH và đối chiếu source, ma trận client, TCP decode, DB và failure/cleanup. Không dùng mã thoát hoặc log server thay consumer KR. Một audit chung cho bảng rơi, harness và đường ngắn nhân vật; ma trận Punch/Shoe chưa đóng.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Bảng rơi nguồn chứa nhóm item chưa triển khai.",
+      "correction": "Dữ liệu Rust giữ mọi row sáu map, 62 row dương ngoài tập giữ về 0; floor/list2 từ fixture chỉ nhận kind đã đo trước bind. Không xóa code/evidence cũ hoặc sửa exporter.",
+      "fixed_in": [
+        "rust/data/g1-item-drops.json",
+        "rust/crates/kr-service/src/item_scope.rs",
+        "docs/protocol/items-stats.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Lựa chọn nhân vật chưa đo làm phiên đóng.",
+      "correction": "Validate92/current phase/setup trước DB; current110 phục hồi lựa chọn trên cùng socket, Ready/member/DB giữ nguyên. Native C4→C0→C1, hai vòng đúng profile/account và revision chỉ tăng2 cho hai lựa chọn hợp lệ.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/room_io.rs",
+        "docs/protocol/auth-session.md",
+        "docs/evidence/rust-service/g1-character-rejection.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Controller dùng script riêng và có thể mất click khi trở về phòng.",
+      "correction": "Harness tham số hóa theo ma trận, chờ event/consumer, move-out/re-enter trước click; cleanup reaps mọi process thuộc PID namespace và export/unmount sạch. R2 no-op selection và R3 hover timeout vẫn là failure.",
+      "fixed_in": [
+        "tools/g1_native_harness.py",
+        "tools/g1_native_runtime.py"
+      ]
+    }
+  ],
+  "remaining": [
+    "Ma trận Punch/Shoe và đối chiếu acceptance map còn mở.",
+    "Chưa Internet thật cho transport mới, tải/vận hành M8 hoặc toàn bộ giai đoạn1.",
+    "Review độc lập waived; checkpoint complete không thay exact-head local/history, CI hoặc merge."
+  ]
+}
