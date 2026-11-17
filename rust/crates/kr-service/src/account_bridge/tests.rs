@@ -1160,7 +1160,10 @@ fn authenticated_companions_follow_account_room_round_and_revoke_without_ip_owne
         );
         relay.invalidate();
         for stop in stops {
-            stop.send(true).unwrap();
+            // Revocation may already have closed the companion and its stop
+            // receiver. The joins and released-port assertions below still
+            // require every owned task and socket to finish.
+            let _ = stop.send(true);
         }
         for task in proxies {
             let _ = tokio::time::timeout(Duration::from_secs(3), task)

@@ -144,15 +144,6 @@
       "limits": "Mechanicalconsistency; gate/acceptancenotcertified."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP139-virtual-peer.json",
-      "bytes": 198763,
-      "sha256": "966ca128c3f246688965510719f7b3cbe7a592b8ad243375c2c2f2b6a890091b",
-      "count": 812
-    }
-  ],
   "delta": {
     "added": [
       "Actual two virtualhostnativeprocessgroups/directUDP/nativepeerprogress proof; infrastructure smoke is separateinput."
@@ -232,6 +223,202 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP139actualvirtualhostnativeproof/limits/metadataunknowncorrections/virtual2cyclesnextstep andissue/catalog synced beforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/153-check.txt",
+      "bytes": 22,
+      "sha256": "ccd17ab225f185be8f6f969644e409ad9041beea1919b7944f3ddb40fbbb024c"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/analysis-corrections.json",
+      "bytes": 640,
+      "sha256": "4845ad23df4a9581fd489d788ddc26ed2af5c276036df621becc75e278bc1d5d"
+    },
+    {
+      "id": "RUN-00008",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00019",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/crc-check.txt",
+      "bytes": 33,
+      "sha256": "13196d377923e24d94db4f450c2a4ea44d87c0cd71c10bdf79627b50cc52b11d"
+    },
+    {
+      "id": "RUN-00709",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/cycles/run.json",
+      "bytes": 115659,
+      "sha256": "9d8dd3570c463e52da4c445c52f150625954e502eb762d1d60d5c4958aa6827d"
+    },
+    {
+      "id": "RUN-00710",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/cycles/service-state.json",
+      "bytes": 88985,
+      "sha256": "30b9e258ca78ecb0f5d5a9df59441cde96e7b213dd2b702350e6bae8de12e901"
+    },
+    {
+      "id": "RUN-00715",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/cycles/udp-virtual.pcap",
+      "bytes": 10512,
+      "sha256": "4734802f91096f514d70b77a4f2de252d218cf51790339b5efcac0f3855dc2ac"
+    },
+    {
+      "id": "RUN-00717",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/cycles/virtual-network.json",
+      "bytes": 14854,
+      "sha256": "6680959c4a29cf0a1b9f9322082d88af8a0905618a89ac1e4713472487506ede"
+    },
+    {
+      "id": "RUN-00724",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "5d93d7d4c40fd816f6640f4115a72bbf2e121eb9a26459ca0307c0cd02ce4243"
+    },
+    {
+      "id": "RUN-00725",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/endpoint-getter-check.txt",
+      "bytes": 38,
+      "sha256": "f7a9f51584a5b84696b6602ee09264ddc85e15858dc3b65c9147376543534100"
+    },
+    {
+      "id": "RUN-00726",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/endpoint-peer-verification.json",
+      "bytes": 78702,
+      "sha256": "b9275f7abcc497ae0638f367f3e4373c7f4389c5ca8fc59f93a89808b1364bab"
+    },
+    {
+      "id": "RUN-00727",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/endpoint-progress-check.txt",
+      "bytes": 62,
+      "sha256": "b324b95128042d6aa34075afa6104156e73b0a3472e47d781d2f37e15595e167"
+    },
+    {
+      "id": "RUN-00728",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/fields-check.txt",
+      "bytes": 32,
+      "sha256": "17a34b1a29206a0353abea9efce77f531606d569811625eaba5589c0c3012123"
+    },
+    {
+      "id": "RUN-00737",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "f57dbb9ad290936462b64d8fafdd118b56d82c08f1514ce7e062272e89d8e87d"
+    },
+    {
+      "id": "RUN-00747",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/raw-seal.json",
+      "bytes": 137910,
+      "sha256": "b31cb9697600d9c8eb7df7934574c53699212ab0415f6ffec0dba75fe8d238cc"
+    },
+    {
+      "id": "RUN-00748",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/reuse-question.json",
+      "bytes": 2506,
+      "sha256": "d4b58dc710e0856f8bee4564309f104a8e98ec53fe80eebbad57211242bc3ce3"
+    },
+    {
+      "id": "RUN-00750",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/runtime-preflight.json",
+      "bytes": 17673,
+      "sha256": "349f89367b3183250ab674d64cb8fe9bd2c41e205888738a582661ab7907ff23"
+    },
+    {
+      "id": "RUN-00792",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/smoke-01/report.json",
+      "bytes": 22459,
+      "sha256": "c5421087a5754b8377183538b34926776eda1f08a60d2e9de500ad86676bcaa1"
+    },
+    {
+      "id": "RUN-00795",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/smoke-01-seal.json",
+      "bytes": 1050,
+      "sha256": "81716f93f378d05611877ddbc4586b2ac51a586e018051f5fe08aac2bbf65200"
+    },
+    {
+      "id": "RUN-00803",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/virtual-check.txt",
+      "bytes": 774,
+      "sha256": "98e0d7eb06afbbc86ed1febdcd567b8268361ead86259ae0553ccc9fcc2ecab4"
+    },
+    {
+      "id": "RUN-00804",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/virtual-final-check.txt",
+      "bytes": 711,
+      "sha256": "9732c4a1eee73fe0853a490acbb63827d87df311c6f8c086ebbd0bd4b44021ab"
+    },
+    {
+      "id": "RUN-00805",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/virtual-scope-check.txt",
+      "bytes": 1613,
+      "sha256": "c581746a65b5df9f5d3afef45822bbe030cb5267b2e7da6cdd7a5b943b81e329"
+    },
+    {
+      "id": "RUN-00806",
+      "kind": "local",
+      "path": "local/research/codex/virtual-peer-r1/virtual-verification.json",
+      "bytes": 83447,
+      "sha256": "644dc46c304e5a4eb027c498b2394ad5416a04f32275901116c9398ccaeaba2d"
+    },
+    {
+      "id": "RUN-00812",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/server-tests.txt",
+      "bytes": 326,
+      "sha256": "f28b95e479069101d2aec9e3c4074164e368ada7e65cef0671c89402aab651a0"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/virtual-peer-r1",
+      "path": "local/evidence-manifests/dcda7149099938921ec64c7f6f13a2232fee6bb3662984ed9c6eaeecb0532db0.jsonl",
+      "sha256": "dcda7149099938921ec64c7f6f13a2232fee6bb3662984ed9c6eaeecb0532db0",
+      "bytes": 152677,
+      "count": 783,
+      "files_bytes": 29153025
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/04e572e72253d3ebfa65c396d5e42fda0a93875200687a8d480bd5b52feaa35f.jsonl",
+      "sha256": "04e572e72253d3ebfa65c396d5e42fda0a93875200687a8d480bd5b52feaa35f",
+      "bytes": 421,
+      "count": 2,
+      "files_bytes": 91292
+    },
+    {
+      "run": "local/research/codex/peer-endpoint-alias-r1",
+      "path": "local/evidence-manifests/ba91c71d28b386c3dde50b86c0796b839f6c86f9868b2ead018b4c9eb7cdb9fa.jsonl",
+      "sha256": "ba91c71d28b386c3dde50b86c0796b839f6c86f9868b2ead018b4c9eb7cdb9fa",
+      "bytes": 660,
+      "count": 3,
+      "files_bytes": 1048
     }
   ]
 }

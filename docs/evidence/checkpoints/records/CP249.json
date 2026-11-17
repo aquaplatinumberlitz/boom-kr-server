@@ -198,21 +198,6 @@
       "limits": "Missingnormalvariable before record/indexwrite; originalbatch/snapshots kept, resume onlyassembly, no runtime/raw/oldcomplete rewrite."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP249-rust-four-abort.json",
-      "bytes": 334301,
-      "sha256": "a75b27e3bad6a983bb1b589c79f7aa474b6e9a17812720c7f816543606010c8b",
-      "count": 1232
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP249-assembly-recovery.json",
-      "bytes": 567,
-      "sha256": "57378505d1589edbe2303f93c3b8092f51ed6a0f840f8fdcd48104bfce0ad744",
-      "count": 2
-    }
-  ],
   "delta": {
     "added": [
       "Optinfour_abort_room/currentArmedsingleloss/unranked180-post585-threeRoomcleanup-chief/nativeguest-host/128raw/65tests20+20+32four51two6guards.",
@@ -338,6 +323,373 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP249scopedfourEOF/nativeRoom-chief/TMPFScontrols/Btrfsfailuresexplicit/known8next/M5bridgeindependent/AUD071next252/historykept."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST249-00006",
+      "kind": "local",
+      "path": "local/research/codex/cp249-docs-final.txt",
+      "bytes": 251,
+      "sha256": "c344967c28d23e8158a4f610a099823008a107e3f37112ca0bce3743f6529664"
+    },
+    {
+      "id": "RUST249-00007",
+      "kind": "local",
+      "path": "local/research/codex/cp249-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST249-00015",
+      "kind": "local",
+      "path": "local/research/codex/cp249-pr319-merged.json",
+      "bytes": 23273,
+      "sha256": "70c087bcda34879e64161021a0c078f1a75771b3c8a1de219a65c88d2532f814"
+    },
+    {
+      "id": "RUST249-00033",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-build-r2.txt",
+      "bytes": 166,
+      "sha256": "a933c4c7bf3d05489a898585d4d15a474a91a1a8b340a4b88b33423d444afaf3"
+    },
+    {
+      "id": "RUST249-00034",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-clippy-r1.txt",
+      "bytes": 1736,
+      "sha256": "c0fbd491e9d684cf118db165455b562372a293212c0dd22ec56c744af9166468"
+    },
+    {
+      "id": "RUST249-00035",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-clippy-r2.txt",
+      "bytes": 166,
+      "sha256": "bf33bf8684d68c5bc915353a520b419b9d1c94ab0384f403bec82738bbf4a774"
+    },
+    {
+      "id": "RUST249-00056",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-config-negatives-r1/verification.json",
+      "bytes": 5603,
+      "sha256": "a95db622874c062572ce365bb36008f1cbe26202bade9d006edbf8b295d0f9fc"
+    },
+    {
+      "id": "RUST249-00057",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-delivery-r1/manual-acceptance.json",
+      "bytes": 3702,
+      "sha256": "a0294ec67559663d76655d5ff5749303d0ade441692cbb952152ee7d7c5c95f8"
+    },
+    {
+      "id": "RUST249-00060",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 96775,
+      "sha256": "9e7b5118062c3ef68243ad8d25e4c122a028ae7611d9fe17848dedcacc7de1f6"
+    },
+    {
+      "id": "RUST249-00067",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-delivery-r1/snapshot/docs/features.json",
+      "bytes": 218205,
+      "sha256": "f8b9a6b2e323c2f89a3928d5024cd8c854274c2532aeaba3ce83e85a85c1b152"
+    },
+    {
+      "id": "RUST249-00069",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-delivery-r1/snapshot/rust/crates/kr-service/src/room.rs",
+      "bytes": 24338,
+      "sha256": "de73643690d637c7b4abc7d62e04dbcf655002bce83542f7726517fe670a4e9e"
+    },
+    {
+      "id": "RUST249-00070",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 86669,
+      "sha256": "4582b46e813219656bdcab0842ab51e6f8f76ffa26d030e471aed855d97b3d90"
+    },
+    {
+      "id": "RUST249-00156",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-guest-kernel-r1/verification.json",
+      "bytes": 18743,
+      "sha256": "d6134f2467ee962e36bdf828b423562e007160df2cac10d4cd177b605b31561c"
+    },
+    {
+      "id": "RUST249-00159",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-guest-native-r1/abort-verification.json",
+      "bytes": 10760,
+      "sha256": "badea4c47a3113ecc3e2fb006c1966fc287b3c6c9c06d51cdddceb41a3bc25dc"
+    },
+    {
+      "id": "RUST249-00424",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-guest-native-r1/native-four/raw-seal.json",
+      "bytes": 15021,
+      "sha256": "e00706378bf8b90c4520a56969da4cbd645ad0a44f037433d2c5ea9b4d0aee55"
+    },
+    {
+      "id": "RUST249-00427",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-guest-native-r1/native-four/storage-export.json",
+      "bytes": 17070,
+      "sha256": "18b775789af21c0b2f28f26418eebe7be1c232e522db097be01d126f8909ccfb"
+    },
+    {
+      "id": "RUST249-00434",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-guest-native-r1/ui-review.json",
+      "bytes": 1420,
+      "sha256": "05caca81e6b12ed34a540966b9fddf50b4cd3fd6c588b1a5767cd49345dbadfc"
+    },
+    {
+      "id": "RUST249-00518",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-host-kernel-r1/verification.json",
+      "bytes": 18664,
+      "sha256": "6e5e37143abf1f7a30db2c197950c35334550666a8c48a2c890a6ec27934c3a6"
+    },
+    {
+      "id": "RUST249-00522",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-host-native-r1/abort-verification.json",
+      "bytes": 10758,
+      "sha256": "67654af8e1f69e1748423023a3c365ac81b7b263e1206b181162c07c9fbf0338"
+    },
+    {
+      "id": "RUST249-00787",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-host-native-r1/native-four/raw-seal.json",
+      "bytes": 14953,
+      "sha256": "d630ed891277fb08be26a5b948446f711dc377af8a1ce90fc60e8bf5891f2caa"
+    },
+    {
+      "id": "RUST249-00790",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-host-native-r1/native-four/storage-export.json",
+      "bytes": 17002,
+      "sha256": "98b5c256ddb20d19bbfb3c36f291a32eee21f21bdc023f1414b6f9c142b7c8bd"
+    },
+    {
+      "id": "RUST249-00797",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-host-native-r1/ui-review.json",
+      "bytes": 1366,
+      "sha256": "747d6a343428bf7745717e3eb332a8eb046bc3a372b019e0730b79eadfc9bf5c"
+    },
+    {
+      "id": "RUST249-00804",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-normal-kernel-r1/failure-review.json",
+      "bytes": 771,
+      "sha256": "1d7951cce5ff97b77986f2f93cacd6d508e39ddb6267879107e34c5e68588fb0"
+    },
+    {
+      "id": "RUST249-00883",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-normal-kernel-r1/verification.json",
+      "bytes": 18948,
+      "sha256": "9c81626d32a01f220d999193406e0ecbca43821871428dee0be2227cbdfdf1d1"
+    },
+    {
+      "id": "RUST249-00885",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-normal-kernel-r2/failure-review.json",
+      "bytes": 686,
+      "sha256": "b1a7f03f6e256b0b05cb3a8729bce84408caed060b50e4f6d421964e822ea04b"
+    },
+    {
+      "id": "RUST249-00959",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-normal-kernel-r2/pid-observations.json",
+      "bytes": 24887,
+      "sha256": "307eb9b8d2f41259a080e96a9cc4950a7877537ceaa8931bec12e3ff52d01855"
+    },
+    {
+      "id": "RUST249-00964",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-normal-kernel-r2/verification.json",
+      "bytes": 19074,
+      "sha256": "bb49108794e7c6363b67f14845d651be214d7c1b69c12551628bc40ff39f7883"
+    },
+    {
+      "id": "RUST249-00966",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-normal-kernel-r3/failure-review.json",
+      "bytes": 626,
+      "sha256": "1799282af0cd926a04bab952baa58aa1aab60a57254bc5de05fde8450f843670"
+    },
+    {
+      "id": "RUST249-01045",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-normal-kernel-r3/verification.json",
+      "bytes": 18334,
+      "sha256": "494a14176b668ddec9c7e649190352785541a482c130fa568adf3bfbae3b1750"
+    },
+    {
+      "id": "RUST249-01050",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-test-before-final-bomb-drain.py",
+      "bytes": 15957,
+      "sha256": "eeb370bceca8a73a0a740a49be1d64875a3e256374763b1d80487b5e4a3f03ec"
+    },
+    {
+      "id": "RUST249-01051",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-tests-r2.txt",
+      "bytes": 7603,
+      "sha256": "84550abc0228c1ac68ca901e95a541e35b8520889c1ea52987b4d4098ef2cc0d"
+    },
+    {
+      "id": "RUST249-01053",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-tmpfs-control-r1/export-verification.json",
+      "bytes": 20125,
+      "sha256": "cafee433bb65ed9a132c16ea8110b5240e2585a25d2a2aafe97c74f8f46737ea"
+    },
+    {
+      "id": "RUST249-01134",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-tmpfs-control-r1/normal-four/verification.json",
+      "bytes": 20333,
+      "sha256": "ba94dfb69332f85afc42fa84c88823c385fc094a84382f5a81c458190aeda708"
+    },
+    {
+      "id": "RUST249-01137",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-two-tmpfs-control-r1/export-verification.json",
+      "bytes": 20697,
+      "sha256": "df22835d26449ae1a301a15352e6b6e717191a62c6530211a7a8c67f3382d313"
+    },
+    {
+      "id": "RUST249-01220",
+      "kind": "local",
+      "path": "local/research/codex/rust-four-abort-two-tmpfs-control-r1/input/verification.json",
+      "bytes": 24215,
+      "sha256": "710bbffd579de23f460d26e0f3df14b3d36888d241f47fc6859c1008b048a036"
+    },
+    {
+      "id": "RUST249REC-0001",
+      "kind": "local",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/append_cp249_resume.py",
+      "bytes": 3911,
+      "sha256": "f8ce10f5c12846186e3af658c7d983125d6789f8967694c3c2a984813c27332b"
+    },
+    {
+      "id": "RUST249REC-0002",
+      "kind": "local",
+      "path": "local/research/codex/cp249-append-failure.json",
+      "bytes": 492,
+      "sha256": "ebf835a5f0c043ed0e72c815c3c76fb648a7a76ce934f460c7cf6826cd7f4a6d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/091bb6b77089267bff907f7f041cd9954db6487ea6087b4bf85d72323ee6abc5.jsonl",
+      "sha256": "091bb6b77089267bff907f7f041cd9954db6487ea6087b4bf85d72323ee6abc5",
+      "bytes": 11609,
+      "count": 61,
+      "files_bytes": 581564
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-config-negatives-r1",
+      "path": "local/evidence-manifests/c8a73b04e170423c5e9c4ab4b9b1f8c1030a6663c223042a5742ba326fd69103.jsonl",
+      "sha256": "c8a73b04e170423c5e9c4ab4b9b1f8c1030a6663c223042a5742ba326fd69103",
+      "bytes": 4203,
+      "count": 19,
+      "files_bytes": 136890
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-delivery-r1",
+      "path": "local/evidence-manifests/28fec5fb2aa4743a3d9c5ccb0e2f67e49c02b90a601697cd5e41e408f8ea891d.jsonl",
+      "sha256": "28fec5fb2aa4743a3d9c5ccb0e2f67e49c02b90a601697cd5e41e408f8ea891d",
+      "bytes": 2765,
+      "count": 12,
+      "files_bytes": 1546409
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-guest-kernel-r1",
+      "path": "local/evidence-manifests/615876aaeae594570354c4aa626b812ab5f19e95e3eb920da2baa3dc29188a0c.jsonl",
+      "sha256": "615876aaeae594570354c4aa626b812ab5f19e95e3eb920da2baa3dc29188a0c",
+      "bytes": 17476,
+      "count": 79,
+      "files_bytes": 45476197
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-guest-native-r1",
+      "path": "local/evidence-manifests/88d0ca7927d844318736c22f478f598d92ae7b7a275293f1f7d67142f2fd9b93.jsonl",
+      "sha256": "88d0ca7927d844318736c22f478f598d92ae7b7a275293f1f7d67142f2fd9b93",
+      "bytes": 61024,
+      "count": 272,
+      "files_bytes": 178867158
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-host-kernel-r1",
+      "path": "local/evidence-manifests/85844469c7dc23e16c7fd6da96e8836976d4d8bbd5eb81b87e32cdf0cc231f7d.jsonl",
+      "sha256": "85844469c7dc23e16c7fd6da96e8836976d4d8bbd5eb81b87e32cdf0cc231f7d",
+      "bytes": 17396,
+      "count": 79,
+      "files_bytes": 45477524
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-host-native-r1",
+      "path": "local/evidence-manifests/28413af7b589985229039e034048f528aae69f92c5bb7783bbb4c898ea272fa6.jsonl",
+      "sha256": "28413af7b589985229039e034048f528aae69f92c5bb7783bbb4c898ea272fa6",
+      "bytes": 60746,
+      "count": 272,
+      "files_bytes": 178813933
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-normal-kernel-r1",
+      "path": "local/evidence-manifests/94139f7ebfb04f07be5c12b6ce65290d9c7e9e712c5c58e6dec1a8a5658347e1.jsonl",
+      "sha256": "94139f7ebfb04f07be5c12b6ce65290d9c7e9e712c5c58e6dec1a8a5658347e1",
+      "bytes": 17556,
+      "count": 79,
+      "files_bytes": 45480039
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-normal-kernel-r2",
+      "path": "local/evidence-manifests/2b2e1464210b5d980baf63b4db0c8fcf149b1ebd93c8cc022ef433834e60295c.jsonl",
+      "sha256": "2b2e1464210b5d980baf63b4db0c8fcf149b1ebd93c8cc022ef433834e60295c",
+      "bytes": 17344,
+      "count": 78,
+      "files_bytes": 45456233
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-normal-kernel-r3",
+      "path": "local/evidence-manifests/2e08980fa77c48bc44c64417dd4585df4837a96ae7ef501f99487dc80cc74141.jsonl",
+      "sha256": "2e08980fa77c48bc44c64417dd4585df4837a96ae7ef501f99487dc80cc74141",
+      "bytes": 17557,
+      "count": 79,
+      "files_bytes": 45463086
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-source-r1",
+      "path": "local/evidence-manifests/4c4a8188643973ae65e30cf9d60af2830e7e887e04271a1e4b2e0c051faccec8.jsonl",
+      "sha256": "4c4a8188643973ae65e30cf9d60af2830e7e887e04271a1e4b2e0c051faccec8",
+      "bytes": 490,
+      "count": 2,
+      "files_bytes": 3178
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-tmpfs-control-r1",
+      "path": "local/evidence-manifests/25fb9ac32e201e3441eabc5e282b7578302cfc176cba92f2b9fc6222105b91fa.jsonl",
+      "sha256": "25fb9ac32e201e3441eabc5e282b7578302cfc176cba92f2b9fc6222105b91fa",
+      "bytes": 18913,
+      "count": 81,
+      "files_bytes": 45517644
+    },
+    {
+      "run": "local/research/codex/rust-four-abort-two-tmpfs-control-r1",
+      "path": "local/evidence-manifests/af9895b27abf5c9eadfa1075365a2c5b59e8e27654c54d9cbd49434266d18647.jsonl",
+      "sha256": "af9895b27abf5c9eadfa1075365a2c5b59e8e27654c54d9cbd49434266d18647",
+      "bytes": 19496,
+      "count": 84,
+      "files_bytes": 45436105
     }
   ]
 }

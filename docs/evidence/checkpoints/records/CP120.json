@@ -134,21 +134,6 @@
       "limits": "Mechanicalconsistency/selectedmanualreview notautoacceptance/gates."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP120-prefix-preparation-control.json",
-      "bytes": 37696,
-      "sha256": "235b0fed2aab05574ee8894f1ba41ba5b81d0042535e9313c0ad97cba29c9c0b",
-      "count": 150
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP120-rescue-R2-feedback.json",
-      "bytes": 482520,
-      "sha256": "3060498db31b599260d98b03518bbaf4097b73b57f10973ecb11798eedc37027",
-      "count": 1925
-    }
-  ],
   "delta": {
     "added": [
       "FreshR2currentrescueafterresult/return/actualStart2/key/nativeboth56→26samecodeprofile.",
@@ -246,6 +231,197 @@
       "path": "docs/evidence/checkpoints/audits/AUD037.json",
       "state": "updated",
       "reason": "CP120freshR2rescue/currentepoch/feedbacklimits/nextsecondresult, CP119merge/AUD037periodic/fivestalescopefixes; nooldrecord/gatechange."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "BOOT-00147",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r1/preparation-failure-seal.json",
+      "bytes": 30062,
+      "sha256": "6a72497fcc61251b0b8623137fa460231248d9faf6af5ec198f2027cb85324d3"
+    },
+    {
+      "id": "R2-00001",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/actor-fields.json",
+      "bytes": 406240,
+      "sha256": "6882a063e240ab17d03bdb1382aaf47f01dc9119af4132a4fc819eab7dfc9f86"
+    },
+    {
+      "id": "R2-00008",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "R2-00012",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/cp120-snapshot/docs/PLAN.md",
+      "bytes": 32350,
+      "sha256": "4ebe184aeea7d69e72560ed5d36a378357c95a8c8b1c113a1702440865fbe896"
+    },
+    {
+      "id": "R2-00013",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/cp120-snapshot/docs/PROTOCOL.md",
+      "bytes": 372444,
+      "sha256": "041859b00094e71e117fbfb2f8a0a3841fffaf75df48aaba95c520b91ff2d2a0"
+    },
+    {
+      "id": "R2-01336",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/cycles/live-A.jsonl",
+      "bytes": 40821,
+      "sha256": "0c8e286d171e93b086dbb164be23696f3525746b86ee693068dc5ba9e6d0eaf0"
+    },
+    {
+      "id": "R2-01341",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/cycles/peer-B.jsonl",
+      "bytes": 219025,
+      "sha256": "e50a4b7ba444f4945e90018d9d0ba47e868a1a40b41a274511cb0a47b2d28e88"
+    },
+    {
+      "id": "R2-01805",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/docs-check.txt",
+      "bytes": 175,
+      "sha256": "d17e721ffda13d0b3a42d8b1fc46c75cb742701e0eda1891aa20f8a65014ce8e"
+    },
+    {
+      "id": "R2-01806",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/feedback-check.txt",
+      "bytes": 91,
+      "sha256": "cbf0ca5fbc8ad0247ed9220714822995b767cc0228a977ea7aa3be5982069d3a"
+    },
+    {
+      "id": "R2-01807",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/feedback-verification.json",
+      "bytes": 87208,
+      "sha256": "d8e59f450a386bffc043b492e31071e792ae3ed5bc4b9c3370112d66d9fe62af"
+    },
+    {
+      "id": "R2-01808",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/fields-check.txt",
+      "bytes": 32,
+      "sha256": "1421956ddcca9b8062010bcab5d6a5bba3e56aad007238c86a7da9b47e6836f0"
+    },
+    {
+      "id": "R2-01818",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/github-current.json",
+      "bytes": 183093,
+      "sha256": "58a6bf06b581db0780557938f865fd0c1b934068d72a3d2fee1a4efdbdf21c88"
+    },
+    {
+      "id": "R2-01821",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/issues-live-check.txt",
+      "bytes": 130,
+      "sha256": "bf35769f70f0c404993fbdcbc5736f6202f0d2e80b5e9606c841366f44a611d9"
+    },
+    {
+      "id": "R2-01823",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/native-reports-check.txt",
+      "bytes": 29,
+      "sha256": "6a984bbb6f4a3fff7533fb099df5031706c7a4e0f59d8e605b741287e8ae67df"
+    },
+    {
+      "id": "R2-01825",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/native153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "R2-01854",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/reset-check.txt",
+      "bytes": 57,
+      "sha256": "0c57b83d27f29bdea27710acc45fe6ba305cb4f1228a02f115657adb743cd799"
+    },
+    {
+      "id": "R2-01855",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/reset-verification.json",
+      "bytes": 535536,
+      "sha256": "ad7ef31af48bec2d366f7cc2fc4969ca36f07a19eaa2f4a4f95abc9eab44af31"
+    },
+    {
+      "id": "R2-01856",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/reset-visual.png",
+      "bytes": 372976,
+      "sha256": "d6dcc879dcae338659dcda6a9ef72e1a31fdc5bb203e97c99d41e0d10f0609ec"
+    },
+    {
+      "id": "R2-01916",
+      "kind": "local",
+      "path": "local/research/codex/rescue-R2-feedback-r2/visual-review.json",
+      "bytes": 588,
+      "sha256": "4f58e51d83677d3017a8cbf3c1c577b268e528600a2206053c0c53acbfe35b09"
+    },
+    {
+      "id": "R2-01924",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/server-tests.txt",
+      "bytes": 291,
+      "sha256": "09d483bec50aa52bb61c63c8fb6926c78fd85e547f381b90d870b6e3a0ada3ee"
+    },
+    {
+      "id": "R2-01925",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD037.json",
+      "bytes": 5284,
+      "sha256": "1a4da6bd4305dc87dd04b327215528e19062243c7a98e9c833a6680426a90c01"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/rescue-R2-feedback-r1",
+      "path": "local/evidence-manifests/48915e95cfce17ade1a4b309cf2dec3ee38325c7b8cdabd3a512d0beaa08f2be.jsonl",
+      "sha256": "48915e95cfce17ade1a4b309cf2dec3ee38325c7b8cdabd3a512d0beaa08f2be",
+      "bytes": 29822,
+      "count": 148,
+      "files_bytes": 2276901
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b5b1d47e8f016e6343adfa268a3b853917fa5674dc3e8b840b8ffd0541b77947.jsonl",
+      "sha256": "b5b1d47e8f016e6343adfa268a3b853917fa5674dc3e8b840b8ffd0541b77947",
+      "bytes": 624,
+      "count": 3,
+      "files_bytes": 118018
+    },
+    {
+      "run": "local/research/codex/rescue-R2-feedback-r2",
+      "path": "local/evidence-manifests/475163770598e1261f261082667455ed9284f894d5d5e29734d48c9375297008.jsonl",
+      "sha256": "475163770598e1261f261082667455ed9284f894d5d5e29734d48c9375297008",
+      "bytes": 381253,
+      "count": 1899,
+      "files_bytes": 45016185
+    },
+    {
+      "run": "local/research/codex/rescue-R2-contact-r1",
+      "path": "local/evidence-manifests/cccb41165ac1fa84442906dff45b20062830dcdd1209baa1c08f77de4496a371.jsonl",
+      "sha256": "cccb41165ac1fa84442906dff45b20062830dcdd1209baa1c08f77de4496a371",
+      "bytes": 475,
+      "count": 2,
+      "files_bytes": 19568
+    },
+    {
+      "run": "local/research/codex/rescue-slot-refresh-r1",
+      "path": "local/evidence-manifests/a847962c7e3d28b9c78c867064b2653473eba4f88258653b026a2ebb98bf00eb.jsonl",
+      "sha256": "a847962c7e3d28b9c78c867064b2653473eba4f88258653b026a2ebb98bf00eb",
+      "bytes": 473,
+      "count": 2,
+      "files_bytes": 510
     }
   ]
 }

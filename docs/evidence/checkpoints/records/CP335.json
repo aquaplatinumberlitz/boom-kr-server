@@ -106,6 +106,99 @@
       "limits": "Independent review waived; CI/local-history gate trước merge vẫn bắt buộc."
     }
   ],
+  "delta": {
+    "added": [
+      "Bảng rơi G1 đã cắt, harness ma trận và đường ngắn issue457."
+    ],
+    "corrected": [
+      "Không đóng socket khi well-formed92 chọn key chưa đo; click Ready sau return cần hover mới."
+    ],
+    "superseded": [
+      "Phạm vi item rộng của G1 cũ theo chỉ đạo owner; không sửa record/raw cũ."
+    ]
+  },
+  "blockers": [],
+  "next_steps": [
+    {
+      "id": "NEXT-G1-BOMB-MOTION-COVERAGE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Hoàn tất ma trận Punch/Shoe theo nhóm và đối chiếu coverage map trong PLAN; gate ở checkout riêng, tiếp static/native nhóm sau.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T15:04:18.008508+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex self-audit AUD143 cho nhóm dữ liệu/harness/nhân vật; không tự chứng nhận merge hoặc toàn G1.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner cho solo và miễn review độc lập."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index chủ đề không đổi."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-character-rejection.json",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-item-scope-data.json",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    }
+  ],
+  "completed_feature_groups": [
+    "g1-item-scope-harness-character-refusal"
+  ],
   "evidence": [
     {
       "id": "G1S335-001",
@@ -248,39 +341,11 @@
       "sha256": "3c96c16a28e7adf808fe4f8c428680a120e8c4ab81aaee59a37c935081975914"
     },
     {
-      "id": "G1S335-021",
-      "kind": "local",
-      "path": "local/research/codex/g1-character-native-matrix-r4/native/cycles/A/client.log",
-      "bytes": 478066,
-      "sha256": "d1fa92b7afe48c4560ae315929ba2dfa57492d380c7ce62246c632a520b2fee3"
-    },
-    {
-      "id": "G1S335-022",
-      "kind": "local",
-      "path": "local/research/codex/g1-character-native-matrix-r4/native/cycles/B/client.log",
-      "bytes": 323668,
-      "sha256": "92ee8bed87fe566b8a4754b51e10cf50ff32544a70b5253c9d922b4aaf563096"
-    },
-    {
       "id": "G1S335-023",
       "kind": "local",
       "path": "local/research/codex/g1-character-native-matrix-r4/matrix-verification.json",
       "bytes": 684,
       "sha256": "58e0129fa728861428cc078f23efea883dfdf039d179419ac11e31443fa2f9d0"
-    },
-    {
-      "id": "G1S335-024",
-      "kind": "local",
-      "path": "local/research/codex/g1-character-native-matrix-r4/native/runtime-preflight.json",
-      "bytes": 128689,
-      "sha256": "0c20de9f4891bc6a05118c4111d43086737088eb78eee5af4860a981a9618b08"
-    },
-    {
-      "id": "G1S335-025",
-      "kind": "local",
-      "path": "local/research/codex/g1-character-native-matrix-r4/native/recipe.json",
-      "bytes": 1212,
-      "sha256": "b063651483ee9943529df25703e62984bf63e2dd042be4eebc4b709bf379a856"
     },
     {
       "id": "G1S335-026",
@@ -316,162 +381,40 @@
       "path": "local/research/codex/g1-character-room-choices-tcp-r1/verification.json",
       "bytes": 737,
       "sha256": "74ab4b2c57290863c2dbc1359e061220e95aaffaa6d892cb99d89e90ee6df3f0"
-    },
-    {
-      "id": "G1S335-031",
-      "kind": "local",
-      "path": "local/research/codex/g1-scoped-group-gate/1.log",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "id": "G1S335-032",
-      "kind": "local",
-      "path": "local/research/codex/g1-scoped-group-gate/2.log",
-      "bytes": 2612,
-      "sha256": "795a6a80c9374cc8b77fad3d6317e355cea697948127dd9a9b59ef29be523de9"
-    },
-    {
-      "id": "G1S335-033",
-      "kind": "local",
-      "path": "local/research/codex/g1-scoped-group-gate/3.log",
-      "bytes": 30026,
-      "sha256": "747c31172ea202ae08c9f87ae05247b48fa2789bae495fb69b6201b0c75f78e7"
-    },
-    {
-      "id": "G1S335-034",
-      "kind": "local",
-      "path": "local/research/codex/g1-scoped-group-gate/4.log",
-      "bytes": 274,
-      "sha256": "1428028bcf3f2b3ec9c4c3a156b07dec018421e5757a59633108f2f14663b0ac"
-    },
-    {
-      "id": "G1S335-035",
-      "kind": "local",
-      "path": "local/research/codex/g1-scoped-group-gate/5.log",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "id": "G1S335-036",
-      "kind": "local",
-      "path": "local/research/codex/g1-character-native-matrix-r2/native/cycles/run.json",
-      "bytes": 31660,
-      "sha256": "5abf9421a1ae7eb751f921aa7926da6b35f700162c298d1022525a931e7b0ad6"
-    },
-    {
-      "id": "G1S335-037",
-      "kind": "local",
-      "path": "local/research/codex/g1-character-native-matrix-r2/native/launch-exit.json",
-      "bytes": 81,
-      "sha256": "932d6cdbf5e61780805bd4d00042298697db0b1f4cd85cd1506ebd6c548af56e"
-    },
-    {
-      "id": "G1S335-038",
-      "kind": "local",
-      "path": "local/research/codex/g1-character-native-matrix-r3/native/cycles/run.json",
-      "bytes": 97109,
-      "sha256": "b7b491df0d825d928291dbe36a2be6dda47de11a007ef71cc933516c152d9eef"
-    },
-    {
-      "id": "G1S335-039",
-      "kind": "local",
-      "path": "local/research/codex/g1-character-native-matrix-r3/native/launch-exit.json",
-      "bytes": 81,
-      "sha256": "932d6cdbf5e61780805bd4d00042298697db0b1f4cd85cd1506ebd6c548af56e"
     }
   ],
-  "delta": {
-    "added": [
-      "Bảng rơi G1 đã cắt, harness ma trận và đường ngắn issue457."
-    ],
-    "corrected": [
-      "Không đóng socket khi well-formed92 chọn key chưa đo; click Ready sau return cần hover mới."
-    ],
-    "superseded": [
-      "Phạm vi item rộng của G1 cũ theo chỉ đạo owner; không sửa record/raw cũ."
-    ]
-  },
-  "blockers": [],
-  "next_steps": [
+  "evidence_runs": [
     {
-      "id": "NEXT-G1-BOMB-MOTION-COVERAGE",
-      "task": "KRE-074",
-      "state": "active",
-      "action": "Hoàn tất ma trận Punch/Shoe theo nhóm và đối chiếu coverage map trong PLAN; gate ở checkout riêng, tiếp static/native nhóm sau.",
-      "owner": "Codex",
-      "reviewer": "Codex"
+      "run": "local/research/codex/g1-character-native-matrix-r4",
+      "path": "local/evidence-manifests/c07a00242930e8237a82fd046422c787d450243506836f519daa8bd6b208e825.jsonl",
+      "sha256": "c07a00242930e8237a82fd046422c787d450243506836f519daa8bd6b208e825",
+      "bytes": 937,
+      "count": 4,
+      "files_bytes": 931635
+    },
+    {
+      "run": "local/research/codex/g1-scoped-group-gate",
+      "path": "local/evidence-manifests/2f7c8a24f8ca8eb5c0f601de81c189c9da39f17e7e2aca8bbda0d82cb7f0a446.jsonl",
+      "sha256": "2f7c8a24f8ca8eb5c0f601de81c189c9da39f17e7e2aca8bbda0d82cb7f0a446",
+      "bytes": 982,
+      "count": 5,
+      "files_bytes": 32912
+    },
+    {
+      "run": "local/research/codex/g1-character-native-matrix-r2",
+      "path": "local/evidence-manifests/8379dd815522c497bfc3420017c6874eedbb1dffc2371d0115d4104d86fa7670.jsonl",
+      "sha256": "8379dd815522c497bfc3420017c6874eedbb1dffc2371d0115d4104d86fa7670",
+      "bytes": 506,
+      "count": 2,
+      "files_bytes": 31741
+    },
+    {
+      "run": "local/research/codex/g1-character-native-matrix-r3",
+      "path": "local/evidence-manifests/f3b57bbb5ebfdd1454a1ac5a0319384ebd1a2e984895205551ffe1ecf7d3e94d.jsonl",
+      "sha256": "f3b57bbb5ebfdd1454a1ac5a0319384ebd1a2e984895205551ffe1ecf7d3e94d",
+      "bytes": 506,
+      "count": 2,
+      "files_bytes": 97190
     }
-  ],
-  "review": {
-    "status": "waived",
-    "as_of_utc": "2026-11-17T15:04:18.008508+00:00",
-    "reference": "docs/evidence/checkpoints/review-waiver.json",
-    "scope": "Codex self-audit AUD143 cho nhóm dữ liệu/harness/nhân vật; không tự chứng nhận merge hoặc toàn G1.",
-    "authorization": {
-      "by": "project_owner",
-      "reference": "docs/evidence/checkpoints/review-waiver.json",
-      "reason": "Owner cho solo và miễn review độc lập."
-    }
-  },
-  "docs_sync": [
-    {
-      "path": "README.md",
-      "state": "updated",
-      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
-    },
-    {
-      "path": "docs/PLAN.md",
-      "state": "updated",
-      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
-    },
-    {
-      "path": "docs/PROTOCOL.md",
-      "state": "unchanged",
-      "reason": "Index chủ đề không đổi."
-    },
-    {
-      "path": "docs/RESEARCH.md",
-      "state": "updated",
-      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
-    },
-    {
-      "path": "docs/HISTORY.md",
-      "state": "updated",
-      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
-    },
-    {
-      "path": "docs/protocol/auth-session.md",
-      "state": "updated",
-      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
-    },
-    {
-      "path": "docs/protocol/items-stats.md",
-      "state": "updated",
-      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
-    },
-    {
-      "path": "docs/features.json",
-      "state": "updated",
-      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
-    },
-    {
-      "path": "docs/COVERAGE.md",
-      "state": "updated",
-      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
-    },
-    {
-      "path": "docs/evidence/rust-service/g1-character-rejection.json",
-      "state": "updated",
-      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
-    },
-    {
-      "path": "docs/evidence/rust-service/g1-item-scope-data.json",
-      "state": "updated",
-      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
-    }
-  ],
-  "completed_feature_groups": [
-    "g1-item-scope-harness-character-refusal"
   ]
 }

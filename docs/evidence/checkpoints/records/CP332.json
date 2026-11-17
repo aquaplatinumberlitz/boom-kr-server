@@ -117,15 +117,6 @@
       "limits": "Exact-head local/history and all CI still mandatory before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP332-managed-all-dead.json",
-      "bytes": 1837192,
-      "sha256": "d8bcce4fa8181db3f7f54bf2f8dab2f75960ac1b31f0e5c60b6b2948851c91bc",
-      "count": 6818
-    }
-  ],
   "delta": {
     "added": [
       "Typed managed all-dead, explicit rank2 current roster, AllDead/Draw zero journal, native2/4/8 two-cycle acceptance."
@@ -254,5 +245,1398 @@
   ],
   "completed_feature_groups": [
     "g1-managed-player-all-dead-current-rosters"
+  ],
+  "evidence": [
+    {
+      "id": "ALLDEAD332-00001",
+      "kind": "artifact",
+      "path": "/etc/nsswitch.conf",
+      "bytes": 359,
+      "sha256": "c8ee7a9faf798caab178ec51afae4146f1efd8a716b7acedf28345b6c75f9697"
+    },
+    {
+      "id": "ALLDEAD332-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3718,
+      "sha256": "2202bcb29d7a408119074505fa3fbf396dc5606bd5478a19f541e2a62f8860c0"
+    },
+    {
+      "id": "ALLDEAD332-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 269689,
+      "sha256": "4aa7520c0233247f85b37c21fb94cb5ed833c376135b32c6338aeb6af6e1ed4e"
+    },
+    {
+      "id": "ALLDEAD332-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 167344,
+      "sha256": "dffd5d2e7908010e0b1a88a98e7eac4a41ecc0b09498556c1fe9d525aa41b006"
+    },
+    {
+      "id": "ALLDEAD332-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 85639,
+      "sha256": "56ff5987fb8fb1b9281f7e32bb1a7bc7f1ee9c7d9775a61cc6e7a537dbd457b0"
+    },
+    {
+      "id": "ALLDEAD332-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 68543,
+      "sha256": "212477cbaddfb0f05f075c7ad64769e1d51f4f5b8456b14b77435a2b1b4f3552"
+    },
+    {
+      "id": "ALLDEAD332-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45562,
+      "sha256": "1959e95c147a718e8aa5a24c900db6a3299bdf476884981d718e995381525fae"
+    },
+    {
+      "id": "ALLDEAD332-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD140.json",
+      "bytes": 4325,
+      "sha256": "6c4b5882b3a2853e96f7cbc52afe7691dffa3bbafa3f2409de708ad7be53a2d0"
+    },
+    {
+      "id": "ALLDEAD332-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-managed-all-dead.json",
+      "bytes": 23466,
+      "sha256": "4dedde340750275549b746f64d7c34778f74fba9c686315767cbd98d1059006a"
+    },
+    {
+      "id": "ALLDEAD332-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 282213,
+      "sha256": "ca16c38d2e7543bedaa0c76a39155b371afceeb955b53bf6968d3817a09e3b9e"
+    },
+    {
+      "id": "ALLDEAD332-00011",
+      "kind": "repository",
+      "path": "docs/protocol/life-results.md",
+      "bytes": 112593,
+      "sha256": "1e2b9fd56b596629d6fa89c7549c3645e7396b082bfe2bc7185b9450e1c5e174"
+    },
+    {
+      "id": "ALLDEAD332-00013",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "ALLDEAD332-00014",
+      "kind": "local",
+      "path": "local/research/codex/bomb-calc-r1/result180-full.bin",
+      "bytes": 41,
+      "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0"
+    },
+    {
+      "id": "ALLDEAD332-00019",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "ALLDEAD332-00026",
+      "kind": "local",
+      "path": "local/research/codex/cp332-catalog-precheck.txt",
+      "bytes": 246,
+      "sha256": "3d19a2b9d9bdbfa07fef68c6f33b081ab05ee4508901dd53bee08e964a772a3c"
+    },
+    {
+      "id": "ALLDEAD332-00027",
+      "kind": "local",
+      "path": "local/research/codex/cp332-docs-precheck.txt",
+      "bytes": 274,
+      "sha256": "93ad49b2d8ee74ed1ecfd9dc2f66494affbabb911276059997200b60af4bcff1"
+    },
+    {
+      "id": "ALLDEAD332-00029",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "ALLDEAD332-00032",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "ALLDEAD332-00033",
+      "kind": "local",
+      "path": "local/research/codex/four-netem-restart-r1/gdb_life_rank.py",
+      "bytes": 2266,
+      "sha256": "26e5206fc0077d91ff666e63a28a815cdc3d105219819d5fdf34df038abf76c2"
+    },
+    {
+      "id": "ALLDEAD332-00038",
+      "kind": "local",
+      "path": "local/research/codex/g1-forest-seed-native-r2/forest-seed-native-verification.json",
+      "bytes": 108678,
+      "sha256": "39fb1196fbd1a81b5fb149b937ed76593ebf708ee7aff8b1505230f547f3ea48"
+    },
+    {
+      "id": "ALLDEAD332-00846",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/native/failure-verification.json",
+      "bytes": 695,
+      "sha256": "33019ebe6b75fa379473181958808988ffd81cd95fab9d2f1d1f1d276ae4c831"
+    },
+    {
+      "id": "ALLDEAD332-01083",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r2/native/semantic-failure-verification.json",
+      "bytes": 1117,
+      "sha256": "4e076b6bbe26bf5e03129704764c135dbe52b6e6439263a1c2d6ccb99e814c0b"
+    },
+    {
+      "id": "ALLDEAD332-01327",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/partial-native-semantic-verification.json",
+      "bytes": 2760,
+      "sha256": "167e1f125205353ad1a57b54e14ab4916be855b8b1a94bf134f22afbd6399c3d"
+    },
+    {
+      "id": "ALLDEAD332-01339",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/all-dead-roster-verification.json",
+      "bytes": 6803,
+      "sha256": "53e585e044e725518749f48a3824002d46c1a1f4147f5494d7ea57e8735db5bd"
+    },
+    {
+      "id": "ALLDEAD332-01558",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/native/raw-seal.json",
+      "bytes": 35182,
+      "sha256": "ea0eed418fd7374b2a7f6aa2361834869579fe0ccc916cac0717110b12ef47ee"
+    },
+    {
+      "id": "ALLDEAD332-01575",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/semantic-verification-exit-v4.json",
+      "bytes": 558,
+      "sha256": "bef570feb5b704fb805e48a839683c66386db405f1d0fd463952308a08b16396"
+    },
+    {
+      "id": "ALLDEAD332-03114",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/all-dead-roster-verification.json",
+      "bytes": 11096,
+      "sha256": "71c22bc8ab039bd87b7f9a097d4ea224a9598f1c7544fa1eb1a6d7b88affbe36"
+    },
+    {
+      "id": "ALLDEAD332-03670",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/native/raw-seal.json",
+      "bytes": 96452,
+      "sha256": "0d071194261219281a752d2832c0690362d3acd9b31bf5a9d52b0f367391050f"
+    },
+    {
+      "id": "ALLDEAD332-03702",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-build-r1/source-commit-binding.json",
+      "bytes": 13510,
+      "sha256": "47e6a7d337b134ee89a9e9cd67051eb976af46e2f3b40c7b2646749b3d40540f"
+    },
+    {
+      "id": "ALLDEAD332-03789",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-build-r1/verification.json",
+      "bytes": 2621,
+      "sha256": "8b655588c20eaf233006346c8e6d06b8a974e45e86f952de5e2f798459098426"
+    },
+    {
+      "id": "ALLDEAD332-03929",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-default-regression-r1/tcp/verification.json",
+      "bytes": 1573,
+      "sha256": "b75eeffbd2656c4b58dc35d260100b98ddb7493c52375dddebdcd35a80a6f247"
+    },
+    {
+      "id": "ALLDEAD332-04053",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/all-dead-native-verification.json",
+      "bytes": 4958,
+      "sha256": "a2071845c193e9b2a5cc4117190932a518209c6e7d5826bb6f90657aea04c5fa"
+    },
+    {
+      "id": "ALLDEAD332-04325",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-tcp-departed-r1/tcp/verification.json",
+      "bytes": 1586,
+      "sha256": "454fa72cec3594d1096ff31a69f1b091cd514d54b57d94738d88c20b1462b8f3"
+    },
+    {
+      "id": "ALLDEAD332-04464",
+      "kind": "local",
+      "path": "local/research/codex/g1-managed-all-dead-tcp-r1/tcp/verification.json",
+      "bytes": 1502,
+      "sha256": "c8d3a6144e8b47159beff93ec67722bdbd061043d999b1f24780233ec5e7ae52"
+    },
+    {
+      "id": "ALLDEAD332-04480",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-terrain-source-r1/reuse.json",
+      "bytes": 5105,
+      "sha256": "d48426f8f5ff47e655846e95fd1cc107281b67e1222b1f06e2dae2e2c24eb794"
+    },
+    {
+      "id": "ALLDEAD332-04481",
+      "kind": "local",
+      "path": "local/research/codex/g1-native59-observation-source-r1/reuse.json",
+      "bytes": 2768,
+      "sha256": "2fcddcb6f058bfa770b02019f6aa01f539dbf3caf4a9451379c4261668c7be77"
+    },
+    {
+      "id": "ALLDEAD332-04483",
+      "kind": "local",
+      "path": "local/research/codex/g1-native59-source-r1/reuse.json",
+      "bytes": 4533,
+      "sha256": "69859fdb47bc679fda732e0eeb2964f1a99ada5775acc5bd77e7ead78b10fe87"
+    },
+    {
+      "id": "ALLDEAD332-04563",
+      "kind": "local",
+      "path": "local/research/codex/g1-patrit-seed-native-r1/patrit-seed-native-verification.json",
+      "bytes": 107779,
+      "sha256": "cc571498ef7d99abb4e69b8dd679a2aaa6d5122025cece741ca1d0c4633fc838"
+    },
+    {
+      "id": "ALLDEAD332-05345",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/two-round-shoe-verification.json",
+      "bytes": 4892,
+      "sha256": "973f738117e7f8f7bb13992468d0f620f27475067dce8368d3605cf8689b4620"
+    },
+    {
+      "id": "ALLDEAD332-05901",
+      "kind": "local",
+      "path": "local/research/codex/g1-terrain-players-source-r1/reuse.json",
+      "bytes": 3115,
+      "sha256": "d46dddd802f4dc1b8015ea18593da8b7f3ec5f69f5d80380d13bea094c09bd83"
+    },
+    {
+      "id": "ALLDEAD332-05904",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "ALLDEAD332-05905",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "ALLDEAD332-05909",
+      "kind": "local",
+      "path": "local/research/codex/leave-r1/channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "ALLDEAD332-05910",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "ALLDEAD332-06492",
+      "kind": "local",
+      "path": "local/research/codex/m7-rooms-native-r4/controller-correction.json",
+      "bytes": 579,
+      "sha256": "71745008d639b2f4c5ac744e2cfaa6a024e1302e6169582d978d71b17f0eb90b"
+    },
+    {
+      "id": "ALLDEAD332-06493",
+      "kind": "local",
+      "path": "local/research/codex/m7-rooms-native-r5/startup-failure-followup.json",
+      "bytes": 579,
+      "sha256": "37529b0d0e14275e7d51e577a9f9c6c07d5e5b6cbae16d452e78a9a3a4384623"
+    },
+    {
+      "id": "ALLDEAD332-06494",
+      "kind": "local",
+      "path": "local/research/codex/m7b-duel-native-r7/room-observer.py",
+      "bytes": 11860,
+      "sha256": "7a38b7ee1a475a0f03b53b76aaa61f0b326f9a8a11415e2c021735873cc2c71f"
+    },
+    {
+      "id": "ALLDEAD332-06510",
+      "kind": "local",
+      "path": "local/research/codex/needle-r1/needle582.bin",
+      "bytes": 64,
+      "sha256": "d83a22f8bfed1d6defdb89e9b7ffd5c90878506168b944dd9e918ad817726cfc"
+    },
+    {
+      "id": "ALLDEAD332-06511",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/alsa-null.conf",
+      "bytes": 27,
+      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+    },
+    {
+      "id": "ALLDEAD332-06515",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "ALLDEAD332-06570",
+      "kind": "local",
+      "path": "local/research/codex/room-delete-r1/delete-probe.py",
+      "bytes": 1236,
+      "sha256": "f211b50ef813c7590ec0a54aa9073d12fb8fbdb87a65197798293585181dfa9d"
+    },
+    {
+      "id": "ALLDEAD332-06571",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "ALLDEAD332-06572",
+      "kind": "local",
+      "path": "local/research/codex/room-join-projection-r1/join-probe.py",
+      "bytes": 1517,
+      "sha256": "aecbf6a671e6de80f93fb4151ac55e9df401c3beb57763a2575a73d7705e98af"
+    },
+    {
+      "id": "ALLDEAD332-06573",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/roster-probe.py",
+      "bytes": 1959,
+      "sha256": "deb0bba757d575159a0359d6e4adbc198356deeb37d88d7e841063f25828c4ff"
+    },
+    {
+      "id": "ALLDEAD332-06574",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "ALLDEAD332-06575",
+      "kind": "local",
+      "path": "local/research/codex/room-shared-cleanup-r2/cleanup-probe.py",
+      "bytes": 1993,
+      "sha256": "b22a778dd03d0f3b708a8ea0fc018c71df7faf052af41951b6b961a5dc05c639"
+    },
+    {
+      "id": "ALLDEAD332-06576",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/list-probe.py",
+      "bytes": 1252,
+      "sha256": "8297f9cb0de08b6a990c5c9aa8ec308dce14f96f7240c47ed79ea97def7fa17d"
+    },
+    {
+      "id": "ALLDEAD332-06577",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "ALLDEAD332-06578",
+      "kind": "local",
+      "path": "local/research/codex/round-repeat-r1/rank175-v2.bin",
+      "bytes": 340,
+      "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd"
+    },
+    {
+      "id": "ALLDEAD332-06658",
+      "kind": "local",
+      "path": "local/research/codex/rust-room-r1/listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "ALLDEAD332-06659",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "ALLDEAD332-06667",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "ALLDEAD332-06688",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "ALLDEAD332-06727",
+      "kind": "repository",
+      "path": "rust/.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "ALLDEAD332-06728",
+      "kind": "repository",
+      "path": "rust/Cargo.lock",
+      "bytes": 32227,
+      "sha256": "c8d313f8974c53ca76402d50fd198a3a5fb4367b11ad78d62effa2dc3ee1c1ef"
+    },
+    {
+      "id": "ALLDEAD332-06729",
+      "kind": "repository",
+      "path": "rust/Cargo.toml",
+      "bytes": 1015,
+      "sha256": "2cd782a9e37bed9289d0466bd6bb11eca396a986d14813d696db6c384c81999a"
+    },
+    {
+      "id": "ALLDEAD332-06730",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 37010,
+      "sha256": "6360808a8e6aac67333ece95af2b97600666d786ad1eb3444dea34582e3b4907"
+    },
+    {
+      "id": "ALLDEAD332-06731",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/Cargo.toml",
+      "bytes": 495,
+      "sha256": "2bcb5406c96ca745eb66242be31a77f30d152ab8766ea6f6fe5171b8048071f8"
+    },
+    {
+      "id": "ALLDEAD332-06732",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/examples/check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "ALLDEAD332-06733",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "ALLDEAD332-06734",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "ALLDEAD332-06735",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0003_match_history.sql",
+      "bytes": 2234,
+      "sha256": "cb8305293b1c7577da9f739afb4d5d0fbac63ac93d57c4fc6fec8069863dcbbf"
+    },
+    {
+      "id": "ALLDEAD332-06736",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/tests.rs",
+      "bytes": 69436,
+      "sha256": "38767406e765fbfb4c27a38dfe8500ba9c3e9309c5fbd7c6f23b55ebb987adac"
+    },
+    {
+      "id": "ALLDEAD332-06737",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/wire.rs",
+      "bytes": 2758,
+      "sha256": "63adab044276a3ca481d4a96da84eef1c9ce00bce2caff189360f0f601c0d512"
+    },
+    {
+      "id": "ALLDEAD332-06738",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 23208,
+      "sha256": "2b3ec0077c44d641ab43e5ff94eff3ad90afee2984211291a0f36e5f5b872915"
+    },
+    {
+      "id": "ALLDEAD332-06739",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 25541,
+      "sha256": "c80b68104d0be0d724809336ef9c84826b18734cb4239404507a3c0ad3ed8c34"
+    },
+    {
+      "id": "ALLDEAD332-06740",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker/rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "ALLDEAD332-06741",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker/tests.rs",
+      "bytes": 26717,
+      "sha256": "665c54e468fa7b4a0543a071f519b84ed9ea7f95d356110d027a9f3d2075456d"
+    },
+    {
+      "id": "ALLDEAD332-06742",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker.rs",
+      "bytes": 21117,
+      "sha256": "1aaba49120b9dc8b44f1543cecc3c5b0c56b4bfa43ef2254728fd6236bd54d31"
+    },
+    {
+      "id": "ALLDEAD332-06743",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/matches.rs",
+      "bytes": 26137,
+      "sha256": "2acc8e55b8860fe1a162a3614ddf84809c11822b0b6d27bd488a82fdcf1527e5"
+    },
+    {
+      "id": "ALLDEAD332-06744",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/preferences.rs",
+      "bytes": 6557,
+      "sha256": "683f80eedaf95b89497ab65a8b6c33a719b5ff06bda0ac23f02eb34cb889c95c"
+    },
+    {
+      "id": "ALLDEAD332-06745",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/tests.rs",
+      "bytes": 30740,
+      "sha256": "6e89d881d49ea0b55aaa508d1a7899590f45677fb10c8fb7491b406508db3490"
+    },
+    {
+      "id": "ALLDEAD332-06746",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts.rs",
+      "bytes": 30489,
+      "sha256": "846a9e45ac02c533fdb3252382e5ea624f57d609bef7f0f070977e1cd243e59e"
+    },
+    {
+      "id": "ALLDEAD332-06747",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/authenticated_peer.rs",
+      "bytes": 15838,
+      "sha256": "3663bce2a04987376caedeeb8d785805c6d4b10915d55ce9e4cd009740c558d2"
+    },
+    {
+      "id": "ALLDEAD332-06748",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/authenticated_room_relay.rs",
+      "bytes": 7030,
+      "sha256": "e1a618a5847153e4ee0ce2980f3d4cb695ea8398ff1ed31694954095b0a84f4f"
+    },
+    {
+      "id": "ALLDEAD332-06749",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bin/kr-admin.rs",
+      "bytes": 4971,
+      "sha256": "0b061cc7333634492db151aacfc6cc800e12a3b25395c7661f1002925081197a"
+    },
+    {
+      "id": "ALLDEAD332-06750",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "ALLDEAD332-06751",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "bytes": 33200,
+      "sha256": "6f262df7bf5c1ac0c5ebfd231c88ffde4249ba7e85aa28bb6423cba54662109f"
+    },
+    {
+      "id": "ALLDEAD332-06752",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/characters.rs",
+      "bytes": 5149,
+      "sha256": "537553e061d26053761af9893e727b4a0a5240dc76a05ca349df638cef98bd65"
+    },
+    {
+      "id": "ALLDEAD332-06753",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/diagnostic59.rs",
+      "bytes": 5656,
+      "sha256": "344211d25aada48b4b49f9017ed752f15a1f9f7ef06332922cc9af7a944991d9"
+    },
+    {
+      "id": "ALLDEAD332-06754",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/four_results.rs",
+      "bytes": 14085,
+      "sha256": "d07e7a69a4b2e5c7f66ddc00725d5b63bbc2afa6c6cdf49842d4d043fdd6880d"
+    },
+    {
+      "id": "ALLDEAD332-06755",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 65534,
+      "sha256": "3a06f7bdb999fd5e08a72134f38faee2ee779f0879f6013d8575bbb95ee2434f"
+    },
+    {
+      "id": "ALLDEAD332-06756",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/life.rs",
+      "bytes": 17859,
+      "sha256": "36d9c7c43fea4ea4c307f28610e3483b22cc74ed408e3e6b76ec8f3cc89ea61d"
+    },
+    {
+      "id": "ALLDEAD332-06757",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/life_actions.rs",
+      "bytes": 16860,
+      "sha256": "95836e1322a74072ed8ce7e8a546382e61ba2041c760fa0ba62247f095e1ac23"
+    },
+    {
+      "id": "ALLDEAD332-06758",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "ALLDEAD332-06759",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "ALLDEAD332-06760",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "ALLDEAD332-06761",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/map_profile.rs",
+      "bytes": 12026,
+      "sha256": "69cebe9cc645663688eb0aad8b3b2212ad76cfd537fdc69f6b995f76fcf5f30f"
+    },
+    {
+      "id": "ALLDEAD332-06762",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/match_journal.rs",
+      "bytes": 22828,
+      "sha256": "0794b73ec739b8207f3d9d564d4eefdcea2858cb18ba4acc9db89f47c078a747"
+    },
+    {
+      "id": "ALLDEAD332-06763",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "ALLDEAD332-06764",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/peer_routes.rs",
+      "bytes": 4631,
+      "sha256": "221075ff3e89110f636020c43a4e98099a8ffc3b02d204e12f03acd77ebb950b"
+    },
+    {
+      "id": "ALLDEAD332-06765",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "bytes": 20415,
+      "sha256": "5052ab69fadf6059ce71f535168e8eb04c784ed1e629ff530095f2411135bfea"
+    },
+    {
+      "id": "ALLDEAD332-06766",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "ALLDEAD332-06767",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room.rs",
+      "bytes": 59102,
+      "sha256": "11eeadde8cf1bf327e3e2bc902837df12ad6423b023888ec7dd2ae5d89aac73b"
+    },
+    {
+      "id": "ALLDEAD332-06768",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 195809,
+      "sha256": "cec72c93bd5fb0cbd52d9c61641d1d0379c84501273ae7eb6479f931b7901da6"
+    },
+    {
+      "id": "ALLDEAD332-06769",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "bytes": 65070,
+      "sha256": "66fc7ef075f245a8eee747ef95aa6d0866ac149b312c99b6bf3a4ac7052fd663"
+    },
+    {
+      "id": "ALLDEAD332-06770",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_life_tests.rs",
+      "bytes": 8988,
+      "sha256": "12d8b94e551d2bd08569d639b0c87ef58fe887feccaff1539fd78868dd04a060"
+    },
+    {
+      "id": "ALLDEAD332-06771",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "ALLDEAD332-06772",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "ALLDEAD332-06773",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "ALLDEAD332-06774",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "bytes": 11937,
+      "sha256": "1fa5def859fc7ac0297c7b7a7b47fa060bad6edb3706ca448513e7a3135c999e"
+    },
+    {
+      "id": "ALLDEAD332-06775",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_wire.rs",
+      "bytes": 2201,
+      "sha256": "4bd8473f94393106cdaf976425f91b1e0183eb0e12535b5795878250af73129c"
+    },
+    {
+      "id": "ALLDEAD332-06776",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/round_epochs.rs",
+      "bytes": 2527,
+      "sha256": "18eb735293835939bbcc6da8e28a070f9e6ea54b5e1e0a99d95640e82cfea5ac"
+    },
+    {
+      "id": "ALLDEAD332-06777",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "bytes": 14527,
+      "sha256": "4342cfbbffffc58c1e8e34c8e2da561f061c7ef5166bc4a1f76c04a7f2275507"
+    },
+    {
+      "id": "ALLDEAD332-06778",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/terrain.rs",
+      "bytes": 26671,
+      "sha256": "b874b7eb71ad629a813665d8e46632e4692a15eaf7d0fcf72061ca3213cbd3cd"
+    },
+    {
+      "id": "ALLDEAD332-06779",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay/sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "ALLDEAD332-06780",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay/tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "ALLDEAD332-06781",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "ALLDEAD332-06782",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/Cargo.toml",
+      "bytes": 368,
+      "sha256": "2a712a65b842e5e8335687427e386c31ff8e898428c54ff446bfda74e6827bb6"
+    },
+    {
+      "id": "ALLDEAD332-06783",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/examples/native_proxy_lab.rs",
+      "bytes": 8929,
+      "sha256": "2158ddad71c2098be428cabb272ae45869f3f2789554fc0ad329eb9008531528"
+    },
+    {
+      "id": "ALLDEAD332-06784",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/bin/kr-companion.rs",
+      "bytes": 3882,
+      "sha256": "776b14648a15079fcf3c9434917300fb4e0cc955f007d3da7d8332062814976c"
+    },
+    {
+      "id": "ALLDEAD332-06785",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/companion.rs",
+      "bytes": 5076,
+      "sha256": "3d17300083a41d4c17deafd3918467c033a821f4ff187048d93bc20530caee94"
+    },
+    {
+      "id": "ALLDEAD332-06786",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/companion_tests.rs",
+      "bytes": 4584,
+      "sha256": "fd34096e5a53ba8ede24eb0da5484482de55c69917fea6f9dfd8b1d15ca9533e"
+    },
+    {
+      "id": "ALLDEAD332-06787",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/control.rs",
+      "bytes": 1769,
+      "sha256": "d1af56c5d1ad870124ccc7ad1fb67100e930bbdbfdb1e9cb0520124c466749b6"
+    },
+    {
+      "id": "ALLDEAD332-06788",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/lib.rs",
+      "bytes": 11418,
+      "sha256": "c277af6de7501946f7376aa168dae10d2803cecc3d6f1b9531645bd7526ee77f"
+    },
+    {
+      "id": "ALLDEAD332-06789",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/proxy.rs",
+      "bytes": 7621,
+      "sha256": "dfc45ff6566f6f4917217b147f6f8e9b6fd82a729653164eb749ac01cf8ef500"
+    },
+    {
+      "id": "ALLDEAD332-06790",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/router/tests.rs",
+      "bytes": 6217,
+      "sha256": "72940ed32c8e0b41c9abd97bd4bbe05c3b1ea1b12f45be3ecc35b07c4f8da1c7"
+    },
+    {
+      "id": "ALLDEAD332-06791",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/router.rs",
+      "bytes": 15276,
+      "sha256": "492134cc47c473f86534501defd80d6a4369658b87e147d1c89872b33b3d955c"
+    },
+    {
+      "id": "ALLDEAD332-06792",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/tests.rs",
+      "bytes": 6171,
+      "sha256": "b424a582ab60c99bbc17d2878b6aec232c2521c6a0f01f75cd587d29b4d40dec"
+    },
+    {
+      "id": "ALLDEAD332-06793",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "ALLDEAD332-06794",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/account.rs",
+      "bytes": 5253,
+      "sha256": "5ffe9e3a9a01a8b4cbb5ed951523201f56951170723532f7b8ee813869734859"
+    },
+    {
+      "id": "ALLDEAD332-06795",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/battle.rs",
+      "bytes": 9262,
+      "sha256": "547790e317bb1c1b164e2ae1d8f07b1b136508b4ad94cf1d5749db37bd33f83d"
+    },
+    {
+      "id": "ALLDEAD332-06796",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/bomb_motion.rs",
+      "bytes": 3504,
+      "sha256": "31671965131eb46b9fc2217394b6ef0d42f404f78ee1c864b327d083530ae907"
+    },
+    {
+      "id": "ALLDEAD332-06797",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/player.rs",
+      "bytes": 7967,
+      "sha256": "5dca3e46e0a9735208175ac500df7f8854b12e369c2dd000d407ca7229722a16"
+    },
+    {
+      "id": "ALLDEAD332-06798",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "bytes": 25562,
+      "sha256": "89888fae749c82e9708ae2149cd2dc655f6fd3b64d5465baa1a220a69c371e6e"
+    },
+    {
+      "id": "ALLDEAD332-06799",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "ALLDEAD332-06800",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967.rs",
+      "bytes": 4080,
+      "sha256": "651c8948e6c95aafe8ae8b46e8691ad6de8dae47d53bd312f1f5bdbd0b78b64e"
+    },
+    {
+      "id": "ALLDEAD332-06801",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "ALLDEAD332-06802",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/README.md",
+      "bytes": 1454,
+      "sha256": "775ff1c406378240213ced8834202e242755e8c8a76a85a861894fb4e39b627d"
+    },
+    {
+      "id": "ALLDEAD332-06803",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_account_profiles.rs",
+      "bytes": 3073,
+      "sha256": "4054a9d8affab3eebe8c77a30e76f0947a1d60843bda15a71e6fa991c2696023"
+    },
+    {
+      "id": "ALLDEAD332-06804",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_all_dead.rs",
+      "bytes": 1386,
+      "sha256": "d4ba395a13befadfb831d6b9a0a2c06616c214f829cefd2a9ea637460ca1f316"
+    },
+    {
+      "id": "ALLDEAD332-06805",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+      "bytes": 2609,
+      "sha256": "fd99deed353254f10534af382511798ca459d1ba08ddf4c52d17676508b1e67e"
+    },
+    {
+      "id": "ALLDEAD332-06806",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_bomb_report122.rs",
+      "bytes": 1218,
+      "sha256": "c1306a89e0f86d61341addbc1105484dc8de9c28b0b614ef38953cfefdbf7d6c"
+    },
+    {
+      "id": "ALLDEAD332-06807",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_room_choices.rs",
+      "bytes": 1722,
+      "sha256": "d527c228dcc86ec11057e1c8c5037ced0e44d2ae03f27da5e8884ad49f41e80d"
+    },
+    {
+      "id": "ALLDEAD332-06808",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_selected_roster.rs",
+      "bytes": 1121,
+      "sha256": "62501ed78735f409edac88f0828fbbb89451734dc17a706bf622b4e2085c8859"
+    },
+    {
+      "id": "ALLDEAD332-06809",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_selected_start.rs",
+      "bytes": 3067,
+      "sha256": "c09cd6f51c35e32b029d21cff7a1e3ae9c3ee65f8075ecd9ed60852b15a00b09"
+    },
+    {
+      "id": "ALLDEAD332-06810",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_start_vectors.rs",
+      "bytes": 5035,
+      "sha256": "aa73f205ddb467bf7eabac52ef442e449d40eefac8b1b2a608044759511c176d"
+    },
+    {
+      "id": "ALLDEAD332-06811",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "ALLDEAD332-06812",
+      "kind": "repository",
+      "path": "rust/rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "ALLDEAD332-06813",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "ALLDEAD332-06814",
+      "kind": "repository",
+      "path": "tools/export_rust_profile.py",
+      "bytes": 28199,
+      "sha256": "12ab2a24e577d1f77a050f1092e0523f42ca3ed59a4671bee084a272ec451f9b"
+    },
+    {
+      "id": "ALLDEAD332-06815",
+      "kind": "repository",
+      "path": "tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "ALLDEAD332-06816",
+      "kind": "repository",
+      "path": "tools/test_rust_life.py",
+      "bytes": 20602,
+      "sha256": "2d234979938dcb6958436a1e477bd0c10827dd09b6ed32834cc5afbb98ceb489"
+    },
+    {
+      "id": "ALLDEAD332-06817",
+      "kind": "repository",
+      "path": "tools/test_rust_room.py",
+      "bytes": 13739,
+      "sha256": "98be417a43d45cc612e6ea89163f6cf0b57ab821bde290ef137df752305910b4"
+    },
+    {
+      "id": "ALLDEAD332-06818",
+      "kind": "repository",
+      "path": "tools/test_rust_selected_players.py",
+      "bytes": 19566,
+      "sha256": "3513ea59b42a5d3ef58574b0d129c7bed70c402c46508f73a0e4bc4bea19afdf"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/ef12157aeb496017bd771f46d102c18cbedfa50df6a7b6b9278f8879b31ee1f6.jsonl",
+      "sha256": "ef12157aeb496017bd771f46d102c18cbedfa50df6a7b6b9278f8879b31ee1f6",
+      "bytes": 33126,
+      "count": 173,
+      "files_bytes": 1862164
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/99d35736942022d30b0a8e3d79d915d31905fd7fe84e34a9eda2859f22de7e4a.jsonl",
+      "sha256": "99d35736942022d30b0a8e3d79d915d31905fd7fe84e34a9eda2859f22de7e4a",
+      "bytes": 463,
+      "count": 2,
+      "files_bytes": 91
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/1353f05cee0d5a95bec10e9ba8550b10a3dee6ec2b101fe1accb7d220e4b1b7d.jsonl",
+      "sha256": "1353f05cee0d5a95bec10e9ba8550b10a3dee6ec2b101fe1accb7d220e4b1b7d",
+      "bytes": 469,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/g1-factory-native-r2",
+      "path": "local/evidence-manifests/45563716ebc3bb4ec5499c5836938023805910bf745dad78c8ab2d2205fc0f12.jsonl",
+      "sha256": "45563716ebc3bb4ec5499c5836938023805910bf745dad78c8ab2d2205fc0f12",
+      "bytes": 521,
+      "count": 2,
+      "files_bytes": 63749120
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-4-native-r1",
+      "path": "local/evidence-manifests/c229dcd5c2766f908ad0a2be9b45aab1ba41a09eecce598db02e08a2bda2eb3f.jsonl",
+      "sha256": "c229dcd5c2766f908ad0a2be9b45aab1ba41a09eecce598db02e08a2bda2eb3f",
+      "bytes": 180021,
+      "count": 824,
+      "files_bytes": 7625116120
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-4-native-r2",
+      "path": "local/evidence-manifests/533b63033ae633f6fd87e478a5017982a160d96c470fd7b05bdeb2fe60579455.jsonl",
+      "sha256": "533b63033ae633f6fd87e478a5017982a160d96c470fd7b05bdeb2fe60579455",
+      "bytes": 53656,
+      "count": 232,
+      "files_bytes": 294556989
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-4-native-r3",
+      "path": "local/evidence-manifests/3aad2a04c70a57df511d36180c218e8cf479a5e6ac474232302b793ad6f4b1e8.jsonl",
+      "sha256": "3aad2a04c70a57df511d36180c218e8cf479a5e6ac474232302b793ad6f4b1e8",
+      "bytes": 55468,
+      "count": 240,
+      "files_bytes": 295069584
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-4-native-r4",
+      "path": "local/evidence-manifests/95019905a2fc8897f6d981b2283559ee2525c2e6d7c5f249180479ae53f6597d.jsonl",
+      "sha256": "95019905a2fc8897f6d981b2283559ee2525c2e6d7c5f249180479ae53f6597d",
+      "bytes": 55242,
+      "count": 239,
+      "files_bytes": 293178630
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-8-native-r1",
+      "path": "local/evidence-manifests/2d78741e8c380c94f439fb33a9ae3dea7dd17e718739041ccedf4c0cfb3b33e1.jsonl",
+      "sha256": "2d78741e8c380c94f439fb33a9ae3dea7dd17e718739041ccedf4c0cfb3b33e1",
+      "bytes": 327798,
+      "count": 1502,
+      "files_bytes": 14977717466
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-8-native-r2",
+      "path": "local/evidence-manifests/ce72a1bbb509b0e607b53bcb5fac2562b23670283feaca17251b08e6c02b248e.jsonl",
+      "sha256": "ce72a1bbb509b0e607b53bcb5fac2562b23670283feaca17251b08e6c02b248e",
+      "bytes": 6334,
+      "count": 30,
+      "files_bytes": 265637714
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-8-native-r4",
+      "path": "local/evidence-manifests/046587ea6b88a8981c7a1e52fb92aad6ef8814e881636a8215e586768f95ec12.jsonl",
+      "sha256": "046587ea6b88a8981c7a1e52fb92aad6ef8814e881636a8215e586768f95ec12",
+      "bytes": 137724,
+      "count": 583,
+      "files_bytes": 351389888
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-build-r1",
+      "path": "local/evidence-manifests/aeed94bcd160c49ec29f5136076ea51e7196a60b0d46efe298a2bfa1d7221289.jsonl",
+      "sha256": "aeed94bcd160c49ec29f5136076ea51e7196a60b0d46efe298a2bfa1d7221289",
+      "bytes": 24902,
+      "count": 91,
+      "files_bytes": 1281294
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-default-regression-r1",
+      "path": "local/evidence-manifests/da11566b3f717e29c7587c1210dbf86fbcf1419715039a83ea178fc580bc9a7b.jsonl",
+      "sha256": "da11566b3f717e29c7587c1210dbf86fbcf1419715039a83ea178fc580bc9a7b",
+      "bytes": 32057,
+      "count": 138,
+      "files_bytes": 209814784
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-external-inputs-r1",
+      "path": "local/evidence-manifests/920e980e9ed8059610fe22eb444ad47be65ab34caf023287707845e7d07e4450.jsonl",
+      "sha256": "920e980e9ed8059610fe22eb444ad47be65ab34caf023287707845e7d07e4450",
+      "bytes": 26774,
+      "count": 123,
+      "files_bytes": 1375103
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-native-r1",
+      "path": "local/evidence-manifests/03ab34c38a4010150d41312192ef7a4b39f3005b0789b1e85999c696055d0ee1.jsonl",
+      "sha256": "03ab34c38a4010150d41312192ef7a4b39f3005b0789b1e85999c696055d0ee1",
+      "bytes": 28157,
+      "count": 129,
+      "files_bytes": 284703323
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-reuse-r1",
+      "path": "local/evidence-manifests/8f0cb7e03ac74adb57bc8d47de0e9fe5e479817c46e0d2abeeb62ad25ff84fa9.jsonl",
+      "sha256": "8f0cb7e03ac74adb57bc8d47de0e9fe5e479817c46e0d2abeeb62ad25ff84fa9",
+      "bytes": 499,
+      "count": 2,
+      "files_bytes": 8211
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-tcp-departed-r1",
+      "path": "local/evidence-manifests/a55ffd0d8b478aa9da0e50c23b1155745b24914949007773ea15578fb87e627a.jsonl",
+      "sha256": "a55ffd0d8b478aa9da0e50c23b1155745b24914949007773ea15578fb87e627a",
+      "bytes": 31223,
+      "count": 138,
+      "files_bytes": 209815961
+    },
+    {
+      "run": "local/research/codex/g1-managed-all-dead-tcp-r1",
+      "path": "local/evidence-manifests/c163ab13ca61e13413fd670e8679fb8983e5368a74c89ae51001ed462a3b1d4e.jsonl",
+      "sha256": "c163ab13ca61e13413fd670e8679fb8983e5368a74c89ae51001ed462a3b1d4e",
+      "bytes": 29972,
+      "count": 138,
+      "files_bytes": 209827980
+    },
+    {
+      "run": "local/research/codex/g1-map-adapter-r1",
+      "path": "local/evidence-manifests/da0a68b43f99e1d626f184fcfa6e35b6e5664c26b64d398875e35f45c3afac83.jsonl",
+      "sha256": "da0a68b43f99e1d626f184fcfa6e35b6e5664c26b64d398875e35f45c3afac83",
+      "bytes": 3024,
+      "count": 15,
+      "files_bytes": 21160
+    },
+    {
+      "run": "local/research/codex/g1-patrit-8-native-r5",
+      "path": "local/evidence-manifests/780f4e4ab680a5754bb7c15f0cb69c6de1a04ef7e6550cb3318ebdbb442ff0fa.jsonl",
+      "sha256": "780f4e4ab680a5754bb7c15f0cb69c6de1a04ef7e6550cb3318ebdbb442ff0fa",
+      "bytes": 16070,
+      "count": 79,
+      "files_bytes": 263617116
+    },
+    {
+      "run": "local/research/codex/g1-patrit-source-r1",
+      "path": "local/evidence-manifests/703016e4afd88d91aae1df802507b28404c994e46dc80da3d99aaa32efa84205.jsonl",
+      "sha256": "703016e4afd88d91aae1df802507b28404c994e46dc80da3d99aaa32efa84205",
+      "bytes": 474,
+      "count": 2,
+      "files_bytes": 4352
+    },
+    {
+      "run": "local/research/codex/g1-punch-build-r2",
+      "path": "local/evidence-manifests/82045d59fa3695a46391c6be8b50fb1db8ea5ea4dd6dc0dce83f385315ba39ae.jsonl",
+      "sha256": "82045d59fa3695a46391c6be8b50fb1db8ea5ea4dd6dc0dce83f385315ba39ae",
+      "bytes": 466,
+      "count": 2,
+      "files_bytes": 30631
+    },
+    {
+      "run": "local/research/codex/g1-punch-build-r3",
+      "path": "local/evidence-manifests/1c56f6a88f96fd2e755a183341760db211d70de81eb93ba8d395c62c66819d8a.jsonl",
+      "sha256": "1c56f6a88f96fd2e755a183341760db211d70de81eb93ba8d395c62c66819d8a",
+      "bytes": 23815,
+      "count": 91,
+      "files_bytes": 1247145
+    },
+    {
+      "run": "local/research/codex/g1-punch-build-r5",
+      "path": "local/evidence-manifests/999157d98e8253aa43eb3d030d1a803161d1e8e815ee6ad139e0ffb9b9ec768d.jsonl",
+      "sha256": "999157d98e8253aa43eb3d030d1a803161d1e8e815ee6ad139e0ffb9b9ec768d",
+      "bytes": 23815,
+      "count": 91,
+      "files_bytes": 1249495
+    },
+    {
+      "run": "local/research/codex/g1-punch-rust-native-r1",
+      "path": "local/evidence-manifests/3708b284c66c217a361e128dc29b0db068ee30a3ebd7c067bd7d5c05c667d757.jsonl",
+      "sha256": "3708b284c66c217a361e128dc29b0db068ee30a3ebd7c067bd7d5c05c667d757",
+      "bytes": 104580,
+      "count": 495,
+      "files_bytes": 6956907487
+    },
+    {
+      "run": "local/research/codex/g1-punch-rust-native-r4",
+      "path": "local/evidence-manifests/5343f7b33df79ef13dc24e5d189afe22dc0795bdf8aabb83cdf65f7b44528d3a.jsonl",
+      "sha256": "5343f7b33df79ef13dc24e5d189afe22dc0795bdf8aabb83cdf65f7b44528d3a",
+      "bytes": 8371,
+      "count": 41,
+      "files_bytes": 265482729
+    },
+    {
+      "run": "local/research/codex/g1-punch-rust-native-r5",
+      "path": "local/evidence-manifests/a440cd503af2e6e6f2d1162f8493dbdb5e2e308d60a87680ed09e799e775f18e.jsonl",
+      "sha256": "a440cd503af2e6e6f2d1162f8493dbdb5e2e308d60a87680ed09e799e775f18e",
+      "bytes": 8371,
+      "count": 41,
+      "files_bytes": 265482895
+    },
+    {
+      "run": "local/research/codex/g1-selection-catalog-r3",
+      "path": "local/evidence-manifests/5b913b55e0bbe24c863bb6487810267428d5ef4f93a5282dcad223a3fdb788f2.jsonl",
+      "sha256": "5b913b55e0bbe24c863bb6487810267428d5ef4f93a5282dcad223a3fdb788f2",
+      "bytes": 3079,
+      "count": 15,
+      "files_bytes": 21680
+    },
+    {
+      "run": "local/research/codex/g1-shoe-build-r1",
+      "path": "local/evidence-manifests/ad5e8aa39d4fa6e2b2d827437e71dc7ef47c2c5ec5d8ae29bdd9bf69c7c0cc70.jsonl",
+      "sha256": "ad5e8aa39d4fa6e2b2d827437e71dc7ef47c2c5ec5d8ae29bdd9bf69c7c0cc70",
+      "bytes": 23929,
+      "count": 92,
+      "files_bytes": 1284971
+    },
+    {
+      "run": "local/research/codex/g1-shoe-rust-native-r1",
+      "path": "local/evidence-manifests/1a85990b796d45abf7cc3d27ec91d408b03bc08203c810d783eae70aa5df9d1b.jsonl",
+      "sha256": "1a85990b796d45abf7cc3d27ec91d408b03bc08203c810d783eae70aa5df9d1b",
+      "bytes": 87304,
+      "count": 418,
+      "files_bytes": 3943685216
+    },
+    {
+      "run": "local/research/codex/g1-shoe-rust-native-r2",
+      "path": "local/evidence-manifests/b149382f1d39fdac5026503a04c62fdf0fc18c89f84f381ebe6f6b83d789aa52.jsonl",
+      "sha256": "b149382f1d39fdac5026503a04c62fdf0fc18c89f84f381ebe6f6b83d789aa52",
+      "bytes": 8977,
+      "count": 44,
+      "files_bytes": 265615867
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/4cb34ab6474472249b8ec2106e463013fc59c6fa6be6bf7142cf39f6b1533ab8.jsonl",
+      "sha256": "4cb34ab6474472249b8ec2106e463013fc59c6fa6be6bf7142cf39f6b1533ab8",
+      "bytes": 671,
+      "count": 3,
+      "files_bytes": 8895
+    },
+    {
+      "run": "local/research/codex/m7-rooms-native-r1",
+      "path": "local/evidence-manifests/7fffa98da2adf289e7e97ccaa1a5476362262b6194ea5849b6588194b1eec864.jsonl",
+      "sha256": "7fffa98da2adf289e7e97ccaa1a5476362262b6194ea5849b6588194b1eec864",
+      "bytes": 118995,
+      "count": 581,
+      "files_bytes": 12364285201
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r10",
+      "path": "local/evidence-manifests/c1b7abddbc9f60f5174ecab6dd9b8bed4076da9524f7a43548f4034ba7d9c8c7.jsonl",
+      "sha256": "c1b7abddbc9f60f5174ecab6dd9b8bed4076da9524f7a43548f4034ba7d9c8c7",
+      "bytes": 3055,
+      "count": 15,
+      "files_bytes": 35931
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/fc37b6ffa9ec6a53bf1bdea12257a495a2837befe15b4c9159f05285dd70855a.jsonl",
+      "sha256": "fc37b6ffa9ec6a53bf1bdea12257a495a2837befe15b4c9159f05285dd70855a",
+      "bytes": 460,
+      "count": 2,
+      "files_bytes": 116
+    },
+    {
+      "run": "local/research/codex/r1-final-native-r1",
+      "path": "local/evidence-manifests/0550d0cc282fbb73aa72a050b7d6aa9343a308591865559ba3d35f654fe17509.jsonl",
+      "sha256": "0550d0cc282fbb73aa72a050b7d6aa9343a308591865559ba3d35f654fe17509",
+      "bytes": 1781,
+      "count": 8,
+      "files_bytes": 127519304
+    },
+    {
+      "run": "local/research/codex/rust-eight-baseline-config-r1",
+      "path": "local/evidence-manifests/1a901deac01a550f1e3d003160e910927f76d7fba73b4963a252ca538fdd6e5c.jsonl",
+      "sha256": "1a901deac01a550f1e3d003160e910927f76d7fba73b4963a252ca538fdd6e5c",
+      "bytes": 5555,
+      "count": 26,
+      "files_bytes": 4918
+    },
+    {
+      "run": "local/research/codex/rust-four-startup-inputs-r1",
+      "path": "local/evidence-manifests/3e2c5b2627d9d0e1bef4b9ed76c6d9ceb7d0703818b5a57db5b586bbc9568b3e.jsonl",
+      "sha256": "3e2c5b2627d9d0e1bef4b9ed76c6d9ceb7d0703818b5a57db5b586bbc9568b3e",
+      "bytes": 2865,
+      "count": 14,
+      "files_bytes": 2562
+    }
   ]
 }

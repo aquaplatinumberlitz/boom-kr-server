@@ -145,27 +145,6 @@
       "limits": "Mechanicalconsistency/manualscopedreview notautoacceptance/gate."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP124-park-control.json",
-      "bytes": 419099,
-      "sha256": "238dd9ee27abe125aff5e1b3730656ae7b8d0a1a9c2f5f08a0f9933dc97f3435",
-      "count": 1680
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP124-death-lifecycle-runtime.json",
-      "bytes": 564278,
-      "sha256": "75ef914e3caff9a932ebfc0db2b3638b63604983958a81ed72ba6081df98b251",
-      "count": 2258
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP124-life-corpus.json",
-      "bytes": 9468,
-      "sha256": "f6470d3d16d1944ecb0567a71f051c89ef8681ff2f90b2e05ae1a75068d9d207",
-      "count": 37
-    }
-  ],
   "delta": {
     "added": [
       "64actualcorpusjoins/sourceproof/explicitopt-incurrenttrap19policy/202tests/native2rescueguardpositivecycles.",
@@ -262,6 +241,225 @@
       "path": "docs/evidence/checkpoints/audits/AUD039.json",
       "state": "updated",
       "reason": "CP124corpus/currenttrapguard/runtime/control/limits/AUD039next128/nextnormalBattleexit; oldrecords/raw/gates unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "CTRL-01598",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r1/partial-verification.json",
+      "bytes": 128049,
+      "sha256": "51999f2c01cbc1a54a28aa97bb709499f6032cd28a1655c02542ed36905f55ab"
+    },
+    {
+      "id": "CTRL-01600",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r1/raw-seal.json",
+      "bytes": 313915,
+      "sha256": "365f15200aea9f9c78281e6304a1d0206ce1bcde4207423d413ae6ccf6e4a745"
+    },
+    {
+      "id": "LIVE-02141",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/fields-check.txt",
+      "bytes": 32,
+      "sha256": "c79bccdd838ea8c6372d387b1065217d388daccbd2c7ead1039c21d9d18d0319"
+    },
+    {
+      "id": "LIVE-02150",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/guard-check.txt",
+      "bytes": 240,
+      "sha256": "8ca97b153e16d3ddafa601a80c76ad6ebbb5fc1847797e89384750ad6b0ba520"
+    },
+    {
+      "id": "LIVE-02151",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/guard-verification.json",
+      "bytes": 8208,
+      "sha256": "d8d21a67b01955fa5b033f40f13167b89368ba7c7a300def59ca9f51fa23d481"
+    },
+    {
+      "id": "LIVE-02154",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/native-reports-check.txt",
+      "bytes": 29,
+      "sha256": "78e92107e4944f7e61f7ef7ec03fbdaa3ffc7231559ee86007a7347bdbc1b9c2"
+    },
+    {
+      "id": "LIVE-02156",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/native153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "LIVE-02165",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/raw-seal.json",
+      "bytes": 427814,
+      "sha256": "f2ead9e38f7aa5e9f62076f733652e797fb01d51385f62ff0b0b95946dc9ade4"
+    },
+    {
+      "id": "LIVE-02200",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/runtime-source/server/probe_service.py",
+      "bytes": 79431,
+      "sha256": "d120c456cb289913a0b5536d618a43be3f69c7b6bfbd82d7e6230e516b6c0000"
+    },
+    {
+      "id": "LIVE-02209",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/runtime-source/server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "LIVE-02233",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/two-result-check.txt",
+      "bytes": 54,
+      "sha256": "c6b5f88f45c9dffafdbb863dca461052630bfde52711c1fc50d2b658b5021c83"
+    },
+    {
+      "id": "LIVE-02234",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/two-result-verification.json",
+      "bytes": 623831,
+      "sha256": "bdf8e6c9f105f8557f76519511321c7e146c8f94201605a689c88710ef53fc9c"
+    },
+    {
+      "id": "LIVE-02256",
+      "kind": "local",
+      "path": "local/research/codex/death-lifecycle-r2/visual-review.json",
+      "bytes": 651,
+      "sha256": "ff3c70d44ae9773fdab5956f12744847d5d84dee5ad96e3ae6e987eeb4c7fccc"
+    },
+    {
+      "id": "CORP-00003",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "CORP-00017",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/dispatch-check2.txt",
+      "bytes": 152,
+      "sha256": "d1954163a486372970712cceadd6700528e263b034ce4611020901be201783f3"
+    },
+    {
+      "id": "CORP-00018",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/dispatch-compatibility.json",
+      "bytes": 132575,
+      "sha256": "9628300f35989cf26328905b80d1c4c35f090deb2c254db9633b91a11bc64d5d"
+    },
+    {
+      "id": "CORP-00019",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "3935824c11a77b880dbc216a11ece608b895bebbde8b5fdbd5dcae021502658f"
+    },
+    {
+      "id": "CORP-00023",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "bcf9b6f7dd1f236c19681262fa9b62e27457d4825f2f91bdf10299b2b2b1bed4"
+    },
+    {
+      "id": "CORP-00025",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/new-tests.txt",
+      "bytes": 110,
+      "sha256": "1d83585b97486319bb9c2fff2996c7435fd78e26e63e611aae2ad6791d35db6b"
+    },
+    {
+      "id": "CORP-00027",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/policy-decision.json",
+      "bytes": 1358,
+      "sha256": "d7a396ddf10711758d963a8b5fa6792b12fba1edf3898ccedeb740370c4ef425"
+    },
+    {
+      "id": "CORP-00030",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/sequence-corpus.json",
+      "bytes": 70229,
+      "sha256": "25ccfd757a0bd217b31f12b6cd7278f86b5d3e029eaac66e46a35cb96fc2f2b1"
+    },
+    {
+      "id": "CORP-00031",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/server-tests.txt",
+      "bytes": 302,
+      "sha256": "1e7396c8cc1bd11f1f3794a1b65b087119eab0c2dab1239c61369228dc2e2cbe"
+    },
+    {
+      "id": "CORP-00033",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/wire-check.txt",
+      "bytes": 183,
+      "sha256": "7373082448084b87d79d76d3d92726fac8d8b1be9753a33a55002af9b79c4bc7"
+    },
+    {
+      "id": "CORP-00034",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/wire-joins.json",
+      "bytes": 96470,
+      "sha256": "4a384b3c598fae4464103c6c140d08b68450a3b1fa1f547827aba805b26788a1"
+    },
+    {
+      "id": "CORP-00035",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD039.json",
+      "bytes": 3832,
+      "sha256": "bda15ad019d0cfe480456e6eabefef386079f7a7880bd00758d66c63c22acb11"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/death-lifecycle-r1",
+      "path": "local/evidence-manifests/5399c741a3adf6dce5271455cce755b9168f6d07d0246fb9e6719236091d1338.jsonl",
+      "sha256": "5399c741a3adf6dce5271455cce755b9168f6d07d0246fb9e6719236091d1338",
+      "bytes": 334361,
+      "count": 1676,
+      "files_bytes": 36373806
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/449e4c40efae5eb68cf528a088e037440e2d2641f17bac386989980e385c9154.jsonl",
+      "sha256": "449e4c40efae5eb68cf528a088e037440e2d2641f17bac386989980e385c9154",
+      "bytes": 806,
+      "count": 4,
+      "files_bytes": 119892
+    },
+    {
+      "run": "local/research/codex/death-lifecycle-r2",
+      "path": "local/evidence-manifests/53873290d1e519047e792dffbc0d7a21cae259718b79589bb14eb85883859d74.jsonl",
+      "sha256": "53873290d1e519047e792dffbc0d7a21cae259718b79589bb14eb85883859d74",
+      "bytes": 448850,
+      "count": 2245,
+      "files_bytes": 53939603
+    },
+    {
+      "run": "local/research/codex/life-admission-corpus-r1",
+      "path": "local/evidence-manifests/cd3377484f530b42c0773fe65cf9d8a00426b8e97a74fdab3bb754154dbba78e.jsonl",
+      "sha256": "cd3377484f530b42c0773fe65cf9d8a00426b8e97a74fdab3bb754154dbba78e",
+      "bytes": 4901,
+      "count": 23,
+      "files_bytes": 1228814
+    },
+    {
+      "run": "local/research/codex/deep-chain-cycles-r2",
+      "path": "local/evidence-manifests/afa4715b74e7ccab23c254e61119d5a6f9a38d1cc683cdcdb736c6caddd4474c.jsonl",
+      "sha256": "afa4715b74e7ccab23c254e61119d5a6f9a38d1cc683cdcdb736c6caddd4474c",
+      "bytes": 471,
+      "count": 2,
+      "files_bytes": 429
     }
   ]
 }

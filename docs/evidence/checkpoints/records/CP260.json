@@ -131,15 +131,6 @@
       "limits": "Channelwaitfailure beforeown291/99/UDPgameplay; nochosen(a)/(b)/(c)."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP260-controlled-network.json",
-      "bytes": 477532,
-      "sha256": "1698facf66bb239c6bdcc10e8f80b7e547fb762c06ed4bdcf80fa44e55805c03",
-      "count": 1823
-    }
-  ],
   "delta": {
     "added": [
       "Boundedcontrollednetwork andexplicitmetadataAPI withownershiptests/nativeauthpartial evidence; privateinfrastructuredirective.",
@@ -265,6 +256,412 @@
       "path": "docs/evidence/issue-reconciliation/review.json",
       "state": "updated",
       "reason": "Controllednetwork/source/raw/limits andearlierchannel-vs-laterHTTPcorrection; no completecheckpoint/historyrewrite."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "N1CP260-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 11740,
+      "sha256": "0552e002af0fa6cccfdeddf78e1e3484abb62d36be78c964f38903561fda7967"
+    },
+    {
+      "id": "N1CP260-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 65551,
+      "sha256": "6f56fd18bd52cda7fc8cb4942a95739d6c0c07d2843fccb5302dd69b62a13297"
+    },
+    {
+      "id": "N1CP260-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 217595,
+      "sha256": "711ab55c24e35e570fdf7bb74f0f9c1c8ed053bd044d17ece55bce1e2c7b2a94"
+    },
+    {
+      "id": "N1CP260-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 123961,
+      "sha256": "537c64af2b9431a43e7c288b442025bd1bb83b4d95560ffa19a8955358597525"
+    },
+    {
+      "id": "N1CP260-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 838341,
+      "sha256": "ed14c7d7c0e9f3dd8aec466515baed3e083fd2aa37e6ced96ec438c160680a0d"
+    },
+    {
+      "id": "N1CP260-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 54188,
+      "sha256": "6744e4c9748b606c79c601d579443b24982670e53b036b4c74a4b7a2995fec58"
+    },
+    {
+      "id": "N1CP260-00007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD077.json",
+      "bytes": 3435,
+      "sha256": "874f0ad2446258fb19e4eca9d59002ec28059d84984d83c90a82eb634ae0f899"
+    },
+    {
+      "id": "N1CP260-00008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 283479,
+      "sha256": "3740ed92d748528f3055251b01e8b0000c33f4fe293d9d1100e02454fe89ab03"
+    },
+    {
+      "id": "N1CP260-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42805,
+      "sha256": "1036665018ecfc33f9a5a4d9af8e6f840e03dd8ec3b14c10bf9be38395ed338c"
+    },
+    {
+      "id": "N1CP260-00010",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/private-infrastructure.json",
+      "bytes": 548,
+      "sha256": "02be479d7387b344ac4ecefbdbaa89797420220ff6258f64bc1d9464b42b458c"
+    },
+    {
+      "id": "N1CP260-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 56809,
+      "sha256": "9512dc408ce862793577f9e686a4d7b56f8cd2cb92f3e867840c6dece84a5261"
+    },
+    {
+      "id": "N1CP260-00012",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/controlled-network.json",
+      "bytes": 4222,
+      "sha256": "6d57ec4fe1ef56357db17dddc274abdb89808e606dc8dbff59fc14b88f35a2a6"
+    },
+    {
+      "id": "N1CP260-00013",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 229234,
+      "sha256": "e8b39370e0bc22c278adc9003465e13214db741a093affb4fbf22a0660d10d1a"
+    },
+    {
+      "id": "N1CP260-00015",
+      "kind": "local",
+      "path": "local/research/codex/controlled-network-delivery-r1/selfcheck.json",
+      "bytes": 1706,
+      "sha256": "2a3f1299495bc044a5094b74274aef210125ac7c97bce5b56ae069a4c64587c3"
+    },
+    {
+      "id": "N1CP260-00034",
+      "kind": "local",
+      "path": "local/research/codex/n1-content-http-static-r1/imports-and-keys.json",
+      "bytes": 1838,
+      "sha256": "892527adba9e1b454f4ec24241ff6e8c0797cbf5c843d39d8dfb6ed64db57ba6"
+    },
+    {
+      "id": "N1CP260-00056",
+      "kind": "local",
+      "path": "local/research/codex/n1-login-metadata-default-tcp-r1/verification.json",
+      "bytes": 8115,
+      "sha256": "dc6f5e543e4362d1d63275622c3ad293958ad3784a1bf4feb0bef2b1af7e06ec"
+    },
+    {
+      "id": "N1CP260-00058",
+      "kind": "local",
+      "path": "local/research/codex/n1-login-metadata-source-r1/rust-source.tar",
+      "bytes": 573440,
+      "sha256": "61dd051c90329bdaccddd3a067f827d7899b3e618455ae6e48ec4606ce5b215f"
+    },
+    {
+      "id": "N1CP260-00059",
+      "kind": "local",
+      "path": "local/research/codex/n1-login-metadata-source-r1/source.json",
+      "bytes": 863,
+      "sha256": "a66c527e73965fc16f6ba45fe04ae68135f9153a92487936d7e0eed85fcd5875"
+    },
+    {
+      "id": "N1CP260-00060",
+      "kind": "local",
+      "path": "local/research/codex/n1-login-metadata-tcp-r1/verification.json",
+      "bytes": 8043,
+      "sha256": "03a75acbebbe9cb5387f91b2c798abcf6892eab6b6d8f2b442d60bb93b693197"
+    },
+    {
+      "id": "N1CP260-00061",
+      "kind": "local",
+      "path": "local/research/codex/n1-login-metadata-test-r2.txt",
+      "bytes": 10067,
+      "sha256": "42ff6b2f7f778078a1c2f803a1b3ac7c57313b7a23abb0ff430477009a5a113e"
+    },
+    {
+      "id": "N1CP260-00062",
+      "kind": "local",
+      "path": "local/research/codex/n1-metadata-config-guards-r1/verification.json",
+      "bytes": 731,
+      "sha256": "e7c6f67aa7b109193e380a83e56dd5c1f867ea5471712a6a06e3c0c73fcb5a02"
+    },
+    {
+      "id": "N1CP260-00249",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-account-r3/native/login-IP-guard-verification.json",
+      "bytes": 1435,
+      "sha256": "d30dedb49d19368beaf7e2e603a51fcae49eb957a31d31c9277265236c539206"
+    },
+    {
+      "id": "N1CP260-01075",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-content-r5/native/content-input-verification.json",
+      "bytes": 1752,
+      "sha256": "4df1d32d80a6911072e846fe96849ac11b039f33b59db591d98ee8db4a32116e"
+    },
+    {
+      "id": "N1CP260-01354",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-guard-r6/native/guard-control-verification.json",
+      "bytes": 1545,
+      "sha256": "74b1c2e08af194727499ff32b05c5c9c65bef3ef2cf6876f1e631b410bfcbacc"
+    },
+    {
+      "id": "N1CP260-01604",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-http-r7/native/http-verification.json",
+      "bytes": 1747,
+      "sha256": "284d61c73a08fc612dac7eb80bce024737789cf7433d1ed4ca4215dc914dbc1a"
+    },
+    {
+      "id": "N1CP260-01606",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-http-r7/native/ordering-correction.json",
+      "bytes": 859,
+      "sha256": "8534b4c601b8775edcc699bf84a16bc87920de11789187f2f4053b7445dbf87d"
+    },
+    {
+      "id": "N1CP260-01609",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-http-r7/native/raw-seal.json",
+      "bytes": 9443,
+      "sha256": "0af81cba0c9b5570be80aa9a9ecffcf165ea53b8d19c67163ebc69cb8b8d168c"
+    },
+    {
+      "id": "N1CP260-01636",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-http-r7-cleanup-audit/verification.json",
+      "bytes": 770,
+      "sha256": "d67830417025f2acba325bb6af2004b7b1433cfbf8c2fb1480a980e519975cf3"
+    },
+    {
+      "id": "N1CP260-01677",
+      "kind": "local",
+      "path": "local/research/codex/n1-network-guards-r2/verification.json",
+      "bytes": 1546,
+      "sha256": "0f1362ee3deefb4b72a8ed9bcfc8f80f66e16a38f7df2b933af5d2e4ace4abec"
+    },
+    {
+      "id": "N1CP260-01725",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/channel-wait-block.asm",
+      "bytes": 2931,
+      "sha256": "9300e151608108b1b36c68fa5e5ab398063e508456e475ff291aa0b493c26c74"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/82e1dacc644a6f222136dbc0bf543c63a373f26b13bc4161db1380876b7cbbc3.jsonl",
+      "sha256": "82e1dacc644a6f222136dbc0bf543c63a373f26b13bc4161db1380876b7cbbc3",
+      "bytes": 2063,
+      "count": 11,
+      "files_bytes": 73870
+    },
+    {
+      "run": "local/research/codex/controlled-network-delivery-r1",
+      "path": "local/evidence-manifests/f5a1e938b0114849782f0b8409104e978bba8dccc4269340802dd7673502696e.jsonl",
+      "sha256": "f5a1e938b0114849782f0b8409104e978bba8dccc4269340802dd7673502696e",
+      "bytes": 2824,
+      "count": 12,
+      "files_bytes": 1928473
+    },
+    {
+      "run": "local/research/codex/n1-controlled-network-source-r1",
+      "path": "local/evidence-manifests/1b786126fd45beb1556d2e53547fafcdf314f6fef00ebc9cd69c899a5a08f5bf.jsonl",
+      "sha256": "1b786126fd45beb1556d2e53547fafcdf314f6fef00ebc9cd69c899a5a08f5bf",
+      "bytes": 906,
+      "count": 4,
+      "files_bytes": 568374
+    },
+    {
+      "run": "local/research/codex/n1-login-metadata-arm-r1",
+      "path": "local/evidence-manifests/b6b3635c1a3d3ba14877aec767be7d43c6975672903256db375b28b49d8d4113.jsonl",
+      "sha256": "b6b3635c1a3d3ba14877aec767be7d43c6975672903256db375b28b49d8d4113",
+      "bytes": 3163,
+      "count": 15,
+      "files_bytes": 27723
+    },
+    {
+      "run": "local/research/codex/n1-native-account-r3",
+      "path": "local/evidence-manifests/e231727c6b04167ee8cb644f9d41d348abac3676c050e0f533bdd248808b5433.jsonl",
+      "sha256": "e231727c6b04167ee8cb644f9d41d348abac3676c050e0f533bdd248808b5433",
+      "bytes": 44154,
+      "count": 207,
+      "files_bytes": 66516055
+    },
+    {
+      "run": "local/research/codex/n1-native-account-r3-cleanup-audit",
+      "path": "local/evidence-manifests/15daa80602942cac03c5e124c2f4a7b787074fed01edcf441fd77333e88a3316.jsonl",
+      "sha256": "15daa80602942cac03c5e124c2f4a7b787074fed01edcf441fd77333e88a3316",
+      "bytes": 4923,
+      "count": 22,
+      "files_bytes": 330158
+    },
+    {
+      "run": "local/research/codex/n1-native-account-r4",
+      "path": "local/evidence-manifests/e5635f93dcb106847c71255fc656eaf09a319dc74c61d5a849ffa8e06ce4bbae.jsonl",
+      "sha256": "e5635f93dcb106847c71255fc656eaf09a319dc74c61d5a849ffa8e06ce4bbae",
+      "bytes": 44996,
+      "count": 211,
+      "files_bytes": 66867884
+    },
+    {
+      "run": "local/research/codex/n1-native-account-r4-cleanup-audit",
+      "path": "local/evidence-manifests/3476cba83156b5902d2b9185e25d6a081868641dd1df4a1502353eb6a226c919.jsonl",
+      "sha256": "3476cba83156b5902d2b9185e25d6a081868641dd1df4a1502353eb6a226c919",
+      "bytes": 4923,
+      "count": 22,
+      "files_bytes": 312948
+    },
+    {
+      "run": "local/research/codex/n1-native-baseline-r1",
+      "path": "local/evidence-manifests/acd9d88dc9ddace7b96992795d161c8a7783aa37fb3dbce12d064aeb42951480.jsonl",
+      "sha256": "acd9d88dc9ddace7b96992795d161c8a7783aa37fb3dbce12d064aeb42951480",
+      "bytes": 42410,
+      "count": 198,
+      "files_bytes": 66007275
+    },
+    {
+      "run": "local/research/codex/n1-native-baseline-r2",
+      "path": "local/evidence-manifests/48bfbf97b9ec97182ec5f8b148ef7ebee7f86980fb6c3588e19342023da17aee.jsonl",
+      "sha256": "48bfbf97b9ec97182ec5f8b148ef7ebee7f86980fb6c3588e19342023da17aee",
+      "bytes": 43046,
+      "count": 201,
+      "files_bytes": 66437216
+    },
+    {
+      "run": "local/research/codex/n1-native-content-r5",
+      "path": "local/evidence-manifests/c4e2dda2476b2f5cae8be3d466c29d071faef318b32d45c836f1a273757563ef.jsonl",
+      "sha256": "c4e2dda2476b2f5cae8be3d466c29d071faef318b32d45c836f1a273757563ef",
+      "bytes": 45009,
+      "count": 211,
+      "files_bytes": 66865497
+    },
+    {
+      "run": "local/research/codex/n1-native-content-r5-cleanup-audit",
+      "path": "local/evidence-manifests/a4066d818cb9f57861a7d34cef7a721c42897e31e3d3c150d4eea9d61a148463.jsonl",
+      "sha256": "a4066d818cb9f57861a7d34cef7a721c42897e31e3d3c150d4eea9d61a148463",
+      "bytes": 4923,
+      "count": 22,
+      "files_bytes": 314355
+    },
+    {
+      "run": "local/research/codex/n1-native-guard-r6",
+      "path": "local/evidence-manifests/f794d166edb3a4c2add908b080b085a3f88d3886fdcd7db6f4d0d37f32d4be17.jsonl",
+      "sha256": "f794d166edb3a4c2add908b080b085a3f88d3886fdcd7db6f4d0d37f32d4be17",
+      "bytes": 46144,
+      "count": 218,
+      "files_bytes": 130626684
+    },
+    {
+      "run": "local/research/codex/n1-native-guard-r6-cleanup-audit",
+      "path": "local/evidence-manifests/da0dd2281a7027d5bc3b3b6f979fd9546d9360f2611929ea2d84b93c6cef162b.jsonl",
+      "sha256": "da0dd2281a7027d5bc3b3b6f979fd9546d9360f2611929ea2d84b93c6cef162b",
+      "bytes": 6851,
+      "count": 31,
+      "files_bytes": 327828
+    },
+    {
+      "run": "local/research/codex/n1-native-http-r7",
+      "path": "local/evidence-manifests/507012e8301ce932e150159062c4fed333391cd4699cbf2f54571944b48cd15b.jsonl",
+      "sha256": "507012e8301ce932e150159062c4fed333391cd4699cbf2f54571944b48cd15b",
+      "bytes": 41988,
+      "count": 200,
+      "files_bytes": 66709713
+    },
+    {
+      "run": "local/research/codex/n1-native-http-r7-cleanup-audit",
+      "path": "local/evidence-manifests/29bb0a6589f905cf54299c5e211cfead5faccfaf74922761d2c209497a3f3db4.jsonl",
+      "sha256": "29bb0a6589f905cf54299c5e211cfead5faccfaf74922761d2c209497a3f3db4",
+      "bytes": 5296,
+      "count": 24,
+      "files_bytes": 316155
+    },
+    {
+      "run": "local/research/codex/n1-native-r1-cleanup-audit",
+      "path": "local/evidence-manifests/d722afce9e560b183466739c41870eb9947ecc441bebd353e5c91663173e23be.jsonl",
+      "sha256": "d722afce9e560b183466739c41870eb9947ecc441bebd353e5c91663173e23be",
+      "bytes": 4290,
+      "count": 20,
+      "files_bytes": 201979
+    },
+    {
+      "run": "local/research/codex/n1-native-r2-cleanup-audit",
+      "path": "local/evidence-manifests/ec4ef309967ce5c75a47b1ef1e373982638d638e7d26dfcfcb911670ca84b49b.jsonl",
+      "sha256": "ec4ef309967ce5c75a47b1ef1e373982638d638e7d26dfcfcb911670ca84b49b",
+      "bytes": 4297,
+      "count": 20,
+      "files_bytes": 242064
+    },
+    {
+      "run": "local/research/codex/native-network-r2",
+      "path": "local/evidence-manifests/e609ef9e4a69ad1a056700950bca6df37b6815ee6182b52b233a338b0c960dd7.jsonl",
+      "sha256": "e609ef9e4a69ad1a056700950bca6df37b6815ee6182b52b233a338b0c960dd7",
+      "bytes": 9418,
+      "count": 47,
+      "files_bytes": 230546
+    },
+    {
+      "run": "local/research/codex/real-internet-n1-route-preflight-r1",
+      "path": "local/evidence-manifests/6b523acf3beb5126c6a6c180093407a0876d6088572917bd5b75a34cbd5390b3.jsonl",
+      "sha256": "6b523acf3beb5126c6a6c180093407a0876d6088572917bd5b75a34cbd5390b3",
+      "bytes": 8877,
+      "count": 41,
+      "files_bytes": 169992
+    },
+    {
+      "run": "local/research/codex/real-internet-vps-iam-effective-r6",
+      "path": "local/evidence-manifests/00c9e34fe9ffa62327e926e3ebc8e154936a433b2a02fb23dc72677ad266ed1a.jsonl",
+      "sha256": "00c9e34fe9ffa62327e926e3ebc8e154936a433b2a02fb23dc72677ad266ed1a",
+      "bytes": 1352,
+      "count": 6,
+      "files_bytes": 15794
+    },
+    {
+      "run": "local/research/codex/real-internet-vps-udp-acl-probe-r1",
+      "path": "local/evidence-manifests/bd9fcc7880c22997e75130e8222b6eeab222780c7642cb6073c4f9769dde6fb4.jsonl",
+      "sha256": "bd9fcc7880c22997e75130e8222b6eeab222780c7642cb6073c4f9769dde6fb4",
+      "bytes": 2847,
+      "count": 13,
+      "files_bytes": 39960
+    },
+    {
+      "run": "local/research/codex/real-internet-vps-udp-acl-probe-r2",
+      "path": "local/evidence-manifests/d149d5e2a5b64a058d9969202030de132fe4c3055874e07e6180f269c2656c2a.jsonl",
+      "sha256": "d149d5e2a5b64a058d9969202030de132fe4c3055874e07e6180f269c2656c2a",
+      "bytes": 3924,
+      "count": 18,
+      "files_bytes": 46841
+    },
+    {
+      "run": "local/research/codex/real-internet-vps-udp-acl-probe-r3",
+      "path": "local/evidence-manifests/713361160967888d4e32c14d8a1776d7f236257daae85f41349d13a983eec099.jsonl",
+      "sha256": "713361160967888d4e32c14d8a1776d7f236257daae85f41349d13a983eec099",
+      "bytes": 4131,
+      "count": 19,
+      "files_bytes": 56306
     }
   ]
 }

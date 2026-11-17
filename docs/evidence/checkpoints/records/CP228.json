@@ -118,15 +118,6 @@
       "limits": "Next per PLAN; production ProbeService still globalroom, no Ready/start/UDP/Rust acceptance."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP228-room-local-roster.json",
-      "bytes": 49772,
-      "sha256": "364658cec173e8dd28b7f7adb9212d0b464741c2895ff7eb227a34642bd56f8a",
-      "count": 189
-    }
-  ],
   "delta": {
     "added": [
       "Native actual585→room-local own106/110/291/ID1-2/slot0/chief/UI/fullcursors;129raw seal.",
@@ -241,6 +232,103 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP228 ownroster/cursors/ID/slot0/chief/nativeUI/markercorrection/limits/PLANregistrygap/AUD066next232 synced beforecomplete; oldcomplete/raw unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ROOM228-00010",
+      "kind": "local",
+      "path": "local/research/codex/cp228-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "ROOM228-00011",
+      "kind": "local",
+      "path": "local/research/codex/cp228-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "ec89e2b71e66a31f396d6572a5d89ecc9d537d1ccdb800771c711afbe0b91987"
+    },
+    {
+      "id": "ROOM228-00033",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/RESEARCH.md",
+      "bytes": 44428,
+      "sha256": "f4aea3d5c00f99035871e44ebea050fe7abdbd634bb71b75d86ae4b02142be0d"
+    },
+    {
+      "id": "ROOM228-00034",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/cp228-snapshot/docs/evidence/checkpoints/audits/AUD066.json",
+      "bytes": 6030,
+      "sha256": "01a4007fcaa6037eed03de458876ce89ea7f1b26b08c422e508d3055aee4c177"
+    },
+    {
+      "id": "ROOM228-00040",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/manual-review.json",
+      "bytes": 2875,
+      "sha256": "e6d073f55fcaee3fbbf2364476331ae396cefcab6002b10f1845f7c45cbd885f"
+    },
+    {
+      "id": "ROOM228-00041",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/members.json",
+      "bytes": 676,
+      "sha256": "59fbbf346f1e62e0ce18ece3042145f49180105592ac5dac121f8a4530ce84c6"
+    },
+    {
+      "id": "ROOM228-00043",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/pair_service_r3.py",
+      "bytes": 3839,
+      "sha256": "b3057394243436da87a6ae3150b38826820edf21c79e3389d492e76edd7349aa"
+    },
+    {
+      "id": "ROOM228-00047",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/source-first.json",
+      "bytes": 2318,
+      "sha256": "1c1f631ebffc2eb159bb227339f1313db66065938ec2a6e28ecfaf2d408de0ef"
+    },
+    {
+      "id": "ROOM228-00180",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/two-single-rosters/raw-seal.json",
+      "bytes": 28798,
+      "sha256": "bf8edaa785861fe9091e7f0149b4ed0add1d3b16669edda862b7bf77e2ca84f6"
+    },
+    {
+      "id": "ROOM228-00183",
+      "kind": "local",
+      "path": "local/research/codex/room-local-roster-r1/verification.json",
+      "bytes": 6793,
+      "sha256": "48a4dd17218fd920336dcd978cf06038db7d54bf364d8f3990b5f145dfbd6196"
+    },
+    {
+      "id": "ROOM228-00184",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/DC5890.asm",
+      "bytes": 8075,
+      "sha256": "2245c7435c61412df5088eb8ea99d33a1624e9ebb968024aaad6fc050fbc1922"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/eb76b2f9187cb7c48e2ea654bbddae13cd994cea34ca6b8962b361730a3ec192.jsonl",
+      "sha256": "eb76b2f9187cb7c48e2ea654bbddae13cd994cea34ca6b8962b361730a3ec192",
+      "bytes": 4268,
+      "count": 23,
+      "files_bytes": 7100650
+    },
+    {
+      "run": "local/research/codex/room-local-roster-r1",
+      "path": "local/evidence-manifests/bd700c1da9866338e5b5addace0b081821488858f508e5cafc6036e237ec7ddf.jsonl",
+      "sha256": "bd700c1da9866338e5b5addace0b081821488858f508e5cafc6036e237ec7ddf",
+      "bytes": 33954,
+      "count": 155,
+      "files_bytes": 7238371
     }
   ]
 }

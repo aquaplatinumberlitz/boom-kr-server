@@ -152,15 +152,6 @@
       "limits": "Unchangedserver testsreusedbyexacthash. Fullhistorymechanicalcheckafterappendbeforecommit; notsemanticacceptance/gate. AnalysisdriverinitialPYTHONPATHfailureandCP166serializationsupplementretained."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP167-mode-promoted-cycles.json",
-      "bytes": 701430,
-      "sha256": "41a616b64b14d84e00a55620d434243c75193f70c390209c68857f6c2df6c219",
-      "count": 2766
-    }
-  ],
   "delta": {
     "added": [
       "CurrentmodeBhostafterpromotion2normaloutcomes/reset/Ready withsame-runpeer/life/entity/modeproof.",
@@ -259,6 +250,245 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP167twoR1R2currentmodeBhostcycles/observercoveragefailandfix/lateBStart3unknown/CP166PR237merge/nextCP168audit syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00015",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r1/cycle-boundary-verification.json",
+      "bytes": 2371,
+      "sha256": "975c23ecdce4f726c11f7ec8e45b06064ad83d1e9a7091e97268c4c7107f011e"
+    },
+    {
+      "id": "RUN-01256",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r1/observer-gap.json",
+      "bytes": 833,
+      "sha256": "fa4c826d04ab6592b0a9475570391d3a00bc1e76da3bf92150b8e22f560db69c"
+    },
+    {
+      "id": "RUN-01265",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r1/promoted-mode-verification.json",
+      "bytes": 133884,
+      "sha256": "34d0db53168b7a42a0efeebd3a4c46579e52bcad0ca91ffb1833ecb69a343650"
+    },
+    {
+      "id": "RUN-01266",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r1/raw-seal.json",
+      "bytes": 249673,
+      "sha256": "971b2c267b02e1b0f5c99ca6c16b80e717525b05fd423b9d2be6b5bc319f4209"
+    },
+    {
+      "id": "RUN-01371",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r1/verify_production_pickup.py.final.log",
+      "bytes": 508,
+      "sha256": "8d608c3c4350e5e4079161644ab302306af728e88822ede31fd394c789b5d23f"
+    },
+    {
+      "id": "RUN-01374",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r1/visual-review.json",
+      "bytes": 1050,
+      "sha256": "40990e24411cf6ceb838db04d9eaaa548275206b0adbea4b6ba76c04abd03879"
+    },
+    {
+      "id": "RUN-01378",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/actor-fields.json",
+      "bytes": 420084,
+      "sha256": "3477dd9c1f0d61f47f52353ba18cf977a2d46d5889acda01b72d9dd076ae3c13"
+    },
+    {
+      "id": "RUN-01380",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/alignment-gating-verification.json",
+      "bytes": 5673,
+      "sha256": "794b14f35d9323f28b13593ca6d48823df9846de577ea3cd61b1d1b5d99f4aeb"
+    },
+    {
+      "id": "RUN-01386",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-01387",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/capture-claim-verification.json",
+      "bytes": 2706,
+      "sha256": "8b016945f895c82ad0536630f1101cc829aff01ca50a8fc62e3bfca0522154fe"
+    },
+    {
+      "id": "RUN-01400",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/cycle-boundary-verification.json",
+      "bytes": 2371,
+      "sha256": "3ff1d223a7ef5554c4565eea2f9a94a0803425c24a9e8e976f2ca93361747b89"
+    },
+    {
+      "id": "RUN-02601",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/docs-check.txt",
+      "bytes": 175,
+      "sha256": "5840a45b758bb9acf9de08966b6bf11002d47fd2b1a60feb567a2d0fd64505c3"
+    },
+    {
+      "id": "RUN-02602",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/endpoint-peer-verification.json",
+      "bytes": 201510,
+      "sha256": "ec53da157b817f58f401ce428f7e336f0aeed4518000dd2d17e035b8e01931d7"
+    },
+    {
+      "id": "RUN-02612",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/hot-gate-verification.json",
+      "bytes": 5414,
+      "sha256": "bb252624ecb665c2ce0a49a8fe0071301e366ecadb9da3cf5a544a782e93851b"
+    },
+    {
+      "id": "RUN-02613",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/issues-check.txt",
+      "bytes": 130,
+      "sha256": "e282a5be6328ecd28eaac31d41a50090e90a53d5cd843057f3238cb384e45b24"
+    },
+    {
+      "id": "RUN-02614",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/kept-pickup-probes.json",
+      "bytes": 12600,
+      "sha256": "a4dce0a4ede4ddf28e0b5fa842a1997afaf61d3449dbf1d683d0dd8f1b78cb7e"
+    },
+    {
+      "id": "RUN-02618",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/life-agreement-verification.json",
+      "bytes": 6820,
+      "sha256": "7facaa1ca64e076ca14e161836b97fb9acb26b87d618de5eba7c8e247312fd9a"
+    },
+    {
+      "id": "RUN-02619",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "97ae780da18dc024fc82c2434f5edf42a9ce30d42a6c4bd03548f71d74ad0824"
+    },
+    {
+      "id": "RUN-02622",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/mode-native-packets.json",
+      "bytes": 9744,
+      "sha256": "d3e40168d10e923169f06c0fc49278ea4cfb76ddf7b0f836fed0da5289e5cc61"
+    },
+    {
+      "id": "RUN-02623",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/native-exit-packets.json",
+      "bytes": 130840,
+      "sha256": "ee889ed7bc3118ea605f96d5cec52376e7e3cf9314820e4ac54e07fcc393b167"
+    },
+    {
+      "id": "RUN-02631",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/production-pickup-verification.json",
+      "bytes": 1222,
+      "sha256": "a9754941e27a69859a7faa8ad24d2d682270fe182c58602c514d17a8f9cf55e6"
+    },
+    {
+      "id": "RUN-02633",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/promoted-mode-verification.json",
+      "bytes": 147741,
+      "sha256": "44935724669cccf383cf47f0913e95c1957651de1f5f97ba2a1d89c706682e3e"
+    },
+    {
+      "id": "RUN-02634",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/raw-seal.json",
+      "bytes": 246009,
+      "sha256": "71b4ac08d9b407e6bcd4336823eef4dcc5b5120f625967d2c2fde1355d1018a3"
+    },
+    {
+      "id": "RUN-02676",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/reuse-question.json",
+      "bytes": 4150,
+      "sha256": "936ef891c3806519c2c6bf72533654d14ccfe31fb73b6f287cee0eec898af15a"
+    },
+    {
+      "id": "RUN-02677",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/runtime-preflight.json",
+      "bytes": 21462,
+      "sha256": "0c412b53dd8df637aca490e7de1cf9470c429dcaf21c2dd7f6bb4718962807da"
+    },
+    {
+      "id": "RUN-02724",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/server-source-reuse.json",
+      "bytes": 7719,
+      "sha256": "76c1f1bce883a0b8190d22484531a1f78844d28419357256ef12f6f1db5fa228"
+    },
+    {
+      "id": "RUN-02745",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/visual-review.json",
+      "bytes": 1266,
+      "sha256": "3fb3de48bda713260f44a82133961cc900ddee67b53252cf11076b3a21ebf7fe"
+    },
+    {
+      "id": "RUN-02746",
+      "kind": "local",
+      "path": "local/research/codex/mode-promoted-cycles-r2/world-reset-verification.json",
+      "bytes": 955,
+      "sha256": "00c631f366316abee3be7cd0e3ca63dd436cafd6e8a9fe016eac488a1260b534"
+    },
+    {
+      "id": "RUN-02766",
+      "kind": "repository",
+      "path": "docs/evidence/peer-endpoints/cp166-validation.json",
+      "bytes": 1763,
+      "sha256": "f4de5265779154a2a8b04f233bbf237767222a8845f681905486c46d7f2c1006"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/mode-promoted-cycles-r1",
+      "path": "local/evidence-manifests/ef98d323ff178c7c30e3458aba90a2911f7d156f2d3fca2680b7be59edb83dfb.jsonl",
+      "sha256": "ef98d323ff178c7c30e3458aba90a2911f7d156f2d3fca2680b7be59edb83dfb",
+      "bytes": 279244,
+      "count": 1371,
+      "files_bytes": 123730931
+    },
+    {
+      "run": "local/research/codex/mode-promoted-cycles-r2",
+      "path": "local/evidence-manifests/adc8801faaa4917dabf7b1856e42db20e7444abedc848fa50583b0a95cabf313.jsonl",
+      "sha256": "adc8801faaa4917dabf7b1856e42db20e7444abedc848fa50583b0a95cabf313",
+      "bytes": 274992,
+      "count": 1349,
+      "files_bytes": 125527558
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b11f39eb9b0edce720067ef765ce75a83931db007f75d53da79878ea0f9a1318.jsonl",
+      "sha256": "b11f39eb9b0edce720067ef765ce75a83931db007f75d53da79878ea0f9a1318",
+      "bytes": 2595,
+      "count": 14,
+      "files_bytes": 434178
+    },
+    {
+      "run": "local/research/codex/mode-host-rejoin-fixed-r2",
+      "path": "local/evidence-manifests/d033ede249fb261cafaafbd6caa2ac52c6efe58de4e60d9a8dca4bd8c8464a9c.jsonl",
+      "sha256": "d033ede249fb261cafaafbd6caa2ac52c6efe58de4e60d9a8dca4bd8c8464a9c",
+      "bytes": 686,
+      "count": 3,
+      "files_bytes": 1012
     }
   ]
 }

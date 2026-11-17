@@ -163,15 +163,6 @@
       "limits": "Next per PLAN; M5partial, M4Freeblocked, no fullauth/production/Internet claim."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP253-rust-account-bridge.json",
-      "bytes": 60884,
-      "sha256": "6345a5c883b682212866eaf800cfd50afd6a98d384606be2abc78e70ab2e5828",
-      "count": 220
-    }
-  ],
   "delta": {
     "added": [
       "M5 minimal account admission library and execution-time worker authorization.",
@@ -300,6 +291,219 @@
       "path": "docs/evidence/issue-reconciliation/review.json",
       "state": "updated",
       "reason": "CP253 library ownership/worker UTC/7cases6DB3bodyreplay; listener/native M5 remains next; M4 blocked/AUD073next256/history unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST253-0001",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/account-bridge.json",
+      "bytes": 5734,
+      "sha256": "21142eca7f7216eb61700bead10d1e3829f822929a81481156ae5eee1425611a"
+    },
+    {
+      "id": "RUST253-0010",
+      "kind": "local",
+      "path": "local/research/codex/cp253-docs-postissue-r2.txt",
+      "bytes": 251,
+      "sha256": "737b4be5582a64370406f19353bd27aac8ee38eaad2390b43fff885ba5dae0cb"
+    },
+    {
+      "id": "RUST253-0014",
+      "kind": "local",
+      "path": "local/research/codex/cp253-issue285-updated-backlinks.json",
+      "bytes": 9969,
+      "sha256": "930653ca57e5629e41e7e502706b9ab593b7e7f7b1837e393940d9e889968660"
+    },
+    {
+      "id": "RUST253-0019",
+      "kind": "local",
+      "path": "local/research/codex/cp253-pr324-merged.json",
+      "bytes": 23719,
+      "sha256": "02aa54c36a250051d7c5732683270032a76c01dd21aa6cf7a84b0bbd6037c300"
+    },
+    {
+      "id": "RUST253-0086",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-acceptance-r1/verification.json",
+      "bytes": 20937,
+      "sha256": "869cda078445ca66c00f8e54184df3dee1216052f334e97c60ca1df0ab3faaf5"
+    },
+    {
+      "id": "RUST253-0153",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-acceptance-r2/verification.json",
+      "bytes": 20937,
+      "sha256": "04a4263be8bac5b2b9bac6e8ec7187ec925ab9db677bbae4d21454d8d7b3686d"
+    },
+    {
+      "id": "RUST253-0155",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-acceptance-r2/wire-output.json",
+      "bytes": 347,
+      "sha256": "69cda3fadd18aadca305db37486143b344304cdc1a41f5d84b57c293080627cd"
+    },
+    {
+      "id": "RUST253-0157",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-build-final.txt",
+      "bytes": 166,
+      "sha256": "c70db290d349f389ba73ec3973bf74f34f00538bae10c7bc29ba5c0fb25fdd40"
+    },
+    {
+      "id": "RUST253-0158",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-clippy-final.txt",
+      "bytes": 166,
+      "sha256": "2f3fa44c0d055d26e5a3d5100cb5bf2fec93dc538646334477c7c92f3071e2c0"
+    },
+    {
+      "id": "RUST253-0160",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-compile-r1.txt",
+      "bytes": 1286,
+      "sha256": "2ca7f9d5e1dd4f030aeba9e13c3f93c579510c87a3349e25bfa209ca1abd94d7"
+    },
+    {
+      "id": "RUST253-0184",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-delivery-r2/manual-acceptance.json",
+      "bytes": 3862,
+      "sha256": "12a9da05ae278a0c3f07119d0d6ac234ecb4fd38dec38c8ab3a0078728b7e1f2"
+    },
+    {
+      "id": "RUST253-0187",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-delivery-r2/snapshot/docs/PLAN.md",
+      "bytes": 101938,
+      "sha256": "156f9c04dc163d0a1be9c4d91f04d790f2fcde3f300f823675f189e9baee6d19"
+    },
+    {
+      "id": "RUST253-0197",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-delivery-r2/snapshot/rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 14007,
+      "sha256": "5ac9d05edd4f62816877e7a35ad5af6059942c2bc18ff7aafeac1ab8effcc684"
+    },
+    {
+      "id": "RUST253-0198",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-delivery-r2/snapshot/rust/crates/kr-service/src/account_bridge/tests.rs",
+      "bytes": 19935,
+      "sha256": "842ab5f72275ea25ffdb43135980d257bf0a75a021e8258fa91fe5326af84829"
+    },
+    {
+      "id": "RUST253-0199",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-delivery-r2/snapshot/rust/crates/kr-service/src/account_bridge/wire.rs",
+      "bytes": 2353,
+      "sha256": "3b5e4ffbc30e1f7b93356fd45cad5db83f60ff4739554261795fb6009fdc1bfe"
+    },
+    {
+      "id": "RUST253-0200",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-delivery-r2/snapshot/rust/crates/kr-service/src/account_worker.rs",
+      "bytes": 14899,
+      "sha256": "3113b624145cbe652caff70c710bdfb6858a6165cc73fe2c491a185f2890a435"
+    },
+    {
+      "id": "RUST253-0212",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-tests-final.txt",
+      "bytes": 9267,
+      "sha256": "6ab3f6163c7ccaaeab99230c86723897f64104f14cf04ff8e205dd16df53b01c"
+    },
+    {
+      "id": "RUST253-0213",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-tests-r1.txt",
+      "bytes": 847,
+      "sha256": "66bf21c1719accea6bbe7882cd2c16e5ac76a79783e1b070345d8710facc4321"
+    },
+    {
+      "id": "RUST253-0214",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-tests-r2.txt",
+      "bytes": 1079,
+      "sha256": "acfcabc9009916a92d22ab5bc785bb8ebf4153f92dd2884bf7e7cdfbc543dc18"
+    },
+    {
+      "id": "RUST253-0215",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-bridge-tests-r3.txt",
+      "bytes": 2509,
+      "sha256": "4c1ea18fda5201b6615ee8dc73bf2ff83d7348aa150463fe1af4c747ab162553"
+    },
+    {
+      "id": "RUST253-0217",
+      "kind": "local",
+      "path": "local/research/codex/rust-m5-bridge-source-r1/oracle.json",
+      "bytes": 2392,
+      "sha256": "0ebcb2bbedf1a77d0970c4f515e6fe8cbaafec7c795b0e06a27f579c26364562"
+    },
+    {
+      "id": "RUST253-0218",
+      "kind": "local",
+      "path": "local/research/codex/rust-m5-bridge-source-r1/reuse.json",
+      "bytes": 5596,
+      "sha256": "395b1fd6822739ab9468819f0b52f83bc4e41daa611d542004e14558bb342b0a"
+    },
+    {
+      "id": "RUST253-0220",
+      "kind": "repository",
+      "path": "tools/test_rust_account_bridge.py",
+      "bytes": 6824,
+      "sha256": "e0eeb16286c349e7c41745ed66fbb4480bcde40bf62be6e13610a4d502e0ef09"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/10239cc22028c654d9fe1634d90a60e0105c456a35976412c8107916f9326ddd.jsonl",
+      "sha256": "10239cc22028c654d9fe1634d90a60e0105c456a35976412c8107916f9326ddd",
+      "bytes": 4475,
+      "count": 24,
+      "files_bytes": 78209
+    },
+    {
+      "run": "local/research/codex/rust-account-bridge-acceptance-r1",
+      "path": "local/evidence-manifests/9c878d1ad58c6ecb44030e25639c879a05a8829fe48dc14ee410ce08b25fd9fd.jsonl",
+      "sha256": "9c878d1ad58c6ecb44030e25639c879a05a8829fe48dc14ee410ce08b25fd9fd",
+      "bytes": 15509,
+      "count": 65,
+      "files_bytes": 96870721
+    },
+    {
+      "run": "local/research/codex/rust-account-bridge-acceptance-r2",
+      "path": "local/evidence-manifests/8136a3ebea32c4282e426424ffb14cab8e530eba51a63f608cadbc3aa45fd088.jsonl",
+      "sha256": "8136a3ebea32c4282e426424ffb14cab8e530eba51a63f608cadbc3aa45fd088",
+      "bytes": 15303,
+      "count": 64,
+      "files_bytes": 96882223
+    },
+    {
+      "run": "local/research/codex/rust-account-bridge-delivery-r1",
+      "path": "local/evidence-manifests/60a9e1ec86da48014247f4f0ddd727c36a51c540d4dc99eedd45e949e100e22e.jsonl",
+      "sha256": "60a9e1ec86da48014247f4f0ddd727c36a51c540d4dc99eedd45e949e100e22e",
+      "bytes": 5406,
+      "count": 23,
+      "files_bytes": 89065204
+    },
+    {
+      "run": "local/research/codex/rust-account-bridge-delivery-r2",
+      "path": "local/evidence-manifests/0ad5e80f3350106a8b36371cba88dd56862bf45d854c76540efb906f66c5ddb5.jsonl",
+      "sha256": "0ad5e80f3350106a8b36371cba88dd56862bf45d854c76540efb906f66c5ddb5",
+      "bytes": 4001,
+      "count": 17,
+      "files_bytes": 88908210
+    },
+    {
+      "run": "local/research/codex/rust-account-bridge-metadata-failed-attempt-r1",
+      "path": "local/evidence-manifests/0c0a989f1ac853d92dcde706c2cf676caadeffc64c8de87858cf146132ed164f.jsonl",
+      "sha256": "0c0a989f1ac853d92dcde706c2cf676caadeffc64c8de87858cf146132ed164f",
+      "bytes": 1013,
+      "count": 4,
+      "files_bytes": 176041
     }
   ]
 }

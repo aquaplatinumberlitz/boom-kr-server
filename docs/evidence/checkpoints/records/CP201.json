@@ -145,15 +145,6 @@
       "limits": "NEXT-K7-FOUR-BATTLE-OUTCOMEcontinues; noABrankclone/forfeitnormalwin."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP201-four-owner-bombs.json",
-      "bytes": 846455,
-      "sha256": "e80988b35cb3b9ac09b60ba1fd64ac40e432955f0dbfce4fc5626b45a181ad8b",
-      "count": 3314
-    }
-  ],
   "delta": {
     "added": [
       "Native4slotstatbaselines/maxima/C-Ddistinct, actual4owner118key/slot/power checked; 144copiednativegettersseparate.",
@@ -245,6 +236,1083 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP2014ownerbaseline/bomcontract/failedstartupcandidate/probelimits synchronizedbeforecomplete; nextlife2v2rank/reset; auditcounter204unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "BOMB201-00007",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "BOMB201-00014",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "BOMB201-00019",
+      "kind": "local",
+      "path": "local/research/codex/cp200-pr-merged.json",
+      "bytes": 123,
+      "sha256": "880fed42aa9ea2fd167f01fd998ca6639ceb8a9f18fd825433cdb2b944321352"
+    },
+    {
+      "id": "BOMB201-00026",
+      "kind": "local",
+      "path": "local/research/codex/cp201-artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "BOMB201-00027",
+      "kind": "local",
+      "path": "local/research/codex/cp201-docs-check.txt",
+      "bytes": 175,
+      "sha256": "6148c87c1cbc83ec06a4498db9932810bfe89d149008c8cb9239ff7dc69be478"
+    },
+    {
+      "id": "BOMB201-00040",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/verification.json",
+      "bytes": 672513,
+      "sha256": "2edca1bb0cb824a9e75195a026648e91008f6447ebac1472f7f54d79fb4c2e3b"
+    },
+    {
+      "id": "BOMB201-00361",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-baseline-r1/raw-seal.json",
+      "bytes": 63109,
+      "sha256": "c3a55a2a16627229d5f349d67b7543a1f96b4d098a36c4f1f7c19d958cee619d"
+    },
+    {
+      "id": "BOMB201-00772",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-baseline-r2/raw-seal.json",
+      "bytes": 63111,
+      "sha256": "0d7ce4803a4a4059bd29f050c4f9a813ee6099a0bdb88eb95fcb865256bef032"
+    },
+    {
+      "id": "BOMB201-00935",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-baseline-r3/cycles/client.log",
+      "bytes": 15969,
+      "sha256": "42e5ba4374964cac27b5743271790df3d01bbb58b88d728115192a019964eb71"
+    },
+    {
+      "id": "BOMB201-01048",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/bomb-profile.json",
+      "bytes": 195,
+      "sha256": "fdcfaf9bc99874e779a051f872364a6d647bda8cf82a7d85ebb0be0803bbf8fd"
+    },
+    {
+      "id": "BOMB201-01049",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/bundle-tests.txt",
+      "bytes": 9511,
+      "sha256": "6143485828e632f85e4d9c137e85bb181a2596b336ac27f8fbd2a7bd12c2e2cf"
+    },
+    {
+      "id": "BOMB201-01051",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/checkpoint-tests.txt",
+      "bytes": 142,
+      "sha256": "4b34361928816b8d58ebe0fd32eed674489c453ee5b5b1328248483f8e2e1308"
+    },
+    {
+      "id": "BOMB201-01054",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/cp201-snapshot/docs/PLAN.md",
+      "bytes": 55999,
+      "sha256": "85918efeee227546a04c15e7043e27919c8731e6bd5372e3897771e8c8161d32"
+    },
+    {
+      "id": "BOMB201-01679",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/cycles/client-C.log",
+      "bytes": 44374,
+      "sha256": "c3c90bab6875e8c0d89cd9ae715ca3d5234ef52c3e0c34de606acb5e81450ca6"
+    },
+    {
+      "id": "BOMB201-01680",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/cycles/client-D.log",
+      "bytes": 44181,
+      "sha256": "0fc2723a95cb708ece94a03f819bec55b5a6a543848c9f8d1d7e42eedd8eade0"
+    },
+    {
+      "id": "BOMB201-01681",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/cycles/client.log",
+      "bytes": 44612,
+      "sha256": "06f639a2b8d928356f04767e5cb24cf2dcdeab36d68bebe162df5efd64eaa1c9"
+    },
+    {
+      "id": "BOMB201-01698",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/cycles/service-state.json",
+      "bytes": 187693,
+      "sha256": "89151764a3378aa5b0bfb98136328fbd033beb3b3ac03c1c67599fd89528f5fb"
+    },
+    {
+      "id": "BOMB201-01712",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/gdb_bombs.py",
+      "bytes": 1832,
+      "sha256": "03f0fe9640a5196e8fa6c06e3e958cffa55b17838cdc3a9626bd20af98dd0385"
+    },
+    {
+      "id": "BOMB201-01723",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/raw-seal.json",
+      "bytes": 130610,
+      "sha256": "5e7b0459766ebef7e0ae38b4f1ff41b581da0f02673b8670e1f8a595e633c172"
+    },
+    {
+      "id": "BOMB201-01724",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/real-tcp-r1-EOF-reset-failed.log",
+      "bytes": 738,
+      "sha256": "60a01086f39800fc56f474c578dfd74c34fc45c10aa4379ccd29c0ae8cf1af9d"
+    },
+    {
+      "id": "BOMB201-01725",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/real-tcp-verification.json",
+      "bytes": 810,
+      "sha256": "83af1f93cd5b40a0adf816672b98d0b4a4ebe9f99cd46d1372f1f2c49446e048"
+    },
+    {
+      "id": "BOMB201-01819",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/server-tests.txt",
+      "bytes": 416,
+      "sha256": "e04f45ce805a970d9cb06f87e21b8311d218634c318583e690a96f5b33a621bb"
+    },
+    {
+      "id": "BOMB201-02063",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/verification.json",
+      "bytes": 30887,
+      "sha256": "821c2355b9d84160ac361e6192042c8e243cf7bd6e933bf7ab2bad9f4edfed57"
+    },
+    {
+      "id": "BOMB201-02684",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-framer-r1/getter-verification.json",
+      "bytes": 441,
+      "sha256": "905385de12ea075b2ddd0289393010e4d06a61f548ed92ab18b20f3501bf1b81"
+    },
+    {
+      "id": "BOMB201-02689",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-framer-r1/raw-seal.json",
+      "bytes": 122959,
+      "sha256": "d06c90ee9703e14c321c1c406060e63f37e0b6a33009c8020009639f69c8b4b8"
+    },
+    {
+      "id": "BOMB201-02780",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-framer-r1/verification.json",
+      "bytes": 46551,
+      "sha256": "b4033daf217ee946f36fea7a2be207ceda6f15c89ab21a2f55119b6ae93d9a62"
+    },
+    {
+      "id": "BOMB201-03034",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-guard-r1/cycles/client-B.log",
+      "bytes": 14096,
+      "sha256": "1ce113034cd20fcf317ab59127be50fac638f67d3676d68beab71365fdeba8c6"
+    },
+    {
+      "id": "BOMB201-03162",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/auth-retry.gdb",
+      "bytes": 1545,
+      "sha256": "34e7ebeb91e0d6c5dc312a4271d04e2fa05e422a47a3c8df3f7435a830cfc5fa"
+    },
+    {
+      "id": "BOMB201-03163",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "BOMB201-03174",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "BOMB201-03180",
+      "kind": "local",
+      "path": "local/research/codex/offline-empty-json-r1/patch-report.json",
+      "bytes": 3196,
+      "sha256": "22def85729eb5c380ed63f3242f609eeec909456123ad27a4cc4dfcfe0452c47"
+    },
+    {
+      "id": "BOMB201-03181",
+      "kind": "local",
+      "path": "local/research/codex/offline-empty-json-r1/stub-model-verification.json",
+      "bytes": 1243,
+      "sha256": "d7ab4e33ae3dadd03b48414c83db31ecbdc8ef5f62e19b69ccee4deebc8babf4"
+    },
+    {
+      "id": "BOMB201-03185",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "BOMB201-03200",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "BOMB201-03201",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "BOMB201-03202",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "BOMB201-03214",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "BOMB201-03219",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "BOMB201-03226",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "BOMB201-03227",
+      "kind": "repository",
+      "path": "server/four_bomb_policy.py",
+      "bytes": 3690,
+      "sha256": "0688e4a0cdd410b04f98ab22fb7948f71beb4f3c2cfa0bab31ef86e3077e6b19"
+    },
+    {
+      "id": "BOMB201-03228",
+      "kind": "repository",
+      "path": "server/four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "BOMB201-03229",
+      "kind": "repository",
+      "path": "server/four_player_service.py",
+      "bytes": 23710,
+      "sha256": "b4a603608e0d46b491f72d45987267c4998c83d2bb23730bfe894f1ac40cd3b2"
+    },
+    {
+      "id": "BOMB201-03230",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "BOMB201-03231",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "BOMB201-03232",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "BOMB201-03233",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "BOMB201-03234",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 112770,
+      "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c"
+    },
+    {
+      "id": "BOMB201-03235",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "BOMB201-03236",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "BOMB201-03237",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "BOMB201-03238",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "BOMB201-03239",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "BOMB201-03240",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "BOMB201-03241",
+      "kind": "repository",
+      "path": "server/test_admission_ip.py",
+      "bytes": 7753,
+      "sha256": "15c72110195d48bd4165684a098232f56be8e78f261f454911e796b90a192a76"
+    },
+    {
+      "id": "BOMB201-03242",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "BOMB201-03243",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "BOMB201-03244",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "BOMB201-03245",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "BOMB201-03246",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "BOMB201-03247",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "BOMB201-03248",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "BOMB201-03249",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "BOMB201-03250",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "BOMB201-03251",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "BOMB201-03252",
+      "kind": "repository",
+      "path": "server/test_four_bomb_policy.py",
+      "bytes": 6771,
+      "sha256": "88a7a17b394980589d9c8de2c16e3ab465878204a91ec919158d4c7dca951534"
+    },
+    {
+      "id": "BOMB201-03253",
+      "kind": "repository",
+      "path": "server/test_four_player_service.py",
+      "bytes": 10154,
+      "sha256": "50faf857e110ad0a5b5b5f45d9d41429b8ccb73c6d880cfd766e7d8847126a6d"
+    },
+    {
+      "id": "BOMB201-03254",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "BOMB201-03255",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "BOMB201-03256",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "BOMB201-03257",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "BOMB201-03258",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "BOMB201-03259",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "BOMB201-03260",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "BOMB201-03261",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "BOMB201-03262",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "BOMB201-03263",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "BOMB201-03264",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "BOMB201-03265",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "BOMB201-03266",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "BOMB201-03267",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "BOMB201-03268",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "BOMB201-03269",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "BOMB201-03270",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "BOMB201-03271",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "BOMB201-03272",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "BOMB201-03273",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "BOMB201-03274",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "BOMB201-03275",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "BOMB201-03276",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "BOMB201-03277",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "BOMB201-03278",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "BOMB201-03279",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "BOMB201-03280",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "BOMB201-03281",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "BOMB201-03282",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "BOMB201-03283",
+      "kind": "repository",
+      "path": "tools/artifacts.py",
+      "bytes": 1089,
+      "sha256": "3806dc33d23db39ce591eb6fc3d2d9638c177a1a08862c474b4bb1d6614188d3"
+    },
+    {
+      "id": "BOMB201-03284",
+      "kind": "repository",
+      "path": "tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "BOMB201-03285",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 30165,
+      "sha256": "a91a1868b8da8870818fa11e6c38f81fb5c36a284610a60fb47f041b7891bd94"
+    },
+    {
+      "id": "BOMB201-03286",
+      "kind": "repository",
+      "path": "tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "BOMB201-03287",
+      "kind": "repository",
+      "path": "tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "BOMB201-03288",
+      "kind": "repository",
+      "path": "tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "BOMB201-03289",
+      "kind": "repository",
+      "path": "tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "BOMB201-03290",
+      "kind": "repository",
+      "path": "tools/export_probe_profile.py",
+      "bytes": 9863,
+      "sha256": "20d90106996dd866af4d3d0fe5824812bb63c6e4f376f6013eb55e9ea67adcb3"
+    },
+    {
+      "id": "BOMB201-03291",
+      "kind": "repository",
+      "path": "tools/feature_catalog.py",
+      "bytes": 15672,
+      "sha256": "765658526f6efccf218e7387d309cc263846ef72c0a1090b87f3d2cc5d3181c0"
+    },
+    {
+      "id": "BOMB201-03292",
+      "kind": "repository",
+      "path": "tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "BOMB201-03293",
+      "kind": "repository",
+      "path": "tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "BOMB201-03294",
+      "kind": "repository",
+      "path": "tools/probe_bundle.py",
+      "bytes": 5536,
+      "sha256": "a4b03a71afb418bc76b328486c32fa25a464996b0b991ac98b9e3c24487e56be"
+    },
+    {
+      "id": "BOMB201-03295",
+      "kind": "repository",
+      "path": "tools/probe_channel_identity.py",
+      "bytes": 981,
+      "sha256": "b4dbf4c9b827007fa9bcb441db26e0230fb4654e5480f5b242157d2d32c3f68b"
+    },
+    {
+      "id": "BOMB201-03296",
+      "kind": "repository",
+      "path": "tools/terrain_shadow.py",
+      "bytes": 334,
+      "sha256": "71856e537954ab963ce27a6d057913974b7bb8b1dea863764961ed9846d2addc"
+    },
+    {
+      "id": "BOMB201-03297",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_absolute_local.py",
+      "bytes": 3145,
+      "sha256": "b6c2b85fb4b315101435dfbc95ea41ffe4a5a8fa3c2eec2c7d4f3c769b86c737"
+    },
+    {
+      "id": "BOMB201-03298",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_audit_order.py",
+      "bytes": 1350,
+      "sha256": "157b9b99bf25383da498239b5627739962251b25f2c67925730663775e76f9e9"
+    },
+    {
+      "id": "BOMB201-03299",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    },
+    {
+      "id": "BOMB201-03300",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_store.py",
+      "bytes": 12900,
+      "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b"
+    },
+    {
+      "id": "BOMB201-03301",
+      "kind": "repository",
+      "path": "tools/test_checkpoints.py",
+      "bytes": 14329,
+      "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6"
+    },
+    {
+      "id": "BOMB201-03302",
+      "kind": "repository",
+      "path": "tools/test_export_all_dead.py",
+      "bytes": 2472,
+      "sha256": "9181544944d5e72d3d7137b763fbb42fcb554b6efd687e17b241c88cc0116c19"
+    },
+    {
+      "id": "BOMB201-03303",
+      "kind": "repository",
+      "path": "tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "BOMB201-03304",
+      "kind": "repository",
+      "path": "tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "BOMB201-03305",
+      "kind": "repository",
+      "path": "tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    },
+    {
+      "id": "BOMB201-03306",
+      "kind": "repository",
+      "path": "tools/test_feature_catalog.py",
+      "bytes": 3154,
+      "sha256": "124f62bc87c67e669751600dc2be4d2cd5e7f9e28ef16c7906fbc37ec6f63883"
+    },
+    {
+      "id": "BOMB201-03307",
+      "kind": "repository",
+      "path": "tools/test_issue_links.py",
+      "bytes": 4175,
+      "sha256": "b6025c8c6e11b2b179a4b58e20e73f48edf989a0749ef968c5409c1d3fd5d764"
+    },
+    {
+      "id": "BOMB201-03308",
+      "kind": "repository",
+      "path": "tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    },
+    {
+      "id": "BOMB201-03309",
+      "kind": "repository",
+      "path": "tools/test_probe_channel_identity.py",
+      "bytes": 1989,
+      "sha256": "a7c8c05a66c959ec521aa391f6bc5ea0b4d8444ced130e260281b48d40737cf5"
+    },
+    {
+      "id": "BOMB201-03310",
+      "kind": "repository",
+      "path": "tools/test_terrain_shadow.py",
+      "bytes": 2384,
+      "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+    },
+    {
+      "id": "BOMB201-03311",
+      "kind": "repository",
+      "path": "tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "id": "BOMB201-03312",
+      "kind": "repository",
+      "path": "tools/verify_primitives.py",
+      "bytes": 5272,
+      "sha256": "5cef1ce63e7895e89e3899252a78e958f59218247ac81a1b86f517ed5ddcf6dd"
+    },
+    {
+      "id": "BOMB201-03313",
+      "kind": "repository",
+      "path": "tools/windows_console.py",
+      "bytes": 1820,
+      "sha256": "3cc762507cceb37acee58d138e574834b5969630bf9c58430df9de738d328283"
+    },
+    {
+      "id": "BOMB201-03314",
+      "kind": "repository",
+      "path": "tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/f6a9d450812ea98dcf12e6addcf3acbf6935595655f2d6048fa93ddd8f99b21c.jsonl",
+      "sha256": "f6a9d450812ea98dcf12e6addcf3acbf6935595655f2d6048fa93ddd8f99b21c",
+      "bytes": 465,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/2eff64d39593c7b0d5ff90e80a8e564836e1c853be68e4e4a0546dcbfbe60886.jsonl",
+      "sha256": "2eff64d39593c7b0d5ff90e80a8e564836e1c853be68e4e4a0546dcbfbe60886",
+      "bytes": 6553,
+      "count": 35,
+      "files_bytes": 6536031
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/0b997d60c3a724ae087ff5d2575df09159e620809dc9776a4d5c979d117e5951.jsonl",
+      "sha256": "0b997d60c3a724ae087ff5d2575df09159e620809dc9776a4d5c979d117e5951",
+      "bytes": 645,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/412e3c65e536907b40cf07d70712528c174b1947689ecaecb774f4ee0b1dbb67.jsonl",
+      "sha256": "412e3c65e536907b40cf07d70712528c174b1947689ecaecb774f4ee0b1dbb67",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/662a714ddddcaa1f8c045ba9aabbb4a4786e3bb484d1924c1c6cc2b67d4847a0.jsonl",
+      "sha256": "662a714ddddcaa1f8c045ba9aabbb4a4786e3bb484d1924c1c6cc2b67d4847a0",
+      "bytes": 647,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/795b7fe6354c81ce89b29f02b985cb277550b9080fa6377f1dd5ddca1ffa25b7.jsonl",
+      "sha256": "795b7fe6354c81ce89b29f02b985cb277550b9080fa6377f1dd5ddca1ffa25b7",
+      "bytes": 463,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/ad498d4095adcbbbfe24e6411c50f99c9a1407355ebacc2071b3d392fccf9f6e.jsonl",
+      "sha256": "ad498d4095adcbbbfe24e6411c50f99c9a1407355ebacc2071b3d392fccf9f6e",
+      "bytes": 1021,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/four-bomb-policy-r1",
+      "path": "local/evidence-manifests/3b2526a0cf1ffb52aaaf5418e3481afe2133117fbc6c44382ff403512b448dde.jsonl",
+      "sha256": "3b2526a0cf1ffb52aaaf5418e3481afe2133117fbc6c44382ff403512b448dde",
+      "bytes": 1041,
+      "count": 5,
+      "files_bytes": 7165
+    },
+    {
+      "run": "local/research/codex/four-owner-baseline-r1",
+      "path": "local/evidence-manifests/72446b3b8571a20adc09149fb41e7ad53246f65fb1f30f9010a8178f978c50e9.jsonl",
+      "sha256": "72446b3b8571a20adc09149fb41e7ad53246f65fb1f30f9010a8178f978c50e9",
+      "bytes": 85497,
+      "count": 410,
+      "files_bytes": 13130606
+    },
+    {
+      "run": "local/research/codex/four-owner-baseline-r2",
+      "path": "local/evidence-manifests/d5aefa523125d7c130e30198a3308f6c3d7e27dec75360e0a1e31a61436ee457.jsonl",
+      "sha256": "d5aefa523125d7c130e30198a3308f6c3d7e27dec75360e0a1e31a61436ee457",
+      "bytes": 85499,
+      "count": 410,
+      "files_bytes": 12810109
+    },
+    {
+      "run": "local/research/codex/four-owner-baseline-r3",
+      "path": "local/evidence-manifests/fc1404d83ebc848bb5e0e76c1797c3b840aed69b22cd5b5a255e101f6ffc55a4.jsonl",
+      "sha256": "fc1404d83ebc848bb5e0e76c1797c3b840aed69b22cd5b5a255e101f6ffc55a4",
+      "bytes": 39205,
+      "count": 184,
+      "files_bytes": 2659625
+    },
+    {
+      "run": "local/research/codex/four-owner-bombs-r1",
+      "path": "local/evidence-manifests/e2632ae3c37bb156af0e61b82b4ba9ce7089f73ab18d85ea210b468537a697d0.jsonl",
+      "sha256": "e2632ae3c37bb156af0e61b82b4ba9ce7089f73ab18d85ea210b468537a697d0",
+      "bytes": 207423,
+      "count": 1003,
+      "files_bytes": 35642210
+    },
+    {
+      "run": "local/research/codex/four-owner-framer-r1",
+      "path": "local/evidence-manifests/ebbf549b258397d86fcd6dd7b3f4b08bff9a3de2622c9b04ca75bacb060cddf2.jsonl",
+      "sha256": "ebbf549b258397d86fcd6dd7b3f4b08bff9a3de2622c9b04ca75bacb060cddf2",
+      "bytes": 146541,
+      "count": 714,
+      "files_bytes": 30995234
+    },
+    {
+      "run": "local/research/codex/four-owner-guard-r1",
+      "path": "local/evidence-manifests/304b9df2146d22dc8a30392908c6bdfdfef2ec991194be0170cdb6bb1fa947fd.jsonl",
+      "sha256": "304b9df2146d22dc8a30392908c6bdfdfef2ec991194be0170cdb6bb1fa947fd",
+      "bytes": 77992,
+      "count": 379,
+      "files_bytes": 11145724
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/f46f53179c245633d12497abbac55e94d4a568374fad8c7bec49c372598d612c.jsonl",
+      "sha256": "f46f53179c245633d12497abbac55e94d4a568374fad8c7bec49c372598d612c",
+      "bytes": 1808,
+      "count": 8,
+      "files_bytes": 254998528
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/b4540477b161f0965aba95754713b22b50453647667a06ccbf647bfa09a5c9e5.jsonl",
+      "sha256": "b4540477b161f0965aba95754713b22b50453647667a06ccbf647bfa09a5c9e5",
+      "bytes": 436,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/nmco-locale-stability-r1",
+      "path": "local/evidence-manifests/3d4a6ba1deea029ecc8d07e6577dcb66a15a9a2f28e247662cd4d591aa642af2.jsonl",
+      "sha256": "3d4a6ba1deea029ecc8d07e6577dcb66a15a9a2f28e247662cd4d591aa642af2",
+      "bytes": 890,
+      "count": 4,
+      "files_bytes": 19966
+    },
+    {
+      "run": "local/research/codex/offline-empty-json-r1",
+      "path": "local/evidence-manifests/f9a4e056e2ab833c5bfc492002fe10d1a14d1dc8821df2d9f3173cce749581be.jsonl",
+      "sha256": "f9a4e056e2ab833c5bfc492002fe10d1a14d1dc8821df2d9f3173cce749581be",
+      "bytes": 466,
+      "count": 2,
+      "files_bytes": 7921
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/b7f98400d725da0c323db3d27b5a4237657846aca23aaa75c875bc2bdcd9b3e5.jsonl",
+      "sha256": "b7f98400d725da0c323db3d27b5a4237657846aca23aaa75c875bc2bdcd9b3e5",
+      "bytes": 445,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/e8d38a614d169686e1d80bba41fc3e6a2d094ce5ccda015d6bd9e7dc9c5ffe95.jsonl",
+      "sha256": "e8d38a614d169686e1d80bba41fc3e6a2d094ce5ccda015d6bd9e7dc9c5ffe95",
+      "bytes": 644,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/79b6dfc51b62fe47071f10797c1ea15ab483fffc8dc396a99250023b56f9468c.jsonl",
+      "sha256": "79b6dfc51b62fe47071f10797c1ea15ab483fffc8dc396a99250023b56f9468c",
+      "bytes": 986,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/4719157c63cdcdd8619dd1315a7c9c1220c6ff0523c14de4ed3c4efd7db78022.jsonl",
+      "sha256": "4719157c63cdcdd8619dd1315a7c9c1220c6ff0523c14de4ed3c4efd7db78022",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/ee1c31b3198e44eddf23cafa0cdb2623f00523f0cbf11838a1e4248a614dcacf.jsonl",
+      "sha256": "ee1c31b3198e44eddf23cafa0cdb2623f00523f0cbf11838a1e4248a614dcacf",
+      "bytes": 455,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

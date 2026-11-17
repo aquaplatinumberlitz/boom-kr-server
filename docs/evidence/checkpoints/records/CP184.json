@@ -154,15 +154,6 @@
       "limits": "Specificremainingcriteria only; wideraccount/modes/items notautomaticallygateblockers."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP184-own-profile-integration.json",
-      "bytes": 99561,
-      "sha256": "57edc2b2b02d55d239ba678e1e682a982a3411211aa5866e58cde1b63bccb187",
-      "count": 374
-    }
-  ],
   "delta": {
     "added": [
       "Productionoptin291/namebinding/continuousinitialsequence/nativeAcreate-map/loggedstageguards/regressions.",
@@ -272,6 +263,510 @@
       "path": "docs/evidence/checkpoints/README.md",
       "state": "unchanged",
       "reason": "Store/immutablehistory/workflowunchanged; periodic184performed,next188."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "INTEGRATION-00002",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "INTEGRATION-00003",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/authname-reuse.json",
+      "bytes": 1770,
+      "sha256": "e379a03a43f49474d526839153fe5c7c150f9106f7c7a474aceb5dbff6131c2c"
+    },
+    {
+      "id": "INTEGRATION-00006",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/export-tests-final.txt",
+      "bytes": 9340,
+      "sha256": "60022c148b0f85dbf6047e1527a7062fa756125e0c244f52373ae3e7acc2e6da"
+    },
+    {
+      "id": "INTEGRATION-00027",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/runtime-preparation-r2.json",
+      "bytes": 9940,
+      "sha256": "17989534e4b3f334bc9afd917ffe0f32a3066f320eb6ffff21ebac755d99fcae"
+    },
+    {
+      "id": "INTEGRATION-00029",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/server-tests-with-guards.txt",
+      "bytes": 390,
+      "sha256": "cf2f67737a0f2476ce876d40e9f03eaf70db393248a18f4e7fb50588a5deb0af"
+    },
+    {
+      "id": "INTEGRATION-00031",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/source-A-r1.json",
+      "bytes": 14656,
+      "sha256": "f2bd7686323f622bb3788533d9d62570eebdf7dc3213ad099fe2dc4c4bd3e46f"
+    },
+    {
+      "id": "INTEGRATION-00034",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/verification.json",
+      "bytes": 48899,
+      "sha256": "1c802e26b8c905cf5b0fece9568663ddb376cd0bc49d6267b2f8aa289838fbe8"
+    },
+    {
+      "id": "INTEGRATION-00038",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/PLAN.md",
+      "bytes": 47811,
+      "sha256": "c07a91469cd7c71b47658bcde9155740244dcf2ad83d754bc9f6f59ec6fe4128"
+    },
+    {
+      "id": "INTEGRATION-00043",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/evidence/checkpoints/audits/AUD055.json",
+      "bytes": 6112,
+      "sha256": "ffc0af5cef3f4a34d3c4f87dbc8fb6b00ec41e11ea07d3beac024f0cafd6a144"
+    },
+    {
+      "id": "INTEGRATION-00047",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/cp184-snapshot/docs/evidence/namu-wiki/metadata.json",
+      "bytes": 4908,
+      "sha256": "4efbef982c995232f803f120c6af3adf9adb1ed0cb8fd80025f0ee3ce3b2107c"
+    },
+    {
+      "id": "INTEGRATION-00094",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r1/raw-seal.json",
+      "bytes": 22809,
+      "sha256": "1e85d0ba9048d4be54c4fef0ae3bd08934328f663fd492943d7d73c40a291e54"
+    },
+    {
+      "id": "INTEGRATION-00170",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/panel-before-create.png",
+      "bytes": 149338,
+      "sha256": "c888da70d38cdb1fbd7bf0046007d5fb04458f5642767cfc7f6416825668d9d2"
+    },
+    {
+      "id": "INTEGRATION-00198",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/raw-seal.json",
+      "bytes": 22738,
+      "sha256": "732df2a6acab059641769db648e017b62be46644dba11fe8d95eec9e026b0f29"
+    },
+    {
+      "id": "INTEGRATION-00226",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownprofile-integration-r1/integrated-A-r2/screen-25.png",
+      "bytes": 178515,
+      "sha256": "99d2cba9ca8e011e1b1ed1fd8171622724d184dfccce2cc801673da73201a630"
+    },
+    {
+      "id": "INTEGRATION-00319",
+      "kind": "repository",
+      "path": "tools/export_probe_profile.py",
+      "bytes": 9299,
+      "sha256": "8d98c48ccf021e93c7bc366272f3346e26340df14c0c2e115c175f3c9d7d922e"
+    },
+    {
+      "id": "INTEGRATION-00320",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "INTEGRATION-00321",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "INTEGRATION-00322",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "INTEGRATION-00323",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "INTEGRATION-00324",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "INTEGRATION-00325",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "INTEGRATION-00326",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "INTEGRATION-00327",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "INTEGRATION-00328",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "INTEGRATION-00329",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "INTEGRATION-00330",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "INTEGRATION-00331",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "INTEGRATION-00332",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "INTEGRATION-00333",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "INTEGRATION-00334",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "INTEGRATION-00335",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "INTEGRATION-00336",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "INTEGRATION-00337",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "INTEGRATION-00338",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "INTEGRATION-00339",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "INTEGRATION-00340",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "INTEGRATION-00341",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "INTEGRATION-00342",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "INTEGRATION-00343",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "INTEGRATION-00344",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "INTEGRATION-00345",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "INTEGRATION-00346",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "INTEGRATION-00347",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "INTEGRATION-00348",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "INTEGRATION-00349",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "INTEGRATION-00350",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "INTEGRATION-00351",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "INTEGRATION-00352",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "INTEGRATION-00353",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "INTEGRATION-00354",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "INTEGRATION-00355",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "INTEGRATION-00356",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "INTEGRATION-00357",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "INTEGRATION-00358",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "INTEGRATION-00359",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "INTEGRATION-00360",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "INTEGRATION-00361",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "INTEGRATION-00362",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 108686,
+      "sha256": "4b8c088c1faf659da8366e8d7e740394fe0d6c29f34c73f2d6973a86bb63e4b6"
+    },
+    {
+      "id": "INTEGRATION-00363",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "INTEGRATION-00364",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "INTEGRATION-00365",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "INTEGRATION-00366",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "INTEGRATION-00367",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "INTEGRATION-00368",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "INTEGRATION-00369",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 2817,
+      "sha256": "cb7847cf7830ac23a3ff9948cd4c072dc7e6b61d8037435a69585d2a985c1763"
+    },
+    {
+      "id": "INTEGRATION-00370",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 8539,
+      "sha256": "7da3fbb566ece693a21203962822f5e218f65a75fe5d66ac8b7a5f7699f5db38"
+    },
+    {
+      "id": "INTEGRATION-00373",
+      "kind": "local",
+      "path": "local/research/codex/k3-ownrecord-producer-r1/positive291.bin",
+      "bytes": 166,
+      "sha256": "3f72f432a8c528d9cf34acb0e47d91c01a1a0c84e25776f879381627a6e83cb7"
+    },
+    {
+      "id": "INTEGRATION-00374",
+      "kind": "local",
+      "path": "local/research/codex/auth-profile-r1/native-final.json",
+      "bytes": 23974,
+      "sha256": "caa96f260857a73c3d588bea0dbd61a4be39065300f520392d4b80912678bf37"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/k3-ownprofile-integration-r1",
+      "path": "local/evidence-manifests/6b812108b2e7dd0a1b946c50deb2d55b75bdb922ea41d0b4ab7c1aba206b14b3.jsonl",
+      "sha256": "6b812108b2e7dd0a1b946c50deb2d55b75bdb922ea41d0b4ab7c1aba206b14b3",
+      "bytes": 66013,
+      "count": 295,
+      "files_bytes": 42259305
+    },
+    {
+      "run": "local/research/codex/wiki-reference-r1",
+      "path": "local/evidence-manifests/9a42151c571c604a7ff95528cfcf782ccf562410845bfc07f5aa66f8f933674b.jsonl",
+      "sha256": "9a42151c571c604a7ff95528cfcf782ccf562410845bfc07f5aa66f8f933674b",
+      "bytes": 1857,
+      "count": 8,
+      "files_bytes": 228166
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/074fbe33073469f54449f9fbfcc2ee218caaad353cc9d9b6c414a512f1636774.jsonl",
+      "sha256": "074fbe33073469f54449f9fbfcc2ee218caaad353cc9d9b6c414a512f1636774",
+      "bytes": 633,
+      "count": 3,
+      "files_bytes": 57097
     }
   ]
 }

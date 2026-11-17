@@ -99,15 +99,6 @@
       "limits": "This checkpoint new head/full local-history and CI still required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP292-match-store.json",
-      "bytes": 170915,
-      "sha256": "7260a095b8895e52530a1fe6d8b618acaea38990c88f288ba55c1207c18d410f",
-      "count": 589
-    }
-  ],
   "delta": {
     "added": [
       "Schema3 match history/outcomes/zero reward and account-owned character preference store.",
@@ -218,5 +209,286 @@
   ],
   "completed_feature_groups": [
     "rust-m6-backend-worker"
+  ],
+  "evidence": [
+    {
+      "id": "M6STORE292-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "M6STORE292-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3893,
+      "sha256": "34c804321a44675abfdd46caf14a33623e5d82b5ba9e3c1cf35926887cfbb09b"
+    },
+    {
+      "id": "M6STORE292-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 253056,
+      "sha256": "a3202b3e412fc831b0b01ce7550a0be71643e09a711caa8eda5f3f39e1462c4f"
+    },
+    {
+      "id": "M6STORE292-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 148893,
+      "sha256": "c4e788f72f78913282911d79692ed8c5cf8a99d68bbff87fd4d889f81ff0bd28"
+    },
+    {
+      "id": "M6STORE292-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 79069,
+      "sha256": "5f0ea2a737447df676c839f860879c20240c979013a669e161897953d697ef2d"
+    },
+    {
+      "id": "M6STORE292-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66262,
+      "sha256": "57c7fbac2a763d2409f8a33be5ff7bc4e48529bd280181980a936b41762dc6c5"
+    },
+    {
+      "id": "M6STORE292-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 35566,
+      "sha256": "ef3832e7d8966560e683c87eafb60e93e08c4f5ef8506b297fbd2b2c83c31044"
+    },
+    {
+      "id": "M6STORE292-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD108.json",
+      "bytes": 5012,
+      "sha256": "b0458c9d8eded31983d480215c7592aadc3cbabdbed213a02516e9d84b1200de"
+    },
+    {
+      "id": "M6STORE292-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 310363,
+      "sha256": "725fb6437eba75cc8be80e836a4ec9c7a68926782caf8fdb5e8b132b5fc90de0"
+    },
+    {
+      "id": "M6STORE292-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 32761,
+      "sha256": "3b3d3e2c605dc8a2e0147226a6a9d96648b907abdf9c3eecb923e3c678c0cc27"
+    },
+    {
+      "id": "M6STORE292-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m6-match-store.json",
+      "bytes": 6129,
+      "sha256": "749aa9e870168f33f21726e6d193ecefb8b16d5d1d6145954e88239f9b00ec2f"
+    },
+    {
+      "id": "M6STORE292-00012",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 265586,
+      "sha256": "a556263b9a11785ccef090a6d54049e6ade82dd65159293db6b5d83faddbacca"
+    },
+    {
+      "id": "M6STORE292-00013",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 78912,
+      "sha256": "799fdfa726a744a221ab4ccf96123360758f65042ddc263800aca2ebb1f83465"
+    },
+    {
+      "id": "M6STORE292-00014",
+      "kind": "repository",
+      "path": "docs/protocol/life-results.md",
+      "bytes": 102028,
+      "sha256": "6ca7a53087c320b7633f2231486deb44ebcd009af16e55f173139b3fd35ca04b"
+    },
+    {
+      "id": "M6STORE292-00016",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-adapter-delivery-receipt.json",
+      "bytes": 1084,
+      "sha256": "a1c4cfc6930f35e0c928cfc478c8269e316161331b14c37e219de6c0a3359398"
+    },
+    {
+      "id": "M6STORE292-00022",
+      "kind": "local",
+      "path": "local/research/codex/m6-combined-build-r1.txt",
+      "bytes": 168,
+      "sha256": "89a714ce7ef4326e5f94e6c5bbff4d6d064f167612b37ec62bb9f4bf5e8023c3"
+    },
+    {
+      "id": "M6STORE292-00023",
+      "kind": "local",
+      "path": "local/research/codex/m6-combined-clippy-r1.txt",
+      "bytes": 258,
+      "sha256": "f731a30858d2f5004e0e5050ace622afd22ddc883da19cbe31386cd2a9db394d"
+    },
+    {
+      "id": "M6STORE292-00024",
+      "kind": "local",
+      "path": "local/research/codex/m6-combined-fmt-r1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6STORE292-00025",
+      "kind": "local",
+      "path": "local/research/codex/m6-combined-workspace-tests-r1.txt",
+      "bytes": 20244,
+      "sha256": "4c9962587d6b3bb7eed68846f2941ca973d4ee61093da637d47231d7f61570c7"
+    },
+    {
+      "id": "M6STORE292-00036",
+      "kind": "local",
+      "path": "local/research/codex/m6-native-db-upgrade-r3/accounts.sqlite",
+      "bytes": 110592,
+      "sha256": "8f974dfaebd4072e17d88f4c5d6f65a589c9b00322ded78c276d501e0fe12f54"
+    },
+    {
+      "id": "M6STORE292-00037",
+      "kind": "local",
+      "path": "local/research/codex/m6-native-db-upgrade-r3/verification.json",
+      "bytes": 1021,
+      "sha256": "77651008be44bd63177f8c48323051f6631d49cf1c2d1f2ce8c1e010e9dca755"
+    },
+    {
+      "id": "M6STORE292-00043",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-bridge-retained-verification.json",
+      "bytes": 22367,
+      "sha256": "dde11a62d88c97682b587fa360f0ebeac0ad0d4e389c577e28af35e43e9e1e7d"
+    },
+    {
+      "id": "M6STORE292-00559",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/seal.json",
+      "bytes": 31574,
+      "sha256": "d8b0b1585e30049813d4e8f4b3d90cbd0a9a7ce97815d3a933a0cead31525def"
+    },
+    {
+      "id": "M6STORE292-00560",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-retained-r3/tests.txt",
+      "bytes": 3400,
+      "sha256": "ec005e2d134685c37830b2b6991c205675167032fdd3a93973046ff2091afd80"
+    },
+    {
+      "id": "M6STORE292-00579",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 34477,
+      "sha256": "bb10613cc2694242ce60f9bc53cdfe26a002463af6a89324dea17edb8a64ecf4"
+    },
+    {
+      "id": "M6STORE292-00580",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0003_match_history.sql",
+      "bytes": 2234,
+      "sha256": "cb8305293b1c7577da9f739afb4d5d0fbac63ac93d57c4fc6fec8069863dcbbf"
+    },
+    {
+      "id": "M6STORE292-00581",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/tests.rs",
+      "bytes": 69436,
+      "sha256": "38767406e765fbfb4c27a38dfe8500ba9c3e9309c5fbd7c6f23b55ebb987adac"
+    },
+    {
+      "id": "M6STORE292-00582",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 23208,
+      "sha256": "2b3ec0077c44d641ab43e5ff94eff3ad90afee2984211291a0f36e5f5b872915"
+    },
+    {
+      "id": "M6STORE292-00583",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker/tests.rs",
+      "bytes": 25878,
+      "sha256": "395974632288e6eaf3d0f8388a4f970f2e4da8bd40c70f5921ff139156f409b1"
+    },
+    {
+      "id": "M6STORE292-00584",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker.rs",
+      "bytes": 21117,
+      "sha256": "1aaba49120b9dc8b44f1543cecc3c5b0c56b4bfa43ef2254728fd6236bd54d31"
+    },
+    {
+      "id": "M6STORE292-00585",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/matches.rs",
+      "bytes": 26137,
+      "sha256": "2acc8e55b8860fe1a162a3614ddf84809c11822b0b6d27bd488a82fdcf1527e5"
+    },
+    {
+      "id": "M6STORE292-00586",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/preferences.rs",
+      "bytes": 6557,
+      "sha256": "683f80eedaf95b89497ab65a8b6c33a719b5ff06bda0ac23f02eb34cb889c95c"
+    },
+    {
+      "id": "M6STORE292-00587",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/tests.rs",
+      "bytes": 30740,
+      "sha256": "6e89d881d49ea0b55aaa508d1a7899590f45677fb10c8fb7491b406508db3490"
+    },
+    {
+      "id": "M6STORE292-00588",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts.rs",
+      "bytes": 30489,
+      "sha256": "846a9e45ac02c533fdb3252382e5ea624f57d609bef7f0f070977e1cd243e59e"
+    },
+    {
+      "id": "M6STORE292-00589",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bin/kr-admin.rs",
+      "bytes": 4971,
+      "sha256": "0b061cc7333634492db151aacfc6cc800e12a3b25395c7661f1002925081197a"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/d5946f5ac3735bd52a77890fc7ca24942cde3039d668a62f83b1801864a92cc1.jsonl",
+      "sha256": "d5946f5ac3735bd52a77890fc7ca24942cde3039d668a62f83b1801864a92cc1",
+      "bytes": 9829,
+      "count": 51,
+      "files_bytes": 708580
+    },
+    {
+      "run": "local/research/codex/m6-store-retained-r1",
+      "path": "local/evidence-manifests/c7cb66940ea04e794a1d7999d4241350d9e7a929b291dc2e3727c3be82f91076.jsonl",
+      "sha256": "c7cb66940ea04e794a1d7999d4241350d9e7a929b291dc2e3727c3be82f91076",
+      "bytes": 40340,
+      "count": 163,
+      "files_bytes": 259276362
+    },
+    {
+      "run": "local/research/codex/m6-store-retained-r2",
+      "path": "local/evidence-manifests/ab56a91f7527e26147ccc55cdb97cab9f0a53821b5753bad503d77c46ed12d36.jsonl",
+      "sha256": "ab56a91f7527e26147ccc55cdb97cab9f0a53821b5753bad503d77c46ed12d36",
+      "bytes": 42186,
+      "count": 169,
+      "files_bytes": 261569013
+    },
+    {
+      "run": "local/research/codex/m6-store-retained-r3",
+      "path": "local/evidence-manifests/3e0e50dbc2b309f6642e5c98c570e682e53c1ca1ffb0573169bf30eac4d472ce.jsonl",
+      "sha256": "3e0e50dbc2b309f6642e5c98c570e682e53c1ca1ffb0573169bf30eac4d472ce",
+      "bytes": 42938,
+      "count": 171,
+      "files_bytes": 351153030
+    }
   ]
 }

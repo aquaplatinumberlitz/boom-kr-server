@@ -147,15 +147,6 @@
       "limits": "Blocker/nexttestexplicit; no additionalnativefunctiongraph/patchguess."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP218-auth-lease-eof-blocker.json",
-      "bytes": 109765,
-      "sha256": "3d9a4b17d46d56f339a42f00e812bbe2430e39bc4fcf7cce7d2888410e9919af",
-      "count": 397
-    }
-  ],
   "delta": {
     "added": [
       "Nativeexpired/revokedpendingleasecontrols withvalidtoken/echo/policydeny, plusrepeatednativepostEOFfault/earlyends savedasfailure.",
@@ -262,6 +253,160 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP218newnativefailure/partialpolicy-deny/sourceboundarylimits/focusedEOFnexttest/backlinks syncedbeforecomplete; CP217completeunchanged/AUD063through216,next220 unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "AUTH218-00002",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/boundary-check.json",
+      "bytes": 2994,
+      "sha256": "0f57e39b6d3273829c42533294b3294dc5164d8622005b923a62925f6cf8db1a"
+    },
+    {
+      "id": "AUTH218-00003",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/caller-locator.json",
+      "bytes": 313,
+      "sha256": "f90297b2d5a721c13e4e090054471763286e0d39a4e65e69be8fff58a39d771e"
+    },
+    {
+      "id": "AUTH218-00005",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/fault-rtti-locator.json",
+      "bytes": 669,
+      "sha256": "907eba781fbb7dd374cc1633e16fef001be5afb49ddd94ecd38f11bc54ad9f4c"
+    },
+    {
+      "id": "AUTH218-00007",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/pending-callback-locator.json",
+      "bytes": 1021,
+      "sha256": "ab868a658330dd26f6682427ad7b775784dc856d452896bfa00dc755908b51f4"
+    },
+    {
+      "id": "AUTH218-00008",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first.json",
+      "bytes": 4298,
+      "sha256": "20ab2eb9a3eee1260de03e5be6295331ae8065951608de8da222ce36d95c7fc3"
+    },
+    {
+      "id": "AUTH218-00013",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/04-client.log",
+      "bytes": 315833,
+      "sha256": "74c6cbd43041fd7610a756b3be3ec2446fb0ccc7f8940606c1554e0d859e5de4"
+    },
+    {
+      "id": "AUTH218-00014",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-eof-r1/source-first/05-client.log",
+      "bytes": 315838,
+      "sha256": "799d1ca1482b49bd53e3fd4650df12f164314d1a059d233f778de9147276df03"
+    },
+    {
+      "id": "AUTH218-00022",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/PLAN.md",
+      "bytes": 85678,
+      "sha256": "68ffc7bc64e3761b1a0bd02fac8c015ccbc0c7ef12d04b44170f3e00a63b31dd"
+    },
+    {
+      "id": "AUTH218-00024",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/cp218-snapshot/docs/RESEARCH.md",
+      "bytes": 43760,
+      "sha256": "1e154dd496ac4872d9e63a79bc4df4aae18f0f45f48b453b8a2947277edbf12b"
+    },
+    {
+      "id": "AUTH218-00030",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/manual-review.json",
+      "bytes": 2241,
+      "sha256": "67f6f088e6c738f7e7cd1201deef52997368e08560d3e0f5b90c9929d25989e1"
+    },
+    {
+      "id": "AUTH218-00081",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-expired/raw-seal.json",
+      "bytes": 10626,
+      "sha256": "6d625c4c64dfbceb1937c52ca8b5f4e21a1ed2214668203cd364aeb259155585"
+    },
+    {
+      "id": "AUTH218-00245",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/native-revoked/raw-seal.json",
+      "bytes": 10626,
+      "sha256": "34a03aa310fdbb57f704ac60977e249ee3933b42eab9e81346514df4764ad6e0"
+    },
+    {
+      "id": "AUTH218-00360",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/source-first.json",
+      "bytes": 4216,
+      "sha256": "0fe5f4d8cd94aa802d56470daf925f50d15e7a184f464579a7b6ac8ea97e60a5"
+    },
+    {
+      "id": "AUTH218-00371",
+      "kind": "local",
+      "path": "local/research/codex/auth-lease-controls-r1/verification.json",
+      "bytes": 8626,
+      "sha256": "870ea7556356cda7378fb81eb9c1c707dada7f14257919470766469cbd145d99"
+    },
+    {
+      "id": "AUTH218-00382",
+      "kind": "local",
+      "path": "local/research/codex/cp218-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH218-00383",
+      "kind": "local",
+      "path": "local/research/codex/cp218-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "971419227a3a7fd333391e08c3ad9e62bebc2d13780364442cf39208cf90502b"
+    },
+    {
+      "id": "AUTH218-00389",
+      "kind": "local",
+      "path": "local/research/codex/cp218-issue14-updated.json",
+      "bytes": 36675,
+      "sha256": "911c821fccefeeae81761c0e28c2d07544591d266eaba79737bfdbc9f564757e"
+    },
+    {
+      "id": "AUTH218-00392",
+      "kind": "local",
+      "path": "local/research/codex/cp218-issue285-updated.json",
+      "bytes": 10001,
+      "sha256": "016515edbf5bdee28a4331b24b8f294036ce37b6ba6c719b1eb12664b667d7fe"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/9fbafeb1fdb2233848505f6d7ed359fc6b3ebf9ccd9ae2161b0167f75d96d68d.jsonl",
+      "sha256": "9fbafeb1fdb2233848505f6d7ed359fc6b3ebf9ccd9ae2161b0167f75d96d68d",
+      "bytes": 4098,
+      "count": 22,
+      "files_bytes": 6754563
+    },
+    {
+      "run": "local/research/codex/auth-channel-eof-r1",
+      "path": "local/evidence-manifests/a2846263244a6354a58cac811a4d8aaf08f2f2b9d4e82c8aaa73dacfb5db9215.jsonl",
+      "sha256": "a2846263244a6354a58cac811a4d8aaf08f2f2b9d4e82c8aaa73dacfb5db9215",
+      "bytes": 2382,
+      "count": 11,
+      "files_bytes": 916850
+    },
+    {
+      "run": "local/research/codex/auth-lease-controls-r1",
+      "path": "local/evidence-manifests/e57b4ffc6ad208b36d34bdd52458763332839056bc2c35f2bba8c2663188a473.jsonl",
+      "sha256": "e57b4ffc6ad208b36d34bdd52458763332839056bc2c35f2bba8c2663188a473",
+      "bytes": 80024,
+      "count": 346,
+      "files_bytes": 9845659
     }
   ]
 }

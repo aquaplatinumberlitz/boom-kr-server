@@ -3,6 +3,7 @@ import copy
 import hashlib
 import importlib.util
 import json
+import os
 from pathlib import Path
 import subprocess
 import tempfile
@@ -12,6 +13,67 @@ from unittest import mock
 spec = importlib.util.spec_from_file_location("checkpoint_checker", Path(__file__).with_name("check_checkpoints.py"))
 checker = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(checker)
+
+
+class HashCacheTest(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.dir = Path(self.temporary.name)
+        self.file = self.dir / "evidence.bin"
+        self.file.write_bytes(b"abc")
+        self.cache_path = self.dir / "cache" / "digest.json"
+
+    def test_hit_avoids_reading(self):
+        cache = checker.HashCache(self.cache_path)
+        first = cache.digest(self.file)
+        cache.save()
+        warm = checker.HashCache(self.cache_path)
+        with mock.patch.object(checker, "digest_uncached", side_effect=AssertionError("re-read")):
+            self.assertEqual(warm.digest(self.file), first)
+        self.assertEqual(first, hashlib.sha256(b"abc").hexdigest())
+
+    def test_size_or_mtime_change_rehashes(self):
+        cache = checker.HashCache(self.cache_path)
+        cache.digest(self.file)
+        cache.save()
+        self.file.write_bytes(b"abcd")
+        self.assertEqual(checker.HashCache(self.cache_path).digest(self.file), hashlib.sha256(b"abcd").hexdigest())
+        stat = self.file.stat()
+        self.file.write_bytes(b"xyzw")
+        os.utime(self.file, ns=(stat.st_atime_ns, stat.st_mtime_ns + 1))
+        cache = checker.HashCache(self.cache_path)
+        self.assertEqual(cache.digest(self.file), hashlib.sha256(b"xyzw").hexdigest())
+
+    def test_corrupt_cache_ignored(self):
+        self.cache_path.parent.mkdir(parents=True)
+        self.cache_path.write_text("{not json")
+        cache = checker.HashCache(self.cache_path)
+        self.assertEqual(cache.digest(self.file), hashlib.sha256(b"abc").hexdigest())
+        cache.save()
+        self.assertEqual(json.loads(self.cache_path.read_text())["version"], checker.HASH_CACHE_VERSION)
+
+    def test_errors_not_cached(self):
+        cache = checker.HashCache(self.cache_path)
+        with self.assertRaises(OSError):
+            cache.digest(self.dir / "missing")
+        self.assertEqual(cache.entries, {})
+
+    def test_digest_uncached_when_disabled(self):
+        with mock.patch.object(checker, "HASH_CACHE", None):
+            self.assertEqual(checker.digest(self.file), hashlib.sha256(b"abc").hexdigest())
+
+    def test_no_hash_cache_flag_bypasses(self):
+        root = self.dir / "root"
+        (root / "tools").mkdir(parents=True)
+        for argv, expected in ((["check", "--no-hash-cache"], None), (["check"], checker.HashCache)):
+            with mock.patch.object(checker, "ROOT", root), mock.patch.object(checker, "read_json", side_effect=OSError("x")), \
+                    mock.patch("sys.argv", argv), mock.patch.object(checker, "HASH_CACHE", None):
+                checker.main()
+                if expected is None:
+                    self.assertIsNone(checker.HASH_CACHE)
+                else:
+                    self.assertIsInstance(checker.HASH_CACHE, expected)
 
 
 class CheckpointsTest(unittest.TestCase):

@@ -115,15 +115,6 @@
       "limits": "Audit hoàn tất nhómchecker, không hoàn tất terrain G1."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP313-camp08-passable.json",
-      "bytes": 309256,
-      "sha256": "2b4141ba4f7ebfeb501fd7e1c756961bc071750c467afffcba996f535abdb948",
-      "count": 1135
-    }
-  ],
   "delta": {
     "added": [
       "Herb positive và Line02 ray/movement observations và nguồn ba nhóm byte theo hướng."
@@ -231,6 +222,352 @@
       "path": "AGENTS.md",
       "state": "unchanged",
       "reason": "Giữ quy trình, phạm vi và owner L1."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "PASS313-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3790,
+      "sha256": "e9a2586b406adef6c4204c03e20b82855a47a88c29fdaddd9dec2ab886d3d4ed"
+    },
+    {
+      "id": "PASS313-0002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 263397,
+      "sha256": "ca642fe9f92e3479bd5179f16c53dd948c5e53627e05b442e694bc12366cf209"
+    },
+    {
+      "id": "PASS313-0003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 158867,
+      "sha256": "b10f49f3367532943418d839f299520f417b021d85da7657d46a68f31e3a6620"
+    },
+    {
+      "id": "PASS313-0004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 83150,
+      "sha256": "3858389e1860f541ad8922f3d66eee1885d5c98ead388be2a9cd1db5c65147a3"
+    },
+    {
+      "id": "PASS313-0005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 44580,
+      "sha256": "b9404a9add4e21e3681d90155c8f906f8ad299836d3c36f46eb88cf723fcc66c"
+    },
+    {
+      "id": "PASS313-0006",
+      "kind": "repository",
+      "path": "docs/content/tile-semantics.md",
+      "bytes": 5103,
+      "sha256": "7145e8aae0134f13b62a8dadf55106bc6d9e44a0b181e37aba4e04830889f545"
+    },
+    {
+      "id": "PASS313-0007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/README.md",
+      "bytes": 19287,
+      "sha256": "f4bc645b98430ddc2d7f33a6be28175b2901be444c402ac99c45e666bb6cd678"
+    },
+    {
+      "id": "PASS313-0008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD124.json",
+      "bytes": 3477,
+      "sha256": "57a91fbedfcdbd719ce209cfcd9f12f1e149e4c7f82fad190a16b87d70a01d83"
+    },
+    {
+      "id": "PASS313-0009",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/side-publication-correction.json",
+      "bytes": 2287,
+      "sha256": "3296dedd7ec80ef20bb74c3c3f503c9577d07e15118ef061f811873bf1aa4e46"
+    },
+    {
+      "id": "PASS313-0010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-camp08-passable.json",
+      "bytes": 3255,
+      "sha256": "241c37cf3822b5bc804b37ea4f5252ea90ca8f03348ca93e7c703e5d51e15c61"
+    },
+    {
+      "id": "PASS313-0011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 276285,
+      "sha256": "eb94325fa956cf78d86bd9ae441b5afb8394e423f0626c8ff4fcdb33317f32b8"
+    },
+    {
+      "id": "PASS313-0012",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 63153,
+      "sha256": "ee4da561d5b20a211b680a885695546cbf0a165848b413cecc32308fa88ea053"
+    },
+    {
+      "id": "PASS313-0014",
+      "kind": "local",
+      "path": "local/research/codex/cp312-exact-head-exit.json",
+      "bytes": 121,
+      "sha256": "8bebbac6b8c974620fa07a189d52da059e2909ce7dc147143fdb47c292109004"
+    },
+    {
+      "id": "PASS313-0015",
+      "kind": "local",
+      "path": "local/research/codex/cp312-exact-head-full.txt",
+      "bytes": 220749,
+      "sha256": "c2545dc3cf3fe4fb34f6d582bec95df535214f41ae5fcbc3d02749a18d42e948"
+    },
+    {
+      "id": "PASS313-0016",
+      "kind": "local",
+      "path": "local/research/codex/cp313-ci-checkpoint-tests.txt",
+      "bytes": 169,
+      "sha256": "df1a8eb729ba8dc09a29d44b87c21c21bf95c721d44aca641b32b796d0733f4d"
+    },
+    {
+      "id": "PASS313-0017",
+      "kind": "local",
+      "path": "local/research/codex/cp313-docs-precheck.txt",
+      "bytes": 274,
+      "sha256": "9483b04ccd4d5cbba1fa79c73e459d8d8b27ae7f5e7f1586e3f192e6353696ec"
+    },
+    {
+      "id": "PASS313-0018",
+      "kind": "local",
+      "path": "local/research/codex/cp313-focused-verification.json",
+      "bytes": 2808,
+      "sha256": "2bb903a99c9906e3e38bbe809aa8a8ef6ee038922cb1c5538ec6d7d1cf6e4c43"
+    },
+    {
+      "id": "PASS313-0020",
+      "kind": "local",
+      "path": "local/research/codex/cp313-preservation-verification.json",
+      "bytes": 1373,
+      "sha256": "5a12eca758cb6334e0f971cf9c5645fb80bd47ceeb29921980ed6023a0143556"
+    },
+    {
+      "id": "PASS313-0302",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-passable-native-r1/observation-verification.json",
+      "bytes": 119457,
+      "sha256": "f1f21703a22644ba6f6ed19c0d33837c352877fe9f43c94d93ecdee6a5a8b186"
+    },
+    {
+      "id": "PASS313-0437",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-passable-native-r3/failure-verification.json",
+      "bytes": 22289,
+      "sha256": "d8b415f872fe7a2bd827ee38d5eca61e1c071ce94fe9652b7511d1642a2a7d9e"
+    },
+    {
+      "id": "PASS313-0575",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-passable-native-r4/failure-verification.json",
+      "bytes": 14007,
+      "sha256": "120e08aa6eb518e6e905fdf718e7786f73067b4e1f2d426edcb716cfa6fdd2a6"
+    },
+    {
+      "id": "PASS313-0711",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-passable-predicate-r1/flags.json",
+      "bytes": 6684,
+      "sha256": "aae0281270618d13e7a088a321037cff9e0ae27c35c0ca239c85a16993f378f1"
+    },
+    {
+      "id": "PASS313-0723",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-passable-predicate-r2/fields.json",
+      "bytes": 6932,
+      "sha256": "8db50e772c577fe1c1f8f7b6ff1321710d876c32208affb0eaa3159e51a2d1e3"
+    },
+    {
+      "id": "PASS313-0738",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-passable-predicate-r3/getter.json",
+      "bytes": 3830,
+      "sha256": "7cb41806e2ecaebfd24178fcb48456281229c743b49383de918e7f68cbcf4abe"
+    },
+    {
+      "id": "PASS313-1134",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 37743,
+      "sha256": "202d81f05090e4921efb5ce5bd5e75397831171d20ca05904e71633d917241b4"
+    },
+    {
+      "id": "PASS313-1135",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 16424,
+      "sha256": "8549dabd3bde4f81c556029abb30fd5548f6948de44868f870926090a110f51b"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/0398cf563ca050b89865cd4a1e71a51bdc5d2e21fa49736b46af620b4250ba8c.jsonl",
+      "sha256": "0398cf563ca050b89865cd4a1e71a51bdc5d2e21fa49736b46af620b4250ba8c",
+      "bytes": 4755,
+      "count": 25,
+      "files_bytes": 208012
+    },
+    {
+      "run": "local/research/codex/g1-camp08-c2s122-native-r2",
+      "path": "local/evidence-manifests/5c8f31dce4605846243d907e75bfb32f362eddaae17742a37f36e40100408719.jsonl",
+      "sha256": "5c8f31dce4605846243d907e75bfb32f362eddaae17742a37f36e40100408719",
+      "bytes": 1741,
+      "count": 7,
+      "files_bytes": 57420
+    },
+    {
+      "run": "local/research/codex/g1-camp08-cancellation-native-r1",
+      "path": "local/evidence-manifests/8dd3f958db1a6cff7255efcb91226721b52430fb6e7200f3caa9eca629c4a41b.jsonl",
+      "sha256": "8dd3f958db1a6cff7255efcb91226721b52430fb6e7200f3caa9eca629c4a41b",
+      "bytes": 8603,
+      "count": 37,
+      "files_bytes": 130750
+    },
+    {
+      "run": "local/research/codex/g1-camp08-cancellation-native-r2",
+      "path": "local/evidence-manifests/cad3816fe565a0a25f3972b6b786e1ce3200d212658a6d20e4f7a2e349f66a7b.jsonl",
+      "sha256": "cad3816fe565a0a25f3972b6b786e1ce3200d212658a6d20e4f7a2e349f66a7b",
+      "bytes": 3693,
+      "count": 15,
+      "files_bytes": 401181
+    },
+    {
+      "run": "local/research/codex/g1-camp08-condition-native-r7",
+      "path": "local/evidence-manifests/d82c4247b2e7088ace758c08db79ed1d11570d1061f8585031fc5e18e01b1f23.jsonl",
+      "sha256": "d82c4247b2e7088ace758c08db79ed1d11570d1061f8585031fc5e18e01b1f23",
+      "bytes": 1999,
+      "count": 8,
+      "files_bytes": 60971
+    },
+    {
+      "run": "local/research/codex/g1-camp08-durable-serving-native-r1",
+      "path": "local/evidence-manifests/9a55e7ebfba3059b825c1d8a583f45c9d3a35528403bf256415d4c3ace529643.jsonl",
+      "sha256": "9a55e7ebfba3059b825c1d8a583f45c9d3a35528403bf256415d4c3ace529643",
+      "bytes": 2060,
+      "count": 8,
+      "files_bytes": 107011
+    },
+    {
+      "run": "local/research/codex/g1-camp08-durable-serving-native-r2",
+      "path": "local/evidence-manifests/4bf30475f55424b41a6386e401a699d3cfacf7bb588719f05a65b1ce7a4e6e1a.jsonl",
+      "sha256": "4bf30475f55424b41a6386e401a699d3cfacf7bb588719f05a65b1ce7a4e6e1a",
+      "bytes": 8466,
+      "count": 36,
+      "files_bytes": 265277280
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r1",
+      "path": "local/evidence-manifests/92d0e65fb4cc465c12f8fdb0507591000e3cb1885362ee31b28ee31a38e3b232.jsonl",
+      "sha256": "92d0e65fb4cc465c12f8fdb0507591000e3cb1885362ee31b28ee31a38e3b232",
+      "bytes": 40409,
+      "count": 178,
+      "files_bytes": 293586385
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r2",
+      "path": "local/evidence-manifests/c20aa07f29ca54a88e3e43d25a695f40ffb3012de564641c40ad6ea42121cdd6.jsonl",
+      "sha256": "c20aa07f29ca54a88e3e43d25a695f40ffb3012de564641c40ad6ea42121cdd6",
+      "bytes": 24865,
+      "count": 112,
+      "files_bytes": 270325757
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r3",
+      "path": "local/evidence-manifests/4e1956448c5c0bb4b5e54396c613d47dbc3374b5a1368fce38596c1b6e62e8b0.jsonl",
+      "sha256": "4e1956448c5c0bb4b5e54396c613d47dbc3374b5a1368fce38596c1b6e62e8b0",
+      "bytes": 30165,
+      "count": 136,
+      "files_bytes": 279304497
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r4",
+      "path": "local/evidence-manifests/7e3ef6dd7476a05e05fc34f274cca2374d44d1a4c85bf4c7dbaa2a12087c1d99.jsonl",
+      "sha256": "7e3ef6dd7476a05e05fc34f274cca2374d44d1a4c85bf4c7dbaa2a12087c1d99",
+      "bytes": 31277,
+      "count": 140,
+      "files_bytes": 280077720
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-predicate-r1",
+      "path": "local/evidence-manifests/6b693b62a9cf356b7471faf7bee025624fab4f8de52ffc175a296269cf6235ed.jsonl",
+      "sha256": "6b693b62a9cf356b7471faf7bee025624fab4f8de52ffc175a296269cf6235ed",
+      "bytes": 2748,
+      "count": 13,
+      "files_bytes": 20269
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-predicate-r2",
+      "path": "local/evidence-manifests/d4b2eefe1b09ebe4c34c7b7d60c5e080b649717f3d5c07c6568ac018b0203d2c.jsonl",
+      "sha256": "d4b2eefe1b09ebe4c34c7b7d60c5e080b649717f3d5c07c6568ac018b0203d2c",
+      "bytes": 2962,
+      "count": 14,
+      "files_bytes": 17240
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-predicate-r3",
+      "path": "local/evidence-manifests/f875e9cd5e3f6a26dbd71711d2382c21a8138ff77a5ce737ea4aa1d7580a14ea.jsonl",
+      "sha256": "f875e9cd5e3f6a26dbd71711d2382c21a8138ff77a5ce737ea4aa1d7580a14ea",
+      "bytes": 1314,
+      "count": 6,
+      "files_bytes": 5303
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-r1",
+      "path": "local/evidence-manifests/9400b349ab3eb9b4430f737bdfd099b9e47ac387c1865b87133c2d751f8ce468.jsonl",
+      "sha256": "9400b349ab3eb9b4430f737bdfd099b9e47ac387c1865b87133c2d751f8ce468",
+      "bytes": 678,
+      "count": 3,
+      "files_bytes": 11327
+    },
+    {
+      "run": "local/research/codex/g1-camp08-seed-native-r1",
+      "path": "local/evidence-manifests/00556e5f540fca276581fcccbc35e4787a4ebc49e7fa7ec4e07667ac2f388077.jsonl",
+      "sha256": "00556e5f540fca276581fcccbc35e4787a4ebc49e7fa7ec4e07667ac2f388077",
+      "bytes": 11837,
+      "count": 54,
+      "files_bytes": 91992445
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-counters-native-r1",
+      "path": "local/evidence-manifests/5ed6e8f181501b2ea807785b7e08e03754188e32573e7b5e459f02e5668a6316.jsonl",
+      "sha256": "5ed6e8f181501b2ea807785b7e08e03754188e32573e7b5e459f02e5668a6316",
+      "bytes": 1381,
+      "count": 5,
+      "files_bytes": 43992
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-counters-native-r2",
+      "path": "local/evidence-manifests/e92c11b6f144ddf23017a58c6b752db1fd5f0649ad2a6fb897071e0e4f8feedc.jsonl",
+      "sha256": "e92c11b6f144ddf23017a58c6b752db1fd5f0649ad2a6fb897071e0e4f8feedc",
+      "bytes": 1381,
+      "count": 5,
+      "files_bytes": 41479
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-hits-native-r1",
+      "path": "local/evidence-manifests/786a759f614a136061bcec69d5d9286a8897a344959e8820c3c007f6321c3ee1.jsonl",
+      "sha256": "786a759f614a136061bcec69d5d9286a8897a344959e8820c3c007f6321c3ee1",
+      "bytes": 1337,
+      "count": 5,
+      "files_bytes": 42480
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-native-r1",
+      "path": "local/evidence-manifests/4c9ca9fb6e9e4b56ae56b04c3c9ab1744f9e6e6a46eb5564e17eff7997c1de77.jsonl",
+      "sha256": "4c9ca9fb6e9e4b56ae56b04c3c9ab1744f9e6e6a46eb5564e17eff7997c1de77",
+      "bytes": 67880,
+      "count": 302,
+      "files_bytes": 6418762680
     }
   ]
 }

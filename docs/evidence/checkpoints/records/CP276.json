@@ -117,15 +117,6 @@
       "limits": "Legacy candidate retained; later96/266 guard only managed branch. CI/exact-head riêng trước merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP276-m7a-room-selection.json",
-      "bytes": 558201,
-      "sha256": "988b0e582654865e1471dd75a81b62cad00e79597d9a560cb95016c1a78d7155",
-      "count": 2197
-    }
-  ],
   "delta": {
     "added": [
       "Opt-in account-owned managed room service, measured selection wire adapters and scoped native M7a proof."
@@ -291,5 +282,484 @@
   ],
   "completed_feature_groups": [
     "rust-m7a-room-selection"
+  ],
+  "evidence": [
+    {
+      "id": "M7A276-00001",
+      "kind": "repository",
+      "path": "/home/admin/boom/work/kr-m7-room-service/local/research/codex/append_cp276.py",
+      "bytes": 13081,
+      "sha256": "30b24c00179aea58b12742567f6d4c5c24ffc50c0ea17c0bd73c6aea359e229f"
+    },
+    {
+      "id": "M7A276-00002",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13422,
+      "sha256": "80b42ea1ec9c7d34767572dfafbae0e97faea1d402a3cdbcfa22dd30781cd7a3"
+    },
+    {
+      "id": "M7A276-00003",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3771,
+      "sha256": "75dcb154105625f5e8f09fe2662c8451afd0d3017ee788463e92ac52391759f8"
+    },
+    {
+      "id": "M7A276-00004",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 239718,
+      "sha256": "9b4d9b1adf9c58ed588389c23ff1dc9edde8eb697dbcb599d4b2ee5fc4986e89"
+    },
+    {
+      "id": "M7A276-00005",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 137532,
+      "sha256": "e0a42db3993d3d565168540eb6518781ca9585183fad12407a0fbeddab996979"
+    },
+    {
+      "id": "M7A276-00006",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 64616,
+      "sha256": "a040d285b4a41c9e16742b60160a3ca6a5b3722c46f1a133d8f0669804bf3e4f"
+    },
+    {
+      "id": "M7A276-00007",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "M7A276-00008",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 29107,
+      "sha256": "9d138b80535e31eac13bec23688236228d1277a1689a6fbec9d37d5c8f157588"
+    },
+    {
+      "id": "M7A276-00009",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 44478,
+      "sha256": "4af207b78ba204c4b52e3a50eef80ebbb1737dc4bae28f7335168df1393e3639"
+    },
+    {
+      "id": "M7A276-00010",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD092.json",
+      "bytes": 4881,
+      "sha256": "089b09c044e4193dc4534f3d92e37753e66f73fbb5ae2714da01401a423e69c2"
+    },
+    {
+      "id": "M7A276-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m7a-room-selection.json",
+      "bytes": 6200,
+      "sha256": "091f5e518d3bea15bd6d111f7dcd2e64a48928785333a5d5f71f5507af3b56df"
+    },
+    {
+      "id": "M7A276-00012",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 251387,
+      "sha256": "9402b72de1b03e395b5f87a692ab158d7be80190a3ef9eed0c2dcc2291963f83"
+    },
+    {
+      "id": "M7A276-00013",
+      "kind": "repository",
+      "path": "docs/protocol/room-membership.md",
+      "bytes": 104869,
+      "sha256": "b47d68d550b06cf813c76559721efc5d155c86a912983d6bbd5f335425328afb"
+    },
+    {
+      "id": "M7A276-00016",
+      "kind": "local",
+      "path": "local/research/codex/m7-catalog-final.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "M7A276-00017",
+      "kind": "local",
+      "path": "local/research/codex/m7-docs-final.txt",
+      "bytes": 274,
+      "sha256": "823557ce4dc354ad4d1c59820e78e5a0f1dfe615794314d6a8c6839f7b399e75"
+    },
+    {
+      "id": "M7A276-00019",
+      "kind": "local",
+      "path": "local/research/codex/m7-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7A276-00024",
+      "kind": "local",
+      "path": "local/research/codex/m7-legacy-accounts-r1/export-seal.json",
+      "bytes": 15457,
+      "sha256": "0438ec03cc370d6d51713a98997fffc6f05f871708ffc24e02a56ed2ff3a5b96"
+    },
+    {
+      "id": "M7A276-00099",
+      "kind": "local",
+      "path": "local/research/codex/m7-legacy-four-r1/export-seal.json",
+      "bytes": 20934,
+      "sha256": "78221f9da79176542e693dc680216651e20d3d0396f332b9083619ceb4f60bde"
+    },
+    {
+      "id": "M7A276-00220",
+      "kind": "local",
+      "path": "local/research/codex/m7-legacy-relay-r1/verification.json",
+      "bytes": 1630,
+      "sha256": "3eab23252bdc9b69120fc6e68b20678a253d5965ff76eff44be5c54ae6943eab"
+    },
+    {
+      "id": "M7A276-00322",
+      "kind": "local",
+      "path": "local/research/codex/m7-managed-synthetic-r10/export-seal.json",
+      "bytes": 19173,
+      "sha256": "90868f23feacf60d84223a9524234dddcc3d09b4fccc5a9a120eb1994c249174"
+    },
+    {
+      "id": "M7A276-00411",
+      "kind": "local",
+      "path": "local/research/codex/m7-managed-synthetic-r10/result.json",
+      "bytes": 806,
+      "sha256": "4649174f4a4f120fc53011f36492151a92bd25b47b96560762b4c7ac1147ed67"
+    },
+    {
+      "id": "M7A276-01304",
+      "kind": "local",
+      "path": "local/research/codex/m7-rooms-native-r1/native/failure-seal.json",
+      "bytes": 1584,
+      "sha256": "61f443508ecc3fcb039600278e62e81308a19876a0e6117ceec8ca6ca1e7da2e"
+    },
+    {
+      "id": "M7A276-01487",
+      "kind": "local",
+      "path": "local/research/codex/m7-rooms-native-r2/native/raw-seal.json",
+      "bytes": 11467,
+      "sha256": "a58743e5ac14648606f298a6567950a9dfc5a08e1f6fa82d6314ed8a65957254"
+    },
+    {
+      "id": "M7A276-01717",
+      "kind": "local",
+      "path": "local/research/codex/m7-rooms-native-r3/partial-verification.json",
+      "bytes": 29389,
+      "sha256": "031891aa2db48b13f30a5f9c0b21d4991161f780d0328efd9d39387e78877336"
+    },
+    {
+      "id": "M7A276-01889",
+      "kind": "local",
+      "path": "local/research/codex/m7-rooms-native-r4/native/raw-seal.json",
+      "bytes": 8930,
+      "sha256": "0852191195dd78b67285874e5beeb8326a6593d130a3322a4f5d95e3048f6955"
+    },
+    {
+      "id": "M7A276-01909",
+      "kind": "local",
+      "path": "local/research/codex/m7-rooms-native-r5/finally-control.json",
+      "bytes": 276,
+      "sha256": "d3aeb502e59b33ead2fbbea93b488722528b0d53d357ccfab22d2095b7b96c8b"
+    },
+    {
+      "id": "M7A276-02130",
+      "kind": "local",
+      "path": "local/research/codex/m7-rooms-native-r5/native/raw-seal.json",
+      "bytes": 22446,
+      "sha256": "f4206caaeebce64f739fa1236bd0c85f0591f4b1a98b71ec856df342f9b42875"
+    },
+    {
+      "id": "M7A276-02141",
+      "kind": "local",
+      "path": "local/research/codex/m7-rooms-native-r5/ui-review.json",
+      "bytes": 1917,
+      "sha256": "e08caf1250f6593da338c9a548513a0495578be05996d843ee6d5db6d690c442"
+    },
+    {
+      "id": "M7A276-02142",
+      "kind": "local",
+      "path": "local/research/codex/m7-rooms-native-r5/verification.json",
+      "bytes": 52939,
+      "sha256": "66e64ca5e9c507c3e50adb1a417eea38f23ec70a102c4e1dd3a86146277383c7"
+    },
+    {
+      "id": "M7A276-02150",
+      "kind": "local",
+      "path": "local/research/codex/m7-serving-build-setup96.txt",
+      "bytes": 169,
+      "sha256": "151aa2b0ee1436597586295bb154f250ad95594fb3f5268e0032fa6e2801279e"
+    },
+    {
+      "id": "M7A276-02155",
+      "kind": "local",
+      "path": "local/research/codex/m7-serving-clippy-setup96.txt",
+      "bytes": 169,
+      "sha256": "ad9a8cbb2013095e215aed8d8066000b6286bae635d6ceb02ea17aff1e719ac8"
+    },
+    {
+      "id": "M7A276-02157",
+      "kind": "local",
+      "path": "local/research/codex/m7-serving-source.tar",
+      "bytes": 696320,
+      "sha256": "4db32acde2c1655360f5aacc944f89118d64949bf66ad8f9e003e411108f8f45"
+    },
+    {
+      "id": "M7A276-02161",
+      "kind": "local",
+      "path": "local/research/codex/m7-serving-tests-setup96.txt",
+      "bytes": 13513,
+      "sha256": "e390182d140dee97d552d2e245289d7607962a76aadbf29cb4608fa48f5baccb"
+    },
+    {
+      "id": "M7A276-02186",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 33677,
+      "sha256": "db0ece2a16d395f316182c6764a5053ce46c27adf78efb576f0b6f159ae85921"
+    },
+    {
+      "id": "M7A276-02187",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 18783,
+      "sha256": "2d62814dac94092dd74863e0f54077e3b52500c5d65d13038a466b6fcbab56e3"
+    },
+    {
+      "id": "M7A276-02188",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 52796,
+      "sha256": "1b002cee98d5549c0ae15973d1453e4503733dfe9016d7e3ccafa62610c981c6"
+    },
+    {
+      "id": "M7A276-02189",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room.rs",
+      "bytes": 30053,
+      "sha256": "42632ca4623734306f78ea16c28505dfd41c71b014630113d1188b1921bec6fc"
+    },
+    {
+      "id": "M7A276-02190",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 123307,
+      "sha256": "c35bcb3e14cd29abd22c465073f1070febb2f7f4a3101f47c72b05f67d1fd676"
+    },
+    {
+      "id": "M7A276-02191",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "M7A276-02192",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "M7A276-02193",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "bytes": 7312,
+      "sha256": "89da35f4c5d423529ac7ca62aaa0a64ee349b24b08e163fc0d8466492b44a7ce"
+    },
+    {
+      "id": "M7A276-02194",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "M7A276-02195",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967.rs",
+      "bytes": 3904,
+      "sha256": "8b54d72bcb418316c467b989ecb99399ddb46d437a64431b2d396599e7e89f92"
+    },
+    {
+      "id": "M7A276-02196",
+      "kind": "repository",
+      "path": "tools/rust_account_fixture.py",
+      "bytes": 5050,
+      "sha256": "43907becc554b8e756d2456ca8a0dd6c519548d6e4d138707b1cc68cb09e6e09"
+    },
+    {
+      "id": "M7A276-02197",
+      "kind": "repository",
+      "path": "tools/test_rust_managed_rooms.py",
+      "bytes": 10187,
+      "sha256": "d5ab5d188796b4729766944e650716c6e64630bb80f4c0f1eb171b303a17c309"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/82b372fa48e623eeb1c4fa4074288462eb6c72e2faa44147b8b53d5967daae0d.jsonl",
+      "sha256": "82b372fa48e623eeb1c4fa4074288462eb6c72e2faa44147b8b53d5967daae0d",
+      "bytes": 12600,
+      "count": 69,
+      "files_bytes": 292503
+    },
+    {
+      "run": "local/research/codex/m7-legacy-accounts-r1",
+      "path": "local/evidence-manifests/2fa7ea0208269a6d78690fd8b0964b95de24ae608ce42e62efd2419bb4a37183.jsonl",
+      "sha256": "2fa7ea0208269a6d78690fd8b0964b95de24ae608ce42e62efd2419bb4a37183",
+      "bytes": 15491,
+      "count": 76,
+      "files_bytes": 108554356
+    },
+    {
+      "run": "local/research/codex/m7-legacy-four-r1",
+      "path": "local/evidence-manifests/5af85bca24353e49ed09379bb218967feeb8fb38a0f899f24aa2782071430c08.jsonl",
+      "sha256": "5af85bca24353e49ed09379bb218967feeb8fb38a0f899f24aa2782071430c08",
+      "bytes": 20990,
+      "count": 102,
+      "files_bytes": 59263089
+    },
+    {
+      "run": "local/research/codex/m7-legacy-relay-r1",
+      "path": "local/evidence-manifests/97184196c4b09819480d641046ec4af3395df6ed6961f0d781e3a1e651d5767e.jsonl",
+      "sha256": "97184196c4b09819480d641046ec4af3395df6ed6961f0d781e3a1e651d5767e",
+      "bytes": 4330,
+      "count": 22,
+      "files_bytes": 237924
+    },
+    {
+      "run": "local/research/codex/m7-managed-synthetic-r1",
+      "path": "local/evidence-manifests/78642a019307c5109ea92aab2f00db2f493acdbec8eaaaf55afc4f0a1d0ffa9f.jsonl",
+      "sha256": "78642a019307c5109ea92aab2f00db2f493acdbec8eaaaf55afc4f0a1d0ffa9f",
+      "bytes": 19093,
+      "count": 93,
+      "files_bytes": 108493563
+    },
+    {
+      "run": "local/research/codex/m7-managed-synthetic-r10",
+      "path": "local/evidence-manifests/70599ebf79da586e0b43d35d7a7a9a4e7ce13bbc6bbd571b4d2d66f83eff04be.jsonl",
+      "sha256": "70599ebf79da586e0b43d35d7a7a9a4e7ce13bbc6bbd571b4d2d66f83eff04be",
+      "bytes": 18998,
+      "count": 92,
+      "files_bytes": 108530640
+    },
+    {
+      "run": "local/research/codex/m7-managed-synthetic-r2",
+      "path": "local/evidence-manifests/c09cdd16289bbcf366be48c4a561b64ee1db30540782d295895dc6d8803af23c.jsonl",
+      "sha256": "c09cdd16289bbcf366be48c4a561b64ee1db30540782d295895dc6d8803af23c",
+      "bytes": 19093,
+      "count": 93,
+      "files_bytes": 108494918
+    },
+    {
+      "run": "local/research/codex/m7-managed-synthetic-r3",
+      "path": "local/evidence-manifests/1ec85b8a8686099eece187f1ae3ddfdcdf8999f4c04307057ce8db17d5af3444.jsonl",
+      "sha256": "1ec85b8a8686099eece187f1ae3ddfdcdf8999f4c04307057ce8db17d5af3444",
+      "bytes": 19094,
+      "count": 93,
+      "files_bytes": 108502522
+    },
+    {
+      "run": "local/research/codex/m7-managed-synthetic-r4",
+      "path": "local/evidence-manifests/e0f41748c983ec2ac5ad018b02b9cdd84fa5ed618391142f4087d5c1d7adfb6b.jsonl",
+      "sha256": "e0f41748c983ec2ac5ad018b02b9cdd84fa5ed618391142f4087d5c1d7adfb6b",
+      "bytes": 19094,
+      "count": 93,
+      "files_bytes": 108505559
+    },
+    {
+      "run": "local/research/codex/m7-managed-synthetic-r5",
+      "path": "local/evidence-manifests/f1610dfe828b6f90170df5205b290141e39c5372389ce505fb2ad37f22852b88.jsonl",
+      "sha256": "f1610dfe828b6f90170df5205b290141e39c5372389ce505fb2ad37f22852b88",
+      "bytes": 19094,
+      "count": 93,
+      "files_bytes": 108513999
+    },
+    {
+      "run": "local/research/codex/m7-managed-synthetic-r6",
+      "path": "local/evidence-manifests/cb4a610e0768b436bae81e407610f9b24270f555205e5be55ea3e121c8f10aae.jsonl",
+      "sha256": "cb4a610e0768b436bae81e407610f9b24270f555205e5be55ea3e121c8f10aae",
+      "bytes": 19512,
+      "count": 95,
+      "files_bytes": 108623124
+    },
+    {
+      "run": "local/research/codex/m7-managed-synthetic-r7",
+      "path": "local/evidence-manifests/be6275e71f39bd340855741fbf570fcc60814161808db70b68004488dcb499ad.jsonl",
+      "sha256": "be6275e71f39bd340855741fbf570fcc60814161808db70b68004488dcb499ad",
+      "bytes": 19292,
+      "count": 94,
+      "files_bytes": 108532006
+    },
+    {
+      "run": "local/research/codex/m7-managed-synthetic-r8",
+      "path": "local/evidence-manifests/842760e9b1d6c16a48957092cb68ff2c959f91a62371b2dee21098ad0544f1dc.jsonl",
+      "sha256": "842760e9b1d6c16a48957092cb68ff2c959f91a62371b2dee21098ad0544f1dc",
+      "bytes": 19292,
+      "count": 94,
+      "files_bytes": 108542127
+    },
+    {
+      "run": "local/research/codex/m7-managed-synthetic-r9",
+      "path": "local/evidence-manifests/a966b864f608d4912b755e2abfb34f8bbd2b55c27b9bd328b61b70769bb99332.jsonl",
+      "sha256": "a966b864f608d4912b755e2abfb34f8bbd2b55c27b9bd328b61b70769bb99332",
+      "bytes": 19292,
+      "count": 94,
+      "files_bytes": 108542493
+    },
+    {
+      "run": "local/research/codex/m7-room-source-r1",
+      "path": "local/evidence-manifests/464de86893dfcdc812f30037e433fa3502fd70b8bb42369d4745c6fd8c00973f.jsonl",
+      "sha256": "464de86893dfcdc812f30037e433fa3502fd70b8bb42369d4745c6fd8c00973f",
+      "bytes": 1107,
+      "count": 5,
+      "files_bytes": 78382
+    },
+    {
+      "run": "local/research/codex/m7-rooms-native-r1",
+      "path": "local/evidence-manifests/ebe21b0faf4b23156317788234041d24b23ff4054affc3004fa0ec6613b80427.jsonl",
+      "sha256": "ebe21b0faf4b23156317788234041d24b23ff4054affc3004fa0ec6613b80427",
+      "bytes": 25310,
+      "count": 123,
+      "files_bytes": 216333122
+    },
+    {
+      "run": "local/research/codex/m7-rooms-native-r2",
+      "path": "local/evidence-manifests/c1fd34373aa8c817ed46b0c1ce1ede2ce890f083478c4e69859faaf2324f39fd.jsonl",
+      "sha256": "c1fd34373aa8c817ed46b0c1ce1ede2ce890f083478c4e69859faaf2324f39fd",
+      "bytes": 37410,
+      "count": 181,
+      "files_bytes": 111866530
+    },
+    {
+      "run": "local/research/codex/m7-rooms-native-r3",
+      "path": "local/evidence-manifests/d4b92a52d6428fff7fe54b280213c117336a1eea3a91c9a46ca4b62c643acd5f.jsonl",
+      "sha256": "d4b92a52d6428fff7fe54b280213c117336a1eea3a91c9a46ca4b62c643acd5f",
+      "bytes": 46686,
+      "count": 225,
+      "files_bytes": 225368099
+    },
+    {
+      "run": "local/research/codex/m7-rooms-native-r4",
+      "path": "local/evidence-manifests/787ab441d10eb0d8c153a458bd7a4337b5c6702392a4eacdab2ac7d20574c3bd.jsonl",
+      "sha256": "787ab441d10eb0d8c153a458bd7a4337b5c6702392a4eacdab2ac7d20574c3bd",
+      "bytes": 36107,
+      "count": 175,
+      "files_bytes": 217340206
+    },
+    {
+      "run": "local/research/codex/m7-rooms-native-r5",
+      "path": "local/evidence-manifests/d07c61ef5935bdcf02e5141669736096a1bbf5a5efde12880d3a3d06319065f0.jsonl",
+      "sha256": "d07c61ef5935bdcf02e5141669736096a1bbf5a5efde12880d3a3d06319065f0",
+      "bytes": 49934,
+      "count": 240,
+      "files_bytes": 226576933
+    }
   ]
 }

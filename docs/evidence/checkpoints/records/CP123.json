@@ -137,21 +137,6 @@
       "limits": "Mechanical checks and selectedmanualaudit notautomaticsemantic/gateapproval."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP123-control-geometry.json",
-      "bytes": 351828,
-      "sha256": "a8446e24f6d630d69f6476a4236d32612c2e0a231d86e7ff1b396478fb9fc1a2",
-      "count": 1360
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP123-deep-chain-cycles.json",
-      "bytes": 349300,
-      "sha256": "adfdd04bb7e8a24cfd78471c1c940f3b37f3e31ecc56ad2a19e28a2a3efacbfc",
-      "count": 1382
-    }
-  ],
   "delta": {
     "added": [
       "Exactdeepchain+survivor/result/reset2 samejoinedrun/native195flags/laterownnoops.",
@@ -248,6 +233,210 @@
       "path": "docs/evidence/checkpoints/audits/AUD038.json",
       "state": "updated",
       "reason": "CP123newdeepchain2reset/scopedcontrols/CP106reusecorrection/AUD038/currentnextcorpus, nooldrecord/gatechange."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "CTRL-00004",
+      "kind": "local",
+      "path": "local/research/codex/current-terrain-survivor-r1/chain-summary.json",
+      "bytes": 95615,
+      "sha256": "09b72d2e0a9dd7ba4a113dcee6de58d876296608f3e3f236f48bcf5e4f91427e"
+    },
+    {
+      "id": "CTRL-01242",
+      "kind": "local",
+      "path": "local/research/codex/current-terrain-survivor-r1/cycles/run.json",
+      "bytes": 444159,
+      "sha256": "69ff39815350fc55d74507bc1b5db9c2ce68059f860f5ff16b7895a970c6dfa1"
+    },
+    {
+      "id": "CTRL-01272",
+      "kind": "local",
+      "path": "local/research/codex/current-terrain-survivor-r1/raw-seal.json",
+      "bytes": 260826,
+      "sha256": "071cbbae7b71a44dbacd1797de8ec55dc8ee03069aedf1c9db2b9f3ef43181c5"
+    },
+    {
+      "id": "CTRL-01351",
+      "kind": "local",
+      "path": "local/research/codex/current-terrain-survivor-r1/scope-correction.json",
+      "bytes": 6172,
+      "sha256": "f18f2cf90f5eb775a08525e11cddf68e8ad7bc0dc3e9135846258af081f2a937"
+    },
+    {
+      "id": "CTRL-01353",
+      "kind": "local",
+      "path": "local/research/codex/current-terrain-survivor-r1/strict-check.txt",
+      "bytes": 1082,
+      "sha256": "d92dd72a8797a4c271d1935388c7be3075a705bd67053c251123ad9eda13b0e2"
+    },
+    {
+      "id": "CYCLE-00002",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/analysis-correction.json",
+      "bytes": 1170,
+      "sha256": "93f4bdb6b2c90f66682c4f837a59f3d0f30ae011ef719117cd8d042bb38d9cc5"
+    },
+    {
+      "id": "CYCLE-00005",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "CYCLE-00007",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/chain-summary.json",
+      "bytes": 95439,
+      "sha256": "43897c994da9df0e81dfbaa4bf0d67265feb8b4f01c4005addd3e555e703c657"
+    },
+    {
+      "id": "CYCLE-01249",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/cycles/run.json",
+      "bytes": 439401,
+      "sha256": "747b9a576eeb32c1a80c189b9fffdc09cf26aabb8e3981d69a54cde21b7ed411"
+    },
+    {
+      "id": "CYCLE-01257",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/cycles-check.txt",
+      "bytes": 92,
+      "sha256": "e999366e5e462baace43275949050b43bf1788cbce1e921976168b29f4c99aa4"
+    },
+    {
+      "id": "CYCLE-01259",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/cycles-verification.json",
+      "bytes": 113524,
+      "sha256": "b8c288381329ee7a5cb1bb283b2a887fc351d8044c99eccd044663106ab62949"
+    },
+    {
+      "id": "CYCLE-01263",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/docs-check.txt",
+      "bytes": 175,
+      "sha256": "a135cf5ec50ce395a4e8633bcead3baab353c6065877c691b5c69dd3ddf9be45"
+    },
+    {
+      "id": "CYCLE-01264",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/fields-check.txt",
+      "bytes": 32,
+      "sha256": "5d07519f7ff45db69683c5cb19fa7801640ae7111e450576dba4f7e2e134ea06"
+    },
+    {
+      "id": "CYCLE-01266",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/flags-check.txt",
+      "bytes": 54,
+      "sha256": "a0eb81f27bd5be165c39fb7a026407402d50754fa28495dfaf8f59109a0f9196"
+    },
+    {
+      "id": "CYCLE-01272",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/issues-check.txt",
+      "bytes": 130,
+      "sha256": "97b4de27daa2388ef58f5caeb442baf8f0fceeb4e00be8f2f27d34931ed9ee07"
+    },
+    {
+      "id": "CYCLE-01274",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/native-reports-check.txt",
+      "bytes": 29,
+      "sha256": "5ab2ef00355541f4fe4f5e3a7ffd6cacc78d5eae336d66dae6e5ca2839dc4558"
+    },
+    {
+      "id": "CYCLE-01276",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/native153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "CYCLE-01287",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/raw-seal.json",
+      "bytes": 250918,
+      "sha256": "6c13000af2ee8df60fb81ca9e16a30594c06b9da9a2fd861a9a09b25f61012e1"
+    },
+    {
+      "id": "CYCLE-01328",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/reuse-question.json",
+      "bytes": 2602,
+      "sha256": "6b1cd3be4a2f654d6c4fae7024f840311eb315d820d69e9f7c528f7a321c6c3b"
+    },
+    {
+      "id": "CYCLE-01367",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/strict-check.txt",
+      "bytes": 1096,
+      "sha256": "5a1fe229a31740677ed2a18496cbab51116d0ef7b2acae1da892ec422e8d4ca7"
+    },
+    {
+      "id": "CYCLE-01375",
+      "kind": "local",
+      "path": "local/research/codex/deep-chain-cycles-r2/visual-review.json",
+      "bytes": 628,
+      "sha256": "9a9275e078064f5295691b7f0bd8fede16ddd5646d1920c05b006e10b7df4d19"
+    },
+    {
+      "id": "CYCLE-01380",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/server-tests.txt",
+      "bytes": 291,
+      "sha256": "09d483bec50aa52bb61c63c8fb6926c78fd85e547f381b90d870b6e3a0ada3ee"
+    },
+    {
+      "id": "CYCLE-01381",
+      "kind": "local",
+      "path": "local/research/codex/life-admission-corpus-r1/reuse-question.json",
+      "bytes": 3463,
+      "sha256": "809976bc43cb95aaeb36154a2aad49b85d62284e20ef8c68859c3547f4bedf6d"
+    },
+    {
+      "id": "CYCLE-01382",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD038.json",
+      "bytes": 3690,
+      "sha256": "b2620fcf69720f32d904760cb084205d4226f01ac123764d600a690152d25c96"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/current-terrain-survivor-r1",
+      "path": "local/evidence-manifests/f7f1354a3b7def8148cc7eb43c7b910e9649dcf6bbe1d94d7187bae922458dd1.jsonl",
+      "sha256": "f7f1354a3b7def8148cc7eb43c7b910e9649dcf6bbe1d94d7187bae922458dd1",
+      "bytes": 282468,
+      "count": 1353,
+      "files_bytes": 56968932
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/af30812db0abc8d588619536e08f84d73aa0a908b576b4d971badc42a66f3f97.jsonl",
+      "sha256": "af30812db0abc8d588619536e08f84d73aa0a908b576b4d971badc42a66f3f97",
+      "bytes": 830,
+      "count": 4,
+      "files_bytes": 129628
+    },
+    {
+      "run": "local/research/codex/deep-chain-cycles-r2",
+      "path": "local/evidence-manifests/8c3b7d3db8b5165f2ebcde8c538ac8acba3fed00fa11f316ae035ff6939510bd.jsonl",
+      "sha256": "8c3b7d3db8b5165f2ebcde8c538ac8acba3fed00fa11f316ae035ff6939510bd",
+      "bytes": 275761,
+      "count": 1359,
+      "files_bytes": 58531934
+    },
+    {
+      "run": "local/research/codex/recursive-chain-r1",
+      "path": "local/evidence-manifests/86aea35ffda7de37df3d7309c61975026e79e7046daa0b69163202b6eaf3ea45.jsonl",
+      "sha256": "86aea35ffda7de37df3d7309c61975026e79e7046daa0b69163202b6eaf3ea45",
+      "bytes": 467,
+      "count": 2,
+      "files_bytes": 429
     }
   ]
 }

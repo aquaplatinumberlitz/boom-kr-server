@@ -179,15 +179,6 @@
       "limits": "NewroutedKRproofnotNATorInternet; nextisolatedtuplecontrols."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP192-routed-Wine.json",
-      "bytes": 442822,
-      "sha256": "4c455f5294852e5928c4f07aa42079394e8d2abe999bfea764fc41e30dd51f22",
-      "count": 1708
-    }
-  ],
   "delta": {
     "added": [
       "ActualKRrouted2subnet/2Bnormalwins/nativepeer/reset/Start3/PCAPendpointproof onunchangedportablebundle.",
@@ -291,6 +282,721 @@
       "path": "docs/evidence/checkpoints/audits/AUD057.json",
       "state": "updated",
       "reason": "CP192routedproof/ownerWineenvironment/currentgaps/delivery/AUD057 synchronizedbeforecomplete; PLANsoleorder/oldrecordsimmutable/nextaudit196."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ROUTED192-00008",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "ROUTED192-00015",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "ROUTED192-00018",
+      "kind": "local",
+      "path": "local/research/codex/cp191-exact-head-checkpoints.txt",
+      "bytes": 138,
+      "sha256": "28f75660d7c2d31a682e72a4e90d28cfe324393f0302c6ff5183cdc8f47ef8d6"
+    },
+    {
+      "id": "ROUTED192-00020",
+      "kind": "local",
+      "path": "local/research/codex/cp191-exact-head-server.txt",
+      "bytes": 394,
+      "sha256": "eb02abaf3360c953148dfc01c8256a87ca504836cb453ffec0b5974816f0be09"
+    },
+    {
+      "id": "ROUTED192-00032",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "ROUTED192-00036",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "ROUTED192-00106",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "ROUTED192-00107",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "ROUTED192-00108",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "ROUTED192-00113",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/B-winner-reset-verification.json",
+      "bytes": 3347,
+      "sha256": "b42bb929cd5d1aabc0f82957ff8dd493270cca4acb96245c359e5b28dab53e43"
+    },
+    {
+      "id": "ROUTED192-00120",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/contest-reset-verification.json",
+      "bytes": 1269,
+      "sha256": "fd21e089ac6e30f7ab00ff04b07f5e6dbbc9bdc6d49c73f2090caac3974e3dba"
+    },
+    {
+      "id": "ROUTED192-00121",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/cp192-snapshot/AGENTS.md",
+      "bytes": 8412,
+      "sha256": "a7791dc5ea0f839734382c7d23bfdbeeeddd621647cb8a019d9d92ca2a5bfb7a"
+    },
+    {
+      "id": "ROUTED192-00124",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/cp192-snapshot/docs/PLAN.md",
+      "bytes": 52659,
+      "sha256": "ee42656c6ab3f150d905985c21b4b44a5931064b679c0532ffbde45a9b060250"
+    },
+    {
+      "id": "ROUTED192-00127",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/cp192-snapshot/docs/evidence/checkpoints/audits/AUD057.json",
+      "bytes": 7808,
+      "sha256": "5319f466a49ccec483bb378022da7a2d662ae0176daf37781d9c1ace1985ad59"
+    },
+    {
+      "id": "ROUTED192-00129",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/cp192-snapshot/docs/evidence/owner-directives/wine-accepted.json",
+      "bytes": 891,
+      "sha256": "6e33c299d93b074f203d6ac0331659a9e1e58f39b75561571eb89de33c7e308e"
+    },
+    {
+      "id": "ROUTED192-01528",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "3098098b2540c6d85ea44bd939b205ff9341472392741ad04d2240234e978701"
+    },
+    {
+      "id": "ROUTED192-01529",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/endpoint-peer-verification.json",
+      "bytes": 194642,
+      "sha256": "017537f5159e8843f50d2c2cc92061623f1f5d349155065c2d1fe36f4e3f4fda"
+    },
+    {
+      "id": "ROUTED192-01542",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/life-agreement-verification.json",
+      "bytes": 6784,
+      "sha256": "00d09c21d6334de16dffdf751dfb33ff241515cf5334fe082874a5de2f35b6a2"
+    },
+    {
+      "id": "ROUTED192-01553",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/raw-seal.json",
+      "bytes": 286341,
+      "sha256": "4897b652a7957b22a147bea8eb0052f5869425ce64727fc3f83363e935e45ee3"
+    },
+    {
+      "id": "ROUTED192-01620",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/test-reuse.json",
+      "bytes": 12117,
+      "sha256": "f499bb4b8c6fd1826ada044f072ebc8d78b62b9b6938bd55cb2e0803532faa58"
+    },
+    {
+      "id": "ROUTED192-01630",
+      "kind": "local",
+      "path": "local/research/codex/routed-KR-two-cycles-r1/visual-review.json",
+      "bytes": 457,
+      "sha256": "5ba9e00420d9049a06baf392828225ee72977c25c84740b57aafbde73e80479f"
+    },
+    {
+      "id": "ROUTED192-01632",
+      "kind": "local",
+      "path": "local/research/codex/routed-endpoint-review-r1/source-first-r2.json",
+      "bytes": 2866,
+      "sha256": "51db1054d32d0b9c0ec6ccbddc7b5f618d32a48462fbc174beb7ae8f80e89ae1"
+    },
+    {
+      "id": "ROUTED192-01634",
+      "kind": "local",
+      "path": "local/research/codex/routed-endpoint-review-r1/verification.json",
+      "bytes": 9890,
+      "sha256": "2a16f8d663baa5e79a85aacacdc63d7f876a9b161e659db83f9d8532cb968a00"
+    },
+    {
+      "id": "ROUTED192-01635",
+      "kind": "local",
+      "path": "local/research/codex/routed-endpoint-review-r1/verifier-two-key-assumption.log",
+      "bytes": 660,
+      "sha256": "7e869a49d98c3335224e887bb361f4bf6b77d2aa94393277a3787d645a41955d"
+    },
+    {
+      "id": "ROUTED192-01636",
+      "kind": "local",
+      "path": "local/research/codex/routed-endpoint-review-r1/verifier-two-key-assumption.py",
+      "bytes": 9922,
+      "sha256": "221c057a44e9f36bd29984e9dc1bcca29ab17df705bae970a654b3e8d03b71ef"
+    },
+    {
+      "id": "ROUTED192-01646",
+      "kind": "local",
+      "path": "local/research/codex/routed-transport-r1/outer.json",
+      "bytes": 630,
+      "sha256": "3fb1127100a4b8760f30e38acfa87b423af865d63338b5cfafcd770b04ffc48e"
+    },
+    {
+      "id": "ROUTED192-01647",
+      "kind": "local",
+      "path": "local/research/codex/routed-transport-r1/raw-seal.json",
+      "bytes": 2124,
+      "sha256": "56d328a74292e0f9bc1fd619ff9c587daaa5f33eea2e0318bff70bf34c9afaf1"
+    },
+    {
+      "id": "ROUTED192-01648",
+      "kind": "local",
+      "path": "local/research/codex/routed-transport-r1/report.json",
+      "bytes": 18704,
+      "sha256": "2e15c2d62b9dc1892d63f0c4bbd371962ba6e38957ffe72e7a05e574e5d2d2e9"
+    },
+    {
+      "id": "ROUTED192-01652",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "ROUTED192-01656",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "ROUTED192-01658",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "ROUTED192-01659",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "ROUTED192-01660",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "ROUTED192-01661",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "ROUTED192-01662",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "ROUTED192-01663",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109744,
+      "sha256": "12362a460ade30fbd48f14dd8bada6a3126e330c8058b71dc7bee5d63e2d9584"
+    },
+    {
+      "id": "ROUTED192-01664",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "ROUTED192-01665",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "ROUTED192-01666",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "ROUTED192-01667",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "ROUTED192-01668",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "ROUTED192-01669",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "ROUTED192-01670",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "ROUTED192-01671",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "ROUTED192-01672",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "ROUTED192-01673",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "ROUTED192-01674",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "ROUTED192-01675",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "ROUTED192-01676",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "ROUTED192-01677",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "ROUTED192-01678",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "ROUTED192-01679",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "ROUTED192-01680",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "ROUTED192-01681",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "ROUTED192-01682",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "ROUTED192-01683",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "ROUTED192-01684",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "ROUTED192-01685",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "ROUTED192-01686",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "ROUTED192-01687",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "ROUTED192-01688",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "ROUTED192-01689",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "ROUTED192-01690",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "ROUTED192-01691",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "ROUTED192-01692",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "ROUTED192-01693",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "ROUTED192-01694",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "ROUTED192-01695",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "ROUTED192-01696",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "ROUTED192-01697",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "ROUTED192-01698",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "ROUTED192-01699",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "ROUTED192-01700",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "ROUTED192-01701",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "ROUTED192-01702",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "ROUTED192-01703",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "ROUTED192-01704",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "ROUTED192-01705",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "ROUTED192-01706",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "ROUTED192-01707",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "ROUTED192-01708",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/6a7fb604eeaf349fabc8317a45b82385c757acd43d12550857e3a05504534262.jsonl",
+      "sha256": "6a7fb604eeaf349fabc8317a45b82385c757acd43d12550857e3a05504534262",
+      "bytes": 469,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/c1bb8810b6198a91dfcd9df169835395794df8f60c5acd0d6fec3eb226ce903f.jsonl",
+      "sha256": "c1bb8810b6198a91dfcd9df169835395794df8f60c5acd0d6fec3eb226ce903f",
+      "bytes": 3160,
+      "count": 17,
+      "files_bytes": 141893
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/fb0c6d06c42793912ff24305be53d9db7cb4ad935f9521e79a1bc11e88eb1bbb.jsonl",
+      "sha256": "fb0c6d06c42793912ff24305be53d9db7cb4ad935f9521e79a1bc11e88eb1bbb",
+      "bytes": 651,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/256b07f3ace97913cf1628f9ad13c95e7552ee4cc99eafe8b65bbc5106117d5d.jsonl",
+      "sha256": "256b07f3ace97913cf1628f9ad13c95e7552ee4cc99eafe8b65bbc5106117d5d",
+      "bytes": 444,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/2d8029d070394552fd8def550df7c9bd06c6462c844242e7bddf2b9e7f2c91a1.jsonl",
+      "sha256": "2d8029d070394552fd8def550df7c9bd06c6462c844242e7bddf2b9e7f2c91a1",
+      "bytes": 653,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/9233af4d5d62f48deef4c72574aa535abf97ec35495ae972478ae11c423da4bb.jsonl",
+      "sha256": "9233af4d5d62f48deef4c72574aa535abf97ec35495ae972478ae11c423da4bb",
+      "bytes": 467,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/9b6b3c3e6dbd207ff493c25f470875a154f4c80c2f0d37b3d723cefdca9c0b79.jsonl",
+      "sha256": "9b6b3c3e6dbd207ff493c25f470875a154f4c80c2f0d37b3d723cefdca9c0b79",
+      "bytes": 1031,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/b3c7f09a02d24a076dd9c1f78afef678aaf62f17763d3a6de3b6c717ff6213a9.jsonl",
+      "sha256": "b3c7f09a02d24a076dd9c1f78afef678aaf62f17763d3a6de3b6c717ff6213a9",
+      "bytes": 510,
+      "count": 2,
+      "files_bytes": 63749120
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/4ef01ff3ff652c1af627b61d7db606045725eb2cb3f8f5c0ae314b68f0eab1dd.jsonl",
+      "sha256": "4ef01ff3ff652c1af627b61d7db606045725eb2cb3f8f5c0ae314b68f0eab1dd",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/26d421e08d681cf87fe646d62d9b9d02790d18b7f1358fa0594e5a31461991e1.jsonl",
+      "sha256": "26d421e08d681cf87fe646d62d9b9d02790d18b7f1358fa0594e5a31461991e1",
+      "bytes": 449,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/portable-bundle-r1",
+      "path": "local/evidence-manifests/bb3c759bd928ae1284e8ad53b8ff960e94e551382b9a470c2bb3c711bdde8e32.jsonl",
+      "sha256": "bb3c759bd928ae1284e8ad53b8ff960e94e551382b9a470c2bb3c711bdde8e32",
+      "bytes": 15426,
+      "count": 60,
+      "files_bytes": 175668
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/542ea083fd73e99cc4d752ce9ee5cd4b11560c53b75df1d80afe50408d35e2a5.jsonl",
+      "sha256": "542ea083fd73e99cc4d752ce9ee5cd4b11560c53b75df1d80afe50408d35e2a5",
+      "bytes": 650,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/0ec80daec3dcdf24d86fd44c0cc86c261000f00041d69c9a57416d18b0ee7eae.jsonl",
+      "sha256": "0ec80daec3dcdf24d86fd44c0cc86c261000f00041d69c9a57416d18b0ee7eae",
+      "bytes": 996,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/d65381594addf953682dcb83686c2cf96a8d02c13d13162941ab614af8b29fc4.jsonl",
+      "sha256": "d65381594addf953682dcb83686c2cf96a8d02c13d13162941ab614af8b29fc4",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/a0ebf2b1479b497628ed9cf25093ae7bac936edfd53e0d49b2fc795c21300d20.jsonl",
+      "sha256": "a0ebf2b1479b497628ed9cf25093ae7bac936edfd53e0d49b2fc795c21300d20",
+      "bytes": 459,
+      "count": 2,
+      "files_bytes": 384
+    },
+    {
+      "run": "local/research/codex/routed-KR-two-cycles-r1",
+      "path": "local/evidence-manifests/2f05a354ac16623781bf6312160c8e4bf173b90545c5c7a05202dabcfb0cc654.jsonl",
+      "sha256": "2f05a354ac16623781bf6312160c8e4bf173b90545c5c7a05202dabcfb0cc654",
+      "bytes": 315750,
+      "count": 1506,
+      "files_bytes": 68971409
+    },
+    {
+      "run": "local/research/codex/routed-endpoint-review-r1",
+      "path": "local/evidence-manifests/e34cd94140890778cde302e7bd828f2a0a04038b85183fb377bf8d263076fab3.jsonl",
+      "sha256": "e34cd94140890778cde302e7bd828f2a0a04038b85183fb377bf8d263076fab3",
+      "bytes": 490,
+      "count": 2,
+      "files_bytes": 4084
+    },
+    {
+      "run": "local/research/codex/routed-transport-r1",
+      "path": "local/evidence-manifests/1b0cbf9439001a43bbe636b3cccb66cfce3faa1430de9d68a3725cea72794da9.jsonl",
+      "sha256": "1b0cbf9439001a43bbe636b3cccb66cfce3faa1430de9d68a3725cea72794da9",
+      "bytes": 1394,
+      "count": 7,
+      "files_bytes": 2748
     }
   ]
 }

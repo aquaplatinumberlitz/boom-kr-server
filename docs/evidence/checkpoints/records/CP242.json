@@ -145,15 +145,6 @@
       "limits": "Codexselfcheckunderreviewwaiver;noindependentreview/fullservice/epicclosure/checkersemantics."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP242-rust-m3-controls.json",
-      "bytes": 285896,
-      "sha256": "000a59e6b7d96f794bedb16a35987ae32ce25f35c699ab74da28d85f4a0bdac1",
-      "count": 1062
-    }
-  ],
   "delta": {
     "added": [
       "RemainingM3itemreset/oldUDP-currentpositive/queuecontrol/nativeproof;manualscopedM3acceptance.",
@@ -282,6 +273,237 @@
       "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
       "state": "unchanged",
       "reason": "Existingmodulararchitecture/backenddesignunchanged;PLANkeepsorder/newcontractlinkedfromcatalog,notarchitecturedecision."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST242-00003",
+      "kind": "local",
+      "path": "local/research/codex/cp242-docs-final.txt",
+      "bytes": 175,
+      "sha256": "cbfae7d550d1ed4e71fe2442522359ac0def3cacf04f6743f0b3bac822da86fa"
+    },
+    {
+      "id": "RUST242-00022",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-build-r2.txt",
+      "bytes": 166,
+      "sha256": "026a7f2c12f255aa50eeef69ef4f53c9341e9e00d65c8a47a5bb77dcc6a03787"
+    },
+    {
+      "id": "RUST242-00024",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-clippy-r2.txt",
+      "bytes": 166,
+      "sha256": "aa613b457ee6427a6022f2e11a9215c77e8676b05c2445b5947893836d469408"
+    },
+    {
+      "id": "RUST242-00025",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-delivery-r1/manual-acceptance.json",
+      "bytes": 4795,
+      "sha256": "b04cccdf781f0a7bf3d8836a044fa0023434c75ac9eec04c3f55e5414664c59e"
+    },
+    {
+      "id": "RUST242-00028",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 92395,
+      "sha256": "4a6a7396eab8a603ccb68e8ea304313c0a83c7c05134fb5edfd7d6cc856d689c"
+    },
+    {
+      "id": "RUST242-00038",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-delivery-r1/snapshot/rust/crates/kr-service/src/lib.rs",
+      "bytes": 34876,
+      "sha256": "25edc03ddc7045cb59abc26bec04831530a32d9af8471d95056e47cb68e05c3c"
+    },
+    {
+      "id": "RUST242-00039",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-delivery-r1/snapshot/rust/crates/kr-service/src/logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "RUST242-00040",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 67231,
+      "sha256": "b18f3f3e718ea72240855d027d11cfc5b2b9f4e931bc19278dc90d420e9594e4"
+    },
+    {
+      "id": "RUST242-00041",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-fmt-r2.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST242-00053",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-kernel-r2/failure-review.json",
+      "bytes": 581,
+      "sha256": "3c291e5e8c6419c81b2d88abf4ac86c7cafd4ae2621f2ad1971e3b19ff17e4f8"
+    },
+    {
+      "id": "RUST242-00065",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-kernel-r3/verification.json",
+      "bytes": 6582,
+      "sha256": "b18dd73fcfa6f4608d07e16813fe0fbfb51dddbeaebf726029ac4420909f9303"
+    },
+    {
+      "id": "RUST242-00070",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-native-r1/failure-review.json",
+      "bytes": 653,
+      "sha256": "582b0256674b693dea597617018c6ed9199226bb16588c9da17aa50d2790ab00"
+    },
+    {
+      "id": "RUST242-00257",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-native-r2/failure-review.json",
+      "bytes": 747,
+      "sha256": "10b4bfea778539bb79856487bb415b20b92d111c2daa5a3f9421dad9a7bdf3cd"
+    },
+    {
+      "id": "RUST242-00443",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-native-r3/failure-review.json",
+      "bytes": 652,
+      "sha256": "33f88c91b15de17d65a08947566098e332d0c052be56a7bf278fde7d0f49f8f8"
+    },
+    {
+      "id": "RUST242-00633",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-native-r4/failure-review.json",
+      "bytes": 1376,
+      "sha256": "e475538f782597fd81d100b6ef73b8c329fc1d250ff78a527f4b305274b40769"
+    },
+    {
+      "id": "RUST242-00831",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-native-r5/controls-verification.json",
+      "bytes": 2010700,
+      "sha256": "1a2d08afe3604c273473655a06030842a9446359503497282461b84ea613bce0"
+    },
+    {
+      "id": "RUST242-01039",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-native-r5/native-controls/raw-seal.json",
+      "bytes": 19986,
+      "sha256": "7407257cd0d33bab40827209bfea1779d21cea630a642dcccc733e862595d1af"
+    },
+    {
+      "id": "RUST242-01042",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-native-r5/peer-getter-verification.json",
+      "bytes": 420,
+      "sha256": "1044f785adb48be8ec3ac382b6e61c783c4165c8d0388fa834519b4f81748487"
+    },
+    {
+      "id": "RUST242-01048",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-native-r5/ui-review.json",
+      "bytes": 867,
+      "sha256": "9941932272ec2c755757d3e9b8064bb95acf8aa1da4ebe7adc5443d7792f776a"
+    },
+    {
+      "id": "RUST242-01049",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-native-r5/verifier-review.json",
+      "bytes": 1076,
+      "sha256": "1e85c4dd2690b090a7e1bca140df541973261ad8e6988b3c15d947ba1d526839"
+    },
+    {
+      "id": "RUST242-01052",
+      "kind": "local",
+      "path": "local/research/codex/rust-m3-controls-tests-r3.txt",
+      "bytes": 5327,
+      "sha256": "e1ba93a07c0739dd98166c90353220af1f2f0f339e3952749acfe1410e2ecb26"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/235fbc5e046f236351079b1e43a717253f435a7419f10f35652a64e436b4fa3e.jsonl",
+      "sha256": "235fbc5e046f236351079b1e43a717253f435a7419f10f35652a64e436b4fa3e",
+      "bytes": 8303,
+      "count": 44,
+      "files_bytes": 483508
+    },
+    {
+      "run": "local/research/codex/rust-m3-controls-delivery-r1",
+      "path": "local/evidence-manifests/70f188a5732accfe782f9e43dce2d2db0c2a4c5069fedc2206bd6be894abd94b.jsonl",
+      "sha256": "70f188a5732accfe782f9e43dce2d2db0c2a4c5069fedc2206bd6be894abd94b",
+      "bytes": 2574,
+      "count": 11,
+      "files_bytes": 1631712
+    },
+    {
+      "run": "local/research/codex/rust-m3-controls-kernel-r1",
+      "path": "local/evidence-manifests/5943bbc6f10c392512ca6a19f2a1a9702dce5d5e0a0b44a1a8448ac013fa7bcf.jsonl",
+      "sha256": "5943bbc6f10c392512ca6a19f2a1a9702dce5d5e0a0b44a1a8448ac013fa7bcf",
+      "bytes": 1513,
+      "count": 7,
+      "files_bytes": 100399
+    },
+    {
+      "run": "local/research/codex/rust-m3-controls-kernel-r2",
+      "path": "local/evidence-manifests/89e9d851778dc0951069223081d72b6764d1856478f3fd8433a4f1ab1e5723d8.jsonl",
+      "sha256": "89e9d851778dc0951069223081d72b6764d1856478f3fd8433a4f1ab1e5723d8",
+      "bytes": 1307,
+      "count": 6,
+      "files_bytes": 51364
+    },
+    {
+      "run": "local/research/codex/rust-m3-controls-kernel-r3",
+      "path": "local/evidence-manifests/fa8af2a621a4b0497d47f7831018fbf7de33af5a59f6ebba4a08de4fc068b42f.jsonl",
+      "sha256": "fa8af2a621a4b0497d47f7831018fbf7de33af5a59f6ebba4a08de4fc068b42f",
+      "bytes": 1311,
+      "count": 6,
+      "files_bytes": 94454
+    },
+    {
+      "run": "local/research/codex/rust-m3-controls-native-r1",
+      "path": "local/evidence-manifests/270ed21930f0796e5baae143bc8f3ff366e88fd03709bfb3f9205b9fb6de560b.jsonl",
+      "sha256": "270ed21930f0796e5baae143bc8f3ff366e88fd03709bfb3f9205b9fb6de560b",
+      "bytes": 40740,
+      "count": 185,
+      "files_bytes": 112576289
+    },
+    {
+      "run": "local/research/codex/rust-m3-controls-native-r2",
+      "path": "local/evidence-manifests/15873208668f11fecdbbfca94b751325ff06d031b95e299e26e1d1bbd79c8045.jsonl",
+      "sha256": "15873208668f11fecdbbfca94b751325ff06d031b95e299e26e1d1bbd79c8045",
+      "bytes": 40533,
+      "count": 184,
+      "files_bytes": 112618660
+    },
+    {
+      "run": "local/research/codex/rust-m3-controls-native-r3",
+      "path": "local/evidence-manifests/fba811fa3e46a84c7a5e1e0f255a043f2ac55117db9a18b2950760beba1f14d4.jsonl",
+      "sha256": "fba811fa3e46a84c7a5e1e0f255a043f2ac55117db9a18b2950760beba1f14d4",
+      "bytes": 41544,
+      "count": 188,
+      "files_bytes": 112622101
+    },
+    {
+      "run": "local/research/codex/rust-m3-controls-native-r4",
+      "path": "local/evidence-manifests/1b05c3d69441ad6bfa43715667fc0469e3f12e6263cf73d5e1b53629b82916e2.jsonl",
+      "sha256": "1b05c3d69441ad6bfa43715667fc0469e3f12e6263cf73d5e1b53629b82916e2",
+      "bytes": 42820,
+      "count": 193,
+      "files_bytes": 113948247
+    },
+    {
+      "run": "local/research/codex/rust-m3-controls-native-r5",
+      "path": "local/evidence-manifests/221e574a18437bbcb7678a314e0f4fbbba21956dd74b864d220bfc015cbd1ba0.jsonl",
+      "sha256": "221e574a18437bbcb7678a314e0f4fbbba21956dd74b864d220bfc015cbd1ba0",
+      "bytes": 48656,
+      "count": 217,
+      "files_bytes": 118324977
     }
   ]
 }

@@ -101,15 +101,6 @@
       "limits": "Independent review waived. Exact-head/local-history checks and green CI required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP287-owned-serving-four.json",
-      "bytes": 243392,
-      "sha256": "7f2fd531326a37ebd84a54cbe0e0beb43532f65bcb1d2ad3104da15527046803",
-      "count": 928
-    }
-  ],
   "delta": {
     "added": [
       "Serving account-bound companion capability/control and managed round relay.",
@@ -207,5 +198,600 @@
   ],
   "completed_feature_groups": [
     "rust-authenticated-serving-four"
+  ],
+  "evidence": [
+    {
+      "id": "N1RB287-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "N1RB287-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3817,
+      "sha256": "b2dfd23453ee7b66a866e1dd723ac288bb5deff0647df47a5a84341196bcd28b"
+    },
+    {
+      "id": "N1RB287-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 251340,
+      "sha256": "a874b814a0870d08da28d72bb1d2425334ef1d6355b22e516d233b19a2307ba9"
+    },
+    {
+      "id": "N1RB287-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 145265,
+      "sha256": "daf8b2a380f03e729d80aa2b8b5566335fc87daccd9dc2937ea4a480bde40346"
+    },
+    {
+      "id": "N1RB287-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 77881,
+      "sha256": "bd8aa390b5db1a0843aac545a3ca3a7afa29d7c81fd1214b961641017dfe4a1c"
+    },
+    {
+      "id": "N1RB287-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66089,
+      "sha256": "be1756a49b134c45f9a50b67ad1b9ef77e30a0352a05c6a2094dcad1e49a37ba"
+    },
+    {
+      "id": "N1RB287-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 32711,
+      "sha256": "d2ea0da15af1dfc46da1758eacc7908628ead85c1870c33fc5a7684451ae5f7e"
+    },
+    {
+      "id": "N1RB287-00008",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 45175,
+      "sha256": "7cdb0dd42d1bb0978853064a07f316414e606b8433e6391d8a00574ac60e47bf"
+    },
+    {
+      "id": "N1RB287-00009",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD103.json",
+      "bytes": 4946,
+      "sha256": "1c0d336e8b1cd0c0edf8e9527735a3de8bef08af6ec99b8f6628e703bd575c51"
+    },
+    {
+      "id": "N1RB287-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/n1rb-owned-serving-four.json",
+      "bytes": 8681,
+      "sha256": "55e46555be6647678aa5858274588f4e5427319823873a5e63e1ae4e304992ef"
+    },
+    {
+      "id": "N1RB287-00011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 263787,
+      "sha256": "2d6bdcbdecb977c703b72fd685b9232f138875a9be08407054882b7bfac2ee60"
+    },
+    {
+      "id": "N1RB287-00012",
+      "kind": "repository",
+      "path": "docs/protocol/udp-peer.md",
+      "bytes": 79923,
+      "sha256": "42bd8857476a319d32fc85708596bf745c2670af6642391b72c31c47aada2693"
+    },
+    {
+      "id": "N1RB287-00020",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-clippy-final.txt",
+      "bytes": 274,
+      "sha256": "cb643cd975bb5dbda5f45ea9ed4361cc56be982c96851c29aa876d8e814d8c9a"
+    },
+    {
+      "id": "N1RB287-00021",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "N1RB287-00357",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-four-native-r1/native/raw-seal.json",
+      "bytes": 4349,
+      "sha256": "e505a91a5f867a981567d9169287b9dc38f63a8fabf780d8e037a861b0bd7c82"
+    },
+    {
+      "id": "N1RB287-00825",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-four-native-r2/native/raw-seal.json",
+      "bytes": 30220,
+      "sha256": "51fb173191a9f7c5f9ff31063dbae5c6bf80fd5472c2730036279e09fc6339f8"
+    },
+    {
+      "id": "N1RB287-00832",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-four-native-r2/owned-four-getter-verification.json",
+      "bytes": 606,
+      "sha256": "23b9896b81f2218136047d1b4763e452879a5db2aff40bbcd2d78e89626c6177"
+    },
+    {
+      "id": "N1RB287-00833",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-four-native-r2/owned-four-verification.json",
+      "bytes": 1324690,
+      "sha256": "e7d19518f95ed16fa1fd74f7b3eceb301bc576d2549e58e77eb2faf919a3855c"
+    },
+    {
+      "id": "N1RB287-00847",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-owned-tests-final.txt",
+      "bytes": 18417,
+      "sha256": "f4291472d9feb1a7a8aa0fad24863f6101a95f3def68b8c84eab46c0e79ba062"
+    },
+    {
+      "id": "N1RB287-00853",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-service-owned-build-r2.txt",
+      "bytes": 274,
+      "sha256": "29ef2b23de98f3b91f5c288471d62149c647e79a0480cf3dff629916f0c18d50"
+    },
+    {
+      "id": "N1RB287-00858",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-source-r1/reuse.json",
+      "bytes": 4668,
+      "sha256": "bd376b60104fe2ea09d1eee7df633f5a594413b2165444a6f9b70a2c4d171eb3"
+    },
+    {
+      "id": "N1RB287-00869",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/tests.rs",
+      "bytes": 47386,
+      "sha256": "c16b1e2975a148da169525472360de625ac6acde1e2ead022dccdcff13caf023"
+    },
+    {
+      "id": "N1RB287-00870",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/wire.rs",
+      "bytes": 2758,
+      "sha256": "63adab044276a3ca481d4a96da84eef1c9ce00bce2caff189360f0f601c0d512"
+    },
+    {
+      "id": "N1RB287-00871",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 21204,
+      "sha256": "e64b0bcec18bd93090e1ca982225acafadb6a5109d34b4830175c8c00f377e45"
+    },
+    {
+      "id": "N1RB287-00872",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 24189,
+      "sha256": "d29a4e77b36001821974eb770a69444b7d8c981e2b96b09626fa3c93a3a81160"
+    },
+    {
+      "id": "N1RB287-00873",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker/rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "N1RB287-00874",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker/tests.rs",
+      "bytes": 17779,
+      "sha256": "1c72dbea6bd2f57a33125ee65768d1059466e471fe23b3b32d4a92fc0e2ac354"
+    },
+    {
+      "id": "N1RB287-00875",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker.rs",
+      "bytes": 17674,
+      "sha256": "22ef92f0766e3dd7da2594eba26d6b7402c2972b3e134463db737cedd9cd7f11"
+    },
+    {
+      "id": "N1RB287-00876",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/tests.rs",
+      "bytes": 27768,
+      "sha256": "f6f216e70f429f81ef533ee722cdb12f484564fe884f46c06b56b629906e7953"
+    },
+    {
+      "id": "N1RB287-00877",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts.rs",
+      "bytes": 29915,
+      "sha256": "724a6647fa47fdf83027013f01cef99ca129324ccc4bc223f6dfde983af02e12"
+    },
+    {
+      "id": "N1RB287-00878",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/authenticated_peer.rs",
+      "bytes": 15838,
+      "sha256": "3663bce2a04987376caedeeb8d785805c6d4b10915d55ce9e4cd009740c558d2"
+    },
+    {
+      "id": "N1RB287-00879",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/authenticated_room_relay.rs",
+      "bytes": 7030,
+      "sha256": "e1a618a5847153e4ee0ce2980f3d4cb695ea8398ff1ed31694954095b0a84f4f"
+    },
+    {
+      "id": "N1RB287-00880",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bin/kr-admin.rs",
+      "bytes": 4429,
+      "sha256": "206aa5b2ecace9d9ac54f074d93e039d4a88f893635e0b9dc5d000d5660c890c"
+    },
+    {
+      "id": "N1RB287-00881",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "N1RB287-00882",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "bytes": 15072,
+      "sha256": "4496bd8e1be4928f5264552516ac9104581f3433bda2e015e9fe2365b82bc169"
+    },
+    {
+      "id": "N1RB287-00883",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/characters.rs",
+      "bytes": 2441,
+      "sha256": "a9a872ae38adf39d2132fcd676482a5ee54048b40ab8685ba067674f7245dfcb"
+    },
+    {
+      "id": "N1RB287-00884",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/four_results.rs",
+      "bytes": 10769,
+      "sha256": "26c1c50fc8791534c965dfa39f6d61c0cf712c085ff09d3081688a4763886af6"
+    },
+    {
+      "id": "N1RB287-00885",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 58091,
+      "sha256": "047443e62bc8d16772bcf5d48b84733a2b7634a86c93e581b285e9e2ddaab679"
+    },
+    {
+      "id": "N1RB287-00886",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/life.rs",
+      "bytes": 17096,
+      "sha256": "f64cfdc4403bd58d8820a434bb23e35a5f46e11330cd5fbbcbbd65954de7a86a"
+    },
+    {
+      "id": "N1RB287-00887",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "N1RB287-00888",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "N1RB287-00889",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "N1RB287-00890",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "N1RB287-00891",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/peer_routes.rs",
+      "bytes": 4631,
+      "sha256": "221075ff3e89110f636020c43a4e98099a8ffc3b02d204e12f03acd77ebb950b"
+    },
+    {
+      "id": "N1RB287-00892",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "bytes": 14368,
+      "sha256": "4ed0d33f79c4689b6cbccc44fddc53f8fb07e297e8da4c202acaf2f6f4f3e2ca"
+    },
+    {
+      "id": "N1RB287-00893",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "N1RB287-00894",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room.rs",
+      "bytes": 51543,
+      "sha256": "2418d267769f94c2262b4123c0f3ce526bb7de0e080441e8194086b00220e5a3"
+    },
+    {
+      "id": "N1RB287-00895",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 157125,
+      "sha256": "d71040dc2f69f54e84a5b36c2ce74d0b3a072a50c4fe38c20d2aaa9eeff8cf70"
+    },
+    {
+      "id": "N1RB287-00896",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "N1RB287-00897",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "N1RB287-00898",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "N1RB287-00899",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "bytes": 10127,
+      "sha256": "7803ad6f6ec9d0216a740c7813cda3097500263a40fb41d7a4ae74c47e9c44be"
+    },
+    {
+      "id": "N1RB287-00900",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_wire.rs",
+      "bytes": 2201,
+      "sha256": "4bd8473f94393106cdaf976425f91b1e0183eb0e12535b5795878250af73129c"
+    },
+    {
+      "id": "N1RB287-00901",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/round_epochs.rs",
+      "bytes": 2527,
+      "sha256": "18eb735293835939bbcc6da8e28a070f9e6ea54b5e1e0a99d95640e82cfea5ac"
+    },
+    {
+      "id": "N1RB287-00902",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "bytes": 9271,
+      "sha256": "03fc20f0a0cae9ae29af7f2bea3f4b147fde001c5f12e62bb4e4b0e1f0ce99ec"
+    },
+    {
+      "id": "N1RB287-00903",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "N1RB287-00904",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay/sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "N1RB287-00905",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay/tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "N1RB287-00906",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "N1RB287-00907",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/bin/kr-companion.rs",
+      "bytes": 3882,
+      "sha256": "776b14648a15079fcf3c9434917300fb4e0cc955f007d3da7d8332062814976c"
+    },
+    {
+      "id": "N1RB287-00908",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/companion.rs",
+      "bytes": 5076,
+      "sha256": "3d17300083a41d4c17deafd3918467c033a821f4ff187048d93bc20530caee94"
+    },
+    {
+      "id": "N1RB287-00909",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/companion_tests.rs",
+      "bytes": 4584,
+      "sha256": "fd34096e5a53ba8ede24eb0da5484482de55c69917fea6f9dfd8b1d15ca9533e"
+    },
+    {
+      "id": "N1RB287-00910",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/control.rs",
+      "bytes": 1769,
+      "sha256": "d1af56c5d1ad870124ccc7ad1fb67100e930bbdbfdb1e9cb0520124c466749b6"
+    },
+    {
+      "id": "N1RB287-00911",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/lib.rs",
+      "bytes": 11418,
+      "sha256": "c277af6de7501946f7376aa168dae10d2803cecc3d6f1b9531645bd7526ee77f"
+    },
+    {
+      "id": "N1RB287-00912",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/proxy.rs",
+      "bytes": 7621,
+      "sha256": "dfc45ff6566f6f4917217b147f6f8e9b6fd82a729653164eb749ac01cf8ef500"
+    },
+    {
+      "id": "N1RB287-00913",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/router/tests.rs",
+      "bytes": 6217,
+      "sha256": "72940ed32c8e0b41c9abd97bd4bbe05c3b1ea1b12f45be3ecc35b07c4f8da1c7"
+    },
+    {
+      "id": "N1RB287-00914",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/router.rs",
+      "bytes": 15276,
+      "sha256": "492134cc47c473f86534501defd80d6a4369658b87e147d1c89872b33b3d955c"
+    },
+    {
+      "id": "N1RB287-00915",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/tests.rs",
+      "bytes": 6171,
+      "sha256": "b424a582ab60c99bbc17d2878b6aec232c2521c6a0f01f75cd587d29b4d40dec"
+    },
+    {
+      "id": "N1RB287-00916",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/account.rs",
+      "bytes": 3477,
+      "sha256": "1b76836d680abbae1ffd16e1d618f4a2e9a8ab3057ed743a4eeaa617fbb717c8"
+    },
+    {
+      "id": "N1RB287-00917",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/battle.rs",
+      "bytes": 7760,
+      "sha256": "618e28ec71912edb834d2f5ffd9c151a7c550c8bdb2f6be8812dcff3bf5f5a17"
+    },
+    {
+      "id": "N1RB287-00918",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/player.rs",
+      "bytes": 7967,
+      "sha256": "5dca3e46e0a9735208175ac500df7f8854b12e369c2dd000d407ca7229722a16"
+    },
+    {
+      "id": "N1RB287-00919",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "bytes": 22770,
+      "sha256": "72a8cc9a6ff9e973e3647b14df7c22aac9d6a999791762a3234b4d36ca7a6133"
+    },
+    {
+      "id": "N1RB287-00920",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "N1RB287-00921",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967.rs",
+      "bytes": 3977,
+      "sha256": "5682898a8e32ae588c99dcf7dde6089aeec198a1234a0ed5c527c107b6dbe5de"
+    },
+    {
+      "id": "N1RB287-00922",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "N1RB287-00923",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_account_profiles.rs",
+      "bytes": 3073,
+      "sha256": "4054a9d8affab3eebe8c77a30e76f0947a1d60843bda15a71e6fa991c2696023"
+    },
+    {
+      "id": "N1RB287-00924",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_room_choices.rs",
+      "bytes": 1722,
+      "sha256": "d527c228dcc86ec11057e1c8c5037ced0e44d2ae03f27da5e8884ad49f41e80d"
+    },
+    {
+      "id": "N1RB287-00925",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_selected_roster.rs",
+      "bytes": 1121,
+      "sha256": "62501ed78735f409edac88f0828fbbb89451734dc17a706bf622b4e2085c8859"
+    },
+    {
+      "id": "N1RB287-00926",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_selected_start.rs",
+      "bytes": 3067,
+      "sha256": "c09cd6f51c35e32b029d21cff7a1e3ae9c3ee65f8075ecd9ed60852b15a00b09"
+    },
+    {
+      "id": "N1RB287-00927",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_start_vectors.rs",
+      "bytes": 2882,
+      "sha256": "3bfff9199f2fd8abd1acdbc82e6a0484b80c5a9d0865404c64c0b64b53404021"
+    },
+    {
+      "id": "N1RB287-00928",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/556bd16fc6aece470104622062153e37a5b09bd1c8bc24f1785cc0a5e1d25bb2.jsonl",
+      "sha256": "556bd16fc6aece470104622062153e37a5b09bd1c8bc24f1785cc0a5e1d25bb2",
+      "bytes": 6693,
+      "count": 35,
+      "files_bytes": 176689
+    },
+    {
+      "run": "local/research/codex/n1rb-owned-four-native-r1",
+      "path": "local/evidence-manifests/75a55b9d5292b04728e86defbc113932b3bb3c3071051724da78ea62cc760549.jsonl",
+      "sha256": "75a55b9d5292b04728e86defbc113932b3bb3c3071051724da78ea62cc760549",
+      "bytes": 74585,
+      "count": 344,
+      "files_bytes": 504315742
+    },
+    {
+      "run": "local/research/codex/n1rb-owned-four-native-r2",
+      "path": "local/evidence-manifests/963f558dc6c6d37ac9a3aba52edb6f05214c0e52c983b72ec6a85b043a702091.jsonl",
+      "sha256": "963f558dc6c6d37ac9a3aba52edb6f05214c0e52c983b72ec6a85b043a702091",
+      "bytes": 101128,
+      "count": 468,
+      "files_bytes": 530550253
+    }
   ]
 }

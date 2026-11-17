@@ -110,15 +110,6 @@
       "limits": "519211 verified,0 unavailable,history true,0 errors. Đây là parent đã merge, không thay kiểm head CP314."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP314-camp08-footprint.json",
-      "bytes": 255150,
-      "sha256": "9a65c8b6d624e5f1aef48240b36e2106824bcddac540492a4c207075b88b4f65",
-      "count": 927
-    }
-  ],
   "delta": {
     "added": [
       "Native type1 init/footprint và direct getter Line02 control."
@@ -216,6 +207,301 @@
       "path": "AGENTS.md",
       "state": "unchanged",
       "reason": "Giữ quy trình và owner L1."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "FOOT314-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3626,
+      "sha256": "eed159b314c8f3a02e6d8bd1775d1d0293fbe8151513dfaa59ba3bbdf17b7925"
+    },
+    {
+      "id": "FOOT314-0002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 263832,
+      "sha256": "fff177e6493d10c86113b968fa523864e894efc6cd02bcf2cf38055969cefa91"
+    },
+    {
+      "id": "FOOT314-0003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 159414,
+      "sha256": "4a88e2b947569a6cacee8150721af037f6e21ce4d311b5f34b8cf47d653995b0"
+    },
+    {
+      "id": "FOOT314-0004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 83190,
+      "sha256": "fc1a190a553fc3ca4563b52a0ea18225b494a2391cb8244f2c7f5389b49aa969"
+    },
+    {
+      "id": "FOOT314-0005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 44583,
+      "sha256": "fe9b31c7e1e58deced532a3e868c4a842e26921f5e9a6f73933866a652250353"
+    },
+    {
+      "id": "FOOT314-0006",
+      "kind": "repository",
+      "path": "docs/content/tile-semantics.md",
+      "bytes": 5491,
+      "sha256": "b6987d60fc577dbdc9745274bfa39687cb9ca3c5d726689ea23376f045477ddd"
+    },
+    {
+      "id": "FOOT314-0007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD125.json",
+      "bytes": 3318,
+      "sha256": "fb7bb6bf3bbadf6ec0c7cc97711336738dba0b9ab6488c2d8a027189755bc03f"
+    },
+    {
+      "id": "FOOT314-0008",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-camp08-footprint-predicate.json",
+      "bytes": 3343,
+      "sha256": "d5d4c80b46a8e2f7116fa7cd47e536149dcc4ff2c0a11b544911edc18c9c5605"
+    },
+    {
+      "id": "FOOT314-0009",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 276747,
+      "sha256": "c96adb9051ec679fac4c3e29e99477f511cf745a3fb86c251ea31ee87d244ca0"
+    },
+    {
+      "id": "FOOT314-0010",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 64973,
+      "sha256": "0709315cced2d2d1c4001a8cdc6b98653571f8b2f96cee945ad1ec8a24f3638b"
+    },
+    {
+      "id": "FOOT314-0012",
+      "kind": "local",
+      "path": "local/research/codex/cp313-exact-head-exit.json",
+      "bytes": 121,
+      "sha256": "845fce431b7b2a8eabff75d1c89f5250be77182117c993fc02b689d4d46c9519"
+    },
+    {
+      "id": "FOOT314-0013",
+      "kind": "local",
+      "path": "local/research/codex/cp313-exact-head-full.txt",
+      "bytes": 222833,
+      "sha256": "9f2affe6c69721d7a19998b395471cbaceb88c7834275e74661c243fe732fe9e"
+    },
+    {
+      "id": "FOOT314-0014",
+      "kind": "local",
+      "path": "local/research/codex/cp314-docs-precheck.txt",
+      "bytes": 274,
+      "sha256": "383b4a16573a69c30e7f98d6d416435aae8d73f65b1b9a5adc835d04b94dd830"
+    },
+    {
+      "id": "FOOT314-0015",
+      "kind": "local",
+      "path": "local/research/codex/cp314-preservation-verification.json",
+      "bytes": 1328,
+      "sha256": "dfad1964654422be869eee30a363083fab593ba2dca7d440bc5d63b60d5b148d"
+    },
+    {
+      "id": "FOOT314-0142",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-footprint-native-r1/footprint-verification.json",
+      "bytes": 150286,
+      "sha256": "01791a1b2c673733b441a6bf904578b694380a61fbcf549ae3fd8840e6c4660b"
+    },
+    {
+      "id": "FOOT314-0253",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-passable-account-close-correlation.json",
+      "bytes": 2280,
+      "sha256": "69f1b50227b3acd9e14bbabd745c2d3d75c9dedc77f5fbdf0d9613e9b1fe12ce"
+    },
+    {
+      "id": "FOOT314-0277",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-passable-native-r5/failure-verification.json",
+      "bytes": 799,
+      "sha256": "7e43d8aec37d7da2ac485352b42daf3cc75f5f4dc8ed8573f51dd39bd09f085f"
+    },
+    {
+      "id": "FOOT314-0504",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-passable-native-r6/predicate-verification.json",
+      "bytes": 25847,
+      "sha256": "70e8725fa716d3c04e78c79dd120dc08502448ad16a98d24f83b83d7555f045f"
+    },
+    {
+      "id": "FOOT314-0517",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-passable-tmpfs-control-verification.json",
+      "bytes": 2923,
+      "sha256": "efbf7d8a462df0037b59666c103bf48287b964a7a73b92ab35d570bdccc8869a"
+    },
+    {
+      "id": "FOOT314-0577",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-static-footprint-r1/dimensions.json",
+      "bytes": 8174,
+      "sha256": "50907c4b93e1f3ba8c1a0c7c5728bf755e7d7368d873e26249814b47ea544939"
+    },
+    {
+      "id": "FOOT314-0592",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-static-initializer-r1/initializer.json",
+      "bytes": 3530,
+      "sha256": "0eea18d7c8929efe2b7cf9002205364d1b1ed1fe8659eb4bc5ebb2496a60ca17"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/c3bc0313f8afd6c749d5fea347bb87691b306a6af328caa97b2f97f2f0b57eaf.jsonl",
+      "sha256": "c3bc0313f8afd6c749d5fea347bb87691b306a6af328caa97b2f97f2f0b57eaf",
+      "bytes": 4044,
+      "count": 21,
+      "files_bytes": 392681
+    },
+    {
+      "run": "local/research/codex/g1-camp08-c2s122-native-r2",
+      "path": "local/evidence-manifests/5ca32e375da3b8841dd6781b8d532cbe52a0ac10c3b61d6ebc7bdc6e093182e0.jsonl",
+      "sha256": "5ca32e375da3b8841dd6781b8d532cbe52a0ac10c3b61d6ebc7bdc6e093182e0",
+      "bytes": 1741,
+      "count": 7,
+      "files_bytes": 57420
+    },
+    {
+      "run": "local/research/codex/g1-camp08-cancellation-native-r1",
+      "path": "local/evidence-manifests/a26c443826339f6da7c8cbc630f77f4dffac6363e37db76abb3abc228303b074.jsonl",
+      "sha256": "a26c443826339f6da7c8cbc630f77f4dffac6363e37db76abb3abc228303b074",
+      "bytes": 8603,
+      "count": 37,
+      "files_bytes": 130750
+    },
+    {
+      "run": "local/research/codex/g1-camp08-cancellation-native-r2",
+      "path": "local/evidence-manifests/1bbf2d8319d4b31e0b44efc01c25c5d28da9ef96c859f58115330b5ea324a3aa.jsonl",
+      "sha256": "1bbf2d8319d4b31e0b44efc01c25c5d28da9ef96c859f58115330b5ea324a3aa",
+      "bytes": 3693,
+      "count": 15,
+      "files_bytes": 401181
+    },
+    {
+      "run": "local/research/codex/g1-camp08-condition-native-r7",
+      "path": "local/evidence-manifests/10bdb5d676e3a8ad2c8779eabfec44b9f848966d9ad2c12406498d23bc1a574e.jsonl",
+      "sha256": "10bdb5d676e3a8ad2c8779eabfec44b9f848966d9ad2c12406498d23bc1a574e",
+      "bytes": 1999,
+      "count": 8,
+      "files_bytes": 60971
+    },
+    {
+      "run": "local/research/codex/g1-camp08-durable-serving-native-r1",
+      "path": "local/evidence-manifests/4823e7f0dbea6abb8be3300db0b815e78443b5d2b51d6ce6a33ce199fb7ffc8f.jsonl",
+      "sha256": "4823e7f0dbea6abb8be3300db0b815e78443b5d2b51d6ce6a33ce199fb7ffc8f",
+      "bytes": 2060,
+      "count": 8,
+      "files_bytes": 107011
+    },
+    {
+      "run": "local/research/codex/g1-camp08-durable-serving-native-r2",
+      "path": "local/evidence-manifests/949ae8b655ffaf77a1d342faf5dd908b608911b2993446891587735487e689ff.jsonl",
+      "sha256": "949ae8b655ffaf77a1d342faf5dd908b608911b2993446891587735487e689ff",
+      "bytes": 8466,
+      "count": 36,
+      "files_bytes": 265277280
+    },
+    {
+      "run": "local/research/codex/g1-camp08-footprint-native-r1",
+      "path": "local/evidence-manifests/a7d6c4aeeac3238852345983b2b26b2db9c9ce86490e5ec22601f281560c7d1f.jsonl",
+      "sha256": "a7d6c4aeeac3238852345983b2b26b2db9c9ce86490e5ec22601f281560c7d1f",
+      "bytes": 27955,
+      "count": 122,
+      "files_bytes": 270786147
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r1",
+      "path": "local/evidence-manifests/2a5f3f6398a920d2dbe6aeb419d55c738d114976a6056a7c62a8ee24c4ab0f4d.jsonl",
+      "sha256": "2a5f3f6398a920d2dbe6aeb419d55c738d114976a6056a7c62a8ee24c4ab0f4d",
+      "bytes": 3536,
+      "count": 12,
+      "files_bytes": 59352
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r5",
+      "path": "local/evidence-manifests/0f4a98137516fd567eb9737c1e83bfe19cccd9f658171407db5573fe66efe7d6.jsonl",
+      "sha256": "0f4a98137516fd567eb9737c1e83bfe19cccd9f658171407db5573fe66efe7d6",
+      "bytes": 17412,
+      "count": 77,
+      "files_bytes": 265888196
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r6",
+      "path": "local/evidence-manifests/092f0a2c37bbd329104138620f86b0644abc61260a78ccf87bf7c5e148f60a92.jsonl",
+      "sha256": "092f0a2c37bbd329104138620f86b0644abc61260a78ccf87bf7c5e148f60a92",
+      "bytes": 38533,
+      "count": 170,
+      "files_bytes": 291126591
+    },
+    {
+      "run": "local/research/codex/g1-camp08-seed-native-r1",
+      "path": "local/evidence-manifests/aef188448e4e78926103f7f8af796fdc52be4f9564264a50c653bc397d2aea0a.jsonl",
+      "sha256": "aef188448e4e78926103f7f8af796fdc52be4f9564264a50c653bc397d2aea0a",
+      "bytes": 11837,
+      "count": 54,
+      "files_bytes": 91992445
+    },
+    {
+      "run": "local/research/codex/g1-camp08-static-footprint-r1",
+      "path": "local/evidence-manifests/96c165d73bed6e5aece612b71db6dc935cf5ad31d139b70587aeb3e60f93faef.jsonl",
+      "sha256": "96c165d73bed6e5aece612b71db6dc935cf5ad31d139b70587aeb3e60f93faef",
+      "bytes": 2756,
+      "count": 13,
+      "files_bytes": 35383
+    },
+    {
+      "run": "local/research/codex/g1-camp08-static-initializer-r1",
+      "path": "local/evidence-manifests/06a70287200f030432ffd83425cce23677fc9508e83f52173f3de698c86e7032.jsonl",
+      "sha256": "06a70287200f030432ffd83425cce23677fc9508e83f52173f3de698c86e7032",
+      "bytes": 1919,
+      "count": 9,
+      "files_bytes": 6920
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-counters-native-r1",
+      "path": "local/evidence-manifests/dd5fe9aa8f7ad3cc7c72cef5df4555a36b2715ef4574d319916a95e936be48d5.jsonl",
+      "sha256": "dd5fe9aa8f7ad3cc7c72cef5df4555a36b2715ef4574d319916a95e936be48d5",
+      "bytes": 1381,
+      "count": 5,
+      "files_bytes": 43992
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-counters-native-r2",
+      "path": "local/evidence-manifests/bc59637c06f2bcf97fa2f9aec33e31df9c2cc51eebe256a22f222f8cbc4e6270.jsonl",
+      "sha256": "bc59637c06f2bcf97fa2f9aec33e31df9c2cc51eebe256a22f222f8cbc4e6270",
+      "bytes": 1381,
+      "count": 5,
+      "files_bytes": 41479
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-hits-native-r1",
+      "path": "local/evidence-manifests/e747858927997398cffd0d829c979ebcb9beda418bbf733f2b9a485b775a5b1d.jsonl",
+      "sha256": "e747858927997398cffd0d829c979ebcb9beda418bbf733f2b9a485b775a5b1d",
+      "bytes": 1337,
+      "count": 5,
+      "files_bytes": 42480
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-native-r1",
+      "path": "local/evidence-manifests/ee46f72470202767e236667c60c45251486089dd9eff9b9ff4d19fa7378824f3.jsonl",
+      "sha256": "ee46f72470202767e236667c60c45251486089dd9eff9b9ff4d19fa7378824f3",
+      "bytes": 67880,
+      "count": 302,
+      "files_bytes": 6418762680
     }
   ]
 }

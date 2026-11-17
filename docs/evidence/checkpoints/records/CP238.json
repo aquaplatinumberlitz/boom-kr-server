@@ -141,15 +141,6 @@
       "limits": "Fullhistory/exactheadrequiredafterappend; no semanticgateinference."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP238-rust-bombs.json",
-      "bytes": 143259,
-      "sha256": "e0a2d1a396c877385e0b87390d9daa4dab867e6eab0a2e1bf526a07524db5aef",
-      "count": 552
-    }
-  ],
   "delta": {
     "added": [
       "Basicbombtyped118159158/owner-serial-ID-capacity/Arcscopedallocationtickets/4queuepublication/perrecipientduewritefences.",
@@ -280,6 +271,215 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP238M3basicbombnativeproof/ledger-queuefences/unknown167-142norelease/failures-inputtiming/buildraces/terrain-lifenext/AUD068next240."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST238-00007",
+      "kind": "local",
+      "path": "local/research/codex/cp238-docs-final.txt",
+      "bytes": 175,
+      "sha256": "ce8ca432a421bafcc16f8e1924c16272a3bee9ba2e2683e284e2721303ea4ed8"
+    },
+    {
+      "id": "RUST238-00026",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-delivery-r1/manual-acceptance.json",
+      "bytes": 3083,
+      "sha256": "7bfa78e97bb5b75819d740fc9662803ebec10d2a25efe93eb835ffd69573444c"
+    },
+    {
+      "id": "RUST238-00029",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 90472,
+      "sha256": "75adee48ddbf6679c7d0fe602029dc41fe1034149d61dd602f3972005cb0a187"
+    },
+    {
+      "id": "RUST238-00030",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-delivery-r1/snapshot/docs/PROTOCOL.md",
+      "bytes": 748240,
+      "sha256": "44bbf46967f8b84b93cd3a5a0f130cde67211b1a22c63e0b30dabac3bf2cd2ef"
+    },
+    {
+      "id": "RUST238-00031",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-delivery-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 46138,
+      "sha256": "0130b7771278839a6bf84a562d77fe535c439854b7289a297c1fe666ac2044bb"
+    },
+    {
+      "id": "RUST238-00039",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-delivery-r1/snapshot/rust/crates/kr-service/src/bombs.rs",
+      "bytes": 11243,
+      "sha256": "37e72e80c93d214cc3fe15c7c68f5afac77c76efdbeeb27649df5f6c78c7ab6e"
+    },
+    {
+      "id": "RUST238-00042",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 44079,
+      "sha256": "b2dcf441bc96710b46a9e8e2b555f1fb3373e47f5bd89530583d3e109f7f1183"
+    },
+    {
+      "id": "RUST238-00044",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-draft/bombs.rs",
+      "bytes": 8327,
+      "sha256": "96c5eb561239361aa630b7a5cc49346ae515f6fa712db0c7aea6090e9137612c"
+    },
+    {
+      "id": "RUST238-00060",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-kernel-r2/room/failure-review.json",
+      "bytes": 488,
+      "sha256": "c82256c4a272788d4081fc896c8ac26e73d9b9176cd71666a3da39f56e390d7d"
+    },
+    {
+      "id": "RUST238-00080",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-kernel-r4/room/verification.json",
+      "bytes": 5101,
+      "sha256": "5bd62d1cec8f9f03604a220d5657304770dbb30fb1e7383a88f0ea5b54323df7"
+    },
+    {
+      "id": "RUST238-00086",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-native-r1/failure-review.json",
+      "bytes": 3948,
+      "sha256": "38edeed613bce27a163ef8f0004191a5d656adadb19b4b723f7611f7092ea335"
+    },
+    {
+      "id": "RUST238-00238",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-native-r2/failure-review.json",
+      "bytes": 7033,
+      "sha256": "57df83425784a2c621f2cc5a0cc7a4906d374dc168679d10287474aaff011616"
+    },
+    {
+      "id": "RUST238-00387",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-native-r3/bomb-verification.json",
+      "bytes": 37851,
+      "sha256": "729db3856b99bc59fe96d9618654f051a71cdf9490696c30d757377b80e6aca6"
+    },
+    {
+      "id": "RUST238-00525",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-native-r3/native-movement/raw-seal.json",
+      "bytes": 11009,
+      "sha256": "f17349b4633206e8884fc60e745d3822b099ec8bb311801bb0179ee23ab4e214"
+    },
+    {
+      "id": "RUST238-00534",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-native-r3/ui-review.json",
+      "bytes": 1244,
+      "sha256": "f6733c8635540e8651303013a23f1a9f4d2a04c8553515bd0ba8cd78922fd79c"
+    },
+    {
+      "id": "RUST238-00539",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-r3-build.txt",
+      "bytes": 166,
+      "sha256": "da65790cfecbb1d0e878e2b6656367b9e56cc896835c30e6e320ee0b44c9a320"
+    },
+    {
+      "id": "RUST238-00540",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-r3-clippy.txt",
+      "bytes": 166,
+      "sha256": "5532d037dbf33279c89a782807077636570a82d9067ab755beae0f4053c66e65"
+    },
+    {
+      "id": "RUST238-00541",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-r3-fmt.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST238-00543",
+      "kind": "local",
+      "path": "local/research/codex/rust-bombs-r3-tests.txt",
+      "bytes": 4227,
+      "sha256": "49869224f611a24fc0d5f738859a0a3de5b7a7c693223bd90538331aa696edde"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/835f5a38e950cab4a9da03bd154176e0a0a8c66c19d9e5d8f488de8b1a66c83d.jsonl",
+      "sha256": "835f5a38e950cab4a9da03bd154176e0a0a8c66c19d9e5d8f488de8b1a66c83d",
+      "bytes": 9723,
+      "count": 53,
+      "files_bytes": 341322
+    },
+    {
+      "run": "local/research/codex/rust-bombs-delivery-r1",
+      "path": "local/evidence-manifests/bb39d6440285400b59eb3809122e264c958d7cd68f80d1a791ece865a5b30b33.jsonl",
+      "sha256": "bb39d6440285400b59eb3809122e264c958d7cd68f80d1a791ece865a5b30b33",
+      "bytes": 2733,
+      "count": 12,
+      "files_bytes": 887897
+    },
+    {
+      "run": "local/research/codex/rust-bombs-kernel-r1",
+      "path": "local/evidence-manifests/97f01ad84ff597d27bfddff6422a69c20072954881642b7dd9269526facf236d.jsonl",
+      "sha256": "97f01ad84ff597d27bfddff6422a69c20072954881642b7dd9269526facf236d",
+      "bytes": 1296,
+      "count": 6,
+      "files_bytes": 72937
+    },
+    {
+      "run": "local/research/codex/rust-bombs-kernel-r2",
+      "path": "local/evidence-manifests/2f13de4f2703e4a2245316bbc9547fafe9494ff0f227edc7b8ab7ac2a72b5f54.jsonl",
+      "sha256": "2f13de4f2703e4a2245316bbc9547fafe9494ff0f227edc7b8ab7ac2a72b5f54",
+      "bytes": 1090,
+      "count": 5,
+      "files_bytes": 41509
+    },
+    {
+      "run": "local/research/codex/rust-bombs-kernel-r3",
+      "path": "local/evidence-manifests/5ee9284b85e1a24813fa878b494613f8c219631a14be53dcda867aa50b8946b3.jsonl",
+      "sha256": "5ee9284b85e1a24813fa878b494613f8c219631a14be53dcda867aa50b8946b3",
+      "bytes": 1500,
+      "count": 7,
+      "files_bytes": 73616
+    },
+    {
+      "run": "local/research/codex/rust-bombs-kernel-r4",
+      "path": "local/evidence-manifests/ce0fd50ae75fc92d0766f82055c3a4daaf68c79f25b5f867d5e59eb093d9f257.jsonl",
+      "sha256": "ce0fd50ae75fc92d0766f82055c3a4daaf68c79f25b5f867d5e59eb093d9f257",
+      "bytes": 1299,
+      "count": 6,
+      "files_bytes": 68731
+    },
+    {
+      "run": "local/research/codex/rust-bombs-native-r1",
+      "path": "local/evidence-manifests/0ddc4c439a89b6d6bf6f059edd80d7b2fbc2af217ac5386c8139b1019c71c60b.jsonl",
+      "sha256": "0ddc4c439a89b6d6bf6f059edd80d7b2fbc2af217ac5386c8139b1019c71c60b",
+      "bytes": 32030,
+      "count": 150,
+      "files_bytes": 106967997
+    },
+    {
+      "run": "local/research/codex/rust-bombs-native-r2",
+      "path": "local/evidence-manifests/35c1d7684a9af7f16f0ac4c40618cca4ffd9dd5755d679cec8616f43803663dd.jsonl",
+      "sha256": "35c1d7684a9af7f16f0ac4c40618cca4ffd9dd5755d679cec8616f43803663dd",
+      "bytes": 31881,
+      "count": 149,
+      "files_bytes": 110029032
+    },
+    {
+      "run": "local/research/codex/rust-bombs-native-r3",
+      "path": "local/evidence-manifests/3b65deb75cdc506539e43769c7ca27fe731bf548e384035ebac165307213809e.jsonl",
+      "sha256": "3b65deb75cdc506539e43769c7ca27fe731bf548e384035ebac165307213809e",
+      "bytes": 31016,
+      "count": 145,
+      "files_bytes": 107623024
     }
   ]
 }

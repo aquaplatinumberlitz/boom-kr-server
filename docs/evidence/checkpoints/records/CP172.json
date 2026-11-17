@@ -188,15 +188,6 @@
       "limits": "Synthetic consistency tests, not RE/native/gate acceptance; fullhistory rerun after unpublisheddraft update."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP172-hidden-cell-admission.json",
-      "bytes": 405046,
-      "sha256": "beec9e3b2506fc2a2ad691571d18c79e306e08b2555d2ccf1f40710158122635",
-      "count": 1608
-    }
-  ],
   "delta": {
     "added": [
       "Bounded terrain-specific142cell/generation/commit/fullroster policy with5newnegative/positive tests and native basic2cycle/Start3 compatibility.",
@@ -298,6 +289,260 @@
       "path": "docs/evidence/checkpoints/README.md",
       "state": "updated",
       "reason": "Publication-bound exact historical project source pin verification;raw/binary/local/v1-only strict."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/actor-fields.json",
+      "bytes": 383471,
+      "sha256": "3cb106b8867ef3b43527e5e8bd913481535e9a8f87955ad472aef166f2eb7aed"
+    },
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/admission-analysis-correction.json",
+      "bytes": 400,
+      "sha256": "76878d519692984f466971c6b894e13bdaa84deae711414ef8520a52065a5e4e"
+    },
+    {
+      "id": "RUN-00006",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00007",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/basic-cycle-verification.json",
+      "bytes": 2364,
+      "sha256": "63cc8bcc49af7ed5d91f08cb990b4e9a73825a6a25e84086deae85c087646916"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/catalog-check.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "RUN-00011",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/chain-summary.json",
+      "bytes": 64575,
+      "sha256": "4b1b2b364c2506fa9b1bc3b8e096315afe99a0899eff84b7d2ebb121d5c3ae02"
+    },
+    {
+      "id": "RUN-00014",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/cp172-snapshot/docs/PLAN.md",
+      "bytes": 37108,
+      "sha256": "0088a8a32396e3962f1a94438efad051c3f162db87718e88850989f9ac4c328c"
+    },
+    {
+      "id": "RUN-00015",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/cp172-snapshot/docs/PROTOCOL.md",
+      "bytes": 518063,
+      "sha256": "4dff280d1ee9ccecbb747b8fadafb3e2587fca7f9bfa71d20b80cf9e83aa1433"
+    },
+    {
+      "id": "RUN-00016",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/cp172-snapshot/docs/RESEARCH.md",
+      "bytes": 31089,
+      "sha256": "df34a2c34fc18a6760e8d39f38bad01fa60563b8d99554d75acea2b05fda39e3"
+    },
+    {
+      "id": "RUN-01462",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/diff-check.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUN-01463",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "fc0d57d8efdd8d085ca180879c46fd3e1a12fb657f7056fb2d33467c66e81ec6"
+    },
+    {
+      "id": "RUN-01464",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/exported-start3-verification.json",
+      "bytes": 1736,
+      "sha256": "ff57305aee93b0245919459e73eed2630451a9019d2e51fb7261b88a42af720b"
+    },
+    {
+      "id": "RUN-01474",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "eb168d80b29c391bdac8d0b57e1b2bdb8e1905a7f038345f1e0f4790309b2dfe"
+    },
+    {
+      "id": "RUN-01477",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/life-agreement-verification.json",
+      "bytes": 6812,
+      "sha256": "b756905c6f1c2861520e47de14c6965c53a84f3798668af496c5995669785f04"
+    },
+    {
+      "id": "RUN-01478",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "18dd53fef5fa9146f3f8aa3b5f047538828b8582ca4bd2258d6ddeab67044028"
+    },
+    {
+      "id": "RUN-01480",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/native-actual.json",
+      "bytes": 72378,
+      "sha256": "bd627af395b73a7e93dddf0a32a50d6163aad89636f6912b54d988663082f51b"
+    },
+    {
+      "id": "RUN-01490",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/raw-seal.json",
+      "bytes": 293134,
+      "sha256": "5c0e8386d37d89ae7bfda395e945fa03e62d7733085bd34de1db063b1c0625d8"
+    },
+    {
+      "id": "RUN-01517",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/reuse-question.json",
+      "bytes": 3169,
+      "sha256": "5507f30d80d0c2847b7d3ec105457606f4f21f13038f1268dfa7d4a621d82fdc"
+    },
+    {
+      "id": "RUN-01518",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/runtime-preflight.json",
+      "bytes": 32056,
+      "sha256": "b1493c33b717f363ce367efecf2cb637324d00625f8ebebb241b0ea9d419a747"
+    },
+    {
+      "id": "RUN-01523",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/runtime-source/server/probe_service.py",
+      "bytes": 100900,
+      "sha256": "143830600dc13f1394742a5fb7ea5a53852f60d7b4bdb798ebcd8766851edd8a"
+    },
+    {
+      "id": "RUN-01541",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/runtime-source/server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "RUN-01566",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/server-tests.txt",
+      "bytes": 370,
+      "sha256": "f46ef164a3260d0fc3e6f0e8f169c755a06828d123ffe05b964feff8e903834c"
+    },
+    {
+      "id": "RUN-01567",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/targeted-tests-final.txt",
+      "bytes": 103,
+      "sha256": "4c979c0d06f0e9e2109df48cae7f69ac5d403754045b4cfe404fe744e7390b47"
+    },
+    {
+      "id": "RUN-01568",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/terrain-admission-verification.json",
+      "bytes": 4968,
+      "sha256": "dfb67a337a4fb4f2c7792d7c8d01b66eec3568d238f206d7e4ad4281e52c8cd0"
+    },
+    {
+      "id": "RUN-01570",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/verify_admission.py",
+      "bytes": 2756,
+      "sha256": "96904bf5b577da215f3dd0564bcc9e2e2f2501f9391c8a0c21344c43d7f2fff0"
+    },
+    {
+      "id": "RUN-01577",
+      "kind": "local",
+      "path": "local/research/codex/hidden-cell-native-r1/visual-review.json",
+      "bytes": 827,
+      "sha256": "2ae298fcfec307a3d9250a19761425b19cfbb0c12f0ba52e03367db7b4ca0fe4"
+    },
+    {
+      "id": "RUN-01602",
+      "kind": "local",
+      "path": "local/research/codex/source-pin-publication/check_checkpoints.py",
+      "bytes": 28813,
+      "sha256": "f199b545c9a20a0b2d2d37f02ad0d107cb1087e1edd145f2e7526167f260a20b"
+    },
+    {
+      "id": "RUN-01604",
+      "kind": "local",
+      "path": "local/research/codex/source-pin-publication/checkpoint-tool-tests.txt",
+      "bytes": 133,
+      "sha256": "5cb7146d5296b46a66222ba9f6956984deb41eb76292a1490b5d2a22a960c073"
+    },
+    {
+      "id": "RUN-01606",
+      "kind": "local",
+      "path": "local/research/codex/source-pin-publication/publication-proof.json",
+      "bytes": 584,
+      "sha256": "b09db4ffa7812292601040903b3406df9ad64bd041832358fda0421ef217de64"
+    },
+    {
+      "id": "RUN-01607",
+      "kind": "local",
+      "path": "local/research/codex/source-pin-publication/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/hidden-cell-native-r1",
+      "path": "local/evidence-manifests/b074bc45616a2370d6ba42579f631a3316d45cf550b2ec74037ef3fe36007c2d.jsonl",
+      "sha256": "b074bc45616a2370d6ba42579f631a3316d45cf550b2ec74037ef3fe36007c2d",
+      "bytes": 314112,
+      "count": 1554,
+      "files_bytes": 130146658
+    },
+    {
+      "run": "local/research/codex/hidden-cell-admission",
+      "path": "local/evidence-manifests/4a9aa68dff805ec73e17889808b1b07bd580b8870089950d032d317875586a16.jsonl",
+      "sha256": "4a9aa68dff805ec73e17889808b1b07bd580b8870089950d032d317875586a16",
+      "bytes": 875,
+      "count": 4,
+      "files_bytes": 1748
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/329fff527da56245ec76b77ef3c99bc07482af9c4a615a7f98fee778eb2a4db7.jsonl",
+      "sha256": "329fff527da56245ec76b77ef3c99bc07482af9c4a615a7f98fee778eb2a4db7",
+      "bytes": 2184,
+      "count": 12,
+      "files_bytes": 357580
+    },
+    {
+      "run": "local/research/codex/basic-preset-start3-r1",
+      "path": "local/evidence-manifests/cf1278618db425c0513043ab3841a3d3b07e61fa6fa3091f4ccad374ad7997ef.jsonl",
+      "sha256": "cf1278618db425c0513043ab3841a3d3b07e61fa6fa3091f4ccad374ad7997ef",
+      "bytes": 498,
+      "count": 2,
+      "files_bytes": 15304
+    },
+    {
+      "run": "local/research/codex/source-pin-publication",
+      "path": "local/evidence-manifests/ef7020f129c07d0d8a644bf33889305ce99e5c3de7bb2a96a71d5d2d4eadf0ad.jsonl",
+      "sha256": "ef7020f129c07d0d8a644bf33889305ce99e5c3de7bb2a96a71d5d2d4eadf0ad",
+      "bytes": 1293,
+      "count": 6,
+      "files_bytes": 561590
     }
   ]
 }
