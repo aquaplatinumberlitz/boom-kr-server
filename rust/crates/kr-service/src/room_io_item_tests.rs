@@ -1471,6 +1471,125 @@ fn punch_keeps_deadline_quota_and_owner_then_commits_terrain_at_moved_root() {
             .accepted
     );
 }
+// Down-one server controls; scoped native execution is recorded in #456.
+#[test]
+fn punch_down_queue_rollback_reserves_target_and_keeps_owner_quota_until_all_receipts() {
+    let mut c = punch_case();
+    punch_pickup(&mut c);
+    let (id, mut deadlines) = punch_place(&mut c, 6);
+    let original_due = deadlines.iter().map(|batch| batch.due).collect::<Vec<_>>();
+    let mut request = punch_body(0, id, 6);
+    request[2] = write_uint(1, Width::U8).unwrap()[0];
+    request[7] = write_uint(7, Width::U8).unwrap()[0];
+    {
+        let r = c.shared.lock().unwrap();
+        for _ in 0..8 {
+            r.channels[&c.keys[1].identity]
+                .sender
+                .try_send(Runtime::member_batch(c.keys[1], Some(c.round), 0, vec![]))
+                .unwrap();
+        }
+    }
+    assert!(c.sessions[0].packet(119, &request).is_err());
+    assert!(c.sessions[0].inbox.try_recv().is_err());
+    for _ in 0..8 {
+        c.sessions[1].inbox.try_recv().unwrap();
+    }
+    assert!(
+        c.sessions[0]
+            .packet(119, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    for session in &mut c.sessions {
+        let batch = session.inbox.try_recv().unwrap();
+        assert!(session.valid(&batch));
+        assert_eq!(batch.packets[0].1.opcode, 162);
+        assert_eq!(batch.packets[0].1.payload, request[..9]);
+    }
+    {
+        let r = c.shared.lock().unwrap();
+        let terrain = r.model.terrain.as_ref().unwrap();
+        let probe = crate::terrain::Bomb {
+            id: id + 1,
+            owner: 0,
+            row: 7,
+            column: 3,
+            power: 1,
+        };
+        assert!(terrain.clone().place(probe.clone()).is_err());
+        assert!(
+            terrain
+                .clone()
+                .place(crate::terrain::Bomb { row: 6, ..probe })
+                .is_ok()
+        );
+    }
+    let key = crate::room::wire_key(c.round).unwrap();
+    assert_eq!(
+        c.sessions[0]
+            .packet(118, &bomb(0, 2, 1, key))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "owner_capacity_reserved"
+    );
+    for (index, session) in c.sessions.iter().enumerate() {
+        assert!(session.prepare_delivery(&mut deadlines[index]).unwrap());
+        assert_eq!(deadlines[index].due, original_due[index]);
+        assert_eq!(
+            deadlines[index].packets[0].1.payload,
+            wire::rebind158(id).unwrap()
+        );
+        session.finish(&deadlines[index]).unwrap();
+        if index == 0 {
+            assert_eq!(
+                c.sessions[0]
+                    .packet(118, &bomb(0, 2, 1, key))
+                    .unwrap()
+                    .bomb
+                    .unwrap()
+                    .reason,
+                "owner_capacity_reserved"
+            );
+        }
+    }
+    assert!(
+        c.sessions[0]
+            .packet(118, &bomb(0, 2, 1, key))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    let mut blocked = punch_case();
+    punch_pickup(&mut blocked);
+    let (id, _) = punch_place(&mut blocked, 1);
+    let mut request = punch_body(0, id, 1);
+    request[2] = write_uint(1, Width::U8).unwrap()[0];
+    request[7] = write_uint(2, Width::U8).unwrap()[0];
+    for _ in 0..2 {
+        assert_eq!(
+            blocked.sessions[0]
+                .packet(119, &request)
+                .unwrap()
+                .bomb
+                .unwrap()
+                .reason,
+            "motion_terrain"
+        );
+        assert!(
+            blocked
+                .sessions
+                .iter_mut()
+                .all(|session| session.inbox.try_recv().is_err())
+        );
+    }
+}
+
 #[test]
 fn punch_missing_item_transport_slot_foreign_owner_and_old_round_are_fenced() {
     let mut c = punch_case();

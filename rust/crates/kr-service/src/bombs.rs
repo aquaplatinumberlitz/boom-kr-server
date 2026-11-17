@@ -113,9 +113,10 @@ impl Active {
     fn reserves(&self, cell: (u8, u8)) -> bool {
         (self.request.row, self.request.column) == cell
             || self.motion.is_some_and(|m| {
-                matches!(m.selector, 3 | 5)
+                matches!(m.selector, 1 | 3 | 5)
                     && m.source_column == cell.1
-                    && (m.target_row..=m.source_row).contains(&cell.0)
+                    && (m.source_row.min(m.target_row)..=m.source_row.max(m.target_row))
+                        .contains(&cell.0)
             })
     }
 }
@@ -329,7 +330,9 @@ impl Ledger {
         );
         Ok(Ok(Placement::Allocated(ticket)))
     }
-    /// Candidate owner-only selector3 policy, not original KR authority.
+    /// Scoped owner-only vertical Punch policy, not original KR authority.
+    /// Selector1 emission was captured at CP327; down-one native execution
+    /// and retirement were checked in KRE-G1-PUNCH-DOWN (#456).
     /// Wire119 has no epoch: current non-reused ID and Membership fence it.
     pub(crate) fn move_punch(
         &mut self,
@@ -368,11 +371,18 @@ impl Ledger {
         if motion.context != 0 || motion.slot != slot {
             return Err("action_actor_mismatch");
         }
-        // Only the measured direction/cell relationship is admitted initially.
-        if motion.selector != (if shoe { 5 } else { 3 })
-            || motion.source_row.checked_sub(if shoe { 3 } else { 1 }) != Some(motion.target_row)
+        // Explicit captured direction/cell relationships only. The down-one
+        // branch has matching scoped native execution and retirement evidence.
+        let target_row = match (shoe, motion.selector) {
+            (true, 5) => motion.source_row.checked_sub(3),
+            (false, 3) => motion.source_row.checked_sub(1),
+            (false, 1) => motion.source_row.checked_add(1),
+            _ => None,
+        };
+        if target_row != Some(motion.target_row)
             || motion.source_column != motion.target_column
             || motion.source_row >= 13
+            || motion.target_row >= 13
             || motion.source_column >= 15
         {
             return Err("unmeasured_motion_geometry");
@@ -660,6 +670,97 @@ mod tests {
         assert!(ledger.delivered(&first, a));
         assert!(ledger.delivered(&first, b));
         assert!(ledger.move_shoe(1, b, 1, action, Instant::now()).is_ok());
+    }
+    #[test]
+    fn downward_punch_keeps_vacated_source_reserved_for_new_shoe_and_rejects_outside_map() {
+        use kr_wire::kr00967::{BombAction119, BombMotion162};
+        let a = member(70000, 11);
+        let b = member(80000, 22);
+        let mut ledger = Ledger::default();
+        ledger.begin(1);
+        let ticket = ledger
+            .place(
+                1,
+                a,
+                0,
+                &Request {
+                    row: 6,
+                    ..request(0)
+                },
+                &[a, b],
+                2,
+            )
+            .unwrap()
+            .unwrap();
+        let action = BombAction119 {
+            motion: BombMotion162 {
+                context: 0,
+                slot: 0,
+                selector: 1,
+                bomb_id: ticket.id,
+                source_row: 6,
+                source_column: 3,
+                target_row: 7,
+                target_column: 3,
+            },
+            opaque_tail: [1715, 1],
+        };
+        for (selector, source, target) in
+            [(1, 12, 13), (1, 255, 0), (1, 6, 8), (0, 6, 7), (2, 6, 7)]
+        {
+            let mut invalid = action;
+            invalid.motion.selector = selector;
+            invalid.motion.source_row = source;
+            invalid.motion.target_row = target;
+            assert_eq!(
+                ledger
+                    .move_punch(1, a, 0, invalid, Instant::now())
+                    .unwrap_err(),
+                "unmeasured_motion_geometry"
+            );
+        }
+        ledger.move_punch(1, a, 0, action, Instant::now()).unwrap();
+        // Source6 is now free in the ledger root projection; a new Shoe may not
+        // enter it while the previous Punch could still be crossing it.
+        let second = ledger
+            .place(
+                1,
+                b,
+                1,
+                &Request {
+                    row: 6,
+                    owner: 1,
+                    ..request(0)
+                },
+                &[a, b],
+                2,
+            )
+            .unwrap()
+            .unwrap();
+        let shoe = BombAction119 {
+            motion: BombMotion162 {
+                context: 0,
+                slot: 1,
+                selector: 5,
+                bomb_id: second.id,
+                source_row: 6,
+                source_column: 3,
+                target_row: 3,
+                target_column: 3,
+            },
+            opaque_tail: [1000, 3],
+        };
+        assert_eq!(
+            ledger.move_shoe(1, b, 1, shoe, Instant::now()).unwrap_err(),
+            "motion_path_occupied"
+        );
+        assert!(ledger.delivered(&ticket, a));
+        assert_eq!(
+            ledger.move_shoe(1, b, 1, shoe, Instant::now()).unwrap_err(),
+            "motion_path_occupied"
+        );
+        assert!(ledger.delivered(&ticket, b));
+        assert!(ledger.move_shoe(1, b, 1, shoe, Instant::now()).is_ok());
     }
     #[test]
     fn punch_admission_closes_before_deadline_or_first_blast_write_and_never_reuses_ids() {

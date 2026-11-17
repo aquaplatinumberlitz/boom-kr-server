@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP332",
+  "as_of": "CP333",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3767,7 +3767,9 @@
           "docs/evidence/rust-service/g1-punch.json",
           "docs/evidence/rust-service/g1-punch-departure.json",
           "docs/evidence/item-families/shoe-action.json",
-          "docs/evidence/rust-service/g1-shoe.json"
+          "docs/evidence/rust-service/g1-shoe.json",
+          "docs/evidence/item-families/punch-down-action.json",
+          "docs/evidence/rust-service/g1-punch-down.json"
         ]
       },
       "coverage": {
@@ -3840,7 +3842,8 @@
         }
       },
       "issues": [
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456"
       ]
     },
     {

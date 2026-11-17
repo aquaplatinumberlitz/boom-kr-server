@@ -1,0 +1,84 @@
+{
+  "id": "AUD141",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-punch-selector1-down-one"
+  ],
+  "completed_through": "CP333",
+  "recorded_utc": "2026-11-17T11:44:30.673967+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/items-stats.md",
+    "docs/protocol/bombs.md",
+    "docs/evidence/item-families/punch-down-action.json",
+    "docs/evidence/rust-service/g1-punch-down.json",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/terrain.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+    "local/research/codex/g1-punch-down-reference-r6/two-round-down-reference-verification.json",
+    "local/research/codex/g1-punch-down-reference-r6/wire-reassembly-verification.json",
+    "local/research/codex/g1-punch-down-reference-r6/actor-fields-final.json",
+    "local/research/codex/g1-punch-down-rust-native-r1/punch-down-native-verification.json",
+    "local/research/codex/g1-punch-down-rust-native-r1/decoded-channels-shared.json",
+    "local/research/codex/g1-punch-down-rust-native-r1/native-actor-field-checks.json",
+    "local/research/codex/g1-punch-down-rust-native-r1/native/cycles/A/client.log",
+    "local/research/codex/g1-punch-down-rust-native-r1/native/cycles/B/client.log",
+    "local/research/codex/g1-punch-down-rust-native-r1/native/cycles/account-db/accounts.sqlite",
+    "local/research/codex/g1-punch-down-final-build-r2/verification.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH rồi đối chiếu raw/source. Kiểm guard geometry mới, target bounds và corridor reservation cùng ownership/quota/round/queue/delivery cũ. Đối chiếu exact actual119 với received162 qua TCP, root/state4/rebind/active0 cùng object tại đúng cửa sổ, không dùng pointer pool được tái dùng cho bom sau. Đối chiếu nhân vật C1/C0 và account/player trong DB, hai complete outcomes, rewards0 và rank nhận qua TCP; hai reset. Phân biệt các controller misses, reference diagnostic và Rust account acceptance; không lấy exit0/controller completion làm oracle.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Down-one mới chỉ có emission cũ và nhánh draft, chưa đủ native thực thi.",
+      "correction": "Reference hai vòng exact selector1/source6→7, native retirement/reset; Rust hai account cùng geometry, lifecycle, peer/reset và zero journal đã kiểm riêng.",
+      "fixed_in": [
+        "docs/protocol/items-stats.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/item-families/punch-down-action.json",
+        "docs/evidence/rust-service/g1-punch-down.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Hành lang reserve của Punch chỉ dùng target..source theo chiều lên; chiều xuống cần giữ source cũ cho Shoe mới và kiểm target boundary riêng.",
+      "correction": "Dùng source.min(target)..=source.max(target), selector1 được tính cùng selector3/5. Test kiểm quota đến mọi recipient, rollback và outside-map, terrain block. Không thay owner/fuse/current round.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/bombs.rs",
+        "rust/crates/kr-service/src/room_io_item_tests.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Căn phím dựa target pixel quá hẹp, một interval thiếu offset39 và route tự kết thúc đi quá vị trí đã quan sát; empty AssertionError có exit0.",
+      "correction": "Giữ mọi raw/receipt. R6 có cạnh route đo cụ thể; actual118source và exact119 không nới, verifier yêu cầu không có key error. R2–R5 không tính hai-cycle; R5 một motion/retirement vẫn partial.",
+      "fixed_in": [
+        "docs/evidence/item-families/punch-down-action.json",
+        "docs/evidence/rust-service/g1-punch-down.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Chú thích source sau native vẫn ghi pending; thay chú thích làm source hash khác binary runtime.",
+      "correction": "Giữ 90 exact external inputs và native source/binaries. Final delta chỉ comments, cùng số dòng; full fmt/clippy/test/build lại và mọi section ELF allocated trừ build-ID khớp byte với native build.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/bombs.rs",
+        "rust/crates/kr-service/src/room_io_item_tests.rs",
+        "docs/evidence/rust-service/g1-punch-down.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Chỉ nhóm Punch selector1/down-one được nghiệm thu, policy opt-in. Hướng ngang và Shoe hướng/khoảng cách khác còn theo PLAN.",
+    "Foreign bomb, motion lặp/inflight/late và mọi nhân vật/map/roster chưa mở; regression không thay native fault injection.",
+    "M8 Internet/tải/đóng gói/vận hành, full G1 và giai đoạn1 còn mở. L1 của Claude không thuộc nhóm này.",
+    "CI và exact-head local/history phải xanh trước merge; raw/binary/decompile và thông tin hạ tầng thật không đưa lên GitHub."
+  ]
+}

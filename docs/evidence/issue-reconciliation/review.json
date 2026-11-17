@@ -967,22 +967,49 @@
       "features": [
         "KR-X001"
       ],
-      "classification": "backlog",
-      "known": "Managed player all-dead intentionally unsupported in four_results::winner; native ShoeR2 has both17/19 and no175 before timeout.",
-      "remaining": "Finite result/return for all-dead managed roster, journal and round fences; no original tieenum claim.",
-      "next_test": "After Shoe slice, reuse all-dead2 source/native and current175 roster builder, measure allrank2 or explicit unranked return, then Rust two-round/reset/Start next.",
-      "acceptance": "docs/RESEARCH.md#gap-managed-all-dead",
-      "reason": "New native control exposed a phase1 termination gap; separate issue preserves it while Shoe recipe keeps peer outside blast.",
+      "classification": "completed",
+      "known": "CP332/AUD140 và PR455 đã tích hợp typed AllDead, rank2 và journal Draw/thưởng0, native2/4/8 hai vòng/reset. Roster4/8 còn Start/clock kế trên LAN có netem đã khai báo.",
+      "remaining": "Native sparse/departed/delayed175 qua revoke/EOF và toàn G1/M8 chưa đo; fixed-team legacy và tieenum gốc không mở.",
+      "next_test": "Theo PLAN tiếp #456 Punch hướng xuống; không lặp all-dead2/4/8 đã nghiệm thu. Giữ các giới hạn native và synthetic TCP/SQLite riêng.",
+      "acceptance": "docs/protocol/life-results.md#rust-managed-all-dead",
+      "reason": "PR455 merge sau gate exact-head tại3f2a10b:570232 evidence verified/0unavailable/0errors/historytrue và hai CI xanh. AUD140 là Codex self-audit, independent review waived.",
       "sources": [
         "docs/PLAN.md#dashboard",
-        "docs/RESEARCH.md#gap-managed-all-dead"
+        "docs/protocol/life-results.md#rust-managed-all-dead"
       ],
       "evidence": [
-        "docs/evidence/rust-service/g1-shoe.json"
+        "docs/evidence/rust-service/g1-managed-all-dead.json",
+        "docs/evidence/checkpoints/records/CP332.json"
+      ],
+      "prs": [
+        455
+      ],
+      "successors": [],
+      "reviewed_utc": "2026-11-17T10:23:41.640368+00:00"
+    },
+    {
+      "number": 456,
+      "kre": "KRE-G1-PUNCH-DOWN",
+      "features": [
+        "KR-F010"
+      ],
+      "classification": "in_progress",
+      "known": "CP327 có actual119 selector1 từ6,3 tới7,3 nhưng Rust từ chối trước162. Nhánh nghiên cứu có guard/test candidate; native execution chưa đạt.",
+      "remaining": "Reference và Rust native cho direction1, landing/retirement/bom tiếp/hai kết quả/reset; không suy các hướng hoặc biến thể khác.",
+      "next_test": "Chờ CP332 exact-head lease và tích hợp #453, rồi chạy reference mới bằng phím thường; guard Rust chỉ nghiệm thu khi đủ evidence.",
+      "acceptance": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "reason": "Theo thứ tự Shoe/Punch còn thiếu trong PLAN. Bản nháp không tự mở contract đã xác nhận hoặc đóng G1.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md#gap-ability-debuff"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/g1-punch.json"
       ],
       "prs": [],
       "successors": [],
-      "reviewed_utc": "2026-11-17T06:09:34.739882+00:00"
+      "reviewed_utc": "2026-11-17T10:03:31.869924+00:00"
     }
   ],
   "as_of_utc": "2026-11-14T14:43:14.236502+00:00",

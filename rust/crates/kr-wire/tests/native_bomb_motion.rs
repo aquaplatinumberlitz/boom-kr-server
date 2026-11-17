@@ -39,6 +39,25 @@ fn captured_requests_preserve_wire_id_coordinates_and_opaque_tail() {
 }
 
 #[test]
+fn captured_selector1_request_preserves_down_one_without_claiming_native_execution() {
+    // CP327 Rust native R3 round2, C2S sequence352. The service refused it;
+    // this independent capture establishes emission/codec, not a consumed162.
+    let decoded = BombAction119::decode(&hex("5a5a5ba56c5c595d59a3daa568")).unwrap();
+    assert_eq!(decoded.motion.selector, 1);
+    assert_eq!(decoded.motion.bomb_id, 5);
+    assert_eq!(
+        (
+            decoded.motion.source_row,
+            decoded.motion.source_column,
+            decoded.motion.target_row,
+            decoded.motion.target_column
+        ),
+        (6, 3, 7, 3)
+    );
+    assert_eq!(decoded.opaque_tail, [1715, 1]);
+}
+
+#[test]
 fn native_accepted_motion_body_has_its_own_exact_boundary() {
     let captured = hex("5a5a59a5685c595f59");
     let decoded = BombMotion162::decode(&captured).unwrap();

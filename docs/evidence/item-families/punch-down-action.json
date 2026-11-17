@@ -1,0 +1,240 @@
+{
+  "schema": "kre-punch-down-reference-v1",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Reference KR C0, Punch selector1, source6,3 to7,3. Two native views, two rounds, landing/rebind/retirement, next actual118, rank/return and pickup reset. Rust account acceptance remains pending.",
+  "client_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+  "environment": "Wine copies, isolated loopback, passive debugger observations and ordinary keys only",
+  "requests119": [
+    [
+      0,
+      0,
+      1,
+      1,
+      6,
+      3,
+      7,
+      3,
+      1715,
+      1
+    ],
+    [
+      0,
+      0,
+      1,
+      3,
+      6,
+      3,
+      7,
+      3,
+      1715,
+      1
+    ]
+  ],
+  "clients": [
+    {
+      "role": "A",
+      "rounds": [
+        {
+          "round": 1,
+          "wire_id": 1,
+          "next_wire_id": 2,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        },
+        {
+          "round": 2,
+          "wire_id": 3,
+          "next_wire_id": 4,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        }
+      ],
+      "native_clocks": 2,
+      "ranks": 2,
+      "returns": 2
+    },
+    {
+      "role": "B",
+      "rounds": [
+        {
+          "round": 1,
+          "wire_id": 1,
+          "next_wire_id": 2,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        },
+        {
+          "round": 2,
+          "wire_id": 3,
+          "next_wire_id": 4,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        }
+      ],
+      "native_clocks": 2,
+      "ranks": 2,
+      "returns": 2
+    }
+  ],
+  "native_secure_field_checks": 712,
+  "raw_files": 1590,
+  "policy": {
+    "source": "emu_choice",
+    "status": "design",
+    "description": "On each current moved bomb, short158 variant1 immediately before ordinary158 variant0 at the existing6s deadline; no160."
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/two-round-down-reference-verification.json",
+      "bytes": 4179,
+      "sha256": "d360461ccb3e78d0ccf85c7de2b8062c28e268b4ace9cf07a7dae93429ebafd1"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/wire-reassembly-verification.json",
+      "bytes": 2532,
+      "sha256": "2f52a9fe0dccce07792baf0aad4d1e4db0f009fc17de32c99d863ae967abb386"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/actor-fields-final.json",
+      "bytes": 477583,
+      "sha256": "40fe248063783cb57c7a44930b5c43e75f9aa6475ff8256b6676f5548a5878b8"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/raw-seal.json",
+      "bytes": 255578,
+      "sha256": "ea8edea3277193a2cb58b5f7c50b96ed041fe2097b1857cbf6ba144cafdbf79d"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/frozen-input-postrun-verification.json",
+      "bytes": 61,
+      "sha256": "a2498575df26f9354b221902861f0785391f29cec5fa8aa40af0dbbf15e11f8e"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/runtime-preflight.json",
+      "bytes": 496117,
+      "sha256": "f2a6455daf14876030868d05e26f2acbb5886366553cef1c32443d9014df133a"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/reference-inputs.json",
+      "bytes": 8897,
+      "sha256": "e91f6907218e7172cc8c47e46a28782d69d3bf7e8aad81fbacaa89411f0e1201"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/recipe.json",
+      "bytes": 1077,
+      "sha256": "69797da910df3a0c2397ef056387199352d1048aa2a09390ebf4f330f70d070d"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/prelaunch-source-review.json",
+      "bytes": 880,
+      "sha256": "61135bfb3a35f35c3de9262849ccc9ac3c6390bfd77f935bdec655a3452b4894"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/runtime/run.json",
+      "bytes": 241330,
+      "sha256": "01b4a5b38cb45a719ec33f55d466bc505cc199af6d5be3a5e8e45bcd6ac5bc96"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r2/partial-reference-verification.json",
+      "bytes": 1601,
+      "sha256": "27172624ae76245c59868980fcb68afdc7037881e72994ce8562b8464ec67d31"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r3/failure-verification.json",
+      "bytes": 1584,
+      "sha256": "c670380cae073dd4e2f395ac25dea6ce420f2fb0e4196af0e2ad3e6e6816a1c2"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r4/failure-verification.json",
+      "bytes": 1294,
+      "sha256": "84da3e4197c5e5a6e86dc9f32611e1206ea4f3254af4c542363f8b1777014b6b"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r5/partial-reference-verification.json",
+      "bytes": 1684,
+      "sha256": "d69d3c17d717b844252649619e830ce5dfde0ba62d205ab601d4fcedf74431e3"
+    }
+  ],
+  "limits": [
+    "Both Shoe and Punch flags were picked up on reference. Runtime only emitted Punch selector1; Rust must separately test floorPunch4 only and account/character identity.",
+    "One action per round, exact down-one geometry and landing before6s deadline only. Original authority/order, arbitrary geometry, late/repeated/inflight motion and all G1 remain open.",
+    "R2 source4to7/one motion, R3 controller oscillation, R4 actual118source5, R5 one exact motion but failed self-finish remain partial/failed; no replacement of old raw. R6 changes only ordinary-input self-finish route after measured blocker.",
+    "Wire reassembly/CRC, native reader/lifecycle and independent native getter replay are separate checks. Process exit0 alone is never acceptance."
+  ],
+  "next_step": "Rust native two accounts, persistedC1/peerC0, missing-item input control, same exact down-one162, both views/retirement/new118/two results/reset and DB journal. Then feature audit/checkpoint, exact-head local/history and CI."
+}
