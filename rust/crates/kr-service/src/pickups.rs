@@ -16,13 +16,18 @@ pub(crate) enum Policy {
     #[default]
     Disabled,
     ReportDerivedBasic,
+    /// Candidate Punch selector3 slice; requires its native acceptance before use.
+    ReportDerivedPunch,
 }
 impl Policy {
     pub(crate) fn enabled(self) -> bool {
-        self == Self::ReportDerivedBasic
+        self != Self::Disabled
     }
     pub(crate) fn allows(self, kind: u16) -> bool {
-        self.enabled() && matches!(kind, 0..=2 | 5)
+        self.enabled() && (matches!(kind, 0..=2 | 5) || (self.punch() && kind == 4))
+    }
+    pub(crate) fn punch(self) -> bool {
+        self == Self::ReportDerivedPunch
     }
 }
 
@@ -51,6 +56,17 @@ impl Catalog {
         {
             return Err(io::Error::other(
                 "MaxPower floor requires measured character-item policy",
+            ));
+        }
+        if !policy.punch()
+            && self
+                .floor
+                .values()
+                .chain(self.hidden.values())
+                .any(|item| item.kind == 4)
+        {
+            return Err(io::Error::other(
+                "Punch floor requires measured Punch policy",
             ));
         }
         Ok(())
@@ -107,7 +123,7 @@ impl Catalog {
                 // Only measured stat items and the separate needle policy.
                 if row[4] >= 13
                     || row[5] >= 15
-                    || !matches!(kind, 0..=2 | 5 | 145)
+                    || !matches!(kind, 0..=2 | 4 | 5 | 145)
                     || !indices.insert(index)
                     || indices.len() > 64
                 {
@@ -292,6 +308,37 @@ impl Round {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
+    pub(crate) fn punch_catalog() -> Catalog {
+        Catalog {
+            floor: BTreeMap::from([(
+                18,
+                Item {
+                    index: 18,
+                    row: 5,
+                    column: 3,
+                    kind: 4,
+                },
+            )]),
+            hidden: BTreeMap::new(),
+        }
+    }
+    #[test]
+    fn punch_catalog_requires_explicit_policy_and_does_not_enable_shoe() {
+        let catalog = punch_catalog();
+        assert!(catalog.validate_stat_policy(Policy::Disabled).is_err());
+        assert!(
+            catalog
+                .validate_stat_policy(Policy::ReportDerivedBasic)
+                .is_err()
+        );
+        assert!(
+            catalog
+                .validate_stat_policy(Policy::ReportDerivedPunch)
+                .is_ok()
+        );
+        assert!(Policy::ReportDerivedPunch.allows(4));
+        assert!(!Policy::ReportDerivedPunch.allows(3));
+    }
     pub(crate) fn catalog() -> Catalog {
         Catalog {
             floor: BTreeMap::from([(

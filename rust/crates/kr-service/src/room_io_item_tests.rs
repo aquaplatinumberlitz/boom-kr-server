@@ -1333,3 +1333,319 @@ fn durable_box_claim_waits_for_fifth_full_delivery_and_reset_restores_hit_count(
             .accepted
     );
 }
+
+// Candidate Punch slice integration; these are server invariants, not a native oracle.
+fn punch_case() -> Case {
+    let c = case(2);
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.rules.item_policy = pickups::Policy::ReportDerivedPunch;
+        let catalog = pickups::tests::punch_catalog();
+        r.model.pickups = pickups::Round::begin(c.round, &catalog).unwrap();
+        r.floor_catalog = catalog;
+        let mut terrain = crate::terrain::tests::motion_map();
+        terrain.begin(c.round);
+        r.model.terrain = Some(terrain);
+    }
+    c
+}
+fn punch_body(slot: u8, id: u16, source_row: u8) -> Vec<u8> {
+    let mut body = wire::BombMotion162 {
+        context: 0,
+        slot,
+        selector: 3,
+        bomb_id: id,
+        source_row,
+        source_column: 3,
+        target_row: source_row - 1,
+        target_column: 3,
+    }
+    .encode()
+    .unwrap();
+    body.extend(encoded(&[(1715, Width::U16), (1, Width::U16)]));
+    body
+}
+fn punch_pickup(c: &mut Case) {
+    let key = crate::room::wire_key(c.round).unwrap();
+    assert!(
+        c.sessions[0]
+            .packet(124, &pickup(0, 5, 3, 18, 4, key))
+            .unwrap()
+            .pickup
+            .unwrap()
+            .accepted
+    );
+    confirmations(c);
+}
+fn punch_place(c: &mut Case, row: u8) -> (u16, Vec<Batch>) {
+    let key = crate::room::wire_key(c.round).unwrap();
+    let mut request = bomb(0, 1, 1, key);
+    request[10] = write_uint(u64::from(row), Width::U8).unwrap()[0];
+    let id = c.sessions[0]
+        .packet(118, &request)
+        .unwrap()
+        .bomb
+        .unwrap()
+        .id
+        .unwrap();
+    let mut deadlines = Vec::new();
+    for session in &mut c.sessions {
+        assert_eq!(session.inbox.try_recv().unwrap().packets[0].1.opcode, 159);
+        deadlines.push(session.inbox.try_recv().unwrap());
+    }
+    (id, deadlines)
+}
+#[test]
+fn punch_keeps_deadline_quota_and_owner_then_commits_terrain_at_moved_root() {
+    let mut c = punch_case();
+    punch_pickup(&mut c);
+    let (id, mut deadlines) = punch_place(&mut c, 6);
+    let due = deadlines.iter().map(|b| b.due).collect::<Vec<_>>();
+    let request = punch_body(0, id, 6);
+    assert!(
+        c.sessions[0]
+            .packet(119, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    for session in &mut c.sessions {
+        let motion = session.inbox.try_recv().unwrap();
+        assert!(session.valid(&motion));
+        assert_eq!(motion.packets[0].1.opcode, 162);
+        assert_eq!(motion.packets[0].1.payload, request[..9]);
+    }
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "bomb_already_moved"
+    );
+    let key = crate::room::wire_key(c.round).unwrap();
+    assert_eq!(
+        c.sessions[0]
+            .packet(118, &bomb(0, 2, 1, key))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "owner_capacity_reserved"
+    );
+    for (i, session) in c.sessions.iter().enumerate() {
+        assert!(session.prepare_delivery(&mut deadlines[i]).unwrap());
+        assert_eq!(deadlines[i].due, due[i]);
+        assert_eq!(
+            deadlines[i]
+                .packets
+                .iter()
+                .map(|p| p.1.payload.len())
+                .collect::<Vec<_>>(),
+            [4, 13]
+        );
+        assert_eq!(
+            deadlines[i].packets[0].1.payload,
+            wire::rebind158(id).unwrap()
+        );
+        session.finish(&deadlines[i]).unwrap();
+        let r = c.shared.lock().unwrap();
+        assert_eq!(
+            r.model
+                .terrain
+                .as_ref()
+                .unwrap()
+                .clearance(c.round, 5, 4)
+                .is_some(),
+            i == 1
+        );
+    }
+    assert!(
+        c.sessions[0]
+            .packet(118, &bomb(0, 2, 1, key))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+}
+#[test]
+fn punch_missing_item_transport_slot_foreign_owner_and_old_round_are_fenced() {
+    let mut c = punch_case();
+    let (id, _) = punch_place(&mut c, 6);
+    let request = punch_body(0, id, 6);
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "missing_punch"
+    );
+    punch_pickup(&mut c);
+    c.sessions[0].connection += 1;
+    assert!(c.sessions[0].packet(119, &request).is_err());
+    c.sessions[0].connection -= 1;
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &punch_body(1, id, 6))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "action_actor_mismatch"
+    );
+    c.shared
+        .lock()
+        .unwrap()
+        .model
+        .members
+        .get_mut(&c.keys[1].identity)
+        .unwrap()
+        .punch = true;
+    assert_eq!(
+        c.sessions[1]
+            .packet(119, &punch_body(1, id, 6))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "foreign_bomb"
+    );
+    c.shared
+        .lock()
+        .unwrap()
+        .model
+        .members
+        .get_mut(&c.keys[0].identity)
+        .unwrap()
+        .life
+        .death = Some(Instant::now());
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "report_ineligible"
+    );
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.model.end(c.round).unwrap();
+        for key in &c.keys {
+            r.model.refreshed(*key, c.round).unwrap();
+        }
+        for key in &c.keys[1..] {
+            r.model.ready(*key).unwrap();
+        }
+        let round = r.model.begin(c.keys[0]).unwrap();
+        assert!(r.model.members.values().all(|m| !m.punch));
+        for key in &c.keys {
+            r.model.ack(*key, round).unwrap();
+        }
+        r.model.members.get_mut(&c.keys[0].identity).unwrap().punch = true;
+    }
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "inactive_bomb"
+    );
+}
+#[test]
+fn punch_queue_and_terrain_failures_leave_retryable_original_ledger_and_root() {
+    let mut c = punch_case();
+    punch_pickup(&mut c);
+    let (id, _) = punch_place(&mut c, 6);
+    let request = punch_body(0, id, 6);
+    {
+        let r = c.shared.lock().unwrap();
+        for _ in 0..8 {
+            r.channels[&c.keys[1].identity]
+                .sender
+                .try_send(Runtime::member_batch(c.keys[1], Some(c.round), 0, vec![]))
+                .unwrap_or_else(|_| panic!("fill peer queue"));
+        }
+    }
+    assert!(c.sessions[0].packet(119, &request).is_err());
+    assert!(c.sessions[0].inbox.try_recv().is_err());
+    for _ in 0..8 {
+        c.sessions[1].inbox.try_recv().unwrap();
+    }
+    assert!(
+        c.sessions[0]
+            .packet(119, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    let mut blocked = punch_case();
+    punch_pickup(&mut blocked);
+    let (id, _) = punch_place(&mut blocked, 3); // row2/col3 is a box.
+    assert_eq!(
+        blocked.sessions[0]
+            .packet(119, &punch_body(0, id, 3))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "motion_terrain"
+    );
+    assert!(
+        blocked
+            .sessions
+            .iter_mut()
+            .all(|s| s.inbox.try_recv().is_err())
+    );
+    // The rejected candidate never marks the original ledger as already moved.
+    assert_eq!(
+        blocked.sessions[0]
+            .packet(119, &punch_body(0, id, 3))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "motion_terrain"
+    );
+}
+
+#[test]
+fn queued_punch_cannot_survive_actor_departure_or_a_new_membership_visit() {
+    let mut c = punch_case();
+    punch_pickup(&mut c);
+    let (id, _) = punch_place(&mut c, 6);
+    assert!(
+        c.sessions[0]
+            .packet(119, &punch_body(0, id, 6))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    let old_motion = c.sessions[1].inbox.try_recv().unwrap();
+    assert!(c.sessions[1].valid(&old_motion));
+    let old = c.keys[0];
+    let replacement = {
+        let mut r = c.shared.lock().unwrap();
+        r.model.leave(old).unwrap();
+        let replacement = r
+            .model
+            .enter(old.identity, old.connection + 1000, false)
+            .unwrap();
+        assert_ne!(replacement.visit, old.visit);
+        assert!(!r.model.members[&old.identity].punch);
+        replacement
+    };
+    assert!(!c.sessions[1].valid(&old_motion));
+    assert!(!c.shared.lock().unwrap().model.current(old));
+    assert!(c.shared.lock().unwrap().model.current(replacement));
+    assert!(c.sessions[0].packet(119, &punch_body(0, id, 6)).is_err());
+}

@@ -11,7 +11,7 @@ mod room;
 mod room_selection;
 pub use account::{AccountPackets, AccountTemplate, own291, with_identity_string};
 pub use battle::*;
-pub use bomb_motion::{BombAction119, BombMotion162};
+pub use bomb_motion::{BombAction119, BombMotion162, rebind158};
 pub use player::PlayerTemplate;
 pub use room::*;
 pub use room_selection::*;

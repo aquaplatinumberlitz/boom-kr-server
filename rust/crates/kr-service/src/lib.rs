@@ -1034,7 +1034,7 @@ async fn local_lobby_connection(
             .first()
             .is_some_and(|batch| batch.due <= Instant::now())
         {
-            let batch = pending.remove(0);
+            let mut batch = pending.remove(0);
             let Some(session) = &room_session else {
                 return Err(io::Error::other("missing room session"));
             };
@@ -1053,6 +1053,9 @@ async fn local_lobby_connection(
                 if !session.valid(&batch) {
                     continue;
                 }
+            }
+            if !session.prepare_delivery(&mut batch)? {
+                continue;
             }
             for (alias, reply) in &batch.packets {
                 if !session.valid(&batch) {

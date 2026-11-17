@@ -546,7 +546,7 @@ pub fn load(
             &packets,
             actors,
             cfg.life_actions.needle(),
-            cfg.item_policy.enabled(),
+            cfg.item_policy,
             managed_template,
         )?))
     };
@@ -1786,6 +1786,7 @@ impl Session {
                 | 124
                 | 123
                 | 118
+                | 119
                 | 122
                 | 142
                 | 167
@@ -1894,6 +1895,34 @@ impl Session {
             }
             _ => Ok(Some(reply.clone())),
         }
+    }
+    /// Prepare under the room owner before any158 socket write. A moved bomb
+    /// receives the measured short158 before its existing explosion deadline.
+    pub fn prepare_delivery(&self, batch: &mut Batch) -> io::Result<bool> {
+        if !self.valid(batch) {
+            return Ok(false);
+        }
+        if let Some((ticket, recipient)) = &batch.bomb_complete {
+            if batch.packets.len() != 1 || batch.packets[0].1.opcode != 158 {
+                return Err(err("invalid bomb deadline batch"));
+            }
+            let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            if !runtime.model.deliverable(*recipient, Some(ticket.round))
+                || !runtime.model.bombs.deliverable(ticket, *recipient)
+            {
+                return Ok(false);
+            }
+            if runtime.model.bombs.prepare_blast(ticket, *recipient)? {
+                batch.packets.insert(
+                    0,
+                    (
+                        "bomb_rebind158".into(),
+                        packet(158, wire::rebind158(ticket.id)?),
+                    ),
+                );
+            }
+        }
+        Ok(true)
     }
     pub fn finish(&self, batch: &Batch) -> io::Result<()> {
         if let Some((source, round, ref digest, recipient)) = batch.needle_credit_complete {
@@ -2950,6 +2979,82 @@ impl Session {
                     }
                 }
             }
+            119 => {
+                let member = r.member(self.identity, self.connection)?;
+                let request = wire::BombAction119::decode(body)?;
+                let motion = request.motion;
+                let result = if !r.rules.item_policy.punch() {
+                    Err("motion_disabled")
+                } else if !member.punch {
+                    Err("missing_punch")
+                } else if member.life.blocked_pickup() {
+                    Err("report_ineligible")
+                } else if let Phase::Armed { round } = next.phase {
+                    next.bombs
+                        .move_punch(round, member.key, member.slot, request, Instant::now())
+                } else {
+                    Err("inactive_round")
+                };
+                match result {
+                    Err(reason) => {
+                        bomb = Some(BombObservation {
+                            accepted: false,
+                            id: None,
+                            reason,
+                        })
+                    }
+                    Ok(ticket) => {
+                        let target = (motion.target_row, motion.target_column);
+                        let forbidden = r.bomb_cancellation_cells().is_some_and(|cells| {
+                            cells.contains(u16::from(target.0), u16::from(target.1))
+                        });
+                        if forbidden
+                            || next.terrain.as_mut().is_none_or(|terrain| {
+                                terrain
+                                    .move_bomb(
+                                        ticket.round,
+                                        ticket.id,
+                                        (motion.source_row, motion.source_column),
+                                        target,
+                                    )
+                                    .is_err()
+                            })
+                        {
+                            // Discard the candidate ledger change together with terrain.
+                            return Ok(Observation {
+                                bomb: Some(BombObservation {
+                                    accepted: false,
+                                    id: None,
+                                    reason: "motion_terrain",
+                                }),
+                                ..Observation::default()
+                            });
+                        }
+                        let reply = packet(162, motion.encode()?);
+                        for peer in next.members.values() {
+                            let mut batch = Runtime::member_batch(
+                                peer.key,
+                                Some(ticket.round),
+                                0,
+                                vec![("bomb162".into(), reply.clone())],
+                            );
+                            batch.subject = Some(member.key);
+                            // Even if the actor remains, a retired allocation cannot
+                            // deliver an old motion to a recipient or later round.
+                            batch.guard = Guard::Bomb {
+                                member: peer.key,
+                                ticket: ticket.clone(),
+                            };
+                            effects.push((peer.key.identity, batch));
+                        }
+                        bomb = Some(BombObservation {
+                            accepted: true,
+                            id: Some(ticket.id),
+                            reason: "accepted_motion",
+                        });
+                    }
+                }
+            }
             142 => {
                 if r.rules.bomb == rules::BombPolicy::Disabled {
                     return Err(err("four-player gameplay not ported"));
@@ -3063,7 +3168,11 @@ impl Session {
                             .item_stats
                             .as_mut()
                             .ok_or_else(|| err("missing current item stats"))?;
-                        stats.basic_pickup(request.kind())?;
+                        if request.kind() == 4 {
+                            member.punch = true;
+                        } else {
+                            stats.basic_pickup(request.kind())?;
+                        }
                         next.bomb_capacity[usize::from(member.slot)] = stats.capacity;
                     } else if request.kind() == 0 {
                         let slot = usize::from(member.slot);

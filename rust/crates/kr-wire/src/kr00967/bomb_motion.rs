@@ -4,6 +4,18 @@
 use crate::{Width, read_uint, write_uint};
 use std::io;
 
+/// CP325 native4/4: one current bomb, variant1. This is a binding/position
+/// update, not an explosion or119 ACK. Ordering is a server policy choice.
+pub fn rebind158(bomb_id: u16) -> io::Result<Vec<u8>> {
+    if bomb_id == 0 {
+        return Err(io::Error::other("bomb rebind158 ID zero"));
+    }
+    let mut body = write_uint(1, Width::U8).map_err(io::Error::other)?;
+    body.extend(write_uint(u64::from(bomb_id), Width::U16).map_err(io::Error::other)?);
+    body.extend(write_uint(1, Width::U8).map_err(io::Error::other)?);
+    Ok(body)
+}
+
 /// Nine-byte native 162 record. `selector` chooses native action branches;
 /// decoding a value does not declare that branch supported by the service.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]

@@ -183,6 +183,35 @@ impl Terrain {
         self.pending.insert(bomb.id, bomb);
         Ok(())
     }
+    /// Reserve the measured landing cell on the room's candidate clone.
+    /// This does not simulate an airborne trajectory or grant actor authority.
+    pub(crate) fn move_bomb(
+        &mut self,
+        generation: u64,
+        id: u16,
+        source: (u8, u8),
+        target: (u8, u8),
+    ) -> io::Result<()> {
+        if self.generation != generation
+            || target.0 >= self.height
+            || target.1 >= self.width
+            || self.kinds[usize::from(target.0) * usize::from(self.width) + usize::from(target.1)]
+                != 0
+            || self
+                .pending
+                .values()
+                .any(|bomb| bomb.id != id && (bomb.row, bomb.column) == target)
+            || self
+                .pending
+                .get(&id)
+                .is_none_or(|bomb| (bomb.row, bomb.column) != source)
+        {
+            return Err(io::Error::other("unsupported terrain bomb motion"));
+        }
+        let bomb = self.pending.get_mut(&id).expect("validated current bomb");
+        (bomb.row, bomb.column) = target;
+        Ok(())
+    }
     /// Must run under the room owner ONLY at full-roster158write completion.
     /// Snapshot immutable for cascade. An earlier chain-processed secondary's
     /// own later158 returns an emptydelta; no duplicate reveal eligibility.
@@ -509,6 +538,14 @@ pub(crate) mod tests {
         cfg.seed_sha256 = sha(&cfg.kinds);
         cfg.maximum_power = 9;
         cfg.validate_measured(b"map", b"start", 9).unwrap()
+    }
+    pub(crate) fn motion_map() -> Terrain {
+        let mut terrain = basic_items_map();
+        terrain.kinds[5 * 15 + 4] = 2;
+        terrain.seed[5 * 15 + 4] = 2;
+        terrain.remaining_hits[5 * 15 + 4] = 1;
+        terrain.seed_hits[5 * 15 + 4] = 1;
+        terrain
     }
     #[test]
     fn measured_owner_and_power_bounds_stop_at_solid_and_preserve_legacy_profile() {

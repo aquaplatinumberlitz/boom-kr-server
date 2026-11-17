@@ -244,7 +244,7 @@ impl Catalog {
         root: &HashMap<String, Reply>,
         actors: &HashMap<PlayerId, ActorProfile>,
         needle: bool,
-        basic_items: bool,
+        item_policy: crate::pickups::Policy,
         managed_template: bool,
     ) -> io::Result<Self> {
         use crate::room_packets::Template;
@@ -254,7 +254,7 @@ impl Catalog {
         let mut choices = Vec::new();
         let mut codes = std::collections::HashSet::new();
         for (index, cfg) in configs.iter().enumerate() {
-            if cfg.terrain.is_some() && !basic_items {
+            if cfg.terrain.is_some() && !item_policy.enabled() {
                 return Err(io::Error::other("map terrain requires basic-item policy"));
             }
             if cfg.packets.len() != 4 {
@@ -300,11 +300,7 @@ impl Catalog {
             }
             let floor = crate::pickups::Catalog::from_floor(&packets["floor"].payload)?;
             floor.validate_needle(needle)?;
-            floor.validate_stat_policy(if basic_items {
-                crate::pickups::Policy::ReportDerivedBasic
-            } else {
-                crate::pickups::Policy::Disabled
-            })?;
+            floor.validate_stat_policy(item_policy)?;
             let terrain = cfg
                 .terrain
                 .as_ref()
