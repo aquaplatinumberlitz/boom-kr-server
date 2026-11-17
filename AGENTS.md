@@ -130,6 +130,9 @@ Docs/checkpoint: chạy python3 tools/check_docs.py,python3 tools/check_checkpoi
 --require-history và git diff --check. Checker cache sha256 file host-local ở `local/cache/` (key path+size+mtime+inode);
 `--no-hash-cache` buộc hash lại toàn bộ khi cần kiểm sâu định kỳ. Thiếu raw/pending/unsynced phải báo rõ;checker không tự xác nhận
 ngữ nghĩa hoặc đóng gate.
+Danh sách file local của checkpoint nằm trong run manifest `local/evidence-manifests/` (record chỉ giữ con trỏ run);
+checkpoint mới gọi `checkpoint_evidence.pack_evidence`, tra cứu bằng `python3 tools/evidence_lookup.py`
+([cách dùng](docs/evidence/checkpoints/README.md#lean-evidence)).
 Tool/codec/server: chạy kiểm phù hợp hành vi thay đổi; không mặc định phải build client Rust cũ.
 Rust server: `cargo fmt --manifest-path rust/Cargo.toml --all --check`, `cargo clippy --manifest-path rust/Cargo.toml
 --workspace --all-targets --locked -- -D warnings`, `cargo test --manifest-path rust/Cargo.toml --workspace --locked`;

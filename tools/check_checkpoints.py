@@ -13,6 +13,7 @@ from collections.abc import Sequence
 # Also support importlib-based legacy test runners.
 if str(Path(__file__).resolve().parent) not in sys.path:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
+import checkpoint_evidence as lean
 import checkpoint_store as store
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +23,9 @@ SOURCES = {"kr_static", "kr_runtime", "vn_static", "vn_runtime", "emu_choice", "
 STATES = {"confirmed", "candidate", "unknown", "design"}
 SHA = re.compile(r"[0-9a-f]{64}")
 COMMIT = re.compile(r"[0-9a-f]{40}")
+# Checkpoint storage pinned by another checkpoint (CP212, CP264). Storage migrations may
+# rewrite/delete these files; the pinned bytes stay verifiable at the pinning record's publication.
+CHECKPOINT_STORAGE = re.compile(r'docs/evidence/checkpoints/(?:records/CP[0-9]{3,}|evidence/[A-Za-z0-9._-]+)\.json')
 MUTABLE_METADATA_DOCS = {
     'docs/features.json',
     'docs/content/census.json',
@@ -255,6 +259,15 @@ def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence")
         errors.append(f"{where}: invalid SHA-256")
     if not isinstance(item.get("bytes"), int) or isinstance(item["bytes"], bool) or item["bytes"] < 0:
         errors.append(f"{where}: invalid byte count")
+    if (not absolute_local_pin and kind == "repository" and CHECKPOINT_STORAGE.fullmatch(value)
+            and (not path.is_file() or path.stat().st_size != item.get("bytes") or digest(path) != item.get("sha256"))):
+        # Exact pinned bytes at the first publication of the pinning record, never later blobs.
+        revision = historical_checkpoint_publication(root, value, item.get("sha256"), item.get("bytes"), where)
+        if revision:
+            checked += 1
+            warnings.append(f"{where}: HISTORICAL CHECKPOINT STORAGE VERIFIED {value} at {revision}; "
+                            "storage migrated after publication; pinned bytes unchanged")
+            return errors, warnings, checked, unavailable
     if not path.is_file():
         unavailable += 1
         message = f"{where}: UNVERIFIED unavailable host evidence {value}"
@@ -417,19 +430,54 @@ def validate(manifest, root=ROOT, require_local=False):
         for artifact in record.get("artifacts", []):
             if not isinstance(artifact, dict) or not SHA.fullmatch(str(artifact.get("sha256", ""))):
                 errors.append(f"{where}: invalid artifact identity")
-        declared_evidence = list(store.evidence(record, root)) if not record.get("artifacts") else None
+        repository_rows = list(store.evidence(record, root))
+        declared_evidence = repository_rows if not record.get("artifacts") else None
         doc_identity = declared_evidence is not None and documentation_identity(record, declared_evidence, root)
         if (not record.get("artifacts") and not doc_identity) or not record.get("locators"):
             errors.append(f"{where}: artifact identity and locators/run IDs required")
         if doc_identity:
             warnings.append(f"{where}: DOCUMENTATION identity from pinned canonical docs; not implementation/runtime certification")
         evidence_ids = set()
-        for item in (declared_evidence if declared_evidence is not None else store.evidence(record, root)):
-            evidence_file(item, where)
-            if isinstance(item, dict):
-                if item.get("id") in evidence_ids:
-                    errors.append(f"{where}: duplicate evidence id")
-                evidence_ids.add(item.get("id"))
+        def evidence_rows(rows):
+            for item in rows:
+                evidence_file(item, where)
+                if isinstance(item, dict):
+                    if item.get("id") in evidence_ids:
+                        errors.append(f"{where}: duplicate evidence id")
+                    evidence_ids.add(item.get("id"))
+        evidence_rows(repository_rows)
+        try:
+            runs = lean.pointers(record)
+        except ValueError as error:
+            errors.append(f"{where}: {error}")
+            runs = []
+        run_rows, runs_complete = [], True
+        for pointer in runs:
+            # Host-local run manifest: pinned size/SHA here, every listed file verified below.
+            try:
+                rows = lean.read_run(pointer, root)
+            except FileNotFoundError:
+                runs_complete = False
+                unavailable += pointer["count"]
+                (errors if require_local else warnings).append(
+                    f"{where}: UNVERIFIED unavailable host evidence run manifest {pointer['path']} "
+                    f"({pointer['count']} files under {pointer['run']}); "
+                    "see python3 tools/evidence_lookup.py restore")
+                continue
+            except (ValueError, OSError) as error:
+                runs_complete = False
+                errors.append(f"{where}: evidence run manifest {pointer['path']}: {error}")
+                continue
+            evidence_rows(rows)
+            run_rows.extend(rows)
+        if lean.is_packed(record):
+            if runs_complete:
+                errors.extend(f"{where}: {e}" for e in lean.canonical_errors(record, repository_rows + run_rows))
+        else:
+            _, legacy = lean.pack(record, repository_rows)
+            if legacy:
+                warnings.append(f"{where}: LEGACY EVIDENCE STORAGE: {sum(p['count'] for p, _ in legacy)} host-local "
+                                "rows listed in the repository; pack with checkpoint_evidence.pack_evidence")
         if not evidence_ids:
             errors.append(f"{where}: evidence required")
         findings = record.get("findings", [])
@@ -653,22 +701,52 @@ def continuity(previous, current):
     return errors
 
 
-def history_signature(manifest, root=ROOT, read=None):
-    """Logical record identities across inline/ref schemas; never normalize stored records."""
+def record_signature(record, root, read, memo):
+    """Logical identity: storage-independent evidence (checkpoint_evidence.logical_digest)."""
+    # Validate external manifests in committed snapshots too. This also
+    # detects manifest-only changes without any checkpoint/index mutation.
+    rows = list(store.evidence(record, root, read))
+    lean.pointers(record)
+    exact = ('object', store.object_digest({k: v for k, v in record.items() if k != 'review'}))
+    content = memo.get(exact) if memo is not None else None
+    if content is None:
+        content = lean.logical_digest(record, root, read, None if lean.is_packed(record) else rows)
+        if memo is not None:
+            memo[exact] = content
+    return {"id": record.get("id"), "previous": record.get("previous"), "lifecycle": record.get("lifecycle"),
+            "content": content, "review": record.get("review")}
+
+
+def history_signature(manifest, root=ROOT, read=None, blob=None, memo=None):
+    """Logical record identities across inline/ref/packed storage; never normalize stored records.
+
+    With `blob(path) -> Git object ID` and a shared `memo`, a v2 record whose index entry, record
+    blob and pinned evidence-list blobs are all unchanged reuses its earlier, fully verified result.
+    """
     entries = []
     completed = 0
-    for index, record in enumerate(store.records(manifest, root, read), 1):
-        if (record.get('id') != cp_id(index)
-                or record.get('previous') != (cp_id(index - 1) if index > 1 else 'origin')):
+    records = store.records(manifest, root, read)
+    rows = manifest.get('checkpoints')
+    for index in range(1, len(records) + 1):
+        signature, key = None, None
+        if memo is not None and blob is not None and manifest.get('schema') == store.V2:
+            entry = rows[index - 1]
+            oid = blob(entry.get('path')) if isinstance(entry, dict) and isinstance(entry.get('path'), str) else None
+            if oid:
+                key = ('record', lean.canonical(entry), oid)
+                cached = memo.get(key)
+                if cached and all(blob(path) == expected for path, expected in cached[1]):
+                    signature = cached[0]
+        if signature is None:
+            record = records[index - 1]
+            signature = record_signature(record, root, read, memo)
+            if key is not None:
+                memo[key] = (signature, [(r['path'], blob(r['path'])) for r in record.get('evidence_manifests', [])])
+        if (signature['id'] != cp_id(index)
+                or signature['previous'] != (cp_id(index - 1) if index > 1 else 'origin')):
             raise ValueError('checkpoint counter reset/noncontiguous ID/previous in history')
-        completed += record.get('lifecycle') == 'complete'
-        # Validate external manifests in committed snapshots too. This also
-        # detects manifest-only changes without any checkpoint/index mutation.
-        for _ in store.evidence(record, root, read):
-            pass
-        entries.append({"id": record.get("id"), "lifecycle": record.get("lifecycle"),
-                        "content": store.object_digest({k: v for k, v in record.items() if k != "review"}),
-                        "review": record.get("review")})
+        completed += signature['lifecycle'] == 'complete'
+        entries.append({k: signature[k] for k in ("id", "lifecycle", "content", "review")})
     if (manifest.get('last_id') != (entries[-1]['id'] if entries else None)
             or manifest.get('completed_count') != completed):
         raise ValueError('checkpoint counter reset/count mismatch in history')
@@ -690,6 +768,44 @@ def signature_continuity(previous, current):
     if previous['audits'] != current['audits'][:len(previous['audits'])]:
         errors.append('manual audit history deleted or changed')
     return errors
+
+
+class GitObjects:
+    """One `git cat-file --batch` process plus `ls-tree` maps; exact bytes by object ID."""
+
+    def __init__(self, command):
+        self.command = command
+        self.process = subprocess.Popen(command + ['cat-file', '--batch'], stdin=subprocess.PIPE,
+                                        stdout=subprocess.PIPE)
+
+    def tree(self, revision, prefix):
+        result = subprocess.run(self.command + ['ls-tree', '-r', '-z', '--full-tree', revision, '--', prefix],
+                                capture_output=True)
+        if result.returncode:
+            raise ValueError(f'unreadable tree {revision}')
+        objects = {}
+        for item in result.stdout.split(b'\0'):
+            if item:
+                meta, path = item.split(b'\t', 1)
+                mode, kind, oid = meta.split()
+                if kind == b'blob':
+                    objects[path.decode()] = oid.decode()
+        return objects
+
+    def read(self, oid):
+        self.process.stdin.write(oid.encode() + b'\n')
+        self.process.stdin.flush()
+        header = self.process.stdout.readline().split()
+        if len(header) != 3 or header[1] != b'blob':
+            raise ValueError(f'missing Git object {oid}')
+        data = self.process.stdout.read(int(header[2]))
+        self.process.stdout.read(1)
+        return data
+
+    def close(self):
+        self.process.stdin.close()
+        self.process.wait()
+        self.process.stdout.close()
 
 
 def check_history(root, relative_manifest, current, availability=None):
@@ -715,34 +831,64 @@ def check_history(root, relative_manifest, current, availability=None):
     if not revisions.stdout.strip():
         unverified('no committed manifest history; counter rollback UNVERIFIED')
     previous, errors, seen_manifest = None, [], False
-    for revision in revisions.stdout.splitlines():
-        def read(path):
-            target = store.target(root, path)  # validate repository-relative path
-            relative = target.relative_to(Path(root).resolve()).as_posix()
-            result = subprocess.run(command + ['show', f'{revision}:{relative}'], capture_output=True)
-            if result.returncode:
-                raise ValueError(f'missing committed file {relative}')
-            return result.stdout
-        try:
-            content = read(relative_manifest.as_posix())
-        except ValueError:
-            if seen_manifest:
-                errors.append(f'{revision[:8]}: checkpoint manifest removed from committed history')
-            continue  # documentation may predate the first manifest
-        seen_manifest = True
-        try:
-            snapshot = json.loads(content)
-            signature = history_signature(snapshot, root, read)
-            # Audit bodies are pinned, even on commits changing only an audit file.
-            for audit in snapshot.get('audits', []):
-                if hashlib.sha256(read(audit['path'])).hexdigest() != audit['sha256']:
-                    raise ValueError(f"audit hash mismatch: {audit['path']}")
-        except (ValueError, OSError, KeyError, TypeError) as error:
-            errors.append(f'{revision[:8]}: invalid committed checkpoint data: {error}')
-            continue
-        if previous is not None:
-            errors.extend(f'{revision[:8]}: {e}' for e in signature_continuity(previous, signature))
-        previous = signature
+    objects, memo = GitObjects(command), {}
+    prefix = relative_manifest.parent.as_posix()
+    try:
+        for revision in revisions.stdout.splitlines():
+            try:
+                tree = objects.tree(revision, prefix)
+            except ValueError as error:
+                errors.append(f'{revision[:8]}: invalid committed checkpoint data: {error}')
+                continue
+
+            def relative_path(path):
+                target = store.target(root, path)  # validate repository-relative path
+                return target.relative_to(Path(root).resolve()).as_posix()
+
+            def blob(path):
+                try:
+                    relative = relative_path(path)
+                except ValueError:
+                    return None
+                return tree.get(relative) if relative.startswith(prefix + '/') else None
+
+            def read(path):
+                relative = relative_path(path)
+                if relative.startswith(prefix + '/'):
+                    if relative not in tree:
+                        raise ValueError(f'missing committed file {relative}')
+                    return objects.read(tree[relative])
+                result = subprocess.run(command + ['show', f'{revision}:{relative}'], capture_output=True)
+                if result.returncode:
+                    raise ValueError(f'missing committed file {relative}')
+                return result.stdout
+            try:
+                content = read(relative_manifest.as_posix())
+            except ValueError:
+                if seen_manifest:
+                    errors.append(f'{revision[:8]}: checkpoint manifest removed from committed history')
+                continue  # documentation may predate the first manifest
+            seen_manifest = True
+            try:
+                snapshot = json.loads(content)
+                signature = history_signature(snapshot, root, read, blob, memo)
+                # Audit bodies are pinned, even on commits changing only an audit file.
+                for audit in snapshot.get('audits', []):
+                    oid = blob(audit['path'])
+                    if oid and memo.get(('audit', oid)) == audit['sha256']:
+                        continue
+                    if hashlib.sha256(read(audit['path'])).hexdigest() != audit['sha256']:
+                        raise ValueError(f"audit hash mismatch: {audit['path']}")
+                    if oid:
+                        memo[('audit', oid)] = audit['sha256']
+            except (ValueError, OSError, KeyError, TypeError) as error:
+                errors.append(f'{revision[:8]}: invalid committed checkpoint data: {error}')
+                continue
+            if previous is not None:
+                errors.extend(f'{revision[:8]}: {e}' for e in signature_continuity(previous, signature))
+            previous = signature
+    finally:
+        objects.close()
     if not seen_manifest and revisions.stdout.strip():
         unverified('no committed manifest history; counter rollback UNVERIFIED')
     if previous is not None:

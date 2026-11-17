@@ -148,7 +148,7 @@ mặc định summary; page tối đa200 dòng. `--verify` kiểm **mọi eviden
 không in mọi dòng raw. `--root` đặt trước subcommand dùng cho fixture/checkout khác.
 Kiểm toàn repo/lịch sử vẫn là `python3 tools/check_checkpoints.py --require-local --require-history`.
 
-Checkpoint mới có thể dùng `evidence_manifests`:
+Checkpoint từ CP118 đến trước migration evidence tinh gọn dùng `evidence_manifests` (dạng lịch sử, loader vẫn đọc được):
 
 ```json
 {
@@ -169,7 +169,7 @@ list, CP chỉ giữ path/size/SHA/count; có thể tái dùng cùng file đã p
 **Không deduplicate/viết lại evidence trong record complete cũ.** Binary/log vẫn ở local; chỉ metadata
 được commit. Index dùng `checkpoint_store.record_reference` để pin file record sau khi docs đã sync.
 
-### Tái chạy và giới hạn migration
+### Tái chạy và giới hạn migration v2
 
 Script `tools/migrate_checkpoints.py` nhận baseline v1 đã pin. Nó kiểm bytes nguồn khớp manifest
 trong baseline Git, tách theo object (không chia dòng), so toàn bộ records/evidence, pin36audit,
@@ -191,6 +191,67 @@ cũng được kiểm: size/SHA ở revision đó, fingerprint nguyên object qu
 review approved/waived bất biến. Chỉ giữ fingerprint nhỏ giữa revision, không giữ toàn bộ records lịch sử
 trong bộ nhớ cùng lúc. Dữ liệu inline cũ vẫn lớn và lặp, cố ý giữ để bảo toàn object; tổng dữ liệu không
 được hứa giảm theo tỷ lệ của index. Clone thiếu Git/local vẫn báo UNVERIFIED/error theo cờ cũ.
+
+
+<a id="lean-evidence"></a>
+### Evidence tinh gọn: run manifest ở local và tra cứu
+
+Theo [chỉ đạo chủ dự án 17/11](../owner-directives/checkpoint-evidence-lean.json), danh sách file host-local
+không còn nằm trong repo. Record giữ trong `evidence` các dòng repository/artifact, dòng có ID được nhắc ở
+findings, verification hoặc bất kỳ chữ nào khác của record, dòng trùng ID và nhóm chỉ có một file. Các dòng
+`kind=local` còn lại được gom theo run (thư mục cha, tối đa bốn cấp đầu như `local/research/codex/<run>`) và mỗi
+run có một con trỏ trong `evidence_runs`:
+
+```json
+{"run": "local/research/codex/<run>", "path": "local/evidence-manifests/<sha256>.jsonl",
+ "sha256": "<sha256 của manifest>", "bytes": 1234, "count": 42, "files_bytes": 987654}
+```
+
+Manifest là JSONL bất biến, đặt tên theo SHA-256 nội dung: dòng đầu `{"run","schema":"kre-evidence-run-v1"}`,
+sau đó mỗi dòng là nguyên một dòng evidence cũ (`id/kind/path/bytes/sha256`, JSON chuẩn hóa). Cách chia là hàm
+xác định của record và danh sách đầy đủ (`tools/checkpoint_evidence.py`), nên định danh logic của record
+(`logical_digest`) giống hệt trước và sau khi chia; kiểm append-only qua lịch sử Git dùng định danh này.
+Checker kiểm size/SHA của manifest theo con trỏ, rồi kiểm từng file như dòng evidence cũ và yêu cầu record
+đúng là cách chia chuẩn. Thiếu manifest báo `UNVERIFIED` kèm số file (lỗi khi có `--require-local`), không
+im lặng bỏ qua. File thêm vào thư mục run mà không có trong danh sách không phải evidence, giống dạng cũ.
+
+**Checkpoint mới:** dựng `evidence` đầy đủ như trước (không ghi file `docs/evidence/checkpoints/evidence/`),
+sau khi findings/verification đã chốt thì gọi helper ngay trước khi ghi record:
+
+```python
+import checkpoint_evidence as lean
+cp = lean.pack_evidence(cp)   # ghi local/evidence-manifests/*.jsonl, trả record đã chia
+raw = st.encoded(cp)
+```
+
+Record còn dòng host-local trong repo bị checker cảnh báo `LEGACY EVIDENCE STORAGE`. Chuyển dạng các record
+như vậy (kể cả record cũ) bằng script xác định và chạy lại được, với commit nguồn trên main chứa đúng record:
+
+```bash
+python3 tools/migrate_checkpoint_evidence.py --source-commit origin/main
+```
+
+Script so định danh logic và toàn bộ tập dòng evidence trước khi ghi, xóa file danh sách cũ trong
+`checkpoints/evidence/` không còn record nào dùng, và ghi report `migration-evidence-lean.json`
+(commit nguồn, SHA cũ/mới của record, file danh sách đã xóa). Lịch sử Git không bị viết lại. Hai record
+CP212 và CP264 từng pin chính file record/danh sách của checkpoint khác; checker kiểm các pin này bằng đúng
+blob tại lần công bố record pin (`HISTORICAL CHECKPOINT STORAGE VERIFIED`), không nhận blob muộn hơn.
+
+**Tra cứu** (in mỗi kết quả một dòng JSON: CP, ID, path, size, SHA, nơi lưu):
+
+```bash
+python3 tools/evidence_lookup.py path local/research/codex/<run>/<file>   # hoặc tiền tố thư mục, đường dẫn tuyệt đối
+python3 tools/evidence_lookup.py sha <sha256 hoặc ít nhất 8 ký tự đầu>
+python3 tools/evidence_lookup.py --cp CP334 id HORIZ334-00001
+python3 tools/evidence_lookup.py cp CP334                                  # tóm tắt run/manifest/migration
+python3 tools/evidence_lookup.py --verify path local/research/codex/<run>  # kiểm size/SHA khi cần
+python3 tools/evidence_lookup.py --from-history <commit> path ...          # đọc danh sách đầy đủ cũ trong Git
+python3 tools/evidence_lookup.py restore                                   # dựng lại manifest thiếu từ Git
+```
+
+`restore` chỉ dựng lại được manifest của record từng có danh sách đầy đủ trong Git (mọi record đến lúc
+migration); bytes phải khớp SHA của con trỏ. Manifest của checkpoint tạo sau migration chỉ có ở `local/`,
+cùng chỗ với raw, nên cần sao lưu `local/evidence-manifests/` cùng raw.
 
 
 ### Pin local tuyệt đối đã công bố ở CP187

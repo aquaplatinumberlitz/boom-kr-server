@@ -1,0 +1,18 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-17T23:30:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 17/11/2026, sau số đo kho checkpoint chiếm khoảng 4,19 triệu trên 4,34 triệu dòng của repo (97%), chủ dự án trả lời.",
+  "quote": "Đồng ý, tái cấu trúc tinh gọn lại evidence nhưng vẫn phải đảm bảo có thể tra cứu khi cần thiết",
+  "decision": "Danh sách file evidence host-local của checkpoint chuyển sang run manifest theo nội dung (content-addressed) tại local/evidence-manifests/<sha256>.jsonl. Record trong repo chỉ giữ dòng repository/artifact, dòng được record trích dẫn và con trỏ từng run (đường dẫn run, SHA-256 và kích thước manifest, số file, tổng byte). Migration một lần cho mọi checkpoint đã có; checkpoint mới ghi theo dạng này.",
+  "pass_condition": "Gate check_checkpoints.py --require-local --require-history cho cùng kết quả lỗi và cùng số liệu trước và sau migration, và vẫn phát hiện mọi trường hợp sửa hoặc thiếu file như trước. Có thể tra cứu theo đường dẫn, SHA-256, evidence ID hoặc checkpoint bằng tools/evidence_lookup.py, kể cả đọc danh sách đầy đủ cũ từ lịch sử Git.",
+  "constraints": [
+    "Không viết lại lịch sử Git; danh sách đầy đủ cũ vẫn nằm trong lịch sử tại source_commit ghi trong migration report.",
+    "Không đổi nội dung logic của record complete: findings, review, docs_sync và từng dòng evidence giữ nguyên, chỉ đổi nơi lưu.",
+    "Không sửa raw trong local/research/codex; migration chỉ thêm manifest mới trong local/evidence-manifests.",
+    "Run manifest thiếu trên host phải báo UNVERIFIED (lỗi khi có --require-local), không được im lặng bỏ qua."
+  ],
+  "scope": "Chỉ đổi cách lưu và cách kiểm metadata evidence; không chứng nhận kết luận RE, runtime hoặc gate nào.",
+  "canonical": "docs/evidence/checkpoints/README.md#lean-evidence",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}

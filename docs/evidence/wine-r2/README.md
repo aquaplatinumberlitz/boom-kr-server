@@ -76,7 +76,7 @@ Snapshot27/10 bên trên giữ lịch sử; [nghiệm thu hiện hành](../../PL
 Raw mới `local/research/codex/k1-cold-recipe-r1/`: `source-first-reuse.json`, `verify_reuse.py`,
 `reuse-verification.json` (68 quan hệ), `bootstrap-region-control-comparison.json` (44 control pins),
 `manual-k1-acceptance.json`. Hash đầy đủ ở [record CP179](../checkpoints/records/CP179.json) qua
-[manifest evidence](../checkpoints/evidence/CP179-k1-reuse.json); checker không tự quyết định gate.
+run manifest local (`python3 tools/evidence_lookup.py cp CP179`); checker không tự quyết định gate.
 
 | Run lịch sử | WinePID từ init_peb và connect | Endpoint hai lần / giới hạn |
 |---|---|---|
