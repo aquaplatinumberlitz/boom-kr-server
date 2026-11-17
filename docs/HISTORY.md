@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP326: lát Punch selector 3 đã chạy hai vòng trên Rust với hai account.**
+[Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) có native motion, thu hồi bom,
+bom tiếp, peer, reset và journal thưởng 0. Policy mới opt-in, preset hiện hành chưa đổi; Shoe và các hướng khác
+còn mở. Tiếp G1 theo [Bảng điều hành](PLAN.md#dashboard); M8 và L1 của Claude vẫn mở.
+
+
 **CP325: reference đã khép vòng đời Punch với policy 158 loại 1 trước gói nổ.**
 [Native thu hồi bom, next118 và hai kết quả/reset](protocol/items-stats.md#rust-bomb-motion-codec) đã có
 bằng chứng hai view; Rust hiện có codec, service vẫn tắt Shoe/Punch. Tiếp nối admission, terrain, deadline và

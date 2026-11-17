@@ -3764,7 +3764,8 @@
           "docs/evidence/item-families/shoe-punch.json",
           "docs/evidence/item-families/bomb-motion-codec.json",
           "docs/evidence/item-families/bomb-retirement.json",
-          "docs/evidence/rust-service/g1-punch.json"
+          "docs/evidence/rust-service/g1-punch.json",
+          "docs/evidence/rust-service/g1-punch-departure.json"
         ]
       },
       "coverage": {

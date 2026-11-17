@@ -779,7 +779,7 @@ Phép kiểm tối thiểu (trích cùng nguồn): Tiếp Shoe và hướng/sele
 
 Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285).
 
-Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json), [item-families](evidence/item-families/shoe-punch.json), [item-families](evidence/item-families/bomb-motion-codec.json), [item-families](evidence/item-families/bomb-retirement.json), [rust-service](evidence/rust-service/g1-punch.json).
+Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json), [item-families](evidence/item-families/shoe-punch.json), [item-families](evidence/item-families/bomb-motion-codec.json), [item-families](evidence/item-families/bomb-retirement.json), [rust-service](evidence/rust-service/g1-punch.json), [rust-service](evidence/rust-service/g1-punch-departure.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|

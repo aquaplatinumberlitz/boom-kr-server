@@ -126,9 +126,13 @@ các giới hạn **design** của lát đầu, không phải toàn bộ luật 
 Admission chạy trên bản clone của room: ledger và terrain cùng đổi root, chỉ publish khi đủ chỗ trong hàng đợi
 của mọi peer. Quota, owner, allocation và deadline 6 giây cũ giữ nguyên. Trước lần ghi blast đầu tiên, server
 đóng admission motion; với bom đã chuyển, mỗi recipient nhận 158 loại 1 rồi loại 0 trong cùng batch. Quota và
-terrain clearance chỉ commit sau khi mọi recipient hiện hành ghi xong. Packet motion dùng guard allocation,
-membership/round và subject; EOF, revoke/expiry qua thu hồi channel, visit mới hoặc vòng mới không chuyển quyền
-cho work cũ. Không thêm epoch/key vào 119, không lấy tail opaque làm quyền hạn và không gửi 160 như ACK.
+terrain clearance chỉ commit sau khi mọi recipient hiện hành ghi xong. Trong player round, motion đã chấp nhận
+thuộc allocation/vòng hiện hành và các recipient còn lại, giống 159/158: nếu actor rời trước khi peer nhận 162,
+peer vẫn cần nhận motion đó để root client khớp ledger/terrain. Membership đã thu hồi không được phát lệnh mới;
+allocation đã kết thúc, recipient/visit mới hoặc vòng mới không nhận batch cũ. Các profile hủy toàn trận giữ
+subject guard. [Correction nhánh rời phòng](../evidence/rust-service/g1-punch-departure.json) có kiểm hồi quy
+server; chưa có fault injection native cho cửa sổ queued162/EOF. Không thêm epoch/key vào 119, không lấy tail
+opaque làm quyền hạn và không gửi 160 như ACK.
 
 Native Wine trên Rust dùng hai account backend, companion xác thực và LAN cô lập: account A có nhân vật C1
 đã lưu, peer B là C0. Floor chỉ có Punch 4, không có Shoe. Mỗi vòng Space trước pickup tạo bom thường nhưng
