@@ -1,0 +1,225 @@
+{
+  "id": "CP324",
+  "previous": "CP323",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T01:50:25.769675+00:00",
+  "context_commit": "d6f7bf7395074804d4149305683ee4e07588382c",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Chuyển schema119/162 đã đo thành codec Rust và giữ rõ lifecycle hành động còn thiếu trước khi mở service.",
+  "scope": "Codec119 body13 và162 body9, độc lập với admission/service. Native reference chuyển root trong hai view nhưng chưa khép lifecycle; giữ control wineboot lỗi và correction offset phụ.",
+  "artifacts": [
+    {
+      "name": "native-reference-client",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "built-service-not-runtime-accepted",
+      "sha256": "8d335b83048e59b155e70b87c1fd9a028dd297abc81377ab4a51d13c1d5eaa17"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+    "docs/evidence/item-families/bomb-motion-codec.json",
+    "docs/RESEARCH.md#gap-ability-debuff",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445"
+  ],
+  "findings": [
+    {
+      "summary": "Reader162 E5EFC0 có9byte và gọi đúng CGOGameBomb/vf94 khi selector≤3. Reference phát candidate162 sau actual119; cả hai view đọc9/9errors0, root1AC/1B8 từ6,3 thành5,3, pixel tại158 là120,239 trên cùngwireID1.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "MOT324-0061",
+        "MOT324-0065",
+        "MOT324-1432"
+      ],
+      "limits": "Chỉ một vòng/PunchC0/một selector. Chưa rank/return/next118, điểm nổ hoặc trajectory/lifecycle đầy đủ; server6secondtimer là design."
+    },
+    {
+      "summary": "Rust kr-wire có BombAction119 decode đúng13byte giữ haiu16opaque và BombMotion162 decode/encode đúng9byte. Hai actual119vector và một body162 nativeaccepted làm đối chứng độc lập; malformed/trailing/mixedsize bị từ chối.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "MOT324-2124",
+        "MOT324-2132",
+        "MOT324-1442"
+      ],
+      "limits": "Codec không cấp quyền, không tự gửiACK hoặc giữ round. kr-service không thêm119handler/terrainmotion hoặc cho phép item3/4."
+    },
+    {
+      "summary": "R4 control escape/reposition timeout wineboot35s trước client/TCP, không có gameplay so sánh. Correction mới sửa câu offset phụ584+70=5F4, giữ nguyên sidecarCP323; canonical và nativefields cũ đã dùng đúng5F4.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "MOT324-0037",
+        "MOT324-1541"
+      ],
+      "limits": "Không gán cause runtimefail hoặc gọi control là native caâm; không sửa raw/record cũ. L1runtime củaClaude giữriêng."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native162 reader and secure root transition in two views, partial lifecycle preserved",
+      "result": "pass",
+      "evidence": [
+        "MOT324-0061"
+      ],
+      "limits": "One-round observations only; no complete action acceptance."
+    },
+    {
+      "check": "Rust fmt/clippy -D warnings/workspace locked tests/build and exact built/publication source",
+      "result": "pass",
+      "evidence": [
+        "MOT324-1442",
+        "MOT324-1443",
+        "MOT324-1433"
+      ],
+      "limits": "85 source inputs; 181 service +8tunnel +9wireunit +19wireintegration tests. Partialstdout retained, completecommandexit0 observed in tool session35645; no nativeRustservicerun."
+    },
+    {
+      "check": "Raw/frozen source preservation, canonical docs/catalog/diff and codec feature-group audit",
+      "result": "pass",
+      "evidence": [
+        "MOT324-0026",
+        "MOT324-0025",
+        "MOT324-0008"
+      ],
+      "limits": "Full local/history exact head and CI required beforemerge; source/body/binary proof is not gameplaymilestone closure."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP324-motion-codec.json",
+      "bytes": 562044,
+      "sha256": "773551c00eaa3d71f8cf73530bb25a9296d7e63d842f3f87ffaca94f1cfc8412",
+      "count": 2140
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rust codec119/162, actualnative162rootproof và explicit partiallifecycle blocker."
+    ],
+    "corrected": [
+      "Ghi riêng lỗi offset trong sidecar cũ; giữ root/pixel/codecclaims đúngnguồn, không suy process exit0 thành gameplay."
+    ],
+    "superseded": [
+      "Chưa có reader/codec cho body hành động; nay162 đã có reader/rootproof, nhưng full lifecycle vẫn mở."
+    ]
+  },
+  "blockers": [
+    "Chưa có native gameplay action trên Rust service; item 3/4 vẫn bị từ chối.",
+    "Chưa giải lifecycle/retirement/quota, điểm nổ sau mọi kiểu di chuyển, ca âm native, hành động Shoe, dead/trapped/stale action, mọi selector hoặc roster.",
+    "Không đồng nhất hai u16 cuối với millisecond/duration/flag; B38A80 có phép tính và callback nhưng chưa đo đầy đủ consumer hoặc đơn vị.",
+    "Không gửi 160, chưa chọn giá trị ACK. Reader 160 khác 162 và cần hiểu group/counter trước khi dùng.",
+    "R4 không chạy gameplay; runtime L1 của Claude được giữ riêng. Không sửa exporter, client/pack/DB nguồn hoặc input đã freeze."
+  ],
+  "completed_feature_groups": [
+    "g1-119-162-wire-codec"
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp current bomb retirement/quota sau162/158, ca nativeuse/negative/peer/reset rồi nối service guard vàterrain/queue; giữ scopeG1/M8 theoPLAN, không làmL1 hoặc exporter.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T01:50:25.769675+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo tự kiểm; AUD134 hoàn tất riêng codec group, không hoàn tất Shoe/Punch/G1.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "docs/evidence/item-families/bomb-motion-codec.json",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967.rs",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967/bomb_motion.rs",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+      "state": "updated",
+      "reason": "Đồng bộ codec119/162, native root đã đo và lifecycle/timeout/correction còn giới hạn."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Waiver/ownerL1 và audit theo nhóm không đổi."
+    },
+    {
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "state": "unchanged",
+      "reason": "Item3/4 vẫn bị từ chối, chưa đủ acceptance hành động để bật."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "unchanged",
+      "reason": "Chưa nối119handler hoặc thay authority/terrain/timer/queue trong service."
+    }
+  ]
+}

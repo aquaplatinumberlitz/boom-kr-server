@@ -82,6 +82,33 @@ là reply cho 119 hoặc là gói dịch chuyển bom. Hai lượt không gửi 
 hành động, vị trí/quỹ đạo/va chạm/timer của bom, peer, ca không đủ điều kiện, và guard current membership/round.
 Không coi hai run Python RE là bằng chứng account, Internet hoặc vận hành trên Rust.
 
+<a id="rust-bomb-motion-codec"></a>
+### Codec Rust cho 119/162 và giới hạn lifecycle
+
+[Metadata nguồn và codec](../evidence/item-families/bomb-motion-codec.json) bổ sung reader 162 `E5EFC0`:
+body **9 byte**, widths `u8,u8,u8,u16,u8,u8,u8,u8`. Reader kiểm context, tìm actor và wire ID của bom;
+selector `≤3` gọi virtual `+94` của `CGOGameBomb`, nhánh còn lại gọi `+90`. Không suy mọi selector đã hỗ trợ
+trên server từ việc tìm được các nhánh này.
+
+Python reference trả candidate 162 từ prefix của một actual 119. Cả hai view đọc `9/9`, errors 0 và gọi
+`B37A00` trên cùng wire ID 1. Secure root `+1AC/+1B8` đổi `(6,3)→(5,3)`; tại consumer 158, root vẫn là
+`(5,3)` và pixel `(120,239)`. Đây là bằng chứng chuyển root trong hai view. Lượt này chỉ có một vòng, không có
+kết quả/về phòng hoặc actual 118 tiếp, nên **lifecycle và quota chưa đạt**, dù helper kết thúc với exit 0.
+Control escape/reposition sau đó timeout ở `wineboot` trước khi mở client; không có so sánh gameplay từ control đó.
+
+Rust `kr-wire` có `BombAction119::decode` cho đúng 13 byte, giữ hai `u16` cuối bằng `opaque_tail`, và
+`BombMotion162::{decode,encode}` cho đúng 9 byte. Các trường gồm context, slot, selector, wire ID, cell nguồn
+và cell đích; codec không cấp quyền cho các giá trị này. Regression dùng hai request thực có ID/cell/tail khác nhau
+và body 162 đã qua native reader, kiểm cả gói thiếu/thừa và nhầm độ dài. Không dùng roundtrip tự sinh làm oracle.
+
+Service chưa nối handler 119, chưa bật floor Shoe/Punch và chưa thay vị trí terrain hoặc timer. Trước khi mở cần
+đo retirement/quota sau 162/158, ca dùng/không đủ điều kiện, peer và reset, rồi kiểm current membership/round,
+wire ID hiện hành, hàng đợi và ledger bom. Chưa biết reply 160 có vai trò gì trong toàn luồng; không gửi ACK giả.
+
+**Correction nguồn phụ:** `B486B0` nhận interface `actor+584`, cộng `70` tới wrapper `actor+5F4`, đúng bằng
+interface `actor+58C` cộng `68` của setter. Câu `+5F4+8` trong ghi chép phụ trước là lỗi tính offset; sidecar correction
+mới giữ nguyên ghi chép cũ. Contract, byte binding và snapshot runtime trước đã dùng `+5F4` đúng.
+
 <a id="rust-maxpower"></a>
 ### Rust MaxPower: max theo nhân vật và vòng hiện hành
 
