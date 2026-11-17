@@ -1,0 +1,23 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-18T00:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 18/11/2026, sau khi duyệt tinh gọn evidence checkpoint, chủ dự án nói và duyệt kế hoạch lớp lưu giữ dưới đây.",
+  "quote": "nên thêm quy tắc dọn dẹp, chỉ lưu trữ kiến thức quan trọng, còn ảnh, evidence files... ko dùng thì nên dọn dẹp",
+  "relates_to": "docs/evidence/owner-directives/local-backup.json",
+  "decision": "local/ chỉ giữ lâu dài phần cần để chạy và phần raw tối thiểu đỡ kết luận đã xác nhận; bản sao và dữ liệu trung gian không dùng thì dọn. Việc dọn đi qua kế hoạch dry run của tools/local_retention.py; chỉ áp dụng bằng --apply với hash của đúng kế hoạch đã được chủ dự án duyệt.",
+  "classes": {
+    "keep_pinned": "File mà cấu hình service Rust, bộ kiểm TCP hoặc tools đọc từ local/ (config kr-rust-*, mọi fixture pin path/bytes/sha256 trong đó, đường dẫn local do code/tools nhắc), run manifest local/evidence-manifests và local/tools. Không bao giờ bị dọn.",
+    "keep_compressed": "Raw tối thiểu đỡ kết luận đã xác nhận theo từng checkpoint (capture, log, trace, ảnh chính). Giữ nguyên đường dẫn và bytes; nén trong suốt bằng zstd của btrfs.",
+    "disposable": "Bản sao thư mục game và Wine prefix theo run (tạo lại được từ template và recipe), memory dump sau khi đã trích xuất, run không checkpoint/docs/code nào tham chiếu (kể cả run hủy hoặc lỗi) và file trung gian không được tham chiếu. Ảnh trùng byte còn mang pin checkpoint thì giữ và chỉ dedupe reflink, không xóa."
+  },
+  "gate": "Mục đã dọn nhưng từng là evidence checkpoint được ghi vào docs/evidence/checkpoints/local-pruned.json (đường dẫn, lớp, lý do, ngày, hash kế hoạch). Checker báo PRUNED thay vì lỗi cho file thiếu nằm dưới mục đó; file thiếu không có mục vẫn lỗi. Size/SHA giữ mãi trong record và run manifest để tra cứu.",
+  "constraints": [
+    "Claude không tự xóa; --apply chỉ chạy khi chủ dự án duyệt đúng plan_sha256.",
+    "Không dọn file keep_pinned, run manifest hoặc thư mục local/tools.",
+    "Quyết định không backup local/ trong local-backup.json giữ nguyên; fixture cần để service khởi động vẫn phải đóng gói theo RUST-M8."
+  ],
+  "scope": "Quy tắc lưu giữ dữ liệu host-local; không đổi kết luận RE, acceptance hoặc gate.",
+  "canonical": "docs/evidence/checkpoints/README.md#local-retention",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}

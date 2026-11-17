@@ -253,3 +253,60 @@ def canonical_errors(record, rows):
 def manifest_files(root=store.ROOT):
     directory = Path(root) / RUNS_DIR
     return sorted(directory.glob('*.jsonl')) if directory.is_dir() else []
+
+
+PRUNED = 'docs/evidence/checkpoints/local-pruned.json'
+PRUNED_SCHEMA = 'kre-local-pruned-v1'
+PRUNED_KEYS = {'path', 'class', 'reason', 'date', 'plan_sha256'}
+DATE = re.compile(r'[0-9]{4}-[0-9]{2}-[0-9]{2}')
+
+
+class Pruned:
+    """Committed record of host-local evidence deliberately removed under the retention directive.
+
+    A missing local file whose path is at or below a registered entry is reported as PRUNED, not
+    UNVERIFIED; its size/SHA stay in records/run manifests for lookup. A file that still exists is
+    verified as usual. Missing files without an entry still fail.
+    """
+
+    def __init__(self, entries=()):
+        self.entries = {entry['path']: entry for entry in entries}
+        self.hits = 0
+
+    def match(self, path):
+        if not self.entries or not isinstance(path, str):
+            return None
+        parts = path.split('/')
+        for end in range(len(parts), 1, -1):
+            entry = self.entries.get('/'.join(parts[:end]))
+            if entry:
+                return entry
+        return None
+
+
+def check_pruned_entry(entry):
+    if (not isinstance(entry, dict) or set(entry) != PRUNED_KEYS
+            or not isinstance(entry['path'], str) or not entry['path'].startswith('local/')
+            or any(part in ('', '.', '..') for part in entry['path'].split('/'))
+            or entry['path'].startswith(RUNS_DIR + '/') or entry['path'] == RUNS_DIR
+            or not isinstance(entry['class'], str) or not entry['class'].startswith('disposable')
+            or not isinstance(entry['reason'], str) or not entry['reason'].strip()
+            or not isinstance(entry['date'], str) or not DATE.fullmatch(entry['date'])
+            or not isinstance(entry['plan_sha256'], str) or not SHA.fullmatch(entry['plan_sha256'])):
+        raise ValueError(f'invalid pruned entry: {entry}')
+    return entry
+
+
+def load_pruned(root=store.ROOT, read=None):
+    """Registry from the working tree (or `read`); absent file means nothing was pruned."""
+    try:
+        raw = (read or store.file_reader(root))(PRUNED)
+    except (FileNotFoundError, ValueError):
+        return Pruned()
+    data = json.loads(raw)
+    if not isinstance(data, dict) or data.get('schema') != PRUNED_SCHEMA or not isinstance(data.get('entries'), list):
+        raise ValueError(f'{PRUNED}: invalid schema')
+    entries = [check_pruned_entry(entry) for entry in data['entries']]
+    if len({e['path'] for e in entries}) != len(entries):
+        raise ValueError(f'{PRUNED}: duplicate path')
+    return Pruned(entries)

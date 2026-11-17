@@ -40,6 +40,8 @@ Tests: python3 tools/test_checkpoints.py.
 `evidence_lookup.py` tra checkpoint, run và manifest theo path, SHA-256, evidence ID hoặc CP, kiểm hash khi cần và
 đọc được danh sách đầy đủ cũ trong Git; `migrate_checkpoint_evidence.py` chuyển record sang run manifest local.
 [Cách dùng và giới hạn](../docs/evidence/checkpoints/README.md#lean-evidence).
+`local_retention.py` lập kế hoạch dọn `local/` (dry run mặc định, phân lớp giữ/nén/disposable, đo exclusive btrfs);
+`--apply` chỉ chạy với hash kế hoạch đã được chủ dự án duyệt. [Quy tắc](../docs/evidence/checkpoints/README.md#local-retention).
 Audit có thể ghi một `AGENTS.md` ở đầu trước chuỗi liên tục README→PLAN→PROTOCOL→RESEARCH;
 checker vẫn từ chối thiếu/đảo docs lõi hoặc prefix khác. Đây là tương thích metadata AUD057,
 giữ nguyên audit/checkpoint complete và không tự xác nhận nội dung đã đọc.

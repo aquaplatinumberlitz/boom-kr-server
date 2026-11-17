@@ -254,6 +254,35 @@ migration); bytes phải khớp SHA của con trỏ. Manifest của checkpoint t
 cùng chỗ với raw, nên cần sao lưu `local/evidence-manifests/` cùng raw.
 
 
+<a id="local-retention"></a>
+### Lưu giữ và dọn local/
+
+Theo [chỉ đạo chủ dự án 18/11](../owner-directives/local-retention.json), `local/` chỉ giữ lâu dài phần cần để chạy
+và raw tối thiểu đỡ kết luận; bản sao và dữ liệu trung gian không dùng thì dọn. `tools/local_retention.py` mặc định
+chỉ chạy thử (dry run): đọc mọi evidence checkpoint (dòng repository và run manifest), đường dẫn local mà code/tools
+nhắc, config `kr-rust-*` cùng mọi fixture pin trong đó, rồi phân lớp từng file theo run:
+
+| Lớp | Hành động |
+|---|---|
+| `keep_pinned` | Config/fixture service và bộ kiểm TCP, đường dẫn do code/tools nhắc, run manifest, `local/tools`; không bao giờ dọn. |
+| `keep` | File được checkpoint tham chiếu dạng text/JSON/script nhỏ (tối đa 1 MiB), script sinh dữ liệu. |
+| `keep_compressed` | Raw khác được checkpoint tham chiếu và database IDA (chú thích là kiến thức); giữ nguyên đường dẫn và bytes, btrfs đã nén zstd trong suốt. |
+| `disposable_*` | Bản sao game/Wine prefix theo run, memory dump, file trung gian không tham chiếu trong run có tham chiếu, run không được checkpoint/docs/code nào nhắc. |
+
+```bash
+python3 tools/local_retention.py --btrfs     # ghi local/retention/plan-<UTC>.json và .md, in plan_sha256
+```
+
+Chỉ khi chủ dự án duyệt đúng plan và hash mới chạy
+`python3 tools/local_retention.py --apply --plan local/retention/plan-<UTC>.json --plan-sha256 <hash>`.
+Apply kiểm lại hash, bỏ qua mọi đường dẫn pinned, chỉ xóa mục `delete` của lớp disposable và ghi các mục từng là
+evidence checkpoint vào [local-pruned.json](local-pruned.json) (đường dẫn, lớp, lý do, ngày, hash plan). Checker báo
+`PRUNED` kèm số file cho file thiếu nằm dưới mục đó và thêm `evidence_pruned` vào số liệu; file thiếu không có mục
+vẫn là lỗi, file còn tồn tại vẫn được kiểm size/SHA. Size/SHA của file đã dọn giữ mãi trong record và run manifest,
+nên `tools/evidence_lookup.py` vẫn cho biết file đó từng là gì. Ảnh giữ lại nhưng trùng byte trong cùng run không bị xóa
+(chúng mang pin checkpoint); report đếm chúng như ứng viên dedupe reflink, cách giải phóng chỗ mà không đổi đường dẫn hoặc hash. Byte exclusive do `btrfs filesystem du` đo là cận dưới
+của dung lượng thu hồi vì extent chia sẻ giữa các bản sao reflink chỉ được giải phóng khi mọi bản sao bị xóa.
+
 ### Pin local tuyệt đối đã công bố ở CP187
 
 CP187 có44evidencepin ghi đường dẫn host tuyệt đối trong checkout/local và khai báo kindrepository.

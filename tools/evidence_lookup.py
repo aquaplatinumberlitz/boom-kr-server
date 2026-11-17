@@ -92,12 +92,19 @@ def iter_rows(root, read, cp_filter=None, run_filter=None, warn=print):
                 yield record, row, f'{pointer["path"]} (run {pointer["run"]})'
 
 
-def emit(record, row, stored, root, verify, require_local):
+def emit(record, row, stored, root, verify, require_local, pruned=None):
     result = {'cp': record['id'], **row, 'stored_in': stored}
+    if pruned is not None:
+        entry = pruned.match(row.get('path'))
+        if entry:
+            result['pruned'] = entry
     if verify:
         from check_checkpoints import verify_evidence_item
-        errors, warnings, checked, missing = verify_evidence_item(row, root, require_local, record['id'])
-        result['verify'] = 'error' if errors else 'unavailable' if missing else 'ok'
+        before = pruned.hits if pruned is not None else 0
+        errors, warnings, checked, missing = verify_evidence_item(row, root, require_local, record['id'], pruned)
+        pruned_now = pruned is not None and pruned.hits > before
+        result['verify'] = ('error' if errors else 'unavailable' if missing else
+                            'pruned' if pruned_now else 'ok')
         if errors or warnings:
             result['messages'] = errors + warnings
     print(json.dumps(result, ensure_ascii=False))
@@ -205,6 +212,7 @@ def main(argv=None):
         else:
             match = lambda row: row.get('id') == query
             run_filter = None
+        pruned = lean.load_pruned(root)
         found = 0
         for record, row, stored in iter_rows(root, read, set(args.cp or []), run_filter,
                                              warn=lambda text: print(text, file=sys.stderr)):
@@ -212,7 +220,7 @@ def main(argv=None):
                 found += 1
                 if args.limit and found > args.limit:
                     continue
-                emit(record, row, stored, root, args.verify, args.require_local)
+                emit(record, row, stored, root, args.verify, args.require_local, pruned)
         print(json.dumps({'matches': found, 'printed': min(found, args.limit) if args.limit else found,
                           'source': args.from_history or 'working tree'}), file=sys.stderr)
         return 0 if found else 1

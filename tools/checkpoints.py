@@ -60,6 +60,7 @@ def main(argv=None):
                 counts, page, total, errors, warnings, verified, unavailable = Counter(), [], 0, [], [], 0, 0
                 if args.verify:
                     from check_checkpoints import verify_evidence_item
+                    pruned = lean.load_pruned(args.root)
 
                 def rows():
                     nonlocal unavailable
@@ -80,7 +81,7 @@ def main(argv=None):
                     if args.limit and args.offset <= i < args.offset + args.limit:
                         page.append(item)
                     if args.verify:
-                        e, w, good, missing = verify_evidence_item(item, args.root, args.require_local, args.id)
+                        e, w, good, missing = verify_evidence_item(item, args.root, args.require_local, args.id, pruned)
                         errors.extend(e)
                         warnings.extend(w)
                         verified += good
@@ -96,7 +97,7 @@ def main(argv=None):
                                   next_offset=args.offset + len(page) if args.offset + len(page) < total else None)
                 if args.verify:
                     result.update(verification=dict(ok=not errors, verified=verified, unavailable=unavailable,
-                                                    errors=errors, warnings=warnings))
+                                                    pruned=pruned.hits, errors=errors, warnings=warnings))
                     if errors:
                         print(json.dumps(result, ensure_ascii=False, indent=2))
                         return 1
