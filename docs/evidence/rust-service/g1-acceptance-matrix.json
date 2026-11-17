@@ -1,0 +1,594 @@
+{
+  "schema": "kre-g1-acceptance-matrix-v1",
+  "source": "design",
+  "status": "candidate",
+  "canonical": "docs/PLAN.md#phase1-acceptance",
+  "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
+  "scope": "Đối chiếu bằng chứng các route đã đo với acceptance G1 đã cắt; không là bản nghiệm thu toàn G1.",
+  "maps": [
+    {
+      "map": "Forest07",
+      "allowed_players": [
+        2,
+        8
+      ],
+      "native_rosters": [
+        2,
+        4,
+        8
+      ],
+      "coverage": "existing_measured_routes",
+      "criteria": [
+        "pack_spawn",
+        "box_clear",
+        "kept_item_reveal_pickup",
+        "peer",
+        "two_rounds_reset",
+        "negative_control"
+      ],
+      "observation": "Well00 giữ blocked khi nổ cạnh, hai thùng bên cạnh vỡ; hidden Roller và speed5→6.",
+      "metadata": {
+        "path": "docs/evidence/rust-service/g1-map-terrain.json",
+        "bytes": 14174,
+        "sha256": "d626e56528bced0d259d75090acb6209ecf592d27700a7c7b9803bb0f3cea31f"
+      },
+      "verifications": [
+        {
+          "path": "local/research/codex/g1-forest-2-native-r1/forest-roster-getter-verification.json",
+          "bytes": 608,
+          "sha256": "b48e171e033b7ff43ce063996841d5e3f56e03142fd0a8099924106ff430a589"
+        },
+        {
+          "path": "local/research/codex/g1-forest-2-native-r1/forest-roster-native-verification.json",
+          "bytes": 999043,
+          "sha256": "474fd7ac2803f4f06f8a8256f43eea206900bade1348f57afefbdbe3a5932ab1"
+        },
+        {
+          "path": "local/research/codex/g1-forest-4-native-r1/forest-roster-getter-verification.json",
+          "bytes": 609,
+          "sha256": "fa6a77f88be078da8b9e6887490a8dee4b58df7013e4ae015939201fcf9381fe"
+        },
+        {
+          "path": "local/research/codex/g1-forest-4-native-r1/forest-roster-native-verification.json",
+          "bytes": 2872320,
+          "sha256": "f70606475ea8b41d368732cd94a0da8a93f6be98ae6ac257fac8254d2bed36dd"
+        },
+        {
+          "path": "local/research/codex/g1-forest-seed-native-r2/forest-seed-getter-verification.json",
+          "bytes": 556,
+          "sha256": "45cc0b1bb7ee9eaef4edfb50d8500f8e77a0fbcf9360407344086b11062b523a"
+        },
+        {
+          "path": "local/research/codex/g1-forest-seed-native-r2/forest-seed-native-verification.json",
+          "bytes": 108678,
+          "sha256": "39fb1196fbd1a81b5fb149b937ed76593ebf708ee7aff8b1505230f547f3ea48"
+        },
+        {
+          "path": "local/research/codex/g1-forest-terrain-native-r3/forest-terrain-getter-verification.json",
+          "bytes": 571,
+          "sha256": "eae1488acc7d884f4732332585ae417c007750b31cb96ec1a86f192e55db0779"
+        },
+        {
+          "path": "local/research/codex/g1-forest-terrain-native-r3/forest-terrain-native-verification.json",
+          "bytes": 15497881,
+          "sha256": "ee3f10d96cc1bab23ea3fb92b62887ffcd65153557ca5d046103214bc1fc2a94"
+        },
+        {
+          "path": "local/research/codex/g1-map-terrain-config-controls-r1/verification.json",
+          "bytes": 1429,
+          "sha256": "d16ab429fde7d7983b22daf3c39daf294b5458b1b64499817a0ff0da4c105913"
+        }
+      ],
+      "limits": [
+        "Native gameplay mới đo Forest07 roster2/4/8 contiguous và các route đã ghi; không mọi roster sparse2..8 hoặc toàn bộ ô/mọi item. Seed-only2client là run riêng.",
+        "Đo Well00 ở một tiếp cận/hướng/power1 và các ô trên route đã ghi; không mọi direction, moving tile hoặc world authority.",
+        "Python ray model project owner0 vì model cũ giới hạn0/1; ownership/serial/location/power đối chiếu actual118→159→native entity/158 riêng.",
+        "Factory07 là lựa chọn fallback trong catalog nhưng không có terrain/native gameplay mới ở run này.",
+        "Drop cố định một Roller không phục hồi phân phối pack/ItemAttr hoặc các item khác. Forest07 chưa được gọi mở đầy đủ G1.",
+        "Village10/Tomb12 có6spawn; scope2..8 chưa được chủ dự án đổi. Không ép spawn hoặc tự giảm acceptance.",
+        "M8 transport mới qua Internet thật, tải50/8room/soak/backup/restore/đóng gói còn riêng."
+      ]
+    },
+    {
+      "map": "Patrit14",
+      "allowed_players": [
+        2,
+        8
+      ],
+      "native_rosters": [
+        2,
+        4,
+        8
+      ],
+      "coverage": "existing_measured_routes",
+      "criteria": [
+        "pack_spawn",
+        "box_clear",
+        "kept_item_reveal_pickup",
+        "peer",
+        "two_rounds_reset",
+        "negative_control"
+      ],
+      "observation": "MastTileA giữ ba flags blocked khi nổ từ phía trên; hidden Roller và speed5→6.",
+      "metadata": {
+        "path": "docs/evidence/rust-service/g1-patrit-terrain.json",
+        "bytes": 13453,
+        "sha256": "3ccd5701f0d7125fd7613fcbd483262b0b19bd78a3a6d97b0a6369ffa6fe34eb"
+      },
+      "verifications": [
+        {
+          "path": "local/research/codex/g1-patrit-2-native-r1/patrit-roster-getter-verification.json",
+          "bytes": 609,
+          "sha256": "94aba91f9cec72a45011893a436bd273bee3005ea6bfb3c272b855f24cbc8182"
+        },
+        {
+          "path": "local/research/codex/g1-patrit-2-native-r1/patrit-roster-native-verification.json",
+          "bytes": 2526767,
+          "sha256": "e87dcd28afc3fe235ad285a85bb892e4cbbd815c0845c4215f149f071af6f598"
+        },
+        {
+          "path": "local/research/codex/g1-patrit-4-native-r1/patrit-roster-getter-verification.json",
+          "bytes": 609,
+          "sha256": "186aff89c9c4bf97f5833ab73ffe2430b3e0b2914ad807bd32a9ec866d3ce2be"
+        },
+        {
+          "path": "local/research/codex/g1-patrit-4-native-r1/patrit-roster-native-verification.json",
+          "bytes": 5926066,
+          "sha256": "540cae4f779205d72817488fa974c26bb363fc75456e13c04dbfe00e8149d844"
+        },
+        {
+          "path": "local/research/codex/g1-patrit-8-native-r5/patrit-roster-getter-verification.json",
+          "bytes": 609,
+          "sha256": "8a7710e4676ed251b9d3f2a4a7585c2d49abbdd862375eb5819783ff7b076239"
+        },
+        {
+          "path": "local/research/codex/g1-patrit-8-native-r5/patrit-roster-native-verification.json",
+          "bytes": 15498573,
+          "sha256": "98b5153353ff541b3a426a5be419d5946373a67819231430cf842840aae155b4"
+        },
+        {
+          "path": "local/research/codex/g1-patrit-seed-native-r1/patrit-seed-getter-verification.json",
+          "bytes": 556,
+          "sha256": "b60871229e5d0cc096e7327e95d2c8f71360fa508073f70cf3346157e5edef02"
+        },
+        {
+          "path": "local/research/codex/g1-patrit-seed-native-r1/patrit-seed-native-verification.json",
+          "bytes": 107779,
+          "sha256": "cc571498ef7d99abb4e69b8dd679a2aaa6d5122025cece741ca1d0c4633fc838"
+        }
+      ],
+      "limits": [
+        "Chỉ các route contiguous 2/4/8 đã ghi; không mọi sparse roster, ô trên map, hướng/power của MastTileA hoặc mọi authority gốc.",
+        "Roller cố định không phục hồi bảng rơi/trọng số/kết hợp ItemAttr hoặc các nhóm item khác; không gọi Patrit14 mở hoàn chỉnh.",
+        "Factory07 fallback không có terrain và không nhận native gameplay acceptance mới trong các lượt này.",
+        "Getter emulation riêng với runtime; log Rust hoặc source model không là oracle.",
+        "Village10/Tomb12 acceptance hiện hành2–6, bốn map còn lại2–8; quyết định phạm vi không đóng G1. CP298 và raw/kết quả cũ giữ nguyên.",
+        "M8 còn transport xác thực mới qua Internet thật, tải50/8phòng, backup/restore, đóng gói và soak."
+      ]
+    },
+    {
+      "map": "Village10",
+      "allowed_players": [
+        2,
+        6
+      ],
+      "native_rosters": [
+        2,
+        4,
+        6
+      ],
+      "coverage": "existing_measured_routes",
+      "criteria": [
+        "pack_spawn",
+        "box_clear",
+        "kept_item_reveal_pickup",
+        "peer",
+        "two_rounds_reset",
+        "negative_control"
+      ],
+      "observation": "Route power1→2 và Fire/Roller; sparse6 và từ chối map vượt roster có bằng chứng riêng.",
+      "metadata": {
+        "path": "docs/evidence/rust-service/g1-village10-terrain.json",
+        "bytes": 9384,
+        "sha256": "c1402127c878a19ff0e4bdd05572a2fb2e784391da304fafbdcdd663dd3d9c7f"
+      },
+      "verifications": [
+        {
+          "path": "local/research/codex/g1-village10-terrain2-native-r1/cache-verification.json",
+          "bytes": 1125,
+          "sha256": "ad7c31030657d39c96d82ac576178d0c47f87c56d63c15013f9f14094827a6cb"
+        },
+        {
+          "path": "local/research/codex/g1-village10-terrain2-native-r1/village10-terrain-getter-verification.json",
+          "bytes": 609,
+          "sha256": "434cac9588d7d10e67ec26a349434746c6335cf7d09c5f3049382b5f69f1b25c"
+        },
+        {
+          "path": "local/research/codex/g1-village10-terrain2-native-r1/village10-terrain-native-verification.json",
+          "bytes": 3315541,
+          "sha256": "5ed017e34cd6ce57f198d93ba4b45aa8fb2d32ffffab17ebc37935d1a3e65144"
+        },
+        {
+          "path": "local/research/codex/g1-village10-terrain4-native-r4/cache-verification.json",
+          "bytes": 1943,
+          "sha256": "6408431b54e896ab267bea61c94500f5248c56e67e04c76f3ca86ea27b80bad1"
+        },
+        {
+          "path": "local/research/codex/g1-village10-terrain4-native-r4/village10-terrain-getter-verification.json",
+          "bytes": 609,
+          "sha256": "2969ecf549601fbc61ff8f995a274ede7a6b4bb8c41fea770179d1207211611e"
+        },
+        {
+          "path": "local/research/codex/g1-village10-terrain4-native-r4/village10-terrain-native-verification.json",
+          "bytes": 7555881,
+          "sha256": "542b76e7c6108eee6141c7492a4df1e5e134ebafc57e4071214faee0faf6500d"
+        },
+        {
+          "path": "local/research/codex/g1-village10-terrain6-native-r2/cache-verification.json",
+          "bytes": 2811,
+          "sha256": "a93ba3b62bda7484369a0fb1c80684daa43c83702a254581f60d3927353ea006"
+        },
+        {
+          "path": "local/research/codex/g1-village10-terrain6-native-r2/village10-terrain-getter-verification.json",
+          "bytes": 609,
+          "sha256": "be6cceba1dbf8ce77348467b3fe6d16eb9ea442a0915f6ae99d5a56cebde5c2a"
+        },
+        {
+          "path": "local/research/codex/g1-village10-terrain6-native-r2/village10-terrain-native-verification.json",
+          "bytes": 8184232,
+          "sha256": "9ae4a7dffb2c24ed6bf8b7d705475481af96ccbdb079fffa469f84e111537324"
+        },
+        {
+          "path": "local/research/codex/verify_g1_village10_terrain6_r2.py",
+          "bytes": 9690,
+          "sha256": "f8f1795ca64f443988cf03763d19af5e8de10935098e5f7f713703e8a6ba52b0"
+        }
+      ],
+      "limits": [
+        "Chưa nghiệm thu mọi count2–6, sparse slot hoặc catalog map sáu/tám spawn. Đổi map khi roster vượt giới hạn, admission và gán ordinal spawn cần controls/native riêng.",
+        "Floor/drop là thiết kế thử, chưa là phân phối/trọng số gốc; chỉ Fire/Roller ở đây. Các item/nhân vật khác cùng Camp08/Tomb12/Factory tiếp theo PLAN.",
+        "Chỉ route/hướng và power1–2 đã đo, chưa toàn geometry hoặc server authority. G1/M8 và UTF8 vẫn mở."
+      ]
+    },
+    {
+      "map": "Factory07",
+      "allowed_players": [
+        2,
+        8
+      ],
+      "native_rosters": [
+        2,
+        4,
+        8
+      ],
+      "coverage": "existing_measured_routes",
+      "criteria": [
+        "pack_spawn",
+        "box_clear",
+        "kept_item_reveal_pickup",
+        "peer",
+        "two_rounds_reset",
+        "negative_control"
+      ],
+      "observation": "Bốn loại thùng, Fire/Bomb; Glass movement/ray âm và initializer có giới hạn debugger cuối lượt.",
+      "metadata": {
+        "path": "docs/evidence/rust-service/g1-factory07-roster-routes.json",
+        "bytes": 12951,
+        "sha256": "1ac0a6be0990f506e15d85dafdfb50edb31715d2533c89e2a592a47896fe65a7"
+      },
+      "verifications": [
+        {
+          "path": "local/research/codex/cp320-supported-checks-verification.json",
+          "bytes": 1111,
+          "sha256": "9ad6921aa594d85cc72d8d3aac142ee6f70ace6a79176e5b112dcfbb4c41a95e"
+        },
+        {
+          "path": "local/research/codex/g1-factory07-glass-native-r1/glass-observations-verification.json",
+          "bytes": 102023,
+          "sha256": "9b7d33b86a675ffd2307551486dde539c2123a8edd4046f70f09c643ed2fa754"
+        },
+        {
+          "path": "local/research/codex/g1-factory07-glass-serving-native-r1/glass-observations-verification.json",
+          "bytes": 123374,
+          "sha256": "fa56ea92b3d69a039f409f6d69c7716e051836833f2e067883917150dfbe91fc"
+        },
+        {
+          "path": "local/research/codex/g1-factory07-serving4-native-r1/native-items-serialization-correction-verification.json",
+          "bytes": 363108,
+          "sha256": "861b31bd6e8a501ece26be36ca4bfcf12a8d339fb46195b9b495a8129c46f3ac"
+        },
+        {
+          "path": "local/research/codex/g1-factory07-serving4-native-r1/serving-verification.json",
+          "bytes": 188388,
+          "sha256": "f3ba7b03a2e72915b6d75a63be68ebec996a8e46669d6d0f0a261ecd1989a4fb"
+        },
+        {
+          "path": "local/research/codex/g1-factory07-serving8-native-r1/native-items-serialization-correction-verification.json",
+          "bytes": 1411352,
+          "sha256": "9945ea6664e2eb1268766e30c258aaac3f27bf79882981ae3e04f647579322e6"
+        },
+        {
+          "path": "local/research/codex/g1-factory07-serving8-native-r1/serving-verification.json",
+          "bytes": 371284,
+          "sha256": "77d9535b71f9f8b4db5f9e91ec4747c911732819601167179fe9331125a9e8c8"
+        },
+        {
+          "path": "local/research/codex/g1-factory07-serving8-native-r1/static-ray-observations-verification.json",
+          "bytes": 65391,
+          "sha256": "f8c09f81d9bb1516ef6968a884ce0c2ced4ddf48e9f4f2c34274745dbe49943d"
+        }
+      ],
+      "limits": [
+        "Chỉ các route 2/4/8 đã đo; chưa mọi cỡ/roster sparse, mọi ô/hướng hoặc toàn map/gameplay G1.",
+        "Không nghiệm thu thao tác đẩy từ RTTI; Glass00 đã có một hướng di chuyển/ray và integration; coverage hướng khác vẫn theo RESEARCH. Item thử là design, không phân phối rơi gốc.",
+        "Lượt Glass Rust giữ wrapper exit 0 nhưng B/C có lỗi K2/GDB sau các peer event có timestamp lớn hơn controller completion. Hai frozen/post-run verifier thất bại giữ nguyên; bản v3 chỉ xác minh dữ liệu trước lỗi. Không chứng nhận debugger shutdown sạch hoặc root cause.",
+        "Wine/LAN cô lập và DB/output tmpfs chẩn đoán; không Internet transport mới, tải 50 người/8 phòng, backup/restore hoặc M8."
+      ]
+    },
+    {
+      "map": "Camp08",
+      "allowed_players": [
+        2,
+        8
+      ],
+      "native_rosters": [
+        2,
+        4,
+        8
+      ],
+      "coverage": "existing_measured_routes",
+      "criteria": [
+        "pack_spawn",
+        "box_clear",
+        "kept_item_reveal_pickup",
+        "peer",
+        "two_rounds_reset",
+        "negative_control"
+      ],
+      "observation": "Route StrongBox, hidden Bomb/Fire; static footprint/ray controls ở evidence riêng.",
+      "metadata": {
+        "path": "docs/evidence/rust-service/g1-camp08-roster-routes.json",
+        "bytes": 4386,
+        "sha256": "9f8d05370d3b769ec516f0cd2f5f677f94d2a4d6bc0d77b7ae9afff9a2b51b4e"
+      },
+      "verifications": [
+        {
+          "path": "local/research/codex/g1-camp08-durable-serving-native-r2/serving-verification.json",
+          "bytes": 108350,
+          "sha256": "a511994c75ca82578d9d28bf174813b77471898fbc2af1723e8e9b396585f4f8"
+        },
+        {
+          "path": "local/research/codex/g1-camp08-serving4-native-r1/failure-verification.json",
+          "bytes": 1868,
+          "sha256": "7ba60504452331188b71f980a469cfbf4f0499978edbddda1cc8b21aac3f2a4c"
+        },
+        {
+          "path": "local/research/codex/g1-camp08-serving4-native-r2/serving-verification.json",
+          "bytes": 18580,
+          "sha256": "a122cd72960bd07fa24dabe139b9db5a8f6fc432ce45901d746aa23da166448d"
+        },
+        {
+          "path": "local/research/codex/g1-camp08-serving8-native-r2/serving-verification.json",
+          "bytes": 37494,
+          "sha256": "669e0194be64b613017e150a63fc386b49c3085fc0f6e097b487ba5fd774fd51"
+        }
+      ],
+      "limits": [
+        "Chỉ route StrongBox 5/2 và hidden Bomb/Fire ở roster liên tục 2/4/8; chưa mọi ô/hướng/sparse roster hoặc các item/nhân vật G1 còn lại.",
+        "Floor/drop và policy số hit hữu hạn là design; không phục hồi authority hoặc phân phối drop của server gốc.",
+        "Output/DB tmpfs với export/unmount đã kiểm bytes chỉ là chẩn đoán. Không chứng nhận lưu bền, Internet, phiên dài, 50 người/8 phòng hoặc M8.",
+        "Control không kích hoạt nên không chứng minh focus đã sửa nguyên nhân mất mẫu trước."
+      ]
+    },
+    {
+      "map": "Tomb12",
+      "allowed_players": [
+        2,
+        6
+      ],
+      "native_rosters": [
+        2,
+        4,
+        6
+      ],
+      "coverage": "existing_measured_routes",
+      "criteria": [
+        "pack_spawn",
+        "box_clear",
+        "kept_item_reveal_pickup",
+        "peer",
+        "two_rounds_reset",
+        "negative_control"
+      ],
+      "observation": "Stone, hidden Fire/Bomb; Waterway âm và bridge movement/ray. Roster6 dùng export có exit1, không cleanup sạch.",
+      "metadata": {
+        "path": "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+        "bytes": 8614,
+        "sha256": "f33ae33e17443a1ac287909784096362e55df0a1e151f381a51bb0b384499768"
+      },
+      "verifications": [
+        {
+          "path": "local/research/codex/g1-tomb12-serving-native-r1/serving-verification.json",
+          "bytes": 73964,
+          "sha256": "3d6fecdb2653aa344193e9fdd0641805f542e29bf471abdd8b5ca632a12f6eb0"
+        },
+        {
+          "path": "local/research/codex/g1-tomb12-serving-native-r1/verifier-correction.json",
+          "bytes": 767,
+          "sha256": "61858457b3d05e89ed096ea0681b2b0f8ad92c20ed519ced4a92295da9b5c7c2"
+        },
+        {
+          "path": "local/research/codex/g1-tomb12-serving4-native-r1/preboot-failure-verification.json",
+          "bytes": 781,
+          "sha256": "1563b26874d60e3fd7b5d9fc8648af3f3130b9fd5f9f330d87be75a83df99737"
+        },
+        {
+          "path": "local/research/codex/g1-tomb12-serving4-native-r2/setup-failure-verification.json",
+          "bytes": 1072,
+          "sha256": "3b5f3ea40e0cabec7ad703e7ce2cb6eae608915135af3fa1456e7abe7bf20d85"
+        },
+        {
+          "path": "local/research/codex/g1-tomb12-serving4-native-r3/postfreeze-verifier-scope-note.json",
+          "bytes": 741,
+          "sha256": "5d56f0b0028cbd8e1c8dfc6b2817d550ff7e487467737052e0930ecb70010cb5"
+        },
+        {
+          "path": "local/research/codex/g1-tomb12-serving4-native-r3/serving-verification.json",
+          "bytes": 204670,
+          "sha256": "49a1036a924f9f3fe88ec0a57bd6a3492ade64216e03fa765faa5006423c271b"
+        },
+        {
+          "path": "local/research/codex/g1-tomb12-serving6-native-r1/postrun-verifier-scope.json",
+          "bytes": 990,
+          "sha256": "bb8cb41bb75cb6703485c517d08ce9f7d51b766aa4fa6c0f6441beb644fa45cd"
+        },
+        {
+          "path": "local/research/codex/g1-tomb12-serving6-native-r1/serving-verification.json",
+          "bytes": 404678,
+          "sha256": "5b8c66b7dc1692f80a3262334690bc40e40bcb7212313a70a8a6044b26b03550"
+        }
+      ],
+      "limits": [
+        "Chỉ route 2/4/6, các hướng và hai loại item ẩn đã đo; chưa mọi ô/hướng, sparse roster hoặc mọi item của Tomb12.",
+        "Vị trí và phân phối item thử là design; trọng số pack không phải tỉ lệ phần trăm đã phục hồi. Không chứng nhận authority server gốc.",
+        "Output/DB tmpfs và Wine chẩn đoán, không là Internet cho transport mới, crash durability, tải, backup/restore hoặc M8.",
+        "Lượt sáu người có native quan sát đã xác minh nhưng overall exit 1: UDP capture dừng trước clock đầu, không có trace UDP gameplay, GDB B lỗi sau controller completion, output unmount busy. Không full UDP capture hoặc graceful cleanup/M8.",
+        "Hai lượt bốn người lỗi setup được giữ: thiếu namespace C; kế đó capacity 2. Lượt sau còn output unmount busy sau export đúng hash và declared stop, giữ exit 1 cùng failure seal riêng."
+      ]
+    }
+  ],
+  "items": {
+    "Bomb_Fire_Roller": "existing native route/stat controls",
+    "MaxPower": "docs/evidence/rust-service/g1-maxpower.json",
+    "Needle_rescue": "docs/evidence/rust-service/g1-life-actions.json",
+    "Punch": "docs/evidence/rust-service/g1-punch-matrix.json",
+    "Shoe": "pending final native/group integration, then docs/evidence/rust-service/g1-shoe-matrix.json"
+  },
+  "character": "docs/evidence/rust-service/g1-character-rejection.json",
+  "drop_scope": "docs/evidence/rust-service/g1-item-scope-data.json",
+  "vi_client": {
+    "status": "confirmed_integration_smoke",
+    "language": "vi",
+    "runtime_client_sha256": "37655a36d11b94dbe18bcfdcaaf68ec92c9271743d8e3fdf919492e8f0edaa84",
+    "rounds": 2,
+    "map": "Factory07",
+    "item": "Bomb",
+    "semantic": {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/vi-smoke-verification.json",
+      "bytes": 1364,
+      "sha256": "1ae81e17c2d9923a02b76610d699b66c61c4aaca7f4eb697fb5855140c7c89fb"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/matrix-verification.json",
+      "bytes": 668,
+      "sha256": "1f75f14287a3beb6d05bf6465605bd57bc8bc745ea8bb471f3af84a9ad25f932"
+    },
+    "cache": {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/cache-verification.json",
+      "bytes": 3179,
+      "sha256": "a64f95b47a089cf3f87233d05a827c0eb62ad19621981cc08e3bf5e9cf670d41"
+    },
+    "images": {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/manual-image-review.json",
+      "bytes": 1856,
+      "sha256": "7c44865a4ddb54f32e4b87402ac4bce0deb29e27a50e3935c153f0a9ef65e3d5"
+    },
+    "wrapper_limit": {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/wrapper-cache-guard-observation.json",
+      "bytes": 1148,
+      "sha256": "08619b6d6ffdee166b7e7ba3a1f0eef4becc388d88041627dd6a207de955f1d5"
+    },
+    "limits": "Current produced L1 vi outputs only; original wrapper rejected two observed cache changes. Exact actual238 join validates them, all other pins frozen. No L1 or M8 closure."
+  },
+  "remaining": [
+    "Shoe final native/group integration; join acceptance after it passes.",
+    "Final G1 audit and exact-head/CI gate; all map/roster and native cleanup limits retained."
+  ],
+  "limits": [
+    "Chỉ tái dùng các route và môi trường đã ghi; không đo lại phân phối drop gốc.",
+    "Roster trung gian dùng admission/spawn ordinal tổng quát; native có các roster đã liệt kê, không từng số người hoặc từng sparse slot.",
+    "Không đóng M8: Internet transport mới, tải50/8phòng, backup/restore/đóng gói/soak còn riêng."
+  ],
+  "criteria": [
+    {
+      "number": 1,
+      "requirement": "Adapter map",
+      "state": "existing_confirmed",
+      "evidence": [
+        "docs/evidence/rust-service/g1-map-adapter.json"
+      ]
+    },
+    {
+      "number": 2,
+      "requirement": "Chọn map và đồng bộ peer/Start",
+      "state": "existing_confirmed",
+      "evidence": [
+        "docs/evidence/rust-service/g1-map-selection.json",
+        "docs/evidence/rust-service/g1-mixed-map-spawns.json"
+      ]
+    },
+    {
+      "number": 3,
+      "requirement": "Kim và cứu trên Rust",
+      "state": "existing_confirmed",
+      "evidence": [
+        "docs/evidence/rust-service/g1-life-actions.json"
+      ]
+    },
+    {
+      "number": 4,
+      "requirement": "Terrain/item nền và roster đại diện2/4/8",
+      "state": "existing_confirmed",
+      "evidence": [
+        "docs/evidence/rust-service/g1-terrain-players.json"
+      ],
+      "limits": "Native các roster đã liệt kê, không từng count/sparse slot; capacity/membership/spawn ordinal tổng quát có controls riêng."
+    },
+    {
+      "number": 5,
+      "requirement": "Sáu map: spawn, thùng, item giữ lại, peer, hai vòng/reset, ca âm",
+      "state": "existing_measured_routes",
+      "evidence": [
+        "docs/evidence/rust-service/g1-map-terrain.json",
+        "docs/evidence/rust-service/g1-patrit-terrain.json",
+        "docs/evidence/rust-service/g1-village10-terrain.json",
+        "docs/evidence/rust-service/g1-factory07-roster-routes.json",
+        "docs/evidence/rust-service/g1-camp08-roster-routes.json",
+        "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+      ],
+      "limits": "Áp dụng owner scope-cut: không mỗi tile. Giữ các lỗi debugger/capture/export của run cũ; không coi exit1 là cleanup sạch."
+    },
+    {
+      "number": 6,
+      "requirement": "Tập item giữ lại và tắt drop các nhóm ngoài phạm vi",
+      "state": "pending_shoe_final_join",
+      "evidence": [
+        "docs/evidence/rust-service/g1-item-scope-data.json",
+        "docs/evidence/rust-service/g1-maxpower.json",
+        "docs/evidence/rust-service/g1-life-actions.json",
+        "docs/evidence/rust-service/g1-punch-matrix.json",
+        "docs/evidence/rust-service/g1-shoe-matrix.json"
+      ]
+    },
+    {
+      "number": 7,
+      "requirement": "Từ chối nhân vật chưa đo, giữ socket/profile/Ready/member/DB",
+      "state": "confirmed_and_merged_pr466",
+      "evidence": [
+        "docs/evidence/rust-service/g1-character-rejection.json"
+      ]
+    },
+    {
+      "number": 8,
+      "requirement": "Client vi hiện hành trên Rust, một map/item G1, hai vòng/reset",
+      "state": "confirmed_integration_smoke",
+      "evidence": [
+        "local/research/codex/g1-vi-client-smoke-r1/vi-smoke-verification.json",
+        "local/research/codex/g1-vi-client-smoke-r1/matrix-verification.json",
+        "local/research/codex/g1-vi-client-smoke-r1/manual-image-review.json",
+        "local/research/codex/g1-vi-client-smoke-r1/cache-verification.json"
+      ],
+      "limits": "Original wrapper cache guard failed; two known cache outputs independently match actual238, all other inputs frozen. Not L1 closure or language-client gameplay oracle."
+    }
+  ]
+}

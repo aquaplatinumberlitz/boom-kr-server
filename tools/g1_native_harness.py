@@ -168,6 +168,8 @@ def prepare(args):
     assert 2 <= len(matrix['roster']) <= 8 and 1 <= matrix['rounds'] <= 16
     assert matrix['item'] in [None, 0, 1, 2, 3, 4, 5, 145]
     assert matrix['steps'] and matrix['cases']
+    for name in ['kr-service', 'kr-admin', 'kr-companion']:
+        (args.binary_dir/name).resolve(strict=True)
     out.mkdir(mode=0o700, parents=True, exist_ok=False)
     (out/'native').mkdir()
     (out/'binary').mkdir()
@@ -244,6 +246,10 @@ def prepare(args):
     for data in config['roles'].values():
         inputs.update(p for p in Path(data['game_dir']).iterdir()
                       if p.is_file() and p.name not in ['CALog.log','fxdynmapinfo.ssd'])
+    previous = base/'native/runtime-preflight.json'
+    if previous.is_file():
+        inputs.update(Path(row['path']) for row in read(previous)['files']
+                      if Path(row['path']).suffix in ['.py', '.gdb'] and not Path(row['path']).is_relative_to(base))
     inputs.add(out/'native/recipe.json')
     write(out/'native/runtime-preflight.json',dict(files=[pin(p) for p in sorted(inputs)],
           limits='Candidate matrix inputs. No runtime or compatibility acceptance.'))
@@ -265,50 +271,9 @@ def run(args):
 
 
 def verify(args):
-    root = local_path(args.run)
-    matrix = read(root/'matrix.json')
-    out = root/'native/cycles'
-    assert read(root/'native/launch-exit.json')['returncode'] == 0
-    check_pins(read(root/'native/runtime-preflight.json')['files'])
-    run = read(out/'run.json')
-    assert not run.get('error') and not run.get('cleanup_errors') and run['service_stopped']
-    assert run['owned_orphan_cleanup']['result'] == 'all_owned_namespace_descendants_reaped'
-    assert not run['owned_orphan_cleanup']['remaining'] and run.get('early_completion')
-    assert read(root/'native/storage-export.json')['result'] == 'pass'
-    check_pins(read(root/'native/storage-export.json')['files'])
-    rounds = list(range(1,matrix['rounds']+1))
-    # Native consumer completion is independent of the server's request log.
-    for role in matrix['roster']:
-        text = (out/role/'client.log').read_text(errors='replace')
-        for tag, kind in [('FOUR_SLOT','clock'),('FOUR_LIFE','rank_end'),('FOUR_LIFE','return_before_room')]:
-            rows = [row for row in tagged(text,tag) if row['kind'] == kind]
-            assert [row['round'] for row in rows] == rounds, (role,tag,kind)
-        for expected in matrix.get('native_expectations',[]):
-            if expected.get('role') not in [None,role]:continue
-            rows = tagged(text,expected['tag'])
-            assert sum(matches(row,expected['match'])for row in rows) == expected['count'], (role,expected)
-    with sqlite3.connect('file:'+str(out/'account-db/accounts.sqlite')+'?mode=ro',uri=True) as db:
-        seed = sqlite3.connect('file:'+str(root/'previous-accounts.sqlite')+'?mode=ro',uri=True)
-        first = seed.execute('select coalesce(max(id),0)from matches').fetchone()[0]
-        seed.close()
-        matches_db = db.execute('select id,map_name,state,start_json from matches where id>?order by id',(first,)).fetchall()
-        assert len(matches_db) == matrix['rounds']
-        owners = run['account_launches']
-        for mid,map_name,state,start in matches_db:
-            assert map_name == matrix['map'] and state == 'complete'
-            players = json.loads(start)['players']
-            assert [(p['slot'],p['account_id'],p['player_id'])for p in players] == [
-                (i,owners[role]['response']['player']['account_id'],owners[role]['response']['player']['player_id'])
-                for i,role in enumerate(matrix['roster'])]
-            assert db.execute('select count(*)from match_players where match_id=? and reward=0',(mid,)).fetchone()[0] == len(matrix['roster'])
-    # Full item/geometry fidelity requires the group's independently decoded wire
-    # and wrapper assertions, which must be supplied explicitly, never inferred.
-    result = dict(result='verified_matrix_lifecycle_identity_and_declared_native_controls',
-                  matrix=pin(root/'matrix.json'),run=pin(out/'run.json'),
-                  limits='Lifecycle/identity/declared controls only. Geometry, wire, effects and G1 closure require group evidence.')
-    with (root/'matrix-verification.json').open('x') as stream:
-        json.dump(result,stream,ensure_ascii=False,indent=2);stream.write('\n')
-    print(result['result'])
+    # Keep post-run verification separate from the pinned runtime controller.
+    from g1_native_verify import lifecycle
+    lifecycle(local_path(args.run))
 
 
 def main():
