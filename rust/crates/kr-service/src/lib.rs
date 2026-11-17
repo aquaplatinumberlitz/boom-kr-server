@@ -12,6 +12,7 @@ mod bombs;
 mod characters;
 mod diagnostic59;
 mod four_results;
+mod item_scope;
 mod life;
 mod life_actions;
 pub mod lobby;
@@ -855,39 +856,44 @@ async fn local_lobby_connection(
                     }
                 }
                 let observation = if persist_character && packet.opcode == 92 {
-                    let (membership, character) = session.prepare_character(&packet.payload)?;
-                    let expected = preference
-                        .as_ref()
-                        .ok_or_else(|| io::Error::other("missing owned preference"))?
-                        .revision;
-                    let Some(account_serving::Lease::Channel(owner)) = &account else {
-                        return Err(io::Error::other("character has no owned session"));
-                    };
-                    let deadline = Instant::now() + Duration::from_secs(2);
-                    let stored = loop {
-                        let attempt = tokio::select! { _=stop.changed()=>return Ok(()), value=owner.select_character(character,expected)=>value };
-                        match attempt {
-                            Ok(stored) => break stored,
-                            Err(account_bridge::Error::Backend(
-                                account_worker::Error::Busy
-                                | account_worker::Error::QueueExpired
-                                | account_worker::Error::Backend(accounts::Error::Busy),
-                            )) if Instant::now() < deadline => {
-                                tokio::select! { _=stop.changed()=>return Ok(()), _=tokio::time::sleep(Duration::from_millis(20))=>{} }
+                    if let Some((membership, character)) =
+                        session.prepare_character(&packet.payload)?
+                    {
+                        let expected = preference
+                            .as_ref()
+                            .ok_or_else(|| io::Error::other("missing owned preference"))?
+                            .revision;
+                        let Some(account_serving::Lease::Channel(owner)) = &account else {
+                            return Err(io::Error::other("character has no owned session"));
+                        };
+                        let deadline = Instant::now() + Duration::from_secs(2);
+                        let stored = loop {
+                            let attempt = tokio::select! { _=stop.changed()=>return Ok(()), value=owner.select_character(character,expected)=>value };
+                            match attempt {
+                                Ok(stored) => break stored,
+                                Err(account_bridge::Error::Backend(
+                                    account_worker::Error::Busy
+                                    | account_worker::Error::QueueExpired
+                                    | account_worker::Error::Backend(accounts::Error::Busy),
+                                )) if Instant::now() < deadline => {
+                                    tokio::select! { _=stop.changed()=>return Ok(()), _=tokio::time::sleep(Duration::from_millis(20))=>{} }
+                                }
+                                Err(error) => {
+                                    return Err(io::Error::other(format!(
+                                        "character persistence denied: {error:?}"
+                                    )));
+                                }
                             }
-                            Err(error) => {
-                                return Err(io::Error::other(format!(
-                                    "character persistence denied: {error:?}"
-                                )));
-                            }
-                        }
-                    };
-                    preference = Some(stored);
-                    session.persisted_character(membership, &packet.payload)?
+                        };
+                        preference = Some(stored);
+                        session.persisted_character(membership, &packet.payload)?
+                    } else {
+                        session.packet(packet.opcode, &packet.payload)?
+                    }
                 } else {
                     session.packet(packet.opcode, &packet.payload)?
                 };
-                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"map_rejection":observation.map_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
+                emit(&log,stamp(start,json!({"event":"room_request","connection":id,"identity":flow.identity(),"opcode":packet.opcode,"sequence":packet.sequence,"payload_bytes":packet.payload.len(),"dropped_after_abort":observation.dropped_after_abort,"start_rejection":observation.start_rejection,"map_rejection":observation.map_rejection,"character_rejection":observation.character_rejection,"admission_rejection":observation.admission_rejection,"pickup":observation.pickup,"bomb":observation.bomb,"terrain_notice":observation.terrain_notice,"life":observation.life}))).await?;
                 continue;
             }
             if packet.opcode == 528

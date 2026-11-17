@@ -150,6 +150,61 @@ fn spawn_choices(c: &mut Case, counts: &[usize]) {
         .collect();
     r.maps = Some(Arc::new(crate::map_profile::Catalog { choices }));
 }
+
+#[test]
+fn unsupported_character_restores_current_slot_without_ready_or_membership_mutation() {
+    let mut c = case(2);
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.model.phase = Phase::Idle;
+        r.rules.player_choices = true;
+        for key in &c.keys {
+            r.model.members.get_mut(&key.identity).unwrap().ready = true;
+            let mut template = vec![0; 204];
+            template[1..5].copy_from_slice(&encoded(&[(u64::from(key.identity), Width::U32)]));
+            template[12..16].copy_from_slice(&encoded(&[(0, Width::U32)]));
+            r.players.insert(key.identity, packet(106, template));
+        }
+    }
+    let body = encoded(&[(0, Width::U8), (4, Width::U16)]);
+    assert_eq!(c.sessions[0].prepare_character(&body).unwrap(), None);
+    let observation = c.sessions[0].packet(92, &body).unwrap();
+    assert_eq!(
+        observation.character_rejection,
+        Some("unmeasured_character")
+    );
+    let batch = c.sessions[0].inbox.try_recv().unwrap();
+    assert!(c.sessions[1].inbox.try_recv().is_err());
+    assert_eq!(batch.packets.len(), 1);
+    assert_eq!(batch.packets[0].1.opcode, 110);
+    {
+        let r = c.shared.lock().unwrap();
+        assert!(r.model.members.values().all(|m| m.ready));
+        assert!(r.model.members.values().all(|m| m.character == Some(0)));
+        assert_eq!(r.model.members[&c.keys[0].identity].key, c.keys[0]);
+    }
+    let valid = encoded(&[(0, Width::U8), (1, Width::U16)]);
+    assert_eq!(
+        c.sessions[0].prepare_character(&valid).unwrap(),
+        Some((c.keys[0], 1))
+    );
+    c.sessions[0].packet(92, &valid).unwrap();
+    assert_eq!(
+        c.shared.lock().unwrap().model.members[&c.keys[0].identity].character,
+        Some(1)
+    );
+    c.shared.lock().unwrap().model.phase = Phase::Armed { round: c.round };
+    assert!(c.sessions[0].prepare_character(&body).is_err());
+    assert!(c.sessions[0].packet(92, &body).is_err());
+    c.shared
+        .lock()
+        .unwrap()
+        .channels
+        .get_mut(&c.keys[0].identity)
+        .unwrap()
+        .connection += 1;
+    assert!(c.sessions[0].packet(92, &body).is_err());
+}
 #[test]
 fn selected_map_bounds_admission_and_sparse_spawns_without_reassigning_member_slots() {
     let mut c = case(8);
