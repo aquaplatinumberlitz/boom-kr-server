@@ -42,7 +42,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, C
    |---|---|
    | Hoàn thiện một harness tham số hóa theo map/item/hướng/roster, controller chờ trạng thái thực và cleanup đóng hết process thuộc namespace. | 0 lượt riêng; 1 lượt ổn định ghép với selector 2/Punch đang làm |
    | Đặt trọng số 0 cho mọi row ngoài tập item G1 trong dữ liệu Rust của sáu map; kiểm bộ sinh và mọi đường chọn item không phát lại nhóm đã tắt. | 0 lượt riêng; kiểm dữ liệu/test tập trung, ghép quan sát drop với lượt map nếu cần |
-   | Hoàn tất ma trận Punch cho bốn hướng và các lớp khoảng cách/biên/wrap còn thiếu, ca không đủ điều kiện, peer và hai vòng/reset; gộp kết quả selector 2 đang làm. | 1–3 lượt Rust, gồm lượt selector 2 hiện tại; một PR cho cả nhóm Punch |
+   | Hoàn tất ma trận Punch cho các lớp khoảng cách/biên/wrap còn thiếu, ca không đủ điều kiện, peer và hai vòng/reset; bốn selector đã có endpoint native, selector 2 đã gộp vào [ma trận](evidence/rust-service/g1-punch-matrix.json). | 1–2 lượt Rust bổ sung; một PR cho cả nhóm Punch |
    | Hoàn tất ma trận Shoe cho mọi hướng và lớp khoảng cách/corridor còn thiếu, ca bị chặn/không đủ điều kiện, peer và hai vòng/reset. | 2–3 lượt Rust; một PR cho cả nhóm Shoe |
    | Làm đường ngắn [#457](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/457): từ chối nhân vật chưa đo, giữ kết nối/phòng rồi vẫn chọn nhân vật hợp lệ và chơi tiếp. | 1 lượt; hồi quy TCP giữ identity/membership dùng bộ kiểm tập trung |
    | Đối chiếu sáu map với tiêu chí 5 và dữ liệu drop mới: spawn, thùng vỡ, item giữ lại rơi/nhặt, hai vòng/reset và ca âm; chỉ chạy lại ô còn thiếu trong ma trận acceptance. | 0–3 lượt gộp nhiều map/roster; không đo lại từng tile hoặc toàn bộ roster đã đạt |

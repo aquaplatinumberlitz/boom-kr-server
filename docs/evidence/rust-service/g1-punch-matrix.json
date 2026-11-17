@@ -1,0 +1,120 @@
+{
+  "schema": "kre-g1-punch-matrix-v1",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
+  "scope": "Ma trận Punch theo nhóm; selector 2 đã có native Rust hai vòng, các lớp khoảng cách/biên còn mở.",
+  "rows": [
+    {
+      "selector": 0,
+      "source_cell": [
+        6,
+        3
+      ],
+      "target_cell": [
+        6,
+        5
+      ],
+      "native": "docs/evidence/rust-service/g1-punch-horizontal.json",
+      "status": "confirmed"
+    },
+    {
+      "selector": 1,
+      "source_cell": [
+        6,
+        3
+      ],
+      "target_cell": [
+        7,
+        3
+      ],
+      "native": "docs/evidence/rust-service/g1-punch-down.json",
+      "status": "confirmed"
+    },
+    {
+      "selector": 2,
+      "source_cell": [
+        6,
+        4
+      ],
+      "target_cell": [
+        6,
+        3
+      ],
+      "native": {
+        "path": "local/research/codex/g1-punch-selector2-rust-native-r1/punch-selector2-native-verification.json",
+        "bytes": 5473,
+        "sha256": "5ea436858afd327614ae58fa00239e0ff094f56cef8ac9baeefc864bee589b6b"
+      },
+      "status": "confirmed"
+    },
+    {
+      "selector": 3,
+      "source_cell": [
+        6,
+        3
+      ],
+      "target_cell": [
+        5,
+        3
+      ],
+      "native": "docs/evidence/rust-service/g1-punch.json",
+      "status": "confirmed"
+    }
+  ],
+  "new_native": {
+    "clients": 2,
+    "rounds": 2,
+    "getter_checks": 216,
+    "matches": 2,
+    "clean_exit": true,
+    "source_commit": "b28aed11663508facc3eebd0ecd0345d3ed122e8",
+    "service_sha256": "31879b2145275e60705c60e6cc0b1dedc9a770cc8713bf32ad3ed4618af87da7"
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/runtime-preflight.json",
+      "bytes": 568292,
+      "sha256": "12ff68eb9b72d69cd7408bfd41d5c9431827e03ec85402dbbe1d6d0a24ed4f30"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/recipe.json",
+      "bytes": 1262,
+      "sha256": "7356b2ebc00b26987b983f0f0cc68ca9dfbf3922d8d62e336121eaa4a6d446b4"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/raw-seal.json",
+      "bytes": 12180,
+      "sha256": "e3444ee4e1f1f3902e3ceea9adfa05451e7a87b7617f8721a6f7c62ba6da2015"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "b8bc153e8b420db9fd4f7df298721b30caf2d675b9cb94e815c7a8d112f3d833"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/storage-export.json",
+      "bytes": 18291,
+      "sha256": "f82e9d6bb4aad882f0e2e5c381df70f3a34176f221f6d93f4af52139e4c0fb95"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "846f570af1d2a7e716c59945fda3ccf9276d8cba39c3a106d5ae8e9a52bf2350"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native-actor-field-checks.json",
+      "bytes": 67609,
+      "sha256": "41fa1f77e9c2aaa2f7f306a7f4777260f11ab2e49a48c93afcda20b0dbd6a2a4"
+    }
+  ],
+  "remaining": [
+    "Khoảng cách khác và wrap/biên dựa trên target consumer B38A80; không suy delta endpoint là chiều dài đường bay.",
+    "Ma trận dùng cùng Rust instrumentation và harness tham số hóa; chưa hoàn tất nhóm Punch, không đóng G1."
+  ],
+  "review": {
+    "status": "waived",
+    "source": "docs/evidence/checkpoints/review-waiver.json"
+  }
+}

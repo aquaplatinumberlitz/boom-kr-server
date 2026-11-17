@@ -192,8 +192,10 @@ motion lặp/inflight/late và mọi map/roster/nhân vật còn theo acceptance
 `(6,4)→(6,3)`, landing/rebind/active 0 trước cleanup, bom tiếp và hai kết quả/về phòng/reset trong cả hai view;
 712 field khớp native getter và wire/CRC kiểm độc lập. Không áp đối xứng +2 cột của selector 0: selector 2 ở ca
 này có endpoint trừ một cột. Nhánh [#462](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/462) có guard/test
-Rust nháp cho cùng hàng, đích trừ một cột và cùng reservation cả hàng; native Rust account/floor chỉ Punch,
-peer/reset/journal vẫn chờ kiểm. Reference không tự mở compatibility service hoặc toàn đường bay.
+Rust cho cùng hàng, đích trừ một cột và cùng reservation cả hàng. [Ma trận Punch theo nhóm](../evidence/rust-service/g1-punch-matrix.json)
+đã ghi native Rust selector 2: hai account, floor chỉ Punch, peer, retirement, reset và hai kết quả journal thưởng 0;
+216 getter native khớp và cleanup hoàn tất sạch. Các lớp khoảng cách/biên còn mở; không suy toàn đường bay
+hoặc đóng nhóm Punch từ bốn endpoint đã đo.
 
 [Hành động Shoe trên reference](../evidence/item-families/shoe-action.json) dùng floor chỉ có Shoe 3, C0,
 bom của người thao tác và va chạm tự nhiên từ bên dưới. Actual 119 có selector **5**, source `(6,3)` và target
