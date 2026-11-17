@@ -334,7 +334,7 @@ def main():
             if double:
                 cmd+=['click','--repeat','2','--delay','150','1']
             else:
-                cmd+=['mousedown','1','sleep','.2','mouseup','1']
+                cmd+=['mousedown','1','sleep','1' if (x,y)==(605,526) else '.2','mouseup','1']
             inp=subprocess.run(cmd,env=ee,capture_output=True,timeout=4)
             inp.check_returncode()
             actions[label]=dict(role=role,window=wid,x=x,y=y,ns=time.monotonic_ns(),returncode=inp.returncode)
