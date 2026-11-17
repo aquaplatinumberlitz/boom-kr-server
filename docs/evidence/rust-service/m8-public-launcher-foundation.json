@@ -44,12 +44,17 @@
       "path": "local/research/codex/m8-player-launcher-preparation-r1/package-key-tests-r1.log",
       "bytes": 107,
       "sha256": "0b91efbf18bf599405ac2d4b15a2eefd01b926339e841af31a3da4aa2361e4f9"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-internet-transport-r1.json",
+      "bytes": 1370,
+      "sha256": "b49940c488ab4f4d2602e2c5fa75dcf45d8fe00cdd03f69b21d6690ea3388068"
     }
   ],
   "limits": [
     "TLS/SQLite/companion smoke loopback cô lập dùng /bin/true và stub Python làm child; không KR native wire hoặc gameplay.",
     "Windows VM mới, không NIC, chỉ chạy binary companion và từ chối input sai. Không login/QUIC/CA hoặc Internet; binary SHA receipt giữ build đã chạy, không thay bằng binary cross-build mới.",
-    "Native Windows/Wine player package, Internet transport xác thực, expiry/revoke/full cancellation matrix và operator installation còn phải kiểm.",
+    "Hai lượt TLS/account/companion qua Internet thật đã có với child /bin/true và cleanup rule/DB. Native Windows/Wine player package, trận KR trên Internet, expiry/revoke/full cancellation matrix và operator installation còn phải kiểm.",
     "Không checkpoint/audit hoàn tất nhóm hoặc PR riêng cho từng phép thử; phần WIP giữ một nhóm issue476.",
     "Raw lỗi admin response assumption, socket parent permission và pending registry sau logout giữ ở local; run pass không thay failure."
   ]

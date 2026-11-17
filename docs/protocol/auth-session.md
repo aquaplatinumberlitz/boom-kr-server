@@ -892,8 +892,9 @@ riêng bằng `kr-launch-identity`; key private thuộc state server, không n�
 
 [Bằng chứng nền đang làm](../evidence/rust-service/m8-public-launcher-foundation.json): TLS pin/wrong pin,
 plaintext/deadline/framing, SQLite identity và wrong password; hai lượt launcher→companion QUIC→child stub→logout,
-và SIGTERM launcher không để lại child/session. Một VM Windows sạch không có NIC đã chạy companion và từ chối
-input sai đúng binary SHA. Đây không là KR login/gameplay, companion Internet hoặc gói Windows đã nghiệm thu;
-nhóm M8 vẫn mở theo PLAN. Các run lỗi trước giữ riêng, không đổi thành pass.
+và SIGTERM launcher không để lại child/session. Hai lượt Linux tới VPS ARM qua Internet thật cũng đã có
+TLS/account/companion/logout, packet capture TCP/UDP, DB không còn session active và thu hồi rule test; child vẫn
+là `/bin/true`. Một VM Windows mới không có NIC đã chạy companion và từ chối input sai đúng binary SHA. Đây
+không là KR login/gameplay qua Internet hoặc gói Windows/Wine đã nghiệm thu; nhóm M8 vẫn mở theo PLAN. Các run lỗi trước giữ riêng, không đổi thành pass.
 
 <!-- protocol-topic-content-end -->
