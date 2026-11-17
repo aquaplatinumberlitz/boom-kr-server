@@ -108,3 +108,22 @@ fn captured_horizontal_request_keeps_reference_geometry_and_opaque_tail() {
     );
     assert_eq!(decoded.opaque_tail, [1790, 1]);
 }
+
+#[test]
+fn captured_selector2_request_keeps_reference_source_target_and_tail() {
+    // #462 referenceR1 actual C2S sequence 226, consumed on both native views.
+    // Reference evidence is distinct from Rust service native acceptance.
+    let decoded = BombAction119::decode(&hex("5a5a58a5685c5e5c59a294a568")).unwrap();
+    assert_eq!(decoded.motion.selector, 2);
+    assert_eq!(decoded.motion.bomb_id, 1);
+    assert_eq!(
+        (
+            decoded.motion.source_row,
+            decoded.motion.source_column,
+            decoded.motion.target_row,
+            decoded.motion.target_column
+        ),
+        (6, 4, 6, 3)
+    );
+    assert_eq!(decoded.opaque_tail, [2045, 1]);
+}

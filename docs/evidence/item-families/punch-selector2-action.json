@@ -1,0 +1,218 @@
+{
+  "schema": "kre-punch-selector2-reference-v1",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/462",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Reference C0, selector2/source (6,4)→(6,3), two cycles and both native views. Rust native account pending.",
+  "requests119": [
+    [
+      0,
+      0,
+      2,
+      1,
+      6,
+      4,
+      6,
+      3,
+      2045,
+      1
+    ],
+    [
+      0,
+      0,
+      2,
+      3,
+      6,
+      4,
+      6,
+      3,
+      2045,
+      1
+    ]
+  ],
+  "clients": [
+    {
+      "role": "A",
+      "rounds": [
+        {
+          "round": 1,
+          "wire_id": 1,
+          "next_wire_id": 2,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        },
+        {
+          "round": 2,
+          "wire_id": 3,
+          "next_wire_id": 4,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        }
+      ],
+      "native_clocks": 2,
+      "ranks": 2,
+      "returns": 2
+    },
+    {
+      "role": "B",
+      "rounds": [
+        {
+          "round": 1,
+          "wire_id": 1,
+          "next_wire_id": 2,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        },
+        {
+          "round": 2,
+          "wire_id": 3,
+          "next_wire_id": 4,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        }
+      ],
+      "native_clocks": 2,
+      "ranks": 2,
+      "returns": 2
+    }
+  ],
+  "native_secure_field_checks": 712,
+  "client_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+  "raw_files": 1245,
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-punch-selector2-reference-r1/two-round-selector2-reference-verification.json",
+      "bytes": 4221,
+      "sha256": "de1058a9c0fa865f6a243f08ab0f0e0d62dcd6ca98eddcd999c791663ea5cf1c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-reference-r1/wire-reassembly-verification.json",
+      "bytes": 2552,
+      "sha256": "d16c3011a71983ac04c51553632f168f1cc0689327ea59ecd6d0bd3e0d7f069a"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-reference-r1/actor-fields-final.json",
+      "bytes": 481143,
+      "sha256": "7db3ab73e30f5281e967d98e8c8d667c450bbb8440ea802c471de38613eb6e22"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-reference-r1/raw-seal.json",
+      "bytes": 200054,
+      "sha256": "bc12af4f0e75b6cddb7494b0fca2e83e710c07f4fea5884c980bcd5750fb972f"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-reference-r1/frozen-input-postrun-verification.json",
+      "bytes": 61,
+      "sha256": "c229666b6e8ab38f306bbcfcaecce8a985bf857e26e124a6e15997cf23641128"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-reference-r1/runtime-preflight.json",
+      "bytes": 781680,
+      "sha256": "d2c18be3651ec4fb645899087674fbe4108b88cf76b561bb235f63b173b7c874"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-reference-r1/reference-inputs.json",
+      "bytes": 8912,
+      "sha256": "690c9952bbb5f8abe48da9cead87a6c09fc1876d9f77db72866ca62eda735dfa"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-reference-r1/runtime/run.json",
+      "bytes": 216948,
+      "sha256": "7a259e9ccc41c580ce02c4b7bbe6ee0a6b9bc1bb09039b63427994c93382097c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-reference-r1/prelaunch-source-review.json",
+      "bytes": 825,
+      "sha256": "a391b77677cd8ef257ec08eb794386a8c6bf0500656fa1f90fb5d2c6f4f3a413"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-reference-r1/prelaunch-spacing-correction.json",
+      "bytes": 963,
+      "sha256": "c61cd3c9ccb97c9e4dab397aa77ef876cd4541a145afcdf5a7c9423b20afc2aa"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-reuse-r1/reuse.json",
+      "bytes": 6169,
+      "sha256": "25989e70fe6d5aaa7392728c38b13c5e3386ff28d307dd97bf082019a6bf7d8d"
+    }
+  ],
+  "limits": [
+    "Right ordinary facing emitted selector2/source4→target3. This is a negative one-column endpoint delta, not the two-column mirror of selector0 or a complete trajectory law.",
+    "Reference had both Shoe/Punch flags, diagnostic identities and loopback. Rust floor only Punch/two accounts/character/journal needs its own native evidence.",
+    "Short158→blast at6s remains emulator policy. Opaque tail2045,1 stays uninterpreted, not an epoch or unit/duration claim.",
+    "Before runtime, a whitespace-only Python warning was corrected with original helper/preflight preserved. No native input or raw edits,0 new function-body requests."
+  ]
+}

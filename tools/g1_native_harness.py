@@ -94,6 +94,14 @@ def drive_matrix(matrix, config, out, states, record, topology, click, press, al
                     rows = tagged(logs[role], condition['tag'])
                 else:
                     raise ValueError('Unknown condition source')
+                if condition.get('since_step'):
+                    marker = next(row for row in record['matrix_steps'] if row['name']==condition['since_step'])
+                    if condition['source']=='server':
+                        rows = events[marker['server_events']:]
+                        if role:
+                            rows = [row for row in rows if row.get('identity')==identity]
+                    else:
+                        rows = [row for row in rows if row.get('ns',0)>marker['ns']]
                 count = sum(matches(row, condition['match']) for row in rows)
                 satisfied &= count >= condition.get('count', 1)
             record['controller_stage'] = step['name']
@@ -103,7 +111,7 @@ def drive_matrix(matrix, config, out, states, record, topology, click, press, al
             if time.monotonic() >= deadline:
                 raise TimeoutError('Matrix state deadline: ' + step['name'])
             time.sleep(.1)
-        record.setdefault('matrix_steps', []).append(dict(name=step['name'],ns=time.monotonic_ns()))
+        record.setdefault('matrix_steps', []).append(dict(name=step['name'],ns=time.monotonic_ns(),server_events=len(events)))
         for index, action in enumerate(step.get('actions', [])):
             role = action.get('role', 'A')
             label = step['name'] + '-' + str(index)
@@ -124,6 +132,24 @@ def drive_matrix(matrix, config, out, states, record, topology, click, press, al
                     (out/'feedback-on').write_text('Read-only actor positions; ordinary keys only')
                 else:
                     (out/'feedback-on').unlink(missing_ok=True)
+            elif operation == 'settle':
+                deadline=time.monotonic()+8
+                seen=time.monotonic_ns();stable=[]
+                slot=str(matrix['roster'].index(role))
+                while time.monotonic()<deadline:
+                    sample=read(out/('live-'+role+'.json'))
+                    if sample['monotonic_ns']>seen:
+                        seen=sample['monotonic_ns'];actor=sample['actors'][slot]
+                        point=(actor['0x4c'],actor['0x58'])
+                        stable=stable+[point] if not stable or stable[-1]==point else [point]
+                        if len(stable)>=3:
+                            if action.get('cell'):
+                                row,column=action['cell']
+                                assert abs(point[0]-40*column)<=16 and abs(point[1]-(40*row+39))<=16, 'facing moved outside planned cell'
+                            record.setdefault('settled_positions',[]).append(dict(step=step['name'],role=role,ns=seen,point=point))
+                            break
+                    time.sleep(.02)
+                else:raise TimeoutError('position did not settle: '+label)
             elif operation == 'snapshot':
                 snap(label)
             else:
@@ -142,8 +168,6 @@ def prepare(args):
     assert 2 <= len(matrix['roster']) <= 8 and 1 <= matrix['rounds'] <= 16
     assert matrix['item'] in [None, 0, 1, 2, 3, 4, 5, 145]
     assert matrix['steps'] and matrix['cases']
-    for name in ['kr-service', 'kr-admin', 'kr-companion']:
-        (args.binary_dir/name).resolve(strict=True)
     out.mkdir(mode=0o700, parents=True, exist_ok=False)
     (out/'native').mkdir()
     (out/'binary').mkdir()
@@ -201,10 +225,6 @@ def prepare(args):
     for data in config['roles'].values():
         inputs.update(p for p in Path(data['game_dir']).iterdir()
                       if p.is_file() and p.name not in ['CALog.log','fxdynmapinfo.ssd'])
-    previous = base/'native/runtime-preflight.json'
-    if previous.is_file():
-        inputs.update(Path(row['path']) for row in read(previous)['files']
-                      if Path(row['path']).suffix in ['.py', '.gdb'] and not Path(row['path']).is_relative_to(base))
     inputs.add(out/'native/recipe.json')
     write(out/'native/runtime-preflight.json',dict(files=[pin(p) for p in sorted(inputs)],
           limits='Candidate matrix inputs. No runtime or compatibility acceptance.'))
@@ -243,10 +263,7 @@ def verify(args):
         text = (out/role/'client.log').read_text(errors='replace')
         for tag, kind in [('FOUR_SLOT','clock'),('FOUR_LIFE','rank_end'),('FOUR_LIFE','return_before_room')]:
             rows = [row for row in tagged(text,tag) if row['kind'] == kind]
-            if kind == 'clock':
-                assert len(rows) == len(rounds), (role,tag,kind)
-            else:
-                assert [row['round'] for row in rows] == rounds, (role,tag,kind)
+            assert [row['round'] for row in rows] == rounds, (role,tag,kind)
         for expected in matrix.get('native_expectations',[]):
             if expected.get('role') not in [None,role]:continue
             rows = tagged(text,expected['tag'])

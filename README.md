@@ -33,12 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP335: bảng rơi G1 đã cắt và từ chối nhân vật chưa đo giữ phiên đã có native hai vòng.**
-[Dữ liệu item](docs/protocol/items-stats.md#g1-scoped-drops) giữ mọi row nguồn sáu map, đặt 62 row dương ngoài tập giữ về 0.
-[Nhân vật #457](docs/protocol/auth-session.md#rust-persistent-character): C4 bị từ chối, C0→C1 hợp lệ trên cùng socket,
-hai vòng/kết quả/reset và đúng journal/account; không tăng revision cho lựa chọn bị từ chối. Harness dùng chung theo ma trận,
-chờ trạng thái thật và cleanup sạch. Nhóm còn qua gate/PR trước tích hợp. Ma trận Punch/Shoe, đối chiếu map và M8 vẫn mở;
-không tiếp L1 của Claude. [Bảng điều hành](docs/PLAN.md#dashboard) giữ việc còn lại và ước lượng native.
+**CP336: ma trận nhóm Punch đã có native Rust cho cả bốn hướng và endpoint biên/quét.**
+[Contract và bằng chứng](docs/protocol/items-stats.md#rust-bomb-motion-codec) giữ source/target thực,
+exact 119→162 và reservation toàn hàng/cột theo policy report-derived. Hai batch mới có bốn vòng mỗi batch,
+peer/landing/retirement/reset, journal đúng account/thưởng 0 và 864 getter checks; selector 2 trước đó gộp vào nhóm.
+Nhóm còn qua gate/PR trước tích hợp; Shoe và kiểm ghép client Việt còn làm tiếp. Bảng rơi đã cắt và từ chối nhân vật
+trên cùng socket đã tích hợp qua PR #466. [Bảng điều hành](docs/PLAN.md#dashboard) giữ việc còn lại và ước lượng native.
 
 ## Bắt đầu
 

@@ -1,0 +1,405 @@
+{
+  "schema": "kre-g1-punch-matrix-v1",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
+  "scope": "Nhóm Punch trên Rust: bốn selector, endpoint ngắn/dài và vòng quét trở lại nguồn, ca trước pickup, peer, retirement và reset. Policy report-derived giữ toàn trục đến mọi receipt.",
+  "rows": [
+    {
+      "selector": 0,
+      "source_cell": [
+        6,
+        3
+      ],
+      "target_cell": [
+        6,
+        5
+      ],
+      "native": "docs/evidence/rust-service/g1-punch-horizontal.json",
+      "status": "confirmed"
+    },
+    {
+      "selector": 1,
+      "source_cell": [
+        6,
+        3
+      ],
+      "target_cell": [
+        7,
+        3
+      ],
+      "native": "docs/evidence/rust-service/g1-punch-down.json",
+      "status": "confirmed"
+    },
+    {
+      "selector": 2,
+      "source_cell": [
+        6,
+        4
+      ],
+      "target_cell": [
+        6,
+        3
+      ],
+      "native": {
+        "path": "local/research/codex/g1-punch-selector2-rust-native-r1/punch-selector2-native-verification.json",
+        "bytes": 5473,
+        "sha256": "5ea436858afd327614ae58fa00239e0ff094f56cef8ac9baeefc864bee589b6b"
+      },
+      "status": "confirmed"
+    },
+    {
+      "selector": 3,
+      "source_cell": [
+        6,
+        3
+      ],
+      "target_cell": [
+        5,
+        3
+      ],
+      "native": "docs/evidence/rust-service/g1-punch.json",
+      "status": "confirmed"
+    }
+  ],
+  "new_native": {
+    "clients": 2,
+    "rounds": 2,
+    "getter_checks": 216,
+    "matches": 2,
+    "clean_exit": true,
+    "source_commit": "b28aed11663508facc3eebd0ecd0345d3ed122e8",
+    "service_sha256": "31879b2145275e60705c60e6cc0b1dedc9a770cc8713bf32ad3ed4618af87da7"
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/runtime-preflight.json",
+      "bytes": 568292,
+      "sha256": "12ff68eb9b72d69cd7408bfd41d5c9431827e03ec85402dbbe1d6d0a24ed4f30"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/recipe.json",
+      "bytes": 1262,
+      "sha256": "7356b2ebc00b26987b983f0f0cc68ca9dfbf3922d8d62e336121eaa4a6d446b4"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/raw-seal.json",
+      "bytes": 12180,
+      "sha256": "e3444ee4e1f1f3902e3ceea9adfa05451e7a87b7617f8721a6f7c62ba6da2015"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "b8bc153e8b420db9fd4f7df298721b30caf2d675b9cb94e815c7a8d112f3d833"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/storage-export.json",
+      "bytes": 18291,
+      "sha256": "f82e9d6bb4aad882f0e2e5c381df70f3a34176f221f6d93f4af52139e4c0fb95"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "846f570af1d2a7e716c59945fda3ccf9276d8cba39c3a106d5ae8e9a52bf2350"
+    },
+    {
+      "path": "local/research/codex/g1-punch-selector2-rust-native-r1/native-actor-field-checks.json",
+      "bytes": 67609,
+      "sha256": "41fa1f77e9c2aaa2f7f306a7f4777260f11ab2e49a48c93afcda20b0dbd6a2a4"
+    },
+    {
+      "path": "local/research/codex/g1-punch-native-matrix-r6/native/runtime-preflight.json",
+      "bytes": 82378,
+      "sha256": "6de40c69fb9b4c3da1a9df877ebd1b8e97a6575b76fcf5543d857a8f3f917bf0"
+    },
+    {
+      "path": "local/research/codex/g1-punch-native-matrix-r6/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "5d0487b382d28b3f285763c7e679f60c8193927bec0b9847ef29327dc4c0b9e8"
+    },
+    {
+      "path": "local/research/codex/g1-punch-native-matrix-r6/native/storage-export.json",
+      "bytes": 11212,
+      "sha256": "7d819b4bfc800b542ab717373027928033aed18982781336b5edbc01f8d6b6bb"
+    },
+    {
+      "path": "local/research/codex/g1-punch-native-matrix-r6/native/cycles/run.json",
+      "bytes": 471270,
+      "sha256": "166927d89822ac0a3ff9136a6571f42105c2ca7259385ed8fe166d52b50b0b5a"
+    },
+    {
+      "path": "local/research/codex/g1-punch-native-matrix-r6/decoded-channels-shared.json",
+      "bytes": 174405,
+      "sha256": "eae4b4acd8b8355ad680068e2bd4d3f8baf81982be4123a2ab734e6db6e030b6"
+    },
+    {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/native/runtime-preflight.json",
+      "bytes": 82593,
+      "sha256": "dca3615c7c2266ee3546df9ea32939ef962dcdff2d57f70890b64b20895163c8"
+    },
+    {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "5d0487b382d28b3f285763c7e679f60c8193927bec0b9847ef29327dc4c0b9e8"
+    },
+    {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/native/storage-export.json",
+      "bytes": 11430,
+      "sha256": "49a53125491ff92b92762b0359d5f85cb477acb313ceb72f89949040c03a1263"
+    },
+    {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/native/cycles/run.json",
+      "bytes": 272666,
+      "sha256": "8b4e22cd5d1543aa64dce3fb4b8bd3bcb2c531703d96488822c2c5d5df4f727e"
+    },
+    {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/decoded-channels-shared.json",
+      "bytes": 168388,
+      "sha256": "e323568afb6aa3e412e96427c55d909de61913effb6e28e3099df7423ca6a877"
+    }
+  ],
+  "remaining": [
+    "Chưa fault injection native cho duplicate/late/inflight/foreign bomb hoặc queued EOF; guard/source tests giữ rõ mức kiểm.",
+    "Không Internet transport mới, mọi roster/nhân vật/map hoặc toàn G1; Shoe và client Việt còn riêng."
+  ],
+  "review": {
+    "status": "waived",
+    "source": "docs/evidence/checkpoints/review-waiver.json"
+  },
+  "matrix_native": {
+    "rounds": 4,
+    "cases": [
+      {
+        "round": 1,
+        "selector": 0,
+        "bomb_id": 2,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          9
+        ],
+        "endpoint_delta": [
+          0,
+          5
+        ],
+        "opaque_tail": [
+          1430,
+          1
+        ]
+      },
+      {
+        "round": 2,
+        "selector": 1,
+        "bomb_id": 5,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          9,
+          4
+        ],
+        "endpoint_delta": [
+          3,
+          0
+        ],
+        "opaque_tail": [
+          1430,
+          1
+        ]
+      },
+      {
+        "round": 3,
+        "selector": 2,
+        "bomb_id": 8,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          -1
+        ],
+        "opaque_tail": [
+          2045,
+          1
+        ]
+      },
+      {
+        "round": 4,
+        "selector": 3,
+        "bomb_id": 10,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          3,
+          4
+        ],
+        "endpoint_delta": [
+          -3,
+          0
+        ],
+        "opaque_tail": [
+          1430,
+          1
+        ]
+      }
+    ],
+    "getter_checks": 432,
+    "verification": {
+      "path": "local/research/codex/g1-punch-native-matrix-r6/motion-verification.json",
+      "bytes": 2271,
+      "sha256": "45a18feb6f19b8ae621c0ee62964c53f678cd2c0b54e0110adb64adb83b672c6"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-punch-native-matrix-r6/matrix-verification.json",
+      "bytes": 676,
+      "sha256": "1dc3a9c31c59baef4aca1332437305821d864703ea1782e007041a143d0389ac"
+    },
+    "limits": "Native Wine/private LAN, persisted C1 actor/C0 peer. Report-derived motion/retirement policy is design. Endpoint delta is not flight length; no original server authority, Internet/load or whole G1 closure."
+  },
+  "boundary_native": {
+    "rounds": 4,
+    "cases": [
+      {
+        "round": 1,
+        "selector": 0,
+        "bomb_id": 2,
+        "source": [
+          6,
+          5
+        ],
+        "target": [
+          6,
+          10
+        ],
+        "endpoint_delta": [
+          0,
+          5
+        ],
+        "opaque_tail": [
+          1430,
+          1
+        ]
+      },
+      {
+        "round": 2,
+        "selector": 1,
+        "bomb_id": 5,
+        "source": [
+          9,
+          4
+        ],
+        "target": [
+          9,
+          4
+        ],
+        "endpoint_delta": [
+          0,
+          0
+        ],
+        "opaque_tail": [
+          1790,
+          1
+        ]
+      },
+      {
+        "round": 3,
+        "selector": 2,
+        "bomb_id": 7,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          0
+        ],
+        "opaque_tail": [
+          2120,
+          1
+        ]
+      },
+      {
+        "round": 4,
+        "selector": 3,
+        "bomb_id": 9,
+        "source": [
+          3,
+          4
+        ],
+        "target": [
+          3,
+          4
+        ],
+        "endpoint_delta": [
+          0,
+          0
+        ],
+        "opaque_tail": [
+          1790,
+          1
+        ]
+      }
+    ],
+    "getter_checks": 432,
+    "verification": {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/motion-verification.json",
+      "bytes": 2284,
+      "sha256": "b353b85e36d79d44c231f12674008b516430d6b9bed779bc933e4326f2164ffc"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/matrix-verification.json",
+      "bytes": 686,
+      "sha256": "db600aa0bbed0bcf69cd5776380c70128419af3d083f90204a52f3e51eee4a53"
+    },
+    "limits": "Native Wine/private LAN, persisted C1 actor/C0 peer. Report-derived motion/retirement policy is design. Endpoint delta is not flight length; no original server authority, Internet/load or whole G1 closure."
+  },
+  "implementation": {
+    "policy": "report_derived_punch / report_derived_shoe_punch",
+    "geometry": "Selectors0/2 giữ hàng,1/3 giữ cột; endpoint trong map, kể cả trùng nguồn sau vòng quét. Không suy chiều dài bay từ delta.",
+    "reservation": "Toàn hàng hoặc cột, mọi cancellation cell, allocation/quota đến mọi retirement receipt.",
+    "authority": "design, không là khôi phục server gốc"
+  },
+  "failed_batches": [
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r1",
+      "limits": "Peer nằm trong tia đích."
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r2",
+      "limits": "Căn vị trí đổi hướng cuối, selector khác kế hoạch."
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r3",
+      "limits": "Bốn motion có nhưng thoát lúc animation không thực thi đủ, kết quả không đủ."
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r4",
+      "limits": "Phím định hướng dài làm actor rời root."
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r5",
+      "limits": "Mất Start vòng2 khi debugger dừng."
+    },
+    {
+      "run": "local/research/codex/g1-punch-wrap-native-matrix-r1",
+      "limits": "Căn x ngoài ô biên bị tường chặn, không phát hành động."
+    }
+  ],
+  "group_checks": "Native đã kiểm trước tích hợp main. Gate toàn kho/CI trên head hoàn chỉnh còn bắt buộc trước merge nhóm."
+}
