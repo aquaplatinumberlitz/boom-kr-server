@@ -205,12 +205,30 @@ fn run(stop: &AtomicBool) -> io::Result<()> {
             "usage: kr-launch <player-config.json>; credentials on stdin",
         ));
     }
-    let config_bytes = std::fs::read(&args[1])?;
+    let config_path = std::fs::canonicalize(&args[1])?;
+    let config_root = config_path
+        .parent()
+        .ok_or_else(|| io::Error::other("player config parent"))?;
+    let config_bytes = std::fs::read(&config_path)?;
     if config_bytes.len() > 32768 {
         return Err(io::Error::other("player config bound"));
     }
-    let config: Config = serde_json::from_slice(&config_bytes)
+    let mut config: Config = serde_json::from_slice(&config_bytes)
         .map_err(|_| io::Error::other("invalid player config"))?;
+    // Resolve at installation/config location, before changing the native
+    // child's working directory. Relative executable paths differ by platform
+    // when combined with Command::current_dir.
+    for path in [
+        &mut config.certificate,
+        &mut config.companion,
+        &mut config.native_program,
+        &mut config.native_directory,
+    ] {
+        if !path.is_absolute() {
+            *path = config_root.join(&*path);
+        }
+        *path = std::fs::canonicalize(&*path)?;
+    }
     if config.server.port() == 0
         || config.server.ip().is_unspecified()
         || config.server.ip().is_multicast()

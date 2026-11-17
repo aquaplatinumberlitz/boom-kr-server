@@ -82,9 +82,10 @@ def main():
     serving.write_text(json.dumps(config, indent=2) + '\n')
     serving.chmod(0o600)
     launcher = out / 'player-config.json'
-    launcher.write_text(json.dumps(dict(server=public['bind'], certificate=str(certificate),
-                        native_ip='127.0.0.1', companion=str(binaries / 'kr-companion'),
-                        native_program='/bin/true', native_arguments=[], native_directory='/tmp', port_budget=100)) + '\n')
+    launcher.write_text(json.dumps(dict(server=public['bind'], certificate='identity/certificate.der',
+                        native_ip='127.0.0.1', companion=os.path.relpath(binaries / 'kr-companion', out),
+                        native_program=os.path.relpath('/bin/true', out), native_arguments=[],
+                        native_directory='/tmp', port_budget=100)) + '\n')
     launcher.chmod(0o600)
     with (out / 'service.log').open('x') as log:
         service = subprocess.Popen([str(binaries / 'kr-service'), '--config', str(serving), '--out', str(out / 'service')],
