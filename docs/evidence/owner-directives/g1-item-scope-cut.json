@@ -1,0 +1,42 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-17T15:30:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 17/11/2026, sau khi xem tiến độ G1 và đề xuất cắt phạm vi item, chủ dự án trả lời “đồng ý cắt phạm vi item, ghi chỉ thị rồi giao codex”.",
+  "decision": "G1 chỉ nghiệm thu một tập item tối thiểu. Mọi nhóm item khác trong bảng rơi của sáu map ladder bị tắt khỏi bảng rơi (trọng số 0) và chuyển sang sau giai đoạn 1.",
+  "kept_item_groups": [
+    "Stat tích lũy group1: Bomb, Fire, Roller (item nền)",
+    "MaxPower",
+    "Kim/cứu: Needle145",
+    "Shoe: mọi hướng/khoảng cách client cho phép, nghiệm thu gộp một ma trận",
+    "Punch: mọi hướng/khoảng cách client cho phép, nghiệm thu gộp một ma trận"
+  ],
+  "disabled_item_groups": [
+    "Mount/biến hình group2 (KR-F011)",
+    "Dùng chủ động khác: Dart, Oxygen, Potion, Spring, Drill, RemoteBomb (KR-F012)",
+    "Có thời hạn/variant: Shield, Sensor, SJNeedle (KR-F013)",
+    "Ability/debuff group1 chưa đo: Hollow, Skeleton, MoonWalk, Superman, GreenDevil và mọi selector khác ngoài các nhóm giữ",
+    "Item mode/event/reward (KR-F014)",
+    "Mọi row khác có trọng số dương trong bảng rơi sáu map mà không thuộc kept_item_groups"
+  ],
+  "working_method": [
+    "Shoe và Punch nghiệm thu theo nhóm: một ma trận ca (hướng, khoảng cách, ca không đủ điều kiện, peer, reset) chạy chung trong các lượt native, một PR cho mỗi nhóm; không mở PR riêng cho từng hướng hoặc khoảng cách.",
+    "Đo trực tiếp trên Rust có instrumentation khi wire/consumer đã rõ; chỉ dùng Python reference khi cần tách một sai khác cụ thể.",
+    "Gate toàn kho chạy một lần khi nhóm hoàn chỉnh, trước merge; trong lúc phát triển dùng kiểm tập trung.",
+    "Ổn định harness (controller theo trạng thái thực, cleanup) trước khi chạy tiếp các lượt native."
+  ],
+  "related_scope_limits": [
+    "Nhân vật: G1 tiêu chí 7 làm theo đường ngắn: nhân vật chưa đo bị từ chối rõ ràng, không đóng kết nối (issue #457); đo thêm nhân vật không là điều kiện đóng G1.",
+    "Coverage map: mỗi map đạt khi spawn đúng, thùng vỡ đúng, item giữ lại rơi và nhặt được, hai vòng/reset và ca âm theo PLAN; không yêu cầu chứng minh từng ô của map."
+  ],
+  "scope": "Chỉ thu hẹp phạm vi nhóm item và cách nghiệm thu của G1. Giữ sáu map, giới hạn người theo g1-map-roster-limits.json, native Wine, peer, hai vòng/reset và các ca âm. Quyết định không chứng nhận item, map hoặc G1 nào đạt.",
+  "supersedes": "Yêu cầu G1 tiêu chí 6 đo mọi nhóm item trong bảng rơi sáu map; không sửa kết quả lịch sử đã ghi.",
+  "constraints": [
+    "Nhóm bị tắt phải có trọng số rơi 0 trong dữ liệu server Rust; không để client nhận item mà server chưa xử lý.",
+    "Không xóa code hoặc evidence đã có của nhóm bị tắt; chỉ tắt khỏi bảng rơi.",
+    "Không đổi K6c/K7, các nghiệm thu mạng hay phase-1 packets đã có."
+  ],
+  "deliverable": "Codex lập danh sách việc còn lại để đóng G1, mỗi dòng một việc kèm ước lượng số lượt native, ghi trong PLAN dashboard.",
+  "plan": "docs/PLAN.md#phase1-acceptance",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}
