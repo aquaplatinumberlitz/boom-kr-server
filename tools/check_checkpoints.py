@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -41,12 +42,71 @@ def audit_core_read_order(read_files):
     return read_files[offset:offset + 4] == list(CORE_DOCS)
 
 
-def digest(path):
+HASH_CACHE_PATH = Path("local/cache/checkpoint-digest-cache.json")
+HASH_CACHE_VERSION = 1
+
+
+class HashCache:
+    """Persistent sha256 cache for host-local files, keyed by path and stat identity.
+
+    Only successful hashes are stored. A missing or corrupt cache file is ignored.
+    """
+
+    def __init__(self, path):
+        self.path = Path(path)
+        self.entries = {}
+        self.dirty = False
+        try:
+            data = json.loads(self.path.read_text())
+            if data.get("version") == HASH_CACHE_VERSION and isinstance(data.get("entries"), dict):
+                self.entries = data["entries"]
+        except (OSError, ValueError, AttributeError):
+            self.entries = {}
+
+    @staticmethod
+    def key(path, info):
+        return f"{os.path.realpath(path)}\0{info.st_size}\0{info.st_mtime_ns}\0{info.st_ino}\0{info.st_dev}"
+
+    def digest(self, path):
+        info = path.stat()
+        key = self.key(path, info)
+        value = self.entries.get(key)
+        if isinstance(value, str) and SHA.fullmatch(value):
+            return value
+        value = digest_uncached(path)
+        # Skip caching when the file changed while it was being read.
+        after = path.stat()
+        if (after.st_size, after.st_mtime_ns) == (info.st_size, info.st_mtime_ns):
+            self.entries[key] = value
+            self.dirty = True
+        return value
+
+    def save(self):
+        if not self.dirty:
+            return
+        try:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            temporary = self.path.with_name(f"{self.path.name}.{os.getpid()}.tmp")
+            temporary.write_text(json.dumps({"version": HASH_CACHE_VERSION, "entries": self.entries}))
+            os.replace(temporary, self.path)
+            self.dirty = False
+        except OSError:
+            pass
+
+
+HASH_CACHE = None
+
+
+def digest_uncached(path):
     result = hashlib.sha256()
     with path.open("rb") as stream:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
             result.update(block)
     return result.hexdigest()
+
+
+def digest(path):
+    return HASH_CACHE.digest(path) if HASH_CACHE is not None else digest_uncached(path)
 
 
 def cp_id(number):
@@ -698,7 +758,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--require-local", action="store_true", help="Fail on unavailable host-local evidence; otherwise report UNVERIFIED")
     parser.add_argument("--require-history", action="store_true", help="Fail if Git is unavailable; checked whenever available")
+    parser.add_argument("--no-hash-cache", action="store_true", help="Re-hash every host-local file and do not read or write the persistent hash cache")
     args = parser.parse_args()
+    global HASH_CACHE
+    HASH_CACHE = None if args.no_hash_cache else HashCache(ROOT / HASH_CACHE_PATH)
     try:
         manifest = read_json(ROOT / MANIFEST)
         errors, warnings, stats = validate(manifest, ROOT, args.require_local)
@@ -714,6 +777,8 @@ def main():
             errors.append(links.stdout + links.stderr)
     except (OSError, ValueError, TypeError, KeyError) as error:
         errors, warnings, stats = [f"invalid manifest: {error}"], [], {}
+    if HASH_CACHE is not None:
+        HASH_CACHE.save()
     for warning in warnings:
         print("WARNING:", warning)
     for error in errors:
