@@ -3848,8 +3848,8 @@
       "lifecycle": "complete",
       "recorded_utc": "2026-11-17T15:04:18.008508+00:00",
       "path": "docs/evidence/checkpoints/records/CP335.json",
-      "bytes": 17659,
-      "sha256": "a0b56942a0d3f8cb409249c3bfd7ec850bd1303d519ab22a55d5fa3a07bb4067"
+      "bytes": 15822,
+      "sha256": "5536cd2fc4661f18af71e3543bbc750db6c019b3d954b36804e86f86e3fb518e"
     }
   ],
   "audit_policy": {
