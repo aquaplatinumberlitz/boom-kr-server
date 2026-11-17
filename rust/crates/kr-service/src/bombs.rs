@@ -106,12 +106,14 @@ struct Active {
     preparing: BTreeSet<Membership>,
 }
 impl Active {
-    /// Conservative Shoe corridor lease, including the original source cell.
-    /// Native stop is not acknowledged on wire; retain until allocation retires.
+    /// Occupancy checked by new Shoe actions includes the complete path of a
+    /// prior Punch, whose original source may still contain its moving sprite.
+    /// Placement uses this corridor only for Shoe allocations below. Native stop
+    /// has no wire acknowledgement; conservatively retain until retirement.
     fn reserves(&self, cell: (u8, u8)) -> bool {
         (self.request.row, self.request.column) == cell
             || self.motion.is_some_and(|m| {
-                m.selector == 5
+                matches!(m.selector, 3 | 5)
                     && m.source_column == cell.1
                     && (m.target_row..=m.source_row).contains(&cell.0)
             })
@@ -577,6 +579,87 @@ mod tests {
                 .unwrap_err(),
             "inactive_bomb"
         );
+    }
+    #[test]
+    fn shoe_cannot_enter_the_vacated_source_of_a_still_active_punch() {
+        use kr_wire::kr00967::{BombAction119, BombMotion162};
+        let a = member(70000, 11);
+        let b = member(80000, 22);
+        let roster = [a, b];
+        let mut ledger = Ledger::default();
+        ledger.begin(1);
+        let first = ledger
+            .place(
+                1,
+                a,
+                0,
+                &Request {
+                    row: 6,
+                    ..request(0)
+                },
+                &roster,
+                2,
+            )
+            .unwrap()
+            .unwrap();
+        let second = ledger
+            .place(
+                1,
+                b,
+                1,
+                &Request {
+                    row: 9,
+                    owner: 1,
+                    ..request(0)
+                },
+                &roster,
+                2,
+            )
+            .unwrap()
+            .unwrap();
+        ledger
+            .move_punch(
+                1,
+                a,
+                0,
+                BombAction119 {
+                    motion: BombMotion162 {
+                        context: 0,
+                        slot: 0,
+                        selector: 3,
+                        bomb_id: first.id,
+                        source_row: 6,
+                        source_column: 3,
+                        target_row: 5,
+                        target_column: 3,
+                    },
+                    opaque_tail: [1715, 1],
+                },
+                Instant::now(),
+            )
+            .unwrap();
+        let action = BombAction119 {
+            motion: BombMotion162 {
+                context: 0,
+                slot: 1,
+                selector: 5,
+                bomb_id: second.id,
+                source_row: 9,
+                source_column: 3,
+                target_row: 6,
+                target_column: 3,
+            },
+            opaque_tail: [1000, 3],
+        };
+        assert_eq!(
+            ledger
+                .move_shoe(1, b, 1, action, Instant::now())
+                .unwrap_err(),
+            "motion_path_occupied"
+        );
+        assert!(ledger.delivered(&first, a));
+        assert!(ledger.delivered(&first, b));
+        assert!(ledger.move_shoe(1, b, 1, action, Instant::now()).is_ok());
     }
     #[test]
     fn punch_admission_closes_before_deadline_or_first_blast_write_and_never_reuses_ids() {
