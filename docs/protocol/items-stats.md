@@ -145,12 +145,19 @@ không chuẩn hóa nó thành selector 3. Test server còn kiểm sai transport
 cũ, hàng đợi đầy, cell bị chặn, deadline và đóng admission trước blast. Các kiểm này không thay bằng chứng
 native cho Shoe, selector khác, hành động lặp/sát deadline/khi đang bay hoặc mọi nhân vật/map/roster.
 
-Nhánh nghiên cứu [#456](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456) có bản nháp guard
-Punch selector 1, cùng cột và một hàng phía dưới. CP327 đã có actual 119 cho `(6,3)→(7,3)` nhưng lượt đó
-bị từ chối trước 162, nên mới xác nhận emission/codec. Bản nháp giữ guard owner/round/deadline/queue,
-kiểm biên đích và reservation của ô nguồn cũ cho cả hai chiều dọc; test server không thay native acceptance.
-Cần reference và Rust native về chuyển động, hạ cánh, rebind/thu hồi, bom tiếp và hai vòng/reset trước khi
-nghiệm thu hoặc tích hợp. Hướng ngang, bom người khác, motion lặp/khi đang chạy/sát deadline vẫn chưa mở.
+[Reference Punch hướng xuống](../evidence/item-families/punch-down-action.json) đã có hai vòng C0:
+actual 119 selector 1, source `(6,3)` và target `(7,3)`, cả hai reader 162 đọc `9/9`, errors 0. Bom hạ cánh,
+short 158 rebind rồi active về 0 trước cleanup; có actual 118 mới, hai kết quả/về phòng và reset hai cờ pickup.
+Luồng chunk TCP được ghép lại và kiểm CRC độc lập; 712 snapshot field khớp native getter. Reference nhặt cả
+Shoe/Punch, chỉ phát hành động Punch này. Short 158 trước blast tại deadline 6 giây vẫn là policy reference,
+không phải thứ tự server gốc. Các lượt sai geometry/căn phím hoặc chỉ một chuyển động giữ nguyên là partial/lỗi.
+
+Nhánh [#456](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456) có bản nháp Rust cho selector 1,
+cùng cột và một hàng phía dưới. CP327 đã có request này nhưng bị từ chối; ca cũ chỉ là emission/codec.
+Bản nháp giữ owner/round/deadline/queue, kiểm biên đích và reservation ô nguồn cũ cho cả hai chiều dọc.
+Rust native account, floor chỉ có Punch, landing/retirement/bom tiếp/hai vòng/reset và journal vẫn chờ kiểm;
+reference và test server chưa thay acceptance đó. Hướng ngang, bom người khác, motion lặp/khi đang chạy/sát
+deadline vẫn chưa mở.
 
 [Hành động Shoe trên reference](../evidence/item-families/shoe-action.json) dùng floor chỉ có Shoe 3, C0,
 bom của người thao tác và va chạm tự nhiên từ bên dưới. Actual 119 có selector **5**, source `(6,3)` và target

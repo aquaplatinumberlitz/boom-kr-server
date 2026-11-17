@@ -3767,7 +3767,8 @@
           "docs/evidence/rust-service/g1-punch.json",
           "docs/evidence/rust-service/g1-punch-departure.json",
           "docs/evidence/item-families/shoe-action.json",
-          "docs/evidence/rust-service/g1-shoe.json"
+          "docs/evidence/rust-service/g1-shoe.json",
+          "docs/evidence/item-families/punch-down-action.json"
         ]
       },
       "coverage": {
