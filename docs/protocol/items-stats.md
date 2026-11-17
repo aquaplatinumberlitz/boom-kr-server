@@ -166,6 +166,14 @@ queue rollback, biên/terrain bị chặn, quota đến mọi receipt và source
 reference không thay nghiệm thu này. Hướng ngang, bom người khác, motion lặp/khi đang chạy/sát deadline,
 mọi nhân vật/map/roster vẫn chưa mở; đây không phải toàn bộ luật server gốc hoặc toàn G1.
 
+[Reference Punch ngang](../evidence/item-families/punch-horizontal-action.json) có hai vòng actual 119
+selector 0, source `(6,3)` và target `(6,5)`. Cả hai view đọc đủ 162, landing/rebind/active 0 trước cleanup,
+có bom tiếp, hai kết quả/về phòng/reset; 712 field khớp native getter. Đây là endpoint đã đo, không chứng minh
+đường bay chỉ dài hai ô hoặc không wrap. Nhánh [#460](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/460)
+có guard/test nháp Rust cho cùng hàng, đích cộng hai cột, reserve cả hàng đến khi mọi recipient hoàn tất.
+Guard giữ owner/round/deadline/queue; không nhận motion khác hoặc bom mới giao hàng đó. Native Rust account,
+floor chỉ Punch, peer/reset/journal vẫn chờ kiểm; bản nháp chưa là nghiệm thu service.
+
 [Hành động Shoe trên reference](../evidence/item-families/shoe-action.json) dùng floor chỉ có Shoe 3, C0,
 bom của người thao tác và va chạm tự nhiên từ bên dưới. Actual 119 có selector **5**, source `(6,3)` và target
 `(3,3)`; prefix 9 byte được trả bằng candidate 162. Hai view đọc đủ, gọi `B37910`, đổi root, vào state 3 rồi

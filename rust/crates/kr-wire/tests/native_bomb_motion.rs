@@ -89,3 +89,22 @@ fn captured_short158_rebind_is_distinct_from_thirteen_byte_explosion() {
     }
     assert!(kr_wire::kr00967::rebind158(0).is_err());
 }
+
+#[test]
+fn captured_horizontal_request_keeps_reference_geometry_and_opaque_tail() {
+    // #460 reference R2, actual C2S sequence 214; consumed on both native views.
+    // Reference evidence is distinct from Rust service native acceptance.
+    let decoded = BombAction119::decode(&hex("5a5a5aa5685c595c5fa397a568")).unwrap();
+    assert_eq!(decoded.motion.selector, 0);
+    assert_eq!(decoded.motion.bomb_id, 1);
+    assert_eq!(
+        (
+            decoded.motion.source_row,
+            decoded.motion.source_column,
+            decoded.motion.target_row,
+            decoded.motion.target_column
+        ),
+        (6, 3, 6, 5)
+    );
+    assert_eq!(decoded.opaque_tail, [1790, 1]);
+}

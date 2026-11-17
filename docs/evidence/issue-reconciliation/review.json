@@ -993,25 +993,51 @@
       "features": [
         "KR-F010"
       ],
-      "classification": "in_progress",
-      "known": "CP327 có actual119 selector1 từ6,3 tới7,3 nhưng Rust từ chối trước162. Nhánh nghiên cứu có guard/test candidate; native execution chưa đạt.",
-      "remaining": "Reference và Rust native cho direction1, landing/retirement/bom tiếp/hai kết quả/reset; không suy các hướng hoặc biến thể khác.",
-      "next_test": "Chờ CP332 exact-head lease và tích hợp #453, rồi chạy reference mới bằng phím thường; guard Rust chỉ nghiệm thu khi đủ evidence.",
+      "classification": "completed",
+      "known": "CP333/AUD141 có reference và Rust native hai account, Punch selector1 xuống một ô, retirement/bom tiếp/peer/reset/journal thưởng0; PR459 đã merge sau exact-head/history và CI xanh.",
+      "remaining": "Scope down-one đã hoàn tất. Các hướng/khoảng cách Shoe/Punch khác còn theo PLAN; #460 mở hướng ngang riêng.",
+      "next_test": "Tiếp #460, không lặp lát down-one đã nghiệm thu.",
       "acceptance": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
-      "reason": "Theo thứ tự Shoe/Punch còn thiếu trong PLAN. Bản nháp không tự mở contract đã xác nhận hoặc đóng G1.",
+      "reason": "Đối chiếu native, actual wire/rank và DB, gate578092 evidence/0errors/historyverified và PR459 merge; không suy fullG1 hoặc originalserverlaw.",
       "sources": [
         "docs/PLAN.md#dashboard",
         "docs/PROTOCOL.md",
         "docs/RESEARCH.md#gap-ability-debuff"
       ],
       "evidence": [
-        "docs/evidence/rust-service/g1-punch.json"
+        "docs/evidence/rust-service/g1-punch-down.json"
+      ],
+      "prs": [
+        459
+      ],
+      "successors": [],
+      "reviewed_utc": "2026-11-17T12:35:05.125317+00:00"
+    },
+    {
+      "number": 460,
+      "kre": "KRE-G1-PUNCH-HORIZONTAL",
+      "features": [
+        "KR-F010"
+      ],
+      "classification": "in_progress",
+      "known": "Reference R2 có selector0/source6,3→6,5 hai vòng, native landing/retirement/bom tiếp/peer/reset,712 securefields và independent wire. Candidate Rust giữ whole-row reservation/ownership/deadline/queue.",
+      "remaining": "Full supervised Rust checks/build, native account với floor chỉPunch, peer/reset/journal, audit/checkpoint/exact-head/CI trước tích hợp.",
+      "next_test": "Chạy native Rust candidate hai account theo contract; selector0/same-row/+two columns cần actual request, không normalize target. Mismatch/failure giữ nguyên.",
+      "acceptance": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "reason": "Theo coverage Shoe/Punch còn thiếu trong PLAN, không thêm scope ngoài G1 hoặc mở toàn geometry từ endpoint.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md#gap-ability-debuff"
+      ],
+      "evidence": [
+        "docs/evidence/item-families/punch-horizontal-action.json"
       ],
       "prs": [],
       "successors": [],
-      "reviewed_utc": "2026-11-17T10:03:31.869924+00:00"
+      "reviewed_utc": "2026-11-17T12:35:05.125317+00:00"
     }
   ],
-  "as_of_utc": "2026-11-14T14:43:14.236502+00:00",
+  "as_of_utc": "2026-11-17T12:35:05.125317+00:00",
   "limits": "Đối soát issue thủ công có ngày; snapshot là trạng thái lúc chụp, không chứng nhận acceptance hoặc đóng gate."
 }
