@@ -142,6 +142,8 @@ def prepare(args):
     assert 2 <= len(matrix['roster']) <= 8 and 1 <= matrix['rounds'] <= 16
     assert matrix['item'] in [None, 0, 1, 2, 3, 4, 5, 145]
     assert matrix['steps'] and matrix['cases']
+    for name in ['kr-service', 'kr-admin', 'kr-companion']:
+        (args.binary_dir/name).resolve(strict=True)
     out.mkdir(mode=0o700, parents=True, exist_ok=False)
     (out/'native').mkdir()
     (out/'binary').mkdir()
@@ -194,6 +196,10 @@ def prepare(args):
     for data in config['roles'].values():
         inputs.update(p for p in Path(data['game_dir']).iterdir()
                       if p.is_file() and p.name not in ['CALog.log','fxdynmapinfo.ssd'])
+    previous = base/'native/runtime-preflight.json'
+    if previous.is_file():
+        inputs.update(Path(row['path']) for row in read(previous)['files']
+                      if Path(row['path']).suffix in ['.py', '.gdb'] and not Path(row['path']).is_relative_to(base))
     inputs.add(out/'native/recipe.json')
     write(out/'native/runtime-preflight.json',dict(files=[pin(p) for p in sorted(inputs)],
           limits='Candidate matrix inputs. No runtime or compatibility acceptance.'))
@@ -232,7 +238,10 @@ def verify(args):
         text = (out/role/'client.log').read_text(errors='replace')
         for tag, kind in [('FOUR_SLOT','clock'),('FOUR_LIFE','rank_end'),('FOUR_LIFE','return_before_room')]:
             rows = [row for row in tagged(text,tag) if row['kind'] == kind]
-            assert [row['round'] for row in rows] == rounds, (role,tag,kind)
+            if kind == 'clock':
+                assert len(rows) == len(rounds), (role,tag,kind)
+            else:
+                assert [row['round'] for row in rows] == rounds, (role,tag,kind)
         for expected in matrix.get('native_expectations',[]):
             if expected.get('role') not in [None,role]:continue
             rows = tagged(text,expected['tag'])

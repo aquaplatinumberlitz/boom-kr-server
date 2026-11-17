@@ -2396,7 +2396,7 @@ impl Session {
                     r.managed_round
                         .as_ref()
                         .and_then(|p| p.characters.as_ref())
-                        .is_some_and(|catalog| catalog.get(key).is_err())
+                        .map_or(!matches!(key, 0 | 1), |catalog| catalog.get(key).is_err())
                 });
                 if unsupported {
                     let mut preview = next.clone();
