@@ -1,0 +1,519 @@
+{
+  "schema": "kr-g1-item-drop-scope-v1",
+  "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
+  "source": "design",
+  "status": "design",
+  "kept": {
+    "Item/ItemBomb": 0,
+    "Item/ItemFire": 1,
+    "Item/ItemRoller": 2,
+    "Item/ItemShoe": 3,
+    "Item/ItemPunch": 4,
+    "Item/ItemMaxPower": 5,
+    "Item/ItemNiddle": 145
+  },
+  "maps": [
+    {
+      "name": "Camp08",
+      "profile_sha256": "e04a8df312232ccd14cfe876f8151b6ec259475b5cb48044614fb2f5a5c032e5",
+      "payload_sha256": "80dc0d8c655a83e7397fb9e0d7977788c42547b632c32edb85659bcbf2520144",
+      "rows": [
+        {
+          "name": "Item/ItemBomb",
+          "source_weight": 5000,
+          "weight": 5000
+        },
+        {
+          "name": "Item/ItemRoller",
+          "source_weight": 3000,
+          "weight": 3000
+        },
+        {
+          "name": "Item/ItemMoonWalk",
+          "source_weight": 500,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemSuperMan",
+          "source_weight": 350,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemGreenDevil",
+          "source_weight": 350,
+          "weight": 0
+        },
+        {
+          "name": "HollowBomb",
+          "source_weight": 350,
+          "weight": 0
+        },
+        {
+          "name": "Camouflage",
+          "source_weight": 350,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemNiddle",
+          "source_weight": 700,
+          "weight": 700
+        },
+        {
+          "name": "Item/ItemMaxPower",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemPunch",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemShoe",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemFire",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemAirShip",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemTurtle1",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "LucciBronze",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciSilver",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciGold",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketBronze",
+          "source_weight": 200,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketSilver",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketGold",
+          "source_weight": 30,
+          "weight": 0
+        }
+      ]
+    },
+    {
+      "name": "Factory07",
+      "profile_sha256": "e9958793b3ad9094de103922dd4e2ee70c82f370dc29b197147a7b7df2935a34",
+      "payload_sha256": "91b9e2de2af0107c7bc8b24a8dd262dc71cb22fbcbb4cd97ffb360fcca0a086c",
+      "rows": [
+        {
+          "name": "Item/ItemBond",
+          "source_weight": 300,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemDart",
+          "source_weight": 300,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemTrap",
+          "source_weight": 300,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemOxygen",
+          "source_weight": 300,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemNiddle",
+          "source_weight": 500,
+          "weight": 500
+        },
+        {
+          "name": "LucciBronze",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciSilver",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciGold",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketBronze",
+          "source_weight": 200,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketSilver",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketGold",
+          "source_weight": 30,
+          "weight": 0
+        }
+      ]
+    },
+    {
+      "name": "Forest07",
+      "profile_sha256": "9d349a4213fefb0b17f0c8986ac91fb52602338b020a29537663d79749b6747c",
+      "payload_sha256": "0b27ef0d70ba7550e8de7aa8c3bc22ac97f0ba1e05142d17553d499f121ed5c5",
+      "rows": [
+        {
+          "name": "Item/ItemBond",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemDart",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemNiddle",
+          "source_weight": 100,
+          "weight": 100
+        },
+        {
+          "name": "Item/ItemScanner",
+          "source_weight": 350,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemAirship",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemAirshipBroken",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "LucciBronze",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciSilver",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciGold",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketBronze",
+          "source_weight": 200,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketSilver",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketGold",
+          "source_weight": 30,
+          "weight": 0
+        }
+      ]
+    },
+    {
+      "name": "Village10",
+      "profile_sha256": "130c85e55a44cd7b0253fdc790cbf03a14681898d73cf09889631882a2b4e49e",
+      "payload_sha256": "62bb7b367159ca5724cccd57616d2e48cf678d5a5f45668a554a2d3ece2abfeb",
+      "rows": [
+        {
+          "name": "Item/ItemMaxPower",
+          "source_weight": 2000,
+          "weight": 2000
+        },
+        {
+          "name": "Item/ItemBomb",
+          "source_weight": 5500,
+          "weight": 5500
+        },
+        {
+          "name": "Item/ItemRoller",
+          "source_weight": 3000,
+          "weight": 3000
+        },
+        {
+          "name": "Item/ItemAirship",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemAirshipBroken",
+          "source_weight": 200,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemOwl",
+          "source_weight": 200,
+          "weight": 0
+        },
+        {
+          "name": "LucciBronze",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciSilver",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciGold",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketBronze",
+          "source_weight": 200,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketSilver",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketGold",
+          "source_weight": 30,
+          "weight": 0
+        }
+      ]
+    },
+    {
+      "name": "Tomb12",
+      "profile_sha256": "d655c1b451ddb44dd3a791404f14d8c062ff8a8d5b36b7d18d09835dce17e7f7",
+      "payload_sha256": "85d1b2902b478ea641209a8ef17e15ee9babe3e79c62f92f3f20409897adca95",
+      "rows": [
+        {
+          "name": "Item/ItemBomb",
+          "source_weight": 8650,
+          "weight": 8650
+        },
+        {
+          "name": "Item/ItemFire",
+          "source_weight": 6800,
+          "weight": 6800
+        },
+        {
+          "name": "Item/ItemShoe",
+          "source_weight": 900,
+          "weight": 900
+        },
+        {
+          "name": "Item/ItemRoller",
+          "source_weight": 4000,
+          "weight": 4000
+        },
+        {
+          "name": "Item/ItemPunch",
+          "source_weight": 900,
+          "weight": 900
+        },
+        {
+          "name": "Item/ItemMaxPower",
+          "source_weight": 350,
+          "weight": 350
+        },
+        {
+          "name": "Item/ItemSkeleton0",
+          "source_weight": 400,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemSkeleton1",
+          "source_weight": 400,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemHollow",
+          "source_weight": 400,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemAirship",
+          "source_weight": 600,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemOwl",
+          "source_weight": 600,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemTurtle0",
+          "source_weight": 640,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemTurtle1",
+          "source_weight": 90,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemAirship",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemAirshipBroken",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Spring",
+          "source_weight": 1200,
+          "weight": 0
+        },
+        {
+          "name": "RemoteBomb",
+          "source_weight": 500,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemAirship",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemAirshipBroken",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "LucciBronze",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciSilver",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciGold",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketBronze",
+          "source_weight": 200,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketSilver",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketGold",
+          "source_weight": 30,
+          "weight": 0
+        }
+      ]
+    },
+    {
+      "name": "Patrit14",
+      "profile_sha256": "71238713acdf44e3cff194c0410a22688794e8e82ed1ca81a71016e76e71fc66",
+      "payload_sha256": "b76892c6c7bc83b8db60a05b26901ee0c54dbc8328acc4f606fd90a933b9a94f",
+      "rows": [
+        {
+          "name": "Item/ItemBond",
+          "source_weight": 300,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemDart",
+          "source_weight": 300,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemNiddle",
+          "source_weight": 300,
+          "weight": 300
+        },
+        {
+          "name": "Item/ItemScanner",
+          "source_weight": 300,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemShoe",
+          "source_weight": 0,
+          "weight": 0
+        },
+        {
+          "name": "Item/ItemMaxPower",
+          "source_weight": 1000,
+          "weight": 1000
+        },
+        {
+          "name": "LucciBronze",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciSilver",
+          "source_weight": 50,
+          "weight": 0
+        },
+        {
+          "name": "LucciGold",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketBronze",
+          "source_weight": 200,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketSilver",
+          "source_weight": 100,
+          "weight": 0
+        },
+        {
+          "name": "LucciPocketGold",
+          "source_weight": 30,
+          "weight": 0
+        }
+      ]
+    }
+  ]
+}

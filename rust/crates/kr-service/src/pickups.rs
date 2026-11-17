@@ -143,7 +143,7 @@ impl Catalog {
                 // Only measured stat items and the separate needle policy.
                 if row[4] >= 13
                     || row[5] >= 15
-                    || !matches!(kind, 0..=5 | 145)
+                    || !crate::item_scope::kept_kind(kind)
                     || !indices.insert(index)
                     || indices.len() > 64
                 {
