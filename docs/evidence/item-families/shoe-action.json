@@ -1,0 +1,339 @@
+{
+  "schema": "kre-shoe-action-v1",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445",
+  "scope": "Hành động Shoe C0/selector 5 trên reference Python, không phải hỗ trợ Rust.",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "client_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+  "static": {
+    "source": "kr_static",
+    "status": "confirmed",
+    "functions": [
+      "0xE6F9C0",
+      "0xEAB1C0",
+      "0xB3A3B0"
+    ],
+    "new_bodies": 2,
+    "complete_chunk_comparisons": 4,
+    "original_source_database_unchanged": true
+  },
+  "runtime": {
+    "environment": "wine-10.0-20260425 (CachyOS)",
+    "run_sha256": "329462f6ca26f4e76aa42c1badce789a69c2c9ae9d330bcb49e4ed5f68e3230c",
+    "raw_files": 1671,
+    "native_secure_field_checks": 520,
+    "actual119": [
+      [
+        0,
+        0,
+        5,
+        1,
+        6,
+        3,
+        3,
+        3,
+        1000,
+        3
+      ],
+      [
+        0,
+        0,
+        5,
+        3,
+        6,
+        3,
+        3,
+        3,
+        1000,
+        3
+      ]
+    ],
+    "clients": [
+      {
+        "role": "A",
+        "rounds": [
+          {
+            "round": 1,
+            "wire_id": 1,
+            "next_wire_id": 2,
+            "selector": 5,
+            "source_cell": [
+              6,
+              3
+            ],
+            "target_cell": [
+              3,
+              3
+            ],
+            "short158_reader": {
+              "cursor": 4,
+              "size": 4,
+              "errors": [
+                0,
+                0
+              ]
+            },
+            "CC_before": 0,
+            "CC_after": 1,
+            "active_at_cleanup": 0,
+            "pickup_flags_at_clock": [
+              0,
+              0
+            ],
+            "pickup_flags_after": [
+              1,
+              0
+            ],
+            "stopped_before_rebind": true
+          },
+          {
+            "round": 2,
+            "wire_id": 3,
+            "next_wire_id": 4,
+            "selector": 5,
+            "source_cell": [
+              6,
+              3
+            ],
+            "target_cell": [
+              3,
+              3
+            ],
+            "short158_reader": {
+              "cursor": 4,
+              "size": 4,
+              "errors": [
+                0,
+                0
+              ]
+            },
+            "CC_before": 0,
+            "CC_after": 1,
+            "active_at_cleanup": 0,
+            "pickup_flags_at_clock": [
+              0,
+              0
+            ],
+            "pickup_flags_after": [
+              1,
+              0
+            ],
+            "stopped_before_rebind": true
+          }
+        ],
+        "native_clocks": 2,
+        "ranks": 2,
+        "returns": 2
+      },
+      {
+        "role": "B",
+        "rounds": [
+          {
+            "round": 1,
+            "wire_id": 1,
+            "next_wire_id": 2,
+            "selector": 5,
+            "source_cell": [
+              6,
+              3
+            ],
+            "target_cell": [
+              3,
+              3
+            ],
+            "short158_reader": {
+              "cursor": 4,
+              "size": 4,
+              "errors": [
+                0,
+                0
+              ]
+            },
+            "CC_before": 0,
+            "CC_after": 1,
+            "active_at_cleanup": 0,
+            "pickup_flags_at_clock": [
+              0,
+              0
+            ],
+            "pickup_flags_after": [
+              1,
+              0
+            ],
+            "stopped_before_rebind": true
+          },
+          {
+            "round": 2,
+            "wire_id": 3,
+            "next_wire_id": 4,
+            "selector": 5,
+            "source_cell": [
+              6,
+              3
+            ],
+            "target_cell": [
+              3,
+              3
+            ],
+            "short158_reader": {
+              "cursor": 4,
+              "size": 4,
+              "errors": [
+                0,
+                0
+              ]
+            },
+            "CC_before": 0,
+            "CC_after": 1,
+            "active_at_cleanup": 0,
+            "pickup_flags_at_clock": [
+              0,
+              0
+            ],
+            "pickup_flags_after": [
+              1,
+              0
+            ],
+            "stopped_before_rebind": true
+          }
+        ],
+        "native_clocks": 2,
+        "ranks": 2,
+        "returns": 2
+      }
+    ]
+  },
+  "policy": {
+    "source": "emu_choice",
+    "status": "design",
+    "description": "First9bytes119 as162; short158 variant1 immediately before variant0 at current6s deadline, no160."
+  },
+  "observations": [
+    "Shoe3-only pickup enables natural contact. C2S119 selector5 and first9byte candidate162 carry current wireID, source6,3 and target3,3. Both native readers consume9/9 with no errors, call B37910, enter state3, stop in state4, and later select moved root for cleanup.",
+    "Exact ret0xEAB323 returns1 and target3,3; observed argumenta9=13 is finite, not an unlimited kick promise. Source loops E9BFA0/E9D830 and occupancy checks; full collision law and pixel rate remain unresolved.",
+    "Short158 type1 then type0 at existing6s deadline rebinds CC1 and deactivates the moved bomb. Each of two completed rounds has a later actual118, rank/return/refresh and Shoe reset0 then pickup1; Punch stays0."
+  ],
+  "retained_partial": {
+    "run": "g1-shoe-action-reference-native-r12",
+    "raw_files": 969,
+    "native_secure_field_checks": 400,
+    "actual119": 1,
+    "limits": [
+      "One action/result/return and second clock only; not two completed action cycles. Both rounds received Shoe, but second had no119.",
+      "Fixed input timing cause is not established. R13 waits observed placement and uses explicit movement timing; no synthetic action119.",
+      "FinishBreakpoint EAX samples are not valid boolean return evidence. Keep old raw; exact ret probe is a new control."
+    ]
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-shoe-action-reuse-r11/reuse.json",
+      "bytes": 3897,
+      "sha256": "8413c8d5115c0a49bedaa88bbf19d863585e092a4119555d247469bbf06a9e06"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reuse-r11/shoe-edges-ida-cli.json",
+      "bytes": 26352,
+      "sha256": "03e79065e5daadbbfebda15678c272f93072b937c4a09add044ffe6b8d9ec25f"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reuse-r11/runtime-chunk-binding.json",
+      "bytes": 1095,
+      "sha256": "99138be4fa2dfe05514142b96661c25206f1af72f7baf0918af4da716cdc568f"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reuse-r11/batch-boundary.json",
+      "bytes": 1228,
+      "sha256": "80947ec5c315efd0a5c467a84213fd73a1ab2d33c0d0393bdf33e3f358b855a7"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/shoe-source-observations.json",
+      "bytes": 295707,
+      "sha256": "1a319269baa104be6678e3c6214d9de273a03a9a8414825dcafd5e76779c8b91"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/actor-fields-final.json",
+      "bytes": 270864,
+      "sha256": "8c28d5f3ee345b515ef98f94553c52c8ffefdaaad106a5333c5b3538bd98295f"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/raw-seal.json",
+      "bytes": 155501,
+      "sha256": "f8ee74655daa83227cea598f6beb71155737ee240d94619a78efe702acc485c6"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/frozen-input-postrun-verification.json",
+      "bytes": 60,
+      "sha256": "df37c02e89abb6ccdfcf09853085b4e2ce023d4a542b060f2ecbf1774be2ccbc"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/runtime-preflight.json",
+      "bytes": 96248,
+      "sha256": "23702a2a422462d21121d74f31a2db69b079cb7e8a8d30b9856c41842e7997dd"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/reference-inputs.json",
+      "bytes": 8912,
+      "sha256": "8504161feadf9932940fbc669b469e33427093062d0e73c1a68a83b2ea322c82"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/exit.json",
+      "bytes": 240,
+      "sha256": "78d412213c14086cb5a8e187e56b719f454693ad0478ac79223a178ce3fb7cae"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/shoe-source-observations.json",
+      "bytes": 394190,
+      "sha256": "42e0c8e50864069f54181923a413d928ab5ae374329e14955ce446da6bbf85f6"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/two-round-shoe-verification.json",
+      "bytes": 4892,
+      "sha256": "973f738117e7f8f7bb13992468d0f620f27475067dce8368d3605cf8689b4620"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/actor-fields-final.json",
+      "bytes": 352593,
+      "sha256": "b94d88f66d66986d4b5e5dec2b0148de35939f9856951cb31d7073a51eed545b"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/raw-seal.json",
+      "bytes": 268630,
+      "sha256": "3d394fbccc94242178d39a40a9ad103b6cfad49059803d8daf73225a847482e6"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/frozen-input-postrun-verification.json",
+      "bytes": 61,
+      "sha256": "a5961a76ab9609176f9f28b332912c0bb377142c20d350a4439b1068eacd9ac1"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/control-review.json",
+      "bytes": 1230,
+      "sha256": "0d97f5c5d64de09a9d48234b02b26f4bdfb748270ad12e51239823b0a1f665c8"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/runtime-preflight.json",
+      "bytes": 96188,
+      "sha256": "a295e29397306951e660f7fcb668f69758dac7d9a5a9650288b057186ac6db23"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/reference-inputs.json",
+      "bytes": 8909,
+      "sha256": "b610c7439fa9f1979226b20f5696c7cc71c24a27e29e401960ff8af962dfc34d"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/exit.json",
+      "bytes": 240,
+      "sha256": "9af208b868f5569a83f58fa9b3242ef8650b7a81b4b63dd2ea8d08f0eb7271e8"
+    }
+  ],
+  "limits": [
+    "Reference Python with fixed diagnostic identities, not Rust/account/Internet acceptance.",
+    "Only C0, owner bomb, selector5, empty column3 corridor6-to3 ending before row2 obstruction, one action per round. Other directions, foreign bombs, repeated/late/inflight/contact variants and actor/obstacle collision coverage remain open.",
+    "No missing-item/dead/trapped native negative in this run; no original-server order or ACK proof. R12 partial and unreliable FinishBreakpoint result register are retained separately.",
+    "No pixel speed or transit timing promise under a debugger. Later-update samples can refer to reused pool objects and are excluded.",
+    "Shoe remains disabled in Rust. Before enable: membership/round/allocation, item eligibility, path/terrain consistency, placement conflicts, queues/deadline and native positive/negative/peer/reset on Rust.",
+    "Punch opt-in correction has merged through PR450 at a82554a0dd68d1abc28670055660591246ff3202 after exact-head local/history and green CI; this does not expand Punch coverage."
+  ],
+  "next": "Nối lát Shoe selector5 đã đo vào Rust với guard path/terrain/placement; đo ca không đủ điều kiện, peer, hai vòng/reset và identity trước công bố hỗ trợ. Không mở thêm broad RE khi nguồn hiện tại đủ cho phép thử."
+}

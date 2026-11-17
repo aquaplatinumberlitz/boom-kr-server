@@ -5,6 +5,11 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP327: đã sửa guard motion khi actor rời player round trước peer.**
+[Correction và kiểm hồi quy](protocol/items-stats.md#rust-bomb-motion-codec) giữ motion đã chấp nhận
+đồng bộ với bom hiện hành; phiên cũ không gửi được lệnh mới. Binary sửa đã qua lại hai vòng account/peer/reset
+và journal thưởng 0. Punch vẫn opt-in và có giới hạn; G1, Shoe/hướng khác, M8 và L1 của Claude còn mở.
+
 **CP326: lát Punch selector 3 đã chạy hai vòng trên Rust với hai account.**
 [Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) có native motion, thu hồi bom,
 bom tiếp, peer, reset và journal thưởng 0. Policy mới opt-in, preset hiện hành chưa đổi; Shoe và các hướng khác

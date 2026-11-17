@@ -39,7 +39,7 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-F007 · Stat tích lũy và MaxPower](#kr-f007) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
 | [KR-F008 · Kim dùng chủ động](#kr-f008) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
 | [KR-F009 · Trap, death, cứu và chạm địch](#kr-f009) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
-| [KR-F010 · Ability và debuff group1](#kr-f010) | present | static | partial | unknown | observed | unknown | unknown | unknown | partial / branch_pending | unknown | K5: passed |
+| [KR-F010 · Ability và debuff group1](#kr-f010) | present | static | partial | unknown | observed | unknown | unknown | unknown | partial / baseline_merged | unknown | K5: passed |
 | [KR-F011 · Mount và biến hình](#kr-f011) | present | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F012 · Nhóm chủ động ngoài kim](#kr-f012) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F013 · Thời hạn và variant item](#kr-f013) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
@@ -775,11 +775,11 @@ Dependency: [KR-F006](#kr-f006).
 
 Khoảng trống (trích bảng RESEARCH): [Rust MaxPower](protocol/items-stats.md#rust-maxpower) có C0/C1 và cap/reset. [Lát Punch Rust](protocol/items-stats.md#rust-bomb-motion-codec) opt-in có current owner/selector3, terrain/queue/deadline và hai vòng native account/peer/reset; Shoe còn tắt.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Tiếp Shoe và hướng/selector còn thiếu từ consumer/action đã có; mỗi lát cần native use/không đủ điều kiện/peer/reset trước mở. Luồng sát deadline/khi đang bay, lặp, geometry rộng hơn và debuff/TTL vẫn mở; không đoán ACK160 hoặc dùng tail119 làm epoch. Không lặp route Punch selector3 đã nghiệm thu.
+Phép kiểm tối thiểu (trích cùng nguồn): Shoe selector 5 đã có hai vòng reference với state 3→4, thu hồi, bom tiếp và reset; tiếp lát Rust có guard path/terrain/placement và native use/không đủ điều kiện/peer/reset trước mở. Các hướng/selector còn thiếu chỉ đo khi chặn lát tiếp. Luồng sát deadline/khi đang bay, lặp, geometry rộng hơn và debuff/TTL vẫn mở; không đoán ACK160 hoặc dùng tail119 làm epoch. Không lặp route Punch selector3 đã nghiệm thu.
 
 Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285).
 
-Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json), [item-families](evidence/item-families/shoe-punch.json), [item-families](evidence/item-families/bomb-motion-codec.json), [item-families](evidence/item-families/bomb-retirement.json), [rust-service](evidence/rust-service/g1-punch.json), [rust-service](evidence/rust-service/g1-punch-departure.json).
+Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json), [item-families](evidence/item-families/shoe-punch.json), [item-families](evidence/item-families/bomb-motion-codec.json), [item-families](evidence/item-families/bomb-retirement.json), [rust-service](evidence/rust-service/g1-punch.json), [rust-service](evidence/rust-service/g1-punch-departure.json), [item-families](evidence/item-families/shoe-action.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
@@ -791,7 +791,7 @@ Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | partial / branch_pending | [nguồn1](../rust/crates/kr-wire/src/kr00967/bomb_motion.rs), [nguồn2](protocol/items-stats.md#rust-bomb-motion-codec), [nguồn3](../rust/crates/kr-service/src/bombs.rs) |
+| implementation | partial / baseline_merged | [nguồn1](../rust/crates/kr-wire/src/kr00967/bomb_motion.rs), [nguồn2](protocol/items-stats.md#rust-bomb-motion-codec), [nguồn3](../rust/crates/kr-service/src/bombs.rs) |
 | integration | unknown | Chưa có bằng chứng trong phạm vi rà |
 | gate | K5: passed | [nguồn1](PLAN.md#k5-acceptance) |
 
