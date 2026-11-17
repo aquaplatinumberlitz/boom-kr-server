@@ -153,12 +153,17 @@ def prepare(args):
         if source.suffix in ['.py', '.gdb']:
             (out/source.name).write_text(source.read_text().replace(str(base), str(out)))
     shutil.copy2(base/'previous-accounts.sqlite', out/'previous-accounts.sqlite')
+    reused = {}
     for role, data in config['roles'].items():
         for field, name in [('game_dir','game-'+role), ('prefix','prefix-'+role)]:
             source = local_path(data[field])
-            subprocess.run(['cp','-a','--reflink=auto',str(source),str(out/name)], check=True)
-            data[field] = str(out/name)
+            if args.reuse_resources:
+                reused.setdefault(role,{})[field]=str(source)
+            else:
+                subprocess.run(['cp','-a','--reflink=auto',str(source),str(out/name)], check=True)
+                data[field] = str(out/name)
     config = json.loads(json.dumps(config).replace(str(base), str(out)))
+    for role, paths in reused.items():config['roles'][role].update(paths)
     server = json.loads((base/'native-config.json').read_text().replace(str(base),str(out)))
     admission = server['diagnostic_two_lobby']['account_admission']
     admission.update(database=str(out/'native/cycles/account-db/accounts.sqlite'),launch_socket='/tmp/kr-g1-matrix/launch.sock')
@@ -268,6 +273,7 @@ def main():
     for name in ['base','matrix','binary-dir','out']:
         prep.add_argument('--'+name,type=Path,required=True)
     prep.add_argument('--seconds',type=int,default=600)
+    prep.add_argument('--reuse-resources',action='store_true',help='Reuse idle copied game/prefix scratch trees; sealed run/raw is never changed')
     for name in ['run','verify']:
         command = sub.add_parser(name);command.add_argument('--run',type=Path,required=True)
     args = parser.parse_args()
