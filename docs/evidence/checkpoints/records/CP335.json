@@ -1,0 +1,477 @@
+{
+  "id": "CP335",
+  "previous": "CP334",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T15:04:18.008508+00:00",
+  "context_commit": "88672759026d99094e4a4685dead1f93a381a051",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Áp dụng phạm vi item G1 đã cắt, ổn định harness theo nhóm và từ chối nhân vật chưa đo nhưng giữ phiên.",
+  "scope": "Sáu bảng rơi Rust theo owner, harness ma trận và native C4→C0→C1 cùng transport/two-round/profile/journal. Không đóng nhóm Punch/Shoe hoặc toàn G1.",
+  "artifacts": [
+    {
+      "name": "native-client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "native-Rust-service",
+      "sha256": "39511f98de1d895fe38861a13d3ec86fe16a127b75d605ca85f4821d0365649a"
+    }
+  ],
+  "locators": [
+    "docs/protocol/auth-session.md#rust-persistent-character",
+    "docs/protocol/items-stats.md#g1-scoped-drops",
+    "docs/PLAN.md#phase1-acceptance",
+    "docs/evidence/rust-service/g1-character-rejection.json",
+    "docs/evidence/rust-service/g1-item-scope-data.json"
+  ],
+  "findings": [
+    {
+      "summary": "62 row có trọng số dương ngoài Bomb/Fire/Roller/MaxPower/kim/Shoe/Punch về0 trong dữ liệu Rust của sáu map; giữ mọi row nguồn và row trùng. Profile áp bảng đã cắt trước serving, floor/list2 kiểm kind trước bind.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#g1-scoped-drops",
+      "evidence": [
+        "G1S335-014",
+        "G1S335-013",
+        "G1S335-001"
+      ],
+      "limits": "Không thay pack/exporter, không suy RNG server gốc hoặc phần trăm từ weight. Không thêm cơ chế random-drop mới."
+    },
+    {
+      "summary": "Native KR C4 nhận current110 giữ C1, rồi C0→C1 trên cùng channel; hai vòng/kết quả/reset đúng C1/C0 và journal hai account. Revision1→3 chỉ do hai lựa chọn hợp lệ, peer preference giữ nguyên; native consumer110 đủ6/6/errors0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-persistent-character",
+      "evidence": [
+        "G1S335-018",
+        "G1S335-019",
+        "G1S335-023"
+      ],
+      "limits": "Wine/private LAN, C0/C1/C4 trong profile hiện hành; phản hồi current110 là policy design, không server gốc hoặc roster đầy đủ."
+    },
+    {
+      "summary": "Harness tham số hóa prepare/run/verify và semantic verifier theo nhóm dùng cùng runtime; controller chờ event/consumer, input hover rõ và cleanup namespace/export/unmount sạch. R2 no-op lựa chọn và R3 mất hover timeout vẫn giữ nguyên.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-persistent-character",
+      "evidence": [
+        "G1S335-020",
+        "G1S335-026",
+        "G1S335-027"
+      ],
+      "limits": "Chỉ xác nhận harness trong lượt hai account/two-round này; hỗ trợ tham số không chứng minh mọi ma trận/map/roster đã đo."
+    },
+    {
+      "summary": "TCP/SQLite kiểm unsupported key2/4/26/65535 không tăng revision, giữ socket/member; valid choice/relogin, writer-lock/revoke, malformed local-player và cách ly hai phòng đều đạt.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/auth-session.md#rust-persistent-character",
+      "evidence": [
+        "G1S335-028",
+        "G1S335-029",
+        "G1S335-030"
+      ],
+      "limits": "Synthetic TCP/backend controls, không phải native fault injection hoặc mọi security/lifecycle đã đo."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fmt/clippy-Dwarnings/full locked workspace tests và docs/diff trong checkout gate riêng",
+      "result": "pass",
+      "evidence": [
+        "G1S335-001"
+      ],
+      "limits": "Chạy toàn nhóm một lần; không thay native compatibility hoặc local/history exact-head."
+    },
+    {
+      "check": "Native semantic/wire/DB/cleanup và các kiểm TCP/SQLite tập trung",
+      "result": "pass",
+      "evidence": [
+        "G1S335-018",
+        "G1S335-023"
+      ],
+      "limits": "Nhóm nhỏ theo scope G1 hiện hành; không full G1/M8."
+    },
+    {
+      "check": "Audit thủ công toàn nhóm",
+      "result": "pass",
+      "evidence": [
+        "G1S335-002"
+      ],
+      "limits": "Independent review waived; CI/local-history gate trước merge vẫn bắt buộc."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "G1S335-001",
+      "kind": "local",
+      "path": "local/research/codex/g1-scoped-group-gate/verification.json",
+      "bytes": 2162,
+      "sha256": "004e23d70320d8ff4c8c81cf78170d084d47dc2ce2e36a9301d5e02c9c58fb46"
+    },
+    {
+      "id": "G1S335-002",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD143.json",
+      "bytes": 3483,
+      "sha256": "7c1207d268d95e91c6ef3530770379b5fa10df136ef62349ec35bf5abd9a5f16"
+    },
+    {
+      "id": "G1S335-003",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3978,
+      "sha256": "aef272b051d713a5e5776fc2edc6c26cb4313dd3ab3ef9152ee8d4353509637d"
+    },
+    {
+      "id": "G1S335-004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 86112,
+      "sha256": "908ce413ae40d8e27890dc95887cf11b3d77f8126c2b92768f0f2ff192ed04b1"
+    },
+    {
+      "id": "G1S335-005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 68543,
+      "sha256": "212477cbaddfb0f05f075c7ad64769e1d51f4f5b8456b14b77435a2b1b4f3552"
+    },
+    {
+      "id": "G1S335-006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 46410,
+      "sha256": "29b197dcbda849f25fc2f98f75584cfa039955ff1a58326cc3724d1f63ef2f87"
+    },
+    {
+      "id": "G1S335-007",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 81568,
+      "sha256": "2256ccf9ac12e7d7d5951620cb073b307c8ac71fc1236a677cd5b517b2e0e7ab"
+    },
+    {
+      "id": "G1S335-008",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 80319,
+      "sha256": "b27fc9c258c098d6854d2387fefec8f0461ddc6916fde4853419f11a72cbcd19"
+    },
+    {
+      "id": "G1S335-009",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/g1-item-scope-cut.json",
+      "bytes": 3652,
+      "sha256": "98ab035add36bb5588c5a37344e5a70c6e414b8ac43ab93b1cd6a80324d8cc77"
+    },
+    {
+      "id": "G1S335-010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-character-rejection.json",
+      "bytes": 5376,
+      "sha256": "79976a1eb4dadc65806da7ac6e2c030083bee4a226a3df1ed78d3645c3ac3b6d"
+    },
+    {
+      "id": "G1S335-011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-item-scope-data.json",
+      "bytes": 3002,
+      "sha256": "2913408237d4aff147c438f49f33c4256d336c01550012a1d6a0016829da277f"
+    },
+    {
+      "id": "G1S335-012",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 198073,
+      "sha256": "e2ea42fca620d3a543e684d1b920df053cb553472b82b4f079a86f5690919606"
+    },
+    {
+      "id": "G1S335-013",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/item_scope.rs",
+      "bytes": 3078,
+      "sha256": "f6e71492ca5dbefefb0d7bb304c8b0d6f7f261315c93becfbb662f1fe4d59e35"
+    },
+    {
+      "id": "G1S335-014",
+      "kind": "repository",
+      "path": "rust/data/g1-item-drops.json",
+      "bytes": 12091,
+      "sha256": "1801fffa8f873d851a81a64322eb6ca48d4906bcb5f1c750a569349cf40cf384"
+    },
+    {
+      "id": "G1S335-015",
+      "kind": "repository",
+      "path": "tools/g1_native_harness.py",
+      "bytes": 15074,
+      "sha256": "8a41c43b387be5470a0568e50afe3b5af757a4763b5f216b031f1cb41eaf98e4"
+    },
+    {
+      "id": "G1S335-016",
+      "kind": "repository",
+      "path": "tools/g1_native_runtime.py",
+      "bytes": 32726,
+      "sha256": "3cff83d17a9ddd34bb235e94c8b244d81d2d6085d8a31666c252d07b725b2edb"
+    },
+    {
+      "id": "G1S335-017",
+      "kind": "repository",
+      "path": "tools/g1_native_verify.py",
+      "bytes": 5437,
+      "sha256": "6240ecd660e5617d402e7215d9e8c59a0f24286bf94aa30ff59665d4497f0851"
+    },
+    {
+      "id": "G1S335-018",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r4/character-verification.json",
+      "bytes": 1295,
+      "sha256": "ce0bc0d7cc3c7d967c77d63171656f3677232f3b5ef853e720f0a327dd954e86"
+    },
+    {
+      "id": "G1S335-019",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r4/decoded-channels-shared.json",
+      "bytes": 88813,
+      "sha256": "f5639f1fa56eb8691ef802bb9c05c2cb988197eefa047d16a95f403e434298d9"
+    },
+    {
+      "id": "G1S335-020",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/cycles/run.json",
+      "bytes": 153449,
+      "sha256": "3c96c16a28e7adf808fe4f8c428680a120e8c4ab81aaee59a37c935081975914"
+    },
+    {
+      "id": "G1S335-021",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/cycles/A/client.log",
+      "bytes": 478066,
+      "sha256": "d1fa92b7afe48c4560ae315929ba2dfa57492d380c7ce62246c632a520b2fee3"
+    },
+    {
+      "id": "G1S335-022",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/cycles/B/client.log",
+      "bytes": 323668,
+      "sha256": "92ee8bed87fe566b8a4754b51e10cf50ff32544a70b5253c9d922b4aaf563096"
+    },
+    {
+      "id": "G1S335-023",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r4/matrix-verification.json",
+      "bytes": 684,
+      "sha256": "58e0129fa728861428cc078f23efea883dfdf039d179419ac11e31443fa2f9d0"
+    },
+    {
+      "id": "G1S335-024",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/runtime-preflight.json",
+      "bytes": 128689,
+      "sha256": "0c20de9f4891bc6a05118c4111d43086737088eb78eee5af4860a981a9618b08"
+    },
+    {
+      "id": "G1S335-025",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/recipe.json",
+      "bytes": 1212,
+      "sha256": "b063651483ee9943529df25703e62984bf63e2dd042be4eebc4b709bf379a856"
+    },
+    {
+      "id": "G1S335-026",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/storage-export.json",
+      "bytes": 11918,
+      "sha256": "0ea01121f0d0dc767da1e39b0c705b462dca5d430bce25e8168effa271758e36"
+    },
+    {
+      "id": "G1S335-027",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "5d0487b382d28b3f285763c7e679f60c8193927bec0b9847ef29327dc4c0b9e8"
+    },
+    {
+      "id": "G1S335-028",
+      "kind": "local",
+      "path": "local/research/codex/g1-scope-serving-tcp-r3/result.json",
+      "bytes": 1199,
+      "sha256": "c25ab38bb3857fa058b5fb65c8e999b613f4f86dbb8d5c7afe5105ce1be11959"
+    },
+    {
+      "id": "G1S335-029",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-persistence-tcp-r1/result.json",
+      "bytes": 695,
+      "sha256": "1525b6c69e77004fad5f9cd294a8bde156f6cba1cf2947c6d2881480a5b12922"
+    },
+    {
+      "id": "G1S335-030",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-room-choices-tcp-r1/verification.json",
+      "bytes": 737,
+      "sha256": "74ab4b2c57290863c2dbc1359e061220e95aaffaa6d892cb99d89e90ee6df3f0"
+    },
+    {
+      "id": "G1S335-031",
+      "kind": "local",
+      "path": "local/research/codex/g1-scoped-group-gate/1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "G1S335-032",
+      "kind": "local",
+      "path": "local/research/codex/g1-scoped-group-gate/2.log",
+      "bytes": 2612,
+      "sha256": "795a6a80c9374cc8b77fad3d6317e355cea697948127dd9a9b59ef29be523de9"
+    },
+    {
+      "id": "G1S335-033",
+      "kind": "local",
+      "path": "local/research/codex/g1-scoped-group-gate/3.log",
+      "bytes": 30026,
+      "sha256": "747c31172ea202ae08c9f87ae05247b48fa2789bae495fb69b6201b0c75f78e7"
+    },
+    {
+      "id": "G1S335-034",
+      "kind": "local",
+      "path": "local/research/codex/g1-scoped-group-gate/4.log",
+      "bytes": 274,
+      "sha256": "1428028bcf3f2b3ec9c4c3a156b07dec018421e5757a59633108f2f14663b0ac"
+    },
+    {
+      "id": "G1S335-035",
+      "kind": "local",
+      "path": "local/research/codex/g1-scoped-group-gate/5.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "G1S335-036",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r2/native/cycles/run.json",
+      "bytes": 31660,
+      "sha256": "5abf9421a1ae7eb751f921aa7926da6b35f700162c298d1022525a931e7b0ad6"
+    },
+    {
+      "id": "G1S335-037",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r2/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "932d6cdbf5e61780805bd4d00042298697db0b1f4cd85cd1506ebd6c548af56e"
+    },
+    {
+      "id": "G1S335-038",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r3/native/cycles/run.json",
+      "bytes": 97109,
+      "sha256": "b7b491df0d825d928291dbe36a2be6dda47de11a007ef71cc933516c152d9eef"
+    },
+    {
+      "id": "G1S335-039",
+      "kind": "local",
+      "path": "local/research/codex/g1-character-native-matrix-r3/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "932d6cdbf5e61780805bd4d00042298697db0b1f4cd85cd1506ebd6c548af56e"
+    }
+  ],
+  "delta": {
+    "added": [
+      "Bảng rơi G1 đã cắt, harness ma trận và đường ngắn issue457."
+    ],
+    "corrected": [
+      "Không đóng socket khi well-formed92 chọn key chưa đo; click Ready sau return cần hover mới."
+    ],
+    "superseded": [
+      "Phạm vi item rộng của G1 cũ theo chỉ đạo owner; không sửa record/raw cũ."
+    ]
+  },
+  "blockers": [],
+  "next_steps": [
+    {
+      "id": "NEXT-G1-BOMB-MOTION-COVERAGE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Hoàn tất ma trận Punch/Shoe theo nhóm và đối chiếu coverage map trong PLAN; gate ở checkout riêng, tiếp static/native nhóm sau.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T15:04:18.008508+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex self-audit AUD143 cho nhóm dữ liệu/harness/nhân vật; không tự chứng nhận merge hoặc toàn G1.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner cho solo và miễn review độc lập."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index chủ đề không đổi."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-character-rejection.json",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-item-scope-data.json",
+      "state": "updated",
+      "reason": "Đồng bộ nhóm phạm vi/harness/nhân vật, bằng chứng và giới hạn; không thêm status theo selector."
+    }
+  ],
+  "completed_feature_groups": [
+    "g1-item-scope-harness-character-refusal"
+  ]
+}
