@@ -3038,8 +3038,11 @@ impl Session {
                         let target = (motion.target_row, motion.target_column);
                         let forbidden = r.bomb_cancellation_cells().is_some_and(|cells| {
                             if shoe {
-                                (motion.target_row..=motion.source_row)
-                                    .any(|row| cells.contains(u16::from(row), u16::from(target.1)))
+                                bombs::motion_cells(motion)
+                                    .into_iter()
+                                    .any(|(row, column)| {
+                                        cells.contains(u16::from(row), u16::from(column))
+                                    })
                             } else if matches!(motion.selector, 0 | 2) {
                                 // Horizontal Punch reserves every possible column
                                 // while its wrapped native path remains unmeasured.

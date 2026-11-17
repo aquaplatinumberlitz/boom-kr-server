@@ -212,9 +212,9 @@ impl Terrain {
         (bomb.row, bomb.column) = target;
         Ok(())
     }
-    /// Measured Shoe axis with a conservative clear-corridor admission policy.
-    /// Require the first obstruction immediately past the target, never jump
-    /// a box/bomb or infer walkability from a blast-only mask.
+    /// Report-derived bounded Shoe corridor, not original collision authority.
+    /// EAB1C0 has an actor-supplied range: a free cell beyond the reported target
+    /// does not prove an invalid early stop. Never infer unlimited kick distance.
     pub(crate) fn move_shoe(
         &mut self,
         generation: u64,
@@ -222,26 +222,34 @@ impl Terrain {
         source: (u8, u8),
         target: (u8, u8),
     ) -> io::Result<()> {
-        if target.0 == 0
-            || source.0.checked_sub(3) != Some(target.0)
-            || source.1 != target.1
+        if source == target
             || source.0 >= self.height
+            || target.0 >= self.height
             || source.1 >= self.width
+            || target.1 >= self.width
+            || (source.0 != target.0 && source.1 != target.1)
         {
             return Err(io::Error::other("unmeasured Shoe corridor"));
         }
-        let index = |row: u8| usize::from(row) * usize::from(self.width) + usize::from(source.1);
-        if self.kinds[index(target.0 - 1)] == 0
-            || (target.0..=source.0).any(|row| {
-                self.kinds[index(row)] != 0
-                    || self.ray_barriers[index(row)] != 0
-                    || self
-                        .pending
-                        .values()
-                        .any(|bomb| bomb.id != id && (bomb.row, bomb.column) == (row, source.1))
-            })
-        {
-            return Err(io::Error::other("blocked or unterminated Shoe corridor"));
+        let cells: Vec<_> = if source.0 == target.0 {
+            (source.1.min(target.1)..=source.1.max(target.1))
+                .map(|column| (source.0, column))
+                .collect()
+        } else {
+            (source.0.min(target.0)..=source.0.max(target.0))
+                .map(|row| (row, source.1))
+                .collect()
+        };
+        if cells.into_iter().any(|(row, column)| {
+            let index = usize::from(row) * usize::from(self.width) + usize::from(column);
+            self.kinds[index] != 0
+                || self.ray_barriers[index] != 0
+                || self
+                    .pending
+                    .values()
+                    .any(|bomb| bomb.id != id && (bomb.row, bomb.column) == (row, column))
+        }) {
+            return Err(io::Error::other("blocked Shoe corridor"));
         }
         self.move_bomb(generation, id, source, target)
     }
@@ -590,7 +598,7 @@ pub(crate) mod tests {
         terrain
     }
     #[test]
-    fn shoe_cannot_skip_an_obstacle_or_stop_early_and_does_not_mutate_on_rejection() {
+    fn shoe_cannot_skip_an_obstacle_or_move_diagonally_and_does_not_mutate_on_rejection() {
         for blocked in [false, true] {
             let mut terrain = if blocked {
                 blocked_shoe_map()
@@ -609,9 +617,65 @@ pub(crate) mod tests {
                 .unwrap();
             let before = terrain.pending.clone();
             let source = if blocked { (6, 3) } else { (7, 3) };
-            let target = if blocked { (3, 3) } else { (4, 3) };
+            let target = if blocked { (3, 3) } else { (4, 4) };
             assert!(terrain.move_shoe(1, 1, source, target).is_err());
             assert_eq!(terrain.pending, before);
+        }
+    }
+    #[test]
+    fn shoe_short_stops_and_four_axes_keep_corridor_collision_and_current_allocation_checks() {
+        // Synthetic policy controls only. EAB1C0 accepts an actor range, so a
+        // clear cell beyond the endpoint cannot by itself reject a short stop.
+        for target in [
+            (6, 8),
+            (6, 14),
+            (6, 6),
+            (6, 0),
+            (5, 7),
+            (0, 7),
+            (7, 7),
+            (12, 7),
+        ] {
+            let mut terrain = motion_map();
+            terrain.seed.fill(0);
+            terrain.seed_hits.fill(0);
+            terrain.begin(1);
+            terrain
+                .place(Bomb {
+                    id: 1,
+                    owner: 0,
+                    row: 6,
+                    column: 7,
+                    power: 1,
+                })
+                .unwrap();
+            let before = terrain.pending.clone();
+            assert!(terrain.move_shoe(2, 1, (6, 7), target).is_err());
+            assert_eq!(terrain.pending, before);
+            let at = usize::from(target.0) * 15 + usize::from(target.1);
+            terrain.ray_barriers[at] = 1;
+            assert!(terrain.move_shoe(1, 1, (6, 7), target).is_err());
+            assert_eq!(terrain.pending, before);
+            terrain.ray_barriers[at] = 0;
+            terrain
+                .place(Bomb {
+                    id: 2,
+                    owner: 1,
+                    row: target.0,
+                    column: target.1,
+                    power: 1,
+                })
+                .unwrap();
+            let occupied = terrain.pending.clone();
+            assert!(terrain.move_shoe(1, 1, (6, 7), target).is_err());
+            assert_eq!(terrain.pending, occupied);
+            terrain.pending.remove(&2);
+            terrain.move_shoe(1, 1, (6, 7), target).unwrap();
+            assert_eq!(
+                (terrain.pending[&1].row, terrain.pending[&1].column),
+                target
+            );
+            assert!(terrain.move_shoe(1, 1, (6, 7), (6, 9)).is_err());
         }
     }
     #[test]
