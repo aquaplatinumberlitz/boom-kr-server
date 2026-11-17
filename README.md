@@ -33,10 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP325: reference đã khép vòng đời Punch với policy 158 loại 1 trước gói nổ.**
-[Native thu hồi bom, next118 và hai kết quả/reset](docs/protocol/items-stats.md#rust-bomb-motion-codec) đã có
-bằng chứng hai view; Rust hiện có codec, service vẫn tắt Shoe/Punch. Tiếp nối admission, terrain, deadline và
-hàng đợi cùng ca âm trên Rust theo [Bảng điều hành](docs/PLAN.md#dashboard). G1, M8 và L1 của Claude vẫn mở.
+**CP327: đã sửa guard motion khi actor rời player round trước peer.**
+[Correction và kiểm hồi quy](docs/protocol/items-stats.md#rust-bomb-motion-codec) giữ motion đã chấp nhận
+đồng bộ với bom hiện hành; phiên cũ không gửi được lệnh mới. Binary sửa đã qua lại hai vòng account/peer/reset
+và journal thưởng 0. Punch vẫn opt-in và có giới hạn; G1, Shoe/hướng khác, M8 và L1 của Claude còn mở.
 
 ## Bắt đầu
 

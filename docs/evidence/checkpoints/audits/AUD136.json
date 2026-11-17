@@ -1,0 +1,51 @@
+{
+  "id": "AUD136",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP327",
+  "recorded_utc": "2026-11-17T04:37:40.300326+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/items-stats.md",
+    "docs/evidence/rust-service/g1-punch-departure.json",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "local/research/codex/g1-punch-departure-correction.json",
+    "local/research/codex/g1-punch-departure-regression.txt",
+    "local/research/codex/g1-punch-build-r5/verification.json",
+    "local/research/codex/g1-punch-rust-native-r5/punch-native-verification.json"
+  ],
+  "method": "Đối chiếu Guard::Bomb và subject guard với Room.depart_player: actor bị xóa khỏi current members nhưng allocation đã nhận và deadline còn phục vụ peer. Kiểm bản sửa khớp policy159/158, không cấp quyền cho command từ Membership cũ. Đọc kiểm hồi quy departure, retired allocation và phase/round; native positive hai vòng trên binary sửa cùng TCP/native wrapper/DB. Giữ CP326/AUD135 và raw bất biến; kiểm CP326 dừng trước merge không được gọi là pass. Audit do mâu thuẫn ngữ nghĩa cụ thể, không phải chu kỳ checkpoint.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP326 đặt actor subject trên queued162 trong player round, trong khi accepted bomb/deadline sống tiếp sau actor departure.",
+      "correction": "Motion đã chấp nhận dùng current allocation/round/recipient, giống159/158. Giữ kiểm membership cho command mới, và loại batch khi allocation/round/recipient cũ. Legacy abort profiles vẫn có actor subject.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/room_io_item_tests.rs",
+        "docs/protocol/items-stats.md",
+        "docs/evidence/rust-service/g1-punch-departure.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Rà happy path hai vòng không đủ để xác nhận cửa sổ queued motion giữa hai recipient hoặc gán native proof cho EOF race.",
+      "correction": "Thêm kiểm hồi quy server xác định nhánh đó; lặp native hai vòng trên corrected binary nhưng ghi rõ chưa native fault injection cho cửa sổ EOF. Giữ giới hạn thay vì nâng chứng nhận.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-punch-departure.json",
+        "docs/protocol/items-stats.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Toàn nhóm Shoe/Punch/G1 và giai đoạn 1 còn mở; không mở Shoe hoặc selector chưa đo.",
+    "Native fault injection cho cửa sổ queued162/EOF chưa chạy; server regression kiểm invariant, không được đổi nhãn thành native.",
+    "Full exact-head local/history và CI của head mới vẫn bắt buộc trước merge. Không có review độc lập; waiver giữ nguyên."
+  ]
+}

@@ -6,6 +6,7 @@ use std::{
     collections::{BTreeMap, BTreeSet},
     io,
     sync::Arc,
+    time::{Duration, Instant},
 };
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -100,6 +101,9 @@ struct Active {
     ticket: Ticket,
     request: Request,
     pending: BTreeSet<Membership>,
+    deadline: Instant,
+    motion: Option<kr_wire::kr00967::BombMotion162>,
+    preparing: BTreeSet<Membership>,
 }
 #[derive(Clone, Debug)]
 pub(crate) struct Ledger {
@@ -300,9 +304,78 @@ impl Ledger {
                 ticket: ticket.clone(),
                 request: request.clone(),
                 pending: recipients,
+                deadline: Instant::now() + Duration::from_secs(6),
+                motion: None,
+                preparing: BTreeSet::new(),
             },
         );
         Ok(Ok(Placement::Allocated(ticket)))
+    }
+    /// Candidate owner-only selector3 policy, not original KR authority.
+    /// Wire119 has no epoch: current non-reused ID and Membership fence it.
+    pub(crate) fn move_punch(
+        &mut self,
+        round: u64,
+        actor: Membership,
+        slot: u8,
+        request: kr_wire::kr00967::BombAction119,
+        now: Instant,
+    ) -> Result<Ticket, &'static str> {
+        let motion = request.motion;
+        if self.generation != Some(round) {
+            return Err("inactive_round");
+        }
+        if motion.context != 0 || motion.slot != slot {
+            return Err("action_actor_mismatch");
+        }
+        // Only the measured direction/cell relationship is admitted initially.
+        if motion.selector != 3
+            || motion.source_row.checked_sub(1) != Some(motion.target_row)
+            || motion.source_column != motion.target_column
+            || motion.source_row >= 13
+            || motion.source_column >= 15
+        {
+            return Err("unmeasured_motion_geometry");
+        }
+        let active = self
+            .active
+            .get_mut(&motion.bomb_id)
+            .ok_or("inactive_bomb")?;
+        if active.ticket.owner != actor {
+            return Err("foreign_bomb");
+        }
+        if active.motion.is_some() {
+            return Err("bomb_already_moved");
+        }
+        if !active.preparing.is_empty()
+            || active.deadline.saturating_duration_since(now) < Duration::from_secs(3)
+        {
+            return Err("motion_deadline_closed");
+        }
+        if (active.request.row, active.request.column) != (motion.source_row, motion.source_column)
+        {
+            return Err("motion_source_mismatch");
+        }
+        active.request.row = motion.target_row;
+        active.request.column = motion.target_column;
+        active.motion = Some(motion);
+        Ok(active.ticket.clone())
+    }
+    /// Close action admission before the first recipient starts its blast write.
+    /// The stored deadline, owner, quota and allocation remain unchanged.
+    pub(crate) fn prepare_blast(
+        &mut self,
+        ticket: &Ticket,
+        recipient: Membership,
+    ) -> io::Result<bool> {
+        if !self.deliverable(ticket, recipient) {
+            return Err(io::Error::other("stale bomb preparation"));
+        }
+        let active = self.active.get_mut(&ticket.id).expect("current ticket");
+        if !active.preparing.insert(recipient) {
+            return Err(io::Error::other("duplicate bomb preparation"));
+        }
+        Ok(active.motion.is_some())
     }
     pub fn deliverable(&self, ticket: &Ticket, recipient: Membership) -> bool {
         Arc::ptr_eq(&self.scope, &ticket.scope)
@@ -357,6 +430,77 @@ mod tests {
             column: 3,
             power: 1,
         }
+    }
+    #[test]
+    fn punch_admission_closes_before_deadline_or_first_blast_write_and_never_reuses_ids() {
+        use kr_wire::kr00967::{BombAction119, BombMotion162};
+        let a = member(70000, 11);
+        let b = member(80000, 22);
+        let mut ledger = Ledger::default();
+        ledger.begin(1);
+        let mut original = request(1);
+        original.row = 6;
+        let ticket = ledger
+            .place(1, a, 0, &original, &[a, b], 1)
+            .unwrap()
+            .unwrap();
+        let action = BombAction119 {
+            motion: BombMotion162 {
+                context: 0,
+                slot: 0,
+                selector: 3,
+                bomb_id: ticket.id,
+                source_row: 6,
+                source_column: 3,
+                target_row: 5,
+                target_column: 3,
+            },
+            opaque_tail: [1715, 1],
+        };
+        let deadline = ledger.active[&ticket.id].deadline;
+        assert!(matches!(
+            ledger.move_punch(1, a, 0, action, deadline - Duration::from_secs(2)),
+            Err("motion_deadline_closed")
+        ));
+        assert_eq!(ledger.active[&ticket.id].request, original);
+        assert!(!ledger.prepare_blast(&ticket, b).unwrap());
+        assert!(ledger.prepare_blast(&ticket, b).is_err());
+        assert!(matches!(
+            ledger.move_punch(1, a, 0, action, deadline - Duration::from_secs(5)),
+            Err("motion_deadline_closed")
+        ));
+        ledger.begin(2);
+        assert!(matches!(
+            ledger.move_punch(2, a, 0, action, Instant::now()),
+            Err("inactive_bomb")
+        ));
+        original.key += 1;
+        let fresh = ledger
+            .place(2, a, 0, &original, &[a, b], 1)
+            .unwrap()
+            .unwrap();
+        assert!(fresh.id > ticket.id);
+        let mut fresh_action = action;
+        fresh_action.motion.bomb_id = fresh.id;
+        let replacement = Membership {
+            connection: 12,
+            visit: 2,
+            ..a
+        };
+        assert!(matches!(
+            ledger.move_punch(2, replacement, 0, fresh_action, Instant::now()),
+            Err("foreign_bomb")
+        ));
+        let fresh_deadline = ledger.active[&fresh.id].deadline;
+        assert!(
+            ledger
+                .move_punch(2, a, 0, fresh_action, Instant::now())
+                .is_ok()
+        );
+        assert_eq!(ledger.active[&fresh.id].deadline, fresh_deadline);
+        assert_eq!(ledger.active[&fresh.id].ticket.owner, a);
+        assert_eq!(ledger.active[&fresh.id].request.power, original.power);
+        assert_eq!(ledger.serials[&(a, original.serial)].0, original);
     }
     #[test]
     fn cancelled_serial_is_bounded_without_wire_id_or_quota_and_fenced_by_round_and_visit() {

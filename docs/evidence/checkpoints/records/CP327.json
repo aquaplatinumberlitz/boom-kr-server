@@ -1,0 +1,216 @@
+{
+  "id": "CP327",
+  "previous": "CP326",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T04:37:52.428055+00:00",
+  "context_commit": "a30f7f752deadd99cd8ea7eb343680ba3d9f4ad0",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Sửa race giữa queued motion162 và actor departure trong player round, giữ accepted allocation nhất quán với peer và chặn command của membership cũ.",
+  "scope": "Correction trước merge của CP326: chỉ thay subject guard của motion đã chấp nhận trong player round, khớp policy159/158. Kiểm server deterministic và lặp native hai vòng trên binary sửa; không native fault injection cho đúng cửa sổ queued162/EOF.",
+  "artifacts": [
+    {
+      "name": "corrected-rust-service",
+      "sha256": "f29d7dd30ec03f00c033b06e5df01830ab5e9b87ae2acd5fc0084921149a7ff5"
+    },
+    {
+      "name": "native-compare-client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+    "docs/evidence/rust-service/g1-punch-departure.json",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/450",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445"
+  ],
+  "findings": [
+    {
+      "summary": "Room.depart_player xóa actor khỏi current members nhưng giữ accepted bomb và deadline cho recipient còn lại. Subject guard của queued162 ở CP326 có thể bỏ riêng motion, làm peer giữ root cũ trong khi ledger/terrain đã đổi. Bản sửa cho accepted162 theo current allocation/round/recipient, giống159/158.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "DEP327-01051",
+        "DEP327-01052",
+        "DEP327-01053",
+        "DEP327-00302",
+        "DEP327-00303"
+      ],
+      "limits": "Không cho membership đã rời gửi lệnh mới; allocation/vòng/recipient cũ vẫn loại batch. Legacy whole-round abort giữ subject guard. Regression server không là native EOF fault proof."
+    },
+    {
+      "summary": "Binary sửa đã qua lại hai vòng account A/C1 và peer B/C0: Punch4 không Shoe, actual119/162, short158/active0, next118, hai kết quả/về phòng/reset và hai journal thưởng0 đúng identity. Các input bất biến và source build khớp.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "DEP327-00962",
+        "DEP327-00956",
+        "DEP327-00949",
+        "DEP327-00946"
+      ],
+      "limits": "Native positive regression của đúng binary, không tái tạo độ trễ queued162/EOF. Scope owner/selector3/ExVillage01/two accounts/Wine/LAN, chưa Shoe/Internet/load/G1 closure."
+    },
+    {
+      "summary": "Kiểm full CP326 cũ được dừng trước merge ngay khi phát hiện mâu thuẫn; raw và record cũ giữ nguyên. Build R4 thiếu receipt cuối, không gọi aggregate pass; detached R5 có đủ exit/stdout cho fmt/clippy/locked test/build.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "DEP327-00018",
+        "DEP327-00122",
+        "DEP327-00298",
+        "DEP327-00006"
+      ],
+      "limits": "Không sửa checkpoint/audit complete cũ; CP327/AUD136 là correction mới. Head mới phải qua full local/history và CI trước merge."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Deterministic server regression for accepted162/deadline after actor departure, stale command and retired/ending work",
+      "result": "pass",
+      "evidence": [
+        "DEP327-00303",
+        "DEP327-01053"
+      ],
+      "limits": "Synthetic current-room invariant; not native timing-window injection."
+    },
+    {
+      "check": "Final corrected source fmt/clippy -D warnings/locked workspace tests/build",
+      "result": "pass",
+      "evidence": [
+        "DEP327-00298",
+        "DEP327-00299"
+      ],
+      "limits": "188 service,8 tunnel,9 wire unit,20 wire integration; full retained stdout and final receipt."
+    },
+    {
+      "check": "Native corrected-binary two-cycle regression, peer/reset/account DB and raw/input preservation",
+      "result": "pass",
+      "evidence": [
+        "DEP327-00962",
+        "DEP327-00946",
+        "DEP327-00006",
+        "DEP327-00021"
+      ],
+      "limits": "216 native getter checks. Full exact-head local/history and CI remain required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP327-punch-departure.json",
+      "bytes": 291405,
+      "sha256": "750d8956e82d0f5cf4c6228b448f5de3c58ce65868ec0a45fbe38ec62a050136",
+      "count": 1096
+    }
+  ],
+  "delta": {
+    "added": [
+      "Correction actor-departure guard và regression đúng nhánh tiếp tục trận."
+    ],
+    "corrected": [
+      "CP326 actor subject không phù hợp accepted162 khi bomb/deadline sống tiếp sau actor departure; canonical và audit mới ghi rõ."
+    ],
+    "superseded": [
+      "Nghĩa actor-subject fence áp dụng cho mọi queued motion; player round nay giữ accepted work ở allocation hiện hành, không cấp lại quyền command."
+    ]
+  },
+  "blockers": [
+    "Shoe, other selectors, late/inflight, foreign owner and wider geometry remain outside this slice. G1 and phase1 remain open.",
+    "Full CP326 checker was deliberately aborted before merge once the semantic race was found; its partial log is not a pass. A new exact-head checker is required.",
+    "Build R4 lost its final process receipt despite retained stdout; no aggregate pass claimed. Owned detached R5 completed fmt/clippy/test/build with final receipt."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Sau exact-head checks/merge, tiếp G1 Shoe và selector còn thiếu bằng ca native có mục tiêu; không lặp route Punch đã đo, không làm L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T04:37:52.428055+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo tự kiểm, review độc lập waived. AUD136 do serious contradiction, không phải audit định kỳ hoặc đóng thêm toàn nhóm Shoe/Punch/G1.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Correction accepted motion khi actor departure, giới hạn loại kiểm và provenance binary/native mới."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Correction accepted motion khi actor departure, giới hạn loại kiểm và provenance binary/native mới."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Correction accepted motion khi actor departure, giới hạn loại kiểm và provenance binary/native mới."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Correction accepted motion khi actor departure, giới hạn loại kiểm và provenance binary/native mới."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Correction accepted motion khi actor departure, giới hạn loại kiểm và provenance binary/native mới."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Correction accepted motion khi actor departure, giới hạn loại kiểm và provenance binary/native mới."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-punch-departure.json",
+      "state": "updated",
+      "reason": "Correction accepted motion khi actor departure, giới hạn loại kiểm và provenance binary/native mới."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD136.json",
+      "state": "updated",
+      "reason": "Correction accepted motion khi actor departure, giới hạn loại kiểm và provenance binary/native mới."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Correction accepted motion khi actor departure, giới hạn loại kiểm và provenance binary/native mới."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "state": "updated",
+      "reason": "Correction accepted motion khi actor departure, giới hạn loại kiểm và provenance binary/native mới."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index trỏ đúng anchor hiện hành."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "Không đổi thứ tự hoặc câu hỏi Shoe/selector; contract correction ở nguồn chuẩn items-stats."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Waiver, audit policy và owner L1 không đổi."
+    }
+  ]
+}

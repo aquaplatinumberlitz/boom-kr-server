@@ -1,0 +1,230 @@
+{
+  "schema": "kre-rust-punch-departure-correction-v1",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445",
+  "source": "design",
+  "status": "confirmed",
+  "corrects": "CP326 actor-subject fence on accepted player-round motion; original checkpoint/raw/audit remain unchanged.",
+  "source_commit": "a30f7f752deadd99cd8ea7eb343680ba3d9f4ad0",
+  "problem": "Queued motion162 could be dropped by subject guard after actor departure, while its accepted bomb allocation and158 deadline survive. Ledger/terrain had already moved; a remaining peer could retain the old root.",
+  "policy": "Already-admitted162 follows current recipient/round/allocation, matching159/158. Departure/revoke prevents new commands from old Membership; retirement, new visit or round rejects old queued work. Legacy whole-round abort keeps subject guard.",
+  "regression": "admitted_punch_and_deadline_survive_actor_departure_in_current_player_round_only",
+  "native_regression": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "clients": [
+      {
+        "role": "A",
+        "identity": 1,
+        "slot": 0,
+        "character": 1,
+        "native": [
+          {
+            "round": 1,
+            "object": 1656992312,
+            "root": [
+              5,
+              3
+            ],
+            "active_at_cleanup": 0,
+            "CC_after_rebind": 1,
+            "landed_before_rebind": true,
+            "reader162": [
+              9,
+              9,
+              0,
+              0
+            ]
+          },
+          {
+            "round": 2,
+            "object": 1624214720,
+            "root": [
+              5,
+              3
+            ],
+            "active_at_cleanup": 0,
+            "CC_after_rebind": 1,
+            "landed_before_rebind": true,
+            "reader162": [
+              9,
+              9,
+              0,
+              0
+            ]
+          }
+        ],
+        "ranks": 2,
+        "returns": 2,
+        "clocks": 2,
+        "pickup165": 2,
+        "only_Punch4_no_Shoe3": true,
+        "wire_motion": 2,
+        "short_rebind158": 2
+      },
+      {
+        "role": "B",
+        "identity": 2,
+        "slot": 1,
+        "character": 0,
+        "native": [
+          {
+            "round": 1,
+            "object": 1652353456,
+            "root": [
+              5,
+              3
+            ],
+            "active_at_cleanup": 0,
+            "CC_after_rebind": 1,
+            "landed_before_rebind": true,
+            "reader162": [
+              9,
+              9,
+              0,
+              0
+            ]
+          },
+          {
+            "round": 2,
+            "object": 1593076160,
+            "root": [
+              5,
+              3
+            ],
+            "active_at_cleanup": 0,
+            "CC_after_rebind": 1,
+            "landed_before_rebind": true,
+            "reader162": [
+              9,
+              9,
+              0,
+              0
+            ]
+          }
+        ],
+        "ranks": 2,
+        "returns": 2,
+        "clocks": 2,
+        "pickup165": 2,
+        "only_Punch4_no_Shoe3": true,
+        "wire_motion": 2,
+        "short_rebind158": 2
+      }
+    ],
+    "native_actor_field_checks": 216,
+    "limits": "Positive two-cycle KR regression on corrected binary; queued162/EOF timing window is covered by synthetic server regression, not native fault injection."
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-punch-build-r5/verification.json",
+      "bytes": 2577,
+      "sha256": "13c9eb5a0cb39b5c4d1edad2c5012e52fc4c5cf76d6994a12df6436f99871203"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r5/workspace-source-identity.json",
+      "bytes": 28091,
+      "sha256": "2ae2cbde898fdd2a328246be918ad9fc4ce1e6631b1721d5665b337f76feb74c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r5/0-fmt.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r5/1-clippy.txt",
+      "bytes": 72,
+      "sha256": "fecede7c2157efe2f16c8c8b9dce94b0fb4dd384dca8207046c8bf7636eb0ffe"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r5/2-test.txt",
+      "bytes": 26722,
+      "sha256": "f4abf1e3bac3b062936cd9938c57e9ed6376273f0f1f14ac10927a0394d0b847"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r5/3-build.txt",
+      "bytes": 169,
+      "sha256": "61a370a9989634758dc2a8c64772cbc4d920725c78d5f427043cac8bc997e63d"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r4/incomplete-execution.json",
+      "bytes": 531,
+      "sha256": "b0e59bcdd35be211c6c06218ee486b2a059d87109cb45b786e7bf881fa7e49b1"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r4/0-fmt.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r4/1-clippy.txt",
+      "bytes": 169,
+      "sha256": "80ad8a81949c5e308b10aeee3953398ec6f71e171ad1d131828943c1b6d34c95"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r4/2-test.txt",
+      "bytes": 26819,
+      "sha256": "b12671e7ebb0b59d35892b44ce2ec84daa0116d9c69a19c0d27465c2d284a480"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r5/punch-native-verification.json",
+      "bytes": 5102,
+      "sha256": "961b77143f3a93a30fb02d24a3b9a791a484fedb7286a4208fe7a73eade32c31"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r5/native-actor-field-checks.json",
+      "bytes": 67609,
+      "sha256": "66d5e73a8f7b8d24711d36ffe6aa7654e8f0048da862dcf6ac483ad4ed802003"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r5/decoded-channels-shared.json",
+      "bytes": 104499,
+      "sha256": "89e9cedffd19eb6f5429e3e8e3921621bfbed34c4da3bf72db73027cca5759b7"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r5/native/runtime-preflight.json",
+      "bytes": 205931,
+      "sha256": "e695d5e2f816a488e6dbe8eca628673d14d46df47dc8d649066f8ec5ea641f79"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r5/native/raw-seal.json",
+      "bytes": 12510,
+      "sha256": "7048fba275dc4dba3d920cc7be75ed230ca9aa994d756149079b2cdfe8d645b4"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r5/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "6b8e52a6dbc5cd4a50053e1ca43b088a226da270a85c1e1a54d35f28bdf082e3"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r5/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "aad74fb49eb082a9805a93d3e5115c7d0ce6390cad0af638a31aabf9032f5bdf"
+    },
+    {
+      "path": "local/research/codex/g1-punch-departure-correction.json",
+      "bytes": 1021,
+      "sha256": "d05013d568d692e2abc9a9899b911d33db66bae9c1839d8d62cf8be39e72cfc3"
+    },
+    {
+      "path": "local/research/codex/g1-punch-departure-regression.txt",
+      "bytes": 3271,
+      "sha256": "e03987bcc950ff65560c58694bb037d8358c8343220efab38839e7d7914fe2a0"
+    },
+    {
+      "path": "local/research/codex/cp326-check-aborted-for-departure-correction.json",
+      "bytes": 978,
+      "sha256": "835043a0001331eaba9e23ab745917914944d63d17e92ce998138fca5cc4a7c6"
+    },
+    {
+      "path": "local/research/codex/cp326-exact-head-full.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limits": [
+    "Shoe, other selectors, late/inflight, foreign owner and wider geometry remain outside this slice. G1 and phase1 remain open.",
+    "Full CP326 checker was deliberately aborted before merge once the semantic race was found; its partial log is not a pass. A new exact-head checker is required.",
+    "Build R4 lost its final process receipt despite retained stdout; no aggregate pass claimed. Owned detached R5 completed fmt/clippy/test/build with final receipt."
+  ]
+}

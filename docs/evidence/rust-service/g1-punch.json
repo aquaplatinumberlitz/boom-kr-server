@@ -1,0 +1,251 @@
+{
+  "schema": "kre-rust-punch-slice-v1",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "source_commit": "0193ed0e07b766213e7efb41444efce63e623c26",
+  "scope": "Lát Rust opt-in Punch selector3, bom của người thao tác, một cell phía trên. Không bật Shoe hoặc tuyên bố toàn bộ nhóm item.",
+  "clients": [
+    {
+      "role": "A",
+      "identity": 1,
+      "slot": 0,
+      "character": 1,
+      "native": [
+        {
+          "round": 1,
+          "object": 1672009064,
+          "root": [
+            5,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        },
+        {
+          "round": 2,
+          "object": 1603753056,
+          "root": [
+            5,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        }
+      ],
+      "ranks": 2,
+      "returns": 2,
+      "clocks": 2,
+      "pickup165": 2,
+      "only_Punch4_no_Shoe3": true,
+      "wire_motion": 2,
+      "short_rebind158": 2
+    },
+    {
+      "role": "B",
+      "identity": 2,
+      "slot": 1,
+      "character": 0,
+      "native": [
+        {
+          "round": 1,
+          "object": 1682972896,
+          "root": [
+            5,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        },
+        {
+          "round": 2,
+          "object": 1674081880,
+          "root": [
+            5,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        }
+      ],
+      "ranks": 2,
+      "returns": 2,
+      "clocks": 2,
+      "pickup165": 2,
+      "only_Punch4_no_Shoe3": true,
+      "wire_motion": 2,
+      "short_rebind158": 2
+    }
+  ],
+  "native_actor_field_checks": 216,
+  "policy": {
+    "source": "design",
+    "status": "design",
+    "description": "Explicit report_derived_punch; owner-only selector3, source rowminus1 samecolumn, one motion perbomb and remainingdeadline>=3s. Preserve original owner/quota/6s fuse. Short158 at actualdeadline then blast, original server ordering unknown."
+  },
+  "negative_control": "Before each pickup, flags0, two ordinarySpace inputs generated118 and no119; native input eligibility, plus synthetic wrongmember/owner/dead/round/queue/terrain/late tests. R3 actualselector1 is refused, not silently normalized.",
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-punch-build-r3/verification.json",
+      "bytes": 2577,
+      "sha256": "405b1fa268309a78a4729a254971325fc20a061e46d93375bdedc7a20f4a87bd"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r3/workspace-source-identity.json",
+      "bytes": 28091,
+      "sha256": "edc5a4ccf8c2bdcce44913cb5b8d468621aaf89e807be52d77016ff4dc5e10a5"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r3/0-fmt.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r3/1-clippy.txt",
+      "bytes": 169,
+      "sha256": "7e5f32acf3160cdd011d447c28102835bf50b421ec851a6c329c913448e96d46"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r3/2-test.txt",
+      "bytes": 26589,
+      "sha256": "46438814e2c6fe0ac57c01a19df3bc10a5ab4f452db0df009f190f40972c1adb"
+    },
+    {
+      "path": "local/research/codex/g1-punch-build-r3/3-build.txt",
+      "bytes": 72,
+      "sha256": "299f16a2c523be18fef769975d2df00e0505521db047540feea3a74b94666887"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r1/source-chunk-binding.json",
+      "bytes": 8476,
+      "sha256": "c3280bbd54e8aca9b71a81284c620eb4b7a64e9830652d8b528003aa7ce8964e"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r1/native/failure-verification.json",
+      "bytes": 771,
+      "sha256": "745b4548a649cc7cd8c808d1691ef753e627f43aad2294d0ef4e81ba07e66dc8"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r1/native/cache-input-scope-correction.json",
+      "bytes": 1799,
+      "sha256": "9551cd87caf0f9af27ecbe44a6698fd2117bbb64a4fb0c83de9b286ba1706063"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r1/native/postrun-cache-preservation.json",
+      "bytes": 672,
+      "sha256": "5e6796f1836bfacf3a2b9bdc2b6ec966c062170485d8265b08e8e9fc559d607a"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r1/native/raw-seal.json",
+      "bytes": 9162,
+      "sha256": "b88d1d8d364e1b877d9382a84ba2fbac387e700f9e63d781d216d8e5fb62b242"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r1/native/frozen-input-postrun-verification.json",
+      "bytes": 363,
+      "sha256": "d768f4e7896efeaaa8338e517a2e8522af232875430357abb5832c4b1f5a867a"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r3/native/partial-verification.json",
+      "bytes": 1824,
+      "sha256": "fb069f1032250fb5e737557c130cbf8617f4679f05ef5fbf14baf1c4bce4462a"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r3/native/raw-seal.json",
+      "bytes": 11923,
+      "sha256": "594852bcf5812955427f852f90f78654b3deddef7f665423d7b68661cca309ff"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r3/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "626f4f4d1ce4f775b0160d6a5e6969c14ab0eb0dfcf8ba2a0884b28420974477"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r3/decoded-channels-shared.json",
+      "bytes": 87141,
+      "sha256": "03d7b98039ea3f7d6c6aba852ddfa225603c9c7faac5e77be1d054b9b6414150"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r4/punch-native-verification.json",
+      "bytes": 5008,
+      "sha256": "a216ecc1e56da1c361e814f17419cc6ba2d2bb141d666406346abff640bb1182"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r4/native-actor-field-checks.json",
+      "bytes": 67609,
+      "sha256": "df65495b4b6cbe73478d274f55206cc7a48443b108e9ce1a83950948f523cc13"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r4/decoded-channels-shared.json",
+      "bytes": 104517,
+      "sha256": "8eee1bc6c7d9d9b56e233ebc77a1fb0d27e90f94051b76e00ad600cb40e51db5"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r4/native/runtime-preflight.json",
+      "bytes": 168367,
+      "sha256": "88243de20bab5c761c2ba6c73e491a74c5f4c7f1ab8d5f784404049bfea831bc"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r4/native/raw-seal.json",
+      "bytes": 12509,
+      "sha256": "2e3944e24d170666696a75c77dbc65441a4856515b2628805b1fdce3b959bfa7"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r4/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "6b8e52a6dbc5cd4a50053e1ca43b088a226da270a85c1e1a54d35f28bdf082e3"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r4/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "788a7c28448d092c802dd438e61b95976fa4aab5e1bd154276d9c6d434f178d8"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r4/verification-stdout.txt",
+      "bytes": 1569,
+      "sha256": "15a4cb04bbfc57771c6deff95120ad13af4db18182b55b46ac75ac45141fb6da"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r4/verification-v2-stdout.txt",
+      "bytes": 136,
+      "sha256": "a72480a01527bb62d85692b71e68c7068b404dfb238e30b67297a59d14109b29"
+    }
+  ],
+  "limits": [
+    "Native actions by persisted characterC1, receiver peerC0, two accounts on isolated virtualLAN/Wine; not Internet/load or allcharacters. ReferenceC0 has separate CP325 evidence.",
+    "NoShoe, selectorsotherthan3, foreignbomb action, arbitrary targetcell, repeatedmotion, fuse-inflight or lateaction guarantee. Server refuses outside scoped policy.",
+    "R1 input inventory wrongly froze2 generatedcache files; correction retained, not rewritten as pass. R3 firstcycle+selector1refusal retained.",
+    "No G1, phase1 or operations closure; native absence of119 beforepickup is not originalserverauthority proof.",
+    "Wire119 không có epoch/key; server dùng membership hiện hành và wire ID không tái sử dụng xuyên vòng. Cửa sổ tối thiểu3s là design bảo thủ, chưa bảo đảm hành động khi đang bay hoặc mạng trễ.",
+    "Không đổi các preset serving đang dùng. Config chọn report_derived_punch mới cho phép item4; report_derived_basic vẫn từ chối."
+  ]
+}

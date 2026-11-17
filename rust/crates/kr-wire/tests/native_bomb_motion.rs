@@ -60,3 +60,13 @@ fn native_accepted_motion_body_has_its_own_exact_boundary() {
     trailing.push(0);
     assert!(BombMotion162::decode(&trailing).is_err());
 }
+
+#[test]
+fn captured_short158_rebind_is_distinct_from_thirteen_byte_explosion() {
+    // CP325 R11: these exact bodies were consumed4/4, errors0 by both clients.
+    for (id, captured) in [(1, "5ba5685b"), (3, "5ba56a5b")] {
+        assert_eq!(kr_wire::kr00967::rebind158(id).unwrap(), hex(captured));
+        assert_eq!(kr_wire::kr00967::explode158(id).unwrap().len(), 13);
+    }
+    assert!(kr_wire::kr00967::rebind158(0).is_err());
+}

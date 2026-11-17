@@ -32,6 +32,7 @@ pub struct Member {
     pub team: u8,
     pub character: Option<u16>,
     pub(crate) item_stats: Option<crate::characters::Stats>,
+    pub(crate) punch: bool,
     pub ready: bool,
     pub setup: bool,
     late_after_abort: u16,
@@ -406,6 +407,7 @@ impl Room {
                 },
                 character: self.player_round().then_some(0),
                 item_stats: None,
+                punch: false,
                 ready: false,
                 setup: false,
                 late_after_abort: 0,
@@ -583,6 +585,7 @@ impl Room {
             member.loading79 = false;
             member.life.begin();
             member.item_stats = None;
+            member.punch = false;
             member.late_after_abort = 0;
         }
         self.aborted = None;

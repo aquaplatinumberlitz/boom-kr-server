@@ -1,0 +1,75 @@
+{
+  "id": "AUD135",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-rust-owner-punch-selector3-slice"
+  ],
+  "completed_through": "CP326",
+  "recorded_utc": "2026-11-17T04:15:45.934153+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/items-stats.md",
+    "docs/evidence/rust-service/g1-punch.json",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/lib.rs",
+    "rust/crates/kr-service/src/pickups.rs",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/terrain.rs",
+    "rust/crates/kr-service/src/map_profile.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "rust/crates/kr-wire/src/kr00967/bomb_motion.rs",
+    "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+    "local/research/codex/g1-punch-build-r3/verification.json",
+    "local/research/codex/g1-punch-rust-native-r1/native/cache-input-scope-correction.json",
+    "local/research/codex/g1-punch-rust-native-r3/native/partial-verification.json",
+    "local/research/codex/g1-punch-rust-native-r4/punch-native-verification.json",
+    "local/research/codex/g1-punch-rust-native-r4/decoded-channels-shared.json",
+    "local/research/codex/g1-punch-rust-native-r4/native/raw-seal.json",
+    "local/research/codex/g1-punch-rust-native-r4/native/cycles/rust-events.jsonl"
+  ],
+  "method": "Đọc README, PLAN, PROTOCOL và RESEARCH theo thứ tự, rồi đối chiếu Rust và raw native. Rà bản clone của room, reservation hàng đợi, membership/slot và wire ID hiện hành không tái sử dụng. Kiểm quyền owner, geometry, giới hạn một hành động, trạng thái sống, ledger/terrain và fence trước lần ghi blast đầu. Đối chiếu vector short158 với native, owner/quota/deadline và queued work khi đổi phiên/vòng. Rà TCP capture hai chiều cùng reader162, rebind, active0, next118, kết quả và reset ở hai view; đối chiếu journal DB và nhân vật C1 thực tế của account A. Rà lỗi input/cache, các run thất bại và verifier sửa riêng, 85 input nguồn cùng log fmt/clippy/locked workspace tests/build. Giữ rõ giới hạn một selector, hai account, ExVillage01 và LAN/Wine; không suy tải, Internet hoặc toàn bộ nhóm item.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Codec và reference chưa có service admission/terrain/deadline/queue; kích hoạt packet đơn lẻ có thể giữ root cũ hoặc làm việc cũ tác động vòng mới.",
+      "correction": "Nối opt-in ownerPunch selector3, đổi ledger/terrain cùng candidate, giữ owner/quota/fuse, đóng motion trướcblast và guard queuedwork theo allocation/member/round. Test các ca rollback, membership/visit/round và deadline.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/bombs.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/terrain.rs",
+        "rust/crates/kr-service/src/room_io_item_tests.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Quá trình điều khiển hoặc exit0 dễ bị dùng thay native và tài khoản thực tế có thể bị giả định làC0.",
+      "correction": "Verifier độc lập kiểm TCP/native wrapper/DB đã xác nhận hai vòng, next118 và hai journal thưởng 0. Account A thực tế là C1 do preference đã lưu; peer B là C0. Metadata/canonical ghi đúng C1, không dùng phạm vi C0 của reference làm mô tả run Rust.",
+      "fixed_in": [
+        "docs/protocol/items-stats.md",
+        "docs/evidence/rust-service/g1-punch.json",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "RunR1 thiếu pickup, inventory đóng băng nhầmcache; R3 phát hướngselector1; test tái nhập fixture trùng connection; verifier v1 gọiget trênNone.",
+      "correction": "Giữ raw lỗi và bản kiểm thất bại. Lưu byte cache trước/sau từ nguồn khớp hash, không sửa preflight cũ. R3 xác nhận từ chối selector 1; R4 đổi hướng bằng phím Down và chỉ kiểm selector 3. Fixture test dùng connection riêng đã qua full suite; verifier v2 sửa trường log có thể null, không sửa raw.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-punch.json",
+        "rust/crates/kr-service/src/room_io_item_tests.rs"
+      ]
+    }
+  ],
+  "remaining": [
+    "Chỉ hoàn tất lát owner Punch selector 3; nhóm Shoe/Punch, G1 và giai đoạn 1 chưa đóng.",
+    "Shoe, hướng khác, hành động lặp hoặc chuyển bom người khác, late/inflight, geometry rộng và nhân vật/map/roster khác chưa có acceptance tương ứng.",
+    "Cửa sổ tối thiểu 3 giây, giới hạn một hành động, owner-only và thứ tự hai gói 158 là policy design; không phải quy trình server gốc hoặc bảo đảm cho mọi độ trễ. Preset phục vụ hiện hành chưa đổi.",
+    "M8 còn transport Internet thật, tải 50 người/8 phòng, chạy dài 24 giờ và vận hành; L1 thuộc Claude. Không đưa VPS/OCI, credential, binary hoặc decompile lên GitHub."
+  ]
+}
