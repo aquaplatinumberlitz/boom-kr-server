@@ -221,6 +221,20 @@ def prepare(args):
             for child in value.values():fixtures(child)
         elif isinstance(value,list):
             for child in value:fixtures(child)
+    def copy_fixture_inputs(value):
+        if isinstance(value,dict):
+            if {'path','bytes','sha256'} <= value.keys():
+                target=Path(value['path'])
+                if target.is_relative_to(out) and not target.exists():
+                    source=base/target.relative_to(out)
+                    source_pin=pin(source)
+                    assert source_pin['bytes']==value['bytes'] and source_pin['sha256']==value['sha256']
+                    target.parent.mkdir(parents=True,exist_ok=True)
+                    shutil.copy2(source,target)
+            for child in value.values():copy_fixture_inputs(child)
+        elif isinstance(value,list):
+            for child in value:copy_fixture_inputs(child)
+    copy_fixture_inputs(server)
     fixtures(server)
     # Runtime cache files are intentionally outside the immutable input set.
     # The executable/pack copy is bound, Wine prefix and generated caches are not.
