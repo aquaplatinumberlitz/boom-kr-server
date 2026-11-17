@@ -1,0 +1,93 @@
+{
+  "schema": "kre-runtime-evidence-v1",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414",
+  "baseline": "d6f7bf7",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "scope": "Vertical position of Vietnamese text in short boxes on the 949x diagnostic client (owner screenshots 17/11: lobby and room chat tabs, room map box). Static: KR 00967 font loader 0x14BAEC0, glyph drawer 0x14BB240, CFontMan vtable 0x17AF0CC, on a private copy of the KR IDA database; VN VBNB_116 loader 0xA33320 on a private copy of the boom-re IDA database. Runtime: review recipes vi-06 (A and B vi, exe patch-review2 vi, data l10n-data6 from boom-re-l10n 321c6ca) and mix-03 (A ko exe and data with the original KR 00967 fonts, B vi), Wine, isolated virtual LAN, Rust diagnostic service; fonts local/fonts-vn3 from tools/l10n_949x.py vnfonts with --vn the VN 116 font files and --kr the KR 00967 font files. Before images are the 17/11 review2 runs (fonts-vn2) kept under ra/ in each run directory. KR reference: Codex G1 Factory native r3 captures (unpatched client, KR fonts).",
+  "observation": "The KR loader reads only glyph count, width, height and bytes per glyph from the 32-byte .fft header; header fields at offsets 20 and 24 are unused, and the VN 116 loader is the same. The glyph drawer puts the top of the glyph cell at the caller's y, and CFontMan has no height getter, so each control uses a constant y tuned for the KR 12-row font whose Latin baseline is row 9. The VN CxUni/CxUniBold fonts are 12x16 with four rows reserved above for stacked marks, Latin baseline at row 12, so all Vietnamese text in those fonts drew 3 px lower than KR text in the same place. Measured on the lobby selected chat tab: KR glyph rows 505..515, VN before 507..517, VN after raising glyphs 2 rows 505..515; the unselected tab descender of 'chung' moved from the tab border row 519 to 518. Room tabs 'Tất cả'/'Hội' and map box 'Factory07'/'Số chỗ: 8' moved up 2 px; 'Số chỗ: 8' is still about 1 px lower than the KR label and stays left-aligned like the KR '인  원 : 8'. The create-room dialog labels moved up 2 px with no clipping. mix-03 A (Korean data, original KR fonts) renders the lobby and room tabs identical to the KR reference. Cost: capitals and lowercase letters whose marks start in rows 0..1 lose the blank row between mark and letter, and letters with three mark rows (for example Ẩ, Ẫ, Ẳ, Ổ, Ỗ, ẩ, ẫ) have the hook or tilde merged with the circumflex into two rows.",
+  "local_evidence": [
+    {
+      "path": "local/fonts-vn3/CxUni.fft",
+      "sha256": "2fbecd56eb5a8e8c21836ee2a4f99c9eddffad4b78c96a614ae2860910ffc16b"
+    },
+    {
+      "path": "local/fonts-vn3/CxUniBold.fft",
+      "sha256": "c80324c4cd562b118981a1d5adf277efdd8355b1c88f36258a050746afb06df0"
+    },
+    {
+      "path": "local/fonts-vn3/CxUniGulim.fft",
+      "sha256": "8a2388d085fe9654e6153d16a30998ae979806c91052aaf0925269423376d84f"
+    },
+    {
+      "path": "local/fonts-vn3/CxUniGulimBold.fft",
+      "sha256": "a52b5352b413bc41551e01451775911b707fcac0d170ed85b2ac5426bbed31b2"
+    },
+    {
+      "path": "local/runs/vi-06/preflight.json",
+      "sha256": "c31d5208470c0bd3e0dab0390ad493e7b1d08851b3f983eea0e727740e98a703"
+    },
+    {
+      "path": "local/runs/vi-06/native/run.json",
+      "sha256": "b4a6b649fa29a61a13643fb91d0c7ca6ec10c0ddd7685fdc8402ab6056a6a7bf"
+    },
+    {
+      "path": "local/runs/vi-06/native/A/01-sanh.png",
+      "sha256": "41523bdb39e66f2bd9ce89ba47c849d112311d15b31d42f4fe321f6914a773d2"
+    },
+    {
+      "path": "local/runs/vi-06/native/A/20-phong.png",
+      "sha256": "64e0dff6f2f18819caf215b9b11b8602805b32794e35f1e61e8a4a750a390c27"
+    },
+    {
+      "path": "local/runs/vi-06/native/A/16-tao-phong.png",
+      "sha256": "5baf19b24de9c73db12d788a79473bcd18bb1c00380fee73fea64aa1d77206e6"
+    },
+    {
+      "path": "local/runs/vi-06/ra/native/A/01-sanh.png",
+      "sha256": "b34fb83480558d4c2f200e5eaeeacb1810622e71747736b37cf7ee6f9d7dd26a"
+    },
+    {
+      "path": "local/runs/vi-06/ra/native/A/20-phong.png",
+      "sha256": "608c69a7eb630e6751ab96745a3ddbbad0376d091c127a82d15660ef2459a350"
+    },
+    {
+      "path": "local/runs/mix-03/preflight.json",
+      "sha256": "c5c0d292719701e83c86e074f24b44376510d24fa9a604b5fdf39664c7001873"
+    },
+    {
+      "path": "local/runs/mix-03/native/run.json",
+      "sha256": "3f5487197c31c413356d808a6d752a7b110e602e7156b0e487ffc9d222c08299"
+    },
+    {
+      "path": "local/runs/mix-03/native/A/01-sanh.png",
+      "sha256": "12722aa52afdd32a14b2b9e01647f5ce971f5f5472ece30f3cade581cb2f3ec9"
+    },
+    {
+      "path": "local/runs/mix-03/native/A/20-phong.png",
+      "sha256": "2c86483b7c5535f02ee36aa368ad4117036263f86f7c15c2bb002e640aa3ef85"
+    },
+    {
+      "path": "local/runs/mix-03/native/B/01-sanh.png",
+      "sha256": "a4e77a99c1a9f804a4b8cfad872c032edcefb21ee973f13a71dd543a06c2415e"
+    },
+    {
+      "path": "local/review-fix/align/1-sanh-tab-chat.png",
+      "sha256": "41a0b744385b3ccf787b4aafd0fb64eb2d8e55cc4fd31857b660b0d0d4da67b9"
+    },
+    {
+      "path": "local/review-fix/align/2-phong-tab-chat.png",
+      "sha256": "cd6180ea4be7948af2bc2cdb64c8e58936e9a0025053789a5ea90618d8581b5b"
+    },
+    {
+      "path": "local/review-fix/align/3-phong-khung-map.png",
+      "sha256": "0c2d7fa0f1b2be07d99ef43009755ec1f5937f9541b373fcb72f89b6d0c3ae25"
+    },
+    {
+      "path": "local/review-fix/align/4-tao-phong-truoc-sau.png",
+      "sha256": "24dbe2661e6cc54d80dfaf96176d0ed77c08f8ad148f04f6966cb99e04b5d0da"
+    }
+  ],
+  "cleanup": "Both runs exited 0 and the harness removed its namespaces and wineserver; long-lived background wineserver/winedevice of the host were not touched.",
+  "limits": "Wine only; diagnostic patched client; only the screens of the review controller (lobby, menus, create-room dialog, room) were compared. Horizontal centering of 'Số chỗ: 8' was not changed: the label position is an exe constant like on the KR client. Other places that draw CxUni/CxUniBold text were not reviewed one by one."
+}

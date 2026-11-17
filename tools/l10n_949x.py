@@ -10,7 +10,7 @@ Lệnh:
   table --c OUT.h             sinh bảng C cho hook trong exe
   convert --src DIR --out DIR chuyển bộ dữ liệu UTF-8 (ssi1 + ClientString) sang 949x
   fonts --src KR --out DIR    vá bản sao font Gulim: mượn hình chữ ngoài 949 từ CxUni (phương án dự phòng)
-  vnfonts --vn VN --kr KR --out DIR  bộ font VN 12x16 có dấu chồng, sửa advance chữ Hàn theo font KR
+  vnfonts --vn VN --kr KR --out DIR  bộ font VN 12x16 có dấu chồng, sửa advance chữ Hàn theo font KR, nâng hình CxUni/Bold 2 hàng
   selftest                    kiểm round-trip
 """
 import argparse
@@ -309,6 +309,9 @@ def vn_fonts(vn, kr, out):
                         v[ov + c * sv] = ak
                         fixed += 1
         report[name] = {'advance_fixed': fixed}
+        if 'Gulim' not in name:
+            v, info = raise_glyphs(v, RAISE_ROWS)
+            report[name].update(info)
         if 'Gulim' in name:
             # Ô nhập của layout KR chỉ cao 12 điểm: dùng Gulim 12x12 gọn thay cho Gulim VN 15/16 hàng.
             base, _ = merge_font(k, (kr / name.replace('Gulim', '')).read_bytes(), [ord(ch) for ch in EXT])
@@ -319,6 +322,88 @@ def vn_fonts(vn, kr, out):
 
 
 LATIN_RANGES = [(0x20, 0x250), (0x300, 0x370), (0x1E00, 0x1F00), (0x20AB, 0x20AC)]
+
+# Exe vẽ chữ với đỉnh ô chữ ở một y cố định theo layout KR (font 12x12, đường chân chữ Latin ở hàng 9).
+# CxUni/CxUniBold VN cao 16 hàng, chừa 4 hàng trên cho dấu chồng nên chân chữ Latin ở hàng 12: chữ Việt
+# thấp hơn chữ KR 3 điểm, sát/chạm viền dưới ở ô thấp (tab chat, khung map). Nâng mọi hình chữ lên 2 hàng.
+RAISE_ROWS = 2
+
+
+def raise_glyphs(data, k):
+    """Nâng hình chữ của font 12x16 lên k hàng (đỉnh ô vẫn ở y cũ nên không cắt thêm ở mép trên).
+    Hình có hàng trống phía trên >= k: dời nguyên. Chữ Latin có dấu (tách được theo NFD) mà dấu chạm hàng < k:
+    thân chữ (từ hàng đỉnh của chữ gốc) dời k hàng, các hàng dấu bỏ hàng trống rồi gộp đôi cho vừa chỗ phía trên thân.
+    Hình khác (CJK, ...) dời tối đa bằng số hàng trống phía trên. Viền (khối thứ hai) sinh lại bằng giãn 8 hướng."""
+    import unicodedata
+    b = bytearray(data)
+    n, ((og, sg), (oo, so)) = _fft_blocks(b)
+    w, h = struct.unpack_from('<II', b, 12)
+    assert (w, h) == (12, 16) and (sg - 1) * 8 == w * h
+    mask = (1 << w) - 1
+
+    src = bytes(b)  # đọc hình gốc: chữ gốc (A, a) có thể đã được dời trước chữ có dấu
+
+    def rows(c):
+        bits = int.from_bytes(src[og + c * sg + 1:og + (c + 1) * sg], 'big')
+        return [(bits >> ((h - 1 - r) * w)) & mask for r in range(h)]
+
+    def top(r):
+        return next((i for i, x in enumerate(r) if x), None)
+
+    stats = {'shifted': 0, 'partial': 0, 'marks_packed': 0, 'marks_merged': []}
+    for c in range(n):
+        r = rows(c)
+        t = top(r)
+        if t is None:
+            continue
+        if t >= k:
+            nr = r[k:] + [0] * k
+            stats['shifted'] += 1
+        else:
+            nfd = unicodedata.normalize('NFD', chr(c)) if not 0xD800 <= c <= 0xDFFF else chr(c)
+            accented = len(nfd) > 1 and all(unicodedata.category(m) == 'Mn' for m in nfd[1:])
+            bt = top(rows(ord(nfd[0]))) if accented and ord(nfd[0]) < n else None
+            if bt is None or bt <= k:
+                s = t
+                if s == 0:
+                    continue
+                nr = r[s:] + [0] * s
+                stats['partial'] += 1
+            else:
+                marks = [x for x in r[:bt] if x]
+                slots = bt - k
+                merged = len(marks) > slots
+                while len(marks) > slots:
+                    # gộp cặp hàng kề nhau có ít điểm nhất
+                    i = min(range(len(marks) - 1), key=lambda j: bin(marks[j] | marks[j + 1]).count('1'))
+                    marks[i:i + 2] = [marks[i] | marks[i + 1]]
+                pad = slots - len(marks)
+                gap = 1 if pad >= 1 else 0
+                head = [0] * (pad - gap) + marks + [0] * gap
+                nr = head + r[bt:] + [0] * k
+                stats['marks_packed'] += 1
+                if merged:
+                    stats['marks_merged'].append(chr(c))
+        assert len(nr) == h
+        bits = 0
+        for x in nr:
+            bits = (bits << w) | x
+        b[og + c * sg + 1:og + (c + 1) * sg] = bits.to_bytes(sg - 1, 'big')
+        ow, oh = w + 2, h + 2
+        dil = [0] * oh
+        for i, x in enumerate(nr):
+            if x:
+                sp = ((x << 2) | (x << 1) | x)
+                for d in (0, 1, 2):
+                    dil[i + d] |= sp
+        out = 0
+        for i in range(oh):
+            g = (nr[i - 1] << 1) if 1 <= i <= h else 0
+            out = (out << ow) | (dil[i] & ~g & ((1 << ow) - 1))
+        b[oo + c * so + 1:oo + (c + 1) * so] = (out << ((so - 1) * 8 - ow * oh)).to_bytes(so - 1, 'big')
+    stats['marks_merged'] = ''.join(stats['marks_merged'])
+    stats['raise_rows'] = k
+    return bytes(b), stats
 
 
 def _grid(b, w, h):

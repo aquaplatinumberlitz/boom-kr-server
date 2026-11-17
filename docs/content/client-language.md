@@ -196,6 +196,19 @@ vậy `tools/l10n_949x.py vnfonts` dựng `CxUniGulim`/`CxUniGulimBold` 12×12: 
 từ Gulim VN, giữ 10 hàng thân và chân chữ, gộp vùng dấu phía trên vào 2 hàng, viền sinh lại bằng giãn 8 hướng (đúng cách
 file font KR lưu viền). Chữ Hàn ở `CxUni` VN lấy advance của font KR. Cách mượn hình vào Gulim KR (`fonts`) giữ làm dự phòng.
 
+**Chữ thấp trong ô nhỏ (17/11).** Loader font của 00967 (`0x14BAEC0`) chỉ đọc số ký tự, khổ và số byte mỗi hình; hai
+trường header ở offset 20/24 không dùng. Hàm vẽ (`0x14BB240`) đặt đỉnh ô chữ ở đúng y bên gọi truyền vào, không căn theo
+chiều cao font, và không có hàm lấy chiều cao font: y là hằng của layout KR, tính cho ô 12 hàng mà chân chữ Latin ở hàng 9.
+`CxUni`/`CxUniBold` VN chừa 4 hàng trên cho dấu chồng nên chân chữ Latin ở hàng 12: mọi chữ Việt vẽ bằng hai font này thấp
+hơn chữ KR cùng chỗ 3 điểm, thấy rõ ở ô thấp (tab chat sảnh/phòng: đuôi `g` của `chung` chạm viền dưới; khung map phòng:
+`Factory07`, `Số chỗ: 8` sát đáy). Client VN dùng cùng engine nhưng layout riêng với ô cao hơn. Sửa ở bộ font:
+`vnfonts` nâng mọi hình của `CxUni`/`CxUniBold` lên 2 hàng (`RAISE_ROWS`); đỉnh ô giữ nguyên nên không cắt thêm ở mép trên.
+Hình có ít hơn 2 hàng trống phía trên: chữ Latin có dấu (tách được theo NFD) giữ thân dời 2 hàng và xếp các hàng dấu vào
+chỗ còn lại (bỏ hàng trống, thiếu chỗ thì gộp hai hàng kề nhau); chữ khác (Hàn/CJK có đỉnh ở hàng 1) dời bằng số hàng trống.
+Đổi lại: chữ hoa có dấu chồng mất khoảng trống giữa dấu và thân, và vài chữ có ba hàng dấu như `Ẩ`, `Ẫ`, `Ẳ`, `Ổ`, `Ỗ` bị gộp
+dấu hỏi/ngã với dấu mũ vào hai hàng. Gulim 12×12 gọn (ô nhập) không đổi; client chỉ dùng font KR gốc không bị ảnh hưởng
+([evidence](../evidence/l10n-utf8-949x-text-align.json)).
+
 **Layout của 00967 là hằng trong exe**, không có file layout trong pack; nhãn và giá trị đặt ở toạ độ cố định. Client VN
 cũng vẽ giá trị ở toạ độ cố định (ảnh VN cũ của `boom-re` cho thấy khoá `PREMAX` bị số đè, chữ dài chạy ra ngoài nút loại
 game). Vì vậy chữ tràn được sửa bằng câu ngắn hơn trong catalog. Đo bằng font: nhãn số người tối đa khoảng 41 điểm
