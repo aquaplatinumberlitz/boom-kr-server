@@ -1,10 +1,10 @@
 {
   "schema": "kre-g1-punch-matrix-v1",
   "source": "kr_runtime",
-  "status": "candidate",
+  "status": "confirmed",
   "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
   "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
-  "scope": "Ma trận Punch theo nhóm: bốn selector và nhiều endpoint đã có native Rust; ma trận wrap/biên chuẩn bị, chưa đóng nhóm.",
+  "scope": "Nhóm Punch trên Rust: bốn selector, endpoint ngắn/dài và vòng quét trở lại nguồn, ca trước pickup, peer, retirement và reset. Policy report-derived giữ toàn trục đến mọi receipt.",
   "rows": [
     {
       "selector": 0,
@@ -132,11 +132,36 @@
       "path": "local/research/codex/g1-punch-native-matrix-r6/decoded-channels-shared.json",
       "bytes": 174405,
       "sha256": "eae4b4acd8b8355ad680068e2bd4d3f8baf81982be4123a2ab734e6db6e030b6"
+    },
+    {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/native/runtime-preflight.json",
+      "bytes": 82593,
+      "sha256": "dca3615c7c2266ee3546df9ea32939ef962dcdff2d57f70890b64b20895163c8"
+    },
+    {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "5d0487b382d28b3f285763c7e679f60c8193927bec0b9847ef29327dc4c0b9e8"
+    },
+    {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/native/storage-export.json",
+      "bytes": 11430,
+      "sha256": "49a53125491ff92b92762b0359d5f85cb477acb313ceb72f89949040c03a1263"
+    },
+    {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/native/cycles/run.json",
+      "bytes": 272666,
+      "sha256": "8b4e22cd5d1543aa64dce3fb4b8bd3bcb2c531703d96488822c2c5d5df4f727e"
+    },
+    {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/decoded-channels-shared.json",
+      "bytes": 168388,
+      "sha256": "e323568afb6aa3e412e96427c55d909de61913effb6e28e3099df7423ca6a877"
     }
   ],
   "remaining": [
-    "Ma trận wrap/biên đang chuẩn bị: phải giữ nguồn/đích native thực, không suy delta endpoint là chiều dài đường bay.",
-    "Chưa hoàn tất nhóm Punch; cần native wrap, kiểm tập trung, audit/checkpoint/gate và một PR cho nhóm."
+    "Chưa fault injection native cho duplicate/late/inflight/foreign bomb hoặc queued EOF; guard/source tests giữ rõ mức kiểm.",
+    "Không Internet transport mới, mọi roster/nhân vật/map hoặc toàn G1; Shoe và client Việt còn riêng."
   ],
   "review": {
     "status": "waived",
@@ -242,5 +267,139 @@
       "sha256": "1dc3a9c31c59baef4aca1332437305821d864703ea1782e007041a143d0389ac"
     },
     "limits": "Native Wine/private LAN, persisted C1 actor/C0 peer. Report-derived motion/retirement policy is design. Endpoint delta is not flight length; no original server authority, Internet/load or whole G1 closure."
-  }
+  },
+  "boundary_native": {
+    "rounds": 4,
+    "cases": [
+      {
+        "round": 1,
+        "selector": 0,
+        "bomb_id": 2,
+        "source": [
+          6,
+          5
+        ],
+        "target": [
+          6,
+          10
+        ],
+        "endpoint_delta": [
+          0,
+          5
+        ],
+        "opaque_tail": [
+          1430,
+          1
+        ]
+      },
+      {
+        "round": 2,
+        "selector": 1,
+        "bomb_id": 5,
+        "source": [
+          9,
+          4
+        ],
+        "target": [
+          9,
+          4
+        ],
+        "endpoint_delta": [
+          0,
+          0
+        ],
+        "opaque_tail": [
+          1790,
+          1
+        ]
+      },
+      {
+        "round": 3,
+        "selector": 2,
+        "bomb_id": 7,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          0
+        ],
+        "opaque_tail": [
+          2120,
+          1
+        ]
+      },
+      {
+        "round": 4,
+        "selector": 3,
+        "bomb_id": 9,
+        "source": [
+          3,
+          4
+        ],
+        "target": [
+          3,
+          4
+        ],
+        "endpoint_delta": [
+          0,
+          0
+        ],
+        "opaque_tail": [
+          1790,
+          1
+        ]
+      }
+    ],
+    "getter_checks": 432,
+    "verification": {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/motion-verification.json",
+      "bytes": 2284,
+      "sha256": "b353b85e36d79d44c231f12674008b516430d6b9bed779bc933e4326f2164ffc"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-punch-wrap-native-matrix-r2/matrix-verification.json",
+      "bytes": 686,
+      "sha256": "db600aa0bbed0bcf69cd5776380c70128419af3d083f90204a52f3e51eee4a53"
+    },
+    "limits": "Native Wine/private LAN, persisted C1 actor/C0 peer. Report-derived motion/retirement policy is design. Endpoint delta is not flight length; no original server authority, Internet/load or whole G1 closure."
+  },
+  "implementation": {
+    "policy": "report_derived_punch / report_derived_shoe_punch",
+    "geometry": "Selectors0/2 giữ hàng,1/3 giữ cột; endpoint trong map, kể cả trùng nguồn sau vòng quét. Không suy chiều dài bay từ delta.",
+    "reservation": "Toàn hàng hoặc cột, mọi cancellation cell, allocation/quota đến mọi retirement receipt.",
+    "authority": "design, không là khôi phục server gốc"
+  },
+  "failed_batches": [
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r1",
+      "limits": "Peer nằm trong tia đích."
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r2",
+      "limits": "Căn vị trí đổi hướng cuối, selector khác kế hoạch."
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r3",
+      "limits": "Bốn motion có nhưng thoát lúc animation không thực thi đủ, kết quả không đủ."
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r4",
+      "limits": "Phím định hướng dài làm actor rời root."
+    },
+    {
+      "run": "local/research/codex/g1-punch-native-matrix-r5",
+      "limits": "Mất Start vòng2 khi debugger dừng."
+    },
+    {
+      "run": "local/research/codex/g1-punch-wrap-native-matrix-r1",
+      "limits": "Căn x ngoài ô biên bị tường chặn, không phát hành động."
+    }
+  ],
+  "group_checks": "Native đã kiểm trước tích hợp main. Gate toàn kho/CI trên head hoàn chỉnh còn bắt buộc trước merge nhóm."
 }

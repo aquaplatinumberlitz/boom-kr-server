@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, nhóm phạm vi G1 / CP335 / AUD143**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **18/11, ma trận nhóm Punch / CP336 / AUD144**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -23,7 +23,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, n
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; N1R-b đạt hành vi relay đã đo. Transport xác thực mới trên Internet thật và tải/vận hành còn M8 |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; N1R-b có bằng chứng riêng; vận hành còn M8 |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
-| [G1](#rust-g1) sáu map và tập item đã cắt | Đã có adapter/UI, kim/cứu, item nền, MaxPower và các route native của sáu map trong phạm vi đã ghi; Shoe/Punch có các lát đầu đã merge | Đã có code/test cho bảng rơi đã cắt và native từ chối nhân vật giữ phiên; chờ tích hợp nhóm. Còn ma trận Punch/Shoe theo nhóm và đối chiếu acceptance map. Danh sách cùng ước lượng native ở bên dưới; không mở thêm nhóm item ngoài chỉ đạo mới |
+| [G1](#rust-g1) sáu map và tập item đã cắt | Đã có adapter/UI, kim/cứu, item nền, MaxPower và các route native của sáu map trong phạm vi đã ghi; Shoe/Punch có các lát đầu đã merge | Bảng rơi đã cắt và từ chối nhân vật giữ phiên đã tích hợp qua PR #466. Punch đã có ma trận native bốn hướng và endpoint biên; chờ gate/tích hợp nhóm. Còn ma trận Shoe, kiểm ghép client Việt và đối chiếu acceptance map. Danh sách cùng ước lượng native ở bên dưới; không mở thêm nhóm item ngoài chỉ đạo mới |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | L1 UTF-8, Claude phụ trách | [L1a có khảo sát tĩnh và primitive/controls](content/client-language.md#utf8), chưa đạt acceptance; [Codex đã bàn giao WIP cho Claude](evidence/owner-directives/l10n-claude-owner.json) | Chưa chốt xử lý đủ literal949, consumer/capacity và render/IME; L1b/L1c chưa đạt. Không đổi wire của client chưa vá |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
@@ -41,10 +41,10 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, n
    | Việc còn lại | Lượt KR native dự kiến |
    |---|---|
    | Harness tham số hóa đã chạy hai vòng #457 với state waits, hover mới khi về phòng và cleanup sạch; tiếp dùng ma trận cho Shoe/Punch. | 0 lượt riêng; ghép mọi kiểm mới với nhóm item |
-   | Bảng rơi Rust đã cắt: 62 row có trọng số dương ngoài tập giữ về 0, giữ mọi row nguồn; floor/list2 kiểm kind trước bind. Chờ gate/tích hợp nhóm. | 0 lượt riêng |
-   | Hoàn tất ma trận Punch cho bốn hướng và các lớp khoảng cách/biên/wrap còn thiếu, ca không đủ điều kiện, peer và hai vòng/reset; gộp kết quả selector 2 đang làm. | 1–3 lượt Rust, gồm lượt selector 2 hiện tại; một PR cho cả nhóm Punch |
+   | Bảng rơi Rust đã cắt và tích hợp qua PR #466: 62 row dương ngoài tập giữ về 0, giữ mọi row nguồn; floor/list2 kiểm kind trước bind. | 0 lượt riêng |
+   | Ma trận Punch đã có bốn hướng, endpoint ngắn/dài/biên/quét về nguồn, ca trước pickup, peer, retirement và reset; selector 2 gộp vào nhóm. Chờ gate/tích hợp. | 0 lượt bổ sung dự kiến; một PR cho cả nhóm Punch |
    | Hoàn tất ma trận Shoe cho mọi hướng và lớp khoảng cách/corridor còn thiếu, ca bị chặn/không đủ điều kiện, peer và hai vòng/reset. | 2–3 lượt Rust; một PR cho cả nhóm Shoe |
-   | [#457](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/457) đã có native C4 bị từ chối, C0→C1 hợp lệ trên cùng socket, hai vòng/reset/journal; TCP/SQLite kiểm revision/revoke/stale. Chờ gate/tích hợp nhóm. | 0 lượt bổ sung |
+   | [#457](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/457) đã có native C4 bị từ chối, C0→C1 hợp lệ trên cùng socket, hai vòng/reset/journal; TCP/SQLite kiểm revision/revoke/stale; đã tích hợp qua PR #466. | 0 lượt bổ sung |
    | Đối chiếu sáu map với tiêu chí 5 và dữ liệu drop mới: spawn, thùng vỡ, item giữ lại rơi/nhặt, hai vòng/reset và ca âm; chỉ chạy lại ô còn thiếu trong ma trận acceptance. | 0–3 lượt gộp nhiều map/roster; không đo lại từng tile hoặc toàn bộ roster đã đạt |
    | Kiểm ghép client L1 `vi` hiện hành trên Rust theo tiêu chí 8 mới: một map G1, item giữ lại, đăng nhập/phòng/trận và hai vòng/reset. Giữ KR không vá chữ làm chuẩn các phép đo gameplay. | 1 lượt; ghép với kiểm map cuối G1 nếu đủ điều kiện |
    | Chốt ma trận G1, đồng bộ contract/catalog và audit/checkpoint/issue reconciliation một lần cho mỗi nhóm hoàn chỉnh; gate toàn kho một lần trước merge nhóm. | 0 lượt riêng; chỉ bổ sung native khi ma trận chỉ ra thiếu bằng chứng cụ thể |
@@ -52,7 +52,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, n
    Đo trực tiếp trên Rust có instrumentation; Python reference chỉ dùng để tách sai khác cụ thể. Không mở thêm PR theo
    từng selector/hướng/khoảng cách. Raw lớn giữ ở `local/`, repo giữ hash và tóm tắt. Gate chạy ở checkout riêng;
    trong lúc gate chạy vẫn làm phần tĩnh và native của nhóm sau trong worktree riêng, giữ lease Wine luân phiên với L1.
-   Không sửa `tools/check_checkpoints.py` khi Claude đang làm PR cache hash. Không đụng `tools/export_map_profile.py`.
+   Checkpoint mới dùng `pack_evidence` và `evidence_runs` theo #468; không ghi danh sách raw vào repo. Dọn `local/` chỉ bằng plan/hash được chủ dự án duyệt theo #469. Không đụng `tools/export_map_profile.py`.
    **Xen giữa các lát G1: L1 vá UTF-8** cho client 00967 ([quyết định](evidence/owner-directives/l10n-utf8-now.json);
    [Claude được chủ dự án giao tiếp L1](evidence/owner-directives/l10n-claude-owner.json), mốc trước của Codex ở
    [partial/blocker](evidence/l10n-utf8-l1a-review.json)). L1 **đạt một phần** (CP310): chọn

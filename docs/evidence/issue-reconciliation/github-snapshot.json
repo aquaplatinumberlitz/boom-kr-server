@@ -786,6 +786,15 @@
       "title": "G1: đo geometry Punch ngang rồi nối Rust native account",
       "updatedAt": "2026-11-17T13:41:15Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/460"
+    },
+    {
+      "body": "KRE-G1-PUNCH-MATRIX — KR-F010.\n\nTheo chỉ đạo cắt phạm vi G1 (PR #463), issue này giữ toàn bộ nhóm Punch, gộp selector 2 đang làm và mọi hướng/khoảng cách còn lại; một PR cho cả nhóm.\n\nBaseline tích hợp main `f1d8d493908cc2f0b0e18b4692662ec99d6b71be`. Codex solo/self-check; independent review waived theo AGENTS. L1 do Claude sở hữu; runtime Wine luân phiên, không sửa exporter map hoặc checker checkpoint.\n\nĐầu ra: Rust nhận bốn selector 0–3 với endpoint axial trong map, giữ source/target thực kể cả wrap trở lại nguồn. Toàn hàng/cột giữ reservation đến mọi retirement receipt; giữ ownership/transport/membership/vòng, life/item, deadline, terrain/cancellation, queue rollback/quota và delivery fences. Report-derived design không là luật server gốc.\n\nAcceptance: ma trận native trực tiếp Rust cho bốn hướng và endpoint ngắn/dài/biên/quét, một ca trước pickup không đủ điều kiện, exact119→162 prefix, hai peer landing/rebind/cleanup, cờ reset, kết quả/về phòng và journal đúng account/character/thưởng0. Giữ evidence selector2 hai vòng; hai batch mới bốn vòng mỗi batch và 432 native getter checks mỗi batch đã qua semantic/lifecycle verifier. Lượt partial/lỗi giữ raw và giới hạn; không suy native duplicate/late/inflight/foreign-bomb/queued-EOF từ guard tests.\n\nMột audit/checkpoint tinh gọn cho nhóm, gate toàn kho một lần trên head hoàn chỉnh và mọi CI xanh trước merge. Không đóng toàn G1 hoặc M8.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [contract](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/protocol/items-stats.md#rust-bomb-motion-codec), [evidence](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/evidence/rust-service/g1-punch-matrix.json).\n\n[Câu hỏi và giới hạn](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-ability-debuff).\n",
+      "closedAt": null,
+      "number": 462,
+      "state": "OPEN",
+      "title": "G1: hoàn tất ma trận Punch theo nhóm trên Rust",
+      "updatedAt": "2026-11-17T17:22:16Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/462"
     }
   ],
   "pull_requests": [
@@ -4500,6 +4509,14 @@
       "pull_request": 459,
       "captured_utc": "2026-11-17T12:35:05.125317+00:00",
       "method": "Single merged PR capture; exact-head and CI receipts in local."
+    },
+    {
+      "captured_utc": "2026-11-17T17:18:30.696001+00:00",
+      "issues": [
+        462
+      ],
+      "pull_requests": [],
+      "limits": "Chỉ refresh task Punch theo nhóm; các snapshot khác giữ ngày/giới hạn. Không refresh toàn snapshot."
     }
   ]
 }

@@ -1,0 +1,68 @@
+{
+  "id": "AUD144",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-punch-direction-distance-matrix"
+  ],
+  "completed_through": "CP336",
+  "recorded_utc": "2026-11-17T17:21:44.270333+00:00",
+  "auditor": "Codex",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/items-stats.md",
+    "docs/evidence/owner-directives/g1-item-scope-cut.json",
+    "docs/evidence/rust-service/g1-punch-matrix.json",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "tools/g1_native_harness.py",
+    "tools/g1_native_runtime.py",
+    "tools/g1_native_verify.py",
+    "local/research/codex/g1-punch-native-matrix-r6/motion-verification.json",
+    "local/research/codex/g1-punch-wrap-native-matrix-r2/motion-verification.json",
+    "local/research/codex/g1-punch-native-matrix-r6/matrix-verification.json",
+    "local/research/codex/g1-punch-wrap-native-matrix-r2/matrix-verification.json"
+  ],
+  "method": "Đọc canonical docs theo thứ tự và đối chiếu request119/response162 được decode độc lập, hai native consumer, landing/rebind/cleanup, clock/pickup/stat reset, account/journal và code guard/quarantine. Một audit cho cả ma trận, không cho mỗi selector; không suy native fault injection từ test source.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Endpoint cố định theo selector không biểu diễn B38A80 quét/wrap.",
+      "correction": "Native mới có bốn hướng, endpoint delta ngắn/dài và ba ca source=target sau vòng quét. Admission axial có biên; giữ nguyên prefix và quarantine toàn hàng/cột. Đây là policy design, không luật server gốc.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/bombs.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "docs/protocol/items-stats.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Script tách theo hướng và click/timing có thể làm mất Start hoặc hướng.",
+      "correction": "Dùng ma trận tham số hóa, condition theo round step, settled position, hold Start qua debugger pause. Giữ các run thất bại, source helper trước tích hợp và output cleanup riêng.",
+      "fixed_in": [
+        "tools/g1_native_harness.py",
+        "tools/g1_native_runtime.py",
+        "tools/g1_native_verify.py"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Dashboard và gap còn yêu cầu riêng selector2 và chờ nhóm phạm vi.",
+      "correction": "PR466 đã merge; selector2 và hai batch mới gộp cùng task462/nhóm Punch. Scope Shoe và client Việt còn riêng; checkpoint chuyển sang packing tinh gọn.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Gate exact-head local/history và mọi CI trước merge nhóm.",
+    "Shoe và client Việt còn native riêng; chưa đóng toàn G1/M8.",
+    "Native duplicate/late/inflight/foreign-bomb/queued-EOF, mọi roster/nhân vật không được chứng nhận từ ma trận này.",
+    "Review độc lập waived theo owner; không ghi approved."
+  ]
+}

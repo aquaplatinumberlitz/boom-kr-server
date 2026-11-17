@@ -335,8 +335,8 @@ impl Ledger {
         Ok(Ok(Placement::Allocated(ticket)))
     }
     /// Scoped owner-only Punch policy, not original KR authority.
-    /// Selector1 emission was captured at CP327; down-one native execution
-    /// and retirement were checked in #456. Horizontal #460/#462 reserves its whole row.
+    /// The G1 matrix covers all four axial selectors and wrapped endpoints.
+    /// Reserve its whole row/column because endpoint delta is not the flight path.
     /// Wire119 has no epoch: current non-reused ID and Membership fence it.
     pub(crate) fn move_punch(
         &mut self,

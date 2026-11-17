@@ -210,6 +210,24 @@ Rust cho cùng hàng, đích trừ một cột và cùng reservation cả hàng.
 216 getter native khớp và cleanup hoàn tất sạch. Các lớp khoảng cách/biên còn mở; không suy toàn đường bay
 hoặc đóng nhóm Punch từ bốn endpoint đã đo.
 
+**Punch hiện hành theo ma trận nhóm.** [Bằng chứng nhóm](../evidence/rust-service/g1-punch-matrix.json)
+thay giới hạn endpoint cố định của các lát lịch sử trên: selector 0/2 nhận endpoint trong cùng hàng,
+selector 1/3 trong cùng cột, ở trong map. `B38A80` quét và wrap; endpoint có thể trùng nguồn sau vòng quét.
+Rust giữ nguyên source/target của actual 119 và exact prefix 9 byte ở 162, không chuẩn hóa target hoặc dùng
+hai byte tail làm quyền hạn. Đây là policy **report-derived design**, không là vật lý hoặc luật server KR gốc.
+Toàn hàng/cột của Punch được giữ đến mọi retirement receipt; mọi cancellation cell trên trục đều chặn motion,
+kể cả ngoài hai endpoint. Owner, transport/member/vòng, item/life, deadline, clone/queue, quota và retirement
+vẫn giữ fences. Test hồi quy kiểm endpoint/biên, foreign/current/old membership, source/path, queue rollback,
+quarantine và chuyển vòng; các control đó không được gọi là native fault injection.
+
+Hai batch Rust mới dùng cùng harness tham số hóa: mỗi batch bốn vòng, đủ selector 0–3 và cả hai view.
+Batch đầu có endpoint delta +5 cột, +3 hàng, −1 cột và −3 hàng. Batch biên có nguồn (6,5)→(6,10),
+(9,4)→(9,4), (6,3)→(6,3), (3,4)→(3,4); delta 0 không có nghĩa là bom không bay.
+Mỗi vòng có bom thường/no119 trước pickup, pickup Punch duy nhất, landing trước rebind/cleanup,
+kết quả/về phòng và cờ reset; mỗi batch có 432 snapshot khớp getter native, journal đúng account và thưởng 0.
+Hai batch mới exit 0 và cleanup sạch. Selector 2 hai vòng trước đó được gộp vào cùng nhóm; các lượt lỗi vẫn giữ
+raw và giới hạn riêng. Không suy mọi roster, nhân vật, queued EOF, late/inflight hoặc Internet từ ma trận này.
+
 [Hành động Shoe trên reference](../evidence/item-families/shoe-action.json) dùng floor chỉ có Shoe 3, C0,
 bom của người thao tác và va chạm tự nhiên từ bên dưới. Actual 119 có selector **5**, source `(6,3)` và target
 `(3,3)`; prefix 9 byte được trả bằng candidate 162. Hai view đọc đủ, gọi `B37910`, đổi root, vào state 3 rồi

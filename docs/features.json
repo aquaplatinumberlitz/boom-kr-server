@@ -3773,7 +3773,8 @@
           "docs/evidence/rust-service/g1-punch-down.json",
           "docs/evidence/item-families/punch-horizontal-action.json",
           "docs/evidence/rust-service/g1-punch-horizontal.json",
-          "docs/evidence/item-families/punch-selector2-action.json"
+          "docs/evidence/item-families/punch-selector2-action.json",
+          "docs/evidence/rust-service/g1-punch-matrix.json"
         ]
       },
       "coverage": {

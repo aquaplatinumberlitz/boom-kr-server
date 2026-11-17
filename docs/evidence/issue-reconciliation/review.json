@@ -1061,6 +1061,30 @@
       ],
       "successors": [],
       "reviewed_utc": "2026-11-17T12:35:05.125317+00:00"
+    },
+    {
+      "number": 462,
+      "kre": "KRE-G1-PUNCH-MATRIX",
+      "features": [
+        "KR-F010"
+      ],
+      "classification": "in_progress",
+      "known": "Native Rust selector2 hai vòng và hai ma trận mới bốn vòng/bốn selector, 864 getter checks, exact wire/peer/retirement/reset/journal; policy axial và full-axis quarantine đã có code/test.",
+      "remaining": "Audit/checkpoint tinh gọn, full workspace/exact-head local-history và CI trước merge một PR cho nhóm Punch.",
+      "next_test": "Hoàn tất gate nhóm Punch; Shoe và client vi smoke độc lập theo PLAN.",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "reason": "Chủ dự án gộp mọi hướng/khoảng cách thành một nhóm; không mở PR riêng selector2.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md#gap-ability-debuff"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/g1-punch-matrix.json"
+      ],
+      "prs": [],
+      "successors": [],
+      "reviewed_utc": "2026-11-17T17:19:41.120285+00:00"
     }
   ],
   "as_of_utc": "2026-11-17T12:35:05.125317+00:00",
