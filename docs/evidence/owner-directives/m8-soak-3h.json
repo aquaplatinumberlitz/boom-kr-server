@@ -3,7 +3,7 @@
   "recorded_utc": "2026-11-18T00:00:00+00:00",
   "authority": "project_owner",
   "source": "Trong hội thoại với Claude (director) ngày 18/11/2026, chủ dự án nói: “tiêu chí nghiệm thu giai đoạn 1 là test liên tục 24h phải ko, thấy lâu quá, giảm còn 3h thôi”.",
-  "decision": "Tiêu chí chạy dài của M8 giảm từ 24 giờ xuống 3 giờ có tải nền.",
+  "decision": "Đã thu hồi: M8 giữ chạy dài 24 giờ (xem revision).",
   "compensation": [
     "Vòng đời phòng, trận và phiên quay vòng nhanh hơn chơi thường để 3 giờ vẫn có nhiều chu kỳ tạo/hủy.",
     "Đo RAM, số file descriptor, cổng relay, số phòng và phiên theo thời gian; độ dốc ở giờ thứ ba phải gần 0.",
@@ -13,5 +13,11 @@
   "supersedes": "Yêu cầu chạy dài 24 giờ trong PLAN trước quyết định này.",
   "risk": "Rò rỉ rất chậm hoặc lỗi theo chu kỳ dài hơn 3 giờ có thể không lộ ra; giảm rủi ro bằng đo độ dốc và quay vòng nhanh.",
   "plan": "docs/PLAN.md#phase1-acceptance",
-  "owner": "Chủ dự án quyết định; Claude ghi lại"
+  "owner": "Chủ dự án quyết định; Claude ghi lại",
+  "revision": {
+    "recorded_utc": "2026-11-18T00:30:00+00:00",
+    "source": "Sau khi Claude giải thích, chủ dự án nói: “tiêu chí chạy dài 24h có quan trọng ko, nếu có thì thôi giữ nguyên ko cần đổi”.",
+    "decision": "Khôi phục 24 giờ. Giữ phần đo độ dốc và trở về mức nền; tải nền là tổng hợp (không chiếm runtime Wine), chạy không người trông song song các việc M8 khác.",
+    "reason": "24 giờ bắt được lỗi theo thời gian mà 3 giờ không bắt: session/token hết hạn, idle TTL, DB WAL/log phình, rò rỉ chậm. Chi phí chủ yếu là thời gian chờ, không tốn công."
+  }
 }
