@@ -83,7 +83,7 @@ hành động, vị trí/quỹ đạo/va chạm/timer của bom, peer, ca không
 Không coi hai run Python RE là bằng chứng account, Internet hoặc vận hành trên Rust.
 
 <a id="rust-bomb-motion-codec"></a>
-### Codec Rust cho 119/162 và giới hạn lifecycle
+### Rust 119/162 và lát Punch có giới hạn
 
 [Metadata nguồn và codec](../evidence/item-families/bomb-motion-codec.json) bổ sung reader 162 `E5EFC0`:
 body **9 byte**, widths `u8,u8,u8,u16,u8,u8,u8,u8`. Reader kiểm context, tìm actor và wire ID của bom;
@@ -115,9 +115,29 @@ Rust `kr-wire` có `BombAction119::decode` cho đúng 13 byte, giữ hai `u16` c
 và cell đích; codec không cấp quyền cho các giá trị này. Regression dùng hai request thực có ID/cell/tail khác nhau
 và body 162 đã qua native reader, kiểm cả gói thiếu/thừa và nhầm độ dài. Không dùng roundtrip tự sinh làm oracle.
 
-Service chưa nối handler 119, chưa bật floor Shoe/Punch và chưa thay vị trí terrain hoặc timer. Trước khi mở cần
-chuyển policy retirement đã đo sang Rust, kiểm ca dùng/không đủ điều kiện, peer và reset, cùng current membership/round,
-wire ID hiện hành, hàng đợi và ledger bom. Chưa biết reply 160 có vai trò gì trong toàn luồng; không gửi ACK giả.
+[Lát Rust Punch đã nghiệm thu](../evidence/rust-service/g1-punch.json) có handler 119 và policy opt-in
+`report_derived_punch`. Policy nền `report_derived_basic` vẫn từ chối floor 4; Shoe 3 chưa được mở. Chỉ nhận
+actor thuộc membership/slot/vòng đang chạy, đã nhặt Punch và chưa có report trap/death. Bom phải thuộc người
+thao tác, có wire ID hiện hành chưa tái sử dụng, source cell khớp ledger; selector 3 chỉ đi từ hàng nguồn sang
+hàng nguồn trừ 1, cùng cột. Cell đích phải trống theo terrain và ngoài cell hủy bom của map. Một bom chỉ được
+chuyển một lần; server từ chối khi còn dưới 3 giây hoặc đã bắt đầu ghi blast cho bất kỳ recipient nào. Đây là
+các giới hạn **design** của lát đầu, không phải toàn bộ luật KR hoặc bảo đảm cho mọi độ trễ/chuyển động.
+
+Admission chạy trên bản clone của room: ledger và terrain cùng đổi root, chỉ publish khi đủ chỗ trong hàng đợi
+của mọi peer. Quota, owner, allocation và deadline 6 giây cũ giữ nguyên. Trước lần ghi blast đầu tiên, server
+đóng admission motion; với bom đã chuyển, mỗi recipient nhận 158 loại 1 rồi loại 0 trong cùng batch. Quota và
+terrain clearance chỉ commit sau khi mọi recipient hiện hành ghi xong. Packet motion dùng guard allocation,
+membership/round và subject; EOF, revoke/expiry qua thu hồi channel, visit mới hoặc vòng mới không chuyển quyền
+cho work cũ. Không thêm epoch/key vào 119, không lấy tail opaque làm quyền hạn và không gửi 160 như ACK.
+
+Native Wine trên Rust dùng hai account backend, companion xác thực và LAN cô lập: account A có nhân vật C1
+đã lưu, peer B là C0. Floor chỉ có Punch 4, không có Shoe. Mỗi vòng Space trước pickup tạo bom thường nhưng
+không có 119; sau pickup actual 119 selector 3 được nhận, cả hai reader 162 đọc đủ, root chuyển `(6,3)→(5,3)`,
+bom được thu hồi trước cleanup rồi có actual 118 mới. Hai vòng có kết quả/về phòng, cờ pickup reset và hai
+journal DB thưởng 0 đúng identity/nhân vật. Một lượt riêng phát selector 1 do hướng nhập khác bị từ chối;
+không chuẩn hóa nó thành selector 3. Test server còn kiểm sai transport/slot/owner, thiếu item, death, vòng/visit
+cũ, hàng đợi đầy, cell bị chặn, deadline và đóng admission trước blast. Các kiểm này không thay bằng chứng
+native cho Shoe, selector khác, hành động lặp/sát deadline/khi đang bay hoặc mọi nhân vật/map/roster.
 
 **Correction nguồn phụ:** `B486B0` nhận interface `actor+584`, cộng `70` tới wrapper `actor+5F4`, đúng bằng
 interface `actor+58C` cộng `68` của setter. Câu `+5F4+8` trong ghi chép phụ trước là lỗi tính offset; sidecar correction

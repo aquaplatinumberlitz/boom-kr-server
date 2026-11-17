@@ -3763,7 +3763,8 @@
           "docs/evidence/rust-service/g1-maxpower.json",
           "docs/evidence/item-families/shoe-punch.json",
           "docs/evidence/item-families/bomb-motion-codec.json",
-          "docs/evidence/item-families/bomb-retirement.json"
+          "docs/evidence/item-families/bomb-retirement.json",
+          "docs/evidence/rust-service/g1-punch.json"
         ]
       },
       "coverage": {
@@ -3817,7 +3818,8 @@
           "state": "partial",
           "refs": [
             "rust/crates/kr-wire/src/kr00967/bomb_motion.rs",
-            "docs/protocol/items-stats.md#rust-bomb-motion-codec"
+            "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+            "rust/crates/kr-service/src/bombs.rs"
           ],
           "delivery": "branch_pending"
         },
