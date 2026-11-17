@@ -137,6 +137,19 @@ def conv_maps(raw, stats):
     return bytes(out)
 
 
+def conv_fxmg(raw, stats):
+    """csysfxmg.ssd (dòng chạy chữ, mẹo chat): u16 count, count × (u8 kind, lstr)."""
+    n = struct.unpack_from('<H', raw)[0]
+    out, p = bytearray(raw[:2]), 2
+    for _ in range(n):
+        out += raw[p:p + 1]; p += 1
+        v, p = lstr(raw, p)
+        out += packed(u8(v, stats)); stats['strings'] = stats.get('strings', 0) + 1
+    if p != len(raw):
+        raise ValueError('fxmg: dư dữ liệu')
+    return bytes(out)
+
+
 def conv_stock(raw, stats):
     n = struct.unpack_from('<I', raw)[0]
     out, p = bytearray(raw[:4]), 4
@@ -215,12 +228,23 @@ def conv_pack(src, out, stats):
 
 SSI = {'csysstr.ssd': conv_pair, 'csysqstr.ssd': conv_pair, 'fxdynmapinfo.ssd': conv_maps,
        **{f'fxstock{i}.ini': conv_stock for i in range(4)}}
+# Chỉ đổi nếu bộ nguồn có file (bản dựng cũ trước khi l10n_build ghi csysfxmg.ssd không có).
+OPTIONAL_SSI = {'csysfxmg.ssd': conv_fxmg}
 
 
 def convert(src, out):
     out.mkdir(parents=True, exist_ok=True)
     report = {'format': '949x', 'version': VERSION, 'ext_chars': len(EXT), 'files': {}}
     for name, fn in SSI.items():
+        stats = {}
+        original = (src / name).read_bytes()
+        raw = fn(ssi_read(original), stats)
+        (out / name).write_bytes(ssi_write(original, raw))
+        assert ssi_read((out / name).read_bytes()) == raw
+        report['files'][name] = stats
+    for name, fn in OPTIONAL_SSI.items():
+        if not (src / name).exists():
+            continue
         stats = {}
         original = (src / name).read_bytes()
         raw = fn(ssi_read(original), stats)
@@ -489,6 +513,14 @@ def selftest():
         except UnicodeDecodeError:
             pass
         assert index_of(*c) == i
+    kinds = [(1, 'Hãy cẩn thận khi nhận tệp'), (6, '넥슨 캐시 ₫ ếộữ')]
+    raw = struct.pack('<H', len(kinds)) + b''.join(bytes([k]) + packed(t.encode('utf-8')) for k, t in kinds)
+    head = b'ssi1' + bytes(4) + b'\x18' + bytes(4) + b'\x01' + bytes(4)
+    out = ssi_read(ssi_write(head, conv_fxmg(raw, {})))
+    q, rows = 2, []
+    for _ in kinds:
+        kind = out[q]; text, q = lstr(out, q + 1); rows.append((kind, decode(text)))
+    assert q == len(out) and rows == kinds, rows
     print('selftest ok, %d ký tự mở rộng, mã cuối %s' % (len(EXT), code(len(EXT) - 1).hex()))
 
 

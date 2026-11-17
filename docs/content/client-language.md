@@ -149,7 +149,8 @@ Lý do chọn, so với UTF-8 thuần trong client:
   tiếp. Tiếng Hàn và ASCII trên dây giống hệt client chưa vá; client chưa vá chỉ thấy sai các ký tự mở rộng.
 - **Dữ liệu vẫn là UTF-8.** Bản dựng phát hành là UTF-8 (`boom-re-l10n`, `tools/l10n_build.py --encoding utf-8`); trình mở
   game đổi sang 949x khi chuẩn bị thư mục game (`tools/l10n_949x.py convert`). Đổi bộ Hàn UTF-8 sang 949x cho ra đúng
-  từng byte dữ liệu giải nén của bảy file `ssi1` gốc.
+  từng byte dữ liệu giải nén của bảy file `ssi1` gốc. Từ bản dựng ghi `csysfxmg.ssd` (dòng chạy chữ và mẹo chat,
+  `u16 số dòng` rồi từng `u8 loại` + chuỗi), `convert` đổi thêm file đó nếu bộ nguồn có; bộ nguồn cũ không có thì bỏ qua.
 
 Server muốn lưu chữ người chơi dưới dạng UTF-8 thì đổi 949x sang UTF-8 bằng cùng bảng ở biên lưu trữ; việc này chưa làm.
 
