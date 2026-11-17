@@ -58,6 +58,8 @@ pub(crate) fn validate_projection(
 #[serde(deny_unknown_fields)]
 pub struct Config {
     #[serde(default)]
+    pub public_launcher: Option<crate::public_launcher::Config>,
+    #[serde(default)]
     pub persist_character: bool,
     #[serde(default)]
     pub persist_matches: bool,
@@ -87,6 +89,14 @@ fn default_worker_queue_capacity() -> usize {
 }
 impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
+        if let Some(public) = &self.public_launcher {
+            if self.profile_mode != ProfileMode::DatabaseZero {
+                return Err(io::Error::other(
+                    "public launcher requires database profiles",
+                ));
+            }
+            public.validate()?;
+        }
         if ((self.persist_character || self.persist_matches)
             && self.profile_mode != ProfileMode::DatabaseZero)
             || !(30..=120).contains(&self.launch_ttl_seconds)
@@ -153,11 +163,22 @@ pub(crate) struct Active {
     projection: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
 }
 impl Active {
+    #[cfg(test)]
+    pub(crate) fn login_test_client(client: Client) -> Self {
+        Self {
+            authenticated: None,
+            bridge: Bridge::new(client.clone(), 4, Duration::from_secs(30)).unwrap(),
+            client,
+            projections: Arc::new(std::collections::HashMap::new()),
+            projection: None,
+        }
+    }
     pub(crate) fn bridge(&self) -> Bridge {
         self.bridge.clone()
     }
 }
 pub(crate) struct Owner {
+    pub(crate) public_launcher: Option<crate::public_launcher::Opened>,
     pub(crate) boot_epoch: Option<i64>,
     worker: Worker,
     live_worker: Option<Worker>,
@@ -185,6 +206,10 @@ impl Owner {
             inode: meta.ino(),
         };
         fs::set_permissions(&config.launch_socket, fs::Permissions::from_mode(0o600))?;
+        let public_launcher = match &config.public_launcher {
+            Some(public) => Some(public.open().await?),
+            None => None,
+        };
         let worker = Worker::open(
             config.database.clone(),
             config.worker_queue_capacity,
@@ -234,6 +259,7 @@ impl Owner {
             None
         };
         Ok(Self {
+            public_launcher,
             boot_epoch,
             active: Active {
                 authenticated: None,
@@ -260,7 +286,7 @@ impl Owner {
             .map_err(|e| io::Error::other(format!("account worker shutdown: {e:?}")))
     }
 }
-struct Secret(Zeroizing<String>);
+pub(crate) struct Secret(pub(crate) Zeroizing<String>);
 impl<'de> Deserialize<'de> for Secret {
     fn deserialize<D: serde::Deserializer<'de>>(d: D) -> Result<Self, D::Error> {
         String::deserialize(d).map(|s| Self(Zeroizing::new(s)))
@@ -268,12 +294,26 @@ impl<'de> Deserialize<'de> for Secret {
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
-struct LaunchRequest {
-    session: Secret,
-    player_id: i64,
-    peer: Ipv4Addr,
+pub(crate) struct LaunchRequest {
+    pub(crate) session: Secret,
+    pub(crate) player_id: i64,
+    pub(crate) peer: Ipv4Addr,
     #[serde(default)]
-    reported_login_ipv4: Option<Ipv4Addr>,
+    pub(crate) reported_login_ipv4: Option<Ipv4Addr>,
+}
+pub(crate) struct PreparedLaunch {
+    response: Zeroizing<String>,
+    launch: Option<crate::account_bridge::Launch>,
+}
+impl PreparedLaunch {
+    pub(crate) fn bytes(&self) -> &[u8] {
+        self.response.as_bytes()
+    }
+    pub(crate) fn delivered(self) {
+        if let Some(launch) = self.launch {
+            launch.delivered();
+        }
+    }
 }
 async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> io::Result<()> {
     let mut input = Zeroizing::new(Vec::new());
@@ -298,6 +338,16 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
     }
     let request: LaunchRequest = serde_json::from_slice(&input)
         .map_err(|_| io::Error::other("invalid private launch request"))?;
+    let prepared = prepare_launch(request, active, peers).await?;
+    stream.write_all(prepared.bytes()).await?;
+    prepared.delivered();
+    Ok(())
+}
+pub(crate) async fn prepare_launch(
+    request: LaunchRequest,
+    active: &Active,
+    peers: &[Ipv4Addr],
+) -> io::Result<PreparedLaunch> {
     if !peers.contains(&request.peer) {
         return Err(io::Error::other("launch peer outside allowlist"));
     }
@@ -329,13 +379,12 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
                 crate::account_worker::Error::QueueExpired => "account_queue_expired",
                 _ => "database_busy",
             };
-            stream
-                .write_all(
-                    format!("{{\"ok\":false,\"error\":\"busy_retry\",\"reason\":\"{reason}\"}}\n")
-                        .as_bytes(),
-                )
-                .await?;
-            return Ok(());
+            return Ok(PreparedLaunch {
+                response: Zeroizing::new(format!(
+                    "{{\"ok\":false,\"error\":\"busy_retry\",\"reason\":\"{reason}\"}}\n"
+                )),
+                launch: None,
+            });
         }
         Err(error) => {
             return Err(io::Error::other(format!(
@@ -382,9 +431,10 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
         launch.token().expose_secret(),
         *companion
     ));
-    stream.write_all(response.as_bytes()).await?;
-    launch.delivered();
-    Ok(())
+    Ok(PreparedLaunch {
+        response,
+        launch: Some(launch),
+    })
 }
 
 #[allow(clippy::too_many_arguments)]

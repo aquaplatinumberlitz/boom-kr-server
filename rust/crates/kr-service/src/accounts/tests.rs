@@ -62,6 +62,39 @@ pub(super) fn fresh() -> (Temp, Store, Player) {
 }
 
 #[test]
+fn launcher_logout_revokes_only_authenticated_token_and_cannot_touch_a_newer_session() {
+    let _serial = SERIAL.lock().unwrap();
+    let (_temp, mut store, player) = fresh();
+    let old = store.login("alice", PASSWORD, 60, 101).unwrap();
+    assert_eq!(
+        store.logout(&old.token, player.player_id + 1, 102),
+        Err(Error::InvalidSession)
+    );
+    store.authorize(&old.token, player.player_id, 102).unwrap();
+    store.logout(&old.token, player.player_id, 103).unwrap();
+    assert_eq!(
+        store.authorize(&old.token, player.player_id, 104),
+        Err(Error::InvalidSession)
+    );
+    let current = store.login("alice", PASSWORD, 60, 105).unwrap();
+    assert_eq!(
+        store.logout(&old.token, player.player_id, 106),
+        Err(Error::InvalidSession)
+    );
+    store
+        .authorize(&current.token, player.player_id, 107)
+        .unwrap();
+    let audited: i64 = store
+        .db
+        .query_row(
+            "SELECT count(*) FROM admin_audit WHERE operation='logout'",
+            [],
+            |row| row.get(0),
+        )
+        .unwrap();
+    assert_eq!(audited, 1);
+}
+#[test]
 fn live_authorization_survives_writer_pressure_but_observes_committed_fences() {
     let _serial = SERIAL.lock().unwrap();
     let (temp, mut store, player) = fresh();

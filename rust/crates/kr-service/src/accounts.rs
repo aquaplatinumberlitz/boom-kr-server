@@ -506,6 +506,24 @@ impl Store {
         }
         self.issue_session(login, password, ttl, Some(idle), now)
     }
+    pub(crate) fn login_with_idle_current(
+        &mut self,
+        login: &str,
+        password: &[u8],
+        ttl: i64,
+        idle: i64,
+    ) -> Result<Grant> {
+        if !(1..=TTL_MAX).contains(&idle) {
+            return Err(Error::InvalidInput);
+        }
+        self.issue_session_clock(login, password, ttl, Some(idle), &mut || {
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .ok()
+                .and_then(|time| i64::try_from(time.as_secs()).ok())
+                .ok_or(Error::ClockRollback)
+        })
+    }
     fn issue_session(
         &mut self,
         login: &str,
@@ -691,6 +709,20 @@ impl Store {
         }
         tx.commit()?;
         Ok(())
+    }
+    /// First-party launcher logout. Authorize and revoke only this exact token
+    /// in one transaction; an old request can never revoke a newer session.
+    pub fn logout(&mut self, token: &Token, expected_player: i64, now: i64) -> Result<()> {
+        let digest = token.digest();
+        let request = hex(&self.random::<32>()?);
+        self.at(now, |tx| {
+            let account = Self::session_account(tx, &digest, expected_player, now)?;
+            tx.execute("UPDATE sessions SET revoked_at=?1 WHERE token_hash=?2 AND account_id=?3 AND revoked_at IS NULL",
+                params![now, digest, account])?;
+            Self::audit(tx, &request, &Admin {
+                actor: "session-owner", reason: "first-party launcher logout",
+            }, "logout", Some(account), now)
+        })
     }
     /// Administrative revocation; not a client logout wire/API claim.
     pub fn revoke(&mut self, admin: &Admin<'_>, account: i64, now: i64) -> Result<()> {

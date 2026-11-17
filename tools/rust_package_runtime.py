@@ -78,6 +78,8 @@ def prepare(root, state):
     config = json.loads((root / 'config.template.json').read_text())
     admission = config['diagnostic_two_lobby']['account_admission']
     admission.update(database=str(state / 'accounts.sqlite'), launch_socket=str(socket))
+    if admission.get('public_launcher') is not None:
+        admission['public_launcher']['private_key'] = str(state / 'launcher.pk8')
     run = state / 'runs' / str(time.time_ns())
     run.mkdir(mode=0o700, parents=True)
     runtime = run / 'config.json'

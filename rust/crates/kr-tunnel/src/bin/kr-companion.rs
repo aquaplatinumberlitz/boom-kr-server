@@ -46,6 +46,26 @@ struct Request {
     native_ip: IpAddr,
     port_budget: usize,
 }
+#[cfg(unix)]
+fn termination_signal() -> io::Result<impl std::future::Future<Output = ()>> {
+    let mut signal = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
+    Ok(async move {
+        signal.recv().await;
+    })
+}
+#[cfg(windows)]
+fn termination_signal() -> io::Result<impl std::future::Future<Output = ()>> {
+    let mut close = tokio::signal::windows::ctrl_close()?;
+    let mut shutdown = tokio::signal::windows::ctrl_shutdown()?;
+    let mut interrupt = tokio::signal::windows::ctrl_break()?;
+    Ok(async move {
+        tokio::select! {
+            _ = close.recv() => {},
+            _ = shutdown.recv() => {},
+            _ = interrupt.recv() => {},
+        }
+    })
+}
 async fn run() -> io::Result<()> {
     if std::env::args_os().len() != 1 {
         return Err(io::Error::other("private launcher stdin only"));
@@ -78,7 +98,8 @@ async fn run() -> io::Result<()> {
     let link = Link::connect(&endpoint, offer.endpoint.into(), &offer.capability.0).await?;
     drop(offer.capability);
     let (stop, stopped) = watch::channel(false);
-    let mut terminate = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
+    let terminate = termination_signal()?;
+    tokio::pin!(terminate);
     let task = companion::run(link, request.native_ip, request.port_budget, stopped);
     tokio::pin!(task);
     // This means authenticated transport only. Round readiness is acknowledged
@@ -88,7 +109,7 @@ async fn run() -> io::Result<()> {
     let result = tokio::select! {
         result=&mut task=>result,
         result=tokio::signal::ctrl_c()=>{result?;let _=stop.send(true);task.await},
-        _=terminate.recv()=>{let _=stop.send(true);task.await},
+        _=&mut terminate=>{let _=stop.send(true);task.await},
     };
     endpoint.close(0_u8.into(), b"launcher child ended");
     result

@@ -361,6 +361,20 @@ pub struct Bridge {
     random: fn(&mut [u8]) -> Result<()>,
 }
 impl Bridge {
+    /// After an exact-token DB logout, retire only a registry entry belonging
+    /// to that same session. A delayed logout must not cancel a newer launch.
+    pub(crate) fn forget_session(&self, token: &Token, player: i64) -> Result<()> {
+        let digest = Sha256::digest(token.expose_secret().as_bytes());
+        let mut registry = lock(&self.shared)?;
+        if registry
+            .entries
+            .get(&player)
+            .is_some_and(|entry| Sha256::digest(entry.token.expose_secret().as_bytes()) == digest)
+        {
+            registry.entries.remove(&player);
+        }
+        Ok(())
+    }
     /// Companion capability possession is checked separately from current
     /// account authority. Recheck after DB await before registering a peer.
     pub(crate) async fn validate_transport(&self, player: u32, generation: u64) -> Result<()> {

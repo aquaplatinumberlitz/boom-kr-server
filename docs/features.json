@@ -6028,7 +6028,8 @@
           "docs/evidence/rust-service/r1f-session-binding.json",
           "docs/protocol/rust-boundary.md#rust-r1g-admission",
           "docs/evidence/rust-service/r1g-admission.json",
-          "docs/evidence/rust-service/m8-server-package.json"
+          "docs/evidence/rust-service/m8-server-package.json",
+          "docs/evidence/rust-service/m8-public-launcher-foundation.json"
         ]
       },
       "coverage": {
@@ -6129,7 +6130,10 @@
             "tools/rust_service_package.py",
             "tools/rust_package_runtime.py",
             "tools/smoke_rust_service_package.py",
-            "tools/test_rust_service_package.py"
+            "tools/test_rust_service_package.py",
+            "rust/crates/kr-service/src/public_launcher.rs",
+            "rust/crates/kr-tunnel/src/launch_tls.rs",
+            "rust/crates/kr-tunnel/src/bin/kr-launch.rs"
           ],
           "delivery": "via_pr"
         },
@@ -6175,7 +6179,8 @@
       "issues": [
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476"
       ]
     }
   ]

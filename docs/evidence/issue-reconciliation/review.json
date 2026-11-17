@@ -1137,6 +1137,28 @@
       ],
       "prs": [],
       "successors": []
+    },
+    {
+      "number": 476,
+      "kre": "KRE-M8-PLAYER-LAUNCHER",
+      "classification": "in_progress",
+      "features": [
+        "KR-S002"
+      ],
+      "known": "WIP TLS/login/launch/logout, exact-session generation fencing, loopback companion/stub cleanup; Windows cross-build và invalid-input binary chạy trên VM mới không NIC.",
+      "remaining": "Wrapper/cài/gói và native Wine/Windows/Internet, negative lifecycle matrix còn mở. Chưa hoàn tất nhóm, chưa checkpoint/audit/PR nghiệm thu.",
+      "next_test": "Nối player package tới bản service triển khai, đo trên Windows VM và Wine qua Internet; giữ isolation/no Nexon.",
+      "acceptance": "Theo issue476 và PLAN, phải KR native login/gameplay qua transport Internet; nền loopback không thay acceptance.",
+      "reason": "Codex tự kiểm đúng lớp compiler/backend/TLS/runtime; VM mới chỉ chứng minh binary chạy, không transport hoặc game.",
+      "sources": [
+        "docs/PLAN.md#phase1-acceptance",
+        "docs/protocol/auth-session.md#rust-public-launcher"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/m8-public-launcher-foundation.json"
+      ],
+      "prs": [],
+      "successors": []
     }
   ],
   "as_of_utc": "2026-11-17T12:35:05.125317+00:00",

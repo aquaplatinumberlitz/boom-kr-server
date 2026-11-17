@@ -53,6 +53,26 @@ class PackageTests(unittest.TestCase):
             self.package()
         self.assertFalse((self.out / 'manifest.json').exists())
 
+    def test_launcher_key_is_external_state_and_never_copied_into_bundle(self):
+        secret = self.root / 'operator-key.pk8'
+        secret.write_bytes(b'private-test-material-never-shipped')
+        public = self.config['diagnostic_two_lobby']['account_admission']['public_launcher'] = dict(
+            private_key=str(secret), certificate=dict(path=str(self.fixture),
+            bytes=self.fixture.stat().st_size, sha256=digest(self.fixture)))
+        expected = self.package()
+        template = json.loads((self.out / 'config.template.json').read_text())
+        self.assertEqual(template['diagnostic_two_lobby']['account_admission']['public_launcher']['private_key'],
+                         '@STATE@/launcher.pk8')
+        config, _, _ = prepare(self.out, self.root / 'operator-state')
+        runtime = json.loads(config.read_text())
+        self.assertEqual(runtime['diagnostic_two_lobby']['account_admission']['public_launcher']['private_key'],
+                         str(self.root / 'operator-state/launcher.pk8'))
+        self.assertEqual(public['private_key'], str(secret))
+        for path in self.out.rglob('*'):
+            if path.is_file():
+                self.assertNotIn(secret.read_bytes(), path.read_bytes())
+        verify(self.out, expected)
+
     def test_relative_fixture_paths_follow_recipe_directory_not_process_cwd(self):
         for packet in self.config['diagnostic_two_lobby']['fixed_room']['packets'].values():
             packet['fixture']['path'] = 'source.bin'

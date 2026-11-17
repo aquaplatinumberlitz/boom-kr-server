@@ -96,6 +96,56 @@ async fn grant(worker: &Worker, login: &str) -> crate::accounts::Grant {
         .await
         .unwrap()
 }
+#[test]
+fn launcher_logout_retires_its_registry_generation_without_cancelling_a_newer_launch() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, player, _) = Temp::new();
+    rt().block_on(async {
+        let worker = worker(&temp).await;
+        let bridge = Bridge::new(worker.client(), 4, Duration::from_secs(30)).unwrap();
+        let old = grant(&worker, "alice").await;
+        let launch = bridge
+            .issue(&old.token, player.player_id, PEER)
+            .await
+            .unwrap();
+        let old_generation = launch.generation();
+        launch.delivered();
+        temp.store()
+            .logout(&old.token, player.player_id, now())
+            .unwrap();
+        bridge.forget_session(&old.token, player.player_id).unwrap();
+        assert!(
+            !lock(&bridge.shared)
+                .unwrap()
+                .entries
+                .contains_key(&player.player_id)
+        );
+        let current = grant(&worker, "alice").await;
+        let launch = bridge
+            .issue(&current.token, player.player_id, PEER)
+            .await
+            .unwrap();
+        let generation = launch.generation();
+        assert_ne!(generation, old_generation);
+        launch.delivered();
+        bridge.forget_session(&old.token, player.player_id).unwrap();
+        assert_eq!(
+            lock(&bridge.shared).unwrap().entries[&player.player_id].generation,
+            generation
+        );
+        bridge
+            .validate_transport(player.wire_id, generation)
+            .await
+            .unwrap();
+        assert!(
+            bridge
+                .validate_transport(player.wire_id, old_generation)
+                .await
+                .is_err()
+        );
+        worker.shutdown().await.unwrap();
+    });
+}
 fn login_body(secret: &str, peer: Ipv4Addr) -> Vec<u8> {
     let mut out = vec![];
     for (value, width) in [

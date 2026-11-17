@@ -23,6 +23,7 @@ pub mod network;
 mod peer_routes;
 mod pickups;
 mod player_template;
+pub mod public_launcher;
 pub mod room;
 mod room_io;
 mod room_packets;
@@ -291,6 +292,11 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
         if let Some(account) = &two.account_admission {
+            if account.public_launcher.is_some() && config.authenticated_relay.is_none() {
+                return Err(io::Error::other(
+                    "public launcher requires authenticated relay",
+                ));
+            }
             if two.managed_rooms.is_none() && two.actors.len() != 2 {
                 return Err(io::Error::other(
                     "account adapter supports exactly two measured profiles",
@@ -1441,6 +1447,22 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
             profile.config.allowed_peers.clone(),
             stop.clone(),
         ));
+        if let Some(public) = owner.public_launcher.take() {
+            listeners.spawn(public_launcher::serve(
+                public,
+                profile
+                    .config
+                    .diagnostic_two_lobby
+                    .as_ref()
+                    .and_then(|two| two.account_admission.as_ref())
+                    .and_then(|account| account.public_launcher.as_ref())
+                    .expect("opened public launcher")
+                    .clone(),
+                owner.active.clone(),
+                profile.config.allowed_peers.clone(),
+                stop.clone(),
+            ));
+        }
     }
     let mut account_health = tokio::time::interval(Duration::from_secs(1));
     let quota = Arc::new(Semaphore::new(profile.config.max_connections));

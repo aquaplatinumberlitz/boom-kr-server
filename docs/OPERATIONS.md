@@ -40,6 +40,22 @@ của harness, chưa là quy trình chạy production bằng tài khoản servic
 mật host để vượt lỗi. Smoke kiểm DB mới, từ chối init lại mà không đổi DB, từ chối runner thứ hai khi instance đầu
 còn ready, rồi dừng có trật tự. Không suy client đăng nhập hoặc Internet từ readiness.
 
+## Launcher TLS đang triển khai
+
+Giao diện [public launcher](protocol/auth-session.md#rust-public-launcher) opt-in của M8 hiện có kiểm loopback,
+chưa là gói Internet/Wine/Windows đã nghiệm thu. Tạo identity bằng `kr-launch-identity "$NEW_PRIVATE_DIRECTORY"`;
+command từ chối directory có sẵn. Giữ `private.pk8` trên server trong parent `0700`, file `0600`; phát certificate
+qua kênh/gói tin cậy. Không tự tải pin từ cùng endpoint chưa xác thực hoặc ghi private key vào bundle. Khi đóng
+gói config có launcher, builder gom certificate đã pin và đặt key thành `@STATE@/launcher.pk8`; operator cấp key
+khớp riêng vào state trước chạy service. DB và key không được đổi/copy từ raw thí nghiệm đang dùng.
+
+Player config khai endpoint TLS, certificate path, native IP, companion path, native program/arguments/directory
+và port budget; toàn bộ config triển khai giữ local. `kr-launch "$PLAYER_CONFIG"` đọc JSON login/password qua stdin,
+không qua argv; dùng wrapper nhập mật khẩu riêng trước khi bàn giao người chơi. Client mở companion bằng stdin,
+đợi transport ready rồi mở native với frontend token hiện hành. Kết thúc/lỗi/signal dọn hai child rồi thử logout;
+server không tới được thì báo lỗi và giữ TTL, không giả logout đã xác nhận. Gói Wine/Windows và Internet native
+còn theo acceptance M8; không dùng `/bin/true` trong smoke làm bằng chứng chơi trận.
+
 ## Chọn cấu hình phục vụ
 
 Giai đoạn 1 dùng **`AuthenticatedRelay`**. `LegacyDirect` và relay UDP prototype giữ làm cấu hình chẩn đoán riêng.

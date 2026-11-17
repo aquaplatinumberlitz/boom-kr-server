@@ -32,20 +32,47 @@ pub struct Pending<T> {
     handoff: Option<Arc<Handoff>>,
 }
 impl<T> Pending<T> {
-    pub async fn wait(mut self) -> Result<T> {
-        let result = self
+    pub async fn wait(self) -> Result<T> {
+        self.receive().await?.accept()
+    }
+    /// Borrow a result for bounded network delivery before accepting its login
+    /// handoff. Dropping this value revokes only that undelivered session.
+    pub async fn receive(mut self) -> Result<Received<T>> {
+        let value = self
             .reply
             .take()
             .expect("reply owned once")
             .await
-            .map_err(|_| Error::Closed)?;
-        if result.is_ok()
-            && let Some(handoff) = &self.handoff
-        {
+            .map_err(|_| Error::Closed)??;
+        Ok(Received {
+            value: Some(value),
+            handoff: self.handoff.take(),
+        })
+    }
+}
+pub struct Received<T> {
+    value: Option<T>,
+    handoff: Option<Arc<Handoff>>,
+}
+impl<T> Received<T> {
+    pub fn value(&self) -> &T {
+        self.value.as_ref().expect("result owned until accepted")
+    }
+    /// Call only after the entire response has been delivered within the worker
+    /// handoff deadline. A late caller cannot resurrect an abandoned session.
+    pub fn accept(mut self) -> Result<T> {
+        if let Some(handoff) = &self.handoff {
             handoff.claim()?;
         }
         self.handoff = None;
-        result
+        Ok(self.value.take().expect("result accepted once"))
+    }
+}
+impl<T> Drop for Received<T> {
+    fn drop(&mut self) {
+        if let Some(handoff) = &self.handoff {
+            handoff.abandon();
+        }
     }
 }
 impl<T> Drop for Pending<T> {
@@ -142,6 +169,12 @@ pub enum PersistenceResult {
 }
 
 enum Command {
+    Logout {
+        token: Token,
+        player: i64,
+        deadline: Instant,
+        reply: oneshot::Sender<Result<()>>,
+    },
     Persist {
         job: PersistenceJob,
         deadline: Instant,
@@ -155,7 +188,7 @@ enum Command {
         password: Zeroizing<Vec<u8>>,
         ttl: i64,
         idle: Option<i64>,
-        now: i64,
+        now: AuthorizationTime,
         deadline: Instant,
         reply: oneshot::Sender<Result<Grant>>,
         handoff: Arc<Handoff>,
@@ -284,6 +317,24 @@ impl Drop for Worker {
     }
 }
 impl Client {
+    /// Revoke only the authenticated caller's token using execution-time UTC.
+    pub fn try_logout_current(&self, token: &Token, player: i64) -> Result<Pending<()>> {
+        if player < 1 {
+            return Err(Error::InvalidInput);
+        }
+        let token = Token::parse(token.expose_secret()).map_err(Error::Backend)?;
+        let (reply, rx) = oneshot::channel();
+        self.submit(Command::Logout {
+            token,
+            player,
+            deadline: Instant::now() + self.queue_ttl,
+            reply,
+        })?;
+        Ok(Pending {
+            reply: Some(rx),
+            handoff: None,
+        })
+    }
     /// Bounded nonblocking admission. Blocking transactions run only on the
     /// dedicated normal worker, never on the live-authorization lane or room lock.
     /// Dropping queued work cancels it; an already committed event is durable and
@@ -333,7 +384,7 @@ impl Client {
         ttl: i64,
         now: i64,
     ) -> Result<Pending<Grant>> {
-        self.submit_login(login, password, ttl, None, now)
+        self.submit_login(login, password, ttl, None, AuthorizationTime::Supplied(now))
     }
     pub fn try_login_with_idle(
         &self,
@@ -346,7 +397,31 @@ impl Client {
         if !(1..=86400).contains(&idle) {
             return Err(Error::InvalidInput);
         }
-        self.submit_login(login, password, ttl, Some(idle), now)
+        self.submit_login(
+            login,
+            password,
+            ttl,
+            Some(idle),
+            AuthorizationTime::Supplied(now),
+        )
+    }
+    pub fn try_login_with_idle_current(
+        &self,
+        login: &str,
+        password: &[u8],
+        ttl: i64,
+        idle: i64,
+    ) -> Result<Pending<Grant>> {
+        if !(1..=86400).contains(&idle) {
+            return Err(Error::InvalidInput);
+        }
+        self.submit_login(
+            login,
+            password,
+            ttl,
+            Some(idle),
+            AuthorizationTime::ExecutionUtc,
+        )
     }
     fn submit_login(
         &self,
@@ -354,7 +429,7 @@ impl Client {
         password: &[u8],
         ttl: i64,
         idle: Option<i64>,
-        now: i64,
+        now: AuthorizationTime,
     ) -> Result<Pending<Grant>> {
         // Bound all secret/name allocation before admission, including rejected jobs.
         if !(3..=32).contains(&login.len())
@@ -363,7 +438,7 @@ impl Client {
                 .all(|b| b.is_ascii_alphanumeric() || b == b'_')
             || !(12..=128).contains(&password.len())
             || !(1..=86400).contains(&ttl)
-            || now < 0
+            || matches!(now, AuthorizationTime::Supplied(value) if value < 0)
         {
             return Err(Error::InvalidInput);
         }
@@ -483,6 +558,32 @@ fn deliver_login(
 fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> Result<()> {
     while let Some(command) = commands.blocking_recv() {
         match command {
+            Command::Logout {
+                token,
+                player,
+                deadline,
+                reply,
+            } => {
+                if live {
+                    let _ = reply.send(Err(Error::InvalidInput));
+                    continue;
+                }
+                if reply.is_closed() {
+                    continue;
+                }
+                if Instant::now() >= deadline {
+                    let _ = reply.send(Err(Error::QueueExpired));
+                    continue;
+                }
+                let now = std::time::SystemTime::now()
+                    .duration_since(std::time::UNIX_EPOCH)
+                    .ok()
+                    .and_then(|duration| i64::try_from(duration.as_secs()).ok())
+                    .ok_or(Error::Backend(accounts::Error::ClockRollback));
+                let result =
+                    now.and_then(|now| store.logout(&token, player, now).map_err(Error::Backend));
+                let _ = reply.send(result);
+            }
             Command::Persist {
                 job,
                 deadline,
@@ -573,12 +674,30 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> 
                     let _ = reply.send(Err(Error::QueueExpired));
                     continue;
                 }
-                let result = match idle {
-                    Some(idle) => store.login_with_idle(&login, &password, ttl, idle, now),
-                    None => store.login(&login, &password, ttl, now),
+                let result = match (&now, idle) {
+                    (AuthorizationTime::Supplied(now), Some(idle)) => {
+                        store.login_with_idle(&login, &password, ttl, idle, *now)
+                    }
+                    (AuthorizationTime::Supplied(now), None) => {
+                        store.login(&login, &password, ttl, *now)
+                    }
+                    (AuthorizationTime::ExecutionUtc, Some(idle)) => {
+                        store.login_with_idle_current(&login, &password, ttl, idle)
+                    }
+                    (AuthorizationTime::ExecutionUtc, None) => {
+                        store.login_current(&login, &password, ttl)
+                    }
                 }
                 .map_err(Error::Backend);
-                deliver_login(store, reply, result, now, &handoff, handoff_ttl)?;
+                let delivered_at = match now {
+                    AuthorizationTime::Supplied(now) => now,
+                    AuthorizationTime::ExecutionUtc => std::time::SystemTime::now()
+                        .duration_since(std::time::UNIX_EPOCH)
+                        .ok()
+                        .and_then(|time| i64::try_from(time.as_secs()).ok())
+                        .ok_or(Error::Backend(accounts::Error::ClockRollback))?,
+                };
+                deliver_login(store, reply, result, delivered_at, &handoff, handoff_ttl)?;
             }
             Command::Authorize {
                 token,

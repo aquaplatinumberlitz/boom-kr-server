@@ -14,6 +14,7 @@ pub const MAX_NATIVE: usize = 255;
 pub const MAX_PACKET: usize = 16 + 8 + MAX_NATIVE;
 pub mod companion;
 pub mod control;
+pub mod launch_tls;
 pub mod proxy;
 pub mod router;
 

@@ -207,7 +207,7 @@ fn admission_is_bounded_cancelled_and_queue_expired_work_never_issues_a_token() 
                 password: Zeroizing::new(PASSWORD.to_vec()),
                 ttl: 60,
                 idle: None,
-                now: 101,
+                now: AuthorizationTime::Supplied(101),
                 deadline: Instant::now() - Duration::from_secs(1),
                 reply,
                 handoff: handoff.clone(),
@@ -237,6 +237,57 @@ fn admission_is_bounded_cancelled_and_queue_expired_work_never_issues_a_token() 
         worker.shutdown().await.unwrap();
         assert!(client.is_closed());
         assert_eq!(authorized.wait().await, Ok(grant.player));
+    });
+}
+#[test]
+fn borrowed_login_delivery_failure_revokes_only_that_session_and_allows_fresh_login() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let worker = Worker::open(temp.db(), 4, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let client = worker.client();
+        let received = client
+            .try_login("alice", PASSWORD, 60, 101)
+            .unwrap()
+            .receive()
+            .await
+            .unwrap();
+        let old = Token::parse(received.value().token.expose_secret()).unwrap();
+        let player = received.value().player.player_id;
+        assert_eq!(temp.active(), 1);
+        // Response serialization may borrow the result; a failed TLS write must
+        // drop it before accepting the handoff, rather than orphaning a login.
+        drop(received);
+        let barrier = pause(&client).await;
+        assert_eq!(temp.active(), 0);
+        barrier.send(()).unwrap();
+        assert_eq!(
+            client
+                .try_authorize(&old, player, 102)
+                .unwrap()
+                .wait()
+                .await,
+            Err(Error::Backend(accounts::Error::InvalidSession))
+        );
+        let received = client
+            .try_login("alice", PASSWORD, 60, 103)
+            .unwrap()
+            .receive()
+            .await
+            .unwrap();
+        let current = received.accept().unwrap();
+        assert_eq!(
+            client
+                .try_authorize(&current.token, player, 104)
+                .unwrap()
+                .wait()
+                .await,
+            Ok(current.player)
+        );
+        assert_eq!(temp.active(), 1);
+        worker.shutdown().await.unwrap();
     });
 }
 #[test]

@@ -862,4 +862,38 @@ busy sau export: 103 file raw được phục hồi nguyên byte chỉ sau khi n
 helper được giữ nguyên. C đóng debugger sau frame107 đã capture hơn 118ms sau completion. Không gọi teardown sạch.
 Shared-NAT relay, reuse/restart và mọi topology Internet không suy từ ca chung nguồn TCP. Python vẫn giữ RE/reference.
 
+<a id="rust-public-launcher"></a>
+### Launcher TLS của công ty — M8 đang triển khai
+
+Adapter `account_admission.public_launcher` là protocol của công ty, **design**, không là xác thực gốc KR. Nó
+opt-in với profile DB và authenticated relay, bind trước readiness. TLS 1.3 dùng ALPN `kre-launch/1`, tên kiểm
+`kr-launch.local`, certificate pin từ gói người chơi; không 0-RTT hoặc nhận plaintext. Mỗi kết nối chỉ một JSON
+frame kết thúc newline, request tối đa 4096 byte, response 8192 byte. Deadline tuyệt đối 250–2000 ms bao gồm
+handshake, đọc/ghi và chờ DB, với 1–64 handler hữu hạn; lỗi request không log body hoặc credential.
+
+Ba operation: `login` nhận login/password và trả đúng Player/session từ DB; `launch` nhận session/player_id,
+metadata `reported_login_ipv4` tùy chọn và cấp frontend/peer offer hiện hành; `logout` nhận session/player_id,
+thu hồi đúng token trong một transaction có audit. Peer authoritative lấy từ socket đã accept và phải thuộc
+allowlist; client không được gửi field `peer` hoặc tự chọn identity bằng địa chỉ IP. Timestamp login được lấy khi
+worker thực thi và publish sau KDF; không dùng giờ cũ của queue admission. Kết quả login được giữ chưa claim tới
+khi write TLS hoàn tất; lỗi/timeout trước handoff thu hồi đúng session vừa cấp, không session mới hơn.
+
+Logout xóa entry launcher chỉ nếu backend token khớp. Session cũ gửi lại không thu hồi DB hoặc registry của lần
+login mới; generation và membership/transport checks cũ vẫn áp dụng. Backend busy/failure không tự biến thành
+logout thành công. Companion/socket đã bound bị tháo theo kiểm quyền sống; pending grant còn lại không được dùng
+sau revoke/expiry. Không suy rằng mọi ca native lifecycle đã được kiểm từ các test này.
+
+`kr-launch` nhận config qua một path và credential JSON qua stdin, không password/session/capability trên argv
+hoặc log. Nó login, cấp launch, đưa peer offer qua stdin cho companion rồi mở native process bằng đường gọi
+không qua shell. Native frontend `token_1:` vẫn đi qua seam argv KR đã đo; đó là ngoại lệ legacy đã biết, không
+backend token. Owner giữ hai child, dừng/join khi lỗi hoặc signal, rồi thử logout đúng session. Nếu server không
+tới được, expiry vẫn giới hạn session; không hứa xác nhận logout hoặc retry vô hạn. Certificate/key được tạo
+riêng bằng `kr-launch-identity`; key private thuộc state server, không nằm trong package hoặc gói người chơi.
+
+[Bằng chứng nền đang làm](../evidence/rust-service/m8-public-launcher-foundation.json): TLS pin/wrong pin,
+plaintext/deadline/framing, SQLite identity và wrong password; hai lượt launcher→companion QUIC→child stub→logout,
+và SIGTERM launcher không để lại child/session. Một VM Windows sạch không có NIC đã chạy companion và từ chối
+input sai đúng binary SHA. Đây không là KR login/gameplay, companion Internet hoặc gói Windows đã nghiệm thu;
+nhóm M8 vẫn mở theo PLAN. Các run lỗi trước giữ riêng, không đổi thành pass.
+
 <!-- protocol-topic-content-end -->

@@ -1,0 +1,56 @@
+{
+  "schema": "kre-m8-public-launcher-foundation-v1",
+  "source": "design",
+  "status": "design",
+  "scope": "WIP issue476: first-party TLS/login/launch/logout và executable Windows; chưa hoàn tất nhóm player package hoặc acceptance M8.",
+  "canonical": "docs/protocol/auth-session.md#rust-public-launcher",
+  "verification": [
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r5/verification.json",
+      "bytes": 1225,
+      "sha256": "b01b2effe316688a08d070e59f9e1281e9168d52778c55cf073e90c8d7a05aec"
+    },
+    {
+      "path": "local/research/codex/m8-windows-vm-r2/windows-binary-control.json",
+      "bytes": 551,
+      "sha256": "a8344fe9468abe629a5addef86e3ea415ca3ac9e7854dc005931e474df87b553"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/public-launcher-tests-r1.log",
+      "bytes": 1323,
+      "sha256": "ec95b27a5bb715bb93ba35d9eb1252e09049cae2f1d84db4015b0806071f77d0"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launch-tls-tests-r1.log",
+      "bytes": 1011,
+      "sha256": "b6c67182a22438251a6a468fd02abd7aded521c94708178648d1a53c78a4aa57"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/logout-generation-tests-r1.log",
+      "bytes": 1248,
+      "sha256": "3def84f60959d43fd9e14cb11ac80d18454e108d8128751b1aeffb8909b362ba"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/public-launcher-clippy-r5.log",
+      "bytes": 170,
+      "sha256": "bc88ef43fb5c70617dcdeae8dc56d02855505befcd0e4be1e770ae2c7deb9497"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launcher-build-windows-r2.log",
+      "bytes": 170,
+      "sha256": "79224f3fb386564854fafb32d84e15d47a17c36f4557de72705a7163fabb59c8"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/package-key-tests-r1.log",
+      "bytes": 107,
+      "sha256": "0b91efbf18bf599405ac2d4b15a2eefd01b926339e841af31a3da4aa2361e4f9"
+    }
+  ],
+  "limits": [
+    "TLS/SQLite/companion smoke loopback cô lập dùng /bin/true và stub Python làm child; không KR native wire hoặc gameplay.",
+    "Windows VM mới, không NIC, chỉ chạy binary companion và từ chối input sai. Không login/QUIC/CA hoặc Internet; binary SHA receipt giữ build đã chạy, không thay bằng binary cross-build mới.",
+    "Native Windows/Wine player package, Internet transport xác thực, expiry/revoke/full cancellation matrix và operator installation còn phải kiểm.",
+    "Không checkpoint/audit hoàn tất nhóm hoặc PR riêng cho từng phép thử; phần WIP giữ một nhóm issue476.",
+    "Raw lỗi admin response assumption, socket parent permission và pending registry sau logout giữ ở local; run pass không thay failure."
+  ]
+}
