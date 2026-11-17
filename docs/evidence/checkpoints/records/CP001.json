@@ -105,141 +105,6 @@
       "limits": "Claude source audit plus Codex final core-doc reading; no fresh disassembly or runtime"
     }
   ],
-  "evidence": [
-    {
-      "id": "E001",
-      "kind": "local",
-      "path": "local/research/codex/wcp-consumer-oracle-r1.json",
-      "bytes": 699,
-      "sha256": "108daaaada2bffd9a7ac286a7f9f4ed4fd158a97aec874d916d4cf70d730157b"
-    },
-    {
-      "id": "E002",
-      "kind": "local",
-      "path": "local/research/wcp-probe/cold-1/debug/run.json",
-      "bytes": 2827,
-      "sha256": "07c411e832dfc9fdf88e1134ba183b6564ed3a0e88ab8727c4d8332dba7a30bc"
-    },
-    {
-      "id": "E003",
-      "kind": "local",
-      "path": "local/research/wcp-probe/cold-1/debug/client.log",
-      "bytes": 350236,
-      "sha256": "521adbcb89338b468b2fb8d531e89d95842ac7eec01fd440403579dd357d28b6"
-    },
-    {
-      "id": "E004",
-      "kind": "local",
-      "path": "local/research/wcp-probe/cold-1/debug/CALog-run.txt",
-      "bytes": 65,
-      "sha256": "5e234c309190b81be7af6b4c7d9f838f70ca90230075cf84b724c407d34af3d3"
-    },
-    {
-      "id": "E005",
-      "kind": "local",
-      "path": "local/research/claude/wcp/wcp-r1.md",
-      "bytes": 9855,
-      "sha256": "8d7f39b84fee3dd5a5c2b26245a8d4aeadf6ee9d2adc36524dc7ed3c3e83dbcc"
-    },
-    {
-      "id": "E006",
-      "kind": "local",
-      "path": "local/research/claude/wcp/wcp-r2.md",
-      "bytes": 6779,
-      "sha256": "46cfa286f83215cd937837f3091fd07cde6b654f4753b16acc08bf4664047e15"
-    },
-    {
-      "id": "E007",
-      "kind": "local",
-      "path": "local/research/codex/wcp-next-checkpoint.json",
-      "bytes": 4548,
-      "sha256": "83c3cc3e3105120c111212c5296c5c0055cfe68e52c5d79c1a1b23b7737bc9ca"
-    },
-    {
-      "id": "E008",
-      "kind": "local",
-      "path": "local/research/doc-workflow/claude-audit.md",
-      "bytes": 21660,
-      "sha256": "7e7da0476d895ad8d4966c4174c7a6b8ae4821b640d1989323933e9accf7d8c0"
-    },
-    {
-      "id": "E009",
-      "kind": "local",
-      "path": "local/research/doc-workflow/reconciliation-checks.json",
-      "bytes": 342,
-      "sha256": "472a3e768a989ae6125ea3dc9f4cbd51bc72fa81ffd4ca08b8d291a6473e9bbe"
-    },
-    {
-      "id": "E010",
-      "kind": "local",
-      "path": "local/research/doc-workflow/artifact-verification.txt",
-      "bytes": 253,
-      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
-    },
-    {
-      "id": "E011",
-      "kind": "local",
-      "path": "local/research/codex/wine_probe_wcp.py",
-      "bytes": 16570,
-      "sha256": "8c61e88f537f6dcfc995b64835f394923c517d7edd2b891b04eafecf249fc860"
-    },
-    {
-      "id": "E012",
-      "kind": "local",
-      "path": "local/research/wcp-probe/cold-1/run/run.json",
-      "bytes": 2974,
-      "sha256": "7ea693991ce856e52541d579674a0d71727809ea030ab9caa133975d1ef979b7"
-    },
-    {
-      "id": "E013",
-      "kind": "local",
-      "path": "local/research/wcp-probe/cold-1/run/windows-01.txt",
-      "bytes": 1273,
-      "sha256": "05ab81573cc0d94e8d97cbd1c93505b76ab11e48967da0eb4e95686aff5569ab"
-    },
-    {
-      "id": "E014",
-      "kind": "local",
-      "path": "local/research/wcp-probe/cold-1/debug/windows-04.txt",
-      "bytes": 1273,
-      "sha256": "02c5faabae1aa9cfc3358cd5b627dc2e5337b406ef6dfe5b0cfdc477ab65c591"
-    },
-    {
-      "id": "E015",
-      "kind": "local",
-      "path": "local/research/claude/wcp/raw2/1234e40-near.asm",
-      "bytes": 3377,
-      "sha256": "1d125cf897d28655be5dda624735366deebf81e7c8c103c714902ff5a0d98b4c"
-    },
-    {
-      "id": "E016",
-      "kind": "local",
-      "path": "local/research/claude/wcp/raw2/1232458-post-connect.asm",
-      "bytes": 4941,
-      "sha256": "c3a08fdcf727f34b7debe6931468ac8572b9ce67096a7105e776d0c47864ba79"
-    },
-    {
-      "id": "E017",
-      "kind": "local",
-      "path": "local/research/claude/review/r2-review-final.md",
-      "bytes": 4466,
-      "sha256": "aa644391de8d2d6d8628bdbaee14375070b0ac90c15783f334198ef3b05d0c7a"
-    },
-    {
-      "id": "E018",
-      "kind": "local",
-      "path": "local/research/claude/review/worker-policy-review.md",
-      "bytes": 3136,
-      "sha256": "ca834c30751f4dd72c6b065d42f840f67119129ead7354d6c14caf990555ae40"
-    },
-    {
-      "id": "E019",
-      "kind": "artifact",
-      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
-      "bytes": 31858688,
-      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
-    }
-  ],
   "delta": {
     "added": [
       "First durable checkpoint; WCP contract/metadata published before review"
@@ -320,6 +185,124 @@
       "path": "docs/evidence/primitives/README.md",
       "state": "updated",
       "reason": "Historical ownership/next-step source linked"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "local",
+      "path": "local/research/codex/wcp-consumer-oracle-r1.json",
+      "bytes": 699,
+      "sha256": "108daaaada2bffd9a7ac286a7f9f4ed4fd158a97aec874d916d4cf70d730157b"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/wcp-probe/cold-1/debug/run.json",
+      "bytes": 2827,
+      "sha256": "07c411e832dfc9fdf88e1134ba183b6564ed3a0e88ab8727c4d8332dba7a30bc"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/wcp-probe/cold-1/debug/client.log",
+      "bytes": 350236,
+      "sha256": "521adbcb89338b468b2fb8d531e89d95842ac7eec01fd440403579dd357d28b6"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/wcp-probe/cold-1/debug/CALog-run.txt",
+      "bytes": 65,
+      "sha256": "5e234c309190b81be7af6b4c7d9f838f70ca90230075cf84b724c407d34af3d3"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/claude/wcp/wcp-r1.md",
+      "bytes": 9855,
+      "sha256": "8d7f39b84fee3dd5a5c2b26245a8d4aeadf6ee9d2adc36524dc7ed3c3e83dbcc"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/claude/wcp/wcp-r2.md",
+      "bytes": 6779,
+      "sha256": "46cfa286f83215cd937837f3091fd07cde6b654f4753b16acc08bf4664047e15"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/doc-workflow/claude-audit.md",
+      "bytes": 21660,
+      "sha256": "7e7da0476d895ad8d4966c4174c7a6b8ae4821b640d1989323933e9accf7d8c0"
+    },
+    {
+      "id": "E009",
+      "kind": "local",
+      "path": "local/research/doc-workflow/reconciliation-checks.json",
+      "bytes": 342,
+      "sha256": "472a3e768a989ae6125ea3dc9f4cbd51bc72fa81ffd4ca08b8d291a6473e9bbe"
+    },
+    {
+      "id": "E010",
+      "kind": "local",
+      "path": "local/research/doc-workflow/artifact-verification.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/claude/wcp/raw2/1234e40-near.asm",
+      "bytes": 3377,
+      "sha256": "1d125cf897d28655be5dda624735366deebf81e7c8c103c714902ff5a0d98b4c"
+    },
+    {
+      "id": "E016",
+      "kind": "local",
+      "path": "local/research/claude/wcp/raw2/1232458-post-connect.asm",
+      "bytes": 4941,
+      "sha256": "c3a08fdcf727f34b7debe6931468ac8572b9ce67096a7105e776d0c47864ba79"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/claude/review/r2-review-final.md",
+      "bytes": 4466,
+      "sha256": "aa644391de8d2d6d8628bdbaee14375070b0ac90c15783f334198ef3b05d0c7a"
+    },
+    {
+      "id": "E018",
+      "kind": "local",
+      "path": "local/research/claude/review/worker-policy-review.md",
+      "bytes": 3136,
+      "sha256": "ca834c30751f4dd72c6b065d42f840f67119129ead7354d6c14caf990555ae40"
+    },
+    {
+      "id": "E019",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "bytes": 31858688,
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b80cbea51bbebd8e2a30db26c1427ac6e2a1e16f03997476db76569f94e7a0b6.jsonl",
+      "sha256": "b80cbea51bbebd8e2a30db26c1427ac6e2a1e16f03997476db76569f94e7a0b6",
+      "bytes": 402,
+      "count": 2,
+      "files_bytes": 21118
+    },
+    {
+      "run": "local/research/wcp-probe/cold-1",
+      "path": "local/evidence-manifests/62b6fbf498a67a3a7605ce057f7b01f2e236b5d00a30ab661fca333e73f2526a.jsonl",
+      "sha256": "62b6fbf498a67a3a7605ce057f7b01f2e236b5d00a30ab661fca333e73f2526a",
+      "bytes": 603,
+      "count": 3,
+      "files_bytes": 5520
     }
   ]
 }

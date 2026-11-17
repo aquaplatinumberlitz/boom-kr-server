@@ -84,15 +84,6 @@
       "limits": "Workflowgroup only, notM5orclientacceptance."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP257-feature-group-audit-policy.json",
-      "bytes": 6450,
-      "sha256": "07efd260b143bda2b873848b64e2caa77b2a4f1a6fae0ea4d810c59d04b7aff3",
-      "count": 25
-    }
-  ],
   "delta": {
     "added": [
       "Ownerpinnedfeaturegroupauditpolicy/checker-negatives/CLIstate/AUD075workflowgroup."
@@ -206,5 +197,88 @@
   ],
   "completed_feature_groups": [
     "checkpoint-feature-group-audits"
+  ],
+  "evidence": [
+    {
+      "id": "POLICY257-0001",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD075.json",
+      "bytes": 3041,
+      "sha256": "2efeb63a014f8475e5763ddce3ab99ab083755ab4359523d3d5b38cebd4b041d"
+    },
+    {
+      "id": "POLICY257-0002",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/feature-group-audits.json",
+      "bytes": 1068,
+      "sha256": "3e18ec6ebc84c14cbc1d16686fed91e0405f3f1efe2a2d7b9f046ab1309ada6a"
+    },
+    {
+      "id": "POLICY257-0004",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/AGENTS.md",
+      "bytes": 10577,
+      "sha256": "d1fd0591084b0a369721bb81d480f5c9e34f84fb6757517a46082a6b6b0ed18f"
+    },
+    {
+      "id": "POLICY257-0006",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 105333,
+      "sha256": "dcc32957339973a81d7ca2655cc7b48c0df45dc6abf63a244edd3e0a7dca0b87"
+    },
+    {
+      "id": "POLICY257-0018",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-tests-r1.txt",
+      "bytes": 2770,
+      "sha256": "73005cab0428ffe9fae8855be9f86a3e258ded81f483a32cdd49d2148b9bf776"
+    },
+    {
+      "id": "POLICY257-0019",
+      "kind": "local",
+      "path": "local/research/codex/audit-feature-group-tests-r2.txt",
+      "bytes": 133,
+      "sha256": "ea20fc890102024f78c394ba57d9e509dccb4c1ed331aa4ae9acc94471c8a415"
+    },
+    {
+      "id": "POLICY257-0023",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 33862,
+      "sha256": "551067607e404a03a2c9f932bfc5e73556f776fd095117e76c38a407bb88198c"
+    },
+    {
+      "id": "POLICY257-0024",
+      "kind": "repository",
+      "path": "tools/checkpoints.py",
+      "bytes": 4784,
+      "sha256": "635de61b7982085fdbfc7a5c3639fcbe429796047c61908e6e5ada1dad599ecd"
+    },
+    {
+      "id": "POLICY257-0025",
+      "kind": "repository",
+      "path": "tools/test_checkpoints.py",
+      "bytes": 17954,
+      "sha256": "d069a945803f96fa70fae10246f123f019106418ebcc9d320f91991a5fef1c71"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/a28932e8b47114ee16c4a1fdf90158d8bbc0031b24c5fa924b92d9a4ed8b9b78.jsonl",
+      "sha256": "a28932e8b47114ee16c4a1fdf90158d8bbc0031b24c5fa924b92d9a4ed8b9b78",
+      "bytes": 976,
+      "count": 5,
+      "files_bytes": 27452
+    },
+    {
+      "run": "local/research/codex/audit-feature-group-delivery-r1",
+      "path": "local/evidence-manifests/e05912ee1f67b5ff5fa6fb38e96515411e80645f8e2b935fbf4cf005b39d1e80.jsonl",
+      "sha256": "e05912ee1f67b5ff5fa6fb38e96515411e80645f8e2b935fbf4cf005b39d1e80",
+      "bytes": 2624,
+      "count": 11,
+      "files_bytes": 1362171
+    }
   ]
 }

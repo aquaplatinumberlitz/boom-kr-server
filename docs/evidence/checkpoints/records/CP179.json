@@ -139,15 +139,6 @@
       "limits": "Only selected offlineR2 recipe; no3currente9coldstarts/pristineWindowsbootstrap/fullK2/K3–K7/K6a/fullmatch/LAN/Internet8clients. OldnativeR1controls stay separate. Equalbytes are not whole-program equivalence; raw/complete records unchanged; manualgate decision under ownerreviewwaiver."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP179-k1-reuse.json",
-      "bytes": 28921,
-      "sha256": "bba658dd6498f972e12390e174689dae85d6728019f3663df095ad6829fc1547",
-      "count": 120
-    }
-  ],
   "delta": {
     "added": [
       "Manual scoped K1acceptance usingretainedthreeR2coldstarts/nativeAPI/PID; broadbootstrap/framerbyteidentity withcurrente9; no newclientexecution."
@@ -249,6 +240,204 @@
       "path": "docs/evidence/checkpoints/README.md",
       "state": "unchanged",
       "reason": "No runtime/productioncode/profile/storeworkflowchange; periodic audit notdueuntilCP180."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "K1-00001",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/source-first-reuse.json",
+      "bytes": 10856,
+      "sha256": "a3e358c67f11efee7b7ec56e7130ff847c1c6fd21a084e845ee0821d8b22cce8"
+    },
+    {
+      "id": "K1-00004",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/reuse-verification.json",
+      "bytes": 23616,
+      "sha256": "fe1cebee7c8021067213bbcda78d98ef978ae56ef8d50e7b55f3a38816820da2"
+    },
+    {
+      "id": "K1-00005",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/bootstrap-region-control-comparison.json",
+      "bytes": 10878,
+      "sha256": "34e3c271536eefb00184af9ce2b346557a3576735097ffbfc8e025dd84995cd7"
+    },
+    {
+      "id": "K1-00007",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/manual-k1-acceptance.json",
+      "bytes": 2577,
+      "sha256": "62cb421b3cd6a99ab3006aa5d9a748b73e585f7a3204f36d63cf211c99cc1ad7"
+    },
+    {
+      "id": "K1-00008",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/gate-criteria-equality.json",
+      "bytes": 306,
+      "sha256": "2cadcf81d0194a29af16aee335d97331767a7ed600e3956940f5f70ca2e6eed7"
+    },
+    {
+      "id": "K1-00010",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/issue2-body.md",
+      "bytes": 2838,
+      "sha256": "a0c363dbb27007d2efb59dcc25c4f0d01d1a29ef44d3ddca9a947febdb98414d"
+    },
+    {
+      "id": "K1-00012",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/issue3-body.md",
+      "bytes": 2867,
+      "sha256": "3dc75c19d171bb2d9cfd98146f60c561afbc417fd99fa5a16056810fc503d39b"
+    },
+    {
+      "id": "K1-00014",
+      "kind": "local",
+      "path": "local/research/codex/k1-cold-recipe-r1/issue14-body.md",
+      "bytes": 3040,
+      "sha256": "bc11f2923a9c6e1a991d28d47cd421ba2a26e4ce05f19db128613f6d5145a3b5"
+    },
+    {
+      "id": "K1-00034",
+      "kind": "local",
+      "path": "local/research/codex/cp178-pr-merged.json",
+      "bytes": 275,
+      "sha256": "806bef15e82ee9376110fc853a5efb3d862e659f914b71c681e1af619d506146"
+    },
+    {
+      "id": "K1-00039",
+      "kind": "repository",
+      "path": "docs/evidence/wine-r2/verification.json",
+      "bytes": 14107,
+      "sha256": "da6fdc6406aa77437f3a9385333fb759b5c41826456118475059a8de064f698f"
+    },
+    {
+      "id": "K1-00040",
+      "kind": "repository",
+      "path": "tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "K1-00041",
+      "kind": "repository",
+      "path": "tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    },
+    {
+      "id": "K1-00070",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/nmco-patch.json",
+      "bytes": 723,
+      "sha256": "e4d250885ca4c8e464911116c57b1553a37fb865f30d2c8c1ec788399ba9ec94"
+    },
+    {
+      "id": "K1-00120",
+      "kind": "repository",
+      "path": "docs/evidence/bootstrap-wire/verification.json",
+      "bytes": 17575,
+      "sha256": "36fbac96f675cc26b0978d41968cd8330f378a76370d9a891d626104b64c5e66"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/k1-cold-recipe-r1",
+      "path": "local/evidence-manifests/e76b6abc3528ad70d7a071095972e0de53190ce8b2f4e9229479732884607d16.jsonl",
+      "sha256": "e76b6abc3528ad70d7a071095972e0de53190ce8b2f4e9229479732884607d16",
+      "bytes": 4871,
+      "count": 24,
+      "files_bytes": 2240481
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/a9e98539b94f68abb3ab595ac0d8270f265bbdaf4d03ef2ef4a66f27b3803780.jsonl",
+      "sha256": "a9e98539b94f68abb3ab595ac0d8270f265bbdaf4d03ef2ef4a66f27b3803780",
+      "bytes": 1321,
+      "count": 7,
+      "files_bytes": 222109
+    },
+    {
+      "run": "local/research/wine-r2/defproc-1",
+      "path": "local/evidence-manifests/aa8270e1331e9c2ff8b69f36b63983dbe85365922bcf353616675176160b6119.jsonl",
+      "sha256": "aa8270e1331e9c2ff8b69f36b63983dbe85365922bcf353616675176160b6119",
+      "bytes": 1530,
+      "count": 8,
+      "files_bytes": 32132531
+    },
+    {
+      "run": "local/research/wine-r2/final-cold-2",
+      "path": "local/evidence-manifests/f1fbf6eee2a2b17d4060e97847cd858c87cbc28990b8d06153ab07e15b7ebf84.jsonl",
+      "sha256": "f1fbf6eee2a2b17d4060e97847cd858c87cbc28990b8d06153ab07e15b7ebf84",
+      "bytes": 1555,
+      "count": 8,
+      "files_bytes": 31969339
+    },
+    {
+      "run": "local/research/wine-r2/final-cold-3",
+      "path": "local/evidence-manifests/f6faf12a80ebd57d7b70a2ba6f074cfa9ab1f4592cfbc105511e613e88f557b8.jsonl",
+      "sha256": "f6faf12a80ebd57d7b70a2ba6f074cfa9ab1f4592cfbc105511e613e88f557b8",
+      "bytes": 1555,
+      "count": 8,
+      "files_bytes": 31969666
+    },
+    {
+      "run": "local/research/codex/wcp-guard-r1",
+      "path": "local/evidence-manifests/108cc729f3aad3858adeaccf1da738d99fafec645c908802b1406d2a8d04702c.jsonl",
+      "sha256": "108cc729f3aad3858adeaccf1da738d99fafec645c908802b1406d2a8d04702c",
+      "bytes": 458,
+      "count": 2,
+      "files_bytes": 31875229
+    },
+    {
+      "run": "local/research/codex/room-player-r1",
+      "path": "local/evidence-manifests/754796ff3363e4db2562694034641b0854a39d5c43c4e9efc02c789732d084d8.jsonl",
+      "sha256": "754796ff3363e4db2562694034641b0854a39d5c43c4e9efc02c789732d084d8",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 3522
+    },
+    {
+      "run": "local/research/codex/start-reply-r1",
+      "path": "local/evidence-manifests/649d1b5aa03bb6ddd710aeb8d72c4d7b36db103fc47e0afb430178f1ad4877a8.jsonl",
+      "sha256": "649d1b5aa03bb6ddd710aeb8d72c4d7b36db103fc47e0afb430178f1ad4877a8",
+      "bytes": 445,
+      "count": 2,
+      "files_bytes": 3443
+    },
+    {
+      "run": "local/research/bootstrap-runtime/silent",
+      "path": "local/evidence-manifests/273c7bd9a3fa1fddddc1236a864099442e9a021e8853fa70b6999c850c2cd56c.jsonl",
+      "sha256": "273c7bd9a3fa1fddddc1236a864099442e9a021e8853fa70b6999c850c2cd56c",
+      "bytes": 1403,
+      "count": 7,
+      "files_bytes": 247642
+    },
+    {
+      "run": "local/research/bootstrap-runtime/reply",
+      "path": "local/evidence-manifests/f536a68a196993e3590593d609e7e7baa0bf553d7b2a4a2fbdeaee151e755de5.jsonl",
+      "sha256": "f536a68a196993e3590593d609e7e7baa0bf553d7b2a4a2fbdeaee151e755de5",
+      "bytes": 4747,
+      "count": 24,
+      "files_bytes": 32033393
+    },
+    {
+      "run": "local/research/bootstrap-runtime/badguard",
+      "path": "local/evidence-manifests/739536e8a705bcdebf4421a7582b468758189a3ef03b2446e8ecd738200530c6.jsonl",
+      "sha256": "739536e8a705bcdebf4421a7582b468758189a3ef03b2446e8ecd738200530c6",
+      "bytes": 1419,
+      "count": 7,
+      "files_bytes": 218859
+    },
+    {
+      "run": "local/research/bootstrap-runtime/reply-final",
+      "path": "local/evidence-manifests/4ec89f9ff1973f337d2b860cadf513d4342768b139212c66932ded2e55a54c65.jsonl",
+      "sha256": "4ec89f9ff1973f337d2b860cadf513d4342768b139212c66932ded2e55a54c65",
+      "bytes": 1442,
+      "count": 7,
+      "files_bytes": 63091
     }
   ]
 }

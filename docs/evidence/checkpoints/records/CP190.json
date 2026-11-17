@@ -165,15 +165,6 @@
       "limits": "No secondphysicalhost/endpoint established, bundlecanpreparebutcannotcertifyK6b."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP190-portable-bundle.json",
-      "bytes": 271484,
-      "sha256": "1130087bc3cc2ac94f3139e3a21cb20d23ce26a2af904daa163ff7da482eb8a8",
-      "count": 1022
-    }
-  ],
   "delta": {
     "added": [
       "Opt-inportablebundle fromexistingpinnedexport; exactfixture/source/relativepaths/verificationlauncher, no newtracker/protocol.",
@@ -259,6 +250,692 @@
       "path": "docs/evidence/issue-reconciliation/review.json",
       "state": "updated",
       "reason": "CP190portablebundle/nativecontrol/sourcepolicy/limits/nextLANblocker synchronizedbeforecomplete; PLANsoleorder, AUD056next192unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "PORTABLE190-00008",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "PORTABLE190-00015",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "PORTABLE190-00028",
+      "kind": "local",
+      "path": "local/research/codex/k6b-admission-preflight-r1/lan-service-template.json",
+      "bytes": 2979,
+      "sha256": "edd858c4cb8177a959ad7c26143e451c81e8030d40f67d8addcb80faf2cb23e8"
+    },
+    {
+      "id": "PORTABLE190-00030",
+      "kind": "local",
+      "path": "local/research/codex/k6b-admission-preflight-r1/raw-seal.json",
+      "bytes": 1922,
+      "sha256": "fcff1be20eeac44af9a4f570a62a696e4153f3cd498dabaa205dce96352b0037"
+    },
+    {
+      "id": "PORTABLE190-00033",
+      "kind": "local",
+      "path": "local/research/codex/k6b-admission-preflight-r1/verification.json",
+      "bytes": 4877,
+      "sha256": "06bb2df70b992e7d681871a5126d03683bbc3829f4a0f6c2c53edcfb892a59ad"
+    },
+    {
+      "id": "PORTABLE190-00036",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "PORTABLE190-00039",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "PORTABLE190-00042",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-r1/bundle-tests-six.txt",
+      "bytes": 104,
+      "sha256": "f1da7f5d074ffe296f43dbca64f634c839c3d2a8d87de48e1f902222155e4308"
+    },
+    {
+      "id": "PORTABLE190-00044",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-r1/checkpoint-tests.txt",
+      "bytes": 138,
+      "sha256": "856265f4424d26f979d788fe78eafa39b6273058ea3c899a7f52b81a2664d9ef"
+    },
+    {
+      "id": "PORTABLE190-00045",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "1c4ef513e4e76ce589a662184e58b684ffea3d817d8eafa3026d043eec5e72b2"
+    },
+    {
+      "id": "PORTABLE190-00046",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-r1/export-regressions.txt",
+      "bytes": 9505,
+      "sha256": "acba15b9787eb438a808fb9195c4525c4a71394bf8eab9f465c359cbf1865488"
+    },
+    {
+      "id": "PORTABLE190-00107",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-r1/relocated bundle/bundle.json",
+      "bytes": 11932,
+      "sha256": "de1ab4c77dfee4b3ccda7703ab04e89772d630e195838a0b753ef9a2034e37f7"
+    },
+    {
+      "id": "PORTABLE190-00167",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-r1/relocated-verify.json",
+      "bytes": 104,
+      "sha256": "f3c84d19bbc6dbf538c709fc9e9ff5c912b20dd8504670a99330362150f4630a"
+    },
+    {
+      "id": "PORTABLE190-00168",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-r1/server-tests.txt",
+      "bytes": 394,
+      "sha256": "9c5c07043ace2ab16c55915279fa93c0b33e112ff392cd3358d3af174f1974c5"
+    },
+    {
+      "id": "PORTABLE190-00173",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-runtime-r1/cp190-snapshot/docs/PLAN.md",
+      "bytes": 50757,
+      "sha256": "67a044dc815a8c3a62a2d8fda545fe9e72a913310dfb2e8013cfc9a82b673262"
+    },
+    {
+      "id": "PORTABLE190-00882",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-runtime-r1/host-eof-verification.json",
+      "bytes": 1937,
+      "sha256": "1222a07f0b1be8087d0bf2cfe3c70ae6bd4002b85645991b56af5edb26a1e3f2"
+    },
+    {
+      "id": "PORTABLE190-00883",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-runtime-r1/identity-verification.json",
+      "bytes": 1377,
+      "sha256": "94edf06558a79d7b928aae20686cd3552ade15f0993e1dd5999fbc8fe524e958"
+    },
+    {
+      "id": "PORTABLE190-00888",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-runtime-r1/raw-seal.json",
+      "bytes": 143663,
+      "sha256": "860c97fdceb5d15ab55096721cf313bea7cca84a713a7ccfca6d09687a0f6a45"
+    },
+    {
+      "id": "PORTABLE190-00944",
+      "kind": "local",
+      "path": "local/research/codex/portable-bundle-runtime-r1/visual-review.json",
+      "bytes": 497,
+      "sha256": "9ece94651535919c33c3cf8378ef500a7cb5c406e6e46dd4091c14dbc8a7b9e6"
+    },
+    {
+      "id": "PORTABLE190-00955",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "PORTABLE190-00956",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "PORTABLE190-00957",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "PORTABLE190-00964",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "PORTABLE190-00967",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "PORTABLE190-00969",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "PORTABLE190-00970",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "PORTABLE190-00971",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "PORTABLE190-00972",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "PORTABLE190-00973",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "PORTABLE190-00974",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109744,
+      "sha256": "12362a460ade30fbd48f14dd8bada6a3126e330c8058b71dc7bee5d63e2d9584"
+    },
+    {
+      "id": "PORTABLE190-00975",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "PORTABLE190-00976",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "PORTABLE190-00977",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "PORTABLE190-00978",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "PORTABLE190-00979",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "PORTABLE190-00980",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "PORTABLE190-00981",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "PORTABLE190-00982",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "PORTABLE190-00983",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "PORTABLE190-00984",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "PORTABLE190-00985",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "PORTABLE190-00986",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "PORTABLE190-00987",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "PORTABLE190-00988",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "PORTABLE190-00989",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "PORTABLE190-00990",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "PORTABLE190-00991",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "PORTABLE190-00992",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "PORTABLE190-00993",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "PORTABLE190-00994",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "PORTABLE190-00995",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "PORTABLE190-00996",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "PORTABLE190-00997",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "PORTABLE190-00998",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "PORTABLE190-00999",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "PORTABLE190-01000",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "PORTABLE190-01001",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "PORTABLE190-01002",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "PORTABLE190-01003",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "PORTABLE190-01004",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "PORTABLE190-01005",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "PORTABLE190-01006",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "PORTABLE190-01007",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "PORTABLE190-01008",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "PORTABLE190-01009",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "PORTABLE190-01010",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "PORTABLE190-01011",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "PORTABLE190-01012",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "PORTABLE190-01013",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "PORTABLE190-01014",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "PORTABLE190-01015",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "PORTABLE190-01016",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "PORTABLE190-01017",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "PORTABLE190-01018",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "PORTABLE190-01019",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "PORTABLE190-01020",
+      "kind": "repository",
+      "path": "tools/export_probe_profile.py",
+      "bytes": 9863,
+      "sha256": "20d90106996dd866af4d3d0fe5824812bb63c6e4f376f6013eb55e9ea67adcb3"
+    },
+    {
+      "id": "PORTABLE190-01021",
+      "kind": "repository",
+      "path": "tools/probe_bundle.py",
+      "bytes": 5442,
+      "sha256": "f7ee8c2c682f78b8f854b2c6d6621140c41b79867a9b9dce3aa7a070f8d9688b"
+    },
+    {
+      "id": "PORTABLE190-01022",
+      "kind": "repository",
+      "path": "tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/0b8af0283f537019da215d82f97b1246edfdb16f784b0641b9b00b1efe344384.jsonl",
+      "sha256": "0b8af0283f537019da215d82f97b1246edfdb16f784b0641b9b00b1efe344384",
+      "bytes": 473,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/16c6e7e03001718cd6d0bfac18f79a7d3571d575a26d38155199643fdb42b1cf.jsonl",
+      "sha256": "16c6e7e03001718cd6d0bfac18f79a7d3571d575a26d38155199643fdb42b1cf",
+      "bytes": 2297,
+      "count": 12,
+      "files_bytes": 101443
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/42bacd7632c92e9b334569dce64401d14b880365b661f4a40f7da5419ccf480b.jsonl",
+      "sha256": "42bacd7632c92e9b334569dce64401d14b880365b661f4a40f7da5419ccf480b",
+      "bytes": 657,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/34067e51828377969c2c139cb209238be7db3cb789d627553899ac268fe9015f.jsonl",
+      "sha256": "34067e51828377969c2c139cb209238be7db3cb789d627553899ac268fe9015f",
+      "bytes": 448,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/b67abc2230dadb2f3594fed6ba1747cc8291cd2ee6f79063db2155c190bd969b.jsonl",
+      "sha256": "b67abc2230dadb2f3594fed6ba1747cc8291cd2ee6f79063db2155c190bd969b",
+      "bytes": 659,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/5dfcda6c43049d20c83cd7ec9d5cd4d333267a8920b80b6f9c8164a702299126.jsonl",
+      "sha256": "5dfcda6c43049d20c83cd7ec9d5cd4d333267a8920b80b6f9c8164a702299126",
+      "bytes": 471,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/132c75914911100607b5e59dde5d7cc7909f47365bbd77069372597975c10c94.jsonl",
+      "sha256": "132c75914911100607b5e59dde5d7cc7909f47365bbd77069372597975c10c94",
+      "bytes": 1041,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/5bb43bf51bf6d2411b50960b84c0d0d84a5e03dedb1fb3a3dac411a56d0005be.jsonl",
+      "sha256": "5bb43bf51bf6d2411b50960b84c0d0d84a5e03dedb1fb3a3dac411a56d0005be",
+      "bytes": 514,
+      "count": 2,
+      "files_bytes": 63749120
+    },
+    {
+      "run": "local/research/codex/k6b-admission-preflight-r1",
+      "path": "local/evidence-manifests/772518b04418a5c3a513ed185983494c85aca44e09b72b658114a072bb7eec97.jsonl",
+      "sha256": "772518b04418a5c3a513ed185983494c85aca44e09b72b658114a072bb7eec97",
+      "bytes": 948,
+      "count": 4,
+      "files_bytes": 45789
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/d654ffdc4e0d2788544acf8054fc258458011bc35db7c6466bccd49b205e66fa.jsonl",
+      "sha256": "d654ffdc4e0d2788544acf8054fc258458011bc35db7c6466bccd49b205e66fa",
+      "bytes": 444,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/cdc9ec0efb18fcfdbef1f27391c503209786c228a540680bd7a103417c0b6282.jsonl",
+      "sha256": "cdc9ec0efb18fcfdbef1f27391c503209786c228a540680bd7a103417c0b6282",
+      "bytes": 453,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/portable-bundle-r1",
+      "path": "local/evidence-manifests/e5003b1b11082aa3aaec44b71ec1c6a26c5e436949c26a08286fca432da19d10.jsonl",
+      "sha256": "e5003b1b11082aa3aaec44b71ec1c6a26c5e436949c26a08286fca432da19d10",
+      "bytes": 31116,
+      "count": 123,
+      "files_bytes": 342984
+    },
+    {
+      "run": "local/research/codex/portable-bundle-runtime-r1",
+      "path": "local/evidence-manifests/1cc6c2c03fc0e33c7246b3213715f55944fc49b4009e6af7dcbb5b6a15d6349b.jsonl",
+      "sha256": "1cc6c2c03fc0e33c7246b3213715f55944fc49b4009e6af7dcbb5b6a15d6349b",
+      "bytes": 165319,
+      "count": 770,
+      "files_bytes": 27793783
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/cab4f2509341f8f3deb8e628838f3de65f2e4a950f3ddf8aadf77424f525c175.jsonl",
+      "sha256": "cab4f2509341f8f3deb8e628838f3de65f2e4a950f3ddf8aadf77424f525c175",
+      "bytes": 656,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/4f954684676e71f7d46287f3c0d7af3cd1a4c253e90387dd3d7d1a574f7a689c.jsonl",
+      "sha256": "4f954684676e71f7d46287f3c0d7af3cd1a4c253e90387dd3d7d1a574f7a689c",
+      "bytes": 1006,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/2d9eceaedd23106e8e8266f96842ac939be15f62378ecbe05f180739b6001c54.jsonl",
+      "sha256": "2d9eceaedd23106e8e8266f96842ac939be15f62378ecbe05f180739b6001c54",
+      "bytes": 446,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/6d75ef618d04505979851f32fe3260748b8cfe3b8233c7aefb373b8ac3e3da88.jsonl",
+      "sha256": "6d75ef618d04505979851f32fe3260748b8cfe3b8233c7aefb373b8ac3e3da88",
+      "bytes": 463,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

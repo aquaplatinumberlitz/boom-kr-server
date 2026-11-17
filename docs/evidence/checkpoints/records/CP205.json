@@ -140,15 +140,6 @@
       "limits": "Nextsource-firststate/save/policy_sourcesreuse; noaccountresumeclaim."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP205-four-member-abort-room.json",
-      "bytes": 635323,
-      "sha256": "3e19144ed640f611b9d31e9c1f6cc8bfc2685e24af3a5eba5aa1210475b1f277",
-      "count": 2469
-    }
-  ],
   "delta": {
     "added": [
       "Opt-inunrankedfourmemberabort/setup585/107110/threeRoomwithguestDandhostAactualnativecontrols; Bchief andtimerfencepastdeadline.",
@@ -237,6 +228,1043 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP205guest/hostEOFnativeRoom/chief/fence/limits/reusedsources andnexthealthidentitysyncedbeforecomplete; audit208unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ABORT205-00007",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "ABORT205-00014",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "ABORT205-00027",
+      "kind": "local",
+      "path": "local/research/codex/cp205-artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "ABORT205-00028",
+      "kind": "local",
+      "path": "local/research/codex/cp205-bundle-tests.txt",
+      "bytes": 13026,
+      "sha256": "1cb9931d055b7ae4fb9b790d7a7d10a04db042364d4c9fda2acb6c86ab244830"
+    },
+    {
+      "id": "ABORT205-00029",
+      "kind": "local",
+      "path": "local/research/codex/cp205-checkpoint-tests.txt",
+      "bytes": 142,
+      "sha256": "f6ecba46d453e8db1c71ae7c28240c8870cdc9431e9197ef3b83f74fadebe8d6"
+    },
+    {
+      "id": "ABORT205-00033",
+      "kind": "local",
+      "path": "local/research/codex/cp205-manual-images.json",
+      "bytes": 2511,
+      "sha256": "3d1d510040b492061c67eff8b1a1320a2ea347f6ff02b18495e9c47638e95b65"
+    },
+    {
+      "id": "ABORT205-00034",
+      "kind": "local",
+      "path": "local/research/codex/cp205-server-tests-final.txt",
+      "bytes": 441,
+      "sha256": "9417586d6a30ffffc6d46c01d686b0d480418a83ab6e8bad03b6fe6821135e2e"
+    },
+    {
+      "id": "ABORT205-00035",
+      "kind": "local",
+      "path": "local/research/codex/cp205-source-reuse.json",
+      "bytes": 2993,
+      "sha256": "8966d1161c5d330858ac03a1e2adcbcff457f77e9b3e2300b44fd76457ae89bc"
+    },
+    {
+      "id": "ABORT205-00036",
+      "kind": "local",
+      "path": "local/research/codex/cp205-verifier-correction.json",
+      "bytes": 1077,
+      "sha256": "f30d6993e5389b9fad5814054dfa1dfd1cf04d6040596b9616d274f2f2ad5697"
+    },
+    {
+      "id": "ABORT205-00045",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-host-r1/cp205-snapshot/docs/PLAN.md",
+      "bytes": 57558,
+      "sha256": "1fc033f6f71ac99b9b1029de3f9f97384fd01305539ea3a747bd3824584efd0f"
+    },
+    {
+      "id": "ABORT205-00380",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-host-r1/cycles/B/three-survivor-postdeadline.png",
+      "bytes": 180591,
+      "sha256": "0ccb6896581b8d5144e2bd02693cccd5fe4296350aebb2994b39e9461e22fe75"
+    },
+    {
+      "id": "ABORT205-00800",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-host-r1/cycles/service-state.json",
+      "bytes": 157174,
+      "sha256": "62d0986d8dcdc94b3995ca6afbc61ff40b995d36750248955ecc888908d1d564"
+    },
+    {
+      "id": "ABORT205-00814",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-host-r1/delta.json",
+      "bytes": 454,
+      "sha256": "7b526f3b9c4ca31a8e2e17139cde0b1336a92cce379b4bac3c65c2ce7e003048"
+    },
+    {
+      "id": "ABORT205-00826",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-host-r1/raw-seal.json",
+      "bytes": 151860,
+      "sha256": "41d6fb9f93a423e0142c3a6bb9b1336c1e6527bd32ee4775db40c2c09f656621"
+    },
+    {
+      "id": "ABORT205-00994",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-host-r1/verification.json",
+      "bytes": 3192,
+      "sha256": "3c846b4f842bfb8d3b5d05faac61b80948aecef4669eb1167f458fb70d69de93"
+    },
+    {
+      "id": "ABORT205-01005",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-room-r1/cycles/run.json",
+      "bytes": 13213,
+      "sha256": "838d4e5fc4412052c3b079cff44fc0aacb69862cd9d79626fe5335fec1a93faa"
+    },
+    {
+      "id": "ABORT205-01030",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-room-r1/raw-seal.json",
+      "bytes": 3447,
+      "sha256": "1b6f4d7c869a2ce3320bf555757b617b2b6dd8dd123e5517c97d8aced4116c11"
+    },
+    {
+      "id": "ABORT205-02029",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-room-r2/cycles/service-state.json",
+      "bytes": 157342,
+      "sha256": "6380ee4ee460cc680d01ac0ca78cf82821ab6e24487379e82f32c3960b92adac"
+    },
+    {
+      "id": "ABORT205-02055",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-room-r2/raw-seal.json",
+      "bytes": 146884,
+      "sha256": "cf36fda430fbf8c9692d915ff26b62e046c32e01d2555c165540c61c047d0c73"
+    },
+    {
+      "id": "ABORT205-02220",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-room-r2/source-first.json",
+      "bytes": 2136,
+      "sha256": "19b184ac561b0c87ab969dfb1287e5a27645190201e8208849ba6ad1977d1415"
+    },
+    {
+      "id": "ABORT205-02223",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-room-r2/verification.json",
+      "bytes": 3174,
+      "sha256": "db89a94f10ed857107a9d43543b031b6f84b0dbb5d61fcc1b28a9ef81c66d10a"
+    },
+    {
+      "id": "ABORT205-02329",
+      "kind": "local",
+      "path": "local/research/codex/four-abort-transport-r1/tcp-verification.json",
+      "bytes": 188,
+      "sha256": "9a11b39c6a5d838d02a7c9cdc32abac7996f7e57cb5c5cd29235056de8cb3fff"
+    },
+    {
+      "id": "ABORT205-02337",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "ABORT205-02340",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "ABORT205-02352",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "ABORT205-02353",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "ABORT205-02354",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "ABORT205-02363",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "ABORT205-02368",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "ABORT205-02372",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "ABORT205-02373",
+      "kind": "repository",
+      "path": "server/four_battle_policy.py",
+      "bytes": 5868,
+      "sha256": "47149ea6362640f2179b05401554cbef7a837c9443115938265804dd9ee41142"
+    },
+    {
+      "id": "ABORT205-02374",
+      "kind": "repository",
+      "path": "server/four_bomb_policy.py",
+      "bytes": 3690,
+      "sha256": "0688e4a0cdd410b04f98ab22fb7948f71beb4f3c2cfa0bab31ef86e3077e6b19"
+    },
+    {
+      "id": "ABORT205-02375",
+      "kind": "repository",
+      "path": "server/four_input_limits.py",
+      "bytes": 2900,
+      "sha256": "c1e90e924680d0106665d765c9d382124731929e7a4c084f691b96e40baa71e4"
+    },
+    {
+      "id": "ABORT205-02376",
+      "kind": "repository",
+      "path": "server/four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "ABORT205-02377",
+      "kind": "repository",
+      "path": "server/four_player_service.py",
+      "bytes": 35744,
+      "sha256": "f4fea05a9751e638cc458c0c2e7bf197ef4785798fb205eac1cbcf1194093ec4"
+    },
+    {
+      "id": "ABORT205-02378",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "ABORT205-02379",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "ABORT205-02380",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "ABORT205-02381",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "ABORT205-02382",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 112770,
+      "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c"
+    },
+    {
+      "id": "ABORT205-02383",
+      "kind": "repository",
+      "path": "server/profiles/four-client-battle.json",
+      "bytes": 14357,
+      "sha256": "945b5677dc4e1c6e99604d78f7c1be49aa336dea93c54c7010c1c500980262c0"
+    },
+    {
+      "id": "ABORT205-02384",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "ABORT205-02385",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "ABORT205-02386",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "ABORT205-02387",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "ABORT205-02388",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "ABORT205-02389",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "ABORT205-02390",
+      "kind": "repository",
+      "path": "server/test_admission_ip.py",
+      "bytes": 7753,
+      "sha256": "15c72110195d48bd4165684a098232f56be8e78f261f454911e796b90a192a76"
+    },
+    {
+      "id": "ABORT205-02391",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "ABORT205-02392",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "ABORT205-02393",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "ABORT205-02394",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "ABORT205-02395",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "ABORT205-02396",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "ABORT205-02397",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "ABORT205-02398",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "ABORT205-02399",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "ABORT205-02400",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "ABORT205-02401",
+      "kind": "repository",
+      "path": "server/test_four_abort_room.py",
+      "bytes": 4308,
+      "sha256": "adc3b9740cc9754f54d1bc518a99e293e4a28d79155b8c26ac00b329eceeb004"
+    },
+    {
+      "id": "ABORT205-02402",
+      "kind": "repository",
+      "path": "server/test_four_battle_policy.py",
+      "bytes": 4627,
+      "sha256": "ffc60236e8c9cdbb14f3bdf173af7ce1b5b2a469c52befb9250d72e061552ff6"
+    },
+    {
+      "id": "ABORT205-02403",
+      "kind": "repository",
+      "path": "server/test_four_bomb_policy.py",
+      "bytes": 6771,
+      "sha256": "88a7a17b394980589d9c8de2c16e3ab465878204a91ec919158d4c7dca951534"
+    },
+    {
+      "id": "ABORT205-02404",
+      "kind": "repository",
+      "path": "server/test_four_delivery.py",
+      "bytes": 3050,
+      "sha256": "41020e3376ca6c4f170e010f5d9ee3ea280f490dde39bae7342fc63259d5dbd4"
+    },
+    {
+      "id": "ABORT205-02405",
+      "kind": "repository",
+      "path": "server/test_four_input_guards.py",
+      "bytes": 2610,
+      "sha256": "8d669e8a08ec99faee7d02fa43afbf4e9a9585db374c8e54addc9380af7fce81"
+    },
+    {
+      "id": "ABORT205-02406",
+      "kind": "repository",
+      "path": "server/test_four_input_limits.py",
+      "bytes": 4946,
+      "sha256": "b7a6600f6721b26aa758e3a2ac345fba04f3385940c8cc9d5793e734f037aa03"
+    },
+    {
+      "id": "ABORT205-02407",
+      "kind": "repository",
+      "path": "server/test_four_player_service.py",
+      "bytes": 10154,
+      "sha256": "50faf857e110ad0a5b5b5f45d9d41429b8ccb73c6d880cfd766e7d8847126a6d"
+    },
+    {
+      "id": "ABORT205-02408",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "ABORT205-02409",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "ABORT205-02410",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "ABORT205-02411",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "ABORT205-02412",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "ABORT205-02413",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "ABORT205-02414",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "ABORT205-02415",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "ABORT205-02416",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "ABORT205-02417",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "ABORT205-02418",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "ABORT205-02419",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "ABORT205-02420",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "ABORT205-02421",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "ABORT205-02422",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "ABORT205-02423",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "ABORT205-02424",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "ABORT205-02425",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "ABORT205-02426",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "ABORT205-02427",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "ABORT205-02428",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "ABORT205-02429",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "ABORT205-02430",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "ABORT205-02431",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "ABORT205-02432",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "ABORT205-02433",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "ABORT205-02434",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "ABORT205-02435",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "ABORT205-02436",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "ABORT205-02437",
+      "kind": "repository",
+      "path": "tools/artifacts.py",
+      "bytes": 1089,
+      "sha256": "3806dc33d23db39ce591eb6fc3d2d9638c177a1a08862c474b4bb1d6614188d3"
+    },
+    {
+      "id": "ABORT205-02438",
+      "kind": "repository",
+      "path": "tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "ABORT205-02439",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 30165,
+      "sha256": "a91a1868b8da8870818fa11e6c38f81fb5c36a284610a60fb47f041b7891bd94"
+    },
+    {
+      "id": "ABORT205-02440",
+      "kind": "repository",
+      "path": "tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "ABORT205-02441",
+      "kind": "repository",
+      "path": "tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "ABORT205-02442",
+      "kind": "repository",
+      "path": "tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "ABORT205-02443",
+      "kind": "repository",
+      "path": "tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "ABORT205-02444",
+      "kind": "repository",
+      "path": "tools/export_probe_profile.py",
+      "bytes": 10120,
+      "sha256": "796cf2505471d2aeace2563dc5eddc79498ffe15c563a6ef3d716448c7644f0d"
+    },
+    {
+      "id": "ABORT205-02445",
+      "kind": "repository",
+      "path": "tools/feature_catalog.py",
+      "bytes": 15672,
+      "sha256": "765658526f6efccf218e7387d309cc263846ef72c0a1090b87f3d2cc5d3181c0"
+    },
+    {
+      "id": "ABORT205-02446",
+      "kind": "repository",
+      "path": "tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "ABORT205-02447",
+      "kind": "repository",
+      "path": "tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "ABORT205-02448",
+      "kind": "repository",
+      "path": "tools/probe_bundle.py",
+      "bytes": 7224,
+      "sha256": "db47ae7090cf3a34a73ff4266aeed79b567977697548a058f04ff76f85e9ca24"
+    },
+    {
+      "id": "ABORT205-02449",
+      "kind": "repository",
+      "path": "tools/probe_channel_identity.py",
+      "bytes": 981,
+      "sha256": "b4dbf4c9b827007fa9bcb441db26e0230fb4654e5480f5b242157d2d32c3f68b"
+    },
+    {
+      "id": "ABORT205-02450",
+      "kind": "repository",
+      "path": "tools/terrain_shadow.py",
+      "bytes": 334,
+      "sha256": "71856e537954ab963ce27a6d057913974b7bb8b1dea863764961ed9846d2addc"
+    },
+    {
+      "id": "ABORT205-02451",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_absolute_local.py",
+      "bytes": 3145,
+      "sha256": "b6c2b85fb4b315101435dfbc95ea41ffe4a5a8fa3c2eec2c7d4f3c769b86c737"
+    },
+    {
+      "id": "ABORT205-02452",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_audit_order.py",
+      "bytes": 1350,
+      "sha256": "157b9b99bf25383da498239b5627739962251b25f2c67925730663775e76f9e9"
+    },
+    {
+      "id": "ABORT205-02453",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    },
+    {
+      "id": "ABORT205-02454",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_store.py",
+      "bytes": 12900,
+      "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b"
+    },
+    {
+      "id": "ABORT205-02455",
+      "kind": "repository",
+      "path": "tools/test_checkpoints.py",
+      "bytes": 14329,
+      "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6"
+    },
+    {
+      "id": "ABORT205-02456",
+      "kind": "repository",
+      "path": "tools/test_export_all_dead.py",
+      "bytes": 2472,
+      "sha256": "9181544944d5e72d3d7137b763fbb42fcb554b6efd687e17b241c88cc0116c19"
+    },
+    {
+      "id": "ABORT205-02457",
+      "kind": "repository",
+      "path": "tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "ABORT205-02458",
+      "kind": "repository",
+      "path": "tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "ABORT205-02459",
+      "kind": "repository",
+      "path": "tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    },
+    {
+      "id": "ABORT205-02460",
+      "kind": "repository",
+      "path": "tools/test_feature_catalog.py",
+      "bytes": 3154,
+      "sha256": "124f62bc87c67e669751600dc2be4d2cd5e7f9e28ef16c7906fbc37ec6f63883"
+    },
+    {
+      "id": "ABORT205-02461",
+      "kind": "repository",
+      "path": "tools/test_four_bundle.py",
+      "bytes": 3856,
+      "sha256": "c95bb6de407d7998282d3a1b9381014f3ebc196bb3d04ca695e5188b5328a6cc"
+    },
+    {
+      "id": "ABORT205-02462",
+      "kind": "repository",
+      "path": "tools/test_issue_links.py",
+      "bytes": 4175,
+      "sha256": "b6025c8c6e11b2b179a4b58e20e73f48edf989a0749ef968c5409c1d3fd5d764"
+    },
+    {
+      "id": "ABORT205-02463",
+      "kind": "repository",
+      "path": "tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    },
+    {
+      "id": "ABORT205-02464",
+      "kind": "repository",
+      "path": "tools/test_probe_channel_identity.py",
+      "bytes": 1989,
+      "sha256": "a7c8c05a66c959ec521aa391f6bc5ea0b4d8444ced130e260281b48d40737cf5"
+    },
+    {
+      "id": "ABORT205-02465",
+      "kind": "repository",
+      "path": "tools/test_terrain_shadow.py",
+      "bytes": 2384,
+      "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+    },
+    {
+      "id": "ABORT205-02466",
+      "kind": "repository",
+      "path": "tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "id": "ABORT205-02467",
+      "kind": "repository",
+      "path": "tools/verify_primitives.py",
+      "bytes": 5272,
+      "sha256": "5cef1ce63e7895e89e3899252a78e958f59218247ac81a1b86f517ed5ddcf6dd"
+    },
+    {
+      "id": "ABORT205-02468",
+      "kind": "repository",
+      "path": "tools/windows_console.py",
+      "bytes": 1820,
+      "sha256": "3cc762507cceb37acee58d138e574834b5969630bf9c58430df9de738d328283"
+    },
+    {
+      "id": "ABORT205-02469",
+      "kind": "repository",
+      "path": "tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/0463c7a2b7e65326eae36aba52dbbb827ea9c971e3cc11113423bc755c436ace.jsonl",
+      "sha256": "0463c7a2b7e65326eae36aba52dbbb827ea9c971e3cc11113423bc755c436ace",
+      "bytes": 467,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/a1184c688dc00bcefc4fa67e68833f53df1958e11bc78b1523f7f8fb31a6f830.jsonl",
+      "sha256": "a1184c688dc00bcefc4fa67e68833f53df1958e11bc78b1523f7f8fb31a6f830",
+      "bytes": 5404,
+      "count": 29,
+      "files_bytes": 6591449
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/df178b5d44e79b7c5a8cdba3932b894cadaf87f7a620f58c3159f28d1daf6888.jsonl",
+      "sha256": "df178b5d44e79b7c5a8cdba3932b894cadaf87f7a620f58c3159f28d1daf6888",
+      "bytes": 648,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/2c4a50ff3641ab7604fd25ec663e59fd2c3bd5144a38f9de15b8805c36fc22ea.jsonl",
+      "sha256": "2c4a50ff3641ab7604fd25ec663e59fd2c3bd5144a38f9de15b8805c36fc22ea",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/48fbed93aed26702a79afe8604d7996a343ed9bbc3e59a61b617d60d42fd058c.jsonl",
+      "sha256": "48fbed93aed26702a79afe8604d7996a343ed9bbc3e59a61b617d60d42fd058c",
+      "bytes": 650,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/8dde47565da30cf31522bb3352c6db05088632fdfd14d21234814fb77fa270bb.jsonl",
+      "sha256": "8dde47565da30cf31522bb3352c6db05088632fdfd14d21234814fb77fa270bb",
+      "bytes": 465,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/d8707f9844702af5f446ecf52a7090de72b5d77292d7655683d59169d4c646da.jsonl",
+      "sha256": "d8707f9844702af5f446ecf52a7090de72b5d77292d7655683d59169d4c646da",
+      "bytes": 1026,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/four-abort-host-r1",
+      "path": "local/evidence-manifests/5db726d6e0a181d8582b294d003dd7cd2bea800e21a438c8f96828145a5c482d.jsonl",
+      "sha256": "5db726d6e0a181d8582b294d003dd7cd2bea800e21a438c8f96828145a5c482d",
+      "bytes": 196848,
+      "count": 947,
+      "files_bytes": 38543486
+    },
+    {
+      "run": "local/research/codex/four-abort-room-r1",
+      "path": "local/evidence-manifests/ca902faa0bcef3d112d3e1658669390b3397b010cad63243ed0e2cb5291402db.jsonl",
+      "sha256": "ca902faa0bcef3d112d3e1658669390b3397b010cad63243ed0e2cb5291402db",
+      "bytes": 67772,
+      "count": 308,
+      "files_bytes": 1361337
+    },
+    {
+      "run": "local/research/codex/four-abort-room-r2",
+      "path": "local/evidence-manifests/6ea63dc678d5199669abc0090f24ccaaf22eb8d7d6c4cb06cf60c383f50fa7cd.jsonl",
+      "sha256": "6ea63dc678d5199669abc0090f24ccaaf22eb8d7d6c4cb06cf60c383f50fa7cd",
+      "bytes": 190237,
+      "count": 915,
+      "files_bytes": 36179582
+    },
+    {
+      "run": "local/research/codex/four-abort-transport-r1",
+      "path": "local/evidence-manifests/e95b9f5c36918afacb57a5eac5f34805bea3a69b4087024ae6d3402d92097cfc.jsonl",
+      "sha256": "e95b9f5c36918afacb57a5eac5f34805bea3a69b4087024ae6d3402d92097cfc",
+      "bytes": 22510,
+      "count": 106,
+      "files_bytes": 113011
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/c4971daa75ab16dfa26e12271c44b3f22ca6f85c60989069e3cd132d082dca35.jsonl",
+      "sha256": "c4971daa75ab16dfa26e12271c44b3f22ca6f85c60989069e3cd132d082dca35",
+      "bytes": 936,
+      "count": 4,
+      "files_bytes": 127498240
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/f5808ddfdc7a68e6520ba6c8e4d132bc7810f2e7b7855877674e5a45cfde42ec.jsonl",
+      "sha256": "f5808ddfdc7a68e6520ba6c8e4d132bc7810f2e7b7855877674e5a45cfde42ec",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/c33345ea674e4186493523514d07fc65ff9a5d5ee7a65283462afc1adf2a75e5.jsonl",
+      "sha256": "c33345ea674e4186493523514d07fc65ff9a5d5ee7a65283462afc1adf2a75e5",
+      "bytes": 447,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/8c3d2e50b34fc096e8ac23af3c8f4b95f2187d01afb8c63f9242182f5bfa0450.jsonl",
+      "sha256": "8c3d2e50b34fc096e8ac23af3c8f4b95f2187d01afb8c63f9242182f5bfa0450",
+      "bytes": 647,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/2ac7594ecc2c630faa23edc9a0de55f34e5bdb423077daff59ad5ca3ea143a5c.jsonl",
+      "sha256": "2ac7594ecc2c630faa23edc9a0de55f34e5bdb423077daff59ad5ca3ea143a5c",
+      "bytes": 991,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/4a3bbcd27dfc0e9131122ff2a22c6cf3be4dc4c686c9efb6bb9475e90e4d52be.jsonl",
+      "sha256": "4a3bbcd27dfc0e9131122ff2a22c6cf3be4dc4c686c9efb6bb9475e90e4d52be",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/378519a594eb38ca4293f532ac1a259c362700090a3a0f68e999035e865a890c.jsonl",
+      "sha256": "378519a594eb38ca4293f532ac1a259c362700090a3a0f68e999035e865a890c",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

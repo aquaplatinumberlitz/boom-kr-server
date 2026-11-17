@@ -103,15 +103,6 @@
       "limits": "No independent review; owner waiver applies."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP283-selected-player-rounds.json",
-      "bytes": 1572635,
-      "sha256": "b696ab036d66a69c6819f4b6a3f9e91ca42466e2b9ba64a21ad12696784d7e95",
-      "count": 6051
-    }
-  ],
   "delta": {
     "added": [
       "Selected-character player rounds/current sparse roster và native survivor continuation."
@@ -295,5 +286,628 @@
   ],
   "completed_feature_groups": [
     "rust-selected-player-rounds"
+  ],
+  "evidence": [
+    {
+      "id": "M7E283-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "M7E283-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3881,
+      "sha256": "e45411b31ea514fd434a7fe8a8f61444b467a9d565c05686eadc86ebe0e9e968"
+    },
+    {
+      "id": "M7E283-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 249584,
+      "sha256": "bb6d960291d45399f502fe3cf6af043240b7dfb48cd0adfdf5ac4bfc4e378f9b"
+    },
+    {
+      "id": "M7E283-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 142175,
+      "sha256": "c7d51354f11fdbaf8d2ab809d0397fcb86446b63a1b8831251c62a9123f9a9dd"
+    },
+    {
+      "id": "M7E283-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 77831,
+      "sha256": "105b2dc16f7c051ff4cfbc83702f3eddc152e5c6a8107b35b688d5080d00925e"
+    },
+    {
+      "id": "M7E283-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "M7E283-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 31947,
+      "sha256": "353f6ddb7e458127e3cd8133063cfcc64352d00c086a93944258237feae4596e"
+    },
+    {
+      "id": "M7E283-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD099.json",
+      "bytes": 5932,
+      "sha256": "20a210055ee12bdc2096f0ba5f5ff8bf2a689e51abc65ad1632b9bf50d41ac4f"
+    },
+    {
+      "id": "M7E283-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 296753,
+      "sha256": "6eeb2d05dfc52b817c3deb6f9b2c9815117c190316bbad67bef7caf82d93f5e0"
+    },
+    {
+      "id": "M7E283-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 28146,
+      "sha256": "316e335e85b2fe6136463ceb9e752406b4ea1802edb4ce6ebdd65df906cbe464"
+    },
+    {
+      "id": "M7E283-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m7e-selected-rosters.json",
+      "bytes": 8662,
+      "sha256": "781de2fa91c01f27669c2025a43f6454f6a71b3e8e870cb6e5b83a0f74013b30"
+    },
+    {
+      "id": "M7E283-00012",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 261965,
+      "sha256": "ddc71fa488a0f61ce44c8bcacabc70e8051116fffab2931cbf81bcef69b27e4f"
+    },
+    {
+      "id": "M7E283-00013",
+      "kind": "repository",
+      "path": "docs/protocol/life-results.md",
+      "bytes": 98677,
+      "sha256": "53faf64fdffff98447064b2e764bdb3d492c6855b68b2a1077987fff4e70c412"
+    },
+    {
+      "id": "M7E283-00014",
+      "kind": "repository",
+      "path": "docs/protocol/room-membership.md",
+      "bytes": 131971,
+      "sha256": "f975bcc1e94833e1db5351d8f464f2f0aa4003b7d32f7855c990d92a509e5d66"
+    },
+    {
+      "id": "M7E283-00036",
+      "kind": "local",
+      "path": "local/research/codex/m7e-current-roster-acceptance.json",
+      "bytes": 1902,
+      "sha256": "2982f375062e2af2e6cdec262d99a862d8eb37f98764ff04f0998581d17b12ea"
+    },
+    {
+      "id": "M7E283-00047",
+      "kind": "local",
+      "path": "local/research/codex/m7e-final-build-r3.txt",
+      "bytes": 268,
+      "sha256": "a9426a78a2c5cbdaebd57da63cb01ba5def3445b9aad2ac530ab7aac9e8d4b7a"
+    },
+    {
+      "id": "M7E283-00050",
+      "kind": "local",
+      "path": "local/research/codex/m7e-final-clippy-r3.txt",
+      "bytes": 268,
+      "sha256": "cbfe898d801fc4991b8cc59d4c0b04e281367320cb340e912bac29a7df38010d"
+    },
+    {
+      "id": "M7E283-00052",
+      "kind": "local",
+      "path": "local/research/codex/m7e-final-fmt.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7E283-00054",
+      "kind": "local",
+      "path": "local/research/codex/m7e-final-tests-r3.txt",
+      "bytes": 16295,
+      "sha256": "8fa7408725147cdc7d69592a34a65d004934fb373a2c3ba0bff3bf1fd33bd28f"
+    },
+    {
+      "id": "M7E283-01086",
+      "kind": "local",
+      "path": "local/research/codex/m7e-selected-synthetic-r7/tcp/verification.json",
+      "bytes": 736,
+      "sha256": "17040a9504370b9fb07b1fb44107ae26dd711817ea17a17b3081ae2e9b901664"
+    },
+    {
+      "id": "M7E283-02026",
+      "kind": "local",
+      "path": "local/research/codex/m7e-six-native-r2/results-verification.json",
+      "bytes": 1510721,
+      "sha256": "403027de0659a809663080ace59466dcbe735a4988bb87137540d6e09afdb7da"
+    },
+    {
+      "id": "M7E283-02048",
+      "kind": "local",
+      "path": "local/research/codex/m7e-source-r1/reuse.json",
+      "bytes": 5341,
+      "sha256": "f5ab51e2e56c8b4a7b79ae0ae5117982e8b1415470d2ef9fe3efd34690fe9012"
+    },
+    {
+      "id": "M7E283-02395",
+      "kind": "local",
+      "path": "local/research/codex/m7e-sparse-native-r1/results-verification.json",
+      "bytes": 160992,
+      "sha256": "0e3cb567b29cc62f9796c67c0f7f03d1c1743e4e3d71fc1ff789357198e6bec3"
+    },
+    {
+      "id": "M7E283-02401",
+      "kind": "local",
+      "path": "local/research/codex/m7e-sparse-signal-control-r1/control-log.txt",
+      "bytes": 991,
+      "sha256": "15ecdf783e9a863cc42a2be4b250d6be908895192cb7be52dbe7042f83cf1c9c"
+    },
+    {
+      "id": "M7E283-04569",
+      "kind": "local",
+      "path": "local/research/codex/m7e-survivors-native-r5/native/raw-seal.json",
+      "bytes": 27454,
+      "sha256": "9a5daf03555a126a308d831d866c68c45f807d4251cd91295ed1ab8e3cdcacc5"
+    },
+    {
+      "id": "M7E283-04577",
+      "kind": "local",
+      "path": "local/research/codex/m7e-survivors-native-r5/results-getter-verification.json",
+      "bytes": 435,
+      "sha256": "65164b7f148d0bc5882acd97cd17693b31e4bfb8e80f716b3a441685e0b27f9c"
+    },
+    {
+      "id": "M7E283-04578",
+      "kind": "local",
+      "path": "local/research/codex/m7e-survivors-native-r5/results-verification.json",
+      "bytes": 866928,
+      "sha256": "f3ef3cca3d259f8da742acaf9eaeffd31bed512ff7a6898ad32bc169a8533d83"
+    },
+    {
+      "id": "M7E283-04586",
+      "kind": "local",
+      "path": "local/research/codex/m7e-survivors-native-r5/ui-review.json",
+      "bytes": 644,
+      "sha256": "e653e71f217bbee13053b45211d865fe5331d595665ea5b7fc907389906c83d2"
+    },
+    {
+      "id": "M7E283-05172",
+      "kind": "local",
+      "path": "local/research/codex/m7e-survivors-synthetic-r5/tcp/verification.json",
+      "bytes": 820,
+      "sha256": "5757862f484723e875daad3db91af6fd1bac54224445051b53373038281c6ad2"
+    },
+    {
+      "id": "M7E283-05965",
+      "kind": "local",
+      "path": "local/research/codex/m7e-three-native-r2/results-verification.json",
+      "bytes": 506367,
+      "sha256": "ac8a3c734a5fd98e5f85fb5871fb699af4525990ab9709c4a63fd1f61a19b74e"
+    },
+    {
+      "id": "M7E283-06037",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "bytes": 15072,
+      "sha256": "4496bd8e1be4928f5264552516ac9104581f3433bda2e015e9fe2365b82bc169"
+    },
+    {
+      "id": "M7E283-06038",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/characters.rs",
+      "bytes": 2441,
+      "sha256": "a9a872ae38adf39d2132fcd676482a5ee54048b40ab8685ba067674f7245dfcb"
+    },
+    {
+      "id": "M7E283-06039",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/four_results.rs",
+      "bytes": 10769,
+      "sha256": "26c1c50fc8791534c965dfa39f6d61c0cf712c085ff09d3081688a4763886af6"
+    },
+    {
+      "id": "M7E283-06040",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 54218,
+      "sha256": "1534527ffcd429708ba1ae061d33cf44b05b5b493b44e79bda532e8d396b23a9"
+    },
+    {
+      "id": "M7E283-06041",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/life.rs",
+      "bytes": 17096,
+      "sha256": "f64cfdc4403bd58d8820a434bb23e35a5f46e11330cd5fbbcbbd65954de7a86a"
+    },
+    {
+      "id": "M7E283-06042",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/peer_routes.rs",
+      "bytes": 4631,
+      "sha256": "221075ff3e89110f636020c43a4e98099a8ffc3b02d204e12f03acd77ebb950b"
+    },
+    {
+      "id": "M7E283-06043",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room.rs",
+      "bytes": 51543,
+      "sha256": "2418d267769f94c2262b4123c0f3ce526bb7de0e080441e8194086b00220e5a3"
+    },
+    {
+      "id": "M7E283-06044",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 149683,
+      "sha256": "693b8a78b37084bfb1b539069a620d7b5147619796a607cc21138ad8b290f40a"
+    },
+    {
+      "id": "M7E283-06045",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "bytes": 9518,
+      "sha256": "c3354547cc04fd8edd22eeaab0622a6c0d9f86d09c674c0acd4e85d58bc272c7"
+    },
+    {
+      "id": "M7E283-06046",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "bytes": 9247,
+      "sha256": "444722b8912063712487cc1fb03d1f09704a0d2cf41ca04b58ab225ec6f95e9a"
+    },
+    {
+      "id": "M7E283-06047",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/battle.rs",
+      "bytes": 7760,
+      "sha256": "618e28ec71912edb834d2f5ffd9c151a7c550c8bdb2f6be8812dcff3bf5f5a17"
+    },
+    {
+      "id": "M7E283-06048",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "bytes": 22500,
+      "sha256": "e93ba5b15dd45bcbd5d1940f9be6a9e636beb802386d2e69a4a0b26069823981"
+    },
+    {
+      "id": "M7E283-06049",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_selected_roster.rs",
+      "bytes": 1121,
+      "sha256": "62501ed78735f409edac88f0828fbbb89451734dc17a706bf622b4e2085c8859"
+    },
+    {
+      "id": "M7E283-06050",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_selected_start.rs",
+      "bytes": 3067,
+      "sha256": "c09cd6f51c35e32b029d21cff7a1e3ae9c3ee65f8075ecd9ed60852b15a00b09"
+    },
+    {
+      "id": "M7E283-06051",
+      "kind": "repository",
+      "path": "tools/test_rust_selected_players.py",
+      "bytes": 13713,
+      "sha256": "02f076b66dcd534134e34d640fc7dd627d5c0d4a0f5294708d350c074d6cf1da"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/2aa6c07c7311d1218f6cb8546ed03f3e7a84df74d076c76d8c38b50d394cdecf.jsonl",
+      "sha256": "2aa6c07c7311d1218f6cb8546ed03f3e7a84df74d076c76d8c38b50d394cdecf",
+      "bytes": 24006,
+      "count": 131,
+      "files_bytes": 2180193
+    },
+    {
+      "run": "local/research/codex/m7e-departure-source-r1",
+      "path": "local/evidence-manifests/113823c1b545988f408e7b3a70c4c91b69a8fd0b3e5fa5be62b07014eda3d3a5.jsonl",
+      "sha256": "113823c1b545988f408e7b3a70c4c91b69a8fd0b3e5fa5be62b07014eda3d3a5",
+      "bytes": 1274,
+      "count": 6,
+      "files_bytes": 31897795
+    },
+    {
+      "run": "local/research/codex/m7e-legacy-choices-r1",
+      "path": "local/evidence-manifests/3b61f854eb6d9a8781e5c3dc13fef9c3560ab65c9d9f58025774dcf73c570c12.jsonl",
+      "sha256": "3b61f854eb6d9a8781e5c3dc13fef9c3560ab65c9d9f58025774dcf73c570c12",
+      "bytes": 23034,
+      "count": 111,
+      "files_bytes": 112831933
+    },
+    {
+      "run": "local/research/codex/m7e-legacy-duel-r1",
+      "path": "local/evidence-manifests/6394992e7f76bf80e0f72196e8ebe21fde4c2a79bdc71daaaaaa7261aa5e037e.jsonl",
+      "sha256": "6394992e7f76bf80e0f72196e8ebe21fde4c2a79bdc71daaaaaa7261aa5e037e",
+      "bytes": 22688,
+      "count": 111,
+      "files_bytes": 112734833
+    },
+    {
+      "run": "local/research/codex/m7e-selected-synthetic-r1",
+      "path": "local/evidence-manifests/1c33e202da8693547726b3ea694118811a1d79aaabb10689520dcc84d6384491.jsonl",
+      "sha256": "1c33e202da8693547726b3ea694118811a1d79aaabb10689520dcc84d6384491",
+      "bytes": 23909,
+      "count": 113,
+      "files_bytes": 112710643
+    },
+    {
+      "run": "local/research/codex/m7e-selected-synthetic-r2",
+      "path": "local/evidence-manifests/4da1812f32921193f5db9e5459f0025d99c541fdcce2f6c41f6cc31ebbb79c3b.jsonl",
+      "sha256": "4da1812f32921193f5db9e5459f0025d99c541fdcce2f6c41f6cc31ebbb79c3b",
+      "bytes": 23909,
+      "count": 113,
+      "files_bytes": 112713145
+    },
+    {
+      "run": "local/research/codex/m7e-selected-synthetic-r3",
+      "path": "local/evidence-manifests/a4e4326e34926291d558f569fe17cbde5e3abe6fb7b4e9597acd67aae71516fa.jsonl",
+      "sha256": "a4e4326e34926291d558f569fe17cbde5e3abe6fb7b4e9597acd67aae71516fa",
+      "bytes": 23909,
+      "count": 113,
+      "files_bytes": 112733167
+    },
+    {
+      "run": "local/research/codex/m7e-selected-synthetic-r4",
+      "path": "local/evidence-manifests/aadcffe0392eccd125d560476b1124605d44443707240ecc73e4c37265134649.jsonl",
+      "sha256": "aadcffe0392eccd125d560476b1124605d44443707240ecc73e4c37265134649",
+      "bytes": 23907,
+      "count": 113,
+      "files_bytes": 112822615
+    },
+    {
+      "run": "local/research/codex/m7e-selected-synthetic-r5",
+      "path": "local/evidence-manifests/ca2efb70ff97246c114c6d6a79ddf837300bd4645961b116194b3f23358de89a.jsonl",
+      "sha256": "ca2efb70ff97246c114c6d6a79ddf837300bd4645961b116194b3f23358de89a",
+      "bytes": 23907,
+      "count": 113,
+      "files_bytes": 112825009
+    },
+    {
+      "run": "local/research/codex/m7e-selected-synthetic-r6",
+      "path": "local/evidence-manifests/2f29c89810455fa757e0ae685a7eab72b5d3723b354e334faedbe820e9a7c34c.jsonl",
+      "sha256": "2f29c89810455fa757e0ae685a7eab72b5d3723b354e334faedbe820e9a7c34c",
+      "bytes": 23907,
+      "count": 113,
+      "files_bytes": 112839618
+    },
+    {
+      "run": "local/research/codex/m7e-selected-synthetic-r7",
+      "path": "local/evidence-manifests/9f9300b9ea09f64749b378739f6dd5dd271bb8b30c45a28f8e148b0cc5d061ef.jsonl",
+      "sha256": "9f9300b9ea09f64749b378739f6dd5dd271bb8b30c45a28f8e148b0cc5d061ef",
+      "bytes": 23704,
+      "count": 112,
+      "files_bytes": 114861001
+    },
+    {
+      "run": "local/research/codex/m7e-six-native-r1",
+      "path": "local/evidence-manifests/9af6b9936c78053f14814b68c0b68e8824cf42383d958e6e888aff6f9274657f.jsonl",
+      "sha256": "9af6b9936c78053f14814b68c0b68e8824cf42383d958e6e888aff6f9274657f",
+      "bytes": 97396,
+      "count": 472,
+      "files_bytes": 245820666
+    },
+    {
+      "run": "local/research/codex/m7e-six-native-r2",
+      "path": "local/evidence-manifests/21280639c0c97e8d34d8ac5e367acd5d44530b4c098f6b7101e47573d9e0dd67.jsonl",
+      "sha256": "21280639c0c97e8d34d8ac5e367acd5d44530b4c098f6b7101e47573d9e0dd67",
+      "bytes": 97790,
+      "count": 474,
+      "files_bytes": 248744344
+    },
+    {
+      "run": "local/research/codex/m7e-six-signal-control-r1",
+      "path": "local/evidence-manifests/0007030c1987970e957518cb03c6750963bbad4fc5df2141aa99b1e470640878.jsonl",
+      "sha256": "0007030c1987970e957518cb03c6750963bbad4fc5df2141aa99b1e470640878",
+      "bytes": 1296,
+      "count": 6,
+      "files_bytes": 2290
+    },
+    {
+      "run": "local/research/codex/m7e-six-signal-control-r2",
+      "path": "local/evidence-manifests/21f1e28e767a87882f3858f93a42d0cff5225a5f45053a9b5b415108b96c6270.jsonl",
+      "sha256": "21f1e28e767a87882f3858f93a42d0cff5225a5f45053a9b5b415108b96c6270",
+      "bytes": 1296,
+      "count": 6,
+      "files_bytes": 2290
+    },
+    {
+      "run": "local/research/codex/m7e-sparse-native-r1",
+      "path": "local/evidence-manifests/ec5221e13772648bf0bb4794b53c83dd880e781e91dc320378b4a7357ea350a5.jsonl",
+      "sha256": "ec5221e13772648bf0bb4794b53c83dd880e781e91dc320378b4a7357ea350a5",
+      "bytes": 73853,
+      "count": 351,
+      "files_bytes": 234322722
+    },
+    {
+      "run": "local/research/codex/m7e-sparse-signal-control-r2",
+      "path": "local/evidence-manifests/ad3eee9571474330b5f2d8af3dbfb2ab559031d3ec1caa98019628b57dec3aec.jsonl",
+      "sha256": "ad3eee9571474330b5f2d8af3dbfb2ab559031d3ec1caa98019628b57dec3aec",
+      "bytes": 1317,
+      "count": 6,
+      "files_bytes": 2308
+    },
+    {
+      "run": "local/research/codex/m7e-start-stat-probe-r1",
+      "path": "local/evidence-manifests/4327fd6207f3fd172ec782244bc1c152b009c05322a1b535fe1fb26047759388.jsonl",
+      "sha256": "4327fd6207f3fd172ec782244bc1c152b009c05322a1b535fe1fb26047759388",
+      "bytes": 40887,
+      "count": 190,
+      "files_bytes": 219112485
+    },
+    {
+      "run": "local/research/codex/m7e-start-stat-probe-r2",
+      "path": "local/evidence-manifests/47d1cedf76bad82a79df2d2875b5f0bcc33328cc69ad5417d295c842945deac2.jsonl",
+      "sha256": "47d1cedf76bad82a79df2d2875b5f0bcc33328cc69ad5417d295c842945deac2",
+      "bytes": 47689,
+      "count": 222,
+      "files_bytes": 221404724
+    },
+    {
+      "run": "local/research/codex/m7e-start-stat-signal-control-r1",
+      "path": "local/evidence-manifests/fe086d272a21c9cfb15a8f111778b9cc25dd8313fd876a0c5fa7e848b38b6a44.jsonl",
+      "sha256": "fe086d272a21c9cfb15a8f111778b9cc25dd8313fd876a0c5fa7e848b38b6a44",
+      "bytes": 1345,
+      "count": 6,
+      "files_bytes": 2332
+    },
+    {
+      "run": "local/research/codex/m7e-start-stat-signal-control-r2",
+      "path": "local/evidence-manifests/e3900b781f326de4dc927746cac399b9a50364362b79f3da539ccf5cc978963b.jsonl",
+      "sha256": "e3900b781f326de4dc927746cac399b9a50364362b79f3da539ccf5cc978963b",
+      "bytes": 1345,
+      "count": 6,
+      "files_bytes": 2332
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-native-r1",
+      "path": "local/evidence-manifests/7f6bdb55a497e944eb51c52cf53cbf2c398c98b069ce710c6ed1150d5b6edda4.jsonl",
+      "sha256": "7f6bdb55a497e944eb51c52cf53cbf2c398c98b069ce710c6ed1150d5b6edda4",
+      "bytes": 80333,
+      "count": 377,
+      "files_bytes": 241158791
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-native-r2",
+      "path": "local/evidence-manifests/afb6ba440f7551ea535d79efe084a14dfe1559b43e8e66247d16d8437ca8499b.jsonl",
+      "sha256": "afb6ba440f7551ea535d79efe084a14dfe1559b43e8e66247d16d8437ca8499b",
+      "bytes": 58333,
+      "count": 272,
+      "files_bytes": 230149584
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-native-r3",
+      "path": "local/evidence-manifests/87ea734863960e0ff6083b846ed20514b2727317e71d5cd7c28f3895d4bb7f09.jsonl",
+      "sha256": "87ea734863960e0ff6083b846ed20514b2727317e71d5cd7c28f3895d4bb7f09",
+      "bytes": 87250,
+      "count": 410,
+      "files_bytes": 245611174
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-native-r4",
+      "path": "local/evidence-manifests/4c16100188466063415b6a4249f1f2d55bc18f41cb27c2c749294ce00d378768.jsonl",
+      "sha256": "4c16100188466063415b6a4249f1f2d55bc18f41cb27c2c749294ce00d378768",
+      "bytes": 58333,
+      "count": 272,
+      "files_bytes": 230095518
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-native-r5",
+      "path": "local/evidence-manifests/a9b2ce16c92d6a5d1313840e91d3b1b8ef8d7121de83c5fc5d1707e1e9345a83.jsonl",
+      "sha256": "a9b2ce16c92d6a5d1313840e91d3b1b8ef8d7121de83c5fc5d1707e1e9345a83",
+      "bytes": 86820,
+      "count": 408,
+      "files_bytes": 244259820
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-signal-control-r1",
+      "path": "local/evidence-manifests/5758c3a970a19fdc22e4bf8446bbe6f853425e04d07a3ece68290bed9e599ba6.jsonl",
+      "sha256": "5758c3a970a19fdc22e4bf8446bbe6f853425e04d07a3ece68290bed9e599ba6",
+      "bytes": 1338,
+      "count": 6,
+      "files_bytes": 2326
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-signal-control-r3",
+      "path": "local/evidence-manifests/82051fd284107fc2cefe835ac3deaedfd049ee7db4af8c28df095ebdb6c6e0c4.jsonl",
+      "sha256": "82051fd284107fc2cefe835ac3deaedfd049ee7db4af8c28df095ebdb6c6e0c4",
+      "bytes": 1338,
+      "count": 6,
+      "files_bytes": 2326
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-signal-control-r5",
+      "path": "local/evidence-manifests/842180fe8187b1082fa9e768a8e2ddadcfd7205673a3245334a8edbf9886c9ff.jsonl",
+      "sha256": "842180fe8187b1082fa9e768a8e2ddadcfd7205673a3245334a8edbf9886c9ff",
+      "bytes": 1338,
+      "count": 6,
+      "files_bytes": 2326
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-synthetic-r1",
+      "path": "local/evidence-manifests/6a12f9c925756e0edb821415d598f1ee5c0f7ee94d188d03eb26dc06234657ee.jsonl",
+      "sha256": "6a12f9c925756e0edb821415d598f1ee5c0f7ee94d188d03eb26dc06234657ee",
+      "bytes": 24021,
+      "count": 113,
+      "files_bytes": 114852964
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-synthetic-r2",
+      "path": "local/evidence-manifests/852ec4493658f457a8f2f3b12ab352793588be5855e9cce0a614cbdbb2f246a9.jsonl",
+      "sha256": "852ec4493658f457a8f2f3b12ab352793588be5855e9cce0a614cbdbb2f246a9",
+      "bytes": 24023,
+      "count": 113,
+      "files_bytes": 114858822
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-synthetic-r3",
+      "path": "local/evidence-manifests/e64bd4a3c52fdba143a6bb8ed77d0875f76be321239761344ca3600888193790.jsonl",
+      "sha256": "e64bd4a3c52fdba143a6bb8ed77d0875f76be321239761344ca3600888193790",
+      "bytes": 24021,
+      "count": 113,
+      "files_bytes": 114890295
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-synthetic-r4",
+      "path": "local/evidence-manifests/2d97c0a9bcdb01aa9606d128dda48487188989c0e787900b11231c0bfe258868.jsonl",
+      "sha256": "2d97c0a9bcdb01aa9606d128dda48487188989c0e787900b11231c0bfe258868",
+      "bytes": 24023,
+      "count": 113,
+      "files_bytes": 114831612
+    },
+    {
+      "run": "local/research/codex/m7e-survivors-synthetic-r5",
+      "path": "local/evidence-manifests/cafc407fd1a603e806b1e410c1d795a8ccc63ae458bc2b9d244427435a2d138d.jsonl",
+      "sha256": "cafc407fd1a603e806b1e410c1d795a8ccc63ae458bc2b9d244427435a2d138d",
+      "bytes": 23817,
+      "count": 112,
+      "files_bytes": 114860717
+    },
+    {
+      "run": "local/research/codex/m7e-three-native-r1",
+      "path": "local/evidence-manifests/d42c68a5c45202b773da5e06a7ee6af34efe551a1f31345a810ac40baa875d05.jsonl",
+      "sha256": "d42c68a5c45202b773da5e06a7ee6af34efe551a1f31345a810ac40baa875d05",
+      "bytes": 69130,
+      "count": 330,
+      "files_bytes": 232055896
+    },
+    {
+      "run": "local/research/codex/m7e-three-native-r2",
+      "path": "local/evidence-manifests/7038384a733c358b1579e32e61f06f718c0c55fa03fdabfd16dcdc1406ab4a5b.jsonl",
+      "sha256": "7038384a733c358b1579e32e61f06f718c0c55fa03fdabfd16dcdc1406ab4a5b",
+      "bytes": 96031,
+      "count": 455,
+      "files_bytes": 246643735
+    },
+    {
+      "run": "local/research/codex/m7e-three-signal-control-r1",
+      "path": "local/evidence-manifests/4740b3298ac4c6096b46fa94100176554d570c56022b1d26f3d76be38f6f0686.jsonl",
+      "sha256": "4740b3298ac4c6096b46fa94100176554d570c56022b1d26f3d76be38f6f0686",
+      "bytes": 1310,
+      "count": 6,
+      "files_bytes": 2302
+    },
+    {
+      "run": "local/research/codex/m7e-three-signal-control-r2",
+      "path": "local/evidence-manifests/6f144c92092ca674332abcb553cf22c1a2596ef5f86c604c1a5fd02c4e83e832.jsonl",
+      "sha256": "6f144c92092ca674332abcb553cf22c1a2596ef5f86c604c1a5fd02c4e83e832",
+      "bytes": 1310,
+      "count": 6,
+      "files_bytes": 2302
+    }
   ]
 }

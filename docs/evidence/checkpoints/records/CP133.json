@@ -141,21 +141,6 @@
       "limits": "Mechanical/models notruntimeallcases/semanticgatecertification."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP133-shared-cell-QUERY.json",
-      "bytes": 199854,
-      "sha256": "6fbfe78ab6fc667f1ecb2c6223adc7fc4139757cd3001cebad007dbcf8aca03d",
-      "count": 807
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP133-shared-cell-CELL.json",
-      "bytes": 208394,
-      "sha256": "a6577aa3a0f2cee124be3fbc5ad1734c7d2b18ba30841b2ca7f79419ae9c1c7a",
-      "count": 828
-    }
-  ],
   "delta": {
     "added": [
       "Actualquery/stackmatchedsharedcellstate confirmscachedshortcircuit mechanism behindnoqueryrepeat inonegeometry/twoviews."
@@ -235,6 +220,245 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP133query/cellstate/mechanism/scope/cachedsource/nextintegration/catalog/issue sync; oldcomplete/gatesunchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "QUERY-00708",
+      "kind": "local",
+      "path": "local/research/codex/shared-query-r1/cycles/query-A.jsonl",
+      "bytes": 1080,
+      "sha256": "6a025f12fe0d3421276774b105596ec40fb139477a3ffff33f97179191a19401"
+    },
+    {
+      "id": "QUERY-00709",
+      "kind": "local",
+      "path": "local/research/codex/shared-query-r1/cycles/query-B.jsonl",
+      "bytes": 1080,
+      "sha256": "1b72b8a3f039d47b408bfece224fdfee416ebffc64c9634b6bf19f72c561cd6c"
+    },
+    {
+      "id": "QUERY-00738",
+      "kind": "local",
+      "path": "local/research/codex/shared-query-r1/phase-check.txt",
+      "bytes": 357,
+      "sha256": "b3fdda269162a9a837a5b2bba9b94af896c4258c519a9b6fc172fddb25363518"
+    },
+    {
+      "id": "QUERY-00741",
+      "kind": "local",
+      "path": "local/research/codex/shared-query-r1/queries-verification.json",
+      "bytes": 8951,
+      "sha256": "37cfb57000afdce6a1300dcf182fe5fdba7914bdb5efd945c43cddf2dd677f50"
+    },
+    {
+      "id": "QUERY-00742",
+      "kind": "local",
+      "path": "local/research/codex/shared-query-r1/query-check.txt",
+      "bytes": 192,
+      "sha256": "e1a6af6d2ee1a287efdf840fb9ad3e38223741ba6cb40d7575b8e56390f3b53f"
+    },
+    {
+      "id": "QUERY-00743",
+      "kind": "local",
+      "path": "local/research/codex/shared-query-r1/raw-seal.json",
+      "bytes": 141245,
+      "sha256": "4a833980739c2488bc9824f2c78bf10a947006119be8670915560ffc1c15e84c"
+    },
+    {
+      "id": "QUERY-00799",
+      "kind": "local",
+      "path": "local/research/codex/shared-query-r1/shared-check.txt",
+      "bytes": 108,
+      "sha256": "1c170b2aa37a2b3bf20936a77db597bf04036815faf26d29e07914f796fb328d"
+    },
+    {
+      "id": "CELL-00003",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "CELL-00004",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/cached-code-match.json",
+      "bytes": 2906,
+      "sha256": "4f9e1e091545cdf81909b74773e1fd6dad06523bfd2535ca19e628788e1cb3a3"
+    },
+    {
+      "id": "CELL-00005",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/cell-check.txt",
+      "bytes": 102,
+      "sha256": "cca160dc4e1436192dd3d3221745ddc0ed2c9c2fd067ed45538f9838dd13c9db"
+    },
+    {
+      "id": "CELL-00006",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/cellstate-verification.json",
+      "bytes": 11783,
+      "sha256": "b9be1005d6a4eda0ea8a3dffc7b8fe8ae4331a95969ac91b18fad81dd790f933"
+    },
+    {
+      "id": "CELL-00011",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/cp133-snapshot/docs/PLAN.md",
+      "bytes": 32398,
+      "sha256": "ca916ca9b2eb95d189a4651a3229da42e401b21c7eb5de8d5070a669f640121a"
+    },
+    {
+      "id": "CELL-00012",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/cp133-snapshot/docs/PROTOCOL.md",
+      "bytes": 402489,
+      "sha256": "690e89e1d508d83ec8f822d4551e1360e0338cfd27e734bc5d57032f29270058"
+    },
+    {
+      "id": "CELL-00687",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/cycles/cell-A.jsonl",
+      "bytes": 2204,
+      "sha256": "e0ed99349790bd56f14ae1261d074416ce219c6ba7871f5398589d94d7356f62"
+    },
+    {
+      "id": "CELL-00688",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/cycles/cell-B.jsonl",
+      "bytes": 2204,
+      "sha256": "e0409323e4402bb501cbcfd1d77c9a23aaf2528257f429f088e2066512ca7943"
+    },
+    {
+      "id": "CELL-00732",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "0ae63ac449f13025600f55675d8fc66c0eebdc9cc7ef53a8bffa4f7607749f2c"
+    },
+    {
+      "id": "CELL-00733",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/flag-check.txt",
+      "bytes": 54,
+      "sha256": "6396e8bc2ff284d6d17486bc659c34396a57d589ef6203c5d37416d04932fdae"
+    },
+    {
+      "id": "CELL-00744",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "ff46db4f172cc06e1874c2cf1825d42e0147a3c1e204c0549654ca748b855489"
+    },
+    {
+      "id": "CELL-00745",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/native-153-check.txt",
+      "bytes": 22,
+      "sha256": "ccd17ab225f185be8f6f969644e409ad9041beea1919b7944f3ddb40fbbb024c"
+    },
+    {
+      "id": "CELL-00747",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/native-packet-check.txt",
+      "bytes": 29,
+      "sha256": "4d5dc544686268a5057d3c88c93fe8758ba1a17c92effc11a42fcac9fb2b6e44"
+    },
+    {
+      "id": "CELL-00754",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/phase-check.txt",
+      "bytes": 357,
+      "sha256": "b3fdda269162a9a837a5b2bba9b94af896c4258c519a9b6fc172fddb25363518"
+    },
+    {
+      "id": "CELL-00755",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/phase-flags.json",
+      "bytes": 10705,
+      "sha256": "921e59e27202664161d30a0109559de02b3f34dc13f399fc79c791049ca280eb"
+    },
+    {
+      "id": "CELL-00757",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/queries-verification.json",
+      "bytes": 8971,
+      "sha256": "ce5a6cde37b2fe9d9e6ef79550670a7bb8f5914c8e393596b64d9bc23e6e3600"
+    },
+    {
+      "id": "CELL-00758",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/query-check.txt",
+      "bytes": 192,
+      "sha256": "a33dda0182619db4aba9917ddbb286323cbbc3d51ad220048c28418b539206f5"
+    },
+    {
+      "id": "CELL-00759",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/raw-seal.json",
+      "bytes": 144005,
+      "sha256": "e3a0adb532c0e76b81d6679c19a474712bd090e918e4a68ba4bdb11a64526f9a"
+    },
+    {
+      "id": "CELL-00774",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/reuse-question.json",
+      "bytes": 3086,
+      "sha256": "6390c6b8b76b045f73db5d3e8cada1145b928a8a19c42645fd09dee3f0e2b1ef"
+    },
+    {
+      "id": "CELL-00815",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/shared-check.txt",
+      "bytes": 108,
+      "sha256": "0bc855e73a5e414a7008db652ce123ae5f209d13d8857babb3521c98511c2960"
+    },
+    {
+      "id": "CELL-00817",
+      "kind": "local",
+      "path": "local/research/codex/shared-cell-state-r1/shared-verification.json",
+      "bytes": 67568,
+      "sha256": "b9d71b0fe43153d60477f164d49550d557acb16b00204b3e9299f1db4524dd9f"
+    },
+    {
+      "id": "CELL-00828",
+      "kind": "local",
+      "path": "local/research/codex/host-battle-exit-control-r1/server-tests.txt",
+      "bytes": 320,
+      "sha256": "6d5c33bc7edcf4050e4882f6ce2251bdd976b63c39e96333d3ca739c84d11ce4"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/shared-query-r1",
+      "path": "local/evidence-manifests/7b5111a8303ceda485103c8dade742645892da860cdb8c7d5b72fcc3c20810a3.jsonl",
+      "sha256": "7b5111a8303ceda485103c8dade742645892da860cdb8c7d5b72fcc3c20810a3",
+      "bytes": 157830,
+      "count": 798,
+      "files_bytes": 36684254
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/9772dd53e7dfd035fa93c638332abc6541a6af428396c78131233196c3d48d49.jsonl",
+      "sha256": "9772dd53e7dfd035fa93c638332abc6541a6af428396c78131233196c3d48d49",
+      "bytes": 794,
+      "count": 4,
+      "files_bytes": 129914
+    },
+    {
+      "run": "local/research/codex/shared-cell-state-r1",
+      "path": "local/evidence-manifests/8980127e9be38f62a639ab69e9f592c4fc680d02c4c3ab67ac09e7818040a54c.jsonl",
+      "sha256": "8980127e9be38f62a639ab69e9f592c4fc680d02c4c3ab67ac09e7818040a54c",
+      "bytes": 161945,
+      "count": 802,
+      "files_bytes": 36982006
+    },
+    {
+      "run": "local/research/codex/shared-flag-timing-r1",
+      "path": "local/evidence-manifests/4959d4b7dce09f858e371fc5a058a368c5687805bc434fb2c19c733e89603df3.jsonl",
+      "sha256": "4959d4b7dce09f858e371fc5a058a368c5687805bc434fb2c19c733e89603df3",
+      "bytes": 486,
+      "count": 2,
+      "files_bytes": 480
     }
   ]
 }

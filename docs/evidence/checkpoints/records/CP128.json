@@ -124,15 +124,6 @@
       "limits": "No failed runtime/sourcechange midrun. Keep original preparation provenance; teardownabort not second userexit/result."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP128-postbomb-exit-rejoin.json",
-      "bytes": 300104,
-      "sha256": "ce7adb4f20b701bb5cfd1b10d091f9ccbc4d6dbf17993b684d976beee8d9573f",
-      "count": 1185
-    }
-  ],
   "delta": {
     "added": [
       "Same-run one pendingBbomb normalexit/fence→samechannelrejoin/Ready/Start2/currentkey/nativeclocks proof; periodicAUD040."
@@ -218,6 +209,167 @@
       "path": "docs/evidence/checkpoints/audits/AUD040.json",
       "state": "updated",
       "reason": "Required manualperiodicAUD040through128/next132."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/cp128-snapshot/README.md",
+      "bytes": 5490,
+      "sha256": "0b13ad2f0e5d5dcc14391274fcc849abf7a4ff4f0b14a906a758c3df5689a13e"
+    },
+    {
+      "id": "RUN-00005",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/cp128-snapshot/docs/PLAN.md",
+      "bytes": 32429,
+      "sha256": "c2beaf91e90f7a25c3fdea0d3817168ca4043c207b6561c5f26e518a784d5be4"
+    },
+    {
+      "id": "RUN-00006",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/cp128-snapshot/docs/PROTOCOL.md",
+      "bytes": 390042,
+      "sha256": "a63b6a1e0f078d5d85525278f7ef8c4bd7881a9b37630ac7bcd4f2c1918ccd48"
+    },
+    {
+      "id": "RUN-01095",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/cycles/run.json",
+      "bytes": 109866,
+      "sha256": "74791105ecce5f25347f9122da0950f56d23c94e7dbb87f0667a7f323ea18bed"
+    },
+    {
+      "id": "RUN-01096",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/cycles/service-state.json",
+      "bytes": 121865,
+      "sha256": "4773fe25b9b6846ab8dcefc0bc3d292ddd758a1cf6bec7a7805342c961c6f379"
+    },
+    {
+      "id": "RUN-01105",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "84b0b8641c9484bed25d07296d350031a48ad39860a7ebb9670f1e0f9baf5fde"
+    },
+    {
+      "id": "RUN-01109",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/issue14-before.json",
+      "bytes": 6417,
+      "sha256": "4ded0919a15443b1031f680b3b4314343793ac3fb22e2908499a665424abeba7"
+    },
+    {
+      "id": "RUN-01110",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/issue14-body.md",
+      "bytes": 3737,
+      "sha256": "c66f08c8e55fa3f32ebec6e4023fc1a09ffdedd0f38c7b061661f61854523e1b"
+    },
+    {
+      "id": "RUN-01111",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "17eb8c33d5db28d0c575660fe19db9238cc7f78adc9664405187cff293c46b0f"
+    },
+    {
+      "id": "RUN-01112",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/native-153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "RUN-01114",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/native-exit-check.txt",
+      "bytes": 29,
+      "sha256": "e820692f4af6d88d55c727acf63b11e0c71e28472859e67786fdc77750236a88"
+    },
+    {
+      "id": "RUN-01119",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/preparation-correction.json",
+      "bytes": 284,
+      "sha256": "cec64cee5a4e22b22e502feedd95fae300223b96a5e55562787fd45ffc3ddeb0"
+    },
+    {
+      "id": "RUN-01121",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/raw-seal.json",
+      "bytes": 223494,
+      "sha256": "e18355d22fcd83bce9fa84f989b9e54d95ec5007051ce72ffbf1b8dbdc724c8f"
+    },
+    {
+      "id": "RUN-01122",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/rejoin-check.txt",
+      "bytes": 109,
+      "sha256": "d18b726c5f846c62a78dccd5e7d0406bf46ff54d3008b7d8e77d39f083ece5ff"
+    },
+    {
+      "id": "RUN-01123",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/rejoin-verification.json",
+      "bytes": 106471,
+      "sha256": "089f767f1ccd99b61d51e70adc20911a90b57ffae7710927b4b58776c212085f"
+    },
+    {
+      "id": "RUN-01140",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/runtime-preflight.json",
+      "bytes": 15686,
+      "sha256": "5ad65f0abe8ef4a5499c0074c6441d6d8f575444ad48c15b411c61efd3ffc884"
+    },
+    {
+      "id": "RUN-01178",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/server-tests.txt",
+      "bytes": 315,
+      "sha256": "73bb364a94b505dfe563be088923602b3662cf24f6edfe6783624869c991ea3a"
+    },
+    {
+      "id": "RUN-01181",
+      "kind": "local",
+      "path": "local/research/codex/postbomb-exit-rejoin-r1/visual-review.json",
+      "bytes": 1135,
+      "sha256": "1c13c01a570c52d059e9e9e6bd45b3691c96abdcc6ffcb92658118417e55cff3"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/postbomb-exit-rejoin-r1",
+      "path": "local/evidence-manifests/7ad036ed77bea8161056984cdf936a463da2bdaeb4ad78673c51de086dcde9e7.jsonl",
+      "sha256": "7ad036ed77bea8161056984cdf936a463da2bdaeb4ad78673c51de086dcde9e7",
+      "bytes": 236337,
+      "count": 1162,
+      "files_bytes": 47979926
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/827074e911d5a3c5b58575ca70cdc536058b8b7c8967404ac1eece6c15c5f156.jsonl",
+      "sha256": "827074e911d5a3c5b58575ca70cdc536058b8b7c8967404ac1eece6c15c5f156",
+      "bytes": 436,
+      "count": 2,
+      "files_bytes": 59415
+    },
+    {
+      "run": "local/research/codex/active-exit-bomb-control-r1",
+      "path": "local/evidence-manifests/d2a60a1802b30819d01e64a2ad2a6f00edec212ceff9b6d5843eb938fa5fd487.jsonl",
+      "sha256": "d2a60a1802b30819d01e64a2ad2a6f00edec212ceff9b6d5843eb938fa5fd487",
+      "bytes": 490,
+      "count": 2,
+      "files_bytes": 429
     }
   ]
 }

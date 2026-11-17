@@ -110,15 +110,6 @@
       "limits": "Full checker exact head và CI phải đạt trước merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP316-camp08-serving.json",
-      "bytes": 975997,
-      "sha256": "7f82cb95341943204a6a3f6944eb8d166fe68977994ecf4d5913c9afc6f5d612",
-      "count": 3525
-    }
-  ],
   "delta": {
     "added": [
       "Native Line01 ray-to-box và Camp08 serving route tám account qua hai vòng/reset."
@@ -217,6 +208,321 @@
       "path": "AGENTS.md",
       "state": "unchanged",
       "reason": "Giữ quy trình, miễn review và owner Claude của L1."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SERVE316-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3538,
+      "sha256": "ae90dced38a0a2b4cb428bd455922ccfed0578aae020fae230181959a0e2009e"
+    },
+    {
+      "id": "SERVE316-0002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 264624,
+      "sha256": "7c1fd43197657a06b0147b89f6cdfa1956ec937231e31188bfffc077982ba753"
+    },
+    {
+      "id": "SERVE316-0003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 160262,
+      "sha256": "9fbe99adf8d599412922c29923fe21c692217b31ba397341b2dc64d396aa078d"
+    },
+    {
+      "id": "SERVE316-0004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 83347,
+      "sha256": "58db99b8074402df63a2145d3b8f7a317bdb6d5695b8725f795870567e86cca3"
+    },
+    {
+      "id": "SERVE316-0005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 44593,
+      "sha256": "3fc90529f8dd733c7b028f0de231f83c72054328d2b9c66ae2609e86edab94f6"
+    },
+    {
+      "id": "SERVE316-0006",
+      "kind": "repository",
+      "path": "docs/content/tile-semantics.md",
+      "bytes": 5498,
+      "sha256": "ee7fca7ec31cd38985c8fdad9c7d1c6cc4828d794a315081f8ef6ce67a756d51"
+    },
+    {
+      "id": "SERVE316-0007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD127.json",
+      "bytes": 3614,
+      "sha256": "ccc51e5e3f666d1a70cf62d5f3c00092f15a65f2d2afb3e4a0bfd2a5da9dfe12"
+    },
+    {
+      "id": "SERVE316-0008",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-camp08-serving-roster.json",
+      "bytes": 6528,
+      "sha256": "c2b6fd22caa038237dcb20276d6917abca1967d5b5d14468407b589456e0a438"
+    },
+    {
+      "id": "SERVE316-0009",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 277593,
+      "sha256": "1c21ce32d015ecb3950ce4a23caea3e64cabce3e231c0c7e2531a68c5f39e69c"
+    },
+    {
+      "id": "SERVE316-0010",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 68678,
+      "sha256": "b87abfc2208238f9ec3d81c5980851ecfa4aeb1de66dca9b44642d45efecfec0"
+    },
+    {
+      "id": "SERVE316-0015",
+      "kind": "local",
+      "path": "local/research/codex/cp316-docs-precheck.txt",
+      "bytes": 274,
+      "sha256": "215f6e5b49c81c65a43a96621e5bea512f5585518d5759badec77ed3f2870cfe"
+    },
+    {
+      "id": "SERVE316-0016",
+      "kind": "local",
+      "path": "local/research/codex/cp316-preservation-verification.json",
+      "bytes": 1085,
+      "sha256": "39274031fcf23da46a55526d35afd5890b5775ec01528610031d4ef5bb832eb2"
+    },
+    {
+      "id": "SERVE316-0310",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-line01-native-r1/ray-verification.json",
+      "bytes": 12189,
+      "sha256": "8be7f2a07a19959fc854b73c9ffb4e0002960a261a422c55bc0900b1af571c28"
+    },
+    {
+      "id": "SERVE316-0319",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-line01-native-r1/verifier-correction.json",
+      "bytes": 1017,
+      "sha256": "d504e0fc099d26cd8b248c7df3aba42731f68f539bbb8943e21927dc1210037a"
+    },
+    {
+      "id": "SERVE316-0415",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-serving-r1/serving8-prelaunch-model-control.json",
+      "bytes": 293,
+      "sha256": "95ebae9be1a8b455f9debb3aab82793e4d1b2177c1b8ba8d57168b72390e1c6a"
+    },
+    {
+      "id": "SERVE316-0429",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-serving8-native-r1/failure-verification.json",
+      "bytes": 2533,
+      "sha256": "e4eba3e901e02737ef082f80844b804df3cf2ec10a221a2385f5796bc4a75061"
+    },
+    {
+      "id": "SERVE316-1771",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-serving8-native-r2/serving-verification.json",
+      "bytes": 37494,
+      "sha256": "669e0194be64b613017e150a63fc386b49c3085fc0f6e097b487ba5fd774fd51"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/64b2b7e098ff37aa3bd1cb951b74b360a9eb2ef5b03298923187230bbcc300b9.jsonl",
+      "sha256": "64b2b7e098ff37aa3bd1cb951b74b360a9eb2ef5b03298923187230bbcc300b9",
+      "bytes": 4786,
+      "count": 25,
+      "files_bytes": 421201
+    },
+    {
+      "run": "local/research/codex/g1-camp08-c2s122-native-r2",
+      "path": "local/evidence-manifests/7140902d071be841298c76048d3709534619b5f214481318b5f2aca97cb64e71.jsonl",
+      "sha256": "7140902d071be841298c76048d3709534619b5f214481318b5f2aca97cb64e71",
+      "bytes": 1748,
+      "count": 7,
+      "files_bytes": 57420
+    },
+    {
+      "run": "local/research/codex/g1-camp08-cancellation-native-r1",
+      "path": "local/evidence-manifests/c0535770e69e1d96d52107323ff6a3abc59b449dcf23e1aa744392fdd6f53abc.jsonl",
+      "sha256": "c0535770e69e1d96d52107323ff6a3abc59b449dcf23e1aa744392fdd6f53abc",
+      "bytes": 8640,
+      "count": 37,
+      "files_bytes": 130750
+    },
+    {
+      "run": "local/research/codex/g1-camp08-cancellation-native-r2",
+      "path": "local/evidence-manifests/9d095fa5e9c9f946309826bc19613ccbb70f06c9a68ec3c314003ebd7b2b5041.jsonl",
+      "sha256": "9d095fa5e9c9f946309826bc19613ccbb70f06c9a68ec3c314003ebd7b2b5041",
+      "bytes": 3708,
+      "count": 15,
+      "files_bytes": 401181
+    },
+    {
+      "run": "local/research/codex/g1-camp08-condition-native-r7",
+      "path": "local/evidence-manifests/560b2cd7e360bedcba329c3b7acb9c7ae2b87fb4f947074025e9c3943703d033.jsonl",
+      "sha256": "560b2cd7e360bedcba329c3b7acb9c7ae2b87fb4f947074025e9c3943703d033",
+      "bytes": 2007,
+      "count": 8,
+      "files_bytes": 60971
+    },
+    {
+      "run": "local/research/codex/g1-camp08-durable-serving-native-r1",
+      "path": "local/evidence-manifests/427b17586b9d7d38df6547ba9d597e1546a8795802a95b1e8fe172c46edde559.jsonl",
+      "sha256": "427b17586b9d7d38df6547ba9d597e1546a8795802a95b1e8fe172c46edde559",
+      "bytes": 2068,
+      "count": 8,
+      "files_bytes": 107011
+    },
+    {
+      "run": "local/research/codex/g1-camp08-durable-serving-native-r2",
+      "path": "local/evidence-manifests/7a7f8f6fcdc21016a7b7c548c1c6feb28dbd0c37e70713ff975f145d1d92a825.jsonl",
+      "sha256": "7a7f8f6fcdc21016a7b7c548c1c6feb28dbd0c37e70713ff975f145d1d92a825",
+      "bytes": 8502,
+      "count": 36,
+      "files_bytes": 265277280
+    },
+    {
+      "run": "local/research/codex/g1-camp08-line01-native-r1",
+      "path": "local/evidence-manifests/66b3a70ef26954e8383df22d923ccd0df06c062ae424619fac3c3c86215ed51a.jsonl",
+      "sha256": "66b3a70ef26954e8383df22d923ccd0df06c062ae424619fac3c3c86215ed51a",
+      "bytes": 42495,
+      "count": 188,
+      "files_bytes": 296593644
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r1",
+      "path": "local/evidence-manifests/377b97e2e87326265e78382db19476f50a15b750424499e867f459fd0895ae26.jsonl",
+      "sha256": "377b97e2e87326265e78382db19476f50a15b750424499e867f459fd0895ae26",
+      "bytes": 2984,
+      "count": 10,
+      "files_bytes": 55955
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r6",
+      "path": "local/evidence-manifests/d121438fa0631462e4a878c1938e348f4760d30a10c9c9e87e040d04771c51d6.jsonl",
+      "sha256": "d121438fa0631462e4a878c1938e348f4760d30a10c9c9e87e040d04771c51d6",
+      "bytes": 3045,
+      "count": 10,
+      "files_bytes": 58139
+    },
+    {
+      "run": "local/research/codex/g1-camp08-right-static-native-r1",
+      "path": "local/evidence-manifests/c9189fc320de40d56c596104bffb072cbfca74c513a028688b50a0c5207f28a8.jsonl",
+      "sha256": "c9189fc320de40d56c596104bffb072cbfca74c513a028688b50a0c5207f28a8",
+      "bytes": 3629,
+      "count": 12,
+      "files_bytes": 72562
+    },
+    {
+      "run": "local/research/codex/g1-camp08-right-static-native-r2",
+      "path": "local/evidence-manifests/a53948b55c45675a8042f30641e7839129424011be403353b838f0738f9278fd.jsonl",
+      "sha256": "a53948b55c45675a8042f30641e7839129424011be403353b838f0738f9278fd",
+      "bytes": 1904,
+      "count": 6,
+      "files_bytes": 48924
+    },
+    {
+      "run": "local/research/codex/g1-camp08-seed-native-r1",
+      "path": "local/evidence-manifests/4142ff6a00438646b60f75467883d4a526445a4962732d016e1e8c5a1d2d4a82.jsonl",
+      "sha256": "4142ff6a00438646b60f75467883d4a526445a4962732d016e1e8c5a1d2d4a82",
+      "bytes": 11891,
+      "count": 54,
+      "files_bytes": 91992445
+    },
+    {
+      "run": "local/research/codex/g1-camp08-serving-r1",
+      "path": "local/evidence-manifests/21c490367cd1c738834b04fd7671cc9aabc6371a17f32a6303976d739aae9562.jsonl",
+      "sha256": "21c490367cd1c738834b04fd7671cc9aabc6371a17f32a6303976d739aae9562",
+      "bytes": 475,
+      "count": 2,
+      "files_bytes": 6720
+    },
+    {
+      "run": "local/research/codex/g1-camp08-serving8-native-r1",
+      "path": "local/evidence-manifests/8203c2e3edf51f91a72c96a5164a62cdaeb5744bfd6319abe9d2d9346d3f4058.jsonl",
+      "sha256": "8203c2e3edf51f91a72c96a5164a62cdaeb5744bfd6319abe9d2d9346d3f4058",
+      "bytes": 110559,
+      "count": 489,
+      "files_bytes": 403972658
+    },
+    {
+      "run": "local/research/codex/g1-camp08-serving8-native-r2",
+      "path": "local/evidence-manifests/98ce96b55d84fc221ae45dbfff1f5d23eb8ab76e90e3f25ac2fc4b035a4cbf70.jsonl",
+      "sha256": "98ce96b55d84fc221ae45dbfff1f5d23eb8ab76e90e3f25ac2fc4b035a4cbf70",
+      "bytes": 201931,
+      "count": 870,
+      "files_bytes": 562649058
+    },
+    {
+      "run": "local/research/codex/g1-camp08-static-rays-native-r1",
+      "path": "local/evidence-manifests/b894b56e14a611b42e383f96643f93d437025fb92bd7f88e70f962bf8259f6f4.jsonl",
+      "sha256": "b894b56e14a611b42e383f96643f93d437025fb92bd7f88e70f962bf8259f6f4",
+      "bytes": 1888,
+      "count": 6,
+      "files_bytes": 54318
+    },
+    {
+      "run": "local/research/codex/g1-camp08-static-rays-native-r2",
+      "path": "local/evidence-manifests/442f38ed5a5f406f205667c5eaf8888e6a671df7852bdff4188b34482c891d55.jsonl",
+      "sha256": "442f38ed5a5f406f205667c5eaf8888e6a671df7852bdff4188b34482c891d55",
+      "bytes": 1609,
+      "count": 5,
+      "files_bytes": 43718
+    },
+    {
+      "run": "local/research/codex/g1-camp08-static-rays-native-r3",
+      "path": "local/evidence-manifests/9e64c6f2dbb6e1214af2f3347898a3be5a3610474369ebd135186c7ebbe313a4.jsonl",
+      "sha256": "9e64c6f2dbb6e1214af2f3347898a3be5a3610474369ebd135186c7ebbe313a4",
+      "bytes": 1609,
+      "count": 5,
+      "files_bytes": 45537
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-counters-native-r1",
+      "path": "local/evidence-manifests/bad55084ba085795068c12d922360c5b98413972f6fdc35b674d08c620eb948c.jsonl",
+      "sha256": "bad55084ba085795068c12d922360c5b98413972f6fdc35b674d08c620eb948c",
+      "bytes": 1386,
+      "count": 5,
+      "files_bytes": 43992
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-counters-native-r2",
+      "path": "local/evidence-manifests/1cb19aaf1e6f85656192a21a68334d315123d4bfba39dd019b33af337923ad2f.jsonl",
+      "sha256": "1cb19aaf1e6f85656192a21a68334d315123d4bfba39dd019b33af337923ad2f",
+      "bytes": 1386,
+      "count": 5,
+      "files_bytes": 41479
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-hits-native-r1",
+      "path": "local/evidence-manifests/be2efb620fe978666a1d65616e0418e95f5537085e9bf26c667edabe75737567.jsonl",
+      "sha256": "be2efb620fe978666a1d65616e0418e95f5537085e9bf26c667edabe75737567",
+      "bytes": 1342,
+      "count": 5,
+      "files_bytes": 42480
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-native-r1",
+      "path": "local/evidence-manifests/afc8bbb026c2edfd848d7aa175a50d31a8f821883947407261c3f1e601b3d1ea.jsonl",
+      "sha256": "afc8bbb026c2edfd848d7aa175a50d31a8f821883947407261c3f1e601b3d1ea",
+      "bytes": 68182,
+      "count": 302,
+      "files_bytes": 6418762680
+    },
+    {
+      "run": "local/research/codex/g1-mixed-map-sparse-native-r2",
+      "path": "local/evidence-manifests/8c184a1f33ebd20ae8df16c87ee29e0c838c4b36f2ff0b976a41f1261a5b9190.jsonl",
+      "sha256": "8c184a1f33ebd20ae8df16c87ee29e0c838c4b36f2ff0b976a41f1261a5b9190",
+      "bytes": 311018,
+      "count": 1398,
+      "files_bytes": 20104876902
     }
   ]
 }

@@ -153,15 +153,6 @@
       "limits": "Fullhistory/exactheadchecksrequired/checkerdoesnotvalidateacceptance."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP240-rust-life-results.json",
-      "bytes": 264515,
-      "sha256": "b98417685d6fed3050055e24183ca5a7baab976cd93d09228b287741ada4d1d5",
-      "count": 1017
-    }
-  ],
   "delta": {
     "added": [
       "Rustreportlife/result-resetpolicy/native2oppositeoutcomes/Ready2Start3/40tests44TCP.",
@@ -293,6 +284,253 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP240reportlife/result-resetnativeproof/subsetlimits/M3controlsnext/AUD069through240-next244/backendM5alreadyimplemented."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST240-00003",
+      "kind": "local",
+      "path": "local/research/codex/cp240-docs-final.txt",
+      "bytes": 175,
+      "sha256": "e3464bc87f96b8f9e1b2eb44cbcae7dc55ac01c1166b21d6de1f7e4f010a2e53"
+    },
+    {
+      "id": "RUST240-00030",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-build-r6.txt",
+      "bytes": 166,
+      "sha256": "57302c31dfaae83a2de9f0e0a3643217e502cdb29110cc4c0c6faa9823874e3b"
+    },
+    {
+      "id": "RUST240-00037",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-clippy-r7.txt",
+      "bytes": 166,
+      "sha256": "5d49bf6d78398d0e5d6c7d6cfe1f9dfd03446dc9ccacbecab77aaf61da99748a"
+    },
+    {
+      "id": "RUST240-00038",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-delivery-r1/manual-acceptance.json",
+      "bytes": 2381,
+      "sha256": "6c361dfa7145f26cff7bd90b973171ea6bd17b30c376f844b8ead329649a2ff2"
+    },
+    {
+      "id": "RUST240-00041",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 91305,
+      "sha256": "2294c3596d4432b25e1c1efa2f73e147491f47e39ae2a730bf43b4df0aa412a0"
+    },
+    {
+      "id": "RUST240-00043",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-delivery-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 46467,
+      "sha256": "dcf13d34d041371e7d74b1733b7351ccbe1ce32f2b109ba00429aa7c7d43c25e"
+    },
+    {
+      "id": "RUST240-00044",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-delivery-r1/snapshot/docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 32461,
+      "sha256": "6a8747b3554b4f9e68e1b641bb223dba11d0b2ebd68294b9fa640c950b2b591f"
+    },
+    {
+      "id": "RUST240-00045",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-delivery-r1/snapshot/docs/evidence/checkpoints/audits/AUD069.json",
+      "bytes": 5023,
+      "sha256": "6d8b4157f948f4c956564f9c44fc2679aee9b3e52461fdb5c3e044870958ccb8"
+    },
+    {
+      "id": "RUST240-00053",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-delivery-r1/snapshot/rust/crates/kr-service/src/lib.rs",
+      "bytes": 35178,
+      "sha256": "d4dcc561f89dfa658f13389769901a09b22d4df65718f95c2e9f8bc31351019f"
+    },
+    {
+      "id": "RUST240-00054",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-delivery-r1/snapshot/rust/crates/kr-service/src/life.rs",
+      "bytes": 12884,
+      "sha256": "38c2eb0ea99629745be048c79e2b6fae33b0ae1d43368b5ebb6b7a3980374d5b"
+    },
+    {
+      "id": "RUST240-00056",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 58832,
+      "sha256": "ee8ec4fef8e562102a8780ca0d938fcfbc1ddfe1932761dd20c2d36ed3f8b2f5"
+    },
+    {
+      "id": "RUST240-00099",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-kernel-r5/verification.json",
+      "bytes": 5870,
+      "sha256": "c286c7ea4ceded711e8924c3527f3f1f50760e00ccf4b935630113860ec53cfe"
+    },
+    {
+      "id": "RUST240-00266",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-native-r1/native-life/raw-seal.json",
+      "bytes": 10479,
+      "sha256": "4b5bb77f6d49b8f9a5e84250ab4d0ac2a3d7a227558486ea0c1d96e304cb73ee"
+    },
+    {
+      "id": "RUST240-00441",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-native-r2/native-life/raw-seal.json",
+      "bytes": 10480,
+      "sha256": "a510889c4ff453f3747c6261750c85f869778badda4675c6aae70c16aff95007"
+    },
+    {
+      "id": "RUST240-00618",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-native-r3/native-life/raw-seal.json",
+      "bytes": 10900,
+      "sha256": "855eb4f8d77521a0d0add78105cb24f1fea0ac07e617988d1d8b4202d69dc985"
+    },
+    {
+      "id": "RUST240-00796",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-native-r4/native-life/raw-seal.json",
+      "bytes": 11330,
+      "sha256": "81c19959b2c3e635f6fafa9ed569aaf06b3920693483ba678421629284095f9c"
+    },
+    {
+      "id": "RUST240-00924",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-native-r5/life-verification.json",
+      "bytes": 572255,
+      "sha256": "47b834e1de3dd25741fd25b5ba70a052cff43056fa2c8231fd037876b0e60a45"
+    },
+    {
+      "id": "RUST240-00994",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-native-r5/native-life/raw-seal.json",
+      "bytes": 14965,
+      "sha256": "868e0ad6498822f8043b3c70809f4d9ab96cbbd35aa475de87c5e6882b35e260"
+    },
+    {
+      "id": "RUST240-00997",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-native-r5/peer-getter-verification.json",
+      "bytes": 420,
+      "sha256": "93da278b5f1d2df94e672c8eb6257e18c6d2ed8dd1f591529772c36578d3a850"
+    },
+    {
+      "id": "RUST240-01003",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-native-r5/ui-review.json",
+      "bytes": 2382,
+      "sha256": "8fcf1ecf04d60b7029e73fb5777a7e4dc62f65846849fe0c68e75b8ffefa99d6"
+    },
+    {
+      "id": "RUST240-01005",
+      "kind": "local",
+      "path": "local/research/codex/rust-life-tests-final.txt",
+      "bytes": 4968,
+      "sha256": "5d4f3dfa5e4dee69a530e127afc1e9a2548accd1092e6dead43254dc8452c430"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/4ebc6dfaa3f00b54ffadcef9c7d354e44f05692f83a20cfe8c1133eb70d3c44f.jsonl",
+      "sha256": "4ebc6dfaa3f00b54ffadcef9c7d354e44f05692f83a20cfe8c1133eb70d3c44f",
+      "bytes": 10824,
+      "count": 59,
+      "files_bytes": 460934
+    },
+    {
+      "run": "local/research/codex/rust-life-delivery-r1",
+      "path": "local/evidence-manifests/8c04d735416520e975ec09547e0a589d77a1e35074a406c0872ad727db21c748.jsonl",
+      "sha256": "8c04d735416520e975ec09547e0a589d77a1e35074a406c0872ad727db21c748",
+      "bytes": 3159,
+      "count": 14,
+      "files_bytes": 1627176
+    },
+    {
+      "run": "local/research/codex/rust-life-kernel-r1",
+      "path": "local/evidence-manifests/5375c29e2cecd87bb8bb27a7fa031926a49df767c472d16e02b3cf7b86e79525.jsonl",
+      "sha256": "5375c29e2cecd87bb8bb27a7fa031926a49df767c472d16e02b3cf7b86e79525",
+      "bytes": 1457,
+      "count": 7,
+      "files_bytes": 94460
+    },
+    {
+      "run": "local/research/codex/rust-life-kernel-r2",
+      "path": "local/evidence-manifests/54218b5d24af3c3aba338ba919a71a008edf1c0879fe4b1bc12271163d0a84d4.jsonl",
+      "sha256": "54218b5d24af3c3aba338ba919a71a008edf1c0879fe4b1bc12271163d0a84d4",
+      "bytes": 1457,
+      "count": 7,
+      "files_bytes": 94456
+    },
+    {
+      "run": "local/research/codex/rust-life-kernel-r3",
+      "path": "local/evidence-manifests/93b5c3eb6206dd2c3116e3e596c1c50294919469c09450c13082f39f644a54a6.jsonl",
+      "sha256": "93b5c3eb6206dd2c3116e3e596c1c50294919469c09450c13082f39f644a54a6",
+      "bytes": 1457,
+      "count": 7,
+      "files_bytes": 94781
+    },
+    {
+      "run": "local/research/codex/rust-life-kernel-r4",
+      "path": "local/evidence-manifests/767629f063f6b8c76cf38600d2dc325e28561c292e8cb2bbd2b16c2290b585c4.jsonl",
+      "sha256": "767629f063f6b8c76cf38600d2dc325e28561c292e8cb2bbd2b16c2290b585c4",
+      "bytes": 1457,
+      "count": 7,
+      "files_bytes": 96357
+    },
+    {
+      "run": "local/research/codex/rust-life-kernel-r5",
+      "path": "local/evidence-manifests/d84a5cd3fa9ab3ee5a93b15368db4420b05ad04f098643db5b088596d5f84543.jsonl",
+      "sha256": "d84a5cd3fa9ab3ee5a93b15368db4420b05ad04f098643db5b088596d5f84543",
+      "bytes": 1262,
+      "count": 6,
+      "files_bytes": 90346
+    },
+    {
+      "run": "local/research/codex/rust-life-native-r1",
+      "path": "local/evidence-manifests/b608832533415a736b4370b4ff725ab8ff6a344d583ee6a958962b2b0cde687b.jsonl",
+      "sha256": "b608832533415a736b4370b4ff725ab8ff6a344d583ee6a958962b2b0cde687b",
+      "bytes": 36760,
+      "count": 173,
+      "files_bytes": 110935196
+    },
+    {
+      "run": "local/research/codex/rust-life-native-r2",
+      "path": "local/evidence-manifests/1e2cc119047e7a7029f943ff08e4778c129f00f5f926cb784e5e7832b06b979e.jsonl",
+      "sha256": "1e2cc119047e7a7029f943ff08e4778c129f00f5f926cb784e5e7832b06b979e",
+      "bytes": 36774,
+      "count": 173,
+      "files_bytes": 111030306
+    },
+    {
+      "run": "local/research/codex/rust-life-native-r3",
+      "path": "local/evidence-manifests/5d26dd64d331f2dd17f00f5bcbfbd960a5351f10e0423968573f0f278358c078.jsonl",
+      "sha256": "5d26dd64d331f2dd17f00f5bcbfbd960a5351f10e0423968573f0f278358c078",
+      "bytes": 36983,
+      "count": 174,
+      "files_bytes": 111365810
+    },
+    {
+      "run": "local/research/codex/rust-life-native-r4",
+      "path": "local/evidence-manifests/89024ac1a02b2bc5e6c2c1ab40f74c12855fcd4cefcc246183762af7882205ef.jsonl",
+      "sha256": "89024ac1a02b2bc5e6c2c1ab40f74c12855fcd4cefcc246183762af7882205ef",
+      "bytes": 37416,
+      "count": 176,
+      "files_bytes": 111962671
+    },
+    {
+      "run": "local/research/codex/rust-life-native-r5",
+      "path": "local/evidence-manifests/33aedd39f162587992f3f8bcd5cff3443bd65170172ef70a5eb4f04183e41511.jsonl",
+      "sha256": "33aedd39f162587992f3f8bcd5cff3443bd65170172ef70a5eb4f04183e41511",
+      "bytes": 41288,
+      "count": 193,
+      "files_bytes": 113809054
     }
   ]
 }

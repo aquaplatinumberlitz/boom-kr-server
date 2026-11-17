@@ -139,27 +139,6 @@
       "limits": "Notsharedchainnegative; allraw/recipes/scripts unchanged, newout/prefix before eachretry."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP131-shared-blocker-R1.json",
-      "bytes": 179811,
-      "sha256": "499583863276056e2fdc4eb8ed36e7a97cfeb3b1734c484c244357a0d6c3ae5e",
-      "count": 731
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP131-shared-blocker-R2.json",
-      "bytes": 181437,
-      "sha256": "2efd87f5b26188c4f63c66c516accb456fb8b97900305ef9a2a1d788f87e10c0",
-      "count": 737
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP131-shared-blocker-R3.json",
-      "bytes": 199686,
-      "sha256": "8ae23572a42b18dccb31215ed88302001e65c008a7088a9d305174e199558d64",
-      "count": 809
-    }
-  ],
   "delta": {
     "added": [
       "Actualsharedboxgeometry/control/native195flags discriminates explicitmutableDFS hypothesis, nativechainorder2→4→3."
@@ -240,6 +219,204 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP131scope/geometry/control/nativeflags/modelhypothesislimits/partials/nexttiming/audit synced, oldcomplete/gates unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "R1-00686",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r1/raw-seal.json",
+      "bytes": 133221,
+      "sha256": "ee438443a65249905c801a1c4a65ec1fbfa868f36c4d60122f639dded1ed6c15"
+    },
+    {
+      "id": "R2-00691",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r2/raw-seal.json",
+      "bytes": 134192,
+      "sha256": "0cd7a5a4132de2e14d365875da50c17f7e452a9bed02c03fadba655107f36fec"
+    },
+    {
+      "id": "R2-00692",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r2/retry-reason.json",
+      "bytes": 408,
+      "sha256": "ffaa1529394049de6c78f803aae11ae434658b9a742615dec87d6121d9d7ec10"
+    },
+    {
+      "id": "R2-00734",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r2/shared-observations.json",
+      "bytes": 3086,
+      "sha256": "c8c6405afe87ecc94e76728a98f6d85040e78b9bb461ca95defb5cd37e4efaba"
+    },
+    {
+      "id": "R3-00003",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "R3-00005",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/chain-summary.json",
+      "bytes": 64123,
+      "sha256": "d12fc366195ba6d6b5d7365a366d690cb30894f29996cf0b515d2a49ffb76761"
+    },
+    {
+      "id": "R3-00710",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/cycles/run.json",
+      "bytes": 390013,
+      "sha256": "df2c88e1fdec26264aab425fe7613d62464bd2ff4b7b76f09c0c8effc6db714f"
+    },
+    {
+      "id": "R3-00720",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/docs-check.txt",
+      "bytes": 175,
+      "sha256": "8af98378cf4afe386b3a354600505840959987c882448414bfd4cac55259fd51"
+    },
+    {
+      "id": "R3-00721",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/flag-check.txt",
+      "bytes": 54,
+      "sha256": "6396e8bc2ff284d6d17486bc659c34396a57d589ef6203c5d37416d04932fdae"
+    },
+    {
+      "id": "R3-00722",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/flag-reader-verification.json",
+      "bytes": 2122671,
+      "sha256": "4223b228346e97a300ab25946f2c4348c61e5275a2a3eec4a8b583355d4f978a"
+    },
+    {
+      "id": "R3-00725",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/geometry-candidate.json",
+      "bytes": 2938,
+      "sha256": "757a4beded95fa8702d830594d50c0b01a9ff876333996d375b6edcf6885fd21"
+    },
+    {
+      "id": "R3-00729",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/issues-check.txt",
+      "bytes": 130,
+      "sha256": "2551236c55ce51bf64192ed88b6a14f851af30f7b323d4545726137968d0cb0b"
+    },
+    {
+      "id": "R3-00730",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/native-153-check.txt",
+      "bytes": 22,
+      "sha256": "ccd17ab225f185be8f6f969644e409ad9041beea1919b7944f3ddb40fbbb024c"
+    },
+    {
+      "id": "R3-00732",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/native-packet-check.txt",
+      "bytes": 29,
+      "sha256": "4d5dc544686268a5057d3c88c93fe8758ba1a17c92effc11a42fcac9fb2b6e44"
+    },
+    {
+      "id": "R3-00741",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/raw-seal.json",
+      "bytes": 140126,
+      "sha256": "a02a16fa970550403f82c601491be4e5c561e04453367f63f9716824d0ada68b"
+    },
+    {
+      "id": "R3-00756",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/retry-reason.json",
+      "bytes": 469,
+      "sha256": "712dd2152834e9c12aab95ee49d3e63c99562a2baa14035341e1709780e2e5e4"
+    },
+    {
+      "id": "R3-00759",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/runtime-preflight.json",
+      "bytes": 15955,
+      "sha256": "a5d4b7b13b2d6cb0cd700069061ba31c8a7952bbf6cc661f0fb011a8dc47fff2"
+    },
+    {
+      "id": "R3-00798",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/shared-check.txt",
+      "bytes": 108,
+      "sha256": "ccb004f8788363cb054c0a978d4cd8a584300dd4cca61c432e2a64b6acc525b2"
+    },
+    {
+      "id": "R3-00799",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/shared-observations.json",
+      "bytes": 9799,
+      "sha256": "2bc7017eb6cf4e5c9f4a21d1b7db79a92e07319d353bb9b1b5e2fcaca21b9871"
+    },
+    {
+      "id": "R3-00800",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/shared-verification.json",
+      "bytes": 64408,
+      "sha256": "809438110c222ab12cde8c8a29be0e44e9c0b6c1d57768ca5e4074f1d4140586"
+    },
+    {
+      "id": "R3-00804",
+      "kind": "local",
+      "path": "local/research/codex/shared-blocker-r3/visual-review.json",
+      "bytes": 696,
+      "sha256": "5c0d3693891908ae5e2d78bfd4cb1a0a9d4d7633b0119f2f467fc55b6f90e2ac"
+    },
+    {
+      "id": "R3-00809",
+      "kind": "local",
+      "path": "local/research/codex/host-battle-exit-control-r1/server-tests.txt",
+      "bytes": 320,
+      "sha256": "6d5c33bc7edcf4050e4882f6ce2251bdd976b63c39e96333d3ca739c84d11ce4"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/shared-blocker-r1",
+      "path": "local/evidence-manifests/eb05ac9c9ddba274b8187ce8fc79835238c47a513c566a2d3022aa0ec4b27aa6.jsonl",
+      "sha256": "eb05ac9c9ddba274b8187ce8fc79835238c47a513c566a2d3022aa0ec4b27aa6",
+      "bytes": 142732,
+      "count": 728,
+      "files_bytes": 30019747
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/e57f727006a76a363863dcaf6d1058bedf303eb30f9cc0b0d5a694b7d67a3dc8.jsonl",
+      "sha256": "e57f727006a76a363863dcaf6d1058bedf303eb30f9cc0b0d5a694b7d67a3dc8",
+      "bytes": 1168,
+      "count": 6,
+      "files_bytes": 193294
+    },
+    {
+      "run": "local/research/codex/shared-blocker-r2",
+      "path": "local/evidence-manifests/9975d04d761fbb42c68aceb3e3116a08426021651983d577db5f0af520897be1.jsonl",
+      "sha256": "9975d04d761fbb42c68aceb3e3116a08426021651983d577db5f0af520897be1",
+      "bytes": 143664,
+      "count": 732,
+      "files_bytes": 32146253
+    },
+    {
+      "run": "local/research/codex/shared-blocker-r3",
+      "path": "local/evidence-manifests/6afa75e06179dc37637bfb0a45023f5f095f99b73a6d1070663925043a5b331d.jsonl",
+      "sha256": "6afa75e06179dc37637bfb0a45023f5f095f99b73a6d1070663925043a5b331d",
+      "bytes": 155063,
+      "count": 787,
+      "files_bytes": 34447621
+    },
+    {
+      "run": "local/research/codex/udp-membership-r3",
+      "path": "local/evidence-manifests/cc2850165d7c69517fadd067684512400566c6a634b592fc4c0981e8ed45b6b3.jsonl",
+      "sha256": "cc2850165d7c69517fadd067684512400566c6a634b592fc4c0981e8ed45b6b3",
+      "bytes": 470,
+      "count": 2,
+      "files_bytes": 480
     }
   ]
 }

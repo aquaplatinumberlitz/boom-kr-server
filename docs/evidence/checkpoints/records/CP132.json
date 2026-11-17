@@ -126,15 +126,6 @@
       "limits": "AuditorCodexselfcheck/reviewwaived; cadence132→136, noreset/gateclosure."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP132-shared-flag-timing.json",
-      "bytes": 205603,
-      "sha256": "d418135853b225c2830429b69cd8a97aa5ee6a096a22eb7b650479ff4f7e4a7c",
-      "count": 816
-    }
-  ],
   "delta": {
     "added": [
       "Scopedsharedflagvalues atthreeprocessentries androotreturn bothviews, actualsamegeometry/order/control;AUD041periodic."
@@ -224,6 +215,174 @@
       "path": "docs/evidence/checkpoints/audits/AUD041.json",
       "state": "updated",
       "reason": "MandatoryperiodicmanualAUD041through132 next136."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/audit-inputs.json",
+      "bytes": 3616,
+      "sha256": "67f9e7d7bd657bbcb1e3e5133560168e1a6b41ed28c38997eb60b3fa53e149b0"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/cp132-snapshot/docs/PLAN.md",
+      "bytes": 32303,
+      "sha256": "a35596cab8c6723589ca404bfe16564f2cb241a250b011788d7be2ba48bbfd80"
+    },
+    {
+      "id": "RUN-00010",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/cp132-snapshot/docs/PROTOCOL.md",
+      "bytes": 399959,
+      "sha256": "379460f0c740dabc0a1023b97804c5203778bf92e6a78c0e0217e83a7be93904"
+    },
+    {
+      "id": "RUN-00011",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/cp132-snapshot/docs/RESEARCH.md",
+      "bytes": 30435,
+      "sha256": "f890050bdb5a61f76d570dd7a362da3ab7821d3f8df3cae1ff5c9015d16224d3"
+    },
+    {
+      "id": "RUN-00014",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/cp132-snapshot/docs/evidence/life-admission/README.md",
+      "bytes": 3492,
+      "sha256": "7f260ce52f1b5083affb6a347690f04ddd5527e38fe4c0d98b978a83528e3bdb"
+    },
+    {
+      "id": "RUN-00706",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/cycles/shared-A.jsonl",
+      "bytes": 2843,
+      "sha256": "726902b2682f6af5138f6ee16cb33b87983072977d9bcae4d6b6ce284645039f"
+    },
+    {
+      "id": "RUN-00707",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/cycles/shared-B.jsonl",
+      "bytes": 2843,
+      "sha256": "fd59a70880582ef17e580f661f53f09a413e8291be8d2669168f7911a03f3395"
+    },
+    {
+      "id": "RUN-00715",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "47aa1e1b065886f1c7b32388e7ac008972b2f02bb3a87c9e894baf3d07a41b78"
+    },
+    {
+      "id": "RUN-00716",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/flag-check.txt",
+      "bytes": 54,
+      "sha256": "6396e8bc2ff284d6d17486bc659c34396a57d589ef6203c5d37416d04932fdae"
+    },
+    {
+      "id": "RUN-00725",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "92ebaca21526ba073700fa665d2f5d22e8d698e30a4395764ea3f8ed4e725583"
+    },
+    {
+      "id": "RUN-00726",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/native-153-check.txt",
+      "bytes": 22,
+      "sha256": "ccd17ab225f185be8f6f969644e409ad9041beea1919b7944f3ddb40fbbb024c"
+    },
+    {
+      "id": "RUN-00728",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/native-packet-check.txt",
+      "bytes": 29,
+      "sha256": "4d5dc544686268a5057d3c88c93fe8758ba1a17c92effc11a42fcac9fb2b6e44"
+    },
+    {
+      "id": "RUN-00735",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/phase-check.txt",
+      "bytes": 357,
+      "sha256": "b3fdda269162a9a837a5b2bba9b94af896c4258c519a9b6fc172fddb25363518"
+    },
+    {
+      "id": "RUN-00736",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/phase-flags.json",
+      "bytes": 10713,
+      "sha256": "a06805015fcc368201604e96698bf49aa05eb94c6114af3016dba9a27dcfdb32"
+    },
+    {
+      "id": "RUN-00749",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/raw-seal.json",
+      "bytes": 141511,
+      "sha256": "7345c6f3d20af1e399b9d487dbadeb11aafd8c0a77097fa5609b251f6d1eb922"
+    },
+    {
+      "id": "RUN-00766",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/runtime-preflight.json",
+      "bytes": 16264,
+      "sha256": "0e4d5183d3f04eac1ee3fa87764917129dc03007c3caea8282c5a55a5ef8c233"
+    },
+    {
+      "id": "RUN-00805",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/shared-check.txt",
+      "bytes": 108,
+      "sha256": "4fcd1c6584519cbbc0c37516e37451bf8130a56fb6edac7619ca7746fd57ae9e"
+    },
+    {
+      "id": "RUN-00807",
+      "kind": "local",
+      "path": "local/research/codex/shared-flag-timing-r1/shared-verification.json",
+      "bytes": 66885,
+      "sha256": "bb6c842e10c6f5b13427e9393952b443faa0fe7b311b517c25b35f1940f2bd3a"
+    },
+    {
+      "id": "RUN-00816",
+      "kind": "local",
+      "path": "local/research/codex/host-battle-exit-control-r1/server-tests.txt",
+      "bytes": 320,
+      "sha256": "6d5c33bc7edcf4050e4882f6ce2251bdd976b63c39e96333d3ca739c84d11ce4"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/shared-flag-timing-r1",
+      "path": "local/evidence-manifests/ffe20d111fd1e4c6dcca069c3bd63b98a93d23fd98ea5a9c8348aafed5dc676a.jsonl",
+      "sha256": "ffe20d111fd1e4c6dcca069c3bd63b98a93d23fd98ea5a9c8348aafed5dc676a",
+      "bytes": 160110,
+      "count": 792,
+      "files_bytes": 37360804
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/f65a0e860d4d04e8e79c01e3442b050ec160f66702d539007a2448b221a8b261.jsonl",
+      "sha256": "f65a0e860d4d04e8e79c01e3442b050ec160f66702d539007a2448b221a8b261",
+      "bytes": 432,
+      "count": 2,
+      "files_bytes": 65122
+    },
+    {
+      "run": "local/research/codex/shared-blocker-r3",
+      "path": "local/evidence-manifests/3cfa15cb4c9d7a56989497bf6ffd6acbb50660e36fa075d1587c6b476c0d4752.jsonl",
+      "sha256": "3cfa15cb4c9d7a56989497bf6ffd6acbb50660e36fa075d1587c6b476c0d4752",
+      "bytes": 472,
+      "count": 2,
+      "files_bytes": 480
     }
   ]
 }

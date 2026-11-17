@@ -108,15 +108,6 @@
       "limits": "Full local/history exact head và CI kiểm riêng trước merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP282-managed-account-ownership.json",
-      "bytes": 347024,
-      "sha256": "5ebde35c448f39be760438725d34afa8bc5bf70e4df722c3f37ec1372fe27cec",
-      "count": 1301
-    }
-  ],
   "delta": {
     "added": [
       "Native managed account revoke và bằng chứng ownership/failure tích hợp; không đổi serving."
@@ -228,5 +219,269 @@
   ],
   "completed_feature_groups": [
     "rust-managed-account-ownership"
+  ],
+  "evidence": [
+    {
+      "id": "M7D282-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13422,
+      "sha256": "80b42ea1ec9c7d34767572dfafbae0e97faea1d402a3cdbcfa22dd30781cd7a3"
+    },
+    {
+      "id": "M7D282-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3922,
+      "sha256": "564031c87f781e0a1b603f93f683564298913093657076cab28786f198caa45c"
+    },
+    {
+      "id": "M7D282-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 246623,
+      "sha256": "ad72461c242ae8402b7d3a932dfa5279184771c07b9a643c4a55c225242f4cfd"
+    },
+    {
+      "id": "M7D282-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 141415,
+      "sha256": "639e9033c598386bfef93558ab0dfaf9f4cf3ac8b05f206c73e8b99dabafac48"
+    },
+    {
+      "id": "M7D282-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 67726,
+      "sha256": "46fdd51ff89cfec6585e2f26c89070e59dc37f3b0054d782bbc669082f3c83c1"
+    },
+    {
+      "id": "M7D282-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "M7D282-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 31538,
+      "sha256": "ac1bcdb1cb2a730f536dd72de55d2d01e211eafab68e9249ab834068857d51c3"
+    },
+    {
+      "id": "M7D282-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD098.json",
+      "bytes": 5443,
+      "sha256": "acb874103290cff81eb08935ac16b5b7819cf4d4c81fb8e99340684cc2833bea"
+    },
+    {
+      "id": "M7D282-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 292929,
+      "sha256": "bc2e9eca5f09016d6f641196ee075bea0a2dacf5512c760f1309639993622c85"
+    },
+    {
+      "id": "M7D282-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 43920,
+      "sha256": "e39f0a860375a7163664008608ffe73bec9b3133d271bd7862c71f2e41407a83"
+    },
+    {
+      "id": "M7D282-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m7d-account-ownership.json",
+      "bytes": 5386,
+      "sha256": "042620c4d10fa15925251f362bdadedc4053e595156112863ec65d4378418683"
+    },
+    {
+      "id": "M7D282-00012",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 258823,
+      "sha256": "7f67fcde472a367a41901ebcbcda15f926cdf691da0990f97619b1fe1fa79a72"
+    },
+    {
+      "id": "M7D282-00013",
+      "kind": "repository",
+      "path": "docs/protocol/room-membership.md",
+      "bytes": 125614,
+      "sha256": "752dd7a32c2bc03ce1087aee40576e095556a74694d37428ba4373e2607b6d27"
+    },
+    {
+      "id": "M7D282-00016",
+      "kind": "local",
+      "path": "local/research/codex/m7d-build-r1.txt",
+      "bytes": 1832,
+      "sha256": "fa14fcc27fedf185504268b78d74b115559b5ec29ca672204faad37fc73ea919"
+    },
+    {
+      "id": "M7D282-00017",
+      "kind": "local",
+      "path": "local/research/codex/m7d-catalog-final.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "M7D282-00021",
+      "kind": "local",
+      "path": "local/research/codex/m7d-clippy-r1.txt",
+      "bytes": 1498,
+      "sha256": "83c6d5eb47818eafe3ed77616754456d1cf9353afb513b0f33bb7bf61358a3dd"
+    },
+    {
+      "id": "M7D282-00022",
+      "kind": "local",
+      "path": "local/research/codex/m7d-docs-final.txt",
+      "bytes": 198,
+      "sha256": "5d54ebd946c9c38ed8cbcfe736d2619ede171a495bd24914eb28bd0070fa4833"
+    },
+    {
+      "id": "M7D282-00025",
+      "kind": "local",
+      "path": "local/research/codex/m7d-fmt-r1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7D282-00255",
+      "kind": "local",
+      "path": "local/research/codex/m7d-ownership-native-r1/lifecycle-addendum.json",
+      "bytes": 1246,
+      "sha256": "b8572ed4e2348014177031897de75676c318506f394363aeed05e98cee3d9257"
+    },
+    {
+      "id": "M7D282-00402",
+      "kind": "local",
+      "path": "local/research/codex/m7d-ownership-native-r1/native/raw-seal.json",
+      "bytes": 31267,
+      "sha256": "e917074337ff77148ed8d457ff0b12e93bfdde067f133ad3e7578e827d967a46"
+    },
+    {
+      "id": "M7D282-00415",
+      "kind": "local",
+      "path": "local/research/codex/m7d-ownership-native-r1/ui-review.json",
+      "bytes": 783,
+      "sha256": "5d08d245a8768e8831b724e109362e8f783178cde20fffeea501794826b0de78"
+    },
+    {
+      "id": "M7D282-00416",
+      "kind": "local",
+      "path": "local/research/codex/m7d-ownership-native-r1/verification.json",
+      "bytes": 14734,
+      "sha256": "1139ecf24ddd8c5018b5b32a3313d9e69f86d4bc9fb9ac42716182ca715bcb45"
+    },
+    {
+      "id": "M7D282-00424",
+      "kind": "local",
+      "path": "local/research/codex/m7d-ownership-synthetic-acceptance.json",
+      "bytes": 2834,
+      "sha256": "d46adcc7ff073fa525e110cb4a9110be16114106083141d5f0af9816951f2a84"
+    },
+    {
+      "id": "M7D282-01182",
+      "kind": "local",
+      "path": "local/research/codex/m7d-ownership-synthetic-r5/export-seal.json",
+      "bytes": 28110,
+      "sha256": "751ccea5d03e2929bb4e9d29d2eb1e9575a5d0895dbf7b76b8da46d4618a1652"
+    },
+    {
+      "id": "M7D282-01290",
+      "kind": "local",
+      "path": "local/research/codex/m7d-ownership-synthetic-r5/tcp/verification.json",
+      "bytes": 530,
+      "sha256": "151fec30f31459f422c9c7efb9ece00a0be270c1b1d04fec35f2162face78925"
+    },
+    {
+      "id": "M7D282-01293",
+      "kind": "local",
+      "path": "local/research/codex/m7d-source-r1/reuse.json",
+      "bytes": 4809,
+      "sha256": "44549d2693bbf7b8ca162940010be8aca1edd4da86690a7375176c4b0c4b3cbb"
+    },
+    {
+      "id": "M7D282-01294",
+      "kind": "local",
+      "path": "local/research/codex/m7d-tests-r1.txt",
+      "bytes": 15129,
+      "sha256": "ff1935cab9a639c7d1ab37f66fc1a0544d44de8220ae4020088f7a19a9c258ea"
+    },
+    {
+      "id": "M7D282-01301",
+      "kind": "repository",
+      "path": "tools/test_rust_managed_ownership.py",
+      "bytes": 17095,
+      "sha256": "f035ea17fa359fb91480fd42a0de2ed7909e75ac14aecc1e360dab05dbce840f"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/482f4bef447aa150178a067fd8b69f58253c558ad8314026f34546097dd9365d.jsonl",
+      "sha256": "482f4bef447aa150178a067fd8b69f58253c558ad8314026f34546097dd9365d",
+      "bytes": 4817,
+      "count": 26,
+      "files_bytes": 688444
+    },
+    {
+      "run": "local/research/codex/m7d-ownership-native-r1",
+      "path": "local/evidence-manifests/f304488f2d21d4f3427186a4c8dafe0ca3253efaf2bbcc2fb5ba0b3845a834c8.jsonl",
+      "sha256": "f304488f2d21d4f3427186a4c8dafe0ca3253efaf2bbcc2fb5ba0b3845a834c8",
+      "bytes": 81838,
+      "count": 380,
+      "files_bytes": 233398029
+    },
+    {
+      "run": "local/research/codex/m7d-ownership-signal-control-r1",
+      "path": "local/evidence-manifests/01f0f9aa4552102e2689d541550384770e2ea27355c8e0a4f000ce2afdbfdcd7.jsonl",
+      "sha256": "01f0f9aa4552102e2689d541550384770e2ea27355c8e0a4f000ce2afdbfdcd7",
+      "bytes": 1338,
+      "count": 6,
+      "files_bytes": 2326
+    },
+    {
+      "run": "local/research/codex/m7d-ownership-synthetic-r1",
+      "path": "local/evidence-manifests/10e244645675a6dcea8c517de3c920a8b736be0c1230550e63f69fa2d6b00c48.jsonl",
+      "sha256": "10e244645675a6dcea8c517de3c920a8b736be0c1230550e63f69fa2d6b00c48",
+      "bytes": 1080,
+      "count": 5,
+      "files_bytes": 2573
+    },
+    {
+      "run": "local/research/codex/m7d-ownership-synthetic-r2",
+      "path": "local/evidence-manifests/0ea6c52d2f2bdd64355aae91506f29179000afc0bf7e378a4052e9968654b415.jsonl",
+      "sha256": "0ea6c52d2f2bdd64355aae91506f29179000afc0bf7e378a4052e9968654b415",
+      "bytes": 47825,
+      "count": 217,
+      "files_bytes": 267903210
+    },
+    {
+      "run": "local/research/codex/m7d-ownership-synthetic-r3",
+      "path": "local/evidence-manifests/6f125fd0bec877d8afaddefc7ecfa48b01035111d48f478a8177f98a46ca5d2c.jsonl",
+      "sha256": "6f125fd0bec877d8afaddefc7ecfa48b01035111d48f478a8177f98a46ca5d2c",
+      "bytes": 69763,
+      "count": 317,
+      "files_bytes": 329284241
+    },
+    {
+      "run": "local/research/codex/m7d-ownership-synthetic-r4",
+      "path": "local/evidence-manifests/b163371e69670c43880ac129136de037c0e954b2dfcf7150b068bb757215c622.jsonl",
+      "sha256": "b163371e69670c43880ac129136de037c0e954b2dfcf7150b068bb757215c622",
+      "bytes": 46968,
+      "count": 214,
+      "files_bytes": 219552245
+    },
+    {
+      "run": "local/research/codex/m7d-ownership-synthetic-r5",
+      "path": "local/evidence-manifests/cbdf320163a6c9e4e95f1510b7a2c5e0331ac4f9c2d9799f430955e12b76a43f.jsonl",
+      "sha256": "cbdf320163a6c9e4e95f1510b7a2c5e0331ac4f9c2d9799f430955e12b76a43f",
+      "bytes": 23981,
+      "count": 108,
+      "files_bytes": 109720602
+    }
   ]
 }

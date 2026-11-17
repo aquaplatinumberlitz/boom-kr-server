@@ -94,15 +94,6 @@
       "limits": "Giữ cảnh báo snapshot GitHub cũ; capture mới ở local, không nhận việc L1 hoặc sửa disposition của Claude. Full checker exact head và CI phải qua trước merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP323-shoe-punch.json",
-      "bytes": 741599,
-      "sha256": "67a9da6e48c31336bdf5c9962fcac4916d838a7aecf611dce737bbc33ff49fdb",
-      "count": 2890
-    }
-  ],
   "delta": {
     "added": [
       "Nguồn KR cho Shoe/Punch pickup, clock2 reset và actual119 để tiếp implementation theo consumer."
@@ -198,6 +189,372 @@
       "path": "rust/crates/kr-service/src/pickups.rs",
       "state": "unchanged",
       "reason": "Kind3/4 tiếp tục bị từ chối; chưa đủ contract hành động để mở."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ABI323-0001",
+      "kind": "artifact",
+      "path": "/etc/nsswitch.conf",
+      "bytes": 359,
+      "sha256": "c8ee7a9faf798caab178ec51afae4146f1efd8a716b7acedf28345b6c75f9697"
+    },
+    {
+      "id": "ABI323-0002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3545,
+      "sha256": "94b664f1f7afacaf2f685b29e8c8097dc68fe4f6877f5b022fc06437636ad9d4"
+    },
+    {
+      "id": "ABI323-0003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 268240,
+      "sha256": "7b5a8695be18a3ba9b00e6053f176aa8c8f0bd3677d37da0a16b2226a2b4ae97"
+    },
+    {
+      "id": "ABI323-0004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 163105,
+      "sha256": "d0bf4f97a4e3da40e9bd6605599e02c085a19218d919fbb82fb137b6732390f5"
+    },
+    {
+      "id": "ABI323-0005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 84621,
+      "sha256": "c0b05ca17af947b7d6078471a011515203204e61b9c86af5b831f0af051f8c18"
+    },
+    {
+      "id": "ABI323-0006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 68274,
+      "sha256": "538ae6a9857264b24ee1510d4de2def97d4ae019d9825fae7a84673811842c65"
+    },
+    {
+      "id": "ABI323-0007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45100,
+      "sha256": "028ecec7389698ffa0b8c18d4f4af7d2cb61943e7053fcc1cfdf099a2a7aa748"
+    },
+    {
+      "id": "ABI323-0008",
+      "kind": "repository",
+      "path": "docs/evidence/item-families/shoe-punch.json",
+      "bytes": 11637,
+      "sha256": "62e445d651c431361cba4259dd9e0f5ee69b5f9544e9c66601038b765e0f22b3"
+    },
+    {
+      "id": "ABI323-0009",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 281132,
+      "sha256": "e86ca17c955fa6add9703e1f830f38f5ed50c09fc08f044668cc7062ccaffaf4"
+    },
+    {
+      "id": "ABI323-0010",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 63007,
+      "sha256": "758ab62ad0167f97d6c7ac25e4fa2511f8fdf1c1d07612abb39d0496cb8153f1"
+    },
+    {
+      "id": "ABI323-0019",
+      "kind": "local",
+      "path": "local/research/codex/collision-r1/overlap121.bin",
+      "bytes": 167,
+      "sha256": "2fd71d091341990f3becfbe240f9fef2dc7069d20228216c4e974bf30afdf851"
+    },
+    {
+      "id": "ABI323-0022",
+      "kind": "local",
+      "path": "local/research/codex/cp323-docs-corrections.json",
+      "bytes": 623,
+      "sha256": "8601d13b3578e28ce515a312cd863a9fca881bacc4e2db0133d5a273712d0b80"
+    },
+    {
+      "id": "ABI323-0023",
+      "kind": "local",
+      "path": "local/research/codex/cp323-docs-precheck.txt",
+      "bytes": 557,
+      "sha256": "76f0b70b9d3ad3a68672c8446b19fdcb0d1d2e5aebe36a3d14284069ca5573fc"
+    },
+    {
+      "id": "ABI323-0025",
+      "kind": "local",
+      "path": "local/research/codex/cp323-preservation-verification.json",
+      "bytes": 356,
+      "sha256": "ea6f4b9c5d9d15c7e21702aa5c10349ee7f20c23f92083fd61226fdf61e908fa"
+    },
+    {
+      "id": "ABI323-0033",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-flags-native-r2/ability-flags-verification.json",
+      "bytes": 26497,
+      "sha256": "01a505e297450e23511a629e6fa767dd1d5188b37f08ab54b166593ad0faa791"
+    },
+    {
+      "id": "ABI323-0036",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-flags-native-r2/actual119-field-observations.json",
+      "bytes": 688,
+      "sha256": "c9440fedbed281fce745ada6954e9bdf90e52903fea17845faae40dafe5f0e7d"
+    },
+    {
+      "id": "ABI323-0041",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-flags-native-r2/manual-image-review.json",
+      "bytes": 618,
+      "sha256": "54dac0c1e7f8c70b8885e8f7f27db66bbfc56f3033237a36d16f44066ca26ad0"
+    },
+    {
+      "id": "ABI323-1239",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-punch-reuse-r3/queue-consumer-ida-cli.json",
+      "bytes": 28203,
+      "sha256": "068c4d35c184fc1ca4fa81077f85d09533b3ee594ce25c89473cfb512dfc3e0c"
+    },
+    {
+      "id": "ABI323-1250",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-punch-reuse-r4/batch-boundary.json",
+      "bytes": 945,
+      "sha256": "4203259fbc16af066b5929e3b7b0dc12f8d2ed4a53c72af3c7b721941037e625"
+    },
+    {
+      "id": "ABI323-1251",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-punch-reuse-r4/complete-chunk-runtime-binding.json",
+      "bytes": 19453,
+      "sha256": "7857cc5dae427be26dd087af8c751433dda0e0c14a51e6ffe14e085d1a434845"
+    },
+    {
+      "id": "ABI323-1734",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-source-native-r1/pickup-observations-verification.json",
+      "bytes": 4527,
+      "sha256": "e552ea424eed4f160c10ca3382505c8a3f87ebd0d63bfbfacfcf69a6a2fca922"
+    },
+    {
+      "id": "ABI323-2859",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "ABI323-2860",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/alsa-null.conf",
+      "bytes": 27,
+      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+    },
+    {
+      "id": "ABI323-2864",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "ABI323-2870",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "ABI323-2873",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "ABI323-2883",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "ABI323-2885",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/55fd30.asm",
+      "bytes": 3543,
+      "sha256": "e40d65e338396e75d918f5b84ea366be6930184e1ec508d1a11ca573cd79c991"
+    },
+    {
+      "id": "ABI323-2889",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "bytes": 16489,
+      "sha256": "e02cb22baae5d48f662ac55f738dddcaa794fb91e2d08401704ce318f90f3b13"
+    },
+    {
+      "id": "ABI323-2890",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/894933452d1f5f0783393ed492c615a541bdecc5d3f14afab9bcec18113e2bd1.jsonl",
+      "sha256": "894933452d1f5f0783393ed492c615a541bdecc5d3f14afab9bcec18113e2bd1",
+      "bytes": 2451,
+      "count": 13,
+      "files_bytes": 761079
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/50786a8408d7a547d612ee2a9790621f87ed86dfe76d38840516369fbbc158e1.jsonl",
+      "sha256": "50786a8408d7a547d612ee2a9790621f87ed86dfe76d38840516369fbbc158e1",
+      "bytes": 436,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/083604709458c650b7272d995b492a8f1be69d81d740baf57e62d33f96301972.jsonl",
+      "sha256": "083604709458c650b7272d995b492a8f1be69d81d740baf57e62d33f96301972",
+      "bytes": 828,
+      "count": 4,
+      "files_bytes": 277
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/189f6c39b19c2542796a7a30d68265f76fb60418758cd9dcb7e401382701a698.jsonl",
+      "sha256": "189f6c39b19c2542796a7a30d68265f76fb60418758cd9dcb7e401382701a698",
+      "bytes": 1011,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/g1-ability-flags-native-r2",
+      "path": "local/evidence-manifests/3b7197322e7f66fec369e7a8f600c3efa75e52fa4726499493847270f325e806.jsonl",
+      "sha256": "3b7197322e7f66fec369e7a8f600c3efa75e52fa4726499493847270f325e806",
+      "bytes": 242802,
+      "count": 1165,
+      "files_bytes": 59433516
+    },
+    {
+      "run": "local/research/codex/g1-shoe-punch-reuse-r1",
+      "path": "local/evidence-manifests/264cc547787c5692b88445c0c95b5d9821f04a04b73f5e8d71db737a1e771265.jsonl",
+      "sha256": "264cc547787c5692b88445c0c95b5d9821f04a04b73f5e8d71db737a1e771265",
+      "bytes": 4461,
+      "count": 22,
+      "files_bytes": 51709
+    },
+    {
+      "run": "local/research/codex/g1-shoe-punch-reuse-r2",
+      "path": "local/evidence-manifests/313549eb1971431ea8ded7b5d05ef0f4e24e824bf70559e7b40e5352ebdc1688.jsonl",
+      "sha256": "313549eb1971431ea8ded7b5d05ef0f4e24e824bf70559e7b40e5352ebdc1688",
+      "bytes": 2271,
+      "count": 11,
+      "files_bytes": 48515
+    },
+    {
+      "run": "local/research/codex/g1-shoe-punch-reuse-r3",
+      "path": "local/evidence-manifests/f49d93be5a4a8f4778e24b12b85cd27b85316ea075864978b98e6839ef88a2f5.jsonl",
+      "sha256": "f49d93be5a4a8f4778e24b12b85cd27b85316ea075864978b98e6839ef88a2f5",
+      "bytes": 2879,
+      "count": 14,
+      "files_bytes": 45351
+    },
+    {
+      "run": "local/research/codex/g1-shoe-punch-reuse-r4",
+      "path": "local/evidence-manifests/ff62663a8ae88ff74fde1fd1888863bd3d97d08dd0dd99e53fc1a37938d34de8.jsonl",
+      "sha256": "ff62663a8ae88ff74fde1fd1888863bd3d97d08dd0dd99e53fc1a37938d34de8",
+      "bytes": 2660,
+      "count": 13,
+      "files_bytes": 35545
+    },
+    {
+      "run": "local/research/codex/g1-shoe-source-native-r1",
+      "path": "local/evidence-manifests/05c854665228dfcd389626279b18193e1e81afff2a2359921b44d222eaefd89a.jsonl",
+      "sha256": "05c854665228dfcd389626279b18193e1e81afff2a2359921b44d222eaefd89a",
+      "bytes": 328674,
+      "count": 1590,
+      "files_bytes": 6625367108
+    },
+    {
+      "run": "local/research/codex/item-effects-r1",
+      "path": "local/evidence-manifests/249eb58ed91475c8357e699cda9e8c01526d5a4de5f7b38341ad441b004c5879.jsonl",
+      "sha256": "249eb58ed91475c8357e699cda9e8c01526d5a4de5f7b38341ad441b004c5879",
+      "bytes": 444,
+      "count": 2,
+      "files_bytes": 12532
+    },
+    {
+      "run": "local/research/codex/item-families-r1",
+      "path": "local/evidence-manifests/28221233a75d26664d98a9ed444484979be15df5c101549f8278c3419b6e60d5.jsonl",
+      "sha256": "28221233a75d26664d98a9ed444484979be15df5c101549f8278c3419b6e60d5",
+      "bytes": 470,
+      "count": 2,
+      "files_bytes": 119290
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/6fc97836f4af6a18005caa3191a119a3b0037fb7d16564c06281d1ebf357b8f8.jsonl",
+      "sha256": "6fc97836f4af6a18005caa3191a119a3b0037fb7d16564c06281d1ebf357b8f8",
+      "bytes": 432,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/6a1f4572b1c2646d5592c533e8d717a75d6231578dfa256fd17408edef3cee0a.jsonl",
+      "sha256": "6a1f4572b1c2646d5592c533e8d717a75d6231578dfa256fd17408edef3cee0a",
+      "bytes": 619,
+      "count": 3,
+      "files_bytes": 449
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/faaa3c947889a8002283e10093fc3fa596a2bca56df3e237c6e10b56b4f00c2c.jsonl",
+      "sha256": "faaa3c947889a8002283e10093fc3fa596a2bca56df3e237c6e10b56b4f00c2c",
+      "bytes": 638,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/room-player-r1",
+      "path": "local/evidence-manifests/33d1bf181adbc25d7bed2fb2696ac032c5225b9c94a41db012b73267e12f6a18.jsonl",
+      "sha256": "33d1bf181adbc25d7bed2fb2696ac032c5225b9c94a41db012b73267e12f6a18",
+      "bytes": 458,
+      "count": 2,
+      "files_bytes": 286
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/2e77bcc155679b34b5184f1f4a0b3350763b8332d1eda6f01c4fab321953def2.jsonl",
+      "sha256": "2e77bcc155679b34b5184f1f4a0b3350763b8332d1eda6f01c4fab321953def2",
+      "bytes": 613,
+      "count": 3,
+      "files_bytes": 16899
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/b3fccfab0e181a6629a5078dbfb59bd905e7b14218b46672d60822d353cbc513.jsonl",
+      "sha256": "b3fccfab0e181a6629a5078dbfb59bd905e7b14218b46672d60822d353cbc513",
+      "bytes": 451,
+      "count": 2,
+      "files_bytes": 384
+    },
+    {
+      "run": "local/research/codex/start-reply-r1",
+      "path": "local/evidence-manifests/cd70de66e5d3e3d9a66eaaf1813817ca7b2bda6346c72d7481a962e4cb5da7db.jsonl",
+      "sha256": "cd70de66e5d3e3d9a66eaaf1813817ca7b2bda6346c72d7481a962e4cb5da7db",
+      "bytes": 458,
+      "count": 2,
+      "files_bytes": 314
     }
   ]
 }

@@ -127,15 +127,6 @@
       "limits": "Nextknowncontractport; nofullM2acceptance."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP233-rust-two-lobby.json",
-      "bytes": 127649,
-      "sha256": "0de99271dc49a2d9ff2fc73366a0486d4d37c882c6cd66aa25259a7872b0e776",
-      "count": 496
-    }
-  ],
   "delta": {
     "added": [
       "Rust2diagnosticidentityprofiles andexplicitrequest/endpoint/stagelease binding;10Rusttests/16TCPbindingcases.",
@@ -254,6 +245,154 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP233twoactualsảnh/request-endpointstagebindings/nativeproof/failurekept/limits;M2room-barrier-lifecyclemissing/nextCP236syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST233-00003",
+      "kind": "local",
+      "path": "local/research/codex/cp233-docs-final.txt",
+      "bytes": 175,
+      "sha256": "6fdb261b4a5a81b7756254d781402c3fee8ae5c93a23ba7ed84eb01c4e8f019b"
+    },
+    {
+      "id": "RUST233-00018",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/manual-acceptance.json",
+      "bytes": 2116,
+      "sha256": "280dce0d33ed45a433be7e0287b609f4870b30bef4a30ed748c2b27c6119f424"
+    },
+    {
+      "id": "RUST233-00021",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 88236,
+      "sha256": "58a1f1f87c8504d4e70078121ae51c98493dbc71a9ddfbeebfa1acacb704dff7"
+    },
+    {
+      "id": "RUST233-00030",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/rust/crates/kr-service/src/binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "RUST233-00031",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-delivery-r1/snapshot/rust/crates/kr-service/src/lib.rs",
+      "bytes": 29553,
+      "sha256": "73c004f0956c26b0b0995c421c09a15b7ff5500adcfc5796fa2c01ffc7ba7890"
+    },
+    {
+      "id": "RUST233-00040",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/failure-review.json",
+      "bytes": 551,
+      "sha256": "68e807825105051f320167fda639d182af5cbeecb896414cd258536efd0f04f2"
+    },
+    {
+      "id": "RUST233-00088",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r1/input-retention.json",
+      "bytes": 15456,
+      "sha256": "56b10cd5405d89bc2405b8a9f7579f0b642caf07fa50acb3465d19fe7c0f188f"
+    },
+    {
+      "id": "RUST233-00301",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/final-build.txt",
+      "bytes": 166,
+      "sha256": "85b38942dac3f9974e4b2391abd27a2d2f4a82162a4bd14c60feda4e4ad1c2a6"
+    },
+    {
+      "id": "RUST233-00302",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/final-clippy.txt",
+      "bytes": 166,
+      "sha256": "470056971ec21d7c84fc30f9e38b80d88963fd854c48724a90c3d24b93847bc7"
+    },
+    {
+      "id": "RUST233-00303",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/final-fmt.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST233-00304",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/final-tests.txt",
+      "bytes": 2001,
+      "sha256": "9467174e6ddf3eefd5a4e5d9fa4c6592edcfb27201cea350fc564389ae6aa139"
+    },
+    {
+      "id": "RUST233-00361",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/kernel-tcp/verification.json",
+      "bytes": 3852,
+      "sha256": "175abf339d0e558851b2dc39612585a61973f96adf55c02d0ff09ae8a0eeea3e"
+    },
+    {
+      "id": "RUST233-00378",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/m1-regression/verification.json",
+      "bytes": 1854,
+      "sha256": "bdd56f3a285343d394be923b7198292814dd2fb2058afb2ff2a47f698d7f8ec3"
+    },
+    {
+      "id": "RUST233-00485",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/rea-provider-limits.json",
+      "bytes": 418,
+      "sha256": "3236a5531ec032f0eb7465217dc359e029fbc5d5c27e0d2dbdf286b3dcf6ff9a"
+    },
+    {
+      "id": "RUST233-00490",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/ui-review.json",
+      "bytes": 557,
+      "sha256": "f0fd473438277df13b11adfc57d72323e26f14df671f30fe6b8489b082301a16"
+    },
+    {
+      "id": "RUST233-00491",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/verification.json",
+      "bytes": 11611,
+      "sha256": "2996374e9de567ab34acbd693c8bb8390a64e91648b4820a36eb1fdb2a1dbc8e"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/307cacd822665170cb72be41be479611191b981153e8a73681efa84abe6ff086.jsonl",
+      "sha256": "307cacd822665170cb72be41be479611191b981153e8a73681efa84abe6ff086",
+      "bytes": 4258,
+      "count": 23,
+      "files_bytes": 235694
+    },
+    {
+      "run": "local/research/codex/rust-two-lobby-delivery-r1",
+      "path": "local/evidence-manifests/04f686faad4683e54f0033db267e3d2cefa0a7b48a18cfcdd29768814e0a4a9f.jsonl",
+      "sha256": "04f686faad4683e54f0033db267e3d2cefa0a7b48a18cfcdd29768814e0a4a9f",
+      "bytes": 2978,
+      "count": 13,
+      "files_bytes": 1555923
+    },
+    {
+      "run": "local/research/codex/rust-two-lobby-r1",
+      "path": "local/evidence-manifests/17120df2164ce90cd8bbb8cc09da16d02cfa52c200a73c0bb66ff8f8710af535.jsonl",
+      "sha256": "17120df2164ce90cd8bbb8cc09da16d02cfa52c200a73c0bb66ff8f8710af535",
+      "bytes": 53719,
+      "count": 257,
+      "files_bytes": 93737530
+    },
+    {
+      "run": "local/research/codex/rust-two-lobby-r2",
+      "path": "local/evidence-manifests/d999cfab173b05821c44870a7c439918776084a83616ae2a293cb37f10366cdd.jsonl",
+      "sha256": "d999cfab173b05821c44870a7c439918776084a83616ae2a293cb37f10366cdd",
+      "bytes": 38950,
+      "count": 187,
+      "files_bytes": 96272235
     }
   ]
 }

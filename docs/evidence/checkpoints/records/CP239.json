@@ -152,15 +152,6 @@
       "limits": "Fullhistory/exactheadafterappend required/checker notsemanticapproval."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP239-rust-terrain.json",
-      "bytes": 57772,
-      "sha256": "36cc5d7c9ffb78fc85b033f9cfed0bb0f32ef2bd1f478f7621ca7a076e5aab63",
-      "count": 221
-    }
-  ],
   "delta": {
     "added": [
       "Optionalpinnedterrainkernel/currentgeometry/immutablecascade/fullroster158clearance/142hiddenreveal+claimonce/Bombcapacitypickupdesign.",
@@ -290,6 +281,183 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP239boundedterrain/reveal-3basicitemnativeproof/oneepochlimits/knownlife-result-resetnext/CP240auditrequired/PythonWIPpreserved."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST239-00005",
+      "kind": "local",
+      "path": "local/research/codex/cp239-docs-final.txt",
+      "bytes": 175,
+      "sha256": "2afeb7bc089da3caa5d2190a4a55a8230d8acc347612a5062ad57df253c4d0ff"
+    },
+    {
+      "id": "RUST239-00015",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-build-final.txt",
+      "bytes": 166,
+      "sha256": "4fe2cd67cda4952e6f6e440317332398976339fd225ca5cde03b1eba25d325e6"
+    },
+    {
+      "id": "RUST239-00017",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-clippy-final.txt",
+      "bytes": 166,
+      "sha256": "c7a2ab46638d7c95a206f853ad89c152804ca521620e357bde58479d6b57282a"
+    },
+    {
+      "id": "RUST239-00018",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-clippy-r2.txt",
+      "bytes": 927,
+      "sha256": "147dcea38849a98d989734ef33bc91c9abda0b0ee73d290a98864970673bed65"
+    },
+    {
+      "id": "RUST239-00019",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-clippy-r3.txt",
+      "bytes": 1015,
+      "sha256": "80e9767742539f6aba319ab6b631364768edfd5abd167770d76fac5df88600e7"
+    },
+    {
+      "id": "RUST239-00020",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-delivery-r1/manual-acceptance.json",
+      "bytes": 2685,
+      "sha256": "ab917c3543b1df462d4ccf4e71f4df9c6822436b854d608bf51d93ce65d6ddf0"
+    },
+    {
+      "id": "RUST239-00023",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 90821,
+      "sha256": "07188b05b2249d17c2d8cba5e18e5881fa0f63a0d1f48aea8bdf056169e44608"
+    },
+    {
+      "id": "RUST239-00025",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-delivery-r1/snapshot/docs/RESEARCH.md",
+      "bytes": 46335,
+      "sha256": "2a2e286c9d33e6ee3fd27b444b3800f752205443308db4b52c731eac05560902"
+    },
+    {
+      "id": "RUST239-00035",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-delivery-r1/snapshot/rust/crates/kr-service/src/pickups.rs",
+      "bytes": 14683,
+      "sha256": "0ccdf950dc8fe68d1b0a3e4a4ad9d59475693c7936865ea7431642b50bace500"
+    },
+    {
+      "id": "RUST239-00037",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 47069,
+      "sha256": "a156db975b95b6bdb54cb14aa8814db2114b5c8b4fe97b5368bdd1b52409768c"
+    },
+    {
+      "id": "RUST239-00038",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-delivery-r1/snapshot/rust/crates/kr-service/src/terrain.rs",
+      "bytes": 10118,
+      "sha256": "dac0e59fc8617f79c90d316ff3475960e0225f83aae8460534f2ffd6cefb1355"
+    },
+    {
+      "id": "RUST239-00044",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUST239-00052",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-kernel-r1/room/verification.json",
+      "bytes": 5405,
+      "sha256": "c6d738fe10ca4e811122bc1abbd806a4c43fe56f8f087e9b28f826132af6bcf4"
+    },
+    {
+      "id": "RUST239-00202",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-native-r1/native-movement/raw-seal.json",
+      "bytes": 12542,
+      "sha256": "a078c35b2137aa9892c2c49319b0d6a26d169f772b561052657ed8431237ffcb"
+    },
+    {
+      "id": "RUST239-00205",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-native-r1/peer-getter-verification.json",
+      "bytes": 420,
+      "sha256": "b089467b889f3972fe9ed1803da9a79b21e67be4fa0077f2243d1f559a35499d"
+    },
+    {
+      "id": "RUST239-00211",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-native-r1/terrain-verification.json",
+      "bytes": 902925,
+      "sha256": "c4a293d76ed325be00d57fde913e76ca10ed9c75f2a8764e20ed1bcc56d579ec"
+    },
+    {
+      "id": "RUST239-00213",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-native-r1/ui-review.json",
+      "bytes": 1072,
+      "sha256": "fc7f45b44c29a016430baa3e5c13672eedd5dec2cea3c8156acaa77d3eb3d864"
+    },
+    {
+      "id": "RUST239-00214",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-tests-first.txt",
+      "bytes": 2376,
+      "sha256": "57175e568d116cd03ffeee7a33fe9ba193a125390eeea9c9de1b087b0a010331"
+    },
+    {
+      "id": "RUST239-00216",
+      "kind": "local",
+      "path": "local/research/codex/rust-terrain-tests-r3.txt",
+      "bytes": 5882,
+      "sha256": "7b5db933c3e453abaaa1ed7bca9f96040c027fd9ff9392b9058632a6f2a0917f"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/22561b44eaaf55dde4a092017dbcb7a0d45201a2111c3c947b688a19b90b985f.jsonl",
+      "sha256": "22561b44eaaf55dde4a092017dbcb7a0d45201a2111c3c947b688a19b90b985f",
+      "bytes": 4658,
+      "count": 25,
+      "files_bytes": 229361
+    },
+    {
+      "run": "local/research/codex/rust-terrain-delivery-r1",
+      "path": "local/evidence-manifests/4b882fe675d053c324670714db08bcb142a052a23b651ed25b60185fd3c07afa.jsonl",
+      "sha256": "4b882fe675d053c324670714db08bcb142a052a23b651ed25b60185fd3c07afa",
+      "bytes": 3419,
+      "count": 15,
+      "files_bytes": 1667578
+    },
+    {
+      "run": "local/research/codex/rust-terrain-draft",
+      "path": "local/evidence-manifests/c9bd7baa6182341dbf6acf45d5e35fff46f8a8a9f4759ee44ae8ab2a74ea115e.jsonl",
+      "sha256": "c9bd7baa6182341dbf6acf45d5e35fff46f8a8a9f4759ee44ae8ab2a74ea115e",
+      "bytes": 671,
+      "count": 3,
+      "files_bytes": 10051
+    },
+    {
+      "run": "local/research/codex/rust-terrain-kernel-r1",
+      "path": "local/evidence-manifests/047618eeec4055f36793217872479772117692677155fafde798067c010429ad.jsonl",
+      "sha256": "047618eeec4055f36793217872479772117692677155fafde798067c010429ad",
+      "bytes": 1313,
+      "count": 6,
+      "files_bytes": 74110
+    },
+    {
+      "run": "local/research/codex/rust-terrain-native-r1",
+      "path": "local/evidence-manifests/7d0a0b90b7aba026d4e5837bfdca26e54a1c30df636b58891f2198d9cbae1cf1.jsonl",
+      "sha256": "7d0a0b90b7aba026d4e5837bfdca26e54a1c30df636b58891f2198d9cbae1cf1",
+      "bytes": 33198,
+      "count": 153,
+      "files_bytes": 110791477
     }
   ]
 }

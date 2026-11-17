@@ -117,15 +117,6 @@
       "limits": "ActualB17→19/no18, boundexit1; keepplannedfailure, notfullresetacceptance."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP119-rescue-slot-refresh.json",
-      "bytes": 494475,
-      "sha256": "bf146c24a8bb43fe8b7f8cb76e5d0759c79c8d052d07eabd508a6438f68e7c95",
-      "count": 1973
-    }
-  ],
   "delta": {
     "added": [
       "Diagnostic110synthetic2readyrefresh/191tests/nativeguard0/104/Start2.",
@@ -224,6 +215,138 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP119scopedStartfix/R2failure/nextXYinputpeer; CP118PR189issue188closed; nooldrecord/gate/auditreset."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "R-00001",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/R2-contact-observation.png",
+      "bytes": 230004,
+      "sha256": "186312c50bd9780928e884d3bd5f614034b6c750bc7959ed977785d8969bdf43"
+    },
+    {
+      "id": "R-00002",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/actor-fields.json",
+      "bytes": 299936,
+      "sha256": "ab36d08dceed9db1c369547561458350ad54d47da0ddd40f82b0d2e4cd8f0ef7"
+    },
+    {
+      "id": "R-00012",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/cp119-snapshot/docs/PLAN.md",
+      "bytes": 32431,
+      "sha256": "c325797dba04c312b37a6c6acbace13d3706b5d52e6352382e55463a13b36085"
+    },
+    {
+      "id": "R-01848",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/cycles/run.json",
+      "bytes": 151710,
+      "sha256": "8db983a170ce9ca17bd86a1be7b204a9d9926b000a2c51ae8651f1abb9cde532"
+    },
+    {
+      "id": "R-01851",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/cycles/start-guard-A.jsonl",
+      "bytes": 4082,
+      "sha256": "8afb752ebafd3f9e3f2224c1ca1cef8fc2b939f8f9bc4d234acd54873ef0fb22"
+    },
+    {
+      "id": "R-01864",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/fields-check.txt",
+      "bytes": 32,
+      "sha256": "9a61929a950630fe7fa961feb8f68b9eb4109692426085a663493437e2df6a75"
+    },
+    {
+      "id": "R-01876",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/native-153.json",
+      "bytes": 14513,
+      "sha256": "a2e1fe4499db7fa5cee14f459668c087db80e0544ba775101b921d14cc640457"
+    },
+    {
+      "id": "R-01877",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/native-reports-check.txt",
+      "bytes": 29,
+      "sha256": "6a984bbb6f4a3fff7533fb099df5031706c7a4e0f59d8e605b741287e8ae67df"
+    },
+    {
+      "id": "R-01879",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/native153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "R-01916",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/runtime-source/server/probe_service.py",
+      "bytes": 77880,
+      "sha256": "a0c8408757e19f7fc8a68dfe578f1105735e61effc7260baa3af366ad0eb9674"
+    },
+    {
+      "id": "R-01938",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/runtime-source/server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "R-01947",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/server-tests.txt",
+      "bytes": 291,
+      "sha256": "09d483bec50aa52bb61c63c8fb6926c78fd85e547f381b90d870b6e3a0ada3ee"
+    },
+    {
+      "id": "R-01948",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/start2-verification.json",
+      "bytes": 540538,
+      "sha256": "92a7e94d3ea9c96881aab299e36c1212934f658515adfd89d1d6a3f181d34211"
+    },
+    {
+      "id": "R-01968",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_rescue_slot_refresh.py",
+      "bytes": 52236,
+      "sha256": "bcc537f5be86d8fd7f481700c3d1f0580fd4bf82878f04da6755a76e8a16ec9c"
+    },
+    {
+      "id": "R-01970",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/pr189-merged.json",
+      "bytes": 258,
+      "sha256": "791422e64f5a63b6be6f08cdec51bbb562a04309516031cf39fd692bce02330a"
+    },
+    {
+      "id": "R-01971",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/checkpoint-committed-final.txt",
+      "bytes": 25589,
+      "sha256": "0d0eab39c55515d495674d6f8301ed89a36f9ad04b3cc7a89d289f7d98335937"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/rescue-slot-refresh-r1",
+      "path": "local/evidence-manifests/7466050e8d021a7c785dde45cf101f1632e0c5578ecaab3bafb29a91595e48ff.jsonl",
+      "sha256": "7466050e8d021a7c785dde45cf101f1632e0c5578ecaab3bafb29a91595e48ff",
+      "bytes": 392095,
+      "count": 1954,
+      "files_bytes": 45444365
+    },
+    {
+      "run": "local/research/codex/checkpoint-store-r1",
+      "path": "local/evidence-manifests/badcaf191aabaec3471cd9251e9481b3c84cb24173248f980c68e4b8a10a85e9.jsonl",
+      "sha256": "badcaf191aabaec3471cd9251e9481b3c84cb24173248f980c68e4b8a10a85e9",
+      "bytes": 670,
+      "count": 3,
+      "files_bytes": 3924
     }
   ]
 }

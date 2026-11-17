@@ -140,27 +140,6 @@
       "limits": "R1errorinit99 notclientfailure; R2noexacthash notnative-drop. Sourcefailure/raw retained/newoutretry."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP130-udp-membership-R1.json",
-      "bytes": 213968,
-      "sha256": "0093a9d24721759677d820ae519e51e4a1508b3d0de006a2ff821585c91b5dbe",
-      "count": 870
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP130-udp-membership-R2.json",
-      "bytes": 297521,
-      "sha256": "2af53716d16eae3224659f3e002897dfba6d88090cae1617a8a6dddb4f7d31bd",
-      "count": 1209
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP130-udp-membership-R3.json",
-      "bytes": 298678,
-      "sha256": "b478d335a10090bf105765dc808cd1a07927476d7c57220f11f13f41b29a46d8",
-      "count": 1213
-    }
-  ],
   "delta": {
     "added": [
       "Same-runoldpayload afterhostmembershipremove107 thenrejoinStart2 nativeendpointqueue/drain/keydrop/currentpositive evidence."
@@ -241,6 +220,218 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP130exactnativejoins/scope/attemptfailures/provenance/currentgap/issue/catalog synchronized, no oldcomplete/gate changes."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "R1-00818",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r1/observation-check.txt",
+      "bytes": 260,
+      "sha256": "724faa28800ee9bb9dc61e7e0cbb162e4a54d6ae6b97be88c2464ee339ac1988"
+    },
+    {
+      "id": "R1-00823",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r1/raw-seal.json",
+      "bytes": 160230,
+      "sha256": "99478707456e822b818f0b7c08d770626fc31d300e9d1a154c5b7f3b4b5dc774"
+    },
+    {
+      "id": "R1-00824",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r1/raw-udp-preflight.json",
+      "bytes": 1513,
+      "sha256": "19bde701efbc30d22888ee592e18749a917be16be0e56f7e858ee326818d1c46"
+    },
+    {
+      "id": "R1-00867",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r1/udp-observations.json",
+      "bytes": 57912,
+      "sha256": "c9dca32521d0d74335daa3735ed78cecc8d7799d2ae6c64d2a9bc585bc498a67"
+    },
+    {
+      "id": "R2-00001",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r2/analysis-framing-correction.json",
+      "bytes": 486,
+      "sha256": "18f3b49c1d06f88a533cdd9078e85e2b658b30642b4c8d31f370dc4d31d32388"
+    },
+    {
+      "id": "R2-01163",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r2/raw-seal.json",
+      "bytes": 227814,
+      "sha256": "26f7bac69fcefbe8fc089ac97e5a8e5f2b20ae4240a0c09bb12e49f1427ba3a0"
+    },
+    {
+      "id": "R2-01164",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r2/retry-reason.json",
+      "bytes": 503,
+      "sha256": "cfb5c42a5ad64c8d895f80a11339a95a8f085156973a0acd5983241373914b75"
+    },
+    {
+      "id": "R2-01206",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r2/udp-observations.json",
+      "bytes": 136441,
+      "sha256": "2c6d4e3a1a89625c89d8c63fdb1281f14f56d94c764a18b4c94a4affb45a6bba"
+    },
+    {
+      "id": "R3-00003",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "R3-01112",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/cycles/run.json",
+      "bytes": 116778,
+      "sha256": "0b0d48b9db9c612aea62bc254f88276264297c86028b84d7c8455babb2ab7169"
+    },
+    {
+      "id": "R3-01116",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/cycles/udp-B.jsonl",
+      "bytes": 403531,
+      "sha256": "660aaac0a2afba9d88fff234d3c94bba8f19081ef8946f51d4538dc66e56e7e7"
+    },
+    {
+      "id": "R3-01127",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/docs-check.txt",
+      "bytes": 175,
+      "sha256": "def820994c7e87a8200b997a628c48c4862341abdd3774f8ab496a0ff37e2b7e"
+    },
+    {
+      "id": "R3-01134",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/issues-check.txt",
+      "bytes": 130,
+      "sha256": "d5391dbe19d9eb241725b812f09283de851c53062b8920f95d05ef109f338230"
+    },
+    {
+      "id": "R3-01135",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/membership-check.txt",
+      "bytes": 98,
+      "sha256": "7a122a162026e1a00e03ae191a069967391051a8d70c76ded8238fd4c61bd5ce"
+    },
+    {
+      "id": "R3-01136",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/membership-verification.json",
+      "bytes": 96316,
+      "sha256": "b390854d7db745840cedaa5a338ca505347a82ea6ecfa02f55451887586dd52b"
+    },
+    {
+      "id": "R3-01137",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/native-153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "R3-01140",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/native-getter-check.txt",
+      "bytes": 37,
+      "sha256": "1d11278ee1adbecbe0fc9a6e8752ca8204f0014a31b1dba724fe918574efa1bb"
+    },
+    {
+      "id": "R3-01141",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/native-getters.json",
+      "bytes": 663,
+      "sha256": "1c2e040756b557020047e83319983ec453bc97566af418250c4e035765045366"
+    },
+    {
+      "id": "R3-01142",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/native-packet-check.txt",
+      "bytes": 29,
+      "sha256": "e16c751e5f3db25c1f7c4ca9d760a3dcd96d8380fe6fcdd0f0115c4eac413411"
+    },
+    {
+      "id": "R3-01149",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/raw-seal.json",
+      "bytes": 221064,
+      "sha256": "47d9ada044caf6d40caa507b2a8b8d79d4d4c42d3a353687e529bd33aa2f0a5f"
+    },
+    {
+      "id": "R3-01163",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/retry-reason.json",
+      "bytes": 532,
+      "sha256": "caf84b9826a31768a30f8d8eab9607707728e4b08361e544d95d206886ea3358"
+    },
+    {
+      "id": "R3-01166",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/runtime-preflight.json",
+      "bytes": 16270,
+      "sha256": "fe5404b302924a8f4fdd6ecdfc5c47871224dce50b1c874a6fe817bc774a6855"
+    },
+    {
+      "id": "R3-01206",
+      "kind": "local",
+      "path": "local/research/codex/udp-membership-r3/udp-observations.json",
+      "bytes": 361175,
+      "sha256": "9f3a464e7317823a30798a12e2dd495338a85ea79f7bd761df179816f77ecf32"
+    },
+    {
+      "id": "R3-01213",
+      "kind": "local",
+      "path": "local/research/codex/host-battle-exit-control-r1/server-tests.txt",
+      "bytes": 320,
+      "sha256": "6d5c33bc7edcf4050e4882f6ce2251bdd976b63c39e96333d3ca739c84d11ce4"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/udp-membership-r1",
+      "path": "local/evidence-manifests/b69a846ffeeada2141d325059258261d1da80805589d3f92bb33f2f593510dfa.jsonl",
+      "sha256": "b69a846ffeeada2141d325059258261d1da80805589d3f92bb33f2f593510dfa",
+      "bytes": 169362,
+      "count": 864,
+      "files_bytes": 33436580
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/0ff16505aaa3ebdb150cbee690e320b62e4d72249b23ccea89657b84ecbe4474.jsonl",
+      "sha256": "0ff16505aaa3ebdb150cbee690e320b62e4d72249b23ccea89657b84ecbe4474",
+      "bytes": 1166,
+      "count": 6,
+      "files_bytes": 185376
+    },
+    {
+      "run": "local/research/codex/udp-membership-r2",
+      "path": "local/evidence-manifests/6b2950ea06a2dafff81f046d82239d9097694952f5011e105289aa27442f2d46.jsonl",
+      "sha256": "6b2950ea06a2dafff81f046d82239d9097694952f5011e105289aa27442f2d46",
+      "bytes": 235947,
+      "count": 1203,
+      "files_bytes": 46774684
+    },
+    {
+      "run": "local/research/codex/udp-membership-r3",
+      "path": "local/evidence-manifests/124466cead538e7d6ee82ae3caeb409c5074bed2831e3e07a6b4befdcd963d54.jsonl",
+      "sha256": "124466cead538e7d6ee82ae3caeb409c5074bed2831e3e07a6b4befdcd963d54",
+      "bytes": 234217,
+      "count": 1193,
+      "files_bytes": 47085669
+    },
+    {
+      "run": "local/research/codex/host-battle-exit-control-r1",
+      "path": "local/evidence-manifests/8ce21cdb7cc267b0cb5a0b4098d9a7c956bfbc41d0cac57827e1b089f2dd5b34.jsonl",
+      "sha256": "8ce21cdb7cc267b0cb5a0b4098d9a7c956bfbc41d0cac57827e1b089f2dd5b34",
+      "bytes": 500,
+      "count": 2,
+      "files_bytes": 480
     }
   ]
 }

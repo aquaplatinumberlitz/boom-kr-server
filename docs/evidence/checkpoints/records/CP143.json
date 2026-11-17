@@ -137,15 +137,6 @@
       "limits": "Mechanicalconsistencyonly; nosemanticacceptance/gate."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP143-virtual-tcp-guard.json",
-      "bytes": 518818,
-      "sha256": "c45efa498a6528a8ab3a74085b42a274ccd5b0bf2f96da6989d597115a42d2b6",
-      "count": 2068
-    }
-  ],
   "delta": {
     "added": [
       "SelectedTCPguard8same4oldwithsource/nativeupstream/noextraeffects nowinsamevirtualproductionmovement/item/tworesultresetReady run."
@@ -224,6 +215,209 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP143same-runselectedTCPguard/sources/limits/lifecycle/EOFgap/issue14 syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/address-ready-verification.json",
+      "bytes": 4436,
+      "sha256": "752e8ea1bc094882373725ec302d50315137d66a8af0043178ea2a5eaca34595"
+    },
+    {
+      "id": "RUN-00007",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/basic-verification.json",
+      "bytes": 226335,
+      "sha256": "37eaac182c63f3ffe408af64ac73fd464a280a3edbbd9de1c46e031c375d69a7"
+    },
+    {
+      "id": "RUN-00022",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/crc-check.txt",
+      "bytes": 33,
+      "sha256": "51d64edb178a22d5ba85c0b8592dfc2b8cd9785ab0df5d1ef1c22d04b0b07c4f"
+    },
+    {
+      "id": "RUN-01893",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/cycles/tcp-proxy-ready.json",
+      "bytes": 151,
+      "sha256": "1d0a37768526bdd89ec68c751352d5271f3af23b04d828e3334f9f98ad2dc77e"
+    },
+    {
+      "id": "RUN-01894",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/cycles/tcp-proxy.json",
+      "bytes": 216839,
+      "sha256": "f3e586b51af2561f8da9157900f5d1b5729b8637509dc63499c0ce076550a51f"
+    },
+    {
+      "id": "RUN-01907",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "c09aaf4c3d363fc1da07545d0ef987988993800549bf5ed2edb2dabf68159e9b"
+    },
+    {
+      "id": "RUN-01909",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/endpoint-peer-verification.json",
+      "bytes": 199892,
+      "sha256": "44d2b1fa5aab25e44af21be706a3706825448c011949e7963bd1c2f3588f854c"
+    },
+    {
+      "id": "RUN-01910",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/fields-check.txt",
+      "bytes": 33,
+      "sha256": "23751176efdf48c7d646380233ca2aa84305f7ddff369262d4bfa6855cf38d45"
+    },
+    {
+      "id": "RUN-01912",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/flags-check.txt",
+      "bytes": 54,
+      "sha256": "5b68529c65f7ed72126b0ff3ac5d3abad3848404f844e2330874da205e7c83b3"
+    },
+    {
+      "id": "RUN-01926",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/guard-check.txt",
+      "bytes": 1185,
+      "sha256": "b89bc87377aab77f1c804296a6cb5791f79e47f0af9b3356c4dbafcf64edbf1a"
+    },
+    {
+      "id": "RUN-01927",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/guard-integration-verification.json",
+      "bytes": 10522,
+      "sha256": "a55c55cf221983498c3a3281a7c9a4f7385a8c487a2cd14f69506eab5065a3dd"
+    },
+    {
+      "id": "RUN-01929",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "2fe5a9e72fe136c58456c3decd108d4cdbab2b3470e1c0c05194f6d453944d76"
+    },
+    {
+      "id": "RUN-01935",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/movement-wire-verification.json",
+      "bytes": 42524,
+      "sha256": "0a2e41720a39efe627c3dff0e4c00c5e2ff8c8815ad94e8686e77f5399453697"
+    },
+    {
+      "id": "RUN-01945",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/peer-getter-check.txt",
+      "bytes": 38,
+      "sha256": "f73d03d7d9b803978eda4cbd2d5a85be67b086ea64eaa2d4f4cdbdf1f63c7357"
+    },
+    {
+      "id": "RUN-01948",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/pickup-verification.json",
+      "bytes": 2988,
+      "sha256": "c5e1d313837ea95da9c62422444f8fd91bcf92e1867914dd5a9e5c037d4621a8"
+    },
+    {
+      "id": "RUN-01950",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/raw-seal.json",
+      "bytes": 381444,
+      "sha256": "b86407a14aeb973abb6de21e3b9fcb05cdb8264068cc010115861bc1d281e5c8"
+    },
+    {
+      "id": "RUN-01953",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/reports-check.txt",
+      "bytes": 29,
+      "sha256": "90f5c7a55f0183f74893184cdcff8ba871caa43410fd8ec7533bd6bec0bca180"
+    },
+    {
+      "id": "RUN-02002",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/reuse-question.json",
+      "bytes": 3945,
+      "sha256": "07ff905fde1c130bf7594a2a932f18ecb1259b4120e056598d2d3bf6eee2c010"
+    },
+    {
+      "id": "RUN-02046",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/tcp-check.txt",
+      "bytes": 504,
+      "sha256": "cb6970e4b0b09e799dc4c3a996405a73e2e288ff5be4986189050e53d16b0be3"
+    },
+    {
+      "id": "RUN-02047",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/tcp-replays.json",
+      "bytes": 234099,
+      "sha256": "610ace95d00db19a35b43368bc4953e7be9b27810c1883b0721ed091c3f849eb"
+    },
+    {
+      "id": "RUN-02049",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/tcp_replay.py",
+      "bytes": 6296,
+      "sha256": "87042311516ec8ca1d7d904aae6bb58d3f66aedfe71496b5de51a5d698b888c5"
+    },
+    {
+      "id": "RUN-02063",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/visual-review.json",
+      "bytes": 1195,
+      "sha256": "426f9c49626b5f8a5b3343d5ead29032c4537e058118f933164b935ecdb5854f"
+    },
+    {
+      "id": "RUN-02068",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/server-tests.txt",
+      "bytes": 331,
+      "sha256": "f68f879ad1b4c2f0d7adb4e0654a2b23d9b55110f5c2b4631e4f84c77cadbbeb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/virtual-tcp-guard-r1",
+      "path": "local/evidence-manifests/372e1640ec87fc5142fd3238fee9cc3230c31c2ab16d77e67dca837e9b218aad.jsonl",
+      "sha256": "372e1640ec87fc5142fd3238fee9cc3230c31c2ab16d77e67dca837e9b218aad",
+      "bytes": 409808,
+      "count": 2039,
+      "files_bytes": 56949871
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/5c3fb4294184d641bbf6c37a8414c6cd2bc675e173f4b7625f1a287a600cfa43.jsonl",
+      "sha256": "5c3fb4294184d641bbf6c37a8414c6cd2bc675e173f4b7625f1a287a600cfa43",
+      "bytes": 430,
+      "count": 2,
+      "files_bytes": 71091
+    },
+    {
+      "run": "local/research/codex/virtual-production-movement-r2",
+      "path": "local/evidence-manifests/5f7b448549e47343de6085edce941fa64384e880f19282f71b2a495aac6269c8.jsonl",
+      "sha256": "5f7b448549e47343de6085edce941fa64384e880f19282f71b2a495aac6269c8",
+      "bytes": 493,
+      "count": 2,
+      "files_bytes": 418
     }
   ]
 }

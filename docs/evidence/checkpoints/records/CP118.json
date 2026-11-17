@@ -127,27 +127,6 @@
       "limits": "HistoricalproofbeforeCP118append, finalnewrecord/externalmanifestvalidationrunafterappend. Noautoacceptance."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/rescue-start-slot-r1.json",
-      "bytes": 426023,
-      "sha256": "3f7f0d9e70d30a09f6483f4bcc8ab9398a00f77c5e79e912446229a124caa3f1",
-      "count": 1688
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/rescue-start-slot-r2.json",
-      "bytes": 428817,
-      "sha256": "8c3d5bb258936b0cd912aed576cff2a4c7ec1841014553d12ff029183b0cad75",
-      "count": 1699
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP118-checkpoint-store-migration.json",
-      "bytes": 11778,
-      "sha256": "0800e6d41d092fffc63f0326ad573e64ae82febfac78e73889574931c01bcf48",
-      "count": 46
-    }
-  ],
   "delta": {
     "added": [
       "Smallv2index/perCPimmutablefile/sharedselectiveCLI/loader andpinnedexternalrunbatchmanifestsfornewcheckpoints.",
@@ -255,6 +234,218 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP118storagev2/schema/CLI/migrationvalidation/evidence/auditpreservation; savedactualslot2blocker/currentCP117merge, no gates/oldrecordrewrite."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SLOT1-01683",
+      "kind": "local",
+      "path": "local/research/codex/rescue-start-slot-r1/quota-limitation.json",
+      "bytes": 342044,
+      "sha256": "5d3934a5e3d891a0a42b5fab005782dc606c645ffd044cc2d9cd5cb21379aa99"
+    },
+    {
+      "id": "SLOT2-01683",
+      "kind": "local",
+      "path": "local/research/codex/rescue-start-slot-r2/cycles/run.json",
+      "bytes": 121178,
+      "sha256": "cfbef53a37a9ff82e9759e8e4d2e08a89dfb7771bac0f3a9e3b2c49c77cb54ed"
+    },
+    {
+      "id": "SLOT2-01686",
+      "kind": "local",
+      "path": "local/research/codex/rescue-start-slot-r2/cycles/start-guard-A.jsonl",
+      "bytes": 6685,
+      "sha256": "18877d2a4162dfd2dec2467bb43d1edfb7ce95d5f7b993e2af735499d8571112"
+    },
+    {
+      "id": "SLOT2-01694",
+      "kind": "local",
+      "path": "local/research/codex/rescue-start-slot-r2/slot-verification.json",
+      "bytes": 344596,
+      "sha256": "c68b053e1696b40f397a38319e956aab3198965f84341f8c57cad5642562e14e"
+    },
+    {
+      "id": "MIG-00002",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "MIG-00004",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/baseline-v2-check.txt",
+      "bytes": 25480,
+      "sha256": "eed589bdc5307f9db28144424920b01c6857dc2a3cf0e8edea160c6adbfbcade"
+    },
+    {
+      "id": "MIG-00005",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/baseline.json",
+      "bytes": 251,
+      "sha256": "25ba91335d6ffc8fc2a304155085e32beabf020d71d2e8ac38dede7162bfa932"
+    },
+    {
+      "id": "MIG-00006",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cli-evidence-page.json",
+      "bytes": 882,
+      "sha256": "4b94a9729de233eae8d5c2243e65271650af0ebe1ee83e8b0a63de9b45a7e942"
+    },
+    {
+      "id": "MIG-00008",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cli-evidence-verify.json",
+      "bytes": 278,
+      "sha256": "ec0d9dbfd2020209b96bc05434527abc8ee4f20ffd76a2d4e06683a01f4afbbd"
+    },
+    {
+      "id": "MIG-00009",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cli-latest.json",
+      "bytes": 282,
+      "sha256": "9bbb09ce82ab5c92476deb039cc306349a05e2c5e32bb2492e9fcde973558fd8"
+    },
+    {
+      "id": "MIG-00010",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cli-show-CP117.json",
+      "bytes": 13252,
+      "sha256": "b7a83f9d79633ddccdd09fdc208faedca47cf38efad746d618d10727901c53ee"
+    },
+    {
+      "id": "MIG-00018",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/cp118-snapshot/docs/evidence/checkpoints/migration-v2.json",
+      "bytes": 56378,
+      "sha256": "01b22c9bc6a6751e8f5dbdd109e4463bb23bb224e6d82c5b9458ffdd205284f1"
+    },
+    {
+      "id": "MIG-00023",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "4a97774d2876b43692dcc02c6647c6323781e8753be15458b4a773b31beddd20"
+    },
+    {
+      "id": "MIG-00027",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/issues-live-check.txt",
+      "bytes": 130,
+      "sha256": "f3d139ad71b09994e452d685e35c99a5f924daa61926554a26c16d6b231a5100"
+    },
+    {
+      "id": "MIG-00029",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/migration-rerun-check.txt",
+      "bytes": 384,
+      "sha256": "2c57a92cff975e934957fdefed97ef9c2e442400dfe820b47b3b58915db8c3a5"
+    },
+    {
+      "id": "MIG-00030",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/migration-verification-check.txt",
+      "bytes": 97,
+      "sha256": "fddbabc026a923aac19e4c0e062e1e0d4ced064e96b81daa65e29ac2253a70f7"
+    },
+    {
+      "id": "MIG-00031",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/migration-verification.json",
+      "bytes": 13067,
+      "sha256": "cd28486801f8b372fd96da23a2429d83045bfa20c1f67d0542d2e0792e24c98a"
+    },
+    {
+      "id": "MIG-00032",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/storage-tests.txt",
+      "bytes": 127,
+      "sha256": "99f6cf37f3195c2529b5c5edd794df77252188a784fa3ec0c987607803252560"
+    },
+    {
+      "id": "MIG-00033",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/survey.json",
+      "bytes": 3050,
+      "sha256": "525dc46ea99b84b3c12de94fabf67d0847fee476c963e2a229608ce519f83bec"
+    },
+    {
+      "id": "MIG-00034",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/tool-tests.txt",
+      "bytes": 150,
+      "sha256": "db12e5932c6eb2fca2317fbd3e906009cdcc69f49511c91a5599ae4357762751"
+    },
+    {
+      "id": "MIG-00036",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "MIG-00037",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "MIG-00039",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/check_checkpoints.py",
+      "bytes": 26587,
+      "sha256": "bc50ad948cf74715d19e0d4cf2a70a4874ddc208eaa4b3561d5ac095b081b81c"
+    },
+    {
+      "id": "MIG-00040",
+      "kind": "local",
+      "path": "local/research/codex/checkpoint-store-r1/source-snapshot/tools/test_checkpoint_store.py",
+      "bytes": 12902,
+      "sha256": "3f8041826a354c9032f58cd58050d688f4a0ce1ba615712de1fb47858f2c5a0e"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/rescue-start-slot-r1",
+      "path": "local/evidence-manifests/e9c82569e8176eb0b8c455bb877ddce2e66b2ecf652a10eae8b52bda724dcebc.jsonl",
+      "sha256": "e9c82569e8176eb0b8c455bb877ddce2e66b2ecf652a10eae8b52bda724dcebc",
+      "bytes": 341350,
+      "count": 1687,
+      "files_bytes": 50789818
+    },
+    {
+      "run": "local/research/codex/rescue-start-slot-r2",
+      "path": "local/evidence-manifests/d747b3d4df2fff06df8b3d18007ecb8dc5c4f9b7de5a0a2f1db6c2c0a59ae95f.jsonl",
+      "sha256": "d747b3d4df2fff06df8b3d18007ecb8dc5c4f9b7de5a0a2f1db6c2c0a59ae95f",
+      "bytes": 343196,
+      "count": 1696,
+      "files_bytes": 51194567
+    },
+    {
+      "run": "local/research/codex/checkpoint-store-r1",
+      "path": "local/evidence-manifests/7d82a38c98986ed948fde46dfe6e045cf16753feaeadbe1bd7cbc790b83398bb.jsonl",
+      "sha256": "7d82a38c98986ed948fde46dfe6e045cf16753feaeadbe1bd7cbc790b83398bb",
+      "bytes": 4646,
+      "count": 22,
+      "files_bytes": 48483610
+    },
+    {
+      "run": "local/research/codex/rescue-start-guard-r1",
+      "path": "local/evidence-manifests/430cd10161497d9cbe9315c9857a40236eabe341e7e3942b570b306d21196099.jsonl",
+      "sha256": "430cd10161497d9cbe9315c9857a40236eabe341e7e3942b570b306d21196099",
+      "bytes": 472,
+      "count": 2,
+      "files_bytes": 510
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/0df7f75d141832aa4a4790436fe3e64e3b53ef0023dc08d6656741d3a0fc5f71.jsonl",
+      "sha256": "0df7f75d141832aa4a4790436fe3e64e3b53ef0023dc08d6656741d3a0fc5f71",
+      "bytes": 441,
+      "count": 2,
+      "files_bytes": 104460
     }
   ]
 }

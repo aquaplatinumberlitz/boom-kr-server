@@ -169,15 +169,6 @@
       "limits": "Modified KR00967 Wine copies/private virtual namespaces/local fixture identities; default unchanged; original client/DB/assets untouched. Fresh C ID3 is not B account resume. Two normal AB cycles, third BEOF forfeit, fourth AC Start/clock are separate. R2 preReady color failure and R3startup partial retained; focusedprestart110control has changedentry/profile, notglobalone-delta runtime. No AC bomb/outcome/reset, fullmatch/K5/K6a/Windows/LAN/Internet/8clients/gate. Native initialCslot1capacity2 differs from Start-only profile1; maximum policy not inferred as native. Endpoint hash/cleanup checks not continuous filesystem monitoring; unused preparation script recovery incident disclosed with exact bytes/report."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP175-A-survivor-admission.json",
-      "bytes": 1692768,
-      "sha256": "ab93a0d4f4d47d73576c7ad89bcde5f76aff42bf14efc5a9120d01a89cf0ce40",
-      "count": 6702
-    }
-  ],
   "delta": {
     "added": [
       "Actual negativeC admission then optin Cslot1/ID3/nativeJoinReadyAStart4/clock.",
@@ -280,6 +271,227 @@
       "path": "docs/evidence/checkpoints/README.md",
       "state": "unchanged",
       "reason": "Workflow unchanged; counter/audit preserved."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00016",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-control-r1/raw-seal.json",
+      "bytes": 145511,
+      "sha256": "170f96addaa1c4948e378c5bbcc645655bd28315514218554a819c8c4f77a2fe"
+    },
+    {
+      "id": "RUN-00788",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-control-r2/admission-control-verification.json",
+      "bytes": 2188,
+      "sha256": "b8b86da3eca2a28f922b419c4413f2a4777d11ae39963a3471f98f69e0751066"
+    },
+    {
+      "id": "RUN-00809",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-control-r2/host-eof-verification.json",
+      "bytes": 1909,
+      "sha256": "b824df1e26c2c1a9aeef196d12b85d8cc97a174cf8a5a2ec9da0b56304a72588"
+    },
+    {
+      "id": "RUN-02406",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-positive-r1/raw-seal.json",
+      "bytes": 2119,
+      "sha256": "35241e319b6f02f03b9bd240d17c170869f54ecd94615c6b48194987613b06e3"
+    },
+    {
+      "id": "RUN-02410",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-positive-r1/source-recovery-report.json",
+      "bytes": 1848,
+      "sha256": "be59bd7fefdb41d831380c7792c02bf35ec7dff76439eed5f2c5f688329ca3b0"
+    },
+    {
+      "id": "RUN-02477",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-positive-r2/C-capacity-gap.json",
+      "bytes": 5223,
+      "sha256": "e37ef3f3ef2f62f5735ab1c6249bd822556b0021ed951bc797bf7f992b6794d7"
+    },
+    {
+      "id": "RUN-02479",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-positive-r2/admission-positive-verification.json",
+      "bytes": 2667,
+      "sha256": "2bb1de0da8258f072010a022803df9a5039bcc3ebcaa6f7066828bfa6d263e2d"
+    },
+    {
+      "id": "RUN-02484",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-positive-r2/basic-cycle-verification.json",
+      "bytes": 2404,
+      "sha256": "941d875b5e93c26e7bd690a6527f94e7ab795f231f09dc009c765c2032ede797"
+    },
+    {
+      "id": "RUN-02490",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-positive-r2/endpoint-peer-verification.json",
+      "bytes": 205040,
+      "sha256": "f96ddfbd0422cb7b4dcab2789326ebd30339003d5183fc343145b1da29cd9f16"
+    },
+    {
+      "id": "RUN-02523",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-positive-r2/server-279-tests.txt",
+      "bytes": 379,
+      "sha256": "0339fd2758d15d425915932091b25479649e16904218dc817ccfc4d8ab377354"
+    },
+    {
+      "id": "RUN-02534",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-positive-r2/visual-review.json",
+      "bytes": 2070,
+      "sha256": "5166f15b9598ba933bb76747da25268b79f4f6f8af5a29a00dab4d18f20e4017"
+    },
+    {
+      "id": "RUN-05989",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-prestart-r2/actor-fields.json",
+      "bytes": 24819,
+      "sha256": "d365523eeee3f86829956dd8e9a5e187a94a0d038eeeaeffd49364bcf6b3f1bf"
+    },
+    {
+      "id": "RUN-05990",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-prestart-r2/admission-positive-verification.json",
+      "bytes": 2445,
+      "sha256": "e5fe65131dcb51661b8793adc3950ce82048472f2fcc5f4f9843b80a50b172c1"
+    },
+    {
+      "id": "RUN-06008",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-prestart-r2/preReady-slot-verification.json",
+      "bytes": 869,
+      "sha256": "1421e102cff8ddfce97ad4de6d38683c170733e048cd85684ad5f39aa21e897e"
+    },
+    {
+      "id": "RUN-06010",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-prestart-r2/raw-seal.json",
+      "bytes": 119422,
+      "sha256": "8fd4dcba309c6ce3010da3f8b2267ca9aae19fe03a849718c3dfe7488e7302b2"
+    },
+    {
+      "id": "RUN-06016",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-prestart-r2/visual-review.json",
+      "bytes": 2032,
+      "sha256": "f8b206444c4d09241cc110499ccec3ce04f0b5e1b27a7098b6f2039648e2b5a1"
+    },
+    {
+      "id": "RUN-06618",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-prestart-r2/runtime-source/server/probe_service.py",
+      "bytes": 105347,
+      "sha256": "aed808d2d22c8d39b14aa145f1a1219d6a6d66c00cf84b4bd1e11b39524d6520"
+    },
+    {
+      "id": "RUN-06619",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-prestart-r2/runtime-source/server/replacement_slots.py",
+      "bytes": 2346,
+      "sha256": "d8d113cf2138decd0ed1eb816c382a5556ede63df8f95fc22796e7aa5ca6e248"
+    },
+    {
+      "id": "RUN-06693",
+      "kind": "local",
+      "path": "local/research/codex/cp174-pr-merged.json",
+      "bytes": 292,
+      "sha256": "dbf6d3c293c4dd883803e73fcf06bc115e410a491dd77556ceab120fa285c348"
+    },
+    {
+      "id": "RUN-06694",
+      "kind": "local",
+      "path": "local/research/codex/cp175-checkpoint-tests.txt",
+      "bytes": 133,
+      "sha256": "276b5bd5be1629d814f37056052af3f3577c8cd29a6a36c7a8f7fc8eae343cc7"
+    },
+    {
+      "id": "RUN-06697",
+      "kind": "local",
+      "path": "local/research/codex/cp175-docs-check.txt",
+      "bytes": 175,
+      "sha256": "6d1bf57abcc5679d4de9baa3bc93735804664ef6bda8c725d6c989f7fb31f3af"
+    },
+    {
+      "id": "RUN-06698",
+      "kind": "local",
+      "path": "local/research/codex/cp175-issues-check.txt",
+      "bytes": 130,
+      "sha256": "1cda9baf4dd7dc249f6368466e1e4db5d5e956f3601ce27c4d31e80f495d9930"
+    },
+    {
+      "id": "RUN-06702",
+      "kind": "local",
+      "path": "local/research/codex/A-survivor-prestart-r1/preparation-error.json",
+      "bytes": 246,
+      "sha256": "09cd7391fc78cb3603384b96fbda6ae4682b9c99c3d560e4b4db5056d5bdbf1b"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/A-survivor-control-r1",
+      "path": "local/evidence-manifests/26d8557e2f08c8285dbd516451ce1b5bb954c1a2f271d796005e3aa59bb5ac2d.jsonl",
+      "sha256": "26d8557e2f08c8285dbd516451ce1b5bb954c1a2f271d796005e3aa59bb5ac2d",
+      "bytes": 158213,
+      "count": 784,
+      "files_bytes": 131282180
+    },
+    {
+      "run": "local/research/codex/A-survivor-control-r2",
+      "path": "local/evidence-manifests/8d74926b39a6b85ca3c0de05b7a229cf53e3bdbc25d9ba896c79d63a25bfa230.jsonl",
+      "sha256": "8d74926b39a6b85ca3c0de05b7a229cf53e3bdbc25d9ba896c79d63a25bfa230",
+      "bytes": 324067,
+      "count": 1602,
+      "files_bytes": 168531308
+    },
+    {
+      "run": "local/research/codex/A-survivor-positive-r1",
+      "path": "local/evidence-manifests/ad77599f11defde0f81499829606244203b4678a501ea36bc6cf36cebd96dab7.jsonl",
+      "sha256": "ad77599f11defde0f81499829606244203b4678a501ea36bc6cf36cebd96dab7",
+      "bytes": 17899,
+      "count": 84,
+      "files_bytes": 96279154
+    },
+    {
+      "run": "local/research/codex/A-survivor-positive-r2",
+      "path": "local/evidence-manifests/c19a693e6e1a39209c9fbfd615bb5a34054630b0d5d0f7e57da7028191b840c3.jsonl",
+      "sha256": "c19a693e6e1a39209c9fbfd615bb5a34054630b0d5d0f7e57da7028191b840c3",
+      "bytes": 372090,
+      "count": 1833,
+      "files_bytes": 174472770
+    },
+    {
+      "run": "local/research/codex/A-survivor-positive-r3",
+      "path": "local/evidence-manifests/bfab83e547c109bafd450ad6c48b02a144eb0b8cdea30ccdc511dd5a14773722.jsonl",
+      "sha256": "bfab83e547c109bafd450ad6c48b02a144eb0b8cdea30ccdc511dd5a14773722",
+      "bytes": 339213,
+      "count": 1671,
+      "files_bytes": 187192140
+    },
+    {
+      "run": "local/research/codex/A-survivor-prestart-r2",
+      "path": "local/evidence-manifests/1a28ff00d281916d6566c91fa20394aa570607cbd9432e8ed65dd5ce4798c28e.jsonl",
+      "sha256": "1a28ff00d281916d6566c91fa20394aa570607cbd9432e8ed65dd5ce4798c28e",
+      "bytes": 136246,
+      "count": 673,
+      "files_bytes": 116618882
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b3071e0cfb7e5a6ceb05a53110addd1526277ef5a0783295b68ce2f680627aec.jsonl",
+      "sha256": "b3071e0cfb7e5a6ceb05a53110addd1526277ef5a0783295b68ce2f680627aec",
+      "bytes": 5897,
+      "count": 32,
+      "files_bytes": 844656
     }
   ]
 }

@@ -148,15 +148,6 @@
       "limits": "Next perPLAN; do not promote privateproof to fullroom/service acceptance."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP229-room-membership-registry.json",
-      "bytes": 114431,
-      "sha256": "3b1d403cc53a0e4e8ca32cf2224e2f659fc8dfcbf17b7b9840e1758ab7f757d2",
-      "count": 444
-    }
-  ],
   "delta": {
     "added": [
       "Private room/account/visit model and19+7policy scenarios.",
@@ -273,6 +264,141 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP229 private registry/model/nativeBack-roommove/limits/corrections/343raw/PLANsharedcleanup/catalog/issues/AUD066next232 synced beforecomplete; oldcomplete immutable."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ROOM229-00009",
+      "kind": "local",
+      "path": "local/research/codex/cp229-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "ROOM229-00010",
+      "kind": "local",
+      "path": "local/research/codex/cp229-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "61093d4e403dcaf6a9659790fd27e7eda5ba253a9f3b397ddd0925ca6b3586d7"
+    },
+    {
+      "id": "ROOM229-00027",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-delivery-r1/cp229-snapshot/docs/RESEARCH.md",
+      "bytes": 44367,
+      "sha256": "a1d753f75a5dd0dcd80b28f0bd466d0928877f558fb3632be57353ac57c5eb77"
+    },
+    {
+      "id": "ROOM229-00033",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-delivery-r1/manual-review.json",
+      "bytes": 3260,
+      "sha256": "ddf609098fd5e0c19c21d926aaf4cf06fb64fd7db1238ce0f3f8fe22442e208c"
+    },
+    {
+      "id": "ROOM229-00047",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-r1/leave-rejoin/raw-seal.json",
+      "bytes": 1969,
+      "sha256": "9f20f40c530818469d3c912e406b08ebaba63458ee5ec8965c17839338198686"
+    },
+    {
+      "id": "ROOM229-00050",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-r1/model-verification.json",
+      "bytes": 4116,
+      "sha256": "cf4d672cdb41f4395fda1e397856e8628650d9b56847e706538eda1458723bfc"
+    },
+    {
+      "id": "ROOM229-00054",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-r1/registry.py",
+      "bytes": 5483,
+      "sha256": "58efb4a0a2f68c51a26c12088999d347741aed46eb07e9d43f9e80e1d1fe03a2"
+    },
+    {
+      "id": "ROOM229-00059",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-r2/capture-ui-verification.json",
+      "bytes": 5593,
+      "sha256": "198b4e67bff1984727fc07908a8af5acc1bc36243fabcd8a4509b9c8fb238604"
+    },
+    {
+      "id": "ROOM229-00239",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-r2/rea-pcap-evidence.json",
+      "bytes": 795,
+      "sha256": "0ef53b7ed2a163bcda167385350e7db0cf9c4b49a3d79b050bb4382d62862c52"
+    },
+    {
+      "id": "ROOM229-00244",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-r2/verification.json",
+      "bytes": 16938,
+      "sha256": "497eafee7376a6fdf71eafce2d7c2e8cc2e964bac874f71ca7d8a1589c1981f5"
+    },
+    {
+      "id": "ROOM229-00246",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-r3/capture-ui-verification.json",
+      "bytes": 6011,
+      "sha256": "846eb593ee01af88b64a62d60e0a048b521cd58748109ef7809442eea90a071f"
+    },
+    {
+      "id": "ROOM229-00424",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-r3/move-model-verification.json",
+      "bytes": 480,
+      "sha256": "56cf54d5983a6acf93940c1297d04462686e1644aa922cad6094ed30b1aec5c8"
+    },
+    {
+      "id": "ROOM229-00432",
+      "kind": "local",
+      "path": "local/research/codex/room-registry-r3/verification.json",
+      "bytes": 11998,
+      "sha256": "13d29207dae7be0a52d23a1f8c2d33dff8eb2bb81a475b7b0c7304b972c8e5ec"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/30eb9df9f6dae17c2a7c693120fea821a7eb579cd20597d921b4763bd182a9a2.jsonl",
+      "sha256": "30eb9df9f6dae17c2a7c693120fea821a7eb579cd20597d921b4763bd182a9a2",
+      "bytes": 6475,
+      "count": 35,
+      "files_bytes": 7209425
+    },
+    {
+      "run": "local/research/codex/room-registry-delivery-r1",
+      "path": "local/evidence-manifests/faabbe01443773c4d1323859fa183dcc2b3cb42efa561c9ed58ac6c13d8426df.jsonl",
+      "sha256": "faabbe01443773c4d1323859fa183dcc2b3cb42efa561c9ed58ac6c13d8426df",
+      "bytes": 2144,
+      "count": 9,
+      "files_bytes": 1574785
+    },
+    {
+      "run": "local/research/codex/room-registry-r1",
+      "path": "local/evidence-manifests/69b53f9e7be8b650b0034b74870481e9aa30f4ec32ce93171a3f682a55cb9a87.jsonl",
+      "sha256": "69b53f9e7be8b650b0034b74870481e9aa30f4ec32ce93171a3f682a55cb9a87",
+      "bytes": 4046,
+      "count": 20,
+      "files_bytes": 146640
+    },
+    {
+      "run": "local/research/codex/room-registry-r2",
+      "path": "local/evidence-manifests/58a7de836aaa16c281784b2104f371f53c7957bd8b5585888a62d5ae0e661477.jsonl",
+      "sha256": "58a7de836aaa16c281784b2104f371f53c7957bd8b5585888a62d5ae0e661477",
+      "bytes": 38552,
+      "count": 183,
+      "files_bytes": 8333455
+    },
+    {
+      "run": "local/research/codex/room-registry-r3",
+      "path": "local/evidence-manifests/fe8c6bb5850c741d986d63508ed52e6311952a83e7ac5bb07e50ed2c566972b2.jsonl",
+      "sha256": "fe8c6bb5850c741d986d63508ed52e6311952a83e7ac5bb07e50ed2c566972b2",
+      "bytes": 38783,
+      "count": 184,
+      "files_bytes": 8294408
     }
   ]
 }

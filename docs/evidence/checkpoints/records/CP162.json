@@ -165,15 +165,6 @@
       "limits": "Mechanicalchecks notsemantics/gates; fullcheckpointsrequire-local/history beforecommit. REA450stimeoutdoesnotnegateindependentnativeproof."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP162-team-mode.json",
-      "bytes": 902594,
-      "sha256": "a935e6401539ea164c9a377c6609cda1f0170981ca7ba2847196601876d9d79d",
-      "count": 3605
-    }
-  ],
   "delta": {
     "added": [
       "ActualFree0/Manner1→KR81/native+9C mapping andACK86/87/reset180 overwrite provenance.",
@@ -272,6 +263,360 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP162actualmodeinput/ACKreset/failedR3/positiveR4/presetlimits/PR232merge/nextbalanced8 syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00420",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-free-r1/team-mode-verification.json",
+      "bytes": 3548,
+      "sha256": "b43ea71246ba5458df67466a3c8b7a2bfd2cc86552c12cdb3b35150d8ac6d3e0"
+    },
+    {
+      "id": "RUN-00757",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-manner-r2/cycles/client.log",
+      "bytes": 21483,
+      "sha256": "708e90a35f1a267fcc427c2c3c959e412e627858fdd6fb1764bb0d83b71c4d84"
+    },
+    {
+      "id": "RUN-00791",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-manner-r2/rea-timeout.json",
+      "bytes": 430,
+      "sha256": "379e2879ff942bcba1f35fe0d33eb0ddc1603d32d42f34dfc1d3774fba5dd148"
+    },
+    {
+      "id": "RUN-00839",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-manner-r2/team-mode-verification.json",
+      "bytes": 3706,
+      "sha256": "f9cc9408385e80eac094c6ec5a5c544f3572105bf42e8fe2bbed0a62267f2c9f"
+    },
+    {
+      "id": "RUN-02000",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-integrated-r3/cycles/client-B.log",
+      "bytes": 364705,
+      "sha256": "10914c1b98add1f1667982d5309174039274c9a04b676edc0ee021aaf94b49d3"
+    },
+    {
+      "id": "RUN-02001",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-integrated-r3/cycles/client.log",
+      "bytes": 343868,
+      "sha256": "dd0adba706cbd019ebbe405a10a35a4b274cb5141a6cca803e21eb14c05700fc"
+    },
+    {
+      "id": "RUN-02159",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-integrated-r3/team-mode-verification.json",
+      "bytes": 7113,
+      "sha256": "9cc53915a872f2eba4a5bdbd12029dba44989cbcffee0788ec34db9c467b6187"
+    },
+    {
+      "id": "RUN-02183",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/actor-fields.json",
+      "bytes": 1815731,
+      "sha256": "ef20048533f793da0f44648f4f2ac315ce7fab3b3838c3a202d2867ef5456b16"
+    },
+    {
+      "id": "RUN-02185",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/actual81-native-verification.json",
+      "bytes": 1709,
+      "sha256": "ebb396bfef8602abdf8e833e42ce305a733e88b6e26829c65adb0400b662e558"
+    },
+    {
+      "id": "RUN-02186",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/actual91-native-verification.json",
+      "bytes": 3707,
+      "sha256": "491f0beb3e7dd03aab6086bd2c2e9e0fc9f177668b60801247489f55c08d42ca"
+    },
+    {
+      "id": "RUN-02187",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/analysis-corrections.json",
+      "bytes": 797,
+      "sha256": "a3d77bb3a1740ae675ea3a3e8f37429d023ae5c24817c3f45463f3545f15d8f3"
+    },
+    {
+      "id": "RUN-02192",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-02193",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/capture-claim-verification.json",
+      "bytes": 2706,
+      "sha256": "0224c7b38a019b3fbbe6d08a7d0ab7aeec6c9952064882a5786889df4cafc1e6"
+    },
+    {
+      "id": "RUN-02206",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/cycle-boundary-verification.json",
+      "bytes": 2518,
+      "sha256": "d9c8e7ff89d47dad3a8358b230cf590715ce8ce2d4ffcd97788c59c84d8c1422"
+    },
+    {
+      "id": "RUN-03423",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/docs-check.txt",
+      "bytes": 175,
+      "sha256": "9f174997b2a1b366f65612c5d904b3afb4271b8c18624fd2258f5b98487db6cc"
+    },
+    {
+      "id": "RUN-03424",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/endpoint-peer-verification.json",
+      "bytes": 199272,
+      "sha256": "b173c00b9501d085127a4f2b754707108e2efa464dd1786f4400a013b266f0a9"
+    },
+    {
+      "id": "RUN-03425",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/export-tests.txt",
+      "bytes": 102,
+      "sha256": "4bce93569201e80a514db2ca2f7c64fdf697e60c081ee4fcbe124d5cf1915c3f"
+    },
+    {
+      "id": "RUN-03426",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/export-validation.json",
+      "bytes": 236,
+      "sha256": "a8ee84617062b7a2b653dbb0ed8591b2a25f022378f6aa8f9378108089302079"
+    },
+    {
+      "id": "RUN-03428",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/final-source/server/probe_service.py",
+      "bytes": 99356,
+      "sha256": "b8208ba012fa5609942712f0d1c88de857f9527c3985c3dc41815dad6a6dda15"
+    },
+    {
+      "id": "RUN-03430",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/final-source/server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "RUN-03431",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/final-source/server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "RUN-03432",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/flag-reader-verification.json",
+      "bytes": 1414523,
+      "sha256": "6590ae25764ec45702f14e91bc4c30c5ab5e442b2ddf3cd0e19bcaeb6672c7be"
+    },
+    {
+      "id": "RUN-03433",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/frozen-preset-runtime.json",
+      "bytes": 14237,
+      "sha256": "c4491d6292f7cfe6ced51b8b150c851e96ae0cccb6537cd164ebe1fd18fa0792"
+    },
+    {
+      "id": "RUN-03442",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/hot-gate-verification.json",
+      "bytes": 5416,
+      "sha256": "835de2f9f177916c5ef490c6ad5b01d85db1735aad55dec44e92515c98ad0d31"
+    },
+    {
+      "id": "RUN-03445",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/issues-check.txt",
+      "bytes": 130,
+      "sha256": "486f1ddff42831baa0a1242a350c3f0567eb88fb5dbc1816374f24b90e534a2e"
+    },
+    {
+      "id": "RUN-03448",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/life-agreement-verification.json",
+      "bytes": 6800,
+      "sha256": "af824f691ef58b5aaae3c78368c1c6abbbcb9c580d177d16a9302aaa2c979fa4"
+    },
+    {
+      "id": "RUN-03449",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "5465d5736997a69e413ca9a6d0c2f52ff7ceb15eec03ce3a424207322db776ad"
+    },
+    {
+      "id": "RUN-03451",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/mode-replies-native-verification.json",
+      "bytes": 8091,
+      "sha256": "30039fde084430b978b8724db85d641a887cdfac22f6cab2fe9a9fbac43b09f1"
+    },
+    {
+      "id": "RUN-03452",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/native-exit-packets.json",
+      "bytes": 128667,
+      "sha256": "ca477d1548e7a4896b8c1af8536dab9a4db1b498637b6661476ea689eb50fbb0"
+    },
+    {
+      "id": "RUN-03464",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "1c92181148ba988c94e6add05980f3e333406958f4e8d258a38d3bb1b7eb29aa"
+    },
+    {
+      "id": "RUN-03465",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/preset-update.json",
+      "bytes": 564,
+      "sha256": "823ff03762e785b43b1af862114028fa6c2f07fc57f3ff081c4711c4184591a6"
+    },
+    {
+      "id": "RUN-03466",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/production-pickup-verification.json",
+      "bytes": 1223,
+      "sha256": "7cf6fb45121bcfd48338157e6bfdd7e196fd12632b6bff3b4dd9bf50395fd369"
+    },
+    {
+      "id": "RUN-03469",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/raw-seal.json",
+      "bytes": 243221,
+      "sha256": "51540a9ab61821ae3e72816a01b7666743cf995c279961f9bf57468ee2bc16da"
+    },
+    {
+      "id": "RUN-03511",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/runtime-preflight.json",
+      "bytes": 20484,
+      "sha256": "d2a6f68b7d3bfcd8c6f327ff253f850f4f88dac411103ec66f60177b1870b207"
+    },
+    {
+      "id": "RUN-03557",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/server-tests.txt",
+      "bytes": 357,
+      "sha256": "332eb726c19c274f465621360243ffb8dd4d526bf76e0ea66106bd8586d2660c"
+    },
+    {
+      "id": "RUN-03558",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/team-mode-verification.json",
+      "bytes": 251796,
+      "sha256": "b621727e0e155de7b3634b2f912988dd6b76e87c2437b6714b0a4a3b2d570f35"
+    },
+    {
+      "id": "RUN-03559",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/title-runtime-verification.json",
+      "bytes": 1599,
+      "sha256": "6a583128e688c673246abb1e2760bc1bee50a7ee7f5638730c9987c52ae5ff19"
+    },
+    {
+      "id": "RUN-03579",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/visual-review.json",
+      "bytes": 1303,
+      "sha256": "c9d6d3d079055b981bca0367f9de92688d948503d95a2877af3cd899ab6dfecf"
+    },
+    {
+      "id": "RUN-03580",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/world-reset-verification.json",
+      "bytes": 943,
+      "sha256": "f8753511753dab34a713bd50f6d1c5c70afdd68e32ce4124918d7c1d65c5ca1b"
+    },
+    {
+      "id": "RUN-03600",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/DB29A0.asm",
+      "bytes": 7087,
+      "sha256": "96515f740335b282e03c8f7eb16a8373d5c6f752e86b335ea9e4e687457d28e6"
+    },
+    {
+      "id": "RUN-03601",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/817820.asm",
+      "bytes": 7470,
+      "sha256": "9cd70e35e70531c031967e96319a38566a545159e83e6957cf2003fefff034ae"
+    },
+    {
+      "id": "RUN-03602",
+      "kind": "local",
+      "path": "local/research/codex/bomb-calc-r1/E64950.asm",
+      "bytes": 14972,
+      "sha256": "abf038c7062f9b607934f41b70d49b10027f16476dd019d4df341c9910330dac"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/team-mode-free-r1",
+      "path": "local/evidence-manifests/eaf0a05fefe5836a95ca4064d012b80af58def0ef294807d16218d92e9261fdf.jsonl",
+      "sha256": "eaf0a05fefe5836a95ca4064d012b80af58def0ef294807d16218d92e9261fdf",
+      "bytes": 83755,
+      "count": 424,
+      "files_bytes": 77018209
+    },
+    {
+      "run": "local/research/codex/team-mode-manner-r2",
+      "path": "local/evidence-manifests/18343acff7fd41d05875347b83525a75d54cdeb41e7b3b06592f6047b019b0a3.jsonl",
+      "sha256": "18343acff7fd41d05875347b83525a75d54cdeb41e7b3b06592f6047b019b0a3",
+      "bytes": 83024,
+      "count": 416,
+      "files_bytes": 76853607
+    },
+    {
+      "run": "local/research/codex/team-mode-integrated-r3",
+      "path": "local/evidence-manifests/5c4019ad2a010f650bd2b4d70c8f953d827437f01de4a1f233c6b821393d2c72.jsonl",
+      "sha256": "5c4019ad2a010f650bd2b4d70c8f953d827437f01de4a1f233c6b821393d2c72",
+      "bytes": 271984,
+      "count": 1335,
+      "files_bytes": 120566061
+    },
+    {
+      "run": "local/research/codex/team-mode-reset-r4",
+      "path": "local/evidence-manifests/3fcbd9c8cb9d69d32c0352cb397756f94854c5887bff36f5d147542240e12c25.jsonl",
+      "sha256": "3fcbd9c8cb9d69d32c0352cb397756f94854c5887bff36f5d147542240e12c25",
+      "bytes": 271894,
+      "count": 1368,
+      "files_bytes": 118796539
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/5f7e90b76dc413070475e97f4899ee7692fa86f1d46977e0bde9c6c994918548.jsonl",
+      "sha256": "5f7e90b76dc413070475e97f4899ee7692fa86f1d46977e0bde9c6c994918548",
+      "bytes": 2758,
+      "count": 15,
+      "files_bytes": 363352
+    },
+    {
+      "run": "local/research/codex/room-title-integrated-r2",
+      "path": "local/evidence-manifests/ebe7d1d6945dc88268c21c39aa51a53565f650a5fa0dc499d4e0881648dbb6a5.jsonl",
+      "sha256": "ebe7d1d6945dc88268c21c39aa51a53565f650a5fa0dc499d4e0881648dbb6a5",
+      "bytes": 475,
+      "count": 2,
+      "files_bytes": 495
+    },
+    {
+      "run": "local/research/codex/eight-player-r1",
+      "path": "local/evidence-manifests/d7ba136255a35156f09339b3fd8d43ffd0c9f676f754603cfd0676d228635446.jsonl",
+      "sha256": "d7ba136255a35156f09339b3fd8d43ffd0c9f676f754603cfd0676d228635446",
+      "bytes": 645,
+      "count": 3,
+      "files_bytes": 31741
     }
   ]
 }

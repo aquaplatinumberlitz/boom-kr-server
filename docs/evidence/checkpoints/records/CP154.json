@@ -122,15 +122,6 @@
       "limits": "Testsreusednotrerun; fullcheckpointlocal/historybeforecommit. No semantic/gate certification."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP154-direct-pending-EOF.json",
-      "bytes": 361167,
-      "sha256": "34e00d74fc641e2b296db817643f6b33e4305c3877649ad551e3415e9e72a8be",
-      "count": 1393
-    }
-  ],
   "delta": {
     "added": [
       "CurrentallTCPdirect actualpendingBEOF after2contestedcycles/Ready, fence/no158/nativeA107IDclear110/visualroom."
@@ -222,6 +213,196 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP154directEOF/2normal+thirdforfeit/nativeAcleanup/limits/PR224merge/currentrecipefreshnessnext syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/actor-fields.json",
+      "bytes": 1888987,
+      "sha256": "b74f97c6820ad446dde40822f753092fce57adf8c498a974d54f81885dcadec9"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00005",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/capture-claim-verification.json",
+      "bytes": 2706,
+      "sha256": "f5c1f630121a5ee2a197afa3f519b9c97bd04e0850dad047b66cdfe88eb6950d"
+    },
+    {
+      "id": "RUN-00007",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/contest-verification.json",
+      "bytes": 3169,
+      "sha256": "0c017cca0543227207f34afd7ae99d74f64f76d803407ba0a0cc7c15d7965ea1"
+    },
+    {
+      "id": "RUN-00017",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/cycle-boundary-verification.json",
+      "bytes": 2504,
+      "sha256": "e91c3d1b0a7959771acc884a2e0e221b7343d8a975b3b7b420099063d249d007"
+    },
+    {
+      "id": "RUN-01290",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/cycles/run.json",
+      "bytes": 536985,
+      "sha256": "1a7ae6edf73df8066fbe8a231a7878745741049059b628abf0ef49b59f9c1cdc"
+    },
+    {
+      "id": "RUN-01291",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/cycles/service-state.json",
+      "bytes": 298118,
+      "sha256": "d3609d8238bcc723aff2e15eb4a403ea41f90f58e1012b3322f42fdc69a1fac0"
+    },
+    {
+      "id": "RUN-01303",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/direct-eof-verification.json",
+      "bytes": 1579,
+      "sha256": "90cc455e005020dfc15445238e43704fde23301b8bd9985d2854a5e12bd9cc98"
+    },
+    {
+      "id": "RUN-01304",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "bf569be94aaac15871a539e0ebd3143b95daa1b4e015a1e801dd230b91a0e669"
+    },
+    {
+      "id": "RUN-01305",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/endpoint-peer-verification.json",
+      "bytes": 230619,
+      "sha256": "3ed600062b44038bcbfd4b30a3c984ead8d4f39ba65ecf4031e172d42e1c033d"
+    },
+    {
+      "id": "RUN-01313",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/hot-gate-verification.json",
+      "bytes": 7800,
+      "sha256": "a4312581414a14162ee1861d5ba32c00499bbec9bf0f7b2cbb848f4e98a3f537"
+    },
+    {
+      "id": "RUN-01316",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "91d4cb559e3d3890bcaa8d75e1236c217c73c7859eee84a9fdc925905f10c1fe"
+    },
+    {
+      "id": "RUN-01319",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/loading-milestones.json",
+      "bytes": 28670,
+      "sha256": "bfb30e2edcbc81218c32f82ea036abfa3c0554ca0262f61677c7c81875bf5236"
+    },
+    {
+      "id": "RUN-01322",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "bf5f68719abb7874e0ba06aec547c84f0a79ac1577a102366a018e8a68bbfcd5"
+    },
+    {
+      "id": "RUN-01324",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/raw-seal.json",
+      "bytes": 271168,
+      "sha256": "f746db28d02650ec5f9d31b155104c8749009e8f873084c3553cb7b34c1a40b6"
+    },
+    {
+      "id": "RUN-01325",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/reuse-question.json",
+      "bytes": 3948,
+      "sha256": "c1549eb26f1deadd0e900a7369596e376efccbefbec144f0f733795b08e92bda"
+    },
+    {
+      "id": "RUN-01326",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/runtime-preflight.json",
+      "bytes": 19286,
+      "sha256": "86df68a51b8fdb186a19832fc43de0162175dd026447d7161f3984459e93c33c"
+    },
+    {
+      "id": "RUN-01370",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/server-source-reuse.json",
+      "bytes": 7083,
+      "sha256": "9458ba9de2fae2d38a5d8f943eec82c2433454850af8b1a1e1d643d7f6e434ad"
+    },
+    {
+      "id": "RUN-01378",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-pending-eof-r1/visual-review.json",
+      "bytes": 1231,
+      "sha256": "64b46e5327f6a590bcfbe31aa84a7cf2035855070bd441f21aec486d33724309"
+    },
+    {
+      "id": "RUN-01387",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/pending-eof-verification.json",
+      "bytes": 4189,
+      "sha256": "2fba095b26a0b6ea0081a77fc51d2f0c2f90bc56c38ec3e302dc7994951176cd"
+    },
+    {
+      "id": "RUN-01390",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/reuse-question.json",
+      "bytes": 4522,
+      "sha256": "9cd47601b83f6bd92ed9c20d9b6649405f6f4ab27220300e3cacc7bf744e2b08"
+    },
+    {
+      "id": "RUN-01391",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/server-tests.txt",
+      "bytes": 337,
+      "sha256": "279e571a9c544630e0633f5bc5d621da7503699017783630d834afc8545ada31"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/direct-contest-pending-eof-r1",
+      "path": "local/evidence-manifests/e9e3ac6899f813cef91a361df664d563225a0b518aca6d8865324079a16f1f5b.jsonl",
+      "sha256": "e9e3ac6899f813cef91a361df664d563225a0b518aca6d8865324079a16f1f5b",
+      "bytes": 285157,
+      "count": 1361,
+      "files_bytes": 121610656
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/38f9af67f939be3940861fde666b5777c49aa05c1cab4a2f6026eb867d33a148.jsonl",
+      "sha256": "38f9af67f939be3940861fde666b5777c49aa05c1cab4a2f6026eb867d33a148",
+      "bytes": 946,
+      "count": 5,
+      "files_bytes": 104443
+    },
+    {
+      "run": "local/research/codex/loading-hot-gate-r5",
+      "path": "local/evidence-manifests/e7c740a8872609a5d2cd59c22c4f5104144f2ad66dfd4e64d6ead60961a0406d.jsonl",
+      "sha256": "e7c740a8872609a5d2cd59c22c4f5104144f2ad66dfd4e64d6ead60961a0406d",
+      "bytes": 666,
+      "count": 3,
+      "files_bytes": 903
+    },
+    {
+      "run": "local/research/codex/virtual-pending-eof-r1",
+      "path": "local/evidence-manifests/f5a20b46ed6008272bff22e9f39b9ad2449011495e9f0fd6ffc0ea108d3709a7.jsonl",
+      "sha256": "f5a20b46ed6008272bff22e9f39b9ad2449011495e9f0fd6ffc0ea108d3709a7",
+      "bytes": 479,
+      "count": 2,
+      "files_bytes": 11092
     }
   ]
 }

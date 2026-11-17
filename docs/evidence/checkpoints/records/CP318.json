@@ -101,15 +101,6 @@
       "limits": "Full checker exact head và CI phải đạt trước merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP318-tomb12-rays.json",
-      "bytes": 390194,
-      "sha256": "bfb561de4024512b0483231e9107c6cbb571c293b23334584fd3d5b90150fffd",
-      "count": 1379
-    }
-  ],
   "delta": {
     "added": [
       "Lớp ray_barriers optional và hồi quy Rust.",
@@ -209,6 +200,336 @@
       "path": "AGENTS.md",
       "state": "unchanged",
       "reason": "Quy trình, waiver và owner Claude của L1 giữ nguyên."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "TOMB318-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3547,
+      "sha256": "fdd6d053cb8d349a3cb833de264b5f6a63c54131bf4d5bcef3dd492d6e3de100"
+    },
+    {
+      "id": "TOMB318-0002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 265779,
+      "sha256": "e624617a1803d4a958825eb3f7ecdcc356216a5760cbc85c7c4c4b3fc960cf5d"
+    },
+    {
+      "id": "TOMB318-0003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 161040,
+      "sha256": "5fa2266826cf1a3d099ae931fc536ebc1ef8f926146f281da85ee1c042802c43"
+    },
+    {
+      "id": "TOMB318-0004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 83472,
+      "sha256": "492d2fd57ba22571341612f19e5f350c1047e666f35b7a90ed2068aaa999fad3"
+    },
+    {
+      "id": "TOMB318-0005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 67985,
+      "sha256": "05efd470664a9fb3cebb9bea992c69fc0d2a3ae12d06f2f82bce193c7a88910e"
+    },
+    {
+      "id": "TOMB318-0006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 44152,
+      "sha256": "7a97e5635c0d728716b498b78806998735206a94a115110aa44768e5fbdbcd43"
+    },
+    {
+      "id": "TOMB318-0007",
+      "kind": "repository",
+      "path": "docs/content/tile-semantics.md",
+      "bytes": 6069,
+      "sha256": "0f883a54e22aa3a2dd7813f4dd861de78ffae0a32fbaa49dc934e4f8569cd973"
+    },
+    {
+      "id": "TOMB318-0008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD129.json",
+      "bytes": 3432,
+      "sha256": "e048d1a288149f92ee54f34b99837ac735a2c7711b3eee059dd2105ac110406c"
+    },
+    {
+      "id": "TOMB318-0009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-tomb12-ray-barriers.json",
+      "bytes": 8064,
+      "sha256": "481a041b9fdae5b26797558fe12e2b7442d0beb53485d58302eed406a7abe365"
+    },
+    {
+      "id": "TOMB318-0010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 278829,
+      "sha256": "036a90be49716e355e379dec6b1c9fe4babdd102b1bc31ff7f80b0025ec0e97d"
+    },
+    {
+      "id": "TOMB318-0011",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 74486,
+      "sha256": "b87b51800f9ba163aec098cbc7945f0a9572e8d07245b7b221e1b71ec10e35b6"
+    },
+    {
+      "id": "TOMB318-0015",
+      "kind": "local",
+      "path": "local/research/codex/cp318-docs-precheck.txt",
+      "bytes": 274,
+      "sha256": "e5b3d35c9297de6a97409d59f8f4e53913dcd7064e05ec33ac08e4e5340681bd"
+    },
+    {
+      "id": "TOMB318-0016",
+      "kind": "local",
+      "path": "local/research/codex/cp318-preservation-verification.json",
+      "bytes": 847,
+      "sha256": "5c375167456684148689e50a796cd0286a5af5da5ffe4644eab268addd45b0dd"
+    },
+    {
+      "id": "TOMB318-0590",
+      "kind": "local",
+      "path": "local/research/codex/g1-tomb12-barrier-serving-native-r1/barrier-verification.json",
+      "bytes": 7467,
+      "sha256": "188aedf0e2f778ee7b2488c6bd0ec19fcfcd6a3f0a3eb9e0a46e5135269011ff"
+    },
+    {
+      "id": "TOMB318-0881",
+      "kind": "local",
+      "path": "local/research/codex/g1-tomb12-barriers-native-r1/barrier-verification.json",
+      "bytes": 7467,
+      "sha256": "aca1690e85c52c0f3ca80c8cccd45c0d6b5024211488e8ccb83e878a99652503"
+    },
+    {
+      "id": "TOMB318-1043",
+      "kind": "local",
+      "path": "local/research/codex/g1-tomb12-ray-barrier-source-r1/byte-binding.json",
+      "bytes": 1289,
+      "sha256": "d0845381b923550187b7c1172b28ed6c8039800dc72add06e616bb19474a8e63"
+    },
+    {
+      "id": "TOMB318-1055",
+      "kind": "local",
+      "path": "local/research/codex/g1-tomb12-ray-barriers-build-r1/source-identity.json",
+      "bytes": 27502,
+      "sha256": "8a8d9812264a66a43f1f2cec3a2be8d98c22b3b58a7e1dba5ad7e7f4ec46b780"
+    },
+    {
+      "id": "TOMB318-1174",
+      "kind": "local",
+      "path": "local/research/codex/g1-tomb12-rays-native-r1/barrier-observation-verification.json",
+      "bytes": 6509,
+      "sha256": "dac9a20b9cab90456ebdcf4ccf5708dc247cf271aef713146e2af22c6addcb89"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/5e765447e369d33a0d53bd7b634f7824ff02e2761304d4ae0eed4aa7142e8d51.jsonl",
+      "sha256": "5e765447e369d33a0d53bd7b634f7824ff02e2761304d4ae0eed4aa7142e8d51",
+      "bytes": 4974,
+      "count": 26,
+      "files_bytes": 418861
+    },
+    {
+      "run": "local/research/codex/g1-camp08-c2s122-native-r2",
+      "path": "local/evidence-manifests/3c54efce561ff1edaa57d94f49e63dcbac6bbcd1dc8aaf00607e661970b01dd1.jsonl",
+      "sha256": "3c54efce561ff1edaa57d94f49e63dcbac6bbcd1dc8aaf00607e661970b01dd1",
+      "bytes": 1741,
+      "count": 7,
+      "files_bytes": 57420
+    },
+    {
+      "run": "local/research/codex/g1-camp08-cancellation-native-r1",
+      "path": "local/evidence-manifests/4202394ff021d5c287cb6162ff533d55d03bfbc88dbdebf9982c645a26ddf4b0.jsonl",
+      "sha256": "4202394ff021d5c287cb6162ff533d55d03bfbc88dbdebf9982c645a26ddf4b0",
+      "bytes": 8603,
+      "count": 37,
+      "files_bytes": 130750
+    },
+    {
+      "run": "local/research/codex/g1-camp08-cancellation-native-r2",
+      "path": "local/evidence-manifests/ce22b9e2c4c919c0cba3b556456bf64330fcd810723afba5b57a9f0b7c2fe07e.jsonl",
+      "sha256": "ce22b9e2c4c919c0cba3b556456bf64330fcd810723afba5b57a9f0b7c2fe07e",
+      "bytes": 3693,
+      "count": 15,
+      "files_bytes": 401181
+    },
+    {
+      "run": "local/research/codex/g1-camp08-condition-native-r7",
+      "path": "local/evidence-manifests/d10c007791ee8c2c9c5feb9ae40d1ef88fc73bafb73cc1f641adc88cdffc00ba.jsonl",
+      "sha256": "d10c007791ee8c2c9c5feb9ae40d1ef88fc73bafb73cc1f641adc88cdffc00ba",
+      "bytes": 1999,
+      "count": 8,
+      "files_bytes": 60971
+    },
+    {
+      "run": "local/research/codex/g1-camp08-durable-serving-native-r1",
+      "path": "local/evidence-manifests/3ec9c254847ba70eb913e68b07588dc588e4ed0115b9ee0d47dbc1cc20eccc8c.jsonl",
+      "sha256": "3ec9c254847ba70eb913e68b07588dc588e4ed0115b9ee0d47dbc1cc20eccc8c",
+      "bytes": 2060,
+      "count": 8,
+      "files_bytes": 107011
+    },
+    {
+      "run": "local/research/codex/g1-camp08-durable-serving-native-r2",
+      "path": "local/evidence-manifests/185108d578247e29de8e00bbc8e376f006bc8e5687fe413b149519e66ecb4b6b.jsonl",
+      "sha256": "185108d578247e29de8e00bbc8e376f006bc8e5687fe413b149519e66ecb4b6b",
+      "bytes": 8466,
+      "count": 36,
+      "files_bytes": 265277280
+    },
+    {
+      "run": "local/research/codex/g1-camp08-line01-native-r1",
+      "path": "local/evidence-manifests/5b74aa40ff683efa4f6de1460d3b2a900aa8d318c03d8be11fe3cf3bfe7055d2.jsonl",
+      "sha256": "5b74aa40ff683efa4f6de1460d3b2a900aa8d318c03d8be11fe3cf3bfe7055d2",
+      "bytes": 2401,
+      "count": 8,
+      "files_bytes": 58210
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r1",
+      "path": "local/evidence-manifests/75604807bde619b90f7886d1a1cbcea59f452a17f252453c33746869fa7b6bf2.jsonl",
+      "sha256": "75604807bde619b90f7886d1a1cbcea59f452a17f252453c33746869fa7b6bf2",
+      "bytes": 2974,
+      "count": 10,
+      "files_bytes": 55955
+    },
+    {
+      "run": "local/research/codex/g1-camp08-passable-native-r6",
+      "path": "local/evidence-manifests/25eae73facfd39d0f5a479113fde6b47af8ff552d2e52d5297ad29508aa89c6a.jsonl",
+      "sha256": "25eae73facfd39d0f5a479113fde6b47af8ff552d2e52d5297ad29508aa89c6a",
+      "bytes": 3035,
+      "count": 10,
+      "files_bytes": 58139
+    },
+    {
+      "run": "local/research/codex/g1-camp08-seed-native-r1",
+      "path": "local/evidence-manifests/4c537ada007693463f833f94c86a743189f7233c8f455b9f7c8230941ff18e87.jsonl",
+      "sha256": "4c537ada007693463f833f94c86a743189f7233c8f455b9f7c8230941ff18e87",
+      "bytes": 11837,
+      "count": 54,
+      "files_bytes": 91992445
+    },
+    {
+      "run": "local/research/codex/g1-camp08-static-rays-native-r1",
+      "path": "local/evidence-manifests/7fe7a9949e2800d6fdc49ce4a492088c6b65c84ec07246c33df5113583a34c71.jsonl",
+      "sha256": "7fe7a9949e2800d6fdc49ce4a492088c6b65c84ec07246c33df5113583a34c71",
+      "bytes": 1882,
+      "count": 6,
+      "files_bytes": 54318
+    },
+    {
+      "run": "local/research/codex/g1-camp08-static-rays-native-r2",
+      "path": "local/evidence-manifests/51fac2a9bcf6f38b39694ac8524d446c4f1c641b2c8a563b522729198f9d3d13.jsonl",
+      "sha256": "51fac2a9bcf6f38b39694ac8524d446c4f1c641b2c8a563b522729198f9d3d13",
+      "bytes": 1604,
+      "count": 5,
+      "files_bytes": 43718
+    },
+    {
+      "run": "local/research/codex/g1-camp08-static-rays-native-r3",
+      "path": "local/evidence-manifests/dda529aba60fd27e3565639cbb3edfd4bee48a301e4ad37d06d0af13b3488b48.jsonl",
+      "sha256": "dda529aba60fd27e3565639cbb3edfd4bee48a301e4ad37d06d0af13b3488b48",
+      "bytes": 1604,
+      "count": 5,
+      "files_bytes": 45537
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-counters-native-r1",
+      "path": "local/evidence-manifests/946b0634778cc2619a74782b7508ecb70b87958934a77f79ac9d78e1e65ca5f2.jsonl",
+      "sha256": "946b0634778cc2619a74782b7508ecb70b87958934a77f79ac9d78e1e65ca5f2",
+      "bytes": 1381,
+      "count": 5,
+      "files_bytes": 43992
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-counters-native-r2",
+      "path": "local/evidence-manifests/500d02f96670e9e834baffdb4777dbca32740b98f6a4f3413cb8359792044051.jsonl",
+      "sha256": "500d02f96670e9e834baffdb4777dbca32740b98f6a4f3413cb8359792044051",
+      "bytes": 1381,
+      "count": 5,
+      "files_bytes": 41479
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-hits-native-r1",
+      "path": "local/evidence-manifests/92c65ec8aa112c579be4a5e0667c5d904c357de4480c95a281247b4008563f05.jsonl",
+      "sha256": "92c65ec8aa112c579be4a5e0667c5d904c357de4480c95a281247b4008563f05",
+      "bytes": 1337,
+      "count": 5,
+      "files_bytes": 42480
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-native-r1",
+      "path": "local/evidence-manifests/1ad380aec012254f975d52cf3c1ea58c4eecf6789852546ad30fa8334a5e05d5.jsonl",
+      "sha256": "1ad380aec012254f975d52cf3c1ea58c4eecf6789852546ad30fa8334a5e05d5",
+      "bytes": 67880,
+      "count": 302,
+      "files_bytes": 6418762680
+    },
+    {
+      "run": "local/research/codex/g1-tomb12-barrier-serving-native-r1",
+      "path": "local/evidence-manifests/fb5a9e9d39e6350d16c3a389f06b4f92cbae365739b05397f879d587610a692d.jsonl",
+      "sha256": "fb5a9e9d39e6350d16c3a389f06b4f92cbae365739b05397f879d587610a692d",
+      "bytes": 72181,
+      "count": 290,
+      "files_bytes": 391682716
+    },
+    {
+      "run": "local/research/codex/g1-tomb12-barriers-native-r1",
+      "path": "local/evidence-manifests/08ef420e4702d1427f2924c78d466247990371d231caa5079c682df01de26337.jsonl",
+      "sha256": "08ef420e4702d1427f2924c78d466247990371d231caa5079c682df01de26337",
+      "bytes": 46202,
+      "count": 204,
+      "files_bytes": 275512875
+    },
+    {
+      "run": "local/research/codex/g1-tomb12-ray-barrier-source-r1",
+      "path": "local/evidence-manifests/939070b3e51107ed0c615848f784d3447e0d4384b0870b39cbff6ef95deef250.jsonl",
+      "sha256": "939070b3e51107ed0c615848f784d3447e0d4384b0870b39cbff6ef95deef250",
+      "bytes": 1922,
+      "count": 9,
+      "files_bytes": 12423
+    },
+    {
+      "run": "local/research/codex/g1-tomb12-ray-barriers-build-r1",
+      "path": "local/evidence-manifests/23440b6588bcc4f8237ae5a26ce4435de3ea0934af38fa8bcafeacf6a5eb003c.jsonl",
+      "sha256": "23440b6588bcc4f8237ae5a26ce4435de3ea0934af38fa8bcafeacf6a5eb003c",
+      "bytes": 19058,
+      "count": 80,
+      "files_bytes": 115821872
+    },
+    {
+      "run": "local/research/codex/g1-tomb12-rays-native-r1",
+      "path": "local/evidence-manifests/bc47cee161e432df497a94c40424a40684e64a1cd5f787f5dce4a83e403e3571.jsonl",
+      "sha256": "bc47cee161e432df497a94c40424a40684e64a1cd5f787f5dce4a83e403e3571",
+      "bytes": 40571,
+      "count": 185,
+      "files_bytes": 274849799
+    },
+    {
+      "run": "local/research/codex/g1-tomb12-rays-r1",
+      "path": "local/evidence-manifests/d690bd8b1aad9a848f1c2f6be9c3cd761f0a80877fe6a1327983e0f9c04ecf7d.jsonl",
+      "sha256": "d690bd8b1aad9a848f1c2f6be9c3cd761f0a80877fe6a1327983e0f9c04ecf7d",
+      "bytes": 460,
+      "count": 2,
+      "files_bytes": 4720
+    },
+    {
+      "run": "local/research/codex/g1-tomb12-seed-native-r1",
+      "path": "local/evidence-manifests/881a71c0e6088a0ab13cf9ad13ec64c2d77426d86cbede5d61523556c54b7302.jsonl",
+      "sha256": "881a71c0e6088a0ab13cf9ad13ec64c2d77426d86cbede5d61523556c54b7302",
+      "bytes": 10976,
+      "count": 39,
+      "files_bytes": 462642
     }
   ]
 }

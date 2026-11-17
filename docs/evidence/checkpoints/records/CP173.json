@@ -169,15 +169,6 @@
       "limits": "CP155156oldprofilecontrolsnotbackfillcurrentbasicBhost; endcleanupnotfaulttest."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP173-basic-bidirectional.json",
-      "bytes": 1113875,
-      "sha256": "92f3e5d37073191f34e8626bb7fcbeafb07d302e0ee85af62aa8545edcf68cf7",
-      "count": 4401
-    }
-  ],
   "delta": {
     "added": [
       "Same-runbasicnativeB/Aownerbombs/195/4bidirectionalpeerwindows/3effects/reset/2outcomes/Ready/Start3.",
@@ -278,6 +269,245 @@
       "path": "docs/evidence/checkpoints/README.md",
       "state": "updated",
       "reason": "CP173basicBowner/bidirectionalgroupedpartials/positive/native195/limits/CP172merge/nextBhostEOF synced; checkpointworkflow doc unchanged and verified."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r1/chain-summary.json",
+      "bytes": 80409,
+      "sha256": "9b56e163acf55839504e0c4fe0083e5da9a0fadbd8322b357ec9d0e7c3e683ad"
+    },
+    {
+      "id": "RUN-01134",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r1/endpoint-peer-verification.json",
+      "bytes": 197084,
+      "sha256": "a5fde86be79cae3e6247f057d92e015abe01ce04b7c5889c1d0d79739f12ff9a"
+    },
+    {
+      "id": "RUN-01147",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r1/partial-verification.json",
+      "bytes": 1274,
+      "sha256": "d77ee41d2b0f286994ae96e571582c33b428c856548898a9cfab01c2da74088c"
+    },
+    {
+      "id": "RUN-01148",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r1/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "1276a414c20450de2bd47e3fc3717209d48e078757c764373bfbec16f9ca7953"
+    },
+    {
+      "id": "RUN-01150",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r1/raw-seal.json",
+      "bytes": 230964,
+      "sha256": "1eac48c648ca43a97335fd22c13ac4a3ebf107bb7570615b238c70a64128701c"
+    },
+    {
+      "id": "RUN-01209",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r2/analyze_endpoint_progress.py.log",
+      "bytes": 1128,
+      "sha256": "063a189f2cd4b38502cf90fc9f1be13a9e48a5fb9572b7225270adec53294a5b"
+    },
+    {
+      "id": "RUN-01213",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r2/basic-cycle-verification.json",
+      "bytes": 2408,
+      "sha256": "dab41b8499a9a990e10e7fb52a4482863d645a6ec84ac4e300819fba1c6acbbb"
+    },
+    {
+      "id": "RUN-02636",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r2/exported-start3-verification.json",
+      "bytes": 3021,
+      "sha256": "1fe5e0ce9b4623f95085fae5066e1b2634137629be7eb3f1eaaf9817d4e79194"
+    },
+    {
+      "id": "RUN-02660",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r2/partial-verification.json",
+      "bytes": 724,
+      "sha256": "6e69c410701307a8794440ac939e51080cc9982bcb6fa1378589744557ae65eb"
+    },
+    {
+      "id": "RUN-02662",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r2/raw-seal.json",
+      "bytes": 290731,
+      "sha256": "2f1a28d476fd3f09098fa2c4876ac42515a8c571342737a96661309c0a8b72d4"
+    },
+    {
+      "id": "RUN-02757",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/actor-fields.json",
+      "bytes": 582172,
+      "sha256": "b7be52dc7fd4426db2d9c52ff9af2110dbde2a8e5c12c9245fd6d009b826261b"
+    },
+    {
+      "id": "RUN-02765",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-02766",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/basic-cycle-verification.json",
+      "bytes": 2408,
+      "sha256": "57cc237cd6f2c5bf00451e9c2ae94a6879b11c64b667f8a92950adcc4d7e8e26"
+    },
+    {
+      "id": "RUN-02768",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/catalog-check.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "RUN-02769",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/chain-summary.json",
+      "bytes": 96233,
+      "sha256": "0f7bc48d8620a2104dae9559a6e64953fe2f3cebcde1c7940e07c1c0d0768980"
+    },
+    {
+      "id": "RUN-02770",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/composition-verification.json",
+      "bytes": 589,
+      "sha256": "c59db651016a95ec46185a34343ef2e608e01588387cd482c7390dfdf1866ae7"
+    },
+    {
+      "id": "RUN-02773",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/cp173-snapshot/docs/PLAN.md",
+      "bytes": 36893,
+      "sha256": "8504dbefa19848126d974c6d02a54fed1787b3add7b8ce0d3c9011dcdab2501d"
+    },
+    {
+      "id": "RUN-04254",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/diff-check.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUN-04255",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/docs-check.txt",
+      "bytes": 175,
+      "sha256": "4813b7fdb4a9019df0243c8da6193881f5c4a64800223145f652454ee082b4d1"
+    },
+    {
+      "id": "RUN-04256",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/endpoint-peer-verification.json",
+      "bytes": 174404,
+      "sha256": "9093491a81e6579b4a96820b45573881d0a83849bc0e6952ee521c4e0f0cb21d"
+    },
+    {
+      "id": "RUN-04257",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/exported-start3-verification.json",
+      "bytes": 2889,
+      "sha256": "cb9af4813b7dfffd96ce3458ffe63fe44d78c71404ee9b585156aff89eb10588"
+    },
+    {
+      "id": "RUN-04267",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/issues-check.txt",
+      "bytes": 130,
+      "sha256": "8377999fe7a0c554148a9e525e134cd98d2214ac295c3dbb43297d6b7b86a68e"
+    },
+    {
+      "id": "RUN-04270",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/life-agreement-verification.json",
+      "bytes": 6816,
+      "sha256": "c7a570efcb4dad13c4e20b8e35a185fb114a715027e4689e427fe9ef05825b43"
+    },
+    {
+      "id": "RUN-04271",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "41f62b0b3139e709d1a5bea6ab78ba9753b8c5e4246148d4a13e5ed71acbe5b5"
+    },
+    {
+      "id": "RUN-04273",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/native-actual.json",
+      "bytes": 93981,
+      "sha256": "950214ee34129e99fd598c21db1c3c3bb0c17809f51c3a94d5c5ab2b79433448"
+    },
+    {
+      "id": "RUN-04282",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "282512853c63ba793d6444fc58101989c263b726b95c2c3a8a8d5135482799a8"
+    },
+    {
+      "id": "RUN-04284",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/raw-seal.json",
+      "bytes": 301350,
+      "sha256": "cb22b185132feb06a18a6ce46e0f4871950663c290afb4bd20e014ee77b0549e"
+    },
+    {
+      "id": "RUN-04370",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/server-test-reuse.json",
+      "bytes": 8126,
+      "sha256": "063cd5439a60696e73c8accd0da8a8d036a0b2b354dba460808023a19d685a22"
+    },
+    {
+      "id": "RUN-04380",
+      "kind": "local",
+      "path": "local/research/codex/basic-bidirectional-r3/visual-review.json",
+      "bytes": 806,
+      "sha256": "ee6483356a9ade78ea83a03f576b8b4dd1a7d754b8e0501d47915ab9cf36b08a"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/basic-bidirectional-r1",
+      "path": "local/evidence-manifests/f37bc6cf208c64815647682dfc2fd30637362e9c57ab357c7e64dcadcfcc28d9.jsonl",
+      "sha256": "f37bc6cf208c64815647682dfc2fd30637362e9c57ab357c7e64dcadcfcc28d9",
+      "bytes": 243510,
+      "count": 1199,
+      "files_bytes": 123540221
+    },
+    {
+      "run": "local/research/codex/basic-bidirectional-r2",
+      "path": "local/evidence-manifests/a94c75e799c0dec52c174aafe6006405ef4800471d3360896d1fa95b36748913.jsonl",
+      "sha256": "a94c75e799c0dec52c174aafe6006405ef4800471d3360896d1fa95b36748913",
+      "bytes": 314461,
+      "count": 1547,
+      "files_bytes": 135077250
+    },
+    {
+      "run": "local/research/codex/basic-bidirectional-r3",
+      "path": "local/evidence-manifests/9c0a5fa341dba248c46e9d26e8b00068b627e386f0c0fe86f03d52012f28d7eb.jsonl",
+      "sha256": "9c0a5fa341dba248c46e9d26e8b00068b627e386f0c0fe86f03d52012f28d7eb",
+      "bytes": 326785,
+      "count": 1607,
+      "files_bytes": 137862551
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/05da9f0fb2aaa41c0a5ea34b9549fdceb01e8db1f919202dfb2a0914a145cf32.jsonl",
+      "sha256": "05da9f0fb2aaa41c0a5ea34b9549fdceb01e8db1f919202dfb2a0914a145cf32",
+      "bytes": 3514,
+      "count": 19,
+      "files_bytes": 518734
     }
   ]
 }

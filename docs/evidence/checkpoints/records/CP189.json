@@ -165,15 +165,6 @@
       "limits": "Needcontrolledsecondhost/endpointrecipe; virtualsamehostnotphysicalLAN."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP189-current-basic-contest.json",
-      "bytes": 811358,
-      "sha256": "f801bc5febb8a794535eee9fccf4455a8c38f066195344a769766812b5624943",
-      "count": 3081
-    }
-  ],
   "delta": {
     "added": [
       "CurrentbasicRoller17actualtwo-contenderproduction/singleeffect plus twonormalcontestedepochs/rolebaseline/reset/peer/life/Ready2.",
@@ -266,6 +257,692 @@
       "path": "docs/evidence/issue-reconciliation/review.json",
       "state": "updated",
       "reason": "CP189currentcontest/normalreset/limits/K6ascope/LANgap/CP188merged synchronizedbeforecomplete; AUD056next192 unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "CONTEST189-00011",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "CONTEST189-00018",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "CONTEST189-00030",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-basic-contest-r1/actor-fields.json",
+      "bytes": 126645,
+      "sha256": "6aad76ffdbe1ba2429ea07074cfc80ec381f37cec515dbe22ac194c983adb735"
+    },
+    {
+      "id": "CONTEST189-00031",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-basic-contest-r1/analysis-reuse.json",
+      "bytes": 1792,
+      "sha256": "bb0fd9b6423173d8eff91857a7b704eebe2b90461a9f2f4737c9a626fd856fee"
+    },
+    {
+      "id": "CONTEST189-00032",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-basic-contest-r1/analyzer-assumed-common-speed.log",
+      "bytes": 687,
+      "sha256": "7fadaaff78848e20d63c497914f8d8de7b99c8fa0ab695e9262ca0eaa8187752"
+    },
+    {
+      "id": "CONTEST189-00033",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-basic-contest-r1/analyzer-assumed-common-speed.py",
+      "bytes": 7020,
+      "sha256": "67230a2b9acc709dfa4bedd47b8f85b0c2045bbed9bda73e04903ed1b388ad4e"
+    },
+    {
+      "id": "CONTEST189-00035",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-basic-contest-r1/contest-verification.json",
+      "bytes": 2705,
+      "sha256": "03804dd81c0773a39ec44dffa5d75fad737fd5dfea8409f6c8cbacc99f6d87b4"
+    },
+    {
+      "id": "CONTEST189-00765",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-basic-contest-r1/raw-seal.json",
+      "bytes": 147835,
+      "sha256": "3069adbbfeece380e0bae076f341b6a9ea378e1f1f508ee5bd0979bea27951cb"
+    },
+    {
+      "id": "CONTEST189-00822",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-basic-contest-r1/visual-review.json",
+      "bytes": 822,
+      "sha256": "8ecdae86ab19bdb74dc7f3f10a74c0b6c53f2e7366166fb67abe412d86945165"
+    },
+    {
+      "id": "CONTEST189-01549",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r1/partial-verification.json",
+      "bytes": 942,
+      "sha256": "2526f74deeda90391b9769d175f4b5230e30034af8d0cd3a60e29650fb51a3a8"
+    },
+    {
+      "id": "CONTEST189-01551",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r1/raw-seal.json",
+      "bytes": 148671,
+      "sha256": "e112a70b01e4592446298a585b5d0b82c68eebe7d051d4c5da915056ca11c42a"
+    },
+    {
+      "id": "CONTEST189-01611",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r2/contest-reset-verification.json",
+      "bytes": 1215,
+      "sha256": "9d1fa3b892952faf23d916c99a841749971dac43f1fac27165b646a8b80c5490"
+    },
+    {
+      "id": "CONTEST189-01612",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r2/continuity-review.json",
+      "bytes": 2879,
+      "sha256": "d8a0e03205d98d74e56acd6e77d805a9ec88ae8e9145394c0dd695bb819700c7"
+    },
+    {
+      "id": "CONTEST189-01615",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r2/cp189-snapshot/docs/PLAN.md",
+      "bytes": 50188,
+      "sha256": "52ed749241d373fba02df362fcba8af5b49fddff96d6b85379009bee016f9cf8"
+    },
+    {
+      "id": "CONTEST189-01620",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r2/cp189-snapshot/docs/evidence/peer-endpoints/k6a-acceptance.json",
+      "bytes": 4970,
+      "sha256": "a1004630d096a699f5492a1c3af5c5678242b6c1aceebfb10512ddacf71babed"
+    },
+    {
+      "id": "CONTEST189-02896",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r2/endpoint-peer-verification.json",
+      "bytes": 196278,
+      "sha256": "9771f2550bf0de041c988974c2d17af9deaf7428fece57b3920f7e0d01a7012e"
+    },
+    {
+      "id": "CONTEST189-02910",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r2/life-agreement-verification.json",
+      "bytes": 6800,
+      "sha256": "41571eaa675f81e7b3ae1a1094c0e2f0db1d7190a5f33e3aa6daf798baa0b6d8"
+    },
+    {
+      "id": "CONTEST189-02921",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r2/raw-seal.json",
+      "bytes": 266382,
+      "sha256": "3d7523ebc419b68ea0a1a59672eb11d7ca3a6f7d0cafddb4193191be67c76031"
+    },
+    {
+      "id": "CONTEST189-02987",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r2/source-first.json",
+      "bytes": 2142,
+      "sha256": "4a09bb8913deac36b41e77ef3f18c46e919450216eefa18984be9063a55eaeef"
+    },
+    {
+      "id": "CONTEST189-02996",
+      "kind": "local",
+      "path": "local/research/codex/k6-current-contest-reset-r2/visual-review.json",
+      "bytes": 666,
+      "sha256": "d45944ebd11c79e884eb50cfee33b87f951b002e74279803776d509538cc8596"
+    },
+    {
+      "id": "CONTEST189-02999",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "CONTEST189-03002",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "CONTEST189-03014",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "CONTEST189-03015",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "CONTEST189-03016",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "CONTEST189-03025",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "CONTEST189-03027",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "CONTEST189-03031",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "CONTEST189-03032",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "CONTEST189-03033",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "CONTEST189-03034",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "CONTEST189-03035",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "CONTEST189-03036",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109744,
+      "sha256": "12362a460ade30fbd48f14dd8bada6a3126e330c8058b71dc7bee5d63e2d9584"
+    },
+    {
+      "id": "CONTEST189-03037",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "CONTEST189-03038",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "CONTEST189-03039",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "CONTEST189-03040",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "CONTEST189-03041",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "CONTEST189-03042",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "CONTEST189-03043",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "CONTEST189-03044",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "CONTEST189-03045",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "CONTEST189-03046",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "CONTEST189-03047",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "CONTEST189-03048",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "CONTEST189-03049",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "CONTEST189-03050",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "CONTEST189-03051",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "CONTEST189-03052",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "CONTEST189-03053",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "CONTEST189-03054",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "CONTEST189-03055",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "CONTEST189-03056",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "CONTEST189-03057",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "CONTEST189-03058",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "CONTEST189-03059",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "CONTEST189-03060",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "CONTEST189-03061",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "CONTEST189-03062",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "CONTEST189-03063",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "CONTEST189-03064",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "CONTEST189-03065",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "CONTEST189-03066",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "CONTEST189-03067",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "CONTEST189-03068",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "CONTEST189-03069",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "CONTEST189-03070",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "CONTEST189-03071",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "CONTEST189-03072",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "CONTEST189-03073",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "CONTEST189-03074",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "CONTEST189-03075",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "CONTEST189-03076",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "CONTEST189-03077",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "CONTEST189-03078",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "CONTEST189-03079",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "CONTEST189-03080",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "CONTEST189-03081",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/616bea6199c06080db8785e01076472dc74336e493df1b5a7e7177b6a6be64cd.jsonl",
+      "sha256": "616bea6199c06080db8785e01076472dc74336e493df1b5a7e7177b6a6be64cd",
+      "bytes": 471,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b981a8b978797f3d64002bae56e24e6bbaacaa0767804513566990ad3cf2bd83.jsonl",
+      "sha256": "b981a8b978797f3d64002bae56e24e6bbaacaa0767804513566990ad3cf2bd83",
+      "bytes": 3669,
+      "count": 19,
+      "files_bytes": 304723
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/dfd30f2011da31c1af767ad3b768a28f8b4c5538d7407d2b751254e0975bc358.jsonl",
+      "sha256": "dfd30f2011da31c1af767ad3b768a28f8b4c5538d7407d2b751254e0975bc358",
+      "bytes": 654,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/23e158e75fa55d2c08ebce930ef1536f30795482ea4471d689e873b93a906e3a.jsonl",
+      "sha256": "23e158e75fa55d2c08ebce930ef1536f30795482ea4471d689e873b93a906e3a",
+      "bytes": 446,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/6740f1061874e17950811ab07b6ddf83ad8e09b96030af9981102b97d5091aaf.jsonl",
+      "sha256": "6740f1061874e17950811ab07b6ddf83ad8e09b96030af9981102b97d5091aaf",
+      "bytes": 656,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/752fb79e688d98794dcdca6bc78e6a906b042766515e902c704ce3ce03170367.jsonl",
+      "sha256": "752fb79e688d98794dcdca6bc78e6a906b042766515e902c704ce3ce03170367",
+      "bytes": 469,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/3c03f1f90512316710de1d9481b2335f51b594aacb7df1f5ff8c0bb7ce785d7e.jsonl",
+      "sha256": "3c03f1f90512316710de1d9481b2335f51b594aacb7df1f5ff8c0bb7ce785d7e",
+      "bytes": 1036,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/56e72ed4b88bc3283ad34b02bc6380686e7918efd324681264ae0e3b7ecac5e1.jsonl",
+      "sha256": "56e72ed4b88bc3283ad34b02bc6380686e7918efd324681264ae0e3b7ecac5e1",
+      "bytes": 512,
+      "count": 2,
+      "files_bytes": 63749120
+    },
+    {
+      "run": "local/research/codex/k6-current-basic-contest-r1",
+      "path": "local/evidence-manifests/71fe17fdf3cd95a25c5ab92ef71f9de5693c2352488e958b012fe0218a17f2a9.jsonl",
+      "sha256": "71fe17fdf3cd95a25c5ab92ef71f9de5693c2352488e958b012fe0218a17f2a9",
+      "bytes": 168533,
+      "count": 786,
+      "files_bytes": 31737076
+    },
+    {
+      "run": "local/research/codex/k6-current-contest-reset-r1",
+      "path": "local/evidence-manifests/01c4a10475fa30c1bf8dfa4b109da114389f95d130d56441df144a2966c5310d.jsonl",
+      "sha256": "01c4a10475fa30c1bf8dfa4b109da114389f95d130d56441df144a2966c5310d",
+      "bytes": 167506,
+      "count": 781,
+      "files_bytes": 34463137
+    },
+    {
+      "run": "local/research/codex/k6-current-contest-reset-r2",
+      "path": "local/evidence-manifests/38d81cc558ef6fbc8358fa073b46aa8bbeca237b85cf239e4811c77b647dba06.jsonl",
+      "sha256": "38d81cc558ef6fbc8358fa073b46aa8bbeca237b85cf239e4811c77b647dba06",
+      "bytes": 296741,
+      "count": 1382,
+      "files_bytes": 66373060
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/2e677039d8826f8fdb94e5782c3add7e8c4905733beff5674daee8cfb1cc8c35.jsonl",
+      "sha256": "2e677039d8826f8fdb94e5782c3add7e8c4905733beff5674daee8cfb1cc8c35",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/2b29c2198b632d99085918328176fc29c276f5bf411f1ccca2dd94154f268459.jsonl",
+      "sha256": "2b29c2198b632d99085918328176fc29c276f5bf411f1ccca2dd94154f268459",
+      "bytes": 451,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/dd2ef9bdf4a3dfe2a7a8663bdf7012d71260252e45d3403980fff7be4a87e08b.jsonl",
+      "sha256": "dd2ef9bdf4a3dfe2a7a8663bdf7012d71260252e45d3403980fff7be4a87e08b",
+      "bytes": 653,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/209f333ea3e06dec876c1d5115973520a51c67205d8573bbb6e347b56e96e2c6.jsonl",
+      "sha256": "209f333ea3e06dec876c1d5115973520a51c67205d8573bbb6e347b56e96e2c6",
+      "bytes": 1001,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/890f2023276dbad63a97702a96210b493f5bbbfb2bbb06a92035f39a871be155.jsonl",
+      "sha256": "890f2023276dbad63a97702a96210b493f5bbbfb2bbb06a92035f39a871be155",
+      "bytes": 444,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/63e7d1b24f3711412f8ae4a76327698dbb06b8a2a2d8d604d3650b200f19da4a.jsonl",
+      "sha256": "63e7d1b24f3711412f8ae4a76327698dbb06b8a2a2d8d604d3650b200f19da4a",
+      "bytes": 461,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

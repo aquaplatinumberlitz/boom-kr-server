@@ -165,15 +165,6 @@
       "limits": "Modifiede9Wine/singleclient/knownfixtures/inheritedcache+prefix+diagnosticglobalreset, not originalWindows/coldallcache/K3identity/gate/fullmatch/LANInternet8clients. Actualredirectsocketreset notsameprocessretryafterCRC/accountresume. Prefixguard0/cap1MiB observed, no fullprefix/modes/bounds enforcement. Mode0rawpacketfixedoffsets ignored aswronglayout; socketstate onlyinterpreted. No productioncode/sourcebinary/DB edits or forcedfunction/return."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP180-live-codec-stream.json",
-      "bytes": 67036,
-      "sha256": "c8336b28a2ac75731a6dcc01b8933855e3422eb4b381db2e18965bfc306b362f",
-      "count": 277
-    }
-  ],
   "delta": {
     "added": [
       "Actualsocketpositive split/coalesced/nativeauthcursor; exactonebitCRCnegative; actualredirectsocketreset; prefixguard/cap runtimevalues."
@@ -280,6 +271,633 @@
       "path": "docs/evidence/checkpoints/README.md",
       "state": "unchanged",
       "reason": "No productioncode/profile/storeworkflow/oldcompleteevidence change; runtimeharness stayslocaldiagnostic."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "LIVE-00001",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/source-first-reuse.json",
+      "bytes": 4819,
+      "sha256": "ad9bd6ab9b9355e5066474d6a58337cb55507209e4eb48435d64e566c4a0331b"
+    },
+    {
+      "id": "LIVE-00007",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/preparation.json",
+      "bytes": 9937,
+      "sha256": "b582fd8117dbe0a5fe88ae7dafb9ee2d97eb9728025f4930e42a3ec3ee2c084d"
+    },
+    {
+      "id": "LIVE-00012",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-preparation.json",
+      "bytes": 9335,
+      "sha256": "a57a127eefd024e82115f1ceae09a609fabee9435350850417968442946bc9cc"
+    },
+    {
+      "id": "LIVE-00015",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/verification.json",
+      "bytes": 42628,
+      "sha256": "3f7a18d43fcdcab9572c415f0c6ad9282deb2a4b57b6c30c209f8fc2a89f5a7e"
+    },
+    {
+      "id": "LIVE-00017",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/gate-criteria-equality.json",
+      "bytes": 102,
+      "sha256": "4cf9c1f7890074177a8cb8cedeaa1536351d06e38cbd942bda360947678ef56e"
+    },
+    {
+      "id": "LIVE-00024",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/artifacts-final-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "LIVE-00033",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/client.log",
+      "bytes": 150213,
+      "sha256": "7de2b8d467614ba7ac2745ce18869ff9758d2afb4df36540bef2984fe80b6e07"
+    },
+    {
+      "id": "LIVE-00043",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/transport-writes.jsonl",
+      "bytes": 4666,
+      "sha256": "9b6542201704b86805aa9e18ea5409828e8b3b2a7660ca85a2f4760683a706e1"
+    },
+    {
+      "id": "LIVE-00097",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/screen-20.png",
+      "bytes": 144472,
+      "sha256": "f270cb4131641442115349535e8690e472f5729e390249ae3cfe625483ce829d"
+    },
+    {
+      "id": "LIVE-00100",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/run.json",
+      "bytes": 13244,
+      "sha256": "7fa6215573dc7df87fe88feca270d308404682057de3072ffcf1235ecf7ec182"
+    },
+    {
+      "id": "LIVE-00101",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/stream-r1/raw-seal.json",
+      "bytes": 24386,
+      "sha256": "2130a0f4b1f223a9ff426ff954f2b8671a15e51e50c8b59480cdad364dbdfd8f"
+    },
+    {
+      "id": "LIVE-00109",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/client.log",
+      "bytes": 113567,
+      "sha256": "5dbc961255f1036f0acbb3930d52062f214c3135909965d397153f561cb90c21"
+    },
+    {
+      "id": "LIVE-00119",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/transport-writes.jsonl",
+      "bytes": 2557,
+      "sha256": "473bbb10482fabe8ad9823b3a933574c3a2a4ec3b42319e01b137a6bd25db6c8"
+    },
+    {
+      "id": "LIVE-00156",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/CALog-run.txt",
+      "bytes": 749,
+      "sha256": "6c324cb3408288868132e6ddc92d45ab6d9e9379b0c7704959f88a468d5128e6"
+    },
+    {
+      "id": "LIVE-00159",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/crc-negative-r1/raw-seal.json",
+      "bytes": 21051,
+      "sha256": "b4700894f1a38de093a7f8c72ba01314f6087a813718e8f3f3704d156de90bda"
+    },
+    {
+      "id": "LIVE-00186",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "LIVE-00187",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "LIVE-00188",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "LIVE-00189",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "LIVE-00190",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "LIVE-00191",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "LIVE-00192",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "LIVE-00193",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "LIVE-00194",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "LIVE-00195",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "LIVE-00196",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "LIVE-00197",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "LIVE-00198",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "LIVE-00199",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "LIVE-00200",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "LIVE-00201",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "LIVE-00202",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "LIVE-00203",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "LIVE-00204",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "LIVE-00205",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "LIVE-00206",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "LIVE-00207",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 106121,
+      "sha256": "96c1a56837b28ea25daeade2d048f96016805188d2c8d1e90ffa2afdc01a4690"
+    },
+    {
+      "id": "LIVE-00208",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "LIVE-00209",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "LIVE-00210",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "LIVE-00211",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "LIVE-00212",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "LIVE-00213",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "LIVE-00214",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "LIVE-00215",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "LIVE-00216",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "LIVE-00217",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "LIVE-00218",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "LIVE-00219",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "LIVE-00220",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "LIVE-00221",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "LIVE-00222",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "LIVE-00223",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "LIVE-00224",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "LIVE-00225",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "LIVE-00226",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "LIVE-00227",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "LIVE-00228",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "LIVE-00229",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "LIVE-00230",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "LIVE-00231",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "LIVE-00232",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "LIVE-00233",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "LIVE-00234",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "LIVE-00236",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "LIVE-00246",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "LIVE-00251",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "LIVE-00253",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "LIVE-00255",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "LIVE-00257",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "LIVE-00263",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "LIVE-00272",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "LIVE-00275",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/k2-live-stream-r1",
+      "path": "local/evidence-manifests/a75d9abe280c57019fb327fe0addc0e7de05cd72a5ced582c63d1fe8272646c0.jsonl",
+      "sha256": "a75d9abe280c57019fb327fe0addc0e7de05cd72a5ced582c63d1fe8272646c0",
+      "bytes": 33191,
+      "count": 165,
+      "files_bytes": 40725426
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b78c1cd942011b6134bac16cabd1d523b9c1e1374f3eadca15697585cc4dc12a.jsonl",
+      "sha256": "b78c1cd942011b6134bac16cabd1d523b9c1e1374f3eadca15697585cc4dc12a",
+      "bytes": 1143,
+      "count": 6,
+      "files_bytes": 74013
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/58b5b87446cea69abda8960fa8bcc6d7a989bf096c928af807930e76abfd2459.jsonl",
+      "sha256": "58b5b87446cea69abda8960fa8bcc6d7a989bf096c928af807930e76abfd2459",
+      "bytes": 636,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/550255cfb90fbd291dce9aef3a5fddb0fd84f33a791c2fa04e71800111c84cbf.jsonl",
+      "sha256": "550255cfb90fbd291dce9aef3a5fddb0fd84f33a791c2fa04e71800111c84cbf",
+      "bytes": 1006,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/617ed1eaacd185c31d90eb0afd542abb5543dc65e249dd96a8c137b5233361b3.jsonl",
+      "sha256": "617ed1eaacd185c31d90eb0afd542abb5543dc65e249dd96a8c137b5233361b3",
+      "bytes": 971,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/44efa6a2948cf7f8cf90819aaa5086d24607588ca25d96245a072e25f682d116.jsonl",
+      "sha256": "44efa6a2948cf7f8cf90819aaa5086d24607588ca25d96245a072e25f682d116",
+      "bytes": 459,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/5a2e3c00325af519f03dd97dbc06e49ea6141aa5c1562e302eb2aafafcf78fce.jsonl",
+      "sha256": "5a2e3c00325af519f03dd97dbc06e49ea6141aa5c1562e302eb2aafafcf78fce",
+      "bytes": 635,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/df40bf1e88b546cd20e9d2f565079ee6180a76f2e87f2bda1f76f4a75203f069.jsonl",
+      "sha256": "df40bf1e88b546cd20e9d2f565079ee6180a76f2e87f2bda1f76f4a75203f069",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/4bd5ff4a2bdbec8bb8dac8f781f56a7dd7f468e2915a7b04f45355b7c28f7a2a.jsonl",
+      "sha256": "4bd5ff4a2bdbec8bb8dac8f781f56a7dd7f468e2915a7b04f45355b7c28f7a2a",
+      "bytes": 430,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/e90cda26cf5103481608eb33cb4d23e440634c3fc0202464f78ca49d1ca638fd.jsonl",
+      "sha256": "e90cda26cf5103481608eb33cb4d23e440634c3fc0202464f78ca49d1ca638fd",
+      "bytes": 439,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/99f5210483630ea210e40eb0ceccae304e73052b945a393fd39c2e262013e43e.jsonl",
+      "sha256": "99f5210483630ea210e40eb0ceccae304e73052b945a393fd39c2e262013e43e",
+      "bytes": 638,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/c05a1ee214965884c332f94ea756443c1c3783a33072f1593782502ac5b98006.jsonl",
+      "sha256": "c05a1ee214965884c332f94ea756443c1c3783a33072f1593782502ac5b98006",
+      "bytes": 432,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/b9c38e4745cd3e3b3911254438455c00497e4409e52f89b250a992be30233b93.jsonl",
+      "sha256": "b9c38e4745cd3e3b3911254438455c00497e4409e52f89b250a992be30233b93",
+      "bytes": 449,
+      "count": 2,
+      "files_bytes": 384
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/8e96ff6f134d6d138c4ee5bda595a12a2c88ab71435ff7c355ed7ce9178920b8.jsonl",
+      "sha256": "8e96ff6f134d6d138c4ee5bda595a12a2c88ab71435ff7c355ed7ce9178920b8",
+      "bytes": 434,
+      "count": 2,
+      "files_bytes": 92
     }
   ]
 }

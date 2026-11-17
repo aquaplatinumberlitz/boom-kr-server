@@ -138,15 +138,6 @@
       "limits": "Cleanupdoesnotcertifygate; separatefromnativeobservations."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP261-internet-observation.json",
-      "bytes": 297723,
-      "sha256": "633aecaae9315454ad38be902bcb7a174d9de3794e3663219c535fee305d0223",
-      "count": 1124
-    }
-  ],
   "delta": {
     "added": [
       "Measuredfield51waitsource/control andnative2accountInternetbasic/UDP/NAT/outcomes-reset-Start3.",
@@ -264,6 +255,295 @@
       "path": "docs/evidence/issue-reconciliation/review.json",
       "state": "updated",
       "reason": "Observedpathnativecontrols/gameplay/NAT/sharednegative andexactN1environmentlimit; nooldcomplete/rawrewrite."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "N1CP261-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 66791,
+      "sha256": "60e58202713be9e904bd026da9cf6f15650a6db98ca4d06f6a6a135d8c0c76d2"
+    },
+    {
+      "id": "N1CP261-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 218155,
+      "sha256": "2294fbda200fe253281af5de06a07daf32c76f4afd22e253350eec8f3d83daa9"
+    },
+    {
+      "id": "N1CP261-00003",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 125394,
+      "sha256": "d93d116d0fd48a3c75e4bf7592fed1891262b69e151bb042b448975b302ad9a8"
+    },
+    {
+      "id": "N1CP261-00004",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 845203,
+      "sha256": "b1a115ae2b6b89c21fa3ea6c3e000cf6532317e958c8c4b9966010c2de159935"
+    },
+    {
+      "id": "N1CP261-00005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 53631,
+      "sha256": "1cce2f0081e557c0e9e669204d62e4d402e0d77daf321fd33174f3d3f3eba4b9"
+    },
+    {
+      "id": "N1CP261-00006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD078.json",
+      "bytes": 4578,
+      "sha256": "301366371b2de366ffcb29f57a1cef19579010e0ed663d9b7ba3c1146c4cf3a6"
+    },
+    {
+      "id": "N1CP261-00007",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 284303,
+      "sha256": "59e8c8e93f704bfa6e7aa93da58e294d4e73411a556a8fe71bb0a2c4006873e7"
+    },
+    {
+      "id": "N1CP261-00008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42945,
+      "sha256": "c95011389eca421783d7d73a6d083ca05810cea7855716e7d46376c7b69f2db5"
+    },
+    {
+      "id": "N1CP261-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 58212,
+      "sha256": "d59fdda5ade1007dad0a351462c0c4289006aaf3c9eeea4b6e41bed9c58038b1"
+    },
+    {
+      "id": "N1CP261-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/internet-observation.json",
+      "bytes": 4331,
+      "sha256": "b6d7662b116165935e21e560fd1e6c2e61fe80e1b3925adf5f49a6592c8bb705"
+    },
+    {
+      "id": "N1CP261-00011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 229844,
+      "sha256": "2119f0c3aaf041638998d32aa20dd7a29dc7b2a19b6609f383dc09930ad41c47"
+    },
+    {
+      "id": "N1CP261-00017",
+      "kind": "local",
+      "path": "local/research/codex/internet-observation-delivery-r1/selfcheck.json",
+      "bytes": 2436,
+      "sha256": "d06d64280dc0f789936d884f8e8e457b01ce25afc3ac2958cd60547d2f8b5a5e"
+    },
+    {
+      "id": "N1CP261-00029",
+      "kind": "local",
+      "path": "local/research/codex/n1-a-uplink-r4-final-cleanup.json",
+      "bytes": 373,
+      "sha256": "02c8f44257931a01a2d2f30d53ca423583bcd2fbdd69ec37642e4ff233dab6c9"
+    },
+    {
+      "id": "N1CP261-00264",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-shared-r11/shared-verification.json",
+      "bytes": 1965,
+      "sha256": "8d07cbc5daddce2888f7acf570cd8ab1efd4707b94f7203f31f665393bfd3ab3"
+    },
+    {
+      "id": "N1CP261-00290",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-shared-r11-cleanup-audit/verification.json",
+      "bytes": 814,
+      "sha256": "3f217580585aa41d78f57a6216b717125aedcf8f2ae1a70bf9a2407d6fee0dab"
+    },
+    {
+      "id": "N1CP261-00475",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-control-r10/life-verification.json",
+      "bytes": 574820,
+      "sha256": "c3794267a69b0161382ccf36febb6211c0261eab6dd6b11b571e42bf85b812f9"
+    },
+    {
+      "id": "N1CP261-00568",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-control-r10/ownership-verification.json",
+      "bytes": 2459,
+      "sha256": "2e4f949815f434a1e261c9a05971af4a499603b0a694b87ad68de9b3dc20ed80"
+    },
+    {
+      "id": "N1CP261-00569",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-control-r10/peer-getter-verification.json",
+      "bytes": 647,
+      "sha256": "c32fb0966507bf00d471e7c64c571a9290c60a92ad0a55e5e4c5d1d06c9ecfbd"
+    },
+    {
+      "id": "N1CP261-00570",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-control-r10/peer153-probe-correction.json",
+      "bytes": 11355,
+      "sha256": "1f8ddf271d1f6e643441ff6b416256ba3f7157a2175ef86e0dccff62daa47bbf"
+    },
+    {
+      "id": "N1CP261-00574",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-control-r10/udp-verification.json",
+      "bytes": 42806,
+      "sha256": "dcff364d339153fdc275827fe07eb404fa00cc95c9ee828ebc734334caace6be"
+    },
+    {
+      "id": "N1CP261-00575",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-control-r10/ui-review.json",
+      "bytes": 1696,
+      "sha256": "6f698cb80ccac63d95d7b5593db70d92b002a609074485ab122328c4cd36032c"
+    },
+    {
+      "id": "N1CP261-00605",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-control-r10-cleanup-audit/verification.json",
+      "bytes": 814,
+      "sha256": "956e8c9ffc606a472adae2156cf2e074e62942b1072fd720a5ebcf7bc0250c42"
+    },
+    {
+      "id": "N1CP261-00612",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-control-r9/derived/verification.json",
+      "bytes": 4299,
+      "sha256": "be495a905523f327379e125da706faf40692fd8a0361e10fc9c1cf9917259e10"
+    },
+    {
+      "id": "N1CP261-01065",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-r8/native/timer-verification.json",
+      "bytes": 1962,
+      "sha256": "00c9595ad9fa318a5d0731e6de27b220c8edad0cd5a99295cfa0a9bea3111d3f"
+    },
+    {
+      "id": "N1CP261-01069",
+      "kind": "local",
+      "path": "local/research/codex/n1-native-wait-r8/timing-verification.json",
+      "bytes": 1087,
+      "sha256": "7fcd58dfd7c1de03ce0aa31ba5f275c88b8b0c82822b4cf711d17d11c7286e18"
+    },
+    {
+      "id": "N1CP261-01096",
+      "kind": "local",
+      "path": "local/research/codex/n1-physical-uplink-provenance-r1/evidence-index.json",
+      "bytes": 2728,
+      "sha256": "0240a5d8f576d66bfc6a564810eb42d995210c19c0157ba885ff34729d38c99f"
+    },
+    {
+      "id": "N1CP261-01097",
+      "kind": "local",
+      "path": "local/research/codex/n1-physical-uplink-provenance-r1/verification.json",
+      "bytes": 7967,
+      "sha256": "8847fff99b7507c4efc4ca804c46e0da1494bc7a5ea4c7654931aeb7277012fe"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/92d1ab6efdbb4fecce4bb5d8b853bcf5503e3721a3d69371576ab8d375a1dd02.jsonl",
+      "sha256": "92d1ab6efdbb4fecce4bb5d8b853bcf5503e3721a3d69371576ab8d375a1dd02",
+      "bytes": 3394,
+      "count": 18,
+      "files_bytes": 130758
+    },
+    {
+      "run": "local/research/codex/internet-observation-delivery-r1",
+      "path": "local/evidence-manifests/351ece96b66d3288ec70fa3f462b39338642dbec66bba8429e458ba71133cffe.jsonl",
+      "sha256": "351ece96b66d3288ec70fa3f462b39338642dbec66bba8429e458ba71133cffe",
+      "bytes": 2385,
+      "count": 10,
+      "files_bytes": 1928809
+    },
+    {
+      "run": "local/research/codex/n1-native-shared-r11",
+      "path": "local/evidence-manifests/5820b89be9988814800af654468f9eea2bc2ebcb05b1cdbe2fb501d1809bd1fe.jsonl",
+      "sha256": "5820b89be9988814800af654468f9eea2bc2ebcb05b1cdbe2fb501d1809bd1fe",
+      "bytes": 49899,
+      "count": 234,
+      "files_bytes": 67648793
+    },
+    {
+      "run": "local/research/codex/n1-native-shared-r11-cleanup-audit",
+      "path": "local/evidence-manifests/08d831ad4d46d963cc5ca85324ca7f54cef3a4a18709e33794fe88a2e640b7dc.jsonl",
+      "sha256": "08d831ad4d46d963cc5ca85324ca7f54cef3a4a18709e33794fe88a2e640b7dc",
+      "bytes": 5583,
+      "count": 25,
+      "files_bytes": 310344
+    },
+    {
+      "run": "local/research/codex/n1-native-wait-control-r10",
+      "path": "local/evidence-manifests/f6748d5d67ca89687be6dfb2b4524d4bd67736165f8735c2dab4cb6f49ab3efb.jsonl",
+      "sha256": "f6748d5d67ca89687be6dfb2b4524d4bd67736165f8735c2dab4cb6f49ab3efb",
+      "bytes": 61853,
+      "count": 281,
+      "files_bytes": 73398034
+    },
+    {
+      "run": "local/research/codex/n1-native-wait-control-r10-cleanup-audit",
+      "path": "local/evidence-manifests/7e0f07e5a1ed5e01899cf54d65e5c888c43aea435053b991976ce2049bb48740.jsonl",
+      "sha256": "7e0f07e5a1ed5e01899cf54d65e5c888c43aea435053b991976ce2049bb48740",
+      "bytes": 6208,
+      "count": 27,
+      "files_bytes": 736018
+    },
+    {
+      "run": "local/research/codex/n1-native-wait-control-r9",
+      "path": "local/evidence-manifests/2a862aad2db3f3eee792740f3bdee4098e99d5a947a8c722cb391b4037424506.jsonl",
+      "sha256": "2a862aad2db3f3eee792740f3bdee4098e99d5a947a8c722cb391b4037424506",
+      "bytes": 49487,
+      "count": 227,
+      "files_bytes": 66598586
+    },
+    {
+      "run": "local/research/codex/n1-native-wait-control-r9-cleanup-audit",
+      "path": "local/evidence-manifests/b2ee8dbb5ce10ec647f8631cc7c6aaf3b2b4f3543b50ffce6480fb61ce2acdd4.jsonl",
+      "sha256": "b2ee8dbb5ce10ec647f8631cc7c6aaf3b2b4f3543b50ffce6480fb61ce2acdd4",
+      "bytes": 5929,
+      "count": 26,
+      "files_bytes": 415990
+    },
+    {
+      "run": "local/research/codex/n1-native-wait-r8",
+      "path": "local/evidence-manifests/8057bd0b073f5d30ad596d7c0ef315513562d835ca1dc8c7ca8ff129642f5b61.jsonl",
+      "sha256": "8057bd0b073f5d30ad596d7c0ef315513562d835ca1dc8c7ca8ff129642f5b61",
+      "bytes": 43559,
+      "count": 208,
+      "files_bytes": 66755389
+    },
+    {
+      "run": "local/research/codex/n1-native-wait-r8-cleanup-audit",
+      "path": "local/evidence-manifests/396390cd5790abe4b75aa861aedec82e4ee162b33d21dbfc4efccdd47ede8570.jsonl",
+      "sha256": "396390cd5790abe4b75aa861aedec82e4ee162b33d21dbfc4efccdd47ede8570",
+      "bytes": 5502,
+      "count": 25,
+      "files_bytes": 317525
+    },
+    {
+      "run": "local/research/codex/n1-wait-field51-control-r9",
+      "path": "local/evidence-manifests/c9f8c6ce1343a7cc8fcd2228fa42d6e4ba2c0639b260e118426c39fe4f722f79.jsonl",
+      "sha256": "c9f8c6ce1343a7cc8fcd2228fa42d6e4ba2c0639b260e118426c39fe4f722f79",
+      "bytes": 701,
+      "count": 3,
+      "files_bytes": 2245
+    },
+    {
+      "run": "local/research/codex/n1-wait-threshold-origin-r1",
+      "path": "local/evidence-manifests/513f38fbdcf1eb919f4c993071129cf7bc11d73829f13c6e979c0be98255a7b7.jsonl",
+      "sha256": "513f38fbdcf1eb919f4c993071129cf7bc11d73829f13c6e979c0be98255a7b7",
+      "bytes": 2826,
+      "count": 13,
+      "files_bytes": 29465
     }
   ]
 }
