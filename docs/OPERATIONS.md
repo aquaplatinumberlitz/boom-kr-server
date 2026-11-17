@@ -56,6 +56,12 @@ không qua argv; dùng wrapper nhập mật khẩu riêng trước khi bàn giao
 server không tới được thì báo lỗi và giữ TTL, không giả logout đã xác nhận. Gói Wine/Windows và Internet native
 còn theo acceptance M8; không dùng `/bin/true` trong smoke làm bằng chứng chơi trận.
 
+Harness Windows hiện dùng [owner](../tools/native_windows_candidate.py), [input QMP tham số hóa](../tools/native_windows_input.py)
+và [installer](../tools/native_windows_install.ps1). Mọi cấu hình, media, credential test, overlay và raw chỉ ở local;
+owner giữ lease chung, VM/egress riêng và chờ bản cài kiểm hash xong mới bật runner VPS có hạn và rule test riêng.
+Chọn executable theo hash đã đo, không mặc định tên `CA.exe` trong cây nhiều probe; bản copy từ ISO phải bỏ
+ReadOnly trước khi ghi config/cache. Các lỗi chuẩn bị và sửa tương ứng ở metadata nền launcher, chưa là nghiệm thu KR.
+
 ## Chọn cấu hình phục vụ
 
 Giai đoạn 1 dùng **`AuthenticatedRelay`**. `LegacyDirect` và relay UDP prototype giữ làm cấu hình chẩn đoán riêng.

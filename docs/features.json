@@ -6133,7 +6133,10 @@
             "tools/test_rust_service_package.py",
             "rust/crates/kr-service/src/public_launcher.rs",
             "rust/crates/kr-tunnel/src/launch_tls.rs",
-            "rust/crates/kr-tunnel/src/bin/kr-launch.rs"
+            "rust/crates/kr-tunnel/src/bin/kr-launch.rs",
+            "tools/native_windows_candidate.py",
+            "tools/native_windows_input.py",
+            "tools/native_windows_install.ps1"
           ],
           "delivery": "via_pr"
         },

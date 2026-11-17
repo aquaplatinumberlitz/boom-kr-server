@@ -56,6 +56,18 @@
     "Windows VM mới, không NIC, chỉ chạy binary companion và từ chối input sai. Không login/QUIC/CA hoặc Internet; binary SHA receipt giữ build đã chạy, không thay bằng binary cross-build mới.",
     "Hai lượt TLS/account/companion qua Internet thật đã có với child /bin/true và cleanup rule/DB. Native Windows/Wine player package, trận KR trên Internet, expiry/revoke/full cancellation matrix và operator installation còn phải kiểm.",
     "Không checkpoint/audit hoàn tất nhóm hoặc PR riêng cho từng phép thử; phần WIP giữ một nhóm issue476.",
-    "Raw lỗi admin response assumption, socket parent permission và pending registry sau logout giữ ở local; run pass không thay failure."
-  ]
+    "Raw lỗi admin response assumption, socket parent permission và pending registry sau logout giữ ở local; run pass không thay failure.",
+    "Windows native preparation has explicit failed/corrected candidates; readonly input config and original-exe selection corrected before any KR launch. Do not infer Windows native acceptance from installer/hash or old binary-control receipts.",
+    "Run6 verified173 files and corrected CP337 vi executable in the dedicated Windows installation; owner expired before service start. Run7 is a continuation of the same installed VM, not a second clean installation. No native KR claim from these installation receipts."
+  ],
+  "native_preparation": {
+    "path": "local/research/codex/m8-player-launcher-preparation-r1/native-preparation-observations.json",
+    "bytes": 4125,
+    "sha256": "08c46c4f1bf43549d7a12ac65d75fc7385bb4d4cde99e3a9b65f601fdb2ae034"
+  },
+  "windows_install_ready": {
+    "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-install-ready-r6.json",
+    "bytes": 1936,
+    "sha256": "4f0c33acd75143e13f736e8137673e9ac8302da6a59b027a0a05b20932dcef6a"
+  }
 }
