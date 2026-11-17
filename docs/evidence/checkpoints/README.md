@@ -267,6 +267,7 @@ nhắc, config `kr-rust-*` cùng mọi fixture pin trong đó, rồi phân lớp
 | `keep_pinned` | Config/fixture service và bộ kiểm TCP, đường dẫn do code/tools nhắc, run manifest, `local/tools`; không bao giờ dọn. |
 | `keep` | File được checkpoint tham chiếu dạng text/JSON/script nhỏ (tối đa 1 MiB), script sinh dữ liệu. |
 | `keep_compressed` | Raw khác được checkpoint tham chiếu và database IDA (chú thích là kiến thức); giữ nguyên đường dẫn và bytes, btrfs đã nén zstd trong suốt. |
+| `keep_recent` | Mọi file (trừ pinned) của unit/run có file mtime hoặc ctime trong N ngày gần nhất (`--keep-recent-days N`, mặc định 7, 0 tắt): việc đang làm chưa checkpoint nào tham chiếu; không bao giờ dọn hay nén. Plan ghi `keep_recent_days`; `--apply` kiểm lại từng unit và báo `skipped_recent` nếu unit mới bị chạm sau khi lập plan. |
 | `disposable_*` | Bản sao game/Wine prefix theo run, memory dump, file trung gian không tham chiếu trong run có tham chiếu, run không được checkpoint/docs/code nào nhắc. |
 
 ```bash

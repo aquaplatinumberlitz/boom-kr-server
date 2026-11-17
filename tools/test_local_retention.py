@@ -3,7 +3,9 @@ import contextlib
 import hashlib
 import io
 import json
+import os
 from pathlib import Path
+import time
 import unittest
 
 import check_checkpoints as checker
@@ -34,9 +36,10 @@ class RetentionTest(unittest.TestCase):
                 'sha256': hashlib.sha256(data).hexdigest()}}))
         self.migrated()
 
-    def dry_run(self):
+    def dry_run(self, days=0, now=None):
+        # Fixture files are created just now; the guard is off (0) unless a test exercises it.
         with contextlib.redirect_stdout(io.StringIO()):
-            path, digest, summary, report = retention.plan(self.root, False, True, 'local/retention')
+            path, digest, summary, report = retention.plan(self.root, False, True, 'local/retention', days, now)
         return path, digest, report
 
     def test_dry_run_classes_and_pins(self):
@@ -91,6 +94,52 @@ class RetentionTest(unittest.TestCase):
         registry['entries'][0]['path'] = 'local/evidence-manifests'
         self.write(lean.PRUNED, json.dumps(registry))
         self.assertTrue(any('local-pruned' in e for e in self.validate()[0]))
+
+    def test_recent_unit_is_keep_recent_and_old_unreferenced_stays_disposable(self):
+        later = time.time() + 30 * 86400  # every fixture file is 30 days old at this clock
+        self.write('local/research/codex/wip-r2/notes.txt', 'in progress, unreferenced\n')
+        wip = self.root / 'local/research/codex/wip-r2/notes.txt'
+        os.utime(wip, (later - 3600, later - 3600))  # touched an hour ago (mtime)
+        path, digest, report = self.dry_run(7, later)
+        actions = {a['path']: a['class'] for a in report['actions']}
+        self.assertNotIn('local/research/codex/wip-r2', actions)
+        self.assertEqual(actions['local/research/codex/unused-r1'], 'disposable_unreferenced_run')
+        self.assertEqual(report['keep_recent_days'], 7)
+        self.assertEqual(report['totals']['keep_recent']['files'], 1)
+        self.assertEqual([u['unit'] for u in report['keep_recent_units']], ['local/research/codex/wip-r2'])
+        self.assertGreater(report['keep_recent_units'][0]['apparent_bytes'], 0)
+        # Without the future clock the whole tree is fresh (ctime is now): everything unpinned is kept.
+        _, _, fresh = self.dry_run(7)
+        self.assertEqual(fresh['actions'], [])
+        self.assertIn('local/research/codex/fixture-r1/frame.bin', fresh['pinned']['fixture_pins'])
+
+    def test_keep_recent_days_zero_disables_guard(self):
+        _, _, report = self.dry_run(0)
+        self.assertNotIn('keep_recent', report['totals'])
+        self.assertEqual(report['keep_recent_units'], [])
+        self.assertIn('local/research/codex/unused-r1', {a['path'] for a in report['actions']})
+        parser_default = retention.DEFAULT_KEEP_RECENT_DAYS
+        self.assertEqual(parser_default, 7)
+
+    def test_apply_rechecks_guard_and_skips_unit_touched_after_planning(self):
+        later = time.time() + 30 * 86400
+        path, digest, report = self.dry_run(7, later)
+        self.assertIn('local/research/codex/unused-r1', {a['path'] for a in report['actions']})
+        touched = self.root / 'local/research/codex/unused-r1/out.log'
+        os.utime(touched, (later - 60, later - 60))  # became recent after planning
+        result = retention.apply(self.root, path, digest, later)
+        self.assertTrue(touched.exists())
+        self.assertEqual(result['skipped_recent_count'], 1)
+        self.assertEqual(result['skipped_recent'][0]['path'], 'local/research/codex/unused-r1')
+        self.assertFalse((self.root / 'local/research/codex/run-a/game-A').exists())  # untouched units still go
+        self.assertGreater(result['deleted'], 0)
+
+    def test_apply_rejects_plan_without_guard(self):
+        path, digest, report = self.dry_run(0)
+        del report['keep_recent_days']
+        path.write_text(json.dumps(report))
+        with self.assertRaisesRegex(ValueError, 'keep_recent_days'):
+            retention.apply(self.root, path, retention.sha256_file(path))
 
 
 def summary_exists(plan_path):
