@@ -618,6 +618,10 @@ checkpoint:
 7. **Nhân vật.** M7e chỉ có chỉ số cho hai nhân vật đã đo. Nhân vật chưa hỗ trợ bị từ chối rõ ràng, không đóng kết
    nối (issue 457); đo thêm nhân vật từ `BomberAttr`
    không là điều kiện đóng G1.
+8. **Client tiếng Việt trên Rust.** Theo [quyết định chủ dự án](evidence/owner-directives/g1-vi-client-smoke.json),
+   trước khi đóng G1 chạy một trận native hai vòng bằng client 00967 bản vá L1 `vi` (exe, dữ liệu dịch và font hiện
+   hành) trên service Rust: một map G1 và item thuộc nhóm giữ, đăng nhập, phòng, trận, kết quả và reset không lỗi.
+   Các phép đo G1 vẫn dùng client KR không vá chữ.
 
 Map được mở từng cái. Theo [quyết định chủ dự án](evidence/owner-directives/g1-map-roster-limits.json), G1 đạt khi
 Village10 và Tomb12 chơi được trong phòng **2–6 người**, còn Camp08, Factory07, Forest07 và Patrit14 trong phòng
