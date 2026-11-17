@@ -101,6 +101,11 @@
       "path": "local/research/codex/g1-character-native-matrix-r3/native/launch-exit.json",
       "bytes": 81,
       "sha256": "932d6cdbf5e61780805bd4d00042298697db0b1f4cd85cd1506ebd6c548af56e"
+    },
+    {
+      "path": "local/research/codex/g1-character-room-choices-tcp-r1/verification.json",
+      "bytes": 737,
+      "sha256": "74ab4b2c57290863c2dbc1359e061220e95aaffaa6d892cb99d89e90ee6df3f0"
     }
   ],
   "retained_failures": [
