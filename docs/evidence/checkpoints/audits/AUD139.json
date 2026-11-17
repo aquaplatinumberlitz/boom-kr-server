@@ -1,0 +1,39 @@
+{
+  "id": "AUD139",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP331",
+  "recorded_utc": "2026-11-17T06:44:13.867826+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/records/CP330.json",
+    "docs/evidence/checkpoints/shoe-docs-sync-correction.json",
+    "docs/evidence/checkpoints/documentary-json-identity-correction.json",
+    "tools/check_checkpoints.py",
+    "tools/test_checkpoints.py",
+    "local/research/codex/cp330-exact-head-full.txt",
+    "local/research/codex/cp331-checkpoint-tool-tests-r2.txt"
+  ],
+  "method": "Đọc lại bốn nguồn chuẩn và quy tắc documentary identity, so record CP330 với lỗi gate. Kiểm extension chỉ nhận correction note đúng schema/lineage/hash, không JSON bất kỳ và không claim native/test/confirmed. Đối chiếu negative tests, giữ common evidence/hash/history và toàn bộ record/audit/raw/receipt cũ. Không đóng thêm nhóm tính năng.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP330 artifacts=[] nhưng canonical JSON không đủ identity theo quy tắc Markdown-only. Ghi correction trước không làm gate pass.",
+      "correction": "Bổ sung phân loại note JSON documentary có schema/lineage/hash rõ ràng và kiểm âm; khai đây là extension validator, không biến receipt fail thành pass.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "tools/test_checkpoints.py",
+        "docs/evidence/checkpoints/README.md",
+        "docs/evidence/checkpoints/documentary-json-identity-correction.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Full gate exact head và mọi CI cần qua trước merge PR454.",
+    "Không sửa Rust/native behavior CP329; all-dead code ở nhánh riêng chưa có native acceptance. G1/M8/phase1 và L1 vẫn mở."
+  ]
+}

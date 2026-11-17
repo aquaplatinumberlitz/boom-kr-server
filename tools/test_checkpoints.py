@@ -146,6 +146,53 @@ class CheckpointsTest(unittest.TestCase):
         self.record["locators"] = []
         self.assertTrue(any("artifact identity" in e for e in self.errors()))
 
+    def correction_json_fixture(self, **changes):
+        note = {"schema": "kre-documentation-sync-correction-v1", "source": "design", "status": "design",
+                "checkpoint": "CP001", "previous": "origin", **changes}
+        relative = "docs/evidence/checkpoints/sample-correction.json"
+        path = self.root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        data = json.dumps(note).encode()
+        path.write_bytes(data)
+        self.record["artifacts"] = []
+        self.record["evidence"] = [{"id": "E1", "kind": "repository", "path": relative,
+                                    "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}]
+        self.record["findings"][0].update(source="design", status="design", method="documentation",
+                                           canonical=relative, evidence=["E1"])
+        return path
+
+    def test_structured_correction_identity_requires_exact_schema_lineage_and_hash(self):
+        path = self.correction_json_fixture()
+        self.assertEqual(self.errors(), [])
+        path.write_text(path.read_text() + " ")
+        self.assertTrue(any("hash mismatch" in e for e in self.errors()))
+        for changes in [{"schema": "runtime-result-v1"}, {"checkpoint": "CP002"}, {"previous": "CP000"},
+                        {"source": "kr_runtime"}, {"status": "confirmed"}]:
+            with self.subTest(changes=changes):
+                self.correction_json_fixture(**changes)
+                self.assertTrue(any("artifact identity" in e for e in self.errors()))
+
+    def test_structured_correction_never_exempts_native_test_or_unpinned_evidence(self):
+        for changes in [{"source": "kr_runtime", "method": "runtime", "status": "confirmed"},
+                        {"source": "kr_static", "method": "static", "status": "confirmed"},
+                        {"method": "test"}, {"status": "confirmed"}, {"evidence": ["unknown"]}]:
+            with self.subTest(changes=changes):
+                self.correction_json_fixture()
+                self.record["findings"][0].update(changes)
+                self.assertTrue(any("artifact identity" in e for e in self.errors()))
+        original = self.correction_json_fixture()
+        outside = self.root / "docs/unknown-correction.json"
+        outside.write_bytes(original.read_bytes())
+        self.record["evidence"][0]["path"] = "docs/unknown-correction.json"
+        self.record["findings"][0]["canonical"] = "docs/unknown-correction.json"
+        self.assertTrue(any("artifact identity" in e for e in self.errors()))
+        self.correction_json_fixture()
+        self.record["evidence"][0]["kind"] = "local"
+        self.assertTrue(any("artifact identity" in e for e in self.errors()))
+        self.correction_json_fixture()
+        self.record["evidence"][0]["sha256"] = "f" * 64
+        self.assertTrue(any("artifact identity" in e for e in self.errors()))
+
     def test_id_counter_gap_and_missing_fields(self):
         self.record["id"] = "CP002"
         del self.record["question"]

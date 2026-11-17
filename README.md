@@ -33,10 +33,11 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP330: đã sửa đồng bộ link/catalog của lát Shoe Rust tại CP329.**
-[Contract và giới hạn](docs/protocol/items-stats.md#rust-bomb-motion-codec) giữ hai vòng native Shoe selector 5,
-account/peer/reset và journal thưởng 0. Record CP329 và raw giữ nguyên; correction tài liệu không mở rộng runtime.
-Tiếp [all-dead managed player](docs/RESEARCH.md#gap-managed-all-dead), rồi coverage G1 theo
+**CP331: đã sửa identity của note correction và giữ fail receipt CP330.**
+[Contract Shoe](docs/protocol/items-stats.md#rust-bomb-motion-codec) tại CP329 giữ hai vòng native account/peer/reset
+và journal thưởng 0. [Correction checker](docs/evidence/checkpoints/documentary-json-identity-correction.json)
+chỉ xử lý provenance tài liệu; merge vẫn cần gate local/history đúng head và CI.
+Tiếp [all-dead managed player](docs/RESEARCH.md#gap-managed-all-dead) rồi coverage G1 theo
 [Bảng điều hành](docs/PLAN.md#dashboard). G1, M8 và L1 của Claude còn mở.
 
 ## Bắt đầu

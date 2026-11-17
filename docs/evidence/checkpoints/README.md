@@ -248,3 +248,14 @@ publication-bound trên. Workflow ở commit đầu tiên công bố record comp
 ngoài và blob từng byte. Đây là [correction](docs-workflow-source-correction.json) cho pin workflow CP264 sau
 khi CP303 bổ sung test CI; không sửa record cũ. YAML khác, raw/local/artifact và blob chỉ khớp ở commit sau
 không được cứu bằng quy tắc này. Kiểm provenance không thay nghiệm thu UTF-8 hoặc gameplay.
+
+### Note correction JSON và identity tài liệu
+
+[Correction identity](documentary-json-identity-correction.json) giữ lỗi CP330: note JSON được khai là
+canonical tài liệu nhưng quy tắc trước chỉ nhận Markdown. Checker nhận thêm đúng note trong
+`docs/evidence/checkpoints/*-correction.json`, schema `kre-documentation-sync-correction-v1`, có
+`source/status=design`, `checkpoint/previous` khớp record và bytes/hash đúng pin. Mỗi finding vẫn phải là
+`design/documentation`, trạng thái chưa confirmed, tham chiếu canonical và evidence đã pin. JSON khác hoặc
+claim runtime/static/test/confirmed không dùng ngoại lệ này. Kiểm hash/lịch sử chung giữ nguyên; đây là
+phân loại identity tài liệu, không phải chứng nhận nội dung hoặc native. Record/raw/receipt CP330 giữ nguyên;
+chỉ kết quả đúng head sau correction và CI mới được dùng làm gate merge.
