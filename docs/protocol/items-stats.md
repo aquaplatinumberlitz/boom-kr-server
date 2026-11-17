@@ -54,6 +54,34 @@ catalog/fuse6s/rank/first-arrival là policy emulator, không luật server gố
   toàn túi/entity/UDP hoặc kiểm mọi item. Không có input Ctrl/127sub0 trong hai ca này; chưa đo TTL/
   expiration trong cùng vòng. Không gán “vĩnh viễn” từ việc giữ qua các mốc hoặc table tail0.
 
+<a id="shoe-punch-source"></a>
+### Shoe/Punch: pickup đã đo, hành động còn thiếu contract
+
+[Metadata và giới hạn](../evidence/item-families/shoe-punch.json) bổ sung nguồn KR cho hai item có trọng số dương
+trong Tomb12. Shoe 3/effect 4 gọi `B48670`, ghi secure field `actor+5F4`; Punch 4/effect 5 gọi `B48710`, ghi
+`actor+60C`. Hai setter so giá trị hiện hành trước khi ghi; điều này chưa thay ca âm runtime. Interface offset được
+đối chiếu bằng RTTI và byte của các body với cả hai client đã chạy. Hai field này tách khỏi Roller và MaxPower.
+
+Python reference đã phát current 165 sau actual 124: trong cả hai view, Shoe và Punch lần lượt đổi field tương ứng
+`0→1`, giữ sáu stat và actor khác. Đầu vòng hai, hai field trở về 0 rồi nhận lại item; có hai kết quả/về phòng.
+Đó là reset giữa hai vòng đã quan sát, chưa có Start thứ ba và không chứng minh lifetime trong mọi trường hợp.
+Lượt Shoe riêng trước đó chỉ có một vòng, không được tính thành nghiệm thu hai vòng.
+
+Ở ca Space lần hai tại bom hiện hành, nhánh Punch `B76730` ghi pending record qua `E2CC10`; `E2D310` gọi
+`E2E910` để phát actual **119**, rồi clear pending flag. Schema đã đo dài **13 byte**, với widths
+`u8,u8,u8,u16,u8,u8,u8,u8,u16,u16`. Hai mẫu có field thứ tư khớp wire ID bom và hai field kế khớp cell
+của actual 118. Chưa đặt tên đầy đủ cho mọi field, chưa đặt đơn vị cho giá trị cuối hoặc suy luật thời hạn.
+`E2CC10` có decompiler stack warning và tail không liên tiếp; chỉ dùng assembly, byte binding đầy đủ và actual
+packet để xác nhận phần trên. Không dùng chữ ký C suy ra như một API đã phục hồi chính xác.
+
+Shoe có nhánh `E6F510→E6F8F0→E6F9C0` dẫn tới cùng pending-record path khi đủ điều kiện, nhưng chưa có
+native ca dùng Shoe thành công. Reader 160 đọc 8 byte và gọi các nhánh entity/counter; chưa có bằng chứng nó
+là reply cho 119 hoặc là gói dịch chuyển bom. Hai lượt không gửi ACK cho hành động này.
+
+**Rust vẫn từ chối Shoe/Punch.** Pickup/reset và phát request chưa đủ để mở hai item: còn consumer xác nhận
+hành động, vị trí/quỹ đạo/va chạm/timer của bom, peer, ca không đủ điều kiện, và guard current membership/round.
+Không coi hai run Python RE là bằng chứng account, Internet hoặc vận hành trên Rust.
+
 <a id="rust-maxpower"></a>
 ### Rust MaxPower: max theo nhân vật và vòng hiện hành
 

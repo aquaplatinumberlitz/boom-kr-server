@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP322: Rust đã có MaxPower theo max của hai nhân vật C0/C1.**
+[Native power 7/9, cap no-op và hai vòng/reset](protocol/items-stats.md#rust-maxpower) có nguồn build/code,
+giữ exit 1 do output unmount busy và các verifier lỗi riêng. G1 còn coverage/nhóm item/nhân vật theo
+[Bảng điều hành](PLAN.md#dashboard); M8 và L1 của Claude vẫn mở.
+
+
 **CP321: Factory07 có route 2/4/8, native item stat và đối chứng Glass00.**
 [Contract và giới hạn](protocol/terrain.md#rust-factory07-terrain) có thùng, Fire/Bomb ẩn, hai vòng/reset,
 static và Glass ray trên Rust; giữ lỗi debugger của control Glass và các bản sửa report riêng.

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP322",
+  "as_of": "CP323",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3760,7 +3760,8 @@
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
           "docs/evidence/item-families/README.md",
-          "docs/evidence/rust-service/g1-maxpower.json"
+          "docs/evidence/rust-service/g1-maxpower.json",
+          "docs/evidence/item-families/shoe-punch.json"
         ]
       },
       "coverage": {
@@ -3779,7 +3780,8 @@
         "kr_static": {
           "state": "partial",
           "refs": [
-            "docs/protocol/items-stats.md#item-families"
+            "docs/protocol/items-stats.md#item-families",
+            "docs/protocol/items-stats.md#shoe-punch-source"
           ]
         },
         "emulation": {
@@ -3788,9 +3790,10 @@
         },
         "runtime": {
           "wine_diagnostic_copy": {
-            "state": "unknown",
+            "state": "observed",
             "refs": [
-              "docs/protocol/items-stats.md#rust-maxpower"
+              "docs/protocol/items-stats.md#rust-maxpower",
+              "docs/protocol/items-stats.md#shoe-punch-source"
             ]
           },
           "windows_original": {

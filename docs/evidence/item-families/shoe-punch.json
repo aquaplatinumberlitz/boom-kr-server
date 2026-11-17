@@ -1,0 +1,244 @@
+{
+  "schema": "kre-shoe-punch-source-v1",
+  "canonical": "docs/protocol/items-stats.md#shoe-punch-source",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445",
+  "scope": "Nguồn để triển khai Shoe/Punch; đã đo pickup, reset đầu vòng hai và request 119, chưa nghiệm thu hành động trên Rust.",
+  "sources": {
+    "static": {
+      "source": "kr_static",
+      "status": "confirmed",
+      "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+      "functions": 16,
+      "chunk_artifact_comparisons": 57
+    },
+    "runtime": {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "environment": "Wine, hai client diagnostic copy, Python reference và mạng chỉ loopback",
+      "client_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    }
+  },
+  "runs": [
+    {
+      "name": "g1-shoe-source-native-r1",
+      "run_sha256": "8c9ed398fa07e63079124454522639c5e841738c94751110a1033fb3c985d33f",
+      "raw_files": 1109,
+      "exit": 0
+    },
+    {
+      "name": "g1-ability-flags-native-r2",
+      "run_sha256": "7bcf08f38f930ff927cda26b78799f798a65a9ea2f4adfc28ad6c2f1a3b0c726",
+      "raw_files": 1148,
+      "exit": 0
+    }
+  ],
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r1/reuse.json",
+      "bytes": 4403,
+      "sha256": "5359e872a0138910e12eda98b9773e760e8beea56dae40ccbff8f75db7af6040"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r1/pointer-byte-binding.json",
+      "bytes": 904,
+      "sha256": "99b2408a5d9de9f9e100eed8465e28012e83164b78ff26e93f154cb439b3deea"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r1/setters-ida-cli.json",
+      "bytes": 8146,
+      "sha256": "4202b6f948e760017432d8b7e5ad1553adb845114da74aa00efd5649382c3b42"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r1/getters-ida-cli.json",
+      "bytes": 6500,
+      "sha256": "700614e000b6ea322cac7f110e28215eb854c6eb3742baada04e47b360851638"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r1/batch-boundary.json",
+      "bytes": 1581,
+      "sha256": "89f7af6e844ef624bba441f0c15765316256a6358d60d5b89e0ac381feb2292d"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r1/interface-offset-reconciliation.json",
+      "bytes": 497,
+      "sha256": "b6dccf998ff315c7770dec689066d7dd7a25d0a6165d8a3ecf96f6682ce6777f"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r1/B48670-rea.json",
+      "bytes": 175,
+      "sha256": "fd837c4dc3aaa4e23c9fd586144d6314af8d6ce8d9b824890baca45194c3373c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r2/reuse.json",
+      "bytes": 1487,
+      "sha256": "084e65b5d8254369a57f6715b354cae2d8c1b791e993a6868f93b056df57ec33"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r2/predicate-action-ida-cli.json",
+      "bytes": 7125,
+      "sha256": "729d381d9dfa1a23dee6837dc948b902dad5cd017172ee3725d30207221c9c00"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r2/action-writers-ida-cli.json",
+      "bytes": 31249,
+      "sha256": "ba7634efa879d2e6f04d326bfae633b9f9524429b5a78dcfdc508238470e321e"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r2/batch-boundary.json",
+      "bytes": 1015,
+      "sha256": "3c1a5de47291fea30622e18a121a0c7059548a1d0b869ff6cf884eb2cc4d7979"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r3/reuse.json",
+      "bytes": 1326,
+      "sha256": "2e7bdaa5d51cf404fe496a4b9274d91ff8ff87555eb11cc42550256dab326ad6"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r3/action-transport-ida-cli.json",
+      "bytes": 22779,
+      "sha256": "4c84e3f3f83217b570e7e329777c848c634b370516fee6fe03d3296dd0ae4d18"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r3/queue-consumer-ida-cli.json",
+      "bytes": 28203,
+      "sha256": "068c4d35c184fc1ca4fa81077f85d09533b3ee594ce25c89473cfb512dfc3e0c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r3/selected-game-dispatch-reuse.json",
+      "bytes": 2455,
+      "sha256": "df41f06198f7fad443cea83eac58c8833afec624500c05bf2997e64d7f7939f3"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r3/batch-boundary.json",
+      "bytes": 923,
+      "sha256": "6ad4a564393d8b5bf4b48a295cb62d8bec4d87f738ce0c47a8f6c2cea6847def"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r4/reuse.json",
+      "bytes": 1399,
+      "sha256": "f385d218b1a2fc1582035d3baf6f9e5065aec04ffd1987ed9bb40aad739cb54b"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r4/reader160-ida-cli.json",
+      "bytes": 5657,
+      "sha256": "a43ce77f51e5c2e8ebe4332758ac21a9d7a27b74cc368c10225961c66d57e123"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r4/ack-consumers-ida-cli.json",
+      "bytes": 5833,
+      "sha256": "cf93a52e91ce1d454dae2e588b27ce83d7b848f4f3f4a3528510b569040f33d8"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r4/complete-read-body-chunks.json",
+      "bytes": 15425,
+      "sha256": "5bd5a1e03b54161deeb2c7c3ff0c8f885a324c5212e395a1233e0cc12d1cafce"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r4/complete-chunk-runtime-binding.json",
+      "bytes": 19453,
+      "sha256": "7857cc5dae427be26dd087af8c751433dda0e0c14a51e6ffe14e085d1a434845"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r4/batch-boundary.json",
+      "bytes": 945,
+      "sha256": "4203259fbc16af066b5929e3b7b0dc12f8d2ed4a53c72af3c7b721941037e625"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-source-native-r1/raw-seal.json",
+      "bytes": 178103,
+      "sha256": "dd25cce2b0ec9d4e43968314714ae757e8dbe0132ea70fca0e310799e821ed83"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-source-native-r1/runtime-preflight.json",
+      "bytes": 115586,
+      "sha256": "46ebfe5bf6595239f0d0318c7f261f31de6016f0f91b4447a607c6e55dc993f8"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-source-native-r1/reference-inputs.json",
+      "bytes": 8880,
+      "sha256": "7bd85790ec283f8311650dd0d3c2a7a75fd14107e9f51cca854eb0bdda9f90f3"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-source-native-r1/prelaunch-source-review.json",
+      "bytes": 1371,
+      "sha256": "d8a0e6406c5b397e253bd791d35c5978d3f1806a95f8c69709fef71bf5447815"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-source-native-r1/pickup-observations-verification.json",
+      "bytes": 4527,
+      "sha256": "e552ea424eed4f160c10ca3382505c8a3f87ebd0d63bfbfacfcf69a6a2fca922"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-source-native-r1/frozen-input-postrun-verification.json",
+      "bytes": 181,
+      "sha256": "4e9d86d8bce1ac9e602c2f2dc11e77154dac22785e6200569ad75906dc22734a"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-source-native-r1/exit.json",
+      "bytes": 240,
+      "sha256": "69a3b0b2828f85d9b9a189fef7726451b45c29c49617180e591e4ed6c868707e"
+    },
+    {
+      "path": "local/research/codex/g1-ability-flags-native-r2/raw-seal.json",
+      "bytes": 184453,
+      "sha256": "fee8292a678553ff411fb1138327aed84532f0575d8a5486ea65784b7a650b5c"
+    },
+    {
+      "path": "local/research/codex/g1-ability-flags-native-r2/runtime-preflight.json",
+      "bytes": 115543,
+      "sha256": "fb4e2c680e32ef2638d65440ae40e57a0b78bad0174277e1e1b9937d5cf4676c"
+    },
+    {
+      "path": "local/research/codex/g1-ability-flags-native-r2/reference-inputs.json",
+      "bytes": 8889,
+      "sha256": "631d8f9322d5603bfe31ba8ead585b124cc7106a5b6115173276e0affdb781c1"
+    },
+    {
+      "path": "local/research/codex/g1-ability-flags-native-r2/prelaunch-source-review.json",
+      "bytes": 831,
+      "sha256": "9910b4ed6ac3d426022f58d87933813b44d2c01452a90dcf29280148eaeac500"
+    },
+    {
+      "path": "local/research/codex/g1-ability-flags-native-r2/ability-flags-verification.json",
+      "bytes": 26497,
+      "sha256": "01a505e297450e23511a629e6fa767dd1d5188b37f08ab54b166593ad0faa791"
+    },
+    {
+      "path": "local/research/codex/g1-ability-flags-native-r2/actual119-field-observations.json",
+      "bytes": 688,
+      "sha256": "c9440fedbed281fce745ada6954e9bdf90e52903fea17845faae40dafe5f0e7d"
+    },
+    {
+      "path": "local/research/codex/g1-ability-flags-native-r2/manual-image-review.json",
+      "bytes": 618,
+      "sha256": "54dac0c1e7f8c70b8885e8f7f27db66bbfc56f3033237a36d16f44066ca26ad0"
+    },
+    {
+      "path": "local/research/codex/g1-ability-flags-native-r2/frozen-input-postrun-verification.json",
+      "bytes": 123,
+      "sha256": "20fb265b19d500db2c7fc78327c250f424bf4adc50e91c4e3afddad56d2ee069"
+    },
+    {
+      "path": "local/research/codex/g1-ability-flags-native-r2/exit.json",
+      "bytes": 240,
+      "sha256": "37411a8923b7b24f180e07a0705f4203758c0e92358d5daeccb2e1f914f4a842"
+    }
+  ],
+  "observations": [
+    "Shoe3/effect4 đi qua B48670, receiver+68 tương ứng actor+5F4; Punch4/effect5 đi qua B48710, receiver+80 tương ứng actor+60C. MSVC RTTI và body chunk đã đối chiếu byte với hai client chạy thật và diagnostic copy hiện tại.",
+    "Lượt đầu chỉ có Shoe: actual124 và165 đọc đủ12byte ở cả hai view, actor0+5F4 từ0 lên1; Punch, sáu stat và actor1 giữ nguyên. Không có rank/reset trong lượt đầu.",
+    "Lượt sau có hai vòng, bốn pickup ở mỗi view: Shoe rồi Punch lần lượt ghi1 vào5F4/60C; sáu stat và actor1 giữ nguyên. Clock đầu vòng hai đưa hai field về0 rồi nhận lại cả hai item. Hai rank/return có native reader đầy đủ, chưa Start thứ ba.",
+    "Space lần hai ở bom hiện hành đi qua B76730→E2CC10 hai lần. Pending record được E2D310→E2E910 gửi actual119 dài13byte rồi clear pending flag. Hai mẫu chỉ cùng một actor và selector.",
+    "119 có widths [1,1,1,2,1,1,1,1,2,2]. Field thứ tư khớp wire ID bom1/2, hai field kế khớp cell actual118 trong hai mẫu. Các giá trị cuối giữ opaque, chưa đặt đơn vị thời gian hoặc luật lifetime.",
+    "160 có reader8byte, guard và callback entity/counter; chưa chứng minh là reply cho119 hoặc gói di chuyển bom. Không gửi160 hoặc ACK hành động trong hai lượt.",
+    "REA timeout450s khi tạo analysis mới; direct IDA MCP thiếu plugin. Không sửa cấu hình hoặc cài phần mềm. IDA CLI trên DB copy riêng đã trả kết quả; không gọi các file này là REA Evidence. E2CC10 có decompiler stack warning và tail không liên tiếp, nên giữ assembly và chunk coverage đầy đủ."
+  ],
+  "limits": [
+    "Rust vẫn từ chối kind3/4; chưa đổi runtime Rust hoặc hoàn tất G1.",
+    "Chưa có hành động Shoe, dịch chuyển bom thành công, quỹ đạo/va chạm, peer thấy hành động hoặc timer/lifetime đã đo.",
+    "Chưa native ca thiếu item/dead/trapped/stale action, các selector/roster khác, hoặc reset sau vòng hai.",
+    "Python placement, fuse, rank và lựa chọn floor là policy thử, không luật server gốc. Không account/Internet/load/M8 acceptance từ hai run RE này.",
+    "Record/raw của CP322 và các run cũ giữ nguyên. No-op setter tĩnh không thay native ca âm."
+  ],
+  "next": "Tái dùng dispatcher cache, đo đúng reader/consumer hành động còn thiếu; sau đó ca native positive/negative/peer/reset và Rust membership/round/bomb ledger guards theo PLAN."
+}

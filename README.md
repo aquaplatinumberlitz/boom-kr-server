@@ -33,10 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP322: Rust đã có MaxPower theo max của hai nhân vật C0/C1.**
-[Native power 7/9, cap no-op và hai vòng/reset](docs/protocol/items-stats.md#rust-maxpower) có nguồn build/code,
-giữ exit 1 do output unmount busy và các verifier lỗi riêng. G1 còn coverage/nhóm item/nhân vật theo
-[Bảng điều hành](docs/PLAN.md#dashboard); M8 và L1 của Claude vẫn mở.
+**CP323: KR đã có bằng chứng pickup/reset Shoe/Punch và request hành động 119.**
+[Contract nguồn và giới hạn](docs/protocol/items-stats.md#shoe-punch-source) tách phần đã đo khỏi consumer
+hành động còn thiếu; Rust vẫn tắt hai item. MaxPower đã có trên Rust; G1 tiếp theo
+[Bảng điều hành](docs/PLAN.md#dashboard), M8 và L1 của Claude vẫn mở.
 
 ## Bắt đầu
 

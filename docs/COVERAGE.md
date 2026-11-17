@@ -39,7 +39,7 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-F007 · Stat tích lũy và MaxPower](#kr-f007) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
 | [KR-F008 · Kim dùng chủ động](#kr-f008) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
 | [KR-F009 · Trap, death, cứu và chạm địch](#kr-f009) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
-| [KR-F010 · Ability và debuff group1](#kr-f010) | present | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
+| [KR-F010 · Ability và debuff group1](#kr-f010) | present | static | partial | unknown | observed | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F011 · Mount và biến hình](#kr-f011) | present | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F012 · Nhóm chủ động ngoài kim](#kr-f012) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F013 · Thời hạn và variant item](#kr-f013) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
@@ -773,21 +773,21 @@ Dependency: [KR-F006](#kr-f006).
 
 [Contract và giới hạn](protocol/items-stats.md#item-families) · [Câu hỏi gốc](RESEARCH.md#gap-ability-debuff) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [Rust MaxPower](protocol/items-stats.md#rust-maxpower) đã có C0/C1 power 7/9, cap no-op, hai vòng/reset; chưa native dead/trapped claim hoặc mọi roster. Shoe/Punch/debuff/TTL còn thiếu consumer/case.
+Khoảng trống (trích bảng RESEARCH): [Rust MaxPower](protocol/items-stats.md#rust-maxpower) đã có C0/C1 và cap/reset. [Shoe/Punch](protocol/items-stats.md#shoe-punch-source) có native pickup, reset đầu vòng hai và actual 119 trong Python RE; chưa có hành động/peer đủ contract, Rust vẫn từ chối.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Tiếp đúng nhóm item của sáu map; tái dùng dispatcher, chỉ RE consumer còn thiếu và đo use/negative/consume/peer/reset. Không chuyển MaxPower sang mọi effect.
+Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng dispatcher cache để tìm đúng reader/consumer hành động; reader 160 hiện chỉ có nhánh entity/counter, chưa chứng minh liên hệ với 119. Sau đó đo Shoe/Punch positive, ca thiếu điều kiện, peer, timer/consume/reset và nối Rust theo membership/round/bomb ledger. Debuff/TTL còn theo nhóm item của sáu map.
 
 Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285).
 
-Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json).
+Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json), [item-families](evidence/item-families/shoe-punch.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](protocol/items-stats.md#item-families) |
 | vn_reference | static | [nguồn1](protocol/items-stats.md#item-families) |
-| kr_static | partial | [nguồn1](protocol/items-stats.md#item-families) |
+| kr_static | partial | [nguồn1](protocol/items-stats.md#item-families), [nguồn2](protocol/items-stats.md#shoe-punch-source) |
 | emulation | unknown | Chưa có bằng chứng trong phạm vi rà |
-| wine_diagnostic_copy | unknown | [nguồn1](protocol/items-stats.md#rust-maxpower) |
+| wine_diagnostic_copy | observed | [nguồn1](protocol/items-stats.md#rust-maxpower), [nguồn2](protocol/items-stats.md#shoe-punch-source) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
