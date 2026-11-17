@@ -212,6 +212,39 @@ impl Terrain {
         (bomb.row, bomb.column) = target;
         Ok(())
     }
+    /// Measured Shoe axis with a conservative clear-corridor admission policy.
+    /// Require the first obstruction immediately past the target, never jump
+    /// a box/bomb or infer walkability from a blast-only mask.
+    pub(crate) fn move_shoe(
+        &mut self,
+        generation: u64,
+        id: u16,
+        source: (u8, u8),
+        target: (u8, u8),
+    ) -> io::Result<()> {
+        if target.0 == 0
+            || source.0.checked_sub(3) != Some(target.0)
+            || source.1 != target.1
+            || source.0 >= self.height
+            || source.1 >= self.width
+        {
+            return Err(io::Error::other("unmeasured Shoe corridor"));
+        }
+        let index = |row: u8| usize::from(row) * usize::from(self.width) + usize::from(source.1);
+        if self.kinds[index(target.0 - 1)] == 0
+            || (target.0..=source.0).any(|row| {
+                self.kinds[index(row)] != 0
+                    || self.ray_barriers[index(row)] != 0
+                    || self
+                        .pending
+                        .values()
+                        .any(|bomb| bomb.id != id && (bomb.row, bomb.column) == (row, source.1))
+            })
+        {
+            return Err(io::Error::other("blocked or unterminated Shoe corridor"));
+        }
+        self.move_bomb(generation, id, source, target)
+    }
     /// Must run under the room owner ONLY at full-roster158write completion.
     /// Snapshot immutable for cascade. An earlier chain-processed secondary's
     /// own later158 returns an emptydelta; no duplicate reveal eligibility.
@@ -546,6 +579,40 @@ pub(crate) mod tests {
         terrain.remaining_hits[5 * 15 + 4] = 1;
         terrain.seed_hits[5 * 15 + 4] = 1;
         terrain
+    }
+    pub(crate) fn blocked_shoe_map() -> Terrain {
+        let mut terrain = motion_map();
+        let index = 4 * 15 + 3;
+        terrain.kinds[index] = 2;
+        terrain.seed[index] = 2;
+        terrain.remaining_hits[index] = 1;
+        terrain.seed_hits[index] = 1;
+        terrain
+    }
+    #[test]
+    fn shoe_cannot_skip_an_obstacle_or_stop_early_and_does_not_mutate_on_rejection() {
+        for blocked in [false, true] {
+            let mut terrain = if blocked {
+                blocked_shoe_map()
+            } else {
+                motion_map()
+            };
+            terrain.begin(1);
+            terrain
+                .place(Bomb {
+                    id: 1,
+                    owner: 0,
+                    row: if blocked { 6 } else { 7 },
+                    column: 3,
+                    power: 1,
+                })
+                .unwrap();
+            let before = terrain.pending.clone();
+            let source = if blocked { (6, 3) } else { (7, 3) };
+            let target = if blocked { (3, 3) } else { (4, 3) };
+            assert!(terrain.move_shoe(1, 1, source, target).is_err());
+            assert_eq!(terrain.pending, before);
+        }
     }
     #[test]
     fn measured_owner_and_power_bounds_stop_at_solid_and_preserve_legacy_profile() {

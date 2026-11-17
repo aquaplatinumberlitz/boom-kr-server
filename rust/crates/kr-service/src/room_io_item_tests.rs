@@ -1705,3 +1705,343 @@ fn admitted_punch_and_deadline_survive_actor_departure_in_current_player_round_o
     assert!(!c.sessions[1].valid(&motion));
     assert!(!c.sessions[1].valid(&deadlines[1]));
 }
+
+// Shoe contract input is a captured CP328 selector5 body; server assertions below
+// verify admission/ownership/atomicity, not original KR physics.
+fn shoe_body(slot: u8, id: u16) -> Vec<u8> {
+    let captured = [
+        0x5a, 0x5a, 0x5f, 0xa5, 0x68, 0x5c, 0x59, 0x59, 0x59, 0xa6, 0x81, 0xa5, 0x6a,
+    ];
+    let mut action = wire::BombAction119::decode(&captured).unwrap();
+    action.motion.slot = slot;
+    action.motion.bomb_id = id;
+    let mut body = action.motion.encode().unwrap();
+    body.extend(encoded(&[
+        (u64::from(action.opaque_tail[0]), Width::U16),
+        (u64::from(action.opaque_tail[1]), Width::U16),
+    ]));
+    body
+}
+fn shoe_case() -> Case {
+    let c = punch_case();
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.rules.item_policy = pickups::Policy::ReportDerivedShoePunch;
+        let catalog = pickups::tests::shoe_catalog();
+        r.model.pickups = pickups::Round::begin(c.round, &catalog).unwrap();
+        r.floor_catalog = catalog;
+    }
+    c
+}
+fn shoe_pickup(c: &mut Case) {
+    let key = crate::room::wire_key(c.round).unwrap();
+    assert!(
+        c.sessions[0]
+            .packet(124, &pickup(0, 4, 3, 17, 3, key))
+            .unwrap()
+            .pickup
+            .unwrap()
+            .accepted
+    );
+    confirmations(c);
+    assert!(c.shared.lock().unwrap().model.members[&c.keys[0].identity].shoe);
+}
+fn cell_bomb(slot: u8, serial: u32, row: u8, column: u8, key: u32) -> Vec<u8> {
+    let mut request = bomb(slot, serial, 1, key);
+    request[10] = write_uint(u64::from(row), Width::U8).unwrap()[0];
+    request[11] = write_uint(u64::from(column), Width::U8).unwrap()[0];
+    request
+}
+#[test]
+fn shoe_corridor_stays_reserved_until_all_deadlines_finish_then_quota_and_terrain_commit() {
+    let mut c = shoe_case();
+    shoe_pickup(&mut c);
+    let (id, mut deadlines) = punch_place(&mut c, 6);
+    let due = deadlines.iter().map(|d| d.due).collect::<Vec<_>>();
+    let body = shoe_body(0, id);
+    assert!(
+        c.sessions[0]
+            .packet(119, &body)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    for session in &mut c.sessions {
+        let batch = session.inbox.try_recv().unwrap();
+        assert!(session.valid(&batch));
+        assert_eq!(batch.packets[0].1.opcode, 162);
+        assert_eq!(batch.packets[0].1.payload, body[..9]);
+    }
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &body)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "bomb_already_moved"
+    );
+    let key = crate::room::wire_key(c.round).unwrap();
+    let request = cell_bomb(1, 2, 4, 3, key);
+    for index in 0..2 {
+        // Peer still has quota: rejection must be the shared transit corridor,
+        // including after only the first recipient writes its deadline.
+        assert_eq!(
+            c.sessions[1]
+                .packet(118, &request)
+                .unwrap()
+                .bomb
+                .unwrap()
+                .reason,
+            "motion_path_reserved"
+        );
+        assert!(
+            c.sessions[index]
+                .prepare_delivery(&mut deadlines[index])
+                .unwrap()
+        );
+        assert_eq!(deadlines[index].due, due[index]);
+        assert_eq!(
+            deadlines[index]
+                .packets
+                .iter()
+                .map(|p| p.1.payload.len())
+                .collect::<Vec<_>>(),
+            [4, 13]
+        );
+        assert_eq!(
+            deadlines[index].packets[0].1.payload,
+            wire::rebind158(id).unwrap()
+        );
+        c.sessions[index].finish(&deadlines[index]).unwrap();
+        assert_eq!(
+            c.shared
+                .lock()
+                .unwrap()
+                .model
+                .terrain
+                .as_ref()
+                .unwrap()
+                .clearance(c.round, 3, 2)
+                .is_some(),
+            index == 1
+        );
+    }
+    assert!(
+        c.sessions[1]
+            .packet(118, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    assert!(
+        c.sessions[0]
+            .packet(118, &cell_bomb(0, 2, 6, 3, key))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+}
+#[test]
+fn shoe_missing_item_wrong_transport_owner_life_and_round_are_fenced() {
+    let mut c = shoe_case();
+    let (id, _) = punch_place(&mut c, 6);
+    let body = shoe_body(0, id);
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &body)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "missing_shoe"
+    );
+    shoe_pickup(&mut c);
+    c.sessions[0].connection += 1000;
+    assert!(c.sessions[0].packet(119, &body).is_err());
+    c.sessions[0].connection -= 1000;
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &shoe_body(1, id))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "action_actor_mismatch"
+    );
+    c.shared
+        .lock()
+        .unwrap()
+        .model
+        .members
+        .get_mut(&c.keys[1].identity)
+        .unwrap()
+        .shoe = true;
+    assert_eq!(
+        c.sessions[1]
+            .packet(119, &shoe_body(1, id))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "foreign_bomb"
+    );
+    c.shared
+        .lock()
+        .unwrap()
+        .model
+        .members
+        .get_mut(&c.keys[0].identity)
+        .unwrap()
+        .life
+        .death = Some(Instant::now());
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &body)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "report_ineligible"
+    );
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.model.end(c.round).unwrap();
+        for key in &c.keys {
+            r.model.refreshed(*key, c.round).unwrap();
+        }
+        for key in &c.keys[1..] {
+            r.model.ready(*key).unwrap();
+        }
+        let round = r.model.begin(c.keys[0]).unwrap();
+        assert!(r.model.members.values().all(|m| !m.shoe && !m.punch));
+        for key in &c.keys {
+            r.model.ack(*key, round).unwrap();
+        }
+        r.model.members.get_mut(&c.keys[0].identity).unwrap().shoe = true;
+    }
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &body)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "inactive_bomb"
+    );
+}
+#[test]
+fn shoe_terrain_or_queue_rejection_can_retry_without_publishing_moved_root() {
+    let mut c = shoe_case();
+    shoe_pickup(&mut c);
+    let (id, _) = punch_place(&mut c, 6);
+    let body = shoe_body(0, id);
+    {
+        let mut r = c.shared.lock().unwrap();
+        let mut terrain = crate::terrain::tests::blocked_shoe_map();
+        terrain.begin(c.round);
+        terrain
+            .place(crate::terrain::Bomb {
+                id,
+                owner: 0,
+                row: 6,
+                column: 3,
+                power: 1,
+            })
+            .unwrap();
+        r.model.terrain = Some(terrain);
+    }
+    assert_eq!(
+        c.sessions[0]
+            .packet(119, &body)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "motion_terrain"
+    );
+    {
+        let mut r = c.shared.lock().unwrap();
+        let mut terrain = crate::terrain::tests::motion_map();
+        terrain.begin(c.round);
+        terrain
+            .place(crate::terrain::Bomb {
+                id,
+                owner: 0,
+                row: 6,
+                column: 3,
+                power: 1,
+            })
+            .unwrap();
+        r.model.terrain = Some(terrain);
+    }
+    // Fill just one peer's queue: no recipient receives a partial move, and
+    // neither ledger root nor its corridor is published before queue reserve.
+    let sender = c.shared.lock().unwrap().channels[&c.keys[1].identity]
+        .sender
+        .clone();
+    while sender
+        .try_send(Runtime::member_batch(c.keys[1], Some(c.round), 0, vec![]))
+        .is_ok()
+    {}
+    assert!(c.sessions[0].packet(119, &body).is_err());
+    assert!(c.sessions[0].inbox.try_recv().is_err());
+    while c.sessions[1].inbox.try_recv().is_ok() {}
+    assert!(
+        c.sessions[0]
+            .packet(119, &body)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+}
+#[test]
+fn admitted_shoe_corridor_and_peer_motion_survive_actor_departure_but_not_allocation_retirement() {
+    let mut c = shoe_case();
+    shoe_pickup(&mut c);
+    let (id, mut deadlines) = punch_place(&mut c, 6);
+    assert!(
+        c.sessions[0]
+            .packet(119, &shoe_body(0, id))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    let motion = c.sessions[1].inbox.try_recv().unwrap();
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.model.depart_player(c.keys[0], Instant::now()).unwrap();
+    }
+    assert!(c.sessions[1].valid(&motion));
+    assert!(c.sessions[0].packet(119, &shoe_body(0, id)).is_err());
+    let key = crate::room::wire_key(c.round).unwrap();
+    let request = cell_bomb(1, 2, 4, 3, key);
+    assert_eq!(
+        c.sessions[1]
+            .packet(118, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "motion_path_reserved"
+    );
+    assert!(c.sessions[1].prepare_delivery(&mut deadlines[1]).unwrap());
+    c.sessions[1].finish(&deadlines[1]).unwrap();
+    assert!(!c.sessions[1].valid(&motion));
+    // The corridor is released. The diagnostic allocator's separate existing
+    // minimum-roster rule now rejects the sole survivor, instead of an old lease.
+    assert_eq!(
+        c.sessions[1]
+            .packet(118, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "unsupported_roster"
+    );
+}

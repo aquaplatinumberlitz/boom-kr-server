@@ -105,6 +105,18 @@ struct Active {
     motion: Option<kr_wire::kr00967::BombMotion162>,
     preparing: BTreeSet<Membership>,
 }
+impl Active {
+    /// Conservative Shoe corridor lease, including the original source cell.
+    /// Native stop is not acknowledged on wire; retain until allocation retires.
+    fn reserves(&self, cell: (u8, u8)) -> bool {
+        (self.request.row, self.request.column) == cell
+            || self.motion.is_some_and(|m| {
+                m.selector == 5
+                    && m.source_column == cell.1
+                    && (m.target_row..=m.source_row).contains(&cell.0)
+            })
+    }
+}
 #[derive(Clone, Debug)]
 pub(crate) struct Ledger {
     scope: Arc<()>,
@@ -257,6 +269,10 @@ impl Ledger {
             >= limits.capacity
         {
             Some("owner_capacity_reserved")
+        } else if self.active.values().any(|a| {
+            a.motion.is_some_and(|m| m.selector == 5) && a.reserves((request.row, request.column))
+        }) {
+            Some("motion_path_reserved")
         } else if self
             .active
             .values()
@@ -321,6 +337,28 @@ impl Ledger {
         request: kr_wire::kr00967::BombAction119,
         now: Instant,
     ) -> Result<Ticket, &'static str> {
+        self.move_action(round, actor, slot, request, now, false)
+    }
+    /// CP328 measured three-cell upward contact; all further geometry stays off.
+    pub(crate) fn move_shoe(
+        &mut self,
+        round: u64,
+        actor: Membership,
+        slot: u8,
+        request: kr_wire::kr00967::BombAction119,
+        now: Instant,
+    ) -> Result<Ticket, &'static str> {
+        self.move_action(round, actor, slot, request, now, true)
+    }
+    fn move_action(
+        &mut self,
+        round: u64,
+        actor: Membership,
+        slot: u8,
+        request: kr_wire::kr00967::BombAction119,
+        now: Instant,
+        shoe: bool,
+    ) -> Result<Ticket, &'static str> {
         let motion = request.motion;
         if self.generation != Some(round) {
             return Err("inactive_round");
@@ -329,13 +367,25 @@ impl Ledger {
             return Err("action_actor_mismatch");
         }
         // Only the measured direction/cell relationship is admitted initially.
-        if motion.selector != 3
-            || motion.source_row.checked_sub(1) != Some(motion.target_row)
+        if motion.selector != (if shoe { 5 } else { 3 })
+            || motion.source_row.checked_sub(if shoe { 3 } else { 1 }) != Some(motion.target_row)
             || motion.source_column != motion.target_column
             || motion.source_row >= 13
             || motion.source_column >= 15
         {
             return Err("unmeasured_motion_geometry");
+        }
+        if self.active.values().any(|other| {
+            other.ticket.id != motion.bomb_id
+                && if shoe {
+                    (motion.target_row..=motion.source_row)
+                        .any(|row| other.reserves((row, motion.target_column)))
+                } else {
+                    other.motion.is_some_and(|m| m.selector == 5)
+                        && other.reserves((motion.target_row, motion.target_column))
+                }
+        }) {
+            return Err("motion_path_occupied");
         }
         let active = self
             .active
@@ -430,6 +480,103 @@ mod tests {
             column: 3,
             power: 1,
         }
+    }
+    #[test]
+    fn shoe_corridor_blocks_peer_placement_and_crossing_punch_until_all_receipts() {
+        use kr_wire::kr00967::{BombAction119, BombMotion162};
+        let a = member(70000, 11);
+        let b = member(80000, 22);
+        let roster = [a, b];
+        let mut ledger = Ledger::default();
+        ledger.begin(1);
+        let own = Request {
+            row: 6,
+            ..request(0)
+        };
+        let peer = Request {
+            owner: 1,
+            row: 7,
+            ..request(0)
+        };
+        let first = ledger.place(1, a, 0, &own, &roster, 2).unwrap().unwrap();
+        let second = ledger.place(1, b, 1, &peer, &roster, 2).unwrap().unwrap();
+        let action = BombAction119 {
+            motion: BombMotion162 {
+                context: 0,
+                slot: 0,
+                selector: 5,
+                bomb_id: first.id,
+                source_row: 6,
+                source_column: 3,
+                target_row: 3,
+                target_column: 3,
+            },
+            opaque_tail: [1000, 3],
+        };
+        let deadline = ledger.active[&first.id].deadline;
+        assert_eq!(
+            ledger
+                .move_shoe(1, a, 0, action, deadline - Duration::from_secs(2))
+                .unwrap_err(),
+            "motion_deadline_closed"
+        );
+        ledger
+            .move_shoe(1, a, 0, action, deadline - Duration::from_secs(5))
+            .unwrap();
+        let crossing = BombAction119 {
+            motion: BombMotion162 {
+                context: 0,
+                slot: 1,
+                selector: 3,
+                bomb_id: second.id,
+                source_row: 7,
+                source_column: 3,
+                target_row: 6,
+                target_column: 3,
+            },
+            opaque_tail: [1715, 1],
+        };
+        assert_eq!(
+            ledger
+                .move_punch(1, b, 1, crossing, Instant::now())
+                .unwrap_err(),
+            "motion_path_occupied"
+        );
+        let placement = Request {
+            row: 4,
+            serial: 1,
+            ..peer
+        };
+        assert_eq!(
+            ledger
+                .place(1, b, 1, &placement, &roster, 2)
+                .unwrap()
+                .unwrap_err(),
+            "motion_path_reserved"
+        );
+        assert!(ledger.delivered(&first, a));
+        assert_eq!(
+            ledger
+                .place(1, b, 1, &placement, &roster, 2)
+                .unwrap()
+                .unwrap_err(),
+            "motion_path_reserved"
+        );
+        assert!(ledger.delivered(&first, b));
+        assert!(
+            ledger
+                .place(1, b, 1, &placement, &roster, 2)
+                .unwrap()
+                .is_ok()
+        );
+        // A new round clears every old corridor, but old wire IDs stay retired.
+        ledger.begin(2);
+        assert_eq!(
+            ledger
+                .move_shoe(2, a, 0, action, Instant::now())
+                .unwrap_err(),
+            "inactive_bomb"
+        );
     }
     #[test]
     fn punch_admission_closes_before_deadline_or_first_blast_write_and_never_reuses_ids() {
