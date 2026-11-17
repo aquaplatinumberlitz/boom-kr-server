@@ -2309,3 +2309,63 @@ fn punch_horizontal_queue_rollback_keeps_row_reservation_and_original_deadline()
         );
     }
 }
+
+#[test]
+fn horizontal_punch_cancellation_anywhere_on_row_rejects_without_partial_motion() {
+    let mut c = punch_case();
+    spawn_choices(&mut c, &[8]);
+    {
+        let mut r = c.shared.lock().unwrap();
+        let mut maps = Arc::try_unwrap(r.maps.take().unwrap()).ok().unwrap();
+        // The cancellation cell is behind the source, outside source3..target5.
+        // The full-row policy must inspect it rather than assume a short path.
+        let cfg: rules::BombCancellationConfig = serde_json::from_value(serde_json::json!({
+            "map_sha256": "a".repeat(64), "cells": [[6, 2]]
+        }))
+        .unwrap();
+        maps.choices[0].bomb_cancellation = Some(cfg.validate(&"a".repeat(64)).unwrap());
+        r.maps = Some(Arc::new(maps));
+        r.rules.map_bomb_cancellation = true;
+    }
+    punch_pickup(&mut c);
+    let (id, _) = punch_place(&mut c, 6);
+    let mut request = wire::BombMotion162 {
+        context: 0,
+        slot: 0,
+        selector: 0,
+        bomb_id: id,
+        source_row: 6,
+        source_column: 3,
+        target_row: 6,
+        target_column: 5,
+    }
+    .encode()
+    .unwrap();
+    request.extend(encoded(&[(1790, Width::U16), (1, Width::U16)]));
+    for _ in 0..2 {
+        assert_eq!(
+            c.sessions[0]
+                .packet(119, &request)
+                .unwrap()
+                .bomb
+                .unwrap()
+                .reason,
+            "motion_terrain"
+        );
+        assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
+    }
+    c.shared.lock().unwrap().rules.map_bomb_cancellation = false;
+    assert!(
+        c.sessions[0]
+            .packet(119, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    for session in &mut c.sessions {
+        let batch = session.inbox.try_recv().unwrap();
+        assert_eq!(batch.packets[0].1.opcode, 162);
+        assert_eq!(batch.packets[0].1.payload, request[..9]);
+    }
+}
