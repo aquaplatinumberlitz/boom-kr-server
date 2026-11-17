@@ -5,7 +5,19 @@ use std::{
     time::{Duration, Instant},
 };
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub(crate) enum Outcome {
+    Team(u8),
+    AllDead,
+}
+#[cfg(test)]
 pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
+    match outcome(room, now)? {
+        Outcome::Team(team) => Some(team),
+        Outcome::AllDead => None,
+    }
+}
+pub(crate) fn outcome(room: &Room, now: Instant) -> Option<Outcome> {
     if (!room.player_round() && !matches!(room.round_size(), 4 | 8))
         || !room.valid_round_roster()
         || !matches!(room.phase, Phase::Armed { .. })
@@ -22,9 +34,10 @@ pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
         .filter(|m| m.life.death.is_none())
         .map(|m| m.team)
         .collect();
-    if alive.len() != 1 {
+    let all_dead = alive.is_empty() && room.player_round();
+    if alive.len() != 1 && !all_dead {
         return None;
-    } // Tie/all-dead deliberately unsupported.
+    } // Legacy fixed teams retain their original all-dead restriction.
     let latest_death = room
         .members
         .values()
@@ -37,6 +50,9 @@ pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
     if now.checked_duration_since(latest)? < Duration::from_secs(8) {
         return None;
     }
+    if all_dead {
+        return Some(Outcome::AllDead);
+    }
     if !room.members.values().any(|m| {
         m.life.death.is_none()
             && m.life
@@ -45,7 +61,7 @@ pub(crate) fn winner(room: &Room, now: Instant) -> Option<u8> {
     }) {
         return None;
     }
-    alive.first().copied()
+    alive.first().copied().map(Outcome::Team)
 }
 
 pub(crate) use kr_wire::kr00967::{rank175 as rank_body, return180 as return_body};
@@ -83,6 +99,78 @@ mod tests {
         let p = &mut room.members.get_mut(&(slot as u32 + 1)).unwrap().life;
         assert!(p.apply(slot, &report(slot, 17, 100), at, None).accepted);
         assert!(p.apply(slot, &report(slot, 19, 101), at, None).accepted);
+    }
+    fn managed_armed(count: usize) -> (Room, Vec<Membership>) {
+        let mut room = Room::with_capacity(8).unwrap();
+        room.round_roster = crate::rules::RoundRoster::Players;
+        let mut members = Vec::new();
+        for index in 0..count {
+            let key = room
+                .enter(index as u32 + 1, index as u64 + 10, index == 0)
+                .unwrap();
+            room.setup(key).unwrap();
+            room.choose(key, None, Some(if index % 2 == 0 { 0 } else { 3 }))
+                .unwrap();
+            members.push(key);
+        }
+        for &key in &members[1..] {
+            room.ready(key).unwrap();
+        }
+        let round = room.begin(members[0]).unwrap();
+        for &key in &members {
+            room.ack(key, round).unwrap();
+        }
+        (room, members)
+    }
+    #[test]
+    fn managed_all_dead_waits_latest_blast_grace_and_every_forwarded_life_receipt_without_witness()
+    {
+        for count in [2, 4, 8] {
+            let (mut room, keys) = managed_armed(count);
+            let at = Instant::now();
+            for slot in 0..count {
+                kill(&mut room, slot as u8, at);
+            }
+            let targets = keys[1..].to_vec();
+            room.members
+                .get_mut(&1)
+                .unwrap()
+                .life
+                .forward_report_targets("all-dead-last", &targets)
+                .unwrap();
+            assert_eq!(outcome(&room, at + Duration::from_secs(30)), None);
+            for key in targets {
+                room.members
+                    .get_mut(&1)
+                    .unwrap()
+                    .life
+                    .report_delivered("all-dead-last", key);
+            }
+            room.last_blast = Some(at + Duration::from_secs(7));
+            assert_eq!(outcome(&room, at + Duration::from_millis(14999)), None);
+            assert_eq!(
+                outcome(&room, at + Duration::from_secs(15)),
+                Some(Outcome::AllDead)
+            );
+            assert_eq!(winner(&room, at + Duration::from_secs(15)), None); // no invented winning team
+            assert!(room.members.values().all(|m| m.life.survivor.is_none()));
+            let Phase::Armed { round } = room.phase else {
+                panic!("expected active test round")
+            };
+            room.end(round).unwrap();
+            assert_eq!(outcome(&room, at + Duration::from_secs(30)), None);
+            for key in &keys {
+                room.refreshed(*key, round).unwrap();
+            }
+            for key in &keys[1..] {
+                room.ready(*key).unwrap();
+            }
+            let next = room.begin(keys[0]).unwrap();
+            for key in keys {
+                room.ack(key, next).unwrap();
+            }
+            assert_eq!(outcome(&room, at + Duration::from_secs(30)), None);
+        }
     }
     #[test]
     fn wire_hashes_match_independent_native_accepted_cp202_fixtures() {

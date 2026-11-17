@@ -1057,10 +1057,10 @@ impl Runtime {
         let ending = self.journal.is_some()
             && matches!(self.model.phase, Phase::Armed { .. })
             && matches!(next.phase, Phase::Ending { .. });
-        let winner = if ending {
+        let outcome = if ending {
             Some(
-                crate::four_results::winner(&self.model, Instant::now())
-                    .ok_or_else(|| err("journal missing current winner"))?,
+                crate::four_results::outcome(&self.model, Instant::now())
+                    .ok_or_else(|| err("journal missing current outcome"))?,
             )
         } else {
             None
@@ -1075,8 +1075,11 @@ impl Runtime {
             if let Some(start) = begun {
                 journal.begin(start)?;
             }
-            if let Some(team) = winner {
-                journal.finish(team)?;
+            if let Some(result) = outcome {
+                match result {
+                    crate::four_results::Outcome::Team(team) => journal.finish(team)?,
+                    crate::four_results::Outcome::AllDead => journal.all_dead()?,
+                }
             } else if aborting {
                 journal.cancel(if next.members.is_empty() {
                     crate::accounts::MatchEndReason::NoPlayers
@@ -1660,24 +1663,30 @@ impl Session {
         }
         let now = Instant::now();
         let rank = if r.rules.team_results() {
-            let Some(team) = crate::four_results::winner(&r.model, now) else {
+            let Some(outcome) = crate::four_results::outcome(&r.model, now) else {
                 return Ok(());
             };
-            packet(
-                175,
-                if r.rules.result == ResultPolicy::Players {
-                    wire::rank175_players(
-                        &r.model
-                            .participants
-                            .values()
-                            .map(|p| (p.member.slot, p.member.team))
-                            .collect::<Vec<_>>(),
-                        team,
-                    )?
-                } else {
-                    crate::four_results::rank_body(r.model.round_teams(), team)?
-                },
-            )
+            let body = if r.rules.result == ResultPolicy::Players {
+                let roster = r
+                    .model
+                    .participants
+                    .values()
+                    .map(|p| (p.member.slot, p.member.team))
+                    .collect::<Vec<_>>();
+                match outcome {
+                    crate::four_results::Outcome::Team(team) => {
+                        wire::rank175_players(&roster, team)?
+                    }
+                    crate::four_results::Outcome::AllDead => {
+                        wire::rank175_all_dead_players(&roster)?
+                    }
+                }
+            } else if let crate::four_results::Outcome::Team(team) = outcome {
+                crate::four_results::rank_body(r.model.round_teams(), team)?
+            } else {
+                return Err(err("all-dead outside managed player result policy"));
+            };
+            packet(175, body)
         } else {
             let members: Vec<_> = r.model.members.values().collect();
             let dead: Vec<_> = members
