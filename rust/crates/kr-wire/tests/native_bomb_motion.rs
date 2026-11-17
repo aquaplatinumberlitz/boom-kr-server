@@ -1,0 +1,62 @@
+//! Independent actual119 bodies from g1-ability-flags-native-r2, two rounds.
+//! The nine-byte 162 prefix was independently consumed in both views in
+//! g1-ability-motion-source-native-r3 (9/9, errors 0, secure root changed).
+//! This tests the codec only; r3 did not complete results/reset or next118.
+use kr_wire::kr00967::{BombAction119, BombMotion162};
+
+fn hex(s: &str) -> Vec<u8> {
+    s.as_bytes()
+        .as_chunks::<2>()
+        .0
+        .iter()
+        .map(|pair| u8::from_str_radix(std::str::from_utf8(pair).unwrap(), 16).unwrap())
+        .collect()
+}
+
+#[test]
+fn captured_requests_preserve_wire_id_coordinates_and_opaque_tail() {
+    for (captured, id, row, opaque) in [
+        ("5a5a59a5685c595f59a3daa568", 1, 6, 1715),
+        ("5a5a59a56b52595f59a374a568", 2, 8, 1565),
+    ] {
+        let body = hex(captured);
+        let decoded = BombAction119::decode(&body).unwrap();
+        assert_eq!(
+            decoded.motion,
+            BombMotion162 {
+                context: 0,
+                slot: 0,
+                selector: 3,
+                bomb_id: id,
+                source_row: row,
+                source_column: 3,
+                target_row: 5,
+                target_column: 3,
+            }
+        );
+        assert_eq!(decoded.opaque_tail, [opaque, 1]);
+    }
+}
+
+#[test]
+fn native_accepted_motion_body_has_its_own_exact_boundary() {
+    let captured = hex("5a5a59a5685c595f59");
+    let decoded = BombMotion162::decode(&captured).unwrap();
+    assert_eq!(decoded.bomb_id, 1);
+    assert_eq!((decoded.source_row, decoded.target_row), (6, 5));
+    assert_eq!(decoded.encode().unwrap(), captured);
+    let request = hex("5a5a59a5685c595f59a3daa568");
+    for n in 0..request.len() {
+        assert!(BombAction119::decode(&request[..n]).is_err());
+    }
+    for n in 0..captured.len() {
+        assert!(BombMotion162::decode(&captured[..n]).is_err());
+    }
+    assert!(BombMotion162::decode(&request).is_err());
+    let mut trailing = request;
+    trailing.push(0);
+    assert!(BombAction119::decode(&trailing).is_err());
+    let mut trailing = captured;
+    trailing.push(0);
+    assert!(BombMotion162::decode(&trailing).is_err());
+}

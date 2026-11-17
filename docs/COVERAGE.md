@@ -39,7 +39,7 @@ Review độc lập: [waived theo chủ dự án](evidence/checkpoints/review-wa
 | [KR-F007 · Stat tích lũy và MaxPower](#kr-f007) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
 | [KR-F008 · Kim dùng chủ động](#kr-f008) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
 | [KR-F009 · Trap, death, cứu và chạm địch](#kr-f009) | present | both | partial | checked | observed | unknown | unknown | unknown | partial / via_pr | partial | K5: passed |
-| [KR-F010 · Ability và debuff group1](#kr-f010) | present | static | partial | unknown | observed | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
+| [KR-F010 · Ability và debuff group1](#kr-f010) | present | static | partial | unknown | observed | unknown | unknown | unknown | partial / branch_pending | unknown | K5: passed |
 | [KR-F011 · Mount và biến hình](#kr-f011) | present | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F012 · Nhóm chủ động ngoài kim](#kr-f012) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
 | [KR-F013 · Thời hạn và variant item](#kr-f013) | candidate | static | partial | unknown | unknown | unknown | unknown | unknown | unknown / unknown | unknown | K5: passed |
@@ -56,7 +56,7 @@ Số lượng theo trạng thái khai báo (không phải tỷ lệ hoàn thành
 - presence: candidate=4, present=24, unknown=2.
 - kr_static: partial=28, unknown=2.
 - emulation: checked=22, unknown=8.
-- implementation: partial=25, unknown=5.
+- implementation: partial=26, unknown=4.
 - integration: partial=25, unknown=5.
 - gate: passed=30.
 
@@ -773,25 +773,25 @@ Dependency: [KR-F006](#kr-f006).
 
 [Contract và giới hạn](protocol/items-stats.md#item-families) · [Câu hỏi gốc](RESEARCH.md#gap-ability-debuff) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [Rust MaxPower](protocol/items-stats.md#rust-maxpower) đã có C0/C1 và cap/reset. [Shoe/Punch](protocol/items-stats.md#shoe-punch-source) có native pickup, reset đầu vòng hai và actual 119 trong Python RE; chưa có hành động/peer đủ contract, Rust vẫn từ chối.
+Khoảng trống (trích bảng RESEARCH): [Rust MaxPower](protocol/items-stats.md#rust-maxpower) đã có C0/C1 và cap/reset. [Shoe/Punch](protocol/items-stats.md#rust-bomb-motion-codec) có pickup/reset, actual 119 và native chuyển root qua 162; Rust mới có codec, service vẫn từ chối.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Tái dùng dispatcher cache để tìm đúng reader/consumer hành động; reader 160 hiện chỉ có nhánh entity/counter, chưa chứng minh liên hệ với 119. Sau đó đo Shoe/Punch positive, ca thiếu điều kiện, peer, timer/consume/reset và nối Rust theo membership/round/bomb ledger. Debuff/TTL còn theo nhóm item của sáu map.
+Phép kiểm tối thiểu (trích cùng nguồn): Đo retirement/quota sau 162/158: lượt chuyển root chưa có next118 hoặc kết quả; control escape timeout wineboot trước client. Không đoán ACK 160. Sau đó nối admission/terrain/timer/queue theo membership/round và đo use/negative/peer/reset; Shoe, selector khác và debuff/TTL vẫn mở.
 
 Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285).
 
-Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json), [item-families](evidence/item-families/shoe-punch.json).
+Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json), [item-families](evidence/item-families/shoe-punch.json), [item-families](evidence/item-families/bomb-motion-codec.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|
 | presence | present | [nguồn1](protocol/items-stats.md#item-families) |
 | vn_reference | static | [nguồn1](protocol/items-stats.md#item-families) |
-| kr_static | partial | [nguồn1](protocol/items-stats.md#item-families), [nguồn2](protocol/items-stats.md#shoe-punch-source) |
+| kr_static | partial | [nguồn1](protocol/items-stats.md#item-families), [nguồn2](protocol/items-stats.md#shoe-punch-source), [nguồn3](protocol/items-stats.md#rust-bomb-motion-codec) |
 | emulation | unknown | Chưa có bằng chứng trong phạm vi rà |
-| wine_diagnostic_copy | observed | [nguồn1](protocol/items-stats.md#rust-maxpower), [nguồn2](protocol/items-stats.md#shoe-punch-source) |
+| wine_diagnostic_copy | observed | [nguồn1](protocol/items-stats.md#rust-maxpower), [nguồn2](protocol/items-stats.md#shoe-punch-source), [nguồn3](protocol/items-stats.md#rust-bomb-motion-codec) |
 | windows_original | unknown | Chưa có bằng chứng trong phạm vi rà |
 | lan | unknown | Chưa có bằng chứng trong phạm vi rà |
 | internet | unknown | Chưa có bằng chứng trong phạm vi rà |
-| implementation | unknown / unknown | Chưa có bằng chứng trong phạm vi rà |
+| implementation | partial / branch_pending | [nguồn1](../rust/crates/kr-wire/src/kr00967/bomb_motion.rs), [nguồn2](protocol/items-stats.md#rust-bomb-motion-codec) |
 | integration | unknown | Chưa có bằng chứng trong phạm vi rà |
 | gate | K5: passed | [nguồn1](PLAN.md#k5-acceptance) |
 

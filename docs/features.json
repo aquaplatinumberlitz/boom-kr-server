@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP323",
+  "as_of": "CP324",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3761,7 +3761,8 @@
         "evidence": [
           "docs/evidence/item-families/README.md",
           "docs/evidence/rust-service/g1-maxpower.json",
-          "docs/evidence/item-families/shoe-punch.json"
+          "docs/evidence/item-families/shoe-punch.json",
+          "docs/evidence/item-families/bomb-motion-codec.json"
         ]
       },
       "coverage": {
@@ -3781,7 +3782,8 @@
           "state": "partial",
           "refs": [
             "docs/protocol/items-stats.md#item-families",
-            "docs/protocol/items-stats.md#shoe-punch-source"
+            "docs/protocol/items-stats.md#shoe-punch-source",
+            "docs/protocol/items-stats.md#rust-bomb-motion-codec"
           ]
         },
         "emulation": {
@@ -3793,7 +3795,8 @@
             "state": "observed",
             "refs": [
               "docs/protocol/items-stats.md#rust-maxpower",
-              "docs/protocol/items-stats.md#shoe-punch-source"
+              "docs/protocol/items-stats.md#shoe-punch-source",
+              "docs/protocol/items-stats.md#rust-bomb-motion-codec"
             ]
           },
           "windows_original": {
@@ -3810,9 +3813,12 @@
           }
         },
         "implementation": {
-          "state": "unknown",
-          "refs": [],
-          "delivery": "unknown"
+          "state": "partial",
+          "refs": [
+            "rust/crates/kr-wire/src/kr00967/bomb_motion.rs",
+            "docs/protocol/items-stats.md#rust-bomb-motion-codec"
+          ],
+          "delivery": "branch_pending"
         },
         "integration": {
           "state": "unknown",

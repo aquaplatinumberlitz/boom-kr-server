@@ -1,0 +1,262 @@
+{
+  "schema": "kre-bomb-motion-codec-v1",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445",
+  "scope": "Codec Rust cho request119/body13 và record162/body9 đã đo; chưa bật ability trong service.",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "rust": {
+    "files": [
+      "rust/crates/kr-wire/src/kr00967.rs",
+      "rust/crates/kr-wire/src/kr00967/bomb_motion.rs",
+      "rust/crates/kr-wire/tests/native_bomb_motion.rs"
+    ],
+    "exports": [
+      "BombAction119",
+      "BombMotion162"
+    ],
+    "behavior": "Typed codec only, exact sizes and opaque two-u16 requesttail. No119handler or floor3/4enable in kr-service."
+  },
+  "runtime": {
+    "run_sha256": "478223e910f97d13bc480852683be3999f183de0e6a2410bb7c0f33af137eb85",
+    "raw_files": 1356,
+    "environment": "Wine diagnostic copies, Python reference, only loopback",
+    "exit": 0,
+    "scope": "Một current 119 của C0, hai native reader 162 và chuyển secure root trên cùng wire ID 1.",
+    "roots": [
+      {
+        "role": "A",
+        "object": 1601915704,
+        "root_before": [
+          6,
+          3
+        ],
+        "root_after": [
+          5,
+          3
+        ],
+        "root_at158": [
+          5,
+          3
+        ],
+        "pixel_at158": [
+          120,
+          239
+        ],
+        "reader162_cursor": 9,
+        "errors": [
+          0,
+          0
+        ]
+      },
+      {
+        "role": "B",
+        "object": 1649189480,
+        "root_before": [
+          6,
+          3
+        ],
+        "root_after": [
+          5,
+          3
+        ],
+        "root_at158": [
+          5,
+          3
+        ],
+        "pixel_at158": [
+          120,
+          239
+        ],
+        "reader162_cursor": 9,
+        "errors": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r5/reuse.json",
+      "bytes": 1251,
+      "sha256": "b4325c4d4af998b40e2a2f25326fddb95ab252dcbac5f035f1d45455c35424d5"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r5/selected-dispatch-reuse.json",
+      "bytes": 1186,
+      "sha256": "b6742b18613379e2bfb8f5e09f56fcd1724ee9881b2a69e2ed0efcb33a58585f"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r5/action-readers-ida-cli.json",
+      "bytes": 24205,
+      "sha256": "a4ae7b1b541dd62c0088d2cc1502d704887417b97721d936da6bd6b7d7a651c6"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r5/bomb-motion-ida-cli.json",
+      "bytes": 11159,
+      "sha256": "9b13fa5ac03233acf3fe92edeb026f6d54174bcad9b95fed8de7b63963b87a9e"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r5/read-body-chunks.json",
+      "bytes": 4312,
+      "sha256": "6cb60f5dd7b8995e8c60606b99d0f60d7bef98bb05a5d3860e158828bb966842"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r5/bomb-motion-vtable-reuse.json",
+      "bytes": 506,
+      "sha256": "99cafc0146593bed4f676aa44191781cd59a1790078dbf120060ccf84f5cfeee"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r5/offset-reconciliation-correction.json",
+      "bytes": 1012,
+      "sha256": "f112e7e35e4297a935c1dc389aa80ce8553509df995b230b6935ee6f951a9577"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r5/batch-boundary.json",
+      "bytes": 852,
+      "sha256": "13fac122c3c90c514b1a97bd2366754e8077d65c578a664f7226f931e6a77548"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r6/reuse.json",
+      "bytes": 1208,
+      "sha256": "fb9b1af8550742d105b2920390b50a297a22d3bb4280a561449d1e5aefa962ff"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r6/lifecycle-ida-cli.json",
+      "bytes": 33702,
+      "sha256": "61259c543e767a9af221fd03ea57c1596c94ad0c27a2f7c49ab473bc736a6c7b"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r6/read-body-chunks.json",
+      "bytes": 4190,
+      "sha256": "bbb6fa9b9d0d04cdb638508e56e203b45a5c4b3f2fd487bcd6324d039865725f"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r6/boundary-summary.json",
+      "bytes": 1000,
+      "sha256": "9bce34104f625ad36f5f91b8ee2d1308937ccc35e85db7d5711629bc3f2d1d52"
+    },
+    {
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/source-byte-binding.json",
+      "bytes": 1466,
+      "sha256": "aa5bb55644c3809967ff057eafec655d7d08c29cf16112371d58fa451174fd29"
+    },
+    {
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/runtime-preflight.json",
+      "bytes": 116127,
+      "sha256": "ecf6893ae010b5f58cfa7cb1cb6043441a8b6b9bc629e0fd34ad7ba645d63829"
+    },
+    {
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/reference-inputs.json",
+      "bytes": 8899,
+      "sha256": "d1047a117b21b0c5728cb3e5d2b0943c9ff2d5091c712defe5ab8c1783214a27"
+    },
+    {
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/prelaunch-source-review.json",
+      "bytes": 1050,
+      "sha256": "2a4e4b15c3071703f3819865d06b352adbffc28210f155ff8209514ceb92c9ca"
+    },
+    {
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/raw-seal.json",
+      "bytes": 217818,
+      "sha256": "4ea44b894ded7f5a79b70113d708f4fe47f5c79244bbfc8d5fd1a1e40752e743"
+    },
+    {
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/motion-observations-verification.json",
+      "bytes": 2198,
+      "sha256": "8f9551fbbe2e0c5d537c4d75518159802d054602f1d5aee2fb4e1fcc50593099"
+    },
+    {
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/manual-image-review.json",
+      "bytes": 371,
+      "sha256": "885b2ca81c78d347c0608d0be08ef3bd3357eb0cfd50a0616cec8e4f6b441da6"
+    },
+    {
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/frozen-input-postrun-verification.json",
+      "bytes": 155,
+      "sha256": "38a01ca160bb8e1dfae4c811a28cd7bebd74a82a95d4661c4dfff4b7cde3eb74"
+    },
+    {
+      "path": "local/research/codex/g1-ability-motion-source-native-r3/exit.json",
+      "bytes": 240,
+      "sha256": "a08bef4774784883804bf540d2a2bbde4aca4698fc1088b08a2d58424f46cd5f"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r4/runtime-preflight.json",
+      "bytes": 115730,
+      "sha256": "3ac78212311c72fca6a2b9cc6233ace97c93b39b0e97e76770c3f505ed8ca071"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r4/reference-inputs.json",
+      "bytes": 8904,
+      "sha256": "a6bb23266bd9d3cc4d7c5eaf1808b53724c0e05d5c32e46f1467749dfed2959c"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r4/prelaunch-source-review.json",
+      "bytes": 745,
+      "sha256": "e4cd7ee573009a56f8ec4c521e019bafb118173219b100fc26bca8e5078aa967"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r4/raw-seal.json",
+      "bytes": 1163,
+      "sha256": "24a82a30d31a2900681ffce324dc284193f6bb621b8fe1c22d93e02ae44a9560"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r4/failure-verification.json",
+      "bytes": 411,
+      "sha256": "a3e7455105d320f0c0178cc4edbe8cee1706ca4ed65581812c3af9d9275dbe56"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r4/exit.json",
+      "bytes": 240,
+      "sha256": "b1f79b6a1b94eafcbf296debaacd41705ab4b7bbf56e10525506aef875edeeb9"
+    },
+    {
+      "path": "local/research/codex/g1-motion-codec-build-r1/source-identity.json",
+      "bytes": 1602,
+      "sha256": "ffadb05c51460c9eb634e3a20cda8a788d57e4ca9ca8a82e5e8fc3637c42bcdd"
+    },
+    {
+      "path": "local/research/codex/g1-motion-codec-build-r1/new-source-chunk-binding.json",
+      "bytes": 3273,
+      "sha256": "0e57ef2c9ce6396d9d4cfde2b76e36c49fd2fc263f82fe5d15d41d3938c5c9cf"
+    },
+    {
+      "path": "local/research/codex/g1-motion-codec-build-r1/workspace-source-identity.json",
+      "bytes": 25987,
+      "sha256": "d9530d98458161e1aba37016270aeee41c07cdb91faf789a7f4e43fb08e6ae7e"
+    },
+    {
+      "path": "local/research/codex/g1-motion-codec-build-r1/verification.json",
+      "bytes": 1426,
+      "sha256": "0dad2acb2d5012d22b63a25727295802b30046e4cca892331f0b12e3695f7d75"
+    },
+    {
+      "path": "local/research/codex/g1-motion-codec-build-r1/toolchain.json",
+      "bytes": 361,
+      "sha256": "dbec1304d28836f1c34cd3dca1bdf0f0dcd30dcaf39c40eec26bcafab9167251"
+    },
+    {
+      "path": "local/research/codex/g1-motion-codec-build-r1/observed-build-polls.json",
+      "bytes": 31519,
+      "sha256": "bce95b1f3546d55da368c1d5db4e19e8dd3718ed4f46a993d9f1b9505c6c7c25"
+    }
+  ],
+  "observations": [
+    "162 do E5EFC0 đọc 9 byte với widths 1/1/1/2/1/1/1/1; lookup context, actor và wire ID tới CGOGameBomb. Selector ≤3 gọi vf94/B37A00; nhánh kia dùng vf90/B37910. Chỉ nhánh đầu có runtime mới trong lát này.",
+    "Candidate reply ghép từ prefix của actual 119; hai client đọc 9/9, errors 0, B37A00 nhận đúng target/selector/slot. Secure root 1AC/1B8 đổi (6,3)→(5,3); tại 158 root vẫn (5,3) và pixel (120,239). Đây là bằng chứng reader và chuyển root trong hai view, chưa chứng minh toàn quỹ đạo hoặc lifecycle.",
+    "Rust thêm decode body 119 đúng 13 byte, giữ hai u16 cuối opaque, và decode/encode body 162 đúng 9 byte. Hai vector actual 119 có ID/cell/tail khác nhau và một vector 162 đã qua native reader được kiểm độc lập; gói thiếu, thừa hoặc nhầm độ dài bị từ chối. Service không gọi API mới hoặc mở item 3/4.",
+    "R3 chỉ có một vòng, một bom/action, không rank/return hoặc actual 118 tiếp. Extra Space không tạo request bom. Giữ kết quả một phần dù exit 0.",
+    "R4 định kiểm escape/reposition/cleanup nhưng wineboot timeout 35 giây trước client/TCP. Giữ raw lỗi, không coi là ca âm gameplay hoặc kết luận nguyên nhân.",
+    "Correction giữ riêng: B486B0 interface 584+70=actor 5F4, không phải 5F4+8. Contract, probe native và setter byte binding của CP323 đã dùng 5F4 đúng; không sửa record, raw hoặc ghi chép phụ cũ."
+  ],
+  "limits": [
+    "Chưa có native gameplay action trên Rust service; item 3/4 vẫn bị từ chối.",
+    "Chưa giải lifecycle/retirement/quota, điểm nổ sau mọi kiểu di chuyển, ca âm native, hành động Shoe, dead/trapped/stale action, mọi selector hoặc roster.",
+    "Không đồng nhất hai u16 cuối với millisecond/duration/flag; B38A80 có phép tính và callback nhưng chưa đo đầy đủ consumer hoặc đơn vị.",
+    "Không gửi 160, chưa chọn giá trị ACK. Reader 160 khác 162 và cần hiểu group/counter trước khi dùng.",
+    "R4 không chạy gameplay; runtime L1 của Claude được giữ riêng. Không sửa exporter, client/pack/DB nguồn hoặc input đã freeze."
+  ],
+  "next": "Đo current bomb retirement/quota và reader/group counters sau162/158 bằng control nguồn, rồi nối service admission/terrain/timer/queue theo membership và round; native positive/negative/peer/reset trước khi bật item."
+}
