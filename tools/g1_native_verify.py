@@ -241,14 +241,60 @@ def motion(root):
     target=root/'motion-verification.json';assert not target.exists();write(target,result);print(result['result'])
 
 
+
+def vi_smoke(root):
+    inputs=read(root/'vi-client-inputs.json');out=root/'native/cycles'
+    expected='37655a36d11b94dbe18bcfdcaaf68ec92c9271743d8e3fdf919492e8f0edaa84'
+    assert inputs['exe']['sha256']==expected
+    check_pins([row['target']for row in inputs['files']])
+    wire=read(root/'decoded-channels-shared.json')
+    assert wire['run_sha256']==pin(out/'run.json')['sha256']
+    run=read(out/'run.json');matrix=read(root/'matrix.json')
+    assert matrix['map']=='Factory07' and matrix['rounds']==2
+    events=[json.loads(line)for line in (out/'rust-events.jsonl').read_text().splitlines()]
+    pickups=[row for row in events if row.get('pickup',{}).get('accepted')]
+    assert [row['pickup']['index']for row in pickups]==[701,701]
+    views={}
+    for role in matrix['roster']:
+        owner=run['account_launches'][role]['response']['player']
+        channel=next(row for row in wire['channels']if row['identity']==owner['wire_id'])
+        for opcode in [121,165,175,180]:assert sum(row['opcode']==opcode for row in channel['out'])==2
+        text=(out/role/'client.log').read_text(errors='replace')
+        assert not any(marker in text for marker in ['SELECTED_PEER_ERROR','CAMP_FLAGS_PROBE_ERROR','received signal SIGSEGV','received signal SIGABRT','"kind":"probe_error"'])
+        maps=[row for row in tagged(text,'G1_MAP')if row['kind']=='name_compare']
+        assert len(maps)==2 and all(row['incoming_name']['text']=='Factory07'and row['result']==0 for row in maps)
+        clocks=[row for row in tagged(text,'FOUR_SLOT')if row['kind']=='clock']
+        assert len(clocks)==2
+        for clock in clocks:
+            assert set(clock['actors'])=={'0','1'}
+            assert clock['actors']['0']['fields']['0x4a4']['value']==2
+            assert clock['actors']['1']['fields']['0x4a4']['value']==1
+        records=tagged(text,'RUST_M3_ITEM');items=[row for row in records if row['kind']=='end']
+        assert len(items)==2
+        fields=[row for row in records if row['kind']=='fields']
+        assert len(fields)==2 and all((row['row'],row['column'],row['index'],row['item_kind'],row['slot'])==(2,0,701,0,0)for row in fields)
+        for item in items:
+            assert item['cursor']==item['payload']==12 and item['err54']==item['err58']==0
+            for slot in ['0','1']:
+                before=item['before'][slot]['fields'];after=item['after'][slot]['fields']
+                for field,value in before.items():
+                    delta=1 if slot=='0'and field=='0x4a4'else 0
+                    assert after[field]['value']==value['value']+delta
+        views[role]=dict(maps=2,clocks=2,pickups=2,bomb_stat=[2,3],peer_stat=1)
+    result=dict(result='verified_vi_Factory07_item_two_rounds_reset',source='kr_runtime',status='confirmed',
+                run=pin(out/'run.json'),wire=pin(root/'decoded-channels-shared.json'),inputs=pin(root/'vi-client-inputs.json'),views=views,
+                limits='Current produced L1 vi client on isolated Wine LAN. Integration smoke only; KR unmodified-language client remains gameplay oracle. Manual image review recorded separately; no L1 closure, Internet or M8 claim.')
+    target=root/'vi-smoke-verification.json';assert not target.exists();write(target,result);print(result['result'])
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run',type=Path,required=True)
-    parser.add_argument('--group',choices=['character','motion','lifecycle'],required=True)
+    parser.add_argument('--group',choices=['character','motion','lifecycle','vi-smoke'],required=True)
     args=parser.parse_args()
     root=args.run.resolve(strict=True)
     assert root.is_relative_to((ROOT/'local').resolve())
-    {'character':character,'motion':motion,'lifecycle':lifecycle}[args.group](root)
+    {'character':character,'motion':motion,'lifecycle':lifecycle,'vi-smoke':vi_smoke}[args.group](root)
 
 
 if __name__ == '__main__':
