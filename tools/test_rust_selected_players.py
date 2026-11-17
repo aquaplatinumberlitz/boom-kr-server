@@ -49,8 +49,10 @@ def main():
     parser.add_argument('--active-departure', action='store_true')
     parser.add_argument('--database-accounts', action='store_true', help='Create new DB accounts after readiness; use one transport IP and no per-account config')
     parser.add_argument("--persist-matches", action="store_true", help="DB-owned match journal serving, with writer barriers before Start and result")
+    parser.add_argument('--all-dead', action='store_true', help='No survivor report; every remaining member dies, with all-rank2 and durable Draw outcomes')
     args = parser.parse_args()
     assert not args.persist_matches or args.database_accounts, "journal requires DB account mode"
+    assert not args.all_dead or args.persist_matches, 'all-dead acceptance checks the durable journal'
     root = args.out.resolve()
     root.mkdir(parents=True, exist_ok=False, mode=0o700)
     cfg = json.loads(args.config.read_text())
@@ -247,13 +249,16 @@ def main():
                 if kind==17:blob=blob[:10]+(7).to_bytes(4,'little')
                 body+=codec.pack_fields([size],[4])+_encode_bytes(blob)
             return body
-        for kind,tick in [(17,10),(19,11)]:
-            c.send(127,report(kind,tick,2))
-            a.receive(170)
-            if not args.active_departure:b.receive(170)
+        deaths = [(a,0),(c,2)] if args.active_departure else [(a,0),(b,1),(c,2)]
+        for actor,slot in deaths if args.all_dead else [(c,2)]:
+            for kind,tick in [(17,10),(19,11)]:
+                actor.send(127,report(kind,tick,slot))
+                for peer in clients:
+                    if peer is not actor:peer.receive(170)
         if args.persist_matches:
             writer=sqlite3.connect(account.database,isolation_level=None);writer.execute('BEGIN IMMEDIATE')
-        time.sleep(.1);a.send(127,report(21,12,0))
+        if not args.all_dead:
+            time.sleep(.1);a.send(127,report(21,12,0))
         if args.persist_matches:
             time.sleep(8.4)
             for client in clients:client.quiet()
@@ -267,16 +272,16 @@ def main():
             for slot in range(16):
                 if stream[at]:assert stream[at]==1;ranks[slot]=stream[at+5];at+=131
                 else:at+=1
-            assert at==len(stream) and ranks=={0:1,1:1,2:2}
+            assert at==len(stream) and ranks==({0:2,1:2,2:2} if args.all_dead else {0:1,1:1,2:2})
         for client in clients:
             client.receive(180)
             if args.active_departure:
                 _,body=client.receive(107);assert codec.read_fields(body,[1,4,1])==[1,account.players[1]['wire_id'],0]
             for _ in clients:client.receive(110)
-        cases.append('three_member_team_result_and_reset_current_rank_rows_only')
+        cases.append('all_dead_without_survivor21_returns_all_original_rank2_rows_and_resets' if args.all_dead else 'three_member_team_result_and_reset_current_rank_rows_only')
         if args.persist_matches:
-            finish=json.loads(match_rows()[0][1]);assert {p['slot']:p['outcome']for p in finish['players']}=={0:'win',1:'win',2:'loss'}
-            assert finish['reason']==('forfeit'if args.active_departure else'elimination')
+            finish=json.loads(match_rows()[0][1]);assert {p['slot']:p['outcome']for p in finish['players']}==({0:'draw',1:'draw',2:'draw'} if args.all_dead else {0:'win',1:'win',2:'loss'})
+            assert finish['reason']==('all_dead' if args.all_dead else 'forfeit'if args.active_departure else'elimination')
             assert finish['players'][1]['exit']==('disconnected'if args.active_departure else'present')
             cases.append('rank175 matches one durable outcome for every original participant, including departed winner')
         if not args.active_departure:
