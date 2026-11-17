@@ -5,6 +5,14 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP337: Shoe đủ ma trận và G1 đạt acceptance giai đoạn 1 đã thu hẹp.**
+[Ma trận tám tiêu chí](evidence/rust-service/g1-acceptance-matrix.json) nối sáu map/roster đã đo với
+kim/cứu, item nền/MaxPower, Shoe/Punch, bảng rơi đã cắt và từ chối nhân vật trên cùng phiên.
+Client L1 `vi` hiện hành đã có Factory07/Bomb, hai vòng/kết quả/reset và journal trên Rust; hai cache metadata
+thay đổi được đối chiếu đúng bảng 238, giữ lỗi wrapper ban đầu. Không suy every-tile, physics/authority đầy đủ,
+L1 closure hoặc Internet/tải từ các lượt Wine/LAN. [Bảng điều hành](PLAN.md#dashboard) chuyển sang M8:
+Internet transport mới, 50 người/8 phòng, backup/restore, đóng gói và chạy dài.
+
 **CP336: ma trận nhóm Punch đã có native Rust cho cả bốn hướng và endpoint biên/quét.**
 [Contract và bằng chứng](protocol/items-stats.md#rust-bomb-motion-codec) giữ source/target thực,
 exact 119→162 và reservation toàn hàng/cột theo policy report-derived. Hai batch mới có bốn vòng mỗi batch,

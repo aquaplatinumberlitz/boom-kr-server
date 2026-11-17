@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **18/11, Shoe và đối chiếu G1 / CP337 / AUD145**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **18/11, nền gói Linux / CP338 / AUD146**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -55,6 +55,10 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **18/11, S
 Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
 **Blocker và việc tồn:**
+
+- PR G1 đã xanh CI nhưng gate local còn thiếu hai executable lịch sử đang trong đợt dọn được duyệt. Chờ registry
+  prune hợp lệ được công bố rồi tích hợp và kiểm lại exact head; không tự khôi phục file đang bị dọn hoặc khai
+  registry thay người dọn. Toàn bộ 619 evidence CP337 không nằm trong plan xóa. M8 tiếp phần độc lập.
 
 - [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có đường kết thúc trong scope native
   contiguous 2/4/8 và journal Draw/thưởng 0; native sparse/departed/delayed175 qua revoke/EOF chưa đo. TCP/SQLite

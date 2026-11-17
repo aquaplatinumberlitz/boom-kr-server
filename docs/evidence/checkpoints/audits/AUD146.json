@@ -1,0 +1,63 @@
+{
+  "id": "AUD146",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "m8-linux-package-foundation"
+  ],
+  "completed_through": "CP338",
+  "recorded_utc": "2026-11-17T19:13:09.197661+00:00",
+  "auditor": "Codex",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/OPERATIONS.md",
+    "docs/RUST_SERVICE_ARCHITECTURE.md",
+    "docs/evidence/rust-service/m8-server-package.json",
+    "tools/rust_service_package.py",
+    "tools/rust_package_runtime.py",
+    "tools/smoke_rust_service_package.py",
+    "tools/test_rust_service_package.py",
+    "local/research/codex/m8-server-package-smoke-r4/verification.json",
+    "local/research/codex/m8-server-package-arm-smoke-r2.json"
+  ],
+  "method": "Codex đối chiếu thủ công scope issue474, source builder/runner/harness/tests, manifest ELF/fixture pins và hai smoke receipts với đường lỗi đã giữ. Chỉ hoàn tất nền đóng gói, không toàn acceptance M8.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Fixture runtime vẫn phụ thuộc đường dẫn repo/local máy phát triển.",
+      "correction": "Bundle gom fixture/profile theo hash, đường dẫn tương đối, runner tự chứa standard library, private state/DB/socket re-root; namespace trên hai Linux che repo và build workspace.",
+      "fixed_in": [
+        "tools/rust_service_package.py",
+        "tools/rust_package_runtime.py",
+        "docs/OPERATIONS.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Readiness controller dùng tên file giả định; ARM namespace root vướng quyền trên file do user sở hữu và bwrap unprivileged không đọc được mountinfo.",
+      "correction": "Poll đúng service-state.json; giữ failure gốc, ARM positive chạy trong task directory do root sở hữu. Không đổi cấu hình bảo mật host và không suy service-account production.",
+      "fixed_in": [
+        "tools/smoke_rust_service_package.py",
+        "docs/evidence/rust-service/m8-server-package.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Package smoke có thể bị hiểu thành toàn bộ M8 hoặc Internet/native acceptance.",
+      "correction": "Ghi rõ tám kiểm package, x86/ARM và giới hạn host libraries/root-owned harness; xuất pack/cài sạch đầy đủ, gói Windows/Wine, Internet, tải/restore/soak vẫn mở.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/m8-server-package.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Exact-head local/history gate và CI trước merge; registry cleanup lịch sử còn chờ người dọn công bố.",
+    "M8 còn build-from-pack/cài sạch đầy đủ, launcher public/gói Windows-Wine, Internet transport mới, 50 người/8 phòng, giám sát/admin/backup/restore/rollback/soak24h.",
+    "G1 PR473 vẫn chờ gate tích hợp; không thay completed CP337/AUD145 hoặc tự khai registry prune.",
+    "Không sửa L1 của Claude, exporter map, checker checkpoint, manifest evidence cũ hoặc dữ liệu hạ tầng riêng."
+  ]
+}

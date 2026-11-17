@@ -33,13 +33,13 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP337: Shoe đủ ma trận và G1 đạt acceptance giai đoạn 1 đã thu hẹp.**
-[Ma trận tám tiêu chí](docs/evidence/rust-service/g1-acceptance-matrix.json) nối sáu map/roster đã đo với
-kim/cứu, item nền/MaxPower, Shoe/Punch, bảng rơi đã cắt và từ chối nhân vật trên cùng phiên.
-Client L1 `vi` hiện hành đã có Factory07/Bomb, hai vòng/kết quả/reset và journal trên Rust; hai cache metadata
-thay đổi được đối chiếu đúng bảng 238, giữ lỗi wrapper ban đầu. Không suy every-tile, physics/authority đầy đủ,
-L1 closure hoặc Internet/tải từ các lượt Wine/LAN. [Bảng điều hành](docs/PLAN.md#dashboard) chuyển sang M8:
-Internet transport mới, 50 người/8 phòng, backup/restore, đóng gói và chạy dài.
+**CP338: nền gói server Linux đã có manifest, state riêng và smoke x86/ARM.**
+[Builder/runner và bằng chứng](docs/evidence/rust-service/m8-server-package.json) gom fixture/profile đã pin,
+kiểm hash/path/mode, tách DB/session khỏi gói và re-root state khi cài. Hai Linux đã có readiness/dừng sạch khi
+repo/local bị che, từ chối init lại mà không đổi DB và từ chối chạy trùng. ARM harness dùng thư mục do root sở hữu;
+raw lỗi trước được giữ. Đây là nền đóng gói từ recipe hiện có; xuất dữ liệu từ pack, cài máy sạch đầy đủ, launcher
+Internet, gói Windows/Wine, tải 50 người/8 phòng, restore và 24 giờ chạy dài còn theo [Bảng điều hành](docs/PLAN.md#dashboard).
+G1 đã đủ bằng chứng trong CP337; tích hợp vẫn chờ gate local với registry dọn evidence lịch sử và CI hiện hành.
 
 ## Bắt đầu
 
