@@ -1,0 +1,249 @@
+{
+  "schema": "kre-g1-shoe-matrix-v1",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
+  "scope": "Ma trận Shoe tám vòng trên Rust, bốn hướng, ca trước pickup/peer/retirement/reset. Đang bổ sung hành lang dài trên Factory07; chưa đóng nhóm.",
+  "native": {
+    "rounds": 8,
+    "clients": 2,
+    "cases": [
+      {
+        "round": 1,
+        "selector": 5,
+        "bomb_id": 2,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          3,
+          3
+        ],
+        "endpoint_delta": [
+          -3,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 2,
+        "selector": 7,
+        "bomb_id": 5,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          9,
+          3
+        ],
+        "endpoint_delta": [
+          3,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 3,
+        "selector": 6,
+        "bomb_id": 8,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          5
+        ],
+        "endpoint_delta": [
+          0,
+          1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 4,
+        "selector": 4,
+        "bomb_id": 10,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          -1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 5,
+        "selector": 5,
+        "bomb_id": 12,
+        "source": [
+          8,
+          4
+        ],
+        "target": [
+          2,
+          4
+        ],
+        "endpoint_delta": [
+          -6,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 6,
+        "selector": 7,
+        "bomb_id": 15,
+        "source": [
+          7,
+          3
+        ],
+        "target": [
+          9,
+          3
+        ],
+        "endpoint_delta": [
+          2,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 7,
+        "selector": 6,
+        "bomb_id": 17,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          5
+        ],
+        "endpoint_delta": [
+          0,
+          1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 8,
+        "selector": 4,
+        "bomb_id": 19,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          -1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      }
+    ],
+    "getter_checks": 864,
+    "covered_selectors": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "semantic": {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/motion-verification.json",
+      "bytes": 3714,
+      "sha256": "990ea5f74a585dabdbc099a195b7223c5fd67929a9aa5c01e21955b8e32b1113"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/matrix-verification.json",
+      "bytes": 675,
+      "sha256": "3bb5f513081a0f3691399bea4e2b54465118ce5905da49aba85eea6911bf2952"
+    },
+    "selector_label_deviation": {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/selector-name-correction.json",
+      "bytes": 1519,
+      "sha256": "615903d758d723de865165994fc18c82e2d6226141ae0897329994ae763b69e4"
+    }
+  },
+  "implementation": {
+    "geometry": "Selector4/6 cùng hàng,5/7 cùng cột, endpoint khác nguồn, toàn corridor passable và không có allocation khác.",
+    "reservation": "Nguồn và toàn corridor giữ đến mọi retirement receipt; giữ owner/member/vòng, life/item, deadline, clone/queue và rollback.",
+    "authority": "Report-derived design; endpoint và actor-supplied range được đọc trực tiếp, không original server physics."
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/matrix.json",
+      "bytes": 70192,
+      "sha256": "1b0223daba14f4153c93dc96d9091b0448e8c79bcfd64bbdf4a0efb5743f2a2a"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/decoded-channels-shared.json",
+      "bytes": 368332,
+      "sha256": "a581fee1e4ebd98414d0b8f363a27eb0f677ffa005b32178c4d20573d012ddf1"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/native/runtime-preflight.json",
+      "bytes": 81264,
+      "sha256": "928d2c4bff42e5fdb7277c4bd8c699abac4866bf8fefb47a6ed3dbe7507f6c20"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "5d0487b382d28b3f285763c7e679f60c8193927bec0b9847ef29327dc4c0b9e8"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/native/storage-export.json",
+      "bytes": 11174,
+      "sha256": "9bc6857614133af5f10a195a42f90ad707d5092f775168b13d7718ab3a9bc8c9"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/native/cycles/run.json",
+      "bytes": 1092892,
+      "sha256": "dc2b576b6fd745c73ece5d0c188d124c64a2451201db195524c20a97bf8e0383"
+    }
+  ],
+  "remaining": [
+    "Hoàn tất ca range/biên hành lang dài Factory07 rồi audit/checkpoint/gate một lần cho nhóm.",
+    "Không suy native duplicate/late/inflight/foreign bomb/queued EOF hoặc Internet/tải/M8."
+  ],
+  "limits": [
+    "Nhãn selector ngang của input gốc bị đảo: Right thực phát6, Left phát4. Raw và matrix giữ nguyên; correction riêng gắn SHA matrix/wire, verifier kiểm exact selector, phím, endpoints và consumer. Không gọi matrix nguyên bản khớp mọi nhãn kế hoạch.",
+    "Chỉ Wine/private LAN và hai account C1/C0; không mọi roster/nhân vật/map hoặc G1 đã đóng."
+  ]
+}
