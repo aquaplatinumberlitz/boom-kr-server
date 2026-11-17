@@ -163,16 +163,30 @@ không phát 119. Sau pickup có exact 119/162 `(6,3)→(7,3)`, reader `9/9`, er
 active 0 trước cleanup trong cả hai view. Có actual 118 mới, hai kết quả/về phòng/reset và hai journal đúng
 account/player/character, thưởng 0; rank rows nhận qua TCP khớp outcome DB. Test server giữ các ca sai quyền,
 queue rollback, biên/terrain bị chặn, quota đến mọi receipt và source reservation. Các ca lỗi/partial của
-reference không thay nghiệm thu này. Hướng ngang, bom người khác, motion lặp/khi đang chạy/sát deadline,
-mọi nhân vật/map/roster vẫn chưa mở; đây không phải toàn bộ luật server gốc hoặc toàn G1.
+reference không thay nghiệm thu này. Lát ngang có bằng chứng riêng bên dưới; bom người khác, motion
+lặp/khi đang chạy/sát deadline và mọi nhân vật/map/roster vẫn chưa mở. Không suy toàn bộ luật server gốc hoặc G1.
 
 [Reference Punch ngang](../evidence/item-families/punch-horizontal-action.json) có hai vòng actual 119
 selector 0, source `(6,3)` và target `(6,5)`. Cả hai view đọc đủ 162, landing/rebind/active 0 trước cleanup,
 có bom tiếp, hai kết quả/về phòng/reset; 712 field khớp native getter. Đây là endpoint đã đo, không chứng minh
-đường bay chỉ dài hai ô hoặc không wrap. Nhánh [#460](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/460)
-có guard/test nháp Rust cho cùng hàng, đích cộng hai cột, reserve cả hàng đến khi mọi recipient hoàn tất.
-Guard giữ owner/round/deadline/queue; không nhận motion khác hoặc bom mới giao hàng đó. Native Rust account,
-floor chỉ Punch, peer/reset/journal vẫn chờ kiểm; bản nháp chưa là nghiệm thu service.
+đường bay chỉ dài hai ô hoặc không wrap. Reference nhặt cả hai cờ Shoe/Punch, không thay acceptance Rust.
+
+[Lát Rust ngang](../evidence/rust-service/g1-punch-horizontal.json) nhận selector 0 cùng hàng, target column
+bằng source column cộng 2, trong biên map. Policy opt-in giữ các guard owner/member/vòng/item/life, deadline,
+clone/queue, quota/fuse và short 158→blast. Vì chưa đo toàn đường bay, server reserve **cả hàng** đến khi mọi
+recipient hoàn tất retirement. Admission từ chối allocation/path khác giao hàng, placement mới, vertical Punch
+và Shoe giao hàng đó; mọi ô hủy bom trên hàng đều chặn admission, kể cả ô ngoài đoạn giữa hai endpoint.
+Đây là policy bảo thủ của server; không khẳng định luật KR chỉ dùng hai ô hoặc nguyên nhân chọn target.
+
+Rust có hai account, actor C1 đã lưu và peer C0, floor chỉ Punch 4: trước pickup chỉ có bom thường/no119;
+hai actual 119/162 `(6,3)→(6,5)` được nhận trong cả hai view, landing trước rebind rồi active 0 trước cleanup,
+có bom tiếp, hai kết quả/về phòng/reset và journal thưởng 0 đúng account/player/character. 216 snapshot khớp
+native getter; rank TCP khớp outcome DB. Lượt này hoàn tất gameplay nhưng launcher **exit 1** vì unmount busy
+sau khi đã export cùng byte; B gdb còn giữ output fd tại chẩn đoán. Sau namespace exit, không còn process
+hoặc mount thuộc lượt đó; 70 file export đã được phục hồi với size/SHA khớp và kiểm ngữ nghĩa độc lập.
+Giữ nguyên lỗi/receipt/archive, không gọi unmount gốc thành công hoặc log crash-durable. Test bổ sung kiểm
+cancellation ngoài endpoint; production binary giữ nguyên. Hướng selector 2, Shoe các hướng/khoảng cách khác,
+motion lặp/inflight/late và mọi map/roster/nhân vật còn theo acceptance G1.
 
 [Hành động Shoe trên reference](../evidence/item-families/shoe-action.json) dùng floor chỉ có Shoe 3, C0,
 bom của người thao tác và va chạm tự nhiên từ bên dưới. Actual 119 có selector **5**, source `(6,3)` và target
