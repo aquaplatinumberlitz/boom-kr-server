@@ -210,6 +210,27 @@ chỗ còn lại (bỏ hàng trống, thiếu chỗ thì gộp hai hàng kề nh
 dấu hỏi/ngã với dấu mũ vào hai hàng. Gulim 12×12 gọn (ô nhập) không đổi; client chỉ dùng font KR gốc không bị ảnh hưởng
 ([evidence](../evidence/l10n-utf8-949x-text-align.json)).
 
+**Tab chat và dòng chạy chữ (17/11, lượt sau).** Nâng font 2 hàng chưa đủ cho hai chỗ; cả hai sửa bằng vá layout trên bản
+sao exe `--lang vi` (`VI_LAYOUT`, `VI_LAYOUT_CALLS` trong [`tools/l10n_949x_patch.py`](../../tools/l10n_949x_patch.py):
+17 byte và 2 lời gọi chuyển sang stub trong `.l10n`, kiểm byte cũ trước khi ghi), font không đổi. Bản `ko`/`en` không đổi.
+
+- Tab lọc chat sảnh (`Thông báo chung`, `Tất cả`, `Hội`): `sub_D357E0` đặt y chữ = đỉnh tab + 7 (`0xD35AD5`,
+  `0xD35C06`, `0xD35CE8`). Lòng tab chưa chọn cao 17 hàng; với `CxUniBold` đã nâng, đuôi `g` và dấu nặng xuống tới hàng
+  cuối và viền đen của chữ đè lên hàng viền tab. Đổi `+7` thành `+5`: mực chữ nằm ở hàng 2–15 của lòng tab, sảnh còn 2 hàng
+  trống trên viền dưới như chữ KR, dấu `ấ` của tab chưa chọn không chạm viền trên.
+- Tab chat phòng (`Tất cả`, `Hội`) do `sub_D364D0` vẽ, y chữ = đỉnh khung lấy bằng `call sub_149BEF0` (`0xD365C8`,
+  `0xD36898`), không có hằng để sửa tại chỗ; dấu nặng của `Hội` chạm viền dưới. Hai lời gọi chuyển sang stub
+  `call sub_149BEF0; sub eax, 2; ret` đặt sau chuỗi dịch trong section `.l10n`.
+- Dòng chạy chữ ở đầu sảnh/phòng (dòng loại 2 của `csysfxmg.ssd`): `sub_D39490` đặt khung clip từ chữ nhật của từng màn
+  (`sub_D39440`, 13 chỗ gọi, mọi chỗ cao `0x0C`) rồi gọi DrawText kiểu 2 (chữ có viền), họ font 1 (`CxUniGulim`), y = 1 trong
+  khung. Họ font là tham số thứ tám (`0xD395B6`); kiểu 0..7 tra bảng ở `0x19A927C` (`sub_14BB0F0`). Gulim 12×12 gọn
+  chỉ có 2 hàng cho dấu nên dấu chồng (`ể`, `ổ`, `ấ`) bị gộp trông như bị cắt, và khung cao 12 cắt hàng đuôi chữ cuối và viền
+  dưới. Vá: họ font 0 (`CxUni` VN 12×16, đủ dấu chồng) và khung cao 16 (14 hàng mực, viền 1 điểm mỗi phía); khung mới vẫn nằm
+  trong dải tối của sảnh và phòng. Exe đặt lại vị trí cuộn khi chữ trôi hết `len*6` điểm; bề rộng `CxUni` của mọi dòng loại 2
+  nhỏ hơn số đó. Đổi lại: tên GM tiếng Hàn trong dòng chạy chữ vẽ bằng hình Hàn của bộ `CxUni` VN.
+
+Lượt vi-10 (dữ liệu `boom-re-l10n@fa030b8`) chụp trước/sau ([evidence](../evidence/l10n-utf8-949x-tab-marquee.json)).
+
 **Layout của 00967 là hằng trong exe**, không có file layout trong pack; nhãn và giá trị đặt ở toạ độ cố định. Client VN
 cũng vẽ giá trị ở toạ độ cố định (ảnh VN cũ của `boom-re` cho thấy khoá `PREMAX` bị số đè, chữ dài chạy ra ngoài nút loại
 game). Vì vậy chữ tràn được sửa bằng câu ngắn hơn trong catalog. Đo bằng font: nhãn số người tối đa khoảng 41 điểm
