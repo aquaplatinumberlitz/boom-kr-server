@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP324",
+  "as_of": "CP328",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3765,7 +3765,8 @@
           "docs/evidence/item-families/bomb-motion-codec.json",
           "docs/evidence/item-families/bomb-retirement.json",
           "docs/evidence/rust-service/g1-punch.json",
-          "docs/evidence/rust-service/g1-punch-departure.json"
+          "docs/evidence/rust-service/g1-punch-departure.json",
+          "docs/evidence/item-families/shoe-action.json"
         ]
       },
       "coverage": {
@@ -3822,7 +3823,7 @@
             "docs/protocol/items-stats.md#rust-bomb-motion-codec",
             "rust/crates/kr-service/src/bombs.rs"
           ],
-          "delivery": "branch_pending"
+          "delivery": "baseline_merged"
         },
         "integration": {
           "state": "unknown",

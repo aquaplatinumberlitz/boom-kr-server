@@ -1,0 +1,213 @@
+{
+  "id": "CP328",
+  "previous": "CP327",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T05:17:56.721259+00:00",
+  "context_commit": "a82554a0dd68d1abc28670055660591246ff3202",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Đo natural Shoe selector 5 và lifecycle/peer/reset trên reference để cung cấp đầu vào trực tiếp cho lát Rust tiếp theo.",
+  "scope": "Hai body đích/chuyển động, hai control native trên bản copy cô lập và correction probe; không thay runtime Rust hoặc L1.",
+  "artifacts": [
+    {
+      "name": "native-reference-client",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+    "docs/evidence/item-families/shoe-action.json",
+    "docs/RESEARCH.md#gap-ability-debuff",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445"
+  ],
+  "findings": [
+    {
+      "summary": "EAB1C0 tính đích bằng vòng hữu hạn qua E9BFA0/E9D830 và occupancy; B3A3B0 cập nhật state3 tới4, không phục hồi toàn bộ tốc độ/va chạm. Hai body mới và toàn bộ chunks khớp cả hai copy; source DB gốc giữ nguyên.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "SHOE328-03450",
+        "SHOE328-03449",
+        "SHOE328-03448"
+      ],
+      "limits": "Không lấy actor-supplied a9 làm khoảng cách vô hạn hoặc đoán các hướng/collision chưa kiểm. Không đọc thêm body trước control."
+    },
+    {
+      "summary": "Hai vòng reference có natural actual119 selector5/source6,3/target3,3, reader162 đủ9/9, kick state3 rồi4 trước rebind và blast, active0 ở cleanup, actual118 tiếp, rank/return/refresh và Shoe reset0/pickup1. Punch giữ0; exact ret EAB323 trả1 và target3,3.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "SHOE328-03445",
+        "SHOE328-01763",
+        "SHOE328-01390",
+        "SHOE328-01767"
+      ],
+      "limits": "C0, bom owner, selector5, hành lang trống6-to3 trước vật cản hàng2; Python reference với diagnostic identities, chưa là Rust/account/Internet acceptance."
+    },
+    {
+      "summary": "R12 giữ partial: một action/result/return và clock vòng hai, dù hai vòng pickup Shoe. Giá trị EAX của FinishBreakpoint không phải boolean return evidence; control mới đọc ở đúng ret, chờ placement và đổi nhịp nhập. Không sửa hoặc loại raw cũ, không khẳng định cause do timing.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "SHOE328-01386",
+        "SHOE328-00030",
+        "SHOE328-01391"
+      ],
+      "limits": "Lượt partial không tính thành hai cycle hoặc ca âm thiếu item.400 native getter checks chỉ kiểm snapshot đã ghi."
+    },
+    {
+      "summary": "Policy first9bytes119-as162 và short158 loại1 trước loại0 tại deadline6s đã kiểm trên reference Shoe; không phải ACK hoặc thứ tự server gốc. Rust vẫn tắt Shoe, Punch opt-in đã merge sau exact-head gate; sửa hai đoạn trạng thái cũ và catalog delivery.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "SHOE328-00007",
+        "SHOE328-00021",
+        "SHOE328-00023"
+      ],
+      "limits": "Lát Rust còn cần item/membership/round/allocation, path/terrain/placement, queue/deadline và native use/negative/peer/reset. Không mở selector khác hoặc toàn nhóm Shoe/Punch/G1."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Natural Shoe two-round action/retirement/next118/peer/reset and exact-ret probe",
+      "result": "pass",
+      "evidence": [
+        "SHOE328-03445"
+      ],
+      "limits": "Reference only; no Rust enable or missing-item/dead/trapped native negative."
+    },
+    {
+      "check": "Independent captured C2S decode, native getters and immutable completed run inputs",
+      "result": "pass",
+      "evidence": [
+        "SHOE328-01763",
+        "SHOE328-01390",
+        "SHOE328-00033",
+        "SHOE328-01394"
+      ],
+      "limits": "R12 partial preserved. Full exact-head local/history and CI required before merge."
+    },
+    {
+      "check": "Complete source-chunk binding and original source database preservation",
+      "result": "pass",
+      "evidence": [
+        "SHOE328-03449"
+      ],
+      "limits": "4 comparisons over two already selected bodies, no general client fidelity claim."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP328-shoe-reference.json",
+      "bytes": 938844,
+      "sha256": "e26385860525adfe1e0e561b6416d315840859a34220c086f7e94e0debc737a8",
+      "count": 3494
+    }
+  ],
+  "delta": {
+    "added": [
+      "Shoe selector5 có native reference hai vòng với finite destination, stop, retirement/quota và peer/reset; đủ định hình phép thử Rust tiếp."
+    ],
+    "corrected": [
+      "Giữ R12 partial và FinishBreakpoint return không hợp lệ; dùng direct ret trong control mới. Đồng bộ trạng thái Punch đã merge thay đoạn cũ nói cả hai item tắt."
+    ],
+    "superseded": [
+      "Khoảng trống chưa có natural Shoe action đã được tháo trong phạm vi selector5/reference; phần acceptance Rust và hướng/geometry khác vẫn mở."
+    ]
+  },
+  "blockers": [
+    "Reference Python with fixed diagnostic identities, not Rust/account/Internet acceptance.",
+    "Only C0, owner bomb, selector5, empty column3 corridor6-to3 ending before row2 obstruction, one action per round. Other directions, foreign bombs, repeated/late/inflight/contact variants and actor/obstacle collision coverage remain open.",
+    "No missing-item/dead/trapped native negative in this run; no original-server order or ACK proof. R12 partial and unreliable FinishBreakpoint result register are retained separately.",
+    "No pixel speed or transit timing promise under a debugger. Later-update samples can refer to reused pool objects and are excluded.",
+    "Shoe remains disabled in Rust. Before enable: membership/round/allocation, item eligibility, path/terrain consistency, placement conflicts, queues/deadline and native positive/negative/peer/reset on Rust.",
+    "Punch opt-in correction has merged through PR450 at a82554a0dd68d1abc28670055660591246ff3202 after exact-head local/history and green CI; this does not expand Punch coverage."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-SHOE-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Nối lát Shoe selector5 với guard path/terrain/placement, item và current membership/round/allocation, atomic queue/deadline; native use/negative/peer/two-round reset/account trước bật. Chỉ RE gap thật chặn lát đó.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T05:17:56.721259+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo tự kiểm; review độc lập waived. Chưa hoàn tất nhóm Shoe/Punch nên AUD136 giữ nguyên, không tạo chu kỳ audit mới.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe reference selector5/lifecycle hai vòng, correction control và acceptance Rust còn thiếu."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe reference selector5/lifecycle hai vòng, correction control và acceptance Rust còn thiếu."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe reference selector5/lifecycle hai vòng, correction control và acceptance Rust còn thiếu."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe reference selector5/lifecycle hai vòng, correction control và acceptance Rust còn thiếu."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe reference selector5/lifecycle hai vòng, correction control và acceptance Rust còn thiếu."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe reference selector5/lifecycle hai vòng, correction control và acceptance Rust còn thiếu."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe reference selector5/lifecycle hai vòng, correction control và acceptance Rust còn thiếu."
+    },
+    {
+      "path": "docs/evidence/item-families/shoe-action.json",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe reference selector5/lifecycle hai vòng, correction control và acceptance Rust còn thiếu."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đã trỏ anchor đúng; contract cập nhật tại items-stats."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, owner L1 và audit theo nhóm không đổi."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "unchanged",
+      "reason": "Shoe vẫn tắt; không thay behavior runtime từ kết quả reference."
+    }
+  ]
+}

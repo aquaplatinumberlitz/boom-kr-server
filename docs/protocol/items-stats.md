@@ -74,13 +74,14 @@ của actual 118. Chưa đặt tên đầy đủ cho mọi field, chưa đặt �
 `E2CC10` có decompiler stack warning và tail không liên tiếp; chỉ dùng assembly, byte binding đầy đủ và actual
 packet để xác nhận phần trên. Không dùng chữ ký C suy ra như một API đã phục hồi chính xác.
 
-Shoe có nhánh `E6F510→E6F8F0→E6F9C0` dẫn tới cùng pending-record path khi đủ điều kiện, nhưng chưa có
-native ca dùng Shoe thành công. Reader 160 đọc 8 byte và gọi các nhánh entity/counter; chưa có bằng chứng nó
+Shoe có nhánh `E6F510→E6F8F0→E6F9C0` dẫn tới cùng pending-record path khi đủ điều kiện;
+[ca dùng reference selector 5](#rust-bomb-motion-codec) đã có hai vòng trong phạm vi ghi bên dưới. Reader 160 đọc 8 byte và gọi các nhánh entity/counter; chưa có bằng chứng nó
 là reply cho 119 hoặc là gói dịch chuyển bom. Hai lượt không gửi ACK cho hành động này.
 
-**Rust vẫn từ chối Shoe/Punch.** Pickup/reset và phát request chưa đủ để mở hai item: còn consumer xác nhận
-hành động, vị trí/quỹ đạo/va chạm/timer của bom, peer, ca không đủ điều kiện, và guard current membership/round.
-Không coi hai run Python RE là bằng chứng account, Internet hoặc vận hành trên Rust.
+**Shoe vẫn bị từ chối trên Rust; Punch có lát opt-in giới hạn** ở [contract bên dưới](#rust-bomb-motion-codec).
+Pickup/reset và phát request riêng lẻ chưa đủ để mở toàn bộ hành động: mỗi lát cần consumer, lifecycle bom, peer,
+ca không đủ điều kiện và guard membership/vòng hiện hành. Không coi các run Python RE là bằng chứng account,
+Internet hoặc vận hành trên Rust.
 
 <a id="rust-bomb-motion-codec"></a>
 ### Rust 119/162 và lát Punch có giới hạn
@@ -142,6 +143,25 @@ journal DB thưởng 0 đúng identity/nhân vật. Một lượt riêng phát s
 không chuẩn hóa nó thành selector 3. Test server còn kiểm sai transport/slot/owner, thiếu item, death, vòng/visit
 cũ, hàng đợi đầy, cell bị chặn, deadline và đóng admission trước blast. Các kiểm này không thay bằng chứng
 native cho Shoe, selector khác, hành động lặp/sát deadline/khi đang bay hoặc mọi nhân vật/map/roster.
+
+[Hành động Shoe trên reference](../evidence/item-families/shoe-action.json) dùng floor chỉ có Shoe 3, C0,
+bom của người thao tác và va chạm tự nhiên từ bên dưới. Actual 119 có selector **5**, source `(6,3)` và target
+`(3,3)`; prefix 9 byte được trả bằng candidate 162. Hai view đọc đủ, gọi `B37910`, đổi root, vào state 3 rồi
+dừng ở state 4 trước short 158 loại 1 và gói nổ loại 0. Bom được chọn ở root mới, active về 0 trước cleanup;
+sau đó có actual 118 mới và kết quả/về phòng trong hai vòng. Native getter trên snapshot xác nhận Shoe về 0
+ở clock rồi lên 1 khi pickup, Punch giữ 0. Đây là reference với identity diagnostic, chưa là acceptance Rust.
+
+Nguồn `E6F9C0` gọi `EAB1C0` rồi queue selector bằng direction cộng 4. `EAB1C0` khởi đích ở cell nguồn,
+lặp hữu hạn qua `E9BFA0`/`E9D830` và kiểm occupancy; ở ca đo, đối số giới hạn là 13, không phải vô hạn.
+Probe tại đúng `ret` của hàm trả 1 và target `(3,3)`, trước vật cản hàng 2. `B3A3B0` cập nhật pixel, kiểm
+vật cản trung gian và đổi state 3→4 khi tới đích. Chưa phục hồi tốc độ hoặc toàn bộ luật va chạm. Không tự
+mở các hướng khác, bom người khác, hành động lặp/sát deadline/khi đang chạy, hoặc đường có actor/vật cản.
+
+Lượt control đầu chỉ có một hành động/kết quả và clock vòng hai; nó được giữ là partial. Mẫu EAX từ
+`FinishBreakpoint` của lượt đó không chứng minh giá trị trả về boolean. Control mới chờ placement hiện hành,
+đổi nhịp nhập và đặt breakpoint ở lệnh `ret` đã có trong body được đối chiếu byte; không sửa raw cũ hoặc
+khẳng định nguyên nhân của lượt thiếu hành động. Shoe vẫn tắt trên Rust; cần guard path/terrain/placement,
+queue và membership/vòng cùng native ca dùng, không đủ điều kiện, peer và reset trước khi mở.
 
 **Correction nguồn phụ:** `B486B0` nhận interface `actor+584`, cộng `70` tới wrapper `actor+5F4`, đúng bằng
 interface `actor+58C` cộng `68` của setter. Câu `+5F4+8` trong ghi chép phụ trước là lỗi tính offset; sidecar correction
