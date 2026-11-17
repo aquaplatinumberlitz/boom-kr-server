@@ -1,0 +1,17 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-18T00:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 18/11/2026, chủ dự án nói: “tiêu chí nghiệm thu giai đoạn 1 là test liên tục 24h phải ko, thấy lâu quá, giảm còn 3h thôi”.",
+  "decision": "Tiêu chí chạy dài của M8 giảm từ 24 giờ xuống 3 giờ có tải nền.",
+  "compensation": [
+    "Vòng đời phòng, trận và phiên quay vòng nhanh hơn chơi thường để 3 giờ vẫn có nhiều chu kỳ tạo/hủy.",
+    "Đo RAM, số file descriptor, cổng relay, số phòng và phiên theo thời gian; độ dốc ở giờ thứ ba phải gần 0.",
+    "Sau khi tắt tải, các số đo quay về mức nền; không còn phòng ma."
+  ],
+  "scope": "Chỉ đổi thời lượng và cách đo của mục Chạy dài trong M8; kiểm tải 50 người/8 phòng và các mục M8 khác giữ nguyên. Không chứng nhận M8 đạt.",
+  "supersedes": "Yêu cầu chạy dài 24 giờ trong PLAN trước quyết định này.",
+  "risk": "Rò rỉ rất chậm hoặc lỗi theo chu kỳ dài hơn 3 giờ có thể không lộ ra; giảm rủi ro bằng đo độ dốc và quay vòng nhanh.",
+  "plan": "docs/PLAN.md#phase1-acceptance",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}
