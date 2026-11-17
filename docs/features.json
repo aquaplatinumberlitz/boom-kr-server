@@ -6136,7 +6136,10 @@
             "rust/crates/kr-tunnel/src/bin/kr-launch.rs",
             "tools/native_windows_candidate.py",
             "tools/native_windows_input.py",
-            "tools/native_windows_install.ps1"
+            "tools/native_windows_install.ps1",
+            "tools/native_windows_startup_diagnostic.ps1",
+            "tools/native_pe_import_control.py",
+            "tools/native_windows_bootstrap.py"
           ],
           "delivery": "via_pr"
         },

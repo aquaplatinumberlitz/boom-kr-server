@@ -8,6 +8,7 @@ import fcntl
 import json
 import os
 from pathlib import Path
+import re
 import shlex
 import signal
 import socket
@@ -43,6 +44,11 @@ def main():
     name = config['container']
     if not name.startswith('kr-m8-native-') or any(char not in 'abcdefghijklmnopqrstuvwxyz0123456789-' for char in name):
         parser.error('Invalid owned container name')
+    startup_cases = config.get('startup_cases', [])
+    if (not isinstance(startup_cases, list) or len(startup_cases) > 8
+            or any(not isinstance(case, str) or not re.fullmatch('[a-z0-9-]{1,32}', case)
+                   for case in startup_cases) or len(set(startup_cases)) != len(startup_cases)):
+        parser.error('Invalid declared startup cases')
     record = dict(source_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                   started_epoch=time.time(), scope='Native Windows candidate; no success inferred', cleanup_errors=[])
     remote = None
@@ -206,7 +212,8 @@ def main():
                     record['cleanup_errors'].append('Owned container stop not confirmed')
             except Exception as error:
                 record['cleanup_errors'].append('Container stop verification: ' + type(error).__name__)
-            for filename in ['native-windows-install.json', 'windows-firstboot-error.txt']:
+            for filename in ['native-windows-install.json', 'windows-firstboot-error.txt',
+                             'native-startup-diagnostic.json']:
                 try:
                     result = subprocess.run(['mcopy', '-i', str(out / 'seed.img'), '::' + filename, str(out / filename)],
                                             capture_output=True, timeout=30)
@@ -214,6 +221,20 @@ def main():
                         record.setdefault('guest_reports', []).append(filename)
                 except Exception as error:
                     record['cleanup_errors'].append('Guest export: ' + type(error).__name__)
+            if (out / 'native-startup-diagnostic.json').exists():
+                try:
+                    result = subprocess.run(['mcopy', '-s', '-i', str(out / 'seed.img'),
+                                             '::dumps', str(out)], capture_output=True, timeout=60)
+                    record['startup_dump_export_exit'] = result.returncode
+                except Exception as error:
+                    record['cleanup_errors'].append('Startup dump export: ' + type(error).__name__)
+            for case in startup_cases:
+                try:
+                    result = subprocess.run(['mcopy', '-s', '-i', str(out / 'seed.img'),
+                                             '::' + case, str(out)], capture_output=True, timeout=60)
+                    record.setdefault('startup_case_exports', {})[case] = result.returncode
+                except Exception as error:
+                    record['cleanup_errors'].append('Startup case export: ' + type(error).__name__)
         if remote is not None:
             try:
                 subprocess.run(ssh + ['touch ' + shlex.quote(str(remote_root / 'stop-requested'))],

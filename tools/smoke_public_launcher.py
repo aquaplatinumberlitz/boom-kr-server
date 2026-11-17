@@ -83,7 +83,8 @@ def main():
     serving.chmod(0o600)
     launcher = out / 'player-config.json'
     launcher.write_text(json.dumps(dict(server=public['bind'], certificate='identity/certificate.der',
-                        native_ip='127.0.0.1', companion=os.path.relpath(binaries / 'kr-companion', out),
+                        native_ip='127.0.0.1', reported_login_ipv4='192.0.2.173',
+                        companion=os.path.relpath(binaries / 'kr-companion', out),
                         native_program=os.path.relpath('/bin/true', out), native_arguments=[],
                         native_directory='/tmp', port_budget=100)) + '\n')
     launcher.chmod(0o600)
@@ -112,6 +113,24 @@ def main():
                     count = db.execute("SELECT count(*) FROM admin_audit WHERE operation='logout'").fetchone()[0]
                     assert active == 0 and count == index + 1, (active, count)
                 launches.append(dict(player_id=expected_player, exit=0, active_sessions_after_exit=active, audited_logouts=count))
+            # A real child failure must retain a useful numeric status while
+            # releasing its companion and exact backend session.
+            failed_config = out / 'player-failure-config.json'
+            value = json.loads(launcher.read_text())
+            value['native_program'] = os.path.relpath('/bin/false', out)
+            failed_config.write_text(json.dumps(value) + '\n')
+            failed = subprocess.run([str(binaries / 'kr-launch'), str(failed_config)],
+                                    input=json.dumps(dict(login='SmokePlayer', password=password)),
+                                    text=True, capture_output=True, timeout=20)
+            (out / 'launcher-failure.stdout').write_text(failed.stdout)
+            (out / 'launcher-failure.stderr').write_text(failed.stderr)
+            assert failed.returncode == 1
+            assert [json.loads(line) for line in failed.stdout.splitlines()] == [
+                dict(event='client_started', player_id=expected_player),
+                dict(event='client_failed', exit_code=1)]
+            with sqlite3.connect(database) as db:
+                assert db.execute('SELECT count(*) FROM sessions WHERE revoked_at IS NULL').fetchone()[0] == 0
+                assert db.execute("SELECT count(*) FROM admin_audit WHERE operation='logout'").fetchone()[0] == 3
             # Exercise launcher termination after both owned children exist.
             # This child is a harness stub, never a substitute for native KR.
             stub = out / 'native-stub.py'
@@ -153,7 +172,7 @@ def main():
                         cancelled.wait(timeout=5)
             with sqlite3.connect(database) as db:
                 assert db.execute('SELECT count(*) FROM sessions WHERE revoked_at IS NULL').fetchone()[0] == 0
-                assert db.execute("SELECT count(*) FROM admin_audit WHERE operation='logout'").fetchone()[0] == 3
+                assert db.execute("SELECT count(*) FROM admin_audit WHERE operation='logout'").fetchone()[0] == 4
             service.send_signal(signal.SIGTERM)
             assert service.wait(timeout=15) == 0
             assert json.loads(state.read_text())['stopped']
@@ -164,8 +183,11 @@ def main():
     logs = ''.join(path.read_text() for path in out.glob('launcher-*'))
     assert password not in logs and 'capability' not in logs and 'token_1:' not in logs
     report = dict(result='tls_sqlite_companion_logout_smoke_passed', runs=launches,
+                  native_failure=dict(exit=1, reported_native_exit=1, active_sessions_after_exit=0,
+                                      audited_logouts=3),
+                  address_roles=dict(reported_login_ipv4='192.0.2.173', native_udp_source='127.0.0.1'),
                   launcher_sigterm=dict(exit=1, owned_native_gone=True, owned_companion_gone=True,
-                                        active_sessions_after_exit=0, audited_logouts=3),
+                                        active_sessions_after_exit=0, audited_logouts=4),
                   service_graceful_exit=0, binaries=[dict(name=name, sha256=hashlib.sha256((binaries / name).read_bytes()).hexdigest())
                   for name in ['kr-service', 'kr-admin', 'kr-launch', 'kr-companion']],
                   limits='Linux isolated namespace, local loopback TLS and real QUIC companion. Native program is /bin/true. No original KR login/gameplay, Windows, Internet, load, restore or soak acceptance.')

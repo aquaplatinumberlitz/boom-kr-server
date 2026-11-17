@@ -28,6 +28,7 @@ impl<'de> Deserialize<'de> for Secret {
 struct Config {
     server: SocketAddrV4,
     certificate: PathBuf,
+    reported_login_ipv4: Ipv4Addr,
     native_ip: Ipv4Addr,
     companion: PathBuf,
     native_program: PathBuf,
@@ -102,7 +103,7 @@ fn launch(
     let encoded = encoded_secret(session)?;
     let query = Zeroizing::new(format!(
         "{{\"op\":\"launch\",\"session\":{},\"player_id\":{player},\"reported_login_ipv4\":\"{}\"}}\n",
-        *encoded, config.native_ip
+        *encoded, config.reported_login_ipv4
     ));
     let response = request(config, certificate, query.as_bytes())?;
     let launch: Launch = serde_json::from_slice(&response)
@@ -186,6 +187,16 @@ fn launch(
             return Err(io::Error::other("launcher cancelled"));
         }
         if let Some(status) = native.0.try_wait()? {
+            // Numeric process status is safe diagnostic output: never include
+            // the native command line, grant, session or companion offer.
+            if !status.success() {
+                println!(
+                    "{{\"event\":\"client_failed\",\"exit_code\":{}}}",
+                    status
+                        .code()
+                        .map_or("null".to_owned(), |code| code.to_string())
+                );
+            }
             return if status.success() {
                 Ok(())
             } else {
@@ -236,6 +247,9 @@ fn run(stop: &AtomicBool) -> io::Result<()> {
         || config.native_ip.is_unspecified()
         || config.native_ip.is_multicast()
         || config.native_ip.is_broadcast()
+        || config.reported_login_ipv4.is_unspecified()
+        || config.reported_login_ipv4.is_multicast()
+        || config.reported_login_ipv4.is_broadcast()
         || !(26..=32768).contains(&config.port_budget)
         || config.native_arguments.len() > 32
         || config

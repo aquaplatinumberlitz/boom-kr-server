@@ -49,16 +49,52 @@
       "path": "local/research/codex/m8-public-launcher-internet-transport-r1.json",
       "bytes": 1370,
       "sha256": "b49940c488ab4f4d2602e2c5fa75dcf45d8fe00cdd03f69b21d6690ea3388068"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r7/verification.json",
+      "bytes": 1465,
+      "sha256": "87dc5c8622493f0a0596cfcd0b141f6d0425a4601e221d9c34773a36cf07085e"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launcher-address-fmt-r1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launcher-address-clippy-r1.log",
+      "bytes": 170,
+      "sha256": "7e671fa9561fa1431d12873b7a0c0d2ce81cb711e7882b03162f9f86c818ce90"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launcher-address-windows-build-r2.log",
+      "bytes": 170,
+      "sha256": "e115afed3f92f4c2b4dae84e0db71102395d432f8b71b5ce1187c53e2b3b56c0"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-native-attempt-r7.json",
+      "bytes": 2479,
+      "sha256": "b817f5ee02fe9e1605909f4ae680cc47afe5f0251c99fa012264177f45d4eefb"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-startup-dump-r1.json",
+      "bytes": 1732,
+      "sha256": "1c2fbcab0ca6da848499dbd5dee25d7a38ff38f263e8933a7be9279b6d86d6b1"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-import-startup-positive-r1.json",
+      "bytes": 1905,
+      "sha256": "c8cd1326ae006ec83bbdb38e30d6cca302e3d0e2450ab6f38a1ed7d9004c11d1"
     }
   ],
   "limits": [
     "TLS/SQLite/companion smoke loopback cô lập dùng /bin/true và stub Python làm child; không KR native wire hoặc gameplay.",
-    "Windows VM mới, không NIC, chỉ chạy binary companion và từ chối input sai. Không login/QUIC/CA hoặc Internet; binary SHA receipt giữ build đã chạy, không thay bằng binary cross-build mới.",
+    "Windows binary-control receipt đầu chỉ có invalid-input không NIC. Lượt Windows mới có account/companion Internet và mở KR đúng hash, nhưng native crash trước login game; không nâng thành native acceptance.",
     "Hai lượt TLS/account/companion qua Internet thật đã có với child /bin/true và cleanup rule/DB. Native Windows/Wine player package, trận KR trên Internet, expiry/revoke/full cancellation matrix và operator installation còn phải kiểm.",
     "Không checkpoint/audit hoàn tất nhóm hoặc PR riêng cho từng phép thử; phần WIP giữ một nhóm issue476.",
     "Raw lỗi admin response assumption, socket parent permission và pending registry sau logout giữ ở local; run pass không thay failure.",
     "Windows native preparation has explicit failed/corrected candidates; readonly input config and original-exe selection corrected before any KR launch. Do not infer Windows native acceptance from installer/hash or old binary-control receipts.",
-    "Run6 verified173 files and corrected CP337 vi executable in the dedicated Windows installation; owner expired before service start. Run7 is a continuation of the same installed VM, not a second clean installation. No native KR claim from these installation receipts."
+    "Run6 verified173 files and corrected CP337 vi executable in the dedicated Windows installation; owner expired before service start. Run7 is a continuation of the same installed VM, not a second clean installation. No native KR claim from these installation receipts.",
+    "Windows run7: BEX/0xc0000005 at zero, nguyên nhân chưa xác định; session đã logout và tài nguyên VM/VPS/rule được thu hồi. Dump offline tiếp theo không dùng VPS. Smoke mới có native failure exit và IP login khác nguồn UDP loopback, không chứng minh native gameplay."
   ],
   "native_preparation": {
     "path": "local/research/codex/m8-player-launcher-preparation-r1/native-preparation-observations.json",

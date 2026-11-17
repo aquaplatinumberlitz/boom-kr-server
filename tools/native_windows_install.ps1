@@ -56,7 +56,10 @@ try {
  if(-not $address){throw 'Guest IPv4 missing'}
  $configPath=Join-Path $root 'player-config.json'
  $config=Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
- $config.native_ip=$address.IPAddress
+ # Login metadata describes the guest NIC; companion receives the native
+ # packets on loopback. These addresses have different ownership and purpose.
+ $config | Add-Member -NotePropertyName reported_login_ipv4 -NotePropertyValue $address.IPAddress -Force
+ $config.native_ip='127.0.0.1'
  [IO.File]::WriteAllText($configPath,($config | ConvertTo-Json -Depth 5))
  $report.phase='install_ready';Save-Report
  Write-Output ('M8_INSTALL_READY files='+$checked)

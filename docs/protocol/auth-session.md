@@ -889,12 +889,19 @@ không qua shell. Native frontend `token_1:` vẫn đi qua seam argv KR đã đo
 backend token. Owner giữ hai child, dừng/join khi lỗi hoặc signal, rồi thử logout đúng session. Nếu server không
 tới được, expiry vẫn giới hạn session; không hứa xác nhận logout hoặc retry vô hạn. Certificate/key được tạo
 riêng bằng `kr-launch-identity`; key private thuộc state server, không nằm trong package hoặc gói người chơi.
+Config launcher khai riêng `reported_login_ipv4` cho địa chỉ NIC mà native dùng khi login và `native_ip` cho
+địa chỉ nguồn UDP được companion chấp nhận tại các listener loopback. Không dùng địa chỉ NIC làm bộ lọc nguồn
+loopback theo ngầm định. Khi native thoát lỗi, launcher chỉ xuất mã exit dạng số, không argv/token.
 
 [Bằng chứng nền đang làm](../evidence/rust-service/m8-public-launcher-foundation.json): TLS pin/wrong pin,
 plaintext/deadline/framing, SQLite identity và wrong password; hai lượt launcher→companion QUIC→child stub→logout,
 và SIGTERM launcher không để lại child/session. Hai lượt Linux tới VPS ARM qua Internet thật cũng đã có
 TLS/account/companion/logout, packet capture TCP/UDP, DB không còn session active và thu hồi rule test; child vẫn
-là `/bin/true`. Một VM Windows mới không có NIC đã chạy companion và từ chối input sai đúng binary SHA. Đây
-không là KR login/gameplay qua Internet hoặc gói Windows/Wine đã nghiệm thu; nhóm M8 vẫn mở theo PLAN. Các run lỗi trước giữ riêng, không đổi thành pass.
+là `/bin/true`. Windows đã có control binary không NIC, kiểm bản cài 173 file và một lần launcher qua Internet
+xác thực account/companion rồi mở đúng executable KR `vi`; native lỗi `0xc0000005` trước game login. VM/container,
+dịch vụ và rule test đã dừng/gỡ; DB còn 0 session active với một logout audit. Dump startup không NIC xác nhận
+entry shim gọi qua ô IAT `GetModuleHandleA` bằng 0. Chưa chứng minh nguyên nhân loader; phép đối chứng chỉ khởi tạo
+IAT trên bản copy, giữ nguyên hook ngôn ngữ và asset. Đây không là KR login/gameplay qua Internet hoặc gói Windows/Wine
+đã nghiệm thu; nhóm M8 vẫn mở theo PLAN. Các run lỗi trước giữ riêng, không đổi thành pass.
 
 <!-- protocol-topic-content-end -->
