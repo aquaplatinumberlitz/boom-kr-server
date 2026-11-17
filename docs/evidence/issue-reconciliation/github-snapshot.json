@@ -753,11 +753,11 @@
     },
     {
       "body": "KRE-G1-PLAYER-ALL-DEAD — luồng kết thúc trận managed player round khi không còn người sống.\n\nBaseline: `73fd780` trên nhánh Shoe (Rust source hiện hành trước correction overlap); main CP328 / PR #452. Owner/reviewer: Codex solo, review độc lập waived theo AGENTS. Dependency: hoàn tất lát Shoe đang làm ở #445 trước implementation này; thứ tự chuẩn ở docs/PLAN.md.\n\nKhoảng trống: `four_results::winner` trả None khi số đội sống khác 1 và cố ý chưa hỗ trợ all-dead/tie. Managed player round dùng cùng nhánh. Native Shoe control R2 có hai slot cùng report17/19 và không có175 trước timeout. Điều khiển peer ra khỏi tia giúp kiểm Shoe, nhưng không giải khoảng trống dịch vụ này. Bằng chứng hai người all-dead cũ và builder175 roster hiện hành phải được tái dùng trước RE thêm; không suy tie enum server gốc.\n\nPhạm vi: result policy/encoder vừa đủ cho current managed player roster, delivery/round fences và journal; native cho toàn bộ participant cùng bị loại, reset và trận tiếp. Nếu còn wire unknown, phép đo reference đúng gap trước Rust. Không đổi thưởng0 hoặc quyết định mode/map/item; không sửa L1, exporter hay nguồn client/pack/DB.\n\nAcceptance: kết thúc hữu hạn thay vì giữ Armed vô hạn; policy rank/unranked có provenance và không invent winner; native đúng identity/roster ở cả hai view, report/queue/EOF cũ không tác động vòng mới, journal thưởng0 đúng trận, hai vòng/reset và Start kế trong phạm vi đã chọn. Regression và build/docs/catalog; exact-head local/history và mọi CI xanh trước merge. M7/full tie rộng hơn chỉ được claim theo evidence thực.\n\n\nFeature: KR-X001. Nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-managed-all-dead).\n",
-      "closedAt": null,
+      "closedAt": "2026-11-17T10:21:41Z",
       "number": 453,
-      "state": "OPEN",
+      "state": "CLOSED",
       "title": "G1: đóng vòng managed player khi tất cả participant bị loại",
-      "updatedAt": "2026-11-17T06:10:47Z",
+      "updatedAt": "2026-11-17T10:21:41Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453"
     },
     {
@@ -4411,6 +4411,17 @@
       "state": "MERGED",
       "title": "Clarify independent KR server scope and artifact provenance",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/4"
+    },
+    {
+      "headRefOid": "3f2a10bfaacc69ae33f26cc8be563b59873580d3",
+      "mergeCommit": {
+        "oid": "8fff25d5601d871d857d0869ff544d250e8bb9a7"
+      },
+      "mergedAt": "2026-11-17T10:21:40Z",
+      "number": 455,
+      "state": "MERGED",
+      "title": "G1: managed all-dead, native 2/4/8 và journal Draw (CP332)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/455"
     }
   ],
   "incremental_updates": [
@@ -4428,6 +4439,12 @@
       "issue": 456,
       "captured_utc": "2026-11-17T10:03:31.869924+00:00",
       "method": "Refresh only issue456 after adding canonical links; no other state changed."
+    },
+    {
+      "issue": 453,
+      "pull_request": 455,
+      "captured_utc": "2026-11-17T10:23:41.640368+00:00",
+      "method": "Read only issue453 and merged PR455 after exact-head/CI completion; other entries retain dated states."
     }
   ]
 }

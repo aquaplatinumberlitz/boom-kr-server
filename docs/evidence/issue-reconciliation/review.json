@@ -967,22 +967,25 @@
       "features": [
         "KR-X001"
       ],
-      "classification": "backlog",
-      "known": "Managed player all-dead intentionally unsupported in four_results::winner; native ShoeR2 has both17/19 and no175 before timeout.",
-      "remaining": "Finite result/return for all-dead managed roster, journal and round fences; no original tieenum claim.",
-      "next_test": "After Shoe slice, reuse all-dead2 source/native and current175 roster builder, measure allrank2 or explicit unranked return, then Rust two-round/reset/Start next.",
-      "acceptance": "docs/RESEARCH.md#gap-managed-all-dead",
-      "reason": "New native control exposed a phase1 termination gap; separate issue preserves it while Shoe recipe keeps peer outside blast.",
+      "classification": "completed",
+      "known": "CP332/AUD140 và PR455 đã tích hợp typed AllDead, rank2 và journal Draw/thưởng0, native2/4/8 hai vòng/reset. Roster4/8 còn Start/clock kế trên LAN có netem đã khai báo.",
+      "remaining": "Native sparse/departed/delayed175 qua revoke/EOF và toàn G1/M8 chưa đo; fixed-team legacy và tieenum gốc không mở.",
+      "next_test": "Theo PLAN tiếp #456 Punch hướng xuống; không lặp all-dead2/4/8 đã nghiệm thu. Giữ các giới hạn native và synthetic TCP/SQLite riêng.",
+      "acceptance": "docs/protocol/life-results.md#rust-managed-all-dead",
+      "reason": "PR455 merge sau gate exact-head tại3f2a10b:570232 evidence verified/0unavailable/0errors/historytrue và hai CI xanh. AUD140 là Codex self-audit, independent review waived.",
       "sources": [
         "docs/PLAN.md#dashboard",
-        "docs/RESEARCH.md#gap-managed-all-dead"
+        "docs/protocol/life-results.md#rust-managed-all-dead"
       ],
       "evidence": [
-        "docs/evidence/rust-service/g1-shoe.json"
+        "docs/evidence/rust-service/g1-managed-all-dead.json",
+        "docs/evidence/checkpoints/records/CP332.json"
       ],
-      "prs": [],
+      "prs": [
+        455
+      ],
       "successors": [],
-      "reviewed_utc": "2026-11-17T06:09:34.739882+00:00"
+      "reviewed_utc": "2026-11-17T10:23:41.640368+00:00"
     },
     {
       "number": 456,
