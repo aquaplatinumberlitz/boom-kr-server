@@ -94,6 +94,14 @@ def drive_matrix(matrix, config, out, states, record, topology, click, press, al
                     rows = tagged(logs[role], condition['tag'])
                 else:
                     raise ValueError('Unknown condition source')
+                if condition.get('since_step'):
+                    marker = next(row for row in record['matrix_steps'] if row['name']==condition['since_step'])
+                    if condition['source']=='server':
+                        rows = events[marker['server_events']:]
+                        if role:
+                            rows = [row for row in rows if row.get('identity')==identity]
+                    else:
+                        rows = [row for row in rows if row.get('ns',0)>marker['ns']]
                 count = sum(matches(row, condition['match']) for row in rows)
                 satisfied &= count >= condition.get('count', 1)
             record['controller_stage'] = step['name']
@@ -103,7 +111,7 @@ def drive_matrix(matrix, config, out, states, record, topology, click, press, al
             if time.monotonic() >= deadline:
                 raise TimeoutError('Matrix state deadline: ' + step['name'])
             time.sleep(.1)
-        record.setdefault('matrix_steps', []).append(dict(name=step['name'],ns=time.monotonic_ns()))
+        record.setdefault('matrix_steps', []).append(dict(name=step['name'],ns=time.monotonic_ns(),server_events=len(events)))
         for index, action in enumerate(step.get('actions', [])):
             role = action.get('role', 'A')
             label = step['name'] + '-' + str(index)
