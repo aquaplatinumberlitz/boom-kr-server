@@ -33,10 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP328: Shoe selector 5 đã có hai vòng hành động trên reference KR.**
-[Contract và giới hạn](docs/protocol/items-stats.md#rust-bomb-motion-codec) có dừng chuyển động, thu hồi bom,
-bom tiếp, peer và reset; lượt partial và correction probe được giữ riêng. Shoe chưa được mở trên Rust.
-Punch opt-in và correction rời phòng đã merge; tiếp nối lát Shoe trên Rust theo
+**CP329: Shoe selector 5 đã chạy hai vòng trên Rust với hai account.**
+[Contract và giới hạn](docs/protocol/items-stats.md#rust-bomb-motion-codec) có corridor, motion/thu hồi,
+bom tiếp, peer/reset và journal thưởng 0; preset cũ giữ nguyên. Các lượt bị từ chối/partial được giữ riêng.
+Tiếp [all-dead managed player](docs/RESEARCH.md#gap-managed-all-dead), rồi coverage Shoe/Punch và G1 theo
 [Bảng điều hành](docs/PLAN.md#dashboard). G1, M8 và L1 của Claude còn mở.
 
 ## Bắt đầu

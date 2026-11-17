@@ -1,0 +1,266 @@
+{
+  "id": "CP329",
+  "previous": "CP328",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T06:03:56.814045+00:00",
+  "context_commit": "be8ca23680b9fd4277ce6f137189d4a22e6d912a",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Nối và nghiệm thu lát Shoe selector5/up-three trên Rust với current account/member/round, terrain/corridor/queue, peer và hai vòng/reset.",
+  "scope": "Opt-in Shoe/Punch policy; Shoe chỉ owner/selector5/ba hàng phía trên, giữ corridor tới allocation retire. Hai account C1/C0, ExVillage01, native use/contact-before-pickup/peer/reset và journal. Không toàn Shoe/Punch, all-dead hoặc G1.",
+  "artifacts": [
+    {
+      "name": "native-compare-client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "built-service",
+      "sha256": "c8893ae3ad733709c237e26a0e0df1c612ec83a3406d96755c2e58118bcbfb2b"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+    "docs/evidence/rust-service/g1-shoe.json",
+    "docs/RESEARCH.md#gap-managed-all-dead",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453"
+  ],
+  "findings": [
+    {
+      "summary": "Rust có opt-in report_derived_shoe_punch, flag Shoe theo membership/vòng và catalog floor/hidden có guard; preset Basic/Punch giữ phạm vi cũ. Handler119 chỉ nhận Shoe owner/slot/current allocation/vòng, life eligible, selector5/up-three với source root khớp, finite clear path/terminal obstruction/cancellation cells và deadline>=3s trước blast preparation.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "SHOE329-01817",
+        "SHOE329-01819",
+        "SHOE329-01820",
+        "SHOE329-01830"
+      ],
+      "limits": "Giới hạn bảo thủ của lát đầu, không toàn physics hoặc original server authority. Không dùng opaque119tail làm epoch."
+    },
+    {
+      "summary": "Ledger giữ cả hành lang Shoe gồm nguồn cũ tới all-recipient retirement; placement và motion giao đường bị chặn, Shoe mới kiểm cả nguồn/đích Punch active. Candidate ledger/terrain cùng clone, queue mọi peer reserve trước publish; owner/quota/fuse và short158→blast giữ nguyên, peer vẫn nhận motion đã admit sau actor departure.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "SHOE329-01803",
+        "SHOE329-01821",
+        "SHOE329-00984"
+      ],
+      "limits": "Duration corridor là design vì chưa có wire stop ACK; concurrent-motion/departure windows là server regression, không native fault injection."
+    },
+    {
+      "summary": "Native Rust hai account có hai vòng: flags0/contact trước pickup không119; Shoe3/noPunch pickup, actual119selector5/currentowner và162 trong hai view, root6,3→3,3, state3→4, short158/blast/active0, next118, result/return/reset và hai journal thưởng0 đúng account/player/character C1/C0.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "SHOE329-01715",
+        "SHOE329-01602",
+        "SHOE329-01705",
+        "SHOE329-01698"
+      ],
+      "limits": "Isolated LAN/Wine, ExVillage01, owner/up-three; không Internet/tải, mọi nhân vật/map/roster, foreignbomb, hướng/khoảng cách/lặp/late/inflight khác."
+    },
+    {
+      "summary": "Giữ R1 ba request thực đích2,3 bị từ chối geometry, R2 một admittedmotion/peer/retirement/next118 nhưng cả hai cùng report chết và không175 trước timeout. R3 đổi input control/peer qua phím và dùng binary đã sửa guard; lỗi fixture/test cũ giữ log, không nâng partial thành pass.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "SHOE329-01447",
+        "SHOE329-01572",
+        "SHOE329-01715"
+      ],
+      "limits": "Không chuẩn hóa unmeasuredtarget thành measuredtarget; không sửa raw/copy/pack/source DB hoặc L1. Các kiểm fixture/test là design regression, không native authority."
+    },
+    {
+      "summary": "Managed player all-dead cố ý chưa được four_results::winner xử lý; native R2 có cả hai accepted17/19 và chưa175. Đổi peer trong phép thử Shoe không giải gap này; task453 được đặt ngay sau lát Shoe cho đường kết thúc hữu hạn và native/reset/journal.",
+      "source": "design",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/RESEARCH.md#gap-managed-all-dead",
+      "evidence": [
+        "SHOE329-01806",
+        "SHOE329-00031",
+        "SHOE329-01572"
+      ],
+      "limits": "Không invent tieenum/winner hoặc gọi phase1 xong; reuse all-dead2 và currentroster builder trước RE phần thiếu."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fmt, clippy -D warnings, full locked workspace test/build;85source inputs equal committed corrected source",
+      "result": "pass",
+      "evidence": [
+        "SHOE329-00979",
+        "SHOE329-00893"
+      ],
+      "limits": "196service,8tunnel,9wire unit và20wire integration. Build không chứng nhận native."
+    },
+    {
+      "check": "Two native Rust Shoe cycles with peer, pickup reset, current account identity and durable zero-reward results",
+      "result": "pass",
+      "evidence": [
+        "SHOE329-01715",
+        "SHOE329-01695"
+      ],
+      "limits": "Chỉ scope của lát; failed/partial runs không cộng thành acceptance."
+    },
+    {
+      "check": "New Shoe source chunks bind both actual compare copies, raw/input preservation and manual bounded feature audit",
+      "result": "pass",
+      "evidence": [
+        "SHOE329-01469",
+        "SHOE329-00007",
+        "SHOE329-00024"
+      ],
+      "limits": "4 new comparisons cùng source binding cũ đã có; exact-head local/history và tất cả CI vẫn cần trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP329-rust-shoe.json",
+      "bytes": 492758,
+      "sha256": "9fbac89e204fb8e73033b04954fd3d964da3837e3356ed7ddff181fca21e0d28",
+      "count": 1864
+    }
+  ],
+  "delta": {
+    "added": [
+      "Rust bounded Shoe selector5/up-three, native two-account use/peer/reset/journal và conservative pathreservation."
+    ],
+    "corrected": [
+      "Giữ input-control geometry refusal và all-dead partial; sửa concurrent Punch oldsource admission bằng regression và kiểm native trên corrected binary."
+    ],
+    "superseded": [
+      "Blocker chưa có Shoe service route đã tháo trong scope opt-in; all-dead managedplayer ở task453 và phần gameplay rộng hơn vẫn mở."
+    ]
+  },
+  "blockers": [
+    "Native actor is persisted characterC1, receiver peerC0, two accounts on isolated virtualLAN/Wine; referenceC0 separate. Not Internet/load/allcharacters or all map/roster support.",
+    "Only selector5 three rows upward and current owner bomb. No late/inflight/repeated/foreignbomb action, arbitrary target, other direction or general collision law. Conservative corridor reservation is design, not a KR stop-time claim.",
+    "Actor-departure and crossing/queue windows are server regressions, not native delayed162/EOF/network fault injection. Before-pickup no119 observes client eligibility, not original server authority.",
+    "G1, M8, whole Shoe/Punch and phase1 remain open. No modified original client/pack/source database.",
+    "Không đổi preset phục vụ hiện hành. ReportDerivedBasic vẫn tắt Shoe/Punch; ReportDerivedPunch vẫn tắt Shoe. Policy mới cần opt-in rõ.",
+    "Initial negative control có thể đổi terrain của route positive; raw thất bại giữ để chỉ rõ giới hạn. Không suy native all-dead đã được hỗ trợ; #453 giữ bước tiếp."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-MANAGED-ALL-DEAD",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Theo PLAN xử lý task453 all-dead managedplayer: reuse contract/native2 và builder175 roster, đo phần thiếu rồi Rust/result/journal/reset/Start tiếp. Giữ hướng/khoảng cách Shoe/Punch và nhóm G1 còn lại; không làm L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T06:03:56.814045+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo tự kiểm; AUD137 chỉ hoàn tất bounded owner Shoe selector5/up-three. Không đóng toàn nhóm Shoe/Punch/G1 hoặc all-dead; review độc lập waived theo chủ dự án.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-shoe.json",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD137.json",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room.rs",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "rust/crates/kr-service/src/terrain.rs",
+      "state": "updated",
+      "reason": "Đồng bộ lát Shoe Rust, native hai vòng/account/reset/journal, input controls, audit và all-dead gap tiếp."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đã trỏ đúng contract items-stats; không thêm kiến thức song song."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, audit theo nhóm và owner L1 giữ nguyên."
+    }
+  ],
+  "completed_feature_groups": [
+    "g1-rust-owner-shoe-selector5-up-three-slice"
+  ]
+}

@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP328: Shoe selector 5 đã có hai vòng hành động trên reference KR.**
+[Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) có dừng chuyển động, thu hồi bom,
+bom tiếp, peer và reset; lượt partial và correction probe được giữ riêng. Shoe chưa được mở trên Rust.
+Punch opt-in và correction rời phòng đã merge; tiếp nối lát Shoe trên Rust theo
+[Bảng điều hành](PLAN.md#dashboard). G1, M8 và L1 của Claude còn mở.
+
+
 **CP327: đã sửa guard motion khi actor rời player round trước peer.**
 [Correction và kiểm hồi quy](protocol/items-stats.md#rust-bomb-motion-codec) giữ motion đã chấp nhận
 đồng bộ với bom hiện hành; phiên cũ không gửi được lệnh mới. Binary sửa đã qua lại hai vòng account/peer/reset
