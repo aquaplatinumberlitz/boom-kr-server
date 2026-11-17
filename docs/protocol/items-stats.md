@@ -187,6 +187,8 @@ thưởng 0 đúng account/player/character. Ca chỉ phát đích `(2,3)` đã 
 request đó thành đích hỗ trợ. Ca khác dừng khi cả hai report chết được giữ partial, không tính thành nghiệm thu.
 Các hướng/khoảng cách khác, foreign bomb, motion lặp/sát deadline/khi đang chạy, mọi nhân vật/map/roster vẫn mở.
 
+[Correction đồng bộ tài liệu](../evidence/checkpoints/shoe-docs-sync-correction.json) giữ lỗi kiểm link/catalog của CP329; không sửa record hoặc raw và không thay nghiệm thu runtime.
+
 **Correction nguồn phụ:** `B486B0` nhận interface `actor+584`, cộng `70` tới wrapper `actor+5F4`, đúng bằng
 interface `actor+58C` cộng `68` của setter. Câu `+5F4+8` trong ghi chép phụ trước là lỗi tính offset; sidecar correction
 mới giữ nguyên ghi chép cũ. Contract, byte binding và snapshot runtime trước đã dùng `+5F4` đúng.

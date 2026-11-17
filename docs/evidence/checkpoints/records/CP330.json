@@ -1,0 +1,185 @@
+{
+  "id": "CP330",
+  "previous": "CP329",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T06:11:37.238715+00:00",
+  "context_commit": "3c176319759559104b1bb6ac04f881316ece3689",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Sửa đồng bộ docs/catalog và khai sai precheck pass ở CP329, giữ nguyên mọi record/audit/raw complete.",
+  "scope": "Chỉ tài liệu, alias anchor, generated coverage, issue453 navigation/disposition và correction audit; không đổi Rust/binary/native behavior.",
+  "artifacts": [],
+  "locators": [
+    "docs/evidence/checkpoints/shoe-docs-sync-correction.json",
+    "docs/PLAN.md#dashboard",
+    "docs/RESEARCH.md#gap-managed-all-dead"
+  ],
+  "findings": [
+    {
+      "summary": "CP329 verification thứ ba khai pass nhưng evidence precheck-v2 chứa lỗi. Row KR-X001 có hai anchor trước ID làm parser catalog bỏ row; generated coverage còn relative fragment sai. Giữ nguyên record/audit/evidence và snapshot commit gốc, không gọi precheck đó là pass.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/evidence/checkpoints/shoe-docs-sync-correction.json",
+      "evidence": [
+        "DOC330-0007",
+        "DOC330-0014",
+        "DOC330-0013"
+      ],
+      "limits": "Correction công khai khai sai, không thay runtime acceptance hoặc hợp thức hóa lịch sử."
+    },
+    {
+      "summary": "CP330 giữ canonical anchor trước ID và alias trong gap cell, regenerate COVERAGE, targeted issue453 snapshot có timestamp riêng cùng manual disposition/backlink. Docs/catalog hiện qua; RESEARCH trong budget và issue khác/L1 không đổi scope.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/evidence/checkpoints/shoe-docs-sync-correction.json",
+      "evidence": [
+        "DOC330-0005",
+        "DOC330-0002",
+        "DOC330-0008",
+        "DOC330-0009",
+        "DOC330-0020",
+        "DOC330-0015"
+      ],
+      "limits": "Base snapshot vẫn giữ ngày cũ và warning tuổi snapshot; chỉ issue453 có incremental timestamp mới. Không suy toàn snapshot là current hoặc semantics/gate đạt."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Canonical docs/links/budgets and generated catalog after correction",
+      "result": "pass",
+      "evidence": [
+        "DOC330-0020",
+        "DOC330-0015"
+      ],
+      "limits": "Append reruns docs/catalog/diff with check=True before writing. Full exact-head local/history and CI still required."
+    },
+    {
+      "check": "Manual serious-contradiction audit and immutable historical record preservation",
+      "result": "pass",
+      "evidence": [
+        "DOC330-0006",
+        "DOC330-0007"
+      ],
+      "limits": "AUD138 closes no extra feature group; CP329 native scope unchanged and task453/G1/phase1 remain open."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP330-docs-correction.json",
+      "bytes": 5986,
+      "sha256": "d5d569dec6bf710949b0f98450136bd8ce6436e5902ef2ecd8e7260ed6c42ee8",
+      "count": 26
+    }
+  ],
+  "delta": {
+    "added": [
+      "Correction CP330/AUD138 cho doc precheck khai sai và issue453 navigation."
+    ],
+    "corrected": [
+      "Anchor grammar/relative fragment/generated coverage và bằng chứng docs check hiện tại; không sửa record CP329."
+    ],
+    "superseded": [
+      "Không được dùng precheck pass khai trong CP329 làm gate; dùng kết quả đúng head sau correction."
+    ]
+  },
+  "blockers": [
+    "Exact-head full local/history and all actual CI must pass before merge.",
+    "Only documentation correction; no extra Shoe direction/roster, managed all-dead, G1, M8 or phase1 closure."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-MANAGED-ALL-DEAD",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Theo PLAN xử lý task453 all-dead managedplayer: reuse contract/native2 và builder175 roster, đo phần thiếu rồi Rust/result/journal/reset/Start tiếp. Giữ hướng/khoảng cách Shoe/Punch và nhóm G1 còn lại; không làm L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T06:11:37.238715+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo manual correction audit; review độc lập waived. Giữ CP329/AUD137/raw bất biến; không nhận kiểm precheck khai sai là pass.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/evidence/checkpoints/shoe-docs-sync-correction.json",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD138.json",
+      "state": "updated",
+      "reason": "Sửa docs/catalog/issue453 navigation và ghi correction audit minh bạch."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đúng anchor; sửa nội dung tại nguồn items-stats và RESEARCH."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Không đổi validator, audit policy hoặc ownership."
+    },
+    {
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "state": "unchanged",
+      "reason": "Không đổi runtime/code/binary đã nghiệm thu ở CP329."
+    }
+  ]
+}

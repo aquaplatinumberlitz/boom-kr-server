@@ -1,0 +1,48 @@
+{
+  "schema": "kre-documentation-sync-correction-v1",
+  "source": "design",
+  "status": "design",
+  "checkpoint": "CP330",
+  "previous": "CP329",
+  "preserved_commit": "3c176319759559104b1bb6ac04f881316ece3689",
+  "problem": "CP329 đã ghi complete trước khi xử lý xong check docs/catalog. Verification thứ ba ghi pass nhưng cp329-docs-precheck-v2.txt chứa lỗi. Row KR-X001 có hai anchor trước ID nên không khớp grammar; COVERAGE cũ còn fragment tương đối sai. Precheck đầu còn vượt budget RESEARCH trước khi nội dung được gộp vào row.",
+  "correction": "Giữ nguyên CP329/AUD137/evidence/raw và commit snapshot để tài liệu còn blob lịch sử. CP330 đưa alias anchor vào ô nội dung, sinh lại COVERAGE và kiểm docs/catalog thành công. Thêm snapshot riêng issue453 với timestamp riêng, manual disposition/backlink; base snapshot và issue/PR khác giữ nguyên. Không nới validator hoặc sửa evidence cũ thành pass.",
+  "runtime": "Không đổi Rust/binary/native acceptance CP329. Gate docs/exact-head/CI chỉ công bố theo kết quả thực của head đã sửa.",
+  "checks": [
+    {
+      "path": "local/research/codex/cp329-docs-precheck.txt",
+      "bytes": 210,
+      "sha256": "ed2d7cdebd5d1c129f4a69036b7d5407ad47161292ea2f61a3f717d502198d43"
+    },
+    {
+      "path": "local/research/codex/cp329-docs-precheck-v2.txt",
+      "bytes": 63,
+      "sha256": "9def19f9c1072a897f88420bbc9dff11a053f09e92aec0fb3465c9e15993532c"
+    },
+    {
+      "path": "local/research/codex/cp330-docs-check.txt",
+      "bytes": 99,
+      "sha256": "86b6d872d7a075bf09f93405871af85db9b53eea8685ca1851b37458289dac88"
+    },
+    {
+      "path": "local/research/codex/cp330-docs-check-v2.txt",
+      "bytes": 99,
+      "sha256": "86b6d872d7a075bf09f93405871af85db9b53eea8685ca1851b37458289dac88"
+    },
+    {
+      "path": "local/research/codex/cp330-catalog-check-v2.txt",
+      "bytes": 246,
+      "sha256": "3d19a2b9d9bdbfa07fef68c6f33b081ab05ee4508901dd53bee08e964a772a3c"
+    },
+    {
+      "path": "local/research/codex/cp330-docs-check-v3.txt",
+      "bytes": 274,
+      "sha256": "e60ccb2d604a0e4819d380d485f365c277055bcb8b38a2071650d68a9ae1ce4d"
+    }
+  ],
+  "limits": [
+    "CP329 verification docs precheck pass là khai sai, không được tính là pass; record cũ không sửa.",
+    "AUD138 serious_contradiction ghi correction; không thêm completed feature group hoặc đóng all-dead/G1/M8.",
+    "Full exact-head local/history và mọi CI vẫn cần trước merge."
+  ]
+}
