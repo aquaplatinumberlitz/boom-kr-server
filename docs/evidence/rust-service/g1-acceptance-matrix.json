@@ -1,10 +1,10 @@
 {
   "schema": "kre-g1-acceptance-matrix-v1",
   "source": "design",
-  "status": "candidate",
+  "status": "design",
   "canonical": "docs/PLAN.md#phase1-acceptance",
   "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
-  "scope": "Đối chiếu bằng chứng các route đã đo với acceptance G1 đã cắt; không là bản nghiệm thu toàn G1.",
+  "scope": "Đối chiếu thủ công tám tiêu chí G1 hiện hành theo scope-cut; Codex self-audit với review độc lập waived. Không chứng nhận gameplay đầy đủ hoặc M8.",
   "maps": [
     {
       "map": "Forest07",
@@ -462,7 +462,7 @@
     "MaxPower": "docs/evidence/rust-service/g1-maxpower.json",
     "Needle_rescue": "docs/evidence/rust-service/g1-life-actions.json",
     "Punch": "docs/evidence/rust-service/g1-punch-matrix.json",
-    "Shoe": "pending final native/group integration, then docs/evidence/rust-service/g1-shoe-matrix.json"
+    "Shoe": "docs/evidence/rust-service/g1-shoe-matrix.json"
   },
   "character": "docs/evidence/rust-service/g1-character-rejection.json",
   "drop_scope": "docs/evidence/rust-service/g1-item-scope-data.json",
@@ -501,13 +501,14 @@
     "limits": "Current produced L1 vi outputs only; original wrapper rejected two observed cache changes. Exact actual238 join validates them, all other pins frozen. No L1 or M8 closure."
   },
   "remaining": [
-    "Shoe final native/group integration; join acceptance after it passes.",
-    "Final G1 audit and exact-head/CI gate; all map/roster and native cleanup limits retained."
+    "Không còn acceptance gameplay thuộc G1 theo phạm vi đã chốt; main chỉ nhận kết luận này qua PR sau exact-head gate và CI.",
+    "M8 còn Internet transport xác thực mới, tải50/8phòng, backup/restore, đóng gói và soak."
   ],
   "limits": [
     "Chỉ tái dùng các route và môi trường đã ghi; không đo lại phân phối drop gốc.",
     "Roster trung gian dùng admission/spawn ordinal tổng quát; native có các roster đã liệt kê, không từng số người hoặc từng sparse slot.",
-    "Không đóng M8: Internet transport mới, tải50/8phòng, backup/restore/đóng gói/soak còn riêng."
+    "Không đóng M8: Internet transport mới, tải50/8phòng, backup/restore/đóng gói/soak còn riêng.",
+    "Shoe dùng native representative bốn hướng/khoảng cách cộng controls source; không mỗi endpoint, mỗi ô, mọi count/roster hoặc nhân vật. Rule hỗ trợ generic corridor có bằng chứng consumer và guard/tests, không fixed selector slices."
   ],
   "criteria": [
     {
@@ -561,14 +562,19 @@
     {
       "number": 6,
       "requirement": "Tập item giữ lại và tắt drop các nhóm ngoài phạm vi",
-      "state": "pending_shoe_final_join",
+      "state": "confirmed_scoped_groups",
       "evidence": [
         "docs/evidence/rust-service/g1-item-scope-data.json",
         "docs/evidence/rust-service/g1-maxpower.json",
         "docs/evidence/rust-service/g1-life-actions.json",
         "docs/evidence/rust-service/g1-punch-matrix.json",
         "docs/evidence/rust-service/g1-shoe-matrix.json"
-      ]
+      ],
+      "group_final_native": {
+        "path": "local/research/codex/g1-shoe-final-four-native-r1/motion-verification.json",
+        "bytes": 2373,
+        "sha256": "de35d7e7b8410a449ae692e07f7ca187cedf93392e28a78ce8e3066e611b83a0"
+      }
     },
     {
       "number": 7,
@@ -590,5 +596,13 @@
       ],
       "limits": "Original wrapper cache guard failed; two known cache outputs independently match actual238, all other inputs frozen. Not L1 closure or language-client gameplay oracle."
     }
-  ]
+  ],
+  "result": "accepted_g1_phase1_scope_with_recorded_limits",
+  "closure_decision": {
+    "by": "Codex",
+    "review": "waived",
+    "authorization": "docs/evidence/checkpoints/review-waiver.json",
+    "reason": "Tám tiêu chí đều có bằng chứng trong phạm vi owner đã cắt; route/roster/raw cleanup và lớp kiểm được giữ rõ, không yêu cầu every-tile hoặc nhóm item đã tắt.",
+    "integration": "PR chứa record CP337; không dùng checkpoint complete thay CI/exact-head/merge."
+  }
 }

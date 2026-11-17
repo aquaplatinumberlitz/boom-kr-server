@@ -33,12 +33,13 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP336: ma trận nhóm Punch đã có native Rust cho cả bốn hướng và endpoint biên/quét.**
-[Contract và bằng chứng](docs/protocol/items-stats.md#rust-bomb-motion-codec) giữ source/target thực,
-exact 119→162 và reservation toàn hàng/cột theo policy report-derived. Hai batch mới có bốn vòng mỗi batch,
-peer/landing/retirement/reset, journal đúng account/thưởng 0 và 864 getter checks; selector 2 trước đó gộp vào nhóm.
-Nhóm còn qua gate/PR trước tích hợp; Shoe và kiểm ghép client Việt còn làm tiếp. Bảng rơi đã cắt và từ chối nhân vật
-trên cùng socket đã tích hợp qua PR #466. [Bảng điều hành](docs/PLAN.md#dashboard) giữ việc còn lại và ước lượng native.
+**CP337: Shoe đủ ma trận và G1 đạt acceptance giai đoạn 1 đã thu hẹp.**
+[Ma trận tám tiêu chí](docs/evidence/rust-service/g1-acceptance-matrix.json) nối sáu map/roster đã đo với
+kim/cứu, item nền/MaxPower, Shoe/Punch, bảng rơi đã cắt và từ chối nhân vật trên cùng phiên.
+Client L1 `vi` hiện hành đã có Factory07/Bomb, hai vòng/kết quả/reset và journal trên Rust; hai cache metadata
+thay đổi được đối chiếu đúng bảng 238, giữ lỗi wrapper ban đầu. Không suy every-tile, physics/authority đầy đủ,
+L1 closure hoặc Internet/tải từ các lượt Wine/LAN. [Bảng điều hành](docs/PLAN.md#dashboard) chuyển sang M8:
+Internet transport mới, 50 người/8 phòng, backup/restore, đóng gói và chạy dài.
 
 ## Bắt đầu
 

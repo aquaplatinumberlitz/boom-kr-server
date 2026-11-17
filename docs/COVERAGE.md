@@ -773,9 +773,9 @@ Dependency: [KR-F006](#kr-f006).
 
 [Contract và giới hạn](protocol/items-stats.md#item-families) · [Câu hỏi gốc](RESEARCH.md#gap-ability-debuff) · [Thứ tự ở PLAN](PLAN.md#current-order).
 
-Khoảng trống (trích bảng RESEARCH): [MaxPower](protocol/items-stats.md#rust-maxpower) có C0/C1 và cap/reset. [Ma trận Punch](evidence/rust-service/g1-punch-matrix.json) có bốn hướng, endpoint ngắn/dài và quét về nguồn, native account/peer/retirement/reset/journal; Rust giữ toàn trục theo policy report-derived. Shoe mới có lát up-three đã merge.
+Khoảng trống (trích bảng RESEARCH): [MaxPower](protocol/items-stats.md#rust-maxpower), [Punch](evidence/rust-service/g1-punch-matrix.json) và [Shoe](evidence/rust-service/g1-shoe-matrix.json) đã có native/controls theo tập G1 giữ lại; ma trận có bốn hướng, khoảng cách/corridor, peer/retirement/reset/account/journal. [Ma trận acceptance G1](evidence/rust-service/g1-acceptance-matrix.json) giữ kết luận theo phạm vi owner đã cắt.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Punch không còn tách việc theo selector; hoàn tất gate/tích hợp nhóm ở #462. Tiếp ma trận Shoe hướng/khoảng cách bằng cùng harness, giữ source/target/range thực, ca không đủ điều kiện và hai vòng/reset. Native duplicate/late/inflight/foreign bomb/queued EOF chưa đo, không suy từ guard tests. Các debuff khác đã tắt drop trong G1 và thuộc giai đoạn sau; không dùng tail119 làm epoch hoặc đoán ACK160.
+Phép kiểm tối thiểu (trích cùng nguồn): Không mở lát riêng theo selector hoặc nhóm item đã tắt trong G1. Native duplicate/late/inflight/foreign/queued EOF chưa được suy từ guard tests; physics/authority đầy đủ, debuff/TTL và nhóm khác để giai đoạn sau. M8 theo PLAN; không dùng tail119 làm epoch hoặc đoán ACK160.
 
 Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285), [#456](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456), [#460](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/460), [#462](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/462), [#472](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/472).
 

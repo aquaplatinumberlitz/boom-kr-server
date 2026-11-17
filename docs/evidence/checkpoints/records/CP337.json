@@ -1,0 +1,983 @@
+{
+  "id": "CP337",
+  "previous": "CP336",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T18:06:51.556312+00:00",
+  "context_commit": "99acee5c452eee62fbe2366d54ddbb8908495919",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Hoàn tất nhóm Shoe và đối chiếu tám tiêu chí G1 đã thu hẹp, gồm client Việt trên Rust, giữ mọi lớp bằng chứng/giới hạn.",
+  "scope": "Native Shoe8+2+4 vòng, ma trận bốn hướng/corridor/biên, final direction guard; sáu map dùng lại route/roster đã đo. Vi Factory07/Bomb/hai vòng/reset/account/journal; không L1 hoặc M8 closure.",
+  "artifacts": [
+    {
+      "name": "KR-native-client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "Shoe-final-Rust-service",
+      "sha256": "48eec8bc6c789062c6ae569b92e03d3786a6bb34279a0a671ec91cb04c0ecba3"
+    },
+    {
+      "name": "Produced-L1-vi-client",
+      "sha256": "37655a36d11b94dbe18bcfdcaaf68ec92c9271743d8e3fdf919492e8f0edaa84"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+    "docs/evidence/rust-service/g1-acceptance-matrix.json",
+    "docs/PLAN.md#phase1-acceptance",
+    "docs/RESEARCH.md#gap-ability-debuff",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/472"
+  ],
+  "findings": [
+    {
+      "summary": "Shoe native đủ4/trái5/lên6/phải7/xuống, corridor dọc2/3/6 và ngang1/2 ô. Tám vòng, hai vòng bổ sung và bốn vòng final build có exact119/162, hai consumer/landing/state4/rebind/cleanup, flags reset, account C1/C0 và journal thưởng0. Tổng1512 getter checks trong các batch này; giới hạn lời gọi13 dọc15 ngang không được gọi là stat nhân vật.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "G1S337-00342",
+        "G1S337-00225",
+        "G1S337-00115",
+        "G1S337-00112"
+      ],
+      "limits": "Native representative directions/distances, không mỗi endpoint/ô/roster/nhân vật; không nguyên physics/server authority hoặc Internet."
+    },
+    {
+      "summary": "Policy Shoe kiểm đúng dấu/cùng trục/khác nguồn/in-bounds, toàn corridor passable không giao allocation, giữ source/corridor đến mọi receipt. Owner/transport/member/vòng/life/item/deadline/queue rollback/quota và retirement fences giữ nguyên. Test mới từ chối reversed selector mà không tiêu thụ hành động đúng; final binary có native đủ bốn positive selectors.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "G1S337-00612",
+        "G1S337-00613",
+        "G1S337-00614",
+        "G1S337-00185",
+        "G1S337-00064"
+      ],
+      "limits": "Report-derived corridor/quarantine là design; không suy native duplicate/late/inflight/foreign/queued EOF từ tests."
+    },
+    {
+      "summary": "Nhãn selector ngang và inherited count8 của input hai vòng có correction riêng gắn SHA; kiểm phím/direction/requests/readers thực. Raw và matrix không sửa. Factory profile/size pre-ready failures, wall route và Shoe bị control blast trước pickup giữ riêng; final input đã sửa trước chạy.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "G1S337-00405",
+        "G1S337-00221",
+        "G1S337-00021"
+      ],
+      "limits": "Deviations của kế hoạch gốc được giữ rõ; không đổi failure thành nguyên input đạt hoặc gọi mọi failure là lỗi client gốc."
+    },
+    {
+      "summary": "Client vi do Claude tạo chạy trên Rust với Factory07/Bomb, hai vòng/kết quả/reset, native stat2→3 và peer unchanged, journal đúng hai account/thưởng0. Hash exe/pack Factory07 đã kiểm; ảnh có UI Việt ở Battle/kết quả/phòng chờ. KR không vá chữ vẫn là gameplay oracle.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/evidence/rust-service/g1-acceptance-matrix.json",
+      "evidence": [
+        "G1S337-00599",
+        "G1S337-00473",
+        "G1S337-00471",
+        "G1S337-00597"
+      ],
+      "limits": "Current produced vi integration smoke, không L1/fonts/IME/toàn bản dịch hoặc Internet/M8 closure."
+    },
+    {
+      "summary": "Giữ wrapper guard failure khi hai fxdynmapinfo metadata outputs đổi; process runtime exit0. Before/after byte pins, SSI checksum/length/zlib và mọi actual238 được đối chiếu độc lập; mọi input khác giữ nguyên. Schema2 seed chưa có journal được kiểm version2 trước khi target schema3 ghi đúng hai complete.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/evidence/rust-service/g1-acceptance-matrix.json",
+      "evidence": [
+        "G1S337-00444",
+        "G1S337-00600",
+        "G1S337-00473",
+        "G1S337-00587"
+      ],
+      "limits": "Không report wrapper nguyên bản thành công hoặc source_frozen toàn bộ disk. Post-run verifier snapshots riêng; không native rerun để sửa verifier assumptions."
+    },
+    {
+      "summary": "Đối chiếu thủ công tám tiêu chí G1 theo scope owner: sáu map/roster route đã có spawn/thùng/item/peer/hai vòng/reset/ca âm; kim/cứu, nền/MaxPower, Shoe/Punch, drop tắt và character refusal. 53 metadata/verification pins map đã kiểm. G1 đạt phạm vi này qua PR sau gate/CI; không cần every-tile hoặc item đã chuyển sau giai đoạn1.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/rust-service/g1-acceptance-matrix.json",
+      "evidence": [
+        "G1S337-00009",
+        "G1S337-00184",
+        "G1S337-00006"
+      ],
+      "limits": "Giữ native representative roster, các lỗi capture/debugger/export/cleanup lịch sử và wrapper vi; không full gameplay, authority gốc, L1 hoặc M8."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fmt/clippy-Dwarnings/full locked workspace tests và build final Shoe, direction guard regression",
+      "result": "pass",
+      "evidence": [
+        "G1S337-00185",
+        "G1S337-00064",
+        "G1S337-00083"
+      ],
+      "limits": "Source/build kiểm riêng với native; không thay fidelity hoặc original authority."
+    },
+    {
+      "check": "Shoe exact wire/consumer/getter/lifecycle, final build bốn hướng; vi gameplay/account/journal/cache và images",
+      "result": "pass",
+      "evidence": [
+        "G1S337-00115",
+        "G1S337-00112",
+        "G1S337-00599",
+        "G1S337-00473",
+        "G1S337-00444",
+        "G1S337-00471"
+      ],
+      "limits": "Giữ wrapper/process/deviation distinction, chỉ các case/roster và produced language client đã đo."
+    },
+    {
+      "check": "Manual G1 scope acceptance join, docs/catalog/diff và một audit chung cho hai nhóm hoàn chỉnh",
+      "result": "pass",
+      "evidence": [
+        "G1S337-00009",
+        "G1S337-00006",
+        "G1S337-00182"
+      ],
+      "limits": "Exact-head local/history và CI trước merge vẫn bắt buộc."
+    }
+  ],
+  "delta": {
+    "added": [
+      "Nhóm Shoe generic corridor bốn hướng, direction guard và native matrix; vi Factory07 two-round smoke, G1 scope acceptance join."
+    ],
+    "corrected": [
+      "Nhãn selector/count inherited input và cache output classification có correction/proof riêng, raw/preflight không viết lại."
+    ],
+    "superseded": [
+      "G1 remaining theo selector hoặc mọi item trong sáu drop tables trước owner scope-cut; M8 và nội dung ngoài phạm vi vẫn mở."
+    ]
+  },
+  "blockers": [
+    "Không còn blocker acceptance G1 trong phạm vi đã chốt; integration vẫn cần exact-head/CI.",
+    "M8 vận hành và L1 của Claude giữ scope riêng."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-M8-INTERNAL-OPERATIONS",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Theo PLAN tiếp M8: Internet transport xác thực mới, tải50/8phòng, backup/restore, cấu hình/đóng gói/soak; mọi VPS/OCI chỉ local. Không mở lại G1 theo selector hoặc takeover L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T18:06:51.556312+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex self-audit AUD145 cho nhóm Shoe và final G1 scope acceptance; independent review waived, không M8/L1 closure.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner cho solo và miễn review độc lập."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-shoe-matrix.json",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-acceptance-matrix.json",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD145.json",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "rust/crates/kr-service/src/terrain.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "tools/g1_native_harness.py",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "tools/g1_native_runtime.py",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "tools/g1_native_verify.py",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "tools/g1_native_feedback_probe.py",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "tools/g1_shoe_range_probe.py",
+      "state": "updated",
+      "reason": "Đồng bộ Shoe/G1 scope acceptance, vi integration và giới hạn, chuyển việc tiếp sang M8."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index topic hiện hành không đổi, contract cập nhật tại items-stats."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo/audit nhóm/privacy/lean evidence và retention theo owner giữ nguyên."
+    }
+  ],
+  "completed_feature_groups": [
+    "g1-shoe-direction-distance-matrix",
+    "g1-final-scoped-acceptance"
+  ],
+  "evidence": [
+    {
+      "id": "G1S337-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3954,
+      "sha256": "bcef3294cef4407638f6b7226a7d2c65a2c0c475ae429cfb832db0a947bad02a"
+    },
+    {
+      "id": "G1S337-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 270479,
+      "sha256": "2f366f03d75780d1b85142ce025f13d4217a004e861e49b04fb63b882910861b"
+    },
+    {
+      "id": "G1S337-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 170685,
+      "sha256": "1cc89d090636b414fef982df82a9451f7691c825912ae381085352799f0433ec"
+    },
+    {
+      "id": "G1S337-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 83169,
+      "sha256": "72909f5ad5ad2e5779d4167d46bf1174111fe9d733650281ad11b6aab81cef42"
+    },
+    {
+      "id": "G1S337-00005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45690,
+      "sha256": "5dc00ecb23665945fb52d7dafd7745843e64cdaf63ac7a1a16a4e7c8a4d4d780"
+    },
+    {
+      "id": "G1S337-00006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD145.json",
+      "bytes": 4676,
+      "sha256": "ea48b84e9316694f5fa029f59753624a94b39560344dd888760e14d28ab1f69f"
+    },
+    {
+      "id": "G1S337-00007",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 354203,
+      "sha256": "d1c3c910b185ff2cbb449d5f4a9f58947a431148972670b32be2f2a255f78ef2"
+    },
+    {
+      "id": "G1S337-00008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 46198,
+      "sha256": "1d751749a32c98f938f569eba457f032e8b50864f3a538317298f7fa3423fa74"
+    },
+    {
+      "id": "G1S337-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-acceptance-matrix.json",
+      "bytes": 28124,
+      "sha256": "f03ad2244b10cec9448840e0a64dafb70179c6dc534212448b2a580c204ffcf8"
+    },
+    {
+      "id": "G1S337-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-camp08-roster-routes.json",
+      "bytes": 4386,
+      "sha256": "9f8d05370d3b769ec516f0cd2f5f677f94d2a4d6bc0d77b7ae9afff9a2b51b4e"
+    },
+    {
+      "id": "G1S337-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-character-rejection.json",
+      "bytes": 5376,
+      "sha256": "79976a1eb4dadc65806da7ac6e2c030083bee4a226a3df1ed78d3645c3ac3b6d"
+    },
+    {
+      "id": "G1S337-00012",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-factory07-roster-routes.json",
+      "bytes": 12951,
+      "sha256": "1ac0a6be0990f506e15d85dafdfb50edb31715d2533c89e2a592a47896fe65a7"
+    },
+    {
+      "id": "G1S337-00013",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-item-scope-data.json",
+      "bytes": 3002,
+      "sha256": "2913408237d4aff147c438f49f33c4256d336c01550012a1d6a0016829da277f"
+    },
+    {
+      "id": "G1S337-00014",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-life-actions.json",
+      "bytes": 11337,
+      "sha256": "e957a1b5ce73bf7452bb5f89b5c43348252a8225a0d7e95f5a7b13495450d860"
+    },
+    {
+      "id": "G1S337-00015",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-map-adapter.json",
+      "bytes": 7526,
+      "sha256": "accb0570dff70764ed7035fe6dda002a68ebaf8924cf6e4fd65b541c074695b9"
+    },
+    {
+      "id": "G1S337-00016",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-map-selection.json",
+      "bytes": 9398,
+      "sha256": "3cf9aea960df8de9fd6cac8f74a89d95f6412ec64515b94f8b970dcfe3a97f38"
+    },
+    {
+      "id": "G1S337-00017",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-map-terrain.json",
+      "bytes": 14174,
+      "sha256": "d626e56528bced0d259d75090acb6209ecf592d27700a7c7b9803bb0f3cea31f"
+    },
+    {
+      "id": "G1S337-00018",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-maxpower.json",
+      "bytes": 6325,
+      "sha256": "ca870098f7f79b739aeff0b3d32735b891763f53a9444ebcca1c1fdfa5357557"
+    },
+    {
+      "id": "G1S337-00019",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-patrit-terrain.json",
+      "bytes": 13453,
+      "sha256": "3ccd5701f0d7125fd7613fcbd483262b0b19bd78a3a6d97b0a6369ffa6fe34eb"
+    },
+    {
+      "id": "G1S337-00020",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-punch-matrix.json",
+      "bytes": 11543,
+      "sha256": "2453fd8380ba43636fc4ad1501df531e01cc03232323e89e844cc9749c77aab5"
+    },
+    {
+      "id": "G1S337-00021",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-shoe-matrix.json",
+      "bytes": 12327,
+      "sha256": "2296031598001c434f0c77141edae328629667d6de043065fe849551cce9c6da"
+    },
+    {
+      "id": "G1S337-00022",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-terrain-players.json",
+      "bytes": 11004,
+      "sha256": "5ddd731142c565af9f265fe0cdc2fec29cbe40bb6a74c562c0639229d102a8ce"
+    },
+    {
+      "id": "G1S337-00023",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-tomb12-serving-rosters.json",
+      "bytes": 8614,
+      "sha256": "f33ae33e17443a1ac287909784096362e55df0a1e151f381a51bb0b384499768"
+    },
+    {
+      "id": "G1S337-00024",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-village10-terrain.json",
+      "bytes": 9384,
+      "sha256": "c1402127c878a19ff0e4bdd05572a2fb2e784391da304fafbdcdd663dd3d9c7f"
+    },
+    {
+      "id": "G1S337-00025",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 283041,
+      "sha256": "c34f07e32220a4f4176388cfd5c452aea82fa17285038987743b1915c63fa42b"
+    },
+    {
+      "id": "G1S337-00026",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 85214,
+      "sha256": "7edd6a7f5cc9086407ebacc9014669f74b8de591736ed42cb3754e8aed36d685"
+    },
+    {
+      "id": "G1S337-00028",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-durable-serving-native-r2/serving-verification.json",
+      "bytes": 108350,
+      "sha256": "a511994c75ca82578d9d28bf174813b77471898fbc2af1723e8e9b396585f4f8"
+    },
+    {
+      "id": "G1S337-00029",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-serving4-native-r1/failure-verification.json",
+      "bytes": 1868,
+      "sha256": "7ba60504452331188b71f980a469cfbf4f0499978edbddda1cc8b21aac3f2a4c"
+    },
+    {
+      "id": "G1S337-00030",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-serving4-native-r2/serving-verification.json",
+      "bytes": 18580,
+      "sha256": "a122cd72960bd07fa24dabe139b9db5a8f6fc432ce45901d746aa23da166448d"
+    },
+    {
+      "id": "G1S337-00031",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-serving8-native-r2/serving-verification.json",
+      "bytes": 37494,
+      "sha256": "669e0194be64b613017e150a63fc386b49c3085fc0f6e097b487ba5fd774fd51"
+    },
+    {
+      "id": "G1S337-00032",
+      "kind": "local",
+      "path": "local/research/codex/g1-factory07-glass-native-r1/glass-observations-verification.json",
+      "bytes": 102023,
+      "sha256": "9b7d33b86a675ffd2307551486dde539c2123a8edd4046f70f09c643ed2fa754"
+    },
+    {
+      "id": "G1S337-00033",
+      "kind": "local",
+      "path": "local/research/codex/g1-factory07-glass-serving-native-r1/glass-observations-verification.json",
+      "bytes": 123374,
+      "sha256": "fa56ea92b3d69a039f409f6d69c7716e051836833f2e067883917150dfbe91fc"
+    },
+    {
+      "id": "G1S337-00047",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-terrain-config-controls-r1/verification.json",
+      "bytes": 1429,
+      "sha256": "d16ab429fde7d7983b22daf3c39daf294b5458b1b64499817a0ff0da4c105913"
+    },
+    {
+      "id": "G1S337-00064",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-direction-guard-tests-r1.log",
+      "bytes": 2133,
+      "sha256": "f026ad756a6be7b3bcaac7eff64d93636bba55719ad276fe9509401b2e6e144a"
+    },
+    {
+      "id": "G1S337-00083",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-final-build-r1.log",
+      "bytes": 168,
+      "sha256": "10bed27b081392ca5d52a6d2b3257a8ea64ac8594214d2e2746a619813304bb6"
+    },
+    {
+      "id": "G1S337-00112",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/matrix-verification.json",
+      "bytes": 710,
+      "sha256": "9dce8410905e4d497f40f078c93f2dc72f6654273503e0be844937601b055c7e"
+    },
+    {
+      "id": "G1S337-00115",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/motion-verification.json",
+      "bytes": 2373,
+      "sha256": "de35d7e7b8410a449ae692e07f7ca187cedf93392e28a78ce8e3066e611b83a0"
+    },
+    {
+      "id": "G1S337-00182",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-group-gate/docs-precheck-final.log",
+      "bytes": 274,
+      "sha256": "cdf8a09672877679b684d8cb334791425d32be295b7f491528b7ddacb0fb7fcd"
+    },
+    {
+      "id": "G1S337-00184",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-group-gate/map-acceptance-pins-r1.json",
+      "bytes": 4812,
+      "sha256": "a7e3da7b183237ce011da516b5d0c0a27bfd33f730f532dded98b633c43480b3"
+    },
+    {
+      "id": "G1S337-00185",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-group-gate/rust-workspace-r1.json",
+      "bytes": 775,
+      "sha256": "ca27ea6f1accdcb32d44df15b52fd4c4d3d92c34d1ac4ad0c08e4e1f7eabf974"
+    },
+    {
+      "id": "G1S337-00221",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-horizontal-distance-native-r2/matrix-count-correction.json",
+      "bytes": 552,
+      "sha256": "9f2a4bd154b111984220accd5ec4eb848699ab761564f66e2d79a9fe00c0e020"
+    },
+    {
+      "id": "G1S337-00225",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-horizontal-distance-native-r2/motion-verification.json",
+      "bytes": 1826,
+      "sha256": "23698492cc5fa3e541d7c9608bae68ca972ec6ac1e1e9fc98049f4c0dba50fe8"
+    },
+    {
+      "id": "G1S337-00342",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/motion-verification.json",
+      "bytes": 3714,
+      "sha256": "990ea5f74a585dabdbc099a195b7223c5fd67929a9aa5c01e21955b8e32b1113"
+    },
+    {
+      "id": "G1S337-00405",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/selector-name-correction.json",
+      "bytes": 1519,
+      "sha256": "615903d758d723de865165994fc18c82e2d6226141ae0897329994ae763b69e4"
+    },
+    {
+      "id": "G1S337-00412",
+      "kind": "local",
+      "path": "local/research/codex/g1-tomb12-serving4-native-r1/preboot-failure-verification.json",
+      "bytes": 781,
+      "sha256": "1563b26874d60e3fd7b5d9fc8648af3f3130b9fd5f9f330d87be75a83df99737"
+    },
+    {
+      "id": "G1S337-00413",
+      "kind": "local",
+      "path": "local/research/codex/g1-tomb12-serving4-native-r2/setup-failure-verification.json",
+      "bytes": 1072,
+      "sha256": "3b5f3ea40e0cabec7ad703e7ce2cb6eae608915135af3fa1456e7abe7bf20d85"
+    },
+    {
+      "id": "G1S337-00444",
+      "kind": "local",
+      "path": "local/research/codex/g1-vi-client-smoke-r1/cache-verification.json",
+      "bytes": 3179,
+      "sha256": "a64f95b47a089cf3f87233d05a827c0eb62ad19621981cc08e3bf5e9cf670d41"
+    },
+    {
+      "id": "G1S337-00471",
+      "kind": "local",
+      "path": "local/research/codex/g1-vi-client-smoke-r1/manual-image-review.json",
+      "bytes": 1856,
+      "sha256": "7c44865a4ddb54f32e4b87402ac4bce0deb29e27a50e3935c153f0a9ef65e3d5"
+    },
+    {
+      "id": "G1S337-00473",
+      "kind": "local",
+      "path": "local/research/codex/g1-vi-client-smoke-r1/matrix-verification.json",
+      "bytes": 668,
+      "sha256": "1f75f14287a3beb6d05bf6465605bd57bc8bc745ea8bb471f3af84a9ad25f932"
+    },
+    {
+      "id": "G1S337-00587",
+      "kind": "local",
+      "path": "local/research/codex/g1-vi-client-smoke-r1/postrun-input-differences.json",
+      "bytes": 1188,
+      "sha256": "1f384a7b2cde1900756e262eeb3643ee7cf1458aeec9cbd8e671dad320a3aa62"
+    },
+    {
+      "id": "G1S337-00597",
+      "kind": "local",
+      "path": "local/research/codex/g1-vi-client-smoke-r1/vi-client-inputs.json",
+      "bytes": 42955,
+      "sha256": "4dfff3f041a5664c5e938aae7ac4ab624d24847f8e31ade9eb342aa3612a22ea"
+    },
+    {
+      "id": "G1S337-00599",
+      "kind": "local",
+      "path": "local/research/codex/g1-vi-client-smoke-r1/vi-smoke-verification.json",
+      "bytes": 1364,
+      "sha256": "1ae81e17c2d9923a02b76610d699b66c61c4aaca7f4eb697fb5855140c7c89fb"
+    },
+    {
+      "id": "G1S337-00600",
+      "kind": "local",
+      "path": "local/research/codex/g1-vi-client-smoke-r1/wrapper-cache-guard-observation.json",
+      "bytes": 1148,
+      "sha256": "08619b6d6ffdee166b7e7ba3a1f0eef4becc388d88041627dd6a207de955f1d5"
+    },
+    {
+      "id": "G1S337-00612",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "bytes": 49128,
+      "sha256": "42eaeca86b3d2d39dccbba034b57cf1c46189b8dc41871392a52d17e9c9db52b"
+    },
+    {
+      "id": "G1S337-00613",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 198372,
+      "sha256": "79baedd45c729058ada947bbc660793c6b0934ffb280d2996fc713bc507756a8"
+    },
+    {
+      "id": "G1S337-00614",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/terrain.rs",
+      "bytes": 29038,
+      "sha256": "a6246ce4fa1f3bf57fccbb656bc5ee2fc77706f62c34b659ac8a8a09d7dbc305"
+    },
+    {
+      "id": "G1S337-00615",
+      "kind": "repository",
+      "path": "tools/g1_native_feedback_probe.py",
+      "bytes": 931,
+      "sha256": "d8c68030783c4ac0bc2b22e194a91d93849949cf141dd4c6569424ee3637fc1f"
+    },
+    {
+      "id": "G1S337-00616",
+      "kind": "repository",
+      "path": "tools/g1_native_harness.py",
+      "bytes": 14748,
+      "sha256": "235a53c9762f8743d9963a77e5f314b3acb4e42c9c47eea994b5b7aa31e516dc"
+    },
+    {
+      "id": "G1S337-00617",
+      "kind": "repository",
+      "path": "tools/g1_native_runtime.py",
+      "bytes": 32755,
+      "sha256": "b5148df5aeb6968c9ce020f19bd0cf3672af2da5874c86902cfa02caa3f97344"
+    },
+    {
+      "id": "G1S337-00618",
+      "kind": "repository",
+      "path": "tools/g1_native_verify.py",
+      "bytes": 25580,
+      "sha256": "eef0dd2b891b6cc611cdd5b3c7b6173550bdce66f7e900b2f3659b0116f4ce80"
+    },
+    {
+      "id": "G1S337-00619",
+      "kind": "repository",
+      "path": "tools/g1_shoe_range_probe.py",
+      "bytes": 1894,
+      "sha256": "c6f3d097b18bf96abf4786950888560d513cd69cd5f74fcacffb9ce8d8ca7032"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/63637e6ed83adec157b7a2631e4c8b23a20f04de0958f4633cea1957b62b9fe0.jsonl",
+      "sha256": "63637e6ed83adec157b7a2631e4c8b23a20f04de0958f4633cea1957b62b9fe0",
+      "bytes": 450,
+      "count": 2,
+      "files_bytes": 10801
+    },
+    {
+      "run": "local/research/codex/g1-factory07-serving4-native-r1",
+      "path": "local/evidence-manifests/c6d09e8edbe76db6f89bdbde4723702c18ef708ef82667659f06b13804bd1c1d.jsonl",
+      "sha256": "c6d09e8edbe76db6f89bdbde4723702c18ef708ef82667659f06b13804bd1c1d",
+      "bytes": 556,
+      "count": 2,
+      "files_bytes": 551496
+    },
+    {
+      "run": "local/research/codex/g1-factory07-serving8-native-r1",
+      "path": "local/evidence-manifests/645fb20a67a08cd5cf7be0347a490e6c47dae1aafd23ce189d113fa5b538e65a.jsonl",
+      "sha256": "645fb20a67a08cd5cf7be0347a490e6c47dae1aafd23ce189d113fa5b538e65a",
+      "bytes": 788,
+      "count": 3,
+      "files_bytes": 1848027
+    },
+    {
+      "run": "local/research/codex/g1-forest-2-native-r1",
+      "path": "local/evidence-manifests/593e997443919a1f5829c1ca74c4997db2d079f9ce2479fbc6bdbb27e53a6488.jsonl",
+      "sha256": "593e997443919a1f5829c1ca74c4997db2d079f9ce2479fbc6bdbb27e53a6488",
+      "bytes": 519,
+      "count": 2,
+      "files_bytes": 999651
+    },
+    {
+      "run": "local/research/codex/g1-forest-4-native-r1",
+      "path": "local/evidence-manifests/d91c7854813422d1d3659c25dcc775e1073103d20794ed96b5ba6cbed6a27b26.jsonl",
+      "sha256": "d91c7854813422d1d3659c25dcc775e1073103d20794ed96b5ba6cbed6a27b26",
+      "bytes": 520,
+      "count": 2,
+      "files_bytes": 2872929
+    },
+    {
+      "run": "local/research/codex/g1-forest-seed-native-r2",
+      "path": "local/evidence-manifests/4e3c74ccc61b7655931ba5d4a7c5cc1d27462e247a56b3cc9f39950b6fedb7d1.jsonl",
+      "sha256": "4e3c74ccc61b7655931ba5d4a7c5cc1d27462e247a56b3cc9f39950b6fedb7d1",
+      "bytes": 524,
+      "count": 2,
+      "files_bytes": 109234
+    },
+    {
+      "run": "local/research/codex/g1-forest-terrain-native-r3",
+      "path": "local/evidence-manifests/d9748ff78493f3a18ad118e7a7a300afa5b20a25e3309de6e0aea0c3f58e66d1.jsonl",
+      "sha256": "d9748ff78493f3a18ad118e7a7a300afa5b20a25e3309de6e0aea0c3f58e66d1",
+      "bytes": 541,
+      "count": 2,
+      "files_bytes": 15498452
+    },
+    {
+      "run": "local/research/codex/g1-patrit-2-native-r1",
+      "path": "local/evidence-manifests/433305514c9975609248bbad93d3b591a077dbdfad724ad8720d9bc681368366.jsonl",
+      "sha256": "433305514c9975609248bbad93d3b591a077dbdfad724ad8720d9bc681368366",
+      "bytes": 520,
+      "count": 2,
+      "files_bytes": 2527376
+    },
+    {
+      "run": "local/research/codex/g1-patrit-4-native-r1",
+      "path": "local/evidence-manifests/10dae98955c57f2491b25a3625e28033ede6c144a87385dc718a3d29e2183a91.jsonl",
+      "sha256": "10dae98955c57f2491b25a3625e28033ede6c144a87385dc718a3d29e2183a91",
+      "bytes": 520,
+      "count": 2,
+      "files_bytes": 5926675
+    },
+    {
+      "run": "local/research/codex/g1-patrit-8-native-r5",
+      "path": "local/evidence-manifests/7554f941dba9deb68b7d1f4e6bf2c63e621805a1d99d70ec5fed4daa01ef8622.jsonl",
+      "sha256": "7554f941dba9deb68b7d1f4e6bf2c63e621805a1d99d70ec5fed4daa01ef8622",
+      "bytes": 521,
+      "count": 2,
+      "files_bytes": 15499182
+    },
+    {
+      "run": "local/research/codex/g1-patrit-seed-native-r1",
+      "path": "local/evidence-manifests/890a9bb37005430b139146a76f6c84c7e46864d8a5944ed9d93ba2e2ed59efb1.jsonl",
+      "sha256": "890a9bb37005430b139146a76f6c84c7e46864d8a5944ed9d93ba2e2ed59efb1",
+      "bytes": 524,
+      "count": 2,
+      "files_bytes": 108335
+    },
+    {
+      "run": "local/research/codex/g1-postrun-verifiers",
+      "path": "local/evidence-manifests/abdf84acfcea0b20fcbc9ba2896094a50225b4936fa703cf5512a7df578fab87.jsonl",
+      "sha256": "abdf84acfcea0b20fcbc9ba2896094a50225b4936fa703cf5512a7df578fab87",
+      "bytes": 609,
+      "count": 2,
+      "files_bytes": 47336
+    },
+    {
+      "run": "local/research/codex/g1-shoe-controller-sources",
+      "path": "local/evidence-manifests/f1c61826cc9c1af884c4dd135a18be482188061c35faae73ba6fb89896335ea1.jsonl",
+      "sha256": "f1c61826cc9c1af884c4dd135a18be482188061c35faae73ba6fb89896335ea1",
+      "bytes": 1713,
+      "count": 6,
+      "files_bytes": 86338
+    },
+    {
+      "run": "local/research/codex/g1-shoe-factory-range-native-r1",
+      "path": "local/evidence-manifests/d9b0936788572058c897ea92266e30a7dd666cc65348904b22f4a1a1cea66483.jsonl",
+      "sha256": "d9b0936788572058c897ea92266e30a7dd666cc65348904b22f4a1a1cea66483",
+      "bytes": 1354,
+      "count": 6,
+      "files_bytes": 119589
+    },
+    {
+      "run": "local/research/codex/g1-shoe-factory-range-native-r2",
+      "path": "local/evidence-manifests/c0f046a9ef896cedcfdc525301e9c2c83aa5f608fb11bdd4e4770f9bd05e645a.jsonl",
+      "sha256": "c0f046a9ef896cedcfdc525301e9c2c83aa5f608fb11bdd4e4770f9bd05e645a",
+      "bytes": 1354,
+      "count": 6,
+      "files_bytes": 117722
+    },
+    {
+      "run": "local/research/codex/g1-shoe-factory-range-native-r3",
+      "path": "local/evidence-manifests/1f2ba10e832d453fde6a3c739468762f475d671a087ea6188ce20a020011404e.jsonl",
+      "sha256": "1f2ba10e832d453fde6a3c739468762f475d671a087ea6188ce20a020011404e",
+      "bytes": 1356,
+      "count": 6,
+      "files_bytes": 248255
+    },
+    {
+      "run": "local/research/codex/g1-shoe-final-four-native-r1",
+      "path": "local/evidence-manifests/a08d39865170265bef7c5e4df4374a242b03b8dcc50be73aa97acee324ce9e64.jsonl",
+      "sha256": "a08d39865170265bef7c5e4df4374a242b03b8dcc50be73aa97acee324ce9e64",
+      "bytes": 20327,
+      "count": 96,
+      "files_bytes": 140046227
+    },
+    {
+      "run": "local/research/codex/g1-shoe-group-gate",
+      "path": "local/evidence-manifests/92f5e6a35c3146ac80a9cecaef8435dd838753dd2ff75e43a3e9a9df368f9e15.jsonl",
+      "sha256": "92f5e6a35c3146ac80a9cecaef8435dd838753dd2ff75e43a3e9a9df368f9e15",
+      "bytes": 474,
+      "count": 2,
+      "files_bytes": 34096
+    },
+    {
+      "run": "local/research/codex/g1-shoe-horizontal-distance-native-r1",
+      "path": "local/evidence-manifests/eb1b574e100f48b98417ecd81c5123187f58f485aa0aa04fe70bb1d0ea31cd98.jsonl",
+      "sha256": "eb1b574e100f48b98417ecd81c5123187f58f485aa0aa04fe70bb1d0ea31cd98",
+      "bytes": 1398,
+      "count": 6,
+      "files_bytes": 260582
+    },
+    {
+      "run": "local/research/codex/g1-shoe-horizontal-distance-native-r2",
+      "path": "local/evidence-manifests/928828ec1064985ef8ed2389649a54111036893d0ce411fa79c46ef25dc577d7.jsonl",
+      "sha256": "928828ec1064985ef8ed2389649a54111036893d0ce411fa79c46ef25dc577d7",
+      "bytes": 21650,
+      "count": 98,
+      "files_bytes": 13722932
+    },
+    {
+      "run": "local/research/codex/g1-shoe-native-matrix-r2",
+      "path": "local/evidence-manifests/e9dd12d781df30c7256be4ecf639b6497fb05d4e1f67df81ab4ad7f07a945542.jsonl",
+      "sha256": "e9dd12d781df30c7256be4ecf639b6497fb05d4e1f67df81ab4ad7f07a945542",
+      "bytes": 1307,
+      "count": 6,
+      "files_bytes": 290409
+    },
+    {
+      "run": "local/research/codex/g1-shoe-native-matrix-r3",
+      "path": "local/evidence-manifests/b00448aab1228359b96aedf354ad39d715de046eee5bb8f53d0b09b6899992ea.jsonl",
+      "sha256": "b00448aab1228359b96aedf354ad39d715de046eee5bb8f53d0b09b6899992ea",
+      "bytes": 1307,
+      "count": 6,
+      "files_bytes": 368722
+    },
+    {
+      "run": "local/research/codex/g1-shoe-native-matrix-r4",
+      "path": "local/evidence-manifests/993e94bf249bd61565fe664a3df50db8b156b397d8acce9582b81add662960a1.jsonl",
+      "sha256": "993e94bf249bd61565fe664a3df50db8b156b397d8acce9582b81add662960a1",
+      "bytes": 1510,
+      "count": 7,
+      "files_bytes": 437373
+    },
+    {
+      "run": "local/research/codex/g1-shoe-native-matrix-r5",
+      "path": "local/evidence-manifests/901fc8424b8d24441d4d019829f8056c0a84f04da38b885e8943f9a5d98ff53b.jsonl",
+      "sha256": "901fc8424b8d24441d4d019829f8056c0a84f04da38b885e8943f9a5d98ff53b",
+      "bytes": 19945,
+      "count": 96,
+      "files_bytes": 46747795
+    },
+    {
+      "run": "local/research/codex/g1-tomb12-serving-native-r1",
+      "path": "local/evidence-manifests/2acb536ae46991d402b64a8c84d9bfb71edd328b11f7bbea01bb789685bb6221.jsonl",
+      "sha256": "2acb536ae46991d402b64a8c84d9bfb71edd328b11f7bbea01bb789685bb6221",
+      "bytes": 509,
+      "count": 2,
+      "files_bytes": 74731
+    },
+    {
+      "run": "local/research/codex/g1-tomb12-serving4-native-r3",
+      "path": "local/evidence-manifests/1cd88dd10fc7c20642b044e2766b885c5c44a0248ed1a8aec79511f1e6b1051e.jsonl",
+      "sha256": "1cd88dd10fc7c20642b044e2766b885c5c44a0248ed1a8aec79511f1e6b1051e",
+      "bytes": 524,
+      "count": 2,
+      "files_bytes": 205411
+    },
+    {
+      "run": "local/research/codex/g1-tomb12-serving6-native-r1",
+      "path": "local/evidence-manifests/3f64c1f9ce5531db344da8d7a534a682cf9b9c3e76943f3526cfcd08e675fd18.jsonl",
+      "sha256": "3f64c1f9ce5531db344da8d7a534a682cf9b9c3e76943f3526cfcd08e675fd18",
+      "bytes": 516,
+      "count": 2,
+      "files_bytes": 405668
+    },
+    {
+      "run": "local/research/codex/g1-vi-client-smoke-r1",
+      "path": "local/evidence-manifests/97db522f459e7a8e57324e933a297d1e53afb7ee1e7fb6e0118c59daf96b8f79.jsonl",
+      "sha256": "97db522f459e7a8e57324e933a297d1e53afb7ee1e7fb6e0118c59daf96b8f79",
+      "bytes": 38066,
+      "count": 177,
+      "files_bytes": 79756232
+    },
+    {
+      "run": "local/research/codex/g1-village10-terrain2-native-r1",
+      "path": "local/evidence-manifests/8e9ac6ba84dd543f53182692c2dbd34e091f9d05b6e7e5ae7710d7a666e51f8d.jsonl",
+      "sha256": "8e9ac6ba84dd543f53182692c2dbd34e091f9d05b6e7e5ae7710d7a666e51f8d",
+      "bytes": 770,
+      "count": 3,
+      "files_bytes": 3317275
+    },
+    {
+      "run": "local/research/codex/g1-village10-terrain4-native-r4",
+      "path": "local/evidence-manifests/65580b4f6cd424b63eb27bd079c4748c7bb4a3364fefe2f05f9fd601e6e00d04.jsonl",
+      "sha256": "65580b4f6cd424b63eb27bd079c4748c7bb4a3364fefe2f05f9fd601e6e00d04",
+      "bytes": 770,
+      "count": 3,
+      "files_bytes": 7558433
+    },
+    {
+      "run": "local/research/codex/g1-village10-terrain6-native-r2",
+      "path": "local/evidence-manifests/b2c7bfbb7b3c4546212044ad5f4af3b9eaebd932f6678f7865289bc39f229f8e.jsonl",
+      "sha256": "b2c7bfbb7b3c4546212044ad5f4af3b9eaebd932f6678f7865289bc39f229f8e",
+      "bytes": 770,
+      "count": 3,
+      "files_bytes": 8187652
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
   "schema": "kre-g1-shoe-matrix-v1",
   "source": "kr_runtime",
-  "status": "candidate",
+  "status": "confirmed",
   "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
   "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
-  "scope": "Ma trận Shoe tám vòng trên Rust, bốn hướng, ca trước pickup/peer/retirement/reset; đang bổ sung khoảng cách ngang trên cùng ExVillage01, chưa đóng nhóm.",
+  "scope": "Nhóm Shoe: bốn hướng, corridor/khoảng cách và biên đã đo, hai peer/retirement/reset/account/journal. Policy report-derived, không toàn physics gốc.",
   "native": {
     "rounds": 8,
     "clients": 2,
@@ -236,11 +236,41 @@
       "path": "local/research/codex/g1-shoe-native-matrix-r5/native/cycles/run.json",
       "bytes": 1092892,
       "sha256": "dc2b576b6fd745c73ece5d0c188d124c64a2451201db195524c20a97bf8e0383"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/matrix.json",
+      "bytes": 36467,
+      "sha256": "44a2a627ccb70fb94b80ade56789fd9e63402b6a08d3f5d7fca34989ab0ad52b"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/decoded-channels-shared.json",
+      "bytes": 193410,
+      "sha256": "c7c85e92fa9201798064fa37fe63a398d600d63ce066c5ebf3d29555dda7e19e"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/native/runtime-preflight.json",
+      "bytes": 81866,
+      "sha256": "5c672a6a45b7f22b078059d1eb5f837a6a0d20189265fc4518ebfcf0e8f88f51"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "5d0487b382d28b3f285763c7e679f60c8193927bec0b9847ef29327dc4c0b9e8"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/native/storage-export.json",
+      "bytes": 11345,
+      "sha256": "f275190da91e4db1ad40b6c380e1c3a5361cdf10072642c4f62e6b3fb2c93ff3"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/native/cycles/run.json",
+      "bytes": 535459,
+      "sha256": "3d8c73950c0edfef476c2baa0fd1fa1d245510d08e0e02efb5bdfa1b6160c74b"
     }
   ],
   "remaining": [
-    "Hoàn tất hai ca khoảng cách ngang trên ExVillage01 rồi audit/checkpoint/gate một lần cho nhóm.",
-    "Không suy native duplicate/late/inflight/foreign bomb/queued EOF hoặc Internet/tải/M8."
+    "Không còn lát riêng theo hướng/khoảng cách trong nhóm G1; thao tác duplicate/late/inflight/foreign/queued EOF chỉ có mức kiểm đã ghi, không native fault injection.",
+    "Mọi roster/nhân vật/map và physics/authority đầy đủ không được suy từ ma trận. Vận hành/Internet transport mới/tải/backup/restore/soak thuộc M8."
   ],
   "limits": [
     "Nhãn selector ngang của input gốc bị đảo: Right thực phát6, Left phát4. Raw và matrix giữ nguyên; correction riêng gắn SHA matrix/wire, verifier kiểm exact selector, phím, endpoints và consumer. Không gọi matrix nguyên bản khớp mọi nhãn kế hoạch.",
@@ -314,5 +344,115 @@
       "bytes": 552,
       "sha256": "9f2a4bd154b111984220accd5ec4eb848699ab761564f66e2d79a9fe00c0e020"
     }
-  }
+  },
+  "final_build_native": {
+    "rounds": 4,
+    "cases": [
+      {
+        "round": 1,
+        "selector": 5,
+        "bomb_id": 2,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          3,
+          3
+        ],
+        "endpoint_delta": [
+          -3,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 2,
+        "selector": 7,
+        "bomb_id": 5,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          9,
+          3
+        ],
+        "endpoint_delta": [
+          3,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 3,
+        "selector": 6,
+        "bomb_id": 8,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          5
+        ],
+        "endpoint_delta": [
+          0,
+          1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 4,
+        "selector": 4,
+        "bomb_id": 10,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          -1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      }
+    ],
+    "getter_checks": 432,
+    "semantic": {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/motion-verification.json",
+      "bytes": 2373,
+      "sha256": "de35d7e7b8410a449ae692e07f7ca187cedf93392e28a78ce8e3066e611b83a0"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/matrix-verification.json",
+      "bytes": 710,
+      "sha256": "9dce8410905e4d497f40f078c93f2dc72f6654273503e0be844937601b055c7e"
+    },
+    "service": {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/binary/kr-service",
+      "bytes": 115479408,
+      "sha256": "48eec8bc6c789062c6ae569b92e03d3786a6bb34279a0a671ec91cb04c0ecba3"
+    },
+    "client": {
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    "source": "Direction-guard final build; all four positive selectors exercised with exact captured endpoints."
+  },
+  "group_checks": "Fmt/clippy/workspace tests đã đạt; một audit/checkpoint cùng lần đối chiếu G1 cuối, exact-head gate/CI trước merge."
 }
