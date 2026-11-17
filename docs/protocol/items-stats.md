@@ -145,6 +145,13 @@ không chuẩn hóa nó thành selector 3. Test server còn kiểm sai transport
 cũ, hàng đợi đầy, cell bị chặn, deadline và đóng admission trước blast. Các kiểm này không thay bằng chứng
 native cho Shoe, selector khác, hành động lặp/sát deadline/khi đang bay hoặc mọi nhân vật/map/roster.
 
+Nhánh nghiên cứu [#456](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456) có bản nháp guard
+Punch selector 1, cùng cột và một hàng phía dưới. CP327 đã có actual 119 cho `(6,3)→(7,3)` nhưng lượt đó
+bị từ chối trước 162, nên mới xác nhận emission/codec. Bản nháp giữ guard owner/round/deadline/queue,
+kiểm biên đích và reservation của ô nguồn cũ cho cả hai chiều dọc; test server không thay native acceptance.
+Cần reference và Rust native về chuyển động, hạ cánh, rebind/thu hồi, bom tiếp và hai vòng/reset trước khi
+nghiệm thu hoặc tích hợp. Hướng ngang, bom người khác, motion lặp/khi đang chạy/sát deadline vẫn chưa mở.
+
 [Hành động Shoe trên reference](../evidence/item-families/shoe-action.json) dùng floor chỉ có Shoe 3, C0,
 bom của người thao tác và va chạm tự nhiên từ bên dưới. Actual 119 có selector **5**, source `(6,3)` và target
 `(3,3)`; prefix 9 byte được trả bằng candidate 162. Hai view đọc đủ, gọi `B37910`, đổi root, vào state 3 rồi

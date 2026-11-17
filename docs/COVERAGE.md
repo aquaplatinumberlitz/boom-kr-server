@@ -775,9 +775,9 @@ Dependency: [KR-F006](#kr-f006).
 
 Khoảng trống (trích bảng RESEARCH): [Rust MaxPower](protocol/items-stats.md#rust-maxpower) có C0/C1 và cap/reset. [Punch selector3 và Shoe selector5/up-three](protocol/items-stats.md#rust-bomb-motion-codec) có opt-in, current owner/vòng, hai vòng native account/peer/reset và journal; Shoe còn giữ corridor và kiểm nguồn cũ của Punch active.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Tiếp các hướng/khoảng cách còn thiếu khi chặn gameplay G1; dùng consumer/action hiện hành, mỗi lát cần native use/không đủ điều kiện/peer/reset. All-dead managed player là gap kết thúc trận riêng ở [#453](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453). Lặp/late/inflight, foreign bomb, geometry rộng và debuff/TTL vẫn mở; không đoán ACK160 hoặc dùng tail119 làm epoch.
+Phép kiểm tối thiểu (trích cùng nguồn): Tiếp [#456](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456) cho Punch selector 1/hướng xuống: có request cũ và guard/test nháp, chưa có native thực thi; chỉ nghiệm thu sau landing/retirement/reset và Rust native. Các hướng/khoảng cách còn thiếu theo gameplay G1; dùng consumer/action hiện hành, mỗi lát cần native use/không đủ điều kiện/peer/reset. All-dead managed player là gap kết thúc trận riêng ở [#453](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453). Lặp/late/inflight, foreign bomb, geometry rộng và debuff/TTL vẫn mở; không đoán ACK160 hoặc dùng tail119 làm epoch.
 
-Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285).
+Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285), [#456](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456).
 
 Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json), [item-families](evidence/item-families/shoe-punch.json), [item-families](evidence/item-families/bomb-motion-codec.json), [item-families](evidence/item-families/bomb-retirement.json), [rust-service](evidence/rust-service/g1-punch.json), [rust-service](evidence/rust-service/g1-punch-departure.json), [item-families](evidence/item-families/shoe-action.json), [rust-service](evidence/rust-service/g1-shoe.json).
 
