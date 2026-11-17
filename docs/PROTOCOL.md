@@ -163,6 +163,7 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 <a id="item-pickup"></a><a id="item-trên-nền-và-xác-nhận-nhặt--cp030"></a> [→ Item, stat, pickup và kim](protocol/items-stats.md#item-pickup)
 <a id="item-effects"></a><a id="bombfire-stat-giới-hạn-và-nguồn-power--cp031"></a> [→ Item, stat, pickup và kim](protocol/items-stats.md#item-effects)
 <a id="item-families"></a><a id="nhóm-item-và-kiến-thức-tái-sử-dụng--cp045"></a> [→ Item, stat, pickup và kim](protocol/items-stats.md#item-families)
+<a id="shoe-punch-source"></a> [→ Shoe/Punch: pickup, request và giới hạn](protocol/items-stats.md#shoe-punch-source)
 <a id="hidden-items"></a><a id="gạch-item-ẩn-và-khởi-tạo-lại-vòng--cp032"></a> [→ Item, stat, pickup và kim](protocol/items-stats.md#hidden-items)
 <a id="bomb-chain"></a><a id="nổ-dây-chuyền-hai-bom--cp033"></a> [→ Bom, serial, nổ và capacity](protocol/bombs.md#bomb-chain)
 <a id="room-leave"></a><a id="rời-phòng-chủ-mới-và-chọn-loại-sảnh--cp034"></a> [→ Phòng, roster và membership](protocol/room-membership.md#room-leave)

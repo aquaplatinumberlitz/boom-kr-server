@@ -1,0 +1,203 @@
+{
+  "id": "CP323",
+  "previous": "CP322",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T00:45:36.978690+00:00",
+  "context_commit": "7df21c147db62f6f9973e2e48c38fba429ab4428",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Đo đúng contract còn thiếu của Shoe/Punch để nối G1; không mở Rust từ setter hoặc request đơn lẻ.",
+  "scope": "Python RE và source KR: pickup hai item, reset đầu vòng hai, Punch request119; consumer hành động còn thiếu. Không đổi Rust runtime, không đóng G1.",
+  "artifacts": [
+    {
+      "name": "native-reference-client",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "current-diagnostic-byte-binding-client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#shoe-punch-source",
+    "docs/evidence/item-families/shoe-punch.json",
+    "docs/RESEARCH.md#gap-ability-debuff",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445"
+  ],
+  "findings": [
+    {
+      "summary": "Shoe3/effect4 và Punch4/effect5 dùng secure actor5F4/60C; setter, predicate, pending record, writer119 và reader160 đã có byte binding. E2CC10 ghi record chờ, E2D310/E2E910 mới phát119; không suy gói160 là reply119 hoặc di chuyển bom.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/protocol/items-stats.md#shoe-punch-source",
+      "evidence": [
+        "ABI323-0008",
+        "ABI323-1251",
+        "ABI323-1239",
+        "ABI323-1250"
+      ],
+      "limits": "16 body trong bốn batch có câu hỏi/edge cụ thể. E2CC10 có stack warning và tail không liên tiếp; không dùng prototype decompile làm API, không phục hồi server gốc."
+    },
+    {
+      "summary": "Native hai view có Shoe/Punch0→1, sáu stat và actor khác giữ nguyên. Clock đầu vòng hai reset hai field về0 rồi nhận lại item; hai rank/return. Lượt Shoe riêng trước đó chỉ có một vòng và không được tính thành nghiệm thu hai vòng.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#shoe-punch-source",
+      "evidence": [
+        "ABI323-1734",
+        "ABI323-0033",
+        "ABI323-0041"
+      ],
+      "limits": "Python reference, không Rust. Chưa Start thứ ba/reset sau vòng hai, native ca âm eligibility, lifetime hoặc mọi actor/roster."
+    },
+    {
+      "summary": "Space lần hai tại bom hiện hành đi qua Punch B76730→E2CC10, rồi actual119 dài13byte hai vòng. Schema widths đã ghép với writer; field wire ID và cell nguồn khớp actual118 trong hai mẫu.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#shoe-punch-source",
+      "evidence": [
+        "ABI323-0036",
+        "ABI323-0033"
+      ],
+      "limits": "Chỉ C0/một selector; không trả actionACK, không bom dịch chuyển, quỹ đạo, peer hoặc semantics đầy đủ của các field. Native Shoe action chưa có."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native pickup/peer flags, clock2 reset, two rank/return and actual119 observations",
+      "result": "pass",
+      "evidence": [
+        "ABI323-0033",
+        "ABI323-1734"
+      ],
+      "limits": "Đúng scope source RE hẹp, không G1/Rust action acceptance."
+    },
+    {
+      "check": "Raw/input preservation and complete function-chunk byte binding",
+      "result": "pass",
+      "evidence": [
+        "ABI323-0025",
+        "ABI323-1251"
+      ],
+      "limits": "Hai raw run và input giữ nguyên; source DB không đổi, không rewrite raw/record cũ."
+    },
+    {
+      "check": "Docs/catalog/generated coverage and diff checks",
+      "result": "pass",
+      "evidence": [
+        "ABI323-0023",
+        "ABI323-0022"
+      ],
+      "limits": "Giữ cảnh báo snapshot GitHub cũ; capture mới ở local, không nhận việc L1 hoặc sửa disposition của Claude. Full checker exact head và CI phải qua trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP323-shoe-punch.json",
+      "bytes": 741599,
+      "sha256": "67a9da6e48c31336bdf5c9962fcac4916d838a7aecf611dce737bbc33ff49fdb",
+      "count": 2890
+    }
+  ],
+  "delta": {
+    "added": [
+      "Nguồn KR cho Shoe/Punch pickup, clock2 reset và actual119 để tiếp implementation theo consumer."
+    ],
+    "corrected": [
+      "B48610 là body lân cận không phải getter; E2CC10 là pending-record writer có decompiler warning. Reader160 chưa có liên hệ hành động119."
+    ],
+    "superseded": [
+      "Shoe/Punch hoàn toàn chỉ có tên/selector; nay đã có native flag/reset/request hẹp, vẫn chưa đủ contract hành động."
+    ]
+  },
+  "blockers": [
+    "Rust vẫn từ chối kind3/4; chưa đổi runtime Rust hoặc hoàn tất G1.",
+    "Chưa có hành động Shoe, dịch chuyển bom thành công, quỹ đạo/va chạm, peer thấy hành động hoặc timer/lifetime đã đo.",
+    "Chưa native ca thiếu item/dead/trapped/stale action, các selector/roster khác, hoặc reset sau vòng hai.",
+    "Python placement, fuse, rank và lựa chọn floor là policy thử, không luật server gốc. Không account/Internet/load/M8 acceptance từ hai run RE này.",
+    "Record/raw của CP322 và các run cũ giữ nguyên. No-op setter tĩnh không thay native ca âm."
+  ],
+  "completed_feature_groups": [],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp đúng consumer hành động Shoe/Punch đang chặn Rust; đo use/negative/peer/reset, giữ ownership và round/bomb guards, rồi tiếp G1/M8 theo PLAN. Không lặp pickup đã đo hoặc làm L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T00:45:36.978690+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo tự kiểm; nguồn Shoe/Punch hẹp, chưa hoàn tất nhóm item nên không phát sinh feature-group audit.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ contract nguồn Shoe/Punch và giới hạn hành động còn thiếu, không đóng G1 hoặc đổi runtime Rust."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ contract nguồn Shoe/Punch và giới hạn hành động còn thiếu, không đóng G1 hoặc đổi runtime Rust."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ contract nguồn Shoe/Punch và giới hạn hành động còn thiếu, không đóng G1 hoặc đổi runtime Rust."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ contract nguồn Shoe/Punch và giới hạn hành động còn thiếu, không đóng G1 hoặc đổi runtime Rust."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ contract nguồn Shoe/Punch và giới hạn hành động còn thiếu, không đóng G1 hoặc đổi runtime Rust."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ contract nguồn Shoe/Punch và giới hạn hành động còn thiếu, không đóng G1 hoặc đổi runtime Rust."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ contract nguồn Shoe/Punch và giới hạn hành động còn thiếu, không đóng G1 hoặc đổi runtime Rust."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ contract nguồn Shoe/Punch và giới hạn hành động còn thiếu, không đóng G1 hoặc đổi runtime Rust."
+    },
+    {
+      "path": "docs/evidence/item-families/shoe-punch.json",
+      "state": "updated",
+      "reason": "Đồng bộ contract nguồn Shoe/Punch và giới hạn hành động còn thiếu, không đóng G1 hoặc đổi runtime Rust."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Quy trình/waiver/owner L1 không đổi."
+    },
+    {
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "state": "unchanged",
+      "reason": "Kind3/4 tiếp tục bị từ chối; chưa đủ contract hành động để mở."
+    }
+  ]
+}
