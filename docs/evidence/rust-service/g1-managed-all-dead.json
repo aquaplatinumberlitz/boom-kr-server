@@ -1,0 +1,561 @@
+{
+  "schema": "kre-managed-all-dead-slice-v1",
+  "canonical": "docs/protocol/life-results.md#rust-managed-all-dead",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "source_commit": "6a19c23b0236432f36d12b4c95130ddceba317da",
+  "scope": "Managed player round/no surviving current member; native contiguous2/4/8, zero reward journal and next round. No whole G1 or phase1 acceptance.",
+  "policy": {
+    "source": "design",
+    "status": "design",
+    "description": "Managed player all accepteddead, no pending bomb/life/departure deliveries, eight seconds after latest death/departure/blast. No winner or survivor21 required. KR type1/rank2 per row, backend existing AllDead reason and Draw outcomes, zero rewards. Original KR tieenum/policy unknown; legacy fixed-team all-dead remains unchanged."
+  },
+  "two_clients": {
+    "map": "ExVillage01",
+    "rounds_all_dead": 2,
+    "run_sha256": "79b2f533c18df3ba7de2ebe435eb6ed34fc0e60bd18daa93ab461491e56fb9e0",
+    "same_independent_cp083_rank_body": true
+  },
+  "rosters": [
+    {
+      "clients": 4,
+      "map": "Patrit14",
+      "rounds_all_dead": 2,
+      "third_start_clock": true,
+      "run_sha256": "706c57b3a7b57035b879b73fabf0c6e01b80c3d4303f41f0061d6275c63be47d",
+      "service_sha256": "561104f3868587df5bbe3ec703aff291a39054e3c34d50d1b8c14a91ab55bd5d",
+      "views": {
+        "A": {
+          "identity": 1,
+          "account_id": 1,
+          "player_id": 1,
+          "slot": 0,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        },
+        "B": {
+          "identity": 2,
+          "account_id": 2,
+          "player_id": 2,
+          "slot": 1,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        },
+        "C": {
+          "identity": 3,
+          "account_id": 3,
+          "player_id": 3,
+          "slot": 2,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        },
+        "D": {
+          "identity": 4,
+          "account_id": 4,
+          "player_id": 4,
+          "slot": 3,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        }
+      },
+      "rank_body_sha256": [
+        "ecf9bdc6ba3e28232883705e72789e6e49119564943d9fb873f007f5388709c2",
+        "ecf9bdc6ba3e28232883705e72789e6e49119564943d9fb873f007f5388709c2"
+      ],
+      "native_getter_checks": 848,
+      "network_condition": "Emulated private LAN egress netem1500ms, no frame edits; concurrent ordinary Space"
+    },
+    {
+      "clients": 8,
+      "map": "Patrit14",
+      "rounds_all_dead": 2,
+      "third_start_clock": true,
+      "run_sha256": "fefb43e1e636e9ffd2ef92e64e388686a3cdcc8cd0beef1340c8dbe5f12466ef",
+      "service_sha256": "561104f3868587df5bbe3ec703aff291a39054e3c34d50d1b8c14a91ab55bd5d",
+      "views": {
+        "A": {
+          "identity": 1,
+          "account_id": 1,
+          "player_id": 1,
+          "slot": 0,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        },
+        "B": {
+          "identity": 2,
+          "account_id": 2,
+          "player_id": 2,
+          "slot": 1,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        },
+        "C": {
+          "identity": 3,
+          "account_id": 3,
+          "player_id": 3,
+          "slot": 2,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        },
+        "D": {
+          "identity": 4,
+          "account_id": 4,
+          "player_id": 4,
+          "slot": 3,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        },
+        "E": {
+          "identity": 5,
+          "account_id": 5,
+          "player_id": 5,
+          "slot": 4,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        },
+        "F": {
+          "identity": 6,
+          "account_id": 6,
+          "player_id": 6,
+          "slot": 5,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        },
+        "G": {
+          "identity": 7,
+          "account_id": 7,
+          "player_id": 7,
+          "slot": 6,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        },
+        "H": {
+          "identity": 8,
+          "account_id": 8,
+          "player_id": 8,
+          "slot": 7,
+          "clocks": 3,
+          "ranks": 2,
+          "returns": 2,
+          "all_actor_states_dead_before175": true,
+          "all_native_rows_type1_rank2_before180": true
+        }
+      },
+      "rank_body_sha256": [
+        "2c917661479301725730907f542480f3c6cf29d8d9319d162bb57cb5e955564b",
+        "2c917661479301725730907f542480f3c6cf29d8d9319d162bb57cb5e955564b"
+      ],
+      "native_getter_checks": 5440,
+      "network_condition": "Emulated private LAN egress netem1500ms, no frame edits; concurrent ordinary Space"
+    }
+  ],
+  "tcp_controls": [
+    "All-current3 and departed original slot1, two current members; every original row Draw/rank2 including departed participant.",
+    "Real DB writer blocks175 until commit, snapshot account/player/character correct, next sparse0/2 round ignores old round key, shutdown cancels only unfinished match. Synthetic TCP/SQLite, not native sparse/departure/fault injection."
+  ],
+  "retained_failures": [
+    "Roster4r1 B Launcher Process Error before channel/gameplay; graceful stop and same-byte export. Root cause unknown.",
+    "Roster4r2 sequential Space: two elimination results, no all-dead. Controller early_completion label was unverified and is not used as semantic proof.",
+    "Roster4r3 simultaneous Space: first round survivor, second round four real deaths/allrank2/Draw, third Start needed one declared ordinary mouse retry. Verified partial, not two-cycle acceptance.",
+    "First local verifier expected nonexistent round key in clock sample; preserve failure, v3 counts clock samples and separately checks life round markers. No native assertion removed.",
+    "Eight-client getter replay v4/v5 failed with shared emulator global state. v6 uses the established per-snapshot reset at19D88D4/1A7E438 and passes every captured wrapper/equality. Raw and failed receipts/locator retained; no native state writes. Deeper root cause of emulator global dependence not claimed."
+  ],
+  "limits": [
+    "Frontend allrank2 is the eliminated representation, backend Draw is explicit emulator policy; original server tieenum/policy unknown.",
+    "Source and binary unchanged across native2/4/8; no client/pack/sourceDB change, no fabricated death or survivor21. Existing private bootstrap diagnostic patches retain provenance.",
+    "Sparse/departed roster result codec and lifecycle have server controls only; no native acceptance for every variable roster or delayed175 across revoke/EOF.",
+    "Wine/isolated virtual LAN with explicit network delay for4/8, not Internet/load/50players/8rooms.",
+    "Fixed-team legacy all-dead behavior unchanged. Full Shoe/Punch/G1, M8/phase1 remain open; L1 belongs to Claude."
+  ],
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-managed-all-dead-build-r1/workspace-source-identity.json",
+      "bytes": 29373,
+      "sha256": "75e0209ef9070a96c747d2e8d728d93ea24702827a4beb0a8b80d100817e68e6"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-build-r1/verification.json",
+      "bytes": 2621,
+      "sha256": "8b655588c20eaf233006346c8e6d06b8a974e45e86f952de5e2f798459098426"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-build-r1/source-commit-binding.json",
+      "bytes": 13510,
+      "sha256": "47e6a7d337b134ee89a9e9cd67051eb976af46e2f3b40c7b2646749b3d40540f"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-reuse-r1/reuse.json",
+      "bytes": 7137,
+      "sha256": "5793c7d349deda2e9c0683a05f848872602ef8c0f8aac3f1ac1d28a1f32bfaef"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-reuse-r1/native-vector.json",
+      "bytes": 1074,
+      "sha256": "d8aedb1dfec06764bddee74b42ea840842ed7d7d0a2afa9a62b581ab578bace9"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/decoded-channels-shared.json",
+      "bytes": 114623,
+      "sha256": "741946d1d2571d368ad129235b0c929df2717202ca6723a5e68a1e973a079c57"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/all-dead-native-verification.json",
+      "bytes": 4958,
+      "sha256": "a2071845c193e9b2a5cc4117190932a518209c6e7d5826bb6f90657aea04c5fa"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/native-actor-field-checks.json",
+      "bytes": 70185,
+      "sha256": "6e5471fca3b78e6223fad0c45d45c9d3cccc753ac6d83e2f4f5417f399264ef6"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/native/recipe.json",
+      "bytes": 1224,
+      "sha256": "22f2db4be81f725757adbbfb383bb85ab3949a92a79194ccbaed3b3386b166c0"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/native/runtime-preflight.json",
+      "bytes": 385457,
+      "sha256": "18d8407fa16951d7056cfc7c2bc728a68da12b6d29d558d55bfeaa19190f30e2"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/native/supervisor.json",
+      "bytes": 137,
+      "sha256": "7f2055472e39c6b6ac06d199e527f8b15eac197c4b6ced7993f17fcacaf03f7a"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/native/storage-export-before-unmount.json",
+      "bytes": 18659,
+      "sha256": "4ea13908ae4b33d77184e4d27f41056f99f2cb4e7be8e4bff138c9c50de57d03"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/native/storage-export.json",
+      "bytes": 18542,
+      "sha256": "6c3632ebe19c601db4c5eeac7d0dc9d37fd58bde0f6c2dbfbbdc6bd52768280c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "ee1a11f0fd8cc207ac7b87e4957fd25e91e9ac4312fe8cc1f2efa6f538a52d77"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/native/raw-seal.json",
+      "bytes": 12533,
+      "sha256": "2609603522b58aefefb332f8d820bc81694bf1ef0cdb1398fc9e03bb6e52d464"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-native-r1/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "6b8e52a6dbc5cd4a50053e1ca43b088a226da270a85c1e1a54d35f28bdf082e3"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/native/recipe.json",
+      "bytes": 1250,
+      "sha256": "adfc838a3721c7c3a11b5068771399d9e5029b2ff8ab563e345e5c6dc4c46f86"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/native/runtime-preflight.json",
+      "bytes": 461123,
+      "sha256": "be14f85023793c5d4191cc12a2bafd2128a168cf8416ae3e80c69d04a2cfccf6"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/native/supervisor.json",
+      "bytes": 137,
+      "sha256": "0c5a9c0bb3e267aabd82f857197ad63fb72593ca90fb0f2f94e0873f99c8038a"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/native/early-stop-reason.json",
+      "bytes": 378,
+      "sha256": "e1a0c6e545387c2dce028144d1fb96b88790d9026790b27b39c37687fb040249"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/native/storage-export-before-unmount.json",
+      "bytes": 14072,
+      "sha256": "afe57d310fe026e569668429048178f9a84de083017015679724784e3eb7f7ed"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/native/storage-export.json",
+      "bytes": 13953,
+      "sha256": "d70ec9cd73cbf76cf145ddc4f5cf2864836aad37a3688b48e878703b522a1d3c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "64762f98467909e049f90b9236f2bb4146944c80574280ea4f2dd7b2e82438f6"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/native/failure-verification.json",
+      "bytes": 695,
+      "sha256": "33019ebe6b75fa379473181958808988ffd81cd95fab9d2f1d1f1d276ae4c831"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r2/native/recipe.json",
+      "bytes": 1250,
+      "sha256": "8e7fe8bff2aad0d0aedf3cdc91f11fb12c4e33a8ab1e982fe616a09321671b5c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r2/native/runtime-preflight.json",
+      "bytes": 467087,
+      "sha256": "2c44c73c00c51ed77aee015643904e41f71ad8483142fb3633d973dd3548cbc1"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r2/native/supervisor.json",
+      "bytes": 137,
+      "sha256": "19b555d80186bc0bf30d07d8300940e32de2ab326915d9c9738ed0c97c54b23a"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r2/native/storage-export-before-unmount.json",
+      "bytes": 52907,
+      "sha256": "c0e07372a3d510c5c35c3f3aac5f555d8c68f6b1d39b49356e0aa4e3ca73b9db"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r2/native/storage-export.json",
+      "bytes": 52788,
+      "sha256": "db1debc40726131442d1c7d61332cf794afdfb74efafa506514ac39ba7d08ae3"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r2/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "6dd3347469eaeacfb706d0305f632fd33d93318ef704deca921090a7fca1c38a"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r2/native/semantic-failure-verification.json",
+      "bytes": 1117,
+      "sha256": "4e076b6bbe26bf5e03129704764c135dbe52b6e6439263a1c2d6ccb99e814c0b"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/decoded-channels-shared.json",
+      "bytes": 347020,
+      "sha256": "1e6a7de0f7e4a7239d9e8a0ebbda6a386565c99ef44ec708e4951935b252506f"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/partial-native-semantic-verification.json",
+      "bytes": 2760,
+      "sha256": "167e1f125205353ad1a57b54e14ab4916be855b8b1a94bf134f22afbd6399c3d"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/clock-schema-negative-control.json",
+      "bytes": 333,
+      "sha256": "76c60d6cf1ba258b81bb2faf7465a7f32d2b6b6b4bae6712fa81eee5a77c7e3a"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/native/recipe.json",
+      "bytes": 1250,
+      "sha256": "14af2906f4a414a16bb0c999702c13502c6e4b111c189424c66b39c3c94e7af6"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/native/runtime-preflight.json",
+      "bytes": 474371,
+      "sha256": "7f47727e9ed1fc6c60c4557be8d6e39abbbe622891c86d7fa41e44b1c3d257ed"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/native/supervisor.json",
+      "bytes": 137,
+      "sha256": "bc442f45f3ce94ef30ab2d67bc9c4216c4aaa02edc7bdbabee67502699861e7a"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/native/storage-export-before-unmount.json",
+      "bytes": 53447,
+      "sha256": "6827ed45610ebdc8a5ce3ca7bf7bc6d97db1a6ddcaf4c37cf331c73078c28de9"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/native/storage-export.json",
+      "bytes": 53328,
+      "sha256": "a1bfa92898b5e206b8401e967077d49e58e2aa9561eeef61a5a24a761b54eb80"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "89799967cb997356a4a0d0be5967644823a1c4c3e3c0ef314ca52f69f0ea3748"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r3/native/partial-verification.json",
+      "bytes": 910,
+      "sha256": "43f1d983a3fc714e5ec983e04170c58e1b196c3a4b6bb669b24d9dd97f932ef3"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/decoded-channels-shared.json",
+      "bytes": 282130,
+      "sha256": "1b6295df55d562ecf101f6d99ff249054f2e90475ceb9a5f64c5b499388de470"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/semantic-verification-exit.json",
+      "bytes": 117,
+      "sha256": "2257f855b0f2e8ece912f1bb8c93ec88c2d398f05e84447a37c8461c688a83ba"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/all-dead-roster-verification.json",
+      "bytes": 6803,
+      "sha256": "53e585e044e725518749f48a3824002d46c1a1f4147f5494d7ea57e8735db5bd"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/semantic-verification-exit-v4.json",
+      "bytes": 558,
+      "sha256": "bef570feb5b704fb805e48a839683c66386db405f1d0fd463952308a08b16396"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/native/recipe.json",
+      "bytes": 1250,
+      "sha256": "6812d510edf82141b5c02474323b2ce4a24b4301df0a6d4174e11b9b1d752c99"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/native/runtime-preflight.json",
+      "bytes": 474386,
+      "sha256": "0d5297730ed1e974d29453d97f1a993aa3676f41940a0ada531fcde629cf2e6f"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/native/supervisor.json",
+      "bytes": 137,
+      "sha256": "3b49e1bfc662fc1f55b5251335912419bc25a58fca092d6ba3c1c635c86d7235"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/native/storage-export-before-unmount.json",
+      "bytes": 52920,
+      "sha256": "28001ec98ee37c26d9a12caf0149128f5606f2c000795a32b90c871e45d9ae9f"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/native/storage-export.json",
+      "bytes": 52801,
+      "sha256": "2c3f8ea76f3381550e758ffd34570cafbe2477f1d27b10ec395da02269320c99"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "fcc82df9bf7d7cfa5711497da1551274db5732b50258262a3244a24cb73cea65"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/native/raw-seal.json",
+      "bytes": 35182,
+      "sha256": "ea0eed418fd7374b2a7f6aa2361834869579fe0ccc916cac0717110b12ef47ee"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r4/native/frozen-input-postrun-verification.json",
+      "bytes": 60,
+      "sha256": "7ca40d25442ab9b7678922000c024930f67921ec3c0dd9347ebd7dad90ffc4f7"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/decoded-channels-shared.json",
+      "bytes": 929446,
+      "sha256": "d0ff74d24e28a1009711a795bc80bdf8d981340f40929cd5349348b21d134b0b"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/semantic-verification-exit-v4.json",
+      "bytes": 117,
+      "sha256": "1a9e00a86a0ae0cad40c51f2617f1c50b47f2157b7fb82fad588262b8d899827"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/native-getter-failure-diagnostic.json",
+      "bytes": 754,
+      "sha256": "5a827740f8de40c78a88a16fed43122a86bc1dbd2395c1d09404ba3386eea6ce"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/getter-lifetime-locator.json",
+      "bytes": 6552,
+      "sha256": "fff5e8d9d43fb8c0819e011aa985541e1f841a2e6300de28ab3d5adac963bc59"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/all-dead-roster-verification.json",
+      "bytes": 11096,
+      "sha256": "71c22bc8ab039bd87b7f9a097d4ea224a9598f1c7544fa1eb1a6d7b88affbe36"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/semantic-verification-exit-v6.json",
+      "bytes": 779,
+      "sha256": "41c69eea160da34efa3cb3a23939a640f3e1004345cbf8fffdb94eb86d96ed10"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/native/recipe.json",
+      "bytes": 1250,
+      "sha256": "7ac0aacda2e400decb1acf30468a7ce79f755590a68dbc3d35987e9c7990558d"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/native/runtime-preflight.json",
+      "bytes": 662472,
+      "sha256": "4b41cc815456c1d2c92ddff5d578524caac94ad1ad3906baad335ae698ad187f"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/native/supervisor.json",
+      "bytes": 137,
+      "sha256": "ceca243e1646318abe0c18bb99fad79ac96dcc5762c8cb0f5c059602f4d59358"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/native/storage-export-before-unmount.json",
+      "bytes": 144766,
+      "sha256": "87606def77530bc6cfe8df977d8e92cc10e5b6eb95382bf61f377c3e25dc7f82"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/native/storage-export.json",
+      "bytes": 144647,
+      "sha256": "bf603f7556768f67f0e5f312f1bd7340d530777c79ab490a1290cadf2d34489b"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "1bc002790b68d474a582feb4ebf16023a902bb7f31b893ec9da4cac504a9a20f"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/native/raw-seal.json",
+      "bytes": 96452,
+      "sha256": "0d071194261219281a752d2832c0690362d3acd9b31bf5a9d52b0f367391050f"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r4/native/frozen-input-postrun-verification.json",
+      "bytes": 60,
+      "sha256": "b85cfccef7f9be57068b04f9680ece2c2eac2e34ca731c84af816165dff45e89"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-tcp-r1/recipe.json",
+      "bytes": 727,
+      "sha256": "16e12d0de197bf742c6b2e8657cc1f6f52c9bf4f5e6d58d826a18bbd99ba537d"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-tcp-r1/exit.json",
+      "bytes": 244,
+      "sha256": "ec1c1f93f2a1ffcdb73ef04fbb298f9fdc044006eb245bb30070a22e436b3d37"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-tcp-departed-r1/recipe.json",
+      "bytes": 760,
+      "sha256": "f7be380327edde76ffb5e4cd5375fd6cde65c13e002a8db0a10828886c22f2c5"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-tcp-departed-r1/exit.json",
+      "bytes": 244,
+      "sha256": "f306fa3fcd23c66391e3cc5757c0f9601c5d6f8b8505b3317ef3fe7284ed3454"
+    }
+  ]
+}

@@ -65,6 +65,38 @@ lịch sử theo account/phòng. Không có client history screen/wire mới. [N
 vẫn chỉ0/1 hiện lại trong phòng/Start; own291 tại sảnh giữ zero-profile. Tải/latency/queue budgets, Internet companion
 mới, backup/restore và vận hành thuộc M8; G1 gameplay/map/item còn acceptance riêng.
 
+<a id="rust-managed-all-dead"></a>
+### Rust: managed player round khi không còn người sống
+
+Lát implementation của [task #453](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453)
+phân biệt `Outcome::Team` và `Outcome::AllDead`. Policy **design** cho `RoundRoster::Players`:
+không còn current member sống, roster hợp lệ và phòng còn Armed; chờ hết bom pending, receipt chuyển life
+và thông báo departure, rồi chờ 8 giây kể từ death, departure hoặc blast cuối. Không cần witness 21 khi
+không ai còn sống, không chọn một đội thắng để ép đường kết thúc. Fixed-team preset cũ giữ giới hạn cũ.
+
+Encoder `rank175_all_dead_players` dùng cùng bảng participant/slot ban đầu và representation type 1/rank 2
+đã có trên [KR hai người](#all-dead-result), gồm participant đã rời nếu có. Journal lưu `AllDead` với
+`Draw` cho mọi participant và thưởng 0; Start/kết quả vẫn qua DB ticket trước delivery, đúng account/player,
+room generation và round. `Draw` là tên kết quả backend do dự án chọn; UI KR dùng hàng thua, không khẳng định
+đã khôi phục tie enum hoặc policy của server gốc. Không đổi schema, inventory hay chính sách thưởng.
+
+Native hai account C1/C0 trên ExVillage01 đã có hai all-dead/result/return/reset và journal đúng identity;
+actual 175 khớp bytes CP083 và cả hai view đọc actor chết trước 175, manager type 1/rank 2 trước 180.
+[Native roster 4/8](../evidence/rust-service/g1-managed-all-dead.json) trên Patrit14 đã có hai vòng all-dead,
+hai kết quả/về phòng/reset và Start/clock vòng thứ ba. Mọi view có đúng actor/identity hiện hành, state chết
+trước 175, đọc type 1/rank 2 cho mọi hàng trước 180; journal ghi đúng account/player/nhân vật, `Draw`, thưởng 0.
+Vòng ba được dừng bằng service shutdown đã khai báo, chỉ vòng chưa xong được hủy. Native 4/8 dùng phím Space
+đồng thời và độ trễ egress 1,5 giây trên bridge LAN cô lập. Đây là điều kiện mạng giả lập để mọi timer client
+kịp gửi death thật trước khi nhận death đối phương, không sửa frame hoặc state và không là test Internet.
+
+Giữ các lượt không đạt mục tiêu: lỗi startup trước gameplay; đặt bom lần lượt tạo đội thắng; Space đồng thời
+có một vòng survivor, một vòng all-dead và cần retry một click Start kế. Controller kết thúc hoặc nhận
+175/180 chưa đủ chứng minh all-dead; chỉ dùng đối chiếu actor/rank/DB và raw đã pin. TCP/SQLite có đối chứng
+riêng với original slot đã departure, DB lock chặn175 trước commit, sparse round kế/old key và shutdown.
+Sparse/departed native và fault injection revoke/EOF/delayed175 chưa được suy từ test server. Không đóng toàn
+G1 hoặc thay policy fixed-team cũ. [Gap còn lại](../RESEARCH.md#gap-managed-all-dead) chỉ giữ coverage chưa đo.
+
+
 <a id="peer-events"></a>
 ### Đồng bộ trap/death qua KR170 — CP029
 

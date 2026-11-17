@@ -1,0 +1,258 @@
+{
+  "id": "CP332",
+  "previous": "CP331",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T09:34:39.352929+00:00",
+  "context_commit": "0b52240dc5615af7974927205669ca21389cf422",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Đóng đường kết thúc managed player all-dead bằng evidence hiện hành và typed outcome/rank2/journal, giữ current identity, delivery và round fence.",
+  "scope": "Native contiguous2/4/8, hai vòng all-dead/reset và roster4/8 Start/clock kế; netem1500ms cho4/8. Synthetic TCP/DB departure và vòng kế riêng; không fixed-team legacy, fullG1 hay Internet.",
+  "artifacts": [
+    {
+      "name": "native-compare-client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "built-service",
+      "sha256": "561104f3868587df5bbe3ec703aff291a39054e3c34d50d1b8c14a91ab55bd5d"
+    }
+  ],
+  "locators": [
+    "docs/protocol/life-results.md#rust-managed-all-dead",
+    "docs/evidence/rust-service/g1-managed-all-dead.json",
+    "docs/RESEARCH.md#gap-managed-all-dead",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453"
+  ],
+  "findings": [
+    {
+      "summary": "Managed player result dùng Outcome::AllDead khi không còn current survivor, giữ phase/roster và pending bomb/life/departure barriers; đợi latestdeath/departure/blast8s, không synthesize21 hoặc chọn đội thắng. Encoder dùng original slot-indexed participant rows rank2; fixed-team preset giữ hành vi cũ.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/life-results.md#rust-managed-all-dead",
+      "evidence": [
+        "ALLDEAD332-06754",
+        "ALLDEAD332-06768",
+        "ALLDEAD332-06795",
+        "ALLDEAD332-06804"
+      ],
+      "limits": "Policy dịch vụ, không phục hồi original tieenum/server authority. Independent CP083 body dùng cho2; roster4/8 kiểm native riêng."
+    },
+    {
+      "summary": "Journal giữ khóa snapshot account/player/character/roomgeneration/round, AllDead/Draw cho mọi originalparticipant gồm departed, atomic đúng một lần và thưởng0; batch175 chờ existing DB ticket và fence. Không schema/economy mới.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/life-results.md#rust-managed-all-dead",
+      "evidence": [
+        "ALLDEAD332-06762",
+        "ALLDEAD332-06818",
+        "ALLDEAD332-04464",
+        "ALLDEAD332-04325"
+      ],
+      "limits": "Departure, DB writer, sparse next-round/oldkey là synthetic TCP/SQLite, không native fault injection."
+    },
+    {
+      "summary": "Native2 trên ExVillage01 và native4/8 trên Patrit14 có hai vòng all-dead: every view actorstate1 trước175, original rows type1/rank2 trước180, actual receivedbody và DB Draw đúng identity/thưởng0, reset. Roster4/8 còn third Start/clock rồi explicit shutdown chỉ hủy vòng chưa xong.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/life-results.md#rust-managed-all-dead",
+      "evidence": [
+        "ALLDEAD332-04053",
+        "ALLDEAD332-01339",
+        "ALLDEAD332-03114",
+        "ALLDEAD332-01558",
+        "ALLDEAD332-03670"
+      ],
+      "limits": "Wine/privateLAN;4/8 có explicit netem1500ms egress và simultaneous ordinary Space. No frame/state edits or original server claim; no Internet/50players/8rooms."
+    },
+    {
+      "summary": "Giữ startupfailure4r1, ordinary-winner4r2, partial4r3 với chỉ một all-dead vòng và retry clickStart3; controller completion không là semantic proof. Verifier failures clockschema/shutdownexit giữ nguyên receipt, sửa đúng schema: completedround Present, cancelledshutdown Disconnected.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/life-results.md#rust-managed-all-dead",
+      "evidence": [
+        "ALLDEAD332-00846",
+        "ALLDEAD332-01083",
+        "ALLDEAD332-01327",
+        "ALLDEAD332-01575"
+      ],
+      "limits": "Native failed/partial không cộng thành hai-cycle acceptance; verifier correction không sửa raw hoặc bỏ điều kiện actor/rank/DB."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fmt, clippy-Dwarnings, full locked workspace tests/build và committed-source binding",
+      "result": "pass",
+      "evidence": [
+        "ALLDEAD332-03789",
+        "ALLDEAD332-03702"
+      ],
+      "limits": "Rust source unchanged across2/4/8; build does not certify native."
+    },
+    {
+      "check": "Native2/4/8 state/rank/identity/journal/reset, getter replay và sealed raw",
+      "result": "pass",
+      "evidence": [
+        "ALLDEAD332-04053",
+        "ALLDEAD332-01339",
+        "ALLDEAD332-03114"
+      ],
+      "limits": "Bounded current contiguous rosters; not sparse/departed native, originaltieenum or Internet."
+    },
+    {
+      "check": "Synthetic TCP/SQLite all-current/departed all-dead and default winner regression, docs/catalog and manual group audit",
+      "result": "pass",
+      "evidence": [
+        "ALLDEAD332-04464",
+        "ALLDEAD332-04325",
+        "ALLDEAD332-03929",
+        "ALLDEAD332-00027",
+        "ALLDEAD332-00026",
+        "ALLDEAD332-00008"
+      ],
+      "limits": "Exact-head local/history and all CI still mandatory before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP332-managed-all-dead.json",
+      "bytes": 1837192,
+      "sha256": "d8bcce4fa8181db3f7f54bf2f8dab2f75960ac1b31f0e5c60b6b2948851c91bc",
+      "count": 6818
+    }
+  ],
+  "delta": {
+    "added": [
+      "Typed managed all-dead, explicit rank2 current roster, AllDead/Draw zero journal, native2/4/8 two-cycle acceptance."
+    ],
+    "corrected": [
+      "Preserve default-network winner and partial runs; use declared privateLAN delay plus independent state/rank/DB checks instead of controller label."
+    ],
+    "superseded": [
+      "Managed all-dead has a bounded ending in measured scope; G1/phase1 still open."
+    ]
+  },
+  "blockers": [
+    "Frontend allrank2 is the eliminated representation, backend Draw is explicit emulator policy; original server tieenum/policy unknown.",
+    "Source and binary unchanged across native2/4/8; no client/pack/sourceDB change, no fabricated death or survivor21. Existing private bootstrap diagnostic patches retain provenance.",
+    "Sparse/departed roster result codec and lifecycle have server controls only; no native acceptance for every variable roster or delayed175 across revoke/EOF.",
+    "Wine/isolated virtual LAN with explicit network delay for4/8, not Internet/load/50players/8rooms.",
+    "Fixed-team legacy all-dead behavior unchanged. Full Shoe/Punch/G1, M8/phase1 remain open; L1 belongs to Claude."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-G1-BOMB-MOTION-COVERAGE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Theo PLAN tiếp các hướng/khoảng cách Shoe/Punch còn thiếu với source-first/native use/ineligible/peer/reset; rồi coverage Factory/Tomb và content G1. Không làm L1 hoặc exporter.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T09:34:39.352929+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo self-audit AUD140; native all-dead current rosters only. Independent review waived; not wholeG1/phase1 acceptance.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "docs/protocol/life-results.md",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-managed-all-dead.json",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD140.json",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "rust/crates/kr-service/src/four_results.rs",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "rust/crates/kr-service/src/match_journal.rs",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "rust/crates/kr-wire/src/kr00967/battle.rs",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "rust/crates/kr-wire/tests/native_all_dead.rs",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "tools/test_rust_selected_players.py",
+      "state": "updated",
+      "reason": "Đồng bộ typed managed all-dead, native2/4/8, network conditions, zero journal, retainedfailures và coverage chưa đo."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, featuregroup audit, L1 owner và private infrastructure rules giữ nguyên."
+    }
+  ],
+  "completed_feature_groups": [
+    "g1-managed-player-all-dead-current-rosters"
+  ]
+}

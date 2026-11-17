@@ -362,6 +362,7 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 <a id="rust-persistent-character"></a> [→ Lưu nhân vật theo account và khôi phục vào phòng/Start](protocol/auth-session.md#rust-persistent-character)
 <a id="rust-maxpower"></a> [→ MaxPower theo max nhân vật, cap no-op và reset](protocol/items-stats.md#rust-maxpower)
 <a id="rust-room-map-selection"></a> [→ Chủ phòng chọn map theo catalog và current membership](protocol/load-phase.md#rust-room-map-selection)
+<a id="rust-managed-all-dead"></a> [→ Managed player all-dead, rank 2 và journal Draw](protocol/life-results.md#rust-managed-all-dead)
 <a id="rust-match-journal-serving"></a> [→ Journal trận trong serving và acceptance M6 thu hẹp](protocol/life-results.md#rust-match-journal-serving)
 <a id="rust-match-store-backend"></a> [→ Backend lịch sử trận, preference và giới hạn M6](protocol/life-results.md#rust-match-store-backend)
 

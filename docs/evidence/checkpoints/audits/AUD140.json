@@ -1,0 +1,70 @@
+{
+  "id": "AUD140",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-managed-player-all-dead-current-rosters"
+  ],
+  "completed_through": "CP332",
+  "recorded_utc": "2026-11-17T08:11:49.024303+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/life-results.md",
+    "docs/evidence/rust-service/g1-managed-all-dead.json",
+    "rust/crates/kr-service/src/four_results.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/match_journal.rs",
+    "rust/crates/kr-wire/src/kr00967/battle.rs",
+    "rust/crates/kr-wire/tests/native_all_dead.rs",
+    "tools/test_rust_selected_players.py",
+    "local/research/codex/g1-managed-all-dead-native-r1/all-dead-native-verification.json",
+    "local/research/codex/g1-managed-all-dead-4-native-r4/all-dead-roster-verification.json",
+    "local/research/codex/g1-managed-all-dead-8-native-r4/all-dead-roster-verification.json",
+    "local/research/codex/g1-managed-all-dead-4-native-r3/partial-native-semantic-verification.json",
+    "local/research/codex/g1-managed-all-dead-4-native-r3/clock-schema-negative-control.json",
+    "local/research/codex/g1-managed-all-dead-4-native-r4/semantic-verification-exit-v4.json",
+    "local/research/codex/g1-managed-all-dead-8-native-r4/semantic-verification-exit-v4.json",
+    "local/research/codex/g1-managed-all-dead-8-native-r4/semantic-verification-exit-v6.json",
+    "local/research/codex/verify_g1_patrit_roster_getters.py"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH, so source-first CP083 và explicit typed outcome, journal no-winner, current phase/roster/delivery/grace. Đối chiếu native state trước175 và manager rank trước180 trên mọi view với TCP reassembly và DB snapshot; source/binary binding giữ nguyên. Phân biệt default-network failures/partial với netem success, native với synthetic DB/departure/oldround controls. Không dùng early_completion hoặc decoder tự sinh làm oracle. Audit chỉ nhóm managed all-dead hiện hành.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Managed player all-dead trước đây không có winner và giữ Armed vô hạn.",
+      "correction": "Typed AllDead, no survivor21, rank2 original roster và atomic AllDead/Draw zero journal sau existing delivery/grace barriers.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/four_results.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/match_journal.rs",
+        "rust/crates/kr-wire/src/kr00967/battle.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Controller ghi all-dead completion dù native có survivor; process0/175 không đủ chứng minh semantics.",
+      "correction": "Giữ failed/partial và xác minh every actor state1, every row rank2, current identity, DB Draw và reset. Dùng netem explicit cho4/8, không gọi Internet hay original server law.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-managed-all-dead.json",
+        "docs/protocol/life-results.md"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Harness mới kỳ vọng field round trên clock, exit Present cả lúc shutdown và giữ chung globals Unicorn cho nhiều snapshot; các kiểm này có failure đã giữ.",
+      "correction": "Đếm ba clock và kiểm round trên life marker; yêu cầu Present cho hai kết quả và Disconnected cho vòng shutdown. Dùng reset globals trước từng getter giống harness Patrit hiện có; kiểm mọi wrapper vẫn giữ và đạt. Không sửa raw/client hoặc khẳng định nguyên nhân sâu hơn của phụ thuộc globals trong emulator.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-managed-all-dead.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Sparse/departed native và delayed175/revoke/EOF fault injection chưa đo; synthetic TCP/SQLite được ghi đúng loại.",
+    "Fixed-team legacy all-dead không mở, tieenum gốc unknown, G1/Shoe/Punch/M8/phase1 và L1 của Claude còn mở.",
+    "CI và exact-head local/history phải xanh trước merge; không đưa VPS/OCI/raw/binary/decompile lên GitHub."
+  ]
+}

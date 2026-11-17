@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP331",
+  "as_of": "CP332",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -4398,7 +4398,9 @@
           "docs/evidence/rust-service/m7e-selected-rosters.json",
           "docs/evidence/rust-service/m6-match-store.json",
           "docs/evidence/rust-service/m6-journal-serving.json",
-          "docs/evidence/rust-service/g1-shoe.json"
+          "docs/evidence/rust-service/g1-shoe.json",
+          "docs/protocol/life-results.md#rust-managed-all-dead",
+          "docs/evidence/rust-service/g1-managed-all-dead.json"
         ]
       },
       "coverage": {
@@ -4541,7 +4543,8 @@
             "docs/evidence/rust-service/README.md#cp250",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
             "docs/protocol/life-results.md#rust-match-store-backend",
-            "docs/protocol/life-results.md#rust-match-journal-serving"
+            "docs/protocol/life-results.md#rust-match-journal-serving",
+            "docs/protocol/life-results.md#rust-managed-all-dead"
           ],
           "delivery": "via_pr"
         },
@@ -4589,7 +4592,8 @@
             "docs/evidence/rust-service/eight-baseline.json",
             "docs/evidence/rust-service/README.md#cp250",
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
-            "docs/protocol/life-results.md#rust-match-journal-serving"
+            "docs/protocol/life-results.md#rust-match-journal-serving",
+            "docs/protocol/life-results.md#rust-managed-all-dead"
           ]
         },
         "gate": {
