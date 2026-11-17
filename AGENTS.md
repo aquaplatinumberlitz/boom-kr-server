@@ -133,6 +133,8 @@ ngữ nghĩa hoặc đóng gate.
 Danh sách file local của checkpoint nằm trong run manifest `local/evidence-manifests/` (record chỉ giữ con trỏ run);
 checkpoint mới gọi `checkpoint_evidence.pack_evidence`, tra cứu bằng `python3 tools/evidence_lookup.py`
 ([cách dùng](docs/evidence/checkpoints/README.md#lean-evidence)).
+Dọn `local/` theo [quy tắc lưu giữ](docs/evidence/owner-directives/local-retention.json): chỉ qua kế hoạch dry run của
+`tools/local_retention.py`; `--apply` cần hash kế hoạch chủ dự án đã duyệt, không tự xóa raw ngoài kế hoạch.
 Tool/codec/server: chạy kiểm phù hợp hành vi thay đổi; không mặc định phải build client Rust cũ.
 Rust server: `cargo fmt --manifest-path rust/Cargo.toml --all --check`, `cargo clippy --manifest-path rust/Cargo.toml
 --workspace --all-targets --locked -- -D warnings`, `cargo test --manifest-path rust/Cargo.toml --workspace --locked`;

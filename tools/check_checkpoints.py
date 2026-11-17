@@ -219,7 +219,7 @@ def historical_checkpoint_publication(root, relative, expected_sha, expected_byt
     return None
 
 
-def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence"):
+def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence", pruned=None):
     errors, warnings, checked, unavailable = [], [], 0, 0
     root = Path(root).resolve()
     if not require_fields(item, ("id", "kind", "path", "sha256", "bytes"), where, errors):
@@ -267,6 +267,15 @@ def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence")
             checked += 1
             warnings.append(f"{where}: HISTORICAL CHECKPOINT STORAGE VERIFIED {value} at {revision}; "
                             "storage migrated after publication; pinned bytes unchanged")
+            return errors, warnings, checked, unavailable
+    if not path.is_file() and pruned is not None and (kind == "local" or absolute_local_pin):
+        try:
+            relative = path.relative_to(root).as_posix()
+        except ValueError:
+            relative = None
+        if pruned.match(relative):
+            # Deliberately removed under the retention directive; size/SHA stay in the record.
+            pruned.hits += 1
             return errors, warnings, checked, unavailable
     if not path.is_file():
         unavailable += 1
@@ -390,9 +399,15 @@ def validate(manifest, root=ROOT, require_local=False):
             errors.append(f"{where}: {error}")
             return None
 
+    try:
+        pruned = lean.load_pruned(root)
+    except (ValueError, OSError) as error:
+        errors.append(f"{lean.PRUNED}: invalid local-pruned registry: {error}")
+        pruned = lean.Pruned()
+
     def evidence_file(item, where):
         nonlocal checked, unavailable
-        item_errors, item_warnings, good, missing = verify_evidence_item(item, root, require_local, where)
+        item_errors, item_warnings, good, missing = verify_evidence_item(item, root, require_local, where, pruned)
         errors.extend(item_errors)
         warnings.extend(item_warnings)
         checked += good
@@ -438,6 +453,7 @@ def validate(manifest, root=ROOT, require_local=False):
         if doc_identity:
             warnings.append(f"{where}: DOCUMENTATION identity from pinned canonical docs; not implementation/runtime certification")
         evidence_ids = set()
+        pruned_before = pruned.hits
         def evidence_rows(rows):
             for item in rows:
                 evidence_file(item, where)
@@ -478,6 +494,9 @@ def validate(manifest, root=ROOT, require_local=False):
             if legacy:
                 warnings.append(f"{where}: LEGACY EVIDENCE STORAGE: {sum(p['count'] for p, _ in legacy)} host-local "
                                 "rows listed in the repository; pack with checkpoint_evidence.pack_evidence")
+        if pruned.hits > pruned_before:
+            warnings.append(f"{where}: PRUNED {pruned.hits - pruned_before} host-local evidence files per "
+                            f"{lean.PRUNED}; size/SHA kept, bytes no longer re-verifiable")
         if not evidence_ids:
             errors.append(f"{where}: evidence required")
         findings = record.get("findings", [])
@@ -675,9 +694,11 @@ def validate(manifest, root=ROOT, require_local=False):
     for step in current_steps.values():
         if step.get("task") not in seen_tasks:
             errors.append(f"{step.get('id')}: task has no explicit state")
-    return errors, warnings, {"completed": completed, "evidence_verified": checked, "evidence_unavailable": unavailable,
-                              "next_audit": next_audit,
-                              "audit_mode": "feature_group" if grouped else "legacy_periodic"}
+    stats = {"completed": completed, "evidence_verified": checked, "evidence_unavailable": unavailable}
+    if pruned.hits:
+        stats["evidence_pruned"] = pruned.hits
+    return errors, warnings, stats | {"next_audit": next_audit,
+                                      "audit_mode": "feature_group" if grouped else "legacy_periodic"}
 
 
 def continuity(previous, current):
